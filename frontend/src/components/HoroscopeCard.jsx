@@ -2,60 +2,128 @@ import React from 'react';
 import { Card } from './ui/card';
 import { Sparkles, Star, Heart, Briefcase, Activity, Clover, Calendar } from 'lucide-react';
 
+// Clean markdown formatting from text
+const cleanMarkdown = (text) => {
+  if (!text) return '';
+  return text
+    .replace(/\*\*([^*]+)\*\*/g, '$1')  // Remove **bold**
+    .replace(/\*([^*]+)\*/g, '$1')       // Remove *italic*
+    .replace(/#{1,6}\s?/g, '')           // Remove headings
+    .replace(/`([^`]+)`/g, '$1')         // Remove inline code
+    .replace(/\n{3,}/g, '\n\n')          // Reduce multiple newlines
+    .trim();
+};
+
 // Parse horoscope content into sections
 const parseHoroscopeContent = (content) => {
   if (!content) return null;
   
+  const cleanedContent = cleanMarkdown(content);
   const sections = [];
-  const lines = content.split('\n').filter(line => line.trim());
   
-  let currentSection = { title: 'General Prediction', content: [], icon: 'star', color: 'gold' };
-  
-  const sectionPatterns = [
-    { patterns: ['love', 'relationship', 'romance', 'partner'], title: 'Love & Relationships', icon: 'heart', color: 'pink' },
-    { patterns: ['career', 'work', 'finance', 'money', 'professional', 'business'], title: 'Career & Finances', icon: 'briefcase', color: 'blue' },
-    { patterns: ['health', 'wellness', 'energy', 'physical', 'mental'], title: 'Health & Wellness', icon: 'activity', color: 'green' },
-    { patterns: ['lucky', 'number', 'color', 'time', 'tip'], title: 'Lucky Elements', icon: 'clover', color: 'purple' }
+  // Define section patterns with their styling
+  const sectionConfig = [
+    { 
+      patterns: ['love', 'relationship', 'romance', 'partner', 'heart'], 
+      title: 'Love & Relationships', 
+      icon: 'heart', 
+      color: 'pink' 
+    },
+    { 
+      patterns: ['career', 'work', 'finance', 'money', 'professional', 'business', 'job'], 
+      title: 'Career & Finances', 
+      icon: 'briefcase', 
+      color: 'blue' 
+    },
+    { 
+      patterns: ['health', 'wellness', 'energy', 'physical', 'mental', 'body', 'exercise'], 
+      title: 'Health & Wellness', 
+      icon: 'activity', 
+      color: 'green' 
+    },
+    { 
+      patterns: ['lucky', 'number', 'color', 'time', 'tip', 'advice'], 
+      title: 'Lucky Elements & Tips', 
+      icon: 'clover', 
+      color: 'purple' 
+    }
   ];
+
+  // Split content by common section indicators
+  const lines = cleanedContent.split('\n').filter(line => line.trim());
   
+  let generalContent = [];
+  let currentSection = null;
+  let currentContent = [];
+
   for (const line of lines) {
     const lowerLine = line.toLowerCase();
-    let foundSection = false;
-    
-    for (const pattern of sectionPatterns) {
-      if (pattern.patterns.some(p => lowerLine.includes(p) && (lowerLine.includes(':') || line.length < 50))) {
-        // Save current section if it has content
-        if (currentSection.content.length > 0) {
-          sections.push({ ...currentSection });
+    let foundNewSection = false;
+
+    // Check if this line starts a new section
+    for (const config of sectionConfig) {
+      const isHeader = config.patterns.some(p => {
+        const regex = new RegExp(`^[\\s]*[•\\-\\d\\.]*[\\s]*(${p})`, 'i');
+        return regex.test(lowerLine) || 
+               (lowerLine.includes(p) && (lowerLine.includes(':') || line.length < 60));
+      });
+
+      if (isHeader) {
+        // Save previous section
+        if (currentSection && currentContent.length > 0) {
+          sections.push({
+            ...currentSection,
+            content: currentContent.join(' ').trim()
+          });
+        } else if (currentContent.length > 0) {
+          generalContent.push(...currentContent);
         }
-        currentSection = { title: pattern.title, content: [], icon: pattern.icon, color: pattern.color };
+
+        currentSection = config;
+        currentContent = [];
         
-        // If the line has content after a colon, add it
+        // Extract content after colon if present
         const colonIndex = line.indexOf(':');
         if (colonIndex !== -1 && colonIndex < line.length - 1) {
-          currentSection.content.push(line.substring(colonIndex + 1).trim());
+          const afterColon = line.substring(colonIndex + 1).trim();
+          if (afterColon) currentContent.push(afterColon);
         }
-        foundSection = true;
+        foundNewSection = true;
         break;
       }
     }
-    
-    if (!foundSection) {
-      currentSection.content.push(line);
+
+    if (!foundNewSection) {
+      currentContent.push(line.trim());
     }
   }
-  
-  // Add last section
-  if (currentSection.content.length > 0) {
-    sections.push(currentSection);
+
+  // Save last section
+  if (currentSection && currentContent.length > 0) {
+    sections.push({
+      ...currentSection,
+      content: currentContent.join(' ').trim()
+    });
+  } else if (currentContent.length > 0) {
+    generalContent.push(...currentContent);
   }
+
+  // Create result with general prediction first
+  const result = [];
   
-  // If no sections were parsed, return the whole content as general
-  if (sections.length === 0) {
-    return [{ title: 'Your Horoscope', content: [content], icon: 'star', color: 'gold' }];
+  if (generalContent.length > 0 || sections.length === 0) {
+    result.push({
+      title: 'General Prediction',
+      icon: 'star',
+      color: 'gold',
+      content: generalContent.length > 0 ? generalContent.join(' ').trim() : cleanedContent
+    });
   }
-  
-  return sections;
+
+  // Add other sections
+  result.push(...sections);
+
+  return result;
 };
 
 const SectionIcon = ({ icon, className }) => {
@@ -72,34 +140,39 @@ const SectionIcon = ({ icon, className }) => {
 
 const sectionColors = {
   gold: {
-    bg: 'bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-amber-950/30 dark:to-yellow-950/30',
-    border: 'border-amber-200 dark:border-amber-800',
-    icon: 'text-amber-500',
-    title: 'text-amber-700 dark:text-amber-400'
+    bg: 'bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-950/40 dark:to-orange-950/40',
+    border: 'border-amber-300 dark:border-amber-700',
+    icon: 'text-amber-600 dark:text-amber-400',
+    title: 'text-amber-800 dark:text-amber-300',
+    iconBg: 'bg-amber-100 dark:bg-amber-900/50'
   },
   pink: {
-    bg: 'bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-950/30 dark:to-rose-950/30',
-    border: 'border-pink-200 dark:border-pink-800',
-    icon: 'text-pink-500',
-    title: 'text-pink-700 dark:text-pink-400'
+    bg: 'bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-950/40 dark:to-rose-950/40',
+    border: 'border-pink-300 dark:border-pink-700',
+    icon: 'text-pink-600 dark:text-pink-400',
+    title: 'text-pink-800 dark:text-pink-300',
+    iconBg: 'bg-pink-100 dark:bg-pink-900/50'
   },
   blue: {
-    bg: 'bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30',
-    border: 'border-blue-200 dark:border-blue-800',
-    icon: 'text-blue-500',
-    title: 'text-blue-700 dark:text-blue-400'
+    bg: 'bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/40 dark:to-indigo-950/40',
+    border: 'border-blue-300 dark:border-blue-700',
+    icon: 'text-blue-600 dark:text-blue-400',
+    title: 'text-blue-800 dark:text-blue-300',
+    iconBg: 'bg-blue-100 dark:bg-blue-900/50'
   },
   green: {
-    bg: 'bg-gradient-to-br from-emerald-50 to-green-50 dark:from-emerald-950/30 dark:to-green-950/30',
-    border: 'border-emerald-200 dark:border-emerald-800',
-    icon: 'text-emerald-500',
-    title: 'text-emerald-700 dark:text-emerald-400'
+    bg: 'bg-gradient-to-br from-emerald-50 to-teal-50 dark:from-emerald-950/40 dark:to-teal-950/40',
+    border: 'border-emerald-300 dark:border-emerald-700',
+    icon: 'text-emerald-600 dark:text-emerald-400',
+    title: 'text-emerald-800 dark:text-emerald-300',
+    iconBg: 'bg-emerald-100 dark:bg-emerald-900/50'
   },
   purple: {
-    bg: 'bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950/30 dark:to-violet-950/30',
-    border: 'border-purple-200 dark:border-purple-800',
-    icon: 'text-purple-500',
-    title: 'text-purple-700 dark:text-purple-400'
+    bg: 'bg-gradient-to-br from-purple-50 to-violet-50 dark:from-purple-950/40 dark:to-violet-950/40',
+    border: 'border-purple-300 dark:border-purple-700',
+    icon: 'text-purple-600 dark:text-purple-400',
+    title: 'text-purple-800 dark:text-purple-300',
+    iconBg: 'bg-purple-100 dark:bg-purple-900/50'
   }
 };
 
@@ -133,16 +206,20 @@ export const HoroscopeCard = ({ title, content, isLoading, type, selectedSign })
   return (
     <div className="space-y-6">
       {/* Date Header */}
-      <Card className="p-4 border-2 border-gold/30 bg-gradient-to-r from-gold/10 to-amber-500/10">
+      <Card className="p-4 border-2 border-gold/40 bg-gradient-to-r from-gold/15 via-amber-500/10 to-gold/15 shadow-sm">
         <div className="flex items-center justify-center space-x-3">
           <Calendar className="h-5 w-5 text-gold" />
-          <span className="text-lg font-playfair font-semibold text-gold">{formattedDate}</span>
+          <span className="text-lg font-playfair font-semibold text-amber-800 dark:text-amber-300">
+            {formattedDate}
+          </span>
         </div>
       </Card>
 
       {/* Title */}
-      <div className="flex items-center space-x-3">
-        <Star className="h-6 w-6 text-gold" />
+      <div className="flex items-center space-x-3 pb-2">
+        <div className="p-2 rounded-lg bg-gold/20">
+          <Star className="h-6 w-6 text-gold" />
+        </div>
         <h3 className="text-2xl md:text-3xl font-playfair font-semibold tracking-wide">
           {title}
         </h3>
@@ -150,22 +227,28 @@ export const HoroscopeCard = ({ title, content, isLoading, type, selectedSign })
 
       {/* Horoscope Sections */}
       {sections && sections.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {sections.map((section, index) => {
             const colors = sectionColors[section.color] || sectionColors.gold;
+            const isFullWidth = index === 0 || section.content.length > 200;
+            
             return (
               <Card 
                 key={index}
-                className={`p-5 border-2 ${colors.border} ${colors.bg} transition-all duration-300 hover:shadow-lg ${
-                  index === 0 ? 'md:col-span-2' : ''
+                className={`p-6 border-2 ${colors.border} ${colors.bg} transition-all duration-300 hover:shadow-md ${
+                  isFullWidth ? 'md:col-span-2' : ''
                 }`}
               >
-                <div className="flex items-center space-x-2 mb-3">
-                  <SectionIcon icon={section.icon} className={`h-5 w-5 ${colors.icon}`} />
-                  <h4 className={`font-semibold ${colors.title}`}>{section.title}</h4>
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className={`p-2 rounded-lg ${colors.iconBg}`}>
+                    <SectionIcon icon={section.icon} className={`h-5 w-5 ${colors.icon}`} />
+                  </div>
+                  <h4 className={`font-semibold text-lg ${colors.title}`}>
+                    {section.title}
+                  </h4>
                 </div>
-                <p className="text-sm md:text-base leading-relaxed text-foreground/85">
-                  {section.content.join(' ')}
+                <p className="text-base leading-relaxed text-foreground/90 font-normal">
+                  {section.content}
                 </p>
               </Card>
             );
@@ -173,8 +256,8 @@ export const HoroscopeCard = ({ title, content, isLoading, type, selectedSign })
         </div>
       ) : (
         <Card className="p-6 border-2 border-gold/30 bg-card">
-          <p className="text-base md:text-lg leading-relaxed text-foreground/90 whitespace-pre-wrap">
-            {content}
+          <p className="text-base leading-relaxed text-foreground/90">
+            {cleanMarkdown(content)}
           </p>
         </Card>
       )}
