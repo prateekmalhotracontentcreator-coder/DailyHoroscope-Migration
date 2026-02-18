@@ -312,8 +312,8 @@ export const AdminDashboard = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex space-x-4 mb-6">
-          {['overview', 'users', 'payments'].map((tab) => (
+        <div className="flex flex-wrap gap-2 mb-6">
+          {['overview', 'users', 'payments', 'blog'].map((tab) => (
             <Button
               key={tab}
               variant={activeTab === tab ? 'default' : 'outline'}
@@ -323,10 +323,16 @@ export const AdminDashboard = () => {
                 : 'border-gray-600 text-gray-300 hover:bg-gray-700'
               }
             >
+              {tab === 'blog' && <BookOpen className="h-4 w-4 mr-2" />}
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
             </Button>
           ))}
         </div>
+
+        {/* Blog Tab */}
+        {activeTab === 'blog' && (
+          <AdminBlogManager getAuthHeaders={getAuthHeaders} />
+        )}
 
         {/* Tab Content */}
         {activeTab === 'overview' && (
