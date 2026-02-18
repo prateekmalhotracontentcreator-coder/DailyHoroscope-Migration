@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../../context/AdminAuthContext';
 import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
+import { Input } from '../../components/ui/input';
+import { Label } from '../../components/ui/label';
 import { 
   Users, CreditCard, FileText, TrendingUp, 
   LogOut, Crown, Calendar, IndianRupee,
-  BarChart3, ArrowUpRight, ArrowDownRight
+  BarChart3, ArrowUpRight, ArrowDownRight, Settings, Lock, Eye, EyeOff
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -22,6 +24,15 @@ export const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [users, setUsers] = useState([]);
   const [payments, setPayments] = useState([]);
+  
+  // Password change state
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showCurrentPwd, setShowCurrentPwd] = useState(false);
+  const [showNewPwd, setShowNewPwd] = useState(false);
+  const [changingPassword, setChangingPassword] = useState(false);
 
   useEffect(() => {
     if (!authLoading && !isAuthenticated) {
