@@ -12,6 +12,17 @@ import { useAuth } from '../context/AuthContext';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+// Load Razorpay script
+const loadRazorpay = () => {
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
+
 export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess }) => {
   const { user } = useAuth();
   const [email, setEmail] = useState('');
@@ -25,14 +36,14 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
   }, [user]);
 
   const pricing = {
-    birth_chart: { price: 9.99, title: 'Birth Chart Report' },
-    kundali_milan: { price: 14.99, title: 'Kundali Milan Report' },
-    premium_monthly: { price: 19.99, title: 'Premium Monthly Subscription' }
+    birth_chart: { price: 799, title: 'Birth Chart Report' },
+    kundali_milan: { price: 1199, title: 'Kundali Milan Report' },
+    premium_monthly: { price: 1599, title: 'Premium Monthly Subscription' }
   };
 
   const currentPrice = paymentOption === 'premium_monthly' 
     ? pricing.premium_monthly.price 
-    : pricing[reportType]?.price || 9.99;
+    : pricing[reportType]?.price || 799;
 
   const handlePayment = async () => {
     if (!email) {
@@ -43,35 +54,77 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
     setProcessing(true);
     
     try {
-      // Create payment intent
-      const intentResponse = await axios.post(`${API}/payment/create-intent`, {
+      // Load Razorpay script
+      const scriptLoaded = await loadRazorpay();
+      if (!scriptLoaded) {
+        toast.error('Failed to load payment gateway. Please try again.');
+        setProcessing(false);
+        return;
+      }
+
+      // Create Razorpay order
+      const orderResponse = await axios.post(`${API}/payment/create-order`, {
         report_type: paymentOption === 'premium_monthly' ? 'premium_monthly' : reportType,
         report_id: reportId,
         user_email: email
       });
 
-      // In real implementation, you'd use Stripe Elements here
-      // For demo, we'll simulate successful payment
-      const paymentIntentId = 'pi_test_' + Date.now();
-      
-      // Confirm payment
-      await axios.post(`${API}/payment/confirm`, null, {
-        params: {
-          payment_intent_id: paymentIntentId,
-          user_email: email,
-          report_type: paymentOption === 'premium_monthly' ? 'premium_monthly' : reportType,
-          report_id: reportId
-        }
-      });
+      const { order_id, amount, currency, key_id } = orderResponse.data;
 
-      toast.success('Payment successful! You now have premium access.');
-      localStorage.setItem('user_email', email);
-      onSuccess();
-      onClose();
+      // Razorpay checkout options
+      const options = {
+        key: key_id,
+        amount: amount * 100, // Amount in paise
+        currency: currency,
+        name: 'Cosmic Wisdom',
+        description: paymentOption === 'premium_monthly' 
+          ? 'Premium Monthly Subscription'
+          : pricing[reportType]?.title,
+        order_id: order_id,
+        prefill: {
+          email: email,
+          name: user?.name || ''
+        },
+        theme: {
+          color: '#C5A059'
+        },
+        handler: async function (response) {
+          try {
+            // Verify payment
+            const verifyResponse = await axios.post(`${API}/payment/verify`, null, {
+              params: {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+                user_email: email
+              }
+            });
+
+            if (verifyResponse.data.status === 'success') {
+              toast.success('Payment successful! You now have premium access.');
+              onSuccess();
+              onClose();
+            }
+          } catch (error) {
+            console.error('Payment verification error:', error);
+            toast.error('Payment verification failed. Please contact support.');
+          }
+        },
+        modal: {
+          ondismiss: function() {
+            setProcessing(false);
+            toast.info('Payment cancelled');
+          }
+        }
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.open();
+      setProcessing(false);
+
     } catch (error) {
       console.error('Payment error:', error);
       toast.error('Payment failed. Please try again.');
-    } finally {
       setProcessing(false);
     }
   };
@@ -102,6 +155,7 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
               className="h-12 text-base"
+              disabled={!!user}
             />
           </div>
 
@@ -113,7 +167,7 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
                 <Label htmlFor="per_report" className="flex-1 cursor-pointer">
                   <div className="font-semibold">This Report Only</div>
                   <div className="text-sm text-muted-foreground">
-                    ${pricing[reportType]?.price} one-time
+                    ₹{pricing[reportType]?.price} one-time
                   </div>
                 </Label>
               </div>
@@ -126,7 +180,7 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
                     <span className="text-xs bg-gold text-primary-foreground px-2 py-0.5 rounded-full font-semibold">BEST VALUE</span>
                   </div>
                   <div className="text-sm text-muted-foreground mb-2">
-                    $19.99/month - Unlimited reports
+                    ₹1599/month - Unlimited reports
                   </div>
                   <div className="flex items-start space-x-2 text-xs text-foreground/80">
                     <Check className="h-3 w-3 text-gold mt-0.5 flex-shrink-0" />
@@ -144,7 +198,7 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
           <div className="bg-muted p-4 rounded-sm">
             <div className="flex justify-between items-center mb-2">
               <span className="font-semibold">Total:</span>
-              <span className="text-2xl font-playfair font-bold text-gold">${currentPrice}</span>
+              <span className="text-2xl font-playfair font-bold text-gold">₹{currentPrice}</span>
             </div>
             {paymentOption === 'premium_monthly' && (
               <p className="text-xs text-muted-foreground">Cancel anytime. No hidden fees.</p>
@@ -160,16 +214,19 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
             {processing ? (
               <span className="flex items-center space-x-2">
                 <Sparkles className="h-5 w-5 animate-pulse" />
-                <span>Processing...</span>
+                <span>Opening Payment Gateway...</span>
               </span>
             ) : (
-              `Complete Payment - $${currentPrice}`
+              `Pay ₹${currentPrice}`
             )}
           </Button>
 
-          <p className="text-xs text-center text-muted-foreground">
-            Secure payment powered by Stripe • 30-day money-back guarantee
-          </p>
+          <div className="flex items-center justify-center space-x-4 text-xs text-muted-foreground">
+            <span>Secure payment powered by</span>
+            <svg className="h-5" viewBox="0 0 120 30" fill="currentColor">
+              <text x="0" y="20" fontSize="18" fontWeight="bold">Razorpay</text>
+            </svg>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
