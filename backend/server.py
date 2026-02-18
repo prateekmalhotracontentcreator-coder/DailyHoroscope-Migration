@@ -622,85 +622,76 @@ async def create_payment_order(request: PaymentIntentRequest):
         logging.error(f"Razorpay order creation error: {str(e)}")
         raise HTTPException(status_code=500, detail="Payment order creation failed")
 
-@api_router.post("/payment/confirm")
-async def confirm_payment(payment_intent_id: str, user_email: str, report_type: str, report_id: str):
-    """Confirm payment and grant access (Demo mode with test key)"""
+@api_router.post("/payment/verify")
+async def verify_payment(
+    razorpay_order_id: str,
+    razorpay_payment_id: str,
+    razorpay_signature: str,
+    user_email: str
+):
+    """Verify Razorpay payment and grant access"""
     
     try:
-        is_demo_mode = stripe.api_key == "sk_test_emergent" or payment_intent_id.startswith("pi_demo_")
+        # Verify payment signature
+        params_dict = {
+            'razorpay_order_id': razorpay_order_id,
+            'razorpay_payment_id': razorpay_payment_id,
+            'razorpay_signature': razorpay_signature
+        }
         
-        if is_demo_mode:
-            # Demo mode: Simulate successful payment
-            logging.info(f"Demo payment mode: Simulating successful payment for {user_email}")
-            
-            payment = Payment(
+        razorpay_client.utility.verify_payment_signature(params_dict)
+        
+        # Get payment record
+        payment_doc = await db.payments.find_one(
+            {"razorpay_order_id": razorpay_order_id},
+            {"_id": 0}
+        )
+        
+        if not payment_doc:
+            raise HTTPException(status_code=404, detail="Payment record not found")
+        
+        # Update payment status
+        await db.payments.update_one(
+            {"razorpay_order_id": razorpay_order_id},
+            {
+                "$set": {
+                    "razorpay_payment_id": razorpay_payment_id,
+                    "status": "completed"
+                }
+            }
+        )
+        
+        # If monthly subscription, create subscription record
+        if payment_doc['report_type'] == "premium_monthly":
+            subscription = UserSubscription(
                 user_email=user_email,
-                report_type=report_type,
-                report_id=report_id,
-                amount=PRICING.get(report_type, 9.99),
-                stripe_payment_id=payment_intent_id,
-                status="completed"
+                subscription_type="premium_monthly",
+                status="active",
+                stripe_subscription_id=razorpay_payment_id,
+                expires_at=datetime.now(timezone.utc) + timedelta(days=30)
             )
             
-            doc = payment.model_dump()
-            doc['created_at'] = doc['created_at'].isoformat()
-            await db.payments.insert_one(doc)
-            
-            # If monthly subscription, create subscription record
-            if report_type == "premium_monthly":
-                subscription = UserSubscription(
-                    user_email=user_email,
-                    subscription_type="premium_monthly",
-                    status="active",
-                    stripe_subscription_id=payment_intent_id,
-                    expires_at=datetime.now(timezone.utc) + timedelta(days=30)
-                )
-                
-                sub_doc = subscription.model_dump()
-                sub_doc['created_at'] = sub_doc['created_at'].isoformat()
-                sub_doc['expires_at'] = sub_doc['expires_at'].isoformat()
-                await db.subscriptions.insert_one(sub_doc)
-            
-            return {"status": "success", "message": "Payment confirmed (Demo mode)", "demo_mode": True}
-        else:
-            # Real Stripe mode
-            intent = stripe.PaymentIntent.retrieve(payment_intent_id)
-            
-            if intent.status == "succeeded":
-                payment = Payment(
-                    user_email=user_email,
-                    report_type=report_type,
-                    report_id=report_id,
-                    amount=intent.amount / 100,
-                    stripe_payment_id=payment_intent_id,
-                    status="completed"
-                )
-                
-                doc = payment.model_dump()
-                doc['created_at'] = doc['created_at'].isoformat()
-                await db.payments.insert_one(doc)
-                
-                if report_type == "premium_monthly":
-                    subscription = UserSubscription(
-                        user_email=user_email,
-                        subscription_type="premium_monthly",
-                        status="active",
-                        stripe_subscription_id=payment_intent_id,
-                        expires_at=datetime.now(timezone.utc) + timedelta(days=30)
-                    )
-                    
-                    sub_doc = subscription.model_dump()
-                    sub_doc['created_at'] = sub_doc['created_at'].isoformat()
-                    sub_doc['expires_at'] = sub_doc['expires_at'].isoformat()
-                    await db.subscriptions.insert_one(sub_doc)
-                
-                return {"status": "success", "message": "Payment confirmed", "demo_mode": False}
-            else:
-                return {"status": "pending", "message": "Payment pending"}
-            
+            sub_doc = subscription.model_dump()
+            sub_doc['created_at'] = sub_doc['created_at'].isoformat()
+            sub_doc['expires_at'] = sub_doc['expires_at'].isoformat()
+            await db.subscriptions.insert_one(sub_doc)
+        
+        return {
+            "status": "success",
+            "message": "Payment verified successfully",
+            "payment_id": razorpay_payment_id
+        }
+        
+    except razorpay.errors.SignatureVerificationError:
+        logging.error("Payment signature verification failed")
+        await db.payments.update_one(
+            {"razorpay_order_id": razorpay_order_id},
+            {"$set": {"status": "failed"}}
+        )
+        raise HTTPException(status_code=400, detail="Payment verification failed")
     except Exception as e:
-        logging.error(f"Payment confirmation error: {str(e)}")
-        raise HTTPException(status_code=500, detail="Payment confirmation failed")
+        logging.error(f"Payment verification error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Payment verification failed")
 
 @api_router.get("/premium/check")
 async def check_premium(user_email: str, report_type: str, report_id: str):
