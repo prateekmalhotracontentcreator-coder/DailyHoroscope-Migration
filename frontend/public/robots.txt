@@ -1,0 +1,16 @@
+# Cosmic Wisdom Horoscope App
+# https://cosmicwisdom.emergentagent.com
+
+User-agent: *
+Allow: /
+Allow: /horoscope/
+Allow: /blog/
+
+# Disallow admin and auth pages
+Disallow: /admin/
+Disallow: /login
+Disallow: /register
+Disallow: /auth/
+
+# Sitemap location
+Sitemap: https://cosmicwisdom.emergentagent.com/sitemap.xml
