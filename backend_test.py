@@ -422,7 +422,8 @@ class HoroscopeAPITester:
 
 def main():
     print("🔮 Starting Daily Horoscope API Tests")
-    print("=" * 50)
+    print("🆕 Including NEW Birth Chart & Kundali Milan Features")
+    print("=" * 60)
     
     tester = HoroscopeAPITester()
     
@@ -452,21 +453,48 @@ def main():
     print("\n📌 Testing horoscope caching...")
     tester.test_horoscope_caching(test_sign, "daily")
     
-    # Test 5: Error handling
-    print("\n📌 Testing error handling...")
+    # Test 5: Error handling for horoscopes
+    print("\n📌 Testing horoscope error handling...")
     tester.test_invalid_sign()
     tester.test_invalid_type()
     
+    # TEST 6: NEW BIRTH CHART FEATURES
+    print("\n📌 Testing NEW Birth Chart Features...")
+    print("   Creating birth profile...")
+    birth_profile_works = tester.test_birth_profile_creation()
+    
+    if birth_profile_works:
+        print("   Testing profile retrieval...")
+        tester.test_birth_profile_retrieval()
+        
+        print("   Testing birth chart generation with GPT-5.2...")
+        tester.test_birth_chart_generation()
+        
+        print("   Testing profiles list...")
+        tester.test_birth_profiles_list()
+    else:
+        print("   ❌ Skipping birth chart tests due to profile creation failure")
+    
+    # TEST 7: NEW KUNDALI MILAN FEATURES  
+    print("\n📌 Testing NEW Kundali Milan Features...")
+    print("   Testing compatibility analysis with GPT-5.2...")
+    tester.test_kundali_milan_generation()
+    
     # Results
-    print("\n" + "=" * 50)
+    print("\n" + "=" * 60)
     success_rate = (tester.tests_passed / tester.tests_run) * 100
     print(f"📊 Final Results: {tester.tests_passed}/{tester.tests_run} tests passed ({success_rate:.1f}%)")
     
+    # Feature breakdown
+    if tester.profile_ids:
+        print(f"🆕 New Features: Created {len(tester.profile_ids)} birth profiles for testing")
+    
     if tester.tests_passed == tester.tests_run:
-        print("🎉 All backend tests passed! API is working correctly.")
+        print("🎉 All backend tests passed! API with new features is working correctly.")
         return 0
     else:
-        print("⚠️ Some tests failed. Check the details above.")
+        failed_count = tester.tests_run - tester.tests_passed
+        print(f"⚠️ {failed_count} test(s) failed. Check the details above.")
         return 1
 
 if __name__ == "__main__":
