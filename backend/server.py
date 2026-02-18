@@ -1006,6 +1006,32 @@ async def admin_logout(request: Request, response: Response):
     response.delete_cookie("admin_session", path="/")
     return {"message": "Logged out successfully"}
 
+@api_router.post("/admin/change-password")
+async def change_admin_password(request: Request, password_request: ChangePasswordRequest):
+    """Change admin password"""
+    
+    await require_admin(request, db)
+    
+    # Verify current password
+    if not verify_admin_password(password_request.current_password):
+        raise HTTPException(status_code=400, detail="Current password is incorrect")
+    
+    # Validate new password
+    if len(password_request.new_password) < 8:
+        raise HTTPException(status_code=400, detail="New password must be at least 8 characters")
+    
+    # Update password in memory
+    update_admin_password(password_request.new_password)
+    
+    # Store in database for persistence across restarts
+    await db.admin_settings.update_one(
+        {"key": "admin_password_hash"},
+        {"$set": {"value": password_request.new_password, "updated_at": datetime.now(timezone.utc).isoformat()}},
+        upsert=True
+    )
+    
+    return {"success": True, "message": "Password changed successfully"}
+
 @api_router.get("/admin/verify")
 async def verify_admin(request: Request):
     """Verify admin session is valid"""
