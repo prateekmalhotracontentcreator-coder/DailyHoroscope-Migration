@@ -571,7 +571,7 @@ async def check_premium_access(user_email: str, report_type: str, report_id: str
 # Payment Endpoints
 @api_router.post("/payment/create-intent")
 async def create_payment_intent(request: PaymentIntentRequest):
-    """Create Stripe payment intent for premium features"""
+    """Create payment intent for premium features (Demo mode with test key)"""
     
     try:
         # Validate report type
@@ -580,30 +580,49 @@ async def create_payment_intent(request: PaymentIntentRequest):
         
         amount_cents = int(PRICING[request.report_type] * 100)
         
-        # Create Stripe payment intent with error handling
-        try:
-            intent = stripe.PaymentIntent.create(
-                amount=amount_cents,
-                currency="usd",
-                metadata={
-                    "report_type": request.report_type,
-                    "report_id": request.report_id or "",
-                    "user_email": request.user_email
-                },
-                payment_method_types=["card"]
-            )
+        # Check if using demo/test key
+        is_demo_mode = stripe.api_key == "sk_test_emergent"
+        
+        if is_demo_mode:
+            # Demo mode: Return simulated payment intent
+            import uuid
+            demo_intent_id = f"pi_demo_{uuid.uuid4().hex[:16]}"
+            demo_client_secret = f"{demo_intent_id}_secret_{uuid.uuid4().hex[:24]}"
+            
+            logging.info(f"Demo payment mode: Generated simulated payment intent for {request.user_email}")
             
             return {
-                "client_secret": intent.client_secret,
+                "client_secret": demo_client_secret,
                 "amount": PRICING[request.report_type],
-                "payment_intent_id": intent.id
+                "payment_intent_id": demo_intent_id,
+                "demo_mode": True
             }
-        except stripe.error.StripeError as stripe_error:
-            logging.error(f"Stripe API error: {str(stripe_error)}")
-            raise HTTPException(
-                status_code=503, 
-                detail=f"Payment service unavailable: {str(stripe_error)}"
-            )
+        else:
+            # Real Stripe mode
+            try:
+                intent = stripe.PaymentIntent.create(
+                    amount=amount_cents,
+                    currency="usd",
+                    metadata={
+                        "report_type": request.report_type,
+                        "report_id": request.report_id or "",
+                        "user_email": request.user_email
+                    },
+                    payment_method_types=["card"]
+                )
+                
+                return {
+                    "client_secret": intent.client_secret,
+                    "amount": PRICING[request.report_type],
+                    "payment_intent_id": intent.id,
+                    "demo_mode": False
+                }
+            except stripe.error.StripeError as stripe_error:
+                logging.error(f"Stripe API error: {str(stripe_error)}")
+                raise HTTPException(
+                    status_code=503, 
+                    detail=f"Payment service unavailable: {str(stripe_error)}"
+                )
             
     except HTTPException:
         raise
