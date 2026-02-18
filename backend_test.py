@@ -203,6 +203,223 @@ class HoroscopeAPITester:
             self.log_test("Invalid type handling", False, f"Error: {str(e)}")
             return False
 
+    def test_birth_profile_creation(self):
+        """Test birth profile creation"""
+        try:
+            test_profile = {
+                "name": "John Doe",
+                "date_of_birth": "1990-05-15",
+                "time_of_birth": "14:30",
+                "location": "New York, NY, USA"
+            }
+            
+            response = requests.post(f"{self.base_url}/profile/birth", json=test_profile, timeout=15)
+            success = response.status_code == 200
+            
+            if success:
+                profile = response.json()
+                required_fields = ['id', 'name', 'date_of_birth', 'time_of_birth', 'location', 'created_at']
+                fields_valid = all(field in profile for field in required_fields)
+                
+                data_valid = (
+                    profile.get('name') == test_profile['name'] and
+                    profile.get('date_of_birth') == test_profile['date_of_birth'] and
+                    profile.get('location') == test_profile['location']
+                )
+                
+                success = fields_valid and data_valid
+                if success:
+                    self.profile_ids.append(profile['id'])
+                    print(f"   Created profile ID: {profile['id']}")
+                
+                details = f"Fields valid: {fields_valid}, Data valid: {data_valid}"
+            else:
+                details = "Failed to create birth profile"
+            
+            self.log_test(
+                "Birth profile creation (/api/profile/birth)",
+                success,
+                details,
+                200,
+                response.status_code
+            )
+            return success
+        except Exception as e:
+            self.log_test("Birth profile creation", False, f"Error: {str(e)}")
+            return False
+
+    def test_birth_profile_retrieval(self):
+        """Test birth profile retrieval"""
+        if not self.profile_ids:
+            self.log_test("Birth profile retrieval", False, "No profile ID available for testing")
+            return False
+        
+        try:
+            profile_id = self.profile_ids[0]
+            response = requests.get(f"{self.base_url}/profile/birth/{profile_id}", timeout=10)
+            success = response.status_code == 200
+            
+            if success:
+                profile = response.json()
+                required_fields = ['id', 'name', 'date_of_birth', 'time_of_birth', 'location']
+                fields_valid = all(field in profile for field in required_fields)
+                
+                id_match = profile.get('id') == profile_id
+                success = fields_valid and id_match
+                details = f"Fields valid: {fields_valid}, ID match: {id_match}"
+            else:
+                details = "Failed to retrieve birth profile"
+            
+            self.log_test(
+                "Birth profile retrieval",
+                success,
+                details,
+                200,
+                response.status_code
+            )
+            return success
+        except Exception as e:
+            self.log_test("Birth profile retrieval", False, f"Error: {str(e)}")
+            return False
+
+    def test_birth_chart_generation(self):
+        """Test birth chart generation with GPT-5.2"""
+        if not self.profile_ids:
+            self.log_test("Birth chart generation", False, "No profile ID available for testing")
+            return False
+        
+        try:
+            profile_id = self.profile_ids[0]
+            payload = {"profile_id": profile_id}
+            
+            response = requests.post(f"{self.base_url}/birthchart/generate", json=payload, timeout=90)
+            success = response.status_code == 200
+            
+            if success:
+                chart = response.json()
+                required_fields = ['id', 'profile_id', 'report_content', 'generated_at']
+                fields_valid = all(field in chart for field in required_fields)
+                
+                profile_match = chart.get('profile_id') == profile_id
+                content_valid = len(chart.get('report_content', '')) > 200  # Should be comprehensive
+                
+                success = fields_valid and profile_match and content_valid
+                details = f"Fields valid: {fields_valid}, Content length: {len(chart.get('report_content', ''))}"
+                
+                # Print preview of birth chart content
+                content_preview = chart.get('report_content', '')[:150] + "..." if chart.get('report_content', '') else "No content"
+                print(f"   Birth chart preview: {content_preview}")
+            else:
+                details = f"Failed to generate birth chart. Response: {response.text[:200]}"
+            
+            self.log_test(
+                "Birth chart generation (/api/birthchart/generate)",
+                success,
+                details,
+                200,
+                response.status_code
+            )
+            return success
+        except Exception as e:
+            self.log_test("Birth chart generation", False, f"Error: {str(e)}")
+            return False
+
+    def test_kundali_milan_generation(self):
+        """Test Kundali Milan (compatibility) generation with GPT-5.2"""
+        try:
+            # Create second profile for compatibility test
+            test_profile2 = {
+                "name": "Jane Smith",
+                "date_of_birth": "1992-08-20",
+                "time_of_birth": "10:45",
+                "location": "Los Angeles, CA, USA"
+            }
+            
+            response2 = requests.post(f"{self.base_url}/profile/birth", json=test_profile2, timeout=15)
+            if response2.status_code != 200:
+                self.log_test("Kundali Milan generation", False, "Failed to create second profile for compatibility test")
+                return False
+            
+            profile2 = response2.json()
+            self.profile_ids.append(profile2['id'])
+            print(f"   Created second profile ID: {profile2['id']}")
+            
+            if len(self.profile_ids) < 2:
+                self.log_test("Kundali Milan generation", False, "Need at least 2 profiles for compatibility test")
+                return False
+            
+            # Generate Kundali Milan report
+            payload = {
+                "person1_id": self.profile_ids[0],
+                "person2_id": self.profile_ids[1]
+            }
+            
+            response = requests.post(f"{self.base_url}/kundali-milan/generate", json=payload, timeout=120)
+            success = response.status_code == 200
+            
+            if success:
+                report = response.json()
+                required_fields = ['id', 'person1_id', 'person2_id', 'compatibility_score', 'detailed_analysis', 'generated_at']
+                fields_valid = all(field in report for field in required_fields)
+                
+                profile_match = (
+                    report.get('person1_id') == self.profile_ids[0] and
+                    report.get('person2_id') == self.profile_ids[1]
+                )
+                
+                score_valid = 0 <= report.get('compatibility_score', -1) <= 36  # Ashtakoot system (0-36)
+                content_valid = len(report.get('detailed_analysis', '')) > 300  # Should be detailed
+                
+                success = fields_valid and profile_match and score_valid and content_valid
+                score = report.get('compatibility_score', 0)
+                details = f"Compatibility score: {score}/36, Content length: {len(report.get('detailed_analysis', ''))}"
+                
+                # Print preview of compatibility analysis
+                analysis_preview = report.get('detailed_analysis', '')[:150] + "..." if report.get('detailed_analysis', '') else "No analysis"
+                print(f"   Compatibility preview: {analysis_preview}")
+            else:
+                details = f"Failed to generate Kundali Milan report. Response: {response.text[:200]}"
+            
+            self.log_test(
+                "Kundali Milan generation (/api/kundali-milan/generate)",
+                success,
+                details,
+                200,
+                response.status_code
+            )
+            return success
+        except Exception as e:
+            self.log_test("Kundali Milan generation", False, f"Error: {str(e)}")
+            return False
+
+    def test_birth_profiles_list(self):
+        """Test listing all birth profiles"""
+        try:
+            response = requests.get(f"{self.base_url}/profile/birth", timeout=10)
+            success = response.status_code == 200
+            
+            if success:
+                profiles = response.json()
+                is_list = isinstance(profiles, list)
+                has_profiles = len(profiles) >= len(self.profile_ids)  # Should have at least our test profiles
+                
+                success = is_list and has_profiles
+                details = f"Found {len(profiles)} profiles, Expected at least: {len(self.profile_ids)}"
+            else:
+                details = "Failed to list birth profiles"
+            
+            self.log_test(
+                "Birth profiles list (/api/profile/birth)",
+                success,
+                details,
+                200,
+                response.status_code
+            )
+            return success
+        except Exception as e:
+            self.log_test("Birth profiles list", False, f"Error: {str(e)}")
+            return False
+
 def main():
     print("🔮 Starting Daily Horoscope API Tests")
     print("=" * 50)
