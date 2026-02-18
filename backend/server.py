@@ -790,6 +790,121 @@ async def get_shared_report(token: str):
     
     raise HTTPException(status_code=400, detail="Invalid report type")
 
+# Authentication Endpoints
+@api_router.post("/auth/register")
+async def register(request: RegisterRequest, response: Response):
+    """Register new user with email/password"""
+    
+    # Check if user exists
+    existing = await db.users.find_one({"email": request.email})
+    if existing:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    
+    # Create user
+    user = User(
+        email=request.email,
+        name=request.name,
+        password_hash=hash_password(request.password)
+    )
+    
+    doc = user.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    await db.users.insert_one(doc)
+    
+    # Create session
+    session_token = await create_session(db, user.user_id)
+    set_session_cookie(response, session_token)
+    
+    return UserResponse(
+        user_id=user.user_id,
+        email=user.email,
+        name=user.name,
+        picture=user.picture
+    )
+
+@api_router.post("/auth/login")
+async def login(request: LoginRequest, response: Response):
+    """Login with email/password"""
+    
+    user_doc = await db.users.find_one({"email": request.email}, {"_id": 0})
+    
+    if not user_doc:
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    
+    if not user_doc.get('password_hash'):
+        raise HTTPException(status_code=401, detail="Please login with Google")
+    
+    if not verify_password(request.password, user_doc['password_hash']):
+        raise HTTPException(status_code=401, detail="Invalid email or password")
+    
+    # Create session
+    session_token = await create_session(db, user_doc['user_id'])
+    set_session_cookie(response, session_token)
+    
+    return UserResponse(
+        user_id=user_doc['user_id'],
+        email=user_doc['email'],
+        name=user_doc['name'],
+        picture=user_doc.get('picture')
+    )
+
+@api_router.get("/auth/me")
+async def get_me(request: Request):
+    """Get current authenticated user"""
+    
+    user = await get_current_user(request, db)
+    
+    if not user:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    
+    return user
+
+@api_router.post("/auth/logout")
+async def logout(request: Request, response: Response):
+    """Logout user"""
+    
+    session_token = request.cookies.get("session_token")
+    
+    if session_token:
+        await db.user_sessions.delete_one({"session_token": session_token})
+    
+    response.delete_cookie("session_token", path="/")
+    return {"message": "Logged out successfully"}
+
+@api_router.post("/auth/oauth/callback")
+async def oauth_callback(session_id: str, response: Response):
+    """Handle Emergent Google OAuth callback"""
+    
+    # REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
+    
+    try:
+        # Exchange session_id for user data
+        user_data = await exchange_session_id_for_token(session_id)
+        
+        # Get or create user
+        user = await get_or_create_oauth_user(
+            db,
+            email=user_data['email'],
+            name=user_data['name'],
+            picture=user_data.get('picture'),
+            google_id=user_data['id']
+        )
+        
+        # Create session
+        session_token = await create_session(db, user.user_id)
+        set_session_cookie(response, session_token)
+        
+        return UserResponse(
+            user_id=user.user_id,
+            email=user.email,
+            name=user.name,
+            picture=user.picture
+        )
+        
+    except Exception as e:
+        logging.error(f"OAuth callback error: {str(e)}")
+        raise HTTPException(status_code=401, detail="Authentication failed")
+
 # Include the router in the main app
 app.include_router(api_router)
 
