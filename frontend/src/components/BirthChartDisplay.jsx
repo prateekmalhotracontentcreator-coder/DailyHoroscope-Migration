@@ -46,25 +46,19 @@ export const BirthChartDisplay = ({ report, isLoading, profile }) => {
   };
 
   const handleDownloadPDF = async () => {
-    const userEmail = localStorage.getItem('user_email');
-    if (!userEmail) {
-      toast.error('Please complete payment first');
-      return;
-    }
-
     try {
       const response = await axios.get(`${API}/birthchart/${profile.id}/pdf`, {
-        params: { user_email: userEmail },
         responseType: 'blob'
       });
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', `birth_chart_${profile.name.replace(' ', '_')}.pdf`);
+      link.setAttribute('download', `birth_chart_${profile.name.replace(/ /g, '_')}.pdf`);
       document.body.appendChild(link);
       link.click();
       link.remove();
+      window.URL.revokeObjectURL(url);
       
       toast.success('PDF downloaded successfully!');
     } catch (error) {
