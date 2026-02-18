@@ -46,15 +46,8 @@ export const KundaliMilanDisplay = ({ report, isLoading, person1, person2 }) => 
   };
 
   const handleDownloadPDF = async () => {
-    const userEmail = localStorage.getItem('user_email');
-    if (!userEmail) {
-      toast.error('Please complete payment first');
-      return;
-    }
-
     try {
       const response = await axios.get(`${API}/kundali-milan/${report.id}/pdf`, {
-        params: { user_email: userEmail },
         responseType: 'blob'
       });
 
@@ -65,6 +58,7 @@ export const KundaliMilanDisplay = ({ report, isLoading, person1, person2 }) => 
       document.body.appendChild(link);
       link.click();
       link.remove();
+      window.URL.revokeObjectURL(url);
       
       toast.success('PDF downloaded successfully!');
     } catch (error) {
