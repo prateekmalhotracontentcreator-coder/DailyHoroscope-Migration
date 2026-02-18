@@ -69,24 +69,7 @@ export const Home = () => {
             </div>
             
             <div className="flex items-center space-x-4">
-              {user && (
-                <>
-                  <div className="text-right hidden sm:block">
-                    <p className="text-sm font-semibold">{user.name}</p>
-                    <p className="text-xs text-muted-foreground">{user.email}</p>
-                  </div>
-                  <Button
-                    data-testid="logout-btn"
-                    onClick={handleLogout}
-                    variant="ghost"
-                    size="sm"
-                    className="hover:bg-muted"
-                  >
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Logout
-                  </Button>
-                </>
-              )}
+              <UserAccountMenu />
             </div>
           </div>
         </div>
