@@ -26,9 +26,15 @@ export const Dashboard = () => {
   const [loading, setLoading] = useState({
     daily: false,
     weekly: false,
-    monthly: false
+    monthly: false,
+    birthChart: false,
+    kundaliMilan: false
   });
   const [activeTab, setActiveTab] = useState('daily');
+  const [birthProfile, setBirthProfile] = useState(null);
+  const [birthChart, setBirthChart] = useState(null);
+  const [kundaliMilan, setKundaliMilan] = useState(null);
+  const [savedProfiles, setSavedProfiles] = useState([]);
 
   useEffect(() => {
     const savedSign = localStorage.getItem('selected-sign');
