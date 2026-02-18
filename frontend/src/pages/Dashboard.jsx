@@ -208,27 +208,41 @@ export const Dashboard = () => {
 
         {/* Horoscope Tabs */}
         <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8 bg-muted p-1 rounded-sm h-auto">
+          <TabsList className="grid w-full grid-cols-5 mb-8 bg-muted p-1 rounded-sm h-auto">
             <TabsTrigger
               data-testid="tab-daily"
               value="daily"
-              className="py-3 text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
             >
               Daily
             </TabsTrigger>
             <TabsTrigger
               data-testid="tab-weekly"
               value="weekly"
-              className="py-3 text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
             >
               Weekly
             </TabsTrigger>
             <TabsTrigger
               data-testid="tab-monthly"
               value="monthly"
-              className="py-3 text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
             >
               Monthly
+            </TabsTrigger>
+            <TabsTrigger
+              data-testid="tab-birthchart"
+              value="birthchart"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+            >
+              Birth Chart
+            </TabsTrigger>
+            <TabsTrigger
+              data-testid="tab-kundali"
+              value="kundali"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+            >
+              Kundali Milan
             </TabsTrigger>
           </TabsList>
 
