@@ -160,6 +160,71 @@ class BlogPostUpdate(BaseModel):
     featured_image: str = None
     published: bool = None
 
+# Brihat Kundli Pro Models
+class BrihatKundliRequest(BaseModel):
+    full_name: str
+    date_of_birth: str  # YYYY-MM-DD format
+    time_of_birth: str  # HH:MM format (24hr)
+    place_of_birth: str
+    gender: str  # male/female
+    current_city: str = ""
+    marital_status: str = ""  # single/married/divorced/widowed
+
+class BrihatKundliReport(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_email: str
+    full_name: str
+    date_of_birth: str
+    time_of_birth: str
+    place_of_birth: str
+    gender: str
+    
+    # Core Astrological Data
+    ascendant: dict = {}  # sign, degree, characteristics
+    moon_sign: dict = {}  # sign, nakshatra, pada
+    sun_sign: dict = {}
+    planetary_positions: list = []  # [{planet, sign, house, degree, status}]
+    
+    # Life Predictions (structured)
+    career_prediction: dict = {}
+    love_prediction: dict = {}
+    health_prediction: dict = {}
+    wealth_prediction: dict = {}
+    family_prediction: dict = {}
+    education_prediction: dict = {}
+    
+    # Dasha Periods with Calendar Years
+    current_dasha: dict = {}
+    dasha_timeline: list = []  # [{dasha, start_year, end_year, predictions}]
+    
+    # Doshas
+    mangal_dosha: dict = {}
+    kalsarp_dosha: dict = {}
+    other_doshas: list = []
+    
+    # Yogas
+    benefic_yogas: list = []
+    malefic_yogas: list = []
+    
+    # Remedies
+    gemstone_remedies: list = []
+    mantra_remedies: list = []
+    lifestyle_remedies: list = []
+    donation_remedies: list = []
+    
+    # Lucky Elements
+    lucky_numbers: list = []
+    lucky_colors: list = []
+    lucky_days: list = []
+    lucky_direction: str = ""
+    
+    # Numerology
+    numerology: dict = {}
+    
+    generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
 class KundaliMilanReport(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
