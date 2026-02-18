@@ -14,6 +14,9 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 ADMIN_USERNAME = os.environ.get('ADMIN_USERNAME', 'admin')
 ADMIN_PASSWORD_HASH = pwd_context.hash(os.environ.get('ADMIN_PASSWORD', 'CosmicAdmin2024!'))
 
+# Store password hash in memory (can be updated at runtime)
+_current_password_hash = ADMIN_PASSWORD_HASH
+
 # Models
 class AdminSession(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -31,6 +34,10 @@ class AdminLoginResponse(BaseModel):
     success: bool
     token: str
     message: str
+
+class ChangePasswordRequest(BaseModel):
+    current_password: str
+    new_password: str
 
 class DashboardStats(BaseModel):
     total_users: int
@@ -64,7 +71,17 @@ class PaymentListItem(BaseModel):
 # Helper Functions
 def verify_admin_password(password: str) -> bool:
     """Verify admin password"""
-    return pwd_context.verify(password, ADMIN_PASSWORD_HASH)
+    global _current_password_hash
+    return pwd_context.verify(password, _current_password_hash)
+
+def update_admin_password(new_password: str):
+    """Update admin password hash in memory"""
+    global _current_password_hash
+    _current_password_hash = pwd_context.hash(new_password)
+
+def hash_new_password(password: str) -> str:
+    """Hash a new password"""
+    return pwd_context.hash(password)
 
 async def create_admin_session(db: AsyncIOMotorDatabase) -> str:
     """Create a new admin session"""
