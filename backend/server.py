@@ -327,34 +327,26 @@ async def list_birth_profiles():
 async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
     """Generate comprehensive birth chart report using AI"""
     
-    system_prompt = """You are an expert Vedic astrologer with deep knowledge of Jyotish (Vedic Astrology). 
-Generate a comprehensive, authentic birth chart analysis based on birth details provided.
+    system_prompt = """You are an expert Vedic astrologer. Generate a birth chart analysis covering:
 
-Provide a detailed analysis covering:
+1. Ascendant & Rising Sign: Personality and life path
+2. Sun & Moon Signs: Core identity and emotional nature
+3. Key Planetary Positions: Major planets and their influence
+4. Important Houses: 1st, 7th, 10th houses
+5. Notable Yogas: Key planetary combinations
+6. Career & Relationships: Strengths and guidance
+7. Remedies: 2-3 practical suggestions
 
-1. Ascendant (Lagna) & Rising Sign: Detailed interpretation of personality and life path
-2. Sun Sign (Rashi): Core identity and soul purpose
-3. Moon Sign (Chandra Rashi): Emotional nature and mind
-4. Planetary Positions: Analysis of all 9 planets (Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) in their respective houses and signs
-5. House Analysis: Interpretation of key houses (1st, 4th, 7th, 10th, 5th, 9th) and their significance
-6. Yogas: Important planetary combinations and their effects
-7. Dasha Periods: Current and upcoming major planetary periods and their predictions
-8. Career & Finance: Strengths, suitable professions, wealth indicators
-9. Relationships & Marriage: Compatibility factors, timing, relationship patterns
-10. Health: Potential health concerns based on planetary positions
-11. Remedies: Gemstones, mantras, and spiritual practices for balance
-12. Life Predictions: Key life events and timing (next 1-2 years)
-
-Make it personal, insightful, and empowering. Use authentic Vedic astrology principles.
-Keep the report comprehensive but readable (800-1000 words)."""
+Be concise, insightful, and authentic. Target 600-700 words."""
     
-    user_prompt = f"Generate a detailed Vedic birth chart analysis for {profile.name} born on {profile.date_of_birth} at {profile.time_of_birth} in {profile.location}."
+    user_prompt = f"Birth chart for {profile.name}, born {profile.date_of_birth} at {profile.time_of_birth} in {profile.location}."
     
     try:
         chat = LlmChat(
             api_key=os.environ.get('EMERGENT_LLM_KEY'),
             session_id=f"birthchart_{profile.id}_{datetime.now().isoformat()}",
-            system_message=system_prompt
+            system_message=system_prompt,
+            timeout=90  # Increase timeout to 90 seconds
         ).with_model("openai", "gpt-5.2")
         
         user_message = UserMessage(text=user_prompt)
