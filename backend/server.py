@@ -345,8 +345,7 @@ Be concise, insightful, and authentic. Target 600-700 words."""
         chat = LlmChat(
             api_key=os.environ.get('EMERGENT_LLM_KEY'),
             session_id=f"birthchart_{profile.id}_{datetime.now().isoformat()}",
-            system_message=system_prompt,
-            timeout=90  # Increase timeout to 90 seconds
+            system_message=system_prompt
         ).with_model("openai", "gpt-5.2")
         
         user_message = UserMessage(text=user_prompt)
