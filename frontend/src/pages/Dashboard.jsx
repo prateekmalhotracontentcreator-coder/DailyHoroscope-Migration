@@ -272,6 +272,67 @@ export const Dashboard = () => {
               type="monthly"
             />
           </TabsContent>
+
+          <TabsContent value="birthchart" data-testid="content-birthchart">
+            <div className="space-y-6">
+              {!birthProfile ? (
+                <BirthDetailsForm
+                  onSubmit={handleBirthDetailsSubmit}
+                  isLoading={loading.birthChart}
+                />
+              ) : (
+                <>
+                  <BirthDetailsForm
+                    existingProfile={birthProfile}
+                    isLoading={false}
+                  />
+                  {!birthChart && (
+                    <Button
+                      data-testid="generate-birthchart"
+                      onClick={handleGenerateBirthChart}
+                      disabled={loading.birthChart}
+                      className="w-full h-12 text-base font-semibold bg-primary hover:bg-gold hover:text-primary-foreground transition-all duration-300"
+                    >
+                      {loading.birthChart ? 'Generating...' : 'Generate Birth Chart'}
+                    </Button>
+                  )}
+                  <BirthChartDisplay
+                    report={birthChart}
+                    isLoading={loading.birthChart}
+                    profile={birthProfile}
+                  />
+                </>
+              )}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="kundali" data-testid="content-kundali">
+            <div className="space-y-6">
+              {!kundaliMilan ? (
+                <KundaliMilanForm
+                  onSubmit={handleKundaliMilanSubmit}
+                  isLoading={loading.kundaliMilan}
+                />
+              ) : (
+                <>
+                  <KundaliMilanDisplay
+                    report={kundaliMilan.report}
+                    person1={kundaliMilan.person1}
+                    person2={kundaliMilan.person2}
+                    isLoading={loading.kundaliMilan}
+                  />
+                  <Button
+                    data-testid="new-kundali-milan"
+                    onClick={() => setKundaliMilan(null)}
+                    variant="outline"
+                    className="w-full h-12 text-base font-semibold border-gold hover:bg-gold hover:text-primary-foreground transition-all duration-300"
+                  >
+                    Check Another Compatibility
+                  </Button>
+                </>
+              )}
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
     </div>
