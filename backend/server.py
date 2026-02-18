@@ -18,6 +18,16 @@ import secrets
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
+# Stripe configuration
+stripe.api_key = os.environ.get('STRIPE_API_KEY', 'sk_test_emergent')
+
+# Pricing
+PRICING = {
+    "birth_chart": 9.99,
+    "kundali_milan": 14.99,
+    "premium_monthly": 19.99
+}
+
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
