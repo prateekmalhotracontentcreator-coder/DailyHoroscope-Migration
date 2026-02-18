@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Backend API Tests for Daily Horoscope App
-Tests all API endpoints for functionality and GPT-5.2 integration
+Tests all API endpoints including new Birth Chart and Kundali Milan features with GPT-5.2 integration
 """
 
 import requests
@@ -15,6 +15,7 @@ class HoroscopeAPITester:
         self.tests_run = 0
         self.tests_passed = 0
         self.test_results = []
+        self.profile_ids = []  # Store created profile IDs for testing
 
     def log_test(self, name, success, details="", expected_status=None, actual_status=None):
         """Log test result"""
