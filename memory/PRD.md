@@ -1,4 +1,9 @@
-# Daily Horoscope Prediction App - Product Requirements Document
+# Everyday Horoscope - Product Requirements Document
+
+## Domain & Branding
+- **Domain:** everydayhoroscope.in (3-year registration)
+- **Brand Name:** Everyday Horoscope
+- **Tagline:** Your Daily Dose of Cosmic Guidance
 
 ## Original Problem Statement
 Build a fully functional Daily Horoscope Prediction app with:
