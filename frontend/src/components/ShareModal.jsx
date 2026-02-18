@@ -50,7 +50,39 @@ export const ShareModal = ({ isOpen, onClose, reportType, reportId }) => {
 
   const shareToWhatsApp = () => {
     const text = `Check out my ${reportType === 'birth_chart' ? 'Birth Chart' : 'Kundali Milan'} analysis from Cosmic Wisdom!`;
-    window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + shareLink)}`, '_blank');
+    const message = `${text}\n\nView online: ${shareLink}\n\nYou can also download the PDF report from the link above.`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
+  const downloadAndSharePDF = async () => {
+    try {
+      toast.info('Generating PDF for sharing...');
+      
+      const endpoint = reportType === 'birth_chart' 
+        ? `${API}/birthchart/${reportId}/pdf`
+        : `${API}/kundali-milan/${reportId}/pdf`;
+      
+      const response = await axios.get(endpoint, {
+        responseType: 'blob'
+      });
+
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      const filename = reportType === 'birth_chart' 
+        ? `birth_chart_report.pdf`
+        : `kundali_milan_report.pdf`;
+      link.setAttribute('download', filename);
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+      
+      toast.success('PDF downloaded! You can now share it via WhatsApp from your device.');
+    } catch (error) {
+      console.error('PDF download error:', error);
+      toast.error('Failed to download PDF for sharing.');
+    }
   };
 
   const shareToTwitter = () => {
