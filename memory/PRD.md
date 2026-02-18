@@ -13,6 +13,17 @@ Build a fully functional Daily Horoscope Prediction app with:
 - Google OAuth authentication
 - User account section with profile and plan details
 
+## User Flow (Updated)
+**🔓 Public Access (No Login Required):**
+- Home page with all feature cards
+- Daily Horoscope
+- Weekly Horoscope  
+- Monthly Horoscope
+
+**🔐 Login Required (Premium Only):**
+- Birth Chart Analysis
+- Kundali Milan
+
 ## Tech Stack
 - **Frontend:** React, react-router-dom, Tailwind CSS, Shadcn/UI, lucide-react
 - **Backend:** FastAPI, Pydantic, Python-Jose (JWT)
@@ -32,12 +43,13 @@ Build a fully functional Daily Horoscope Prediction app with:
 - [x] Share reports feature
 - [x] Light/Dark theme toggle with gold color palette
 - [x] Multi-page application structure with protected routes
+- [x] **Public/Premium user flow** - Horoscopes free, premium features require login
 
 ### Authentication (Completed)
 - [x] Google OAuth 2.0 login flow
 - [x] Email/password registration and login
 - [x] JWT-based session management
-- [x] Protected routes for authenticated users
+- [x] Protected routes for premium features only
 
 ### Payments (Completed)
 - [x] Razorpay integration with test credentials
@@ -48,7 +60,8 @@ Build a fully functional Daily Horoscope Prediction app with:
 - [x] Premium access check endpoint
 
 ### UI/UX (Completed)
-- [x] Home page with feature cards
+- [x] Home page with feature cards (public)
+- [x] Shared Header component with conditional Sign In / User Menu
 - [x] User account dropdown menu showing plan details
 - [x] Zodiac sign selection interface
 - [x] Report display components
