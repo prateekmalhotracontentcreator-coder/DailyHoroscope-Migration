@@ -524,6 +524,326 @@ async def get_birth_chart(profile_id: str):
     
     return BirthChartReport(**report)
 
+# ============== BRIHAT KUNDLI PRO ==============
+
+async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
+    """Generate comprehensive Brihat Kundli Pro report using AI"""
+    
+    current_year = datetime.now().year
+    birth_year = int(request.date_of_birth.split('-')[0])
+    age = current_year - birth_year
+    
+    system_prompt = """You are an expert Vedic astrologer creating a premium Brihat Kundli report.
+Generate a COMPREHENSIVE, STRUCTURED astrological analysis. 
+
+CRITICAL FORMATTING RULES:
+- NO paragraphs - use ONLY bullet points, lists, and structured data
+- Every section must have clear headers
+- Use specific calendar years for all predictions (based on current year and dasha periods)
+- Be SHARP, CRISP, and ACTIONABLE - no fluff
+- Provide SPECIFIC remedies that can be implemented immediately
+
+Return a VALID JSON object with this EXACT structure:"""
+
+    user_prompt = f"""Generate a premium Brihat Kundli report for:
+
+**Birth Details:**
+- Name: {request.full_name}
+- Date of Birth: {request.date_of_birth}
+- Time of Birth: {request.time_of_birth}
+- Place: {request.place_of_birth}
+- Gender: {request.gender}
+- Current Age: {age} years
+- Current Year: {current_year}
+{f"- Marital Status: {request.marital_status}" if request.marital_status else ""}
+
+Return a JSON object with this EXACT structure (all arrays must have bullet-point style items):
+
+{{
+    "ascendant": {{
+        "sign": "Sign name",
+        "degree": "Degree",
+        "lord": "Ruling planet",
+        "element": "Fire/Earth/Air/Water",
+        "quality": "Cardinal/Fixed/Mutable",
+        "key_traits": ["trait1", "trait2", "trait3"],
+        "strengths": ["strength1", "strength2"],
+        "challenges": ["challenge1", "challenge2"]
+    }},
+    "moon_sign": {{
+        "sign": "Sign name",
+        "nakshatra": "Nakshatra name",
+        "nakshatra_pada": "1/2/3/4",
+        "nakshatra_lord": "Planet",
+        "emotional_nature": ["point1", "point2"],
+        "mental_tendencies": ["point1", "point2"]
+    }},
+    "sun_sign": {{
+        "sign": "Sign name",
+        "core_identity": ["point1", "point2"],
+        "life_purpose": ["point1", "point2"]
+    }},
+    "planetary_positions": [
+        {{"planet": "Sun", "sign": "Sign", "house": 1, "degree": "15°23'", "status": "Exalted/Debilitated/Own/Friendly/Neutral/Enemy", "strength": "Strong/Medium/Weak", "effects": ["effect1", "effect2"]}},
+        {{"planet": "Moon", "sign": "Sign", "house": 2, "degree": "20°45'", "status": "Status", "strength": "Strength", "effects": ["effect1", "effect2"]}},
+        {{"planet": "Mars", "sign": "Sign", "house": 3, "degree": "Degree", "status": "Status", "strength": "Strength", "effects": ["effect1", "effect2"]}},
+        {{"planet": "Mercury", "sign": "Sign", "house": 4, "degree": "Degree", "status": "Status", "strength": "Strength", "effects": ["effect1", "effect2"]}},
+        {{"planet": "Jupiter", "sign": "Sign", "house": 5, "degree": "Degree", "status": "Status", "strength": "Strength", "effects": ["effect1", "effect2"]}},
+        {{"planet": "Venus", "sign": "Sign", "house": 6, "degree": "Degree", "status": "Status", "strength": "Strength", "effects": ["effect1", "effect2"]}},
+        {{"planet": "Saturn", "sign": "Sign", "house": 7, "degree": "Degree", "status": "Status", "strength": "Strength", "effects": ["effect1", "effect2"]}},
+        {{"planet": "Rahu", "sign": "Sign", "house": 8, "degree": "Degree", "status": "Status", "strength": "Strength", "effects": ["effect1", "effect2"]}},
+        {{"planet": "Ketu", "sign": "Sign", "house": 9, "degree": "Degree", "status": "Status", "strength": "Strength", "effects": ["effect1", "effect2"]}}
+    ],
+    "career_prediction": {{
+        "overall_rating": "Excellent/Good/Average/Challenging",
+        "best_career_fields": ["field1", "field2", "field3"],
+        "strengths_at_work": ["strength1", "strength2", "strength3"],
+        "challenges_at_work": ["challenge1", "challenge2"],
+        "peak_career_years": ["{current_year+2}", "{current_year+5}", "{current_year+8}"],
+        "career_timeline": [
+            {{"period": "{current_year}-{current_year+2}", "prediction": "Specific prediction", "advice": "Action to take"}},
+            {{"period": "{current_year+2}-{current_year+5}", "prediction": "Specific prediction", "advice": "Action to take"}},
+            {{"period": "{current_year+5}-{current_year+10}", "prediction": "Specific prediction", "advice": "Action to take"}}
+        ],
+        "business_potential": "High/Medium/Low",
+        "job_vs_business": "Recommendation with reason"
+    }},
+    "love_prediction": {{
+        "overall_rating": "Excellent/Good/Average/Challenging",
+        "love_nature": ["trait1", "trait2"],
+        "ideal_partner_traits": ["trait1", "trait2", "trait3"],
+        "compatibility_signs": ["Sign1", "Sign2", "Sign3"],
+        "challenging_signs": ["Sign1", "Sign2"],
+        "marriage_timing": {{
+            "favorable_years": ["{current_year+1}", "{current_year+3}"],
+            "favorable_months": ["Month1", "Month2"],
+            "things_to_avoid": ["avoid1", "avoid2"]
+        }},
+        "relationship_timeline": [
+            {{"period": "{current_year}-{current_year+2}", "prediction": "Specific prediction", "advice": "Action"}},
+            {{"period": "{current_year+2}-{current_year+5}", "prediction": "Specific prediction", "advice": "Action"}}
+        ],
+        "married_life_prediction": ["point1", "point2", "point3"]
+    }},
+    "health_prediction": {{
+        "overall_vitality": "Strong/Moderate/Needs Attention",
+        "body_constitution": "Vata/Pitta/Kapha dominant",
+        "strong_body_parts": ["part1", "part2"],
+        "vulnerable_areas": ["area1", "area2"],
+        "health_risks": ["risk1", "risk2"],
+        "preventive_measures": ["measure1", "measure2", "measure3"],
+        "best_exercise_types": ["exercise1", "exercise2"],
+        "dietary_recommendations": ["food1", "food2", "food3"],
+        "stress_management": ["tip1", "tip2"],
+        "health_timeline": [
+            {{"period": "{current_year}-{current_year+3}", "focus_area": "Area", "advice": "Specific advice"}}
+        ]
+    }},
+    "wealth_prediction": {{
+        "overall_rating": "Excellent/Good/Average/Challenging",
+        "wealth_potential": "High/Medium/Low",
+        "primary_income_sources": ["source1", "source2"],
+        "investment_aptitude": ["good_for1", "good_for2"],
+        "avoid_investments": ["avoid1", "avoid2"],
+        "wealth_accumulation_years": ["{current_year+3}", "{current_year+7}"],
+        "financial_challenges_years": ["{current_year+1}"],
+        "wealth_timeline": [
+            {{"period": "{current_year}-{current_year+3}", "prediction": "Prediction", "advice": "Action"}},
+            {{"period": "{current_year+3}-{current_year+7}", "prediction": "Prediction", "advice": "Action"}}
+        ],
+        "property_yoga": "Present/Absent - Details",
+        "inheritance_indication": "Details"
+    }},
+    "family_prediction": {{
+        "relationship_with_parents": ["point1", "point2"],
+        "relationship_with_siblings": ["point1", "point2"],
+        "children_indication": {{
+            "number_of_children": "1-2/2-3/etc",
+            "favorable_years": ["{current_year+2}", "{current_year+4}"],
+            "gender_indication": "Details"
+        }},
+        "family_happiness_years": ["{current_year+2}", "{current_year+5}"],
+        "family_challenges": ["challenge1", "challenge2"],
+        "remedies_for_family_harmony": ["remedy1", "remedy2"]
+    }},
+    "education_prediction": {{
+        "learning_style": ["style1", "style2"],
+        "best_subjects": ["subject1", "subject2", "subject3"],
+        "higher_education_yoga": "Present/Absent",
+        "foreign_education_chance": "High/Medium/Low",
+        "competitive_exam_success": ["point1", "point2"],
+        "best_study_periods": ["{current_year}", "{current_year+1}"]
+    }},
+    "current_dasha": {{
+        "mahadasha": "Planet name",
+        "mahadasha_period": "{current_year-5} to {current_year+5}",
+        "antardasha": "Planet name",
+        "antardasha_period": "{current_year} to {current_year+2}",
+        "current_phase_effects": ["effect1", "effect2", "effect3"],
+        "opportunities": ["opportunity1", "opportunity2"],
+        "challenges": ["challenge1", "challenge2"],
+        "advice": ["advice1", "advice2"]
+    }},
+    "dasha_timeline": [
+        {{"dasha": "Planet Mahadasha", "start_year": {current_year-10}, "end_year": {current_year}, "overall_theme": "Theme", "key_events": ["event1", "event2"], "rating": "Favorable/Mixed/Challenging"}},
+        {{"dasha": "Current Mahadasha", "start_year": {current_year}, "end_year": {current_year+10}, "overall_theme": "Theme", "key_events": ["event1", "event2"], "rating": "Rating"}},
+        {{"dasha": "Next Mahadasha", "start_year": {current_year+10}, "end_year": {current_year+20}, "overall_theme": "Theme", "key_events": ["event1", "event2"], "rating": "Rating"}}
+    ],
+    "mangal_dosha": {{
+        "present": true,
+        "severity": "High/Medium/Low/None",
+        "affected_houses": [1, 4, 7],
+        "effects": ["effect1", "effect2"],
+        "cancellation_factors": ["factor1", "factor2"],
+        "remedies": ["remedy1", "remedy2", "remedy3"]
+    }},
+    "kalsarp_dosha": {{
+        "present": false,
+        "type": "Type name if present",
+        "effects": ["effect1", "effect2"],
+        "remedies": ["remedy1", "remedy2"]
+    }},
+    "other_doshas": [
+        {{"name": "Dosha name", "present": true, "severity": "Level", "effects": ["effect"], "remedies": ["remedy"]}}
+    ],
+    "benefic_yogas": [
+        {{"name": "Yoga name", "formed_by": "Planets involved", "house": "House number", "effects": ["benefit1", "benefit2"], "activation_period": "{current_year+2}-{current_year+5}"}}
+    ],
+    "malefic_yogas": [
+        {{"name": "Yoga name", "formed_by": "Planets", "effects": ["effect1"], "remedies": ["remedy1"]}}
+    ],
+    "gemstone_remedies": [
+        {{"stone": "Gemstone name", "planet": "For which planet", "weight": "Minimum carats", "metal": "Gold/Silver", "finger": "Which finger", "day_to_wear": "Day", "mantra_before_wearing": "Mantra", "benefits": ["benefit1", "benefit2"]}}
+    ],
+    "mantra_remedies": [
+        {{"mantra": "Full mantra text", "planet": "For planet", "count": "108/1008", "best_time": "Morning/Evening", "duration": "41 days", "benefits": ["benefit1", "benefit2"]}}
+    ],
+    "lifestyle_remedies": [
+        {{"category": "Daily Routine/Diet/Behavior", "remedy": "Specific action", "frequency": "Daily/Weekly", "benefits": ["benefit1"]}}
+    ],
+    "donation_remedies": [
+        {{"item": "What to donate", "day": "Day of week", "to_whom": "Recipient", "planet": "Appeases which planet", "benefits": ["benefit1"]}}
+    ],
+    "lucky_numbers": [3, 6, 9],
+    "lucky_colors": ["Color1", "Color2", "Color3"],
+    "lucky_days": ["Monday", "Thursday"],
+    "lucky_direction": "North-East",
+    "lucky_gemstone": "Primary gemstone",
+    "numerology": {{
+        "life_path_number": 5,
+        "destiny_number": 8,
+        "soul_urge_number": 3,
+        "personality_number": 7,
+        "life_path_meaning": ["point1", "point2"],
+        "lucky_years": ["{current_year+1}", "{current_year+4}", "{current_year+7}"]
+    }}
+}}
+
+IMPORTANT: 
+- Return ONLY valid JSON, no markdown or extra text
+- All years should be actual calendar years starting from {current_year}
+- Make predictions specific and actionable
+- Include both opportunities and challenges
+- Remedies should be practical and implementable"""
+
+    try:
+        chat = LlmChat(
+            api_key=os.environ.get('EMERGENT_LLM_KEY'),
+            model="gpt-5.2"
+        )
+        
+        response = await chat.send_message_async(
+            system_prompt,
+            [UserMessage(text=user_prompt)]
+        )
+        
+        # Parse JSON response
+        import json
+        response_text = response.strip()
+        if response_text.startswith("```json"):
+            response_text = response_text[7:]
+        if response_text.startswith("```"):
+            response_text = response_text[3:]
+        if response_text.endswith("```"):
+            response_text = response_text[:-3]
+        
+        return json.loads(response_text.strip())
+        
+    except Exception as e:
+        logging.error(f"Brihat Kundli generation error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate report: {str(e)}")
+
+@api_router.post("/brihat-kundli/generate")
+async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str = ""):
+    """Generate comprehensive Brihat Kundli Pro report"""
+    
+    try:
+        # Generate the report using AI
+        report_data = await generate_brihat_kundli_with_llm(request)
+        
+        # Create report document
+        report = BrihatKundliReport(
+            user_email=user_email,
+            full_name=request.full_name,
+            date_of_birth=request.date_of_birth,
+            time_of_birth=request.time_of_birth,
+            place_of_birth=request.place_of_birth,
+            gender=request.gender,
+            ascendant=report_data.get("ascendant", {}),
+            moon_sign=report_data.get("moon_sign", {}),
+            sun_sign=report_data.get("sun_sign", {}),
+            planetary_positions=report_data.get("planetary_positions", []),
+            career_prediction=report_data.get("career_prediction", {}),
+            love_prediction=report_data.get("love_prediction", {}),
+            health_prediction=report_data.get("health_prediction", {}),
+            wealth_prediction=report_data.get("wealth_prediction", {}),
+            family_prediction=report_data.get("family_prediction", {}),
+            education_prediction=report_data.get("education_prediction", {}),
+            current_dasha=report_data.get("current_dasha", {}),
+            dasha_timeline=report_data.get("dasha_timeline", []),
+            mangal_dosha=report_data.get("mangal_dosha", {}),
+            kalsarp_dosha=report_data.get("kalsarp_dosha", {}),
+            other_doshas=report_data.get("other_doshas", []),
+            benefic_yogas=report_data.get("benefic_yogas", []),
+            malefic_yogas=report_data.get("malefic_yogas", []),
+            gemstone_remedies=report_data.get("gemstone_remedies", []),
+            mantra_remedies=report_data.get("mantra_remedies", []),
+            lifestyle_remedies=report_data.get("lifestyle_remedies", []),
+            donation_remedies=report_data.get("donation_remedies", []),
+            lucky_numbers=report_data.get("lucky_numbers", []),
+            lucky_colors=report_data.get("lucky_colors", []),
+            lucky_days=report_data.get("lucky_days", []),
+            lucky_direction=report_data.get("lucky_direction", ""),
+            numerology=report_data.get("numerology", {})
+        )
+        
+        # Store in database
+        doc = report.model_dump()
+        doc['generated_at'] = doc['generated_at'].isoformat()
+        await db.brihat_kundli_reports.insert_one(doc)
+        
+        return {"success": True, "report_id": report.id, "report": doc}
+        
+    except Exception as e:
+        logging.error(f"Brihat Kundli generation error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate report: {str(e)}")
+
+@api_router.get("/brihat-kundli/{report_id}")
+async def get_brihat_kundli(report_id: str):
+    """Get existing Brihat Kundli report"""
+    
+    report = await db.brihat_kundli_reports.find_one(
+        {"id": report_id},
+        {"_id": 0}
+    )
+    
+    if not report:
+        raise HTTPException(status_code=404, detail="Report not found")
+    
+    return report
+
+# ============== END BRIHAT KUNDLI PRO ==============
+
 # Kundali Milan
 async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthProfile) -> tuple:
     """Generate comprehensive Kundali Milan report using AI"""
