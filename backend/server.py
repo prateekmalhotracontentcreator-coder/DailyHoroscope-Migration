@@ -573,66 +573,54 @@ async def check_premium_access(user_email: str, report_type: str, report_id: str
     return payment is not None
 
 # Payment Endpoints
-@api_router.post("/payment/create-intent")
-async def create_payment_intent(request: PaymentIntentRequest):
-    """Create payment intent for premium features (Demo mode with test key)"""
+# Payment Endpoints (Razorpay)
+@api_router.post("/payment/create-order")
+async def create_payment_order(request: PaymentIntentRequest):
+    """Create Razorpay order for premium features"""
     
     try:
         # Validate report type
         if request.report_type not in PRICING:
             raise HTTPException(status_code=400, detail="Invalid report type")
         
-        amount_cents = int(PRICING[request.report_type] * 100)
+        amount_paise = int(PRICING[request.report_type] * 100)  # Convert to paise
         
-        # Check if using demo/test key
-        is_demo_mode = stripe.api_key == "sk_test_emergent"
-        
-        if is_demo_mode:
-            # Demo mode: Return simulated payment intent
-            import uuid
-            demo_intent_id = f"pi_demo_{uuid.uuid4().hex[:16]}"
-            demo_client_secret = f"{demo_intent_id}_secret_{uuid.uuid4().hex[:24]}"
-            
-            logging.info(f"Demo payment mode: Generated simulated payment intent for {request.user_email}")
-            
-            return {
-                "client_secret": demo_client_secret,
-                "amount": PRICING[request.report_type],
-                "payment_intent_id": demo_intent_id,
-                "demo_mode": True
+        # Create Razorpay order
+        razorpay_order = razorpay_client.order.create({
+            "amount": amount_paise,
+            "currency": "INR",
+            "payment_capture": 1,
+            "notes": {
+                "report_type": request.report_type,
+                "report_id": request.report_id or "",
+                "user_email": request.user_email
             }
-        else:
-            # Real Stripe mode
-            try:
-                intent = stripe.PaymentIntent.create(
-                    amount=amount_cents,
-                    currency="usd",
-                    metadata={
-                        "report_type": request.report_type,
-                        "report_id": request.report_id or "",
-                        "user_email": request.user_email
-                    },
-                    payment_method_types=["card"]
-                )
-                
-                return {
-                    "client_secret": intent.client_secret,
-                    "amount": PRICING[request.report_type],
-                    "payment_intent_id": intent.id,
-                    "demo_mode": False
-                }
-            except stripe.error.StripeError as stripe_error:
-                logging.error(f"Stripe API error: {str(stripe_error)}")
-                raise HTTPException(
-                    status_code=503, 
-                    detail=f"Payment service unavailable: {str(stripe_error)}"
-                )
+        })
+        
+        # Store order in database
+        payment = Payment(
+            user_email=request.user_email,
+            report_type=request.report_type,
+            report_id=request.report_id or "",
+            amount=PRICING[request.report_type],
+            razorpay_order_id=razorpay_order["id"],
+            status="created"
+        )
+        
+        doc = payment.model_dump()
+        doc['created_at'] = doc['created_at'].isoformat()
+        await db.payments.insert_one(doc)
+        
+        return {
+            "order_id": razorpay_order["id"],
+            "amount": PRICING[request.report_type],
+            "currency": "INR",
+            "key_id": os.environ.get('RAZORPAY_KEY_ID')
+        }
             
-    except HTTPException:
-        raise
     except Exception as e:
-        logging.error(f"Payment intent creation error: {str(e)}")
-        raise HTTPException(status_code=500, detail="Payment processing error")
+        logging.error(f"Razorpay order creation error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Payment order creation failed")
 
 @api_router.post("/payment/confirm")
 async def confirm_payment(payment_intent_id: str, user_email: str, report_type: str, report_id: str):
