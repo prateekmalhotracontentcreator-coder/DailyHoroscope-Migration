@@ -30,6 +30,8 @@ export const DailyHoroscope = () => {
       setSigns(response.data);
     } catch (error) {
       console.error('Error fetching signs:', error);
+    } finally {
+      setSignsLoading(false);
     }
   };
 
