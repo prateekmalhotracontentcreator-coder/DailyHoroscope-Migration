@@ -576,24 +576,41 @@ async def create_payment_intent(request: PaymentIntentRequest):
     """Create Stripe payment intent for premium features"""
     
     try:
+        # Validate report type
+        if request.report_type not in PRICING:
+            raise HTTPException(status_code=400, detail="Invalid report type")
+        
         amount_cents = int(PRICING[request.report_type] * 100)
         
-        intent = stripe.PaymentIntent.create(
-            amount=amount_cents,
-            currency="usd",
-            metadata={
-                "report_type": request.report_type,
-                "report_id": request.report_id or "",
-                "user_email": request.user_email
+        # Create Stripe payment intent with error handling
+        try:
+            intent = stripe.PaymentIntent.create(
+                amount=amount_cents,
+                currency="usd",
+                metadata={
+                    "report_type": request.report_type,
+                    "report_id": request.report_id or "",
+                    "user_email": request.user_email
+                },
+                payment_method_types=["card"]
+            )
+            
+            return {
+                "client_secret": intent.client_secret,
+                "amount": PRICING[request.report_type],
+                "payment_intent_id": intent.id
             }
-        )
-        
-        return {
-            "client_secret": intent.client_secret,
-            "amount": PRICING[request.report_type]
-        }
+        except stripe.error.StripeError as stripe_error:
+            logging.error(f"Stripe API error: {str(stripe_error)}")
+            raise HTTPException(
+                status_code=503, 
+                detail=f"Payment service unavailable: {str(stripe_error)}"
+            )
+            
+    except HTTPException:
+        raise
     except Exception as e:
-        logging.error(f"Stripe error: {str(e)}")
+        logging.error(f"Payment intent creation error: {str(e)}")
         raise HTTPException(status_code=500, detail="Payment processing error")
 
 @api_router.post("/payment/confirm")
