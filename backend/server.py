@@ -120,6 +120,44 @@ class KundaliMilanRequest(BaseModel):
     person1_id: str
     person2_id: str
 
+class UserSubscription(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_email: str
+    subscription_type: str  # "premium_monthly" or "per_report"
+    status: str  # "active", "cancelled", "expired"
+    stripe_subscription_id: Optional[str] = None
+    expires_at: Optional[datetime] = None
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class Payment(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    user_email: str
+    report_type: str  # "birth_chart" or "kundali_milan"
+    report_id: str
+    amount: float
+    stripe_payment_id: str
+    status: str  # "pending", "completed", "failed"
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class ShareLink(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    token: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
+    report_type: str  # "birth_chart" or "kundali_milan"
+    report_id: str
+    views: int = 0
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class PaymentIntentRequest(BaseModel):
+    report_type: str  # "birth_chart", "kundali_milan", or "premium_monthly"
+    report_id: Optional[str] = None
+    user_email: str
+
 # LLM Integration for horoscope generation
 async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
     """Generate horoscope using OpenAI GPT-5.2 via emergentintegrations"""
