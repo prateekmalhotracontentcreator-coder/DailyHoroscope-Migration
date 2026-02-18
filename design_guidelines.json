@@ -1,0 +1,149 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "E1 - The Anti-AI Designer",
+      "tone": "Mystical, Authoritative, Golden, Editorial",
+      "core_principle": "Fusion of Ancient Wisdom and Modern Precision. No generic 'purple space' apps. We use Parchment, Gold, and Deep Earth."
+    },
+    "typography": {
+      "font_family": {
+        "heading": "Playfair Display, serif",
+        "body": "DM Sans, sans-serif",
+        "special": "Cinzel, serif"
+      },
+      "scale": {
+        "h1": "text-5xl md:text-7xl font-medium tracking-tight leading-none",
+        "h2": "text-3xl md:text-4xl font-normal tracking-wide",
+        "h3": "text-xl md:text-2xl font-medium uppercase tracking-widest",
+        "body": "text-base md:text-lg leading-relaxed text-opacity-90",
+        "caption": "text-xs md:text-sm uppercase tracking-[0.2em] font-semibold"
+      },
+      "installation": "Import via Google Fonts in index.css: @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=DM+Sans:opsz,wght@9..40,400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');"
+    },
+    "colors": {
+      "palette": {
+        "mode_strategy": "The Alchemist's Study",
+        "common": {
+          "gold_primary": "#C5A059",
+          "gold_hover": "#D4AF37",
+          "mustard_accent": "#E3B341",
+          "success": "#4F6F52",
+          "error": "#9A3B3B"
+        },
+        "light": {
+          "background": "#F9F5F0",
+          "foreground": "#2D241E",
+          "card": "#FFFFFF",
+          "card_foreground": "#2D241E",
+          "border": "#E6DCCF",
+          "primary": "#4A3728",
+          "primary_foreground": "#F9F5F0",
+          "muted": "#F0EAE0",
+          "muted_foreground": "#8C7E72"
+        },
+        "dark": {
+          "background": "#120C08",
+          "foreground": "#F9F5F0",
+          "card": "#1F1510",
+          "card_foreground": "#F9F5F0",
+          "border": "#3A2E26",
+          "primary": "#C5A059",
+          "primary_foreground": "#120C08",
+          "muted": "#2C221B",
+          "muted_foreground": "#A89B90"
+        }
+      },
+      "usage_rules": [
+        "NEVER use generic purple/blue gradients.",
+        "Use Textures! Dark mode background should feel like 'Obsidian' or 'Dark Espresso'.",
+        "Gold should be used for Borders, Icons, and Active States.",
+        "Mustard is for Highlights and Call-to-Actions."
+      ]
+    },
+    "layout": {
+      "spacing": "Relaxed. Use p-8 or p-12 for main containers. Gap-6 for grids.",
+      "grid_system": "Bento Grid Mode A (Tetris). Mix wide cards (2x1) with tall cards (1x2) and standard squares (1x1).",
+      "containers": "Rounded-none or Rounded-sm (max 4px). Sharp corners feel more 'Cards/Tarot'.",
+      "max_width": "max-w-7xl mx-auto"
+    },
+    "visual_enhancers": {
+      "borders": "1px solid border-border. On hover: border-primary/50 transition-colors duration-500.",
+      "shadows": "shadow-[0_4px_20px_-2px_rgba(0,0,0,0.1)] for light mode. Glow effects for dark mode.",
+      "glassmorphism": "Use sparingly. backdrop-blur-md bg-background/80 for sticky headers.",
+      "textures": "Add a subtle noise texture overlay with `pointer-events-none fixed inset-0 opacity-[0.03] z-50`."
+    },
+    "animation": {
+      "library": "framer-motion",
+      "defaults": {
+        "duration": 0.6,
+        "ease": "[0.22, 1, 0.36, 1]"
+      },
+      "required_interactions": [
+        "Zodiac Sign Selection: Must scale up and glow on hover.",
+        "Page Transition: Fade in + Slide Up.",
+        "Card Hover: Subtle lift (-2px) and border gold glow."
+      ]
+    }
+  },
+  "components": {
+    "ZodiacSelector": {
+      "path": "/src/components/ZodiacSelector.jsx",
+      "type": "Custom",
+      "description": "A circular or grid layout of 12 signs. Use massive Typography (Unicode Symbols) instead of cheap icons. Font: Playfair Display. Size: 9xl.",
+      "instructions": "Allow user to click a sign. Store selection in Context/LocalStorage."
+    },
+    "HoroscopeCard": {
+      "path": "/src/components/HoroscopeCard.jsx",
+      "type": "Shadcn + Custom",
+      "description": "The main reading display. Looks like a tarot card or parchment.",
+      "visuals": "Border-gold/20. Background-card. Serif typography for the reading text."
+    },
+    "ThemeToggle": {
+      "path": "/src/components/ThemeToggle.jsx",
+      "type": "Shadcn Button",
+      "description": "A mystical toggle. Sun icon for Light, Moon for Dark. Position: Top Right Fixed."
+    },
+    "Dashboard": {
+      "path": "/src/pages/Dashboard.jsx",
+      "type": "Layout",
+      "description": "The Bento Grid containing Daily, Weekly, Monthly tabs and other widgets (Lucky Number, Mood, etc.)."
+    }
+  },
+  "assets": {
+    "images": [
+      {
+        "category": "background_texture",
+        "url": "https://images.unsplash.com/photo-1703100822077-a766dc9608b9?q=80&w=2000&auto=format&fit=crop",
+        "description": "Dark starry texture for Dark Mode background"
+      },
+      {
+        "category": "hero_atmosphere",
+        "url": "https://images.pexels.com/photos/34519499/pexels-photo-34519499.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        "description": "Moon and Stars for Landing Page Hero"
+      },
+      {
+        "category": "card_decoration",
+        "url": "https://images.unsplash.com/photo-1608626039696-86453ecb2edf?q=80&w=1000&auto=format&fit=crop",
+        "description": "Gold Sun Bust for Daily Horoscope Card Background (opacity 10%)"
+      }
+    ],
+    "icons": {
+      "library": "lucide-react",
+      "sets": ["Sun", "Moon", "Star", "Sparkles", "ArrowRight", "ChevronDown", "Calendar"]
+    }
+  },
+  "universal_guidelines": [
+    "DATA-TESTID: All interactive elements MUST have data-testid attributes (e.g., 'sign-aries', 'theme-toggle').",
+    "NO DEFAULT BLUE: Override all blue focus rings with Gold/Mustard rings.",
+    "ACCESSIBILITY: Ensure text contrast in both themes. Use the provided colors.",
+    "AI CONTENT: The horoscope text comes from the backend. Handle 'Loading' states with a mystical 'Reading the stars...' animation, not a generic spinner."
+  ],
+  "instructions_to_main_agent": [
+    "1. UPDATE tailwind.config.js to use the 'Alchemist' palette provided above.",
+    "2. UPDATE index.css to import the Fonts and set the CSS variables for Light/Dark modes.",
+    "3. CREATE the ZodiacSelector component first. It's the entry point.",
+    "4. USE Typography (Unicode ♈ ♉ etc.) for signs. Do not fetch external icons for signs unless necessary.",
+    "5. BUILD the Dashboard with Tabs (Daily/Weekly/Monthly).",
+    "6. ENSURE the ThemeToggle works immediately."
+  ]
+}
