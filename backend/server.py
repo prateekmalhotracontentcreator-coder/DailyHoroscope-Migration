@@ -23,14 +23,17 @@ from auth_utils import (
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# Stripe configuration
-stripe.api_key = os.environ.get('STRIPE_API_KEY', 'sk_test_emergent')
+# Razorpay configuration
+razorpay_client = razorpay.Client(auth=(
+    os.environ.get('RAZORPAY_KEY_ID'),
+    os.environ.get('RAZORPAY_KEY_SECRET')
+))
 
-# Pricing
+# Pricing in INR (Indian Rupees)
 PRICING = {
-    "birth_chart": 9.99,
-    "kundali_milan": 14.99,
-    "premium_monthly": 19.99
+    "birth_chart": 799,  # ₹799
+    "kundali_milan": 1199,  # ₹1199
+    "premium_monthly": 1599  # ₹1599/month
 }
 
 # MongoDB connection
