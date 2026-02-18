@@ -45,6 +45,7 @@ export const Dashboard = () => {
     setSelectedSign(savedSign);
     fetchSigns();
     fetchHoroscope(savedSign, 'daily');
+    loadBirthProfile();
   }, [navigate]);
 
   const fetchSigns = async () => {
