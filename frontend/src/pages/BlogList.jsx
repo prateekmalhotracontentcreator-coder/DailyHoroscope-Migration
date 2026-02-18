@@ -63,7 +63,7 @@ export const BlogList = () => {
             <BookOpen className="h-8 w-8 text-gold" />
           </div>
           <h1 className="text-4xl md:text-5xl font-playfair font-bold mb-4">
-            Cosmic Wisdom Blog
+            Everyday Horoscope Blog
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Explore astrology insights, zodiac guides, and cosmic wisdom to navigate your life journey
