@@ -6,7 +6,7 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List, Literal
+from typing import List, Literal, Optional
 import uuid
 from datetime import datetime, timezone, date
 from emergentintegrations.llm.chat import LlmChat, UserMessage
