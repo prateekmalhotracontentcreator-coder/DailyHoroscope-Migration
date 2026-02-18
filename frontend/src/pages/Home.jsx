@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
 import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart, Crown } from 'lucide-react';
-import { UserAccountMenu } from '../components/UserAccountMenu';
+import { Header } from '../components/Header';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -60,20 +60,7 @@ export const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <Sparkles className="h-8 w-8 text-gold" />
-              <h1 className="text-2xl font-playfair font-semibold">Cosmic Wisdom</h1>
-            </div>
-            
-            <div className="flex items-center space-x-4">
-              <UserAccountMenu />
-            </div>
-          </div>
-        </div>
-      </div>
+      <Header />
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
