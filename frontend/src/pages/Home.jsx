@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
-import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart } from 'lucide-react';
+import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart, Crown } from 'lucide-react';
 import { UserAccountMenu } from '../components/UserAccountMenu';
 
 export const Home = () => {
