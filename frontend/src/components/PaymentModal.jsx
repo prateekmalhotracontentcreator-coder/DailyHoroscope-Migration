@@ -13,9 +13,16 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess }) => {
+  const { user } = useAuth();
   const [email, setEmail] = useState('');
   const [paymentOption, setPaymentOption] = useState('per_report');
   const [processing, setProcessing] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setEmail(user.email);
+    }
+  }, [user]);
 
   const pricing = {
     birth_chart: { price: 9.99, title: 'Birth Chart Report' },
