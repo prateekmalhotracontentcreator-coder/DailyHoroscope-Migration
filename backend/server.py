@@ -124,17 +124,13 @@ async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
     }
     
     try:
-        # Initialize LLM chat
         chat = LlmChat(
             api_key=os.environ.get('EMERGENT_LLM_KEY'),
             session_id=f"horoscope_{sign}_{horoscope_type}_{datetime.now().isoformat()}",
             system_message=system_prompts[horoscope_type]
         ).with_model("openai", "gpt-5.2")
         
-        # Create user message
         user_message = UserMessage(text=user_prompts[horoscope_type])
-        
-        # Get response
         response = await chat.send_message(user_message)
         return response
         
@@ -175,7 +171,6 @@ async def generate_horoscope(request: HoroscopeRequest):
     )
     
     if existing:
-        # Convert ISO string timestamp back to datetime
         if isinstance(existing['created_at'], str):
             existing['created_at'] = datetime.fromisoformat(existing['created_at'])
         return Horoscope(**existing)
@@ -183,7 +178,6 @@ async def generate_horoscope(request: HoroscopeRequest):
     # Generate new horoscope using LLM
     content = await generate_horoscope_with_llm(request.sign, request.type)
     
-    # Create horoscope object
     horoscope = Horoscope(
         sign=request.sign,
         type=request.type,
@@ -191,26 +185,22 @@ async def generate_horoscope(request: HoroscopeRequest):
         prediction_date=today
     )
     
-    # Store in database
     doc = horoscope.model_dump()
     doc['created_at'] = doc['created_at'].isoformat()
-    
     await db.horoscopes.insert_one(doc)
     
     return horoscope
 
 @api_router.get("/horoscope/{sign}/{type}", response_model=Horoscope)
 async def get_horoscope(sign: str, type: HoroscopeType):
-    """Get horoscope for a specific sign and type (returns today's/current period's horoscope)"""
+    """Get horoscope for a specific sign and type"""
     
-    # Validate sign
     valid_signs = [s["id"] for s in ZODIAC_SIGNS]
     if sign not in valid_signs:
         raise HTTPException(status_code=400, detail="Invalid zodiac sign")
     
     today = date.today().isoformat()
     
-    # Try to get existing horoscope
     horoscope_doc = await db.horoscopes.find_one(
         {
             "sign": sign,
@@ -225,7 +215,6 @@ async def get_horoscope(sign: str, type: HoroscopeType):
             horoscope_doc['created_at'] = datetime.fromisoformat(horoscope_doc['created_at'])
         return Horoscope(**horoscope_doc)
     
-    # If not found, generate new one
     content = await generate_horoscope_with_llm(sign, type)
     
     horoscope = Horoscope(
@@ -240,24 +229,6 @@ async def get_horoscope(sign: str, type: HoroscopeType):
     await db.horoscopes.insert_one(doc)
     
     return horoscope
-
-# Include the router in the main app
-app.include_router(api_router)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
 
 # Birth Profile Routes
 @api_router.post("/profile/birth", response_model=BirthProfile)
@@ -299,38 +270,33 @@ async def list_birth_profiles():
 async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
     """Generate comprehensive birth chart report using AI"""
     
-    system_prompt = f\"\"\"You are an expert Vedic astrologer with deep knowledge of Jyotish (Vedic Astrology). 
-    Generate a comprehensive, authentic birth chart analysis based on the following birth details:
+    system_prompt = """You are an expert Vedic astrologer with deep knowledge of Jyotish (Vedic Astrology). 
+Generate a comprehensive, authentic birth chart analysis based on birth details provided.
+
+Provide a detailed analysis covering:
+
+1. Ascendant (Lagna) & Rising Sign: Detailed interpretation of personality and life path
+2. Sun Sign (Rashi): Core identity and soul purpose
+3. Moon Sign (Chandra Rashi): Emotional nature and mind
+4. Planetary Positions: Analysis of all 9 planets (Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) in their respective houses and signs
+5. House Analysis: Interpretation of key houses (1st, 4th, 7th, 10th, 5th, 9th) and their significance
+6. Yogas: Important planetary combinations and their effects
+7. Dasha Periods: Current and upcoming major planetary periods and their predictions
+8. Career & Finance: Strengths, suitable professions, wealth indicators
+9. Relationships & Marriage: Compatibility factors, timing, relationship patterns
+10. Health: Potential health concerns based on planetary positions
+11. Remedies: Gemstones, mantras, and spiritual practices for balance
+12. Life Predictions: Key life events and timing (next 1-2 years)
+
+Make it personal, insightful, and empowering. Use authentic Vedic astrology principles.
+Keep the report comprehensive but readable (800-1000 words)."""
     
-    Name: {profile.name}
-    Date of Birth: {profile.date_of_birth}
-    Time of Birth: {profile.time_of_birth}
-    Place of Birth: {profile.location}
-    
-    Provide a detailed analysis covering:
-    
-    1. **Ascendant (Lagna) & Rising Sign**: Detailed interpretation of personality and life path
-    2. **Sun Sign (Rashi)**: Core identity and soul purpose
-    3. **Moon Sign (Chandra Rashi)**: Emotional nature and mind
-    4. **Planetary Positions**: Analysis of all 9 planets (Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) in their respective houses and signs
-    5. **House Analysis**: Interpretation of key houses (1st, 4th, 7th, 10th, 5th, 9th) and their significance
-    6. **Yogas**: Important planetary combinations and their effects
-    7. **Dasha Periods**: Current and upcoming major planetary periods and their predictions
-    8. **Career & Finance**: Strengths, suitable professions, wealth indicators
-    9. **Relationships & Marriage**: Compatibility factors, timing, relationship patterns
-    10. **Health**: Potential health concerns based on planetary positions
-    11. **Remedies**: Gemstones, mantras, and spiritual practices for balance
-    12. **Life Predictions**: Key life events and timing (next 1-2 years)
-    
-    Make it personal, insightful, and empowering. Use authentic Vedic astrology principles.
-    Keep the report comprehensive but readable (800-1000 words).\"\"\"
-    
-    user_prompt = f\"\"\"Generate a detailed Vedic birth chart analysis for {profile.name} born on {profile.date_of_birth} at {profile.time_of_birth} in {profile.location}.\"\"\"
+    user_prompt = f"Generate a detailed Vedic birth chart analysis for {profile.name} born on {profile.date_of_birth} at {profile.time_of_birth} in {profile.location}."
     
     try:
         chat = LlmChat(
             api_key=os.environ.get('EMERGENT_LLM_KEY'),
-            session_id=f\"birthchart_{profile.id}_{datetime.now().isoformat()}\",
+            session_id=f"birthchart_{profile.id}_{datetime.now().isoformat()}",
             system_message=system_prompt
         ).with_model("openai", "gpt-5.2")
         
@@ -346,7 +312,6 @@ async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
 async def generate_birth_chart(request: BirthChartRequest):
     """Generate comprehensive birth chart report"""
     
-    # Get birth profile
     profile = await db.birth_profiles.find_one({"id": request.profile_id}, {"_id": 0})
     if not profile:
         raise HTTPException(status_code=404, detail="Birth profile not found")
@@ -356,7 +321,6 @@ async def generate_birth_chart(request: BirthChartRequest):
     
     birth_profile = BirthProfile(**profile)
     
-    # Check if report already exists
     existing = await db.birth_chart_reports.find_one(
         {"profile_id": request.profile_id},
         {"_id": 0}
@@ -367,7 +331,6 @@ async def generate_birth_chart(request: BirthChartRequest):
             existing['generated_at'] = datetime.fromisoformat(existing['generated_at'])
         return BirthChartReport(**existing)
     
-    # Generate new report
     content = await generate_birth_chart_with_llm(birth_profile)
     
     report = BirthChartReport(
@@ -398,70 +361,59 @@ async def get_birth_chart(profile_id: str):
     
     return BirthChartReport(**report)
 
-# Kundali Milan (Compatibility Matching)
-async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthProfile) -> tuple[int, str]:
+# Kundali Milan
+async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthProfile) -> tuple:
     """Generate comprehensive Kundali Milan report using AI"""
     
-    system_prompt = f\"\"\"You are an expert Vedic astrologer specializing in Kundali Milan (horoscope matching) for marriage compatibility.
-    Analyze the compatibility between two individuals based on their birth details using authentic Vedic astrology principles.
+    system_prompt = """You are an expert Vedic astrologer specializing in Kundali Milan (horoscope matching) for marriage compatibility.
+Analyze the compatibility between two individuals based on their birth details using authentic Vedic astrology principles.
+
+Provide a comprehensive analysis covering:
+
+1. Overall Compatibility Score: Guna Milan score out of 36 points (Ashtakoot system)
+
+2. Detailed Koota Analysis (All 8 Kootas):
+   - Varna (1 point): Spiritual compatibility
+   - Vashya (2 points): Mutual attraction and control
+   - Tara (3 points): Birth star compatibility and health
+   - Yoni (4 points): Sexual compatibility and nature
+   - Graha Maitri (5 points): Mental compatibility
+   - Gana (6 points): Temperament and behavior
+   - Bhakoot (7 points): Love and emotional bonding
+   - Nadi (8 points): Health and progeny
+
+3. Manglik Dosha Analysis: Check for Mars affliction in both charts and its impact
+
+4. Planetary Compatibility: How planets in both charts interact
+
+5. Strengths of the Relationship: Positive aspects and natural harmony
+
+6. Challenges & Areas of Growth: Potential conflicts and how to manage them
+
+7. Long-term Prospects: Marriage success, family life, financial compatibility
+
+8. Timing & Recommendations: Best timing for marriage, rituals, and remedies if needed
+
+9. Remedies: If score is low, suggest gemstones, mantras, pujas for improvement
+
+START your response with the compatibility score as a number (e.g., "Compatibility Score: 28/36"), then provide the detailed analysis.
+Make it comprehensive, authentic, and helpful. Keep the report around 1000-1200 words."""
     
-    Person 1: {person1.name}
-    Date of Birth: {person1.date_of_birth}
-    Time of Birth: {person1.time_of_birth}
-    Place of Birth: {person1.location}
-    
-    Person 2: {person2.name}
-    Date of Birth: {person2.date_of_birth}
-    Time of Birth: {person2.time_of_birth}
-    Place of Birth: {person2.location}
-    
-    Provide a comprehensive analysis covering:
-    
-    1. **Overall Compatibility Score**: Guna Milan score out of 36 points (Ashtakoot system)
-    
-    2. **Detailed Koota Analysis** (All 8 Kootas):
-       - Varna (1 point): Spiritual compatibility
-       - Vashya (2 points): Mutual attraction and control
-       - Tara (3 points): Birth star compatibility and health
-       - Yoni (4 points): Sexual compatibility and nature
-       - Graha Maitri (5 points): Mental compatibility
-       - Gana (6 points): Temperament and behavior
-       - Bhakoot (7 points): Love and emotional bonding
-       - Nadi (8 points): Health and progeny
-    
-    3. **Manglik Dosha Analysis**: Check for Mars affliction in both charts and its impact
-    
-    4. **Planetary Compatibility**: How planets in both charts interact
-    
-    5. **Strengths of the Relationship**: Positive aspects and natural harmony
-    
-    6. **Challenges & Areas of Growth**: Potential conflicts and how to manage them
-    
-    7. **Long-term Prospects**: Marriage success, family life, financial compatibility
-    
-    8. **Timing & Recommendations**: Best timing for marriage, rituals, and remedies if needed
-    
-    9. **Remedies**: If score is low, suggest gemstones, mantras, pujas for improvement
-    
-    START your response with the compatibility score as a number (e.g., "Compatibility Score: 28/36"), then provide the detailed analysis.
-    Make it comprehensive, authentic, and helpful. Keep the report around 1000-1200 words.\"\"\"
-    
-    user_prompt = f\"\"\"Generate a detailed Kundali Milan compatibility analysis between {person1.name} and {person2.name} for marriage compatibility.\"\"\"
+    user_prompt = f"Generate a detailed Kundali Milan compatibility analysis between {person1.name} (born {person1.date_of_birth} at {person1.time_of_birth} in {person1.location}) and {person2.name} (born {person2.date_of_birth} at {person2.time_of_birth} in {person2.location}) for marriage compatibility."
     
     try:
         chat = LlmChat(
             api_key=os.environ.get('EMERGENT_LLM_KEY'),
-            session_id=f\"kundali_milan_{person1.id}_{person2.id}_{datetime.now().isoformat()}\",
+            session_id=f"kundali_milan_{person1.id}_{person2.id}_{datetime.now().isoformat()}",
             system_message=system_prompt
         ).with_model("openai", "gpt-5.2")
         
         user_message = UserMessage(text=user_prompt)
         response = await chat.send_message(user_message)
         
-        # Extract score from response (look for pattern like "28/36" or "Score: 28")
         import re
         score_match = re.search(r'(\d+)\s*/\s*36', response)
-        compatibility_score = int(score_match.group(1)) if score_match else 24  # Default fallback
+        compatibility_score = int(score_match.group(1)) if score_match else 24
         
         return compatibility_score, response
         
@@ -473,7 +425,6 @@ async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthP
 async def generate_kundali_milan(request: KundaliMilanRequest):
     """Generate comprehensive Kundali Milan compatibility report"""
     
-    # Get both profiles
     profile1 = await db.birth_profiles.find_one({"id": request.person1_id}, {"_id": 0})
     profile2 = await db.birth_profiles.find_one({"id": request.person2_id}, {"_id": 0})
     
@@ -488,7 +439,6 @@ async def generate_kundali_milan(request: KundaliMilanRequest):
     birth_profile1 = BirthProfile(**profile1)
     birth_profile2 = BirthProfile(**profile2)
     
-    # Check if report already exists
     existing = await db.kundali_milan_reports.find_one(
         {
             "$or": [
@@ -504,7 +454,6 @@ async def generate_kundali_milan(request: KundaliMilanRequest):
             existing['generated_at'] = datetime.fromisoformat(existing['generated_at'])
         return KundaliMilanReport(**existing)
     
-    # Generate new report
     score, analysis = await generate_kundali_milan_with_llm(birth_profile1, birth_profile2)
     
     report = KundaliMilanReport(
@@ -541,6 +490,24 @@ async def get_kundali_milan(person1_id: str, person2_id: str):
         report['generated_at'] = datetime.fromisoformat(report['generated_at'])
     
     return KundaliMilanReport(**report)
+
+# Include the router in the main app
+app.include_router(api_router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
