@@ -147,8 +147,9 @@ class Payment(BaseModel):
     report_type: str  # "birth_chart" or "kundali_milan"
     report_id: str
     amount: float
-    stripe_payment_id: str
-    status: str  # "pending", "completed", "failed"
+    razorpay_order_id: str
+    razorpay_payment_id: Optional[str] = None
+    status: str  # "created", "completed", "failed"
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class ShareLink(BaseModel):
