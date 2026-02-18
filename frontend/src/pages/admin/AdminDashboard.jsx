@@ -164,6 +164,88 @@ export const AdminDashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-900">
+      {/* Password Change Modal */}
+      {showPasswordModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <Card className="w-full max-w-md p-6 bg-gray-800 border-gray-700 mx-4">
+            <div className="flex items-center space-x-2 mb-6">
+              <Lock className="h-5 w-5 text-gold" />
+              <h2 className="text-xl font-bold text-white">Change Password</h2>
+            </div>
+            
+            <div className="space-y-4">
+              <div>
+                <Label className="text-gray-300">Current Password</Label>
+                <div className="relative">
+                  <Input
+                    type={showCurrentPwd ? "text" : "password"}
+                    value={currentPassword}
+                    onChange={(e) => setCurrentPassword(e.target.value)}
+                    className="bg-gray-700 border-gray-600 text-white pr-10"
+                    placeholder="Enter current password"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowCurrentPwd(!showCurrentPwd)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                  >
+                    {showCurrentPwd ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
+              </div>
+              
+              <div>
+                <Label className="text-gray-300">New Password</Label>
+                <div className="relative">
+                  <Input
+                    type={showNewPwd ? "text" : "password"}
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    className="bg-gray-700 border-gray-600 text-white pr-10"
+                    placeholder="Enter new password (min 8 chars)"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowNewPwd(!showNewPwd)}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white"
+                  >
+                    {showNewPwd ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  </button>
+                </div>
+              </div>
+              
+              <div>
+                <Label className="text-gray-300">Confirm New Password</Label>
+                <Input
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="bg-gray-700 border-gray-600 text-white"
+                  placeholder="Confirm new password"
+                />
+              </div>
+            </div>
+            
+            <div className="flex space-x-3 mt-6">
+              <Button
+                onClick={() => setShowPasswordModal(false)}
+                variant="outline"
+                className="flex-1 border-gray-600 text-gray-300 hover:bg-gray-700"
+              >
+                Cancel
+              </Button>
+              <Button
+                onClick={handleChangePassword}
+                className="flex-1 bg-gold hover:bg-gold/90 text-gray-900"
+                disabled={changingPassword}
+              >
+                {changingPassword ? 'Changing...' : 'Change Password'}
+              </Button>
+            </div>
+          </Card>
+        </div>
+      )}
+
       {/* Header */}
       <div className="bg-gray-800 border-b border-gray-700 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -172,12 +254,22 @@ export const AdminDashboard = () => {
               <BarChart3 className="h-8 w-8 text-gold" />
               <h1 className="text-xl font-bold text-white">Admin Dashboard</h1>
             </div>
-            <Button
-              onClick={handleLogout}
-              variant="outline"
-              className="border-gray-600 text-gray-300 hover:bg-gray-700"
-              data-testid="admin-logout-btn"
-            >
+            <div className="flex items-center space-x-3">
+              <Button
+                onClick={() => setShowPasswordModal(true)}
+                variant="outline"
+                className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                data-testid="change-password-btn"
+              >
+                <Settings className="h-4 w-4 mr-2" />
+                Change Password
+              </Button>
+              <Button
+                onClick={handleLogout}
+                variant="outline"
+                className="border-gray-600 text-gray-300 hover:bg-gray-700"
+                data-testid="admin-logout-btn"
+              >
               <LogOut className="h-4 w-4 mr-2" />
               Logout
             </Button>
