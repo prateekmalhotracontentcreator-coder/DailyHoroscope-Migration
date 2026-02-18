@@ -80,7 +80,7 @@ export const Home = () => {
         {/* Welcome Section */}
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-playfair font-semibold mb-4">
-            Welcome, {user?.name || 'Seeker'}
+            Welcome to Your Cosmic Journey
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Discover what the stars have aligned for you. Choose a service to begin your cosmic journey.
