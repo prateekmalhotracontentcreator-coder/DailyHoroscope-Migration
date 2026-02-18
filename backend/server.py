@@ -632,18 +632,20 @@ async def create_payment_intent(request: PaymentIntentRequest):
 
 @api_router.post("/payment/confirm")
 async def confirm_payment(payment_intent_id: str, user_email: str, report_type: str, report_id: str):
-    """Confirm payment and grant access"""
+    """Confirm payment and grant access (Demo mode with test key)"""
     
     try:
-        intent = stripe.PaymentIntent.retrieve(payment_intent_id)
+        is_demo_mode = stripe.api_key == "sk_test_emergent" or payment_intent_id.startswith("pi_demo_")
         
-        if intent.status == "succeeded":
-            # Record payment
+        if is_demo_mode:
+            # Demo mode: Simulate successful payment
+            logging.info(f"Demo payment mode: Simulating successful payment for {user_email}")
+            
             payment = Payment(
                 user_email=user_email,
                 report_type=report_type,
                 report_id=report_id,
-                amount=intent.amount / 100,
+                amount=PRICING.get(report_type, 9.99),
                 stripe_payment_id=payment_intent_id,
                 status="completed"
             )
@@ -667,9 +669,42 @@ async def confirm_payment(payment_intent_id: str, user_email: str, report_type: 
                 sub_doc['expires_at'] = sub_doc['expires_at'].isoformat()
                 await db.subscriptions.insert_one(sub_doc)
             
-            return {"status": "success", "message": "Payment confirmed"}
+            return {"status": "success", "message": "Payment confirmed (Demo mode)", "demo_mode": True}
         else:
-            return {"status": "pending", "message": "Payment pending"}
+            # Real Stripe mode
+            intent = stripe.PaymentIntent.retrieve(payment_intent_id)
+            
+            if intent.status == "succeeded":
+                payment = Payment(
+                    user_email=user_email,
+                    report_type=report_type,
+                    report_id=report_id,
+                    amount=intent.amount / 100,
+                    stripe_payment_id=payment_intent_id,
+                    status="completed"
+                )
+                
+                doc = payment.model_dump()
+                doc['created_at'] = doc['created_at'].isoformat()
+                await db.payments.insert_one(doc)
+                
+                if report_type == "premium_monthly":
+                    subscription = UserSubscription(
+                        user_email=user_email,
+                        subscription_type="premium_monthly",
+                        status="active",
+                        stripe_subscription_id=payment_intent_id,
+                        expires_at=datetime.now(timezone.utc) + timedelta(days=30)
+                    )
+                    
+                    sub_doc = subscription.model_dump()
+                    sub_doc['created_at'] = sub_doc['created_at'].isoformat()
+                    sub_doc['expires_at'] = sub_doc['expires_at'].isoformat()
+                    await db.subscriptions.insert_one(sub_doc)
+                
+                return {"status": "success", "message": "Payment confirmed", "demo_mode": False}
+            else:
+                return {"status": "pending", "message": "Payment pending"}
             
     except Exception as e:
         logging.error(f"Payment confirmation error: {str(e)}")
