@@ -77,6 +77,20 @@ Build a fully functional Daily Horoscope Prediction app with:
 - [x] View counter for blog posts
 - [x] Blog link added to home page
 
+### Admin Panel (Completed)
+- [x] Admin login with separate credentials (username/password)
+- [x] Admin dashboard with statistics (users, revenue, reports, payments)
+- [x] User management view (list all users)
+- [x] Payment history view (list all payments)
+- [x] Overview tab with recent activity
+- [x] **Blog tab** for content management
+- [x] **Password change feature** - Secure modal to update admin password
+
+**Admin Credentials:**
+- URL: `/admin/login`
+- Username: `admin`
+- Password: `CosmicAdmin2024!` (changeable via dashboard)
+
 ### UI/UX Enhancements (Completed)
 - [x] Home page with feature cards (public)
 - [x] Shared Header component with conditional Sign In / User Menu
