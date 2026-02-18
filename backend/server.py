@@ -543,6 +543,248 @@ async def get_kundali_milan(person1_id: str, person2_id: str):
     
     return KundaliMilanReport(**report)
 
+# Premium Access Check Helper
+async def check_premium_access(user_email: str, report_type: str, report_id: str) -> bool:
+    """Check if user has premium access via subscription or one-time payment"""
+    
+    # Check active subscription
+    subscription = await db.subscriptions.find_one({
+        "user_email": user_email,
+        "status": "active",
+        "subscription_type": "premium_monthly"
+    })
+    
+    if subscription:
+        if subscription.get('expires_at'):
+            expires_at = subscription['expires_at']
+            if isinstance(expires_at, str):
+                expires_at = datetime.fromisoformat(expires_at)
+            if expires_at > datetime.now(timezone.utc):
+                return True
+    
+    # Check one-time payment for specific report
+    payment = await db.payments.find_one({
+        "user_email": user_email,
+        "report_type": report_type,
+        "report_id": report_id,
+        "status": "completed"
+    })
+    
+    return payment is not None
+
+# Payment Endpoints
+@api_router.post("/payment/create-intent")
+async def create_payment_intent(request: PaymentIntentRequest):
+    """Create Stripe payment intent for premium features"""
+    
+    try:
+        amount_cents = int(PRICING[request.report_type] * 100)
+        
+        intent = stripe.PaymentIntent.create(
+            amount=amount_cents,
+            currency="usd",
+            metadata={
+                "report_type": request.report_type,
+                "report_id": request.report_id or "",
+                "user_email": request.user_email
+            }
+        )
+        
+        return {
+            "client_secret": intent.client_secret,
+            "amount": PRICING[request.report_type]
+        }
+    except Exception as e:
+        logging.error(f"Stripe error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Payment processing error")
+
+@api_router.post("/payment/confirm")
+async def confirm_payment(payment_intent_id: str, user_email: str, report_type: str, report_id: str):
+    """Confirm payment and grant access"""
+    
+    try:
+        intent = stripe.PaymentIntent.retrieve(payment_intent_id)
+        
+        if intent.status == "succeeded":
+            # Record payment
+            payment = Payment(
+                user_email=user_email,
+                report_type=report_type,
+                report_id=report_id,
+                amount=intent.amount / 100,
+                stripe_payment_id=payment_intent_id,
+                status="completed"
+            )
+            
+            doc = payment.model_dump()
+            doc['created_at'] = doc['created_at'].isoformat()
+            await db.payments.insert_one(doc)
+            
+            # If monthly subscription, create subscription record
+            if report_type == "premium_monthly":
+                subscription = UserSubscription(
+                    user_email=user_email,
+                    subscription_type="premium_monthly",
+                    status="active",
+                    stripe_subscription_id=payment_intent_id,
+                    expires_at=datetime.now(timezone.utc) + timedelta(days=30)
+                )
+                
+                sub_doc = subscription.model_dump()
+                sub_doc['created_at'] = sub_doc['created_at'].isoformat()
+                sub_doc['expires_at'] = sub_doc['expires_at'].isoformat()
+                await db.subscriptions.insert_one(sub_doc)
+            
+            return {"status": "success", "message": "Payment confirmed"}
+        else:
+            return {"status": "pending", "message": "Payment pending"}
+            
+    except Exception as e:
+        logging.error(f"Payment confirmation error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Payment confirmation failed")
+
+@api_router.get("/premium/check")
+async def check_premium(user_email: str, report_type: str, report_id: str):
+    """Check if user has premium access"""
+    has_access = await check_premium_access(user_email, report_type, report_id)
+    return {"has_premium_access": has_access}
+
+# PDF Generation Endpoints
+@api_router.get("/birthchart/{profile_id}/pdf")
+async def download_birth_chart_pdf(profile_id: str, user_email: str):
+    """Generate and download Birth Chart PDF (Premium)"""
+    
+    # Check premium access
+    has_access = await check_premium_access(user_email, "birth_chart", profile_id)
+    if not has_access:
+        raise HTTPException(status_code=403, detail="Premium access required")
+    
+    # Get profile and report
+    profile = await db.birth_profiles.find_one({"id": profile_id}, {"_id": 0})
+    report = await db.birth_chart_reports.find_one({"profile_id": profile_id}, {"_id": 0})
+    
+    if not profile or not report:
+        raise HTTPException(status_code=404, detail="Report not found")
+    
+    # Generate PDF
+    pdf_buffer = generate_birth_chart_pdf(profile, report['report_content'])
+    
+    return StreamingResponse(
+        pdf_buffer,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename=birth_chart_{profile['name'].replace(' ', '_')}.pdf"}
+    )
+
+@api_router.get("/kundali-milan/{report_id}/pdf")
+async def download_kundali_milan_pdf(report_id: str, user_email: str):
+    """Generate and download Kundali Milan PDF (Premium)"""
+    
+    # Check premium access
+    has_access = await check_premium_access(user_email, "kundali_milan", report_id)
+    if not has_access:
+        raise HTTPException(status_code=403, detail="Premium access required")
+    
+    # Get report
+    report = await db.kundali_milan_reports.find_one({"id": report_id}, {"_id": 0})
+    if not report:
+        raise HTTPException(status_code=404, detail="Report not found")
+    
+    # Get both profiles
+    person1 = await db.birth_profiles.find_one({"id": report['person1_id']}, {"_id": 0})
+    person2 = await db.birth_profiles.find_one({"id": report['person2_id']}, {"_id": 0})
+    
+    if not person1 or not person2:
+        raise HTTPException(status_code=404, detail="Profiles not found")
+    
+    # Generate PDF
+    pdf_buffer = generate_kundali_milan_pdf(
+        person1, 
+        person2, 
+        report['compatibility_score'], 
+        report['detailed_analysis']
+    )
+    
+    return StreamingResponse(
+        pdf_buffer,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f"attachment; filename=kundali_milan_{person1['name']}_{person2['name']}.pdf"}
+    )
+
+# Share Link Endpoints
+@api_router.post("/share/create")
+async def create_share_link(report_type: str, report_id: str):
+    """Create shareable link for report"""
+    
+    # Check if share link already exists
+    existing = await db.share_links.find_one({
+        "report_type": report_type,
+        "report_id": report_id
+    }, {"_id": 0})
+    
+    if existing:
+        if isinstance(existing['created_at'], str):
+            existing['created_at'] = datetime.fromisoformat(existing['created_at'])
+        return ShareLink(**existing)
+    
+    # Create new share link
+    share_link = ShareLink(
+        report_type=report_type,
+        report_id=report_id
+    )
+    
+    doc = share_link.model_dump()
+    doc['created_at'] = doc['created_at'].isoformat()
+    await db.share_links.insert_one(doc)
+    
+    return share_link
+
+@api_router.get("/share/{token}")
+async def get_shared_report(token: str):
+    """Get report via share link (public access)"""
+    
+    share_link = await db.share_links.find_one({"token": token}, {"_id": 0})
+    if not share_link:
+        raise HTTPException(status_code=404, detail="Share link not found")
+    
+    # Increment view count
+    await db.share_links.update_one(
+        {"token": token},
+        {"$inc": {"views": 1}}
+    )
+    
+    report_type = share_link['report_type']
+    report_id = share_link['report_id']
+    
+    if report_type == "birth_chart":
+        profile = await db.birth_profiles.find_one({"id": report_id}, {"_id": 0})
+        report = await db.birth_chart_reports.find_one({"profile_id": report_id}, {"_id": 0})
+        
+        if not profile or not report:
+            raise HTTPException(status_code=404, detail="Report not found")
+        
+        return {
+            "type": "birth_chart",
+            "profile": profile,
+            "report": report
+        }
+    
+    elif report_type == "kundali_milan":
+        report = await db.kundali_milan_reports.find_one({"id": report_id}, {"_id": 0})
+        if not report:
+            raise HTTPException(status_code=404, detail="Report not found")
+        
+        person1 = await db.birth_profiles.find_one({"id": report['person1_id']}, {"_id": 0})
+        person2 = await db.birth_profiles.find_one({"id": report['person2_id']}, {"_id": 0})
+        
+        return {
+            "type": "kundali_milan",
+            "report": report,
+            "person1": person1,
+            "person2": person2
+        }
+    
+    raise HTTPException(status_code=400, detail="Invalid report type")
+
 # Include the router in the main app
 app.include_router(api_router)
 
