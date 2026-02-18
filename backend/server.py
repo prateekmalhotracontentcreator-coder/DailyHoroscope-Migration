@@ -119,6 +119,46 @@ class BirthChartReport(BaseModel):
 class BirthChartRequest(BaseModel):
     profile_id: str
 
+# Blog Models
+class BlogPost(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    title: str
+    slug: str
+    excerpt: str
+    content: str
+    author: str = "Cosmic Wisdom"
+    category: str = "Astrology"
+    tags: list = []
+    featured_image: str = ""
+    published: bool = False
+    views: int = 0
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class BlogPostCreate(BaseModel):
+    title: str
+    slug: str = ""
+    excerpt: str
+    content: str
+    author: str = "Cosmic Wisdom"
+    category: str = "Astrology"
+    tags: list = []
+    featured_image: str = ""
+    published: bool = False
+
+class BlogPostUpdate(BaseModel):
+    title: str = None
+    slug: str = None
+    excerpt: str = None
+    content: str = None
+    author: str = None
+    category: str = None
+    tags: list = None
+    featured_image: str = None
+    published: bool = None
+
 class KundaliMilanReport(BaseModel):
     model_config = ConfigDict(extra="ignore")
     
