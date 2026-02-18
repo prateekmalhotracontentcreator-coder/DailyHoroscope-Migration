@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAdminAuth } from '../context/AdminAuthContext';
-import { Card } from '../components/ui/card';
-import { Button } from '../components/ui/button';
+import { useAdminAuth } from '../../context/AdminAuthContext';
+import { Card } from '../../components/ui/card';
+import { Button } from '../../components/ui/button';
 import { 
   Users, CreditCard, FileText, TrendingUp, 
   LogOut, Crown, Calendar, IndianRupee,
