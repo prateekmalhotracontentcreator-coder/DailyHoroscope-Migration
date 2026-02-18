@@ -73,8 +73,94 @@ export const Dashboard = () => {
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-    if (!horoscopes[tab] && selectedSign) {
+    if (!horoscopes[tab] && selectedSign && ['daily', 'weekly', 'monthly'].includes(tab)) {
       fetchHoroscope(selectedSign, tab);
+    }
+  };
+
+  const loadBirthProfile = async () => {
+    const savedProfileId = localStorage.getItem('birth-profile-id');
+    if (savedProfileId) {
+      try {
+        const response = await axios.get(`${API}/profile/birth/${savedProfileId}`);
+        setBirthProfile(response.data);
+      } catch (error) {
+        console.error('Error loading birth profile:', error);
+      }
+    }
+  };
+
+  const handleBirthDetailsSubmit = async (formData) => {
+    setLoading((prev) => ({ ...prev, birthChart: true }));
+    try {
+      // Create birth profile
+      const profileResponse = await axios.post(`${API}/profile/birth`, formData);
+      const profile = profileResponse.data;
+      setBirthProfile(profile);
+      localStorage.setItem('birth-profile-id', profile.id);
+      
+      toast.success('Birth details saved successfully!');
+      
+      // Generate birth chart
+      const chartResponse = await axios.post(`${API}/birthchart/generate`, {
+        profile_id: profile.id
+      });
+      setBirthChart(chartResponse.data);
+      toast.success('Birth chart generated!');
+    } catch (error) {
+      console.error('Error creating birth profile:', error);
+      toast.error('Failed to save birth details. Please try again.');
+    } finally {
+      setLoading((prev) => ({ ...prev, birthChart: false }));
+    }
+  };
+
+  const handleGenerateBirthChart = async () => {
+    if (!birthProfile) return;
+    
+    setLoading((prev) => ({ ...prev, birthChart: true }));
+    try {
+      const response = await axios.post(`${API}/birthchart/generate`, {
+        profile_id: birthProfile.id
+      });
+      setBirthChart(response.data);
+      toast.success('Birth chart generated!');
+    } catch (error) {
+      console.error('Error generating birth chart:', error);
+      toast.error('Failed to generate birth chart. Please try again.');
+    } finally {
+      setLoading((prev) => ({ ...prev, birthChart: false }));
+    }
+  };
+
+  const handleKundaliMilanSubmit = async (data) => {
+    setLoading((prev) => ({ ...prev, kundaliMilan: true }));
+    try {
+      // Create profiles for both people
+      const profile1Response = await axios.post(`${API}/profile/birth`, data.person1);
+      const profile2Response = await axios.post(`${API}/profile/birth`, data.person2);
+      
+      const person1 = profile1Response.data;
+      const person2 = profile2Response.data;
+      
+      // Generate Kundali Milan report
+      const milanResponse = await axios.post(`${API}/kundali-milan/generate`, {
+        person1_id: person1.id,
+        person2_id: person2.id
+      });
+      
+      setKundaliMilan({
+        report: milanResponse.data,
+        person1,
+        person2
+      });
+      
+      toast.success('Kundali Milan report generated!');
+    } catch (error) {
+      console.error('Error generating Kundali Milan:', error);
+      toast.error('Failed to generate compatibility report. Please try again.');
+    } finally {
+      setLoading((prev) => ({ ...prev, kundaliMilan: false }));
     }
   };
 
