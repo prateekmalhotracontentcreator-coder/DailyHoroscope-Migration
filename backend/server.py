@@ -972,6 +972,210 @@ async def oauth_callback(session_id: str, response: Response):
         logging.error(f"OAuth callback error: {str(e)}")
         raise HTTPException(status_code=401, detail="Authentication failed")
 
+# ============== ADMIN ENDPOINTS ==============
+
+@api_router.post("/admin/login")
+async def admin_login(request: AdminLoginRequest, response: Response):
+    """Admin login endpoint"""
+    
+    if request.username != ADMIN_USERNAME:
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+    
+    if not verify_admin_password(request.password):
+        raise HTTPException(status_code=401, detail="Invalid credentials")
+    
+    # Create admin session
+    session_token = await create_admin_session(db)
+    set_admin_session_cookie(response, session_token)
+    
+    return AdminLoginResponse(
+        success=True,
+        token=session_token,
+        message="Login successful"
+    )
+
+@api_router.post("/admin/logout")
+async def admin_logout(request: Request, response: Response):
+    """Admin logout endpoint"""
+    
+    session_token = request.cookies.get("admin_session")
+    
+    if session_token:
+        await db.admin_sessions.delete_one({"session_token": session_token})
+    
+    response.delete_cookie("admin_session", path="/")
+    return {"message": "Logged out successfully"}
+
+@api_router.get("/admin/verify")
+async def verify_admin(request: Request):
+    """Verify admin session is valid"""
+    
+    is_admin = await require_admin(request, db)
+    return {"authenticated": is_admin}
+
+@api_router.get("/admin/dashboard")
+async def get_dashboard_stats(request: Request):
+    """Get dashboard statistics"""
+    
+    await require_admin(request, db)
+    
+    # Get today's date range
+    today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
+    today_iso = today_start.isoformat()
+    
+    # Count totals
+    total_users = await db.users.count_documents({})
+    total_payments = await db.payments.count_documents({})
+    total_birth_charts = await db.birth_chart_reports.count_documents({})
+    total_kundali_milans = await db.kundali_milan_reports.count_documents({})
+    active_subscriptions = await db.subscriptions.count_documents({"status": "active"})
+    
+    # Calculate total revenue from completed payments
+    revenue_pipeline = [
+        {"$match": {"status": "completed"}},
+        {"$group": {"_id": None, "total": {"$sum": "$amount"}}}
+    ]
+    revenue_result = await db.payments.aggregate(revenue_pipeline).to_list(1)
+    total_revenue = revenue_result[0]['total'] if revenue_result else 0
+    
+    # Today's counts
+    users_today = await db.users.count_documents({
+        "created_at": {"$gte": today_iso}
+    })
+    payments_today = await db.payments.count_documents({
+        "created_at": {"$gte": today_iso}
+    })
+    
+    return DashboardStats(
+        total_users=total_users,
+        total_payments=total_payments,
+        total_revenue=total_revenue,
+        total_birth_charts=total_birth_charts,
+        total_kundali_milans=total_kundali_milans,
+        active_subscriptions=active_subscriptions,
+        users_today=users_today,
+        payments_today=payments_today
+    )
+
+@api_router.get("/admin/users")
+async def get_all_users(request: Request, skip: int = 0, limit: int = 50):
+    """Get all users with pagination"""
+    
+    await require_admin(request, db)
+    
+    users = await db.users.find(
+        {},
+        {"_id": 0, "password_hash": 0}
+    ).sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
+    
+    total = await db.users.count_documents({})
+    
+    user_list = []
+    for user in users:
+        created_at = user.get('created_at', '')
+        if hasattr(created_at, 'isoformat'):
+            created_at = created_at.isoformat()
+        
+        user_list.append(UserListItem(
+            user_id=user.get('user_id', ''),
+            email=user.get('email', ''),
+            name=user.get('name', ''),
+            picture=user.get('picture'),
+            google_id=user.get('google_id'),
+            created_at=str(created_at),
+            has_password=bool(user.get('password_hash'))
+        ))
+    
+    return {
+        "users": user_list,
+        "total": total,
+        "skip": skip,
+        "limit": limit
+    }
+
+@api_router.get("/admin/payments")
+async def get_all_payments(request: Request, skip: int = 0, limit: int = 50):
+    """Get all payments with pagination"""
+    
+    await require_admin(request, db)
+    
+    payments = await db.payments.find(
+        {},
+        {"_id": 0}
+    ).sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
+    
+    total = await db.payments.count_documents({})
+    
+    payment_list = []
+    for payment in payments:
+        created_at = payment.get('created_at', '')
+        if hasattr(created_at, 'isoformat'):
+            created_at = created_at.isoformat()
+        
+        payment_list.append(PaymentListItem(
+            id=payment.get('id', ''),
+            user_email=payment.get('user_email', ''),
+            report_type=payment.get('report_type', ''),
+            amount=payment.get('amount', 0),
+            status=payment.get('status', ''),
+            razorpay_order_id=payment.get('razorpay_order_id', ''),
+            razorpay_payment_id=payment.get('razorpay_payment_id'),
+            created_at=str(created_at)
+        ))
+    
+    return {
+        "payments": payment_list,
+        "total": total,
+        "skip": skip,
+        "limit": limit
+    }
+
+@api_router.get("/admin/reports")
+async def get_all_reports(request: Request, skip: int = 0, limit: int = 50):
+    """Get all generated reports"""
+    
+    await require_admin(request, db)
+    
+    # Get birth chart reports
+    birth_charts = await db.birth_chart_reports.find(
+        {},
+        {"_id": 0}
+    ).sort("generated_at", -1).skip(skip).limit(limit).to_list(limit)
+    
+    # Get kundali milan reports
+    kundali_milans = await db.kundali_milan_reports.find(
+        {},
+        {"_id": 0}
+    ).sort("generated_at", -1).skip(skip).limit(limit).to_list(limit)
+    
+    total_birth_charts = await db.birth_chart_reports.count_documents({})
+    total_kundali_milans = await db.kundali_milan_reports.count_documents({})
+    
+    return {
+        "birth_charts": birth_charts,
+        "kundali_milans": kundali_milans,
+        "total_birth_charts": total_birth_charts,
+        "total_kundali_milans": total_kundali_milans
+    }
+
+@api_router.delete("/admin/user/{user_id}")
+async def delete_user(request: Request, user_id: str):
+    """Delete a user (admin only)"""
+    
+    await require_admin(request, db)
+    
+    result = await db.users.delete_one({"user_id": user_id})
+    
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="User not found")
+    
+    # Also delete user sessions
+    await db.user_sessions.delete_many({"user_id": user_id})
+    
+    return {"message": "User deleted successfully"}
+
+# ============== END ADMIN ENDPOINTS ==============
+
 # Include the router in the main app
 app.include_router(api_router)
 
