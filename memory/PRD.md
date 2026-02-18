@@ -133,16 +133,18 @@ Build a fully functional Daily Horoscope Prediction app with:
 ## Backlog (Prioritized)
 
 ### P1 - High Priority (Next)
-1. **SEO Optimization** - Meta tags, sitemap.xml, robots.txt, structured data for Google indexing
-2. **Blog System** - Create/edit posts (admin), list/view (public) for content marketing
+1. **Switch Razorpay to Live Mode** - Update from test to production keys for real payments
+2. **Custom Domain Setup** - Connect a custom domain for branding
 
 ### P2 - Medium Priority
 1. **Implement Subscription Flow UI** - Frontend for monthly premium subscription
-2. **Populate User Account Page** - Dedicated page with purchase history
+2. **Email notifications** - Send welcome emails, payment confirmations
 
 ### P3 - Future Enhancements
 1. Improve PDF sharing with direct cloud links
 2. Account Settings & Payment History pages for users
+3. Social media sharing buttons on blog posts
+4. Newsletter subscription feature
 
 ## Last Updated
 February 2026
