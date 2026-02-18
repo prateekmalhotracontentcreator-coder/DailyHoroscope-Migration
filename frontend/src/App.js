@@ -15,6 +15,8 @@ import { WeeklyHoroscope } from './pages/WeeklyHoroscope';
 import { MonthlyHoroscope } from './pages/MonthlyHoroscope';
 import { BirthChartPage } from './pages/BirthChartPage';
 import { KundaliMilanPage } from './pages/KundaliMilanPage';
+import { BlogList } from './pages/BlogList';
+import { BlogPost } from './pages/BlogPost';
 import { AdminLogin } from './pages/admin/AdminLogin';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 import { Toaster } from './components/ui/sonner';
@@ -39,6 +41,10 @@ function App() {
                 <Route path="/horoscope/daily" element={<DailyHoroscope />} />
                 <Route path="/horoscope/weekly" element={<WeeklyHoroscope />} />
                 <Route path="/horoscope/monthly" element={<MonthlyHoroscope />} />
+                
+                {/* Blog Routes - Public */}
+                <Route path="/blog" element={<BlogList />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
                 
                 {/* Protected Routes - Premium (Login Required) */}
                 <Route path="/birth-chart" element={
