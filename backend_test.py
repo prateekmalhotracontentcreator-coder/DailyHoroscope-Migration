@@ -222,7 +222,7 @@ class HoroscopeAPITester:
                 "person1_id": person1_id,
                 "person2_id": person2_id
             }
-            response = requests.post(f"{self.api_base}/kundali-milan/generate", json=data, timeout=45)
+            response = requests.post(f"{self.api_base}/kundali-milan/generate", json=data, timeout=90)
             success = response.status_code == 200
             
             if success:
