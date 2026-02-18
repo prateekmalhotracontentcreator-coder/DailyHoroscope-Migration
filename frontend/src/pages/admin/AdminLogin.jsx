@@ -42,7 +42,7 @@ export const AdminLogin = () => {
             <Shield className="h-8 w-8 text-gold" />
           </div>
           <h1 className="text-2xl font-bold text-white">Admin Portal</h1>
-          <p className="text-gray-400 mt-2">Cosmic Wisdom Administration</p>
+          <p className="text-gray-400 mt-2">Everyday Horoscope Administration</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
