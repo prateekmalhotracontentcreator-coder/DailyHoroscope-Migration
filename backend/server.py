@@ -453,8 +453,7 @@ Make it comprehensive, authentic, and helpful. Keep the report around 1000-1200 
         chat = LlmChat(
             api_key=os.environ.get('EMERGENT_LLM_KEY'),
             session_id=f"kundali_milan_{person1.id}_{person2.id}_{datetime.now().isoformat()}",
-            system_message=system_prompt,
-            timeout=90  # Increase timeout to 90 seconds
+            system_message=system_prompt
         ).with_model("openai", "gpt-5.2")
         
         user_message = UserMessage(text=user_prompt)
