@@ -65,6 +65,47 @@ class ZodiacSign(BaseModel):
     dates: str
     element: str
 
+class BirthProfile(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    date_of_birth: str
+    time_of_birth: str
+    location: str
+    created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class BirthProfileCreate(BaseModel):
+    name: str
+    date_of_birth: str
+    time_of_birth: str
+    location: str
+
+class BirthChartReport(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    profile_id: str
+    report_content: str
+    generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class BirthChartRequest(BaseModel):
+    profile_id: str
+
+class KundaliMilanReport(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    person1_id: str
+    person2_id: str
+    compatibility_score: int
+    detailed_analysis: str
+    generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+
+class KundaliMilanRequest(BaseModel):
+    person1_id: str
+    person2_id: str
+
 # LLM Integration for horoscope generation
 async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
     """Generate horoscope using OpenAI GPT-5.2 via emergentintegrations"""
