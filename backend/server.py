@@ -36,7 +36,8 @@ razorpay_client = razorpay.Client(auth=(
 
 # Pricing in INR (Indian Rupees)
 PRICING = {
-    "birth_chart": 799,  # ₹799
+    "birth_chart": 799,  # ₹799 - Basic
+    "brihat_kundli": 1499,  # ₹1499 - Comprehensive detailed report
     "kundali_milan": 1199,  # ₹1199
     "premium_monthly": 1599  # ₹1599/month
 }
