@@ -11,7 +11,7 @@ from typing import List, Literal, Optional
 import uuid
 from datetime import datetime, timezone, date, timedelta
 from emergentintegrations.llm.chat import LlmChat, UserMessage
-import stripe
+import razorpay
 from pdf_generator import generate_birth_chart_pdf, generate_kundali_milan_pdf
 import secrets
 from auth_utils import (
