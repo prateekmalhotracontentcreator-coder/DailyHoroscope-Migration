@@ -19,6 +19,11 @@ from auth_utils import (
     hash_password, verify_password, create_session, get_current_user,
     get_or_create_oauth_user, set_session_cookie, exchange_session_id_for_token
 )
+from admin_utils import (
+    AdminLoginRequest, AdminLoginResponse, DashboardStats, UserListItem, PaymentListItem,
+    verify_admin_password, create_admin_session, require_admin, set_admin_session_cookie,
+    ADMIN_USERNAME
+)
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
