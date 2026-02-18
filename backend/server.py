@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Response
 from fastapi.responses import StreamingResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
@@ -14,6 +14,11 @@ from emergentintegrations.llm.chat import LlmChat, UserMessage
 import stripe
 from pdf_generator import generate_birth_chart_pdf, generate_kundali_milan_pdf
 import secrets
+from auth_utils import (
+    User, UserSession, RegisterRequest, LoginRequest, UserResponse,
+    hash_password, verify_password, create_session, get_current_user,
+    get_or_create_oauth_user, set_session_cookie, exchange_session_id_for_token
+)
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
