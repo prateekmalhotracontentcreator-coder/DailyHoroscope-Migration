@@ -572,17 +572,16 @@ async def check_premium_access(user_email: str, report_type: str, report_id: str
     
     return payment is not None
 
-# Payment Endpoints
 # Payment Endpoints (Razorpay)
 @api_router.post("/payment/create-order")
 async def create_payment_order(request: PaymentIntentRequest):
     """Create Razorpay order for premium features"""
     
+    # Validate report type first (outside try-catch to return proper 400)
+    if request.report_type not in PRICING:
+        raise HTTPException(status_code=400, detail="Invalid report type")
+    
     try:
-        # Validate report type
-        if request.report_type not in PRICING:
-            raise HTTPException(status_code=400, detail="Invalid report type")
-        
         amount_paise = int(PRICING[request.report_type] * 100)  # Convert to paise
         
         # Create Razorpay order
@@ -618,6 +617,8 @@ async def create_payment_order(request: PaymentIntentRequest):
             "key_id": os.environ.get('RAZORPAY_KEY_ID')
         }
             
+    except HTTPException:
+        raise
     except Exception as e:
         logging.error(f"Razorpay order creation error: {str(e)}")
         raise HTTPException(status_code=500, detail="Payment order creation failed")
