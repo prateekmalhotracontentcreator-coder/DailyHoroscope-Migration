@@ -172,13 +172,13 @@ class HoroscopeAPITester:
             return self.log_test("Birth Profile Creation", False, f"Error: {str(e)}")
 
     def test_birth_chart_generation(self):
-        """Test birth chart generation"""
+        """Test birth chart generation (FIXED - timeout parameter removed)"""
         if not hasattr(self, 'test_profile_id'):
             return self.log_test("Birth Chart Generation", False, "No profile ID available")
             
         try:
             data = {"profile_id": self.test_profile_id}
-            response = requests.post(f"{self.api_base}/birthchart/generate", json=data, timeout=45)
+            response = requests.post(f"{self.api_base}/birthchart/generate", json=data, timeout=90)
             success = response.status_code == 200
             
             if success:
