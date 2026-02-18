@@ -8,10 +8,11 @@ import { Label } from '../../components/ui/label';
 import { 
   Users, CreditCard, FileText, TrendingUp, 
   LogOut, Crown, Calendar, IndianRupee,
-  BarChart3, ArrowUpRight, ArrowDownRight, Settings, Lock, Eye, EyeOff
+  BarChart3, ArrowUpRight, ArrowDownRight, Settings, Lock, Eye, EyeOff, BookOpen
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
+import { AdminBlogManager } from './AdminBlogManager';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
