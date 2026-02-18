@@ -1,10 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import { Card } from '../components/ui/card';
-import { Button } from '../components/ui/button';
-import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart, LogOut, Crown } from 'lucide-react';
-import { toast } from 'sonner';
+import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart } from 'lucide-react';
+import { UserAccountMenu } from '../components/UserAccountMenu';
 
 export const Home = () => {
   const navigate = useNavigate();
