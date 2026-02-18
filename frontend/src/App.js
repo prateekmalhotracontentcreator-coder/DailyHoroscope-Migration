@@ -25,36 +25,18 @@ function App() {
           <Toaster position="top-center" richColors />
           <BrowserRouter>
             <Routes>
-              {/* Public Routes */}
+              {/* Auth Routes */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/auth/callback" element={<AuthCallback />} />
               
-              {/* Protected Routes */}
-              <Route path="/" element={
-                <ProtectedRoute>
-                  <Home />
-                </ProtectedRoute>
-              } />
+              {/* Public Routes - Free Access */}
+              <Route path="/" element={<Home />} />
+              <Route path="/horoscope/daily" element={<DailyHoroscope />} />
+              <Route path="/horoscope/weekly" element={<WeeklyHoroscope />} />
+              <Route path="/horoscope/monthly" element={<MonthlyHoroscope />} />
               
-              <Route path="/horoscope/daily" element={
-                <ProtectedRoute>
-                  <DailyHoroscope />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/horoscope/weekly" element={
-                <ProtectedRoute>
-                  <WeeklyHoroscope />
-                </ProtectedRoute>
-              } />
-              
-              <Route path="/horoscope/monthly" element={
-                <ProtectedRoute>
-                  <MonthlyHoroscope />
-                </ProtectedRoute>
-              } />
-              
+              {/* Protected Routes - Premium (Login Required) */}
               <Route path="/birth-chart" element={
                 <ProtectedRoute>
                   <BirthChartPage />
