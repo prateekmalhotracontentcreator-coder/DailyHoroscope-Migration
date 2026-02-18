@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card } from '../components/ui/card';
-import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart, Crown } from 'lucide-react';
+import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart, Crown, BookOpen } from 'lucide-react';
 import { Header } from '../components/Header';
 
 export const Home = () => {
@@ -54,6 +54,15 @@ export const Home = () => {
       bgColor: 'bg-pink-500/10',
       path: '/kundali-milan',
       premium: true
+    },
+    {
+      id: 'blog',
+      title: 'Cosmic Blog',
+      description: 'Astrology insights and zodiac guides',
+      icon: BookOpen,
+      color: 'text-purple-500',
+      bgColor: 'bg-purple-500/10',
+      path: '/blog'
     }
   ];
 
