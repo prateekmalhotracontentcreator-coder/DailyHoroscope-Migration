@@ -19,7 +19,7 @@ export const Header = () => {
             data-testid="header-logo"
           >
             <Sparkles className="h-8 w-8 text-gold" />
-            <h1 className="text-2xl font-playfair font-semibold">Cosmic Wisdom</h1>
+            <h1 className="text-2xl font-playfair font-semibold">Everyday Horoscope</h1>
           </div>
           
           <div className="flex items-center space-x-4">
