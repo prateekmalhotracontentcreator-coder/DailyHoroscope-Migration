@@ -1,5 +1,5 @@
 # Cosmic Wisdom Horoscope App
-# https://cosmicwisdom.emergentagent.com
+# https://everydayhoroscope.in
 
 User-agent: *
 Allow: /
@@ -13,4 +13,4 @@ Disallow: /register
 Disallow: /auth/
 
 # Sitemap location
-Sitemap: https://cosmicwisdom.emergentagent.com/sitemap.xml
+Sitemap: https://everydayhoroscope.in/sitemap.xml
