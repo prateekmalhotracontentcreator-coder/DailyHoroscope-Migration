@@ -21,8 +21,8 @@ from auth_utils import (
 )
 from admin_utils import (
     AdminLoginRequest, AdminLoginResponse, DashboardStats, UserListItem, PaymentListItem,
-    verify_admin_password, create_admin_session, require_admin, set_admin_session_cookie,
-    ADMIN_USERNAME
+    ChangePasswordRequest, verify_admin_password, create_admin_session, require_admin, 
+    set_admin_session_cookie, update_admin_password, ADMIN_USERNAME
 )
 
 ROOT_DIR = Path(__file__).parent
