@@ -118,20 +118,17 @@ Build a fully functional Daily Horoscope Prediction app with:
 
 ## Backlog (Prioritized)
 
-### P1 - High Priority
-1. **Implement Subscription Flow UI** - Add monthly subscription purchase flow in frontend
-2. **Populate User Account Page** - Create dedicated account page with purchase history, subscription status
+### P1 - High Priority (Next)
+1. **SEO Optimization** - Meta tags, sitemap.xml, robots.txt, structured data for Google indexing
+2. **Blog System** - Create/edit posts (admin), list/view (public) for content marketing
 
 ### P2 - Medium Priority
-1. **Improve PDF Sharing** - Upload PDF to cloud storage for direct sharing links
-2. **Navigation Persistence** - Verify browser back/forward maintains app state
+1. **Implement Subscription Flow UI** - Frontend for monthly premium subscription
+2. **Populate User Account Page** - Dedicated page with purchase history
 
 ### P3 - Future Enhancements
-1. Account Settings page
-2. Payment History page
-3. Subscription management (cancel/upgrade)
-4. Push notifications for daily horoscopes
-5. Favorite zodiac signs feature
+1. Improve PDF sharing with direct cloud links
+2. Account Settings & Payment History pages for users
 
 ## Last Updated
 February 2026
