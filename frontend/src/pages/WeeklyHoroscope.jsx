@@ -15,6 +15,7 @@ export const WeeklyHoroscope = () => {
   const [selectedSign, setSelectedSign] = useState(localStorage.getItem('selected-sign') || null);
   const [horoscope, setHoroscope] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [signsLoading, setSignsLoading] = useState(true);
 
   useEffect(() => {
     fetchSigns();
@@ -29,6 +30,8 @@ export const WeeklyHoroscope = () => {
       setSigns(response.data);
     } catch (error) {
       console.error('Error fetching signs:', error);
+    } finally {
+      setSignsLoading(false);
     }
   };
 
@@ -67,16 +70,22 @@ export const WeeklyHoroscope = () => {
         {!selectedSign ? (
           <>
             <p className="text-center text-muted-foreground mb-8">Select your zodiac sign</p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {signs.map((sign) => (
-                <ZodiacCard
-                  key={sign.id}
-                  sign={sign}
-                  onClick={handleSignSelect}
-                  selected={false}
-                />
-              ))}
-            </div>
+            {signsLoading ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">Loading zodiac signs...</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {signs.map((sign) => (
+                  <ZodiacCard
+                    key={sign.id}
+                    sign={sign}
+                    onClick={handleSignSelect}
+                    selected={false}
+                  />
+                ))}
+              </div>
+            )}
           </>
         ) : (
           <div className="space-y-6">
