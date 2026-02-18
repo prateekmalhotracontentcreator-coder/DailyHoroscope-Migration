@@ -15,6 +15,7 @@ export const DailyHoroscope = () => {
   const [selectedSign, setSelectedSign] = useState(localStorage.getItem('selected-sign') || null);
   const [horoscope, setHoroscope] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [signsLoading, setSignsLoading] = useState(true);
 
   useEffect(() => {
     fetchSigns();
