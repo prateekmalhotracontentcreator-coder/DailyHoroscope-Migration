@@ -18,11 +18,10 @@ export const AuthCallback = () => {
     hasProcessed.current = true;
 
     const processAuth = async () => {
-      const hash = location.hash;
-      const params = new URLSearchParams(hash.substring(1));
-      const sessionId = params.get('session_id');
+      const params = new URLSearchParams(location.search);
+      const code = params.get('code');
 
-      if (!sessionId) {
+      if (!code) {
         navigate('/login');
         return;
       }
@@ -32,7 +31,7 @@ export const AuthCallback = () => {
           `${API}/auth/oauth/callback`,
           null,
           {
-            params: { session_id: sessionId },
+            params: { session_id: code },
             withCredentials: true
           }
         );
