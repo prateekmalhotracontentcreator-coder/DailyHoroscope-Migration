@@ -8,7 +8,7 @@ import os
 import time
 
 # Use the backend URL from environment
-BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://birth-chart-staging.preview.emergentagent.com')
+BASE_URL = os.environ.get('REACT_APP_BACKEND_URL', 'https://cosmic-reports-2.preview.emergentagent.com')
 API = f"{BASE_URL}/api"
 
 # Test session token created via mongosh
