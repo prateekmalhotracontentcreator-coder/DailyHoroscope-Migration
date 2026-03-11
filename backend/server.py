@@ -10,7 +10,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Literal, Optional
 import uuid
 from datetime import datetime, timezone, date, timedelta
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+import anthropic
 import razorpay
 from pdf_generator import generate_birth_chart_pdf, generate_kundali_milan_pdf
 import secrets
@@ -278,11 +278,10 @@ class PaymentIntentRequest(BaseModel):
     report_id: Optional[str] = None
     user_email: str
 
-# LLM Integration for horoscope generation
+# LLM Integration for horoscope generation using Claude
 async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
-    """Generate horoscope using OpenAI GPT-5.2 via emergentintegrations"""
+    """Generate horoscope using Claude API"""
     
-    # System prompts based on astrology principles
     system_prompts = {
         "daily": f"You are a professional astrologer with deep knowledge of Western astrology. Generate a detailed, authentic daily horoscope for {sign} based on astrological principles including planetary movements, house positions, and elemental influences. The horoscope should cover: love & relationships, career & finances, health & wellness, and a lucky element (number, color, or time). Make it personal, insightful, and actionable. Keep it around 120-150 words.",
         "weekly": f"You are a professional astrologer with deep knowledge of Western astrology. Generate a comprehensive weekly horoscope for {sign} based on astrological principles. Cover the major planetary transits this week and their impact on: relationships, career opportunities, personal growth, and challenges to watch for. Provide guidance and advice. Keep it around 180-220 words.",
@@ -296,15 +295,18 @@ async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
     }
     
     try:
-        chat = LlmChat(
-            api_key=os.environ.get('EMERGENT_LLM_KEY'),
-            session_id=f"horoscope_{sign}_{horoscope_type}_{datetime.now().isoformat()}",
-            system_message=system_prompts[horoscope_type]
-        ).with_model("openai", "gpt-5.2")
+        client = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
         
-        user_message = UserMessage(text=user_prompts[horoscope_type])
-        response = await chat.send_message(user_message)
-        return response
+        message = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=1024,
+            system=system_prompts[horoscope_type],
+            messages=[
+                {"role": "user", "content": user_prompts[horoscope_type]}
+            ]
+        )
+        
+        return message.content[0].text
         
     except Exception as e:
         logging.error(f"Error generating horoscope with LLM: {str(e)}")
@@ -440,7 +442,7 @@ async def list_birth_profiles():
 
 # Birth Chart Generation
 async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
-    """Generate comprehensive birth chart report using AI"""
+    """Generate comprehensive birth chart report using Claude API"""
     
     system_prompt = """You are an expert Vedic astrologer. Generate a birth chart analysis covering:
 
@@ -457,15 +459,18 @@ Be concise, insightful, and authentic. Target 600-700 words."""
     user_prompt = f"Birth chart for {profile.name}, born {profile.date_of_birth} at {profile.time_of_birth} in {profile.location}."
     
     try:
-        chat = LlmChat(
-            api_key=os.environ.get('EMERGENT_LLM_KEY'),
-            session_id=f"birthchart_{profile.id}_{datetime.now().isoformat()}",
-            system_message=system_prompt
-        ).with_model("openai", "gpt-5.2")
+        client = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
         
-        user_message = UserMessage(text=user_prompt)
-        response = await chat.send_message(user_message)
-        return response
+        message = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=2048,
+            system=system_prompt,
+            messages=[
+                {"role": "user", "content": user_prompt}
+            ]
+        )
+        
+        return message.content[0].text
         
     except Exception as e:
         logging.error(f"Error generating birth chart: {str(e)}")
@@ -747,19 +752,21 @@ IMPORTANT:
 - Remedies should be practical and implementable"""
 
     try:
-        chat = LlmChat(
-            api_key=os.environ.get('EMERGENT_LLM_KEY'),
-            model="gpt-5.2"
+        client = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
+        
+        message = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=8192,
+            system=system_prompt,
+            messages=[
+                {"role": "user", "content": user_prompt}
+            ]
         )
         
-        response = await chat.send_message_async(
-            system_prompt,
-            [UserMessage(text=user_prompt)]
-        )
+        response_text = message.content[0].text
         
         # Parse JSON response
         import json
-        response_text = response.strip()
         if response_text.startswith("```json"):
             response_text = response_text[7:]
         if response_text.startswith("```"):
@@ -846,7 +853,7 @@ async def get_brihat_kundli(report_id: str):
 
 # Kundali Milan
 async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthProfile) -> tuple:
-    """Generate comprehensive Kundali Milan report using AI"""
+    """Generate comprehensive Kundali Milan report using Claude API"""
     
     system_prompt = """You are an expert Vedic astrologer specializing in Kundali Milan (horoscope matching) for marriage compatibility.
 Analyze the compatibility between two individuals based on their birth details using authentic Vedic astrology principles.
@@ -885,14 +892,18 @@ Make it comprehensive, authentic, and helpful. Keep the report around 1000-1200 
     user_prompt = f"Generate a detailed Kundali Milan compatibility analysis between {person1.name} (born {person1.date_of_birth} at {person1.time_of_birth} in {person1.location}) and {person2.name} (born {person2.date_of_birth} at {person2.time_of_birth} in {person2.location}) for marriage compatibility."
     
     try:
-        chat = LlmChat(
-            api_key=os.environ.get('EMERGENT_LLM_KEY'),
-            session_id=f"kundali_milan_{person1.id}_{person2.id}_{datetime.now().isoformat()}",
-            system_message=system_prompt
-        ).with_model("openai", "gpt-5.2")
+        client = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
         
-        user_message = UserMessage(text=user_prompt)
-        response = await chat.send_message(user_message)
+        message = client.messages.create(
+            model="claude-sonnet-4-20250514",
+            max_tokens=4096,
+            system=system_prompt,
+            messages=[
+                {"role": "user", "content": user_prompt}
+            ]
+        )
+        
+        response = message.content[0].text
         
         import re
         score_match = re.search(r'(\d+)\s*/\s*36', response)
