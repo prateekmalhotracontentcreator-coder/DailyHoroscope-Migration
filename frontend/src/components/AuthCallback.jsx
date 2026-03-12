@@ -27,13 +27,11 @@ export const AuthCallback = () => {
       }
 
       try {
+        // Send code in request BODY to avoid URL encoding issues with '/' in code
         const response = await axios.post(
           `${API}/auth/oauth/callback`,
-          null,
-          {
-            params: { session_id: code },
-            withCredentials: true
-          }
+          { session_id: code },
+          { withCredentials: true }
         );
 
         await checkAuth();
