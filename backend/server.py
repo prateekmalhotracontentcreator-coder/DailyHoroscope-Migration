@@ -1389,15 +1389,22 @@ async def logout(request: Request, response: Response):
     response.delete_cookie("session_token", path="/")
     return {"message": "Logged out successfully"}
 
+class OAuthCallbackRequest(BaseModel):
+    session_id: str
+
 @api_router.post("/auth/oauth/callback")
-async def oauth_callback(session_id: str, response: Response):
-    """Handle Emergent Google OAuth callback"""
+async def oauth_callback(response: Response, body: OAuthCallbackRequest = None, session_id: str = None):
+    """Handle Google OAuth callback — accepts code from body or query param"""
+    # Support both JSON body and query param
+    code = (body.session_id if body else None) or session_id
+    if not code:
+        raise HTTPException(status_code=400, detail="Missing authorization code")
     
     # REMINDER: DO NOT HARDCODE THE URL, OR ADD ANY FALLBACKS OR REDIRECT URLS, THIS BREAKS THE AUTH
     
     try:
         # Exchange session_id for user data
-        user_data = await exchange_session_id_for_token(session_id)
+        user_data = await exchange_session_id_for_token(code)
         
         # Get or create user
         user = await get_or_create_oauth_user(
