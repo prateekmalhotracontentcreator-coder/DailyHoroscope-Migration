@@ -16,6 +16,7 @@ import anthropic
 import razorpay
 from pdf_generator import generate_birth_chart_pdf, generate_kundali_milan_pdf
 import secrets
+import httpx
 from auth_utils import (
     User, UserSession, RegisterRequest, LoginRequest, UserResponse,
     hash_password, verify_password, create_session, get_current_user,
