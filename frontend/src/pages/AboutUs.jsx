@@ -6,6 +6,7 @@ import { Sparkles, Star, Heart, Shield } from 'lucide-react';
 
 export const AboutUs = () => {
   return (
+    <>
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
         title="About Us — SkyHound Studios"
@@ -59,4 +60,5 @@ export const AboutUs = () => {
       <Footer />
     </div>
   );
+    </>
 };
