@@ -1,0 +1,30 @@
+# Everyday Horoscope
+# https://everydayhoroscope.in
+
+User-agent: *
+Allow: /
+Allow: /horoscope/
+Allow: /blog/
+Allow: /about
+Allow: /contact
+Allow: /pricing
+Allow: /birth-chart
+Allow: /kundali-milan
+Allow: /brihat-kundli
+Allow: /terms
+Allow: /privacy
+Allow: /subscription-terms
+Allow: /refund-policy
+Allow: /cookie-policy
+
+# Disallow admin, auth, and user-only pages
+Disallow: /admin/
+Disallow: /admin
+Disallow: /login
+Disallow: /register
+Disallow: /auth/
+Disallow: /account
+Disallow: /reset-password
+
+# Sitemap
+Sitemap: https://everydayhoroscope.in/sitemap.xml
