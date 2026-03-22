@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../../context/AdminAuthContext';
 import { Card } from '../../components/ui/card';
@@ -11,8 +11,8 @@ import {
   ArrowUpRight, Settings, Lock, Eye, EyeOff,
   BookOpen, Ban, ShieldOff, ShieldCheck, Trash2,
   Search, RefreshCw, MessageSquare, Mail, Activity,
-  AlertTriangle, CheckCircle, Clock, Zap, Star,
-  Heart, Hash, Copy, ExternalLink, Filter
+  AlertTriangle, CheckCircle, Zap, Star,
+  Heart, Copy, Send, X
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -21,46 +21,96 @@ import { AdminBlogManager } from './AdminBlogManager';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-// ─── Helper: copy to clipboard ──────────────────────────────────────────────
-const copyToClipboard = (text, label) => {
+const copyToClipboard = (text, label) =>
   navigator.clipboard.writeText(text).then(() => toast.success(`${label} copied`));
-};
 
-// ─── Status badge ────────────────────────────────────────────────────────────
 const StatusBadge = ({ status }) => {
   const map = {
-    completed:  'bg-green-500/20 text-green-400',
-    generated:  'bg-green-500/20 text-green-400',
-    created:    'bg-yellow-500/20 text-yellow-400',
-    pending:    'bg-yellow-500/20 text-yellow-400',
-    failed:     'bg-red-500/20 text-red-400',
-    active:     'bg-green-500/20 text-green-400',
-    suspended:  'bg-orange-500/20 text-orange-400',
-    restricted: 'bg-yellow-500/20 text-yellow-400',
-    locked:     'bg-purple-500/20 text-purple-400',
+    completed: 'bg-green-500/20 text-green-400', generated: 'bg-green-500/20 text-green-400',
+    created: 'bg-yellow-500/20 text-yellow-400', pending: 'bg-yellow-500/20 text-yellow-400',
+    failed: 'bg-red-500/20 text-red-400', active: 'bg-green-500/20 text-green-400',
+    suspended: 'bg-orange-500/20 text-orange-400', restricted: 'bg-yellow-500/20 text-yellow-400',
   };
-  return (
-    <span className={`px-2 py-0.5 rounded text-xs font-medium capitalize ${map[status] || 'bg-gray-500/20 text-gray-400'}`}>
-      {status}
-    </span>
-  );
+  return <span className={`px-2 py-0.5 rounded text-xs font-medium capitalize ${map[status] || 'bg-gray-500/20 text-gray-400'}`}>{status}</span>;
 };
 
-// ─── Mono ID with copy button ─────────────────────────────────────────────────────
 const MonoID = ({ id, label }) => (
   <span className="inline-flex items-center gap-1 font-mono text-xs text-gray-400 group">
-    {id ? id.slice(0, 8) + '...' : '—'}
+    {id ? id.slice(0, 10) + '...' : '\u2014'}
     {id && (
-      <button
-        onClick={() => copyToClipboard(id, label || 'ID')}
-        className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5 hover:text-gold"
-        title={`Copy full ID: ${id}`}
-      >
+      <button onClick={() => copyToClipboard(id, label || 'ID')}
+        className="opacity-0 group-hover:opacity-100 transition-opacity p-0.5 hover:text-gold" title={id}>
         <Copy className="h-3 w-3" />
       </button>
     )}
   </span>
 );
+
+// ─── In-app Reply Modal ───────────────────────────────────────────────────────
+const ReplyModal = ({ msg, onClose, getAuthHeaders }) => {
+  const [subject, setSubject] = useState(`Re: ${msg.subject || 'Your message'}`);
+  const [body, setBody]       = useState('');
+  const [sending, setSending] = useState(false);
+
+  const handleSend = async () => {
+    if (!body.trim()) { toast.error('Please write a reply'); return; }
+    setSending(true);
+    try {
+      await axios.post(`${API}/admin/contact/reply`,
+        { to_email: msg.email, to_name: msg.name, subject, message: body },
+        { headers: getAuthHeaders() }
+      );
+      toast.success(`Reply sent to ${msg.email}`);
+      onClose();
+    } catch (err) {
+      toast.error(err.response?.data?.detail || 'Failed to send reply');
+    } finally {
+      setSending(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4">
+      <div className="w-full max-w-lg bg-gray-800 border border-gray-600 rounded-xl p-6 shadow-2xl">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-white font-semibold flex items-center gap-2">
+            <Mail className="h-4 w-4 text-gold" />Reply to {msg.name}
+          </h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-white"><X className="h-4 w-4" /></button>
+        </div>
+        <div className="text-xs text-gray-400 mb-4 p-3 bg-gray-700/50 rounded-lg">
+          <p className="font-medium text-gray-300 mb-1">Original message:</p>
+          <p className="line-clamp-3">{msg.message}</p>
+        </div>
+        <div className="space-y-3">
+          <div>
+            <Label className="text-gray-300 text-xs">To</Label>
+            <Input value={`${msg.name} <${msg.email}>`} readOnly className="bg-gray-700/50 border-gray-600 text-gray-400 text-sm" />
+          </div>
+          <div>
+            <Label className="text-gray-300 text-xs">Subject</Label>
+            <Input value={subject} onChange={e => setSubject(e.target.value)} className="bg-gray-700 border-gray-600 text-white text-sm" />
+          </div>
+          <div>
+            <Label className="text-gray-300 text-xs">Message</Label>
+            <textarea
+              value={body}
+              onChange={e => setBody(e.target.value)}
+              className="w-full h-32 px-3 py-2 bg-gray-700 border border-gray-600 rounded-md text-white text-sm resize-none focus:outline-none focus:ring-1 focus:ring-gold"
+              placeholder="Type your reply here..."
+            />
+          </div>
+        </div>
+        <div className="flex gap-3 mt-4">
+          <Button onClick={onClose} variant="outline" className="flex-1 border-gray-600 text-gray-300">Cancel</Button>
+          <Button onClick={handleSend} disabled={sending} className="flex-1 bg-gold hover:bg-gold/90 text-gray-900">
+            <Send className="h-3.5 w-3.5 mr-1.5" />{sending ? 'Sending...' : 'Send Reply'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -70,7 +120,6 @@ export const AdminDashboard = () => {
   const [loading,  setLoading]  = useState(true);
   const [activeTab,setActiveTab]= useState('overview');
 
-  // Data states
   const [users,    setUsers]    = useState([]);
   const [payments, setPayments] = useState([]);
   const [contacts, setContacts] = useState([]);
@@ -78,15 +127,14 @@ export const AdminDashboard = () => {
   const [healthData, setHealthData] = useState(null);
   const [healthLoading, setHealthLoading] = useState(false);
   const [prefetchLoading, setPrefetchLoading] = useState(false);
+  const [replyMsg, setReplyMsg] = useState(null);
 
-  // Search/filter
   const [userSearch,    setUserSearch]    = useState('');
   const [reportSearch,  setReportSearch]  = useState('');
   const [reportFilter,  setReportFilter]  = useState('all');
   const [paymentFilter, setPaymentFilter] = useState('all');
   const [actionLoading, setActionLoading] = useState(null);
 
-  // Password modal
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [currentPassword,   setCurrentPassword]   = useState('');
   const [newPassword,       setNewPassword]       = useState('');
@@ -123,32 +171,30 @@ export const AdminDashboard = () => {
     } catch (err) {
       if (err.response?.status === 401) navigate('/admin/login');
       toast.error('Failed to load dashboard data');
-    } finally {
-      setLoading(false);
-    }
+    } finally { setLoading(false); }
   };
 
   const fetchContacts = async () => {
     try {
       const res = await axios.get(`${API}/admin/contacts`, { headers: getAuthHeaders() });
       setContacts(res.data.messages || []);
-    } catch { toast.error('Failed to load contact messages'); }
+    } catch { toast.error('Failed to load messages'); }
   };
 
   const fetchReports = async () => {
     try {
       const res = await axios.get(`${API}/admin/reports?limit=100`, { headers: getAuthHeaders() });
       setReports(res.data);
-    } catch { toast.error('Failed to load reports'); }
+    } catch (err) {
+      toast.error('Failed to load reports');
+    }
   };
 
   const fetchHealth = async () => {
     setHealthLoading(true);
     try {
-      const [prefetchRes] = await Promise.all([
-        axios.get(`${API}/horoscope/prefetch-status`),
-      ]);
-      setHealthData({ prefetch: prefetchRes.data });
+      const res = await axios.get(`${API}/horoscope/prefetch-status`);
+      setHealthData({ prefetch: res.data });
     } catch { toast.error('Failed to load health data'); }
     finally { setHealthLoading(false); }
   };
@@ -156,21 +202,17 @@ export const AdminDashboard = () => {
   const triggerPrefetch = async () => {
     setPrefetchLoading(true);
     try {
-      // Hit each horoscope type to trigger generation for all signs
       const signs = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces'];
       const types = ['daily','weekly','monthly'];
       let generated = 0;
       for (const type of types) {
         for (const sign of signs) {
-          try {
-            await axios.get(`${API}/horoscope/${sign}/${type}`);
-            generated++;
-          } catch {}
+          try { await axios.get(`${API}/horoscope/${sign}/${type}`); generated++; } catch {}
         }
       }
-      toast.success(`Prefetch triggered: ${generated} horoscopes checked/generated`);
+      toast.success(`Prefetch complete: ${generated}/36 horoscopes checked`);
       fetchHealth();
-    } catch { toast.error('Prefetch trigger failed'); }
+    } catch { toast.error('Prefetch failed'); }
     finally { setPrefetchLoading(false); }
   };
 
@@ -178,7 +220,7 @@ export const AdminDashboard = () => {
     setActionLoading(userId + action);
     try {
       await axios.post(`${API}/admin/user/${userId}/action`, { action }, { headers: getAuthHeaders() });
-      toast.success(`User ${action}ed successfully`);
+      toast.success(`User ${action}ed`);
       fetchDashboardData();
     } catch (err) {
       toast.error(err.response?.data?.detail || `Failed to ${action} user`);
@@ -186,7 +228,7 @@ export const AdminDashboard = () => {
   };
 
   const handleDeleteUser = async (userId, userName) => {
-    if (!window.confirm(`Permanently delete ${userName}? This cannot be undone.`)) return;
+    if (!window.confirm(`Permanently delete ${userName}?`)) return;
     setActionLoading(userId + 'delete');
     try {
       await axios.delete(`${API}/admin/user/${userId}`, { headers: getAuthHeaders() });
@@ -203,7 +245,8 @@ export const AdminDashboard = () => {
     if (newPassword.length < 8) { toast.error('Min 8 characters'); return; }
     setChangingPassword(true);
     try {
-      await axios.post(`${API}/admin/change-password`,
+      await axios.post(
+        `${API}/admin/change-password`,
         { current_password: currentPassword, new_password: newPassword },
         { headers: getAuthHeaders() }
       );
@@ -211,15 +254,15 @@ export const AdminDashboard = () => {
       setShowPasswordModal(false);
       setCurrentPassword(''); setNewPassword(''); setConfirmPassword('');
     } catch (err) {
-      toast.error(err.response?.data?.detail || 'Failed');
+      // ← FIX: properly surface the backend error
+      toast.error(err.response?.data?.detail || 'Failed to change password');
     } finally { setChangingPassword(false); }
   };
 
   const getUserStatus = (user) => {
     if (user.is_suspended) return { label: 'Suspended',  color: 'bg-orange-500/20 text-orange-400' };
     if (user.is_restricted) return { label: 'Restricted', color: 'bg-yellow-500/20 text-yellow-400' };
-    if (user.locked_until && new Date(user.locked_until) > new Date())
-      return { label: 'Locked', color: 'bg-purple-500/20 text-purple-400' };
+    if (user.locked_until && new Date(user.locked_until) > new Date()) return { label: 'Locked', color: 'bg-purple-500/20 text-purple-400' };
     return { label: 'Active', color: 'bg-green-500/20 text-green-400' };
   };
 
@@ -256,26 +299,29 @@ export const AdminDashboard = () => {
   }
 
   const statCards = [
-    { label: 'Total Users',          value: stats?.total_users || 0,         icon: Users,        color: 'text-blue-400',   bgColor: 'bg-blue-400/10',   change: stats?.users_today,    changeLabel: 'new today' },
-    { label: 'Total Revenue',        value: `\u20b9${(stats?.total_revenue || 0).toLocaleString()}`, icon: IndianRupee, color: 'text-green-400', bgColor: 'bg-green-400/10', change: stats?.payments_today, changeLabel: 'payments today' },
-    { label: 'Birth Charts',         value: stats?.total_birth_charts || 0,  icon: Star,         color: 'text-purple-400', bgColor: 'bg-purple-400/10' },
-    { label: 'Kundali Milans',       value: stats?.total_kundali_milans || 0,icon: Heart,        color: 'text-pink-400',   bgColor: 'bg-pink-400/10' },
-    { label: 'Active Subscriptions', value: stats?.active_subscriptions || 0,icon: TrendingUp,   color: 'text-gold',       bgColor: 'bg-gold/10' },
-    { label: 'Total Payments',       value: stats?.total_payments || 0,      icon: CreditCard,   color: 'text-cyan-400',   bgColor: 'bg-cyan-400/10' },
+    { label: 'Total Users',          value: stats?.total_users || 0,       icon: Users,       color: 'text-blue-400',   bgColor: 'bg-blue-400/10',   change: stats?.users_today,    changeLabel: 'new today' },
+    { label: 'Total Revenue',        value: `\u20b9${(stats?.total_revenue||0).toLocaleString()}`, icon: IndianRupee, color: 'text-green-400', bgColor: 'bg-green-400/10', change: stats?.payments_today, changeLabel: 'payments today' },
+    { label: 'Birth Charts',         value: stats?.total_birth_charts || 0,  icon: Star,        color: 'text-purple-400', bgColor: 'bg-purple-400/10' },
+    { label: 'Kundali Milans',       value: stats?.total_kundali_milans || 0,icon: Heart,       color: 'text-pink-400',   bgColor: 'bg-pink-400/10' },
+    { label: 'Active Subscriptions', value: stats?.active_subscriptions || 0,icon: TrendingUp,  color: 'text-gold',       bgColor: 'bg-gold/10' },
+    { label: 'Total Payments',       value: stats?.total_payments || 0,      icon: CreditCard,  color: 'text-cyan-400',   bgColor: 'bg-cyan-400/10' },
   ];
 
   const tabs = [
-    { id: 'overview',  label: 'Overview',    icon: BarChart3 },
-    { id: 'health',    label: 'System',      icon: Activity },
-    { id: 'users',     label: 'Users',       icon: Users },
-    { id: 'reports',   label: 'Reports',     icon: FileText },
-    { id: 'payments',  label: 'Payments',    icon: CreditCard },
-    { id: 'contacts',  label: 'Messages',    icon: MessageSquare },
-    { id: 'blog',      label: 'Blog',        icon: BookOpen },
+    { id: 'overview', label: 'Overview',  icon: BarChart3 },
+    { id: 'health',   label: 'System',    icon: Activity },
+    { id: 'users',    label: 'Users',     icon: Users },
+    { id: 'reports',  label: 'Reports',   icon: FileText },
+    { id: 'payments', label: 'Payments',  icon: CreditCard },
+    { id: 'contacts', label: 'Messages',  icon: MessageSquare },
+    { id: 'blog',     label: 'Blog',      icon: BookOpen },
   ];
 
   return (
     <div className="min-h-screen bg-gray-900">
+
+      {/* Reply Modal */}
+      {replyMsg && <ReplyModal msg={replyMsg} onClose={() => setReplyMsg(null)} getAuthHeaders={getAuthHeaders} />}
 
       {/* Password Modal */}
       {showPasswordModal && (
@@ -283,7 +329,7 @@ export const AdminDashboard = () => {
           <Card className="w-full max-w-md p-6 bg-gray-800 border-gray-700 mx-4">
             <div className="flex items-center gap-2 mb-6">
               <Lock className="h-5 w-5 text-gold" />
-              <h2 className="text-xl font-bold text-white">Change Password</h2>
+              <h2 className="text-xl font-bold text-white">Change Admin Password</h2>
             </div>
             <div className="space-y-4">
               {[['Current Password', currentPassword, setCurrentPassword, showCurrentPwd, setShowCurrentPwd],
@@ -301,12 +347,12 @@ export const AdminDashboard = () => {
               ))}
               <div>
                 <Label className="text-gray-300">Confirm New Password</Label>
-                <Input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}
-                  className="bg-gray-700 border-gray-600 text-white" />
+                <Input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} className="bg-gray-700 border-gray-600 text-white" />
               </div>
             </div>
             <div className="flex gap-3 mt-6">
-              <Button onClick={() => setShowPasswordModal(false)} variant="outline" className="flex-1 border-gray-600 text-gray-300">Cancel</Button>
+              <Button onClick={() => { setShowPasswordModal(false); setCurrentPassword(''); setNewPassword(''); setConfirmPassword(''); }}
+                variant="outline" className="flex-1 border-gray-600 text-gray-300">Cancel</Button>
               <Button onClick={handleChangePassword} disabled={changingPassword} className="flex-1 bg-gold hover:bg-gold/90 text-gray-900">
                 {changingPassword ? 'Changing...' : 'Change Password'}
               </Button>
@@ -322,7 +368,7 @@ export const AdminDashboard = () => {
             <BarChart3 className="h-7 w-7 text-gold" />
             <div>
               <h1 className="text-lg font-bold text-white leading-none">EverydayHoroscope Admin</h1>
-              <p className="text-xs text-gray-400 mt-0.5">Monitoring · Healing · Operations</p>
+              <p className="text-xs text-gray-400 mt-0.5">Monitoring \u00b7 Healing \u00b7 Operations</p>
             </div>
           </div>
           <div className="flex gap-2">
@@ -368,22 +414,19 @@ export const AdminDashboard = () => {
           {tabs.map(({ id, label, icon: Icon }) => (
             <Button key={id} onClick={() => setActiveTab(id)} size="sm"
               className={activeTab === id ? 'bg-gold text-gray-900' : 'border-gray-600 text-gray-300 hover:bg-gray-700'}
-              variant={activeTab === id ? 'default' : 'outline'}
-            >
+              variant={activeTab === id ? 'default' : 'outline'}>
               <Icon className="h-3.5 w-3.5 mr-1.5" />{label}
             </Button>
           ))}
         </div>
 
-        {/* ──────────────── OVERVIEW ──────────────── */}
+        {/* OVERVIEW */}
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <Card className="p-6 bg-gray-800 border-gray-700">
-              <h3 className="text-base font-semibold text-white mb-4 flex items-center gap-2">
-                <Users className="h-4 w-4 text-blue-400" />Recent Users
-              </h3>
+              <h3 className="text-base font-semibold text-white mb-4 flex items-center gap-2"><Users className="h-4 w-4 text-blue-400" />Recent Users</h3>
               <div className="space-y-2">
-                {users.slice(0, 6).map((u, i) => {
+                {users.slice(0, 5).map((u, i) => {
                   const s = getUserStatus(u);
                   return (
                     <div key={i} className="flex items-center justify-between py-2 border-b border-gray-700 last:border-0">
@@ -399,14 +442,12 @@ export const AdminDashboard = () => {
               </div>
             </Card>
             <Card className="p-6 bg-gray-800 border-gray-700">
-              <h3 className="text-base font-semibold text-white mb-4 flex items-center gap-2">
-                <CreditCard className="h-4 w-4 text-green-400" />Recent Payments
-              </h3>
+              <h3 className="text-base font-semibold text-white mb-4 flex items-center gap-2"><CreditCard className="h-4 w-4 text-green-400" />Recent Payments</h3>
               <div className="space-y-2">
-                {payments.slice(0, 6).map((p, i) => (
+                {payments.slice(0, 5).map((p, i) => (
                   <div key={i} className="flex items-center justify-between py-2 border-b border-gray-700 last:border-0">
                     <div>
-                      <p className="text-white text-sm font-medium">₹{p.amount} — {p.report_type?.replace(/_/g, ' ')}</p>
+                      <p className="text-white text-sm font-medium">\u20b9{p.amount} \u2014 {p.report_type?.replace(/_/g,' ')}</p>
                       <p className="text-gray-400 text-xs">{p.user_email}</p>
                       <MonoID id={p.razorpay_order_id} label="Order ID" />
                     </div>
@@ -419,46 +460,36 @@ export const AdminDashboard = () => {
           </div>
         )}
 
-        {/* ──────────────── SYSTEM HEALTH ──────────────── */}
+        {/* SYSTEM HEALTH */}
         {activeTab === 'health' && (
           <div className="space-y-6">
-            {/* Horoscope Cache */}
             <Card className="p-6 bg-gray-800 border-gray-700">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-base font-semibold text-white flex items-center gap-2">
-                  <Zap className="h-4 w-4 text-gold" />Horoscope Cache Status
-                </h3>
+                <h3 className="text-base font-semibold text-white flex items-center gap-2"><Zap className="h-4 w-4 text-gold" />Horoscope Cache</h3>
                 <div className="flex gap-2">
                   <Button onClick={fetchHealth} variant="outline" size="sm" className="border-gray-600 text-gray-300" disabled={healthLoading}>
                     <RefreshCw className={`h-3.5 w-3.5 mr-1.5 ${healthLoading ? 'animate-spin' : ''}`} />Refresh
                   </Button>
                   <Button onClick={triggerPrefetch} size="sm" className="bg-gold hover:bg-gold/90 text-gray-900" disabled={prefetchLoading}>
-                    <Zap className="h-3.5 w-3.5 mr-1.5" />
-                    {prefetchLoading ? 'Running...' : 'Trigger Prefetch'}
+                    <Zap className="h-3.5 w-3.5 mr-1.5" />{prefetchLoading ? 'Running...' : 'Trigger Prefetch'}
                   </Button>
                 </div>
               </div>
               {healthData?.prefetch ? (
                 <div className="grid grid-cols-3 gap-4">
-                  {['daily', 'weekly', 'monthly'].map(type => {
+                  {['daily','weekly','monthly'].map(type => {
                     const d = healthData.prefetch[type];
                     const pct = Math.round((d.cached / d.total) * 100);
                     const full = d.cached === d.total;
                     return (
-                      <div key={type} className={`p-4 rounded-lg border ${
-                        full ? 'border-green-500/30 bg-green-500/5' : 'border-yellow-500/30 bg-yellow-500/5'
-                      }`}>
+                      <div key={type} className={`p-4 rounded-lg border ${full ? 'border-green-500/30 bg-green-500/5' : 'border-yellow-500/30 bg-yellow-500/5'}`}>
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-white capitalize font-medium">{type}</span>
-                          {full
-                            ? <CheckCircle className="h-4 w-4 text-green-400" />
-                            : <AlertTriangle className="h-4 w-4 text-yellow-400" />}
+                          {full ? <CheckCircle className="h-4 w-4 text-green-400" /> : <AlertTriangle className="h-4 w-4 text-yellow-400" />}
                         </div>
                         <p className="text-2xl font-bold text-white">{d.cached}/{d.total}</p>
                         <div className="mt-2 h-1.5 bg-gray-700 rounded-full overflow-hidden">
-                          <div className={`h-full rounded-full transition-all ${
-                            full ? 'bg-green-400' : 'bg-yellow-400'
-                          }`} style={{ width: `${pct}%` }} />
+                          <div className={`h-full rounded-full transition-all ${full ? 'bg-green-400' : 'bg-yellow-400'}`} style={{ width: `${pct}%` }} />
                         </div>
                         <p className="text-xs text-gray-400 mt-1">For {d.date}</p>
                       </div>
@@ -474,59 +505,27 @@ export const AdminDashboard = () => {
               )}
             </Card>
 
-            {/* Quick System Checks */}
+            {/* Stuck Payments */}
             <Card className="p-6 bg-gray-800 border-gray-700">
-              <h3 className="text-base font-semibold text-white mb-4 flex items-center gap-2">
-                <Activity className="h-4 w-4 text-blue-400" />Quick System Checks
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {[
-                  { label: 'Total Users Registered',     value: stats?.total_users,          icon: Users,       color: 'text-blue-400' },
-                  { label: 'Revenue Collected',           value: `\u20b9${(stats?.total_revenue||0).toLocaleString()}`, icon: IndianRupee, color: 'text-green-400' },
-                  { label: 'Reports Generated',           value: (stats?.total_birth_charts||0) + (stats?.total_kundali_milans||0), icon: FileText, color: 'text-purple-400' },
-                  { label: 'Active Subscriptions',        value: stats?.active_subscriptions, icon: TrendingUp,  color: 'text-gold' },
-                  { label: 'Payments Created (all time)', value: stats?.total_payments,       icon: CreditCard,  color: 'text-cyan-400' },
-                  { label: 'New Users Today',             value: stats?.users_today,          icon: ArrowUpRight, color: 'text-green-400' },
-                ].map(({ label, value, icon: Icon, color }) => (
-                  <div key={label} className="flex items-center gap-3 p-3 bg-gray-700/40 rounded-lg">
-                    <Icon className={`h-5 w-5 ${color} flex-shrink-0`} />
-                    <div>
-                      <p className="text-xs text-gray-400">{label}</p>
-                      <p className="text-white font-semibold">{value ?? '\u2014'}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card>
-
-            {/* Stuck Reports Detector */}
-            <Card className="p-6 bg-gray-800 border-gray-700">
-              <h3 className="text-base font-semibold text-white mb-1 flex items-center gap-2">
-                <AlertTriangle className="h-4 w-4 text-yellow-400" />Stuck / Incomplete Payments
-              </h3>
-              <p className="text-xs text-gray-400 mb-4">Payments in &quot;created&quot; status for &gt;1 hour — order initiated but not verified</p>
+              <h3 className="text-base font-semibold text-white mb-1 flex items-center gap-2"><AlertTriangle className="h-4 w-4 text-yellow-400" />Stuck Payments</h3>
+              <p className="text-xs text-gray-400 mb-4">Payments in &quot;created&quot; status for &gt;1 hour</p>
               {(() => {
-                const stale = payments.filter(p => {
-                  if (p.status !== 'created') return false;
-                  const age = Date.now() - new Date(p.created_at).getTime();
-                  return age > 60 * 60 * 1000; // > 1 hour
-                });
+                const stale = payments.filter(p => p.status === 'created' && Date.now() - new Date(p.created_at).getTime() > 60 * 60 * 1000);
                 return stale.length === 0 ? (
                   <div className="flex items-center gap-2 text-green-400">
-                    <CheckCircle className="h-4 w-4" />
-                    <span className="text-sm">All clear — no stuck payments detected</span>
+                    <CheckCircle className="h-4 w-4" /><span className="text-sm">All clear \u2014 no stuck payments</span>
                   </div>
                 ) : (
                   <div className="space-y-2">
                     <p className="text-yellow-400 text-sm font-medium">{stale.length} stuck payment{stale.length > 1 ? 's' : ''} found</p>
                     {stale.map((p, i) => (
                       <div key={i} className="p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg text-sm">
-                        <p className="text-white">{p.user_email} — ₹{p.amount} ({p.report_type?.replace(/_/g,' ')})</p>
-                        <div className="flex items-center gap-4 mt-1">
-                          <span className="text-gray-400 text-xs">Order: <span className="font-mono">{p.razorpay_order_id}</span></span>
-                          <button onClick={() => copyToClipboard(p.razorpay_order_id, 'Order ID')} className="text-gold text-xs hover:underline">Copy Order ID</button>
+                        <p className="text-white">{p.user_email} \u2014 \u20b9{p.amount} ({p.report_type?.replace(/_/g,' ')})</p>
+                        <div className="flex items-center gap-3 mt-1">
+                          <span className="text-gray-400 text-xs font-mono">{p.razorpay_order_id}</span>
+                          <button onClick={() => copyToClipboard(p.razorpay_order_id, 'Order ID')} className="text-gold text-xs hover:underline">Copy</button>
                         </div>
-                        <p className="text-gray-500 text-xs mt-1">Created: {new Date(p.created_at).toLocaleString()}</p>
+                        <p className="text-gray-500 text-xs mt-1">{new Date(p.created_at).toLocaleString()}</p>
                       </div>
                     ))}
                   </div>
@@ -536,16 +535,15 @@ export const AdminDashboard = () => {
           </div>
         )}
 
-        {/* ──────────────── USERS ──────────────── */}
+        {/* USERS */}
         {activeTab === 'users' && (
           <Card className="p-6 bg-gray-800 border-gray-700">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-base font-semibold text-white">User Management ({filteredUsers.length})</h3>
+              <h3 className="text-base font-semibold text-white">Users ({filteredUsers.length})</h3>
               <div className="flex items-center gap-2">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-gray-400" />
-                  <input type="text" placeholder="Search name / email / ID..." value={userSearch}
-                    onChange={e => setUserSearch(e.target.value)}
+                  <input type="text" placeholder="Name / email / ID..." value={userSearch} onChange={e => setUserSearch(e.target.value)}
                     className="bg-gray-700 border border-gray-600 text-white rounded-md pl-8 pr-3 py-1.5 text-sm w-52 focus:outline-none focus:ring-1 focus:ring-gold" />
                 </div>
                 <Button onClick={fetchDashboardData} variant="outline" size="sm" className="border-gray-600 text-gray-300">
@@ -573,29 +571,29 @@ export const AdminDashboard = () => {
                       <tr key={i} className="border-b border-gray-700/50 hover:bg-gray-700/20">
                         <td className="py-3 pr-3 text-white font-medium">{user.name}</td>
                         <td className="py-3 pr-3">
-                          <div className="flex items-center gap-1">
-                            <span className="text-gray-400">{user.email}</span>
-                            <button onClick={() => copyToClipboard(user.email, 'Email')} className="opacity-0 hover:opacity-100 text-gold">
+                          <div className="flex items-center gap-1 group">
+                            <span className="text-gray-400 text-xs">{user.email}</span>
+                            <button onClick={() => copyToClipboard(user.email, 'Email')} className="opacity-0 group-hover:opacity-100 text-gold p-0.5">
                               <Copy className="h-3 w-3" />
                             </button>
                           </div>
                         </td>
                         <td className="py-3 pr-3"><MonoID id={user.user_id} label="User ID" /></td>
                         <td className="py-3 pr-3">
-                          <span className={`px-2 py-0.5 rounded text-xs ${
-                            user.google_id ? 'bg-blue-500/20 text-blue-400' : 'bg-gray-600/20 text-gray-400'
-                          }`}>{user.google_id ? 'Google' : 'Email'}</span>
+                          <span className={`px-2 py-0.5 rounded text-xs ${user.google_id ? 'bg-blue-500/20 text-blue-400' : 'bg-gray-600/20 text-gray-400'}`}>
+                            {user.google_id ? 'Google' : 'Email'}
+                          </span>
                         </td>
                         <td className="py-3 pr-3 text-gray-400 text-xs">{new Date(user.created_at).toLocaleDateString()}</td>
                         <td className="py-3 pr-3"><StatusBadge status={status.label.toLowerCase()} /></td>
                         <td className="py-3">
                           <div className="flex items-center gap-1">
                             {!user.is_restricted
-                              ? <button onClick={() => handleUserAction(user.user_id, 'restrict')} disabled={!!actionLoading} title="Restrict" className="p-1.5 rounded bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20 disabled:opacity-50"><ShieldOff className="h-3.5 w-3.5" /></button>
-                              : <button onClick={() => handleUserAction(user.user_id, 'unrestrict')} disabled={!!actionLoading} title="Unrestrict" className="p-1.5 rounded bg-green-500/10 text-green-400 hover:bg-green-500/20 disabled:opacity-50"><ShieldCheck className="h-3.5 w-3.5" /></button>}
+                              ? <button onClick={() => handleUserAction(user.user_id,'restrict')} disabled={!!actionLoading} title="Restrict" className="p-1.5 rounded bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20 disabled:opacity-50"><ShieldOff className="h-3.5 w-3.5" /></button>
+                              : <button onClick={() => handleUserAction(user.user_id,'unrestrict')} disabled={!!actionLoading} title="Unrestrict" className="p-1.5 rounded bg-green-500/10 text-green-400 hover:bg-green-500/20 disabled:opacity-50"><ShieldCheck className="h-3.5 w-3.5" /></button>}
                             {!user.is_suspended
-                              ? <button onClick={() => handleUserAction(user.user_id, 'suspend')} disabled={!!actionLoading} title="Suspend" className="p-1.5 rounded bg-orange-500/10 text-orange-400 hover:bg-orange-500/20 disabled:opacity-50"><Ban className="h-3.5 w-3.5" /></button>
-                              : <button onClick={() => handleUserAction(user.user_id, 'unsuspend')} disabled={!!actionLoading} title="Unsuspend" className="p-1.5 rounded bg-green-500/10 text-green-400 hover:bg-green-500/20 disabled:opacity-50"><ShieldCheck className="h-3.5 w-3.5" /></button>}
+                              ? <button onClick={() => handleUserAction(user.user_id,'suspend')} disabled={!!actionLoading} title="Suspend" className="p-1.5 rounded bg-orange-500/10 text-orange-400 hover:bg-orange-500/20 disabled:opacity-50"><Ban className="h-3.5 w-3.5" /></button>
+                              : <button onClick={() => handleUserAction(user.user_id,'unsuspend')} disabled={!!actionLoading} title="Unsuspend" className="p-1.5 rounded bg-green-500/10 text-green-400 hover:bg-green-500/20 disabled:opacity-50"><ShieldCheck className="h-3.5 w-3.5" /></button>}
                             <button onClick={() => handleDeleteUser(user.user_id, user.name)} disabled={!!actionLoading} title="Delete" className="p-1.5 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20 disabled:opacity-50"><Trash2 className="h-3.5 w-3.5" /></button>
                           </div>
                         </td>
@@ -606,16 +604,10 @@ export const AdminDashboard = () => {
               </table>
               {filteredUsers.length === 0 && <p className="text-gray-500 text-center py-8">No users found</p>}
             </div>
-            <div className="mt-4 pt-4 border-t border-gray-700 flex flex-wrap gap-4 text-xs text-gray-500">
-              <span><ShieldOff className="h-3 w-3 inline text-yellow-400 mr-1" />Restrict — limits premium features</span>
-              <span><Ban className="h-3 w-3 inline text-orange-400 mr-1" />Suspend — 24hr block</span>
-              <span><Trash2 className="h-3 w-3 inline text-red-400 mr-1" />Delete — permanent</span>
-              <span><Copy className="h-3 w-3 inline text-gold mr-1" />Hover IDs to copy</span>
-            </div>
           </Card>
         )}
 
-        {/* ──────────────── REPORTS TRACKER ──────────────── */}
+        {/* REPORTS */}
         {activeTab === 'reports' && (
           <Card className="p-6 bg-gray-800 border-gray-700">
             <div className="flex items-center justify-between mb-4">
@@ -623,9 +615,8 @@ export const AdminDashboard = () => {
               <div className="flex items-center gap-2 flex-wrap">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-gray-400" />
-                  <input type="text" placeholder="Search by Report ID..." value={reportSearch}
-                    onChange={e => setReportSearch(e.target.value)}
-                    className="bg-gray-700 border border-gray-600 text-white rounded-md pl-8 pr-3 py-1.5 text-sm w-48 focus:outline-none focus:ring-1 focus:ring-gold" />
+                  <input type="text" placeholder="Search by ID..." value={reportSearch} onChange={e => setReportSearch(e.target.value)}
+                    className="bg-gray-700 border border-gray-600 text-white rounded-md pl-8 pr-3 py-1.5 text-sm w-44 focus:outline-none focus:ring-1 focus:ring-gold" />
                 </div>
                 <select value={reportFilter} onChange={e => setReportFilter(e.target.value)}
                   className="bg-gray-700 border border-gray-600 text-white rounded-md px-3 py-1.5 text-sm focus:outline-none">
@@ -638,72 +629,74 @@ export const AdminDashboard = () => {
                 </Button>
               </div>
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="text-left text-gray-400 border-b border-gray-700 text-xs uppercase tracking-wider">
-                    <th className="pb-3 pr-3">Type</th>
-                    <th className="pb-3 pr-3">Report ID</th>
-                    <th className="pb-3 pr-3">Profile / Person IDs</th>
-                    <th className="pb-3 pr-3">Generated</th>
-                    <th className="pb-3">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredReports.map((r, i) => {
-                    const Icon = r.icon;
-                    return (
-                      <tr key={i} className="border-b border-gray-700/50 hover:bg-gray-700/20">
-                        <td className="py-3 pr-3">
-                          <span className={`flex items-center gap-1.5 text-xs font-medium ${r.color}`}>
-                            <Icon className="h-3.5 w-3.5" />{r.type}
-                          </span>
-                        </td>
-                        <td className="py-3 pr-3"><MonoID id={r.id} label="Report ID" /></td>
-                        <td className="py-3 pr-3">
-                          {r.profile_id && <MonoID id={r.profile_id} label="Profile ID" />}
-                          {r.person1_id && (
-                            <div className="space-y-0.5">
-                              <div className="text-gray-500 text-xs">P1: <MonoID id={r.person1_id} label="Person 1 ID" /></div>
-                              <div className="text-gray-500 text-xs">P2: <MonoID id={r.person2_id} label="Person 2 ID" /></div>
-                            </div>
-                          )}
-                        </td>
-                        <td className="py-3 pr-3 text-gray-400 text-xs">
-                          {r.generated_at ? new Date(r.generated_at).toLocaleString() : '—'}
-                        </td>
-                        <td className="py-3">
-                          <StatusBadge status="generated" />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-              {filteredReports.length === 0 && (
-                <div className="text-center py-8">
-                  <p className="text-gray-500">No reports found</p>
-                  <Button onClick={fetchReports} className="mt-3 bg-gold hover:bg-gold/90 text-gray-900" size="sm">Load Reports</Button>
-                </div>
-              )}
-            </div>
+            {filteredReports.length === 0 ? (
+              <div className="text-center py-12">
+                <FileText className="h-10 w-10 text-gray-600 mx-auto mb-3" />
+                <p className="text-gray-500 mb-3">No reports yet, or click Refresh to load</p>
+                <Button onClick={fetchReports} className="bg-gold hover:bg-gold/90 text-gray-900" size="sm">
+                  <RefreshCw className="h-3.5 w-3.5 mr-1.5" />Load Reports
+                </Button>
+              </div>
+            ) : (
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-left text-gray-400 border-b border-gray-700 text-xs uppercase tracking-wider">
+                      <th className="pb-3 pr-3">Type</th>
+                      <th className="pb-3 pr-3">Report ID</th>
+                      <th className="pb-3 pr-3">Profile / Person IDs</th>
+                      <th className="pb-3 pr-3">Generated</th>
+                      <th className="pb-3">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredReports.map((r, i) => {
+                      const Icon = r.icon;
+                      return (
+                        <tr key={i} className="border-b border-gray-700/50 hover:bg-gray-700/20">
+                          <td className="py-3 pr-3">
+                            <span className={`flex items-center gap-1.5 text-xs font-medium ${r.color}`}>
+                              <Icon className="h-3.5 w-3.5" />{r.type}
+                            </span>
+                          </td>
+                          <td className="py-3 pr-3"><MonoID id={r.id} label="Report ID" /></td>
+                          <td className="py-3 pr-3">
+                            {r.profile_id && <MonoID id={r.profile_id} label="Profile ID" />}
+                            {r.person1_id && (
+                              <div className="space-y-0.5">
+                                <div className="text-gray-500 text-xs">P1: <MonoID id={r.person1_id} label="Person 1 ID" /></div>
+                                <div className="text-gray-500 text-xs">P2: <MonoID id={r.person2_id} label="Person 2 ID" /></div>
+                              </div>
+                            )}
+                          </td>
+                          <td className="py-3 pr-3 text-gray-400 text-xs">
+                            {r.generated_at ? new Date(r.generated_at).toLocaleString() : '\u2014'}
+                          </td>
+                          <td className="py-3"><StatusBadge status="generated" /></td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </Card>
         )}
 
-        {/* ──────────────── PAYMENTS ──────────────── */}
+        {/* PAYMENTS */}
         {activeTab === 'payments' && (
           <Card className="p-6 bg-gray-800 border-gray-700">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h3 className="text-base font-semibold text-white">All Payments ({filteredPayments.length})</h3>
-                <p className="text-xs text-gray-400 mt-0.5">Total Revenue: <span className="text-green-400 font-semibold">₹{(stats?.total_revenue||0).toLocaleString()}</span></p>
+                <h3 className="text-base font-semibold text-white">Payments ({filteredPayments.length})</h3>
+                <p className="text-xs text-gray-400 mt-0.5">Revenue: <span className="text-green-400 font-semibold">\u20b9{(stats?.total_revenue||0).toLocaleString()}</span></p>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex gap-2">
                 <select value={paymentFilter} onChange={e => setPaymentFilter(e.target.value)}
                   className="bg-gray-700 border border-gray-600 text-white rounded-md px-3 py-1.5 text-sm focus:outline-none">
                   <option value="all">All Status</option>
                   <option value="completed">Completed</option>
-                  <option value="created">Pending</option>
+                  <option value="created">Created (Pending)</option>
                   <option value="failed">Failed</option>
                 </select>
                 <Button onClick={fetchDashboardData} variant="outline" size="sm" className="border-gray-600 text-gray-300">
@@ -728,7 +721,7 @@ export const AdminDashboard = () => {
                     <tr key={i} className="border-b border-gray-700/50 hover:bg-gray-700/20">
                       <td className="py-3 pr-3 text-gray-400 text-xs">{p.user_email}</td>
                       <td className="py-3 pr-3 text-white capitalize">{p.report_type?.replace(/_/g,' ')}</td>
-                      <td className="py-3 pr-3 text-white font-medium">₹{p.amount}</td>
+                      <td className="py-3 pr-3 text-white font-medium">\u20b9{p.amount}</td>
                       <td className="py-3 pr-3"><MonoID id={p.razorpay_order_id} label="Order ID" /></td>
                       <td className="py-3 pr-3"><StatusBadge status={p.status} /></td>
                       <td className="py-3 text-gray-400 text-xs">{new Date(p.created_at).toLocaleDateString()}</td>
@@ -738,15 +731,20 @@ export const AdminDashboard = () => {
               </table>
               {filteredPayments.length === 0 && <p className="text-gray-500 text-center py-8">No payments found</p>}
             </div>
+            {/* Explain Created status */}
+            <div className="mt-4 pt-4 border-t border-gray-700 text-xs text-gray-500">
+              <span className="inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-yellow-400 inline-block" />Created = payment order initiated, awaiting Razorpay confirmation</span>
+              <span className="ml-4 inline-flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-400 inline-block" />Completed = payment verified, report access granted</span>
+            </div>
           </Card>
         )}
 
-        {/* ──────────────── CONTACTS ──────────────── */}
+        {/* CONTACTS */}
         {activeTab === 'contacts' && (
           <Card className="p-6 bg-gray-800 border-gray-700">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-base font-semibold text-white flex items-center gap-2">
-                <MessageSquare className="h-4 w-4 text-gold" />Contact Messages ({contacts.length})
+                <MessageSquare className="h-4 w-4 text-gold" />Messages ({contacts.length})
               </h3>
               <Button onClick={fetchContacts} variant="outline" size="sm" className="border-gray-600 text-gray-300">
                 <RefreshCw className="h-3.5 w-3.5 mr-1.5" />Refresh
@@ -762,10 +760,13 @@ export const AdminDashboard = () => {
                     </div>
                     <div className="text-right">
                       <p className="text-gray-500 text-xs">{new Date(msg.created_at).toLocaleString()}</p>
-                      <a href={`mailto:${msg.email}?subject=Re: ${msg.subject || 'Your message'}`}
-                        className="text-gold text-xs hover:underline flex items-center justify-end gap-1 mt-1">
+                      {/* ← FIX: in-app reply button instead of mailto */}
+                      <button
+                        onClick={() => setReplyMsg(msg)}
+                        className="text-gold text-xs hover:underline flex items-center justify-end gap-1 mt-1"
+                      >
                         <Mail className="h-3 w-3" />Reply
-                      </a>
+                      </button>
                     </div>
                   </div>
                   {msg.subject && <p className="text-gold text-sm font-medium mb-1">{msg.subject}</p>}
@@ -782,7 +783,7 @@ export const AdminDashboard = () => {
           </Card>
         )}
 
-        {/* ──────────────── BLOG ──────────────── */}
+        {/* BLOG */}
         {activeTab === 'blog' && <AdminBlogManager getAuthHeaders={getAuthHeaders} />}
       </div>
     </div>
