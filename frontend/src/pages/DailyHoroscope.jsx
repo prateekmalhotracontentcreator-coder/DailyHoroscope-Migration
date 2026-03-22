@@ -61,7 +61,7 @@ export const DailyHoroscope = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-24 lg:pb-0">
       <SEO
         title="Daily Horoscope — All 12 Zodiac Signs"
         description="Read today's daily horoscope for all 12 zodiac signs. Free Vedic astrology predictions for Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, and Pisces."

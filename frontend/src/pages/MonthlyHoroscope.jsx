@@ -59,7 +59,7 @@ export const MonthlyHoroscope = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-24 lg:pb-0">
       <SEO
         title="Monthly Horoscope — Your Month Ahead in the Stars"
         description="Read your free monthly horoscope for all 12 zodiac signs. Vedic astrology monthly predictions for love, career, wealth, and personal growth."
