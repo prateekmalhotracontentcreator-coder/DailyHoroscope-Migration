@@ -59,7 +59,7 @@ export const WeeklyHoroscope = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-24 lg:pb-0">
       <SEO
         title="Weekly Horoscope — Plan Your Week with the Stars"
         description="Get your free weekly horoscope for all 12 zodiac signs. Vedic astrology weekly predictions covering love, career, health, and finances."

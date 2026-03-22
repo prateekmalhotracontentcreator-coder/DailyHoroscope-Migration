@@ -42,6 +42,7 @@ const NAV = [
     label: 'Reports',
     icon: FileText,
     children: [
+      { label: 'My Reports',         path: '/my-reports',     icon: FileText },
       { label: 'Birth Chart',        path: '/birth-chart',    icon: Sparkles },
       { label: 'Kundali Milan',      path: '/kundali-milan',  icon: Heart },
       { label: 'Brihat Kundli Pro',  path: '/brihat-kundli',  icon: Crown },
