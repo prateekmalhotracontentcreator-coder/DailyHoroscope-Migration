@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { HoroscopeCard } from '../components/HoroscopeCard';
 import { ZodiacCard } from '../components/ZodiacCard';
-
 import { SEO } from '../components/SEO';
 import { ArrowLeft } from 'lucide-react';
 import axios from 'axios';
@@ -21,6 +20,16 @@ export const WeeklyHoroscope = () => {
   const [signsLoading, setSignsLoading] = useState(true);
 
   useEffect(() => { fetchSigns(); }, []);
+
+  // Auto-select sign from localStorage once signs are loaded
+  useEffect(() => {
+    if (signs.length > 0 && !selectedSign) {
+      const saved = localStorage.getItem('selected-sign');
+      if (saved && signs.find(s => s.id === saved)) {
+        setSelectedSign(saved);
+      }
+    }
+  }, [signs]);
 
   useEffect(() => {
     if (selectedSign && signs.length > 0) {

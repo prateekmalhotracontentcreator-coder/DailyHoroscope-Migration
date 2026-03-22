@@ -29,6 +29,21 @@ const API = `${BACKEND_URL}/api`;
 
 const SECTIONS = ['profile', 'security', 'payments', 'privacy'];
 
+const ZODIAC_SIGNS = [
+  { id: 'aries',       name: 'Aries',       symbol: '\u2648', dates: 'Mar 21 – Apr 19' },
+  { id: 'taurus',      name: 'Taurus',      symbol: '\u2649', dates: 'Apr 20 – May 20' },
+  { id: 'gemini',      name: 'Gemini',      symbol: '\u264a', dates: 'May 21 – Jun 20' },
+  { id: 'cancer',      name: 'Cancer',      symbol: '\u264b', dates: 'Jun 21 – Jul 22' },
+  { id: 'leo',         name: 'Leo',         symbol: '\u264c', dates: 'Jul 23 – Aug 22' },
+  { id: 'virgo',       name: 'Virgo',       symbol: '\u264d', dates: 'Aug 23 – Sep 22' },
+  { id: 'libra',       name: 'Libra',       symbol: '\u264e', dates: 'Sep 23 – Oct 22' },
+  { id: 'scorpio',     name: 'Scorpio',     symbol: '\u264f', dates: 'Oct 23 – Nov 21' },
+  { id: 'sagittarius', name: 'Sagittarius', symbol: '\u2650', dates: 'Nov 22 – Dec 21' },
+  { id: 'capricorn',   name: 'Capricorn',   symbol: '\u2651', dates: 'Dec 22 – Jan 19' },
+  { id: 'aquarius',    name: 'Aquarius',    symbol: '\u2652', dates: 'Jan 20 – Feb 18' },
+  { id: 'pisces',      name: 'Pisces',      symbol: '\u2653', dates: 'Feb 19 – Mar 20' },
+];
+
 export const AccountSettings = () => {
   const { user, checkAuth } = useAuth();
   const navigate = useNavigate();
@@ -41,6 +56,7 @@ export const AccountSettings = () => {
 
   // Profile state
   const [name, setName] = useState('');
+  const [zodiacSign, setZodiacSign] = useState('');
   const [savingProfile, setSavingProfile] = useState(false);
 
   // Password state
@@ -69,11 +85,16 @@ export const AccountSettings = () => {
   }, [user]);
 
   useEffect(() => {
+    // Load saved zodiac sign from localStorage
+    const saved = localStorage.getItem('selected-sign');
+    if (saved) setZodiacSign(saved);
+  }, []);
+
+  useEffect(() => {
     if (activeSection === 'payments') fetchPayments();
   }, [activeSection]);
 
   useEffect(() => {
-    // Load saved cookie prefs from localStorage
     const saved = localStorage.getItem('cookie-prefs');
     if (saved) {
       try { setCookiePrefs(JSON.parse(saved)); } catch (e) {}
@@ -101,6 +122,12 @@ export const AccountSettings = () => {
     try {
       await axios.put(`${API}/auth/profile`, { name: name.trim() }, { withCredentials: true });
       await checkAuth();
+      // Save zodiac sign to localStorage
+      if (zodiacSign) {
+        localStorage.setItem('selected-sign', zodiacSign);
+      } else {
+        localStorage.removeItem('selected-sign');
+      }
       toast.success('Profile updated successfully');
     } catch (err) {
       toast.error(err.response?.data?.detail || 'Failed to update profile');
@@ -150,17 +177,17 @@ export const AccountSettings = () => {
   };
 
   const formatDate = (dateStr) => {
-    if (!dateStr) return '—';
+    if (!dateStr) return '\u2014';
     try {
       return new Date(dateStr).toLocaleDateString('en-IN', {
         day: 'numeric', month: 'short', year: 'numeric'
       });
-    } catch { return '—'; }
+    } catch { return '\u2014'; }
   };
 
   const formatAmount = (amount) => {
-    if (!amount) return '—';
-    return `₹${Number(amount).toLocaleString('en-IN')}`;
+    if (!amount) return '\u2014';
+    return `\u20b9${Number(amount).toLocaleString('en-IN')}`;
   };
 
   const reportTypeLabel = (type) => {
@@ -173,11 +200,13 @@ export const AccountSettings = () => {
     return map[type] || type;
   };
 
+  const profileDirty = name.trim() !== (user?.name || '') || zodiacSign !== (localStorage.getItem('selected-sign') || '');
+
   const navItems = [
-    { id: 'profile', label: 'Profile', icon: User },
-    { id: 'security', label: 'Security', icon: Lock },
-    { id: 'payments', label: 'Payment History', icon: CreditCard },
-    { id: 'privacy', label: 'Privacy & Cookies', icon: Cookie },
+    { id: 'profile',  label: 'Profile',          icon: User },
+    { id: 'security', label: 'Security',          icon: Lock },
+    { id: 'payments', label: 'Payment History',   icon: CreditCard },
+    { id: 'privacy',  label: 'Privacy & Cookies', icon: Cookie },
   ];
 
   if (!user) {
@@ -190,9 +219,7 @@ export const AccountSettings = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-
-
-      <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10">
+      <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10 pb-24 lg:pb-10">
         {/* Page header */}
         <div className="mb-8 flex items-center gap-4">
           <button
@@ -296,9 +323,44 @@ export const AccountSettings = () => {
                     />
                   </div>
 
+                  {/* Zodiac Sign */}
+                  <div>
+                    <label className="block text-sm font-medium mb-1.5">
+                      Your Zodiac Sign
+                      <span className="ml-2 text-xs text-muted-foreground font-normal">(personalises your horoscope experience)</span>
+                    </label>
+                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+                      {ZODIAC_SIGNS.map((sign) => (
+                        <button
+                          key={sign.id}
+                          type="button"
+                          onClick={() => setZodiacSign(sign.id)}
+                          className={`flex flex-col items-center gap-1 p-2.5 rounded-lg border text-xs transition-all ${
+                            zodiacSign === sign.id
+                              ? 'border-gold bg-gold/10 text-gold font-semibold'
+                              : 'border-border text-muted-foreground hover:border-gold/40 hover:bg-muted/40'
+                          }`}
+                        >
+                          <span className="text-lg leading-none">{sign.symbol}</span>
+                          <span>{sign.name}</span>
+                          <span className="text-xs opacity-60 hidden sm:block">{sign.dates}</span>
+                        </button>
+                      ))}
+                    </div>
+                    {zodiacSign && (
+                      <button
+                        type="button"
+                        onClick={() => setZodiacSign('')}
+                        className="mt-2 text-xs text-muted-foreground hover:text-foreground underline underline-offset-2"
+                      >
+                        Clear selection
+                      </button>
+                    )}
+                  </div>
+
                   <Button
                     onClick={handleSaveProfile}
-                    disabled={savingProfile || name.trim() === user.name}
+                    disabled={savingProfile || !profileDirty}
                     className="bg-gold hover:bg-gold/90 text-primary-foreground gap-2"
                   >
                     <Save className="h-4 w-4" />
@@ -332,7 +394,6 @@ export const AccountSettings = () => {
                       Choose a strong password you don't use elsewhere. Minimum 8 characters.
                     </p>
 
-                    {/* Current password */}
                     <div>
                       <label className="block text-sm font-medium mb-1.5">Current Password</label>
                       <div className="relative">
@@ -353,7 +414,6 @@ export const AccountSettings = () => {
                       </div>
                     </div>
 
-                    {/* New password */}
                     <div>
                       <label className="block text-sm font-medium mb-1.5">New Password</label>
                       <div className="relative">
@@ -372,7 +432,6 @@ export const AccountSettings = () => {
                           {showNew ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                         </button>
                       </div>
-                      {/* Strength indicator */}
                       {newPassword && (
                         <div className="mt-1.5 flex gap-1">
                           {[1, 2, 3, 4].map((i) => (
@@ -389,7 +448,6 @@ export const AccountSettings = () => {
                       )}
                     </div>
 
-                    {/* Confirm password */}
                     <div>
                       <label className="block text-sm font-medium mb-1.5">Confirm New Password</label>
                       <input
@@ -397,9 +455,7 @@ export const AccountSettings = () => {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         className={`w-full px-3 py-2.5 rounded-lg border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold transition-all ${
-                          confirmPassword && confirmPassword !== newPassword
-                            ? 'border-red-500'
-                            : 'border-border'
+                          confirmPassword && confirmPassword !== newPassword ? 'border-red-500' : 'border-border'
                         }`}
                         placeholder="Confirm new password"
                       />
@@ -497,41 +553,18 @@ export const AccountSettings = () => {
                 </p>
 
                 <div className="space-y-4">
-                  {/* Strictly necessary — always on */}
                   {[
-                    {
-                      key: null,
-                      label: 'Strictly Necessary',
-                      description: 'Required for authentication, security, and core platform functionality.',
-                      alwaysOn: true,
-                    },
-                    {
-                      key: 'analytics',
-                      label: 'Performance & Analytics',
-                      description: 'Help us understand how you use the platform so we can improve it.',
-                    },
-                    {
-                      key: 'personalization',
-                      label: 'Personalization',
-                      description: 'Enable tailored astrological insights and content recommendations.',
-                    },
-                    {
-                      key: 'marketing',
-                      label: 'Marketing & Attribution',
-                      description: 'Track referral sources and measure campaign effectiveness.',
-                    },
+                    { key: null,             label: 'Strictly Necessary',       description: 'Required for authentication, security, and core platform functionality.', alwaysOn: true },
+                    { key: 'analytics',      label: 'Performance & Analytics',  description: 'Help us understand how you use the platform so we can improve it.' },
+                    { key: 'personalization',label: 'Personalization',           description: 'Enable tailored astrological insights and content recommendations.' },
+                    { key: 'marketing',      label: 'Marketing & Attribution',  description: 'Track referral sources and measure campaign effectiveness.' },
                   ].map(({ key, label, description, alwaysOn }) => (
-                    <div
-                      key={key || 'necessary'}
-                      className="flex items-start justify-between gap-4 p-4 rounded-lg border border-border"
-                    >
+                    <div key={key || 'necessary'} className="flex items-start justify-between gap-4 p-4 rounded-lg border border-border">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-sm font-medium">{label}</span>
                           {alwaysOn && (
-                            <span className="text-xs bg-green-500/10 text-green-600 dark:text-green-400 px-2 py-0.5 rounded-full">
-                              Always on
-                            </span>
+                            <span className="text-xs bg-green-500/10 text-green-600 dark:text-green-400 px-2 py-0.5 rounded-full">Always on</span>
                           )}
                         </div>
                         <p className="text-xs text-muted-foreground">{description}</p>
@@ -546,11 +579,9 @@ export const AccountSettings = () => {
                               cookiePrefs[key] ? 'bg-gold' : 'bg-muted border border-border'
                             }`}
                           >
-                            <span
-                              className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all duration-200 ${
-                                cookiePrefs[key] ? 'left-5' : 'left-0.5'
-                              }`}
-                            />
+                            <span className={`absolute top-0.5 h-4 w-4 rounded-full bg-white shadow transition-all duration-200 ${
+                              cookiePrefs[key] ? 'left-5' : 'left-0.5'
+                            }`} />
                           </button>
                         )}
                       </div>
@@ -559,10 +590,7 @@ export const AccountSettings = () => {
                 </div>
 
                 <div className="mt-6 flex items-center gap-3">
-                  <Button
-                    onClick={handleSaveCookies}
-                    className="bg-gold hover:bg-gold/90 text-primary-foreground gap-2"
-                  >
+                  <Button onClick={handleSaveCookies} className="bg-gold hover:bg-gold/90 text-primary-foreground gap-2">
                     <Save className="h-4 w-4" />
                     Save Preferences
                   </Button>
