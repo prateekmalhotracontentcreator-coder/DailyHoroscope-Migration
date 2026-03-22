@@ -59,7 +59,7 @@ export const Home = () => {
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-1">Welcome back, {firstName}</p>
                   <h2 className="text-2xl font-playfair font-semibold">Your sign: {primarySignMeta.name}</h2>
-                  <p className="text-sm text-muted-foreground">{primarySignMeta.element} sign \u00b7 Your cosmic guidance awaits</p>
+                  <p className="text-sm text-muted-foreground">{primarySignMeta.element} sign · Your cosmic guidance awaits</p>
                 </div>
               </div>
               <div className="flex flex-col sm:items-end gap-2">
