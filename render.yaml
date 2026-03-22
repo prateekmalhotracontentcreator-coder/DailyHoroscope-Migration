@@ -31,6 +31,16 @@ services:
       - key: PYTHON_VERSION
         value: "3.11.9"
 
+      # ── Resend SMTP — fixed values, safe to commit ─────────────────────
+      # Resend uses the same host/port/user for every account.
+      # Only the API key (SMTP_PASSWORD) is secret.
+      - key: SMTP_HOST
+        value: "smtp.resend.com"
+      - key: SMTP_PORT
+        value: "465"               # 465 = SSL (recommended by Resend)
+      - key: SMTP_USER
+        value: "resend"            # always literally "resend" for all accounts
+
       # ── Secrets: set these in the Render dashboard, NOT here ───────────
       # These placeholders tell Render the variable names exist;
       # the actual values must be entered manually in Environment → Secret Files.
@@ -52,13 +62,7 @@ services:
         sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
-      - key: SMTP_HOST
-        sync: false
-      - key: SMTP_PORT
-        sync: false
-      - key: SMTP_USER
-        sync: false
       - key: SMTP_PASSWORD
-        sync: false
+        sync: false                # your Resend API key (re:...) — enter in Render dashboard
       - key: FROM_EMAIL
-        sync: false
+        sync: false                # e.g. hello@everydayhoroscope.in — must be verified in Resend
