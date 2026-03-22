@@ -35,14 +35,12 @@ services:
       # It does NOT use SMTP — so no SMTP_HOST / SMTP_PORT / SMTP_USER needed.
       #
       # RESEND_API_KEY  → the re_... key from your Resend dashboard (secret)
-      # FROM_EMAIL      → the verified sender address, e.g. hello@everydayhoroscope.in
+      # FROM_EMAIL      → verified sender; noreply@everydayhoroscope.in
       # ADMIN_EMAIL     → where new-registration & contact-form alerts are sent
-      #                   (server.py falls back to SMTP_USER if this is absent,
-      #                    so we set ADMIN_EMAIL explicitly instead)
       - key: RESEND_API_KEY
         sync: false                # secret — enter re_... value in Render dashboard
       - key: FROM_EMAIL
-        sync: false                # e.g. hello@everydayhoroscope.in (must be verified in Resend)
+        value: "noreply@everydayhoroscope.in"   # safe to commit — not a secret
       - key: ADMIN_EMAIL
         value: "prateekmalhotra.contentcreator@gmail.com"   # safe to commit
 
