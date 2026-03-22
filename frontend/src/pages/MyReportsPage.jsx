@@ -5,7 +5,7 @@ import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Footer } from '../components/Footer';
 import {
-  Star, Heart, Crown, Download, ArrowRight,
+  Star, Heart, Crown, Download,
   FileText, Sparkles, Clock, RefreshCw
 } from 'lucide-react';
 import axios from 'axios';
@@ -22,7 +22,6 @@ const REPORT_CONFIG = {
     bg: 'bg-gold/10',
     border: 'border-gold/30',
     label: 'Birth Chart',
-    path: (r) => '/birth-chart',
     pdfPath: (r) => `${API}/birthchart/${r.profile_id}/pdf`,
     filename: (r) => `Birth_Chart_Report_${r.name?.replace(/\s+/g,'_')}.pdf`,
   },
@@ -32,7 +31,6 @@ const REPORT_CONFIG = {
     bg: 'bg-pink-500/10',
     border: 'border-pink-500/20',
     label: 'Kundali Milan',
-    path: (r) => '/kundali-milan',
     pdfPath: (r) => `${API}/kundali-milan/${r.id}/pdf`,
     filename: (r) => `Kundali_Milan_Report_${r.name?.replace(/\s+/g,'_').replace(/&/g,'and')}.pdf`,
   },
@@ -42,14 +40,13 @@ const REPORT_CONFIG = {
     bg: 'bg-purple-500/10',
     border: 'border-purple-500/20',
     label: 'Brihat Kundli Pro',
-    path: (r) => '/brihat-kundli',
     pdfPath: (r) => `${API}/brihat-kundli/${r.id}/pdf`,
     filename: (r) => `Brihat_Kundli_Pro_${r.name?.replace(/\s+/g,'_')}.pdf`,
   },
 };
 
 // ─── Single report card ───────────────────────────────────────────────────────
-const ReportCard = ({ report, onDownload, onView }) => {
+const ReportCard = ({ report, onDownload }) => {
   const config = REPORT_CONFIG[report.type];
   if (!config) return null;
   const Icon = config.icon;
@@ -113,8 +110,8 @@ const ReportCard = ({ report, onDownload, onView }) => {
           </div>
         </div>
 
-        {/* Actions */}
-        <div className="flex flex-col gap-2 flex-shrink-0">
+        {/* PDF download only */}
+        <div className="flex-shrink-0">
           <Button
             size="sm"
             variant="outline"
@@ -122,16 +119,7 @@ const ReportCard = ({ report, onDownload, onView }) => {
             onClick={() => onDownload(report, config)}
           >
             <Download className="h-3.5 w-3.5" />
-            PDF
-          </Button>
-          <Button
-            size="sm"
-            variant="ghost"
-            className="gap-1.5 text-xs"
-            onClick={() => onView(report, config)}
-          >
-            View
-            <ArrowRight className="h-3.5 w-3.5" />
+            Download PDF
           </Button>
         </div>
       </div>
@@ -217,10 +205,6 @@ export const MyReportsPage = () => {
     }
   };
 
-  const handleView = (report, config) => {
-    navigate(config.path(report));
-  };
-
   const filtered = filter === 'all'
     ? reports
     : reports.filter(r => r.type === filter);
@@ -234,7 +218,7 @@ export const MyReportsPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 py-8 px-4 sm:px-6 lg:px-8 pb-24 lg:pb-8">
         <div className="max-w-3xl mx-auto">
 
           {/* Header */}
@@ -248,7 +232,7 @@ export const MyReportsPage = () => {
               )}
             </div>
             <p className="text-muted-foreground text-sm">
-              All your generated Vedic astrology reports in one place
+              Download your generated Vedic astrology reports as PDFs
             </p>
           </div>
 
@@ -302,7 +286,6 @@ export const MyReportsPage = () => {
                   key={report.id}
                   report={report}
                   onDownload={handleDownload}
-                  onView={handleView}
                 />
               ))}
             </div>
