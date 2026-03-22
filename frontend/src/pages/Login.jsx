@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Card } from '../components/ui/card';
@@ -15,10 +15,10 @@ const API = `${BACKEND_URL}/api`;
 export const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { login } = useAuth();
+  const { login, user, loading } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
   const [forgotEmail, setForgotEmail] = useState('');
   const [forgotLoading, setForgotLoading] = useState(false);
@@ -28,6 +28,21 @@ export const Login = () => {
   const [shakeCheckbox, setShakeCheckbox] = useState(false);
 
   const from = location.state?.from?.pathname || '/';
+
+  // ── Auto-redirect if user is already logged in ──────────────────────────
+  useEffect(() => {
+    if (!loading && user) {
+      navigate('/home', { replace: true });
+    }
+  }, [user, loading, navigate]);
+
+  // While AuthContext is still resolving the session, render nothing to
+  // avoid a flash of the login form before the redirect fires.
+  if (loading) return null;
+
+  // If user is truthy we're about to redirect; don't render the form.
+  if (user) return null;
+  // ────────────────────────────────────────────────────────────────────────
 
   const triggerShake = () => {
     setShakeCheckbox(true);
@@ -41,7 +56,7 @@ export const Login = () => {
       toast.error('Please accept the Terms of Service to continue.');
       return;
     }
-    setLoading(true);
+    setFormLoading(true);
     setErrorMsg('');
     try {
       await login(email, password);
@@ -54,7 +69,7 @@ export const Login = () => {
         toast.error(detail, { duration: 6000 });
       }
     } finally {
-      setLoading(false);
+      setFormLoading(false);
     }
   };
 
@@ -175,8 +190,8 @@ export const Login = () => {
             </div>
           </div>
 
-          <Button type="submit" data-testid="login-submit" disabled={loading} className="w-full h-12 text-base font-semibold bg-primary hover:bg-gold hover:text-primary-foreground">
-            {loading ? 'Signing in...' : 'Sign In'}
+          <Button type="submit" data-testid="login-submit" disabled={formLoading} className="w-full h-12 text-base font-semibold bg-primary hover:bg-gold hover:text-primary-foreground">
+            {formLoading ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
 
