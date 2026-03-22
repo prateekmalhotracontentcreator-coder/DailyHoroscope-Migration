@@ -103,7 +103,7 @@ def get_prediction_date(horoscope_type: str) -> str:
         return today.replace(day=1).isoformat()
     return today.isoformat()
 
-# ── Models ──────────────────────────────────────────────────────────────────
+# Models
 
 class Horoscope(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -156,8 +156,6 @@ class BirthChartReport(BaseModel):
 
 class BirthChartRequest(BaseModel):
     profile_id: str
-
-# ── Blog Models (with scheduled_at) ─────────────────────────────────────────
 
 class BlogPost(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -321,35 +319,34 @@ class PaymentIntentRequest(BaseModel):
     report_id: Optional[str] = None
     user_email: str
 
-# ── Email helper ────────────────────────────────────────────────────────────
+# Email helper
 
 async def send_email_notification(to_email: str, subject: str, body: str):
     resend_api_key = os.environ.get('RESEND_API_KEY', '')
     from_email = os.environ.get('FROM_EMAIL', 'noreply@everydayhoroscope.in')
     if not resend_api_key:
-        logging.info(f"[EMAIL NOT SENT] To: {to_email} | Subject: {subject}")
+        logging.info("[EMAIL NOT SENT] To: %s | Subject: %s", to_email, subject)
         return False
     try:
         async with httpx.AsyncClient() as http:
             response = await http.post(
                 "https://api.resend.com/emails",
-                headers={"Authorization": f"Bearer {resend_api_key}", "Content-Type": "application/json"},
-                json={"from": f"Everyday Horoscope <{from_email}>", "to": [to_email], "subject": subject, "html": body}
+                headers={"Authorization": "Bearer " + resend_api_key, "Content-Type": "application/json"},
+                json={"from": "Everyday Horoscope <" + from_email + ">", "to": [to_email], "subject": subject, "html": body}
             )
             if response.status_code == 200:
-                logging.info(f"Email sent to {to_email}: {subject}")
+                logging.info("Email sent to %s: %s", to_email, subject)
                 return True
             else:
-                logging.error(f"Resend error {response.status_code}: {response.text}")
+                logging.error("Resend error %s: %s", response.status_code, response.text)
                 return False
     except Exception as e:
-        logging.error(f"Email send failed: {str(e)}")
+        logging.error("Email send failed: %s", str(e))
         return False
 
-# ── Horoscope LLM ───────────────────────────────────────────────────────────
+# Horoscope LLM
 
 async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
-    # Build the opening tag safely — avoids """"  when sign ends in a quote character
     sign_dash = sign + " \u2014"
 
     daily_prompt = (
@@ -397,15 +394,11 @@ async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
         "6. Begin with: \"" + sign_dash + "\""
     )
 
-    system_prompts = {
-        "daily": daily_prompt,
-        "weekly": weekly_prompt,
-        "monthly": monthly_prompt,
-    }
+    system_prompts = {"daily": daily_prompt, "weekly": weekly_prompt, "monthly": monthly_prompt}
     user_prompts = {
-        "daily": f"Generate today's Vedic horoscope for {sign}.",
-        "weekly": f"Generate this week's Vedic horoscope for {sign}.",
-        "monthly": f"Generate this month's Vedic horoscope for {sign}.",
+        "daily":   "Generate today's Vedic horoscope for " + sign + ".",
+        "weekly":  "Generate this week's Vedic horoscope for " + sign + ".",
+        "monthly": "Generate this month's Vedic horoscope for " + sign + ".",
     }
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
@@ -416,10 +409,10 @@ async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
         )
         return message.content[0].text
     except Exception as e:
-        logging.error(f"Error generating horoscope: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Failed to generate horoscope: {str(e)}")
+        logging.error("Error generating horoscope: %s", str(e))
+        raise HTTPException(status_code=500, detail="Failed to generate horoscope: " + str(e))
 
-# ── Routes ──────────────────────────────────────────────────────────────────
+# Routes
 
 @api_router.get("/")
 async def root():
@@ -518,43 +511,42 @@ async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
             place_of_birth=profile.location,
         )
     except Exception as e:
-        logging.error(f"Vedic calculator FAILED: {e}", exc_info=True)
+        logging.error("Vedic calculator FAILED: %s", e, exc_info=True)
         chart_data = None
 
     if chart_data:
         lagna = chart_data['lagna']
         moon = chart_data['moon_sign']
         nak = chart_data['nakshatra']
-        planets = chart_data['planets']
-        houses = chart_data['houses']
         current_dasha = chart_data.get('current_dasha', {})
         mangal = chart_data['mangal_dosha']
         planet_lines = []
-        for pname, pdata in planets.items():
+        for pname, pdata in chart_data['planets'].items():
             retro = " (Retrograde)" if pdata.get('retrograde') else ""
-            planet_lines.append(f"  - {pname}: {pdata['sign_vedic']}, House {pdata['house']}, {pdata['degree']}\u00b0{retro}")
+            planet_lines.append("  - " + pname + ": " + pdata['sign_vedic'] + ", House " + str(pdata['house']) + ", " + str(pdata['degree']) + "\u00b0" + retro)
         house_lines = []
-        for h_num, h_data in houses.items():
+        for h_num, h_data in chart_data['houses'].items():
             planets_in = ', '.join(h_data['planets']) if h_data['planets'] else 'Empty'
-            house_lines.append(f"  House {h_num} \u2014 {h_data['name']}: {h_data['sign_vedic']} (Lord: {h_data['lord']}) | Planets: {planets_in}")
+            house_lines.append("  House " + str(h_num) + " \u2014 " + h_data['name'] + ": " + h_data['sign_vedic'] + " (Lord: " + h_data['lord'] + ") | Planets: " + planets_in)
+        mangal_yn = "YES" if mangal.get('has_dosha') else "NO"
         chart_summary = (
             "\nCALCULATED BIRTH CHART DATA (mathematically verified):\n\n"
-            f"Native: {profile.name}\n"
-            f"Birth: {profile.date_of_birth} at {profile.time_of_birth}, {profile.location}\n\n"
-            f"ASCENDANT (Lagna): {lagna['sign_vedic']}, {lagna['degree']}\u00b0\n"
-            f"  Lagna Lord: {lagna['lord']} | Element: {lagna['element']}\n\n"
-            f"MOON SIGN (Rashi): {moon['sign_vedic']}\n"
-            f"NAKSHATRA: {nak['name']} (Pada {nak.get('pada', '?')}) | Lord: {nak.get('lord', '?')}\n\n"
+            "Native: " + profile.name + "\n"
+            "Birth: " + profile.date_of_birth + " at " + profile.time_of_birth + ", " + profile.location + "\n\n"
+            "ASCENDANT (Lagna): " + lagna['sign_vedic'] + ", " + str(lagna['degree']) + "\u00b0\n"
+            "  Lagna Lord: " + lagna['lord'] + " | Element: " + lagna['element'] + "\n\n"
+            "MOON SIGN (Rashi): " + moon['sign_vedic'] + "\n"
+            "NAKSHATRA: " + nak['name'] + " (Pada " + str(nak.get('pada', '?')) + ") | Lord: " + str(nak.get('lord', '?')) + "\n\n"
             "PLANETARY POSITIONS:\n" + "\n".join(planet_lines) + "\n\n"
             "12-HOUSE MAP:\n" + "\n".join(house_lines) + "\n\n"
-            f"CURRENT DASHA: {current_dasha.get('planet', 'Unknown')} Mahadasha\n"
-            f"  Period: {current_dasha.get('start', '?')} to {current_dasha.get('end', '?')}\n\n"
-            f"MANGAL DOSHA: {'YES' if mangal.get('has_dosha') else 'NO'}\n"
-            f"  {mangal.get('description', '')}\n"
-            f"  Mars in House: {mangal.get('mars_house', '?')}\n"
+            "CURRENT DASHA: " + str(current_dasha.get('planet', 'Unknown')) + " Mahadasha\n"
+            "  Period: " + str(current_dasha.get('start', '?')) + " to " + str(current_dasha.get('end', '?')) + "\n\n"
+            "MANGAL DOSHA: " + mangal_yn + "\n"
+            "  " + str(mangal.get('description', '')) + "\n"
+            "  Mars in House: " + str(mangal.get('mars_house', '?')) + "\n"
         )
     else:
-        chart_summary = f"Native: {profile.name}, Born: {profile.date_of_birth} at {profile.time_of_birth} in {profile.location}"
+        chart_summary = "Native: " + profile.name + ", Born: " + profile.date_of_birth + " at " + profile.time_of_birth + " in " + profile.location
 
     system_prompt = (
         "You are an expert Jyotish (Vedic astrology) interpreter. Receive a mathematically calculated birth chart and interpret it.\n\n"
@@ -576,8 +568,7 @@ async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
         "  Remedies & Guidance:\n"
         "- Each section: 3-4 sentences. Target 800-1000 words total."
     )
-
-    user_prompt = f"Write the complete Janma Kundali report for {profile.name} using ONLY the calculated data below.\n\n{chart_summary}\n\nEvery section must cite specific planets with house numbers."
+    user_prompt = "Write the complete Janma Kundali report for " + profile.name + " using ONLY the calculated data below.\n\n" + chart_summary + "\n\nEvery section must cite specific planets with house numbers."
 
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
@@ -588,8 +579,8 @@ async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
         )
         return message.content[0].text
     except Exception as e:
-        logging.error(f"Error generating birth chart: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Failed to generate birth chart: {str(e)}")
+        logging.error("Error generating birth chart: %s", str(e))
+        raise HTTPException(status_code=500, detail="Failed to generate birth chart: " + str(e))
 
 @api_router.post("/birthchart/generate", response_model=BirthChartReport)
 async def generate_birth_chart(request: BirthChartRequest):
@@ -613,13 +604,13 @@ async def generate_birth_chart(request: BirthChartRequest):
             place_of_birth=birth_profile.location,
         )
     except Exception as ce:
-        logging.warning(f"Chart calc for structured fields: {ce}")
+        logging.warning("Chart calc for structured fields: %s", ce)
     bc_chart_svg = ""
     if bc_chart_data and bc_chart_data.get('houses'):
         try:
             bc_chart_svg = generate_north_indian_chart_svg(bc_chart_data['houses'], bc_chart_data['lagna']['sign'])
         except Exception as se:
-            logging.warning(f"SVG generation failed: {se}")
+            logging.warning("SVG generation failed: %s", se)
     report = BirthChartReport(
         profile_id=request.profile_id, report_content=content,
         lagna=bc_chart_data['lagna'] if bc_chart_data else {},
@@ -643,7 +634,7 @@ async def get_birth_chart(profile_id: str):
         report['generated_at'] = datetime.fromisoformat(report['generated_at'])
     return BirthChartReport(**report)
 
-# ============== BRIHAT KUNDLI PRO ==============
+# Brihat Kundli Pro
 
 async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
     current_year = datetime.now().year
@@ -657,43 +648,41 @@ async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
             place_of_birth=request.place_of_birth,
         )
     except Exception as e:
-        logging.warning(f"Vedic calculator failed for Brihat Kundli: {e}")
+        logging.warning("Vedic calculator failed for Brihat Kundli: %s", e)
     if chart_data:
         lagna = chart_data['lagna']
         moon = chart_data['moon_sign']
         nak = chart_data['nakshatra']
-        planets = chart_data['planets']
-        houses = chart_data['houses']
-        dashas = chart_data['dashas']
         current_dasha = chart_data.get('current_dasha', {})
         mangal = chart_data['mangal_dosha']
         planet_lines = []
-        for pname, pdata in planets.items():
+        for pname, pdata in chart_data['planets'].items():
             retro = " (R)" if pdata.get('retrograde') else ""
-            planet_lines.append(f"  {pname}: {pdata['sign_vedic']} | House {pdata['house']} | {pdata['degree']}\u00b0{retro} | Lord: {pdata['lord_of_sign']}")
+            planet_lines.append("  " + pname + ": " + pdata['sign_vedic'] + " | House " + str(pdata['house']) + " | " + str(pdata['degree']) + "\u00b0" + retro + " | Lord: " + str(pdata['lord_of_sign']))
         house_lines = []
-        for h_num, h_data in houses.items():
+        for h_num, h_data in chart_data['houses'].items():
             planets_in = ', '.join(h_data['planets']) if h_data['planets'] else 'Empty'
-            house_lines.append(f"  H{h_num} {h_data['name']}: {h_data['sign_vedic']} | Lord: {h_data['lord']} | {planets_in}")
+            house_lines.append("  H" + str(h_num) + " " + h_data['name'] + ": " + h_data['sign_vedic'] + " | Lord: " + h_data['lord'] + " | " + planets_in)
         dasha_lines = []
-        for d in dashas[:6]:
-            dasha_lines.append(f"  {d.get('planet','?')} Mahadasha: {d.get('start','?')} \u2014 {d.get('end','?')} ({d.get('years',0):.1f} yrs)")
+        for d in chart_data['dashas'][:6]:
+            dasha_lines.append("  " + str(d.get('planet', '?')) + " Mahadasha: " + str(d.get('start', '?')) + " \u2014 " + str(d.get('end', '?')) + " (" + str(round(d.get('years', 0), 1)) + " yrs)")
+        mangal_yn = "YES" if mangal.get('has_dosha') else "NO"
         chart_summary = (
             "\nCALCULATED BIRTH CHART:\n\n"
-            f"Native: {request.full_name}, Age: {age}, Gender: {request.gender}\n"
-            f"Born: {request.date_of_birth} at {request.time_of_birth}, {request.place_of_birth}\n\n"
-            f"LAGNA: {lagna['sign_vedic']} {lagna['degree']}\u00b0 | Lord: {lagna['lord']} | Element: {lagna['element']}\n"
-            f"MOON (Rashi): {moon['sign_vedic']}\n"
-            f"NAKSHATRA: {nak['name']} Pada {nak.get('pada','?')} | Lord: {nak.get('lord','?')}\n\n"
+            "Native: " + request.full_name + ", Age: " + str(age) + ", Gender: " + request.gender + "\n"
+            "Born: " + request.date_of_birth + " at " + request.time_of_birth + ", " + request.place_of_birth + "\n\n"
+            "LAGNA: " + lagna['sign_vedic'] + " " + str(lagna['degree']) + "\u00b0 | Lord: " + lagna['lord'] + " | Element: " + lagna['element'] + "\n"
+            "MOON (Rashi): " + moon['sign_vedic'] + "\n"
+            "NAKSHATRA: " + nak['name'] + " Pada " + str(nak.get('pada', '?')) + " | Lord: " + str(nak.get('lord', '?')) + "\n\n"
             "PLANET POSITIONS:\n" + "\n".join(planet_lines) + "\n\n"
             "12-HOUSE MAP:\n" + "\n".join(house_lines) + "\n\n"
             "VIMSHOTTARI DASHA TIMELINE:\n" + "\n".join(dasha_lines) + "\n"
-            f"Current: {current_dasha.get('planet','Unknown')} Mahadasha ({current_dasha.get('start','?')}-{current_dasha.get('end','?')})\n\n"
-            f"MANGAL DOSHA: {'YES' if mangal.get('has_dosha') else 'NO'}\n"
-            f"  House: {mangal.get('mars_house','?')} | {mangal.get('description','')}\n"
+            "Current: " + str(current_dasha.get('planet', 'Unknown')) + " Mahadasha (" + str(current_dasha.get('start', '?')) + "-" + str(current_dasha.get('end', '?')) + ")\n\n"
+            "MANGAL DOSHA: " + mangal_yn + "\n"
+            "  House: " + str(mangal.get('mars_house', '?')) + " | " + str(mangal.get('description', '')) + "\n"
         )
     else:
-        chart_summary = f"Native: {request.full_name}, Born {request.date_of_birth} at {request.time_of_birth} in {request.place_of_birth}"
+        chart_summary = "Native: " + request.full_name + ", Born " + request.date_of_birth + " at " + request.time_of_birth + " in " + request.place_of_birth
 
     system_prompt = (
         "You are a senior Jyotish astrologer writing a premium Brihat Kundli Pro report. "
@@ -730,8 +719,7 @@ async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
         '    "numerology": {"life_path": "", "destiny_number": "", "overview": "2 sentences."}\n'
         '}'
     )
-
-    user_prompt = f"Generate Brihat Kundli Pro report for {request.full_name} using ONLY this chart:\n\n{chart_summary}\n\nReturn ONLY valid JSON. Complete ALL fields."
+    user_prompt = "Generate Brihat Kundli Pro report for " + request.full_name + " using ONLY this chart:\n\n" + chart_summary + "\n\nReturn ONLY valid JSON. Complete ALL fields."
 
     try:
         llm = anthropic.AsyncAnthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
@@ -747,7 +735,7 @@ async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
         try:
             return json.loads(clean)
         except json.JSONDecodeError as je:
-            logging.error(f"Brihat JSON parse failed: {je}. Attempting repair...")
+            logging.error("Brihat JSON parse failed: %s. Attempting repair...", je)
             try:
                 repair = clean
                 opens = repair.count('{') - repair.count('}')
@@ -755,50 +743,41 @@ async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
                 repair += ']' * max(0, arr_opens) + '}' * max(0, opens)
                 return json.loads(repair)
             except Exception as repair_err:
-                logging.error(f"JSON repair failed: {repair_err}")
+                logging.error("JSON repair failed: %s", repair_err)
             return {"ascendant": {}, "moon_sign": {}, "sun_sign": {}, "planetary_positions": [], "career_prediction": {}, "love_prediction": {}, "health_prediction": {}, "wealth_prediction": {}, "family_prediction": {}, "current_dasha": {}, "dasha_timeline": [], "mangal_dosha": {"has_dosha": False}, "kalsarp_dosha": {}, "benefic_yogas": [], "gemstone_remedies": [], "mantra_remedies": [], "lifestyle_remedies": [], "lucky_numbers": [], "lucky_colors": [], "lucky_days": [], "numerology": {}}
     except Exception as e:
-        logging.error(f"Error generating Brihat Kundli: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Failed to generate Brihat Kundli: {str(e)}")
+        logging.error("Error generating Brihat Kundli: %s", str(e))
+        raise HTTPException(status_code=500, detail="Failed to generate Brihat Kundli: " + str(e))
 
 @api_router.post("/brihat-kundli/generate")
 async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str = ""):
     try:
         chart_data = None
         try:
-            chart_data = calculate_vedic_chart(
-                date_of_birth=request.date_of_birth,
-                time_of_birth=request.time_of_birth,
-                place_of_birth=request.place_of_birth,
-            )
+            chart_data = calculate_vedic_chart(date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth, place_of_birth=request.place_of_birth)
         except Exception as ce:
-            logging.warning(f"Vedic calculator failed for Brihat Kundli: {ce}")
+            logging.warning("Vedic calculator failed for Brihat Kundli: %s", ce)
         chart_svg = ""
         if chart_data and chart_data.get('houses'):
             try:
                 chart_svg = generate_north_indian_chart_svg(chart_data['houses'], chart_data['lagna']['sign'])
             except Exception as se:
-                logging.warning(f"SVG chart generation failed: {se}")
+                logging.warning("SVG chart generation failed: %s", se)
         report_data = await generate_brihat_kundli_with_llm(request)
         remedies = report_data.get("remedies", {})
         yogas = report_data.get("yogas", [])
         dasha = report_data.get("dasha_analysis", {})
         career = report_data.get("career_prediction", {})
-        if career and not career.get("best_career_fields") and career.get("best_fields"):
-            career["best_career_fields"] = career.pop("best_fields")
-        if career and not career.get("strengths_at_work") and career.get("strengths"):
-            career["strengths_at_work"] = career.pop("strengths")
-        if career and not career.get("career_timeline") and career.get("timeline"):
-            career["career_timeline"] = career.pop("timeline")
+        if career and not career.get("best_career_fields") and career.get("best_fields"): career["best_career_fields"] = career.pop("best_fields")
+        if career and not career.get("strengths_at_work") and career.get("strengths"): career["strengths_at_work"] = career.pop("strengths")
+        if career and not career.get("career_timeline") and career.get("timeline"): career["career_timeline"] = career.pop("timeline")
         health = report_data.get("health_prediction", {})
-        if health and not health.get("preventive_measures") and health.get("remedies"):
-            health["preventive_measures"] = health.pop("remedies", [])
+        if health and not health.get("preventive_measures") and health.get("remedies"): health["preventive_measures"] = health.pop("remedies", [])
         sun_sign = report_data.get("sun_sign", {})
         if not sun_sign.get("sign") and report_data.get("planetary_positions"):
             for p in report_data.get("planetary_positions", []):
                 if isinstance(p, dict) and p.get("planet") == "Sun":
-                    sun_sign["sign"] = p.get("sign", "")
-                    break
+                    sun_sign["sign"] = p.get("sign", ""); break
         current_dasha_raw = report_data.get("current_dasha", dasha)
         if isinstance(current_dasha_raw, str):
             current_dasha = {"mahadasha": current_dasha_raw.replace(" Mahadasha", "").replace(" Dasha", "").strip(), "effects": []}
@@ -818,7 +797,7 @@ async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str =
                 entry = dict(d)
                 if not entry.get("planet") and entry.get("dasha"): entry["planet"] = entry.pop("dasha")
                 if not entry.get("period") and entry.get("start_year") and entry.get("end_year"):
-                    entry["period"] = f"{entry['start_year']} \u2013 {entry['end_year']}"
+                    entry["period"] = str(entry['start_year']) + " \u2013 " + str(entry['end_year'])
                 dasha_timeline.append(entry)
         mangal_from_claude = report_data.get("mangal_dosha", {})
         if chart_data and chart_data.get("mangal_dosha"):
@@ -837,73 +816,59 @@ async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str =
             if isinstance(mangal, dict) and not mangal.get("has_dosha") and mangal.get("present"):
                 mangal["has_dosha"] = mangal["present"]
         report = BrihatKundliReport(
-            user_email=user_email,
-            full_name=request.full_name,
-            date_of_birth=request.date_of_birth,
-            time_of_birth=request.time_of_birth,
-            place_of_birth=request.place_of_birth,
-            gender=request.gender,
-            ascendant=report_data.get("ascendant", {}),
-            moon_sign=report_data.get("moon_sign", {}),
-            sun_sign=sun_sign,
-            planetary_positions=report_data.get("planetary_positions", []),
+            user_email=user_email, full_name=request.full_name,
+            date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth,
+            place_of_birth=request.place_of_birth, gender=request.gender,
+            ascendant=report_data.get("ascendant", {}), moon_sign=report_data.get("moon_sign", {}),
+            sun_sign=sun_sign, planetary_positions=report_data.get("planetary_positions", []),
             career_prediction=career,
             love_prediction=(lambda lp: {**lp, "ideal_partner_traits": lp.get("ideal_partner_traits") or lp.get("ideal_partner") or [], "compatibility_signs": lp.get("compatibility_signs") or lp.get("compatible_signs") or [], "challenging_signs": lp.get("challenging_signs") or []})(report_data.get("love_prediction", {})),
             health_prediction=health,
             wealth_prediction=(lambda wp: {**wp, "primary_income_sources": wp.get("primary_income_sources") or wp.get("income_sources") or wp.get("wealth_sources") or [], "good_investments": wp.get("good_investments") or wp.get("investments") or wp.get("peak_periods") or ["Real estate", "Gold", "Equity"], "avoid": wp.get("avoid") or wp.get("cautions") or ["High-risk speculation"]})(report_data.get("wealth_prediction", {})),
-            family_prediction=report_data.get("family_prediction", {}),
-            education_prediction=report_data.get("education_prediction", {}),
-            current_dasha=current_dasha,
-            dasha_timeline=dasha_timeline,
-            mangal_dosha=mangal,
-            kalsarp_dosha=report_data.get("kalsarp_dosha", {}),
-            other_doshas=report_data.get("other_doshas", []),
+            family_prediction=report_data.get("family_prediction", {}), education_prediction=report_data.get("education_prediction", {}),
+            current_dasha=current_dasha, dasha_timeline=dasha_timeline, mangal_dosha=mangal,
+            kalsarp_dosha=report_data.get("kalsarp_dosha", {}), other_doshas=report_data.get("other_doshas", []),
             benefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "benefic"] or report_data.get("benefic_yogas", []),
             malefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "malefic"] or report_data.get("malefic_yogas", []),
             gemstone_remedies=remedies.get("gemstones", report_data.get("gemstone_remedies", [])),
             mantra_remedies=remedies.get("mantras", report_data.get("mantra_remedies", [])),
             lifestyle_remedies=remedies.get("general", report_data.get("lifestyle_remedies", [])),
             donation_remedies=report_data.get("donation_remedies", []),
-            lucky_numbers=report_data.get("lucky_numbers", []),
-            lucky_colors=report_data.get("lucky_colors", []),
-            lucky_days=report_data.get("lucky_days", []),
-            lucky_direction=report_data.get("lucky_direction", ""),
-            numerology=report_data.get("numerology", {}),
-            chart_svg=chart_svg
+            lucky_numbers=report_data.get("lucky_numbers", []), lucky_colors=report_data.get("lucky_colors", []),
+            lucky_days=report_data.get("lucky_days", []), lucky_direction=report_data.get("lucky_direction", ""),
+            numerology=report_data.get("numerology", {}), chart_svg=chart_svg
         )
         import json
         doc = json.loads(report.model_dump_json())
         await db.brihat_kundli_reports.insert_one({**doc})
         return {"success": True, "report_id": report.id, "report": doc}
     except Exception as e:
-        logging.error(f"Brihat Kundli generation error: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Failed to generate report: {str(e)}")
+        logging.error("Brihat Kundli generation error: %s", str(e), exc_info=True)
+        raise HTTPException(status_code=500, detail="Failed to generate report: " + str(e))
 
 @api_router.get("/brihat-kundli/{report_id}")
 async def get_brihat_kundli(report_id: str):
     report = await db.brihat_kundli_reports.find_one({"id": report_id}, {"_id": 0})
-    if not report:
-        raise HTTPException(status_code=404, detail="Report not found")
+    if not report: raise HTTPException(status_code=404, detail="Report not found")
     return report
 
 @api_router.get("/brihat-kundli/{report_id}/pdf")
 async def download_brihat_kundli_pdf(report_id: str, user_email: str = None):
     report = await db.brihat_kundli_reports.find_one({"id": report_id}, {"_id": 0})
-    if not report:
-        raise HTTPException(status_code=404, detail="Report not found")
+    if not report: raise HTTPException(status_code=404, detail="Report not found")
     try:
         chart_data = None
-        try:
-            chart_data = calculate_vedic_chart(date_of_birth=report['date_of_birth'], time_of_birth=report['time_of_birth'], place_of_birth=report.get('place_of_birth', 'New Delhi'))
-        except Exception as ce:
-            logging.warning(f"Chart calc for Brihat PDF failed: {ce}")
+        try: chart_data = calculate_vedic_chart(date_of_birth=report['date_of_birth'], time_of_birth=report['time_of_birth'], place_of_birth=report.get('place_of_birth', 'New Delhi'))
+        except Exception as ce: logging.warning("Chart calc for Brihat PDF failed: %s", ce)
         password = generate_report_password(report.get('full_name', ''), report.get('date_of_birth', ''))
         pdf_buffer = generate_brihat_kundli_pdf(report, chart_data=chart_data, password=password)
         safe_name = report.get('full_name', 'report').replace(' ', '_')
-        return StreamingResponse(pdf_buffer, media_type="application/pdf", headers={"Content-Disposition": f"attachment; filename=brihat_kundli_{safe_name}.pdf", "Access-Control-Expose-Headers": "Content-Disposition, X-PDF-Password", "X-PDF-Password": password})
+        return StreamingResponse(pdf_buffer, media_type="application/pdf", headers={"Content-Disposition": "attachment; filename=brihat_kundli_" + safe_name + ".pdf", "Access-Control-Expose-Headers": "Content-Disposition, X-PDF-Password", "X-PDF-Password": password})
     except Exception as e:
-        logging.error(f"Brihat PDF generation error: {str(e)}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Failed to generate PDF: {str(e)}")
+        logging.error("Brihat PDF generation error: %s", str(e), exc_info=True)
+        raise HTTPException(status_code=500, detail="Failed to generate PDF: " + str(e))
+
+# Kundali Milan
 
 async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthProfile) -> tuple:
     chart1, chart2, ashtakoot_data = None, None, None
@@ -912,31 +877,44 @@ async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthP
     try:
         chart1 = calculate_vedic_chart(date_of_birth=person1.date_of_birth, time_of_birth=person1.time_of_birth, place_of_birth=person1.location)
         chart2 = calculate_vedic_chart(date_of_birth=person2.date_of_birth, time_of_birth=person2.time_of_birth, place_of_birth=person2.location)
-        nak1 = chart1['nakshatra']['name']
-        sign1 = chart1['moon_sign']['sign']
-        nak2 = chart2['nakshatra']['name']
-        sign2 = chart2['moon_sign']['sign']
-        ashtakoot_data = calculate_ashtakoot(nak1, sign1, nak2, sign2)
+        ashtakoot_data = calculate_ashtakoot(chart1['nakshatra']['name'], chart1['moon_sign']['sign'], chart2['nakshatra']['name'], chart2['moon_sign']['sign'])
         compatibility_score = ashtakoot_data.get('total_score', 0)
         mangal1 = chart1['mangal_dosha']
         mangal2 = chart2['mangal_dosha']
     except Exception as e:
-        logging.error(f"Vedic calculator FAILED for Kundali Milan: {e}", exc_info=True)
+        logging.error("Vedic calculator FAILED for Kundali Milan: %s", e, exc_info=True)
 
     def fmt_chart(name, chart, mangal):
+        # No backslashes inside f-string expressions — pre-build all variables first
         if not chart:
-            return f"{name}: chart calculation unavailable"
+            return name + ": chart calculation unavailable"
         lagna = chart['lagna']
         moon = chart['moon_sign']
         nak = chart['nakshatra']
-        return (f"{name}:\n  Ascendant: {lagna['sign_vedic']} ({lagna['degree']}\u00b0), Lord: {lagna['lord']}\n  Moon Sign: {moon['sign_vedic']}\n  Nakshatra: {nak['name']} Pada {nak.get('pada','?')} | Lord: {nak.get('lord','?')}\n  Mangal Dosha: {'YES \u2014 ' + mangal.get('description','') if mangal.get('has_dosha') else 'No'}\n  Dasha: {chart.get('current_dasha',{}).get('planet','Unknown')} Mahadasha")
+        dasha_planet = chart.get('current_dasha', {}).get('planet', 'Unknown')
+        mangal_str = "YES \u2014 " + mangal.get('description', '') if mangal.get('has_dosha') else "No"
+        lagna_sign = lagna['sign_vedic']
+        lagna_deg = str(lagna['degree'])
+        lagna_lord = lagna['lord']
+        moon_sign = moon['sign_vedic']
+        nak_name = nak['name']
+        nak_pada = str(nak.get('pada', '?'))
+        nak_lord = str(nak.get('lord', '?'))
+        return (
+            name + ":\n"
+            + "  Ascendant: " + lagna_sign + " (" + lagna_deg + "\u00b0), Lord: " + lagna_lord + "\n"
+            + "  Moon Sign: " + moon_sign + "\n"
+            + "  Nakshatra: " + nak_name + " Pada " + nak_pada + " | Lord: " + nak_lord + "\n"
+            + "  Mangal Dosha: " + mangal_str + "\n"
+            + "  Dasha: " + dasha_planet + " Mahadasha"
+        )
 
     def fmt_ashtakoot(data):
         if not data or 'kootas' not in data:
             return "Score unavailable"
-        lines = [f"  TOTAL: {data['total_score']}/36"]
+        lines = ["  TOTAL: " + str(data['total_score']) + "/36"]
         for k, v in data['kootas'].items():
-            lines.append(f"  {k.upper()}: {v['score']}/{v['max']} \u2014 {v.get('label','')}")
+            lines.append("  " + k.upper() + ": " + str(v['score']) + "/" + str(v['max']) + " \u2014 " + str(v.get('label', '')))
         return '\n'.join(lines)
 
     chart_text = (
@@ -951,14 +929,18 @@ async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthP
         "NO markdown. Sections: Compatibility Overview, Ashtakoot Analysis, Mangal Dosha Assessment, Planetary Harmony, "
         "Relationship Strengths, Challenges, Marriage Timing, Remedies. Target 900-1000 words."
     )
-    user_prompt = f"Write Kundali Milan report for {person1.name} and {person2.name}.\n\n{chart_text}\n\nCompatibility score is {compatibility_score}/36 \u2014 final. Explain each Koota score for this couple."
+    user_prompt = (
+        "Write Kundali Milan report for " + person1.name + " and " + person2.name + ".\n\n"
+        + chart_text + "\n\n"
+        "Compatibility score is " + str(compatibility_score) + "/36 \u2014 final. Explain each Koota score for this couple."
+    )
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
         message = llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=4096, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
         return compatibility_score, message.content[0].text, ashtakoot_data
     except Exception as e:
-        logging.error(f"Error generating Kundali Milan: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Failed to generate Kundali Milan: {str(e)}")
+        logging.error("Error generating Kundali Milan: %s", str(e))
+        raise HTTPException(status_code=500, detail="Failed to generate Kundali Milan: " + str(e))
 
 @api_router.post("/kundali-milan/generate", response_model=KundaliMilanReport)
 async def generate_kundali_milan(request: KundaliMilanRequest):
@@ -967,37 +949,27 @@ async def generate_kundali_milan(request: KundaliMilanRequest):
     if not profile1 or not profile2:
         raise HTTPException(status_code=404, detail="One or both birth profiles not found")
     for p in [profile1, profile2]:
-        if isinstance(p['created_at'], str):
-            p['created_at'] = datetime.fromisoformat(p['created_at'])
+        if isinstance(p['created_at'], str): p['created_at'] = datetime.fromisoformat(p['created_at'])
     birth_profile1 = BirthProfile(**profile1)
     birth_profile2 = BirthProfile(**profile2)
     existing = await db.kundali_milan_reports.find_one({"$or": [{"person1_id": request.person1_id, "person2_id": request.person2_id}, {"person1_id": request.person2_id, "person2_id": request.person1_id}]}, {"_id": 0})
     if existing:
-        if isinstance(existing['generated_at'], str):
-            existing['generated_at'] = datetime.fromisoformat(existing['generated_at'])
+        if isinstance(existing['generated_at'], str): existing['generated_at'] = datetime.fromisoformat(existing['generated_at'])
         return KundaliMilanReport(**existing)
     score, analysis, ashtakoot_data = await generate_kundali_milan_with_llm(birth_profile1, birth_profile2)
     km_chart1, km_chart2 = None, None
-    try:
-        km_chart1 = calculate_vedic_chart(date_of_birth=birth_profile1.date_of_birth, time_of_birth=birth_profile1.time_of_birth, place_of_birth=birth_profile1.location)
-    except Exception as ce:
-        logging.warning(f"Chart1 calc for KundaliMilan: {ce}")
-    try:
-        km_chart2 = calculate_vedic_chart(date_of_birth=birth_profile2.date_of_birth, time_of_birth=birth_profile2.time_of_birth, place_of_birth=birth_profile2.location)
-    except Exception as ce:
-        logging.warning(f"Chart2 calc for KundaliMilan: {ce}")
+    try: km_chart1 = calculate_vedic_chart(date_of_birth=birth_profile1.date_of_birth, time_of_birth=birth_profile1.time_of_birth, place_of_birth=birth_profile1.location)
+    except Exception as ce: logging.warning("Chart1 KundaliMilan: %s", ce)
+    try: km_chart2 = calculate_vedic_chart(date_of_birth=birth_profile2.date_of_birth, time_of_birth=birth_profile2.time_of_birth, place_of_birth=birth_profile2.location)
+    except Exception as ce: logging.warning("Chart2 KundaliMilan: %s", ce)
     km_svg1, km_svg2 = "", ""
     try:
-        if km_chart1 and km_chart1.get('houses'):
-            km_svg1 = generate_north_indian_chart_svg(km_chart1['houses'], km_chart1['lagna']['sign'])
-        if km_chart2 and km_chart2.get('houses'):
-            km_svg2 = generate_north_indian_chart_svg(km_chart2['houses'], km_chart2['lagna']['sign'])
-    except Exception as se:
-        logging.warning(f"SVG generation for KundaliMilan: {se}")
+        if km_chart1 and km_chart1.get('houses'): km_svg1 = generate_north_indian_chart_svg(km_chart1['houses'], km_chart1['lagna']['sign'])
+        if km_chart2 and km_chart2.get('houses'): km_svg2 = generate_north_indian_chart_svg(km_chart2['houses'], km_chart2['lagna']['sign'])
+    except Exception as se: logging.warning("SVG KundaliMilan: %s", se)
     km_ashtakoot_details = {}
     if ashtakoot_data and isinstance(ashtakoot_data, dict):
-        kootas = ashtakoot_data.get('kootas', {})
-        km_ashtakoot_details = {k: v.get('score', 0) for k, v in kootas.items()}
+        km_ashtakoot_details = {k: v.get('score', 0) for k, v in ashtakoot_data.get('kootas', {}).items()}
     report = KundaliMilanReport(person1_id=request.person1_id, person2_id=request.person2_id, compatibility_score=score, detailed_analysis=analysis, chart_svg_person1=km_svg1, chart_svg_person2=km_svg2, ashtakoot_details=km_ashtakoot_details)
     import json as _json
     doc = _json.loads(report.model_dump_json())
@@ -1007,61 +979,51 @@ async def generate_kundali_milan(request: KundaliMilanRequest):
 @api_router.get("/kundali-milan/{report_id}/pdf")
 async def download_kundali_milan_pdf(report_id: str, user_email: str = None):
     report = await db.kundali_milan_reports.find_one({"id": report_id}, {"_id": 0})
-    if not report:
-        raise HTTPException(status_code=404, detail="Report not found")
+    if not report: raise HTTPException(status_code=404, detail="Report not found")
     person1 = await db.birth_profiles.find_one({"id": report['person1_id']}, {"_id": 0})
     person2 = await db.birth_profiles.find_one({"id": report['person2_id']}, {"_id": 0})
-    if not person1 or not person2:
-        raise HTTPException(status_code=404, detail="Profiles not found")
+    if not person1 or not person2: raise HTTPException(status_code=404, detail="Profiles not found")
     try:
         password = generate_report_password(person1.get('name', ''), person1.get('date_of_birth', ''))
         pdf_buffer = generate_kundali_milan_pdf(person1, person2, report['compatibility_score'], report['detailed_analysis'], password=password)
-        return StreamingResponse(pdf_buffer, media_type="application/pdf", headers={"Content-Disposition": f"attachment; filename=Kundali_Milan_{person1['name'].replace(' ','_')}_{person2['name'].replace(' ','_')}.pdf", "Access-Control-Expose-Headers": "Content-Disposition, X-PDF-Password", "X-PDF-Password": password})
+        fn = "Kundali_Milan_" + person1['name'].replace(' ', '_') + "_" + person2['name'].replace(' ', '_') + ".pdf"
+        return StreamingResponse(pdf_buffer, media_type="application/pdf", headers={"Content-Disposition": "attachment; filename=" + fn, "Access-Control-Expose-Headers": "Content-Disposition, X-PDF-Password", "X-PDF-Password": password})
     except Exception as e:
-        logging.error(f"PDF generation error: {str(e)}")
+        logging.error("PDF generation error: %s", str(e))
         raise HTTPException(status_code=500, detail="Failed to generate PDF")
 
 @api_router.get("/kundali-milan/{person1_id}/{person2_id}", response_model=KundaliMilanReport)
 async def get_kundali_milan(person1_id: str, person2_id: str):
     report = await db.kundali_milan_reports.find_one({"$or": [{"person1_id": person1_id, "person2_id": person2_id}, {"person1_id": person2_id, "person2_id": person1_id}]}, {"_id": 0})
-    if not report:
-        raise HTTPException(status_code=404, detail="Kundali Milan report not found")
-    if isinstance(report['generated_at'], str):
-        report['generated_at'] = datetime.fromisoformat(report['generated_at'])
+    if not report: raise HTTPException(status_code=404, detail="Kundali Milan report not found")
+    if isinstance(report['generated_at'], str): report['generated_at'] = datetime.fromisoformat(report['generated_at'])
     return KundaliMilanReport(**report)
 
 async def check_premium_access(user_email: str, report_type: str, report_id: str) -> bool:
     subscription = await db.subscriptions.find_one({"user_email": user_email, "status": "active", "subscription_type": "premium_monthly"})
     if subscription:
         expires_at = subscription.get('expires_at')
-        if expires_at is None:
-            return True
-        if isinstance(expires_at, str):
-            expires_at = datetime.fromisoformat(expires_at.replace('Z', '+00:00'))
-        if expires_at.tzinfo is None:
-            expires_at = expires_at.replace(tzinfo=timezone.utc)
-        if expires_at > datetime.now(timezone.utc):
-            return True
+        if expires_at is None: return True
+        if isinstance(expires_at, str): expires_at = datetime.fromisoformat(expires_at.replace('Z', '+00:00'))
+        if expires_at.tzinfo is None: expires_at = expires_at.replace(tzinfo=timezone.utc)
+        if expires_at > datetime.now(timezone.utc): return True
     payment = await db.payments.find_one({"user_email": user_email, "report_type": report_type, "report_id": report_id, "status": "completed"})
-    if payment:
-        return True
+    if payment: return True
     premium_payment = await db.payments.find_one({"user_email": user_email, "report_type": "premium_monthly", "status": "completed"})
     return premium_payment is not None
 
 @api_router.post("/payment/create-order")
 async def create_payment_order(request: PaymentIntentRequest):
-    if request.report_type not in PRICING:
-        raise HTTPException(status_code=400, detail="Invalid report type")
+    if request.report_type not in PRICING: raise HTTPException(status_code=400, detail="Invalid report type")
     try:
         amount_paise = int(PRICING[request.report_type] * 100)
         razorpay_order = razorpay_client.order.create({"amount": amount_paise, "currency": "INR", "payment_capture": 1, "notes": {"report_type": request.report_type, "report_id": request.report_id or "", "user_email": request.user_email}})
         payment = Payment(user_email=request.user_email, report_type=request.report_type, report_id=request.report_id or "", amount=PRICING[request.report_type], razorpay_order_id=razorpay_order["id"], status="created")
         await db.payments.insert_one(payment.model_dump(mode='json'))
         return {"order_id": razorpay_order["id"], "amount": PRICING[request.report_type], "currency": "INR", "key_id": os.environ.get('RAZORPAY_KEY_ID')}
-    except HTTPException:
-        raise
+    except HTTPException: raise
     except Exception as e:
-        logging.error(f"Razorpay order creation error: {str(e)}")
+        logging.error("Razorpay order creation error: %s", str(e))
         raise HTTPException(status_code=500, detail="Payment order creation failed")
 
 @api_router.post("/payment/verify")
@@ -1069,8 +1031,7 @@ async def verify_payment(razorpay_order_id: str, razorpay_payment_id: str, razor
     try:
         razorpay_client.utility.verify_payment_signature({'razorpay_order_id': razorpay_order_id, 'razorpay_payment_id': razorpay_payment_id, 'razorpay_signature': razorpay_signature})
         payment_doc = await db.payments.find_one({"razorpay_order_id": razorpay_order_id}, {"_id": 0})
-        if not payment_doc:
-            raise HTTPException(status_code=404, detail="Payment record not found")
+        if not payment_doc: raise HTTPException(status_code=404, detail="Payment record not found")
         await db.payments.update_one({"razorpay_order_id": razorpay_order_id}, {"$set": {"razorpay_payment_id": razorpay_payment_id, "status": "completed"}})
         if payment_doc['report_type'] == "premium_monthly":
             subscription = UserSubscription(user_email=user_email, subscription_type="premium_monthly", status="active", stripe_subscription_id=razorpay_payment_id, expires_at=datetime.now(timezone.utc) + timedelta(days=30))
@@ -1081,31 +1042,28 @@ async def verify_payment(razorpay_order_id: str, razorpay_payment_id: str, razor
         await db.payments.update_one({"razorpay_order_id": razorpay_order_id}, {"$set": {"status": "failed"}})
         raise HTTPException(status_code=400, detail="Payment verification failed")
     except Exception as e:
-        logging.error(f"Payment verification error: {str(e)}")
+        logging.error("Payment verification error: %s", str(e))
         raise HTTPException(status_code=500, detail="Payment verification failed")
 
 @api_router.get("/premium/check")
 async def check_premium(user_email: str, report_type: str, report_id: str):
-    has_access = await check_premium_access(user_email, report_type, report_id)
-    return {"has_premium_access": has_access}
+    return {"has_premium_access": await check_premium_access(user_email, report_type, report_id)}
 
 @api_router.get("/birthchart/{profile_id}/pdf")
 async def download_birth_chart_pdf(profile_id: str, user_email: str = None):
     profile = await db.birth_profiles.find_one({"id": profile_id}, {"_id": 0})
-    report = await db.birth_chart_reports.find_one({"profile_id": profile_id}, {"_id": 0})
-    if not profile or not report:
-        raise HTTPException(status_code=404, detail="Report not found")
+    report  = await db.birth_chart_reports.find_one({"profile_id": profile_id}, {"_id": 0})
+    if not profile or not report: raise HTTPException(status_code=404, detail="Report not found")
     try:
         chart_data = None
-        try:
-            chart_data = calculate_vedic_chart(date_of_birth=profile['date_of_birth'], time_of_birth=profile['time_of_birth'], place_of_birth=profile.get('location', profile.get('place_of_birth', 'New Delhi')))
-        except Exception as ce:
-            logging.warning(f"Chart calc for PDF failed: {ce}")
+        try: chart_data = calculate_vedic_chart(date_of_birth=profile['date_of_birth'], time_of_birth=profile['time_of_birth'], place_of_birth=profile.get('location', profile.get('place_of_birth', 'New Delhi')))
+        except Exception as ce: logging.warning("Chart calc for PDF failed: %s", ce)
         password = generate_report_password(profile.get('name', ''), profile.get('date_of_birth', ''))
         pdf_buffer = generate_birth_chart_pdf(profile, report['report_content'], chart_data=chart_data, password=password)
-        return StreamingResponse(pdf_buffer, media_type="application/pdf", headers={"Content-Disposition": f"attachment; filename=Birth_Chart_Report_{profile['name'].replace(' ','_')}.pdf", "Access-Control-Expose-Headers": "Content-Disposition, X-PDF-Password", "X-PDF-Password": password})
+        fn = "Birth_Chart_Report_" + profile['name'].replace(' ', '_') + ".pdf"
+        return StreamingResponse(pdf_buffer, media_type="application/pdf", headers={"Content-Disposition": "attachment; filename=" + fn, "Access-Control-Expose-Headers": "Content-Disposition, X-PDF-Password", "X-PDF-Password": password})
     except Exception as e:
-        logging.error(f"PDF generation error: {str(e)}")
+        logging.error("PDF generation error: %s", str(e))
         raise HTTPException(status_code=500, detail="Failed to generate PDF")
 
 @api_router.get("/my-reports")
@@ -1117,31 +1075,27 @@ async def get_my_reports(user_email: str, request: Request):
         profile_ids = [p["id"] for p in profiles]
         profile_map = {p["id"]: p for p in profiles}
         if profile_ids:
-            bc_reports = await db.birth_chart_reports.find({"profile_id": {"$in": profile_ids}}, {"_id": 0}).sort("generated_at", -1).to_list(50)
-            for r in bc_reports:
-                profile = profile_map.get(r.get("profile_id"), {})
-                reports.append({"id": r["id"], "type": "birth_chart", "type_label": "Birth Chart", "name": profile.get("name", "Unknown"), "subtitle": f"{profile.get('date_of_birth','')} \u00b7 {profile.get('location','')}", "profile_id": r.get("profile_id"), "generated_at": r.get("generated_at"), "lagna": r.get("lagna", {}), "nakshatra": r.get("nakshatra", {})})
+            for r in await db.birth_chart_reports.find({"profile_id": {"$in": profile_ids}}, {"_id": 0}).sort("generated_at", -1).to_list(50):
+                pf = profile_map.get(r.get("profile_id"), {})
+                reports.append({"id": r["id"], "type": "birth_chart", "type_label": "Birth Chart", "name": pf.get("name", "Unknown"), "subtitle": pf.get('date_of_birth', '') + " \u00b7 " + pf.get('location', ''), "profile_id": r.get("profile_id"), "generated_at": r.get("generated_at"), "lagna": r.get("lagna", {}), "nakshatra": r.get("nakshatra", {})})
         if profile_ids:
-            km_reports = await db.kundali_milan_reports.find({"$or": [{"person1_id": {"$in": profile_ids}}, {"person2_id": {"$in": profile_ids}}]}, {"_id": 0}).sort("generated_at", -1).to_list(50)
-            for r in km_reports:
+            for r in await db.kundali_milan_reports.find({"$or": [{"person1_id": {"$in": profile_ids}}, {"person2_id": {"$in": profile_ids}}]}, {"_id": 0}).sort("generated_at", -1).to_list(50):
                 p1 = profile_map.get(r.get("person1_id"), {})
                 p2 = await db.birth_profiles.find_one({"id": r.get("person2_id")}, {"_id": 0}) or {}
-                reports.append({"id": r["id"], "type": "kundali_milan", "type_label": "Kundali Milan", "name": f"{p1.get('name','?')} & {p2.get('name','?')}", "subtitle": f"Compatibility Score: {r.get('compatibility_score', 0)}/36", "person1_id": r.get("person1_id"), "person2_id": r.get("person2_id"), "compatibility_score": r.get("compatibility_score", 0), "generated_at": r.get("generated_at")})
-        bk_reports = await db.brihat_kundli_reports.find({"user_email": user_email}, {"_id": 0}).sort("generated_at", -1).to_list(20)
-        for r in bk_reports:
-            reports.append({"id": r["id"], "type": "brihat_kundli", "type_label": "Brihat Kundli Pro", "name": r.get("full_name", "Unknown"), "subtitle": f"{r.get('date_of_birth','')} \u00b7 {r.get('place_of_birth','')}", "generated_at": r.get("generated_at"), "ascendant": r.get("ascendant", {}), "current_dasha": r.get("current_dasha", {})})
+                reports.append({"id": r["id"], "type": "kundali_milan", "type_label": "Kundali Milan", "name": p1.get('name', '?') + " & " + p2.get('name', '?'), "subtitle": "Compatibility Score: " + str(r.get('compatibility_score', 0)) + "/36", "person1_id": r.get("person1_id"), "person2_id": r.get("person2_id"), "compatibility_score": r.get("compatibility_score", 0), "generated_at": r.get("generated_at")})
+        for r in await db.brihat_kundli_reports.find({"user_email": user_email}, {"_id": 0}).sort("generated_at", -1).to_list(20):
+            reports.append({"id": r["id"], "type": "brihat_kundli", "type_label": "Brihat Kundli Pro", "name": r.get("full_name", "Unknown"), "subtitle": r.get('date_of_birth', '') + " \u00b7 " + r.get('place_of_birth', ''), "generated_at": r.get("generated_at"), "ascendant": r.get("ascendant", {}), "current_dasha": r.get("current_dasha", {})})
         reports.sort(key=lambda x: str(x.get("generated_at", "")), reverse=True)
         return {"reports": reports, "total": len(reports)}
     except Exception as e:
-        logging.error(f"Error fetching my-reports: {e}", exc_info=True)
+        logging.error("Error fetching my-reports: %s", e, exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to fetch reports")
 
 @api_router.post("/share/create")
 async def create_share_link(report_type: str, report_id: str):
     existing = await db.share_links.find_one({"report_type": report_type, "report_id": report_id}, {"_id": 0})
     if existing:
-        if isinstance(existing['created_at'], str):
-            existing['created_at'] = datetime.fromisoformat(existing['created_at'])
+        if isinstance(existing['created_at'], str): existing['created_at'] = datetime.fromisoformat(existing['created_at'])
         return ShareLink(**existing)
     share_link = ShareLink(report_type=report_type, report_id=report_id)
     await db.share_links.insert_one(share_link.model_dump(mode='json'))
@@ -1150,21 +1104,18 @@ async def create_share_link(report_type: str, report_id: str):
 @api_router.get("/share/{token}")
 async def get_shared_report(token: str):
     share_link = await db.share_links.find_one({"token": token}, {"_id": 0})
-    if not share_link:
-        raise HTTPException(status_code=404, detail="Share link not found")
+    if not share_link: raise HTTPException(status_code=404, detail="Share link not found")
     await db.share_links.update_one({"token": token}, {"$inc": {"views": 1}})
     report_type = share_link['report_type']
-    report_id = share_link['report_id']
+    report_id   = share_link['report_id']
     if report_type == "birth_chart":
         profile = await db.birth_profiles.find_one({"id": report_id}, {"_id": 0})
-        report = await db.birth_chart_reports.find_one({"profile_id": report_id}, {"_id": 0})
-        if not profile or not report:
-            raise HTTPException(status_code=404, detail="Report not found")
+        report  = await db.birth_chart_reports.find_one({"profile_id": report_id}, {"_id": 0})
+        if not profile or not report: raise HTTPException(status_code=404, detail="Report not found")
         return {"type": "birth_chart", "profile": profile, "report": report}
     elif report_type == "kundali_milan":
         report = await db.kundali_milan_reports.find_one({"id": report_id}, {"_id": 0})
-        if not report:
-            raise HTTPException(status_code=404, detail="Report not found")
+        if not report: raise HTTPException(status_code=404, detail="Report not found")
         person1 = await db.birth_profiles.find_one({"id": report['person1_id']}, {"_id": 0})
         person2 = await db.birth_profiles.find_one({"id": report['person2_id']}, {"_id": 0})
         return {"type": "kundali_milan", "report": report, "person1": person1, "person2": person2}
@@ -1173,14 +1124,13 @@ async def get_shared_report(token: str):
 @api_router.post("/auth/register")
 async def register(request: RegisterRequest, response: Response):
     existing = await db.users.find_one({"email": request.email})
-    if existing:
-        raise HTTPException(status_code=400, detail="Email already registered")
+    if existing: raise HTTPException(status_code=400, detail="Email already registered")
     user = User(email=request.email, name=request.name, password_hash=hash_password(request.password))
     await db.users.insert_one(user.model_dump(mode='json'))
-    welcome_body = f'<div style="font-family: Arial, sans-serif;"><h2 style="color: #B8960C;">Welcome to Everyday Horoscope! \u2728</h2><p>Hi {user.name}, your account has been created.</p></div>'
+    welcome_body = '<div style="font-family: Arial, sans-serif;"><h2 style="color: #B8960C;">Welcome to Everyday Horoscope! \u2728</h2><p>Hi ' + user.name + ', your account has been created.</p></div>'
     await send_email_notification(user.email, "Welcome to Everyday Horoscope \u2728", welcome_body)
     admin_email = os.environ.get('ADMIN_EMAIL', os.environ.get('SMTP_USER', 'prateekmalhotra.contentcreator@gmail.com'))
-    await send_email_notification(admin_email, f"New Registration: {user.name}", f"<p><b>Name:</b> {user.name}</p><p><b>Email:</b> {user.email}</p>")
+    await send_email_notification(admin_email, "New Registration: " + user.name, "<p><b>Name:</b> " + user.name + "</p><p><b>Email:</b> " + user.email + "</p>")
     session_token = await create_session(db, user.user_id)
     set_session_cookie(response, session_token)
     return UserResponse(user_id=user.user_id, email=user.email, name=user.name, picture=user.picture)
@@ -1188,19 +1138,15 @@ async def register(request: RegisterRequest, response: Response):
 @api_router.post("/auth/login")
 async def login(request: LoginRequest, response: Response):
     user_doc = await db.users.find_one({"email": request.email}, {"_id": 0})
-    if not user_doc:
-        raise HTTPException(status_code=401, detail="Invalid email or password")
-    if not user_doc.get('password_hash'):
-        raise HTTPException(status_code=401, detail="Please login with Google")
+    if not user_doc: raise HTTPException(status_code=401, detail="Invalid email or password")
+    if not user_doc.get('password_hash'): raise HTTPException(status_code=401, detail="Please login with Google")
     locked_until = user_doc.get('locked_until')
     if locked_until:
-        if isinstance(locked_until, str):
-            locked_until = datetime.fromisoformat(locked_until)
-        if locked_until.tzinfo is None:
-            locked_until = locked_until.replace(tzinfo=timezone.utc)
+        if isinstance(locked_until, str): locked_until = datetime.fromisoformat(locked_until)
+        if locked_until.tzinfo is None: locked_until = locked_until.replace(tzinfo=timezone.utc)
         if datetime.now(timezone.utc) < locked_until:
             remaining = int((locked_until - datetime.now(timezone.utc)).total_seconds() / 60)
-            raise HTTPException(status_code=429, detail=f"Account locked. Try again in {remaining} minutes.")
+            raise HTTPException(status_code=429, detail="Account locked. Try again in " + str(remaining) + " minutes.")
         else:
             await db.users.update_one({"email": request.email}, {"$unset": {"locked_until": "", "failed_attempts": ""}})
     if not verify_password(request.password, user_doc['password_hash']):
@@ -1213,7 +1159,8 @@ async def login(request: LoginRequest, response: Response):
             raise HTTPException(status_code=429, detail="Account locked for 24 hours due to too many failed attempts.")
         await db.users.update_one({"email": request.email}, update)
         remaining_attempts = 5 - failed
-        raise HTTPException(status_code=401, detail=f"Invalid email or password. {remaining_attempts} attempt{'s' if remaining_attempts != 1 else ''} remaining.")
+        s = "s" if remaining_attempts != 1 else ""
+        raise HTTPException(status_code=401, detail="Invalid email or password. " + str(remaining_attempts) + " attempt" + s + " remaining.")
     await db.users.update_one({"email": request.email}, {"$unset": {"failed_attempts": "", "locked_until": ""}})
     session_token = await create_session(db, user_doc['user_id'])
     set_session_cookie(response, session_token)
@@ -1229,41 +1176,35 @@ async def forgot_password(request: ForgotPasswordRequest):
     reset_expires = datetime.now(timezone.utc) + timedelta(hours=1)
     await db.users.update_one({"email": request.email}, {"$set": {"reset_token": reset_token, "reset_token_expires": reset_expires.isoformat()}})
     frontend_url = os.environ.get('FRONTEND_URL', 'https://everydayhoroscope.in')
-    reset_link = f"{frontend_url}/reset-password?token={reset_token}"
-    email_body = f'<div style="font-family: Georgia, serif; max-width: 600px; padding: 32px;"><h1 style="color: #C5A059;">\u2726 Everyday Horoscope</h1><h2>Reset your password</h2><p>Hi {user_doc.get("name", "there")},</p><p>Click below. Link expires in 1 hour.</p><a href="{reset_link}" style="background: #C5A059; color: #fff; padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: bold;">Reset My Password</a></div>'
+    reset_link = frontend_url + "/reset-password?token=" + reset_token
+    user_name = user_doc.get("name", "there")
+    email_body = '<div style="font-family: Georgia, serif; max-width: 600px; padding: 32px;"><h1 style="color: #C5A059;">\u2726 Everyday Horoscope</h1><h2>Reset your password</h2><p>Hi ' + user_name + ',</p><p>Click below. Link expires in 1 hour.</p><a href="' + reset_link + '" style="background: #C5A059; color: #fff; padding: 14px 32px; border-radius: 4px; text-decoration: none; font-weight: bold;">Reset My Password</a></div>'
     await send_email_notification(request.email, "Reset your Everyday Horoscope password", email_body)
     return {"message": "If that email exists, a reset link has been sent."}
 
 @api_router.post("/auth/reset-password")
 async def reset_password(request: ResetPasswordRequest):
     user_doc = await db.users.find_one({"reset_token": request.token}, {"_id": 0})
-    if not user_doc:
-        raise HTTPException(status_code=400, detail="Invalid or expired reset token")
+    if not user_doc: raise HTTPException(status_code=400, detail="Invalid or expired reset token")
     expires = user_doc.get('reset_token_expires')
     if expires:
-        if isinstance(expires, str):
-            expires = datetime.fromisoformat(expires)
-        if expires.tzinfo is None:
-            expires = expires.replace(tzinfo=timezone.utc)
-        if datetime.now(timezone.utc) > expires:
-            raise HTTPException(status_code=400, detail="Reset token has expired.")
-    if len(request.new_password) < 6:
-        raise HTTPException(status_code=400, detail="Password must be at least 6 characters")
+        if isinstance(expires, str): expires = datetime.fromisoformat(expires)
+        if expires.tzinfo is None: expires = expires.replace(tzinfo=timezone.utc)
+        if datetime.now(timezone.utc) > expires: raise HTTPException(status_code=400, detail="Reset token has expired.")
+    if len(request.new_password) < 6: raise HTTPException(status_code=400, detail="Password must be at least 6 characters")
     await db.users.update_one({"reset_token": request.token}, {"$set": {"password_hash": hash_password(request.new_password)}, "$unset": {"reset_token": "", "reset_token_expires": "", "failed_attempts": "", "locked_until": ""}})
     return {"message": "Password reset successfully."}
 
 @api_router.get("/auth/me")
 async def get_me(request: Request):
     user = await get_current_user(request, db)
-    if not user:
-        raise HTTPException(status_code=401, detail="Not authenticated")
+    if not user: raise HTTPException(status_code=401, detail="Not authenticated")
     return user
 
 @api_router.post("/auth/logout")
 async def logout(request: Request, response: Response):
     session_token = request.cookies.get("session_token")
-    if session_token:
-        await db.user_sessions.delete_one({"session_token": session_token})
+    if session_token: await db.user_sessions.delete_one({"session_token": session_token})
     response.delete_cookie("session_token", path="/")
     return {"message": "Logged out successfully"}
 
@@ -1273,8 +1214,7 @@ class OAuthCallbackRequest(BaseModel):
 @api_router.post("/auth/oauth/callback")
 async def oauth_callback(response: Response, body: OAuthCallbackRequest = None, session_id: str = None):
     code = (body.session_id if body else None) or session_id
-    if not code:
-        raise HTTPException(status_code=400, detail="Missing authorization code")
+    if not code: raise HTTPException(status_code=400, detail="Missing authorization code")
     try:
         user_data = await exchange_session_id_for_token(code)
         user = await get_or_create_oauth_user(db, email=user_data['email'], name=user_data['name'], picture=user_data.get('picture'), google_id=user_data['id'])
@@ -1282,43 +1222,39 @@ async def oauth_callback(response: Response, body: OAuthCallbackRequest = None, 
         set_session_cookie(response, session_token)
         return UserResponse(user_id=user.user_id, email=user.email, name=user.name, picture=user.picture)
     except Exception as e:
-        logging.error(f"OAuth callback error: {str(e)}")
+        logging.error("OAuth callback error: %s", str(e))
         raise HTTPException(status_code=401, detail="Authentication failed")
 
 @api_router.get("/policies/{policy_type}")
 async def get_policy(policy_type: str):
     valid_types = ['terms', 'privacy', 'subscription-terms', 'refund-policy', 'cookie-policy']
-    if policy_type not in valid_types:
-        raise HTTPException(status_code=404, detail="Policy not found")
+    if policy_type not in valid_types: raise HTTPException(status_code=404, detail="Policy not found")
     policy = await db.policies.find_one({"type": policy_type}, {"_id": 0})
-    if not policy:
-        raise HTTPException(status_code=404, detail="Policy not found")
+    if not policy: raise HTTPException(status_code=404, detail="Policy not found")
     return policy
 
 @api_router.put("/admin/policies/{policy_type}")
 async def update_policy(request: Request, policy_type: str, policy_data: dict):
     await require_admin(request, db)
     valid_types = ['terms', 'privacy', 'subscription-terms', 'refund-policy', 'cookie-policy']
-    if policy_type not in valid_types:
-        raise HTTPException(status_code=404, detail="Policy type not found")
+    if policy_type not in valid_types: raise HTTPException(status_code=404, detail="Policy type not found")
     policy_data['type'] = policy_type
     policy_data['updated_at'] = datetime.now(timezone.utc).isoformat()
     await db.policies.update_one({"type": policy_type}, {"$set": policy_data}, upsert=True)
-    return {"success": True, "message": f"Policy '{policy_type}' updated"}
+    return {"success": True, "message": "Policy '" + policy_type + "' updated"}
 
 @api_router.get("/admin/policies")
 async def get_all_policies(request: Request):
     await require_admin(request, db)
-    policies = await db.policies.find({}, {"_id": 0}).to_list(100)
-    return {"policies": policies}
+    return {"policies": await db.policies.find({}, {"_id": 0}).to_list(100)}
 
 @api_router.post("/contact")
 async def submit_contact_form(form: ContactFormRequest):
     contact_doc = {"id": str(uuid.uuid4()), "name": form.name, "email": form.email, "subject": form.subject or "Contact Form Submission", "message": form.message, "created_at": datetime.now(timezone.utc).isoformat()}
     await db.contact_messages.insert_one(contact_doc)
     admin_email = os.environ.get('ADMIN_EMAIL', os.environ.get('SMTP_USER', 'prateekmalhotra.contentcreator@gmail.com'))
-    await send_email_notification(admin_email, f"Contact: {form.subject or form.name}", f"<p><b>From:</b> {form.name} ({form.email})</p><p><b>Message:</b> {form.message}</p>")
-    await send_email_notification(form.email, "We received your message \u2014 Everyday Horoscope", f"<p>Hi {form.name}, we received your message and will respond within 2 business days.</p>")
+    await send_email_notification(admin_email, "Contact: " + (form.subject or form.name), "<p><b>From:</b> " + form.name + " (" + form.email + ")</p><p><b>Message:</b> " + form.message + "</p>")
+    await send_email_notification(form.email, "We received your message \u2014 Everyday Horoscope", "<p>Hi " + form.name + ", we received your message and will respond within 2 business days.</p>")
     return {"success": True, "message": "Message received."}
 
 @api_router.post("/admin/contact/reply")
@@ -1327,8 +1263,8 @@ async def admin_reply_to_contact(request: Request, body: AdminReplyRequest):
     reply_html = (
         '<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">'
         '<h2 style="color: #B8960C;">\u2728 Everyday Horoscope Support</h2>'
-        f'<p>Hi {body.to_name},</p>'
-        f'<div style="white-space: pre-wrap; line-height: 1.6; color: #333;">{body.message}</div>'
+        '<p>Hi ' + body.to_name + ',</p>'
+        '<div style="white-space: pre-wrap; line-height: 1.6; color: #333;">' + body.message + '</div>'
         '<hr style="margin: 24px 0; border-color: #eee;"/>'
         '<p style="color: #888; font-size: 12px;">SkyHound Studios \u00b7 Delhi, India</p>'
         '</div>'
@@ -1336,14 +1272,12 @@ async def admin_reply_to_contact(request: Request, body: AdminReplyRequest):
     sent = await send_email_notification(body.to_email, body.subject, reply_html)
     if not sent:
         raise HTTPException(status_code=500, detail="Failed to send reply. Check RESEND_API_KEY configuration.")
-    return {"success": True, "message": f"Reply sent to {body.to_email}"}
+    return {"success": True, "message": "Reply sent to " + body.to_email}
 
 @api_router.post("/admin/login")
 async def admin_login(request: AdminLoginRequest, response: Response):
-    if request.username != ADMIN_USERNAME:
-        raise HTTPException(status_code=401, detail="Invalid credentials")
-    if not verify_admin_password(request.password):
-        raise HTTPException(status_code=401, detail="Invalid credentials")
+    if request.username != ADMIN_USERNAME: raise HTTPException(status_code=401, detail="Invalid credentials")
+    if not verify_admin_password(request.password): raise HTTPException(status_code=401, detail="Invalid credentials")
     session_token = await create_admin_session(db)
     set_admin_session_cookie(response, session_token)
     return AdminLoginResponse(success=True, token=session_token, message="Login successful")
@@ -1351,8 +1285,7 @@ async def admin_login(request: AdminLoginRequest, response: Response):
 @api_router.post("/admin/logout")
 async def admin_logout(request: Request, response: Response):
     session_token = request.cookies.get("admin_session")
-    if session_token:
-        await db.admin_sessions.delete_one({"session_token": session_token})
+    if session_token: await db.admin_sessions.delete_one({"session_token": session_token})
     response.delete_cookie("admin_session", path="/")
     return {"message": "Logged out successfully"}
 
@@ -1370,78 +1303,65 @@ async def change_admin_password(request: Request, password_request: ChangePasswo
 
 @api_router.get("/admin/verify")
 async def verify_admin(request: Request):
-    is_admin = await require_admin(request, db)
-    return {"authenticated": is_admin}
+    return {"authenticated": await require_admin(request, db)}
 
 @api_router.get("/admin/dashboard")
 async def get_dashboard_stats(request: Request):
     await require_admin(request, db)
-    today_start = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0)
-    today_iso = today_start.isoformat()
-    total_users = await db.users.count_documents({})
-    total_payments = await db.payments.count_documents({})
-    total_birth_charts = await db.birth_chart_reports.count_documents({})
-    total_kundali_milans = await db.kundali_milan_reports.count_documents({})
-    active_subscriptions = await db.subscriptions.count_documents({"status": "active"})
-    revenue_pipeline = [{"$match": {"status": "completed"}}, {"$group": {"_id": None, "total": {"$sum": "$amount"}}}]
-    revenue_result = await db.payments.aggregate(revenue_pipeline).to_list(1)
-    total_revenue = revenue_result[0]['total'] if revenue_result else 0
-    users_today = await db.users.count_documents({"created_at": {"$gte": today_iso}})
-    payments_today = await db.payments.count_documents({"created_at": {"$gte": today_iso}})
-    return DashboardStats(total_users=total_users, total_payments=total_payments, total_revenue=total_revenue, total_birth_charts=total_birth_charts, total_kundali_milans=total_kundali_milans, active_subscriptions=active_subscriptions, users_today=users_today, payments_today=payments_today)
+    today_iso = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0).isoformat()
+    revenue_result = await db.payments.aggregate([{"$match": {"status": "completed"}}, {"$group": {"_id": None, "total": {"$sum": "$amount"}}}]).to_list(1)
+    return DashboardStats(
+        total_users=await db.users.count_documents({}),
+        total_payments=await db.payments.count_documents({}),
+        total_revenue=revenue_result[0]['total'] if revenue_result else 0,
+        total_birth_charts=await db.birth_chart_reports.count_documents({}),
+        total_kundali_milans=await db.kundali_milan_reports.count_documents({}),
+        active_subscriptions=await db.subscriptions.count_documents({"status": "active"}),
+        users_today=await db.users.count_documents({"created_at": {"$gte": today_iso}}),
+        payments_today=await db.payments.count_documents({"created_at": {"$gte": today_iso}})
+    )
 
 @api_router.get("/admin/users")
 async def get_all_users(request: Request, skip: int = 0, limit: int = 100):
     await require_admin(request, db)
     users = await db.users.find({}, {"_id": 0, "password_hash": 0}).sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
-    total = await db.users.count_documents({})
     user_list = []
     for user in users:
         created_at = user.get('created_at', '')
         if hasattr(created_at, 'isoformat'): created_at = created_at.isoformat()
         user_list.append(UserListItem(user_id=user.get('user_id', ''), email=user.get('email', ''), name=user.get('name', ''), picture=user.get('picture'), google_id=user.get('google_id'), created_at=str(created_at), has_password=bool(user.get('password_hash')), is_restricted=bool(user.get('is_restricted', False)), is_suspended=bool(user.get('is_suspended', False)), suspended_until=str(user['suspended_until']) if user.get('suspended_until') else None, locked_until=str(user['locked_until']) if user.get('locked_until') else None, failed_attempts=int(user.get('failed_attempts', 0))))
-    return {"users": user_list, "total": total, "skip": skip, "limit": limit}
+    return {"users": user_list, "total": await db.users.count_documents({}), "skip": skip, "limit": limit}
 
 @api_router.get("/admin/payments")
 async def get_all_payments(request: Request, skip: int = 0, limit: int = 100):
     await require_admin(request, db)
     payments = await db.payments.find({}, {"_id": 0}).sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
-    total = await db.payments.count_documents({})
     payment_list = []
     for payment in payments:
         created_at = payment.get('created_at', '')
         if hasattr(created_at, 'isoformat'): created_at = created_at.isoformat()
         payment_list.append(PaymentListItem(id=payment.get('id', ''), user_email=payment.get('user_email', ''), report_type=payment.get('report_type', ''), amount=payment.get('amount', 0), status=payment.get('status', ''), razorpay_order_id=payment.get('razorpay_order_id', ''), razorpay_payment_id=payment.get('razorpay_payment_id'), created_at=str(created_at)))
-    return {"payments": payment_list, "total": total, "skip": skip, "limit": limit}
+    return {"payments": payment_list, "total": await db.payments.count_documents({}), "skip": skip, "limit": limit}
 
 @api_router.get("/admin/reports")
 async def get_all_reports(request: Request, skip: int = 0, limit: int = 100):
     await require_admin(request, db)
-    birth_charts = await db.birth_chart_reports.find({}, {"_id": 0}).sort("generated_at", -1).skip(skip).limit(limit).to_list(limit)
+    birth_charts   = await db.birth_chart_reports.find({}, {"_id": 0}).sort("generated_at", -1).skip(skip).limit(limit).to_list(limit)
     kundali_milans = await db.kundali_milan_reports.find({}, {"_id": 0}).sort("generated_at", -1).skip(skip).limit(limit).to_list(limit)
-    total_birth_charts = await db.birth_chart_reports.count_documents({})
-    total_kundali_milans = await db.kundali_milan_reports.count_documents({})
     def serialize_doc(doc):
-        result = {}
-        for k, v in doc.items():
-            if hasattr(v, 'isoformat'):
-                result[k] = v.isoformat()
-            else:
-                result[k] = v
-        return result
+        return {k: v.isoformat() if hasattr(v, 'isoformat') else v for k, v in doc.items()}
     return {
         "birth_charts": [serialize_doc(r) for r in birth_charts],
         "kundali_milans": [serialize_doc(r) for r in kundali_milans],
-        "total_birth_charts": total_birth_charts,
-        "total_kundali_milans": total_kundali_milans
+        "total_birth_charts": await db.birth_chart_reports.count_documents({}),
+        "total_kundali_milans": await db.kundali_milan_reports.count_documents({})
     }
 
 @api_router.delete("/admin/user/{user_id}")
 async def delete_user(request: Request, user_id: str):
     await require_admin(request, db)
     result = await db.users.delete_one({"user_id": user_id})
-    if result.deleted_count == 0:
-        raise HTTPException(status_code=404, detail="User not found")
+    if result.deleted_count == 0: raise HTTPException(status_code=404, detail="User not found")
     await db.user_sessions.delete_many({"user_id": user_id})
     return {"message": "User deleted successfully"}
 
@@ -1452,8 +1372,7 @@ class UserActionRequest(BaseModel):
 async def user_action(request: Request, user_id: str, body: UserActionRequest):
     await require_admin(request, db)
     user = await db.users.find_one({"user_id": user_id})
-    if not user:
-        raise HTTPException(status_code=404, detail="User not found")
+    if not user: raise HTTPException(status_code=404, detail="User not found")
     action = body.action
     if action == "restrict":
         update = {"$set": {"is_restricted": True}}; msg = "User restricted"
@@ -1462,7 +1381,7 @@ async def user_action(request: Request, user_id: str, body: UserActionRequest):
     elif action == "suspend":
         suspend_until = datetime.now(timezone.utc) + timedelta(hours=24)
         update = {"$set": {"is_suspended": True, "suspended_until": suspend_until.isoformat()}}; msg = "User suspended 24hrs"
-        await send_email_notification(user.get('email', ''), "Your account has been suspended", f"<p>Hi {user.get('name','User')}, your account has been suspended for 24 hours.</p>")
+        await send_email_notification(user.get('email', ''), "Your account has been suspended", "<p>Hi " + user.get('name', 'User') + ", your account has been suspended for 24 hours.</p>")
     elif action == "unsuspend":
         update = {"$unset": {"is_suspended": "", "suspended_until": ""}}; msg = "User unsuspended"
     else:
@@ -1474,8 +1393,7 @@ async def user_action(request: Request, user_id: str, body: UserActionRequest):
 async def get_contact_messages(request: Request, skip: int = 0, limit: int = 50):
     await require_admin(request, db)
     messages = await db.contact_messages.find({}, {"_id": 0}).sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
-    total = await db.contact_messages.count_documents({})
-    return {"messages": messages, "total": total}
+    return {"messages": messages, "total": await db.contact_messages.count_documents({})}
 
 def generate_slug(title: str) -> str:
     import re
@@ -1489,15 +1407,9 @@ def generate_slug(title: str) -> str:
 async def create_blog_post(request: Request, post: BlogPostCreate):
     await require_admin(request, db)
     slug = post.slug if post.slug else generate_slug(post.title)
-    existing = await db.blog_posts.find_one({"slug": slug})
-    if existing:
-        slug = f"{slug}-{str(uuid.uuid4())[:8]}"
-    blog_post = BlogPost(
-        title=post.title, slug=slug, excerpt=post.excerpt, content=post.content,
-        author=post.author, category=post.category, tags=post.tags,
-        featured_image=post.featured_image, video_url=post.video_url,
-        published=post.published, scheduled_at=post.scheduled_at,
-    )
+    if await db.blog_posts.find_one({"slug": slug}):
+        slug = slug + "-" + str(uuid.uuid4())[:8]
+    blog_post = BlogPost(title=post.title, slug=slug, excerpt=post.excerpt, content=post.content, author=post.author, category=post.category, tags=post.tags, featured_image=post.featured_image, video_url=post.video_url, published=post.published, scheduled_at=post.scheduled_at)
     doc = blog_post.model_dump(mode='json')
     await db.blog_posts.insert_one(doc)
     return {"success": True, "post": doc}
@@ -1510,8 +1422,7 @@ async def get_all_blog_posts_admin(request: Request, skip: int = 0, limit: int =
         for field in ['created_at', 'updated_at', 'scheduled_at']:
             if field in p and hasattr(p[field], 'isoformat'):
                 p[field] = p[field].isoformat()
-    total = await db.blog_posts.count_documents({})
-    return {"posts": posts, "total": total, "skip": skip, "limit": limit}
+    return {"posts": posts, "total": await db.blog_posts.count_documents({}), "skip": skip, "limit": limit}
 
 @api_router.put("/admin/blog/{post_id}")
 async def update_blog_post(request: Request, post_id: str, post: BlogPostUpdate):
@@ -1521,39 +1432,33 @@ async def update_blog_post(request: Request, post_id: str, post: BlogPostUpdate)
         update_data['slug'] = generate_slug(update_data['title'])
     update_data['updated_at'] = datetime.now(timezone.utc).isoformat()
     result = await db.blog_posts.update_one({"id": post_id}, {"$set": update_data})
-    if result.matched_count == 0:
-        raise HTTPException(status_code=404, detail="Blog post not found")
+    if result.matched_count == 0: raise HTTPException(status_code=404, detail="Blog post not found")
     return {"success": True, "message": "Post updated"}
 
 @api_router.delete("/admin/blog/{post_id}")
 async def delete_blog_post(request: Request, post_id: str):
     await require_admin(request, db)
     result = await db.blog_posts.delete_one({"id": post_id})
-    if result.deleted_count == 0:
-        raise HTTPException(status_code=404, detail="Blog post not found")
+    if result.deleted_count == 0: raise HTTPException(status_code=404, detail="Blog post not found")
     return {"success": True, "message": "Post deleted"}
 
 @api_router.get("/blog")
 async def get_published_blog_posts(skip: int = 0, limit: int = 10, category: str = None):
     query = {"published": True}
-    if category:
-        query["category"] = category
+    if category: query["category"] = category
     posts = await db.blog_posts.find(query, {"_id": 0, "content": 0}).sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
-    total = await db.blog_posts.count_documents(query)
-    return {"posts": posts, "total": total, "skip": skip, "limit": limit}
+    return {"posts": posts, "total": await db.blog_posts.count_documents(query), "skip": skip, "limit": limit}
 
 @api_router.get("/blog/{slug}")
 async def get_blog_post_by_slug(slug: str):
     post = await db.blog_posts.find_one({"slug": slug, "published": True}, {"_id": 0})
-    if not post:
-        raise HTTPException(status_code=404, detail="Blog post not found")
+    if not post: raise HTTPException(status_code=404, detail="Blog post not found")
     await db.blog_posts.update_one({"slug": slug}, {"$inc": {"views": 1}})
     return post
 
 @api_router.get("/blog/categories/list")
 async def get_blog_categories():
-    categories = await db.blog_posts.distinct("category", {"published": True})
-    return {"categories": categories}
+    return {"categories": await db.blog_posts.distinct("category", {"published": True})}
 
 class UpdateProfileRequest(BaseModel):
     name: str
@@ -1565,36 +1470,28 @@ class ChangeUserPasswordRequest(BaseModel):
 @api_router.put("/auth/profile")
 async def update_profile(request: Request, body: UpdateProfileRequest):
     user = await get_current_user(request, db)
-    if not user:
-        raise HTTPException(status_code=401, detail="Not authenticated")
+    if not user: raise HTTPException(status_code=401, detail="Not authenticated")
     name = body.name.strip()
-    if not name or len(name) < 2:
-        raise HTTPException(status_code=400, detail="Name must be at least 2 characters")
+    if not name or len(name) < 2: raise HTTPException(status_code=400, detail="Name must be at least 2 characters")
     await db.users.update_one({"user_id": user.user_id}, {"$set": {"name": name}})
     return {"message": "Profile updated", "name": name}
 
 @api_router.put("/auth/change-password")
 async def change_user_password(request: Request, body: ChangeUserPasswordRequest):
     user = await get_current_user(request, db)
-    if not user:
-        raise HTTPException(status_code=401, detail="Not authenticated")
+    if not user: raise HTTPException(status_code=401, detail="Not authenticated")
     user_doc = await db.users.find_one({"user_id": user.user_id})
-    if not user_doc:
-        raise HTTPException(status_code=404, detail="User not found")
-    if not user_doc.get("password_hash"):
-        raise HTTPException(status_code=400, detail="Password change not available for Google sign-in accounts")
-    if not verify_password(body.current_password, user_doc["password_hash"]):
-        raise HTTPException(status_code=400, detail="Current password is incorrect")
-    if len(body.new_password) < 8:
-        raise HTTPException(status_code=400, detail="New password must be at least 8 characters")
+    if not user_doc: raise HTTPException(status_code=404, detail="User not found")
+    if not user_doc.get("password_hash"): raise HTTPException(status_code=400, detail="Password change not available for Google sign-in accounts")
+    if not verify_password(body.current_password, user_doc["password_hash"]): raise HTTPException(status_code=400, detail="Current password is incorrect")
+    if len(body.new_password) < 8: raise HTTPException(status_code=400, detail="New password must be at least 8 characters")
     await db.users.update_one({"user_id": user.user_id}, {"$set": {"password_hash": hash_password(body.new_password)}})
     return {"message": "Password changed successfully"}
 
 @api_router.get("/auth/my-payments")
 async def get_my_payments(request: Request):
     user = await get_current_user(request, db)
-    if not user:
-        raise HTTPException(status_code=401, detail="Not authenticated")
+    if not user: raise HTTPException(status_code=401, detail="Not authenticated")
     payments = await db.payments.find({"user_email": user.email}, {"_id": 0}).sort("created_at", -1).limit(50).to_list(50)
     result = []
     for p in payments:
@@ -1612,23 +1509,20 @@ async def prefetch_all_horoscopes():
     logging.info("Starting scheduled horoscope prefetch...")
     signs = [s["id"] for s in ZODIAC_SIGNS]
     types = ["daily", "weekly", "monthly"]
-    generated = 0
-    skipped = 0
+    generated = skipped = 0
     for horoscope_type in types:
         prediction_date = get_prediction_date(horoscope_type)
         for sign in signs:
             try:
-                existing = await db.horoscopes.find_one({"sign": sign, "type": horoscope_type, "prediction_date": prediction_date})
-                if existing:
-                    skipped += 1
-                    continue
+                if await db.horoscopes.find_one({"sign": sign, "type": horoscope_type, "prediction_date": prediction_date}):
+                    skipped += 1; continue
                 content = await generate_horoscope_with_llm(sign, horoscope_type)
                 horoscope = Horoscope(sign=sign, type=horoscope_type, content=content, prediction_date=prediction_date)
                 await db.horoscopes.insert_one(horoscope.model_dump(mode='json'))
                 generated += 1
             except Exception as e:
-                logging.error(f"Failed to generate {horoscope_type} for {sign}: {str(e)}")
-    logging.info(f"Horoscope prefetch complete: {generated} generated, {skipped} already cached")
+                logging.error("Failed to generate %s for %s: %s", horoscope_type, sign, str(e))
+    logging.info("Horoscope prefetch complete: %d generated, %d already cached", generated, skipped)
 
 scheduler = AsyncIOScheduler()
 
