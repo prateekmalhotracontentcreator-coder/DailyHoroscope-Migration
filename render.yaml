@@ -5,7 +5,6 @@
 #   1. Go to Render Dashboard → "Blueprints" → "New Blueprint Instance"
 #   2. Connect this repo — Render will read this file automatically
 #   3. Fill in the secret env vars marked (sync: false) in the Render UI
-#      (MONGO_URL, JWT_SECRET, GOOGLE_CLIENT_ID, etc.)
 #   4. Click Deploy
 #
 # On every push to main, Render auto-redeploys the service.
@@ -31,21 +30,25 @@ services:
       - key: PYTHON_VERSION
         value: "3.11.9"
 
-      # ── Resend SMTP — fixed values, safe to commit ─────────────────────
-      # Resend uses the same host/port/user for every account.
-      # Only the API key (SMTP_PASSWORD) is secret.
-      - key: SMTP_HOST
-        value: "smtp.resend.com"
-      - key: SMTP_PORT
-        value: "465"               # 465 = SSL (recommended by Resend)
-      - key: SMTP_USER
-        value: "resend"            # always literally "resend" for all accounts
+      # ── Email via Resend HTTP API ───────────────────────────────────────
+      # server.py calls https://api.resend.com/emails directly using httpx.
+      # It does NOT use SMTP — so no SMTP_HOST / SMTP_PORT / SMTP_USER needed.
+      #
+      # RESEND_API_KEY  → the re_... key from your Resend dashboard (secret)
+      # FROM_EMAIL      → the verified sender address, e.g. hello@everydayhoroscope.in
+      # ADMIN_EMAIL     → where new-registration & contact-form alerts are sent
+      #                   (server.py falls back to SMTP_USER if this is absent,
+      #                    so we set ADMIN_EMAIL explicitly instead)
+      - key: RESEND_API_KEY
+        sync: false                # secret — enter re_... value in Render dashboard
+      - key: FROM_EMAIL
+        sync: false                # e.g. hello@everydayhoroscope.in (must be verified in Resend)
+      - key: ADMIN_EMAIL
+        value: "prateekmalhotra.contentcreator@gmail.com"   # safe to commit
 
       # ── Secrets: set these in the Render dashboard, NOT here ───────────
-      # These placeholders tell Render the variable names exist;
-      # the actual values must be entered manually in Environment → Secret Files.
       - key: MONGO_URL
-        sync: false                # secret — enter value in Render dashboard
+        sync: false
       - key: DB_NAME
         sync: false
       - key: JWT_SECRET
@@ -62,7 +65,3 @@ services:
         sync: false
       - key: ANTHROPIC_API_KEY
         sync: false
-      - key: SMTP_PASSWORD
-        sync: false                # your Resend API key (re:...) — enter in Render dashboard
-      - key: FROM_EMAIL
-        sync: false                # e.g. hello@everydayhoroscope.in — must be verified in Resend
