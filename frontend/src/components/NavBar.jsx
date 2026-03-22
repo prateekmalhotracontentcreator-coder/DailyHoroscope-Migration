@@ -12,26 +12,22 @@ import {
   BookMarked, Layers
 } from 'lucide-react';
 
-// ─── Nav Data ─────────────────────────────────────────────────────────────────
-
 const NAV = [
   { label: 'Home', icon: Home, path: '/home' },
   {
-    label: 'Panchang',
-    icon: Calendar,
+    label: 'Panchang', icon: Calendar,
     children: [
-      { label: "Today's Panchang",    path: '/panchang/today',    icon: Sun },
-      { label: "Tomorrow's Panchang", path: '/panchang/tomorrow', icon: Sun },
-      { label: 'Tithi',              path: '/panchang/tithi',    icon: MoonIcon },
-      { label: 'Shubh Muhurat',      path: '/panchang/muhurat',  icon: Star },
-      { label: 'Nakshatra',          path: '/panchang/nakshatra',icon: Sparkles },
-      { label: 'Choghadiya',         path: '/panchang/choghadiya',icon: Zap },
-      { label: 'Rahu Kaal',          path: '/panchang/rahukaal', icon: Shield },
+      { label: "Today's Panchang",    path: '/panchang/today',     icon: Sun },
+      { label: "Tomorrow's Panchang", path: '/panchang/tomorrow',  icon: Sun },
+      { label: 'Tithi',               path: '/panchang/tithi',     icon: MoonIcon },
+      { label: 'Shubh Muhurat',       path: '/panchang/muhurat',   icon: Star },
+      { label: 'Nakshatra',           path: '/panchang/nakshatra', icon: Sparkles },
+      { label: 'Choghadiya',          path: '/panchang/choghadiya',icon: Zap },
+      { label: 'Rahu Kaal',           path: '/panchang/rahukaal',  icon: Shield },
     ],
   },
   {
-    label: 'Horoscope',
-    icon: Star,
+    label: 'Horoscope', icon: Star,
     children: [
       { label: 'Daily Horoscope',   path: '/horoscope/daily',   icon: Sun },
       { label: 'Weekly Horoscope',  path: '/horoscope/weekly',  icon: Star },
@@ -39,28 +35,26 @@ const NAV = [
     ],
   },
   {
-    label: 'Reports',
-    icon: FileText,
+    label: 'Reports', icon: FileText,
     children: [
-      { label: 'My Reports',         path: '/my-reports',     icon: FileText },
-      { label: 'Birth Chart',        path: '/birth-chart',    icon: Sparkles },
-      { label: 'Kundali Milan',      path: '/kundali-milan',  icon: Heart },
-      { label: 'Brihat Kundli Pro',  path: '/brihat-kundli',  icon: Crown },
-      { label: 'Ask 1 Question',     path: '/ask-question',   icon: Hash },
-      { label: 'Love Report',        path: '/love-report',    icon: Heart },
-      { label: 'Career Plus',        path: '/career-plus',    icon: Briefcase },
-      { label: 'Hasta Rekha',        path: '/palmistry',      icon: Layers },
+      { label: 'My Reports',        path: '/my-reports',    icon: FileText },
+      { label: 'Birth Chart',       path: '/birth-chart',   icon: Sparkles },
+      { label: 'Kundali Milan',     path: '/kundali-milan', icon: Heart },
+      { label: 'Brihat Kundli Pro', path: '/brihat-kundli', icon: Crown },
+      { label: 'Ask 1 Question',    path: '/ask-question',  icon: Hash },
+      { label: 'Love Report',       path: '/love-report',   icon: Heart },
+      { label: 'Career Plus',       path: '/career-plus',   icon: Briefcase },
+      { label: 'Hasta Rekha',       path: '/palmistry',     icon: Layers },
     ],
   },
   {
-    label: 'Remedies',
-    icon: Gem,
+    label: 'Remedies', icon: Gem,
     children: [
-      { label: 'Gemstones',       path: '/remedies/gemstones',      icon: Gem },
-      { label: 'Mantras',        path: '/remedies/mantras',        icon: BookMarked },
-      { label: 'Yantras',        path: '/remedies/yantras',        icon: Shield },
-      { label: 'Feng Shui',      path: '/remedies/feng-shui',      icon: Leaf },
-      { label: 'Crystal Therapy',path: '/remedies/crystal-therapy',icon: Zap },
+      { label: 'Gemstones',       path: '/remedies/gemstones',       icon: Gem },
+      { label: 'Mantras',         path: '/remedies/mantras',         icon: BookMarked },
+      { label: 'Yantras',         path: '/remedies/yantras',         icon: Shield },
+      { label: 'Feng Shui',       path: '/remedies/feng-shui',       icon: Leaf },
+      { label: 'Crystal Therapy', path: '/remedies/crystal-therapy', icon: Zap },
     ],
   },
   { label: 'Numerology', icon: Hash,      path: '/numerology' },
@@ -72,18 +66,17 @@ const NAV = [
 ];
 
 const BOTTOM_NAV = [
-  { label: 'Home',      icon: Home,     path: '/home' },
-  { label: 'Horoscope', icon: Star,     path: '/horoscope/daily' },
-  { label: 'My Reports',icon: FileText, path: '/my-reports' },
-  { label: 'Account',   icon: User,     path: '/account' },
+  { label: 'Home',       icon: Home,     path: '/home' },
+  { label: 'Horoscope',  icon: Star,     path: '/horoscope/daily' },
+  { label: 'My Reports', icon: FileText, path: '/my-reports' },
+  { label: 'Account',    icon: User,     path: '/account' },
 ];
 
-// ─── Desktop Dropdown ─────────────────────────────────────────────────────────
-
+// ─── Desktop Dropdown ──────────────────────────────────────────────────────────
 const DesktopDropdown = ({ item, isActive }) => {
   const [open, setOpen] = useState(false);
   const _navigate = useNavigate();
-  const navigate = (path, opts) => { window.scrollTo(0, 0); _navigate(path, opts); };
+  const navigate = (path) => { window.scrollTo(0, 0); _navigate(path); };
   const ref = useRef(null);
 
   useEffect(() => {
@@ -133,8 +126,7 @@ const DesktopDropdown = ({ item, isActive }) => {
   );
 };
 
-// ─── Sidebar Item ─────────────────────────────────────────────────────────────
-
+// ─── Sidebar Item ──────────────────────────────────────────────────────────────
 const SidebarItem = ({ item, onNavigate, depth = 0 }) => {
   const [open, setOpen] = useState(false);
   const location = useLocation();
@@ -148,7 +140,7 @@ const SidebarItem = ({ item, onNavigate, depth = 0 }) => {
           ${isActive
             ? 'text-gold bg-gold/10 border-l-2 border-gold pl-3.5'
             : 'text-muted-foreground hover:text-foreground hover:bg-muted/40'}`}
-        style={{ paddingLeft: depth > 0 ? '2.5rem' : '1rem' }}
+        style={{ paddingLeft: depth > 0 ? '2.5rem' : undefined }}
       >
         <item.icon className={`h-4 w-4 flex-shrink-0 ${isActive ? 'text-gold' : 'text-muted-foreground/60'}`} />
         {item.label}
@@ -179,23 +171,17 @@ const SidebarItem = ({ item, onNavigate, depth = 0 }) => {
   );
 };
 
-// ─── Main NavBar ──────────────────────────────────────────────────────────────
-
+// ─── Main NavBar ───────────────────────────────────────────────────────────────
 export const NavBar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { user, loading } = useAuth();
 
-  const handleNavigate = (path) => {
-    navigate(path);
-    setSidebarOpen(false);
-  };
+  const handleNavigate = (path) => { navigate(path); setSidebarOpen(false); };
 
-  // Close sidebar on route change
   useEffect(() => { setSidebarOpen(false); }, [location.pathname]);
 
-  // Prevent body scroll when sidebar open
   useEffect(() => {
     document.body.style.overflow = sidebarOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -203,44 +189,25 @@ export const NavBar = () => {
 
   return (
     <>
-      {/* ── TOP BAR ─────────────────────────────────────────────────────── */}
+      {/* TOP BAR */}
       <header className="sticky top-0 z-40 bg-card/80 backdrop-blur-md border-b border-border">
         <div className="flex items-center justify-between h-14 px-4">
-
-          {/* Left: Hamburger (mobile) + Branding */}
           <div className="flex items-center gap-3">
-            {/* Hamburger — mobile only */}
-            <button
-              onClick={() => setSidebarOpen(true)}
-              className="lg:hidden p-2 rounded-sm hover:bg-muted/50 transition-colors"
-              aria-label="Open menu"
-            >
+            <button onClick={() => setSidebarOpen(true)} className="lg:hidden p-2 rounded-sm hover:bg-muted/50 transition-colors" aria-label="Open menu">
               <Menu className="h-5 w-5" />
             </button>
-
-            {/* Branding */}
-            <button
-              onClick={() => navigate(user ? '/home' : '/')}
-              className="flex items-center gap-2"
-              data-testid="header-logo"
-            >
+            <button onClick={() => navigate(user ? '/home' : '/')} className="flex items-center gap-2" data-testid="header-logo">
               <Sparkles className="h-6 w-6 text-gold" />
               <span className="font-playfair font-semibold text-lg">Everyday Horoscope</span>
             </button>
           </div>
 
-          {/* Centre: Desktop nav links */}
           <nav className="hidden lg:flex items-center gap-0.5">
             {NAV.map((item) => (
-              <DesktopDropdown
-                key={item.label}
-                item={item}
-                isActive={item.path && location.pathname === item.path}
-              />
+              <DesktopDropdown key={item.label} item={item} isActive={item.path && location.pathname === item.path} />
             ))}
           </nav>
 
-          {/* Right: Theme toggle + user */}
           <div className="flex items-center gap-2">
             <ThemeToggle />
             {loading ? (
@@ -248,59 +215,35 @@ export const NavBar = () => {
             ) : user ? (
               <UserAccountMenu />
             ) : (
-              <Button
-                data-testid="header-login-btn"
-                onClick={() => navigate('/login')}
-                size="sm"
-                className="bg-gold hover:bg-gold/90 text-primary-foreground h-8 px-3 text-xs font-semibold"
-              >
-                <LogIn className="h-3.5 w-3.5 mr-1.5" />
-                Sign In
+              <Button data-testid="header-login-btn" onClick={() => navigate('/login')} size="sm"
+                className="bg-gold hover:bg-gold/90 text-primary-foreground h-8 px-3 text-xs font-semibold">
+                <LogIn className="h-3.5 w-3.5 mr-1.5" /> Sign In
               </Button>
             )}
           </div>
         </div>
       </header>
 
-      {/* ── MOBILE SIDEBAR OVERLAY ──────────────────────────────────────── */}
+      {/* MOBILE SIDEBAR */}
       {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-50 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-        >
-          {/* Backdrop */}
+        <div className="fixed inset-0 z-50 lg:hidden" onClick={() => setSidebarOpen(false)}>
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
-
-          {/* Sidebar panel */}
-          <div
-            className="absolute left-0 top-0 bottom-0 w-72 bg-card border-r border-border shadow-2xl flex flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Sidebar header */}
+          <div className="absolute left-0 top-0 bottom-0 w-72 bg-card border-r border-border shadow-2xl flex flex-col" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between px-4 py-4 border-b border-border">
               <div className="flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-gold" />
                 <span className="font-playfair font-semibold">Everyday Horoscope</span>
               </div>
-              <button
-                onClick={() => setSidebarOpen(false)}
-                className="p-1.5 rounded-sm hover:bg-muted/50 transition-colors"
-              >
+              <button onClick={() => setSidebarOpen(false)} className="p-1.5 rounded-sm hover:bg-muted/50 transition-colors">
                 <X className="h-4 w-4" />
               </button>
             </div>
-
-            {/* Gold accent line */}
             <div className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
-
-            {/* Nav items */}
             <nav className="flex-1 overflow-y-auto py-3 space-y-0.5">
               {NAV.map((item) => (
                 <SidebarItem key={item.label} item={item} onNavigate={handleNavigate} />
               ))}
             </nav>
-
-            {/* Sidebar footer */}
             <div className="border-t border-border p-4">
               {user ? (
                 <div className="flex items-center gap-3">
@@ -313,11 +256,7 @@ export const NavBar = () => {
                   </div>
                 </div>
               ) : (
-                <Button
-                  onClick={() => handleNavigate('/login')}
-                  className="w-full bg-gold hover:bg-gold/90 text-primary-foreground"
-                  size="sm"
-                >
+                <Button onClick={() => handleNavigate('/login')} className="w-full bg-gold hover:bg-gold/90 text-primary-foreground" size="sm">
                   <LogIn className="h-4 w-4 mr-2" /> Sign In
                 </Button>
               )}
@@ -326,13 +265,15 @@ export const NavBar = () => {
         </div>
       )}
 
-      {/* ── BOTTOM TAB BAR — mobile only ────────────────────────────────── */}
+      {/* BOTTOM TAB BAR */}
       <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-700 shadow-lg">
         <div className="flex items-stretch h-16">
           {BOTTOM_NAV.map((item) => {
-            const isActive = location.pathname === item.path ||
+            const isActive =
+              location.pathname === item.path ||
               (item.path === '/horoscope/daily' && location.pathname.startsWith('/horoscope')) ||
-              (item.path === '/my-reports' && location.pathname === '/my-reports');
+              (item.path === '/my-reports' && location.pathname === '/my-reports') ||
+              (item.path === '/account' && location.pathname === '/account');
             return (
               <button
                 key={item.label}
@@ -348,7 +289,7 @@ export const NavBar = () => {
         </div>
       </nav>
 
-      {/* Bottom padding spacer for mobile so content isn't hidden behind bottom bar */}
+      {/* Bottom spacer so content clears the bottom nav */}
       <div className="lg:hidden h-20" />
     </>
   );

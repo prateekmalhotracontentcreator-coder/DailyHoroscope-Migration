@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Card } from '../components/ui/card';
@@ -10,11 +10,21 @@ import { toast } from 'sonner';
 
 export const Register = () => {
   const navigate = useNavigate();
-  const { register } = useAuth();
+  const { register, user, loading: authLoading } = useAuth();
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [agreedToTerms, setAgreedToTerms] = useState(false);
   const [loading, setLoading] = useState(false);
   const [shakeCheckbox, setShakeCheckbox] = useState(false);
+
+  // Redirect already-logged-in users away from register page
+  useEffect(() => {
+    if (!authLoading && user) {
+      navigate('/home', { replace: true });
+    }
+  }, [user, authLoading, navigate]);
+
+  if (authLoading) return null;
+  if (user) return null;
 
   const triggerShake = () => {
     setShakeCheckbox(true);
@@ -36,7 +46,7 @@ export const Register = () => {
     try {
       await register(formData.email, formData.password, formData.name);
       toast.success('Account created successfully!');
-      navigate('/', { replace: true });
+      navigate('/home', { replace: true });
     } catch (error) {
       toast.error(error.response?.data?.detail || 'Registration failed. Please try again.');
     } finally {
@@ -57,7 +67,7 @@ export const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 pb-28 lg:pb-12">
       <Card className="w-full max-w-md p-8 border-2 border-gold/30">
         <div className="text-center mb-8">
           <Sparkles className="h-10 w-10 text-gold mx-auto mb-4" />
@@ -92,7 +102,16 @@ export const Register = () => {
           </div>
 
           {/* T&C Checkbox */}
-          <div className="flex items-start space-x-3 p-3 rounded-lg border border-border bg-muted/30">
+          <div
+            className={`flex items-start space-x-3 p-3 rounded-lg border transition-all duration-200 ${
+              shakeCheckbox
+                ? 'border-red-500 bg-red-500/10 animate-pulse'
+                : agreedToTerms
+                ? 'border-gold/40 bg-gold/5'
+                : 'border-border bg-muted/30'
+            }`}
+            style={shakeCheckbox ? { animation: 'shake 0.4s ease' } : {}}
+          >
             <input
               type="checkbox"
               id="terms"
@@ -107,7 +126,7 @@ export const Register = () => {
               <Link to="/privacy" target="_blank" className="text-gold hover:underline font-medium">Privacy Policy</Link>
               {', and '}
               <Link to="/subscription-terms" target="_blank" className="text-gold hover:underline font-medium">Subscription Terms</Link>.
-              I understand this platform provides AI-generated astrological content for informational purposes only.
+              {' '}I understand this platform provides AI-generated astrological content for informational purposes only.
             </Label>
           </div>
 
