@@ -74,9 +74,23 @@ export const MonthlyHoroscope = () => {
 
   const handleDismiss = () => { dismissDOBPrompt(); setShowModal(false); };
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Monthly Horoscope — Your Month Ahead in the Stars',
+    description: 'Free monthly Vedic horoscope for all 12 zodiac signs. Navigate the month ahead with AI-powered cosmic insights.',
+    url: 'https://everydayhoroscope.in/horoscope/monthly',
+    publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
+  };
+
   return (
     <div className="min-h-screen pb-24 lg:pb-0">
-      <SEO title="Monthly Horoscope \u2014 Your Month Ahead in the Stars" description="Read your free monthly horoscope for all 12 zodiac signs." url="https://everydayhoroscope.in/horoscope/monthly" />
+      <SEO
+        title="Monthly Horoscope — Your Month Ahead in the Stars"
+        description="Read your free monthly Vedic horoscope for all 12 zodiac signs. Navigate the month ahead with AI-powered cosmic insights."
+        url="https://everydayhoroscope.in/horoscope/monthly"
+        schema={schema}
+      />
 
       {showModal && <DOBModal onSave={handleDOBSave} onDismiss={handleDismiss} />}
 
@@ -87,7 +101,7 @@ export const MonthlyHoroscope = () => {
           </Button>
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-              \u2726 Monthly Vedic Horoscope
+              ✦ Monthly Vedic Horoscope
             </div>
             <h1 className="text-4xl font-playfair font-semibold mb-3">Monthly Horoscope</h1>
             <p className="text-muted-foreground">Select your zodiac sign to receive this month's personalised Vedic guidance</p>

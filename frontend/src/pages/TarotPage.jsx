@@ -5,11 +5,25 @@ import { Button } from '../components/ui/button';
 import { BookOpen, Sparkles, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Tarot Card Reading — Vedic Cross-Reference',
+  description: 'Free Tarot card reading powered by ancient symbolism and Vedic astrology cross-reference. Daily card draw, 3-card spread, and Celtic Cross — coming soon.',
+  url: 'https://everydayhoroscope.in/tarot',
+  publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
+};
+
 export const TarotPage = () => {
   const navigate = useNavigate();
   return (
     <div className="max-w-2xl mx-auto px-4 py-10 text-center">
-      <SEO title="Tarot Reading — Everyday Horoscope" description="Free Tarot card reading powered by ancient symbolism and Vedic cross-reference. Discover what the cards and the stars say about your question." url="https://everydayhoroscope.in/tarot" />
+      <SEO
+        title="Tarot Card Reading — Vedic Cross-Reference"
+        description="Free Tarot card reading powered by ancient symbolism and Vedic astrology. Western Tarot interpreted through Jyotish — a combination no one else offers."
+        url="https://everydayhoroscope.in/tarot"
+        schema={schema}
+      />
       <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
         <BookOpen className="h-3 w-3" /> Ancient Symbolism
       </div>

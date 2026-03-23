@@ -74,9 +74,23 @@ export const WeeklyHoroscope = () => {
 
   const handleDismiss = () => { dismissDOBPrompt(); setShowModal(false); };
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Weekly Horoscope — Plan Your Week with the Stars',
+    description: 'Free weekly Vedic horoscope for all 12 zodiac signs. Plan your week with AI-powered cosmic guidance.',
+    url: 'https://everydayhoroscope.in/horoscope/weekly',
+    publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
+  };
+
   return (
     <div className="min-h-screen pb-24 lg:pb-0">
-      <SEO title="Weekly Horoscope \u2014 Plan Your Week with the Stars" description="Get your free weekly horoscope for all 12 zodiac signs." url="https://everydayhoroscope.in/horoscope/weekly" />
+      <SEO
+        title="Weekly Horoscope — Plan Your Week with the Stars"
+        description="Get your free weekly Vedic horoscope for all 12 zodiac signs. AI-powered cosmic guidance to plan your week ahead."
+        url="https://everydayhoroscope.in/horoscope/weekly"
+        schema={schema}
+      />
 
       {showModal && <DOBModal onSave={handleDOBSave} onDismiss={handleDismiss} />}
 
@@ -87,7 +101,7 @@ export const WeeklyHoroscope = () => {
           </Button>
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-              \u2726 Weekly Vedic Horoscope
+              ✦ Weekly Vedic Horoscope
             </div>
             <h1 className="text-4xl font-playfair font-semibold mb-3">Weekly Horoscope</h1>
             <p className="text-muted-foreground">Select your zodiac sign to receive this week's personalised Vedic guidance</p>

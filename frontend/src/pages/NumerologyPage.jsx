@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
-import { Hash, Sparkles } from 'lucide-react';
+import { Hash } from 'lucide-react';
 
 const getLifePathNumber = (dob) => {
   const digits = dob.replace(/-/g, '').split('').map(Number);
@@ -14,18 +14,34 @@ const getLifePathNumber = (dob) => {
 };
 
 const MEANINGS = {
-  1: 'The Leader — Independent, pioneering, self-reliant. You are destined to forge your own path.',
-  2: 'The Diplomat — Sensitive, cooperative, intuitive. You thrive in partnerships and bring harmony.',
-  3: 'The Creator — Expressive, joyful, communicative. Your gift is inspiring others through creativity.',
-  4: 'The Builder — Practical, disciplined, hardworking. You create lasting foundations.',
-  5: 'The Adventurer — Freedom-loving, versatile, curious. Change and travel are your teachers.',
-  6: 'The Nurturer — Responsible, caring, artistic. Family and community are your calling.',
-  7: 'The Seeker — Analytical, spiritual, introspective. Truth and wisdom guide your journey.',
-  8: 'The Achiever — Ambitious, authoritative, abundant. Material and spiritual power are yours to master.',
-  9: 'The Humanitarian — Compassionate, idealistic, generous. You are here to serve the world.',
+  1:  'The Leader — Independent, pioneering, self-reliant. You are destined to forge your own path.',
+  2:  'The Diplomat — Sensitive, cooperative, intuitive. You thrive in partnerships and bring harmony.',
+  3:  'The Creator — Expressive, joyful, communicative. Your gift is inspiring others through creativity.',
+  4:  'The Builder — Practical, disciplined, hardworking. You create lasting foundations.',
+  5:  'The Adventurer — Freedom-loving, versatile, curious. Change and travel are your teachers.',
+  6:  'The Nurturer — Responsible, caring, artistic. Family and community are your calling.',
+  7:  'The Seeker — Analytical, spiritual, introspective. Truth and wisdom guide your journey.',
+  8:  'The Achiever — Ambitious, authoritative, abundant. Material and spiritual power are yours to master.',
+  9:  'The Humanitarian — Compassionate, idealistic, generous. You are here to serve the world.',
   11: 'Master Number 11 — The Illuminator. Highly intuitive spiritual messenger.',
   22: 'Master Number 22 — The Master Builder. Greatest potential for achievement.',
   33: 'Master Number 33 — The Master Teacher. Pure compassion and healing.',
+};
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Vedic Numerology — Free Life Path Number Calculator',
+  description: 'Calculate your Moolank (Life Path) and Bhagyank (Destiny) numbers using Vedic Numerology. Free online calculator rooted in ancient Indian Ankjyotish.',
+  url: 'https://everydayhoroscope.in/numerology',
+  publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
+  mainEntity: {
+    '@type': 'SoftwareApplication',
+    name: 'Vedic Numerology Calculator',
+    applicationCategory: 'LifestyleApplication',
+    operatingSystem: 'Web',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' },
+  },
 };
 
 export const NumerologyPage = () => {
@@ -40,7 +56,12 @@ export const NumerologyPage = () => {
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
-      <SEO title="Vedic Numerology — Life Path Number Calculator" description="Calculate your Moolank (Life Path Number) and Bhagyank (Destiny Number) using Vedic Numerology. Discover your cosmic numeric blueprint." url="https://everydayhoroscope.in/numerology" />
+      <SEO
+        title="Vedic Numerology — Free Life Path Number Calculator"
+        description="Calculate your Moolank (Life Path) and Bhagyank (Destiny) numbers using Vedic Numerology. Free instant calculator rooted in ancient Indian Ankjyotish."
+        url="https://everydayhoroscope.in/numerology"
+        schema={schema}
+      />
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
           <Hash className="h-3 w-3" /> Engine 4 · Vedic Numerology
