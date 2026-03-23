@@ -40,14 +40,12 @@ import { TarotPage } from './pages/TarotPage';
 import { RemedyPage } from './pages/RemedyPage';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
-// Show NavBar on all pages except the Landing page
 const NavBarWrapper = () => {
   const location = useLocation();
   if (location.pathname === '/') return null;
   return <NavBar />;
 };
 
-// Keep-alive wrapper — wakes Render on mount, pings every 10 min
 const KeepAliveWrapper = ({ children }) => {
   useKeepAlive();
   return children;
@@ -66,12 +64,12 @@ function App() {
                 <NavBarWrapper />
                 <CookieConsent />
                 <Routes>
-                  {/* Auth Routes */}
+                  {/* Auth */}
                   <Route path="/login" element={<Login />} />
                   <Route path="/register" element={<Register />} />
                   <Route path="/auth/callback" element={<AuthCallback />} />
 
-                  {/* Public Routes */}
+                  {/* Public */}
                   <Route path="/" element={<Landing />} />
                   <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                   <Route path="/pricing" element={<PricingPage />} />
@@ -79,50 +77,51 @@ function App() {
                   <Route path="/horoscope/weekly" element={<WeeklyHoroscope />} />
                   <Route path="/horoscope/monthly" element={<MonthlyHoroscope />} />
 
-                  {/* Blog Routes */}
+                  {/* Blog */}
                   <Route path="/blog" element={<BlogList />} />
                   <Route path="/blog/:slug" element={<BlogPost />} />
 
-                  {/* Password Reset */}
+                  {/* Auth flows */}
                   <Route path="/reset-password" element={<ResetPassword />} />
 
-                  {/* Company Pages */}
+                  {/* Company */}
                   <Route path="/about" element={<AboutUs />} />
                   <Route path="/contact" element={<ContactUs />} />
 
-                  {/* Policy Pages */}
+                  {/* Policies */}
                   <Route path="/terms" element={<PolicyPage type="terms" />} />
                   <Route path="/privacy" element={<PolicyPage type="privacy" />} />
                   <Route path="/subscription-terms" element={<PolicyPage type="subscription-terms" />} />
                   <Route path="/refund-policy" element={<PolicyPage type="refund-policy" />} />
                   <Route path="/cookie-policy" element={<PolicyPage type="cookie-policy" />} />
 
-                  {/* Protected Routes */}
+                  {/* Protected */}
                   <Route path="/account" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
                   <Route path="/birth-chart" element={<ProtectedRoute><BirthChartPage /></ProtectedRoute>} />
                   <Route path="/kundali-milan" element={<ProtectedRoute><KundaliMilanPage /></ProtectedRoute>} />
                   <Route path="/brihat-kundli" element={<ProtectedRoute><BrihatKundliPage /></ProtectedRoute>} />
                   <Route path="/my-reports" element={<ProtectedRoute><MyReportsPage /></ProtectedRoute>} />
 
-                  {/* Admin Routes */}
+                  {/* Admin */}
                   <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
                   <Route path="/admin/login" element={<AdminLogin />} />
                   <Route path="/admin/dashboard" element={<AdminDashboard />} />
                   <Route path="/admin/blog" element={<AdminBlogManager />} />
 
-                  {/* Panchang */}
+                  {/* Panchang — fully live */}
                   <Route path="/panchang/:type" element={<PanchangPage />} />
+                  <Route path="/panchang/calendar/:year/:month" element={<PanchangPage />} />
 
-                  {/* Coming Soon */}
-                  <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
-                  <Route path="/love-report" element={<ComingSoonPage title="Love Report" subtitle="Deep compatibility and relationship analysis" eta="Sprint 3" />} />
-                  <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
-
-                  {/* Phase 2 Modules */}
+                  {/* Phase 2 modules */}
                   <Route path="/numerology" element={<NumerologyPage />} />
                   <Route path="/palmistry" element={<PalmistryPage />} />
                   <Route path="/tarot" element={<TarotPage />} />
                   <Route path="/remedies" element={<RemedyPage />} />
+
+                  {/* Coming soon */}
+                  <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
+                  <Route path="/love-report" element={<ComingSoonPage title="Love Report" subtitle="Deep compatibility and relationship analysis" eta="Sprint 3" />} />
+                  <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
 
                   {/* Fallback */}
                   <Route path="*" element={<Navigate to="/" replace />} />
