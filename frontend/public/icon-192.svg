@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="40" fill="#fdf8ee"/>
+  <rect width="192" height="192" rx="40" fill="url(#bg)"/>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fff8e1"/>
+      <stop offset="100%" stop-color="#fdf0d0"/>
+    </radialGradient>
+  </defs>
+  <!-- Outer ring -->
+  <circle cx="96" cy="96" r="72" fill="none" stroke="#C5A059" stroke-width="2" opacity="0.4"/>
+  <circle cx="96" cy="96" r="62" fill="none" stroke="#C5A059" stroke-width="1" opacity="0.2"/>
+  <!-- 8-point star -->
+  <path d="M96 28 L101 88 L158 88 L112 124 L130 182 L96 148 L62 182 L80 124 L34 88 L91 88 Z" fill="none"/>
+  <polygon points="96,30 103,78 148,58 118,96 148,134 103,114 96,162 89,114 44,134 74,96 44,58 89,78" fill="#C5A059" opacity="0.15"/>
+  <!-- Central star shape -->
+  <path d="M96 52
+    L100.5 90.5
+    L139 79
+    L111.5 105
+    L139 131
+    L100.5 119.5
+    L96 158
+    L91.5 119.5
+    L53 131
+    L80.5 105
+    L53 79
+    L91.5 90.5 Z"
+    fill="#C5A059"
+    opacity="0.9"
+  />
+  <!-- Inner glow dot -->
+  <circle cx="96" cy="96" r="14" fill="#fdf8ee"/>
+  <circle cx="96" cy="96" r="8" fill="#C5A059" opacity="0.7"/>
+  <!-- Small accent dots on ring -->
+  <circle cx="96" cy="24" r="3" fill="#C5A059" opacity="0.6"/>
+  <circle cx="96" cy="168" r="3" fill="#C5A059" opacity="0.6"/>
+  <circle cx="24" cy="96" r="3" fill="#C5A059" opacity="0.6"/>
+  <circle cx="168" cy="96" r="3" fill="#C5A059" opacity="0.6"/>
+</svg>

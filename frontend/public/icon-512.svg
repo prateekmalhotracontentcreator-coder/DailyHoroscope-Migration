@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="108" fill="#fdf8ee"/>
+  <rect width="512" height="512" rx="108" fill="url(#bg512)"/>
+  <defs>
+    <radialGradient id="bg512" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fff8e1"/>
+      <stop offset="100%" stop-color="#fdf0d0"/>
+    </radialGradient>
+  </defs>
+  <!-- Outer rings -->
+  <circle cx="256" cy="256" r="192" fill="none" stroke="#C5A059" stroke-width="2" opacity="0.35"/>
+  <circle cx="256" cy="256" r="168" fill="none" stroke="#C5A059" stroke-width="1" opacity="0.2"/>
+  <!-- Background 8-point star glow -->
+  <polygon points="256,80 270,208 395,155 315,256 395,357 270,304 256,432 242,304 117,357 197,256 117,155 242,208" fill="#C5A059" opacity="0.12"/>
+  <!-- Main star -->
+  <path d="M256 138
+    L268 237
+    L368 210
+    L298 280
+    L368 350
+    L268 323
+    L256 422
+    L244 323
+    L144 350
+    L214 280
+    L144 210
+    L244 237 Z"
+    fill="#C5A059"
+    opacity="0.92"
+  />
+  <!-- Inner circle cutout -->
+  <circle cx="256" cy="256" r="38" fill="#fdf8ee"/>
+  <circle cx="256" cy="256" r="22" fill="#C5A059" opacity="0.75"/>
+  <!-- Cardinal dots -->
+  <circle cx="256" cy="64" r="7" fill="#C5A059" opacity="0.55"/>
+  <circle cx="256" cy="448" r="7" fill="#C5A059" opacity="0.55"/>
+  <circle cx="64" cy="256" r="7" fill="#C5A059" opacity="0.55"/>
+  <circle cx="448" cy="256" r="7" fill="#C5A059" opacity="0.55"/>
+  <!-- App name text -->
+  <text x="256" y="490" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#C5A059" text-anchor="middle" opacity="0.8">EVERYDAY</text>
+</svg>
