@@ -38,13 +38,19 @@ import { NumerologyPage } from './pages/NumerologyPage';
 import { PalmistryPage } from './pages/PalmistryPage';
 import { TarotPage } from './pages/TarotPage';
 import { RemedyPage } from './pages/RemedyPage';
+import { useKeepAlive } from './hooks/useKeepAlive';
 
-
-// Show NavBar on all pages except the Landing page (which has its own nav)
+// Show NavBar on all pages except the Landing page
 const NavBarWrapper = () => {
   const location = useLocation();
   if (location.pathname === '/') return null;
   return <NavBar />;
+};
+
+// Keep-alive wrapper — wakes Render on mount, pings every 10 min
+const KeepAliveWrapper = ({ children }) => {
+  useKeepAlive();
+  return children;
 };
 
 function App() {
@@ -55,69 +61,73 @@ function App() {
           <div className="App min-h-screen">
             <Toaster position="top-center" richColors />
             <BrowserRouter>
-              <ScrollToTop />
-              <NavBarWrapper />
-              <CookieConsent />
-              <Routes>
-                {/* Auth Routes */}
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/auth/callback" element={<AuthCallback />} />
+              <KeepAliveWrapper>
+                <ScrollToTop />
+                <NavBarWrapper />
+                <CookieConsent />
+                <Routes>
+                  {/* Auth Routes */}
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/auth/callback" element={<AuthCallback />} />
 
-                {/* Public Routes */}
-                <Route path="/" element={<Landing />} />
-                <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-                <Route path="/pricing" element={<PricingPage />} />
-                <Route path="/horoscope/daily" element={<DailyHoroscope />} />
-                <Route path="/horoscope/weekly" element={<WeeklyHoroscope />} />
-                <Route path="/horoscope/monthly" element={<MonthlyHoroscope />} />
+                  {/* Public Routes */}
+                  <Route path="/" element={<Landing />} />
+                  <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+                  <Route path="/pricing" element={<PricingPage />} />
+                  <Route path="/horoscope/daily" element={<DailyHoroscope />} />
+                  <Route path="/horoscope/weekly" element={<WeeklyHoroscope />} />
+                  <Route path="/horoscope/monthly" element={<MonthlyHoroscope />} />
 
-                {/* Blog Routes */}
-                <Route path="/blog" element={<BlogList />} />
-                <Route path="/blog/:slug" element={<BlogPost />} />
+                  {/* Blog Routes */}
+                  <Route path="/blog" element={<BlogList />} />
+                  <Route path="/blog/:slug" element={<BlogPost />} />
 
-                {/* Password Reset */}
-                <Route path="/reset-password" element={<ResetPassword />} />
+                  {/* Password Reset */}
+                  <Route path="/reset-password" element={<ResetPassword />} />
 
-                {/* Company Pages */}
-                <Route path="/about" element={<AboutUs />} />
-                <Route path="/contact" element={<ContactUs />} />
+                  {/* Company Pages */}
+                  <Route path="/about" element={<AboutUs />} />
+                  <Route path="/contact" element={<ContactUs />} />
 
-                {/* Policy Pages */}
-                <Route path="/terms" element={<PolicyPage type="terms" />} />
-                <Route path="/privacy" element={<PolicyPage type="privacy" />} />
-                <Route path="/subscription-terms" element={<PolicyPage type="subscription-terms" />} />
-                <Route path="/refund-policy" element={<PolicyPage type="refund-policy" />} />
-                <Route path="/cookie-policy" element={<PolicyPage type="cookie-policy" />} />
+                  {/* Policy Pages */}
+                  <Route path="/terms" element={<PolicyPage type="terms" />} />
+                  <Route path="/privacy" element={<PolicyPage type="privacy" />} />
+                  <Route path="/subscription-terms" element={<PolicyPage type="subscription-terms" />} />
+                  <Route path="/refund-policy" element={<PolicyPage type="refund-policy" />} />
+                  <Route path="/cookie-policy" element={<PolicyPage type="cookie-policy" />} />
 
-                {/* Protected Routes */}
-                <Route path="/account" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
-                <Route path="/birth-chart" element={<ProtectedRoute><BirthChartPage /></ProtectedRoute>} />
-                <Route path="/kundali-milan" element={<ProtectedRoute><KundaliMilanPage /></ProtectedRoute>} />
-                <Route path="/brihat-kundli" element={<ProtectedRoute><BrihatKundliPage /></ProtectedRoute>} />
-                <Route path="/my-reports" element={<ProtectedRoute><MyReportsPage /></ProtectedRoute>} />
+                  {/* Protected Routes */}
+                  <Route path="/account" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
+                  <Route path="/birth-chart" element={<ProtectedRoute><BirthChartPage /></ProtectedRoute>} />
+                  <Route path="/kundali-milan" element={<ProtectedRoute><KundaliMilanPage /></ProtectedRoute>} />
+                  <Route path="/brihat-kundli" element={<ProtectedRoute><BrihatKundliPage /></ProtectedRoute>} />
+                  <Route path="/my-reports" element={<ProtectedRoute><MyReportsPage /></ProtectedRoute>} />
 
-                {/* Admin Routes */}
-                <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
-                <Route path="/admin/login" element={<AdminLogin />} />
-                <Route path="/admin/dashboard" element={<AdminDashboard />} />
-                <Route path="/admin/blog" element={<AdminBlogManager />} />
+                  {/* Admin Routes */}
+                  <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
+                  <Route path="/admin/login" element={<AdminLogin />} />
+                  <Route path="/admin/dashboard" element={<AdminDashboard />} />
+                  <Route path="/admin/blog" element={<AdminBlogManager />} />
 
-                {/* Panchang */}
-                <Route path="/panchang/:type" element={<PanchangPage />} />
+                  {/* Panchang */}
+                  <Route path="/panchang/:type" element={<PanchangPage />} />
 
-                {/* Coming Soon — future products */}
-                <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
-                <Route path="/love-report" element={<ComingSoonPage title="Love Report" subtitle="Deep compatibility and relationship analysis" eta="Sprint 3" />} />
-                <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
-                <Route path="/numerology" element={<NumerologyPage />} />
-                <Route path="/palmistry" element={<PalmistryPage />} />
-                <Route path="/tarot" element={<TarotPage />} />
-                <Route path="/remedies" element={<RemedyPage />} />
+                  {/* Coming Soon */}
+                  <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
+                  <Route path="/love-report" element={<ComingSoonPage title="Love Report" subtitle="Deep compatibility and relationship analysis" eta="Sprint 3" />} />
+                  <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
 
-                {/* Fallback */}
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
+                  {/* Phase 2 Modules */}
+                  <Route path="/numerology" element={<NumerologyPage />} />
+                  <Route path="/palmistry" element={<PalmistryPage />} />
+                  <Route path="/tarot" element={<TarotPage />} />
+                  <Route path="/remedies" element={<RemedyPage />} />
+
+                  {/* Fallback */}
+                  <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+              </KeepAliveWrapper>
             </BrowserRouter>
           </div>
         </AdminAuthProvider>

@@ -26,7 +26,6 @@ export const DailyHoroscope = () => {
 
   useEffect(() => { fetchSigns(); }, []);
 
-  // Show modal on first visit if DOB not yet set
   useEffect(() => {
     if (!dobDone) {
       const t = setTimeout(() => setShowModal(true), 600);
@@ -34,7 +33,6 @@ export const DailyHoroscope = () => {
     }
   }, [dobDone]);
 
-  // Auto-select primary sign once signs loaded
   useEffect(() => {
     if (signs.length > 0 && !selectedSign) {
       const saved = primarySign || localStorage.getItem('selected-sign');
@@ -78,15 +76,24 @@ export const DailyHoroscope = () => {
 
   const handleDismiss = () => { dismissDOBPrompt(); setShowModal(false); };
 
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Daily Horoscope — All 12 Zodiac Signs',
+    description: 'Read today\'s free Vedic daily horoscope for all 12 zodiac signs. AI-powered personalised predictions.',
+    url: 'https://everydayhoroscope.in/horoscope/daily',
+    publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
+  };
+
   return (
     <div className="min-h-screen pb-24 lg:pb-0">
       <SEO
-        title="Daily Horoscope \u2014 All 12 Zodiac Signs"
-        description="Read today's daily horoscope for all 12 zodiac signs. Free Vedic astrology predictions."
+        title="Daily Horoscope — All 12 Zodiac Signs"
+        description="Read today's free Vedic daily horoscope for all 12 zodiac signs. AI-powered personalised predictions rooted in 5,000 years of ancient wisdom."
         url="https://everydayhoroscope.in/horoscope/daily"
+        schema={schema}
       />
 
-      {/* DOB modal on first visit */}
       {showModal && <DOBModal onSave={handleDOBSave} onDismiss={handleDismiss} />}
 
       <div className="py-8 px-4 sm:px-6 lg:px-8">
@@ -97,18 +104,16 @@ export const DailyHoroscope = () => {
 
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-              \u2726 Daily Vedic Horoscope
+              ✦ Daily Vedic Horoscope
             </div>
             <h1 className="text-4xl font-playfair font-semibold mb-3">Daily Horoscope</h1>
             <p className="text-muted-foreground">Select your zodiac sign to receive today's personalised Vedic guidance</p>
           </div>
 
-          {/* DOB banner (persistent, shown until DOB saved) */}
           {!dobDone && !showModal && (
             <DOBBanner onSave={handleDOBSave} onDismiss={handleDismiss} />
           )}
 
-          {/* Favourites row */}
           {favouritesMeta.length > 0 && !selectedSign && (
             <div className="mb-6">
               <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3 flex items-center gap-1.5">
