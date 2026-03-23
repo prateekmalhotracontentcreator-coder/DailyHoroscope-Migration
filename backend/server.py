@@ -28,6 +28,7 @@ from admin_utils import (
     ChangePasswordRequest, verify_admin_password, create_admin_session, require_admin,
     set_admin_session_cookie, update_admin_password, hash_new_password, ADMIN_USERNAME
 )
+from panchang_router import router as panchang_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -57,21 +58,9 @@ else:
     cors_origins = []
 
 if cors_origins:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=cors_origins,
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+    app.add_middleware(CORSMiddleware, allow_origins=cors_origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 else:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=False,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+    app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=False, allow_methods=["*"], allow_headers=["*"])
 
 api_router = APIRouter(prefix="/api")
 
@@ -94,16 +83,12 @@ HoroscopeType = Literal["daily", "weekly", "monthly"]
 
 def get_prediction_date(horoscope_type: str) -> str:
     today = date.today()
-    if horoscope_type == "daily":
-        return today.isoformat()
-    elif horoscope_type == "weekly":
-        monday = today - timedelta(days=today.weekday())
-        return monday.isoformat()
-    elif horoscope_type == "monthly":
-        return today.replace(day=1).isoformat()
+    if horoscope_type == "daily": return today.isoformat()
+    elif horoscope_type == "weekly": return (today - timedelta(days=today.weekday())).isoformat()
+    elif horoscope_type == "monthly": return today.replace(day=1).isoformat()
     return today.isoformat()
 
-# Models
+# ── Models ────────────────────────────────────────────────────────────────────
 
 class Horoscope(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -119,40 +104,23 @@ class HoroscopeRequest(BaseModel):
     type: HoroscopeType
 
 class ZodiacSign(BaseModel):
-    id: str
-    name: str
-    symbol: str
-    dates: str
-    element: str
+    id: str; name: str; symbol: str; dates: str; element: str
 
 class BirthProfile(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    name: str
-    date_of_birth: str
-    time_of_birth: str
-    location: str
-    user_email: str = ""
+    name: str; date_of_birth: str; time_of_birth: str; location: str; user_email: str = ""
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class BirthProfileCreate(BaseModel):
-    name: str
-    date_of_birth: str
-    time_of_birth: str
-    location: str
+    name: str; date_of_birth: str; time_of_birth: str; location: str
 
 class BirthChartReport(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    profile_id: str
-    report_content: str
+    profile_id: str; report_content: str
     generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    lagna: dict = {}
-    moon_sign: dict = {}
-    nakshatra: dict = {}
-    current_dasha: dict = {}
-    chart_svg: str = ""
-    mangal_dosha: dict = {}
+    lagna: dict = {}; moon_sign: dict = {}; nakshatra: dict = {}; current_dasha: dict = {}; chart_svg: str = ""; mangal_dosha: dict = {}
 
 class BirthChartRequest(BaseModel):
     profile_id: str
@@ -160,166 +128,83 @@ class BirthChartRequest(BaseModel):
 class BlogPost(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    title: str
-    slug: str
-    excerpt: str
-    content: str
-    author: str = "Cosmic Wisdom"
-    category: str = "Astrology"
-    tags: list = []
-    featured_image: str = ""
-    video_url: str = ""
-    published: bool = False
-    scheduled_at: Optional[datetime] = None
-    views: int = 0
+    title: str; slug: str; excerpt: str; content: str; author: str = "Cosmic Wisdom"; category: str = "Astrology"
+    tags: list = []; featured_image: str = ""; video_url: str = ""; published: bool = False
+    scheduled_at: Optional[datetime] = None; views: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class BlogPostCreate(BaseModel):
-    title: str
-    slug: str = ""
-    excerpt: str
-    content: str
-    author: str = "Cosmic Wisdom"
-    category: str = "Astrology"
-    tags: list = []
-    featured_image: str = ""
-    video_url: str = ""
-    published: bool = False
-    scheduled_at: Optional[datetime] = None
+    title: str; slug: str = ""; excerpt: str; content: str; author: str = "Cosmic Wisdom"; category: str = "Astrology"
+    tags: list = []; featured_image: str = ""; video_url: str = ""; published: bool = False; scheduled_at: Optional[datetime] = None
 
 class BlogPostUpdate(BaseModel):
-    title: Optional[str] = None
-    slug: Optional[str] = None
-    excerpt: Optional[str] = None
-    content: Optional[str] = None
-    author: Optional[str] = None
-    category: Optional[str] = None
-    tags: Optional[list] = None
-    featured_image: Optional[str] = None
-    video_url: Optional[str] = None
-    published: Optional[bool] = None
-    scheduled_at: Optional[datetime] = None
+    title: Optional[str] = None; slug: Optional[str] = None; excerpt: Optional[str] = None; content: Optional[str] = None
+    author: Optional[str] = None; category: Optional[str] = None; tags: Optional[list] = None
+    featured_image: Optional[str] = None; video_url: Optional[str] = None; published: Optional[bool] = None; scheduled_at: Optional[datetime] = None
 
 class AdminReplyRequest(BaseModel):
-    to_email: str
-    to_name: str
-    subject: str
-    message: str
+    to_email: str; to_name: str; subject: str; message: str
 
 class BrihatKundliRequest(BaseModel):
-    full_name: str
-    date_of_birth: str
-    time_of_birth: str
-    place_of_birth: str
-    gender: str
-    current_city: str = ""
-    marital_status: str = ""
+    full_name: str; date_of_birth: str; time_of_birth: str; place_of_birth: str; gender: str; current_city: str = ""; marital_status: str = ""
 
 class BrihatKundliReport(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    user_email: str
-    full_name: str
-    date_of_birth: str
-    time_of_birth: str
-    place_of_birth: str
-    gender: str
-    ascendant: dict = {}
-    moon_sign: dict = {}
-    sun_sign: dict = {}
-    planetary_positions: list = []
-    career_prediction: dict = {}
-    love_prediction: dict = {}
-    health_prediction: dict = {}
-    wealth_prediction: dict = {}
-    family_prediction: dict = {}
-    education_prediction: dict = {}
-    current_dasha: dict = {}
-    dasha_timeline: list = []
-    mangal_dosha: dict = {}
-    kalsarp_dosha: dict = {}
-    other_doshas: list = []
-    benefic_yogas: list = []
-    malefic_yogas: list = []
-    gemstone_remedies: list = []
-    mantra_remedies: list = []
-    lifestyle_remedies: list = []
-    donation_remedies: list = []
-    lucky_numbers: list = []
-    lucky_colors: list = []
-    lucky_days: list = []
-    lucky_direction: str = ""
-    numerology: dict = {}
-    chart_svg: str = ""
+    user_email: str; full_name: str; date_of_birth: str; time_of_birth: str; place_of_birth: str; gender: str
+    ascendant: dict = {}; moon_sign: dict = {}; sun_sign: dict = {}; planetary_positions: list = []
+    career_prediction: dict = {}; love_prediction: dict = {}; health_prediction: dict = {}; wealth_prediction: dict = {}
+    family_prediction: dict = {}; education_prediction: dict = {}; current_dasha: dict = {}; dasha_timeline: list = []
+    mangal_dosha: dict = {}; kalsarp_dosha: dict = {}; other_doshas: list = []; benefic_yogas: list = []; malefic_yogas: list = []
+    gemstone_remedies: list = []; mantra_remedies: list = []; lifestyle_remedies: list = []; donation_remedies: list = []
+    lucky_numbers: list = []; lucky_colors: list = []; lucky_days: list = []; lucky_direction: str = ""; numerology: dict = {}; chart_svg: str = ""
     generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class KundaliMilanReport(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    person1_id: str
-    person2_id: str
-    compatibility_score: float
-    detailed_analysis: str
+    person1_id: str; person2_id: str; compatibility_score: float; detailed_analysis: str
     generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
-    ashtakoot_details: dict = {}
-    chart_svg_person1: str = ""
-    chart_svg_person2: str = ""
+    ashtakoot_details: dict = {}; chart_svg_person1: str = ""; chart_svg_person2: str = ""
 
 class KundaliMilanRequest(BaseModel):
-    person1_id: str
-    person2_id: str
+    person1_id: str; person2_id: str
 
 class UserSubscription(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    user_email: str
-    subscription_type: str
-    status: str
-    stripe_subscription_id: Optional[str] = None
-    expires_at: Optional[datetime] = None
+    user_email: str; subscription_type: str; status: str
+    stripe_subscription_id: Optional[str] = None; expires_at: Optional[datetime] = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class Payment(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    user_email: str
-    report_type: str
-    report_id: str
-    amount: float
-    razorpay_order_id: str
-    razorpay_payment_id: Optional[str] = None
-    status: str
+    user_email: str; report_type: str; report_id: str; amount: float; razorpay_order_id: str
+    razorpay_payment_id: Optional[str] = None; status: str
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class ShareLink(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     token: str = Field(default_factory=lambda: secrets.token_urlsafe(32))
-    report_type: str
-    report_id: str
-    views: int = 0
+    report_type: str; report_id: str; views: int = 0
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class ContactFormRequest(BaseModel):
-    name: str
-    email: str
-    subject: str = ""
-    message: str
+    name: str; email: str; subject: str = ""; message: str
 
 class ForgotPasswordRequest(BaseModel):
     email: EmailStr
 
 class ResetPasswordRequest(BaseModel):
-    token: str
-    new_password: str
+    token: str; new_password: str
 
 class PaymentIntentRequest(BaseModel):
-    report_type: str
-    report_id: Optional[str] = None
-    user_email: str
+    report_type: str; report_id: Optional[str] = None; user_email: str
 
-# Email helper
+# ── Email ─────────────────────────────────────────────────────────────────────
 
 async def send_email_notification(to_email: str, subject: str, body: str):
     resend_api_key = os.environ.get('RESEND_API_KEY', '')
@@ -329,113 +214,48 @@ async def send_email_notification(to_email: str, subject: str, body: str):
         return False
     try:
         async with httpx.AsyncClient() as http:
-            response = await http.post(
-                "https://api.resend.com/emails",
-                headers={"Authorization": "Bearer " + resend_api_key, "Content-Type": "application/json"},
-                json={"from": "Everyday Horoscope <" + from_email + ">", "to": [to_email], "subject": subject, "html": body}
-            )
-            if response.status_code == 200:
-                logging.info("Email sent to %s: %s", to_email, subject)
-                return True
-            else:
-                logging.error("Resend error %s: %s", response.status_code, response.text)
-                return False
+            response = await http.post("https://api.resend.com/emails", headers={"Authorization": "Bearer " + resend_api_key, "Content-Type": "application/json"}, json={"from": "Everyday Horoscope <" + from_email + ">", "to": [to_email], "subject": subject, "html": body})
+            if response.status_code == 200: logging.info("Email sent to %s: %s", to_email, subject); return True
+            else: logging.error("Resend error %s: %s", response.status_code, response.text); return False
     except Exception as e:
-        logging.error("Email send failed: %s", str(e))
-        return False
+        logging.error("Email send failed: %s", str(e)); return False
 
-# Horoscope LLM
+# ── Horoscope LLM ─────────────────────────────────────────────────────────────
 
 async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
     sign_dash = sign + " \u2014"
-
-    daily_prompt = (
-        "You are a Vedic astrologer specialising in Jyotish. Generate a daily horoscope for " + sign + ".\n\n"
-        "CRITICAL FORMATTING RULES:\n"
-        "1. Start with one sentence of overall energy.\n"
-        "2. Output EXACTLY these 4 sections with EXACTLY these headings on their own line:\n"
-        "   Love & Relationships:\n"
-        "   Career & Finances:\n"
-        "   Health & Wellness:\n"
-        "   Lucky Elements:\n"
-        "3. Under Lucky Elements include: Lucky Number: [number], Lucky Colour: [colour], Lucky Time: [time]\n"
-        "4. NO markdown (no **, no ##, no ---)\n"
-        "5. Each section: 2-3 sentences. Total 120-150 words.\n"
-        "6. Begin with: \"" + sign_dash + "\" as the very first word."
-    )
-
-    weekly_prompt = (
-        "You are a Vedic astrologer. Generate a weekly horoscope for " + sign + ".\n\n"
-        "CRITICAL FORMATTING RULES:\n"
-        "1. Start with one sentence summarising the week.\n"
-        "2. Output EXACTLY these 4 sections:\n"
-        "   Love & Relationships:\n"
-        "   Career & Finances:\n"
-        "   Health & Wellness:\n"
-        "   Lucky Elements:\n"
-        "3. Under Lucky Elements include: Lucky Days: [days], Lucky Colour: [colour], Focus Mantra: [mantra]\n"
-        "4. NO markdown\n"
-        "5. Each section: 3-4 sentences. Total 180-220 words.\n"
-        "6. Begin with: \"" + sign_dash + "\""
-    )
-
-    monthly_prompt = (
-        "You are a Vedic astrologer. Generate a monthly horoscope for " + sign + ".\n\n"
-        "CRITICAL FORMATTING RULES:\n"
-        "1. Start with one sentence summarising the month.\n"
-        "2. Output EXACTLY these 4 sections:\n"
-        "   Love & Relationships:\n"
-        "   Career & Finances:\n"
-        "   Health & Wellness:\n"
-        "   Lucky Elements:\n"
-        "3. Under Lucky Elements include: Power Dates: [3 dates], Lucky Gemstone: [stone], Monthly Mantra: [mantra]\n"
-        "4. NO markdown\n"
-        "5. Each section: 4-5 sentences. Total 250-300 words.\n"
-        "6. Begin with: \"" + sign_dash + "\""
-    )
-
+    daily_prompt = ("You are a Vedic astrologer specialising in Jyotish. Generate a daily horoscope for " + sign + ".\n\nCRITICAL FORMATTING RULES:\n1. Start with one sentence of overall energy.\n2. Output EXACTLY these 4 sections with EXACTLY these headings on their own line:\n   Love & Relationships:\n   Career & Finances:\n   Health & Wellness:\n   Lucky Elements:\n3. Under Lucky Elements include: Lucky Number: [number], Lucky Colour: [colour], Lucky Time: [time]\n4. NO markdown (no **, no ##, no ---)\n5. Each section: 2-3 sentences. Total 120-150 words.\n6. Begin with: \"" + sign_dash + "\" as the very first word.")
+    weekly_prompt = ("You are a Vedic astrologer. Generate a weekly horoscope for " + sign + ".\n\nCRITICAL FORMATTING RULES:\n1. Start with one sentence summarising the week.\n2. Output EXACTLY these 4 sections:\n   Love & Relationships:\n   Career & Finances:\n   Health & Wellness:\n   Lucky Elements:\n3. Under Lucky Elements include: Lucky Days: [days], Lucky Colour: [colour], Focus Mantra: [mantra]\n4. NO markdown\n5. Each section: 3-4 sentences. Total 180-220 words.\n6. Begin with: \"" + sign_dash + "\"")
+    monthly_prompt = ("You are a Vedic astrologer. Generate a monthly horoscope for " + sign + ".\n\nCRITICAL FORMATTING RULES:\n1. Start with one sentence summarising the month.\n2. Output EXACTLY these 4 sections:\n   Love & Relationships:\n   Career & Finances:\n   Health & Wellness:\n   Lucky Elements:\n3. Under Lucky Elements include: Power Dates: [3 dates], Lucky Gemstone: [stone], Monthly Mantra: [mantra]\n4. NO markdown\n5. Each section: 4-5 sentences. Total 250-300 words.\n6. Begin with: \"" + sign_dash + "\"")
     system_prompts = {"daily": daily_prompt, "weekly": weekly_prompt, "monthly": monthly_prompt}
-    user_prompts = {
-        "daily":   "Generate today's Vedic horoscope for " + sign + ".",
-        "weekly":  "Generate this week's Vedic horoscope for " + sign + ".",
-        "monthly": "Generate this month's Vedic horoscope for " + sign + ".",
-    }
+    user_prompts = {"daily": "Generate today's Vedic horoscope for " + sign + ".", "weekly": "Generate this week's Vedic horoscope for " + sign + ".", "monthly": "Generate this month's Vedic horoscope for " + sign + "."}
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
-        message = llm.messages.create(
-            model="claude-sonnet-4-20250514", max_tokens=1024,
-            system=system_prompts[horoscope_type],
-            messages=[{"role": "user", "content": user_prompts[horoscope_type]}]
-        )
+        message = llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=1024, system=system_prompts[horoscope_type], messages=[{"role": "user", "content": user_prompts[horoscope_type]}])
         return message.content[0].text
     except Exception as e:
         logging.error("Error generating horoscope: %s", str(e))
         raise HTTPException(status_code=500, detail="Failed to generate horoscope: " + str(e))
 
-# Routes
+# ── Routes ────────────────────────────────────────────────────────────────────
 
 @api_router.get("/")
-async def root():
-    return {"message": "Daily Horoscope API"}
+async def root(): return {"message": "Daily Horoscope API"}
 
 @api_router.get("/health")
-async def health_check():
-    return {"status": "ok"}
+async def health_check(): return {"status": "ok"}
 
 @api_router.get("/signs", response_model=List[ZodiacSign])
-async def get_zodiac_signs():
-    return ZODIAC_SIGNS
+async def get_zodiac_signs(): return ZODIAC_SIGNS
 
 @api_router.post("/horoscope/generate", response_model=Horoscope)
 async def generate_horoscope(request: HoroscopeRequest):
     valid_signs = [sign["id"] for sign in ZODIAC_SIGNS]
-    if request.sign not in valid_signs:
-        raise HTTPException(status_code=400, detail="Invalid zodiac sign")
+    if request.sign not in valid_signs: raise HTTPException(status_code=400, detail="Invalid zodiac sign")
     today = date.today().isoformat()
     existing = await db.horoscopes.find_one({"sign": request.sign, "type": request.type, "prediction_date": today}, {"_id": 0})
     if existing:
-        if isinstance(existing['created_at'], str):
-            existing['created_at'] = datetime.fromisoformat(existing['created_at'])
+        if isinstance(existing['created_at'], str): existing['created_at'] = datetime.fromisoformat(existing['created_at'])
         return Horoscope(**existing)
     content = await generate_horoscope_with_llm(request.sign, request.type)
     horoscope = Horoscope(sign=request.sign, type=request.type, content=content, prediction_date=today)
@@ -444,29 +264,20 @@ async def generate_horoscope(request: HoroscopeRequest):
 
 @api_router.get("/horoscope/prefetch-status")
 async def prefetch_status():
-    daily_date = get_prediction_date('daily')
-    weekly_date = get_prediction_date('weekly')
-    monthly_date = get_prediction_date('monthly')
+    daily_date = get_prediction_date('daily'); weekly_date = get_prediction_date('weekly'); monthly_date = get_prediction_date('monthly')
     daily_count = await db.horoscopes.count_documents({'type': 'daily', 'prediction_date': daily_date})
     weekly_count = await db.horoscopes.count_documents({'type': 'weekly', 'prediction_date': weekly_date})
     monthly_count = await db.horoscopes.count_documents({'type': 'monthly', 'prediction_date': monthly_date})
-    return {
-        'daily': {'cached': daily_count, 'total': 12, 'date': daily_date},
-        'weekly': {'cached': weekly_count, 'total': 12, 'date': weekly_date},
-        'monthly': {'cached': monthly_count, 'total': 12, 'date': monthly_date},
-        'total_cached': daily_count + weekly_count + monthly_count
-    }
+    return {'daily': {'cached': daily_count, 'total': 12, 'date': daily_date}, 'weekly': {'cached': weekly_count, 'total': 12, 'date': weekly_date}, 'monthly': {'cached': monthly_count, 'total': 12, 'date': monthly_date}, 'total_cached': daily_count + weekly_count + monthly_count}
 
 @api_router.get("/horoscope/{sign}/{type}", response_model=Horoscope)
 async def get_horoscope(sign: str, type: HoroscopeType):
     valid_signs = [s["id"] for s in ZODIAC_SIGNS]
-    if sign not in valid_signs:
-        raise HTTPException(status_code=400, detail="Invalid zodiac sign")
+    if sign not in valid_signs: raise HTTPException(status_code=400, detail="Invalid zodiac sign")
     today = date.today().isoformat()
     horoscope_doc = await db.horoscopes.find_one({"sign": sign, "type": type, "prediction_date": today}, {"_id": 0})
     if horoscope_doc:
-        if isinstance(horoscope_doc['created_at'], str):
-            horoscope_doc['created_at'] = datetime.fromisoformat(horoscope_doc['created_at'])
+        if isinstance(horoscope_doc['created_at'], str): horoscope_doc['created_at'] = datetime.fromisoformat(horoscope_doc['created_at'])
         return Horoscope(**horoscope_doc)
     content = await generate_horoscope_with_llm(sign, type)
     horoscope = Horoscope(sign=sign, type=type, content=content, prediction_date=today)
@@ -478,10 +289,8 @@ async def create_birth_profile(profile: BirthProfileCreate, request: Request):
     profile_data = profile.model_dump(mode='json')
     try:
         user = await get_current_user(request, db)
-        if user and user.get("email"):
-            profile_data["user_email"] = user["email"]
-    except Exception:
-        pass
+        if user and user.get("email"): profile_data["user_email"] = user["email"]
+    except Exception: pass
     birth_profile = BirthProfile(**profile_data)
     await db.birth_profiles.insert_one(birth_profile.model_dump(mode='json'))
     return birth_profile
@@ -489,94 +298,35 @@ async def create_birth_profile(profile: BirthProfileCreate, request: Request):
 @api_router.get("/profile/birth/{profile_id}", response_model=BirthProfile)
 async def get_birth_profile(profile_id: str):
     profile = await db.birth_profiles.find_one({"id": profile_id}, {"_id": 0})
-    if not profile:
-        raise HTTPException(status_code=404, detail="Birth profile not found")
-    if isinstance(profile['created_at'], str):
-        profile['created_at'] = datetime.fromisoformat(profile['created_at'])
+    if not profile: raise HTTPException(status_code=404, detail="Birth profile not found")
+    if isinstance(profile['created_at'], str): profile['created_at'] = datetime.fromisoformat(profile['created_at'])
     return BirthProfile(**profile)
 
 @api_router.get("/profile/birth", response_model=List[BirthProfile])
 async def list_birth_profiles():
     profiles = await db.birth_profiles.find({}, {"_id": 0}).to_list(1000)
     for p in profiles:
-        if isinstance(p['created_at'], str):
-            p['created_at'] = datetime.fromisoformat(p['created_at'])
+        if isinstance(p['created_at'], str): p['created_at'] = datetime.fromisoformat(p['created_at'])
     return profiles
 
 async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
     try:
-        chart_data = calculate_vedic_chart(
-            date_of_birth=profile.date_of_birth,
-            time_of_birth=profile.time_of_birth,
-            place_of_birth=profile.location,
-        )
+        chart_data = calculate_vedic_chart(date_of_birth=profile.date_of_birth, time_of_birth=profile.time_of_birth, place_of_birth=profile.location)
     except Exception as e:
-        logging.error("Vedic calculator FAILED: %s", e, exc_info=True)
-        chart_data = None
-
+        logging.error("Vedic calculator FAILED: %s", e, exc_info=True); chart_data = None
     if chart_data:
-        lagna = chart_data['lagna']
-        moon = chart_data['moon_sign']
-        nak = chart_data['nakshatra']
-        current_dasha = chart_data.get('current_dasha', {})
-        mangal = chart_data['mangal_dosha']
-        planet_lines = []
-        for pname, pdata in chart_data['planets'].items():
-            retro = " (Retrograde)" if pdata.get('retrograde') else ""
-            planet_lines.append("  - " + pname + ": " + pdata['sign_vedic'] + ", House " + str(pdata['house']) + ", " + str(pdata['degree']) + "\u00b0" + retro)
-        house_lines = []
-        for h_num, h_data in chart_data['houses'].items():
-            planets_in = ', '.join(h_data['planets']) if h_data['planets'] else 'Empty'
-            house_lines.append("  House " + str(h_num) + " \u2014 " + h_data['name'] + ": " + h_data['sign_vedic'] + " (Lord: " + h_data['lord'] + ") | Planets: " + planets_in)
-        mangal_yn = "YES" if mangal.get('has_dosha') else "NO"
-        chart_summary = (
-            "\nCALCULATED BIRTH CHART DATA (mathematically verified):\n\n"
-            "Native: " + profile.name + "\n"
-            "Birth: " + profile.date_of_birth + " at " + profile.time_of_birth + ", " + profile.location + "\n\n"
-            "ASCENDANT (Lagna): " + lagna['sign_vedic'] + ", " + str(lagna['degree']) + "\u00b0\n"
-            "  Lagna Lord: " + lagna['lord'] + " | Element: " + lagna['element'] + "\n\n"
-            "MOON SIGN (Rashi): " + moon['sign_vedic'] + "\n"
-            "NAKSHATRA: " + nak['name'] + " (Pada " + str(nak.get('pada', '?')) + ") | Lord: " + str(nak.get('lord', '?')) + "\n\n"
-            "PLANETARY POSITIONS:\n" + "\n".join(planet_lines) + "\n\n"
-            "12-HOUSE MAP:\n" + "\n".join(house_lines) + "\n\n"
-            "CURRENT DASHA: " + str(current_dasha.get('planet', 'Unknown')) + " Mahadasha\n"
-            "  Period: " + str(current_dasha.get('start', '?')) + " to " + str(current_dasha.get('end', '?')) + "\n\n"
-            "MANGAL DOSHA: " + mangal_yn + "\n"
-            "  " + str(mangal.get('description', '')) + "\n"
-            "  Mars in House: " + str(mangal.get('mars_house', '?')) + "\n"
-        )
+        lagna = chart_data['lagna']; moon = chart_data['moon_sign']; nak = chart_data['nakshatra']
+        current_dasha = chart_data.get('current_dasha', {}); mangal = chart_data['mangal_dosha']
+        planet_lines = ["  - " + pname + ": " + pdata['sign_vedic'] + ", House " + str(pdata['house']) + ", " + str(pdata['degree']) + "\u00b0" + (" (Retrograde)" if pdata.get('retrograde') else "") for pname, pdata in chart_data['planets'].items()]
+        house_lines = ["  House " + str(h_num) + " \u2014 " + h_data['name'] + ": " + h_data['sign_vedic'] + " (Lord: " + h_data['lord'] + ") | Planets: " + (', '.join(h_data['planets']) if h_data['planets'] else 'Empty') for h_num, h_data in chart_data['houses'].items()]
+        chart_summary = "\nCALCULATED BIRTH CHART DATA (mathematically verified):\n\nNative: " + profile.name + "\nBirth: " + profile.date_of_birth + " at " + profile.time_of_birth + ", " + profile.location + "\n\nASCENDANT (Lagna): " + lagna['sign_vedic'] + ", " + str(lagna['degree']) + "\u00b0\n  Lagna Lord: " + lagna['lord'] + " | Element: " + lagna['element'] + "\n\nMOON SIGN (Rashi): " + moon['sign_vedic'] + "\nNAKSHATRA: " + nak['name'] + " (Pada " + str(nak.get('pada', '?')) + ") | Lord: " + str(nak.get('lord', '?')) + "\n\nPLANETARY POSITIONS:\n" + "\n".join(planet_lines) + "\n\n12-HOUSE MAP:\n" + "\n".join(house_lines) + "\n\nCURRENT DASHA: " + str(current_dasha.get('planet', 'Unknown')) + " Mahadasha\n  Period: " + str(current_dasha.get('start', '?')) + " to " + str(current_dasha.get('end', '?')) + "\n\nMANGAL DOSHA: " + ("YES" if mangal.get('has_dosha') else "NO") + "\n  " + str(mangal.get('description', '')) + "\n  Mars in House: " + str(mangal.get('mars_house', '?')) + "\n"
     else:
         chart_summary = "Native: " + profile.name + ", Born: " + profile.date_of_birth + " at " + profile.time_of_birth + " in " + profile.location
-
-    system_prompt = (
-        "You are an expert Jyotish (Vedic astrology) interpreter. Receive a mathematically calculated birth chart and interpret it.\n\n"
-        "CRITICAL RULES:\n"
-        "- Use ONLY the planetary positions provided\n"
-        "- Every sentence must reference specific planets AND house numbers\n"
-        "- NO markdown\n"
-        "- MANDATORY SECTIONS IN ORDER:\n"
-        "  Overview:\n"
-        "  Ascendant & Personality:\n"
-        "  Sun Sign & Core Identity:\n"
-        "  Moon Sign & Emotional Nature:\n"
-        "  Planetary Positions & House Analysis:\n"
-        "  Notable Yogas & Planetary Combinations:\n"
-        "  Career & Dharma:\n"
-        "  Relationships & Marriage:\n"
-        "  Health & Wellness:\n"
-        "  Dasha Period Analysis:\n"
-        "  Remedies & Guidance:\n"
-        "- Each section: 3-4 sentences. Target 800-1000 words total."
-    )
+    system_prompt = "You are an expert Jyotish (Vedic astrology) interpreter. Receive a mathematically calculated birth chart and interpret it.\n\nCRITICAL RULES:\n- Use ONLY the planetary positions provided\n- Every sentence must reference specific planets AND house numbers\n- NO markdown\n- MANDATORY SECTIONS IN ORDER:\n  Overview:\n  Ascendant & Personality:\n  Sun Sign & Core Identity:\n  Moon Sign & Emotional Nature:\n  Planetary Positions & House Analysis:\n  Notable Yogas & Planetary Combinations:\n  Career & Dharma:\n  Relationships & Marriage:\n  Health & Wellness:\n  Dasha Period Analysis:\n  Remedies & Guidance:\n- Each section: 3-4 sentences. Target 800-1000 words total."
     user_prompt = "Write the complete Janma Kundali report for " + profile.name + " using ONLY the calculated data below.\n\n" + chart_summary + "\n\nEvery section must cite specific planets with house numbers."
-
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
-        message = llm.messages.create(
-            model="claude-sonnet-4-20250514", max_tokens=2048,
-            system=system_prompt,
-            messages=[{"role": "user", "content": user_prompt}]
-        )
+        message = llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=2048, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
         return message.content[0].text
     except Exception as e:
         logging.error("Error generating birth chart: %s", str(e))
@@ -585,41 +335,22 @@ async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
 @api_router.post("/birthchart/generate", response_model=BirthChartReport)
 async def generate_birth_chart(request: BirthChartRequest):
     profile = await db.birth_profiles.find_one({"id": request.profile_id}, {"_id": 0})
-    if not profile:
-        raise HTTPException(status_code=404, detail="Birth profile not found")
-    if isinstance(profile['created_at'], str):
-        profile['created_at'] = datetime.fromisoformat(profile['created_at'])
+    if not profile: raise HTTPException(status_code=404, detail="Birth profile not found")
+    if isinstance(profile['created_at'], str): profile['created_at'] = datetime.fromisoformat(profile['created_at'])
     birth_profile = BirthProfile(**profile)
     existing = await db.birth_chart_reports.find_one({"profile_id": request.profile_id}, {"_id": 0})
     if existing:
-        if isinstance(existing['generated_at'], str):
-            existing['generated_at'] = datetime.fromisoformat(existing['generated_at'])
+        if isinstance(existing['generated_at'], str): existing['generated_at'] = datetime.fromisoformat(existing['generated_at'])
         return BirthChartReport(**existing)
     content = await generate_birth_chart_with_llm(birth_profile)
     bc_chart_data = None
-    try:
-        bc_chart_data = calculate_vedic_chart(
-            date_of_birth=birth_profile.date_of_birth,
-            time_of_birth=birth_profile.time_of_birth,
-            place_of_birth=birth_profile.location,
-        )
-    except Exception as ce:
-        logging.warning("Chart calc for structured fields: %s", ce)
+    try: bc_chart_data = calculate_vedic_chart(date_of_birth=birth_profile.date_of_birth, time_of_birth=birth_profile.time_of_birth, place_of_birth=birth_profile.location)
+    except Exception as ce: logging.warning("Chart calc for structured fields: %s", ce)
     bc_chart_svg = ""
     if bc_chart_data and bc_chart_data.get('houses'):
-        try:
-            bc_chart_svg = generate_north_indian_chart_svg(bc_chart_data['houses'], bc_chart_data['lagna']['sign'])
-        except Exception as se:
-            logging.warning("SVG generation failed: %s", se)
-    report = BirthChartReport(
-        profile_id=request.profile_id, report_content=content,
-        lagna=bc_chart_data['lagna'] if bc_chart_data else {},
-        moon_sign=bc_chart_data['moon_sign'] if bc_chart_data else {},
-        nakshatra=bc_chart_data['nakshatra'] if bc_chart_data else {},
-        current_dasha=bc_chart_data.get('current_dasha', {}) if bc_chart_data else {},
-        mangal_dosha=bc_chart_data.get('mangal_dosha', {}) if bc_chart_data else {},
-        chart_svg=bc_chart_svg,
-    )
+        try: bc_chart_svg = generate_north_indian_chart_svg(bc_chart_data['houses'], bc_chart_data['lagna']['sign'])
+        except Exception as se: logging.warning("SVG generation failed: %s", se)
+    report = BirthChartReport(profile_id=request.profile_id, report_content=content, lagna=bc_chart_data['lagna'] if bc_chart_data else {}, moon_sign=bc_chart_data['moon_sign'] if bc_chart_data else {}, nakshatra=bc_chart_data['nakshatra'] if bc_chart_data else {}, current_dasha=bc_chart_data.get('current_dasha', {}) if bc_chart_data else {}, mangal_dosha=bc_chart_data.get('mangal_dosha', {}) if bc_chart_data else {}, chart_svg=bc_chart_svg)
     import json as _json
     doc = _json.loads(report.model_dump_json())
     await db.birth_chart_reports.insert_one({**doc})
@@ -628,112 +359,35 @@ async def generate_birth_chart(request: BirthChartRequest):
 @api_router.get("/birthchart/{profile_id}", response_model=BirthChartReport)
 async def get_birth_chart(profile_id: str):
     report = await db.birth_chart_reports.find_one({"profile_id": profile_id}, {"_id": 0})
-    if not report:
-        raise HTTPException(status_code=404, detail="Birth chart report not found")
-    if isinstance(report['generated_at'], str):
-        report['generated_at'] = datetime.fromisoformat(report['generated_at'])
+    if not report: raise HTTPException(status_code=404, detail="Birth chart report not found")
+    if isinstance(report['generated_at'], str): report['generated_at'] = datetime.fromisoformat(report['generated_at'])
     return BirthChartReport(**report)
-
-# Brihat Kundli Pro
 
 async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
     current_year = datetime.now().year
     birth_year = int(request.date_of_birth.split('-')[0])
     age = current_year - birth_year
     chart_data = None
-    try:
-        chart_data = calculate_vedic_chart(
-            date_of_birth=request.date_of_birth,
-            time_of_birth=request.time_of_birth,
-            place_of_birth=request.place_of_birth,
-        )
-    except Exception as e:
-        logging.warning("Vedic calculator failed for Brihat Kundli: %s", e)
+    try: chart_data = calculate_vedic_chart(date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth, place_of_birth=request.place_of_birth)
+    except Exception as e: logging.warning("Vedic calculator failed for Brihat Kundli: %s", e)
     if chart_data:
-        lagna = chart_data['lagna']
-        moon = chart_data['moon_sign']
-        nak = chart_data['nakshatra']
-        current_dasha = chart_data.get('current_dasha', {})
-        mangal = chart_data['mangal_dosha']
-        planet_lines = []
-        for pname, pdata in chart_data['planets'].items():
-            retro = " (R)" if pdata.get('retrograde') else ""
-            planet_lines.append("  " + pname + ": " + pdata['sign_vedic'] + " | House " + str(pdata['house']) + " | " + str(pdata['degree']) + "\u00b0" + retro + " | Lord: " + str(pdata['lord_of_sign']))
-        house_lines = []
-        for h_num, h_data in chart_data['houses'].items():
-            planets_in = ', '.join(h_data['planets']) if h_data['planets'] else 'Empty'
-            house_lines.append("  H" + str(h_num) + " " + h_data['name'] + ": " + h_data['sign_vedic'] + " | Lord: " + h_data['lord'] + " | " + planets_in)
-        dasha_lines = []
-        for d in chart_data['dashas'][:6]:
-            dasha_lines.append("  " + str(d.get('planet', '?')) + " Mahadasha: " + str(d.get('start', '?')) + " \u2014 " + str(d.get('end', '?')) + " (" + str(round(d.get('years', 0), 1)) + " yrs)")
-        mangal_yn = "YES" if mangal.get('has_dosha') else "NO"
-        chart_summary = (
-            "\nCALCULATED BIRTH CHART:\n\n"
-            "Native: " + request.full_name + ", Age: " + str(age) + ", Gender: " + request.gender + "\n"
-            "Born: " + request.date_of_birth + " at " + request.time_of_birth + ", " + request.place_of_birth + "\n\n"
-            "LAGNA: " + lagna['sign_vedic'] + " " + str(lagna['degree']) + "\u00b0 | Lord: " + lagna['lord'] + " | Element: " + lagna['element'] + "\n"
-            "MOON (Rashi): " + moon['sign_vedic'] + "\n"
-            "NAKSHATRA: " + nak['name'] + " Pada " + str(nak.get('pada', '?')) + " | Lord: " + str(nak.get('lord', '?')) + "\n\n"
-            "PLANET POSITIONS:\n" + "\n".join(planet_lines) + "\n\n"
-            "12-HOUSE MAP:\n" + "\n".join(house_lines) + "\n\n"
-            "VIMSHOTTARI DASHA TIMELINE:\n" + "\n".join(dasha_lines) + "\n"
-            "Current: " + str(current_dasha.get('planet', 'Unknown')) + " Mahadasha (" + str(current_dasha.get('start', '?')) + "-" + str(current_dasha.get('end', '?')) + ")\n\n"
-            "MANGAL DOSHA: " + mangal_yn + "\n"
-            "  House: " + str(mangal.get('mars_house', '?')) + " | " + str(mangal.get('description', '')) + "\n"
-        )
+        lagna = chart_data['lagna']; moon = chart_data['moon_sign']; nak = chart_data['nakshatra']
+        current_dasha = chart_data.get('current_dasha', {}); mangal = chart_data['mangal_dosha']
+        planet_lines = ["  " + pname + ": " + pdata['sign_vedic'] + " | House " + str(pdata['house']) + " | " + str(pdata['degree']) + "\u00b0" + (" (R)" if pdata.get('retrograde') else "") + " | Lord: " + str(pdata['lord_of_sign']) for pname, pdata in chart_data['planets'].items()]
+        house_lines = ["  H" + str(h_num) + " " + h_data['name'] + ": " + h_data['sign_vedic'] + " | Lord: " + h_data['lord'] + " | " + (', '.join(h_data['planets']) if h_data['planets'] else 'Empty') for h_num, h_data in chart_data['houses'].items()]
+        dasha_lines = ["  " + str(d.get('planet', '?')) + " Mahadasha: " + str(d.get('start', '?')) + " \u2014 " + str(d.get('end', '?')) + " (" + str(round(d.get('years', 0), 1)) + " yrs)" for d in chart_data['dashas'][:6]]
+        chart_summary = "\nCALCULATED BIRTH CHART:\n\nNative: " + request.full_name + ", Age: " + str(age) + ", Gender: " + request.gender + "\nBorn: " + request.date_of_birth + " at " + request.time_of_birth + ", " + request.place_of_birth + "\n\nLAGNA: " + lagna['sign_vedic'] + " " + str(lagna['degree']) + "\u00b0 | Lord: " + lagna['lord'] + " | Element: " + lagna['element'] + "\nMOON (Rashi): " + moon['sign_vedic'] + "\nNAKSHATRA: " + nak['name'] + " Pada " + str(nak.get('pada', '?')) + " | Lord: " + str(nak.get('lord', '?')) + "\n\nPLANET POSITIONS:\n" + "\n".join(planet_lines) + "\n\n12-HOUSE MAP:\n" + "\n".join(house_lines) + "\n\nVIMSHOTTARI DASHA TIMELINE:\n" + "\n".join(dasha_lines) + "\nCurrent: " + str(current_dasha.get('planet', 'Unknown')) + " Mahadasha (" + str(current_dasha.get('start', '?')) + "-" + str(current_dasha.get('end', '?')) + ")\n\nMANGAL DOSHA: " + ("YES" if mangal.get('has_dosha') else "NO") + "\n  House: " + str(mangal.get('mars_house', '?')) + " | " + str(mangal.get('description', '')) + "\n"
     else:
         chart_summary = "Native: " + request.full_name + ", Born " + request.date_of_birth + " at " + request.time_of_birth + " in " + request.place_of_birth
-
-    system_prompt = (
-        "You are a senior Jyotish astrologer writing a premium Brihat Kundli Pro report. "
-        "You receive a mathematically calculated birth chart. Interpret ONLY - never recalculate.\n\n"
-        "Rules:\n"
-        "- Return ONLY valid JSON, no markdown fences, no preamble\n"
-        "- Use specific calendar years (current year is " + str(current_year) + ")\n"
-        "- Address native by first name throughout\n"
-        "- Complete ALL fields - do not omit any keys\n"
-        "- Plain text only in JSON values, no markdown\n\n"
-        'Return this exact JSON structure:\n'
-        '{\n'
-        '    "ascendant": {"sign": "", "degree": "", "lord": "", "element": "", "overview": "3 sentences.", "key_traits": ["...x5"], "strengths": ["...x5"], "challenges": ["...x5"]},\n'
-        '    "moon_sign": {"sign": "", "nakshatra": "", "nakshatra_pada": "", "nakshatra_lord": "", "overview": "3 sentences.", "emotional_nature": ["...x5"], "mental_tendencies": ["...x5"]},\n'
-        '    "sun_sign": {"sign": "", "overview": "2 sentences.", "core_identity": ["...x4"], "life_purpose": ["...x4"]},\n'
-        '    "planetary_positions": [{"planet": "", "sign": "", "house": 1, "degree": "", "status": "", "strength": "", "effects": ["effect1", "effect2"]}],\n'
-        '    "career_prediction": {"overall_rating": "", "business_potential": "", "overview": "3 sentences.", "best_career_fields": ["...x5"], "strengths_at_work": ["...x5"], "career_timeline": [{"period": "2026-2030", "prediction": "2 sentences.", "advice": "1 sentence."}]},\n'
-        '    "love_prediction": {"overall_rating": "", "overview": "3 sentences.", "ideal_partner_traits": ["...x5"], "compatibility_signs": ["","",""], "challenging_signs": ["","",""], "marriage_timing": {"favorable_years": [2027,2028], "marriage_analysis": "2 sentences."}, "married_life": ["...x4"]},\n'
-        '    "health_prediction": {"overall_vitality": "", "body_constitution": "", "overview": "2 sentences.", "vulnerable_areas": ["...x5"], "preventive_measures": ["...x5"], "dietary_recommendations": ["...x4"]},\n'
-        '    "wealth_prediction": {"overall_rating": "", "overview": "3 sentences.", "primary_income_sources": ["...x5"], "good_investments": ["...x4"], "avoid": ["...x3"], "peak_periods": ["...x3"]},\n'
-        '    "family_prediction": {"overview": "2 sentences.", "parents": "2 sentences.", "siblings": "1 sentence.", "children": "1 sentence."},\n'
-        '    "current_dasha": {"mahadasha": "", "period": "", "overview": "3 sentences.", "effects": ["...x5"]},\n'
-        '    "dasha_timeline": [{"planet": "", "period": "", "overview": "2 sentences.", "effects": ["...x4"]}],\n'
-        '    "mangal_dosha": {"has_dosha": false, "severity": "", "mars_house": 1, "effects": "2 sentences.", "remedies": ["...x4"]},\n'
-        '    "kalsarp_dosha": {"has_dosha": false, "severity": "", "remedies": []},\n'
-        '    "benefic_yogas": [{"name": "", "type": "benefic", "planets_involved": [""], "effect": "2 sentences."}],\n'
-        '    "gemstone_remedies": [{"stone": "", "planet": "", "benefit": "1 sentence.", "how_to_wear": "1 sentence."}],\n'
-        '    "mantra_remedies": [{"mantra": "", "planet": "", "chanting": "When and how many times.", "benefit": "1 sentence."}],\n'
-        '    "lifestyle_remedies": ["...x5"],\n'
-        '    "lucky_numbers": [6, 15],\n'
-        '    "lucky_colors": ["","",""],\n'
-        '    "lucky_days": ["",""],\n'
-        '    "lucky_direction": "",\n'
-        '    "numerology": {"life_path": "", "destiny_number": "", "overview": "2 sentences."}\n'
-        '}'
-    )
+    system_prompt = ("You are a senior Jyotish astrologer writing a premium Brihat Kundli Pro report. You receive a mathematically calculated birth chart. Interpret ONLY - never recalculate.\n\nRules:\n- Return ONLY valid JSON, no markdown fences, no preamble\n- Use specific calendar years (current year is " + str(current_year) + ")\n- Address native by first name throughout\n- Complete ALL fields - do not omit any keys\n- Plain text only in JSON values, no markdown\n\nReturn this exact JSON structure:\n{\n    \"ascendant\": {\"sign\": \"\", \"degree\": \"\", \"lord\": \"\", \"element\": \"\", \"overview\": \"3 sentences.\", \"key_traits\": [\"...x5\"], \"strengths\": [\"...x5\"], \"challenges\": [\"...x5\"]},\n    \"moon_sign\": {\"sign\": \"\", \"nakshatra\": \"\", \"nakshatra_pada\": \"\", \"nakshatra_lord\": \"\", \"overview\": \"3 sentences.\", \"emotional_nature\": [\"...x5\"], \"mental_tendencies\": [\"...x5\"]},\n    \"sun_sign\": {\"sign\": \"\", \"overview\": \"2 sentences.\", \"core_identity\": [\"...x4\"], \"life_purpose\": [\"...x4\"]},\n    \"planetary_positions\": [{\"planet\": \"\", \"sign\": \"\", \"house\": 1, \"degree\": \"\", \"status\": \"\", \"strength\": \"\", \"effects\": [\"effect1\", \"effect2\"]}],\n    \"career_prediction\": {\"overall_rating\": \"\", \"business_potential\": \"\", \"overview\": \"3 sentences.\", \"best_career_fields\": [\"...x5\"], \"strengths_at_work\": [\"...x5\"], \"career_timeline\": [{\"period\": \"2026-2030\", \"prediction\": \"2 sentences.\", \"advice\": \"1 sentence.\"}]},\n    \"love_prediction\": {\"overall_rating\": \"\", \"overview\": \"3 sentences.\", \"ideal_partner_traits\": [\"...x5\"], \"compatibility_signs\": [\"\",\"\",\"\"], \"challenging_signs\": [\"\",\"\",\"\"], \"marriage_timing\": {\"favorable_years\": [2027,2028], \"marriage_analysis\": \"2 sentences.\"}, \"married_life\": [\"...x4\"]},\n    \"health_prediction\": {\"overall_vitality\": \"\", \"body_constitution\": \"\", \"overview\": \"2 sentences.\", \"vulnerable_areas\": [\"...x5\"], \"preventive_measures\": [\"...x5\"], \"dietary_recommendations\": [\"...x4\"]},\n    \"wealth_prediction\": {\"overall_rating\": \"\", \"overview\": \"3 sentences.\", \"primary_income_sources\": [\"...x5\"], \"good_investments\": [\"...x4\"], \"avoid\": [\"...x3\"], \"peak_periods\": [\"...x3\"]},\n    \"family_prediction\": {\"overview\": \"2 sentences.\", \"parents\": \"2 sentences.\", \"siblings\": \"1 sentence.\", \"children\": \"1 sentence.\"},\n    \"current_dasha\": {\"mahadasha\": \"\", \"period\": \"\", \"overview\": \"3 sentences.\", \"effects\": [\"...x5\"]},\n    \"dasha_timeline\": [{\"planet\": \"\", \"period\": \"\", \"overview\": \"2 sentences.\", \"effects\": [\"...x4\"]}],\n    \"mangal_dosha\": {\"has_dosha\": false, \"severity\": \"\", \"mars_house\": 1, \"effects\": \"2 sentences.\", \"remedies\": [\"...x4\"]},\n    \"kalsarp_dosha\": {\"has_dosha\": false, \"severity\": \"\", \"remedies\": []},\n    \"benefic_yogas\": [{\"name\": \"\", \"type\": \"benefic\", \"planets_involved\": [\"\"], \"effect\": \"2 sentences.\"}],\n    \"gemstone_remedies\": [{\"stone\": \"\", \"planet\": \"\", \"benefit\": \"1 sentence.\", \"how_to_wear\": \"1 sentence.\"}],\n    \"mantra_remedies\": [{\"mantra\": \"\", \"planet\": \"\", \"chanting\": \"When and how many times.\", \"benefit\": \"1 sentence.\"}],\n    \"lifestyle_remedies\": [\"...x5\"],\n    \"lucky_numbers\": [6, 15],\n    \"lucky_colors\": [\"\",\"\",\"\"],\n    \"lucky_days\": [\"\",\"\"],\n    \"lucky_direction\": \"\",\n    \"numerology\": {\"life_path\": \"\", \"destiny_number\": \"\", \"overview\": \"2 sentences.\"}\n}")
     user_prompt = "Generate Brihat Kundli Pro report for " + request.full_name + " using ONLY this chart:\n\n" + chart_summary + "\n\nReturn ONLY valid JSON. Complete ALL fields."
-
     try:
         llm = anthropic.AsyncAnthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
-        message = await llm.messages.create(
-            model="claude-sonnet-4-20250514",
-            max_tokens=16000,
-            system=system_prompt,
-            messages=[{"role": "user", "content": user_prompt}]
-        )
+        message = await llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=16000, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
         response_text = message.content[0].text
         import re, json
         clean = re.sub(r'```(?:json)?\s*', '', response_text).replace('```', '').strip()
-        try:
-            return json.loads(clean)
+        try: return json.loads(clean)
         except json.JSONDecodeError as je:
             logging.error("Brihat JSON parse failed: %s. Attempting repair...", je)
             try:
@@ -742,8 +396,7 @@ async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
                 arr_opens = repair.count('[') - repair.count(']')
                 repair += ']' * max(0, arr_opens) + '}' * max(0, opens)
                 return json.loads(repair)
-            except Exception as repair_err:
-                logging.error("JSON repair failed: %s", repair_err)
+            except Exception as repair_err: logging.error("JSON repair failed: %s", repair_err)
             return {"ascendant": {}, "moon_sign": {}, "sun_sign": {}, "planetary_positions": [], "career_prediction": {}, "love_prediction": {}, "health_prediction": {}, "wealth_prediction": {}, "family_prediction": {}, "current_dasha": {}, "dasha_timeline": [], "mangal_dosha": {"has_dosha": False}, "kalsarp_dosha": {}, "benefic_yogas": [], "gemstone_remedies": [], "mantra_remedies": [], "lifestyle_remedies": [], "lucky_numbers": [], "lucky_colors": [], "lucky_days": [], "numerology": {}}
     except Exception as e:
         logging.error("Error generating Brihat Kundli: %s", str(e))
@@ -753,20 +406,14 @@ async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
 async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str = ""):
     try:
         chart_data = None
-        try:
-            chart_data = calculate_vedic_chart(date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth, place_of_birth=request.place_of_birth)
-        except Exception as ce:
-            logging.warning("Vedic calculator failed for Brihat Kundli: %s", ce)
+        try: chart_data = calculate_vedic_chart(date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth, place_of_birth=request.place_of_birth)
+        except Exception as ce: logging.warning("Vedic calculator failed for Brihat Kundli: %s", ce)
         chart_svg = ""
         if chart_data and chart_data.get('houses'):
-            try:
-                chart_svg = generate_north_indian_chart_svg(chart_data['houses'], chart_data['lagna']['sign'])
-            except Exception as se:
-                logging.warning("SVG chart generation failed: %s", se)
+            try: chart_svg = generate_north_indian_chart_svg(chart_data['houses'], chart_data['lagna']['sign'])
+            except Exception as se: logging.warning("SVG chart generation failed: %s", se)
         report_data = await generate_brihat_kundli_with_llm(request)
-        remedies = report_data.get("remedies", {})
-        yogas = report_data.get("yogas", [])
-        dasha = report_data.get("dasha_analysis", {})
+        remedies = report_data.get("remedies", {}); yogas = report_data.get("yogas", []); dasha = report_data.get("dasha_analysis", {})
         career = report_data.get("career_prediction", {})
         if career and not career.get("best_career_fields") and career.get("best_fields"): career["best_career_fields"] = career.pop("best_fields")
         if career and not career.get("strengths_at_work") and career.get("strengths"): career["strengths_at_work"] = career.pop("strengths")
@@ -776,11 +423,9 @@ async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str =
         sun_sign = report_data.get("sun_sign", {})
         if not sun_sign.get("sign") and report_data.get("planetary_positions"):
             for p in report_data.get("planetary_positions", []):
-                if isinstance(p, dict) and p.get("planet") == "Sun":
-                    sun_sign["sign"] = p.get("sign", ""); break
+                if isinstance(p, dict) and p.get("planet") == "Sun": sun_sign["sign"] = p.get("sign", ""); break
         current_dasha_raw = report_data.get("current_dasha", dasha)
-        if isinstance(current_dasha_raw, str):
-            current_dasha = {"mahadasha": current_dasha_raw.replace(" Mahadasha", "").replace(" Dasha", "").strip(), "effects": []}
+        if isinstance(current_dasha_raw, str): current_dasha = {"mahadasha": current_dasha_raw.replace(" Mahadasha", "").replace(" Dasha", "").strip(), "effects": []}
         elif isinstance(current_dasha_raw, dict):
             cd = dict(current_dasha_raw)
             if not cd.get("mahadasha") and cd.get("current_dasha"): cd["mahadasha"] = cd.pop("current_dasha")
@@ -788,56 +433,23 @@ async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str =
             if not cd.get("effects") and cd.get("current_effects"): cd["effects"] = cd.pop("current_effects")
             if cd.get("mahadasha"): cd["mahadasha"] = cd["mahadasha"].replace(" Mahadasha","").replace(" Dasha","").strip()
             current_dasha = cd
-        else:
-            current_dasha = {}
+        else: current_dasha = {}
         dasha_timeline_raw = report_data.get("dasha_timeline", dasha.get("upcoming", []) if isinstance(dasha, dict) else [])
         dasha_timeline = []
         for d in dasha_timeline_raw:
             if isinstance(d, dict):
                 entry = dict(d)
                 if not entry.get("planet") and entry.get("dasha"): entry["planet"] = entry.pop("dasha")
-                if not entry.get("period") and entry.get("start_year") and entry.get("end_year"):
-                    entry["period"] = str(entry['start_year']) + " \u2013 " + str(entry['end_year'])
+                if not entry.get("period") and entry.get("start_year") and entry.get("end_year"): entry["period"] = str(entry['start_year']) + " \u2013 " + str(entry['end_year'])
                 dasha_timeline.append(entry)
         mangal_from_claude = report_data.get("mangal_dosha", {})
         if chart_data and chart_data.get("mangal_dosha"):
             calc_mangal = chart_data["mangal_dosha"]
-            mangal = {
-                "has_dosha": calc_mangal.get("has_dosha", calc_mangal.get("present", False)),
-                "present": calc_mangal.get("has_dosha", calc_mangal.get("present", False)),
-                "mars_house": calc_mangal.get("mars_house", ""),
-                "severity": calc_mangal.get("severity", ""),
-                "description": calc_mangal.get("description", calc_mangal.get("note", "")),
-                "remedies": mangal_from_claude.get("remedies", []) if isinstance(mangal_from_claude, dict) else [],
-                "effects": mangal_from_claude.get("effects", "") if isinstance(mangal_from_claude, dict) else "",
-            }
+            mangal = {"has_dosha": calc_mangal.get("has_dosha", calc_mangal.get("present", False)), "present": calc_mangal.get("has_dosha", calc_mangal.get("present", False)), "mars_house": calc_mangal.get("mars_house", ""), "severity": calc_mangal.get("severity", ""), "description": calc_mangal.get("description", calc_mangal.get("note", "")), "remedies": mangal_from_claude.get("remedies", []) if isinstance(mangal_from_claude, dict) else [], "effects": mangal_from_claude.get("effects", "") if isinstance(mangal_from_claude, dict) else ""}
         else:
             mangal = mangal_from_claude
-            if isinstance(mangal, dict) and not mangal.get("has_dosha") and mangal.get("present"):
-                mangal["has_dosha"] = mangal["present"]
-        report = BrihatKundliReport(
-            user_email=user_email, full_name=request.full_name,
-            date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth,
-            place_of_birth=request.place_of_birth, gender=request.gender,
-            ascendant=report_data.get("ascendant", {}), moon_sign=report_data.get("moon_sign", {}),
-            sun_sign=sun_sign, planetary_positions=report_data.get("planetary_positions", []),
-            career_prediction=career,
-            love_prediction=(lambda lp: {**lp, "ideal_partner_traits": lp.get("ideal_partner_traits") or lp.get("ideal_partner") or [], "compatibility_signs": lp.get("compatibility_signs") or lp.get("compatible_signs") or [], "challenging_signs": lp.get("challenging_signs") or []})(report_data.get("love_prediction", {})),
-            health_prediction=health,
-            wealth_prediction=(lambda wp: {**wp, "primary_income_sources": wp.get("primary_income_sources") or wp.get("income_sources") or wp.get("wealth_sources") or [], "good_investments": wp.get("good_investments") or wp.get("investments") or wp.get("peak_periods") or ["Real estate", "Gold", "Equity"], "avoid": wp.get("avoid") or wp.get("cautions") or ["High-risk speculation"]})(report_data.get("wealth_prediction", {})),
-            family_prediction=report_data.get("family_prediction", {}), education_prediction=report_data.get("education_prediction", {}),
-            current_dasha=current_dasha, dasha_timeline=dasha_timeline, mangal_dosha=mangal,
-            kalsarp_dosha=report_data.get("kalsarp_dosha", {}), other_doshas=report_data.get("other_doshas", []),
-            benefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "benefic"] or report_data.get("benefic_yogas", []),
-            malefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "malefic"] or report_data.get("malefic_yogas", []),
-            gemstone_remedies=remedies.get("gemstones", report_data.get("gemstone_remedies", [])),
-            mantra_remedies=remedies.get("mantras", report_data.get("mantra_remedies", [])),
-            lifestyle_remedies=remedies.get("general", report_data.get("lifestyle_remedies", [])),
-            donation_remedies=report_data.get("donation_remedies", []),
-            lucky_numbers=report_data.get("lucky_numbers", []), lucky_colors=report_data.get("lucky_colors", []),
-            lucky_days=report_data.get("lucky_days", []), lucky_direction=report_data.get("lucky_direction", ""),
-            numerology=report_data.get("numerology", {}), chart_svg=chart_svg
-        )
+            if isinstance(mangal, dict) and not mangal.get("has_dosha") and mangal.get("present"): mangal["has_dosha"] = mangal["present"]
+        report = BrihatKundliReport(user_email=user_email, full_name=request.full_name, date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth, place_of_birth=request.place_of_birth, gender=request.gender, ascendant=report_data.get("ascendant", {}), moon_sign=report_data.get("moon_sign", {}), sun_sign=sun_sign, planetary_positions=report_data.get("planetary_positions", []), career_prediction=career, love_prediction=(lambda lp: {**lp, "ideal_partner_traits": lp.get("ideal_partner_traits") or lp.get("ideal_partner") or [], "compatibility_signs": lp.get("compatibility_signs") or lp.get("compatible_signs") or [], "challenging_signs": lp.get("challenging_signs") or []})(report_data.get("love_prediction", {})), health_prediction=health, wealth_prediction=(lambda wp: {**wp, "primary_income_sources": wp.get("primary_income_sources") or wp.get("income_sources") or wp.get("wealth_sources") or [], "good_investments": wp.get("good_investments") or wp.get("investments") or wp.get("peak_periods") or ["Real estate", "Gold", "Equity"], "avoid": wp.get("avoid") or wp.get("cautions") or ["High-risk speculation"]})(report_data.get("wealth_prediction", {})), family_prediction=report_data.get("family_prediction", {}), education_prediction=report_data.get("education_prediction", {}), current_dasha=current_dasha, dasha_timeline=dasha_timeline, mangal_dosha=mangal, kalsarp_dosha=report_data.get("kalsarp_dosha", {}), other_doshas=report_data.get("other_doshas", []), benefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "benefic"] or report_data.get("benefic_yogas", []), malefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "malefic"] or report_data.get("malefic_yogas", []), gemstone_remedies=remedies.get("gemstones", report_data.get("gemstone_remedies", [])), mantra_remedies=remedies.get("mantras", report_data.get("mantra_remedies", [])), lifestyle_remedies=remedies.get("general", report_data.get("lifestyle_remedies", [])), donation_remedies=report_data.get("donation_remedies", []), lucky_numbers=report_data.get("lucky_numbers", []), lucky_colors=report_data.get("lucky_colors", []), lucky_days=report_data.get("lucky_days", []), lucky_direction=report_data.get("lucky_direction", ""), numerology=report_data.get("numerology", {}), chart_svg=chart_svg)
         import json
         doc = json.loads(report.model_dump_json())
         await db.brihat_kundli_reports.insert_one({**doc})
@@ -868,72 +480,33 @@ async def download_brihat_kundli_pdf(report_id: str, user_email: str = None):
         logging.error("Brihat PDF generation error: %s", str(e), exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to generate PDF: " + str(e))
 
-# Kundali Milan
-
 async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthProfile) -> tuple:
     chart1, chart2, ashtakoot_data = None, None, None
-    compatibility_score = 0
-    mangal1, mangal2 = {}, {}
+    compatibility_score = 0; mangal1, mangal2 = {}, {}
     try:
         chart1 = calculate_vedic_chart(date_of_birth=person1.date_of_birth, time_of_birth=person1.time_of_birth, place_of_birth=person1.location)
         chart2 = calculate_vedic_chart(date_of_birth=person2.date_of_birth, time_of_birth=person2.time_of_birth, place_of_birth=person2.location)
         ashtakoot_data = calculate_ashtakoot(chart1['nakshatra']['name'], chart1['moon_sign']['sign'], chart2['nakshatra']['name'], chart2['moon_sign']['sign'])
         compatibility_score = ashtakoot_data.get('total_score', 0)
-        mangal1 = chart1['mangal_dosha']
-        mangal2 = chart2['mangal_dosha']
-    except Exception as e:
-        logging.error("Vedic calculator FAILED for Kundali Milan: %s", e, exc_info=True)
+        mangal1 = chart1['mangal_dosha']; mangal2 = chart2['mangal_dosha']
+    except Exception as e: logging.error("Vedic calculator FAILED for Kundali Milan: %s", e, exc_info=True)
 
     def fmt_chart(name, chart, mangal):
-        # No backslashes inside f-string expressions — pre-build all variables first
-        if not chart:
-            return name + ": chart calculation unavailable"
-        lagna = chart['lagna']
-        moon = chart['moon_sign']
-        nak = chart['nakshatra']
+        if not chart: return name + ": chart calculation unavailable"
+        lagna = chart['lagna']; moon = chart['moon_sign']; nak = chart['nakshatra']
         dasha_planet = chart.get('current_dasha', {}).get('planet', 'Unknown')
         mangal_str = "YES \u2014 " + mangal.get('description', '') if mangal.get('has_dosha') else "No"
-        lagna_sign = lagna['sign_vedic']
-        lagna_deg = str(lagna['degree'])
-        lagna_lord = lagna['lord']
-        moon_sign = moon['sign_vedic']
-        nak_name = nak['name']
-        nak_pada = str(nak.get('pada', '?'))
-        nak_lord = str(nak.get('lord', '?'))
-        return (
-            name + ":\n"
-            + "  Ascendant: " + lagna_sign + " (" + lagna_deg + "\u00b0), Lord: " + lagna_lord + "\n"
-            + "  Moon Sign: " + moon_sign + "\n"
-            + "  Nakshatra: " + nak_name + " Pada " + nak_pada + " | Lord: " + nak_lord + "\n"
-            + "  Mangal Dosha: " + mangal_str + "\n"
-            + "  Dasha: " + dasha_planet + " Mahadasha"
-        )
+        return (name + ":\n  Ascendant: " + lagna['sign_vedic'] + " (" + str(lagna['degree']) + "\u00b0), Lord: " + lagna['lord'] + "\n  Moon Sign: " + moon['sign_vedic'] + "\n  Nakshatra: " + nak['name'] + " Pada " + str(nak.get('pada', '?')) + " | Lord: " + str(nak.get('lord', '?')) + "\n  Mangal Dosha: " + mangal_str + "\n  Dasha: " + dasha_planet + " Mahadasha")
 
     def fmt_ashtakoot(data):
-        if not data or 'kootas' not in data:
-            return "Score unavailable"
+        if not data or 'kootas' not in data: return "Score unavailable"
         lines = ["  TOTAL: " + str(data['total_score']) + "/36"]
-        for k, v in data['kootas'].items():
-            lines.append("  " + k.upper() + ": " + str(v['score']) + "/" + str(v['max']) + " \u2014 " + str(v.get('label', '')))
+        for k, v in data['kootas'].items(): lines.append("  " + k.upper() + ": " + str(v['score']) + "/" + str(v['max']) + " \u2014 " + str(v.get('label', '')))
         return '\n'.join(lines)
 
-    chart_text = (
-        "\nCALCULATED CHART DATA:\n\n"
-        + fmt_chart(person1.name, chart1, mangal1) + "\n\n"
-        + fmt_chart(person2.name, chart2, mangal2) + "\n\n"
-        "ASTHAKOOT GUNA MILAN (do NOT change these scores):\n"
-        + fmt_ashtakoot(ashtakoot_data) + "\n"
-    )
-    system_prompt = (
-        "You are an expert Jyotish astrologer specialising in Vivah Milan. Interpret ONLY \u2014 never recalculate or change scores. "
-        "NO markdown. Sections: Compatibility Overview, Ashtakoot Analysis, Mangal Dosha Assessment, Planetary Harmony, "
-        "Relationship Strengths, Challenges, Marriage Timing, Remedies. Target 900-1000 words."
-    )
-    user_prompt = (
-        "Write Kundali Milan report for " + person1.name + " and " + person2.name + ".\n\n"
-        + chart_text + "\n\n"
-        "Compatibility score is " + str(compatibility_score) + "/36 \u2014 final. Explain each Koota score for this couple."
-    )
+    chart_text = ("\nCALCULATED CHART DATA:\n\n" + fmt_chart(person1.name, chart1, mangal1) + "\n\n" + fmt_chart(person2.name, chart2, mangal2) + "\n\nASTHAKOOT GUNA MILAN (do NOT change these scores):\n" + fmt_ashtakoot(ashtakoot_data) + "\n")
+    system_prompt = ("You are an expert Jyotish astrologer specialising in Vivah Milan. Interpret ONLY \u2014 never recalculate or change scores. NO markdown. Sections: Compatibility Overview, Ashtakoot Analysis, Mangal Dosha Assessment, Planetary Harmony, Relationship Strengths, Challenges, Marriage Timing, Remedies. Target 900-1000 words.")
+    user_prompt = "Write Kundali Milan report for " + person1.name + " and " + person2.name + ".\n\n" + chart_text + "\n\nCompatibility score is " + str(compatibility_score) + "/36 \u2014 final. Explain each Koota score for this couple."
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
         message = llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=4096, system=system_prompt, messages=[{"role": "user", "content": user_prompt}])
@@ -946,12 +519,10 @@ async def generate_kundali_milan_with_llm(person1: BirthProfile, person2: BirthP
 async def generate_kundali_milan(request: KundaliMilanRequest):
     profile1 = await db.birth_profiles.find_one({"id": request.person1_id}, {"_id": 0})
     profile2 = await db.birth_profiles.find_one({"id": request.person2_id}, {"_id": 0})
-    if not profile1 or not profile2:
-        raise HTTPException(status_code=404, detail="One or both birth profiles not found")
+    if not profile1 or not profile2: raise HTTPException(status_code=404, detail="One or both birth profiles not found")
     for p in [profile1, profile2]:
         if isinstance(p['created_at'], str): p['created_at'] = datetime.fromisoformat(p['created_at'])
-    birth_profile1 = BirthProfile(**profile1)
-    birth_profile2 = BirthProfile(**profile2)
+    birth_profile1 = BirthProfile(**profile1); birth_profile2 = BirthProfile(**profile2)
     existing = await db.kundali_milan_reports.find_one({"$or": [{"person1_id": request.person1_id, "person2_id": request.person2_id}, {"person1_id": request.person2_id, "person2_id": request.person1_id}]}, {"_id": 0})
     if existing:
         if isinstance(existing['generated_at'], str): existing['generated_at'] = datetime.fromisoformat(existing['generated_at'])
@@ -1022,9 +593,7 @@ async def create_payment_order(request: PaymentIntentRequest):
         await db.payments.insert_one(payment.model_dump(mode='json'))
         return {"order_id": razorpay_order["id"], "amount": PRICING[request.report_type], "currency": "INR", "key_id": os.environ.get('RAZORPAY_KEY_ID')}
     except HTTPException: raise
-    except Exception as e:
-        logging.error("Razorpay order creation error: %s", str(e))
-        raise HTTPException(status_code=500, detail="Payment order creation failed")
+    except Exception as e: logging.error("Razorpay order creation error: %s", str(e)); raise HTTPException(status_code=500, detail="Payment order creation failed")
 
 @api_router.post("/payment/verify")
 async def verify_payment(razorpay_order_id: str, razorpay_payment_id: str, razorpay_signature: str, user_email: str):
@@ -1041,9 +610,7 @@ async def verify_payment(razorpay_order_id: str, razorpay_payment_id: str, razor
         logging.error("Payment signature verification failed")
         await db.payments.update_one({"razorpay_order_id": razorpay_order_id}, {"$set": {"status": "failed"}})
         raise HTTPException(status_code=400, detail="Payment verification failed")
-    except Exception as e:
-        logging.error("Payment verification error: %s", str(e))
-        raise HTTPException(status_code=500, detail="Payment verification failed")
+    except Exception as e: logging.error("Payment verification error: %s", str(e)); raise HTTPException(status_code=500, detail="Payment verification failed")
 
 @api_router.get("/premium/check")
 async def check_premium(user_email: str, report_type: str, report_id: str):
@@ -1052,7 +619,7 @@ async def check_premium(user_email: str, report_type: str, report_id: str):
 @api_router.get("/birthchart/{profile_id}/pdf")
 async def download_birth_chart_pdf(profile_id: str, user_email: str = None):
     profile = await db.birth_profiles.find_one({"id": profile_id}, {"_id": 0})
-    report  = await db.birth_chart_reports.find_one({"profile_id": profile_id}, {"_id": 0})
+    report = await db.birth_chart_reports.find_one({"profile_id": profile_id}, {"_id": 0})
     if not profile or not report: raise HTTPException(status_code=404, detail="Report not found")
     try:
         chart_data = None
@@ -1062,9 +629,7 @@ async def download_birth_chart_pdf(profile_id: str, user_email: str = None):
         pdf_buffer = generate_birth_chart_pdf(profile, report['report_content'], chart_data=chart_data, password=password)
         fn = "Birth_Chart_Report_" + profile['name'].replace(' ', '_') + ".pdf"
         return StreamingResponse(pdf_buffer, media_type="application/pdf", headers={"Content-Disposition": "attachment; filename=" + fn, "Access-Control-Expose-Headers": "Content-Disposition, X-PDF-Password", "X-PDF-Password": password})
-    except Exception as e:
-        logging.error("PDF generation error: %s", str(e))
-        raise HTTPException(status_code=500, detail="Failed to generate PDF")
+    except Exception as e: logging.error("PDF generation error: %s", str(e)); raise HTTPException(status_code=500, detail="Failed to generate PDF")
 
 @api_router.get("/my-reports")
 async def get_my_reports(user_email: str, request: Request):
@@ -1072,8 +637,7 @@ async def get_my_reports(user_email: str, request: Request):
     try:
         reports = []
         profiles = await db.birth_profiles.find({"user_email": user_email}, {"_id": 0}).to_list(50)
-        profile_ids = [p["id"] for p in profiles]
-        profile_map = {p["id"]: p for p in profiles}
+        profile_ids = [p["id"] for p in profiles]; profile_map = {p["id"]: p for p in profiles}
         if profile_ids:
             for r in await db.birth_chart_reports.find({"profile_id": {"$in": profile_ids}}, {"_id": 0}).sort("generated_at", -1).to_list(50):
                 pf = profile_map.get(r.get("profile_id"), {})
@@ -1106,11 +670,10 @@ async def get_shared_report(token: str):
     share_link = await db.share_links.find_one({"token": token}, {"_id": 0})
     if not share_link: raise HTTPException(status_code=404, detail="Share link not found")
     await db.share_links.update_one({"token": token}, {"$inc": {"views": 1}})
-    report_type = share_link['report_type']
-    report_id   = share_link['report_id']
+    report_type = share_link['report_type']; report_id = share_link['report_id']
     if report_type == "birth_chart":
         profile = await db.birth_profiles.find_one({"id": report_id}, {"_id": 0})
-        report  = await db.birth_chart_reports.find_one({"profile_id": report_id}, {"_id": 0})
+        report = await db.birth_chart_reports.find_one({"profile_id": report_id}, {"_id": 0})
         if not profile or not report: raise HTTPException(status_code=404, detail="Report not found")
         return {"type": "birth_chart", "profile": profile, "report": report}
     elif report_type == "kundali_milan":
@@ -1147,8 +710,7 @@ async def login(request: LoginRequest, response: Response):
         if datetime.now(timezone.utc) < locked_until:
             remaining = int((locked_until - datetime.now(timezone.utc)).total_seconds() / 60)
             raise HTTPException(status_code=429, detail="Account locked. Try again in " + str(remaining) + " minutes.")
-        else:
-            await db.users.update_one({"email": request.email}, {"$unset": {"locked_until": "", "failed_attempts": ""}})
+        else: await db.users.update_one({"email": request.email}, {"$unset": {"locked_until": "", "failed_attempts": ""}})
     if not verify_password(request.password, user_doc['password_hash']):
         failed = user_doc.get('failed_attempts', 0) + 1
         update = {"$set": {"failed_attempts": failed}}
@@ -1170,8 +732,7 @@ async def login(request: LoginRequest, response: Response):
 async def forgot_password(request: ForgotPasswordRequest):
     import secrets as secrets_module
     user_doc = await db.users.find_one({"email": request.email}, {"_id": 0})
-    if not user_doc or not user_doc.get('password_hash'):
-        return {"message": "If that email exists, a reset link has been sent."}
+    if not user_doc or not user_doc.get('password_hash'): return {"message": "If that email exists, a reset link has been sent."}
     reset_token = secrets_module.token_urlsafe(32)
     reset_expires = datetime.now(timezone.utc) + timedelta(hours=1)
     await db.users.update_one({"email": request.email}, {"$set": {"reset_token": reset_token, "reset_token_expires": reset_expires.isoformat()}})
@@ -1221,9 +782,7 @@ async def oauth_callback(response: Response, body: OAuthCallbackRequest = None, 
         session_token = await create_session(db, user.user_id)
         set_session_cookie(response, session_token)
         return UserResponse(user_id=user.user_id, email=user.email, name=user.name, picture=user.picture)
-    except Exception as e:
-        logging.error("OAuth callback error: %s", str(e))
-        raise HTTPException(status_code=401, detail="Authentication failed")
+    except Exception as e: logging.error("OAuth callback error: %s", str(e)); raise HTTPException(status_code=401, detail="Authentication failed")
 
 @api_router.get("/policies/{policy_type}")
 async def get_policy(policy_type: str):
@@ -1238,8 +797,7 @@ async def update_policy(request: Request, policy_type: str, policy_data: dict):
     await require_admin(request, db)
     valid_types = ['terms', 'privacy', 'subscription-terms', 'refund-policy', 'cookie-policy']
     if policy_type not in valid_types: raise HTTPException(status_code=404, detail="Policy type not found")
-    policy_data['type'] = policy_type
-    policy_data['updated_at'] = datetime.now(timezone.utc).isoformat()
+    policy_data['type'] = policy_type; policy_data['updated_at'] = datetime.now(timezone.utc).isoformat()
     await db.policies.update_one({"type": policy_type}, {"$set": policy_data}, upsert=True)
     return {"success": True, "message": "Policy '" + policy_type + "' updated"}
 
@@ -1260,18 +818,9 @@ async def submit_contact_form(form: ContactFormRequest):
 @api_router.post("/admin/contact/reply")
 async def admin_reply_to_contact(request: Request, body: AdminReplyRequest):
     await require_admin(request, db)
-    reply_html = (
-        '<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;">'
-        '<h2 style="color: #B8960C;">\u2728 Everyday Horoscope Support</h2>'
-        '<p>Hi ' + body.to_name + ',</p>'
-        '<div style="white-space: pre-wrap; line-height: 1.6; color: #333;">' + body.message + '</div>'
-        '<hr style="margin: 24px 0; border-color: #eee;"/>'
-        '<p style="color: #888; font-size: 12px;">SkyHound Studios \u00b7 Delhi, India</p>'
-        '</div>'
-    )
+    reply_html = ('<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px;"><h2 style="color: #B8960C;">\u2728 Everyday Horoscope Support</h2><p>Hi ' + body.to_name + ',</p><div style="white-space: pre-wrap; line-height: 1.6; color: #333;">' + body.message + '</div><hr style="margin: 24px 0; border-color: #eee;"/><p style="color: #888; font-size: 12px;">SkyHound Studios \u00b7 Delhi, India</p></div>')
     sent = await send_email_notification(body.to_email, body.subject, reply_html)
-    if not sent:
-        raise HTTPException(status_code=500, detail="Failed to send reply. Check RESEND_API_KEY configuration.")
+    if not sent: raise HTTPException(status_code=500, detail="Failed to send reply. Check RESEND_API_KEY configuration.")
     return {"success": True, "message": "Reply sent to " + body.to_email}
 
 @api_router.post("/admin/login")
@@ -1292,34 +841,22 @@ async def admin_logout(request: Request, response: Response):
 @api_router.post("/admin/change-password")
 async def change_admin_password(request: Request, password_request: ChangePasswordRequest):
     await require_admin(request, db)
-    if not verify_admin_password(password_request.current_password):
-        raise HTTPException(status_code=400, detail="Current password is incorrect")
-    if len(password_request.new_password) < 8:
-        raise HTTPException(status_code=400, detail="New password must be at least 8 characters")
+    if not verify_admin_password(password_request.current_password): raise HTTPException(status_code=400, detail="Current password is incorrect")
+    if len(password_request.new_password) < 8: raise HTTPException(status_code=400, detail="New password must be at least 8 characters")
     update_admin_password(password_request.new_password)
     new_hash = hash_new_password(password_request.new_password)
     await db.admin_settings.update_one({"key": "admin_password_hash"}, {"$set": {"value": new_hash}}, upsert=True)
     return {"success": True, "message": "Password changed successfully"}
 
 @api_router.get("/admin/verify")
-async def verify_admin(request: Request):
-    return {"authenticated": await require_admin(request, db)}
+async def verify_admin(request: Request): return {"authenticated": await require_admin(request, db)}
 
 @api_router.get("/admin/dashboard")
 async def get_dashboard_stats(request: Request):
     await require_admin(request, db)
     today_iso = datetime.now(timezone.utc).replace(hour=0, minute=0, second=0, microsecond=0).isoformat()
     revenue_result = await db.payments.aggregate([{"$match": {"status": "completed"}}, {"$group": {"_id": None, "total": {"$sum": "$amount"}}}]).to_list(1)
-    return DashboardStats(
-        total_users=await db.users.count_documents({}),
-        total_payments=await db.payments.count_documents({}),
-        total_revenue=revenue_result[0]['total'] if revenue_result else 0,
-        total_birth_charts=await db.birth_chart_reports.count_documents({}),
-        total_kundali_milans=await db.kundali_milan_reports.count_documents({}),
-        active_subscriptions=await db.subscriptions.count_documents({"status": "active"}),
-        users_today=await db.users.count_documents({"created_at": {"$gte": today_iso}}),
-        payments_today=await db.payments.count_documents({"created_at": {"$gte": today_iso}})
-    )
+    return DashboardStats(total_users=await db.users.count_documents({}), total_payments=await db.payments.count_documents({}), total_revenue=revenue_result[0]['total'] if revenue_result else 0, total_birth_charts=await db.birth_chart_reports.count_documents({}), total_kundali_milans=await db.kundali_milan_reports.count_documents({}), active_subscriptions=await db.subscriptions.count_documents({"status": "active"}), users_today=await db.users.count_documents({"created_at": {"$gte": today_iso}}), payments_today=await db.payments.count_documents({"created_at": {"$gte": today_iso}}))
 
 @api_router.get("/admin/users")
 async def get_all_users(request: Request, skip: int = 0, limit: int = 100):
@@ -1346,16 +883,10 @@ async def get_all_payments(request: Request, skip: int = 0, limit: int = 100):
 @api_router.get("/admin/reports")
 async def get_all_reports(request: Request, skip: int = 0, limit: int = 100):
     await require_admin(request, db)
-    birth_charts   = await db.birth_chart_reports.find({}, {"_id": 0}).sort("generated_at", -1).skip(skip).limit(limit).to_list(limit)
+    birth_charts = await db.birth_chart_reports.find({}, {"_id": 0}).sort("generated_at", -1).skip(skip).limit(limit).to_list(limit)
     kundali_milans = await db.kundali_milan_reports.find({}, {"_id": 0}).sort("generated_at", -1).skip(skip).limit(limit).to_list(limit)
-    def serialize_doc(doc):
-        return {k: v.isoformat() if hasattr(v, 'isoformat') else v for k, v in doc.items()}
-    return {
-        "birth_charts": [serialize_doc(r) for r in birth_charts],
-        "kundali_milans": [serialize_doc(r) for r in kundali_milans],
-        "total_birth_charts": await db.birth_chart_reports.count_documents({}),
-        "total_kundali_milans": await db.kundali_milan_reports.count_documents({})
-    }
+    def serialize_doc(doc): return {k: v.isoformat() if hasattr(v, 'isoformat') else v for k, v in doc.items()}
+    return {"birth_charts": [serialize_doc(r) for r in birth_charts], "kundali_milans": [serialize_doc(r) for r in kundali_milans], "total_birth_charts": await db.birth_chart_reports.count_documents({}), "total_kundali_milans": await db.kundali_milan_reports.count_documents({})}
 
 @api_router.delete("/admin/user/{user_id}")
 async def delete_user(request: Request, user_id: str):
@@ -1374,18 +905,14 @@ async def user_action(request: Request, user_id: str, body: UserActionRequest):
     user = await db.users.find_one({"user_id": user_id})
     if not user: raise HTTPException(status_code=404, detail="User not found")
     action = body.action
-    if action == "restrict":
-        update = {"$set": {"is_restricted": True}}; msg = "User restricted"
-    elif action == "unrestrict":
-        update = {"$unset": {"is_restricted": ""}}; msg = "Restriction removed"
+    if action == "restrict": update = {"$set": {"is_restricted": True}}; msg = "User restricted"
+    elif action == "unrestrict": update = {"$unset": {"is_restricted": ""}}; msg = "Restriction removed"
     elif action == "suspend":
         suspend_until = datetime.now(timezone.utc) + timedelta(hours=24)
         update = {"$set": {"is_suspended": True, "suspended_until": suspend_until.isoformat()}}; msg = "User suspended 24hrs"
         await send_email_notification(user.get('email', ''), "Your account has been suspended", "<p>Hi " + user.get('name', 'User') + ", your account has been suspended for 24 hours.</p>")
-    elif action == "unsuspend":
-        update = {"$unset": {"is_suspended": "", "suspended_until": ""}}; msg = "User unsuspended"
-    else:
-        raise HTTPException(status_code=400, detail="Invalid action")
+    elif action == "unsuspend": update = {"$unset": {"is_suspended": "", "suspended_until": ""}}; msg = "User unsuspended"
+    else: raise HTTPException(status_code=400, detail="Invalid action")
     await db.users.update_one({"user_id": user_id}, update)
     return {"success": True, "message": msg}
 
@@ -1407,8 +934,7 @@ def generate_slug(title: str) -> str:
 async def create_blog_post(request: Request, post: BlogPostCreate):
     await require_admin(request, db)
     slug = post.slug if post.slug else generate_slug(post.title)
-    if await db.blog_posts.find_one({"slug": slug}):
-        slug = slug + "-" + str(uuid.uuid4())[:8]
+    if await db.blog_posts.find_one({"slug": slug}): slug = slug + "-" + str(uuid.uuid4())[:8]
     blog_post = BlogPost(title=post.title, slug=slug, excerpt=post.excerpt, content=post.content, author=post.author, category=post.category, tags=post.tags, featured_image=post.featured_image, video_url=post.video_url, published=post.published, scheduled_at=post.scheduled_at)
     doc = blog_post.model_dump(mode='json')
     await db.blog_posts.insert_one(doc)
@@ -1420,16 +946,14 @@ async def get_all_blog_posts_admin(request: Request, skip: int = 0, limit: int =
     posts = await db.blog_posts.find({}, {"_id": 0}).sort("created_at", -1).skip(skip).limit(limit).to_list(limit)
     for p in posts:
         for field in ['created_at', 'updated_at', 'scheduled_at']:
-            if field in p and hasattr(p[field], 'isoformat'):
-                p[field] = p[field].isoformat()
+            if field in p and hasattr(p[field], 'isoformat'): p[field] = p[field].isoformat()
     return {"posts": posts, "total": await db.blog_posts.count_documents({}), "skip": skip, "limit": limit}
 
 @api_router.put("/admin/blog/{post_id}")
 async def update_blog_post(request: Request, post_id: str, post: BlogPostUpdate):
     await require_admin(request, db)
     update_data = {k: v for k, v in post.model_dump(mode='json').items() if v is not None}
-    if 'title' in update_data and 'slug' not in update_data:
-        update_data['slug'] = generate_slug(update_data['title'])
+    if 'title' in update_data and 'slug' not in update_data: update_data['slug'] = generate_slug(update_data['title'])
     update_data['updated_at'] = datetime.now(timezone.utc).isoformat()
     result = await db.blog_posts.update_one({"id": post_id}, {"$set": update_data})
     if result.matched_count == 0: raise HTTPException(status_code=404, detail="Blog post not found")
@@ -1457,15 +981,13 @@ async def get_blog_post_by_slug(slug: str):
     return post
 
 @api_router.get("/blog/categories/list")
-async def get_blog_categories():
-    return {"categories": await db.blog_posts.distinct("category", {"published": True})}
+async def get_blog_categories(): return {"categories": await db.blog_posts.distinct("category", {"published": True})}
 
 class UpdateProfileRequest(BaseModel):
     name: str
 
 class ChangeUserPasswordRequest(BaseModel):
-    current_password: str
-    new_password: str
+    current_password: str; new_password: str
 
 @api_router.put("/auth/profile")
 async def update_profile(request: Request, body: UpdateProfileRequest):
@@ -1501,27 +1023,23 @@ async def get_my_payments(request: Request):
     return {"payments": result}
 
 app.include_router(api_router)
+app.include_router(panchang_router)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 async def prefetch_all_horoscopes():
     logging.info("Starting scheduled horoscope prefetch...")
-    signs = [s["id"] for s in ZODIAC_SIGNS]
-    types = ["daily", "weekly", "monthly"]
-    generated = skipped = 0
+    signs = [s["id"] for s in ZODIAC_SIGNS]; types = ["daily", "weekly", "monthly"]; generated = skipped = 0
     for horoscope_type in types:
         prediction_date = get_prediction_date(horoscope_type)
         for sign in signs:
             try:
-                if await db.horoscopes.find_one({"sign": sign, "type": horoscope_type, "prediction_date": prediction_date}):
-                    skipped += 1; continue
+                if await db.horoscopes.find_one({"sign": sign, "type": horoscope_type, "prediction_date": prediction_date}): skipped += 1; continue
                 content = await generate_horoscope_with_llm(sign, horoscope_type)
                 horoscope = Horoscope(sign=sign, type=horoscope_type, content=content, prediction_date=prediction_date)
-                await db.horoscopes.insert_one(horoscope.model_dump(mode='json'))
-                generated += 1
-            except Exception as e:
-                logging.error("Failed to generate %s for %s: %s", horoscope_type, sign, str(e))
+                await db.horoscopes.insert_one(horoscope.model_dump(mode='json')); generated += 1
+            except Exception as e: logging.error("Failed to generate %s for %s: %s", horoscope_type, sign, str(e))
     logging.info("Horoscope prefetch complete: %d generated, %d already cached", generated, skipped)
 
 scheduler = AsyncIOScheduler()
@@ -1536,5 +1054,4 @@ async def startup_event():
 
 @app.on_event("shutdown")
 async def shutdown_db_client():
-    scheduler.shutdown()
-    client.close()
+    scheduler.shutdown(); client.close()
