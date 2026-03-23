@@ -2,38 +2,37 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
-import { Calendar, Sun, Moon, Star, Shield, Zap, Sparkles, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api/panchang`;
 
 const QUALITY_STYLES = {
-  good:    { bg: 'bg-green-50 border-green-200', label: 'text-green-700', badge: 'bg-green-100 text-green-800' },
-  neutral: { bg: 'bg-amber-50 border-amber-200', label: 'text-amber-700', badge: 'bg-amber-100 text-amber-800' },
-  caution: { bg: 'bg-red-50 border-red-200',    label: 'text-red-700',   badge: 'bg-red-100 text-red-800' },
+  good:    { badge: 'bg-green-100 text-green-800' },
+  neutral: { badge: 'bg-amber-100 text-amber-800' },
+  caution: { badge: 'bg-red-100 text-red-800' },
 };
 
 const TYPE_META = {
-  daily:    { title: "Today's Panchang",    icon: Sun,      desc: 'Complete Vedic almanac — Tithi, Nakshatra, Yoga, Karana, Sunrise & Sunset' },
-  calendar: { title: 'Panchang Calendar',   icon: Calendar, desc: 'Monthly Hindu calendar with Tithi and observances' },
-  festivals:{ title: 'Festivals & Vrats',   icon: Sparkles, desc: 'Upcoming Hindu festivals and vrat dates' },
+  daily:    { title: "Today's Panchang",  icon: Sun,      desc: 'Complete Vedic almanac \u2014 Tithi, Nakshatra, Yoga, Karana, Sunrise & Sunset' },
+  calendar: { title: 'Panchang Calendar', icon: Calendar, desc: 'Monthly Hindu calendar with Tithi and observances' },
+  festivals:{ title: 'Festivals & Vrats', icon: Sparkles, desc: 'Upcoming Hindu festivals and vrat dates' },
 };
 
-function formatTime(isoString) {
-  if (!isoString) return '--';
-  try {
-    return new Date(isoString).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Kolkata' });
-  } catch { return isoString.slice(11, 16); }
+function formatTime(iso) {
+  if (!iso) return '--';
+  try { return new Date(iso).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Kolkata' }); }
+  catch { return iso.slice(11, 16); }
 }
 
-function formatDate(isoString) {
-  if (!isoString) return '';
-  try {
-    return new Date(isoString).toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' });
-  } catch { return isoString; }
+function formatDate(iso) {
+  if (!iso) return '';
+  try { return new Date(iso).toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Kolkata' }); }
+  catch { return iso; }
 }
 
+// \u2500\u2500 Daily View \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n
 function PanchangDailyView() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -46,12 +45,7 @@ function PanchangDailyView() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return (
-    <div className="space-y-4">
-      {[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}
-    </div>
-  );
-
+  if (loading) return <div className="space-y-4">{[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
   if (error) return <p className="text-center text-muted-foreground py-12">{error}</p>;
   if (!data) return null;
 
@@ -59,7 +53,6 @@ function PanchangDailyView() {
 
   return (
     <div className="space-y-6">
-      {/* Date header */}
       <div className="flex items-center justify-between px-6 py-4 bg-gold/5 border border-gold/20 rounded-xl">
         <div className="flex items-center gap-3">
           <Sun className="h-5 w-5 text-gold" />
@@ -68,31 +61,29 @@ function PanchangDailyView() {
         <span className="text-xs text-muted-foreground">{data.location.label}</span>
       </div>
 
-      {/* Core 5 limbs */}
       <Card className="border border-gold/20 overflow-hidden">
         <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold">Panch Anga — Five Limbs</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold">Panch Anga \u2014 Five Limbs</p>
         </div>
         <div className="divide-y divide-border">
           {[
-            { label: 'Tithi', value: panchang.tithi.name, sub: panchang.paksha + ' Paksha' + (panchang.tithi.end ? ' · until ' + formatTime(panchang.tithi.end) : '') },
-            { label: 'Nakshatra', value: panchang.nakshatra.name, sub: 'Moon in ' + panchang.moon_sign + (panchang.nakshatra.end ? ' · until ' + formatTime(panchang.nakshatra.end) : '') },
-            { label: 'Yoga', value: panchang.yoga.name, sub: panchang.yoga.end ? 'Until ' + formatTime(panchang.yoga.end) : '' },
-            { label: 'Karana', value: panchang.karana.name, sub: panchang.karana.end ? 'Until ' + formatTime(panchang.karana.end) : '' },
-            { label: 'Vara (Day)', value: summary.weekday, sub: panchang.samvat },
+            { label: 'Tithi',     value: panchang.tithi.name,     sub: panchang.paksha + ' Paksha' + (panchang.tithi.end ? ' \u00b7 until ' + formatTime(panchang.tithi.end) : '') },
+            { label: 'Nakshatra', value: panchang.nakshatra.name, sub: 'Moon in ' + panchang.moon_sign + (panchang.nakshatra.end ? ' \u00b7 until ' + formatTime(panchang.nakshatra.end) : '') },
+            { label: 'Yoga',      value: panchang.yoga.name,      sub: panchang.yoga.end ? 'Until ' + formatTime(panchang.yoga.end) : '' },
+            { label: 'Karana',    value: panchang.karana.name,    sub: panchang.karana.end ? 'Until ' + formatTime(panchang.karana.end) : '' },
+            { label: 'Vara (Day)',value: summary.weekday,          sub: panchang.samvat },
           ].map(item => (
             <div key={item.label} className="flex items-center justify-between px-5 py-4">
               <div>
                 <p className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">{item.label}</p>
                 <p className="font-medium text-sm">{item.value}</p>
               </div>
-              {item.sub && <p className="text-xs text-muted-foreground text-right max-w-[180px]">{item.sub}</p>}
+              {item.sub && <p className="text-xs text-muted-foreground text-right max-w-[200px]">{item.sub}</p>}
             </div>
           ))}
         </div>
       </Card>
 
-      {/* Sun times + Signs */}
       <div className="grid grid-cols-2 gap-3">
         <Card className="p-4 border border-gold/20 text-center">
           <Sun className="h-5 w-5 text-amber-500 mx-auto mb-2" />
@@ -108,33 +99,28 @@ function PanchangDailyView() {
         </Card>
       </div>
 
-      {/* Day quality windows */}
       {day_quality_windows.length > 0 && (
         <Card className="border border-gold/20 overflow-hidden">
           <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
             <p className="text-xs font-semibold uppercase tracking-widest text-gold">Timing Windows</p>
           </div>
           <div className="divide-y divide-border">
-            {day_quality_windows.map(w => {
-              const style = QUALITY_STYLES[w.quality] || QUALITY_STYLES.neutral;
-              return (
-                <div key={w.label} className="flex items-center justify-between px-5 py-3">
-                  <div className="flex items-center gap-3">
-                    <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${style.badge}`}>{w.quality}</span>
-                    <span className="text-sm font-medium">{w.label}</span>
-                  </div>
-                  <span className="text-xs text-muted-foreground">{formatTime(w.start)} — {formatTime(w.end)}</span>
+            {day_quality_windows.map(w => (
+              <div key={w.label} className="flex items-center justify-between px-5 py-3">
+                <div className="flex items-center gap-3">
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${(QUALITY_STYLES[w.quality] || QUALITY_STYLES.neutral).badge}`}>{w.quality}</span>
+                  <span className="text-sm font-medium">{w.label}</span>
                 </div>
-              );
-            })}
+                <span className="text-xs text-muted-foreground">{formatTime(w.start)} \u2014 {formatTime(w.end)}</span>
+              </div>
+            ))}
           </div>
         </Card>
       )}
 
-      {/* Observances */}
       {observances.length > 0 && (
         <Card className="border border-gold/20 p-5">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Today’s Observances</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Today\u2019s Observances</p>
           <div className="space-y-2">
             {observances.map(o => (
               <div key={o.slug} className="flex items-start gap-3">
@@ -149,7 +135,6 @@ function PanchangDailyView() {
         </Card>
       )}
 
-      {/* Nav links */}
       <div className="flex gap-3">
         <Link to={`/panchang/calendar/${new Date().getFullYear()}/${new Date().getMonth() + 1}`}
           className="flex-1 flex items-center justify-center gap-2 py-3 border border-gold/30 rounded-xl text-sm font-medium text-gold hover:bg-gold/5 transition-colors">
@@ -164,17 +149,16 @@ function PanchangDailyView() {
   );
 }
 
-function PanchangCalendarView() {
-  const { year: yearParam, month: monthParam } = useParams();
+// \u2500\u2500 Calendar View \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n// year and month are passed as props from the parent (parsed from URL)
+function PanchangCalendarView({ year, month }) {
   const navigate = useNavigate();
   const today = new Date();
-  const year = parseInt(yearParam) || today.getFullYear();
-  const month = parseInt(monthParam) || (today.getMonth() + 1);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
+    setData(null);
     axios.get(`${API}/calendar/${year}/${month}`)
       .then(r => setData(r.data))
       .catch(() => setData(null))
@@ -190,16 +174,14 @@ function PanchangCalendarView() {
         <button onClick={() => navigate(`/panchang/calendar/${prevMonth.y}/${prevMonth.m}`)} className="p-2 hover:bg-gold/10 rounded-lg transition-colors">
           <ChevronLeft className="h-5 w-5 text-gold" />
         </button>
-        <h2 className="font-playfair font-semibold text-xl">{data?.month_label || `${year}`}</h2>
+        <h2 className="font-playfair font-semibold text-xl">{data?.month_label || `${month}/${year}`}</h2>
         <button onClick={() => navigate(`/panchang/calendar/${nextMonth.y}/${nextMonth.m}`)} className="p-2 hover:bg-gold/10 rounded-lg transition-colors">
           <ChevronRight className="h-5 w-5 text-gold" />
         </button>
       </div>
 
       {loading ? (
-        <div className="grid grid-cols-7 gap-1">
-          {[...Array(35)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}
-        </div>
+        <div className="grid grid-cols-7 gap-1">{[...Array(35)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>
       ) : data ? (
         <div className="space-y-1">
           <div className="grid grid-cols-7 gap-1 mb-2">
@@ -217,12 +199,11 @@ function PanchangCalendarView() {
                 {row.map((day, ci) => {
                   if (!day) return <div key={ci} />;
                   const isToday = day.date === today.toISOString().slice(0, 10);
-                  const hasObservance = day.observances.length > 0;
                   return (
-                    <div key={day.date} className={`p-1.5 rounded-lg border text-center cursor-pointer hover:border-gold/40 transition-colors ${ isToday ? 'border-gold bg-gold/10' : 'border-border' }`}>
+                    <div key={day.date} className={`p-1.5 rounded-lg border text-center ${isToday ? 'border-gold bg-gold/10' : 'border-border'}`}>
                       <p className={`text-sm font-semibold ${isToday ? 'text-gold' : ''}`}>{day.day}</p>
                       <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">{day.tithi.split(' ')[1] || day.tithi}</p>
-                      {hasObservance && <div className="w-1 h-1 bg-gold rounded-full mx-auto mt-1" />}
+                      {day.observances.length > 0 && <div className="w-1 h-1 bg-gold rounded-full mx-auto mt-1" />}
                     </div>
                   );
                 })}
@@ -235,6 +216,7 @@ function PanchangCalendarView() {
   );
 }
 
+// \u2500\u2500 Festivals View \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 function PanchangFestivalsView() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -251,18 +233,18 @@ function PanchangFestivalsView() {
   if (!data?.items?.length) return <p className="text-center text-muted-foreground py-12">No festivals found</p>;
 
   const grouped = data.items.reduce((acc, item) => {
-    const month = item.date.slice(0, 7);
-    if (!acc[month]) acc[month] = [];
-    acc[month].push(item);
+    const m = item.date.slice(0, 7);
+    if (!acc[m]) acc[m] = [];
+    acc[m].push(item);
     return acc;
   }, {});
 
   return (
     <div className="space-y-6">
-      {Object.entries(grouped).map(([month, items]) => (
-        <div key={month}>
+      {Object.entries(grouped).map(([m, items]) => (
+        <div key={m}>
           <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">
-            {new Date(month + '-01').toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}
+            {new Date(m + '-01').toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}
           </p>
           <div className="space-y-2">
             {items.map(item => (
@@ -272,7 +254,10 @@ function PanchangFestivalsView() {
                   <p className="text-[10px] text-muted-foreground uppercase">{new Date(item.date + 'T00:00:00').toLocaleDateString('en-IN', { weekday: 'short' })}</p>
                 </div>
                 <div>
-                  <span className={`text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full ${ item.observance_type === 'festival' ? 'bg-amber-100 text-amber-800' : item.observance_type === 'vrat' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800' }`}>{item.observance_type}</span>
+                  <span className={`text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full ${
+                    item.observance_type === 'festival' ? 'bg-amber-100 text-amber-800' :
+                    item.observance_type === 'vrat' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'
+                  }`}>{item.observance_type}</span>
                   <p className="font-semibold text-sm mt-1">{item.name}</p>
                   <p className="text-xs text-muted-foreground">{item.summary}</p>
                 </div>
@@ -285,17 +270,29 @@ function PanchangFestivalsView() {
   );
 }
 
+// \u2500\u2500 Page Shell \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500
 export const PanchangPage = () => {
-  const { type = 'daily' } = useParams();
-  const config = TYPE_META[type] || TYPE_META.daily;
-  const Icon = config.icon;
+  // Both routes feed into this component:
+  //   /panchang/:type          \u2192 type = 'daily' | 'festivals'
+  //   /panchang/calendar/:year/:month  \u2192 type = 'calendar', year & month from params
+  const { type = 'daily', year: yearParam, month: monthParam } = useParams();
+
+  // Determine the active view
+  const isCalendar = type === 'calendar' || (yearParam && monthParam);
+  const activeView = isCalendar ? 'calendar' : (type || 'daily');
+
+  const today = new Date();
+  const calYear  = parseInt(yearParam)  || today.getFullYear();
+  const calMonth = parseInt(monthParam) || (today.getMonth() + 1);
+
+  const config = TYPE_META[activeView] || TYPE_META.daily;
 
   const getSchema = () => ({
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: config.title + ' \u2014 Everyday Horoscope',
     description: config.desc + ' Powered by Vedic astronomy for New Delhi, India.',
-    url: 'https://everydayhoroscope.in/panchang/' + type,
+    url: 'https://everydayhoroscope.in/panchang/' + activeView,
     publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
     about: { '@type': 'Thing', name: 'Panchang', description: 'Vedic almanac used in Hindu astrology.' },
   });
@@ -305,7 +302,7 @@ export const PanchangPage = () => {
       <SEO
         title={config.title + ' \u2014 Everyday Horoscope'}
         description={config.desc + ' Powered by Vedic astronomy for New Delhi, India.'}
-        url={'https://everydayhoroscope.in/panchang/' + type}
+        url={'https://everydayhoroscope.in/panchang/' + activeView}
         schema={getSchema()}
       />
 
@@ -322,20 +319,27 @@ export const PanchangPage = () => {
         {Object.entries(TYPE_META).map(([key, meta]) => (
           <Link
             key={key}
-            to={key === 'calendar' ? `/panchang/calendar/${new Date().getFullYear()}/${new Date().getMonth() + 1}` : `/panchang/${key}`}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${ (type === key || (type === 'calendar' && key === 'calendar')) ? 'bg-gold text-white' : 'border border-border text-muted-foreground hover:border-gold/50 hover:text-gold' }`}
+            to={key === 'calendar'
+              ? `/panchang/calendar/${today.getFullYear()}/${today.getMonth() + 1}`
+              : `/panchang/${key}`
+            }
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+              activeView === key
+                ? 'bg-gold text-white'
+                : 'border border-border text-muted-foreground hover:border-gold/50 hover:text-gold'
+            }`}
           >
-            {key === 'daily' && <Sun className="h-3 w-3" />}
+            {key === 'daily'    && <Sun      className="h-3 w-3" />}
             {key === 'calendar' && <Calendar className="h-3 w-3" />}
-            {key === 'festivals' && <Sparkles className="h-3 w-3" />}
-            {meta.title.split("'s")[0].replace('Panchang ', '').replace(' & Vrats', '')}
+            {key === 'festivals'&& <Sparkles className="h-3 w-3" />}
+            {key === 'daily' ? 'Today' : key === 'calendar' ? 'Calendar' : 'Festivals'}
           </Link>
         ))}
       </div>
 
-      {type === 'daily' && <PanchangDailyView />}
-      {type === 'calendar' && <PanchangCalendarView />}
-      {type === 'festivals' && <PanchangFestivalsView />}
+      {activeView === 'daily'    && <PanchangDailyView />}
+      {activeView === 'calendar' && <PanchangCalendarView year={calYear} month={calMonth} />}
+      {activeView === 'festivals'&& <PanchangFestivalsView />}
     </div>
   );
 };
