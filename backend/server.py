@@ -3,6 +3,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from fastapi.responses import StreamingResponse
 from dotenv import load_dotenv
+from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
@@ -53,6 +54,47 @@ db = client[os.environ['DB_NAME']]
 
 app = FastAPI()
 
+# ── Session middleware — populates request.state.user for ALL routers ──────────
+# Codex routers (Numerology, Tarot) read request.state.user to resolve the
+# authenticated user. This middleware bridges our session-cookie auth system
+# to that pattern, running before every request reaches any router.
+
+class SessionUserMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        request.state.user = None
+        try:
+            session_token = request.cookies.get("session_token")
+            if not session_token:
+                auth_header = request.headers.get("Authorization", "")
+                if auth_header.startswith("Bearer "):
+                    session_token = auth_header.split("Bearer ", 1)[1].strip()
+            if session_token:
+                session_doc = await db.user_sessions.find_one(
+                    {"session_token": session_token}, {"_id": 0}
+                )
+                if session_doc:
+                    expires_at = session_doc.get("expires_at")
+                    if isinstance(expires_at, str):
+                        expires_at = datetime.fromisoformat(expires_at)
+                    if expires_at and expires_at.tzinfo is None:
+                        expires_at = expires_at.replace(tzinfo=timezone.utc)
+                    if expires_at and expires_at > datetime.now(timezone.utc):
+                        user_doc = await db.users.find_one(
+                            {"user_id": session_doc["user_id"]},
+                            {"_id": 0, "password_hash": 0}
+                        )
+                        if user_doc:
+                            request.state.user = {
+                                "email": user_doc.get("email"),
+                                "name": user_doc.get("name"),
+                                "user_id": user_doc.get("user_id"),
+                                "picture": user_doc.get("picture"),
+                            }
+        except Exception as e:
+            logging.warning("SessionUserMiddleware error (non-fatal): %s", e)
+        return await call_next(request)
+
+# CORS must be added before other middleware
 cors_origins_env = os.environ.get('CORS_ORIGINS', '')
 if cors_origins_env:
     cors_origins = [origin.strip() for origin in cors_origins_env.split(',') if origin.strip()]
@@ -63,6 +105,8 @@ if cors_origins:
     app.add_middleware(CORSMiddleware, allow_origins=cors_origins, allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
 else:
     app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=False, allow_methods=["*"], allow_headers=["*"])
+
+app.add_middleware(SessionUserMiddleware)
 
 api_router = APIRouter(prefix="/api")
 
@@ -90,7 +134,7 @@ def get_prediction_date(horoscope_type: str) -> str:
     elif horoscope_type == "monthly": return today.replace(day=1).isoformat()
     return today.isoformat()
 
-# ── Models ─────────────────────────────────────────────────────────────────────────────
+# ── Models ────────────────────────────────────────────────────────────────────
 
 class Horoscope(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -206,7 +250,7 @@ class ResetPasswordRequest(BaseModel):
 class PaymentIntentRequest(BaseModel):
     report_type: str; report_id: Optional[str] = None; user_email: str
 
-# ── Email ─────────────────────────────────────────────────────────────────────────────
+# ── Email ─────────────────────────────────────────────────────────────────────
 
 async def send_email_notification(to_email: str, subject: str, body: str):
     resend_api_key = os.environ.get('RESEND_API_KEY', '')
@@ -222,7 +266,7 @@ async def send_email_notification(to_email: str, subject: str, body: str):
     except Exception as e:
         logging.error("Email send failed: %s", str(e)); return False
 
-# ── Horoscope LLM ─────────────────────────────────────────────────────────────────────────
+# ── Horoscope LLM ─────────────────────────────────────────────────────────────
 
 async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
     sign_dash = sign + " \u2014"
@@ -239,7 +283,7 @@ async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
         logging.error("Error generating horoscope: %s", str(e))
         raise HTTPException(status_code=500, detail="Failed to generate horoscope: " + str(e))
 
-# ── Routes ─────────────────────────────────────────────────────────────────────────────
+# ── Routes ────────────────────────────────────────────────────────────────────
 
 @api_router.get("/")
 async def root(): return {"message": "Daily Horoscope API"}
