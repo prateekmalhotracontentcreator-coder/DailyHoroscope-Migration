@@ -62,27 +62,15 @@ The dependency constraint is gone. The API shape is frozen. Proceed to full Swis
 
 ---
 
-## Section 2 — Python Version: Final Position
+## Section 2 — Python Version: Management Decision
 
-**The Python version debate is over. Here is the permanent position.**
+**We have decided to upgrade the Temple App backend to Python 3.12.**
 
-The `PYTHON_VERSION.md` file is committed to the repository root as the permanent, single source of truth. Reference it in all future conversations.
+The flatlib migration contracted in Section 4 is what enables this upgrade. Once `vedic_calculator.py` is delivered and integrated, `flatlib` is removed from `requirements.txt` and the Temple App moves to Python 3.12 permanently.
 
-**Current state:** Python 3.11, locked.
+**Codex should validate all deliveries — including `panchang_router.py`, `vedic_calculator.py`, and all future module contracts — against Python 3.12 from this point forward.**
 
-**Why it was 3.11:** `flatlib` wraps `pyswisseph`, a C extension using `PyUnicode_AS_DATA`, removed in Python 3.12. Building on 3.12 fails at the C compile step.
-
-**Future state:** Python 3.12, once `vedic_calculator.py` is migrated off `flatlib` to direct `pyswisseph` calls (see Section 4 below). Once that migration ships, `flatlib` is removed from `requirements.txt`, the 3.11 constraint disappears, and we move to 3.12.
-
-**For all Codex local validation environments until further notice:**
-```bash
-brew install python@3.11
-python3.11 -m venv .venv
-source .venv/bin/activate
-pip install fastapi pydantic uvicorn
-```
-
-We will issue an explicit updated instruction when the Python version changes. Do not act on any other signal.
+There is no ambiguity on this. Python 3.12 is the target runtime. Do not qualify deliveries against 3.11.
 
 ---
 
@@ -94,7 +82,7 @@ For Codex's reference, here is the current production state as of 25 March 2026.
 | Component | Status | Detail |
 |---|---|---|
 | Frontend | LIVE | everydayhoroscope.in (Vercel) |
-| Backend | LIVE | everydayhoroscope-api.onrender.com (Python 3.11, Docker) |
+| Backend | LIVE | everydayhoroscope-api.onrender.com (Python 3.11 → upgrading to 3.12) |
 | Database | LIVE | MongoDB Atlas — horoscope_db |
 | AI Engine | LIVE | Claude Sonnet 4 via Anthropic API |
 | Email | LIVE | Resend — noreply@everydayhoroscope.in |
@@ -149,7 +137,7 @@ request.state.user = {
 
 ### Why
 
-`flatlib` is unmaintained. It blocks Python 3.12. It uses `pyswisseph` underneath — meaning Swiss Ephemeris is already in production. We are removing the dead wrapper and using `pyswisseph` directly.
+`flatlib` is unmaintained and is the sole reason the backend has not yet moved to Python 3.12. It wraps `pyswisseph` — meaning Swiss Ephemeris is already installed in production. We are removing the dead wrapper and calling `pyswisseph` directly. This is the task that unblocks the Python 3.12 upgrade.
 
 ### Scope
 
@@ -224,8 +212,7 @@ Single standalone `vedic_calculator.py`. No new pip packages.
 1. Remove `flatlib==0.2.3` from `requirements.txt`
 2. `Dockerfile`: `FROM python:3.11-slim` → `FROM python:3.12-slim`
 3. `runtime.txt`: update to `3.12.x`
-4. `PYTHON_VERSION.md`: update to reflect unblock
-5. Validate against 3 reference birth charts before production deploy
+4. Validate against 3 reference birth charts before production deploy
 
 ---
 
@@ -322,7 +309,7 @@ nakshatra_name: str           # provided by Temple App from birth chart
 
 ### Recommended delivery order
 
-1. `vedic_calculator.py` — unlocks Python 3.12 for everything downstream
+1. `vedic_calculator.py` — unblocks Python 3.12 for everything downstream
 2. `panchang_router.py` — uses same pyswisseph, validates the migration
 3. Premium Numerology tile — stable router, clean addition
 4. Tarot card assets — can run in parallel with any backend work
