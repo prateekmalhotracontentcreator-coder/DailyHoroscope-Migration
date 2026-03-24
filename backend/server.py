@@ -29,6 +29,8 @@ from admin_utils import (
     set_admin_session_cookie, update_admin_password, hash_new_password, ADMIN_USERNAME
 )
 from panchang_router import router as panchang_router
+from numerology_router import router as numerology_router
+from tarot_router import router as tarot_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -88,7 +90,7 @@ def get_prediction_date(horoscope_type: str) -> str:
     elif horoscope_type == "monthly": return today.replace(day=1).isoformat()
     return today.isoformat()
 
-# ── Models ────────────────────────────────────────────────────────────────────
+# ── Models ─────────────────────────────────────────────────────────────────────────────
 
 class Horoscope(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -204,7 +206,7 @@ class ResetPasswordRequest(BaseModel):
 class PaymentIntentRequest(BaseModel):
     report_type: str; report_id: Optional[str] = None; user_email: str
 
-# ── Email ─────────────────────────────────────────────────────────────────────
+# ── Email ─────────────────────────────────────────────────────────────────────────────
 
 async def send_email_notification(to_email: str, subject: str, body: str):
     resend_api_key = os.environ.get('RESEND_API_KEY', '')
@@ -220,7 +222,7 @@ async def send_email_notification(to_email: str, subject: str, body: str):
     except Exception as e:
         logging.error("Email send failed: %s", str(e)); return False
 
-# ── Horoscope LLM ─────────────────────────────────────────────────────────────
+# ── Horoscope LLM ─────────────────────────────────────────────────────────────────────────
 
 async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
     sign_dash = sign + " \u2014"
@@ -237,7 +239,7 @@ async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
         logging.error("Error generating horoscope: %s", str(e))
         raise HTTPException(status_code=500, detail="Failed to generate horoscope: " + str(e))
 
-# ── Routes ────────────────────────────────────────────────────────────────────
+# ── Routes ─────────────────────────────────────────────────────────────────────────────
 
 @api_router.get("/")
 async def root(): return {"message": "Daily Horoscope API"}
@@ -1024,6 +1026,8 @@ async def get_my_payments(request: Request):
 
 app.include_router(api_router)
 app.include_router(panchang_router)
+app.include_router(numerology_router)
+app.include_router(tarot_router)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -1046,6 +1050,7 @@ scheduler = AsyncIOScheduler()
 
 @app.on_event("startup")
 async def startup_event():
+    app.state.db = db
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(hour=18, minute=30, timezone="UTC"), id="daily_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day_of_week="sun", hour=18, minute=0, timezone="UTC"), id="weekly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day=1, hour=17, minute=30, timezone="UTC"), id="monthly_horoscope_prefetch", replace_existing=True)
