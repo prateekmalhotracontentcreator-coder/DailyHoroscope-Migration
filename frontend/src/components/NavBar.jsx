@@ -12,6 +12,33 @@ import {
   BookMarked, Layers
 } from 'lucide-react';
 
+// ── Stars Logo ─────────────────────────────────────────────────────────────────
+const StarsLogo = ({ size = 28 }) => (
+  <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+    {/* Outer petal ring */}
+    {[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(i => (
+      <ellipse key={i}
+        cx="50" cy="50"
+        rx="6" ry="18"
+        fill="#C5A059"
+        opacity="0.7"
+        transform={`rotate(${i * 22.5} 50 50)`}
+      />
+    ))}
+    {/* Dot ring */}
+    {[0,1,2,3,4,5,6,7,8,9,10,11].map(i => {
+      const angle = (i * 30 - 90) * Math.PI / 180;
+      return <circle key={i} cx={50 + 36 * Math.cos(angle)} cy={50 + 36 * Math.sin(angle)} r="2" fill="#C5A059" opacity="0.9" />;
+    })}
+    {/* Centre 4-point star */}
+    <path d="M50 28 L53 47 L72 50 L53 53 L50 72 L47 53 L28 50 L47 47 Z" fill="#C5A059" />
+    {/* Small corner stars */}
+    <path d="M50 34 L51.2 38 L55 39 L51.2 40 L50 44 L48.8 40 L45 39 L48.8 38 Z" fill="#fff" opacity="0.6" />
+    <circle cx="68" cy="36" r="2.5" fill="#C5A059" opacity="0.8" />
+    <circle cx="32" cy="36" r="1.8" fill="#C5A059" opacity="0.6" />
+  </svg>
+);
+
 const NAV = [
   { label: 'Home', icon: Home, path: '/home' },
   {
@@ -48,13 +75,14 @@ const NAV = [
     ],
   },
   {
+    // Remedies: all sub-items point to /remedies (Coming Soon) until module is built
     label: 'Remedies', icon: Gem,
     children: [
-      { label: 'Gemstones',       path: '/remedies/gemstones',       icon: Gem },
-      { label: 'Mantras',         path: '/remedies/mantras',         icon: BookMarked },
-      { label: 'Yantras',         path: '/remedies/yantras',         icon: Shield },
-      { label: 'Feng Shui',       path: '/remedies/feng-shui',       icon: Leaf },
-      { label: 'Crystal Therapy', path: '/remedies/crystal-therapy', icon: Zap },
+      { label: 'Gemstones',       path: '/remedies', icon: Gem },
+      { label: 'Mantras',         path: '/remedies', icon: BookMarked },
+      { label: 'Yantras',         path: '/remedies', icon: Shield },
+      { label: 'Feng Shui',       path: '/remedies', icon: Leaf },
+      { label: 'Crystal Therapy', path: '/remedies', icon: Zap },
     ],
   },
   { label: 'Numerology', icon: Hash,      path: '/numerology' },
@@ -112,7 +140,7 @@ const DesktopDropdown = ({ item, isActive }) => {
           <div className="h-0.5 bg-gradient-to-r from-gold/60 via-gold to-gold/60 mb-1" />
           {item.children.map((child) => (
             <button
-              key={child.path}
+              key={child.label}
               onClick={() => { navigate(child.path); setOpen(false); }}
               className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-gold/5 transition-colors text-left"
             >
@@ -163,13 +191,21 @@ const SidebarItem = ({ item, onNavigate, depth = 0 }) => {
       {open && (
         <div className="ml-2 border-l border-gold/20 pl-1 my-0.5">
           {item.children.map((child) => (
-            <SidebarItem key={child.path} item={child} onNavigate={onNavigate} depth={1} />
+            <SidebarItem key={child.label} item={child} onNavigate={onNavigate} depth={1} />
           ))}
         </div>
       )}
     </div>
   );
 };
+
+// ─── Brand Wordmark ────────────────────────────────────────────────────────────
+const BrandWordmark = () => (
+  <span className="font-playfair font-bold text-[1.15rem] leading-tight tracking-tight">
+    Everyday{' '}
+    <span className="text-gold">Horoscope</span>
+  </span>
+);
 
 // ─── Main NavBar ───────────────────────────────────────────────────────────────
 export const NavBar = () => {
@@ -196,9 +232,9 @@ export const NavBar = () => {
             <button onClick={() => setSidebarOpen(true)} className="lg:hidden p-2 rounded-sm hover:bg-muted/50 transition-colors" aria-label="Open menu">
               <Menu className="h-5 w-5" />
             </button>
-            <button onClick={() => navigate(user ? '/home' : '/')} className="flex items-center gap-2" data-testid="header-logo">
-              <Sparkles className="h-6 w-6 text-gold" />
-              <span className="font-playfair font-semibold text-lg">Everyday Horoscope</span>
+            <button onClick={() => navigate(user ? '/home' : '/')} className="flex items-center gap-2.5" data-testid="header-logo">
+              <StarsLogo size={28} />
+              <BrandWordmark />
             </button>
           </div>
 
@@ -230,9 +266,9 @@ export const NavBar = () => {
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
           <div className="absolute left-0 top-0 bottom-0 w-72 bg-card border-r border-border shadow-2xl flex flex-col" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between px-4 py-4 border-b border-border">
-              <div className="flex items-center gap-2">
-                <Sparkles className="h-5 w-5 text-gold" />
-                <span className="font-playfair font-semibold">Everyday Horoscope</span>
+              <div className="flex items-center gap-2.5">
+                <StarsLogo size={24} />
+                <BrandWordmark />
               </div>
               <button onClick={() => setSidebarOpen(false)} className="p-1.5 rounded-sm hover:bg-muted/50 transition-colors">
                 <X className="h-4 w-4" />
