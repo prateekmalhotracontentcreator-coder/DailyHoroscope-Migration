@@ -334,31 +334,74 @@ Temple side handles all frontend integration. Codex delivers assets only.
 | 2 | panchang_router.py — pyswisseph engine upgrade | `panchang_router.py` | **URGENT** | Python 3.12 |
 | 3 | Premium Ankjyotish Numerology tile | New tile in `numerology_router.py` | **MEDIUM** | Python 3.12 |
 | 4 | Tarot Major Arcana SVG assets | 22 SVG files or JSON bundle | **MEDIUM** | N/A — asset delivery |
+| 5 | Panchang per-date endpoint | New route in `panchang_router.py` | **MEDIUM** | Python 3.12 |
+| 6 | Tarot daily reminder scheduler backend | New endpoint + APScheduler job | **LOW** | Python 3.12 |
 
 ### Recommended Delivery Order
 
-1. **`vedic_calculator.py`** — Temple App integrates this first, removes flatlib, upgrades Docker to Python 3.12. All subsequent Codex deliveries then land on a 3.12 backend.
+1. **`vedic_calculator.py`** — Temple App integrates this first, removes flatlib, upgrades Docker to Python 3.12. All subsequent Codex deliveries then land on a clean 3.12 backend.
 2. **`panchang_router.py`** — uses the same pyswisseph already validated in step 1. Clean integration.
 3. **Premium Numerology tile** — straightforward addition to a stable, live router.
 4. **Tarot card assets** — asset-only delivery, can run in parallel with any of the above.
+5. **Panchang per-date endpoint** — unlocks the interactive calendar frontend build on Temple side.
+6. **Tarot daily reminder backend** — lowest priority, enables push notification scheduling.
 
 ---
 
-## Section 8 — Temple App Scope (Not Codex)
+## Section 8 — Ownership Model: Codex, Claude, and Joint
 
-The following are handled entirely on the Temple side. Codex involvement is not required:
+This section defines the operating model clearly. Claude (Temple App) acts as the **integrator and product finisher**. Codex is the **backend engine builder**. Items are split into three lanes.
 
-- All frontend React pages, routing, and styling
-- PDF generation for Numerology and Tarot reports
-- Share function wiring for all modules
-- Payment gating for Numerology and Tarot
-- SEO pages and rich content for all modules
-- Tarot cinematic redesign, portrait card layout, gamification display
-- TTS narration layer for Tarot Premium members
-- Reminder and scheduler frontend (browser notifications)
-- Logo, brand identity, and all design decisions
-- Docker and runtime version upgrades after each Codex delivery
+### Lane 1 — Claude Owns End-to-End (No Codex Input Required)
+
+These items are purely frontend or use patterns already established in the codebase. Claude executes these independently once relevant Codex contracts in Section 7 are delivered.
+
+| Item | Notes |
+|---|---|
+| PDF download — Numerology reports | Adapts existing `pdf_generator.py` pattern already live for Birth Chart and Brihat Kundli |
+| PDF download — Tarot readings | Same pattern. Landscape layout with portrait card assets from Contract 4 |
+| Share function — Numerology and Tarot | `ShareModal` already live. Wire to `report_id` from each module |
+| Payment gating — Numerology and Tarot | Same Razorpay pattern already live on Birth Chart and Brihat Kundli |
+| Tarot cinematic redesign | Full `TarotPage.jsx` redesign — portrait card layout, dark aesthetic, flip animations |
+| Tarot XP / gamification display | XP data already returned by `tarot_router.py`. Build points table and level UI |
+| Tarot TTS narration (Premium) | Browser Web Speech API — no backend needed |
+| Numerology AI interpretation layer | Claude API call added to report display — no new backend endpoint needed |
+| SEO rich pages — Tarot | FAQ pages, individual card pages, schema markup |
+| SEO rich pages — Numerology | Life Path number articles, calculator landing, schema markup |
+| SEO rich pages — Panchang | Daily Panchang SEO pages, festival article pages |
+| Onboarding guided tour — Tarot | 5-step overlay coach marks, first-visit detection via localStorage |
+| Logo, brand identity, design system | Locked and live |
+| Docker and runtime upgrades | Mechanical step after each Codex delivery. Temple side only |
 
 ---
 
-*This document supersedes all previous individual responses on Python version, Panchang accuracy, and module contracts. It is the single source of truth for the current Codex engagement.*
+### Lane 2 — Joint (Codex Backend First, Claude Integrates Frontend)
+
+These items require a Codex backend delivery before Claude can build the frontend. The backend contract is noted. Claude does not begin frontend work until the backend is confirmed live.
+
+| Item | Codex Delivers | Claude Builds |
+|---|---|---|
+| Tarot card illustrations | Contract 4 — 22 SVG assets | Wire assets into `TarotPage.jsx` card display and flip animation |
+| Panchang interactive calendar | Contract 5 — `/api/panchang/date/{date}` per-date endpoint | Interactive calendar UI with linked date pages and SEO routes |
+| Panchang festival pages | Contract 5 — festival data already in `/festivals` endpoint | Active festival page links, individual festival SEO pages |
+| Panchang NavBar dropdown | Panchang sub-routes already live from existing contract | Fix frontend routing — dropdown items link to correct live pages |
+| Tarot daily reminder | Contract 6 — APScheduler job + `/api/tarot/reminder` endpoint | Browser notification permission UI, time picker, frequency selector |
+
+---
+
+### Lane 3 — Codex Backend Contracts (Already in Section 7)
+
+These are purely backend tasks with no frontend dependency until delivered. Listed here for completeness.
+
+| Contract | Section Reference |
+|---|---|
+| `vedic_calculator.py` flatlib migration | Section 4 |
+| `panchang_router.py` pyswisseph upgrade | Section 1 + Section 7 |
+| Premium Ankjyotish Numerology tile | Section 5 |
+| Tarot Major Arcana SVG assets | Section 6 |
+| Panchang per-date endpoint | Section 7, Contract 5 |
+| Tarot daily reminder backend | Section 7, Contract 6 |
+
+---
+
+*This document supersedes all previous individual responses on Python version, Panchang accuracy, and module contracts. It is the single source of truth for the current Codex engagement. The full document is committed to the repository at `CODEX_MASTER_RESPONSE_MARCH2026.md` in the repo root.*
