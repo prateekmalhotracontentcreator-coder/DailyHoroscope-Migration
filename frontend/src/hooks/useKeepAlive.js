@@ -24,6 +24,7 @@ export const useKeepAlive = () => {
 
     // Then ping every 10 minutes
     const interval = setInterval(ping, PING_INTERVAL_MS);
-    return () => clearInterval(interval);
+    window.addEventListener('focus', ping);
+    return () => { clearInterval(interval); window.removeEventListener('focus', ping);
   }, []);
 };
