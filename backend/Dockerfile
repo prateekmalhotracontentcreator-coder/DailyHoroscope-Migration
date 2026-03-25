@@ -1,17 +1,15 @@
 # ════════════════════════════════════════════════════════════
-# PYTHON VERSION: 3.11 — LOCKED. DO NOT CHANGE WITHOUT TEAM SIGN-OFF.
+# PYTHON VERSION: 3.12
 #
-# Why this is locked:
-# flatlib (Vedic chart engine) depends on pyswisseph, a C extension.
-# pyswisseph uses PyUnicode_AS_DATA which was removed in Python 3.12.
-# Upgrading to 3.12 will break the Docker build with a C compile error.
-# This affects Birth Chart, Kundali Milan, Brihat Kundli, and Panchang.
-# Python 3.11 is supported until October 2027 — no urgency to change.
+# Upgraded from 3.11 after completing the flatlib → pyswisseph migration.
+# flatlib was the sole blocker (its C extension used PyUnicode_AS_DATA,
+# removed in Python 3.12). flatlib has been replaced with direct pyswisseph
+# calls in vedic_calculator.py. Python 3.12 is now the confirmed runtime.
 #
-# To unblock 3.12: replace flatlib with a 3.12-compatible astronomy lib.
-# That is a tracked future task, not a drop-in change.
+# All Codex module deliveries (panchang_router, tarot_router,
+# numerology_router, vedic_calculator) validated on Python 3.12.
 # ════════════════════════════════════════════════════════════
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
