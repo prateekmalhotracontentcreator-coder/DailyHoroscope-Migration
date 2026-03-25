@@ -94,7 +94,7 @@ export const UserAccountMenu = () => {
             </Avatar>
             <div className="flex-1 space-y-1">
               <p className="text-base font-semibold leading-none">{user.name}</p>
-              <p className="text-xs text-muted-foreground">{user.email}</p>
+              <p className="text-xs text-muted-foreground truncate break-all">{user.email}</p>
               {isPremium && (
                 <div className="inline-flex items-center space-x-1 bg-gold/20 text-gold px-2 py-1 rounded-full text-xs font-semibold mt-2">
                   <Crown className="h-3 w-3" />
