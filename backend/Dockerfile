@@ -8,6 +8,9 @@
 #
 # All Codex module deliveries (panchang_router, tarot_router,
 # numerology_router, vedic_calculator) validated on Python 3.12.
+#
+# setuptools must be explicit: razorpay==1.3.0 uses pkg_resources at
+# import time, and python:3.12-slim does not bundle setuptools.
 # ════════════════════════════════════════════════════════════
 FROM python:3.12-slim
 
@@ -19,6 +22,9 @@ RUN apt-get update && apt-get install -y \
     g++ \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
+
+# Install setuptools first so pkg_resources is available before razorpay
+RUN pip install --no-cache-dir setuptools>=68.0
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
