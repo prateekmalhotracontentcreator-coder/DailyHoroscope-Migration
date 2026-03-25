@@ -54,7 +54,7 @@ export const Home = () => {
         {primarySignMeta ? (
           <div className="mb-10">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-6 rounded-xl border border-gold/30 bg-gradient-to-r from-gold/5 via-card to-gold/5">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 min-w-0">
                 <div className="text-5xl leading-none">{primarySignMeta.symbol}</div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-1">Welcome back, {firstName}</p>
