@@ -282,10 +282,10 @@ def _sunrise_sunset_local(
     geo = (longitude, latitude, 0.0)
 
     # Sunrise
-    ret_rise = swe.rise_trans(jd_noon - 0.5, swe.SUN, geo, rsmi=swe.CALC_RISE | swe.BIT_DISC_CENTER)
+    ret_rise = swe.rise_trans(jd_noon - 0.5, swe.SUN, 0, swe.CALC_RISE | swe.BIT_DISC_CENTER, geo)
     jd_rise = ret_rise[1][0]
     # Sunset
-    ret_set = swe.rise_trans(jd_noon - 0.5, swe.SUN, geo, rsmi=swe.CALC_SET | swe.BIT_DISC_CENTER)
+    ret_set  = swe.rise_trans(jd_noon - 0.5, swe.SUN, 0, swe.CALC_SET  | swe.BIT_DISC_CENTER, geo)
     jd_set = ret_set[1][0]
 
     def jd_to_datetime_local(jd: float) -> datetime:
