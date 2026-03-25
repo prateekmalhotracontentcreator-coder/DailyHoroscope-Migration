@@ -1,5 +1,5 @@
 # EverydayHoroscope — Codex Master Response
-**Date:** 25 March 2026
+**Date:** 25 March 2026 (updated)
 **From:** Temple App Team (SkyHound Studios)
 **Re:** Panchang Accuracy, Python Version Decision, Architecture State, and New Contracts
 
@@ -293,35 +293,47 @@ Deliver as a structured dict. Temple side renders the visual:
 
 ---
 
-## Section 6 — New Contract: Full 78-Card Tarot Deck Assets + Router Update
+## Section 6 — Contract 4: Full 78-Card Tarot Deck Assets + Router Update
 
-**New contract item. Scope updated to full 78-card standard Tarot deck.**
+**Scope: full 78-card standard Tarot deck. Two deliverables.**
 
-A standard Tarot deck consists of 78 cards: 22 Major Arcana (The Fool through The World) and 56 Minor Arcana across four suits (Wands, Cups, Swords, Pentacles), with 14 cards per suit (Ace, 2–10, Page, Knight, Queen, King). We are building a premium product. Delivering only Major Arcana would produce a noticeably thin draw pool and a substandard experience for any user who knows Tarot. **The full 78-card deck is required from day one.**
+### What Is Approved in This Contract
 
-### Two Deliverables for This Contract
+Contract 4 has two and only two changes to `tarot_router.py`:
 
-**Deliverable A: `tarot_cards.json`** — 78 SVG card illustrations as a single JSON bundle.
+1. `DEFAULT_CARDS` expanded from 5 placeholders to all 78 cards with `suit` and `rank` fields added
+2. The Astro-Tarot fusion work — `TarotVedicContext`, fusion request/response models, and fusion helper logic — is **approved and retained** (see Section 6b below)
 
-**Deliverable B: Updated `tarot_router.py`** — `DEFAULT_CARDS` expanded from 5 placeholders to all 78 cards with full metadata. This is the only change to the router. All existing routes, models, logic, and the auth pattern are untouched.
+All other existing routes, models, helper functions, and auth patterns remain exactly as they are in the current live Temple file.
+
+### What Is NOT in Contract 4
+
+The following items from the Codex platform build are **not** part of Contract 4 and must not appear in the Temple delivery for this contract:
+
+- Dispatch reminder route (`POST /api/tarot/reminder/dispatch`)
+- Scheduler helper functions
+- The richer reminder document model (`hour_utc`, `minute_utc`, `channel`, `focus_area`, `next_run_at`, `last_sent_on`)
+
+These belong to Contract 6 (reminder endpoints, using the simpler Temple document model) and the platform master layer respectively.
 
 ---
 
 ### Deliverable A — `tarot_cards.json`
 
-**Format: single JSON file, card ID slug → SVG string.**
+**Format: single flat JSON file. Key = card ID slug. Value = complete SVG string. Nothing else.**
 
 ```json
 {
-  "the-fool":              "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
-  "the-magician":          "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
-  "wands-ace":             "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
-  "wands-02":              "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
-  ...all 78 cards...
+  "the-fool":    "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  "wands-ace":   "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  "cups-07":     "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  "swords-king": "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>"
 }
 ```
 
-**Design specification — applies to all 78 cards:**
+No manifest wrapper. No metadata block. No `deck` object. No `cards[]` array. No separate SVG files. No ZIP. One flat JSON file, 78 keys, 78 SVG strings.
+
+**Design specification — all 78 cards:**
 
 | Property | Requirement |
 |---|---|
@@ -334,15 +346,11 @@ A standard Tarot deck consists of 78 cards: 22 Major Arcana (The Fool through Th
 | Minor Arcana additionally | Suit symbol and rank indicator |
 | Style | Geometric / symbolic — no photographic elements |
 
-**Minor Arcana design approach — systematic by suit:**
+**Minor Arcana design approach:** Each suit uses its elemental symbol (Wand/torch, Cup/chalice, Sword, Pentacle/coin) as the central illustration. Rank expressed through quantity for pip cards, figure type for court cards.
 
-Each suit has a consistent visual language. The central illustration uses the suit's elemental symbol (Wand/torch for Wands, Cup/chalice for Cups, Sword for Swords, Pentacle/coin for Pentacles) with rank expressed through quantity (2 = two symbols, 3 = three, etc.) or through figure type for court cards (Page, Knight, Queen, King).
+### Card ID Naming Convention — Corrected
 
----
-
-### Card ID Naming Convention
-
-**Major Arcana (22 cards):** slug format — `the-fool`, `the-magician`, etc.
+**Major Arcana (22):** slug format
 
 ```
 the-fool, the-magician, the-high-priestess, the-empress, the-emperor,
@@ -351,37 +359,56 @@ wheel-of-fortune, justice, the-hanged-man, death, temperance,
 the-devil, the-tower, the-star, the-moon, the-sun, judgement, the-world
 ```
 
-**Minor Arcana (56 cards):** `{suit}-{rank}` format.
+**Minor Arcana (56):** `{suit}-{rank}` — NOT `ace-of-wands`, NOT `two-of-cups`, NOT `king-of-swords`
 
 Suits: `wands`, `cups`, `swords`, `pentacles`
-
 Ranks: `ace`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `page`, `knight`, `queen`, `king`
 
-Examples: `wands-ace`, `wands-02`, `cups-queen`, `swords-king`, `pentacles-page`
+Correct examples: `wands-ace`, `wands-02`, `cups-07`, `cups-queen`, `swords-king`, `pentacles-page`
+
+The manifest-style JSON and separate SVG files built during the platform phase are valid reference assets and can be kept in the master layer. They are not the Temple delivery artifact.
 
 ---
 
-### Deliverable B — Updated `tarot_router.py` (DEFAULT_CARDS only)
+### Deliverable B — Updated `tarot_router.py` (DEFAULT_CARDS + Astro-Tarot fusion)
 
-Expand `DEFAULT_CARDS` from the current 5 placeholder entries to all 78 cards.
-
-**Each card entry structure — unchanged from current pattern, with two new fields added:**
+Expand `DEFAULT_CARDS` to all 78 cards. Each entry:
 
 ```python
 {
     "id": "wands-ace",
     "name": "Ace of Wands",
-    "suit": "wands",            # NEW — "major", "wands", "cups", "swords", "pentacles"
-    "rank": "ace",              # NEW — "0"–"21" for Major Arcana, "ace"/"02"–"10"/"page"/"knight"/"queen"/"king"
+    "suit": "wands",       # "major" / "wands" / "cups" / "swords" / "pentacles"
+    "rank": "ace",         # "0"–"21" for Major Arcana, rank slug for Minor Arcana
     "upright_keywords": ["initiative", "spark", "breakthrough"],
     "reversed_keywords": ["delay", "blocked energy", "false start"],
     "image_url": None,
 }
 ```
 
-The `suit` and `rank` fields enable Temple-side filtering for spread draws by suit pool if needed in future. They do not change any existing route logic.
+The Astro-Tarot fusion (`TarotVedicContext`, fusion models, fusion helper logic) is retained in this file as approved. See Section 6b.
 
-**All existing routes, all Pydantic models, all helper functions, all auth patterns — completely untouched.** The only change is `DEFAULT_CARDS`.
+---
+
+## Section 6b — Approved Addition: Astro-Tarot Fusion Module
+
+**The Astro-Tarot fusion work is approved and retained in `tarot_router.py`.**
+
+This is genuinely differentiated product thinking. The Temple App team recognises the value and has approved it for integration. It will be positioned as the highest-tier premium Tarot experience — Package 3 in the Codex proposed premium tier structure.
+
+### What Is Approved
+
+- `TarotVedicContext` model and all fusion request/response fields
+- Fusion helper logic within the router
+- Any fusion-specific routes that Codex has built as part of this feature
+
+### Integration Boundary
+
+The Astro-Tarot fusion routes that require live Vedic chart data from `vedic_calculator.py` will be fully activated by the Temple App side once `vedic_calculator.py` (Contract 1, Section 4) is delivered and integrated. Until that point, the fusion routes may operate with fallback or passed-in Vedic context. The Temple App will supply `lagna_sign`, `moon_sign`, `nakshatra_name`, and `current_dasha` as request inputs — Codex does not replicate the Vedic calculator inside the Tarot router.
+
+### What Remains Excluded
+
+The dispatch reminder route and scheduler helper functions remain outside the Temple `tarot_router.py`. Those belong to Contract 6.
 
 ---
 
@@ -392,23 +419,23 @@ The `suit` and `rank` fields enable Temple-side filtering for spread draws by su
 | 1 | vedic_calculator.py — flatlib → pyswisseph | `vedic_calculator.py` | **HIGH** | Python 3.12 |
 | 2 | panchang_router.py — pyswisseph engine upgrade | `panchang_router.py` | **URGENT** | Python 3.12 |
 | 3 | Premium Ankjyotish Numerology tile | New tile in `numerology_router.py` | **MEDIUM** | Python 3.12 |
-| 4 | Full 78-card Tarot deck | `tarot_cards.json` + updated `tarot_router.py` | **MEDIUM** | N/A (assets) + Python 3.12 (router) |
+| 4 | Full 78-card Tarot deck + Astro-Tarot fusion | `tarot_cards.json` + updated `tarot_router.py` | **MEDIUM** | N/A (assets) + Python 3.12 (router) |
 | 5 | Panchang per-date endpoint | New route in `panchang_router.py` | **MEDIUM** | Python 3.12 |
-| 6 | Tarot daily reminder — data endpoints | 3 new routes added to `tarot_router.py` | **LOW** | Python 3.12 |
+| 6 | Tarot daily reminder — data endpoints | 3 new routes in `tarot_router.py` | **LOW** | Python 3.12 |
 
 ### Contract 6 — Tarot Daily Reminder: Detailed Spec
 
-**Scope:** Three new route handlers added to the existing `tarot_router.py`. Complete updated file is the delivery artifact.
+**Scope:** Three route handlers added to `tarot_router.py`. Complete updated file is the delivery.
 
-**Routes to add:**
+**Routes:**
 
 ```
-POST   /api/tarot/reminder/set    — save user reminder preference
-GET    /api/tarot/reminder        — retrieve current reminder settings
-DELETE /api/tarot/reminder        — remove reminder preference
+POST   /api/tarot/reminder/set  — save or update user reminder preference
+GET    /api/tarot/reminder      — retrieve current reminder settings
+DELETE /api/tarot/reminder      — remove reminder preference
 ```
 
-**Document structure** (`doc_type: "reminder"`, collection: `tarot_readings`):
+**Temple document model** (`doc_type: "reminder"`, collection: `tarot_readings`):
 
 ```json
 {
@@ -424,22 +451,24 @@ DELETE /api/tarot/reminder        — remove reminder preference
 }
 ```
 
-**Frequency values:** `"daily"`, `"twice_daily"`, `"weekdays_only"`
+Frequency values: `"daily"`, `"twice_daily"`, `"weekdays_only"`
 
-**APScheduler job is explicitly NOT part of this contract.** The scheduler that reads reminder preferences and triggers notifications lives in `server.py` and is owned by the Temple App side.
+The richer platform reminder model (`hour_utc`, `minute_utc`, `channel`, `focus_area`, `next_run_at`, `last_sent_on`) is valid platform architecture and can be kept in the master layer. The Temple delivery uses the simpler model above.
 
-**Auth:** `request.state.user.get("email")` — same pattern as all other routes in the file.
+The dispatch route and APScheduler helper are **not** part of this contract. The scheduler that reads reminder docs and fires notifications lives in `server.py` and is owned by the Temple App side.
+
+Auth: `request.state.user.get("email")`.
 
 ---
 
 ### Recommended Delivery Order
 
-1. **`vedic_calculator.py`** — removes flatlib, triggers Python 3.12 upgrade. All subsequent work lands on a clean 3.12 backend.
-2. **`panchang_router.py`** — pyswisseph upgrade, same dependency already validated in step 1.
-3. **Premium Numerology tile** — straightforward addition to a stable, live router.
-4. **Full 78-card Tarot deck** — `tarot_cards.json` + updated `DEFAULT_CARDS` in `tarot_router.py`. Can run in parallel with any of the above.
-5. **Panchang per-date endpoint** — unlocks the interactive calendar frontend build on Temple side.
-6. **Tarot daily reminder endpoints** — lowest priority, 3 routes added to existing `tarot_router.py`.
+1. **`vedic_calculator.py`** — removes flatlib, triggers Python 3.12 upgrade
+2. **`panchang_router.py`** — pyswisseph upgrade, same dependency
+3. **Premium Numerology tile** — clean addition to a stable router
+4. **Contract 4: `tarot_cards.json` + updated `tarot_router.py`** — two precision fixes (flat JSON format + corrected Minor Arcana IDs) plus Astro-Tarot fusion retained
+5. **Panchang per-date endpoint** — unlocks interactive calendar on Temple side
+6. **Contract 6: Tarot daily reminder endpoints** — 3 routes, simplified Temple document model
 
 ---
 
@@ -447,25 +476,23 @@ DELETE /api/tarot/reminder        — remove reminder preference
 
 Claude (Temple App) acts as the **integrator and product finisher**. Codex is the **backend engine builder**. Items are split into three lanes.
 
-### Lane 1 — Claude Owns End-to-End (No Codex Input Required)
+### Lane 1 — Claude Owns End-to-End
 
 | Item | Notes |
 |---|---|
-| PDF download — Numerology reports | Adapts existing `pdf_generator.py` pattern |
-| PDF download — Tarot readings | Landscape layout with portrait card assets from Contract 4 |
-| Share function — Numerology and Tarot | `ShareModal` already live. Wire to `report_id` from each module |
-| Payment gating — Numerology and Tarot | Same Razorpay pattern already live on Birth Chart and Brihat Kundli |
-| Tarot cinematic redesign | Full `TarotPage.jsx` redesign — portrait card layout, dark aesthetic, flip animations |
-| Tarot XP / gamification display | XP data already returned by `tarot_router.py`. Build points table and level UI |
+| PDF download — Numerology and Tarot | Adapts existing `pdf_generator.py` pattern |
+| Share function — Numerology and Tarot | `ShareModal` already live. Wire to `report_id` |
+| Payment gating — Numerology and Tarot | Same Razorpay pattern already live |
+| Tarot cinematic redesign | `TarotPage.jsx` — portrait cards, dark aesthetic, flip animations |
+| Tarot XP / gamification display | XP data from `tarot_router.py`. Points table and level UI |
 | Tarot TTS narration (Premium) | Browser Web Speech API — no backend needed |
-| Numerology AI interpretation layer | Claude API call added to report display — no new backend endpoint needed |
-| SEO rich pages — Tarot | FAQ pages, individual card pages, schema markup |
-| SEO rich pages — Numerology | Life Path number articles, calculator landing, schema markup |
-| SEO rich pages — Panchang | Daily Panchang SEO pages, festival article pages |
-| Onboarding guided tour — Tarot | 5-step overlay coach marks, first-visit detection via localStorage |
-| APScheduler job — Tarot reminders | Reads reminder docs from `tarot_readings`, triggers notifications. Lives in `server.py` |
+| Astro-Tarot fusion frontend | Vedic context UI layer on top of approved fusion routes (Contract 4) |
+| Numerology AI interpretation layer | Claude API call on report display — no new backend endpoint |
+| SEO rich pages — Tarot, Numerology, Panchang | FAQ pages, card articles, calculator landing, festival pages |
+| Onboarding guided tour — Tarot | 5-step overlay, localStorage first-visit detection |
+| APScheduler job — Tarot reminders | Reads reminder docs, triggers notifications. Lives in `server.py` |
 | Logo, brand identity, design system | Locked and live |
-| Docker and runtime upgrades | Mechanical step after each Codex delivery. Temple side only |
+| Docker and runtime upgrades | After each Codex delivery. Temple side only |
 
 ---
 
@@ -473,25 +500,26 @@ Claude (Temple App) acts as the **integrator and product finisher**. Codex is th
 
 | Item | Codex Delivers | Claude Builds |
 |---|---|---|
-| Tarot card illustrations | Contract 4 — `tarot_cards.json` (78 cards) | Wire SVGs into `TarotPage.jsx` card display and flip animation |
-| Panchang interactive calendar | Contract 5 — `/api/panchang/date/{date}` per-date endpoint | Interactive calendar UI with linked date pages and SEO routes |
-| Panchang festival pages | Festival data already in `/festivals` endpoint | Active festival page links, individual festival SEO pages |
-| Panchang NavBar dropdown | Panchang sub-routes already live | Fix frontend routing — dropdown items link to correct live pages |
-| Tarot daily reminder UI | Contract 6 — 3 reminder data endpoints in `tarot_router.py` | Browser notification permission UI, time picker, frequency selector |
+| Tarot card illustrations | Contract 4 — `tarot_cards.json` (78 cards, flat, corrected IDs) | Wire SVGs into `TarotPage.jsx` |
+| Astro-Tarot fusion experience | Contract 4 — fusion routes in `tarot_router.py` (approved, Section 6b) | Premium Package 3 frontend — Vedic context input, fusion reading display |
+| Panchang interactive calendar | Contract 5 — `/api/panchang/date/{date}` | Calendar UI, linked date pages, SEO routes |
+| Panchang festival pages | `/festivals` endpoint already live | Festival page links, SEO pages |
+| Panchang NavBar dropdown | Sub-routes already live | Frontend routing fix |
+| Tarot daily reminder UI | Contract 6 — 3 reminder data endpoints | Browser notification UI, time picker, frequency selector |
 
 ---
 
-### Lane 3 — Codex Backend Contracts (Already in Section 7)
+### Lane 3 — Codex Backend Contracts
 
 | Contract | Section Reference |
 |---|---|
 | `vedic_calculator.py` flatlib migration | Section 4 |
 | `panchang_router.py` pyswisseph upgrade | Section 1 + Section 7 |
 | Premium Ankjyotish Numerology tile | Section 5 |
-| Full 78-card Tarot deck (`tarot_cards.json` + `tarot_router.py`) | Section 6 |
+| Full 78-card Tarot deck + Astro-Tarot fusion | Section 6 + Section 6b |
 | Panchang per-date endpoint | Section 7, Contract 5 |
 | Tarot daily reminder data endpoints | Section 7, Contract 6 |
 
 ---
 
-*This document supersedes all previous individual responses on Python version, Panchang accuracy, and module contracts. It is the single source of truth for the current Codex engagement. The full document is committed to the repository at `CODEX_MASTER_RESPONSE_MARCH2026.md` in the repo root.*
+*This document supersedes all previous individual responses on Python version, Panchang accuracy, and module contracts. It is the single source of truth for the current Codex engagement. The full document is at `CODEX_MASTER_RESPONSE_MARCH2026.md` in the repo root.*
