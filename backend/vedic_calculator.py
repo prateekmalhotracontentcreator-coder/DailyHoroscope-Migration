@@ -1,29 +1,52 @@
 """
 EverydayHoroscope — Vedic Calculation Engine
 Proprietary IP of SkyHound Studios
-Powered by flatlib + Swiss Ephemeris
+Powered by Swiss Ephemeris
 
 Architecture:
   Layer 1 (this file): Mathematical calculation — deterministic, always same result
   Layer 2 (Claude prompts): Interpretation — human-readable insights from calculated positions
 """
 
-from flatlib.datetime import Datetime
-from flatlib.geopos import GeoPos
-from flatlib import const
-from flatlib.chart import Chart
-from flatlib.object import Object
 import math
-from datetime import datetime, timezone
-from geopy.geocoders import Nominatim
+from datetime import datetime, timedelta, timezone
 import logging
+import swisseph as swe
 
-# ─── Planet & Sign Mappings ───────────────────────────────────────────────────
+try:
+    from geopy.geocoders import Nominatim
+except ImportError:
+    Nominatim = None
+
+
+class const:
+    SUN = "SUN"
+    MOON = "MOON"
+    MERCURY = "MERCURY"
+    VENUS = "VENUS"
+    MARS = "MARS"
+    JUPITER = "JUPITER"
+    SATURN = "SATURN"
+    NORTH_NODE = "NORTH_NODE"
+    SOUTH_NODE = "SOUTH_NODE"
+    ASC = "ASC"
+    RETROGRADE = "Retrograde"
 
 PLANET_IDS = [
     const.SUN, const.MOON, const.MERCURY, const.VENUS, const.MARS,
     const.JUPITER, const.SATURN, const.NORTH_NODE, const.SOUTH_NODE
 ]
+
+PLANET_SWE_IDS = {
+    const.SUN: swe.SUN,
+    const.MOON: swe.MOON,
+    const.MERCURY: swe.MERCURY,
+    const.VENUS: swe.VENUS,
+    const.MARS: swe.MARS,
+    const.JUPITER: swe.JUPITER,
+    const.SATURN: swe.SATURN,
+    const.NORTH_NODE: swe.MEAN_NODE,
+}
 
 PLANET_NAMES = {
     const.SUN: 'Sun (Surya)',
@@ -118,10 +141,8 @@ DASHA_YEARS = {'Ketu': 7, 'Venus': 20, 'Sun': 6, 'Moon': 10, 'Mars': 7, 'Rahu': 
 # ─── Ashtakoot Data ───────────────────────────────────────────────────────────
 
 VARNA = {'Aries': 2, 'Taurus': 3, 'Gemini': 4, 'Cancer': 1, 'Leo': 2, 'Virgo': 3, 'Libra': 4, 'Scorpio': 1, 'Sagittarius': 2, 'Capricorn': 3, 'Aquarius': 4, 'Pisces': 1}
-# 1=Brahmin, 2=Kshatriya, 3=Vaishya, 4=Shudra
 
 YONI = {
-    # Classical Parashari Yoni assignments (AstroSage standard)
     'Ashwini': ('Horse', 'M'), 'Shatabhisha': ('Horse', 'F'),
     'Bharani': ('Elephant', 'M'), 'Revati': ('Elephant', 'F'),
     'Pushya': ('Goat', 'M'), 'Krittika': ('Goat', 'F'),
@@ -158,12 +179,57 @@ NADI = {
     'Swati': 'Kapha', 'Anuradha': 'Kapha', 'Uttara Ashadha': 'Kapha', 'Shravana': 'Kapha', 'Revati': 'Kapha',
 }
 
+# ─── Swiss Ephemeris Helpers ──────────────────────────────────────────────────
+
+def _setup_swe():
+    """Configure Swiss Ephemeris for Lahiri ayanamsha (Vedic)."""
+    swe.set_sid_mode(swe.SIDM_LAHIRI)
+
+_setup_swe()
+
+SWE_FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL
+
+
+def _parse_datetime_to_jd(date_of_birth: str, time_of_birth: str, timezone_offset: str) -> float:
+    """Convert birth date/time/timezone to Julian Day number (UT)."""
+    dt = datetime.strptime(f"{date_of_birth} {time_of_birth}", "%Y-%m-%d %H:%M")
+    # Parse timezone offset like '+05:30' or '-04:00'
+    sign = 1 if timezone_offset[0] != '-' else -1
+    parts = timezone_offset.lstrip('+-').split(':')
+    tz_hours = sign * (int(parts[0]) + int(parts[1]) / 60)
+    dt_ut = dt - timedelta(hours=tz_hours)
+    return swe.julday(dt_ut.year, dt_ut.month, dt_ut.day,
+                      dt_ut.hour + dt_ut.minute / 60 + dt_ut.second / 3600)
+
+
+def _lon_to_sign(lon: float) -> str:
+    """Convert ecliptic longitude (0-360) to sign name."""
+    return SIGN_ORDER[int(lon // 30) % 12]
+
+
+def _calc_planet(jd: float, swe_id: int) -> tuple[float, float]:
+    """Return (sidereal_longitude, speed_lon) for a planet."""
+    result = swe.calc_ut(jd, swe_id, SWE_FLAGS)
+    lon = result[0][0]
+    speed = result[0][3]
+    return lon, speed
+
+
+def _calc_ascendant(jd: float, lat: float, lon: float) -> float:
+    """Return sidereal ascendant longitude."""
+    # Whole sign houses — standard for Vedic
+    cusps, ascmc = swe.houses(jd, lat, lon, b'W')
+    asc_tropical = ascmc[0]
+    ayanamsa = swe.get_ayanamsa_ut(jd)
+    return (asc_tropical - ayanamsa) % 360
+
+
 # ─── Core Functions ───────────────────────────────────────────────────────────
 
 def get_nakshatra(moon_longitude: float) -> dict:
-    """Get Nakshatra from Moon's absolute longitude (0-360)."""
-    nak_index = int(moon_longitude / (360/27))
-    pada = int((moon_longitude % (360/27)) / (360/108)) + 1
+    """Get Nakshatra from Moon's sidereal longitude (0-360)."""
+    nak_index = int(moon_longitude / (360 / 27))
+    pada = int((moon_longitude % (360 / 27)) / (360 / 108)) + 1
     nak = NAKSHATRAS[nak_index]
     return {
         'name': nak['name'],
@@ -182,15 +248,11 @@ def get_house_number(planet_sign: str, lagna_sign: str) -> int:
 
 
 def calculate_vimshottari_dasha(birth_date: str, moon_longitude: float) -> list:
-    """
-    Calculate Vimshottari Dasha periods from birth date and Moon longitude.
-    Returns list of dashas with start/end dates.
-    """
+    """Calculate Vimshottari Dasha periods."""
     nak_data = get_nakshatra(moon_longitude)
     nak_lord = nak_data['lord']
     nak_index = nak_data['index']
 
-    # How far through the nakshatra is the Moon?
     nak_span = 360 / 27
     nak_start = nak_index * nak_span
     fraction_elapsed = (moon_longitude - nak_start) / nak_span
@@ -198,14 +260,10 @@ def calculate_vimshottari_dasha(birth_date: str, moon_longitude: float) -> list:
     years_elapsed = fraction_elapsed * dasha_years_total
     years_remaining = dasha_years_total - years_elapsed
 
-    # Parse birth date
-    from datetime import datetime, timedelta
     bd = datetime.strptime(birth_date, '%Y-%m-%d')
-
     dashas = []
     lord_idx = DASHA_ORDER.index(nak_lord)
 
-    # First dasha is partially elapsed
     first_end = bd + timedelta(days=years_remaining * 365.25)
     dashas.append({
         'planet': nak_lord,
@@ -232,7 +290,6 @@ def calculate_vimshottari_dasha(birth_date: str, moon_longitude: float) -> list:
 
 def get_current_dasha(dashas: list) -> dict:
     """Find the currently active Mahadasha."""
-    from datetime import datetime
     today = datetime.now()
     for d in dashas:
         start = datetime.strptime(d['start'], '%Y-%m-%d')
@@ -243,55 +300,33 @@ def get_current_dasha(dashas: list) -> dict:
 
 
 def check_mangal_dosha(mars_house: int) -> dict:
-    """
-    Check Mangal Dosha based on Mars house position.
-    Dosha houses: 1, 2, 4, 7, 8, 12
-    Cancellation rules applied.
-    """
+    """Check Mangal Dosha based on Mars house position."""
     dosha_houses = [1, 2, 4, 7, 8, 12]
     present = mars_house in dosha_houses
-
     severity_map = {1: 'High', 2: 'Moderate', 4: 'Moderate', 7: 'High', 8: 'Very High', 12: 'Low'}
     severity = severity_map.get(mars_house, None) if present else None
-
-    cancellation_rules = []
-    if mars_house == 1 and True:  # Mars in Aries or Scorpio lagna cancels
-        cancellation_rules.append('Mars in 1st house may be cancelled if Lagna is Aries or Scorpio')
-    if mars_house == 2:
-        cancellation_rules.append('Dosha reduced if Venus or Jupiter aspects Mars')
-
     return {
-        'has_dosha': present,   # standardised key used by server.py and pdf_generator
+        'has_dosha': present,
         'present': present,
         'mars_house': mars_house,
         'severity': severity,
         'description': f'Mars in House {mars_house} — ' + (f'{severity} Mangal Dosha' if present else 'No Mangal Dosha'),
-        'cancellation_rules': cancellation_rules,
+        'cancellation_rules': [],
         'cancelled': False,
         'cancellation_reason': '',
         'note': f'Mars in house {mars_house}' + (' — Mangal Dosha present' if present else ' — No Mangal Dosha'),
     }
 
 
-# ─── Ashtakoot Milan Calculation ─────────────────────────────────────────────
+# ─── Ashtakoot Milan ─────────────────────────────────────────────────────────
 
 def calculate_ashtakoot(nak1: str, sign1: str, nak2: str, sign2: str) -> dict:
-    """
-    Calculate full Ashtakoot Guna Milan score between two individuals.
-    Returns scores for all 8 kootas with interpretations.
-    """
+    """Calculate full Ashtakoot Guna Milan score."""
     scores = {}
 
-    # 1. Varna (1 point)
     v1, v2 = VARNA.get(sign1, 2), VARNA.get(sign2, 2)
-    varna_score = 1 if v2 >= v1 else 0
-    scores['varna'] = {
-        'max': 1, 'score': varna_score,
-        'label': 'Compatible' if varna_score == 1 else 'Challenging',
-        'meaning': 'Spiritual evolution compatibility'
-    }
+    scores['varna'] = {'max': 1, 'score': 1 if v2 >= v1 else 0, 'label': 'Compatible' if v2 >= v1 else 'Challenging', 'meaning': 'Spiritual evolution compatibility'}
 
-    # 2. Vashya (2 points)
     vashya_map = {
         'Aries': ['Leo', 'Scorpio'], 'Taurus': ['Cancer', 'Libra'],
         'Gemini': ['Virgo'], 'Cancer': ['Scorpio', 'Sagittarius'],
@@ -303,153 +338,64 @@ def calculate_ashtakoot(nak1: str, sign1: str, nak2: str, sign2: str) -> dict:
     mutual = sign2 in vashya_map.get(sign1, []) and sign1 in vashya_map.get(sign2, [])
     one_way = sign2 in vashya_map.get(sign1, []) or sign1 in vashya_map.get(sign2, [])
     vashya_score = 2 if mutual else (0.5 if one_way else 0)
-    scores['vashya'] = {
-        'max': 2, 'score': vashya_score,
-        'label': 'Strong' if vashya_score == 2 else ('Moderate' if vashya_score == 1 else 'Weak'),
-        'meaning': 'Mutual attraction and influence'
-    }
+    scores['vashya'] = {'max': 2, 'score': vashya_score, 'label': 'Strong' if vashya_score == 2 else ('Moderate' if vashya_score else 'Weak'), 'meaning': 'Mutual attraction and influence'}
 
-    # 3. Tara (3 points) — birth star compatibility
     nak_list = [n['name'] for n in NAKSHATRAS]
     idx1 = nak_list.index(nak1) if nak1 in nak_list else 0
     idx2 = nak_list.index(nak2) if nak2 in nak_list else 0
     tara_from_1 = ((idx2 - idx1) % 27) % 9
     tara_from_2 = ((idx1 - idx2) % 27) % 9
-    good_taras = [1, 3, 5, 7]  # Janma, Kshema, Sadhana, Mitra
-    tara_score = 0
-    if tara_from_1 in good_taras: tara_score += 1.5
-    if tara_from_2 in good_taras: tara_score += 1.5
-    tara_score = min(3, int(tara_score))
-    scores['tara'] = {
-        'max': 3, 'score': tara_score,
-        'label': 'Excellent' if tara_score == 3 else ('Good' if tara_score >= 2 else 'Challenging'),
-        'meaning': 'Health and longevity compatibility'
-    }
+    good_taras = [1, 3, 5, 7]
+    tara_score = min(3, int((1.5 if tara_from_1 in good_taras else 0) + (1.5 if tara_from_2 in good_taras else 0)))
+    scores['tara'] = {'max': 3, 'score': tara_score, 'label': 'Excellent' if tara_score == 3 else ('Good' if tara_score >= 2 else 'Challenging'), 'meaning': 'Health and longevity compatibility'}
 
-    # 4. Yoni (4 points) — animal instinct compatibility
     y1 = YONI.get(nak1, ('Unknown', 'M'))
-    y2 = YONI.get(nak2, ('Unknown', 'M'))
+    y2 = YONI.get(nak2, ('Unknown', 'F'))
     if y1[0] == y2[0]:
         yoni_score = 4
     else:
-        friendly_pairs = [
-            ('Horse', 'Elephant'), ('Goat', 'Dog'), ('Serpent', 'Mongoose'),
-            ('Cat', 'Rat'), ('Cow', 'Tiger'), ('Buffalo', 'Monkey'), ('Lion', 'Deer'),
-        ]
-        enemy_pairs = [
-            ('Horse', 'Buffalo'), ('Elephant', 'Lion'), ('Goat', 'Monkey'),
-        ]
+        friendly_pairs = [('Horse', 'Elephant'), ('Goat', 'Dog'), ('Cat', 'Rat'), ('Cow', 'Tiger'), ('Buffalo', 'Monkey'), ('Lion', 'Deer')]
+        enemy_pairs = [('Horse', 'Buffalo'), ('Elephant', 'Lion'), ('Goat', 'Monkey')]
         pair = tuple(sorted([y1[0], y2[0]]))
-        if any(tuple(sorted(p)) == pair for p in friendly_pairs):
-            yoni_score = 3
-        elif any(tuple(sorted(p)) == pair for p in enemy_pairs):
-            yoni_score = 0
-        else:
-            yoni_score = 2
-    scores['yoni'] = {
-        'max': 4, 'score': yoni_score,
-        'label': 'Excellent' if yoni_score == 4 else ('Good' if yoni_score == 3 else ('Moderate' if yoni_score == 2 else 'Challenging')),
-        'meaning': 'Physical and intimate compatibility'
-    }
+        if any(tuple(sorted(p)) == pair for p in friendly_pairs): yoni_score = 3
+        elif any(tuple(sorted(p)) == pair for p in enemy_pairs): yoni_score = 0
+        else: yoni_score = 2
+    scores['yoni'] = {'max': 4, 'score': yoni_score, 'label': 'Excellent' if yoni_score == 4 else ('Good' if yoni_score == 3 else ('Moderate' if yoni_score == 2 else 'Challenging')), 'meaning': 'Physical and intimate compatibility'}
 
-    # 5. Graha Maitri (5 points) — planetary friendship
-    lord1 = SIGN_LORDS.get(sign1, 'Mercury')
-    lord2 = SIGN_LORDS.get(sign2, 'Venus')
-    friends = {
-        'Sun': ['Moon', 'Mars', 'Jupiter'], 'Moon': ['Sun', 'Mercury'],
-        'Mars': ['Sun', 'Moon', 'Jupiter'], 'Mercury': ['Sun', 'Venus'],
-        'Jupiter': ['Sun', 'Moon', 'Mars'], 'Venus': ['Mercury', 'Saturn'],
-        'Saturn': ['Mercury', 'Venus'],
-    }
-    # Neutral planets (neither friends nor enemies)
-    neutrals = {
-        'Sun': ['Mercury'], 'Moon': ['Mars', 'Jupiter', 'Venus', 'Saturn'],
-        'Mars': ['Venus', 'Saturn'], 'Mercury': ['Mars', 'Jupiter', 'Saturn'],
-        'Jupiter': ['Venus', 'Saturn'], 'Venus': ['Sun', 'Moon', 'Mars', 'Jupiter'],
-        'Saturn': ['Sun', 'Moon', 'Jupiter'],
-    }
-    l1_friends = friends.get(lord1, [])
-    l2_friends = friends.get(lord2, [])
-    l1_neutral = neutrals.get(lord1, [])
-    l2_neutral = neutrals.get(lord2, [])
+    lord1, lord2 = SIGN_LORDS.get(sign1, 'Mercury'), SIGN_LORDS.get(sign2, 'Venus')
+    friends = {'Sun': ['Moon', 'Mars', 'Jupiter'], 'Moon': ['Sun', 'Mercury'], 'Mars': ['Sun', 'Moon', 'Jupiter'], 'Mercury': ['Sun', 'Venus'], 'Jupiter': ['Sun', 'Moon', 'Mars'], 'Venus': ['Mercury', 'Saturn'], 'Saturn': ['Mercury', 'Venus']}
+    neutrals = {'Sun': ['Mercury'], 'Moon': ['Mars', 'Jupiter', 'Venus', 'Saturn'], 'Mars': ['Venus', 'Saturn'], 'Mercury': ['Mars', 'Jupiter', 'Saturn'], 'Jupiter': ['Venus', 'Saturn'], 'Venus': ['Sun', 'Moon', 'Mars', 'Jupiter'], 'Saturn': ['Sun', 'Moon', 'Jupiter']}
+    l1f, l2f = friends.get(lord1, []), friends.get(lord2, [])
+    l1n, l2n = neutrals.get(lord1, []), neutrals.get(lord2, [])
+    if lord1 == lord2 or (lord2 in l1f and lord1 in l2f): gm_score = 5
+    elif (lord2 in l1f and lord1 in l2n) or (lord1 in l2f and lord2 in l1n): gm_score = 4
+    elif lord2 in l1n and lord1 in l2n: gm_score = 3
+    elif (lord2 in l1f and lord1 not in l2f and lord1 not in l2n) or (lord1 in l2f and lord2 not in l1f and lord2 not in l1n): gm_score = 0.5
+    else: gm_score = 0
+    scores['graha_maitri'] = {'max': 5, 'score': gm_score, 'label': 'Excellent' if gm_score >= 5 else ('Good' if gm_score >= 4 else ('Moderate' if gm_score >= 3 else 'Challenging')), 'meaning': 'Mental and intellectual compatibility'}
 
-    same_lord = lord1 == lord2
-    mutual_friends = lord2 in l1_friends and lord1 in l2_friends
-    one_friend_one_neutral = (lord2 in l1_friends and lord1 in l2_neutral) or (lord1 in l2_friends and lord2 in l1_neutral)
-    mutual_neutral = lord2 in l1_neutral and lord1 in l2_neutral
-    one_friend_one_enemy = (lord2 in l1_friends and lord1 not in l2_friends and lord1 not in l2_neutral) or                            (lord1 in l2_friends and lord2 not in l1_friends and lord2 not in l1_neutral)
-
-    if same_lord or mutual_friends:
-        gm_score = 5
-    elif one_friend_one_neutral:
-        gm_score = 4
-    elif mutual_neutral:
-        gm_score = 3
-    elif one_friend_one_enemy:
-        gm_score = 0.5
-    else:
-        gm_score = 0
-
-    scores['graha_maitri'] = {
-        'max': 5, 'score': gm_score,
-        'label': 'Excellent' if gm_score >= 5 else ('Good' if gm_score >= 4 else ('Moderate' if gm_score >= 3 else 'Challenging')),
-        'meaning': 'Mental and intellectual compatibility'
-    }
-
-    # 6. Gana (6 points) — temperament
-    g1 = GANA.get(nak1, 'Manushya')
-    g2 = GANA.get(nak2, 'Manushya')
+    g1, g2 = GANA.get(nak1, 'Manushya'), GANA.get(nak2, 'Manushya')
     if g1 == g2: gana_score = 6
     elif set([g1, g2]) == {'Deva', 'Manushya'}: gana_score = 5
     elif set([g1, g2]) == {'Manushya', 'Rakshasa'}: gana_score = 1
-    else: gana_score = 0  # Deva + Rakshasa
-    scores['gana'] = {
-        'max': 6, 'score': gana_score,
-        'label': 'Perfect' if gana_score == 6 else ('Good' if gana_score >= 5 else ('Moderate' if gana_score == 1 else 'Challenging')),
-        'meaning': 'Nature and temperament compatibility'
-    }
+    else: gana_score = 0
+    scores['gana'] = {'max': 6, 'score': gana_score, 'label': 'Perfect' if gana_score == 6 else ('Good' if gana_score >= 5 else ('Moderate' if gana_score == 1 else 'Challenging')), 'meaning': 'Nature and temperament compatibility'}
 
-    # 7. Bhakoot (7 points) — emotional bonding
-    # Bad axes: 6-8 (Shadashtak) and 2-12 (Dwitiya-Dwadasha)
-    # Use forward/reverse counting from each sign (1-12 range)
-    sign_idx1 = SIGN_ORDER.index(sign1)
-    sign_idx2 = SIGN_ORDER.index(sign2)
-    fwd = (sign_idx2 - sign_idx1) % 12 + 1  # count forward sign1→sign2 (1-12)
-    rev = (sign_idx1 - sign_idx2) % 12 + 1  # count forward sign2→sign1 (1-12)
-    bad_counts = {2, 6, 8, 12}
-    bhakoot_bad = fwd in bad_counts or rev in bad_counts
+    sign_idx1, sign_idx2 = SIGN_ORDER.index(sign1), SIGN_ORDER.index(sign2)
+    fwd = (sign_idx2 - sign_idx1) % 12 + 1
+    rev = (sign_idx1 - sign_idx2) % 12 + 1
+    bhakoot_bad = fwd in {2, 6, 8, 12} or rev in {2, 6, 8, 12}
     bhakoot_score = 0 if bhakoot_bad else 7
-    scores['bhakoot'] = {
-        'max': 7, 'score': bhakoot_score,
-        'label': 'Excellent' if bhakoot_score == 7 else 'Challenging',
-        'meaning': 'Love, family prosperity and longevity'
-    }
+    scores['bhakoot'] = {'max': 7, 'score': bhakoot_score, 'label': 'Excellent' if bhakoot_score == 7 else 'Challenging', 'meaning': 'Love, family prosperity and longevity'}
 
-    # 8. Nadi (8 points) — genetic and health compatibility
-    n1 = NADI.get(nak1, 'Vata')
-    n2 = NADI.get(nak2, 'Pitta')
-    nadi_score = 0 if n1 == n2 else 8  # Same Nadi = 0 (health risk)
-    scores['nadi'] = {
-        'max': 8, 'score': nadi_score,
-        'label': 'Excellent' if nadi_score == 8 else 'Nadi Dosha Present',
-        'meaning': 'Health and progeny compatibility'
-    }
+    n1, n2 = NADI.get(nak1, 'Vata'), NADI.get(nak2, 'Pitta')
+    nadi_score = 0 if n1 == n2 else 8
+    scores['nadi'] = {'max': 8, 'score': nadi_score, 'label': 'Excellent' if nadi_score == 8 else 'Nadi Dosha Present', 'meaning': 'Health and progeny compatibility'}
 
     total = sum(s['score'] for s in scores.values())
-    verdict = (
-        'Excellent Match — Highly Recommended' if total >= 32 else
-        'Very Good Match' if total >= 24 else
-        'Good Match — Recommended with Remedies' if total >= 18 else
-        'Below Threshold — Consult Astrologer'
-    )
+    verdict = ('Excellent Match — Highly Recommended' if total >= 32 else 'Very Good Match' if total >= 24 else 'Good Match — Recommended with Remedies' if total >= 18 else 'Below Threshold — Consult Astrologer')
 
-    return {
-        'kootas': scores,
-        'total_score': total,
-        'max_score': 36,
-        'verdict': verdict,
-        'percentage': round((total / 36) * 100),
-    }
+    return {'kootas': scores, 'total_score': total, 'max_score': 36, 'verdict': verdict, 'percentage': round((total / 36) * 100)}
 
 
 # ─── Main Chart Calculator ────────────────────────────────────────────────────
@@ -461,8 +407,7 @@ def calculate_vedic_chart(
     timezone_offset: str = '+05:30'
 ) -> dict:
     """
-    Master function — calculates complete Vedic birth chart.
-    Returns structured dict ready to pass to Claude for interpretation.
+    Master function — calculates complete Vedic birth chart using Swiss Ephemeris.
 
     Args:
         date_of_birth: 'YYYY-MM-DD'
@@ -474,59 +419,44 @@ def calculate_vedic_chart(
         Complete chart data as dict
     """
     try:
-        # Geocode place
         lat, lon = geocode_place(place_of_birth)
+        jd = _parse_datetime_to_jd(date_of_birth, time_of_birth, timezone_offset)
 
-        # Format for flatlib
-        date_str = date_of_birth.replace('-', '/')
-        time_str = time_of_birth if len(time_of_birth) == 5 else time_of_birth + ':00'
+        asc_lon = _calc_ascendant(jd, lat, lon)
+        lagna_sign = _lon_to_sign(asc_lon)
+        lagna_degree = round(asc_lon % 30, 2)
 
-        # flatlib GeoPos expects format like '28n22' or '77e13' (degrees + cardinal + minutes as int)
-        def fmt_coord(val, pos_char, neg_char):
-            deg = int(abs(val))
-            mins = int(round((abs(val) - deg) * 60))
-            card = pos_char if val >= 0 else neg_char
-            return f'{deg}{card}{mins:02d}'
-
-        date = Datetime(date_str, time_str, timezone_offset)
-        pos = GeoPos(fmt_coord(lat, 'n', 's'), fmt_coord(lon, 'e', 'w'))
-        chart = Chart(date, pos, IDs=PLANET_IDS)
-
-        # Get Ascendant via getAngle (ASC is an angle, not a planet object)
-        asc = chart.getAngle(const.ASC)
-        lagna_sign = asc.sign
-        lagna_degree = round(asc.lon % 30, 2)
-
-        # Get all planet positions
         planets = {}
         for pid in PLANET_IDS:
-            obj = chart.get(pid)
-            planet_sign = obj.sign
+            if pid == const.SOUTH_NODE:
+                # South Node = North Node + 180
+                north_lon, _ = _calc_planet(jd, swe.MEAN_NODE)
+                planet_lon = (north_lon + 180.0) % 360
+                speed = 0.0
+            else:
+                planet_lon, speed = _calc_planet(jd, PLANET_SWE_IDS[pid])
+
+            planet_sign = _lon_to_sign(planet_lon)
             house = get_house_number(planet_sign, lagna_sign)
             planets[PLANET_NAMES[pid]] = {
                 'sign': planet_sign,
                 'sign_vedic': SIGN_NAMES.get(planet_sign, planet_sign),
-                'degree': round(obj.lon % 30, 2),
+                'degree': round(planet_lon % 30, 2),
                 'house': house,
                 'lord_of_sign': SIGN_LORDS.get(planet_sign, ''),
-                'retrograde': getattr(obj, 'movement', '') == const.RETROGRADE,
+                'retrograde': speed < 0,
             }
 
-        # Moon data for Nakshatra + Dasha
-        moon = chart.get(const.MOON)
-        moon_longitude = moon.lon
-        nakshatra = get_nakshatra(moon_longitude)
-        moon_sign = moon.sign
+        moon_lon, _ = _calc_planet(jd, swe.MOON)
+        nakshatra = get_nakshatra(moon_lon)
+        moon_sign = _lon_to_sign(moon_lon)
 
-        # Build 12-house map
         houses = {}
         for h in range(1, 13):
             sign_idx = (SIGN_ORDER.index(lagna_sign) + h - 1) % 12
             house_sign = SIGN_ORDER[sign_idx]
             house_lord = SIGN_LORDS[house_sign]
-            planets_in_house = [
-                name for name, data in planets.items() if data['house'] == h
-            ]
+            planets_in_house = [name for name, data in planets.items() if data['house'] == h]
             houses[h] = {
                 'house': h,
                 'name': HOUSE_NAMES[h],
@@ -536,11 +466,9 @@ def calculate_vedic_chart(
                 'planets': planets_in_house,
             }
 
-        # Vimshottari Dasha
-        dashas = calculate_vimshottari_dasha(date_of_birth, moon_longitude)
+        dashas = calculate_vimshottari_dasha(date_of_birth, moon_lon)
         current_dasha = get_current_dasha(dashas)
 
-        # Mangal Dosha
         mars_name = PLANET_NAMES[const.MARS]
         mars_house = planets[mars_name]['house']
         mangal_dosha = check_mangal_dosha(mars_house)
@@ -580,7 +508,6 @@ def calculate_vedic_chart(
 
 def geocode_place(place: str) -> tuple:
     """Convert place name to lat/lon. Returns (lat, lon)."""
-    # Common Indian cities hardcoded for speed + reliability
     city_map = {
         'new delhi': (28.6139, 77.2090), 'delhi': (28.6139, 77.2090),
         'mumbai': (19.0760, 72.8777), 'bangalore': (12.9716, 77.5946),
@@ -595,50 +522,33 @@ def geocode_place(place: str) -> tuple:
         if key in place_lower:
             return coords
 
-    # Fallback to geocoder
     try:
-        geolocator = Nominatim(user_agent='everydayhoroscope')
-        location = geolocator.geocode(place, timeout=10)
-        if location:
-            return (location.latitude, location.longitude)
+        if Nominatim:
+            geolocator = Nominatim(user_agent='everydayhoroscope')
+            location = geolocator.geocode(place, timeout=10)
+            if location:
+                return (location.latitude, location.longitude)
     except Exception:
         pass
 
-    # Default to Delhi if all else fails
     logging.warning(f'Could not geocode "{place}", defaulting to New Delhi')
     return (28.6139, 77.2090)
 
 
 def generate_north_indian_chart_svg(houses: dict, lagna_sign: str) -> str:
-    """
-    Generate North Indian style Kundali chart as SVG.
-    Diamond/square grid with 12 houses and planet positions.
-    """
-    # Planet abbreviations for chart display
+    """Generate North Indian style Kundali chart as SVG."""
     planet_abbr = {
         'Sun (Surya)': 'Su', 'Moon (Chandra)': 'Mo', 'Mercury (Budha)': 'Me',
         'Venus (Shukra)': 'Ve', 'Mars (Mangal)': 'Ma', 'Jupiter (Brihaspati)': 'Ju',
         'Saturn (Shani)': 'Sa', 'Rahu': 'Ra', 'Ketu': 'Ke',
     }
 
-    # North Indian chart house positions (pixel centres in 300x300 grid)
-    # House positions in the traditional diamond layout
-    house_positions = {
-        1:  (150, 150),  # Centre top (Lagna)
-        2:  (225, 75),   # Top right
-        3:  (300, 0),    # Top right corner — adjust to fit
-        4:  (225, 150),  # Right middle
-        5:  (300, 225),
-        6:  (225, 300),
-        7:  (150, 225),  # Centre bottom
-        8:  (75, 300),
-        9:  (0, 225),
-        10: (75, 150),   # Left middle
-        11: (0, 75),
-        12: (75, 0),
+    label_pos = {
+        1: (150, 80), 2: (230, 55), 3: (265, 150), 4: (230, 245),
+        5: (150, 268), 6: (70, 245), 7: (35, 150), 8: (70, 55),
+        9: (150, 32), 10: (258, 150), 11: (150, 258), 12: (42, 150),
     }
 
-    # North Indian chart SVG paths (standard diamond grid)
     svg = '''<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style="max-width:300px;width:100%">
   <defs>
     <style>
@@ -650,80 +560,25 @@ def generate_north_indian_chart_svg(houses: dict, lagna_sign: str) -> str:
       .lagna-mark { font-family: serif; font-size: 7px; fill: #f5f0e8; font-weight: bold; }
     </style>
   </defs>
-
-  <!-- Background -->
   <rect width="300" height="300" class="chart-bg" rx="4"/>
-
-  <!-- Outer border -->
   <rect x="5" y="5" width="290" height="290" class="chart-border"/>
-
-  <!-- Diagonal lines forming the diamond grid -->
   <line x1="5" y1="5" x2="150" y2="150" class="chart-line"/>
   <line x1="295" y1="5" x2="150" y2="150" class="chart-line"/>
   <line x1="5" y1="295" x2="150" y2="150" class="chart-line"/>
   <line x1="295" y1="295" x2="150" y2="150" class="chart-line"/>
-  <line x1="5" y1="5" x2="295" y2="5" class="chart-line"/>
-  <line x1="5" y1="295" x2="295" y2="295" class="chart-line"/>
-  <line x1="5" y1="5" x2="5" y2="295" class="chart-line"/>
-  <line x1="295" y1="5" x2="295" y2="295" class="chart-line"/>
-
-  <!-- Mid-edge to mid-edge lines -->
   <line x1="150" y1="5" x2="5" y2="150" class="chart-line"/>
   <line x1="150" y1="5" x2="295" y2="150" class="chart-line"/>
   <line x1="150" y1="295" x2="5" y2="150" class="chart-line"/>
   <line x1="150" y1="295" x2="295" y2="150" class="chart-line"/>
 '''
 
-    # House label positions in North Indian chart
-    house_label_pos = {
-        1:  (150, 90),   # Top centre triangle
-        2:  (220, 55),   # Top right
-        3:  (255, 150),  # Right top
-        4:  (220, 240),  # Right bottom
-        5:  (150, 210),  # Bottom centre triangle — lower
-        6:  (80, 240),   # Left bottom
-        7:  (45, 150),   # Left bottom
-        8:  (80, 55),    # Left top
-        9:  (150, 30),   # Very top
-        10: (270, 150),  # Far right
-        11: (150, 270),  # Very bottom
-        12: (30, 150),   # Far left
-    }
-
-    # Corrected North Indian standard positions
-    label_pos = {
-        1:  (150, 80),
-        2:  (230, 55),
-        3:  (265, 150),
-        4:  (230, 245),
-        5:  (150, 268),
-        6:  (70, 245),
-        7:  (35, 150),
-        8:  (70, 55),
-        9:  (150, 32),
-        10: (258, 150),
-        11: (150, 258),
-        12: (42, 150),
-    }
-
-    lagna_sign_short = lagna_sign[:3].upper()
-
     for house_num, data in houses.items():
         lx, ly = label_pos[house_num]
         planets_text = ' '.join([planet_abbr.get(p, p[:2]) for p in data['planets']])
-
-        # House number
         svg += f'  <text x="{lx}" y="{ly}" class="house-num" text-anchor="middle">{house_num}</text>\n'
-
-        # Sign (first 3 letters)
-        sign_short = data['sign'][:3]
-        svg += f'  <text x="{lx}" y="{ly + 9}" class="planet-text" text-anchor="middle">{sign_short}</text>\n'
-
-        # Planets
+        svg += f'  <text x="{lx}" y="{ly + 9}" class="planet-text" text-anchor="middle">{data["sign"][:3]}</text>\n'
         if planets_text:
             svg += f'  <text x="{lx}" y="{ly + 18}" class="planet-text" text-anchor="middle">{planets_text}</text>\n'
-
-        # Mark Lagna house
         if house_num == 1:
             svg += f'  <text x="{lx}" y="{ly - 8}" class="lagna-mark" text-anchor="middle">ASC</text>\n'
 
@@ -735,20 +590,19 @@ def generate_north_indian_chart_svg(houses: dict, lagna_sign: str) -> str:
 
 def get_current_transits() -> dict:
     """Get today's planetary positions for transit analysis."""
-    from datetime import datetime
     now = datetime.now()
-    date_str = now.strftime('%Y/%m/%d')
-    time_str = now.strftime('%H:%M')
-
-    date = Datetime(date_str, time_str, '+05:30')
-    pos = GeoPos('28n38', '77e13')  # Delhi as reference
-    chart = Chart(date, pos, IDs=PLANET_IDS)
+    jd = swe.julday(now.year, now.month, now.day, now.hour + now.minute / 60)
+    lat, lon = 28.6139, 77.2090  # Delhi reference
 
     transits = {}
     for pid in PLANET_IDS:
-        obj = chart.get(pid)
+        if pid == const.SOUTH_NODE:
+            north_lon, _ = _calc_planet(jd, swe.MEAN_NODE)
+            planet_lon = (north_lon + 180.0) % 360
+        else:
+            planet_lon, _ = _calc_planet(jd, PLANET_SWE_IDS[pid])
         transits[PLANET_NAMES[pid]] = {
-            'sign': obj.sign,
-            'degree': round(obj.lon % 30, 2),
+            'sign': _lon_to_sign(planet_lon),
+            'degree': round(planet_lon % 30, 2),
         }
     return transits
