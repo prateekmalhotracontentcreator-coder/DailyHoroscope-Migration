@@ -14,6 +14,21 @@ from typing import List, Literal, Optional
 import uuid
 from datetime import datetime, timezone, date, timedelta
 import anthropic
+
+# ── pkg_resources shim ────────────────────────────────────────────────────────
+# razorpay==1.3.0 calls `import pkg_resources` at import time.
+# python:3.12-slim does not ship setuptools (which provides pkg_resources).
+# We inject a minimal stub into sys.modules BEFORE importing razorpay so the
+# import succeeds without needing setuptools installed.
+import sys as _sys
+if "pkg_resources" not in _sys.modules:
+    import types as _types
+    _pkg = _types.ModuleType("pkg_resources")
+    _pkg.get_distribution = lambda name: None
+    _pkg.DistributionNotFound = Exception
+    _sys.modules["pkg_resources"] = _pkg
+# ─────────────────────────────────────────────────────────────────────────────
+
 import razorpay
 import httpx
 from pdf_generator import generate_birth_chart_pdf, generate_kundali_milan_pdf, generate_brihat_kundli_pdf, generate_report_password
