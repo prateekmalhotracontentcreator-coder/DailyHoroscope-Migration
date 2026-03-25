@@ -123,6 +123,8 @@ request.state.user = {
 
 `request.state.user.get("email")` is the correct access pattern. This is live and proven with both Numerology and Tarot.
 
+The existing `_resolve_user_email()` helper in `tarot_router.py` — which accepts `user_email` query param and `X-User-Email` header as local validation fallbacks — is approved and may remain. The primary production path is always `request.state.user.get("email")`.
+
 ### Module Delivery Contract — Unchanged
 
 - One standalone `APIRouter` file per module
@@ -297,16 +299,36 @@ Deliver as a structured dict. Temple side renders the visual:
 
 The current Tarot module uses text placeholders for cards. This contract delivers the 22 Major Arcana as real digital SVG assets.
 
-### Specification
+### tarot_router.py Status — No Changes Required
+
+The existing `tarot_router.py` is confirmed self-contained and fully aligned to the Temple contract. It is the authoritative Temple-facing Tarot backend artifact. No changes to this file are required as part of the SVG asset contract. Codex delivers the asset bundle only.
+
+### SVG Delivery Format — Locked: `tarot_cards.json`
+
+**Deliver a single `tarot_cards.json` file.** This is the required format. Do not deliver individual SVG files or a ZIP archive.
+
+Format:
+
+```json
+{
+  "the-fool":           "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  "the-magician":       "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  "the-high-priestess": "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  ...all 22 cards...
+}
+```
+
+The key is the card ID slug. The value is the complete SVG string. Temple side does a single import and a single lookup — `tarot_cards[card_id]` — to wire the asset into the frontend. This is the cleanest integration path.
+
+### Design Specification
 
 | Property | Requirement |
 |---|---|
 | Scope | 22 Major Arcana — The Fool through The World |
-| Format | SVG — one file per card, or single `tarot_cards.json` bundle (`card_id → SVG string`) |
 | Aspect ratio | Portrait 2:3 — `viewBox="0 0 200 300"` |
 | Background | `#0f0d0a` |
 | Gold accent | `#C5A059` |
-| Text | `#f5f0e8` off-white |
+| Text colour | `#f5f0e8` off-white |
 | Each card must include | Roman numeral (top), card name (bottom), central symbolic illustration |
 | Style | Geometric / symbolic — no photographic elements |
 
@@ -320,9 +342,7 @@ the-devil, the-tower, the-star, the-moon, the-sun,
 judgement, the-world
 ```
 
-**Delivery:** ZIP of 22 SVG files named by card ID, or a single `tarot_cards.json` file.
-
-Temple side handles all frontend integration. Codex delivers assets only.
+Temple side handles all frontend integration. Codex delivers `tarot_cards.json` only.
 
 ---
 
@@ -333,18 +353,54 @@ Temple side handles all frontend integration. Codex delivers assets only.
 | 1 | vedic_calculator.py — flatlib → pyswisseph | `vedic_calculator.py` | **HIGH** | Python 3.12 |
 | 2 | panchang_router.py — pyswisseph engine upgrade | `panchang_router.py` | **URGENT** | Python 3.12 |
 | 3 | Premium Ankjyotish Numerology tile | New tile in `numerology_router.py` | **MEDIUM** | Python 3.12 |
-| 4 | Tarot Major Arcana SVG assets | 22 SVG files or JSON bundle | **MEDIUM** | N/A — asset delivery |
+| 4 | Tarot Major Arcana SVG assets | `tarot_cards.json` — single bundle | **MEDIUM** | N/A — asset delivery |
 | 5 | Panchang per-date endpoint | New route in `panchang_router.py` | **MEDIUM** | Python 3.12 |
-| 6 | Tarot daily reminder scheduler backend | New endpoint + APScheduler job | **LOW** | Python 3.12 |
+| 6 | Tarot daily reminder — data endpoints | 3 new routes added to `tarot_router.py` | **LOW** | Python 3.12 |
+
+### Contract 6 — Tarot Daily Reminder: Detailed Spec
+
+**Scope:** Three new route handlers added to the existing `tarot_router.py`. The complete updated file is the delivery artifact — not a patch, not a standalone file.
+
+**Routes to add:**
+
+```
+POST   /api/tarot/reminder/set    — save user reminder preference
+GET    /api/tarot/reminder        — retrieve current reminder settings
+DELETE /api/tarot/reminder        — remove reminder preference
+```
+
+**Document structure** (`doc_type: "reminder"`, collection: `tarot_readings`):
+
+```json
+{
+  "id": "uuid",
+  "doc_type": "reminder",
+  "user_email": "user@example.com",
+  "reminder_time": "07:30",
+  "frequency": "daily",
+  "timezone": "Asia/Kolkata",
+  "enabled": true,
+  "created_at": "iso",
+  "updated_at": "iso"
+}
+```
+
+**Frequency values:** `"daily"`, `"twice_daily"`, `"weekdays_only"`
+
+**APScheduler job is explicitly NOT part of this contract.** The scheduler that reads reminder preferences and triggers notifications lives in `server.py` and is owned by the Temple App side. Codex delivers the data endpoints only.
+
+**Auth:** `request.state.user.get("email")` — same pattern as all other routes in the file.
+
+---
 
 ### Recommended Delivery Order
 
 1. **`vedic_calculator.py`** — Temple App integrates this first, removes flatlib, upgrades Docker to Python 3.12. All subsequent Codex deliveries then land on a clean 3.12 backend.
 2. **`panchang_router.py`** — uses the same pyswisseph already validated in step 1. Clean integration.
 3. **Premium Numerology tile** — straightforward addition to a stable, live router.
-4. **Tarot card assets** — asset-only delivery, can run in parallel with any of the above.
+4. **`tarot_cards.json`** — asset-only delivery, can run in parallel with any of the above.
 5. **Panchang per-date endpoint** — unlocks the interactive calendar frontend build on Temple side.
-6. **Tarot daily reminder backend** — lowest priority, enables push notification scheduling.
+6. **Tarot daily reminder endpoints** — lowest priority, 3 routes added to existing `tarot_router.py`.
 
 ---
 
@@ -370,6 +426,7 @@ These items are purely frontend or use patterns already established in the codeb
 | SEO rich pages — Numerology | Life Path number articles, calculator landing, schema markup |
 | SEO rich pages — Panchang | Daily Panchang SEO pages, festival article pages |
 | Onboarding guided tour — Tarot | 5-step overlay coach marks, first-visit detection via localStorage |
+| APScheduler job — Tarot reminders | Reads reminder docs from `tarot_readings` collection, triggers notifications. Lives in `server.py` |
 | Logo, brand identity, design system | Locked and live |
 | Docker and runtime upgrades | Mechanical step after each Codex delivery. Temple side only |
 
@@ -377,30 +434,28 @@ These items are purely frontend or use patterns already established in the codeb
 
 ### Lane 2 — Joint (Codex Backend First, Claude Integrates Frontend)
 
-These items require a Codex backend delivery before Claude can build the frontend. The backend contract is noted. Claude does not begin frontend work until the backend is confirmed live.
+These items require a Codex backend delivery before Claude can build the frontend. Claude does not begin frontend work until the backend is confirmed live.
 
 | Item | Codex Delivers | Claude Builds |
 |---|---|---|
-| Tarot card illustrations | Contract 4 — 22 SVG assets | Wire assets into `TarotPage.jsx` card display and flip animation |
+| Tarot card illustrations | Contract 4 — `tarot_cards.json` bundle | Wire SVGs into `TarotPage.jsx` card display and flip animation |
 | Panchang interactive calendar | Contract 5 — `/api/panchang/date/{date}` per-date endpoint | Interactive calendar UI with linked date pages and SEO routes |
-| Panchang festival pages | Contract 5 — festival data already in `/festivals` endpoint | Active festival page links, individual festival SEO pages |
-| Panchang NavBar dropdown | Panchang sub-routes already live from existing contract | Fix frontend routing — dropdown items link to correct live pages |
-| Tarot daily reminder | Contract 6 — APScheduler job + `/api/tarot/reminder` endpoint | Browser notification permission UI, time picker, frequency selector |
+| Panchang festival pages | Festival data already in `/festivals` endpoint | Active festival page links, individual festival SEO pages |
+| Panchang NavBar dropdown | Panchang sub-routes already live | Fix frontend routing — dropdown items link to correct live pages |
+| Tarot daily reminder UI | Contract 6 — 3 reminder data endpoints in `tarot_router.py` | Browser notification permission UI, time picker, frequency selector |
 
 ---
 
 ### Lane 3 — Codex Backend Contracts (Already in Section 7)
-
-These are purely backend tasks with no frontend dependency until delivered. Listed here for completeness.
 
 | Contract | Section Reference |
 |---|---|
 | `vedic_calculator.py` flatlib migration | Section 4 |
 | `panchang_router.py` pyswisseph upgrade | Section 1 + Section 7 |
 | Premium Ankjyotish Numerology tile | Section 5 |
-| Tarot Major Arcana SVG assets | Section 6 |
+| Tarot Major Arcana SVG assets (`tarot_cards.json`) | Section 6 |
 | Panchang per-date endpoint | Section 7, Contract 5 |
-| Tarot daily reminder backend | Section 7, Contract 6 |
+| Tarot daily reminder data endpoints | Section 7, Contract 6 |
 
 ---
 
