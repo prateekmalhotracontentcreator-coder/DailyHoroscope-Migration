@@ -293,56 +293,95 @@ Deliver as a structured dict. Temple side renders the visual:
 
 ---
 
-## Section 6 — New Contract: Tarot Major Arcana Digital Card Assets
+## Section 6 — New Contract: Full 78-Card Tarot Deck Assets + Router Update
 
-**New contract item.**
+**New contract item. Scope updated to full 78-card standard Tarot deck.**
 
-The current Tarot module uses text placeholders for cards. This contract delivers the 22 Major Arcana as real digital SVG assets.
+A standard Tarot deck consists of 78 cards: 22 Major Arcana (The Fool through The World) and 56 Minor Arcana across four suits (Wands, Cups, Swords, Pentacles), with 14 cards per suit (Ace, 2–10, Page, Knight, Queen, King). We are building a premium product. Delivering only Major Arcana would produce a noticeably thin draw pool and a substandard experience for any user who knows Tarot. **The full 78-card deck is required from day one.**
 
-### tarot_router.py Status — No Changes Required
+### Two Deliverables for This Contract
 
-The existing `tarot_router.py` is confirmed self-contained and fully aligned to the Temple contract. It is the authoritative Temple-facing Tarot backend artifact. No changes to this file are required as part of the SVG asset contract. Codex delivers the asset bundle only.
+**Deliverable A: `tarot_cards.json`** — 78 SVG card illustrations as a single JSON bundle.
 
-### SVG Delivery Format — Locked: `tarot_cards.json`
+**Deliverable B: Updated `tarot_router.py`** — `DEFAULT_CARDS` expanded from 5 placeholders to all 78 cards with full metadata. This is the only change to the router. All existing routes, models, logic, and the auth pattern are untouched.
 
-**Deliver a single `tarot_cards.json` file.** This is the required format. Do not deliver individual SVG files or a ZIP archive.
+---
 
-Format:
+### Deliverable A — `tarot_cards.json`
+
+**Format: single JSON file, card ID slug → SVG string.**
 
 ```json
 {
-  "the-fool":           "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
-  "the-magician":       "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
-  "the-high-priestess": "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
-  ...all 22 cards...
+  "the-fool":              "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  "the-magician":          "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  "wands-ace":             "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  "wands-02":              "<svg viewBox='0 0 200 300' xmlns='http://www.w3.org/2000/svg'>...</svg>",
+  ...all 78 cards...
 }
 ```
 
-The key is the card ID slug. The value is the complete SVG string. Temple side does a single import and a single lookup — `tarot_cards[card_id]` — to wire the asset into the frontend. This is the cleanest integration path.
-
-### Design Specification
+**Design specification — applies to all 78 cards:**
 
 | Property | Requirement |
 |---|---|
-| Scope | 22 Major Arcana — The Fool through The World |
 | Aspect ratio | Portrait 2:3 — `viewBox="0 0 200 300"` |
 | Background | `#0f0d0a` |
 | Gold accent | `#C5A059` |
 | Text colour | `#f5f0e8` off-white |
-| Each card must include | Roman numeral (top), card name (bottom), central symbolic illustration |
+| Each card must include | Card name (bottom), central symbolic illustration |
+| Major Arcana additionally | Roman numeral at top |
+| Minor Arcana additionally | Suit symbol and rank indicator |
 | Style | Geometric / symbolic — no photographic elements |
 
-### Card IDs — Must Match Existing Router
+**Minor Arcana design approach — systematic by suit:**
+
+Each suit has a consistent visual language. The central illustration uses the suit's elemental symbol (Wand/torch for Wands, Cup/chalice for Cups, Sword for Swords, Pentacle/coin for Pentacles) with rank expressed through quantity (2 = two symbols, 3 = three, etc.) or through figure type for court cards (Page, Knight, Queen, King).
+
+---
+
+### Card ID Naming Convention
+
+**Major Arcana (22 cards):** slug format — `the-fool`, `the-magician`, etc.
 
 ```
 the-fool, the-magician, the-high-priestess, the-empress, the-emperor,
 the-hierophant, the-lovers, the-chariot, strength, the-hermit,
 wheel-of-fortune, justice, the-hanged-man, death, temperance,
-the-devil, the-tower, the-star, the-moon, the-sun,
-judgement, the-world
+the-devil, the-tower, the-star, the-moon, the-sun, judgement, the-world
 ```
 
-Temple side handles all frontend integration. Codex delivers `tarot_cards.json` only.
+**Minor Arcana (56 cards):** `{suit}-{rank}` format.
+
+Suits: `wands`, `cups`, `swords`, `pentacles`
+
+Ranks: `ace`, `02`, `03`, `04`, `05`, `06`, `07`, `08`, `09`, `10`, `page`, `knight`, `queen`, `king`
+
+Examples: `wands-ace`, `wands-02`, `cups-queen`, `swords-king`, `pentacles-page`
+
+---
+
+### Deliverable B — Updated `tarot_router.py` (DEFAULT_CARDS only)
+
+Expand `DEFAULT_CARDS` from the current 5 placeholder entries to all 78 cards.
+
+**Each card entry structure — unchanged from current pattern, with two new fields added:**
+
+```python
+{
+    "id": "wands-ace",
+    "name": "Ace of Wands",
+    "suit": "wands",            # NEW — "major", "wands", "cups", "swords", "pentacles"
+    "rank": "ace",              # NEW — "0"–"21" for Major Arcana, "ace"/"02"–"10"/"page"/"knight"/"queen"/"king"
+    "upright_keywords": ["initiative", "spark", "breakthrough"],
+    "reversed_keywords": ["delay", "blocked energy", "false start"],
+    "image_url": None,
+}
+```
+
+The `suit` and `rank` fields enable Temple-side filtering for spread draws by suit pool if needed in future. They do not change any existing route logic.
+
+**All existing routes, all Pydantic models, all helper functions, all auth patterns — completely untouched.** The only change is `DEFAULT_CARDS`.
 
 ---
 
@@ -353,13 +392,13 @@ Temple side handles all frontend integration. Codex delivers `tarot_cards.json` 
 | 1 | vedic_calculator.py — flatlib → pyswisseph | `vedic_calculator.py` | **HIGH** | Python 3.12 |
 | 2 | panchang_router.py — pyswisseph engine upgrade | `panchang_router.py` | **URGENT** | Python 3.12 |
 | 3 | Premium Ankjyotish Numerology tile | New tile in `numerology_router.py` | **MEDIUM** | Python 3.12 |
-| 4 | Tarot Major Arcana SVG assets | `tarot_cards.json` — single bundle | **MEDIUM** | N/A — asset delivery |
+| 4 | Full 78-card Tarot deck | `tarot_cards.json` + updated `tarot_router.py` | **MEDIUM** | N/A (assets) + Python 3.12 (router) |
 | 5 | Panchang per-date endpoint | New route in `panchang_router.py` | **MEDIUM** | Python 3.12 |
 | 6 | Tarot daily reminder — data endpoints | 3 new routes added to `tarot_router.py` | **LOW** | Python 3.12 |
 
 ### Contract 6 — Tarot Daily Reminder: Detailed Spec
 
-**Scope:** Three new route handlers added to the existing `tarot_router.py`. The complete updated file is the delivery artifact — not a patch, not a standalone file.
+**Scope:** Three new route handlers added to the existing `tarot_router.py`. Complete updated file is the delivery artifact.
 
 **Routes to add:**
 
@@ -387,7 +426,7 @@ DELETE /api/tarot/reminder        — remove reminder preference
 
 **Frequency values:** `"daily"`, `"twice_daily"`, `"weekdays_only"`
 
-**APScheduler job is explicitly NOT part of this contract.** The scheduler that reads reminder preferences and triggers notifications lives in `server.py` and is owned by the Temple App side. Codex delivers the data endpoints only.
+**APScheduler job is explicitly NOT part of this contract.** The scheduler that reads reminder preferences and triggers notifications lives in `server.py` and is owned by the Temple App side.
 
 **Auth:** `request.state.user.get("email")` — same pattern as all other routes in the file.
 
@@ -395,10 +434,10 @@ DELETE /api/tarot/reminder        — remove reminder preference
 
 ### Recommended Delivery Order
 
-1. **`vedic_calculator.py`** — Temple App integrates this first, removes flatlib, upgrades Docker to Python 3.12. All subsequent Codex deliveries then land on a clean 3.12 backend.
-2. **`panchang_router.py`** — uses the same pyswisseph already validated in step 1. Clean integration.
+1. **`vedic_calculator.py`** — removes flatlib, triggers Python 3.12 upgrade. All subsequent work lands on a clean 3.12 backend.
+2. **`panchang_router.py`** — pyswisseph upgrade, same dependency already validated in step 1.
 3. **Premium Numerology tile** — straightforward addition to a stable, live router.
-4. **`tarot_cards.json`** — asset-only delivery, can run in parallel with any of the above.
+4. **Full 78-card Tarot deck** — `tarot_cards.json` + updated `DEFAULT_CARDS` in `tarot_router.py`. Can run in parallel with any of the above.
 5. **Panchang per-date endpoint** — unlocks the interactive calendar frontend build on Temple side.
 6. **Tarot daily reminder endpoints** — lowest priority, 3 routes added to existing `tarot_router.py`.
 
@@ -406,16 +445,14 @@ DELETE /api/tarot/reminder        — remove reminder preference
 
 ## Section 8 — Ownership Model: Codex, Claude, and Joint
 
-This section defines the operating model clearly. Claude (Temple App) acts as the **integrator and product finisher**. Codex is the **backend engine builder**. Items are split into three lanes.
+Claude (Temple App) acts as the **integrator and product finisher**. Codex is the **backend engine builder**. Items are split into three lanes.
 
 ### Lane 1 — Claude Owns End-to-End (No Codex Input Required)
 
-These items are purely frontend or use patterns already established in the codebase. Claude executes these independently once relevant Codex contracts in Section 7 are delivered.
-
 | Item | Notes |
 |---|---|
-| PDF download — Numerology reports | Adapts existing `pdf_generator.py` pattern already live for Birth Chart and Brihat Kundli |
-| PDF download — Tarot readings | Same pattern. Landscape layout with portrait card assets from Contract 4 |
+| PDF download — Numerology reports | Adapts existing `pdf_generator.py` pattern |
+| PDF download — Tarot readings | Landscape layout with portrait card assets from Contract 4 |
 | Share function — Numerology and Tarot | `ShareModal` already live. Wire to `report_id` from each module |
 | Payment gating — Numerology and Tarot | Same Razorpay pattern already live on Birth Chart and Brihat Kundli |
 | Tarot cinematic redesign | Full `TarotPage.jsx` redesign — portrait card layout, dark aesthetic, flip animations |
@@ -426,7 +463,7 @@ These items are purely frontend or use patterns already established in the codeb
 | SEO rich pages — Numerology | Life Path number articles, calculator landing, schema markup |
 | SEO rich pages — Panchang | Daily Panchang SEO pages, festival article pages |
 | Onboarding guided tour — Tarot | 5-step overlay coach marks, first-visit detection via localStorage |
-| APScheduler job — Tarot reminders | Reads reminder docs from `tarot_readings` collection, triggers notifications. Lives in `server.py` |
+| APScheduler job — Tarot reminders | Reads reminder docs from `tarot_readings`, triggers notifications. Lives in `server.py` |
 | Logo, brand identity, design system | Locked and live |
 | Docker and runtime upgrades | Mechanical step after each Codex delivery. Temple side only |
 
@@ -434,11 +471,9 @@ These items are purely frontend or use patterns already established in the codeb
 
 ### Lane 2 — Joint (Codex Backend First, Claude Integrates Frontend)
 
-These items require a Codex backend delivery before Claude can build the frontend. Claude does not begin frontend work until the backend is confirmed live.
-
 | Item | Codex Delivers | Claude Builds |
 |---|---|---|
-| Tarot card illustrations | Contract 4 — `tarot_cards.json` bundle | Wire SVGs into `TarotPage.jsx` card display and flip animation |
+| Tarot card illustrations | Contract 4 — `tarot_cards.json` (78 cards) | Wire SVGs into `TarotPage.jsx` card display and flip animation |
 | Panchang interactive calendar | Contract 5 — `/api/panchang/date/{date}` per-date endpoint | Interactive calendar UI with linked date pages and SEO routes |
 | Panchang festival pages | Festival data already in `/festivals` endpoint | Active festival page links, individual festival SEO pages |
 | Panchang NavBar dropdown | Panchang sub-routes already live | Fix frontend routing — dropdown items link to correct live pages |
@@ -453,7 +488,7 @@ These items require a Codex backend delivery before Claude can build the fronten
 | `vedic_calculator.py` flatlib migration | Section 4 |
 | `panchang_router.py` pyswisseph upgrade | Section 1 + Section 7 |
 | Premium Ankjyotish Numerology tile | Section 5 |
-| Tarot Major Arcana SVG assets (`tarot_cards.json`) | Section 6 |
+| Full 78-card Tarot deck (`tarot_cards.json` + `tarot_router.py`) | Section 6 |
 | Panchang per-date endpoint | Section 7, Contract 5 |
 | Tarot daily reminder data endpoints | Section 7, Contract 6 |
 
