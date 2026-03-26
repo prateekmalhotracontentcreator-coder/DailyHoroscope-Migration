@@ -12,6 +12,76 @@ const OG_IMAGE = `${SITE}/og-image.png`;
 const LOC_STORAGE_KEY = 'panchang_location_slug';
 const DEFAULT_SLUG = 'new-delhi-india';
 
+// ─── Language translation tables ─────────────────────────────────────────────
+const LANG_META_MAP = {
+  tamil:    { code:'ta', nativeName:'தமிழ்',    badge:'தமிழ் பஞ்சாங்கம்',   titlePrefix:'இன்றைய தமிழ் பஞ்சாங்கம்',   desc:'இன்றைய தமிழ் பஞ்சாங்கம் — திதி, நட்சத்திரம், யோகம், கரணம், சூரிய உதயம், ராகு காலம்' },
+  telugu:   { code:'te', nativeName:'తెలుగు',   badge:'తెలుగు పంచాంగం',     titlePrefix:'నేటి తెలుగు పంచాంగం',       desc:'నేటి తెలుగు పంచాంగం — తిథి, నక్షత్రం, యోగం, కరణం, సూర్యోదయం, రాహు కాలం' },
+  malayalam:{ code:'ml', nativeName:'മലയാളം',  badge:'മലയാളം പഞ്ചാംഗം',    titlePrefix:'ഇന്നത്തെ മലയാളം പഞ്ചാംഗം',  desc:'ഇന്നത്തെ മലയാളം പഞ്ചാംഗം — തിഥി, നക്ഷത്രം, യോഗം, കരണം, സൂര്യോദയം, രാഹു കാലം' },
+  kannada:  { code:'kn', nativeName:'ಕನ್ನಡ',    badge:'ಕನ್ನಡ ಪಂಚಾಂಗ',       titlePrefix:'ಇಂದಿನ ಕನ್ನಡ ಪಂಚಾಂಗ',        desc:'ಇಂದಿನ ಕನ್ನಡ ಪಂಚಾಂಗ — ತಿಥಿ, ನಕ್ಷತ್ರ, ಯೋಗ, ಕರಣ, ಸೂರ್ಯೋದಯ, ರಾಹು ಕಾಲ' },
+  hindi:    { code:'hi', nativeName:'हिंदी',    badge:'हिंदी पंचांग',         titlePrefix:'आज का हिंदी पंचांग',         desc:'आज का हिंदी पंचांग — तिथि, नक्षत्र, योग, करण, सूर्योदय, राहु काल' },
+};
+
+const LANG_LABELS_MAP = {
+  tamil:    { sunrise:'சூரிய உதயம்', sunset:'சூரிய அஸ்தமனம்', moonrise:'சந்திர உதயம்', moonset:'சந்திர அஸ்தமனம்', tithi:'திதி', nakshatra:'நட்சத்திரம்', yoga:'யோகம்', karana:'கரணம்', vara:'வாரம்', fiveLimbs:'பஞ்சாங்கம் — ஐந்து அங்கங்கள்', timingWindows:'நேர அட்டவணை', auspicious:'நல்ல நேரம்', inauspicious:'தீய நேரம்', observances:'இன்றைய விசேஷங்கள்', now:'இப்போது', sunIn:'சூரியன்', moonIn:'சந்திரன்', paksha:'பக்ஷம்', },
+  telugu:   { sunrise:'సూర్యోదయం', sunset:'సూర్యాస్తమయం', moonrise:'చంద్రోదయం', moonset:'చంద్రాస్తమయం', tithi:'తిథి', nakshatra:'నక్షత్రం', yoga:'యోగం', karana:'కరణం', vara:'వారం', fiveLimbs:'పంచాంగం — పంచ అంగాలు', timingWindows:'సమయ వివరాలు', auspicious:'శుభ సమయం', inauspicious:'అశుభ సమయం', observances:'నేటి విశేషాలు', now:'ఇప్పుడు', sunIn:'సూర్యుడు', moonIn:'చంద్రుడు', paksha:'పక్షం', },
+  malayalam:{ sunrise:'സൂര്യോദയം', sunset:'സൂര്യാസ്തമയം', moonrise:'ചന്ദ്രോദയം', moonset:'ചന്ദ്രാസ്തമയം', tithi:'തിഥി', nakshatra:'നക്ഷത്രം', yoga:'യോഗം', karana:'കരണം', vara:'വാരം', fiveLimbs:'പഞ്ചാംഗം — പഞ്ച അംഗങ്ങൾ', timingWindows:'സമയ വിവരങ്ങൾ', auspicious:'ശുഭ സമയം', inauspicious:'അശുഭ സമയം', observances:'ഇന്നത്തെ വിശേഷങ്ങൾ', now:'ഇപ്പോൾ', sunIn:'സൂര്യൻ', moonIn:'ചന്ദ്രൻ', paksha:'പക്ഷം', },
+  kannada:  { sunrise:'ಸೂರ್ಯೋದಯ', sunset:'ಸೂರ್ಯಾಸ್ತ', moonrise:'ಚಂದ್ರೋದಯ', moonset:'ಚಂದ್ರಾಸ್ತ', tithi:'ತಿಥಿ', nakshatra:'ನಕ್ಷತ್ರ', yoga:'ಯೋಗ', karana:'ಕರಣ', vara:'ವಾರ', fiveLimbs:'ಪಂಚಾಂಗ — ಪಂಚ ಅಂಗಗಳು', timingWindows:'ಸಮಯ ವಿವರಗಳು', auspicious:'ಶುಭ ಸಮಯ', inauspicious:'ಅಶುಭ ಸಮಯ', observances:'ಇಂದಿನ ವಿಶೇಷಗಳು', now:'ಈಗ', sunIn:'ಸೂರ್ಯ', moonIn:'ಚಂದ್ರ', paksha:'ಪಕ್ಷ', },
+  hindi:    { sunrise:'सूर्योदय', sunset:'सूर्यास्त', moonrise:'चंद्रोदय', moonset:'चंद्रास्त', tithi:'तिथि', nakshatra:'नक्षत्र', yoga:'योग', karana:'करण', vara:'वार', fiveLimbs:'पंचांग — पंच अंग', timingWindows:'मुहूर्त विवरण', auspicious:'शुभ मुहूर्त', inauspicious:'अशुभ काल', observances:'आज के विशेष', now:'अभी', sunIn:'सूर्य', moonIn:'चंद्र', paksha:'पक्ष', },
+};
+
+const LANG_NAKSHATRA = {
+  tamil:    {Ashwini:'அஸ்வினி',Bharani:'பரணி',Krittika:'கார்த்திகை',Rohini:'ரோகிணி',Mrigashira:'மிருகசீரிஷம்',Ardra:'திருவாதிரை',Punarvasu:'புனர்பூசம்',Pushya:'பூசம்',Ashlesha:'ஆயில்யம்',Magha:'மகம்',PurvaPhalguni:'பூரம்',UttaraPhalguni:'உத்திரம்',Hasta:'அஸ்தம்',Chitra:'சித்திரை',Swati:'சுவாதி',Vishakha:'விசாகம்',Anuradha:'அனுஷம்',Jyeshtha:'கேட்டை',Mula:'மூலம்',PurvaAshadha:'பூராடம்',UttaraAshadha:'உத்திராடம்',Shravana:'திருவோணம்',Dhanishtha:'அவிட்டம்',Shatabhisha:'சதயம்',PurvaBhadrapada:'பூரட்டாதி',UttaraBhadrapada:'உத்திரட்டாதி',Revati:'ரேவதி'},
+  telugu:   {Ashwini:'అశ్విని',Bharani:'భరణి',Krittika:'కృత్తిక',Rohini:'రోహిణి',Mrigashira:'మృగశిర',Ardra:'ఆర్ద్ర',Punarvasu:'పునర్వసు',Pushya:'పుష్యమి',Ashlesha:'ఆశ్లేష',Magha:'మఘ',PurvaPhalguni:'పూర్వఫల్గుణి',UttaraPhalguni:'ఉత్తరఫల్గుణి',Hasta:'హస్త',Chitra:'చిత్ర',Swati:'స్వాతి',Vishakha:'విశాఖ',Anuradha:'అనూరాధ',Jyeshtha:'జ్యేష్ఠ',Mula:'మూల',PurvaAshadha:'పూర్వాషాఢ',UttaraAshadha:'ఉత్తరాషాఢ',Shravana:'శ్రవణ',Dhanishtha:'ధనిష్ఠ',Shatabhisha:'శతభిష',PurvaBhadrapada:'పూర్వభాద్ర',UttaraBhadrapada:'ఉత్తరభాద్ర',Revati:'రేవతి'},
+  malayalam:{Ashwini:'അശ്വതി',Bharani:'ഭരണി',Krittika:'കാർത്തിക',Rohini:'രോഹിണി',Mrigashira:'മകയിരം',Ardra:'തിരുവാതിര',Punarvasu:'പുണർതം',Pushya:'പൂയം',Ashlesha:'ആയില്യം',Magha:'മകം',PurvaPhalguni:'പൂരം',UttaraPhalguni:'ഉത്രം',Hasta:'അത്തം',Chitra:'ചിത്തിര',Swati:'ചോതി',Vishakha:'വിശാഖം',Anuradha:'അനിഴം',Jyeshtha:'തൃക്കേട്ട',Mula:'മൂലം',PurvaAshadha:'പൂരാടം',UttaraAshadha:'ഉത്രാടം',Shravana:'തിരുവോണം',Dhanishtha:'അവിട്ടം',Shatabhisha:'ചതയം',PurvaBhadrapada:'പൂരുരുട്ടാതി',UttaraBhadrapada:'ഉത്രട്ടാതി',Revati:'രേവതി'},
+  kannada:  {Ashwini:'ಅಶ್ವಿನಿ',Bharani:'ಭರಣಿ',Krittika:'ಕೃತ್ತಿಕ',Rohini:'ರೋಹಿಣಿ',Mrigashira:'ಮೃಗಶಿರ',Ardra:'ಆರ್ದ್ರ',Punarvasu:'ಪುನರ್ವಸು',Pushya:'ಪುಷ್ಯ',Ashlesha:'ಆಶ್ಲೇಷ',Magha:'ಮಘ',PurvaPhalguni:'ಪೂರ್ವ ಫಲ್ಗುಣಿ',UttaraPhalguni:'ಉತ್ತರ ಫಲ್ಗುಣಿ',Hasta:'ಹಸ್ತ',Chitra:'ಚಿತ್ರ',Swati:'ಸ್ವಾತಿ',Vishakha:'ವಿಶಾಖ',Anuradha:'ಅನೂರಾಧ',Jyeshtha:'ಜ್ಯೇಷ್ಠ',Mula:'ಮೂಲ',PurvaAshadha:'ಪೂರ್ವಾಷಾಢ',UttaraAshadha:'ಉತ್ತರಾಷಾಢ',Shravana:'ಶ್ರವಣ',Dhanishtha:'ಧನಿಷ್ಠ',Shatabhisha:'ಶತಭಿಷ',PurvaBhadrapada:'ಪೂರ್ವಭಾದ್ರ',UttaraBhadrapada:'ಉತ್ತರಭಾದ್ರ',Revati:'ರೇವತಿ'},
+  hindi:    {Ashwini:'अश्विनी',Bharani:'भरणी',Krittika:'कृत्तिका',Rohini:'रोहिणी',Mrigashira:'मृगशिरा',Ardra:'आर्द्रा',Punarvasu:'पुनर्वसु',Pushya:'पुष्य',Ashlesha:'आश्लेषा',Magha:'मघा',PurvaPhalguni:'पूर्वफाल्गुनी',UttaraPhalguni:'उत्तरफाल्गुनी',Hasta:'हस्त',Chitra:'चित्रा',Swati:'स्वाती',Vishakha:'विशाखा',Anuradha:'अनुराधा',Jyeshtha:'ज्येष्ठा',Mula:'मूल',PurvaAshadha:'पूर्वाषाढ़',UttaraAshadha:'उत्तराषाढ़',Shravana:'श्रवण',Dhanishtha:'धनिष्ठा',Shatabhisha:'शतभिषा',PurvaBhadrapada:'पूर्वभाद्रपद',UttaraBhadrapada:'उत्तरभाद्रपद',Revati:'रेवती'},
+};
+
+const LANG_TITHI = {
+  tamil:    {Pratipada:'பிரதமை',Dwitiya:'த்விதியை',Tritiya:'திருதியை',Chaturthi:'சதுர்த்தி',Panchami:'பஞ்சமி',Shashthi:'ஷஷ்டி',Saptami:'சப்தமி',Ashtami:'அஷ்டமி',Navami:'நவமி',Dashami:'தசமி',Ekadashi:'ஏகாதசி',Dwadashi:'த்வாதசி',Trayodashi:'திரயோதசி',Chaturdashi:'சதுர்தசி',Purnima:'பூர்ணிமை',Amavasya:'அமாவாசை'},
+  telugu:   {Pratipada:'పాడ్యమి',Dwitiya:'విదియ',Tritiya:'తదియ',Chaturthi:'చవితి',Panchami:'పంచమి',Shashthi:'షష్టి',Saptami:'సప్తమి',Ashtami:'అష్టమి',Navami:'నవమి',Dashami:'దశమి',Ekadashi:'ఏకాదశి',Dwadashi:'ద్వాదశి',Trayodashi:'త్రయోదశి',Chaturdashi:'చతుర్దశి',Purnima:'పౌర్ణమి',Amavasya:'అమావాస్య'},
+  malayalam:{Pratipada:'പ്രതിപദ',Dwitiya:'ദ്വിതീയ',Tritiya:'തൃതീയ',Chaturthi:'ചതുർഥി',Panchami:'പഞ്ചമി',Shashthi:'ഷഷ്ഠി',Saptami:'സപ്തമി',Ashtami:'അഷ്ടമി',Navami:'നവമി',Dashami:'ദശമി',Ekadashi:'ഏകാദശി',Dwadashi:'ദ്വാദശി',Trayodashi:'ത്രയോദശി',Chaturdashi:'ചതുർദശി',Purnima:'പൗർണ്ണമി',Amavasya:'അമാവാസ്യ'},
+  kannada:  {Pratipada:'ಪಾಡ್ಯ',Dwitiya:'ಬಿದಿಗೆ',Tritiya:'ತದಿಗೆ',Chaturthi:'ಚೌತಿ',Panchami:'ಪಂಚಮಿ',Shashthi:'ಷಷ್ಠಿ',Saptami:'ಸಪ್ತಮಿ',Ashtami:'ಅಷ್ಟಮಿ',Navami:'ನವಮಿ',Dashami:'ದಶಮಿ',Ekadashi:'ಏಕಾದಶಿ',Dwadashi:'ದ್ವಾದಶಿ',Trayodashi:'ತ್ರಯೋದಶಿ',Chaturdashi:'ಚತುರ್ದಶಿ',Purnima:'ಹುಣ್ಣಿಮೆ',Amavasya:'ಅಮಾವಾಸ್ಯೆ'},
+  hindi:    {Pratipada:'प्रतिपदा',Dwitiya:'द्वितीया',Tritiya:'तृतीया',Chaturthi:'चतुर्थी',Panchami:'पंचमी',Shashthi:'षष्ठी',Saptami:'सप्तमी',Ashtami:'अष्टमी',Navami:'नवमी',Dashami:'दशमी',Ekadashi:'एकादशी',Dwadashi:'द्वादशी',Trayodashi:'त्रयोदशी',Chaturdashi:'चतुर्दशी',Purnima:'पूर्णिमा',Amavasya:'अमावस्या'},
+};
+
+const LANG_WEEKDAY = {
+  tamil:    ['ஞாயிறு','திங்கள்','செவ்வாய்','புதன்','வியாழன்','வெள்ளி','சனி'],
+  telugu:   ['ఆదివారం','సోమవారం','మంగళవారం','బుధవారం','గురువారం','శుక్రవారం','శనివారం'],
+  malayalam:['ഞായർ','തിങ്കൾ','ചൊവ്വ','ബുധൻ','വ്യാഴം','വെള്ളി','ശനി'],
+  kannada:  ['ಭಾನುವಾರ','ಸೋಮವಾರ','ಮಂಗಳವಾರ','ಬುಧವಾರ','ಗುರುವಾರ','ಶುಕ್ರವಾರ','ಶನಿವಾರ'],
+  hindi:    ['रविवार','सोमवार','मंगलवार','बुधवार','गुरुवार','शुक्रवार','शनिवार'],
+};
+
+const LANG_PAKSHA = {
+  tamil:    {Shukla:'சுக்ல பக்ஷம்',Krishna:'கிருஷ்ண பக்ஷம்'},
+  telugu:   {Shukla:'శుక్ల పక్షం',Krishna:'కృష్ణ పక్షం'},
+  malayalam:{Shukla:'വെളുത്ത പക്ഷം',Krishna:'കറുത്ത പക്ഷം'},
+  kannada:  {Shukla:'ಶುಕ್ಲ ಪಕ್ಷ',Krishna:'ಕೃಷ್ಣ ಪಕ್ಷ'},
+  hindi:    {Shukla:'शुक्ल पक्ष',Krishna:'कृष्ण पक्ष'},
+};
+
+const LANG_WINDOW = {
+  tamil:    {'Brahma Muhurta':'பிரம்ம முகூர்த்தம்','Abhijit Muhurta':'அபிஜித் முகூர்த்தம்','Vijaya Muhurta':'விஜய முகூர்த்தம்','Rahu Kaal':'ராகு காலம்','Yamaganda':'யமகண்டம்','Gulika Kaal':'குளிக காலம்','Dur Muhurta':'துர் முகூர்த்தம்'},
+  telugu:   {'Brahma Muhurta':'బ్రహ్మ ముహూర్తం','Abhijit Muhurta':'అభిజిత్ ముహూర్తం','Vijaya Muhurta':'విజయ ముహూర్తం','Rahu Kaal':'రాహు కాలం','Yamaganda':'యమగండం','Gulika Kaal':'గులిక కాలం','Dur Muhurta':'దుర్ ముహూర్తం'},
+  malayalam:{'Brahma Muhurta':'ബ്രഹ്മ മുഹൂർത്തം','Abhijit Muhurta':'അഭിജിത് മുഹൂർത്തം','Vijaya Muhurta':'വിജയ മുഹൂർത്തം','Rahu Kaal':'രാഹു കാലം','Yamaganda':'യമഗണ്ഡം','Gulika Kaal':'ഗുളിക കാലം','Dur Muhurta':'ദുർ മുഹൂർത്തം'},
+  kannada:  {'Brahma Muhurta':'ಬ್ರಹ್ಮ ಮುಹೂರ್ತ','Abhijit Muhurta':'ಅಭಿಜಿತ್ ಮುಹೂರ್ತ','Vijaya Muhurta':'ವಿಜಯ ಮುಹೂರ್ತ','Rahu Kaal':'ರಾಹು ಕಾಲ','Yamaganda':'ಯಮಗಂಡ','Gulika Kaal':'ಗುಳಿಕ ಕಾಲ','Dur Muhurta':'ದುರ್ ಮುಹೂರ್ತ'},
+  hindi:    {'Brahma Muhurta':'ब्रह्म मुहूर्त','Abhijit Muhurta':'अभिजित् मुहूर्त','Vijaya Muhurta':'विजय मुहूर्त','Rahu Kaal':'राहु काल','Yamaganda':'यमगण्ड','Gulika Kaal':'गुलिक काल','Dur Muhurta':'दुर्मुहूर्त'},
+};
+
+// Translation helpers
+function tLabel(key, lang) { return lang ? (LANG_LABELS_MAP[lang]?.[key] || key) : null; }
+function tNak(name, lang)  { if (!lang || !name) return name; return LANG_NAKSHATRA[lang]?.[name.trim()] || name; }
+function tTithi(name, lang){ if (!lang || !name) return name; return LANG_TITHI[lang]?.[name.trim()] || name; }
+function tWin(label, lang) {
+  if (!lang) return label;
+  const map = LANG_WINDOW[lang] || {};
+  if (label.startsWith('Dur Muhurta') || label.startsWith('Dur Muhurat')) return map['Dur Muhurta'] || label;
+  return map[label] || label;
+}
+function tDay(lang)  { return lang ? (LANG_WEEKDAY[lang]?.[new Date().getDay()] || '') : null; }
+function tPaksha(name, lang) { if (!lang || !name) return name; return LANG_PAKSHA[lang]?.[name] || name; }
+
 const QUALITY_STYLES = {
   good:    { badge: 'bg-green-100 text-green-800' },
   neutral: { badge: 'bg-amber-100 text-amber-800' },
@@ -133,12 +203,14 @@ function humanDate(isoDate, tz) {
 }
 
 // ─── Sun & Moon 2×2 grid ────────────────────────────────────────────────────
-function SunMoonCards({ summary, panchang, tzAbbr }) {
+function SunMoonCards({ summary, panchang, tzAbbr, lang }) {
+  const nak = tNak(panchang.nakshatra?.name, lang) || panchang.nakshatra?.name;
+  const paksha = tPaksha(panchang.paksha, lang) || panchang.paksha;
   const cards = [
-    { icon: <Sun className="h-5 w-5 text-amber-500 mx-auto mb-1" />,   label: 'Sunrise',  value: summary.sunrise  || '--', sub: `Sun in ${panchang.sun_sign}` },
-    { icon: <Moon className="h-5 w-5 text-slate-400 mx-auto mb-1" />,  label: 'Sunset',   value: summary.sunset   || '--', sub: `Moon in ${panchang.moon_sign}` },
-    { icon: <Moon className="h-5 w-5 text-blue-300 mx-auto mb-1" />,   label: 'Moonrise', value: summary.moonrise || '--', sub: panchang.nakshatra?.name ? `${panchang.nakshatra.name} Nakshatra` : '' },
-    { icon: <Moon className="h-5 w-5 text-indigo-400 mx-auto mb-1" />, label: 'Moonset',  value: summary.moonset  || '--', sub: panchang.paksha ? `${panchang.paksha} Paksha` : '' },
+    { icon: <Sun className="h-5 w-5 text-amber-500 mx-auto mb-1" />,   label: tLabel('sunrise', lang)  || 'Sunrise',  value: summary.sunrise  || '--', sub: `${tLabel('sunIn',lang)||'Sun'} ${panchang.sun_sign}` },
+    { icon: <Moon className="h-5 w-5 text-slate-400 mx-auto mb-1" />,  label: tLabel('sunset', lang)   || 'Sunset',   value: summary.sunset   || '--', sub: `${tLabel('moonIn',lang)||'Moon'} ${panchang.moon_sign}` },
+    { icon: <Moon className="h-5 w-5 text-blue-300 mx-auto mb-1" />,   label: tLabel('moonrise', lang) || 'Moonrise', value: summary.moonrise || '--', sub: nak ? `${nak} ${tLabel('nakshatra',lang)||'Nakshatra'}` : '' },
+    { icon: <Moon className="h-5 w-5 text-indigo-400 mx-auto mb-1" />, label: tLabel('moonset', lang)  || 'Moonset',  value: summary.moonset  || '--', sub: paksha ? paksha : '' },
   ];
   return (
     <div className="grid grid-cols-2 gap-3">
@@ -159,7 +231,7 @@ function SunMoonCards({ summary, panchang, tzAbbr }) {
 // Splits windows by quality into Auspicious / Inauspicious sub-headers.
 const AUSPICIOUS_LABELS = new Set(['Brahma Muhurta', 'Abhijit Muhurta', 'Vijaya Muhurta']);
 
-function TimingWindowsCard({ windows, fmtTime, tzAbbr }) {
+function TimingWindowsCard({ windows, fmtTime, tzAbbr, lang }) {
   if (!windows?.length) return null;
   const now = new Date();
   const auspicious   = windows.filter(w => w.quality === 'good');
@@ -171,8 +243,8 @@ function TimingWindowsCard({ windows, fmtTime, tzAbbr }) {
       <div key={w.label} className={`flex items-center justify-between px-5 py-3 ${isCurrent ? 'bg-gold/5' : ''}`}>
         <div className="flex items-center gap-3">
           {isCurrent && <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />}
-          <span className="text-sm font-medium">{w.label}</span>
-          {isCurrent && <span className="text-xs text-green-600 font-semibold">Now</span>}
+          <span className="text-sm font-medium">{tWin(w.label, lang)}</span>
+          {isCurrent && <span className="text-xs text-green-600 font-semibold">{tLabel('now',lang)||'Now'}</span>}
         </div>
         <span className="text-xs text-muted-foreground tabular-nums">{fmtTime(w.start)} — {fmtTime(w.end)}</span>
       </div>
@@ -182,7 +254,7 @@ function TimingWindowsCard({ windows, fmtTime, tzAbbr }) {
   return (
     <Card className="border border-gold/20 overflow-hidden">
       <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center justify-between">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gold">Timing Windows</p>
+        <p className="text-xs font-semibold uppercase tracking-widest text-gold">{tLabel('timingWindows',lang)||'Timing Windows'}</p>
         <span className="text-[10px] text-muted-foreground font-semibold">{tzAbbr}</span>
       </div>
 
@@ -191,7 +263,7 @@ function TimingWindowsCard({ windows, fmtTime, tzAbbr }) {
         <>
           <div className="flex items-center gap-2 px-5 py-2 bg-green-50 border-b border-green-100">
             <span className="text-green-600 text-sm">✦</span>
-            <p className="text-[11px] font-bold uppercase tracking-widest text-green-700">Auspicious</p>
+            <p className="text-[11px] font-bold uppercase tracking-widest text-green-700">{tLabel('auspicious',lang)||'Auspicious'}</p>
           </div>
           <div className="divide-y divide-border">
             {auspicious.map(renderRow)}
@@ -204,7 +276,7 @@ function TimingWindowsCard({ windows, fmtTime, tzAbbr }) {
         <>
           <div className="flex items-center gap-2 px-5 py-2 bg-red-50 border-y border-red-100">
             <span className="text-red-500 text-sm">⚠</span>
-            <p className="text-[11px] font-bold uppercase tracking-widest text-red-700">Inauspicious</p>
+            <p className="text-[11px] font-bold uppercase tracking-widest text-red-700">{tLabel('inauspicious',lang)||'Inauspicious'}</p>
           </div>
           <div className="divide-y divide-border">
             {inauspicious.map(renderRow)}
@@ -715,7 +787,7 @@ function PanchangDateSEOContent({ panchangData }) {
 
 // ─── Views ──────────────────────────────────────────────────────────────────
 
-function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad }) {
+function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad, lang }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -772,15 +844,15 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
 
       <Card className="border border-gold/20 overflow-hidden">
         <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold">Panch Anga — Five Limbs</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold">{tLabel('fiveLimbs',lang)||'Panch Anga — Five Limbs'}</p>
         </div>
         <div className="divide-y divide-border">
           {[
-            { label: 'Tithi',      value: panchang.tithi.name,     sub: panchang.paksha + ' Paksha' + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) : '') },
-            { label: 'Nakshatra',  value: panchang.nakshatra.name, sub: 'Moon in ' + panchang.moon_sign + (panchang.nakshatra.end ? ' · until ' + fmtTime(panchang.nakshatra.end) : '') },
-            { label: 'Yoga',       value: panchang.yoga.name,      sub: panchang.yoga.end ? 'Until ' + fmtTime(panchang.yoga.end) : '' },
-            { label: 'Karana',     value: panchang.karana.name,    sub: panchang.karana.end ? 'Until ' + fmtTime(panchang.karana.end) : '' },
-            { label: 'Vara (Day)', value: summary.weekday,          sub: panchang.samvat },
+            { label: tLabel('tithi',lang)||'Tithi',         value: tTithi(panchang.tithi.name,lang),     sub: (tPaksha(panchang.paksha,lang)||panchang.paksha) + (lang ? '' : ' Paksha') + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) : '') },
+            { label: tLabel('nakshatra',lang)||'Nakshatra', value: tNak(panchang.nakshatra.name,lang),   sub: (lang ? '' : 'Moon in ') + panchang.moon_sign + (panchang.nakshatra.end ? ' · until ' + fmtTime(panchang.nakshatra.end) : '') },
+            { label: tLabel('yoga',lang)||'Yoga',           value: panchang.yoga.name,                   sub: panchang.yoga.end ? 'Until ' + fmtTime(panchang.yoga.end) : '' },
+            { label: tLabel('karana',lang)||'Karana',       value: panchang.karana.name,                 sub: panchang.karana.end ? 'Until ' + fmtTime(panchang.karana.end) : '' },
+            { label: tLabel('vara',lang)||'Vara (Day)',     value: tDay(lang) || summary.weekday,        sub: panchang.samvat },
           ].map(item => (
             <div key={item.label} className="flex items-center justify-between px-5 py-4">
               <div>
@@ -793,12 +865,12 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
         </div>
       </Card>
 
-      <SunMoonCards summary={summary} panchang={panchang} tzAbbr={tzAbbr} />
-      <TimingWindowsCard windows={day_quality_windows} fmtTime={fmtTime} tzAbbr={tzAbbr} />
+      <SunMoonCards summary={summary} panchang={panchang} tzAbbr={tzAbbr} lang={lang} />
+      <TimingWindowsCard windows={day_quality_windows} fmtTime={fmtTime} tzAbbr={tzAbbr} lang={lang} />
 
       {observances?.length > 0 && (
         <Card className="border border-gold/20 p-5">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Today's Observances</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">{tLabel('observances',lang)||"Today's Observances"}</p>
           <div className="space-y-2">
             {observances.map(o => (
               <div key={o.slug} className="flex items-start gap-3">
@@ -1143,7 +1215,7 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
 }
 
 // ─── Main page ──────────────────────────────────────────────────────────────
-export const PanchangPage = () => {
+export const PanchangPage = ({ lang } = {}) => {
   const { type: rawType = 'daily', year: yearParam, month: monthParam, dateValue } = useParams();
   const resolvedType = ALIAS[rawType] || rawType;
   const isCalendar = resolvedType === 'calendar' || (yearParam && monthParam && !dateValue);
@@ -1202,11 +1274,23 @@ export const PanchangPage = () => {
         panchangData={panchangData} locationTZ={locationTZ}
       />
       <div className="text-center mb-6">
-        <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-          <Calendar className="h-3 w-3" /> Vedic Panchang
-        </div>
-        <h1 className="text-3xl font-playfair font-semibold mb-2">{config.title}</h1>
-        <p className="text-muted-foreground">{config.desc}</p>
+        {lang && LANG_META_MAP[lang] ? (
+          <>
+            <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+              <Calendar className="h-3 w-3" /> {LANG_META_MAP[lang].nativeName} · Vedic Panchang
+            </div>
+            <h1 className="text-3xl font-playfair font-semibold mb-2">{LANG_META_MAP[lang].badge}</h1>
+            <p className="text-muted-foreground">{config.title}</p>
+          </>
+        ) : (
+          <>
+            <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+              <Calendar className="h-3 w-3" /> Vedic Panchang
+            </div>
+            <h1 className="text-3xl font-playfair font-semibold mb-2">{config.title}</h1>
+            <p className="text-muted-foreground">{config.desc}</p>
+          </>
+        )}
       </div>
       <div className="flex justify-end mb-4">
         <LocationPicker selectedSlug={locationSlug} onSelect={handleLocationSelect} />
@@ -1219,8 +1303,8 @@ export const PanchangPage = () => {
         ))}
       </div>
       {isDateView                                 && <PanchangDateView     dateStr={dateValue}           locationSlug={locationSlug} onDataLoad={setPanchangData} />}
-      {!isDateView && activeView === 'daily'      && <PanchangDailyView    dayOffset={0}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} />}
-      {!isDateView && activeView === 'tomorrow'   && <PanchangDailyView    dayOffset={1}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} />}
+      {!isDateView && activeView === 'daily'      && <PanchangDailyView    dayOffset={0}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} />}
+      {!isDateView && activeView === 'tomorrow'   && <PanchangDailyView    dayOffset={1}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} />}
       {!isDateView && activeView === 'tithi'      && <PanchangTithiView                                  locationSlug={locationSlug} />}
       {!isDateView && activeView === 'muhurat'    && <MuhuratView                                        locationSlug={locationSlug} locationTZ={locationTZ} />}
       {!isDateView && activeView === 'choghadiya' && <PanchangChoghadiyaView                             locationSlug={locationSlug} />}

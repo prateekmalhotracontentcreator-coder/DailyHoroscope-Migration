@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
-const StarsLogo = ({ size = 38 }) => (
+const StarsLogo = ({ size = 48 }) => (
   <img
     src="/Logo.png"
     alt="Everyday Horoscope"
@@ -229,7 +229,7 @@ export const NavBar = () => {
       <header className="sticky top-0 z-40 bg-card/80 backdrop-blur-md border-b border-border">
         <div className="flex items-center justify-between h-14 px-4">
           <div className="flex items-center gap-3">
-            <button onClick={() => setSidebarOpen(true)} className="lg:hidden p-2 rounded-sm hover:bg-muted/50 transition-colors text-foreground" aria-label="Open menu">
+            <button onClick={() => setSidebarOpen(true)} className="p-2 rounded-sm hover:bg-muted/50 transition-colors text-foreground" aria-label="Open menu">
               <Menu className="h-5 w-5" />
             </button>
             <button onClick={() => navigate(user ? '/home' : '/')} className="flex items-center gap-2.5" data-testid="header-logo">
@@ -292,7 +292,7 @@ export const NavBar = () => {
           <div className="absolute left-0 top-0 bottom-0 w-72 bg-card border-r border-border shadow-2xl flex flex-col" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between px-4 py-4 border-b border-border">
               <div className="flex items-center gap-2.5">
-                <StarsLogo size={32} />
+                <StarsLogo size={40} />
                 <BrandWordmark />
               </div>
               <button onClick={() => setSidebarOpen(false)} className="p-1.5 rounded-sm hover:bg-muted/50 transition-colors">
