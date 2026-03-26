@@ -15,7 +15,7 @@ import {
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
 const StarsLogo = ({ size = 28 }) => (
   <img
-    src="/logo.png"
+    src="/Logo.png"
     alt="Everyday Horoscope"
     width={size}
     height={size}
