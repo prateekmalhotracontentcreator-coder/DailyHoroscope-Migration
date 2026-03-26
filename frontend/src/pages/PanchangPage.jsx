@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
-import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight, Zap, MapPin, Globe, ChevronDown } from 'lucide-react';
+import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight, Zap, MapPin, Globe, ChevronDown, Clock } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -37,6 +37,41 @@ const ALIAS = {
   rahukaal:   'daily',
 };
 
+// ─── Timezone abbreviation helper ──────────────────────────────────────────
+// Derives the short TZ abbreviation (IST, EST, BST, GST, AEST, SGT etc.)
+// from the IANA timezone string using the browser's Intl API.
+// Falls back to a manual map for edge cases.
+
+const TZ_OVERRIDE = {
+  'Asia/Kolkata':         'IST',
+  'Asia/Kathmandu':       'NPT',
+  'Asia/Dubai':           'GST',
+  'Asia/Singapore':       'SGT',
+  'Pacific/Auckland':     'NZST',
+  'Australia/Brisbane':   'AEST',
+  'Australia/Sydney':     'AEDT',   // will be overridden by Intl when not DST
+  'Australia/Melbourne':  'AEDT',
+  'America/Toronto':      'EST',
+  'America/Vancouver':    'PST',
+};
+
+function getTZAbbr(ianaTimezone) {
+  if (!ianaTimezone) return 'IST';
+  // Manual override for zones where Intl gives verbose output
+  if (TZ_OVERRIDE[ianaTimezone]) return TZ_OVERRIDE[ianaTimezone];
+  try {
+    // Use Intl.DateTimeFormat to get the short timezone name (e.g. "EST", "BST")
+    const parts = new Intl.DateTimeFormat('en-US', {
+      timeZone: ianaTimezone,
+      timeZoneName: 'short',
+    }).formatToParts(new Date());
+    const tzPart = parts.find(p => p.type === 'timeZoneName');
+    if (tzPart?.value) return tzPart.value;
+  } catch { /* fall through */ }
+  // Last-resort: strip continent prefix, e.g. America/New_York → NY
+  return ianaTimezone.split('/').pop().replace('_', ' ');
+}
+
 // ─── Time formatting — respects location timezone ─────────────────────────
 function makeFormatTime(tz) {
   return function formatTime(iso) {
@@ -67,7 +102,6 @@ function getTodayInTZ(tz) {
     const map = Object.fromEntries(parts.map(p => [p.type, p.value]));
     return `${map.year}-${map.month}-${map.day}`;
   } catch {
-    // IST fallback
     const ist = new Date(new Date().getTime() + 5.5 * 60 * 60 * 1000);
     return ist.toISOString().slice(0, 10);
   }
@@ -121,12 +155,14 @@ function LocationPicker({ selectedSlug, onSelect }) {
   }, []);
 
   const selected = locations.find(l => l.slug === selectedSlug);
+  const selectedTZAbbr = selected ? getTZAbbr(selected.timezone) : 'IST';
   const countries = [...new Set(locations.map(l => l.country))];
 
   const filtered = search.trim()
     ? locations.filter(l =>
         l.label.toLowerCase().includes(search.toLowerCase()) ||
-        l.country.toLowerCase().includes(search.toLowerCase())
+        l.country.toLowerCase().includes(search.toLowerCase()) ||
+        getTZAbbr(l.timezone).toLowerCase().includes(search.toLowerCase())
       )
     : locations;
 
@@ -138,24 +174,31 @@ function LocationPicker({ selectedSlug, onSelect }) {
 
   return (
     <div ref={ref} className="relative">
+      {/* Trigger button — shows city, country and TZ abbreviation */}
       <button
         onClick={() => setOpen(o => !o)}
         className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold/30 bg-gold/5 text-xs font-semibold text-gold hover:bg-gold/10 transition-colors"
       >
-        <MapPin className="h-3 w-3" />
-        <span>{selected ? `${selected.label}, ${selected.country}` : 'Select location'}</span>
-        <ChevronDown className={`h-3 w-3 transition-transform ${open ? 'rotate-180' : ''}`} />
+        <MapPin className="h-3 w-3 flex-shrink-0" />
+        <span>
+          {selected ? `${selected.label}, ${selected.country}` : 'Select location'}
+        </span>
+        {/* TZ badge */}
+        <span className="px-1.5 py-0.5 rounded bg-gold/20 text-[10px] font-bold tracking-wide">
+          {selectedTZAbbr}
+        </span>
+        <ChevronDown className={`h-3 w-3 flex-shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-72 max-h-80 overflow-hidden rounded-xl border border-border bg-background shadow-xl z-50 flex flex-col">
+        <div className="absolute right-0 top-full mt-2 w-80 max-h-80 overflow-hidden rounded-xl border border-border bg-background shadow-xl z-50 flex flex-col">
           {/* Search */}
           <div className="p-2 border-b border-border">
             <input
               autoFocus
               value={search}
               onChange={e => setSearch(e.target.value)}
-              placeholder="Search city or country…"
+              placeholder="Search city, country or timezone…"
               className="w-full px-3 py-1.5 text-xs rounded-lg border border-border bg-muted/30 focus:outline-none focus:border-gold/50"
             />
           </div>
@@ -163,22 +206,32 @@ function LocationPicker({ selectedSlug, onSelect }) {
           <div className="overflow-y-auto flex-1">
             {Object.entries(grouped).map(([country, locs]) => (
               <div key={country}>
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-muted/30">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-muted/30 sticky top-0">
                   <Globe className="h-3 w-3 text-muted-foreground" />
                   <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{country}</p>
                 </div>
-                {locs.map(loc => (
-                  <button
-                    key={loc.slug}
-                    onClick={() => { onSelect(loc.slug); setOpen(false); setSearch(''); }}
-                    className={`w-full text-left px-4 py-2 text-xs hover:bg-gold/10 transition-colors flex items-center justify-between ${
-                      loc.slug === selectedSlug ? 'text-gold font-semibold bg-gold/5' : 'text-foreground'
-                    }`}
-                  >
-                    <span>{loc.label}</span>
-                    {loc.slug === selectedSlug && <span className="text-gold">✓</span>}
-                  </button>
-                ))}
+                {locs.map(loc => {
+                  const tzAbbr = getTZAbbr(loc.timezone);
+                  const isSelected = loc.slug === selectedSlug;
+                  return (
+                    <button
+                      key={loc.slug}
+                      onClick={() => { onSelect(loc.slug); setOpen(false); setSearch(''); }}
+                      className={`w-full text-left px-4 py-2.5 text-xs hover:bg-gold/10 transition-colors flex items-center justify-between gap-3 ${
+                        isSelected ? 'text-gold font-semibold bg-gold/5' : 'text-foreground'
+                      }`}
+                    >
+                      <span className="flex-1">{loc.label}</span>
+                      {/* TZ abbreviation badge in dropdown */}
+                      <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold tracking-wide flex-shrink-0 ${
+                        isSelected ? 'bg-gold/30 text-gold' : 'bg-muted text-muted-foreground'
+                      }`}>
+                        {tzAbbr}
+                      </span>
+                      {isSelected && <span className="text-gold flex-shrink-0">✓</span>}
+                    </button>
+                  );
+                })}
               </div>
             ))}
             {Object.keys(grouped).length === 0 && (
@@ -296,6 +349,19 @@ function PanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchan
   return <SEO title={seo.title} description={seo.description} url={seo.url} image={OG_IMAGE} type="website" schema={schemas.length === 1 ? schemas[0] : schemas.length > 1 ? schemas : null} />;
 }
 
+// ─── Timezone footer note ───────────────────────────────────────────────────
+function TZNote({ timezone, locationLabel }) {
+  if (!timezone) return null;
+  const abbr = getTZAbbr(timezone);
+  return (
+    <p className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
+      <Clock className="h-3 w-3" />
+      All times in <span className="font-semibold text-foreground">{abbr}</span>
+      {locationLabel ? ` · ${locationLabel}` : ''}
+    </p>
+  );
+}
+
 // ─── SEO body-copy blocks ──────────────────────────────────────────────────
 function PanchangDailySEOContent() {
   return (
@@ -382,7 +448,6 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const formatTime = useMemo(() => makeFormatTime(locationTZ), [locationTZ]);
 
   useEffect(() => {
     setLoading(true); setError(null); setData(null);
@@ -402,6 +467,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
   const { summary, panchang, day_quality_windows, observances } = data;
   const locTZ = data.location?.timezone || locationTZ || 'Asia/Kolkata';
   const fmtTime = makeFormatTime(locTZ);
+  const tzAbbr = getTZAbbr(locTZ);
 
   return (
     <div className="space-y-6">
@@ -410,7 +476,10 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
           <Sun className="h-5 w-5 text-gold" />
           <span className="font-playfair font-semibold text-lg">{formatDate(data.date + 'T00:00:00', locTZ)}</span>
         </div>
-        <span className="text-xs text-muted-foreground">{data.location?.label}, {data.location?.country}</span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground">{data.location?.label}, {data.location?.country}</span>
+          <span className="px-1.5 py-0.5 rounded bg-gold/20 text-[10px] font-bold text-gold tracking-wide">{tzAbbr}</span>
+        </div>
       </div>
       <Card className="border border-gold/20 overflow-hidden">
         <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
@@ -418,7 +487,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
         </div>
         <div className="divide-y divide-border">
           {[
-            { label: 'Tithi',      value: panchang.tithi.name,     sub: panchang.paksha + ' Paksha' + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) : '') },
+            { label: 'Tithi',      value: panchang.tithi.name,     sub: panchang.paksha + ' Paksha' + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) + ' ' + tzAbbr : '') },
             { label: 'Nakshatra',  value: panchang.nakshatra.name, sub: 'Moon in ' + panchang.moon_sign + (panchang.nakshatra.end ? ' · until ' + fmtTime(panchang.nakshatra.end) : '') },
             { label: 'Yoga',       value: panchang.yoga.name,      sub: panchang.yoga.end ? 'Until ' + fmtTime(panchang.yoga.end) : '' },
             { label: 'Karana',     value: panchang.karana.name,    sub: panchang.karana.end ? 'Until ' + fmtTime(panchang.karana.end) : '' },
@@ -450,8 +519,9 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
       </div>
       {day_quality_windows?.length > 0 && (
         <Card className="border border-gold/20 overflow-hidden">
-          <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
+          <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center justify-between">
             <p className="text-xs font-semibold uppercase tracking-widest text-gold">Timing Windows</p>
+            <span className="text-[10px] text-muted-foreground font-semibold">{tzAbbr}</span>
           </div>
           <div className="divide-y divide-border">
             {day_quality_windows.map(w => (
@@ -482,6 +552,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
           </div>
         </Card>
       )}
+      <TZNote timezone={locTZ} locationLabel={data.location?.label} />
       <div className="flex gap-3">
         <Link to={`/panchang/calendar/${new Date().getFullYear()}/${new Date().getMonth() + 1}`}
           className="flex-1 flex items-center justify-center gap-2 py-3 border border-gold/30 rounded-xl text-sm font-medium text-gold hover:bg-gold/5 transition-colors">
@@ -507,7 +578,8 @@ function PanchangTithiView({ locationSlug }) {
   if (loading) return <div className="space-y-4">{[...Array(3)].map((_, i) => <div key={i} className="h-20 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
   if (!data) return <p className="text-center text-muted-foreground py-12">Failed to load Tithi data</p>;
   const { panchang, summary } = data;
-  const fmtTime = makeFormatTime(data.location?.timezone);
+  const locTZ = data.location?.timezone;
+  const fmtTime = makeFormatTime(locTZ);
   return (
     <div className="space-y-6">
       <Card className="border border-gold/20 overflow-hidden">
@@ -525,6 +597,7 @@ function PanchangTithiView({ locationSlug }) {
           {panchang.tithi.end && (
             <p className="text-sm text-muted-foreground border-t border-border pt-3">
               Ends at <span className="font-semibold text-foreground">{fmtTime(panchang.tithi.end)}</span>
+              {' '}<span className="text-[10px] font-bold text-gold">{getTZAbbr(locTZ)}</span>
             </p>
           )}
         </div>
@@ -538,6 +611,7 @@ function PanchangTithiView({ locationSlug }) {
           <div><p className="text-xs text-muted-foreground">Samvat</p><p className="font-semibold text-xs">{panchang.samvat}</p></div>
         </div>
       </Card>
+      <TZNote timezone={locTZ} locationLabel={data.location?.label} />
       <PanchangTithiSEOContent />
     </div>
   );
@@ -554,12 +628,15 @@ function PanchangChoghadiyaView({ locationSlug }) {
   if (!data) return <p className="text-center text-muted-foreground py-12">Failed to load Choghadiya data</p>;
   const windows = data.day_quality_windows || [];
   const now = new Date();
-  const fmtTime = makeFormatTime(data.location?.timezone);
+  const locTZ = data.location?.timezone;
+  const fmtTime = makeFormatTime(locTZ);
+  const tzAbbr = getTZAbbr(locTZ);
   return (
     <div className="space-y-4">
       <Card className="border border-gold/20 overflow-hidden">
-        <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
+        <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center justify-between">
           <p className="text-xs font-semibold uppercase tracking-widest text-gold">Today's Choghadiya</p>
+          <span className="text-[10px] text-muted-foreground font-semibold">{tzAbbr}</span>
         </div>
         {windows.length === 0
           ? <p className="text-center text-muted-foreground py-8">No timing data available for today</p>
@@ -581,7 +658,7 @@ function PanchangChoghadiyaView({ locationSlug }) {
             </div>
         }
       </Card>
-      <p className="text-xs text-muted-foreground text-center">Times shown in local time for {data.location?.label}</p>
+      <TZNote timezone={locTZ} locationLabel={data.location?.label} />
       <PanchangChoghadiyaSEOContent />
     </div>
   );
@@ -710,6 +787,7 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
   const { summary, panchang, day_quality_windows, observances } = data;
   const locTZ = data.location?.timezone || 'Asia/Kolkata';
   const fmtTime = makeFormatTime(locTZ);
+  const tzAbbr = getTZAbbr(locTZ);
   const [y, mo] = dateStr.split('-');
   return (
     <div className="space-y-6">
@@ -721,7 +799,10 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
           <Sun className="h-5 w-5 text-gold" />
           <span className="font-playfair font-semibold text-lg">{formatDate(data.date + 'T00:00:00', locTZ)}</span>
         </div>
-        <span className="text-xs text-muted-foreground">{data.location?.label}, {data.location?.country}</span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground">{data.location?.label}, {data.location?.country}</span>
+          <span className="px-1.5 py-0.5 rounded bg-gold/20 text-[10px] font-bold text-gold">{tzAbbr}</span>
+        </div>
       </div>
       <Card className="border border-gold/20 overflow-hidden">
         <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
@@ -750,17 +831,20 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
           <Sun className="h-5 w-5 text-amber-500 mx-auto mb-2" />
           <p className="text-xs text-muted-foreground uppercase tracking-wide">Sunrise</p>
           <p className="font-semibold text-lg">{summary.sunrise}</p>
+          <p className="text-xs text-muted-foreground mt-1">{tzAbbr}</p>
         </Card>
         <Card className="p-4 border border-gold/20 text-center">
           <Moon className="h-5 w-5 text-blue-400 mx-auto mb-2" />
           <p className="text-xs text-muted-foreground uppercase tracking-wide">Sunset</p>
           <p className="font-semibold text-lg">{summary.sunset}</p>
+          <p className="text-xs text-muted-foreground mt-1">{tzAbbr}</p>
         </Card>
       </div>
       {day_quality_windows?.length > 0 && (
         <Card className="border border-gold/20 overflow-hidden">
-          <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
+          <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center justify-between">
             <p className="text-xs font-semibold uppercase tracking-widest text-gold">Timing Windows</p>
+            <span className="text-[10px] text-muted-foreground font-semibold">{tzAbbr}</span>
           </div>
           <div className="divide-y divide-border">
             {day_quality_windows.map(w => (
@@ -791,6 +875,7 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
           </div>
         </Card>
       )}
+      <TZNote timezone={locTZ} locationLabel={data.location?.label} />
       <PanchangDateSEOContent panchangData={data} />
     </div>
   );
@@ -807,7 +892,6 @@ export const PanchangPage = () => {
   const calYear  = parseInt(yearParam)  || today.getFullYear();
   const calMonth = parseInt(monthParam) || (today.getMonth() + 1);
 
-  // Location state — persisted in localStorage
   const [locationSlug, setLocationSlug] = useState(
     () => localStorage.getItem(LOC_STORAGE_KEY) || DEFAULT_SLUG
   );
@@ -818,7 +902,6 @@ export const PanchangPage = () => {
     localStorage.setItem(LOC_STORAGE_KEY, slug);
   }, []);
 
-  // Fetch location TZ whenever slug changes (so SEO dates are correct)
   useEffect(() => {
     axios.get(`${API}/locations`)
       .then(r => {
