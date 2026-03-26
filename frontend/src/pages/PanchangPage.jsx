@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
-import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight, Zap, Clock, Info } from 'lucide-react';
+import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight, Zap } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -35,7 +35,7 @@ const ALIAS = {
   rahukaal:   'daily',
 };
 
-const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+// ─── date helpers ──────────────────────────────────────────────────────────
 
 function formatTime(iso) {
   if (!iso) return '--';
@@ -52,30 +52,40 @@ function formatDate(iso) {
 function getTodayIST() {
   const now = new Date();
   const ist = new Date(now.getTime() + 5.5 * 60 * 60 * 1000);
-  return `${ist.getUTCFullYear()}-${String(ist.getUTCMonth()+1).padStart(2,'0')}-${String(ist.getUTCDate()).padStart(2,'0')}`;
+  const y = ist.getUTCFullYear();
+  const m = String(ist.getUTCMonth() + 1).padStart(2, '0');
+  const d = String(ist.getUTCDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
 }
 
 function getTomorrowIST() {
   const now = new Date();
   const ist = new Date(now.getTime() + 5.5 * 60 * 60 * 1000);
   ist.setUTCDate(ist.getUTCDate() + 1);
-  return `${ist.getUTCFullYear()}-${String(ist.getUTCMonth()+1).padStart(2,'0')}-${String(ist.getUTCDate()).padStart(2,'0')}`;
+  const y = ist.getUTCFullYear();
+  const m = String(ist.getUTCMonth() + 1).padStart(2, '0');
+  const d = String(ist.getUTCDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
 }
+
+const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 
 function humanDate(isoDate) {
   if (!isoDate) return '';
   const [y, m, d] = isoDate.split('-');
   const weekday = new Date(`${isoDate}T12:00:00+05:30`).toLocaleDateString('en-IN', { weekday: 'long', timeZone: 'Asia/Kolkata' });
-  return `${weekday}, ${parseInt(d)} ${MONTH_NAMES[parseInt(m)-1]} ${y}`;
+  return `${weekday}, ${parseInt(d)} ${MONTH_NAMES[parseInt(m) - 1]} ${y}`;
 }
 
-// ─── SEO helpers ──────────────────────────────────────────────────────────────
+// ─── SEO helpers ───────────────────────────────────────────────────────────
 
 function webPageSchema({ name, description, url, datePublished }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name, description, url,
+    name,
+    description,
+    url,
     inLanguage: 'en-IN',
     ...(datePublished ? { datePublished } : {}),
     isPartOf: { '@type': 'WebSite', name: 'Everyday Horoscope', url: SITE },
@@ -86,52 +96,44 @@ function webPageSchema({ name, description, url, datePublished }) {
 function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData }) {
   const todayISO    = getTodayIST();
   const tomorrowISO = getTomorrowIST();
-
   switch (view) {
     case 'daily': {
-      const h = humanDate(todayISO);
-      const title = `Today's Panchang — ${h}`;
-      const description = `Free daily Panchang for ${h}. Today's Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, Sunrise & Sunset — powered by Vedic astronomy.`;
+      const humanToday = humanDate(todayISO);
+      const title = `Today's Panchang — ${humanToday}`;
+      const description = `Free daily Panchang for ${humanToday}. Get today's Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, Sunrise & Sunset — powered by Vedic astronomy.`;
       const url = `${SITE}/panchang/today`;
       return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: todayISO }) };
     }
     case 'tomorrow': {
-      const h = humanDate(tomorrowISO);
-      const title = `Tomorrow's Panchang — ${h}`;
-      const description = `Panchang for ${h}. Plan ahead with tomorrow's Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, Sunrise & Sunset.`;
+      const humanTomorrow = humanDate(tomorrowISO);
+      const title = `Tomorrow's Panchang — ${humanTomorrow}`;
+      const description = `Panchang for ${humanTomorrow}. Plan your day with tomorrow's Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, and Sunrise & Sunset.`;
       const url = `${SITE}/panchang/tomorrow`;
       return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: tomorrowISO }) };
     }
     case 'tithi': {
-      const h = humanDate(todayISO);
-      const title = `Today's Tithi (Lunar Day) — ${h}`;
-      const description = `What is today's Tithi? Find the current Tithi, Paksha phase, Nakshatra, and Moon sign for ${h} — accurate Vedic Panchang data.`;
+      const humanToday = humanDate(todayISO);
+      const title = `Today's Tithi (Lunar Day) — ${humanToday}`;
+      const description = `What is today's Tithi? Find the current Tithi (lunar day), Paksha phase, Nakshatra, and Moon sign for ${humanToday} — accurate Vedic Panchang data.`;
       const url = `${SITE}/panchang/tithi`;
       return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: todayISO }) };
     }
     case 'choghadiya': {
-      const h = humanDate(todayISO);
-      const title = `Choghadiya Today — ${h}`;
-      const description = `Today's Choghadiya for ${h}. Find auspicious (Amrit, Shubh, Labh, Char) and inauspicious time slots for travel, business, and muhurat planning.`;
+      const humanToday = humanDate(todayISO);
+      const title = `Choghadiya Today — ${humanToday}`;
+      const description = `Today's Choghadiya table for ${humanToday}. Find auspicious (Amrit, Shubh, Labh, Char) and inauspicious time slots for starting new work, travel, and muhurat planning.`;
       const url = `${SITE}/panchang/choghadiya`;
       return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: todayISO }) };
     }
     case 'festivals': {
       const year = new Date().getFullYear();
       const title = `Hindu Festivals & Vrats ${year} — Complete Calendar`;
-      const description = `Full list of Hindu festivals, vrats, and religious observances for ${year}. Ekadashi, Purnima, Amavasya, and major festivals with exact dates.`;
+      const description = `Full list of Hindu festivals, vrats, and religious observances for ${year}. Includes Ekadashi, Purnima, Amavasya, and major festivals with exact dates.`;
       const url = `${SITE}/panchang/festivals`;
       let schema;
       if (festivalData?.items?.length) {
-        schema = {
-          '@context': 'https://schema.org', '@type': 'ItemList',
-          name: title, description, url,
-          numberOfItems: festivalData.items.length,
-          itemListElement: festivalData.items.slice(0, 20).map((item, idx) => ({
-            '@type': 'ListItem', position: idx + 1, name: item.name,
-            description: item.summary || item.name, url: `${SITE}/panchang/date/${item.date}`,
-          })),
-        };
+        schema = { '@context': 'https://schema.org', '@type': 'ItemList', name: title, description, url, numberOfItems: festivalData.items.length,
+          itemListElement: festivalData.items.slice(0, 20).map((item, idx) => ({ '@type': 'ListItem', position: idx + 1, name: item.name, description: item.summary || item.name, url: `${SITE}/panchang/date/${item.date}` })) };
       } else {
         schema = webPageSchema({ name: title, description, url });
       }
@@ -140,7 +142,7 @@ function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, pa
     case 'calendar': {
       const y = calYear || new Date().getFullYear();
       const mo = calMonth || (new Date().getMonth() + 1);
-      const monthLabel = `${MONTH_NAMES[mo-1]} ${y}`;
+      const monthLabel = `${MONTH_NAMES[mo - 1]} ${y}`;
       const title = `Panchang Calendar — ${monthLabel}`;
       const description = `Hindu Panchang calendar for ${monthLabel}. View daily Tithi, Nakshatra, festivals, and Vedic observances for every day of ${monthLabel}.`;
       const url = `${SITE}/panchang/calendar/${y}/${mo}`;
@@ -148,26 +150,23 @@ function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, pa
     }
     case 'date': {
       if (!dateValue) return null;
-      const h = humanDate(dateValue);
+      const humanDay = humanDate(dateValue);
       let title, description;
       if (panchangData?.panchang) {
         const { tithi, nakshatra, yoga } = panchangData.panchang;
-        title = `Panchang ${h} — ${tithi.name}, ${nakshatra.name} Nakshatra`;
-        description = `Panchang for ${h}: Tithi — ${tithi.name} (${panchangData.panchang.paksha} Paksha), Nakshatra — ${nakshatra.name}, Yoga — ${yoga.name}. Rahu Kaal, Gulika Kaal, Sunrise & Sunset timings.`;
+        title = `Panchang ${humanDay} — ${tithi.name}, ${nakshatra.name} Nakshatra`;
+        description = `Panchang for ${humanDay}: Tithi — ${tithi.name} (${panchangData.panchang.paksha} Paksha), Nakshatra — ${nakshatra.name}, Yoga — ${yoga.name}. Includes Rahu Kaal, Gulika Kaal, Sunrise & Sunset timings.`;
       } else {
-        title = `Panchang — ${h}`;
-        description = `Complete Vedic Panchang for ${h}. Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, Sunrise & Sunset.`;
+        title = `Panchang — ${humanDay}`;
+        description = `Complete Vedic Panchang for ${humanDay}. Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, Sunrise & Sunset.`;
       }
       const url = `${SITE}/panchang/date/${dateValue}`;
       const [y, mo] = dateValue.split('-');
-      const breadcrumb = {
-        '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Panchang', item: `${SITE}/panchang/today` },
-          { '@type': 'ListItem', position: 2, name: `${MONTH_NAMES[parseInt(mo)-1]} ${y}`, item: `${SITE}/panchang/calendar/${y}/${parseInt(mo)}` },
-          { '@type': 'ListItem', position: 3, name: h, item: url },
-        ],
-      };
+      const breadcrumb = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Panchang', item: `${SITE}/panchang/today` },
+        { '@type': 'ListItem', position: 2, name: `${MONTH_NAMES[parseInt(mo)-1]} ${y}`, item: `${SITE}/panchang/calendar/${y}/${parseInt(mo)}` },
+        { '@type': 'ListItem', position: 3, name: humanDay, item: url },
+      ]};
       return { title, description, url, schema: [breadcrumb, webPageSchema({ name: title, description, url, datePublished: dateValue })] };
     }
     default: return null;
@@ -181,176 +180,135 @@ function PanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchan
     [view, calYear, calMonth, dateValue, festivalData?.items?.length, panchangData?.panchang?.tithi?.name]
   );
   if (!seo) return null;
-  const schemaArr = Array.isArray(seo.schema) ? seo.schema : seo.schema ? [seo.schema] : [];
+  const schemas = Array.isArray(seo.schema) ? seo.schema : seo.schema ? [seo.schema] : [];
+  return <SEO title={seo.title} description={seo.description} url={seo.url} image={OG_IMAGE} type="website" schema={schemas.length === 1 ? schemas[0] : schemas.length > 1 ? schemas : null} />;
+}
+
+// ─── SEO body-copy blocks ──────────────────────────────────────────────────
+// Static, crawlable explanatory content rendered below the live data.
+// These are what Google actually ranks — descriptive H2/H3 + paragraph copy.
+
+function PanchangDailySEOContent() {
   return (
-    <SEO title={seo.title} description={seo.description} url={seo.url} image={OG_IMAGE} type="website"
-      schema={schemaArr.length === 1 ? schemaArr[0] : schemaArr.length > 1 ? schemaArr : null} />
+    <div className="mt-12 space-y-8 text-sm text-muted-foreground border-t border-border pt-8">
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">What is Panchang?</h2>
+        <p>Panchang (also written as Panchangam or Panchāṅga) is the traditional Hindu almanac used across India for over 1,800 years. The word means "five limbs" — referring to Tithi (lunar day), Vara (weekday), Nakshatra (lunar mansion), Yoga, and Karana. Together these five elements describe the quality and character of each day according to Vedic astronomy.</p>
+      </div>
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">What is Rahu Kaal?</h2>
+        <p>Rahu Kaal is an inauspicious 90-minute period each day governed by Rahu, the shadow planet. The traditional Vedic system divides daylight into 8 equal Kaals. Rahu Kaal occupies one of these slots, with the exact slot shifting each day of the week — Monday through Sunday each have a different Rahu Kaal position. Important activities like travel, business deals, or ceremonies are generally avoided during this window.</p>
+      </div>
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">What is Abhijit Muhurta?</h2>
+        <p>Abhijit Muhurta is the most auspicious 48-minute window of the day, centred on solar noon. It is considered so powerful in Vedic tradition that it overrides most negative planetary influences. Starting any new work, signing agreements, or making important decisions during Abhijit Muhurta is highly recommended — except on Wednesdays.</p>
+      </div>
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">Tithi, Nakshatra, Yoga and Karana explained</h2>
+        <p><strong className="text-foreground">Tithi</strong> is the lunar day — calculated from the angular distance between the Sun and Moon. There are 30 Tithis in a lunar month, 15 in Shukla Paksha (waxing) and 15 in Krishna Paksha (waning). <strong className="text-foreground">Nakshatra</strong> is the lunar mansion — the position of the Moon among the 27 asterisms of the zodiac. <strong className="text-foreground">Yoga</strong> is computed from the sum of Sun and Moon longitudes and indicates the combined planetary quality of the day. <strong className="text-foreground">Karana</strong> is half a Tithi and changes twice daily.</p>
+      </div>
+    </div>
   );
 }
 
-// ─── SEO body-copy sections ───────────────────────────────────────────────────
-// Each view renders an educational / keyword-rich section BELOW the data card.
-// This is what Google indexes for ranking — not just the meta tags.
-
-function SeoBodyDaily() {
+function PanchangTithiSEOContent() {
   return (
-    <section className="mt-10 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
+    <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">What is Today's Panchang?</h2>
-        <p>Panchang (also spelled Panchangam) is the traditional Vedic almanac used across India for over 3,000 years. The word means "five limbs" (<em>panch</em> = five, <em>anga</em> = limb), referring to the five core elements calculated each day: <strong>Tithi</strong> (lunar day), <strong>Nakshatra</strong> (lunar mansion), <strong>Yoga</strong> (luni-solar combination), <strong>Karana</strong> (half lunar day), and <strong>Vara</strong> (weekday). Together they determine the auspiciousness of any moment.</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">Understanding Tithi — the Vedic Lunar Day</h2>
+        <p>In Vedic astrology, a Tithi is not a solar calendar day — it is a lunar day defined by the Moon moving 12° away from the Sun. This means a Tithi can begin and end at any time of the solar day, and two Tithis can even fall within one solar day. There are 30 Tithis in a complete lunar cycle (Paksha), numbered 1 (Pratipada) through 15 (Purnima or Amavasya).</p>
       </div>
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">How is Rahu Kaal Calculated?</h2>
-        <p>Rahu Kaal is a period of approximately 90 minutes considered inauspicious in Vedic tradition. It is calculated by dividing the daylight hours into 8 equal parts and assigning one part to Rahu based on the weekday. The traditional mnemonic is <em>"Mother Saw Father Wearing The Turban Smartly"</em> — the first letters map to Monday, Saturday, Friday, Wednesday, Thursday, Tuesday, Sunday, giving the slot number (1st through 7th) from sunrise. Our calculator uses Swiss Ephemeris for precise sunrise/sunset and then applies the weekday slot formula exactly.</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">Shukla Paksha and Krishna Paksha</h2>
+        <p>The lunar month is split into two fortnights. Shukla Paksha is the bright fortnight from Amavasya (new moon) to Purnima (full moon) — associated with growth and auspicious beginnings. Krishna Paksha is the dark fortnight from Purnima to Amavasya — associated with completion, letting go, and ancestral rites. Many Vedic rituals and festivals are specifically tied to Tithis within each Paksha.</p>
       </div>
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">What is Abhijit Muhurta?</h2>
-        <p>Abhijit Muhurta is the most auspicious 48-minute window of the day, centred on solar noon. It is governed by the star Abhijit (Vega) and is considered universally favourable — even overriding otherwise inauspicious planetary positions. It occurs every day except Wednesday.</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">Important Tithis and their significance</h2>
+        <p>Ekadashi (11th Tithi) is observed as a fast day dedicated to Lord Vishnu in both Pakshas. Chaturdashi (14th) in Krishna Paksha is Shivaratri — auspicious for Shiva worship. Purnima (15th Shukla) is the full moon, ideal for spiritual practices and charity. Amavasya (15th Krishna) is the new moon, observed for ancestral rites (Pitru Tarpan). Pradosh (13th Tithi) is sacred to Lord Shiva.</p>
       </div>
-      <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">Frequently Asked Questions</h2>
-        <div className="space-y-3">
-          {[
-            { q: 'Is today a good day according to Panchang?', a: 'Check the Tithi, Yoga, and day quality windows above. Shukla Paksha days (waxing moon) are generally more auspicious for new beginnings. Avoid Rahu Kaal and Yamaganda for important activities.' },
-            { q: 'What is the difference between Rahu Kaal and Yamaganda?', a: 'Both are inauspicious periods. Rahu Kaal is associated with obstacles and delays, while Yamaganda (ruled by Yama, the god of death) is avoided for journeys and auspicious starts. Gulika Kaal (associated with Saturn) is moderately inauspicious.' },
-            { q: 'Which Nakshatra is today?', a: "The current Nakshatra is shown above in the Five Limbs section. The Moon moves through one of 27 Nakshatras every ~27 hours. Each Nakshatra has a different energy — Rohini, Pushya, and Uttara Phalguni are among the most auspicious." },
-            { q: 'What is Tithi in Panchang?', a: 'A Tithi is a lunar day, defined as the time taken for the Moon to advance 12° ahead of the Sun. There are 30 Tithis in a lunar month — 15 in Shukla Paksha (waxing) and 15 in Krishna Paksha (waning).' },
-          ].map(({ q, a }) => (
-            <details key={q} className="group border border-border rounded-lg">
-              <summary className="flex items-center justify-between px-4 py-3 cursor-pointer font-medium text-foreground text-sm">{q}<span className="text-gold group-open:rotate-180 transition-transform">▾</span></summary>
-              <p className="px-4 pb-3 text-xs">{a}</p>
-            </details>
-          ))}
-        </div>
-      </div>
-    </section>
+    </div>
   );
 }
 
-function SeoBodyTithi() {
+function PanchangChoghadiyaSEOContent() {
   return (
-    <section className="mt-10 space-y-5 text-sm text-muted-foreground border-t border-border pt-8">
+    <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">Understanding Today's Tithi</h2>
-        <p>A Tithi is one of the five limbs of the Vedic Panchang — the lunar day. Unlike a solar day (24 hours), a Tithi is the time taken for the angular distance between the Moon and Sun to increase by 12°. This means a single Tithi can span anywhere from 19 to 26 hours, sometimes skipping an entire solar day or repeating on two consecutive days.</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">What is Choghadiya?</h2>
+        <p>Choghadiya (also Chaughadia) is a traditional Vedic time-keeping system that divides the day and night into eight equal segments called Choghadiyas. Each Choghadiya is approximately 90 minutes long and is classified by its ruling planet, giving it one of seven qualities: Amrit (excellent), Shubh (auspicious), Labh (profitable), Char (neutral — good for travel), Udveg (inauspicious — Sun rules), Kaal (inauspicious — Saturn rules), and Rog (inauspicious — Mars rules).</p>
       </div>
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">Shukla Paksha vs Krishna Paksha</h2>
-        <p><strong>Shukla Paksha</strong> (the bright fortnight, Tithis 1–15) runs from New Moon to Full Moon. It is generally considered auspicious for starting new ventures, travelling north or east, and spiritual practices. <strong>Krishna Paksha</strong> (the dark fortnight, Tithis 16–30) runs from Full Moon back to New Moon and is preferred for inward work, resolving debts, and ending relationships.</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">How to use Choghadiya for muhurat planning</h2>
+        <p>For starting a new business, signing a contract, travelling, or beginning any important activity, look for an Amrit or Shubh Choghadiya window. Labh and Char are good for routine tasks and travel respectively. Udveg, Kaal, and Rog periods are traditionally avoided for new beginnings — though Kaal Choghadiya is sometimes considered good for government-related work. The times shift daily based on the weekday and the length of the day.</p>
       </div>
-      <div className="grid grid-cols-2 gap-2">
-        {['Pratipada — New beginnings','Panchami — Learning & arts','Ekadashi — Fasting & devotion','Purnima — Celebrations & full energy','Amavasya — Ancestor worship','Chaturdashi — Strength & courage'].map(t => (
-          <div key={t} className="border border-gold/20 rounded-lg p-3 bg-gold/5">
-            <p className="text-xs font-medium text-foreground">{t.split(' — ')[0]}</p>
-            <p className="text-xs mt-0.5">{t.split(' — ')[1]}</p>
-          </div>
-        ))}
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">Choghadiya vs Rahu Kaal — what's the difference?</h2>
+        <p>Rahu Kaal is a single fixed inauspicious window each day determined by the weekday, whereas Choghadiya provides a full table of all eight time segments with their qualities. Choghadiya gives you a more granular picture — you can see not just when to avoid activity but also which specific windows in the day are especially powerful for different types of work.</p>
       </div>
-    </section>
+    </div>
   );
 }
 
-function SeoBodyChoghadiya() {
+function PanchangFestivalsSEOContent() {
   return (
-    <section className="mt-10 space-y-5 text-sm text-muted-foreground border-t border-border pt-8">
+    <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">What is Choghadiya?</h2>
-        <p>Choghadiya (from <em>Chau</em> = four and <em>Ghadi</em> = ~24 minutes) divides daylight and nighttime into 8 equal periods. Each period is ruled by a planet and carries a specific quality. It is widely used in Gujarat and Rajasthan to select auspicious start times for travel, business deals, and other important activities.</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">Hindu Festivals and the Vedic Calendar</h2>
+        <p>Hindu festivals are not fixed to the Gregorian calendar — they are computed from Tithi, Nakshatra, and planetary positions each year. This is why Holi, Diwali, Janmashtami, and Rama Navami fall on different Gregorian dates every year. Our festival dates are calculated directly from Vedic astronomy using the Swiss Ephemeris for maximum accuracy.</p>
       </div>
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">The 7 Choghadiya Types</h2>
-        <div className="grid grid-cols-1 gap-2">
-          {[
-            { name: 'Amrit', planet: 'Moon', quality: 'Excellent', color: 'bg-green-100 text-green-800' },
-            { name: 'Shubh', planet: 'Jupiter', quality: 'Good', color: 'bg-green-100 text-green-800' },
-            { name: 'Labh', planet: 'Mercury', quality: 'Beneficial for business', color: 'bg-green-100 text-green-800' },
-            { name: 'Char', planet: 'Venus', quality: 'Good for travel', color: 'bg-amber-100 text-amber-800' },
-            { name: 'Rog', planet: 'Mars', quality: 'Avoid — inauspicious', color: 'bg-red-100 text-red-800' },
-            { name: 'Kaal', planet: 'Saturn', quality: 'Avoid for new work', color: 'bg-red-100 text-red-800' },
-            { name: 'Udveg', planet: 'Sun', quality: 'Avoid — causes anxiety', color: 'bg-red-100 text-red-800' },
-          ].map(({ name, planet, quality, color }) => (
-            <div key={name} className="flex items-center justify-between border border-border rounded-lg px-4 py-2">
-              <div className="flex items-center gap-3">
-                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${color}`}>{name}</span>
-                <span className="text-xs text-foreground">Ruled by {planet}</span>
-              </div>
-              <span className="text-xs">{quality}</span>
-            </div>
-          ))}
-        </div>
+        <h2 className="text-base font-semibold text-foreground mb-2">Vrats (fasting days) in the Hindu calendar</h2>
+        <p>Vrats are days of fasting or observance tied to specific Tithis. Ekadashi Vrat (11th Tithi of each fortnight, 24 times per year) is the most widely observed. Pradosh Vrat falls on the 13th Tithi and is dedicated to Shiva. Satyanarayan Vrat is typically observed on Purnima or Ekadashi. Mondays (Somvar Vrat) are sacred to Shiva. Observing these days with intention is said to accelerate spiritual progress and remove karmic obstacles.</p>
       </div>
-    </section>
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">Major Hindu festivals and their Panchang basis</h2>
+        <p><strong className="text-foreground">Diwali</strong> falls on Amavasya of Kartika month. <strong className="text-foreground">Holi</strong> is celebrated on Purnima of Phalguna. <strong className="text-foreground">Janmashtami</strong> occurs on Ashtami Krishna Paksha of Shravana. <strong className="text-foreground">Rama Navami</strong> is on Navami Shukla Paksha of Chaitra. <strong className="text-foreground">Maha Shivaratri</strong> falls on Chaturdashi Krishna Paksha of Magha or Phalguna.</p>
+      </div>
+    </div>
   );
 }
 
-function SeoBodyFestivals() {
-  return (
-    <section className="mt-10 space-y-5 text-sm text-muted-foreground border-t border-border pt-8">
-      <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">How Are Hindu Festival Dates Calculated?</h2>
-        <p>Hindu festival dates are not fixed to the Gregorian calendar — they move each year because they are determined by the Vedic lunar calendar (Panchang). Most festivals fall on a specific Tithi within a specific lunar month. For example, Diwali always falls on Amavasya (new moon) of the month of Kartika, and Holi on Purnima (full moon) of Phalguna.</p>
-      </div>
-      <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">Key Recurring Observances</h2>
-        <div className="space-y-2">
-          {[
-            { name: 'Ekadashi', freq: 'Twice a month', desc: 'The 11th lunar day of each fortnight. Fasting on Ekadashi is believed to cleanse past karmas and bring divine blessings.' },
-            { name: 'Pradosh Vrat', freq: 'Twice a month', desc: 'The 13th lunar day (Trayodashi). Dedicated to Lord Shiva, observed at twilight for health and longevity.' },
-            { name: 'Purnima', freq: 'Monthly', desc: 'Full moon day — spiritually potent for meditation, charity, and ancestor rituals. Also the day of Satyanarayan Puja.' },
-            { name: 'Amavasya', freq: 'Monthly', desc: 'New moon day — ideal for Pitru Tarpan (offerings to ancestors) and powerful for tantric practices.' },
-          ].map(({ name, freq, desc }) => (
-            <div key={name} className="border border-gold/20 rounded-lg p-4 bg-gold/5">
-              <div className="flex items-center justify-between mb-1">
-                <p className="font-semibold text-foreground text-sm">{name}</p>
-                <span className="text-xs text-gold">{freq}</span>
-              </div>
-              <p className="text-xs">{desc}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function SeoBodyCalendar({ calYear, calMonth }) {
+function PanchangCalendarSEOContent({ calYear, calMonth }) {
   const monthName = MONTH_NAMES[(calMonth || 1) - 1];
   const year = calYear || new Date().getFullYear();
   return (
-    <section className="mt-10 space-y-5 text-sm text-muted-foreground border-t border-border pt-8">
+    <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">Hindu Panchang Calendar — {monthName} {year}</h2>
-        <p>The Hindu calendar is a lunisolar system — it tracks both the solar year and lunar months simultaneously. Each date in this calendar shows the Tithi (lunar day), Nakshatra, and any festivals or Vrats observed. The lunar month begins on the new moon (Amavasya) in the Amanta system (used in South and West India) or on the full moon (Purnima) in the Purnimanta system (used in North India).</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">Hindu Panchang Calendar — {monthName} {year}</h2>
+        <p>This month view shows the Tithi for every day of {monthName} {year}, along with festivals and Vedic observances. Each date is a direct link to the full Panchang for that day — including Nakshatra, Yoga, Karana, Rahu Kaal, and all timing windows. Tap any date to access its complete Panchang details.</p>
       </div>
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">How to Use This Calendar</h2>
-        <p>Each date cell shows the day number and its Tithi. A gold dot indicates a festival or Vrat on that day. Tap any date to see the complete Panchang — Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, and more. Use the country and location selectors to view timings for your city.</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">How to read the Panchang Calendar</h2>
+        <p>Each cell shows the Tithi name for that day (calculated at sunrise). A gold dot indicates a festival or Vrat observance. Dates shown in gold are today. The calendar follows the Amanta lunar month system (month ends on Amavasya), which is the standard used across most of India outside Bengal and some northern states.</p>
       </div>
-    </section>
+    </div>
   );
 }
 
-function SeoBodyDate({ data }) {
-  if (!data) return null;
-  const { panchang, summary } = data;
+function PanchangDateSEOContent({ panchangData }) {
+  if (!panchangData?.panchang) return null;
+  const { tithi, nakshatra, yoga, karana, paksha, lunar_month, sun_sign, moon_sign } = panchangData.panchang;
+  const { sunrise, sunset } = panchangData.summary || {};
   return (
-    <section className="mt-10 space-y-5 text-sm text-muted-foreground border-t border-border pt-8">
+    <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">About {panchang.tithi.name}</h2>
-        <p>{panchang.paksha === 'Shukla'
-          ? `${panchang.tithi.name} falls in Shukla Paksha — the waxing phase of the Moon. Shukla Paksha days carry increasing lunar energy, making them favourable for starting new work, conducting ceremonies, and outward activities.`
-          : `${panchang.tithi.name} falls in Krishna Paksha — the waning phase of the Moon. Krishna Paksha days are suited for reflection, completing ongoing work, and spiritual practices.`
-        }</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">Full Panchang Details</h2>
+        <p>On this day, the Tithi is <strong className="text-foreground">{tithi.name}</strong> in <strong className="text-foreground">{paksha} Paksha</strong> of <strong className="text-foreground">{lunar_month}</strong> month. The Moon is transiting <strong className="text-foreground">{nakshatra.name}</strong> Nakshatra in <strong className="text-foreground">{moon_sign}</strong> Rashi, while the Sun is placed in <strong className="text-foreground">{sun_sign}</strong>. Yoga for the day is <strong className="text-foreground">{yoga.name}</strong>, and Karana is <strong className="text-foreground">{karana.name}</strong>.</p>
+        {sunrise && sunset && <p className="mt-2">Sunrise: <strong className="text-foreground">{sunrise}</strong> &nbsp;·&nbsp; Sunset: <strong className="text-foreground">{sunset}</strong> (IST, New Delhi).</p>}
       </div>
       <div>
-        <h2 className="text-base font-playfair font-semibold text-foreground mb-2">About {panchang.nakshatra.name} Nakshatra</h2>
-        <p>The Moon is currently transiting <strong>{panchang.nakshatra.name}</strong>, one of the 27 Nakshatras (lunar mansions) in Vedic astrology. The Nakshatra governs the quality of the lunar energy available — influencing everything from the success of new ventures to the outcome of travel and health.</p>
+        <h2 className="text-base font-semibold text-foreground mb-2">About {tithi.name} Tithi</h2>
+        <p>{tithi.name} is a {paksha === 'Shukla' ? 'waxing (Shukla Paksha)' : 'waning (Krishna Paksha)'} Tithi. {paksha === 'Shukla' ? 'Shukla Paksha Tithis are generally considered auspicious for new beginnings, ceremonies, and growth-oriented activities.' : 'Krishna Paksha Tithis are associated with completion, reflection, and ancestral rites.'} The quality of activities undertaken aligns with the energy of this Tithi according to Vedic tradition.</p>
       </div>
-    </section>
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">About {nakshatra.name} Nakshatra</h2>
+        <p>The Moon in {nakshatra.name} shapes the emotional quality of this day. Each of the 27 Nakshatras carries a distinct deity, symbol, and set of qualities that influence the nature of any activity begun under them. Checking the Nakshatra before muhurat selection is a fundamental step in Vedic Panchang.</p>
+      </div>
+    </div>
   );
 }
 
-// ─── View components ──────────────────────────────────────────────────────────
+// ─── views ─────────────────────────────────────────────────────────────────
 
 function PanchangDailyView({ dayOffset = 0, onDataLoad }) {
   const [data, setData] = useState(null);
@@ -393,7 +351,10 @@ function PanchangDailyView({ dayOffset = 0, onDataLoad }) {
             { label: 'Vara (Day)', value: summary.weekday,          sub: panchang.samvat },
           ].map(item => (
             <div key={item.label} className="flex items-center justify-between px-5 py-4">
-              <div><p className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">{item.label}</p><p className="font-medium text-sm">{item.value}</p></div>
+              <div>
+                <p className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">{item.label}</p>
+                <p className="font-medium text-sm">{item.value}</p>
+              </div>
               {item.sub && <p className="text-xs text-muted-foreground text-right max-w-[200px]">{item.sub}</p>}
             </div>
           ))}
@@ -438,7 +399,10 @@ function PanchangDailyView({ dayOffset = 0, onDataLoad }) {
             {observances.map(o => (
               <div key={o.slug} className="flex items-start gap-3">
                 <Star className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
-                <div><p className="text-sm font-medium">{o.name}</p><p className="text-xs text-muted-foreground">{o.summary}</p></div>
+                <div>
+                  <p className="text-sm font-medium">{o.name}</p>
+                  <p className="text-xs text-muted-foreground">{o.summary}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -454,7 +418,7 @@ function PanchangDailyView({ dayOffset = 0, onDataLoad }) {
           <Sparkles className="h-4 w-4" /> Festivals &amp; Vrats
         </Link>
       </div>
-      <SeoBodyDaily />
+      <PanchangDailySEOContent />
     </div>
   );
 }
@@ -498,7 +462,7 @@ function PanchangTithiView() {
           <div><p className="text-xs text-muted-foreground">Samvat</p><p className="font-semibold text-xs">{panchang.samvat}</p></div>
         </div>
       </Card>
-      <SeoBodyTithi />
+      <PanchangTithiSEOContent />
     </div>
   );
 }
@@ -540,7 +504,7 @@ function PanchangChoghadiyaView() {
         }
       </Card>
       <p className="text-xs text-muted-foreground text-center">Times shown in IST (Indian Standard Time)</p>
-      <SeoBodyChoghadiya />
+      <PanchangChoghadiyaSEOContent />
     </div>
   );
 }
@@ -597,7 +561,7 @@ function PanchangCalendarView({ year, month }) {
         </div>
       ) : <p className="text-center text-muted-foreground py-12">Failed to load calendar</p>}
       <p className="text-xs text-center text-muted-foreground">Tap any date to view full Panchang details</p>
-      <SeoBodyCalendar calYear={year} calMonth={month} />
+      <PanchangCalendarSEOContent calYear={year} calMonth={month} />
     </div>
   );
 }
@@ -639,7 +603,7 @@ function PanchangFestivalsView({ onDataLoad }) {
           </div>
         </div>
       ))}
-      <SeoBodyFestivals />
+      <PanchangFestivalsSEOContent />
     </div>
   );
 }
@@ -651,11 +615,16 @@ function PanchangDateView({ dateStr, onDataLoad }) {
   const [error, setError] = useState(null);
   useEffect(() => {
     setLoading(true); setError(null); setData(null);
-    // Use the new explicit /date/{date} endpoint first, fall back to /daily?date=
+    // Use the dedicated /date/{date} endpoint (CODEX requirement)
     axios.get(`${API}/date/${dateStr}`)
-      .catch(() => axios.get(`${API}/daily`, { params: { date: dateStr } }))
       .then(r => { setData(r.data); if (onDataLoad) onDataLoad(r.data); })
-      .catch(() => setError('Failed to load Panchang data.'))
+      .catch(() => {
+        // Fallback to /daily?date= if dedicated endpoint not yet deployed
+        axios.get(`${API}/daily`, { params: { date: dateStr } })
+          .then(r => { setData(r.data); if (onDataLoad) onDataLoad(r.data); })
+          .catch(() => setError('Failed to load Panchang data.'))
+          .finally(() => setLoading(false));
+      })
       .finally(() => setLoading(false));
   }, [dateStr]); // eslint-disable-line react-hooks/exhaustive-deps
   if (loading) return <div className="space-y-4">{[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
@@ -688,7 +657,10 @@ function PanchangDateView({ dateStr, onDataLoad }) {
             { label: 'Vara (Day)', value: summary.weekday,          sub: panchang.samvat },
           ].map(item => (
             <div key={item.label} className="flex items-center justify-between px-5 py-4">
-              <div><p className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">{item.label}</p><p className="font-medium text-sm">{item.value}</p></div>
+              <div>
+                <p className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">{item.label}</p>
+                <p className="font-medium text-sm">{item.value}</p>
+              </div>
               {item.sub && <p className="text-xs text-muted-foreground text-right max-w-[200px]">{item.sub}</p>}
             </div>
           ))}
@@ -731,18 +703,21 @@ function PanchangDateView({ dateStr, onDataLoad }) {
             {observances.map(o => (
               <div key={o.slug} className="flex items-start gap-3">
                 <Star className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
-                <div><p className="text-sm font-medium">{o.name}</p><p className="text-xs text-muted-foreground">{o.summary}</p></div>
+                <div>
+                  <p className="text-sm font-medium">{o.name}</p>
+                  <p className="text-xs text-muted-foreground">{o.summary}</p>
+                </div>
               </div>
             ))}
           </div>
         </Card>
       )}
-      <SeoBodyDate data={data} />
+      <PanchangDateSEOContent panchangData={data} />
     </div>
   );
 }
 
-// ─── Main page ────────────────────────────────────────────────────────────────
+// ─── main page ─────────────────────────────────────────────────────────────
 
 export const PanchangPage = () => {
   const { type: rawType = 'daily', year: yearParam, month: monthParam, dateValue } = useParams();
@@ -757,26 +732,36 @@ export const PanchangPage = () => {
   const [festivalData, setFestivalData] = useState(null);
   const [panchangData, setPanchangData] = useState(null);
 
-  useEffect(() => { setFestivalData(null); setPanchangData(null); }, [activeView, dateValue, calYear, calMonth]);
+  useEffect(() => {
+    setFestivalData(null);
+    setPanchangData(null);
+  }, [activeView, dateValue, calYear, calMonth]);
 
   const config = isDateView
     ? { title: 'Panchang Details', icon: Calendar, desc: 'Complete Vedic almanac for the selected date' }
     : (TYPE_META[activeView] || TYPE_META.daily);
 
   const subNavItems = [
-    { key: 'daily',      label: 'Today',      icon: Sun,      path: '/panchang/today' },
-    { key: 'tomorrow',   label: 'Tomorrow',   icon: Sun,      path: '/panchang/tomorrow' },
-    { key: 'tithi',      label: 'Tithi',      icon: Moon,     path: '/panchang/tithi' },
-    { key: 'choghadiya', label: 'Choghadiya', icon: Zap,      path: '/panchang/choghadiya' },
-    { key: 'calendar',   label: 'Calendar',   icon: Calendar, path: `/panchang/calendar/${today.getFullYear()}/${today.getMonth() + 1}` },
-    { key: 'festivals',  label: 'Festivals',  icon: Sparkles, path: '/panchang/festivals' },
+    { key: 'daily',       label: 'Today',      icon: Sun,      path: '/panchang/today' },
+    { key: 'tomorrow',    label: 'Tomorrow',   icon: Sun,      path: '/panchang/tomorrow' },
+    { key: 'tithi',       label: 'Tithi',      icon: Moon,     path: '/panchang/tithi' },
+    { key: 'choghadiya',  label: 'Choghadiya', icon: Zap,      path: '/panchang/choghadiya' },
+    { key: 'calendar',    label: 'Calendar',   icon: Calendar, path: `/panchang/calendar/${today.getFullYear()}/${today.getMonth() + 1}` },
+    { key: 'festivals',   label: 'Festivals',  icon: Sparkles, path: '/panchang/festivals' },
   ];
+
   const subNavActive = activeView === 'date' ? 'calendar' : activeView;
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 pb-24 lg:pb-10">
-      <PanchangSEO view={activeView} calYear={calYear} calMonth={calMonth} dateValue={dateValue}
-        festivalData={festivalData} panchangData={panchangData} />
+      <PanchangSEO
+        view={activeView}
+        calYear={calYear}
+        calMonth={calMonth}
+        dateValue={dateValue}
+        festivalData={festivalData}
+        panchangData={panchangData}
+      />
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
           <Calendar className="h-3 w-3" /> Vedic Panchang
@@ -791,13 +776,13 @@ export const PanchangPage = () => {
           </Link>
         ))}
       </div>
-      {isDateView                                && <PanchangDateView     dateStr={dateValue}           onDataLoad={setPanchangData} />}
-      {!isDateView && activeView === 'daily'     && <PanchangDailyView    dayOffset={0}                 onDataLoad={setPanchangData} />}
-      {!isDateView && activeView === 'tomorrow'  && <PanchangDailyView    dayOffset={1}                 onDataLoad={setPanchangData} />}
-      {!isDateView && activeView === 'tithi'     && <PanchangTithiView />}
-      {!isDateView && activeView === 'choghadiya'&& <PanchangChoghadiyaView />}
-      {!isDateView && activeView === 'calendar'  && <PanchangCalendarView  year={calYear} month={calMonth} />}
-      {!isDateView && activeView === 'festivals' && <PanchangFestivalsView                              onDataLoad={setFestivalData} />}
+      {isDateView                                 && <PanchangDateView     dateStr={dateValue}                  onDataLoad={setPanchangData} />}
+      {!isDateView && activeView === 'daily'      && <PanchangDailyView    dayOffset={0}                        onDataLoad={setPanchangData} />}
+      {!isDateView && activeView === 'tomorrow'   && <PanchangDailyView    dayOffset={1}                        onDataLoad={setPanchangData} />}
+      {!isDateView && activeView === 'tithi'      && <PanchangTithiView />}
+      {!isDateView && activeView === 'choghadiya' && <PanchangChoghadiyaView />}
+      {!isDateView && activeView === 'calendar'   && <PanchangCalendarView year={calYear} month={calMonth} />}
+      {!isDateView && activeView === 'festivals'  && <PanchangFestivalsView                                    onDataLoad={setFestivalData} />}
     </div>
   );
 };
