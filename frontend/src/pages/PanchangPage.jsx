@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
@@ -7,6 +7,8 @@ import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api/panchang`;
+const SITE = 'https://everydayhoroscope.in';
+const OG_IMAGE = `${SITE}/og-image.png`;
 
 const QUALITY_STYLES = {
   good:    { badge: 'bg-green-100 text-green-800' },
@@ -33,6 +35,8 @@ const ALIAS = {
   rahukaal:   'daily',
 };
 
+// ─── date helpers ────────────────────────────────────────────────────────────
+
 function formatTime(iso) {
   if (!iso) return '--';
   try { return new Date(iso).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true, timeZone: 'Asia/Kolkata' }); }
@@ -45,12 +49,18 @@ function formatDate(iso) {
   catch { return iso; }
 }
 
-// Compute tomorrow's ISO date string in IST
+function getTodayIST() {
+  const now = new Date();
+  const ist = new Date(now.getTime() + 5.5 * 60 * 60 * 1000);
+  const y = ist.getUTCFullYear();
+  const m = String(ist.getUTCMonth() + 1).padStart(2, '0');
+  const d = String(ist.getUTCDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
 function getTomorrowIST() {
   const now = new Date();
-  // Advance by 1 day in IST
-  const istOffset = 5.5 * 60 * 60 * 1000;
-  const ist = new Date(now.getTime() + istOffset);
+  const ist = new Date(now.getTime() + 5.5 * 60 * 60 * 1000);
   ist.setUTCDate(ist.getUTCDate() + 1);
   const y = ist.getUTCFullYear();
   const m = String(ist.getUTCMonth() + 1).padStart(2, '0');
@@ -58,20 +68,258 @@ function getTomorrowIST() {
   return `${y}-${m}-${d}`;
 }
 
-function PanchangDailyView({ dayOffset = 0 }) {
+const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+function humanDate(isoDate) {
+  // isoDate = 'YYYY-MM-DD'
+  if (!isoDate) return '';
+  const [y, m, d] = isoDate.split('-');
+  const weekday = new Date(`${isoDate}T12:00:00+05:30`).toLocaleDateString('en-IN', { weekday: 'long', timeZone: 'Asia/Kolkata' });
+  return `${weekday}, ${parseInt(d)} ${MONTH_NAMES[parseInt(m) - 1]} ${y}`;
+}
+
+// ─── SEO helpers ─────────────────────────────────────────────────────────────
+
+/**
+ * Builds the WebPage JSON-LD schema used on most Panchang pages.
+ */
+function webPageSchema({ name, description, url, datePublished }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name,
+    description,
+    url,
+    inLanguage: 'en-IN',
+    ...(datePublished ? { datePublished } : {}),
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Everyday Horoscope',
+      url: SITE,
+    },
+    provider: {
+      '@type': 'Organization',
+      name: 'Everyday Horoscope',
+      url: SITE,
+    },
+  };
+}
+
+/**
+ * Returns { title, description, url, schema } for each Panchang route.
+ * When live data is available (for /date/ pages) it is woven into the meta.
+ */
+function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData }) {
+  const todayISO = getTodayIST();
+  const tomorrowISO = getTomorrowIST();
+
+  switch (view) {
+    // ── /panchang/today ──────────────────────────────────────────────────────
+    case 'daily': {
+      const humanToday = humanDate(todayISO);
+      const title = `Today's Panchang — ${humanToday}`;
+      const description =
+        `Free daily Panchang for ${humanToday}. Get today's Tithi, Nakshatra, Yoga, Karana, ` +
+        `Rahu Kaal, Gulika Kaal, Abhijit Muhurta, Sunrise & Sunset — powered by Vedic astronomy.`;
+      const url = `${SITE}/panchang/today`;
+      return {
+        title,
+        description,
+        url,
+        schema: webPageSchema({ name: title, description, url, datePublished: todayISO }),
+      };
+    }
+
+    // ── /panchang/tomorrow ───────────────────────────────────────────────────
+    case 'tomorrow': {
+      const humanTomorrow = humanDate(tomorrowISO);
+      const title = `Tomorrow's Panchang — ${humanTomorrow}`;
+      const description =
+        `Panchang for ${humanTomorrow}. Plan your day with tomorrow's Tithi, Nakshatra, Yoga, ` +
+        `Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, and Sunrise & Sunset.`;
+      const url = `${SITE}/panchang/tomorrow`;
+      return {
+        title,
+        description,
+        url,
+        schema: webPageSchema({ name: title, description, url, datePublished: tomorrowISO }),
+      };
+    }
+
+    // ── /panchang/tithi ──────────────────────────────────────────────────────
+    case 'tithi': {
+      const humanToday = humanDate(todayISO);
+      const title = `Today's Tithi (Lunar Day) — ${humanToday}`;
+      const description =
+        `What is today's Tithi? Find the current Tithi (lunar day), Paksha phase, Nakshatra, ` +
+        `and Moon sign for ${humanToday} — accurate Vedic Panchang data.`;
+      const url = `${SITE}/panchang/tithi`;
+      return {
+        title,
+        description,
+        url,
+        schema: webPageSchema({ name: title, description, url, datePublished: todayISO }),
+      };
+    }
+
+    // ── /panchang/choghadiya ─────────────────────────────────────────────────
+    case 'choghadiya': {
+      const humanToday = humanDate(todayISO);
+      const title = `Choghadiya Today — ${humanToday}`;
+      const description =
+        `Today's Choghadiya table for ${humanToday}. Find auspicious (Amrit, Shubh, Labh, Char) ` +
+        `and inauspicious time slots for starting new work, travel, and muhurat planning.`;
+      const url = `${SITE}/panchang/choghadiya`;
+      return {
+        title,
+        description,
+        url,
+        schema: webPageSchema({ name: title, description, url, datePublished: todayISO }),
+      };
+    }
+
+    // ── /panchang/festivals ──────────────────────────────────────────────────
+    case 'festivals': {
+      const year = new Date().getFullYear();
+      const title = `Hindu Festivals & Vrats ${year} — Complete Calendar`;
+      const description =
+        `Full list of Hindu festivals, vrats, and religious observances for ${year}. ` +
+        `Includes Ekadashi, Purnima, Amavasya, and major festivals with exact dates.`;
+      const url = `${SITE}/panchang/festivals`;
+
+      // Build ItemList schema from festival data if available
+      let schema;
+      if (festivalData?.items?.length) {
+        const listItems = festivalData.items.slice(0, 20).map((item, idx) => ({
+          '@type': 'ListItem',
+          position: idx + 1,
+          name: item.name,
+          description: item.summary || item.name,
+          url: `${SITE}/panchang/date/${item.date}`,
+        }));
+        schema = {
+          '@context': 'https://schema.org',
+          '@type': 'ItemList',
+          name: title,
+          description,
+          url,
+          numberOfItems: festivalData.items.length,
+          itemListElement: listItems,
+        };
+      } else {
+        schema = webPageSchema({ name: title, description, url });
+      }
+      return { title, description, url, schema };
+    }
+
+    // ── /panchang/calendar/:year/:month ──────────────────────────────────────
+    case 'calendar': {
+      const y = calYear || new Date().getFullYear();
+      const mo = calMonth || (new Date().getMonth() + 1);
+      const monthLabel = `${MONTH_NAMES[mo - 1]} ${y}`;
+      const title = `Panchang Calendar — ${monthLabel}`;
+      const description =
+        `Hindu Panchang calendar for ${monthLabel}. View daily Tithi, Nakshatra, festivals, ` +
+        `and Vedic observances for every day of ${monthLabel}.`;
+      const url = `${SITE}/panchang/calendar/${y}/${mo}`;
+      return {
+        title,
+        description,
+        url,
+        schema: webPageSchema({ name: title, description, url, datePublished: `${y}-${String(mo).padStart(2,'0')}-01` }),
+      };
+    }
+
+    // ── /panchang/date/YYYY-MM-DD ─────────────────────────────────────────────
+    case 'date': {
+      if (!dateValue) return null;
+      const humanDay = humanDate(dateValue);
+
+      let title, description;
+      if (panchangData?.panchang) {
+        const { tithi, nakshatra, yoga } = panchangData.panchang;
+        title = `Panchang ${humanDay} — ${tithi.name}, ${nakshatra.name} Nakshatra`;
+        description =
+          `Panchang for ${humanDay}: Tithi — ${tithi.name} (${panchangData.panchang.paksha} Paksha), ` +
+          `Nakshatra — ${nakshatra.name}, Yoga — ${yoga.name}. ` +
+          `Includes Rahu Kaal, Gulika Kaal, Sunrise & Sunset timings.`;
+      } else {
+        title = `Panchang — ${humanDay}`;
+        description =
+          `Complete Vedic Panchang for ${humanDay}. Tithi, Nakshatra, Yoga, Karana, ` +
+          `Rahu Kaal, Gulika Kaal, Abhijit Muhurta, Sunrise & Sunset.`;
+      }
+
+      const url = `${SITE}/panchang/date/${dateValue}`;
+      const [y, mo] = dateValue.split('-');
+      const breadcrumb = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Panchang', item: `${SITE}/panchang/today` },
+          { '@type': 'ListItem', position: 2, name: `${MONTH_NAMES[parseInt(mo)-1]} ${y}`, item: `${SITE}/panchang/calendar/${y}/${parseInt(mo)}` },
+          { '@type': 'ListItem', position: 3, name: humanDay, item: url },
+        ],
+      };
+      const page = webPageSchema({ name: title, description, url, datePublished: dateValue });
+      // Return combined schema array
+      return {
+        title,
+        description,
+        url,
+        schema: [breadcrumb, page],
+      };
+    }
+
+    default:
+      return null;
+  }
+}
+
+// ─── PanchangSEO component ───────────────────────────────────────────────────
+// Renders the correct <SEO> tag for whichever view is active.
+function PanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData }) {
+  const seo = useMemo(
+    () => buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [view, calYear, calMonth, dateValue,
+     festivalData?.items?.length,
+     panchangData?.panchang?.tithi?.name]
+  );
+  if (!seo) return null;
+
+  // JSON-LD may be an array (date view) or a single object
+  const schemaToEmbed = Array.isArray(seo.schema)
+    ? seo.schema
+    : seo.schema ? [seo.schema] : [];
+
+  return (
+    <SEO
+      title={seo.title}
+      description={seo.description}
+      url={seo.url}
+      image={OG_IMAGE}
+      type="website"
+      schema={schemaToEmbed.length === 1 ? schemaToEmbed[0] : schemaToEmbed.length > 1 ? schemaToEmbed : null}
+    />
+  );
+}
+
+// ─── views ───────────────────────────────────────────────────────────────────
+
+function PanchangDailyView({ dayOffset = 0, onDataLoad }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true); setError(null); setData(null);
-    // Use explicit date param for tomorrow — backend now supports ?date=YYYY-MM-DD
     const params = dayOffset === 1 ? { date: getTomorrowIST() } : {};
     axios.get(`${API}/daily`, { params })
-      .then(r => setData(r.data))
+      .then(r => { setData(r.data); if (onDataLoad) onDataLoad(r.data); })
       .catch(() => setError('Failed to load Panchang data. Please try again.'))
       .finally(() => setLoading(false));
-  }, [dayOffset]);
+  }, [dayOffset]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (loading) return <div className="space-y-4">{[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
   if (error) return <p className="text-center text-muted-foreground py-12">{error}</p>;
@@ -164,7 +412,7 @@ function PanchangDailyView({ dayOffset = 0 }) {
         </Link>
         <Link to="/panchang/festivals"
           className="flex-1 flex items-center justify-center gap-2 py-3 border border-gold/30 rounded-xl text-sm font-medium text-gold hover:bg-gold/5 transition-colors">
-          <Sparkles className="h-4 w-4" /> Festivals & Vrats
+          <Sparkles className="h-4 w-4" /> Festivals &amp; Vrats
         </Link>
       </div>
     </div>
@@ -316,13 +564,16 @@ function PanchangCalendarView({ year, month }) {
   );
 }
 
-function PanchangFestivalsView() {
+function PanchangFestivalsView({ onDataLoad }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const year = new Date().getFullYear();
   useEffect(() => {
-    axios.get(`${API}/festivals?year=${year}`).then(r => setData(r.data)).catch(() => setData(null)).finally(() => setLoading(false));
-  }, [year]);
+    axios.get(`${API}/festivals?year=${year}`)
+      .then(r => { setData(r.data); if (onDataLoad) onDataLoad(r.data); })
+      .catch(() => setData(null))
+      .finally(() => setLoading(false));
+  }, [year]); // eslint-disable-line react-hooks/exhaustive-deps
   if (loading) return <div className="space-y-3">{[...Array(8)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
   if (!data?.items?.length) return <p className="text-center text-muted-foreground py-12">No festivals found</p>;
   const grouped = data.items.reduce((acc, item) => { const m = item.date.slice(0,7); if (!acc[m]) acc[m]=[]; acc[m].push(item); return acc; }, {});
@@ -355,7 +606,7 @@ function PanchangFestivalsView() {
 }
 
 // View for a specific date (from calendar click)
-function PanchangDateView({ dateStr }) {
+function PanchangDateView({ dateStr, onDataLoad }) {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -363,15 +614,14 @@ function PanchangDateView({ dateStr }) {
   useEffect(() => {
     setLoading(true); setError(null); setData(null);
     axios.get(`${API}/daily`, { params: { date: dateStr } })
-      .then(r => setData(r.data))
+      .then(r => { setData(r.data); if (onDataLoad) onDataLoad(r.data); })
       .catch(() => setError('Failed to load Panchang data.'))
       .finally(() => setLoading(false));
-  }, [dateStr]);
+  }, [dateStr]); // eslint-disable-line react-hooks/exhaustive-deps
   if (loading) return <div className="space-y-4">{[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
   if (error) return <p className="text-center text-muted-foreground py-12">{error}</p>;
   if (!data) return null;
   const { summary, panchang, day_quality_windows, observances } = data;
-  // Navigate back to that month's calendar
   const [y, mo] = dateStr.split('-');
   return (
     <div className="space-y-6">
@@ -457,18 +707,32 @@ function PanchangDateView({ dateStr }) {
   );
 }
 
+// ─── main page ───────────────────────────────────────────────────────────────
+
 export const PanchangPage = () => {
   const { type: rawType = 'daily', year: yearParam, month: monthParam, dateValue } = useParams();
   const resolvedType = ALIAS[rawType] || rawType;
   const isCalendar = resolvedType === 'calendar' || (yearParam && monthParam && !dateValue);
   const isDateView = !!dateValue;
-  const activeView = isDateView ? 'calendar' : isCalendar ? 'calendar' : (resolvedType || 'daily');
+  const activeView = isDateView ? 'date' : isCalendar ? 'calendar' : (resolvedType || 'daily');
   const today = new Date();
   const calYear  = parseInt(yearParam)  || today.getFullYear();
   const calMonth = parseInt(monthParam) || (today.getMonth() + 1);
+
+  // Live data lifted up so SEO can use it
+  const [festivalData, setFestivalData] = useState(null);
+  const [panchangData, setPanchangData] = useState(null);
+
+  // Reset lifted data when route changes
+  useEffect(() => {
+    setFestivalData(null);
+    setPanchangData(null);
+  }, [activeView, dateValue, calYear, calMonth]);
+
   const config = isDateView
     ? { title: 'Panchang Details', icon: Calendar, desc: 'Complete Vedic almanac for the selected date' }
     : (TYPE_META[activeView] || TYPE_META.daily);
+
   const subNavItems = [
     { key: 'daily',      label: 'Today',      icon: Sun,      path: '/panchang/today' },
     { key: 'tomorrow',   label: 'Tomorrow',   icon: Sun,      path: '/panchang/tomorrow' },
@@ -477,13 +741,23 @@ export const PanchangPage = () => {
     { key: 'calendar',   label: 'Calendar',   icon: Calendar, path: `/panchang/calendar/${today.getFullYear()}/${today.getMonth() + 1}` },
     { key: 'festivals',  label: 'Festivals',  icon: Sparkles, path: '/panchang/festivals' },
   ];
+
+  // For the subnav highlight: date view highlights calendar
+  const subNavActive = activeView === 'date' ? 'calendar' : activeView;
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 pb-24 lg:pb-10">
-      <SEO
-        title={config.title + ' — Everyday Horoscope'}
-        description={config.desc + ' Powered by Vedic astronomy for New Delhi, India.'}
-        url={'https://everydayhoroscope.in/panchang/' + activeView}
+
+      {/* ── SEO — one component, all routes ── */}
+      <PanchangSEO
+        view={activeView}
+        calYear={calYear}
+        calMonth={calMonth}
+        dateValue={dateValue}
+        festivalData={festivalData}
+        panchangData={panchangData}
       />
+
       <div className="text-center mb-8">
         <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
           <Calendar className="h-3 w-3" /> Vedic Panchang
@@ -491,20 +765,22 @@ export const PanchangPage = () => {
         <h1 className="text-3xl font-playfair font-semibold mb-2">{config.title}</h1>
         <p className="text-muted-foreground">{config.desc}</p>
       </div>
+
       <div className="flex flex-wrap gap-2 mb-8 border-b border-border pb-4">
         {subNavItems.map(({ key, label, icon: Icon, path }) => (
-          <Link key={key} to={path} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${activeView === key ? 'bg-gold text-white' : 'border border-border text-muted-foreground hover:border-gold/50 hover:text-gold'}`}>
+          <Link key={key} to={path} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${subNavActive === key ? 'bg-gold text-white' : 'border border-border text-muted-foreground hover:border-gold/50 hover:text-gold'}`}>
             <Icon className="h-3 w-3" />{label}
           </Link>
         ))}
       </div>
-      {isDateView                              && <PanchangDateView dateStr={dateValue} />}
-      {!isDateView && activeView === 'daily'      && <PanchangDailyView dayOffset={0} />}
-      {!isDateView && activeView === 'tomorrow'   && <PanchangDailyView dayOffset={1} />}
-      {!isDateView && activeView === 'tithi'      && <PanchangTithiView />}
+
+      {isDateView                               && <PanchangDateView    dateStr={dateValue}                    onDataLoad={setPanchangData} />}
+      {!isDateView && activeView === 'daily'    && <PanchangDailyView   dayOffset={0}                          onDataLoad={setPanchangData} />}
+      {!isDateView && activeView === 'tomorrow' && <PanchangDailyView   dayOffset={1}                          onDataLoad={setPanchangData} />}
+      {!isDateView && activeView === 'tithi'    && <PanchangTithiView />}
       {!isDateView && activeView === 'choghadiya' && <PanchangChoghadiyaView />}
-      {!isDateView && activeView === 'calendar'   && <PanchangCalendarView year={calYear} month={calMonth} />}
-      {!isDateView && activeView === 'festivals'  && <PanchangFestivalsView />}
+      {!isDateView && activeView === 'calendar' && <PanchangCalendarView year={calYear} month={calMonth} />}
+      {!isDateView && activeView === 'festivals' && <PanchangFestivalsView                                    onDataLoad={setFestivalData} />}
     </div>
   );
 };
