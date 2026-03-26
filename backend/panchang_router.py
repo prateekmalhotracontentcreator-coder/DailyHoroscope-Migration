@@ -178,154 +178,133 @@ class PanchangFestivalListResponse(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# Location catalogue — India + global diaspora cities
+# Location catalogue
+# India: all cities with population > 1 million (Excel source) + key
+#        religious / pilgrimage cities from the dataset.
+# International: major Indian diaspora hubs worldwide.
 # ---------------------------------------------------------------------------
+def _loc(slug, label, country, lat, lng, tz="Asia/Kolkata"):
+    return PanchangLocation(slug=slug, label=label, country=country,
+                            latitude=lat, longitude=lng, timezone=tz)
+
 DEFAULT_LOCATIONS: dict[str, PanchangLocation] = {
-    # ── India ──────────────────────────────────────────────────────────────
-    "new-delhi-india": PanchangLocation(
-        slug="new-delhi-india", label="New Delhi", country="India",
-        latitude=28.6139, longitude=77.2090, timezone="Asia/Kolkata",
-    ),
-    "mumbai-india": PanchangLocation(
-        slug="mumbai-india", label="Mumbai", country="India",
-        latitude=19.0760, longitude=72.8777, timezone="Asia/Kolkata",
-    ),
-    "bengaluru-india": PanchangLocation(
-        slug="bengaluru-india", label="Bengaluru", country="India",
-        latitude=12.9716, longitude=77.5946, timezone="Asia/Kolkata",
-    ),
-    "kolkata-india": PanchangLocation(
-        slug="kolkata-india", label="Kolkata", country="India",
-        latitude=22.5726, longitude=88.3639, timezone="Asia/Kolkata",
-    ),
-    "chennai-india": PanchangLocation(
-        slug="chennai-india", label="Chennai", country="India",
-        latitude=13.0827, longitude=80.2707, timezone="Asia/Kolkata",
-    ),
-    "hyderabad-india": PanchangLocation(
-        slug="hyderabad-india", label="Hyderabad", country="India",
-        latitude=17.3850, longitude=78.4867, timezone="Asia/Kolkata",
-    ),
-    "ahmedabad-india": PanchangLocation(
-        slug="ahmedabad-india", label="Ahmedabad", country="India",
-        latitude=23.0225, longitude=72.5714, timezone="Asia/Kolkata",
-    ),
-    "pune-india": PanchangLocation(
-        slug="pune-india", label="Pune", country="India",
-        latitude=18.5204, longitude=73.8567, timezone="Asia/Kolkata",
-    ),
-    "jaipur-india": PanchangLocation(
-        slug="jaipur-india", label="Jaipur", country="India",
-        latitude=26.9124, longitude=75.7873, timezone="Asia/Kolkata",
-    ),
-    "varanasi-india": PanchangLocation(
-        slug="varanasi-india", label="Varanasi", country="India",
-        latitude=25.3176, longitude=82.9739, timezone="Asia/Kolkata",
-    ),
-    "lucknow-india": PanchangLocation(
-        slug="lucknow-india", label="Lucknow", country="India",
-        latitude=26.8467, longitude=80.9462, timezone="Asia/Kolkata",
-    ),
-    "indore-india": PanchangLocation(
-        slug="indore-india", label="Indore", country="India",
-        latitude=22.7196, longitude=75.8577, timezone="Asia/Kolkata",
-    ),
+
+    # ── India — Tier 1 metro ────────────────────────────────────────────────
+    "new-delhi-india":        _loc("new-delhi-india",        "New Delhi",        "India",  28.6139,  77.2090),
+    "mumbai-india":           _loc("mumbai-india",           "Mumbai",           "India",  19.0760,  72.8777),
+    "bengaluru-india":        _loc("bengaluru-india",        "Bengaluru",        "India",  12.9716,  77.5946),
+    "kolkata-india":          _loc("kolkata-india",          "Kolkata",          "India",  22.5726,  88.3639),
+    "chennai-india":          _loc("chennai-india",          "Chennai",          "India",  13.0827,  80.2707),
+    "hyderabad-india":        _loc("hyderabad-india",        "Hyderabad",        "India",  17.3850,  78.4867),
+    "ahmedabad-india":        _loc("ahmedabad-india",        "Ahmedabad",        "India",  23.0225,  72.5714),
+    "pune-india":             _loc("pune-india",             "Pune",             "India",  18.5204,  73.8567),
+
+    # ── India — Major cities (>1 million, from Excel) ───────────────────────
+    "surat-india":            _loc("surat-india",            "Surat",            "India",  21.1702,  72.8311),
+    "jaipur-india":           _loc("jaipur-india",           "Jaipur",           "India",  26.9124,  75.7873),
+    "lucknow-india":          _loc("lucknow-india",          "Lucknow",          "India",  26.8467,  80.9462),
+    "kanpur-india":           _loc("kanpur-india",           "Kanpur",           "India",  26.4499,  80.3319),
+    "nagpur-india":           _loc("nagpur-india",           "Nagpur",           "India",  21.1458,  79.0882),
+    "indore-india":           _loc("indore-india",           "Indore",           "India",  22.7196,  75.8577),
+    "thane-india":            _loc("thane-india",            "Thane",            "India",  19.2183,  72.9781),
+    "bhopal-india":           _loc("bhopal-india",           "Bhopal",           "India",  23.2599,  77.4126),
+    "visakhapatnam-india":    _loc("visakhapatnam-india",    "Visakhapatnam",    "India",  17.6868,  83.2185),
+    "patna-india":            _loc("patna-india",            "Patna",            "India",  25.5941,  85.1376),
+    "vadodara-india":         _loc("vadodara-india",         "Vadodara",         "India",  22.3072,  73.1812),
+    "ghaziabad-india":        _loc("ghaziabad-india",        "Ghaziabad",        "India",  28.6692,  77.4538),
+    "ludhiana-india":         _loc("ludhiana-india",         "Ludhiana",         "India",  30.9010,  75.8573),
+    "agra-india":             _loc("agra-india",             "Agra",             "India",  27.1767,  78.0081),
+    "nashik-india":           _loc("nashik-india",           "Nashik",           "India",  19.9975,  73.7898),
+    "faridabad-india":        _loc("faridabad-india",        "Faridabad",        "India",  28.4089,  77.3178),
+    "meerut-india":           _loc("meerut-india",           "Meerut",           "India",  28.9845,  77.7064),
+    "rajkot-india":           _loc("rajkot-india",           "Rajkot",           "India",  22.3039,  70.8022),
+    "varanasi-india":         _loc("varanasi-india",         "Varanasi",         "India",  25.3176,  82.9739),
+    "srinagar-india":         _loc("srinagar-india",         "Srinagar",         "India",  34.0837,  74.7973),
+    "aurangabad-india":       _loc("aurangabad-india",       "Aurangabad",       "India",  19.8762,  75.3433),
+    "amritsar-india":         _loc("amritsar-india",         "Amritsar",         "India",  31.6340,  74.8723),
+    "navi-mumbai-india":      _loc("navi-mumbai-india",      "Navi Mumbai",      "India",  19.0330,  73.0297),
+    "prayagraj-india":        _loc("prayagraj-india",        "Prayagraj",        "India",  25.4358,  81.8463),
+    "ranchi-india":           _loc("ranchi-india",           "Ranchi",           "India",  23.3441,  85.3096),
+    "coimbatore-india":       _loc("coimbatore-india",       "Coimbatore",       "India",  11.0168,  76.9558),
+    "vijayawada-india":       _loc("vijayawada-india",       "Vijayawada",       "India",  16.5062,  80.6480),
+    "jodhpur-india":          _loc("jodhpur-india",          "Jodhpur",          "India",  26.2389,  73.0243),
+    "madurai-india":          _loc("madurai-india",          "Madurai",          "India",   9.9252,  78.1198),
+    "raipur-india":           _loc("raipur-india",           "Raipur",           "India",  21.2514,  81.6296),
+    "kota-india":             _loc("kota-india",             "Kota",             "India",  25.2138,  75.8648),
+    "guwahati-india":         _loc("guwahati-india",         "Guwahati",         "India",  26.1445,  91.7362),
+    "chandigarh-india":       _loc("chandigarh-india",       "Chandigarh",       "India",  30.7333,  76.7794),
+    "mysore-india":           _loc("mysore-india",           "Mysore",           "India",  12.2958,  76.6394),
+    "gurgaon-india":          _loc("gurgaon-india",          "Gurgaon",          "India",  28.4595,  77.0266),
+    "thiruvananthapuram-india":_loc("thiruvananthapuram-india","Thiruvananthapuram","India",  8.5241,  76.9366),
+    "kochi-india":            _loc("kochi-india",            "Kochi",            "India",   9.9312,  76.2673),
+    "dehradun-india":         _loc("dehradun-india",         "Dehradun",         "India",  30.3165,  78.0322),
+    "jammu-india":            _loc("jammu-india",            "Jammu",            "India",  32.7266,  74.8570),
+    "haridwar-india":         _loc("haridwar-india",         "Haridwar",         "India",  29.9457,  78.1642),
+    "ujjain-india":           _loc("ujjain-india",           "Ujjain",           "India",  23.1765,  75.7885),
+    "shimla-india":           _loc("shimla-india",           "Shimla",           "India",  31.1048,  77.1734),
+    "puducherry-india":       _loc("puducherry-india",       "Puducherry",       "India",  11.9416,  79.8083),
+    "gandhinagar-india":      _loc("gandhinagar-india",      "Gandhinagar",      "India",  23.2156,  72.6369),
+    "noida-india":            _loc("noida-india",            "Noida",            "India",  28.5355,  77.3910),
+    "bhubaneswar-india":      _loc("bhubaneswar-india",      "Bhubaneswar",      "India",  20.2961,  85.8245),
+    "tirupati-india":         _loc("tirupati-india",         "Tirupati",         "India",  13.6288,  79.4192),
+    "kozhikode-india":        _loc("kozhikode-india",        "Kozhikode",        "India",  11.2588,  75.7804),
+    "thrissur-india":         _loc("thrissur-india",         "Thrissur",         "India",  10.5276,  76.2144),
+
     # ── United States ───────────────────────────────────────────────────────
-    "new-york-usa": PanchangLocation(
-        slug="new-york-usa", label="New York", country="USA",
-        latitude=40.7128, longitude=-74.0060, timezone="America/New_York",
-    ),
-    "los-angeles-usa": PanchangLocation(
-        slug="los-angeles-usa", label="Los Angeles", country="USA",
-        latitude=34.0522, longitude=-118.2437, timezone="America/Los_Angeles",
-    ),
-    "chicago-usa": PanchangLocation(
-        slug="chicago-usa", label="Chicago", country="USA",
-        latitude=41.8781, longitude=-87.6298, timezone="America/Chicago",
-    ),
-    "houston-usa": PanchangLocation(
-        slug="houston-usa", label="Houston", country="USA",
-        latitude=29.7604, longitude=-95.3698, timezone="America/Chicago",
-    ),
-    "san-francisco-usa": PanchangLocation(
-        slug="san-francisco-usa", label="San Francisco", country="USA",
-        latitude=37.7749, longitude=-122.4194, timezone="America/Los_Angeles",
-    ),
-    "dallas-usa": PanchangLocation(
-        slug="dallas-usa", label="Dallas", country="USA",
-        latitude=32.7767, longitude=-96.7970, timezone="America/Chicago",
-    ),
-    "seattle-usa": PanchangLocation(
-        slug="seattle-usa", label="Seattle", country="USA",
-        latitude=47.6062, longitude=-122.3321, timezone="America/Los_Angeles",
-    ),
-    "atlanta-usa": PanchangLocation(
-        slug="atlanta-usa", label="Atlanta", country="USA",
-        latitude=33.7490, longitude=-84.3880, timezone="America/New_York",
-    ),
+    "new-york-usa":           _loc("new-york-usa",           "New York",         "USA",    40.7128,  -74.0060, "America/New_York"),
+    "los-angeles-usa":        _loc("los-angeles-usa",        "Los Angeles",      "USA",    34.0522, -118.2437, "America/Los_Angeles"),
+    "chicago-usa":            _loc("chicago-usa",            "Chicago",          "USA",    41.8781,  -87.6298, "America/Chicago"),
+    "houston-usa":            _loc("houston-usa",            "Houston",          "USA",    29.7604,  -95.3698, "America/Chicago"),
+    "san-francisco-usa":      _loc("san-francisco-usa",      "San Francisco",    "USA",    37.7749, -122.4194, "America/Los_Angeles"),
+    "dallas-usa":             _loc("dallas-usa",             "Dallas",           "USA",    32.7767,  -96.7970, "America/Chicago"),
+    "seattle-usa":            _loc("seattle-usa",            "Seattle",          "USA",    47.6062, -122.3321, "America/Los_Angeles"),
+    "atlanta-usa":            _loc("atlanta-usa",            "Atlanta",          "USA",    33.7490,  -84.3880, "America/New_York"),
+
     # ── United Kingdom ──────────────────────────────────────────────────────
-    "london-uk": PanchangLocation(
-        slug="london-uk", label="London", country="UK",
-        latitude=51.5074, longitude=-0.1278, timezone="Europe/London",
-    ),
-    "birmingham-uk": PanchangLocation(
-        slug="birmingham-uk", label="Birmingham", country="UK",
-        latitude=52.4862, longitude=-1.8904, timezone="Europe/London",
-    ),
-    "leicester-uk": PanchangLocation(
-        slug="leicester-uk", label="Leicester", country="UK",
-        latitude=52.6369, longitude=-1.1398, timezone="Europe/London",
-    ),
+    "london-uk":              _loc("london-uk",              "London",           "UK",     51.5074,   -0.1278, "Europe/London"),
+    "birmingham-uk":          _loc("birmingham-uk",          "Birmingham",       "UK",     52.4862,   -1.8904, "Europe/London"),
+    "leicester-uk":           _loc("leicester-uk",           "Leicester",        "UK",     52.6369,   -1.1398, "Europe/London"),
+
     # ── Canada ──────────────────────────────────────────────────────────────
-    "toronto-canada": PanchangLocation(
-        slug="toronto-canada", label="Toronto", country="Canada",
-        latitude=43.6532, longitude=-79.3832, timezone="America/Toronto",
-    ),
-    "vancouver-canada": PanchangLocation(
-        slug="vancouver-canada", label="Vancouver", country="Canada",
-        latitude=49.2827, longitude=-123.1207, timezone="America/Vancouver",
-    ),
-    "brampton-canada": PanchangLocation(
-        slug="brampton-canada", label="Brampton", country="Canada",
-        latitude=43.7315, longitude=-79.7624, timezone="America/Toronto",
-    ),
+    "toronto-canada":         _loc("toronto-canada",         "Toronto",          "Canada", 43.6532,  -79.3832, "America/Toronto"),
+    "vancouver-canada":       _loc("vancouver-canada",       "Vancouver",        "Canada", 49.2827, -123.1207, "America/Vancouver"),
+    "brampton-canada":        _loc("brampton-canada",        "Brampton",         "Canada", 43.7315,  -79.7624, "America/Toronto"),
+
     # ── UAE ─────────────────────────────────────────────────────────────────
-    "dubai-uae": PanchangLocation(
-        slug="dubai-uae", label="Dubai", country="UAE",
-        latitude=25.2048, longitude=55.2708, timezone="Asia/Dubai",
-    ),
-    "abu-dhabi-uae": PanchangLocation(
-        slug="abu-dhabi-uae", label="Abu Dhabi", country="UAE",
-        latitude=24.4539, longitude=54.3773, timezone="Asia/Dubai",
-    ),
+    "dubai-uae":              _loc("dubai-uae",              "Dubai",            "UAE",    25.2048,   55.2708, "Asia/Dubai"),
+    "abu-dhabi-uae":          _loc("abu-dhabi-uae",          "Abu Dhabi",        "UAE",    24.4539,   54.3773, "Asia/Dubai"),
+
     # ── Australia ────────────────────────────────────────────────────────────
-    "sydney-australia": PanchangLocation(
-        slug="sydney-australia", label="Sydney", country="Australia",
-        latitude=-33.8688, longitude=151.2093, timezone="Australia/Sydney",
-    ),
-    "melbourne-australia": PanchangLocation(
-        slug="melbourne-australia", label="Melbourne", country="Australia",
-        latitude=-37.8136, longitude=144.9631, timezone="Australia/Melbourne",
-    ),
-    "brisbane-australia": PanchangLocation(
-        slug="brisbane-australia", label="Brisbane", country="Australia",
-        latitude=-27.4698, longitude=153.0251, timezone="Australia/Brisbane",
-    ),
+    "sydney-australia":       _loc("sydney-australia",       "Sydney",           "Australia", -33.8688, 151.2093, "Australia/Sydney"),
+    "melbourne-australia":    _loc("melbourne-australia",    "Melbourne",        "Australia", -37.8136, 144.9631, "Australia/Melbourne"),
+    "brisbane-australia":     _loc("brisbane-australia",     "Brisbane",         "Australia", -27.4698, 153.0251, "Australia/Brisbane"),
+
     # ── Singapore ────────────────────────────────────────────────────────────
-    "singapore": PanchangLocation(
-        slug="singapore", label="Singapore", country="Singapore",
-        latitude=1.3521, longitude=103.8198, timezone="Asia/Singapore",
-    ),
+    "singapore":              _loc("singapore",              "Singapore",        "Singapore",   1.3521, 103.8198, "Asia/Singapore"),
+
+    # ── Malaysia ─────────────────────────────────────────────────────────────
+    "kuala-lumpur-malaysia":  _loc("kuala-lumpur-malaysia",  "Kuala Lumpur",     "Malaysia",    3.1390, 101.6869, "Asia/Kuala_Lumpur"),
+    "george-town-malaysia":   _loc("george-town-malaysia",   "George Town",      "Malaysia",    5.4141, 100.3288, "Asia/Kuala_Lumpur"),
+    "johor-bahru-malaysia":   _loc("johor-bahru-malaysia",   "Johor Bahru",      "Malaysia",    1.4927, 103.7414, "Asia/Kuala_Lumpur"),
+
+    # ── Indonesia ────────────────────────────────────────────────────────────
+    "jakarta-indonesia":      _loc("jakarta-indonesia",      "Jakarta",          "Indonesia",  -6.2088, 106.8456, "Asia/Jakarta"),
+    "bali-indonesia":         _loc("bali-indonesia",         "Bali (Denpasar)",  "Indonesia",  -8.6705, 115.2126, "Asia/Makassar"),
+    "surabaya-indonesia":     _loc("surabaya-indonesia",     "Surabaya",         "Indonesia",  -7.2575, 112.7521, "Asia/Jakarta"),
+
+    # ── Thailand ─────────────────────────────────────────────────────────────
+    "bangkok-thailand":       _loc("bangkok-thailand",       "Bangkok",          "Thailand",   13.7563, 100.5018, "Asia/Bangkok"),
+    "chiang-mai-thailand":    _loc("chiang-mai-thailand",    "Chiang Mai",       "Thailand",   18.7883, 98.9853,  "Asia/Bangkok"),
+
+    # ── Tibet ────────────────────────────────────────────────────────────────
+    # Tibet uses China Standard Time (UTC+8) officially.
+    "lhasa-tibet":            _loc("lhasa-tibet",            "Lhasa",            "Tibet",      29.6500, 91.1000,  "Asia/Shanghai"),
+
     # ── Nepal ───────────────────────────────────────────────────────────────
-    "kathmandu-nepal": PanchangLocation(
-        slug="kathmandu-nepal", label="Kathmandu", country="Nepal",
-        latitude=27.7172, longitude=85.3240, timezone="Asia/Kathmandu",
-    ),
+    "kathmandu-nepal":        _loc("kathmandu-nepal",        "Kathmandu",        "Nepal",      27.7172, 85.3240,  "Asia/Kathmandu"),
+
     # ── New Zealand ──────────────────────────────────────────────────────────
-    "auckland-nz": PanchangLocation(
-        slug="auckland-nz", label="Auckland", country="New Zealand",
-        latitude=-36.8485, longitude=174.7633, timezone="Pacific/Auckland",
-    ),
+    "auckland-nz":            _loc("auckland-nz",            "Auckland",         "New Zealand", -36.8485, 174.7633, "Pacific/Auckland"),
 }
 
 # Ordered list for the API locations endpoint
