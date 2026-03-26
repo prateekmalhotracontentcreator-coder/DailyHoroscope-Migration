@@ -22,11 +22,11 @@ const LANG_META_MAP = {
 };
 
 const LANG_LABELS_MAP = {
-  tamil:    { sunrise:'சூரிய உதயம்', sunset:'சூரிய அஸ்தமனம்', moonrise:'சந்திர உதயம்', moonset:'சந்திர அஸ்தமனம்', tithi:'திதி', nakshatra:'நட்சத்திரம்', yoga:'யோகம்', karana:'கரணம்', vara:'வாரம்', fiveLimbs:'பஞ்சாங்கம் — ஐந்து அங்கங்கள்', timingWindows:'நேர அட்டவணை', auspicious:'நல்ல நேரம்', inauspicious:'தீய நேரம்', observances:'இன்றைய விசேஷங்கள்', now:'இப்போது', sunIn:'சூரியன்', moonIn:'சந்திரன்', paksha:'பக்ஷம்', },
-  telugu:   { sunrise:'సూర్యోదయం', sunset:'సూర్యాస్తమయం', moonrise:'చంద్రోదయం', moonset:'చంద్రాస్తమయం', tithi:'తిథి', nakshatra:'నక్షత్రం', yoga:'యోగం', karana:'కరణం', vara:'వారం', fiveLimbs:'పంచాంగం — పంచ అంగాలు', timingWindows:'సమయ వివరాలు', auspicious:'శుభ సమయం', inauspicious:'అశుభ సమయం', observances:'నేటి విశేషాలు', now:'ఇప్పుడు', sunIn:'సూర్యుడు', moonIn:'చంద్రుడు', paksha:'పక్షం', },
-  malayalam:{ sunrise:'സൂര്യോദയം', sunset:'സൂര്യാസ്തമയം', moonrise:'ചന്ദ്രോദയം', moonset:'ചന്ദ്രാസ്തമയം', tithi:'തിഥി', nakshatra:'നക്ഷത്രം', yoga:'യോഗം', karana:'കരണം', vara:'വാരം', fiveLimbs:'പഞ്ചാംഗം — പഞ്ച അംഗങ്ങൾ', timingWindows:'സമയ വിവരങ്ങൾ', auspicious:'ശുഭ സമയം', inauspicious:'അശുഭ സമയം', observances:'ഇന്നത്തെ വിശേഷങ്ങൾ', now:'ഇപ്പോൾ', sunIn:'സൂര്യൻ', moonIn:'ചന്ദ്രൻ', paksha:'പക്ഷം', },
-  kannada:  { sunrise:'ಸೂರ್ಯೋದಯ', sunset:'ಸೂರ್ಯಾಸ್ತ', moonrise:'ಚಂದ್ರೋದಯ', moonset:'ಚಂದ್ರಾಸ್ತ', tithi:'ತಿಥಿ', nakshatra:'ನಕ್ಷತ್ರ', yoga:'ಯೋಗ', karana:'ಕರಣ', vara:'ವಾರ', fiveLimbs:'ಪಂಚಾಂಗ — ಪಂಚ ಅಂಗಗಳು', timingWindows:'ಸಮಯ ವಿವರಗಳು', auspicious:'ಶುಭ ಸಮಯ', inauspicious:'ಅಶುಭ ಸಮಯ', observances:'ಇಂದಿನ ವಿಶೇಷಗಳು', now:'ಈಗ', sunIn:'ಸೂರ್ಯ', moonIn:'ಚಂದ್ರ', paksha:'ಪಕ್ಷ', },
-  hindi:    { sunrise:'सूर्योदय', sunset:'सूर्यास्त', moonrise:'चंद्रोदय', moonset:'चंद्रास्त', tithi:'तिथि', nakshatra:'नक्षत्र', yoga:'योग', karana:'करण', vara:'वार', fiveLimbs:'पंचांग — पंच अंग', timingWindows:'मुहूर्त विवरण', auspicious:'शुभ मुहूर्त', inauspicious:'अशुभ काल', observances:'आज के विशेष', now:'अभी', sunIn:'सूर्य', moonIn:'चंद्र', paksha:'पक्ष', },
+  tamil:    { sunrise:'சூரிய உதயம்', sunset:'சூரிய அஸ்தமனம்', moonrise:'சந்திர உதயம்', moonset:'சந்திர அஸ்தமனம்', tithi:'திதி', nakshatra:'நட்சத்திரம்', yoga:'யோகம்', karana:'கரணம்', vara:'வாரம்', fiveLimbs:'பஞ்சாங்கம் — ஐந்து அங்கங்கள்', timingWindows:'நேர அட்டவணை', auspicious:'நல்ல நேரம்', inauspicious:'தீய நேரம்', observances:'இன்றைய விசேஷங்கள்', now:'இப்போது', sunIn:'சூரியன்', moonIn:'சந்திரன்', paksha:'பக்ஷம்', todayTithi:'இன்றைய திதி', moonPosition:'சந்திர நிலை', moonSign:'சந்திர ராசி', samvat:'சம்வத்', shubhMuhurat:'சுப முகூர்த்தம்', auspiciousWindows:'சுப நேரங்கள்', inauspiciousWindows:'தீய நேரங்கள் — தவிர்க்கவும்', dayChoghadiya:'பகல் சோகடியா', nightChoghadiya:'இரவு சோகடியா', tapDate:'தேதியை தட்டவும்', neutral:'நடுநிலை', },
+  telugu:   { sunrise:'సూర్యోదయం', sunset:'సూర్యాస్తమయం', moonrise:'చంద్రోదయం', moonset:'చంద్రాస్తమయం', tithi:'తిథి', nakshatra:'నక్షత్రం', yoga:'యోగం', karana:'కరణం', vara:'వారం', fiveLimbs:'పంచాంగం — పంచ అంగాలు', timingWindows:'సమయ వివరాలు', auspicious:'శుభ సమయం', inauspicious:'అశుభ సమయం', observances:'నేటి విశేషాలు', now:'ఇప్పుడు', sunIn:'సూర్యుడు', moonIn:'చంద్రుడు', paksha:'పక్షం', todayTithi:'నేటి తిథి', moonPosition:'చంద్ర స్థితి', moonSign:'చంద్ర రాశి', samvat:'సంవత్', shubhMuhurat:'శుభ ముహూర్తం', auspiciousWindows:'శుభ సమయాలు', inauspiciousWindows:'అశుభ సమయాలు — నివారించండి', dayChoghadiya:'పగటి చోఘడియా', nightChoghadiya:'రాత్రి చోఘడియా', tapDate:'తేదీని నొక్కండి', neutral:'తటస్థం', },
+  malayalam:{ sunrise:'സൂര്യോദയം', sunset:'സൂര്യാസ്തമയം', moonrise:'ചന്ദ്രോദയം', moonset:'ചന്ദ്രാസ്തമയം', tithi:'തിഥി', nakshatra:'നക്ഷത്രം', yoga:'യോഗം', karana:'കരണം', vara:'വാരം', fiveLimbs:'പഞ്ചാംഗം — പഞ്ച അംഗങ്ങൾ', timingWindows:'സമയ വിവരങ്ങൾ', auspicious:'ശുഭ സമയം', inauspicious:'അശുഭ സമയം', observances:'ഇന്നത്തെ വിശേഷങ്ങൾ', now:'ഇപ്പോൾ', sunIn:'സൂര്യൻ', moonIn:'ചന്ദ്രൻ', paksha:'പക്ഷം', todayTithi:'ഇന്നത്തെ തിഥി', moonPosition:'ചന്ദ്ര സ്ഥാനം', moonSign:'ചന്ദ്ര രാശി', samvat:'സംവത്', shubhMuhurat:'ശുഭ മുഹൂർത്തം', auspiciousWindows:'ശുഭ സമയങ്ങൾ', inauspiciousWindows:'അശുഭ സമയങ്ങൾ — ഒഴിവാക്കുക', dayChoghadiya:'പകൽ ചോഘഡിയ', nightChoghadiya:'രാത്രി ചോഘഡിയ', tapDate:'തിയ്യതി തൊടുക', neutral:'നിഷ്‌പക്ഷം', },
+  kannada:  { sunrise:'ಸೂರ್ಯೋದಯ', sunset:'ಸೂರ್ಯಾಸ್ತ', moonrise:'ಚಂದ್ರೋದಯ', moonset:'ಚಂದ್ರಾಸ್ತ', tithi:'ತಿಥಿ', nakshatra:'ನಕ್ಷತ್ರ', yoga:'ಯೋಗ', karana:'ಕರಣ', vara:'ವಾರ', fiveLimbs:'ಪಂಚಾಂಗ — ಪಂಚ ಅಂಗಗಳು', timingWindows:'ಸಮಯ ವಿವರಗಳು', auspicious:'ಶುಭ ಸಮಯ', inauspicious:'ಅಶುಭ ಸಮಯ', observances:'ಇಂದಿನ ವಿಶೇಷಗಳು', now:'ಈಗ', sunIn:'ಸೂರ್ಯ', moonIn:'ಚಂದ್ರ', paksha:'ಪಕ್ಷ', todayTithi:'ಇಂದಿನ ತಿಥಿ', moonPosition:'ಚಂದ್ರ ಸ್ಥಾನ', moonSign:'ಚಂದ್ರ ರಾಶಿ', samvat:'ಸಂವತ್', shubhMuhurat:'ಶುಭ ಮುಹೂರ್ತ', auspiciousWindows:'ಶುಭ ಸಮಯಗಳು', inauspiciousWindows:'ಅಶುಭ ಸಮಯಗಳು — ತಪ್ಪಿಸಿ', dayChoghadiya:'ಹಗಲು ಚೋಘಡಿಯ', nightChoghadiya:'ರಾತ್ರಿ ಚೋಘಡಿಯ', tapDate:'ದಿನಾಂಕ ಆಯ್ಕೆ', neutral:'ತಟಸ್ಥ', },
+  hindi:    { sunrise:'सूर्योदय', sunset:'सूर्यास्त', moonrise:'चंद्रोदय', moonset:'चंद्रास्त', tithi:'तिथि', nakshatra:'नक्षत्र', yoga:'योग', karana:'करण', vara:'वार', fiveLimbs:'पंचांग — पंच अंग', timingWindows:'मुहूर्त विवरण', auspicious:'शुभ मुहूर्त', inauspicious:'अशुभ काल', observances:'आज के विशेष', now:'अभी', sunIn:'सूर्य', moonIn:'चंद्र', paksha:'पक्ष', todayTithi:'आज की तिथि', moonPosition:'चंद्र स्थिति', moonSign:'चंद्र राशि', samvat:'संवत', shubhMuhurat:'शुभ मुहूर्त', auspiciousWindows:'शुभ समय', inauspiciousWindows:'अशुभ काल — टालें', dayChoghadiya:'दिन चौघड़िया', nightChoghadiya:'रात चौघड़िया', tapDate:'तिथि देखें', neutral:'तटस्थ', },
 };
 
 const LANG_NAKSHATRA = {
@@ -69,6 +69,24 @@ const LANG_WINDOW = {
   hindi:    {'Brahma Muhurta':'ब्रह्म मुहूर्त','Abhijit Muhurta':'अभिजित् मुहूर्त','Vijaya Muhurta':'विजय मुहूर्त','Rahu Kaal':'राहु काल','Yamaganda':'यमगण्ड','Gulika Kaal':'गुलिक काल','Dur Muhurta':'दुर्मुहूर्त'},
 };
 
+// Weekday abbreviations for calendar column headers
+const LANG_WEEKDAY_ABBR = {
+  tamil:    ['ஞா','தி','செ','பு','வி','வெ','ச'],
+  telugu:   ['ఆది','సోమ','మంగ','బుధ','గురు','శుక్ర','శని'],
+  malayalam:['ഞാ','തി','ചൊ','ബു','വ്യാ','വെ','ശ'],
+  kannada:  ['ಭಾ','ಸೋ','ಮಂ','ಬು','ಗು','ಶು','ಶ'],
+  hindi:    ['रवि','सोम','मंगल','बुध','गुरु','शुक्र','शनि'],
+};
+
+// Choghadiya quality labels
+const LANG_CHOG_QUALITY = {
+  tamil:    { good:'நல்லது', neutral:'நடுநிலை', caution:'தவிர்க்கவும்' },
+  telugu:   { good:'శుభం',   neutral:'తటస్థం',  caution:'అశుభం' },
+  malayalam:{ good:'ശുഭം',   neutral:'നിഷ്‌പക്ഷം', caution:'അശുഭം' },
+  kannada:  { good:'ಶುಭ',    neutral:'ತಟಸ್ಥ',   caution:'ಅಶುಭ' },
+  hindi:    { good:'शुभ',    neutral:'तटस्थ',  caution:'अशुभ' },
+};
+
 // Translation helpers
 function tLabel(key, lang) { return lang ? (LANG_LABELS_MAP[lang]?.[key] || key) : null; }
 function tNak(name, lang)  { if (!lang || !name) return name; return LANG_NAKSHATRA[lang]?.[name.trim()] || name; }
@@ -81,6 +99,7 @@ function tWin(label, lang) {
 }
 function tDay(lang)  { return lang ? (LANG_WEEKDAY[lang]?.[new Date().getDay()] || '') : null; }
 function tPaksha(name, lang) { if (!lang || !name) return name; return LANG_PAKSHA[lang]?.[name] || name; }
+function tChogQuality(quality, lang) { if (!lang) return null; return LANG_CHOG_QUALITY[lang]?.[quality] || null; }
 
 const QUALITY_STYLES = {
   good:    { badge: 'bg-green-100 text-green-800' },
@@ -609,7 +628,7 @@ function MuhuratSEOContent() {
   );
 }
 
-function MuhuratView({ locationSlug, locationTZ }) {
+function MuhuratView({ locationSlug, locationTZ, lang }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -673,9 +692,16 @@ function MuhuratView({ locationSlug, locationTZ }) {
       <div className="flex items-center justify-between px-6 py-4 bg-gold/5 border border-gold/20 rounded-xl">
         <div className="flex items-center gap-3">
           <Star className="h-5 w-5 text-gold" />
-          <span className="font-playfair font-semibold text-lg">
-            Shubh Muhurat — {formatDate(data.date + 'T00:00:00', locTZ)}
-          </span>
+          <div>
+            {lang ? (
+              <>
+                <p className="font-playfair font-semibold text-lg leading-tight">{tLabel('shubhMuhurat', lang)}</p>
+                <p className="text-xs text-muted-foreground">Shubh Muhurat — {formatDate(data.date + 'T00:00:00', locTZ)}</p>
+              </>
+            ) : (
+              <span className="font-playfair font-semibold text-lg">Shubh Muhurat — {formatDate(data.date + 'T00:00:00', locTZ)}</span>
+            )}
+          </div>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-xs text-muted-foreground">{data.location?.label}, {data.location?.country}</span>
@@ -688,17 +714,33 @@ function MuhuratView({ locationSlug, locationTZ }) {
         <Card className="border border-green-200 overflow-hidden">
           <div className="px-5 py-3 bg-green-50 border-b border-green-100 flex items-center gap-2">
             <span className="text-green-600">✦</span>
-            <p className="text-xs font-semibold uppercase tracking-widest text-green-700">Auspicious Windows</p>
+            {lang ? (
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-green-700">{tLabel('auspiciousWindows', lang)}</p>
+                <p className="text-[10px] text-muted-foreground">Auspicious Windows</p>
+              </div>
+            ) : (
+              <p className="text-xs font-semibold uppercase tracking-widest text-green-700">Auspicious Windows</p>
+            )}
           </div>
           <div className="divide-y divide-border">
             {auspicious.map(w => {
               const isCurrent = now >= new Date(w.start) && now <= new Date(w.end);
+              const regional = tWin(w.label, lang);
+              const showBilingual = lang && regional !== w.label;
               return (
                 <div key={w.label} className={`flex items-center justify-between px-5 py-3 ${isCurrent ? 'bg-green-50/60' : ''}`}>
                   <div className="flex items-center gap-3">
                     {isCurrent && <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />}
-                    <span className="text-sm font-medium">{w.label}</span>
-                    {isCurrent && <span className="text-xs text-green-600 font-semibold">Now</span>}
+                    {showBilingual ? (
+                      <div>
+                        <p className="text-sm font-medium leading-tight">{regional}</p>
+                        <p className="text-[10px] text-muted-foreground">{w.label}</p>
+                      </div>
+                    ) : (
+                      <span className="text-sm font-medium">{w.label}</span>
+                    )}
+                    {isCurrent && <span className="text-xs text-green-600 font-semibold">{tLabel('now', lang) || 'Now'}</span>}
                   </div>
                   <span className="text-xs text-muted-foreground tabular-nums">{fmtTime(w.start)} — {fmtTime(w.end)}</span>
                 </div>
@@ -718,18 +760,24 @@ function MuhuratView({ locationSlug, locationTZ }) {
           <div className="divide-y divide-border">
             {muhurtaSlots.map(m => {
               const isCurrent = now >= m.start && now < m.end;
+              const qualityR = lang ? (m.quality === 'good' ? tLabel('auspicious', lang) : m.quality === 'caution' ? tLabel('inauspicious', lang) : tLabel('neutral', lang)) : null;
               return (
                 <div key={m.n} className={`flex items-center gap-3 px-5 py-3 ${isCurrent ? 'bg-gold/5 ring-inset ring-1 ring-gold/20' : ''}`}>
                   <span className="w-6 text-center text-xs font-bold text-muted-foreground flex-shrink-0">{m.n}</span>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="text-sm font-medium">{m.name}</span>
-                      {isCurrent && <span className="text-[10px] font-bold text-gold bg-gold/10 px-1.5 py-0.5 rounded">NOW</span>}
+                      {isCurrent && <span className="text-[10px] font-bold text-gold bg-gold/10 px-1.5 py-0.5 rounded">{tLabel('now', lang) || 'NOW'}</span>}
                     </div>
                   </div>
-                  <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded flex-shrink-0 ${MUHURTA_QUALITY_BADGE[m.quality]}`}>
-                    {MUHURTA_QUALITY_LABEL[m.quality]}
-                  </span>
+                  <div className={`text-[10px] font-medium px-1.5 py-0.5 rounded flex-shrink-0 text-center ${MUHURTA_QUALITY_BADGE[m.quality]}`}>
+                    {lang && qualityR ? (
+                      <div>
+                        <p>{qualityR}</p>
+                        <p className="opacity-70">{MUHURTA_QUALITY_LABEL[m.quality]}</p>
+                      </div>
+                    ) : MUHURTA_QUALITY_LABEL[m.quality]}
+                  </div>
                   <span className="text-xs text-muted-foreground tabular-nums whitespace-nowrap flex-shrink-0">
                     {fmtTime(m.start.toISOString())} — {fmtTime(m.end.toISOString())}
                   </span>
@@ -747,17 +795,33 @@ function MuhuratView({ locationSlug, locationTZ }) {
         <Card className="border border-red-200 overflow-hidden">
           <div className="px-5 py-3 bg-red-50 border-b border-red-100 flex items-center gap-2">
             <span className="text-red-500">⚠</span>
-            <p className="text-xs font-semibold uppercase tracking-widest text-red-700">Inauspicious Windows — Avoid</p>
+            {lang ? (
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-red-700">{tLabel('inauspiciousWindows', lang)}</p>
+                <p className="text-[10px] text-muted-foreground">Inauspicious Windows — Avoid</p>
+              </div>
+            ) : (
+              <p className="text-xs font-semibold uppercase tracking-widest text-red-700">Inauspicious Windows — Avoid</p>
+            )}
           </div>
           <div className="divide-y divide-border">
             {inauspicious.map(w => {
               const isCurrent = now >= new Date(w.start) && now <= new Date(w.end);
+              const regional = tWin(w.label, lang);
+              const showBilingual = lang && regional !== w.label;
               return (
                 <div key={w.label} className={`flex items-center justify-between px-5 py-3 ${isCurrent ? 'bg-red-50/40' : ''}`}>
                   <div className="flex items-center gap-3">
                     {isCurrent && <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />}
-                    <span className="text-sm font-medium">{w.label}</span>
-                    {isCurrent && <span className="text-xs text-red-600 font-semibold">Now</span>}
+                    {showBilingual ? (
+                      <div>
+                        <p className="text-sm font-medium leading-tight">{regional}</p>
+                        <p className="text-[10px] text-muted-foreground">{w.label}</p>
+                      </div>
+                    ) : (
+                      <span className="text-sm font-medium">{w.label}</span>
+                    )}
+                    {isCurrent && <span className="text-xs text-red-600 font-semibold">{tLabel('now', lang) || 'Now'}</span>}
                   </div>
                   <span className="text-xs text-muted-foreground tabular-nums">{fmtTime(w.start)} — {fmtTime(w.end)}</span>
                 </div>
@@ -925,7 +989,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
   );
 }
 
-function PanchangTithiView({ locationSlug }) {
+function PanchangTithiView({ locationSlug, lang }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -937,17 +1001,38 @@ function PanchangTithiView({ locationSlug }) {
   const { panchang, summary } = data;
   const locTZ  = data.location?.timezone;
   const fmtTime = makeFormatTime(locTZ);
+  const tithiName = tTithi(panchang.tithi.name, lang) || panchang.tithi.name;
+  const pakshaName = tPaksha(panchang.paksha, lang) || panchang.paksha;
+  const nakName = tNak(panchang.nakshatra.name, lang) || panchang.nakshatra.name;
+  const moonFields = [
+    { labelR: tLabel('moonSign', lang), labelEn: 'Moon Sign', value: panchang.moon_sign },
+    { labelR: tLabel('nakshatra', lang), labelEn: 'Nakshatra', value: nakName },
+    { labelR: tLabel('moonrise', lang), labelEn: 'Moonrise', value: summary.moonrise || '--' },
+    { labelR: tLabel('moonset', lang), labelEn: 'Moonset', value: summary.moonset || '--' },
+    { labelR: tLabel('vara', lang), labelEn: 'Weekday', value: tDay(lang) || summary.weekday },
+    { labelR: tLabel('samvat', lang), labelEn: 'Samvat', value: panchang.samvat },
+  ];
   return (
     <div className="space-y-6">
       <Card className="border border-gold/20 overflow-hidden">
         <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold">Today's Tithi</p>
+          {lang ? (
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-widest text-gold">{tLabel('todayTithi', lang)}</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Today's Tithi</p>
+            </div>
+          ) : (
+            <p className="text-xs font-semibold uppercase tracking-widest text-gold">Today's Tithi</p>
+          )}
         </div>
         <div className="p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-3xl font-playfair font-bold">{panchang.tithi.name}</p>
-              <p className="text-muted-foreground">{panchang.paksha} Paksha</p>
+              <p className="text-3xl font-playfair font-bold">{tithiName}</p>
+              {lang && tithiName !== panchang.tithi.name && (
+                <p className="text-sm text-muted-foreground">{panchang.tithi.name}</p>
+              )}
+              <p className="text-muted-foreground mt-1">{pakshaName}{lang ? '' : ' Paksha'}</p>
             </div>
             <Moon className="h-10 w-10 text-gold/60" />
           </div>
@@ -960,14 +1045,28 @@ function PanchangTithiView({ locationSlug }) {
         </div>
       </Card>
       <Card className="border border-gold/20 p-5">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Moon Position</p>
+        {lang ? (
+          <div className="mb-3">
+            <p className="text-xs font-semibold uppercase tracking-widest text-gold">{tLabel('moonPosition', lang)}</p>
+            <p className="text-[10px] text-muted-foreground uppercase tracking-wide">Moon Position</p>
+          </div>
+        ) : (
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Moon Position</p>
+        )}
         <div className="grid grid-cols-2 gap-4">
-          <div><p className="text-xs text-muted-foreground">Moon Sign</p><p className="font-semibold">{panchang.moon_sign}</p></div>
-          <div><p className="text-xs text-muted-foreground">Nakshatra</p><p className="font-semibold">{panchang.nakshatra.name}</p></div>
-          <div><p className="text-xs text-muted-foreground">Moonrise</p><p className="font-semibold tabular-nums">{summary.moonrise || '--'}</p></div>
-          <div><p className="text-xs text-muted-foreground">Moonset</p><p className="font-semibold tabular-nums">{summary.moonset || '--'}</p></div>
-          <div><p className="text-xs text-muted-foreground">Weekday</p><p className="font-semibold">{summary.weekday}</p></div>
-          <div><p className="text-xs text-muted-foreground">Samvat</p><p className="font-semibold text-xs">{panchang.samvat}</p></div>
+          {moonFields.map(f => (
+            <div key={f.labelEn}>
+              {lang && f.labelR ? (
+                <div>
+                  <p className="text-xs font-semibold text-foreground leading-tight">{f.labelR}</p>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-wide">{f.labelEn}</p>
+                </div>
+              ) : (
+                <p className="text-xs text-muted-foreground">{f.labelEn}</p>
+              )}
+              <p className="font-semibold mt-0.5 text-sm">{f.value}</p>
+            </div>
+          ))}
         </div>
       </Card>
       <TZNote timezone={locTZ} locationLabel={data.location?.label} />
@@ -982,9 +1081,11 @@ const CHOG_QUALITY_STYLES = {
   caution: { row: 'border-red-200 bg-red-50/20',    badge: 'bg-red-100 text-red-800',     dot: 'bg-red-400' },
 };
 
-function ChoghadiyaSlotRow({ slot, fmtTime, now }) {
+function ChoghadiyaSlotRow({ slot, fmtTime, now, lang }) {
   const isNow = now >= new Date(slot.start) && now < new Date(slot.end);
   const s = CHOG_QUALITY_STYLES[slot.quality] || CHOG_QUALITY_STYLES.neutral;
+  const qualityEn = slot.quality === 'good' ? 'Auspicious' : slot.quality === 'caution' ? 'Inauspicious' : 'Neutral';
+  const qualityR = tChogQuality(slot.quality, lang);
   return (
     <div className={`flex items-center justify-between px-3 py-2.5 rounded-lg border ${s.row} ${isNow ? 'ring-2 ring-gold/60' : ''}`}>
       <div className="flex items-center gap-2.5 min-w-0">
@@ -993,17 +1094,19 @@ function ChoghadiyaSlotRow({ slot, fmtTime, now }) {
           <span className="font-semibold text-sm text-foreground">{slot.name}</span>
           <span className="text-xs text-muted-foreground ml-1.5">{slot.ruler}</span>
         </div>
-        {isNow && <span className="text-[10px] font-bold text-gold bg-gold/10 px-1.5 py-0.5 rounded">NOW</span>}
+        {isNow && <span className="text-[10px] font-bold text-gold bg-gold/10 px-1.5 py-0.5 rounded">{lang ? tLabel('now', lang) : 'NOW'}</span>}
       </div>
       <div className="flex items-center gap-2 flex-shrink-0">
-        <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${s.badge}`}>{slot.quality === 'good' ? 'Auspicious' : slot.quality === 'caution' ? 'Inauspicious' : 'Neutral'}</span>
+        <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded text-center ${s.badge}`}>
+          {lang && qualityR ? <><span className="block">{qualityR}</span><span className="block opacity-70">{qualityEn}</span></> : qualityEn}
+        </span>
         <span className="text-xs text-muted-foreground whitespace-nowrap">{fmtTime(slot.start)}–{fmtTime(slot.end)}</span>
       </div>
     </div>
   );
 }
 
-function PanchangChoghadiyaView({ locationSlug }) {
+function PanchangChoghadiyaView({ locationSlug, lang }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [now, setNow] = useState(new Date());
@@ -1026,12 +1129,21 @@ function PanchangChoghadiyaView({ locationSlug }) {
       <div className="rounded-xl border border-border bg-card p-4 space-y-3">
         <div className="flex items-center gap-2">
           <Sun className="h-4 w-4 text-gold" />
-          <h3 className="font-playfair font-semibold text-base">Day Choghadiya</h3>
+          <div>
+            {lang ? (
+              <>
+                <h3 className="font-playfair font-semibold text-base leading-tight">{tLabel('dayChoghadiya', lang)}</h3>
+                <p className="text-[10px] text-muted-foreground">Day Choghadiya</p>
+              </>
+            ) : (
+              <h3 className="font-playfair font-semibold text-base">Day Choghadiya</h3>
+            )}
+          </div>
           <span className="text-xs text-muted-foreground ml-auto">{fmtTime(data.sunrise)} – {fmtTime(data.sunset)}</span>
         </div>
         <div className="space-y-1.5">
           {data.day_choghadiya.map(slot => (
-            <ChoghadiyaSlotRow key={slot.index} slot={slot} fmtTime={fmtTime} now={now} />
+            <ChoghadiyaSlotRow key={slot.index} slot={slot} fmtTime={fmtTime} now={now} lang={lang} />
           ))}
         </div>
       </div>
@@ -1039,12 +1151,21 @@ function PanchangChoghadiyaView({ locationSlug }) {
       <div className="rounded-xl border border-border bg-card p-4 space-y-3">
         <div className="flex items-center gap-2">
           <Moon className="h-4 w-4 text-gold" />
-          <h3 className="font-playfair font-semibold text-base">Night Choghadiya</h3>
+          <div>
+            {lang ? (
+              <>
+                <h3 className="font-playfair font-semibold text-base leading-tight">{tLabel('nightChoghadiya', lang)}</h3>
+                <p className="text-[10px] text-muted-foreground">Night Choghadiya</p>
+              </>
+            ) : (
+              <h3 className="font-playfair font-semibold text-base">Night Choghadiya</h3>
+            )}
+          </div>
           <span className="text-xs text-muted-foreground ml-auto">{fmtTime(data.sunset)} – {fmtTime(data.next_sunrise)}</span>
         </div>
         <div className="space-y-1.5">
           {data.night_choghadiya.map(slot => (
-            <ChoghadiyaSlotRow key={slot.index} slot={slot} fmtTime={fmtTime} now={now} />
+            <ChoghadiyaSlotRow key={slot.index} slot={slot} fmtTime={fmtTime} now={now} lang={lang} />
           ))}
         </div>
       </div>
@@ -1054,7 +1175,7 @@ function PanchangChoghadiyaView({ locationSlug }) {
   );
 }
 
-function PanchangCalendarView({ year, month, locationSlug }) {
+function PanchangCalendarView({ year, month, locationSlug, lang }) {
   const navigate = useNavigate();
   const today = new Date();
   const [data, setData] = useState(null);
@@ -1079,7 +1200,21 @@ function PanchangCalendarView({ year, month, locationSlug }) {
       ) : data ? (
         <div className="space-y-1">
           <div className="grid grid-cols-7 gap-1 mb-2">
-            {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => <div key={d} className="text-center text-xs font-semibold text-muted-foreground py-1">{d}</div>)}
+            {(lang && LANG_WEEKDAY_ABBR[lang]
+              ? LANG_WEEKDAY_ABBR[lang].map((r, i) => ({ r, en: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][i] }))
+              : ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(en => ({ r: null, en }))
+            ).map(({ r, en }) => (
+              <div key={en} className="text-center py-1">
+                {r ? (
+                  <>
+                    <p className="text-xs font-semibold text-muted-foreground leading-tight">{r}</p>
+                    <p className="text-[9px] text-muted-foreground/60">{en}</p>
+                  </>
+                ) : (
+                  <p className="text-xs font-semibold text-muted-foreground">{en}</p>
+                )}
+              </div>
+            ))}
           </div>
           {(() => {
             const firstDay = new Date(year, month - 1, 1).getDay();
@@ -1106,13 +1241,24 @@ function PanchangCalendarView({ year, month, locationSlug }) {
           })()}
         </div>
       ) : <p className="text-center text-muted-foreground py-12">Failed to load calendar</p>}
-      <p className="text-xs text-center text-muted-foreground">Tap any date to view full Panchang details</p>
+      <p className="text-xs text-center text-muted-foreground">
+        {lang ? <><span>{tLabel('tapDate', lang)}</span> · </> : null}Tap any date to view full Panchang details
+      </p>
       <PanchangCalendarSEOContent calYear={year} calMonth={month} />
     </div>
   );
 }
 
-function PanchangFestivalsView({ locationSlug, onDataLoad }) {
+// Festivals observance type translations
+const LANG_OBS_TYPE = {
+  tamil:    { festival:'திருவிழா', vrat:'விரதம்', ekadashi:'ஏகாதசி', purnima:'பூர்ணிமை', amavasya:'அமாவாசை', chaturthi:'சதுர்த்தி', sankranti:'சங்க்ரான்தி', navratri:'நவராத்திரி' },
+  telugu:   { festival:'పండుగ',   vrat:'వ్రతం',    ekadashi:'ఏకాదశి', purnima:'పౌర్ణమి', amavasya:'అమావాస్య', chaturthi:'చవితి', sankranti:'సంక్రాంతి', navratri:'నవరాత్రులు' },
+  malayalam:{ festival:'ഉത്സവം',  vrat:'വ്രതം',   ekadashi:'ഏകാദശി', purnima:'പൗർണ്ണമി', amavasya:'അമാവാസ്യ', chaturthi:'ചതുർഥി', sankranti:'സംക്രാന്തി', navratri:'നവരാത്രി' },
+  kannada:  { festival:'ಹಬ್ಬ',    vrat:'ವ್ರತ',    ekadashi:'ಏಕಾದಶಿ', purnima:'ಹುಣ್ಣಿಮೆ', amavasya:'ಅಮಾವಾಸ್ಯೆ', chaturthi:'ಚೌತಿ', sankranti:'ಸಂಕ್ರಾಂತಿ', navratri:'ನವರಾತ್ರಿ' },
+  hindi:    { festival:'त्योहार', vrat:'व्रत',     ekadashi:'एकादशी',  purnima:'पूर्णिमा',  amavasya:'अमावस्या',  chaturthi:'चतुर्थी', sankranti:'संक्रांति',  navratri:'नवरात्रि' },
+};
+
+function PanchangFestivalsView({ locationSlug, onDataLoad, lang }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const year = new Date().getFullYear();
@@ -1139,7 +1285,16 @@ function PanchangFestivalsView({ locationSlug, onDataLoad }) {
                   <p className="text-[10px] text-muted-foreground uppercase">{new Date(item.date + 'T00:00:00').toLocaleDateString('en-IN', { weekday: 'short' })}</p>
                 </div>
                 <div>
-                  <span className={`text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full ${item.observance_type === 'festival' ? 'bg-amber-100 text-amber-800' : item.observance_type === 'vrat' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800'}`}>{item.observance_type}</span>
+                  {(() => {
+                    const typeKey = item.observance_type?.toLowerCase();
+                    const typeR = lang ? (LANG_OBS_TYPE[lang]?.[typeKey] || null) : null;
+                    const typeColor = typeKey === 'festival' ? 'bg-amber-100 text-amber-800' : typeKey === 'vrat' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800';
+                    return (
+                      <span className={`text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full ${typeColor}`}>
+                        {typeR ? <>{typeR} · {item.observance_type}</> : item.observance_type}
+                      </span>
+                    );
+                  })()}
                   <p className="font-semibold text-sm mt-1">{item.name}</p>
                   <p className="text-xs text-muted-foreground">{item.summary}</p>
                 </div>
@@ -1330,11 +1485,11 @@ export const PanchangPage = ({ lang } = {}) => {
       {isDateView                                 && <PanchangDateView     dateStr={dateValue}           locationSlug={locationSlug} onDataLoad={setPanchangData} />}
       {!isDateView && activeView === 'daily'      && <PanchangDailyView    dayOffset={0}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} />}
       {!isDateView && activeView === 'tomorrow'   && <PanchangDailyView    dayOffset={1}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} />}
-      {!isDateView && activeView === 'tithi'      && <PanchangTithiView                                  locationSlug={locationSlug} />}
-      {!isDateView && activeView === 'muhurat'    && <MuhuratView                                        locationSlug={locationSlug} locationTZ={locationTZ} />}
-      {!isDateView && activeView === 'choghadiya' && <PanchangChoghadiyaView                             locationSlug={locationSlug} />}
-      {!isDateView && activeView === 'calendar'   && <PanchangCalendarView year={calYear} month={calMonth} locationSlug={locationSlug} />}
-      {!isDateView && activeView === 'festivals'  && <PanchangFestivalsView                              locationSlug={locationSlug} onDataLoad={setFestivalData} />}
+      {!isDateView && activeView === 'tithi'      && <PanchangTithiView                                  locationSlug={locationSlug} lang={lang} />}
+      {!isDateView && activeView === 'muhurat'    && <MuhuratView                                        locationSlug={locationSlug} locationTZ={locationTZ} lang={lang} />}
+      {!isDateView && activeView === 'choghadiya' && <PanchangChoghadiyaView                             locationSlug={locationSlug} lang={lang} />}
+      {!isDateView && activeView === 'calendar'   && <PanchangCalendarView year={calYear} month={calMonth} locationSlug={locationSlug} lang={lang} />}
+      {!isDateView && activeView === 'festivals'  && <PanchangFestivalsView                              locationSlug={locationSlug} onDataLoad={setFestivalData} lang={lang} />}
     </div>
   );
 };
