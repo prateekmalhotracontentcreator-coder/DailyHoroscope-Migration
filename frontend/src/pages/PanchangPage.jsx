@@ -17,10 +17,10 @@ const QUALITY_STYLES = {
 const TYPE_META = {
   daily:     { title: "Today's Panchang",      icon: Sun,      desc: 'Complete Vedic almanac — Tithi, Nakshatra, Yoga, Karana, Sunrise & Sunset' },
   tomorrow:  { title: "Tomorrow's Panchang",   icon: Sun,      desc: 'Complete Vedic almanac for tomorrow — Tithi, Nakshatra, Yoga, Karana' },
-  tithi:     { title: 'Tithi — Lunar Day', icon: Moon,     desc: "Today's Tithi (lunar day) with Paksha phase and timing" },
-  choghadiya:{ title: 'Choghadiya',            icon: Zap,      desc: 'Auspicious and inauspicious time periods of the day' },
-  calendar:  { title: 'Panchang Calendar',     icon: Calendar, desc: 'Monthly Hindu calendar with Tithi and observances' },
-  festivals: { title: 'Festivals & Vrats',     icon: Sparkles, desc: 'Upcoming Hindu festivals and vrat dates' },
+  tithi:     { title: 'Tithi — Lunar Day',      icon: Moon,     desc: "Today's Tithi (lunar day) with Paksha phase and timing" },
+  choghadiya:{ title: 'Choghadiya',             icon: Zap,      desc: 'Auspicious and inauspicious time periods of the day' },
+  calendar:  { title: 'Panchang Calendar',      icon: Calendar, desc: 'Monthly Hindu calendar with Tithi and observances' },
+  festivals: { title: 'Festivals & Vrats',      icon: Sparkles, desc: 'Upcoming Hindu festivals and vrat dates' },
 };
 
 const ALIAS = {
@@ -45,6 +45,19 @@ function formatDate(iso) {
   catch { return iso; }
 }
 
+// Compute tomorrow's ISO date string in IST
+function getTomorrowIST() {
+  const now = new Date();
+  // Advance by 1 day in IST
+  const istOffset = 5.5 * 60 * 60 * 1000;
+  const ist = new Date(now.getTime() + istOffset);
+  ist.setUTCDate(ist.getUTCDate() + 1);
+  const y = ist.getUTCFullYear();
+  const m = String(ist.getUTCMonth() + 1).padStart(2, '0');
+  const d = String(ist.getUTCDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
 function PanchangDailyView({ dayOffset = 0 }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -52,7 +65,8 @@ function PanchangDailyView({ dayOffset = 0 }) {
 
   useEffect(() => {
     setLoading(true); setError(null); setData(null);
-    const params = dayOffset !== 0 ? { offset: dayOffset } : {};
+    // Use explicit date param for tomorrow — backend now supports ?date=YYYY-MM-DD
+    const params = dayOffset === 1 ? { date: getTomorrowIST() } : {};
     axios.get(`${API}/daily`, { params })
       .then(r => setData(r.data))
       .catch(() => setError('Failed to load Panchang data. Please try again.'))
@@ -252,6 +266,7 @@ function PanchangCalendarView({ year, month }) {
   }, [year, month]);
   const prevMonth = month === 1 ? { y: year - 1, m: 12 } : { y: year, m: month - 1 };
   const nextMonth = month === 12 ? { y: year + 1, m: 1 } : { y: year, m: month + 1 };
+  const todayISO = today.toISOString().slice(0, 10);
   return (
     <div className="space-y-5">
       <div className="flex items-center justify-between">
@@ -275,13 +290,20 @@ function PanchangCalendarView({ year, month }) {
               <div key={ri} className="grid grid-cols-7 gap-1">
                 {row.map((day, ci) => {
                   if (!day) return <div key={ci} />;
-                  const isToday = day.date === today.toISOString().slice(0, 10);
+                  const isToday = day.date === todayISO;
+                  const hasFestival = day.observances?.length > 0;
                   return (
-                    <div key={day.date} className={`p-1.5 rounded-lg border text-center ${isToday ? 'border-gold bg-gold/10' : 'border-border'}`}>
+                    <button
+                      key={day.date}
+                      onClick={() => navigate(`/panchang/date/${day.date}`)}
+                      className={`p-1.5 rounded-lg border text-center w-full transition-all hover:border-gold hover:bg-gold/10 hover:shadow-sm ${
+                        isToday ? 'border-gold bg-gold/10' : 'border-border'
+                      }`}
+                    >
                       <p className={`text-sm font-semibold ${isToday ? 'text-gold' : ''}`}>{day.day}</p>
                       <p className="text-[9px] text-muted-foreground leading-tight mt-0.5 truncate">{day.tithi.split(' ')[1] || day.tithi}</p>
-                      {day.observances.length > 0 && <div className="w-1 h-1 bg-gold rounded-full mx-auto mt-1" />}
-                    </div>
+                      {hasFestival && <div className="w-1 h-1 bg-gold rounded-full mx-auto mt-1" />}
+                    </button>
                   );
                 })}
               </div>
@@ -289,6 +311,7 @@ function PanchangCalendarView({ year, month }) {
           })()}
         </div>
       ) : <p className="text-center text-muted-foreground py-12">Failed to load calendar</p>}
+      <p className="text-xs text-center text-muted-foreground">Tap any date to view full Panchang details</p>
     </div>
   );
 }
@@ -331,15 +354,121 @@ function PanchangFestivalsView() {
   );
 }
 
+// View for a specific date (from calendar click)
+function PanchangDateView({ dateStr }) {
+  const navigate = useNavigate();
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  useEffect(() => {
+    setLoading(true); setError(null); setData(null);
+    axios.get(`${API}/daily`, { params: { date: dateStr } })
+      .then(r => setData(r.data))
+      .catch(() => setError('Failed to load Panchang data.'))
+      .finally(() => setLoading(false));
+  }, [dateStr]);
+  if (loading) return <div className="space-y-4">{[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
+  if (error) return <p className="text-center text-muted-foreground py-12">{error}</p>;
+  if (!data) return null;
+  const { summary, panchang, day_quality_windows, observances } = data;
+  // Navigate back to that month's calendar
+  const [y, mo] = dateStr.split('-');
+  return (
+    <div className="space-y-6">
+      <button onClick={() => navigate(`/panchang/calendar/${y}/${parseInt(mo)}`)} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-gold transition-colors">
+        <ChevronLeft className="h-4 w-4" /> Back to Calendar
+      </button>
+      <div className="flex items-center justify-between px-6 py-4 bg-gold/5 border border-gold/20 rounded-xl">
+        <div className="flex items-center gap-3">
+          <Sun className="h-5 w-5 text-gold" />
+          <span className="font-playfair font-semibold text-lg">{formatDate(data.date + 'T00:00:00')}</span>
+        </div>
+        <span className="text-xs text-muted-foreground">{data.location?.label || 'New Delhi, India'}</span>
+      </div>
+      <Card className="border border-gold/20 overflow-hidden">
+        <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold">Panch Anga — Five Limbs</p>
+        </div>
+        <div className="divide-y divide-border">
+          {[
+            { label: 'Tithi',      value: panchang.tithi.name,     sub: panchang.paksha + ' Paksha' },
+            { label: 'Nakshatra',  value: panchang.nakshatra.name, sub: 'Moon in ' + panchang.moon_sign },
+            { label: 'Yoga',       value: panchang.yoga.name,      sub: '' },
+            { label: 'Karana',     value: panchang.karana.name,    sub: '' },
+            { label: 'Vara (Day)', value: summary.weekday,          sub: panchang.samvat },
+          ].map(item => (
+            <div key={item.label} className="flex items-center justify-between px-5 py-4">
+              <div>
+                <p className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">{item.label}</p>
+                <p className="font-medium text-sm">{item.value}</p>
+              </div>
+              {item.sub && <p className="text-xs text-muted-foreground text-right max-w-[200px]">{item.sub}</p>}
+            </div>
+          ))}
+        </div>
+      </Card>
+      <div className="grid grid-cols-2 gap-3">
+        <Card className="p-4 border border-gold/20 text-center">
+          <Sun className="h-5 w-5 text-amber-500 mx-auto mb-2" />
+          <p className="text-xs text-muted-foreground uppercase tracking-wide">Sunrise</p>
+          <p className="font-semibold text-lg">{summary.sunrise}</p>
+        </Card>
+        <Card className="p-4 border border-gold/20 text-center">
+          <Moon className="h-5 w-5 text-blue-400 mx-auto mb-2" />
+          <p className="text-xs text-muted-foreground uppercase tracking-wide">Sunset</p>
+          <p className="font-semibold text-lg">{summary.sunset}</p>
+        </Card>
+      </div>
+      {day_quality_windows?.length > 0 && (
+        <Card className="border border-gold/20 overflow-hidden">
+          <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
+            <p className="text-xs font-semibold uppercase tracking-widest text-gold">Timing Windows</p>
+          </div>
+          <div className="divide-y divide-border">
+            {day_quality_windows.map(w => (
+              <div key={w.label} className="flex items-center justify-between px-5 py-3">
+                <div className="flex items-center gap-3">
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${(QUALITY_STYLES[w.quality] || QUALITY_STYLES.neutral).badge}`}>{w.quality}</span>
+                  <span className="text-sm font-medium">{w.label}</span>
+                </div>
+                <span className="text-xs text-muted-foreground">{formatTime(w.start)} — {formatTime(w.end)}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
+      {observances?.length > 0 && (
+        <Card className="border border-gold/20 p-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Observances</p>
+          <div className="space-y-2">
+            {observances.map(o => (
+              <div key={o.slug} className="flex items-start gap-3">
+                <Star className="h-4 w-4 text-gold mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">{o.name}</p>
+                  <p className="text-xs text-muted-foreground">{o.summary}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
+    </div>
+  );
+}
+
 export const PanchangPage = () => {
-  const { type: rawType = 'daily', year: yearParam, month: monthParam } = useParams();
+  const { type: rawType = 'daily', year: yearParam, month: monthParam, dateValue } = useParams();
   const resolvedType = ALIAS[rawType] || rawType;
-  const isCalendar = resolvedType === 'calendar' || (yearParam && monthParam);
-  const activeView = isCalendar ? 'calendar' : (resolvedType || 'daily');
+  const isCalendar = resolvedType === 'calendar' || (yearParam && monthParam && !dateValue);
+  const isDateView = !!dateValue;
+  const activeView = isDateView ? 'calendar' : isCalendar ? 'calendar' : (resolvedType || 'daily');
   const today = new Date();
   const calYear  = parseInt(yearParam)  || today.getFullYear();
   const calMonth = parseInt(monthParam) || (today.getMonth() + 1);
-  const config = TYPE_META[activeView] || TYPE_META.daily;
+  const config = isDateView
+    ? { title: 'Panchang Details', icon: Calendar, desc: 'Complete Vedic almanac for the selected date' }
+    : (TYPE_META[activeView] || TYPE_META.daily);
   const subNavItems = [
     { key: 'daily',      label: 'Today',      icon: Sun,      path: '/panchang/today' },
     { key: 'tomorrow',   label: 'Tomorrow',   icon: Sun,      path: '/panchang/tomorrow' },
@@ -369,12 +498,13 @@ export const PanchangPage = () => {
           </Link>
         ))}
       </div>
-      {activeView === 'daily'      && <PanchangDailyView dayOffset={0} />}
-      {activeView === 'tomorrow'   && <PanchangDailyView dayOffset={1} />}
-      {activeView === 'tithi'      && <PanchangTithiView />}
-      {activeView === 'choghadiya' && <PanchangChoghadiyaView />}
-      {activeView === 'calendar'   && <PanchangCalendarView year={calYear} month={calMonth} />}
-      {activeView === 'festivals'  && <PanchangFestivalsView />}
+      {isDateView                              && <PanchangDateView dateStr={dateValue} />}
+      {!isDateView && activeView === 'daily'      && <PanchangDailyView dayOffset={0} />}
+      {!isDateView && activeView === 'tomorrow'   && <PanchangDailyView dayOffset={1} />}
+      {!isDateView && activeView === 'tithi'      && <PanchangTithiView />}
+      {!isDateView && activeView === 'choghadiya' && <PanchangChoghadiyaView />}
+      {!isDateView && activeView === 'calendar'   && <PanchangCalendarView year={calYear} month={calMonth} />}
+      {!isDateView && activeView === 'festivals'  && <PanchangFestivalsView />}
     </div>
   );
 };
