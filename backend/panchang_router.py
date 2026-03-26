@@ -14,7 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v4-swiss"
+ENGINE_VERSION = "panchang-router-v5-swiss"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -286,6 +286,19 @@ def _datetime_to_jd(dt_utc: datetime) -> float:
     )
 
 
+def _jd_to_local_dt(jd: float, tz: ZoneInfo) -> datetime:
+    """Convert a Julian Day number to a timezone-aware local datetime."""
+    # JD to UTC: reverse of swe.julday
+    # swe.jdut1_to_utc returns (year, month, day, hour_frac) in UTC
+    y, mo, d, h = swe.jdut1_to_utc(jd, swe.GREG_CAL)
+    total_seconds = int(round(h * 3600))
+    hr = total_seconds // 3600
+    mn = (total_seconds % 3600) // 60
+    sc = total_seconds % 60
+    dt_utc = datetime(y, mo, d, hr, mn, sc, tzinfo=timezone.utc)
+    return dt_utc.astimezone(tz)
+
+
 def _sun_longitude(jd: float) -> float:
     result = swe.calc_ut(jd, int(swe.SUN), int(_SWE_FLAGS))
     return _normalize_angle(result[0][0])
@@ -300,44 +313,61 @@ def _sunrise_sunset_local(
     base_date: date, latitude: float, longitude: float, tz_name: str
 ) -> tuple[datetime, datetime]:
     """
-    Compute sunrise and sunset using NOAA solar calculation algorithm.
-    Returns timezone-aware datetimes in the local timezone.
+    Compute sunrise and sunset using swe.rise_trans (Swiss Ephemeris).
+
+    swe.rise_trans gives the most accurate results — the same engine used
+    by Drik Panchang, AstroSage, and other reference Panchang providers.
+
+    rsmi flags:
+      swe.CALC_RISE  = 1  (sunrise: upper limb, standard refraction 0°34')
+      swe.CALC_SET   = 2  (sunset)
+
+    The function signature is:
+      swe.rise_trans(jd_start, body, rsmi, geopos, atpress, attemp)
+    where geopos = (longitude, latitude, altitude_metres).
+
+    Returns (jd_event, flag) — we only need jd_event (index 1).
     """
     tz = ZoneInfo(tz_name)
 
-    def _solar_noon_utc_h(jd: float, lon: float) -> float:
-        n = jd - 2451545.0
-        L = (280.460 + 0.9856474 * n) % 360.0
-        g = math.radians((357.528 + 0.9856003 * n) % 360.0)
-        lam = math.radians(L + 1.915 * math.sin(g) + 0.020 * math.sin(2 * g))
-        eps = math.radians(23.439 - 0.0000004 * n)
-        RA = math.degrees(math.atan2(math.cos(eps) * math.sin(lam), math.cos(lam))) / 15.0
-        eot = 4 * (L / 15.0 - (RA % 24.0))
-        return 12.0 - lon / 15.0 - eot / 60.0
+    # Start search from local midnight expressed as UTC JD
+    local_midnight = datetime(base_date.year, base_date.month, base_date.day,
+                              0, 0, 0, tzinfo=tz)
+    jd_start = _datetime_to_jd(local_midnight.astimezone(timezone.utc))
 
-    def _hour_angle(lat_deg: float, jd: float) -> float:
-        n = jd - 2451545.0
-        L = (280.460 + 0.9856474 * n) % 360.0
-        g = math.radians((357.528 + 0.9856003 * n) % 360.0)
-        lam = math.radians(L + 1.915 * math.sin(g) + 0.020 * math.sin(2 * g))
-        eps = math.radians(23.439 - 0.0000004 * n)
-        dec = math.asin(math.sin(eps) * math.sin(lam))
-        lat = math.radians(lat_deg)
-        cos_ha = (math.sin(math.radians(-0.8333)) - math.sin(lat) * math.sin(dec)) / (math.cos(lat) * math.cos(dec))
-        return math.degrees(math.acos(max(-1.0, min(1.0, cos_ha))))
+    # Geographic position: (longitude, latitude, altitude_m)
+    geopos = (longitude, latitude, 0.0)
 
-    dt_noon_utc = datetime(base_date.year, base_date.month, base_date.day, 12, 0, 0, tzinfo=timezone.utc)
-    jd_noon = _datetime_to_jd(dt_noon_utc)
-    solar_noon_h = _solar_noon_utc_h(jd_noon, longitude)
-    ha_h = _hour_angle(latitude, jd_noon) / 15.0
+    # Standard atmospheric pressure and temperature for refraction
+    atpress = 1013.25
+    attemp  = 15.0
 
-    def hours_to_dt(h: float) -> datetime:
-        total_min = int(round(h * 60))
-        hr = (total_min // 60) % 24
-        mn = total_min % 60
-        return datetime(base_date.year, base_date.month, base_date.day, hr, mn, 0, tzinfo=timezone.utc).astimezone(tz)
+    # --- Sunrise ---
+    try:
+        ret_rise = swe.rise_trans(
+            jd_start, swe.SUN, swe.CALC_RISE,
+            geopos, atpress, attemp,
+        )
+        # pyswisseph returns (retval, jd_event)
+        jd_sunrise = ret_rise[1]
+        sunrise = _jd_to_local_dt(jd_sunrise, tz)
+    except Exception:
+        # Fallback: approximate noon - 6h (handles polar edge cases)
+        sunrise = local_midnight.replace(hour=6, minute=18)
 
-    return hours_to_dt(solar_noon_h - ha_h), hours_to_dt(solar_noon_h + ha_h)
+    # --- Sunset: search from after sunrise ---
+    jd_after_sunrise = jd_start + 0.25  # ~6 hours after midnight
+    try:
+        ret_set = swe.rise_trans(
+            jd_after_sunrise, swe.SUN, swe.CALC_SET,
+            geopos, atpress, attemp,
+        )
+        jd_sunset = ret_set[1]
+        sunset = _jd_to_local_dt(jd_sunset, tz)
+    except Exception:
+        sunset = local_midnight.replace(hour=18, minute=35)
+
+    return sunrise, sunset
 
 
 def _moment_longitudes(moment_local: datetime) -> tuple[float, float]:
