@@ -13,94 +13,15 @@ import {
 } from 'lucide-react';
 
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
-const StarsLogo = ({ size = 28 }) => {
-  // Pre-compute petal positions (16 petals)
-  const petals = Array.from({ length: 16 }, (_, i) => i);
-  // Pre-compute dot ring (16 dots on r=38)
-  const dots = Array.from({ length: 16 }, (_, i) => {
-    const angle = (i * 22.5 - 90) * Math.PI / 180;
-    return { cx: 50 + 38 * Math.cos(angle), cy: 50 + 38 * Math.sin(angle) };
-  });
-  // Diamond gems at cardinal points (N/S/E/W) on r=44
-  const diamonds = [
-    { cx: 50,    cy: 6  }, // N
-    { cx: 94,    cy: 50 }, // E
-    { cx: 50,    cy: 94 }, // S
-    { cx: 6,     cy: 50 }, // W
-  ];
-  return (
-    <svg width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      {/* Rounded-square background */}
-      <rect x="2" y="2" width="96" height="96" rx="22" ry="22" fill="#FEFCF7" />
-      <rect x="2" y="2" width="96" height="96" rx="22" ry="22" fill="url(#logoGrad)" opacity="0.12" />
-
-      {/* Outer petal ring — 16 petals (mandala / lotus) */}
-      {petals.map(i => (
-        <ellipse key={i}
-          cx="50" cy="50"
-          rx="4.5" ry="16"
-          fill="#C5A059"
-          opacity="0.65"
-          transform={`rotate(${i * 22.5} 50 50)`}
-        />
-      ))}
-
-      {/* Diamond gems at N/S/E/W */}
-      {diamonds.map((d, i) => (
-        <polygon key={i}
-          points={`${d.cx},${d.cy - 4} ${d.cx + 3},${d.cy} ${d.cx},${d.cy + 4} ${d.cx - 3},${d.cy}`}
-          fill="#E8C97A"
-          opacity="0.95"
-        />
-      ))}
-
-      {/* Inner beaded/dot ring — 16 dots on r=38 */}
-      {dots.map((d, i) => (
-        <circle key={i} cx={d.cx} cy={d.cy} r="1.6" fill="#C5A059" opacity="0.9" />
-      ))}
-
-      {/* Centre 4-point sparkle star (main) */}
-      <path
-        d="M50 32 L52.8 47.2 L68 50 L52.8 52.8 L50 68 L47.2 52.8 L32 50 L47.2 47.2 Z"
-        fill="#C5A059"
-      />
-      {/* Highlight on main star */}
-      <path
-        d="M50 36 L51.8 47.8 L50 50 L48.2 47.8 Z"
-        fill="#E8C97A"
-        opacity="0.7"
-      />
-
-      {/* Small sparkle star — upper right */}
-      <path
-        d="M65 30 L66 33.5 L69.5 34.5 L66 35.5 L65 39 L64 35.5 L60.5 34.5 L64 33.5 Z"
-        fill="#E8C97A"
-        opacity="0.85"
-      />
-
-      {/* Small sparkle star — lower left */}
-      <path
-        d="M33 60 L33.8 62.6 L36.4 63.4 L33.8 64.2 L33 66.8 L32.2 64.2 L29.6 63.4 L32.2 62.6 Z"
-        fill="#C5A059"
-        opacity="0.75"
-      />
-
-      {/* Tiny sparkle dot — upper left */}
-      <path
-        d="M30 34 L30.5 35.8 L32.3 36.3 L30.5 36.8 L30 38.6 L29.5 36.8 L27.7 36.3 L29.5 35.8 Z"
-        fill="#C5A059"
-        opacity="0.6"
-      />
-
-      <defs>
-        <radialGradient id="logoGrad" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#E8C97A" />
-          <stop offset="100%" stopColor="#C5A059" />
-        </radialGradient>
-      </defs>
-    </svg>
-  );
-};
+const StarsLogo = ({ size = 28 }) => (
+  <img
+    src="/logo.png"
+    alt="Everyday Horoscope"
+    width={size}
+    height={size}
+    style={{ width: size, height: size, objectFit: 'contain' }}
+  />
+);
 
 const NAV = [
   { label: 'Home', icon: Home, path: '/home' },
@@ -287,12 +208,17 @@ export const NavBar = () => {
   }, [sidebarOpen]);
 
   const LANGUAGES = [
-    { code: 'hi', label: 'हिंदी',   active: false },
-    { code: 'en', label: 'English', active: true  },
-    { code: 'ta', label: 'தமிழ்',   active: false },
-    { code: 'te', label: 'తెలుగు',  active: false },
-    { code: 'kn', label: 'ಕನ್ನಡ',   active: false },
+    { code: 'hi', label: 'हिंदी',   route: '/panchang/today'    },
+    { code: 'en', label: 'English', route: '/panchang/today'    },
+    { code: 'ta', label: 'தமிழ்',   route: '/panchang/tamil'   },
+    { code: 'te', label: 'తెలుగు',  route: '/panchang/telugu'  },
+    { code: 'kn', label: 'ಕನ್ನಡ',   route: '/panchang/kannada' },
   ];
+
+  const activeLangCode = location.pathname === '/panchang/tamil'   ? 'ta'
+                       : location.pathname === '/panchang/telugu'  ? 'te'
+                       : location.pathname === '/panchang/kannada' ? 'kn'
+                       : 'en';
 
   return (
     <>
@@ -300,7 +226,7 @@ export const NavBar = () => {
       <header className="sticky top-0 z-40 bg-card/80 backdrop-blur-md border-b border-border">
         <div className="flex items-center justify-between h-14 px-4">
           <div className="flex items-center gap-3">
-            <button onClick={() => setSidebarOpen(true)} className="lg:hidden p-2 rounded-sm hover:bg-muted/50 transition-colors" aria-label="Open menu">
+            <button onClick={() => setSidebarOpen(true)} className="lg:hidden p-2 rounded-sm hover:bg-muted/50 transition-colors text-foreground" aria-label="Open menu">
               <Menu className="h-5 w-5" />
             </button>
             <button onClick={() => navigate(user ? '/home' : '/')} className="flex items-center gap-2.5" data-testid="header-logo">
@@ -332,25 +258,26 @@ export const NavBar = () => {
 
         {/* LANGUAGE BAR — second tier */}
         <div className="border-t border-border/60 bg-muted/30 overflow-x-auto">
-          <div className="flex items-center gap-1 h-8 px-4 min-w-max">
-            {LANGUAGES.map((lang, idx) => (
-              <React.Fragment key={lang.code}>
-                {idx > 0 && <span className="text-border/80 text-[10px] select-none">|</span>}
-                <button
-                  onClick={() => {
-                    if (!lang.active) console.log(`Language switch to ${lang.code} — coming soon`);
-                  }}
-                  className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors whitespace-nowrap
-                    ${lang.active
-                      ? 'text-gold font-semibold'
-                      : 'text-muted-foreground hover:text-foreground'
-                    }`}
-                  aria-current={lang.active ? 'true' : undefined}
-                >
-                  {lang.label}
-                </button>
-              </React.Fragment>
-            ))}
+          <div className="flex items-center justify-end gap-1 h-8 px-4 min-w-max ml-auto">
+            {LANGUAGES.map((lang, idx) => {
+              const isActive = lang.code === activeLangCode;
+              return (
+                <React.Fragment key={lang.code}>
+                  {idx > 0 && <span className="text-border/80 text-[10px] select-none">|</span>}
+                  <button
+                    onClick={() => navigate(lang.route)}
+                    className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors whitespace-nowrap
+                      ${isActive
+                        ? 'text-gold font-semibold'
+                        : 'text-muted-foreground hover:text-foreground'
+                      }`}
+                    aria-current={isActive ? 'true' : undefined}
+                  >
+                    {lang.label}
+                  </button>
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
       </header>
