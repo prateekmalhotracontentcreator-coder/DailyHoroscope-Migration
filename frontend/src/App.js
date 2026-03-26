@@ -112,12 +112,22 @@ function App() {
                   {/* Panchang — order matters: most specific first */}
                   <Route path="/panchang/calendar/:year/:month" element={<PanchangPage />} />
                   <Route path="/panchang/date/:dateValue" element={<PanchangPage />} />
-                  {/* Language-specific Panchang pages (must come before generic :type) */}
-                  <Route path="/panchang/tamil"    element={<PanchangLangPage lang="tamil" />} />
-                  <Route path="/panchang/telugu"   element={<PanchangLangPage lang="telugu" />} />
-                  <Route path="/panchang/malayalam" element={<PanchangLangPage lang="malayalam" />} />
-                  <Route path="/panchang/kannada"  element={<PanchangLangPage lang="kannada" />} />
-                  <Route path="/panchang/hindi"    element={<PanchangLangPage lang="hindi" />} />
+                  {/* Language-specific Panchang pages + sub-views (must come before generic :type) */}
+                  <Route path="/panchang/hindi/calendar/:year/:month" element={<PanchangLangPage lang="hindi" />} />
+                  <Route path="/panchang/hindi/:type"      element={<PanchangLangPage lang="hindi" />} />
+                  <Route path="/panchang/hindi"            element={<PanchangLangPage lang="hindi" />} />
+                  <Route path="/panchang/tamil/calendar/:year/:month" element={<PanchangLangPage lang="tamil" />} />
+                  <Route path="/panchang/tamil/:type"      element={<PanchangLangPage lang="tamil" />} />
+                  <Route path="/panchang/tamil"            element={<PanchangLangPage lang="tamil" />} />
+                  <Route path="/panchang/telugu/calendar/:year/:month" element={<PanchangLangPage lang="telugu" />} />
+                  <Route path="/panchang/telugu/:type"     element={<PanchangLangPage lang="telugu" />} />
+                  <Route path="/panchang/telugu"           element={<PanchangLangPage lang="telugu" />} />
+                  <Route path="/panchang/malayalam/calendar/:year/:month" element={<PanchangLangPage lang="malayalam" />} />
+                  <Route path="/panchang/malayalam/:type"  element={<PanchangLangPage lang="malayalam" />} />
+                  <Route path="/panchang/malayalam"        element={<PanchangLangPage lang="malayalam" />} />
+                  <Route path="/panchang/kannada/calendar/:year/:month" element={<PanchangLangPage lang="kannada" />} />
+                  <Route path="/panchang/kannada/:type"    element={<PanchangLangPage lang="kannada" />} />
+                  <Route path="/panchang/kannada"          element={<PanchangLangPage lang="kannada" />} />
                   <Route path="/panchang/:type" element={<PanchangPage />} />
 
                   {/* Phase 2 modules */}
