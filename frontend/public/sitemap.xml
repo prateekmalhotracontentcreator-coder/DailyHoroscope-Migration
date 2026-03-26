@@ -9,33 +9,27 @@
   <url><loc>https://everydayhoroscope.in/horoscope/weekly</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
   <url><loc>https://everydayhoroscope.in/horoscope/monthly</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
-  <!-- Panchang — high-frequency, date-specific pages are Google's indexing target -->
+  <!-- Panchang — daily-change pages -->
   <url><loc>https://everydayhoroscope.in/panchang/today</loc><changefreq>daily</changefreq><priority>0.95</priority></url>
   <url><loc>https://everydayhoroscope.in/panchang/tomorrow</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
   <url><loc>https://everydayhoroscope.in/panchang/tithi</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
   <url><loc>https://everydayhoroscope.in/panchang/choghadiya</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
   <url><loc>https://everydayhoroscope.in/panchang/festivals</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/1</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/2</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/3</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/4</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/5</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/6</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/7</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/8</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/9</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/10</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/11</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/12</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Panchang — calendar pages (current month + next 3) -->
+  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/3</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/4</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/5</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
   <!-- Tools -->
   <url><loc>https://everydayhoroscope.in/birth-chart</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://everydayhoroscope.in/kundali-milan</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://everydayhoroscope.in/brihat-kundli</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://everydayhoroscope.in/numerology</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/tarot</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://everydayhoroscope.in/tarot</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- Content -->
+  <!-- Blog -->
   <url><loc>https://everydayhoroscope.in/blog</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
 
   <!-- Company -->
