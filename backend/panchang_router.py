@@ -14,7 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v8-swiss"
+ENGINE_VERSION = "panchang-router-v9-swiss"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -57,6 +57,40 @@ _DUR_MUHURTA_MUHURTAS: dict[int, tuple[int, int]] = {
     5: (9, 10),   # Friday
     6: (1,  7),   # Saturday
     7: (3,  6),   # Sunday
+}
+
+# ---------------------------------------------------------------------------
+# True Choghadiya tables
+# Each weekday has 8 day slots + 8 night slots.
+# weekday key = Python date.isoweekday(): Mon=1 … Sun=7
+# ---------------------------------------------------------------------------
+_CHOG_QUALITY: dict[str, TimingQuality] = {
+    "Amrit": "good", "Shubh": "good", "Labh": "good",
+    "Char": "neutral",
+    "Udveg": "caution", "Kaal": "caution", "Rog": "caution",
+}
+_CHOG_RULER: dict[str, str] = {
+    "Amrit": "Moon",   "Shubh": "Jupiter", "Labh": "Mercury",
+    "Char":  "Venus",  "Udveg": "Sun",     "Kaal": "Saturn", "Rog": "Mars",
+}
+
+_DAY_CHOG: dict[int, list[str]] = {
+    7: ["Udveg","Char","Labh","Amrit","Kaal","Shubh","Rog","Udveg"],   # Sunday
+    1: ["Amrit","Kaal","Shubh","Rog","Udveg","Char","Labh","Amrit"],   # Monday
+    2: ["Rog","Udveg","Char","Labh","Amrit","Kaal","Shubh","Rog"],     # Tuesday
+    3: ["Labh","Amrit","Kaal","Shubh","Rog","Udveg","Char","Labh"],    # Wednesday
+    4: ["Shubh","Rog","Udveg","Char","Labh","Amrit","Kaal","Shubh"],   # Thursday
+    5: ["Char","Labh","Amrit","Kaal","Shubh","Rog","Udveg","Char"],    # Friday
+    6: ["Kaal","Shubh","Rog","Udveg","Char","Labh","Amrit","Kaal"],    # Saturday
+}
+_NIGHT_CHOG: dict[int, list[str]] = {
+    7: ["Shubh","Amrit","Char","Rog","Kaal","Labh","Udveg","Shubh"],   # Sunday
+    1: ["Char","Rog","Kaal","Labh","Udveg","Shubh","Amrit","Char"],    # Monday
+    2: ["Kaal","Labh","Udveg","Shubh","Amrit","Char","Rog","Kaal"],    # Tuesday
+    3: ["Rog","Kaal","Labh","Udveg","Shubh","Amrit","Char","Rog"],     # Wednesday
+    4: ["Udveg","Shubh","Amrit","Char","Rog","Kaal","Labh","Udveg"],   # Thursday
+    5: ["Amrit","Char","Rog","Kaal","Labh","Udveg","Shubh","Amrit"],   # Friday
+    6: ["Labh","Udveg","Shubh","Amrit","Char","Rog","Kaal","Labh"],    # Saturday
 }
 
 # Vijaya Muhurta — weekday-specific Muhurta index from sunrise
@@ -187,6 +221,28 @@ class PanchangFestivalListResponse(BaseModel):
     month: int | None = None
     location: PanchangLocation
     items: list[PanchangObservance] = Field(default_factory=list)
+    meta: PanchangMeta
+
+
+class ChoghadiyaSlot(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    index: int          # 1–8
+    name: str           # Amrit / Shubh / Labh / Char / Udveg / Kaal / Rog
+    ruler: str          # planet name
+    quality: TimingQuality
+    start: str          # ISO-format local datetime
+    end: str
+
+
+class ChoghadiyaResponse(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    date: str
+    location: PanchangLocation
+    sunrise: str
+    sunset: str
+    next_sunrise: str
+    day_choghadiya: list[ChoghadiyaSlot] = Field(default_factory=list)
+    night_choghadiya: list[ChoghadiyaSlot] = Field(default_factory=list)
     meta: PanchangMeta
 
 
@@ -736,6 +792,52 @@ def _build_festival_list(
     )
 
 
+def _build_choghadiya(
+    base_date: date, location: PanchangLocation, calendar_variant: CalendarVariant, region: RegionCode,
+) -> ChoghadiyaResponse:
+    tz = ZoneInfo(location.timezone)
+    sunrise, sunset, _, _ = _sunrise_sunset_moonrise_moonset(
+        base_date, location.latitude, location.longitude, location.timezone,
+    )
+    # Next-day sunrise for night slot duration
+    next_date = base_date + timedelta(days=1)
+    next_sunrise, _, _, _ = _sunrise_sunset_moonrise_moonset(
+        next_date, location.latitude, location.longitude, location.timezone,
+    )
+    isoweekday = base_date.isoweekday()
+    day_names   = _DAY_CHOG[isoweekday]
+    night_names = _NIGHT_CHOG[isoweekday]
+
+    day_dur_sec   = (sunset      - sunrise).total_seconds() / 8
+    night_dur_sec = (next_sunrise - sunset).total_seconds() / 8
+
+    def _make_slots(names: list[str], anchor: datetime, dur_sec: float) -> list[ChoghadiyaSlot]:
+        slots = []
+        for i, name in enumerate(names):
+            start = anchor + timedelta(seconds=i * dur_sec)
+            end   = anchor + timedelta(seconds=(i + 1) * dur_sec)
+            slots.append(ChoghadiyaSlot(
+                index=i + 1,
+                name=name,
+                ruler=_CHOG_RULER[name],
+                quality=_CHOG_QUALITY[name],
+                start=start.isoformat(),
+                end=end.isoformat(),
+            ))
+        return slots
+
+    return ChoghadiyaResponse(
+        date=base_date.isoformat(),
+        location=location,
+        sunrise=sunrise.isoformat(),
+        sunset=sunset.isoformat(),
+        next_sunrise=next_sunrise.isoformat(),
+        day_choghadiya=_make_slots(day_names, sunrise, day_dur_sec),
+        night_choghadiya=_make_slots(night_names, sunset, night_dur_sec),
+        meta=_meta(calendar_variant, region),
+    )
+
+
 # ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
@@ -803,3 +905,18 @@ async def get_panchang_festivals(
 ) -> PanchangFestivalListResponse:
     location = _resolve_location(location_slug=location_slug, lat=lat, lng=lng, tz_name=tz)
     return _build_festival_list(year, location, month, calendar_variant, region)
+
+
+@router.get("/choghadiya", response_model=ChoghadiyaResponse)
+async def get_choghadiya(
+    date_value: str | None = Query(default=None, alias="date"),
+    location_slug: str | None = None,
+    lat: float | None = None,
+    lng: float | None = None,
+    tz: str | None = None,
+    calendar_variant: CalendarVariant = "amanta",
+    region: RegionCode = "general",
+) -> ChoghadiyaResponse:
+    location = _resolve_location(location_slug=location_slug, lat=lat, lng=lng, tz_name=tz)
+    resolved_date = _parse_date(date_value) if date_value else datetime.now(ZoneInfo(location.timezone)).date()
+    return _build_choghadiya(resolved_date, location, calendar_variant, region)

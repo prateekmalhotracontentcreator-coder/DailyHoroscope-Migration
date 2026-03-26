@@ -449,7 +449,7 @@ function PanchangTithiSEOContent() {
 function PanchangChoghadiyaSEOContent() {
   return (
     <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
-      <div><h2 className="text-base font-semibold text-foreground mb-2">Panchang Muhurtas vs Choghadiya</h2><p>The windows shown here are Panchang Muhurtas — astronomically computed, named windows with specific Vedic significance (Brahma Muhurta, Rahu Kaal, Abhijit, Vijaya etc.). Choghadiya is a separate system that mechanically divides daylight into 8 equal slots with planetary rulers (Amrit, Shubh, Labh, Char, Udveg, Kaal, Rog) — a practical shortcut for quick muhurat decisions. True Choghadiya is a planned enhancement.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">What is Choghadiya?</h2><p>Choghadiya (चौघड़िया) divides each day into 8 equal time slots from sunrise to sunset, and 8 night slots from sunset to next sunrise. Each slot is ruled by a planet and carries a quality — Amrit (Moon, best), Shubh (Jupiter, good), Labh (Mercury, good), Char (Venus, neutral/travel), Udveg (Sun, avoid), Kaal (Saturn, avoid), Rog (Mars, avoid). Use Choghadiya for quick muhurat decisions like starting travel, business dealings, or auspicious activities.</p></div>
     </div>
   );
 }
@@ -640,21 +640,78 @@ function PanchangTithiView({ locationSlug }) {
   );
 }
 
+const CHOG_QUALITY_STYLES = {
+  good:    { row: 'border-green-200 bg-green-50/40', badge: 'bg-green-100 text-green-800', dot: 'bg-green-500' },
+  neutral: { row: 'border-amber-200 bg-amber-50/40', badge: 'bg-amber-100 text-amber-800', dot: 'bg-amber-500' },
+  caution: { row: 'border-red-200 bg-red-50/20',    badge: 'bg-red-100 text-red-800',     dot: 'bg-red-400' },
+};
+
+function ChoghadiyaSlotRow({ slot, fmtTime, now }) {
+  const isNow = now >= new Date(slot.start) && now < new Date(slot.end);
+  const s = CHOG_QUALITY_STYLES[slot.quality] || CHOG_QUALITY_STYLES.neutral;
+  return (
+    <div className={`flex items-center justify-between px-3 py-2.5 rounded-lg border ${s.row} ${isNow ? 'ring-2 ring-gold/60' : ''}`}>
+      <div className="flex items-center gap-2.5 min-w-0">
+        <span className={`w-2 h-2 rounded-full flex-shrink-0 ${s.dot}`} />
+        <div className="min-w-0">
+          <span className="font-semibold text-sm text-foreground">{slot.name}</span>
+          <span className="text-xs text-muted-foreground ml-1.5">{slot.ruler}</span>
+        </div>
+        {isNow && <span className="text-[10px] font-bold text-gold bg-gold/10 px-1.5 py-0.5 rounded">NOW</span>}
+      </div>
+      <div className="flex items-center gap-2 flex-shrink-0">
+        <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded ${s.badge}`}>{slot.quality === 'good' ? 'Auspicious' : slot.quality === 'caution' ? 'Inauspicious' : 'Neutral'}</span>
+        <span className="text-xs text-muted-foreground whitespace-nowrap">{fmtTime(slot.start)}–{fmtTime(slot.end)}</span>
+      </div>
+    </div>
+  );
+}
+
 function PanchangChoghadiyaView({ locationSlug }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [now, setNow] = useState(new Date());
   useEffect(() => {
-    axios.get(`${API}/daily`, { params: { location_slug: locationSlug } })
+    axios.get(`${API}/choghadiya`, { params: { location_slug: locationSlug } })
       .then(r => setData(r.data)).catch(() => setData(null)).finally(() => setLoading(false));
   }, [locationSlug]);
-  if (loading) return <div className="space-y-3">{[...Array(8)].map((_, i) => <div key={i} className="h-12 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
-  if (!data)   return <p className="text-center text-muted-foreground py-12">Failed to load data</p>;
-  const locTZ  = data.location?.timezone;
+  useEffect(() => {
+    const t = setInterval(() => setNow(new Date()), 60000);
+    return () => clearInterval(t);
+  }, []);
+  if (loading) return <div className="space-y-2">{[...Array(8)].map((_, i) => <div key={i} className="h-11 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
+  if (!data)   return <p className="text-center text-muted-foreground py-12">Failed to load Choghadiya</p>;
+  const locTZ   = data.location?.timezone;
   const fmtTime = makeFormatTime(locTZ);
   const tzAbbr  = getTZAbbr(locTZ);
   return (
-    <div className="space-y-4">
-      <TimingWindowsCard windows={data.day_quality_windows} fmtTime={fmtTime} tzAbbr={tzAbbr} />
+    <div className="space-y-5">
+      {/* Day Choghadiya */}
+      <div className="rounded-xl border border-border bg-card p-4 space-y-3">
+        <div className="flex items-center gap-2">
+          <Sun className="h-4 w-4 text-gold" />
+          <h3 className="font-playfair font-semibold text-base">Day Choghadiya</h3>
+          <span className="text-xs text-muted-foreground ml-auto">{fmtTime(data.sunrise)} – {fmtTime(data.sunset)}</span>
+        </div>
+        <div className="space-y-1.5">
+          {data.day_choghadiya.map(slot => (
+            <ChoghadiyaSlotRow key={slot.index} slot={slot} fmtTime={fmtTime} now={now} />
+          ))}
+        </div>
+      </div>
+      {/* Night Choghadiya */}
+      <div className="rounded-xl border border-border bg-card p-4 space-y-3">
+        <div className="flex items-center gap-2">
+          <Moon className="h-4 w-4 text-gold" />
+          <h3 className="font-playfair font-semibold text-base">Night Choghadiya</h3>
+          <span className="text-xs text-muted-foreground ml-auto">{fmtTime(data.sunset)} – {fmtTime(data.next_sunrise)}</span>
+        </div>
+        <div className="space-y-1.5">
+          {data.night_choghadiya.map(slot => (
+            <ChoghadiyaSlotRow key={slot.index} slot={slot} fmtTime={fmtTime} now={now} />
+          ))}
+        </div>
+      </div>
       <TZNote timezone={locTZ} locationLabel={data.location?.label} />
       <PanchangChoghadiyaSEOContent />
     </div>
