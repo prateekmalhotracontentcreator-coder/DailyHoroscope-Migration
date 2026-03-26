@@ -14,7 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v6-swiss"
+ENGINE_VERSION = "panchang-router-v7-swiss"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -34,44 +34,26 @@ _SWE_FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL
 
 # ---------------------------------------------------------------------------
 # Traditional Vedic inauspicious timing slot tables
-#
-# Rahu Kaal, Yamaganda, Gulika Kaal
-# ─────────────────────────────────
-# Daylight is divided into 8 equal Kaals.  Each period occupies one Kaal.
-# SLOT value = 1-based Kaal number from sunrise.
+# Verified against Drik Panchang — New Delhi, 26 March 2026 (Thu).
 # weekday key = Python date.isoweekday(): Mon=1 … Sun=7
-#
-# Verified against Drik Panchang output for New Delhi, 26 March 2026 (Thu).
 # ---------------------------------------------------------------------------
 
 # Rahu Kaal  — Sun=8, Mon=2, Tue=7, Wed=5, Thu=6, Fri=4, Sat=3
 _RAHU_KAAL_SLOT = {1: 2, 2: 7, 3: 5, 4: 6, 5: 4, 6: 3, 7: 8}
 
 # Yamaganda  — Sun=5, Mon=4, Tue=3, Wed=2, Thu=1, Fri=7, Sat=6
-# CORRECTED: Thu was 6 (wrong), now 1 — verified Drik shows 06:18 AM for Thu.
 _YAMAGANDA_SLOT = {1: 4, 2: 3, 3: 2, 4: 1, 5: 7, 6: 6, 7: 5}
 
 # Gulika Kaal — Sun=7, Mon=6, Tue=5, Wed=4, Thu=3, Fri=2, Sat=1
 _GULIKA_SLOT    = {1: 6, 2: 5, 3: 4, 4: 3, 5: 2, 6: 1, 7: 7}
 
-# ---------------------------------------------------------------------------
-# Dur Muhurta — two inauspicious windows per day
-#
-# Uses Muhurta system: 1 day = 15 Muhurtas (daylight/15 each).
-# Each entry is a tuple of two 0-indexed Muhurta numbers from sunrise.
-# Verified against Drik Panchang (Thu = Muhurtas 5 and 11):
-#   Window 1: SR + 5 * muhurta_dur  → 10:24 AM ✓
-#   Window 2: SR + 11 * muhurta_dur → 03:19 PM ✓
-#
-# Full table (0-indexed Muhurta numbers), weekday = isoweekday:
-#   Mon=1: (6, 11)  Tue=2: (5, 8)   Wed=3: (7, ?)  Thu=4: (5, 11)
-#   Fri=5: (9, 10)  Sat=6: (1, 7)   Sun=7: (3, 6)
-# ---------------------------------------------------------------------------
+# Dur Muhurta — two windows per day (0-indexed Muhurta from sunrise, daylight/15 each)
+# Thu verified: Muhurtas 5 & 11 → 10:24 AM and 03:19 PM ✓
 _DUR_MUHURTA_MUHURTAS: dict[int, tuple[int, int]] = {
     1: (6, 11),   # Monday
     2: (5,  8),   # Tuesday
     3: (7, 13),   # Wednesday
-    4: (5, 11),   # Thursday   ← verified vs Drik: 10:24 AM and 03:19 PM ✓
+    4: (5, 11),   # Thursday
     5: (9, 10),   # Friday
     6: (1,  7),   # Saturday
     7: (3,  6),   # Sunday
@@ -82,6 +64,7 @@ class PanchangLocation(BaseModel):
     model_config = ConfigDict(extra="ignore")
     slug: str
     label: str
+    country: str
     latitude: float
     longitude: float
     timezone: str
@@ -194,24 +177,160 @@ class PanchangFestivalListResponse(BaseModel):
     meta: PanchangMeta
 
 
+# ---------------------------------------------------------------------------
+# Location catalogue — India + global diaspora cities
+# ---------------------------------------------------------------------------
 DEFAULT_LOCATIONS: dict[str, PanchangLocation] = {
+    # ── India ──────────────────────────────────────────────────────────────
     "new-delhi-india": PanchangLocation(
-        slug="new-delhi-india", label="New Delhi, India",
+        slug="new-delhi-india", label="New Delhi", country="India",
         latitude=28.6139, longitude=77.2090, timezone="Asia/Kolkata",
     ),
     "mumbai-india": PanchangLocation(
-        slug="mumbai-india", label="Mumbai, India",
+        slug="mumbai-india", label="Mumbai", country="India",
         latitude=19.0760, longitude=72.8777, timezone="Asia/Kolkata",
     ),
     "bengaluru-india": PanchangLocation(
-        slug="bengaluru-india", label="Bengaluru, India",
+        slug="bengaluru-india", label="Bengaluru", country="India",
         latitude=12.9716, longitude=77.5946, timezone="Asia/Kolkata",
     ),
     "kolkata-india": PanchangLocation(
-        slug="kolkata-india", label="Kolkata, India",
+        slug="kolkata-india", label="Kolkata", country="India",
         latitude=22.5726, longitude=88.3639, timezone="Asia/Kolkata",
     ),
+    "chennai-india": PanchangLocation(
+        slug="chennai-india", label="Chennai", country="India",
+        latitude=13.0827, longitude=80.2707, timezone="Asia/Kolkata",
+    ),
+    "hyderabad-india": PanchangLocation(
+        slug="hyderabad-india", label="Hyderabad", country="India",
+        latitude=17.3850, longitude=78.4867, timezone="Asia/Kolkata",
+    ),
+    "ahmedabad-india": PanchangLocation(
+        slug="ahmedabad-india", label="Ahmedabad", country="India",
+        latitude=23.0225, longitude=72.5714, timezone="Asia/Kolkata",
+    ),
+    "pune-india": PanchangLocation(
+        slug="pune-india", label="Pune", country="India",
+        latitude=18.5204, longitude=73.8567, timezone="Asia/Kolkata",
+    ),
+    "jaipur-india": PanchangLocation(
+        slug="jaipur-india", label="Jaipur", country="India",
+        latitude=26.9124, longitude=75.7873, timezone="Asia/Kolkata",
+    ),
+    "varanasi-india": PanchangLocation(
+        slug="varanasi-india", label="Varanasi", country="India",
+        latitude=25.3176, longitude=82.9739, timezone="Asia/Kolkata",
+    ),
+    "lucknow-india": PanchangLocation(
+        slug="lucknow-india", label="Lucknow", country="India",
+        latitude=26.8467, longitude=80.9462, timezone="Asia/Kolkata",
+    ),
+    "indore-india": PanchangLocation(
+        slug="indore-india", label="Indore", country="India",
+        latitude=22.7196, longitude=75.8577, timezone="Asia/Kolkata",
+    ),
+    # ── United States ───────────────────────────────────────────────────────
+    "new-york-usa": PanchangLocation(
+        slug="new-york-usa", label="New York", country="USA",
+        latitude=40.7128, longitude=-74.0060, timezone="America/New_York",
+    ),
+    "los-angeles-usa": PanchangLocation(
+        slug="los-angeles-usa", label="Los Angeles", country="USA",
+        latitude=34.0522, longitude=-118.2437, timezone="America/Los_Angeles",
+    ),
+    "chicago-usa": PanchangLocation(
+        slug="chicago-usa", label="Chicago", country="USA",
+        latitude=41.8781, longitude=-87.6298, timezone="America/Chicago",
+    ),
+    "houston-usa": PanchangLocation(
+        slug="houston-usa", label="Houston", country="USA",
+        latitude=29.7604, longitude=-95.3698, timezone="America/Chicago",
+    ),
+    "san-francisco-usa": PanchangLocation(
+        slug="san-francisco-usa", label="San Francisco", country="USA",
+        latitude=37.7749, longitude=-122.4194, timezone="America/Los_Angeles",
+    ),
+    "dallas-usa": PanchangLocation(
+        slug="dallas-usa", label="Dallas", country="USA",
+        latitude=32.7767, longitude=-96.7970, timezone="America/Chicago",
+    ),
+    "seattle-usa": PanchangLocation(
+        slug="seattle-usa", label="Seattle", country="USA",
+        latitude=47.6062, longitude=-122.3321, timezone="America/Los_Angeles",
+    ),
+    "atlanta-usa": PanchangLocation(
+        slug="atlanta-usa", label="Atlanta", country="USA",
+        latitude=33.7490, longitude=-84.3880, timezone="America/New_York",
+    ),
+    # ── United Kingdom ──────────────────────────────────────────────────────
+    "london-uk": PanchangLocation(
+        slug="london-uk", label="London", country="UK",
+        latitude=51.5074, longitude=-0.1278, timezone="Europe/London",
+    ),
+    "birmingham-uk": PanchangLocation(
+        slug="birmingham-uk", label="Birmingham", country="UK",
+        latitude=52.4862, longitude=-1.8904, timezone="Europe/London",
+    ),
+    "leicester-uk": PanchangLocation(
+        slug="leicester-uk", label="Leicester", country="UK",
+        latitude=52.6369, longitude=-1.1398, timezone="Europe/London",
+    ),
+    # ── Canada ──────────────────────────────────────────────────────────────
+    "toronto-canada": PanchangLocation(
+        slug="toronto-canada", label="Toronto", country="Canada",
+        latitude=43.6532, longitude=-79.3832, timezone="America/Toronto",
+    ),
+    "vancouver-canada": PanchangLocation(
+        slug="vancouver-canada", label="Vancouver", country="Canada",
+        latitude=49.2827, longitude=-123.1207, timezone="America/Vancouver",
+    ),
+    "brampton-canada": PanchangLocation(
+        slug="brampton-canada", label="Brampton", country="Canada",
+        latitude=43.7315, longitude=-79.7624, timezone="America/Toronto",
+    ),
+    # ── UAE ─────────────────────────────────────────────────────────────────
+    "dubai-uae": PanchangLocation(
+        slug="dubai-uae", label="Dubai", country="UAE",
+        latitude=25.2048, longitude=55.2708, timezone="Asia/Dubai",
+    ),
+    "abu-dhabi-uae": PanchangLocation(
+        slug="abu-dhabi-uae", label="Abu Dhabi", country="UAE",
+        latitude=24.4539, longitude=54.3773, timezone="Asia/Dubai",
+    ),
+    # ── Australia ────────────────────────────────────────────────────────────
+    "sydney-australia": PanchangLocation(
+        slug="sydney-australia", label="Sydney", country="Australia",
+        latitude=-33.8688, longitude=151.2093, timezone="Australia/Sydney",
+    ),
+    "melbourne-australia": PanchangLocation(
+        slug="melbourne-australia", label="Melbourne", country="Australia",
+        latitude=-37.8136, longitude=144.9631, timezone="Australia/Melbourne",
+    ),
+    "brisbane-australia": PanchangLocation(
+        slug="brisbane-australia", label="Brisbane", country="Australia",
+        latitude=-27.4698, longitude=153.0251, timezone="Australia/Brisbane",
+    ),
+    # ── Singapore ────────────────────────────────────────────────────────────
+    "singapore": PanchangLocation(
+        slug="singapore", label="Singapore", country="Singapore",
+        latitude=1.3521, longitude=103.8198, timezone="Asia/Singapore",
+    ),
+    # ── Nepal ───────────────────────────────────────────────────────────────
+    "kathmandu-nepal": PanchangLocation(
+        slug="kathmandu-nepal", label="Kathmandu", country="Nepal",
+        latitude=27.7172, longitude=85.3240, timezone="Asia/Kathmandu",
+    ),
+    # ── New Zealand ──────────────────────────────────────────────────────────
+    "auckland-nz": PanchangLocation(
+        slug="auckland-nz", label="Auckland", country="New Zealand",
+        latitude=-36.8485, longitude=174.7633, timezone="Pacific/Auckland",
+    ),
 }
+
+# Ordered list for the API locations endpoint
+LOCATION_LIST = list(DEFAULT_LOCATIONS.values())
+
 
 TITHI_NAMES = [
     "Pratipada","Dvitiya","Tritiya","Chaturthi","Panchami","Shashthi",
@@ -292,7 +411,7 @@ def _resolve_location(
         return DEFAULT_LOCATIONS[location_slug]
     if lat is not None and lng is not None and tz_name:
         slug = "custom-" + str(round(lat, 3)).replace(".", "-") + "-" + str(round(lng, 3)).replace(".", "-")
-        return PanchangLocation(slug=slug, label="Custom Location", latitude=lat, longitude=lng, timezone=tz_name)
+        return PanchangLocation(slug=slug, label="Custom Location", country="Custom", latitude=lat, longitude=lng, timezone=tz_name)
     return DEFAULT_LOCATIONS["new-delhi-india"]
 
 
@@ -304,7 +423,6 @@ def _datetime_to_jd(dt_utc: datetime) -> float:
 
 
 def _jd_to_local_dt(jd: float, tz: ZoneInfo) -> datetime:
-    """Convert a Julian Day number (from swe.rise_trans) to a local datetime."""
     y, mo, d, hr, mn, sf = swe.jdut1_to_utc(jd, swe.GREG_CAL)
     sc = int(round(sf))
     if sc == 60: mn += 1; sc = 0
@@ -325,30 +443,21 @@ def _moon_longitude(jd: float) -> float:
 def _sunrise_sunset_local(
     base_date: date, latitude: float, longitude: float, tz_name: str
 ) -> tuple[datetime, datetime]:
-    """
-    Compute sunrise and sunset using swe.rise_trans (Swiss Ephemeris).
-    Matches Drik Panchang accuracy — verified to within 1 minute.
-    geopos = (longitude, latitude, altitude_m)
-    rise_trans returns (retval, (jd_event, ...)) — JD is at ret[1][0].
-    """
     tz = ZoneInfo(tz_name)
     local_midnight = datetime(base_date.year, base_date.month, base_date.day, 0, 0, 0, tzinfo=tz)
     jd_start = _datetime_to_jd(local_midnight.astimezone(timezone.utc))
     geopos   = (longitude, latitude, 0.0)
     atpress, attemp = 1013.25, 15.0
-
     try:
         ret_rise = swe.rise_trans(jd_start, swe.SUN, swe.CALC_RISE, geopos, atpress, attemp)
         sunrise  = _jd_to_local_dt(ret_rise[1][0], tz)
     except Exception:
         sunrise = local_midnight.replace(hour=6, minute=18)
-
     try:
         ret_set = swe.rise_trans(jd_start + 0.25, swe.SUN, swe.CALC_SET, geopos, atpress, attemp)
         sunset  = _jd_to_local_dt(ret_set[1][0], tz)
     except Exception:
         sunset = local_midnight.replace(hour=18, minute=35)
-
     return sunrise, sunset
 
 
@@ -427,23 +536,7 @@ def _window_time(anchor: datetime, offset_minutes: float, duration_minutes: floa
 
 
 def _day_quality_windows(sunrise: datetime, sunset: datetime, isoweekday: int) -> list[PanchangTimingWindow]:
-    """
-    Compute all inauspicious and auspicious timing windows.
-
-    Rahu Kaal / Yamaganda / Gulika Kaal
-      — use Kaal system: daylight ÷ 8, slot tables by isoweekday.
-
-    Abhijit Muhurta
-      — always centred on solar noon: SR + daylight/2 ± 24 min.
-
-    Dur Muhurta  (TWO windows per day)
-      — uses Muhurta system: daylight ÷ 15 per Muhurta.
-      — position by isoweekday from _DUR_MUHURTA_MUHURTAS (0-indexed).
-      — verified against Drik Panchang: Thu → 10:24 AM and 03:19 PM ✓
-    """
     daylight_min = max((sunset - sunrise).total_seconds() / 60, 1.0)
-
-    # ── Kaal-based windows (1/8 daylight) ───────────────────────────────
     kaal = daylight_min / 8.0
 
     def kaal_window(slot: int) -> tuple[str, str]:
@@ -452,23 +545,19 @@ def _day_quality_windows(sunrise: datetime, sunset: datetime, isoweekday: int) -
     rahu_start,   rahu_end   = kaal_window(_RAHU_KAAL_SLOT[isoweekday])
     yama_start,   yama_end   = kaal_window(_YAMAGANDA_SLOT[isoweekday])
     gulika_start, gulika_end = kaal_window(_GULIKA_SLOT[isoweekday])
-
-    # ── Abhijit Muhurta (middle 48 min of daylight) ──────────────────────
     abhijit_start, abhijit_end = _window_time(sunrise, daylight_min / 2.0 - 24.0, 48.0)
-
-    # ── Dur Muhurta (1/15 daylight per Muhurta, two windows) ────────────
     muhurta_dur = daylight_min / 15.0
     m1_idx, m2_idx = _DUR_MUHURTA_MUHURTAS[isoweekday]
     dur1_start, dur1_end = _window_time(sunrise, m1_idx * muhurta_dur, muhurta_dur)
     dur2_start, dur2_end = _window_time(sunrise, m2_idx * muhurta_dur, muhurta_dur)
 
     return [
-        PanchangTimingWindow(label="Rahu Kaal",       start=rahu_start,   end=rahu_end,   quality="caution"),
-        PanchangTimingWindow(label="Yamaganda",        start=yama_start,   end=yama_end,   quality="caution"),
-        PanchangTimingWindow(label="Gulika Kaal",      start=gulika_start, end=gulika_end, quality="neutral"),
-        PanchangTimingWindow(label="Abhijit Muhurta",  start=abhijit_start,end=abhijit_end,quality="good"),
-        PanchangTimingWindow(label="Dur Muhurta",      start=dur1_start,   end=dur1_end,   quality="caution"),
-        PanchangTimingWindow(label="Dur Muhurta 2",    start=dur2_start,   end=dur2_end,   quality="caution"),
+        PanchangTimingWindow(label="Rahu Kaal",       start=rahu_start,    end=rahu_end,    quality="caution"),
+        PanchangTimingWindow(label="Yamaganda",        start=yama_start,    end=yama_end,    quality="caution"),
+        PanchangTimingWindow(label="Gulika Kaal",      start=gulika_start,  end=gulika_end,  quality="neutral"),
+        PanchangTimingWindow(label="Abhijit Muhurta",  start=abhijit_start, end=abhijit_end, quality="good"),
+        PanchangTimingWindow(label="Dur Muhurta",      start=dur1_start,    end=dur1_end,    quality="caution"),
+        PanchangTimingWindow(label="Dur Muhurta 2",    start=dur2_start,    end=dur2_end,    quality="caution"),
     ]
 
 
@@ -632,6 +721,12 @@ def _build_festival_list(
 # Routes
 # ---------------------------------------------------------------------------
 
+@router.get("/locations", response_model=list[PanchangLocation])
+async def get_locations() -> list[PanchangLocation]:
+    """Return the full catalogue of supported Panchang locations."""
+    return LOCATION_LIST
+
+
 @router.get("/daily", response_model=PanchangDailyResponse)
 async def get_daily_panchang(
     date_value: str | None = Query(default=None, alias="date"),
@@ -657,7 +752,6 @@ async def get_panchang_by_date(
     calendar_variant: CalendarVariant = "amanta",
     region: RegionCode = "general",
 ) -> PanchangDailyResponse:
-    """Explicit per-date Panchang endpoint. Used by calendar day-click navigation."""
     location = _resolve_location(location_slug=location_slug, lat=lat, lng=lng, tz_name=tz)
     resolved_date = _parse_date(date_value)
     return _build_daily_response(resolved_date, location, calendar_variant, region)
