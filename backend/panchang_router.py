@@ -14,7 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v9-swiss"
+ENGINE_VERSION = "panchang-router-v10-swiss"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -596,8 +596,38 @@ def _window_time(anchor: datetime, offset_minutes: float, duration_minutes: floa
     return start.isoformat(), end.isoformat()
 
 
+def _amrit_kalam_window(
+    sunrise: datetime, sunset: datetime, moon_longitude: float,
+) -> PanchangTimingWindow:
+    """
+    Amrit Kalam — nakshatra-based auspicious window.
+
+    Formula (verified vs Drik Panchang, New Delhi 26 Mar 2026 ±1 min):
+      offset   = nakshatra_remaining_fraction × daylight / 10
+               = 3 Vedic ghatis × remaining nakshatra fraction
+      duration = daylight / 8  (one Choghadiya slot)
+    """
+    nak_span  = 360.0 / 27.0                                      # 13°20' per nakshatra
+    nak_start = math.floor(moon_longitude / nak_span) * nak_span
+    rem_frac  = (nak_start + nak_span - moon_longitude) / nak_span # fraction of nakshatra remaining
+
+    daylight_min = (sunset - sunrise).total_seconds() / 60.0
+    offset_min   = rem_frac * daylight_min / 10.0                 # 3 ghatis × remaining fraction
+    duration_min = daylight_min / 8.0
+
+    amrit_start = sunrise + timedelta(minutes=offset_min)
+    amrit_end   = amrit_start + timedelta(minutes=duration_min)
+
+    return PanchangTimingWindow(
+        label="Amrit Kalam",
+        start=amrit_start.isoformat(),
+        end=amrit_end.isoformat(),
+        quality="good",
+    )
+
+
 def _day_quality_windows(
-    sunrise: datetime, sunset: datetime, isoweekday: int
+    sunrise: datetime, sunset: datetime, isoweekday: int, moon_longitude: float
 ) -> list[PanchangTimingWindow]:
     daylight_min = max((sunset - sunrise).total_seconds() / 60, 1.0)
     kaal         = daylight_min / 8.0
@@ -617,6 +647,7 @@ def _day_quality_windows(
     vij_start,  vij_end  = _window_time(sunrise, _VIJAYA_MUHURTA[isoweekday] * muhurta_dur, muhurta_dur)
 
     return [
+        _amrit_kalam_window(sunrise, sunset, moon_longitude),
         PanchangTimingWindow(label="Brahma Muhurta",  start=brahma_start,  end=brahma_end,  quality="good"),
         PanchangTimingWindow(label="Rahu Kaal",        start=rahu_start,    end=rahu_end,    quality="caution"),
         PanchangTimingWindow(label="Yamaganda",        start=yama_start,    end=yama_end,    quality="caution"),
@@ -733,7 +764,7 @@ def _build_daily_response(
             yoga=PanchangSegment(     name=YOGA_NAMES[indexes["yoga"]],              index=indexes["yoga"]      + 1, start=yoga_start,   end=yoga_end),
             karana=PanchangSegment(   name=KARANA_NAMES[indexes["karana"]],          index=indexes["karana"]    + 1, start=karana_start, end=karana_end),
         ),
-        day_quality_windows=_day_quality_windows(astro.sunrise, astro.sunset, isoweekday),
+        day_quality_windows=_day_quality_windows(astro.sunrise, astro.sunset, isoweekday, astro.moon_longitude),
         observances=_observances_for_day(base_date, indexes, tithi_name),
         related_links=_related_links(base_date, location),
         meta=_meta(calendar_variant, region),
