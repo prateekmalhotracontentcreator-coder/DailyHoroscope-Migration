@@ -35,7 +35,6 @@ _SWE_FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL
 
 class PanchangLocation(BaseModel):
     model_config = ConfigDict(extra="ignore")
-
     slug: str
     label: str
     latitude: float
@@ -207,15 +206,15 @@ LUNAR_MONTHS = [
 ]
 
 OBSERVANCE_RULES: list[dict] = [
-    {"slug": "ekadashi",      "name": "Ekadashi",        "observance_type": "vrat",       "tithi_indexes": [10, 25], "month_indexes": None, "priority": 2},
-    {"slug": "pradosh-vrat",  "name": "Pradosh Vrat",    "observance_type": "vrat",       "tithi_indexes": [12, 27], "month_indexes": None, "priority": 2},
-    {"slug": "purnima",       "name": "Purnima",          "observance_type": "observance", "tithi_indexes": [14],     "month_indexes": None, "priority": 2},
-    {"slug": "amavasya",      "name": "Amavasya",         "observance_type": "observance", "tithi_indexes": [29],     "month_indexes": None, "priority": 2},
-    {"slug": "maha-shivaratri","name": "Maha Shivaratri", "observance_type": "festival",   "tithi_indexes": [28],     "month_indexes": [10], "priority": 3},
-    {"slug": "janmashtami",   "name": "Janmashtami",      "observance_type": "festival",   "tithi_indexes": [22],     "month_indexes": [4],  "priority": 3},
-    {"slug": "rama-navami",   "name": "Rama Navami",      "observance_type": "festival",   "tithi_indexes": [8],      "month_indexes": [0],  "priority": 3},
-    {"slug": "holi",          "name": "Holi",              "observance_type": "festival",   "tithi_indexes": [14],     "month_indexes": [11], "priority": 3},
-    {"slug": "diwali",        "name": "Diwali",            "observance_type": "festival",   "tithi_indexes": [29],     "month_indexes": [7],  "priority": 3},
+    {"slug": "ekadashi",       "name": "Ekadashi",        "observance_type": "vrat",       "tithi_indexes": [10, 25], "month_indexes": None, "priority": 2},
+    {"slug": "pradosh-vrat",   "name": "Pradosh Vrat",    "observance_type": "vrat",       "tithi_indexes": [12, 27], "month_indexes": None, "priority": 2},
+    {"slug": "purnima",        "name": "Purnima",          "observance_type": "observance", "tithi_indexes": [14],     "month_indexes": None, "priority": 2},
+    {"slug": "amavasya",       "name": "Amavasya",         "observance_type": "observance", "tithi_indexes": [29],     "month_indexes": None, "priority": 2},
+    {"slug": "maha-shivaratri","name": "Maha Shivaratri",  "observance_type": "festival",   "tithi_indexes": [28],     "month_indexes": [10], "priority": 3},
+    {"slug": "janmashtami",    "name": "Janmashtami",      "observance_type": "festival",   "tithi_indexes": [22],     "month_indexes": [4],  "priority": 3},
+    {"slug": "rama-navami",    "name": "Rama Navami",      "observance_type": "festival",   "tithi_indexes": [8],      "month_indexes": [0],  "priority": 3},
+    {"slug": "holi",           "name": "Holi",              "observance_type": "festival",   "tithi_indexes": [14],     "month_indexes": [11], "priority": 3},
+    {"slug": "diwali",         "name": "Diwali",            "observance_type": "festival",   "tithi_indexes": [29],     "month_indexes": [7],  "priority": 3},
 ]
 
 
@@ -261,13 +260,11 @@ def _datetime_to_jd(dt_utc: datetime) -> float:
 
 
 def _sun_longitude(jd: float) -> float:
-    """Return geocentric apparent sidereal Sun longitude via pyswisseph."""
     result = swe.calc_ut(jd, int(swe.SUN), int(_SWE_FLAGS))
     return _normalize_angle(result[0][0])
 
 
 def _moon_longitude(jd: float) -> float:
-    """Return geocentric apparent sidereal Moon longitude via pyswisseph."""
     result = swe.calc_ut(jd, int(swe.MOON), int(_SWE_FLAGS))
     return _normalize_angle(result[0][0])
 
@@ -275,43 +272,65 @@ def _moon_longitude(jd: float) -> float:
 def _sunrise_sunset_local(
     base_date: date, latitude: float, longitude: float, tz_name: str
 ) -> tuple[datetime, datetime]:
-    """Return local sunrise and sunset datetimes using swe.rise_trans."""
+    """
+    Compute sunrise and sunset using a pure-Python astronomical algorithm.
+    Avoids swe.rise_trans entirely — that function has type-incompatibility
+    issues with pyswisseph 2.10.x on Python 3.12.
+    Based on the NOAA solar calculation algorithm.
+    """
     tz = ZoneInfo(tz_name)
-    local_noon = datetime.combine(base_date, time(12, 0), tzinfo=tz)
-    jd_noon = _datetime_to_jd(local_noon.astimezone(timezone.utc))
 
-    # pyswisseph 2.10.x: all integer args must be explicitly int()
-    # Signature: rise_trans(tjd_ut, body, iflag, rsmi, lon, lat, alt, atpress=0.0, attemp=0.0)
-    _body  = int(swe.SUN)
-    _iflag = 0
-    _rsmi_rise = int(swe.CALC_RISE) | int(swe.BIT_DISC_CENTER)
-    _rsmi_set  = int(swe.CALC_SET)  | int(swe.BIT_DISC_CENTER)
+    def _solar_noon_offset_minutes(jd: float, lon: float) -> float:
+        """Return solar noon offset from mean noon in minutes."""
+        n = jd - 2451545.0
+        L = (280.460 + 0.9856474 * n) % 360.0
+        g = math.radians((357.528 + 0.9856003 * n) % 360.0)
+        lam = math.radians(L + 1.915 * math.sin(g) + 0.020 * math.sin(2 * g))
+        eps = math.radians(23.439 - 0.0000004 * n)
+        # equation of time in minutes
+        RA = math.degrees(math.atan2(math.cos(eps) * math.sin(lam), math.cos(lam))) / 15.0
+        L_deg = L
+        RA_h = RA % 24.0
+        eot = 4 * (L_deg / 15.0 - RA_h)
+        solar_noon = 12.0 + (0.0 - lon / 15.0) - eot / 60.0
+        return solar_noon  # hours UTC
 
-    ret_rise = swe.rise_trans(
-        jd_noon - 0.5, _body, _iflag, _rsmi_rise,
-        float(longitude), float(latitude), 0.0,
-    )
-    jd_rise = ret_rise[1][0]
+    def _hour_angle_at_horizon(lat_deg: float, jd: float) -> float:
+        """Return hour angle (degrees) of sunrise/set for standard horizon."""
+        n = jd - 2451545.0
+        L = (280.460 + 0.9856474 * n) % 360.0
+        g = math.radians((357.528 + 0.9856003 * n) % 360.0)
+        lam = math.radians(L + 1.915 * math.sin(g) + 0.020 * math.sin(2 * g))
+        eps = math.radians(23.439 - 0.0000004 * n)
+        dec = math.asin(math.sin(eps) * math.sin(lam))
+        lat = math.radians(lat_deg)
+        # standard refraction + disc correction: -0.8333 degrees
+        cos_ha = (math.sin(math.radians(-0.8333)) - math.sin(lat) * math.sin(dec)) / (math.cos(lat) * math.cos(dec))
+        cos_ha = max(-1.0, min(1.0, cos_ha))
+        return math.degrees(math.acos(cos_ha))
 
-    ret_set = swe.rise_trans(
-        jd_noon - 0.5, _body, _iflag, _rsmi_set,
-        float(longitude), float(latitude), 0.0,
-    )
-    jd_set = ret_set[1][0]
+    # Use J2000 noon for the date
+    dt_noon_utc = datetime(base_date.year, base_date.month, base_date.day, 12, 0, 0, tzinfo=timezone.utc)
+    jd_noon = _datetime_to_jd(dt_noon_utc)
 
-    def jd_to_datetime_local(jd: float) -> datetime:
-        y, mo, d, h = swe.revjul(jd)
-        hour = int(h)
-        minute = int((h - hour) * 60)
-        second = int(((h - hour) * 60 - minute) * 60)
-        dt_utc = datetime(y, mo, d, hour, minute, second, tzinfo=timezone.utc)
+    solar_noon_utc_h = _solar_noon_offset_minutes(jd_noon, longitude)
+    ha = _hour_angle_at_horizon(latitude, jd_noon)
+    ha_h = ha / 15.0  # convert degrees to hours
+
+    sunrise_utc_h = solar_noon_utc_h - ha_h
+    sunset_utc_h  = solar_noon_utc_h + ha_h
+
+    def hours_to_datetime(h: float) -> datetime:
+        total_minutes = int(round(h * 60))
+        hr = (total_minutes // 60) % 24
+        mn = total_minutes % 60
+        dt_utc = datetime(base_date.year, base_date.month, base_date.day, hr, mn, 0, tzinfo=timezone.utc)
         return dt_utc.astimezone(tz)
 
-    return jd_to_datetime_local(jd_rise), jd_to_datetime_local(jd_set)
+    return hours_to_datetime(sunrise_utc_h), hours_to_datetime(sunset_utc_h)
 
 
 def _moment_longitudes(moment_local: datetime) -> tuple[float, float]:
-    """Return (sun_longitude, moon_longitude) at a given local datetime."""
     moment_utc = moment_local.astimezone(timezone.utc)
     jd = _datetime_to_jd(moment_utc)
     return _sun_longitude(jd), _moon_longitude(jd)
@@ -389,17 +408,17 @@ def _window_time(anchor: datetime, offset_minutes: int, duration_minutes: int) -
 def _day_quality_windows(sunrise: datetime, sunset: datetime) -> list[PanchangTimingWindow]:
     daylight_minutes = int((sunset - sunrise).total_seconds() / 60)
     eighth = max(daylight_minutes // 8, 1)
-    rahu_start, rahu_end = _window_time(sunrise, 7 * eighth, eighth)
-    yama_start, yama_end = _window_time(sunrise, 4 * eighth, eighth)
-    gulika_start, gulika_end = _window_time(sunrise, 5 * eighth, eighth)
+    rahu_start,    rahu_end    = _window_time(sunrise, 7 * eighth, eighth)
+    yama_start,    yama_end    = _window_time(sunrise, 4 * eighth, eighth)
+    gulika_start,  gulika_end  = _window_time(sunrise, 5 * eighth, eighth)
     abhijit_start, abhijit_end = _window_time(sunrise, daylight_minutes // 2 - 24, 48)
-    dur_start, dur_end = _window_time(sunrise, 2 * eighth, eighth)
+    dur_start,     dur_end     = _window_time(sunrise, 2 * eighth, eighth)
     return [
-        PanchangTimingWindow(label="Rahu Kaal",       start=rahu_start,    end=rahu_end,    quality="caution"),
-        PanchangTimingWindow(label="Yamaganda",        start=yama_start,    end=yama_end,    quality="caution"),
-        PanchangTimingWindow(label="Gulika Kaal",      start=gulika_start,  end=gulika_end,  quality="neutral"),
-        PanchangTimingWindow(label="Abhijit Muhurta",  start=abhijit_start, end=abhijit_end, quality="good"),
-        PanchangTimingWindow(label="Dur Muhurta",      start=dur_start,     end=dur_end,     quality="caution"),
+        PanchangTimingWindow(label="Rahu Kaal",      start=rahu_start,    end=rahu_end,    quality="caution"),
+        PanchangTimingWindow(label="Yamaganda",       start=yama_start,    end=yama_end,    quality="caution"),
+        PanchangTimingWindow(label="Gulika Kaal",     start=gulika_start,  end=gulika_end,  quality="neutral"),
+        PanchangTimingWindow(label="Abhijit Muhurta", start=abhijit_start, end=abhijit_end, quality="good"),
+        PanchangTimingWindow(label="Dur Muhurta",     start=dur_start,     end=dur_end,     quality="caution"),
     ]
 
 def _day_indexes(
