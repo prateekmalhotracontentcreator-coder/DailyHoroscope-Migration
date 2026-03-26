@@ -25,6 +25,7 @@ const TYPE_META = {
   choghadiya: { title: 'Choghadiya',             icon: Zap,      desc: 'Auspicious and inauspicious time periods of the day' },
   calendar:   { title: 'Panchang Calendar',      icon: Calendar, desc: 'Monthly Hindu calendar with Tithi and observances' },
   festivals:  { title: 'Festivals & Vrats',      icon: Sparkles, desc: 'Upcoming Hindu festivals and vrat dates' },
+  muhurat:    { title: 'Shubh Muhurat Today',    icon: Star,     desc: 'Auspicious timings today — all 15 Vedic muhurtas with quality and exact times' },
 };
 
 const ALIAS = {
@@ -32,7 +33,7 @@ const ALIAS = {
   tomorrow:   'tomorrow',
   tithi:      'tithi',
   choghadiya: 'choghadiya',
-  muhurat:    'daily',
+  muhurat:    'muhurat',
   nakshatra:  'daily',
   rahukaal:   'daily',
 };
@@ -400,6 +401,13 @@ function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, pa
       ]};
       return { title, description, url, schema: [breadcrumb, webPageSchema({ name: title, description, url, datePublished: dateValue })] };
     }
+    case 'muhurat': {
+      const humanToday = humanDate(todayISO, tz);
+      const title = `Shubh Muhurat Today | Auspicious Timings ${humanToday} | Everyday Horoscope`;
+      const description = `Shubh muhurat today for ${humanToday}. All 15 Vedic muhurtas with auspicious time today, muhurta timings, Rahu Kaal, Abhijit & Vijaya Muhurta with exact seconds.`;
+      const url = `${SITE}/panchang/muhurat`;
+      return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: todayISO }) };
+    }
     default: return null;
   }
 }
@@ -462,6 +470,219 @@ function PanchangFestivalsSEOContent() {
   );
 }
 
+// ─── 15-Muhurta data ─────────────────────────────────────────────────────────
+const MUHURTA_LIST = [
+  { n: 1,  name: 'Rudra',                  quality: 'caution' },
+  { n: 2,  name: 'Ahi (Sarpa)',             quality: 'caution' },
+  { n: 3,  name: 'Mitra',                   quality: 'good'    },
+  { n: 4,  name: 'Pitru (Pitri)',           quality: 'caution' },
+  { n: 5,  name: 'Vasu',                    quality: 'good'    },
+  { n: 6,  name: 'Vara (Varah)',            quality: 'good'    },
+  { n: 7,  name: 'Vishvedeva',              quality: 'good'    },
+  { n: 8,  name: 'Vidhi (Brahma)',          quality: 'neutral' },
+  { n: 9,  name: 'Satamukhi (Sutamukhi)',   quality: 'good'    },
+  { n: 10, name: 'Puruhuta (Indra)',        quality: 'good'    },
+  { n: 11, name: 'Vahini',                  quality: 'neutral' },
+  { n: 12, name: 'Naktanakara',             quality: 'caution' },
+  { n: 13, name: 'Varuna',                  quality: 'good'    },
+  { n: 14, name: 'Aryaman',                 quality: 'good'    },
+  { n: 15, name: 'Bhaga',                   quality: 'good'    },
+];
+
+const MUHURTA_QUALITY_LABEL = { good: 'Auspicious', neutral: 'Neutral', caution: 'Inauspicious' };
+const MUHURTA_QUALITY_BADGE = {
+  good:    'bg-green-100 text-green-800',
+  neutral: 'bg-amber-100 text-amber-800',
+  caution: 'bg-red-100 text-red-800',
+};
+
+function MuhuratSEOContent() {
+  return (
+    <div className="mt-12 space-y-8 text-sm text-muted-foreground border-t border-border pt-8">
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">What is Shubh Muhurat?</h2>
+        <p>A <strong className="text-foreground">Muhurat</strong> (also spelled Muhurta) is an auspicious time window calculated from the Vedic Panchang — the ancient Hindu almanac. The word literally means "a moment of good omen." In Vedic astrology, not all moments are equal: planetary positions, the lunar day (Tithi), Nakshatra, and the day of the week together determine whether a span of time is favourable, neutral, or to be avoided.</p>
+      </div>
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">The 15 Vedic Muhurtas</h2>
+        <p>The traditional Vedic system divides each day (sunrise to sunset) into <strong className="text-foreground">15 equal time slots</strong>, each called a Muhurta. The duration of one Muhurta therefore varies by season — roughly 48 minutes on an equinox day. Each slot carries a Sanskrit name and a fixed quality inherited from the presiding deity and planetary ruler. Knowing which Muhurta is active helps practitioners choose the best moment for weddings, business launches, travel, puja, and other significant activities.</p>
+      </div>
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">Key Auspicious Muhurtas</h2>
+        <p><strong className="text-foreground">Abhijit Muhurta</strong> — the solar noon window (±24 min around local solar noon) — is considered the most universally auspicious muhurat and overrides most negative influences. <strong className="text-foreground">Brahma Muhurta</strong> (96 minutes before sunrise) is ideal for study, meditation, and spiritual practice. <strong className="text-foreground">Vijaya Muhurta</strong> (Victory Hour) — weekday-specific — is recommended for journeys and competitive endeavours.</p>
+      </div>
+      <div>
+        <h2 className="text-base font-semibold text-foreground mb-2">Inauspicious Windows to Avoid</h2>
+        <p><strong className="text-foreground">Rahu Kaal</strong> is the most widely observed inauspicious period — its 90-minute slot shifts each day of the week. <strong className="text-foreground">Yamaganda</strong> and <strong className="text-foreground">Gulika Kaal</strong> follow their own weekly rotation. <strong className="text-foreground">Dur Muhurta</strong> occurs twice daily at Rudra and Ahi Muhurta positions. All times shown on this page use the Swiss Ephemeris (pyswisseph) for maximum precision, verified against Drik Panchang.</p>
+      </div>
+    </div>
+  );
+}
+
+function MuhuratView({ locationSlug, locationTZ }) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    setLoading(true); setError(null); setData(null);
+    const tz = locationTZ || 'Asia/Kolkata';
+    const dateStr = getTodayInTZ(tz);
+    axios.get(`${API}/daily`, { params: { location_slug: locationSlug, date: dateStr } })
+      .then(r => setData(r.data))
+      .catch(() => setError('Failed to load Muhurat data. Please try again.'))
+      .finally(() => setLoading(false));
+  }, [locationSlug]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (loading) return <div className="space-y-4">{[...Array(6)].map((_, i) => <div key={i} className="h-14 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
+  if (error)   return <p className="text-center text-muted-foreground py-12">{error}</p>;
+  if (!data)   return null;
+
+  const { summary, day_quality_windows } = data;
+  const locTZ   = data.location?.timezone || locationTZ || 'Asia/Kolkata';
+  const fmtTime = makeFormatTime(locTZ);
+  const tzAbbr  = getTZAbbr(locTZ);
+
+  // Derive ISO sunrise/sunset from Brahma Muhurta window (end = sunrise) or time strings + date
+  const brahmaWindow = (day_quality_windows || []).find(w => w.label === 'Brahma Muhurta');
+  const abhijitWindow = (day_quality_windows || []).find(w => w.label === 'Abhijit Muhurta');
+  let sunriseMs = null;
+  let sunsetMs  = null;
+  if (brahmaWindow?.end) {
+    // Brahma Muhurta end is sunrise
+    sunriseMs = new Date(brahmaWindow.end).getTime();
+  } else if (data.date && summary.sunrise) {
+    // Fallback: combine date + time string in location tz
+    const [hh, mm, ss] = summary.sunrise.split(':').map(Number);
+    const d = new Date(`${data.date}T00:00:00`);
+    sunriseMs = d.getTime() + (hh * 3600 + mm * 60 + (ss || 0)) * 1000;
+  }
+  if (abhijitWindow?.start && abhijitWindow?.end && sunriseMs) {
+    // Abhijit = noon ± 24 min; midpoint = solar noon = sunrise + daylight/2
+    const noonMs = (new Date(abhijitWindow.start).getTime() + new Date(abhijitWindow.end).getTime()) / 2;
+    sunsetMs = sunriseMs + (noonMs - sunriseMs) * 2;
+  } else if (data.date && summary.sunset) {
+    const [hh, mm, ss] = summary.sunset.split(':').map(Number);
+    const d = new Date(`${data.date}T00:00:00`);
+    sunsetMs = d.getTime() + (hh * 3600 + mm * 60 + (ss || 0)) * 1000;
+  }
+  const muhurtaSlots = (sunriseMs && sunsetMs) ? MUHURTA_LIST.map((m, i) => {
+    const slotMs = (sunsetMs - sunriseMs) / 15;
+    const start  = new Date(sunriseMs + i * slotMs);
+    const end    = new Date(sunriseMs + (i + 1) * slotMs);
+    return { ...m, start, end };
+  }) : null;
+
+  const auspicious   = (day_quality_windows || []).filter(w => w.quality === 'good');
+  const inauspicious = (day_quality_windows || []).filter(w => w.quality !== 'good');
+  const now = new Date();
+
+  return (
+    <div className="space-y-6">
+      {/* Hero */}
+      <div className="flex items-center justify-between px-6 py-4 bg-gold/5 border border-gold/20 rounded-xl">
+        <div className="flex items-center gap-3">
+          <Star className="h-5 w-5 text-gold" />
+          <span className="font-playfair font-semibold text-lg">
+            Shubh Muhurat — {formatDate(data.date + 'T00:00:00', locTZ)}
+          </span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground">{data.location?.label}, {data.location?.country}</span>
+          <span className="px-1.5 py-0.5 rounded bg-gold/20 text-[10px] font-bold text-gold">{tzAbbr}</span>
+        </div>
+      </div>
+
+      {/* Auspicious windows */}
+      {auspicious.length > 0 && (
+        <Card className="border border-green-200 overflow-hidden">
+          <div className="px-5 py-3 bg-green-50 border-b border-green-100 flex items-center gap-2">
+            <span className="text-green-600">✦</span>
+            <p className="text-xs font-semibold uppercase tracking-widest text-green-700">Auspicious Windows</p>
+          </div>
+          <div className="divide-y divide-border">
+            {auspicious.map(w => {
+              const isCurrent = now >= new Date(w.start) && now <= new Date(w.end);
+              return (
+                <div key={w.label} className={`flex items-center justify-between px-5 py-3 ${isCurrent ? 'bg-green-50/60' : ''}`}>
+                  <div className="flex items-center gap-3">
+                    {isCurrent && <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />}
+                    <span className="text-sm font-medium">{w.label}</span>
+                    {isCurrent && <span className="text-xs text-green-600 font-semibold">Now</span>}
+                  </div>
+                  <span className="text-xs text-muted-foreground tabular-nums">{fmtTime(w.start)} — {fmtTime(w.end)}</span>
+                </div>
+              );
+            })}
+          </div>
+        </Card>
+      )}
+
+      {/* 15-Muhurta table */}
+      <Card className="border border-gold/20 overflow-hidden">
+        <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center justify-between">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold">15 Vedic Muhurtas — Sunrise to Sunset</p>
+          <span className="text-[10px] text-muted-foreground font-semibold">{tzAbbr}</span>
+        </div>
+        {muhurtaSlots ? (
+          <div className="divide-y divide-border">
+            {muhurtaSlots.map(m => {
+              const isCurrent = now >= m.start && now < m.end;
+              return (
+                <div key={m.n} className={`flex items-center gap-3 px-5 py-3 ${isCurrent ? 'bg-gold/5 ring-inset ring-1 ring-gold/20' : ''}`}>
+                  <span className="w-6 text-center text-xs font-bold text-muted-foreground flex-shrink-0">{m.n}</span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-sm font-medium">{m.name}</span>
+                      {isCurrent && <span className="text-[10px] font-bold text-gold bg-gold/10 px-1.5 py-0.5 rounded">NOW</span>}
+                    </div>
+                  </div>
+                  <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded flex-shrink-0 ${MUHURTA_QUALITY_BADGE[m.quality]}`}>
+                    {MUHURTA_QUALITY_LABEL[m.quality]}
+                  </span>
+                  <span className="text-xs text-muted-foreground tabular-nums whitespace-nowrap flex-shrink-0">
+                    {fmtTime(m.start.toISOString())} — {fmtTime(m.end.toISOString())}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <p className="text-sm text-muted-foreground text-center py-8">Muhurta times require sunrise/sunset data</p>
+        )}
+      </Card>
+
+      {/* Inauspicious windows */}
+      {inauspicious.length > 0 && (
+        <Card className="border border-red-200 overflow-hidden">
+          <div className="px-5 py-3 bg-red-50 border-b border-red-100 flex items-center gap-2">
+            <span className="text-red-500">⚠</span>
+            <p className="text-xs font-semibold uppercase tracking-widest text-red-700">Inauspicious Windows — Avoid</p>
+          </div>
+          <div className="divide-y divide-border">
+            {inauspicious.map(w => {
+              const isCurrent = now >= new Date(w.start) && now <= new Date(w.end);
+              return (
+                <div key={w.label} className={`flex items-center justify-between px-5 py-3 ${isCurrent ? 'bg-red-50/40' : ''}`}>
+                  <div className="flex items-center gap-3">
+                    {isCurrent && <span className="w-2 h-2 rounded-full bg-red-500 flex-shrink-0" />}
+                    <span className="text-sm font-medium">{w.label}</span>
+                    {isCurrent && <span className="text-xs text-red-600 font-semibold">Now</span>}
+                  </div>
+                  <span className="text-xs text-muted-foreground tabular-nums">{fmtTime(w.start)} — {fmtTime(w.end)}</span>
+                </div>
+              );
+            })}
+          </div>
+        </Card>
+      )}
+
+      <TZNote timezone={locTZ} locationLabel={data.location?.label} />
+      <MuhuratSEOContent />
+    </div>
+  );
+}
+
 function PanchangCalendarSEOContent({ calYear, calMonth }) {
   const monthName = MONTH_NAMES[(calMonth || 1) - 1];
   const year = calYear || new Date().getFullYear();
@@ -498,6 +719,14 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showWarmup, setShowWarmup] = useState(false);
+
+  // Show warming-up banner if the API call takes more than 4 seconds
+  useEffect(() => {
+    if (!loading) { setShowWarmup(false); return; }
+    const timer = setTimeout(() => { if (loading) setShowWarmup(true); }, 4000);
+    return () => clearTimeout(timer);
+  }, [loading]);
 
   useEffect(() => {
     setLoading(true); setError(null); setData(null);
@@ -509,7 +738,17 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
       .finally(() => setLoading(false));
   }, [dayOffset, locationSlug]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (loading) return <div className="space-y-4">{[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
+  if (loading) return (
+    <div className="space-y-4">
+      {showWarmup && (
+        <div className="warming-up-banner flex items-center gap-3 px-4 py-3 rounded-xl border border-amber-300/60 bg-amber-50 text-amber-800 text-sm font-medium shadow-sm">
+          <span className="text-lg leading-none">☀️</span>
+          <span>Warming up the astrology engine… (first load takes ~10s)</span>
+        </div>
+      )}
+      {[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}
+    </div>
+  );
   if (error)   return <p className="text-center text-muted-foreground py-12">{error}</p>;
   if (!data)   return null;
 
@@ -947,6 +1186,7 @@ export const PanchangPage = () => {
     { key: 'daily',       label: 'Today',      icon: Sun,      path: '/panchang/today' },
     { key: 'tomorrow',    label: 'Tomorrow',   icon: Sun,      path: '/panchang/tomorrow' },
     { key: 'tithi',       label: 'Tithi',      icon: Moon,     path: '/panchang/tithi' },
+    { key: 'muhurat',     label: 'Muhurat',    icon: Star,     path: '/panchang/muhurat' },
     { key: 'choghadiya',  label: 'Choghadiya', icon: Zap,      path: '/panchang/choghadiya' },
     { key: 'calendar',    label: 'Calendar',   icon: Calendar, path: `/panchang/calendar/${today.getFullYear()}/${today.getMonth() + 1}` },
     { key: 'festivals',   label: 'Festivals',  icon: Sparkles, path: '/panchang/festivals' },
@@ -982,6 +1222,7 @@ export const PanchangPage = () => {
       {!isDateView && activeView === 'daily'      && <PanchangDailyView    dayOffset={0}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} />}
       {!isDateView && activeView === 'tomorrow'   && <PanchangDailyView    dayOffset={1}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} />}
       {!isDateView && activeView === 'tithi'      && <PanchangTithiView                                  locationSlug={locationSlug} />}
+      {!isDateView && activeView === 'muhurat'    && <MuhuratView                                        locationSlug={locationSlug} locationTZ={locationTZ} />}
       {!isDateView && activeView === 'choghadiya' && <PanchangChoghadiyaView                             locationSlug={locationSlug} />}
       {!isDateView && activeView === 'calendar'   && <PanchangCalendarView year={calYear} month={calMonth} locationSlug={locationSlug} />}
       {!isDateView && activeView === 'festivals'  && <PanchangFestivalsView                              locationSlug={locationSlug} onDataLoad={setFestivalData} />}
