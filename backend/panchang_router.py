@@ -59,9 +59,7 @@ _DUR_MUHURTA_MUHURTAS: dict[int, tuple[int, int]] = {
     7: (3,  6),   # Sunday
 }
 
-# Vijaya Muhurta — 2-Muhurta (96 min) auspicious window, weekday-specific
-# 0-indexed Muhurta number from sunrise (daylight/15 per Muhurta)
-# Source: Drik Panchang — Thu shows 02:30 PM, verified as Muhurta #10
+# Vijaya Muhurta — weekday-specific Muhurta index from sunrise
 _VIJAYA_MUHURTA: dict[int, int] = {
     1:  9,   # Monday
     2:  2,   # Tuesday
@@ -194,9 +192,6 @@ class PanchangFestivalListResponse(BaseModel):
 
 # ---------------------------------------------------------------------------
 # Location catalogue
-# India: all cities with population > 1 million (Excel source) + key
-#        religious / pilgrimage cities from the dataset.
-# International: major Indian diaspora hubs worldwide.
 # ---------------------------------------------------------------------------
 def _loc(slug, label, country, lat, lng, tz="Asia/Kolkata"):
     return PanchangLocation(slug=slug, label=label, country=country,
@@ -443,10 +438,6 @@ def _rise_trans_event(
     tz: ZoneInfo,
     fallback: datetime | None = None,
 ) -> datetime | None:
-    """
-    Thin wrapper around swe.rise_trans that returns a local datetime or None.
-    event_flag: swe.CALC_RISE or swe.CALC_SET
-    """
     try:
         ret = swe.rise_trans(jd_start, body, event_flag, geopos, 1013.25, 15.0)
         return _jd_to_local_dt(ret[1][0], tz)
@@ -457,30 +448,16 @@ def _rise_trans_event(
 def _sunrise_sunset_moonrise_moonset(
     base_date: date, latitude: float, longitude: float, tz_name: str
 ) -> tuple[datetime, datetime, datetime | None, datetime | None]:
-    """
-    Compute sunrise, sunset, moonrise and moonset via swe.rise_trans.
-    All four returned as timezone-aware local datetimes (moonrise/moonset may be None).
-    """
     tz = ZoneInfo(tz_name)
     local_midnight = datetime(base_date.year, base_date.month, base_date.day, 0, 0, 0, tzinfo=tz)
     jd_start = _datetime_to_jd(local_midnight.astimezone(timezone.utc))
     geopos   = (longitude, latitude, 0.0)
-
-    # Sunrise — search from local midnight
-    sunrise = _rise_trans_event(jd_start, swe.SUN, swe.CALC_RISE, geopos, tz,
-                                 fallback=local_midnight.replace(hour=6, minute=18))
-
-    # Sunset — search from ~6 hours after midnight to avoid finding previous day's sunset
-    sunset  = _rise_trans_event(jd_start + 0.25, swe.SUN, swe.CALC_SET, geopos, tz,
-                                 fallback=local_midnight.replace(hour=18, minute=35))
-
-    # Moonrise — search from local midnight (Moon may rise at any hour)
-    moonrise = _rise_trans_event(jd_start, swe.MOON, swe.CALC_RISE, geopos, tz)
-
-    # Moonset — search from after moonrise (or +0.1 JD ≈ 2.4 h from midnight)
-    jd_moon_seed = jd_start + 0.1
-    moonset  = _rise_trans_event(jd_moon_seed, swe.MOON, swe.CALC_SET, geopos, tz)
-
+    sunrise  = _rise_trans_event(jd_start,        swe.SUN,  swe.CALC_RISE, geopos, tz,
+                                  fallback=local_midnight.replace(hour=6, minute=18))
+    sunset   = _rise_trans_event(jd_start + 0.25, swe.SUN,  swe.CALC_SET,  geopos, tz,
+                                  fallback=local_midnight.replace(hour=18, minute=35))
+    moonrise = _rise_trans_event(jd_start,         swe.MOON, swe.CALC_RISE, geopos, tz)
+    moonset  = _rise_trans_event(jd_start + 0.1,  swe.MOON, swe.CALC_SET,  geopos, tz)
     return sunrise, sunset, moonrise, moonset
 
 
@@ -566,49 +543,22 @@ def _window_time(anchor: datetime, offset_minutes: float, duration_minutes: floa
 def _day_quality_windows(
     sunrise: datetime, sunset: datetime, isoweekday: int
 ) -> list[PanchangTimingWindow]:
-    """
-    Full set of inauspicious + auspicious timing windows.
-
-    Kaal-based (1/8 daylight each):
-        Rahu Kaal, Yamaganda, Gulika Kaal
-
-    Muhurta-based (1/15 daylight each):
-        Dur Muhurta (2 windows), Vijaya Muhurta
-
-    Fixed-offset from sunrise:
-        Brahma Muhurta  — 96 min before sunrise (2 × 48-min Muhurtas)
-        Abhijit Muhurta — centre of daylight ± 24 min
-
-    Verified vs Drik Panchang for New Delhi, 26 March 2026 (Thursday).
-    """
     daylight_min = max((sunset - sunrise).total_seconds() / 60, 1.0)
     kaal         = daylight_min / 8.0
     muhurta_dur  = daylight_min / 15.0
 
-    # ── Kaal windows ──────────────────────────────────────────────────────
     def kaal_window(slot: int) -> tuple[str, str]:
         return _window_time(sunrise, (slot - 1) * kaal, kaal)
 
-    rahu_start,   rahu_end   = kaal_window(_RAHU_KAAL_SLOT[isoweekday])
-    yama_start,   yama_end   = kaal_window(_YAMAGANDA_SLOT[isoweekday])
-    gulika_start, gulika_end = kaal_window(_GULIKA_SLOT[isoweekday])
-
-    # ── Brahma Muhurta — 96 min before sunrise ────────────────────────────
-    # Drik: 04:45 AM – 05:31 AM (Thu, New Delhi) = SR 06:18 − 93 min ✓
-    brahma_start, brahma_end = _window_time(sunrise, -96.0, 96.0)
-
-    # ── Abhijit Muhurta — middle 48 min of daylight ───────────────────────
+    rahu_start,    rahu_end    = kaal_window(_RAHU_KAAL_SLOT[isoweekday])
+    yama_start,    yama_end    = kaal_window(_YAMAGANDA_SLOT[isoweekday])
+    gulika_start,  gulika_end  = kaal_window(_GULIKA_SLOT[isoweekday])
+    brahma_start,  brahma_end  = _window_time(sunrise, -96.0, 96.0)
     abhijit_start, abhijit_end = _window_time(sunrise, daylight_min / 2.0 - 24.0, 48.0)
-
-    # ── Dur Muhurta — two Muhurta windows ────────────────────────────────
     m1_idx, m2_idx = _DUR_MUHURTA_MUHURTAS[isoweekday]
     dur1_start, dur1_end = _window_time(sunrise, m1_idx * muhurta_dur, muhurta_dur)
     dur2_start, dur2_end = _window_time(sunrise, m2_idx * muhurta_dur, muhurta_dur)
-
-    # ── Vijaya Muhurta — one Muhurta window ──────────────────────────────
-    # Drik Thu: 02:30 PM – 03:19 PM = Muhurta #10 from SR ✓
-    vij_idx = _VIJAYA_MUHURTA[isoweekday]
-    vij_start, vij_end = _window_time(sunrise, vij_idx * muhurta_dur, muhurta_dur)
+    vij_start,  vij_end  = _window_time(sunrise, _VIJAYA_MUHURTA[isoweekday] * muhurta_dur, muhurta_dur)
 
     return [
         PanchangTimingWindow(label="Brahma Muhurta",  start=brahma_start,  end=brahma_end,  quality="good"),
@@ -681,8 +631,9 @@ def _meta(calendar_variant: CalendarVariant, region: RegionCode) -> PanchangMeta
     )
 
 
-def _fmt_hhmm(dt: datetime | None) -> str | None:
-    return dt.strftime("%H:%M") if dt else None
+def _fmt_hhmmss(dt: datetime | None) -> str | None:
+    """Format datetime as HH:MM:SS — includes seconds for precision."""
+    return dt.strftime("%H:%M:%S") if dt else None
 
 
 def _build_daily_response(
@@ -709,10 +660,11 @@ def _build_daily_response(
             nakshatra=NAKSHATRA_NAMES[indexes["nakshatra"]],
             yoga=YOGA_NAMES[indexes["yoga"]],
             karana=KARANA_NAMES[indexes["karana"]],
-            sunrise=astro.sunrise.strftime("%H:%M"),
-            sunset=astro.sunset.strftime("%H:%M"),
-            moonrise=_fmt_hhmm(astro.moonrise),
-            moonset=_fmt_hhmm(astro.moonset),
+            # ── seconds included in sunrise/sunset/moonrise/moonset ──────────
+            sunrise=astro.sunrise.strftime("%H:%M:%S"),
+            sunset=astro.sunset.strftime("%H:%M:%S"),
+            moonrise=_fmt_hhmmss(astro.moonrise),
+            moonset=_fmt_hhmmss(astro.moonset),
         ),
         panchang=PanchangDetail(
             paksha=paksha,
