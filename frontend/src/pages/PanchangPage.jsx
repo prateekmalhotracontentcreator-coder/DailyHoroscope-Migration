@@ -207,17 +207,24 @@ function SunMoonCards({ summary, panchang, tzAbbr, lang }) {
   const nak = tNak(panchang.nakshatra?.name, lang) || panchang.nakshatra?.name;
   const paksha = tPaksha(panchang.paksha, lang) || panchang.paksha;
   const cards = [
-    { icon: <Sun className="h-5 w-5 text-amber-500 mx-auto mb-1" />,   label: tLabel('sunrise', lang)  || 'Sunrise',  value: summary.sunrise  || '--', sub: `${tLabel('sunIn',lang)||'Sun'} ${panchang.sun_sign}` },
-    { icon: <Moon className="h-5 w-5 text-slate-400 mx-auto mb-1" />,  label: tLabel('sunset', lang)   || 'Sunset',   value: summary.sunset   || '--', sub: `${tLabel('moonIn',lang)||'Moon'} ${panchang.moon_sign}` },
-    { icon: <Moon className="h-5 w-5 text-blue-300 mx-auto mb-1" />,   label: tLabel('moonrise', lang) || 'Moonrise', value: summary.moonrise || '--', sub: nak ? `${nak} ${tLabel('nakshatra',lang)||'Nakshatra'}` : '' },
-    { icon: <Moon className="h-5 w-5 text-indigo-400 mx-auto mb-1" />, label: tLabel('moonset', lang)  || 'Moonset',  value: summary.moonset  || '--', sub: paksha ? paksha : '' },
+    { icon: <Sun className="h-5 w-5 text-amber-500 mx-auto mb-1" />,   labelR: tLabel('sunrise', lang),  labelEn: 'Sunrise',  value: summary.sunrise  || '--', sub: `${tLabel('sunIn',lang)||'Sun'} ${panchang.sun_sign}` },
+    { icon: <Moon className="h-5 w-5 text-slate-400 mx-auto mb-1" />,  labelR: tLabel('sunset', lang),   labelEn: 'Sunset',   value: summary.sunset   || '--', sub: `${tLabel('moonIn',lang)||'Moon'} ${panchang.moon_sign}` },
+    { icon: <Moon className="h-5 w-5 text-blue-300 mx-auto mb-1" />,   labelR: tLabel('moonrise', lang), labelEn: 'Moonrise', value: summary.moonrise || '--', sub: nak ? `${nak} ${tLabel('nakshatra',lang)||'Nakshatra'}` : '' },
+    { icon: <Moon className="h-5 w-5 text-indigo-400 mx-auto mb-1" />, labelR: tLabel('moonset', lang),  labelEn: 'Moonset',  value: summary.moonset  || '--', sub: paksha ? paksha : '' },
   ];
   return (
     <div className="grid grid-cols-2 gap-3">
       {cards.map(c => (
-        <Card key={c.label} className="p-4 border border-gold/20 text-center">
+        <Card key={c.labelEn} className="p-4 border border-gold/20 text-center">
           {c.icon}
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">{c.label}</p>
+          {lang && c.labelR ? (
+            <div className="mt-0.5 mb-0.5">
+              <p className="text-xs font-semibold text-foreground leading-tight">{c.labelR}</p>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-wide">{c.labelEn}</p>
+            </div>
+          ) : (
+            <p className="text-xs text-muted-foreground uppercase tracking-wide">{c.labelEn}</p>
+          )}
           <p className="font-semibold text-base tabular-nums">{c.value}</p>
           {c.sub && <p className="text-xs text-muted-foreground mt-0.5 truncate">{c.sub}</p>}
           <p className="text-[10px] text-gold/70 font-bold mt-0.5">{tzAbbr}</p>
@@ -239,11 +246,22 @@ function TimingWindowsCard({ windows, fmtTime, tzAbbr, lang }) {
 
   const renderRow = (w, i) => {
     const isCurrent = now >= new Date(w.start) && now <= new Date(w.end);
+    const regional = tWin(w.label, lang);
+    const showBilingual = lang && regional !== w.label;
     return (
       <div key={w.label} className={`flex items-center justify-between px-5 py-3 ${isCurrent ? 'bg-gold/5' : ''}`}>
         <div className="flex items-center gap-3">
           {isCurrent && <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />}
-          <span className="text-sm font-medium">{tWin(w.label, lang)}</span>
+          <div>
+            {showBilingual ? (
+              <>
+                <p className="text-sm font-medium leading-tight">{regional}</p>
+                <p className="text-[10px] text-muted-foreground">{w.label}</p>
+              </>
+            ) : (
+              <span className="text-sm font-medium">{w.label}</span>
+            )}
+          </div>
           {isCurrent && <span className="text-xs text-green-600 font-semibold">{tLabel('now',lang)||'Now'}</span>}
         </div>
         <span className="text-xs text-muted-foreground tabular-nums">{fmtTime(w.start)} — {fmtTime(w.end)}</span>
@@ -848,15 +866,22 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
         </div>
         <div className="divide-y divide-border">
           {[
-            { label: tLabel('tithi',lang)||'Tithi',         value: tTithi(panchang.tithi.name,lang),     sub: (tPaksha(panchang.paksha,lang)||panchang.paksha) + (lang ? '' : ' Paksha') + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) : '') },
-            { label: tLabel('nakshatra',lang)||'Nakshatra', value: tNak(panchang.nakshatra.name,lang),   sub: (lang ? '' : 'Moon in ') + panchang.moon_sign + (panchang.nakshatra.end ? ' · until ' + fmtTime(panchang.nakshatra.end) : '') },
-            { label: tLabel('yoga',lang)||'Yoga',           value: panchang.yoga.name,                   sub: panchang.yoga.end ? 'Until ' + fmtTime(panchang.yoga.end) : '' },
-            { label: tLabel('karana',lang)||'Karana',       value: panchang.karana.name,                 sub: panchang.karana.end ? 'Until ' + fmtTime(panchang.karana.end) : '' },
-            { label: tLabel('vara',lang)||'Vara (Day)',     value: tDay(lang) || summary.weekday,        sub: panchang.samvat },
+            { labelR: tLabel('tithi',lang),     labelEn: 'Tithi',      value: tTithi(panchang.tithi.name,lang),   sub: (tPaksha(panchang.paksha,lang)||panchang.paksha) + (lang ? '' : ' Paksha') + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) : '') },
+            { labelR: tLabel('nakshatra',lang), labelEn: 'Nakshatra',  value: tNak(panchang.nakshatra.name,lang), sub: (lang ? '' : 'Moon in ') + panchang.moon_sign + (panchang.nakshatra.end ? ' · until ' + fmtTime(panchang.nakshatra.end) : '') },
+            { labelR: tLabel('yoga',lang),      labelEn: 'Yoga',       value: panchang.yoga.name,                 sub: panchang.yoga.end ? 'Until ' + fmtTime(panchang.yoga.end) : '' },
+            { labelR: tLabel('karana',lang),    labelEn: 'Karana',     value: panchang.karana.name,               sub: panchang.karana.end ? 'Until ' + fmtTime(panchang.karana.end) : '' },
+            { labelR: tLabel('vara',lang),      labelEn: 'Vara (Day)', value: tDay(lang) || summary.weekday,      sub: panchang.samvat },
           ].map(item => (
-            <div key={item.label} className="flex items-center justify-between px-5 py-4">
+            <div key={item.labelEn} className="flex items-center justify-between px-5 py-4">
               <div>
-                <p className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">{item.label}</p>
+                {lang && item.labelR ? (
+                  <div className="mb-1">
+                    <p className="text-sm font-semibold text-foreground leading-tight">{item.labelR}</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-wide">{item.labelEn}</p>
+                  </div>
+                ) : (
+                  <p className="text-xs text-muted-foreground uppercase tracking-wide mb-0.5">{item.labelEn}</p>
+                )}
                 <p className="font-medium text-sm">{item.value}</p>
               </div>
               {item.sub && <p className="text-xs text-muted-foreground text-right max-w-[220px] tabular-nums">{item.sub}</p>}

@@ -7,13 +7,13 @@ import { Button } from './ui/button';
 import {
   Menu, X, Home, Star, FileText, BookOpen, Tag, Phone,
   ChevronDown, ChevronRight, Sparkles, LogIn, User,
-  Sun, Moon as MoonIcon, Calendar, Gem, Hash,
+  Sun, Moon as MoonIcon, Calendar, Gem, Hash, Globe,
   Heart, Briefcase, Shield, Leaf, Zap, Crown,
   BookMarked, Layers
 } from 'lucide-react';
 
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
-const StarsLogo = ({ size = 48 }) => (
+const StarsLogo = ({ size = 56 }) => (
   <img
     src="/Logo.png"
     alt="Everyday Horoscope"
@@ -28,13 +28,18 @@ const NAV = [
   {
     label: 'Panchang', icon: Calendar,
     children: [
-      { label: "Today's Panchang",    path: '/panchang/today',     icon: Sun },
-      { label: "Tomorrow's Panchang", path: '/panchang/tomorrow',  icon: Sun },
-      { label: 'Tithi',               path: '/panchang/tithi',     icon: MoonIcon },
+      { label: 'Daily Panchang',      path: '/panchang/today',     icon: Sun },
+      { label: 'Calendar',            path: `/panchang/calendar/${new Date().getFullYear()}/${new Date().getMonth() + 1}`, icon: Calendar },
+      { label: 'Hindi Panchang',      path: '/panchang/hindi',     icon: Globe },
+      { label: 'Telugu Panchang',     path: '/panchang/telugu',    icon: Globe },
+      { label: 'Malayalam Panchang',  path: '/panchang/malayalam', icon: Globe },
+      { label: 'Kannada Panchang',    path: '/panchang/kannada',   icon: Globe },
+      { label: 'Tamil Panchang',      path: '/panchang/tamil',     icon: Globe },
       { label: 'Shubh Muhurat',       path: '/panchang/muhurat',   icon: Star },
       { label: 'Nakshatra',           path: '/panchang/nakshatra', icon: Sparkles },
       { label: 'Choghadiya',          path: '/panchang/choghadiya',icon: Zap },
-      { label: 'Rahu Kaal',           path: '/panchang/rahukaal',  icon: Shield },
+      { label: 'Festivals',           path: '/panchang/festivals', icon: Sparkles },
+      { label: 'Rahu Kalam',          path: '/panchang/rahukaal',  icon: Shield },
     ],
   },
   {
@@ -287,12 +292,12 @@ export const NavBar = () => {
 
       {/* MOBILE SIDEBAR */}
       {sidebarOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden" onClick={() => setSidebarOpen(false)}>
+        <div className="fixed inset-0 z-50" onClick={() => setSidebarOpen(false)}>
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
           <div className="absolute left-0 top-0 bottom-0 w-72 bg-card border-r border-border shadow-2xl flex flex-col" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between px-4 py-4 border-b border-border">
               <div className="flex items-center gap-2.5">
-                <StarsLogo size={40} />
+                <StarsLogo size={44} />
                 <BrandWordmark />
               </div>
               <button onClick={() => setSidebarOpen(false)} className="p-1.5 rounded-sm hover:bg-muted/50 transition-colors">
