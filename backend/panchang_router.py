@@ -14,7 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v3-swiss"
+ENGINE_VERSION = "panchang-router-v4-swiss"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -31,6 +31,15 @@ def _init_swe() -> None:
 _init_swe()
 
 _SWE_FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL
+
+# Rahu Kaal slot index by weekday (Monday=0 ... Sunday=6)
+# Traditional Vedic system: daylight split into 8 equal parts, Rahu Kaal occupies one.
+# Slot positions (0-indexed from sunrise): Sun=7, Mon=1, Tue=6, Wed=4, Thu=5, Fri=3, Sat=2
+_RAHU_KAAL_SLOT = {0: 1, 1: 6, 2: 4, 3: 5, 4: 3, 5: 2, 6: 7}
+# Yamaganda slot: Sun=4, Mon=3, Tue=2, Wed=1, Thu=5, Fri=7, Sat=6  (0-indexed)
+_YAMAGANDA_SLOT = {0: 4, 1: 3, 2: 2, 3: 1, 4: 5, 5: 7, 6: 6}
+# Gulika slot: Sun=6, Mon=5, Tue=4, Wed=3, Thu=2, Fri=1, Sat=0  (0-indexed)
+_GULIKA_SLOT    = {0: 6, 1: 5, 2: 4, 3: 3, 4: 2, 5: 1, 6: 0}
 
 
 class PanchangLocation(BaseModel):
@@ -274,29 +283,21 @@ def _sunrise_sunset_local(
 ) -> tuple[datetime, datetime]:
     """
     Compute sunrise and sunset using a pure-Python astronomical algorithm.
-    Avoids swe.rise_trans entirely — that function has type-incompatibility
-    issues with pyswisseph 2.10.x on Python 3.12.
-    Based on the NOAA solar calculation algorithm.
+    Avoids swe.rise_trans entirely. Based on NOAA solar calculation algorithm.
     """
     tz = ZoneInfo(tz_name)
 
-    def _solar_noon_offset_minutes(jd: float, lon: float) -> float:
-        """Return solar noon offset from mean noon in minutes."""
+    def _solar_noon_utc_h(jd: float, lon: float) -> float:
         n = jd - 2451545.0
         L = (280.460 + 0.9856474 * n) % 360.0
         g = math.radians((357.528 + 0.9856003 * n) % 360.0)
         lam = math.radians(L + 1.915 * math.sin(g) + 0.020 * math.sin(2 * g))
         eps = math.radians(23.439 - 0.0000004 * n)
-        # equation of time in minutes
         RA = math.degrees(math.atan2(math.cos(eps) * math.sin(lam), math.cos(lam))) / 15.0
-        L_deg = L
-        RA_h = RA % 24.0
-        eot = 4 * (L_deg / 15.0 - RA_h)
-        solar_noon = 12.0 + (0.0 - lon / 15.0) - eot / 60.0
-        return solar_noon  # hours UTC
+        eot = 4 * (L / 15.0 - (RA % 24.0))
+        return 12.0 - lon / 15.0 - eot / 60.0
 
-    def _hour_angle_at_horizon(lat_deg: float, jd: float) -> float:
-        """Return hour angle (degrees) of sunrise/set for standard horizon."""
+    def _hour_angle(lat_deg: float, jd: float) -> float:
         n = jd - 2451545.0
         L = (280.460 + 0.9856474 * n) % 360.0
         g = math.radians((357.528 + 0.9856003 * n) % 360.0)
@@ -304,30 +305,21 @@ def _sunrise_sunset_local(
         eps = math.radians(23.439 - 0.0000004 * n)
         dec = math.asin(math.sin(eps) * math.sin(lam))
         lat = math.radians(lat_deg)
-        # standard refraction + disc correction: -0.8333 degrees
         cos_ha = (math.sin(math.radians(-0.8333)) - math.sin(lat) * math.sin(dec)) / (math.cos(lat) * math.cos(dec))
-        cos_ha = max(-1.0, min(1.0, cos_ha))
-        return math.degrees(math.acos(cos_ha))
+        return math.degrees(math.acos(max(-1.0, min(1.0, cos_ha))))
 
-    # Use J2000 noon for the date
     dt_noon_utc = datetime(base_date.year, base_date.month, base_date.day, 12, 0, 0, tzinfo=timezone.utc)
     jd_noon = _datetime_to_jd(dt_noon_utc)
+    solar_noon_h = _solar_noon_utc_h(jd_noon, longitude)
+    ha_h = _hour_angle(latitude, jd_noon) / 15.0
 
-    solar_noon_utc_h = _solar_noon_offset_minutes(jd_noon, longitude)
-    ha = _hour_angle_at_horizon(latitude, jd_noon)
-    ha_h = ha / 15.0  # convert degrees to hours
+    def hours_to_dt(h: float) -> datetime:
+        total_min = int(round(h * 60))
+        hr = (total_min // 60) % 24
+        mn = total_min % 60
+        return datetime(base_date.year, base_date.month, base_date.day, hr, mn, 0, tzinfo=timezone.utc).astimezone(tz)
 
-    sunrise_utc_h = solar_noon_utc_h - ha_h
-    sunset_utc_h  = solar_noon_utc_h + ha_h
-
-    def hours_to_datetime(h: float) -> datetime:
-        total_minutes = int(round(h * 60))
-        hr = (total_minutes // 60) % 24
-        mn = total_minutes % 60
-        dt_utc = datetime(base_date.year, base_date.month, base_date.day, hr, mn, 0, tzinfo=timezone.utc)
-        return dt_utc.astimezone(tz)
-
-    return hours_to_datetime(sunrise_utc_h), hours_to_datetime(sunset_utc_h)
+    return hours_to_dt(solar_noon_h - ha_h), hours_to_dt(solar_noon_h + ha_h)
 
 
 def _moment_longitudes(moment_local: datetime) -> tuple[float, float]:
@@ -405,14 +397,26 @@ def _window_time(anchor: datetime, offset_minutes: int, duration_minutes: int) -
     end = start + timedelta(minutes=duration_minutes)
     return start.isoformat(), end.isoformat()
 
-def _day_quality_windows(sunrise: datetime, sunset: datetime) -> list[PanchangTimingWindow]:
+
+def _day_quality_windows(sunrise: datetime, sunset: datetime, weekday: int) -> list[PanchangTimingWindow]:
+    """
+    Compute timing windows using weekday-specific slots per traditional Vedic Panchang.
+    weekday: Monday=0, Tuesday=1, ..., Sunday=6 (Python's date.weekday())
+    Each slot = 1/8th of daylight duration.
+    """
     daylight_minutes = int((sunset - sunrise).total_seconds() / 60)
-    eighth = max(daylight_minutes // 8, 1)
-    rahu_start,    rahu_end    = _window_time(sunrise, 7 * eighth, eighth)
-    yama_start,    yama_end    = _window_time(sunrise, 4 * eighth, eighth)
-    gulika_start,  gulika_end  = _window_time(sunrise, 5 * eighth, eighth)
+    slot = max(daylight_minutes // 8, 1)  # one Kaal = 1/8 of daylight
+
+    rahu_slot    = _RAHU_KAAL_SLOT.get(weekday, 7)
+    yamagan_slot = _YAMAGANDA_SLOT.get(weekday, 4)
+    gulika_slot  = _GULIKA_SLOT.get(weekday, 6)
+
+    rahu_start,    rahu_end    = _window_time(sunrise, rahu_slot    * slot, slot)
+    yama_start,    yama_end    = _window_time(sunrise, yamagan_slot * slot, slot)
+    gulika_start,  gulika_end  = _window_time(sunrise, gulika_slot  * slot, slot)
     abhijit_start, abhijit_end = _window_time(sunrise, daylight_minutes // 2 - 24, 48)
-    dur_start,     dur_end     = _window_time(sunrise, 2 * eighth, eighth)
+    dur_start,     dur_end     = _window_time(sunrise, 2 * slot, slot)
+
     return [
         PanchangTimingWindow(label="Rahu Kaal",      start=rahu_start,    end=rahu_end,    quality="caution"),
         PanchangTimingWindow(label="Yamaganda",       start=yama_start,    end=yama_end,    quality="caution"),
@@ -420,6 +424,7 @@ def _day_quality_windows(sunrise: datetime, sunset: datetime) -> list[PanchangTi
         PanchangTimingWindow(label="Abhijit Muhurta", start=abhijit_start, end=abhijit_end, quality="good"),
         PanchangTimingWindow(label="Dur Muhurta",     start=dur_start,     end=dur_end,     quality="caution"),
     ]
+
 
 def _day_indexes(
     base_date: date, location: PanchangLocation, calendar_variant: CalendarVariant,
@@ -463,8 +468,8 @@ def _related_links(base_date: date, location: PanchangLocation) -> list[Panchang
     prev_date = (base_date - timedelta(days=1)).isoformat()
     next_date = (base_date + timedelta(days=1)).isoformat()
     return [
-        PanchangLink(label="Previous Day", href=f"/panchang/location/{location.slug}/date/{prev_date}"),
-        PanchangLink(label="Tomorrow",     href=f"/panchang/location/{location.slug}/date/{next_date}"),
+        PanchangLink(label="Previous Day", href=f"/panchang/date/{prev_date}"),
+        PanchangLink(label="Tomorrow",     href=f"/panchang/date/{next_date}"),
         PanchangLink(label="This Month",   href=f"/panchang/calendar/{base_date.year}/{base_date.month}"),
         PanchangLink(label="Festivals",    href=f"/panchang/festivals?year={base_date.year}&month={base_date.month}"),
     ]
@@ -494,6 +499,8 @@ def _build_daily_response(
     nak_start,    nak_end     = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "nakshatra", indexes["nakshatra"])
     yoga_start,   yoga_end    = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "yoga",      indexes["yoga"])
     karana_start, karana_end  = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "karana",    indexes["karana"])
+    # weekday: Monday=0...Sunday=6
+    weekday = base_date.weekday()
     return PanchangDailyResponse(
         date=base_date.isoformat(),
         location=location,
@@ -517,7 +524,7 @@ def _build_daily_response(
             yoga=PanchangSegment(     name=YOGA_NAMES[indexes["yoga"]],              index=indexes["yoga"]      + 1, start=yoga_start,   end=yoga_end),
             karana=PanchangSegment(   name=KARANA_NAMES[indexes["karana"]],          index=indexes["karana"]    + 1, start=karana_start, end=karana_end),
         ),
-        day_quality_windows=_day_quality_windows(astro.sunrise, astro.sunset),
+        day_quality_windows=_day_quality_windows(astro.sunrise, astro.sunset, weekday),
         observances=_observances_for_day(base_date, indexes, tithi_name),
         related_links=_related_links(base_date, location),
         meta=_meta(calendar_variant, region),

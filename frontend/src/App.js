@@ -108,8 +108,9 @@ function App() {
                   <Route path="/admin/dashboard" element={<AdminDashboard />} />
                   <Route path="/admin/blog" element={<AdminBlogManager />} />
 
-                  {/* Panchang — calendar route MUST come before :type to avoid conflict */}
+                  {/* Panchang — order matters: most specific first */}
                   <Route path="/panchang/calendar/:year/:month" element={<PanchangPage />} />
+                  <Route path="/panchang/date/:dateValue" element={<PanchangPage />} />
                   <Route path="/panchang/:type" element={<PanchangPage />} />
 
                   {/* Phase 2 modules */}
