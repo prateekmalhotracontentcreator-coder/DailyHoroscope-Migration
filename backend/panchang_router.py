@@ -279,13 +279,22 @@ def _sunrise_sunset_local(
     tz = ZoneInfo(tz_name)
     local_noon = datetime.combine(base_date, time(12, 0), tzinfo=tz)
     jd_noon = _datetime_to_jd(local_noon.astimezone(timezone.utc))
-    geo = (longitude, latitude, 0.0)
 
+    # pyswisseph 2.10.x rise_trans signature:
+    # rise_trans(tjd_ut, body, iflag, rsmi, lon, lat, alt, atpress=0.0, attemp=0.0)
     # Sunrise
-    ret_rise = swe.rise_trans(jd_noon - 0.5, swe.SUN, 0, swe.CALC_RISE | swe.BIT_DISC_CENTER, geo)
+    ret_rise = swe.rise_trans(
+        jd_noon - 0.5, swe.SUN, 0,
+        swe.CALC_RISE | swe.BIT_DISC_CENTER,
+        longitude, latitude, 0.0,
+    )
     jd_rise = ret_rise[1][0]
     # Sunset
-    ret_set  = swe.rise_trans(jd_noon - 0.5, swe.SUN, 0, swe.CALC_SET  | swe.BIT_DISC_CENTER, geo)
+    ret_set = swe.rise_trans(
+        jd_noon - 0.5, swe.SUN, 0,
+        swe.CALC_SET | swe.BIT_DISC_CENTER,
+        longitude, latitude, 0.0,
+    )
     jd_set = ret_set[1][0]
 
     def jd_to_datetime_local(jd: float) -> datetime:
