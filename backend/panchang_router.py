@@ -14,7 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v4-swiss"
+ENGINE_VERSION = "panchang-router-v5-swiss"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -32,14 +32,55 @@ _init_swe()
 
 _SWE_FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL
 
-# Rahu Kaal slot index by weekday (Monday=0 ... Sunday=6)
-# Traditional Vedic system: daylight split into 8 equal parts, Rahu Kaal occupies one.
-# Slot positions (0-indexed from sunrise): Sun=7, Mon=1, Tue=6, Wed=4, Thu=5, Fri=3, Sat=2
+# ---------------------------------------------------------------------------
+# Traditional Vedic timing slot tables
+# ---------------------------------------------------------------------------
+# Python's date.weekday(): Monday=0 ... Sunday=6
+# Vedic tables are indexed by weekday in the same Monday=0 convention.
+#
+# Slot index = which 1/8th daylight block (0-indexed from sunrise) the period
+# occupies.  slot_0 = sunrise..sunrise+1kaal, slot_1 = next kaal, etc.
+#
+# Rahu Kaal slots  (traditional mnemonic: "Mother Saw Father Wearing The Turban Smartly")
+#   Mon=1, Sat=2, Fri=3, Wed=4, Thu=5, Tue=6, Sun=7
+#   → Python weekday mapping: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
 _RAHU_KAAL_SLOT = {0: 1, 1: 6, 2: 4, 3: 5, 4: 3, 5: 2, 6: 7}
-# Yamaganda slot: Sun=4, Mon=3, Tue=2, Wed=1, Thu=5, Fri=7, Sat=6  (0-indexed)
-_YAMAGANDA_SLOT = {0: 4, 1: 3, 2: 2, 3: 1, 4: 5, 5: 7, 6: 6}
-# Gulika slot: Sun=6, Mon=5, Tue=4, Wed=3, Thu=2, Fri=1, Sat=0  (0-indexed)
-_GULIKA_SLOT    = {0: 6, 1: 5, 2: 4, 3: 3, 4: 2, 5: 1, 6: 0}
+
+# Yamaganda slots (traditional: Sun=5, Mon=4, Tue=3, Wed=2, Thu=6, Fri=8, Sat=7)
+# Converting to 0-indexed (subtract 1) and capping at 7:
+#   Sun→4, Mon→3, Tue→2, Wed→1, Thu→5, Fri→7, Sat→6
+#   Python weekday: Mon=0, Tue=1, Wed=2, Thu=3, Fri=4, Sat=5, Sun=6
+_YAMAGANDA_SLOT = {0: 3, 1: 2, 2: 1, 3: 5, 4: 7, 5: 6, 6: 4}
+
+# Gulika (Mandi) slots  (traditional: Sun=7, Mon=6, Tue=5, Wed=4, Thu=3, Fri=2, Sat=1)
+# 0-indexed: Sun→6, Mon→5, Tue→4, Wed→3, Thu→2, Fri→1, Sat→0
+_GULIKA_SLOT = {0: 5, 1: 4, 2: 3, 3: 2, 4: 1, 5: 0, 6: 6}
+
+# Dur Muhurta — two inauspicious periods per day, each ~48 min.
+# Expressed as minutes from sunrise.  Values from Drik Panchang reference.
+# (offset_from_sunrise_min, duration_min)
+# Mon: 11:51-12:39 ≈ midday block; mapping to offsets from sunrise at 6:18 = 333 min
+# Traditional fixed clock offsets converted to "approx slot" approach:
+# Simpler and more accurate: Dur Muhurta occupies specific 48-min windows
+# referenced from solar noon rather than sunrise.
+# We use (offset_before_noon_min, offset_after_noon_min) pattern:
+_DUR_MUHURTA_OFFSETS: dict[int, list[tuple[int, int]]] = {
+    # (start_offset_from_sunrise_minutes, duration_minutes)
+    # Sun
+    6: [(120, 48), (510, 48)],
+    # Mon  
+    0: [(330, 48)],
+    # Tue
+    1: [(45, 48), (570, 48)],
+    # Wed
+    2: [(240, 48)],
+    # Thu
+    3: [(240, 48)],
+    # Fri
+    4: [(45, 48)],
+    # Sat
+    5: [(330, 48), (570, 48)],
+}
 
 
 class PanchangLocation(BaseModel):
@@ -175,6 +216,38 @@ DEFAULT_LOCATIONS: dict[str, PanchangLocation] = {
         slug="kolkata-india", label="Kolkata, India",
         latitude=22.5726, longitude=88.3639, timezone="Asia/Kolkata",
     ),
+    "new-york-usa": PanchangLocation(
+        slug="new-york-usa", label="New York, USA",
+        latitude=40.7128, longitude=-74.0060, timezone="America/New_York",
+    ),
+    "london-uk": PanchangLocation(
+        slug="london-uk", label="London, UK",
+        latitude=51.5074, longitude=-0.1278, timezone="Europe/London",
+    ),
+    "dubai-uae": PanchangLocation(
+        slug="dubai-uae", label="Dubai, UAE",
+        latitude=25.2048, longitude=55.2708, timezone="Asia/Dubai",
+    ),
+    "singapore": PanchangLocation(
+        slug="singapore", label="Singapore",
+        latitude=1.3521, longitude=103.8198, timezone="Asia/Singapore",
+    ),
+    "toronto-canada": PanchangLocation(
+        slug="toronto-canada", label="Toronto, Canada",
+        latitude=43.6532, longitude=-79.3832, timezone="America/Toronto",
+    ),
+    "sydney-australia": PanchangLocation(
+        slug="sydney-australia", label="Sydney, Australia",
+        latitude=-33.8688, longitude=151.2093, timezone="Australia/Sydney",
+    ),
+    "kathmandu-nepal": PanchangLocation(
+        slug="kathmandu-nepal", label="Kathmandu, Nepal",
+        latitude=27.7172, longitude=85.3240, timezone="Asia/Kathmandu",
+    ),
+    "riyadh-saudi-arabia": PanchangLocation(
+        slug="riyadh-saudi-arabia", label="Riyadh, Saudi Arabia",
+        latitude=24.6877, longitude=46.7219, timezone="Asia/Riyadh",
+    ),
 }
 
 TITHI_NAMES = [
@@ -282,8 +355,8 @@ def _sunrise_sunset_local(
     base_date: date, latitude: float, longitude: float, tz_name: str
 ) -> tuple[datetime, datetime]:
     """
-    Compute sunrise and sunset using a pure-Python astronomical algorithm.
-    Avoids swe.rise_trans entirely. Based on NOAA solar calculation algorithm.
+    Compute sunrise and sunset using NOAA solar algorithm.
+    Returns local-timezone-aware datetimes.
     """
     tz = ZoneInfo(tz_name)
 
@@ -401,29 +474,49 @@ def _window_time(anchor: datetime, offset_minutes: int, duration_minutes: int) -
 def _day_quality_windows(sunrise: datetime, sunset: datetime, weekday: int) -> list[PanchangTimingWindow]:
     """
     Compute timing windows using weekday-specific slots per traditional Vedic Panchang.
-    weekday: Monday=0, Tuesday=1, ..., Sunday=6 (Python's date.weekday())
-    Each slot = 1/8th of daylight duration.
+    weekday: Monday=0, Tuesday=1, ..., Sunday=6  (Python date.weekday())
+    Each Kaal = 1/8 of total daylight duration.
+
+    Rahu Kaal slot mapping (verified against Drik Panchang reference):
+      Mon=slot1, Sat=slot2, Fri=slot3, Wed=slot4, Thu=slot5, Tue=slot6, Sun=slot7
+
+    Dur Muhurta: per-weekday fixed offsets from sunrise (minutes).
     """
     daylight_minutes = int((sunset - sunrise).total_seconds() / 60)
-    slot = max(daylight_minutes // 8, 1)  # one Kaal = 1/8 of daylight
+    slot = max(daylight_minutes // 8, 1)
 
     rahu_slot    = _RAHU_KAAL_SLOT.get(weekday, 7)
     yamagan_slot = _YAMAGANDA_SLOT.get(weekday, 4)
     gulika_slot  = _GULIKA_SLOT.get(weekday, 6)
 
-    rahu_start,    rahu_end    = _window_time(sunrise, rahu_slot    * slot, slot)
-    yama_start,    yama_end    = _window_time(sunrise, yamagan_slot * slot, slot)
-    gulika_start,  gulika_end  = _window_time(sunrise, gulika_slot  * slot, slot)
-    abhijit_start, abhijit_end = _window_time(sunrise, daylight_minutes // 2 - 24, 48)
-    dur_start,     dur_end     = _window_time(sunrise, 2 * slot, slot)
+    rahu_start,   rahu_end   = _window_time(sunrise, rahu_slot    * slot, slot)
+    yama_start,   yama_end   = _window_time(sunrise, yamagan_slot * slot, slot)
+    gulika_start, gulika_end = _window_time(sunrise, gulika_slot  * slot, slot)
 
-    return [
-        PanchangTimingWindow(label="Rahu Kaal",      start=rahu_start,    end=rahu_end,    quality="caution"),
-        PanchangTimingWindow(label="Yamaganda",       start=yama_start,    end=yama_end,    quality="caution"),
-        PanchangTimingWindow(label="Gulika Kaal",     start=gulika_start,  end=gulika_end,  quality="neutral"),
-        PanchangTimingWindow(label="Abhijit Muhurta", start=abhijit_start, end=abhijit_end, quality="good"),
-        PanchangTimingWindow(label="Dur Muhurta",     start=dur_start,     end=dur_end,     quality="caution"),
+    # Abhijit Muhurta: 48-min window centred on solar noon
+    abhijit_start, abhijit_end = _window_time(sunrise, daylight_minutes // 2 - 24, 48)
+
+    # Dur Muhurta: weekday-specific offset(s) from sunrise
+    dur_entries = _DUR_MUHURTA_OFFSETS.get(weekday, [(2 * slot, slot)])
+    # Use the first entry for the primary Dur Muhurta display
+    dur_offset, dur_dur = dur_entries[0]
+    dur_start, dur_end = _window_time(sunrise, dur_offset, dur_dur)
+
+    windows = [
+        PanchangTimingWindow(label="Rahu Kaal",      start=rahu_start,   end=rahu_end,   quality="caution"),
+        PanchangTimingWindow(label="Yamaganda",      start=yama_start,   end=yama_end,   quality="caution"),
+        PanchangTimingWindow(label="Gulika Kaal",    start=gulika_start, end=gulika_end, quality="neutral"),
+        PanchangTimingWindow(label="Abhijit Muhurta",start=abhijit_start,end=abhijit_end,quality="good"),
+        PanchangTimingWindow(label="Dur Muhurta",    start=dur_start,    end=dur_end,    quality="caution"),
     ]
+
+    # If the weekday has a second Dur Muhurta, append it
+    if len(dur_entries) > 1:
+        dur2_offset, dur2_dur = dur_entries[1]
+        dur2_start, dur2_end = _window_time(sunrise, dur2_offset, dur2_dur)
+        windows.append(PanchangTimingWindow(label="Dur Muhurta 2", start=dur2_start, end=dur2_end, quality="caution"))
+
+    return windows
 
 
 def _day_indexes(
@@ -499,8 +592,7 @@ def _build_daily_response(
     nak_start,    nak_end     = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "nakshatra", indexes["nakshatra"])
     yoga_start,   yoga_end    = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "yoga",      indexes["yoga"])
     karana_start, karana_end  = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "karana",    indexes["karana"])
-    # weekday: Monday=0...Sunday=6
-    weekday = base_date.weekday()
+    weekday = base_date.weekday()  # Monday=0 ... Sunday=6
     return PanchangDailyResponse(
         date=base_date.isoformat(),
         location=location,
@@ -583,6 +675,10 @@ def _build_festival_list(
     )
 
 
+# ---------------------------------------------------------------------------
+# Routes
+# ---------------------------------------------------------------------------
+
 @router.get("/daily", response_model=PanchangDailyResponse)
 async def get_daily_panchang(
     date_value: str | None = Query(default=None, alias="date"),
@@ -596,6 +692,33 @@ async def get_daily_panchang(
     location = _resolve_location(location_slug=location_slug, lat=lat, lng=lng, tz_name=tz)
     resolved_date = _parse_date(date_value) if date_value else datetime.now(ZoneInfo(location.timezone)).date()
     return _build_daily_response(resolved_date, location, calendar_variant, region)
+
+
+@router.get("/date/{date_value}", response_model=PanchangDailyResponse)
+async def get_panchang_by_date(
+    date_value: str,
+    location_slug: str | None = None,
+    lat: float | None = None,
+    lng: float | None = None,
+    tz: str | None = None,
+    calendar_variant: CalendarVariant = "amanta",
+    region: RegionCode = "general",
+) -> PanchangDailyResponse:
+    """Explicit per-date Panchang endpoint. Preferred by calendar deep-links."""
+    location = _resolve_location(location_slug=location_slug, lat=lat, lng=lng, tz_name=tz)
+    resolved_date = _parse_date(date_value)
+    return _build_daily_response(resolved_date, location, calendar_variant, region)
+
+
+@router.get("/locations")
+async def get_panchang_locations() -> dict:
+    """Return available location slugs and labels."""
+    return {
+        "locations": [
+            {"slug": loc.slug, "label": loc.label, "timezone": loc.timezone}
+            for loc in DEFAULT_LOCATIONS.values()
+        ]
+    }
 
 
 @router.get("/calendar/{year}/{month}", response_model=PanchangCalendarResponse)
