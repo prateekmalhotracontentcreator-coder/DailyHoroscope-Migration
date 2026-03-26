@@ -34,6 +34,7 @@ import { NavBar } from './components/NavBar';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ComingSoonPage } from './pages/ComingSoonPage';
 import { PanchangPage } from './pages/PanchangPage';
+import { PanchangLangPage } from './pages/PanchangLangPage';
 import { NumerologyPage } from './pages/NumerologyPage';
 import { PalmistryPage } from './pages/PalmistryPage';
 import { TarotPage } from './pages/TarotPage';
@@ -111,6 +112,12 @@ function App() {
                   {/* Panchang — order matters: most specific first */}
                   <Route path="/panchang/calendar/:year/:month" element={<PanchangPage />} />
                   <Route path="/panchang/date/:dateValue" element={<PanchangPage />} />
+                  {/* Language-specific Panchang pages (must come before generic :type) */}
+                  <Route path="/panchang/tamil"    element={<PanchangLangPage lang="tamil" />} />
+                  <Route path="/panchang/telugu"   element={<PanchangLangPage lang="telugu" />} />
+                  <Route path="/panchang/malayalam" element={<PanchangLangPage lang="malayalam" />} />
+                  <Route path="/panchang/kannada"  element={<PanchangLangPage lang="kannada" />} />
+                  <Route path="/panchang/hindi"    element={<PanchangLangPage lang="hindi" />} />
                   <Route path="/panchang/:type" element={<PanchangPage />} />
 
                   {/* Phase 2 modules */}

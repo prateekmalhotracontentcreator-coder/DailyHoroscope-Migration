@@ -13,13 +13,13 @@ import {
 } from 'lucide-react';
 
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
-const StarsLogo = ({ size = 28 }) => (
+const StarsLogo = ({ size = 38 }) => (
   <img
     src="/Logo.png"
     alt="Everyday Horoscope"
     width={size}
     height={size}
-    style={{ width: size, height: size, objectFit: 'contain' }}
+    style={{ width: size, height: size, objectFit: 'contain', display: 'block' }}
   />
 );
 
@@ -208,16 +208,19 @@ export const NavBar = () => {
   }, [sidebarOpen]);
 
   const LANGUAGES = [
-    { code: 'hi', label: 'हिंदी',   route: '/panchang/today'    },
-    { code: 'en', label: 'English', route: '/panchang/today'    },
-    { code: 'ta', label: 'தமிழ்',   route: '/panchang/tamil'   },
-    { code: 'te', label: 'తెలుగు',  route: '/panchang/telugu'  },
-    { code: 'kn', label: 'ಕನ್ನಡ',   route: '/panchang/kannada' },
+    { code: 'en', label: 'English', route: '/panchang/today'       },
+    { code: 'hi', label: 'हिंदी',   route: '/panchang/hindi'       },
+    { code: 'ta', label: 'தமிழ்',   route: '/panchang/tamil'       },
+    { code: 'te', label: 'తెలుగు',  route: '/panchang/telugu'      },
+    { code: 'ml', label: 'മലയാളം', route: '/panchang/malayalam'   },
+    { code: 'kn', label: 'ಕನ್ನಡ',   route: '/panchang/kannada'     },
   ];
 
-  const activeLangCode = location.pathname === '/panchang/tamil'   ? 'ta'
-                       : location.pathname === '/panchang/telugu'  ? 'te'
-                       : location.pathname === '/panchang/kannada' ? 'kn'
+  const activeLangCode = location.pathname === '/panchang/tamil'    ? 'ta'
+                       : location.pathname === '/panchang/telugu'   ? 'te'
+                       : location.pathname === '/panchang/malayalam'? 'ml'
+                       : location.pathname === '/panchang/kannada'  ? 'kn'
+                       : location.pathname === '/panchang/hindi'    ? 'hi'
                        : 'en';
 
   return (
@@ -289,7 +292,7 @@ export const NavBar = () => {
           <div className="absolute left-0 top-0 bottom-0 w-72 bg-card border-r border-border shadow-2xl flex flex-col" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between px-4 py-4 border-b border-border">
               <div className="flex items-center gap-2.5">
-                <StarsLogo size={24} />
+                <StarsLogo size={32} />
                 <BrandWordmark />
               </div>
               <button onClick={() => setSidebarOpen(false)} className="p-1.5 rounded-sm hover:bg-muted/50 transition-colors">
