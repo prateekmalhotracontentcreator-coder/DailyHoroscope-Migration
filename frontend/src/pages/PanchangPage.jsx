@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
-import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight, Zap, MapPin, Globe, ChevronDown, Clock } from 'lucide-react';
+import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight, Zap, MapPin, Globe, ChevronDown, Clock, Sunrise, Sunset } from 'lucide-react';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -38,18 +38,19 @@ const ALIAS = {
 };
 
 // ─── Timezone abbreviation helper ──────────────────────────────────────────
-// Derives the short TZ abbreviation (IST, EST, BST, GST, AEST, SGT etc.)
-// from the IANA timezone string using the browser's Intl API.
-// Falls back to a manual map for edge cases.
-
 const TZ_OVERRIDE = {
   'Asia/Kolkata':         'IST',
   'Asia/Kathmandu':       'NPT',
   'Asia/Dubai':           'GST',
   'Asia/Singapore':       'SGT',
+  'Asia/Kuala_Lumpur':    'MYT',
+  'Asia/Jakarta':         'WIB',
+  'Asia/Makassar':        'WITA',
+  'Asia/Bangkok':         'ICT',
+  'Asia/Shanghai':        'CST',
   'Pacific/Auckland':     'NZST',
   'Australia/Brisbane':   'AEST',
-  'Australia/Sydney':     'AEDT',   // will be overridden by Intl when not DST
+  'Australia/Sydney':     'AEDT',
   'Australia/Melbourne':  'AEDT',
   'America/Toronto':      'EST',
   'America/Vancouver':    'PST',
@@ -57,10 +58,8 @@ const TZ_OVERRIDE = {
 
 function getTZAbbr(ianaTimezone) {
   if (!ianaTimezone) return 'IST';
-  // Manual override for zones where Intl gives verbose output
   if (TZ_OVERRIDE[ianaTimezone]) return TZ_OVERRIDE[ianaTimezone];
   try {
-    // Use Intl.DateTimeFormat to get the short timezone name (e.g. "EST", "BST")
     const parts = new Intl.DateTimeFormat('en-US', {
       timeZone: ianaTimezone,
       timeZoneName: 'short',
@@ -68,11 +67,10 @@ function getTZAbbr(ianaTimezone) {
     const tzPart = parts.find(p => p.type === 'timeZoneName');
     if (tzPart?.value) return tzPart.value;
   } catch { /* fall through */ }
-  // Last-resort: strip continent prefix, e.g. America/New_York → NY
   return ianaTimezone.split('/').pop().replace('_', ' ');
 }
 
-// ─── Time formatting — respects location timezone ─────────────────────────
+// ─── Time formatting ────────────────────────────────────────────────────────
 function makeFormatTime(tz) {
   return function formatTime(iso) {
     if (!iso) return '--';
@@ -133,7 +131,52 @@ function humanDate(isoDate, tz) {
   }
 }
 
-// ─── Location picker component ─────────────────────────────────────────────
+// ─── Sun & Moon cards ───────────────────────────────────────────────────────
+// Shows Sunrise, Sunset, Moonrise, Moonset in a 2×2 grid.
+// Moonrise/Moonset are optional — if missing, we show '--'.
+function SunMoonCards({ summary, panchang, tzAbbr }) {
+  const cards = [
+    {
+      icon: <Sun className="h-5 w-5 text-amber-500 mx-auto mb-1" />,
+      label: 'Sunrise',
+      value: summary.sunrise || '--',
+      sub: `Sun in ${panchang.sun_sign}`,
+    },
+    {
+      icon: <Moon className="h-5 w-5 text-slate-400 mx-auto mb-1" />,
+      label: 'Sunset',
+      value: summary.sunset || '--',
+      sub: `Moon in ${panchang.moon_sign}`,
+    },
+    {
+      icon: <Moon className="h-5 w-5 text-blue-300 mx-auto mb-1" />,
+      label: 'Moonrise',
+      value: summary.moonrise || '--',
+      sub: panchang.nakshatra?.name ? `${panchang.nakshatra.name} Nakshatra` : '',
+    },
+    {
+      icon: <Moon className="h-5 w-5 text-indigo-400 mx-auto mb-1" />,
+      label: 'Moonset',
+      value: summary.moonset || '--',
+      sub: panchang.paksha ? `${panchang.paksha} Paksha` : '',
+    },
+  ];
+  return (
+    <div className="grid grid-cols-2 gap-3">
+      {cards.map(c => (
+        <Card key={c.label} className="p-4 border border-gold/20 text-center">
+          {c.icon}
+          <p className="text-xs text-muted-foreground uppercase tracking-wide">{c.label}</p>
+          <p className="font-semibold text-lg">{c.value}</p>
+          {c.sub && <p className="text-xs text-muted-foreground mt-0.5 truncate">{c.sub}</p>}
+          <p className="text-[10px] text-gold/70 font-bold mt-0.5">{tzAbbr}</p>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+// ─── Location picker ────────────────────────────────────────────────────────
 function LocationPicker({ selectedSlug, onSelect }) {
   const [locations, setLocations] = useState([]);
   const [open, setOpen] = useState(false);
@@ -141,9 +184,7 @@ function LocationPicker({ selectedSlug, onSelect }) {
   const ref = useRef(null);
 
   useEffect(() => {
-    axios.get(`${API}/locations`)
-      .then(r => setLocations(r.data))
-      .catch(() => {});
+    axios.get(`${API}/locations`).then(r => setLocations(r.data)).catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -174,25 +215,18 @@ function LocationPicker({ selectedSlug, onSelect }) {
 
   return (
     <div ref={ref} className="relative">
-      {/* Trigger button — shows city, country and TZ abbreviation */}
       <button
         onClick={() => setOpen(o => !o)}
         className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-gold/30 bg-gold/5 text-xs font-semibold text-gold hover:bg-gold/10 transition-colors"
       >
         <MapPin className="h-3 w-3 flex-shrink-0" />
-        <span>
-          {selected ? `${selected.label}, ${selected.country}` : 'Select location'}
-        </span>
-        {/* TZ badge */}
-        <span className="px-1.5 py-0.5 rounded bg-gold/20 text-[10px] font-bold tracking-wide">
-          {selectedTZAbbr}
-        </span>
+        <span>{selected ? `${selected.label}, ${selected.country}` : 'Select location'}</span>
+        <span className="px-1.5 py-0.5 rounded bg-gold/20 text-[10px] font-bold tracking-wide">{selectedTZAbbr}</span>
         <ChevronDown className={`h-3 w-3 flex-shrink-0 transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
 
       {open && (
         <div className="absolute right-0 top-full mt-2 w-80 max-h-80 overflow-hidden rounded-xl border border-border bg-background shadow-xl z-50 flex flex-col">
-          {/* Search */}
           <div className="p-2 border-b border-border">
             <input
               autoFocus
@@ -202,7 +236,6 @@ function LocationPicker({ selectedSlug, onSelect }) {
               className="w-full px-3 py-1.5 text-xs rounded-lg border border-border bg-muted/30 focus:outline-none focus:border-gold/50"
             />
           </div>
-          {/* List */}
           <div className="overflow-y-auto flex-1">
             {Object.entries(grouped).map(([country, locs]) => (
               <div key={country}>
@@ -222,12 +255,9 @@ function LocationPicker({ selectedSlug, onSelect }) {
                       }`}
                     >
                       <span className="flex-1">{loc.label}</span>
-                      {/* TZ abbreviation badge in dropdown */}
                       <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold tracking-wide flex-shrink-0 ${
                         isSelected ? 'bg-gold/30 text-gold' : 'bg-muted text-muted-foreground'
-                      }`}>
-                        {tzAbbr}
-                      </span>
+                      }`}>{tzAbbr}</span>
                       {isSelected && <span className="text-gold flex-shrink-0">✓</span>}
                     </button>
                   );
@@ -244,7 +274,7 @@ function LocationPicker({ selectedSlug, onSelect }) {
   );
 }
 
-// ─── SEO helpers ───────────────────────────────────────────────────────────
+// ─── SEO helpers ────────────────────────────────────────────────────────────
 function webPageSchema({ name, description, url, datePublished }) {
   return {
     '@context': 'https://schema.org',
@@ -265,43 +295,41 @@ function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, pa
     case 'daily': {
       const humanToday = humanDate(todayISO, tz);
       const title = `Today's Panchang — ${humanToday}`;
-      const description = `Free daily Panchang for ${humanToday}. Get today's Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, Sunrise & Sunset — powered by Vedic astronomy.`;
+      const description = `Free daily Panchang for ${humanToday}. Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Brahma Muhurta, Abhijit Muhurta, Sunrise, Moonrise — powered by Vedic astronomy.`;
       const url = `${SITE}/panchang/today`;
       return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: todayISO }) };
     }
     case 'tomorrow': {
       const humanTomorrow = humanDate(tomorrowISO, tz);
       const title = `Tomorrow's Panchang — ${humanTomorrow}`;
-      const description = `Panchang for ${humanTomorrow}. Plan your day with tomorrow's Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, and Sunrise & Sunset.`;
+      const description = `Panchang for ${humanTomorrow}. Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Brahma Muhurta, Abhijit Muhurta, Sunrise & Moonrise timings.`;
       const url = `${SITE}/panchang/tomorrow`;
       return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: tomorrowISO }) };
     }
     case 'tithi': {
       const humanToday = humanDate(todayISO, tz);
       const title = `Today's Tithi (Lunar Day) — ${humanToday}`;
-      const description = `What is today's Tithi? Find the current Tithi (lunar day), Paksha phase, Nakshatra, and Moon sign for ${humanToday} — accurate Vedic Panchang data.`;
+      const description = `Today's Tithi, Paksha phase, Nakshatra, and Moon sign for ${humanToday} — accurate Vedic Panchang data.`;
       const url = `${SITE}/panchang/tithi`;
       return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: todayISO }) };
     }
     case 'choghadiya': {
       const humanToday = humanDate(todayISO, tz);
       const title = `Choghadiya Today — ${humanToday}`;
-      const description = `Today's Choghadiya table for ${humanToday}. Find auspicious and inauspicious time slots for starting new work, travel, and muhurat planning.`;
+      const description = `Today's Choghadiya for ${humanToday}. All auspicious and inauspicious time slots — Brahma Muhurta, Abhijit, Vijaya Muhurta, Rahu Kaal, Dur Muhurta.`;
       const url = `${SITE}/panchang/choghadiya`;
       return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: todayISO }) };
     }
     case 'festivals': {
       const year = new Date().getFullYear();
       const title = `Hindu Festivals & Vrats ${year} — Complete Calendar`;
-      const description = `Full list of Hindu festivals, vrats, and religious observances for ${year}. Includes Ekadashi, Purnima, Amavasya, and major festivals with exact dates.`;
+      const description = `Full list of Hindu festivals, vrats, and observances for ${year}. Ekadashi, Purnima, Amavasya, and major festivals with exact dates.`;
       const url = `${SITE}/panchang/festivals`;
       let schema;
       if (festivalData?.items?.length) {
         schema = { '@context': 'https://schema.org', '@type': 'ItemList', name: title, description, url, numberOfItems: festivalData.items.length,
           itemListElement: festivalData.items.slice(0, 20).map((item, idx) => ({ '@type': 'ListItem', position: idx + 1, name: item.name, description: item.summary || item.name, url: `${SITE}/panchang/date/${item.date}` })) };
-      } else {
-        schema = webPageSchema({ name: title, description, url });
-      }
+      } else { schema = webPageSchema({ name: title, description, url }); }
       return { title, description, url, schema };
     }
     case 'calendar': {
@@ -309,7 +337,7 @@ function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, pa
       const mo = calMonth || (new Date().getMonth() + 1);
       const monthLabel = `${MONTH_NAMES[mo - 1]} ${y}`;
       const title = `Panchang Calendar — ${monthLabel}`;
-      const description = `Hindu Panchang calendar for ${monthLabel}. View daily Tithi, Nakshatra, festivals, and Vedic observances for every day of ${monthLabel}.`;
+      const description = `Hindu Panchang calendar for ${monthLabel}. Daily Tithi, Nakshatra, festivals, and Vedic observances.`;
       const url = `${SITE}/panchang/calendar/${y}/${mo}`;
       return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: `${y}-${String(mo).padStart(2,'0')}-01` }) };
     }
@@ -320,10 +348,10 @@ function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, pa
       if (panchangData?.panchang) {
         const { tithi, nakshatra, yoga } = panchangData.panchang;
         title = `Panchang ${humanDay} — ${tithi.name}, ${nakshatra.name} Nakshatra`;
-        description = `Panchang for ${humanDay}: Tithi — ${tithi.name} (${panchangData.panchang.paksha} Paksha), Nakshatra — ${nakshatra.name}, Yoga — ${yoga.name}.`;
+        description = `Panchang for ${humanDay}: ${tithi.name} (${panchangData.panchang.paksha} Paksha), ${nakshatra.name} Nakshatra, Yoga: ${yoga.name}.`;
       } else {
         title = `Panchang — ${humanDay}`;
-        description = `Complete Vedic Panchang for ${humanDay}. Tithi, Nakshatra, Yoga, Karana, Rahu Kaal, Gulika Kaal, Abhijit Muhurta, Sunrise & Sunset.`;
+        description = `Complete Vedic Panchang for ${humanDay}. Tithi, Nakshatra, Yoga, Karana, timing windows, Sunrise & Moonrise.`;
       }
       const url = `${SITE}/panchang/date/${dateValue}`;
       const [y, mo] = dateValue.split('-');
@@ -349,39 +377,26 @@ function PanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchan
   return <SEO title={seo.title} description={seo.description} url={seo.url} image={OG_IMAGE} type="website" schema={schemas.length === 1 ? schemas[0] : schemas.length > 1 ? schemas : null} />;
 }
 
-// ─── Timezone footer note ───────────────────────────────────────────────────
+// ─── TZ footer note ─────────────────────────────────────────────────────────
 function TZNote({ timezone, locationLabel }) {
   if (!timezone) return null;
-  const abbr = getTZAbbr(timezone);
   return (
     <p className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
       <Clock className="h-3 w-3" />
-      All times in <span className="font-semibold text-foreground">{abbr}</span>
+      All times in <span className="font-semibold text-foreground">{getTZAbbr(timezone)}</span>
       {locationLabel ? ` · ${locationLabel}` : ''}
     </p>
   );
 }
 
-// ─── SEO body-copy blocks ──────────────────────────────────────────────────
+// ─── SEO body-copy blocks ───────────────────────────────────────────────────
 function PanchangDailySEOContent() {
   return (
     <div className="mt-12 space-y-8 text-sm text-muted-foreground border-t border-border pt-8">
-      <div>
-        <h2 className="text-base font-semibold text-foreground mb-2">What is Panchang?</h2>
-        <p>Panchang (also written as Panchangam or Panchāṅga) is the traditional Hindu almanac used across India for over 1,800 years. The word means "five limbs" — referring to Tithi (lunar day), Vara (weekday), Nakshatra (lunar mansion), Yoga, and Karana. Together these five elements describe the quality and character of each day according to Vedic astronomy.</p>
-      </div>
-      <div>
-        <h2 className="text-base font-semibold text-foreground mb-2">What is Rahu Kaal?</h2>
-        <p>Rahu Kaal is an inauspicious period each day governed by Rahu, the shadow planet. The traditional Vedic system divides daylight into 8 equal Kaals. Rahu Kaal occupies one of these slots, with the exact slot shifting each day of the week. Important activities like travel, business deals, or ceremonies are generally avoided during this window.</p>
-      </div>
-      <div>
-        <h2 className="text-base font-semibold text-foreground mb-2">What is Abhijit Muhurta?</h2>
-        <p>Abhijit Muhurta is the most auspicious 48-minute window of the day, centred on solar noon. It is considered so powerful in Vedic tradition that it overrides most negative planetary influences. Starting any new work, signing agreements, or making important decisions during Abhijit Muhurta is highly recommended — except on Wednesdays.</p>
-      </div>
-      <div>
-        <h2 className="text-base font-semibold text-foreground mb-2">Tithi, Nakshatra, Yoga and Karana explained</h2>
-        <p><strong className="text-foreground">Tithi</strong> is the lunar day — calculated from the angular distance between the Sun and Moon. <strong className="text-foreground">Nakshatra</strong> is the lunar mansion — the Moon's position among the 27 asterisms of the zodiac. <strong className="text-foreground">Yoga</strong> is computed from the sum of Sun and Moon longitudes. <strong className="text-foreground">Karana</strong> is half a Tithi and changes twice daily.</p>
-      </div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">What is Panchang?</h2><p>Panchang is the traditional Hindu almanac used across India for over 1,800 years. The word means "five limbs" — Tithi (lunar day), Vara (weekday), Nakshatra (lunar mansion), Yoga, and Karana. These five elements describe the quality and character of each day according to Vedic astronomy.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">What is Brahma Muhurta?</h2><p>Brahma Muhurta is the sacred 96-minute window before sunrise — approximately 1 hour 36 minutes before dawn. It is considered the most spiritually potent time of day for meditation, prayer, study, and beginning new activities. Ancient texts describe it as the "Creator's Hour" when the mind is naturally calm and receptive.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">What is Rahu Kaal?</h2><p>Rahu Kaal is an inauspicious period governed by Rahu, the shadow planet. Daylight is divided into 8 equal Kaals, with Rahu Kaal occupying one slot that shifts each weekday. Travel, business deals, and ceremonies are avoided during this window.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">What is Vijaya Muhurta?</h2><p>Vijaya Muhurta ("Victory Hour") is an auspicious time window each day — traditionally favoured for beginning journeys, business ventures, or any activity where success is desired. The exact timing shifts by weekday and is calculated from the length of daylight.</p></div>
     </div>
   );
 }
@@ -389,9 +404,9 @@ function PanchangDailySEOContent() {
 function PanchangTithiSEOContent() {
   return (
     <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
-      <div><h2 className="text-base font-semibold text-foreground mb-2">Understanding Tithi — the Vedic Lunar Day</h2><p>A Tithi is not a solar calendar day — it is a lunar day defined by the Moon moving 12° away from the Sun. There are 30 Tithis in a complete lunar cycle, numbered 1 (Pratipada) through 15 (Purnima or Amavasya).</p></div>
-      <div><h2 className="text-base font-semibold text-foreground mb-2">Shukla Paksha and Krishna Paksha</h2><p>Shukla Paksha is the bright fortnight from Amavasya to Purnima — associated with growth and auspicious beginnings. Krishna Paksha is the dark fortnight from Purnima to Amavasya — associated with completion and ancestral rites.</p></div>
-      <div><h2 className="text-base font-semibold text-foreground mb-2">Important Tithis and their significance</h2><p>Ekadashi (11th Tithi) is observed as a fast day dedicated to Lord Vishnu. Purnima (full moon) is ideal for spiritual practices. Amavasya (new moon) is observed for ancestral rites. Pradosh (13th Tithi) is sacred to Lord Shiva.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">Understanding Tithi — the Vedic Lunar Day</h2><p>A Tithi is a lunar day defined by the Moon moving 12° away from the Sun. There are 30 Tithis in a complete lunar cycle, numbered 1 (Pratipada) through 15 (Purnima or Amavasya).</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">Shukla Paksha and Krishna Paksha</h2><p>Shukla Paksha (bright fortnight) runs from Amavasya to Purnima — associated with growth and auspicious beginnings. Krishna Paksha (dark fortnight) runs from Purnima to Amavasya — associated with completion and ancestral rites.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">Important Tithis</h2><p>Ekadashi (11th Tithi) is a fast day dedicated to Vishnu. Purnima (full moon) is ideal for spiritual practice. Amavasya (new moon) is for ancestral rites. Pradosh (13th) is sacred to Shiva.</p></div>
     </div>
   );
 }
@@ -399,9 +414,8 @@ function PanchangTithiSEOContent() {
 function PanchangChoghadiyaSEOContent() {
   return (
     <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
-      <div><h2 className="text-base font-semibold text-foreground mb-2">What is Choghadiya?</h2><p>Choghadiya is a Vedic time-keeping system that divides the day and night into eight equal segments. Each is classified by its ruling planet, giving it one of seven qualities: Amrit (excellent), Shubh (auspicious), Labh (profitable), Char (good for travel), Udveg, Kaal, or Rog (inauspicious).</p></div>
-      <div><h2 className="text-base font-semibold text-foreground mb-2">How to use Choghadiya for muhurat planning</h2><p>For starting a new business, signing a contract, or travelling, look for an Amrit or Shubh Choghadiya window. Udveg, Kaal, and Rog periods are traditionally avoided for new beginnings.</p></div>
-      <div><h2 className="text-base font-semibold text-foreground mb-2">Choghadiya vs Rahu Kaal — what's the difference?</h2><p>Rahu Kaal is a single inauspicious window each day, whereas Choghadiya provides a full table of all time segments with their qualities — a more granular picture for muhurat planning.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">What is Choghadiya?</h2><p>Choghadiya divides the day into eight segments, each classified by its ruling planet: Amrit (excellent), Shubh (auspicious), Labh (profitable), Char (good for travel), Udveg, Kaal, or Rog (inauspicious).</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">Auspicious Windows — Brahma Muhurta, Abhijit, Vijaya</h2><p>Beyond Choghadiya, three key auspicious windows exist: Brahma Muhurta (pre-dawn, ideal for spiritual work), Abhijit Muhurta (solar noon ± 24 min, powerful for any new start), and Vijaya Muhurta (afternoon, favoured for journeys and ventures).</p></div>
     </div>
   );
 }
@@ -409,8 +423,8 @@ function PanchangChoghadiyaSEOContent() {
 function PanchangFestivalsSEOContent() {
   return (
     <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
-      <div><h2 className="text-base font-semibold text-foreground mb-2">Hindu Festivals and the Vedic Calendar</h2><p>Hindu festivals are not fixed to the Gregorian calendar — they are computed from Tithi, Nakshatra, and planetary positions each year. Our festival dates are calculated directly from Vedic astronomy using the Swiss Ephemeris for maximum accuracy.</p></div>
-      <div><h2 className="text-base font-semibold text-foreground mb-2">Major Hindu festivals and their Panchang basis</h2><p><strong className="text-foreground">Diwali</strong> falls on Amavasya of Kartika. <strong className="text-foreground">Holi</strong> is on Purnima of Phalguna. <strong className="text-foreground">Janmashtami</strong> is on Ashtami Krishna Paksha of Shravana. <strong className="text-foreground">Rama Navami</strong> is on Navami Shukla Paksha of Chaitra.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">Hindu Festivals and the Vedic Calendar</h2><p>Hindu festivals are computed from Tithi, Nakshatra, and planetary positions — not fixed to the Gregorian calendar. Our dates are calculated from Vedic astronomy using the Swiss Ephemeris.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">Major festival dates</h2><p><strong className="text-foreground">Diwali</strong> — Amavasya, Kartika. <strong className="text-foreground">Holi</strong> — Purnima, Phalguna. <strong className="text-foreground">Janmashtami</strong> — Ashtami Krishna Paksha, Shravana. <strong className="text-foreground">Rama Navami</strong> — Navami Shukla Paksha, Chaitra.</p></div>
     </div>
   );
 }
@@ -420,8 +434,7 @@ function PanchangCalendarSEOContent({ calYear, calMonth }) {
   const year = calYear || new Date().getFullYear();
   return (
     <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
-      <div><h2 className="text-base font-semibold text-foreground mb-2">Hindu Panchang Calendar — {monthName} {year}</h2><p>This month view shows the Tithi for every day of {monthName} {year}, along with festivals and Vedic observances. Tap any date to access its complete Panchang details.</p></div>
-      <div><h2 className="text-base font-semibold text-foreground mb-2">How to read the Panchang Calendar</h2><p>Each cell shows the Tithi name for that day (calculated at sunrise). A gold dot indicates a festival or Vrat observance. The calendar follows the Amanta lunar month system.</p></div>
+      <div><h2 className="text-base font-semibold text-foreground mb-2">Panchang Calendar — {monthName} {year}</h2><p>This month view shows the Tithi for every day of {monthName} {year}, with festival markers. Tap any date to access the full Panchang — all five limbs, timing windows, Moonrise/Moonset.</p></div>
     </div>
   );
 }
@@ -429,15 +442,19 @@ function PanchangCalendarSEOContent({ calYear, calMonth }) {
 function PanchangDateSEOContent({ panchangData }) {
   if (!panchangData?.panchang) return null;
   const { tithi, nakshatra, yoga, karana, paksha, lunar_month, sun_sign, moon_sign } = panchangData.panchang;
-  const { sunrise, sunset } = panchangData.summary || {};
+  const { sunrise, sunset, moonrise, moonset } = panchangData.summary || {};
   return (
     <div className="mt-12 space-y-6 text-sm text-muted-foreground border-t border-border pt-8">
       <div>
         <h2 className="text-base font-semibold text-foreground mb-2">Full Panchang Details</h2>
-        <p>Tithi: <strong className="text-foreground">{tithi.name}</strong> in <strong className="text-foreground">{paksha} Paksha</strong> of <strong className="text-foreground">{lunar_month}</strong>. Moon in <strong className="text-foreground">{nakshatra.name}</strong> Nakshatra ({moon_sign} Rashi). Sun in <strong className="text-foreground">{sun_sign}</strong>. Yoga: <strong className="text-foreground">{yoga.name}</strong>. Karana: <strong className="text-foreground">{karana.name}</strong>.</p>
-        {sunrise && sunset && <p className="mt-2">Sunrise: <strong className="text-foreground">{sunrise}</strong> · Sunset: <strong className="text-foreground">{sunset}</strong> (local time).</p>}
+        <p>Tithi: <strong className="text-foreground">{tithi.name}</strong> ({paksha} Paksha, {lunar_month}). Moon: <strong className="text-foreground">{nakshatra.name}</strong> Nakshatra in {moon_sign} Rashi. Sun in {sun_sign}. Yoga: <strong className="text-foreground">{yoga.name}</strong>. Karana: <strong className="text-foreground">{karana.name}</strong>.</p>
+        <p className="mt-2">
+          Sunrise: <strong className="text-foreground">{sunrise}</strong>
+          {sunset && <> · Sunset: <strong className="text-foreground">{sunset}</strong></>}
+          {moonrise && <> · Moonrise: <strong className="text-foreground">{moonrise}</strong></>}
+          {moonset && <> · Moonset: <strong className="text-foreground">{moonset}</strong></>}
+        </p>
       </div>
-      <div><h2 className="text-base font-semibold text-foreground mb-2">About {nakshatra.name} Nakshatra</h2><p>The Moon in {nakshatra.name} shapes the emotional quality of this day. Each of the 27 Nakshatras carries a distinct deity, symbol, and set of qualities that influence the nature of any activity begun under them.</p></div>
     </div>
   );
 }
@@ -453,8 +470,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
     setLoading(true); setError(null); setData(null);
     const tz = locationTZ || 'Asia/Kolkata';
     const dateStr = dayOffset === 1 ? getTomorrowInTZ(tz) : getTodayInTZ(tz);
-    const params = { location_slug: locationSlug, date: dateStr };
-    axios.get(`${API}/daily`, { params })
+    axios.get(`${API}/daily`, { params: { location_slug: locationSlug, date: dateStr } })
       .then(r => { setData(r.data); if (onDataLoad) onDataLoad(r.data); })
       .catch(() => setError('Failed to load Panchang data. Please try again.'))
       .finally(() => setLoading(false));
@@ -478,16 +494,18 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
         </div>
         <div className="flex items-center gap-2">
           <span className="text-xs text-muted-foreground">{data.location?.label}, {data.location?.country}</span>
-          <span className="px-1.5 py-0.5 rounded bg-gold/20 text-[10px] font-bold text-gold tracking-wide">{tzAbbr}</span>
+          <span className="px-1.5 py-0.5 rounded bg-gold/20 text-[10px] font-bold text-gold">{tzAbbr}</span>
         </div>
       </div>
+
+      {/* Five Limbs */}
       <Card className="border border-gold/20 overflow-hidden">
         <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
           <p className="text-xs font-semibold uppercase tracking-widest text-gold">Panch Anga — Five Limbs</p>
         </div>
         <div className="divide-y divide-border">
           {[
-            { label: 'Tithi',      value: panchang.tithi.name,     sub: panchang.paksha + ' Paksha' + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) + ' ' + tzAbbr : '') },
+            { label: 'Tithi',      value: panchang.tithi.name,     sub: panchang.paksha + ' Paksha' + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) : '') },
             { label: 'Nakshatra',  value: panchang.nakshatra.name, sub: 'Moon in ' + panchang.moon_sign + (panchang.nakshatra.end ? ' · until ' + fmtTime(panchang.nakshatra.end) : '') },
             { label: 'Yoga',       value: panchang.yoga.name,      sub: panchang.yoga.end ? 'Until ' + fmtTime(panchang.yoga.end) : '' },
             { label: 'Karana',     value: panchang.karana.name,    sub: panchang.karana.end ? 'Until ' + fmtTime(panchang.karana.end) : '' },
@@ -503,20 +521,11 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
           ))}
         </div>
       </Card>
-      <div className="grid grid-cols-2 gap-3">
-        <Card className="p-4 border border-gold/20 text-center">
-          <Sun className="h-5 w-5 text-amber-500 mx-auto mb-2" />
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Sunrise</p>
-          <p className="font-semibold text-lg">{summary.sunrise}</p>
-          <p className="text-xs text-muted-foreground mt-1">Sun in {panchang.sun_sign}</p>
-        </Card>
-        <Card className="p-4 border border-gold/20 text-center">
-          <Moon className="h-5 w-5 text-blue-400 mx-auto mb-2" />
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Sunset</p>
-          <p className="font-semibold text-lg">{summary.sunset}</p>
-          <p className="text-xs text-muted-foreground mt-1">Moon in {panchang.moon_sign}</p>
-        </Card>
-      </div>
+
+      {/* Sunrise / Sunset / Moonrise / Moonset — 2×2 grid */}
+      <SunMoonCards summary={summary} panchang={panchang} tzAbbr={tzAbbr} />
+
+      {/* Timing Windows */}
       {day_quality_windows?.length > 0 && (
         <Card className="border border-gold/20 overflow-hidden">
           <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center justify-between">
@@ -536,6 +545,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
           </div>
         </Card>
       )}
+
       {observances?.length > 0 && (
         <Card className="border border-gold/20 p-5">
           <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-3">Today's Observances</p>
@@ -607,6 +617,8 @@ function PanchangTithiView({ locationSlug }) {
         <div className="grid grid-cols-2 gap-4">
           <div><p className="text-xs text-muted-foreground">Moon Sign</p><p className="font-semibold">{panchang.moon_sign}</p></div>
           <div><p className="text-xs text-muted-foreground">Nakshatra</p><p className="font-semibold">{panchang.nakshatra.name}</p></div>
+          <div><p className="text-xs text-muted-foreground">Moonrise</p><p className="font-semibold">{summary.moonrise || '--'}</p></div>
+          <div><p className="text-xs text-muted-foreground">Moonset</p><p className="font-semibold">{summary.moonset || '--'}</p></div>
           <div><p className="text-xs text-muted-foreground">Weekday</p><p className="font-semibold">{summary.weekday}</p></div>
           <div><p className="text-xs text-muted-foreground">Samvat</p><p className="font-semibold text-xs">{panchang.samvat}</p></div>
         </div>
@@ -635,11 +647,11 @@ function PanchangChoghadiyaView({ locationSlug }) {
     <div className="space-y-4">
       <Card className="border border-gold/20 overflow-hidden">
         <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-widest text-gold">Today's Choghadiya</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold">Timing Windows</p>
           <span className="text-[10px] text-muted-foreground font-semibold">{tzAbbr}</span>
         </div>
         {windows.length === 0
-          ? <p className="text-center text-muted-foreground py-8">No timing data available for today</p>
+          ? <p className="text-center text-muted-foreground py-8">No timing data available</p>
           : <div className="divide-y divide-border">
               {windows.map((w, i) => {
                 const isCurrent = now >= new Date(w.start) && now <= new Date(w.end);
@@ -649,7 +661,7 @@ function PanchangChoghadiyaView({ locationSlug }) {
                       {isCurrent && <span className="w-2 h-2 rounded-full bg-green-500 flex-shrink-0" />}
                       <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${(QUALITY_STYLES[w.quality] || QUALITY_STYLES.neutral).badge}`}>{w.quality}</span>
                       <span className="text-sm font-medium">{w.label}</span>
-                      {isCurrent && <span className="text-xs text-green-600 font-semibold">Current</span>}
+                      {isCurrent && <span className="text-xs text-green-600 font-semibold">Now</span>}
                     </div>
                     <span className="text-xs text-muted-foreground">{fmtTime(w.start)} — {fmtTime(w.end)}</span>
                   </div>
@@ -729,8 +741,7 @@ function PanchangFestivalsView({ locationSlug, onDataLoad }) {
   useEffect(() => {
     axios.get(`${API}/festivals`, { params: { year, location_slug: locationSlug } })
       .then(r => { setData(r.data); if (onDataLoad) onDataLoad(r.data); })
-      .catch(() => setData(null))
-      .finally(() => setLoading(false));
+      .catch(() => setData(null)).finally(() => setLoading(false));
   }, [locationSlug]); // eslint-disable-line react-hooks/exhaustive-deps
   if (loading) return <div className="space-y-3">{[...Array(8)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
   if (!data?.items?.length) return <p className="text-center text-muted-foreground py-12">No festivals found</p>;
@@ -826,20 +837,10 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
           ))}
         </div>
       </Card>
-      <div className="grid grid-cols-2 gap-3">
-        <Card className="p-4 border border-gold/20 text-center">
-          <Sun className="h-5 w-5 text-amber-500 mx-auto mb-2" />
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Sunrise</p>
-          <p className="font-semibold text-lg">{summary.sunrise}</p>
-          <p className="text-xs text-muted-foreground mt-1">{tzAbbr}</p>
-        </Card>
-        <Card className="p-4 border border-gold/20 text-center">
-          <Moon className="h-5 w-5 text-blue-400 mx-auto mb-2" />
-          <p className="text-xs text-muted-foreground uppercase tracking-wide">Sunset</p>
-          <p className="font-semibold text-lg">{summary.sunset}</p>
-          <p className="text-xs text-muted-foreground mt-1">{tzAbbr}</p>
-        </Card>
-      </div>
+
+      {/* Sunrise / Sunset / Moonrise / Moonset */}
+      <SunMoonCards summary={summary} panchang={panchang} tzAbbr={tzAbbr} />
+
       {day_quality_windows?.length > 0 && (
         <Card className="border border-gold/20 overflow-hidden">
           <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center justify-between">
@@ -881,7 +882,7 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
   );
 }
 
-// ─── Main page ─────────────────────────────────────────────────────────────
+// ─── Main page ──────────────────────────────────────────────────────────────
 export const PanchangPage = () => {
   const { type: rawType = 'daily', year: yearParam, month: monthParam, dateValue } = useParams();
   const resolvedType = ALIAS[rawType] || rawType;
@@ -892,9 +893,7 @@ export const PanchangPage = () => {
   const calYear  = parseInt(yearParam)  || today.getFullYear();
   const calMonth = parseInt(monthParam) || (today.getMonth() + 1);
 
-  const [locationSlug, setLocationSlug] = useState(
-    () => localStorage.getItem(LOC_STORAGE_KEY) || DEFAULT_SLUG
-  );
+  const [locationSlug, setLocationSlug] = useState(() => localStorage.getItem(LOC_STORAGE_KEY) || DEFAULT_SLUG);
   const [locationTZ, setLocationTZ] = useState('Asia/Kolkata');
 
   const handleLocationSelect = useCallback((slug) => {
@@ -937,13 +936,9 @@ export const PanchangPage = () => {
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 pb-24 lg:pb-10">
       <PanchangSEO
-        view={activeView}
-        calYear={calYear}
-        calMonth={calMonth}
-        dateValue={dateValue}
-        festivalData={festivalData}
-        panchangData={panchangData}
-        locationTZ={locationTZ}
+        view={activeView} calYear={calYear} calMonth={calMonth}
+        dateValue={dateValue} festivalData={festivalData}
+        panchangData={panchangData} locationTZ={locationTZ}
       />
       <div className="text-center mb-6">
         <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
@@ -952,13 +947,9 @@ export const PanchangPage = () => {
         <h1 className="text-3xl font-playfair font-semibold mb-2">{config.title}</h1>
         <p className="text-muted-foreground">{config.desc}</p>
       </div>
-
-      {/* Location picker */}
       <div className="flex justify-end mb-4">
         <LocationPicker selectedSlug={locationSlug} onSelect={handleLocationSelect} />
       </div>
-
-      {/* Sub-nav */}
       <div className="flex flex-wrap gap-2 mb-8 border-b border-border pb-4">
         {subNavItems.map(({ key, label, icon: Icon, path }) => (
           <Link key={key} to={path} className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${subNavActive === key ? 'bg-gold text-white' : 'border border-border text-muted-foreground hover:border-gold/50 hover:text-gold'}`}>
@@ -966,7 +957,6 @@ export const PanchangPage = () => {
           </Link>
         ))}
       </div>
-
       {isDateView                                 && <PanchangDateView     dateStr={dateValue}           locationSlug={locationSlug} onDataLoad={setPanchangData} />}
       {!isDateView && activeView === 'daily'      && <PanchangDailyView    dayOffset={0}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} />}
       {!isDateView && activeView === 'tomorrow'   && <PanchangDailyView    dayOffset={1}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} />}
