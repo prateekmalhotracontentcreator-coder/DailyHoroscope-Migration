@@ -207,15 +207,15 @@ LUNAR_MONTHS = [
 ]
 
 OBSERVANCE_RULES: list[dict] = [
-    {"slug": "ekadashi",      "name": "Ekadashi",       "observance_type": "vrat",       "tithi_indexes": [10, 25], "month_indexes": None,   "priority": 2},
-    {"slug": "pradosh-vrat",  "name": "Pradosh Vrat",   "observance_type": "vrat",       "tithi_indexes": [12, 27], "month_indexes": None,   "priority": 2},
-    {"slug": "purnima",       "name": "Purnima",         "observance_type": "observance", "tithi_indexes": [14],     "month_indexes": None,   "priority": 2},
-    {"slug": "amavasya",      "name": "Amavasya",        "observance_type": "observance", "tithi_indexes": [29],     "month_indexes": None,   "priority": 2},
-    {"slug": "maha-shivaratri","name":"Maha Shivaratri", "observance_type": "festival",   "tithi_indexes": [28],     "month_indexes": [10],   "priority": 3},
-    {"slug": "janmashtami",   "name": "Janmashtami",     "observance_type": "festival",   "tithi_indexes": [22],     "month_indexes": [4],    "priority": 3},
-    {"slug": "rama-navami",   "name": "Rama Navami",     "observance_type": "festival",   "tithi_indexes": [8],      "month_indexes": [0],    "priority": 3},
-    {"slug": "holi",          "name": "Holi",             "observance_type": "festival",   "tithi_indexes": [14],     "month_indexes": [11],   "priority": 3},
-    {"slug": "diwali",        "name": "Diwali",           "observance_type": "festival",   "tithi_indexes": [29],     "month_indexes": [7],    "priority": 3},
+    {"slug": "ekadashi",      "name": "Ekadashi",        "observance_type": "vrat",       "tithi_indexes": [10, 25], "month_indexes": None, "priority": 2},
+    {"slug": "pradosh-vrat",  "name": "Pradosh Vrat",    "observance_type": "vrat",       "tithi_indexes": [12, 27], "month_indexes": None, "priority": 2},
+    {"slug": "purnima",       "name": "Purnima",          "observance_type": "observance", "tithi_indexes": [14],     "month_indexes": None, "priority": 2},
+    {"slug": "amavasya",      "name": "Amavasya",         "observance_type": "observance", "tithi_indexes": [29],     "month_indexes": None, "priority": 2},
+    {"slug": "maha-shivaratri","name": "Maha Shivaratri", "observance_type": "festival",   "tithi_indexes": [28],     "month_indexes": [10], "priority": 3},
+    {"slug": "janmashtami",   "name": "Janmashtami",      "observance_type": "festival",   "tithi_indexes": [22],     "month_indexes": [4],  "priority": 3},
+    {"slug": "rama-navami",   "name": "Rama Navami",      "observance_type": "festival",   "tithi_indexes": [8],      "month_indexes": [0],  "priority": 3},
+    {"slug": "holi",          "name": "Holi",              "observance_type": "festival",   "tithi_indexes": [14],     "month_indexes": [11], "priority": 3},
+    {"slug": "diwali",        "name": "Diwali",            "observance_type": "festival",   "tithi_indexes": [29],     "month_indexes": [7],  "priority": 3},
 ]
 
 
@@ -262,13 +262,13 @@ def _datetime_to_jd(dt_utc: datetime) -> float:
 
 def _sun_longitude(jd: float) -> float:
     """Return geocentric apparent sidereal Sun longitude via pyswisseph."""
-    result = swe.calc_ut(jd, swe.SUN, _SWE_FLAGS)
+    result = swe.calc_ut(jd, int(swe.SUN), int(_SWE_FLAGS))
     return _normalize_angle(result[0][0])
 
 
 def _moon_longitude(jd: float) -> float:
     """Return geocentric apparent sidereal Moon longitude via pyswisseph."""
-    result = swe.calc_ut(jd, swe.MOON, _SWE_FLAGS)
+    result = swe.calc_ut(jd, int(swe.MOON), int(_SWE_FLAGS))
     return _normalize_angle(result[0][0])
 
 
@@ -280,20 +280,22 @@ def _sunrise_sunset_local(
     local_noon = datetime.combine(base_date, time(12, 0), tzinfo=tz)
     jd_noon = _datetime_to_jd(local_noon.astimezone(timezone.utc))
 
-    # pyswisseph 2.10.x rise_trans signature:
-    # rise_trans(tjd_ut, body, iflag, rsmi, lon, lat, alt, atpress=0.0, attemp=0.0)
-    # Sunrise
+    # pyswisseph 2.10.x: all integer args must be explicitly int()
+    # Signature: rise_trans(tjd_ut, body, iflag, rsmi, lon, lat, alt, atpress=0.0, attemp=0.0)
+    _body  = int(swe.SUN)
+    _iflag = 0
+    _rsmi_rise = int(swe.CALC_RISE) | int(swe.BIT_DISC_CENTER)
+    _rsmi_set  = int(swe.CALC_SET)  | int(swe.BIT_DISC_CENTER)
+
     ret_rise = swe.rise_trans(
-        jd_noon - 0.5, swe.SUN, 0,
-        swe.CALC_RISE | swe.BIT_DISC_CENTER,
-        longitude, latitude, 0.0,
+        jd_noon - 0.5, _body, _iflag, _rsmi_rise,
+        float(longitude), float(latitude), 0.0,
     )
     jd_rise = ret_rise[1][0]
-    # Sunset
+
     ret_set = swe.rise_trans(
-        jd_noon - 0.5, swe.SUN, 0,
-        swe.CALC_SET | swe.BIT_DISC_CENTER,
-        longitude, latitude, 0.0,
+        jd_noon - 0.5, _body, _iflag, _rsmi_set,
+        float(longitude), float(latitude), 0.0,
     )
     jd_set = ret_set[1][0]
 
@@ -406,10 +408,10 @@ def _day_indexes(
     astro = _build_daily_astronomy(
         base_date, location.latitude, location.longitude, location.timezone,
     )
-    tithi     = _tithi_index(astro.sun_longitude, astro.moon_longitude)
-    nakshatra = _nakshatra_index(astro.moon_longitude)
-    yoga      = _yoga_index(astro.sun_longitude, astro.moon_longitude)
-    karana    = _karana_index(astro.sun_longitude, astro.moon_longitude)
+    tithi       = _tithi_index(astro.sun_longitude, astro.moon_longitude)
+    nakshatra   = _nakshatra_index(astro.moon_longitude)
+    yoga        = _yoga_index(astro.sun_longitude, astro.moon_longitude)
+    karana      = _karana_index(astro.sun_longitude, astro.moon_longitude)
     lunar_month = _lunar_month_index(astro.sun_longitude, astro.moon_longitude, calendar_variant)
     indexes = {
         "tithi": tithi, "nakshatra": nakshatra, "yoga": yoga,
@@ -442,10 +444,10 @@ def _related_links(base_date: date, location: PanchangLocation) -> list[Panchang
     prev_date = (base_date - timedelta(days=1)).isoformat()
     next_date = (base_date + timedelta(days=1)).isoformat()
     return [
-        PanchangLink(label="Previous Day",  href=f"/panchang/location/{location.slug}/date/{prev_date}"),
-        PanchangLink(label="Tomorrow",      href=f"/panchang/location/{location.slug}/date/{next_date}"),
-        PanchangLink(label="This Month",    href=f"/panchang/calendar/{base_date.year}/{base_date.month}"),
-        PanchangLink(label="Festivals",     href=f"/panchang/festivals?year={base_date.year}&month={base_date.month}"),
+        PanchangLink(label="Previous Day", href=f"/panchang/location/{location.slug}/date/{prev_date}"),
+        PanchangLink(label="Tomorrow",     href=f"/panchang/location/{location.slug}/date/{next_date}"),
+        PanchangLink(label="This Month",   href=f"/panchang/calendar/{base_date.year}/{base_date.month}"),
+        PanchangLink(label="Festivals",    href=f"/panchang/festivals?year={base_date.year}&month={base_date.month}"),
     ]
 
 
@@ -469,9 +471,9 @@ def _build_daily_response(
     astro: DailyAstronomy = context["astro"]
     paksha = _paksha_from_tithi(indexes["tithi"])
     tithi_name = f"{paksha} {TITHI_NAMES[indexes['tithi']]}"
-    tithi_start, tithi_end    = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "tithi",     indexes["tithi"])
-    nak_start,   nak_end      = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "nakshatra", indexes["nakshatra"])
-    yoga_start,  yoga_end     = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "yoga",      indexes["yoga"])
+    tithi_start,  tithi_end   = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "tithi",     indexes["tithi"])
+    nak_start,    nak_end     = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "nakshatra", indexes["nakshatra"])
+    yoga_start,   yoga_end    = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "yoga",      indexes["yoga"])
     karana_start, karana_end  = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "karana",    indexes["karana"])
     return PanchangDailyResponse(
         date=base_date.isoformat(),
@@ -491,10 +493,10 @@ def _build_daily_response(
             moon_sign=RASHI_NAMES[indexes["moon_sign"]],
             sun_sign=RASHI_NAMES[indexes["sun_sign"]],
             samvat=_samvat_label(base_date),
-            tithi=PanchangSegment(name=tithi_name,                               index=indexes["tithi"]     + 1, start=tithi_start,   end=tithi_end),
-            nakshatra=PanchangSegment(name=NAKSHATRA_NAMES[indexes["nakshatra"]], index=indexes["nakshatra"] + 1, start=nak_start,     end=nak_end),
-            yoga=PanchangSegment(name=YOGA_NAMES[indexes["yoga"]],                index=indexes["yoga"]      + 1, start=yoga_start,    end=yoga_end),
-            karana=PanchangSegment(name=KARANA_NAMES[indexes["karana"]],          index=indexes["karana"]    + 1, start=karana_start,  end=karana_end),
+            tithi=PanchangSegment(    name=tithi_name,                               index=indexes["tithi"]     + 1, start=tithi_start,  end=tithi_end),
+            nakshatra=PanchangSegment(name=NAKSHATRA_NAMES[indexes["nakshatra"]],    index=indexes["nakshatra"] + 1, start=nak_start,    end=nak_end),
+            yoga=PanchangSegment(     name=YOGA_NAMES[indexes["yoga"]],              index=indexes["yoga"]      + 1, start=yoga_start,   end=yoga_end),
+            karana=PanchangSegment(   name=KARANA_NAMES[indexes["karana"]],          index=indexes["karana"]    + 1, start=karana_start, end=karana_end),
         ),
         day_quality_windows=_day_quality_windows(astro.sunrise, astro.sunset),
         observances=_observances_for_day(base_date, indexes, tithi_name),
