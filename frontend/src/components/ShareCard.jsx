@@ -120,10 +120,10 @@ export function PanchangShareCard({ data, cardRef }) {
   const tableRow = (label, start, end, accent) => (
     <div key={label} style={{
       display: 'grid', gridTemplateColumns: '1fr auto',
-      padding: '5px 10px', borderBottom: `1px solid ${accent}22`,
+      padding: '7px 14px', borderBottom: `1px solid ${accent}22`,
     }}>
-      <span style={{ color: '#f5f0e8', fontSize: 12, fontWeight: 500 }}>{label}</span>
-      <span style={{ color: accent, fontSize: 12, fontFamily: 'monospace', fontWeight: 600 }}>
+      <span style={{ color: '#f5f0e8', fontSize: 16, fontWeight: 500 }}>{label}</span>
+      <span style={{ color: accent, fontSize: 15, fontFamily: 'monospace', fontWeight: 700 }}>
         {fmtISO(start)} – {fmtISO(end)}
       </span>
     </div>
@@ -133,10 +133,10 @@ export function PanchangShareCard({ data, cardRef }) {
     <div
       ref={cardRef}
       style={{
-        width: 640,
+        width: 900,
         background: 'linear-gradient(160deg, #0e0c18 0%, #1b1530 60%, #0e0c18 100%)',
-        borderRadius: 16,
-        padding: 36,
+        borderRadius: 20,
+        padding: 52,
         fontFamily: "'Georgia', 'Times New Roman', serif",
         color: '#f5f0e8',
         position: 'absolute',
@@ -147,28 +147,28 @@ export function PanchangShareCard({ data, cardRef }) {
       }}
     >
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: 20 }}>
-        <p style={{ color: '#C5A059', fontSize: 10, letterSpacing: 4, textTransform: 'uppercase', margin: '0 0 6px' }}>
+      <div style={{ textAlign: 'center', marginBottom: 28 }}>
+        <p style={{ color: '#C5A059', fontSize: 13, letterSpacing: 5, textTransform: 'uppercase', margin: '0 0 8px' }}>
           ✦ EverydayHoroscope.in ✦
         </p>
-        <p style={{ color: '#f5f0e8', fontSize: 26, fontWeight: 700, margin: '0 0 4px', letterSpacing: 0.5 }}>
+        <p style={{ color: '#f5f0e8', fontSize: 36, fontWeight: 700, margin: '0 0 6px', letterSpacing: 0.5 }}>
           Vedic Panchang
         </p>
-        <p style={{ color: '#C5A059', fontSize: 13, margin: 0 }}>{dateStr}</p>
-        <p style={{ color: 'rgba(245,240,232,0.4)', fontSize: 11, margin: '3px 0 0' }}>
+        <p style={{ color: '#C5A059', fontSize: 18, margin: 0 }}>{dateStr}</p>
+        <p style={{ color: 'rgba(245,240,232,0.4)', fontSize: 14, margin: '4px 0 0' }}>
           {data.location?.label}{data.location?.country ? `, ${data.location.country}` : ''}
         </p>
       </div>
 
       {/* Divider */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
         <div style={{ flex: 1, height: 1, background: 'rgba(197,160,89,0.3)' }} />
-        <span style={{ color: '#C5A059', fontSize: 14 }}>☀</span>
+        <span style={{ color: '#C5A059', fontSize: 18 }}>☀</span>
         <div style={{ flex: 1, height: 1, background: 'rgba(197,160,89,0.3)' }} />
       </div>
 
       {/* Sun / Moon row */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 18 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 12, marginBottom: 24 }}>
         {[
           { label: 'Sunrise',  value: summary?.sunrise,          icon: '☀' },
           { label: 'Sunset',   value: summary?.sunset,           icon: '🌅' },
@@ -178,21 +178,21 @@ export function PanchangShareCard({ data, cardRef }) {
           <div key={label} style={{
             background: 'rgba(197,160,89,0.06)',
             border: '1px solid rgba(197,160,89,0.18)',
-            borderRadius: 10, padding: '9px 8px', textAlign: 'center',
+            borderRadius: 12, padding: '12px 10px', textAlign: 'center',
           }}>
-            <p style={{ fontSize: 16, margin: '0 0 3px' }}>{icon}</p>
-            <p style={{ color: 'rgba(245,240,232,0.5)', fontSize: 9, letterSpacing: 1, textTransform: 'uppercase', margin: '0 0 3px' }}>{label}</p>
-            <p style={{ color: '#f5f0e8', fontSize: 12, fontWeight: 600, margin: 0, fontFamily: 'monospace' }}>{value || '—'}</p>
+            <p style={{ fontSize: 22, margin: '0 0 5px' }}>{icon}</p>
+            <p style={{ color: 'rgba(245,240,232,0.5)', fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', margin: '0 0 4px' }}>{label}</p>
+            <p style={{ color: '#f5f0e8', fontSize: 17, fontWeight: 700, margin: 0, fontFamily: 'monospace' }}>{value || '—'}</p>
           </div>
         ))}
       </div>
 
       {/* Five Limbs */}
-      <div style={{ marginBottom: 16 }}>
-        <p style={{ color: '#C5A059', fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', margin: '0 0 8px', textAlign: 'center' }}>
+      <div style={{ marginBottom: 22 }}>
+        <p style={{ color: '#C5A059', fontSize: 12, letterSpacing: 3.5, textTransform: 'uppercase', margin: '0 0 12px', textAlign: 'center' }}>
           Pancha Anga — Five Limbs
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
           {[
             { label: 'Tithi',     value: panchang?.tithi?.name },
             { label: 'Nakshatra', value: panchang?.nakshatra?.name },
@@ -202,11 +202,11 @@ export function PanchangShareCard({ data, cardRef }) {
             { label: 'Paksha',    value: summary?.paksha },
           ].map(({ label, value }) => (
             <div key={label} style={{
-              background: 'rgba(255,255,255,0.04)', borderRadius: 8, padding: '7px 11px',
-              borderLeft: '2px solid rgba(197,160,89,0.4)',
+              background: 'rgba(255,255,255,0.04)', borderRadius: 10, padding: '10px 16px',
+              borderLeft: '3px solid rgba(197,160,89,0.4)',
             }}>
-              <p style={{ color: '#C5A059', fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase', margin: '0 0 3px' }}>{label}</p>
-              <p style={{ color: '#f5f0e8', fontSize: 12, fontWeight: 600, margin: 0 }}>{value || '—'}</p>
+              <p style={{ color: '#C5A059', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', margin: '0 0 4px' }}>{label}</p>
+              <p style={{ color: '#f5f0e8', fontSize: 17, fontWeight: 700, margin: 0 }}>{value || '—'}</p>
             </div>
           ))}
         </div>
@@ -214,16 +214,16 @@ export function PanchangShareCard({ data, cardRef }) {
 
       {/* Timing Windows — side by side */}
       {(auspicious.length > 0 || inauspicious.length > 0) && (
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
           {/* Auspicious */}
           {auspicious.length > 0 && (
             <div style={{
               background: 'rgba(52,211,153,0.06)',
               border: '1px solid rgba(52,211,153,0.25)',
-              borderRadius: 10, overflow: 'hidden',
+              borderRadius: 12, overflow: 'hidden',
             }}>
-              <div style={{ background: 'rgba(52,211,153,0.12)', padding: '6px 10px', borderBottom: '1px solid rgba(52,211,153,0.2)' }}>
-                <p style={{ color: '#34d399', fontSize: 9, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', margin: 0 }}>
+              <div style={{ background: 'rgba(52,211,153,0.12)', padding: '8px 14px', borderBottom: '1px solid rgba(52,211,153,0.2)' }}>
+                <p style={{ color: '#34d399', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', margin: 0 }}>
                   ✦ Auspicious
                 </p>
               </div>
@@ -235,10 +235,10 @@ export function PanchangShareCard({ data, cardRef }) {
             <div style={{
               background: 'rgba(239,68,68,0.05)',
               border: '1px solid rgba(239,68,68,0.22)',
-              borderRadius: 10, overflow: 'hidden',
+              borderRadius: 12, overflow: 'hidden',
             }}>
-              <div style={{ background: 'rgba(239,68,68,0.1)', padding: '6px 10px', borderBottom: '1px solid rgba(239,68,68,0.18)' }}>
-                <p style={{ color: '#f87171', fontSize: 9, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', margin: 0 }}>
+              <div style={{ background: 'rgba(239,68,68,0.1)', padding: '8px 14px', borderBottom: '1px solid rgba(239,68,68,0.18)' }}>
+                <p style={{ color: '#f87171', fontSize: 12, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', margin: 0 }}>
                   ⛔ Inauspicious
                 </p>
               </div>
@@ -253,20 +253,20 @@ export function PanchangShareCard({ data, cardRef }) {
         <div style={{
           background: yoga.quality === 'good' ? 'rgba(52,211,153,0.08)' : 'rgba(251,191,36,0.08)',
           border: `1px solid ${yoga.quality === 'good' ? 'rgba(52,211,153,0.35)' : 'rgba(251,191,36,0.35)'}`,
-          borderRadius: 10, padding: '9px 14px', marginBottom: 12,
-          display: 'flex', alignItems: 'flex-start', gap: 10,
+          borderRadius: 12, padding: '12px 18px', marginBottom: 16,
+          display: 'flex', alignItems: 'flex-start', gap: 14,
         }}>
           <div style={{
             background: yoga.quality === 'good' ? 'rgba(52,211,153,0.2)' : 'rgba(251,191,36,0.2)',
-            borderRadius: 6, padding: '3px 8px', flexShrink: 0,
+            borderRadius: 8, padding: '5px 12px', flexShrink: 0,
           }}>
-            <p style={{ color: yoga.quality === 'good' ? '#34d399' : '#fbbf24', fontSize: 9, fontWeight: 700, margin: 0, letterSpacing: 0.5 }}>
+            <p style={{ color: yoga.quality === 'good' ? '#34d399' : '#fbbf24', fontSize: 11, fontWeight: 700, margin: 0, letterSpacing: 0.5 }}>
               {yoga.quality === 'good' ? '✦ AUSPICIOUS' : '◆ SPECIAL'}
             </p>
           </div>
           <div>
-            <p style={{ color: '#f5f0e8', fontSize: 13, fontWeight: 700, margin: '0 0 2px' }}>{yoga.name}</p>
-            <p style={{ color: 'rgba(245,240,232,0.6)', fontSize: 11, margin: 0 }}>
+            <p style={{ color: '#f5f0e8', fontSize: 18, fontWeight: 700, margin: '0 0 3px' }}>{yoga.name}</p>
+            <p style={{ color: 'rgba(245,240,232,0.6)', fontSize: 14, margin: 0 }}>
               {yoga.meaning?.split('—')[0]?.trim()}
             </p>
           </div>
@@ -277,24 +277,24 @@ export function PanchangShareCard({ data, cardRef }) {
       {obs && (
         <div style={{
           background: 'rgba(197,160,89,0.07)', border: '1px solid rgba(197,160,89,0.25)',
-          borderRadius: 10, padding: '8px 14px', marginBottom: 12,
-          display: 'flex', alignItems: 'center', gap: 10,
+          borderRadius: 12, padding: '11px 18px', marginBottom: 16,
+          display: 'flex', alignItems: 'center', gap: 14,
         }}>
-          <span style={{ fontSize: 15 }}>🪔</span>
+          <span style={{ fontSize: 20 }}>🪔</span>
           <div>
-            <p style={{ color: '#C5A059', fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', margin: '0 0 2px' }}>Today's Observance</p>
-            <p style={{ color: '#f5f0e8', fontSize: 13, fontWeight: 600, margin: 0 }}>{obs.name}</p>
+            <p style={{ color: '#C5A059', fontSize: 11, letterSpacing: 2.5, textTransform: 'uppercase', margin: '0 0 3px' }}>Today's Observance</p>
+            <p style={{ color: '#f5f0e8', fontSize: 18, fontWeight: 700, margin: 0 }}>{obs.name}</p>
           </div>
         </div>
       )}
 
       {/* Footer */}
       <div style={{
-        marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(197,160,89,0.2)',
+        marginTop: 18, paddingTop: 16, borderTop: '1px solid rgba(197,160,89,0.2)',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       }}>
-        <p style={{ color: 'rgba(245,240,232,0.35)', fontSize: 10, margin: 0 }}>India's Premium Vedic Astrology Platform</p>
-        <p style={{ color: '#C5A059', fontSize: 11, margin: 0, letterSpacing: 1.5, fontWeight: 700 }}>everydayhoroscope.in</p>
+        <p style={{ color: 'rgba(245,240,232,0.35)', fontSize: 13, margin: 0 }}>India's Premium Vedic Astrology Platform</p>
+        <p style={{ color: '#C5A059', fontSize: 15, margin: 0, letterSpacing: 1.5, fontWeight: 700 }}>everydayhoroscope.in</p>
       </div>
     </div>
   );
@@ -341,9 +341,9 @@ export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, s
     <div
       ref={cardRef}
       style={{
-        width: 600,
+        width: 900,
         background: 'linear-gradient(160deg, #0e0c18 0%, #1b1530 60%, #0e0c18 100%)',
-        borderRadius: 16, padding: 40,
+        borderRadius: 20, padding: 56,
         fontFamily: "'Georgia', 'Times New Roman', serif",
         color: '#f5f0e8',
         position: 'absolute', left: -9999, top: -9999,
@@ -351,65 +351,65 @@ export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, s
         border: '1px solid rgba(197,160,89,0.25)',
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 26 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 34 }}>
         <div style={{ flex: 1, height: 1, background: 'rgba(197,160,89,0.3)' }} />
-        <span style={{ color: '#C5A059', fontSize: 10, letterSpacing: 3, textTransform: 'uppercase' }}>EverydayHoroscope.in</span>
+        <span style={{ color: '#C5A059', fontSize: 13, letterSpacing: 4, textTransform: 'uppercase' }}>EverydayHoroscope.in</span>
         <div style={{ flex: 1, height: 1, background: 'rgba(197,160,89,0.3)' }} />
       </div>
 
-      <div style={{ textAlign: 'center', marginBottom: 22 }}>
+      <div style={{ textAlign: 'center', marginBottom: 28 }}>
         <div style={{
-          display: 'inline-block', width: 72, height: 72, borderRadius: '50%',
+          display: 'inline-block', width: 100, height: 100, borderRadius: '50%',
           background: elColor.bg, border: `2px solid ${elColor.border}`,
-          lineHeight: '72px', fontSize: 36, marginBottom: 14, textAlign: 'center',
+          lineHeight: '100px', fontSize: 50, marginBottom: 18, textAlign: 'center',
         }}>
           {signSymbol}
         </div>
-        <p style={{ color: '#f5f0e8', fontSize: 30, fontWeight: 700, margin: '0 0 6px' }}>{signName}</p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 16 }}>
-          <span style={{ color: 'rgba(245,240,232,0.45)', fontSize: 11 }}>{signDates}</span>
-          <span style={{ color: elColor.accent, fontSize: 11, fontWeight: 600 }}>{signElement}</span>
+        <p style={{ color: '#f5f0e8', fontSize: 42, fontWeight: 700, margin: '0 0 8px' }}>{signName}</p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 20 }}>
+          <span style={{ color: 'rgba(245,240,232,0.45)', fontSize: 15 }}>{signDates}</span>
+          <span style={{ color: elColor.accent, fontSize: 15, fontWeight: 600 }}>{signElement}</span>
         </div>
       </div>
 
       <div style={{
         background: 'rgba(197,160,89,0.1)', border: '1px solid rgba(197,160,89,0.3)',
-        borderRadius: 8, padding: '7px 16px', textAlign: 'center', marginBottom: 20,
+        borderRadius: 10, padding: '10px 20px', textAlign: 'center', marginBottom: 26,
         boxSizing: 'border-box',
       }}>
-        <p style={{ color: '#C5A059', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', margin: '0 0 2px', fontWeight: 700 }}>
+        <p style={{ color: '#C5A059', fontSize: 14, letterSpacing: 2.5, textTransform: 'uppercase', margin: '0 0 3px', fontWeight: 700 }}>
           {typeLabel} Horoscope
         </p>
-        <p style={{ color: 'rgba(245,240,232,0.55)', fontSize: 10, margin: 0 }}>{today}</p>
+        <p style={{ color: 'rgba(245,240,232,0.55)', fontSize: 13, margin: 0 }}>{today}</p>
       </div>
 
       {overview && (
         <div style={{
-          background: 'rgba(255,255,255,0.04)', borderRadius: 10,
-          padding: '14px 18px', marginBottom: 16, borderLeft: `3px solid ${elColor.accent}`,
+          background: 'rgba(255,255,255,0.04)', borderRadius: 12,
+          padding: '18px 22px', marginBottom: 20, borderLeft: `4px solid ${elColor.accent}`,
         }}>
-          <p style={{ color: 'rgba(245,240,232,0.85)', fontSize: 14, lineHeight: 1.65, margin: 0 }}>{overview}</p>
+          <p style={{ color: 'rgba(245,240,232,0.88)', fontSize: 18, lineHeight: 1.7, margin: 0 }}>{overview}</p>
         </div>
       )}
 
       {lucky && (
         <div style={{
           background: 'rgba(197,160,89,0.06)', border: '1px solid rgba(197,160,89,0.25)',
-          borderRadius: 10, padding: '11px 16px', marginBottom: 14,
+          borderRadius: 12, padding: '14px 20px', marginBottom: 18,
         }}>
-          <p style={{ color: '#C5A059', fontSize: 9, letterSpacing: 2.5, textTransform: 'uppercase', margin: '0 0 6px', fontWeight: 700 }}>
+          <p style={{ color: '#C5A059', fontSize: 12, letterSpacing: 3, textTransform: 'uppercase', margin: '0 0 8px', fontWeight: 700 }}>
             ✦ Lucky Elements
           </p>
-          <p style={{ color: 'rgba(245,240,232,0.75)', fontSize: 12, lineHeight: 1.55, margin: 0 }}>{lucky}</p>
+          <p style={{ color: 'rgba(245,240,232,0.75)', fontSize: 16, lineHeight: 1.6, margin: 0 }}>{lucky}</p>
         </div>
       )}
 
       <div style={{
-        marginTop: 18, paddingTop: 14, borderTop: '1px solid rgba(197,160,89,0.2)',
+        marginTop: 22, paddingTop: 18, borderTop: '1px solid rgba(197,160,89,0.2)',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       }}>
-        <p style={{ color: 'rgba(245,240,232,0.35)', fontSize: 10, margin: 0 }}>India's Premium Vedic Astrology Platform</p>
-        <p style={{ color: '#C5A059', fontSize: 11, margin: 0, letterSpacing: 1.5, fontWeight: 700 }}>everydayhoroscope.in</p>
+        <p style={{ color: 'rgba(245,240,232,0.35)', fontSize: 13, margin: 0 }}>India's Premium Vedic Astrology Platform</p>
+        <p style={{ color: '#C5A059', fontSize: 15, margin: 0, letterSpacing: 1.5, fontWeight: 700 }}>everydayhoroscope.in</p>
       </div>
     </div>
   );
