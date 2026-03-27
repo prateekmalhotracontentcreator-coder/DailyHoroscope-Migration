@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
+import { PanchangShareCard, ShareButtons } from '../components/ShareCard';
 import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight, Zap, MapPin, Globe, ChevronDown, Clock } from 'lucide-react';
 import axios from 'axios';
 
@@ -912,6 +913,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showWarmup, setShowWarmup] = useState(false);
+  const shareCardRef = useRef(null);
 
   // Show warming-up banner if the API call takes more than 4 seconds
   useEffect(() => {
@@ -1019,6 +1021,20 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
         </Card>
       )}
       <TZNote timezone={locTZ} locationLabel={data.location?.label} />
+
+      {/* Share buttons */}
+      <Card className="border border-gold/20 p-5">
+        <ShareButtons
+          pageUrl={`https://www.everydayhoroscope.in/panchang/${dayOffset === 0 ? 'today' : 'tomorrow'}`}
+          shareText={`Today's Panchang — ${summary?.weekday}, ${data.date}\nTithi: ${panchang?.tithi?.name} · Nakshatra: ${panchang?.nakshatra?.name} · Yoga: ${panchang?.yoga?.name}\nSunrise: ${summary?.sunrise} · Sunset: ${summary?.sunset}`}
+          cardRef={shareCardRef}
+          cardData={data}
+        />
+      </Card>
+
+      {/* Off-screen share card rendered for html2canvas capture */}
+      <PanchangShareCard data={data} cardRef={shareCardRef} />
+
       <div className="flex gap-3">
         <Link to={`/panchang/calendar/${new Date().getFullYear()}/${new Date().getMonth() + 1}`}
           className="flex-1 flex items-center justify-center gap-2 py-3 border border-gold/30 rounded-xl text-sm font-medium text-gold hover:bg-gold/5 transition-colors">
