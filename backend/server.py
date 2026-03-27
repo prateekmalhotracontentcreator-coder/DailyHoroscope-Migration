@@ -311,7 +311,7 @@ class NotificationLog(BaseModel):
     recipient_name: str
     recipient_email: Optional[str] = None
     recipient_phone: Optional[str] = None
-    status: str                    # "sent" | "failed"
+    status: str = "pending"        # "sent" | "failed"
     error: Optional[str] = None
     notification_id: Optional[str] = None
     sent_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
