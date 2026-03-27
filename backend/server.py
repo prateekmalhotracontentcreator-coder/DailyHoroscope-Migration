@@ -265,6 +265,57 @@ class ResetPasswordRequest(BaseModel):
 class PaymentIntentRequest(BaseModel):
     report_type: str; report_id: Optional[str] = None; user_email: str
 
+# ── Notification / Subscriber Models ──────────────────────────────────────────
+
+class Subscriber(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    email: Optional[str] = None
+    phone: Optional[str] = None   # E.164 format for WhatsApp, e.g. +919876543210
+    tags: List[str] = []          # e.g. ["premium", "panchang", "horoscope"]
+    active: bool = True
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+class AddSubscriberRequest(BaseModel):
+    name: str
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    tags: List[str] = []
+
+class UpdateSubscriberRequest(BaseModel):
+    name: Optional[str] = None
+    email: Optional[str] = None
+    phone: Optional[str] = None
+    tags: Optional[List[str]] = None
+    active: Optional[bool] = None
+
+class NotificationRequest(BaseModel):
+    subject: str
+    body: str                      # HTML content
+    channels: List[str]            # ["email"] — WhatsApp added when BSP is wired
+    audience: str = "all"          # "all" | "tagged"
+    tags: List[str] = []           # used when audience == "tagged"
+    scheduled_at: Optional[str] = None  # ISO datetime; None = send immediately
+
+class ScheduledNotification(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    subject: str; body: str; channels: List[str]
+    audience: str; tags: List[str]
+    scheduled_at: str
+    status: str = "pending"        # "pending" | "sent" | "cancelled"
+    created_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
+class NotificationLog(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    subject: str; channel: str
+    recipient_name: str
+    recipient_email: Optional[str] = None
+    recipient_phone: Optional[str] = None
+    status: str                    # "sent" | "failed"
+    error: Optional[str] = None
+    notification_id: Optional[str] = None
+    sent_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
+
 # ── Email ─────────────────────────────────────────────────────────────────────
 
 async def send_email_notification(to_email: str, subject: str, body: str):
@@ -884,6 +935,115 @@ async def admin_reply_to_contact(request: Request, body: AdminReplyRequest):
     if not sent: raise HTTPException(status_code=500, detail="Failed to send reply. Check RESEND_API_KEY configuration.")
     return {"success": True, "message": "Reply sent to " + body.to_email}
 
+# ── Subscriber Management ─────────────────────────────────────────────────────
+
+@api_router.get("/admin/subscribers")
+async def list_subscribers(request: Request, tag: Optional[str] = None, active_only: bool = True):
+    await require_admin(request, db)
+    query: dict = {}
+    if active_only: query["active"] = True
+    if tag: query["tags"] = tag
+    subs = await db.subscribers.find(query, {"_id": 0}).sort("created_at", -1).to_list(5000)
+    return {"subscribers": subs, "total": len(subs)}
+
+@api_router.post("/admin/subscribers")
+async def add_subscriber(request: Request, sub: AddSubscriberRequest):
+    await require_admin(request, db)
+    if sub.email:
+        existing = await db.subscribers.find_one({"email": sub.email})
+        if existing: raise HTTPException(status_code=400, detail="Subscriber with this email already exists")
+    doc = Subscriber(name=sub.name, email=sub.email, phone=sub.phone, tags=sub.tags)
+    await db.subscribers.insert_one(doc.model_dump())
+    return {"success": True, "subscriber": doc.model_dump()}
+
+@api_router.put("/admin/subscribers/{subscriber_id}")
+async def update_subscriber(request: Request, subscriber_id: str, updates: UpdateSubscriberRequest):
+    await require_admin(request, db)
+    update_data = {k: v for k, v in updates.model_dump().items() if v is not None}
+    if not update_data: raise HTTPException(status_code=400, detail="No update data provided")
+    result = await db.subscribers.update_one({"id": subscriber_id}, {"$set": update_data})
+    if result.matched_count == 0: raise HTTPException(status_code=404, detail="Subscriber not found")
+    return {"success": True}
+
+@api_router.delete("/admin/subscribers/{subscriber_id}")
+async def delete_subscriber(request: Request, subscriber_id: str):
+    await require_admin(request, db)
+    result = await db.subscribers.delete_one({"id": subscriber_id})
+    if result.deleted_count == 0: raise HTTPException(status_code=404, detail="Subscriber not found")
+    return {"success": True}
+
+# ── Notification Dispatch Helpers ──────────────────────────────────────────────
+
+async def _resolve_audience(audience: str, tags: list) -> list:
+    query: dict = {"active": True}
+    if audience == "tagged" and tags:
+        query["tags"] = {"$in": tags}
+    return await db.subscribers.find(query, {"_id": 0}).to_list(10000)
+
+async def _dispatch_notifications(subject: str, body: str, channels: list, subscribers: list, notification_id: Optional[str] = None) -> list:
+    logs = []
+    for sub in subscribers:
+        for channel in channels:
+            log = NotificationLog(subject=subject, channel=channel, recipient_name=sub["name"], notification_id=notification_id)
+            if channel == "email":
+                if not sub.get("email"):
+                    log.status = "failed"; log.error = "No email address"
+                else:
+                    log.recipient_email = sub["email"]
+                    ok = await send_email_notification(sub["email"], subject, body)
+                    log.status = "sent" if ok else "failed"
+                    if not ok: log.error = "Resend API error"
+            elif channel == "whatsapp":
+                log.recipient_phone = sub.get("phone")
+                log.status = "failed"; log.error = "WhatsApp BSP not yet configured"
+            else:
+                log.status = "failed"; log.error = f"Unknown channel: {channel}"
+            logs.append(log)
+    if logs:
+        await db.notification_logs.insert_many([l.model_dump() for l in logs])
+    return logs
+
+# ── Notification Endpoints ─────────────────────────────────────────────────────
+
+@api_router.post("/admin/notify/send")
+async def send_notification_now(request: Request, payload: NotificationRequest):
+    await require_admin(request, db)
+    subscribers = await _resolve_audience(payload.audience, payload.tags)
+    if not subscribers: raise HTTPException(status_code=400, detail="No active subscribers match the audience filter")
+    logs = await _dispatch_notifications(payload.subject, payload.body, payload.channels, subscribers)
+    sent  = sum(1 for l in logs if l.status == "sent")
+    failed= sum(1 for l in logs if l.status == "failed")
+    return {"success": True, "sent": sent, "failed": failed, "total": len(logs)}
+
+@api_router.post("/admin/notify/schedule")
+async def schedule_notification(request: Request, payload: NotificationRequest):
+    await require_admin(request, db)
+    if not payload.scheduled_at: raise HTTPException(status_code=400, detail="scheduled_at is required for scheduling")
+    doc = ScheduledNotification(subject=payload.subject, body=payload.body, channels=payload.channels,
+                                audience=payload.audience, tags=payload.tags, scheduled_at=payload.scheduled_at)
+    await db.scheduled_notifications.insert_one(doc.model_dump())
+    return {"success": True, "scheduled": doc.model_dump()}
+
+@api_router.get("/admin/notify/scheduled")
+async def list_scheduled_notifications(request: Request):
+    await require_admin(request, db)
+    docs = await db.scheduled_notifications.find({"status": "pending"}, {"_id": 0}).sort("scheduled_at", 1).to_list(500)
+    return {"scheduled": docs}
+
+@api_router.delete("/admin/notify/scheduled/{notification_id}")
+async def cancel_scheduled_notification(request: Request, notification_id: str):
+    await require_admin(request, db)
+    result = await db.scheduled_notifications.update_one(
+        {"id": notification_id, "status": "pending"}, {"$set": {"status": "cancelled"}})
+    if result.matched_count == 0: raise HTTPException(status_code=404, detail="Notification not found or already sent")
+    return {"success": True}
+
+@api_router.get("/admin/notify/logs")
+async def get_notification_logs(request: Request, limit: int = 200):
+    await require_admin(request, db)
+    logs = await db.notification_logs.find({}, {"_id": 0}).sort("sent_at", -1).to_list(limit)
+    return {"logs": logs, "total": len(logs)}
+
 @api_router.post("/admin/login")
 async def admin_login(request: AdminLoginRequest, response: Response):
     if request.username != ADMIN_USERNAME: raise HTTPException(status_code=401, detail="Invalid credentials")
@@ -1091,6 +1251,21 @@ app.include_router(tarot_router)
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+async def send_scheduled_notifications():
+    """Dispatches any pending scheduled notifications whose time has arrived."""
+    now_iso = datetime.now(timezone.utc).isoformat()
+    pending = await db.scheduled_notifications.find(
+        {"status": "pending", "scheduled_at": {"$lte": now_iso}}, {"_id": 0}
+    ).to_list(100)
+    for notif in pending:
+        try:
+            subs = await _resolve_audience(notif["audience"], notif.get("tags", []))
+            await _dispatch_notifications(notif["subject"], notif["body"], notif["channels"], subs, notif["id"])
+            await db.scheduled_notifications.update_one({"id": notif["id"]}, {"$set": {"status": "sent"}})
+            logging.info("Scheduled notification sent: %s", notif["id"])
+        except Exception as e:
+            logging.error("Failed to send scheduled notification %s: %s", notif["id"], str(e))
+
 async def prefetch_all_horoscopes():
     logging.info("Starting scheduled horoscope prefetch...")
     signs = [s["id"] for s in ZODIAC_SIGNS]; types = ["daily", "weekly", "monthly"]; generated = skipped = 0
@@ -1113,6 +1288,7 @@ async def startup_event():
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(hour=18, minute=30, timezone="UTC"), id="daily_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day_of_week="sun", hour=18, minute=0, timezone="UTC"), id="weekly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day=1, hour=17, minute=30, timezone="UTC"), id="monthly_horoscope_prefetch", replace_existing=True)
+    scheduler.add_job(send_scheduled_notifications, CronTrigger(minute="*/5"), id="scheduled_notifications", replace_existing=True)
     scheduler.start()
     logging.info("Horoscope prefetch scheduler started")
 
