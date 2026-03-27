@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import html2canvas from 'html2canvas';
 
 // ─── Platform icons (inline SVG) ─────────────────────────────────────────────
@@ -46,18 +46,14 @@ const DownloadIcon = () => (
   </svg>
 );
 
-// ─── Shared image generation utility ─────────────────────────────────────────
+// ─── Shared utilities ─────────────────────────────────────────────────────────
 
 async function captureCard(cardRef) {
   if (!cardRef?.current) return null;
   try {
-    const canvas = await html2canvas(cardRef.current, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: null,
-      logging: false,
+    return await html2canvas(cardRef.current, {
+      scale: 2, useCORS: true, backgroundColor: null, logging: false,
     });
-    return canvas;
   } catch (e) {
     console.error('html2canvas error', e);
     return null;
@@ -71,38 +67,76 @@ function downloadCanvas(canvas, filename) {
   link.click();
 }
 
+// Try native Web Share API with an image file (works on mobile Chrome/Safari).
+// Returns: 'shared' | 'aborted' | 'unsupported'
+function nativeShareImage(canvas, filename, title, text) {
+  return new Promise((resolve) => {
+    canvas.toBlob(async (blob) => {
+      if (!blob) { resolve('unsupported'); return; }
+      const file = new File([blob], filename, { type: 'image/png' });
+      if (!navigator.canShare?.({ files: [file] })) { resolve('unsupported'); return; }
+      try {
+        await navigator.share({ files: [file], title, text });
+        resolve('shared');
+      } catch (e) {
+        resolve(e.name === 'AbortError' ? 'aborted' : 'unsupported');
+      }
+    }, 'image/png');
+  });
+}
+
+// Format ISO datetime string → "6:18 AM" using the offset baked into the string
+function fmtISO(iso) {
+  if (!iso) return '—';
+  // Slice HH:MM from the time portion of the ISO string (location-local time)
+  const timePart = iso.slice(11, 16); // "HH:MM"
+  const [hStr, mStr] = timePart.split(':');
+  const h = parseInt(hStr, 10);
+  const m = parseInt(mStr, 10);
+  const period = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  return `${h12}:${m.toString().padStart(2, '0')} ${period}`;
+}
+
 // ─── Panchang Share Card ──────────────────────────────────────────────────────
 
 export function PanchangShareCard({ data, cardRef }) {
   if (!data) return null;
-  const { summary, panchang, special_yogas, observances } = data;
+  const { summary, panchang, special_yogas, observances, day_quality_windows } = data;
   const yoga = special_yogas?.[0];
-  const obs = observances?.[0];
+  const obs  = observances?.[0];
+
   const dateStr = data.date
     ? new Date(data.date + 'T00:00:00').toLocaleDateString('en-IN', {
         weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
       })
     : '';
 
-  // Decorative corner SVG path helper
-  const corner = (flip) => (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-      style={{ position: 'absolute', ...flip }}
-    >
-      <path d="M2 38 L2 8 Q2 2 8 2 L38 2" stroke="#C5A059" strokeWidth="1.5" fill="none" strokeLinecap="round"/>
-      <circle cx="2" cy="38" r="2" fill="#C5A059" opacity="0.6"/>
-      <circle cx="38" cy="2" r="2" fill="#C5A059" opacity="0.6"/>
-    </svg>
+  // Split timing windows into auspicious / inauspicious
+  const auspicious   = (day_quality_windows || []).filter(w => w.quality === 'good');
+  const inauspicious = (day_quality_windows || []).filter(w => w.quality !== 'good');
+
+  // Shared table row style factory
+  const tableRow = (label, start, end, accent) => (
+    <div key={label} style={{
+      display: 'grid', gridTemplateColumns: '1fr auto',
+      padding: '5px 10px', borderBottom: `1px solid ${accent}22`,
+    }}>
+      <span style={{ color: '#f5f0e8', fontSize: 12, fontWeight: 500 }}>{label}</span>
+      <span style={{ color: accent, fontSize: 12, fontFamily: 'monospace', fontWeight: 600 }}>
+        {fmtISO(start)} – {fmtISO(end)}
+      </span>
+    </div>
   );
 
   return (
     <div
       ref={cardRef}
       style={{
-        width: 600,
+        width: 640,
         background: 'linear-gradient(160deg, #0e0c18 0%, #1b1530 60%, #0e0c18 100%)',
         borderRadius: 16,
-        padding: 40,
+        padding: 36,
         fontFamily: "'Georgia', 'Times New Roman', serif",
         color: '#f5f0e8',
         position: 'absolute',
@@ -112,14 +146,8 @@ export function PanchangShareCard({ data, cardRef }) {
         border: '1px solid rgba(197,160,89,0.25)',
       }}
     >
-      {/* Corner decorations */}
-      <div style={{ position: 'absolute', top: 10, left: 10 }}>{corner({ top: 0, left: 0 })}</div>
-      <div style={{ position: 'absolute', top: 10, right: 10, transform: 'scaleX(-1)' }}>{corner({ top: 0, left: 0 })}</div>
-      <div style={{ position: 'absolute', bottom: 10, left: 10, transform: 'scaleY(-1)' }}>{corner({ top: 0, left: 0 })}</div>
-      <div style={{ position: 'absolute', bottom: 10, right: 10, transform: 'scale(-1)' }}>{corner({ top: 0, left: 0 })}</div>
-
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: 24 }}>
+      <div style={{ textAlign: 'center', marginBottom: 20 }}>
         <p style={{ color: '#C5A059', fontSize: 10, letterSpacing: 4, textTransform: 'uppercase', margin: '0 0 6px' }}>
           ✦ EverydayHoroscope.in ✦
         </p>
@@ -127,46 +155,44 @@ export function PanchangShareCard({ data, cardRef }) {
           Vedic Panchang
         </p>
         <p style={{ color: '#C5A059', fontSize: 13, margin: 0 }}>{dateStr}</p>
-        <p style={{ color: 'rgba(245,240,232,0.45)', fontSize: 11, margin: '3px 0 0' }}>
+        <p style={{ color: 'rgba(245,240,232,0.4)', fontSize: 11, margin: '3px 0 0' }}>
           {data.location?.label}{data.location?.country ? `, ${data.location.country}` : ''}
         </p>
       </div>
 
       {/* Divider */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 22 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18 }}>
         <div style={{ flex: 1, height: 1, background: 'rgba(197,160,89,0.3)' }} />
         <span style={{ color: '#C5A059', fontSize: 14 }}>☀</span>
         <div style={{ flex: 1, height: 1, background: 'rgba(197,160,89,0.3)' }} />
       </div>
 
-      {/* Sun/Moon row */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 10, marginBottom: 22 }}>
+      {/* Sun / Moon row */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 8, marginBottom: 18 }}>
         {[
-          { label: 'Sunrise',  value: summary?.sunrise,  icon: '☀' },
-          { label: 'Sunset',   value: summary?.sunset,   icon: '🌅' },
-          { label: 'Moonrise', value: summary?.moonrise || '—', icon: '🌙' },
-          { label: 'Moonset',  value: summary?.moonset  || '—', icon: '🌑' },
+          { label: 'Sunrise',  value: summary?.sunrise,          icon: '☀' },
+          { label: 'Sunset',   value: summary?.sunset,           icon: '🌅' },
+          { label: 'Moonrise', value: summary?.moonrise || '—',  icon: '🌙' },
+          { label: 'Moonset',  value: summary?.moonset  || '—',  icon: '🌑' },
         ].map(({ label, value, icon }) => (
           <div key={label} style={{
             background: 'rgba(197,160,89,0.06)',
             border: '1px solid rgba(197,160,89,0.18)',
-            borderRadius: 10,
-            padding: '9px 8px',
-            textAlign: 'center',
+            borderRadius: 10, padding: '9px 8px', textAlign: 'center',
           }}>
             <p style={{ fontSize: 16, margin: '0 0 3px' }}>{icon}</p>
             <p style={{ color: 'rgba(245,240,232,0.5)', fontSize: 9, letterSpacing: 1, textTransform: 'uppercase', margin: '0 0 3px' }}>{label}</p>
-            <p style={{ color: '#f5f0e8', fontSize: 13, fontWeight: 600, margin: 0, fontFamily: 'monospace' }}>{value || '—'}</p>
+            <p style={{ color: '#f5f0e8', fontSize: 12, fontWeight: 600, margin: 0, fontFamily: 'monospace' }}>{value || '—'}</p>
           </div>
         ))}
       </div>
 
       {/* Five Limbs */}
-      <div style={{ marginBottom: 18 }}>
-        <p style={{ color: '#C5A059', fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', margin: '0 0 10px', textAlign: 'center' }}>
+      <div style={{ marginBottom: 16 }}>
+        <p style={{ color: '#C5A059', fontSize: 9, letterSpacing: 3, textTransform: 'uppercase', margin: '0 0 8px', textAlign: 'center' }}>
           Pancha Anga — Five Limbs
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 8 }}>
           {[
             { label: 'Tithi',     value: panchang?.tithi?.name },
             { label: 'Nakshatra', value: panchang?.nakshatra?.name },
@@ -176,37 +202,65 @@ export function PanchangShareCard({ data, cardRef }) {
             { label: 'Paksha',    value: summary?.paksha },
           ].map(({ label, value }) => (
             <div key={label} style={{
-              background: 'rgba(255,255,255,0.04)',
-              borderRadius: 8,
-              padding: '8px 12px',
+              background: 'rgba(255,255,255,0.04)', borderRadius: 8, padding: '7px 11px',
               borderLeft: '2px solid rgba(197,160,89,0.4)',
             }}>
               <p style={{ color: '#C5A059', fontSize: 9, letterSpacing: 1.5, textTransform: 'uppercase', margin: '0 0 3px' }}>{label}</p>
-              <p style={{ color: '#f5f0e8', fontSize: 13, fontWeight: 600, margin: 0 }}>{value || '—'}</p>
+              <p style={{ color: '#f5f0e8', fontSize: 12, fontWeight: 600, margin: 0 }}>{value || '—'}</p>
             </div>
           ))}
         </div>
       </div>
+
+      {/* Timing Windows — side by side */}
+      {(auspicious.length > 0 || inauspicious.length > 0) && (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 14 }}>
+          {/* Auspicious */}
+          {auspicious.length > 0 && (
+            <div style={{
+              background: 'rgba(52,211,153,0.06)',
+              border: '1px solid rgba(52,211,153,0.25)',
+              borderRadius: 10, overflow: 'hidden',
+            }}>
+              <div style={{ background: 'rgba(52,211,153,0.12)', padding: '6px 10px', borderBottom: '1px solid rgba(52,211,153,0.2)' }}>
+                <p style={{ color: '#34d399', fontSize: 9, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', margin: 0 }}>
+                  ✦ Auspicious
+                </p>
+              </div>
+              {auspicious.map(w => tableRow(w.label, w.start, w.end, '#34d399'))}
+            </div>
+          )}
+          {/* Inauspicious */}
+          {inauspicious.length > 0 && (
+            <div style={{
+              background: 'rgba(239,68,68,0.05)',
+              border: '1px solid rgba(239,68,68,0.22)',
+              borderRadius: 10, overflow: 'hidden',
+            }}>
+              <div style={{ background: 'rgba(239,68,68,0.1)', padding: '6px 10px', borderBottom: '1px solid rgba(239,68,68,0.18)' }}>
+                <p style={{ color: '#f87171', fontSize: 9, fontWeight: 700, letterSpacing: 2, textTransform: 'uppercase', margin: 0 }}>
+                  ⛔ Inauspicious
+                </p>
+              </div>
+              {inauspicious.map(w => tableRow(w.label, w.start, w.end, '#f87171'))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Special Yoga */}
       {yoga && (
         <div style={{
           background: yoga.quality === 'good' ? 'rgba(52,211,153,0.08)' : 'rgba(251,191,36,0.08)',
           border: `1px solid ${yoga.quality === 'good' ? 'rgba(52,211,153,0.35)' : 'rgba(251,191,36,0.35)'}`,
-          borderRadius: 10,
-          padding: '10px 14px',
-          marginBottom: 14,
-          display: 'flex',
-          alignItems: 'flex-start',
-          gap: 10,
+          borderRadius: 10, padding: '9px 14px', marginBottom: 12,
+          display: 'flex', alignItems: 'flex-start', gap: 10,
         }}>
           <div style={{
             background: yoga.quality === 'good' ? 'rgba(52,211,153,0.2)' : 'rgba(251,191,36,0.2)',
-            borderRadius: 6,
-            padding: '4px 8px',
-            flexShrink: 0,
+            borderRadius: 6, padding: '3px 8px', flexShrink: 0,
           }}>
-            <p style={{ color: yoga.quality === 'good' ? '#34d399' : '#fbbf24', fontSize: 10, fontWeight: 700, margin: 0, letterSpacing: 0.5 }}>
+            <p style={{ color: yoga.quality === 'good' ? '#34d399' : '#fbbf24', fontSize: 9, fontWeight: 700, margin: 0, letterSpacing: 0.5 }}>
               {yoga.quality === 'good' ? '✦ AUSPICIOUS' : '◆ SPECIAL'}
             </p>
           </div>
@@ -222,16 +276,11 @@ export function PanchangShareCard({ data, cardRef }) {
       {/* Observance */}
       {obs && (
         <div style={{
-          background: 'rgba(197,160,89,0.07)',
-          border: '1px solid rgba(197,160,89,0.25)',
-          borderRadius: 10,
-          padding: '9px 14px',
-          marginBottom: 14,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 10,
+          background: 'rgba(197,160,89,0.07)', border: '1px solid rgba(197,160,89,0.25)',
+          borderRadius: 10, padding: '8px 14px', marginBottom: 12,
+          display: 'flex', alignItems: 'center', gap: 10,
         }}>
-          <span style={{ fontSize: 16 }}>🪔</span>
+          <span style={{ fontSize: 15 }}>🪔</span>
           <div>
             <p style={{ color: '#C5A059', fontSize: 9, letterSpacing: 2, textTransform: 'uppercase', margin: '0 0 2px' }}>Today's Observance</p>
             <p style={{ color: '#f5f0e8', fontSize: 13, fontWeight: 600, margin: 0 }}>{obs.name}</p>
@@ -241,12 +290,8 @@ export function PanchangShareCard({ data, cardRef }) {
 
       {/* Footer */}
       <div style={{
-        marginTop: 18,
-        paddingTop: 14,
-        borderTop: '1px solid rgba(197,160,89,0.2)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        marginTop: 14, paddingTop: 12, borderTop: '1px solid rgba(197,160,89,0.2)',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       }}>
         <p style={{ color: 'rgba(245,240,232,0.35)', fontSize: 10, margin: 0 }}>India's Premium Vedic Astrology Platform</p>
         <p style={{ color: '#C5A059', fontSize: 11, margin: 0, letterSpacing: 1.5, fontWeight: 700 }}>everydayhoroscope.in</p>
@@ -257,7 +302,6 @@ export function PanchangShareCard({ data, cardRef }) {
 
 // ─── Horoscope Share Card ─────────────────────────────────────────────────────
 
-// Extract a snippet from horoscope content (first 2 sentences of overview)
 function extractOverview(content) {
   if (!content) return '';
   const cleaned = content
@@ -266,10 +310,8 @@ function extractOverview(content) {
     .replace(/#{1,6}\s?/g, '')
     .replace(/^([A-Za-z]+)\s*[—\-]+\s*/s, '')
     .trim();
-  // Take text before first section heading
   const cutIdx = cleaned.search(/(Love\s*[&and]+\s*Relationships|Career\s*[&and]+\s*Finances|Health\s*[&and]+\s*Wellness|Lucky\s*Elements?)\s*:/i);
   const overview = cutIdx > 0 ? cleaned.substring(0, cutIdx).trim() : cleaned;
-  // Max 2 sentences
   const sentences = overview.match(/[^.!?]+[.!?]+/g) || [];
   return sentences.slice(0, 2).join(' ').trim() || overview.substring(0, 200);
 }
@@ -277,8 +319,7 @@ function extractOverview(content) {
 function extractLucky(content) {
   if (!content) return null;
   const match = content.match(/Lucky\s*Elements?\s*:([\s\S]*?)(?:\n\n|$)/i);
-  if (!match) return null;
-  return match[1].trim().substring(0, 120);
+  return match ? match[1].trim().substring(0, 130) : null;
 }
 
 const ELEMENT_COLORS = {
@@ -290,11 +331,10 @@ const ELEMENT_COLORS = {
 
 export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, signElement, horoscopeType, content }) {
   if (!signName) return null;
-
-  const overview = extractOverview(content);
-  const lucky    = extractLucky(content);
-  const elColor  = ELEMENT_COLORS[signElement] || ELEMENT_COLORS.Fire;
-  const today    = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+  const overview  = extractOverview(content);
+  const lucky     = extractLucky(content);
+  const elColor   = ELEMENT_COLORS[signElement] || ELEMENT_COLORS.Fire;
+  const today     = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
   const typeLabel = horoscopeType === 'weekly' ? 'Weekly' : horoscopeType === 'monthly' ? 'Monthly' : 'Daily';
 
   return (
@@ -303,57 +343,38 @@ export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, s
       style={{
         width: 600,
         background: 'linear-gradient(160deg, #0e0c18 0%, #1b1530 60%, #0e0c18 100%)',
-        borderRadius: 16,
-        padding: 40,
+        borderRadius: 16, padding: 40,
         fontFamily: "'Georgia', 'Times New Roman', serif",
         color: '#f5f0e8',
-        position: 'absolute',
-        left: -9999,
-        top: -9999,
+        position: 'absolute', left: -9999, top: -9999,
         boxSizing: 'border-box',
         border: '1px solid rgba(197,160,89,0.25)',
       }}
     >
-      {/* Decorative top line */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 26 }}>
         <div style={{ flex: 1, height: 1, background: 'rgba(197,160,89,0.3)' }} />
         <span style={{ color: '#C5A059', fontSize: 10, letterSpacing: 3, textTransform: 'uppercase' }}>EverydayHoroscope.in</span>
         <div style={{ flex: 1, height: 1, background: 'rgba(197,160,89,0.3)' }} />
       </div>
 
-      {/* Sign header */}
-      <div style={{ textAlign: 'center', marginBottom: 24 }}>
+      <div style={{ textAlign: 'center', marginBottom: 22 }}>
         <div style={{
-          display: 'inline-block',
-          width: 72,
-          height: 72,
-          borderRadius: '50%',
-          background: elColor.bg,
-          border: `2px solid ${elColor.border}`,
-          lineHeight: '72px',
-          fontSize: 36,
-          marginBottom: 14,
-          textAlign: 'center',
+          display: 'inline-block', width: 72, height: 72, borderRadius: '50%',
+          background: elColor.bg, border: `2px solid ${elColor.border}`,
+          lineHeight: '72px', fontSize: 36, marginBottom: 14, textAlign: 'center',
         }}>
           {signSymbol}
         </div>
-        <p style={{ color: '#f5f0e8', fontSize: 30, fontWeight: 700, margin: '0 0 4px', letterSpacing: 0.5 }}>{signName}</p>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 16, marginTop: 6 }}>
+        <p style={{ color: '#f5f0e8', fontSize: 30, fontWeight: 700, margin: '0 0 6px' }}>{signName}</p>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 16 }}>
           <span style={{ color: 'rgba(245,240,232,0.45)', fontSize: 11 }}>{signDates}</span>
           <span style={{ color: elColor.accent, fontSize: 11, fontWeight: 600 }}>{signElement}</span>
         </div>
       </div>
 
-      {/* Type + date badge */}
       <div style={{
-        background: 'rgba(197,160,89,0.1)',
-        border: '1px solid rgba(197,160,89,0.3)',
-        borderRadius: 8,
-        padding: '7px 16px',
-        textAlign: 'center',
-        marginBottom: 22,
-        display: 'inline-block',
-        width: '100%',
+        background: 'rgba(197,160,89,0.1)', border: '1px solid rgba(197,160,89,0.3)',
+        borderRadius: 8, padding: '7px 16px', textAlign: 'center', marginBottom: 20,
         boxSizing: 'border-box',
       }}>
         <p style={{ color: '#C5A059', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', margin: '0 0 2px', fontWeight: 700 }}>
@@ -362,29 +383,19 @@ export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, s
         <p style={{ color: 'rgba(245,240,232,0.55)', fontSize: 10, margin: 0 }}>{today}</p>
       </div>
 
-      {/* Overview */}
       {overview && (
         <div style={{
-          background: 'rgba(255,255,255,0.04)',
-          borderRadius: 10,
-          padding: '14px 18px',
-          marginBottom: 18,
-          borderLeft: `3px solid ${elColor.accent}`,
+          background: 'rgba(255,255,255,0.04)', borderRadius: 10,
+          padding: '14px 18px', marginBottom: 16, borderLeft: `3px solid ${elColor.accent}`,
         }}>
-          <p style={{ color: 'rgba(245,240,232,0.85)', fontSize: 14, lineHeight: 1.65, margin: 0 }}>
-            {overview}
-          </p>
+          <p style={{ color: 'rgba(245,240,232,0.85)', fontSize: 14, lineHeight: 1.65, margin: 0 }}>{overview}</p>
         </div>
       )}
 
-      {/* Lucky elements */}
       {lucky && (
         <div style={{
-          background: 'rgba(197,160,89,0.06)',
-          border: '1px solid rgba(197,160,89,0.25)',
-          borderRadius: 10,
-          padding: '11px 16px',
-          marginBottom: 14,
+          background: 'rgba(197,160,89,0.06)', border: '1px solid rgba(197,160,89,0.25)',
+          borderRadius: 10, padding: '11px 16px', marginBottom: 14,
         }}>
           <p style={{ color: '#C5A059', fontSize: 9, letterSpacing: 2.5, textTransform: 'uppercase', margin: '0 0 6px', fontWeight: 700 }}>
             ✦ Lucky Elements
@@ -393,14 +404,9 @@ export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, s
         </div>
       )}
 
-      {/* Footer */}
       <div style={{
-        marginTop: 20,
-        paddingTop: 14,
-        borderTop: '1px solid rgba(197,160,89,0.2)',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
+        marginTop: 18, paddingTop: 14, borderTop: '1px solid rgba(197,160,89,0.2)',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
       }}>
         <p style={{ color: 'rgba(245,240,232,0.35)', fontSize: 10, margin: 0 }}>India's Premium Vedic Astrology Platform</p>
         <p style={{ color: '#C5A059', fontSize: 11, margin: 0, letterSpacing: 1.5, fontWeight: 700 }}>everydayhoroscope.in</p>
@@ -409,16 +415,22 @@ export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, s
   );
 }
 
-// ─── Generic share buttons (used for both Panchang and Horoscope) ─────────────
+// ─── Share Buttons ────────────────────────────────────────────────────────────
 
 export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-card' }) {
-  const [copied, setCopied]           = useState(false);
-  const [generating, setGenerating]   = useState(false);
-  const [hint, setHint]               = useState(null); // { platform, message }
+  const [copied, setCopied]         = useState(false);
+  const [generating, setGenerating] = useState(false);
+  const [hint, setHint]             = useState(null);
 
-  const encodedUrl   = encodeURIComponent(pageUrl);
-  const encodedText  = encodeURIComponent(shareText + '\n' + pageUrl);
-  const encodedTweet = encodeURIComponent(shareText);
+  const cardFilename  = `${filename}-${new Date().toISOString().slice(0, 10)}.png`;
+  const encodedUrl    = encodeURIComponent(pageUrl);
+  const encodedText   = encodeURIComponent(shareText + '\n' + pageUrl);
+  const encodedTweet  = encodeURIComponent(shareText);
+
+  const showHint = (message, duration = 7000) => {
+    setHint(message);
+    setTimeout(() => setHint(null), duration);
+  };
 
   const getCanvas = async () => {
     setGenerating(true);
@@ -427,44 +439,50 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
     return canvas;
   };
 
+  // ── WhatsApp: try native file share first (mobile), else download + wa.me ──
   const handleWhatsApp = async () => {
-    // Always download card first so user has the image ready, then open wa.me
+    const canvas = await getCanvas();
+    if (!canvas) {
+      window.open(`https://wa.me/?text=${encodedText}`, '_blank');
+      return;
+    }
+    const result = await nativeShareImage(canvas, cardFilename, shareText, shareText + '\n' + pageUrl);
+    if (result === 'shared' || result === 'aborted') return; // handled natively
+    // Desktop fallback: download card, then open wa.me
+    downloadCanvas(canvas, cardFilename);
+    setTimeout(() => window.open(`https://wa.me/?text=${encodedText}`, '_blank'), 400);
+    showHint('📲 Card saved! Open WhatsApp → tap the 📎 attach icon → select the downloaded image to share it.');
+  };
+
+  // ── Facebook: try native share first (mobile), else download + sharer ──────
+  const handleFacebook = async () => {
     const canvas = await getCanvas();
     if (canvas) {
-      downloadCanvas(canvas, `${filename}-${new Date().toISOString().slice(0, 10)}.png`);
+      const result = await nativeShareImage(canvas, cardFilename, shareText, pageUrl);
+      if (result === 'shared' || result === 'aborted') return;
+      downloadCanvas(canvas, cardFilename);
     }
-    // Open WhatsApp link simultaneously (slight delay so download triggers first)
-    setTimeout(() => {
-      window.open(`https://wa.me/?text=${encodedText}`, '_blank');
-    }, 300);
-    setHint({ platform: 'whatsapp', message: '📲 Card saved to your device — open WhatsApp, tap the attachment icon, and select the downloaded image.' });
-    setTimeout(() => setHint(null), 6000);
-  };
-
-  const handleFacebook = async () => {
-    // Download card + open Facebook sharer
-    const canvas = await getCanvas();
-    if (canvas) downloadCanvas(canvas, `${filename}-facebook-${new Date().toISOString().slice(0, 10)}.png`);
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank');
-    setHint({ platform: 'facebook', message: '📷 Card downloaded — upload it as a photo when posting on Facebook.' });
-    setTimeout(() => setHint(null), 6000);
+    showHint('📷 Card downloaded — create a new Facebook post and upload the image directly for best results.');
   };
 
+  // ── X/Twitter: share URL (no image API without auth) ─────────────────────
   const handleX = () => {
     window.open(`https://twitter.com/intent/tweet?text=${encodedTweet}&url=${encodedUrl}`, '_blank');
   };
 
+  // ── Instagram / YouTube / generic download ────────────────────────────────
   const handleDownload = async (platform) => {
     const canvas = await getCanvas();
     if (!canvas) return;
-    downloadCanvas(canvas, `${filename}-${platform}-${new Date().toISOString().slice(0, 10)}.png`);
+    const result = await nativeShareImage(canvas, cardFilename, shareText, pageUrl);
+    if (result === 'shared' || result === 'aborted') return;
+    downloadCanvas(canvas, cardFilename);
     const messages = {
-      instagram: '📸 Card saved! Open Instagram → Create post → select the downloaded image.',
+      instagram: '📸 Card saved! Open Instagram → tap + → Post → select the downloaded image.',
       youtube:   '▶ Card saved! Use in YouTube Community post or as a Shorts thumbnail.',
-      save:      '✅ Card saved to your device.',
     };
-    setHint({ platform, message: messages[platform] || messages.save });
-    setTimeout(() => setHint(null), 5000);
+    showHint(messages[platform] || '✅ Card saved to your device.');
   };
 
   const handleCopy = async () => {
@@ -476,12 +494,12 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
   };
 
   const buttons = [
-    { id: 'whatsapp',  label: 'WhatsApp',  icon: <WhatsAppIcon />,  color: 'bg-[#25D366] hover:bg-[#20b856] text-white',                                            action: handleWhatsApp },
-    { id: 'facebook',  label: 'Facebook',  icon: <FacebookIcon />,  color: 'bg-[#1877F2] hover:bg-[#1464d4] text-white',                                            action: handleFacebook },
-    { id: 'x',         label: 'X',         icon: <XIcon />,         color: 'bg-black hover:bg-zinc-800 text-white',                                                  action: handleX },
+    { id: 'whatsapp',  label: 'WhatsApp',  icon: <WhatsAppIcon />,  color: 'bg-[#25D366] hover:bg-[#20b856] text-white',                                             action: handleWhatsApp },
+    { id: 'facebook',  label: 'Facebook',  icon: <FacebookIcon />,  color: 'bg-[#1877F2] hover:bg-[#1464d4] text-white',                                             action: handleFacebook },
+    { id: 'x',         label: 'X',         icon: <XIcon />,         color: 'bg-black hover:bg-zinc-800 text-white',                                                   action: handleX },
     { id: 'instagram', label: 'Instagram', icon: <InstagramIcon />, color: 'bg-gradient-to-br from-[#833ab4] via-[#fd1d1d] to-[#fcb045] hover:opacity-90 text-white', action: () => handleDownload('instagram') },
-    { id: 'youtube',   label: 'YouTube',   icon: <YouTubeIcon />,   color: 'bg-[#FF0000] hover:bg-[#cc0000] text-white',                                            action: () => handleDownload('youtube') },
-    { id: 'save',      label: 'Save Card', icon: <DownloadIcon />,  color: 'bg-gold/20 hover:bg-gold/30 text-gold border border-gold/30',                           action: () => handleDownload('save') },
+    { id: 'youtube',   label: 'YouTube',   icon: <YouTubeIcon />,   color: 'bg-[#FF0000] hover:bg-[#cc0000] text-white',                                             action: () => handleDownload('youtube') },
+    { id: 'save',      label: 'Save Card', icon: <DownloadIcon />,  color: 'bg-gold/20 hover:bg-gold/30 text-gold border border-gold/30',                            action: () => handleDownload('save') },
     {
       id: 'copy', label: copied ? 'Copied!' : 'Copy Link', icon: <CopyIcon />,
       color: copied
@@ -508,8 +526,8 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
         ))}
       </div>
       {hint && (
-        <p className="text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-2">
-          {hint.message}
+        <p className="text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-2.5 leading-relaxed">
+          {hint}
         </p>
       )}
     </div>
