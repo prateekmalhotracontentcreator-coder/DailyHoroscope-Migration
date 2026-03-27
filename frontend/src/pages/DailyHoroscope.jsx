@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
+import { Card } from '../components/ui/card';
 import { HoroscopeCard } from '../components/HoroscopeCard';
 import { ZodiacCard } from '../components/ZodiacCard';
 import { DOBBanner, DOBModal } from '../components/DOBPrompt';
 import { SEO } from '../components/SEO';
+import { HoroscopeShareCard, ShareButtons } from '../components/ShareCard';
 import { ArrowLeft, Star } from 'lucide-react';
 import { useHoroscope, ZODIAC_MAP } from '../hooks/useHoroscope';
 import axios from 'axios';
@@ -15,6 +17,7 @@ const API = `${BACKEND_URL}/api`;
 export const DailyHoroscope = () => {
   const navigate = useNavigate();
   const { primarySign, favourites, favouritesMeta, dobDone, saveDOB, toggleFavourite, dismissDOBPrompt, isFavourite } = useHoroscope();
+  const shareCardRef = useRef(null);
 
   const [signs, setSigns] = useState([]);
   const [selectedSign, setSelectedSign] = useState(null);
@@ -179,6 +182,25 @@ export const DailyHoroscope = () => {
                 type="daily"
                 signName={selectedSignData?.name}
                 signSymbol={selectedSignData?.symbol}
+              />
+              {!loading && horoscope?.content && (
+                <Card className="border border-gold/20 p-5">
+                  <ShareButtons
+                    pageUrl={`https://www.everydayhoroscope.in/horoscope/daily`}
+                    shareText={`${selectedSignData?.name} Daily Horoscope — ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} ✦`}
+                    cardRef={shareCardRef}
+                    filename={`horoscope-${selectedSign}-daily`}
+                  />
+                </Card>
+              )}
+              <HoroscopeShareCard
+                cardRef={shareCardRef}
+                signName={selectedSignData?.name}
+                signSymbol={selectedSignData?.symbol}
+                signDates={selectedSignData?.dates}
+                signElement={selectedSignData?.element}
+                horoscopeType="daily"
+                content={horoscope?.content}
               />
             </div>
           )}
