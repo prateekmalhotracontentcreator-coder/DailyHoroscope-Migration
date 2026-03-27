@@ -52,13 +52,11 @@ async function captureCard(cardRef) {
   if (!cardRef?.current) return null;
   const el = cardRef.current;
 
-  // Temporarily slide the element into the viewport so html2canvas
-  // can capture it at its true rendered size. z-index:-1 keeps it
-  // behind the page so no flash is visible to the user.
+  // Slide into viewport for capture (position:fixed — no layout shift on page).
+  // requestAnimationFrame fires BEFORE the browser paints, so the card is
+  // computed/laid-out but never rendered to screen at left:0.
   el.style.left = '0px';
-  el.style.zIndex = '-1';
-  // One tick for the browser to compute layout at the new position
-  await new Promise(r => setTimeout(r, 20));
+  await new Promise(r => requestAnimationFrame(r));
 
   try {
     return await html2canvas(el, {
@@ -71,9 +69,7 @@ async function captureCard(cardRef) {
     console.error('html2canvas error', e);
     return null;
   } finally {
-    // Restore off-screen position immediately after capture
     el.style.left = '-9999px';
-    el.style.zIndex = '';
   }
 }
 
@@ -493,12 +489,12 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
     window.open(`https://twitter.com/intent/tweet?text=${encodedTweet}&url=${encodedUrl}`, '_blank');
   };
 
-  // ── Instagram / YouTube / generic download ────────────────────────────────
+  // ── Instagram / YouTube / Save — always download directly, no share sheet ──
   const handleDownload = async (platform) => {
     const canvas = await getCanvas();
     if (!canvas) return;
-    const result = await nativeShareImage(canvas, cardFilename, shareText, pageUrl);
-    if (result === 'shared' || result === 'aborted') return;
+    // Download straight to device — never open native share sheet here,
+    // as dismissing it would skip the download entirely.
     downloadCanvas(canvas, cardFilename);
     const messages = {
       instagram: '📸 Card saved! Open Instagram → tap + → Post → select the downloaded image.',
