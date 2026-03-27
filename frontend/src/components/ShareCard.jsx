@@ -50,13 +50,36 @@ const DownloadIcon = () => (
 
 async function captureCard(cardRef) {
   if (!cardRef?.current) return null;
+  const el = cardRef.current;
+
+  // Clone into the visible viewport so html2canvas can render it.
+  // The original stays at left:-9999px so it never flashes in the UI.
+  const clone = el.cloneNode(true);
+  Object.assign(clone.style, {
+    position: 'fixed',
+    top: '0',
+    left: '0',
+    zIndex: '-9999',
+    opacity: '0.001',       // nearly invisible, but still rendered by the browser
+    pointerEvents: 'none',
+    width: el.offsetWidth + 'px',
+  });
+  document.body.appendChild(clone);
+
   try {
-    return await html2canvas(cardRef.current, {
-      scale: 2, useCORS: true, backgroundColor: null, logging: false,
+    return await html2canvas(clone, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: '#0e0c18',   // match card dark background
+      logging: false,
+      width: el.offsetWidth,
+      height: clone.scrollHeight,
     });
   } catch (e) {
     console.error('html2canvas error', e);
     return null;
+  } finally {
+    document.body.removeChild(clone);
   }
 }
 
@@ -436,6 +459,9 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
     setGenerating(true);
     const canvas = await captureCard(cardRef);
     setGenerating(false);
+    if (!canvas) {
+      showHint('⚠️ Could not generate card image. Please try again.', 5000);
+    }
     return canvas;
   };
 
