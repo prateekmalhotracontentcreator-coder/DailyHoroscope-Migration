@@ -51,35 +51,20 @@ const DownloadIcon = () => (
 async function captureCard(cardRef) {
   if (!cardRef?.current) return null;
   const el = cardRef.current;
-
-  // Clone into the visible viewport so html2canvas can render it.
-  // The original stays at left:-9999px so it never flashes in the UI.
-  const clone = el.cloneNode(true);
-  Object.assign(clone.style, {
-    position: 'fixed',
-    top: '0',
-    left: '0',
-    zIndex: '-9999',
-    opacity: '0.001',       // nearly invisible, but still rendered by the browser
-    pointerEvents: 'none',
-    width: el.offsetWidth + 'px',
-  });
-  document.body.appendChild(clone);
-
   try {
-    return await html2canvas(clone, {
+    return await html2canvas(el, {
       scale: 2,
       useCORS: true,
-      backgroundColor: '#0e0c18',   // match card dark background
+      backgroundColor: null,
       logging: false,
-      width: el.offsetWidth,
-      height: clone.scrollHeight,
+      // Tell html2canvas the full document is wide enough to include left:-9999px
+      windowWidth: 10800,
+      scrollX: 0,
+      scrollY: 0,
     });
   } catch (e) {
     console.error('html2canvas error', e);
     return null;
-  } finally {
-    document.body.removeChild(clone);
   }
 }
 
@@ -162,9 +147,10 @@ export function PanchangShareCard({ data, cardRef }) {
         padding: 52,
         fontFamily: "'Georgia', 'Times New Roman', serif",
         color: '#f5f0e8',
-        position: 'absolute',
+        position: 'fixed',
         left: -9999,
-        top: -9999,
+        top: 0,
+        pointerEvents: 'none',
         boxSizing: 'border-box',
         border: '1px solid rgba(197,160,89,0.25)',
       }}
@@ -369,7 +355,8 @@ export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, s
         borderRadius: 20, padding: 56,
         fontFamily: "'Georgia', 'Times New Roman', serif",
         color: '#f5f0e8',
-        position: 'absolute', left: -9999, top: -9999,
+        position: 'fixed', left: -9999, top: 0,
+        pointerEvents: 'none',
         boxSizing: 'border-box',
         border: '1px solid rgba(197,160,89,0.25)',
       }}
