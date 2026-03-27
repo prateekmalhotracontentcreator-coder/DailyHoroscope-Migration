@@ -1,7 +1,7 @@
 # EverydayHoroscope — Claude Code Working Guide
 
 > READ THIS FIRST. This file is the single source of truth for every Claude Code session.
-> Last updated: 26 March 2026
+> Last updated: 27 March 2026
 
 ---
 
@@ -43,12 +43,14 @@ DailyHoroscope-Migration/
 ├── frontend/
 │   └── src/
 │       ├── pages/
-│       │   ├── PanchangPage.jsx   # ⭐ Panchang UI (primary active file)
-│       │   ├── TarotPage.jsx
-│       │   ├── NumerologyPage.jsx
-│       │   └── KundaliPage.jsx
+│       │   ├── PanchangPage.jsx      # ⭐ Panchang UI (primary active file)
+│       │   ├── TarotPage.jsx         # Tarot draws + spreads
+│       │   ├── NumerologyPage.jsx    # Numerology reports
+│       │   ├── BirthChartPage.jsx    # Kundali / Birth Chart
+│       │   └── BrihatKundliPage.jsx  # Extended Kundali report
 │       └── components/
-│           └── SEO.jsx
+│           ├── SEO.jsx
+│           └── ShareCard.jsx         # PanchangShareCard + HoroscopeShareCard + ShareButtons
 ├── frontend/public/
 │   ├── sitemap.xml
 │   └── tarot_cards.json           # 78-card SVG bundle
@@ -71,9 +73,13 @@ File: `backend/panchang_router.py`
 - Yoga + end time
 - Karana + end time
 - Paksha, Lunar month, Samvat, Sun/Moon signs
+- Amrit Kalam (Nakshatra-based auspicious window)
+- Special Yogas: Amrit Siddhi, Sarvartha Siddhi, Ravi Yoga (Nakshatra × Weekday rules)
+- True Choghadiya: 8 equal daylight + 8 nighttime slots with planetary rulers
 
-**Timing windows (8 total, sorted chronologically):**
+**Timing windows (sorted chronologically, includes Amrit Kalam):**
 - ✅ Brahma Muhurta (96 min pre-sunrise)
+- ✅ Amrit Kalam (Nakshatra-based)
 - ⛔ Rahu Kaal (kaal-based, weekday-specific)
 - ⛔ Yamaganda (kaal-based)
 - 🔶 Gulika Kaal (kaal-based)
@@ -115,21 +121,43 @@ Nepal (1), New Zealand (1)
 
 ---
 
-## 6. Frontend State (PanchangPage.jsx)
+## 6. Frontend State
 
+### PanchangPage.jsx
 **Features live:**
 - 6-tab sub-nav: Today / Tomorrow / Tithi / Choghadiya / Calendar / Festivals
 - Location picker (91 cities, searchable by name/country/TZ abbreviation)
 - TZ abbreviation badge on picker button + dropdown rows (IST/EST/GST/MYT etc.)
 - 2×2 Sun/Moon card grid (Sunrise · Sunset · Moonrise · Moonset) with seconds
 - Five Limbs card (Tithi/Nakshatra/Yoga/Karana/Vara) with end times
-- Timing Windows card — **Auspicious** (green header) / **Inauspicious** (red header) sub-groups
+- Timing Windows card — **Auspicious** (green header) / **Inauspicious** (red header) sub-groups incl. Amrit Kalam
 - "Now" indicator on current active window
+- Special Yogas card (Amrit Siddhi, Sarvartha Siddhi, Ravi Yoga)
+- Choghadiya tab — 8 daylight + 8 nighttime slots with planetary rulers and quality badges
 - Observances card (Ekadashi, Purnima, festivals etc.)
 - Monthly calendar with Tithi per cell + festival dot
 - Date-specific Panchang view with breadcrumb
 - Full SEO + JSON-LD schema on all 7 routes
 - localStorage persistence for selected city
+- **Share card** — `PanchangShareCard` + `ShareButtons` (WhatsApp/Facebook/X/Instagram/YouTube/Save/Copy)
+
+### TarotPage.jsx ✅ Live
+- 3 tabs: Daily Draw / Spreads / History
+- Flipping card animation, 78-card SVG deck from `tarot_cards.json`
+- Multi-card spread grid, bookmark/history tracking
+
+### NumerologyPage.jsx ✅ Live
+- 4 tabs: Select Report / Generate / Report / History
+- 10 report types (Life Path, Name Correction, Karmic Debt, Relationship, Career, etc.)
+- Computed numbers grid, guidance + remedy notes
+
+### BirthChartPage.jsx + BrihatKundliPage.jsx ✅ Live
+- Full Kundali / Birth Chart UI exists (two separate pages)
+- Backend: `vedic_calculator.py`
+
+### Horoscope Pages (Daily / Weekly / Monthly) ✅ Live
+- **Share card** — `HoroscopeShareCard` + `ShareButtons` on all three pages
+- Element-based color theming (Fire/Earth/Air/Water)
 
 ---
 
@@ -184,22 +212,34 @@ npm start
 
 ---
 
-## 10. What's Next — Panchang Module
+## 10. Completed Features (as of 27 March 2026)
 
-The Panchang module core is complete. Remaining enhancements (in priority order):
+| Feature | Status |
+|---|---|
+| Panchang engine (Tithi/Nakshatra/Yoga/Karana/Vara/Sunrise/Moonrise) | ✅ |
+| True Choghadiya (8 daylight + 8 night slots, planetary rulers) | ✅ |
+| Amrit Kalam (Nakshatra-based window) | ✅ |
+| Special Yogas (Amrit Siddhi, Sarvartha Siddhi, Ravi Yoga) | ✅ |
+| Panchang share card (WhatsApp/Facebook/Instagram/YouTube/Save) | ✅ |
+| Horoscope share cards (Daily/Weekly/Monthly) | ✅ |
+| Tarot frontend (flipping cards, spreads, history) | ✅ |
+| Numerology frontend (10 report types) | ✅ |
+| Kundali / Birth Chart UI (BirthChartPage + BrihatKundliPage) | ✅ |
+| Razorpay subscription / paywall | ✅ test keys active on Render |
+| SEO — OG tags, GA4 (G-3HJC8BTHRQ), JSON-LD schema | ✅ |
 
-1. **True Choghadiya** — 8 equal daylight slots with planetary rulers (Amrit/Shubh/Labh/Char/Udveg/Kaal/Rog). Currently the Choghadiya tab shows Panchang Muhurtas — needs its own calculation.
-2. **Amrit Kalam** — Nakshatra-based auspicious window (Drik shows 06:50–08:21 AM for 26 Mar)
-3. **Special Yogas** — Sarvartha Siddhi, Ravi Yoga (rule-based Tithi+Nakshatra+Vara combos)
-4. **WhatsApp share card** — image card of daily Panchang for sharing
-5. **SEO manual steps** — OG image upload, Google Search Console verification, GA4 wiring, Bing Webmaster
+## 11. What's Next (in priority order)
 
-## 11. What's Next — Other Modules
+### Sprint A — SEO Verification (quick, 1 session)
+1. **Google Search Console verification** — add `google-site-verification` meta tag to `frontend/public/index.html`. Tag obtained from GSC dashboard → Verify ownership → HTML tag method.
+2. **Bing Webmaster** — add `msvalidate.01` meta tag to `frontend/public/index.html`. Tag from Bing Webmaster Tools → Add site → HTML meta tag.
 
-See `PROJECT_STATUS.md` for the full Tranche 1 / Tranche 2 breakdown.
+### Sprint B — Push Notifications
+3. **Daily reminders** — WhatsApp (via Interakt/Wati) or email (via Resend/Mailgun) for daily Panchang + horoscope. Needs: user opt-in UI, backend cron job, provider integration.
 
-Key next modules after Panchang:
-- **Tarot frontend** — `tarot_router.py` backend is live, frontend cards + UI needed
-- **Numerology frontend** — `numerology_router.py` backend is live, frontend needed
-- **Kundali / Birth Chart UI** — `vedic_calculator.py` is live, UI needed
-- **Subscription / Paywall** — Razorpay integration for premium reports
+### Sprint C — Premium Scheduler (larger sprint)
+4. **Premium member card send-outs** — cron job that generates Panchang share card images and delivers to subscribed users via WhatsApp/email. Depends on Sprint B provider choice.
+
+### Razorpay
+- Test keys active on Render ✅
+- Live keys: upload only when ready for Play Store testing
