@@ -1028,7 +1028,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
           pageUrl={`https://www.everydayhoroscope.in/panchang/${dayOffset === 0 ? 'today' : 'tomorrow'}`}
           shareText={`Today's Panchang — ${summary?.weekday}, ${data.date}\nTithi: ${panchang?.tithi?.name} · Nakshatra: ${panchang?.nakshatra?.name} · Yoga: ${panchang?.yoga?.name}\nSunrise: ${summary?.sunrise} · Sunset: ${summary?.sunset}`}
           cardRef={shareCardRef}
-          cardData={data}
+          filename={`panchang-${data.location?.slug || 'india'}-${data.date || 'today'}`}
         />
       </Card>
 
