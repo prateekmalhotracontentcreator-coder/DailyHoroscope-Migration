@@ -318,6 +318,69 @@ class NotificationLog(BaseModel):
 
 # ── Email ─────────────────────────────────────────────────────────────────────
 
+def _branded_email(recipient_name: str, body_html: str) -> str:
+    """Wraps any HTML body in the EverydayHoroscope branded email template."""
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f4f1eb;font-family:Georgia,'Times New Roman',serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f4f1eb;padding:32px 0;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#0e0c18;border-radius:12px;overflow:hidden;border:1px solid #2a2440;">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:linear-gradient(135deg,#1b1530 0%,#0e0c18 100%);padding:32px 40px;text-align:center;border-bottom:1px solid #C5A05933;">
+            <p style="margin:0 0 6px;color:#C5A059;font-size:11px;letter-spacing:5px;text-transform:uppercase;">✦ EverydayHoroscope.in ✦</p>
+            <h1 style="margin:0;color:#f5f0e8;font-size:26px;font-weight:700;letter-spacing:0.5px;">Everyday Horoscope</h1>
+            <p style="margin:6px 0 0;color:#C5A059aa;font-size:12px;">India's Premium Vedic Astrology Platform</p>
+          </td>
+        </tr>
+
+        <!-- Greeting -->
+        <tr>
+          <td style="padding:28px 40px 0;color:#f5f0e8;">
+            <p style="margin:0;font-size:15px;color:#C5A059aa;">Namaste,</p>
+            <p style="margin:4px 0 0;font-size:18px;font-weight:600;color:#f5f0e8;">{recipient_name} 🙏</p>
+          </td>
+        </tr>
+
+        <!-- Divider -->
+        <tr>
+          <td style="padding:16px 40px;">
+            <div style="height:1px;background:linear-gradient(90deg,transparent,#C5A05955,transparent);"></div>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="padding:0 40px 28px;color:#e8e0d0;font-size:15px;line-height:1.8;">
+            {body_html}
+          </td>
+        </tr>
+
+        <!-- Divider -->
+        <tr>
+          <td style="padding:0 40px;">
+            <div style="height:1px;background:linear-gradient(90deg,transparent,#C5A05955,transparent);"></div>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="padding:20px 40px 28px;text-align:center;">
+            <p style="margin:0 0 4px;color:#C5A059;font-size:13px;font-weight:600;letter-spacing:1px;">everydayhoroscope.in</p>
+            <p style="margin:0;color:#6b6480;font-size:11px;">SkyHound Studios · Delhi, India</p>
+            <p style="margin:8px 0 0;color:#4a4460;font-size:10px;">You're receiving this because you subscribed to EverydayHoroscope updates.</p>
+          </td>
+        </tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>"""
+
 async def send_email_notification(to_email: str, subject: str, body: str):
     resend_api_key = os.environ.get('RESEND_API_KEY', '')
     from_email = os.environ.get('FROM_EMAIL', 'noreply@everydayhoroscope.in')
@@ -990,7 +1053,8 @@ async def _dispatch_notifications(subject: str, body: str, channels: list, subsc
                     log.status = "failed"; log.error = "No email address"
                 else:
                     log.recipient_email = sub["email"]
-                    ok = await send_email_notification(sub["email"], subject, body)
+                    branded = _branded_email(sub["name"], body)
+                    ok = await send_email_notification(sub["email"], subject, branded)
                     log.status = "sent" if ok else "failed"
                     if not ok: log.error = "Resend API error"
             elif channel == "whatsapp":
