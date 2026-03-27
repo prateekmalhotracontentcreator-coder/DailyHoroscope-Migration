@@ -51,20 +51,29 @@ const DownloadIcon = () => (
 async function captureCard(cardRef) {
   if (!cardRef?.current) return null;
   const el = cardRef.current;
+
+  // Temporarily slide the element into the viewport so html2canvas
+  // can capture it at its true rendered size. z-index:-1 keeps it
+  // behind the page so no flash is visible to the user.
+  el.style.left = '0px';
+  el.style.zIndex = '-1';
+  // One tick for the browser to compute layout at the new position
+  await new Promise(r => setTimeout(r, 20));
+
   try {
     return await html2canvas(el, {
       scale: 2,
       useCORS: true,
       backgroundColor: null,
       logging: false,
-      // Tell html2canvas the full document is wide enough to include left:-9999px
-      windowWidth: 10800,
-      scrollX: 0,
-      scrollY: 0,
     });
   } catch (e) {
     console.error('html2canvas error', e);
     return null;
+  } finally {
+    // Restore off-screen position immediately after capture
+    el.style.left = '-9999px';
+    el.style.zIndex = '';
   }
 }
 
