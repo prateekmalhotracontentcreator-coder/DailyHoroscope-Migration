@@ -867,6 +867,44 @@ function PanchangDateSEOContent({ panchangData }) {
   );
 }
 
+// ─── Special Yogas Card ──────────────────────────────────────────────────────
+
+const YOGA_QUALITY_STYLES = {
+  good:    { card: 'border-emerald-500/30 bg-emerald-500/5', badge: 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-400', dot: 'bg-emerald-500', icon: '✦' },
+  caution: { card: 'border-amber-500/30 bg-amber-500/5',   badge: 'bg-amber-500/15 text-amber-600 dark:text-amber-400',   dot: 'bg-amber-500',   icon: '⚠' },
+  neutral: { card: 'border-border bg-card',                badge: 'bg-muted text-muted-foreground',                         dot: 'bg-muted-foreground', icon: '·' },
+};
+
+function SpecialYogasCard({ yogas }) {
+  if (!yogas || yogas.length === 0) return null;
+  return (
+    <div className="space-y-2">
+      {yogas.map(yoga => {
+        const s = YOGA_QUALITY_STYLES[yoga.quality] || YOGA_QUALITY_STYLES.neutral;
+        return (
+          <div key={yoga.name} className={`rounded-xl border p-4 ${s.card}`}>
+            <div className="flex items-start justify-between gap-3">
+              <div className="flex items-center gap-2.5 min-w-0">
+                <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 mt-0.5 ${s.dot}`} />
+                <div className="min-w-0">
+                  <p className="font-playfair font-semibold text-sm text-foreground leading-tight">{yoga.name}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{yoga.meaning}</p>
+                </div>
+              </div>
+              <div className="flex-shrink-0 text-right">
+                <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${s.badge}`}>
+                  {yoga.quality === 'good' ? 'Auspicious' : yoga.quality === 'caution' ? 'Caution' : 'Neutral'}
+                </span>
+                <p className="text-[10px] text-muted-foreground mt-1">{yoga.nakshatra} · {yoga.vara}</p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 // ─── Views ──────────────────────────────────────────────────────────────────
 
 function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad, lang }) {
@@ -906,7 +944,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
   if (error)   return <p className="text-center text-muted-foreground py-12">{error}</p>;
   if (!data)   return null;
 
-  const { summary, panchang, day_quality_windows, observances } = data;
+  const { summary, panchang, day_quality_windows, observances, special_yogas } = data;
   const locTZ  = data.location?.timezone || locationTZ || 'Asia/Kolkata';
   const fmtTime = makeFormatTime(locTZ);
   const tzAbbr  = getTZAbbr(locTZ);
@@ -953,6 +991,13 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
           ))}
         </div>
       </Card>
+
+      {special_yogas?.length > 0 && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-2">Special Yogas</p>
+          <SpecialYogasCard yogas={special_yogas} />
+        </div>
+      )}
 
       <SunMoonCards summary={summary} panchang={panchang} tzAbbr={tzAbbr} lang={lang} />
       <TimingWindowsCard windows={day_quality_windows} fmtTime={fmtTime} tzAbbr={tzAbbr} lang={lang} />
@@ -1328,7 +1373,7 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
   if (loading) return <div className="space-y-4">{[...Array(5)].map((_, i) => <div key={i} className="h-16 bg-gold/5 rounded-lg animate-pulse" />)}</div>;
   if (error)   return <p className="text-center text-muted-foreground py-12">{error}</p>;
   if (!data)   return null;
-  const { summary, panchang, day_quality_windows, observances } = data;
+  const { summary, panchang, day_quality_windows, observances, special_yogas } = data;
   const locTZ  = data.location?.timezone || 'Asia/Kolkata';
   const fmtTime = makeFormatTime(locTZ);
   const tzAbbr  = getTZAbbr(locTZ);
@@ -1370,6 +1415,12 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
           ))}
         </div>
       </Card>
+      {special_yogas?.length > 0 && (
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-2">Special Yogas</p>
+          <SpecialYogasCard yogas={special_yogas} />
+        </div>
+      )}
       <SunMoonCards summary={summary} panchang={panchang} tzAbbr={tzAbbr} />
       <TimingWindowsCard windows={day_quality_windows} fmtTime={fmtTime} tzAbbr={tzAbbr} />
       {observances?.length > 0 && (

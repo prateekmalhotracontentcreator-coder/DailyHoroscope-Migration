@@ -14,7 +14,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v10-swiss"
+ENGINE_VERSION = "panchang-router-v11-swiss"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -91,6 +91,44 @@ _NIGHT_CHOG: dict[int, list[str]] = {
     4: ["Udveg","Shubh","Amrit","Char","Rog","Kaal","Labh","Udveg"],   # Thursday
     5: ["Amrit","Char","Rog","Kaal","Labh","Udveg","Shubh","Amrit"],   # Friday
     6: ["Labh","Udveg","Shubh","Amrit","Char","Rog","Kaal","Labh"],    # Saturday
+}
+
+# ---------------------------------------------------------------------------
+# Special Yogas — Nakshatra × Weekday rule tables
+# weekday key = Python date.isoweekday(): Mon=1 … Sun=7
+# ---------------------------------------------------------------------------
+
+# Sarvartha Siddhi Yoga — "All-Purpose Accomplishment"; auspicious for new ventures
+_SARVARTHA_SIDDHI: dict[int, set[str]] = {
+    7: {"Hasta", "Pushya", "Uttara Phalguni", "Uttara Ashadha", "Uttara Bhadrapada"},
+    1: {"Rohini", "Mrigashira", "Punarvasu", "Pushya", "Anuradha", "Shravana"},
+    2: {"Ashwini", "Krittika", "Mrigashira", "Chitra", "Dhanishtha", "Shatabhisha"},
+    3: {"Krittika", "Rohini", "Anuradha", "Jyeshtha", "Revati"},
+    4: {"Vishakha", "Anuradha", "Uttara Phalguni", "Uttara Ashadha", "Uttara Bhadrapada", "Revati", "Pushya"},
+    5: {"Anuradha", "Revati", "Ashwini", "Punarvasu", "Shatabhisha"},
+    6: {"Rohini", "Swati", "Dhanishtha", "Shravana", "Shatabhisha"},
+}
+
+# Amrit Siddhi Yoga — "Nectar of Accomplishment"; rarest and most auspicious
+_AMRIT_SIDDHI: dict[int, str] = {
+    7: "Hasta",       # Sunday
+    1: "Mrigashira",  # Monday
+    2: "Ashwini",     # Tuesday
+    3: "Anuradha",    # Wednesday
+    4: "Pushya",      # Thursday
+    5: "Revati",      # Friday
+    6: "Rohini",      # Saturday
+}
+
+# Ravi Yoga — Sun yoga; avoid starting new work (inauspicious)
+_RAVI_YOGA: dict[int, set[str]] = {
+    7: {"Krittika", "Uttara Phalguni", "Uttara Ashadha"},
+    1: {"Hasta", "Shravana"},
+    2: {"Ashwini", "Chitra", "Dhanishtha"},
+    3: {"Ashlesha", "Jyeshtha", "Revati"},
+    4: {"Punarvasu", "Vishakha", "Purva Bhadrapada"},
+    5: {"Bharani", "Purva Phalguni", "Purva Ashadha"},
+    6: {"Pushya", "Anuradha", "Uttara Bhadrapada"},
 }
 
 # Vijaya Muhurta — weekday-specific Muhurta index from sunrise
@@ -182,12 +220,22 @@ class PanchangMeta(BaseModel):
     persistence_mode: Literal["stateless_v1"]
 
 
+class SpecialYoga(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    name: str                    # e.g. "Sarvartha Siddhi Yoga"
+    quality: TimingQuality       # "good" | "neutral" | "caution"
+    nakshatra: str               # triggering nakshatra
+    vara: str                    # triggering weekday
+    meaning: str                 # one-line description
+
+
 class PanchangDailyResponse(BaseModel):
     model_config = ConfigDict(extra="ignore")
     date: str
     location: PanchangLocation
     summary: PanchangSummary
     panchang: PanchangDetail
+    special_yogas: list[SpecialYoga] = Field(default_factory=list)
     day_quality_windows: list[PanchangTimingWindow] = Field(default_factory=list)
     observances: list[PanchangObservance] = Field(default_factory=list)
     related_links: list[PanchangLink] = Field(default_factory=list)
@@ -679,6 +727,45 @@ def _day_indexes(
     return indexes, {"astro": astro}
 
 
+_WEEKDAY_NAMES = {1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday",7:"Sunday"}
+
+def _special_yogas(nakshatra: str, isoweekday: int) -> list[SpecialYoga]:
+    """Return all special yogas active today based on Nakshatra × Weekday rules."""
+    yogas: list[SpecialYoga] = []
+    vara = _WEEKDAY_NAMES[isoweekday]
+
+    # Amrit Siddhi (most auspicious — check first, subset of Sarvartha Siddhi days)
+    if _AMRIT_SIDDHI.get(isoweekday) == nakshatra:
+        yogas.append(SpecialYoga(
+            name="Amrit Siddhi Yoga",
+            quality="good",
+            nakshatra=nakshatra,
+            vara=vara,
+            meaning="Nectar of Accomplishment — the rarest and most powerful auspicious yoga. Excellent for all new beginnings.",
+        ))
+    # Sarvartha Siddhi
+    elif nakshatra in _SARVARTHA_SIDDHI.get(isoweekday, set()):
+        yogas.append(SpecialYoga(
+            name="Sarvartha Siddhi Yoga",
+            quality="good",
+            nakshatra=nakshatra,
+            vara=vara,
+            meaning="All-Purpose Accomplishment — highly auspicious for starting new ventures, travel, business, and ceremonies.",
+        ))
+
+    # Ravi Yoga (inauspicious — can coexist with auspicious yogas in edge cases)
+    if nakshatra in _RAVI_YOGA.get(isoweekday, set()):
+        yogas.append(SpecialYoga(
+            name="Ravi Yoga",
+            quality="caution",
+            nakshatra=nakshatra,
+            vara=vara,
+            meaning="Sun Yoga — avoid initiating important new work. Good for spiritual practices and Sun worship.",
+        ))
+
+    return yogas
+
+
 def _observances_for_day(
     base_date: date, indexes: dict, tithi_label: str,
 ) -> list[PanchangObservance]:
@@ -764,6 +851,7 @@ def _build_daily_response(
             yoga=PanchangSegment(     name=YOGA_NAMES[indexes["yoga"]],              index=indexes["yoga"]      + 1, start=yoga_start,   end=yoga_end),
             karana=PanchangSegment(   name=KARANA_NAMES[indexes["karana"]],          index=indexes["karana"]    + 1, start=karana_start, end=karana_end),
         ),
+        special_yogas=_special_yogas(NAKSHATRA_NAMES[indexes["nakshatra"]], isoweekday),
         day_quality_windows=_day_quality_windows(astro.sunrise, astro.sunset, isoweekday, astro.moon_longitude),
         observances=_observances_for_day(base_date, indexes, tithi_name),
         related_links=_related_links(base_date, location),
