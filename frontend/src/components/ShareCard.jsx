@@ -535,6 +535,11 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
 
   // ── Post card image directly to Facebook Page (admin only) ──────────────────
   const handlePostToFBPage = async () => {
+    const adminToken = localStorage.getItem('admin_token');
+    if (!adminToken) {
+      showHint('🔒 Please log into /admin/dashboard first, then come back and try again.', 8000);
+      return;
+    }
     const canvas = await getCanvas();
     if (!canvas) return;
     setFbPosting(true);
@@ -548,12 +553,11 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
           formData.append('message', fbPageCaption || shareText);
           formData.append('channels', 'facebook');
           const API = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-          const adminToken = localStorage.getItem('admin_token');
           const res = await fetch(`${API}/api/admin/social/post-image`, {
             method: 'POST',
             body: formData,
             credentials: 'include',
-            headers: adminToken ? { Authorization: `Bearer ${adminToken}` } : {},
+            headers: { Authorization: `Bearer ${adminToken}` },
           });
           if (!res.ok) {
             const err = await res.json().catch(() => ({}));
@@ -571,12 +575,7 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
       });
       showHint('✅ Posted to EverydayHoroscope Facebook Page successfully!', 6000);
     } catch (e) {
-      const msg = e.message || 'Unknown error';
-      if (msg.includes('401') || msg.includes('authenticated')) {
-        showHint('🔒 Admin login required — go to /admin to sign in first.', 7000);
-      } else {
-        showHint(`❌ Facebook post failed: ${msg}`, 7000);
-      }
+      showHint(`❌ Facebook post failed: ${e.message || 'Unknown error'}`, 7000);
     } finally {
       setFbPosting(false);
     }
