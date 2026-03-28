@@ -283,6 +283,8 @@ npm start
 | Admin Console — email notifications via Resend | ✅ |
 | Admin Console — scheduled notifications (APScheduler) | ✅ |
 | Admin Console — notification history log | ✅ |
+| Facebook Page posting — one-click from Panchang + Horoscope pages | ✅ |
+| Admin Console — Social Media tab (post + file upload + history) | ✅ |
 
 ---
 
@@ -292,7 +294,7 @@ npm start
 |---|---|---|
 | Google Search Console sitemap submission | 🔜 | Manual step — submit sitemap.xml in GSC dashboard |
 | WhatsApp notifications (Meta Cloud API) | 🔜 | Need WHATSAPP_PHONE_NUMBER_ID + ACCESS_TOKEN on Render |
-| Facebook page posting | 🔜 | Need FACEBOOK_PAGE_ACCESS_TOKEN set on Render |
+| Facebook page posting | ✅ | Working — one-click from Panchang/Horoscope pages + Admin Console |
 | Instagram posting | 🔜 | Instagram Business Account ID pending (loading issue) |
 | Razorpay live keys | 🔜 | Upload only when ready for Play Store |
 | Social media Admin Console channels | 🔜 | Depends on Meta API credentials above |
