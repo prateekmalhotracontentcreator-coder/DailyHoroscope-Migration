@@ -331,7 +331,7 @@ async def send_whatsapp_message(to_phone: str, message: str) -> bool:
     # Normalise phone: strip spaces/dashes, ensure no leading +
     to = to_phone.replace(" ", "").replace("-", "").lstrip("+")
     template_name = os.environ.get("WHATSAPP_TEMPLATE_NAME", "hello_world")
-    template_lang = os.environ.get("WHATSAPP_TEMPLATE_LANG", "en_US")
+    template_lang = os.environ.get("WHATSAPP_TEMPLATE_LANG", "en_US")  # must match approved template lang
     # Build template payload — hello_world has no variables; custom templates may add body params
     payload: dict = {
         "messaging_product": "whatsapp",
@@ -350,7 +350,7 @@ async def send_whatsapp_message(to_phone: str, message: str) -> bool:
     try:
         async with httpx.AsyncClient(timeout=20) as client:
             r = await client.post(
-                f"https://graph.facebook.com/v19.0/{phone_id}/messages",
+                f"https://graph.facebook.com/v22.0/{phone_id}/messages",
                 headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
                 json=payload,
             )
