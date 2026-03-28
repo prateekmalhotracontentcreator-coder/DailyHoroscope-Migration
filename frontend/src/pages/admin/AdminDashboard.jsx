@@ -13,7 +13,8 @@ import {
   Search, RefreshCw, MessageSquare, Mail, Activity,
   AlertTriangle, CheckCircle, Zap, Star,
   Heart, Copy, Send, X, Bell, Phone, Tag,
-  Clock, CalendarClock, PlusCircle, History, Wifi, WifiOff
+  Clock, CalendarClock, PlusCircle, History, Wifi, WifiOff,
+  Globe, Image
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -135,7 +136,11 @@ export const AdminDashboard = () => {
   const [subLoading,      setSubLoading]       = useState(false);
   const [notifLogs,       setNotifLogs]        = useState([]);
   const [scheduled,       setScheduled]        = useState([]);
-  const [notifTab,        setNotifTab]         = useState('subscribers'); // subscribers | compose | scheduled | history
+  const [notifTab,        setNotifTab]         = useState('subscribers'); // subscribers | compose | scheduled | history | social
+  const [socialForm,      setSocialForm]       = useState({ message: '', image_url: '', channels: ['facebook'] });
+  const [socialPosting,   setSocialPosting]    = useState(false);
+  const [socialResults,   setSocialResults]    = useState(null);
+  const [socialLogs,      setSocialLogs]       = useState([]);
   const [subForm,         setSubForm]          = useState({ name: '', email: '', phone: '', tags: '' });
   const [editingSub,      setEditingSub]       = useState(null);
   const [subSearch,       setSubSearch]        = useState('');
@@ -169,7 +174,7 @@ export const AdminDashboard = () => {
     if (activeTab === 'contacts')      fetchContacts();
     if (activeTab === 'reports')       fetchReports();
     if (activeTab === 'health')        fetchHealth();
-    if (activeTab === 'notifications') { fetchSubscribers(); fetchNotifLogs(); fetchScheduled(); }
+    if (activeTab === 'notifications') { fetchSubscribers(); fetchNotifLogs(); fetchScheduled(); fetchSocialLogs(); }
   }, [activeTab]);
 
   const fetchSubscribers = async () => {
@@ -185,6 +190,13 @@ export const AdminDashboard = () => {
     try {
       const res = await axios.get(`${API}/admin/notify/logs`, { headers: getAuthHeaders() });
       setNotifLogs(res.data.logs || []);
+    } catch {}
+  };
+
+  const fetchSocialLogs = async () => {
+    try {
+      const res = await axios.get(`${API}/admin/social/logs`, { headers: getAuthHeaders() });
+      setSocialLogs(res.data.logs || []);
     } catch {}
   };
 
@@ -254,6 +266,25 @@ export const AdminDashboard = () => {
       await axios.delete(`${API}/admin/notify/scheduled/${id}`, { headers: getAuthHeaders() });
       toast.success('Cancelled'); fetchScheduled();
     } catch { toast.error('Failed to cancel'); }
+  };
+
+  const handleSocialPost = async () => {
+    if (!socialForm.message.trim()) { toast.error('Message is required'); return; }
+    if (!socialForm.channels.length) { toast.error('Select at least one channel'); return; }
+    setSocialPosting(true); setSocialResults(null);
+    try {
+      const res = await axios.post(`${API}/admin/social/post`, {
+        message: socialForm.message,
+        image_url: socialForm.image_url || null,
+        channels: socialForm.channels,
+      }, { headers: getAuthHeaders() });
+      setSocialResults(res.data.results);
+      const allOk = res.data.results.every(r => r.success);
+      if (allOk) { toast.success('Posted successfully!'); setSocialForm(p => ({ ...p, message: '', image_url: '' })); }
+      else toast.error('Some posts failed — check results below');
+      fetchSocialLogs();
+    } catch (err) { toast.error(err.response?.data?.detail || 'Post failed'); }
+    finally { setSocialPosting(false); }
   };
 
   const fetchDashboardData = async () => {
@@ -896,6 +927,7 @@ export const AdminDashboard = () => {
                 { id: 'compose',     label: 'Compose',      icon: Send },
                 { id: 'scheduled',   label: 'Scheduled',    icon: CalendarClock },
                 { id: 'history',     label: 'History',      icon: History },
+                { id: 'social',      label: 'Social Media', icon: Globe },
               ].map(({ id, label, icon: Icon }) => (
                 <Button key={id} onClick={() => setNotifTab(id)} size="sm"
                   className={notifTab === id ? 'bg-gold/20 text-gold border border-gold/40' : 'border-gray-600 text-gray-400 hover:bg-gray-700'}
@@ -1174,6 +1206,130 @@ export const AdminDashboard = () => {
                   </div>
                 }
               </Card>
+            )}
+
+            {/* SOCIAL MEDIA */}
+            {notifTab === 'social' && (
+              <div className="space-y-4">
+                {/* Compose */}
+                <Card className="p-5 bg-gray-800 border-gray-700">
+                  <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+                    <Globe className="h-4 w-4 text-gold" />Post to Social Media
+                  </h3>
+
+                  {/* Channels */}
+                  <div className="mb-4">
+                    <Label className="text-gray-400 text-xs mb-2 block">Channels</Label>
+                    <div className="flex flex-wrap gap-3">
+                      {[
+                        { id: 'facebook',  label: 'Facebook',  available: true },
+                        { id: 'instagram', label: 'Instagram', available: false },
+                        { id: 'x',         label: 'X (Twitter)', available: false },
+                        { id: 'youtube',   label: 'YouTube',   available: false },
+                      ].map(({ id, label, available }) => (
+                        <label key={id} className={`flex items-center gap-2 text-sm cursor-pointer ${!available ? 'opacity-50' : ''}`}>
+                          <input type="checkbox" disabled={!available}
+                            checked={socialForm.channels.includes(id)}
+                            onChange={e => setSocialForm(p => ({
+                              ...p,
+                              channels: e.target.checked ? [...p.channels, id] : p.channels.filter(c => c !== id)
+                            }))}
+                            className="accent-yellow-500"
+                          />
+                          <span className="text-gray-300">{label}</span>
+                          {!available && <span className="text-xs text-gray-500">— coming soon</span>}
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Message */}
+                  <div className="mb-3">
+                    <Label className="text-gray-400 text-xs mb-1 block">Caption / Message</Label>
+                    <textarea
+                      value={socialForm.message}
+                      onChange={e => setSocialForm(p => ({ ...p, message: e.target.value }))}
+                      placeholder="Write your post caption here... Use {{date}}, {{tithi}}, etc. for dynamic content."
+                      rows={5}
+                      className="w-full bg-gray-700 border border-gray-600 text-white text-sm rounded-md p-3 resize-y focus:outline-none focus:ring-1 focus:ring-yellow-500"
+                    />
+                    <p className="text-gray-500 text-xs mt-1">{socialForm.message.length} characters</p>
+                  </div>
+
+                  {/* Image URL */}
+                  <div className="mb-4">
+                    <Label className="text-gray-400 text-xs mb-1 block flex items-center gap-1">
+                      <Image className="h-3 w-3" />Image URL (optional — leave blank for text-only post)
+                    </Label>
+                    <Input
+                      value={socialForm.image_url}
+                      onChange={e => setSocialForm(p => ({ ...p, image_url: e.target.value }))}
+                      placeholder="https://example.com/image.jpg"
+                      className="bg-gray-700 border-gray-600 text-white text-sm"
+                    />
+                  </div>
+
+                  <Button onClick={handleSocialPost} disabled={socialPosting}
+                    className="bg-gold hover:bg-gold/90 text-gray-900 font-semibold">
+                    <Globe className="h-4 w-4 mr-2" />
+                    {socialPosting ? 'Posting…' : 'Post Now'}
+                  </Button>
+
+                  {/* Results */}
+                  {socialResults && (
+                    <div className="mt-4 space-y-2">
+                      {socialResults.map(r => (
+                        <div key={r.channel} className={`flex items-center gap-3 p-3 rounded-lg ${r.success ? 'bg-green-900/30 border border-green-700/40' : 'bg-red-900/30 border border-red-700/40'}`}>
+                          {r.success
+                            ? <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0" />
+                            : <AlertTriangle className="h-4 w-4 text-red-400 flex-shrink-0" />}
+                          <div>
+                            <p className="text-white text-sm capitalize font-medium">{r.channel}</p>
+                            {r.success
+                              ? <p className="text-green-400 text-xs">Posted · ID: {r.post_id}</p>
+                              : <p className="text-red-400 text-xs">{r.error}</p>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </Card>
+
+                {/* Social Post History */}
+                <Card className="p-5 bg-gray-800 border-gray-700">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-sm font-semibold text-white flex items-center gap-2">
+                      <History className="h-4 w-4 text-gold" />Post History ({socialLogs.length})
+                    </h3>
+                    <Button onClick={fetchSocialLogs} variant="outline" size="sm" className="border-gray-600 text-gray-300">
+                      <RefreshCw className="h-3.5 w-3.5" />
+                    </Button>
+                  </div>
+                  {socialLogs.length === 0
+                    ? <p className="text-gray-500 text-sm text-center py-8">No posts yet</p>
+                    : <div className="space-y-2 max-h-[400px] overflow-y-auto">
+                      {socialLogs.map((log, i) => (
+                        <div key={i} className="flex items-center justify-between p-3 bg-gray-700/50 rounded-lg">
+                          <div className="flex items-center gap-3">
+                            {log.success
+                              ? <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0" />
+                              : <AlertTriangle className="h-4 w-4 text-red-400 flex-shrink-0" />}
+                            <div>
+                              <p className="text-white text-sm capitalize">{log.channel}
+                                {log.post_id && <span className="text-gray-400 text-xs ml-2">· {log.post_id}</span>}
+                              </p>
+                              <p className="text-gray-400 text-xs">{log.message_preview}
+                                {log.error && <span className="text-red-400 ml-2">· {log.error}</span>}
+                              </p>
+                            </div>
+                          </div>
+                          <span className="text-gray-500 text-xs flex-shrink-0">{new Date(log.posted_at).toLocaleString('en-IN')}</span>
+                        </div>
+                      ))}
+                    </div>
+                  }
+                </Card>
+              </div>
             )}
           </div>
         )}
