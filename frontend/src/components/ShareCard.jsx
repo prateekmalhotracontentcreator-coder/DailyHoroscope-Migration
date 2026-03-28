@@ -548,10 +548,12 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
           formData.append('message', fbPageCaption || shareText);
           formData.append('channels', 'facebook');
           const API = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+          const adminToken = localStorage.getItem('admin_token');
           const res = await fetch(`${API}/api/admin/social/post-image`, {
             method: 'POST',
             body: formData,
             credentials: 'include',
+            headers: adminToken ? { Authorization: `Bearer ${adminToken}` } : {},
           });
           if (!res.ok) {
             const err = await res.json().catch(() => ({}));
