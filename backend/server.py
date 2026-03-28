@@ -1108,6 +1108,108 @@ async def get_notification_logs(request: Request, limit: int = 200):
     logs = await db.notification_logs.find({}, {"_id": 0}).sort("sent_at", -1).to_list(limit)
     return {"logs": logs, "total": len(logs)}
 
+# ── Social Media Posting ───────────────────────────────────────────────────────
+
+class SocialPostRequest(BaseModel):
+    message: str
+    image_url: Optional[str] = None
+    channels: List[str] = ["facebook"]   # "facebook" | "instagram" (future)
+
+class SocialPostResult(BaseModel):
+    channel: str
+    success: bool
+    post_id: Optional[str] = None
+    error: Optional[str] = None
+
+async def _post_to_facebook(message: str, image_url: Optional[str] = None) -> SocialPostResult:
+    page_id    = os.environ.get("FACEBOOK_PAGE_ID", "")
+    page_token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "")
+    if not page_id or not page_token:
+        return SocialPostResult(channel="facebook", success=False, error="Facebook credentials not configured")
+    try:
+        async with httpx.AsyncClient(timeout=30) as client:
+            if image_url:
+                # Photo post: upload image then publish
+                r = await client.post(
+                    f"https://graph.facebook.com/v19.0/{page_id}/photos",
+                    params={"access_token": page_token},
+                    json={"url": image_url, "caption": message, "published": True},
+                )
+            else:
+                # Text post
+                r = await client.post(
+                    f"https://graph.facebook.com/v19.0/{page_id}/feed",
+                    params={"access_token": page_token},
+                    json={"message": message},
+                )
+        data = r.json()
+        if "id" in data:
+            return SocialPostResult(channel="facebook", success=True, post_id=data["id"])
+        err = data.get("error", {}).get("message", "Unknown error")
+        return SocialPostResult(channel="facebook", success=False, error=err)
+    except Exception as e:
+        return SocialPostResult(channel="facebook", success=False, error=str(e))
+
+async def _post_to_instagram(message: str, image_url: Optional[str] = None) -> SocialPostResult:
+    ig_id      = os.environ.get("INSTAGRAM_BUSINESS_ACCOUNT_ID", "")
+    page_token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "")
+    if not ig_id or not page_token:
+        return SocialPostResult(channel="instagram", success=False, error="Instagram credentials not configured")
+    if not image_url:
+        return SocialPostResult(channel="instagram", success=False, error="Instagram requires an image")
+    try:
+        async with httpx.AsyncClient(timeout=30) as client:
+            # Step 1: create media container
+            r1 = await client.post(
+                f"https://graph.facebook.com/v19.0/{ig_id}/media",
+                params={"access_token": page_token},
+                json={"image_url": image_url, "caption": message},
+            )
+            d1 = r1.json()
+            if "id" not in d1:
+                err = d1.get("error", {}).get("message", "Failed to create media container")
+                return SocialPostResult(channel="instagram", success=False, error=err)
+            container_id = d1["id"]
+            # Step 2: publish
+            r2 = await client.post(
+                f"https://graph.facebook.com/v19.0/{ig_id}/media_publish",
+                params={"access_token": page_token},
+                json={"creation_id": container_id},
+            )
+            d2 = r2.json()
+            if "id" in d2:
+                return SocialPostResult(channel="instagram", success=True, post_id=d2["id"])
+            err = d2.get("error", {}).get("message", "Failed to publish")
+            return SocialPostResult(channel="instagram", success=False, error=err)
+    except Exception as e:
+        return SocialPostResult(channel="instagram", success=False, error=str(e))
+
+@api_router.post("/admin/social/post")
+async def post_to_social(request: Request, payload: SocialPostRequest):
+    await require_admin(request, db)
+    if not payload.message.strip():
+        raise HTTPException(status_code=400, detail="Message is required")
+    results = []
+    for channel in payload.channels:
+        if channel == "facebook":
+            results.append(await _post_to_facebook(payload.message, payload.image_url))
+        elif channel == "instagram":
+            results.append(await _post_to_instagram(payload.message, payload.image_url))
+        else:
+            results.append(SocialPostResult(channel=channel, success=False, error="Channel not yet supported"))
+    # Log to DB
+    log_docs = [{"channel": r.channel, "success": r.success, "post_id": r.post_id,
+                 "error": r.error, "message_preview": payload.message[:100],
+                 "posted_at": datetime.now(timezone.utc).isoformat()} for r in results]
+    await db.social_post_logs.insert_many(log_docs)
+    return {"results": [r.model_dump() for r in results]}
+
+@api_router.get("/admin/social/logs")
+async def get_social_logs(request: Request, limit: int = 100):
+    await require_admin(request, db)
+    logs = await db.social_post_logs.find({}, {"_id": 0}).sort("posted_at", -1).to_list(limit)
+    return {"logs": logs, "total": len(logs)}
+
 @api_router.post("/admin/login")
 async def admin_login(request: AdminLoginRequest, response: Response):
     if request.username != ADMIN_USERNAME: raise HTTPException(status_code=401, detail="Invalid credentials")
