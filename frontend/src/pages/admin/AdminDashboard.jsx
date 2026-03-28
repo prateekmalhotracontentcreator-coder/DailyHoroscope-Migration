@@ -1086,7 +1086,7 @@ export const AdminDashboard = () => {
                       <div className="space-y-2">
                         {[
                           { id: 'email',    label: 'Email (Resend)', icon: Mail,  available: true },
-                          { id: 'whatsapp', label: 'WhatsApp',       icon: Phone, available: false },
+                          { id: 'whatsapp', label: 'WhatsApp',       icon: Phone, available: true },
                         ].map(({ id, label, icon: Icon, available }) => (
                           <label key={id} className={`flex items-center gap-2 cursor-pointer ${!available ? 'opacity-40' : ''}`}>
                             <input type="checkbox" checked={notifForm.channels.includes(id)} disabled={!available}
