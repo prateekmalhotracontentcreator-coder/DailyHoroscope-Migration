@@ -1121,22 +1121,42 @@ class SocialPostResult(BaseModel):
     post_id: Optional[str] = None
     error: Optional[str] = None
 
+async def _get_page_access_token(system_token: str, page_id: str) -> str:
+    """Exchange a System User token for a Page-scoped access token.
+    The /photos and /feed endpoints require a Page token, not a User/System token."""
+    try:
+        async with httpx.AsyncClient(timeout=15) as client:
+            r = await client.get(
+                f"https://graph.facebook.com/v19.0/{page_id}",
+                params={"fields": "access_token", "access_token": system_token},
+            )
+            data = r.json()
+            page_token = data.get("access_token")
+            if page_token:
+                logging.info("Successfully exchanged system token for page token")
+                return page_token
+            logging.warning("Could not get page token: %s", data)
+    except Exception as e:
+        logging.warning("Page token exchange failed: %s", e)
+    # Fall back to the system token if exchange fails
+    return system_token
+
 async def _post_to_facebook(message: str, image_url: Optional[str] = None) -> SocialPostResult:
-    page_id    = os.environ.get("FACEBOOK_PAGE_ID", "")
-    page_token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "")
-    if not page_id or not page_token:
+    page_id      = os.environ.get("FACEBOOK_PAGE_ID", "")
+    system_token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "")
+    if not page_id or not system_token:
         return SocialPostResult(channel="facebook", success=False, error="Facebook credentials not configured")
+    # Exchange system user token → page access token (required for posting)
+    page_token = await _get_page_access_token(system_token, page_id)
     try:
         async with httpx.AsyncClient(timeout=30) as client:
             if image_url:
-                # Photo post: upload image then publish
                 r = await client.post(
                     f"https://graph.facebook.com/v19.0/{page_id}/photos",
                     params={"access_token": page_token},
                     json={"url": image_url, "caption": message, "published": True},
                 )
             else:
-                # Text post
                 r = await client.post(
                     f"https://graph.facebook.com/v19.0/{page_id}/feed",
                     params={"access_token": page_token},
@@ -1186,10 +1206,12 @@ async def _post_to_instagram(message: str, image_url: Optional[str] = None) -> S
 
 async def _post_image_to_facebook(image_bytes: bytes, filename: str, caption: str) -> SocialPostResult:
     """Upload raw image bytes directly to Facebook Page — no third-party hosting needed."""
-    page_id    = os.environ.get("FACEBOOK_PAGE_ID", "")
-    page_token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "")
-    if not page_id or not page_token:
+    page_id      = os.environ.get("FACEBOOK_PAGE_ID", "")
+    system_token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "")
+    if not page_id or not system_token:
         return SocialPostResult(channel="facebook", success=False, error="Facebook credentials not configured")
+    # Exchange system user token → page access token (required for posting)
+    page_token = await _get_page_access_token(system_token, page_id)
     try:
         async with httpx.AsyncClient(timeout=60) as client:
             r = await client.post(
