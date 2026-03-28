@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
     build-essential \
+    ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
 # setuptools must be installed explicitly: razorpay==1.3.0 imports

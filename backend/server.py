@@ -1,7 +1,7 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, UploadFile, File, Form
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, HTMLResponse
 from dotenv import load_dotenv
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.middleware.cors import CORSMiddleware
@@ -31,6 +31,21 @@ if "pkg_resources" not in _sys.modules:
 
 import razorpay
 import httpx
+import io
+import asyncio
+import tempfile
+from concurrent.futures import ThreadPoolExecutor
+
+# ── Google / YouTube libraries (optional — graceful fallback if not installed) ─
+try:
+    from google.oauth2.credentials import Credentials as GoogleCredentials
+    from google.auth.transport.requests import Request as GoogleRequest
+    from google_auth_oauthlib.flow import Flow as GoogleFlow
+    from googleapiclient.discovery import build as google_build
+    from googleapiclient.http import MediaIoBaseUpload
+    GOOGLE_LIBS_AVAILABLE = True
+except ImportError:
+    GOOGLE_LIBS_AVAILABLE = False
 from pdf_generator import generate_birth_chart_pdf, generate_kundali_milan_pdf, generate_brihat_kundli_pdf, generate_report_password
 from vedic_calculator import calculate_vedic_chart, calculate_ashtakoot, check_mangal_dosha, generate_north_indian_chart_svg
 import secrets
@@ -1304,6 +1319,8 @@ async def post_image_to_social(
     for channel in channel_list:
         if channel == "facebook":
             results.append(await _post_image_to_facebook(image_bytes, image.filename or "card.png", message))
+        elif channel == "youtube":
+            results.append(await _post_image_to_youtube(image_bytes, title=message[:100], description=message))
         elif channel == "instagram":
             results.append(SocialPostResult(channel="instagram", success=False, error="Direct image upload for Instagram coming soon"))
         else:
@@ -1340,6 +1357,209 @@ async def get_social_logs(request: Request, limit: int = 100):
     await require_admin(request, db)
     logs = await db.social_post_logs.find({}, {"_id": 0}).sort("posted_at", -1).to_list(limit)
     return {"logs": logs, "total": len(logs)}
+
+# ── YouTube Integration ────────────────────────────────────────────────────────
+YOUTUBE_SCOPES   = ["https://www.googleapis.com/auth/youtube.upload"]
+_yt_executor     = ThreadPoolExecutor(max_workers=2)
+
+async def _get_youtube_service():
+    """Return (service, error_str). Loads refresh token from MongoDB then env."""
+    if not GOOGLE_LIBS_AVAILABLE:
+        return None, "Google API libraries not installed on server"
+    client_id     = os.environ.get("YOUTUBE_CLIENT_ID", "")
+    client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET", "")
+    if not client_id or not client_secret:
+        return None, "YOUTUBE_CLIENT_ID / YOUTUBE_CLIENT_SECRET not set on Render"
+    token_doc     = await db.app_settings.find_one({"key": "youtube_refresh_token"})
+    refresh_token = (token_doc or {}).get("value") or os.environ.get("YOUTUBE_REFRESH_TOKEN", "")
+    if not refresh_token:
+        return None, "YouTube not connected — click 'Connect YouTube Channel' in Admin Console"
+    def _build():
+        creds = GoogleCredentials(
+            token=None, refresh_token=refresh_token,
+            token_uri="https://oauth2.googleapis.com/token",
+            client_id=client_id, client_secret=client_secret,
+            scopes=YOUTUBE_SCOPES,
+        )
+        creds.refresh(GoogleRequest())
+        return google_build("youtube", "v3", credentials=creds)
+    try:
+        loop = asyncio.get_event_loop()
+        svc  = await loop.run_in_executor(_yt_executor, _build)
+        return svc, None
+    except Exception as e:
+        return None, f"YouTube auth error: {e}"
+
+async def _image_bytes_to_mp4(image_bytes: bytes, duration: int = 30) -> bytes:
+    """Convert PNG image to MP4 (static image video) using ffmpeg."""
+    img_fd, img_path = tempfile.mkstemp(suffix=".png")
+    vid_fd, vid_path = tempfile.mkstemp(suffix=".mp4")
+    try:
+        with os.fdopen(img_fd, "wb") as f:
+            f.write(image_bytes)
+        os.close(vid_fd)
+        proc = await asyncio.create_subprocess_exec(
+            "ffmpeg", "-y",
+            "-loop", "1", "-i", img_path,
+            "-c:v", "libx264", "-t", str(duration),
+            "-pix_fmt", "yuv420p",
+            "-vf", "scale=trunc(iw/2)*2:trunc(ih/2)*2",
+            "-movflags", "+faststart",
+            vid_path,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        _, stderr = await proc.communicate()
+        if proc.returncode != 0:
+            raise RuntimeError(f"ffmpeg failed: {stderr.decode()[-500:]}")
+        with open(vid_path, "rb") as f:
+            return f.read()
+    finally:
+        try: os.unlink(img_path)
+        except: pass
+        try: os.unlink(vid_path)
+        except: pass
+
+async def _post_image_to_youtube(image_bytes: bytes, title: str, description: str) -> SocialPostResult:
+    """Convert image to 30-second video and upload to YouTube."""
+    svc, err = await _get_youtube_service()
+    if not svc:
+        return SocialPostResult(channel="youtube", success=False, error=err)
+    try:
+        video_bytes = await _image_bytes_to_mp4(image_bytes, duration=30)
+        body = {
+            "snippet": {
+                "title": (title or "Daily Panchang | EverydayHoroscope")[:100],
+                "description": description or "",
+                "tags": ["Panchang", "VedicAstrology", "EverydayHoroscope",
+                         "HinduCalendar", "DailyHoroscope", "Nakshatra"],
+                "categoryId": "22",           # People & Blogs
+            },
+            "status": {
+                "privacyStatus": "public",
+                "selfDeclaredMadeForKids": False,
+                "madeForKids": False,
+            },
+        }
+        def _upload():
+            media = MediaIoBaseUpload(
+                io.BytesIO(video_bytes), mimetype="video/mp4",
+                resumable=True, chunksize=5 * 1024 * 1024,
+            )
+            req = svc.videos().insert(part="snippet,status", body=body, media_body=media)
+            resp = None
+            while resp is None:
+                _, resp = req.next_chunk()
+            return resp
+        loop    = asyncio.get_event_loop()
+        resp    = await loop.run_in_executor(_yt_executor, _upload)
+        vid_id  = resp.get("id", "")
+        return SocialPostResult(channel="youtube", success=True, post_id=vid_id)
+    except Exception as e:
+        return SocialPostResult(channel="youtube", success=False, error=str(e))
+
+# YouTube OAuth endpoints ──────────────────────────────────────────────────────
+@api_router.get("/admin/youtube/status")
+async def youtube_status(request: Request):
+    await require_admin(request, db)
+    token_doc  = await db.app_settings.find_one({"key": "youtube_refresh_token"})
+    has_token  = bool((token_doc or {}).get("value") or os.environ.get("YOUTUBE_REFRESH_TOKEN", ""))
+    has_creds  = bool(os.environ.get("YOUTUBE_CLIENT_ID") and os.environ.get("YOUTUBE_CLIENT_SECRET"))
+    return {
+        "connected":      has_token and has_creds,
+        "has_credentials": has_creds,
+        "connected_at":   (token_doc or {}).get("updated_at"),
+        "libs_available": GOOGLE_LIBS_AVAILABLE,
+    }
+
+@api_router.get("/admin/youtube/auth-url")
+async def youtube_auth_url(request: Request):
+    await require_admin(request, db)
+    client_id    = os.environ.get("YOUTUBE_CLIENT_ID", "")
+    client_secret= os.environ.get("YOUTUBE_CLIENT_SECRET", "")
+    redirect_uri = os.environ.get("YOUTUBE_REDIRECT_URI", "")
+    if not client_id or not client_secret:
+        raise HTTPException(400, "YOUTUBE_CLIENT_ID and YOUTUBE_CLIENT_SECRET not set on Render")
+    if not redirect_uri:
+        raise HTTPException(400, "YOUTUBE_REDIRECT_URI not set on Render")
+    if not GOOGLE_LIBS_AVAILABLE:
+        raise HTTPException(500, "Google API libraries not installed on server")
+    flow = GoogleFlow.from_client_config(
+        {"web": {
+            "client_id": client_id, "client_secret": client_secret,
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "redirect_uris": [redirect_uri],
+        }},
+        scopes=YOUTUBE_SCOPES,
+        redirect_uri=redirect_uri,
+    )
+    auth_url, _ = flow.authorization_url(
+        access_type="offline", include_granted_scopes="true", prompt="consent",
+    )
+    return {"auth_url": auth_url}
+
+@api_router.get("/admin/youtube/callback")
+async def youtube_callback(code: str = "", error: str = ""):
+    if error:
+        return HTMLResponse(f"""<html><body style="font-family:sans-serif;text-align:center;
+        padding:40px;background:#111;color:#fff;">
+        <h2>❌ Authorization Failed</h2><p style="color:#f87171">{error}</p>
+        <script>setTimeout(()=>window.close(),3000);</script></body></html>""")
+    client_id     = os.environ.get("YOUTUBE_CLIENT_ID", "")
+    client_secret = os.environ.get("YOUTUBE_CLIENT_SECRET", "")
+    redirect_uri  = os.environ.get("YOUTUBE_REDIRECT_URI", "")
+    if not GOOGLE_LIBS_AVAILABLE:
+        return HTMLResponse("<html><body>Google libraries not available on server</body></html>")
+    try:
+        flow = GoogleFlow.from_client_config(
+            {"web": {
+                "client_id": client_id, "client_secret": client_secret,
+                "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                "token_uri": "https://oauth2.googleapis.com/token",
+                "redirect_uris": [redirect_uri],
+            }},
+            scopes=YOUTUBE_SCOPES,
+            redirect_uri=redirect_uri,
+        )
+        flow.fetch_token(code=code)
+        creds         = flow.credentials
+        refresh_token = creds.refresh_token
+        if refresh_token:
+            await db.app_settings.update_one(
+                {"key": "youtube_refresh_token"},
+                {"$set": {"key": "youtube_refresh_token", "value": refresh_token,
+                          "updated_at": datetime.now(timezone.utc).isoformat()}},
+                upsert=True,
+            )
+            return HTMLResponse("""<html><body style="font-family:sans-serif;text-align:center;
+            padding:40px;background:#111;color:#fff;">
+            <h2 style="color:#4ade80">✅ YouTube Connected!</h2>
+            <p>Your channel is now linked to EverydayHoroscope.</p>
+            <p style="color:#9ca3af">This tab will close automatically…</p>
+            <script>
+            if(window.opener){window.opener.postMessage({type:'youtube_connected'},'*');}
+            setTimeout(()=>window.close(),2000);
+            </script></body></html>""")
+        else:
+            return HTMLResponse("""<html><body style="font-family:sans-serif;text-align:center;
+            padding:40px;background:#111;color:#fff;">
+            <h2 style="color:#fbbf24">⚠️ No Refresh Token</h2>
+            <p>Try revoking access at
+            <a href="https://myaccount.google.com/permissions" style="color:#facc15">
+            myaccount.google.com/permissions</a> then reconnect.</p>
+            <script>setTimeout(()=>window.close(),5000);</script></body></html>""")
+    except Exception as e:
+        return HTMLResponse(f"""<html><body style="font-family:sans-serif;text-align:center;
+        padding:40px;background:#111;color:#fff;">
+        <h2>❌ Error</h2><p style="color:#f87171">{e}</p>
+        <script>setTimeout(()=>window.close(),4000);</script></body></html>""")
+
+@api_router.post("/admin/youtube/disconnect")
+async def youtube_disconnect(request: Request):
+    await require_admin(request, db)
+    await db.app_settings.delete_one({"key": "youtube_refresh_token"})
+    return {"message": "YouTube disconnected"}
 
 @api_router.post("/admin/login")
 async def admin_login(request: AdminLoginRequest, response: Response):
