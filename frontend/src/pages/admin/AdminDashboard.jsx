@@ -142,6 +142,8 @@ export const AdminDashboard = () => {
   const [socialResults,   setSocialResults]    = useState(null);
   const [socialLogs,      setSocialLogs]       = useState([]);
   const [socialImageFile, setSocialImageFile]  = useState(null);
+  const [ytStatus,        setYtStatus]         = useState(null); // {connected, has_credentials, connected_at}
+  const [ytConnecting,    setYtConnecting]     = useState(false);
   const [subForm,         setSubForm]          = useState({ name: '', email: '', phone: '', tags: '' });
   const [editingSub,      setEditingSub]       = useState(null);
   const [subSearch,       setSubSearch]        = useState('');
@@ -175,7 +177,7 @@ export const AdminDashboard = () => {
     if (activeTab === 'contacts')      fetchContacts();
     if (activeTab === 'reports')       fetchReports();
     if (activeTab === 'health')        fetchHealth();
-    if (activeTab === 'notifications') { fetchSubscribers(); fetchNotifLogs(); fetchScheduled(); fetchSocialLogs(); }
+    if (activeTab === 'notifications') { fetchSubscribers(); fetchNotifLogs(); fetchScheduled(); fetchSocialLogs(); fetchYtStatus(); }
   }, [activeTab]);
 
   const fetchSubscribers = async () => {
@@ -199,6 +201,50 @@ export const AdminDashboard = () => {
       const res = await axios.get(`${API}/admin/social/logs`, { headers: getAuthHeaders() });
       setSocialLogs(res.data.logs || []);
     } catch {}
+  };
+
+  const fetchYtStatus = async () => {
+    try {
+      const res = await axios.get(`${API}/admin/youtube/status`, { headers: getAuthHeaders() });
+      setYtStatus(res.data);
+    } catch {}
+  };
+
+  const connectYouTube = async () => {
+    setYtConnecting(true);
+    try {
+      const res = await axios.get(`${API}/admin/youtube/auth-url`, { headers: getAuthHeaders() });
+      const popup = window.open(res.data.auth_url, 'youtube_oauth', 'width=600,height=720,left=300,top=80');
+      const handler = (e) => {
+        if (e.data?.type === 'youtube_connected') {
+          window.removeEventListener('message', handler);
+          fetchYtStatus();
+          toast.success('✅ YouTube channel connected!');
+          setYtConnecting(false);
+        }
+      };
+      window.addEventListener('message', handler);
+      // Cleanup if popup closed without connecting
+      const timer = setInterval(() => {
+        if (popup?.closed) {
+          clearInterval(timer);
+          window.removeEventListener('message', handler);
+          setYtConnecting(false);
+          fetchYtStatus();
+        }
+      }, 1000);
+    } catch (err) {
+      toast.error(err.response?.data?.detail || 'Failed to get YouTube auth URL');
+      setYtConnecting(false);
+    }
+  };
+
+  const disconnectYouTube = async () => {
+    try {
+      await axios.post(`${API}/admin/youtube/disconnect`, {}, { headers: getAuthHeaders() });
+      setYtStatus(s => ({ ...s, connected: false }));
+      toast.success('YouTube disconnected');
+    } catch { toast.error('Failed to disconnect'); }
   };
 
   const fetchScheduled = async () => {
@@ -1227,6 +1273,52 @@ export const AdminDashboard = () => {
             {/* SOCIAL MEDIA */}
             {notifTab === 'social' && (
               <div className="space-y-4">
+
+                {/* YouTube Connect Card */}
+                <Card className="p-5 bg-gray-800 border-gray-700">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${ytStatus?.connected ? 'bg-red-600' : 'bg-gray-600'}`}>
+                        ▶
+                      </div>
+                      <div>
+                        <p className="text-white text-sm font-semibold">YouTube Channel</p>
+                        {ytStatus?.connected
+                          ? <p className="text-green-400 text-xs">
+                              ✅ Connected
+                              {ytStatus.connected_at && <span className="text-gray-500 ml-1">
+                                · {new Date(ytStatus.connected_at).toLocaleDateString('en-IN')}
+                              </span>}
+                            </p>
+                          : ytStatus?.has_credentials
+                            ? <p className="text-yellow-400 text-xs">⚠️ Credentials set — click Connect to authorize</p>
+                            : <p className="text-gray-400 text-xs">Set YOUTUBE_CLIENT_ID + YOUTUBE_CLIENT_SECRET on Render first</p>
+                        }
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      {ytStatus?.connected
+                        ? <Button onClick={disconnectYouTube} variant="outline" size="sm"
+                            className="border-red-700 text-red-400 hover:bg-red-900/30 text-xs">
+                            Disconnect
+                          </Button>
+                        : <Button onClick={connectYouTube} disabled={ytConnecting || !ytStatus?.has_credentials} size="sm"
+                            className="bg-red-600 hover:bg-red-700 text-white text-xs">
+                            {ytConnecting ? 'Opening…' : 'Connect YouTube Channel'}
+                          </Button>
+                      }
+                      <Button onClick={fetchYtStatus} variant="outline" size="sm" className="border-gray-600 text-gray-400">
+                        <RefreshCw className="h-3 w-3" />
+                      </Button>
+                    </div>
+                  </div>
+                  {ytStatus?.connected && (
+                    <p className="text-gray-500 text-xs mt-3 border-t border-gray-700 pt-3">
+                      📹 Share cards will be converted to 30-second MP4 videos and uploaded to your YouTube channel. Video upload may take 1–2 minutes.
+                    </p>
+                  )}
+                </Card>
+
                 {/* Compose */}
                 <Card className="p-5 bg-gray-800 border-gray-700">
                   <h3 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
@@ -1241,7 +1333,7 @@ export const AdminDashboard = () => {
                         { id: 'facebook',  label: 'Facebook',  available: true },
                         { id: 'instagram', label: 'Instagram', available: false },
                         { id: 'x',         label: 'X (Twitter)', available: false },
-                        { id: 'youtube',   label: 'YouTube',   available: false },
+                        { id: 'youtube',   label: 'YouTube',   available: ytStatus?.connected === true },
                       ].map(({ id, label, available }) => (
                         <label key={id} className={`flex items-center gap-2 text-sm cursor-pointer ${!available ? 'opacity-50' : ''}`}>
                           <input type="checkbox" disabled={!available}
@@ -1253,7 +1345,8 @@ export const AdminDashboard = () => {
                             className="accent-yellow-500"
                           />
                           <span className="text-gray-300">{label}</span>
-                          {!available && <span className="text-xs text-gray-500">— coming soon</span>}
+                          {!available && id === 'youtube' && <span className="text-xs text-gray-500">— connect above</span>}
+                          {!available && id !== 'youtube' && <span className="text-xs text-gray-500">— coming soon</span>}
                         </label>
                       ))}
                     </div>
