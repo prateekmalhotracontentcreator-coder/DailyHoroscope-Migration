@@ -141,6 +141,7 @@ export const AdminDashboard = () => {
   const [socialPosting,   setSocialPosting]    = useState(false);
   const [socialResults,   setSocialResults]    = useState(null);
   const [socialLogs,      setSocialLogs]       = useState([]);
+  const [socialImageFile, setSocialImageFile]  = useState(null);
   const [subForm,         setSubForm]          = useState({ name: '', email: '', phone: '', tags: '' });
   const [editingSub,      setEditingSub]       = useState(null);
   const [subSearch,       setSubSearch]        = useState('');
@@ -273,15 +274,30 @@ export const AdminDashboard = () => {
     if (!socialForm.channels.length) { toast.error('Select at least one channel'); return; }
     setSocialPosting(true); setSocialResults(null);
     try {
-      const res = await axios.post(`${API}/admin/social/post`, {
-        message: socialForm.message,
-        image_url: socialForm.image_url || null,
-        channels: socialForm.channels,
-      }, { headers: getAuthHeaders() });
+      let res;
+      if (socialImageFile) {
+        // Upload image binary directly
+        const formData = new FormData();
+        formData.append('image', socialImageFile);
+        formData.append('message', socialForm.message);
+        formData.append('channels', socialForm.channels.join(','));
+        res = await axios.post(`${API}/admin/social/post-image`, formData, {
+          headers: { ...getAuthHeaders(), 'Content-Type': 'multipart/form-data' },
+        });
+      } else {
+        res = await axios.post(`${API}/admin/social/post`, {
+          message: socialForm.message,
+          image_url: socialForm.image_url || null,
+          channels: socialForm.channels,
+        }, { headers: getAuthHeaders() });
+      }
       setSocialResults(res.data.results);
       const allOk = res.data.results.every(r => r.success);
-      if (allOk) { toast.success('Posted successfully!'); setSocialForm(p => ({ ...p, message: '', image_url: '' })); }
-      else toast.error('Some posts failed — check results below');
+      if (allOk) {
+        toast.success('Posted successfully!');
+        setSocialForm(p => ({ ...p, message: '', image_url: '' }));
+        setSocialImageFile(null);
+      } else toast.error('Some posts failed — check results below');
       fetchSocialLogs();
     } catch (err) { toast.error(err.response?.data?.detail || 'Post failed'); }
     finally { setSocialPosting(false); }
@@ -1256,17 +1272,32 @@ export const AdminDashboard = () => {
                     <p className="text-gray-500 text-xs mt-1">{socialForm.message.length} characters</p>
                   </div>
 
-                  {/* Image URL */}
-                  <div className="mb-4">
-                    <Label className="text-gray-400 text-xs mb-1 block flex items-center gap-1">
-                      <Image className="h-3 w-3" />Image URL (optional — leave blank for text-only post)
+                  {/* Image — upload file OR paste URL */}
+                  <div className="mb-4 space-y-2">
+                    <Label className="text-gray-400 text-xs block flex items-center gap-1">
+                      <Image className="h-3 w-3" />Image (optional)
                     </Label>
-                    <Input
-                      value={socialForm.image_url}
-                      onChange={e => setSocialForm(p => ({ ...p, image_url: e.target.value }))}
-                      placeholder="https://example.com/image.jpg"
-                      className="bg-gray-700 border-gray-600 text-white text-sm"
-                    />
+                    {/* File upload — use this after downloading a share card */}
+                    <div className={`border-2 border-dashed rounded-lg p-3 text-center cursor-pointer transition-colors ${socialImageFile ? 'border-green-500/50 bg-green-900/10' : 'border-gray-600 hover:border-gold/50'}`}
+                      onClick={() => document.getElementById('social-image-upload').click()}>
+                      <input id="social-image-upload" type="file" accept="image/*" className="hidden"
+                        onChange={e => { setSocialImageFile(e.target.files?.[0] || null); setSocialForm(p => ({ ...p, image_url: '' })); }} />
+                      {socialImageFile
+                        ? <p className="text-green-400 text-xs">✅ {socialImageFile.name} ({(socialImageFile.size / 1024).toFixed(0)} KB)</p>
+                        : <p className="text-gray-500 text-xs">📁 Click to upload image (PNG/JPG) — use after downloading a Panchang or Horoscope card</p>}
+                    </div>
+                    {socialImageFile && (
+                      <button onClick={() => setSocialImageFile(null)} className="text-xs text-red-400 hover:text-red-300">✕ Remove image</button>
+                    )}
+                    {/* OR paste URL */}
+                    {!socialImageFile && (
+                      <Input
+                        value={socialForm.image_url}
+                        onChange={e => setSocialForm(p => ({ ...p, image_url: e.target.value }))}
+                        placeholder="Or paste image URL (https://...)"
+                        className="bg-gray-700 border-gray-600 text-white text-sm"
+                      />
+                    )}
                   </div>
 
                   <Button onClick={handleSocialPost} disabled={socialPosting}
