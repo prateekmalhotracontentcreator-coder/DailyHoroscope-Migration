@@ -318,7 +318,7 @@ class NotificationLog(BaseModel):
 
 # ── WhatsApp Cloud API ────────────────────────────────────────────────────────
 
-async def send_whatsapp_message(to_phone: str, message: str) -> bool:
+async def send_whatsapp_message(to_phone: str, message: str, recipient_name: str = "there") -> bool:
     """Send a free-form text message via WhatsApp Cloud API.
     Works for: replies within 24-hr window, or use template for outbound.
     For outbound notifications we use the 'everydayhoroscope_update' utility template.
@@ -342,10 +342,16 @@ async def send_whatsapp_message(to_phone: str, message: str) -> bool:
             "language": {"code": template_lang},
         }
     }
-    # If using our custom template, inject the message text as the body parameter
+    # If using our custom template, inject named variables: {{customer_name}} and {{update_content}}
     if template_name != "hello_world":
         payload["template"]["components"] = [
-            {"type": "body", "parameters": [{"type": "text", "text": message[:1024]}]}
+            {
+                "type": "body",
+                "parameters": [
+                    {"type": "text", "text": recipient_name},   # {{customer_name}}
+                    {"type": "text", "text": message[:1000]},   # {{update_content}}
+                ]
+            }
         ]
     try:
         async with httpx.AsyncClient(timeout=20) as client:
@@ -1112,7 +1118,7 @@ async def _dispatch_notifications(subject: str, body: str, channels: list, subsc
                 if not phone:
                     log.status = "failed"; log.error = "No phone number"
                 else:
-                    ok = await send_whatsapp_message(phone, body)
+                    ok = await send_whatsapp_message(phone, body, sub.get("name", "there"))
                     log.status = "sent" if ok else "failed"
                     if not ok: log.error = "WhatsApp Cloud API error"
             else:
