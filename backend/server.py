@@ -316,6 +316,55 @@ class NotificationLog(BaseModel):
     notification_id: Optional[str] = None
     sent_at: str = Field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
 
+# ── WhatsApp Cloud API ────────────────────────────────────────────────────────
+
+async def send_whatsapp_message(to_phone: str, message: str) -> bool:
+    """Send a free-form text message via WhatsApp Cloud API.
+    Works for: replies within 24-hr window, or use template for outbound.
+    For outbound notifications we use the 'everydayhoroscope_update' utility template.
+    Falls back to hello_world template if custom template not approved yet."""
+    phone_id = os.environ.get("WHATSAPP_PHONE_NUMBER_ID", "")
+    token    = os.environ.get("WHATSAPP_ACCESS_TOKEN", "")
+    if not phone_id or not token:
+        logging.warning("WhatsApp credentials not configured")
+        return False
+    # Normalise phone: strip spaces/dashes, ensure no leading +
+    to = to_phone.replace(" ", "").replace("-", "").lstrip("+")
+    template_name = os.environ.get("WHATSAPP_TEMPLATE_NAME", "hello_world")
+    template_lang = os.environ.get("WHATSAPP_TEMPLATE_LANG", "en_US")
+    # Build template payload — hello_world has no variables; custom templates may add body params
+    payload: dict = {
+        "messaging_product": "whatsapp",
+        "to": to,
+        "type": "template",
+        "template": {
+            "name": template_name,
+            "language": {"code": template_lang},
+        }
+    }
+    # If using our custom template, inject the message text as the body parameter
+    if template_name != "hello_world":
+        payload["template"]["components"] = [
+            {"type": "body", "parameters": [{"type": "text", "text": message[:1024]}]}
+        ]
+    try:
+        async with httpx.AsyncClient(timeout=20) as client:
+            r = await client.post(
+                f"https://graph.facebook.com/v19.0/{phone_id}/messages",
+                headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json"},
+                json=payload,
+            )
+        data = r.json()
+        if data.get("messages"):
+            logging.info("WhatsApp sent to %s: %s", to, data["messages"][0].get("id"))
+            return True
+        err = data.get("error", {}).get("message", str(data))
+        logging.error("WhatsApp send failed to %s: %s", to, err)
+        return False
+    except Exception as e:
+        logging.error("WhatsApp exception for %s: %s", to, e)
+        return False
+
 # ── Email ─────────────────────────────────────────────────────────────────────
 
 def _branded_email(recipient_name: str, body_html: str) -> str:
@@ -1058,8 +1107,14 @@ async def _dispatch_notifications(subject: str, body: str, channels: list, subsc
                     log.status = "sent" if ok else "failed"
                     if not ok: log.error = "Resend API error"
             elif channel == "whatsapp":
-                log.recipient_phone = sub.get("phone")
-                log.status = "failed"; log.error = "WhatsApp BSP not yet configured"
+                phone = sub.get("phone", "").strip()
+                log.recipient_phone = phone
+                if not phone:
+                    log.status = "failed"; log.error = "No phone number"
+                else:
+                    ok = await send_whatsapp_message(phone, body)
+                    log.status = "sent" if ok else "failed"
+                    if not ok: log.error = "WhatsApp Cloud API error"
             else:
                 log.status = "failed"; log.error = f"Unknown channel: {channel}"
             logs.append(log)
