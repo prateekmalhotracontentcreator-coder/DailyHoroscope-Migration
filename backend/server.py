@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Request, Response
+from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, UploadFile, File, Form
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from fastapi.responses import StreamingResponse
@@ -1183,6 +1183,54 @@ async def _post_to_instagram(message: str, image_url: Optional[str] = None) -> S
             return SocialPostResult(channel="instagram", success=False, error=err)
     except Exception as e:
         return SocialPostResult(channel="instagram", success=False, error=str(e))
+
+async def _post_image_to_facebook(image_bytes: bytes, filename: str, caption: str) -> SocialPostResult:
+    """Upload raw image bytes directly to Facebook Page — no third-party hosting needed."""
+    page_id    = os.environ.get("FACEBOOK_PAGE_ID", "")
+    page_token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "")
+    if not page_id or not page_token:
+        return SocialPostResult(channel="facebook", success=False, error="Facebook credentials not configured")
+    try:
+        async with httpx.AsyncClient(timeout=60) as client:
+            r = await client.post(
+                f"https://graph.facebook.com/v19.0/{page_id}/photos",
+                params={"access_token": page_token},
+                data={"caption": caption},
+                files={"source": (filename, image_bytes, "image/png")},
+            )
+        data = r.json()
+        if "id" in data:
+            return SocialPostResult(channel="facebook", success=True, post_id=data["id"])
+        err = data.get("error", {}).get("message", "Unknown error")
+        return SocialPostResult(channel="facebook", success=False, error=err)
+    except Exception as e:
+        return SocialPostResult(channel="facebook", success=False, error=str(e))
+
+@api_router.post("/admin/social/post-image")
+async def post_image_to_social(
+    request: Request,
+    image: UploadFile = File(...),
+    message: str = Form(""),
+    channels: str = Form("facebook"),
+):
+    """Accept a binary image from the browser (html2canvas output) and post it to social channels."""
+    await require_admin(request, db)
+    image_bytes = await image.read()
+    channel_list = [c.strip() for c in channels.split(",") if c.strip()]
+    results = []
+    for channel in channel_list:
+        if channel == "facebook":
+            results.append(await _post_image_to_facebook(image_bytes, image.filename or "card.png", message))
+        elif channel == "instagram":
+            results.append(SocialPostResult(channel="instagram", success=False, error="Direct image upload for Instagram coming soon"))
+        else:
+            results.append(SocialPostResult(channel=channel, success=False, error="Channel not supported"))
+    log_docs = [{"channel": r.channel, "success": r.success, "post_id": r.post_id,
+                 "error": r.error, "message_preview": message[:100],
+                 "posted_at": datetime.now(timezone.utc).isoformat()} for r in results]
+    if log_docs:
+        await db.social_post_logs.insert_many(log_docs)
+    return {"results": [r.model_dump() for r in results]}
 
 @api_router.post("/admin/social/post")
 async def post_to_social(request: Request, payload: SocialPostRequest):

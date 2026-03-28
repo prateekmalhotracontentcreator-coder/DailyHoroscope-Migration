@@ -50,34 +50,49 @@ const DownloadIcon = () => (
 
 async function captureCard(cardRef) {
   if (!cardRef?.current) return null;
-  const el = cardRef.current;
-
-  // Slide into viewport for capture (position:fixed — no layout shift on page).
-  // requestAnimationFrame fires BEFORE the browser paints, so the card is
-  // computed/laid-out but never rendered to screen at left:0.
-  el.style.left = '0px';
-  await new Promise(r => requestAnimationFrame(r));
-
   try {
-    return await html2canvas(el, {
+    // onclone receives the cloned document and the cloned element.
+    // We move only the clone into view — the real DOM element stays at left:-9999px,
+    // so there is zero visible flash on screen during capture.
+    return await html2canvas(cardRef.current, {
       scale: 2,
       useCORS: true,
       backgroundColor: null,
       logging: false,
+      onclone: (_clonedDoc, clonedEl) => {
+        clonedEl.style.left = '0px';
+        clonedEl.style.top  = '0px';
+      },
     });
   } catch (e) {
     console.error('html2canvas error', e);
     return null;
-  } finally {
-    el.style.left = '-9999px';
   }
 }
 
 function downloadCanvas(canvas, filename) {
-  const link = document.createElement('a');
-  link.download = filename;
-  link.href = canvas.toDataURL('image/png');
-  link.click();
+  // iOS Safari silently ignores <a download> — use toBlob + window.open so the
+  // user can long-press → "Save to Photos" / "Download".
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+      setTimeout(() => URL.revokeObjectURL(url), 6000);
+    }, 'image/png');
+    return;
+  }
+
+  // Desktop / Android: toDataURL is synchronous so the anchor click fires
+  // immediately in the same call stack — no async gap to lose gesture context.
+  const url = canvas.toDataURL('image/png');
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
 }
 
 // Try native Web Share API with an image file (works on mobile Chrome/Safari).
@@ -432,10 +447,11 @@ export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, s
 
 // ─── Share Buttons ────────────────────────────────────────────────────────────
 
-export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-card' }) {
-  const [copied, setCopied]         = useState(false);
-  const [generating, setGenerating] = useState(false);
-  const [hint, setHint]             = useState(null);
+export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-card', fbPageCaption = null }) {
+  const [copied, setCopied]           = useState(false);
+  const [generating, setGenerating]   = useState(false);
+  const [hint, setHint]               = useState(null);
+  const [fbPosting, setFbPosting]     = useState(false);
 
   const cardFilename  = `${filename}-${new Date().toISOString().slice(0, 10)}.png`;
   const encodedUrl    = encodeURIComponent(pageUrl);
@@ -457,16 +473,22 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
     return canvas;
   };
 
-  // ── WhatsApp: try native file share first (mobile), else download + wa.me ──
+  // ── WhatsApp: native file share on mobile, download + wa.me on desktop ──────
   const handleWhatsApp = async () => {
     const canvas = await getCanvas();
     if (!canvas) {
       window.open(`https://wa.me/?text=${encodedText}`, '_blank');
       return;
     }
-    const result = await nativeShareImage(canvas, cardFilename, shareText, shareText + '\n' + pageUrl);
-    if (result === 'shared' || result === 'aborted') return; // handled natively
-    // Desktop fallback: download card, then open wa.me
+    // On mobile, try native share sheet (Android/iOS WhatsApp can receive the file directly).
+    // Skip this on desktop — nativeShareImage adds extra async overhead and the
+    // Windows/macOS share sheet doesn't reliably send images to WhatsApp anyway.
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isMobile) {
+      const result = await nativeShareImage(canvas, cardFilename, shareText, shareText + '\n' + pageUrl);
+      if (result === 'shared' || result === 'aborted') return;
+    }
+    // Desktop (or mobile fallback): download card, then open wa.me
     downloadCanvas(canvas, cardFilename);
     setTimeout(() => window.open(`https://wa.me/?text=${encodedText}`, '_blank'), 400);
     showHint('📲 Card saved! Open WhatsApp → tap the 📎 attach icon → select the downloaded image to share it.');
@@ -511,6 +533,53 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
     } catch {}
   };
 
+  // ── Post card image directly to Facebook Page (admin only) ──────────────────
+  const handlePostToFBPage = async () => {
+    const canvas = await getCanvas();
+    if (!canvas) return;
+    setFbPosting(true);
+    setHint(null);
+    try {
+      await new Promise((resolve, reject) => {
+        canvas.toBlob(async (blob) => {
+          if (!blob) { reject(new Error('Failed to generate image')); return; }
+          const formData = new FormData();
+          formData.append('image', blob, cardFilename);
+          formData.append('message', fbPageCaption || shareText);
+          formData.append('channels', 'facebook');
+          const API = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+          const res = await fetch(`${API}/api/admin/social/post-image`, {
+            method: 'POST',
+            body: formData,
+            credentials: 'include',
+          });
+          if (!res.ok) {
+            const err = await res.json().catch(() => ({}));
+            reject(new Error(err.detail || `Server error ${res.status}`));
+            return;
+          }
+          const data = await res.json();
+          const result = data.results?.[0];
+          if (result?.success) {
+            resolve(result.post_id);
+          } else {
+            reject(new Error(result?.error || 'Post failed'));
+          }
+        }, 'image/png');
+      });
+      showHint('✅ Posted to EverydayHoroscope Facebook Page successfully!', 6000);
+    } catch (e) {
+      const msg = e.message || 'Unknown error';
+      if (msg.includes('401') || msg.includes('authenticated')) {
+        showHint('🔒 Admin login required — go to /admin to sign in first.', 7000);
+      } else {
+        showHint(`❌ Facebook post failed: ${msg}`, 7000);
+      }
+    } finally {
+      setFbPosting(false);
+    }
+  };
+
   const buttons = [
     { id: 'whatsapp',  label: 'WhatsApp',  icon: <WhatsAppIcon />,  color: 'bg-[#25D366] hover:bg-[#20b856] text-white',                                             action: handleWhatsApp },
     { id: 'facebook',  label: 'Facebook',  icon: <FacebookIcon />,  color: 'bg-[#1877F2] hover:bg-[#1464d4] text-white',                                             action: handleFacebook },
@@ -542,6 +611,16 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
             {btn.label}
           </button>
         ))}
+        {fbPageCaption !== null && (
+          <button
+            onClick={handlePostToFBPage}
+            disabled={generating || fbPosting}
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-all bg-[#1877F2] hover:bg-[#1464d4] text-white ${(generating || fbPosting) ? 'opacity-60 cursor-wait' : ''}`}
+          >
+            <FacebookIcon />
+            {fbPosting ? 'Posting…' : 'Post to Page'}
+          </button>
+        )}
       </div>
       {hint && (
         <p className="text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-2.5 leading-relaxed">
