@@ -165,6 +165,12 @@ export const WeeklyHoroscope = () => {
                     shareText={`${selectedSignData?.name} Weekly Horoscope ✦ everydayhoroscope.in`}
                     cardRef={shareCardRef}
                     filename={`horoscope-${selectedSign}-weekly`}
+                    fbPageCaption={`⭐ ${selectedSignData?.name} Weekly Horoscope
+
+${horoscope?.content?.overview?.slice(0, 200)}...
+
+🔮 Visit everydayhoroscope.in for your complete weekly horoscope
+#${selectedSignData?.name}Horoscope #WeeklyHoroscope #VedicAstrology #EverydayHoroscope`}
                   />
                 </Card>
               )}

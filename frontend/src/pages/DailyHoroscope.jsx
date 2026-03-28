@@ -190,6 +190,12 @@ export const DailyHoroscope = () => {
                     shareText={`${selectedSignData?.name} Daily Horoscope — ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} ✦`}
                     cardRef={shareCardRef}
                     filename={`horoscope-${selectedSign}-daily`}
+                    fbPageCaption={`⭐ ${selectedSignData?.name} Daily Horoscope — ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
+
+${horoscope?.content?.overview?.slice(0, 200)}...
+
+🔮 Visit everydayhoroscope.in for your complete horoscope
+#${selectedSignData?.name}Horoscope #DailyHoroscope #VedicAstrology #EverydayHoroscope`}
                   />
                 </Card>
               )}

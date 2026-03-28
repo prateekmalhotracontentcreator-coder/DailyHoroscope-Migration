@@ -165,6 +165,12 @@ export const MonthlyHoroscope = () => {
                     shareText={`${selectedSignData?.name} Monthly Horoscope ✦ everydayhoroscope.in`}
                     cardRef={shareCardRef}
                     filename={`horoscope-${selectedSign}-monthly`}
+                    fbPageCaption={`⭐ ${selectedSignData?.name} Monthly Horoscope
+
+${horoscope?.content?.overview?.slice(0, 200)}...
+
+🔮 Visit everydayhoroscope.in for your complete monthly horoscope
+#${selectedSignData?.name}Horoscope #MonthlyHoroscope #VedicAstrology #EverydayHoroscope`}
                   />
                 </Card>
               )}

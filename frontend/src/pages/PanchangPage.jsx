@@ -1029,6 +1029,16 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
           shareText={`Today's Panchang — ${summary?.weekday}, ${data.date}\nTithi: ${panchang?.tithi?.name} · Nakshatra: ${panchang?.nakshatra?.name} · Yoga: ${panchang?.yoga?.name}\nSunrise: ${summary?.sunrise} · Sunset: ${summary?.sunset}`}
           cardRef={shareCardRef}
           filename={`panchang-${data.location?.slug || 'india'}-${data.date || 'today'}`}
+          fbPageCaption={`🙏 Today's Panchang — ${summary?.weekday}, ${data.date}
+📍 ${data.location?.label || 'India'}
+
+🌅 Sunrise: ${summary?.sunrise}  |  🌇 Sunset: ${summary?.sunset}
+🌙 Tithi: ${panchang?.tithi?.name}
+⭐ Nakshatra: ${panchang?.nakshatra?.name}
+🔯 Yoga: ${panchang?.yoga?.name}
+
+📿 Visit everydayhoroscope.in for complete Panchang details
+#Panchang #VedicAstrology #EverydayHoroscope #HinduCalendar #DrikPanchang`}
         />
       </Card>
 
