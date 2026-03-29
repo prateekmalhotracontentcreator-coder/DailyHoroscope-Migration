@@ -28,7 +28,12 @@ Files uploaded here are **not live**. Each file is validated by Claude against t
 | 5 | Panchang per-date endpoint | `panchang_router.py` | ✅ Delivered, validated, live |
 | 6 | Tarot daily reminder — 3 data endpoints | `tarot_router.py` | ✅ Delivered, validated, live |
 | 7 | Astro-Tarot Fusion router | `tarot_router_platform_fusion.py` | 🔜 Stub exists — pending CODEX delivery |
-| 8 | Future module TBD | TBD | 🔒 Pending contract scoping |
+| 8A | Lagna Kundali Module — API + Full UI | `kundali_router.py` + `KundaliPage.jsx` | 🔜 Contract appointed 30 Mar 2026 |
+| 9-A | Individual Report: Karmic Debt & Past Life | `karmic_debt_router.py` | 🔜 Contract appointed 30 Mar 2026 |
+| 9-B | Individual Report: Career & Success Blueprint | `career_blueprint_router.py` | 🔜 Contract appointed 30 Mar 2026 |
+| 9-C | Individual Report: Shadow Self & Hidden Qualities | `shadow_self_router.py` | 🔜 Contract appointed 30 Mar 2026 |
+| 9-D | Individual Report: Retrograde Survival Guide | `retrograde_survival_router.py` | 🔜 Contract appointed 30 Mar 2026 |
+| 9-E | Individual Report: The Pattern of Life Cycles | `life_cycles_router.py` | 🔜 Contract appointed 30 Mar 2026 |
 
 ---
 
