@@ -1398,6 +1398,7 @@ async def _image_bytes_to_mp4(image_bytes: bytes, duration: int = 30) -> bytes:
         with os.fdopen(img_fd, "wb") as f:
             f.write(image_bytes)
         os.close(vid_fd)
+        logging.info(f"[YouTube] ffmpeg encoding started — input {len(image_bytes)//1024} KB, duration {duration}s")
         proc = await asyncio.create_subprocess_exec(
             "ffmpeg", "-y",
             "-loop", "1", "-i", img_path,
@@ -1411,9 +1412,13 @@ async def _image_bytes_to_mp4(image_bytes: bytes, duration: int = 30) -> bytes:
         )
         _, stderr = await proc.communicate()
         if proc.returncode != 0:
-            raise RuntimeError(f"ffmpeg failed: {stderr.decode()[-500:]}")
+            err_msg = stderr.decode()[-500:]
+            logging.error(f"[YouTube] ffmpeg failed (rc={proc.returncode}): {err_msg}")
+            raise RuntimeError(f"ffmpeg failed: {err_msg}")
         with open(vid_path, "rb") as f:
-            return f.read()
+            video_bytes = f.read()
+        logging.info(f"[YouTube] ffmpeg encoding complete — output {len(video_bytes)//1024} KB")
+        return video_bytes
     finally:
         try: os.unlink(img_path)
         except: pass
@@ -1422,8 +1427,10 @@ async def _image_bytes_to_mp4(image_bytes: bytes, duration: int = 30) -> bytes:
 
 async def _post_image_to_youtube(image_bytes: bytes, title: str, description: str) -> SocialPostResult:
     """Convert image to 30-second video and upload to YouTube."""
+    logging.info("[YouTube] Starting upload pipeline")
     svc, err = await _get_youtube_service()
     if not svc:
+        logging.error(f"[YouTube] Auth failed: {err}")
         return SocialPostResult(channel="youtube", success=False, error=err)
     try:
         video_bytes = await _image_bytes_to_mp4(image_bytes, duration=30)
@@ -1442,6 +1449,7 @@ async def _post_image_to_youtube(image_bytes: bytes, title: str, description: st
             },
         }
         def _upload():
+            logging.info(f"[YouTube] Uploading {len(video_bytes)//1024} KB MP4 to YouTube API")
             media = MediaIoBaseUpload(
                 io.BytesIO(video_bytes), mimetype="video/mp4",
                 resumable=True, chunksize=5 * 1024 * 1024,
@@ -1449,13 +1457,17 @@ async def _post_image_to_youtube(image_bytes: bytes, title: str, description: st
             req = svc.videos().insert(part="snippet,status", body=body, media_body=media)
             resp = None
             while resp is None:
-                _, resp = req.next_chunk()
+                status, resp = req.next_chunk()
+                if status:
+                    logging.info(f"[YouTube] Upload progress: {int(status.progress() * 100)}%")
             return resp
         loop    = asyncio.get_event_loop()
         resp    = await loop.run_in_executor(_yt_executor, _upload)
         vid_id  = resp.get("id", "")
+        logging.info(f"[YouTube] Upload complete — video ID: {vid_id}")
         return SocialPostResult(channel="youtube", success=True, post_id=vid_id)
     except Exception as e:
+        logging.error(f"[YouTube] Upload failed: {e}", exc_info=True)
         return SocialPostResult(channel="youtube", success=False, error=str(e))
 
 # YouTube OAuth endpoints ──────────────────────────────────────────────────────
