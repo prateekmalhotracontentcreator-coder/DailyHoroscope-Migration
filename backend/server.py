@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException, Request, Response, UploadFile, File, Form
+from fastapi import FastAPI, APIRouter, BackgroundTasks, HTTPException, Request, Response, UploadFile, File, Form
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from fastapi.responses import StreamingResponse, HTMLResponse
@@ -1304,32 +1304,52 @@ async def _post_image_to_facebook(image_bytes: bytes, filename: str, caption: st
     except Exception as e:
         return SocialPostResult(channel="facebook", success=False, error=str(e))
 
+async def _youtube_upload_task(image_bytes: bytes, message: str):
+    """Background task: encode + upload to YouTube, then save to post log."""
+    result = await _post_image_to_youtube(image_bytes, title=message[:100], description=message)
+    log_doc = {"channel": result.channel, "success": result.success, "post_id": result.post_id,
+               "error": result.error, "message_preview": message[:100],
+               "posted_at": datetime.now(timezone.utc).isoformat()}
+    await db.social_post_logs.insert_one(log_doc)
+    logging.info(f"[YouTube] Background task complete — success={result.success} post_id={result.post_id} error={result.error}")
+
 @api_router.post("/admin/social/post-image")
 async def post_image_to_social(
     request: Request,
+    background_tasks: BackgroundTasks,
     image: UploadFile = File(...),
     message: str = Form(""),
     channels: str = Form("facebook"),
 ):
-    """Accept a binary image from the browser (html2canvas output) and post it to social channels."""
+    """Accept a binary image from the browser (html2canvas output) and post it to social channels.
+    Facebook/Instagram run synchronously; YouTube runs as a background task to avoid request timeouts."""
     await require_admin(request, db)
     image_bytes = await image.read()
     channel_list = [c.strip() for c in channels.split(",") if c.strip()]
     results = []
+    yt_queued = False
     for channel in channel_list:
         if channel == "facebook":
             results.append(await _post_image_to_facebook(image_bytes, image.filename or "card.png", message))
         elif channel == "youtube":
-            results.append(await _post_image_to_youtube(image_bytes, title=message[:100], description=message))
+            # YouTube encode + upload can take 2-4 minutes — run in background to avoid browser timeout
+            background_tasks.add_task(_youtube_upload_task, image_bytes, message)
+            results.append(SocialPostResult(channel="youtube", success=True,
+                                            post_id="queued",
+                                            error="Uploading in background (~2 min) — check Post History to confirm"))
+            yt_queued = True
         elif channel == "instagram":
             results.append(SocialPostResult(channel="instagram", success=False, error="Direct image upload for Instagram coming soon"))
         else:
             results.append(SocialPostResult(channel=channel, success=False, error="Channel not supported"))
+    # Log sync results immediately; YouTube background task logs itself when done
     log_docs = [{"channel": r.channel, "success": r.success, "post_id": r.post_id,
                  "error": r.error, "message_preview": message[:100],
-                 "posted_at": datetime.now(timezone.utc).isoformat()} for r in results]
+                 "posted_at": datetime.now(timezone.utc).isoformat()} for r in results if r.post_id != "queued"]
     if log_docs:
         await db.social_post_logs.insert_many(log_docs)
+    if yt_queued:
+        logging.info("[YouTube] Upload queued as background task — response returned immediately")
     return {"results": [r.model_dump() for r in results]}
 
 @api_router.post("/admin/social/post")
