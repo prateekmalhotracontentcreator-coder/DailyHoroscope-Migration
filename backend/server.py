@@ -1422,7 +1422,11 @@ async def _image_bytes_to_mp4(image_bytes: bytes, duration: int = 30) -> bytes:
         proc = await asyncio.create_subprocess_exec(
             "ffmpeg", "-y",
             "-loop", "1", "-i", img_path,
-            "-c:v", "libx264", "-t", str(duration),
+            "-c:v", "libx264",
+            "-preset", "ultrafast",   # encode in <3s even on throttled CPU
+            "-tune", "stillimage",    # optimised for static image input
+            "-threads", "1",          # limit CPU so health-checks stay responsive
+            "-t", str(duration),
             "-pix_fmt", "yuv420p",
             "-vf", "scale=trunc(iw/2)*2:trunc(ih/2)*2",
             "-movflags", "+faststart",
