@@ -20,14 +20,15 @@ Files uploaded here are **not live**. Each file is validated by Claude against t
 
 | # | Contract | File | Status |
 |---|---|---|---|
-| 1 | vedic_calculator.py — flatlib → pyswisseph | `vedic_calculator.py` | ⏳ Awaiting delivery |
-| 2 | panchang_router.py — pyswisseph engine upgrade | `panchang_router.py` | ⏳ Awaiting delivery |
-| 3 | Premium Ankjyotish Numerology tile | `numerology_router.py` | ⏳ Awaiting delivery |
-| 4 | Full 78-card Tarot deck assets | `tarot_cards.json` | ⏳ Awaiting delivery |
-| 4b | Tarot router — DEFAULT_CARDS expanded to 78 | `tarot_router.py` | ⏳ Awaiting delivery |
-| 5 | Panchang per-date endpoint | `panchang_router.py` | ⏳ Awaiting delivery |
-| 6 | Tarot daily reminder — 3 data endpoints | `tarot_router.py` | ⏳ Awaiting delivery |
-| 7 | Astro-Tarot fusion — Temple integration | TBD | 🔒 Future — pending premium tier 3 proposal |
+| 1 | vedic_calculator.py — flatlib → pyswisseph | `vedic_calculator.py` | ✅ Delivered, validated, live |
+| 2 | panchang_router.py — pyswisseph engine upgrade | `panchang_router.py` | ✅ Delivered, validated, live (v11-swiss in production) |
+| 3 | Premium Ankjyotish Numerology tile | `numerology_router.py` | ✅ Delivered, validated, live |
+| 4 | Full 78-card Tarot deck assets | `tarot_cards.json` | ✅ Delivered, validated, live |
+| 4b | Tarot router — DEFAULT_CARDS expanded to 78 | `tarot_router.py` | ✅ Delivered, validated, live |
+| 5 | Panchang per-date endpoint | `panchang_router.py` | ✅ Delivered, validated, live |
+| 6 | Tarot daily reminder — 3 data endpoints | `tarot_router.py` | ✅ Delivered, validated, live |
+| 7 | Astro-Tarot Fusion router | `tarot_router_platform_fusion.py` | 🔜 Stub exists — pending CODEX delivery |
+| 8 | Future module TBD | TBD | 🔒 Pending contract scoping |
 
 ---
 
