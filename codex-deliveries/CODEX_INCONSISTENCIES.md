@@ -1,6 +1,8 @@
 # CODEX Engagement — Inconsistencies & Discrepancies
 
 > Compiled by Temple Team — 29 March 2026
+> Updated: 29 March 2026 (added INC-10 through INC-13 from newly reviewed source files)
+> Sources reviewed: `Response to Codex_Env Constraints.txt` · `CODEX_MASTER_RESPONSE_MARCH2026.md` · `Delayed response to Codex on Infra Updates.rtf`
 > These items require resolution or acknowledgment before new contracts proceed.
 
 ---
@@ -40,6 +42,7 @@
 - `flatlib` has been removed; migration to `pyswisseph` is complete (per DELIVERY_STATUS.md)
 - `TEMPLE_APP_MODULE_DELIVERY_CONTRACT.md` specifies Python 3.12 as the approved target
 - CODEX's own `CROSS_MODULE_BUILD_HANDOVER_ISSUES.md` confirms Python 3.12 target
+- `Response to Codex_Env Constraints.txt` explicitly confirms 3.12 as the approved target
 
 **Resolution:** PYTHON_VERSION.md must be updated by Temple Team to reflect the current reality. This document is currently actively misleading for any new CODEX engagement that reads it. *(Action: Temple Team to update or retire PYTHON_VERSION.md.)*
 
@@ -67,13 +70,12 @@ Note: Per `TAROT_TEMPLE_CONTRACT4_CONTRACT6_HANDOFF.md`, this was intentionally 
 | Field | Value |
 |---|---|
 | Severity | 🟡 Medium |
-| Files affected | `Response to Codex_Env Constraints.txt` (Desktop), `CODEX_MASTER_RESPONSE_MARCH2026.md` (Downloads), `Delayed response to Codex on Infra Updates.rtf` (Desktop) |
+| Status | ✅ Resolved — 29 March 2026 |
+| Files affected | `Response to Codex_Env Constraints.txt` · `CODEX_MASTER_RESPONSE_MARCH2026.md` · `Delayed response to Codex on Infra Updates.rtf` |
 
-**Detail:** These three files were referenced in the review brief but are stored in Desktop and Downloads directories, which are inaccessible to Claude Code. Their content could not be reviewed.
+**Detail:** These three files were stored in Desktop and Downloads directories, which were inaccessible to Claude Code due to macOS Privacy & Security restrictions.
 
-However, key content from `Response to Codex_Env Constraints.rtf` has already been captured and codified in `TEMPLE_APP_MODULE_DELIVERY_CONTRACT.md` (which cites it as its source). The essential constraints from that document are therefore already in the Ways of Working.
-
-**Resolution:** Move these files to the repo `codex-deliveries/` folder or `Documents/` so they are accessible for future reviews. The CODEX_MASTER_RESPONSE_MARCH2026.md is particularly important — please move it.
+**Resolution:** All three files moved by Temple Team to `Documents/New project/` on 29 March 2026. All three have been reviewed and their contents incorporated into `CODEX_WAYS_OF_WORKING.md`. See INC-10, INC-11, INC-12, INC-13 for new findings from those files.
 
 ---
 
@@ -135,16 +137,103 @@ However, key content from `Response to Codex_Env Constraints.rtf` has already be
 
 ---
 
-### INC-09 — DELIVERY_STATUS.md README Still Shows All Contracts as "Awaiting Delivery"
+### INC-09 — DELIVERY_STATUS.md README Contract Table Was Outdated
 
 | Field | Value |
 |---|---|
 | Severity | 🟢 Low |
 | File | `/DailyHoroscope-Migration/codex-deliveries/README.md` |
+| Status | ✅ Resolved — 29 March 2026 |
 
-**Detail:** The contract status table in README.md still shows all contracts as "⏳ Awaiting delivery" despite all contracts (1, 2, 3, 4, 4b, 5, 6) being delivered and validated per DELIVERY_STATUS.md.
+**Detail:** The contract status table in README.md previously showed all contracts as "⏳ Awaiting delivery" despite contracts 1–6 being delivered and validated.
 
-**Resolution:** Temple Team to update README.md contract table to reflect completed status.
+**Resolution:** README.md updated 29 March 2026. All delivered contracts now show "✅ Delivered, validated, live". Contract 7 shows "🔜 Stub exists — pending CODEX delivery". Contract 8 added as "🔒 Pending contract scoping".
+
+---
+
+## NEW — From Source File Review (29 March 2026)
+
+### INC-10 — CODEX_MASTER_RESPONSE_MARCH2026.md Was Not Referenced as Master Document
+
+| Field | Value |
+|---|---|
+| Severity | 🟡 Medium |
+| Source file | `Documents/New project/CODEX_MASTER_RESPONSE_MARCH2026 (1).md` (dated 25 March 2026) |
+| Status | ✅ Resolved — incorporated into CODEX_WAYS_OF_WORKING.md |
+
+**Detail:** `CODEX_MASTER_RESPONSE_MARCH2026.md` is the definitive, comprehensive Temple Team response that supersedes all prior individual constraint responses. It was not previously referenced in any working document as the authoritative source. Key contents not previously captured:
+
+- **Section 3** — Live architecture confirmed: `horoscope_db` database, Claude Sonnet 4 as AI engine, Backend API at `https://everydayhoroscope-api.onrender.com`
+- **Section 7** — All contracts with priority and order explicitly stated
+- **Section 8** — Three-lane ownership model (Lane 1: Temple Team owns; Lane 2: Joint; Lane 3: CODEX backend only)
+- Explicit statement: *"This document supersedes all previous individual responses."*
+
+**Resolution:** All key content incorporated into `CODEX_WAYS_OF_WORKING.md` Sections 1, 3, 4.5, and 6. The master response document itself is now accessible at `Documents/New project/`.
+
+---
+
+### INC-11 — CODEX Self-Identified: tarot_router.py Had Out-of-Scope Code Pre-Delivery
+
+| Field | Value |
+|---|---|
+| Severity | 🟢 Low (resolved in final delivery) |
+| Source | `Documents/New project/Delayed response to Codex on Infra Updates.rtf` |
+| Status | ✅ Resolved — confirmed clean in final delivery |
+
+**Detail:** CODEX self-identified that an intermediate version of `tarot_router.py` contained out-of-scope code that should not have been there:
+- Astro-Tarot fusion logic embedded directly in `tarot_router.py` (should only live in `tarot_router_platform_fusion.py`)
+- A `POST /api/tarot/reminder/dispatch` route (not a contracted route)
+- APScheduler helper functions (scheduler lives in `server.py` on Temple Team side)
+
+**Resolution:** All three items removed before final delivery. The validated live `tarot_router.py` contains none of these. Rule codified in `CODEX_WAYS_OF_WORKING.md` Section 5 (delivery checklist) and Section 14 items 4 and 5.
+
+---
+
+### INC-12 — CODEX Self-Identified: Reminder API Had Wrong Route Shape and Wrong Document Fields
+
+| Field | Value |
+|---|---|
+| Severity | 🟢 Low (resolved in final delivery) |
+| Source | `Documents/New project/Delayed response to Codex on Infra Updates.rtf` |
+| Status | ✅ Resolved — confirmed correct shape in final delivery |
+
+**Detail:** CODEX self-identified two reminder API discrepancies in an intermediate build:
+
+1. **Wrong route**: Built `POST /api/tarot/reminder` instead of contracted `POST /api/tarot/reminder/set`
+2. **Wrong document fields**: Used `hour_utc`, `minute_utc`, `channel`, `focus_area`, `next_run_at`, `last_sent_on` — none of which are part of the Temple reminder document model
+
+**Correct contracted shape:**
+```
+POST   /api/tarot/reminder/set
+GET    /api/tarot/reminder
+DELETE /api/tarot/reminder
+```
+Fields: `reminder_time`, `frequency`, `timezone`, `enabled` only.
+
+**Resolution:** Final delivery uses correct routes and document fields. Exact specification codified in `CODEX_WAYS_OF_WORKING.md` Section 8.
+
+---
+
+### INC-13 — CODEX Self-Identified: tarot_cards.json Was Delivered in Wrong Format (Intermediate Build)
+
+| Field | Value |
+|---|---|
+| Severity | 🟢 Low (resolved in final delivery) |
+| Source | `Documents/New project/Delayed response to Codex on Infra Updates.rtf` |
+| Status | ✅ Resolved — confirmed correct format in final delivery |
+
+**Detail:** CODEX self-identified that an intermediate version of `tarot_cards.json` used a manifest-style wrapper format instead of the required flat object. Additionally, Minor Arcana card IDs used a non-standard naming convention.
+
+**What was wrong:**
+- JSON had a manifest wrapper / `deck` object / `cards[]` array structure
+- Minor Arcana IDs did not use the required `{suit}-{rank}` format
+
+**What was required and delivered:**
+- Flat JSON object: `{ "card-id": "<svg...>", ... }` — 78 keys, no wrapper
+- Major Arcana: slug format (`the-fool`, `the-world`, etc.)
+- Minor Arcana: `{suit}-{rank}` format (`wands-ace`, `cups-07`, `swords-king`, `pentacles-page`)
+
+**Resolution:** Final delivery is a flat 78-key object with correct ID format. Exact specification codified in `CODEX_WAYS_OF_WORKING.md` Section 9.
 
 ---
 
@@ -152,12 +241,16 @@ However, key content from `Response to Codex_Env Constraints.rtf` has already be
 
 | ID | Description | Severity | Status |
 |---|---|---|---|
-| INC-01 | Panchang dropin v3 vs production v11 | 🔴 Critical | Action needed |
-| INC-02 | PYTHON_VERSION.md contradicts live Dockerfile | 🔴 Critical | Action needed |
-| INC-03 | tarot_router_platform_fusion.py is empty stub | 🔴 Critical | Pending contract |
-| INC-04 | Desktop/Downloads files not accessible | 🟡 Medium | Move files |
-| INC-05 | Tarot handoff notes missing from New project 2 | 🟡 Medium | Consolidate |
-| INC-06 | Duplicate workspace folders (New project + New project 2) | 🟡 Medium | Archive older |
-| INC-07 | CODEX workspace Python was 3.9 vs contract 3.12 | 🟢 Low | Resolved |
-| INC-08 | PROJECT_STATUS.md has outdated frontend status | 🟢 Low | Update needed |
-| INC-09 | codex-deliveries/README.md contract table outdated | 🟢 Low | Update needed |
+| INC-01 | Panchang dropin v3 vs production v11 | 🔴 Critical | ⚠️ Action needed |
+| INC-02 | PYTHON_VERSION.md contradicts live Dockerfile | 🔴 Critical | ⚠️ Action needed |
+| INC-03 | tarot_router_platform_fusion.py is empty stub | 🔴 Critical | 🔜 Pending contract |
+| INC-04 | Desktop/Downloads files not accessible | 🟡 Medium | ✅ Resolved |
+| INC-05 | Tarot handoff notes missing from New project 2 | 🟡 Medium | ⚠️ Consolidate |
+| INC-06 | Duplicate workspace folders (New project + New project 2) | 🟡 Medium | ⚠️ Archive older |
+| INC-07 | CODEX workspace Python was 3.9 vs contract 3.12 | 🟢 Low | ✅ Resolved |
+| INC-08 | PROJECT_STATUS.md has outdated frontend status | 🟢 Low | ⚠️ Update needed |
+| INC-09 | codex-deliveries/README.md contract table outdated | 🟢 Low | ✅ Resolved |
+| INC-10 | CODEX_MASTER_RESPONSE_MARCH2026.md not referenced as master document | 🟡 Medium | ✅ Resolved |
+| INC-11 | tarot_router.py had out-of-scope fusion/dispatch/scheduler code | 🟢 Low | ✅ Resolved |
+| INC-12 | Reminder API had wrong routes and wrong document fields | 🟢 Low | ✅ Resolved |
+| INC-13 | tarot_cards.json delivered in manifest format (intermediate build) | 🟢 Low | ✅ Resolved |
