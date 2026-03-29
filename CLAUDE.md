@@ -1,7 +1,7 @@
 # EverydayHoroscope — Claude Code Working Guide
 
 > READ THIS FIRST. This file is the single source of truth for every Claude Code session.
-> Last updated: 28 March 2026
+> Last updated: 29 March 2026
 
 ---
 
@@ -11,6 +11,7 @@
 |---|---|
 | Product | **EverydayHoroscope** — India's premium Vedic astrology platform |
 | Live URL | https://www.everydayhoroscope.in |
+| Backend API | https://everydayhoroscope-api.onrender.com |
 | Repo | `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration` |
 | Main branch | `main` (deploy-on-push) |
 
@@ -34,13 +35,12 @@
 ```
 DailyHoroscope-Migration/
 ├── backend/
-│   ├── main.py                    # FastAPI app entry, router registration
+│   ├── server.py                  # ⭐ Main FastAPI app — all routers, social/YouTube/WhatsApp
 │   ├── panchang_router.py         # ⭐ Panchang engine v8-swiss (primary active file)
 │   ├── vedic_calculator.py        # Birth chart / Kundali engine
 │   ├── tarot_router.py            # Tarot reading + reminder endpoints
 │   ├── numerology_router.py       # Numerology + Ankjyotish premium report
-│   ├── admin_router.py            # ⭐ Admin console — subscribers, notifications, scheduler
-│   ├── Dockerfile                 # python:3.12.9-slim
+│   ├── Dockerfile                 # python:3.12.9-slim + gcc + ffmpeg
 │   └── requirements.txt
 ├── frontend/
 │   └── src/
@@ -104,8 +104,6 @@ Nepal (1), New Zealand (1)
 - `GET /api/panchang/date/{date}`
 - `GET /api/panchang/calendar/{year}/{month}`
 - `GET /api/panchang/festivals?year=YYYY`
-- `GET /api/panchang/tithi` (via daily)
-- `GET /api/panchang/choghadiya` (via daily)
 
 ---
 
@@ -145,6 +143,7 @@ Nepal (1), New Zealand (1)
 - Full SEO + JSON-LD schema on all 7 routes
 - localStorage persistence for selected city
 - **Share card** — `PanchangShareCard` + `ShareButtons` (WhatsApp/Facebook/X/Instagram/YouTube/Save/Copy)
+- **Post to Facebook Page** — one-click from share buttons (requires admin login)
 
 ### TarotPage.jsx ✅ Live
 - 3 tabs: Daily Draw / Spreads / History
@@ -163,17 +162,21 @@ Nepal (1), New Zealand (1)
 ### Horoscope Pages (Daily / Weekly / Monthly) ✅ Live
 - **Share card** — `HoroscopeShareCard` + `ShareButtons` on all three pages
 - Element-based color theming (Fire/Earth/Air/Water)
+- **Post to Facebook Page** — one-click with sign + date caption
 
 ### Admin Console (/admin/dashboard) ✅ Live
 - Overview, System, Users, Reports, Payments, Messages, Blog, Notifications tabs
-- **Notifications tab** — 4 sub-tabs:
-  - **Subscribers** — Add/edit/delete (name, email, phone, tags). MongoDB collection: `subscribers`
+- **Notifications tab** — 5 sub-tabs:
+  - **Subscribers** — Add/edit/delete (name, email, phone, tags). MongoDB: `subscribers`
   - **Compose** — HTML email, audience filter (all / by tag), send now or schedule
-  - **Scheduled** — view/cancel upcoming sends. MongoDB collection: `scheduled_notifications`
-  - **History** — full send log. MongoDB collection: `notification_logs`
+  - **Scheduled** — view/cancel upcoming sends. MongoDB: `scheduled_notifications`
+  - **History** — full send log. MongoDB: `notification_logs`
+  - **Social Media** — post share cards to Facebook + YouTube; channel checkboxes; image upload or URL; post history log. MongoDB: `social_post_logs`
 - Email via Resend ✅ working
-- WhatsApp channel — UI stub present, backend pending (BSP not yet selected)
-- Social media posting — pending (Meta API credentials in progress)
+- WhatsApp — enabled in UI, backend wired to Meta Cloud API v22.0; **blocked on phone number verification** (status: Pending — needs OTP + payment method on Meta)
+- Facebook posting ✅ working (System User token → Page token exchange)
+- YouTube posting ✅ working (OAuth via Google Cloud; background task; ~2–4 min upload)
+- Instagram — coming soon (Business Account ID pending)
 
 ---
 
@@ -198,10 +201,34 @@ Nepal (1), New Zealand (1)
 - Desktop: `canvas.toDataURL()` → synchronous anchor click (reliable download)
 - iOS Safari: `canvas.toBlob()` → `window.open()` (long-press to save)
 - html2canvas capture uses `onclone` option — real DOM never moves, zero flash
+- "Post to Page" Facebook button appears when `fbPageCaption` prop is passed
 
 ---
 
-## 8. Commit Protocol
+## 8. YouTube Integration (server.py)
+
+- **OAuth flow**: Google Cloud OAuth 2.0 → refresh token stored in MongoDB (`app_settings.youtube_refresh_token`)
+- **Upload pipeline**: PNG share card → ffmpeg (libx264 veryfast, CRF 18, -tune stillimage, -threads 1, 30s) → MP4 → YouTube Data API v3 resumable upload
+- **Background task**: YouTube runs as FastAPI `BackgroundTasks` — response returns immediately, upload happens async (~2–4 min). Check Post History or YouTube Studio to confirm.
+- **Key lesson**: ffmpeg with default preset pins CPU at 100% for 30+ sec → Render health-check restart. Fix: `-preset veryfast -threads 1` keeps encode to ~10s.
+- **API routes**: `/api/admin/youtube/status`, `/api/admin/youtube/auth-url`, `/api/admin/youtube/callback`, `/api/admin/youtube/disconnect`
+- **YouTube Studio**: studio.youtube.com → Content → Videos to verify uploads
+
+---
+
+## 9. WhatsApp Integration (server.py)
+
+- **API**: Meta Cloud API v22.0 — `POST /v22.0/{phone_number_id}/messages`
+- **Template**: `everydayhoroscope_update` with named variables `{{customer_name}}` + `{{update_content}}`
+- **Current blocker**: Phone number `+91 96431 10001` (ID: `1062698816928895`) status = **Pending**
+  - Fix: WhatsApp Manager → Phone Numbers → complete OTP verification
+  - Also: add payment method to WABA (Meta requires card on file even for free-tier usage)
+- **WABA ID**: `754513054261096`
+- **Token**: Must be WhatsApp-specific token from API Setup page (not the Facebook System User token)
+
+---
+
+## 10. Commit Protocol
 
 **Always use this format:**
 ```
@@ -218,17 +245,18 @@ docs: description              # documentation only
 ENGINE_VERSION = "panchang-router-v9-swiss"  # increment version
 ```
 
+**⚠️ Render rolling deploys kill in-flight background tasks.** Avoid pushing code while a YouTube upload test is in progress — wait for the upload to complete first (check Post History), then push.
+
 ---
 
-## 9. Local Dev Setup
+## 11. Local Dev Setup
 
 ```bash
 # Backend
 cd backend
 pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
+uvicorn server:app --reload --port 8000
 # API available at http://localhost:8000
-# Test: curl http://localhost:8000/api/panchang/daily?location_slug=new-delhi-india
 
 # Frontend
 cd frontend
@@ -240,27 +268,31 @@ npm start
 
 ---
 
-## 10. Environment Variables
+## 12. Environment Variables
 
 | Variable | Where set | Purpose |
 |---|---|---|
 | `REACT_APP_BACKEND_URL` | Vercel env | Points frontend to Render API |
 | `MONGO_URL` | Render env | MongoDB connection string |
 | `DB_NAME` | Render env | MongoDB database name |
-| `RAZORPAY_KEY_ID` | Render env | Payments (test keys active) |
-| `RAZORPAY_KEY_SECRET` | Render env | Payments (test keys active) |
+| `RAZORPAY_KEY_ID` | Render env | Payments — **new test keys active (29 Mar 2026)** |
+| `RAZORPAY_KEY_SECRET` | Render env | Payments — new test keys active |
 | `RESEND_API_KEY` | Render env | Email sending ✅ working |
-| `FROM_EMAIL` | Render env | Sender address (e.g. noreply@everydayhoroscope.in) |
-| `WHATSAPP_PHONE_NUMBER_ID` | Render env | Meta Cloud API — pending |
-| `WHATSAPP_BUSINESS_ACCOUNT_ID` | Render env | Meta Cloud API — pending |
-| `WHATSAPP_ACCESS_TOKEN` | Render env | Meta Cloud API — pending |
-| `FACEBOOK_PAGE_ID` | Render env | `1084672598054073` — confirmed |
-| `FACEBOOK_PAGE_ACCESS_TOKEN` | Render env | System User token — obtained, set on Render |
-| `INSTAGRAM_BUSINESS_ACCOUNT_ID` | Render env | Pending (Instagram loading issue) |
+| `FROM_EMAIL` | Render env | Sender address (noreply@everydayhoroscope.in) |
+| `FACEBOOK_PAGE_ID` | Render env | `1084672598054073` ✅ confirmed |
+| `FACEBOOK_PAGE_ACCESS_TOKEN` | Render env | System User token (never expires) ✅ |
+| `YOUTUBE_CLIENT_ID` | Render env | Google Cloud OAuth client ✅ |
+| `YOUTUBE_CLIENT_SECRET` | Render env | Google Cloud OAuth secret ✅ |
+| `YOUTUBE_REDIRECT_URI` | Render env | `https://everydayhoroscope-api.onrender.com/api/admin/youtube/callback` ✅ |
+| `WHATSAPP_PHONE_NUMBER_ID` | Render env | `1062698816928895` — set, but phone Pending |
+| `WHATSAPP_BUSINESS_ACCOUNT_ID` | Render env | `754513054261096` — set |
+| `WHATSAPP_ACCESS_TOKEN` | Render env | Must be WhatsApp-specific token (not FB System User token) |
+| `WHATSAPP_TEMPLATE_NAME` | Render env | `everydayhoroscope_update` (pending Meta approval) |
+| `INSTAGRAM_BUSINESS_ACCOUNT_ID` | Render env | Pending (Instagram loading issue in Meta dashboard) |
 
 ---
 
-## 11. Completed Features (as of 28 March 2026)
+## 13. Completed Features (as of 29 March 2026)
 
 | Feature | Status |
 |---|---|
@@ -271,37 +303,36 @@ npm start
 | Panchang share card (WhatsApp/Facebook/Instagram/YouTube/Save) | ✅ |
 | Horoscope share cards (Daily/Weekly/Monthly) | ✅ |
 | Share card download — desktop + mobile + iOS Safari | ✅ |
+| Facebook Page posting — one-click from Panchang + Horoscope pages + Admin Console | ✅ |
+| YouTube posting — share card → MP4 → YouTube Shorts via Admin Console | ✅ |
 | Tarot frontend (flipping cards, spreads, history) | ✅ |
 | Numerology frontend (10 report types) | ✅ |
 | Kundali / Birth Chart UI (BirthChartPage + BrihatKundliPage) | ✅ |
-| Razorpay subscription / paywall | ✅ test keys active |
+| Razorpay subscription / paywall (new test keys active) | ✅ |
 | SEO — OG tags, GA4 (G-3HJC8BTHRQ), JSON-LD schema | ✅ |
-| Google Search Console — verified | ✅ |
-| Bing Webmaster Tools — verified | ✅ |
-| Sitemap submitted to Bing | ✅ |
+| Google Search Console — verified + sitemap submitted | ✅ |
+| Bing Webmaster Tools — verified + sitemap submitted | ✅ |
 | Admin Console — subscriber management | ✅ |
 | Admin Console — email notifications via Resend | ✅ |
 | Admin Console — scheduled notifications (APScheduler) | ✅ |
 | Admin Console — notification history log | ✅ |
-| Facebook Page posting — one-click from Panchang + Horoscope pages | ✅ |
-| Admin Console — Social Media tab (post + file upload + history) | ✅ |
+| Admin Console — Social Media tab (Facebook + YouTube post + history) | ✅ |
 
 ---
 
-## 12. In Progress / Pending
+## 14. In Progress / Pending
 
 | Task | Status | Blocker |
 |---|---|---|
-| Google Search Console sitemap submission | 🔜 | Manual step — submit sitemap.xml in GSC dashboard |
-| WhatsApp notifications (Meta Cloud API) | 🔜 | Need WHATSAPP_PHONE_NUMBER_ID + ACCESS_TOKEN on Render |
-| Facebook page posting | ✅ | Working — one-click from Panchang/Horoscope pages + Admin Console |
-| Instagram posting | 🔜 | Instagram Business Account ID pending (loading issue) |
+| WhatsApp notifications | 🔜 | Phone `+91 96431 10001` Pending — complete OTP + add payment method on Meta |
+| Instagram posting | 🔜 | Instagram Business Account ID not loading in Meta dashboard |
+| Scheduled daily social posts (6 AM auto-post to FB + YT) | 🔜 | APScheduler ready, needs endpoint + Admin Console toggle |
+| YouTube upload speed | 🔜 | Currently ~2–4 min; improving with veryfast+CRF18 preset (deployed 29 Mar) |
 | Razorpay live keys | 🔜 | Upload only when ready for Play Store |
-| Social media Admin Console channels | 🔜 | Depends on Meta API credentials above |
 
 ---
 
-## 13. Meta / Social API Reference
+## 15. Meta / Social API Reference
 
 | Credential | Value | Status |
 |---|---|---|
@@ -310,6 +341,9 @@ npm start
 | Facebook Page | EverydayHoroscope | ✅ |
 | Facebook Page ID | `1084672598054073` | ✅ confirmed |
 | Facebook System User | EverydayHoroscope Bot | ✅ created |
-| Facebook Page Access Token | System User token (never expires) | ✅ obtained |
+| Facebook Page Access Token | System User token (never expires) | ✅ set on Render |
+| YouTube OAuth | Google Cloud Project, OAuth 2.0 Web Client | ✅ connected via Admin Console |
+| YouTube Channel | EverydayHoroscope | ✅ connected |
 | Instagram Business Account ID | — | 🔜 pending |
-| WhatsApp Phone Number ID | — | 🔜 pending BSP setup |
+| WhatsApp Phone Number ID | `1062698816928895` (+91 96431 10001) | 🔜 Pending verification |
+| WhatsApp WABA ID | `754513054261096` | ✅ |
