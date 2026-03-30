@@ -8,6 +8,7 @@ from uuid import uuid4
 
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
+from vedic_calculator import calculate_vedic_chart
 
 
 router = APIRouter(prefix="/api/numerology", tags=["numerology"])
@@ -553,10 +554,27 @@ def _build_baby_name_report(payload: NumerologyGenerateRequest, user_email: str)
 
 
 def _build_premium_ankjyotish_report(payload: NumerologyGenerateRequest, user_email: str) -> NumerologyReportPayload:
-    required_fields = {"time_of_birth": payload.time_of_birth, "place_of_birth": payload.place_of_birth, "lagna_sign": payload.lagna_sign, "moon_sign": payload.moon_sign, "nakshatra_name": payload.nakshatra_name}
-    missing = [k for k, v in required_fields.items() if not v]
+    # Only time_of_birth and place_of_birth are required from the user.
+    # lagna_sign, moon_sign, and nakshatra_name are auto-computed via pyswisseph.
+    missing = [k for k, v in {"time_of_birth": payload.time_of_birth, "place_of_birth": payload.place_of_birth}.items() if not v]
     if missing:
         raise HTTPException(status_code=400, detail=f"Missing required fields for premium_ankjyotish_report: {', '.join(missing)}")
+
+    # Auto-compute Vedic markers from birth data unless the caller already supplied them
+    lagna_sign = payload.lagna_sign
+    moon_sign = payload.moon_sign
+    nakshatra_name = payload.nakshatra_name
+    if not (lagna_sign and moon_sign and nakshatra_name):
+        try:
+            chart = calculate_vedic_chart(payload.date_of_birth, payload.time_of_birth, payload.place_of_birth)
+            lagna_sign = lagna_sign or chart["lagna"]["sign"]
+            moon_sign = moon_sign or chart["moon_sign"]["sign"]
+            nakshatra_name = nakshatra_name or chart["nakshatra"]["name"]
+        except Exception:
+            lagna_sign = lagna_sign or "Unknown"
+            moon_sign = moon_sign or "Unknown"
+            nakshatra_name = nakshatra_name or "Unknown"
+
     now = _now()
     lp, lp_trace = _calculate_life_path(payload.date_of_birth, payload.reduction_method)
     core = _calculate_core_four(payload.full_birth_name, payload.numerology_system, payload.y_mode)
@@ -569,18 +587,18 @@ def _build_premium_ankjyotish_report(payload: NumerologyGenerateRequest, user_em
     lucky = _lucky_elements_table(lp.reduced, core["expression"].reduced, core["soul_urge"].reduced)
     remediation = _remediation_plan(lp.reduced)
     name_align = _score_compatibility(core["expression"].reduced, curr_expr.reduced) if curr_expr else None
-    vedic_ref = {"lagna_sign": payload.lagna_sign, "moon_sign": payload.moon_sign, "nakshatra_name": payload.nakshatra_name, "cross_reference_note": "These Vedic markers are provided by Temple App and are referenced here for symbolic cross-alignment only."}
+    vedic_ref = {"lagna_sign": lagna_sign, "moon_sign": moon_sign, "nakshatra_name": nakshatra_name, "cross_reference_note": "These Vedic markers are computed from birth data via pyswisseph and referenced here for symbolic cross-alignment only."}
     sections = [
         NumerologyReportSection(section_id="core_number_profile", title="Core Number Profile", summary=f"Life Path {lp.reduced}, Expression {core['expression'].reduced}, Soul Urge {core['soul_urge'].reduced}, and Personality {core['personality'].reduced} create the main numerological blueprint.", body="This section synthesizes your native directional number, visible expression, private motivation, and outer style into one consolidated core profile."),
         NumerologyReportSection(section_id="lo_shu_grid", title="Lo Shu Grid", summary=f"Missing numbers: {', '.join(str(n) for n in loshu_payload['missing_numbers']) if loshu_payload['missing_numbers'] else 'none'}. Repeated: {', '.join(str(n) for n in loshu_payload['repeated_numbers']) if loshu_payload['repeated_numbers'] else 'none'}.", body="The visual Lo Shu grid is delivered as structured JSON in the report payload for Temple-side rendering."),
         NumerologyReportSection(section_id="karmic_debt_audit", title="Karmic Debt Audit", summary=f"Detected karmic debt numbers: {', '.join(str(k) for k in karmic) if karmic else 'none'}.", body="Karmic debt numbers are treated as recurring learning signatures and are paired with practical remediation framing."),
         NumerologyReportSection(section_id="timing_window", title="Personal Year, Month, And Day Timing", summary=f"Current timing reads as Personal Year {py.reduced}, Personal Month {pm.reduced}, and Personal Day {pd.reduced}.", body="Use this section to understand the immediate timing climate and the broader three-year progression ahead."),
         NumerologyReportSection(section_id="name_vibration_analysis", title="Name Vibration Analysis", summary=(f"Current name usage reduces to {curr_expr.reduced} and reads as {name_align['band']} against the birth-name expression pattern." if curr_expr and name_align else "No current popular name was provided, so this section remains anchored to the birth-name baseline only."), body="This section compares current-name usage with the birth-name blueprint to understand public-name fit and refinement potential."),
-        NumerologyReportSection(section_id="vedic_cross_reference", title="Vedic Cross-Reference", summary=f"Lagna {payload.lagna_sign}, Moon Sign {payload.moon_sign}, and Nakshatra {payload.nakshatra_name} are referenced for symbolic cross-alignment.", body="These Vedic markers are supplied by Temple App and are not recalculated inside Numerology. They are used only as supporting context."),
+        NumerologyReportSection(section_id="vedic_cross_reference", title="Vedic Cross-Reference", summary=f"Lagna {lagna_sign}, Moon Sign {moon_sign}, and Nakshatra {nakshatra_name} are referenced for symbolic cross-alignment.", body="These Vedic markers are auto-computed from your birth details and used as supporting Vedic context within the numerology reading."),
         NumerologyReportSection(section_id="lucky_elements_table", title="Lucky Elements Table", summary=f"Dominant element: {lucky['dominant_element']}; supportive day: {lucky['supportive_day']}.", body="This section consolidates supportive colors, element trends, and repeating number preferences into a quick-reference table."),
         NumerologyReportSection(section_id="remediation_plan", title="7-Day Remediation Plan", summary="A short seven-day cycle is provided to help convert numerological insight into practical daily alignment.", body="Use the seven-day plan as a structured reset rather than as a promise of immediate external change."),
     ]
-    return NumerologyReportPayload(**_report_base(payload, user_email, "numerology_premium_ankjyotish", "premium-ankjyotish-report"), document_type="premium_ankjyotish_report", computed_values={"life_path": lp, "expression": core["expression"], "soul_urge": core["soul_urge"], "personality": core["personality"], "personal_year": py, "personal_month": pm, "personal_day": pd}, calculation_trace={"life_path": lp_trace, "personal_year": py_trace, "lo_shu_grid_payload": loshu_payload, "karmic_debts": karmic, "timing_forecast": _timing_forecast_lines(now.year, py.reduced), "lucky_elements_table": lucky, "vedic_cross_reference": vedic_ref, "name_alignment": name_align, "remediation_plan": remediation}, report_sections=sections, summary="This premium Ankjyotish report combines core numerology, Lo Shu, karmic audit, timing, name analysis, and Vedic cross-reference into one structured life-analysis reading.", guidance="Use this premium report as a structured alignment map for identity, timing, remedies, and practical life decisions.", remedy_note="Temple App renders the Lo Shu visual from structured JSON. The seven-day remediation plan is designed for practical follow-through.")
+    return NumerologyReportPayload(**_report_base(payload, user_email, "numerology_premium_ankjyotish", "premium-ankjyotish-report"), document_type="premium_ankjyotish_report", lagna_sign=lagna_sign, moon_sign=moon_sign, nakshatra_name=nakshatra_name, computed_values={"life_path": lp, "expression": core["expression"], "soul_urge": core["soul_urge"], "personality": core["personality"], "personal_year": py, "personal_month": pm, "personal_day": pd}, calculation_trace={"life_path": lp_trace, "personal_year": py_trace, "lo_shu_grid_payload": loshu_payload, "karmic_debts": karmic, "timing_forecast": _timing_forecast_lines(now.year, py.reduced), "lucky_elements_table": lucky, "vedic_cross_reference": vedic_ref, "name_alignment": name_align, "remediation_plan": remediation}, report_sections=sections, summary="This premium Ankjyotish report combines core numerology, Lo Shu, karmic audit, timing, name analysis, and Vedic cross-reference into one structured life-analysis reading.", guidance="Use this premium report as a structured alignment map for identity, timing, remedies, and practical life decisions.", remedy_note="Temple App renders the Lo Shu visual from structured JSON. The seven-day remediation plan is designed for practical follow-through.")
 
 
 def _build_report(payload: NumerologyGenerateRequest, user_email: str) -> NumerologyReportPayload:

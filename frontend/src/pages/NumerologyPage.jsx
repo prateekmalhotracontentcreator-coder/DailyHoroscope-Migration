@@ -28,19 +28,6 @@ const TILE_META = {
   premium_ankjyotish_report:      { icon: Star,      label: 'Premium Ankjyotish Report',            color: 'text-amber-400' },
 };
 
-const RASHI_OPTIONS = [
-  'Aries (Mesha)', 'Taurus (Vrishabha)', 'Gemini (Mithuna)', 'Cancer (Karka)',
-  'Leo (Simha)', 'Virgo (Kanya)', 'Libra (Tula)', 'Scorpio (Vrishchika)',
-  'Sagittarius (Dhanu)', 'Capricorn (Makara)', 'Aquarius (Kumbha)', 'Pisces (Meena)',
-];
-
-const NAKSHATRA_OPTIONS = [
-  'Ashwini', 'Bharani', 'Krittika', 'Rohini', 'Mrigashira', 'Ardra',
-  'Punarvasu', 'Pushya', 'Ashlesha', 'Magha', 'Purva Phalguni', 'Uttara Phalguni',
-  'Hasta', 'Chitra', 'Swati', 'Vishakha', 'Anuradha', 'Jyeshtha',
-  'Mula', 'Purva Ashadha', 'Uttara Ashadha', 'Shravana', 'Dhanishtha',
-  'Shatabhisha', 'Purva Bhadrapada', 'Uttara Bhadrapada', 'Revati',
-];
 
 const schema = {
   '@context': 'https://schema.org',
@@ -70,12 +57,9 @@ export const NumerologyPage = () => {
     target_year: new Date().getFullYear(),
     focus_area: 'general',
     numerology_system: 'pythagorean',
-    // Ankjyotish premium fields
+    // Ankjyotish premium fields (lagna/moon/nakshatra auto-computed on backend)
     time_of_birth: '',
     place_of_birth: '',
-    lagna_sign: '',
-    moon_sign: '',
-    nakshatra_name: '',
   });
   const [report, setReport] = useState(null);
   const [history, setHistory] = useState([]);
@@ -143,12 +127,9 @@ export const NumerologyPage = () => {
       if (form.business_name) payload.business_name = form.business_name;
       if (form.candidate_name) payload.candidate_name = form.candidate_name;
       if (selectedTile.tile_code === 'favorable_timing') payload.target_year = parseInt(form.target_year);
-      // Ankjyotish premium fields
+      // Ankjyotish premium fields — lagna/moon/nakshatra are auto-computed on the backend
       if (form.time_of_birth)  payload.time_of_birth  = form.time_of_birth;
       if (form.place_of_birth) payload.place_of_birth = form.place_of_birth;
-      if (form.lagna_sign)     payload.lagna_sign     = form.lagna_sign;
-      if (form.moon_sign)      payload.moon_sign      = form.moon_sign;
-      if (form.nakshatra_name) payload.nakshatra_name = form.nakshatra_name;
 
       const res = await axios.post(`${API}/numerology/report/generate`, payload, { withCredentials: true });
       setReport(res.data.report);
@@ -202,9 +183,6 @@ export const NumerologyPage = () => {
       target_year: ['favorable_timing'],
       time_of_birth:  ['premium_ankjyotish_report'],
       place_of_birth: ['premium_ankjyotish_report'],
-      lagna_sign:     ['premium_ankjyotish_report'],
-      moon_sign:      ['premium_ankjyotish_report'],
-      nakshatra_name: ['premium_ankjyotish_report'],
     };
     return map[field]?.includes(tc);
   };
@@ -380,36 +358,6 @@ export const NumerologyPage = () => {
                 <input type="text" value={form.place_of_birth} onChange={e => setForm(f => ({ ...f, place_of_birth: e.target.value }))} placeholder="e.g. Mumbai, India" className="w-full px-3 py-2.5 rounded-sm border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-gold/40" />
               </div>
             )}
-            {needsField('lagna_sign') && (
-              <div>
-                <label className="block text-sm font-medium mb-1.5">Lagna (Ascendant) Sign <span className="text-red-400">*</span></label>
-                <select value={form.lagna_sign} onChange={e => setForm(f => ({ ...f, lagna_sign: e.target.value }))} className="w-full px-3 py-2.5 rounded-sm border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-gold/40">
-                  <option value="">Select your Lagna</option>
-                  {RASHI_OPTIONS.map(r => <option key={r} value={r}>{r}</option>)}
-                </select>
-                <p className="text-xs text-muted-foreground mt-1">Your rising sign at the time of birth. Find it from your birth chart.</p>
-              </div>
-            )}
-            {needsField('moon_sign') && (
-              <div>
-                <label className="block text-sm font-medium mb-1.5">Moon Sign (Rashi) <span className="text-red-400">*</span></label>
-                <select value={form.moon_sign} onChange={e => setForm(f => ({ ...f, moon_sign: e.target.value }))} className="w-full px-3 py-2.5 rounded-sm border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-gold/40">
-                  <option value="">Select your Moon Sign</option>
-                  {RASHI_OPTIONS.map(r => <option key={r} value={r}>{r}</option>)}
-                </select>
-              </div>
-            )}
-            {needsField('nakshatra_name') && (
-              <div>
-                <label className="block text-sm font-medium mb-1.5">Birth Nakshatra <span className="text-red-400">*</span></label>
-                <select value={form.nakshatra_name} onChange={e => setForm(f => ({ ...f, nakshatra_name: e.target.value }))} className="w-full px-3 py-2.5 rounded-sm border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-gold/40">
-                  <option value="">Select your Nakshatra</option>
-                  {NAKSHATRA_OPTIONS.map(n => <option key={n} value={n}>{n}</option>)}
-                </select>
-                <p className="text-xs text-muted-foreground mt-1">The lunar mansion of the Moon at your birth. Find it in your Kundali.</p>
-              </div>
-            )}
-
             {/* System selector */}
             <div className="flex gap-3">
               <div className="flex-1">
