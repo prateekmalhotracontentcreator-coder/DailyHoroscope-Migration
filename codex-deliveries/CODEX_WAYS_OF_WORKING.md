@@ -2,10 +2,9 @@
 
 > **Single source of truth for all CODEX engagements.**
 > Compiled by Temple Team — 29 March 2026
-> Sources: Response to Codex_Env Constraints.txt · CODEX_MASTER_RESPONSE_MARCH2026.md ·
-> Delayed response to Codex on Infra Updates.rtf · CROSS_MODULE_BUILD_HANDOVER_ISSUES.md ·
+> Sources: CODEX_MASTER_RESPONSE_MARCH2026.md · CROSS_MODULE_BUILD_HANDOVER_ISSUES.md ·
 > TEMPLE_APP_MODULE_DELIVERY_CONTRACT.md · CLAUDE_ENVIRONMENT_REVIEW_SUMMARY.md ·
-> EVERYDAY_HOROSCOPE_MODULAR_PLATFORM_FRAMEWORK.md · PROJECT_STATUS.md · DELIVERY_STATUS.md
+> EVERYDAY_HOROSCOPE_MODULAR_PLATFORM_FRAMEWORK.md · Prior engagement chat history
 > Supersedes all prior individual constraint notes and partial response documents.
 
 ---
@@ -52,11 +51,12 @@ Each spiritual guidance system is a sibling module inside that temple. CODEX bui
 
 ### Staging Protocol
 
-1. CODEX uploads files to `codex-deliveries/` folder on GitHub
-2. Temple Team reads, diffs, and validates against the live backend
-3. If validation passes → Temple Team moves to `backend/` and deploys
-4. If validation fails → Temple Team flags exact issue before anything touches production
-5. **Nothing in `codex-deliveries/` touches the live app until explicitly integrated by Temple Team**
+1. CODEX maintains all deliverable files in the **dedicated CODEX workspace folder** (Documents/New project or New project 2)
+2. CODEX maintains **document nomenclature and version control** within that folder — each file must be clearly named and versioned before handoff
+3. Temple Team receives the deliverables, reviews, and diffs against the live backend
+4. If validation passes → Temple Team moves to `backend/` and deploys; file is also committed to `codex-deliveries/` in the GitHub repo for version history
+5. If validation fails → Temple Team flags exact issue before anything touches production
+6. **Nothing touches the live app until explicitly integrated and signed off by Temple Team**
 
 ---
 
@@ -256,8 +256,8 @@ Every CODEX delivery must include:
 |---|---|---|---|---|
 | 1 | vedic_calculator.py — flatlib → pyswisseph | `vedic_calculator.py` | ✅ Live | 3.12 |
 | 2 | panchang_router.py — pyswisseph engine | `panchang_router.py` | ✅ Live (v11-swiss) | 3.12 |
-| 3 | Premium Ankjyotish Numerology tile | `numerology_router.py` | ✅ Live | 3.12 |
-| 4 | Tarot 78-card SVG bundle | `tarot_cards.json` | ✅ Live | N/A |
+| 3 | Premium Ankjyotish Numerology tile | `numerology_router.py` | ⚠️ Delivered — backend live, report not rendering in app (under investigation) | 3.12 |
+| 4 | Tarot 78-card SVG bundle | `tarot_cards.json` | ✅ Live — visual asset quality enhancement pending | N/A |
 | 4b | Tarot router DEFAULT_CARDS → 78 | `tarot_router.py` | ✅ Live | 3.12 |
 | 5 | Panchang per-date endpoint | `panchang_router.py` | ✅ Live | 3.12 |
 | 6 | Tarot daily reminder — 3 endpoints | `tarot_router.py` | ✅ Live | 3.12 |
@@ -270,13 +270,13 @@ Every CODEX delivery must include:
 
 > **⚠️ The CODEX dropin `panchang_router.py` is v3-swiss. Production is v11-swiss. Do NOT use the dropin version as a reference.**
 
-If CODEX needs a current Panchang reference for future work, Temple Team will provide the production version.
+If CODEX needs a Panchang reference for future work (e.g. Lagna Kundali integration), Temple Team will provide a **reference snapshot of `vedic_calculator.py`** — the shared astronomical engine that both Panchang and Kundali modules rely on. CODEX does not need panchang_router.py itself; all natal and positional computations required for new contracts flow through `vedic_calculator.py`. Temple Team will share this when the relevant contract is initiated.
 
 ---
 
 ## 8. Tarot Reminder Contract — Exact Specification
 
-From `CODEX_MASTER_RESPONSE_MARCH2026.md` Section 7 + `Delayed response to Codex on Infra Updates.rtf`:
+From `CODEX_MASTER_RESPONSE_MARCH2026.md` Section 7 + prior engagement chat history:
 
 **Routes (exactly these three):**
 ```
@@ -333,14 +333,19 @@ DELETE /api/tarot/reminder        — remove reminder preference
 
 ## 10. Astro-Tarot Fusion — Next Contract Specification
 
-Specification complete and ready for CODEX:
+> **⚠️ Under Temple Team internal review — not yet shared with CODEX.**
+> This section will be finalised by Temple Team before being issued as a formal contract appointment. CODEX should not treat this as an active brief until a Contract Appointment Note is received.
+
+The following spec documents exist and are under review:
 - `ASTRO_TAROT_FUSION_ENGINEERING_NOTE.md` — architecture, layered approach, output contract
 - `ASTRO_TAROT_FUSION_PROMPT_PACK.md` — 5 prompts (Lite Daily, Premium Spread, Signature, Favorable Window, Product Bridge)
 - `ASTRO_TAROT_VEDIC_CROSS_REFERENCE_UI_SPEC.md` — UI specification
 
-**Key rule:** The model must never invent astrology. It may only interpret deterministic Vedic signals explicitly provided in the request.
+**Key rule (confirmed):** The model must never invent astrology. It may only interpret deterministic Vedic signals explicitly provided in the request.
 
-**Delivery:** `tarot_router_platform_fusion.py` — standalone `APIRouter`, prefix `/api/tarot/fusion`, single collection `tarot_readings`, validated Python 3.12.
+**Delivery (confirmed):** `tarot_router_platform_fusion.py` — standalone `APIRouter`, prefix `/api/tarot/fusion`, single collection `tarot_readings`, validated Python 3.12.
+
+Contract Appointment Note to follow after Temple Team review.
 
 ---
 
