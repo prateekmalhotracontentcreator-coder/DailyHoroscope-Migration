@@ -270,7 +270,15 @@ Every CODEX delivery must include:
 
 > **⚠️ The CODEX dropin `panchang_router.py` is v3-swiss. Production is v11-swiss. Do NOT use the dropin version as a reference.**
 
-If CODEX needs a Panchang reference for future work (e.g. Lagna Kundali integration), Temple Team will provide a **reference snapshot of `vedic_calculator.py`** — the shared astronomical engine that both Panchang and Kundali modules rely on. CODEX does not need panchang_router.py itself; all natal and positional computations required for new contracts flow through `vedic_calculator.py`. Temple Team will share this when the relevant contract is initiated.
+**Reference snapshot shared — 30 March 2026:** `REFERENCE_vedic_calculator.py` is available in the `codex-deliveries/` folder. This is the shared astronomical engine that both Panchang and Kundali modules rely on. All natal and positional computations required for Contract 8A (Lagna Kundali) flow through this file. CODEX does not need `panchang_router.py` itself.
+
+**Key functions in `vedic_calculator.py` relevant to Contract 8A:**
+- `calculate_vedic_chart(date_of_birth, time_of_birth, place_of_birth)` — returns full natal chart including lagna, moon sign, nakshatra, planets, houses, dashas
+- `geocode_place(place)` — converts city name to lat/lon (91-city catalogue built in; falls back to geopy)
+- `generate_north_indian_chart_svg(houses, lagna_sign)` — renders the North Indian diamond SVG (Temple may extend this for the Kundali UI)
+- `calculate_vimshottari_dasha(birth_date, moon_longitude)` — Vimshottari Dasha periods
+- `get_nakshatra(moon_longitude)` — Nakshatra name, lord, pada
+- `get_current_dasha(dashas)` — current Maha + Antar Dasha
 
 ---
 
