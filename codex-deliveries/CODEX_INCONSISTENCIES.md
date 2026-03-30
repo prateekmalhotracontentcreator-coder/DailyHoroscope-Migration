@@ -237,6 +237,35 @@ Fields: `reminder_time`, `frequency`, `timezone`, `enabled` only.
 
 ---
 
+### INC-14 — Numerology Premium Ankjyotish Frontend Form Missing 5 Required Fields
+
+| Field | Value |
+|---|---|
+| Severity | 🔴 Critical (report completely broken in live app) |
+| File | `frontend/src/pages/NumerologyPage.jsx` |
+| Status | ✅ Fixed — 30 March 2026 |
+
+**Detail:** The `premium_ankjyotish_report` tile returned by the backend requires five fields that the frontend form never collected:
+- `time_of_birth` (birth time)
+- `place_of_birth` (city/country)
+- `lagna_sign` (ascendant — dropdown, 12 rashis)
+- `moon_sign` (moon sign — dropdown, 12 rashis)
+- `nakshatra_name` (birth nakshatra — dropdown, 27 nakshatras)
+
+The backend correctly validated these and returned the error: *"Missing required fields for premium_ankjyotish_report: time_of_birth, place_of_birth, lagna_sign, moon_sign, nakshatra_name."*
+
+Additionally, `premium_ankjyotish_report` was missing from the `TILE_META` mapping in the frontend, so no icon or label was defined for it.
+
+**Resolution:** `NumerologyPage.jsx` updated to:
+1. Add `premium_ankjyotish_report` to `TILE_META` (icon, label, colour)
+2. Add `RASHI_OPTIONS` (12 signs) and `NAKSHATRA_OPTIONS` (27 nakshatras) constants
+3. Add all 5 fields to form state
+4. Add them to the `needsField()` conditional display map
+5. Add form inputs (time input, text input, and 3 select dropdowns with helper text)
+6. Include them in the API payload in `handleGenerate`
+
+---
+
 ## Summary Table
 
 | ID | Description | Severity | Status |
@@ -249,6 +278,7 @@ Fields: `reminder_time`, `frequency`, `timezone`, `enabled` only.
 | INC-06 | Duplicate workspace folders (New project + New project 2) | 🟡 Medium | ⚠️ Archive older |
 | INC-07 | CODEX workspace Python was 3.9 vs contract 3.12 | 🟢 Low | ✅ Resolved |
 | INC-08 | PROJECT_STATUS.md has outdated frontend status | 🟢 Low | ⚠️ Update needed |
+| INC-14 | Numerology: Premium Ankjyotish frontend form missing 5 required fields | 🔴 Critical | ✅ Fixed 30 Mar 2026 |
 | INC-09 | codex-deliveries/README.md contract table outdated | 🟢 Low | ✅ Resolved |
 | INC-10 | CODEX_MASTER_RESPONSE_MARCH2026.md not referenced as master document | 🟡 Medium | ✅ Resolved |
 | INC-11 | tarot_router.py had out-of-scope fusion/dispatch/scheduler code | 🟢 Low | ✅ Resolved |

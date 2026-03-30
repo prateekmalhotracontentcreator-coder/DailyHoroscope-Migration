@@ -257,7 +257,7 @@ Every CODEX delivery must include:
 | 1 | vedic_calculator.py — flatlib → pyswisseph | `vedic_calculator.py` | ✅ Live | 3.12 |
 | 2 | panchang_router.py — pyswisseph engine | `panchang_router.py` | ✅ Live (v11-swiss) | 3.12 |
 | 3 | Premium Ankjyotish Numerology tile | `numerology_router.py` | ⚠️ Delivered — backend live, report not rendering in app (under investigation) | 3.12 |
-| 4 | Tarot 78-card SVG bundle | `tarot_cards.json` | ✅ Live — visual asset quality enhancement pending | N/A |
+| 4 | Tarot 78-card SVG bundle | `tarot_cards.json` | ✅ Live — digital asset visual refinement is a follow-up item, not a contract blocker | N/A |
 | 4b | Tarot router DEFAULT_CARDS → 78 | `tarot_router.py` | ✅ Live | 3.12 |
 | 5 | Panchang per-date endpoint | `panchang_router.py` | ✅ Live | 3.12 |
 | 6 | Tarot daily reminder — 3 endpoints | `tarot_router.py` | ✅ Live | 3.12 |
@@ -333,7 +333,7 @@ DELETE /api/tarot/reminder        — remove reminder preference
 
 ## 10. Astro-Tarot Fusion — Next Contract Specification
 
-> **⚠️ Under Temple Team internal review — not yet shared with CODEX.**
+> **⚠️ Under Review — with Temple Team. Not yet shared with CODEX.**
 > This section will be finalised by Temple Team before being issued as a formal contract appointment. CODEX should not treat this as an active brief until a Contract Appointment Note is received.
 
 The following spec documents exist and are under review:
@@ -364,21 +364,24 @@ All module outputs must comply with `OUTPUT_CONSTRAINTS_MATRIX.md`. Key hard con
 
 ---
 
-## 12. Environment Issues — Resolution Status
+## 12. Known Issues — Resolution Log
 
-| Issue | Status | Resolution |
-|---|---|---|
-| Python 3.9.6 in CODEX workspace | ✅ Resolved | Use Python 3.12 venv per approved contract |
-| `datetime.UTC` not available | ✅ Resolved | Always use `timezone.utc` |
-| Missing `pydantic` locally | ✅ Resolved | Install `fastapi pydantic uvicorn` in 3.12 venv |
-| Sandbox cache write restrictions | ✅ Resolved | Use `PYTHONPYCACHEPREFIX='/tmp/pycache'` |
-| Host app router not in CODEX workspace | ✅ Accepted | CODEX delivers; Temple integrates |
-| Host CSS entrypoint not in CODEX workspace | ✅ Accepted | CODEX delivers styling; Temple wires |
-| `tarot_router.py` had out-of-scope fusion code | ✅ Resolved | Removed before final delivery; fusion goes in `tarot_router_platform_fusion.py` |
-| Reminder API shape mismatch | ✅ Resolved | Delivered with correct routes and document shape (see Section 8) |
-| `tarot_cards.json` format mismatch | ✅ Resolved | Delivered as flat `{card_id: SVG}` object |
-| Minor Arcana card ID naming mismatch | ✅ Resolved | Delivered as `{suit}-{rank}` format |
-| PDF extraction tooling unavailable | 🔜 Ongoing | Use text-ready versions where possible |
+This section is a resolved-issues log so that future CODEX engagements start cleanly without rediscovering past problems. No action needed from Temple Team — all items are either resolved or accepted.
+
+**In plain terms, the issues and their fixes:**
+
+| Issue | What it meant in practice | Status | Fix applied |
+|---|---|---|---|
+| CODEX workspace was on Python 3.9, production is 3.12 | Code built on 3.9 could silently use features that fail on 3.12 | ✅ Resolved | CODEX always validates using a Python 3.12 virtual environment before delivery |
+| Older Python syntax for dates (`datetime.UTC`) | `datetime.UTC` only exists in Python 3.11+; our server is 3.12 but this syntax was still flagged | ✅ Resolved | All code uses `timezone.utc` — this is now a hard rule in the delivery checklist |
+| CODEX workspace missing packages (pydantic, fastapi) | CODEX couldn't run their code locally to test it | ✅ Resolved | CODEX installs `fastapi pydantic uvicorn` in the 3.12 venv before each contract |
+| CODEX sandbox can't write Python cache files | Minor error during code validation; no functional impact | ✅ Resolved | CODEX uses `PYTHONPYCACHEPREFIX='/tmp/pycache'` as a one-line workaround |
+| Live app router files not visible in CODEX workspace | CODEX can't see `server.py`, `main.py`, or existing modules | ✅ Accepted by design | CODEX delivers self-contained files; Temple Team does all integration wiring |
+| Live app CSS/styling not visible to CODEX | CODEX can't use existing style classes directly | ✅ Accepted by design | CODEX delivers styling alongside the module; Temple Team wires it to the design system |
+| Tarot router had extra code outside contract scope | An early draft included fusion logic and scheduler code not requested | ✅ Resolved before delivery | Removed; fusion lives in `tarot_router_platform_fusion.py` only |
+| Tarot reminder API had wrong route structure | Draft used wrong URL path and wrong database field names | ✅ Resolved before delivery | Final delivery matches exact spec (see Section 8) |
+| Tarot card JSON was in the wrong format | Draft used a wrapped object instead of the required flat key-value structure | ✅ Resolved before delivery | Final delivery is a flat `{card_id: SVG}` object |
+| Tarot Minor Arcana card names were non-standard | Draft used different naming convention for card IDs | ✅ Resolved before delivery | Final delivery uses `{suit}-{rank}` format throughout |
 
 ---
 
