@@ -1083,6 +1083,9 @@ async def compute_chart(payload: LagnaKundaliComputeRequest, request: Request) -
             await asyncio.wait_for(snapshot_collection.insert_one(doc), timeout=6.0)
         except Exception:
             pass
+        finally:
+            # Motor insert_one mutates doc in-place adding _id: ObjectId — not JSON-serializable
+            doc.pop("_id", None)
     return doc
 
 
