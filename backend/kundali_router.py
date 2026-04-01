@@ -1064,6 +1064,25 @@ async def chart_definitions() -> ChartDefinitionResponse:
     return ChartDefinitionResponse(charts=_chart_definitions())
 
 
+@router.get("/ping-swe")
+async def ping_swe() -> dict[str, Any]:
+    """Diagnostic: confirm pyswisseph responds for a fixed JD (no MongoDB)."""
+    import time
+    t0 = time.time()
+    jd = swe.julday(1990, 6, 15, 9.0)          # 14:30 IST = 09:00 UTC
+    asc_lon = _ascendant_longitude(jd, 19.076, 72.8777)
+    sun_lon, _ = _planet_longitude_and_speed(jd, "SUN")
+    moon_lon, _ = _planet_longitude_and_speed(jd, "MOON")
+    return {
+        "ok": True,
+        "elapsed_ms": round((time.time() - t0) * 1000, 1),
+        "jd": round(jd, 4),
+        "asc_lon": round(asc_lon, 4),
+        "sun_lon": round(sun_lon, 4),
+        "moon_lon": round(moon_lon, 4),
+    }
+
+
 @router.post("/compute")
 async def compute_chart(payload: LagnaKundaliComputeRequest, request: Request) -> dict[str, Any]:
     compute_payload = payload.model_copy(deep=True)
