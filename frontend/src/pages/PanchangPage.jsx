@@ -909,12 +909,34 @@ function SpecialYogasCard({ yogas }) {
 
 // ─── Views ──────────────────────────────────────────────────────────────────
 
+function buildQuickDays(centreISO) {
+  const base = new Date(centreISO + 'T00:00:00');
+  const todayISO = centreISO; // centre chip is always "active"
+  return [-2, -1, 0, 1, 2].map(offset => {
+    const d = new Date(base);
+    d.setDate(d.getDate() + offset);
+    const iso = d.toISOString().slice(0, 10);
+    const dayNum = d.getDate();
+    let label;
+    if (offset === 0)  label = 'Today';
+    else if (offset === 1) label = 'Tomorrow';
+    else if (offset === -1) label = 'Yesterday';
+    else label = d.toLocaleDateString('en-GB', { weekday: 'short' });
+    return { iso, label, dayNum, isActive: iso === todayISO };
+  });
+}
+
 function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad, lang }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showWarmup, setShowWarmup] = useState(false);
   const shareCardRef = useRef(null);
+  const navigate = useNavigate();
+
+  const tz = locationTZ || 'Asia/Kolkata';
+  const centreDate = dayOffset === 1 ? getTomorrowInTZ(tz) : getTodayInTZ(tz);
+  const quickDays = buildQuickDays(centreDate);
 
   // Show warming-up banner if the API call takes more than 4 seconds
   useEffect(() => {
@@ -925,9 +947,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
 
   useEffect(() => {
     setLoading(true); setError(null); setData(null);
-    const tz = locationTZ || 'Asia/Kolkata';
-    const dateStr = dayOffset === 1 ? getTomorrowInTZ(tz) : getTodayInTZ(tz);
-    axios.get(`${API}/daily`, { params: { location_slug: locationSlug, date: dateStr } })
+    axios.get(`${API}/daily`, { params: { location_slug: locationSlug, date: centreDate } })
       .then(r => { setData(r.data); if (onDataLoad) onDataLoad(r.data); })
       .catch(() => setError('Failed to load Panchang data. Please try again.'))
       .finally(() => setLoading(false));
@@ -947,7 +967,7 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
   if (error)   return <p className="text-center text-muted-foreground py-12">{error}</p>;
   if (!data)   return null;
 
-  const { summary, panchang, day_quality_windows, observances, special_yogas } = data;
+  const { summary, panchang, day_quality_windows, observances, special_yogas, lagna_chart } = data;
   const locTZ  = data.location?.timezone || locationTZ || 'Asia/Kolkata';
   const fmtTime = makeFormatTime(locTZ);
   const tzAbbr  = getTZAbbr(locTZ);
@@ -965,17 +985,37 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
         </div>
       </div>
 
+      {/* Quick-date strip — 5 chips centred on current view date */}
+      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+        {quickDays.map(({ iso, label, dayNum, isActive }) => (
+          <button
+            key={iso}
+            type="button"
+            onClick={() => navigate(`/panchang/date/${iso}${locationSlug ? `?location_slug=${locationSlug}` : ''}`)}
+            className={`flex-shrink-0 flex flex-col items-center px-4 py-2 rounded-xl border text-sm transition-colors ${
+              isActive
+                ? 'bg-gold text-background border-gold font-semibold'
+                : 'border-gold/30 text-muted-foreground hover:border-gold/60 hover:text-foreground'
+            }`}
+          >
+            <span className="text-[10px] uppercase tracking-wide leading-none mb-0.5">{label}</span>
+            <strong className="text-base leading-none">{dayNum}</strong>
+          </button>
+        ))}
+      </div>
+
       <Card className="border border-gold/20 overflow-hidden">
         <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
           <p className="text-xs font-semibold uppercase tracking-widest text-gold">{tLabel('fiveLimbs',lang)||'Panch Anga — Five Limbs'}</p>
         </div>
         <div className="divide-y divide-border">
           {[
-            { labelR: tLabel('tithi',lang),     labelEn: 'Tithi',      value: tTithi(panchang.tithi.name,lang),   sub: (tPaksha(panchang.paksha,lang)||panchang.paksha) + (lang ? '' : ' Paksha') + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) : '') },
-            { labelR: tLabel('nakshatra',lang), labelEn: 'Nakshatra',  value: tNak(panchang.nakshatra.name,lang), sub: (lang ? '' : 'Moon in ') + panchang.moon_sign + (panchang.nakshatra.end ? ' · until ' + fmtTime(panchang.nakshatra.end) : '') },
-            { labelR: tLabel('yoga',lang),      labelEn: 'Yoga',       value: panchang.yoga.name,                 sub: panchang.yoga.end ? 'Until ' + fmtTime(panchang.yoga.end) : '' },
-            { labelR: tLabel('karana',lang),    labelEn: 'Karana',     value: panchang.karana.name,               sub: panchang.karana.end ? 'Until ' + fmtTime(panchang.karana.end) : '' },
-            { labelR: tLabel('vara',lang),      labelEn: 'Vara (Day)', value: tDay(lang) || summary.weekday,      sub: panchang.samvat },
+            { labelR: tLabel('tithi',lang),     labelEn: 'Tithi',        value: tTithi(panchang.tithi.name,lang),   sub: (tPaksha(panchang.paksha,lang)||panchang.paksha) + (lang ? '' : ' Paksha') + (panchang.tithi.end ? ' · until ' + fmtTime(panchang.tithi.end) : '') },
+            { labelR: tLabel('nakshatra',lang), labelEn: 'Nakshatra',    value: tNak(panchang.nakshatra.name,lang), sub: (lang ? '' : 'Moon in ') + panchang.moon_sign + (panchang.nakshatra.end ? ' · until ' + fmtTime(panchang.nakshatra.end) : '') },
+            { labelR: tLabel('yoga',lang),      labelEn: 'Yoga',         value: panchang.yoga.name,                 sub: panchang.yoga.end ? 'Until ' + fmtTime(panchang.yoga.end) : '' },
+            { labelR: tLabel('karana',lang),    labelEn: 'Karana',       value: panchang.karana.name,               sub: panchang.karana.end ? 'Until ' + fmtTime(panchang.karana.end) : '' },
+            { labelR: tLabel('vara',lang),      labelEn: 'Vara (Day)',   value: tDay(lang) || summary.weekday,      sub: panchang.samvat },
+            { labelR: null,                     labelEn: 'Lunar Month',  value: panchang.lunar_month,               sub: panchang.sun_sign ? 'Sun in ' + panchang.sun_sign : '' },
           ].map(item => (
             <div key={item.labelEn} className="flex items-center justify-between px-5 py-4">
               <div>
@@ -994,6 +1034,45 @@ function PanchangDailyView({ dayOffset = 0, locationSlug, locationTZ, onDataLoad
           ))}
         </div>
       </Card>
+
+      {/* Lagna Chart (current rising sign at sunrise) */}
+      {lagna_chart && (
+        <Card className="border border-gold/20 overflow-hidden">
+          <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center gap-2">
+            <Star className="h-4 w-4 text-gold" />
+            <p className="text-xs font-semibold uppercase tracking-widest text-gold">Lagna — Rising Sign at Sunrise</p>
+          </div>
+          <div className="p-5 space-y-4">
+            <div className="flex gap-6">
+              <div>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-wide mb-0.5">Ascendant</p>
+                <p className="text-lg font-semibold text-foreground">{lagna_chart.ascendant_sign}</p>
+              </div>
+              <div>
+                <p className="text-[10px] text-muted-foreground uppercase tracking-wide mb-0.5">Degree</p>
+                <p className="text-lg font-semibold text-foreground">{lagna_chart.ascendant_degree}°</p>
+              </div>
+            </div>
+            {lagna_chart.houses?.length > 0 && (
+              <div className="grid grid-cols-4 gap-1.5">
+                {lagna_chart.houses.map(h => (
+                  <div
+                    key={h.house}
+                    className={`flex flex-col items-center justify-center py-2 px-1 rounded-lg border text-center ${
+                      h.is_ascendant
+                        ? 'border-gold bg-gold/10 text-gold'
+                        : 'border-gold/20 bg-gold/5 text-muted-foreground'
+                    }`}
+                  >
+                    <span className="text-[9px] uppercase tracking-wide leading-none">{h.is_ascendant ? 'Asc' : `H${h.house}`}</span>
+                    <strong className="text-xs font-medium leading-tight mt-0.5">{h.sign}</strong>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </Card>
+      )}
 
       {special_yogas?.length > 0 && (
         <div>
