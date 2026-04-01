@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
 import { PanchangShareCard, ShareButtons } from '../components/ShareCard';
+import PanchangCosmicMap from '../components/PanchangCosmicMap';
 import { Calendar, Sun, Moon, Star, Sparkles, ChevronLeft, ChevronRight, Zap, MapPin, Globe, ChevronDown, Clock } from 'lucide-react';
 import axios from 'axios';
 
@@ -1562,8 +1563,8 @@ export const PanchangPage = ({ lang } = {}) => {
         ))}
       </div>
       {isDateView                                 && <PanchangDateView     dateStr={dateValue}           locationSlug={locationSlug} onDataLoad={setPanchangData} />}
-      {!isDateView && activeView === 'daily'      && <PanchangDailyView    dayOffset={0}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} />}
-      {!isDateView && activeView === 'tomorrow'   && <PanchangDailyView    dayOffset={1}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} />}
+      {!isDateView && activeView === 'daily'      && <><PanchangCosmicMap locationSlug={locationSlug} dayOffset={0} /><PanchangDailyView    dayOffset={0}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} /></>}
+      {!isDateView && activeView === 'tomorrow'   && <><PanchangCosmicMap locationSlug={locationSlug} dayOffset={1} /><PanchangDailyView    dayOffset={1}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} /></>}
       {!isDateView && activeView === 'tithi'      && <PanchangTithiView                                  locationSlug={locationSlug} lang={lang} />}
       {!isDateView && activeView === 'muhurat'    && <MuhuratView                                        locationSlug={locationSlug} locationTZ={locationTZ} lang={lang} />}
       {!isDateView && activeView === 'choghadiya' && <PanchangChoghadiyaView                             locationSlug={locationSlug} lang={lang} />}
