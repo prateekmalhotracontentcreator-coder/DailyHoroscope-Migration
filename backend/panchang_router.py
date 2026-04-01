@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import calendar
+import logging
 import math
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta, timezone
@@ -11,6 +12,7 @@ import swisseph as swe
 from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, ConfigDict, Field
 
+_log = logging.getLogger("panchang")
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
@@ -388,6 +390,12 @@ DEFAULT_LOCATIONS: dict[str, PanchangLocation] = {
     "dubai-uae":              _loc("dubai-uae",              "Dubai",            "UAE",    25.2048,   55.2708, "Asia/Dubai"),
     "abu-dhabi-uae":          _loc("abu-dhabi-uae",          "Abu Dhabi",        "UAE",    24.4539,   54.3773, "Asia/Dubai"),
 
+    # ── Saudi Arabia ─────────────────────────────────────────────────────────
+    "riyadh-saudi-arabia":    _loc("riyadh-saudi-arabia",    "Riyadh",           "Saudi Arabia", 24.6877,  46.7219, "Asia/Riyadh"),
+    "jeddah-saudi-arabia":    _loc("jeddah-saudi-arabia",    "Jeddah",           "Saudi Arabia", 21.4858,  39.1925, "Asia/Riyadh"),
+    "mecca-saudi-arabia":     _loc("mecca-saudi-arabia",     "Mecca",            "Saudi Arabia", 21.3891,  39.8579, "Asia/Riyadh"),
+    "medina-saudi-arabia":    _loc("medina-saudi-arabia",    "Medina",           "Saudi Arabia", 24.4672,  39.6150, "Asia/Riyadh"),
+
     # ── Australia ────────────────────────────────────────────────────────────
     "sydney-australia":       _loc("sydney-australia",       "Sydney",           "Australia", -33.8688, 151.2093, "Australia/Sydney"),
     "melbourne-australia":    _loc("melbourne-australia",    "Melbourne",        "Australia", -37.8136, 144.9631, "Australia/Melbourne"),
@@ -421,6 +429,26 @@ DEFAULT_LOCATIONS: dict[str, PanchangLocation] = {
 }
 
 LOCATION_LIST = list(DEFAULT_LOCATIONS.values())
+
+# ── Internal checkpoint PAN-12 ────────────────────────────────────────────────
+# Verify Saudi Arabia cities were successfully integrated into the catalogue.
+# Runs once at module load; any missing slug logs an ERROR at startup.
+_PAN12_REQUIRED_SLUGS = [
+    "riyadh-saudi-arabia",
+    "jeddah-saudi-arabia",
+    "mecca-saudi-arabia",
+    "medina-saudi-arabia",
+]
+_pan12_missing = [s for s in _PAN12_REQUIRED_SLUGS if s not in DEFAULT_LOCATIONS]
+if _pan12_missing:
+    _log.error(
+        "PAN-12 CHECKPOINT: Saudi Arabia slugs missing from location catalogue: %s. "
+        "Add them to DEFAULT_LOCATIONS in panchang_router.py.",
+        _pan12_missing,
+    )
+else:
+    _log.info("PAN-12 OK: All 4 Saudi Arabia cities present in location catalogue.")
+# ─────────────────────────────────────────────────────────────────────────────
 
 
 TITHI_NAMES = [
@@ -979,7 +1007,33 @@ async def get_daily_panchang(
 ) -> PanchangDailyResponse:
     location = _resolve_location(location_slug=location_slug, lat=lat, lng=lng, tz_name=tz)
     resolved_date = _parse_date(date_value) if date_value else datetime.now(ZoneInfo(location.timezone)).date()
-    return _build_daily_response(resolved_date, location, calendar_variant, region)
+    response = _build_daily_response(resolved_date, location, calendar_variant, region)
+
+    # ── Internal checkpoint PAN-13 ────────────────────────────────────────────
+    # Verify all 6 required daily fields are populated in the panchang payload.
+    # Runs on every /daily call; logs WARNING for any empty/None field.
+    _PAN13_FIELDS = {
+        "karana":      getattr(response.panchang.karana, "name", None),
+        "paksha":      response.panchang.paksha,
+        "lunar_month": response.panchang.lunar_month,
+        "moon_sign":   response.panchang.moon_sign,
+        "sun_sign":    response.panchang.sun_sign,
+        "samvat":      response.panchang.samvat,
+    }
+    _pan13_missing = [k for k, v in _PAN13_FIELDS.items() if not v]
+    if _pan13_missing:
+        _log.warning(
+            "PAN-13 CHECKPOINT: Missing daily fields %s [date=%s location=%s]",
+            _pan13_missing, resolved_date, location.slug,
+        )
+    else:
+        _log.info(
+            "PAN-13 OK: All 6 daily fields present [date=%s location=%s]",
+            resolved_date, location.slug,
+        )
+    # ─────────────────────────────────────────────────────────────────────────
+
+    return response
 
 
 @router.get("/date/{date_value}", response_model=PanchangDailyResponse)

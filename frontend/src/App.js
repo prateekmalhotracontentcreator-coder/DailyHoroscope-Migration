@@ -35,10 +35,15 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { ComingSoonPage } from './pages/ComingSoonPage';
 import { PanchangPage } from './pages/PanchangPage';
 import { PanchangLangPage } from './pages/PanchangLangPage';
+import PanchangLandingPage from './pages/PanchangLandingPage';
 import { NumerologyPage } from './pages/NumerologyPage';
+import NumerologyReportPage from './pages/NumerologyReportPage';
 import { PalmistryPage } from './pages/PalmistryPage';
 import { TarotPage } from './pages/TarotPage';
+import TarotHistoryPage from './pages/TarotHistoryPage';
 import { RemedyPage } from './pages/RemedyPage';
+import KundaliPage from './pages/KundaliPage';
+import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
 const NavBarWrapper = () => {
@@ -110,6 +115,7 @@ function App() {
                   <Route path="/admin/blog" element={<AdminBlogManager />} />
 
                   {/* Panchang — order matters: most specific first */}
+                  <Route path="/panchang" element={<PanchangLandingPage />} />
                   <Route path="/panchang/calendar/:year/:month" element={<PanchangPage />} />
                   <Route path="/panchang/date/:dateValue" element={<PanchangPage />} />
                   {/* Language-specific Panchang pages + sub-views (must come before generic :type) */}
@@ -132,9 +138,13 @@ function App() {
 
                   {/* Phase 2 modules */}
                   <Route path="/numerology" element={<NumerologyPage />} />
+                  <Route path="/numerology/report/:reportId" element={<ProtectedRoute><NumerologyReportPage /></ProtectedRoute>} />
                   <Route path="/palmistry" element={<PalmistryPage />} />
                   <Route path="/tarot" element={<TarotPage />} />
+                  <Route path="/tarot/history" element={<ProtectedRoute><TarotHistoryPage /></ProtectedRoute>} />
                   <Route path="/remedies" element={<RemedyPage />} />
+                  <Route path="/lagna-kundali" element={<ProtectedRoute><KundaliPage /></ProtectedRoute>} />
+                  <Route path="/lagna-kundali/chart/:chartId" element={<ProtectedRoute><KundaliPage /></ProtectedRoute>} />
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />

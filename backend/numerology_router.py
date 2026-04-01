@@ -1,13 +1,17 @@
 from __future__ import annotations
 
+import logging
 import re
 from collections import Counter
 from datetime import date, datetime, timezone
 from typing import Any, Literal
 from uuid import uuid4
 
+_log = logging.getLogger("numerology")
+
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
+from numerology_prompt_service import enrich_numerology_report_with_claude
 from vedic_calculator import calculate_vedic_chart
 
 
@@ -603,7 +607,7 @@ def _build_premium_ankjyotish_report(payload: NumerologyGenerateRequest, user_em
     base["lagna_sign"] = lagna_sign
     base["moon_sign"] = moon_sign
     base["nakshatra_name"] = nakshatra_name
-    return NumerologyReportPayload(**base, computed_values={"life_path": lp, "expression": core["expression"], "soul_urge": core["soul_urge"], "personality": core["personality"], "personal_year": py, "personal_month": pm, "personal_day": pd}, calculation_trace={"life_path": lp_trace, "personal_year": py_trace, "lo_shu_grid_payload": loshu_payload, "karmic_debts": karmic, "timing_forecast": _timing_forecast_lines(now.year, py.reduced), "lucky_elements_table": lucky, "vedic_cross_reference": vedic_ref, "name_alignment": name_align, "remediation_plan": remediation}, report_sections=sections, summary="This premium Ankjyotish report combines core numerology, Lo Shu, karmic audit, timing, name analysis, and Vedic cross-reference into one structured life-analysis reading.", guidance="Use this premium report as a structured alignment map for identity, timing, remedies, and practical life decisions.", remedy_note="Temple App renders the Lo Shu visual from structured JSON. The seven-day remediation plan is designed for practical follow-through.")
+    return NumerologyReportPayload(**base, computed_values={"life_path": lp, "expression": core["expression"], "soul_urge": core["soul_urge"], "personality": core["personality"], "personal_year": py, "personal_month": pm, "personal_day": pd}, calculation_trace={"life_path": lp_trace, "personal_year": py_trace, "lo_shu_grid_payload": loshu_payload, "karmic_debts": karmic, "timing_forecast": _timing_forecast_lines(now.year, py.reduced), "lucky_elements_table": lucky, "vedic_cross_reference": vedic_ref, "name_alignment": name_align, "remediation_plan": remediation}, report_sections=sections, summary="This premium Ankjyotish report combines core numerology, Lo Shu, karmic audit, timing, name analysis, and Vedic cross-reference into one structured life-analysis reading.", guidance="Use this premium report as a structured alignment map for identity, timing, remedies, and practical life decisions.", remedy_note="Remedial practices work best when followed consistently over a 7-day cycle. Treat each day's guidance as a gentle reset, not a strict obligation.")
 
 
 def _build_report(payload: NumerologyGenerateRequest, user_email: str) -> NumerologyReportPayload:
@@ -624,6 +628,34 @@ async def generate_numerology_report(payload: NumerologyGenerateRequest, request
     user_email = _get_user_email(request)
     collection = _get_collection(_get_db(request))
     report = _build_report(payload, user_email)
+    report = await enrich_numerology_report_with_claude(report)
+
+    # ── Internal checkpoint NUM-01 / NUM-04 ──────────────────────────────────
+    # NUM-01: Confirm Claude enrichment ran — summary should not be generic
+    #         fallback boilerplate.  We detect the two most common fallback
+    #         openers; if either appears, enrichment silently fell back.
+    _FALLBACK_MARKERS = ("Your profile centers on Life Path", "This premium Ankjyotish report combines")
+    if any(report.summary.startswith(m) for m in _FALLBACK_MARKERS):
+        _log.warning(
+            "NUM-01 CHECKPOINT: Claude enrichment fell back to static text "
+            "[tile=%s user=%s].  Check ANTHROPIC_API_KEY and numerology_prompt_service.",
+            payload.tile_code, user_email,
+        )
+    else:
+        _log.info("NUM-01 OK: Claude enrichment active [tile=%s]", payload.tile_code)
+
+    # NUM-04: Confirm remedy_note contains no internal CODEX handoff text.
+    _INTERNAL_MARKERS = ("Temple App renders", "structured JSON", "delivery note", "dropin")
+    if report.remedy_note and any(m.lower() in report.remedy_note.lower() for m in _INTERNAL_MARKERS):
+        _log.error(
+            "NUM-04 CHECKPOINT: remedy_note contains internal text — "
+            "must NOT reach users.  [tile=%s] remedy_note=%r",
+            payload.tile_code, report.remedy_note[:120],
+        )
+    else:
+        _log.info("NUM-04 OK: remedy_note is user-facing [tile=%s]", payload.tile_code)
+    # ─────────────────────────────────────────────────────────────────────────
+
     await collection.insert_one(report.model_dump(mode="python"))
     return NumerologyGenerateResponse(report=report)
 
