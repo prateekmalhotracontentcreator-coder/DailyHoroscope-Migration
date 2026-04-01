@@ -16,7 +16,7 @@ _log = logging.getLogger("panchang")
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v11-swiss"
+ENGINE_VERSION = "panchang-router-v12-swiss"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -213,6 +213,20 @@ class PanchangDetail(BaseModel):
     karana: PanchangSegment
 
 
+class PanchangLagnaHouse(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    house: int
+    sign: str
+    is_ascendant: bool = False
+
+
+class PanchangLagnaChart(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    ascendant_sign: str
+    ascendant_degree: float
+    houses: list[PanchangLagnaHouse] = Field(default_factory=list)
+
+
 class PanchangMeta(BaseModel):
     model_config = ConfigDict(extra="ignore")
     engine_version: str
@@ -237,6 +251,7 @@ class PanchangDailyResponse(BaseModel):
     location: PanchangLocation
     summary: PanchangSummary
     panchang: PanchangDetail
+    lagna_chart: PanchangLagnaChart | None = None
     special_yogas: list[SpecialYoga] = Field(default_factory=list)
     day_quality_windows: list[PanchangTimingWindow] = Field(default_factory=list)
     observances: list[PanchangObservance] = Field(default_factory=list)
@@ -838,6 +853,35 @@ def _fmt_hhmmss(dt: datetime | None) -> str | None:
     return dt.strftime("%H:%M:%S") if dt else None
 
 
+def _ascendant_longitude(moment_local: datetime, latitude_deg: float, longitude_deg: float) -> float:
+    jd = _datetime_to_jd(moment_local.astimezone(timezone.utc))
+    _, ascmc = swe.houses_ex(jd, latitude_deg, longitude_deg, b"W", int(_SWE_FLAGS))
+    return _normalize_angle(ascmc[0])
+
+
+def _build_lagna_chart(
+    moment_local: datetime,
+    latitude_deg: float,
+    longitude_deg: float,
+) -> PanchangLagnaChart:
+    sidereal_ascendant = _ascendant_longitude(moment_local, latitude_deg, longitude_deg)
+    ascendant_sign_index = int(sidereal_ascendant // 30)
+    ascendant_degree = round(sidereal_ascendant % 30, 2)
+    houses = [
+        PanchangLagnaHouse(
+            house=house_number,
+            sign=RASHI_NAMES[(ascendant_sign_index + house_number - 1) % 12],
+            is_ascendant=house_number == 1,
+        )
+        for house_number in range(1, 13)
+    ]
+    return PanchangLagnaChart(
+        ascendant_sign=RASHI_NAMES[ascendant_sign_index],
+        ascendant_degree=ascendant_degree,
+        houses=houses,
+    )
+
+
 def _build_daily_response(
     base_date: date,
     location: PanchangLocation,
@@ -853,6 +897,10 @@ def _build_daily_response(
     yoga_start,   yoga_end    = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "yoga",      indexes["yoga"])
     karana_start, karana_end  = _segment_interval(base_date, location.latitude, location.longitude, location.timezone, "karana",    indexes["karana"])
     isoweekday = base_date.isoweekday()
+    try:
+        lagna_chart = _build_lagna_chart(astro.sunrise, location.latitude, location.longitude)
+    except Exception:
+        lagna_chart = None
     return PanchangDailyResponse(
         date=base_date.isoformat(),
         location=location,
@@ -879,6 +927,7 @@ def _build_daily_response(
             yoga=PanchangSegment(     name=YOGA_NAMES[indexes["yoga"]],              index=indexes["yoga"]      + 1, start=yoga_start,   end=yoga_end),
             karana=PanchangSegment(   name=KARANA_NAMES[indexes["karana"]],          index=indexes["karana"]    + 1, start=karana_start, end=karana_end),
         ),
+        lagna_chart=lagna_chart,
         special_yogas=_special_yogas(NAKSHATRA_NAMES[indexes["nakshatra"]], isoweekday),
         day_quality_windows=_day_quality_windows(astro.sunrise, astro.sunset, isoweekday, astro.moon_longitude),
         observances=_observances_for_day(base_date, indexes, tithi_name),
