@@ -104,6 +104,53 @@ class FeedbackRequest(BaseModel):
     comment: str | None = None
 
 
+class TarotPremiumCheckResponse(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    spread_code: str
+    has_access: bool
+    reason: str | None = None
+
+
+class FavorablePeriodItem(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str
+    report_id: str
+    type: str
+    window_label: str
+    confidence: float
+    summary: str
+    recommendation: str | None = None
+    starts_on: str | None = None
+    ends_on: str | None = None
+
+
+class FavorablePeriodsResponse(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    periods: list[FavorablePeriodItem] = Field(default_factory=list)
+
+
+class PersonalizedOfferItem(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    id: str
+    offer_code: str
+    title: str
+    description: str
+    target_theme: str | None = None
+    cta_label: str = "Explore"
+    destination: str | None = None
+    priority: int = 0
+
+
+class PersonalizedOffersResponse(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+
+    offers: list[PersonalizedOfferItem] = Field(default_factory=list)
+
+
 DEFAULT_CARDS: list[dict] = [
     # ── Major Arcana (22) ────────────────────────────────────────────────────
     {"id": "the-fool",          "name": "The Fool",           "suit": "major", "rank": "0",
@@ -661,3 +708,150 @@ async def delete_tarot_reminder(
     collection = _get_collection(request)
     result = await collection.delete_many({"user_email": resolved_email, "doc_type": "reminder"})
     return {"success": True, "deleted_count": result.deleted_count}
+
+
+# ── Tarot remediation pack v1 ─────────────────────────────────────────────────
+
+def _normalize_reading_doc(doc: dict[str, Any]) -> dict[str, Any]:
+    normalized = dict(doc)
+    if "story_scenes" in normalized and "scenes" not in normalized:
+        normalized["scenes"] = normalized.pop("story_scenes")
+    return normalized
+
+
+def _fallback_period(user_email: str, theme: str, days: int, summary: str, recommendation: str, confidence: float) -> dict[str, Any]:
+    now = datetime.now(timezone.utc).date()
+    return {
+        "id": str(uuid4()),
+        "report_id": str(uuid4()),
+        "type": theme,
+        "window_label": f"Next {days} days",
+        "confidence": confidence,
+        "summary": summary,
+        "recommendation": recommendation,
+        "starts_on": now.isoformat(),
+        "ends_on": (now + timedelta(days=days)).isoformat(),
+        "user_email": user_email,
+    }
+
+
+@router.get("/spreads/{spread_code}/access", response_model=TarotPremiumCheckResponse)
+async def get_spread_access(
+    spread_code: str,
+    has_premium_access: bool = Query(default=True),
+) -> TarotPremiumCheckResponse:
+    return TarotPremiumCheckResponse(
+        spread_code=spread_code,
+        has_access=has_premium_access,
+        reason=None if has_premium_access else "Premium access required",
+    )
+
+
+@router.get("/reading/{report_id}")
+async def get_tarot_reading(
+    request: Request,
+    report_id: str,
+    user_email: str | None = Query(default=None),
+    x_user_email: str | None = Header(default=None),
+) -> dict[str, Any]:
+    resolved_email = _resolve_user_email(request, user_email, x_user_email)
+    collection = _get_collection(request)
+    doc = await collection.find_one({"user_email": resolved_email, "doc_type": "report", "report_id": report_id})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Reading not found")
+    return _normalize_reading_doc(doc)
+
+
+@router.get("/favorable-periods", response_model=FavorablePeriodsResponse)
+async def get_favorable_periods(
+    request: Request,
+    user_email: str | None = Query(default=None),
+    x_user_email: str | None = Header(default=None),
+) -> FavorablePeriodsResponse:
+    resolved_email = _resolve_user_email(request, user_email, x_user_email)
+    collection = _get_collection(request)
+    docs = await collection.find(
+        {"user_email": resolved_email, "doc_type": "lifecycle", "status": "active"}
+    ).sort("created_at", -1).to_list(length=20)
+
+    if not docs:
+        docs = [
+            _fallback_period(
+                resolved_email,
+                "love",
+                45,
+                "A favorable romantic phase may be drawing closer, with more emotional openness than usual.",
+                "A deeper love spread can help you understand the shape of this opening.",
+                0.78,
+            ),
+            _fallback_period(
+                resolved_email,
+                "guidance",
+                21,
+                "This is a good period for reflective choices, inner clarity, and gentle realignment.",
+                "Use your daily ritual consistently to track how this energy develops.",
+                0.69,
+            ),
+        ]
+
+    return FavorablePeriodsResponse(
+        periods=[
+            FavorablePeriodItem(
+                id=doc["id"],
+                report_id=doc["report_id"],
+                type=doc["type"],
+                window_label=doc["window_label"],
+                confidence=float(doc["confidence"]),
+                summary=doc["summary"],
+                recommendation=doc.get("recommendation"),
+                starts_on=doc.get("starts_on"),
+                ends_on=doc.get("ends_on"),
+            )
+            for doc in docs
+        ]
+    )
+
+
+@router.get("/offers", response_model=PersonalizedOffersResponse)
+async def get_personalized_offers(
+    request: Request,
+    user_email: str | None = Query(default=None),
+    x_user_email: str | None = Header(default=None),
+) -> PersonalizedOffersResponse:
+    resolved_email = _resolve_user_email(request, user_email, x_user_email)
+    collection = _get_collection(request)
+    latest_report = await collection.find_one(
+        {"user_email": resolved_email, "doc_type": "report"},
+        sort=[("created_at", -1)],
+    )
+    latest_theme = (latest_report or {}).get("focus_area") or "guidance"
+
+    offers = [
+        PersonalizedOfferItem(
+            id=str(uuid4()),
+            offer_code="premium_love_spread",
+            title="Unlock a deeper love spread",
+            description="Step into a cinematic 3-card reading focused on your next romantic phase.",
+            target_theme="love",
+            cta_label="Explore",
+            destination="/tarot/spreads",
+            priority=90,
+        )
+    ]
+
+    if latest_theme in {"guidance", "career"}:
+        offers.append(
+            PersonalizedOfferItem(
+                id=str(uuid4()),
+                offer_code="astro_tarot_upgrade",
+                title="See the astrology behind your cards",
+                description="Unlock richer Astro + Tarot interpretation for timing, clarity, and emotional movement.",
+                target_theme=latest_theme,
+                cta_label="Unlock",
+                destination="/pricing",
+                priority=95,
+            )
+        )
+
+    offers.sort(key=lambda item: item.priority, reverse=True)
+    return PersonalizedOffersResponse(offers=offers)
