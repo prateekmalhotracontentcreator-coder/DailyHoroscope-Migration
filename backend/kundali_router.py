@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import asyncio
 from datetime import datetime, timedelta, timezone
-from functools import partial
 from typing import Any, Literal
 from uuid import uuid4
 from zoneinfo import ZoneInfo
@@ -1072,9 +1071,7 @@ async def compute_chart(payload: LagnaKundaliComputeRequest, request: Request) -
         compute_payload.requested_chart_codes = ["D1"]
     if compute_payload.requested_chart_codes != ["D1"]:
         compute_payload.requested_chart_codes = ["D1"]
-    # Run CPU-bound sync computation in a thread-pool executor so the event loop stays free
-    loop = asyncio.get_event_loop()
-    doc = await loop.run_in_executor(None, partial(_build_payload, compute_payload, False))
+    doc = _build_payload(compute_payload, include_all_requested=False)
     doc["doc_type"] = "chart_snapshot"
     maybe_user = _try_get_user_email(request)
     if maybe_user:
