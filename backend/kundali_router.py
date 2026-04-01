@@ -9,30 +9,17 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, ConfigDict, Field
 import swisseph as swe
 
-try:
-    from vedic_calculator import (
-        NAKSHATRAS,
-        PLANET_IDS,
-        PLANET_ID_MAP,
-        PLANET_NAMES,
-        SIGN_LORDS,
-        SIGN_NAMES,
-        SIGN_ORDER,
-        const,
-        geocode_place,
-    )
-except ImportError:  # pragma: no cover - Temple integration fallback
-    from vedic_calculator_v2_production import (  # type: ignore
-        NAKSHATRAS,
-        PLANET_IDS,
-        PLANET_SWE_IDS as PLANET_ID_MAP,
-        PLANET_NAMES,
-        SIGN_LORDS,
-        SIGN_NAMES,
-        SIGN_ORDER,
-        const,
-        geocode_place,
-    )
+from vedic_calculator import (
+    NAKSHATRAS,
+    PLANET_IDS,
+    PLANET_SWE_IDS as PLANET_ID_MAP,
+    PLANET_NAMES,
+    SIGN_LORDS,
+    SIGN_NAMES,
+    SIGN_ORDER,
+    const,
+    geocode_place,
+)
 
 
 router = APIRouter(prefix="/api/lagna-kundali", tags=["lagna-kundali"])
