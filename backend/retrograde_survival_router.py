@@ -224,7 +224,8 @@ async def generate_retrograde_survival(payload: GenerateRequest, request: Reques
     if natal:
         document["natal_snapshot"] = natal
     await _collection(request).insert_one(document)
-    return GenerateResponse(report=ReportEnvelope(**document))
+    envelope_data = {k: v for k, v in document.items() if k not in ("natal_snapshot", "_id")}
+    return GenerateResponse(report=ReportEnvelope(**envelope_data))
 
 
 @router.get("/history", response_model=HistoryResponse)
