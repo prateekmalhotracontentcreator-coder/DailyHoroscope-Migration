@@ -28,6 +28,7 @@ import { PolicyPage } from './pages/PolicyPage';
 import { ResetPassword } from './pages/ResetPassword';
 import { AccountSettings } from './pages/AccountSettings';
 import { MyReportsPage } from './pages/MyReportsPage';
+import IndividualReportsPage from './pages/IndividualReportsPage';
 import { Toaster } from './components/ui/sonner';
 import { CookieConsent } from './components/CookieConsent';
 import { NavBar } from './components/NavBar';
@@ -107,6 +108,7 @@ function App() {
                   <Route path="/kundali-milan" element={<ProtectedRoute><KundaliMilanPage /></ProtectedRoute>} />
                   <Route path="/brihat-kundli" element={<ProtectedRoute><BrihatKundliPage /></ProtectedRoute>} />
                   <Route path="/my-reports" element={<ProtectedRoute><MyReportsPage /></ProtectedRoute>} />
+                  <Route path="/individual-reports" element={<ProtectedRoute><IndividualReportsPage /></ProtectedRoute>} />
 
                   {/* Admin */}
                   <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
