@@ -63,6 +63,11 @@ from panchang_router import router as panchang_router
 from numerology_router import router as numerology_router
 from tarot_router import router as tarot_router
 from kundali_router import router as kundali_router
+from karmic_debt_router import router as karmic_debt_router
+from career_blueprint_router import router as career_blueprint_router
+from shadow_self_router import router as shadow_self_router
+from retrograde_survival_router import router as retrograde_survival_router
+from life_cycles_router import router as life_cycles_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -1808,6 +1813,11 @@ app.include_router(panchang_router)
 app.include_router(numerology_router)
 app.include_router(tarot_router)
 app.include_router(kundali_router)
+app.include_router(karmic_debt_router)
+app.include_router(career_blueprint_router)
+app.include_router(shadow_self_router)
+app.include_router(retrograde_survival_router)
+app.include_router(life_cycles_router)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
