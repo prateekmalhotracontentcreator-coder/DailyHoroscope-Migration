@@ -23,7 +23,7 @@ This document issues two significant updates to the Individual Reports workstrea
 
 ## 2. D-Decision Updates
 
-The following decisions from the original contract are updated. All other decisions (D1, D2, D3, D7, D9, D10, D11) remain unchanged.
+The following decisions from the original contract are updated. All other decisions (D1, D2, D3, D7, D9, D10, D11) remain unchanged. D2 and D3 are explicitly re-confirmed below, given the three new parallel threads now open alongside this workstream.
 
 ---
 
@@ -54,6 +54,39 @@ This does not affect the Individual Reports thread. Single-user reports only her
 **Updated decision:** Confirmed for the Love & Engagement Module thread (Phase 1 of that thread). The exact name "Intimacy & Vitality Forecast" and the tone framing (energy, passion, confidence, romantic connection — not explicit) are locked. Full spec in `CONTRACT_LOVE_ENGAGEMENT_MODULE.md`.
 
 This report is removed from the Individual Reports Phase 2 queue. It is owned by the Love module thread.
+
+---
+
+### D2 — Audio/Video Analysis and NotebookLM-Style Flows: Remains Deferred Entirely
+
+**Context for re-confirmation:** The new Love & Engagement Module thread includes a Ritual Trigger Engine with a `coach_summary` field — a synthesised daily coaching message derived from the user's active astrological alignments. The new Notification Engine thread includes personalised push notification copy. Neither of these constitutes NotebookLM-style synthesis or audio/video analysis.
+
+The opening of the Love module thread, the Notification Engine thread, and the Ritual Trigger Engine subscription product does **not** reopen D2 in any form.
+
+**D2 decision stands without modification:** Deferred entirely. Platform exploration only. Not a Temple contract at any stage of any currently active workstream.
+
+The following must not appear in any Codex delivery file across any active thread — Individual Reports, Love & Engagement, Notification Engine, or Lagna Kundali:
+- Audio/video analysis pipelines
+- FFmpeg-based processing
+- NotebookLM-style cross-document synthesis
+- Unofficial GitHub automation wrappers referencing audio/video tooling
+- Any LLM API call for report content generation
+
+This constraint holds until Temple explicitly issues a new contract authorising it. The `coach_summary` field in the Ritual Trigger Engine is generated deterministically from pyswisseph output using structured conditional logic — not an LLM call. CODEX must implement it that way.
+
+---
+
+### D3 — "Ask 1 Question": Remains Narrowed and Deferred to Phase 2
+
+**Context for re-confirmation:** The Ritual Trigger Engine (Love module thread) operates on 5 named trigger scenarios with fully deterministic astrological logic. This could be mistaken for the "fixed-category tiles" version of Ask 1 Question described in D3. It is not.
+
+The architectural distinction:
+- **D3 / Ask 1 Question:** User inputs or selects a question → system interprets the question and returns a contextual astrological answer. User intent drives the interaction. Deferred.
+- **Ritual Trigger Engine:** System monitors the user's chart autonomously against live transits and fires when a pre-defined mathematical alignment condition is met. No user question input. No interpretation layer. The system initiates; the user only receives.
+
+These are fundamentally different interaction models. The Ritual Trigger Engine does not constitute, approximate, or unlock D3.
+
+**D3 decision stands without modification:** Narrowed to fixed deterministic report tiles only, deferred to Phase 2 of this workstream. When Temple issues the Phase 2 contract, "Ask 1 Question" will be scoped as a small set of fixed categories (`career_question`, `love_question`, `family_question`) each mapping to specific natal house and planet combinations with bounded, deterministic output. Nothing in the new parallel threads changes this plan.
 
 ---
 
