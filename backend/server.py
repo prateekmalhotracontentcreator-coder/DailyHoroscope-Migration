@@ -68,6 +68,15 @@ from career_blueprint_router import router as career_blueprint_router
 from shadow_self_router import router as shadow_self_router
 from retrograde_survival_router import router as retrograde_survival_router
 from life_cycles_router import router as life_cycles_router
+from encounter_window_router import router as encounter_window_router
+from date_night_router import router as date_night_router
+from digital_dating_router import router as digital_dating_router
+from intimacy_vitality_router import router as intimacy_vitality_router
+from love_weather_router import router as love_weather_router
+from ritual_trigger_router import router as ritual_trigger_router
+from soul_connection_router import router as soul_connection_router
+from soulmate_timing_router import router as soulmate_timing_router
+from venus_retrograde_router import router as venus_retrograde_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -1818,6 +1827,15 @@ app.include_router(career_blueprint_router)
 app.include_router(shadow_self_router)
 app.include_router(retrograde_survival_router)
 app.include_router(life_cycles_router)
+app.include_router(encounter_window_router)
+app.include_router(love_weather_router)
+app.include_router(date_night_router)
+app.include_router(digital_dating_router)
+app.include_router(intimacy_vitality_router)
+app.include_router(soul_connection_router)
+app.include_router(venus_retrograde_router)
+app.include_router(soulmate_timing_router)
+app.include_router(ritual_trigger_router)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
