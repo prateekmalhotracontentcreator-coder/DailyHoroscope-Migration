@@ -117,6 +117,7 @@ const TYPE_META = {
   calendar:   { title: 'Panchang Calendar',      icon: Calendar, desc: 'Monthly Hindu calendar with Tithi and observances' },
   festivals:  { title: 'Festivals & Vrats',      icon: Sparkles, desc: 'Upcoming Hindu festivals and vrat dates' },
   muhurat:    { title: 'Shubh Muhurat Today',    icon: Star,     desc: 'Auspicious timings today — all 15 Vedic muhurtas with quality and exact times' },
+  lagna:      { title: 'Lagna Kundali',          icon: Star,     desc: "Today's sky chart — rising sign, D1 Rasi chart with Sun & Moon placement at sunrise" },
 };
 
 const ALIAS = {
@@ -127,6 +128,7 @@ const ALIAS = {
   muhurat:    'muhurat',
   nakshatra:  'daily',
   rahukaal:   'daily',
+  lagna:      'lagna',
 };
 
 // ─── Timezone abbreviation helper ──────────────────────────────────────────
@@ -1551,6 +1553,242 @@ function PanchangDateView({ dateStr, locationSlug, onDataLoad }) {
   );
 }
 
+// ─── Lagna Kundali — North Indian D1 chart ──────────────────────────────────
+
+const RASHI_SHORT = {
+  Mesha:'Mesh', Vrishabha:'Vris', Mithuna:'Mith', Karka:'Kark',
+  Simha:'Simh', Kanya:'Kany', Tula:'Tula', Vrischika:'Vrs',
+  Dhanu:'Dhan', Makara:'Maka', Kumbha:'Kumb', Meena:'Meen',
+};
+
+// North Indian grid: 4×4 outer cells, centre 2×2 reserved
+// [12, 1, 2, 3]  [11, -, -, 4]  [10, -, -, 5]  [9, 8, 7, 6]
+const NI_CELLS = [
+  { house: 12, gridRow: '1', gridColumn: '1' },
+  { house:  1, gridRow: '1', gridColumn: '2' },
+  { house:  2, gridRow: '1', gridColumn: '3' },
+  { house:  3, gridRow: '1', gridColumn: '4' },
+  { house: 11, gridRow: '2', gridColumn: '1' },
+  { house:  4, gridRow: '2', gridColumn: '4' },
+  { house: 10, gridRow: '3', gridColumn: '1' },
+  { house:  5, gridRow: '3', gridColumn: '4' },
+  { house:  9, gridRow: '4', gridColumn: '1' },
+  { house:  8, gridRow: '4', gridColumn: '2' },
+  { house:  7, gridRow: '4', gridColumn: '3' },
+  { house:  6, gridRow: '4', gridColumn: '4' },
+];
+
+function NorthIndianChart({ lagnaChart, sunSign, moonSign }) {
+  if (!lagnaChart) return null;
+
+  // Build house → sign map and find planet placements
+  const houseSign = {};
+  lagnaChart.houses.forEach(h => { houseSign[h.house] = h.sign; });
+
+  const planets = {};
+  lagnaChart.houses.forEach(h => {
+    const list = [];
+    if (h.sign === sunSign)  list.push({ symbol: '☉', label: 'Su' });
+    if (h.sign === moonSign) list.push({ symbol: '☽', label: 'Mo' });
+    if (list.length) planets[h.house] = list;
+  });
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gridTemplateRows: 'repeat(4, 1fr)',
+        aspectRatio: '1 / 1',
+        border: '1px solid rgba(212,175,55,0.4)',
+        borderRadius: '12px',
+        overflow: 'hidden',
+      }}
+    >
+      {NI_CELLS.map(({ house, gridRow, gridColumn }) => {
+        const isLagna = house === 1;
+        const sign    = houseSign[house] || '';
+        const short   = RASHI_SHORT[sign] || sign.slice(0, 4);
+        const planetList = planets[house] || [];
+
+        return (
+          <div
+            key={house}
+            style={{ gridRow, gridColumn }}
+            className={`relative flex flex-col items-center justify-center p-1 border border-gold/20 ${
+              isLagna ? 'bg-gold/15' : 'bg-gold/5'
+            }`}
+          >
+            {/* Lagna diagonal marker — top-right triangle */}
+            {isLagna && (
+              <div
+                style={{
+                  position: 'absolute', top: 0, right: 0,
+                  width: 0, height: 0,
+                  borderTop: '18px solid rgba(212,175,55,0.7)',
+                  borderLeft: '18px solid transparent',
+                }}
+              />
+            )}
+            <span className="text-[9px] text-muted-foreground leading-none mb-0.5 self-start pl-1">
+              {isLagna ? 'Lag' : house}
+            </span>
+            <span className={`text-[11px] font-semibold leading-tight text-center ${isLagna ? 'text-gold' : 'text-foreground'}`}>
+              {short}
+            </span>
+            {planetList.length > 0 && (
+              <span className="text-[10px] text-amber-400 leading-none mt-0.5">
+                {planetList.map(p => p.symbol).join(' ')}
+              </span>
+            )}
+          </div>
+        );
+      })}
+
+      {/* Centre 2×2 — chart label */}
+      <div
+        style={{ gridRow: '2 / 4', gridColumn: '2 / 4' }}
+        className="flex flex-col items-center justify-center border border-gold/20 bg-background p-2 text-center"
+      >
+        <p className="text-[9px] uppercase tracking-widest text-muted-foreground leading-none mb-1">D1 · Rasi</p>
+        <p className="text-xs font-semibold text-gold leading-tight">{lagnaChart.ascendant_sign}</p>
+        <p className="text-[9px] text-muted-foreground leading-none mt-0.5">{lagnaChart.ascendant_degree}°</p>
+      </div>
+    </div>
+  );
+}
+
+function PanchangLagnaView({ locationSlug, locationTZ }) {
+  const [data, setData]       = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError]     = useState(null);
+  const [showWarmup, setShowWarmup] = useState(false);
+
+  useEffect(() => {
+    if (!loading) { setShowWarmup(false); return; }
+    const t = setTimeout(() => { if (loading) setShowWarmup(true); }, 4000);
+    return () => clearTimeout(t);
+  }, [loading]);
+
+  useEffect(() => {
+    setLoading(true); setError(null); setData(null);
+    const tz = locationTZ || 'Asia/Kolkata';
+    const dateStr = getTodayInTZ(tz);
+    axios.get(`${API}/daily`, { params: { location_slug: locationSlug, date: dateStr } })
+      .then(r => setData(r.data))
+      .catch(() => setError('Failed to load chart data.'))
+      .finally(() => setLoading(false));
+  }, [locationSlug]); // eslint-disable-line
+
+  if (loading) return (
+    <div className="space-y-4">
+      {showWarmup && (
+        <div className="warming-up-banner flex items-center gap-3 px-4 py-3 rounded-xl border border-amber-300/60 bg-amber-50 text-amber-800 text-sm font-medium shadow-sm">
+          <span className="text-lg leading-none">☀️</span>
+          <span>Warming up the astrology engine… (first load takes ~10s)</span>
+        </div>
+      )}
+      {[...Array(4)].map((_, i) => <div key={i} className="h-20 bg-gold/5 rounded-lg animate-pulse" />)}
+    </div>
+  );
+  if (error) return <p className="text-center text-muted-foreground py-12">{error}</p>;
+  if (!data) return null;
+
+  const { panchang, lagna_chart, summary } = data;
+  const locTZ = data.location?.timezone || locationTZ || 'Asia/Kolkata';
+  const tzAbbr = getTZAbbr(locTZ);
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between px-6 py-4 bg-gold/5 border border-gold/20 rounded-xl">
+        <div className="flex items-center gap-3">
+          <Star className="h-5 w-5 text-gold" />
+          <span className="font-playfair font-semibold text-lg">Lagna Kundali — Today</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-muted-foreground">{data.location?.label}</span>
+          <span className="px-1.5 py-0.5 rounded bg-gold/20 text-[10px] font-bold text-gold">{tzAbbr}</span>
+        </div>
+      </div>
+
+      {/* Context note */}
+      <div className="px-4 py-3 rounded-xl border border-gold/20 bg-gold/5 text-sm text-muted-foreground">
+        <span className="font-semibold text-foreground">Sky chart for today's sunrise</span> — the Lagna (rising sign)
+        and house cusps are computed at sunrise using the Swiss Ephemeris with Lahiri ayanamsha.
+        Only ☉ Sun and ☽ Moon are placed from today's Panchang.
+      </div>
+
+      {/* Stats row */}
+      <div className="grid grid-cols-3 gap-3">
+        {[
+          { label: 'Lagna (Ascendant)', value: lagna_chart?.ascendant_sign || '—', sub: lagna_chart?.ascendant_degree ? `${lagna_chart.ascendant_degree}°` : '' },
+          { label: 'Sun (☉)',           value: panchang.sun_sign,  sub: 'Sun sign today' },
+          { label: 'Moon (☽)',          value: panchang.moon_sign, sub: panchang.paksha + ' Paksha' },
+        ].map(({ label, value, sub }) => (
+          <Card key={label} className="border border-gold/20 p-3 text-center">
+            <p className="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">{label}</p>
+            <p className="text-sm font-semibold text-foreground">{value}</p>
+            {sub && <p className="text-[10px] text-muted-foreground mt-0.5">{sub}</p>}
+          </Card>
+        ))}
+      </div>
+
+      {/* D1 Chart */}
+      <Card className="border border-gold/20 overflow-hidden">
+        <div className="px-5 py-3 bg-gold/5 border-b border-gold/20 flex items-center gap-2">
+          <Star className="h-4 w-4 text-gold" />
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold">D1 — Rasi Chart (North Indian)</p>
+        </div>
+        <div className="p-4">
+          <NorthIndianChart
+            lagnaChart={lagna_chart}
+            sunSign={panchang.sun_sign}
+            moonSign={panchang.moon_sign}
+          />
+          {/* Planet key */}
+          <div className="flex gap-4 mt-3 justify-center">
+            <span className="text-xs text-muted-foreground">☉ = Sun</span>
+            <span className="text-xs text-muted-foreground">☽ = Moon</span>
+            <span className="text-xs text-muted-foreground">Lag = Lagna (Ascendant)</span>
+          </div>
+        </div>
+      </Card>
+
+      {/* Additional Panchang context */}
+      <Card className="border border-gold/20 overflow-hidden">
+        <div className="px-5 py-3 bg-gold/5 border-b border-gold/20">
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold">Panchang Context</p>
+        </div>
+        <div className="divide-y divide-border">
+          {[
+            { label: 'Sunrise',      value: summary.sunrise,           sub: tzAbbr },
+            { label: 'Tithi',        value: summary.tithi,             sub: panchang.paksha + ' Paksha' },
+            { label: 'Nakshatra',    value: summary.nakshatra,         sub: '' },
+            { label: 'Lunar Month',  value: panchang.lunar_month,      sub: panchang.samvat },
+          ].map(({ label, value, sub }) => (
+            <div key={label} className="flex items-center justify-between px-5 py-3">
+              <p className="text-xs text-muted-foreground uppercase tracking-wide">{label}</p>
+              <div className="text-right">
+                <p className="text-sm font-medium text-foreground">{value}</p>
+                {sub && <p className="text-[10px] text-muted-foreground">{sub}</p>}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Card>
+
+      {/* CTA to full birth chart */}
+      <Link
+        to="/birth-chart"
+        className="flex items-center justify-center gap-2 py-3.5 border border-gold/40 rounded-xl text-sm font-semibold text-gold hover:bg-gold/5 transition-colors"
+      >
+        <Star className="h-4 w-4" /> View Your Personal Birth Chart (Kundali)
+      </Link>
+    </div>
+  );
+}
+
 // ─── Main page ──────────────────────────────────────────────────────────────
 export const PanchangPage = ({ lang } = {}) => {
   const { type: rawType = 'daily', year: yearParam, month: monthParam, dateValue } = useParams();
@@ -1594,13 +1832,14 @@ export const PanchangPage = ({ lang } = {}) => {
   const langBase = lang ? `/panchang/${lang}` : '/panchang';
   const L = lang ? (LANG_LABELS_MAP[lang] || {}) : {};
   const subNavItems = [
-    { key: 'daily',       label: L.tabToday      || 'Today',      icon: Sun,      path: `${langBase}/today` },
-    { key: 'tomorrow',    label: L.tabTomorrow   || 'Tomorrow',   icon: Sun,      path: `${langBase}/tomorrow` },
-    { key: 'tithi',       label: L.tabTithi      || 'Tithi',      icon: Moon,     path: `${langBase}/tithi` },
-    { key: 'muhurat',     label: L.tabMuhurat    || 'Muhurat',    icon: Star,     path: `${langBase}/muhurat` },
-    { key: 'choghadiya',  label: L.tabChoghadiya || 'Choghadiya', icon: Zap,      path: `${langBase}/choghadiya` },
-    { key: 'calendar',    label: L.tabCalendar   || 'Calendar',   icon: Calendar, path: `${langBase}/calendar/${today.getFullYear()}/${today.getMonth() + 1}` },
-    { key: 'festivals',   label: L.tabFestivals  || 'Festivals',  icon: Sparkles, path: `${langBase}/festivals` },
+    { key: 'daily',       label: L.tabToday      || 'Today',          icon: Sun,      path: `${langBase}/today` },
+    { key: 'tomorrow',    label: L.tabTomorrow   || 'Tomorrow',       icon: Sun,      path: `${langBase}/tomorrow` },
+    { key: 'lagna',       label: 'Lagna Kundali',                     icon: Star,     path: `${langBase}/lagna` },
+    { key: 'tithi',       label: L.tabTithi      || 'Tithi',          icon: Moon,     path: `${langBase}/tithi` },
+    { key: 'muhurat',     label: L.tabMuhurat    || 'Muhurat',        icon: Star,     path: `${langBase}/muhurat` },
+    { key: 'choghadiya',  label: L.tabChoghadiya || 'Choghadiya',     icon: Zap,      path: `${langBase}/choghadiya` },
+    { key: 'calendar',    label: L.tabCalendar   || 'Calendar',       icon: Calendar, path: `${langBase}/calendar/${today.getFullYear()}/${today.getMonth() + 1}` },
+    { key: 'festivals',   label: L.tabFestivals  || 'Festivals',      icon: Sparkles, path: `${langBase}/festivals` },
   ];
 
   const subNavActive = activeView === 'date' ? 'calendar' : activeView;
@@ -1644,6 +1883,7 @@ export const PanchangPage = ({ lang } = {}) => {
       {isDateView                                 && <PanchangDateView     dateStr={dateValue}           locationSlug={locationSlug} onDataLoad={setPanchangData} />}
       {!isDateView && activeView === 'daily'      && <><PanchangCosmicMap locationSlug={locationSlug} dayOffset={0} /><PanchangDailyView    dayOffset={0}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} /></>}
       {!isDateView && activeView === 'tomorrow'   && <><PanchangCosmicMap locationSlug={locationSlug} dayOffset={1} /><PanchangDailyView    dayOffset={1}                 locationSlug={locationSlug} locationTZ={locationTZ} onDataLoad={setPanchangData} lang={lang} /></>}
+      {!isDateView && activeView === 'lagna'      && <PanchangLagnaView                                  locationSlug={locationSlug} locationTZ={locationTZ} />}
       {!isDateView && activeView === 'tithi'      && <PanchangTithiView                                  locationSlug={locationSlug} lang={lang} />}
       {!isDateView && activeView === 'muhurat'    && <MuhuratView                                        locationSlug={locationSlug} locationTZ={locationTZ} lang={lang} />}
       {!isDateView && activeView === 'choghadiya' && <PanchangChoghadiyaView                             locationSlug={locationSlug} lang={lang} />}
