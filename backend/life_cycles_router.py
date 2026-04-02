@@ -200,7 +200,8 @@ async def generate_life_cycles_report(payload: BirthInput, request: Request) -> 
     )
     document["natal_snapshot"] = natal
     await _collection(request).insert_one(document)
-    return GenerateResponse(report=ReportEnvelope(**document))
+    envelope_data = {k: v for k, v in document.items() if k not in ("natal_snapshot", "_id")}
+    return GenerateResponse(report=ReportEnvelope(**envelope_data))
 
 
 @router.get("/history", response_model=HistoryResponse)
