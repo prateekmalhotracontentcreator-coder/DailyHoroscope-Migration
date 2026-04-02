@@ -323,8 +323,8 @@ def build_natal_snapshot(
         "midheaven_longitude": mc_long,
         "midheaven_sign": sign_from_longitude(mc_long),
         "midheaven_degree": degree_in_sign(mc_long),
-        "houses": houses,
-        "house_lords": {house_num: SIGN_LORDS[sign_name] for house_num, sign_name in houses.items()},
+        "houses": {str(k): v for k, v in houses.items()},
+        "house_lords": {str(house_num): SIGN_LORDS[sign_name] for house_num, sign_name in houses.items()},
         "planets": planets,
         "moon_nakshatra": planets["Moon"]["nakshatra"],
     }
@@ -689,7 +689,7 @@ def compute_steamy_encounter(user_email: str, check_date: date, natal_snapshot: 
     natal_venus = natal_snapshot["planets"]["Venus"]["longitude"]
     conjunction_orb = shortest_arc(mars_longitude, natal_venus)
     trine_orb = abs(shortest_arc(mars_longitude, natal_venus) - 120.0)
-    eighth_sign = natal_snapshot["houses"][8]
+    eighth_sign = natal_snapshot["houses"]["8"]
     mars_sign = transit_snapshot["planets"]["Mars"]["sign"]
     best: tuple[str, str, float | None, bool] | None = None
     if conjunction_orb <= 3.0:
@@ -727,8 +727,8 @@ def compute_steamy_encounter(user_email: str, check_date: date, natal_snapshot: 
 
 def compute_ex_recovery(user_email: str, check_date: date, natal_snapshot: dict[str, Any], transit_snapshot: dict[str, Any]) -> dict[str, Any] | None:
     timezone_name = natal_snapshot["input"]["timezone"]
-    fifth_sign = natal_snapshot["houses"][5]
-    seventh_sign = natal_snapshot["houses"][7]
+    fifth_sign = natal_snapshot["houses"]["5"]
+    seventh_sign = natal_snapshot["houses"]["7"]
     retrograde_hits: list[dict[str, Any]] = []
     for body in ("Venus", "Mercury"):
         transit_body = transit_snapshot["planets"][body]
@@ -759,7 +759,7 @@ def compute_ex_recovery(user_email: str, check_date: date, natal_snapshot: dict[
 
 def compute_long_term_love(user_email: str, check_date: date, natal_snapshot: dict[str, Any], transit_snapshot: dict[str, Any]) -> dict[str, Any] | None:
     jupiter_longitude = transit_snapshot["planets"]["Jupiter"]["longitude"]
-    seventh_sign = natal_snapshot["houses"][7]
+    seventh_sign = natal_snapshot["houses"]["7"]
     jupiter_sign = transit_snapshot["planets"]["Jupiter"]["sign"]
     asc_longitude = natal_snapshot["ascendant_longitude"]
     trine_orb = abs(shortest_arc(jupiter_longitude, asc_longitude) - 120.0)
@@ -877,7 +877,7 @@ def find_next_upcoming_trigger(check_date: date, natal_snapshot: dict[str, Any],
                 "preview": f"Mars forms a stronger chemistry angle to your natal Venus in {best['days_away']} days.",
             })
     if "long_term_love" in opted:
-        next_jupiter = next_sign_ingress("Jupiter", check_date + timedelta(days=1), timezone_name, natal_snapshot["houses"][7], max_days=450)
+        next_jupiter = next_sign_ingress("Jupiter", check_date + timedelta(days=1), timezone_name, natal_snapshot["houses"]["7"], max_days=450)
         if next_jupiter:
             candidates.append({
                 "trigger_type": "long_term_love",
