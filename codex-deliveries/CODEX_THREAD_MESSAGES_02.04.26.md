@@ -341,7 +341,33 @@ Three decisions from the original contract (30 March 2026) are updated:
 
 **D8 Update:** "Intimacy & Vitality Forecast" is confirmed for the Love & Engagement Module thread (Phase 1). It is removed from the Individual Reports Phase 2 queue. The Love module thread owns it.
 
-All other D-decisions (D1, D2, D3, D7, D9, D10, D11) remain unchanged.
+All other D-decisions (D1, D2, D3, D7, D9, D10, D11) remain unchanged. D2 and D3 are explicitly re-confirmed below given the new parallel threads now open.
+
+---
+
+**D2 — Audio/Video Analysis and NotebookLM-Style Flows: Remains Deferred Entirely**
+
+The new Love & Engagement Module thread includes a Ritual Trigger Engine with a `coach_summary` field — a synthesised daily coaching message generated from the user's active astrological alignments. This is **not** a NotebookLM-style flow. It is a deterministic text output derived from structured pyswisseph computation. No audio, no video, no large language model synthesis, no cross-document reasoning.
+
+The opening of the Love module thread, the Notification Engine thread, and the Ritual Trigger Engine subscription product does **not** reopen D2 in any form.
+
+D2 remains: **Deferred entirely. Platform exploration only. Not a Temple contract at any stage of any active workstream.**
+
+Audio/video analysis pipelines, FFmpeg-based processing, and NotebookLM-style synthesis must not appear in any Codex delivery file across any active thread — Individual Reports, Love module, Notification Engine, or Lagna Kundali. This holds until Temple explicitly issues a new contract authorising it.
+
+---
+
+**D3 — "Ask 1 Question": Remains Narrowed and Deferred to Phase 2**
+
+The Ritual Trigger Engine (Love module thread) has 5 named trigger scenarios with fully deterministic logic — First Date Magnet, Steamy Encounter, Ex-Recovery, Long-Term Love, Lunar Daily Score. These are **not** the "Ask 1 Question" concept from D3.
+
+The distinction is architectural:
+- **D3 / Ask 1 Question:** User inputs or selects a question → system interprets it and returns a contextual answer. Open-ended or semi-open input layer. Deferred.
+- **Ritual Trigger Engine:** System monitors the user's chart autonomously and fires when a pre-defined mathematical alignment occurs. No user question input. No interpretation layer. Fully deterministic pyswisseph output.
+
+These are different products. The Ritual Trigger Engine does not constitute or unlock D3.
+
+D3 remains: **Narrowed to fixed deterministic report tiles only, deferred to Phase 2 of this thread.** When Temple issues the Phase 2 contract, "Ask 1 Question" tiles will be scoped as a small set of fixed categories (`career_question`, `love_question`, `family_question`) mapping to specific natal house and planet combinations with bounded output. Nothing in the new parallel threads changes this.
 
 ---
 
