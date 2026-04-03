@@ -1186,7 +1186,10 @@ async def compute_chart(payload: LagnaKundaliComputeRequest, request: Request) -
         compute_payload.requested_chart_codes = ["D1"]
     if compute_payload.requested_chart_codes != ["D1"]:
         compute_payload.requested_chart_codes = ["D1"]
-    doc = _build_payload(compute_payload, include_all_requested=False)
+    try:
+        doc = _build_payload(compute_payload, include_all_requested=False)
+    except Exception as _exc:
+        raise HTTPException(status_code=500, detail=f"[debug] {type(_exc).__name__}: {_exc}") from _exc
     doc["doc_type"] = "chart_snapshot"
     maybe_user = _try_get_user_email(request)
     if maybe_user:
