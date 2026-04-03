@@ -1865,6 +1865,45 @@ async def send_scheduled_notifications():
         except Exception as e:
             logging.error("Failed to send scheduled notification %s: %s", notif["id"], str(e))
 
+async def _call_notification_trigger(trigger_path: str, payload: dict) -> None:
+    """Internal helper — calls a notification trigger endpoint from APScheduler."""
+    trigger_key = os.getenv("TEMPLE_TRIGGER_KEY", "")
+    if not trigger_key:
+        logging.warning("TEMPLE_TRIGGER_KEY not set — skipping notification trigger: %s", trigger_path)
+        return
+    try:
+        async with httpx.AsyncClient() as client:
+            response = await client.post(
+                f"http://localhost:8000/api/notifications/trigger/{trigger_path}",
+                headers={"X-Temple-Trigger-Key": trigger_key, "Content-Type": "application/json"},
+                json=payload,
+                timeout=120,
+            )
+        logging.info("Notification trigger %s → %s", trigger_path, response.status_code)
+    except Exception as exc:
+        logging.error("Notification trigger %s failed: %s", trigger_path, str(exc))
+
+
+async def notification_trigger_panchang_daily():
+    """Daily Panchang digest — runs at 00:00 UTC (5:30 AM IST)."""
+    await _call_notification_trigger("panchang-daily", {"audience": "all"})
+
+
+async def notification_trigger_encounter_window():
+    """Encounter window check — runs at 01:00 UTC (6:30 AM IST) daily."""
+    await _call_notification_trigger("encounter-window", {"audience": "all"})
+
+
+async def notification_trigger_love_weather_weekly():
+    """Weekly Love Weather summary — runs every Sunday at 02:00 UTC (7:30 AM IST)."""
+    await _call_notification_trigger("love-weather-weekly", {"audience": "all"})
+
+
+async def notification_trigger_date_night_score():
+    """Date Night score — runs at 12:30 UTC (6:00 PM IST) daily."""
+    await _call_notification_trigger("date-night-score", {"audience": "all"})
+
+
 async def prefetch_all_horoscopes():
     logging.info("Starting scheduled horoscope prefetch...")
     signs = [s["id"] for s in ZODIAC_SIGNS]; types = ["daily", "weekly", "monthly"]; generated = skipped = 0
@@ -1888,6 +1927,10 @@ async def startup_event():
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day_of_week="sun", hour=18, minute=0, timezone="UTC"), id="weekly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day=1, hour=17, minute=30, timezone="UTC"), id="monthly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(send_scheduled_notifications, CronTrigger(minute="*/5"), id="scheduled_notifications", replace_existing=True)
+    scheduler.add_job(notification_trigger_panchang_daily, CronTrigger(hour=0, minute=0, timezone="UTC"), id="notif_panchang_daily", replace_existing=True)
+    scheduler.add_job(notification_trigger_encounter_window, CronTrigger(hour=1, minute=0, timezone="UTC"), id="notif_encounter_window", replace_existing=True)
+    scheduler.add_job(notification_trigger_love_weather_weekly, CronTrigger(day_of_week="sun", hour=2, minute=0, timezone="UTC"), id="notif_love_weather_weekly", replace_existing=True)
+    scheduler.add_job(notification_trigger_date_night_score, CronTrigger(hour=12, minute=30, timezone="UTC"), id="notif_date_night_score", replace_existing=True)
     scheduler.start()
     logging.info("Horoscope prefetch scheduler started")
 
