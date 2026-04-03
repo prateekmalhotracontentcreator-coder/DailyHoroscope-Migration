@@ -128,6 +128,15 @@ function defaultForm() {
     date_of_birth: "",
     time_of_birth: "",
     lookahead_days: 90,
+    // Person B (Soul Connection synastry)
+    city_mode_b: "preset",
+    city_code_b: CITY_OPTIONS[0].label,
+    city_name_b: CITY_OPTIONS[0].city_name,
+    latitude_b: CITY_OPTIONS[0].latitude,
+    longitude_b: CITY_OPTIONS[0].longitude,
+    timezone_b: CITY_OPTIONS[0].timezone,
+    date_of_birth_b: "",
+    time_of_birth_b: "",
   };
 }
 
@@ -140,6 +149,18 @@ function applyPreset(current, code) {
     latitude: preset.latitude,
     longitude: preset.longitude,
     timezone: preset.timezone,
+  };
+}
+
+function applyPresetB(current, code) {
+  const preset = CITY_OPTIONS.find((item) => item.label === code) || CITY_OPTIONS[0];
+  return {
+    ...current,
+    city_code_b: preset.label,
+    city_name_b: preset.city_name,
+    latitude_b: preset.latitude,
+    longitude_b: preset.longitude,
+    timezone_b: preset.timezone,
   };
 }
 
@@ -158,6 +179,26 @@ function buildPayload(selected, form) {
   };
   if (selected.slug === "love-weather") {
     return { ...base, lookahead_days: Number(form.lookahead_days || 90) };
+  }
+  if (selected.slug === "soul-connection") {
+    return {
+      person_a: {
+        date_of_birth: form.date_of_birth,
+        time_of_birth: form.time_of_birth,
+        latitude: Number(form.latitude),
+        longitude: Number(form.longitude),
+        timezone: form.timezone,
+        city_name: form.city_name || undefined,
+      },
+      person_b: {
+        date_of_birth: form.date_of_birth_b,
+        time_of_birth: form.time_of_birth_b,
+        latitude: Number(form.latitude_b),
+        longitude: Number(form.longitude_b),
+        timezone: form.timezone_b,
+        city_name: form.city_name_b || undefined,
+      },
+    };
   }
   return base;
 }
@@ -337,6 +378,68 @@ function GenerateForm({ selected, form, setForm, onSubmit, submitting, error }) 
           ) : null}
         </div>
       </section>
+
+      {selected.slug === "soul-connection" ? (
+        <section style={{ ...cardStyle, padding: 24 }}>
+          <div style={{ display: "grid", gap: 14 }}>
+            <div>
+              <p style={{ margin: "0 0 6px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#6a4b89" }}>Soul Connection</p>
+              <h3 style={{ margin: "0 0 6px", fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>Person B — Partner's Birth Details</h3>
+              <p style={{ margin: 0, color: "#62574a" }}>Enter the birth details of the person you want to explore soul connection with.</p>
+            </div>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              {[["preset", "Use city picker"], ["manual", "Enter manually"]].map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  onClick={() => setForm((current) => ({ ...current, city_mode_b: value }))}
+                  style={{ minHeight: 42, padding: "10px 14px", borderRadius: 999, border: "1px solid rgba(120,90,55,0.16)", background: form.city_mode_b === value ? "rgba(106,75,137,0.14)" : "rgba(255,255,255,0.7)", cursor: "pointer", fontWeight: 700 }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
+              <label style={{ display: "grid", gap: 6 }}>
+                <span style={{ fontWeight: 700 }}>Date of Birth</span>
+                <input type="date" value={form.date_of_birth_b} onChange={(event) => setForm((current) => ({ ...current, date_of_birth_b: event.target.value }))} style={inputStyle} />
+              </label>
+              <label style={{ display: "grid", gap: 6 }}>
+                <span style={{ fontWeight: 700 }}>Time of Birth</span>
+                <input type="time" value={form.time_of_birth_b} onChange={(event) => setForm((current) => ({ ...current, time_of_birth_b: event.target.value }))} style={inputStyle} />
+              </label>
+            </div>
+            {form.city_mode_b === "preset" ? (
+              <label style={{ display: "grid", gap: 6 }}>
+                <span style={{ fontWeight: 700 }}>City</span>
+                <select value={form.city_code_b} onChange={(event) => setForm((current) => applyPresetB(current, event.target.value))} style={inputStyle}>
+                  {CITY_OPTIONS.map((item) => (
+                    <option key={item.label} value={item.label}>{item.label}</option>
+                  ))}
+                </select>
+              </label>
+            ) : null}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
+              <label style={{ display: "grid", gap: 6 }}>
+                <span style={{ fontWeight: 700 }}>City Name</span>
+                <input value={form.city_name_b} onChange={(event) => setForm((current) => ({ ...current, city_name_b: event.target.value }))} style={inputStyle} />
+              </label>
+              <label style={{ display: "grid", gap: 6 }}>
+                <span style={{ fontWeight: 700 }}>Timezone</span>
+                <input value={form.timezone_b} onChange={(event) => setForm((current) => ({ ...current, timezone_b: event.target.value }))} style={inputStyle} />
+              </label>
+              <label style={{ display: "grid", gap: 6 }}>
+                <span style={{ fontWeight: 700 }}>Latitude</span>
+                <input value={form.latitude_b} onChange={(event) => setForm((current) => ({ ...current, latitude_b: event.target.value }))} style={inputStyle} />
+              </label>
+              <label style={{ display: "grid", gap: 6 }}>
+                <span style={{ fontWeight: 700 }}>Longitude</span>
+                <input value={form.longitude_b} onChange={(event) => setForm((current) => ({ ...current, longitude_b: event.target.value }))} style={inputStyle} />
+              </label>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section style={{ ...cardStyle, padding: 20, display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
         <p style={{ margin: 0, color: "#675b50" }}>Calculations are sent to the live Love Bundle backend with authenticated session credentials.</p>
