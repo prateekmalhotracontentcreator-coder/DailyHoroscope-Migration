@@ -77,6 +77,11 @@ from ritual_trigger_router import router as ritual_trigger_router
 from soul_connection_router import router as soul_connection_router
 from soulmate_timing_router import router as soulmate_timing_router
 from venus_retrograde_router import router as venus_retrograde_router
+from notification_preferences_router import router as notification_preferences_router
+from notification_feed_router import router as notification_feed_router
+from notification_push_router import router as notification_push_router
+from notification_trigger_router import router as notification_trigger_router
+from notification_log_router import router as notification_log_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -1836,6 +1841,11 @@ app.include_router(soul_connection_router)
 app.include_router(venus_retrograde_router)
 app.include_router(soulmate_timing_router)
 app.include_router(ritual_trigger_router)
+app.include_router(notification_preferences_router)
+app.include_router(notification_feed_router)
+app.include_router(notification_push_router)
+app.include_router(notification_trigger_router)
+app.include_router(notification_log_router)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
