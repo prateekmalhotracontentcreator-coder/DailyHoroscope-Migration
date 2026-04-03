@@ -29,6 +29,9 @@ import { ResetPassword } from './pages/ResetPassword';
 import { AccountSettings } from './pages/AccountSettings';
 import { MyReportsPage } from './pages/MyReportsPage';
 import IndividualReportsPage from './pages/IndividualReportsPage';
+import LovePage from './pages/LovePage';
+import LoveReportsPage from './pages/LoveReportsPage';
+import RitualEnginePage from './pages/RitualEnginePage';
 import { Toaster } from './components/ui/sonner';
 import { CookieConsent } from './components/CookieConsent';
 import { NavBar } from './components/NavBar';
@@ -109,6 +112,9 @@ function App() {
                   <Route path="/brihat-kundli" element={<ProtectedRoute><BrihatKundliPage /></ProtectedRoute>} />
                   <Route path="/my-reports" element={<ProtectedRoute><MyReportsPage /></ProtectedRoute>} />
                   <Route path="/individual-reports" element={<ProtectedRoute><IndividualReportsPage /></ProtectedRoute>} />
+                  <Route path="/love" element={<LovePage />} />
+                  <Route path="/love-reports" element={<ProtectedRoute><LoveReportsPage /></ProtectedRoute>} />
+                  <Route path="/ritual-engine" element={<ProtectedRoute><RitualEnginePage /></ProtectedRoute>} />
 
                   {/* Admin */}
                   <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
@@ -150,7 +156,6 @@ function App() {
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
-                  <Route path="/love-report" element={<ComingSoonPage title="Love Report" subtitle="Deep compatibility and relationship analysis" eta="Sprint 3" />} />
                   <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
 
                   {/* Fallback */}
