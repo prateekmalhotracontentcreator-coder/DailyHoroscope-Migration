@@ -51,7 +51,6 @@ class NatalData(StrictModel):
 
 
 class EnrollRequest(StrictModel):
-    user_email: str
     natal_data: NatalData
     triggers_opted_in: list[TriggerType] = Field(default_factory=lambda: list(DEFAULT_TRIGGERS))
 
@@ -62,7 +61,7 @@ class CheckRequest(StrictModel):
 
 
 class UnenrollRequest(StrictModel):
-    user_email: str
+    pass
 
 
 class EnrollResponse(StrictModel):
@@ -144,10 +143,10 @@ def _normalize_email(value: str) -> str:
     return value.strip().lower()
 
 
-def _subscription_doc(payload: EnrollRequest) -> dict[str, Any]:
+def _subscription_doc_for_user(user_email: str, payload: EnrollRequest) -> dict[str, Any]:
     now = now_utc()
     return {
-        "user_email": _normalize_email(payload.user_email),
+        "user_email": user_email,
         "subscribed": True,
         "subscribed_since": now,
         "natal_data": payload.natal_data.model_dump(),
@@ -242,16 +241,17 @@ def _to_check_response(result: dict[str, Any]) -> RitualCheckResponse:
 
 @router.post("/enroll", response_model=EnrollResponse)
 async def enroll_ritual_engine(payload: EnrollRequest, request: Request) -> EnrollResponse:
+    user_email = _normalize_email(get_user_email(request))
     db = get_db(request)
     collection = get_engine_subscription_collection(db)
-    document = _subscription_doc(payload)
+    document = _subscription_doc_for_user(user_email, payload)
     await collection.update_one(
-        {"user_email": document["user_email"]},
+        {"user_email": user_email},
         {"$set": document, "$setOnInsert": {"created_at": now_utc()}},
         upsert=True,
     )
     return EnrollResponse(
-        user_email=document["user_email"],
+        user_email=user_email,
         subscribed=True,
         triggers_opted_in=document["triggers_opted_in"],
         updated_at=document["updated_at"],
@@ -347,9 +347,9 @@ async def get_ritual_history(request: Request) -> RitualHistoryResponse:
 
 
 @router.delete("/unenroll", response_model=UnenrollResponse)
-async def unenroll_ritual_engine(payload: UnenrollRequest, request: Request) -> UnenrollResponse:
+async def unenroll_ritual_engine(request: Request) -> UnenrollResponse:
     collection = get_engine_subscription_collection(get_db(request))
-    user_email = _normalize_email(payload.user_email)
+    user_email = _normalize_email(get_user_email(request))
     result = await collection.update_one(
         {"user_email": user_email},
         {"$set": {"subscribed": False, "updated_at": now_utc()}},

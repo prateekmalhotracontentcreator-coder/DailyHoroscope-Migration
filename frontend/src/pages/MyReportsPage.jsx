@@ -24,6 +24,18 @@ const INDIVIDUAL_SLUGS = [
   { slug: 'life-cycles',        type: 'life_cycles' },
 ];
 
+// ─── Love report slugs for history fetch ─────────────────────────────────────
+const LOVE_SLUGS = [
+  { slug: 'love-weather',       type: 'love_weather',                    label: 'Love Weather' },
+  { slug: 'encounter-window',   type: 'encounter_window',                label: 'Encounter Window' },
+  { slug: 'date-night',         type: 'date_night_score',                label: 'Date Night' },
+  { slug: 'digital-dating',     type: 'digital_dating_strategy',         label: 'Digital Dating' },
+  { slug: 'intimacy-vitality',  type: 'intimacy_vitality_forecast',      label: 'Intimacy & Vitality' },
+  { slug: 'venus-retrograde',   type: 'venus_retrograde_personal_impact',label: 'Venus Retrograde' },
+  { slug: 'soulmate-timing',    type: 'soulmate_timing',                 label: 'Soulmate Timing' },
+  { slug: 'soul-connection',    type: 'deep_synastry_soul_connection',   label: 'Soul Connection' },
+];
+
 // ─── Report type config ───────────────────────────────────────────────────────
 const REPORT_CONFIG = {
   birth_chart: {
@@ -94,6 +106,15 @@ const REPORT_CONFIG = {
     label: 'Pattern of Life Cycles',
     route: '/individual-reports',
   },
+  // ─── Love Bundle reports — View Report action ────────────────────────────────
+  love_weather:                    { icon: Heart, color: 'text-pink-500',   bg: 'bg-pink-500/10',   border: 'border-pink-500/20',   label: 'Love Weather',          route: '/love-reports' },
+  encounter_window:                { icon: Sparkles, color: 'text-rose-500', bg: 'bg-rose-500/10',   border: 'border-rose-500/20',   label: 'Encounter Window',      route: '/love-reports' },
+  date_night_score:                { icon: Moon,   color: 'text-red-500',   bg: 'bg-red-500/10',    border: 'border-red-500/20',    label: 'Date Night Planner',    route: '/love-reports' },
+  digital_dating_strategy:         { icon: Star,   color: 'text-gold',      bg: 'bg-gold/10',       border: 'border-gold/20',       label: 'Digital Dating Edge',   route: '/love-reports' },
+  intimacy_vitality_forecast:      { icon: Activity, color: 'text-red-600', bg: 'bg-red-600/10',    border: 'border-red-600/20',    label: 'Intimacy & Vitality',   route: '/love-reports' },
+  venus_retrograde_personal_impact:{ icon: RotateCcw, color: 'text-amber-500', bg: 'bg-amber-500/10', border: 'border-amber-500/20', label: 'Venus Retrograde',     route: '/love-reports' },
+  soulmate_timing:                 { icon: Clock,  color: 'text-purple-500', bg: 'bg-purple-500/10', border: 'border-purple-500/20', label: 'Soulmate Timing',      route: '/love-reports' },
+  deep_synastry_soul_connection:   { icon: Infinity, color: 'text-indigo-500', bg: 'bg-indigo-500/10', border: 'border-indigo-500/20', label: 'Soul Connection',    route: '/love-reports' },
 };
 
 // ─── Single report card ───────────────────────────────────────────────────────
@@ -222,6 +243,7 @@ export const MyReportsPage = () => {
   const { user } = useAuth();
   const [reports, setReports] = useState([]);
   const [individualReports, setIndividualReports] = useState([]);
+  const [loveReports, setLoveReports] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState('all');
 
@@ -232,7 +254,7 @@ export const MyReportsPage = () => {
   const fetchReports = async () => {
     setLoading(true);
     try {
-      const [legacyRes, ...indivResponses] = await Promise.all([
+      const [legacyRes, ...allResponses] = await Promise.all([
         axios.get(`${API}/my-reports`, {
           params: { user_email: user.email },
           withCredentials: true,
@@ -241,8 +263,14 @@ export const MyReportsPage = () => {
           axios.get(`${API}/reports/${slug}/history`, { withCredentials: true })
             .catch(() => ({ data: { items: [] } }))
         ),
+        ...LOVE_SLUGS.map(({ slug }) =>
+          axios.get(`${API}/reports/${slug}/history`, { withCredentials: true })
+            .catch(() => ({ data: { items: [] } }))
+        ),
       ]);
       setReports(legacyRes.data.reports || []);
+      const indivResponses = allResponses.slice(0, INDIVIDUAL_SLUGS.length);
+      const loveResponses  = allResponses.slice(INDIVIDUAL_SLUGS.length);
       const flattened = INDIVIDUAL_SLUGS.flatMap(({ type }, i) =>
         (indivResponses[i].data?.items || []).map(entry => ({
           ...entry,
@@ -256,6 +284,16 @@ export const MyReportsPage = () => {
         }))
       );
       setIndividualReports(flattened);
+      const loveFlattened = LOVE_SLUGS.flatMap(({ type, label }, i) =>
+        (loveResponses[i].data?.items || []).map(entry => ({
+          ...entry,
+          type,
+          name: label,
+          subtitle: entry.summary || '',
+          generated_at: entry.created_at,
+        }))
+      );
+      setLoveReports(loveFlattened);
     } catch (err) {
       console.error('Failed to fetch reports:', err);
       toast.error('Failed to load reports. Please try again.');
@@ -265,7 +303,8 @@ export const MyReportsPage = () => {
   };
 
   const handleViewReport = (report, config) => {
-    navigate(`${config.route}?reportType=${report.type}&reportId=${report.id}&tab=report`);
+    const slug = LOVE_SLUGS.find(s => s.type === report.type)?.slug || report.type;
+    navigate(`${config.route}?reportType=${slug}&reportId=${report.id}&tab=report`);
   };
 
   const handleDownload = async (report, config) => {
@@ -295,7 +334,7 @@ export const MyReportsPage = () => {
     }
   };
 
-  const allReports = [...reports, ...individualReports];
+  const allReports = [...reports, ...individualReports, ...loveReports];
 
   const filtered = filter === 'all'
     ? allReports
@@ -311,6 +350,7 @@ export const MyReportsPage = () => {
     shadow_self: allReports.filter(r => r.type === 'shadow_self').length,
     retrograde_survival: allReports.filter(r => r.type === 'retrograde_survival').length,
     life_cycles: allReports.filter(r => r.type === 'life_cycles').length,
+    ...Object.fromEntries(LOVE_SLUGS.map(({ type }) => [type, allReports.filter(r => r.type === type).length])),
   };
 
   return (
@@ -346,6 +386,7 @@ export const MyReportsPage = () => {
                 { key: 'shadow_self', label: 'Shadow Self' },
                 { key: 'retrograde_survival', label: 'Retrograde' },
                 { key: 'life_cycles', label: 'Life Cycles' },
+                ...LOVE_SLUGS.map(({ type, label }) => ({ key: type, label })),
               ].map(({ key, label }) => counts[key] > 0 || key === 'all' ? (
                 <button
                   key={key}
@@ -414,6 +455,10 @@ export const MyReportsPage = () => {
                 <Button size="sm" onClick={() => navigate('/individual-reports')}
                   variant="outline" className="gap-1.5 border-gold/40 hover:bg-gold/10 text-xs">
                   <FileText className="h-3.5 w-3.5 text-blue-500" /> Individual Reports
+                </Button>
+                <Button size="sm" onClick={() => navigate('/love-reports')}
+                  variant="outline" className="gap-1.5 border-gold/40 hover:bg-gold/10 text-xs">
+                  <Heart className="h-3.5 w-3.5 text-pink-500" /> Love Reports
                 </Button>
               </div>
             </div>
