@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import asyncio
 from datetime import datetime, timedelta, timezone
 from typing import Any, Literal
 from uuid import uuid4
@@ -10,17 +9,30 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, ConfigDict, Field
 import swisseph as swe
 
-from vedic_calculator import (
-    NAKSHATRAS,
-    PLANET_IDS,
-    PLANET_SWE_IDS as PLANET_ID_MAP,
-    PLANET_NAMES,
-    SIGN_LORDS,
-    SIGN_NAMES,
-    SIGN_ORDER,
-    const,
-    geocode_place,
-)
+try:
+    from vedic_calculator import (
+        NAKSHATRAS,
+        PLANET_IDS,
+        PLANET_ID_MAP,
+        PLANET_NAMES,
+        SIGN_LORDS,
+        SIGN_NAMES,
+        SIGN_ORDER,
+        const,
+        geocode_place,
+    )
+except ImportError:  # pragma: no cover - Temple integration fallback
+    from vedic_calculator_v2_production import (  # type: ignore
+        NAKSHATRAS,
+        PLANET_IDS,
+        PLANET_SWE_IDS as PLANET_ID_MAP,
+        PLANET_NAMES,
+        SIGN_LORDS,
+        SIGN_NAMES,
+        SIGN_ORDER,
+        const,
+        geocode_place,
+    )
 
 
 router = APIRouter(prefix="/api/lagna-kundali", tags=["lagna-kundali"])
@@ -646,21 +658,120 @@ def _build_graha_layer(base_positions: dict[str, Any], charts: dict[str, Any]) -
     return {"items": items}
 
 
-def _build_upagraha_layer(base_positions: dict[str, Any]) -> dict[str, Any]:
-    lagna_lon = base_positions["Lagna"]["longitude"]
+DAY_GULIKA_SEGMENTS = {
+    "Sunday": 7,
+    "Monday": 6,
+    "Tuesday": 5,
+    "Wednesday": 4,
+    "Thursday": 3,
+    "Friday": 2,
+    "Saturday": 1,
+}
+NIGHT_GULIKA_SEGMENTS = {
+    "Sunday": 4,
+    "Monday": 3,
+    "Tuesday": 2,
+    "Wednesday": 1,
+    "Thursday": 7,
+    "Friday": 6,
+    "Saturday": 5,
+}
+UPAGRAHA_PENDING_NOTE = "Classical validation against the Temple JHora benchmark is still in progress for this implementation cycle."
+
+
+def _solar_upagraha_points(sun_longitude: float) -> list[tuple[str, str, float]]:
+    dhuma = _normalize_longitude(sun_longitude + (133.0 + (20.0 / 60.0)))
+    vyatipata = _normalize_longitude(360.0 - dhuma)
+    parivesha = _normalize_longitude(vyatipata + 180.0)
+    indrachapa = _normalize_longitude(360.0 - parivesha)
+    upaketu = _normalize_longitude(indrachapa + (16.0 + (40.0 / 60.0)))
+    return [
+        ("DHUMA", "Dhuma", dhuma),
+        ("VYATIPATA", "Vyatipata", vyatipata),
+        ("PARIVESHA", "Parivesha", parivesha),
+        ("INDRACHAPA", "Indrachapa", indrachapa),
+        ("UPAKETU", "Upaketu", upaketu),
+    ]
+
+
+def _compute_rise_set_jd(target_dt: datetime, latitude: float, longitude: float, event_flag: int) -> float:
+    localized = target_dt.astimezone(ZoneInfo("UTC"))
+    fractional_hour = localized.hour + (localized.minute / 60.0) + (localized.second / 3600.0)
+    jd_start = swe.julday(localized.year, localized.month, localized.day, fractional_hour)
+    rsmi = event_flag | swe.BIT_DISC_CENTER
+    result, event_jd = swe.rise_trans(jd_start, swe.SUN, longitude, latitude, 0.0, 0.0, 0.0, rsmi)
+    if result < 0:
+        raise HTTPException(status_code=500, detail="Unable to compute sunrise/sunset for Upagraha calculation")
+    return event_jd
+
+
+def _jd_to_local_datetime(jd_ut: float, timezone_name: str) -> datetime:
+    year, month, day, hour = swe.revjul(jd_ut)
+    hour_int = int(hour)
+    minute_float = (hour - hour_int) * 60
+    minute_int = int(minute_float)
+    second = int(round((minute_float - minute_int) * 60))
+    if second == 60:
+        second = 0
+        minute_int += 1
+    if minute_int == 60:
+        minute_int = 0
+        hour_int += 1
+    utc_dt = datetime(year, month, day, hour_int % 24, minute_int, second, tzinfo=ZoneInfo("UTC"))
+    if hour_int >= 24:
+        utc_dt += timedelta(days=hour_int // 24)
+    return utc_dt.astimezone(ZoneInfo(timezone_name))
+
+
+def _ascendant_for_datetime(target_dt: datetime, latitude: float, longitude: float) -> float:
+    utc_dt = target_dt.astimezone(ZoneInfo("UTC"))
+    fractional_hour = utc_dt.hour + (utc_dt.minute / 60.0) + (utc_dt.second / 3600.0)
+    jd_ut = swe.julday(utc_dt.year, utc_dt.month, utc_dt.day, fractional_hour)
+    return _ascendant_longitude(jd_ut, latitude, longitude)
+
+
+def _compute_gulika_longitudes(payload: LagnaKundaliComputeRequest) -> tuple[float, float]:
+    latitude, longitude = _resolve_coordinates(payload)
+    _, _, birth_local = _parse_input_datetime(payload)
+    local_midnight = birth_local.replace(hour=0, minute=0, second=0, microsecond=0)
+    sunrise = _jd_to_local_datetime(_compute_rise_set_jd(local_midnight, latitude, longitude, swe.CALC_RISE), payload.timezone)
+    sunset = _jd_to_local_datetime(_compute_rise_set_jd(local_midnight, latitude, longitude, swe.CALC_SET), payload.timezone)
+    is_day_birth = sunrise <= birth_local <= sunset
+    weekday_name = birth_local.strftime("%A")
+    segment_map = DAY_GULIKA_SEGMENTS if is_day_birth else NIGHT_GULIKA_SEGMENTS
+    segment_index = segment_map[weekday_name] - 1
+    if is_day_birth:
+        arc_start = sunrise
+        arc_end = sunset
+    elif birth_local < sunrise:
+        previous_midnight = local_midnight - timedelta(days=1)
+        arc_start = _jd_to_local_datetime(_compute_rise_set_jd(previous_midnight, latitude, longitude, swe.CALC_SET), payload.timezone)
+        arc_end = sunrise
+    else:
+        next_midnight = local_midnight + timedelta(days=1)
+        arc_start = sunset
+        arc_end = _jd_to_local_datetime(_compute_rise_set_jd(next_midnight, latitude, longitude, swe.CALC_RISE), payload.timezone)
+    segment_span = (arc_end - arc_start) / 8
+    segment_start = arc_start + (segment_span * segment_index)
+    segment_mid = segment_start + (segment_span / 2)
+    gulika = _ascendant_for_datetime(segment_start, latitude, longitude)
+    mandi = _ascendant_for_datetime(segment_mid, latitude, longitude)
+    return gulika, mandi
+
+
+def _build_upagraha_layer(base_positions: dict[str, Any], payload: LagnaKundaliComputeRequest) -> dict[str, Any]:
+    sun_longitude = base_positions["Sun (Surya)"]["longitude"]
+    gulika_longitude, mandi_longitude = _compute_gulika_longitudes(payload)
     seed_points = [
-        ("GULIKA", "Gulika", lagna_lon + 90.0),
-        ("MANDI", "Mandi", lagna_lon + 105.0),
-        ("DHUMA", "Dhuma", lagna_lon + 133.3333),
-        ("VYATIPATA", "Vyatipata", lagna_lon + 193.3333),
-        ("PARIVESHA", "Parivesha", lagna_lon + 223.3333),
-        ("INDRACHAPA", "Indrachapa", lagna_lon + 253.3333),
-        ("UPAKETU", "Upaketu", lagna_lon + 283.3333),
+        ("GULIKA", "Gulika", gulika_longitude),
+        ("MANDI", "Mandi", mandi_longitude),
+        *_solar_upagraha_points(sun_longitude),
     ]
     items = []
     for code, name, raw_longitude in seed_points:
         longitude = _normalize_longitude(raw_longitude)
         sign = _sign_from_longitude(longitude)
+        pending_note = UPAGRAHA_PENDING_NOTE if code in {"GULIKA", "MANDI"} else None
         items.append({
             "code": code,
             "name": name,
@@ -668,9 +779,9 @@ def _build_upagraha_layer(base_positions: dict[str, Any]) -> dict[str, Any]:
             "sign": sign,
             "degree_in_sign": round(_degree_in_sign(longitude), 4),
             "house": _get_house_number(sign, base_positions["Lagna"]["sign"]),
-            "calculation_basis": "BPHS Ashtama-Yama seed placeholder for Contract 8A backend spine",
-            "supported": code in {"GULIKA", "MANDI"},
-            "pending_verification": None if code in {"GULIKA", "MANDI"} else "Carry full classical validation before acceptance sign-off.",
+            "calculation_basis": "BPHS Ashtama-Yama via sunrise/sunset segmentation for Gulika and Mandi; solar classical formulas for the remaining Upagrahas.",
+            "supported": False if code in {"GULIKA", "MANDI"} else True,
+            "pending_verification": pending_note,
         })
     return {"method": "BPHS Ashtama-Yama", "items": items}
 
@@ -954,6 +1065,19 @@ def _chart_definitions() -> list[ChartDefinition]:
     ]
 
 
+def _restricted_layers_for_time_precision(time_precision: TimePrecision) -> dict[str, str]:
+    if time_precision != "unknown":
+        return {}
+    reason = "Birth time is unknown. Lagna-sensitive layers are restricted until an exact or approximate birth time is supplied."
+    return {
+        "bhav_chalit": reason,
+        "yoga": reason,
+        "vimshottari_dasha": reason,
+        "shadbala": reason,
+        "bhavabala": reason,
+    }
+
+
 def _build_payload(payload: LagnaKundaliComputeRequest, include_all_requested: bool = False) -> dict[str, Any]:
     latitude, longitude = _resolve_coordinates(payload)
     date_text, time_text, jd_ut = _to_julian_day(payload)
@@ -971,11 +1095,14 @@ def _build_payload(payload: LagnaKundaliComputeRequest, include_all_requested: b
     moon_longitude = base_positions["Moon (Chandra)"]["longitude"]
     birth_local = _parse_input_datetime(payload)[2]
     layers = {}
+    restricted_layers = _restricted_layers_for_time_precision(payload.time_precision)
     for layer_code in payload.include_layers:
+        if layer_code in restricted_layers:
+            continue
         if layer_code == "graha":
             layers[layer_code] = _build_graha_layer(base_positions, charts)
         elif layer_code == "upagraha":
-            layers[layer_code] = _build_upagraha_layer(base_positions)
+            layers[layer_code] = _build_upagraha_layer(base_positions, payload)
         elif layer_code == "yoga":
             layers[layer_code] = _build_yoga_layer(base_positions)
         elif layer_code == "vimshottari_dasha":
@@ -990,7 +1117,7 @@ def _build_payload(payload: LagnaKundaliComputeRequest, include_all_requested: b
             layers[layer_code] = _build_bhav_chalit(base_positions)
 
     moon_nakshatra = base_positions["Moon (Chandra)"]["nakshatra"]
-    dasha = layers.get("vimshottari_dasha") or _build_vimshottari(moon_longitude, birth_local)
+    dasha = layers.get("vimshottari_dasha")
     return {
         "chart_id": f"lk_{uuid4().hex}",
         "input": {
@@ -1008,6 +1135,7 @@ def _build_payload(payload: LagnaKundaliComputeRequest, include_all_requested: b
             "rules_version": "contract_8a_temple_approved_2026_04_01",
             "computed_at": _now().isoformat(),
             "reliability": _reliability_notes(payload.time_precision),
+            "restricted_layers": restricted_layers,
         },
         "overview": {
             "lagna_sign": charts["D1"]["lagna"]["sign"],
@@ -1015,8 +1143,8 @@ def _build_payload(payload: LagnaKundaliComputeRequest, include_all_requested: b
             "lagna_nakshatra": charts["D1"]["lagna"]["nakshatra"],
             "lagna_pada": charts["D1"]["lagna"]["pada"],
             "moon_nakshatra": moon_nakshatra["name"],
-            "current_maha_dasha": dasha["current_maha"]["planet"],
-            "current_antar_dasha": dasha["current_antar"]["planet"],
+            "current_maha_dasha": dasha["current_maha"]["planet"] if dasha else None,
+            "current_antar_dasha": dasha["current_antar"]["planet"] if dasha else None,
         },
         "charts": charts,
         "layers": layers,
@@ -1064,25 +1192,6 @@ async def chart_definitions() -> ChartDefinitionResponse:
     return ChartDefinitionResponse(charts=_chart_definitions())
 
 
-@router.get("/ping-swe")
-async def ping_swe() -> dict[str, Any]:
-    """Diagnostic: confirm pyswisseph responds for a fixed JD (no MongoDB)."""
-    import time
-    t0 = time.time()
-    jd = swe.julday(1990, 6, 15, 9.0)          # 14:30 IST = 09:00 UTC
-    asc_lon = _ascendant_longitude(jd, 19.076, 72.8777)
-    sun_lon, _ = _planet_longitude_and_speed(jd, "SUN")
-    moon_lon, _ = _planet_longitude_and_speed(jd, "MOON")
-    return {
-        "ok": True,
-        "elapsed_ms": round((time.time() - t0) * 1000, 1),
-        "jd": round(jd, 4),
-        "asc_lon": round(asc_lon, 4),
-        "sun_lon": round(sun_lon, 4),
-        "moon_lon": round(moon_lon, 4),
-    }
-
-
 @router.post("/compute")
 async def compute_chart(payload: LagnaKundaliComputeRequest, request: Request) -> dict[str, Any]:
     compute_payload = payload.model_copy(deep=True)
@@ -1099,12 +1208,9 @@ async def compute_chart(payload: LagnaKundaliComputeRequest, request: Request) -
     if db is not None:
         try:
             snapshot_collection = _get_collection(request)
-            await asyncio.wait_for(snapshot_collection.insert_one(doc), timeout=6.0)
+            await snapshot_collection.insert_one(doc)
         except Exception:
             pass
-        finally:
-            # Motor insert_one mutates doc in-place adding _id: ObjectId — not JSON-serializable
-            doc.pop("_id", None)
     return doc
 
 

@@ -39,7 +39,37 @@ const chartLayout = {
   9: { x: 200, y: 370 },
 };
 
-function NorthIndianChart({ chart, title }) {
+const southIndianChartLayout = {
+  1: { x: 105, y: 50 },
+  2: { x: 205, y: 50 },
+  3: { x: 305, y: 50 },
+  12: { x: 65, y: 130 },
+  4: { x: 345, y: 130 },
+  11: { x: 65, y: 210 },
+  5: { x: 345, y: 210 },
+  10: { x: 65, y: 290 },
+  6: { x: 345, y: 290 },
+  9: { x: 105, y: 350 },
+  8: { x: 205, y: 350 },
+  7: { x: 305, y: 350 },
+};
+
+const eastIndianChartLayout = {
+  1: { x: 115, y: 80 },
+  2: { x: 200, y: 80 },
+  3: { x: 285, y: 80 },
+  12: { x: 80, y: 160 },
+  4: { x: 320, y: 160 },
+  11: { x: 80, y: 240 },
+  5: { x: 320, y: 240 },
+  10: { x: 80, y: 320 },
+  6: { x: 320, y: 320 },
+  9: { x: 115, y: 360 },
+  8: { x: 200, y: 360 },
+  7: { x: 285, y: 360 },
+};
+
+function getChartCollections(chart) {
   const houseMap = {};
   const planetsByHouse = {};
   (chart?.houses || []).forEach((house) => {
@@ -50,7 +80,33 @@ function NorthIndianChart({ chart, title }) {
     planetsByHouse[house] = planetsByHouse[house] || [];
     planetsByHouse[house].push(graha);
   });
+  return { houseMap, planetsByHouse };
+}
 
+function renderHouseText(houseNumber, coords, houseMap, planetsByHouse) {
+  const house = houseMap[Number(houseNumber)];
+  const grahas = planetsByHouse[Number(houseNumber)] || [];
+  return (
+    <g key={houseNumber}>
+      <text x={coords.x} y={coords.y} textAnchor="middle" fontSize="12" fill="#A98445" fontWeight="700">
+        {houseNumber}
+      </text>
+      <text x={coords.x} y={coords.y + 18} textAnchor="middle" fontSize="15" fill="#2B2111" fontWeight="700">
+        {house?.sign_num || ""}
+      </text>
+      <text x={coords.x} y={coords.y + 34} textAnchor="middle" fontSize="10" fill="#6F5730">
+        {house?.sign || ""}
+      </text>
+      {grahas.slice(0, 4).map((graha, index) => (
+        <text key={`${houseNumber}-${graha.code}`} x={coords.x} y={coords.y + 52 + index * 13} textAnchor="middle" fontSize="10" fill="#864E1B">
+          {graha.abbr}
+        </text>
+      ))}
+    </g>
+  );
+}
+
+function ChartShell({ chart, title, children }) {
   return (
     <div style={{ ...chartPanelStyle, padding: 18 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 12 }}>
@@ -62,7 +118,17 @@ function NorthIndianChart({ chart, title }) {
           Lagna: <strong>{chart?.lagna?.sign || "--"}</strong>
         </div>
       </div>
+      {children}
+      <div style={{ marginTop: 12, fontSize: 13, color: "#5E4724" }}>{chart?.focus_area}</div>
+    </div>
+  );
+}
 
+function NorthIndianChart({ chart, title }) {
+  const { houseMap, planetsByHouse } = getChartCollections(chart);
+
+  return (
+    <ChartShell chart={chart} title={title}>
       <svg viewBox="0 0 400 400" width="100%" role="img" aria-label={title}>
         <rect x="4" y="4" width="392" height="392" rx="18" fill="#FEFCF7" stroke="#C5A059" strokeWidth="2" />
         <line x1="200" y1="16" x2="16" y2="200" stroke="#C5A059" strokeWidth="1.5" />
@@ -74,31 +140,54 @@ function NorthIndianChart({ chart, title }) {
         <line x1="16" y1="384" x2="200" y2="200" stroke="#C5A059" strokeWidth="1" />
         <line x1="384" y1="384" x2="200" y2="200" stroke="#C5A059" strokeWidth="1" />
 
-        {Object.entries(chartLayout).map(([houseNumber, coords]) => {
-          const house = houseMap[Number(houseNumber)];
-          const grahas = planetsByHouse[Number(houseNumber)] || [];
-          return (
-            <g key={houseNumber}>
-              <text x={coords.x} y={coords.y} textAnchor="middle" fontSize="12" fill="#A98445" fontWeight="700">
-                {houseNumber}
-              </text>
-              <text x={coords.x} y={coords.y + 18} textAnchor="middle" fontSize="15" fill="#2B2111" fontWeight="700">
-                {house?.sign_num || ""}
-              </text>
-              <text x={coords.x} y={coords.y + 34} textAnchor="middle" fontSize="10" fill="#6F5730">
-                {house?.sign || ""}
-              </text>
-              {grahas.slice(0, 4).map((graha, index) => (
-                <text key={`${houseNumber}-${graha.code}`} x={coords.x} y={coords.y + 52 + index * 13} textAnchor="middle" fontSize="10" fill="#864E1B">
-                  {graha.abbr}
-                </text>
-              ))}
-            </g>
-          );
-        })}
+        {Object.entries(chartLayout).map(([houseNumber, coords]) => renderHouseText(houseNumber, coords, houseMap, planetsByHouse))}
       </svg>
-      <div style={{ marginTop: 12, fontSize: 13, color: "#5E4724" }}>{chart?.focus_area}</div>
-    </div>
+    </ChartShell>
+  );
+}
+
+function SouthIndianChart({ chart, title }) {
+  const { houseMap, planetsByHouse } = getChartCollections(chart);
+  return (
+    <ChartShell chart={chart} title={title}>
+      <svg viewBox="0 0 400 400" width="100%" role="img" aria-label={title}>
+        <rect x="15" y="15" width="370" height="370" rx="18" fill="#FEFCF7" stroke="#C5A059" strokeWidth="2" />
+        <line x1="100" y1="15" x2="100" y2="110" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="200" y1="15" x2="200" y2="110" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="300" y1="15" x2="300" y2="110" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="100" y1="290" x2="100" y2="385" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="200" y1="290" x2="200" y2="385" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="300" y1="290" x2="300" y2="385" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="15" y1="110" x2="110" y2="110" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="290" y1="110" x2="385" y2="110" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="15" y1="200" x2="110" y2="200" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="290" y1="200" x2="385" y2="200" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="15" y1="290" x2="110" y2="290" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="290" y1="290" x2="385" y2="290" stroke="#C5A059" strokeWidth="1.2" />
+        {Object.entries(southIndianChartLayout).map(([houseNumber, coords]) => renderHouseText(houseNumber, coords, houseMap, planetsByHouse))}
+      </svg>
+    </ChartShell>
+  );
+}
+
+function EastIndianChart({ chart, title }) {
+  const { houseMap, planetsByHouse } = getChartCollections(chart);
+  return (
+    <ChartShell chart={chart} title={title}>
+      <svg viewBox="0 0 400 400" width="100%" role="img" aria-label={title}>
+        <rect x="16" y="16" width="368" height="368" rx="18" fill="#FEFCF7" stroke="#C5A059" strokeWidth="2" />
+        <rect x="60" y="60" width="280" height="280" fill="none" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="60" y1="140" x2="340" y2="140" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="60" y1="260" x2="340" y2="260" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="140" y1="60" x2="140" y2="340" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="260" y1="60" x2="260" y2="340" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="60" y1="60" x2="140" y2="140" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="340" y1="60" x2="260" y2="140" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="60" y1="340" x2="140" y2="260" stroke="#C5A059" strokeWidth="1.2" />
+        <line x1="340" y1="340" x2="260" y2="260" stroke="#C5A059" strokeWidth="1.2" />
+        {Object.entries(eastIndianChartLayout).map(([houseNumber, coords]) => renderHouseText(houseNumber, coords, houseMap, planetsByHouse))}
+      </svg>
+    </ChartShell>
   );
 }
 
@@ -154,6 +243,15 @@ function PendingLayer({ title, message }) {
   );
 }
 
+function NoteBlock({ title, children }) {
+  return (
+    <section style={{ ...chartPanelStyle, padding: 18 }}>
+      <h3 style={{ marginTop: 0, color: "#3E2C14" }}>{title}</h3>
+      <div style={{ color: "#5A4321" }}>{children}</div>
+    </section>
+  );
+}
+
 function KundaliPage() {
   const params = useParams();
   const routeChartId = params.chartId || params.id || "";
@@ -168,15 +266,83 @@ function KundaliPage() {
   });
   const [chart, setChart] = useState(null);
   const [definitions, setDefinitions] = useState([]);
+  const [leftChartData, setLeftChartData] = useState(null);
   const [rightChartData, setRightChartData] = useState(null);
   const [leftChart, setLeftChart] = useState("D1");
   const [rightChart, setRightChart] = useState("D9");
   const [activeTab, setActiveTab] = useState("kundali");
   const [loading, setLoading] = useState(false);
+  const [loadingLeftVariant, setLoadingLeftVariant] = useState(false);
   const [loadingVariant, setLoadingVariant] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [orientation, setOrientation] = useState(() => {
+    if (typeof window === "undefined") return "north";
+    return window.localStorage.getItem("lagnaKundaliOrientation") || "north";
+  });
+  const deferredLeftChart = useDeferredValue(leftChart);
   const deferredRightChart = useDeferredValue(rightChart);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute("content") || "";
+    const previousCanonical = document.querySelector('link[rel="canonical"]')?.getAttribute("href") || "";
+    const title = "Lagna Kundali — Free Birth Chart & Vedic Ascendant Calculator | EverydayHoroscope";
+    const description = "Explore your D1 Lagna Kundali with ascendant precision, Bhav Chalit movement, Vedic yoga registry, and lazy-loaded Vargas inside EverydayHoroscope.";
+    document.title = title;
+
+    let descriptionNode = document.querySelector('meta[name="description"]');
+    if (!descriptionNode) {
+      descriptionNode = document.createElement("meta");
+      descriptionNode.setAttribute("name", "description");
+      document.head.appendChild(descriptionNode);
+    }
+    descriptionNode.setAttribute("content", description);
+
+    let canonicalNode = document.querySelector('link[rel="canonical"]');
+    if (!canonicalNode) {
+      canonicalNode = document.createElement("link");
+      canonicalNode.setAttribute("rel", "canonical");
+      document.head.appendChild(canonicalNode);
+    }
+    canonicalNode.setAttribute("href", "https://www.everydayhoroscope.in/lagna-kundali");
+
+    const jsonLdId = "lagna-kundali-jsonld";
+    let jsonLdNode = document.getElementById(jsonLdId);
+    if (!jsonLdNode) {
+      jsonLdNode = document.createElement("script");
+      jsonLdNode.setAttribute("type", "application/ld+json");
+      jsonLdNode.setAttribute("id", jsonLdId);
+      document.head.appendChild(jsonLdNode);
+    }
+    jsonLdNode.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      name: "Lagna Kundali",
+      applicationCategory: "LifestyleApplication",
+      operatingSystem: "Web",
+      description,
+      url: "https://www.everydayhoroscope.in/lagna-kundali",
+      keywords: ["lagna kundali", "vedic ascendant calculator", "d1 chart", "bhav chalit", "vedic yoga registry"],
+      publisher: {
+        "@type": "Organization",
+        name: "EverydayHoroscope",
+      },
+    });
+
+    return () => {
+      document.title = previousTitle;
+      if (descriptionNode) descriptionNode.setAttribute("content", previousDescription);
+      if (canonicalNode) canonicalNode.setAttribute("href", previousCanonical);
+      if (jsonLdNode) jsonLdNode.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+    window.localStorage.setItem("lagnaKundaliOrientation", orientation);
+    return undefined;
+  }, [orientation]);
 
   useEffect(() => {
     let active = true;
@@ -219,6 +385,60 @@ function KundaliPage() {
       active = false;
     };
   }, [routeChartId]);
+
+  useEffect(() => {
+    if (!chart?.chart_id) return;
+    if (!deferredLeftChart || deferredLeftChart === "D1") {
+      setLeftChartData(chart?.charts?.D1 || null);
+      return;
+    }
+    if (chart?.charts?.[deferredLeftChart]) {
+      setLeftChartData(chart.charts[deferredLeftChart]);
+      return;
+    }
+    const definition = definitions.find((item) => item.code === deferredLeftChart);
+    if (definition && !definition.enabled) {
+      setLeftChartData({
+        name: deferredLeftChart,
+        focus_area: definition.short_meaning,
+        pending_verification: "Registered in the selector. Computational enablement is pending a later tier.",
+      });
+      return;
+    }
+
+    let active = true;
+    async function loadLeftVariant() {
+      setLoadingLeftVariant(true);
+      try {
+        const response = await axios.get(`${API}/lagna-kundali/chart/${chart.chart_id}/charts/${deferredLeftChart}`, {
+          withCredentials: true,
+        });
+        if (!active) return;
+        startTransition(() => {
+          setLeftChartData(response.data || null);
+          setChart((current) => {
+            if (!current) return current;
+            return {
+              ...current,
+              charts: {
+                ...(current.charts || {}),
+                [deferredLeftChart]: response.data,
+              },
+            };
+          });
+        });
+      } catch (err) {
+        if (!active) return;
+        setError(err?.response?.data?.detail || `Unable to load ${deferredLeftChart}.`);
+      } finally {
+        if (active) setLoadingLeftVariant(false);
+      }
+    }
+    loadLeftVariant();
+    return () => {
+      active = false;
+    };
+  }, [chart, deferredLeftChart, definitions]);
 
   useEffect(() => {
     if (!chart?.chart_id) return;
@@ -274,6 +494,13 @@ function KundaliPage() {
     };
   }, [chart, deferredRightChart, definitions]);
 
+  useEffect(() => {
+    const restricted = chart?.meta?.restricted_layers || {};
+    if (restricted[activeTab]) {
+      setActiveTab("kundali");
+    }
+  }, [activeTab, chart]);
+
   async function handleCompute() {
     setLoading(true);
     setError("");
@@ -289,7 +516,9 @@ function KundaliPage() {
         setChart(response.data || null);
         setLeftChart("D1");
         setRightChart("D9");
+        setLeftChartData(response.data?.charts?.D1 || null);
         setRightChartData(null);
+        setOrientation(response.data?.ui_state_defaults?.orientation || "north");
       });
     } catch (err) {
       setError(err?.response?.data?.detail || "Unable to compute the Lagna Kundali right now.");
@@ -319,18 +548,26 @@ function KundaliPage() {
     }
   }
 
-  const leftDefinition = definitions.find((item) => item.code === leftChart);
-  const leftChartData =
-    chart?.charts?.[leftChart] ||
-    (leftDefinition && !leftDefinition.enabled
-      ? {
-          name: leftChart,
-          focus_area: leftDefinition.short_meaning,
-          pending_verification: "Registered in the selector. Computational enablement is pending a later tier.",
-        }
-      : chart?.charts?.D1 || null);
   const reliabilityNotes = chart?.meta?.reliability?.notes || [];
+  const restrictedLayers = chart?.meta?.restricted_layers || {};
   const yogaRows = chart?.layers?.yoga?.items?.slice(0, 18) || [];
+  const ashtakaRows = chart?.layers?.ashtaka_varga?.sarvashtakavarga?.houses || [];
+  const shadbalaRows = chart?.layers?.shadbala?.items || [];
+  const bhavabalaRows = chart?.layers?.bhavabala?.items || [];
+  const bhinnaRows = Object.entries(chart?.layers?.ashtaka_varga?.bhinna_ashtakavarga || {}).map(([planet, values]) => ({
+    planet,
+    ...values.reduce((acc, value, index) => ({ ...acc, [`house_${index + 1}`]: value }), {}),
+  }));
+  const visibleTabs = TAB_LABELS.filter(([key]) => !restrictedLayers[key]);
+  const renderChartPanel = (panelChart, title) => {
+    if (orientation === "south") {
+      return <SouthIndianChart chart={panelChart} title={title} />;
+    }
+    if (orientation === "east") {
+      return <EastIndianChart chart={panelChart} title={title} />;
+    }
+    return <NorthIndianChart chart={panelChart} title={title} />;
+  };
 
   return (
     <div
@@ -414,7 +651,7 @@ function KundaliPage() {
               <div style={{ marginTop: 5, fontSize: 18, color: "#3E2C14", fontWeight: 700 }}>Layers</div>
             </div>
             <nav style={{ display: "grid", gap: 6 }}>
-              {TAB_LABELS.map(([key, label]) => (
+              {visibleTabs.map(([key, label]) => (
                 <button
                   key={key}
                   onClick={() => setActiveTab(key)}
@@ -442,6 +679,25 @@ function KundaliPage() {
                   <h2 style={{ margin: "4px 0 0", color: "#3E2C14" }}>Chart Workspace</h2>
                 </div>
                 <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                  <div style={{ display: "flex", gap: 6, padding: 5, borderRadius: 999, background: "rgba(110,76,24,0.09)" }}>
+                    {["north", "south", "east"].map((mode) => (
+                      <button
+                        key={mode}
+                        onClick={() => setOrientation(mode)}
+                        style={{
+                          padding: "8px 12px",
+                          borderRadius: 999,
+                          border: "none",
+                          background: orientation === mode ? "#6E4C18" : "transparent",
+                          color: orientation === mode ? "#FFF8EA" : "#6E4C18",
+                          fontWeight: 700,
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {mode}
+                      </button>
+                    ))}
+                  </div>
                   <select value={leftChart} onChange={(event) => setLeftChart(event.target.value)}>
                     {definitions.map((definition) => (
                       <option key={`left-${definition.code}`} value={definition.code}>
@@ -463,17 +719,19 @@ function KundaliPage() {
             {activeTab === "kundali" ? (
               <>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 18 }}>
-                  {leftChartData?.pending_verification ? (
+                  {loadingLeftVariant ? (
+                    <PendingLayer title={`Loading ${leftChart}`} message="Fetching the selected Varga on demand." />
+                  ) : leftChartData?.pending_verification ? (
                     <PendingLayer title={leftChart} message={leftChartData.pending_verification} />
                   ) : (
-                    <NorthIndianChart chart={leftChartData} title="Left Panel" />
+                    renderChartPanel(leftChartData, "Left Panel")
                   )}
                   {loadingVariant ? (
                     <PendingLayer title={`Loading ${rightChart}`} message="Fetching the selected Varga on demand." />
                   ) : rightChartData?.pending_verification ? (
                     <PendingLayer title={rightChart} message={rightChartData.pending_verification} />
                   ) : (
-                    <NorthIndianChart chart={rightChartData} title="Right Panel" />
+                    renderChartPanel(rightChartData, "Right Panel")
                   )}
                 </div>
 
@@ -535,28 +793,104 @@ function KundaliPage() {
             ) : null}
 
             {activeTab === "vimshottari_dasha" ? (
-              <DataTable
-                title="Vimshottari Mahadashas"
-                rows={chart?.layers?.vimshottari_dasha?.maha_dashas || []}
-                columns={[
-                  { key: "planet", label: "Planet" },
-                  { key: "start", label: "Start" },
-                  { key: "end", label: "End" },
-                  { key: "years", label: "Years" },
-                ]}
-              />
+              restrictedLayers.vimshottari_dasha ? (
+                <PendingLayer title="Vimshottari Dasha" message={restrictedLayers.vimshottari_dasha} />
+              ) : (
+                <DataTable
+                  title="Vimshottari Mahadashas"
+                  rows={chart?.layers?.vimshottari_dasha?.maha_dashas || []}
+                  columns={[
+                    { key: "planet", label: "Planet" },
+                    { key: "start", label: "Start" },
+                    { key: "end", label: "End" },
+                    { key: "years", label: "Years" },
+                  ]}
+                />
+              )
             ) : null}
 
             {activeTab === "ashtaka_varga" ? (
-              <PendingLayer title="Ashtaka Varga" message={chart?.layers?.ashtaka_varga?.pending_verification || "Layer not loaded yet."} />
+              <>
+                <NoteBlock title="Ashtaka Varga Notes">
+                  <p style={{ marginTop: 0 }}>{chart?.layers?.ashtaka_varga?.pending_verification || "Classical validation note unavailable."}</p>
+                  <p style={{ marginBottom: 0 }}>Total Sarva Ashtaka Varga points: <strong>{chart?.layers?.ashtaka_varga?.sarvashtakavarga?.total_points || 0}</strong></p>
+                </NoteBlock>
+                <DataTable
+                  title="Sarva Ashtaka Varga"
+                  rows={ashtakaRows}
+                  columns={[
+                    { key: "house_num", label: "House" },
+                    { key: "points", label: "Bindus" },
+                  ]}
+                />
+                <DataTable
+                  title="Bhinna Ashtaka Varga"
+                  rows={bhinnaRows}
+                  columns={[
+                    { key: "planet", label: "Graha" },
+                    ...Array.from({ length: 12 }, (_, index) => ({
+                      key: `house_${index + 1}`,
+                      label: `H${index + 1}`,
+                    })),
+                  ]}
+                />
+              </>
             ) : null}
 
             {activeTab === "shadbala" ? (
-              <PendingLayer title="Shadbala" message={chart?.layers?.shadbala?.pending_verification || "Layer not loaded yet."} />
+              restrictedLayers.shadbala ? (
+                <PendingLayer title="Shadbala" message={restrictedLayers.shadbala} />
+              ) : (
+                <>
+                  <NoteBlock title="Shadbala Notes">
+                    <p style={{ margin: 0 }}>{chart?.layers?.shadbala?.pending_verification || "Strength note unavailable."}</p>
+                  </NoteBlock>
+                  <DataTable
+                    title="Shadbala Strength Table"
+                    rows={shadbalaRows}
+                    columns={[
+                      { key: "graha", label: "Graha" },
+                      { key: "sthana_bala", label: "Sthana" },
+                      { key: "dig_bala", label: "Dig" },
+                      { key: "kala_bala", label: "Kala" },
+                      { key: "cheshta_bala", label: "Cheshta" },
+                      { key: "naisargika_bala", label: "Naisargika" },
+                      { key: "drik_bala", label: "Drik" },
+                      { key: "total", label: "Total" },
+                      { key: "required_minimum", label: "Min" },
+                      { key: "strength_band", label: "Band" },
+                    ]}
+                  />
+                </>
+              )
             ) : null}
 
             {activeTab === "bhavabala" ? (
-              <PendingLayer title="Bhavabala" message={chart?.layers?.bhavabala?.pending_verification || "Layer not loaded yet."} />
+              restrictedLayers.bhavabala ? (
+                <PendingLayer title="Bhavabala" message={restrictedLayers.bhavabala} />
+              ) : (
+                <>
+                  <NoteBlock title="Bhavabala Notes">
+                    <p style={{ margin: 0 }}>{chart?.layers?.bhavabala?.pending_verification || "House-strength note unavailable."}</p>
+                  </NoteBlock>
+                  <DataTable
+                    title="Bhavabala Strength Table"
+                    rows={bhavabalaRows}
+                    columns={[
+                      { key: "house_num", label: "House" },
+                      { key: "bhavadhipati_bala", label: "Bhavadhipati" },
+                      { key: "bhava_dig_bala", label: "Dig Bala" },
+                      { key: "bhava_drushti_bala", label: "Drushti" },
+                      { key: "bhava_shubha_ashubha_bala", label: "Shubha-Ashubha" },
+                      { key: "bhava_dina_ratri_bala", label: "Dina-Ratri" },
+                      { key: "karaka_strength", label: "Karaka" },
+                      { key: "total", label: "Total" },
+                      { key: "rank", label: "Rank" },
+                      { key: "strength_band", label: "Band" },
+                    ]}
+                  />
+                </>
+              )
             ) : null}
           </main>
         </section>
