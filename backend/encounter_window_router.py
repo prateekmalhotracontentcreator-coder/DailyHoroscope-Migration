@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from encounter_window_prompt_service import enrich_encounter_window_with_claude
 from vedic_shared_utils import (
     base_history_query,
     build_natal_snapshot,
@@ -142,13 +143,13 @@ def _build_windows(payload: EncounterWindowGenerateRequest) -> tuple[EncounterWi
                         "description": f"Transiting Venus is {orb:.1f}° from your {label.lower()} - attraction and visibility are heightened.",
                     }
                 )
-        if jupiter_sign in {natal["houses"]["5"], natal["houses"]["7"]}:
+        if jupiter_sign in {natal["houses"][5], natal["houses"][7]}:
             raw_windows.append(
                 {
-                    "basis": f"Jupiter in natal {5 if jupiter_sign == natal['houses']['5'] else 7}th house",
+                    "basis": f"Jupiter in natal {5 if jupiter_sign == natal['houses'][5] else 7}th house",
                     "date": day.isoformat(),
                     "orb": None,
-                    "description": f"Transiting Jupiter is moving through your natal {5 if jupiter_sign == natal['houses']['5'] else 7}th house - expansion is active.",
+                    "description": f"Transiting Jupiter is moving through your natal {5 if jupiter_sign == natal['houses'][5] else 7}th house - expansion is active.",
                 }
             )
 
@@ -255,6 +256,7 @@ async def generate_encounter_window_report(
             ),
         )
     )
+    report = await enrich_encounter_window_with_claude(report, meta)
     await _report_collection(request).insert_one(report.model_dump(mode="python"))
     return EncounterWindowGenerateResponse(report=report)
 

@@ -7,6 +7,7 @@ from uuid import uuid4
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from soul_connection_prompt_service import enrich_soul_connection_with_claude
 from vedic_shared_utils import (
     build_natal_snapshot,
     get_db,
@@ -197,6 +198,7 @@ async def generate_soul_connection_report(payload: SoulConnectionGenerateRequest
         output_payload=output,
         summary=summary,
     )
+    report = await enrich_soul_connection_with_claude(report, {"synastry_snapshot": natal})
     document = report.model_dump(mode="python")
     document["synastry_snapshot"] = natal
     await _collection(request).insert_one(document)
