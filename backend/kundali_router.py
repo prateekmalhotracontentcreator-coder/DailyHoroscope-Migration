@@ -1186,10 +1186,7 @@ async def compute_chart(payload: LagnaKundaliComputeRequest, request: Request) -
         compute_payload.requested_chart_codes = ["D1"]
     if compute_payload.requested_chart_codes != ["D1"]:
         compute_payload.requested_chart_codes = ["D1"]
-    try:
-        doc = _build_payload(compute_payload, include_all_requested=False)
-    except Exception as _exc:
-        raise HTTPException(status_code=500, detail=f"[debug] {type(_exc).__name__}: {_exc}") from _exc
+    doc = _build_payload(compute_payload, include_all_requested=False)
     doc["doc_type"] = "chart_snapshot"
     maybe_user = _try_get_user_email(request)
     if maybe_user:
@@ -1198,7 +1195,7 @@ async def compute_chart(payload: LagnaKundaliComputeRequest, request: Request) -
     if db is not None:
         try:
             snapshot_collection = _get_collection(request)
-            await snapshot_collection.insert_one(doc)
+            await snapshot_collection.insert_one({**doc})  # copy — insert_one mutates with _id
         except Exception:
             pass
     return doc
