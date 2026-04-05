@@ -685,11 +685,11 @@ def _compute_rise_set_jd(target_dt: datetime, latitude: float, longitude: float,
     localized = target_dt.astimezone(ZoneInfo("UTC"))
     fractional_hour = localized.hour + (localized.minute / 60.0) + (localized.second / 3600.0)
     jd_start = swe.julday(localized.year, localized.month, localized.day, fractional_hour)
-    rsmi = event_flag | swe.BIT_DISC_CENTER
-    result, event_jd = swe.rise_trans(jd_start, swe.SUN, longitude, latitude, 0.0, 0.0, 0.0, rsmi)
-    if result < 0:
+    geopos = (longitude, latitude, 0.0)
+    ret = swe.rise_trans(jd_start, swe.SUN, event_flag, geopos, 1013.25, 15.0)
+    if ret[0] < 0:
         raise HTTPException(status_code=500, detail="Unable to compute sunrise/sunset for Upagraha calculation")
-    return event_jd
+    return ret[1][0]  # tret[0] is the event Julian Day
 
 
 def _jd_to_local_datetime(jd_ut: float, timezone_name: str) -> datetime:
