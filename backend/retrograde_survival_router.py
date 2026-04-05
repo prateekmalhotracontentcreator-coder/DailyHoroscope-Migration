@@ -6,6 +6,8 @@ from typing import Literal
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from retrograde_survival_prompt_service import enrich_retrograde_survival_with_claude
+
 from vedic_shared_utils import (
     build_natal_snapshot,
     build_report_document,
@@ -221,11 +223,13 @@ async def generate_retrograde_survival(payload: GenerateRequest, request: Reques
         output_payload=output.model_dump(),
         summary=summary,
     )
+    report = ReportEnvelope(**document)
+    report = await enrich_retrograde_survival_with_claude(report, {"natal_snapshot": natal})
+    document = report.model_dump(mode="python")
     if natal:
         document["natal_snapshot"] = natal
     await _collection(request).insert_one(document)
-    envelope_data = {k: v for k, v in document.items() if k not in ("natal_snapshot", "_id")}
-    return GenerateResponse(report=ReportEnvelope(**envelope_data))
+    return GenerateResponse(report=report)
 
 
 @router.get("/history", response_model=HistoryResponse)

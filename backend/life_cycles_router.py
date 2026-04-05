@@ -6,6 +6,8 @@ from typing import Literal
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from life_cycles_prompt_service import enrich_life_cycles_with_claude
+
 from vedic_shared_utils import (
     build_natal_snapshot,
     build_report_document,
@@ -198,10 +200,12 @@ async def generate_life_cycles_report(payload: BirthInput, request: Request) -> 
         output_payload=output.model_dump(),
         summary=summary,
     )
+    report = ReportEnvelope(**document)
+    report = await enrich_life_cycles_with_claude(report, {"natal_snapshot": natal})
+    document = report.model_dump(mode="python")
     document["natal_snapshot"] = natal
     await _collection(request).insert_one(document)
-    envelope_data = {k: v for k, v in document.items() if k not in ("natal_snapshot", "_id")}
-    return GenerateResponse(report=ReportEnvelope(**envelope_data))
+    return GenerateResponse(report=report)
 
 
 @router.get("/history", response_model=HistoryResponse)

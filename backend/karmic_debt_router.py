@@ -6,6 +6,8 @@ from typing import Literal
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from karmic_debt_prompt_service import enrich_karmic_debt_with_claude
+
 from vedic_shared_utils import (
     atmakaraka_planet,
     build_natal_snapshot,
@@ -223,10 +225,12 @@ async def generate_karmic_debt_report(payload: BirthInput, request: Request) -> 
         output_payload=output.model_dump(),
         summary=summary,
     )
+    report = ReportEnvelope(**document)
+    report = await enrich_karmic_debt_with_claude(report, {"natal_snapshot": natal})
+    document = report.model_dump(mode="python")
     document["natal_snapshot"] = natal
     await _collection(request).insert_one(document)
-    envelope_data = {k: v for k, v in document.items() if k not in ("natal_snapshot", "_id")}
-    return GenerateResponse(report=ReportEnvelope(**envelope_data))
+    return GenerateResponse(report=report)
 
 
 @router.get("/history", response_model=HistoryResponse)

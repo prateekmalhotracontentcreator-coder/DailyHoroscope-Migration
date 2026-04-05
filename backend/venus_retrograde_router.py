@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from venus_retrograde_prompt_service import enrich_venus_retrograde_with_claude
 from vedic_shared_utils import (
     build_natal_snapshot,
     build_transit_snapshot,
@@ -105,7 +106,7 @@ def _build_output(payload: VenusRetrogradeGenerateRequest) -> tuple[dict[str, An
     transit = build_transit_snapshot(today, payload.timezone, bodies=("Venus",))
     venus = natal["planets"]["Venus"]
     transiting_venus = transit["planets"]["Venus"]
-    retrograde_house_signs = [natal["houses"]["5"], natal["houses"]["7"]]
+    retrograde_house_signs = [natal["houses"][5], natal["houses"][7]]
     active_house = transiting_venus["sign"] if transiting_venus["retrograde"] and transiting_venus["sign"] in retrograde_house_signs else None
     personal_impact = (
         f"Your natal Venus sits in {venus['sign']} in the {venus['house']}th house, so Venus retrograde periods tend to press on love, self-worth, and relational pacing."
@@ -171,6 +172,7 @@ async def generate_venus_retrograde_report(payload: VenusRetrogradeGenerateReque
         output_payload=output,
         summary=summary,
     )
+    report = await enrich_venus_retrograde_with_claude(report, {"natal_snapshot": natal})
     document = report.model_dump(mode="python")
     document["natal_snapshot"] = natal
     await _collection(request).insert_one(document)
