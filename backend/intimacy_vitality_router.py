@@ -115,7 +115,7 @@ def _build_windows(payload: IntimacyVitalityGenerateRequest) -> tuple[IntimacyVi
     start_date = _current_date(payload)
     eighth_lord = house_lord_for_house(8, natal["ascendant_sign"])
     signature = (
-        f"Your intimacy style is shaped by the {natal['houses'][8]} house and its lord {eighth_lord}, with Venus and Mars showing how affection, desire, and trust are expressed."
+        f"Your intimacy style is shaped by the {natal['houses']['8']} house and its lord {eighth_lord}, with Venus and Mars showing how affection, desire, and trust are expressed."
     )
     today_transit = build_transit_snapshot(start_date, payload.timezone, bodies=("Mars", "Venus"))
     current_mars = today_transit["planets"]["Mars"]["longitude"]
