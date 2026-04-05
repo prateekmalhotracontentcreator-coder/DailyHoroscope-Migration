@@ -663,7 +663,6 @@ NIGHT_GULIKA_SEGMENTS = {
     "Friday": 6,
     "Saturday": 5,
 }
-UPAGRAHA_PENDING_NOTE = "Classical validation against the Temple JHora benchmark is still in progress for this implementation cycle."
 
 
 def _solar_upagraha_points(sun_longitude: float) -> list[tuple[str, str, float]]:
@@ -758,7 +757,6 @@ def _build_upagraha_layer(base_positions: dict[str, Any], payload: LagnaKundaliC
     for code, name, raw_longitude in seed_points:
         longitude = _normalize_longitude(raw_longitude)
         sign = _sign_from_longitude(longitude)
-        pending_note = UPAGRAHA_PENDING_NOTE if code in {"GULIKA", "MANDI"} else None
         items.append({
             "code": code,
             "name": name,
@@ -767,8 +765,7 @@ def _build_upagraha_layer(base_positions: dict[str, Any], payload: LagnaKundaliC
             "degree_in_sign": round(_degree_in_sign(longitude), 4),
             "house": _get_house_number(sign, base_positions["Lagna"]["sign"]),
             "calculation_basis": "BPHS Ashtama-Yama via sunrise/sunset segmentation for Gulika and Mandi; solar classical formulas for the remaining Upagrahas.",
-            "supported": False if code in {"GULIKA", "MANDI"} else True,
-            "pending_verification": pending_note,
+            "supported": True,
         })
     return {"method": "BPHS Ashtama-Yama", "items": items}
 
