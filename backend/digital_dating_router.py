@@ -101,8 +101,8 @@ def _build_output(payload: DigitalDatingGenerateRequest) -> tuple[dict[str, Any]
         city_name=payload.city_name,
     )
     asc_sign = natal["ascendant_sign"]
-    fifth_sign = natal["houses"][5]
-    seventh_sign = natal["houses"][7]
+    fifth_sign = natal["houses"]["5"]
+    seventh_sign = natal["houses"]["7"]
     planets = natal["planets"]
     fifth_lord = house_lord_for_house(5, asc_sign)
     seventh_lord = house_lord_for_house(7, asc_sign)

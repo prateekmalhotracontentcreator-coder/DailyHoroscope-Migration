@@ -112,8 +112,8 @@ def _daily_score(day: date, timezone_name: str, natal: dict[str, Any]) -> tuple[
     transit = build_transit_snapshot(day, timezone_name)
     score = 50
     themes: list[str] = []
-    fifth_sign = natal["houses"][5]
-    seventh_sign = natal["houses"][7]
+    fifth_sign = natal["houses"]["5"]
+    seventh_sign = natal["houses"]["7"]
     venus_sign = transit["planets"]["Venus"]["sign"]
     jupiter_sign = transit["planets"]["Jupiter"]["sign"]
     mars_sign = transit["planets"]["Mars"]["sign"]
@@ -134,7 +134,7 @@ def _daily_score(day: date, timezone_name: str, natal: dict[str, Any]) -> tuple[
     targets = [
         natal["planets"]["Venus"]["longitude"],
         natal["ascendant_longitude"],
-        natal["planets"][natal["house_lords"][7]]["longitude"],
+        natal["planets"][natal["house_lords"]["7"]]["longitude"],
     ]
     for body in ("Venus", "Jupiter", "Mars", "Saturn"):
         longitude = transit["planets"][body]["longitude"]
