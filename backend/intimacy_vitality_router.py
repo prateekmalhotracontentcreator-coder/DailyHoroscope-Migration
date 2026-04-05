@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 from fastapi import APIRouter, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from intimacy_vitality_prompt_service import enrich_intimacy_vitality_with_claude
 from vedic_shared_utils import (
     base_history_query,
     build_natal_snapshot,
@@ -114,7 +115,7 @@ def _build_windows(payload: IntimacyVitalityGenerateRequest) -> tuple[IntimacyVi
     start_date = _current_date(payload)
     eighth_lord = house_lord_for_house(8, natal["ascendant_sign"])
     signature = (
-        f"Your intimacy style is shaped by the {natal['houses']['8']} house and its lord {eighth_lord}, with Venus and Mars showing how affection, desire, and trust are expressed."
+        f"Your intimacy style is shaped by the {natal['houses'][8]} house and its lord {eighth_lord}, with Venus and Mars showing how affection, desire, and trust are expressed."
     )
     today_transit = build_transit_snapshot(start_date, payload.timezone, bodies=("Mars", "Venus"))
     current_mars = today_transit["planets"]["Mars"]["longitude"]
@@ -122,14 +123,14 @@ def _build_windows(payload: IntimacyVitalityGenerateRequest) -> tuple[IntimacyVi
     mars_vs_venus = shortest_arc(current_mars, natal_venus)
     if mars_vs_venus <= 3.0:
         phase = "Current phase: Mars is tightly engaging your Venus - confidence and chemistry are rising."
-    elif today_transit["planets"]["Mars"]["sign"] == natal["houses"]["8"]:
+    elif today_transit["planets"]["Mars"]["sign"] == natal["houses"][8]:
         phase = "Current phase: Mars is in your natal 8th house - a strong intimacy and vitality cycle is active."
     else:
         phase = "Current phase: The field is steadier today - conserve energy and build with consistency."
 
     raw_windows: list[dict[str, Any]] = []
     timezone_name = payload.timezone
-    eighth_sign = natal["houses"]["8"]
+    eighth_sign = natal["houses"][8]
     for offset in range(payload.lookahead_days):
         day = start_date + timedelta(days=offset)
         transit = build_transit_snapshot(day, timezone_name, bodies=("Mars", "Venus"))
@@ -239,6 +240,7 @@ async def generate_intimacy_vitality_report(
             summary="Intimacy and vitality are mapped through your 8th-house signature and the nearest Mars timing windows.",
         )
     )
+    report = await enrich_intimacy_vitality_with_claude(report, meta)
     await _report_collection(request).insert_one(report.model_dump(mode="python"))
     return IntimacyVitalityGenerateResponse(report=report)
 

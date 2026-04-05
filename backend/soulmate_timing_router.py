@@ -7,6 +7,7 @@ from uuid import uuid4
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from soulmate_timing_prompt_service import enrich_soulmate_timing_with_claude
 from vedic_shared_utils import (
     build_natal_snapshot,
     build_report_document,
@@ -150,6 +151,7 @@ async def generate_soulmate_timing_report(payload: SoulmateTimingGenerateRequest
         output_payload=output,
         summary=summary,
     )
+    report = await enrich_soulmate_timing_with_claude(report, {"natal_snapshot": natal})
     document = report.model_dump(mode="python")
     document["natal_snapshot"] = natal
     await _collection(request).insert_one(document)

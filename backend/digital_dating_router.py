@@ -7,6 +7,7 @@ from uuid import uuid4
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from digital_dating_prompt_service import enrich_digital_dating_with_claude
 from vedic_shared_utils import (
     build_natal_snapshot,
     build_report_document,
@@ -100,8 +101,8 @@ def _build_output(payload: DigitalDatingGenerateRequest) -> tuple[dict[str, Any]
         city_name=payload.city_name,
     )
     asc_sign = natal["ascendant_sign"]
-    fifth_sign = natal["houses"]["5"]
-    seventh_sign = natal["houses"]["7"]
+    fifth_sign = natal["houses"][5]
+    seventh_sign = natal["houses"][7]
     planets = natal["planets"]
     fifth_lord = house_lord_for_house(5, asc_sign)
     seventh_lord = house_lord_for_house(7, asc_sign)
@@ -183,6 +184,7 @@ async def generate_digital_dating_report(payload: DigitalDatingGenerateRequest, 
         output_payload=output,
         summary=summary,
     )
+    report = await enrich_digital_dating_with_claude(report, {"natal_snapshot": natal})
     document = report.model_dump(mode="python")
     document["report_type"] = report.report_type
     document["natal_snapshot"] = natal

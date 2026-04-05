@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 from fastapi import APIRouter, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from date_night_prompt_service import enrich_date_night_with_claude
 from vedic_shared_utils import (
     base_history_query,
     build_natal_snapshot,
@@ -167,6 +168,7 @@ async def generate_date_night_report(
             summary=f"Love Battery {output.love_battery_percent}% with a {output.score_category} tone for the day.",
         )
     )
+    report = await enrich_date_night_with_claude(report, meta)
     await _report_collection(request).insert_one(report.model_dump(mode="python"))
     return DateNightGenerateResponse(report=report)
 
