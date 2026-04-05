@@ -143,7 +143,7 @@ def _build_windows(payload: EncounterWindowGenerateRequest) -> tuple[EncounterWi
                         "description": f"Transiting Venus is {orb:.1f}° from your {label.lower()} - attraction and visibility are heightened.",
                     }
                 )
-        if jupiter_sign in {natal["houses"][5], natal["houses"][7]}:
+        if jupiter_sign in {natal["houses"]["5"], natal["houses"]["7"]}:
             raw_windows.append(
                 {
                     "basis": f"Jupiter in natal {5 if jupiter_sign == natal['houses'][5] else 7}th house",
