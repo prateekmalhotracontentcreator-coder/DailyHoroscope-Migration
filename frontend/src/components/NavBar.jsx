@@ -14,16 +14,14 @@ import {
 
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
 const StarsLogo = ({ size = 56 }) => (
-  <picture>
-    <source srcSet="/Logo.webp" type="image/webp" />
-    <img
-      src="/Logo-56.png"
-      alt="Everyday Horoscope"
-      width={size}
-      height={size}
-      style={{ width: size, height: size, objectFit: 'contain', display: 'block' }}
-    />
-  </picture>
+  <img
+    src="/Logo.webp"
+    alt="Everyday Horoscope"
+    width={size}
+    height={size}
+    style={{ width: size, height: size, objectFit: 'contain', display: 'block' }}
+    onError={(e) => { e.currentTarget.src = '/Logo-56.png'; }}
+  />
 );
 
 const NAV = [
