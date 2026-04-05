@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 from typing import Any
 
+logger = logging.getLogger(__name__)
 
 DEFAULT_CLAUDE_MODEL = os.getenv("INDIVIDUAL_REPORTS_CLAUDE_MODEL", "claude-3-5-sonnet-latest")
 
@@ -38,15 +40,25 @@ async def try_claude_generation(prompt: str, *, max_tokens: int = 700, temperatu
             temperature=temperature,
             messages=[{"role": "user", "content": prompt}],
         )
-    except Exception:
+    except Exception as exc:
+        logger.error("Individual reports enrichment API call failed: %s", exc)
         return None
 
     text = extract_text_from_claude_response(response)
     if not text:
+        logger.warning("Individual reports enrichment: empty response from Claude")
         return None
+
+    # Strip markdown fences Claude sometimes wraps around JSON
+    cleaned = text.strip()
+    if cleaned.startswith("```"):
+        cleaned = cleaned.split("\n", 1)[-1]
+        cleaned = cleaned.rsplit("```", 1)[0].strip()
+
     try:
-        return json.loads(text)
-    except Exception:
+        return json.loads(cleaned)
+    except Exception as exc:
+        logger.error("Individual reports enrichment: JSON parse failed — %s | raw: %.200s", exc, cleaned)
         return None
 
 
