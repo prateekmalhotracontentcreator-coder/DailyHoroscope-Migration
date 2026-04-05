@@ -59,7 +59,7 @@ const NAV = [
       { label: 'Kundali Milan',     path: '/kundali-milan',   icon: Heart },
       { label: 'Brihat Kundli Pro', path: '/brihat-kundli', icon: Crown },
       { label: 'Ask 1 Question',    path: '/ask-question',  icon: Hash },
-      { label: 'Love Report',       path: '/love-report',   icon: Heart },
+      { label: 'Love Bundle',        path: '/love',          icon: Heart },
       { label: 'Career Plus',       path: '/career-plus',   icon: Briefcase },
       { label: 'Hasta Rekha',       path: '/palmistry',     icon: Layers },
     ],
