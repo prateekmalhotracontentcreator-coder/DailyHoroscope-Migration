@@ -106,7 +106,7 @@ def _build_output(payload: VenusRetrogradeGenerateRequest) -> tuple[dict[str, An
     transit = build_transit_snapshot(today, payload.timezone, bodies=("Venus",))
     venus = natal["planets"]["Venus"]
     transiting_venus = transit["planets"]["Venus"]
-    retrograde_house_signs = [natal["houses"][5], natal["houses"][7]]
+    retrograde_house_signs = [natal["houses"]["5"], natal["houses"]["7"]]
     active_house = transiting_venus["sign"] if transiting_venus["retrograde"] and transiting_venus["sign"] in retrograde_house_signs else None
     personal_impact = (
         f"Your natal Venus sits in {venus['sign']} in the {venus['house']}th house, so Venus retrograde periods tend to press on love, self-worth, and relational pacing."
