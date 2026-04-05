@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import json
+import logging
 import os
 from typing import TYPE_CHECKING, Any
+
+logger = logging.getLogger(__name__)
 
 if TYPE_CHECKING:
     from numerology_router import NumerologyReportPayload
@@ -296,15 +299,25 @@ async def _try_claude_generation(prompt: str) -> dict[str, Any] | None:
             temperature=0.45,
             messages=[{"role": "user", "content": prompt}],
         )
-    except Exception:
+    except Exception as exc:
+        logger.error("Numerology enrichment API call failed: %s", exc)
         return None
 
     text = _extract_text_from_claude_response(response)
     if not text:
+        logger.warning("Numerology enrichment: empty response from Claude")
         return None
+
+    # Strip markdown fences Claude sometimes wraps around JSON
+    cleaned = text.strip()
+    if cleaned.startswith("```"):
+        cleaned = cleaned.split("\n", 1)[-1]
+        cleaned = cleaned.rsplit("```", 1)[0].strip()
+
     try:
-        return json.loads(text)
-    except Exception:
+        return json.loads(cleaned)
+    except Exception as exc:
+        logger.error("Numerology enrichment: JSON parse failed — %s | raw: %.200s", exc, cleaned)
         return None
 
 
