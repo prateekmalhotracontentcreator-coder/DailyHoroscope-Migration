@@ -2,92 +2,239 @@ import React, { startTransition, useDeferredValue, useEffect, useMemo, useState 
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
+const API_BASE = `${BACKEND_URL}/api`;
+const CANONICAL_URL = "https://www.everydayhoroscope.in/reports";
+const HISTORY_CACHE_KEY = "individual_reports_full_cache_v2";
 
-const REPORTS = [
+const REPORT_CONFIGS = [
   {
     type: "karmic_debt",
     slug: "karmic-debt",
     name: "Karmic Debt & Past Life",
-    eyebrow: "Patterns & karma",
-    description: "Decode repeating life loops through Saturn, Rahu-Ketu, retrogrades, and the Atmakaraka.",
-    accent: "#8d4f3d",
+    shortName: "Karmic Debt",
+    color: "#7f4be0",
+    icon: "◎",
+    hook: "Decode the spiritual loop you keep meeting in different disguises.",
+    description: "A premium Vedic reading for karmic themes, past-life echoes, soul lessons, and release practices.",
   },
   {
     type: "career_blueprint",
     slug: "career-blueprint",
     name: "Career & Success Blueprint",
-    eyebrow: "Work & destiny",
-    description: "Map public direction, career strengths, wealth signatures, and Dasha-backed peak periods.",
-    accent: "#586b43",
+    shortName: "Career Blueprint",
+    color: "#c9961f",
+    icon: "▲",
+    hook: "See the work pattern, public calling, and success rhythm written into your chart.",
+    description: "A Vedic career reading for strengths, wealth signals, career timing, and practical next moves.",
   },
   {
     type: "shadow_self",
     slug: "shadow-self",
     name: "Shadow Self & Hidden Qualities",
-    eyebrow: "Inner landscape",
-    description: "Read Janma Nakshatra, hidden strengths, blind spots, and subtle inner pressure points.",
-    accent: "#315665",
+    shortName: "Shadow Self",
+    color: "#3f7ae0",
+    icon: "◐",
+    hook: "Name the hidden pressure shaping your reactions before it chooses for you.",
+    description: "A deep self-knowledge report for hidden strengths, blind spots, emotional drivers, and integration guidance.",
   },
   {
     type: "retrograde_survival",
     slug: "retrograde-survival",
     name: "Retrograde Survival Guide",
-    eyebrow: "Current timing",
-    description: "Understand Mercury, Venus, or Mars retrograde periods in general or through your natal houses.",
-    accent: "#6a4b89",
+    shortName: "Retrograde Survival",
+    color: "#e27c33",
+    icon: "↺",
+    hook: "Track the retrograde weather around you and move through it with less chaos.",
+    description: "A timing-led guidance report for Mercury, Venus, and Mars retrogrades with clean, grounded remedies.",
   },
   {
     type: "life_cycles",
     slug: "life-cycles",
-    name: "The Pattern of Life Cycles",
-    eyebrow: "Dasha timeline",
-    description: "See the current Maha and Antar Dasha, next transitions, and the larger chapter now unfolding.",
-    accent: "#9a6a26",
+    name: "Pattern of Life Cycles",
+    shortName: "Life Cycles",
+    color: "#3fa56a",
+    icon: "◌",
+    hook: "Understand the chapter you are in now and the one already rising behind it.",
+    description: "A Vimshottari Dasha report for current chapter, sub-cycle, decade arc, and upcoming transitions.",
   },
 ];
 
-const CITY_OPTIONS = [
-  { label: "New Delhi", city_name: "New Delhi", latitude: 28.6139, longitude: 77.209, timezone: "Asia/Kolkata" },
-  { label: "Mumbai", city_name: "Mumbai", latitude: 19.076, longitude: 72.8777, timezone: "Asia/Kolkata" },
-  { label: "Bengaluru", city_name: "Bengaluru", latitude: 12.9716, longitude: 77.5946, timezone: "Asia/Kolkata" },
-  { label: "Kolkata", city_name: "Kolkata", latitude: 22.5726, longitude: 88.3639, timezone: "Asia/Kolkata" },
-  { label: "Chennai", city_name: "Chennai", latitude: 13.0827, longitude: 80.2707, timezone: "Asia/Kolkata" },
-  { label: "Hyderabad", city_name: "Hyderabad", latitude: 17.385, longitude: 78.4867, timezone: "Asia/Kolkata" },
-  { label: "Pune", city_name: "Pune", latitude: 18.5204, longitude: 73.8567, timezone: "Asia/Kolkata" },
-  { label: "Ahmedabad", city_name: "Ahmedabad", latitude: 23.0225, longitude: 72.5714, timezone: "Asia/Kolkata" },
-  { label: "Jaipur", city_name: "Jaipur", latitude: 26.9124, longitude: 75.7873, timezone: "Asia/Kolkata" },
-  { label: "Lucknow", city_name: "Lucknow", latitude: 26.8467, longitude: 80.9462, timezone: "Asia/Kolkata" },
-  { label: "New York", city_name: "New York", latitude: 40.7128, longitude: -74.006, timezone: "America/New_York" },
-  { label: "London", city_name: "London", latitude: 51.5072, longitude: -0.1276, timezone: "Europe/London" },
-  { label: "Dubai", city_name: "Dubai", latitude: 25.2048, longitude: 55.2708, timezone: "Asia/Dubai" },
-  { label: "Singapore", city_name: "Singapore", latitude: 1.3521, longitude: 103.8198, timezone: "Asia/Singapore" },
+const CITY_GROUPS = [
+  {
+    countryCode: "IN",
+    countryName: "India",
+    cities: [
+      { slug: "new-delhi-india", label: "New Delhi, India", city_name: "New Delhi", latitude: 28.6139, longitude: 77.209, timezone: "Asia/Kolkata" },
+      { slug: "mumbai-india", label: "Mumbai, India", city_name: "Mumbai", latitude: 19.076, longitude: 72.8777, timezone: "Asia/Kolkata" },
+      { slug: "bengaluru-india", label: "Bengaluru, India", city_name: "Bengaluru", latitude: 12.9716, longitude: 77.5946, timezone: "Asia/Kolkata" },
+      { slug: "kolkata-india", label: "Kolkata, India", city_name: "Kolkata", latitude: 22.5726, longitude: 88.3639, timezone: "Asia/Kolkata" },
+      { slug: "chennai-india", label: "Chennai, India", city_name: "Chennai", latitude: 13.0827, longitude: 80.2707, timezone: "Asia/Kolkata" },
+      { slug: "hyderabad-india", label: "Hyderabad, India", city_name: "Hyderabad", latitude: 17.385, longitude: 78.4867, timezone: "Asia/Kolkata" },
+      { slug: "pune-india", label: "Pune, India", city_name: "Pune", latitude: 18.5204, longitude: 73.8567, timezone: "Asia/Kolkata" },
+      { slug: "ahmedabad-india", label: "Ahmedabad, India", city_name: "Ahmedabad", latitude: 23.0225, longitude: 72.5714, timezone: "Asia/Kolkata" },
+      { slug: "surat-india", label: "Surat, India", city_name: "Surat", latitude: 21.1702, longitude: 72.8311, timezone: "Asia/Kolkata" },
+      { slug: "jaipur-india", label: "Jaipur, India", city_name: "Jaipur", latitude: 26.9124, longitude: 75.7873, timezone: "Asia/Kolkata" },
+      { slug: "lucknow-india", label: "Lucknow, India", city_name: "Lucknow", latitude: 26.8467, longitude: 80.9462, timezone: "Asia/Kolkata" },
+      { slug: "kanpur-india", label: "Kanpur, India", city_name: "Kanpur", latitude: 26.4499, longitude: 80.3319, timezone: "Asia/Kolkata" },
+      { slug: "nagpur-india", label: "Nagpur, India", city_name: "Nagpur", latitude: 21.1458, longitude: 79.0882, timezone: "Asia/Kolkata" },
+      { slug: "indore-india", label: "Indore, India", city_name: "Indore", latitude: 22.7196, longitude: 75.8577, timezone: "Asia/Kolkata" },
+      { slug: "patna-india", label: "Patna, India", city_name: "Patna", latitude: 25.5941, longitude: 85.1376, timezone: "Asia/Kolkata" },
+      { slug: "visakhapatnam-india", label: "Visakhapatnam, India", city_name: "Visakhapatnam", latitude: 17.6868, longitude: 83.2185, timezone: "Asia/Kolkata" },
+      { slug: "bhopal-india", label: "Bhopal, India", city_name: "Bhopal", latitude: 23.2599, longitude: 77.4126, timezone: "Asia/Kolkata" },
+      { slug: "ludhiana-india", label: "Ludhiana, India", city_name: "Ludhiana", latitude: 30.901, longitude: 75.8573, timezone: "Asia/Kolkata" },
+      { slug: "agra-india", label: "Agra, India", city_name: "Agra", latitude: 27.1767, longitude: 78.0081, timezone: "Asia/Kolkata" },
+      { slug: "nashik-india", label: "Nashik, India", city_name: "Nashik", latitude: 19.9975, longitude: 73.7898, timezone: "Asia/Kolkata" },
+      { slug: "varanasi-india", label: "Varanasi, India", city_name: "Varanasi", latitude: 25.3176, longitude: 82.9739, timezone: "Asia/Kolkata" },
+      { slug: "meerut-india", label: "Meerut, India", city_name: "Meerut", latitude: 28.9845, longitude: 77.7064, timezone: "Asia/Kolkata" },
+      { slug: "rajkot-india", label: "Rajkot, India", city_name: "Rajkot", latitude: 22.3039, longitude: 70.8022, timezone: "Asia/Kolkata" },
+      { slug: "vadodara-india", label: "Vadodara, India", city_name: "Vadodara", latitude: 22.3072, longitude: 73.1812, timezone: "Asia/Kolkata" },
+      { slug: "coimbatore-india", label: "Coimbatore, India", city_name: "Coimbatore", latitude: 11.0168, longitude: 76.9558, timezone: "Asia/Kolkata" },
+      { slug: "madurai-india", label: "Madurai, India", city_name: "Madurai", latitude: 9.9252, longitude: 78.1198, timezone: "Asia/Kolkata" },
+      { slug: "faridabad-india", label: "Faridabad, India", city_name: "Faridabad", latitude: 28.4089, longitude: 77.3178, timezone: "Asia/Kolkata" },
+      { slug: "ghaziabad-india", label: "Ghaziabad, India", city_name: "Ghaziabad", latitude: 28.6692, longitude: 77.4538, timezone: "Asia/Kolkata" },
+      { slug: "vijayawada-india", label: "Vijayawada, India", city_name: "Vijayawada", latitude: 16.5062, longitude: 80.648, timezone: "Asia/Kolkata" },
+    ],
+  },
+  {
+    countryCode: "US",
+    countryName: "United States",
+    cities: [
+      { slug: "new-york-usa", label: "New York, USA", city_name: "New York", latitude: 40.7128, longitude: -74.006, timezone: "America/New_York" },
+      { slug: "washington-dc-usa", label: "Washington, DC, USA", city_name: "Washington, DC", latitude: 38.9072, longitude: -77.0369, timezone: "America/New_York" },
+      { slug: "miami-usa", label: "Miami, USA", city_name: "Miami", latitude: 25.7617, longitude: -80.1918, timezone: "America/New_York" },
+      { slug: "boston-usa", label: "Boston, USA", city_name: "Boston", latitude: 42.3601, longitude: -71.0589, timezone: "America/New_York" },
+      { slug: "philadelphia-usa", label: "Philadelphia, USA", city_name: "Philadelphia", latitude: 39.9526, longitude: -75.1652, timezone: "America/New_York" },
+      { slug: "chicago-usa", label: "Chicago, USA", city_name: "Chicago", latitude: 41.8781, longitude: -87.6298, timezone: "America/Chicago" },
+      { slug: "houston-usa", label: "Houston, USA", city_name: "Houston", latitude: 29.7604, longitude: -95.3698, timezone: "America/Chicago" },
+      { slug: "dallas-usa", label: "Dallas, USA", city_name: "Dallas", latitude: 32.7767, longitude: -96.797, timezone: "America/Chicago" },
+      { slug: "san-antonio-usa", label: "San Antonio, USA", city_name: "San Antonio", latitude: 29.4241, longitude: -98.4936, timezone: "America/Chicago" },
+      { slug: "denver-usa", label: "Denver, USA", city_name: "Denver", latitude: 39.7392, longitude: -104.9903, timezone: "America/Denver" },
+      { slug: "phoenix-usa", label: "Phoenix, USA", city_name: "Phoenix", latitude: 33.4484, longitude: -112.074, timezone: "America/Phoenix" },
+      { slug: "albuquerque-usa", label: "Albuquerque, USA", city_name: "Albuquerque", latitude: 35.0844, longitude: -106.6504, timezone: "America/Denver" },
+      { slug: "salt-lake-city-usa", label: "Salt Lake City, USA", city_name: "Salt Lake City", latitude: 40.7608, longitude: -111.891, timezone: "America/Denver" },
+      { slug: "los-angeles-usa", label: "Los Angeles, USA", city_name: "Los Angeles", latitude: 34.0522, longitude: -118.2437, timezone: "America/Los_Angeles" },
+      { slug: "san-francisco-usa", label: "San Francisco, USA", city_name: "San Francisco", latitude: 37.7749, longitude: -122.4194, timezone: "America/Los_Angeles" },
+      { slug: "seattle-usa", label: "Seattle, USA", city_name: "Seattle", latitude: 47.6062, longitude: -122.3321, timezone: "America/Los_Angeles" },
+      { slug: "san-jose-usa", label: "San Jose, USA", city_name: "San Jose", latitude: 37.3382, longitude: -121.8863, timezone: "America/Los_Angeles" },
+    ],
+  },
+  {
+    countryCode: "UK",
+    countryName: "United Kingdom",
+    cities: [
+      { slug: "london-uk", label: "London, UK", city_name: "London", latitude: 51.5072, longitude: -0.1276, timezone: "Europe/London" },
+      { slug: "birmingham-uk", label: "Birmingham, UK", city_name: "Birmingham", latitude: 52.4862, longitude: -1.8904, timezone: "Europe/London" },
+      { slug: "manchester-uk", label: "Manchester, UK", city_name: "Manchester", latitude: 53.4808, longitude: -2.2426, timezone: "Europe/London" },
+      { slug: "glasgow-uk", label: "Glasgow, UK", city_name: "Glasgow", latitude: 55.8642, longitude: -4.2518, timezone: "Europe/London" },
+    ],
+  },
+  {
+    countryCode: "CAN",
+    countryName: "Canada",
+    cities: [
+      { slug: "toronto-canada", label: "Toronto, Canada", city_name: "Toronto", latitude: 43.6532, longitude: -79.3832, timezone: "America/Toronto" },
+      { slug: "montreal-canada", label: "Montreal, Canada", city_name: "Montreal", latitude: 45.5017, longitude: -73.5673, timezone: "America/Toronto" },
+      { slug: "ottawa-canada", label: "Ottawa, Canada", city_name: "Ottawa", latitude: 45.4215, longitude: -75.6972, timezone: "America/Toronto" },
+      { slug: "calgary-canada", label: "Calgary, Canada", city_name: "Calgary", latitude: 51.0447, longitude: -114.0719, timezone: "America/Edmonton" },
+      { slug: "edmonton-canada", label: "Edmonton, Canada", city_name: "Edmonton", latitude: 53.5461, longitude: -113.4938, timezone: "America/Edmonton" },
+      { slug: "vancouver-canada", label: "Vancouver, Canada", city_name: "Vancouver", latitude: 49.2827, longitude: -123.1207, timezone: "America/Vancouver" },
+    ],
+  },
+  {
+    countryCode: "SG",
+    countryName: "Singapore",
+    cities: [{ slug: "singapore-city-singapore", label: "Singapore, Singapore", city_name: "Singapore", latitude: 1.3521, longitude: 103.8198, timezone: "Asia/Singapore" }],
+  },
+  {
+    countryCode: "ID",
+    countryName: "Indonesia",
+    cities: [
+      { slug: "jakarta-indonesia", label: "Jakarta, Indonesia", city_name: "Jakarta", latitude: -6.2088, longitude: 106.8456, timezone: "Asia/Jakarta" },
+      { slug: "surabaya-indonesia", label: "Surabaya, Indonesia", city_name: "Surabaya", latitude: -7.2575, longitude: 112.7521, timezone: "Asia/Jakarta" },
+      { slug: "bandung-indonesia", label: "Bandung, Indonesia", city_name: "Bandung", latitude: -6.9175, longitude: 107.6191, timezone: "Asia/Jakarta" },
+      { slug: "medan-indonesia", label: "Medan, Indonesia", city_name: "Medan", latitude: 3.5952, longitude: 98.6722, timezone: "Asia/Jakarta" },
+      { slug: "denpasar-indonesia", label: "Denpasar, Indonesia", city_name: "Denpasar", latitude: -8.65, longitude: 115.2167, timezone: "Asia/Makassar" },
+    ],
+  },
+  {
+    countryCode: "SA",
+    countryName: "Saudi Arabia",
+    cities: [
+      { slug: "riyadh-saudi-arabia", label: "Riyadh, Saudi Arabia", city_name: "Riyadh", latitude: 24.7136, longitude: 46.6753, timezone: "Asia/Riyadh" },
+      { slug: "jeddah-saudi-arabia", label: "Jeddah, Saudi Arabia", city_name: "Jeddah", latitude: 21.4858, longitude: 39.1925, timezone: "Asia/Riyadh" },
+      { slug: "mecca-saudi-arabia", label: "Mecca, Saudi Arabia", city_name: "Mecca", latitude: 21.3891, longitude: 39.8579, timezone: "Asia/Riyadh" },
+      { slug: "medina-saudi-arabia", label: "Medina, Saudi Arabia", city_name: "Medina", latitude: 24.5247, longitude: 39.5692, timezone: "Asia/Riyadh" },
+    ],
+  },
+  {
+    countryCode: "NP",
+    countryName: "Nepal",
+    cities: [
+      { slug: "kathmandu-nepal", label: "Kathmandu, Nepal", city_name: "Kathmandu", latitude: 27.7172, longitude: 85.324, timezone: "Asia/Kathmandu" },
+      { slug: "pokhara-nepal", label: "Pokhara, Nepal", city_name: "Pokhara", latitude: 28.2096, longitude: 83.9856, timezone: "Asia/Kathmandu" },
+    ],
+  },
+  {
+    countryCode: "TB",
+    countryName: "Tibet",
+    cities: [
+      { slug: "lhasa-tibet", label: "Lhasa, Tibet", city_name: "Lhasa", latitude: 29.652, longitude: 91.1721, timezone: "Asia/Shanghai" },
+      { slug: "shigatse-tibet", label: "Shigatse, Tibet", city_name: "Shigatse", latitude: 29.2673, longitude: 88.8808, timezone: "Asia/Shanghai" },
+    ],
+  },
+  {
+    countryCode: "UAE",
+    countryName: "United Arab Emirates",
+    cities: [
+      { slug: "dubai-uae", label: "Dubai, UAE", city_name: "Dubai", latitude: 25.2048, longitude: 55.2708, timezone: "Asia/Dubai" },
+      { slug: "abu-dhabi-uae", label: "Abu Dhabi, UAE", city_name: "Abu Dhabi", latitude: 24.4539, longitude: 54.3773, timezone: "Asia/Dubai" },
+      { slug: "sharjah-uae", label: "Sharjah, UAE", city_name: "Sharjah", latitude: 25.3463, longitude: 55.4209, timezone: "Asia/Dubai" },
+    ],
+  },
+  {
+    countryCode: "MYS",
+    countryName: "Malaysia",
+    cities: [
+      { slug: "kuala-lumpur-malaysia", label: "Kuala Lumpur, Malaysia", city_name: "Kuala Lumpur", latitude: 3.139, longitude: 101.6869, timezone: "Asia/Kuala_Lumpur" },
+      { slug: "johor-bahru-malaysia", label: "Johor Bahru, Malaysia", city_name: "Johor Bahru", latitude: 1.4927, longitude: 103.7414, timezone: "Asia/Kuala_Lumpur" },
+      { slug: "george-town-malaysia", label: "George Town, Malaysia", city_name: "George Town", latitude: 5.4141, longitude: 100.3288, timezone: "Asia/Kuala_Lumpur" },
+      { slug: "kota-kinabalu-malaysia", label: "Kota Kinabalu, Malaysia", city_name: "Kota Kinabalu", latitude: 5.9804, longitude: 116.0735, timezone: "Asia/Kuala_Lumpur" },
+    ],
+  },
 ];
 
-const HISTORY_CACHE_KEY = "individual_reports_full_cache_v1";
+const CITY_LOOKUP = CITY_GROUPS.flatMap((group) => group.cities).reduce((accumulator, city) => {
+  accumulator[city.slug] = city;
+  return accumulator;
+}, {});
+
+const DEFAULT_CITY = CITY_GROUPS[0].cities[0];
 
 const pageStyle = {
   minHeight: "100vh",
+  padding: "28px 18px 88px",
   background:
-    "radial-gradient(circle at top left, rgba(157,106,38,0.18), transparent 26%), radial-gradient(circle at top right, rgba(49,86,101,0.14), transparent 22%), linear-gradient(180deg, #faf6ef 0%, #f4ede2 100%)",
-  color: "#2a2119",
-  padding: "28px 18px 72px",
+    "radial-gradient(circle at top left, rgba(127,75,224,0.16), transparent 24%), radial-gradient(circle at top right, rgba(201,150,31,0.14), transparent 26%), linear-gradient(180deg, #f9f3ea 0%, #efe4d2 100%)",
+  color: "#221c17",
 };
 
-const shellStyle = {
-  maxWidth: 1180,
-  margin: "0 auto",
-  display: "grid",
-  gap: 18,
-};
-
-const cardStyle = {
-  background: "rgba(255, 250, 244, 0.88)",
-  border: "1px solid rgba(120,90,55,0.14)",
-  borderRadius: 24,
-  boxShadow: "0 18px 46px rgba(74, 50, 22, 0.09)",
+const surfaceStyle = {
+  background: "rgba(255, 251, 246, 0.9)",
+  border: "1px solid rgba(92, 66, 32, 0.12)",
+  borderRadius: 26,
+  boxShadow: "0 24px 64px rgba(67, 43, 15, 0.08)",
   backdropFilter: "blur(10px)",
+};
+
+const buttonBase = {
+  minHeight: 46,
+  borderRadius: 999,
+  border: "1px solid transparent",
+  padding: "11px 18px",
+  fontSize: 15,
+  fontWeight: 700,
+  cursor: "pointer",
 };
 
 function loadCachedReports() {
@@ -100,64 +247,31 @@ function loadCachedReports() {
 
 function saveCachedReport(report) {
   if (!report?.id) return;
-  const current = loadCachedReports();
-  current[report.id] = report;
-  window.localStorage.setItem(HISTORY_CACHE_KEY, JSON.stringify(current));
+  const cache = loadCachedReports();
+  cache[report.id] = report;
+  window.localStorage.setItem(HISTORY_CACHE_KEY, JSON.stringify(cache));
 }
 
-function useSeo(reportConfig, activeTab, currentReport) {
-  useEffect(() => {
-    const titleBase = reportConfig ? `${reportConfig.name} | Everyday Horoscope` : "Individual Reports | Everyday Horoscope";
-    const title = currentReport ? `${reportConfig?.name || "Report"} Ready | Everyday Horoscope` : activeTab === "history" ? "My Individual Reports | Everyday Horoscope" : titleBase;
-    document.title = title;
-    const description =
-      currentReport?.summary ||
-      reportConfig?.description ||
-      "Generate premium Vedic individual reports for karmic patterns, career, shadow work, retrogrades, and life cycles.";
-
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", description);
-  }, [activeTab, currentReport, reportConfig]);
+function findCachedReport(reportId) {
+  return loadCachedReports()[reportId] || null;
 }
 
-function queryParams(search) {
-  return new URLSearchParams(search);
-}
-
-function defaultBirthState() {
+function defaultFormState(selectedType) {
   return {
-    city_mode: "preset",
-    city_code: CITY_OPTIONS[0].label,
-    city_name: CITY_OPTIONS[0].city_name,
-    latitude: CITY_OPTIONS[0].latitude,
-    longitude: CITY_OPTIONS[0].longitude,
-    timezone: CITY_OPTIONS[0].timezone,
     date: "",
     time: "",
     check_date: new Date().toISOString().slice(0, 10),
-    retrograde_mode: "personal",
-    retrograde_planet: "Mercury",
+    retrograde_mode: selectedType === "retrograde_survival" ? "general" : "personal",
+    retrograde_planet: "",
+    city_slug: DEFAULT_CITY.slug,
+    city_name: DEFAULT_CITY.city_name,
+    latitude: DEFAULT_CITY.latitude,
+    longitude: DEFAULT_CITY.longitude,
+    timezone: DEFAULT_CITY.timezone,
   };
 }
 
-function applyPreset(state, code) {
-  const preset = CITY_OPTIONS.find((item) => item.label === code) || CITY_OPTIONS[0];
-  return {
-    ...state,
-    city_code: preset.label,
-    city_name: preset.city_name,
-    latitude: preset.latitude,
-    longitude: preset.longitude,
-    timezone: preset.timezone,
-  };
-}
-
-function toBirthPayload(form) {
+function buildBirthPayload(form) {
   return {
     date: form.date,
     time: form.time,
@@ -168,7 +282,78 @@ function toBirthPayload(form) {
   };
 }
 
-function SectionTabs({ activeTab, setActiveTab }) {
+function humanDate(value) {
+  if (!value) return "Unknown";
+  try {
+    return new Date(value).toLocaleString(undefined, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+    });
+  } catch {
+    return value;
+  }
+}
+
+function sentenceCase(key) {
+  return key.replace(/_/g, " ").replace(/\b\w/g, (character) => character.toUpperCase());
+}
+
+function normalizeHistoryEntry(item, config) {
+  return {
+    ...item,
+    kind: "individual_report",
+    report_type: config.type,
+    report_slug: config.slug,
+    label: config.name,
+    accent: config.color,
+  };
+}
+
+function useSeo(selectedReport, activeTab, currentReport) {
+  useEffect(() => {
+    const baseTitle = selectedReport ? `${selectedReport.name} | Everyday Horoscope` : "Individual Reports | Everyday Horoscope";
+    const title =
+      activeTab === "history"
+        ? "My Individual Reports | Everyday Horoscope"
+        : currentReport
+          ? `${selectedReport?.name || "Individual Report"} Ready | Everyday Horoscope`
+          : baseTitle;
+    const description =
+      activeTab === "history"
+        ? "Review your saved Individual Reports inside the Everyday Horoscope archive."
+        : selectedReport?.description || "Generate premium AI-enriched Vedic reports for karma, career, shadow work, retrogrades, and life cycles.";
+    document.title = title;
+
+    let metaDescription = document.querySelector('meta[name="description"]');
+    if (!metaDescription) {
+      metaDescription = document.createElement("meta");
+      metaDescription.setAttribute("name", "description");
+      document.head.appendChild(metaDescription);
+    }
+    metaDescription.setAttribute("content", description);
+
+    let robots = document.querySelector('meta[name="robots"]');
+    if (!robots) {
+      robots = document.createElement("meta");
+      robots.setAttribute("name", "robots");
+      document.head.appendChild(robots);
+    }
+    robots.setAttribute("content", "noindex, nofollow");
+
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", CANONICAL_URL);
+  }, [activeTab, currentReport, selectedReport]);
+}
+
+function SectionTabs({ activeTab, onChange }) {
   const tabs = [
     ["select", "Select"],
     ["generate", "Generate"],
@@ -176,61 +361,106 @@ function SectionTabs({ activeTab, setActiveTab }) {
     ["history", "History"],
   ];
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-      {tabs.map(([key, label]) => (
-        <button
-          key={key}
-          type="button"
-          onClick={() => setActiveTab(key)}
-          style={{
-            minHeight: 44,
-            padding: "10px 16px",
-            borderRadius: 999,
-            border: "1px solid rgba(120,90,55,0.16)",
-            background: activeTab === key ? "linear-gradient(135deg, #b78646 0%, #d8af6a 100%)" : "rgba(255,255,255,0.78)",
-            color: "#2b2118",
-            fontWeight: 700,
-            cursor: "pointer",
-          }}
-        >
-          {label}
-        </button>
-      ))}
+    <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+      {tabs.map(([value, label]) => {
+        const active = activeTab === value;
+        return (
+          <button
+            key={value}
+            type="button"
+            onClick={() => onChange(value)}
+            style={{
+              ...buttonBase,
+              background: active ? "#241b13" : "rgba(255,255,255,0.74)",
+              color: active ? "#fff8ee" : "#3d3022",
+              borderColor: active ? "#241b13" : "rgba(92, 66, 32, 0.12)",
+            }}
+          >
+            {label}
+          </button>
+        );
+      })}
     </div>
   );
 }
 
-function ReportSelector({ selected, onSelect }) {
+function ReportCards({ selectedReport, onSelect, onGenerate }) {
   return (
-    <section style={{ ...cardStyle, padding: 24 }}>
-      <div style={{ marginBottom: 18 }}>
-        <p style={{ margin: "0 0 10px", fontSize: 12, letterSpacing: "0.2em", textTransform: "uppercase", color: "#8c6a39" }}>Individual Reports</p>
-        <h1 style={{ margin: 0, fontSize: "clamp(2rem, 5vw, 3.6rem)", lineHeight: 0.94, fontFamily: "Georgia, Times New Roman, serif" }}>
-          Choose the report that matches the question your soul keeps circling.
+    <section style={{ ...surfaceStyle, padding: 28 }}>
+      <div style={{ display: "grid", gap: 12, marginBottom: 20 }}>
+        <p style={{ margin: 0, fontSize: 12, letterSpacing: "0.22em", textTransform: "uppercase", color: "#94734c" }}>Individual Reports</p>
+        <h1 style={{ margin: 0, fontSize: "clamp(2rem, 5vw, 4rem)", lineHeight: 0.94, fontFamily: "Georgia, Times New Roman, serif" }}>
+          Premium chart readings for the questions that keep returning.
         </h1>
+        <p style={{ margin: 0, maxWidth: 760, color: "#675548", lineHeight: 1.72 }}>
+          Each report blends deterministic Vedic logic with the live enrichment layer already active on Temple’s backend, then returns a polished reading with structure, guidance, and remedies.
+        </p>
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
-        {REPORTS.map((item) => {
-          const active = item.type === selected.type;
+
+      <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+        {REPORT_CONFIGS.map((report) => {
+          const active = report.type === selectedReport.type;
           return (
-            <button
-              key={item.type}
-              type="button"
-              onClick={() => onSelect(item)}
+            <article
+              key={report.type}
               style={{
-                textAlign: "left",
+                borderRadius: 24,
                 padding: 20,
-                borderRadius: 22,
-                border: active ? `1px solid ${item.accent}` : "1px solid rgba(120,90,55,0.14)",
-                background: active ? `linear-gradient(180deg, ${item.accent}16, rgba(255,250,244,0.96))` : "rgba(255,255,255,0.76)",
-                cursor: "pointer",
-                boxShadow: active ? "0 14px 32px rgba(74, 50, 22, 0.12)" : "none",
+                border: `1px solid ${active ? report.color : "rgba(92, 66, 32, 0.12)"}`,
+                background: active
+                  ? `linear-gradient(180deg, ${report.color}1e 0%, rgba(255,255,255,0.92) 100%)`
+                  : "linear-gradient(180deg, rgba(255,255,255,0.92) 0%, rgba(246,239,229,0.78) 100%)",
+                display: "grid",
+                gap: 14,
               }}
             >
-              <p style={{ margin: "0 0 8px", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: item.accent }}>{item.eyebrow}</p>
-              <h2 style={{ margin: "0 0 10px", fontSize: 22, lineHeight: 1.05, color: "#2a2119", fontFamily: "Georgia, Times New Roman, serif" }}>{item.name}</h2>
-              <p style={{ margin: 0, lineHeight: 1.62, color: "#64584c" }}>{item.description}</p>
-            </button>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
+                <div
+                  style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 14,
+                    display: "grid",
+                    placeItems: "center",
+                    background: report.color,
+                    color: "#fff8ee",
+                    fontSize: 24,
+                    fontWeight: 700,
+                  }}
+                >
+                  {report.icon}
+                </div>
+                <span style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: report.color }}>
+                  {active ? "Selected" : "Premium"}
+                </span>
+              </div>
+              <div style={{ display: "grid", gap: 8 }}>
+                <h2 style={{ margin: 0, fontSize: 24, lineHeight: 1.03, fontFamily: "Georgia, Times New Roman, serif" }}>{report.name}</h2>
+                <p style={{ margin: 0, color: "#3d3128", lineHeight: 1.6 }}>{report.hook}</p>
+                <p style={{ margin: 0, color: "#706154", lineHeight: 1.64 }}>{report.description}</p>
+              </div>
+              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+                <button
+                  type="button"
+                  onClick={() => onSelect(report)}
+                  style={{
+                    ...buttonBase,
+                    background: active ? "#241b13" : "rgba(255,255,255,0.72)",
+                    color: active ? "#fff8ee" : "#2f241b",
+                    borderColor: active ? "#241b13" : "rgba(92, 66, 32, 0.12)",
+                  }}
+                >
+                  {active ? "Selected" : "Choose Report"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => onGenerate(report)}
+                  style={{ ...buttonBase, background: report.color, color: "#fffaf2" }}
+                >
+                  Generate
+                </button>
+              </div>
+            </article>
           );
         })}
       </div>
@@ -238,520 +468,547 @@ function ReportSelector({ selected, onSelect }) {
   );
 }
 
-function BirthFields({ form, setForm, selected }) {
-  const showRetroToggle = selected.type === "retrograde_survival";
-  const personalMode = !showRetroToggle || form.retrograde_mode === "personal";
+function FormField({ label, children, note }) {
+  return (
+    <label style={{ display: "grid", gap: 8 }}>
+      <span style={{ fontSize: 13, fontWeight: 700, color: "#3a2e24" }}>{label}</span>
+      {children}
+      {note ? <span style={{ fontSize: 12, color: "#7b6a5c" }}>{note}</span> : null}
+    </label>
+  );
+}
+
+function FieldInput(props) {
+  return (
+    <input
+      {...props}
+      style={{
+        minHeight: 48,
+        borderRadius: 16,
+        border: "1px solid rgba(92, 66, 32, 0.14)",
+        background: "rgba(255,255,255,0.9)",
+        padding: "12px 14px",
+        fontSize: 15,
+        color: "#291f18",
+      }}
+    />
+  );
+}
+
+function FieldSelect({ children, ...props }) {
+  return (
+    <select
+      {...props}
+      style={{
+        minHeight: 48,
+        borderRadius: 16,
+        border: "1px solid rgba(92, 66, 32, 0.14)",
+        background: "rgba(255,255,255,0.9)",
+        padding: "12px 14px",
+        fontSize: 15,
+        color: "#291f18",
+      }}
+    >
+      {children}
+    </select>
+  );
+}
+
+function GeneratePanel({ selectedReport, form, onFormChange, onSubmit, submitting, error }) {
+  const isRetrograde = selectedReport.type === "retrograde_survival";
+  const retrogradeGeneral = isRetrograde && form.retrograde_mode === "general";
 
   return (
-    <section style={{ ...cardStyle, padding: 24 }}>
-      <div style={{ display: "grid", gap: 14 }}>
-        <div>
-          <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: selected.accent }}>{selected.eyebrow}</p>
-          <h2 style={{ margin: "0 0 8px", fontSize: 30, fontFamily: "Georgia, Times New Roman, serif" }}>Generate {selected.name}</h2>
-          <p style={{ margin: 0, color: "#62574a", lineHeight: 1.64 }}>{selected.description}</p>
-        </div>
+    <section style={{ ...surfaceStyle, padding: 28, display: "grid", gap: 20 }}>
+      <div style={{ display: "grid", gap: 10 }}>
+        <p style={{ margin: 0, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: selectedReport.color }}>
+          {selectedReport.shortName}
+        </p>
+        <h2 style={{ margin: 0, fontSize: 32, fontFamily: "Georgia, Times New Roman, serif" }}>Generate your report</h2>
+        <p style={{ margin: 0, color: "#665548", lineHeight: 1.68 }}>
+          The input flow stays consistent across all five reports. Retrograde Survival includes a faster general mode with no birth time required.
+        </p>
+      </div>
 
-        {showRetroToggle ? (
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            {[
-              ["personal", "Personal mode"],
-              ["general", "General mode"],
-            ].map(([value, label]) => (
+      {isRetrograde ? (
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          {[
+            ["general", "General mode"],
+            ["personal", "Personal mode"],
+          ].map(([value, label]) => {
+            const active = form.retrograde_mode === value;
+            return (
               <button
                 key={value}
                 type="button"
-                onClick={() => setForm((current) => ({ ...current, retrograde_mode: value }))}
+                onClick={() => onFormChange("retrograde_mode", value)}
                 style={{
-                  minHeight: 42,
-                  padding: "10px 14px",
-                  borderRadius: 999,
-                  border: "1px solid rgba(120,90,55,0.16)",
-                  background: form.retrograde_mode === value ? "linear-gradient(135deg, #b78646 0%, #d8af6a 100%)" : "rgba(255,255,255,0.7)",
-                  cursor: "pointer",
-                  fontWeight: 700,
+                  ...buttonBase,
+                  background: active ? selectedReport.color : "rgba(255,255,255,0.74)",
+                  color: active ? "#fffaf2" : "#33271e",
+                  borderColor: active ? selectedReport.color : "rgba(92, 66, 32, 0.12)",
                 }}
               >
                 {label}
               </button>
-            ))}
-          </div>
-        ) : null}
+            );
+          })}
+        </div>
+      ) : null}
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-          <label style={{ display: "grid", gap: 6 }}>
-            <span style={{ fontWeight: 700 }}>Check date</span>
-            <input type="date" value={form.check_date} onChange={(event) => setForm((current) => ({ ...current, check_date: event.target.value }))} style={inputStyle} />
-          </label>
+      <form onSubmit={onSubmit} style={{ display: "grid", gap: 16 }}>
+        <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))" }}>
+          {!isRetrograde || !retrogradeGeneral ? (
+            <>
+              <FormField label="Birth date">
+                <FieldInput type="date" value={form.date} onChange={(event) => onFormChange("date", event.target.value)} required />
+              </FormField>
 
-          {showRetroToggle ? (
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontWeight: 700 }}>Retrograde planet</span>
-              <select value={form.retrograde_planet} onChange={(event) => setForm((current) => ({ ...current, retrograde_planet: event.target.value }))} style={inputStyle}>
-                <option value="Mercury">Mercury</option>
-                <option value="Venus">Venus</option>
-                <option value="Mars">Mars</option>
-              </select>
-            </label>
+              <FormField
+                label="Birth time"
+                note={isRetrograde ? "General mode hides this field. Personal mode uses it for house-level retrograde context." : null}
+              >
+                <FieldInput type="time" value={form.time} onChange={(event) => onFormChange("time", event.target.value)} required />
+              </FormField>
+
+              <FormField label="Birth city">
+                <FieldSelect value={form.city_slug} onChange={(event) => onFormChange("city_slug", event.target.value)} required>
+                  {CITY_GROUPS.map((group) => (
+                    <optgroup key={group.countryCode} label={group.countryName}>
+                      {group.cities.map((city) => (
+                        <option key={city.slug} value={city.slug}>
+                          {city.label}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </FieldSelect>
+              </FormField>
+            </>
+          ) : null}
+
+          {isRetrograde ? (
+            <>
+              <FormField label="Check date" note="Leave today’s date for the current retrograde weather, or choose another date to inspect.">
+                <FieldInput type="date" value={form.check_date} onChange={(event) => onFormChange("check_date", event.target.value)} />
+              </FormField>
+
+              <FormField label="Planet focus" note="Blank checks Mercury, Venus, and Mars together.">
+                <FieldSelect value={form.retrograde_planet} onChange={(event) => onFormChange("retrograde_planet", event.target.value)}>
+                  <option value="">All active retrogrades</option>
+                  <option value="Mercury">Mercury</option>
+                  <option value="Venus">Venus</option>
+                  <option value="Mars">Mars</option>
+                </FieldSelect>
+              </FormField>
+            </>
           ) : null}
         </div>
 
-        {personalMode ? (
-          <>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-              {[
-                ["preset", "Use city picker"],
-                ["manual", "Enter manually"],
-              ].map(([value, label]) => (
-                <button
-                  key={value}
-                  type="button"
-                  onClick={() => setForm((current) => ({ ...current, city_mode: value }))}
-                  style={{
-                    minHeight: 42,
-                    padding: "10px 14px",
-                    borderRadius: 999,
-                    border: "1px solid rgba(120,90,55,0.16)",
-                    background: form.city_mode === value ? "rgba(184, 134, 70, 0.16)" : "rgba(255,255,255,0.7)",
-                    cursor: "pointer",
-                    fontWeight: 700,
-                  }}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
+        {error ? (
+          <div style={{ borderRadius: 18, padding: 14, background: "rgba(163, 60, 39, 0.08)", color: "#8f3423" }}>{error}</div>
+        ) : null}
 
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Birth date</span>
-                <input type="date" value={form.date} onChange={(event) => setForm((current) => ({ ...current, date: event.target.value }))} style={inputStyle} />
-              </label>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Birth time</span>
-                <input type="time" value={form.time} onChange={(event) => setForm((current) => ({ ...current, time: event.target.value }))} style={inputStyle} />
-              </label>
-            </div>
-
-            {form.city_mode === "preset" ? (
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>City</span>
-                <select
-                  value={form.city_code}
-                  onChange={(event) => setForm((current) => applyPreset(current, event.target.value))}
-                  style={inputStyle}
-                >
-                  {CITY_OPTIONS.map((item) => (
-                    <option key={item.label} value={item.label}>
-                      {item.label}
-                    </option>
-                  ))}
-                </select>
-              </label>
-            ) : null}
-
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>City name</span>
-                <input value={form.city_name} onChange={(event) => setForm((current) => ({ ...current, city_name: event.target.value }))} style={inputStyle} />
-              </label>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Timezone</span>
-                <input value={form.timezone} onChange={(event) => setForm((current) => ({ ...current, timezone: event.target.value }))} style={inputStyle} />
-              </label>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Latitude</span>
-                <input value={form.latitude} onChange={(event) => setForm((current) => ({ ...current, latitude: event.target.value }))} style={inputStyle} />
-              </label>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Longitude</span>
-                <input value={form.longitude} onChange={(event) => setForm((current) => ({ ...current, longitude: event.target.value }))} style={inputStyle} />
-              </label>
-            </div>
-          </>
-        ) : (
-          <div style={{ padding: 18, borderRadius: 18, background: "rgba(106,75,137,0.08)", color: "#5c5066", lineHeight: 1.64 }}>
-            General mode skips birth details and returns a broader retrograde guide for the selected planet and date.
-          </div>
-        )}
-      </div>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <button type="submit" disabled={submitting} style={{ ...buttonBase, background: selectedReport.color, color: "#fffaf2", opacity: submitting ? 0.7 : 1 }}>
+            {submitting ? "Generating..." : `Generate ${selectedReport.shortName}`}
+          </button>
+          <Link to="/my-reports" style={{ ...buttonBase, display: "inline-flex", alignItems: "center", justifyContent: "center", background: "rgba(255,255,255,0.72)", color: "#30251c", borderColor: "rgba(92, 66, 32, 0.12)", textDecoration: "none" }}>
+            Open My Reports
+          </Link>
+        </div>
+      </form>
     </section>
   );
 }
 
-const inputStyle = {
-  minHeight: 46,
-  borderRadius: 14,
-  border: "1px solid rgba(120,90,55,0.16)",
-  background: "rgba(255,255,255,0.88)",
-  padding: "12px 14px",
-  color: "#2a2119",
-};
-
-function ReportRenderer({ report, onReset }) {
-  if (!report) {
-    return (
-      <section style={{ ...cardStyle, padding: 24 }}>
-        <h2 style={{ marginTop: 0 }}>No report open yet</h2>
-        <p style={{ color: "#63594d" }}>Generate a report or open one from your cached history on this device.</p>
-      </section>
-    );
-  }
-
-  const output = report.output_payload || {};
-  const type = report.report_type;
-  const archivedSummaryOnly = !output || !Object.keys(output).length;
-
-  if (archivedSummaryOnly) {
-    return (
-      <section style={{ ...cardStyle, padding: 24 }}>
-        <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8c6a39" }}>Archived summary</p>
-        <h2 style={{ marginTop: 0 }}>{report.report_slug?.replaceAll("-", " ") || "Saved report"}</h2>
-        <p style={{ color: "#62574a", lineHeight: 1.64 }}>{report.summary}</p>
-        <p style={{ color: "#7b6b5d", lineHeight: 1.64 }}>
-          The history endpoint for this report family returns summary cards, not the full stored payload. If this report was generated on this device it will open fully from cache; otherwise the summary is shown here until a dedicated detail endpoint exists.
-        </p>
-        <button type="button" onClick={onReset} style={primaryButtonStyle}>
-          Generate another report
-        </button>
-      </section>
-    );
-  }
-
+function ReportSection({ title, accent, children }) {
   return (
-    <section style={{ ...cardStyle, padding: 24, display: "grid", gap: 16 }}>
-      <div>
-        <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8c6a39" }}>
-          {report.report_slug?.replaceAll("-", " ")}
-        </p>
-        <h2 style={{ margin: "0 0 10px", fontSize: 34, fontFamily: "Georgia, Times New Roman, serif" }}>{report.summary}</h2>
-      </div>
-
-      {type === "karmic_debt" ? <KarmicDebtView output={output} /> : null}
-      {type === "career_blueprint" ? <CareerBlueprintView output={output} /> : null}
-      {type === "shadow_self" ? <ShadowSelfView output={output} /> : null}
-      {type === "retrograde_survival" ? <RetrogradeView output={output} /> : null}
-      {type === "life_cycles" ? <LifeCyclesView output={output} /> : null}
-
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-        <button type="button" onClick={onReset} style={primaryButtonStyle}>
-          Generate more
-        </button>
-        <Link to="/my-reports" style={ghostLinkStyle}>
-          Go to My Reports
-        </Link>
-      </div>
+    <section style={{ ...surfaceStyle, padding: 24, borderTop: `4px solid ${accent}` }}>
+      <h3 style={{ margin: "0 0 14px", fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>{title}</h3>
+      <div style={{ display: "grid", gap: 12, color: "#3a2d22", lineHeight: 1.72 }}>{children}</div>
     </section>
   );
 }
 
-function InfoGrid({ items }) {
+function LabelValueGrid({ items }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12 }}>
+    <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))" }}>
       {items.map((item) => (
-        <article key={item.label} style={{ ...cardStyle, padding: 18, borderRadius: 18 }}>
-          <p style={{ margin: "0 0 6px", fontSize: 12, letterSpacing: "0.1em", textTransform: "uppercase", color: "#8a6d42" }}>{item.label}</p>
-          <div style={{ fontSize: 18, lineHeight: 1.4 }}>{item.value}</div>
-        </article>
+        <div key={item.label} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+          <div style={{ fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "#87694a", marginBottom: 8 }}>{item.label}</div>
+          <div style={{ color: "#2d221a", lineHeight: 1.6 }}>{item.value}</div>
+        </div>
       ))}
     </div>
   );
 }
 
-function TextSection({ title, body }) {
-  if (!body) return null;
-  return (
-    <article style={{ ...cardStyle, padding: 20, borderRadius: 20 }}>
-      <h3 style={{ marginTop: 0, fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>{title}</h3>
-      <p style={{ margin: 0, color: "#60564b", lineHeight: 1.7 }}>{body}</p>
-    </article>
-  );
-}
-
-function RemedyPanel({ remedies }) {
+function RemediesGrid({ remedies }) {
   if (!remedies) return null;
   return (
-    <section style={{ ...cardStyle, padding: 20, borderRadius: 20 }}>
-      <h3 style={{ marginTop: 0, fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>Supportive remedies</h3>
-      <div style={{ display: "grid", gap: 12 }}>
-        {remedies.mantra ? (
-          <div>
-            <strong>Mantra:</strong> {remedies.mantra.text}
-            <div style={{ color: "#74695d", marginTop: 4 }}>{remedies.mantra.practice}</div>
-          </div>
-        ) : null}
-        {remedies.gemstone ? (
-          <div>
-            <strong>Gemstone:</strong> {remedies.gemstone.stone}
-            <div style={{ color: "#74695d", marginTop: 4 }}>{remedies.gemstone.purpose}</div>
-          </div>
-        ) : null}
-        {remedies.ritual ? (
-          <div>
-            <strong>Ritual:</strong> <span style={{ color: "#74695d" }}>{remedies.ritual}</span>
-          </div>
-        ) : null}
+    <div style={{ display: "grid", gap: 14, gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))" }}>
+      <div style={{ borderRadius: 18, padding: 18, background: "rgba(244, 236, 225, 0.78)" }}>
+        <div style={{ marginBottom: 10, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#8c6f4e" }}>Mantra</div>
+        <div style={{ fontWeight: 700, marginBottom: 6 }}>{remedies.mantra?.text}</div>
+        <div style={{ fontStyle: "italic", marginBottom: 8, color: "#6c5d50" }}>{remedies.mantra?.transliteration}</div>
+        <div style={{ lineHeight: 1.65 }}>{remedies.mantra?.practice}</div>
       </div>
-    </section>
+      <div style={{ borderRadius: 18, padding: 18, background: "rgba(244, 236, 225, 0.78)" }}>
+        <div style={{ marginBottom: 10, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#8c6f4e" }}>Gemstone</div>
+        <div style={{ fontWeight: 700, marginBottom: 6 }}>{remedies.gemstone?.stone}</div>
+        <div style={{ lineHeight: 1.65 }}>{remedies.gemstone?.purpose}</div>
+      </div>
+      <div style={{ borderRadius: 18, padding: 18, background: "rgba(244, 236, 225, 0.78)" }}>
+        <div style={{ marginBottom: 10, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#8c6f4e" }}>Ritual</div>
+        <div style={{ lineHeight: 1.65 }}>{remedies.ritual}</div>
+      </div>
+    </div>
   );
 }
 
-function KarmicDebtView({ output }) {
+function KarmicDebtRenderer({ report, config }) {
+  const output = report.output_payload;
+  const body = output.report;
+  const indicators = output.karmic_indicators;
   return (
-    <>
-      <InfoGrid
-        items={[
-          { label: "Saturn House", value: output.karmic_indicators?.saturn_house || "—" },
-          { label: "Rahu House", value: output.karmic_indicators?.rahu_house || "—" },
-          { label: "Ketu House", value: output.karmic_indicators?.ketu_house || "—" },
-          { label: "Atmakaraka", value: output.karmic_indicators?.atmakaraka || "—" },
-        ]}
-      />
-      <TextSection title={output.report?.headline || "Karmic theme"} body={output.report?.karmic_theme} />
-      <TextSection title="Past life echo" body={output.report?.past_life_echo} />
-      <TextSection title="Atmakaraka insight" body={output.report?.atmakaraka_insight} />
-      {output.report?.retrograde_lessons?.length ? (
-        <section style={{ ...cardStyle, padding: 20, borderRadius: 20 }}>
-          <h3 style={{ marginTop: 0, fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>Retrograde lessons</h3>
-          <div style={{ display: "grid", gap: 12 }}>
-            {output.report.retrograde_lessons.map((item) => (
-              <div key={item.planet}>
-                <strong>{item.planet}</strong>
-                <div style={{ color: "#6f6357", marginTop: 4 }}>{item.lesson}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      ) : null}
-      <TextSection title="Breaking the cycle" body={output.report?.breaking_the_cycle} />
-      <RemedyPanel remedies={output.report?.remedies} />
-    </>
-  );
-}
-
-function CareerBlueprintView({ output }) {
-  return (
-    <>
-      <TextSection title="Career archetype" body={output.career_archetype} />
-      <TextSection title="Natural strengths" body={output.natural_strengths} />
-      <TextSection title="Success formula" body={output.success_formula} />
-      <TextSection title="Wealth signature" body={output.wealth_signature} />
-      {output.peak_periods?.length ? (
-        <section style={{ ...cardStyle, padding: 20, borderRadius: 20 }}>
-          <h3 style={{ marginTop: 0, fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>Peak periods</h3>
-          <div style={{ display: "grid", gap: 12 }}>
-            {output.peak_periods.map((period) => (
-              <div key={`${period.planet}-${period.start}`}>
-                <strong>{period.planet}</strong> <span style={{ color: "#826a4a" }}>{period.start} to {period.end}</span>
-                <div style={{ color: "#6c6054", marginTop: 4 }}>{period.description}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      ) : null}
-      <TextSection title="Action guidance" body={output.action_guidance} />
-      <RemedyPanel remedies={output.remedies} />
-    </>
-  );
-}
-
-function ShadowSelfView({ output }) {
-  return (
-    <>
-      <TextSection title="Janma Nakshatra" body={output.janma_nakshatra} />
-      <TextSection title="Shadow Nakshatra" body={output.shadow_nakshatra} />
-      <TextSection title="Hidden strengths" body={output.hidden_strengths} />
-      <TextSection title="Blind spots" body={output.blind_spots} />
-      <TextSection title="Psychological driver" body={output.psychological_driver} />
-      <TextSection title="Integration path" body={output.integration_path} />
-      <RemedyPanel remedies={output.remedies} />
-    </>
-  );
-}
-
-function RetrogradeView({ output }) {
-  return (
-    <>
-      <InfoGrid
-        items={[
-          { label: "Mode", value: output.mode || "—" },
-          { label: "Active retrogrades", value: output.active_retrogrades?.length || 0 },
-        ]}
-      />
-      {output.active_retrogrades?.length ? (
-        output.active_retrogrades.map((item) => (
-          <section key={`${item.planet}-${item.start_date}`} style={{ ...cardStyle, padding: 20, borderRadius: 20, display: "grid", gap: 12 }}>
-            <div>
-              <h3 style={{ margin: "0 0 4px", fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>{item.planet} Retrograde</h3>
-              <p style={{ margin: 0, color: "#76695b" }}>{item.start_date} to {item.end_date}</p>
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title={body.headline} accent={config.color}>
+        <p style={{ margin: 0 }}>{body.karmic_theme}</p>
+        <p style={{ margin: 0 }}>{body.past_life_echo}</p>
+        <p style={{ margin: 0 }}>{body.atmakaraka_insight}</p>
+        <p style={{ margin: 0 }}>{body.breaking_the_cycle}</p>
+      </ReportSection>
+      <ReportSection title="Karmic indicators" accent={config.color}>
+        <LabelValueGrid
+          items={[
+            { label: "Atmakaraka", value: `${indicators.atmakaraka} (${indicators.atmakaraka_degree}°)` },
+            { label: "Saturn House", value: indicators.saturn_house },
+            { label: "Rahu House", value: indicators.rahu_house },
+            { label: "Ketu House", value: indicators.ketu_house },
+            { label: "Debt Activated", value: indicators.debt_activated ? "Yes" : "No" },
+            { label: "Retrogrades", value: indicators.retrograde_planets.length ? indicators.retrograde_planets.join(", ") : "None active in natal snapshot" },
+          ]}
+        />
+      </ReportSection>
+      <ReportSection title="Retrograde lessons" accent={config.color}>
+        {body.retrograde_lessons?.length ? (
+          body.retrograde_lessons.map((lesson) => (
+            <div key={lesson.planet} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+              <strong>{lesson.planet}</strong>
+              <p style={{ margin: "8px 0 0" }}>{lesson.lesson}</p>
             </div>
-            <TextSection title="Life area" body={item.life_area} />
-            <TextSection title="What to expect" body={item.what_to_expect} />
-            <InfoGrid
-              items={[
-                { label: "Transit house", value: item.transit_house || "General mode" },
-                { label: "Avoid", value: item.what_to_avoid?.join(", ") || "—" },
-              ]}
-            />
-            {item.navigation_tips?.length ? <TextSection title="Navigation tips" body={item.navigation_tips.join(" • ")} /> : null}
-            <RemedyPanel remedies={item.remedies} />
-          </section>
-        ))
-      ) : (
-        <section style={{ ...cardStyle, padding: 24 }}>
-          <h3 style={{ marginTop: 0 }}>No active retrogrades found</h3>
-          <p style={{ color: "#6d6256", lineHeight: 1.68 }}>For the selected date and planet filter, no active Mercury, Venus, or Mars retrograde window was detected.</p>
+          ))
+        ) : (
+          <p style={{ margin: 0 }}>No natal retrograde lesson was surfaced in this chart snapshot.</p>
+        )}
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={body.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
+function CareerRenderer({ report, config }) {
+  const output = report.output_payload;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Career archetype" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.career_archetype}</p>
+        <p style={{ margin: 0 }}>{output.natural_strengths}</p>
+        <p style={{ margin: 0 }}>{output.success_formula}</p>
+        <p style={{ margin: 0 }}>{output.wealth_signature}</p>
+        <p style={{ margin: 0 }}>{output.action_guidance}</p>
+      </ReportSection>
+      <ReportSection title="Peak periods" accent={config.color}>
+        {output.peak_periods?.map((period) => (
+          <div key={`${period.planet}-${period.start}`} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+            <strong>{period.planet}</strong>
+            <p style={{ margin: "6px 0" }}>
+              {period.start} to {period.end}
+            </p>
+            <p style={{ margin: 0 }}>{period.description}</p>
+          </div>
+        ))}
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={output.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
+function ShadowRenderer({ report, config }) {
+  const output = report.output_payload;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Your inner pattern" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.janma_nakshatra}</p>
+        <p style={{ margin: 0 }}>{output.shadow_nakshatra}</p>
+      </ReportSection>
+      <ReportSection title="What lives underneath" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.hidden_strengths}</p>
+        <p style={{ margin: 0 }}>{output.blind_spots}</p>
+        <p style={{ margin: 0 }}>{output.psychological_driver}</p>
+        <p style={{ margin: 0 }}>{output.integration_path}</p>
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={output.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
+function RetrogradeRenderer({ report, config }) {
+  const output = report.output_payload;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title={`Retrograde mode: ${sentenceCase(output.mode)}`} accent={config.color}>
+        <p style={{ margin: 0 }}>
+          This report checks current or selected-date retrograde weather for Mercury, Venus, and Mars, then adds personal house context when birth data is supplied.
+        </p>
+      </ReportSection>
+      <ReportSection title="Active retrogrades" accent={config.color}>
+        {output.active_retrogrades?.length ? (
+          output.active_retrogrades.map((item) => (
+            <div key={`${item.planet}-${item.start_date}`} style={{ ...surfaceStyle, padding: 20, boxShadow: "none" }}>
+              <div style={{ display: "grid", gap: 12 }}>
+                <div>
+                  <h4 style={{ margin: "0 0 8px", fontSize: 22, fontFamily: "Georgia, Times New Roman, serif" }}>{item.planet}</h4>
+                  <p style={{ margin: 0, color: "#665548" }}>
+                    {item.start_date} to {item.end_date}
+                    {item.transit_house ? ` • House ${item.transit_house}` : ""}
+                  </p>
+                </div>
+                <p style={{ margin: 0 }}>{item.what_to_expect}</p>
+                <LabelValueGrid items={[{ label: "Life Area", value: item.life_area }]} />
+                <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
+                  <div style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+                    <div style={{ marginBottom: 8, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#8c6f4e" }}>Navigation Tips</div>
+                    <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
+                      {item.navigation_tips?.map((tip) => (
+                        <li key={tip}>{tip}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+                    <div style={{ marginBottom: 8, fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#8c6f4e" }}>What To Avoid</div>
+                    <ul style={{ margin: 0, paddingLeft: 18, lineHeight: 1.7 }}>
+                      {item.what_to_avoid?.map((avoid) => (
+                        <li key={avoid}>{avoid}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                <RemediesGrid remedies={item.remedies} />
+              </div>
+            </div>
+          ))
+        ) : (
+          <p style={{ margin: 0 }}>No active retrograde was returned for the selected date and planet filter.</p>
+        )}
+      </ReportSection>
+    </div>
+  );
+}
+
+function LifeCyclesRenderer({ report, config }) {
+  const output = report.output_payload;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Current chapter" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.current_chapter}</p>
+        <p style={{ margin: 0 }}>{output.current_sub_chapter}</p>
+        <p style={{ margin: 0 }}>{output.chapter_quality}</p>
+        <p style={{ margin: 0 }}>{output.this_decade_arc}</p>
+      </ReportSection>
+      <ReportSection title="Upcoming transitions" accent={config.color}>
+        {output.upcoming_transitions?.map((transition) => (
+          <div key={`${transition.planet}-${transition.date}`} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+            <strong>{transition.planet}</strong>
+            <p style={{ margin: "6px 0" }}>{transition.date}</p>
+            <p style={{ margin: 0 }}>{transition.theme}</p>
+          </div>
+        ))}
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={output.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
+function ArchivedSummary({ item, config }) {
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Archived summary" accent={config.color}>
+        <p style={{ margin: 0 }}>{item.summary}</p>
+        <p style={{ margin: 0, color: "#6d5b4d" }}>
+          Temple’s Phase 3 backend does not expose a report detail endpoint yet, so history can always show the stored summary and can show the full renderer when this device has the generated payload cached locally.
+        </p>
+      </ReportSection>
+    </div>
+  );
+}
+
+function renderFullReport(report, config) {
+  switch (report.report_type) {
+    case "karmic_debt":
+      return <KarmicDebtRenderer report={report} config={config} />;
+    case "career_blueprint":
+      return <CareerRenderer report={report} config={config} />;
+    case "shadow_self":
+      return <ShadowRenderer report={report} config={config} />;
+    case "retrograde_survival":
+      return <RetrogradeRenderer report={report} config={config} />;
+    case "life_cycles":
+      return <LifeCyclesRenderer report={report} config={config} />;
+    default:
+      return <ArchivedSummary item={report} config={config} />;
+  }
+}
+
+function ReportPanel({ selectedReport, currentReport, archivedSummary, onGenerateMore }) {
+  const content = currentReport ? renderFullReport(currentReport, selectedReport) : archivedSummary ? <ArchivedSummary item={archivedSummary} config={selectedReport} /> : null;
+
+  return (
+    <section style={{ display: "grid", gap: 18 }}>
+      <section style={{ ...surfaceStyle, padding: 24 }}>
+        <p style={{ margin: "0 0 10px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: selectedReport.color }}>
+          {selectedReport.shortName}
+        </p>
+        <h2 style={{ margin: "0 0 8px", fontSize: 34, fontFamily: "Georgia, Times New Roman, serif" }}>Your report</h2>
+        <p style={{ margin: 0, color: "#665548", lineHeight: 1.7 }}>
+          Generated reports render in full on this page. Archived history entries can always reopen their summary, and reopen the complete report when the full payload is available on this device.
+        </p>
+      </section>
+      {content || (
+        <section style={{ ...surfaceStyle, padding: 24 }}>
+          <h3 style={{ marginTop: 0 }}>Nothing generated yet</h3>
+          <p style={{ color: "#6c5c4f", lineHeight: 1.68 }}>
+            Select a report, complete the input form, and generate to see the AI-enriched output here.
+          </p>
+          <button type="button" onClick={onGenerateMore} style={{ ...buttonBase, background: selectedReport.color, color: "#fffaf2" }}>
+            Generate {selectedReport.shortName}
+          </button>
         </section>
       )}
-    </>
-  );
-}
-
-function LifeCyclesView({ output }) {
-  return (
-    <>
-      <TextSection title="Current chapter" body={output.current_chapter} />
-      <TextSection title="Current sub-chapter" body={output.current_sub_chapter} />
-      <TextSection title="Chapter quality" body={output.chapter_quality} />
-      {output.upcoming_transitions?.length ? (
-        <section style={{ ...cardStyle, padding: 20, borderRadius: 20 }}>
-          <h3 style={{ marginTop: 0, fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>Upcoming transitions</h3>
-          <div style={{ display: "grid", gap: 12 }}>
-            {output.upcoming_transitions.map((item) => (
-              <div key={`${item.planet}-${item.date}`}>
-                <strong>{item.planet}</strong> <span style={{ color: "#8a6b45" }}>{item.date}</span>
-                <div style={{ color: "#6b6055", marginTop: 4 }}>{item.theme}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      ) : null}
-      <TextSection title="This decade arc" body={output.this_decade_arc} />
-      <RemedyPanel remedies={output.remedies} />
-    </>
-  );
-}
-
-function HistoryPanel({ historyMap, loadingHistory, historyError, onOpen, selectedType }) {
-  const merged = REPORTS.flatMap((item) =>
-    (historyMap[item.type] || []).map((entry) => ({
-      ...entry,
-      type: item.type,
-      name: item.name,
-      slug: item.slug,
-      accent: item.accent,
-    }))
-  ).sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
-
-  return (
-    <section style={{ ...cardStyle, padding: 24 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-        <div>
-          <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#8c6a39" }}>Archive</p>
-          <h2 style={{ margin: 0, fontSize: 30, fontFamily: "Georgia, Times New Roman, serif" }}>Your individual reports</h2>
-        </div>
-        <div style={{ color: "#76695b" }}>Parallel fetch across all 5 report families</div>
-      </div>
-
-      {loadingHistory ? <p style={{ color: "#6d6256" }}>Opening your archive...</p> : null}
-      {historyError ? <p style={{ color: "#8c3b2e" }}>{historyError}</p> : null}
-
-      {!loadingHistory && !merged.length ? (
-        <div style={{ marginTop: 18, padding: 20, borderRadius: 18, background: "rgba(255,255,255,0.65)" }}>
-          <h3 style={{ marginTop: 0 }}>No reports yet</h3>
-          <p style={{ color: "#6b6054" }}>Generate your first report to start building a personal Vedic archive.</p>
-        </div>
-      ) : null}
-
-      <div style={{ marginTop: 18, display: "grid", gap: 14 }}>
-        {merged
-          .filter((entry) => !selectedType || selectedType === entry.type)
-          .map((entry) => (
-            <article key={entry.id} style={{ padding: 18, borderRadius: 18, background: "rgba(255,255,255,0.74)", border: `1px solid ${entry.accent}22` }}>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "flex-start" }}>
-                <div>
-                  <p style={{ margin: "0 0 6px", fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: entry.accent }}>{entry.name}</p>
-                  <h3 style={{ margin: "0 0 8px", fontSize: 22, fontFamily: "Georgia, Times New Roman, serif" }}>{new Date(entry.created_at).toLocaleDateString()}</h3>
-                  <p style={{ margin: 0, color: "#64594e", lineHeight: 1.64 }}>{entry.summary}</p>
-                </div>
-                <button type="button" onClick={() => onOpen(entry)} style={primaryButtonStyle}>
-                  View Report
-                </button>
-              </div>
-            </article>
-          ))}
-      </div>
     </section>
   );
 }
 
-const primaryButtonStyle = {
-  minHeight: 46,
-  padding: "10px 16px",
-  borderRadius: 999,
-  border: "1px solid transparent",
-  background: "linear-gradient(135deg, #b78646 0%, #d8af6a 100%)",
-  color: "#241910",
-  fontWeight: 700,
-  textDecoration: "none",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  cursor: "pointer",
-};
+function HistoryPanel({ items, loading, error, onOpenReport, onGenerate }) {
+  const deferredItems = useDeferredValue(items);
+  return (
+    <section style={{ display: "grid", gap: 16 }}>
+      <section style={{ ...surfaceStyle, padding: 24 }}>
+        <p style={{ margin: "0 0 10px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "#94734c" }}>History</p>
+        <h2 style={{ margin: "0 0 8px", fontSize: 32, fontFamily: "Georgia, Times New Roman, serif" }}>All individual reports in one timeline</h2>
+        <p style={{ margin: 0, color: "#675548", lineHeight: 1.68 }}>
+          The page fetches all five history endpoints in parallel, merges the results, and sorts them by creation time so the most recent reading stays on top.
+        </p>
+      </section>
 
-const ghostLinkStyle = {
-  ...primaryButtonStyle,
-  background: "rgba(255,255,255,0.72)",
-  border: "1px solid rgba(120,90,55,0.16)",
-  color: "#2a2119",
-};
+      {loading ? <section style={{ ...surfaceStyle, padding: 20 }}>Loading report history...</section> : null}
+      {error ? <section style={{ ...surfaceStyle, padding: 20, color: "#8d392b" }}>{error}</section> : null}
+
+      {!loading && !deferredItems.length ? (
+        <section style={{ ...surfaceStyle, padding: 24 }}>
+          <h3 style={{ marginTop: 0 }}>No report history yet</h3>
+          <p style={{ color: "#6d5b4d", lineHeight: 1.68 }}>Your archive will appear here after your first generated Individual Report.</p>
+        </section>
+      ) : null}
+
+      {deferredItems.map((item) => (
+        <article key={item.id} style={{ ...surfaceStyle, padding: 20, borderLeft: `5px solid ${item.accent}` }}>
+          <div style={{ display: "flex", justifyContent: "space-between", gap: 14, flexWrap: "wrap", alignItems: "flex-start" }}>
+            <div style={{ display: "grid", gap: 8 }}>
+              <div style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: item.accent }}>{item.label}</div>
+              <h3 style={{ margin: 0, fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>{humanDate(item.created_at)}</h3>
+              <p style={{ margin: 0, color: "#675548", lineHeight: 1.66 }}>{item.summary}</p>
+            </div>
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+              <button type="button" onClick={() => onOpenReport(item)} style={{ ...buttonBase, background: item.accent, color: "#fffaf2" }}>
+                View Report
+              </button>
+              <button
+                type="button"
+                onClick={() => onGenerate(item.report_type)}
+                style={{ ...buttonBase, background: "rgba(255,255,255,0.72)", color: "#31261d", borderColor: "rgba(92, 66, 32, 0.12)" }}
+              >
+                Generate More
+              </button>
+            </div>
+          </div>
+        </article>
+      ))}
+    </section>
+  );
+}
 
 function IndividualReportsPage() {
-  const navigate = useNavigate();
   const location = useLocation();
-  const [selected, setSelected] = useState(REPORTS[0]);
-  const [activeTab, setActiveTab] = useState("select");
-  const deferredTab = useDeferredValue(activeTab);
-  const [form, setForm] = useState(defaultBirthState);
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState("");
-  const [currentReport, setCurrentReport] = useState(null);
-  const [historyMap, setHistoryMap] = useState({});
-  const [loadingHistory, setLoadingHistory] = useState(true);
-  const [historyError, setHistoryError] = useState("");
+  const navigate = useNavigate();
+  const query = useMemo(() => new URLSearchParams(location.search), [location.search]);
 
-  useSeo(selected, activeTab, currentReport);
+  const initialReport = REPORT_CONFIGS.find((item) => item.type === query.get("reportType")) || REPORT_CONFIGS[0];
+  const initialTab = ["select", "generate", "report", "history"].includes(query.get("tab")) ? query.get("tab") : "select";
+
+  const [selectedReport, setSelectedReport] = useState(initialReport);
+  const [activeTab, setActiveTab] = useState(initialTab);
+  const [form, setForm] = useState(defaultFormState(initialReport.type));
+  const [submitting, setSubmitting] = useState(false);
+  const [formError, setFormError] = useState("");
+  const [historyLoading, setHistoryLoading] = useState(false);
+  const [historyError, setHistoryError] = useState("");
+  const [historyItems, setHistoryItems] = useState([]);
+  const [currentReport, setCurrentReport] = useState(null);
+  const [archivedSummary, setArchivedSummary] = useState(null);
+
+  useSeo(selectedReport, activeTab, currentReport || archivedSummary);
 
   useEffect(() => {
-    startTransition(() => {
-      if (deferredTab === "generate" && !selected) setSelected(REPORTS[0]);
-    });
-  }, [deferredTab, selected]);
+    const reportId = query.get("reportId");
+    const reportType = query.get("reportType");
+    if (!reportId || !reportType) return;
+    const config = REPORT_CONFIGS.find((item) => item.type === reportType);
+    if (!config) return;
+    setSelectedReport(config);
+    const cached = findCachedReport(reportId);
+    if (cached) {
+      setCurrentReport(cached);
+      setArchivedSummary(null);
+      setActiveTab("report");
+      return;
+    }
+    const historyMatch = historyItems.find((item) => item.id === reportId);
+    if (historyMatch) {
+      setCurrentReport(null);
+      setArchivedSummary(historyMatch);
+      setActiveTab("report");
+    }
+  }, [historyItems, query]);
 
   useEffect(() => {
     let active = true;
     async function loadHistory() {
-      setLoadingHistory(true);
+      setHistoryLoading(true);
       setHistoryError("");
       try {
         const responses = await Promise.all(
-          REPORTS.map((item) =>
-            axios.get(`${API}/reports/${item.slug}/history`, {
-              withCredentials: true,
-            })
-          )
+          REPORT_CONFIGS.map((config) => axios.get(`${API_BASE}/reports/${config.slug}/history`, { withCredentials: true }))
         );
         if (!active) return;
-        const next = {};
-        REPORTS.forEach((item, index) => {
-          next[item.type] = responses[index].data?.items || [];
-        });
-        setHistoryMap(next);
-      } catch (err) {
+        const merged = REPORT_CONFIGS.flatMap((config, index) =>
+          (responses[index].data?.items || []).map((item) => normalizeHistoryEntry(item, config))
+        ).sort((left, right) => new Date(right.created_at).getTime() - new Date(left.created_at).getTime());
+        setHistoryItems(merged);
+      } catch (error) {
         if (!active) return;
-        setHistoryError(err?.response?.data?.detail || "Unable to load individual report history right now.");
+        setHistoryError(error?.response?.data?.detail || "Unable to load your report history right now.");
       } finally {
-        if (active) setLoadingHistory(false);
+        if (active) setHistoryLoading(false);
       }
     }
     loadHistory();
@@ -761,59 +1018,85 @@ function IndividualReportsPage() {
   }, []);
 
   useEffect(() => {
-    const params = queryParams(location.search);
-    const reportType = params.get("reportType");
-    const reportId = params.get("reportId");
-    const tab = params.get("tab");
-    if (tab) setActiveTab(tab);
-    if (reportType) {
-      const target = REPORTS.find((item) => item.type === reportType || item.slug === reportType);
-      if (target) setSelected(target);
-    }
-    if (reportId) {
-      const cached = loadCachedReports()[reportId];
-      if (cached) setCurrentReport(cached);
-      else {
-        const found =
-          Object.values(historyMap)
-            .flat()
-            .find((item) => item.id === reportId) || null;
-        if (found) setCurrentReport(found);
+    setForm((previous) => {
+      const next = { ...defaultFormState(selectedReport.type), ...previous };
+      if (selectedReport.type !== "retrograde_survival") {
+        next.retrograde_mode = "personal";
       }
-    }
-  }, [location.search, historyMap]);
+      return next;
+    });
+  }, [selectedReport.type]);
 
-  const canSubmit = useMemo(() => {
-    if (selected.type === "retrograde_survival" && form.retrograde_mode === "general") {
-      return Boolean(form.check_date);
-    }
-    return Boolean(form.date && form.time && form.city_name && form.latitude && form.longitude && form.timezone);
-  }, [form, selected.type]);
+  function syncQuery(nextReport, nextTab, reportId) {
+    const params = new URLSearchParams();
+    params.set("reportType", nextReport.type);
+    params.set("tab", nextTab);
+    if (reportId) params.set("reportId", reportId);
+    navigate({ pathname: "/reports", search: params.toString() }, { replace: true });
+  }
 
-  async function handleGenerate() {
+  function handleSelectReport(report) {
+    setSelectedReport(report);
+    setForm(defaultFormState(report.type));
+    setFormError("");
+    syncQuery(report, activeTab === "report" ? "select" : activeTab);
+  }
+
+  function handleGeneratePath(reportOrType) {
+    const nextReport = typeof reportOrType === "string" ? REPORT_CONFIGS.find((item) => item.type === reportOrType) || selectedReport : reportOrType;
+    setSelectedReport(nextReport);
+    setActiveTab("generate");
+    setForm(defaultFormState(nextReport.type));
+    setFormError("");
+    syncQuery(nextReport, "generate");
+  }
+
+  function handleFormChange(field, value) {
+    setForm((previous) => {
+      if (field === "city_slug") {
+        const city = CITY_LOOKUP[value] || DEFAULT_CITY;
+        return {
+          ...previous,
+          city_slug: city.slug,
+          city_name: city.city_name,
+          latitude: city.latitude,
+          longitude: city.longitude,
+          timezone: city.timezone,
+        };
+      }
+      return { ...previous, [field]: value };
+    });
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
     setSubmitting(true);
-    setError("");
+    setFormError("");
     try {
       let payload;
-      if (selected.type === "retrograde_survival") {
+      if (selectedReport.type === "retrograde_survival") {
         payload = {
-          check_date: form.check_date,
-          planet: form.retrograde_planet,
-          birth_data: form.retrograde_mode === "personal" ? toBirthPayload(form) : null,
+          check_date: form.check_date || undefined,
+          planet: form.retrograde_planet || undefined,
         };
+        if (form.retrograde_mode === "personal") {
+          payload.birth_data = buildBirthPayload(form);
+        }
       } else {
-        payload = toBirthPayload(form);
+        payload = buildBirthPayload(form);
       }
-      const response = await axios.post(`${API}/reports/${selected.slug}/generate`, payload, {
-        withCredentials: true,
-      });
-      const generated = response.data?.report || null;
-      if (generated) {
-        saveCachedReport(generated);
+
+      const response = await axios.post(`${API_BASE}/reports/${selectedReport.slug}/generate`, payload, { withCredentials: true });
+      const generated = response.data?.report;
+      if (!generated) throw new Error("No report returned.");
+      saveCachedReport(generated);
+      startTransition(() => {
         setCurrentReport(generated);
-        setHistoryMap((current) => ({
-          ...current,
-          [selected.type]: [
+        setArchivedSummary(null);
+        setActiveTab("report");
+        syncQuery(selectedReport, "report", generated.id);
+        setHistoryItems((previous) => {
+          const normalized = normalizeHistoryEntry(
             {
               id: generated.id,
               report_type: generated.report_type,
@@ -821,69 +1104,76 @@ function IndividualReportsPage() {
               summary: generated.summary,
               created_at: generated.created_at,
             },
-            ...(current[selected.type] || []),
-          ],
-        }));
-        setActiveTab("report");
-        navigate(`/individual-reports?reportType=${selected.type}&reportId=${generated.id}&tab=report`, { replace: true });
-      }
-    } catch (err) {
-      setError(err?.response?.data?.detail || "Unable to generate this report right now.");
+            selectedReport
+          );
+          const filtered = previous.filter((item) => item.id !== normalized.id);
+          return [normalized, ...filtered].sort((left, right) => new Date(right.created_at).getTime() - new Date(left.created_at).getTime());
+        });
+      });
+    } catch (error) {
+      setFormError(error?.response?.data?.detail || "The report could not be generated right now. Please try again.");
     } finally {
       setSubmitting(false);
     }
   }
 
-  function openHistoryItem(item) {
-    const cached = loadCachedReports()[item.id];
-    setCurrentReport(cached || item);
-    const target = REPORTS.find((entry) => entry.type === item.type || entry.slug === item.report_slug);
-    if (target) setSelected(target);
+  function handleOpenHistoryItem(item) {
+    const config = REPORT_CONFIGS.find((entry) => entry.type === item.report_type) || selectedReport;
+    setSelectedReport(config);
+    const cached = findCachedReport(item.id);
+    if (cached) {
+      setCurrentReport(cached);
+      setArchivedSummary(null);
+    } else {
+      setCurrentReport(null);
+      setArchivedSummary(item);
+    }
     setActiveTab("report");
-    navigate(`/individual-reports?reportType=${item.type || item.report_type}&reportId=${item.id}&tab=report`, { replace: true });
-  }
-
-  function resetForNew() {
-    setCurrentReport(null);
-    setError("");
-    setActiveTab("generate");
-    navigate(`/individual-reports?reportType=${selected.type}&tab=generate`, { replace: true });
+    syncQuery(config, "report", item.id);
   }
 
   return (
     <div style={pageStyle}>
-      <div style={shellStyle}>
-        <SectionTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gap: 18 }}>
+        <SectionTabs
+          activeTab={activeTab}
+          onChange={(nextTab) => {
+            setActiveTab(nextTab);
+            syncQuery(selectedReport, nextTab, nextTab === "report" && currentReport ? currentReport.id : undefined);
+          }}
+        />
 
-        {activeTab === "select" ? <ReportSelector selected={selected} onSelect={(item) => { setSelected(item); setActiveTab("generate"); }} /> : null}
+        {activeTab === "select" ? <ReportCards selectedReport={selectedReport} onSelect={handleSelectReport} onGenerate={handleGeneratePath} /> : null}
+
         {activeTab === "generate" ? (
-          <>
-            <ReportSelector selected={selected} onSelect={setSelected} />
-            <BirthFields form={form} setForm={setForm} selected={selected} />
-            <section style={{ ...cardStyle, padding: 20, display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-              <p style={{ margin: 0, color: "#675b50" }}>
-                {selected.type === "retrograde_survival" && form.retrograde_mode === "general"
-                  ? "General mode uses current-date retrograde logic only."
-                  : "Birth details stay local to this request and are sent only for report generation."}
-              </p>
-              <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-                <button type="button" onClick={() => setActiveTab("history")} style={ghostLinkStyle}>
-                  Open history
-                </button>
-                <button type="button" onClick={handleGenerate} disabled={!canSubmit || submitting} style={{ ...primaryButtonStyle, opacity: !canSubmit || submitting ? 0.6 : 1 }}>
-                  {submitting ? "Generating..." : "Generate Report"}
-                </button>
-              </div>
-            </section>
-            {error ? (
-              <section style={{ ...cardStyle, padding: 18, color: "#8a3929" }}>
-                {error}
-              </section>
-            ) : null}
-          </>
+          <GeneratePanel
+            selectedReport={selectedReport}
+            form={form}
+            onFormChange={handleFormChange}
+            onSubmit={handleSubmit}
+            submitting={submitting}
+            error={formError}
+          />
         ) : null}
-        {activeTab === "report" ? <ReportRenderer report={currentReport} onReset={resetForNew} /> : null}
-        {activeTab === "history" ? <HistoryPanel historyMap={historyMap} loadingHistory={loadingHistory} historyError={historyError} onOpen={openHistoryItem} selectedType={selected.type} /> : null}
+
+        {activeTab === "report" ? (
+          <ReportPanel
+            selectedReport={selectedReport}
+            currentReport={currentReport}
+            archivedSummary={archivedSummary}
+            onGenerateMore={() => handleGeneratePath(selectedReport)}
+          />
+        ) : null}
+
+        {activeTab === "history" ? (
+          <HistoryPanel
+            items={historyItems}
+            loading={historyLoading}
+            error={historyError}
+            onOpenReport={handleOpenHistoryItem}
+            onGenerate={handleGeneratePath}
+          />
+        ) : null}
       </div>
     </div>
   );

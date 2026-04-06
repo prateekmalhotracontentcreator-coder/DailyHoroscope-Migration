@@ -113,6 +113,7 @@ function App() {
                   <Route path="/brihat-kundli" element={<ProtectedRoute><BrihatKundliPage /></ProtectedRoute>} />
                   <Route path="/my-reports" element={<ProtectedRoute><MyReportsPage /></ProtectedRoute>} />
                   <Route path="/individual-reports" element={<ProtectedRoute><IndividualReportsPage /></ProtectedRoute>} />
+                  <Route path="/reports" element={<ProtectedRoute><IndividualReportsPage /></ProtectedRoute>} />
                   <Route path="/love" element={<LovePage />} />
                   <Route path="/love-reports" element={<ProtectedRoute><LoveReportsPage /></ProtectedRoute>} />
                   <Route path="/ritual-engine" element={<ProtectedRoute><RitualEnginePage /></ProtectedRoute>} />
