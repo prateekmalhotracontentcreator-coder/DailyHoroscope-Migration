@@ -72,7 +72,7 @@ const REPORT_CONFIG = {
     bg: 'bg-purple-500/10',
     border: 'border-purple-500/20',
     label: 'Karmic Debt & Past Life',
-    route: '/individual-reports',
+    route: '/reports',
   },
   career_blueprint: {
     icon: TrendingUp,
@@ -80,7 +80,7 @@ const REPORT_CONFIG = {
     bg: 'bg-gold/10',
     border: 'border-gold/20',
     label: 'Career & Success Blueprint',
-    route: '/individual-reports',
+    route: '/reports',
   },
   shadow_self: {
     icon: Moon,
@@ -88,7 +88,7 @@ const REPORT_CONFIG = {
     bg: 'bg-blue-500/10',
     border: 'border-blue-500/20',
     label: 'Shadow Self & Hidden Qualities',
-    route: '/individual-reports',
+    route: '/reports',
   },
   retrograde_survival: {
     icon: RotateCcw,
@@ -96,7 +96,7 @@ const REPORT_CONFIG = {
     bg: 'bg-orange-500/10',
     border: 'border-orange-500/20',
     label: 'Retrograde Survival Guide',
-    route: '/individual-reports',
+    route: '/reports',
   },
   life_cycles: {
     icon: Activity,
@@ -104,7 +104,7 @@ const REPORT_CONFIG = {
     bg: 'bg-green-500/10',
     border: 'border-green-500/20',
     label: 'Pattern of Life Cycles',
-    route: '/individual-reports',
+    route: '/reports',
   },
   // ─── Love Bundle reports — View Report action ────────────────────────────────
   love_weather:                    { icon: Heart, color: 'text-pink-500',   bg: 'bg-pink-500/10',   border: 'border-pink-500/20',   label: 'Love Weather',          route: '/love-reports' },
@@ -230,7 +230,7 @@ const EmptyState = ({ navigate }) => (
       <Button onClick={() => navigate('/brihat-kundli')} variant="outline" className="gap-2 border-gold/40">
         <Crown className="h-4 w-4" /> Brihat Kundli Pro
       </Button>
-      <Button onClick={() => navigate('/individual-reports')} variant="outline" className="gap-2 border-gold/40">
+      <Button onClick={() => navigate('/reports')} variant="outline" className="gap-2 border-gold/40">
         <FileText className="h-4 w-4" /> Individual Reports
       </Button>
     </div>
@@ -452,7 +452,7 @@ export const MyReportsPage = () => {
                   variant="outline" className="gap-1.5 border-gold/40 hover:bg-gold/10 text-xs">
                   <Crown className="h-3.5 w-3.5 text-purple-500" /> Brihat Kundli Pro
                 </Button>
-                <Button size="sm" onClick={() => navigate('/individual-reports')}
+                <Button size="sm" onClick={() => navigate('/reports')}
                   variant="outline" className="gap-1.5 border-gold/40 hover:bg-gold/10 text-xs">
                   <FileText className="h-3.5 w-3.5 text-blue-500" /> Individual Reports
                 </Button>
