@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import '@/App.css';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
@@ -15,12 +15,12 @@ import { WeeklyHoroscope } from './pages/WeeklyHoroscope';
 import { MonthlyHoroscope } from './pages/MonthlyHoroscope';
 import { BirthChartPage } from './pages/BirthChartPage';
 import { KundaliMilanPage } from './pages/KundaliMilanPage';
-import { BrihatKundliPage } from './pages/BrihatKundliPage';
+const BrihatKundliPage = lazy(() => import('./pages/BrihatKundliPage').then(m => ({ default: m.BrihatKundliPage })));
 import { PricingPage } from './pages/PricingPage';
 import { BlogList } from './pages/BlogList';
 import { BlogPost } from './pages/BlogPost';
 import { AdminLogin } from './pages/admin/AdminLogin';
-import { AdminDashboard } from './pages/admin/AdminDashboard';
+const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
 import { AdminBlogManager } from './pages/admin/AdminBlogManager';
 import { AboutUs } from './pages/AboutUs';
 import { ContactUs } from './pages/ContactUs';
@@ -28,16 +28,16 @@ import { PolicyPage } from './pages/PolicyPage';
 import { ResetPassword } from './pages/ResetPassword';
 import { AccountSettings } from './pages/AccountSettings';
 import { MyReportsPage } from './pages/MyReportsPage';
-import IndividualReportsPage from './pages/IndividualReportsPage';
-import LovePage from './pages/LovePage';
-import LoveReportsPage from './pages/LoveReportsPage';
-import RitualEnginePage from './pages/RitualEnginePage';
+const IndividualReportsPage = lazy(() => import('./pages/IndividualReportsPage'));
+const LovePage = lazy(() => import('./pages/LovePage'));
+const LoveReportsPage = lazy(() => import('./pages/LoveReportsPage'));
+const RitualEnginePage = lazy(() => import('./pages/RitualEnginePage'));
 import { Toaster } from './components/ui/sonner';
 import { CookieConsent } from './components/CookieConsent';
 import { NavBar } from './components/NavBar';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ComingSoonPage } from './pages/ComingSoonPage';
-import { PanchangPage } from './pages/PanchangPage';
+const PanchangPage = lazy(() => import('./pages/PanchangPage').then(m => ({ default: m.PanchangPage })));
 import { PanchangLangPage } from './pages/PanchangLangPage';
 import PanchangLandingPage from './pages/PanchangLandingPage';
 import { NumerologyPage } from './pages/NumerologyPage';
@@ -73,6 +73,7 @@ function App() {
                 <ScrollToTop />
                 <NavBarWrapper />
                 <CookieConsent />
+                <Suspense fallback={<div />}>
                 <Routes>
                   {/* Auth */}
                   <Route path="/login" element={<Login />} />
@@ -161,6 +162,7 @@ function App() {
                   {/* Fallback */}
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
+                </Suspense>
               </KeepAliveWrapper>
             </BrowserRouter>
           </div>
