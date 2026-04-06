@@ -109,6 +109,9 @@ export const TarotPage = () => {
   const [cardFlipped,    setCardFlipped]    = useState(false);
   const [spreadQuestion, setSpreadQuestion] = useState('');
   const [selectedSpreadId, setSelectedSpreadId] = useState(null);
+  const [premiumState,    setPremiumState]    = useState({ checked: false, hasAccess: false, reason: '' });
+  const [periods,         setPeriods]         = useState([]);
+  const [offers,          setOffers]          = useState([]);
 
   // Load card SVG bundle from frontend/public/tarot_cards.json
   useEffect(() => {
@@ -138,7 +141,28 @@ export const TarotPage = () => {
   const fetchSpreads = async () => {
     try {
       const res = await axios.get(`${API}/tarot/spreads`);
-      setSpreads(res.data.spreads || []);
+      const nextSpreads = res.data.spreads || [];
+      setSpreads(nextSpreads);
+      if (nextSpreads.length && user) {
+        try {
+          const firstId = nextSpreads[0].spread_id;
+          const accessRes = await axios.get(`${API}/tarot/spreads/${firstId}/access`, { withCredentials: true });
+          const hasAccess = Boolean(accessRes.data?.has_access);
+          setPremiumState({ checked: true, hasAccess, reason: accessRes.data?.reason || '' });
+          if (hasAccess) {
+            const [periodsRes, offersRes] = await Promise.all([
+              axios.get(`${API}/tarot/favorable-periods`, { withCredentials: true }),
+              axios.get(`${API}/tarot/offers`, { withCredentials: true }),
+            ]);
+            setPeriods(periodsRes.data?.periods || []);
+            setOffers(offersRes.data?.offers || []);
+          }
+        } catch {
+          setPremiumState({ checked: true, hasAccess: false, reason: '' });
+        }
+      } else {
+        setPremiumState({ checked: true, hasAccess: false, reason: 'Sign in to access premium features.' });
+      }
     } catch {}
   };
 
@@ -157,7 +181,7 @@ export const TarotPage = () => {
     setHistoryLoading(true);
     try {
       const res = await axios.get(`${API}/tarot/history`, { withCredentials: true });
-      setHistory(res.data.history || []);
+      setHistory(res.data.items || []);
     } catch {
       toast.error('Could not load history');
     } finally {
@@ -266,8 +290,8 @@ export const TarotPage = () => {
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
       <SEO
-        title="Tarot Card Reading — Vedic Cross-Reference"
-        description="Daily Tarot card draw and premium spreads. Western Tarot cross-referenced with Vedic astrology for deeper guidance."
+        title="Free Tarot Reading — Daily Draw & Spreads | EverydayHoroscope"
+        description="Get your free daily tarot card draw and multi-card spreads. Cosmic guidance powered by the 78-card Rider-Waite deck. EverydayHoroscope."
         url={`${SITE}/tarot`}
         schema={schema}
       />
@@ -286,6 +310,7 @@ export const TarotPage = () => {
         {[
           { key: 'daily',   label: 'Daily Draw' },
           { key: 'spreads', label: 'Spreads' },
+          { key: 'timing',  label: 'Favorable Periods', disabled: !user },
           { key: 'history', label: 'History', disabled: !user },
         ].map(t => (
           <button key={t.key} onClick={() => !t.disabled && setActiveTab(t.key)} disabled={t.disabled}
@@ -454,6 +479,36 @@ export const TarotPage = () => {
             Premium 3-card spreads — deeper readings for specific areas of life.
           </p>
 
+          {/* Premium access gate */}
+          {!premiumState.checked && user && (
+            <div className="text-center py-3">
+              <Loader2 className="h-5 w-5 animate-spin text-gold mx-auto" />
+            </div>
+          )}
+          {premiumState.checked && premiumState.hasAccess && (
+            <div className="flex items-center gap-2 pb-1">
+              <Crown className="h-4 w-4 text-gold" />
+              <p className="text-sm font-semibold">Begin Premium Reading</p>
+            </div>
+          )}
+          {premiumState.checked && !premiumState.hasAccess && user && (
+            <Card className="p-4 border border-gold/30 bg-gold/5">
+              <div className="flex items-center gap-3">
+                <Crown className="h-5 w-5 text-gold flex-shrink-0" />
+                <div className="flex-1">
+                  <p className="text-sm font-semibold">Premium spreads are waiting</p>
+                  <p className="text-xs text-muted-foreground">
+                    {premiumState.reason || 'Unlock multi-card spreads and timing guidance.'}
+                  </p>
+                </div>
+                <Button onClick={() => navigate('/pricing?source=tarot-spreads')} size="sm"
+                  className="bg-gold hover:bg-gold/90 text-primary-foreground flex-shrink-0">
+                  Unlock
+                </Button>
+              </div>
+            </Card>
+          )}
+
           <input
             type="text"
             value={spreadQuestion}
@@ -514,6 +569,59 @@ export const TarotPage = () => {
               <p className="text-sm text-muted-foreground mb-3">Sign in to draw a spread</p>
               <Button onClick={() => navigate('/login')} variant="outline" size="sm">Sign In</Button>
             </div>
+          )}
+        </div>
+      )}
+
+      {/* ── TIMING TAB ── */}
+      {activeTab === 'timing' && user && (
+        <div className="space-y-4">
+          {!premiumState.hasAccess ? (
+            <Card className="p-6 border border-gold/30 text-center">
+              <Crown className="h-8 w-8 text-gold/40 mx-auto mb-3" />
+              <p className="font-semibold mb-2">Timing guidance is a premium layer</p>
+              <p className="text-sm text-muted-foreground mb-4">
+                {premiumState.reason || 'Unlock favorable periods, personalized next steps, and deeper timing-based Tarot guidance.'}
+              </p>
+              <Button onClick={() => navigate('/pricing?source=tarot-timing')} size="sm"
+                className="bg-gold hover:bg-gold/90 text-primary-foreground">
+                Unlock Premium
+              </Button>
+            </Card>
+          ) : (
+            <>
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Favorable Periods</p>
+              {periods.length ? periods.map(period => (
+                <Card key={period.id} className="p-4 border border-border">
+                  <div className="flex items-center gap-2 mb-2 flex-wrap">
+                    <span className="text-xs px-2 py-0.5 rounded-full border border-gold/30 text-gold capitalize">{period.type}</span>
+                    <span className="text-xs text-muted-foreground">{period.window_label}</span>
+                    <span className="text-xs text-muted-foreground">{Math.round(Number(period.confidence || 0) * 100)}% confidence</span>
+                  </div>
+                  <p className="text-sm mb-1">{period.summary}</p>
+                  {period.recommendation && (
+                    <p className="text-xs text-gold italic">{period.recommendation}</p>
+                  )}
+                </Card>
+              )) : (
+                <p className="text-sm text-muted-foreground">Your next favorable windows will appear here once available.</p>
+              )}
+              {offers.length > 0 && (
+                <>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mt-2">Recommended Next Steps</p>
+                  {offers.map(offer => (
+                    <Card key={offer.id} className="p-4 border border-border">
+                      <p className="font-semibold text-sm mb-1">{offer.title}</p>
+                      <p className="text-xs text-muted-foreground mb-3">{offer.description}</p>
+                      <Button onClick={() => navigate(offer.destination || '/pricing')} size="sm"
+                        variant="outline" className="border-gold/30 text-gold hover:bg-gold/10">
+                        {offer.cta_label}
+                      </Button>
+                    </Card>
+                  ))}
+                </>
+              )}
+            </>
           )}
         </div>
       )}
