@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from numerology_router import NumerologyReportPayload
 
 
-DEFAULT_CLAUDE_MODEL = os.getenv("NUMEROLOGY_CLAUDE_MODEL", "claude-3-5-sonnet-20241022")
+DEFAULT_CLAUDE_MODEL = os.getenv("NUMEROLOGY_CLAUDE_MODEL", "claude-sonnet-4-5")
 
 
 def _computed_dump(report: NumerologyReportPayload) -> dict[str, Any]:

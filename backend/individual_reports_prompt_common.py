@@ -7,7 +7,7 @@ from typing import Any
 
 logger = logging.getLogger(__name__)
 
-DEFAULT_CLAUDE_MODEL = os.getenv("INDIVIDUAL_REPORTS_CLAUDE_MODEL", "claude-3-5-sonnet-20241022")
+DEFAULT_CLAUDE_MODEL = os.getenv("INDIVIDUAL_REPORTS_CLAUDE_MODEL", "claude-sonnet-4-5")
 
 
 def extract_text_from_claude_response(response: Any) -> str | None:
