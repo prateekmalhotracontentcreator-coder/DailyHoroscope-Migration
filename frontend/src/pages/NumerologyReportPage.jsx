@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
+import { SEO } from '../components/SEO';
 import ContinueJourney from '../components/ContinueJourney';
 import LoShuGrid from '../components/LoShuGrid';
 import LuckyElementsTable from '../components/LuckyElementsTable';
@@ -180,6 +181,41 @@ function VedicCrossReference({ payload }) {
   );
 }
 
+function RemedyCard({ payload, fallbackNote }) {
+  if (!payload && !fallbackNote) return null;
+  return (
+    <section className="numerology-structured-card numerology-remedy-card">
+      <div className="numerology-structured-card__header">
+        <p className="numerology-structured-card__eyebrow">Remedy Focus</p>
+        <h3>{payload?.title || "Supportive Alignment Card"}</h3>
+      </div>
+      {payload?.focus ? <p>{payload.focus}</p> : null}
+      <div className="numerology-lucky-elements__table" role="table" aria-label="Remedy recommendation">
+        {payload?.mantra ? <div className="numerology-lucky-elements__row" role="row"><div className="numerology-lucky-elements__label" role="cell">Mantra</div><div className="numerology-lucky-elements__value" role="cell">{payload.mantra}</div></div> : null}
+        {payload?.gemstone ? <div className="numerology-lucky-elements__row" role="row"><div className="numerology-lucky-elements__label" role="cell">Gemstone</div><div className="numerology-lucky-elements__value" role="cell">{payload.gemstone}</div></div> : null}
+        {payload?.ritual ? <div className="numerology-lucky-elements__row" role="row"><div className="numerology-lucky-elements__label" role="cell">Ritual</div><div className="numerology-lucky-elements__value" role="cell">{payload.ritual}</div></div> : null}
+      </div>
+      {fallbackNote ? <p>{fallbackNote}</p> : null}
+    </section>
+  );
+}
+
+function TimingPanel({ trace, targetYear }) {
+  const highlights = Array.isArray(trace?.monthly_highlights) ? trace.monthly_highlights : [];
+  const forecast = Array.isArray(trace?.timing_forecast) ? trace.timing_forecast : [];
+  if (!highlights.length && !forecast.length) return null;
+  return (
+    <section className="numerology-structured-card numerology-timing-panel">
+      <div className="numerology-structured-card__header">
+        <p className="numerology-structured-card__eyebrow">Timing Layer</p>
+        <h3>{targetYear ? `${targetYear} Timing Outlook` : "Timing Outlook"}</h3>
+      </div>
+      {forecast.length ? <div className="numerology-chip-group">{forecast.map((item) => <span key={item} className="numerology-chip numerology-chip--soft">{item}</span>)}</div> : null}
+      {highlights.length ? <div className="numerology-remediation-plan__grid">{highlights.map((item, index) => <article key={`${index}-${item}`} className="numerology-remediation-plan__card"><p className="numerology-remediation-plan__day">Timing Note {index + 1}</p><p>{item}</p></article>)}</div> : null}
+    </section>
+  );
+}
+
 function PremiumStructuredBlocks({ report }) {
   const trace = report?.calculation_trace || {};
   const showLoShu = Boolean(trace.lo_shu_grid_payload) && (
@@ -188,8 +224,10 @@ function PremiumStructuredBlocks({ report }) {
   const showLuckyElements = Boolean(trace.lucky_elements_table);
   const showPlan = Array.isArray(trace.remediation_plan) && trace.remediation_plan.length > 0;
   const showVedic = Boolean(trace.vedic_cross_reference) && report.tile_code === "premium_ankjyotish_report";
+  const showTiming = report.tile_code === "favorable_timing" && (Array.isArray(trace.monthly_highlights) || Array.isArray(trace.timing_forecast));
+  const showRemedyCard = Boolean(trace.remedy_card) || Boolean(report.remedy_note);
 
-  if (!showLoShu && !showLuckyElements && !showPlan && !showVedic) {
+  if (!showLoShu && !showLuckyElements && !showPlan && !showVedic && !showTiming && !showRemedyCard) {
     return null;
   }
 
@@ -198,7 +236,9 @@ function PremiumStructuredBlocks({ report }) {
       {showLoShu ? <LoShuGrid payload={trace.lo_shu_grid_payload} /> : null}
       {showLuckyElements ? <LuckyElementsTable payload={trace.lucky_elements_table} /> : null}
       {showVedic ? <VedicCrossReference payload={trace.vedic_cross_reference} /> : null}
+      {showTiming ? <TimingPanel trace={trace} targetYear={report.target_year} /> : null}
       {showPlan ? <RemediationPlan items={trace.remediation_plan} /> : null}
+      {showRemedyCard ? <RemedyCard payload={trace.remedy_card} fallbackNote={report.remedy_note} /> : null}
     </section>
   );
 }
@@ -264,6 +304,11 @@ function NumerologyReportPage() {
 
   return (
     <div className="numerology-report-page">
+      <SEO
+        title={`${reportTitle} | EverydayHoroscope Numerology`}
+        description={report.summary || "Discover your numerology profile on EverydayHoroscope."}
+        url={`https://www.everydayhoroscope.in/numerology/report/${reportId}`}
+      />
       <section className="numerology-report-page__hero">
         <p className="numerology-report-page__eyebrow">Numerology Report</p>
         <h1>{reportTitle}</h1>
@@ -277,7 +322,6 @@ function NumerologyReportPage() {
       <section className="numerology-report-page__guidance">
         <h2>Guidance</h2>
         <p>{report.guidance}</p>
-        {report.remedy_note ? <p>{report.remedy_note}</p> : null}
       </section>
 
       <ContinueJourney bridge={nextStep.bridge} cta={nextStep} precisionNote={nextStep.precisionNote} />
