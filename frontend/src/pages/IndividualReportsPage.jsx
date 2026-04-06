@@ -1,6 +1,7 @@
 import React, { startTransition, useDeferredValue, useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SharedBirthCityPicker from "../components/SharedBirthCityPicker";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
 const API_BASE = `${BACKEND_URL}/api`;
@@ -60,156 +61,13 @@ const REPORT_CONFIGS = [
   },
 ];
 
-const CITY_GROUPS = [
-  {
-    countryCode: "IN",
-    countryName: "India",
-    cities: [
-      { slug: "new-delhi-india", label: "New Delhi, India", city_name: "New Delhi", latitude: 28.6139, longitude: 77.209, timezone: "Asia/Kolkata" },
-      { slug: "mumbai-india", label: "Mumbai, India", city_name: "Mumbai", latitude: 19.076, longitude: 72.8777, timezone: "Asia/Kolkata" },
-      { slug: "bengaluru-india", label: "Bengaluru, India", city_name: "Bengaluru", latitude: 12.9716, longitude: 77.5946, timezone: "Asia/Kolkata" },
-      { slug: "kolkata-india", label: "Kolkata, India", city_name: "Kolkata", latitude: 22.5726, longitude: 88.3639, timezone: "Asia/Kolkata" },
-      { slug: "chennai-india", label: "Chennai, India", city_name: "Chennai", latitude: 13.0827, longitude: 80.2707, timezone: "Asia/Kolkata" },
-      { slug: "hyderabad-india", label: "Hyderabad, India", city_name: "Hyderabad", latitude: 17.385, longitude: 78.4867, timezone: "Asia/Kolkata" },
-      { slug: "pune-india", label: "Pune, India", city_name: "Pune", latitude: 18.5204, longitude: 73.8567, timezone: "Asia/Kolkata" },
-      { slug: "ahmedabad-india", label: "Ahmedabad, India", city_name: "Ahmedabad", latitude: 23.0225, longitude: 72.5714, timezone: "Asia/Kolkata" },
-      { slug: "surat-india", label: "Surat, India", city_name: "Surat", latitude: 21.1702, longitude: 72.8311, timezone: "Asia/Kolkata" },
-      { slug: "jaipur-india", label: "Jaipur, India", city_name: "Jaipur", latitude: 26.9124, longitude: 75.7873, timezone: "Asia/Kolkata" },
-      { slug: "lucknow-india", label: "Lucknow, India", city_name: "Lucknow", latitude: 26.8467, longitude: 80.9462, timezone: "Asia/Kolkata" },
-      { slug: "kanpur-india", label: "Kanpur, India", city_name: "Kanpur", latitude: 26.4499, longitude: 80.3319, timezone: "Asia/Kolkata" },
-      { slug: "nagpur-india", label: "Nagpur, India", city_name: "Nagpur", latitude: 21.1458, longitude: 79.0882, timezone: "Asia/Kolkata" },
-      { slug: "indore-india", label: "Indore, India", city_name: "Indore", latitude: 22.7196, longitude: 75.8577, timezone: "Asia/Kolkata" },
-      { slug: "patna-india", label: "Patna, India", city_name: "Patna", latitude: 25.5941, longitude: 85.1376, timezone: "Asia/Kolkata" },
-      { slug: "visakhapatnam-india", label: "Visakhapatnam, India", city_name: "Visakhapatnam", latitude: 17.6868, longitude: 83.2185, timezone: "Asia/Kolkata" },
-      { slug: "bhopal-india", label: "Bhopal, India", city_name: "Bhopal", latitude: 23.2599, longitude: 77.4126, timezone: "Asia/Kolkata" },
-      { slug: "ludhiana-india", label: "Ludhiana, India", city_name: "Ludhiana", latitude: 30.901, longitude: 75.8573, timezone: "Asia/Kolkata" },
-      { slug: "agra-india", label: "Agra, India", city_name: "Agra", latitude: 27.1767, longitude: 78.0081, timezone: "Asia/Kolkata" },
-      { slug: "nashik-india", label: "Nashik, India", city_name: "Nashik", latitude: 19.9975, longitude: 73.7898, timezone: "Asia/Kolkata" },
-      { slug: "varanasi-india", label: "Varanasi, India", city_name: "Varanasi", latitude: 25.3176, longitude: 82.9739, timezone: "Asia/Kolkata" },
-      { slug: "meerut-india", label: "Meerut, India", city_name: "Meerut", latitude: 28.9845, longitude: 77.7064, timezone: "Asia/Kolkata" },
-      { slug: "rajkot-india", label: "Rajkot, India", city_name: "Rajkot", latitude: 22.3039, longitude: 70.8022, timezone: "Asia/Kolkata" },
-      { slug: "vadodara-india", label: "Vadodara, India", city_name: "Vadodara", latitude: 22.3072, longitude: 73.1812, timezone: "Asia/Kolkata" },
-      { slug: "coimbatore-india", label: "Coimbatore, India", city_name: "Coimbatore", latitude: 11.0168, longitude: 76.9558, timezone: "Asia/Kolkata" },
-      { slug: "madurai-india", label: "Madurai, India", city_name: "Madurai", latitude: 9.9252, longitude: 78.1198, timezone: "Asia/Kolkata" },
-      { slug: "faridabad-india", label: "Faridabad, India", city_name: "Faridabad", latitude: 28.4089, longitude: 77.3178, timezone: "Asia/Kolkata" },
-      { slug: "ghaziabad-india", label: "Ghaziabad, India", city_name: "Ghaziabad", latitude: 28.6692, longitude: 77.4538, timezone: "Asia/Kolkata" },
-      { slug: "vijayawada-india", label: "Vijayawada, India", city_name: "Vijayawada", latitude: 16.5062, longitude: 80.648, timezone: "Asia/Kolkata" },
-    ],
-  },
-  {
-    countryCode: "US",
-    countryName: "United States",
-    cities: [
-      { slug: "new-york-usa", label: "New York, USA", city_name: "New York", latitude: 40.7128, longitude: -74.006, timezone: "America/New_York" },
-      { slug: "washington-dc-usa", label: "Washington, DC, USA", city_name: "Washington, DC", latitude: 38.9072, longitude: -77.0369, timezone: "America/New_York" },
-      { slug: "miami-usa", label: "Miami, USA", city_name: "Miami", latitude: 25.7617, longitude: -80.1918, timezone: "America/New_York" },
-      { slug: "boston-usa", label: "Boston, USA", city_name: "Boston", latitude: 42.3601, longitude: -71.0589, timezone: "America/New_York" },
-      { slug: "philadelphia-usa", label: "Philadelphia, USA", city_name: "Philadelphia", latitude: 39.9526, longitude: -75.1652, timezone: "America/New_York" },
-      { slug: "chicago-usa", label: "Chicago, USA", city_name: "Chicago", latitude: 41.8781, longitude: -87.6298, timezone: "America/Chicago" },
-      { slug: "houston-usa", label: "Houston, USA", city_name: "Houston", latitude: 29.7604, longitude: -95.3698, timezone: "America/Chicago" },
-      { slug: "dallas-usa", label: "Dallas, USA", city_name: "Dallas", latitude: 32.7767, longitude: -96.797, timezone: "America/Chicago" },
-      { slug: "san-antonio-usa", label: "San Antonio, USA", city_name: "San Antonio", latitude: 29.4241, longitude: -98.4936, timezone: "America/Chicago" },
-      { slug: "denver-usa", label: "Denver, USA", city_name: "Denver", latitude: 39.7392, longitude: -104.9903, timezone: "America/Denver" },
-      { slug: "phoenix-usa", label: "Phoenix, USA", city_name: "Phoenix", latitude: 33.4484, longitude: -112.074, timezone: "America/Phoenix" },
-      { slug: "albuquerque-usa", label: "Albuquerque, USA", city_name: "Albuquerque", latitude: 35.0844, longitude: -106.6504, timezone: "America/Denver" },
-      { slug: "salt-lake-city-usa", label: "Salt Lake City, USA", city_name: "Salt Lake City", latitude: 40.7608, longitude: -111.891, timezone: "America/Denver" },
-      { slug: "los-angeles-usa", label: "Los Angeles, USA", city_name: "Los Angeles", latitude: 34.0522, longitude: -118.2437, timezone: "America/Los_Angeles" },
-      { slug: "san-francisco-usa", label: "San Francisco, USA", city_name: "San Francisco", latitude: 37.7749, longitude: -122.4194, timezone: "America/Los_Angeles" },
-      { slug: "seattle-usa", label: "Seattle, USA", city_name: "Seattle", latitude: 47.6062, longitude: -122.3321, timezone: "America/Los_Angeles" },
-      { slug: "san-jose-usa", label: "San Jose, USA", city_name: "San Jose", latitude: 37.3382, longitude: -121.8863, timezone: "America/Los_Angeles" },
-    ],
-  },
-  {
-    countryCode: "UK",
-    countryName: "United Kingdom",
-    cities: [
-      { slug: "london-uk", label: "London, UK", city_name: "London", latitude: 51.5072, longitude: -0.1276, timezone: "Europe/London" },
-      { slug: "birmingham-uk", label: "Birmingham, UK", city_name: "Birmingham", latitude: 52.4862, longitude: -1.8904, timezone: "Europe/London" },
-      { slug: "manchester-uk", label: "Manchester, UK", city_name: "Manchester", latitude: 53.4808, longitude: -2.2426, timezone: "Europe/London" },
-      { slug: "glasgow-uk", label: "Glasgow, UK", city_name: "Glasgow", latitude: 55.8642, longitude: -4.2518, timezone: "Europe/London" },
-    ],
-  },
-  {
-    countryCode: "CAN",
-    countryName: "Canada",
-    cities: [
-      { slug: "toronto-canada", label: "Toronto, Canada", city_name: "Toronto", latitude: 43.6532, longitude: -79.3832, timezone: "America/Toronto" },
-      { slug: "montreal-canada", label: "Montreal, Canada", city_name: "Montreal", latitude: 45.5017, longitude: -73.5673, timezone: "America/Toronto" },
-      { slug: "ottawa-canada", label: "Ottawa, Canada", city_name: "Ottawa", latitude: 45.4215, longitude: -75.6972, timezone: "America/Toronto" },
-      { slug: "calgary-canada", label: "Calgary, Canada", city_name: "Calgary", latitude: 51.0447, longitude: -114.0719, timezone: "America/Edmonton" },
-      { slug: "edmonton-canada", label: "Edmonton, Canada", city_name: "Edmonton", latitude: 53.5461, longitude: -113.4938, timezone: "America/Edmonton" },
-      { slug: "vancouver-canada", label: "Vancouver, Canada", city_name: "Vancouver", latitude: 49.2827, longitude: -123.1207, timezone: "America/Vancouver" },
-    ],
-  },
-  {
-    countryCode: "SG",
-    countryName: "Singapore",
-    cities: [{ slug: "singapore-city-singapore", label: "Singapore, Singapore", city_name: "Singapore", latitude: 1.3521, longitude: 103.8198, timezone: "Asia/Singapore" }],
-  },
-  {
-    countryCode: "ID",
-    countryName: "Indonesia",
-    cities: [
-      { slug: "jakarta-indonesia", label: "Jakarta, Indonesia", city_name: "Jakarta", latitude: -6.2088, longitude: 106.8456, timezone: "Asia/Jakarta" },
-      { slug: "surabaya-indonesia", label: "Surabaya, Indonesia", city_name: "Surabaya", latitude: -7.2575, longitude: 112.7521, timezone: "Asia/Jakarta" },
-      { slug: "bandung-indonesia", label: "Bandung, Indonesia", city_name: "Bandung", latitude: -6.9175, longitude: 107.6191, timezone: "Asia/Jakarta" },
-      { slug: "medan-indonesia", label: "Medan, Indonesia", city_name: "Medan", latitude: 3.5952, longitude: 98.6722, timezone: "Asia/Jakarta" },
-      { slug: "denpasar-indonesia", label: "Denpasar, Indonesia", city_name: "Denpasar", latitude: -8.65, longitude: 115.2167, timezone: "Asia/Makassar" },
-    ],
-  },
-  {
-    countryCode: "SA",
-    countryName: "Saudi Arabia",
-    cities: [
-      { slug: "riyadh-saudi-arabia", label: "Riyadh, Saudi Arabia", city_name: "Riyadh", latitude: 24.7136, longitude: 46.6753, timezone: "Asia/Riyadh" },
-      { slug: "jeddah-saudi-arabia", label: "Jeddah, Saudi Arabia", city_name: "Jeddah", latitude: 21.4858, longitude: 39.1925, timezone: "Asia/Riyadh" },
-      { slug: "mecca-saudi-arabia", label: "Mecca, Saudi Arabia", city_name: "Mecca", latitude: 21.3891, longitude: 39.8579, timezone: "Asia/Riyadh" },
-      { slug: "medina-saudi-arabia", label: "Medina, Saudi Arabia", city_name: "Medina", latitude: 24.5247, longitude: 39.5692, timezone: "Asia/Riyadh" },
-    ],
-  },
-  {
-    countryCode: "NP",
-    countryName: "Nepal",
-    cities: [
-      { slug: "kathmandu-nepal", label: "Kathmandu, Nepal", city_name: "Kathmandu", latitude: 27.7172, longitude: 85.324, timezone: "Asia/Kathmandu" },
-      { slug: "pokhara-nepal", label: "Pokhara, Nepal", city_name: "Pokhara", latitude: 28.2096, longitude: 83.9856, timezone: "Asia/Kathmandu" },
-    ],
-  },
-  {
-    countryCode: "TB",
-    countryName: "Tibet",
-    cities: [
-      { slug: "lhasa-tibet", label: "Lhasa, Tibet", city_name: "Lhasa", latitude: 29.652, longitude: 91.1721, timezone: "Asia/Shanghai" },
-      { slug: "shigatse-tibet", label: "Shigatse, Tibet", city_name: "Shigatse", latitude: 29.2673, longitude: 88.8808, timezone: "Asia/Shanghai" },
-    ],
-  },
-  {
-    countryCode: "UAE",
-    countryName: "United Arab Emirates",
-    cities: [
-      { slug: "dubai-uae", label: "Dubai, UAE", city_name: "Dubai", latitude: 25.2048, longitude: 55.2708, timezone: "Asia/Dubai" },
-      { slug: "abu-dhabi-uae", label: "Abu Dhabi, UAE", city_name: "Abu Dhabi", latitude: 24.4539, longitude: 54.3773, timezone: "Asia/Dubai" },
-      { slug: "sharjah-uae", label: "Sharjah, UAE", city_name: "Sharjah", latitude: 25.3463, longitude: 55.4209, timezone: "Asia/Dubai" },
-    ],
-  },
-  {
-    countryCode: "MYS",
-    countryName: "Malaysia",
-    cities: [
-      { slug: "kuala-lumpur-malaysia", label: "Kuala Lumpur, Malaysia", city_name: "Kuala Lumpur", latitude: 3.139, longitude: 101.6869, timezone: "Asia/Kuala_Lumpur" },
-      { slug: "johor-bahru-malaysia", label: "Johor Bahru, Malaysia", city_name: "Johor Bahru", latitude: 1.4927, longitude: 103.7414, timezone: "Asia/Kuala_Lumpur" },
-      { slug: "george-town-malaysia", label: "George Town, Malaysia", city_name: "George Town", latitude: 5.4141, longitude: 100.3288, timezone: "Asia/Kuala_Lumpur" },
-      { slug: "kota-kinabalu-malaysia", label: "Kota Kinabalu, Malaysia", city_name: "Kota Kinabalu", latitude: 5.9804, longitude: 116.0735, timezone: "Asia/Kuala_Lumpur" },
-    ],
-  },
-];
-
-const CITY_LOOKUP = CITY_GROUPS.flatMap((group) => group.cities).reduce((accumulator, city) => {
-  accumulator[city.slug] = city;
-  return accumulator;
-}, {});
-
-const DEFAULT_CITY = CITY_GROUPS[0].cities[0];
+const EMPTY_CITY = {
+  slug: "",
+  city_name: "",
+  latitude: "",
+  longitude: "",
+  timezone: "",
+};
 
 const pageStyle = {
   minHeight: "100vh",
@@ -263,11 +121,11 @@ function defaultFormState(selectedType) {
     check_date: new Date().toISOString().slice(0, 10),
     retrograde_mode: selectedType === "retrograde_survival" ? "general" : "personal",
     retrograde_planet: "",
-    city_slug: DEFAULT_CITY.slug,
-    city_name: DEFAULT_CITY.city_name,
-    latitude: DEFAULT_CITY.latitude,
-    longitude: DEFAULT_CITY.longitude,
-    timezone: DEFAULT_CITY.timezone,
+    city_slug: EMPTY_CITY.slug,
+    city_name: EMPTY_CITY.city_name,
+    latitude: EMPTY_CITY.latitude,
+    longitude: EMPTY_CITY.longitude,
+    timezone: EMPTY_CITY.timezone,
   };
 }
 
@@ -276,9 +134,9 @@ function buildBirthPayload(form) {
     date: form.date,
     time: form.time,
     city_name: form.city_name,
-    latitude: Number(form.latitude),
-    longitude: Number(form.longitude),
-    timezone: form.timezone,
+    latitude: form.latitude === "" || form.latitude == null ? undefined : Number(form.latitude),
+    longitude: form.longitude === "" || form.longitude == null ? undefined : Number(form.longitude),
+    timezone: form.timezone || undefined,
   };
 }
 
@@ -572,17 +430,34 @@ function GeneratePanel({ selectedReport, form, onFormChange, onSubmit, submittin
               </FormField>
 
               <FormField label="Birth city">
-                <FieldSelect value={form.city_slug} onChange={(event) => onFormChange("city_slug", event.target.value)} required>
-                  {CITY_GROUPS.map((group) => (
-                    <optgroup key={group.countryCode} label={group.countryName}>
-                      {group.cities.map((city) => (
-                        <option key={city.slug} value={city.slug}>
-                          {city.label}
-                        </option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </FieldSelect>
+                <SharedBirthCityPicker
+                  inputId={`individual-report-city-${selectedReport.slug}`}
+                  label=""
+                  value={form.city_slug}
+                  required
+                  helpText="Select the birth city to populate timezone and coordinates for this report."
+                  wrapperStyle={{ display: "grid" }}
+                  labelStyle={{ display: "none" }}
+                  inputStyle={{
+                    minHeight: 48,
+                    borderRadius: 16,
+                    border: "1px solid rgba(92, 66, 32, 0.14)",
+                    background: "rgba(255,255,255,0.9)",
+                    padding: "12px 14px",
+                    fontSize: 15,
+                    color: "#291f18",
+                  }}
+                  selectStyle={{
+                    minHeight: 48,
+                    borderRadius: 16,
+                    border: "1px solid rgba(92, 66, 32, 0.14)",
+                    background: "rgba(255,255,255,0.9)",
+                    padding: "12px 14px",
+                    fontSize: 15,
+                    color: "#291f18",
+                  }}
+                  onChange={(city) => onFormChange("city_slug", city)}
+                />
               </FormField>
             </>
           ) : null}
@@ -1054,7 +929,7 @@ function IndividualReportsPage() {
   function handleFormChange(field, value) {
     setForm((previous) => {
       if (field === "city_slug") {
-        const city = CITY_LOOKUP[value] || DEFAULT_CITY;
+        const city = value || EMPTY_CITY;
         return {
           ...previous,
           city_slug: city.slug,
