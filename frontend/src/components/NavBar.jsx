@@ -77,6 +77,7 @@ const NAV = [
   { label: 'Numerology', icon: Hash,      path: '/numerology' },
   { label: 'Palmistry',  icon: Layers,    path: '/palmistry' },
   { label: 'Tarot',      icon: BookOpen,  path: '/tarot' },
+  { label: 'Lumina',     icon: Star,      path: '/lumina' },
   { label: 'Pricing',    icon: Tag,       path: '/pricing' },
   { label: 'Blog',       icon: BookOpen,  path: '/blog' },
   { label: 'Contact',    icon: Phone,     path: '/contact' },

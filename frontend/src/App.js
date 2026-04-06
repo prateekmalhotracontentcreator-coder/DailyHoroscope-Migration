@@ -39,6 +39,7 @@ import { NumerologyPage } from './pages/NumerologyPage';
 import { PalmistryPage } from './pages/PalmistryPage';
 import { TarotPage } from './pages/TarotPage';
 import { RemedyPage } from './pages/RemedyPage';
+import LuminaPage from './pages/LuminaPage';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
 const NavBarWrapper = () => {
@@ -135,6 +136,9 @@ function App() {
                   <Route path="/palmistry" element={<PalmistryPage />} />
                   <Route path="/tarot" element={<TarotPage />} />
                   <Route path="/remedies" element={<RemedyPage />} />
+
+                  {/* Lumina — Spiritual companion module */}
+                  <Route path="/lumina" element={<LuminaPage />} />
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
