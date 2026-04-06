@@ -211,10 +211,16 @@ class BirthProfile(BaseModel):
     model_config = ConfigDict(extra="ignore")
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     name: str; date_of_birth: str; time_of_birth: str; location: str; user_email: str = ""
+    latitude: float | None = None
+    longitude: float | None = None
+    timezone: str | None = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class BirthProfileCreate(BaseModel):
     name: str; date_of_birth: str; time_of_birth: str; location: str
+    latitude: float | None = None
+    longitude: float | None = None
+    timezone: str | None = None
 
 class BirthChartReport(BaseModel):
     model_config = ConfigDict(extra="ignore")
