@@ -85,10 +85,11 @@ const NAV = [
 ];
 
 const BOTTOM_NAV = [
-  { label: 'Home',       icon: Home,     path: '/home' },
-  { label: 'Horoscope',  icon: Star,     path: '/horoscope/daily' },
-  { label: 'My Reports', icon: FileText, path: '/my-reports' },
-  { label: 'Account',    icon: User,     path: '/account' },
+  { label: 'Home',       icon: Home,      path: '/home' },
+  { label: 'Horoscope',  icon: Star,      path: '/horoscope/daily' },
+  { label: 'Lumina',     icon: BookMarked,path: '/lumina' },
+  { label: 'My Reports', icon: FileText,  path: '/my-reports' },
+  { label: 'Account',    icon: User,      path: '/account' },
 ];
 
 // ─── Desktop Dropdown ──────────────────────────────────────────────────────────
@@ -340,6 +341,7 @@ export const NavBar = () => {
             const isActive =
               location.pathname === item.path ||
               (item.path === '/horoscope/daily' && location.pathname.startsWith('/horoscope')) ||
+              (item.path === '/lumina' && location.pathname.startsWith('/lumina')) ||
               (item.path === '/my-reports' && location.pathname === '/my-reports') ||
               (item.path === '/account' && location.pathname === '/account');
             return (

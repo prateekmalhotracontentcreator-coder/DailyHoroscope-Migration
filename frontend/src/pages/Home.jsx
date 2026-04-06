@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Card } from '../components/ui/card';
 import { DOBModal } from '../components/DOBPrompt';
-import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart, Crown, BookOpen, ChevronRight } from 'lucide-react';
+import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart, Crown, BookOpen, ChevronRight, BookMarked } from 'lucide-react';
 import { Footer } from '../components/Footer';
 import { useHoroscope, ZODIAC_MAP } from '../hooks/useHoroscope';
 
@@ -33,6 +33,7 @@ export const Home = () => {
     { id: 'birthchart',title: 'Birth Chart Analysis', description: 'Comprehensive Vedic astrology report',             icon: Star,      color: 'text-gold',       bgColor: 'bg-gold/10',       path: '/birth-chart',   premium: true },
     { id: 'kundali',   title: 'Kundali Milan',        description: 'Marriage compatibility analysis',                  icon: Heart,     color: 'text-pink-500',  bgColor: 'bg-pink-500/10',   path: '/kundali-milan', premium: true },
     { id: 'brihat',    title: 'Brihat Kundli Pro',    description: '40+ page comprehensive Vedic life report',         icon: Crown,     color: 'text-purple-500',bgColor: 'bg-purple-500/10', path: '/brihat-kundli', premium: true },
+    { id: 'lumina',    title: 'Lumina',               description: 'AI spiritual companion — Bible, Gita & prayer',    icon: BookMarked,color: 'text-amber-500',  bgColor: 'bg-amber-500/10',  path: '/lumina' },
     { id: 'blog',      title: 'Cosmic Blog',          description: 'Astrology insights and zodiac guides',             icon: BookOpen,  color: 'text-purple-500',bgColor: 'bg-purple-500/10', path: '/blog' },
   ];
 
