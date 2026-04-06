@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { SEO } from '../components/SEO';
+import LoShuGrid from '../components/LoShuGrid';
+import LuckyElementsTable from '../components/LuckyElementsTable';
+import ContinueJourney from '../components/ContinueJourney';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import {
@@ -439,6 +442,32 @@ export const NumerologyPage = () => {
             </Card>
           ))}
 
+          {/* Structured blocks — Lo Shu Grid, Lucky Elements, Timing Panel */}
+          {(() => {
+            const trace = report.calculation_trace || {};
+            const tileCode = report.tile_code;
+            const showLoShu = Boolean(trace.lo_shu_grid_payload) && (tileCode === 'karmic_debt_loshu' || tileCode === 'premium_ankjyotish_report');
+            const showLucky = Boolean(trace.lucky_elements_table);
+            const showTiming = tileCode === 'favorable_timing' && (Array.isArray(trace.timing_forecast) || Array.isArray(trace.monthly_highlights));
+            return (
+              <>
+                {showLoShu && <LoShuGrid payload={trace.lo_shu_grid_payload} />}
+                {showLucky && <LuckyElementsTable payload={trace.lucky_elements_table} />}
+                {showTiming && (
+                  <Card className="p-5 border border-border">
+                    <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">{report.target_year ? `${report.target_year} Timing Outlook` : 'Timing Outlook'}</p>
+                    {Array.isArray(trace.timing_forecast) && trace.timing_forecast.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-3">{trace.timing_forecast.map(item => <span key={item} className="text-xs px-2 py-1 rounded-full border border-gold/30 text-gold">{item}</span>)}</div>
+                    )}
+                    {Array.isArray(trace.monthly_highlights) && trace.monthly_highlights.length > 0 && (
+                      <div className="space-y-2">{trace.monthly_highlights.map((item, i) => <p key={i} className="text-sm text-muted-foreground">{item}</p>)}</div>
+                    )}
+                  </Card>
+                )}
+              </>
+            );
+          })()}
+
           {/* Guidance */}
           <Card className="p-5 border border-gold/20 bg-gold/5">
             <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-2">Guidance</p>
@@ -447,6 +476,12 @@ export const NumerologyPage = () => {
               <p className="text-sm text-muted-foreground mt-3 pt-3 border-t border-gold/20">{report.remedy_note}</p>
             )}
           </Card>
+
+          {/* Continue Journey */}
+          <ContinueJourney
+            bridge="Deepen this reading with a complementary Vedic layer."
+            cta={{ label: 'Open Your Brihat Kundali', route: '/brihat-kundli' }}
+          />
 
           <Button onClick={() => { setSelectedTile(null); setActiveTab('tiles'); }} variant="outline" className="w-full border-border">
             Generate Another Report
