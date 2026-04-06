@@ -16,7 +16,7 @@ _log = logging.getLogger("panchang")
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v12-swiss"
+ENGINE_VERSION = "panchang-router-v13-global-cities"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -149,10 +149,12 @@ class PanchangLocation(BaseModel):
     model_config = ConfigDict(extra="ignore")
     slug: str
     label: str
-    country: str
+    city_name: str | None = None
+    country: str | None = None
     latitude: float
     longitude: float
     timezone: str
+    tz_abbr: str | None = None
 
 
 class PanchangSegment(BaseModel):
@@ -185,6 +187,18 @@ class PanchangLink(BaseModel):
     model_config = ConfigDict(extra="ignore")
     label: str
     href: str
+
+
+class PanchangLocationGroup(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    country_code: str
+    country_name: str
+    locations: list[PanchangLocation] = Field(default_factory=list)
+
+
+class PanchangLocationListResponse(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    groups: list[PanchangLocationGroup] = Field(default_factory=list)
 
 
 class PanchangSummary(BaseModel):
@@ -314,156 +328,516 @@ class ChoghadiyaResponse(BaseModel):
 # ---------------------------------------------------------------------------
 # Location catalogue
 # ---------------------------------------------------------------------------
-def _loc(slug, label, country, lat, lng, tz="Asia/Kolkata"):
-    return PanchangLocation(slug=slug, label=label, country=country,
-                            latitude=lat, longitude=lng, timezone=tz)
+def _build_location_catalog(
+    grouped_records: list[tuple[str, str, list[tuple[str, str, float, float, str, str]]]],
+) -> tuple[dict[str, "PanchangLocation"], list[dict]]:
+    default_locations: dict[str, "PanchangLocation"] = {}
+    location_groups: list[dict] = []
+    for country_code, country_name, records in grouped_records:
+        slugs: list[str] = []
+        for slug, city_name, latitude, longitude, timezone_name, tz_abbr in records:
+            default_locations[slug] = PanchangLocation(
+                slug=slug,
+                label=f"{city_name}, {country_name}",
+                city_name=city_name,
+                country=country_name,
+                latitude=latitude,
+                longitude=longitude,
+                timezone=timezone_name,
+                tz_abbr=tz_abbr,
+            )
+            slugs.append(slug)
+        location_groups.append(
+            {"country_code": country_code, "country_name": country_name, "slugs": slugs}
+        )
+    return default_locations, location_groups
 
-DEFAULT_LOCATIONS: dict[str, PanchangLocation] = {
 
-    # ── India — Tier 1 metro ────────────────────────────────────────────────
-    "new-delhi-india":        _loc("new-delhi-india",        "New Delhi",        "India",  28.6139,  77.2090),
-    "mumbai-india":           _loc("mumbai-india",           "Mumbai",           "India",  19.0760,  72.8777),
-    "bengaluru-india":        _loc("bengaluru-india",        "Bengaluru",        "India",  12.9716,  77.5946),
-    "kolkata-india":          _loc("kolkata-india",          "Kolkata",          "India",  22.5726,  88.3639),
-    "chennai-india":          _loc("chennai-india",          "Chennai",          "India",  13.0827,  80.2707),
-    "hyderabad-india":        _loc("hyderabad-india",        "Hyderabad",        "India",  17.3850,  78.4867),
-    "ahmedabad-india":        _loc("ahmedabad-india",        "Ahmedabad",        "India",  23.0225,  72.5714),
-    "pune-india":             _loc("pune-india",             "Pune",             "India",  18.5204,  73.8567),
-
-    # ── India — Major cities (>1 million, from Excel) ───────────────────────
-    "surat-india":            _loc("surat-india",            "Surat",            "India",  21.1702,  72.8311),
-    "jaipur-india":           _loc("jaipur-india",           "Jaipur",           "India",  26.9124,  75.7873),
-    "lucknow-india":          _loc("lucknow-india",          "Lucknow",          "India",  26.8467,  80.9462),
-    "kanpur-india":           _loc("kanpur-india",           "Kanpur",           "India",  26.4499,  80.3319),
-    "nagpur-india":           _loc("nagpur-india",           "Nagpur",           "India",  21.1458,  79.0882),
-    "indore-india":           _loc("indore-india",           "Indore",           "India",  22.7196,  75.8577),
-    "thane-india":            _loc("thane-india",            "Thane",            "India",  19.2183,  72.9781),
-    "bhopal-india":           _loc("bhopal-india",           "Bhopal",           "India",  23.2599,  77.4126),
-    "visakhapatnam-india":    _loc("visakhapatnam-india",    "Visakhapatnam",    "India",  17.6868,  83.2185),
-    "patna-india":            _loc("patna-india",            "Patna",            "India",  25.5941,  85.1376),
-    "vadodara-india":         _loc("vadodara-india",         "Vadodara",         "India",  22.3072,  73.1812),
-    "ghaziabad-india":        _loc("ghaziabad-india",        "Ghaziabad",        "India",  28.6692,  77.4538),
-    "ludhiana-india":         _loc("ludhiana-india",         "Ludhiana",         "India",  30.9010,  75.8573),
-    "agra-india":             _loc("agra-india",             "Agra",             "India",  27.1767,  78.0081),
-    "nashik-india":           _loc("nashik-india",           "Nashik",           "India",  19.9975,  73.7898),
-    "faridabad-india":        _loc("faridabad-india",        "Faridabad",        "India",  28.4089,  77.3178),
-    "meerut-india":           _loc("meerut-india",           "Meerut",           "India",  28.9845,  77.7064),
-    "rajkot-india":           _loc("rajkot-india",           "Rajkot",           "India",  22.3039,  70.8022),
-    "varanasi-india":         _loc("varanasi-india",         "Varanasi",         "India",  25.3176,  82.9739),
-    "srinagar-india":         _loc("srinagar-india",         "Srinagar",         "India",  34.0837,  74.7973),
-    "aurangabad-india":       _loc("aurangabad-india",       "Aurangabad",       "India",  19.8762,  75.3433),
-    "amritsar-india":         _loc("amritsar-india",         "Amritsar",         "India",  31.6340,  74.8723),
-    "navi-mumbai-india":      _loc("navi-mumbai-india",      "Navi Mumbai",      "India",  19.0330,  73.0297),
-    "prayagraj-india":        _loc("prayagraj-india",        "Prayagraj",        "India",  25.4358,  81.8463),
-    "ranchi-india":           _loc("ranchi-india",           "Ranchi",           "India",  23.3441,  85.3096),
-    "coimbatore-india":       _loc("coimbatore-india",       "Coimbatore",       "India",  11.0168,  76.9558),
-    "vijayawada-india":       _loc("vijayawada-india",       "Vijayawada",       "India",  16.5062,  80.6480),
-    "jodhpur-india":          _loc("jodhpur-india",          "Jodhpur",          "India",  26.2389,  73.0243),
-    "madurai-india":          _loc("madurai-india",          "Madurai",          "India",   9.9252,  78.1198),
-    "raipur-india":           _loc("raipur-india",           "Raipur",           "India",  21.2514,  81.6296),
-    "kota-india":             _loc("kota-india",             "Kota",             "India",  25.2138,  75.8648),
-    "guwahati-india":         _loc("guwahati-india",         "Guwahati",         "India",  26.1445,  91.7362),
-    "chandigarh-india":       _loc("chandigarh-india",       "Chandigarh",       "India",  30.7333,  76.7794),
-    "mysore-india":           _loc("mysore-india",           "Mysore",           "India",  12.2958,  76.6394),
-    "gurgaon-india":          _loc("gurgaon-india",          "Gurgaon",          "India",  28.4595,  77.0266),
-    "thiruvananthapuram-india":_loc("thiruvananthapuram-india","Thiruvananthapuram","India",  8.5241,  76.9366),
-    "kochi-india":            _loc("kochi-india",            "Kochi",            "India",   9.9312,  76.2673),
-    "dehradun-india":         _loc("dehradun-india",         "Dehradun",         "India",  30.3165,  78.0322),
-    "jammu-india":            _loc("jammu-india",            "Jammu",            "India",  32.7266,  74.8570),
-    "haridwar-india":         _loc("haridwar-india",         "Haridwar",         "India",  29.9457,  78.1642),
-    "ujjain-india":           _loc("ujjain-india",           "Ujjain",           "India",  23.1765,  75.7885),
-    "shimla-india":           _loc("shimla-india",           "Shimla",           "India",  31.1048,  77.1734),
-    "puducherry-india":       _loc("puducherry-india",       "Puducherry",       "India",  11.9416,  79.8083),
-    "gandhinagar-india":      _loc("gandhinagar-india",      "Gandhinagar",      "India",  23.2156,  72.6369),
-    "noida-india":            _loc("noida-india",            "Noida",            "India",  28.5355,  77.3910),
-    "bhubaneswar-india":      _loc("bhubaneswar-india",      "Bhubaneswar",      "India",  20.2961,  85.8245),
-    "tirupati-india":         _loc("tirupati-india",         "Tirupati",         "India",  13.6288,  79.4192),
-    "kozhikode-india":        _loc("kozhikode-india",        "Kozhikode",        "India",  11.2588,  75.7804),
-    "thrissur-india":         _loc("thrissur-india",         "Thrissur",         "India",  10.5276,  76.2144),
-
-    # ── United States ───────────────────────────────────────────────────────
-    "new-york-usa":           _loc("new-york-usa",           "New York",         "USA",    40.7128,  -74.0060, "America/New_York"),
-    "los-angeles-usa":        _loc("los-angeles-usa",        "Los Angeles",      "USA",    34.0522, -118.2437, "America/Los_Angeles"),
-    "chicago-usa":            _loc("chicago-usa",            "Chicago",          "USA",    41.8781,  -87.6298, "America/Chicago"),
-    "houston-usa":            _loc("houston-usa",            "Houston",          "USA",    29.7604,  -95.3698, "America/Chicago"),
-    "san-francisco-usa":      _loc("san-francisco-usa",      "San Francisco",    "USA",    37.7749, -122.4194, "America/Los_Angeles"),
-    "dallas-usa":             _loc("dallas-usa",             "Dallas",           "USA",    32.7767,  -96.7970, "America/Chicago"),
-    "seattle-usa":            _loc("seattle-usa",            "Seattle",          "USA",    47.6062, -122.3321, "America/Los_Angeles"),
-    "atlanta-usa":            _loc("atlanta-usa",            "Atlanta",          "USA",    33.7490,  -84.3880, "America/New_York"),
-
-    # ── United Kingdom ──────────────────────────────────────────────────────
-    "london-uk":              _loc("london-uk",              "London",           "UK",     51.5074,   -0.1278, "Europe/London"),
-    "birmingham-uk":          _loc("birmingham-uk",          "Birmingham",       "UK",     52.4862,   -1.8904, "Europe/London"),
-    "leicester-uk":           _loc("leicester-uk",           "Leicester",        "UK",     52.6369,   -1.1398, "Europe/London"),
-
-    # ── Canada ──────────────────────────────────────────────────────────────
-    "toronto-canada":         _loc("toronto-canada",         "Toronto",          "Canada", 43.6532,  -79.3832, "America/Toronto"),
-    "vancouver-canada":       _loc("vancouver-canada",       "Vancouver",        "Canada", 49.2827, -123.1207, "America/Vancouver"),
-    "brampton-canada":        _loc("brampton-canada",        "Brampton",         "Canada", 43.7315,  -79.7624, "America/Toronto"),
-
-    # ── UAE ─────────────────────────────────────────────────────────────────
-    "dubai-uae":              _loc("dubai-uae",              "Dubai",            "UAE",    25.2048,   55.2708, "Asia/Dubai"),
-    "abu-dhabi-uae":          _loc("abu-dhabi-uae",          "Abu Dhabi",        "UAE",    24.4539,   54.3773, "Asia/Dubai"),
-
-    # ── Saudi Arabia ─────────────────────────────────────────────────────────
-    "riyadh-saudi-arabia":    _loc("riyadh-saudi-arabia",    "Riyadh",           "Saudi Arabia", 24.6877,  46.7219, "Asia/Riyadh"),
-    "jeddah-saudi-arabia":    _loc("jeddah-saudi-arabia",    "Jeddah",           "Saudi Arabia", 21.4858,  39.1925, "Asia/Riyadh"),
-    "mecca-saudi-arabia":     _loc("mecca-saudi-arabia",     "Mecca",            "Saudi Arabia", 21.3891,  39.8579, "Asia/Riyadh"),
-    "medina-saudi-arabia":    _loc("medina-saudi-arabia",    "Medina",           "Saudi Arabia", 24.4672,  39.6150, "Asia/Riyadh"),
-
-    # ── Australia ────────────────────────────────────────────────────────────
-    "sydney-australia":       _loc("sydney-australia",       "Sydney",           "Australia", -33.8688, 151.2093, "Australia/Sydney"),
-    "melbourne-australia":    _loc("melbourne-australia",    "Melbourne",        "Australia", -37.8136, 144.9631, "Australia/Melbourne"),
-    "brisbane-australia":     _loc("brisbane-australia",     "Brisbane",         "Australia", -27.4698, 153.0251, "Australia/Brisbane"),
-
-    # ── Singapore ────────────────────────────────────────────────────────────
-    "singapore":              _loc("singapore",              "Singapore",        "Singapore",   1.3521, 103.8198, "Asia/Singapore"),
-
-    # ── Malaysia ─────────────────────────────────────────────────────────────
-    "kuala-lumpur-malaysia":  _loc("kuala-lumpur-malaysia",  "Kuala Lumpur",     "Malaysia",    3.1390, 101.6869, "Asia/Kuala_Lumpur"),
-    "george-town-malaysia":   _loc("george-town-malaysia",   "George Town",      "Malaysia",    5.4141, 100.3288, "Asia/Kuala_Lumpur"),
-    "johor-bahru-malaysia":   _loc("johor-bahru-malaysia",   "Johor Bahru",      "Malaysia",    1.4927, 103.7414, "Asia/Kuala_Lumpur"),
-
-    # ── Indonesia ────────────────────────────────────────────────────────────
-    "jakarta-indonesia":      _loc("jakarta-indonesia",      "Jakarta",          "Indonesia",  -6.2088, 106.8456, "Asia/Jakarta"),
-    "bali-indonesia":         _loc("bali-indonesia",         "Bali (Denpasar)",  "Indonesia",  -8.6705, 115.2126, "Asia/Makassar"),
-    "surabaya-indonesia":     _loc("surabaya-indonesia",     "Surabaya",         "Indonesia",  -7.2575, 112.7521, "Asia/Jakarta"),
-
-    # ── Thailand ─────────────────────────────────────────────────────────────
-    "bangkok-thailand":       _loc("bangkok-thailand",       "Bangkok",          "Thailand",   13.7563, 100.5018, "Asia/Bangkok"),
-    "chiang-mai-thailand":    _loc("chiang-mai-thailand",    "Chiang Mai",       "Thailand",   18.7883,  98.9853, "Asia/Bangkok"),
-
-    # ── Tibet ────────────────────────────────────────────────────────────────
-    "lhasa-tibet":            _loc("lhasa-tibet",            "Lhasa",            "Tibet",      29.6500,  91.1000, "Asia/Shanghai"),
-
-    # ── Nepal ───────────────────────────────────────────────────────────────
-    "kathmandu-nepal":        _loc("kathmandu-nepal",        "Kathmandu",        "Nepal",      27.7172,  85.3240, "Asia/Kathmandu"),
-
-    # ── New Zealand ──────────────────────────────────────────────────────────
-    "auckland-nz":            _loc("auckland-nz",            "Auckland",         "New Zealand", -36.8485, 174.7633, "Pacific/Auckland"),
-}
-
-LOCATION_LIST = list(DEFAULT_LOCATIONS.values())
-
-# ── Internal checkpoint PAN-12 ────────────────────────────────────────────────
-# Verify Saudi Arabia cities were successfully integrated into the catalogue.
-# Runs once at module load; any missing slug logs an ERROR at startup.
-_PAN12_REQUIRED_SLUGS = [
-    "riyadh-saudi-arabia",
-    "jeddah-saudi-arabia",
-    "mecca-saudi-arabia",
-    "medina-saudi-arabia",
+GLOBAL_LOCATION_GROUPED_RECORDS: list[tuple[str, str, list[tuple[str, str, float, float, str, str]]]] = [
+    ("IN", "India", [
+        ("new-delhi-india", "New Delhi", 28.6139, 77.2090, "Asia/Kolkata", "IST"),
+        ("mumbai-india", "Mumbai", 19.0760, 72.8777, "Asia/Kolkata", "IST"),
+        ("bengaluru-india", "Bengaluru", 12.9716, 77.5946, "Asia/Kolkata", "IST"),
+        ("kolkata-india", "Kolkata", 22.5726, 88.3639, "Asia/Kolkata", "IST"),
+        ("chennai-india", "Chennai", 13.0827, 80.2707, "Asia/Kolkata", "IST"),
+        ("hyderabad-india", "Hyderabad", 17.3850, 78.4867, "Asia/Kolkata", "IST"),
+        ("pune-india", "Pune", 18.5204, 73.8567, "Asia/Kolkata", "IST"),
+        ("ahmedabad-india", "Ahmedabad", 23.0225, 72.5714, "Asia/Kolkata", "IST"),
+        ("surat-india", "Surat", 21.1702, 72.8311, "Asia/Kolkata", "IST"),
+        ("jaipur-india", "Jaipur", 26.9124, 75.7873, "Asia/Kolkata", "IST"),
+        ("lucknow-india", "Lucknow", 26.8467, 80.9462, "Asia/Kolkata", "IST"),
+        ("kanpur-india", "Kanpur", 26.4499, 80.3319, "Asia/Kolkata", "IST"),
+        ("nagpur-india", "Nagpur", 21.1458, 79.0882, "Asia/Kolkata", "IST"),
+        ("indore-india", "Indore", 22.7196, 75.8577, "Asia/Kolkata", "IST"),
+        ("patna-india", "Patna", 25.5941, 85.1376, "Asia/Kolkata", "IST"),
+        ("visakhapatnam-india", "Visakhapatnam", 17.6868, 83.2185, "Asia/Kolkata", "IST"),
+        ("bhopal-india", "Bhopal", 23.2599, 77.4126, "Asia/Kolkata", "IST"),
+        ("ludhiana-india", "Ludhiana", 30.9010, 75.8573, "Asia/Kolkata", "IST"),
+        ("agra-india", "Agra", 27.1767, 78.0081, "Asia/Kolkata", "IST"),
+        ("nashik-india", "Nashik", 19.9975, 73.7898, "Asia/Kolkata", "IST"),
+        ("varanasi-india", "Varanasi", 25.3176, 82.9739, "Asia/Kolkata", "IST"),
+        ("meerut-india", "Meerut", 28.9845, 77.7064, "Asia/Kolkata", "IST"),
+        ("rajkot-india", "Rajkot", 22.3039, 70.8022, "Asia/Kolkata", "IST"),
+        ("vadodara-india", "Vadodara", 22.3072, 73.1812, "Asia/Kolkata", "IST"),
+        ("coimbatore-india", "Coimbatore", 11.0168, 76.9558, "Asia/Kolkata", "IST"),
+        ("madurai-india", "Madurai", 9.9252, 78.1198, "Asia/Kolkata", "IST"),
+        ("faridabad-india", "Faridabad", 28.4089, 77.3178, "Asia/Kolkata", "IST"),
+        ("ghaziabad-india", "Ghaziabad", 28.6692, 77.4538, "Asia/Kolkata", "IST"),
+        ("vijayawada-india", "Vijayawada", 16.5062, 80.6480, "Asia/Kolkata", "IST"),
+        ("kochi-india", "Kochi", 9.9312, 76.2673, "Asia/Kolkata", "IST"),
+        ("thiruvananthapuram-india", "Thiruvananthapuram", 8.5241, 76.9366, "Asia/Kolkata", "IST"),
+        ("bhubaneswar-india", "Bhubaneswar", 20.2961, 85.8245, "Asia/Kolkata", "IST"),
+        ("guwahati-india", "Guwahati", 26.1445, 91.7362, "Asia/Kolkata", "IST"),
+        ("amritsar-india", "Amritsar", 31.6340, 74.8723, "Asia/Kolkata", "IST"),
+    ]),
+    ("US", "United States", [
+        ("new-york-usa", "New York", 40.7128, -74.0060, "America/New_York", "ET"),
+        ("washington-dc-usa", "Washington, DC", 38.9072, -77.0369, "America/New_York", "ET"),
+        ("miami-usa", "Miami", 25.7617, -80.1918, "America/New_York", "ET"),
+        ("boston-usa", "Boston", 42.3601, -71.0589, "America/New_York", "ET"),
+        ("philadelphia-usa", "Philadelphia", 39.9526, -75.1652, "America/New_York", "ET"),
+        ("atlanta-usa", "Atlanta", 33.7490, -84.3880, "America/New_York", "ET"),
+        ("detroit-usa", "Detroit", 42.3314, -83.0458, "America/New_York", "ET"),
+        ("chicago-usa", "Chicago", 41.8781, -87.6298, "America/Chicago", "CT"),
+        ("houston-usa", "Houston", 29.7604, -95.3698, "America/Chicago", "CT"),
+        ("dallas-usa", "Dallas", 32.7767, -96.7970, "America/Chicago", "CT"),
+        ("san-antonio-usa", "San Antonio", 29.4241, -98.4936, "America/Chicago", "CT"),
+        ("minneapolis-usa", "Minneapolis", 44.9778, -93.2650, "America/Chicago", "CT"),
+        ("new-orleans-usa", "New Orleans", 29.9511, -90.0715, "America/Chicago", "CT"),
+        ("denver-usa", "Denver", 39.7392, -104.9903, "America/Denver", "MT"),
+        ("phoenix-usa", "Phoenix", 33.4484, -112.0740, "America/Phoenix", "MST"),
+        ("albuquerque-usa", "Albuquerque", 35.0844, -106.6504, "America/Denver", "MT"),
+        ("salt-lake-city-usa", "Salt Lake City", 40.7608, -111.8910, "America/Denver", "MT"),
+        ("los-angeles-usa", "Los Angeles", 34.0522, -118.2437, "America/Los_Angeles", "PT"),
+        ("san-francisco-usa", "San Francisco", 37.7749, -122.4194, "America/Los_Angeles", "PT"),
+        ("seattle-usa", "Seattle", 47.6062, -122.3321, "America/Los_Angeles", "PT"),
+        ("san-jose-usa", "San Jose", 37.3382, -121.8863, "America/Los_Angeles", "PT"),
+        ("las-vegas-usa", "Las Vegas", 36.1699, -115.1398, "America/Los_Angeles", "PT"),
+        ("honolulu-usa", "Honolulu", 21.3069, -157.8583, "Pacific/Honolulu", "HST"),
+        ("anchorage-usa", "Anchorage", 61.2181, -149.9003, "America/Anchorage", "AKST"),
+    ]),
+    ("CAN", "Canada", [
+        ("toronto-canada", "Toronto", 43.6532, -79.3832, "America/Toronto", "ET"),
+        ("montreal-canada", "Montreal", 45.5017, -73.5673, "America/Toronto", "ET"),
+        ("ottawa-canada", "Ottawa", 45.4215, -75.6972, "America/Toronto", "ET"),
+        ("calgary-canada", "Calgary", 51.0447, -114.0719, "America/Edmonton", "MT"),
+        ("edmonton-canada", "Edmonton", 53.5461, -113.4938, "America/Edmonton", "MT"),
+        ("vancouver-canada", "Vancouver", 49.2827, -123.1207, "America/Vancouver", "PT"),
+        ("winnipeg-canada", "Winnipeg", 49.8951, -97.1384, "America/Winnipeg", "CT"),
+        ("halifax-canada", "Halifax", 44.6488, -63.5752, "America/Halifax", "AT"),
+    ]),
+    ("MEX", "Mexico", [
+        ("mexico-city-mexico", "Mexico City", 19.4326, -99.1332, "America/Mexico_City", "CST"),
+        ("guadalajara-mexico", "Guadalajara", 20.6597, -103.3496, "America/Mexico_City", "CST"),
+        ("monterrey-mexico", "Monterrey", 25.6866, -100.3161, "America/Monterrey", "CST"),
+        ("puebla-mexico", "Puebla", 19.0414, -98.2063, "America/Mexico_City", "CST"),
+        ("tijuana-mexico", "Tijuana", 32.5149, -117.0382, "America/Tijuana", "PST"),
+        ("cancun-mexico", "Cancun", 21.1619, -86.8515, "America/Cancun", "EST"),
+        ("merida-mexico", "Merida", 20.9674, -89.5926, "America/Merida", "CST"),
+        ("leon-mexico", "Leon", 21.1220, -101.6823, "America/Mexico_City", "CST"),
+    ]),
+    ("BRA", "Brazil", [
+        ("sao-paulo-brazil", "Sao Paulo", -23.5505, -46.6333, "America/Sao_Paulo", "BRT"),
+        ("rio-de-janeiro-brazil", "Rio de Janeiro", -22.9068, -43.1729, "America/Sao_Paulo", "BRT"),
+        ("brasilia-brazil", "Brasilia", -15.7801, -47.9292, "America/Sao_Paulo", "BRT"),
+        ("salvador-brazil", "Salvador", -12.9777, -38.5016, "America/Bahia", "BRT"),
+        ("fortaleza-brazil", "Fortaleza", -3.7319, -38.5267, "America/Fortaleza", "BRT"),
+        ("recife-brazil", "Recife", -8.0476, -34.8770, "America/Recife", "BRT"),
+        ("manaus-brazil", "Manaus", -3.1190, -60.0217, "America/Manaus", "AMT"),
+        ("porto-alegre-brazil", "Porto Alegre", -30.0346, -51.2177, "America/Sao_Paulo", "BRT"),
+        ("curitiba-brazil", "Curitiba", -25.4284, -49.2733, "America/Sao_Paulo", "BRT"),
+        ("belem-brazil", "Belem", -1.4558, -48.4902, "America/Belem", "BRT"),
+    ]),
+    ("ARG", "Argentina", [
+        ("buenos-aires-argentina", "Buenos Aires", -34.6037, -58.3816, "America/Argentina/Buenos_Aires", "ART"),
+        ("cordoba-argentina", "Cordoba", -31.4201, -64.1888, "America/Argentina/Cordoba", "ART"),
+        ("rosario-argentina", "Rosario", -32.9442, -60.6505, "America/Argentina/Cordoba", "ART"),
+        ("mendoza-argentina", "Mendoza", -32.8895, -68.8458, "America/Argentina/Mendoza", "ART"),
+    ]),
+    ("CHL", "Chile", [
+        ("santiago-chile", "Santiago", -33.4489, -70.6693, "America/Santiago", "CLT"),
+        ("valparaiso-chile", "Valparaiso", -33.0472, -71.6127, "America/Santiago", "CLT"),
+        ("concepcion-chile", "Concepcion", -36.8201, -73.0444, "America/Santiago", "CLT"),
+    ]),
+    ("PER", "Peru", [
+        ("lima-peru", "Lima", -12.0464, -77.0428, "America/Lima", "PET"),
+        ("cusco-peru", "Cusco", -13.5319, -71.9675, "America/Lima", "PET"),
+        ("arequipa-peru", "Arequipa", -16.4090, -71.5375, "America/Lima", "PET"),
+    ]),
+    ("COL", "Colombia", [
+        ("bogota-colombia", "Bogota", 4.7110, -74.0721, "America/Bogota", "COT"),
+        ("medellin-colombia", "Medellin", 6.2442, -75.5812, "America/Bogota", "COT"),
+        ("cali-colombia", "Cali", 3.4516, -76.5320, "America/Bogota", "COT"),
+        ("barranquilla-colombia", "Barranquilla", 10.9639, -74.7964, "America/Bogota", "COT"),
+        ("cartagena-colombia", "Cartagena", 10.3910, -75.4794, "America/Bogota", "COT"),
+    ]),
+    ("VEN", "Venezuela", [
+        ("caracas-venezuela", "Caracas", 10.4806, -66.9036, "America/Caracas", "VET"),
+        ("maracaibo-venezuela", "Maracaibo", 10.6545, -71.6440, "America/Caracas", "VET"),
+    ]),
+    ("ECU", "Ecuador", [
+        ("quito-ecuador", "Quito", -0.1807, -78.4678, "America/Guayaquil", "ECT"),
+        ("guayaquil-ecuador", "Guayaquil", -2.1709, -79.9224, "America/Guayaquil", "ECT"),
+    ]),
+    ("BOL", "Bolivia", [
+        ("la-paz-bolivia", "La Paz", -16.4897, -68.1193, "America/La_Paz", "BOT"),
+        ("santa-cruz-bolivia", "Santa Cruz", -17.7833, -63.1821, "America/La_Paz", "BOT"),
+    ]),
+    ("PRY", "Paraguay", [
+        ("asuncion-paraguay", "Asuncion", -25.2637, -57.5759, "America/Asuncion", "PYT"),
+    ]),
+    ("URY", "Uruguay", [
+        ("montevideo-uruguay", "Montevideo", -34.9011, -56.1645, "America/Montevideo", "UYT"),
+    ]),
+    ("UK", "United Kingdom", [
+        ("london-uk", "London", 51.5072, -0.1276, "Europe/London", "GMT"),
+        ("birmingham-uk", "Birmingham", 52.4862, -1.8904, "Europe/London", "GMT"),
+        ("manchester-uk", "Manchester", 53.4808, -2.2426, "Europe/London", "GMT"),
+        ("glasgow-uk", "Glasgow", 55.8642, -4.2518, "Europe/London", "GMT"),
+        ("edinburgh-uk", "Edinburgh", 55.9533, -3.1883, "Europe/London", "GMT"),
+        ("belfast-uk", "Belfast", 54.5973, -5.9301, "Europe/London", "GMT"),
+    ]),
+    ("IRL", "Ireland", [
+        ("dublin-ireland", "Dublin", 53.3498, -6.2603, "Europe/Dublin", "GMT"),
+        ("cork-ireland", "Cork", 51.8985, -8.4756, "Europe/Dublin", "GMT"),
+    ]),
+    ("FRA", "France", [
+        ("paris-france", "Paris", 48.8566, 2.3522, "Europe/Paris", "CET"),
+        ("marseille-france", "Marseille", 43.2965, 5.3698, "Europe/Paris", "CET"),
+        ("lyon-france", "Lyon", 45.7640, 4.8357, "Europe/Paris", "CET"),
+        ("toulouse-france", "Toulouse", 43.6047, 1.4442, "Europe/Paris", "CET"),
+        ("nice-france", "Nice", 43.7102, 7.2620, "Europe/Paris", "CET"),
+        ("bordeaux-france", "Bordeaux", 44.8378, -0.5792, "Europe/Paris", "CET"),
+        ("lille-france", "Lille", 50.6292, 3.0573, "Europe/Paris", "CET"),
+    ]),
+    ("DEU", "Germany", [
+        ("berlin-germany", "Berlin", 52.5200, 13.4050, "Europe/Berlin", "CET"),
+        ("munich-germany", "Munich", 48.1351, 11.5820, "Europe/Berlin", "CET"),
+        ("frankfurt-germany", "Frankfurt", 50.1109, 8.6821, "Europe/Berlin", "CET"),
+        ("hamburg-germany", "Hamburg", 53.5511, 9.9937, "Europe/Berlin", "CET"),
+        ("cologne-germany", "Cologne", 50.9375, 6.9603, "Europe/Berlin", "CET"),
+        ("stuttgart-germany", "Stuttgart", 48.7758, 9.1829, "Europe/Berlin", "CET"),
+        ("dusseldorf-germany", "Dusseldorf", 51.2277, 6.7735, "Europe/Berlin", "CET"),
+        ("leipzig-germany", "Leipzig", 51.3397, 12.3731, "Europe/Berlin", "CET"),
+    ]),
+    ("ESP", "Spain", [
+        ("madrid-spain", "Madrid", 40.4168, -3.7038, "Europe/Madrid", "CET"),
+        ("barcelona-spain", "Barcelona", 41.3874, 2.1686, "Europe/Madrid", "CET"),
+        ("valencia-spain", "Valencia", 39.4699, -0.3763, "Europe/Madrid", "CET"),
+        ("seville-spain", "Seville", 37.3891, -5.9845, "Europe/Madrid", "CET"),
+        ("malaga-spain", "Malaga", 36.7213, -4.4214, "Europe/Madrid", "CET"),
+        ("bilbao-spain", "Bilbao", 43.2630, -2.9350, "Europe/Madrid", "CET"),
+    ]),
+    ("ITA", "Italy", [
+        ("rome-italy", "Rome", 41.9028, 12.4964, "Europe/Rome", "CET"),
+        ("milan-italy", "Milan", 45.4642, 9.1900, "Europe/Rome", "CET"),
+        ("naples-italy", "Naples", 40.8518, 14.2681, "Europe/Rome", "CET"),
+        ("turin-italy", "Turin", 45.0703, 7.6869, "Europe/Rome", "CET"),
+        ("florence-italy", "Florence", 43.7696, 11.2558, "Europe/Rome", "CET"),
+        ("bologna-italy", "Bologna", 44.4949, 11.3426, "Europe/Rome", "CET"),
+        ("venice-italy", "Venice", 45.4408, 12.3155, "Europe/Rome", "CET"),
+    ]),
+    ("NLD", "Netherlands", [
+        ("amsterdam-netherlands", "Amsterdam", 52.3676, 4.9041, "Europe/Amsterdam", "CET"),
+        ("rotterdam-netherlands", "Rotterdam", 51.9244, 4.4777, "Europe/Amsterdam", "CET"),
+        ("the-hague-netherlands", "The Hague", 52.0705, 4.3007, "Europe/Amsterdam", "CET"),
+        ("eindhoven-netherlands", "Eindhoven", 51.4416, 5.4697, "Europe/Amsterdam", "CET"),
+    ]),
+    ("BEL", "Belgium", [
+        ("brussels-belgium", "Brussels", 50.8503, 4.3517, "Europe/Brussels", "CET"),
+        ("antwerp-belgium", "Antwerp", 51.2194, 4.4025, "Europe/Brussels", "CET"),
+    ]),
+    ("CHE", "Switzerland", [
+        ("zurich-switzerland", "Zurich", 47.3769, 8.5417, "Europe/Zurich", "CET"),
+        ("geneva-switzerland", "Geneva", 46.2044, 6.1432, "Europe/Zurich", "CET"),
+        ("basel-switzerland", "Basel", 47.5596, 7.5886, "Europe/Zurich", "CET"),
+    ]),
+    ("AUT", "Austria", [
+        ("vienna-austria", "Vienna", 48.2082, 16.3738, "Europe/Vienna", "CET"),
+        ("salzburg-austria", "Salzburg", 47.8095, 13.0550, "Europe/Vienna", "CET"),
+    ]),
+    ("PRT", "Portugal", [
+        ("lisbon-portugal", "Lisbon", 38.7223, -9.1393, "Europe/Lisbon", "WET"),
+        ("porto-portugal", "Porto", 41.1579, -8.6291, "Europe/Lisbon", "WET"),
+    ]),
+    ("SWE", "Sweden", [
+        ("stockholm-sweden", "Stockholm", 59.3293, 18.0686, "Europe/Stockholm", "CET"),
+        ("gothenburg-sweden", "Gothenburg", 57.7089, 11.9746, "Europe/Stockholm", "CET"),
+        ("malmo-sweden", "Malmo", 55.6050, 13.0038, "Europe/Stockholm", "CET"),
+    ]),
+    ("NOR", "Norway", [
+        ("oslo-norway", "Oslo", 59.9139, 10.7522, "Europe/Oslo", "CET"),
+        ("bergen-norway", "Bergen", 60.3913, 5.3221, "Europe/Oslo", "CET"),
+        ("trondheim-norway", "Trondheim", 63.4305, 10.3951, "Europe/Oslo", "CET"),
+    ]),
+    ("DNK", "Denmark", [
+        ("copenhagen-denmark", "Copenhagen", 55.6761, 12.5683, "Europe/Copenhagen", "CET"),
+        ("aarhus-denmark", "Aarhus", 56.1629, 10.2039, "Europe/Copenhagen", "CET"),
+    ]),
+    ("FIN", "Finland", [
+        ("helsinki-finland", "Helsinki", 60.1699, 24.9384, "Europe/Helsinki", "EET"),
+        ("tampere-finland", "Tampere", 61.4978, 23.7610, "Europe/Helsinki", "EET"),
+    ]),
+    ("POL", "Poland", [
+        ("warsaw-poland", "Warsaw", 52.2297, 21.0122, "Europe/Warsaw", "CET"),
+        ("krakow-poland", "Krakow", 50.0647, 19.9450, "Europe/Warsaw", "CET"),
+        ("wroclaw-poland", "Wroclaw", 51.1079, 17.0385, "Europe/Warsaw", "CET"),
+        ("gdansk-poland", "Gdansk", 54.3520, 18.6466, "Europe/Warsaw", "CET"),
+        ("poznan-poland", "Poznan", 52.4064, 16.9252, "Europe/Warsaw", "CET"),
+    ]),
+    ("CZE", "Czech Republic", [
+        ("prague-czech-republic", "Prague", 50.0755, 14.4378, "Europe/Prague", "CET"),
+        ("brno-czech-republic", "Brno", 49.1951, 16.6068, "Europe/Prague", "CET"),
+    ]),
+    ("HUN", "Hungary", [
+        ("budapest-hungary", "Budapest", 47.4979, 19.0402, "Europe/Budapest", "CET"),
+    ]),
+    ("ROU", "Romania", [
+        ("bucharest-romania", "Bucharest", 44.4268, 26.1025, "Europe/Bucharest", "EET"),
+        ("cluj-napoca-romania", "Cluj-Napoca", 46.7712, 23.6236, "Europe/Bucharest", "EET"),
+    ]),
+    ("GRC", "Greece", [
+        ("athens-greece", "Athens", 37.9838, 23.7275, "Europe/Athens", "EET"),
+        ("thessaloniki-greece", "Thessaloniki", 40.6401, 22.9444, "Europe/Athens", "EET"),
+    ]),
+    ("TUR", "Turkey", [
+        ("istanbul-turkey", "Istanbul", 41.0082, 28.9784, "Europe/Istanbul", "TRT"),
+        ("ankara-turkey", "Ankara", 39.9334, 32.8597, "Europe/Istanbul", "TRT"),
+        ("izmir-turkey", "Izmir", 38.4237, 27.1428, "Europe/Istanbul", "TRT"),
+        ("antalya-turkey", "Antalya", 36.8969, 30.7133, "Europe/Istanbul", "TRT"),
+    ]),
+    ("RUS", "Russia", [
+        ("moscow-russia", "Moscow", 55.7558, 37.6173, "Europe/Moscow", "MSK"),
+        ("saint-petersburg-russia", "Saint Petersburg", 59.9311, 30.3609, "Europe/Moscow", "MSK"),
+        ("novosibirsk-russia", "Novosibirsk", 55.0084, 82.9357, "Asia/Novosibirsk", "NOVT"),
+        ("yekaterinburg-russia", "Yekaterinburg", 56.8389, 60.6057, "Asia/Yekaterinburg", "YEKT"),
+        ("vladivostok-russia", "Vladivostok", 43.1155, 131.8855, "Asia/Vladivostok", "VLAT"),
+    ]),
+    ("UKR", "Ukraine", [
+        ("kyiv-ukraine", "Kyiv", 50.4501, 30.5234, "Europe/Kyiv", "EET"),
+        ("odesa-ukraine", "Odesa", 46.4825, 30.7233, "Europe/Kyiv", "EET"),
+        ("lviv-ukraine", "Lviv", 49.8397, 24.0297, "Europe/Kyiv", "EET"),
+    ]),
+    ("ISR", "Israel", [
+        ("jerusalem-israel", "Jerusalem", 31.7683, 35.2137, "Asia/Jerusalem", "IST"),
+        ("tel-aviv-israel", "Tel Aviv", 32.0853, 34.7818, "Asia/Jerusalem", "IST"),
+    ]),
+    ("UAE", "United Arab Emirates", [
+        ("dubai-uae", "Dubai", 25.2048, 55.2708, "Asia/Dubai", "GST"),
+        ("abu-dhabi-uae", "Abu Dhabi", 24.4539, 54.3773, "Asia/Dubai", "GST"),
+        ("sharjah-uae", "Sharjah", 25.3463, 55.4209, "Asia/Dubai", "GST"),
+        ("ajman-uae", "Ajman", 25.4052, 55.5136, "Asia/Dubai", "GST"),
+    ]),
+    ("SA", "Saudi Arabia", [
+        ("riyadh-saudi-arabia", "Riyadh", 24.7136, 46.6753, "Asia/Riyadh", "AST"),
+        ("jeddah-saudi-arabia", "Jeddah", 21.4858, 39.1925, "Asia/Riyadh", "AST"),
+        ("mecca-saudi-arabia", "Mecca", 21.3891, 39.8579, "Asia/Riyadh", "AST"),
+        ("medina-saudi-arabia", "Medina", 24.5247, 39.5692, "Asia/Riyadh", "AST"),
+        ("dammam-saudi-arabia", "Dammam", 26.4207, 50.0888, "Asia/Riyadh", "AST"),
+    ]),
+    ("QAT", "Qatar", [
+        ("doha-qatar", "Doha", 25.2854, 51.5310, "Asia/Qatar", "AST"),
+    ]),
+    ("KWT", "Kuwait", [
+        ("kuwait-city-kuwait", "Kuwait City", 29.3759, 47.9774, "Asia/Kuwait", "AST"),
+    ]),
+    ("BHR", "Bahrain", [
+        ("manama-bahrain", "Manama", 26.2235, 50.5876, "Asia/Bahrain", "AST"),
+    ]),
+    ("OMN", "Oman", [
+        ("muscat-oman", "Muscat", 23.5880, 58.3829, "Asia/Muscat", "GST"),
+    ]),
+    ("EGY", "Egypt", [
+        ("cairo-egypt", "Cairo", 30.0444, 31.2357, "Africa/Cairo", "EET"),
+        ("alexandria-egypt", "Alexandria", 31.2001, 29.9187, "Africa/Cairo", "EET"),
+        ("giza-egypt", "Giza", 30.0131, 31.2089, "Africa/Cairo", "EET"),
+        ("luxor-egypt", "Luxor", 25.6872, 32.6396, "Africa/Cairo", "EET"),
+    ]),
+    ("ZAF", "South Africa", [
+        ("johannesburg-south-africa", "Johannesburg", -26.2041, 28.0473, "Africa/Johannesburg", "SAST"),
+        ("cape-town-south-africa", "Cape Town", -33.9249, 18.4241, "Africa/Johannesburg", "SAST"),
+        ("durban-south-africa", "Durban", -29.8587, 31.0218, "Africa/Johannesburg", "SAST"),
+        ("pretoria-south-africa", "Pretoria", -25.7479, 28.2293, "Africa/Johannesburg", "SAST"),
+    ]),
+    ("NGA", "Nigeria", [
+        ("lagos-nigeria", "Lagos", 6.5244, 3.3792, "Africa/Lagos", "WAT"),
+        ("abuja-nigeria", "Abuja", 9.0765, 7.3986, "Africa/Lagos", "WAT"),
+        ("kano-nigeria", "Kano", 12.0022, 8.5920, "Africa/Lagos", "WAT"),
+        ("port-harcourt-nigeria", "Port Harcourt", 4.8156, 7.0498, "Africa/Lagos", "WAT"),
+    ]),
+    ("KEN", "Kenya", [
+        ("nairobi-kenya", "Nairobi", -1.2921, 36.8219, "Africa/Nairobi", "EAT"),
+        ("mombasa-kenya", "Mombasa", -4.0435, 39.6682, "Africa/Nairobi", "EAT"),
+    ]),
+    ("ETH", "Ethiopia", [
+        ("addis-ababa-ethiopia", "Addis Ababa", 8.9806, 38.7578, "Africa/Addis_Ababa", "EAT"),
+    ]),
+    ("MAR", "Morocco", [
+        ("casablanca-morocco", "Casablanca", 33.5731, -7.5898, "Africa/Casablanca", "WET"),
+        ("rabat-morocco", "Rabat", 34.0209, -6.8416, "Africa/Casablanca", "WET"),
+        ("marrakech-morocco", "Marrakech", 31.6295, -7.9811, "Africa/Casablanca", "WET"),
+    ]),
+    ("DZA", "Algeria", [
+        ("algiers-algeria", "Algiers", 36.7538, 3.0588, "Africa/Algiers", "CET"),
+    ]),
+    ("TUN", "Tunisia", [
+        ("tunis-tunisia", "Tunis", 36.8065, 10.1815, "Africa/Tunis", "CET"),
+    ]),
+    ("GHA", "Ghana", [
+        ("accra-ghana", "Accra", 5.6037, -0.1870, "Africa/Accra", "GMT"),
+    ]),
+    ("TZA", "Tanzania", [
+        ("dar-es-salaam-tanzania", "Dar es Salaam", -6.7924, 39.2083, "Africa/Dar_es_Salaam", "EAT"),
+    ]),
+    ("UGA", "Uganda", [
+        ("kampala-uganda", "Kampala", 0.3476, 32.5825, "Africa/Kampala", "EAT"),
+    ]),
+    ("NPL", "Nepal", [
+        ("kathmandu-nepal", "Kathmandu", 27.7172, 85.3240, "Asia/Kathmandu", "NPT"),
+        ("pokhara-nepal", "Pokhara", 28.2096, 83.9856, "Asia/Kathmandu", "NPT"),
+    ]),
+    ("LKA", "Sri Lanka", [
+        ("colombo-sri-lanka", "Colombo", 6.9271, 79.8612, "Asia/Colombo", "IST"),
+        ("kandy-sri-lanka", "Kandy", 7.2906, 80.6337, "Asia/Colombo", "IST"),
+    ]),
+    ("BGD", "Bangladesh", [
+        ("dhaka-bangladesh", "Dhaka", 23.8103, 90.4125, "Asia/Dhaka", "BST"),
+        ("chittagong-bangladesh", "Chittagong", 22.3569, 91.7832, "Asia/Dhaka", "BST"),
+        ("sylhet-bangladesh", "Sylhet", 24.8949, 91.8687, "Asia/Dhaka", "BST"),
+        ("khulna-bangladesh", "Khulna", 22.8456, 89.5403, "Asia/Dhaka", "BST"),
+    ]),
+    ("PAK", "Pakistan", [
+        ("karachi-pakistan", "Karachi", 24.8607, 67.0011, "Asia/Karachi", "PKT"),
+        ("lahore-pakistan", "Lahore", 31.5204, 74.3587, "Asia/Karachi", "PKT"),
+        ("islamabad-pakistan", "Islamabad", 33.6844, 73.0479, "Asia/Karachi", "PKT"),
+        ("rawalpindi-pakistan", "Rawalpindi", 33.5651, 73.0169, "Asia/Karachi", "PKT"),
+        ("peshawar-pakistan", "Peshawar", 34.0151, 71.5249, "Asia/Karachi", "PKT"),
+    ]),
+    ("AFG", "Afghanistan", [
+        ("kabul-afghanistan", "Kabul", 34.5553, 69.2075, "Asia/Kabul", "AFT"),
+    ]),
+    ("CHN", "China", [
+        ("beijing-china", "Beijing", 39.9042, 116.4074, "Asia/Shanghai", "CST"),
+        ("shanghai-china", "Shanghai", 31.2304, 121.4737, "Asia/Shanghai", "CST"),
+        ("guangzhou-china", "Guangzhou", 23.1291, 113.2644, "Asia/Shanghai", "CST"),
+        ("shenzhen-china", "Shenzhen", 22.5431, 114.0579, "Asia/Shanghai", "CST"),
+        ("chengdu-china", "Chengdu", 30.5728, 104.0668, "Asia/Shanghai", "CST"),
+        ("chongqing-china", "Chongqing", 29.4316, 106.9123, "Asia/Shanghai", "CST"),
+        ("xian-china", "Xi'an", 34.3416, 108.9398, "Asia/Shanghai", "CST"),
+        ("wuhan-china", "Wuhan", 30.5928, 114.3055, "Asia/Shanghai", "CST"),
+        ("hangzhou-china", "Hangzhou", 30.2741, 120.1551, "Asia/Shanghai", "CST"),
+        ("nanjing-china", "Nanjing", 32.0603, 118.7969, "Asia/Shanghai", "CST"),
+        ("tianjin-china", "Tianjin", 39.3434, 117.3616, "Asia/Shanghai", "CST"),
+        ("harbin-china", "Harbin", 45.8038, 126.5349, "Asia/Shanghai", "CST"),
+        ("urumqi-china", "Urumqi", 43.8256, 87.6168, "Asia/Shanghai", "CST"),
+    ]),
+    ("HKG", "Hong Kong", [
+        ("hong-kong", "Hong Kong", 22.3193, 114.1694, "Asia/Hong_Kong", "HKT"),
+    ]),
+    ("TWN", "Taiwan", [
+        ("taipei-taiwan", "Taipei", 25.0330, 121.5654, "Asia/Taipei", "CST"),
+        ("kaohsiung-taiwan", "Kaohsiung", 22.6273, 120.3014, "Asia/Taipei", "CST"),
+        ("taichung-taiwan", "Taichung", 24.1477, 120.6736, "Asia/Taipei", "CST"),
+    ]),
+    ("JPN", "Japan", [
+        ("tokyo-japan", "Tokyo", 35.6762, 139.6503, "Asia/Tokyo", "JST"),
+        ("osaka-japan", "Osaka", 34.6937, 135.5023, "Asia/Tokyo", "JST"),
+        ("kyoto-japan", "Kyoto", 35.0116, 135.7681, "Asia/Tokyo", "JST"),
+        ("nagoya-japan", "Nagoya", 35.1815, 136.9066, "Asia/Tokyo", "JST"),
+        ("sapporo-japan", "Sapporo", 43.0618, 141.3545, "Asia/Tokyo", "JST"),
+        ("fukuoka-japan", "Fukuoka", 33.5904, 130.4017, "Asia/Tokyo", "JST"),
+        ("hiroshima-japan", "Hiroshima", 34.3853, 132.4553, "Asia/Tokyo", "JST"),
+    ]),
+    ("KOR", "South Korea", [
+        ("seoul-south-korea", "Seoul", 37.5665, 126.9780, "Asia/Seoul", "KST"),
+        ("busan-south-korea", "Busan", 35.1796, 129.0756, "Asia/Seoul", "KST"),
+        ("incheon-south-korea", "Incheon", 37.4563, 126.7052, "Asia/Seoul", "KST"),
+        ("daegu-south-korea", "Daegu", 35.8714, 128.6014, "Asia/Seoul", "KST"),
+        ("daejeon-south-korea", "Daejeon", 36.3504, 127.3845, "Asia/Seoul", "KST"),
+    ]),
+    ("SG", "Singapore", [
+        ("singapore-city-singapore", "Singapore", 1.3521, 103.8198, "Asia/Singapore", "SGT"),
+    ]),
+    ("MYS", "Malaysia", [
+        ("kuala-lumpur-malaysia", "Kuala Lumpur", 3.1390, 101.6869, "Asia/Kuala_Lumpur", "MYT"),
+        ("johor-bahru-malaysia", "Johor Bahru", 1.4927, 103.7414, "Asia/Kuala_Lumpur", "MYT"),
+        ("george-town-malaysia", "George Town", 5.4141, 100.3288, "Asia/Kuala_Lumpur", "MYT"),
+        ("kota-kinabalu-malaysia", "Kota Kinabalu", 5.9804, 116.0735, "Asia/Kuala_Lumpur", "MYT"),
+    ]),
+    ("ID", "Indonesia", [
+        ("jakarta-indonesia", "Jakarta", -6.2088, 106.8456, "Asia/Jakarta", "WIB"),
+        ("surabaya-indonesia", "Surabaya", -7.2575, 112.7521, "Asia/Jakarta", "WIB"),
+        ("bandung-indonesia", "Bandung", -6.9175, 107.6191, "Asia/Jakarta", "WIB"),
+        ("medan-indonesia", "Medan", 3.5952, 98.6722, "Asia/Jakarta", "WIB"),
+        ("denpasar-indonesia", "Denpasar", -8.6500, 115.2167, "Asia/Makassar", "WITA"),
+        ("makassar-indonesia", "Makassar", -5.1477, 119.4327, "Asia/Makassar", "WITA"),
+        ("yogyakarta-indonesia", "Yogyakarta", -7.7956, 110.3695, "Asia/Jakarta", "WIB"),
+    ]),
+    ("THA", "Thailand", [
+        ("bangkok-thailand", "Bangkok", 13.7563, 100.5018, "Asia/Bangkok", "ICT"),
+        ("chiang-mai-thailand", "Chiang Mai", 18.7883, 98.9853, "Asia/Bangkok", "ICT"),
+        ("phuket-thailand", "Phuket", 7.8804, 98.3923, "Asia/Bangkok", "ICT"),
+        ("pattaya-thailand", "Pattaya", 12.9236, 100.8825, "Asia/Bangkok", "ICT"),
+    ]),
+    ("VNM", "Vietnam", [
+        ("ho-chi-minh-city-vietnam", "Ho Chi Minh City", 10.8231, 106.6297, "Asia/Ho_Chi_Minh", "ICT"),
+        ("hanoi-vietnam", "Hanoi", 21.0278, 105.8342, "Asia/Ho_Chi_Minh", "ICT"),
+        ("da-nang-vietnam", "Da Nang", 16.0544, 108.2022, "Asia/Ho_Chi_Minh", "ICT"),
+        ("hai-phong-vietnam", "Hai Phong", 20.8449, 106.6881, "Asia/Ho_Chi_Minh", "ICT"),
+    ]),
+    ("PHL", "Philippines", [
+        ("manila-philippines", "Manila", 14.5995, 120.9842, "Asia/Manila", "PHT"),
+        ("cebu-philippines", "Cebu", 10.3157, 123.8854, "Asia/Manila", "PHT"),
+        ("davao-philippines", "Davao", 7.1907, 125.4553, "Asia/Manila", "PHT"),
+        ("quezon-city-philippines", "Quezon City", 14.6760, 121.0437, "Asia/Manila", "PHT"),
+    ]),
+    ("KHM", "Cambodia", [
+        ("phnom-penh-cambodia", "Phnom Penh", 11.5564, 104.9282, "Asia/Phnom_Penh", "ICT"),
+    ]),
+    ("LAO", "Laos", [
+        ("vientiane-laos", "Vientiane", 17.9757, 102.6331, "Asia/Vientiane", "ICT"),
+    ]),
+    ("MMR", "Myanmar", [
+        ("yangon-myanmar", "Yangon", 16.8409, 96.1735, "Asia/Yangon", "MMT"),
+        ("mandalay-myanmar", "Mandalay", 21.9588, 96.0891, "Asia/Yangon", "MMT"),
+    ]),
+    ("MNG", "Mongolia", [
+        ("ulaanbaatar-mongolia", "Ulaanbaatar", 47.8864, 106.9057, "Asia/Ulaanbaatar", "ULAT"),
+    ]),
+    ("TIB", "Tibet", [
+        ("lhasa-tibet", "Lhasa", 29.6520, 91.1721, "Asia/Shanghai", "CST"),
+        ("shigatse-tibet", "Shigatse", 29.2673, 88.8808, "Asia/Shanghai", "CST"),
+    ]),
+    ("AUS", "Australia", [
+        ("sydney-australia", "Sydney", -33.8688, 151.2093, "Australia/Sydney", "AEST"),
+        ("melbourne-australia", "Melbourne", -37.8136, 144.9631, "Australia/Melbourne", "AEST"),
+        ("brisbane-australia", "Brisbane", -27.4698, 153.0251, "Australia/Brisbane", "AEST"),
+        ("perth-australia", "Perth", -31.9505, 115.8605, "Australia/Perth", "AWST"),
+        ("adelaide-australia", "Adelaide", -34.9285, 138.6007, "Australia/Adelaide", "ACST"),
+        ("canberra-australia", "Canberra", -35.2809, 149.1300, "Australia/Sydney", "AEST"),
+        ("hobart-australia", "Hobart", -42.8821, 147.3272, "Australia/Hobart", "AEST"),
+        ("darwin-australia", "Darwin", -12.4634, 130.8456, "Australia/Darwin", "ACST"),
+        ("gold-coast-australia", "Gold Coast", -28.0167, 153.4000, "Australia/Brisbane", "AEST"),
+    ]),
+    ("NZL", "New Zealand", [
+        ("auckland-new-zealand", "Auckland", -36.8509, 174.7645, "Pacific/Auckland", "NZST"),
+        ("wellington-new-zealand", "Wellington", -41.2866, 174.7756, "Pacific/Auckland", "NZST"),
+        ("christchurch-new-zealand", "Christchurch", -43.5321, 172.6362, "Pacific/Auckland", "NZST"),
+        ("queenstown-new-zealand", "Queenstown", -45.0312, 168.6626, "Pacific/Auckland", "NZST"),
+    ]),
+    ("FJI", "Fiji", [
+        ("suva-fiji", "Suva", -18.1248, 178.4501, "Pacific/Fiji", "FJT"),
+    ]),
+    ("PNG", "Papua New Guinea", [
+        ("port-moresby-papua-new-guinea", "Port Moresby", -9.4438, 147.1803, "Pacific/Port_Moresby", "PGT"),
+    ]),
+    ("WSM", "Samoa", [
+        ("apia-samoa", "Apia", -13.8507, -171.7514, "Pacific/Apia", "WSST"),
+    ]),
 ]
-_pan12_missing = [s for s in _PAN12_REQUIRED_SLUGS if s not in DEFAULT_LOCATIONS]
-if _pan12_missing:
-    _log.error(
-        "PAN-12 CHECKPOINT: Saudi Arabia slugs missing from location catalogue: %s. "
-        "Add them to DEFAULT_LOCATIONS in panchang_router.py.",
-        _pan12_missing,
-    )
-else:
-    _log.info("PAN-12 OK: All 4 Saudi Arabia cities present in location catalogue.")
-# ─────────────────────────────────────────────────────────────────────────────
+
+DEFAULT_LOCATIONS, LOCATION_GROUPS = _build_location_catalog(GLOBAL_LOCATION_GROUPED_RECORDS)
+LOCATION_LIST = list(DEFAULT_LOCATIONS.values())
 
 
 TITHI_NAMES = [
@@ -1040,8 +1414,23 @@ def _build_choghadiya(
 
 @router.get("/locations", response_model=list[PanchangLocation])
 async def get_locations() -> list[PanchangLocation]:
-    """Return the full catalogue of supported Panchang locations."""
+    """Return the full catalogue of supported Panchang locations (flat list)."""
     return LOCATION_LIST
+
+
+@router.get("/locations/grouped", response_model=PanchangLocationListResponse)
+async def get_locations_grouped() -> PanchangLocationListResponse:
+    """Return the location catalogue grouped by country (for city picker components)."""
+    return PanchangLocationListResponse(
+        groups=[
+            PanchangLocationGroup(
+                country_code=group["country_code"],
+                country_name=group["country_name"],
+                locations=[DEFAULT_LOCATIONS[slug] for slug in group["slugs"]],
+            )
+            for group in LOCATION_GROUPS
+        ]
+    )
 
 
 @router.get("/daily", response_model=PanchangDailyResponse)

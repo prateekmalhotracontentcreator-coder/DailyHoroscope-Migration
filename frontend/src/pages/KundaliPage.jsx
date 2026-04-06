@@ -1,6 +1,7 @@
 import React, { startTransition, useDeferredValue, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import SharedBirthCityPicker from "../components/SharedBirthCityPicker";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -259,6 +260,7 @@ function KundaliPage() {
     date: "",
     time: "14:30",
     time_precision: "exact",
+    city_slug: "",
     place_label: "Mumbai, Maharashtra, India",
     latitude: "",
     longitude: "",
@@ -615,14 +617,24 @@ function KundaliPage() {
                 <option value="unknown">Unknown</option>
               </select>
             </label>
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ color: "#6D542A", fontSize: 13 }}>Place</span>
-              <input value={form.place_label} onChange={(event) => setForm((current) => ({ ...current, place_label: event.target.value }))} />
-            </label>
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ color: "#6D542A", fontSize: 13 }}>Timezone</span>
-              <input value={form.timezone} onChange={(event) => setForm((current) => ({ ...current, timezone: event.target.value }))} />
-            </label>
+            <div style={{ display: "grid", gap: 6, gridColumn: "span 2" }}>
+              <SharedBirthCityPicker
+                inputId="kundali-birth-location"
+                label="Birth Location"
+                value={form.city_slug}
+                labelStyle={{ color: "#6D542A", fontSize: 13 }}
+                onChange={(city) =>
+                  setForm((current) => ({
+                    ...current,
+                    city_slug: city.slug,
+                    place_label: city.city_name,
+                    latitude: city.latitude,
+                    longitude: city.longitude,
+                    timezone: city.timezone,
+                  }))
+                }
+              />
+            </div>
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
             <button onClick={handleCompute} disabled={loading} style={{ padding: "12px 18px", borderRadius: 999, border: "none", background: "#6E4C18", color: "#FFF8EA", fontWeight: 700 }}>

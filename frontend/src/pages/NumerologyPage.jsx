@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SharedBirthCityPicker from '../components/SharedBirthCityPicker';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { SEO } from '../components/SEO';
@@ -63,6 +64,7 @@ export const NumerologyPage = () => {
     // Ankjyotish premium fields (lagna/moon/nakshatra auto-computed on backend)
     time_of_birth: '',
     place_of_birth: '',
+    city_slug_ankjyotish: '',
   });
   const [report, setReport] = useState(null);
   const [history, setHistory] = useState([]);
@@ -357,8 +359,18 @@ export const NumerologyPage = () => {
             )}
             {needsField('place_of_birth') && (
               <div>
-                <label className="block text-sm font-medium mb-1.5">Place of Birth <span className="text-red-400">*</span></label>
-                <input type="text" value={form.place_of_birth} onChange={e => setForm(f => ({ ...f, place_of_birth: e.target.value }))} placeholder="e.g. Mumbai, India" className="w-full px-3 py-2.5 rounded-sm border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-gold/40" />
+                <SharedBirthCityPicker
+                  inputId="numerology-birth-location"
+                  label="Place of Birth *"
+                  value={form.city_slug_ankjyotish}
+                  onChange={(city) =>
+                    setForm((f) => ({
+                      ...f,
+                      city_slug_ankjyotish: city.slug,
+                      place_of_birth: city.city_name,
+                    }))
+                  }
+                />
               </div>
             )}
             {/* System selector */}
