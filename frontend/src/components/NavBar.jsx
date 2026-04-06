@@ -9,7 +9,7 @@ import {
   ChevronDown, ChevronRight, Sparkles, LogIn, User,
   Sun, Moon as MoonIcon, Calendar, Gem, Hash, Globe,
   Heart, Briefcase, Shield, Leaf, Zap, Crown,
-  BookMarked, Layers
+  BookMarked, Layers, Users
 } from 'lucide-react';
 
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
@@ -80,8 +80,7 @@ const NAV = [
   { label: 'Palmistry',  icon: Layers,    path: '/palmistry' },
   { label: 'Tarot',      icon: BookOpen,  path: '/tarot' },
   { label: 'Pricing',    icon: Tag,       path: '/pricing' },
-  { label: 'Blog',       icon: BookOpen,  path: '/blog' },
-  { label: 'Contact',    icon: Phone,     path: '/contact' },
+  { label: 'Careers',    icon: Users,     path: '/careers' },
 ];
 
 const BOTTOM_NAV = [
