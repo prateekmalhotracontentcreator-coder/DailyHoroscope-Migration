@@ -1,6 +1,7 @@
 import React, { startTransition, useDeferredValue, useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import SharedBirthCityPicker from "../components/SharedBirthCityPicker";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -17,22 +18,13 @@ const LOVE_REPORTS = [
   { type: "deep_synastry_soul_connection", slug: "soul-connection", label: "Soul Connection", description: "Karmic and evolutionary patterns in your relationships", accent: "#6a4b89", tint: "rgba(100, 60, 160, 0.12)", icon: "∞" },
 ];
 
-const CITY_OPTIONS = [
-  { label: "New Delhi", city_name: "New Delhi", latitude: 28.6139, longitude: 77.209, timezone: "Asia/Kolkata" },
-  { label: "Mumbai", city_name: "Mumbai", latitude: 19.076, longitude: 72.8777, timezone: "Asia/Kolkata" },
-  { label: "Bengaluru", city_name: "Bengaluru", latitude: 12.9716, longitude: 77.5946, timezone: "Asia/Kolkata" },
-  { label: "Kolkata", city_name: "Kolkata", latitude: 22.5726, longitude: 88.3639, timezone: "Asia/Kolkata" },
-  { label: "Chennai", city_name: "Chennai", latitude: 13.0827, longitude: 80.2707, timezone: "Asia/Kolkata" },
-  { label: "Hyderabad", city_name: "Hyderabad", latitude: 17.385, longitude: 78.4867, timezone: "Asia/Kolkata" },
-  { label: "Pune", city_name: "Pune", latitude: 18.5204, longitude: 73.8567, timezone: "Asia/Kolkata" },
-  { label: "Ahmedabad", city_name: "Ahmedabad", latitude: 23.0225, longitude: 72.5714, timezone: "Asia/Kolkata" },
-  { label: "Jaipur", city_name: "Jaipur", latitude: 26.9124, longitude: 75.7873, timezone: "Asia/Kolkata" },
-  { label: "Lucknow", city_name: "Lucknow", latitude: 26.8467, longitude: 80.9462, timezone: "Asia/Kolkata" },
-  { label: "New York", city_name: "New York", latitude: 40.7128, longitude: -74.006, timezone: "America/New_York" },
-  { label: "London", city_name: "London", latitude: 51.5072, longitude: -0.1276, timezone: "Europe/London" },
-  { label: "Dubai", city_name: "Dubai", latitude: 25.2048, longitude: 55.2708, timezone: "Asia/Dubai" },
-  { label: "Singapore", city_name: "Singapore", latitude: 1.3521, longitude: 103.8198, timezone: "Asia/Singapore" },
-];
+const EMPTY_CITY = {
+  slug: "",
+  city_name: "",
+  latitude: "",
+  longitude: "",
+  timezone: "",
+};
 
 const pageStyle = {
   minHeight: "100vh",
@@ -119,12 +111,11 @@ function saveCachedReport(report) {
 
 function defaultPersonForm() {
   return {
-    city_mode: "preset",
-    city_code: CITY_OPTIONS[0].label,
-    city_name: CITY_OPTIONS[0].city_name,
-    latitude: CITY_OPTIONS[0].latitude,
-    longitude: CITY_OPTIONS[0].longitude,
-    timezone: CITY_OPTIONS[0].timezone,
+    city_slug: EMPTY_CITY.slug,
+    city_name: EMPTY_CITY.city_name,
+    latitude: EMPTY_CITY.latitude,
+    longitude: EMPTY_CITY.longitude,
+    timezone: EMPTY_CITY.timezone,
     date_of_birth: "",
     time_of_birth: "",
   };
@@ -133,18 +124,6 @@ function defaultPersonForm() {
 function defaultMetaForm() {
   return {
     lookahead_days: 90,
-  };
-}
-
-function applyPreset(current, code) {
-  const preset = CITY_OPTIONS.find((item) => item.label === code) || CITY_OPTIONS[0];
-  return {
-    ...current,
-    city_code: preset.label,
-    city_name: preset.city_name,
-    latitude: preset.latitude,
-    longitude: preset.longitude,
-    timezone: preset.timezone,
   };
 }
 
@@ -157,9 +136,9 @@ function personPayload(form) {
     date_of_birth: form.date_of_birth,
     time_of_birth: form.time_of_birth,
     city_name: form.city_name || undefined,
-    latitude: Number(form.latitude),
-    longitude: Number(form.longitude),
-    timezone: form.timezone,
+    latitude: form.latitude === "" || form.latitude == null ? undefined : Number(form.latitude),
+    longitude: form.longitude === "" || form.longitude == null ? undefined : Number(form.longitude),
+    timezone: form.timezone || undefined,
   };
 }
 
@@ -279,29 +258,9 @@ function BirthFormBlock({ title, form, setForm }) {
       <div style={{ display: "grid", gap: 14 }}>
         <div>
           <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#8c6a39" }}>{title}</p>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            {[
-              ["preset", "Use city picker"],
-              ["manual", "Enter manually"],
-            ].map(([value, label]) => (
-              <button
-                key={value}
-                type="button"
-                onClick={() => setForm((current) => ({ ...current, city_mode: value }))}
-                style={{
-                  minHeight: 42,
-                  padding: "10px 14px",
-                  borderRadius: 999,
-                  border: "1px solid rgba(120,90,55,0.16)",
-                  background: form.city_mode === value ? "rgba(184, 134, 70, 0.16)" : "rgba(255,255,255,0.7)",
-                  cursor: "pointer",
-                  fontWeight: 700,
-                }}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          <p style={{ margin: 0, color: "#6f6253", lineHeight: 1.6 }}>
+            Choose the birth city to auto-populate timezone and coordinates for the report payload.
+          </p>
         </div>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
@@ -315,37 +274,27 @@ function BirthFormBlock({ title, form, setForm }) {
           </label>
         </div>
 
-        {form.city_mode === "preset" ? (
-          <label style={{ display: "grid", gap: 6 }}>
-            <span style={{ fontWeight: 700 }}>City</span>
-            <select value={form.city_code} onChange={(event) => setForm((current) => applyPreset(current, event.target.value))} style={inputStyle}>
-              {CITY_OPTIONS.map((item) => (
-                <option key={item.label} value={item.label}>
-                  {item.label}
-                </option>
-              ))}
-            </select>
-          </label>
-        ) : null}
-
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-          <label style={{ display: "grid", gap: 6 }}>
-            <span style={{ fontWeight: 700 }}>City Name</span>
-            <input value={form.city_name} onChange={(event) => setForm((current) => ({ ...current, city_name: event.target.value }))} style={inputStyle} />
-          </label>
-          <label style={{ display: "grid", gap: 6 }}>
-            <span style={{ fontWeight: 700 }}>Timezone</span>
-            <input value={form.timezone} onChange={(event) => setForm((current) => ({ ...current, timezone: event.target.value }))} style={inputStyle} />
-          </label>
-          <label style={{ display: "grid", gap: 6 }}>
-            <span style={{ fontWeight: 700 }}>Latitude</span>
-            <input value={form.latitude} onChange={(event) => setForm((current) => ({ ...current, latitude: event.target.value }))} style={inputStyle} />
-          </label>
-          <label style={{ display: "grid", gap: 6 }}>
-            <span style={{ fontWeight: 700 }}>Longitude</span>
-            <input value={form.longitude} onChange={(event) => setForm((current) => ({ ...current, longitude: event.target.value }))} style={inputStyle} />
-          </label>
-        </div>
+        <SharedBirthCityPicker
+          inputId={`${title.toLowerCase().replace(/\s+/g, "-")}-birth-city`}
+          label="Birth City"
+          value={form.city_slug}
+          required
+          helpText="Search by city, country, or timezone abbreviation."
+          wrapperStyle={{ display: "grid", gap: 6 }}
+          labelStyle={{ fontWeight: 700 }}
+          inputStyle={inputStyle}
+          selectStyle={inputStyle}
+          onChange={(city) =>
+            setForm((current) => ({
+              ...current,
+              city_slug: city.slug,
+              city_name: city.city_name,
+              latitude: city.latitude,
+              longitude: city.longitude,
+              timezone: city.timezone,
+            }))
+          }
+        />
       </div>
     </section>
   );
