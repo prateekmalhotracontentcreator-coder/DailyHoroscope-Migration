@@ -1,4 +1,4 @@
-import React, { startTransition, useDeferredValue, useEffect, useMemo, useState } from "react";
+import React, { startTransition, useDeferredValue, useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -7,14 +7,14 @@ const API = `${BACKEND_URL}/api`;
 const HISTORY_CACHE_KEY = "love_reports_cache_v1";
 
 const LOVE_REPORTS = [
-  { type: "love_weather", slug: "love-weather", label: "Love Weather", description: "90-day romantic forecast with best and caution dates", accent: "#b73c64", tint: "rgba(183, 60, 100, 0.12)" },
-  { type: "encounter_window", slug: "encounter-window", label: "Encounter Window", description: "Upcoming transit windows most likely to spark new meetings", accent: "#b73c64", tint: "rgba(183, 60, 100, 0.12)" },
-  { type: "date_night_score", slug: "date-night", label: "Date Night Planner", description: "Best dates in the next 30 days for a memorable outing", accent: "#8b1e3c", tint: "rgba(139, 30, 60, 0.12)" },
-  { type: "digital_dating_strategy", slug: "digital-dating", label: "Digital Dating Edge", description: "Optimise your profile and message timing with your chart", accent: "#8b1e3c", tint: "rgba(139, 30, 60, 0.12)" },
-  { type: "intimacy_vitality_forecast", slug: "intimacy-vitality", label: "Intimacy & Vitality", description: "Mars-Venus windows for depth and physical connection", accent: "#8b1e3c", tint: "rgba(139, 30, 60, 0.12)" },
-  { type: "venus_retrograde_personal_impact", slug: "venus-retrograde", label: "Venus Retrograde", description: "How the current retrograde is affecting your love life", accent: "#9a6a26", tint: "rgba(215, 175, 106, 0.14)" },
-  { type: "soulmate_timing", slug: "soulmate-timing", label: "Soulmate Timing", description: "Jupiter and Dasha windows for long-term partnership", accent: "#9a6a26", tint: "rgba(215, 175, 106, 0.14)" },
-  { type: "deep_synastry_soul_connection", slug: "soul-connection", label: "Soul Connection", description: "Karmic and evolutionary patterns in your relationships", accent: "#6a4b89", tint: "rgba(100, 60, 160, 0.12)" },
+  { type: "love_weather", slug: "love-weather", label: "Love Weather", description: "90-day romantic forecast with best and caution dates", accent: "#b73c64", tint: "rgba(183, 60, 100, 0.12)", icon: "☁" },
+  { type: "encounter_window", slug: "encounter-window", label: "Encounter Window", description: "Upcoming transit windows most likely to spark new meetings", accent: "#b73c64", tint: "rgba(183, 60, 100, 0.12)", icon: "✦" },
+  { type: "date_night_score", slug: "date-night", label: "Date Night", description: "Daily Love Battery score and timing note for connection", accent: "#8b1e3c", tint: "rgba(139, 30, 60, 0.12)", icon: "☾" },
+  { type: "digital_dating_strategy", slug: "digital-dating", label: "Digital Dating", description: "Optimise your profile, tone, and message timing with your chart", accent: "#8b1e3c", tint: "rgba(139, 30, 60, 0.12)", icon: "✉" },
+  { type: "intimacy_vitality_forecast", slug: "intimacy-vitality", label: "Intimacy & Vitality", description: "Mars-Venus windows for depth, confidence, and romantic momentum", accent: "#8b1e3c", tint: "rgba(139, 30, 60, 0.12)", icon: "✧" },
+  { type: "venus_retrograde_personal_impact", slug: "venus-retrograde", label: "Venus Retrograde", description: "How the current retrograde is reshaping your relationship themes", accent: "#9a6a26", tint: "rgba(215, 175, 106, 0.14)", icon: "♀" },
+  { type: "soulmate_timing", slug: "soulmate-timing", label: "Soulmate Timing", description: "Jupiter and Dasha windows for long-term partnership", accent: "#9a6a26", tint: "rgba(215, 175, 106, 0.14)", icon: "⌛" },
+  { type: "deep_synastry_soul_connection", slug: "soul-connection", label: "Soul Connection", description: "Karmic and evolutionary patterns in your relationships", accent: "#6a4b89", tint: "rgba(100, 60, 160, 0.12)", icon: "∞" },
 ];
 
 const CITY_OPTIONS = [
@@ -117,7 +117,7 @@ function saveCachedReport(report) {
   window.localStorage.setItem(HISTORY_CACHE_KEY, JSON.stringify(current));
 }
 
-function defaultForm() {
+function defaultPersonForm() {
   return {
     city_mode: "preset",
     city_code: CITY_OPTIONS[0].label,
@@ -127,16 +127,12 @@ function defaultForm() {
     timezone: CITY_OPTIONS[0].timezone,
     date_of_birth: "",
     time_of_birth: "",
+  };
+}
+
+function defaultMetaForm() {
+  return {
     lookahead_days: 90,
-    // Person B (Soul Connection synastry)
-    city_mode_b: "preset",
-    city_code_b: CITY_OPTIONS[0].label,
-    city_name_b: CITY_OPTIONS[0].city_name,
-    latitude_b: CITY_OPTIONS[0].latitude,
-    longitude_b: CITY_OPTIONS[0].longitude,
-    timezone_b: CITY_OPTIONS[0].timezone,
-    date_of_birth_b: "",
-    time_of_birth_b: "",
   };
 }
 
@@ -152,24 +148,12 @@ function applyPreset(current, code) {
   };
 }
 
-function applyPresetB(current, code) {
-  const preset = CITY_OPTIONS.find((item) => item.label === code) || CITY_OPTIONS[0];
-  return {
-    ...current,
-    city_code_b: preset.label,
-    city_name_b: preset.city_name,
-    latitude_b: preset.latitude,
-    longitude_b: preset.longitude,
-    timezone_b: preset.timezone,
-  };
-}
-
 function reportByQuery(value) {
   return LOVE_REPORTS.find((item) => item.slug === value || item.type === value) || LOVE_REPORTS[0];
 }
 
-function buildPayload(selected, form) {
-  const base = {
+function personPayload(form) {
+  return {
     date_of_birth: form.date_of_birth,
     time_of_birth: form.time_of_birth,
     city_name: form.city_name || undefined,
@@ -177,30 +161,33 @@ function buildPayload(selected, form) {
     longitude: Number(form.longitude),
     timezone: form.timezone,
   };
-  if (selected.slug === "love-weather") {
-    return { ...base, lookahead_days: Number(form.lookahead_days || 90) };
-  }
+}
+
+function buildPayload(selected, primaryForm, secondaryForm, metaForm) {
   if (selected.slug === "soul-connection") {
     return {
-      person_a: {
-        date_of_birth: form.date_of_birth,
-        time_of_birth: form.time_of_birth,
-        latitude: Number(form.latitude),
-        longitude: Number(form.longitude),
-        timezone: form.timezone,
-        city_name: form.city_name || undefined,
-      },
-      person_b: {
-        date_of_birth: form.date_of_birth_b,
-        time_of_birth: form.time_of_birth_b,
-        latitude: Number(form.latitude_b),
-        longitude: Number(form.longitude_b),
-        timezone: form.timezone_b,
-        city_name: form.city_name_b || undefined,
-      },
+      person_a: personPayload(primaryForm),
+      person_b: personPayload(secondaryForm),
     };
   }
+  const base = personPayload(primaryForm);
+  if (selected.slug === "love-weather") {
+    return { ...base, lookahead_days: Number(metaForm.lookahead_days || 90) };
+  }
   return base;
+}
+
+function prettifyDate(value) {
+  if (!value) return "-";
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return value;
+  return parsed.toLocaleDateString();
+}
+
+function toList(value) {
+  if (Array.isArray(value)) return value;
+  if (!value) return [];
+  return [value];
 }
 
 function TabBar({ activeTab, setActiveTab }) {
@@ -240,7 +227,7 @@ function Selector({ selected, setSelected, continueToGenerate = true }) {
       <div style={{ marginBottom: 18 }}>
         <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8c6a39" }}>Love Reports</p>
         <h1 style={{ margin: 0, fontSize: "clamp(2.2rem, 5vw, 3.7rem)", lineHeight: 0.95, fontFamily: "Georgia, Times New Roman, serif" }}>
-          Choose the report that matches the love question you want answered.
+          Choose the report that matches the relationship question you want answered.
         </h1>
       </div>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>
@@ -261,9 +248,7 @@ function Selector({ selected, setSelected, continueToGenerate = true }) {
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "center" }}>
-                <p style={{ margin: 0, fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: report.accent }}>
-                  {active ? "Selected" : "Love report"}
-                </p>
+                <span style={{ fontSize: 24 }}>{report.icon}</span>
                 <span
                   style={{
                     width: 18,
@@ -275,7 +260,10 @@ function Selector({ selected, setSelected, continueToGenerate = true }) {
                   }}
                 />
               </div>
-              <h2 style={{ margin: "10px 0 8px", fontSize: 22, lineHeight: 1.08, fontFamily: "Georgia, Times New Roman, serif" }}>{report.label}</h2>
+              <p style={{ margin: "10px 0 8px", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: report.accent }}>
+                {active ? "Selected" : "Love report"}
+              </p>
+              <h2 style={{ margin: "0 0 8px", fontSize: 22, lineHeight: 1.08, fontFamily: "Georgia, Times New Roman, serif" }}>{report.label}</h2>
               <p style={{ margin: 0, color: "#64584c", lineHeight: 1.6 }}>{report.description}</p>
             </button>
           );
@@ -285,17 +273,12 @@ function Selector({ selected, setSelected, continueToGenerate = true }) {
   );
 }
 
-function GenerateForm({ selected, form, setForm, onSubmit, submitting, error }) {
+function BirthFormBlock({ title, form, setForm }) {
   return (
-    <>
-      <section style={{ ...cardStyle, padding: 24 }}>
-        <div style={{ display: "grid", gap: 14 }}>
-          <div>
-            <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: selected.accent }}>{selected.label}</p>
-            <h2 style={{ margin: "0 0 8px", fontSize: 30, fontFamily: "Georgia, Times New Roman, serif" }}>Generate {selected.label}</h2>
-            <p style={{ margin: 0, color: "#62574a", lineHeight: 1.64 }}>{selected.description}</p>
-          </div>
-
+    <section style={{ ...cardStyle, padding: 20, background: "rgba(255,251,245,0.78)" }}>
+      <div style={{ display: "grid", gap: 14 }}>
+        <div>
+          <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#8c6a39" }}>{title}</p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             {[
               ["preset", "Use city picker"],
@@ -319,130 +302,90 @@ function GenerateForm({ selected, form, setForm, onSubmit, submitting, error }) 
               </button>
             ))}
           </div>
+        </div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontWeight: 700 }}>Date of Birth</span>
-              <input type="date" value={form.date_of_birth} onChange={(event) => setForm((current) => ({ ...current, date_of_birth: event.target.value }))} style={inputStyle} />
-            </label>
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontWeight: 700 }}>Time of Birth</span>
-              <input type="time" value={form.time_of_birth} onChange={(event) => setForm((current) => ({ ...current, time_of_birth: event.target.value }))} style={inputStyle} />
-            </label>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
+          <label style={{ display: "grid", gap: 6 }}>
+            <span style={{ fontWeight: 700 }}>Date of Birth</span>
+            <input type="date" value={form.date_of_birth} onChange={(event) => setForm((current) => ({ ...current, date_of_birth: event.target.value }))} style={inputStyle} />
+          </label>
+          <label style={{ display: "grid", gap: 6 }}>
+            <span style={{ fontWeight: 700 }}>Time of Birth</span>
+            <input type="time" value={form.time_of_birth} onChange={(event) => setForm((current) => ({ ...current, time_of_birth: event.target.value }))} style={inputStyle} />
+          </label>
+        </div>
+
+        {form.city_mode === "preset" ? (
+          <label style={{ display: "grid", gap: 6 }}>
+            <span style={{ fontWeight: 700 }}>City</span>
+            <select value={form.city_code} onChange={(event) => setForm((current) => applyPreset(current, event.target.value))} style={inputStyle}>
+              {CITY_OPTIONS.map((item) => (
+                <option key={item.label} value={item.label}>
+                  {item.label}
+                </option>
+              ))}
+            </select>
+          </label>
+        ) : null}
+
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
+          <label style={{ display: "grid", gap: 6 }}>
+            <span style={{ fontWeight: 700 }}>City Name</span>
+            <input value={form.city_name} onChange={(event) => setForm((current) => ({ ...current, city_name: event.target.value }))} style={inputStyle} />
+          </label>
+          <label style={{ display: "grid", gap: 6 }}>
+            <span style={{ fontWeight: 700 }}>Timezone</span>
+            <input value={form.timezone} onChange={(event) => setForm((current) => ({ ...current, timezone: event.target.value }))} style={inputStyle} />
+          </label>
+          <label style={{ display: "grid", gap: 6 }}>
+            <span style={{ fontWeight: 700 }}>Latitude</span>
+            <input value={form.latitude} onChange={(event) => setForm((current) => ({ ...current, latitude: event.target.value }))} style={inputStyle} />
+          </label>
+          <label style={{ display: "grid", gap: 6 }}>
+            <span style={{ fontWeight: 700 }}>Longitude</span>
+            <input value={form.longitude} onChange={(event) => setForm((current) => ({ ...current, longitude: event.target.value }))} style={inputStyle} />
+          </label>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function GenerateForm({ selected, primaryForm, setPrimaryForm, secondaryForm, setSecondaryForm, metaForm, setMetaForm, onSubmit, submitting, error }) {
+  return (
+    <>
+      <section style={{ ...cardStyle, padding: 24 }}>
+        <div style={{ display: "grid", gap: 14 }}>
+          <div>
+            <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: selected.accent }}>{selected.label}</p>
+            <h2 style={{ margin: "0 0 8px", fontSize: 30, fontFamily: "Georgia, Times New Roman, serif" }}>Generate {selected.label}</h2>
+            <p style={{ margin: 0, color: "#62574a", lineHeight: 1.64 }}>{selected.description}</p>
           </div>
 
-          {form.city_mode === "preset" ? (
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontWeight: 700 }}>City</span>
-              <select value={form.city_code} onChange={(event) => setForm((current) => applyPreset(current, event.target.value))} style={inputStyle}>
-                {CITY_OPTIONS.map((item) => (
-                  <option key={item.label} value={item.label}>
-                    {item.label}
-                  </option>
-                ))}
-              </select>
-            </label>
-          ) : null}
+          <BirthFormBlock title={selected.slug === "soul-connection" ? "Person A" : "Birth data"} form={primaryForm} setForm={setPrimaryForm} />
 
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontWeight: 700 }}>City Name</span>
-              <input value={form.city_name} onChange={(event) => setForm((current) => ({ ...current, city_name: event.target.value }))} style={inputStyle} />
-            </label>
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontWeight: 700 }}>Timezone</span>
-              <input value={form.timezone} onChange={(event) => setForm((current) => ({ ...current, timezone: event.target.value }))} style={inputStyle} />
-            </label>
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontWeight: 700 }}>Latitude</span>
-              <input value={form.latitude} onChange={(event) => setForm((current) => ({ ...current, latitude: event.target.value }))} style={inputStyle} />
-            </label>
-            <label style={{ display: "grid", gap: 6 }}>
-              <span style={{ fontWeight: 700 }}>Longitude</span>
-              <input value={form.longitude} onChange={(event) => setForm((current) => ({ ...current, longitude: event.target.value }))} style={inputStyle} />
-            </label>
-          </div>
+          {selected.slug === "soul-connection" ? <BirthFormBlock title="Person B" form={secondaryForm} setForm={setSecondaryForm} /> : null}
 
           {selected.slug === "love-weather" ? (
-            <label style={{ display: "grid", gap: 6, maxWidth: 240 }}>
-              <span style={{ fontWeight: 700 }}>Lookahead Days</span>
-              <input
-                type="number"
-                min={30}
-                max={180}
-                value={form.lookahead_days}
-                onChange={(event) => setForm((current) => ({ ...current, lookahead_days: event.target.value }))}
-                style={inputStyle}
-              />
-            </label>
+            <section style={{ ...cardStyle, padding: 20, background: "rgba(255,251,245,0.78)", maxWidth: 320 }}>
+              <label style={{ display: "grid", gap: 6 }}>
+                <span style={{ fontWeight: 700 }}>Lookahead Days</span>
+                <input
+                  type="number"
+                  min={30}
+                  max={180}
+                  value={metaForm.lookahead_days}
+                  onChange={(event) => setMetaForm((current) => ({ ...current, lookahead_days: event.target.value }))}
+                  style={inputStyle}
+                />
+              </label>
+            </section>
           ) : null}
         </div>
       </section>
 
-      {selected.slug === "soul-connection" ? (
-        <section style={{ ...cardStyle, padding: 24 }}>
-          <div style={{ display: "grid", gap: 14 }}>
-            <div>
-              <p style={{ margin: "0 0 6px", fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#6a4b89" }}>Soul Connection</p>
-              <h3 style={{ margin: "0 0 6px", fontSize: 24, fontFamily: "Georgia, Times New Roman, serif" }}>Person B — Partner's Birth Details</h3>
-              <p style={{ margin: 0, color: "#62574a" }}>Enter the birth details of the person you want to explore soul connection with.</p>
-            </div>
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-              {[["preset", "Use city picker"], ["manual", "Enter manually"]].map(([value, label]) => (
-                <button
-                  key={value}
-                  type="button"
-                  onClick={() => setForm((current) => ({ ...current, city_mode_b: value }))}
-                  style={{ minHeight: 42, padding: "10px 14px", borderRadius: 999, border: "1px solid rgba(120,90,55,0.16)", background: form.city_mode_b === value ? "rgba(106,75,137,0.14)" : "rgba(255,255,255,0.7)", cursor: "pointer", fontWeight: 700 }}
-                >
-                  {label}
-                </button>
-              ))}
-            </div>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Date of Birth</span>
-                <input type="date" value={form.date_of_birth_b} onChange={(event) => setForm((current) => ({ ...current, date_of_birth_b: event.target.value }))} style={inputStyle} />
-              </label>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Time of Birth</span>
-                <input type="time" value={form.time_of_birth_b} onChange={(event) => setForm((current) => ({ ...current, time_of_birth_b: event.target.value }))} style={inputStyle} />
-              </label>
-            </div>
-            {form.city_mode_b === "preset" ? (
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>City</span>
-                <select value={form.city_code_b} onChange={(event) => setForm((current) => applyPresetB(current, event.target.value))} style={inputStyle}>
-                  {CITY_OPTIONS.map((item) => (
-                    <option key={item.label} value={item.label}>{item.label}</option>
-                  ))}
-                </select>
-              </label>
-            ) : null}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 14 }}>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>City Name</span>
-                <input value={form.city_name_b} onChange={(event) => setForm((current) => ({ ...current, city_name_b: event.target.value }))} style={inputStyle} />
-              </label>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Timezone</span>
-                <input value={form.timezone_b} onChange={(event) => setForm((current) => ({ ...current, timezone_b: event.target.value }))} style={inputStyle} />
-              </label>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Latitude</span>
-                <input value={form.latitude_b} onChange={(event) => setForm((current) => ({ ...current, latitude_b: event.target.value }))} style={inputStyle} />
-              </label>
-              <label style={{ display: "grid", gap: 6 }}>
-                <span style={{ fontWeight: 700 }}>Longitude</span>
-                <input value={form.longitude_b} onChange={(event) => setForm((current) => ({ ...current, longitude_b: event.target.value }))} style={inputStyle} />
-              </label>
-            </div>
-          </div>
-        </section>
-      ) : null}
-
       <section style={{ ...cardStyle, padding: 20, display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
-        <p style={{ margin: 0, color: "#675b50" }}>Calculations are sent to the live Love Bundle backend with authenticated session credentials.</p>
+        <p style={{ margin: 0, color: "#675b50" }}>Requests are sent to the live Love Bundle backend with authenticated session credentials.</p>
         <button type="button" onClick={onSubmit} disabled={submitting} style={{ ...primaryButtonStyle, opacity: submitting ? 0.65 : 1 }}>
           {submitting ? `Calculating your ${selected.label}...` : "Generate Report"}
         </button>
@@ -456,7 +399,7 @@ function GenerateForm({ selected, form, setForm, onSubmit, submitting, error }) 
 function renderBar(value, tint) {
   return (
     <div style={{ width: "100%", height: 10, borderRadius: 999, background: "rgba(120,90,55,0.12)", overflow: "hidden" }}>
-      <div style={{ width: `${Math.max(4, Math.min(100, value))}%`, height: "100%", background: tint || "linear-gradient(135deg, #b78646 0%, #d8af6a 100%)" }} />
+      <div style={{ width: `${Math.max(4, Math.min(100, Number(value) || 0))}%`, height: "100%", background: tint || "linear-gradient(135deg, #b78646 0%, #d8af6a 100%)" }} />
     </div>
   );
 }
@@ -470,24 +413,36 @@ function StackCard({ title, children }) {
   );
 }
 
+function ListBlock({ items }) {
+  const list = toList(items).filter(Boolean);
+  if (!list.length) return null;
+  return (
+    <ul style={{ margin: 0, paddingLeft: 18, color: "#62574a", lineHeight: 1.8 }}>
+      {list.map((item, index) => (
+        <li key={`${index}-${String(item)}`}>{item}</li>
+      ))}
+    </ul>
+  );
+}
+
 function LoveWeatherRenderer({ output }) {
   return (
     <>
       <StackCard title="Arc Summary">
-        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.arc_summary}</p>
+        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.arc_summary || output.summary}</p>
       </StackCard>
       {!!output.monthly_ratings?.length && (
         <StackCard title="Monthly Ratings">
           <div style={{ display: "grid", gap: 12 }}>
-            {output.monthly_ratings.map((item) => (
-              <div key={item.month} style={{ padding: 14, borderRadius: 18, background: "rgba(183, 60, 100, 0.08)" }}>
+            {output.monthly_ratings.map((item, index) => (
+              <div key={`${item.month}-${index}`} style={{ padding: 14, borderRadius: 18, background: "rgba(183, 60, 100, 0.08)" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", gap: 10, flexWrap: "wrap" }}>
                   <strong>{item.month}</strong>
                   <span style={{ textTransform: "capitalize" }}>{item.rating}</span>
                 </div>
                 <div style={{ margin: "8px 0" }}>{renderBar(item.average_score, "linear-gradient(135deg, #b73c64 0%, #d8af6a 100%)")}</div>
                 <p style={{ margin: "0 0 8px", color: "#64584c" }}>{item.theme}</p>
-                <p style={{ margin: 0, color: "#7a6d60" }}>Best: {item.best_date} · Caution: {item.caution_date}</p>
+                <p style={{ margin: 0, color: "#7a6d60" }}>Best: {item.best_date || "-"} · Caution: {item.caution_date || "-"}</p>
               </div>
             ))}
           </div>
@@ -496,26 +451,24 @@ function LoveWeatherRenderer({ output }) {
       {!!output.key_dates?.length && (
         <StackCard title="Key Dates">
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12 }}>
-            {output.key_dates.map((item) => (
-              <div key={item.date} style={{ padding: 14, borderRadius: 18, background: "rgba(255,255,255,0.76)" }}>
+            {output.key_dates.map((item, index) => (
+              <div key={`${item.date}-${index}`} style={{ padding: 14, borderRadius: 18, background: "rgba(255,255,255,0.76)" }}>
                 <strong>{item.date}</strong>
                 <div style={{ margin: "8px 0" }}>{renderBar(item.score || 50, "linear-gradient(135deg, #b73c64 0%, #d8af6a 100%)")}</div>
-                <p style={{ margin: 0, color: "#64584c", lineHeight: 1.58 }}>{item.theme}</p>
+                <p style={{ margin: 0, color: "#64584c", lineHeight: 1.58 }}>{item.theme || item.description}</p>
               </div>
             ))}
           </div>
         </StackCard>
       )}
-      <StackCard title="Action Guidance">
-        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.action_guidance}</p>
-      </StackCard>
-      {!!output.remedies?.length && (
+      {output.action_guidance ? (
+        <StackCard title="Action Guidance">
+          <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.action_guidance}</p>
+        </StackCard>
+      ) : null}
+      {!!toList(output.remedies).length && (
         <StackCard title="Remedies">
-          <ul style={{ margin: 0, paddingLeft: 18, color: "#62574a", lineHeight: 1.8 }}>
-            {output.remedies.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <ListBlock items={output.remedies} />
         </StackCard>
       )}
     </>
@@ -524,20 +477,18 @@ function LoveWeatherRenderer({ output }) {
 
 function EncounterRenderer({ output }) {
   const windows = output.windows || output.peak_windows || [];
-  const summary = output.summary || output.current_status?.headline || output.personalized_context;
-  const actionNote = output.action_note || output.personalized_context;
   return (
     <>
-      <StackCard title="Window Summary">
-        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{summary}</p>
+      <StackCard title="Current Window Status">
+        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.summary || output.current_status?.headline || output.personalized_context}</p>
       </StackCard>
       <StackCard title="Windows">
         <div style={{ display: "grid", gap: 12 }}>
           {windows.map((item, index) => (
-            <div key={`${item.start_date || item.peak_date}-${index}`} style={{ padding: 14, borderRadius: 18, background: "rgba(183,60,100,0.08)" }}>
+            <div key={`${item.start_date || item.peak_date || item.date}-${index}`} style={{ padding: 14, borderRadius: 18, background: "rgba(183,60,100,0.08)" }}>
               <strong>{item.trigger_type || item.trigger_basis || "Encounter Window"}</strong>
               <p style={{ margin: "8px 0", color: "#64584c" }}>
-                {(item.start_date || item.date || "—")} to {(item.end_date || item.peak_date || item.date || "—")}
+                {(item.start_date || item.date || "-")} to {(item.end_date || item.peak_date || item.date || "-")}
               </p>
               <p style={{ margin: "0 0 6px", color: "#62574a", lineHeight: 1.62 }}>{item.description || item.note || item.peak_description}</p>
               {item.ritual_suggestion ? <p style={{ margin: 0, color: "#7c6e61" }}>{item.ritual_suggestion}</p> : null}
@@ -545,9 +496,9 @@ function EncounterRenderer({ output }) {
           ))}
         </div>
       </StackCard>
-      {actionNote ? (
+      {(output.action_note || output.personalized_context) ? (
         <StackCard title="Action Note">
-          <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{actionNote}</p>
+          <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.action_note || output.personalized_context}</p>
         </StackCard>
       ) : null}
     </>
@@ -559,14 +510,12 @@ function DateNightRenderer({ output }) {
   return (
     <>
       <StackCard title="Summary">
-        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>
-          {output.summary || `Love Battery ${output.love_battery_percent}% with a ${output.score_category} tone.`}
-        </p>
+        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.summary || `Love Battery ${output.love_battery_percent || 0}% with a ${output.score_category || "steady"} tone.`}</p>
       </StackCard>
       <StackCard title="Best Dates">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 12 }}>
           {bestDates.map((item, index) => (
-            <div key={`${item.date}-${index}`} style={{ padding: 14, borderRadius: 18, background: "rgba(139,30,60,0.08)" }}>
+            <div key={`${item.date || "today"}-${index}`} style={{ padding: 14, borderRadius: 18, background: "rgba(139,30,60,0.08)" }}>
               <strong>{item.date || "Today"}</strong>
               <div style={{ margin: "8px 0" }}>{renderBar(item.score || output.love_battery_percent || 50, "linear-gradient(135deg, #8b1e3c 0%, #d8af6a 100%)")}</div>
               <p style={{ margin: "0 0 6px", color: "#62574a", lineHeight: 1.58 }}>{item.theme || output.alignment_description}</p>
@@ -576,7 +525,7 @@ function DateNightRenderer({ output }) {
         </div>
       </StackCard>
       <StackCard title="Ritual Note">
-        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.ritual_note || output.venus_mars_amplifier?.note || "Use the score as a tone guide rather than a rigid yes/no signal."}</p>
+        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.ritual_note || output.venus_mars_amplifier?.note || "Use the score as a tone guide rather than a rigid yes-or-no signal."}</p>
       </StackCard>
     </>
   );
@@ -587,7 +536,7 @@ function DigitalDatingRenderer({ output }) {
     <>
       <StackCard title="Profile Insight">
         <p style={{ margin: "0 0 10px", color: "#62574a", lineHeight: 1.7 }}>{output.profile_insight || output.attraction_signature}</p>
-        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.dating_style}</p>
+        {output.dating_style ? <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.dating_style}</p> : null}
       </StackCard>
       <StackCard title="Best Times">
         <div style={{ display: "grid", gap: 10 }}>
@@ -603,14 +552,8 @@ function DigitalDatingRenderer({ output }) {
         <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.message_timing || output.first_date_lead || output.ideal_partner_profile}</p>
       </StackCard>
       <StackCard title="Aura Note">
-        <p style={{ margin: "0 0 10px", color: "#62574a", lineHeight: 1.7 }}>{output.aura_note || output.ideal_partner_profile}</p>
-        {!!output.remedies?.length && (
-          <ul style={{ margin: 0, paddingLeft: 18, color: "#62574a", lineHeight: 1.8 }}>
-            {output.remedies.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        )}
+        <p style={{ margin: "0 0 10px", color: "#62574a", lineHeight: 1.7 }}>{output.aura_note || output.ideal_partner_profile || output.self_red_flags}</p>
+        <ListBlock items={output.remedies} />
       </StackCard>
     </>
   );
@@ -621,21 +564,19 @@ function IntimacyRenderer({ output }) {
   const vitalityScore = output.vitality_score || Math.min(95, Math.max(40, 50 + windows.length * 10));
   return (
     <>
-      <StackCard title="Phase">
+      <StackCard title="Current Vitality Phase">
         <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.phase || output.current_vitality_phase}</p>
       </StackCard>
       <StackCard title="Vitality Score">
         <div style={{ marginBottom: 10 }}>{renderBar(vitalityScore, "linear-gradient(135deg, #8b1e3c 0%, #d8af6a 100%)")}</div>
         <p style={{ margin: 0, color: "#62574a" }}>{vitalityScore}% energetic intensity</p>
       </StackCard>
-      <StackCard title="Windows">
+      <StackCard title="Peak Windows">
         <div style={{ display: "grid", gap: 12 }}>
           {windows.map((item, index) => (
-            <div key={`${item.start_date}-${index}`} style={{ padding: 14, borderRadius: 18, background: "rgba(139,30,60,0.08)" }}>
+            <div key={`${item.start_date || item.date}-${index}`} style={{ padding: 14, borderRadius: 18, background: "rgba(139,30,60,0.08)" }}>
               <strong>{item.intensity || item.trigger_basis || "Vitality Window"}</strong>
-              <p style={{ margin: "8px 0", color: "#62574a" }}>
-                {item.start_date} to {item.end_date}
-              </p>
+              <p style={{ margin: "8px 0", color: "#62574a" }}>{item.start_date || "-"} to {item.end_date || "-"}</p>
               <p style={{ margin: 0, color: "#62574a", lineHeight: 1.62 }}>{item.description || item.note}</p>
             </div>
           ))}
@@ -643,13 +584,7 @@ function IntimacyRenderer({ output }) {
       </StackCard>
       <StackCard title="Lunar Note">
         <p style={{ margin: "0 0 10px", color: "#62574a", lineHeight: 1.7 }}>{output.lunar_note || output.natal_intimacy_signature}</p>
-        {!!output.remedies?.length && (
-          <ul style={{ margin: 0, paddingLeft: 18, color: "#62574a", lineHeight: 1.8 }}>
-            {output.remedies.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        )}
+        <ListBlock items={output.remedies} />
       </StackCard>
     </>
   );
@@ -668,22 +603,14 @@ function VenusRetrogradeRenderer({ output }) {
         <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.personal_impact}</p>
       </StackCard>
       <StackCard title="Shadow Themes">
-        <ul style={{ margin: 0, paddingLeft: 18, color: "#62574a", lineHeight: 1.8 }}>
-          {(output.shadow_themes || output.retrograde_house_signs || []).map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
+        <ListBlock items={output.shadow_themes || output.retrograde_house_signs} />
       </StackCard>
       <StackCard title="Reframe">
         <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.reframe || output.healing_focus || output.best_practice}</p>
       </StackCard>
-      {!!output.remedies?.length && (
+      {!!toList(output.remedies).length && (
         <StackCard title="Remedies">
-          <ul style={{ margin: 0, paddingLeft: 18, color: "#62574a", lineHeight: 1.8 }}>
-            {output.remedies.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <ListBlock items={output.remedies} />
         </StackCard>
       )}
     </>
@@ -698,7 +625,7 @@ function SoulmateTimingRenderer({ output }) {
       <StackCard title="Jupiter Window">
         <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>
           {primaryWindow
-            ? `${primaryWindow.start || primaryWindow.start_date} to ${primaryWindow.end || primaryWindow.end_date}: ${primaryWindow.note || primaryWindow.planet || "Supportive relationship timing"}`
+            ? `${primaryWindow.start || primaryWindow.start_date || "-"} to ${primaryWindow.end || primaryWindow.end_date || "-"}: ${primaryWindow.note || primaryWindow.planet || primaryWindow.description || "Supportive relationship timing"}`
             : "No single window dominates yet; timing is distributed across the next supportive dasha periods."}
         </p>
       </StackCard>
@@ -711,42 +638,66 @@ function SoulmateTimingRenderer({ output }) {
       </StackCard>
       <StackCard title="Composite Note">
         <p style={{ margin: "0 0 10px", color: "#62574a", lineHeight: 1.7 }}>{output.composite_note || output.summary || output.birth_nakshatra}</p>
-        {!!output.remedies?.length && (
-          <ul style={{ margin: 0, paddingLeft: 18, color: "#62574a", lineHeight: 1.8 }}>
-            {output.remedies.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        )}
+        <ListBlock items={output.remedies} />
       </StackCard>
     </>
   );
 }
 
-function SoulConnectionRenderer({ output }) {
-  const sections = [
-    ["Karmic Theme", output.karmic_theme || output.connection_archetype],
-    ["Evolutionary North", output.evolutionary_north || output.attraction_dynamic],
-    ["Relational Pattern", output.relational_pattern || output.long_term_compatibility],
-    ["Shadow Invitation", output.shadow_invitation || output.growth_areas?.join(" • ")],
-    ["Integration Path", output.integration_path || output.remedies_for_both?.join(" • ")],
-  ];
+function SoulConnectionRenderer({ output, report }) {
+  const sections = output.sections || [];
+  const overlays = output.overlays || {};
   return (
     <>
-      {sections.map(([title, body]) => (
-        <StackCard key={title} title={title}>
-          <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{body}</p>
-        </StackCard>
-      ))}
-      {!!output.remedies?.length || !!output.remedies_for_both?.length ? (
-        <StackCard title="Remedies">
-          <ul style={{ margin: 0, paddingLeft: 18, color: "#62574a", lineHeight: 1.8 }}>
-            {(output.remedies || output.remedies_for_both || []).map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+      <StackCard title="Connection Archetype">
+        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.karmic_theme || output.connection_archetype || report.summary}</p>
+      </StackCard>
+      <StackCard title="Emotional Resonance">
+        <div style={{ marginBottom: 10 }}>{renderBar(output.emotional_resonance_score || 50, "linear-gradient(135deg, #6a4b89 0%, #d8af6a 100%)")}</div>
+        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.evolutionary_north || output.attraction_dynamic}</p>
+      </StackCard>
+      <StackCard title="Long-Term Compatibility">
+        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.7 }}>{output.relational_pattern || output.long_term_compatibility}</p>
+      </StackCard>
+      {(output.shadow_invitation || toList(output.growth_areas).length) ? (
+        <StackCard title="Growth Areas">
+          {output.shadow_invitation ? <p style={{ margin: "0 0 10px", color: "#62574a", lineHeight: 1.7 }}>{output.shadow_invitation}</p> : null}
+          <ListBlock items={output.growth_areas} />
         </StackCard>
       ) : null}
+      {(output.integration_path || toList(output.remedies || output.remedies_for_both).length) ? (
+        <StackCard title="Integration Path">
+          {output.integration_path ? <p style={{ margin: "0 0 10px", color: "#62574a", lineHeight: 1.7 }}>{output.integration_path}</p> : null}
+          <ListBlock items={output.remedies || output.remedies_for_both} />
+        </StackCard>
+      ) : null}
+      {!!sections.length && (
+        <StackCard title="Detailed Sections">
+          <div style={{ display: "grid", gap: 12 }}>
+            {sections.map((section, index) => (
+              <div key={section.section_id || index} style={{ padding: 14, borderRadius: 18, background: "rgba(100,60,160,0.08)" }}>
+                <strong>{section.title}</strong>
+                <p style={{ margin: "8px 0 6px", color: "#62574a", lineHeight: 1.62 }}>{section.summary}</p>
+                <p style={{ margin: 0, color: "#6d5e74", lineHeight: 1.62 }}>{section.body}</p>
+              </div>
+            ))}
+          </div>
+        </StackCard>
+      )}
+      {!!Object.keys(overlays).length && (
+        <StackCard title="Synastry Overlays">
+          <div style={{ display: "grid", gap: 12 }}>
+            {Object.entries(overlays).map(([title, items]) => (
+              <div key={title} style={{ padding: 14, borderRadius: 18, background: "rgba(255,255,255,0.76)" }}>
+                <strong>{title}</strong>
+                <div style={{ marginTop: 8 }}>
+                  <ListBlock items={items} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </StackCard>
+      )}
     </>
   );
 }
@@ -784,10 +735,9 @@ function ReportRenderer({ report, selected, onGenerateAgain }) {
   return (
     <section style={{ ...cardStyle, padding: 24, display: "grid", gap: 16 }}>
       <div>
-        <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: selected.accent }}>
-          {selected.label}
-        </p>
+        <p style={{ margin: "0 0 8px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: selected.accent }}>{selected.label}</p>
         <h2 style={{ margin: "0 0 10px", fontSize: 34, fontFamily: "Georgia, Times New Roman, serif" }}>{report.summary}</h2>
+        <p style={{ margin: 0, color: "#7a6d60" }}>Generated {prettifyDate(report.created_at)}</p>
       </div>
 
       {type === "love_weather" ? <LoveWeatherRenderer output={output} /> : null}
@@ -797,7 +747,7 @@ function ReportRenderer({ report, selected, onGenerateAgain }) {
       {type === "intimacy_vitality_forecast" ? <IntimacyRenderer output={output} /> : null}
       {type === "venus_retrograde_personal_impact" ? <VenusRetrogradeRenderer output={output} /> : null}
       {type === "soulmate_timing" ? <SoulmateTimingRenderer output={output} /> : null}
-      {type === "deep_synastry_soul_connection" ? <SoulConnectionRenderer output={output} /> : null}
+      {type === "deep_synastry_soul_connection" ? <SoulConnectionRenderer output={output} report={report} /> : null}
 
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
         <button type="button" onClick={onGenerateAgain} style={primaryButtonStyle}>
@@ -838,7 +788,7 @@ function HistoryPanel({ historyRows, loadingHistory, historyError, onOpen }) {
             <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "flex-start" }}>
               <div>
                 <p style={{ margin: "0 0 6px", fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: entry.accent }}>{entry.label}</p>
-                <h3 style={{ margin: "0 0 8px", fontSize: 22, fontFamily: "Georgia, Times New Roman, serif" }}>{new Date(entry.created_at).toLocaleDateString()}</h3>
+                <h3 style={{ margin: "0 0 8px", fontSize: 22, fontFamily: "Georgia, Times New Roman, serif" }}>{prettifyDate(entry.created_at)}</h3>
                 <p style={{ margin: 0, color: "#64594e", lineHeight: 1.64 }}>{entry.summary}</p>
               </div>
               <button type="button" onClick={() => onOpen(entry)} style={primaryButtonStyle}>
@@ -858,7 +808,9 @@ function LoveReportsPage() {
   const [selected, setSelectedState] = useState(LOVE_REPORTS[0]);
   const [activeTab, setActiveTab] = useState("select");
   const deferredTab = useDeferredValue(activeTab);
-  const [form, setForm] = useState(defaultForm);
+  const [primaryForm, setPrimaryForm] = useState(defaultPersonForm);
+  const [secondaryForm, setSecondaryForm] = useState(defaultPersonForm);
+  const [metaForm, setMetaForm] = useState(defaultMetaForm);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [currentReport, setCurrentReport] = useState(null);
@@ -938,7 +890,7 @@ function LoveReportsPage() {
     setSubmitting(true);
     setError("");
     try {
-      const response = await axios.post(`${API}/reports/${selected.slug}/generate`, buildPayload(selected, form), {
+      const response = await axios.post(`${API}/reports/${selected.slug}/generate`, buildPayload(selected, primaryForm, secondaryForm, metaForm), {
         withCredentials: true,
       });
       const generated = response.data?.report || null;
@@ -994,7 +946,18 @@ function LoveReportsPage() {
         {activeTab === "generate" ? (
           <>
             <Selector selected={selected} setSelected={setSelected} continueToGenerate={false} />
-            <GenerateForm selected={selected} form={form} setForm={setForm} onSubmit={handleGenerate} submitting={submitting} error={error} />
+            <GenerateForm
+              selected={selected}
+              primaryForm={primaryForm}
+              setPrimaryForm={setPrimaryForm}
+              secondaryForm={secondaryForm}
+              setSecondaryForm={setSecondaryForm}
+              metaForm={metaForm}
+              setMetaForm={setMetaForm}
+              onSubmit={handleGenerate}
+              submitting={submitting}
+              error={error}
+            />
           </>
         ) : null}
         {activeTab === "report" ? <ReportRenderer report={currentReport} selected={selected} onGenerateAgain={resetForNew} /> : null}
