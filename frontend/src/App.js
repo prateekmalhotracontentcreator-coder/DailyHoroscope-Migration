@@ -47,6 +47,7 @@ import { TarotPage } from './pages/TarotPage';
 import TarotHistoryPage from './pages/TarotHistoryPage';
 import { RemedyPage } from './pages/RemedyPage';
 import KundaliPage from './pages/KundaliPage';
+import LuminaPage from './pages/LuminaPage';
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -155,6 +156,9 @@ function App() {
                   <Route path="/remedies" element={<RemedyPage />} />
                   <Route path="/lagna-kundali" element={<ProtectedRoute><KundaliPage /></ProtectedRoute>} />
                   <Route path="/lagna-kundali/chart/:chartId" element={<ProtectedRoute><KundaliPage /></ProtectedRoute>} />
+
+                  {/* Lumina — Spiritual companion module */}
+                  <Route path="/lumina" element={<LuminaPage />} />
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
