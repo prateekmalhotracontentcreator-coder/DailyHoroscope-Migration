@@ -1,7 +1,7 @@
 # EverydayHoroscope — Project Status
 
-> Last updated: 26 March 2026  
-> Based on 11 chat sessions + 45 commits in `DailyHoroscope-Migration`
+> Last updated: 7 April 2026
+> Based on 13 chat sessions + 50+ commits in `DailyHoroscope-Migration`
 
 ---
 
@@ -11,133 +11,186 @@
 |---|---|
 | Infrastructure (Vercel + Render + Docker) | ✅ Live |
 | Panchang Module (full) | ✅ Live & verified |
-| Vedic Calculator backend | ✅ Committed |
-| Tarot backend (78 cards + reminders) | ✅ Committed |
-| Numerology backend (Ankjyotish premium) | ✅ Committed |
-| Tarot frontend UI | ❌ Not started |
-| Numerology frontend UI | ❌ Not started |
-| Kundali / Birth Chart UI | ❌ Not started |
-| Subscription / Paywall | ❌ Not started |
-| SEO manual steps (GSC, GA4, OG image) | ⏳ Pending manual action |
+| Vedic Calculator backend | ✅ Live |
+| Tarot backend (78 cards + reminders) | ✅ Live |
+| Numerology backend (Ankjyotish premium) | ✅ Live |
+| Tarot frontend UI | ✅ Live |
+| Numerology frontend UI | ✅ Live |
+| Kundali / Birth Chart UI | ✅ Live (BirthChartPage + BrihatKundliPage) |
+| Razorpay subscription / paywall | ✅ Test keys active |
+| Lumina (Spiritual Companion) | ✅ Live — 9-tab layout |
+| Palmistry (Hasta Rekha) | ✅ Live — AI-powered, hand anatomy SVG |
+| Careers Page | ✅ Live at /careers |
+| SEO (OG tags, GA4, JSON-LD, GSC, Bing) | ✅ Live |
+| Admin Console (subscribers, email, scheduler) | ✅ Live |
+| Facebook Page posting | ✅ Live |
+| WhatsApp notifications | 🔜 Pending Meta BSP setup |
+| Instagram posting | 🔜 Pending IG Business Account ID |
+| Razorpay live keys | 🔜 Pending Play Store readiness |
 
 ---
 
-## Tranche 1 — Backend Foundation
+## Module Status Detail
 
-### ✅ Contract 1 — vedic_calculator.py
-**Status: COMPLETE**
-- Migrated from `flatlib` (Python 3.11 only) to `pyswisseph` (Python 3.12 compatible)
-- Computes: birth chart, house positions, planet longitudes, Lagna, Navamsa
-- File: `backend/vedic_calculator.py`
-- Commit: `43327a2`
-
-### ✅ Contract 2 — panchang_router.py
-**Status: COMPLETE — v8-swiss engine**
-
-Full Vedic Panchang API with:
-- Swiss Ephemeris precision (pyswisseph swe.rise_trans)
-- 5 Panchang limbs (Tithi, Nakshatra, Yoga, Karana, Vara)
-- 8 timing windows (Brahma Muhurta, Rahu Kaal, Yamaganda, Gulika, Dur Muhurta ×2, Abhijit, Vijaya)
-- Moonrise + Moonset
-- 91 city catalogue across 13 countries
-- All times with seconds
-- 5 REST endpoints + locations endpoint
-- Verified vs Drik Panchang (all fields ✅ or within ±1 min)
-
-Commit history:
-- `f09d4a0` — v3-swiss initial
-- `51013c4` — v5-swiss: swe.rise_trans sunrise
-- `f2b72be` — v6-swiss: Yamaganda + Dur Muhurta fixes
-- `1dfdaec` — location selector (40 cities)
-- `ed23e75` — TZ abbreviations (IST/EST/GST etc.)
-- `c05e511` — 91 cities: 53 Indian + Malaysia/Indonesia/Thailand/Tibet
-- `2f9c5a3` — v8-swiss: Moonrise/Moonset + Brahma/Vijaya Muhurta
-- `42b5d88` — Frontend: 2×2 Sun/Moon cards + Auspicious/Inauspicious headers
-- `50d6a5c` — Seconds added to all times
-
-### ✅ Contract 3 — numerology_router.py
-**Status: COMPLETE (backend only)**
-- 11 numerology tiles
-- Premium Ankjyotish report: Lo Shu grid, Vedic cross-reference, lucky elements, 7-day remediation
-- File: `backend/numerology_router.py`
-- Commit: `1ed9d70`
-- **Frontend UI: NOT YET BUILT**
-
-### ✅ Contract 4 — tarot_router.py + tarot_cards.json
-**Status: COMPLETE (backend only)**
-- Full 78-card deck (22 Major Arcana + 56 Minor Arcana)
-- SVG bundle: `frontend/public/tarot_cards.json`
-- 3 reminder endpoints (set/get/delete)
-- File: `backend/tarot_router.py`
-- Commits: `715caff`, `90c1ccc`
-- **Frontend UI: NOT YET BUILT**
-
----
-
-## Tranche 2 — Frontend Modules
-
-### ✅ Panchang Frontend — COMPLETE
+### ✅ Panchang Module — COMPLETE
 File: `frontend/src/pages/PanchangPage.jsx`
+Engine: `backend/panchang_router.py` (v8-swiss)
 
-All views live:
-- Today / Tomorrow Panchang
-- Tithi view (with Moonrise/Moonset)
-- Choghadiya / Timing Windows (Auspicious + Inauspicious sub-headers)
-- Monthly Calendar (Tithi per day, festival dots)
-- Festivals & Vrats list
-- Date-specific Panchang
-- Location picker (91 cities, TZ-aware, localStorage persistence)
+All features live:
+- 5 Panchang limbs, 8 timing windows, Sunrise/Moonrise with seconds
+- True Choghadiya (8 daylight + 8 night slots, planetary rulers)
+- Amrit Kalam, Special Yogas (Amrit Siddhi, Sarvartha Siddhi, Ravi Yoga)
+- 91 city catalogue, TZ-aware location picker
+- Monthly calendar, Festivals & Vrats
+- Panchang share card (WhatsApp/Facebook/Instagram/Save/Copy)
 - Full SEO + JSON-LD on all 7 routes
-- Sitemap updated
 
-**Panchang Pending Enhancements:**
+### ✅ Tarot Module — COMPLETE
+File: `frontend/src/pages/TarotPage.jsx`
+Backend: `backend/tarot_router.py` + `frontend/public/tarot_cards.json`
 
-| # | Item | Effort |
-|---|---|---|
-| 1 | True Choghadiya (8 slots with planetary rulers) | Medium |
-| 2 | Amrit Kalam | Small |
-| 3 | Special Yogas (Sarvartha Siddhi, Ravi Yoga) | Medium |
-| 4 | WhatsApp share card | Medium |
-| 5 | OG image (1200×630px) to `frontend/public/og-image.png` | Manual |
-| 6 | Google Search Console verification + sitemap submit | Manual |
-| 7 | GA4 measurement ID in index.html | Manual |
-| 8 | Bing Webmaster Tools | Manual |
+Features live:
+- 78-card SVG deck, flip animation
+- Daily Draw, 3-card spread, Celtic Cross (premium-gated)
+- Card detail modal (upright + reversed meaning)
+- Reminder setup UI, History tab
 
-### ❌ Tarot Frontend — NOT STARTED
-**Backend is live.** Frontend needs:
-- Card flip animation
-- 3-card / Celtic Cross spread layouts
-- Card detail modal (meaning, reversed meaning)
-- Daily card feature
-- Reminder setup UI (links to backend endpoints)
-- Premium gating (paid spreads)
+### ✅ Numerology Module — COMPLETE
+File: `frontend/src/pages/NumerologyPage.jsx`
+Backend: `backend/numerology_router.py`
 
-### ❌ Numerology Frontend — NOT STARTED
-**Backend is live.** Frontend needs:
-- Birth date / name input form
-- Life Path, Expression, Soul Urge tiles
-- Premium Ankjyotish report display
-- Lo Shu grid visualization
-- 7-day remediation display
+Features live:
+- 11 computed number tiles (Life Path, Expression, Soul Urge, etc.)
+- Lo Shu grid visualisation
+- Premium Ankjyotish report (7-day remediation)
+- 4 tabs: Select / Generate / Report / History
 
-### ❌ Kundali / Birth Chart UI — NOT STARTED
-**Backend (vedic_calculator.py) is live.** Frontend needs:
+### ✅ Kundali / Birth Chart Module — COMPLETE
+Files: `frontend/src/pages/BirthChartPage.jsx`, `BrihatKundliPage.jsx`, `KundaliMilanPage.jsx`
+Backend: `backend/vedic_calculator.py`
+
+Features live:
 - Birth details form (date/time/place)
-- Chart wheel SVG renderer
-- Planet positions table
-- Navamsa chart
-- Dasha periods display
+- D1 chart, planet positions, Navamsa, Dasha timeline
 - Kundali Milan (compatibility matching)
+- Brihat Kundli extended report
 
-### ❌ Subscription / Paywall — NOT STARTED
-- Razorpay integration
-- Premium plan definitions (Free / Basic / Pro)
-- Report unlock flow
-- Subscription management UI
+### ✅ Lumina Module — LIVE (Phase 1 complete, Phase 2 pending)
+File: `frontend/src/pages/LuminaPage.jsx`
 
-### ❌ Daily Horoscope Frontend — PARTIAL
-- Basic horoscope page exists
-- Needs: personalization (birth chart-based), push notifications, email digest
+Features live:
+- 9-tab layout (Home / Bible / Manifest / Marketplace / Spiritual / Devotion / Community / Journal / Chat)
+- 4-pointed sparkle star logo
+- GlassCard gold-tinted tiles (bg-gold/[0.04])
+- Daily verse with hardcoded fallback (Joshua 1:8) — shows "OFFLINE — FEATURED" badge when API unavailable
+- 21-day Manifestation Journal
+- Devotion Points gamification: 750pt hero, streak/chapters/days stats, gold progress bar, 5 reward tiers (redeem UI)
+- Marketplace Vision tab (Kingdom Vision / AI Blueprint)
+- Community Hub placeholder tiles (Circle / Global Prayer Chain / Bridge)
+- 6-item FAQ
+
+**Phase 2 pending (Codex Commission A & beyond):**
+- Full gold/illuminating theme pass — tiles need gradient glow, text auto-alignment
+- Community Hub real backend (Circle, Prayer Chain, Bridge endpoints)
+- TTS audio for 21-day manifestation
+- AI wallpapers
+
+### ✅ Palmistry Module (Hasta Rekha) — LIVE (Phase 1 complete, Phase 2 pending)
+File: `frontend/src/pages/PalmistryPage.jsx`
+
+Features live:
+- AI-powered palm reading (multi-question flow)
+- Comprehensive anatomical hand SVG (HandIllustration component)
+  - Right hand palm-up: Heart/Head/Life/Fate/Sun lines
+  - 7 planetary mounts labeled
+  - Per-question highlighting (highlighted line = red, non-highlighted = dimmed)
+  - Renders for: life_line, heart_line, head_line, fate_line, dominant_mount, thumb_type, finger_style, hand_texture, special_marks
+- Hasta Rekha card on Home.jsx
+
+**Phase 2 pending (Codex Commission B):**
+- High-quality illustrated palm SVG as static asset (`frontend/public/palm_anatomy.svg`)
+- Palm photo upload + Claude Vision analysis (process-and-discard pattern)
+- AES-256 encryption for stored reports
+
+### ✅ Horoscope Pages — LIVE
+Files: `DailyHoroscope.jsx`, `WeeklyHoroscope.jsx`, `MonthlyHoroscope.jsx`
+
+Features live:
+- Daily / Weekly / Monthly horoscope
+- Element-based color theming (Fire/Earth/Air/Water)
+- Share cards (WhatsApp/Facebook/Instagram/Save/Copy)
+
+### ✅ Careers Page — LIVE
+File: `frontend/src/pages/CareersPage.jsx`
+Route: `/careers`
+
+4 open roles:
+- Frontend Engineer (React) — Product / Remote India
+- Python Backend Engineer (FastAPI) — Engineering / Remote India
+- Vedic Astrologer & Content Lead — Content / Remote Global
+- Growth Marketer — SEO & Organic — Growth / Remote India
+
+### ✅ Admin Console — LIVE
+Route: `/admin/dashboard`
+
+Features live:
+- Subscriber management (add/edit/delete, tags, MongoDB: `subscribers`)
+- Email notifications via Resend
+- Scheduled notifications (APScheduler, MongoDB: `scheduled_notifications`)
+- Notification history log (MongoDB: `notification_logs`)
+- Social Media tab: Facebook Page posting (one-click from Panchang + Horoscope pages + Admin Console)
+
+---
+
+## Codex Commission Queue
+
+> These are the next development commissions to be issued to Codex, in priority order.
+
+### Commission A — Lumina Gold Theme Pass 🔴 HIGH
+- Full color audit of `LuminaPage.jsx`
+- Replace any hardcoded greys/blacks with theme tokens (`text-foreground`, `text-muted-foreground`)
+- Tiles: `bg-gradient-to-br from-gold/15 to-gold/5` for warm illuminating glow
+- No new features — pure visual polish
+
+### Commission B — Palm Anatomy Illustration 🔴 HIGH
+- Produce `frontend/public/palm_anatomy.svg` — high-quality illustrated right hand (Tarot card line art style)
+- Heart/Head/Life/Fate/Sun lines labeled with leader arrows
+- 7 planetary mount ellipse zones labeled
+- React component `HandIllustration` with `questionId` prop for per-line highlighting
+- Replaces current programmatic SVG in `PalmistryPage.jsx`
+
+### Commission C — AES-256 Encryption Layer 🟡 MEDIUM
+- Add `cryptography` to `requirements.txt`
+- Encrypt at write / decrypt at read for `palmistry_reports` + `lumina_prayers` MongoDB collections
+- `ENCRYPTION_KEY` env var on Render (32-byte base64)
+- Zero UI changes
+
+### Commission D — Razorpay Subscription Paywall 🟡 MEDIUM
+- Build upgrade flow in `PricingPage.jsx`
+- Razorpay Checkout JS (test keys already in Render env)
+- 3 plans: Free / Basic (₹199/mo) / Pro (₹499/mo)
+- Report unlock blur overlay + "Unlock with Pro" CTA on Numerology, Kundali, Brihat reports
+- Subscription management in `AccountSettings.jsx`
+
+### Commission E — WhatsApp Notifications 🟢 WHEN READY
+- Blocked on: `WHATSAPP_PHONE_NUMBER_ID` + `WHATSAPP_ACCESS_TOKEN` on Render
+- Backend stub already in `admin_router.py`
+- Frontend UI stub already in Admin Console Notifications tab
+
+### Commission F — Instagram Posting 🟢 WHEN READY
+- Blocked on: `INSTAGRAM_BUSINESS_ACCOUNT_ID`
+- Facebook posting already working — Instagram is same Meta graph API pattern
+
+### Commission G — 2 New Strategic Modules 🔴 HIGH (details TBD)
+- User to brief in next session
+- Full backend router spec + frontend page spec to be drafted
+
+---
+
+## 2 New Strategic Modules
+
+> **To be briefed by Prateek in the next Claude Code session.**
+> Codex commission briefs will be drafted once concepts are shared.
 
 ---
 
@@ -149,67 +202,46 @@ All views live:
 - Docker: `python:3.12.9-slim`
 - pyswisseph 2.10.x as astronomy engine
 - Supabase: Auth + DB
-- Razorpay: credentials configured (payment flows not yet built)
+- Razorpay: test keys configured
 
-### ⏳ Configured but not wired
-- `pkg_resources` shim for Razorpay (setuptools fix committed)
-- Keep-alive hook (useKeepAlive.js committed)
+### ✅ Social / Meta
+- Facebook Page ID: `1084672598054073` ✅
+- Facebook Page Access Token: System User token (never expires) ✅
+- Instagram Business Account ID: 🔜 pending
+- WhatsApp Phone Number ID: 🔜 pending BSP setup
+
+---
+
+## Manual Steps Pending
+
+| Step | Notes |
+|---|---|
+| GSC sitemap submission | Submit `sitemap.xml` in Google Search Console dashboard |
+| OG image | Upload 1200×630px image to `frontend/public/og-image.png` |
+| Razorpay live keys | Upload only when ready for Play Store |
+| Instagram Business Account ID | Resolve IG loading issue in Meta Business Manager |
+| WhatsApp BSP setup | Select Business Service Provider, obtain Phone Number ID |
 
 ---
 
 ## Legal / Compliance Documents
 
-All committed to repo (Word format):
-- Terms of Service: `1__TERMS_OF_SERVICE.docx`
-- Privacy Policy: `2__Privacy_Policy.docx`
-- Subscription Terms: `3__SUBSCRIPTION_TERMS.docx`
-- Refund & Cancellation: `4__Refund___Cancellation_Policy.docx`
-- Cookie Policy: `5__Cookie_Policy.docx`
+All drafted (Word format in repo root):
+- `1__TERMS_OF_SERVICE.docx`
+- `2__Privacy_Policy.docx`
+- `3__SUBSCRIPTION_TERMS.docx`
+- `4__Refund___Cancellation_Policy.docx`
+- `5__Cookie_Policy.docx`
 
-**Status: Drafted, not yet published on site**
-
----
-
-## Architecture Documents (in repo)
-
-- `vedic_engine_architecture.html` — Vedic engine design spec
-- `blueprint_to_reality_map.html` — feature-to-code mapping
-- `Top_10_Premium_Reports_Structure.txt` — premium report specs
-- `EverydayHoroscope_Handover_March2026_v2.docx` — full handover doc
-
----
-
-## Suggested Next Sprint Priorities
-
-### Immediate (complete Panchang)
-1. True Choghadiya (8 planetary slots) — backend + frontend
-2. Amrit Kalam — backend addition only
-3. OG image upload + GSC/GA4 wiring (manual)
-
-### Next Module — Tarot (highest user engagement potential)
-4. Tarot card flip UI + daily card feature
-5. 3-card spread UI
-6. Premium gating for Celtic Cross
-
-### Then — Numerology
-7. Numerology input form + tile display
-8. Premium Ankjyotish report UI
-
-### Then — Kundali
-9. Birth chart form + wheel renderer
-10. Kundali Milan (compatibility)
-
-### Revenue unlock
-11. Razorpay subscription flow
-12. Premium report paywall
+**Status: Drafted — not yet rendered as pages on site** (pending Commission)
 
 ---
 
 ## How to Start a Claude Code Session
 
 ```bash
-# 1. Navigate to your cloned repo
-cd path/to/DailyHoroscope-Migration
+# 1. Navigate to repo
+cd /Users/apple/DailyHoroscope-Migration
 
 # 2. Pull latest
 git pull origin main
@@ -222,8 +254,4 @@ claude
 so you know exactly where we are. Then ask me what to work on."
 ```
 
-Claude Code will:
-- Read CLAUDE.md → knows the full stack, file locations, conventions
-- Read PROJECT_STATUS.md → knows what's done and what's next
-- Check git log → sees the last 10 commits
-- Be fully oriented in under 30 seconds, ready to code
+Claude Code will orient in under 30 seconds, ready to code.
