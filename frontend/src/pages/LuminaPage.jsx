@@ -210,10 +210,11 @@ function LuminaPage() {
   useEffect(() => {
     if (!user?.email) return;
     setProfile((prev) => ({
-      userName: prev.userName || user.name || "",
-      userEmail: user.email,
+      userName: prev.userName || user?.name || "",
+      userEmail: user?.email || "",
     }));
-  }, [user?.email, user?.name]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   useEffect(() => {
     if (scriptureMode === "GITA") {
