@@ -1,6 +1,6 @@
 # EverydayHoroscope — Project Status
 
-> Last updated: 7 April 2026
+> Last updated: 8 April 2026
 > Based on 13 chat sessions + 50+ commits in `DailyHoroscope-Migration`
 
 ---
@@ -26,6 +26,8 @@
 | Facebook Page posting | ✅ Live |
 | WhatsApp notifications | 🔜 Pending Meta BSP setup |
 | Instagram posting | 🔜 Pending IG Business Account ID |
+| Ayur Jyotish (Longevity Report) | 📋 Spec drafted — Commission H |
+| Jyotish Narrative Engine | 📋 Spec drafted — Commission I |
 | Razorpay live keys | 🔜 Pending Play Store readiness |
 
 ---
@@ -181,16 +183,58 @@ Features live:
 - Blocked on: `INSTAGRAM_BUSINESS_ACCOUNT_ID`
 - Facebook posting already working — Instagram is same Meta graph API pattern
 
-### Commission G — 2 New Strategic Modules 🔴 HIGH (details TBD)
-- User to brief in next session
-- Full backend router spec + frontend page spec to be drafted
+### Commission H — Ayur Jyotish: Longevity & Health Report 🔴 HIGH
+- **Full spec:** `.claude/CODEX_LONGEVITY_REPORT_CONTRACT.md`
+- Premium report using KP Astrology (primary) + Vedic (supporting)
+- New backend: `kp_engine.py` (sub-lord chain, Placidus cusps, KP significators)
+- New backend: `longevity_router.py` (4 endpoints)
+- 7-section report: Longevity Classification, Constitutional Profile, Vulnerable Systems, Disease Windows, Critical Alerts, Remedies, QoL Forecast
+- Claude API narrative layer for human-readable report generation
+- Frontend: `LongevityReportPage.jsx` — timeline visualisation, risk cards, remedy tabs
+- Pro-tier paywall gated (₹499/mo or ₹999 one-time)
+- Medical disclaimer mandatory on all views
+- **Estimated:** ~48h
+
+### Commission I — Jyotish Narrative Engine 🔴 HIGH
+- **Full spec:** `.claude/CODEX_NARRATIVE_ENGINE_CONTRACT.md`
+- Internal infrastructure module — powers interpretation across all modules
+- 3-layer architecture: Data Layer (MongoDB rules DB) → Rule Engine (Python) → Narrative Layer (Claude API)
+- Hierarchical Interpretation Database: 13 condition types, modifiers, conflict resolution, multi-source attribution
+- ~200 seed rules from BPHS, Phaladeepika, Saravali
+- 30-50 classical yoga detection library
+- Admin Console: Rules Browser, Rule Editor, Bulk Import, Coverage Dashboard, Test Console
+- Integration points: Kundali, Longevity, Horoscope, future Tarot/Numerology
+- Phase 2 roadmap: OCR → Rule extraction pipeline, Redis caching, Celery workers
+- **Estimated:** ~62h
+
+### Commission E — WhatsApp Notifications 🟢 WHEN READY
+- Blocked on: `WHATSAPP_PHONE_NUMBER_ID` + `WHATSAPP_ACCESS_TOKEN` on Render
+- Backend stub already in `admin_router.py`
+- Frontend UI stub already in Admin Console Notifications tab
+
+### Commission F — Instagram Posting 🟢 WHEN READY
+- Blocked on: `INSTAGRAM_BUSINESS_ACCOUNT_ID`
+- Facebook posting already working — Instagram is same Meta graph API pattern
 
 ---
 
-## 2 New Strategic Modules
+## Strategic Modules — Architecture Notes
 
-> **To be briefed by Prateek in the next Claude Code session.**
-> Codex commission briefs will be drafted once concepts are shared.
+### Recommended Build Order: I → H
+**Commission I (Narrative Engine) should be built first.** It is the interpretation backbone
+that Commission H (Longevity Report) will call for health-category narratives. Building I
+first means H gets richer, multi-source narratives for free instead of hardcoded text.
+
+### How They Connect
+```
+Commission I (Narrative Engine)         Commission H (Longevity Report)
+┌─────────────────────────┐            ┌─────────────────────────┐
+│ interpretation_rules DB │◄───────────│ kp_engine.py computes   │
+│ scan_chart(categories=  │            │ sub-lords, significators│
+│   ["health"])           │            │ longevity classification│
+│ generate_narrative()    │───────────►│ narrative sections 1-7  │
+└─────────────────────────┘            └─────────────────────────┘
+```
 
 ---
 
