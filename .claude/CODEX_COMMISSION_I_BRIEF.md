@@ -32,10 +32,31 @@ the platform. Build this before Commission H.
 - `cross_science_combinations` — ~50 multi-factor confirmation combos (Astrology + Numerology)
 
 ### Seed Data Files (in `backend/data/`)
-- `seed_rules.json` — ~300 rules from BPHS, Phaladeepika, Saravali, B.V. Raman
+
+These are the **Phase 1 bootstrap files** — the minimum viable library to launch the
+engine. They are NOT the complete library. Additional books will be uploaded progressively
+by the content team via the Library Console Import tab as the knowledge library grows.
+
+- `seed_rules.json` — ~300 hand-curated rules (Phase 1 bootstrap only)
 - `seed_cross_science.json` — ~50 cross-science combos (astrology + numerology, Phase 1)
 - `seed_voices.json` — 5 author voice profiles
 - `seed_bridges.json` — ~30 narrative bridge phrases
+
+**Important — Book Upload Architecture:**
+The system must be designed from day one to support an **expanding book library**, not
+just the Phase 1 seed pack. Books will be provided by the client as OCR'd PDFs/text
+files and uploaded progressively via the Library Console. The data model, import pipeline,
+and storage schema must accommodate:
+
+- Hundreds of books across traditions (Vedic, KP, Nadi, Western, Numerology, Palmistry, Tarot)
+- Each book as a named source with author, tradition, and authenticity score
+- Rules extracted from each book tagged back to their exact source + chapter/verse
+- The library growing from ~300 rules at launch to potentially 10,000+ rules over time
+- No hardcoded book list — sources are data, not code
+
+The Phase 2 OCR → Extraction pipeline (see full spec) is what enables bulk ingestion
+of new books without manual rule entry. The Library Console Import tab handles
+review and approval of extracted rules before they go live.
 
 ### Library Console (standalone — NOT part of Operations Admin Console)
 - New page: `frontend/src/pages/LibraryConsolePage.jsx`
