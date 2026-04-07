@@ -11,13 +11,24 @@ const API = `${BACKEND_URL}/api/lumina`;
 
 const SCRIPTURE_MODES = ["BIBLE", "GITA"];
 const TABS = [
-  { id: "home", label: "Home" },
-  { id: "bible", label: "Bible" },
-  { id: "manifest", label: "Manifest" },
-  { id: "spiritual", label: "Spiritual" },
-  { id: "community", label: "Community" },
-  { id: "journal", label: "Journal" },
-  { id: "chat", label: "Chat" },
+  { id: "home",       label: "Home" },
+  { id: "bible",      label: "Bible" },
+  { id: "manifest",   label: "Manifest" },
+  { id: "marketplace",label: "Marketplace" },
+  { id: "spiritual",  label: "Spiritual" },
+  { id: "devotion",   label: "Devotion" },
+  { id: "community",  label: "Community" },
+  { id: "journal",    label: "Journal" },
+  { id: "chat",       label: "Chat" },
+];
+
+// Reward tiers for the Devotion/Gamification tab
+const REWARD_TIERS = [
+  { points: 200,  icon: "☕", label: "50% Coffee Coupon",   desc: "Reward yourself with a local coffee discount." },
+  { points: 500,  icon: "🎁", label: "$5 Amazon Gift Card", desc: "Exchange your devotion points for a digital gift card." },
+  { points: 1000, icon: "✦",  label: "Premium Gift Month",  desc: "Gift a month of Lumina Premium to a loved one." },
+  { points: 2500, icon: "💳", label: "$10 Gift Card",       desc: "Stay consistent to earn gift cards directly via email." },
+  { points: 5000, icon: "🏆", label: "$25 Gift Card",       desc: "Elite devotion milestone — you're in the top tier." },
 ];
 
 const BIBLE_BOOKS = [
@@ -56,7 +67,7 @@ const CONFESSION_CATEGORIES = [
 const initialChat = [
   {
     role: "assistant",
-    text: "Walk in the Divine Light. Share what is on your heart, and I’ll respond with scripture-grounded guidance.",
+    text: "Walk in the Divine Light. Share what is on your heart, and I'll respond with scripture-grounded guidance.",
     sources: [],
   },
 ];
@@ -102,7 +113,7 @@ function SectionTitle({ eyebrow, title, copy, badge }) {
 }
 
 function GlassCard({ className = "", children }) {
-  return <div className={`rounded-xl border border-gold/15 bg-card/95 shadow-sm ${className}`}>{children}</div>;
+  return <div className={`rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm ${className}`}>{children}</div>;
 }
 
 function PremiumUpsellCard() {
@@ -243,7 +254,7 @@ function LuminaPage() {
         setDailyVerse(response.data);
       } catch (error) {
         if (!active) return;
-        setDailyError(fieldError(error, "Unable to open today’s revelation."));
+        setDailyError(fieldError(error, "Unable to open today's revelation."));
       } finally {
         if (active) setDailyLoading(false);
       }
@@ -551,49 +562,74 @@ function LuminaPage() {
     }
   }
 
+  // Fallback verse shown when API is unavailable (offline / first load)
+  const FALLBACK_VERSE = {
+    verse_text: 'This book of the law shall not depart out of thy mouth; but thou shalt meditate therein day and night, that thou mayest observe to do according to all that is written therein: for then thou shalt make thy way prosperous, and then thou shalt have good success.',
+    verse_reference: 'Joshua 1:8 (KJV)',
+    revelation_context: "God's instruction to Joshua at the threshold of the Promised Land \u2014 a call to daily immersion in the Word as the foundation of every decision and direction.",
+    speak_it: 'I meditate on the Word day and night. Every step I take is aligned with divine instruction.',
+    think_it: 'The Word is not an add-on to my day — it is the blueprint of my day.',
+    do_it: 'Before opening your phone this morning, open a verse. Let scripture set the first frame of your mind.',
+    prophets_promise: 'Your way will be prosperous and you will have good success — not by striving, but by staying in the Word.',
+    daily_application: 'Identify one decision you are facing today. Find a scripture that speaks to it and carry it into that situation.',
+  };
+
   function renderHome() {
+    const verse = dailyVerse || (!dailyLoading ? FALLBACK_VERSE : null);
+
     if (dailyLoading) {
-      return <GlassCard className="lumina-animate p-10 text-center text-white/60">Opening today’s verse...</GlassCard>;
+      return (
+        <GlassCard className="lumina-animate p-10 text-center">
+          <p className="m-0 text-sm text-muted-foreground">Opening today's verse…</p>
+        </GlassCard>
+      );
     }
-    if (dailyError) {
-      return <GlassCard className="lumina-animate p-10 text-center text-amber-300">{dailyError}</GlassCard>;
-    }
-    if (!dailyVerse) return null;
+
+    if (!verse) return null;
+
+    const isFallback = !dailyVerse;
+
     return (
-      <div className="space-y-6">
-        <GlassCard className="lumina-animate overflow-hidden p-8 md:p-12">
-          <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Daily Verse</p>
-          <blockquote className="m-0 mt-6 font-serif text-3xl italic leading-tight text-white md:text-5xl">
-            “{dailyVerse.verse_text}”
+      <div className="space-y-5">
+        {/* Hero verse card */}
+        <GlassCard className="lumina-animate overflow-hidden p-6 md:p-8">
+          <div className="flex items-center justify-between mb-4">
+            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">Daily Verse</p>
+            {isFallback && (
+              <span className="rounded-full border border-gold/25 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-gold">Offline — Featured</span>
+            )}
+          </div>
+          <blockquote className="m-0 font-playfair text-2xl font-semibold italic leading-snug text-foreground md:text-3xl">
+            &ldquo;{verse.verse_text}&rdquo;
           </blockquote>
-          <p className="m-0 mt-5 text-sm uppercase tracking-[0.35em] text-amber-400">{dailyVerse.verse_reference}</p>
-          <div className="mt-8 rounded-[32px] border border-white/10 bg-black/20 p-6">
-            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Revelation Context</p>
-            <p className="m-0 mt-4 text-base leading-8 text-white/75">{dailyVerse.revelation_context}</p>
+          <p className="m-0 mt-4 text-sm uppercase tracking-[0.35em] text-gold">{verse.verse_reference}</p>
+          <div className="mt-5 rounded-xl border border-gold/15 bg-gold/[0.04] p-5">
+            <p className="m-0 text-[11px] uppercase tracking-[0.3em] text-gold">Revelation Context</p>
+            <p className="m-0 mt-3 text-sm leading-7 text-muted-foreground">{verse.revelation_context}</p>
           </div>
         </GlassCard>
 
         <div className="grid gap-4 md:grid-cols-3">
           {[
-            { label: "Speak It", value: dailyVerse.speak_it },
-            { label: "Think It", value: dailyVerse.think_it },
-            { label: "Do It", value: dailyVerse.do_it },
+            { label: "Speak It", value: verse.speak_it },
+            { label: "Think It", value: verse.think_it },
+            { label: "Do It",    value: verse.do_it },
           ].map((item) => (
-            <GlassCard key={item.label} className="lumina-animate p-6">
-              <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">{item.label}</p>
-              <p className="m-0 mt-4 text-base leading-8 text-white/75">{item.value}</p>
+            <GlassCard key={item.label} className="lumina-animate p-5">
+              <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">{item.label}</p>
+              <p className="m-0 mt-3 text-sm leading-7 text-muted-foreground">{item.value}</p>
             </GlassCard>
           ))}
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          <GlassCard className="lumina-animate p-6">
-            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">The Prophet&apos;s Promise</p>
-            <p className="m-0 mt-4 text-base leading-8 text-white/75">{dailyVerse.prophets_promise}</p>
+          <GlassCard className="lumina-animate p-5">
+            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">The Prophet&apos;s Promise</p>
+            <p className="m-0 mt-3 text-sm leading-7 text-muted-foreground">{verse.prophets_promise}</p>
           </GlassCard>
-          <GlassCard className="lumina-animate p-6">
-            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Daily Application</p>
-            <p className="m-0 mt-4 text-base leading-8 text-white/75">{dailyVerse.daily_application}</p>
+          <GlassCard className="lumina-animate p-5">
+            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">Daily Application</p>
+            <p className="m-0 mt-3 text-sm leading-7 text-muted-foreground">{verse.daily_application}</p>
           </GlassCard>
         </div>
       </div>
@@ -754,7 +790,13 @@ function LuminaPage() {
         ) : null}
 
         <PremiumUpsellCard />
+      </div>
+    );
+  }
 
+  function renderMarketplace() {
+    return (
+      <div className="space-y-5">
         <GlassCard className="lumina-animate p-6 md:p-8">
           <SectionTitle
             eyebrow="Marketplace Vision"
@@ -766,46 +808,146 @@ function LuminaPage() {
               value={kingdomGoal}
               onChange={(event) => setKingdomGoal(event.target.value)}
               placeholder="Promotion in career, launch a practice, build a healing business, lead a team..."
-              className="min-h-[140px] w-full rounded-[32px] border border-white/10 bg-black/30 px-5 py-5 text-base text-white outline-none transition placeholder:text-white/25 focus:border-amber-400/45"
+              className="min-h-[140px] w-full rounded-xl border border-gold/15 bg-background/60 px-4 py-4 text-sm text-foreground outline-none transition placeholder:text-muted-foreground/40 focus:border-gold/40"
             />
             <button
               type="button"
               onClick={handleKingdomVision}
               disabled={kingdomLoading || !kingdomGoal.trim()}
-              className="rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#18171b] transition hover:bg-white/90 disabled:opacity-40"
+              className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-gold/90 disabled:opacity-40"
             >
-              {kingdomLoading ? "Scribing mandate..." : "Scribe Mandate"}
+              {kingdomLoading ? "Scribing mandate…" : "Scribe Mandate"}
             </button>
           </div>
 
           {kingdomVision ? (
             <div className="mt-6 grid gap-4">
-              <div className="rounded-[32px] border border-amber-400/25 bg-amber-500/10 p-6">
-                <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-300">The Kingdom Mandate</p>
-                <p className="m-0 mt-4 font-serif text-2xl italic leading-9 text-white">{kingdomVision.mandate}</p>
+              <div className="rounded-xl border border-gold/25 bg-gold/10 p-6">
+                <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">The Kingdom Mandate</p>
+                <p className="m-0 mt-4 font-playfair text-2xl font-semibold italic leading-snug text-foreground">{kingdomVision.mandate}</p>
               </div>
               <div className="grid gap-4 md:grid-cols-2">
-                <GlassCard className="p-6">
-                  <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Scripture</p>
-                  <p className="m-0 mt-4 text-base text-white/80">{kingdomVision.scripture}</p>
+                <GlassCard className="p-5">
+                  <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">Scripture</p>
+                  <p className="m-0 mt-3 text-sm leading-7 text-muted-foreground">{kingdomVision.scripture}</p>
                 </GlassCard>
-                <GlassCard className="p-6">
-                  <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Blueprint Prompt</p>
-                  <p className="m-0 mt-4 text-base leading-7 text-white/72">{kingdomVision.blueprint_prompt}</p>
+                <GlassCard className="p-5">
+                  <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">Blueprint Prompt</p>
+                  <p className="m-0 mt-3 text-sm leading-7 text-muted-foreground">{kingdomVision.blueprint_prompt}</p>
                 </GlassCard>
               </div>
-              <GlassCard className="p-6">
-                <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Action Plan</p>
+              <GlassCard className="p-5">
+                <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">Action Plan</p>
                 <div className="mt-4 grid gap-3">
                   {(kingdomVision.action_plan || []).map((step, index) => (
-                    <div key={`${index}-${step}`} className="rounded-[24px] border border-white/10 bg-black/20 px-4 py-4 text-white/75">
-                      {index + 1}. {step}
+                    <div key={`${index}-${step}`} className="rounded-lg border border-gold/15 bg-background/60 px-4 py-3 text-sm text-muted-foreground">
+                      <span className="font-semibold text-gold mr-2">{index + 1}.</span>{step}
                     </div>
                   ))}
                 </div>
               </GlassCard>
             </div>
           ) : null}
+        </GlassCard>
+      </div>
+    );
+  }
+
+  function renderDevotion() {
+    const nextTier = REWARD_TIERS.find((t) => t.points > credits);
+    const prevTierPoints = REWARD_TIERS.filter((t) => t.points <= credits).pop()?.points || 0;
+    const progressPct = nextTier
+      ? Math.min(100, Math.round(((credits - prevTierPoints) / (nextTier.points - prevTierPoints)) * 100))
+      : 100;
+
+    return (
+      <div className="space-y-5">
+        {/* Hero devotion points card */}
+        <GlassCard className="lumina-animate overflow-hidden">
+          <div className="rounded-xl border border-gold/30 bg-gradient-to-br from-gold/20 via-gold/10 to-gold/5 p-6 md:p-8">
+            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold text-center">Devotion Points</p>
+            <p className="m-0 mt-3 text-center font-playfair text-6xl font-semibold text-foreground">{credits}</p>
+            <div className="mt-4 flex items-center justify-center gap-6 border-t border-gold/20 pt-4">
+              <div className="text-center">
+                <p className="m-0 text-2xl font-semibold text-foreground">{dayStreak}</p>
+                <p className="m-0 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Day Streak</p>
+              </div>
+              <div className="h-8 w-px bg-gold/20" />
+              <div className="text-center">
+                <p className="m-0 text-2xl font-semibold text-foreground">{chaptersRead}</p>
+                <p className="m-0 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Chapters Read</p>
+              </div>
+              <div className="h-8 w-px bg-gold/20" />
+              <div className="text-center">
+                <p className="m-0 text-2xl font-semibold text-foreground">{manifestation.completed_days?.length || 0}</p>
+                <p className="m-0 text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Days Done</p>
+              </div>
+            </div>
+          </div>
+        </GlassCard>
+
+        {/* Progress tracker */}
+        {nextTier ? (
+          <GlassCard className="lumina-animate p-5">
+            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">Progress Tracker Rewards</p>
+            <p className="m-0 mt-1 text-xs text-muted-foreground">Stay consistent to earn gift rewards directly via email.</p>
+            <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-gold/10">
+              <div className="h-full rounded-full bg-gold transition-all duration-700" style={{ width: `${progressPct}%` }} />
+            </div>
+            <p className="m-0 mt-2 text-center text-[10px] font-semibold uppercase tracking-[0.25em] text-gold">
+              Next milestone: {nextTier.points.toLocaleString()} pts — {nextTier.label}
+            </p>
+          </GlassCard>
+        ) : (
+          <GlassCard className="lumina-animate p-5 text-center">
+            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">🏆 All milestones reached</p>
+          </GlassCard>
+        )}
+
+        {/* How to earn */}
+        <GlassCard className="lumina-animate p-5 md:p-6">
+          <SectionTitle eyebrow="How to earn" title="Your path to rewards." />
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            {[
+              { action: "Read a scripture chapter", pts: "+25 pts" },
+              { action: "Complete a manifestation day", pts: "+25 pts" },
+              { action: "Realise a saved prayer", pts: "+50 pts" },
+            ].map((row) => (
+              <div key={row.action} className="flex items-center justify-between rounded-lg border border-gold/15 bg-background/60 px-4 py-3">
+                <p className="m-0 text-sm text-muted-foreground">{row.action}</p>
+                <span className="ml-3 font-semibold text-gold whitespace-nowrap">{row.pts}</span>
+              </div>
+            ))}
+          </div>
+        </GlassCard>
+
+        {/* Redeem points */}
+        <GlassCard className="lumina-animate p-5 md:p-6">
+          <SectionTitle eyebrow="Redeem Points" title="Claim your reward." copy="Basis your reading progress, we unlock special bonuses." />
+          <div className="mt-4 space-y-3">
+            {REWARD_TIERS.map((tier) => {
+              const unlocked = credits >= tier.points;
+              return (
+                <div key={tier.label} className={`flex items-center gap-4 rounded-xl border p-4 transition ${unlocked ? "border-gold/30 bg-gold/[0.06]" : "border-gold/10 opacity-60"}`}>
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-gold/20 bg-gold/10 text-2xl">
+                    {tier.icon}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="m-0 font-semibold text-sm text-foreground">{tier.label}</p>
+                    <p className="m-0 text-xs text-muted-foreground">{tier.desc}</p>
+                    <p className="m-0 mt-1 text-xs font-semibold text-gold">{tier.points.toLocaleString()} Points</p>
+                  </div>
+                  <button
+                    type="button"
+                    disabled={!unlocked}
+                    className="flex-shrink-0 rounded-full border border-gold/30 bg-background px-4 py-2 text-xs font-semibold text-foreground transition hover:bg-gold/10 disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    Redeem
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         </GlassCard>
       </div>
     );
@@ -936,7 +1078,7 @@ function LuminaPage() {
           </button>
           {confessionText ? (
             <div className="mt-6 rounded-[32px] border border-white/10 bg-black/20 p-6">
-              <p className="m-0 font-serif text-xl italic leading-9 text-white/90">“{confessionText}”</p>
+              <p className="m-0 font-serif text-xl italic leading-9 text-white/90">"{confessionText}"</p>
             </div>
           ) : null}
         </GlassCard>
@@ -960,7 +1102,7 @@ function LuminaPage() {
                 <span className="text-sm text-amber-300">{scroll.verse}</span>
               </div>
               <h3 className="m-0 mt-5 font-serif text-3xl italic text-white">{scroll.title}</h3>
-              <p className="m-0 mt-4 font-serif text-lg italic leading-9 text-white/72">“{scroll.content}”</p>
+              <p className="m-0 mt-4 font-serif text-lg italic leading-9 text-white/72">"{scroll.content}"</p>
             </GlassCard>
           ))}
         </div>
@@ -1086,8 +1228,12 @@ function LuminaPage() {
         return renderBible();
       case "manifest":
         return renderManifest();
+      case "marketplace":
+        return renderMarketplace();
       case "spiritual":
         return renderSpiritual();
+      case "devotion":
+        return renderDevotion();
       case "community":
         return renderCommunity();
       case "journal":
@@ -1103,10 +1249,10 @@ function LuminaPage() {
     return (
       <div className="space-y-5">
         <GlassCard className="lumina-animate p-6 md:p-8">
-          <SectionTitle eyebrow="Community Bridge" title="Collective intercession." copy="Pray with others, track your circle’s devotion journey, and share testimonies across the global prayer chain." />
+          <SectionTitle eyebrow="Community Bridge" title="Collective intercession." copy="Pray with others, track your circle's devotion journey, and share testimonies across the global prayer chain." />
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {[
-              { icon: "🔵", title: "Inner Circle", desc: "Invite 3–5 trusted believers. Track each other’s reading progress and prayer requests privately.", tag: "Coming Soon" },
+              { icon: "🔵", title: "Inner Circle", desc: "Invite 3–5 trusted believers. Track each other's reading progress and prayer requests privately.", tag: "Coming Soon" },
               { icon: "🌍", title: "Global Prayer Chain", desc: "Add your prayer request to the live worldwide chain. Over 14,000 believers interceding in real time.", tag: "Phase 2" },
               { icon: "🌉", title: "Bridge", desc: "Share testimonies to Facebook, WhatsApp, or X directly from Lumina. Let others celebrate with you.", tag: "Phase 2" },
             ].map((item) => (
@@ -1147,7 +1293,7 @@ function LuminaPage() {
   return (
     <div className="min-h-screen bg-background px-4 pb-24 pt-4 md:px-8 md:pb-8">
       <style>{`
-        @import url(‘https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap’);
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap');
         .lumina-shell {
           background:
             radial-gradient(circle at top left, rgba(197, 160, 89, 0.07), transparent 30%),
@@ -1173,17 +1319,14 @@ function LuminaPage() {
         {/* ── Header ── */}
         <header className="lumina-animate flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            {/* Star Cluster Logo */}
-            <svg viewBox="0 0 36 36" className="h-9 w-9 flex-shrink-0 text-gold" aria-hidden="true">
-              <circle cx="18" cy="18" r="3.5" fill="currentColor" />
-              <circle cx="18" cy="7"  r="2"   fill="currentColor" opacity="0.85" />
-              <circle cx="18" cy="29" r="2"   fill="currentColor" opacity="0.85" />
-              <circle cx="7"  cy="18" r="2"   fill="currentColor" opacity="0.85" />
-              <circle cx="29" cy="18" r="2"   fill="currentColor" opacity="0.85" />
-              <circle cx="10" cy="10" r="1.5" fill="currentColor" opacity="0.6" />
-              <circle cx="26" cy="10" r="1.5" fill="currentColor" opacity="0.6" />
-              <circle cx="10" cy="26" r="1.5" fill="currentColor" opacity="0.6" />
-              <circle cx="26" cy="26" r="1.5" fill="currentColor" opacity="0.6" />
+            {/* 4-pointed sparkle star logo */}
+            <svg viewBox="0 0 48 48" className="h-10 w-10 flex-shrink-0 text-gold" aria-hidden="true">
+              {/* Large 4-pointed star */}
+              <path d="M24 4 C24 4, 22 16, 20 20 C16 22, 4 24, 4 24 C4 24, 16 26, 20 28 C22 32, 24 44, 24 44 C24 44, 26 32, 28 28 C32 26, 44 24, 44 24 C44 24, 32 22, 28 20 C26 16, 24 4, 24 4 Z" fill="currentColor" />
+              {/* Small top-right sparkle */}
+              <path d="M37 8 C37 8, 36.2 12, 35.5 13 C34.5 13.8, 31 14.5, 31 14.5 C31 14.5, 34.5 15.2, 35.5 16 C36.2 17, 37 21, 37 21 C37 21, 37.8 17, 38.5 16 C39.5 15.2, 43 14.5, 43 14.5 C43 14.5, 39.5 13.8, 38.5 13 C37.8 12, 37 8, 37 8 Z" fill="currentColor" opacity="0.75" />
+              {/* Tiny bottom-left sparkle */}
+              <path d="M12 30 C12 30, 11.5 33, 11 33.5 C10.5 34, 8 34.5, 8 34.5 C8 34.5, 10.5 35, 11 35.5 C11.5 36, 12 39, 12 39 C12 39, 12.5 36, 13 35.5 C13.5 35, 16 34.5, 16 34.5 C16 34.5, 13.5 34, 13 33.5 C12.5 33, 12 30, 12 30 Z" fill="currentColor" opacity="0.6" />
             </svg>
             <div>
               <p className="m-0 font-playfair text-2xl font-semibold text-foreground md:text-3xl">Lumina</p>
@@ -1253,7 +1396,7 @@ function LuminaPage() {
 
         {/* ── Inline tab bar ── */}
         <nav className="lumina-animate mt-4 overflow-x-auto rounded-xl border border-gold/15 bg-background/60 p-1">
-          <div className="flex min-w-max gap-1 md:grid md:min-w-0 md:grid-cols-7">
+          <div className="flex min-w-max gap-1">
             {TABS.map((tab) => (
               <button
                 key={tab.id}

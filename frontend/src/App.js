@@ -37,6 +37,7 @@ import { CookieConsent } from './components/CookieConsent';
 import { NavBar } from './components/NavBar';
 import { ScrollToTop } from './components/ScrollToTop';
 import { ComingSoonPage } from './pages/ComingSoonPage';
+import { CareersPage } from './pages/CareersPage';
 const PanchangPage = lazy(() => import('./pages/PanchangPage').then(m => ({ default: m.PanchangPage })));
 import { PanchangLangPage } from './pages/PanchangLangPage';
 import PanchangLandingPage from './pages/PanchangLandingPage';
@@ -163,6 +164,7 @@ function App() {
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
                   <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
+                  <Route path="/careers" element={<CareersPage />} />
 
                   {/* Fallback */}
                   <Route path="*" element={<Navigate to="/" replace />} />

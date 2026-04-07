@@ -108,8 +108,26 @@ const FEATURE_CARDS = [
   { label: 'Hand Shape', desc: 'Earth, Air, Fire, or Water — elemental personality', icon: Hand },
 ];
 
-// Hand SVG illustrations — shown for Q4 onwards to remove ambiguity about which line/mount is being asked
-// Base palm outline is the same; each entry adds a highlighted overlay path.
+// Questions that benefit from the palm reference diagram (Q4 onward)
+const ILLUSTRATED_QUESTIONS = new Set([
+  'life_line', 'heart_line', 'head_line', 'fate_line',
+  'dominant_mount', 'thumb_type', 'finger_style', 'hand_texture', 'special_marks',
+]);
+
+// Per-question highlight label shown above the diagram
+const QUESTION_HIGHLIGHT_LABEL = {
+  life_line:      { label: 'Life Line highlighted',       color: '#e53e3e' },
+  heart_line:     { label: 'Heart Line highlighted',      color: '#e53e3e' },
+  head_line:      { label: 'Head Line highlighted',       color: '#e53e3e' },
+  fate_line:      { label: 'Fate Line highlighted',       color: '#e53e3e' },
+  dominant_mount: { label: 'Mounts highlighted',          color: '#c5a059' },
+  thumb_type:     { label: 'Thumb area',                  color: '#c5a059' },
+  finger_style:   { label: 'Finger joints & tips',        color: '#c5a059' },
+  hand_texture:   { label: 'Palm skin area',              color: '#c5a059' },
+  special_marks:  { label: 'Mount marks (★ △ ✕)',        color: '#c5a059' },
+};
+
+// HAND_ILLUSTRATIONS kept for backward-compat reference (no longer rendered)
 const HAND_ILLUSTRATIONS = {
   life_line: {
     label: 'Life Line',
@@ -182,27 +200,130 @@ const HAND_ILLUSTRATIONS = {
   },
 };
 
+// Detailed palm anatomy reference diagram — shown for Q4+ so users can identify the correct feature
 function HandIllustration({ questionId }) {
-  const illus = HAND_ILLUSTRATIONS[questionId];
-  if (!illus) return null;
+  if (!ILLUSTRATED_QUESTIONS.has(questionId)) return null;
+  const hl = QUESTION_HIGHLIGHT_LABEL[questionId] || {};
+
   return (
     <div className="mb-6 rounded-2xl border border-gold/20 bg-gold/5 p-4">
-      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold">{illus.label} — Reference Diagram</p>
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-        <div className="flex-shrink-0 mx-auto sm:mx-0">
-          <svg viewBox="0 0 245 240" className="h-44 w-36" aria-label={`${illus.label} diagram`}>
-            {/* Palm outline */}
-            <path d="M75 200 C 63 191, 55 174, 55 157 V 95 C 55 85, 63 77, 73 77 S 91 85, 91 95 V 58 C 91 48, 99 40, 109 40 S 127 48, 127 58 V 92 C 127 83, 134 76, 143 76 S 159 83, 159 92 V 105 C 159 97, 165 90, 174 90 S 189 97, 189 105 V 152 C 189 186, 164 214, 130 218 L 107 221 C 95 223, 83 215, 75 200 Z"
-              fill="hsl(var(--card))" stroke="hsl(var(--gold, 33 79% 55%))" strokeWidth="2.5" strokeLinejoin="round" />
-            {/* Thumb */}
-            <path d="M73 77 C 73 60, 68 45, 62 38 C 57 32, 50 30, 45 33 C 38 38, 36 50, 40 62 C 44 74, 55 84, 73 95"
-              fill="hsl(var(--card))" stroke="hsl(var(--gold, 33 79% 55%))" strokeWidth="2.5" strokeLinejoin="round" />
-            {/* Highlighted element */}
-            {illus.highlight}
-          </svg>
-        </div>
-        <p className="text-sm leading-7 text-muted-foreground">{illus.caption}</p>
+      <div className="mb-3 flex items-center justify-between">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">Palm Reference Diagram</p>
+        {hl.label && (
+          <span className="rounded-full border px-3 py-0.5 text-[10px] font-semibold uppercase tracking-[0.2em]"
+            style={{ borderColor: hl.color + '55', color: hl.color, background: hl.color + '15' }}>
+            {hl.label}
+          </span>
+        )}
       </div>
+      {/* Full palm anatomy SVG — right hand, palm facing up, all major lines and mounts labeled */}
+      <div className="overflow-x-auto">
+        <svg viewBox="0 0 520 540" className="mx-auto w-full max-w-sm" aria-label="Palm anatomy reference diagram" style={{ minWidth: 280 }}>
+          <defs>
+            <marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#64748b" />
+            </marker>
+          </defs>
+
+          {/* ── Palm & finger outlines ── */}
+          {/* Index finger */}
+          <path d="M165 20 Q158 14 151 18 L143 95 Q155 98 168 95 Z" fill="#fefce8" stroke="#1e293b" strokeWidth="2" strokeLinejoin="round"/>
+          {/* Middle finger */}
+          <path d="M200 12 Q193 6 186 10 L180 95 Q192 98 207 95 Z" fill="#fefce8" stroke="#1e293b" strokeWidth="2" strokeLinejoin="round"/>
+          {/* Ring finger */}
+          <path d="M236 18 Q229 12 222 16 L218 95 Q230 98 244 95 Z" fill="#fefce8" stroke="#1e293b" strokeWidth="2" strokeLinejoin="round"/>
+          {/* Pinky */}
+          <path d="M264 34 Q258 28 252 32 L250 95 Q260 98 272 98 Z" fill="#fefce8" stroke="#1e293b" strokeWidth="2" strokeLinejoin="round"/>
+          {/* Thumb */}
+          <path d="M118 128 Q98 110 88 90 Q80 72 86 58 Q92 44 106 46 Q118 48 124 62 Q130 78 126 100 Z" fill="#fefce8" stroke="#1e293b" strokeWidth="2" strokeLinejoin="round"/>
+          {/* Palm body */}
+          <path d="M143 95 Q130 100 120 110 L112 180 Q108 230 116 268 Q124 305 148 320 Q172 334 200 334 Q228 334 250 320 Q272 306 278 268 L280 180 L272 98 L244 95 L207 95 L180 95 L168 95 Z"
+            fill="#fefce8" stroke="#1e293b" strokeWidth="2" strokeLinejoin="round"/>
+
+          {/* ── Lines ── */}
+          {/* Heart line */}
+          <path d="M143 155 Q170 145 200 148 Q228 152 255 162 Q268 168 272 174"
+            fill="none" stroke={questionId === 'heart_line' ? '#e53e3e' : '#94a3b8'}
+            strokeWidth={questionId === 'heart_line' ? 3.5 : 2} strokeLinecap="round"/>
+          {/* Head line */}
+          <path d="M138 195 Q162 188 192 190 Q220 192 248 202 Q260 208 265 215"
+            fill="none" stroke={questionId === 'head_line' ? '#e53e3e' : '#94a3b8'}
+            strokeWidth={questionId === 'head_line' ? 3.5 : 2} strokeLinecap="round"/>
+          {/* Life line */}
+          <path d="M148 115 Q132 150 124 185 Q118 215 122 245 Q126 272 136 288"
+            fill="none" stroke={questionId === 'life_line' ? '#e53e3e' : '#94a3b8'}
+            strokeWidth={questionId === 'life_line' ? 3.5 : 2} strokeLinecap="round"/>
+          {/* Fate line */}
+          <path d="M200 330 Q199 280 198 240 Q197 210 196 180 Q196 162 197 148"
+            fill="none" stroke={questionId === 'fate_line' ? '#e53e3e' : '#b0bec5'}
+            strokeWidth={questionId === 'fate_line' ? 3.5 : 1.5} strokeLinecap="round" strokeDasharray={questionId === 'fate_line' ? 'none' : '5 3'}/>
+          {/* Sun line */}
+          <path d="M228 310 Q232 270 234 240 Q236 218 236 200"
+            fill="none" stroke="#cbd5e1" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="4 4"/>
+
+          {/* ── Mounts (faint fill circles) ── */}
+          {['dominant_mount','special_marks'].includes(questionId) ? (
+            <>
+              <ellipse cx="155" cy="110" rx="14" ry="11" fill="#c5a059" fillOpacity="0.25" />
+              <ellipse cx="193" cy="105" rx="14" ry="11" fill="#c5a059" fillOpacity="0.25" />
+              <ellipse cx="230" cy="108" rx="14" ry="11" fill="#c5a059" fillOpacity="0.25" />
+              <ellipse cx="260" cy="118" rx="12" ry="10" fill="#c5a059" fillOpacity="0.25" />
+              <ellipse cx="125" cy="198" rx="16" ry="14" fill="#c5a059" fillOpacity="0.20" />
+              <ellipse cx="265" cy="245" rx="14" ry="13" fill="#c5a059" fillOpacity="0.20" />
+              <ellipse cx="197" cy="245" rx="12" ry="10" fill="#c5a059" fillOpacity="0.15" />
+            </>
+          ) : null}
+          {questionId === 'thumb_type' && (
+            <path d="M118 128 Q98 110 88 90 Q80 72 86 58 Q92 44 106 46 Q118 48 124 62 Q130 78 126 100 Z"
+              fill="#c5a059" fillOpacity="0.25" stroke="#c5a059" strokeWidth="2" strokeLinejoin="round"/>
+          )}
+          {questionId === 'finger_style' && (
+            <>
+              <rect x="144" y="18" width="22" height="76" rx="11" fill="#c5a059" fillOpacity="0.20" />
+              <rect x="181" y="10" width="25" height="84" rx="12" fill="#c5a059" fillOpacity="0.20" />
+              <rect x="219" y="16" width="24" height="78" rx="12" fill="#c5a059" fillOpacity="0.20" />
+              <rect x="251" y="32" width="21" height="66" rx="10" fill="#c5a059" fillOpacity="0.20" />
+            </>
+          )}
+          {questionId === 'hand_texture' && (
+            <rect x="120" y="100" width="164" height="234" rx="20"
+              fill="#c5a059" fillOpacity="0.08" stroke="#c5a059" strokeWidth="1.5" strokeDasharray="6 4"/>
+          )}
+          {questionId === 'special_marks' && (
+            <>
+              <text x="155" y="107" textAnchor="middle" fontSize="13" fill="#c5a059" fontWeight="bold">★</text>
+              <text x="193" y="102" textAnchor="middle" fontSize="11" fill="#c5a059" fontWeight="bold">△</text>
+              <text x="126" y="196" textAnchor="middle" fontSize="12" fill="#c5a059" fontWeight="bold">✕</text>
+            </>
+          )}
+
+          {/* ── Labels with leader lines ── */}
+          {/* Heart line label */}
+          <line x1="143" y1="155" x2="82" y2="148" stroke="#64748b" strokeWidth="1" markerEnd="url(#arr)"/>
+          <text x="78" y="145" textAnchor="end" fontSize="12" fill={questionId === 'heart_line' ? '#e53e3e' : '#475569'} fontWeight={questionId === 'heart_line' ? 'bold' : 'normal'} fontFamily="sans-serif">Heart line</text>
+
+          {/* Head line label */}
+          <line x1="139" y1="195" x2="78" y2="205" stroke="#64748b" strokeWidth="1" markerEnd="url(#arr)"/>
+          <text x="74" y="202" textAnchor="end" fontSize="12" fill={questionId === 'head_line' ? '#e53e3e' : '#475569'} fontWeight={questionId === 'head_line' ? 'bold' : 'normal'} fontFamily="sans-serif">Head line</text>
+
+          {/* Life line label */}
+          <line x1="274" y1="270" x2="305" y2="300" stroke="#64748b" strokeWidth="1" markerEnd="url(#arr)"/>
+          <text x="308" y="303" textAnchor="start" fontSize="12" fill={questionId === 'life_line' ? '#e53e3e' : '#475569'} fontWeight={questionId === 'life_line' ? 'bold' : 'normal'} fontFamily="sans-serif">Life line</text>
+
+          {/* Fate line label */}
+          <line x1="197" y1="330" x2="197" y2="368" stroke="#64748b" strokeWidth="1" markerEnd="url(#arr)"/>
+          <text x="197" y="382" textAnchor="middle" fontSize="12" fill={questionId === 'fate_line' ? '#e53e3e' : '#475569'} fontWeight={questionId === 'fate_line' ? 'bold' : 'normal'} fontFamily="sans-serif">Fate line</text>
+
+          {/* Mount labels (small) */}
+          <text x="155" y="134" textAnchor="middle" fontSize="9" fill="#94a3b8" fontFamily="sans-serif">Jupiter</text>
+          <text x="193" y="129" textAnchor="middle" fontSize="9" fill="#94a3b8" fontFamily="sans-serif">Saturn</text>
+          <text x="230" y="132" textAnchor="middle" fontSize="9" fill="#94a3b8" fontFamily="sans-serif">Sun</text>
+          <text x="260" y="142" textAnchor="middle" fontSize="9" fill="#94a3b8" fontFamily="sans-serif">Mercury</text>
+          <text x="113" y="215" textAnchor="middle" fontSize="9" fill="#94a3b8" fontFamily="sans-serif">Venus</text>
+          <text x="276" y="264" textAnchor="middle" fontSize="9" fill="#94a3b8" fontFamily="sans-serif">Moon</text>
+        </svg>
+      </div>
+      <p className="mt-2 text-center text-xs text-muted-foreground">Refer to this diagram while answering. Labeled lines and mounts are highlighted when relevant.</p>
     </div>
   );
 }
