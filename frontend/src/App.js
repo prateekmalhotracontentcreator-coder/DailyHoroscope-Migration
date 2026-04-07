@@ -49,6 +49,7 @@ import TarotHistoryPage from './pages/TarotHistoryPage';
 import { RemedyPage } from './pages/RemedyPage';
 import KundaliPage from './pages/KundaliPage';
 import LuminaPage from './pages/LuminaPage';
+import LongevityReportPage from './pages/LongevityReportPage';
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -160,6 +161,9 @@ function App() {
 
                   {/* Lumina — Spiritual companion module */}
                   <Route path="/lumina" element={<LuminaPage />} />
+
+                  {/* Ayur Jyotish — Longevity & Health Report */}
+                  <Route path="/longevity" element={<LongevityReportPage />} />
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
