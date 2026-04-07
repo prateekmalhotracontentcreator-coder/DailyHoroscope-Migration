@@ -108,6 +108,105 @@ const FEATURE_CARDS = [
   { label: 'Hand Shape', desc: 'Earth, Air, Fire, or Water — elemental personality', icon: Hand },
 ];
 
+// Hand SVG illustrations — shown for Q4 onwards to remove ambiguity about which line/mount is being asked
+// Base palm outline is the same; each entry adds a highlighted overlay path.
+const HAND_ILLUSTRATIONS = {
+  life_line: {
+    label: 'Life Line',
+    caption: 'The Life Line curves from between your thumb and index finger, arcing around the base of your thumb to the wrist.',
+    highlight: <path d="M105 65 C 95 90, 82 115, 78 145 C 74 170, 75 190, 80 210" fill="none" stroke="#c5a059" strokeWidth="6" strokeLinecap="round" />,
+  },
+  heart_line: {
+    label: 'Heart Line',
+    caption: 'The Heart Line runs across the upper palm, just below where the fingers meet the palm.',
+    highlight: <path d="M78 88 C 95 82, 115 80, 135 82 C 148 84, 158 88, 165 92" fill="none" stroke="#c5a059" strokeWidth="6" strokeLinecap="round" />,
+  },
+  head_line: {
+    label: 'Head Line',
+    caption: 'The Head Line runs horizontally across the middle of your palm, often starting near the Life Line.',
+    highlight: <path d="M90 122 C 108 118, 128 118, 148 120 C 158 122, 165 126, 168 130" fill="none" stroke="#c5a059" strokeWidth="6" strokeLinecap="round" />,
+  },
+  fate_line: {
+    label: 'Fate Line',
+    caption: 'The Fate Line is a vertical line rising from the base of the palm toward the middle (Saturn) finger.',
+    highlight: <path d="M125 210 C 124 185, 123 160, 122 135 C 122 115, 122 95, 123 80" fill="none" stroke="#c5a059" strokeWidth="6" strokeLinecap="round" />,
+  },
+  dominant_mount: {
+    label: 'Planetary Mounts',
+    caption: 'The mounts are raised fleshy pads beneath each finger and at the base of the thumb and palm. Look for the most prominent one.',
+    highlight: <>
+      <circle cx="100" cy="68" r="10" fill="#c5a059" fillOpacity="0.35" stroke="#c5a059" strokeWidth="2" />
+      <text x="100" y="56" textAnchor="middle" fontSize="8" fill="#c5a059" fontFamily="sans-serif">Jupiter</text>
+      <circle cx="122" cy="62" r="10" fill="#c5a059" fillOpacity="0.35" stroke="#c5a059" strokeWidth="2" />
+      <text x="122" y="50" textAnchor="middle" fontSize="8" fill="#c5a059" fontFamily="sans-serif">Saturn</text>
+      <circle cx="144" cy="66" r="10" fill="#c5a059" fillOpacity="0.35" stroke="#c5a059" strokeWidth="2" />
+      <text x="144" y="54" textAnchor="middle" fontSize="8" fill="#c5a059" fontFamily="sans-serif">Sun</text>
+      <circle cx="162" cy="76" r="9" fill="#c5a059" fillOpacity="0.35" stroke="#c5a059" strokeWidth="2" />
+      <text x="162" y="64" textAnchor="middle" fontSize="8" fill="#c5a059" fontFamily="sans-serif">Mercury</text>
+      <circle cx="82" cy="150" r="13" fill="#c5a059" fillOpacity="0.35" stroke="#c5a059" strokeWidth="2" />
+      <text x="82" y="170" textAnchor="middle" fontSize="8" fill="#c5a059" fontFamily="sans-serif">Venus</text>
+      <circle cx="160" cy="180" r="11" fill="#c5a059" fillOpacity="0.35" stroke="#c5a059" strokeWidth="2" />
+      <text x="160" y="200" textAnchor="middle" fontSize="8" fill="#c5a059" fontFamily="sans-serif">Moon</text>
+      <circle cx="120" cy="155" r="9" fill="#c5a059" fillOpacity="0.35" stroke="#c5a059" strokeWidth="2" />
+      <text x="120" y="172" textAnchor="middle" fontSize="8" fill="#c5a059" fontFamily="sans-serif">Mars</text>
+    </>,
+  },
+  thumb_type: {
+    label: 'Thumb',
+    caption: 'Observe the thumb independently. Note its length relative to your index finger and how flexible it bends back.',
+    highlight: <ellipse cx="76" cy="118" rx="14" ry="32" fill="#c5a059" fillOpacity="0.28" stroke="#c5a059" strokeWidth="3" />,
+  },
+  finger_style: {
+    label: 'Fingers',
+    caption: 'Look at the joints of all four fingers. Are they smooth or do the knuckle joints protrude? Do tips taper or widen?',
+    highlight: <>
+      <rect x="88" y="22" width="16" height="38" rx="8" fill="#c5a059" fillOpacity="0.28" stroke="#c5a059" strokeWidth="2" />
+      <rect x="110" y="14" width="16" height="44" rx="8" fill="#c5a059" fillOpacity="0.28" stroke="#c5a059" strokeWidth="2" />
+      <rect x="132" y="18" width="16" height="42" rx="8" fill="#c5a059" fillOpacity="0.28" stroke="#c5a059" strokeWidth="2" />
+      <rect x="152" y="26" width="15" height="36" rx="7" fill="#c5a059" fillOpacity="0.28" stroke="#c5a059" strokeWidth="2" />
+    </>,
+  },
+  hand_texture: {
+    label: 'Palm Skin',
+    caption: 'Press the back of your other hand\'s fingers lightly against your palm to feel texture. Compare skin fineness.',
+    highlight: <rect x="82" y="80" width="102" height="145" rx="18" fill="#c5a059" fillOpacity="0.12" stroke="#c5a059" strokeWidth="2" strokeDasharray="6 4" />,
+  },
+  special_marks: {
+    label: 'Special Marks',
+    caption: 'Look on the raised mounts for small star (✶), triangle (△), or cross (✕) formations. These are rare — most hands have none.',
+    highlight: <>
+      <text x="100" y="72" textAnchor="middle" fontSize="14" fill="#c5a059" opacity="0.8">✶</text>
+      <text x="122" y="66" textAnchor="middle" fontSize="11" fill="#c5a059" opacity="0.7">△</text>
+      <text x="83" y="148" textAnchor="middle" fontSize="13" fill="#c5a059" opacity="0.75">✕</text>
+    </>,
+  },
+};
+
+function HandIllustration({ questionId }) {
+  const illus = HAND_ILLUSTRATIONS[questionId];
+  if (!illus) return null;
+  return (
+    <div className="mb-6 rounded-2xl border border-gold/20 bg-gold/5 p-4">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-gold">{illus.label} — Reference Diagram</p>
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+        <div className="flex-shrink-0 mx-auto sm:mx-0">
+          <svg viewBox="0 0 245 240" className="h-44 w-36" aria-label={`${illus.label} diagram`}>
+            {/* Palm outline */}
+            <path d="M75 200 C 63 191, 55 174, 55 157 V 95 C 55 85, 63 77, 73 77 S 91 85, 91 95 V 58 C 91 48, 99 40, 109 40 S 127 48, 127 58 V 92 C 127 83, 134 76, 143 76 S 159 83, 159 92 V 105 C 159 97, 165 90, 174 90 S 189 97, 189 105 V 152 C 189 186, 164 214, 130 218 L 107 221 C 95 223, 83 215, 75 200 Z"
+              fill="hsl(var(--card))" stroke="hsl(var(--gold, 33 79% 55%))" strokeWidth="2.5" strokeLinejoin="round" />
+            {/* Thumb */}
+            <path d="M73 77 C 73 60, 68 45, 62 38 C 57 32, 50 30, 45 33 C 38 38, 36 50, 40 62 C 44 74, 55 84, 73 95"
+              fill="hsl(var(--card))" stroke="hsl(var(--gold, 33 79% 55%))" strokeWidth="2.5" strokeLinejoin="round" />
+            {/* Highlighted element */}
+            {illus.highlight}
+          </svg>
+        </div>
+        <p className="text-sm leading-7 text-muted-foreground">{illus.caption}</p>
+      </div>
+    </div>
+  );
+}
+
 const REPORT_SECTIONS = [
   { id: 'overview', title: 'Overview', icon: SunMedium },
   { id: 'personality', title: 'Personality', icon: Sparkles },
@@ -462,6 +561,7 @@ export const PalmistryPage = () => {
                   </div>
                 </div>
 
+                <HandIllustration questionId={currentQuestion.id} />
                 <h2 className="mb-2 font-playfair text-3xl font-semibold text-foreground">{currentQuestion.question}</h2>
                 <p className="mb-6 text-sm text-muted-foreground">Choose the option that feels closest to what you see on your palm.</p>
 
