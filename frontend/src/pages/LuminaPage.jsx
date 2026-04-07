@@ -1088,9 +1088,9 @@ function LuminaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f1018] px-4 pb-32 pt-6 text-white md:px-8">
+    <div className="min-h-screen bg-[#0f1018] px-4 pb-24 pt-4 text-white md:px-8 md:pb-8">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap');
+        @import url(‘https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap’);
         .lumina-shell {
           background:
             radial-gradient(circle at top left, rgba(245, 158, 11, 0.08), transparent 28%),
@@ -1113,38 +1113,38 @@ function LuminaPage() {
         }
       `}</style>
 
-      <div className="lumina-shell mx-auto max-w-7xl rounded-[44px] border border-white/10 p-4 shadow-[0_40px_120px_rgba(0,0,0,0.45)] md:p-6">
-        <header className="lumina-animate flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div className="lumina-shell mx-auto max-w-7xl rounded-[32px] border border-white/10 p-4 shadow-[0_40px_120px_rgba(0,0,0,0.45)] md:p-6">
+        <header className="lumina-animate flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="m-0 font-serif text-4xl italic tracking-[0.02em] text-white md:text-5xl">Lumina</p>
-            <p className="m-0 mt-2 text-sm text-white/55">Walk in the Divine Light.</p>
+            <p className="m-0 font-serif text-3xl italic tracking-[0.02em] text-white md:text-4xl">Lumina</p>
+            <p className="m-0 mt-1 text-sm text-white/55">Walk in the Divine Light.</p>
           </div>
           <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-full border border-amber-400/25 bg-amber-500/10 px-4 py-2 text-sm text-amber-300">
+            <span className="rounded-full border border-amber-400/25 bg-amber-500/10 px-3 py-1.5 text-sm text-amber-300">
               {credits} points
             </span>
           </div>
         </header>
 
-        <GlassCard className="lumina-animate mt-5 p-5 md:p-6">
-          <div className="grid gap-4 lg:grid-cols-[1fr,auto]">
-            <div className="grid gap-4 md:grid-cols-2">
-              <label className="space-y-2 text-sm text-white/70">
+        <GlassCard className="lumina-animate mt-4 p-4 md:p-5">
+          <div className="grid gap-3 lg:grid-cols-[1fr,auto]">
+            <div className="grid gap-3 md:grid-cols-2">
+              <label className="space-y-1.5 text-sm text-white/70">
                 <span className="block text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Sanctuary Name</span>
                 <input
                   value={profile.userName}
                   onChange={(event) => setProfile((current) => ({ ...current, userName: event.target.value }))}
                   placeholder="Your name"
-                  className="w-full rounded-[24px] border border-white/10 bg-black/25 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-amber-400/45"
+                  className="w-full rounded-[20px] border border-white/10 bg-black/25 px-4 py-3 text-white outline-none transition placeholder:text-white/25 focus:border-amber-400/45"
                 />
               </label>
-              <label className="space-y-2 text-sm text-white/70">
+              <label className="space-y-1.5 text-sm text-white/70">
                 <span className="block text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Sanctuary Email</span>
                 <input
                   value={profile.userEmail}
                   onChange={(event) => setProfile((current) => ({ ...current, userEmail: event.target.value }))}
                   placeholder="you@example.com"
-                  className="w-full rounded-[24px] border border-white/10 bg-black/25 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-amber-400/45"
+                  className="w-full rounded-[20px] border border-white/10 bg-black/25 px-4 py-3 text-white outline-none transition placeholder:text-white/25 focus:border-amber-400/45"
                 />
               </label>
             </div>
@@ -1154,7 +1154,7 @@ function LuminaPage() {
                   key={mode}
                   type="button"
                   onClick={() => setScriptureMode(mode)}
-                  className={`rounded-full px-4 py-3 text-sm font-semibold transition ${
+                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                     scriptureMode === mode
                       ? "bg-amber-500 text-[#18171b]"
                       : "border border-white/10 bg-black/25 text-white/75 hover:bg-white/5"
@@ -1167,43 +1167,15 @@ function LuminaPage() {
           </div>
         </GlassCard>
 
-        <main className="mt-6">
-          <SectionTitle
-            eyebrow={TABS.find((tab) => tab.id === activeTab)?.label || "Home"}
-            title={
-              activeTab === "home"
-                ? "Today’s living word"
-                : activeTab === "bible"
-                  ? "Scripture Reader"
-                  : activeTab === "manifest"
-                    ? "Manifest and build"
-                    : activeTab === "spiritual"
-                      ? "Declarations and confessions"
-                      : activeTab === "journal"
-                        ? "Scrolls and reflection"
-                        : "AI Chaplain"
-            }
-            copy={
-              activeTab === "chat"
-                ? "Ask questions, upload an image if it matters, and receive scripture-grounded pastoral care."
-                : activeTab === "manifest"
-                  ? "Track the 21-day calendar and turn your calling into a kingdom-aligned blueprint."
-                  : activeTab === "spiritual"
-                    ? "Compose declarations, strengthen them over time, and speak truth in first person."
-                    : undefined
-            }
-          />
-          <div className="mt-6">{renderActiveTab()}</div>
-        </main>
-
-        <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-4xl -translate-x-1/2 rounded-[36px] border border-white/10 bg-[#141622]/90 p-2 backdrop-blur-xl shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
-          <div className="grid grid-cols-6 gap-2">
+        {/* Inline tab bar — sits in page flow, not fixed, so it never hides content behind the app bottom nav */}
+        <nav className="lumina-animate mt-4 overflow-x-auto rounded-[28px] border border-white/10 bg-[#141622]/90 p-1.5 backdrop-blur-xl">
+          <div className="flex min-w-max gap-1 md:grid md:min-w-0 md:grid-cols-6">
             {TABS.map((tab) => (
               <button
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`rounded-[28px] px-3 py-3 text-center text-xs font-medium transition md:text-sm ${
+                className={`rounded-[22px] px-4 py-2.5 text-center text-xs font-medium whitespace-nowrap transition md:text-sm ${
                   activeTab === tab.id ? "bg-amber-500 text-[#18171b]" : "text-white/70 hover:bg-white/5"
                 }`}
               >
@@ -1212,6 +1184,10 @@ function LuminaPage() {
             ))}
           </div>
         </nav>
+
+        <main className="mt-5">
+          <div>{renderActiveTab()}</div>
+        </main>
       </div>
     </div>
   );
