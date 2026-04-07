@@ -15,6 +15,7 @@ const TABS = [
   { id: "bible", label: "Bible" },
   { id: "manifest", label: "Manifest" },
   { id: "spiritual", label: "Spiritual" },
+  { id: "community", label: "Community" },
   { id: "journal", label: "Journal" },
   { id: "chat", label: "Chat" },
 ];
@@ -89,19 +90,19 @@ function fileToBase64(file) {
 
 function SectionTitle({ eyebrow, title, copy, badge }) {
   return (
-    <div className="lumina-animate space-y-3">
+    <div className="lumina-animate space-y-2">
       <div className="flex flex-wrap items-center gap-3">
-        <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/80">{eyebrow}</p>
-        {badge ? <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-amber-300">{badge}</span> : null}
+        <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">{eyebrow}</p>
+        {badge ? <span className="rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-gold">{badge}</span> : null}
       </div>
-      <h2 className="m-0 font-serif text-3xl italic text-white md:text-5xl">{title}</h2>
-      {copy ? <p className="m-0 max-w-3xl text-sm leading-7 text-white/65 md:text-base">{copy}</p> : null}
+      <h2 className="m-0 font-playfair text-2xl font-semibold text-foreground md:text-3xl">{title}</h2>
+      {copy ? <p className="m-0 max-w-3xl text-sm leading-7 text-muted-foreground">{copy}</p> : null}
     </div>
   );
 }
 
 function GlassCard({ className = "", children }) {
-  return <div className={`rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_24px_80px_rgba(0,0,0,0.28)] ${className}`}>{children}</div>;
+  return <div className={`rounded-xl border border-gold/15 bg-card/95 shadow-sm ${className}`}>{children}</div>;
 }
 
 function PremiumUpsellCard() {
@@ -139,6 +140,10 @@ function LuminaPage() {
     userName: localStorage.getItem("lumina_user_name") || "",
     userEmail: localStorage.getItem("lumina_user_email") || "",
   }));
+
+  // Derived devotion stats from existing data (no extra API needed)
+  const [chaptersRead, setChaptersRead] = useState(() => Number(localStorage.getItem("lumina_chapters_read") || 0));
+  const [dayStreak, setDayStreak] = useState(() => Number(localStorage.getItem("lumina_day_streak") || 0));
 
   const [dailyVerse, setDailyVerse] = useState(null);
   const [dailyLoading, setDailyLoading] = useState(true);
@@ -266,6 +271,11 @@ function LuminaPage() {
         });
         if (!active) return;
         setScriptureContent(response.data?.paragraphs || []);
+        setChaptersRead((n) => {
+          const next = n + 1;
+          localStorage.setItem("lumina_chapters_read", String(next));
+          return next;
+        });
       } catch (error) {
         if (!active) return;
         setScriptureError(fieldError(error, "Unable to retrieve the scripture scroll right now."));
@@ -1078,6 +1088,8 @@ function LuminaPage() {
         return renderManifest();
       case "spiritual":
         return renderSpiritual();
+      case "community":
+        return renderCommunity();
       case "journal":
         return renderJournal();
       case "chat":
@@ -1087,15 +1099,59 @@ function LuminaPage() {
     }
   }
 
+  function renderCommunity() {
+    return (
+      <div className="space-y-5">
+        <GlassCard className="lumina-animate p-6 md:p-8">
+          <SectionTitle eyebrow="Community Bridge" title="Collective intercession." copy="Pray with others, track your circle’s devotion journey, and share testimonies across the global prayer chain." />
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {[
+              { icon: "🔵", title: "Inner Circle", desc: "Invite 3–5 trusted believers. Track each other’s reading progress and prayer requests privately.", tag: "Coming Soon" },
+              { icon: "🌍", title: "Global Prayer Chain", desc: "Add your prayer request to the live worldwide chain. Over 14,000 believers interceding in real time.", tag: "Phase 2" },
+              { icon: "🌉", title: "Bridge", desc: "Share testimonies to Facebook, WhatsApp, or X directly from Lumina. Let others celebrate with you.", tag: "Phase 2" },
+            ].map((item) => (
+              <GlassCard key={item.title} className="lumina-animate p-5">
+                <div className="text-3xl mb-3">{item.icon}</div>
+                <div className="flex items-center gap-2 mb-2">
+                  <p className="m-0 font-serif text-lg italic text-white">{item.title}</p>
+                  <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] text-amber-300">{item.tag}</span>
+                </div>
+                <p className="m-0 text-sm leading-7 text-white/60">{item.desc}</p>
+              </GlassCard>
+            ))}
+          </div>
+        </GlassCard>
+
+        <GlassCard className="lumina-animate p-6 md:p-8">
+          <SectionTitle eyebrow="FAQ" title="Common questions." />
+          <div className="mt-5 space-y-3">
+            {[
+              { q: "Is Lumina affiliated with a specific denomination?", a: "No. Lumina draws from the Bible (KJV, NIV, ESV, NASB) and Bhagavad Gita and is designed for all believers regardless of denomination." },
+              { q: "How are my prayers stored?", a: "Your prayers are saved to your Sanctuary profile (identified by your email). They are private by default and never shared without your consent." },
+              { q: "What is the 21-Day Manifestation plan?", a: "A guided 21-day cycle of scripture meditation, kingdom declarations, and daily prompts designed to align your calling with purpose. Requires a Sanctuary email to sync progress." },
+              { q: "What are Devotion Points?", a: "Points are earned by reading chapters (25 pts each), completing manifestation days (25 pts), and realising prayers (50 pts). Redeem at future milestones for gift rewards." },
+              { q: "Is my data encrypted?", a: "Sanctuary profiles and saved prayers are stored encrypted in our database. We never sell user data. Phase 2 will add AES-256 application-layer encryption for all spiritual content." },
+              { q: "Can I switch between Bible and Gita modes?", a: "Yes — the BIBLE / GITA toggle at the top switches both the Daily Verse and the Scripture Reader. Your progress in each mode is tracked separately." },
+            ].map((item) => (
+              <div key={item.q} className="rounded-[24px] border border-white/10 bg-black/20 p-5">
+                <p className="m-0 text-sm font-semibold text-amber-300">{item.q}</p>
+                <p className="m-0 mt-2 text-sm leading-7 text-white/65">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </GlassCard>
+      </div>
+    );
+  }
+
   return (
-    <div className="min-h-screen bg-[#0f1018] px-4 pb-24 pt-4 text-white md:px-8 md:pb-8">
+    <div className="min-h-screen bg-background px-4 pb-24 pt-4 md:px-8 md:pb-8">
       <style>{`
         @import url(‘https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap’);
         .lumina-shell {
           background:
-            radial-gradient(circle at top left, rgba(245, 158, 11, 0.08), transparent 28%),
-            radial-gradient(circle at 86% 12%, rgba(99, 102, 241, 0.16), transparent 26%),
-            linear-gradient(180deg, rgba(15,16,24,1) 0%, rgba(11,12,18,1) 100%);
+            radial-gradient(circle at top left, rgba(197, 160, 89, 0.07), transparent 30%),
+            radial-gradient(circle at 85% 10%, rgba(197, 160, 89, 0.05), transparent 28%);
         }
         .lumina-animate {
           animation: lumina-rise 0.6s ease both;
@@ -1113,42 +1169,70 @@ function LuminaPage() {
         }
       `}</style>
 
-      <div className="lumina-shell mx-auto max-w-7xl rounded-[32px] border border-white/10 p-4 shadow-[0_40px_120px_rgba(0,0,0,0.45)] md:p-6">
-        <header className="lumina-animate flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="m-0 font-serif text-3xl italic tracking-[0.02em] text-white md:text-4xl">Lumina</p>
-            <p className="m-0 mt-1 text-sm text-white/55">Walk in the Divine Light.</p>
+      <div className="lumina-shell mx-auto max-w-5xl rounded-2xl border border-gold/20 bg-card/95 p-4 shadow-sm md:p-6">
+        {/* ── Header ── */}
+        <header className="lumina-animate flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-3">
+            {/* Star Cluster Logo */}
+            <svg viewBox="0 0 36 36" className="h-9 w-9 flex-shrink-0 text-gold" aria-hidden="true">
+              <circle cx="18" cy="18" r="3.5" fill="currentColor" />
+              <circle cx="18" cy="7"  r="2"   fill="currentColor" opacity="0.85" />
+              <circle cx="18" cy="29" r="2"   fill="currentColor" opacity="0.85" />
+              <circle cx="7"  cy="18" r="2"   fill="currentColor" opacity="0.85" />
+              <circle cx="29" cy="18" r="2"   fill="currentColor" opacity="0.85" />
+              <circle cx="10" cy="10" r="1.5" fill="currentColor" opacity="0.6" />
+              <circle cx="26" cy="10" r="1.5" fill="currentColor" opacity="0.6" />
+              <circle cx="10" cy="26" r="1.5" fill="currentColor" opacity="0.6" />
+              <circle cx="26" cy="26" r="1.5" fill="currentColor" opacity="0.6" />
+            </svg>
+            <div>
+              <p className="m-0 font-playfair text-2xl font-semibold text-foreground md:text-3xl">Lumina</p>
+              <p className="m-0 text-xs text-muted-foreground">Walk in the Divine Light</p>
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-full border border-amber-400/25 bg-amber-500/10 px-3 py-1.5 text-sm text-amber-300">
-              {credits} points
-            </span>
+          {/* Devotion Points Card */}
+          <div className="flex items-center gap-3 rounded-xl border border-gold/20 bg-gold/5 px-4 py-2.5">
+            <div className="text-center">
+              <p className="m-0 text-[10px] uppercase tracking-[0.25em] text-gold">Points</p>
+              <p className="m-0 text-xl font-semibold text-foreground">{credits}</p>
+            </div>
+            <div className="h-8 w-px bg-gold/20" />
+            <div className="text-center">
+              <p className="m-0 text-[10px] uppercase tracking-[0.25em] text-gold">Streak</p>
+              <p className="m-0 text-xl font-semibold text-foreground">{dayStreak}</p>
+            </div>
+            <div className="h-8 w-px bg-gold/20" />
+            <div className="text-center">
+              <p className="m-0 text-[10px] uppercase tracking-[0.25em] text-gold">Chapters</p>
+              <p className="m-0 text-xl font-semibold text-foreground">{chaptersRead}</p>
+            </div>
           </div>
         </header>
 
-        <GlassCard className="lumina-animate mt-4 p-4 md:p-5">
+        {/* ── Profile + Mode ── */}
+        <div className="lumina-animate mt-4 rounded-xl border border-gold/15 bg-background/60 p-4">
           <div className="grid gap-3 lg:grid-cols-[1fr,auto]">
-            <div className="grid gap-3 md:grid-cols-2">
-              <label className="space-y-1.5 text-sm text-white/70">
-                <span className="block text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Sanctuary Name</span>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <label className="space-y-1 text-sm">
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-gold">Sanctuary Name</span>
                 <input
                   value={profile.userName}
                   onChange={(event) => setProfile((current) => ({ ...current, userName: event.target.value }))}
                   placeholder="Your name"
-                  className="w-full rounded-[20px] border border-white/10 bg-black/25 px-4 py-3 text-white outline-none transition placeholder:text-white/25 focus:border-amber-400/45"
+                  className="w-full rounded-lg border border-gold/15 bg-card px-3 py-2.5 text-sm text-foreground outline-none transition placeholder:text-muted-foreground/40 focus:border-gold/40"
                 />
               </label>
-              <label className="space-y-1.5 text-sm text-white/70">
-                <span className="block text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Sanctuary Email</span>
+              <label className="space-y-1 text-sm">
+                <span className="block text-[11px] uppercase tracking-[0.3em] text-gold">Sanctuary Email</span>
                 <input
                   value={profile.userEmail}
                   onChange={(event) => setProfile((current) => ({ ...current, userEmail: event.target.value }))}
                   placeholder="you@example.com"
-                  className="w-full rounded-[20px] border border-white/10 bg-black/25 px-4 py-3 text-white outline-none transition placeholder:text-white/25 focus:border-amber-400/45"
+                  className="w-full rounded-lg border border-gold/15 bg-card px-3 py-2.5 text-sm text-foreground outline-none transition placeholder:text-muted-foreground/40 focus:border-gold/40"
                 />
               </label>
             </div>
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex items-center gap-2">
               {SCRIPTURE_MODES.map((mode) => (
                 <button
                   key={mode}
@@ -1156,8 +1240,8 @@ function LuminaPage() {
                   onClick={() => setScriptureMode(mode)}
                   className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
                     scriptureMode === mode
-                      ? "bg-amber-500 text-[#18171b]"
-                      : "border border-white/10 bg-black/25 text-white/75 hover:bg-white/5"
+                      ? "bg-gold text-primary-foreground"
+                      : "border border-gold/20 bg-background text-muted-foreground hover:border-gold/40"
                   }`}
                 >
                   {mode}
@@ -1165,18 +1249,18 @@ function LuminaPage() {
               ))}
             </div>
           </div>
-        </GlassCard>
+        </div>
 
-        {/* Inline tab bar — sits in page flow, not fixed, so it never hides content behind the app bottom nav */}
-        <nav className="lumina-animate mt-4 overflow-x-auto rounded-[28px] border border-white/10 bg-[#141622]/90 p-1.5 backdrop-blur-xl">
-          <div className="flex min-w-max gap-1 md:grid md:min-w-0 md:grid-cols-6">
+        {/* ── Inline tab bar ── */}
+        <nav className="lumina-animate mt-4 overflow-x-auto rounded-xl border border-gold/15 bg-background/60 p-1">
+          <div className="flex min-w-max gap-1 md:grid md:min-w-0 md:grid-cols-7">
             {TABS.map((tab) => (
               <button
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`rounded-[22px] px-4 py-2.5 text-center text-xs font-medium whitespace-nowrap transition md:text-sm ${
-                  activeTab === tab.id ? "bg-amber-500 text-[#18171b]" : "text-white/70 hover:bg-white/5"
+                className={`rounded-lg px-4 py-2 text-center text-xs font-medium whitespace-nowrap transition md:text-sm ${
+                  activeTab === tab.id ? "bg-gold text-primary-foreground" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
                 {tab.label}
