@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 // Host app wiring:
 // <Route path="/lumina" element={<LuminaPage />} />
@@ -88,13 +89,13 @@ function fileToBase64(file) {
 
 function SectionTitle({ eyebrow, title, copy, badge }) {
   return (
-    <div className="lumina-animate space-y-3">
-      <div className="flex flex-wrap items-center gap-3">
-        <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/80">{eyebrow}</p>
-        {badge ? <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-amber-300">{badge}</span> : null}
+    <div className="lumina-animate space-y-1.5">
+      <div className="flex flex-wrap items-center gap-2">
+        <p className="m-0 text-[10px] uppercase tracking-[0.3em] text-amber-400/80">{eyebrow}</p>
+        {badge ? <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-0.5 text-[10px] uppercase tracking-[0.2em] text-amber-300">{badge}</span> : null}
       </div>
-      <h2 className="m-0 font-serif text-3xl italic text-white md:text-5xl">{title}</h2>
-      {copy ? <p className="m-0 max-w-3xl text-sm leading-7 text-white/65 md:text-base">{copy}</p> : null}
+      <h2 className="m-0 font-serif text-xl italic text-white md:text-2xl">{title}</h2>
+      {copy ? <p className="m-0 max-w-2xl text-xs leading-5 text-white/65">{copy}</p> : null}
     </div>
   );
 }
@@ -131,6 +132,7 @@ function PremiumUpsellCard() {
 }
 
 function LuminaPage() {
+  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState("home");
   const [scriptureMode, setScriptureMode] = useState(() => localStorage.getItem("lumina_scripture_mode") || "BIBLE");
   const [profile, setProfile] = useState(() => ({
@@ -202,6 +204,16 @@ function LuminaPage() {
     localStorage.setItem("lumina_user_name", profile.userName);
     localStorage.setItem("lumina_user_email", profile.userEmail);
   }, [profile]);
+
+  // Auto-populate profile from the app's auth session so manifestation,
+  // prayers, and glory-scrolls work immediately without manual email entry.
+  useEffect(() => {
+    if (!user?.email) return;
+    setProfile((prev) => ({
+      userName: prev.userName || user.name || "",
+      userEmail: user.email,
+    }));
+  }, [user?.email, user?.name]);
 
   useEffect(() => {
     if (scriptureMode === "GITA") {
@@ -533,47 +545,64 @@ function LuminaPage() {
 
   function renderHome() {
     if (dailyLoading) {
-      return <GlassCard className="lumina-animate p-10 text-center text-white/60">Opening today’s verse...</GlassCard>;
+      return (
+        <GlassCard className=”lumina-animate p-6 text-center”>
+          <p className=”m-0 text-xs uppercase tracking-[0.3em] text-amber-400/70”>Opening today’s verse…</p>
+          <div className=”mt-3 h-1 w-24 mx-auto rounded-full bg-amber-500/20 overflow-hidden”>
+            <div className=”h-full w-1/2 bg-amber-400/50 animate-pulse rounded-full” />
+          </div>
+        </GlassCard>
+      );
     }
     if (dailyError) {
-      return <GlassCard className="lumina-animate p-10 text-center text-amber-300">{dailyError}</GlassCard>;
+      return (
+        <GlassCard className=”lumina-animate p-5 text-center”>
+          <p className=”m-0 text-sm text-amber-300”>{dailyError}</p>
+          <button
+            type=”button”
+            onClick={() => setScriptureMode((m) => m)}
+            className=”mt-3 rounded-full border border-amber-400/30 bg-amber-500/10 px-4 py-2 text-xs text-amber-300 hover:bg-amber-500/20 transition”
+          >
+            Try again
+          </button>
+        </GlassCard>
+      );
     }
     if (!dailyVerse) return null;
     return (
-      <div className="space-y-6">
-        <GlassCard className="lumina-animate overflow-hidden p-8 md:p-12">
-          <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Daily Verse</p>
-          <blockquote className="m-0 mt-6 font-serif text-3xl italic leading-tight text-white md:text-5xl">
+      <div className=”space-y-3”>
+        <GlassCard className=”lumina-animate overflow-hidden p-5 md:p-6”>
+          <p className=”m-0 text-[10px] uppercase tracking-[0.3em] text-amber-400/75”>Daily Verse · {dailyVerse.verse_reference}</p>
+          <blockquote className=”m-0 mt-3 font-serif text-lg italic leading-snug text-white md:text-2xl”>
             “{dailyVerse.verse_text}”
           </blockquote>
-          <p className="m-0 mt-5 text-sm uppercase tracking-[0.35em] text-amber-400">{dailyVerse.verse_reference}</p>
-          <div className="mt-8 rounded-[32px] border border-white/10 bg-black/20 p-6">
-            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Revelation Context</p>
-            <p className="m-0 mt-4 text-base leading-8 text-white/75">{dailyVerse.revelation_context}</p>
+          <div className=”mt-4 rounded-2xl border border-white/10 bg-black/20 p-4”>
+            <p className=”m-0 text-[10px] uppercase tracking-[0.3em] text-amber-400/75”>Revelation Context</p>
+            <p className=”m-0 mt-2 text-sm leading-6 text-white/75”>{dailyVerse.revelation_context}</p>
           </div>
         </GlassCard>
 
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className=”grid gap-3 md:grid-cols-3”>
           {[
-            { label: "Speak It", value: dailyVerse.speak_it },
-            { label: "Think It", value: dailyVerse.think_it },
-            { label: "Do It", value: dailyVerse.do_it },
+            { label: “Speak It”, value: dailyVerse.speak_it },
+            { label: “Think It”, value: dailyVerse.think_it },
+            { label: “Do It”, value: dailyVerse.do_it },
           ].map((item) => (
-            <GlassCard key={item.label} className="lumina-animate p-6">
-              <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">{item.label}</p>
-              <p className="m-0 mt-4 text-base leading-8 text-white/75">{item.value}</p>
+            <GlassCard key={item.label} className=”lumina-animate p-4”>
+              <p className=”m-0 text-[10px] uppercase tracking-[0.3em] text-amber-400/75”>{item.label}</p>
+              <p className=”m-0 mt-2 text-sm leading-6 text-white/75”>{item.value}</p>
             </GlassCard>
           ))}
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
-          <GlassCard className="lumina-animate p-6">
-            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">The Prophet&apos;s Promise</p>
-            <p className="m-0 mt-4 text-base leading-8 text-white/75">{dailyVerse.prophets_promise}</p>
+        <div className=”grid gap-3 md:grid-cols-2”>
+          <GlassCard className=”lumina-animate p-4”>
+            <p className=”m-0 text-[10px] uppercase tracking-[0.3em] text-amber-400/75”>The Prophet&apos;s Promise</p>
+            <p className=”m-0 mt-2 text-sm leading-6 text-white/75”>{dailyVerse.prophets_promise}</p>
           </GlassCard>
-          <GlassCard className="lumina-animate p-6">
-            <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Daily Application</p>
-            <p className="m-0 mt-4 text-base leading-8 text-white/75">{dailyVerse.daily_application}</p>
+          <GlassCard className=”lumina-animate p-4”>
+            <p className=”m-0 text-[10px] uppercase tracking-[0.3em] text-amber-400/75”>Daily Application</p>
+            <p className=”m-0 mt-2 text-sm leading-6 text-white/75”>{dailyVerse.daily_application}</p>
           </GlassCard>
         </div>
       </div>
@@ -582,8 +611,8 @@ function LuminaPage() {
 
   function renderBible() {
     return (
-      <div className="space-y-6">
-        <GlassCard className="lumina-animate p-6 md:p-8">
+      <div className="space-y-3">
+        <GlassCard className="lumina-animate p-4 md:p-5">
           <div className="grid gap-4 md:grid-cols-3">
             <label className="space-y-2 text-sm text-white/70">
               <span className="block text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Book</span>
@@ -662,16 +691,16 @@ function LuminaPage() {
 
   function renderManifest() {
     return (
-      <div className="space-y-6">
-        <GlassCard className="lumina-animate p-6 md:p-8">
-          <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="space-y-3">
+        <GlassCard className="lumina-animate p-4 md:p-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-amber-400/75">21-Day Manifestation</p>
-              <p className="m-0 mt-3 text-sm leading-7 text-white/65">Select a day, read the prompt, and mark it complete as you move through the cycle.</p>
+              <p className="m-0 text-[10px] uppercase tracking-[0.3em] text-amber-400/75">21-Day Manifestation</p>
+              <p className="m-0 mt-1.5 text-xs leading-5 text-white/65">Select a day, read the prompt, and mark it complete as you move through the cycle.</p>
             </div>
-            <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-4 py-2 text-[10px] uppercase tracking-[0.25em] text-amber-300">Premium</span>
+            <span className="rounded-full border border-amber-400/30 bg-amber-400/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-amber-300">Premium</span>
           </div>
-          <div className="mt-6 grid grid-cols-7 gap-3">
+          <div className="mt-4 grid grid-cols-7 gap-2">
             {(manifestation.days || []).map((day) => {
               const isComplete = manifestation.completed_days.includes(day.day);
               const isCurrent = selectedDay === day.day;
@@ -1078,9 +1107,9 @@ function LuminaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0f1018] px-4 pb-32 pt-6 text-white md:px-8">
+    <div className="min-h-screen bg-[#0f1018] px-4 pb-24 pt-4 text-white md:px-8">
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap');
+        @import url(‘https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap’);
         .lumina-shell {
           background:
             radial-gradient(circle at top left, rgba(245, 158, 11, 0.08), transparent 28%),
@@ -1088,13 +1117,13 @@ function LuminaPage() {
             linear-gradient(180deg, rgba(15,16,24,1) 0%, rgba(11,12,18,1) 100%);
         }
         .lumina-animate {
-          animation: lumina-rise 0.6s ease both;
+          animation: lumina-rise 0.5s ease both;
         }
         .lumina-pulse {
           animation: lumina-pulse 1.8s ease-in-out infinite;
         }
         @keyframes lumina-rise {
-          from { opacity: 0; transform: translateY(16px); }
+          from { opacity: 0; transform: translateY(10px); }
           to { opacity: 1; transform: translateY(0); }
         }
         @keyframes lumina-pulse {
@@ -1103,51 +1132,28 @@ function LuminaPage() {
         }
       `}</style>
 
-      <div className="lumina-shell mx-auto max-w-7xl rounded-[44px] border border-white/10 p-4 shadow-[0_40px_120px_rgba(0,0,0,0.45)] md:p-6">
-        <header className="lumina-animate flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="m-0 font-serif text-4xl italic tracking-[0.02em] text-white md:text-5xl">Lumina</p>
-            <p className="m-0 mt-2 text-sm text-white/55">Walk in the Divine Light.</p>
-          </div>
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="rounded-full border border-amber-400/25 bg-amber-500/10 px-4 py-2 text-sm text-amber-300">
-              {credits} points
-            </span>
-          </div>
-        </header>
+      <div className="lumina-shell mx-auto max-w-4xl rounded-3xl border border-white/10 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.40)] md:p-5">
 
-        <GlassCard className="lumina-animate mt-5 p-5 md:p-6">
-          <div className="grid gap-4 lg:grid-cols-[1fr,auto]">
-            <div className="grid gap-4 md:grid-cols-2">
-              <label className="space-y-2 text-sm text-white/70">
-                <span className="block text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Sanctuary Name</span>
-                <input
-                  value={profile.userName}
-                  onChange={(event) => setProfile((current) => ({ ...current, userName: event.target.value }))}
-                  placeholder="Your name"
-                  className="w-full rounded-[24px] border border-white/10 bg-black/25 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-amber-400/45"
-                />
-              </label>
-              <label className="space-y-2 text-sm text-white/70">
-                <span className="block text-[11px] uppercase tracking-[0.35em] text-amber-400/75">Sanctuary Email</span>
-                <input
-                  value={profile.userEmail}
-                  onChange={(event) => setProfile((current) => ({ ...current, userEmail: event.target.value }))}
-                  placeholder="you@example.com"
-                  className="w-full rounded-[24px] border border-white/10 bg-black/25 px-4 py-4 text-white outline-none transition placeholder:text-white/25 focus:border-amber-400/45"
-                />
-              </label>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
+        {/* ── Header ── */}
+        <header className="lumina-animate flex items-center justify-between gap-3">
+          <div>
+            <p className="m-0 font-serif text-2xl italic tracking-[0.02em] text-white md:text-3xl">Lumina</p>
+            <p className="m-0 text-xs text-white/50">Walk in the Divine Light.</p>
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-amber-400/25 bg-amber-500/10 px-3 py-1.5 text-xs text-amber-300">
+              {credits} pts
+            </span>
+            <div className="flex gap-1.5">
               {SCRIPTURE_MODES.map((mode) => (
                 <button
                   key={mode}
                   type="button"
                   onClick={() => setScriptureMode(mode)}
-                  className={`rounded-full px-4 py-3 text-sm font-semibold transition ${
+                  className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${
                     scriptureMode === mode
                       ? "bg-amber-500 text-[#18171b]"
-                      : "border border-white/10 bg-black/25 text-white/75 hover:bg-white/5"
+                      : "border border-white/10 bg-black/25 text-white/70 hover:bg-white/5"
                   }`}
                 >
                   {mode}
@@ -1155,46 +1161,18 @@ function LuminaPage() {
               ))}
             </div>
           </div>
-        </GlassCard>
+        </header>
 
-        <main className="mt-6">
-          <SectionTitle
-            eyebrow={TABS.find((tab) => tab.id === activeTab)?.label || "Home"}
-            title={
-              activeTab === "home"
-                ? "Today’s living word"
-                : activeTab === "bible"
-                  ? "Scripture Reader"
-                  : activeTab === "manifest"
-                    ? "Manifest and build"
-                    : activeTab === "spiritual"
-                      ? "Declarations and confessions"
-                      : activeTab === "journal"
-                        ? "Scrolls and reflection"
-                        : "AI Chaplain"
-            }
-            copy={
-              activeTab === "chat"
-                ? "Ask questions, upload an image if it matters, and receive scripture-grounded pastoral care."
-                : activeTab === "manifest"
-                  ? "Track the 21-day calendar and turn your calling into a kingdom-aligned blueprint."
-                  : activeTab === "spiritual"
-                    ? "Compose declarations, strengthen them over time, and speak truth in first person."
-                    : undefined
-            }
-          />
-          <div className="mt-6">{renderActiveTab()}</div>
-        </main>
-
-        <nav className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-1.5rem)] max-w-4xl -translate-x-1/2 rounded-[36px] border border-white/10 bg-[#141622]/90 p-2 backdrop-blur-xl shadow-[0_24px_60px_rgba(0,0,0,0.45)]">
-          <div className="grid grid-cols-6 gap-2">
+        {/* ── Tab bar (inline, not fixed — avoids conflict with app bottom nav) ── */}
+        <nav className="lumina-animate mt-4 overflow-x-auto">
+          <div className="flex min-w-max gap-1 rounded-2xl border border-white/10 bg-black/25 p-1">
             {TABS.map((tab) => (
               <button
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`rounded-[28px] px-3 py-3 text-center text-xs font-medium transition md:text-sm ${
-                  activeTab === tab.id ? "bg-amber-500 text-[#18171b]" : "text-white/70 hover:bg-white/5"
+                className={`rounded-xl px-3 py-2 text-xs font-medium whitespace-nowrap transition md:text-sm ${
+                  activeTab === tab.id ? "bg-amber-500 text-[#18171b]" : "text-white/65 hover:bg-white/5"
                 }`}
               >
                 {tab.label}
@@ -1202,6 +1180,9 @@ function LuminaPage() {
             ))}
           </div>
         </nav>
+
+        {/* ── Main content ── */}
+        <main className="mt-4">{renderActiveTab()}</main>
       </div>
     </div>
   );
