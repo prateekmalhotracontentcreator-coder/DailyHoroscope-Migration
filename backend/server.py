@@ -83,6 +83,7 @@ from notification_push_router import router as notification_push_router
 from notification_trigger_router import router as notification_trigger_router
 from notification_log_router import router as notification_log_router
 from lumina_router import router as lumina_router
+from palmistry_router import router as palmistry_router
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -1854,6 +1855,7 @@ app.include_router(notification_push_router)
 app.include_router(notification_trigger_router)
 app.include_router(notification_log_router)
 app.include_router(lumina_router)
+app.include_router(palmistry_router)
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
