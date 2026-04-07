@@ -249,7 +249,53 @@ ENGINE_VERSION = "panchang-router-v9-swiss"  # increment version
 
 ---
 
-## 11. Local Dev Setup
+## 11. Codex Workflow — How External Code Gets Integrated
+
+### What is Codex?
+Codex (OpenAI) is a separate AI tool Prateek uses to generate feature code in parallel.
+**Codex does NOT have GitHub access** — it cannot see the repo, push code, or read existing files.
+Prateek submits a written brief → receives generated code → pastes it here for integration.
+
+### The Workflow
+```
+Step 1 → Claude Code drafts a Codex Commission Brief (spec: inputs, outputs, file names, style)
+Step 2 → Prateek submits brief to Codex → receives generated code
+Step 3 → Prateek pastes Codex output into this chat
+Step 4 → Claude Code reviews, adapts, and integrates into Temple App:
+           - Aligns to Temple App theme (CSS vars, GlassCard pattern)
+           - Wires React Router in App.js
+           - Registers FastAPI routers in backend/main.py
+           - Fixes curly/smart quotes (common Codex output issue)
+           - Verifies build: CI=true DISABLE_ESLINT_PLUGIN=true npx craco build
+           - Commits to main
+```
+
+### Smart Quote Fix (Common Codex Issue)
+Codex output often contains Unicode curly quotes that break Babel:
+```bash
+node -e "
+let f=require('fs'),p='frontend/src/pages/TargetFile.jsx';
+let c=f.readFileSync(p,'utf8');
+c=c.replace(/\u201c/g,'\"').replace(/\u201d/g,'\"')
+   .replace(/\u2018/g,\"'\").replace(/\u2019/g,\"'\");
+f.writeFileSync(p,c);console.log('Done');"
+```
+
+### Temple App Theme (always align Codex output to these tokens)
+| Token | Usage |
+|---|---|
+| `bg-background` | Page background |
+| `bg-card` | Card/panel surface |
+| `text-foreground` | Primary text |
+| `text-muted-foreground` | Secondary text |
+| `text-gold` / `border-gold` / `bg-gold` | Gold accent (`#c5a059`) |
+
+**GlassCard:** `rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm`
+**Gold tile:** `bg-gradient-to-br from-gold/15 to-gold/5`
+
+---
+
+## 12. Local Dev Setup
 
 ```bash
 # Backend
