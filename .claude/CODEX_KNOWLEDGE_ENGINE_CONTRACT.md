@@ -1,4 +1,4 @@
-# Contract: Jyotish Narrative Engine — Hierarchical Interpretation Database
+# Contract: Jyotish Knowledge Engine — Hierarchical Interpretation Database
 > Client: EverydayHoroscope (SkyHound Studios)
 > Platform: https://www.everydayhoroscope.in
 > Backend: FastAPI on Render · Frontend: React 18 on Vercel
@@ -313,10 +313,10 @@ For production scale (>1000 concurrent users), add Redis caching:
 
 ## 3. Rule Engine — Python Backend
 
-### 3a. New file: `backend/narrative_engine.py`
+### 3a. New file: `backend/knowledge_engine.py`
 
 ```python
-class NarrativeEngine:
+class KnowledgeEngine:
     """
     Core engine that matches chart data against the interpretation rule database,
     scores and ranks matches, resolves conflicts, then hands off to LLM for narrative.
@@ -486,13 +486,13 @@ def detect_yogas(chart: dict) -> list[dict]:
     """Run all yoga checks against chart, return list of active yogas with details."""
 ```
 
-### 3d. New router: `backend/narrative_router.py`
+### 3d. New router: `backend/knowledge_router.py`
 
-Register at prefix `/api/narrative` in `server.py`.
+Register at prefix `/api/knowledge` in `server.py`.
 
 #### Endpoint 1 — Generate Interpretation
 ```
-POST /api/narrative/interpret
+POST /api/knowledge/interpret
 Auth: Required
 ```
 Request:
@@ -521,15 +521,15 @@ Response:
 
 #### Endpoint 2 — Rule CRUD (Admin only)
 ```
-GET    /api/narrative/rules?category=career&page=1&limit=20
-POST   /api/narrative/rules           — create rule
-PUT    /api/narrative/rules/:rule_id  — update rule
-DELETE /api/narrative/rules/:rule_id  — soft-delete (set active=false)
+GET    /api/knowledge/rules?category=career&page=1&limit=20
+POST   /api/knowledge/rules           — create rule
+PUT    /api/knowledge/rules/:rule_id  — update rule
+DELETE /api/knowledge/rules/:rule_id  — soft-delete (set active=false)
 ```
 
 #### Endpoint 3 — Bulk Import Rules
 ```
-POST /api/narrative/rules/import
+POST /api/knowledge/rules/import
 Auth: Admin
 Content-Type: application/json
 Body: { "rules": [ /* array of rule documents */ ], "source": "BPHS Chapter 24" }
@@ -538,51 +538,76 @@ For importing extracted rules from OCR'd books.
 
 #### Endpoint 4 — Rule Statistics
 ```
-GET /api/narrative/rules/stats
+GET /api/knowledge/rules/stats
 Auth: Admin
 ```
 Returns: total rules, rules by category, rules by source, coverage map (which condition types have rules).
 
 ---
 
-## 4. Admin Console — Rule Management UI
+## 4. Library Console — Standalone Knowledge Management UI
 
-### 4a. New tab in Admin Console: "Knowledge Engine"
+The Knowledge Engine has its own dedicated console, **completely separate from the
+Operations Admin Console** (`/admin/dashboard`). This is a specialist tool for the
+content/astrology team who curate the rule library — it is not an operations tool.
 
-**Sub-tabs:**
+### 4a. New page: `frontend/src/pages/LibraryConsolePage.jsx`
 
-**4a-i. Rules Browser**
+**Route:** `/library` (auth-gated — admin role only, separate from `/admin/dashboard`)
+
+**Top-level navigation tabs (5):**
+
+---
+
+**Tab 1 — Rules Browser**
 - Filterable table: category, source, condition type, planet, house
-- Search by keyword in interpretation text
-- Inline edit for quick corrections
-- Active/Inactive toggle
-- Priority slider (1-10)
+- Search by keyword in interpretation text or passage content
+- Inline edit for quick corrections to summary/detailed fields
+- Active/Inactive toggle per rule
+- Priority slider (1–10)
+- Click any row → opens Rule Editor pre-filled
 
-**4a-ii. Rule Editor**
-- Full form for creating/editing a rule
+**Tab 2 — Rule Editor**
+- Full form for creating or editing a rule
 - Condition builder: dropdown selects for type → planet → house → modifiers
-- Interpretation editor: summary (short), detailed (long), positive/negative aspects, remedies
-- Source attribution fields (primary text, chapter, secondary sources)
-- Modifier builder: add conditional modifiers with effect type
-- Preview: "If chart has [condition], the engine would say: [interpretation]"
-- Conflict checker: highlights rules that may contradict
+- Interpretation fields: summary (short), detailed (long), positive/negative aspects, remedies
+- Full-text passage manager: add/edit/remove book passages per rule
+  - Fields: passage text (rich textarea), source name, chapter/verse, word count, voice tone
+- Source attribution: primary text, chapter, secondary sources
+- Modifier builder: add conditional modifiers with effect type (amplify/diminish/intensify)
+- Live preview panel: "If chart has [condition], the engine would return: [interpretation]"
+- Conflict checker: scans DB and highlights rules that may contradict this one
 
-**4a-iii. Bulk Import**
-- Upload JSON file of rules (from OCR extraction pipeline)
-- Validation preview: shows valid/invalid rules before committing
-- Source tagging: apply source metadata to all imported rules
-- Duplicate detection: flag rules with >80% condition overlap
+**Tab 3 — Library Import**
+- Upload JSON file of rules (from OCR extraction pipeline or manual curation)
+- Validation preview table: shows valid/invalid rows before committing
+- Source tagging: apply source metadata to all imported rules in batch
+- Duplicate detection: flag rules with >80% condition overlap before import
+- Import history log: timestamp, source, count imported, imported by
 
-**4a-iv. Coverage Dashboard**
-- Heatmap: 12 houses × 9 planets — cells colored by rule count
-- Gap analysis: "No rules for Mercury in 8th house (career category)"
-- Category breakdown: pie chart of rules per category
-- Source breakdown: bar chart showing contribution per text
+**Tab 4 — Coverage Dashboard**
+- Heatmap: 12 houses × 9 planets — cells colored by rule count (red = no rules, green = well covered)
+- Gap analysis panel: "Missing: Mercury in 8th (career), Venus in 6th (health)..."
+- Category breakdown: donut chart of rules per category
+- Source breakdown: bar chart showing rule count per classical text
+- Cross-science combos coverage: which themes have 2+ science triggers vs single
 
-**4a-v. Test Console**
-- Input birth details → run engine → see matched rules + narrative
-- Side-by-side: raw rules vs generated narrative
-- Useful for QA and tuning
+**Tab 5 — Test Console**
+- Input birth details + optional numerology data → run Knowledge Engine
+- Side-by-side view: matched rules (with scores) on left, generated narrative on right
+- Voice blend selector: toggle between classical/modern_analytical/kp_technical/spiritual/popular
+- Depth selector: summary / detailed / comprehensive
+- Shows which book passages were used in the narrative (citation trail)
+- Useful for QA before publishing a new batch of rules
+
+---
+
+### 4b. Library Console — Access Control
+
+- Accessible only to users with `role: "library_admin"` (separate from `role: "admin"`)
+- Not linked from the Operations Admin Console (`/admin/dashboard`) — completely separate entry point
+- Login: same auth system, different role check
+- Add `library_admin` role to `auth_utils.py` and protect `/library` route accordingly
 
 ---
 
@@ -592,9 +617,9 @@ Returns: total rules, rules by category, rules by source, coverage map (which co
 
 ```
 ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
-│  OCR'd Book  │───→│  Claude API  │───→│  Structured  │───→│  Admin       │
-│  (PDF/text)  │    │  Extraction  │    │  Rules JSON  │    │  Review +    │
-│              │    │  Prompt      │    │              │    │  Import      │
+│  OCR'd Book  │───→│  Claude API  │───→│  Structured  │───→│  Library     │
+│  (PDF/text)  │    │  Extraction  │    │  Rules JSON  │    │  Console →   │
+│              │    │  Prompt      │    │              │    │  Import tab  │
 └──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘
 ```
 
@@ -623,7 +648,7 @@ RULES:
 
 #### Phase 2 Endpoints:
 ```
-POST /api/narrative/extract
+POST /api/knowledge/extract
 Auth: Admin
 Body: { "text": "/* OCR content */", "source_name": "BPHS", "chapter": "24" }
 Response: { "extracted_rules": [...], "confidence_scores": [...], "needs_review": [...] }
@@ -729,7 +754,7 @@ All seed data imported via bulk import endpoint on first deployment.
 
 ## 7. Integration Points — How Other Modules Use the Engine
 
-Once deployed, the Narrative Engine becomes the **interpretation backbone** for:
+Once deployed, the Knowledge Engine becomes the **interpretation backbone** for:
 
 | Module | How It Uses the Engine |
 |---|---|
@@ -743,9 +768,9 @@ Once deployed, the Narrative Engine becomes the **interpretation backbone** for:
 
 **Integration pattern — single science:**
 ```python
-from narrative_engine import NarrativeEngine
+from knowledge_engine import KnowledgeEngine
 
-engine = NarrativeEngine(db)
+engine = KnowledgeEngine(db)
 rules = await engine.scan_chart(chart_data, categories=["career"], max_rules=30)
 narrative = await engine.generate_narrative(
     rules, chart_data, report_type="career",
@@ -838,15 +863,16 @@ combos = await engine.scan_cross_science(
 
 | Component | Hours |
 |---|---|
-| `narrative_engine.py` — core engine (scan, score, resolve, generate) | 12h |
+| `knowledge_engine.py` — core engine (scan, score, resolve, generate) | 12h |
 | Cross-science combination engine (`scan_cross_science`) | 6h |
 | Chart fact extractor + yoga detection library (30-50 yogas) | 8h |
 | Rule schema + author voices + narrative bridges + MongoDB indexes | 6h |
 | Seed data: 300+ rules + 50 cross-science combos + voices + bridges JSON | 10h |
-| `narrative_router.py` — API endpoints (interpret, CRUD, import, stats) | 6h |
+| `knowledge_router.py` — API endpoints (interpret, CRUD, import, stats) | 6h |
 | Claude prompt engineering (narrative-first, voice blending, bridge stitching) | 6h |
-| Admin Console: Rules Browser + Editor + Bulk Import | 10h |
-| Admin Console: Coverage Dashboard + Test Console | 6h |
+| Library Console: Rules Browser + Rule Editor (with passage manager) | 10h |
+| Library Console: Library Import + Coverage Dashboard + Test Console | 8h |
+| Library Console: `library_admin` role + route protection | 2h |
 | Integration with Kundali report page | 3h |
 | Testing + validation (including cross-science matching) | 7h |
-| **Total** | **~80h** |
+| **Total** | **~84h** |
