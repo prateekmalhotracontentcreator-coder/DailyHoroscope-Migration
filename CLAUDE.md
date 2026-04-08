@@ -93,10 +93,17 @@ File: `backend/panchang_router.py`
 - ✅ Abhijit Muhurta (solar noon ± 24 min)
 - ✅ Vijaya Muhurta (muhurta-based, weekday-specific)
 
-**Location catalogue: 91 cities across 13 countries**
-India (53 cities), USA (8), UK (3), Canada (3), UAE (2), Australia (3),
-Singapore (1), Malaysia (3), Indonesia (3), Thailand (2), Tibet (1),
-Nepal (1), New Zealand (1)
+**Location catalogue: 318 cities across 81 countries/regions**
+India, USA, Canada, Mexico, Brazil, Argentina, Chile, Peru, Colombia, Venezuela,
+Ecuador, Bolivia, Paraguay, Uruguay, UK, Ireland, France, Germany, Spain, Italy,
+Netherlands, Belgium, Switzerland, Austria, Portugal, Sweden, Norway, Denmark,
+Finland, Poland, Czech Republic, Hungary, Romania, Greece, Turkey, Russia, Ukraine,
+Israel, UAE, Saudi Arabia, Qatar, Kuwait, Bahrain, Oman, Egypt, South Africa,
+Nigeria, Kenya, Ethiopia, Morocco, Algeria, Tunisia, Ghana, Tanzania, Uganda,
+Nepal, Sri Lanka, Bangladesh, Pakistan, Afghanistan, China, Hong Kong, Taiwan,
+Japan, South Korea, Singapore, Malaysia, Indonesia, Thailand, Vietnam, Philippines,
+Cambodia, Laos, Myanmar, Mongolia, Tibet, Australia, New Zealand, Fiji,
+Papua New Guinea, Samoa
 
 **API routes:**
 - `GET /api/panchang/locations` — full catalogue
@@ -129,7 +136,7 @@ Nepal (1), New Zealand (1)
 
 ### PanchangPage.jsx ✅ Live
 - 6-tab sub-nav: Today / Tomorrow / Tithi / Choghadiya / Calendar / Festivals
-- Location picker (91 cities, searchable by name/country/TZ abbreviation)
+- Location picker (318 cities across 81 countries, searchable by name/country/TZ abbreviation)
 - TZ abbreviation badge on picker button + dropdown rows (IST/EST/GST/MYT etc.)
 - 2×2 Sun/Moon card grid (Sunrise · Sunset · Moonrise · Moonset) with seconds
 - Five Limbs card (Tithi/Nakshatra/Yoga/Karana/Vara) with end times
