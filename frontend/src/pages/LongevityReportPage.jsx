@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import SharedBirthCityPicker from "../components/SharedBirthCityPicker";
 
 // Host app wiring:
 // <Route path="/longevity" element={<LongevityReportPage />} />
@@ -48,6 +49,7 @@ const SECTION_PREVIEWS = [
 
 const initialForm = {
   user_email: "",
+  city_slug: "",
   place_label: "",
   date_of_birth: "",
   time_of_birth: "",
@@ -359,22 +361,53 @@ export default function LongevityReportPage() {
                   <span className="text-xs uppercase tracking-[0.24em] text-white/45">Birth Time</span>
                   <input type="time" value={form.time_of_birth} onChange={e => updateField("time_of_birth", e.target.value)} className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition focus:border-[#d5a14a]/55" />
                 </label>
-                <label className="space-y-2 sm:col-span-2">
-                  <span className="text-xs uppercase tracking-[0.24em] text-white/45">Place Label</span>
-                  <input type="text" value={form.place_label} onChange={e => updateField("place_label", e.target.value)} placeholder="Delhi, India" className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition focus:border-[#d5a14a]/55" />
-                </label>
-                <label className="space-y-2">
-                  <span className="text-xs uppercase tracking-[0.24em] text-white/45">Latitude</span>
-                  <input type="number" step="any" value={form.latitude} onChange={e => updateField("latitude", e.target.value)} placeholder="28.6139" className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition focus:border-[#d5a14a]/55" />
-                </label>
-                <label className="space-y-2">
-                  <span className="text-xs uppercase tracking-[0.24em] text-white/45">Longitude</span>
-                  <input type="number" step="any" value={form.longitude} onChange={e => updateField("longitude", e.target.value)} placeholder="77.2090" className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition focus:border-[#d5a14a]/55" />
-                </label>
-                <label className="space-y-2">
-                  <span className="text-xs uppercase tracking-[0.24em] text-white/45">Timezone</span>
-                  <input type="text" value={form.timezone} onChange={e => updateField("timezone", e.target.value)} className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition focus:border-[#d5a14a]/55" />
-                </label>
+                <div className="space-y-2 sm:col-span-2">
+                  <SharedBirthCityPicker
+                    inputId="longevity-birth-city"
+                    label={<span className="text-xs uppercase tracking-[0.24em] text-white/45">Birth Location</span>}
+                    placeholder="Search city, country, or timezone…"
+                    value={form.city_slug}
+                    helpText="Search by city, country, or timezone abbreviation."
+                    onChange={(city) => setForm(prev => ({
+                      ...prev,
+                      city_slug: city.slug,
+                      place_label: `${city.city_name}, ${city.country || city.country_name}`,
+                      latitude: city.latitude,
+                      longitude: city.longitude,
+                      timezone: city.timezone,
+                    }))}
+                    wrapperStyle={{ width: "100%" }}
+                    labelStyle={{ display: "block" }}
+                    inputStyle={{
+                      display: "block", width: "100%", borderRadius: "1rem",
+                      border: "1px solid rgba(255,255,255,0.10)", background: "#09111e",
+                      padding: "0.75rem 1rem", fontSize: "0.875rem", color: "#fff",
+                      outline: "none", boxSizing: "border-box",
+                    }}
+                    selectStyle={{
+                      display: "block", width: "100%", borderRadius: "1rem",
+                      border: "1px solid rgba(255,255,255,0.10)", background: "#09111e",
+                      padding: "0.75rem 1rem", fontSize: "0.875rem", color: "#fff",
+                      outline: "none", boxSizing: "border-box",
+                    }}
+                  />
+                </div>
+                {form.latitude !== "" && (
+                  <div className="space-y-1 sm:col-span-2">
+                    <p className="text-[11px] uppercase tracking-[0.22em] text-white/40">Auto-populated coordinates</p>
+                    <div className="flex flex-wrap gap-3 text-xs text-white/60">
+                      <span className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2">
+                        Lat: <strong className="text-white/80">{form.latitude}</strong>
+                      </span>
+                      <span className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2">
+                        Lng: <strong className="text-white/80">{form.longitude}</strong>
+                      </span>
+                      <span className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2">
+                        TZ: <strong className="text-white/80">{form.timezone}</strong>
+                      </span>
+                    </div>
+                  </div>
+                )}
                 <label className="space-y-2">
                   <span className="text-xs uppercase tracking-[0.24em] text-white/45">Reference Date</span>
                   <input type="date" value={form.reference_date} onChange={e => updateField("reference_date", e.target.value)} className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition focus:border-[#d5a14a]/55" />
