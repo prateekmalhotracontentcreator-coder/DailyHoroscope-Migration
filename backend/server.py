@@ -118,6 +118,12 @@ db = client[os.environ['DB_NAME']]
 
 app = FastAPI()
 
+@app.get("/", include_in_schema=False)
+@app.head("/", include_in_schema=False)
+async def health_check():
+    """Render health check — must return 2xx or deploy is marked failed."""
+    return {"status": "ok", "service": "EverydayHoroscope API"}
+
 # ── Session middleware — populates request.state.user for ALL routers ──────────
 # Codex routers (Numerology, Tarot) read request.state.user to resolve the
 # authenticated user. This middleware bridges our session-cookie auth system
