@@ -63,6 +63,7 @@ const NAV = [
       { label: 'Love Bundle',        path: '/love',          icon: Heart },
       { label: 'Career Plus',       path: '/career-plus',   icon: Briefcase },
       { label: 'Hasta Rekha',       path: '/palmistry',     icon: Layers },
+      { label: 'Longevity Report',  path: '/longevity',     icon: Leaf },
     ],
   },
   {
