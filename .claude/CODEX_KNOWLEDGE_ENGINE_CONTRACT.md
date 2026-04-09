@@ -11,7 +11,27 @@
 > Sections marked `[PROPOSED]` are our current thinking — we are asking for your recommendation before we lock them in.
 > Sections marked `[CONFIRMED]` are already decided — please design around them.
 > Sections marked `[INPUT REQUESTED]` have specific questions we want answered.
+> Sections marked `[LOCKED — TEMPLE TEAM DECISION]` have been decided by the Temple Team after reviewing your input. Design to these exactly.
 > Please annotate your response with which section you are addressing.
+
+---
+
+## Temple Team Decision Log — 10 April 2026
+
+The following decisions are locked following Codex's advisory response and Temple Team review.
+
+| # | Topic | Decision |
+|---|---|---|
+| TD-01 | Cross-science scoring model | 3-layer model confirmed: fixed weights + qualitative tiers + α/β/γ contextual multipliers. Fixed weights are the mathematical backbone — do not remove. See Section 15. |
+| TD-02 | AI Paraphrase pipeline | Codex leads paraphrase generation using the WIM. Claude reviews flagged passages only (MEDIUM 1-in-5, LOW every one). See Section 16 + `CODEX_PARAPHRASE_WIM.md`. |
+| TD-03 | author_voices + narrative_bridges | These remain as MongoDB collections. Seeded JSON on first run, managed via Library Console thereafter. Not merged, not hardcoded. |
+| TD-04 | Library Console scope | Full 5-tab spec confirmed. No reduction, no Phase 2 deferral. Separate `library_admin` role confirmed. See Section 9. |
+| TD-05 | Excerpt policy (Policy Decision 1) | AI-generated equivalents only in MongoDB + Claude prompts. No verbatim text from any copyrighted source. Classical Sanskrit texts (BPHS etc.) — technical vocabulary and astrological logic may be expressed in original prose, not copied. See Section 16. |
+| TD-06 | Citation policy (Policy Decision 2) | Citations are internal to Test Console only. End-user reports attribute to "classical Vedic tradition" generically. No user-facing book references in Phase 1. |
+| TD-07 | Science Arbitration mechanism | Schema-ready in Phase 1. Mathematical framework pending Codex's response to `CODEX_SCIENCE_ARBITRATION_REQUEST.md`. See Section 17. |
+| TD-08 | Schema simulation | Three simulations requested before locking schema decisions (embedded vs separate passages, collections vs seeded JSON, index refresh). See `CODEX_SCHEMA_SIMULATION_REQUEST.md`. |
+| TD-09 | Revised effort estimate | 125–150h accepted for lean Phase 1 scope as defined here. |
+| TD-10 | World Context Engine | Defined as Commission J — separate from Commission I. Commission I builds integration hooks. See Section 18. |
 
 ---
 
@@ -295,8 +315,8 @@ Multi-factor confirmation engine — when 2+ sciences confirm the same life them
 
 **Phase 1 scope:** Astrology + Numerology matching only. Palmistry + Tarot triggers are schema-ready but unpopulated until Phase 2.
 
-> **[INPUT REQUESTED — Section 4e]**
-> Is a fixed-weight confidence model the right approach? We are open to an adaptive or Bayesian approach if you believe it would serve the use case better. How should partial confirmation (only 1 science matches) be surfaced in the narrative?
+> **[LOCKED — TEMPLE TEAM DECISION TD-01]**
+> Fixed science weights are the mathematical backbone and are retained. Cross-science scoring uses a 3-layer model. Full specification in Section 15.
 
 ---
 
@@ -497,9 +517,8 @@ python extract_book.py \
 - Role: `library_admin` (separate from `admin` — cannot access `/admin/dashboard`)
 - File: `frontend/src/pages/LibraryConsolePage.jsx`
 
-> **[INPUT REQUESTED — Section 9]**
-> We have spec'd 5 tabs. Please advise which to include in Phase 1 and which to defer.
-> Also advise whether `library_admin` should be a separate role or a permission on the existing `admin` role.
+> **[LOCKED — TEMPLE TEAM DECISION TD-04]**
+> Full 5-tab spec is Phase 1 scope. No tabs deferred. Separate `library_admin` role is mandatory — it represents editorial command, not operational access. The extra auth work is accepted and budgeted.
 
 ### Tab 1 — Rules Browser [Phase 1]
 - Filterable table: category / source / condition type / active status
@@ -612,16 +631,217 @@ combos = await engine.scan_cross_science(
 
 ---
 
-## 14. What We Need From You Before We Finalise
+## 14. Pending Inputs From Codex
 
-1. **Answers to all `[INPUT REQUESTED]` sections above** (6 sections: 4, 4e, 5, 6, 7, 8, 9, 13)
-2. **Any structural changes** you recommend to the schema, API, or workflow
-3. **A revised effort estimate** — the original estimate was ~84h; does that hold after reviewing the actual Phase 1 book list and workflow?
-4. **Questions you need answered** before you can start — fire them back to us
-5. **Your recommended build sequence** — what do you build first to de-risk Phase 1?
+The following remain open pending Codex's simulation and maths responses:
+
+1. **Schema simulation results** — see `CODEX_SCHEMA_SIMULATION_REQUEST.md`
+2. **Science Arbitration mathematical framework** — see `CODEX_SCIENCE_ARBITRATION_REQUEST.md`
+3. **Confirmation of build sequence** given all locked decisions above
+
+All other sections are now locked by Temple Team decision log above.
+
+---
+
+## 15. Cross-Science Scoring — 3-Layer Model [LOCKED — TD-01]
+
+### Layer 1 — Fixed Science Weights (Mathematical Backbone)
+
+Fixed weights form the mathematical foundation of Vedic calculations and predictions. **Do not remove or replace with qualitative tiers alone.**
+
+```python
+SCIENCE_WEIGHTS = {
+    "vedic_astrology": 0.40,
+    "numerology":      0.20,
+    "palmistry":       0.25,   # schema-ready, Phase 2 populated
+    "tarot":           0.15,   # schema-ready, Phase 2 populated
+}
+# Phase 1: normalise only across active sciences
+# e.g. astrology + numerology only → normalise to 0.40+0.20 = 0.60 base → scale to 1.0
+```
+
+### Layer 2 — Qualitative Confidence Tiers
+
+Applied on top of Layer 1 as a multiplier reflecting how many sciences converge.
+
+| Sciences matched | Tier label | Score multiplier |
+|---|---|---|
+| 1 | Indication | × 0.60 |
+| 2 | Partial Confirmation | × 0.80 |
+| 3 | Strong Convergence | × 1.00 |
+| 4 | Full Alignment | × 1.15 |
+
+### Layer 3 — Contextual Multipliers α, β, γ
+
+Three independent dimensions applied after Layers 1 and 2. Schema-ready in Phase 1. Data sourced from World Context Engine (Commission J) and user profile.
+
+| Dimension | Scale | Captures | Phase 1 default |
+|---|---|---|---|
+| **α (Alpha)** | Macro | Geopolitical, cultural, environmental, seasonal context | 1.0 (neutral) |
+| **β (Beta)** | Micro | Individual life circumstances — profession, health, finances | 1.0 (neutral) |
+| **γ (Gamma)** | Family | Immediate family dynamics, household context, relationship status | 1.0 (neutral) |
+
+```python
+contextual_adjustment = 1.0 + (
+    alpha_weight * alpha_score +   # default weight: 0.15
+    beta_weight  * beta_score  +   # default weight: 0.10
+    gamma_weight * gamma_score     # default weight: 0.10
+)
+# Range: ~0.78 → 1.22 — contextually amplifies or dampens final intensity
+
+final_intensity = base_science_score * tier_multiplier * contextual_adjustment
+```
+
+**Phase 1 behaviour:** α, β, γ all default to neutral (1.0) until World Context Engine (Commission J) populates them. The schema and scoring math are live from day one; the intelligence grows as Commission J is built.
+
+**Future modules that will use this layer:**
+- Daily Guidance Engine — α (festival seasons, conflict zones, exam periods)
+- Love Engine — γ (family context, relationship status)
+- Bible Module / Devotion layer — α (spiritual seasons, holy days)
+- Notifications — α as trigger for contextual alerts (Diwali eve → auspicious time + pooja ritual)
+
+### MongoDB Schema Addition — `contextual_scores` embedded in request context
+
+```json
+{
+  "alpha": { "score": 0.92, "source": "world_context_engine", "event": "Diwali -3 days", "region": "IN" },
+  "beta":  { "score": 0.75, "source": "user_profile", "factors": ["professional", "urban"] },
+  "gamma": { "score": 0.60, "source": "user_profile", "factors": ["married", "dependents"] }
+}
+```
+
+---
+
+## 16. AI Paraphrase Pipeline [LOCKED — TD-02, TD-05]
+
+### Policy
+
+No verbatim text from any source enters MongoDB or Claude prompts. All content stored and transmitted is Temple Team's original AI-generated prose — attributed to classical Vedic tradition, not copied from it.
+
+### Pipeline (runs locally inside `extract_book.py`)
+
+```
+OCR Source Text (stays on workstation)
+         ↓
+[Step 1] OCR Cleanup — noise, hyphen repair, line joining, header/footer strip
+         ↓
+[Step 2] Rule Extraction — structured If-Then rule + metadata + source excerpt (local only)
+         ↓
+[Step 3] Codex Paraphrase — generate original prose equivalent (see CODEX_PARAPHRASE_WIM.md)
+         ↓
+[Step 4] Codex Self-Check — confidence scoring (HIGH / MEDIUM / LOW)
+         ↓
+[Step 5] QA Triage
+         HIGH   → staged for Library Console import review (Temple Team approves)
+         MEDIUM → 1-in-5 flagged for Claude spot-check
+         LOW    → every one reviewed by Claude before staging
+         ↓
+[Step 6] Original excerpt discarded locally
+         ↓
+[Step 7] AI-generated passage + metadata → output JSON → MongoDB via import endpoint
+```
+
+### Cost Model
+
+- Codex handles ~85–90% of paraphrase passes
+- Claude handles ~10–15% (flagged MEDIUM sample + all LOW)
+- One-time cost per Amendment Contract — not a recurring runtime cost
+
+### Reference
+
+Full Codex paraphrase instructions: `CODEX_PARAPHRASE_WIM.md`
+
+---
+
+## 17. Science Arbitration Mechanism [SCHEMA-READY — Maths Pending TD-07]
+
+The arbitration mechanism is schema-ready in Phase 1. The mathematical framework will be confirmed after Codex responds to `CODEX_SCIENCE_ARBITRATION_REQUEST.md`.
+
+### New MongoDB Collection: `science_registry`
+
+Extensible science catalogue — adding a new science is a data operation, not a code change.
+
+```json
+{
+  "_id": "ObjectId",
+  "science_id": "vedic_astrology",
+  "display_name": "Vedic Astrology — BPHS Tradition",
+  "hierarchy_rank": 1,
+  "authority_domain": ["life_path", "character", "relationships", "health", "karma", "timing"],
+  "defers_to": [],
+  "complements": ["kp", "numerology", "palmistry", "tarot"],
+  "contradiction_policy": "leads",
+  "active": true,
+  "added_phase": 1
+}
+```
+
+```json
+{
+  "science_id": "kp",
+  "display_name": "Krishnamurti Paddhati",
+  "hierarchy_rank": 2,
+  "authority_domain": ["timing", "event_prediction"],
+  "defers_to": ["vedic_astrology"],
+  "complements": ["vedic_astrology", "numerology"],
+  "contradiction_policy": "precision_layer",
+  "active": true,
+  "added_phase": 1
+}
+```
+
+### Contradiction Narrative Modes (provisional — subject to Codex maths confirmation)
+
+| Mode | When | Narrative Treatment |
+|---|---|---|
+| **Lead + Acknowledge** | Clear winner on confidence | Primary science leads. Secondary noted as additional perspective. |
+| **Cosmic Tension** | Sciences closely matched, same domain | "Your chart presents a dynamic tension between [A] and [B]…" |
+| **Precision Layer** | BPHS vs KP | "Classical tradition indicates [what]. KP analysis refines the timing to [when]…" |
+
+---
+
+## 18. World Context Engine — Commission J Reference [CONFIRMED — separate commission]
+
+The World Context Engine (WCE) feeds the α (Alpha) contextual multiplier in real time. It is **not part of Commission I** — it is Commission J with a defined integration contract.
+
+### What Commission J builds
+
+```
+World Context Engine
+├── Global Calendar Layer (Hindu, Christian, Islamic, Jewish, regional festivals)
+├── Lifecycle Calendar Layer (exam seasons, appraisal cycles, wedding seasons by region)
+├── Geopolitical Layer (conflict zones, economic stress flags — Phase J2)
+└── User Signal Layer (explicit profile + implicit behaviour signals)
+```
+
+### Commission I integration hook (build this in Phase 1)
+
+Commission I's `KnowledgeEngine` must accept a `context` parameter and pass α/β/γ scores through the scoring model. Defaults to neutral (1.0) until Commission J populates them.
+
+```python
+rules = await engine.scan_chart(
+    chart_data,
+    categories=["career"],
+    context={
+        "alpha": 1.0,   # Commission J will populate this
+        "beta":  1.0,   # User profile will populate this
+        "gamma": 1.0    # User profile will populate this
+    }
+)
+```
+
+### Notification use case (Commission J powers this)
+
+```
+WCE detects: Diwali in 3 days (Hindu calendar, user in India)
+Planetary: Jupiter in 9H (spiritually auspicious)
+→ Alpha raised to 0.92
+→ Notification triggered: Diwali Muhurta + Lakshmi Pooja ritual personalised to user's Lagna
+```
 
 ---
 
 > Stack: FastAPI (Render, Docker python:3.12.9-slim) + React 18 (Vercel) + MongoDB (Motor async) + pyswisseph 2.10.x + Claude API (`claude-sonnet-4-6`)
 > Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
 > Main branch: `main` (deploy-on-push)
+> Effort estimate: 125–150h (lean Phase 1 as defined here)
