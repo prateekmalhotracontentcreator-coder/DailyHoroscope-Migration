@@ -117,14 +117,23 @@ These are the books confirmed for Phase 1 extraction. Files are on the Temple Te
 | 6 | Vedic Numerology — Ank Jyotish | Numerology | Index + Chapter-wise PDF |
 | 7 | Crystal Healing | Remedies / Healing | Crystal knowledge, situational areas, crystal specifics |
 
-### Tier 4 — Additional (Post-Phase 1 via Amendment Contracts)
+### Tier 4 — Classical Foundation Texts (Phase 1 — Core Rule Seed)
+
+These are the texts from which the original seed files were planned. They are **Phase 1 mandatory** — the foundational rule library that all other books build on top of.
+
+| # | Title | Author / Tradition | Category |
+|---|---|---|---|
+| 10 | Brihat Parashara Hora Shastra (BPHS) | Parashara | Foundational Vedic — all houses, planets, yogas |
+| 11 | Phaladeepika | Mantreswara | Classical Vedic — planetary results, house lords |
+| 12 | Saravali | Kalyana Varma | Classical Vedic — planetary combinations, results |
+| 13 | How to Judge a Horoscope (Vol. 1 & 2) | B.V. Raman | Modern analytical — house-by-house interpretation |
+
+### Tier 5 — Additional (Post-Phase 1 via Amendment Contracts)
 
 | # | Title | Category | Format Available |
 |---|---|---|---|
-| 8 | A Book of 300 Important Horoscopes Vol. I | Astrology — Star Lord System, Sign Lords, Case Studies | Summary chapter guide + case studies |
-| 9 | Longevity and Un-Natural Deaths | Longevity — Nakshatra System, Fundamental Rules + Case Studies | Chapter-wise PDF + case studies |
-
-> Note: Classical foundation texts (BPHS, Phaladeepika, Saravali, B.V. Raman — How to Judge a Horoscope) referenced in prior seed file planning are to be treated as **supplementary cross-reference sources** during Phase 1 extraction, where Codex identifies overlapping rules. They will be formally ingested via Amendment Contracts in Phase 2.
+| 14 | A Book of 300 Important Horoscopes Vol. I | Astrology — Star Lord System, Sign Lords, Case Studies | Summary chapter guide + case studies |
+| 15 | Longevity and Un-Natural Deaths | Longevity — Nakshatra System, Fundamental Rules + Case Studies | Chapter-wise PDF + case studies |
 
 ---
 
