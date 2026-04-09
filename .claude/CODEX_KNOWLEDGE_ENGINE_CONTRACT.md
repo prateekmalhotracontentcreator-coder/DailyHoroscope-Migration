@@ -94,14 +94,23 @@ OCR books stored here   →  Amendment Contract issued   →  extraction script 
 | 6 | Vedic Numerology — Ank Jyotish | Numerology | Index + Chapter-wise PDF |
 | 7 | Crystal Healing | Remedies / Healing | Crystal knowledge, situational areas |
 
-### Tier 4 — Additional (Phase 2 via Amendment Contracts)
+### Tier 4 — Classical Foundation Texts (Phase 1 — Core Rule Seed)
+
+These are the texts from which the original seed files were planned. **Phase 1 mandatory** — the foundational rule library upon which all other books build.
+
+| # | Title | Author / Tradition | Category |
+|---|---|---|---|
+| 10 | Brihat Parashara Hora Shastra (BPHS) | Parashara | Foundational Vedic — all houses, planets, yogas |
+| 11 | Phaladeepika | Mantreswara | Classical Vedic — planetary results, house lords |
+| 12 | Saravali | Kalyana Varma | Classical Vedic — planetary combinations, results |
+| 13 | How to Judge a Horoscope (Vol. 1 & 2) | B.V. Raman | Modern analytical — house-by-house interpretation |
+
+### Tier 5 — Additional (Post-Phase 1 via Amendment Contracts)
 
 | # | Title | Category | Format |
 |---|---|---|---|
-| 8 | A Book of 300 Important Horoscopes Vol. I | Astrology — Star Lord System, Sign Lords, Case Studies | Chapter guide + case studies |
-| 9 | Longevity and Un-Natural Deaths | Longevity — Nakshatra System, Fundamental Rules | Chapter-wise PDF + case studies |
-
-> **Note on classical texts:** BPHS, Phaladeepika, Saravali, B.V. Raman (How to Judge a Horoscope) are to be used as supplementary cross-reference sources during Phase 1 extraction, where Codex spots overlapping rules. They will be formally ingested as Amendment Contracts in Phase 2.
+| 14 | A Book of 300 Important Horoscopes Vol. I | Astrology — Star Lord System, Sign Lords, Case Studies | Chapter guide + case studies |
+| 15 | Longevity and Un-Natural Deaths | Longevity — Nakshatra System, Fundamental Rules | Chapter-wise PDF + case studies |
 
 ---
 
@@ -229,8 +238,8 @@ The primary library. Each document = one interpretation rule from one source.
 **Five voice profiles:**
 | Voice ID | Style | Books |
 |---|---|---|
-| `classical` | Formal, shastra-based, Sanskrit terms | A Text Book of Astrology, Lal Kitab |
-| `modern_analytical` | Clear, psychological, practical | B.V. Raman (Phase 2) |
+| `classical` | Formal, shastra-based, Sanskrit terms | BPHS, Phaladeepika, Saravali, A Text Book of Astrology, Lal Kitab |
+| `modern_analytical` | Clear, psychological, practical | B.V. Raman — How to Judge a Horoscope |
 | `kp_technical` | Precise, sub-lord focused, scientific | A Book of 300 Important Horoscopes |
 | `spiritual` | Karmic, soul-purpose, philosophical | Crystal Healing, Longevity texts |
 | `popular` | Conversational, accessible, encouraging | General reading style |
@@ -532,7 +541,7 @@ After extraction, Codex produces these files in `backend/data/`:
 
 | File | Contents | Source Books |
 |---|---|---|
-| `seed_rules.json` | ~300+ foundational rules | A Text Book of Astrology, Lal Kitab, Longevity and Astro System |
+| `seed_rules.json` | ~300+ foundational rules | BPHS, Phaladeepika, Saravali, B.V. Raman + A Text Book of Astrology, Lal Kitab, Longevity and Astro System |
 | `seed_numerology_rules.json` | Numerology-specific rules | Your Destiny Is In Your Name & DOB, Vedic Numerology — Ank Jyotish |
 | `seed_remedies_rules.json` | Remedy + healing rules | Crystal Healing, Lal Kitab (remedies chapters) |
 | `seed_cross_science.json` | ~50 cross-science combos | Astrology + Numerology (Phase 1 only) |
