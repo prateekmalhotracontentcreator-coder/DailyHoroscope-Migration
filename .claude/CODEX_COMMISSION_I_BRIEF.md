@@ -1,208 +1,203 @@
-# Codex Brief — Commission I: Jyotish Knowledge Engine
+# Codex Advisory Brief — Commission I: Jyotish Knowledge Engine
 > To: Codex
-> From: EverydayHoroscope / SkyHound Studios
-> Priority: HIGH
-> Estimated Effort: ~84h
-> Full Spec: `.claude/CODEX_KNOWLEDGE_ENGINE_CONTRACT.md`
+> From: EverydayHoroscope / Temple Team (SkyHound Studios)
+> Date: 10 April 2026
+> Status: PRE-SPEC CONSULTATION — We are seeking your architectural input BEFORE finalising the build contract
+> Full Draft Spec: `.claude/CODEX_KNOWLEDGE_ENGINE_CONTRACT.md` (shared for your review — not yet final)
 
 ---
 
-We're building the **internal Knowledge Engine** that becomes the interpretation backbone
-for every module on EverydayHoroscope — Kundali, Longevity, Horoscopes, and cross-science
-unified readings.
+## Why We Are Writing Before the Contract
 
-**This is infrastructure, not a user-facing page.** It powers all interpretation across
-the platform. Build this before Commission H.
+Commission H (Longevity Report) is live. Commission I is the **most architecturally significant module in the entire platform** — it becomes the interpretation backbone that every other module calls. We want to do this right, not fast.
 
----
+Before we finalise the build contract, we want your considered input on:
+- Whether our proposed architecture is the right one
+- Where you would do things differently
+- What risks you see that we may not have spotted
+- What questions you need answered before you can scope this accurately
 
-## Book Library — Working Model
-
-**Books do NOT get uploaded into the application.** All source books (OCR format) are
-retained on the client's workstation. Codex reads them locally, extracts structured
-rules, and populates the MongoDB library directly.
-
-**The workflow is:**
-```
-Client Workstation          Codex (local execution)        MongoDB (Live DB)
-OCR books stored here  →  Amendment Contract issued  →  extraction script runs
-                                                               ↓
-                                                     interpretation_rules populated
-                                                               ↓
-                                              Library Console (client reviews + approves)
-```
-
-**No book upload feature is required** in the Library Console or anywhere in the
-application. The Library Console is purely for reviewing, editing, and managing rules
-that are already in the database.
-
-**Phase 1 — 4 Seed Books:**
-Codex designs the full library schema and populates it using 4 base resource books
-provided by the client. These 4 books establish the schema, the voice profiles, the
-bridge phrases, and the foundational rule set.
-
-**Subsequent Books — Amendment Contracts:**
-For every additional book, the client conducts an internal assessment of how they
-want the library updated, then issues a targeted **Amendment Contract** to Codex.
-Each amendment specifies: which book, which modules it covers, what categories to
-extract, and any special handling instructions. Codex runs the extraction and updates
-the DB. This keeps the client in editorial command at all times.
-
-**10 books are ready** across modules: Vedic Astrology, KP, Numerology, Palmistry,
-Tarot. These will be commissioned in batches via Amendment Contracts after Phase 1
-is live.
+This brief explains what we are building and why. The draft contract document gives you the schema and method signatures we are currently thinking. Please read both and send us your recommendations.
 
 ---
 
-## What You'll Build
+## 1. What We Are Building
 
-### Backend
-1. `backend/knowledge_engine.py` — Core engine: rule scanner, scorer, conflict resolver,
-   and Claude narrative generator (narrative-first, full prose — never bullet points)
-2. `backend/knowledge_router.py` — API endpoints under `/api/knowledge`:
-   - `POST /api/knowledge/interpret` — generate interpretation for a chart
-   - Rule CRUD: GET / POST / PUT / DELETE `/api/knowledge/rules`
-   - `POST /api/knowledge/rules/import` — bulk import from pre-extracted JSON
-   - `GET /api/knowledge/rules/stats` — coverage statistics
-3. `backend/scripts/extract_book.py` — **local-only extraction script** (not deployed to
-   Render). Run locally by Codex against OCR book text to produce structured JSON,
-   then import that JSON into MongoDB via the import endpoint. This is how new books
-   get added — script runs on workstation, result pushed to DB.
+The **Jyotish Knowledge Engine** is an internal infrastructure module — not a user-facing page. It does one thing: it takes a computed Vedic birth chart and returns a coherent, book-grounded, multi-paragraph interpretation narrative.
 
-### MongoDB Collections (4 new)
-- `interpretation_rules` — the rule library (13 condition types, full-text book passages)
-- `author_voices` — 5 voice profiles (classical, modern_analytical, kp_technical, spiritual, popular)
-- `narrative_bridges` — ~30 bridging phrases for stitching multi-source text blocks
-- `cross_science_combinations` — ~50 multi-factor confirmation combos (Astrology + Numerology)
+Every module on the platform (Kundali, Longevity, Horoscopes, Numerology, Palmistry, Tarot) currently generates interpretations via direct LLM prompting. The Knowledge Engine replaces that with something better: **structured rule matching against a curated library of classical and modern texts**, followed by LLM narrative generation grounded in those matched passages.
 
-### Phase 1 Seed Data (from 4 base books)
-Codex extracts and structures rules from the 4 seed books provided by the client.
-Output written to `backend/data/`:
-- `seed_rules.json` — rules extracted from 4 seed books (~300 expected)
-- `seed_cross_science.json` — ~50 cross-science combos (astrology + numerology)
-- `seed_voices.json` — 5 author voice profiles
-- `seed_bridges.json` — ~30 narrative bridge phrases
+The result: interpretations that cite actual book passages, blend multiple authorial voices, surface contradictions honestly, and scale as we add more books — without rewriting any code.
 
-The schema must be designed to grow from ~300 rules (Phase 1) to 10,000+ rules
-(as Amendment Contracts bring in all 10 books and beyond) — **without any schema
-changes or code deployments.** Sources, books, and traditions are all data, not code.
-
-### Library Console (standalone — NOT part of Operations Admin Console)
-- New page: `frontend/src/pages/LibraryConsolePage.jsx`
-- Route: `/library`
-- Role: `library_admin` — separate from `admin` role, add to `auth_utils.py`
-- **Completely decoupled from `/admin/dashboard`** — different entry point, different role
-- **No book/file upload feature** — books stay on workstation, rules arrive via import endpoint
-- **5 tabs:**
-  - **Rules Browser** — filterable table, inline edit, active/inactive toggle, priority slider
-  - **Rule Editor** — condition builder, full-text passage manager, modifier builder,
-    conflict checker, live preview
-  - **Library Import** — import pre-extracted JSON (output of `extract_book.py`),
-    validation preview, duplicate detection, import history log
-  - **Coverage Dashboard** — 12×9 heatmap, gap analysis, category donut chart,
-    source bar chart, cross-science coverage panel
-  - **Test Console** — input chart → matched rules + narrative side-by-side,
-    voice/depth selectors, citation trail showing which book passages were used
-
----
-
-## Amendment Contract Model
-
-Each new book after Phase 1 follows this process:
+### Architecture in Three Layers
 
 ```
-1. Client internal assessment → decides categories, depth, special instructions
-2. Client issues Amendment Contract (new .md file in .claude/)
-3. Codex runs extract_book.py locally against OCR text → produces JSON
-4. Codex imports JSON → MongoDB via import endpoint
-5. Client reviews new rules in Library Console (Rules Browser + Test Console)
-6. Client approves or requests corrections
-7. Amendment closed
-```
-
-This model means:
-- Client always reviews before rules go live
-- No book content ever touches the production server
-- Each book is a discrete, traceable batch in the import history
-- Codex effort per amendment is predictable and scoped
-
----
-
-## Key Design Principles
-
-**Narrative-First (not keyword mapping):**
-Rules store 500+ word verbatim book passages alongside summaries. The LLM is grounded
-in actual classical text — reducing hallucination and delivering genuinely deep readings.
-
-**Author Voice Blending:**
-`generate_narrative(voice_blend="classical+modern_analytical")` — the engine blends
-classical Sanskrit-tradition tone with modern psychological astrology for each report type.
-
-**Narrative Bridges:**
-When Book A says "wealth" and Book B says "losses" for the same placement, the engine
-renders them as "competing energies" using bridging phrases — nuanced, multi-perspective.
-
-**Cross-Science Confirmation:**
-Phase 1: Astrology + Numerology unified scoring (Astrology 40%, Numerology 20%,
-Palmistry 25% reserved, Tarot 15% reserved). When 2+ sciences confirm the same theme,
-confidence score rises. More sciences added via Amendment Contracts.
-
----
-
-## Integration Pattern (how other modules call the engine)
-
-```python
-from knowledge_engine import KnowledgeEngine
-
-engine = KnowledgeEngine(db)
-
-# Single science — Kundali report
-rules = await engine.scan_chart(chart_data, categories=["career"], max_rules=30)
-narrative = await engine.generate_narrative(
-    rules, chart_data, report_type="career",
-    voice_blend="classical+modern_analytical"
-)
-
-# Cross-science — astro + numerology unified reading
-combos = await engine.scan_cross_science(
-    astro_chart=chart_data,
-    numerology_data={"life_path": 1, "expression": 8},
-    categories=["career"]
-)
+┌─────────────────────────────────────────────────────────────┐
+│  Layer 3: NARRATIVE LAYER (Claude API)                      │
+│  Receives matched rules + chart context                     │
+│  → generates coherent multi-paragraph prose                 │
+│  → never bullet points, always full narrative               │
+└────────────────────────┬────────────────────────────────────┘
+                         │ matched rules + passages + context
+┌────────────────────────┴────────────────────────────────────┐
+│  Layer 2: RULE ENGINE (Python / FastAPI)                    │
+│  Evaluates chart data against rule conditions               │
+│  Scores relevance, resolves conflicts between sources       │
+│  Filters by category: career / health / relationships etc.  │
+└────────────────────────┬────────────────────────────────────┘
+                         │ chart positions + dashas + transits
+┌────────────────────────┴────────────────────────────────────┐
+│  Layer 1: DATA LAYER (MongoDB)                              │
+│  Hierarchical Interpretation Database                       │
+│  Structured rules extracted from classical + modern texts   │
+│  If-Then conditions, multi-source attribution, full passages │
+└─────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Key Constraints
+## 2. The Confirmed Workflow — Architecture We Have Decided
 
-- MongoDB (Motor async) — already in stack, no new DB
-- No Redis in Phase 1 — indexed MongoDB queries sufficient at current scale
-- Claude model: `claude-sonnet-4-6` for narrative generation
-- `extract_book.py` — local script only, never deployed to Render
-- Rule evaluation: < 500ms for up to 1000 rules
-- Narrative generation: < 8s detailed, < 3s summary
-- `library_admin` role must not grant access to `/admin/dashboard` and vice versa
-- Schema must support 10,000+ rules without changes — all sources are data, not code
+This part is settled. We are not asking for input here — we want you to understand the model before advising on the technical details.
+
+### Books Stay on the Workstation. Always.
+
+No book content ever touches the production server. The Library Console has **no file upload feature**. Books are retained on the Temple Team's Mac workstation in OCR format.
+
+### The Data Flow
+
+```
+Your Workstation          Codex (local execution)          MongoDB (Live DB)
+OCR books stored    →   Amendment Contract issued    →   extraction script runs
+                                                                  ↓
+                                                      interpretation_rules populated
+                                                                  ↓
+                                               Library Console (review + approve)
+```
+
+### Phase 1 — Full Library Schema from Seed Books
+
+Codex builds the full schema, voice profiles, bridge phrases, and foundational rule set from the Phase 1 seed books (listed below). Everything else grows on top of this without schema changes.
+
+**Phase 1 seed files to be created in `backend/data/`:**
+- `seed_rules.json` — extracted rules from Phase 1 books
+- `seed_cross_science.json` — cross-science combos (Astrology + Numerology, Phase 1)
+- `seed_voices.json` — author voice profiles (classical, modern_analytical, kp_technical, spiritual, popular)
+- `seed_bridges.json` — narrative bridge phrases (~30 types)
+
+### Phase 2+ — Amendment Contracts
+
+For every book added after Phase 1, the Temple Team assesses the book internally, fills in the `CODEX_LIBRARY_AMENDMENT_TEMPLATE.md`, and issues a targeted Amendment Contract. Codex extracts and pushes. Temple Team reviews in Library Console and approves or requests corrections. One book, one contract, total editorial control.
 
 ---
 
-## Full Specification
+## 3. Phase 1 Reference Books — Confirmed List
 
-Read `.claude/CODEX_KNOWLEDGE_ENGINE_CONTRACT.md` before starting. It contains:
-- Complete MongoDB schema for all 4 collections
-- All 13 rule condition types with field definitions
-- Author voice profiles and narrative bridge types
-- Cross-science combination schema and scoring logic
-- `KnowledgeEngine` class method signatures with docstrings
-- Yoga detection library (30-50 classical yogas)
-- Seed data breakdown (~300 rules, sources, categories)
-- Vedic reference rules (aspects, exaltation/debilitation, Moolatrikona,
-  planetary friendships, life area mappings, deity/color/direction remedies)
-- Library Console tab-by-tab spec
-- Phase 1 vs Phase 2 boundary table
-- Full acceptance criteria checklist
+These are the books confirmed for Phase 1 extraction. Files are on the Temple Team workstation in the locations noted. Codex will receive individual Amendment Contracts for each book after Phase 1 schema is established.
+
+### Tier 1 — Core (Mandatory for Phase 1 Schema)
+
+| # | Title | Category | Format Available |
+|---|---|---|---|
+| 1 | A Text Book of Astrology | Foundational Astrology, Panchang, Charts | Index + Chapter-wise PDF |
+| 2 | Lal Kitab | Astrology: Rules and Remedies | Index + Chapter-wise PDF |
+| 3 | Longevity and Astro System | Longevity — Basic Concepts, Rule-Based, 30+ Case Studies | Index + Chapter-wise PDF |
+
+### Tier 2 — Core-Optional
+
+| # | Title | Category | Format Available |
+|---|---|---|---|
+| 4 | Ascendants and Astrological Tables | Astronomical Data, Muhurat Tables, Festival Rules | Index + Chapter-wise PDF |
+
+### Tier 3 — Module Specific
+
+| # | Title | Category | Format Available |
+|---|---|---|---|
+| 5 | Your Destiny Is In Your Name & DOB | Numerology | Index + Chapter-wise PDF |
+| 6 | Vedic Numerology — Ank Jyotish | Numerology | Index + Chapter-wise PDF |
+| 7 | Crystal Healing | Remedies / Healing | Crystal knowledge, situational areas, crystal specifics |
+
+### Tier 4 — Additional (Post-Phase 1 via Amendment Contracts)
+
+| # | Title | Category | Format Available |
+|---|---|---|---|
+| 8 | A Book of 300 Important Horoscopes Vol. I | Astrology — Star Lord System, Sign Lords, Case Studies | Summary chapter guide + case studies |
+| 9 | Longevity and Un-Natural Deaths | Longevity — Nakshatra System, Fundamental Rules + Case Studies | Chapter-wise PDF + case studies |
+
+> Note: Classical foundation texts (BPHS, Phaladeepika, Saravali, B.V. Raman — How to Judge a Horoscope) referenced in prior seed file planning are to be treated as **supplementary cross-reference sources** during Phase 1 extraction, where Codex identifies overlapping rules. They will be formally ingested via Amendment Contracts in Phase 2.
 
 ---
 
-> Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
-> Stack: FastAPI (Render) + React 18 (Vercel) + MongoDB + pyswisseph 2.10.x
+## 4. What We Are Asking of You — Right Now
+
+**Do not start building yet.** We want your considered architectural recommendations first.
+
+### Question A — Schema Design
+We have proposed a 4-collection MongoDB schema: `interpretation_rules`, `author_voices`, `narrative_bridges`, `cross_science_combinations`. The full schema is in the draft contract.
+- Is this the right data model?
+- Would you restructure it — if so, how and why?
+- How would you handle rule versioning as books are added?
+
+### Question B — Rule Evaluation Performance
+The engine needs to evaluate 300 rules at Phase 1, scaling to 10,000+ rules without schema changes or code deployments.
+- What indexing strategy would you recommend on `interpretation_rules`?
+- Is MongoDB the right store for this, or would you add a secondary structure (e.g. in-memory index on startup)?
+- Target: < 500ms evaluation for up to 1,000 rules per request
+
+### Question C — Extraction Script Design (`extract_book.py`)
+This script runs locally on the Temple Team's workstation against OCR text. It must produce structured JSON in our rule schema. The OCR quality varies (marked High/Medium per book).
+- What extraction approach would you recommend for pulling structured If-Then rules from OCR text?
+- How should the script handle OCR noise (hyphenation, line breaks mid-sentence, column artifacts)?
+- Should the extraction be rule-template driven, or LLM-assisted, or hybrid?
+
+### Question D — Cross-Science Scoring
+We are proposing: Astrology 40%, Numerology 20%, Palmistry 25% (reserved), Tarot 15% (reserved).
+- Is a fixed-weight confidence model the right approach, or would you recommend something more adaptive?
+- How should the engine handle cases where only 1 or 2 sciences match (partial confirmation)?
+
+### Question E — Narrative Generation
+We want: book-grounded narrative, never bullet points, multi-authorial voice blending, contradictions surfaced honestly.
+- What prompt architecture would you recommend for this?
+- How do you prevent the LLM from ignoring the provided passages and generating from training data instead?
+- How should bridge phrases be injected — as part of the prompt, or as structural anchors the LLM fills in?
+
+### Question F — Library Console Scope
+We have spec'd a 5-tab Library Console at `/library` with its own `library_admin` role (separate from `/admin/dashboard`).
+- Is there anything in the 5-tab spec (Rules Browser / Rule Editor / Library Import / Coverage Dashboard / Test Console) that you would simplify or restructure for Phase 1?
+- What would you defer to Phase 2?
+
+### Question G — Anything We Have Missed
+Is there a meaningful risk, dependency, or design consideration we have not raised? Tell us what we are not asking.
+
+---
+
+## 5. How to Respond
+
+Please return:
+1. Your answers to Questions A–G above
+2. Any assumptions you are making that we should confirm
+3. A revised effort estimate once you have reviewed the draft contract
+4. Any questions you need answered before you can proceed
+
+Once we have your input, the Temple Team will finalise the contract and issue Commission I formally.
+
+---
+
+## 6. Stack Context
+
+| Layer | Detail |
+|---|---|
+| Backend | FastAPI on Render (Docker, python:3.12.9-slim) |
+| Frontend | React 18 on Vercel |
+| Database | MongoDB via Motor (async) — already in stack |
+| Astronomy | pyswisseph 2.10.x, Lahiri ayanamsa |
+| AI | Claude API (`claude-sonnet-4-6`) |
+| Repo | `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration` |
+| Main branch | `main` (deploy-on-push to Render + Vercel) |
+
+> No Redis in Phase 1. No new database. No book upload feature anywhere in the application. The Library Console manages rules already in MongoDB — it does not ingest source files.
+
+---
+
+> Full draft schema, method signatures, and acceptance criteria: `.claude/CODEX_KNOWLEDGE_ENGINE_CONTRACT.md`
+> Amendment contract template: `.claude/CODEX_LIBRARY_AMENDMENT_TEMPLATE.md`
