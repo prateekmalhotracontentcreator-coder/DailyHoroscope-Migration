@@ -50,11 +50,26 @@
 | TD-15 | New rule schema fields | The following fields are required on every `interpretation_rules` document: `claim_axis` (e.g. `marriage_timing`, `career_growth`), `claim_scope` (tendency / event_timing / window / trait), `claim_polarity` (positive / negative / mixed / neutral), `timing_bias` (early / on_time / late / cyclical / none), `strength_band` (low / medium / high / extreme), `subject_scope` (self / partner / household / family). Optional: `authority_override`, `mutually_exclusive_with`. |
 | TD-16 | Contradiction detection | Two rules are contradiction candidates when `life_domain` matches and `claim_axis` matches. Orthogonal if `claim_scope` differs. Contradiction score C = 0.40×polarity_distance + 0.35×timing_distance + 0.15×strength_distance + 0.10×authority_overlap. Flag contradiction if C ≥ 0.55 and both claims have effective_confidence ≥ 0.18. |
 | TD-17 | Arbitration framework | Production runtime: Supersession table (category + claim_axis → lead science) → confidence-delta tiebreaker → representation mode selection. MCDA scoring used internally to compute `effective_confidence` per claim. No Bayesian or D-S in Phase 1 runtime. |
-| TD-18 | Tranche layer | Between contradiction detection and narration: a **Tranche Filter** applies user circumstance rules from questionnaire data before the narrative engine receives the evidence packet. If-Then rules suppress false negatives based on context (e.g. `IF family_wealth_tier = HIGH AND claim_axis = financial_security THEN dampen negative financial indicators from secondary sciences`). Tranche rules are seeded per domain. This layer is schema-ready Phase 1; rules populated from questionnaire data Phase 2. |
-| TD-19 | Questionnaire-driven β + γ | Subscription member onboarding includes a structured questionnaire feeding β (micro) and γ (family) multipliers. Key data points: salary bracket, family wealth tier, siblings count, current city of residence, travel frequency, relationship status, parents' health status. Phase 2 engagement feature — questionnaire UI and population logic commissioned separately. Phase 1 builds the schema hooks only. |
+| TD-18 | Tranche layer | **Phase 1 — full rule engine.** Between contradiction detection and narration: a **Tranche Filter** applies user circumstance If-Then rules before the narrative engine receives the evidence packet. Rules suppress false negatives based on context (e.g. `IF family_wealth_tier = HIGH AND claim_axis = financial_security THEN dampen negative financial indicators from secondary sciences`). Seeded domain rules built in Phase 1. Questionnaire data populates when the questionnaire commission (TD-25) ships. |
+| TD-19 | Questionnaire-driven β + γ | Subscription member onboarding questionnaire feeds β (micro) and γ (family) multipliers. Key data points: salary bracket, family wealth tier, siblings count, current city, travel frequency, relationship status, parents' data. **Schema and Tranche hooks Phase 1 (Commission I). Questionnaire UI and flow is a separate Phase 1 commission (TD-25) — outside Commission I build hours.** |
 | TD-20 | tension_block JSON | The evidence packet sent to the narrative engine uses the JSON structure defined in Section 17.3. Accepted as specified in Codex's arbitration response. |
 | TD-21 | Representation mode thresholds | synthesis if C < 0.30 or same directional polarity and Δ ≥ 0.05. tension if C 0.30–0.75 and top effective_confidence ≥ 0.20. honest_uncertainty if C > 0.75 or all effective_confidences < 0.20. Max tension blocks per report: 20% of domain sections. Max honest_uncertainty: 5%. |
 | TD-22 | Kota Chakra / Parents data hook | Schema-ready Phase 1: optional `parents_data` field on user profile (father DOB/place, mother DOB/place, self current city). Feeds enhanced Vedic accuracy layer for Subscription members. Full Kota Chakra integration is a separate commission — Phase 1 builds the data schema only. |
+
+**Additional locks — Round 2**
+
+| # | Topic | Decision |
+|---|---|---|
+| TD-23 | Arc Angel — 12 Areas of Life | Left Nav Panel persistent user profile snapshot across all 12 life domains (12 Bhavas). Shows Auspicious / Neutral / Inauspicious period per domain + Confidence % score. Activates on Premium membership + birth data entry. Confidence improves as user provides more data (questionnaire, additional module runs). Every module report must correlate its output back to the relevant Arc Angel dimension(s). Master validation layer — the cross-module truth anchor. See Section 19. |
+| TD-24 | Case Study Validation Pipeline | 1,000+ published case studies of public figures (known birth data + known life outcomes) are available as Phase 1 validation data. ~50 cases from Numerology Phase 1 book; ~300 from the Longevity book; balance from additional sources. These are the Knowledge Engine's empirical acceptance test suite. Case studies must be structured, extracted, and run through the engine once built. Outcomes compared against known results. Threshold tuning (contradiction C-score, confidence tiers) validated against this data before Phase 2 launch. See Section 20. |
+| TD-25 | Questionnaire Commission | Questionnaire UI and flow (onboarding + continuous dialogue for Subscription members) is a **separate Phase 1 commission** — outside Commission I build hours. Commission I builds the data schema and β/γ hooks. The questionnaire commission delivers the UI, flow, and β/γ population logic. These two commissions run in parallel or sequentially in Phase 1. |
+
+**Phased implementations (spec Phase 1, runtime Phase 2)**
+
+| # | Topic | Decision |
+|---|---|---|
+| TDF-P1 | Full Arbitration Runtime | Full MCDA + supersession + confidence-delta runtime: fully **spec'd and schema'd in Phase 1**. Phase 2 implementation after case study validation confirms thresholds. Phase 1 runtime uses simplified "backbone leads; secondary acknowledges; surface tension if C ≥ 0.55" logic. |
+| TDF-P2 | MCDA Internal Scoring | Full MCDA spec locked Phase 1. Phase 2 implementation once case study data enables empirical calibration of criteria weights. Phase 1 uses weighted average as `effective_confidence` proxy. |
 
 **Deferred to Phase 2 / Phase 3**
 
@@ -62,8 +77,8 @@
 |---|---|---|
 | TDF-01 | source_passages collection | Migrate when editorial correction fan-out at 3,000 rules becomes operationally painful. Triggered by Phase 2 review. |
 | TDF-02 | Double-buffer index refresh | Implement Strategy B if import frequency grows or stale-read window causes user-visible issues. |
-| TDF-03 | Bayesian / Dempster-Shafer | Reconsider as primary arbitration mechanism at Phase 3 when 3–4 sciences are active and empirical confidence priors are available. |
-| TDF-04 | Questionnaire UI | Full questionnaire flow and real-time β/γ population — separate commission, Phase 2. |
+| TDF-03 | Bayesian / Dempster-Shafer | Previously estimated Phase 3. **Re-evaluate at Phase 2** — 1,000+ case studies (TD-24) may provide the empirical priors needed to move this forward. |
+| TDF-04 | Kota Chakra full integration | Parents birth data schema ready Phase 1 (TD-22). Full Kota Chakra calculation engine is a separate Phase 2 commission. |
 
 ---
 
@@ -1050,7 +1065,248 @@ Planetary: Jupiter in 9H (spiritually auspicious)
 
 ---
 
+---
+
+## 19. Arc Angel — 12 Areas of Life User Profile [LOCKED — TD-23]
+
+### Concept
+
+The Arc Angel panel is the platform's **persistent master validation layer** — a left nav panel snapshot that shows the user's current standing across all 12 life domains. It is the first thing a Premium member sees after entering their birth data. Every module report on the platform must correlate its output back to the relevant Arc Angel dimension(s).
+
+The name reflects its role: the Arc Angel is the user's guardian intelligence — an ever-sharpening profile that knows more about their life pattern the more they engage.
+
+### The 12 Life Domains
+
+| # | Domain | Vedic House | Core themes |
+|---|---|---|---|
+| 1 | Self & Vitality | 1st Bhava | Physical constitution, personality, health |
+| 2 | Wealth & Family | 2nd Bhava | Income, family of origin, speech, accumulated assets |
+| 3 | Courage & Communication | 3rd Bhava | Siblings, initiative, short travel, media |
+| 4 | Home & Happiness | 4th Bhava | Property, mother, emotional security, vehicles |
+| 5 | Intellect & Progeny | 5th Bhava | Children, creativity, education, speculation |
+| 6 | Health & Challenges | 6th Bhava | Enemies, debt, disease, service, litigation |
+| 7 | Partnerships | 7th Bhava | Marriage, business partners, contracts, public |
+| 8 | Transformation | 8th Bhava | Longevity, inheritance, hidden matters, change |
+| 9 | Luck & Dharma | 9th Bhava | Father, fortune, long travel, higher learning, spirituality |
+| 10 | Career & Status | 10th Bhava | Profession, fame, authority, karma |
+| 11 | Gains & Aspirations | 11th Bhava | Income from profession, friends, fulfilled desires |
+| 12 | Liberation & Losses | 12th Bhava | Expenses, foreign lands, spirituality, moksha |
+
+### Confidence % Scoring Model
+
+Each domain has a Confidence % that reflects how much data the engine has to make an accurate assessment.
+
+| Data input received | Confidence boost |
+|---|---|
+| Birth date + time + place only | Baseline ~40–50% |
+| + Questionnaire complete (salary, family, residence, etc.) | +15–20% |
+| + Additional module run (Numerology Report) | +5–8% per relevant domain |
+| + Parents birth data provided | +8–12% |
+| + Case study match found (similar chart on record) | +5% |
+| + Subscription member (continuous dialogue) | Gradual improvement over sessions |
+
+**Maximum Phase 1 confidence:** ~85% (full questionnaire + 2–3 module runs). 100% is never shown — maintains epistemic honesty that all prediction carries uncertainty.
+
+### Per-Domain Output Structure
+
+```json
+{
+  "domain_id": "career_status",
+  "domain_label": "Career & Status",
+  "bhava": 10,
+  "period_quality": "auspicious",
+  "period_indicator": "Jupiter dasha active — peak career period",
+  "confidence_pct": 72,
+  "auspicious_until": "2027-08",
+  "correlated_modules": ["brihat_kundali", "numerology"],
+  "last_updated": "2026-04-10T00:00:00Z"
+}
+```
+
+### MongoDB Collection: `user_arc_angel_profile`
+
+```json
+{
+  "user_id": "ObjectId",
+  "computed_at": "2026-04-10T00:00:00Z",
+  "overall_confidence_pct": 58,
+  "data_completeness": {
+    "birth_data": true,
+    "questionnaire": false,
+    "modules_run": ["brihat_kundali"],
+    "parents_data": false
+  },
+  "domains": [
+    {
+      "domain_id": "self_vitality",
+      "period_quality": "neutral",
+      "confidence_pct": 55,
+      "period_indicator": "Saturn transit 1H — discipline period"
+    }
+    // ... 11 more domains
+  ]
+}
+```
+
+### UI Behaviour
+
+- **Left nav panel** — persistent across all pages for Premium members
+- **On first load:** Shows 12 domains with confidence bars; domains with < 50% confidence show a "Provide more info" prompt
+- **On module run:** Relevant domain confidence updates immediately; a subtle "Arc Angel updated" notification appears
+- **Tap/click a domain:** Opens a mini-report for that domain (sourced from matched rules, not a full report)
+- **Progress indicator:** Overall profile completeness % shown at top of panel
+
+### Cross-Module Correlation Pattern
+
+Every module report includes a correlation footer:
+
+> *"This Career Report reinforces your Arc Angel Career & Status score of 72% (Auspicious). Jupiter's influence identified here aligns with the peak career window shown in your profile."*
+
+---
+
+## 20. Case Study Validation Pipeline [LOCKED — TD-24]
+
+### Purpose
+
+1,000+ published case studies of public figures (known birth data + documented life outcomes) serve as the Knowledge Engine's **empirical acceptance test suite and calibration dataset**.
+
+This is not just validation data — it is what allows the engine to move from hand-authored confidence thresholds to empirically validated ones, and it is what may accelerate Bayesian priors from Phase 3 to Phase 2 (see TDF-03).
+
+### Available Case Study Sources (Phase 1)
+
+| Source | Volume | Domain focus |
+|---|---|---|
+| Numerology Phase 1 book (Your Destiny Is In Your Name & DOB) | ~50 case studies | Numerology — name/DOB outcomes |
+| Longevity and Astro System (Tier 1 book) | ~30+ case studies | Longevity, health timing |
+| Vedic Numerology — Ank Jyotish | ~50 case studies | Numerology cross-validation |
+| Additional published sources | 800–900 | Multi-domain — public figures (deceased and living) |
+| **Total Phase 1 target** | **~1,000+** | Multi-science, multi-domain |
+
+### Case Study Document Structure
+
+Each case study, once extracted, must be structured as:
+
+```json
+{
+  "case_id": "CS-001",
+  "subject": "Public figure name or anonymised ID",
+  "birth_data": {
+    "date": "1942-07-18",
+    "time": "14:30",
+    "place": "Johannesburg, South Africa",
+    "latitude": -26.2041,
+    "longitude": 28.0473,
+    "timezone": "Africa/Johannesburg"
+  },
+  "known_outcomes": [
+    {
+      "life_domain": "career_status",
+      "claim_axis": "career_peak",
+      "outcome": "positive",
+      "timing": "1964–1990",
+      "notes": "Led major political movement, became head of state 1994"
+    }
+  ],
+  "source_book": "additional_sources",
+  "data_quality": "high",
+  "added_phase": 1
+}
+```
+
+### How Case Studies Feed the Engine
+
+**Phase 1 — Build:**
+- Extract and structure 50–100 high-quality cases from Phase 1 books
+- Run each case through `scan_chart()` once the engine is live
+- Compare predicted period quality (auspicious/inauspicious) against known outcomes
+
+**Phase 1.2 — Calibration:**
+- Measure prediction accuracy across domains
+- Identify which contradiction thresholds (C ≥ 0.55, effective_confidence ≥ 0.18) hold empirically
+- Adjust if needed before Phase 2 launch
+
+**Phase 2 — Full Validation:**
+- Expand to 1,000+ cases
+- Bayesian likelihood ratio estimation per domain (upgrades TDF-03 to Phase 2)
+- MCDA criteria weight calibration (upgrades TDF-P2 to Phase 2)
+
+### MongoDB Collection: `case_studies`
+
+```json
+{
+  "_id": "ObjectId",
+  "case_id": "CS-001",
+  "subject": "...",
+  "birth_data": { ... },
+  "known_outcomes": [ ... ],
+  "engine_predictions": [ ],
+  "accuracy_score": null,
+  "validated": false,
+  "source_book": "longevity_astro_system",
+  "data_quality": "high",
+  "added_phase": 1
+}
+```
+
+### Library Console Integration
+
+A **Case Studies tab** is added to the Library Console (Tab 6 — Phase 1.2):
+- Import structured case study JSON
+- Run batch validation against the live engine
+- View accuracy scores by domain and by science
+- Flag cases where engine prediction diverged from known outcome for manual review
+
+---
+
+## 21. CPath-1 — Build Priority Sequence [LOCKED]
+
+The contract has all architecture correct. This section specifies **build order** to ensure the core product ships before the editorial tooling.
+
+### CPath-1 (Hours 1–80) — Core Engine: Non-Negotiable
+
+These must be complete and tested before anything else proceeds:
+
+| # | Deliverable | Why it is on the critical path |
+|---|---|---|
+| 1 | MongoDB schemas — all collections, all TD-15 fields, all indexes | Nothing works without this |
+| 2 | `extract_book.py` + AI Paraphrase pipeline | Seed data production — blocks all rule library work |
+| 3 | In-memory inverted index + `scan_chart()` | Core rule evaluation — blocks narrative layer |
+| 4 | `generate_narrative()` + Claude API Narrative Planner | The product output — blocks report API |
+| 5 | Library Console: Rules Browser + Import endpoint + Approval workflow | Required to load seed data into production |
+| 6 | One complete report API route end-to-end (Brihat Kundali first) | Proves the stack works before adding complexity |
+| 7 | Simplified Phase 1 arbitration runtime (backbone leads; secondary acknowledges) | Required for Phase 1 narrative coherence |
+| 8 | Tranche Filter rule engine with seeded domain rules | Required for Phase 1 prediction accuracy |
+
+### Phase 1.2 (Hours 80–125) — Builds on Running System
+
+| # | Deliverable | Dependency |
+|---|---|---|
+| 9 | Coverage Dashboard heatmap | Needs import pipeline from CPath-1 |
+| 10 | Arc Angel profile computation + `user_arc_angel_profile` collection | Needs `scan_chart()` from CPath-1 |
+| 11 | Arc Angel left nav panel UI | Needs Arc Angel backend |
+| 12 | Remaining report API routes (Numerology, Longevity, etc.) | Needs narrative layer from CPath-1 |
+| 13 | Case Study extraction + batch validation (50–100 Phase 1 cases) | Needs full engine from CPath-1 |
+| 14 | `user_context_profile` schema + β/γ hook integration | Needs Tranche Filter from CPath-1 |
+
+### Phase 1.3 (Hours 125–150) — If Budget Holds
+
+| # | Deliverable | Note |
+|---|---|---|
+| 15 | Test Console + Voice Profiles editor (Library Console tabs 4–5) | Editorial tooling — valuable but not blocking |
+| 16 | `science_registry` editor in Library Console | Operational refinement |
+| 17 | Threshold recalibration using case study results | Empirical improvement pass |
+
+### Separate Phase 1 Commissions (Not in Commission I Hours)
+
+| Commission | Scope | Dependency on Commission I |
+|---|---|---|
+| Commission I-Q (Questionnaire) | Onboarding questionnaire UI + flow + β/γ population | Needs `user_context_profile` schema from Commission I |
+| Commission I-K (Kota Chakra) | Parents birth data calculation + enhanced accuracy layer | Needs vedic_calculator.py extension |
+| Commission J (World Context Engine) | α multiplier population via global calendars | Needs context hooks from Commission I |
+
+---
+
 > Stack: FastAPI (Render, Docker python:3.12.9-slim) + React 18 (Vercel) + MongoDB (Motor async) + pyswisseph 2.10.x + Claude API (`claude-sonnet-4-6`)
 > Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
 > Main branch: `main` (deploy-on-push)
-> Effort estimate: 125–150h (lean Phase 1 as defined here)
+> Effort estimate: 125–150h Commission I core + separate commissions I-Q, I-K, J
