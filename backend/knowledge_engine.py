@@ -680,6 +680,7 @@ def _coerce_narratives(payload: dict[str, Any], matched_domains: list[str]) -> l
         item.setdefault("lucky_elements", {})
         item.setdefault("timing_window", "Timing window not specified.")
         item.setdefault("confidence_tier", "MEDIUM")
+        item.setdefault("tranche_adjusted", False)
         narratives.append(KnowledgeNarrativeDomain(**item))
     if not narratives and matched_domains:
         raise ValueError("Claude response did not contain valid narrative items")
@@ -830,6 +831,11 @@ class KnowledgeEngine:
             all_tension_blocks.append(block if isinstance(block, TensionBlock) else TensionBlock(**block))
 
         matched_rules = apply_tranche_filter(matched_rules, user_context or {})
+        tranche_adjusted_domains: set[str] = set()
+        for _rule in matched_rules:
+            if _rule.get("_tranche_adjusted"):
+                for _cat in (_rule.get("categories") or []):
+                    tranche_adjusted_domains.add(_category_to_domain(_cat))
         matched_domains, planner_domains = _build_domain_plan(
             matched_rules=matched_rules,
             chart=chart,
@@ -917,6 +923,14 @@ class KnowledgeEngine:
                 model=selected_model,
                 error=f"Narrative payload validation failed: {exc}",
             )
+
+        if tranche_adjusted_domains:
+            narratives = [
+                narrative.model_copy(update={"tranche_adjusted": True})
+                if narrative.domain in tranche_adjusted_domains
+                else narrative
+                for narrative in narratives
+            ]
 
         return KnowledgeNarrativeResponse(
             rule_count=len(matched_rules),
