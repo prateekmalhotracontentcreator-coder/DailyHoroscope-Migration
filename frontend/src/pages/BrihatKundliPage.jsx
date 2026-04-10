@@ -414,6 +414,53 @@ const ReportDisplay = ({ report, onShare, onDownload }) => {
           )}
         </Section>
       )}
+
+      {/* Knowledge Engine - Insights from Classical Texts */}
+      {report.knowledge_narratives?.length > 0 && (
+        <Section
+          icon={BookOpen}
+          title="Insights from Classical Texts"
+          color="bg-gold/10 text-gold"
+        >
+          <div className="space-y-6">
+            {report.knowledge_narratives.map((domain, i) => (
+              <div key={i} className="space-y-2 pb-5 border-b border-border last:border-0 last:pb-0">
+                <div className="flex items-start justify-between gap-3 flex-wrap">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gold">
+                      {domain.domain}
+                    </p>
+                    <p className="font-playfair font-semibold text-base mt-0.5">
+                      {domain.headline}
+                    </p>
+                  </div>
+                  {domain.confidence_tier && (
+                    <Tag color="bg-gold/10 text-gold">{domain.confidence_tier}</Tag>
+                  )}
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {Array.isArray(domain.body) ? domain.body.join(' ') : domain.body}
+                </p>
+                {domain.timing_window && (
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Active period: {domain.timing_window}
+                  </p>
+                )}
+                {domain.lucky_elements &&
+                  Object.keys(domain.lucky_elements).length > 0 && (
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {Object.entries(domain.lucky_elements).map(([k, v]) => (
+                        <Tag key={k} color="bg-gold/10 text-gold">
+                          {k}: {Array.isArray(v) ? v.join(', ') : v}
+                        </Tag>
+                      ))}
+                    </div>
+                  )}
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
     </div>
   );
 };

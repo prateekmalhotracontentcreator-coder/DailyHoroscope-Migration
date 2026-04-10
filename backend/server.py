@@ -284,6 +284,7 @@ class BrihatKundliReport(BaseModel):
     mangal_dosha: dict = {}; kalsarp_dosha: dict = {}; other_doshas: list = []; benefic_yogas: list = []; malefic_yogas: list = []
     gemstone_remedies: list = []; mantra_remedies: list = []; lifestyle_remedies: list = []; donation_remedies: list = []
     lucky_numbers: list = []; lucky_colors: list = []; lucky_days: list = []; lucky_direction: str = ""; numerology: dict = {}; chart_svg: str = ""
+    knowledge_narratives: list = Field(default_factory=list)
     generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 class KundaliMilanReport(BaseModel):
@@ -657,6 +658,42 @@ async def get_birth_chart(profile_id: str):
     if isinstance(report['generated_at'], str): report['generated_at'] = datetime.fromisoformat(report['generated_at'])
     return BirthChartReport(**report)
 
+async def _brihat_ke_pipeline(chart_data: dict, engine) -> list:
+    """
+    Run scan_chart() + generate_narrative() for the Brihat Kundali report.
+    Returns a list of plain dicts (one per Arc Angel domain matched).
+    Returns [] on any failure - never raises.
+    """
+    try:
+        raw_planets = chart_data.get("planets") or {}
+        ke_planets = {
+            pname: {**pdata, "sign": pdata.get("sign") or pdata.get("sign_vedic")}
+            for pname, pdata in raw_planets.items()
+        }
+        ke_chart = {**chart_data, "planets": ke_planets}
+
+        matched_rules = await engine.scan_chart(
+            ke_chart,
+            categories=["career", "wealth", "relationships", "health"],
+            max_rules=30,
+        )
+        if not matched_rules:
+            return []
+
+        narrative_response = await engine.generate_narrative(
+            matched_rules=matched_rules,
+            chart=ke_chart,
+            context={"backbone_science_id": "vedic_astrology"},
+        )
+        narratives = narrative_response.narratives or []
+        return [
+            narrative.model_dump() if hasattr(narrative, "model_dump") else dict(narrative)
+            for narrative in narratives
+        ]
+    except Exception as ke_err:
+        logging.warning("Knowledge Engine pipeline failed for Brihat Kundali: %s", ke_err)
+        return []
+
 async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
     current_year = datetime.now().year
     birth_year = int(request.date_of_birth.split('-')[0])
@@ -697,7 +734,7 @@ async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
         raise HTTPException(status_code=500, detail="Failed to generate Brihat Kundli: " + str(e))
 
 @api_router.post("/brihat-kundli/generate")
-async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str = ""):
+async def generate_brihat_kundli(request: BrihatKundliRequest, http_request: Request, user_email: str = ""):
     try:
         chart_data = None
         try: chart_data = calculate_vedic_chart(date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth, place_of_birth=request.place_of_birth)
@@ -706,7 +743,15 @@ async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str =
         if chart_data and chart_data.get('houses'):
             try: chart_svg = generate_north_indian_chart_svg(chart_data['houses'], chart_data['lagna']['sign'])
             except Exception as se: logging.warning("SVG chart generation failed: %s", se)
-        report_data = await generate_brihat_kundli_with_llm(request)
+        engine = getattr(http_request.app.state, "knowledge_engine", None)
+        if engine is not None and chart_data is not None:
+            report_data, knowledge_narratives = await asyncio.gather(
+                generate_brihat_kundli_with_llm(request),
+                _brihat_ke_pipeline(chart_data, engine),
+            )
+        else:
+            report_data = await generate_brihat_kundli_with_llm(request)
+            knowledge_narratives = []
         remedies = report_data.get("remedies", {}); yogas = report_data.get("yogas", []); dasha = report_data.get("dasha_analysis", {})
         career = report_data.get("career_prediction", {})
         if career and not career.get("best_career_fields") and career.get("best_fields"): career["best_career_fields"] = career.pop("best_fields")
@@ -743,7 +788,7 @@ async def generate_brihat_kundli(request: BrihatKundliRequest, user_email: str =
         else:
             mangal = mangal_from_claude
             if isinstance(mangal, dict) and not mangal.get("has_dosha") and mangal.get("present"): mangal["has_dosha"] = mangal["present"]
-        report = BrihatKundliReport(user_email=user_email, full_name=request.full_name, date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth, place_of_birth=request.place_of_birth, gender=request.gender, ascendant=report_data.get("ascendant", {}), moon_sign=report_data.get("moon_sign", {}), sun_sign=sun_sign, planetary_positions=report_data.get("planetary_positions", []), career_prediction=career, love_prediction=(lambda lp: {**lp, "ideal_partner_traits": lp.get("ideal_partner_traits") or lp.get("ideal_partner") or [], "compatibility_signs": lp.get("compatibility_signs") or lp.get("compatible_signs") or [], "challenging_signs": lp.get("challenging_signs") or []})(report_data.get("love_prediction", {})), health_prediction=health, wealth_prediction=(lambda wp: {**wp, "primary_income_sources": wp.get("primary_income_sources") or wp.get("income_sources") or wp.get("wealth_sources") or [], "good_investments": wp.get("good_investments") or wp.get("investments") or wp.get("peak_periods") or ["Real estate", "Gold", "Equity"], "avoid": wp.get("avoid") or wp.get("cautions") or ["High-risk speculation"]})(report_data.get("wealth_prediction", {})), family_prediction=report_data.get("family_prediction", {}), education_prediction=report_data.get("education_prediction", {}), current_dasha=current_dasha, dasha_timeline=dasha_timeline, mangal_dosha=mangal, kalsarp_dosha=report_data.get("kalsarp_dosha", {}), other_doshas=report_data.get("other_doshas", []), benefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "benefic"] or report_data.get("benefic_yogas", []), malefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "malefic"] or report_data.get("malefic_yogas", []), gemstone_remedies=remedies.get("gemstones", report_data.get("gemstone_remedies", [])), mantra_remedies=remedies.get("mantras", report_data.get("mantra_remedies", [])), lifestyle_remedies=remedies.get("general", report_data.get("lifestyle_remedies", [])), donation_remedies=report_data.get("donation_remedies", []), lucky_numbers=report_data.get("lucky_numbers", []), lucky_colors=report_data.get("lucky_colors", []), lucky_days=report_data.get("lucky_days", []), lucky_direction=report_data.get("lucky_direction", ""), numerology=report_data.get("numerology", {}), chart_svg=chart_svg)
+        report = BrihatKundliReport(user_email=user_email, full_name=request.full_name, date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth, place_of_birth=request.place_of_birth, gender=request.gender, ascendant=report_data.get("ascendant", {}), moon_sign=report_data.get("moon_sign", {}), sun_sign=sun_sign, planetary_positions=report_data.get("planetary_positions", []), career_prediction=career, love_prediction=(lambda lp: {**lp, "ideal_partner_traits": lp.get("ideal_partner_traits") or lp.get("ideal_partner") or [], "compatibility_signs": lp.get("compatibility_signs") or lp.get("compatible_signs") or [], "challenging_signs": lp.get("challenging_signs") or []})(report_data.get("love_prediction", {})), health_prediction=health, wealth_prediction=(lambda wp: {**wp, "primary_income_sources": wp.get("primary_income_sources") or wp.get("income_sources") or wp.get("wealth_sources") or [], "good_investments": wp.get("good_investments") or wp.get("investments") or wp.get("peak_periods") or ["Real estate", "Gold", "Equity"], "avoid": wp.get("avoid") or wp.get("cautions") or ["High-risk speculation"]})(report_data.get("wealth_prediction", {})), family_prediction=report_data.get("family_prediction", {}), education_prediction=report_data.get("education_prediction", {}), current_dasha=current_dasha, dasha_timeline=dasha_timeline, mangal_dosha=mangal, kalsarp_dosha=report_data.get("kalsarp_dosha", {}), other_doshas=report_data.get("other_doshas", []), benefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "benefic"] or report_data.get("benefic_yogas", []), malefic_yogas=[y for y in yogas if isinstance(y, dict) and y.get("type") == "malefic"] or report_data.get("malefic_yogas", []), gemstone_remedies=remedies.get("gemstones", report_data.get("gemstone_remedies", [])), mantra_remedies=remedies.get("mantras", report_data.get("mantra_remedies", [])), lifestyle_remedies=remedies.get("general", report_data.get("lifestyle_remedies", [])), donation_remedies=report_data.get("donation_remedies", []), lucky_numbers=report_data.get("lucky_numbers", []), lucky_colors=report_data.get("lucky_colors", []), lucky_days=report_data.get("lucky_days", []), lucky_direction=report_data.get("lucky_direction", ""), numerology=report_data.get("numerology", {}), chart_svg=chart_svg, knowledge_narratives=knowledge_narratives)
         import json
         doc = json.loads(report.model_dump_json())
         await db.brihat_kundli_reports.insert_one({**doc})
