@@ -625,9 +625,44 @@ def paraphrase_with_claude(source_text: str, voice: str, book: str, condition: d
     return extract_json_object("\n".join(text_parts))
 
 
+def paraphrase_with_openai(
+    source_text: str,
+    voice: str,
+    book: str,
+    condition: dict[str, Any] | None,
+    model: str = "gpt-4o-mini",
+) -> dict[str, Any] | None:
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        return None
+    try:
+        import openai  # type: ignore
+    except Exception:
+        return None
+
+    client = openai.OpenAI(api_key=api_key)
+    prompt = build_paraphrase_prompt(source_text, voice, book, condition)
+    try:
+        response = client.chat.completions.create(
+            model=model,
+            max_tokens=900,
+            temperature=0.35,
+            messages=[{"role": "user", "content": prompt}],
+        )
+    except Exception:
+        return None
+
+    content = response.choices[0].message.content if response.choices else ""
+    if not content:
+        return None
+    return extract_json_object(content)
+
+
 def paraphrase_block(block: CandidateBlock, args: ExtractionArgs, condition: dict[str, Any] | None, categories: list[str]) -> tuple[str, str, str]:
     response: dict[str, Any] | None = None
-    if args.paraphrase_mode in {"claude", "hybrid"}:
+    if args.paraphrase_mode == "openai":
+        response = paraphrase_with_openai(block.text, args.voice, args.book, condition)
+    elif args.paraphrase_mode in {"claude", "hybrid"}:
         response = paraphrase_with_claude(block.text, args.voice, args.book, condition, args.model)
     if response and isinstance(response.get("text"), str) and response["text"].strip():
         confidence = str(response.get("confidence") or "MEDIUM").upper()
@@ -635,8 +670,11 @@ def paraphrase_block(block: CandidateBlock, args: ExtractionArgs, condition: dic
             confidence = "MEDIUM"
         notes = str(response.get("paraphrase_notes") or "").strip()
         return response["text"].strip(), confidence, notes
-    if args.paraphrase_mode == "claude":
-        raise RuntimeError("Claude paraphrase was requested, but no valid model response was returned.")
+    if args.paraphrase_mode in {"claude", "openai"}:
+        raise RuntimeError(
+            f"{args.paraphrase_mode.title()} paraphrase was requested, "
+            "but no valid model response was returned."
+        )
     return build_fallback_paraphrase(block.text, condition, args.voice, categories)
 
 
@@ -830,7 +868,7 @@ def parse_args(argv: list[str]) -> ExtractionArgs:
     parser.add_argument("--chapter", default="General")
     parser.add_argument("--max-rules", type=int, default=100)
     parser.add_argument("--min-words", type=int, default=45)
-    parser.add_argument("--paraphrase-mode", choices=("hybrid", "claude", "local"), default="hybrid")
+    parser.add_argument("--paraphrase-mode", choices=("openai", "hybrid", "claude", "local"), default="openai")
     parser.add_argument("--model", default=os.getenv("EXTRACT_BOOK_CLAUDE_MODEL", "claude-sonnet-4-6"))
     ns = parser.parse_args(argv)
     output_path = Path(ns.output_path).expanduser().resolve()

@@ -1,0 +1,20 @@
+{
+  "_comment": "Copy this file, rename it to <book_slug>.json, and fill in all fields.",
+  "book": "Brihat Parashara Hora Shastra",
+  "science_id": "vedic_astrology",
+  "voice": "classical",
+  "categories": "career,wealth,relationships,health,spirituality,general",
+  "max_rules_per_chapter": 100,
+  "min_words": 45,
+  "paraphrase_mode": "openai",
+  "chapters": [
+    {
+      "file": "Chapter_01_Planets.pdf",
+      "name": "Chapter 1 - Planets"
+    },
+    {
+      "file": "Chapter_02_Signs.pdf",
+      "name": "Chapter 2 - Signs"
+    }
+  ]
+}
