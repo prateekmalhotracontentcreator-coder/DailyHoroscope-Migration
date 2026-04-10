@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import asyncio
+import json
 import logging
+import os
 from collections import defaultdict
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
@@ -13,9 +15,14 @@ except Exception:  # pragma: no cover - local lightweight validation path
     AsyncIOMotorDatabase = Any  # type: ignore[misc, assignment]
 
 from knowledge_schema import (
+    COLLECTION_AUTHOR_VOICES,
     COLLECTION_INTERPRETATION_RULES,
+    COLLECTION_NARRATIVE_BRIDGES,
     InterpretationRuleDocument,
+    KnowledgeNarrativeDomain,
+    KnowledgeNarrativeResponse,
     KnowledgeRequestContext,
+    TensionBlock,
 )
 
 
@@ -38,6 +45,8 @@ MODIFIER_FACTORS = {
 }
 APPROVED_RULE_FILTER = {"active": True, "approval_status": "approved"}
 DEFAULT_BACKBONE = "vedic_astrology"
+DEFAULT_AUTHOR_VOICE = "classical"
+DEFAULT_NARRATIVE_MODEL = os.getenv("KNOWLEDGE_ENGINE_CLAUDE_MODEL", "claude-sonnet-4-5")
 PLANET_VARIANTS = {
     "Sun (Surya)": "Sun",
     "Moon (Chandra)": "Moon",
@@ -57,6 +66,30 @@ PLANET_VARIANTS = {
     "Ketu": "Ketu",
     "Lagna": "Lagna",
 }
+ARC_ANGEL_DOMAIN_MAP = {
+    "health": "Health & Fitness",
+    "career": "Career & Work",
+    "wealth": "Finances",
+    "education": "Intellectual Life & Learning",
+    "relationships": "Love Relationships",
+    "spirituality": "Spirituality",
+    "longevity": "Health & Fitness",
+    "general": "Emotional Life",
+}
+DOMAIN_PRIORITY = [
+    "Health & Fitness",
+    "Career & Work",
+    "Finances",
+    "Intellectual Life & Learning",
+    "Emotional Life",
+    "Spirituality",
+    "Love Relationships",
+    "Family Life",
+    "Social Life & Friendship",
+    "Adventure & Travel",
+    "Environment",
+    "Creativity & Hobbies",
+]
 
 
 def utc_now() -> datetime:
@@ -422,6 +455,230 @@ def _score_rule(rule: InterpretationRuleDocument, facts: ChartFacts, context: Kn
     return score, effective_confidence, applied_modifiers
 
 
+def _context_score(value: float | dict[str, Any] | Any) -> float:
+    if isinstance(value, (int, float)):
+        return float(value)
+    if isinstance(value, dict):
+        return float(value.get("score", 1.0))
+    score = getattr(value, "score", None)
+    if isinstance(score, (int, float)):
+        return float(score)
+    return 1.0
+
+
+def _confidence_band(value: float) -> str:
+    if value >= 1.0:
+        return "VERIFIED"
+    if value >= 0.80:
+        return "HIGH"
+    if value >= 0.60:
+        return "MEDIUM"
+    return "LOW"
+
+
+def _category_to_domain(category: str) -> str:
+    return ARC_ANGEL_DOMAIN_MAP.get(category, category.replace("_", " ").title())
+
+
+def _normalize_domain_name(value: str) -> str:
+    if value in DOMAIN_PRIORITY:
+        return value
+    for category, label in ARC_ANGEL_DOMAIN_MAP.items():
+        if value == category:
+            return label
+    return value
+
+
+def _extract_lucky_elements(rules: list[dict[str, Any]], chart: dict[str, Any]) -> dict[str, Any]:
+    planets = []
+    signs = []
+    for rule in rules[:5]:
+        condition = rule.get("condition") or {}
+        planet = normalize_planet_name(condition.get("planet") if isinstance(condition, dict) else None)
+        if planet:
+            planets.append(planet)
+        sign = normalize_sign_name(condition.get("sign") if isinstance(condition, dict) else None)
+        if sign:
+            signs.append(sign)
+    current_dasha = ((chart.get("overview") or {}).get("current_maha_dasha")) or ((chart.get("current_dasha") or {}).get("planet"))
+    return {
+        "dominant_planets": sorted({planet for planet in planets})[:3],
+        "supporting_signs": sorted({sign for sign in signs})[:3],
+        "current_dasha": normalize_planet_name(current_dasha),
+    }
+
+
+def _extract_timing_window(chart: dict[str, Any]) -> str:
+    overview = chart.get("overview") or {}
+    maha = overview.get("current_maha_dasha")
+    antar = overview.get("current_antar_dasha")
+    if maha and antar:
+        return f"Current Maha/Antar window: {maha} / {antar}"
+    current = chart.get("current_dasha") or {}
+    if current.get("planet"):
+        return f"Current dasha emphasis: {current['planet']}"
+    return "Timing remains open and should be refined with dasha and transit review."
+
+
+def _select_bridge_phrases(bridges: list[dict[str, Any]], tension_blocks: list[TensionBlock]) -> dict[str, list[str]]:
+    selected: dict[str, list[str]] = defaultdict(list)
+    for document in bridges:
+        bridge_type = str(document.get("bridge_type") or "")
+        phrases = document.get("phrases") or []
+        if phrases:
+            selected[bridge_type].extend(phrases[:2])
+    if tension_blocks and "contrast" not in selected:
+        selected["contrast"] = [
+            "Your chart carries one dominant rhythm, while another layer introduces a meaningful counter-current.",
+        ]
+    return dict(selected)
+
+
+def _build_domain_plan(
+    matched_rules: list[dict[str, Any]],
+    chart: dict[str, Any],
+    context: KnowledgeRequestContext,
+    tension_blocks: list[TensionBlock],
+    user_context: dict[str, Any],
+) -> tuple[list[str], list[dict[str, Any]]]:
+    grouped: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for rule in matched_rules:
+        categories = rule.get("categories") or []
+        mapped = {_category_to_domain(category) for category in categories} or {"Emotional Life"}
+        for domain in mapped:
+            grouped[domain].append(rule)
+
+    ordered_domains = [domain for domain in DOMAIN_PRIORITY if domain in grouped] + [domain for domain in grouped if domain not in DOMAIN_PRIORITY]
+    tension_by_domain: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for block in tension_blocks:
+        tension_by_domain[_normalize_domain_name(block.life_domain)].append(block.model_dump(mode="json", by_alias=True, exclude_none=True))
+
+    planner_domains: list[dict[str, Any]] = []
+    for domain in ordered_domains:
+        domain_rules = sorted(grouped[domain], key=lambda item: item.get("score", 0), reverse=True)
+        backbone_rules = [rule for rule in domain_rules if rule.get("science_id") == context.backbone_science_id]
+        support_rules = [rule for rule in domain_rules if rule.get("science_id") != context.backbone_science_id]
+        top_rules = domain_rules[:6]
+        average_confidence = sum(float(rule.get("effective_confidence", 0.0)) for rule in top_rules) / max(1, len(top_rules))
+        planner_domains.append(
+            {
+                "domain": domain,
+                "confidence_tier_hint": _confidence_band(average_confidence),
+                "timing_window_hint": _extract_timing_window(chart),
+                "lucky_elements_hint": _extract_lucky_elements(top_rules, chart),
+                "backbone_rules": [_compact_rule_payload(rule) for rule in backbone_rules[:4]],
+                "support_rules": [_compact_rule_payload(rule) for rule in support_rules[:3]],
+                "tension_blocks": tension_by_domain.get(domain, []),
+                "user_context": user_context,
+            }
+        )
+    return ordered_domains, planner_domains
+
+
+def _compact_rule_payload(rule: dict[str, Any]) -> dict[str, Any]:
+    passages = (((rule.get("interpretation") or {}).get("full_text_passages")) or [])
+    return {
+        "rule_id": rule.get("rule_id"),
+        "science_id": rule.get("science_id"),
+        "summary": (rule.get("interpretation") or {}).get("summary"),
+        "detailed": (rule.get("interpretation") or {}).get("detailed"),
+        "score": rule.get("score"),
+        "effective_confidence": rule.get("effective_confidence"),
+        "claim_axis": rule.get("claim_axis"),
+        "claim_scope": rule.get("claim_scope"),
+        "claim_polarity": rule.get("claim_polarity"),
+        "timing_bias": rule.get("timing_bias"),
+        "strength_band": rule.get("strength_band"),
+        "categories": rule.get("categories"),
+        "passages": passages[:2],
+    }
+
+
+def _extract_text_from_claude_response(response: Any) -> str | None:
+    content = getattr(response, "content", None)
+    if not content:
+        return None
+    text_parts: list[str] = []
+    for item in content:
+        text_value = getattr(item, "text", None)
+        if text_value:
+            text_parts.append(text_value)
+    return "\n".join(text_parts).strip() if text_parts else None
+
+
+def _parse_json_payload(raw_text: str) -> dict[str, Any] | None:
+    cleaned = raw_text.strip()
+    if cleaned.startswith("```"):
+        cleaned = cleaned.split("\n", 1)[-1]
+        cleaned = cleaned.rsplit("```", 1)[0].strip()
+    try:
+        return json.loads(cleaned)
+    except json.JSONDecodeError:
+        return None
+
+
+def _build_narrative_system_prompt(voice_instruction: str, bridge_phrases: dict[str, list[str]]) -> str:
+    bridge_json = json.dumps(bridge_phrases, ensure_ascii=True)
+    return f"""
+You are the Narrative Planner for EverydayHoroscope's Knowledge Engine.
+
+Follow these rules exactly:
+- Write only from the supplied rule evidence. Do not introduce unsupported astrological claims.
+- Use original prose only. Do not reproduce book-like or copyright-adjacent phrasing.
+- Technical astrological vocabulary is allowed.
+- The default tonal blend is classical plus modern analytical.
+- Keep each body entry as a full prose paragraph, not a bullet fragment.
+- Backbone science rules lead each domain section. Supporting sciences may refine or qualify them.
+- If tension blocks are present, acknowledge them honestly without making the section collapse into uncertainty.
+- Return valid JSON only in the form: {{"narratives": [{{"domain": str, "headline": str, "body": [str, ...], "lucky_elements": dict, "timing_window": str, "confidence_tier": "LOW|MEDIUM|HIGH|VERIFIED"}}]}}
+
+Author voice instruction:
+{voice_instruction}
+
+Available bridge phrases:
+{bridge_json}
+""".strip()
+
+
+def _build_narrative_user_prompt(
+    planner_domains: list[dict[str, Any]],
+    matched_rules: list[dict[str, Any]],
+    context: KnowledgeRequestContext,
+    author_voice_id: str,
+) -> str:
+    payload = {
+        "backbone_science_id": context.backbone_science_id,
+        "alpha": _context_score(context.alpha),
+        "beta": _context_score(context.beta),
+        "gamma": _context_score(context.gamma),
+        "author_voice_id": author_voice_id,
+        "rule_count": len(matched_rules),
+        "domains": planner_domains,
+    }
+    return json.dumps(payload, ensure_ascii=True)
+
+
+def _coerce_narratives(payload: dict[str, Any], matched_domains: list[str]) -> list[KnowledgeNarrativeDomain]:
+    raw_narratives = payload.get("narratives")
+    if not isinstance(raw_narratives, list):
+        raise ValueError("Claude response missing 'narratives' list")
+    narratives: list[KnowledgeNarrativeDomain] = []
+    for item in raw_narratives:
+        if not isinstance(item, dict):
+            continue
+        if "domain" not in item:
+            continue
+        item.setdefault("headline", item["domain"])
+        item.setdefault("body", [])
+        item.setdefault("lucky_elements", {})
+        item.setdefault("timing_window", "Timing window not specified.")
+        item.setdefault("confidence_tier", "MEDIUM")
+        narratives.append(KnowledgeNarrativeDomain(**item))
+    if not narratives and matched_domains:
+        raise ValueError("Claude response did not contain valid narrative items")
+    return narratives
+
+
 class KnowledgeIndexStore:
     def __init__(self, db: AsyncIOMotorDatabase):
         self.db = db
@@ -547,6 +804,146 @@ class KnowledgeEngine:
 
         matches.sort(key=lambda item: (item["score"], item.get("priority", 0), item.get("effective_confidence", 0)), reverse=True)
         return matches[: max_rules]
+
+    async def generate_narrative(
+        self,
+        matched_rules: list[dict[str, Any]],
+        chart: dict[str, Any],
+        context: dict[str, Any] | KnowledgeRequestContext | None = None,
+        user_context: dict[str, Any] | None = None,
+        author_voice_id: str | None = None,
+        tension_blocks: list[dict[str, Any] | TensionBlock] | None = None,
+        model: str | None = None,
+    ) -> KnowledgeNarrativeResponse:
+        request_context = context if isinstance(context, KnowledgeRequestContext) else KnowledgeRequestContext(**(context or {}))
+        all_tension_blocks: list[TensionBlock] = []
+        for block in request_context.tension_blocks:
+            all_tension_blocks.append(block if isinstance(block, TensionBlock) else TensionBlock(**block))
+        for block in tension_blocks or []:
+            all_tension_blocks.append(block if isinstance(block, TensionBlock) else TensionBlock(**block))
+
+        matched_domains, planner_domains = _build_domain_plan(
+            matched_rules=matched_rules,
+            chart=chart,
+            context=request_context,
+            tension_blocks=all_tension_blocks,
+            user_context=user_context or {},
+        )
+        if not matched_rules:
+            return KnowledgeNarrativeResponse(
+                rule_count=0,
+                matched_domains=matched_domains,
+                narratives=[],
+                author_voice_id=author_voice_id or DEFAULT_AUTHOR_VOICE,
+                model=model or DEFAULT_NARRATIVE_MODEL,
+                error=None,
+            )
+        selected_voice_id = author_voice_id or DEFAULT_AUTHOR_VOICE
+        voice_instruction = await self._load_author_voice_instruction(selected_voice_id)
+        bridge_phrases = await self._load_bridge_phrases(all_tension_blocks)
+        system_prompt = _build_narrative_system_prompt(voice_instruction, bridge_phrases)
+        user_prompt = _build_narrative_user_prompt(planner_domains, matched_rules, request_context, selected_voice_id)
+        selected_model = model or DEFAULT_NARRATIVE_MODEL
+
+        client = await self._anthropic_client()
+        if client is None:
+            return KnowledgeNarrativeResponse(
+                rule_count=len(matched_rules),
+                matched_domains=matched_domains,
+                narratives=[],
+                author_voice_id=selected_voice_id,
+                model=selected_model,
+                error="Claude API is unavailable. Check ANTHROPIC_API_KEY and anthropic dependency.",
+            )
+        try:
+            response = await client.messages.create(
+                model=selected_model,
+                max_tokens=2400,
+                temperature=0.35,
+                system=system_prompt,
+                messages=[{"role": "user", "content": [{"type": "text", "text": user_prompt}]}],
+            )
+        except Exception as exc:
+            logger.error("Knowledge narrative generation failed: %s", exc)
+            return KnowledgeNarrativeResponse(
+                rule_count=len(matched_rules),
+                matched_domains=matched_domains,
+                narratives=[],
+                author_voice_id=selected_voice_id,
+                model=selected_model,
+                error=f"Claude API call failed: {exc}",
+            )
+
+        response_text = _extract_text_from_claude_response(response)
+        if not response_text:
+            return KnowledgeNarrativeResponse(
+                rule_count=len(matched_rules),
+                matched_domains=matched_domains,
+                narratives=[],
+                author_voice_id=selected_voice_id,
+                model=selected_model,
+                error="Claude returned an empty response.",
+            )
+
+        payload = _parse_json_payload(response_text)
+        if payload is None:
+            logger.error("Knowledge narrative response was not valid JSON: %.200s", response_text)
+            return KnowledgeNarrativeResponse(
+                rule_count=len(matched_rules),
+                matched_domains=matched_domains,
+                narratives=[],
+                author_voice_id=selected_voice_id,
+                model=selected_model,
+                error="Claude returned invalid JSON.",
+            )
+
+        try:
+            narratives = _coerce_narratives(payload, matched_domains)
+        except Exception as exc:
+            logger.error("Knowledge narrative coercion failed: %s", exc)
+            return KnowledgeNarrativeResponse(
+                rule_count=len(matched_rules),
+                matched_domains=matched_domains,
+                narratives=[],
+                author_voice_id=selected_voice_id,
+                model=selected_model,
+                error=f"Narrative payload validation failed: {exc}",
+            )
+
+        return KnowledgeNarrativeResponse(
+            rule_count=len(matched_rules),
+            matched_domains=matched_domains,
+            narratives=narratives,
+            author_voice_id=selected_voice_id,
+            model=selected_model,
+            error=None,
+        )
+
+    async def _load_author_voice_instruction(self, voice_id: str) -> str:
+        collection = self.db[COLLECTION_AUTHOR_VOICES]
+        document = await collection.find_one({"voice_id": voice_id, "active": True}, {"_id": 0})
+        if document and document.get("llm_instruction"):
+            return str(document["llm_instruction"])
+        if voice_id != DEFAULT_AUTHOR_VOICE:
+            default_document = await collection.find_one({"voice_id": DEFAULT_AUTHOR_VOICE, "active": True}, {"_id": 0})
+            if default_document and default_document.get("llm_instruction"):
+                return str(default_document["llm_instruction"])
+        return "Write with a classical Vedic tone blended with modern analytical clarity."
+
+    async def _load_bridge_phrases(self, tension_blocks: list[TensionBlock] | None = None) -> dict[str, list[str]]:
+        collection = self.db[COLLECTION_NARRATIVE_BRIDGES]
+        documents = await collection.find({"active": True}, {"_id": 0}).to_list(length=50)
+        return _select_bridge_phrases(documents, tension_blocks or [])
+
+    async def _anthropic_client(self) -> Any | None:
+        try:
+            from anthropic import AsyncAnthropic  # type: ignore
+        except Exception:
+            return None
+        api_key = os.getenv("ANTHROPIC_API_KEY")
+        if not api_key:
+            return None
+        return AsyncAnthropic(api_key=api_key)
 
 
 _default_engine: KnowledgeEngine | None = None
