@@ -1,0 +1,21 @@
+{
+  "_comment": "Master list of all Phase 1 books. Run: python scripts/batch_ingest.py --master scripts/BOOKS_MASTER_CONFIG.json --mongo-url $MONGO_URL --db-name $DB_NAME",
+  "books": [
+    {
+      "config": "scripts/bphs.json",
+      "books_dir": "~/Books/Phase1/BPHS/"
+    },
+    {
+      "config": "scripts/lal_kitab.json",
+      "books_dir": "~/Books/Phase1/LalKitab/"
+    },
+    {
+      "config": "scripts/saravali.json",
+      "books_dir": "~/Books/Phase1/Saravali/"
+    },
+    {
+      "config": "scripts/jataka_parijata.json",
+      "books_dir": "~/Books/Phase1/JatakaParijata/"
+    }
+  ]
+}
