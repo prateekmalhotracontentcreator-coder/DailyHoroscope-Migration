@@ -1,5 +1,5 @@
 # Draft Contract — Commission I: Jyotish Knowledge Engine
-> Status: **DRAFT FOR CODEX INPUT — NOT A BUILD ORDER**
+> Status: **ARCHITECTURE LOCKED — READY FOR BUILD CONTRACT**
 > Client: EverydayHoroscope (SkyHound Studios)
 > Date: 10 April 2026
 > Companion Brief: `.claude/CODEX_COMMISSION_I_BRIEF.md` — read this first
@@ -8,17 +8,16 @@
 ---
 
 > **How to read this document:**
-> Sections marked `[PROPOSED]` are our current thinking — we are asking for your recommendation before we lock them in.
+> Sections marked `[LOCKED]` are Temple Team decisions — design to these exactly.
 > Sections marked `[CONFIRMED]` are already decided — please design around them.
-> Sections marked `[INPUT REQUESTED]` have specific questions we want answered.
-> Sections marked `[LOCKED — TEMPLE TEAM DECISION]` have been decided by the Temple Team after reviewing your input. Design to these exactly.
-> Please annotate your response with which section you are addressing.
+> Sections marked `[PROPOSED]` are still open — Codex may advise before build starts.
+> All major architecture decisions (TD-01 through TD-22) are now locked. This document is ready for final build contract issuance.
 
 ---
 
-## Temple Team Decision Log — 10 April 2026
+## Temple Team Decision Log
 
-The following decisions are locked following Codex's advisory response and Temple Team review.
+### Round 1 — 10 April 2026 (Initial Locks)
 
 | # | Topic | Decision |
 |---|---|---|
@@ -29,9 +28,42 @@ The following decisions are locked following Codex's advisory response and Templ
 | TD-05 | Excerpt policy (Policy Decision 1) | AI-generated equivalents only in MongoDB + Claude prompts. No verbatim text from any copyrighted source. Classical Sanskrit texts (BPHS etc.) — technical vocabulary and astrological logic may be expressed in original prose, not copied. See Section 16. |
 | TD-06 | Citation policy (Policy Decision 2) | Citations are internal to Test Console only. End-user reports attribute to "classical Vedic tradition" generically. No user-facing book references in Phase 1. |
 | TD-07 | Science Arbitration mechanism | Schema-ready in Phase 1. Mathematical framework pending Codex's response to `CODEX_SCIENCE_ARBITRATION_REQUEST.md`. See Section 17. |
-| TD-08 | Schema simulation | Three simulations requested before locking schema decisions (embedded vs separate passages, collections vs seeded JSON, index refresh). See `CODEX_SCHEMA_SIMULATION_REQUEST.md`. |
+| TD-08 | Schema simulation | Three simulations requested before locking schema decisions. See `CODEX_SCHEMA_SIMULATION_REQUEST.md`. |
 | TD-09 | Revised effort estimate | 125–150h accepted for lean Phase 1 scope as defined here. |
 | TD-10 | World Context Engine | Defined as Commission J — separate from Commission I. Commission I builds integration hooks. See Section 18. |
+
+### Round 2 — 10 April 2026 (Locked following Codex simulation + science arbitration response)
+
+**Schema Decisions (from simulation results)**
+
+| # | Topic | Decision |
+|---|---|---|
+| TD-11 | Rule document structure | Embedded paraphrased passages confirmed for Phase 1. Add `passage_ref_id: null` to every rule document as a migration-ready field. Separate `source_passages` collection deferred to Phase 2. |
+| TD-12 | Index refresh strategy | Strategy C (stale-read tolerant) confirmed for Phase 1. Import endpoint must return `{"imported": N, "index_refreshed": true/false}` separately — Library Console waits for `index_refreshed: true` before showing "batch live". |
+
+**Science Arbitration Decisions (from arbitration response + Temple Team strategic input)**
+
+| # | Topic | Decision |
+|---|---|---|
+| TD-13 | Backbone science selection | **Module-determined, not statically Vedic Astrology.** The module the user opens determines which science leads. Jyotish Report → Vedic Astrology backbone. Numerology Report → Numerology backbone. Palmistry Report → Palmistry backbone. KP Report → KP backbone. The backbone science is passed as `backbone_science_id` in every report context. Secondary sciences serve as supportive precision layers — not competitors. |
+| TD-14 | Supersession table scope | The supersession table (category + claim_axis → lead science) governs **secondary science priority only**. The backbone science always leads its own report. The table arbitrates which secondary science gets the highest support weight. See Section 17. |
+| TD-15 | New rule schema fields | The following fields are required on every `interpretation_rules` document: `claim_axis` (e.g. `marriage_timing`, `career_growth`), `claim_scope` (tendency / event_timing / window / trait), `claim_polarity` (positive / negative / mixed / neutral), `timing_bias` (early / on_time / late / cyclical / none), `strength_band` (low / medium / high / extreme), `subject_scope` (self / partner / household / family). Optional: `authority_override`, `mutually_exclusive_with`. |
+| TD-16 | Contradiction detection | Two rules are contradiction candidates when `life_domain` matches and `claim_axis` matches. Orthogonal if `claim_scope` differs. Contradiction score C = 0.40×polarity_distance + 0.35×timing_distance + 0.15×strength_distance + 0.10×authority_overlap. Flag contradiction if C ≥ 0.55 and both claims have effective_confidence ≥ 0.18. |
+| TD-17 | Arbitration framework | Production runtime: Supersession table (category + claim_axis → lead science) → confidence-delta tiebreaker → representation mode selection. MCDA scoring used internally to compute `effective_confidence` per claim. No Bayesian or D-S in Phase 1 runtime. |
+| TD-18 | Tranche layer | Between contradiction detection and narration: a **Tranche Filter** applies user circumstance rules from questionnaire data before the narrative engine receives the evidence packet. If-Then rules suppress false negatives based on context (e.g. `IF family_wealth_tier = HIGH AND claim_axis = financial_security THEN dampen negative financial indicators from secondary sciences`). Tranche rules are seeded per domain. This layer is schema-ready Phase 1; rules populated from questionnaire data Phase 2. |
+| TD-19 | Questionnaire-driven β + γ | Subscription member onboarding includes a structured questionnaire feeding β (micro) and γ (family) multipliers. Key data points: salary bracket, family wealth tier, siblings count, current city of residence, travel frequency, relationship status, parents' health status. Phase 2 engagement feature — questionnaire UI and population logic commissioned separately. Phase 1 builds the schema hooks only. |
+| TD-20 | tension_block JSON | The evidence packet sent to the narrative engine uses the JSON structure defined in Section 17.3. Accepted as specified in Codex's arbitration response. |
+| TD-21 | Representation mode thresholds | synthesis if C < 0.30 or same directional polarity and Δ ≥ 0.05. tension if C 0.30–0.75 and top effective_confidence ≥ 0.20. honest_uncertainty if C > 0.75 or all effective_confidences < 0.20. Max tension blocks per report: 20% of domain sections. Max honest_uncertainty: 5%. |
+| TD-22 | Kota Chakra / Parents data hook | Schema-ready Phase 1: optional `parents_data` field on user profile (father DOB/place, mother DOB/place, self current city). Feeds enhanced Vedic accuracy layer for Subscription members. Full Kota Chakra integration is a separate commission — Phase 1 builds the data schema only. |
+
+**Deferred to Phase 2 / Phase 3**
+
+| # | Topic | Deferred decision |
+|---|---|---|
+| TDF-01 | source_passages collection | Migrate when editorial correction fan-out at 3,000 rules becomes operationally painful. Triggered by Phase 2 review. |
+| TDF-02 | Double-buffer index refresh | Implement Strategy B if import frequency grows or stale-read window causes user-visible issues. |
+| TDF-03 | Bayesian / Dempster-Shafer | Reconsider as primary arbitration mechanism at Phase 3 when 3–4 sciences are active and empirical confidence priors are available. |
+| TDF-04 | Questionnaire UI | Full questionnaire flow and real-time β/γ population — separate commission, Phase 2. |
 
 ---
 
@@ -643,26 +675,59 @@ All other sections are now locked by Temple Team decision log above.
 
 ---
 
-## 15. Cross-Science Scoring — 3-Layer Model [LOCKED — TD-01]
+## 15. Cross-Science Scoring — 3-Layer Model [LOCKED — TD-01, TD-13]
+
+### Architecture Principle: Module-Determined Backbone Science [LOCKED — TD-13]
+
+**The backbone science is not fixed globally. It is determined by which report module the user opens.**
+
+| Module / Report | Backbone Science | Supporting Sciences |
+|---|---|---|
+| Brihat Kundali / Jyotish Report | Vedic Astrology | Numerology, Palmistry (Phase 2), Tarot (Phase 2) |
+| Numerology Report | Numerology | Vedic Astrology |
+| Palmistry Report | Palmistry | Vedic Astrology, Numerology |
+| KP Report | Krishnamurti Paddhati | Vedic Astrology |
+| Daily Guidance | Vedic Astrology | Numerology, World Context (α) |
+| Longevity Report | Vedic Astrology | Palmistry (Phase 2), Numerology |
+
+The backbone science always receives authority priority within its own module. Supporting sciences serve as precision layers — adding granularity and confirmation, not competition.
+
+**Strategic rationale:** Users who believe in Numerology or Palmistry as their primary tool remain engaged because their science is treated as the backbone in those modules. This also prevents the platform from being perceived as "Astrology with extras". Each science is sovereign in its own report.
+
+```python
+# Every report evaluation passes backbone_science_id in context
+rules = await engine.scan_chart(
+    chart_data,
+    categories=["career"],
+    context={
+        "backbone_science_id": "numerology",   # module-determined
+        "alpha": 1.0,
+        "beta":  1.0,
+        "gamma": 1.0,
+    }
+)
+```
 
 ### Layer 1 — Fixed Science Weights (Mathematical Backbone)
 
-Fixed weights form the mathematical foundation of Vedic calculations and predictions. **Do not remove or replace with qualitative tiers alone.**
+Fixed weights express the relative interpretive depth of each science across all content domains. They remain fixed — the backbone science selection adjusts *authority priority*, not these weights.
 
 ```python
 SCIENCE_WEIGHTS = {
     "vedic_astrology": 0.40,
-    "numerology":      0.20,
     "palmistry":       0.25,   # schema-ready, Phase 2 populated
+    "numerology":      0.20,
     "tarot":           0.15,   # schema-ready, Phase 2 populated
 }
 # Phase 1: normalise only across active sciences
-# e.g. astrology + numerology only → normalise to 0.40+0.20 = 0.60 base → scale to 1.0
+# e.g. astrology + numerology only → normalise to 0.60 base → scale to 1.0
+# When backbone_science_id != vedic_astrology, that science receives a +0.10 authority boost
+# in its own module before normalisation
 ```
 
 ### Layer 2 — Qualitative Confidence Tiers
 
-Applied on top of Layer 1 as a multiplier reflecting how many sciences converge.
+Applied on top of Layer 1 as a multiplier reflecting how many sciences converge on the same claim.
 
 | Sciences matched | Tier label | Score multiplier |
 |---|---|---|
@@ -673,13 +738,13 @@ Applied on top of Layer 1 as a multiplier reflecting how many sciences converge.
 
 ### Layer 3 — Contextual Multipliers α, β, γ
 
-Three independent dimensions applied after Layers 1 and 2. Schema-ready in Phase 1. Data sourced from World Context Engine (Commission J) and user profile.
+Three independent dimensions applied after Layers 1 and 2. Schema-ready in Phase 1. Data sourced from World Context Engine (Commission J) and user questionnaire (TD-19).
 
-| Dimension | Scale | Captures | Phase 1 default |
-|---|---|---|---|
-| **α (Alpha)** | Macro | Geopolitical, cultural, environmental, seasonal context | 1.0 (neutral) |
-| **β (Beta)** | Micro | Individual life circumstances — profession, health, finances | 1.0 (neutral) |
-| **γ (Gamma)** | Family | Immediate family dynamics, household context, relationship status | 1.0 (neutral) |
+| Dimension | Scale | Captures | Phase 1 default | Phase 2 source |
+|---|---|---|---|---|
+| **α (Alpha)** | Macro | Geopolitical, cultural, environmental, seasonal context | 1.0 (neutral) | World Context Engine (Commission J) |
+| **β (Beta)** | Micro | Individual life circumstances — profession, finances, health | 1.0 (neutral) | Subscription questionnaire (TD-19) |
+| **γ (Gamma)** | Family | Household context, relationship status, family dynamics | 1.0 (neutral) | Subscription questionnaire (TD-19) |
 
 ```python
 contextual_adjustment = 1.0 + (
@@ -692,21 +757,40 @@ contextual_adjustment = 1.0 + (
 final_intensity = base_science_score * tier_multiplier * contextual_adjustment
 ```
 
-**Phase 1 behaviour:** α, β, γ all default to neutral (1.0) until World Context Engine (Commission J) populates them. The schema and scoring math are live from day one; the intelligence grows as Commission J is built.
+**Phase 1 behaviour:** α, β, γ all default to neutral (1.0). Schema and scoring math live from day one. Intelligence grows as Commission J and the questionnaire system are built.
 
-**Future modules that will use this layer:**
-- Daily Guidance Engine — α (festival seasons, conflict zones, exam periods)
-- Love Engine — γ (family context, relationship status)
-- Bible Module / Devotion layer — α (spiritual seasons, holy days)
-- Notifications — α as trigger for contextual alerts (Diwali eve → auspicious time + pooja ritual)
-
-### MongoDB Schema Addition — `contextual_scores` embedded in request context
+### MongoDB Schema — `contextual_scores` (request context)
 
 ```json
 {
+  "backbone_science_id": "vedic_astrology",
   "alpha": { "score": 0.92, "source": "world_context_engine", "event": "Diwali -3 days", "region": "IN" },
-  "beta":  { "score": 0.75, "source": "user_profile", "factors": ["professional", "urban"] },
-  "gamma": { "score": 0.60, "source": "user_profile", "factors": ["married", "dependents"] }
+  "beta":  { "score": 0.75, "source": "user_questionnaire", "factors": ["salaried", "urban", "mid_wealth"] },
+  "gamma": { "score": 0.60, "source": "user_questionnaire", "factors": ["married", "dependents", "parents_healthy"] }
+}
+```
+
+### MongoDB Schema — `user_context_profile` (subscription member, Phase 2)
+
+Schema-ready in Phase 1 — populated Phase 2 via onboarding questionnaire (TD-19).
+
+```json
+{
+  "user_id": "ObjectId",
+  "questionnaire_version": "1.0",
+  "salary_bracket": "mid",
+  "family_wealth_tier": "high",
+  "siblings_count": 2,
+  "current_city": "new-delhi",
+  "travel_frequency": "monthly",
+  "relationship_status": "married",
+  "parents_birth_data": {
+    "father": { "dob": "1955-03-15", "pob_city": "jaipur", "current_city": "jaipur" },
+    "mother": { "dob": "1960-07-22", "pob_city": "delhi", "current_city": "jaipur" }
+  },
+  "beta_score": 0.75,
+  "gamma_score": 0.60,
+  "last_updated": "2026-04-10T00:00:00Z"
 }
 ```
 
@@ -753,11 +837,9 @@ Full Codex paraphrase instructions: `CODEX_PARAPHRASE_WIM.md`
 
 ---
 
-## 17. Science Arbitration Mechanism [SCHEMA-READY — Maths Pending TD-07]
+## 17. Science Arbitration Mechanism [LOCKED — TD-13 through TD-21]
 
-The arbitration mechanism is schema-ready in Phase 1. The mathematical framework will be confirmed after Codex responds to `CODEX_SCIENCE_ARBITRATION_REQUEST.md`.
-
-### New MongoDB Collection: `science_registry`
+### 17.1 — `science_registry` Collection [LOCKED]
 
 Extensible science catalogue — adding a new science is a data operation, not a code change.
 
@@ -790,13 +872,140 @@ Extensible science catalogue — adding a new science is a data operation, not a
 }
 ```
 
-### Contradiction Narrative Modes (provisional — subject to Codex maths confirmation)
+### 17.2 — New Required Fields on `interpretation_rules` [LOCKED — TD-15]
 
-| Mode | When | Narrative Treatment |
+Every rule document must include:
+
+```json
+{
+  "claim_axis":        "marriage_timing",
+  "claim_scope":       "event_timing",
+  "claim_polarity":    "negative",
+  "timing_bias":       "late",
+  "strength_band":     "high",
+  "subject_scope":     "self",
+  "authority_override": null,
+  "mutually_exclusive_with": [],
+  "passage_ref_id":    null
+}
+```
+
+- `claim_axis` — the specific interpretive axis (e.g. `marriage_timing`, `career_growth`, `financial_security`, `health_vitality`)
+- `claim_scope` — `tendency` / `event_timing` / `window` / `trait`
+- `claim_polarity` — `positive` / `negative` / `mixed` / `neutral`
+- `timing_bias` — `early` / `on_time` / `late` / `cyclical` / `none`
+- `strength_band` — `low` / `medium` / `high` / `extreme`
+- `subject_scope` — `self` / `partner` / `household` / `family`
+- `passage_ref_id: null` — migration hook; Phase 2 links to `source_passages` collection if extracted
+
+### 17.3 — Contradiction Detection [LOCKED — TD-16]
+
+**Candidate pair:** both rules share the same `life_domain` AND `claim_axis`.
+**Orthogonal (not a contradiction):** `claim_scope` differs — e.g. one is `tendency`, one is `event_timing`. Treat as layered meaning.
+
+**Contradiction score:**
+```
+C = 0.40 × polarity_distance
+  + 0.35 × timing_distance
+  + 0.15 × strength_distance
+  + 0.10 × authority_overlap
+```
+
+**Flag contradiction if:** C ≥ 0.55 AND both claims have `effective_confidence` ≥ 0.18.
+
+### 17.4 — Tranche Filter Layer [LOCKED — TD-18]
+
+Between contradiction detection and the narrative engine, the Tranche Filter applies user-circumstance rules from questionnaire data. These are If-Then rules that prevent false negatives based on context:
+
+```python
+TRANCHE_RULES = [
+    {
+        "condition": {"family_wealth_tier": "high"},
+        "axis": "financial_security",
+        "action": "dampen_secondary_negatives",
+        "factor": 0.60
+    },
+    {
+        "condition": {"relationship_status": "married", "gamma_score": {"gte": 0.70}},
+        "axis": "partnership_stability",
+        "action": "suppress_secondary_delay_indicators",
+        "factor": 0.50
+    },
+]
+```
+
+**Phase 1:** Tranche rules seeded for the most common domains (financial_security, partnership_stability, career_growth). Rules applied as post-detection, pre-narrative adjustments to `effective_confidence`. Schema-ready; questionnaire data Phase 2.
+
+### 17.5 — Runtime Arbitration (Production) [LOCKED — TD-17]
+
+```
+Step 1: Contradiction detection (Section 17.3)
+Step 2: Tranche Filter (Section 17.4) — adjusts effective_confidence based on user context
+Step 3: Supersession table lookup (category + claim_axis → secondary science priority)
+Step 4: Confidence-delta tiebreaker (if Δ ≤ 0.15 → tension block; if Δ > 0.15 → lead wins)
+Step 5: Representation mode selection (Section 17.6)
+Step 6: Build tension_block JSON (Section 17.7) → send to Narrative Planner
+```
+
+Note: MCDA scoring is used **internally** to compute `effective_confidence` per claim. It is not exposed as the runtime theory.
+
+### 17.5a — Supersession Table [LOCKED — TD-14]
+
+Governs secondary science priority only. Backbone science always leads its own module (TD-13).
+
+| Category | Primary axis lead (secondary sciences) | Notes |
 |---|---|---|
-| **Lead + Acknowledge** | Clear winner on confidence | Primary science leads. Secondary noted as additional perspective. |
-| **Cosmic Tension** | Sciences closely matched, same domain | "Your chart presents a dynamic tension between [A] and [B]…" |
-| **Precision Layer** | BPHS vs KP | "Classical tradition indicates [what]. KP analysis refines the timing to [when]…" |
+| general | vedic_astrology | Numerology may co-lead on temperament sub-axes |
+| career | vedic_astrology | Timing always astrology-led |
+| wealth | vedic_astrology | Numerology pattern support only |
+| relationships | vedic_astrology | Numerology may co-lead on compatibility tone, not timing |
+| health | vedic_astrology | Palmistry rises when active (Phase 2) |
+| education | vedic_astrology | Numerology secondary |
+| spirituality | vedic_astrology | Tarot can challenge for secondary lead when active |
+| longevity | vedic_astrology | Strongest domain authority; Palmistry second when active |
+
+**Axis overrides:** any `*_timing` axis → astrology always leads among secondary sciences. Any `*_temperament` axis → numerology may lead in `general`, `relationships`, `career`. Reflective axes in `spirituality` → tarot may challenge later.
+
+### 17.6 — Representation Mode Thresholds [LOCKED — TD-21]
+
+| Mode | Trigger condition | Narrative treatment |
+|---|---|---|
+| **synthesis** | C < 0.30, or same directional polarity and Δ ≥ 0.05 | "Both your chart and your numerological signature point in a similar direction…" |
+| **tension** | C 0.30–0.75 AND top effective_confidence ≥ 0.20 | "Your planetary structure suggests one rhythm, while your numerological pattern points toward another…" |
+| **honest_uncertainty** | C > 0.75, or all effective_confidences < 0.20 | "The sciences we have examined do not fully converge on this question…" |
+
+**Frequency caps:** max tension blocks = 20% of domain sections per report. Max honest_uncertainty = 5% of domain sections. Default: 1 major tension block per report unless user is in Test Console debug context.
+
+### 17.7 — `tension_block` JSON (evidence packet to Narrative Layer) [LOCKED — TD-20]
+
+```json
+{
+  "life_domain": "relationships",
+  "claim_axis": "marriage_timing",
+  "representation_mode": "tension",
+  "dominant_science": "vedic_astrology",
+  "backbone_science_id": "vedic_astrology",
+  "confidence_delta": 0.10,
+  "contradiction_score": 0.71,
+  "contradiction_types": ["temporal"],
+  "tranche_adjustments_applied": true,
+  "low_confidence": false,
+  "claims": [
+    {
+      "science_id": "vedic_astrology",
+      "summary": "The chart suggests delay, maturity, and duty before stable commitment.",
+      "effective_confidence": 0.44,
+      "authority_rank": 1
+    },
+    {
+      "science_id": "numerology",
+      "summary": "The numerological pattern supports strong domestic orientation and earlier partnership desire.",
+      "effective_confidence": 0.34,
+      "authority_rank": 2
+    }
+  ]
+}
+```
 
 ---
 
