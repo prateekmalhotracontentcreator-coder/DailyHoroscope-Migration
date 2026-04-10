@@ -382,6 +382,7 @@ class KnowledgeNarrativeDomain(StrictDocument):
     lucky_elements: dict[str, Any] = Field(default_factory=dict)
     timing_window: str
     confidence_tier: ConfidenceBand
+    tranche_adjusted: bool = False
 
 
 class KnowledgeNarrativeRequest(StrictDocument):

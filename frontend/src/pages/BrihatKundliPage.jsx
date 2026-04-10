@@ -434,9 +434,14 @@ const ReportDisplay = ({ report, onShare, onDownload }) => {
                       {domain.headline}
                     </p>
                   </div>
-                  {domain.confidence_tier && (
-                    <Tag color="bg-gold/10 text-gold">{domain.confidence_tier}</Tag>
-                  )}
+                  <div className="flex flex-wrap gap-2 items-center">
+                    {domain.tranche_adjusted && (
+                      <Tag color="bg-indigo-500/10 text-indigo-400">Context-calibrated</Tag>
+                    )}
+                    {domain.confidence_tier && (
+                      <Tag color="bg-gold/10 text-gold">{domain.confidence_tier}</Tag>
+                    )}
+                  </div>
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {Array.isArray(domain.body) ? domain.body.join(' ') : domain.body}
@@ -459,6 +464,13 @@ const ReportDisplay = ({ report, onShare, onDownload }) => {
               </div>
             ))}
           </div>
+          {report.knowledge_narratives.some((d) => d.tranche_adjusted) && (
+            <p className="text-xs text-muted-foreground mt-4 border-t border-border pt-3">
+              * Context-calibrated domains have been adjusted based on your personal
+              circumstances to reduce false negatives. Complete your profile to refine
+              these insights further.
+            </p>
+          )}
         </Section>
       )}
     </div>
