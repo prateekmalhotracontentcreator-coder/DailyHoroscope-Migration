@@ -14,6 +14,7 @@ try:
 except Exception:  # pragma: no cover - local lightweight validation path
     AsyncIOMotorDatabase = Any  # type: ignore[misc, assignment]
 
+from tranche_filter import apply_tranche_filter
 from knowledge_schema import (
     COLLECTION_AUTHOR_VOICES,
     COLLECTION_INTERPRETATION_RULES,
@@ -828,6 +829,7 @@ class KnowledgeEngine:
         for block in tension_blocks or []:
             all_tension_blocks.append(block if isinstance(block, TensionBlock) else TensionBlock(**block))
 
+        matched_rules = apply_tranche_filter(matched_rules, user_context or {})
         matched_domains, planner_domains = _build_domain_plan(
             matched_rules=matched_rules,
             chart=chart,
