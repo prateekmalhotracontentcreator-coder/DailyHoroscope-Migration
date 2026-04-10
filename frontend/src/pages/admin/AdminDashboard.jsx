@@ -19,6 +19,7 @@ import {
 import axios from 'axios';
 import { toast } from 'sonner';
 import { AdminBlogManager } from './AdminBlogManager';
+import { LibraryConsolePage } from './LibraryConsolePage';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -507,6 +508,7 @@ export const AdminDashboard = () => {
     { id: 'payments',       label: 'Payments',       icon: CreditCard },
     { id: 'contacts',       label: 'Messages',       icon: MessageSquare },
     { id: 'blog',           label: 'Blog',           icon: BookOpen },
+    { id: 'library',        label: 'Library',        icon: BookOpen },
     { id: 'notifications',  label: 'Notifications',  icon: Bell },
   ];
 
@@ -978,6 +980,9 @@ export const AdminDashboard = () => {
 
         {/* BLOG */}
         {activeTab === 'blog' && <AdminBlogManager getAuthHeaders={getAuthHeaders} />}
+
+        {/* LIBRARY */}
+        {activeTab === 'library' && <LibraryConsolePage getAuthHeaders={getAuthHeaders} />}
 
         {/* NOTIFICATIONS */}
         {activeTab === 'notifications' && (
