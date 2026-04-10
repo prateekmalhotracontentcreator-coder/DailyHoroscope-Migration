@@ -1071,53 +1071,82 @@ Planetary: Jupiter in 9H (spiritually auspicious)
 
 ### Concept
 
-The Arc Angel panel is the platform's **persistent master validation layer** — a left nav panel snapshot that shows the user's current standing across all 12 life domains. It is the first thing a Premium member sees after entering their birth data. Every module report on the platform must correlate its output back to the relevant Arc Angel dimension(s).
+The Arc Angel panel is the platform's **persistent master validation layer** — a left nav panel snapshot that shows the user's standing across all 12 life domains with a 10-year forward horizon. It is the first thing a Premium member sees after entering their birth data. Every module report correlates its output back to the relevant Arc Angel dimension(s).
 
-The name reflects its role: the Arc Angel is the user's guardian intelligence — an ever-sharpening profile that knows more about their life pattern the more they engage.
+The Arc Angel is the user's guardian intelligence — an ever-sharpening profile that improves as the user runs more modules, answers questionnaire prompts, and provides more personal context.
 
-### The 12 Life Domains
+### Reference Document
 
-| # | Domain | Vedic House | Core themes |
+Source: `USER PROFILE Snapshot- 12 Areas of Life.docx` (`.claude/` folder)
+
+### UI Specification (from reference document)
+
+**Panel layout:** 4-column table in the left navigation panel.
+
+| Column | Content | Notes |
+|---|---|---|
+| Domain | Domain name + description | Text in **landscape/rotated orientation** within the cell |
+| Auspicious Periods | Date ranges over 10-year horizon | "Generated once User Signs up as Premium Member" gate |
+| Inauspicious Periods | Date ranges over 10-year horizon | Same Premium gate |
+| Confidence % | **Donut chart shape** showing % confidence | Updates as more data is provided |
+
+**Premium gate:** All four cells for each domain show "This Should be generated once User Signs up as Premium Member" until Premium subscription is active and birth data is entered.
+
+**Horizon:** 10-year forward projection for both auspicious and inauspicious windows.
+
+**Confidence visualisation:** Donut chart per domain — not a number alone. Visual weight communicates certainty at a glance.
+
+### The 12 Life Domains (Confirmed from Reference Document)
+
+These are the exact domain names and descriptions to use in all UI, API, and narrative references:
+
+| # | Domain label | Description | Primary Vedic mapping |
 |---|---|---|---|
-| 1 | Self & Vitality | 1st Bhava | Physical constitution, personality, health |
-| 2 | Wealth & Family | 2nd Bhava | Income, family of origin, speech, accumulated assets |
-| 3 | Courage & Communication | 3rd Bhava | Siblings, initiative, short travel, media |
-| 4 | Home & Happiness | 4th Bhava | Property, mother, emotional security, vehicles |
-| 5 | Intellect & Progeny | 5th Bhava | Children, creativity, education, speculation |
-| 6 | Health & Challenges | 6th Bhava | Enemies, debt, disease, service, litigation |
-| 7 | Partnerships | 7th Bhava | Marriage, business partners, contracts, public |
-| 8 | Transformation | 8th Bhava | Longevity, inheritance, hidden matters, change |
-| 9 | Luck & Dharma | 9th Bhava | Father, fortune, long travel, higher learning, spirituality |
-| 10 | Career & Status | 10th Bhava | Profession, fame, authority, karma |
-| 11 | Gains & Aspirations | 11th Bhava | Income from profession, friends, fulfilled desires |
-| 12 | Liberation & Losses | 12th Bhava | Expenses, foreign lands, spirituality, moksha |
+| 1 | Health & Fitness | Physical well-being, including nutrition, exercise, and energy levels | 1H (constitution), 6H (disease), 8H (vitality) |
+| 2 | Career & Work | Professional fulfillment, vocational growth, and professional passion | 10H (karma/profession), 6H (service), 2H (livelihood) |
+| 3 | Finances | Financial stability, wealth management, and security | 2H (accumulated wealth), 11H (gains), 8H (inheritance) |
+| 4 | Intellectual Life & Learning | Continuous education, acquiring new skills, and mental growth | 5H (intellect), 4H (education), 9H (higher learning) |
+| 5 | Emotional Life | Mental health, managing stress, and self-awareness | 4H (inner peace), 5H (emotions), Moon sign |
+| 6 | Spirituality | Purpose, meaning in life, and connection to something higher | 9H (dharma), 12H (moksha), 5H (mantra/devotion) |
+| 7 | Love Relationships | Quality of a romantic relationship or companionship | 7H (partnership), 5H (romance), Venus sign |
+| 8 | Family Life | Relationships with family members and parenting | 4H (mother/home), 2H (family of origin), 5H (children) |
+| 9 | Social Life & Friendship | Social connections, community engagement, and networking | 11H (friends/gains), 3H (communication), 7H (public) |
+| 10 | Adventure & Travel | Experiences, exploring new places, and taking risks | 9H (long travel), 3H (short travel), 12H (foreign lands) |
+| 11 | Environment | The quality of your surroundings, home, and workspace | 4H (home/property), 12H (hidden spaces), Mars/Saturn |
+| 12 | Creativity & Hobbies | Hobbies, artistic pursuits, and leisure time for recreation | 5H (creativity/children), 1H (self-expression), Venus |
 
 ### Confidence % Scoring Model
 
-Each domain has a Confidence % that reflects how much data the engine has to make an accurate assessment.
+Each domain has a Confidence % (displayed as a donut chart) reflecting how much data the engine has.
 
-| Data input received | Confidence boost |
+| Data input received | Confidence contribution |
 |---|---|
 | Birth date + time + place only | Baseline ~40–50% |
-| + Questionnaire complete (salary, family, residence, etc.) | +15–20% |
-| + Additional module run (Numerology Report) | +5–8% per relevant domain |
-| + Parents birth data provided | +8–12% |
-| + Case study match found (similar chart on record) | +5% |
-| + Subscription member (continuous dialogue) | Gradual improvement over sessions |
+| Questionnaire completed (salary, family, residence, travel, etc.) | +15–20% |
+| Each additional module run (Numerology, Longevity, etc.) | +5–8% per relevant domain |
+| Parents birth data provided | +8–12% |
+| Case study match found in validation dataset | +5% |
+| Continuous subscription dialogue (returning sessions) | Gradual improvement |
 
-**Maximum Phase 1 confidence:** ~85% (full questionnaire + 2–3 module runs). 100% is never shown — maintains epistemic honesty that all prediction carries uncertainty.
+**Maximum Phase 1 confidence:** ~85%. 100% is never displayed — epistemic honesty is a platform principle.
 
-### Per-Domain Output Structure
+### Per-Domain Backend Output Structure
 
 ```json
 {
-  "domain_id": "career_status",
-  "domain_label": "Career & Status",
-  "bhava": 10,
-  "period_quality": "auspicious",
-  "period_indicator": "Jupiter dasha active — peak career period",
+  "domain_id": "career_work",
+  "domain_label": "Career & Work",
+  "domain_description": "Professional fulfillment, vocational growth, and professional passion",
+  "primary_bhavas": [10, 6, 2],
+  "auspicious_periods": [
+    { "start": "2026-06", "end": "2028-11", "driver": "Jupiter dasha — peak career expansion" },
+    { "start": "2030-03", "end": "2032-08", "driver": "Saturn return — consolidation phase" }
+  ],
+  "inauspicious_periods": [
+    { "start": "2029-01", "end": "2029-09", "driver": "Rahu transit 10H — instability window" }
+  ],
+  "period_quality_now": "auspicious",
   "confidence_pct": 72,
-  "auspicious_until": "2027-08",
   "correlated_modules": ["brihat_kundali", "numerology"],
   "last_updated": "2026-04-10T00:00:00Z"
 }
@@ -1303,6 +1332,114 @@ These must be complete and tested before anything else proceeds:
 | Commission I-Q (Questionnaire) | Onboarding questionnaire UI + flow + β/γ population | Needs `user_context_profile` schema from Commission I |
 | Commission I-K (Kota Chakra) | Parents birth data calculation + enhanced accuracy layer | Needs vedic_calculator.py extension |
 | Commission J (World Context Engine) | α multiplier population via global calendars | Needs context hooks from Commission I |
+
+---
+
+---
+
+## 22. Report Quality Evaluation Framework — Brihat Kundali [LOCKED]
+
+### Why This Matters
+
+The Brihat Kundali is the first end-to-end test of the integrated science model (CPath-1 item 6). Without defined success criteria, we have no way to distinguish "the engine is working" from "the engine produced output." This framework provides that standard.
+
+### The Three Evaluation Questions
+
+**Q1 — How will we rate the new report?**
+**Q2 — What are the success criteria?**
+**Q3 — How do we evaluate the new Knowledge Engine report vs the existing direct-LLM report on the same birth credentials?**
+
+---
+
+### 22.1 — Rating Rubric (5 Dimensions, 1–5 scale each)
+
+Every Brihat Kundali report generated by the Knowledge Engine is scored on:
+
+| Dimension | What it measures | Score 1 (fail) | Score 5 (pass) |
+|---|---|---|---|
+| **Classical Grounding** | Does the report cite specific classical principles — named yogas, house lord relationships, dasha timing from BPHS/Lal Kitab? | Generic statements only ("Saturn can delay") | Specific named rules ("Shani in 7H with Rahu aspects — Kodanda Yoga variant per BPHS Chapter 24") |
+| **Prediction Specificity** | Does the report make time-bound, domain-specific predictions rather than perpetually open-ended statements? | "Career challenges may arise" | "Between Oct 2027–Mar 2029 (Rahu MD, Shani AD), professional disruption likely — avoid major role changes in this window" |
+| **12-Domain Coverage** | Does the report address all 12 Arc Angel life domains, not just the prominent ones? | 3–4 domains mentioned | All 12 domains addressed with differentiated depth |
+| **Internal Coherence** | Are predictions across domains internally consistent? (e.g. "strong career" and "severe financial stress" in the same dasha should be explained, not contradicted) | Direct contradictions unacknowledged | All tension points surfaced and explained |
+| **Arc Angel Alignment** | Do the report's auspicious/inauspicious period calls match the Arc Angel domain scores for the same user? | >40% mismatch between report and Arc Angel | >80% alignment — report reinforces Arc Angel or explains divergence |
+
+**Total score: 25 points maximum.**
+
+---
+
+### 22.2 — Success Criteria
+
+Phase 1 Knowledge Engine report is considered successful if:
+
+| Threshold | Criterion |
+|---|---|
+| **Overall score ≥ 18/25** | Weighted average across 5 dimensions |
+| **Classical Grounding ≥ 4/5** | Non-negotiable — this is the engine's primary value proposition |
+| **Prediction Specificity ≥ 3/5** | At minimum, 3 of 12 domains must have time-bound predictions |
+| **Zero unacknowledged internal contradictions** | Internal coherence is binary — pass/fail |
+| **Arc Angel alignment ≥ 70%** | At least 8 of 12 domain period calls match Arc Angel scores |
+| **Case study validation: ≥ 70% accuracy** | On 10 known-outcome case studies, engine must correctly call auspicious/inauspicious for the documented life event period |
+
+**The existing direct-LLM Brihat Kundali report is expected to score approximately:**
+- Classical Grounding: 2/5 (generic, no rule citations)
+- Prediction Specificity: 2/5 (open-ended)
+- 12-Domain Coverage: 3/5 (hits major domains)
+- Internal Coherence: 3/5 (reasonable but untested)
+- Arc Angel Alignment: N/A (Arc Angel doesn't exist yet in current system)
+- **Estimated total: ~10/20 comparable dimensions**
+
+The Knowledge Engine report must exceed 18/25 to be considered a meaningful upgrade.
+
+---
+
+### 22.3 — Evaluation Methodology (Original vs New)
+
+**Step 1 — Choose the test birth credentials**
+
+Use a birth dataset from the case study library (TD-24) with well-documented life outcomes — not a live user's data. Recommended: one chart where career timing, marriage timing, and a significant health or financial event are all documented.
+
+**Step 2 — Generate both reports on identical inputs**
+
+```
+Input: { dob, tob, pob } — identical for both
+Report A: Current BrihatKundliPage.jsx → direct Claude API prompt (existing system)
+Report B: Knowledge Engine → scan_chart() → Narrative Planner → Claude API (new system)
+Evaluator: does NOT know which is A and which is B during scoring
+```
+
+**Step 3 — Blind scoring**
+
+Prateek (or a panel of 2–3 evaluators with Jyotish knowledge) scores both reports on the 5-dimension rubric without knowing which report came from which system.
+
+**Step 4 — Case study validation**
+
+Run Report B (Knowledge Engine) on 10 case studies with known outcomes:
+- Extract the period quality call per domain (auspicious / inauspicious) from the report
+- Compare against the documented life event for that period
+- Compute accuracy % per domain and overall
+
+**Step 5 — Arc Angel consistency check**
+
+Run the Arc Angel profile computation on the same birth data. Compare each domain's period quality call from the Arc Angel panel against the corresponding prediction in Report B. Alignment > 70% = pass.
+
+**Step 6 — Decision gate**
+
+| Outcome | Action |
+|---|---|
+| Report B ≥ 18/25 AND case study accuracy ≥ 70% | Engine is production-ready for Phase 1.2 rollout |
+| Report B 14–17/25 OR case study accuracy 55–70% | Identify weak dimensions, tune rule library, re-test on same cases |
+| Report B < 14/25 OR case study accuracy < 55% | Root cause analysis — likely insufficient rule coverage in Phase 1 seed; expand book extraction before re-test |
+
+---
+
+### 22.4 — Ongoing Quality Monitoring (Post-Launch)
+
+Once live, quality is maintained through:
+
+- **User feedback signal:** Each report includes a "Was this helpful?" 5-star rating + optional comment. Stored in `report_feedback` collection.
+- **Case study expansion:** As more case studies are validated, accuracy benchmarks tighten.
+- **Arc Angel drift monitoring:** If user's Arc Angel scores diverge significantly from what their module reports predicted, flag for Temple Team review.
+- **Contradiction rate tracking:** Track what % of reports trigger tension or honest_uncertainty modes. Target: <20% tension, <5% honest_uncertainty in steady state.
 
 ---
 
