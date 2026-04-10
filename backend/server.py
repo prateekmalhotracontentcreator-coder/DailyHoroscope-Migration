@@ -84,6 +84,7 @@ from notification_trigger_router import router as notification_trigger_router
 from notification_log_router import router as notification_log_router
 from lumina_router import router as lumina_router
 from palmistry_router import router as palmistry_router
+from knowledge_engine import configure_default_knowledge_engine
 try:
     from longevity_router import router as longevity_router
     _longevity_router_ok = True
@@ -1948,6 +1949,11 @@ scheduler = AsyncIOScheduler()
 @app.on_event("startup")
 async def startup_event():
     app.state.db = db
+    try:
+        app.state.knowledge_engine = await configure_default_knowledge_engine(db)
+        app.state.knowledge_index_store = app.state.knowledge_engine.index_store
+    except Exception as exc:
+        logging.warning("knowledge engine startup refresh failed: %s", exc)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(hour=18, minute=30, timezone="UTC"), id="daily_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day_of_week="sun", hour=18, minute=0, timezone="UTC"), id="weekly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day=1, hour=17, minute=30, timezone="UTC"), id="monthly_horoscope_prefetch", replace_existing=True)

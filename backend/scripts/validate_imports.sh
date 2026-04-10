@@ -31,8 +31,9 @@ echo "[2/3] Ensuring schema packages are installed..."
 "$VENV/bin/pip" install --quiet \
     "pydantic==2.11.3" \
     "pydantic-core==2.33.1" \
-    "pymongo==4.6.3"
-echo "      pydantic, pydantic-core, pymongo — OK"
+    "pymongo==4.6.3" \
+    "motor==3.4.0"
+echo "      pydantic, pydantic-core, pymongo, motor — OK"
 
 # Step 3: syntax + import check
 echo "[3/3] Running import check..."
@@ -60,9 +61,26 @@ from knowledge_schema import (
     ensure_knowledge_indexes,
 )
 cols = list(knowledge_collection_models().keys())
-print(f'      Import OK — {len(cols)} collections registered:')
+print(f'      knowledge_schema OK — {len(cols)} collections registered:')
 for c in cols:
     print(f'        · {c}')
+"
+
+# Also verify knowledge_engine module-level imports (motor must be present)
+"$PYTHON" -c "
+import sys
+sys.path.insert(0, '.')
+import motor.motor_asyncio  # hard import — fallback removed now motor is installed
+from knowledge_engine import (
+    KnowledgeEngine,
+    KnowledgeIndexStore,
+    extract_chart_facts,
+    configure_default_knowledge_engine,
+    get_default_knowledge_engine,
+    canonical_key,
+    normalize_planet_name,
+)
+print('      knowledge_engine OK — motor present, hard import confirmed')
 "
 
 echo ""
