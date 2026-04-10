@@ -75,6 +75,12 @@ ARC_ANGEL_DOMAIN_MAP = {
     "spirituality": "Spirituality",
     "longevity": "Health & Fitness",
     "general": "Emotional Life",
+    # Phase 1 additions — complete the 12-domain coverage
+    "family": "Family Life",
+    "social": "Social Life & Friendship",
+    "travel": "Adventure & Travel",
+    "environment": "Environment",
+    "creativity": "Creativity & Hobbies",
 }
 DOMAIN_PRIORITY = [
     "Health & Fitness",
