@@ -21,6 +21,7 @@ import { BlogList } from './pages/BlogList';
 import { BlogPost } from './pages/BlogPost';
 import { AdminLogin } from './pages/admin/AdminLogin';
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
+const LibraryConsolePage = lazy(() => import('./pages/admin/LibraryConsolePage').then(m => ({ default: m.LibraryConsolePage })));
 import { AdminBlogManager } from './pages/admin/AdminBlogManager';
 import { AboutUs } from './pages/AboutUs';
 import { ContactUs } from './pages/ContactUs';
@@ -126,6 +127,7 @@ function App() {
                   <Route path="/admin/login" element={<AdminLogin />} />
                   <Route path="/admin/dashboard" element={<AdminDashboard />} />
                   <Route path="/admin/blog" element={<AdminBlogManager />} />
+                  <Route path="/admin/library" element={<LibraryConsolePage />} />
 
                   {/* Panchang — order matters: most specific first */}
                   <Route path="/panchang" element={<PanchangLandingPage />} />

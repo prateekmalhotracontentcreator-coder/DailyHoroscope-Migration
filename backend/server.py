@@ -85,6 +85,7 @@ from notification_log_router import router as notification_log_router
 from lumina_router import router as lumina_router
 from palmistry_router import router as palmistry_router
 from knowledge_engine import configure_default_knowledge_engine
+from knowledge_router import router as knowledge_router
 from knowledge_schema import KnowledgeNarrativeRequest, KnowledgeNarrativeResponse
 try:
     from longevity_router import router as longevity_router
@@ -1907,6 +1908,7 @@ app.include_router(notification_trigger_router)
 app.include_router(notification_log_router)
 app.include_router(lumina_router)
 app.include_router(palmistry_router)
+app.include_router(knowledge_router)
 if _longevity_router_ok and longevity_router is not None:
     app.include_router(longevity_router)
 
