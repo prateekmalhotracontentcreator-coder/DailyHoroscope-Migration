@@ -8,10 +8,9 @@
 ---
 
 > **How to read this document:**
-> Sections marked `[LOCKED]` are Temple Team decisions — design to these exactly.
-> Sections marked `[CONFIRMED]` are already decided — please design around them.
-> Sections marked `[PROPOSED]` are still open — Codex may advise before build starts.
-> All major architecture decisions (TD-01 through TD-22) are now locked. This document is ready for final build contract issuance.
+> All architecture decisions are locked. The Decision Log (TD-01 through TD-25) and Sections 15–22 are authoritative.
+> Where earlier sections carry legacy `[PROPOSED]` or `[INPUT REQUESTED]` labels, treat the Decision Log and `CODEX_COMMISSION_I_BUILD_ORDER.md` as the override.
+> `[CONFIRMED]` and `[LOCKED]` labels remain accurate throughout.
 
 ---
 
@@ -181,14 +180,10 @@ These are the texts from which the original seed files were planned. **Phase 1 m
 
 ---
 
-## 4. Data Layer — Proposed MongoDB Schema [PROPOSED — input requested]
+## 4. Data Layer — MongoDB Schema [LOCKED]
 
-> **[INPUT REQUESTED — Section 4]**
-> We are proposing 4 collections. Before we lock this schema, please advise:
-> - Is this the right collection structure? Would you merge or split any collections?
-> - How would you handle rule versioning across Amendment Contracts?
-> - What would your compound indexing strategy look like for < 500ms evaluation at 1,000+ rules?
-> - Is there anything in the rule document schema that is missing or over-engineered?
+> Schema locked per TD-11, TD-15, and Decision Log. Additional fields added in Section 17.2.
+> Collections: `interpretation_rules`, `author_voices`, `narrative_bridges`, `import_batches`, `science_registry`, `user_arc_angel_profile`, `user_context_profile`, `case_studies`.
 
 ### 4a. Collection: `interpretation_rules`
 
@@ -271,7 +266,7 @@ The primary library. Each document = one interpretation rule from one source.
 }
 ```
 
-### 4b. Condition Types Supported [PROPOSED]
+### 4b. Condition Types Supported [LOCKED]
 
 | Type | Example | Key Fields |
 |---|---|---|
@@ -367,10 +362,9 @@ Multi-factor confirmation engine — when 2+ sciences confirm the same life them
 
 ---
 
-## 5. Proposed Indexes [PROPOSED — input requested]
+## 5. Indexes [LOCKED]
 
-> **[INPUT REQUESTED — Section 5]**
-> We have proposed the indexes below. Is this sufficient for < 500ms query time across 1,000–10,000 rules? Would you add anything? Is there a case for an in-memory index built on server startup?
+> In-memory inverted index confirmed (TD-12, Simulation 3 — Strategy C). MongoDB indexes below are the persistence layer. Both are required.
 
 ```javascript
 // interpretation_rules
@@ -387,16 +381,11 @@ db.cross_science_combinations.createIndex({ "categories": 1, "active": 1 })
 
 ---
 
-## 6. Rule Engine — Backend [PROPOSED — input requested]
+## 6. Rule Engine — Backend [LOCKED]
 
 ### File: `backend/knowledge_engine.py`
 
-> **[INPUT REQUESTED — Section 6]**
-> Please review the class API below. Key questions:
-> - Is `scan_chart` / `generate_narrative` / `scan_cross_science` the right surface area?
-> - How would you structure conflict resolution between rules from different books?
-> - What is your recommended approach to prevent Claude from ignoring the provided passages and generating from training data instead?
-> - Should bridge phrases be passed as part of the prompt, or as structural anchors?
+> API surface locked: `scan_chart()`, `generate_narrative()`, `scan_cross_science()`. Arbitration and Tranche Filter are cross-cutting layers wired into items 3, 4, and 6 (per Codex dependency note — accepted). Brihat Kundali route is not complete until both are wired in.
 
 ```python
 class KnowledgeEngine:
@@ -493,11 +482,9 @@ def extract_chart_facts(chart: dict) -> list[dict]:
 
 ---
 
-## 7. API Endpoints [PROPOSED]
+## 7. API Endpoints [LOCKED]
 
-> **[INPUT REQUESTED — Section 7]**
-> Is this the right API surface for the Library Console + module integrations?
-> Any endpoints missing? Any that are over-engineered for Phase 1?
+> API surface locked. All routes under `/api/knowledge` and `/api/library` as specified below.
 
 ### File: `backend/knowledge_router.py`
 All routes under `/api/knowledge`.
@@ -517,13 +504,12 @@ All routes under `/api/knowledge`.
 
 ---
 
-## 8. Local Extraction Script [PROPOSED — input requested]
+## 8. Local Extraction Script [LOCKED]
 
 ### File: `backend/scripts/extract_book.py`
 Local-only. Never deployed to Render. Runs on Temple Team workstation.
 
-> **[INPUT REQUESTED — Section 8]**
-> This is the area where we most want your recommendation before specifying further.
+> Paraphrase pipeline locked per TD-02, TD-05. Full instructions in `CODEX_PARAPHRASE_WIM.md`.
 >
 > The OCR source files vary in quality (High/Medium as marked per book). The books include:
 > - **A Text Book of Astrology** — systematic chapter structure, predictable If-Then rules
@@ -557,7 +543,7 @@ python extract_book.py \
 
 ---
 
-## 9. Library Console [PROPOSED — scope open for input]
+## 9. Library Console [LOCKED — TD-04]
 
 **Standalone page** — completely separate from the Operations Admin Console.
 - Route: `/library`
@@ -658,10 +644,9 @@ combos = await engine.scan_cross_science(
 
 ---
 
-## 13. Acceptance Criteria [PROPOSED — open for Codex additions]
+## 13. Acceptance Criteria [LOCKED]
 
-> **[INPUT REQUESTED — Section 13]**
-> Are there any acceptance criteria you would add from a build quality / testability perspective?
+> CPath-1 acceptance criteria below. Report quality evaluation criteria are in Section 22 — both sets must be met before Phase 1.2 begins.
 
 - [ ] `scan_chart()` returns correct matches for a test chart with Saturn in 7H, Jupiter in 10H, Moon in Cancer
 - [ ] `generate_narrative()` returns full prose with no bullet points and cites at least one book passage
@@ -1311,19 +1296,23 @@ These must be complete and tested before anything else proceeds:
 | # | Deliverable | Dependency |
 |---|---|---|
 | 9 | Coverage Dashboard heatmap | Needs import pipeline from CPath-1 |
-| 10 | Arc Angel profile computation + `user_arc_angel_profile` collection | Needs `scan_chart()` from CPath-1 |
-| 11 | Arc Angel left nav panel UI | Needs Arc Angel backend |
-| 12 | Remaining report API routes (Numerology, Longevity, etc.) | Needs narrative layer from CPath-1 |
-| 13 | Case Study extraction + batch validation (50–100 Phase 1 cases) | Needs full engine from CPath-1 |
+| 10 | Arc Angel profile computation + `user_arc_angel_profile` collection + backend API | Needs `scan_chart()` from CPath-1 |
+| 11 | ~~Arc Angel left nav panel UI~~ → **deferred to Phase 1.3** | UI deferred; backend in Phase 1.2 |
+| 12 | Brihat Kundali report route (already in CPath-1 item 6) + Numerology report route | Non-Brihat remaining routes staggered to 1.3 if budget tight |
+| 13 | Case Study collection + import endpoint + batch validation runner (backend) | Needs full engine from CPath-1 |
+| 13a | ~~Library Console Case Studies tab UI~~ → **deferred to Phase 1.3** | UI deferred; backend in Phase 1.2 |
 | 14 | `user_context_profile` schema + β/γ hook integration | Needs Tranche Filter from CPath-1 |
 
-### Phase 1.3 (Hours 125–150) — If Budget Holds
+### Phase 1.3 (Hours 125–155) — Deferred UI + Calibration
 
 | # | Deliverable | Note |
 |---|---|---|
-| 15 | Test Console + Voice Profiles editor (Library Console tabs 4–5) | Editorial tooling — valuable but not blocking |
-| 16 | `science_registry` editor in Library Console | Operational refinement |
-| 17 | Threshold recalibration using case study results | Empirical improvement pass |
+| 15 | Arc Angel left nav panel UI (4-column donut chart panel) | Backend live from Phase 1.2 |
+| 16 | Library Console Case Studies tab UI | Backend live from Phase 1.2 |
+| 17 | Test Console + Voice Profiles editor (Library Console tabs 4–5) | Editorial tooling — valuable but not blocking |
+| 18 | Remaining report API routes not completed in Phase 1.2 | Longevity, KP, etc. |
+| 19 | `science_registry` editor in Library Console | Operational refinement |
+| 20 | Threshold recalibration using case study results | Empirical improvement pass |
 
 ### Separate Phase 1 Commissions (Not in Commission I Hours)
 
