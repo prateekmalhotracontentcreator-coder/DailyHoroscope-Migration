@@ -85,6 +85,7 @@ from notification_log_router import router as notification_log_router
 from lumina_router import router as lumina_router
 from palmistry_router import router as palmistry_router
 from knowledge_engine import configure_default_knowledge_engine
+from knowledge_schema import KnowledgeNarrativeRequest, KnowledgeNarrativeResponse
 try:
     from longevity_router import router as longevity_router
     _longevity_router_ok = True
@@ -1843,6 +1844,42 @@ async def get_my_payments(request: Request):
         if hasattr(created_at, "isoformat"): created_at = created_at.isoformat()
         result.append({"id": p.get("id", ""), "report_type": p.get("report_type", ""), "amount": p.get("amount", 0), "status": p.get("status", ""), "created_at": str(created_at)})
     return {"payments": result}
+
+
+@api_router.post("/knowledge/generate-narrative", response_model=KnowledgeNarrativeResponse)
+async def generate_knowledge_narrative(payload: KnowledgeNarrativeRequest, request: Request):
+    try:
+        engine = getattr(request.app.state, "knowledge_engine", None)
+        if engine is None:
+            engine = await configure_default_knowledge_engine(db)
+            request.app.state.knowledge_engine = engine
+            request.app.state.knowledge_index_store = engine.index_store
+
+        matched_rules = await engine.scan_chart(
+            chart=payload.chart,
+            categories=payload.categories or None,
+            max_rules=payload.max_rules,
+            context=payload.context,
+        )
+        return await engine.generate_narrative(
+            matched_rules=matched_rules,
+            chart=payload.chart,
+            context=payload.context,
+            user_context=payload.user_context,
+            author_voice_id=payload.author_voice_id,
+            tension_blocks=payload.tension_blocks,
+            model=payload.model,
+        )
+    except Exception as exc:
+        logging.error("Knowledge narrative endpoint failed: %s", exc)
+        return KnowledgeNarrativeResponse(
+            rule_count=0,
+            matched_domains=[],
+            narratives=[],
+            author_voice_id=payload.author_voice_id,
+            model=payload.model,
+            error=f"Knowledge narrative request failed: {exc}",
+        )
 
 app.include_router(api_router)
 app.include_router(panchang_router)

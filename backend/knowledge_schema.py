@@ -351,6 +351,7 @@ class KnowledgeRequestContext(StrictDocument):
     alpha: float | ContextSignal = 1.0
     beta: float | ContextSignal = 1.0
     gamma: float | ContextSignal = 1.0
+    tension_blocks: list["TensionBlock"] = Field(default_factory=list)
 
 
 class TensionClaim(StrictDocument):
@@ -372,6 +373,38 @@ class TensionBlock(StrictDocument):
     tranche_adjustments_applied: bool = False
     low_confidence: bool = False
     claims: list[TensionClaim] = Field(default_factory=list)
+
+
+class KnowledgeNarrativeDomain(StrictDocument):
+    domain: str
+    headline: str
+    body: list[str] = Field(default_factory=list)
+    lucky_elements: dict[str, Any] = Field(default_factory=dict)
+    timing_window: str
+    confidence_tier: ConfidenceBand
+
+
+class KnowledgeNarrativeRequest(StrictDocument):
+    chart: dict[str, Any] = Field(default_factory=dict)
+    categories: list[str] = Field(default_factory=list)
+    max_rules: int = Field(default=50, ge=1, le=100)
+    context: KnowledgeRequestContext = Field(default_factory=KnowledgeRequestContext)
+    tension_blocks: list[TensionBlock] = Field(default_factory=list)
+    user_context: dict[str, Any] = Field(default_factory=dict)
+    author_voice_id: str | None = None
+    model: str | None = None
+
+
+class KnowledgeNarrativeResponse(StrictDocument):
+    rule_count: int = Field(default=0, ge=0)
+    matched_domains: list[str] = Field(default_factory=list)
+    narratives: list[KnowledgeNarrativeDomain] = Field(default_factory=list)
+    author_voice_id: str | None = None
+    model: str | None = None
+    error: str | None = None
+
+
+KnowledgeRequestContext.model_rebuild()
 
 
 def knowledge_collection_models() -> dict[str, type[BaseModel]]:
