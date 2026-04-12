@@ -1,6 +1,5 @@
 {
   "_comment": "Phase 1 master book list. Run all books in one command: python scripts/batch_ingest.py --master scripts/BOOKS_MASTER_CONFIG.json --mongo-url $MONGO_URL --db-name $DB_NAME --output-dir ./output",
-  "_note_single_files": "BPHS, Phaladeepika and 300 Important Combinations are single-file entries. Confirm the filename in each .json matches your actual PDF file.",
   "books": [
     {
       "config": "scripts/a_text_book_of_astrology.json",
@@ -8,7 +7,7 @@
     },
     {
       "config": "scripts/lal_kitab.json",
-      "books_dir": "~/Documents/Knowledge Engine_eBooks/LalKitab/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/LALKITAB/"
     },
     {
       "config": "scripts/longevity_astro_system.json",
@@ -16,11 +15,11 @@
     },
     {
       "config": "scripts/bphs.json",
-      "books_dir": "~/Documents/Knowledge Engine_eBooks/BPHS/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/"
     },
     {
       "config": "scripts/phaladeepika.json",
-      "books_dir": "~/Documents/Knowledge Engine_eBooks/Phaladeepika/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/"
     },
     {
       "config": "scripts/300_horoscopes_vol1.json",
@@ -32,7 +31,7 @@
     },
     {
       "config": "scripts/300_important_combinations_bv_raman.json",
-      "books_dir": "~/Documents/Knowledge Engine_eBooks/300ImportantCombinations/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/"
     }
   ]
 }
