@@ -3,7 +3,7 @@
   "science_id": "vedic_astrology",
   "voice": "modern_analytical",
   "categories": "career,wealth,relationships,health,education,spirituality,longevity,general",
-  "max_rules_per_chapter": 100,
+  "max_rules_per_chapter": 300,
   "min_words": 45,
   "paraphrase_mode": "openai",
   "chapters": [
