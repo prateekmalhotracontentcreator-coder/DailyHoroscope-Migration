@@ -1,34 +1,42 @@
 {
   "_comment": "Phase 1 master book list. Run all books in one command: python scripts/batch_ingest.py --master scripts/BOOKS_MASTER_CONFIG.json --mongo-url $MONGO_URL --db-name $DB_NAME --output-dir ./output",
-  "_note_bphs": "BPHS and Phaladeepika are single-file entries. Update 'books_dir' to the folder containing those PDFs, and confirm the filename in bphs.json / phaladeepika.json matches your actual file.",
+  "_note_bphs": "BPHS, Phaladeepika, Saravali and 300 Important Combinations are single-file entries. Confirm the filename in each .json matches your actual PDF file.",
   "books": [
     {
       "config": "scripts/a_text_book_of_astrology.json",
-      "books_dir": "~/Books/Phase1/ATextBookOfAstrology/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/ATextBookOfAstrology/"
     },
     {
       "config": "scripts/lal_kitab.json",
-      "books_dir": "~/Books/Phase1/LalKitab/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/LalKitab/"
     },
     {
       "config": "scripts/longevity_astro_system.json",
-      "books_dir": "~/Books/Phase1/LongevityAstroSystem/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/LongevityAstroSystem/"
     },
     {
       "config": "scripts/bphs.json",
-      "books_dir": "~/Books/Phase1/BPHS/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/BPHS/"
     },
     {
       "config": "scripts/phaladeepika.json",
-      "books_dir": "~/Books/Phase1/Phaladeepika/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/Phaladeepika/"
     },
     {
       "config": "scripts/300_horoscopes_vol1.json",
-      "books_dir": "~/Books/Phase1/300HoroscopesVol1/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/300HoroscopesVol1/"
     },
     {
       "config": "scripts/longevity_unnatural_death.json",
-      "books_dir": "~/Books/Phase1/LongevityUnnaturalDeath/"
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/LongevityUnnaturalDeath/"
+    },
+    {
+      "config": "scripts/300_important_combinations_bv_raman.json",
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/300ImportantCombinations/"
+    },
+    {
+      "config": "scripts/saravali.json",
+      "books_dir": "~/Documents/Knowledge Engine_eBooks/Saravali/"
     }
   ]
 }
