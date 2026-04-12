@@ -1,0 +1,31 @@
+{
+  "book": "A Book of 300 Important Horoscopes Vol-I",
+  "science_id": "vedic_astrology",
+  "voice": "modern_analytical",
+  "categories": "career,wealth,relationships,health,family,longevity,general",
+  "max_rules_per_chapter": 100,
+  "min_words": 45,
+  "paraphrase_mode": "openai",
+  "chapters": [
+    { "file": "1_Role and Significations of Nodes.pdf", "name": "Chapter 1 — Role and Significations of Nodes" },
+    { "file": "2_Some Fundamental Rules.pdf", "name": "Chapter 2 — Some Fundamental Rules" },
+    { "file": "3_Star Lord System.pdf", "name": "Chapter 3 — Star Lord System" },
+    { "file": "4_Aspects Dhrishti.pdf", "name": "Chapter 4 — Aspects (Dhrishti)" },
+    { "file": "5_Case Study Swami Sivananda.pdf", "name": "Case Study — Swami Sivananda (Dr PV Kuppuswamy)" },
+    { "file": "6_Case Study Pandit Nehru.pdf", "name": "Case Study — Prime Minister Pandit Jawaharlal Nehru" },
+    { "file": "7_Case Study Cath Philips.pdf", "name": "Case Study — Lesbian Cath Philips" },
+    { "file": "8_Case Study Indian Railway Employee.pdf", "name": "Case Study — Indian Railway Employee" },
+    { "file": "9_Case Study Chartered Accountant.pdf", "name": "Case Study — Chartered Accountant and Astrologer" },
+    { "file": "10_Case Study Nelson Mandela.pdf", "name": "Case Study — South African President Nelson Mandela" },
+    { "file": "11_Case Study Love Marriage.pdf", "name": "Case Study — Love Marriage with Other Caste Woman" },
+    { "file": "12_Case Study Giani Zail Singh.pdf", "name": "Case Study — Indian President 07: Giani Zail Singh" },
+    { "file": "13_Case Study Army Soldier.pdf", "name": "Case Study — Person Employed in Army as Soldier" },
+    { "file": "14_Case Study Marital Discord.pdf", "name": "Case Study — Marital Discord and Foreign Settlement" },
+    { "file": "15_Case Study Mahatma Gandhi.pdf", "name": "Case Study — Rashtrapita Mahatma Gandhi" },
+    { "file": "16_Case Study Stock Market Investor.pdf", "name": "Case Study — Stock Market Investor" },
+    { "file": "17_Case Study Dr Zakir Hussain.pdf", "name": "Case Study — Indian President 03: Dr. Zakir Hussain" },
+    { "file": "18_Case Study Girl in Teens.pdf", "name": "Case Study — Girl in Teens: Predicted High Level Job" },
+    { "file": "19_Case Study Family Discord.pdf", "name": "Case Study — Family Related Discord" },
+    { "file": "20_Vimshottari Maha Dasha.pdf", "name": "Chapter — Vimshottari Maha Dasha (VMD)" }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "book": "Longevity and Un-Natural Death",
+  "science_id": "vedic_astrology",
+  "voice": "modern_analytical",
+  "categories": "longevity,health,general",
+  "max_rules_per_chapter": 100,
+  "min_words": 45,
+  "paraphrase_mode": "openai",
+  "chapters": [
+    { "file": "1_Some Fundamental Rules.pdf", "name": "Chapter 1 — Some Fundamental Rules" },
+    { "file": "2_Badhaka and Maraca.pdf", "name": "Chapter 2 — Badhaka and Maraca" },
+    { "file": "3_Significations of Houses and Planets.pdf", "name": "Chapter 3 — Significations of Houses and Planets" },
+    { "file": "4_Significations of Nodes.pdf", "name": "Chapter 4 — Significations of Nodes" },
+    { "file": "5_Case Study Abraham Lincoln.pdf", "name": "Case Study — Abraham Lincoln" },
+    { "file": "6_Case Study Mohandas Gandhi.pdf", "name": "Case Study — Mohandas Gandhi" }
+  ]
+}
