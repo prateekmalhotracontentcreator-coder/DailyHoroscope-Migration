@@ -1,21 +1,34 @@
 {
-  "_comment": "Master list of all Phase 1 books. Run: python scripts/batch_ingest.py --master scripts/BOOKS_MASTER_CONFIG.json --mongo-url $MONGO_URL --db-name $DB_NAME",
+  "_comment": "Phase 1 master book list. Run all books in one command: python scripts/batch_ingest.py --master scripts/BOOKS_MASTER_CONFIG.json --mongo-url $MONGO_URL --db-name $DB_NAME --output-dir ./output",
+  "_note_bphs": "BPHS and Phaladeepika are single-file entries. Update 'books_dir' to the folder containing those PDFs, and confirm the filename in bphs.json / phaladeepika.json matches your actual file.",
   "books": [
     {
-      "config": "scripts/bphs.json",
-      "books_dir": "~/Books/Phase1/BPHS/"
+      "config": "scripts/a_text_book_of_astrology.json",
+      "books_dir": "~/Books/Phase1/ATextBookOfAstrology/"
     },
     {
       "config": "scripts/lal_kitab.json",
       "books_dir": "~/Books/Phase1/LalKitab/"
     },
     {
-      "config": "scripts/saravali.json",
-      "books_dir": "~/Books/Phase1/Saravali/"
+      "config": "scripts/longevity_astro_system.json",
+      "books_dir": "~/Books/Phase1/LongevityAstroSystem/"
     },
     {
-      "config": "scripts/jataka_parijata.json",
-      "books_dir": "~/Books/Phase1/JatakaParijata/"
+      "config": "scripts/bphs.json",
+      "books_dir": "~/Books/Phase1/BPHS/"
+    },
+    {
+      "config": "scripts/phaladeepika.json",
+      "books_dir": "~/Books/Phase1/Phaladeepika/"
+    },
+    {
+      "config": "scripts/300_horoscopes_vol1.json",
+      "books_dir": "~/Books/Phase1/300HoroscopesVol1/"
+    },
+    {
+      "config": "scripts/longevity_unnatural_death.json",
+      "books_dir": "~/Books/Phase1/LongevityUnnaturalDeath/"
     }
   ]
 }

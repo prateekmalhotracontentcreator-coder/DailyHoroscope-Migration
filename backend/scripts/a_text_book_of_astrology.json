@@ -1,0 +1,23 @@
+{
+  "book": "A Text Book of Astrology",
+  "science_id": "vedic_astrology",
+  "voice": "modern_analytical",
+  "categories": "career,wealth,relationships,health,education,spirituality,longevity,general",
+  "max_rules_per_chapter": 100,
+  "min_words": 45,
+  "paraphrase_mode": "openai",
+  "chapters": [
+    { "file": "1_Horoscope & Houses.pdf", "name": "Chapter 1 — Horoscope & Houses" },
+    { "file": "2_Houses - Their Significations.pdf", "name": "Chapter 2 — Houses: Their Significations" },
+    { "file": "3_Planets & Their Characteristics.pdf", "name": "Chapter 3 — Planets & Their Characteristics" },
+    { "file": "4_Characteristics of Signs.pdf", "name": "Chapter 4 — Characteristics of Signs" },
+    { "file": "9_Casting of Lagna & Chalit Chart.pdf", "name": "Chapter 9 — Casting of Lagna & Chalit Chart" },
+    { "file": "10_Dasha Calculation.pdf", "name": "Chapter 10 — Dasha Calculation" },
+    { "file": "11_Divisional Charts.pdf", "name": "Chapter 11 — Divisional Charts" },
+    { "file": "12_Panchang.pdf", "name": "Chapter 12 — Panchang" },
+    { "file": "13_Sunrise, Sunset, Ingress.pdf", "name": "Chapter 13 — Sunrise, Sunset, Ingress" },
+    { "file": "14_Phases of Moon.pdf", "name": "Chapter 14 — Phases of Moon" },
+    { "file": "15_Planets in Different Houses - Prediction.pdf", "name": "Chapter 15 — Planets in Different Houses: Prediction" },
+    { "file": "16_Planetary Combinations or Yogas.pdf", "name": "Chapter 16 — Planetary Combinations & Yogas" }
+  ]
+}
