@@ -8,12 +8,12 @@
   "paraphrase_mode": "openai",
   "chapters": [
     { "file": "1_A Word of Caution.pdf", "name": "Chapter 1 — A Word of Caution" },
-    { "file": "2_Introduction to Lal Kitab.pdf", "name": "Chapter 2 — Introduction: Principle, Culture, Use" },
+    { "file": "2_Introduction to Lal Kitab Principle, Culture, Use.pdf", "name": "Chapter 2 — Introduction: Principle, Culture, Use" },
     { "file": "3_Main Constituents of Effective Astrology.pdf", "name": "Chapter 3 — Main Constituents of Effective Astrology" },
-    { "file": "4_Position of Signs Corresponding to Parts of Body.pdf", "name": "Chapter 4 — Position of Signs: Parts of Body (Kalapurusha)" },
+    { "file": "4_Position of Signs Correspoding to Parts of Body Based on Kalapurusha.pdf", "name": "Chapter 4 — Position of Signs: Parts of Body (Kalapurusha)" },
     { "file": "5_Lal Kitab and Birth Chart.pdf", "name": "Chapter 5 — Lal Kitab and Birth Chart" },
     { "file": "6_Lal Kitab and Nature of Planets.pdf", "name": "Chapter 6 — Lal Kitab and Nature of Planets" },
-    { "file": "7_Introduction to Twelve Signs.pdf", "name": "Chapter 7 — Introduction to Twelve Signs (Rashi)" },
+    { "file": "7_Introduction to Twelve Signs (Raashi).pdf", "name": "Chapter 7 — Introduction to Twelve Signs (Rashi)" },
     { "file": "8_Lal Kitab and Twelve Houses.pdf", "name": "Chapter 8 — Lal Kitab and Twelve Houses" },
     { "file": "9_Sun and the Effect of the Twelve Houses.pdf", "name": "Chapter 9 — Sun: Effect in the Twelve Houses" },
     { "file": "10_Moon and the Effect of the Twelve Houses.pdf", "name": "Chapter 10 — Moon: Effect in the Twelve Houses" },
@@ -24,7 +24,7 @@
     { "file": "15_Saturn and the Effect of the Twelve Houses.pdf", "name": "Chapter 15 — Saturn: Effect in the Twelve Houses" },
     { "file": "16_Rahu and the Effect of the Twelve Houses.pdf", "name": "Chapter 16 — Rahu: Effect in the Twelve Houses" },
     { "file": "17_Ketu and the Effect of the Twelve Houses.pdf", "name": "Chapter 17 — Ketu: Effect in the Twelve Houses" },
-    { "file": "18_Bhav Grab Phala.pdf", "name": "Chapter 18 — Bhav Grab Phala: Effect of Planet Corresponding to House" },
+    { "file": "18_Bhav Grah Phala (Effect of Planet Corresponding to House).pdf", "name": "Chapter 18 — Bhav Grah Phala: Effect of Planet Corresponding to House" },
     { "file": "19_Lal Kitab on Mangalik Evil.pdf", "name": "Chapter 19 — Lal Kitab on Mangalik Evil", "categories": "relationships,family,general" },
     { "file": "20_Lal Kitab on Diseases.pdf", "name": "Chapter 20 — Lal Kitab on Diseases", "categories": "health,longevity,general" },
     { "file": "21_Lal Kitab and Freedom From Debt.pdf", "name": "Chapter 21 — Lal Kitab and Freedom from Debt", "categories": "wealth,career,general" },
@@ -32,9 +32,9 @@
     { "file": "23_Lal Kitab and Family Happiness.pdf", "name": "Chapter 23 — Lal Kitab and Family Happiness", "categories": "family,relationships,general" },
     { "file": "24_Lal Kitab and Determination of Age.pdf", "name": "Chapter 24 — Lal Kitab and Determination of Age", "categories": "longevity,health,general" },
     { "file": "25_Remedial Measures for Planetary Dosh.pdf", "name": "Chapter 25 — Remedial Measures for Planetary Dosh", "categories": "spirituality,general" },
-    { "file": "26_Daywise Remedies.pdf", "name": "Chapter 26 — Daywise Remedies", "categories": "spirituality,general" },
-    { "file": "27_Lords of Planets Parts of Body and Objects.pdf", "name": "Chapter 27 — Lords of Planets, Parts of Body and Objects" },
-    { "file": "28_Varsaphalam.pdf", "name": "Chapter 28 — Varsaphalam (Annual Horoscope)" },
+    { "file": "26_Daywise Remedies (Totaka).pdf", "name": "Chapter 26 — Daywise Remedies", "categories": "spirituality,general" },
+    { "file": "27_Lords of Planets, Parts of Body and Objects.pdf", "name": "Chapter 27 — Lords of Planets, Parts of Body and Objects" },
+    { "file": "28_Varsaphalam (Horoscope).pdf", "name": "Chapter 28 — Varsaphalam (Annual Horoscope)" },
     { "file": "29_Forecasting on the Basis of Bodily Traits.pdf", "name": "Chapter 29 — Forecasting on the Basis of Bodily Traits" }
   ]
 }
