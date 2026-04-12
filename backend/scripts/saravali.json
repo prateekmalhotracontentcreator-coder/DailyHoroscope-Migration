@@ -1,0 +1,13 @@
+{
+  "book": "Saravali",
+  "science_id": "vedic_astrology",
+  "voice": "classical",
+  "categories": "career,wealth,relationships,health,family,longevity,spirituality,general",
+  "max_rules_per_chapter": 500,
+  "min_words": 45,
+  "paraphrase_mode": "openai",
+  "_note": "Single-file book by Kalyana Varma. Update 'file' below to your actual PDF filename. max_rules_per_chapter set high (500) for full-book processing. If you have chapter-wise PDFs, replace this entry with per-chapter entries and reset max_rules_per_chapter to 100.",
+  "chapters": [
+    { "file": "Saravali_Complete.pdf", "name": "Saravali — Full Text" }
+  ]
+}
