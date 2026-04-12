@@ -1,6 +1,6 @@
 {
   "_comment": "Phase 1 master book list. Run all books in one command: python scripts/batch_ingest.py --master scripts/BOOKS_MASTER_CONFIG.json --mongo-url $MONGO_URL --db-name $DB_NAME --output-dir ./output",
-  "_note_bphs": "BPHS, Phaladeepika, Saravali and 300 Important Combinations are single-file entries. Confirm the filename in each .json matches your actual PDF file.",
+  "_note_single_files": "BPHS, Phaladeepika and 300 Important Combinations are single-file entries. Confirm the filename in each .json matches your actual PDF file.",
   "books": [
     {
       "config": "scripts/a_text_book_of_astrology.json",
@@ -33,10 +33,6 @@
     {
       "config": "scripts/300_important_combinations_bv_raman.json",
       "books_dir": "~/Documents/Knowledge Engine_eBooks/300ImportantCombinations/"
-    },
-    {
-      "config": "scripts/saravali.json",
-      "books_dir": "~/Documents/Knowledge Engine_eBooks/Saravali/"
     }
   ]
 }
