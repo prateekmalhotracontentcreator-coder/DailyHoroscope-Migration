@@ -1,0 +1,165 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import json
+import os
+import re
+from datetime import datetime, timezone
+from typing import Any
+
+
+GARBAGE_RE = re.compile(
+    r"(.)\1{6,}|"
+    r"[^\x00-\x7F]{15,}|"
+    r"\b[A-Z]{20,}\b"
+)
+
+VALIDATION_SYSTEM = (
+    "You are a senior Vedic astrology scholar and knowledge engineer. "
+    "You evaluate extracted interpretation rules for correctness, coherence, "
+    "and faithfulness to classical Vedic texts including BPHS, Phaladeepika, "
+    "Lal Kitab, and other authoritative sources."
+)
+
+VALIDATION_PROMPT = """\
+Evaluate each rule below and return a JSON array - one object per rule.
+
+For each rule assess:
+1. CORRECTNESS - consistent with classical Vedic astrology?
+2. QUALITY - coherent, specific, usable as a prediction statement?
+3. FAITHFULNESS - does it faithfully paraphrase what a classical source would say?
+
+Verdict options:
+  "approve"     - correct and ready for production
+  "spot_check"  - probably fine but borderline; flag for quick human glance
+  "flag"        - incorrect, incoherent, or suspicious
+
+Return ONLY valid JSON - no markdown fences, no commentary:
+[
+  {{
+    "rule_id": "<rule_id>",
+    "verdict": "approve" | "spot_check" | "flag",
+    "reason": "<one sentence - required for spot_check and flag, empty for approve>",
+    "corrected_confidence": "HIGH" | "MEDIUM" | "LOW"
+  }}
+]
+
+Rules to evaluate:
+{rules_json}
+"""
+
+CONTRADICTION_PROMPT = """\
+Check whether any rules below directly contradict each other.
+Different emphasis or wording across books is NOT a contradiction.
+A true contradiction is when two rules make opposite factual claims about
+the same planetary placement (e.g. one says "gives wealth", another says
+"destroys wealth" for identical conditions).
+
+Return ONLY valid JSON - no markdown fences:
+[
+  {{
+    "rule_id_a": "...",
+    "rule_id_b": "...",
+    "contradiction_summary": "<one sentence>"
+  }}
+]
+Return an empty array [] if no contradictions found.
+
+Rules to compare:
+{rules_json}
+"""
+
+
+class RuleValidator:
+    def __init__(self, model: str = "claude-haiku-4-5"):
+        self.model = model
+        self._client = None
+
+    def _get_client(self):
+        if self._client is None:
+            try:
+                import anthropic  # type: ignore
+            except ImportError as exc:
+                raise RuntimeError("anthropic package not installed") from exc
+            api_key = os.getenv("ANTHROPIC_API_KEY")
+            if not api_key:
+                raise RuntimeError("ANTHROPIC_API_KEY not set in environment")
+            self._client = anthropic.Anthropic(api_key=api_key)
+        return self._client
+
+    @staticmethod
+    def _current_confidence(rule: dict) -> str:
+        validation = rule.get("validation") or {}
+        if validation.get("corrected_confidence"):
+            return str(validation["corrected_confidence"]).upper()
+        passages = ((rule.get("interpretation") or {}).get("full_text_passages") or [])
+        if passages:
+            confidence = passages[0].get("confidence")
+            if confidence:
+                return str(confidence).upper()
+        return "MEDIUM"
+
+    def structural_check(self, rule: dict) -> tuple[bool, str]:
+        interp = rule.get("interpretation") or {}
+        detailed = (interp.get("detailed") or "").strip()
+        summary = (interp.get("summary") or "").strip()
+        if not detailed and not summary:
+            return False, "empty_interpretation"
+        text = detailed or summary
+        if GARBAGE_RE.search(text):
+            return False, "ocr_garbage_detected"
+        if len(text.split()) < 8:
+            return False, "interpretation_too_short"
+        condition = rule.get("condition")
+        if not condition or not isinstance(condition, dict):
+            return False, "missing_condition"
+        return True, "ok"
+
+    def _rule_to_prompt_item(self, rule: dict) -> dict:
+        interp = rule.get("interpretation") or {}
+        source = rule.get("source") or {}
+        return {
+            "rule_id": rule.get("rule_id", ""),
+            "source_book": source.get("book", source.get("primary", "")),
+            "chapter": source.get("chapter", ""),
+            "condition": rule.get("condition", {}),
+            "summary": (interp.get("summary") or "")[:200],
+            "detailed": (interp.get("detailed") or "")[:400],
+            "current_confidence": self._current_confidence(rule),
+        }
+
+    def _call_claude(self, prompt: str) -> list[dict]:
+        client = self._get_client()
+        response = client.messages.create(
+            model=self.model,
+            max_tokens=4096,
+            temperature=0.1,
+            system=VALIDATION_SYSTEM,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        content = response.content[0].text.strip() if response.content else "[]"
+        content = re.sub(r"^```[a-z]*\n?", "", content)
+        content = re.sub(r"\n?```$", "", content)
+        try:
+            result = json.loads(content)
+            return result if isinstance(result, list) else []
+        except json.JSONDecodeError:
+            return []
+
+    def validate_batch(self, rules: list[dict]) -> list[dict]:
+        if not rules:
+            return []
+        items = [self._rule_to_prompt_item(rule) for rule in rules]
+        prompt = VALIDATION_PROMPT.format(rules_json=json.dumps(items, indent=2))
+        return self._call_claude(prompt)
+
+    def detect_contradictions(self, rules: list[dict]) -> list[dict]:
+        if len(rules) < 2:
+            return []
+        items = [self._rule_to_prompt_item(rule) for rule in rules]
+        prompt = CONTRADICTION_PROMPT.format(rules_json=json.dumps(items, indent=2))
+        return self._call_claude(prompt)
+
+    @staticmethod
+    def now_iso() -> str:
+        return datetime.now(timezone.utc).isoformat()
