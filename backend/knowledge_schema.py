@@ -32,7 +32,14 @@ RepresentationMode = Literal["synthesis", "tension", "honest_uncertainty"]
 BridgeType = Literal["contrast", "reinforcement", "transition", "deepening", "temporal", "cross_science"]
 ConfidenceBand = Literal["LOW", "MEDIUM", "HIGH", "VERIFIED"]
 DataQuality = Literal["low", "medium", "high"]
-ApprovalStatus = Literal["pending_review", "approved", "rejected"]
+ApprovalStatus = Literal[
+    "pending_review",
+    "approved",
+    "rejected",
+    "auto_approved",
+    "pending_human_review",
+    "flagged",
+]
 ImportStatus = Literal["staged", "validated", "imported", "failed"]
 PeriodQuality = Literal["auspicious", "neutral", "inauspicious"]
 
@@ -126,6 +133,18 @@ class RuleModifier(StrictDocument):
     note: str
 
 
+class ValidationResult(BaseModel):
+    verdict: str = ""
+    flag_reason: str = ""
+    corrected_confidence: str = ""
+    validated_by: str = ""
+    validated_at: str = ""
+    contradiction_ids: list[str] = Field(default_factory=list)
+    contradiction_summary: str = ""
+
+    model_config = ConfigDict(extra="ignore")
+
+
 class InterpretationRuleDocument(StrictDocument):
     rule_id: str
     version: int = Field(default=1, ge=1)
@@ -154,6 +173,7 @@ class InterpretationRuleDocument(StrictDocument):
     active: bool = True
     created_at: datetime = Field(default_factory=utc_now)
     updated_at: datetime = Field(default_factory=utc_now)
+    validation: ValidationResult = Field(default_factory=ValidationResult)
 
 
 class AuthorVoiceDocument(StrictDocument):

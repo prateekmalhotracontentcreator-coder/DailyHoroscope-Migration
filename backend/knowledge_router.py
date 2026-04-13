@@ -1,9 +1,14 @@
 from __future__ import annotations
 
+import asyncio
+import logging
+import os
+from collections import defaultdict
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, HTTPException, Query, Request
 from motor.motor_asyncio import AsyncIOMotorDatabase
+from pymongo import MongoClient
 
 from admin_utils import require_admin
 from knowledge_schema import (
@@ -71,6 +76,7 @@ async def list_rules(
         "priority": 1,
         "intensity_score": 1,
         "active": 1,
+        "validation": 1,
         "created_at": 1,
         "updated_at": 1,
     }
@@ -206,6 +212,167 @@ async def approve_all_batch_rules(request: Request, batch_id: str):
         },
     )
     return {"batch_id": batch_id, "rules_approved": rules_result.modified_count}
+
+
+@router.post("/validate-batch")
+async def validate_batch_endpoint(
+    request: Request,
+    batch_id: str | None = None,
+    science_id: str | None = None,
+):
+    """
+    Trigger Claude validation on pending_review rules.
+    Optional: filter by batch_id or science_id.
+    Runs as a background task and returns immediately.
+    """
+    db = _db_from_request(request)
+    await require_admin(request, db)
+    engine = _engine_from_request(request)
+
+    query: dict[str, object] = {"approval_status": "pending_review"}
+    if batch_id:
+        query["source.batch_id"] = batch_id
+    if science_id:
+        query["science_id"] = science_id
+
+    mongo_url = os.getenv("MONGO_URL", "")
+    db_name = os.getenv("DB_NAME") or getattr(db, "name", None) or "EverydayHoroscope"
+
+    def _run_sync(active_query: dict[str, object], mongo_uri: str, database_name: str) -> None:
+        from knowledge_validator import RuleValidator
+
+        if not mongo_uri:
+            raise RuntimeError("MONGO_URL is not set in the environment")
+
+        sync_client = MongoClient(mongo_uri)
+        try:
+            sync_db = sync_client[database_name]
+            rules = list(sync_db[COLLECTION_INTERPRETATION_RULES].find(active_query, {"_id": 0}))
+            validator = RuleValidator(model="claude-haiku-4-5")
+
+            all_verdicts: dict[str, dict[str, object]] = {}
+            ok_rules: list[dict] = []
+            now = utc_now().isoformat()
+
+            for rule in rules:
+                passed, reason = validator.structural_check(rule)
+                if not passed:
+                    all_verdicts[rule["rule_id"]] = {
+                        "verdict": "structural_fail",
+                        "reason": reason,
+                        "corrected_confidence": "LOW",
+                    }
+                    continue
+                ok_rules.append(rule)
+
+            batch_size = 20
+            for index in range(0, len(ok_rules), batch_size):
+                batch = ok_rules[index : index + batch_size]
+                try:
+                    results = validator.validate_batch(batch)
+                except Exception as exc:  # pragma: no cover - network/runtime dependent
+                    results = [
+                        {
+                            "rule_id": rule["rule_id"],
+                            "verdict": "spot_check",
+                            "reason": str(exc),
+                            "corrected_confidence": "MEDIUM",
+                        }
+                        for rule in batch
+                    ]
+
+                result_map = {result["rule_id"]: result for result in results if result.get("rule_id")}
+                for rule in batch:
+                    rid = rule["rule_id"]
+                    all_verdicts[rid] = result_map.get(
+                        rid,
+                        {
+                            "rule_id": rid,
+                            "verdict": "spot_check",
+                            "reason": "no_response_from_model",
+                            "corrected_confidence": "MEDIUM",
+                        },
+                    )
+
+            groups: dict[str, list[dict]] = defaultdict(list)
+            for rule in ok_rules:
+                cond = rule.get("condition") or {}
+                key = f"{cond.get('type', '')}|{cond.get('planet', '')}|{cond.get('house', cond.get('sign', ''))}"
+                groups[key].append(rule)
+
+            contradiction_map: dict[str, list[str]] = defaultdict(list)
+            contradiction_summary_map: dict[str, str] = {}
+            for group_rules in groups.values():
+                if len(group_rules) < 2:
+                    continue
+                try:
+                    pairs = validator.detect_contradictions(group_rules)
+                except Exception:  # pragma: no cover - network/runtime dependent
+                    pairs = []
+                for pair in pairs:
+                    rule_id_a = pair.get("rule_id_a", "")
+                    rule_id_b = pair.get("rule_id_b", "")
+                    if not rule_id_a or not rule_id_b:
+                        continue
+                    contradiction_map[rule_id_a].append(rule_id_b)
+                    contradiction_map[rule_id_b].append(rule_id_a)
+                    summary = pair.get("contradiction_summary", "")
+                    if summary:
+                        contradiction_summary_map.setdefault(rule_id_a, summary)
+                        contradiction_summary_map.setdefault(rule_id_b, summary)
+
+            status_map = {
+                "approve": "auto_approved",
+                "spot_check": "pending_human_review",
+                "flag": "flagged",
+                "structural_fail": "rejected",
+            }
+            for rule in rules:
+                rid = rule["rule_id"]
+                verdict_info = all_verdicts.get(
+                    rid,
+                    {"verdict": "spot_check", "reason": "", "corrected_confidence": "MEDIUM"},
+                )
+                verdict = str(verdict_info.get("verdict", "spot_check"))
+                reason = str(verdict_info.get("reason", ""))
+                corrected_confidence = str(verdict_info.get("corrected_confidence", "MEDIUM"))
+                contradiction_ids = contradiction_map.get(rid, [])
+                if verdict == "approve" and contradiction_ids:
+                    verdict = "spot_check"
+                    reason = f"Contradicts: {', '.join(contradiction_ids)}"
+                sync_db[COLLECTION_INTERPRETATION_RULES].update_one(
+                    {"rule_id": rid},
+                    {
+                        "$set": {
+                            "approval_status": status_map.get(verdict, "pending_review"),
+                            "validation": {
+                                "verdict": verdict,
+                                "flag_reason": reason,
+                                "corrected_confidence": corrected_confidence,
+                                "validated_by": "claude-haiku-4-5",
+                                "validated_at": now,
+                                "contradiction_ids": contradiction_ids,
+                                "contradiction_summary": contradiction_summary_map.get(rid, ""),
+                            },
+                            "updated_at": utc_now(),
+                        }
+                    },
+                )
+        finally:
+            sync_client.close()
+
+    async def _run() -> None:
+        try:
+            await asyncio.to_thread(_run_sync, dict(query), mongo_url, db_name)
+            engine.schedule_index_refresh()
+        except Exception:
+            logging.exception("Knowledge rule validation background task failed")
+
+    asyncio.create_task(_run())
+    return {
+        "status": "validation_started",
+        "message": "Validation running in background. Check Rules Browser in ~3 minutes.",
+    }
 
 
 @router.get("/index/status")

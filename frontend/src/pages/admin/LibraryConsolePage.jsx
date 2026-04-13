@@ -31,6 +31,9 @@ const STATUS_BADGES = {
   pending_review: 'bg-yellow-500/20 text-yellow-400',
   approved: 'bg-green-500/20 text-green-400',
   rejected: 'bg-red-500/20 text-red-400',
+  auto_approved: 'bg-green-500/20 text-green-400',
+  pending_human_review: 'bg-amber-500/20 text-amber-400',
+  flagged: 'bg-red-500/20 text-red-400',
 };
 
 const STRENGTH_BADGES = {
@@ -91,7 +94,7 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   const [activeTab, setActiveTab] = useState('rules');
   const [scienceInput, setScienceInput] = useState('');
   const [debouncedScienceId, setDebouncedScienceId] = useState('');
-  const [approvalStatus, setApprovalStatus] = useState('');
+  const [statusFilter, setStatusFilter] = useState('');
   const [strengthBand, setStrengthBand] = useState('');
   const [rules, setRules] = useState([]);
   const [rulesLoading, setRulesLoading] = useState(false);
@@ -105,6 +108,7 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   const [batches, setBatches] = useState([]);
   const [batchesLoading, setBatchesLoading] = useState(false);
   const [batchActionId, setBatchActionId] = useState(null);
+  const [validationBatchId, setValidationBatchId] = useState(null);
   const [indexStatus, setIndexStatus] = useState(null);
   const [indexLoading, setIndexLoading] = useState(false);
   const [refreshingIndex, setRefreshingIndex] = useState(false);
@@ -125,11 +129,17 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   const currentRuleFilters = useMemo(
     () => ({
       science_id: debouncedScienceId || undefined,
-      approval_status: approvalStatus || undefined,
       strength_band: strengthBand || undefined,
     }),
-    [approvalStatus, debouncedScienceId, strengthBand]
+    [debouncedScienceId, strengthBand]
   );
+
+  const displayedRules = useMemo(() => {
+    if (!statusFilter) {
+      return rules;
+    }
+    return rules.filter((rule) => rule.approval_status === statusFilter);
+  }, [rules, statusFilter]);
 
   const fetchRules = async (targetPage = page, filtersOverride = null) => {
     if (!canLoad) {
@@ -213,7 +223,6 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   const handleLoadRules = async () => {
     const nextFilters = {
       science_id: scienceInput.trim() || undefined,
-      approval_status: approvalStatus || undefined,
       strength_band: strengthBand || undefined,
     };
     setDebouncedScienceId(scienceInput.trim());
@@ -314,6 +323,26 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     }
   };
 
+  const handleRunValidation = async (batchId) => {
+    setValidationBatchId(batchId);
+    try {
+      const headers = getAuthHeaders();
+      const response = await fetch(
+        `${BACKEND_URL}/api/knowledge/validate-batch?batch_id=${encodeURIComponent(batchId)}`,
+        { method: 'POST', headers }
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.detail || data?.message || 'Validation request failed');
+      }
+      toast.success(data.message || 'Validation started - check Rules Browser in ~3 minutes.');
+    } catch (error) {
+      toast.error(`Validation request failed: ${error.message}`);
+    } finally {
+      setValidationBatchId(null);
+    }
+  };
+
   const handleRefreshIndex = async () => {
     const preRefreshBuiltAt = indexStatus?.built_at || null;
     setRefreshingIndex(true);
@@ -348,6 +377,46 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
 
   if (authLoading) {
     return <div className="text-center py-8 text-gray-400">Loading...</div>;
+  }
+
+  function ValidationBadge({ rule }) {
+    const status = rule.approval_status;
+    const reason = rule.validation?.flag_reason || rule.validation?.contradiction_summary || '';
+    const map = {
+      auto_approved: {
+        label: 'Auto-approved',
+        color: 'bg-green-500/15 text-green-400 border-green-500/30',
+      },
+      pending_human_review: {
+        label: 'Spot-check',
+        color: 'bg-amber-500/15 text-amber-400 border-amber-500/30',
+      },
+      flagged: {
+        label: 'Flagged',
+        color: 'bg-red-500/15 text-red-400 border-red-500/30',
+      },
+      rejected: {
+        label: 'Rejected',
+        color: 'bg-zinc-500/15 text-zinc-400 border-zinc-500/30',
+      },
+      pending_review: {
+        label: 'Pending',
+        color: 'bg-blue-500/15 text-blue-400 border-blue-500/30',
+      },
+      approved: {
+        label: 'Approved',
+        color: 'bg-green-500/15 text-green-400 border-green-500/30',
+      },
+    };
+    const cfg = map[status] || map.pending_review;
+    return (
+      <span
+        className={`inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium ${cfg.color}`}
+        title={reason || undefined}
+      >
+        {cfg.label}
+      </span>
+    );
   }
 
   return (
@@ -405,16 +474,18 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
                 </div>
                 <div className="min-w-[180px]">
                   <label className="text-xs uppercase tracking-wide text-gray-400 mb-2 block">
-                    Approval Status
+                    Validation Status
                   </label>
                   <select
-                    value={approvalStatus}
-                    onChange={(event) => setApprovalStatus(event.target.value)}
+                    value={statusFilter}
+                    onChange={(event) => setStatusFilter(event.target.value)}
                     className="w-full rounded-md border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white focus:outline-none"
                   >
-                    <option value="">All</option>
-                    <option value="pending_review">Pending Review</option>
-                    <option value="approved">Approved</option>
+                    <option value="">All statuses</option>
+                    <option value="pending_review">Pending</option>
+                    <option value="auto_approved">Auto-approved</option>
+                    <option value="pending_human_review">Spot-check</option>
+                    <option value="flagged">Flagged</option>
                     <option value="rejected">Rejected</option>
                   </select>
                 </div>
@@ -461,7 +532,7 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
                     </tr>
                   </thead>
                   <tbody>
-                    {rules.map((rule) => {
+                    {displayedRules.map((rule) => {
                       const detail = expandedRuleDetails[rule.rule_id];
                       const isExpanded = expandedRuleId === rule.rule_id;
                       const isDetailLoading = detailLoadingId === rule.rule_id;
@@ -483,9 +554,7 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
                               </span>
                             </td>
                             <td className="px-4 py-3">
-                              <span className={`inline-flex rounded-full px-2 py-1 text-xs font-medium ${badgeClass(STATUS_BADGES, rule.approval_status)}`}>
-                                {rule.approval_status}
-                              </span>
+                              <ValidationBadge rule={rule} />
                             </td>
                             <td className="px-4 py-3">
                               <div className="flex flex-wrap gap-2">
@@ -575,7 +644,7 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
                         </React.Fragment>
                       );
                     })}
-                    {rules.length === 0 && (
+                    {displayedRules.length === 0 && (
                       <tr>
                         <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
                           No rules found.
@@ -673,20 +742,29 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
                     <p className="text-sm text-gray-400">
                       Created {formatDate(batch.created_at)}
                     </p>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      disabled={batch.approval_status === 'approved' || batchActionId === batch.batch_id}
-                      onClick={() => handleApproveAll(batch.batch_id)}
-                      className="border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/10"
-                    >
-                      {batchActionId === batch.batch_id ? (
-                        <Loader2 className="h-3.5 w-3.5 animate-spin mr-1.5" />
-                      ) : (
-                        <CheckCircle2 className="h-3.5 w-3.5 mr-1.5" />
-                      )}
-                      Approve All Rules
-                    </Button>
+                    <div className="flex gap-2 flex-wrap">
+                      <button
+                        onClick={() => handleRunValidation(batch.batch_id)}
+                        disabled={validationBatchId === batch.batch_id}
+                        className="rounded-lg border border-indigo-500/30 bg-indigo-500/10 px-3 py-1.5 text-xs text-indigo-400 hover:bg-indigo-500/20 disabled:opacity-60"
+                      >
+                        {validationBatchId === batch.batch_id ? 'Starting...' : 'Run Validation'}
+                      </button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        disabled={batch.approval_status === 'approved' || batchActionId === batch.batch_id}
+                        onClick={() => handleApproveAll(batch.batch_id)}
+                        className="border-yellow-400/30 text-yellow-400 hover:bg-yellow-400/10"
+                      >
+                        {batchActionId === batch.batch_id ? (
+                          <Loader2 className="h-3.5 w-3.5 animate-spin mr-1.5" />
+                        ) : (
+                          <CheckCircle2 className="h-3.5 w-3.5 mr-1.5" />
+                        )}
+                        Approve All Rules
+                      </Button>
+                    </div>
                   </div>
                 </Card>
               ))
