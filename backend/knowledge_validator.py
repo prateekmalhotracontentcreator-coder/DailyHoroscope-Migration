@@ -29,10 +29,18 @@ For each rule assess:
 2. QUALITY - coherent, specific, usable as a prediction statement?
 3. FAITHFULNESS - does it faithfully paraphrase what a classical source would say?
 
+IMPORTANT — condition field guidance:
+- Many rules have condition: {{"type": "composite", "sub_conditions": [], "operator": "and"}}
+  This means the rule is a GENERAL astrological principle (e.g. a planet's nature, a house
+  signification, a yoga, or a general interpretive statement). This is VALID — do NOT flag
+  a rule solely because its condition is empty or composite.
+- Evaluate the "summary" and "detailed" interpretation text on its own merits.
+- Only flag if the interpretation text itself is wrong, incoherent, or garbled.
+
 Verdict options:
   "approve"     - correct and ready for production
   "spot_check"  - probably fine but borderline; flag for quick human glance
-  "flag"        - incorrect, incoherent, or suspicious
+  "flag"        - incorrect, incoherent, or suspicious (base this on the TEXT, not the condition)
 
 Return ONLY valid JSON - no markdown fences, no commentary:
 [
