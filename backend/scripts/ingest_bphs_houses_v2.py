@@ -351,8 +351,12 @@ def extracted_to_rule(
     planets     = [p for p in item.planets if p in PLANETS]
     sub_type    = item.sub_type if item.sub_type in VALID_SUB_TYPES else "general_principle"
 
-    detailed = f"Condition: {item.full_condition}\n\nEffect: {item.full_result}"
-    summary  = f"{item.condition_summary} → {item.result_summary}"
+    def _punct(s: str) -> str:
+        s = s.strip()
+        return s if (s and s[-1] in '.!?"\'') else s + '.'
+
+    detailed = f"Condition: {_punct(item.full_condition)}\n\nEffect: {_punct(item.full_result)}"
+    summary  = f"{item.condition_summary} → {_punct(item.result_summary)}"
     if len(summary) > 200:
         summary = summary[:197] + "..."
 
