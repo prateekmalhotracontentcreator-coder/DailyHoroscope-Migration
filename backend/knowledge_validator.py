@@ -116,7 +116,9 @@ class RuleValidator:
         text = detailed or summary
         if GARBAGE_RE.search(text):
             return False, "ocr_garbage_detected"
-        if len(text.split()) < 8:
+        cond_type = (rule.get("condition") or {}).get("type", "")
+        min_words = 3 if cond_type in ("planet_in_house_in_sign", "planet_in_house_special") else 8
+        if len(text.split()) < min_words:
             return False, "interpretation_too_short"
         # Detect mid-sentence truncation — text ending without punctuation
         last_char = text.strip()[-1] if text.strip() else ""
