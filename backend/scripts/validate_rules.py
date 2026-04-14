@@ -26,15 +26,18 @@ def parse_args():
     parser.add_argument("--db-name", required=True)
     parser.add_argument("--batch-size", type=int, default=20)
     parser.add_argument("--science-id", default=None, help="Filter to one science_id (default: all)")
+    parser.add_argument("--batch-id", default=None, help="Filter to one import batch_id (default: all)")
     parser.add_argument("--dry-run", action="store_true", help="Print verdicts but do NOT write to MongoDB")
     parser.add_argument("--report-path", default=None, help="Optional path to write Markdown report")
     return parser.parse_args()
 
 
-def fetch_pending(db, science_id: str | None) -> list[dict]:
+def fetch_pending(db, science_id: str | None, batch_id: str | None = None) -> list[dict]:
     query: dict = {"approval_status": "pending_review"}
     if science_id:
         query["science_id"] = science_id
+    if batch_id:
+        query["source.batch_id"] = batch_id
     return list(db["interpretation_rules"].find(query, {"_id": 0}))
 
 
@@ -150,7 +153,7 @@ def main():
         validator = RuleValidator(model="claude-haiku-4-5")
 
         print("\nFetching pending_review rules...")
-        rules = fetch_pending(db, args.science_id)
+        rules = fetch_pending(db, args.science_id, getattr(args, "batch_id", None))
         print(f"Found {len(rules)} rules to validate")
         if not rules:
             print("Nothing to do.")
