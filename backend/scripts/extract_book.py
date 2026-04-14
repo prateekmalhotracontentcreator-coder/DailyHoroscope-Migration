@@ -646,7 +646,7 @@ def paraphrase_with_openai(
     try:
         response = client.chat.completions.create(
             model=model,
-            max_tokens=900,
+            max_tokens=1800,
             temperature=0.35,
             messages=[{"role": "user", "content": prompt}],
         )

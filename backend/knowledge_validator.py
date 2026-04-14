@@ -118,6 +118,10 @@ class RuleValidator:
             return False, "ocr_garbage_detected"
         if len(text.split()) < 8:
             return False, "interpretation_too_short"
+        # Detect mid-sentence truncation — text ending without punctuation
+        last_char = text.strip()[-1] if text.strip() else ""
+        if last_char not in ".!?\"'":
+            return False, "truncated_text"
         condition = rule.get("condition")
         if not condition or not isinstance(condition, dict):
             return False, "missing_condition"
