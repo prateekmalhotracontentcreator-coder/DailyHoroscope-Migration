@@ -278,7 +278,10 @@ def main():
         print(f"  {'Total':<28} {total:>4}")
         print(f"\n  Contradictions: {len(all_contradictions)} pair(s)")
         if not args.dry_run:
-            print("\n  auto_approved rules are live after next index refresh.")
+            print("\n  auto_approved rules have approval_status='auto_approved' in MongoDB.")
+            print("  NOTE: The live backend queries approval_status='approved' only.")
+            print("  No rules reach live users until explicitly promoted to 'approved'")
+            print("  via co-founder sign-off after full Phase 1 validation.")
             print("  Review flagged rules at /admin/library -> Rules Browser -> filter: flagged")
 
         if args.report_path:
