@@ -212,12 +212,78 @@ def strip_rtf(raw: str) -> str:
     return '\n'.join(lines)
 
 
+def neutralize_notes_lists(text: str) -> str:
+    """
+    Within Notes sections, replace numbered list items like '1. text' with
+    '[1]. text' so the sloka regex won't treat them as sloka headings.
+
+    A Notes section begins at a Notes marker.  Numbered items up to 9 that
+    appear within 25 lines of the marker are treated as sub-list items and
+    neutralized.  A larger number (or one appearing further away) is assumed
+    to be a new real sloka, which exits the Notes context.
+    """
+    MAX_LIST_NUM    = 9
+    MAX_NOTES_LINES = 25
+
+    lines      = text.splitlines()
+    notes_re   = re.compile(r'\bNotes?\s*[.,:\'"]\s*', re.IGNORECASE)
+    list_re    = re.compile(r'^(\s*)(\d+)(\.\s+)')
+    in_notes   = False
+    notes_line = 0
+    result     = []
+
+    for i, line in enumerate(lines):
+        if notes_re.search(line):
+            in_notes   = True
+            notes_line = i
+
+        if in_notes:
+            m = list_re.match(line)
+            if m:
+                num = int(m.group(2))
+                gap = i - notes_line
+                if num <= MAX_LIST_NUM and gap <= MAX_NOTES_LINES:
+                    # Bracket the number so it won't match the sloka regex
+                    line = list_re.sub(r'\1[\2]\3', line, count=1)
+                else:
+                    # Large number or far from Notes marker → real sloka
+                    in_notes = False
+
+        result.append(line)
+
+    return '\n'.join(result)
+
+
 def split_into_sloka_blocks(text: str) -> list[tuple[str, str]]:
+    """
+    Split plain text into (sloka_label, block_text) tuples.
+    Handles:
+      - Single slokas:  "5. HEADING .."
+      - Sloka ranges:   "5-7. HEADING .."
+      - OCR artefacts:  "l-2." parsed as "1-2."
+      - Trailing alpha: "9-9t.", "10-13i."
+      - No space after period: "3.EXCESSIVE/"
+      - Leading quotes/apostrophes: "' 34. The native..."
+    Notes sub-list items (1., 2., ...) are neutralized before matching.
+    """
+    # Normalise OCR artefacts: leading 'l' digit → '1'
     text = re.sub(r'(?m)^\s*l(?=[-\d.])', '1', text)
-    sloka_re = re.compile(r'(?m)^[ \t]*(\d+(?:\s*[-–]\s*\d+)?)\.\s+(.+)$')
+
+    # Neutralize numbered list items inside Notes sections
+    text = neutralize_notes_lists(text)
+
+    # Extended pattern handles:
+    #   leading quotes/apostrophes, trailing alpha in numbers (9-9t, 10-13i),
+    #   no space after period (3.EXCESSIVE), optional period (23 If...),
+    #   heading must start uppercase to avoid false positives.
+    sloka_re = re.compile(
+        r"(?m)^[ \t'\"]*(\d+[a-z]?(?:\s*[-\u2013]\s*\d+[a-z]?)?)\.?\s*([A-Z].+)$"
+    )
+
     matches = list(sloka_re.finditer(text))
     if not matches:
         return []
+
     blocks: list[tuple[str, str]] = []
     for i, m in enumerate(matches):
         label   = m.group(1).strip()
