@@ -232,7 +232,15 @@ Every CODEX delivery must include:
 - [ ] **No APScheduler or dispatch routes** — scheduler lives in `server.py`, Temple Team side only
 - [ ] **No `hour_utc`/`minute_utc`/`channel`/`focus_area`/`next_run_at`/`last_sent_on` fields** in reminder documents (use `reminder_time`, `frequency`, `timezone`, `enabled`)
 
+### AI / Prompt Service (Where Module Uses Claude)
+- [ ] Prompt service file (`MODULE_prompt_service.py`) present as a **separate file** — never embedded in the router
+- [ ] `enrich_MODULE_with_claude()` is called in the dropin router **after** report assembly and **before** any DB insert
+- [ ] All tile codes handled — no tile falls through to `return report` without enrichment
+- [ ] All fallback prose is **user-facing language** — zero internal developer notes, handoff instructions, or field-path references in any output field
+- [ ] `remedy_note`, `guidance`, `summary` fields reviewed — must contain clean human-readable text only
+
 ### Documentation (Required)
+- [ ] `CONTRACT_[ID]_MODULE_CHECKLIST.md` — **wiring verification checklist** Temple App runs after integration (see format below)
 - [ ] `MODULE_TEMPLE_HANDOFF_NOTES.md` — delivery summary, collection rule, read dependencies, integration assumptions
 - [ ] `MODULE_TEMPLE_CONTRACT_HANDOFF.md` — contract alignment details
 - [ ] Updates to `CROSS_MODULE_BUILD_HANDOVER_ISSUES.md` — any new env/handover findings
@@ -247,6 +255,54 @@ Every CODEX delivery must include:
 - [ ] Drop-in page components (JSX)
 - [ ] Module stylesheet
 - [ ] Route integration guide
+- [ ] All structured data fields from API response rendered visually — no raw JSON keys visible to users
+- [ ] Visual components explicitly listed in handoff (e.g. grid components, table components, plan renderers)
+
+---
+
+## 5A. Module Checklist Format (Required for Every Contract)
+
+Every CODEX contract delivery must include a `CONTRACT_[ID]_MODULE_CHECKLIST.md`. This checklist is run by Temple App after integration to verify nothing was silently dropped.
+
+**Background:** Post-integration review of the Numerology module found that CODEX had correctly wired the Claude prompt service in their dropin, but Temple App dropped the import during integration. There was no checklist to catch it. This requirement prevents that class of error on all future modules.
+
+### Required Checklist Sections
+
+```markdown
+## 1. Backend Wiring
+- [ ] Router registered in main.py with correct prefix
+- [ ] All required imports present (prompt service, vedic engine, etc.) — list each file
+- [ ] All async calls awaited correctly
+- [ ] Environment variables declared (list each: ANTHROPIC_API_KEY, etc.)
+
+## 2. AI / Prompt Service
+- [ ] Prompt service file present in backend/
+- [ ] enrich_*_with_claude() called after report assembly, before DB insert
+- [ ] Fallback prose confirmed clean — no internal notes visible
+- [ ] All tile codes covered: [list each tile code]
+
+## 3. Database
+- [ ] Collection name: [state the name]
+- [ ] document_type values used: [list each]
+- [ ] Confirmed: no writes to other collections
+
+## 4. Frontend Wiring
+- [ ] Route registered in app router
+- [ ] CSS imported
+- [ ] Visual components rendered: [list each — e.g. LoShuGrid, LuckyElementsTable, 7-Day Plan]
+- [ ] Confirmed: no raw JSON keys or internal field names visible to users
+
+## 5. API Contract
+- [ ] All contracted endpoints present
+- [ ] Required request fields confirmed
+- [ ] Error states handled
+
+## 6. Smoke Test Results
+- [ ] Report generates without errors
+- [ ] Claude-enriched text appears (not fallback) when ANTHROPIC_API_KEY is set
+- [ ] Fallback text is clean user-facing prose
+- [ ] All visual components render with real data
+```
 
 ---
 
