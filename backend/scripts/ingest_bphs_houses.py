@@ -87,24 +87,28 @@ SKIP_HEADINGS = {
 
 def strip_rtf(raw: str) -> str:
     """Convert RTF markup to plain text."""
-    # Remove nested groups (fonts, colours, etc.)
-    text = re.sub(r'\{\\[^{}]+\}', '', raw)
-    text = re.sub(r'\{[^{}]*\}', '', text)
-    # Remove control words with values
-    text = re.sub(r'\\[a-z]+\-?\d+\s?', ' ', text)
-    # Remove remaining backslash-letter sequences
-    text = re.sub(r'\\[a-z]+\s?', ' ', text)
-    # RTF escaped characters
+    text = raw
+    # Special chars before control word removal
     text = text.replace("\\'92", "'").replace("\\'93", '"').replace("\\'94", '"')
     text = text.replace("\\'b0", "°")
     text = re.sub(r"\\'[0-9a-f]{2}", '', text)
-    # Line breaks
-    text = text.replace('\\par', '\n').replace('\\\n', '\n').replace('\\', '\n')
-    # Collapse runs of whitespace within lines, preserve paragraph breaks
+    # RTF line break: backslash+newline → newline
+    text = re.sub(r'\\\n', '\n', text)
+    # Named control words that map to whitespace
+    text = re.sub(r'\\par\b\s*', '\n', text)
+    text = re.sub(r'\\page\b\s*', '\n', text)
+    # Remove ALL remaining control words (\ + letters + optional digits + optional space)
+    text = re.sub(r'\\[a-z*]+\-?\d*\s?', ' ', text)
+    # Remove lone backslashes
+    text = re.sub(r'\\[^a-z\n]', '', text)
+    text = re.sub(r'\\', '', text)
+    # Remove braces last (now just empty structural markers)
+    text = text.replace('{', '').replace('}', '')
+    # Collapse whitespace within lines
     lines = []
     for line in text.splitlines():
         line = re.sub(r'\s+', ' ', line).strip()
-        if line:
+        if line and line != ';':
             lines.append(line)
     return '\n'.join(lines)
 
