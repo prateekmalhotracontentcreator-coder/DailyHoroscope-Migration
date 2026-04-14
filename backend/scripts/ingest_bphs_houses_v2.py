@@ -79,7 +79,7 @@ VALID_SUB_TYPES = {
 
 SKIP_HEADINGS = {
     "decanates and bodily limbs", "decanates", "bodily limbs",
-    "limbs", "notes", "center",
+    "limbs", "center",
 }
 
 # ── Pydantic models ────────────────────────────────────────────────────────────
@@ -241,7 +241,8 @@ def should_skip(text: str) -> bool:
 
 
 def clean_notes(text: str) -> tuple[str, str]:
-    m = re.compile(r'\bNotes?\s*:', re.IGNORECASE).search(text)
+    # Match "Notes :", "Notes .'", "Notes .", "Note :" etc.
+    m = re.compile(r'\bNotes?\s*[.:\'"\s]', re.IGNORECASE).search(text)
     if m:
         return text[:m.start()].strip(), text[m.start():].strip()
     return text.strip(), ""
