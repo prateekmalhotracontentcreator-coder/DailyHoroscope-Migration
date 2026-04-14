@@ -55,6 +55,7 @@ def run_extraction(
     config: dict,
     output_path: Path,
     report_path: Path,
+    rule_index_offset: int = 0,
 ) -> tuple[dict, str]:
     tmp_path: Path | None = None
     with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False, encoding="utf-8") as tmp:
@@ -75,6 +76,7 @@ def run_extraction(
             min_words=config.get("min_words", 45),
             paraphrase_mode=config.get("paraphrase_mode", "openai"),
             model=os.getenv("EXTRACT_BOOK_CLAUDE_MODEL", "claude-sonnet-4-6"),
+            rule_index_offset=rule_index_offset,
         )
         payload, report = extract_rules(args)
         return payload, report
@@ -161,6 +163,7 @@ def process_book(config: dict, books_dir: Path, client: MongoClient, args) -> di
     print(f"{'=' * 60}")
 
     totals = {"submitted": 0, "imported": 0, "duplicates": 0, "errors": 0, "skipped": 0}
+    book_rule_count = 0  # book-wide counter — ensures unique rule IDs across all chapters
 
     for i, chapter in enumerate(chapters, start=1):
         batch_id = make_batch_id(book_title, i)
@@ -200,8 +203,12 @@ def process_book(config: dict, books_dir: Path, client: MongoClient, args) -> di
                 out_path = Path(tempfile.mktemp(suffix=".json"))
                 rpt_path = Path(tempfile.mktemp(suffix=".md"))
 
-            payload, _ = run_extraction(text, book_title, chapter_name, batch_id, chapter_config, out_path, rpt_path)
+            payload, _ = run_extraction(
+                text, book_title, chapter_name, batch_id, chapter_config,
+                out_path, rpt_path, rule_index_offset=book_rule_count,
+            )
             rule_count = len(payload.get("rules", []))
+            book_rule_count += rule_count  # advance offset for next chapter
             print(f"  -> Extracted {rule_count} rules")
 
             stats = insert_batch(client, args.db_name, payload, batch_id, dry_run=args.dry_run)
