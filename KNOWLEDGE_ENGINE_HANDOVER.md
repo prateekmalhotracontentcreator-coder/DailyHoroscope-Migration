@@ -266,6 +266,7 @@ python3 scripts/peek_rules.py \
 - **Do not re-run `ingest_chapter15.py` twice** — the batch_id guard will catch it, but avoid the confusion. Check `import_batches` first.
 - **Do not change `BATCH_ID` in `ingest_chapter15.py`** unless intentionally re-ingesting a fresh version. The current batch_id is `a-text-book-ch15-v2-{date}` — the `v2` signals Option B.
 - **Do not use the GitHub browser editor** — always commit via terminal or Claude Code (per CLAUDE.md).
+- **⚠️ CRITICAL — Do NOT bulk-approve any rules in the Admin Console.** The live web app at everydayhoroscope.in is fully isolated from all Knowledge Engine rules by a hardcoded filter in `backend/knowledge_engine.py` line 47: `APPROVED_RULE_FILTER = {"active": True, "approval_status": "approved"}`. Every ingested rule carries `approval_status: "pending_review"` or `"flagged"` — the live app sees none of them and falls back to its existing GPT-direct narrative. The only action that breaks this isolation is manually promoting a rule to `approval_status: "approved"` via the Admin Console. **Do not do this until the full sequence is complete: all Phase 1 books ingested → case study validation bench run → cross-reference layer verified → co-founder sign-off.**
 
 ---
 
@@ -294,6 +295,7 @@ Recorded here so they don't need re-negotiation:
 5. **No production ingest until case study validation** — rules that cannot predict JFK/Gandhi/Vivekananda correctly don't go live.
 6. **BPHS first among equals** — most authoritative text; BPHS-approved rules set the confidence floor for cross-book comparison.
 7. **Option B cross-book spine** — the `planet_in_house_in_sign` condition type is the unifying key. Every subsequent book's planet×house rules must use the same condition schema to enable cross-reference.
+8. **Live app isolation is non-negotiable** — the live web app (everydayhoroscope.in) must function identically to how it did before Knowledge Engine work began, until the full library is built, case studies pass, and co-founders explicitly sign off on going live. The `approval_status: "approved"` gate in `knowledge_engine.py` is the enforcement mechanism. It must not be bypassed.
 
 ---
 

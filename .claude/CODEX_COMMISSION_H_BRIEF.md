@@ -58,5 +58,4 @@ Read `.claude/CODEX_LONGEVITY_REPORT_CONTRACT.md` before starting. It contains:
 
 ---
 
-> Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
 > Stack: FastAPI (Render) + React 18 (Vercel) + MongoDB + pyswisseph 2.10.x
