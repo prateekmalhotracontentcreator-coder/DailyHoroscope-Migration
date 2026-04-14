@@ -192,6 +192,7 @@ class ExtractionArgs:
     min_words: int
     paraphrase_mode: str
     model: str
+    rule_index_offset: int = 0  # book-wide counter offset — set by batch_ingest per chapter
 
 
 @dataclass
@@ -649,7 +650,8 @@ def paraphrase_with_openai(
             temperature=0.35,
             messages=[{"role": "user", "content": prompt}],
         )
-    except Exception:
+    except Exception as exc:
+        print(f"[openai] API call failed: {type(exc).__name__}: {exc}")
         return None
 
     content = response.choices[0].message.content if response.choices else ""
@@ -897,7 +899,7 @@ def extract_rules(args: ExtractionArgs) -> tuple[dict[str, Any], str]:
     extracted: list[tuple[InterpretationRuleDocument, dict[str, Any]]] = []
     for candidate in candidates[: args.max_rules]:
         try:
-            extracted.append(build_rule_document(candidate, args, len(extracted) + 1))
+            extracted.append(build_rule_document(candidate, args, args.rule_index_offset + len(extracted) + 1))
         except Exception as exc:
             fallback_payload = {
                 "confidence": "LOW",
@@ -909,7 +911,7 @@ def extract_rules(args: ExtractionArgs) -> tuple[dict[str, Any], str]:
             }
             summary = f"Extraction failed for candidate {candidate.index}: {exc}"
             error_rule = InterpretationRuleDocument(
-                rule_id=build_rule_id(args.book, None, len(extracted) + 1),
+                rule_id=build_rule_id(args.book, None, args.rule_index_offset + len(extracted) + 1),
                 version=1,
                 science_id=args.science_id,
                 approval_status="pending_review",
