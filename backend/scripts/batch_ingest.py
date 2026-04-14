@@ -47,6 +47,83 @@ def extract_text_from_pdf(pdf_path: Path) -> str:
     return "\n\n".join(pages)
 
 
+def extract_text_from_docx(docx_path: Path) -> str:
+    """Extract text from a Word document (.docx), preserving heading context.
+
+    Each content paragraph is prefixed with its nearest heading so that
+    condition detection (planet, house, sign) works correctly downstream.
+
+    Example — Chapter 15 "Planets in Different Houses":
+        Heading: "Sun in the First House"
+        Output:  "Sun in the First House\nWhen the Sun is placed here..."
+
+    This means infer_condition() reliably detects Sun + house=1 even when
+    the paragraph text alone says "When placed here, the native..."
+    """
+    try:
+        from docx import Document  # type: ignore
+    except ImportError:
+        raise ImportError(
+            "python-docx is required for .docx files.  "
+            "Install it with:  pip3 install python-docx"
+        )
+
+    doc = Document(str(docx_path))
+    sections: list[str] = []
+    current_heading: str = ""
+    current_paras: list[str] = []
+
+    def flush() -> None:
+        if current_paras:
+            body = "\n".join(current_paras)
+            if current_heading:
+                sections.append(f"{current_heading}\n{body}")
+            else:
+                sections.append(body)
+
+    for para in doc.paragraphs:
+        raw = para.text.strip()
+        if not raw:
+            continue
+
+        style_name = (para.style.name or "").lower()
+        is_heading = (
+            style_name.startswith("heading")
+            or style_name in {"title", "subtitle"}
+            # Fallback: short bold-only paragraph likely a heading
+            or (
+                len(raw) < 80
+                and all(run.bold for run in para.runs if run.text.strip())
+                and para.runs
+            )
+        )
+
+        if is_heading:
+            flush()
+            current_heading = raw
+            current_paras = []
+        else:
+            # Prefix every paragraph with its section heading so the
+            # paraphrase prompt has full context even in short paragraphs.
+            if current_heading:
+                current_paras.append(f"[{current_heading}] {raw}")
+            else:
+                current_paras.append(raw)
+
+    flush()
+    return "\n\n".join(sections)
+
+
+def extract_text_from_file(file_path: Path) -> str:
+    """Dispatcher — handles both .pdf and .docx inputs."""
+    suffix = file_path.suffix.lower()
+    if suffix == ".docx":
+        return extract_text_from_docx(file_path)
+    if suffix == ".pdf":
+        return extract_text_from_pdf(file_path)
+    raise ValueError(f"Unsupported file type '{suffix}'. Supported: .pdf, .docx")
+
+
 def run_extraction(
     text: str,
     book: str,
@@ -168,12 +245,13 @@ def process_book(config: dict, books_dir: Path, client: MongoClient, args) -> di
     for i, chapter in enumerate(chapters, start=1):
         batch_id = make_batch_id(book_title, i)
         chapter_name = chapter.get("name", f"Chapter {i}")
-        pdf_file = books_dir / chapter["file"]
+        input_file = books_dir / chapter["file"]
+        file_type = input_file.suffix.upper().lstrip(".")
 
-        print(f"\n  [{i}/{len(chapters)}] {chapter_name}")
+        print(f"\n  [{i}/{len(chapters)}] {chapter_name}  [{file_type}]")
 
-        if not pdf_file.exists():
-            print(f"  PDF not found: {pdf_file} - skipping")
+        if not input_file.exists():
+            print(f"  File not found: {input_file} - skipping")
             totals["errors"] += 1
             continue
 
@@ -190,9 +268,9 @@ def process_book(config: dict, books_dir: Path, client: MongoClient, args) -> di
         out_path: Path | None = None
         rpt_path: Path | None = None
         try:
-            text = extract_text_from_pdf(pdf_file)
+            text = extract_text_from_file(input_file)
             if not text.strip():
-                print("  No text extracted from PDF - skipping")
+                print(f"  No text extracted from {file_type} - skipping")
                 totals["errors"] += 1
                 continue
 
