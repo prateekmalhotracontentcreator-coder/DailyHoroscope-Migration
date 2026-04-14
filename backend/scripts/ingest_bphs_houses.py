@@ -80,7 +80,7 @@ PLANET_CODES: dict[str, str] = {
 # Sections to skip — anatomical reference, not prediction rules
 SKIP_HEADINGS = {
     "decanates and bodily limbs", "decanates", "bodily limbs",
-    "limbs", "notes", "center",
+    "limbs", "center",
 }
 
 # ── RTF parser ────────────────────────────────────────────────────────────────
@@ -163,13 +163,12 @@ def clean_notes(text: str) -> tuple[str, str]:
     """
     Separate rule text from translator's Notes.
     Returns (rule_text, notes_text).
+    Handles: "Notes :", "Notes .'", "Notes .", "Note :" etc.
     """
-    notes_re = re.compile(r'\bNotes?\s*:', re.IGNORECASE)
+    notes_re = re.compile(r'\bNotes?\s*[.:\'"\s]', re.IGNORECASE)
     m = notes_re.search(text)
     if m:
-        rule_part  = text[:m.start()].strip()
-        notes_part = text[m.start():].strip()
-        return rule_part, notes_part
+        return text[:m.start()].strip(), text[m.start():].strip()
     return text.strip(), ""
 
 
