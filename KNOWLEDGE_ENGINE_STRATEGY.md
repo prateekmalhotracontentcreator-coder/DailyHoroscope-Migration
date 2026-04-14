@@ -1,6 +1,6 @@
 # EverydayHoroscope — Knowledge Engine Strategy
 **Co-Founder Working Document**
-Last updated: 14 April 2026
+Last updated: 14 April 2026 (Book 1 review complete)
 
 ---
 
@@ -155,13 +155,48 @@ The Vedic books include horoscopes of real, historically verifiable people (JFK,
 
 ---
 
-## 7. Immediate Technical Fixes (Before Next Book Review)
+## 7. Book-by-Book Review Findings
 
-| Fix | File | Description |
+### Book 1 — A Text Book of Astrology (reviewed 14 Apr 2026)
+
+**Results:** 16 approved (10%) | 34 spot-check (20%) | 114 flagged (68%) | 3 rejected (2%)
+
+**Root causes of 68% flag rate:**
+
+| # | Issue | Frequency | Fix |
+|---|---|---|---|
+| 1 | **Truncated text** — GPT hit max_tokens=900 mid-sentence | ~75% of flagged | ✅ Fixed: max_tokens→1800; structural check detects truncation |
+| 2 | **"This configuration"** — Chapter 15 table format loses planet name in heading | ~60% of flagged | Codex-direct for Planet×House rules |
+| 3 | **Condition-content mismatch** — `infer_condition()` picks first planet/sign in text | ~8% | Improve `infer_condition()` or Codex-direct |
+| 4 | **Paraphrase hallucinations** — Saturn as "St. Peter", Sun as "Lord Brahma", Molovyo Yoga | ~8% | Codex-direct eliminates this |
+| 5 | **Disease catalogs extracted as rules** — Moon/Venus disease lists, not prediction rules | ~5% | Add disease-catalog filter to extraction |
+
+**Chapter-wise recommendation:**
+
+| Chapter | Rules | Quality | Action |
+|---|---|---|---|
+| Ch 2 — House Significations | 2 | ✅ Good | Keep OCR |
+| Ch 3 — Planet Characteristics | 21 | Medium | Codex-direct for planet general meanings |
+| Ch 4 — Sign Characteristics | 3 | Medium | Codex-direct |
+| Ch 9-14 — Calculation/Panchang | 20 | ✅ Good | Keep OCR — factual/procedural |
+| **Ch 15 — Planets in Houses** | **103** | **❌ Poor** | **Codex-direct — 9×12=108 Planet×House rules** |
+| Ch 16 — Yogas | 13 | Medium | Codex-direct for Panch Mahapurusha + key Yogas |
+
+**Key insight:** Ch 15 is 62% of all Book 1 rules but produced poor output due to table-format OCR limitation. Codex-direct for this chapter alone will give 108 clean, high-confidence rules vs ~18 usable ones from OCR.
+
+**Keeper rules from OCR (16 approved):** Jupiter/Rahu/Ketu nature, Mahadasha sequence, Nakshatra-based Dasha balance, Tithi calculation, Sun transit 1H, Wealth yoga (2nd/4th/9th lords), Moon in 7H for marriage, Budha Aditya Yoga, Gaja Kesari Yoga, Sasa Yoga. These are general principles and named Yogas — the structured content the OCR handles best.
+
+---
+
+## 8. Immediate Technical Fixes Applied
+
+| Fix | Commit | Description |
 |---|---|---|
-| Duplicate rule IDs | `extract_book.py` → `build_rule_id()` | Use book-wide sequence counter, not per-chapter |
-| Silent OpenAI failures | `extract_book.py` → `paraphrase_with_openai()` | Already fixed — prints error message |
-| `life_domain` always "relationships" | `extract_book.py` → `infer_categories()` | Improve domain detection patterns |
+| Duplicate rule IDs | `f502013` | `build_rule_id()` now uses book-wide counter via `rule_index_offset` |
+| Silent OpenAI failures | `208f945` | Now prints error message instead of silent None |
+| Token truncation | `208f945` | `max_tokens` 900→1800; eliminates ~75% of Book 1 flag rate |
+| Truncation detection | `208f945` | `structural_check` rejects rules not ending in sentence-final punctuation |
+| Validation prompt | `a0f5d1a` | Claude told composite conditions are valid general principles |
 
 ---
 
