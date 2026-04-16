@@ -7,11 +7,12 @@ Last updated: 16 April 2026
 
 | Source | Chapters ingested | Rules in DB | Status |
 |---|---|---|---|
-| BPHS Vol 1 | Ch 12-23 (Houses 1-12) | 360 | Validated |
-| BPHS Vol 2 | None | 0 | Pending |
+| BPHS Vol 1 | Ch 12-24 (Houses + Bhava Lords) | 736 | Validated |
+| BPHS Vol 2 | Ch 47 (Mahadasha by Planet) | 93 | Validated |
 | A Text Book of Astrology | None | 0 | Pending |
+| **Total** | | **829** | |
 
-**Approval gate:** All 360 rules sit at `auto_approved` or `pending_human_review`.
+**Approval gate:** All 829 rules sit at `auto_approved` or `pending_human_review`.
 No rules reach live users until co-founder promotes to `approved`.
 Decision: promote only after full multi-book ingest is complete.
 
@@ -30,13 +31,9 @@ Decision: promote only after full multi-book ingest is complete.
 
 ## Tier 1 — Ingest Next (Core Prediction Engine)
 
-### BPHS Vol 1 — Ch 24: Effects of Bhava Lords
-- **What:** 12 house lords × 12 placements = 144 lord×house combinations
-- **Why Tier 1:** Direct complement to Ch 12-23. Together these two layers form the complete house-based prediction engine.
-- **Script:** Extend existing `ingest_bphs_houses_v2.py` (remove chapter 12-23 range restriction, add Ch 24 to CHAPTER_NAMES)
-- **House arg:** N/A for lord chapters — needs `condition.type = lord_placement` (already a valid sub_type)
-- **Est. rules:** ~144
-- **RTF status:** Needs conversion from Vol 1 book
+### BPHS Vol 1 — Ch 24: Effects of Bhava Lords ✅ DONE
+- **Rules ingested:** 376 · auto_approved: 71% · flagged: 9% · contradictions: 0
+- **batch_id:** bphs-ch24-v2-20260416
 
 ### BPHS Vol 2 — Ch 48: Dasas of Lords of Various Houses
 - **What:** Effects when you run the Dasha of the lord of each house (Ascendant lord Dasha, 2nd lord Dasha ... 12th lord Dasha)
@@ -46,14 +43,10 @@ Decision: promote only after full multi-book ingest is complete.
 - **Est. rules:** ~100-120
 - **RTF status:** Needs conversion
 
-### BPHS Vol 2 — Ch 47: Effects of Dasas (Mahadasha by Planet)
-- **What:** Per-planet Mahadasha effects based on dignity and placement (already have RTF — `BPHS Ch 47 Vol 2.rtf`)
-- **Why Tier 1:** Layer 2 timing engine — when is a planet's period active and what does it bring
-- **Condition type needed:** `dasha_planet` (which planet's Mahadasha is running + its dignity/placement)
-- **Script:** Same new `ingest_bphs_dasha_v1.py`
-- **Est. rules:** ~70-90
-- **RTF status:** ✅ Ready (`BPHS Ch 47 Vol 2.rtf`)
-- **Parser note:** Sloka `34-39:` uses colon separator — add `:` to sloka regex before ingesting
+### BPHS Vol 2 — Ch 47: Effects of Dasas (Mahadasha by Planet) ✅ DONE
+- **Rules ingested:** 93 · auto_approved: 82% · flagged: 4% · contradictions: 0
+- **batch_id:** bphs-ch47-dasha-20260416
+- **Parser fixes shipped:** colon separator, zero-space period, transition planet detection
 
 ---
 
@@ -164,22 +157,20 @@ Files needed before ingest (in priority order):
 
 ---
 
-## Immediate Next Steps (this session)
+## Immediate Next Steps (next session)
 
-1. Add `:` to sloka regex separator in `ingest_bphs_houses_v2.py` (needed for Ch 47 sloka 34-39)
-2. Build `ingest_bphs_dasha_v1.py` for Ch 47 / 48 / 52-60
-3. Ingest and validate Ch 47 (RTF ready)
-4. Convert Ch 24 RTF → ingest → validate
-5. Convert Ch 48 RTF → ingest → validate
+1. Convert Ch 48 RTF → ingest with `ingest_bphs_dasha_v1.py --chapter 48` → validate
+2. Convert Ch 52-60 RTFs (9 Antardasha chapters) → bulk ingest → validate
+3. Convert A Text Book of Astrology Ch 15 RTF → ingest → validate (cross-validation baseline)
 
 ---
 
 ## Approval Milestone
 
 **Target before co-founder review:**
-- BPHS Vol 1 complete (Ch 12-24) ✅ Ch 12-23 done, Ch 24 pending
-- BPHS Vol 2 Tier 1 complete (Ch 47-48)
+- BPHS Vol 1 complete (Ch 12-24) ✅ Done — 736 rules
+- BPHS Vol 2 Tier 1 complete (Ch 47-48) — Ch 47 ✅ done (93 rules), Ch 48 pending
 - A Text Book Ch 15 ingested (cross-validation baseline)
 
-Estimated rules at that milestone: **~750 rules**
-Current: 360 rules
+Estimated rules at that milestone: **~950 rules**
+Current: **829 rules**

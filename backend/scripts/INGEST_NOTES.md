@@ -108,3 +108,60 @@ Append a new entry for every batch processed. Never overwrite.
 | **Grand Total** | **360** | **210 (58%)** | **118 (33%)** | **38 (11%)** | **13 pairs** |
 
 ---
+
+### BPHS Ch 24 | Bhava Lords (all houses) | Apr 2026
+
+**Script used:** `ingest_bphs_houses_v2.py` — extended with `--house 0` lord-placement mode
+**Batch:**
+
+| Ch | Topic | Batch ID | Total | auto_approved | pending_human_review | flagged | contradictions |
+|---|---|---|---|---|---|---|---|
+| 24 | Effects of Bhava Lords | bphs-ch24-v2-20260416 | 376 | 267 (71%) | 77 (20%) | 32 (9%) | 0 pairs |
+
+**Sub-type breakdown:** lord_placement: 370 · aspect_rule: 4 · combination: 2
+
+**Notable:**
+- **71% auto_approved** — highest approval rate of any chapter so far (was 58% average for Ch 12-23). Lord-placement rules are cleaner if-then structures than house-occupation rules.
+- **0 contradictions** — expected; lord×house combinations are by definition unique pairs.
+- **Structural failures: 0/376** — clean ingest, no parser issues.
+- 32 flagged rules — pull from Admin > Rules Browser (filter: flagged) before co-founder approval.
+- 77 pending_human_review — awaiting co-founder sign-off. Not live until promoted to `approved`.
+
+---
+
+### BPHS Ch 47 | Effects of Dasas (Mahadasha by Planet) | Apr 2026
+
+**Script used:** `ingest_bphs_dasha_v1.py` — new script, first run
+**Batch:**
+
+| Ch | Topic | Batch ID | Total | auto_approved | pending_human_review | flagged | contradictions |
+|---|---|---|---|---|---|---|---|
+| 47 | Effects of Dasas | bphs-ch47-dasha-20260416 | 93 | 76 (82%) | 13 (14%) | 4 (4%) | 0 pairs |
+
+**Sub-type breakdown:** dasha_favourable: 52 · dasha_unfavourable: 28 · general_principle: 7 · dasha_conditional: 5 · dasha_remedy: 1
+
+**By dasha_lord:** Venus: 15 · Mars: 13 · Rahu: 10 · Sun: 9 · Jupiter: 9 · (general): 9 · Saturn: 8 · Moon: 7 · Mercury: 7 · Ketu: 6
+
+**Notable:**
+- **82% auto_approved** — highest rate of any batch. Dasha if-then rules are structurally cleaner than house occupation rules.
+- **Only 4 flagged rules** — exceptional quality.
+- **0 contradictions** — expected; each planet's Dasha section covers distinct conditions.
+- **Structural failures: 0/93** — clean ingest.
+- 7 slokas skipped: 1, 2 (pure dialogue); 44, 52, 61, 71, 78 (single-sentence planet intros — no prediction content).
+- Slokas 40-43 (Rahu continuation) recovered by zero-space period fix (`88-89.Similar` format also caught).
+- Sloka 16-22 (Moon transition) correctly attributed via `detect_transition_planet()` forward-looking phrase detection.
+- 9 "general" rules (slokas 3-4, 5-6) cover timing framework principles, not planet-specific — dasha_lord left empty.
+
+---
+
+### Cumulative Grand Total (All sources, Ch 12-24 + Ch 47)
+
+| Source | Rules | auto_approved | pending_human_review | flagged | contradictions |
+|---|---|---|---|---|---|
+| BPHS Vol 1 Ch 12-18 | 241 | 140 (58%) | 79 (33%) | 28 (12%) | 9 pairs |
+| BPHS Vol 1 Ch 19-23 | 119 | 70 (59%) | 39 (33%) | 10 (8%) | 4 pairs |
+| BPHS Vol 1 Ch 24 | 376 | 267 (71%) | 77 (20%) | 32 (9%) | 0 pairs |
+| BPHS Vol 2 Ch 47 | 93 | 76 (82%) | 13 (14%) | 4 (4%) | 0 pairs |
+| **Grand Total** | **829** | **553 (67%)** | **208 (25%)** | **74 (9%)** | **13 pairs** |
+
+---
