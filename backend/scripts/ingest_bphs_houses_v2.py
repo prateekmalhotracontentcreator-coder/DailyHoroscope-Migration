@@ -58,6 +58,7 @@ CHAPTER_NAMES: dict[int, str] = {
     18: "Effects of Seventh House",  19: "Effects of Eighth House",
     20: "Effects of Ninth House",    21: "Effects of Tenth House",
     22: "Effects of Eleventh House", 23: "Effects of Twelfth House",
+    24: "Effects of Bhava Lords",
 }
 
 HOUSE_LIFE_DOMAINS: dict[int, str] = {
@@ -124,7 +125,7 @@ RULES:
 """
 
 EXTRACTION_PROMPT = """\
-Chapter {chapter} (House {house}), Sloka {sloka} — {heading}
+Chapter {chapter} ({context}), Sloka {sloka} — {heading}
 
 Text:
 {text}
@@ -162,9 +163,10 @@ class SlokaExtractor:
         if notes_text:
             full_text = rule_text + "\n\nNotes:\n" + notes_text.replace("Notes :", "").strip()
 
+        context = f"House {house}" if house else "Lord Placement chapter"
         prompt = EXTRACTION_PROMPT.format(
             chapter=chapter,
-            house=house,
+            context=context,
             sloka=sloka_label,
             heading=heading,
             text=full_text,
@@ -207,8 +209,8 @@ def strip_rtf(raw: str) -> str:
     lines = []
     for line in text.splitlines():
         line = re.sub(r'\s+', ' ', line).strip()
-        if line and line != ';':
-            lines.append(line)
+        if line != ';':
+            lines.append(line)  # preserve blank lines — needed as paragraph separators
     return '\n'.join(lines)
 
 
@@ -233,6 +235,10 @@ def neutralize_notes_lists(text: str) -> str:
     result     = []
 
     for i, line in enumerate(lines):
+        # Blank line = paragraph boundary → exit Notes context
+        if in_notes and line.strip() == '':
+            in_notes = False
+
         if notes_re.search(line):
             in_notes   = True
             notes_line = i
@@ -277,7 +283,7 @@ def split_into_sloka_blocks(text: str) -> list[tuple[str, str]]:
     #   no space after period (3.EXCESSIVE), optional period (23 If...),
     #   heading must start uppercase to avoid false positives.
     sloka_re = re.compile(
-        r"(?m)^[ \t'\"]*(\d+[a-z]?(?:\s*[-\u2013]\s*\d+[a-z]?)?)\.?\s*([A-Z].+)$"
+        r"(?m)^[ \t'\"]*(\d+[a-z]?(?:\s*[-\u2013+]\s*\d+[a-z]?)?)[.,]?\s*([A-Z].+)$"
     )
 
     matches = list(sloka_re.finditer(text))
@@ -351,6 +357,12 @@ def extracted_to_rule(
     planets     = [p for p in item.planets if p in PLANETS]
     sub_type    = item.sub_type if item.sub_type in VALID_SUB_TYPES else "general_principle"
 
+    # For lord-placement chapters (house=0) force sub_type and condition type
+    lord_mode   = (house == 0)
+    cond_type   = "lord_placement" if lord_mode else "bhava_combination"
+    if lord_mode and sub_type not in ("lord_placement", "aspect_rule", "combination"):
+        sub_type = "lord_placement"
+
     def _punct(s: str) -> str:
         s = s.strip()
         return s if (s and s[-1] in '.!?"\'') else s + '.'
@@ -360,17 +372,21 @@ def extracted_to_rule(
     if len(summary) > 200:
         summary = summary[:197] + "..."
 
-    houses_involved = list(dict.fromkeys([house] + [h for h in item.houses if isinstance(h, int)]))
-    tags = ["verbatim", "bhava_combination", f"house{house}",
-            f"chapter{chapter}", sub_type, "ai_extracted"]
+    houses_involved = list(dict.fromkeys(
+        ([house] if house else []) + [h for h in item.houses if isinstance(h, int)]
+    ))
+    base_tags = ["verbatim", cond_type, f"chapter{chapter}", sub_type, "ai_extracted"]
+    if house:
+        base_tags.insert(2, f"house{house}")
+    tags = base_tags
 
     return {
         "rule_id":    rule_id,
         "science_id": SCIENCE,
         "source":     make_source(chapter, sloka_label, batch_id),
         "condition": {
-            "type":             "bhava_combination",
-            "house":            house,
+            "type":             cond_type,
+            "house":            house if house else None,
             "sub_type":         sub_type,
             "sloka":            sloka_label,
             "heading":          heading,
@@ -415,24 +431,30 @@ def _fallback_rule(label: str, raw_text: str, house: int, chapter: int,
         detailed = rule_text + "\n\nNotes: " + notes_text.replace("Notes :", "").strip()
     summary = rule_text.split(".")[0].strip()[:200]
     planets = [p for p in PLANETS if re.search(rf'\b{p}\b', raw_text, re.IGNORECASE)]
+    lord_mode  = (house == 0)
+    cond_type  = "lord_placement" if lord_mode else "bhava_combination"
+    house_list = [] if lord_mode else [house]
+    tags = ["verbatim", cond_type, f"chapter{chapter}"]
+    if not lord_mode:
+        tags.insert(2, f"house{house}")
     return {
         "rule_id":    f"R-BPHS{chapter}-{index:03d}",
         "science_id": SCIENCE,
         "source":     make_source(chapter, label, batch_id),
         "condition": {
-            "type": "bhava_combination", "house": house,
-            "sub_type": "general_principle", "sloka": label,
+            "type": cond_type, "house": house if house else None,
+            "sub_type": "lord_placement" if lord_mode else "general_principle", "sloka": label,
             "heading": heading, "planets_involved": planets,
-            "houses_involved": [house], "sub_conditions": [], "operator": "and",
+            "houses_involved": house_list, "sub_conditions": [], "operator": "and",
         },
         "interpretation": {
             "summary": summary, "detailed": detailed,
             "full_text_passages": [{"text": detailed, "confidence": "HIGH"}],
             "remedies": [], "life_domain": HOUSE_LIFE_DOMAINS.get(house, "general"),
-            "tags": ["verbatim", "bhava_combination", f"house{house}", f"chapter{chapter}"],
+            "tags": tags,
         },
         "metadata": {
-            "planets_involved": planets, "houses_involved": [house],
+            "planets_involved": planets, "houses_involved": house_list,
             "signs_involved": [], "condition_count": 1,
         },
         "confidence": {"base": 0.82, "source_weight": 0.95, "cross_book_multiplier": 1.0},
@@ -493,10 +515,11 @@ def main():
         description="Ingest BPHS house-effects chapter with AI sub-condition extraction"
     )
     parser.add_argument("--rtf",       required=True)
-    parser.add_argument("--house",     required=True, type=int,
-                        choices=range(1, 13), metavar="HOUSE")
+    parser.add_argument("--house",     required=False, type=int, default=0,
+                        choices=range(0, 13), metavar="HOUSE",
+                        help="House number 1-12, or 0 for lord-placement chapters (Ch 24)")
     parser.add_argument("--chapter",   required=True, type=int,
-                        choices=range(12, 24), metavar="CHAPTER")
+                        choices=range(12, 25), metavar="CHAPTER")
     parser.add_argument("--mongo-url", required=True)
     parser.add_argument("--db-name",   required=True)
     parser.add_argument("--model",     default="claude-haiku-4-5",
@@ -508,8 +531,9 @@ def main():
     batch_id  = f"bphs-ch{args.chapter}-v2-{datetime.now(timezone.utc).strftime('%Y%m%d')}"
     chap_name = CHAPTER_NAMES.get(args.chapter, f"Effects of House {args.house}")
 
+    house_label = f"House {args.house}" if args.house else "Lord Placement (all houses)"
     print(f"\nBPHS Chapter {args.chapter} — {chap_name}  [v2 AI extraction]")
-    print(f"House {args.house}  |  model: {args.model}  |  batch_id: {batch_id}")
+    print(f"{house_label}  |  model: {args.model}  |  batch_id: {batch_id}")
     print("─" * 60)
 
     extractor = SlokaExtractor(model=args.model)
