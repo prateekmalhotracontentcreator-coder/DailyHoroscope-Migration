@@ -96,21 +96,28 @@ _PLANET_SECTION_PATTERNS = [
     re.compile(r"Dasa\s+of\s+(?:the\s+)?(\w+)",                                       re.IGNORECASE),
 ]
 
-def detect_dasha_lord_from_heading(text: str) -> str | None:
+# Transition phrases like "I will now come to the effects of the Dasa of the Moon"
+# that mark a forward shift to a NEW planet's section within the same sloka.
+# These override the position-map result for that sloka.
+_TRANSITION_RE = re.compile(
+    r'(?:will\s+now\s+(?:come\s+to|describe)|going\s+to\s+describe|now\s+describe)'
+    r'.{0,60}'
+    r'(?:Vimsottari\s+)?Dasa\s+of\s+(?:the\s+)?(\w+)',
+    re.IGNORECASE,
+)
+
+def detect_transition_planet(text: str) -> str | None:
     """
-    Return the Dasha planet most recently mentioned in text.
-    Transition slokas name the old planet first ("after describing the Sun Dasa")
-    then the new planet ("I will now describe the Moon Dasa"), so the LAST match wins.
+    Detect the forward-looking planet in transition slokas like:
+    'after describing the Sun Dasa in brief, I will now come to the effects of
+     the Vimsottari Dasa of the Moon.'
+    Returns the NEW planet (Moon) not the old one (Sun).
     """
-    all_hits: list[tuple[int, str]] = []
-    for pat in _PLANET_SECTION_PATTERNS:
-        for m in pat.finditer(text):
-            name = m.group(1).strip().title()
-            if name in PLANETS:
-                all_hits.append((m.start(), name))
-    if all_hits:
-        all_hits.sort(key=lambda x: x[0])
-        return all_hits[-1][1]
+    m = _TRANSITION_RE.search(text[:500])
+    if m:
+        name = m.group(1).strip().title()
+        if name in PLANETS:
+            return name
     return None
 
 VALID_SUB_TYPES = {
@@ -507,6 +514,15 @@ def parse_rtf_file(
 
     for i, (label, text, sloka_pos) in enumerate(blocks, 1):
         effective_lord = _planet_at(sloka_pos)
+
+        # Override for transition slokas that shift to a new planet mid-block.
+        # e.g. sloka 16-22: "after describing the Sun Dasa... I will now come to
+        # the effects of the Vimsottari Dasa of the Moon."
+        # The position map gives "Sun" (last header before sloka start), but the
+        # actual prediction content is Moon Dasha — use the forward-looking planet.
+        transition_planet = detect_transition_planet(text)
+        if transition_planet:
+            effective_lord = transition_planet
 
         # For Ch 52-60, use the chapter's fixed Mahadasha lord
         if chapter in ANTARDASHA_CHAPTER_LORD:
