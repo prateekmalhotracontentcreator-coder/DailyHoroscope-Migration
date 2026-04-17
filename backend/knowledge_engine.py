@@ -6,7 +6,7 @@ import logging
 import os
 from collections import defaultdict
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from typing import Any
 
 try:
@@ -30,6 +30,7 @@ from knowledge_schema import (
 
 logger = logging.getLogger(__name__)
 
+PLANETS = ["Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"]
 SCIENCE_WEIGHTS = {
     "vedic_astrology": 0.40,
     "palmistry": 0.25,
@@ -156,6 +157,56 @@ TIMING_DISTANCE_MAP = {
 }
 STRENGTH_BAND_VALUES = {"low": 0, "medium": 1, "high": 2, "extreme": 3}
 MODE_SEVERITY = {"synthesis": 0, "tension": 1, "honest_uncertainty": 2}
+VIMSHOTTARI_ORDER = ["Ketu", "Venus", "Sun", "Moon", "Mars", "Rahu", "Jupiter", "Saturn", "Mercury"]
+VIMSHOTTARI_YEARS = {"Ketu": 7, "Venus": 20, "Sun": 6, "Moon": 10, "Mars": 7, "Rahu": 18, "Jupiter": 16, "Saturn": 19, "Mercury": 17}
+ARC_ANGEL_DOMAIN_SLUGS = [
+    "health",
+    "career",
+    "finances",
+    "learning",
+    "emotional",
+    "spirituality",
+    "relationships",
+    "family",
+    "social",
+    "adventure",
+    "environment",
+    "creativity",
+]
+ARC_ANGEL_DOMAIN_LABELS = {
+    "health": "Health & Fitness",
+    "career": "Career & Work",
+    "finances": "Finances",
+    "learning": "Intellectual Life & Learning",
+    "emotional": "Emotional Life",
+    "spirituality": "Spirituality",
+    "relationships": "Love Relationships",
+    "family": "Family Life",
+    "social": "Social Life & Friendship",
+    "adventure": "Adventure & Travel",
+    "environment": "Environment",
+    "creativity": "Creativity & Hobbies",
+}
+CATEGORY_TO_DOMAIN_SLUG = {
+    "health": "health",
+    "longevity": "health",
+    "career": "career",
+    "wealth": "finances",
+    "finances": "finances",
+    "education": "learning",
+    "learning": "learning",
+    "general": "emotional",
+    "emotional": "emotional",
+    "spirituality": "spirituality",
+    "relationships": "relationships",
+    "family": "family",
+    "social": "social",
+    "travel": "adventure",
+    "adventure": "adventure",
+    "environment": "environment",
+    "creativity": "creativity",
+}
+PERIOD_QUALITY_ORDER = {"auspicious": 2, "neutral": 1, "inauspicious": 0}
 
 
 def utc_now() -> datetime:
@@ -572,6 +623,11 @@ def _category_to_domain(category: str) -> str:
     return ARC_ANGEL_DOMAIN_MAP.get(category, category.replace("_", " ").title())
 
 
+def _category_to_domain_slug(category: str) -> str:
+    key = str(category or "").strip().lower()
+    return CATEGORY_TO_DOMAIN_SLUG.get(key, "emotional")
+
+
 def _normalize_domain_name(value: str) -> str:
     if value in DOMAIN_PRIORITY:
         return value
@@ -579,6 +635,420 @@ def _normalize_domain_name(value: str) -> str:
         if value == category:
             return label
     return value
+
+
+def _normalize_domain_slug(value: str) -> str:
+    key = str(value or "").strip()
+    if key in ARC_ANGEL_DOMAIN_SLUGS:
+        return key
+    if key in ARC_ANGEL_DOMAIN_LABELS.values():
+        for slug, label in ARC_ANGEL_DOMAIN_LABELS.items():
+            if key == label:
+                return slug
+    return _category_to_domain_slug(key)
+
+
+def _empty_domain_rule_map() -> dict[str, list[dict[str, Any]]]:
+    return {domain: [] for domain in ARC_ANGEL_DOMAIN_SLUGS}
+
+
+def build_domain_rule_map(matched_rules: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    grouped = _empty_domain_rule_map()
+    for rule in matched_rules:
+        categories = rule.get("categories") or []
+        slugs = {_category_to_domain_slug(category) for category in categories if category}
+        if not slugs:
+            slugs = {_normalize_domain_slug(str(rule.get("life_domain") or "emotional"))}
+        for slug in slugs:
+            grouped.setdefault(slug, []).append(rule)
+    return grouped
+
+
+def _coerce_datetime(value: Any) -> datetime | None:
+    if value is None:
+        return None
+    if isinstance(value, datetime):
+        if value.tzinfo is None:
+            return value.replace(tzinfo=timezone.utc)
+        return value
+    if isinstance(value, date):
+        return datetime.combine(value, datetime.min.time(), tzinfo=timezone.utc)
+    text = str(value).strip()
+    if not text:
+        return None
+    try:
+        dt = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError:
+        try:
+            dt = datetime.fromisoformat(f"{text}T00:00:00+00:00")
+        except ValueError:
+            return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt
+
+
+def _coerce_date(value: Any) -> date | None:
+    dt = _coerce_datetime(value)
+    return dt.date() if dt else None
+
+
+def _get_vimshottari_sequence(start_lord: str) -> list[str]:
+    if start_lord not in VIMSHOTTARI_ORDER:
+        return list(VIMSHOTTARI_ORDER)
+    start_index = VIMSHOTTARI_ORDER.index(start_lord)
+    return VIMSHOTTARI_ORDER[start_index:] + VIMSHOTTARI_ORDER[:start_index]
+
+
+def _build_sub_dashas(parent_lord: str, start_value: Any, end_value: Any) -> list[dict[str, Any]]:
+    start = _coerce_datetime(start_value)
+    end = _coerce_datetime(end_value)
+    if start is None or end is None or end <= start:
+        return []
+    total_seconds = (end - start).total_seconds()
+    cursor = start
+    sub_dashas: list[dict[str, Any]] = []
+    for lord in _get_vimshottari_sequence(parent_lord):
+        share = VIMSHOTTARI_YEARS.get(lord, 0) / 120.0
+        duration = total_seconds * share
+        item_end = cursor + timedelta(seconds=duration)
+        sub_dashas.append(
+            {
+                "planet": lord,
+                "start": cursor.date().isoformat(),
+                "end": item_end.date().isoformat(),
+            }
+        )
+        cursor = item_end
+    if sub_dashas:
+        sub_dashas[-1]["end"] = end.date().isoformat()
+    return sub_dashas
+
+
+def compute_dasha_timeline(chart: dict[str, Any]) -> list[dict[str, Any]]:
+    dasha_layer = ((chart.get("layers") or {}).get("vimshottari_dasha") or {})
+    maha_dashas = dasha_layer.get("maha_dashas") or chart.get("dashas") or []
+    timeline: list[dict[str, Any]] = []
+    for maha in maha_dashas:
+        planet = normalize_planet_name(maha.get("planet"))
+        start_dt = _coerce_datetime(maha.get("start"))
+        end_dt = _coerce_datetime(maha.get("end"))
+        if not planet or start_dt is None or end_dt is None:
+            continue
+        antardashas = _build_sub_dashas(planet, start_dt, end_dt)
+        timeline.append(
+            {
+                "planet": planet,
+                "start": start_dt.date().isoformat(),
+                "end": end_dt.date().isoformat(),
+                "antardashas": antardashas,
+            }
+        )
+    return timeline
+
+
+def _active_dasha_pair(
+    dasha_timeline: list[dict[str, Any]],
+    as_of: date | None = None,
+) -> tuple[dict[str, Any] | None, dict[str, Any] | None]:
+    if not dasha_timeline:
+        return None, None
+    target = as_of or date.today()
+    active_maha: dict[str, Any] | None = None
+    for maha in dasha_timeline:
+        start_date = _coerce_date(maha.get("start"))
+        end_date = _coerce_date(maha.get("end"))
+        if start_date and end_date and start_date <= target <= end_date:
+            active_maha = maha
+            break
+    if active_maha is None:
+        active_maha = dasha_timeline[-1]
+
+    active_antar: dict[str, Any] | None = None
+    for antar in active_maha.get("antardashas") or []:
+        start_date = _coerce_date(antar.get("start"))
+        end_date = _coerce_date(antar.get("end"))
+        if start_date and end_date and start_date <= target <= end_date:
+            active_antar = antar
+            break
+    if active_antar is None:
+        antardashas = active_maha.get("antardashas") or []
+        active_antar = antardashas[-1] if antardashas else None
+    return active_maha, active_antar
+
+
+def _rule_condition(rule: dict[str, Any]) -> dict[str, Any]:
+    condition = rule.get("condition") or {}
+    return condition if isinstance(condition, dict) else {}
+
+
+def _period_quality_reason(rule: dict[str, Any]) -> str:
+    interpretation = rule.get("interpretation") or {}
+    text = str(interpretation.get("summary") or interpretation.get("detailed") or "").strip()
+    if not text:
+        return ""
+    sentence = text.split(".", 1)[0].strip()
+    if not sentence:
+        return ""
+    return sentence[0].lower() + sentence[1:] if len(sentence) > 1 else sentence.lower()
+
+
+def _matching_dasha_rules(domain_rules: list[dict[str, Any]], antardasha_planet: str | None) -> list[dict[str, Any]]:
+    if not antardasha_planet:
+        return []
+    normalized_planet = normalize_planet_name(antardasha_planet)
+    matches: list[dict[str, Any]] = []
+    for rule in domain_rules:
+        condition = _rule_condition(rule)
+        rule_lord = normalize_planet_name(condition.get("dasha_lord"))
+        if rule_lord and rule_lord == normalized_planet:
+            matches.append(rule)
+    return matches
+
+
+def _quality_from_rules(domain_rules: list[dict[str, Any]], antardasha_planet: str | None) -> tuple[str, list[dict[str, Any]]]:
+    matching_rules = _matching_dasha_rules(domain_rules, antardasha_planet)
+    favourable = [
+        rule for rule in matching_rules if str(_rule_condition(rule).get("sub_type") or "") == "dasha_favourable"
+    ]
+    unfavourable = [
+        rule for rule in matching_rules if str(_rule_condition(rule).get("sub_type") or "") == "dasha_unfavourable"
+    ]
+    if len(favourable) > len(unfavourable):
+        return "auspicious", favourable
+    if len(unfavourable) > len(favourable):
+        return "inauspicious", unfavourable
+    return "neutral", []
+
+
+def assign_period_quality(
+    rule: dict[str, Any],
+    dasha_timeline: list[dict[str, Any]],
+    as_of: date | None = None,
+) -> str:
+    _, active_antar = _active_dasha_pair(dasha_timeline, as_of=as_of)
+    active_antar_planet = normalize_planet_name((active_antar or {}).get("planet"))
+    condition = _rule_condition(rule)
+    rule_lord = normalize_planet_name(condition.get("dasha_lord"))
+    sub_type = str(condition.get("sub_type") or "")
+    if rule_lord and active_antar_planet and rule_lord == active_antar_planet:
+        if sub_type == "dasha_favourable":
+            return "auspicious"
+        if sub_type == "dasha_unfavourable":
+            return "inauspicious"
+    return "neutral"
+
+
+def compute_period_quality_now(
+    dasha_timeline: list[dict[str, Any]],
+    domain_matched_rules: dict[str, list[dict[str, Any]]],
+    as_of: date | None = None,
+) -> dict[str, str]:
+    _, active_antar = _active_dasha_pair(dasha_timeline, as_of=as_of)
+    active_antar_planet = normalize_planet_name((active_antar or {}).get("planet"))
+    result = {domain: "neutral" for domain in ARC_ANGEL_DOMAIN_SLUGS}
+    for domain in ARC_ANGEL_DOMAIN_SLUGS:
+        quality, _ = _quality_from_rules(domain_matched_rules.get(domain, []), active_antar_planet)
+        result[domain] = quality
+    return result
+
+
+def _flatten_antardasha_periods(
+    dasha_timeline: list[dict[str, Any]],
+    as_of: date,
+    horizon_years: int,
+) -> list[dict[str, Any]]:
+    horizon_end = as_of + timedelta(days=365 * horizon_years)
+    periods: list[dict[str, Any]] = []
+    for maha in dasha_timeline:
+        maha_planet = normalize_planet_name(maha.get("planet"))
+        for antar in maha.get("antardashas") or []:
+            start_date = _coerce_date(antar.get("start"))
+            end_date = _coerce_date(antar.get("end"))
+            antar_planet = normalize_planet_name(antar.get("planet"))
+            if not start_date or not end_date or not antar_planet or end_date < as_of or start_date > horizon_end:
+                continue
+            periods.append(
+                {
+                    "maha_planet": maha_planet,
+                    "antar_planet": antar_planet,
+                    "start": max(start_date, as_of),
+                    "end": min(end_date, horizon_end),
+                }
+            )
+    periods.sort(key=lambda item: item["start"])
+    return periods
+
+
+def _make_window_entry(
+    quality: str,
+    start: date,
+    end: date,
+    maha_planet: str | None,
+    antar_planet: str | None,
+    domain: str,
+    dominant_rule: dict[str, Any] | None,
+) -> dict[str, Any]:
+    return {
+        "quality": quality,
+        "start": start,
+        "end": end,
+        "segments": [
+            {
+                "start": start,
+                "end": end,
+                "maha_planet": maha_planet,
+                "antar_planet": antar_planet,
+                "dominant_rule": dominant_rule,
+                "domain": domain,
+            }
+        ],
+    }
+
+
+def _window_duration_days(window: dict[str, Any]) -> int:
+    return max(1, int((window["end"] - window["start"]).days) + 1)
+
+
+def _merge_window_group(windows: list[dict[str, Any]], quality: str) -> dict[str, Any]:
+    merged_segments: list[dict[str, Any]] = []
+    for window in windows:
+        merged_segments.extend(window.get("segments", []))
+    return {
+        "quality": quality,
+        "start": min(window["start"] for window in windows),
+        "end": max(window["end"] for window in windows),
+        "segments": merged_segments,
+    }
+
+
+def _merge_consecutive_quality_windows(windows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    if not windows:
+        return []
+    merged: list[dict[str, Any]] = [windows[0]]
+    for window in windows[1:]:
+        previous = merged[-1]
+        contiguous = previous["end"] + timedelta(days=1) >= window["start"]
+        if window["quality"] == previous["quality"] and contiguous:
+            merged[-1] = _merge_window_group([previous, window], previous["quality"])
+        else:
+            merged.append(window)
+    return merged
+
+
+def _collapse_short_windows(windows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    collapsed = _merge_consecutive_quality_windows(list(windows))
+    index = 0
+    while index < len(collapsed):
+        window = collapsed[index]
+        if _window_duration_days(window) >= 90 or len(collapsed) == 1:
+            index += 1
+            continue
+        previous = collapsed[index - 1] if index > 0 else None
+        following = collapsed[index + 1] if index + 1 < len(collapsed) else None
+        if previous and following and previous["quality"] == following["quality"]:
+            collapsed[index - 1 : index + 2] = [_merge_window_group([previous, window, following], previous["quality"])]
+            index = max(index - 1, 0)
+            continue
+        if previous is None and following is not None:
+            collapsed[index : index + 2] = [_merge_window_group([window, following], following["quality"])]
+            continue
+        if following is None and previous is not None:
+            collapsed[index - 1 : index + 1] = [_merge_window_group([previous, window], previous["quality"])]
+            index = max(index - 1, 0)
+            continue
+        if previous and following:
+            previous_days = _window_duration_days(previous)
+            following_days = _window_duration_days(following)
+            if previous_days >= following_days:
+                collapsed[index - 1 : index + 1] = [_merge_window_group([previous, window], previous["quality"])]
+                index = max(index - 1, 0)
+            else:
+                collapsed[index : index + 2] = [_merge_window_group([window, following], following["quality"])]
+            continue
+        index += 1
+    return _merge_consecutive_quality_windows(collapsed)
+
+
+def _dominant_rule_for_window(window: dict[str, Any], quality: str) -> tuple[str | None, str | None, dict[str, Any] | None]:
+    candidates: list[tuple[float, float, dict[str, Any], dict[str, Any]]] = []
+    for segment in window.get("segments", []):
+        rule = segment.get("dominant_rule")
+        if rule:
+            candidates.append(
+                (
+                    _rule_effective_confidence(rule),
+                    _rule_score_value(rule),
+                    segment,
+                    rule,
+                )
+            )
+    if not candidates:
+        first = (window.get("segments") or [{}])[0]
+        return first.get("maha_planet"), first.get("antar_planet"), None
+    candidates.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    best_segment = candidates[0][2]
+    return best_segment.get("maha_planet"), best_segment.get("antar_planet"), candidates[0][3]
+
+
+def _window_driver(domain: str, quality: str, window: dict[str, Any]) -> str:
+    maha_planet, antar_planet, dominant_rule = _dominant_rule_for_window(window, quality)
+    domain_phrase = domain.replace("_", " ")
+    reason = _period_quality_reason(dominant_rule or {})
+    if reason:
+        return f"{antar_planet} AD in {maha_planet} MD — {domain_phrase} {reason}"
+    if antar_planet and maha_planet:
+        return f"{antar_planet} AD in {maha_planet} MD — {domain_phrase} {quality} period"
+    return f"{domain_phrase} {quality} window"
+
+
+def compute_arc_angel_windows(
+    dasha_timeline: list[dict[str, Any]],
+    domain_matched_rules: dict[str, list[dict[str, Any]]],
+    horizon_years: int = 10,
+    as_of: date | None = None,
+) -> dict[str, dict[str, Any]]:
+    base_date = as_of or date.today()
+    periods = _flatten_antardasha_periods(dasha_timeline, base_date, horizon_years)
+    result: dict[str, dict[str, Any]] = {
+        domain: {"auspicious_periods": [], "inauspicious_periods": []} for domain in ARC_ANGEL_DOMAIN_SLUGS
+    }
+    for domain in ARC_ANGEL_DOMAIN_SLUGS:
+        domain_windows: list[dict[str, Any]] = []
+        for period in periods:
+            quality, dominant_pool = _quality_from_rules(domain_matched_rules.get(domain, []), period["antar_planet"])
+            dominant_rule = None
+            if dominant_pool:
+                dominant_rule = sorted(
+                    dominant_pool,
+                    key=lambda rule: (_rule_effective_confidence(rule), _rule_score_value(rule)),
+                    reverse=True,
+                )[0]
+            domain_windows.append(
+                _make_window_entry(
+                    quality=quality,
+                    start=period["start"],
+                    end=period["end"],
+                    maha_planet=period["maha_planet"],
+                    antar_planet=period["antar_planet"],
+                    domain=domain,
+                    dominant_rule=dominant_rule,
+                )
+            )
+        collapsed = _collapse_short_windows(domain_windows)
+        for window in collapsed:
+            if window["quality"] not in {"auspicious", "inauspicious"}:
+                continue
+            if _window_duration_days(window) < 90:
+                continue
+            result[domain][f"{window['quality']}_periods"].append(
+                {
+                    "start": window["start"].strftime("%Y-%m"),
+                    "end": window["end"].strftime("%Y-%m"),
+                    "driver": _window_driver(domain, window["quality"], window),
+                }
+            )
+    return result
 
 
 def _rule_payload(rule: dict[str, Any] | Any) -> dict[str, Any]:
@@ -1281,6 +1751,7 @@ class KnowledgeEngine:
         categories: list[str] | None = None,
         max_rules: int = 50,
         context: dict[str, Any] | KnowledgeRequestContext | None = None,
+        dasha_timeline: list[dict[str, Any]] | None = None,
     ) -> list[dict[str, Any]]:
         snapshot = self.index_store.snapshot
         facts = extract_chart_facts(chart)
@@ -1309,6 +1780,7 @@ class KnowledgeEngine:
                     "score": score,
                     "effective_confidence": effective_confidence,
                     "contextual_adjustment": contextual_adjustment,
+                    "period_quality": assign_period_quality(payload, dasha_timeline or []),
                     "backbone_science_id": request_context.backbone_science_id,
                     "applied_modifiers": applied_modifiers,
                     "matched_anchor_keys": sorted(indexed_rule.anchor_keys.intersection(facts.keys)),
@@ -1534,7 +2006,14 @@ async def scan_chart(
     categories: list[str] | None = None,
     max_rules: int = 50,
     context: dict[str, Any] | KnowledgeRequestContext | None = None,
+    dasha_timeline: list[dict[str, Any]] | None = None,
     db: AsyncIOMotorDatabase | None = None,
 ) -> list[dict[str, Any]]:
     engine = get_default_knowledge_engine(db)
-    return await engine.scan_chart(chart=chart, categories=categories, max_rules=max_rules, context=context)
+    return await engine.scan_chart(
+        chart=chart,
+        categories=categories,
+        max_rules=max_rules,
+        context=context,
+        dasha_timeline=dasha_timeline,
+    )
