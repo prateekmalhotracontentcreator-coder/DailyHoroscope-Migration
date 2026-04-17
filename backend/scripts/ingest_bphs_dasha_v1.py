@@ -355,10 +355,11 @@ def split_into_sloka_blocks(text: str) -> list[tuple[str, str, int]]:
     # Normalise OCR artefacts: leading 'l' digit → '1'
     text = re.sub(r'(?m)^\s*l(?=[-\d.])', '1', text)
 
-    # Dasha sloka pattern — accepts both . and : as separator, also handles single numbers
+    # Dasha sloka pattern — accepts . : or - as separator, also handles single numbers
     # [ \t]* (zero or more) to handle "88-89.Similar" (no space after period)
+    # Trailing dash handles RTF OCR artefact "15-16- Effects..." (separator rendered as dash)
     sloka_re = re.compile(
-        r"(?m)^[ \t]*(\d+[a-z]?(?:\s*[-\u2013]\s*\d+[a-z]?)?)[.:][ \t]*([A-Z].+)$"
+        r"(?m)^[ \t]*(\d+[a-z]?(?:\s*[-\u2013]\s*\d+[a-z]?)?)[.:\-][ \t]*([A-Z].+)$"
     )
 
     matches = list(sloka_re.finditer(text))
