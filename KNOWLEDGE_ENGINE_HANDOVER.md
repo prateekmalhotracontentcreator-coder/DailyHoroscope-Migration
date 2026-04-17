@@ -1,28 +1,10 @@
 # Knowledge Engine — Session Handover
-Date: 17 April 2026
+Date: 18 April 2026
 
 ## Non-Negotiable Rule
 `approval_status = "approved"` is the ONLY status that reaches live users.
 Flow: `pending_review` → validated → `auto_approved` / `pending_human_review` → co-founder promotes to `approved`.
 **Decision standing:** Do NOT promote anything yet. Promote only after full multi-book ingest is complete.
-
----
-
-## Current DB State
-
-| Source | Chapter | Topic | Rules | auto_approved | pending_human_review | flagged | Batch ID |
-|---|---|---|---|---|---|---|---|
-| BPHS Vol 1 | Ch 12-18 | Houses 1-7 | 241 | 140 (58%) | 79 (33%) | 28 (12%) | bphs-ch12..18-v2-20260414 |
-| BPHS Vol 1 | Ch 19-23 | Houses 8-12 | 119 | 70 (59%) | 39 (33%) | 10 (8%) | bphs-ch19..23-v2-20260415 |
-| BPHS Vol 1 | Ch 24 | Bhava Lords | 376 | 267 (71%) | 77 (20%) | 32 (9%) | bphs-ch24-v2-20260416 |
-| BPHS Vol 2 | Ch 47 | Mahadasha by Planet | 93 | 76 (82%) | 13 (14%) | 4 (4%) | bphs-ch47-dasha-20260416 |
-| BPHS Vol 2 | Ch 48 | Dasha of House Lords | 46 | 34 (74%) | 11 (24%) | 1 (2%) | bphs-ch48-dasha-20260416 |
-| BPHS Vol 2 | Ch 52 | Antardasha in Sun MD | 93 | 77 (83%) | 13 (14%) | 3 (3%) | bphs-ch52-dasha-20260416 |
-| BPHS Vol 2 | Ch 53 | Antardasha in Moon MD | 68 | 52 (76%) | 12 (18%) | 4 (6%) | bphs-ch53-dasha-20260417 |
-| **TOTAL** | | | **1,036** | **716 (69%)** | **244 (24%)** | **82 (8%)** | |
-
-All contradictions: 25 pairs (13 in Ch 12-23; 5 in Ch 48; 3 in Ch 52; 4 in Ch 53).
-Note: Ch 53 has 3 genuinely missing slokas (53, 54, 55) from the source edition — see below.
 
 ---
 
@@ -33,12 +15,50 @@ Note: Ch 53 has 3 genuinely missing slokas (53, 54, 55) from the source edition 
 cd ~/DailyHoroscope-Migration
 python3 backend/scripts/ingest_bphs_dasha_v1.py ...
 ```
-**Never run from a worktree path.** Worktrees are for code editing only — Claude Code edits land in the worktree branch and must be committed + merged to main before scripts are executed. Running from a worktree path risks using stale/old code or mismatched paths.
+**Never run from a worktree path.** Worktrees are for code editing only.
 
 **Workflow:**
 1. Claude Code edits script in worktree
-2. Commit + merge (or copy file) to main
+2. Commit + merge to main
 3. Run script from `~/DailyHoroscope-Migration/`
+
+---
+
+## Current DB State — 18 April 2026
+
+| Source | Chapter | Topic | Rules | auto_approved | pending_review | flagged | Batch ID |
+|---|---|---|---|---|---|---|---|
+| BPHS Vol 1 | Ch 12-18 | Houses 1-7 | 241 | 58% | 33% | 12% | bphs-ch12..18-v2-20260414 |
+| BPHS Vol 1 | Ch 19-23 | Houses 8-12 | 119 | 59% | 33% | 8% | bphs-ch19..23-v2-20260415 |
+| BPHS Vol 1 | Ch 24 | Bhava Lords | 376 | 71% | 20% | 9% | bphs-ch24-v2-20260416 |
+| BPHS Vol 2 | Ch 47 | Mahadasha by Planet | 93 | 82% | 14% | 4% | bphs-ch47-dasha-20260416 |
+| BPHS Vol 2 | Ch 48 | Dasha of House Lords | 46 | 74% | 24% | 2% | bphs-ch48-dasha-20260416 |
+| BPHS Vol 2 | Ch 52 | Antardasha in Sun MD | 93 | 83% | 14% | 3% | bphs-ch52-dasha-20260416 |
+| BPHS Vol 2 | Ch 53 | Antardasha in Moon MD | 68 | 76% | 18% | 6% | bphs-ch53-dasha-20260417 |
+| BPHS Vol 2 | Ch 53 patch | Venus Antardasha supplement | 4 | — | 100% | — | bphs-ch53-venus-patch-20260417 |
+| **TOTAL** | | | **1,040** | **~70%** | **~23%** | **~7%** | |
+
+**MongoDB collections:** `import_batches` · `interpretation_rules` · `science_registry` ✅
+
+**Ch 53 patch note:** 4 rules are `codex_supplement` / `confidence.base = 0.65` / `pending_human_review` — require expert Vedic review before promotion. Slokas 53-55 genuinely absent from RS Santhanam edition.
+
+---
+
+## MongoDB Collections — Full State
+
+| Collection | Documents | Purpose |
+|---|---|---|
+| `interpretation_rules` | 1,040 | All ingested rules |
+| `import_batches` | per-batch | Ingest audit log |
+| `science_registry` | 4 | Science hierarchy for Sprint 2 arbitration |
+
+**science_registry seed (inserted 18 Apr):**
+| rank | science_id | contradiction_policy |
+|---|---|---|
+| 1 | vedic_astrology | backbone_or_primary_lead |
+| 2 | numerology | secondary_supportive |
+| 3 | palmistry | secondary_specialist |
+| 4 | tarot | reflective_advisory |
 
 ---
 
@@ -52,6 +72,8 @@ python3 backend/scripts/ingest_bphs_dasha_v1.py ...
 | `patch_punctuation.py` | Add terminal punctuation to rules missing it | `--batch-id` |
 | `reset_to_pending.py` | Reset rejected rules back to pending_review | `--batch-id` |
 | `peek_rules.py` | Quick spot-check of rules in DB | `--batch-id --limit` |
+| `patch_ch53_venus_antardasha.py` | Insert Ch 53 Venus patch (4 rules) | `--mongo-url --db-name` |
+| `seed_science_registry.py` | Seed science_registry collection | `--mongo-url --db-name` ✅ already run |
 
 **All scripts require:** `ANTHROPIC_API_KEY`, `MONGO_URL`, `DB_NAME=EverydayHoroscope`
 
@@ -65,132 +87,197 @@ python3 backend/scripts/ingest_bphs_dasha_v1.py ...
 | `BPHS Ch 12-23 Vol 1.rtf` (individual files) | ✅ Ingested |
 | `BPHS Ch 24 Vol1.rtf` | ✅ Ingested |
 | `BPHS Ch 47 Vol 2.rtf` | ✅ Ingested |
-| Ch 48 | ✅ Ingested (46 rules, bphs-ch48-dasha-20260416) |
-| Ch 52 | ✅ Ingested (93 rules, bphs-ch52-dasha-20260416) |
-| Ch 53-60 | ❌ Needs RTF conversion from PDF (only Ch 52 RTF existed) |
+| `BPHS Ch 48 Vol 2.rtf` | ✅ Ingested |
+| `BPHS Ch 52 Vol 2.rtf` | ✅ Ingested |
+| `BPHS Ch 53_Vol 2_ Sloka 53,54,55 missing from Book.rtf` | ✅ Ingested (+ patch applied) |
+| `BPHS Ch 54 Vol 2.rtf` | ✅ **RTF READY — ingest next session** |
+| `BPHS Ch 55 Vol 2.rtf` | ✅ **RTF READY — ingest next session** |
+| Ch 56-60 | ❌ Needs RTF conversion from PDF |
 | A Text Book of Astrology Ch 15, 16 | ❌ Needs RTF conversion |
 
 ---
 
-## What Was Built This Session
+## ⚡ Next Session — Immediate Tasks (Priority Order)
 
-### 1. `ingest_bphs_houses_v2.py` — extended for Ch 24
-- `--house 0` = lord-placement mode: `condition.type = lord_placement`, no house number set on rules
-- `--chapter` now accepts 12–24 (was 12–23)
-- Ch 24 added to `CHAPTER_NAMES`: `"Effects of Bhava Lords"`
-- Extraction prompt, condition builder, fallback rule all handle house=0 correctly
+### Priority 1: Process Sprint 2 Codex Response
 
-### 2. `ingest_bphs_dasha_v1.py` — new script for Dasha chapters
-Key design decisions worth knowing:
-- **Position-map planet attribution**: pre-scans entire RTF text for all planet section headings, builds `(char_position, planet)` list, then each sloka looks up the last heading before its start position. This is more reliable than per-block detection because section headings in Ch 47 appear as free text between slokas (not as numbered sloka headings).
-- **Transition planet override**: sloka 16-22 says "after describing Sun Dasa... I will now come to the effects of the Moon Dasa" — `detect_transition_planet()` catches the forward-looking phrase and overrides the position map's "Sun" attribution to "Moon".
-- **Intro-only sloka skip**: slokas 44, 52, 61, 71, 78 are single-sentence planet introductions (no prediction content) — skipped via `_INTRO_ONLY_RE`.
-- **Zero-space period fix**: `88-89.Similar` (no space after period) now caught by `[ \t]*` instead of `[ \t]+` in sloka_re.
-- **Colon separator**: `34-39:` handled by `[.:]` in sloka_re.
+Sprint 2 response has arrived (user confirmed). Codex delivered commit `9915b60` — +506 lines to `backend/knowledge_engine.py`.
 
----
+**What was delivered (from commit inspection):**
+- `DEFAULT_SUPERSESSION_MAP` — hardcoded fallback for G-04
+- `_contradiction_score()` + `_contradiction_components()` — G-03 C-score formula
+- `_representation_mode()` — G-05 synthesis/tension/honest_uncertainty selector
+- `_build_tension_block()` — G-06 evidence packet builder
+- `_resolve_supersession_order()` + `_science_authority_rank()` — G-04 lookup
+- `_arbitration_summary()` — aggregation helper
+- Full domain helpers: `_polarity_distance()`, `_timing_distance()`, `_strength_distance()`, `_authority_distance()`
 
-## Next Session — Immediate Tasks
+**Sprint 2 gate — must verify (5 criteria):**
+1. `_contradiction_score(rule_a, rule_b)` returns correct C-score for known opposing/agreeing pairs
+2. `_representation_mode(c_scores)` → `synthesis` for C<0.30, `tension` for 0.30–0.75, `honest_uncertainty` for C>0.75
+3. `_build_tension_block(rule_a, rule_b, c_score, domain)` returns correctly shaped dict with all required fields
+4. Supersession lookup correctly returns highest-ranked science for a given domain
+5. `scan_chart()` output includes `representation_mode` and `tension_blocks` in response payload
 
-### ✅ Ch 48 — Dasas of Lords of Various Houses — COMPLETE
-- **46 rules** | `condition.type = "dasha_of_house_lord"` | `condition.house` = 1-12 (or null for general)
-- All 12 houses covered + 19 general/multi-house combination rules
-- Batch ID: `bphs-ch48-dasha-20260416`
-- **Script note:** `ingest_bphs_dasha_v1.py` auto-detects Ch 48 and uses house-lord mode (no flag needed)
-- **RTF:** `BPHS Ch 48 Vol 2.rtf` ✅ already existed in eBooks folder
+**Action:** Read the full diff, run gate verification, confirm pass/fail. If passed → immediately issue Sprint 3 brief.
 
-### ✅ Ch 53 — Antardasha in Moon Mahadasha — COMPLETE (68 rules + 4 patch)
-- **68 rules** ingested from RTF | `condition.type = "dasha_planet"` | `dasha_lord = "Moon"`
-- Batch ID: `bphs-ch53-dasha-20260417`
-- **Missing slokas 53-55** (Venus Antardasha unfavourable + remedy) — genuinely absent from RS Santhanam Vol 2 edition
-  - **Option C applied:** 4 patch rules inserted via `patch_ch53_venus_antardasha.py`
-  - Batch ID: `bphs-ch53-venus-patch-20260417`
-  - `approval_status = pending_human_review` | `confidence.base = 0.65` | `source.edition = "codex_supplement"`
-  - Covers: 3 unfavourable (Venus debilitated/dusthana/malefic-afflicted) + 1 remedy
-  - **Expert review required before promotion to approved** — these are supplemented, not verbatim
+### Priority 2: Ingest Ch 54 — Antardasha in Mars Mahadasha
 
-**To run the patch:** (from `~/DailyHoroscope-Migration/`)
 ```bash
-python3 backend/scripts/patch_ch53_venus_antardasha.py \
+cd ~/DailyHoroscope-Migration
+python3 backend/scripts/ingest_bphs_dasha_v1.py \
+  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS Ch 54 Vol 2.rtf" \
+  --chapter 54 \
+  --mongo-url "$MONGO_URL" --db-name EverydayHoroscope
+
+# Then validate:
+python3 backend/scripts/validate_rules.py \
+  --mongo-url "$MONGO_URL" --db-name EverydayHoroscope \
+  --batch-id bphs-ch54-dasha-YYYYMMDD
+```
+
+- Script auto-detects `dasha_lord = "Mars"` via `ANTARDASHA_CHAPTER_LORD[54]`
+- No `--dasha-lord` flag needed
+- Expected: ~80 rules, ~80% auto_approved
+
+### Priority 3: Ingest Ch 55 — Antardasha in Rahu Mahadasha
+
+```bash
+python3 backend/scripts/ingest_bphs_dasha_v1.py \
+  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS Ch 55 Vol 2.rtf" \
+  --chapter 55 \
   --mongo-url "$MONGO_URL" --db-name EverydayHoroscope
 ```
 
-### Priority 1 (next): Remaining Antardasha chapters — Ch 54-60
-- **What:** Sub-period effects for each Mahadasha × Antardasha combination
-- **Script:** Same `ingest_bphs_dasha_v1.py --chapter 52 --dasha-lord Sun` (etc.)
-- **ANTARDASHA_CHAPTER_LORD** dict already wired: `{52: "Sun", 53: "Moon", ..., 60: "Venus"}`
-- **RTF status:** Need 9 RTF conversions from Vol 2 PDF
-- **Est. rules:** ~80 per chapter × 9 = ~720 rules
+- Script auto-detects `dasha_lord = "Rahu"` via `ANTARDASHA_CHAPTER_LORD[55]`
+- Rahu chapters often have edge cases — watch for unusual planet name variants in RTF ("Raahu", "Dragon's Head")
+- Expected: ~80 rules
 
-### Priority 3: A Text Book of Astrology — Ch 15
-- **What:** Planets in Different Houses (cross-validation baseline for BPHS house rules)
-- **Script:** Extend `ingest_bphs_houses_v2.py` OR new `ingest_textbook_v1.py` (different `BOOK_ID = "textbook_astrology"`, different `source.book`)
-- **RTF status:** Needs conversion
-- **Est. rules:** ~100-150
+### Priority 4 (if Sprint 2 gate passes): Issue Sprint 3 Brief
+
+**Sprint 3 — Arc Angel computation (G-07/G-08/G-09)**
+- G-07: `period_quality_now` per domain (current active Mahadasha × Antardasha quality)
+- G-08: `period_quality` per prediction (per-rule quality assignment)
+- G-09: 10-year auspicious/inauspicious windows
+- Est. 16–24h
+- **Critical constraint:** G-07/G-08/G-09 must consume POST-ARBITRATION, POST-CONVERGENCE output — not raw matched rules
+- Full brief to write once Sprint 2 gate confirmed passed
+
+---
+
+## Knowledge Engine Phase 1.2 — Sprint Tracker
+
+| Sprint | Gaps | Status | Gate | Commit |
+|---|---|---|---|---|
+| Sprint 1 | G-01 α/β/γ scoring | ✅ COMPLETE | ✅ All 6 cases passed | `57e347a` |
+| Sprint 2 | G-03/G-05/G-06/G-04 arbitration | ✅ DELIVERED | ⬜ **Verify gate next session** | `9915b60` |
+| Sprint 3 | G-07/G-08/G-09 Arc Angel | ⬜ After Sprint 2 gate | — | — |
+
+**G-02 (tier multipliers):** Confirmed deferred — requires claim clustering, not a standalone fix. Codex confirmed this twice.
+
+---
+
+## Antardasha Chapters — Full Status
+
+| Ch | Dasha Lord | Status | Batch ID |
+|---|---|---|---|
+| 52 | Sun | ✅ 93 rules, 83% approved | bphs-ch52-dasha-20260416 |
+| 53 | Moon | ✅ 68 rules + 4 patch | bphs-ch53-dasha-20260417 |
+| 54 | Mars | ⬜ **RTF ready — ingest next session** | — |
+| 55 | Rahu | ⬜ **RTF ready — ingest next session** | — |
+| 56 | Jupiter | ❌ RTF needed | — |
+| 57 | Saturn | ❌ RTF needed | — |
+| 58 | Mercury | ❌ RTF needed | — |
+| 59 | Ketu | ❌ RTF needed | — |
+| 60 | Venus | ❌ RTF needed | — |
+
+---
+
+## What Was Fixed This Session (18 Apr)
+
+### 1. Lo Shu Grid CSS — FIXED ✅ (commit `878edd3`)
+- **Root cause:** `numerology.css` simply did not exist — zero CSS for any numerology BEM class
+- **Fix:** Created `frontend/src/numerology.css` — complete stylesheet covering LoShuGrid (3×3 grid), LuckyElementsTable, NumerologyReportPage, chips, remediation plan, remedy card, timing panel
+- **Imported** in `App.js` alongside `App.css` and `panchang.css`
+- **Deployed** to Vercel — live
+
+### 2. NumerologyReportPage — Already Fixed (April 6, confirmed this session)
+- `NumerologyReportPage.jsx` is already the v4 renderer (commit `6253402`, 6 Apr)
+- All 4 post-integration gaps addressed: RemedyCard, TimingPanel, SEO, favorable_timing
+- No further action needed
+
+### 3. Sprint 1 G-01 — Gate Verified ✅
+- `_contextual_adjustment()` formula confirmed correct via independent gate run
+- All 6 test cases passed locally
+
+### 4. science_registry — Seeded ✅
+- 4 documents inserted via `seed_science_registry.py`
+- Sprint 2 G-04 blocker cleared
+
+---
+
+## Pending Codex Actions
+
+| Action | Detail | Status |
+|---|---|---|
+| TD-26 + TD-27 in CONTRACT | Country Kundali signal + Forecast Tier | ✅ DONE — Sections 23+24, commit `57e347a` |
+| Sprint 1 G-01 | α/β/γ scoring | ✅ DONE |
+| Sprint 2 G-03/G-05/G-06/G-04 | Arbitration runtime | ✅ DELIVERED — gate check pending |
+| **Sprint 3 brief** | G-07/G-08/G-09 Arc Angel | ⬜ Issue after Sprint 2 gate confirmed |
+| Ch 53 Venus patch expert review | 4 `codex_supplement` rules need Vedic expert sign-off before promotion | ⬜ Ongoing |
+
+---
+
+## Open Issues (Pre Co-Founder Review)
+
+1. **82 flagged rules** across all batches — Admin > Rules Browser > filter: flagged → dismiss / edit / escalate
+2. **~244 pending_human_review rules** — awaiting co-founder sign-off
+3. **25 contradiction pairs** (13 in Ch 12-23; 5 in Ch 48; 3 in Ch 52; 4 in Ch 53) — verify genuine classical contradictions vs validator false positives
+4. **4 Ch 53 patch rules** — `codex_supplement`, `pending_human_review` — need Vedic expert review before promotion
+5. **Ch 54-60 RTF conversions** — only Ch 54 + Ch 55 available; Ch 56-60 still need PDF→RTF
 
 ---
 
 ## Approval Milestone Target
-Promote to `approved` after reaching ~950 rules:
-- ✅ BPHS Vol 1 Ch 12-24 complete (736 rules)
-- ✅ BPHS Vol 2 Ch 47 complete (93 rules)
-- ✅ BPHS Vol 2 Ch 48 complete (46 rules)
-- ✅ BPHS Vol 2 Ch 52 complete (93 rules) — 968 total so far — milestone crossed
-- ✅ BPHS Vol 2 Ch 53 complete (68 rules + 4 patch = 72) — **1,040 total**
-- ⬜ Ch 54-60 (7 remaining Antardasha chapters) — need RTF conversion from PDF
-- ⬜ A Text Book of Astrology Ch 15 (~100-150 rules)
+Promote to `approved` after full multi-book ingest is complete:
+- ✅ BPHS Vol 1 Ch 12-24 (736 rules)
+- ✅ BPHS Vol 2 Ch 47-48 (139 rules)
+- ✅ BPHS Vol 2 Ch 52-53 (165 rules)
+- ⬜ BPHS Vol 2 Ch 54-60 (7 chapters — est. ~560 rules)
+- ⬜ A Text Book of Astrology Ch 15 (~100-150 rules cross-validation)
 
 ---
 
-## Pending Codex Review — Do Not Lock Until Confirmed
+## Pending Codex Review (Phase 2 — Do Not Build Yet)
 
-Two design decisions raised in Founder session (17 Apr 2026) — sent to Codex for validation:
+**TD-26 — Country Kundali as Alpha Signal** `LOCKED Phase 2`
+- Phase 2: `CountryKundaliSignal` as typed subtype under `alpha` umbrella
+- Weighting: same country=100/0 · abroad <2yr=70/30 · 2–7yr=interpolate · >7yr=30/70
+- Do not build before Commission J (World Context Engine)
 
-**A — Country Kundali as α (Macro) Input** — `CODEX_REVIEWED ✅ 17 Apr 2026`
-- Phase 1: `alpha` stays as `float | ContextSignal` — no change
-- Phase 2: introduce typed `CountryKundaliSignal` as subtype under `alpha` umbrella
-- `dasha_alignment` = compatibility between individual's active maha/antara lords and country chart's active mundane period lords, normalised 0–1
-- Weighting model: <2yr abroad = 70/30 (birth/residence), 2–7yr = interpolate, >7yr = 30/70, same country = 100/0
-- "Current Place of Residence" form field feeds residence country input
-- Do not build before Commission J / World Context work
-- **Next action:** Codex to draft TD spec entry (Phase 2) for `CountryKundaliSignal`
-
-**B — Forecast Tier / Life Area Outlook** — `CODEX_REVIEWED ✅ 17 Apr 2026`
-- Renamed from "Quality Tier" — it is outcome valence, not reliability
-- Schema field: `forecast_tier` | User-facing label: `Life Area Outlook` [PENDING FOUNDER CONFIRM]
-- Computed per section/domain (not per rule, not per full report)
-- Weighted polarity by `effective_confidence` + backbone priority + final scored intensity — not majority vote
-- Guardrail: if `representation_mode = honest_uncertainty` → suppress Excellent/Critical, collapse to middle bands
-- Must not override `representation_mode`
-- Phase 2: internal only first (tone selection, Arc Angel reconciliation, QA). User-facing only after wording tested.
-- **Next action:** Codex to draft TD spec entry (Phase 2), aligned to existing TD structure
-
-**Other design decisions locked this session (no Codex review needed):**
-- Language tiers: Basic (simplified) / Premium (modern) / Pro (classical paraphrase — our authored text, not verbatim Santhanam)
-- IP: Astrological if-then rules are facts, not copyrightable. Lightweight AI humanising layer in Phase 2.
-- Paraphrasing via Codex: was scoped in early sessions, parked for Phase 2 — unpause then.
-- Vector DB: deferred. MongoDB M0 sufficient for Phase 1 structured queries.
+**TD-27 — Forecast Tier / Life Area Outlook** `LOCKED Phase 2`
+- Field: `forecast_tier` · User label: **"Life Area Outlook"** (Founder confirmed)
+- 6-band valence overlay per domain/section — coexists with `period_quality` and `representation_mode`
+- Phase 2 internal only first; user-facing after wording validation
 
 ---
 
-## Open Issues to Clear Before Co-Founder Review
-1. **75 flagged rules** across all batches — pull from Admin > Rules Browser (filter: flagged), determine: dismiss / edit / escalate
-2. **219 pending_human_review rules** — awaiting sign-off
-3. **18 contradiction pairs** (13 in Ch 12-23; 5 in Ch 48) — verify if genuine classical contradictions or validator false positives
-4. **Ch 15 low auto-approve (25%) and Ch 19 (33%)** — outlier batches; likely validator flags multi-condition rules. Inspect before promotion.
+## Validation Command Templates
 
----
-
-## Validation Command Template
 ```bash
 # Ingest
 python3 backend/scripts/ingest_bphs_dasha_v1.py \
-  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS Ch 48 Vol 2.rtf" \
-  --chapter 48 \
+  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS Ch 54 Vol 2.rtf" \
+  --chapter 54 \
   --mongo-url "$MONGO_URL" --db-name EverydayHoroscope
 
 # Validate
 python3 backend/scripts/validate_rules.py \
   --mongo-url "$MONGO_URL" --db-name EverydayHoroscope \
-  --batch-id bphs-ch48-dasha-YYYYMMDD
+  --batch-id bphs-ch54-dasha-YYYYMMDD
+
+# Peek rules
+python3 backend/scripts/peek_rules.py \
+  --mongo-url "$MONGO_URL" --db-name EverydayHoroscope \
+  --batch-id bphs-ch54-dasha-YYYYMMDD --limit 10
 ```
