@@ -138,52 +138,49 @@
 
 Gaps found by Temple Team audit on 17 April 2026. All are between the locked CONTRACT and the current code.
 
-| Gap | Description | Linked TD | Risk | Phase 1.2 Blocker |
-|---|---|---|---|---|
-| **G-01** | α/β/γ multipliers never applied in `_score_rule()` | TD-01 | 🔴 HIGH | ✅ Yes |
-| **G-02** | Confidence tier multipliers (×0.60→×1.15) not computed | TD-01 | 🟡 MOD | Partial |
-| **G-03** | Contradiction C-score formula absent | TD-16 | 🔴 HIGH | ✅ Yes |
-| **G-04** | Supersession table runtime lookup missing | TD-14/TD-17 | 🟡 MOD | No |
-| **G-05** | Representation mode selection absent | TD-21 | 🔴 HIGH | ✅ Yes |
-| **G-06** | Tension block builder from matched rules absent | TD-20 | 🔴 HIGH | ✅ Yes |
-| **G-07** | Arc Angel `period_quality_now` never computed | TD-23 | 🔴 HIGH | ✅ Yes |
-| **G-08** | Arc Angel `period_quality` per domain never assigned | TD-23 | 🔴 HIGH | ✅ Yes |
-| **G-09** | 10-year auspicious/inauspicious window absent | TD-23 | 🔴 HIGH | ✅ Yes |
-| **G-10** | β/γ score computation from questionnaire absent | TD-19/TD-25 | 🟡 MOD | No (Commission I-Q) |
-| **G-11** | Case study validation runner absent | TD-24 | 🟢 LOW | No (Phase 1.2) |
-| **G-12** | World Context Engine α population (always 1.0) | TD-10 | 🟢 LOW | No (Commission J / Phase 2) |
+| Gap | Description | Linked TD | Risk | Phase 1.2 Blocker | Status |
+|---|---|---|---|---|---|
+| **G-01** | α/β/γ multipliers never applied in `_score_rule()` | TD-01 | 🔴 HIGH | ✅ Yes | ✅ **DONE** — commit `57e347a`; gate passed 18 Apr |
+| **G-02** | Confidence tier multipliers (×0.60→×1.15) not computed | TD-01 | 🟡 MOD | Partial | ⬜ Sprint 2+ (claim clustering first) |
+| **G-03** | Contradiction C-score formula absent | TD-16 | 🔴 HIGH | ✅ Yes | 🔄 Sprint 2 |
+| **G-04** | Supersession table runtime lookup missing | TD-14/TD-17 | 🟡 MOD | No | 🔄 Sprint 2 — `science_registry` now seeded |
+| **G-05** | Representation mode selection absent | TD-21 | 🔴 HIGH | ✅ Yes | 🔄 Sprint 2 |
+| **G-06** | Tension block builder from matched rules absent | TD-20 | 🔴 HIGH | ✅ Yes | 🔄 Sprint 2 |
+| **G-07** | Arc Angel `period_quality_now` never computed | TD-23 | 🔴 HIGH | ✅ Yes | ⬜ Sprint 3 |
+| **G-08** | Arc Angel `period_quality` per domain never assigned | TD-23 | 🔴 HIGH | ✅ Yes | ⬜ Sprint 3 |
+| **G-09** | 10-year auspicious/inauspicious window absent | TD-23 | 🔴 HIGH | ✅ Yes | ⬜ Sprint 3 |
+| **G-10** | β/γ score computation from questionnaire absent | TD-19/TD-25 | 🟡 MOD | No | ⬜ Commission I-Q |
+| **G-11** | Case study validation runner absent | TD-24 | 🟢 LOW | No | ⬜ Phase 1.2 script |
+| **G-12** | World Context Engine α population (always 1.0) | TD-10 | 🟢 LOW | No | ⬜ Commission J / Phase 2 |
 
 ### Build Sequence for Gaps — CONFIRMED BY CODEX (17 Apr 2026)
 
-**Commission structure:** One Commission I Phase 1.2 package with 3 gated sprint checkpoints (not 3 separate commissions — all work is inside the same KE runtime with tightly coupled outputs).
+**Commission structure:** One Commission I Phase 1.2 package with 3 gated sprint checkpoints.
 
 ```
-Sprint 1A — Scoring foundation                              [8–12h]
+Sprint 1 — Scoring foundation                               [8–12h]  ✅ COMPLETE — 18 Apr 2026
   G-01  Wire α/β/γ into _score_rule()            [knowledge_engine.py]
+  Gate: ✅ ALL PASS — neutral 1.0 · floor 0.78 · ceiling 1.22 · alpha-only 1.06 · beta-only 0.95 · gamma-only 1.08
+  commit: 57e347a | TD-26 + TD-27 formally locked as Sections 23+24 in CONTRACT
 
-Sprint 1B / Sprint 2 kickoff — Claim clustering             [included in Sprint 2]
-  G-02  Apply tier multipliers (×0.60→×1.15)     [knowledge_engine.py]
-  ⚠️  NOTE: G-02 is NOT a per-rule patch.
-      Convergence-tier multiplier is a per-claim/domain aggregation property.
-      Requires grouping matched rules by shared claim/domain FIRST, then applying multiplier.
-      Must be built alongside claim clustering, not bolted onto _score_rule().
+  G-02  Tier multipliers deferred (confirmed again by Codex 18 Apr)
+  ⚠️  Convergence-tier multiplier is a per-claim/domain aggregation property.
+      Must be built alongside claim clustering in Sprint 2, not bolted onto _score_rule().
 
-Sprint 2 — Arbitration runtime                              [18–26h]
+Sprint 2 — Arbitration runtime                              [18–26h]  🔄 READY TO BRIEF
   G-03  Contradiction C-score formula             [knowledge_engine.py]
   G-05  Representation mode selector              [knowledge_engine.py]
   G-06  Tension block builder                     [knowledge_engine.py]
   G-04  Supersession table runtime lookup         [knowledge_engine.py]
-  ⚠️  G-04 dependency: needs science_registry seed data OR interim default
-      supersession map before runtime lookup has anything authoritative to consult.
-      Temple Team to confirm: is science_registry seeded in MongoDB?
+  ✅  science_registry SEEDED — 4 documents (vedic_astrology/numerology/palmistry/tarot)
+      Script: backend/scripts/seed_science_registry.py
+      Codex interim fallback map also available: DEFAULT_SUPERSESSION_MAP (in Sprint 2 brief)
 
-Sprint 3 — Arc Angel computation                            [16–24h]
+Sprint 3 — Arc Angel computation                            [16–24h]  ⬜ After Sprint 2 gate
   G-07  period_quality_now per domain             [knowledge_engine.py + server.py]
   G-08  period_quality per prediction             [knowledge_engine.py]
   G-09  10-year auspicious/inauspicious windows   [knowledge_engine.py]
-  ⚠️  G-07/G-08/G-09 must consume POST-ARBITRATION, POST-CONVERGENCE output
-      shape — not raw matched rules. Arc Angel will drift from narrative layer
-      if built on unprocessed rule output.
+  ⚠️  Must consume POST-ARBITRATION, POST-CONVERGENCE output — not raw matched rules.
 
 TOTAL Phase 1.2: 42–62h
 
@@ -194,15 +191,12 @@ Sprint 4 — Separate commissions (not Phase 1.2)
 ```
 
 **Acceptance gates:**
-- Sprint 1 gate: scoring math correct (α/β/γ applied, contextual_adjustment range 0.78–1.22)
+- Sprint 1 gate: ✅ PASSED 18 Apr — scoring math correct (all 6 test cases)
 - Sprint 2 gate: arbitration runtime + tension blocks correct
 - Sprint 3 gate: Arc Angel period_quality computation + 10-year windows correct
 
 **⚠️ Phase 1.2 acceptance rubric requires all 3 gates passed:**
-Internal Coherence 5/5 + Arc Angel Alignment ≥70% — both fail without G-01/G-03/G-05/G-06/G-07/G-08/G-09.
-
-**Open action before Sprint 2 can be briefed:**
-Temple Team to verify whether `science_registry` collection is seeded in MongoDB with authority domain data. If not, an interim default supersession map must be agreed before G-04 build starts.
+Internal Coherence 5/5 + Arc Angel Alignment ≥70% — both fail without G-03/G-05/G-06/G-07/G-08/G-09.
 
 ---
 
@@ -210,11 +204,98 @@ Temple Team to verify whether `science_registry` collection is seeded in MongoDB
 
 | Action | Detail | Priority | Status |
 |---|---|---|---|
-| Add TD-26 to CONTRACT | Spec received 17 Apr — Codex to formally enter into `CODEX_KNOWLEDGE_ENGINE_CONTRACT.md` | Medium | ⬜ |
-| Add TD-27 to CONTRACT | Spec received 17 Apr — Codex to formally enter into `CODEX_KNOWLEDGE_ENGINE_CONTRACT.md` | Medium | ⬜ |
-| Issue Commission I Phase 1.2 brief | One umbrella brief, 3 gated sprint checkpoints, 42–62h total | 🔴 High | ⬜ PENDING FOUNDER SIGN-OFF |
-| Seed `science_registry` data | **CONFIRMED MISSING** — EverydayHoroscope DB has only `import_batches` + `interpretation_rules`. Collection does not exist. Must be created + seeded before Sprint 2 G-04. Codex to provide seed data or interim supersession map. | 🔴 High | ⬜ Codex action needed |
+| Add TD-26 to CONTRACT | Spec received 17 Apr | Medium | ✅ DONE — Section 23, commit 57e347a |
+| Add TD-27 to CONTRACT | Spec received 17 Apr | Medium | ✅ DONE — Section 24, commit 57e347a |
+| Issue Commission I Phase 1.2 Sprint 1 | G-01 α/β/γ wiring | 🔴 High | ✅ DONE — gate passed 18 Apr, commit 57e347a |
+| Seed `science_registry` | 4 documents (vedic/numerology/palmistry/tarot) | 🔴 High | ✅ Script ready — run `seed_science_registry.py --mongo-url $MONGO_URL --db-name EverydayHoroscope` |
+| **Issue Commission I Phase 1.2 Sprint 2** | G-03/G-05/G-06/G-04 arbitration runtime, 18–26h | 🔴 **High** | **⬜ NEXT — brief below** |
+| Commission 3 Numerology defect | Lo Shu Grid CSS missing — flat list instead of 3×3 grid | 🔴 High | ✅ DONE — commit 878edd3, deployed |
 | Commission 3 Numerology — focused trace | Codex offered defect note on NumerologyPage.jsx + NumerologyReportPage.jsx failure points | Medium | ⬜ Accept offer |
+
+---
+
+## Commission I Phase 1.2 — Sprint 2 Brief
+
+**To: Codex (Commission I — Jyotish Knowledge Engine)**
+**Sprint 2 — Arbitration Runtime | Est. 18–26h**
+**Pre-condition: Sprint 1 gate ✅ passed. `science_registry` seeded (or use fallback map below).**
+
+---
+
+**Scope:** Build the full arbitration runtime in `backend/knowledge_engine.py`. Four gaps, tightly coupled — deliver as a single diff.
+
+### G-03 — Contradiction C-score formula (TD-16)
+
+Implement the contradiction scoring function exactly per Section 16 of the CONTRACT:
+
+```
+C = 0.40×polarity_delta + 0.35×timing_delta + 0.15×strength_delta + 0.10×authority_delta
+Flag as contradiction if C ≥ 0.55
+```
+
+- `polarity_delta`: 1.0 if opposing polarity (positive vs negative), 0.5 if mixed, 0.0 if same
+- `timing_delta`: 1.0 if same timing window with opposite outcome, else proportionally lower
+- `strength_delta`: absolute difference in `strength_band` mapped 0–1
+- `authority_delta`: 0.0 if same science, scaled by hierarchy_rank difference
+- Input: two matched `InterpretationRuleDocument` objects
+- Output: `float` C-score + `bool` is_contradiction
+
+### G-05 — Representation mode selector (TD-21)
+
+Select per domain, after contradiction scoring:
+- `synthesis` if convergence C < 0.30
+- `tension` if 0.30 ≤ C ≤ 0.75
+- `honest_uncertainty` if C > 0.75
+
+Input: list of C-scores for matched rules in a domain. Output: `Literal["synthesis", "tension", "honest_uncertainty"]`
+
+### G-06 — Tension block builder (TD-20)
+
+Build `tension_block` JSON evidence packet per Section 17.3 of the CONTRACT when `representation_mode = "tension"`:
+
+```python
+{
+  "rule_a_id": str,
+  "rule_b_id": str,
+  "c_score": float,
+  "polarity_delta": float,
+  "timing_delta": float,
+  "strength_delta": float,
+  "authority_delta": float,
+  "domain": str,
+  "resolution_hint": str   # brief note on which rule has higher authority
+}
+```
+
+### G-04 — Supersession table runtime lookup (TD-14/TD-17)
+
+Look up `science_registry` to determine which science's rule takes precedence when a contradiction is detected. Use the `DEFAULT_SUPERSESSION_MAP` below as the in-process fallback if the collection lookup fails.
+
+```python
+DEFAULT_SUPERSESSION_MAP = {
+    "career":        {"career_growth":        ["vedic_astrology", "numerology", "palmistry", "tarot"]},
+    "wealth":        {"financial_security":   ["vedic_astrology", "numerology", "tarot", "palmistry"]},
+    "relationships": {"partnership_stability": ["vedic_astrology", "numerology", "tarot", "palmistry"],
+                      "marriage_timing":       ["vedic_astrology", "numerology", "tarot", "palmistry"]},
+    "health":        {"health_vitality":      ["vedic_astrology", "palmistry", "numerology", "tarot"]},
+    "general":       {"*":                    ["vedic_astrology", "numerology", "palmistry", "tarot"]},
+}
+```
+
+### G-02 note — still deferred
+
+Do NOT include tier multipliers (×0.60→×1.15) in Sprint 2. These require claim clustering which is built as part of Sprint 2 output aggregation — Codex to determine the right insertion point once G-03/G-05/G-06 are wired.
+
+---
+
+**Sprint 2 gate (must pass before Sprint 3 brief is issued):**
+1. `_contradiction_score(rule_a, rule_b)` returns correct C-score for known opposing/agreeing pairs
+2. `_representation_mode(c_scores)` returns correct mode for C < 0.30, 0.30–0.75, > 0.75
+3. `_build_tension_block(rule_a, rule_b, c_score, domain)` returns correctly shaped dict
+4. Supersession lookup correctly returns highest-ranked science for a given domain
+5. `scan_chart()` output includes `representation_mode` and `tension_blocks` in response payload
+
+Deliver as a single diff against `backend/knowledge_engine.py`. Commit to `main`.
 
 ---
 
