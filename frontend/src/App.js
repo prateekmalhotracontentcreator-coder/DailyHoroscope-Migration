@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import '@/App.css';
+import './numerology.css';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
