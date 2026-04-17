@@ -84,7 +84,13 @@ from notification_trigger_router import router as notification_trigger_router
 from notification_log_router import router as notification_log_router
 from lumina_router import router as lumina_router
 from palmistry_router import router as palmistry_router
-from knowledge_engine import configure_default_knowledge_engine
+from knowledge_engine import (
+    build_domain_rule_map,
+    compute_arc_angel_windows,
+    compute_dasha_timeline,
+    compute_period_quality_now,
+    configure_default_knowledge_engine,
+)
 from knowledge_router import router as knowledge_router
 from knowledge_schema import KnowledgeNarrativeRequest, KnowledgeNarrativeResponse
 try:
@@ -1926,6 +1932,54 @@ async def generate_knowledge_narrative(payload: KnowledgeNarrativeRequest, reque
             model=payload.model,
             error=f"Knowledge narrative request failed: {exc}",
         )
+
+
+@api_router.get("/knowledge-engine/arc-angel-windows")
+async def get_arc_angel_windows(
+    birth_date: str,
+    birth_time: str,
+    birth_place: str,
+    request: Request,
+    horizon_years: int = 10,
+):
+    if horizon_years < 1 or horizon_years > 20:
+        raise HTTPException(status_code=400, detail="horizon_years must be between 1 and 20")
+    try:
+        engine = getattr(request.app.state, "knowledge_engine", None)
+        if engine is None:
+            engine = await configure_default_knowledge_engine(db)
+            request.app.state.knowledge_engine = engine
+            request.app.state.knowledge_index_store = engine.index_store
+
+        chart_data = calculate_vedic_chart(
+            date_of_birth=birth_date,
+            time_of_birth=birth_time,
+            place_of_birth=birth_place,
+        )
+        dasha_timeline = compute_dasha_timeline(chart_data)
+        matched_rules = await engine.scan_chart(
+            chart=chart_data,
+            max_rules=2000,
+            context={"backbone_science_id": "vedic_astrology"},
+            dasha_timeline=dasha_timeline,
+        )
+        domain_rule_map = build_domain_rule_map(matched_rules)
+        return {
+            "domain_quality_now": compute_period_quality_now(
+                dasha_timeline=dasha_timeline,
+                domain_matched_rules=domain_rule_map,
+            ),
+            "arc_angel_windows": compute_arc_angel_windows(
+                dasha_timeline=dasha_timeline,
+                domain_matched_rules=domain_rule_map,
+                horizon_years=horizon_years,
+            ),
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        logging.error("Arc Angel windows endpoint failed: %s", exc)
+        raise HTTPException(status_code=500, detail=f"Failed to compute Arc Angel windows: {exc}")
 
 app.include_router(api_router)
 app.include_router(panchang_router)
