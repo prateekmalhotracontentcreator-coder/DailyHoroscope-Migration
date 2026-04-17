@@ -19,6 +19,7 @@ from knowledge_schema import (
     COLLECTION_AUTHOR_VOICES,
     COLLECTION_INTERPRETATION_RULES,
     COLLECTION_NARRATIVE_BRIDGES,
+    COLLECTION_SCIENCE_REGISTRY,
     InterpretationRuleDocument,
     KnowledgeNarrativeDomain,
     KnowledgeNarrativeResponse,
@@ -56,6 +57,8 @@ APPROVED_RULE_FILTER = {"active": True, "approval_status": "approved"}
 DEFAULT_BACKBONE = "vedic_astrology"
 DEFAULT_AUTHOR_VOICE = "classical"
 DEFAULT_NARRATIVE_MODEL = os.getenv("KNOWLEDGE_ENGINE_CLAUDE_MODEL", "claude-sonnet-4-5")
+CONTRADICTION_THRESHOLD = 0.55
+LOW_CONFIDENCE_THRESHOLD = 0.20
 PLANET_VARIANTS = {
     "Sun (Surya)": "Sun",
     "Moon (Chandra)": "Moon",
@@ -105,6 +108,54 @@ DOMAIN_PRIORITY = [
     "Environment",
     "Creativity & Hobbies",
 ]
+DEFAULT_SUPERSESSION_MAP = {
+    "career": {"career_growth": ["vedic_astrology", "numerology", "palmistry", "tarot"]},
+    "wealth": {"financial_security": ["vedic_astrology", "numerology", "tarot", "palmistry"]},
+    "relationships": {
+        "partnership_stability": ["vedic_astrology", "numerology", "tarot", "palmistry"],
+        "marriage_timing": ["vedic_astrology", "numerology", "tarot", "palmistry"],
+    },
+    "health": {"health_vitality": ["vedic_astrology", "palmistry", "numerology", "tarot"]},
+    "general": {"*": ["vedic_astrology", "numerology", "palmistry", "tarot"]},
+}
+POLARITY_DISTANCE_MAP = {
+    ("positive", "negative"): 1.0,
+    ("negative", "positive"): 1.0,
+    ("mixed", "positive"): 0.5,
+    ("positive", "mixed"): 0.5,
+    ("mixed", "negative"): 0.5,
+    ("negative", "mixed"): 0.5,
+    ("mixed", "neutral"): 0.5,
+    ("neutral", "mixed"): 0.5,
+    ("neutral", "positive"): 0.25,
+    ("positive", "neutral"): 0.25,
+    ("neutral", "negative"): 0.25,
+    ("negative", "neutral"): 0.25,
+}
+TIMING_DISTANCE_MAP = {
+    ("early", "late"): 1.0,
+    ("late", "early"): 1.0,
+    ("early", "on_time"): 0.5,
+    ("on_time", "early"): 0.5,
+    ("late", "on_time"): 0.5,
+    ("on_time", "late"): 0.5,
+    ("cyclical", "early"): 0.75,
+    ("early", "cyclical"): 0.75,
+    ("cyclical", "late"): 0.75,
+    ("late", "cyclical"): 0.75,
+    ("cyclical", "on_time"): 0.5,
+    ("on_time", "cyclical"): 0.5,
+    ("none", "early"): 0.25,
+    ("early", "none"): 0.25,
+    ("none", "late"): 0.25,
+    ("late", "none"): 0.25,
+    ("none", "cyclical"): 0.15,
+    ("cyclical", "none"): 0.15,
+    ("none", "on_time"): 0.10,
+    ("on_time", "none"): 0.10,
+}
+STRENGTH_BAND_VALUES = {"low": 0, "medium": 1, "high": 2, "extreme": 3}
+MODE_SEVERITY = {"synthesis": 0, "tension": 1, "honest_uncertainty": 2}
 
 
 def utc_now() -> datetime:
@@ -530,6 +581,420 @@ def _normalize_domain_name(value: str) -> str:
     return value
 
 
+def _rule_payload(rule: dict[str, Any] | Any) -> dict[str, Any]:
+    if isinstance(rule, dict):
+        return rule
+    model_dump = getattr(rule, "model_dump", None)
+    if callable(model_dump):
+        return model_dump(mode="json", by_alias=True, exclude_none=True)
+    return {}
+
+
+def _rule_effective_confidence(rule: dict[str, Any] | Any) -> float:
+    payload = _rule_payload(rule)
+    value = payload.get("effective_confidence")
+    try:
+        if value is not None:
+            return float(value)
+    except (TypeError, ValueError):
+        pass
+    return 1.0
+
+
+def _rule_score_value(rule: dict[str, Any] | Any) -> float:
+    payload = _rule_payload(rule)
+    value = payload.get("score")
+    try:
+        if value is not None:
+            return float(value)
+    except (TypeError, ValueError):
+        pass
+    return 0.0
+
+
+def _primary_category(rule: dict[str, Any]) -> str:
+    rule = _rule_payload(rule)
+    categories = rule.get("categories") or []
+    for category in categories:
+        if category in DEFAULT_SUPERSESSION_MAP:
+            return str(category)
+    if categories:
+        return str(categories[0])
+    life_domain = str(rule.get("life_domain") or "general")
+    return life_domain if life_domain in DEFAULT_SUPERSESSION_MAP else "general"
+
+
+def _domain_names_for_rule(rule: dict[str, Any]) -> list[str]:
+    rule = _rule_payload(rule)
+    categories = rule.get("categories") or []
+    mapped = sorted({_category_to_domain(category) for category in categories})
+    if mapped:
+        return mapped
+    return [_category_to_domain(str(rule.get("life_domain") or "general"))]
+
+
+def _strength_distance(band_a: str | None, band_b: str | None) -> float:
+    value_a = STRENGTH_BAND_VALUES.get(str(band_a or "").lower(), 1)
+    value_b = STRENGTH_BAND_VALUES.get(str(band_b or "").lower(), 1)
+    return round(abs(value_a - value_b) / 3.0, 4)
+
+
+def _polarity_distance(polarity_a: str | None, polarity_b: str | None) -> float:
+    key = (str(polarity_a or "neutral").lower(), str(polarity_b or "neutral").lower())
+    if key[0] == key[1]:
+        return 0.0
+    return POLARITY_DISTANCE_MAP.get(key, 0.25)
+
+
+def _timing_distance(timing_a: str | None, timing_b: str | None) -> float:
+    key = (str(timing_a or "none").lower(), str(timing_b or "none").lower())
+    if key[0] == key[1]:
+        return 0.0
+    return TIMING_DISTANCE_MAP.get(key, 0.25)
+
+
+def _authority_distance(
+    rule_a: dict[str, Any],
+    rule_b: dict[str, Any],
+    science_registry: dict[str, dict[str, Any]] | None = None,
+) -> float:
+    rule_a = _rule_payload(rule_a)
+    rule_b = _rule_payload(rule_b)
+    science_a = str(rule_a.get("science_id") or "")
+    science_b = str(rule_b.get("science_id") or "")
+    if not science_a or not science_b or science_a == science_b:
+        return 0.0
+    registry = science_registry or {}
+    rank_a = int((registry.get(science_a) or {}).get("hierarchy_rank", 99))
+    rank_b = int((registry.get(science_b) or {}).get("hierarchy_rank", 99))
+    known_ranks = [int(doc.get("hierarchy_rank", 0)) for doc in registry.values() if isinstance(doc.get("hierarchy_rank"), int)]
+    max_rank_delta = max(1, (max(known_ranks) - min(known_ranks)) if len(known_ranks) >= 2 else 3)
+    return round(min(1.0, abs(rank_a - rank_b) / max_rank_delta), 4)
+
+
+def _contradiction_components(
+    rule_a: dict[str, Any],
+    rule_b: dict[str, Any],
+    science_registry: dict[str, dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    rule_a = _rule_payload(rule_a)
+    rule_b = _rule_payload(rule_b)
+    if str(rule_a.get("life_domain") or "") != str(rule_b.get("life_domain") or ""):
+        return {
+            "candidate": False,
+            "polarity_delta": 0.0,
+            "timing_delta": 0.0,
+            "strength_delta": 0.0,
+            "authority_delta": 0.0,
+            "contradiction_types": [],
+        }
+    if str(rule_a.get("claim_axis") or "") != str(rule_b.get("claim_axis") or ""):
+        return {
+            "candidate": False,
+            "polarity_delta": 0.0,
+            "timing_delta": 0.0,
+            "strength_delta": 0.0,
+            "authority_delta": 0.0,
+            "contradiction_types": [],
+        }
+    if str(rule_a.get("claim_scope") or "") != str(rule_b.get("claim_scope") or ""):
+        return {
+            "candidate": False,
+            "polarity_delta": 0.0,
+            "timing_delta": 0.0,
+            "strength_delta": 0.0,
+            "authority_delta": 0.0,
+            "contradiction_types": [],
+        }
+
+    polarity_delta = _polarity_distance(rule_a.get("claim_polarity"), rule_b.get("claim_polarity"))
+    timing_delta = _timing_distance(rule_a.get("timing_bias"), rule_b.get("timing_bias"))
+    strength_delta = _strength_distance(rule_a.get("strength_band"), rule_b.get("strength_band"))
+    authority_delta = _authority_distance(rule_a, rule_b, science_registry)
+
+    contradiction_types: list[str] = []
+    if polarity_delta >= 0.5:
+        contradiction_types.append("directional")
+    if timing_delta >= 0.5:
+        contradiction_types.append("temporal")
+    if strength_delta >= 0.34:
+        contradiction_types.append("strength")
+    if authority_delta > 0:
+        contradiction_types.append("authority_overlap")
+
+    return {
+        "candidate": True,
+        "polarity_delta": polarity_delta,
+        "timing_delta": timing_delta,
+        "strength_delta": strength_delta,
+        "authority_delta": authority_delta,
+        "contradiction_types": contradiction_types,
+    }
+
+
+def _contradiction_score(
+    rule_a: dict[str, Any],
+    rule_b: dict[str, Any],
+    science_registry: dict[str, dict[str, Any]] | None = None,
+) -> tuple[float, bool]:
+    rule_a = _rule_payload(rule_a)
+    rule_b = _rule_payload(rule_b)
+    components = _contradiction_components(rule_a, rule_b, science_registry)
+    if not components["candidate"]:
+        return 0.0, False
+    c_score = round(
+        0.40 * float(components["polarity_delta"])
+        + 0.35 * float(components["timing_delta"])
+        + 0.15 * float(components["strength_delta"])
+        + 0.10 * float(components["authority_delta"]),
+        4,
+    )
+    is_contradiction = (
+        c_score >= CONTRADICTION_THRESHOLD
+        and _rule_effective_confidence(rule_a) >= 0.18
+        and _rule_effective_confidence(rule_b) >= 0.18
+    )
+    return c_score, is_contradiction
+
+
+def _resolve_supersession_order(
+    category: str,
+    claim_axis: str,
+    science_registry: dict[str, dict[str, Any]] | None = None,
+) -> list[str]:
+    category_map = DEFAULT_SUPERSESSION_MAP.get(category) or DEFAULT_SUPERSESSION_MAP.get("general", {})
+    fallback_order = category_map.get(claim_axis) or category_map.get("*") or []
+    registry = science_registry or {}
+    if not registry:
+        return list(fallback_order)
+
+    def _priority(science_id: str) -> tuple[int, int]:
+        document = registry.get(science_id) or {}
+        domains = {str(item) for item in document.get("authority_domain", [])}
+        domain_match = 0 if claim_axis in domains or category in domains else 1
+        rank = int(document.get("hierarchy_rank", 99))
+        fallback_rank = fallback_order.index(science_id) if science_id in fallback_order else len(fallback_order) + rank
+        return (domain_match, fallback_rank)
+
+    ordered = sorted(registry.keys(), key=_priority)
+    if fallback_order:
+        ordered = [science_id for science_id in fallback_order if science_id in registry] + [
+            science_id for science_id in ordered if science_id not in fallback_order
+        ]
+    return ordered or list(fallback_order)
+
+
+def _science_authority_rank(science_id: str, science_registry: dict[str, dict[str, Any]] | None = None) -> int:
+    registry = science_registry or {}
+    return int((registry.get(science_id) or {}).get("hierarchy_rank", 99))
+
+
+def _dominant_science_for_pair(
+    rule_a: dict[str, Any],
+    rule_b: dict[str, Any],
+    backbone_science_id: str,
+    science_registry: dict[str, dict[str, Any]] | None = None,
+) -> str:
+    rule_a = _rule_payload(rule_a)
+    rule_b = _rule_payload(rule_b)
+    science_a = str(rule_a.get("science_id") or "")
+    science_b = str(rule_b.get("science_id") or "")
+    if science_a == backbone_science_id:
+        return science_a
+    if science_b == backbone_science_id:
+        return science_b
+
+    category = _primary_category(rule_a)
+    claim_axis = str(rule_a.get("claim_axis") or "")
+    order = _resolve_supersession_order(category, claim_axis, science_registry)
+    for science_id in order:
+        if science_id in {science_a, science_b}:
+            return science_id
+
+    score_a = _rule_effective_confidence(rule_a) + _rule_score_value(rule_a)
+    score_b = _rule_effective_confidence(rule_b) + _rule_score_value(rule_b)
+    if score_a == score_b:
+        return science_a if _science_authority_rank(science_a, science_registry) <= _science_authority_rank(science_b, science_registry) else science_b
+    return science_a if score_a > score_b else science_b
+
+
+def _representation_mode(
+    c_scores: list[float],
+    top_effective_confidence: float | None = None,
+    same_directional_polarity: bool = False,
+    confidence_delta: float = 0.0,
+) -> str:
+    if top_effective_confidence is not None and top_effective_confidence < LOW_CONFIDENCE_THRESHOLD:
+        return "honest_uncertainty"
+    if not c_scores:
+        return "synthesis"
+    max_c_score = max(c_scores)
+    if max_c_score > 0.75:
+        return "honest_uncertainty"
+    if same_directional_polarity and confidence_delta >= 0.05:
+        return "synthesis"
+    if confidence_delta > 0.15:
+        return "synthesis"
+    if max_c_score < 0.30:
+        return "synthesis"
+    if 0.30 <= max_c_score <= 0.75:
+        return "tension"
+    return "honest_uncertainty"
+
+
+def _compact_tension_summary(rule: dict[str, Any]) -> str:
+    rule = _rule_payload(rule)
+    interpretation = rule.get("interpretation") or {}
+    return str(interpretation.get("summary") or interpretation.get("detailed") or "").strip()
+
+
+def _build_tension_block(
+    rule_a: dict[str, Any],
+    rule_b: dict[str, Any],
+    c_score: float,
+    domain: str,
+    backbone_science_id: str | None = None,
+    science_registry: dict[str, dict[str, Any]] | None = None,
+    representation_mode: str | None = None,
+) -> dict[str, Any]:
+    rule_a = _rule_payload(rule_a)
+    rule_b = _rule_payload(rule_b)
+    components = _contradiction_components(rule_a, rule_b, science_registry)
+    dominant_science = _dominant_science_for_pair(
+        rule_a,
+        rule_b,
+        backbone_science_id or str(rule_a.get("backbone_science_id") or DEFAULT_BACKBONE),
+        science_registry,
+    )
+    claims = sorted(
+        [rule_a, rule_b],
+        key=lambda rule: (
+            0 if str(rule.get("science_id") or "") == dominant_science else 1,
+            -_rule_effective_confidence(rule),
+            -_rule_score_value(rule),
+            _science_authority_rank(str(rule.get("science_id") or ""), science_registry),
+        ),
+    )
+    confidence_values = [_rule_effective_confidence(rule) for rule in claims]
+    confidence_delta = round(abs(confidence_values[0] - confidence_values[1]), 4) if len(confidence_values) >= 2 else 0.0
+    same_direction = components["polarity_delta"] == 0.0
+    mode = representation_mode or _representation_mode(
+        [c_score],
+        top_effective_confidence=max(confidence_values) if confidence_values else 0.0,
+        same_directional_polarity=same_direction,
+        confidence_delta=confidence_delta,
+    )
+    return TensionBlock(
+        life_domain=domain,
+        claim_axis=str(rule_a.get("claim_axis") or rule_b.get("claim_axis") or ""),
+        representation_mode=mode,
+        dominant_science=dominant_science,
+        backbone_science_id=backbone_science_id or str(rule_a.get("backbone_science_id") or DEFAULT_BACKBONE),
+        confidence_delta=confidence_delta,
+        contradiction_score=c_score,
+        contradiction_types=list(components["contradiction_types"]),
+        tranche_adjustments_applied=bool(rule_a.get("_tranche_adjusted") or rule_b.get("_tranche_adjusted")),
+        low_confidence=max(confidence_values) < LOW_CONFIDENCE_THRESHOLD if confidence_values else True,
+        claims=[
+            {
+                "science_id": str(rule.get("science_id") or ""),
+                "summary": _compact_tension_summary(rule),
+                "effective_confidence": _rule_effective_confidence(rule),
+                "authority_rank": _science_authority_rank(str(rule.get("science_id") or ""), science_registry),
+            }
+            for rule in claims[:2]
+        ],
+    ).model_dump(mode="json", by_alias=True, exclude_none=True)
+
+
+def _dominant_representation_mode(modes: list[str]) -> str:
+    if not modes:
+        return "synthesis"
+    return max(modes, key=lambda mode: MODE_SEVERITY.get(mode, 0))
+
+
+def _arbitration_summary(
+    matched_rules: list[dict[str, Any]],
+    backbone_science_id: str,
+    science_registry: dict[str, dict[str, Any]] | None = None,
+) -> dict[str, Any]:
+    grouped: dict[str, dict[str, list[dict[str, Any]]]] = defaultdict(lambda: defaultdict(list))
+    for rule in matched_rules:
+        for domain in _domain_names_for_rule(rule):
+            grouped[domain][str(rule.get("claim_axis") or "")].append(rule)
+
+    domain_modes: dict[str, str] = {}
+    domain_tension_blocks: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    for domain, axis_groups in grouped.items():
+        domain_c_scores: list[float] = []
+        domain_modes_for_axis: list[str] = []
+        for axis, rules in axis_groups.items():
+            if not axis:
+                continue
+            leaders_by_science: dict[str, dict[str, Any]] = {}
+            for rule in sorted(rules, key=lambda item: (_rule_effective_confidence(item), _rule_score_value(item)), reverse=True):
+                science_id = str(rule.get("science_id") or "")
+                if science_id and science_id not in leaders_by_science:
+                    leaders_by_science[science_id] = rule
+            selected = list(leaders_by_science.values())
+            if len(selected) < 2:
+                top_confidence = max((_rule_effective_confidence(rule) for rule in selected), default=0.0)
+                mode = _representation_mode([], top_effective_confidence=top_confidence)
+                domain_modes_for_axis.append(mode)
+                continue
+
+            best_pair: tuple[dict[str, Any], dict[str, Any], float] | None = None
+            for index, first in enumerate(selected):
+                for second in selected[index + 1 :]:
+                    c_score, is_contradiction = _contradiction_score(first, second, science_registry)
+                    if not is_contradiction:
+                        continue
+                    if best_pair is None or c_score > best_pair[2]:
+                        best_pair = (first, second, c_score)
+
+            top_confidence = max(_rule_effective_confidence(rule) for rule in selected)
+            if best_pair is None:
+                mode = _representation_mode([], top_effective_confidence=top_confidence)
+                domain_modes_for_axis.append(mode)
+                continue
+
+            first, second, c_score = best_pair
+            domain_c_scores.append(c_score)
+            confidence_delta = round(
+                abs(
+                    _rule_effective_confidence(first)
+                    - _rule_effective_confidence(second)
+                ),
+                4,
+            )
+            mode = _representation_mode(
+                [c_score],
+                top_effective_confidence=top_confidence,
+                same_directional_polarity=_contradiction_components(first, second, science_registry)["polarity_delta"] == 0.0,
+                confidence_delta=confidence_delta,
+            )
+            domain_modes_for_axis.append(mode)
+            if mode != "synthesis":
+                block = _build_tension_block(
+                    first,
+                    second,
+                    c_score,
+                    domain,
+                    backbone_science_id=backbone_science_id,
+                    science_registry=science_registry,
+                    representation_mode=mode,
+                )
+                domain_tension_blocks[domain].append(block)
+
+        domain_modes[domain] = _dominant_representation_mode(domain_modes_for_axis)
+
+    return {
+        "domain_modes": domain_modes,
+        "domain_tension_blocks": dict(domain_tension_blocks),
+        "tension_blocks": [block for blocks in domain_tension_blocks.values() for block in blocks],
+    }
+
+
 def _extract_lucky_elements(rules: list[dict[str, Any]], chart: dict[str, Any]) -> dict[str, Any]:
     planets = []
     signs = []
@@ -593,6 +1058,10 @@ def _build_domain_plan(
     tension_by_domain: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for block in tension_blocks:
         tension_by_domain[_normalize_domain_name(block.life_domain)].append(block.model_dump(mode="json", by_alias=True, exclude_none=True))
+    domain_representation_modes: dict[str, str] = {}
+    for domain, blocks in tension_by_domain.items():
+        modes = [str(block.get("representation_mode") or "synthesis") for block in blocks]
+        domain_representation_modes[domain] = _dominant_representation_mode(modes)
 
     planner_domains: list[dict[str, Any]] = []
     for domain in ordered_domains:
@@ -609,6 +1078,7 @@ def _build_domain_plan(
                 "lucky_elements_hint": _extract_lucky_elements(top_rules, chart),
                 "backbone_rules": [_compact_rule_payload(rule) for rule in backbone_rules[:4]],
                 "support_rules": [_compact_rule_payload(rule) for rule in support_rules[:3]],
+                "representation_mode": domain_representation_modes.get(domain, "synthesis"),
                 "tension_blocks": tension_by_domain.get(domain, []),
                 "user_context": user_context,
             }
@@ -815,6 +1285,7 @@ class KnowledgeEngine:
         snapshot = self.index_store.snapshot
         facts = extract_chart_facts(chart)
         request_context = context if isinstance(context, KnowledgeRequestContext) else KnowledgeRequestContext(**(context or {}))
+        science_registry = await self._load_science_registry()
 
         candidate_rule_ids: set[str] = set()
         for key in facts.keys:
@@ -845,6 +1316,19 @@ class KnowledgeEngine:
             )
             matches.append(payload)
 
+        arbitration = _arbitration_summary(
+            matched_rules=matches,
+            backbone_science_id=request_context.backbone_science_id,
+            science_registry=science_registry,
+        )
+        for payload in matches:
+            domains = _domain_names_for_rule(payload)
+            relevant_blocks = [block for block in arbitration["tension_blocks"] if block.get("life_domain") in domains]
+            payload["tension_blocks"] = relevant_blocks
+            payload["representation_mode"] = _dominant_representation_mode(
+                [arbitration["domain_modes"].get(domain, "synthesis") for domain in domains]
+            )
+
         matches.sort(key=lambda item: (item["score"], item.get("priority", 0), item.get("effective_confidence", 0)), reverse=True)
         return matches[: max_rules]
 
@@ -859,6 +1343,7 @@ class KnowledgeEngine:
         model: str | None = None,
     ) -> KnowledgeNarrativeResponse:
         request_context = context if isinstance(context, KnowledgeRequestContext) else KnowledgeRequestContext(**(context or {}))
+        science_registry = await self._load_science_registry()
         all_tension_blocks: list[TensionBlock] = []
         for block in request_context.tension_blocks:
             all_tension_blocks.append(block if isinstance(block, TensionBlock) else TensionBlock(**block))
@@ -866,6 +1351,13 @@ class KnowledgeEngine:
             all_tension_blocks.append(block if isinstance(block, TensionBlock) else TensionBlock(**block))
 
         matched_rules = apply_tranche_filter(matched_rules, user_context or {})
+        arbitration = _arbitration_summary(
+            matched_rules=matched_rules,
+            backbone_science_id=request_context.backbone_science_id,
+            science_registry=science_registry,
+        )
+        for block in arbitration["tension_blocks"]:
+            all_tension_blocks.append(block if isinstance(block, TensionBlock) else TensionBlock(**block))
         tranche_adjusted_domains: set[str] = set()
         for _rule in matched_rules:
             if _rule.get("_tranche_adjusted"):
@@ -991,6 +1483,20 @@ class KnowledgeEngine:
         collection = self.db[COLLECTION_NARRATIVE_BRIDGES]
         documents = await collection.find({"active": True}, {"_id": 0}).to_list(length=50)
         return _select_bridge_phrases(documents, tension_blocks or [])
+
+    async def _load_science_registry(self) -> dict[str, dict[str, Any]]:
+        collection = self.db[COLLECTION_SCIENCE_REGISTRY]
+        try:
+            documents = await collection.find({"active": True}, {"_id": 0}).to_list(length=50)
+        except Exception as exc:
+            logger.warning("Knowledge engine could not load science_registry, using fallback order: %s", exc)
+            return {}
+        result: dict[str, dict[str, Any]] = {}
+        for document in documents:
+            science_id = str(document.get("science_id") or "")
+            if science_id:
+                result[science_id] = document
+        return result
 
     async def _anthropic_client(self) -> Any | None:
         try:
