@@ -8,7 +8,7 @@
 ---
 
 > **How to read this document:**
-> All architecture decisions are locked. The Decision Log (TD-01 through TD-25) and Sections 15–22 are authoritative.
+> All architecture decisions are locked. The Decision Log (TD-01 through TD-27) and Sections 15–24 are authoritative.
 > Where earlier sections carry legacy `[PROPOSED]` or `[INPUT REQUESTED]` labels, treat the Decision Log and `CODEX_COMMISSION_I_BUILD_ORDER.md` as the override.
 > `[CONFIRMED]` and `[LOCKED]` labels remain accurate throughout.
 
@@ -62,6 +62,8 @@
 | TD-23 | Arc Angel — 12 Areas of Life | Left Nav Panel persistent user profile snapshot across all 12 life domains (12 Bhavas). Shows Auspicious / Neutral / Inauspicious period per domain + Confidence % score. Activates on Premium membership + birth data entry. Confidence improves as user provides more data (questionnaire, additional module runs). Every module report must correlate its output back to the relevant Arc Angel dimension(s). Master validation layer — the cross-module truth anchor. See Section 19. |
 | TD-24 | Case Study Validation Pipeline | 1,000+ published case studies of public figures (known birth data + known life outcomes) are available as Phase 1 validation data. ~50 cases from Numerology Phase 1 book; ~300 from the Longevity book; balance from additional sources. These are the Knowledge Engine's empirical acceptance test suite. Case studies must be structured, extracted, and run through the engine once built. Outcomes compared against known results. Threshold tuning (contradiction C-score, confidence tiers) validated against this data before Phase 2 launch. See Section 20. |
 | TD-25 | Questionnaire Commission | Questionnaire UI and flow (onboarding + continuous dialogue for Subscription members) is a **separate Phase 1 commission** — outside Commission I build hours. Commission I builds the data schema and β/γ hooks. The questionnaire commission delivers the UI, flow, and β/γ population logic. These two commissions run in parallel or sequentially in Phase 1. |
+| TD-26 | Country Kundali as Alpha Signal | **Phase 2 locked.** `alpha` remains `float | ContextSignal` in Phase 1. Phase 2 introduces typed `CountryKundaliSignal` under the alpha umbrella. It computes macro support/stress from natal country + residence country using the weighting model and `dasha_alignment` method defined in Section 23. Do not build before Commission J. |
+| TD-27 | Forecast Tier / Life Area Outlook | **Phase 2 locked.** Add `forecast_tier` as a per-domain outcome-valence layer, user-facing label "Life Area Outlook". It coexists with `period_quality` and `representation_mode`, does not replace either, and is internal-only first. Full rules in Section 24. |
 
 **Phased implementations (spec Phase 1, runtime Phase 2)**
 
@@ -1436,3 +1438,162 @@ Once live, quality is maintained through:
 > Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
 > Main branch: `main` (deploy-on-push)
 > Effort estimate: 125–150h Commission I core + separate commissions I-Q, I-K, J
+
+---
+
+## 23. Country Kundali as Alpha Signal [LOCKED — TD-26, Phase 2]
+
+### Purpose
+
+`alpha` remains the macro-context channel in the 3-layer scoring model. In Phase 2, the engine may populate `alpha` from Country Kundali logic when the user has both a birth country and a current country of residence.
+
+This is a **macro support / stress signal**, not a replacement for natal chart scoring. It modifies report intensity through the existing alpha hook.
+
+### Phase Boundary
+
+- **Phase 1:** `alpha` remains `float | ContextSignal` with no schema change.
+- **Phase 2:** introduce typed `CountryKundaliSignal` as a subtype under the alpha umbrella.
+- **Dependency:** Do not build before **Commission J (World Context Engine)**.
+
+### Typed Signal Model (Phase 2)
+
+`CountryKundaliSignal` extends the alpha payload with:
+
+- `score`
+- `source = "country_kundali"`
+- `birth_country`
+- `residence_country`
+- `birth_country_alignment`
+- `residence_country_alignment`
+- `birth_weight`
+- `residence_weight`
+- `years_in_residence_country`
+- `weighting_rule`
+- `factors`
+
+### Alignment Definition
+
+`dasha_alignment` is defined as the normalized `0.0–1.0` compatibility between:
+
+1. the individual's currently active **maha / antara** lords, and
+2. the relevant country's active **mundane period lords**
+
+If the mundane dasha engine is not yet ready, Phase 2 may use an interim proxy:
+
+- transit support / stress against the individual's active dasha lords, normalized to `0.0–1.0`
+
+The proxy is temporary and must be marked in the signal provenance.
+
+### Country Weighting Model
+
+When the birth country and residence country differ:
+
+- **same country:** `birth_weight = 1.00`, `residence_weight = 0.00`
+- **abroad < 2 years:** `70 / 30` birth / residence
+- **abroad 2–7 years:** interpolate linearly from `70 / 30` to `30 / 70`
+- **abroad > 7 years:** `30 / 70` birth / residence
+
+The "Current Place of Residence" field in the report form feeds the residence-country input.
+
+### Final Alpha Score
+
+```python
+alpha_score = (
+    birth_country_alignment * birth_weight
+    + residence_country_alignment * residence_weight
+)
+```
+
+This score is then passed into the existing alpha channel of `KnowledgeRequestContext`.
+
+### Guardrails
+
+- Country Kundali modifies macro context only; it does not override natal chart evidence.
+- If either country chart is unavailable, degrade gracefully to the available country only.
+- If no valid country context is available, `alpha` remains neutral.
+
+---
+
+## 24. Forecast Tier / Life Area Outlook [LOCKED — TD-27, Phase 2]
+
+### Purpose
+
+Add a finer-grained outcome-valence layer per domain / section.
+
+This is **not** a quality or confidence score. It is a forecast-output band that summarizes whether the section leans strongly favorable, moderately favorable, mixed, or difficult.
+
+Internal field name:
+
+- `forecast_tier`
+
+User-facing label:
+
+- **Life Area Outlook**
+
+### Scope
+
+- Computed **per domain / section only**
+- Never computed per individual rule
+- Never collapsed into one label for the full report
+
+### Relationship to Existing Fields
+
+`forecast_tier` must coexist with, and never override:
+
+- `period_quality` (`auspicious / neutral / inauspicious`)
+- `representation_mode` (`synthesis / tension / honest_uncertainty`)
+- `confidence_tier`
+
+It is a six-band overlay on top of the existing three-band period-quality layer.
+
+### Computation Method
+
+Per domain, compute weighted polarity mass:
+
+- positive rules contribute positive mass
+- negative rules contribute negative mass
+- mixed / neutral rules dampen overall magnitude
+
+Weights must incorporate:
+
+- `effective_confidence`
+- backbone priority
+- scored intensity
+
+Majority vote alone is not sufficient.
+
+### Output Bands
+
+The six locked bands are:
+
+- `Excellent`
+- `Very Good`
+- `Good`
+- `Cautious`
+- `Difficult`
+- `Critical`
+
+### Guardrail with Representation Mode
+
+If `representation_mode = honest_uncertainty`:
+
+- suppress extreme labels (`Excellent`, `Critical`)
+- collapse output toward middle bands
+- or keep `forecast_tier` internal-only for that section
+
+`forecast_tier` may inform tone, but it must not contradict the arbitration mode.
+
+### Rollout Plan
+
+- **Phase 2 initial use:** internal only
+  - tone selection
+  - Arc Angel reconciliation
+  - QA / evaluator review
+- **User-facing release:** only after wording validation is complete
+
+### Non-Replacement Rule
+
+`forecast_tier` does not replace `period_quality`.
+
+- `period_quality` remains the coarse 3-band auspicious / neutral / inauspicious signal
+- `forecast_tier` is the finer 6-band interpretation layer applied on top

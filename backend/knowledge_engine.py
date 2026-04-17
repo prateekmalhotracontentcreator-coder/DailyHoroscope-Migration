@@ -37,6 +37,14 @@ SCIENCE_WEIGHTS = {
     "kp": 0.20,
 }
 STRENGTH_MULTIPLIERS = {"low": 0.70, "medium": 0.85, "high": 1.00, "extreme": 1.15}
+CONTEXT_WEIGHTS = {
+    "alpha": 0.15,
+    "beta": 0.10,
+    "gamma": 0.10,
+}
+NEUTRAL_CONTEXT_SCORE = 1.0
+MIN_CONTEXTUAL_ADJUSTMENT = 0.78
+MAX_CONTEXTUAL_ADJUSTMENT = 1.22
 MODIFIER_FACTORS = {
     "amplify_positive": 1.15,
     "amplify_negative": 1.15,
@@ -451,15 +459,41 @@ def _backbone_adjusted_weight(science_id: str, backbone_science_id: str | None) 
     return base
 
 
-def _score_rule(rule: InterpretationRuleDocument, facts: ChartFacts, context: KnowledgeRequestContext) -> tuple[float, float, list[str]]:
+def _contextual_adjustment(context: KnowledgeRequestContext) -> float:
+    alpha_score = _context_score(context.alpha)
+    beta_score = _context_score(context.beta)
+    gamma_score = _context_score(context.gamma)
+    adjustment = 1.0 + (
+        CONTEXT_WEIGHTS["alpha"] * (alpha_score - NEUTRAL_CONTEXT_SCORE)
+        + CONTEXT_WEIGHTS["beta"] * (beta_score - NEUTRAL_CONTEXT_SCORE)
+        + CONTEXT_WEIGHTS["gamma"] * (gamma_score - NEUTRAL_CONTEXT_SCORE)
+    )
+    return round(max(MIN_CONTEXTUAL_ADJUSTMENT, min(MAX_CONTEXTUAL_ADJUSTMENT, adjustment)), 4)
+
+
+def _score_rule(
+    rule: InterpretationRuleDocument,
+    facts: ChartFacts,
+    context: KnowledgeRequestContext,
+) -> tuple[float, float, list[str], float]:
     priority_factor = 0.50 + (rule.priority / 10.0)
     intensity = rule.intensity_score if rule.intensity_score > 0 else 1.0
     strength = STRENGTH_MULTIPLIERS.get(rule.strength_band, 0.85)
     science_weight = _backbone_adjusted_weight(rule.science_id, context.backbone_science_id)
     modifier_factor, applied_modifiers = _modifier_factor(rule.modifiers, facts)
-    score = round(rule.weight * priority_factor * intensity * (1.0 + science_weight) * strength * modifier_factor, 6)
+    contextual_adjustment = _contextual_adjustment(context)
+    score = round(
+        rule.weight
+        * priority_factor
+        * intensity
+        * (1.0 + science_weight)
+        * strength
+        * modifier_factor
+        * contextual_adjustment,
+        6,
+    )
     effective_confidence = round(min(1.15, science_weight * strength), 4)
-    return score, effective_confidence, applied_modifiers
+    return score, effective_confidence, applied_modifiers, contextual_adjustment
 
 
 def _context_score(value: float | dict[str, Any] | Any) -> float:
@@ -797,12 +831,13 @@ class KnowledgeEngine:
                 continue
             if not _condition_matches(rule.condition.model_dump(mode="python", exclude_none=True), facts):
                 continue
-            score, effective_confidence, applied_modifiers = _score_rule(rule, facts, request_context)
+            score, effective_confidence, applied_modifiers, contextual_adjustment = _score_rule(rule, facts, request_context)
             payload = rule.model_dump(mode="json", by_alias=True, exclude_none=True)
             payload.update(
                 {
                     "score": score,
                     "effective_confidence": effective_confidence,
+                    "contextual_adjustment": contextual_adjustment,
                     "backbone_science_id": request_context.backbone_science_id,
                     "applied_modifiers": applied_modifiers,
                     "matched_anchor_keys": sorted(indexed_rule.anchor_keys.intersection(facts.keys)),
