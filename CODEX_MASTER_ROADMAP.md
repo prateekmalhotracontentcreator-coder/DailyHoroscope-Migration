@@ -172,8 +172,12 @@ Sprint 2 — Arbitration runtime                              [18–26h]  🔄 R
   G-05  Representation mode selector              [knowledge_engine.py]
   G-06  Tension block builder                     [knowledge_engine.py]
   G-04  Supersession table runtime lookup         [knowledge_engine.py]
-  ✅  science_registry SEEDED — 4 documents (vedic_astrology/numerology/palmistry/tarot)
-      Script: backend/scripts/seed_science_registry.py
+  ✅  science_registry LIVE in MongoDB — confirmed 18 Apr 2026
+      [1] vedic_astrology   → backbone_or_primary_lead
+      [2] numerology        → secondary_supportive
+      [3] palmistry         → secondary_specialist
+      [4] tarot             → reflective_advisory
+      Collections: import_batches · interpretation_rules · science_registry
       Codex interim fallback map also available: DEFAULT_SUPERSESSION_MAP (in Sprint 2 brief)
 
 Sprint 3 — Arc Angel computation                            [16–24h]  ⬜ After Sprint 2 gate
@@ -208,7 +212,7 @@ Internal Coherence 5/5 + Arc Angel Alignment ≥70% — both fail without G-03/G
 | Add TD-27 to CONTRACT | Spec received 17 Apr | Medium | ✅ DONE — Section 24, commit 57e347a |
 | Issue Commission I Phase 1.2 Sprint 1 | G-01 α/β/γ wiring | 🔴 High | ✅ DONE — gate passed 18 Apr, commit 57e347a |
 | Seed `science_registry` | 4 documents (vedic/numerology/palmistry/tarot) | 🔴 High | ✅ Script ready — run `seed_science_registry.py --mongo-url $MONGO_URL --db-name EverydayHoroscope` |
-| **Issue Commission I Phase 1.2 Sprint 2** | G-03/G-05/G-06/G-04 arbitration runtime, 18–26h | 🔴 **High** | **⬜ NEXT — brief below** |
+| **Issue Commission I Phase 1.2 Sprint 2** | G-03/G-05/G-06/G-04 arbitration runtime, 18–26h | 🔴 **High** | **⬜ READY — brief in section below; science_registry confirmed live in MongoDB 18 Apr** |
 | Commission 3 Numerology defect | Lo Shu Grid CSS missing — flat list instead of 3×3 grid | 🔴 High | ✅ DONE — commit 878edd3, deployed |
 | Commission 3 Numerology — focused trace | Codex offered defect note on NumerologyPage.jsx + NumerologyReportPage.jsx failure points | Medium | ⬜ Accept offer |
 
