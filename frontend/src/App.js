@@ -52,6 +52,7 @@ import { RemedyPage } from './pages/RemedyPage';
 import KundaliPage from './pages/KundaliPage';
 import LuminaPage from './pages/LuminaPage';
 import LongevityReportPage from './pages/LongevityReportPage';
+import ArcAngelPage from './pages/ArcAngelPage';
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -167,6 +168,9 @@ function App() {
 
                   {/* Ayur Jyotish — Longevity & Health Report */}
                   <Route path="/longevity" element={<LongevityReportPage />} />
+
+                  {/* Arc Angel — 12 Areas of Life */}
+                  <Route path="/arc-angel" element={<ArcAngelPage />} />
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
