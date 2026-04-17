@@ -1,6 +1,6 @@
 # EverydayHoroscope — Knowledge Engine Strategy
 **Co-Founder Working Document**
-Last updated: 14 April 2026 (Book 1 review complete)
+Last updated: 17 April 2026 — Founder session: language tiers, IP, macro factors, Vector DB decision, report architecture locked
 
 ---
 
@@ -244,3 +244,42 @@ Phase 1 Books (8)
 
 *Document owner: Prateek Malhotra + EverydayHoroscope AI Co-Founder*
 *Next review: After Phase 1 book-by-book review complete*
+
+---
+
+## 10. Strategic Decisions — Founder Session 17 April 2026
+
+### Report Tier Architecture (LOCKED)
+Three language tiers are the core commercial USP:
+| Tier | Register | Source | Notes |
+|---|---|---|---|
+| Basic | `simplified` | AI plain English | Free/freemium |
+| Premium | `modern` | Rule-backed, structured | Paid |
+| Pro | `classical` | Our authored classical-style prose | Premium paid — the real differentiator |
+
+Pro tier uses our **own authored classical-style English** — not verbatim Santhanam translation. Attribution to BPHS chapter/sloka as scholarly reference (e.g. "Per BPHS Ch. 52…"). AI humanising/paraphrasing layer (TD-02/WIM) deferred to Phase 2.
+
+### IP Position (CONFIRMED)
+Astrological if-then rules are facts — not copyrightable in any jurisdiction. No IP concern with extracting principles from classical texts. Our IP: extraction schema, scoring model, condition types, classical paraphrase layer.
+
+### Vector DB Decision (DEFERRED — MongoDB M0 sufficient)
+pyswisseph gives exact values → MongoDB structured queries handle all Phase 1 retrieval. Vector DB deferred until Phase 2 if user free-text queries require semantic search. Embeddings, if added, go on processed rule summaries — NOT raw RTF. See `CODEX_MASTER_ROADMAP.md` for full analysis.
+
+### Macro Factors Architecture
+- α (Alpha) = macro context (geopolitical, cultural, environmental, seasonal)
+- Phase 1: α defaults to 1.0 (neutral)
+- Phase 2: Country Kundali feeds α via `CountryKundaliSignal` (TD-26, PENDING CODEX SPEC)
+- Current residence weighting: <2yr abroad=70/30, 2–7yr=interpolate, >7yr=30/70
+- "Current Place of Residence" field in report form feeds the residence country input
+- ⚠️ G-01: α not yet wired into scoring — fix before Phase 2 macro work
+
+### Multi-Dimensional Reasoning (LOCKED)
+Query dimensions: Houses × Lords × Planets × Dasha × Mahadasha × Antardasha + weightages + α/β/γ
+Science weights: Vedic 40% · Palmistry 25% · Numerology 20% · Tarot 15% (locked in CONTRACT TD-01)
+No cross-book de-duplication — each book's rules preserved independently via `source.book_id`
+
+### 3-Layer Report Model (LOCKED)
+Layer 1 — Structure: static headings, section intros ($0)
+Layer 2 — Classical Rules: verbatim/paraphrased DB fetch ($0 per call)
+Layer 3 — Personalisation: minimal Claude synthesis call (~$0.003–0.005, cached aggressively)
+Target: 90% of report cost = $0. AI only for 2-3 bridging sentences.
