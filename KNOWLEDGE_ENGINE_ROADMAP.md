@@ -1,5 +1,5 @@
 # Knowledge Engine — Ingest Roadmap
-Last updated: 16 April 2026
+Last updated: 17 April 2026 — 1,040 rules in DB; Ch 48 + Ch 52 + Ch 53 complete (Ch 53 includes 4-rule Venus Antardasha supplement patch)
 
 ---
 
@@ -9,8 +9,11 @@ Last updated: 16 April 2026
 |---|---|---|---|
 | BPHS Vol 1 | Ch 12-24 (Houses + Bhava Lords) | 736 | Validated |
 | BPHS Vol 2 | Ch 47 (Mahadasha by Planet) | 93 | Validated |
+| BPHS Vol 2 | Ch 48 (Dasha of House Lords) | 46 | Validated |
+| BPHS Vol 2 | Ch 52 (Antardasha in Sun MD) | 93 | Validated |
+| BPHS Vol 2 | Ch 53 (Antardasha in Moon MD) | 72 (68+4 patch) | Validated; patch pending human review |
 | A Text Book of Astrology | None | 0 | Pending |
-| **Total** | | **829** | |
+| **Total** | | **968+** | |
 
 **Approval gate:** All 829 rules sit at `auto_approved` or `pending_human_review`.
 No rules reach live users until co-founder promotes to `approved`.
@@ -35,13 +38,10 @@ Decision: promote only after full multi-book ingest is complete.
 - **Rules ingested:** 376 · auto_approved: 71% · flagged: 9% · contradictions: 0
 - **batch_id:** bphs-ch24-v2-20260416
 
-### BPHS Vol 2 — Ch 48: Dasas of Lords of Various Houses
-- **What:** Effects when you run the Dasha of the lord of each house (Ascendant lord Dasha, 2nd lord Dasha ... 12th lord Dasha)
-- **Why Tier 1:** Highest-value Dasha chapter for the prediction engine — directly ties houses to timing
-- **Condition type needed:** `dasha_of_house_lord` (new type — lord of house N is running Dasha)
-- **Script:** New `ingest_bphs_dasha_v1.py` required
-- **Est. rules:** ~100-120
-- **RTF status:** Needs conversion
+### BPHS Vol 2 — Ch 48: Dasas of Lords of Various Houses ✅ DONE
+- **Rules ingested:** 46 · auto_approved: 74% · flagged: 2% · contradictions: 5 pairs
+- **batch_id:** bphs-ch48-dasha-20260416
+- **Condition type:** `dasha_of_house_lord` with `condition.house` 1-12
 
 ### BPHS Vol 2 — Ch 47: Effects of Dasas (Mahadasha by Planet) ✅ DONE
 - **Rules ingested:** 93 · auto_approved: 82% · flagged: 4% · contradictions: 0
@@ -53,14 +53,14 @@ Decision: promote only after full multi-book ingest is complete.
 ## Tier 2 — Precision Layer
 
 ### BPHS Vol 2 — Ch 52-60: Antardasha Effects (9 chapters)
-- **What:** Sub-period effects for each Mahadasha × Antardasha combination (9 planet pairs per chapter × 9 chapters)
+- **What:** Sub-period effects for each Mahadasha × Antardasha combination
 - **Why Tier 2:** Precision timing layer — high rule count but more granular than Tier 1
 - **Chapters:**
 
-| Ch | Dasha lord | Antardasha planets covered |
-|---|---|---|
-| 52 | Sun | Sun/Moon/Mars/Rahu/Jupiter/Saturn/Mercury/Ketu/Venus |
-| 53 | Moon | Moon/Mars/Rahu/Jupiter/Saturn/Mercury/Ketu/Venus/Sun |
+| Ch | Dasha lord | Antardasha planets covered | Status |
+|---|---|---|---|
+| 52 | Sun | Sun/Moon/Mars/Rahu/Jupiter/Saturn/Mercury/Ketu/Venus | ✅ 93 rules, 83% approved |
+| 53 | Moon | Moon/Mars/Rahu/Jupiter/Saturn/Mercury/Ketu/Venus/Sun | ✅ 68 rules (76% approved) + 4 patch rules (Venus Antardasha supplement, `pending_human_review`) |
 | 54 | Mars | Mars/Rahu/Jupiter/Saturn/Mercury/Ketu/Venus/Sun/Moon |
 | 55 | Rahu | Rahu/Jupiter/Saturn/Mercury/Ketu/Venus/Sun/Moon/Mars |
 | 56 | Jupiter | Jupiter/Saturn/Mercury/Ketu/Venus/Sun/Moon/Mars/Rahu |
