@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ThemeToggle } from './ThemeToggle';
 import { UserAccountMenu } from './UserAccountMenu';
+import ArcAngelPanel from './ArcAngelPanel';
 import { Button } from './ui/button';
 import {
   Menu, X, Home, Star, FileText, BookOpen, Tag, Phone,
@@ -81,7 +82,7 @@ const NAV = [
   { label: 'Palmistry',  icon: Layers,    path: '/palmistry' },
   { label: 'Tarot',      icon: BookOpen,  path: '/tarot' },
   { label: 'Lumina',     icon: Star,      path: '/lumina' },
-  { label: 'Arc Angel',  icon: Sparkles,  path: '/arc-angel' },
+  // Arc Angel removed from flat NAV — now a collapsible panel in the sidebar drawer
   { label: 'Pricing',    icon: Tag,       path: '/pricing' },
   { label: 'Careers',    icon: Users,     path: '/careers' },
 ];
@@ -204,6 +205,7 @@ const BrandWordmark = () => (
 // ─── Main NavBar ───────────────────────────────────────────────────────────────
 export const NavBar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [arcAngelOpen, setArcAngelOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { user, loading } = useAuth();
@@ -311,6 +313,26 @@ export const NavBar = () => {
             </div>
             <div className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
             <nav className="flex-1 overflow-y-auto py-3 space-y-0.5">
+              {/* ── Janma Kundali Snapshot — Arc Angel panel (top of drawer) ── */}
+              {user && (
+                <div className="border-b border-gold/20 pb-3 mb-1 mx-1">
+                  <button
+                    onClick={() => setArcAngelOpen((prev) => !prev)}
+                    className="flex items-center justify-between w-full px-3 py-2.5 rounded-sm text-sm font-semibold text-gold hover:bg-gold/10 transition-colors"
+                  >
+                    <div className="flex items-center gap-2.5">
+                      <Sparkles className="h-4 w-4 text-gold flex-shrink-0" />
+                      Janma Kundali Snapshot
+                    </div>
+                    <ChevronDown className={`h-3.5 w-3.5 transition-transform ${arcAngelOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {arcAngelOpen && (
+                    <div className="mt-2 px-1">
+                      <ArcAngelPanel />
+                    </div>
+                  )}
+                </div>
+              )}
               {NAV.map((item) => (
                 <SidebarItem key={item.label} item={item} onNavigate={handleNavigate} />
               ))}
