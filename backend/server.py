@@ -85,6 +85,9 @@ from notification_log_router import router as notification_log_router
 from lumina_router import router as lumina_router
 from palmistry_router import router as palmistry_router
 from knowledge_engine import (
+    ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
+    ARC_ANGEL_DOMAIN_LABELS,
+    ARC_ANGEL_DOMAIN_SLUGS,
     build_domain_rule_map,
     compute_arc_angel_windows,
     compute_dasha_timeline,
@@ -1964,16 +1967,31 @@ async def get_arc_angel_windows(
             dasha_timeline=dasha_timeline,
         )
         domain_rule_map = build_domain_rule_map(matched_rules)
+        domain_quality_now = compute_period_quality_now(
+            dasha_timeline=dasha_timeline,
+            domain_matched_rules=domain_rule_map,
+        )
+        raw_windows = compute_arc_angel_windows(
+            dasha_timeline=dasha_timeline,
+            domain_matched_rules=domain_rule_map,
+            horizon_years=horizon_years,
+        )
+        # Build enriched list (TD-29 Integrated Approach — Legacy Model baseline active).
+        arc_angel_list = [
+            {
+                "domain_id": domain_id,
+                "domain_label": ARC_ANGEL_DOMAIN_LABELS.get(domain_id, domain_id),
+                "auspicious_periods": raw_windows.get(domain_id, {}).get("auspicious_periods", []),
+                "inauspicious_periods": raw_windows.get(domain_id, {}).get("inauspicious_periods", []),
+                "period_quality_now": domain_quality_now.get(domain_id, "neutral"),
+                "confidence_pct": ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
+            }
+            for domain_id in ARC_ANGEL_DOMAIN_SLUGS
+        ]
         return {
-            "domain_quality_now": compute_period_quality_now(
-                dasha_timeline=dasha_timeline,
-                domain_matched_rules=domain_rule_map,
-            ),
-            "arc_angel_windows": compute_arc_angel_windows(
-                dasha_timeline=dasha_timeline,
-                domain_matched_rules=domain_rule_map,
-                horizon_years=horizon_years,
-            ),
+            "overall_confidence_pct": ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
+            "domain_quality_now": domain_quality_now,
+            "arc_angel_windows": arc_angel_list,
         }
     except HTTPException:
         raise
