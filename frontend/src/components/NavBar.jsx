@@ -81,6 +81,7 @@ const NAV = [
   { label: 'Palmistry',  icon: Layers,    path: '/palmistry' },
   { label: 'Tarot',      icon: BookOpen,  path: '/tarot' },
   { label: 'Lumina',     icon: Star,      path: '/lumina' },
+  { label: 'Arc Angel',  icon: Sparkles,  path: '/arc-angel' },
   { label: 'Pricing',    icon: Tag,       path: '/pricing' },
   { label: 'Careers',    icon: Users,     path: '/careers' },
 ];

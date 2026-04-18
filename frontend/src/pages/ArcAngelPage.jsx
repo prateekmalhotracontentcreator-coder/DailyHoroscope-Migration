@@ -96,25 +96,20 @@ function fieldError(error, fallback) {
   return error?.response?.data?.detail || error?.response?.data?.message || fallback;
 }
 
-function flattenLocationGroups(groups) {
-  return (groups || []).flatMap((group) =>
-    (group.locations || []).map((location) => ({
-      ...location,
-      country_code: group.country_code,
-      country_name: group.country_name,
-      search_text: [
-        location.city_name,
-        location.label,
-        location.country,
-        group.country_name,
-        location.timezone,
-        location.tz_abbr,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase(),
-    }))
-  );
+function flattenLocationGroups(locations) {
+  // API returns a flat array: [{ slug, label, country, timezone, tz_abbr, ... }]
+  return (locations || []).map((location) => ({
+    ...location,
+    search_text: [
+      location.label,
+      location.country,
+      location.timezone,
+      location.tz_abbr,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase(),
+  }));
 }
 
 function formatMonthYear(value) {
@@ -303,7 +298,7 @@ export default function ArcAngelPage() {
           return;
         }
 
-        setLocationGroups(Array.isArray(response.data?.groups) ? response.data.groups : []);
+        setLocationGroups(Array.isArray(response.data) ? response.data : []);
       } catch (requestError) {
         if (!active) {
           return;
@@ -599,13 +594,13 @@ export default function ArcAngelPage() {
                     </option>
                     {filteredLocations.slice(0, 200).map((location) => (
                       <option key={location.slug} value={location.slug}>
-                        {location.city_name || location.label} | {location.country || location.country_name} | {location.tz_abbr || location.timezone}
+                        {location.label} | {location.country} | {location.tz_abbr || location.timezone}
                       </option>
                     ))}
                   </select>
                   {selectedLocation ? (
                     <p className="text-sm text-muted-foreground">
-                      Selected: {selectedLocation.city_name || selectedLocation.label}, {selectedLocation.country || selectedLocation.country_name} ({selectedLocation.timezone})
+                      Selected: {selectedLocation.label}, {selectedLocation.country} ({selectedLocation.timezone})
                     </p>
                   ) : null}
                   {locationError ? <p className="text-sm text-red-500">{locationError}</p> : null}
