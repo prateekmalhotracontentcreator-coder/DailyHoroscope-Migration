@@ -1,6 +1,6 @@
 # Claude Working Protocol — EverydayHoroscope
 
-> **Last updated:** 2026-03-26  
+> **Last updated:** 2026-04-19  
 > **Reason:** Half a day was lost because Claude attempted browser-based GitHub edits instead of using the GitHub MCP connector that was available all along. This document exists so that never happens again.
 
 ---
@@ -103,6 +103,57 @@ Only mark a fix as done when the API returns 200 with valid JSON. "Render is gre
 5. Verify:                 github:get_commit(sha='main') — confirm commit landed
 6. Test live:              Hit the actual URL to confirm it works
 ```
+
+---
+
+## 🔴 RULE 9 — Never Directly Edit Codex Deliverable Files (MANDATORY)
+
+**If even a single line of code needs to change in a file delivered by Codex, the change must be sent back to the relevant Codex thread — not made directly by Claude Code.**
+
+> **Why this rule exists:** 19 April 2026 — Claude Code made direct edits to `knowledge_engine.py`, `server.py`, and `ArcAngelPanel.jsx` (all Codex Sprint 3 / Arc Angel UI deliverables) without informing the Codex threads. This leaves Codex out of sync with the live codebase, which will cause conflicts and regressions on the next iteration.
+
+### What counts as a "Codex deliverable file"
+
+Any file that was **created or substantially authored** by a Codex commission — regardless of which sprint or thread it came from. Common examples:
+
+| File | Codex thread |
+|---|---|
+| `backend/knowledge_engine.py` | Commission I (Knowledge Engine) |
+| `backend/server.py` routes added by Codex | Commission I sprints |
+| Any file in `frontend/src/` delivered by Codex | Respective UI commission |
+| `backend/scripts/ingest_bphs_dasha_v1.py` | BPHS ingest commission |
+
+### Exceptions — Claude Code MAY edit directly
+
+- **Existing project files** that Codex never touched (e.g. `NavBar.jsx` when Codex explicitly said it lacked access)
+- **Documentation files** (CLAUDE.md, WORKING_PROTOCOL.md, CONTRACT.md)
+- **Emergency hotfixes** where a production break requires an immediate one-line patch — but Codex must be notified in the same session
+
+### The correct workflow
+
+```
+1. Identify the change needed in a Codex deliverable
+2. Write a clear change note: file path + exact lines to add/remove + reason
+3. Send to the relevant Codex thread as an amendment
+4. Claude Code integrates the returned code (does not re-author it)
+5. If Codex is unavailable and a fix is urgent → apply as hotfix, document in
+   a CODEX_AMENDMENT log entry, flag clearly for next Codex session
+```
+
+### Codex amendments made on 19 April 2026 (need to be sent back)
+
+The following direct edits were made before this rule was established. They must be communicated to the respective Codex threads at the next session:
+
+**Knowledge Engine thread (Sprint 3 — `knowledge_engine.py` + `server.py`):**
+- Added `NATURAL_BENEFICS`, `NATURAL_MALEFICS`, `ARC_ANGEL_BASELINE_CONFIDENCE_PCT = 42`
+- Added `_natural_quality(planet)` — Legacy Model fallback for period quality
+- Modified `_quality_from_rules()` — added TD-29 fallback as final `return` branch
+- Modified `/api/knowledge-engine/arc-angel-windows` endpoint — enriched response from bare dict to list; added `domain_id`, `domain_label`, `period_quality_now`, `confidence_pct` per domain; added `overall_confidence_pct`
+
+**Arc Angel UI thread (`ArcAngelPanel.jsx`):**
+- Removed `subscription` from `useAuth()` destructuring (AuthContext does not expose it)
+- Replaced birth data source: was `user.birth_date` / `user.birth_lat` etc. → now fetches `/api/profile/birth` and reads `date_of_birth`, `time_of_birth`, `location` from saved profile
+- Fixed API params: was `birth_lat`/`birth_lon`/`timezone` → now `birth_place` (city string) matching backend endpoint signature
 
 ---
 
