@@ -106,6 +106,49 @@ Only mark a fix as done when the API returns 200 with valid JSON. "Render is gre
 
 ---
 
+## 🔴 RULE 7 — Codex Commission Brief Gate (MANDATORY — no exceptions)
+
+**Before drafting ANY Codex commission brief, complete ALL of the following steps. Do not skip even one.**
+
+> **Why this rule exists:** On 18 April 2026, a full day was lost because the Arc Angel commission brief was drafted without reading CONTRACT.md Section 19 (TD-23) or the canonical docx mockup. The brief specified a standalone two-column page. The locked spec required a 4-column table embedded in a left-nav sidebar. The resulting architecture had to be completely discarded.
+
+### Pre-brief checklist (verify each item before writing a single word of the brief)
+
+```
+[ ] 1. Confirm the item exists in CPath-1 (CONTRACT.md Section 21) — get the exact item number
+[ ] 2. Confirm all dependency items are ✅ complete — do not brief an item whose deps are open
+[ ] 3. Read the relevant TD-xx entry in CODEX_KNOWLEDGE_ENGINE_CONTRACT.md
+[ ] 4. Check .claude/ folder for any canonical docx mockup — read it with the docx skill FIRST
+[ ] 5. Re-read the locked spec section in CONTRACT.md that the TD-xx entry references
+[ ] 6. State explicitly in every brief: "All dasha/astronomical data MUST come from vedic_calculator.py"
+[ ] 7. State explicitly in every brief: "Do NOT add dasha/calculation functions to knowledge_engine.py"
+```
+
+### Failure modes that trigger this rule
+
+- Treating a new commission as a "new design problem" without checking whether the architecture is already locked
+- Reading only handover notes instead of the source CONTRACT
+- Drafting briefs from memory of the design intent rather than the locked spec document
+- Skipping the docx mockup because "I already know what this should look like"
+
+---
+
+## 🔴 RULE 8 — Legacy Model is the Sole Source of Live Astronomical Data
+
+**`vedic_calculator.py` and `panchang_router.py` are the ONLY sources of live dasha, chart, and panchang data. `knowledge_engine.py` interprets — it does NOT compute.**
+
+```
+✅ CORRECT: knowledge_engine.py imports calculate_vimshottari_dasha from vedic_calculator.py
+❌ WRONG:   knowledge_engine.py defines its own compute_dasha_timeline() function
+✅ CORRECT: Arc Angel backend route calls vedic_calculator.calculate_vimshottari_dasha()
+❌ WRONG:   Arc Angel backend route calls knowledge_engine.compute_dasha_timeline()
+```
+
+Every Codex brief and every backend route for Arc Angel, Knowledge Engine reports, and any dasha-powered feature must follow this rule.
+Full details and Integrated Approach definition: CLAUDE.md Section 16.
+
+---
+
 ## 📋 Infrastructure Quick Reference
 
 | Service | URL | Notes |

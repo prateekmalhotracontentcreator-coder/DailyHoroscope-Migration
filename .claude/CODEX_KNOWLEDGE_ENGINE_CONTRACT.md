@@ -65,6 +65,14 @@
 | TD-26 | Country Kundali as Alpha Signal | **Phase 2 locked.** `alpha` remains `float | ContextSignal` in Phase 1. Phase 2 introduces typed `CountryKundaliSignal` under the alpha umbrella. It computes macro support/stress from natal country + residence country using the weighting model and `dasha_alignment` method defined in Section 23. Do not build before Commission J. |
 | TD-27 | Forecast Tier / Life Area Outlook | **Phase 2 locked.** Add `forecast_tier` as a per-domain outcome-valence layer, user-facing label "Life Area Outlook". It coexists with `period_quality` and `representation_mode`, does not replace either, and is internal-only first. Full rules in Section 24. |
 
+### Round 3 — 19 April 2026 (Legacy Model Architecture Lock)
+
+| # | Topic | Decision |
+|---|---|---|
+| TD-28 | Legacy Model is the sole source of live data | **LOCKED.** All live astronomical and Vimshottari Dasha computations MUST use `vedic_calculator.py` + `pyswisseph`. The Knowledge Engine (`knowledge_engine.py`) is the interpretation/arbitration layer ONLY. It must never duplicate or replace dasha calculation functions. The Sprint 3 `compute_dasha_timeline()` function added by Codex to `knowledge_engine.py` violates this rule and must be removed — the `/api/knowledge-engine/arc-angel-windows` route must import and call `calculate_vimshottari_dasha()` from `vedic_calculator.py` directly. |
+| TD-29 | Arc Angel period quality baseline | When zero Knowledge Engine rules carry `approval_status: "approved"` (current state), Arc Angel period quality defaults to the **planetary natural benefic/malefic classification** embedded in the Legacy Model: Jupiter/Venus/Mercury(waxing)/Moon(waxing) → Auspicious; Saturn/Mars/Rahu/Ketu/Sun → Inauspicious; others → Neutral. KE rules supplement this baseline only after co-founder approval. This is the **Integrated Approach** — Legacy Model provides the live signal; KE layers interpretation on top. |
+| TD-30 | Codex commission brief gate | Before drafting any new Codex commission brief: (1) verify item exists in CPath-1 list with exact item number; (2) confirm dependencies complete; (3) read the relevant TD entry in this CONTRACT; (4) read any canonical docx mockup in the `.claude/` folder; (5) state explicitly in every brief that dasha/astronomical data must come from `vedic_calculator.py`. Failure to complete this gate caused the Arc Angel architecture error (standalone page vs. left-nav panel) on 18 April 2026. |
+
 **Phased implementations (spec Phase 1, runtime Phase 2)**
 
 | # | Topic | Decision |
