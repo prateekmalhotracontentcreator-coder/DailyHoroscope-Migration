@@ -187,6 +187,31 @@ ARC_ANGEL_DOMAIN_LABELS = {
     "environment": "Environment",
     "creativity": "Creativity & Hobbies",
 }
+# TD-29: Natural benefic/malefic baseline — fallback when no approved KE rules match.
+# Source: Legacy Model (vedic_calculator.py) planetary classification.
+NATURAL_BENEFICS: frozenset[str] = frozenset({"Jupiter", "Venus", "Mercury", "Moon"})
+NATURAL_MALEFICS: frozenset[str] = frozenset({"Saturn", "Mars", "Rahu", "Ketu", "Sun"})
+
+# Phase 1 baseline confidence (birth data only, no questionnaire, no module runs).
+ARC_ANGEL_BASELINE_CONFIDENCE_PCT: int = 42
+
+
+def _natural_quality(planet: str | None) -> str:
+    """TD-29 — Legacy Model fallback: natural benefic/malefic classification.
+    Used when zero approved KE rules exist for the active antardasha planet.
+    Jupiter/Venus/Mercury/Moon → auspicious.
+    Saturn/Mars/Rahu/Ketu/Sun → inauspicious.
+    """
+    if not planet:
+        return "neutral"
+    p = planet.strip().title()
+    if p in NATURAL_BENEFICS:
+        return "auspicious"
+    if p in NATURAL_MALEFICS:
+        return "inauspicious"
+    return "neutral"
+
+
 CATEGORY_TO_DOMAIN_SLUG = {
     "health": "health",
     "longevity": "health",
@@ -818,7 +843,9 @@ def _quality_from_rules(domain_rules: list[dict[str, Any]], antardasha_planet: s
         return "auspicious", favourable
     if len(unfavourable) > len(favourable):
         return "inauspicious", unfavourable
-    return "neutral", []
+    # TD-29: No approved KE rules matched — fall back to Legacy Model natural
+    # benefic/malefic classification for the active antardasha planet.
+    return _natural_quality(antardasha_planet), []
 
 
 def assign_period_quality(
