@@ -385,6 +385,75 @@ npm start
 
 ---
 
+## 16. Architecture Rule — Legacy Model (MANDATORY — READ BEFORE TOUCHING ARC ANGEL OR KNOWLEDGE ENGINE)
+
+> **Decision date:** 19 April 2026. This rule is locked and must be respected in every commission brief, every backend route, and every Claude Code session.
+
+### The Rule
+
+**All live astronomical and dasha computations MUST use the Legacy Model (`vedic_calculator.py` + `pyswisseph`). The Knowledge Engine (`knowledge_engine.py`) is the interpretation layer ONLY — it must never replace, duplicate, or bypass the Legacy Model for live data.**
+
+### What "Legacy Model" means
+
+| File | Role | Status |
+|---|---|---|
+| `backend/vedic_calculator.py` | Computes all live data: Mahadasha timeline, current dasha, birth chart, planetary positions | ✅ Production — do NOT replace |
+| `backend/panchang_router.py` | Computes all Panchang data via pyswisseph | ✅ Production — do NOT replace |
+| `backend/knowledge_engine.py` | Interprets chart data against curated rules library | 🔒 Interpretation only — zero `approved` rules until co-founder sign-off |
+
+### Key functions in vedic_calculator.py (single source of truth)
+
+```python
+calculate_vimshottari_dasha(birth_date, moon_longitude)
+# → Returns list of 9 Mahadasha dicts: {planet, start_date, end_date, years, antardashas}
+
+get_current_dasha(dashas)
+# → Returns currently active Mahadasha dict
+
+DASHA_ORDER = ['Ketu','Venus','Sun','Moon','Mars','Rahu','Jupiter','Saturn','Mercury']
+DASHA_YEARS = {'Ketu':7,'Venus':20,'Sun':6,'Moon':10,'Mars':7,'Rahu':18,'Jupiter':16,'Saturn':19,'Mercury':17}
+```
+
+### Integrated Approach (Arc Angel and all future modules)
+
+```
+Phase 1 (NOW):   Legacy Model provides dasha baseline → period_quality assigned via
+                 planetary benefic/malefic logic in vedic_calculator.py
+                 → Knowledge Engine rules are additive only if approval_status = 'approved'
+                 → No approved rules yet → Legacy Model is the ONLY signal
+
+Phase 2 (when co-founder approves rules):
+                 Legacy Model baseline + Knowledge Engine interpretation layer
+                 → KE supplements, never replaces Legacy data
+```
+
+### What this means for backend routes
+
+- `GET /api/knowledge-engine/arc-angel-windows` MUST call `vedic_calculator.calculate_vimshottari_dasha()` — NOT any function inside `knowledge_engine.py` that replicates dasha calculation.
+- The duplicate `compute_dasha_timeline()` in `knowledge_engine.py` (added by Codex in Sprint 3) MUST be removed and replaced with an import from `vedic_calculator`.
+- Period quality (auspicious/inauspicious) defaults to **planetary natural benefic/malefic classification** from the Legacy Model when zero approved KE rules exist.
+
+### Natural Benefic / Malefic baseline (Legacy Model defaults)
+
+| Planet | Quality |
+|---|---|
+| Jupiter, Venus, Mercury (waxing), Moon (waxing) | Natural Benefic → Auspicious |
+| Saturn, Mars, Rahu, Ketu, Sun | Natural Malefic → Inauspicious |
+| Mercury (waning), Moon (waning) | Context-dependent → Neutral |
+
+### Commission Brief Checklist (MANDATORY before drafting any Codex brief)
+
+Before drafting ANY new Codex commission brief:
+1. ✅ Verify item exists in CPath-1 list (CONTRACT.md Section 21)
+2. ✅ Confirm exact item number and phase
+3. ✅ Confirm all dependency items are complete
+4. ✅ Read the relevant locked spec section in CONTRACT.md (TD-xx)
+5. ✅ Read the original docx mockup if one exists (`.claude/` folder)
+6. ✅ State explicitly in the brief: "All dasha/astronomical data must come from `vedic_calculator.py`"
+7. ✅ State explicitly in the brief: "Do NOT add dasha calculation functions to `knowledge_engine.py`"
+
+---
+
 ## 15. Meta / Social API Reference
 
 | Credential | Value | Status |
