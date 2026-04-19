@@ -38,10 +38,14 @@ echo "      pydantic, pydantic-core, pymongo, motor — OK"
 # Step 3: syntax + import check
 echo "[3/3] Running import check..."
 cd "$BACKEND_DIR"
-"$PYTHON" -m py_compile knowledge_schema.py
+PYTHONDONTWRITEBYTECODE=1 "$PYTHON" -c "
+from pathlib import Path
+source = Path('knowledge_schema.py').read_text(encoding='utf-8')
+compile(source, 'knowledge_schema.py', 'exec')
+"
 echo "      Syntax OK"
 
-"$PYTHON" -c "
+PYTHONDONTWRITEBYTECODE=1 "$PYTHON" -c "
 import sys
 sys.path.insert(0, '.')
 from knowledge_schema import (
@@ -67,7 +71,7 @@ for c in cols:
 "
 
 # Also verify knowledge_engine module-level imports (motor must be present)
-"$PYTHON" -c "
+PYTHONDONTWRITEBYTECODE=1 "$PYTHON" -c "
 import sys
 sys.path.insert(0, '.')
 import motor.motor_asyncio  # hard import — fallback removed now motor is installed

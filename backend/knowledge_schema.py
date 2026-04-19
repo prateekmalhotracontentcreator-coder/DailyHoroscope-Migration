@@ -301,6 +301,16 @@ class ParentsBirthData(StrictDocument):
     mother: ParentBirthIdentity | None = None
 
 
+class ParentSimple(StrictDocument):
+    dob: str | None = None
+    place: str | None = None
+
+
+class ParentsData(StrictDocument):
+    father: ParentSimple | None = None
+    mother: ParentSimple | None = None
+
+
 class UserContextProfileDocument(StrictDocument):
     user_id: str
     questionnaire_version: str
@@ -311,6 +321,7 @@ class UserContextProfileDocument(StrictDocument):
     travel_frequency: str | None = None
     relationship_status: str | None = None
     parents_birth_data: ParentsBirthData | None = None
+    parents_data: ParentsData | None = None
     beta_score: float = Field(default=1.0, ge=0.0)
     gamma_score: float = Field(default=1.0, ge=0.0)
     last_updated: datetime = Field(default_factory=utc_now)
