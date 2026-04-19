@@ -229,14 +229,15 @@ Append a new entry for every batch processed. Never overwrite.
 - temperature=0 reduces but does not eliminate API variance — per-sloka baseline check remains essential
 - `dasha_conditional: 1` from dry run absorbed into favourable/unfavourable in live run
 
-**Gap-Fill Results (20 Apr 2026 — re-run pending):**
-- Previous gap-fill run inserted into wrong collection (knowledge_rules) — 4 rules deleted, originals safe
-- Script fixed (patch_slokas.py commit f6bed4f) — re-run dry runs below to get correct net-new count
+**Gap-Fill Results (20 Apr 2026):**
+- Sloka 51-52: +0 new (existing rule already covered)
+- Sloka 63-64: +2 new (R-BPHS57-PATCH-29A148, R-BPHS57-PATCH-EC9BB1 — distinct Rahu conditions)
+- **Ch 57 final total: 132 rules**
 
 **Open Points:**
-1. Re-run Ch 57 gap-fill dry run (see Gap-Fill section below)
-2. Review 9 flagged rules in Rules Browser (filter: flagged, batch: bphs-ch57-dasha-20260419)
-3. 18 pending_human_review rules — awaiting co-founder sign-off
+1. Verify 2 Rahu gap-fill rules are distinct — Rules Browser → filter `source_note: gap_fill`, batch `bphs-ch57-dasha-20260419`
+2. Review 9 flagged rules in Rules Browser (filter: flagged, batch: bphs-ch57-dasha-20260419) — check slokas 20-21 and 30-31 for over-split duplicates
+3. 18 pending_human_review + 2 gap-fill pending_review — awaiting co-founder sign-off
 
 ---
 
@@ -294,15 +295,14 @@ Append a new entry for every batch processed. Never overwrite.
 
 **Validation Results (20 Apr 2026):** 76 auto_approved (73%) · 21 pending_human_review (20%) · 7 flagged (7%) · 0 contradictions
 
-**Gap-Fill Results (20 Apr 2026 — re-run pending):**
-- Previous gap-fill run inserted into wrong collection (knowledge_rules) — 2 rules deleted, originals safe
-- Script fixed (patch_slokas.py commit f6bed4f) — re-run dry run below to get correct net-new count
+**Gap-Fill Results (20 Apr 2026):**
+- Sloka 59-61: +0 new — existing 4 rules already cover all conditions. "Live −2 vs dry run" was model variance, not under-extraction.
+- **Ch 58 final total: 104 rules** (no gap-fill needed)
 
 **Open Points:**
-1. Re-run Ch 58 gap-fill dry run (see Gap-Fill section below)
-2. 7 flagged rules — review in Rules Browser (filter: flagged, batch: bphs-ch58-dasha-20260419)
-3. 21 pending_human_review — awaiting co-founder sign-off
-4. Source typo sloka 32-33: "6th, the 6th" (should be "6th, the 8th") — captured as-is; flag for human review
+1. 7 flagged rules — review in Rules Browser (filter: flagged, batch: bphs-ch58-dasha-20260419)
+2. 21 pending_human_review — awaiting co-founder sign-off
+3. Source typo sloka 32-33: "6th, the 6th" (should be "6th, the 8th") — captured as-is; flag for human review
 
 ---
 
@@ -320,9 +320,9 @@ Append a new entry for every batch processed. Never overwrite.
 
 | Ch | MD Lord | Batch ID | Sloka | Live count | Gap-fill result | Status |
 |---|---|---|---|---|---|---|
-| 57 | Saturn | bphs-ch57-dasha-20260419 | 51-52 | 1 | pending re-run | 🔜 Re-run (script fixed) |
-| 57 | Saturn | bphs-ch57-dasha-20260419 | 63-64 | 1 | pending re-run | 🔜 Re-run (script fixed) |
-| 58 | Mercury | bphs-ch58-dasha-20260419 | 59-61 | 4 | pending re-run | 🔜 Re-run (script fixed) |
+| 57 | Saturn | bphs-ch57-dasha-20260419 | 51-52 | 1 | +0 (already covered) | ✅ Closed |
+| 57 | Saturn | bphs-ch57-dasha-20260419 | 63-64 | 1 | +2 (20 Apr 2026) | ✅ Done |
+| 58 | Mercury | bphs-ch58-dasha-20260419 | 59-61 | 4 | +0 (already covered) | ✅ Closed |
 | 56 | Jupiter | bphs-ch56-dasha-20260418 | TBD | TBD | — | 🔜 Review Rules Browser first |
 
 **Gap-fill commands (run after validation for each chapter):**
@@ -367,8 +367,8 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 | BPHS Vol 2 Ch 47 | 93 | 76 (82%) | 13 (14%) | 4 (4%) | 0 pairs |
 | BPHS Vol 2 Ch 54 (Mars) | 86 | — | — | — | — |
 | BPHS Vol 2 Ch 56 (Jupiter) | 124 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
-| BPHS Vol 2 Ch 57 (Saturn) | 130 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
+| BPHS Vol 2 Ch 57 (Saturn) | 132 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
 | BPHS Vol 2 Ch 58 (Mercury) | 104 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
-| **Grand Total** | **~1,273** | | | | |
+| **Grand Total** | **~1,275** | | | | |
 
 ---
