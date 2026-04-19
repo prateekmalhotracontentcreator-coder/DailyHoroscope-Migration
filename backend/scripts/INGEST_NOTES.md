@@ -235,6 +235,116 @@ Append a new entry for every batch processed. Never overwrite.
 
 ---
 
+### BPHS Ch 58 | Mercury Mahadasha Antardasha | Apr 2026
+
+**Script used:** `ingest_bphs_dasha_v1.py`
+**Batch ID:** `bphs-ch58-dasha-20260419`
+**Slokas:** 72 (1–72) | **Antardasha sections:** 9
+
+| Ch | MD Lord | Batch ID | Total | auto_approved | pending_human_review | flagged | contradictions |
+|---|---|---|---|---|---|---|---|
+| 58 | Mercury | bphs-ch58-dasha-20260419 | 104 | — | — | — | — |
+
+*(Validation pending — run `validate_rules.py --batch-id bphs-ch58-dasha-20260419`)*
+
+**Dry Run Baseline (2 runs — locked):**
+
+| # | Sloka | Run 1 | Run 2 | Live | Note |
+|---|---|---|---|---|---|
+| 1 | 1-3 | 2 | 2 | 2 | |
+| 2 | 4-5 | 3 | 3 | 3 | |
+| 3 | 6-8 | 2 | 2 | 2 | |
+| 4 | 9-11 | 7 | 7 | 7 | |
+| 5 | 12 | 3 | 3 | 3 | |
+| 6 | 13-15 | 2 | 2 | 2 | |
+| 7 | 16-17 | 6 | 6 | 6 | |
+| 8 | 18-19 | 2 | 2 | 2 | |
+| 9 | 20-22 | 3 | 3 | 3 | |
+| 10 | 23-24 | 3 | 3 | 3 | |
+| 11 | 25 | 2 | 2 | 2 | |
+| 12 | 26-27 | 4 | 4 | 4 | |
+| 13 | 28-29 | 6 | 6 | 6 | |
+| 14 | 30-31 | 2 | 2 | 2 | |
+| 15 | 32-33 | 4 | 4 | 4 | Source typo: "6th, the 6th" should be "6th, the 8th" — rules captured as-is |
+| 16 | 34-35 | 2 | 2 | 2 | |
+| 17 | 36-38 | 6 | 6 | 6 | |
+| 18 | 39-40 | 1 | 1 | 1 | Single condition sloka — 1 rule correct |
+| 19 | 41-42 | 5 | 5 | 5 | |
+| 20 | 43-44 | 3 | 3 | 3 | |
+| 21 | 45-46 | 3 | 3 | 3 | |
+| 22 | 47-49 | 3 | 3 | 3 | |
+| 23 | 50 | 2 | 2 | 2 | |
+| 24 | 51 | 2 | 2 | 2 | |
+| 25 | 52-53 | 1 | 1 | 1 | Single condition sloka — 1 rule correct |
+| 26 | 54-55 | 2 | 3 | 3 | ±1 remedy variance (Durga + Lakshmi mantras split/merged) |
+| 27 | 56-58 | 2 | 2 | 2 | |
+| 28 | **59-61** | **6** | **6** | **4** | **⚠️ Live −2 vs dry run — gap-fill candidate** |
+| 29 | 62-63 | 1 | 1 | 1 | Single condition sloka — 1 rule correct |
+| 30 | 64 | 1 | 1 | 1 | Source: "64-64" typo — captured correctly as sloka 64 |
+| 31 | 65-66 | 2 | 2 | 2 | |
+| 32 | 67-68 | 1 | 1 | 1 | |
+| 33 | 69-70 | 8 | 8 | 8 | |
+| 34 | 71-72 | 3 | 3 | 3 | |
+| **Total** | | **105** | **106** | **104** | |
+
+**Open Points:**
+1. Run validation — paste results here
+2. **Sloka 59-61 gap-fill** — lost 2 rules in live vs dry run; run `patch_slokas.py` after validation (see Gap-Fill section below)
+
+---
+
+### Gap-Fill Protocol — Under-Extracted Slokas
+
+> Applies to Ch 56, 57, 58 (and all future chapters). Run after validation completes for each chapter.
+
+**Root cause:** The original `EXTRACTION_SYSTEM` prompt did not explicitly instruct the model to split slokas where multiple distinct planetary states (debilitation / combustion / house placement / malefic association) share the same outcome text. Fixed in commit after Ch 58 ingest — all Ch 59+ benefit automatically.
+
+**Fix applied (ingest_bphs_dasha_v1.py):** Added `SPLITTING GUIDANCE` section to `EXTRACTION_SYSTEM` with explicit split/no-split examples.
+
+**Gap-fill script:** `scripts/patch_slokas.py` — re-extracts specific sloka ranges using the improved prompt, deduplicates against existing MongoDB rules (60% word-overlap threshold), inserts only net-new rules with `source_note='gap_fill'` and `approval_status='pending_review'`.
+
+#### Flagged slokas by chapter
+
+| Ch | MD Lord | Batch ID | Sloka | Live count | Expected | Gap-fill command |
+|---|---|---|---|---|---|---|
+| 57 | Saturn | bphs-ch57-dasha-20260419 | 51-52 | 1 | 2-3 | see below |
+| 57 | Saturn | bphs-ch57-dasha-20260419 | 63-64 | 1 | 2-3 | see below |
+| 58 | Mercury | bphs-ch58-dasha-20260419 | 59-61 | 4 | 6 | see below |
+
+*(Ch 56 gap-fill slokas — to be identified after Rules Browser review of batch bphs-ch56-dasha-20260418)*
+
+**Gap-fill commands (run after validation for each chapter):**
+
+```bash
+cd /Users/apple/DailyHoroscope-Migration/backend
+
+# Ch 57 — Saturn MD gap-fill
+python3 scripts/patch_slokas.py \
+  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS Ch 57 Vol 2.rtf" \
+  --chapter 57 \
+  --dasha-lord Saturn \
+  --batch-id bphs-ch57-dasha-20260419 \
+  --slokas "51-52,63-64" \
+  --mongo-url "$MONGO_URL" \
+  --db-name EverydayHoroscope \
+  --dry-run
+
+# Ch 58 — Mercury MD gap-fill
+python3 scripts/patch_slokas.py \
+  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_ch 58_Vol 2.rtf" \
+  --chapter 58 \
+  --dasha-lord Mercury \
+  --batch-id bphs-ch58-dasha-20260419 \
+  --slokas "59-61" \
+  --mongo-url "$MONGO_URL" \
+  --db-name EverydayHoroscope \
+  --dry-run
+```
+
+Remove `--dry-run` when satisfied with the dry-run output. New rules appear in Admin > Library > Rules Browser — filter by `source_note: gap_fill`.
+
+---
+
 ### Cumulative Grand Total (All sources, Ch 12-24 + Ch 47)
 
 | Source | Rules | auto_approved | pending_human_review | flagged | contradictions |
