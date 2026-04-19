@@ -5,20 +5,26 @@ import logging
 import os
 from collections import defaultdict
 from datetime import datetime, timezone
+from typing import Any
 
 from fastapi import APIRouter, HTTPException, Query, Request
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from pymongo import MongoClient
 
 from admin_utils import require_admin
+from knowledge_engine import compute_dasha_timeline
 from knowledge_schema import (
+    COLLECTION_CASE_STUDIES,
     COLLECTION_IMPORT_BATCHES,
     COLLECTION_INTERPRETATION_RULES,
     ApprovalStatus,
+    CaseStudyDocument,
+    EnginePrediction,
 )
+from vedic_calculator import calculate_vedic_chart
 
 
-router = APIRouter(prefix="/api/knowledge", tags=["knowledge-library"])
+router = APIRouter(tags=["knowledge-library"])
 
 
 def utc_now() -> datetime:
@@ -39,7 +45,143 @@ def _engine_from_request(request: Request):
     return engine
 
 
-@router.get("/rules")
+POSITIVE_HINTS = {
+    "success",
+    "wealth",
+    "gain",
+    "growth",
+    "marriage",
+    "stable",
+    "healthy",
+    "recovery",
+    "improvement",
+    "support",
+    "auspicious",
+    "progress",
+    "spiritual",
+    "rise",
+}
+NEGATIVE_HINTS = {
+    "loss",
+    "delay",
+    "problem",
+    "difficult",
+    "ill",
+    "disease",
+    "unstable",
+    "separation",
+    "debt",
+    "struggle",
+    "inauspicious",
+    "decline",
+    "fall",
+    "stress",
+    "conflict",
+}
+
+
+def _case_outcome_text(outcome: dict[str, Any]) -> str:
+    return " ".join(
+        part.strip()
+        for part in [str(outcome.get("outcome") or ""), str(outcome.get("notes") or "")]
+        if part and part.strip()
+    ).lower()
+
+
+def _infer_sign_from_text(text: str) -> int:
+    positives = sum(1 for token in POSITIVE_HINTS if token in text)
+    negatives = sum(1 for token in NEGATIVE_HINTS if token in text)
+    if positives > negatives:
+        return 1
+    if negatives > positives:
+        return -1
+    return 0
+
+
+def _infer_rule_sign(rule: dict[str, Any]) -> int:
+    polarity = str(rule.get("claim_polarity") or "").lower()
+    if polarity == "positive":
+        return 1
+    if polarity == "negative":
+        return -1
+    period_quality = str(rule.get("period_quality") or "").lower()
+    if period_quality == "auspicious":
+        return 1
+    if period_quality == "inauspicious":
+        return -1
+    return 0
+
+
+def _rule_summary(rule: dict[str, Any]) -> str:
+    interpretation = rule.get("interpretation") or {}
+    return str(interpretation.get("summary") or interpretation.get("detailed") or "").strip()
+
+
+def _rule_domain_matches(rule: dict[str, Any], life_domain: str, claim_axis: str) -> bool:
+    if claim_axis and str(rule.get("claim_axis") or "") == claim_axis:
+        return True
+    if life_domain and str(rule.get("life_domain") or "") == life_domain:
+        return True
+    categories = {str(item) for item in (rule.get("categories") or [])}
+    return bool(life_domain and life_domain in categories)
+
+
+def _select_case_rules(outcome: dict[str, Any], matched_rules: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    life_domain = str(outcome.get("life_domain") or "")
+    claim_axis = str(outcome.get("claim_axis") or "")
+    relevant = [
+        rule for rule in matched_rules if _rule_domain_matches(rule, life_domain=life_domain, claim_axis=claim_axis)
+    ]
+    if not relevant:
+        relevant = matched_rules[:]
+    relevant.sort(
+        key=lambda rule: (
+            float(rule.get("effective_confidence") or 0.0),
+            float(rule.get("score") or 0.0),
+        ),
+        reverse=True,
+    )
+    return relevant
+
+
+def _build_case_predictions(
+    known_outcomes: list[dict[str, Any]],
+    matched_rules: list[dict[str, Any]],
+) -> tuple[list[dict[str, Any]], float | None]:
+    predictions: list[dict[str, Any]] = []
+    alignment_scores: list[float] = []
+
+    for outcome in known_outcomes:
+        selected_rules = _select_case_rules(outcome, matched_rules)
+        top_rule = selected_rules[0] if selected_rules else {}
+        prediction = EnginePrediction(
+            life_domain=str(outcome.get("life_domain") or ""),
+            claim_axis=str(outcome.get("claim_axis") or ""),
+            predicted_outcome=_rule_summary(top_rule) or str(top_rule.get("claim_polarity") or "No matching rule"),
+            period_quality=top_rule.get("period_quality") or None,
+            confidence=float(top_rule.get("effective_confidence")) if top_rule.get("effective_confidence") is not None else None,
+            matched_rule_ids=[
+                str(rule.get("rule_id") or "")
+                for rule in selected_rules[:5]
+                if str(rule.get("rule_id") or "")
+            ],
+        ).model_dump(mode="json", by_alias=True, exclude_none=True)
+        predictions.append(prediction)
+
+        outcome_sign = _infer_sign_from_text(_case_outcome_text(outcome))
+        rule_sign = _infer_rule_sign(top_rule)
+        if outcome_sign == 0 or rule_sign == 0:
+            alignment_scores.append(0.5)
+        elif outcome_sign == rule_sign:
+            alignment_scores.append(1.0)
+        else:
+            alignment_scores.append(0.0)
+
+    accuracy_score = round(sum(alignment_scores) / len(alignment_scores), 4) if alignment_scores else None
+    return predictions, accuracy_score
+
+
+@router.get("/api/knowledge/rules")
 async def list_rules(
     request: Request,
     page: int = Query(default=1, ge=1),
@@ -100,7 +242,7 @@ async def list_rules(
     }
 
 
-@router.get("/rules/{rule_id}")
+@router.get("/api/knowledge/rules/{rule_id}")
 async def get_rule(request: Request, rule_id: str):
     db = _db_from_request(request)
     await require_admin(request, db)
@@ -111,7 +253,7 @@ async def get_rule(request: Request, rule_id: str):
     return rule
 
 
-@router.patch("/rules/{rule_id}/approve")
+@router.patch("/api/knowledge/rules/{rule_id}/approve")
 async def approve_rule(request: Request, rule_id: str):
     db = _db_from_request(request)
     await require_admin(request, db)
@@ -125,7 +267,7 @@ async def approve_rule(request: Request, rule_id: str):
     return {"rule_id": rule_id, "approval_status": "approved"}
 
 
-@router.patch("/rules/{rule_id}/reject")
+@router.patch("/api/knowledge/rules/{rule_id}/reject")
 async def reject_rule(request: Request, rule_id: str):
     db = _db_from_request(request)
     await require_admin(request, db)
@@ -139,7 +281,7 @@ async def reject_rule(request: Request, rule_id: str):
     return {"rule_id": rule_id, "approval_status": "rejected"}
 
 
-@router.get("/import-batches")
+@router.get("/api/knowledge/import-batches")
 async def list_import_batches(request: Request):
     db = _db_from_request(request)
     await require_admin(request, db)
@@ -169,7 +311,7 @@ async def list_import_batches(request: Request):
     return {"batches": batches}
 
 
-@router.get("/import-batches/{batch_id}")
+@router.get("/api/knowledge/import-batches/{batch_id}")
 async def get_import_batch(request: Request, batch_id: str):
     db = _db_from_request(request)
     await require_admin(request, db)
@@ -180,7 +322,7 @@ async def get_import_batch(request: Request, batch_id: str):
     return batch
 
 
-@router.post("/import-batches/{batch_id}/approve-all")
+@router.post("/api/knowledge/import-batches/{batch_id}/approve-all")
 async def approve_all_batch_rules(request: Request, batch_id: str):
     db = _db_from_request(request)
     await require_admin(request, db)
@@ -214,7 +356,7 @@ async def approve_all_batch_rules(request: Request, batch_id: str):
     return {"batch_id": batch_id, "rules_approved": rules_result.modified_count}
 
 
-@router.post("/validate-batch")
+@router.post("/api/knowledge/validate-batch")
 async def validate_batch_endpoint(
     request: Request,
     batch_id: str | None = None,
@@ -375,7 +517,7 @@ async def validate_batch_endpoint(
     }
 
 
-@router.get("/index/status")
+@router.get("/api/knowledge/index/status")
 async def knowledge_index_status(request: Request):
     db = _db_from_request(request)
     await require_admin(request, db)
@@ -383,10 +525,141 @@ async def knowledge_index_status(request: Request):
     return engine.index_refresh_status()
 
 
-@router.post("/index/refresh")
+@router.post("/api/knowledge/index/refresh")
 async def trigger_knowledge_index_refresh(request: Request):
     db = _db_from_request(request)
     await require_admin(request, db)
     engine = _engine_from_request(request)
     engine.schedule_index_refresh()
     return {"index_refresh_triggered": True}
+
+
+@router.get("/api/knowledge-engine/case-studies")
+async def list_case_studies(request: Request):
+    db = _db_from_request(request)
+    await require_admin(request, db)
+
+    cases = await (
+        db[COLLECTION_CASE_STUDIES]
+        .find({}, {"_id": 0})
+        .sort("created_at", -1)
+        .to_list(length=None)
+    )
+    return {"cases": cases}
+
+
+@router.post("/api/knowledge-engine/case-studies/import")
+async def import_case_studies(request: Request, payload: dict[str, Any]):
+    db = _db_from_request(request)
+    await require_admin(request, db)
+
+    raw_cases = payload.get("cases") if isinstance(payload, dict) else None
+    if not isinstance(raw_cases, list) or not raw_cases:
+        raise HTTPException(status_code=400, detail="Request body must include a non-empty 'cases' array")
+
+    imported = 0
+    errors: list[str] = []
+    timestamp = utc_now()
+
+    for index, item in enumerate(raw_cases, start=1):
+        if not isinstance(item, dict):
+            errors.append(f"Row {index}: case payload must be an object")
+            continue
+        try:
+            case_doc = CaseStudyDocument(
+                **{
+                    **item,
+                    "created_at": item.get("created_at") or timestamp,
+                    "updated_at": timestamp,
+                }
+            )
+        except Exception as exc:
+            errors.append(f"Row {index}: {exc}")
+            continue
+
+        document = case_doc.model_dump(mode="json", by_alias=True, exclude_none=True)
+        await db[COLLECTION_CASE_STUDIES].update_one(
+            {"case_id": case_doc.case_id},
+            {
+                "$set": {
+                    **document,
+                    "updated_at": timestamp.isoformat(),
+                },
+                "$setOnInsert": {"created_at": document.get("created_at", timestamp.isoformat())},
+            },
+            upsert=True,
+        )
+        imported += 1
+
+    if imported == 0:
+        raise HTTPException(
+            status_code=400,
+            detail=errors[0] if errors else "No valid case studies were provided",
+        )
+
+    return {
+        "cases_imported": imported,
+        "errors": errors,
+        "message": f"{imported} cases imported",
+    }
+
+
+@router.post("/api/knowledge-engine/case-studies/validate-batch")
+async def validate_case_studies_batch(request: Request):
+    db = _db_from_request(request)
+    await require_admin(request, db)
+    engine = _engine_from_request(request)
+
+    async def _run() -> None:
+        try:
+            case_payloads = await (
+                db[COLLECTION_CASE_STUDIES]
+                .find({"validated": False}, {"_id": 0})
+                .to_list(length=None)
+            )
+            for payload in case_payloads:
+                try:
+                    case_doc = CaseStudyDocument(**payload)
+                except Exception:
+                    logging.exception("Skipping invalid case study payload during validation")
+                    continue
+
+                try:
+                    chart_data = await asyncio.to_thread(
+                        calculate_vedic_chart,
+                        date_of_birth=case_doc.birth_data.date,
+                        time_of_birth=case_doc.birth_data.time,
+                        place_of_birth=case_doc.birth_data.place,
+                    )
+                    dasha_timeline = compute_dasha_timeline(chart_data)
+                    matched_rules = await engine.scan_chart(
+                        chart=chart_data,
+                        max_rules=200,
+                        context={"backbone_science_id": "vedic_astrology"},
+                        dasha_timeline=dasha_timeline,
+                    )
+                    predictions, accuracy_score = _build_case_predictions(
+                        [item.model_dump(mode="json", by_alias=True, exclude_none=True) for item in case_doc.known_outcomes],
+                        matched_rules,
+                    )
+                    await db[COLLECTION_CASE_STUDIES].update_one(
+                        {"case_id": case_doc.case_id},
+                        {
+                            "$set": {
+                                "engine_predictions": predictions,
+                                "accuracy_score": accuracy_score,
+                                "validated": True,
+                                "updated_at": utc_now(),
+                            }
+                        },
+                    )
+                except Exception:
+                    logging.exception("Case study validation failed for %s", case_doc.case_id)
+        except Exception:
+            logging.exception("Case study batch validation background task failed")
+
+    asyncio.create_task(_run())
+    return {
+        "status": "validation_started",
+        "message": "Batch validation started. Check back in a few minutes.",
+    }
