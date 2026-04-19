@@ -219,6 +219,7 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   const [batchIdInput, setBatchIdInput] = useState('');
   const [debouncedBatchId, setDebouncedBatchId] = useState('');
   const [slokaFilter, setSlokaFilter] = useState('');
+  const [showGapFillOnly, setShowGapFillOnly] = useState(false);
   const [statusFilter, setStatusFilter] = useState('');
   const [strengthBand, setStrengthBand] = useState('');
   const [rules, setRules] = useState([]);
@@ -310,13 +311,23 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     });
   }, [rules]);
 
+  const thinSlokas = useMemo(() => {
+    const counts = {};
+    rules.forEach((r) => {
+      const s = r.source?.sloka;
+      if (s) counts[s] = (counts[s] || 0) + 1;
+    });
+    return new Set(Object.entries(counts).filter(([, c]) => c === 1).map(([s]) => s));
+  }, [rules]);
+
   const displayedRules = useMemo(() => {
     return rules.filter((rule) => {
       if (statusFilter && rule.approval_status !== statusFilter) return false;
       if (slokaFilter && rule.source?.sloka !== slokaFilter) return false;
+      if (showGapFillOnly && !thinSlokas.has(rule.source?.sloka)) return false;
       return true;
     });
-  }, [rules, statusFilter, slokaFilter]);
+  }, [rules, statusFilter, slokaFilter, showGapFillOnly, thinSlokas]);
 
   const filteredCases = useMemo(() => {
     const query = casesSearch.trim().toLowerCase();
@@ -1056,8 +1067,18 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
                       })}
                     </select>
                   </div>
+                  <button
+                    onClick={() => { setShowGapFillOnly((v) => !v); setSlokaFilter(''); }}
+                    className={`self-end px-3 py-2 rounded-md text-sm border transition-colors ${
+                      showGapFillOnly
+                        ? 'bg-amber-400/20 border-amber-400/60 text-amber-300'
+                        : 'bg-gray-800 border-gray-600 text-gray-400 hover:border-amber-400/40 hover:text-amber-300'
+                    }`}
+                  >
+                    ⚠️ Gap-fill candidates only {thinSlokas.size > 0 && `(${thinSlokas.size} slokas)`}
+                  </button>
                   <p className="text-xs text-gray-500 self-end pb-2">
-                    ⚠️ = single-rule slokas (gap-fill candidates)
+                    ⚠️ = 1 rule only
                   </p>
                 </div>
               )}
