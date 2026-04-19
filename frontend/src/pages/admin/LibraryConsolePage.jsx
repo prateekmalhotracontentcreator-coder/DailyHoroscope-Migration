@@ -218,6 +218,7 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   const [debouncedScienceId, setDebouncedScienceId] = useState('');
   const [batchIdInput, setBatchIdInput] = useState('');
   const [debouncedBatchId, setDebouncedBatchId] = useState('');
+  const [slokaFilter, setSlokaFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [strengthBand, setStrengthBand] = useState('');
   const [rules, setRules] = useState([]);
@@ -297,12 +298,25 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     [debouncedScienceId, strengthBand, debouncedBatchId]
   );
 
+  const slokaOptions = useMemo(() => {
+    const seen = new Set();
+    rules.forEach((r) => {
+      const s = r.source?.sloka;
+      if (s) seen.add(s);
+    });
+    return Array.from(seen).sort((a, b) => {
+      const n = (v) => parseFloat(v.split('-')[0]) || 0;
+      return n(a) - n(b);
+    });
+  }, [rules]);
+
   const displayedRules = useMemo(() => {
-    if (!statusFilter) {
-      return rules;
-    }
-    return rules.filter((rule) => rule.approval_status === statusFilter);
-  }, [rules, statusFilter]);
+    return rules.filter((rule) => {
+      if (statusFilter && rule.approval_status !== statusFilter) return false;
+      if (slokaFilter && rule.source?.sloka !== slokaFilter) return false;
+      return true;
+    });
+  }, [rules, statusFilter, slokaFilter]);
 
   const filteredCases = useMemo(() => {
     const query = casesSearch.trim().toLowerCase();
@@ -377,7 +391,7 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
         headers: getAuthHeaders(),
         params: {
           page: targetPage,
-          page_size: 50,
+          page_size: (filtersOverride || currentRuleFilters).batch_id ? 200 : 50,
           ...(filtersOverride || currentRuleFilters),
         },
       });
@@ -523,6 +537,29 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
       fetchVoices();
     }
   }, [activeTab, canLoad, voices.length, voicesLoading]);
+
+  const handleExportCSV = () => {
+    if (!displayedRules.length) return;
+    const headers = ['rule_id', 'sloka', 'sub_type', 'approval_status', 'strength_band', 'summary', 'condition_detail', 'effect'];
+    const rows = displayedRules.map((r) => [
+      r.rule_id || '',
+      r.source?.sloka || '',
+      r.condition?.sub_type || '',
+      r.approval_status || '',
+      r.strength_band || '',
+      (r.interpretation?.summary || '').replace(/,/g, ';'),
+      (r.interpretation?.condition_detail || '').replace(/,/g, ';'),
+      (r.interpretation?.effect || '').replace(/,/g, ';'),
+    ]);
+    const csv = [headers, ...rows].map((r) => r.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `rules_${batchIdInput || 'export'}_${slokaFilter || 'all'}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   const handleLoadRules = async () => {
     const nextFilters = {
@@ -987,7 +1024,43 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
                 >
                   Load
                 </Button>
+                {displayedRules.length > 0 && (
+                  <Button
+                    onClick={handleExportCSV}
+                    className="bg-green-400/10 text-green-400 border border-green-400/30 hover:bg-green-400/20"
+                    variant="outline"
+                  >
+                    ↓ Export CSV
+                  </Button>
+                )}
               </div>
+              {slokaOptions.length > 0 && (
+                <div className="flex flex-wrap items-end gap-3 mt-3 pt-3 border-t border-gray-700">
+                  <div className="min-w-[200px]">
+                    <label className="text-xs uppercase tracking-wide text-gray-400 mb-2 block">
+                      Filter by Sloka
+                    </label>
+                    <select
+                      value={slokaFilter}
+                      onChange={(e) => setSlokaFilter(e.target.value)}
+                      className="w-full rounded-md border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white focus:outline-none"
+                    >
+                      <option value="">All slokas ({rules.length} rules)</option>
+                      {slokaOptions.map((s) => {
+                        const count = rules.filter((r) => r.source?.sloka === s).length;
+                        return (
+                          <option key={s} value={s}>
+                            Sloka {s} — {count} rule{count !== 1 ? 's' : ''}{count === 1 ? ' ⚠️' : ''}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                  <p className="text-xs text-gray-500 self-end pb-2">
+                    ⚠️ = single-rule slokas (gap-fill candidates)
+                  </p>
+                </div>
+              )}
             </Card>
 
             <div className="bg-gray-800 rounded-lg border border-gray-700 overflow-x-auto">

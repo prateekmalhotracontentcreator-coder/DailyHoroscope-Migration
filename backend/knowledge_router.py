@@ -454,6 +454,9 @@ async def list_rules(
         "intensity_score": 1,
         "active": 1,
         "validation": 1,
+        "source": 1,
+        "interpretation": 1,
+        "condition": 1,
         "created_at": 1,
         "updated_at": 1,
     }
