@@ -29,6 +29,12 @@ Append a new entry for every batch processed. Never overwrite.
 |---|---|---|
 | `structural_check` word-min lowered to 3 | Allows short planet_in_house / sign sub-rules to pass | Sub-rules with valid but brief interpretations were being rejected |
 
+### Database (MANDATORY — read before every ingest)
+
+**Production DB name: `horoscope_db`** — this is what Render's `DB_NAME` env var is set to.
+All ingest and patch commands must use `--db-name horoscope_db`.
+The `EverydayHoroscope` database was a local-only mistake; 3,200 rules were migrated to `horoscope_db` on 20 Apr 2026. Do NOT use `EverydayHoroscope` again.
+
 ### Pre-Batch Checklist (run before every new ingest)
 
 - [ ] Inspect source RTF for numbered lists inside Notes/commentary sections — neutralize if present
@@ -338,7 +344,7 @@ python3 scripts/patch_slokas.py \
   --batch-id bphs-ch57-dasha-20260419 \
   --slokas "51-52,63-64" \
   --mongo-url "$MONGO_URL" \
-  --db-name EverydayHoroscope \
+  --db-name horoscope_db \
   --dry-run
 
 # Ch 58 — Mercury MD gap-fill
@@ -349,7 +355,7 @@ python3 scripts/patch_slokas.py \
   --batch-id bphs-ch58-dasha-20260419 \
   --slokas "59-61" \
   --mongo-url "$MONGO_URL" \
-  --db-name EverydayHoroscope \
+  --db-name horoscope_db \
   --dry-run
 ```
 
