@@ -20,6 +20,8 @@ import {
 } from "lucide-react";
 
 import { SEO } from "../components/SEO";
+import QuestionnaireWidget from "../components/QuestionnaireWidget";
+import { useAuth } from "../context/AuthContext";
 
 // Host app wiring:
 // <Route path="/arc-angel" element={<ArcAngelPage />} />
@@ -96,8 +98,8 @@ function fieldError(error, fallback) {
   return error?.response?.data?.detail || error?.response?.data?.message || fallback;
 }
 
+// /api/panchang/locations returns a flat array: [{ slug, label, country, timezone, tz_abbr, ... }]
 function flattenLocationGroups(locations) {
-  // API returns a flat array: [{ slug, label, country, timezone, tz_abbr, ... }]
   return (locations || []).map((location) => ({
     ...location,
     search_text: [
@@ -271,6 +273,7 @@ function PeriodListCard({ title, periods, emptyMessage, type }) {
 }
 
 export default function ArcAngelPage() {
+  const { user } = useAuth();
   const [formData, setFormData] = useState(() => readStoredBirthData() || INITIAL_FORM_DATA);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -280,6 +283,23 @@ export default function ArcAngelPage() {
   const [locationLoading, setLocationLoading] = useState(true);
   const [locationError, setLocationError] = useState("");
   const [locationSearch, setLocationSearch] = useState("");
+  const [completionPct, setCompletionPct] = useState(100);
+
+  const refetchCompletion = async () => {
+    if (!user) return;
+    try {
+      const res = await axios.get(`${BACKEND_URL}/api/user/context-profile/completion`, {
+        withCredentials: true,
+      });
+      setCompletionPct(res.data?.completion_pct ?? 100);
+    } catch {
+      // silent
+    }
+  };
+
+  useEffect(() => {
+    refetchCompletion();
+  }, [user]);
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(formData));
@@ -408,8 +428,8 @@ export default function ArcAngelPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Arc Angel -- 12 Areas of Life | EverydayHoroscope"
-        description="Discover your 10-year Vedic dasha windows across 12 life domains -- career, relationships, finances, health and more."
+        title="Arc Angel — 12 Areas of Life | EverydayHoroscope"
+        description="Discover your 10-year Vedic dasha windows across 12 life domains — career, relationships, finances, health and more."
         canonical="https://www.everydayhoroscope.in/arc-angel"
       />
 
@@ -420,7 +440,7 @@ export default function ArcAngelPage() {
             Mahadasha guidance
           </div>
           <h1 className="font-playfair text-4xl font-semibold text-foreground sm:text-5xl">
-            Arc Angel -- 12 Areas of Life
+            Arc Angel — 12 Areas of Life
           </h1>
           <p className="max-w-3xl text-base leading-7 text-muted-foreground">
             Explore the next 10 years of favourable and challenging dasha windows across the 12 life domains that shape your journey.
@@ -513,6 +533,15 @@ export default function ArcAngelPage() {
               </GlassCard>
 
               <ConfidenceDonut />
+
+              {user && completionPct < 100 && (
+                <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-4">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+                    Complete your profile to improve confidence
+                  </p>
+                  <QuestionnaireWidget compact={true} onSaveSuccess={refetchCompletion} />
+                </div>
+              )}
 
               <PeriodListCard
                 title="Favourable Windows"
