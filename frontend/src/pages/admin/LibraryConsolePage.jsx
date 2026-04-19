@@ -216,6 +216,8 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   const [activeTab, setActiveTab] = useState('rules');
   const [scienceInput, setScienceInput] = useState('');
   const [debouncedScienceId, setDebouncedScienceId] = useState('');
+  const [batchIdInput, setBatchIdInput] = useState('');
+  const [debouncedBatchId, setDebouncedBatchId] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [strengthBand, setStrengthBand] = useState('');
   const [rules, setRules] = useState([]);
@@ -274,6 +276,11 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   }, [scienceInput]);
 
   useEffect(() => {
+    const timer = window.setTimeout(() => setDebouncedBatchId(batchIdInput.trim()), 400);
+    return () => window.clearTimeout(timer);
+  }, [batchIdInput]);
+
+  useEffect(() => {
     if (!authLoading && !isAuthenticated) {
       navigate('/admin/login');
     }
@@ -285,8 +292,9 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     () => ({
       science_id: debouncedScienceId || undefined,
       strength_band: strengthBand || undefined,
+      batch_id: debouncedBatchId || undefined,
     }),
-    [debouncedScienceId, strengthBand]
+    [debouncedScienceId, strengthBand, debouncedBatchId]
   );
 
   const displayedRules = useMemo(() => {
@@ -520,8 +528,10 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     const nextFilters = {
       science_id: scienceInput.trim() || undefined,
       strength_band: strengthBand || undefined,
+      batch_id: batchIdInput.trim() || undefined,
     };
     setDebouncedScienceId(scienceInput.trim());
+    setDebouncedBatchId(batchIdInput.trim());
     setExpandedRuleId(null);
     setPage(1);
     await fetchRules(1, nextFilters);
@@ -923,6 +933,17 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
                     value={scienceInput}
                     onChange={(event) => setScienceInput(event.target.value)}
                     placeholder="vedic_astrology"
+                    className="bg-gray-800 border-gray-700 text-white"
+                  />
+                </div>
+                <div className="min-w-[240px] flex-1">
+                  <label className="text-xs uppercase tracking-wide text-gray-400 mb-2 block">
+                    Batch ID
+                  </label>
+                  <Input
+                    value={batchIdInput}
+                    onChange={(event) => setBatchIdInput(event.target.value)}
+                    placeholder="bphs-ch56-dasha-20260418"
                     className="bg-gray-800 border-gray-700 text-white"
                   />
                 </div>

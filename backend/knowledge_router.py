@@ -422,6 +422,7 @@ async def list_rules(
     category: str | None = None,
     approval_status: ApprovalStatus | None = None,
     strength_band: str | None = None,
+    batch_id: str | None = None,
 ):
     db = _db_from_request(request)
     await require_admin(request, db)
@@ -435,6 +436,8 @@ async def list_rules(
         filters["approval_status"] = approval_status
     if strength_band:
         filters["strength_band"] = strength_band
+    if batch_id:
+        filters["source.batch_id"] = batch_id
 
     projection = {
         "_id": 0,
