@@ -164,6 +164,64 @@ Append a new entry for every batch processed. Never overwrite.
 
 ---
 
+### BPHS Ch 52-57 | Antardasha Chapters (Dasha of each planet) | Apr 2026
+
+**Script used:** `ingest_bphs_dasha_v1.py`
+
+| Ch | MD Lord | Batch ID | Total | auto_approved | pending_human_review | flagged | contradictions |
+|---|---|---|---|---|---|---|---|
+| 52 | Sun | bphs-ch52-dasha-* | — | — | — | — | — |
+| 53 | Moon | bphs-ch53-dasha-* | — | — | — | — | — |
+| 54 | Mars | bphs-ch54-dasha-20260417 | 86 | — | — | — | — |
+| 55 | Rahu | bphs-ch55-dasha-* | — | — | — | — | — |
+| 56 | Jupiter | bphs-ch56-dasha-20260418 | 124 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
+| **57** | **Saturn** | **bphs-ch57-dasha-20260419** | **120 (baseline)** | **pending** | **pending** | **pending** | **pending** |
+
+**Ch 57 Dry Run Notes (V2 — locked baseline):**
+- 35 slokas / 120 rules / temperature=0 locked
+- Confirmed per-sloka baseline:
+
+| Sloka | Rules | Note |
+|---|---|---|
+| 1-3 | 6 | 6 condition-specific rules — verify distinctiveness in Rules Browser post-ingest |
+| 4-5 | 3 | |
+| 6-7 | 2 | |
+| 8-11 | 5 | |
+| 12-13 | 2 | Translator note ("It is difficult to believe…") correctly excluded |
+| 14-15 | 2 | |
+| 16-18 | 2 | Sat/Ketu negative even when well-placed — confirmed |
+| 19 | 4 | |
+| 20-21 | 4 | Over-split to 10 at temp=0.1; resolved at temp=0 |
+| 22-23 | 2 | |
+| 24-27 | 3 | |
+| 28-29 | 3 | |
+| 30-31 | 3 | |
+| 32-34 | 8 | |
+| 35-36 | 2 | |
+| 37-38 | 2 | |
+| 39-41 | 9 | |
+| 42 | 2 | |
+| 43-45 | 3 | |
+| 46-48 | 3 | Translator note ("Our belief is…") correctly excluded |
+| 49-50 | 3 | |
+| 51-52 | 1 | |
+| 53-54 | 2 | |
+| 55-57 | 6 | |
+| 58-60 | 5 | |
+| **61-62** | **4** | **Was missing in V1 runs — RTF fixed + re-run confirmed capture** |
+| 63-64 | 1 | |
+| 65-67 | 2 | |
+| 68 | 1 | Sign-placement rule (Rahu in Aries/Virgo/Cancer etc.) |
+| 69-70 | 2 | |
+| 71-73 | 3 | Under-split to 1 at temp=0.1; resolved at temp=0 |
+| 74-75 | 3 | |
+| 76-78 | 9 | |
+| 79-80 | 5 | |
+| 81-82 | 3 | |
+| **TOTAL** | **120** | |
+
+---
+
 ### Cumulative Grand Total (All sources, Ch 12-24 + Ch 47)
 
 | Source | Rules | auto_approved | pending_human_review | flagged | contradictions |
