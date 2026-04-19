@@ -175,6 +175,21 @@ RULES:
    dasha_conditional  — mixed or conditional effects (if aspected by benefic, etc.)
    dasha_remedy       — remedy or mitigation advice
    general_principle  — overarching timing principle not fitting above
+
+SPLITTING GUIDANCE — when a sloka lists multiple DISTINCT planetary states as conditions,
+extract EACH as a separate rule even if outcomes are similar. Rules must be individually
+matchable to a user's chart at query time.
+
+  SPLIT these (distinct astrological states):
+    debilitation / combustion / house placement / malefic association → separate rules
+    "from the Ascendant" vs "from the Dasha lord" conditions → separate rules
+    Example: "if Jupiter be in debilitation, be combust, or be in the 6th/8th/12th,
+              or be aspected by Saturn and Mars" → 4 rules
+
+  DO NOT split these (equivalent alternatives, same state category):
+    "kendra, trikona, or the 11th" → one rule (equivalent favourable placements)
+    "6th, 8th, or 12th" → one rule (same unfavourable house category)
+    "own sign or exaltation" → one rule (equivalent strength indicators)
 """
 
 EXTRACTION_PROMPT = """\
