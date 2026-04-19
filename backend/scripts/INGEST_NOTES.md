@@ -175,7 +175,7 @@ Append a new entry for every batch processed. Never overwrite.
 | 54 | Mars | bphs-ch54-dasha-20260417 | 86 | — | — | — | — |
 | 55 | Rahu | bphs-ch55-dasha-* | — | — | — | — | — |
 | 56 | Jupiter | bphs-ch56-dasha-20260418 | 124 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
-| **57** | **Saturn** | **bphs-ch57-dasha-20260419** | **120 (baseline)** | **pending** | **pending** | **pending** | **pending** |
+| **57** | **Saturn** | **bphs-ch57-dasha-20260419** | **130** | **103 (79%)** | **18 (14%)** | **9 (7%)** | **0 pairs** |
 
 **Ch 57 Dry Run Notes (V2 — locked baseline):**
 - 35 slokas / 120 rules / temperature=0 locked
@@ -219,6 +219,19 @@ Append a new entry for every batch processed. Never overwrite.
 | 79-80 | 5 | |
 | 81-82 | 3 | |
 | **TOTAL** | **120** | |
+
+---
+
+**Ch 57 Live Ingest Notes:**
+- Live ingest produced 130 rules vs dry-run baseline of 120 (+10) despite temperature=0
+- Diverging slokas: 8-11 (+1), 20-21 (+4), 30-31 (+5)
+- 30-31 is highest priority for Rules Browser review — likely outcome over-splitting (8 rules from a 2-verse sloka)
+- temperature=0 reduces but does not eliminate API variance — per-sloka baseline check remains essential
+- `dasha_conditional: 1` from dry run absorbed into favourable/unfavourable in live run
+
+**Open Points:**
+1. Review 9 flagged rules in Rules Browser (filter: flagged, batch: bphs-ch57-dasha-20260419) — check slokas 20-21 and 30-31 for over-split duplicates; merge via Rule Editor if confirmed
+2. 18 pending_human_review rules — awaiting co-founder sign-off
 
 ---
 
