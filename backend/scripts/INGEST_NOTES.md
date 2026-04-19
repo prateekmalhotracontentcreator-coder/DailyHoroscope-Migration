@@ -17,6 +17,12 @@ Append a new entry for every batch processed. Never overwrite.
 | Sloka regex accepts `,` separator | `[.,]?` instead of `\.?` — handles `14, If...` style headings | Ch 21 sloka 14 used comma instead of period after number |
 | Sloka regex accepts `+` range separator | `[-\u2013+]` — handles `14+15` style ranges | Ch 19 sloka `14+15` was not detected; content was misattributed to sloka 8-13 |
 
+### Ingest script — `ingest_bphs_dasha_v1.py`
+
+| Fix | What it does | Trigger |
+|---|---|---|
+| `temperature=0` (both call sites, lines 268 + 308) | Makes Claude extraction deterministic — identical sloka text → identical rule count on every run | Ch 57 dry runs produced 113 vs 118 rules on two consecutive runs due to LLM non-determinism at temp=0.1. Over-split detected at sloka 20-21 (4 vs 10 rules); under-split at sloka 71-73 (1 vs 3 rules). |
+
 ### Validator — `knowledge_validator.py`
 
 | Fix | What it does | Trigger |
@@ -26,7 +32,11 @@ Append a new entry for every batch processed. Never overwrite.
 ### Pre-Batch Checklist (run before every new ingest)
 
 - [ ] Inspect source RTF for numbered lists inside Notes/commentary sections — neutralize if present
-- [ ] Check sloka heading format — any trailing alpha, missing periods, leading apostrophes?
+- [ ] Check sloka heading format — any trailing alpha, missing periods, leading apostrophes, period-separated ranges (e.g. `61.62.` instead of `61-62`)
+- [ ] Run dry run — record per-sloka rule counts as the confirmed baseline
+- [ ] Confirm 61-62-style verse ranges are captured (both runs of Ch 57 missed slokas 61-62 until RTF was corrected)
+- [ ] Confirm translator editorial notes are NOT extracted as rules (e.g. "Our belief is…", "It is difficult to believe…")
+- [ ] Live ingest per-sloka counts must match dry-run baseline exactly — any divergence = flag for manual review
 - [ ] After ingest, run `patch_punctuation.py` before validating
 - [ ] Run `reset_to_pending.py` if any rules were previously rejected
 - [ ] Confirm batch IDs in DB before running validator
