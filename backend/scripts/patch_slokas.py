@@ -2,10 +2,9 @@
 """
 patch_slokas.py — Targeted re-extraction for under-extracted slokas.
 
-Re-runs extraction on specific sloka ranges from any Dasha chapter using the
-current (improved) extraction prompt, then inserts only net-new rules into MongoDB.
-Existing rules for the same sloka are preserved; new rules are added alongside them
-with source_note='gap_fill' so reviewers can distinguish them in the Rules Browser.
+Re-runs extraction on specific sloka ranges using the current (improved) prompt,
+then inserts only net-new rules into MongoDB alongside existing ones.
+New rules are tagged source_note='gap_fill' for Rules Browser review.
 
 Usage:
   python3 scripts/patch_slokas.py \
@@ -17,10 +16,6 @@ Usage:
     --mongo-url "$MONGO_URL" \
     --db-name EverydayHoroscope \
     [--dry-run]
-
-Deduplication: for each re-extracted rule, checks if any existing rule in MongoDB
-for the same (batch_id, sloka, sub_type) has a summary with >= 60% Jaccard word
-overlap. Skips duplicates; inserts only net-new rules.
 """
 
 import argparse
@@ -28,6 +23,7 @@ import os
 import sys
 import uuid
 from datetime import datetime, timezone
+from pathlib import Path
 
 import pymongo
 
@@ -36,7 +32,15 @@ from ingest_bphs_dasha_v1 import (
     CHAPTER_NAMES,
     SlokaExtractor,
     strip_rtf,
-    parse_dasha_slokas,
+    split_into_sloka_blocks,
+    build_planet_position_map,
+    clean_notes,
+    should_skip,
+    extracted_to_rule,
+    make_source,
+    SCIENCE,
+    PLANETS,
+    VALID_SUB_TYPES,
 )
 
 
@@ -56,8 +60,8 @@ def is_duplicate(new_summary: str, existing_summaries: list, threshold: float = 
 
 # ── Sloka range helpers ────────────────────────────────────────────────────────
 
-def parse_sloka_ranges(slokas_arg: str) -> list:
-    return [s.strip() for s in slokas_arg.split(",") if s.strip()]
+def parse_sloka_ranges(arg: str) -> list:
+    return [s.strip() for s in arg.split(",") if s.strip()]
 
 
 def sloka_label_matches(label: str, targets: list) -> bool:
@@ -67,10 +71,7 @@ def sloka_label_matches(label: str, targets: list) -> bool:
             return True
         try:
             t_start, t_end = (int(x) for x in t.split("-")) if "-" in t else (int(t), int(t))
-            if "-" in label_norm:
-                l_start, l_end = (int(x) for x in label_norm.split("-"))
-            else:
-                l_start = l_end = int(label_norm)
+            l_start, l_end = (int(x) for x in label_norm.split("-")) if "-" in label_norm else (int(label_norm), int(label_norm))
             if l_start == t_start and l_end == t_end:
                 return True
         except ValueError:
@@ -78,12 +79,18 @@ def sloka_label_matches(label: str, targets: list) -> bool:
     return False
 
 
+# ── Summary extraction helper ──────────────────────────────────────────────────
+
+def rule_summary(rule_doc: dict) -> str:
+    """Extract a comparable summary string from a stored rule document."""
+    interp = rule_doc.get("interpretation", {})
+    return interp.get("summary", "") or rule_doc.get("summary", "")
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Re-extract specific under-extracted slokas and insert net-new rules."
-    )
+    parser = argparse.ArgumentParser(description="Re-extract specific under-extracted slokas.")
     parser.add_argument("--rtf",        required=True)
     parser.add_argument("--chapter",    required=True, type=int)
     parser.add_argument("--dasha-lord", required=True,
@@ -97,9 +104,9 @@ def main():
     parser.add_argument("--dry-run",    action="store_true")
     args = parser.parse_args()
 
-    chapter      = args.chapter
-    dasha_lord   = args.dasha_lord
-    batch_id     = args.batch_id
+    chapter       = args.chapter
+    dasha_lord    = args.dasha_lord
+    batch_id      = args.batch_id
     target_slokas = parse_sloka_ranges(args.slokas)
     chapter_name  = CHAPTER_NAMES.get(chapter, f"Chapter {chapter}")
 
@@ -110,44 +117,73 @@ def main():
     print(f"Mode       : {'DRY RUN' if args.dry_run else 'LIVE'}")
     print("─" * 60)
 
-    # MongoDB (sync)
     mongo_client = pymongo.MongoClient(args.mongo_url)
     db           = mongo_client[args.db_name]
     collection   = db["knowledge_rules"]
 
-    # Parse RTF
-    rtf_text  = strip_rtf(args.rtf)
-    all_slokas = parse_dasha_slokas(rtf_text, chapter)
+    # Parse RTF into sloka blocks
+    raw   = Path(args.rtf).expanduser().read_text(encoding="utf-8", errors="replace")
+    plain = strip_rtf(raw)
+    blocks = split_into_sloka_blocks(plain)
 
-    targets = [s for s in all_slokas if sloka_label_matches(s["sloka"], target_slokas)]
+    # Build planet-position map (needed for multi-section chapters)
+    planet_map = build_planet_position_map(plain)
+
+    def planet_at(pos: int) -> str:
+        result = dasha_lord
+        for p, planet in planet_map:
+            if p <= pos:
+                result = planet
+            else:
+                break
+        return result
+
+    # Filter to target sloka blocks
+    targets = [
+        (label, text, pos)
+        for label, text, pos in blocks
+        if sloka_label_matches(label, target_slokas) and not should_skip(label, text, chapter)
+    ]
+
     if not targets:
-        print(f"ERROR: No slokas matched {target_slokas} in the parsed RTF.")
-        print(f"Available: {[s['sloka'] for s in all_slokas]}")
+        print(f"ERROR: No slokas matched {target_slokas}.")
+        print(f"Available: {[b[0] for b in blocks]}")
+        mongo_client.close()
         return
 
     extractor   = SlokaExtractor(model=args.model)
     total_new   = 0
     total_skipped = 0
 
-    for entry in targets:
-        sloka_label       = entry["sloka"]
-        sloka_text        = entry.get("text", "")
-        antardasha_planet = entry.get("antardasha_planet", dasha_lord)
+    # Count existing rules to generate non-colliding IDs
+    existing_total = collection.count_documents({"batch_id": batch_id})
+    id_counter = existing_total + 1
 
-        existing_docs     = list(collection.find({"batch_id": batch_id, "sloka": sloka_label}))
-        existing_summaries = [d.get("summary", "") for d in existing_docs]
-        existing_count    = len(existing_docs)
+    for sloka_label, sloka_text, sloka_pos in targets:
+        rule_text, notes_text = clean_notes(sloka_text)
+        antardasha_planet     = planet_at(sloka_pos)
+
+        existing_docs      = list(collection.find(
+            {"source.batch_id": batch_id, "source.sloka": sloka_label}
+        ))
+        # Also try flat sloka field for older documents
+        if not existing_docs:
+            existing_docs = list(collection.find(
+                {"batch_id": batch_id, "condition.sloka": sloka_label}
+            ))
+
+        existing_summaries = [rule_summary(d) for d in existing_docs]
+        existing_count     = len(existing_docs)
 
         print(f"\n  Sloka {sloka_label:10s} | existing: {existing_count} | re-extracting...")
 
         try:
             new_rules = extractor.extract(
                 sloka_label=sloka_label,
-                rule_text=sloka_text,
-                notes_text="",
+                rule_text=rule_text,
+                notes_text=notes_text,
                 chapter=chapter,
                 dasha_lord=dasha_lord,
-                antardasha_planet=antardasha_planet,
             )
         except Exception as e:
             print(f"    ERROR: {e}")
@@ -156,41 +192,31 @@ def main():
         sloka_new = sloka_skipped = 0
 
         for rule in new_rules:
-            summary  = getattr(rule, "summary", str(rule))
-            sub_type = getattr(rule, "sub_type", "dasha_unfavourable")
+            # Build rule doc using shared helper
+            doc = extracted_to_rule(rule, sloka_label, dasha_lord, chapter, batch_id, id_counter)
 
-            if is_duplicate(summary, existing_summaries):
+            new_summary = doc["interpretation"]["summary"]
+
+            if is_duplicate(new_summary, existing_summaries):
                 sloka_skipped += 1
                 continue
 
-            rule_id = f"R-BPHS{chapter:02d}-PATCH-{uuid.uuid4().hex[:6].upper()}"
-            doc = {
-                "rule_id":           rule_id,
-                "batch_id":          batch_id,
-                "source":            "BPHS",
-                "chapter":           chapter,
-                "sloka":             sloka_label,
-                "dasha_lord":        dasha_lord,
-                "antardasha_planet": antardasha_planet,
-                "sub_type":          sub_type,
-                "summary":           summary,
-                "condition":         getattr(rule, "condition", ""),
-                "result":            getattr(rule, "result", ""),
-                "planets":           getattr(rule, "planets", []),
-                "houses":            getattr(rule, "houses", []),
-                "approval_status":   "pending_review",
-                "source_note":       "gap_fill",
-                "created_at":        datetime.now(timezone.utc).isoformat(),
-            }
+            # Tag as gap-fill and give unique ID
+            doc["rule_id"]              = f"R-BPHS{chapter}-PATCH-{uuid.uuid4().hex[:6].upper()}"
+            doc["metadata"]["source_note"] = "gap_fill"
+            doc["approval_status"]      = "pending_review"
 
             if args.dry_run:
-                print(f"    [DRY RUN] {rule_id} | {sub_type:22s} | {summary[:72]}...")
+                sub = doc["condition"]["sub_type"]
+                print(f"    [DRY RUN] {doc['rule_id']} | {sub:22s} | {new_summary[:70]}...")
             else:
                 collection.insert_one(doc)
-                print(f"    Inserted  {rule_id} | {sub_type:22s} | {summary[:72]}...")
+                sub = doc["condition"]["sub_type"]
+                print(f"    Inserted  {doc['rule_id']} | {sub:22s} | {new_summary[:70]}...")
 
-            existing_summaries.append(summary)
-            sloka_new += 1
+            existing_summaries.append(new_summary)
+            id_counter += 1
+            sloka_new  += 1
 
         print(f"    Result: +{sloka_new} new  |  {sloka_skipped} skipped (duplicates)")
         total_new     += sloka_new
@@ -203,7 +229,7 @@ def main():
         print(f"✅  Inserted {total_new} net-new rules  |  {total_skipped} duplicates skipped")
         if total_new:
             print(f"    approval_status='pending_review', source_note='gap_fill'")
-            print(f"    Review: Admin > Library > Rules Browser → batch {batch_id} → source_note: gap_fill")
+            print(f"    Review: Admin > Library > Rules Browser → batch {batch_id}")
 
     mongo_client.close()
 
