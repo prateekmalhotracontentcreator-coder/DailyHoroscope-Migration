@@ -45,6 +45,7 @@ class UserResponse(BaseModel):
     email: str
     name: str
     picture: Optional[str] = None
+    is_premium: bool = False
 
 # Helper Functions
 def hash_password(password: str) -> str:

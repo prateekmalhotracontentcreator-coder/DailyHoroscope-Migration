@@ -1108,7 +1108,20 @@ async def reset_password(request: ResetPasswordRequest):
 async def get_me(request: Request):
     user = await get_current_user(request, db)
     if not user: raise HTTPException(status_code=401, detail="Not authenticated")
-    return user
+    now = datetime.now(timezone.utc)
+    sub = await db.subscriptions.find_one({"user_email": user.email, "status": "active"})
+    is_premium = False
+    if sub:
+        expires_at = sub.get("expires_at")
+        if expires_at is None:
+            is_premium = True
+        else:
+            if isinstance(expires_at, str):
+                expires_at = datetime.fromisoformat(expires_at.replace("Z", "+00:00"))
+            if expires_at.tzinfo is None:
+                expires_at = expires_at.replace(tzinfo=timezone.utc)
+            is_premium = expires_at > now
+    return UserResponse(user_id=user.user_id, email=user.email, name=user.name, picture=user.picture, is_premium=is_premium)
 
 @api_router.post("/auth/logout")
 async def logout(request: Request, response: Response):

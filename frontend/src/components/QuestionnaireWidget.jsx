@@ -446,12 +446,12 @@ export default function QuestionnaireWidget({
 
   const sections = useMemo(
     () =>
-      SECTION_DEFINITIONS.map((section) => ({
+      SECTION_DEFINITIONS.map((section, index) => ({
         ...section,
-        locked: false,
+        locked: !premiumActive && index > 0,
         missingCount: getSectionMissingCount(section, completion.missing_fields),
       })),
-    [completion.missing_fields]
+    [completion.missing_fields, premiumActive]
   );
 
   const firstIncompleteSection = useMemo(() => getNextIncompleteSection(sections), [sections]);
@@ -506,7 +506,8 @@ export default function QuestionnaireWidget({
           }
 
           const nextOpenSection =
-            SECTION_DEFINITIONS.find((section) => {
+            SECTION_DEFINITIONS.find((section, index) => {
+              if (!premiumActive && index > 0) return false;
               const missingCount = getSectionMissingCount(section, nextCompletion.missing_fields);
               return !section.reviewOnly && missingCount > 0;
             }) || SECTION_DEFINITIONS[0];
@@ -577,7 +578,8 @@ export default function QuestionnaireWidget({
     onSaveSuccess(nextProfile);
 
     const nextOpenSection =
-      SECTION_DEFINITIONS.find((section) => {
+      SECTION_DEFINITIONS.find((section, index) => {
+        if (!premiumActive && index > 0) return false;
         return (
           !section.reviewOnly &&
           getSectionMissingCount(section, nextCompletion.missing_fields) > 0
