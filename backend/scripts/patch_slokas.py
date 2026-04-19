@@ -119,7 +119,7 @@ def main():
 
     mongo_client = pymongo.MongoClient(args.mongo_url)
     db           = mongo_client[args.db_name]
-    collection   = db["knowledge_rules"]
+    collection   = db["interpretation_rules"]
 
     # Parse RTF into sloka blocks
     raw   = Path(args.rtf).expanduser().read_text(encoding="utf-8", errors="replace")
