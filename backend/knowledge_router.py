@@ -4,7 +4,7 @@ import asyncio
 import logging
 import os
 from collections import defaultdict
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Any
 
 from fastapi import APIRouter, HTTPException, Query, Request
@@ -12,7 +12,6 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from pymongo import MongoClient
 
 from admin_utils import require_admin
-from knowledge_engine import compute_dasha_timeline
 from knowledge_schema import (
     COLLECTION_CASE_STUDIES,
     COLLECTION_IMPORT_BATCHES,
@@ -21,7 +20,7 @@ from knowledge_schema import (
     CaseStudyDocument,
     EnginePrediction,
 )
-from vedic_calculator import calculate_vedic_chart
+from vedic_calculator import calculate_vedic_chart, calculate_vimshottari_dasha
 
 
 router = APIRouter(tags=["knowledge-library"])
@@ -78,6 +77,8 @@ NEGATIVE_HINTS = {
     "stress",
     "conflict",
 }
+CASE_STUDY_DASHA_ORDER = ["Ketu", "Venus", "Sun", "Moon", "Mars", "Rahu", "Jupiter", "Saturn", "Mercury"]
+CASE_STUDY_DASHA_YEARS = {"Ketu": 7, "Venus": 20, "Sun": 6, "Moon": 10, "Mars": 7, "Rahu": 18, "Jupiter": 16, "Saturn": 19, "Mercury": 17}
 
 
 def _case_outcome_text(outcome: dict[str, Any]) -> str:
@@ -179,6 +180,74 @@ def _build_case_predictions(
 
     accuracy_score = round(sum(alignment_scores) / len(alignment_scores), 4) if alignment_scores else None
     return predictions, accuracy_score
+
+
+def _approximate_moon_longitude(chart_data: dict[str, Any]) -> float:
+    moon_longitude = chart_data.get("moon_longitude")
+    if isinstance(moon_longitude, (int, float)):
+        return float(moon_longitude)
+
+    nakshatra = chart_data.get("nakshatra") or {}
+    try:
+        nak_index = int(nakshatra.get("index"))
+        pada = int(nakshatra.get("pada", 2))
+    except (TypeError, ValueError):
+        return 0.0
+
+    nak_span = 360.0 / 27.0
+    pada = min(4, max(1, pada))
+    pada_fraction = ((pada - 1) + 0.5) / 4.0
+    return (nak_index * nak_span) + (nak_span * pada_fraction)
+
+
+def _case_study_cycle_sequence(start_lord: str) -> list[str]:
+    if start_lord not in CASE_STUDY_DASHA_ORDER:
+        return list(CASE_STUDY_DASHA_ORDER)
+    start_index = CASE_STUDY_DASHA_ORDER.index(start_lord)
+    return CASE_STUDY_DASHA_ORDER[start_index:] + CASE_STUDY_DASHA_ORDER[:start_index]
+
+
+def _build_case_study_sub_dashas(parent_lord: str, start_iso: str, end_iso: str) -> list[dict[str, Any]]:
+    start = datetime.fromisoformat(f"{start_iso}T00:00:00")
+    end = datetime.fromisoformat(f"{end_iso}T00:00:00")
+    total_seconds = max(0.0, (end - start).total_seconds())
+    cursor = start
+    sub_dashas: list[dict[str, Any]] = []
+    for lord in _case_study_cycle_sequence(parent_lord):
+        share = CASE_STUDY_DASHA_YEARS.get(lord, 0) / 120.0
+        duration = total_seconds * share
+        item_end = cursor + timedelta(seconds=duration)
+        sub_dashas.append(
+            {
+                "planet": lord,
+                "start": cursor.date().isoformat(),
+                "end": item_end.date().isoformat(),
+            }
+        )
+        cursor = item_end
+    if sub_dashas:
+        sub_dashas[-1]["end"] = end.date().isoformat()
+    return sub_dashas
+
+
+def _build_case_study_dasha_timeline(birth_date: str, moon_longitude: float) -> list[dict[str, Any]]:
+    maha_dashas = calculate_vimshottari_dasha(birth_date, moon_longitude)
+    timeline: list[dict[str, Any]] = []
+    for maha in maha_dashas:
+        planet = str(maha.get("planet") or "")
+        start = str(maha.get("start") or "")
+        end = str(maha.get("end") or "")
+        if not planet or not start or not end:
+            continue
+        timeline.append(
+            {
+                "planet": planet,
+                "start": start,
+                "end": end,
+                "antardashas": _build_case_study_sub_dashas(planet, start, end),
+            }
+        )
+    return timeline
 
 
 @router.get("/api/knowledge/rules")
@@ -631,7 +700,11 @@ async def validate_case_studies_batch(request: Request):
                         time_of_birth=case_doc.birth_data.time,
                         place_of_birth=case_doc.birth_data.place,
                     )
-                    dasha_timeline = compute_dasha_timeline(chart_data)
+                    moon_longitude = _approximate_moon_longitude(chart_data)
+                    dasha_timeline = _build_case_study_dasha_timeline(
+                        case_doc.birth_data.date,
+                        moon_longitude,
+                    )
                     matched_rules = await engine.scan_chart(
                         chart=chart_data,
                         max_rules=200,
