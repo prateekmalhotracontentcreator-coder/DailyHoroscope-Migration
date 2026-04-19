@@ -3,14 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'sonner';
 import {
+  AlertCircle,
   BookOpen,
   Check,
   CheckCircle2,
   ChevronDown,
   ChevronUp,
   Eye,
+  FileJson,
+  FlaskConical,
   Loader2,
   RefreshCw,
+  Upload,
   X,
 } from 'lucide-react';
 
@@ -25,6 +29,7 @@ const SUB_TABS = [
   { id: 'rules', label: 'Rules Browser' },
   { id: 'batches', label: 'Import Batches' },
   { id: 'index', label: 'Index Status' },
+  { id: 'cases', label: 'Case Studies' },
 ];
 
 const STATUS_BADGES = {
@@ -74,6 +79,63 @@ function truncateId(value, count = 12) {
   return value.length > count ? `${value.slice(0, count)}...` : value;
 }
 
+function truncateText(value, count = 28) {
+  if (!value) {
+    return '-';
+  }
+  return value.length > count ? `${value.slice(0, count)}...` : value;
+}
+
+function formatPercent(value) {
+  if (value === null || value === undefined || value === '') {
+    return '—';
+  }
+  const numeric = Number(value);
+  if (Number.isNaN(numeric)) {
+    return '—';
+  }
+  const pct = numeric <= 1 ? Math.round(numeric * 100) : Math.round(numeric);
+  return `${pct}%`;
+}
+
+function dataQualityBadge(value) {
+  if (value === 'high') {
+    return 'bg-green-500/15 text-green-400 border-green-500/30';
+  }
+  if (value === 'medium') {
+    return 'bg-amber-500/15 text-amber-400 border-amber-500/30';
+  }
+  if (value === 'low') {
+    return 'bg-red-500/15 text-red-400 border-red-500/30';
+  }
+  return 'bg-zinc-500/15 text-zinc-400 border-zinc-500/30';
+}
+
+async function readJsonFile(file) {
+  const text = await file.text();
+  return JSON.parse(text);
+}
+
+function normalizeImportedCases(payload) {
+  if (Array.isArray(payload)) {
+    return payload;
+  }
+  if (Array.isArray(payload?.cases)) {
+    return payload.cases;
+  }
+  return [];
+}
+
+function estimateConfidencePct(prediction) {
+  if (prediction?.confidence_pct !== undefined && prediction?.confidence_pct !== null) {
+    return formatPercent(prediction.confidence_pct);
+  }
+  if (prediction?.confidence !== undefined && prediction?.confidence !== null) {
+    return formatPercent(prediction.confidence);
+  }
+  return '—';
+}
+
 function badgeClass(map, value) {
   return map[value] || 'bg-gray-500/20 text-gray-300';
 }
@@ -112,6 +174,18 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   const [indexStatus, setIndexStatus] = useState(null);
   const [indexLoading, setIndexLoading] = useState(false);
   const [refreshingIndex, setRefreshingIndex] = useState(false);
+  const [cases, setCases] = useState([]);
+  const [casesLoading, setCasesLoading] = useState(false);
+  const [casesError, setCasesError] = useState('');
+  const [casesSearch, setCasesSearch] = useState('');
+  const [caseDomainFilter, setCaseDomainFilter] = useState('');
+  const [expandedCaseId, setExpandedCaseId] = useState(null);
+  const [showImportModal, setShowImportModal] = useState(false);
+  const [showValidationModal, setShowValidationModal] = useState(false);
+  const [caseImportPreview, setCaseImportPreview] = useState([]);
+  const [caseImportFileName, setCaseImportFileName] = useState('');
+  const [importingCases, setImportingCases] = useState(false);
+  const [validatingCases, setValidatingCases] = useState(false);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setDebouncedScienceId(scienceInput.trim()), 400);
@@ -140,6 +214,39 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     }
     return rules.filter((rule) => rule.approval_status === statusFilter);
   }, [rules, statusFilter]);
+
+  const filteredCases = useMemo(() => {
+    const query = casesSearch.trim().toLowerCase();
+    return cases.filter((entry) => {
+      const matchesQuery =
+        !query ||
+        String(entry.case_id || '').toLowerCase().includes(query) ||
+        String(entry.subject || '').toLowerCase().includes(query);
+      const primaryDomain = entry.known_outcomes?.[0]?.life_domain || '';
+      const matchesDomain = !caseDomainFilter || primaryDomain === caseDomainFilter;
+      return matchesQuery && matchesDomain;
+    });
+  }, [caseDomainFilter, cases, casesSearch]);
+
+  const caseStats = useMemo(() => {
+    const validatedCount = cases.filter((entry) => entry.validated === true).length;
+    const pendingCount = cases.filter((entry) => entry.validated !== true).length;
+    const scores = cases
+      .map((entry) => entry.accuracy_score)
+      .filter((value) => value !== null && value !== undefined && !Number.isNaN(Number(value)))
+      .map((value) => Number(value));
+    const average = scores.length
+      ? Math.round(
+          scores.reduce((sum, value) => sum + (value <= 1 ? value * 100 : value), 0) / scores.length
+        )
+      : null;
+    return {
+      total: cases.length,
+      validated: validatedCount,
+      pending: pendingCount,
+      averageAccuracy: average,
+    };
+  }, [cases]);
 
   const fetchRules = async (targetPage = page, filtersOverride = null) => {
     if (!canLoad) {
@@ -202,6 +309,26 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     }
   };
 
+  const fetchCases = async () => {
+    if (!canLoad) {
+      return;
+    }
+    setCasesLoading(true);
+    setCasesError('');
+    try {
+      const response = await axios.get(`${API}/knowledge-engine/case-studies`, {
+        headers: getAuthHeaders(),
+      });
+      setCases(response.data.cases || []);
+    } catch (error) {
+      const message = error.response?.data?.detail || 'Failed to load case studies';
+      setCasesError(message);
+      toast.error(message);
+    } finally {
+      setCasesLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (activeTab === 'rules' && canLoad) {
       fetchRules(page);
@@ -219,6 +346,12 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
       fetchIndexStatus();
     }
   }, [activeTab, canLoad, indexStatus]);
+
+  useEffect(() => {
+    if (activeTab === 'cases' && canLoad && cases.length === 0 && !casesLoading) {
+      fetchCases();
+    }
+  }, [activeTab, canLoad, cases.length, casesLoading]);
 
   const handleLoadRules = async () => {
     const nextFilters = {
@@ -375,6 +508,81 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     }
   };
 
+  const handleCaseImportFile = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) {
+      return;
+    }
+    try {
+      const payload = await readJsonFile(file);
+      const normalized = normalizeImportedCases(payload);
+      if (normalized.length === 0) {
+        throw new Error('No case study rows found in JSON');
+      }
+      const validRows = normalized.filter(
+        (entry) => entry?.case_id && entry?.subject && entry?.birth_data?.date
+      );
+      if (validRows.length === 0) {
+        throw new Error('JSON does not match expected case study structure');
+      }
+      setCaseImportPreview(validRows);
+      setCaseImportFileName(file.name);
+      toast.success(`${validRows.length} case study rows ready to import`);
+    } catch (error) {
+      setCaseImportPreview([]);
+      setCaseImportFileName('');
+      toast.error(error.message || 'Invalid case study JSON file');
+    } finally {
+      event.target.value = '';
+    }
+  };
+
+  const handleConfirmCaseImport = async () => {
+    if (caseImportPreview.length === 0) {
+      toast.error('Upload a valid JSON file first');
+      return;
+    }
+    setImportingCases(true);
+    try {
+      const response = await axios.post(
+        `${API}/knowledge-engine/case-studies/import`,
+        { cases: caseImportPreview },
+        { headers: getAuthHeaders() }
+      );
+      toast.success(
+        response.data?.message ||
+          `${response.data?.cases_imported || caseImportPreview.length} cases imported`
+      );
+      setShowImportModal(false);
+      setCaseImportPreview([]);
+      setCaseImportFileName('');
+      await fetchCases();
+    } catch (error) {
+      toast.error(error.response?.data?.detail || 'Failed to import case studies');
+    } finally {
+      setImportingCases(false);
+    }
+  };
+
+  const handleRunCaseValidation = async () => {
+    setValidatingCases(true);
+    try {
+      const response = await axios.post(
+        `${API}/knowledge-engine/case-studies/validate-batch`,
+        {},
+        { headers: getAuthHeaders() }
+      );
+      toast.success(
+        response.data?.message || 'Batch validation started. Check back in a few minutes.'
+      );
+      setShowValidationModal(false);
+    } catch (error) {
+      toast.error(error.response?.data?.detail || 'Failed to start case study validation');
+    } finally {
+      setValidatingCases(false);
+    }
+  };
+
   if (authLoading) {
     return <div className="text-center py-8 text-gray-400">Loading...</div>;
   }
@@ -436,6 +644,7 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
             {activeTab === 'rules' && `${totalRules} rules`}
             {activeTab === 'batches' && `${batches.length} batches`}
             {activeTab === 'index' && 'Index monitor'}
+            {activeTab === 'cases' && `${cases.length} case studies`}
           </div>
         </div>
 
@@ -833,6 +1042,454 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
               </div>
             )}
           </Card>
+        )}
+
+        {activeTab === 'cases' && (
+          <div className="space-y-4">
+            <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5">
+              <div className="flex items-center justify-between gap-4 flex-wrap">
+                <div className="flex items-center gap-3">
+                  <div>
+                    <h2 className="text-xl font-semibold text-white">Case Studies</h2>
+                    <p className="text-sm text-gray-400 mt-1">
+                      Review imported public-case validation data and monitor engine accuracy.
+                    </p>
+                  </div>
+                  <span className="inline-flex rounded-full bg-gray-700 px-3 py-1 text-xs font-medium text-gray-200">
+                    {cases.length}
+                  </span>
+                </div>
+                <div className="flex gap-2 flex-wrap">
+                  <button
+                    onClick={() => setShowImportModal(true)}
+                    className="rounded-lg border border-gold/40 px-3 py-2 text-sm text-gold hover:bg-gold/10"
+                  >
+                    Import Cases
+                  </button>
+                  <button
+                    onClick={() => setShowValidationModal(true)}
+                    className="rounded-lg bg-gold px-3 py-2 text-sm font-medium text-background hover:bg-gold/90"
+                  >
+                    Run Batch Validation
+                  </button>
+                </div>
+              </div>
+            </Card>
+
+            <div className="grid gap-4 md:grid-cols-4">
+              <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                <p className="text-xs uppercase tracking-wide text-gray-400">Total Cases</p>
+                <p className="mt-2 text-2xl font-semibold text-white">{caseStats.total}</p>
+              </div>
+              <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                <p className="text-xs uppercase tracking-wide text-gray-400">Validated</p>
+                <p className="mt-2 text-2xl font-semibold text-white">{caseStats.validated}</p>
+              </div>
+              <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                <p className="text-xs uppercase tracking-wide text-gray-400">Avg Accuracy</p>
+                <p className="mt-2 text-2xl font-semibold text-white">
+                  {caseStats.averageAccuracy === null ? '—' : `${caseStats.averageAccuracy}%`}
+                </p>
+              </div>
+              <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                <p className="text-xs uppercase tracking-wide text-gray-400">Pending</p>
+                <p className="mt-2 text-2xl font-semibold text-white">{caseStats.pending}</p>
+              </div>
+            </div>
+
+            <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-4">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <div className="min-w-[260px] flex-1">
+                  <Input
+                    value={casesSearch}
+                    onChange={(event) => setCasesSearch(event.target.value)}
+                    placeholder="Search by case ID or subject"
+                    className="bg-card border-gold/20 text-foreground"
+                  />
+                </div>
+                <div className="min-w-[220px]">
+                  <select
+                    value={caseDomainFilter}
+                    onChange={(event) => setCaseDomainFilter(event.target.value)}
+                    className="w-full rounded-lg border border-gold/20 bg-card px-3 py-2 text-sm text-foreground"
+                  >
+                    <option value="">All domains</option>
+                    <option value="career_status">career_status</option>
+                    <option value="partnership">partnership</option>
+                    <option value="health">health</option>
+                    <option value="financial_security">financial_security</option>
+                    <option value="spirituality">spirituality</option>
+                  </select>
+                </div>
+              </div>
+            </Card>
+
+            {casesError ? (
+              <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4">
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div className="flex items-start gap-3">
+                    <AlertCircle className="mt-0.5 h-4 w-4 text-red-400" />
+                    <div>
+                      <p className="text-sm font-medium text-red-300">Failed to load case studies</p>
+                      <p className="text-sm text-red-200/80 mt-1">{casesError}</p>
+                    </div>
+                  </div>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={fetchCases}
+                    className="border-red-400/30 text-red-300 hover:bg-red-500/10"
+                  >
+                    Retry
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm overflow-x-auto">
+                <table className="w-full min-w-[1120px]">
+                  <thead className="bg-black/20">
+                    <tr className="text-left text-xs uppercase tracking-wide text-gray-400">
+                      <th className="px-4 py-3">Case ID</th>
+                      <th className="px-4 py-3">Subject</th>
+                      <th className="px-4 py-3">Life Domain</th>
+                      <th className="px-4 py-3">Data Quality</th>
+                      <th className="px-4 py-3">Accuracy</th>
+                      <th className="px-4 py-3">Validated</th>
+                      <th className="px-4 py-3">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {casesLoading
+                      ? Array.from({ length: 3 }).map((_, index) => (
+                          <tr key={`case-skeleton-${index}`} className="border-t border-gold/10">
+                            <td className="px-4 py-4"><div className="h-4 w-20 rounded bg-white/5" /></td>
+                            <td className="px-4 py-4"><div className="h-4 w-44 rounded bg-white/5" /></td>
+                            <td className="px-4 py-4"><div className="h-4 w-24 rounded bg-white/5" /></td>
+                            <td className="px-4 py-4"><div className="h-4 w-16 rounded bg-white/5" /></td>
+                            <td className="px-4 py-4"><div className="h-4 w-12 rounded bg-white/5" /></td>
+                            <td className="px-4 py-4"><div className="h-4 w-10 rounded bg-white/5" /></td>
+                            <td className="px-4 py-4"><div className="h-8 w-16 rounded bg-white/5" /></td>
+                          </tr>
+                        ))
+                      : filteredCases.map((entry) => {
+                          const isExpanded = expandedCaseId === entry.case_id;
+                          const primaryOutcome = entry.known_outcomes?.[0] || {};
+                          return (
+                            <React.Fragment key={entry.case_id}>
+                              <tr className="border-t border-gold/10 text-sm text-gray-200">
+                                <td className="px-4 py-3 font-mono text-xs">{entry.case_id || '—'}</td>
+                                <td className="px-4 py-3" title={entry.subject}>{truncateText(entry.subject, 28)}</td>
+                                <td className="px-4 py-3">{primaryOutcome.life_domain || '—'}</td>
+                                <td className="px-4 py-3">
+                                  <span className={`inline-flex rounded-full border px-2 py-0.5 text-xs font-medium ${dataQualityBadge(entry.data_quality)}`}>
+                                    {entry.data_quality || 'unknown'}
+                                  </span>
+                                </td>
+                                <td className="px-4 py-3">{formatPercent(entry.accuracy_score)}</td>
+                                <td className="px-4 py-3">
+                                  {entry.validated ? (
+                                    <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                  ) : (
+                                    <X className="h-4 w-4 text-gray-500" />
+                                  )}
+                                </td>
+                                <td className="px-4 py-3">
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    onClick={() =>
+                                      setExpandedCaseId((current) =>
+                                        current === entry.case_id ? null : entry.case_id
+                                      )
+                                    }
+                                    className="border-gold/30 text-gold hover:bg-gold/10"
+                                  >
+                                    View
+                                    {isExpanded ? (
+                                      <ChevronUp className="ml-1 h-3.5 w-3.5" />
+                                    ) : (
+                                      <ChevronDown className="ml-1 h-3.5 w-3.5" />
+                                    )}
+                                  </Button>
+                                </td>
+                              </tr>
+                              {isExpanded && (
+                                <tr className="border-t border-gold/10 bg-black/10">
+                                  <td colSpan={7} className="px-4 py-4">
+                                    <div className="space-y-4">
+                                      <div className="grid gap-3 md:grid-cols-3">
+                                        <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                                          <p className="text-xs uppercase tracking-wide text-gray-400">Birth Date</p>
+                                          <p className="mt-1 text-sm text-white">{entry.birth_data?.date || '—'}</p>
+                                        </div>
+                                        <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                                          <p className="text-xs uppercase tracking-wide text-gray-400">Birth Time</p>
+                                          <p className="mt-1 text-sm text-white">{entry.birth_data?.time || '—'}</p>
+                                        </div>
+                                        <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                                          <p className="text-xs uppercase tracking-wide text-gray-400">Birth Place</p>
+                                          <p className="mt-1 text-sm text-white">{entry.birth_data?.place || '—'}</p>
+                                        </div>
+                                        <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                                          <p className="text-xs uppercase tracking-wide text-gray-400">Latitude</p>
+                                          <p className="mt-1 text-sm text-white">{entry.birth_data?.latitude ?? '—'}</p>
+                                        </div>
+                                        <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                                          <p className="text-xs uppercase tracking-wide text-gray-400">Longitude</p>
+                                          <p className="mt-1 text-sm text-white">{entry.birth_data?.longitude ?? '—'}</p>
+                                        </div>
+                                        <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                                          <p className="text-xs uppercase tracking-wide text-gray-400">Timezone</p>
+                                          <p className="mt-1 text-sm text-white">{entry.birth_data?.timezone || '—'}</p>
+                                        </div>
+                                      </div>
+
+                                      <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                                        <h4 className="text-sm font-semibold text-white mb-3">Known Outcomes</h4>
+                                        <div className="overflow-x-auto">
+                                          <table className="w-full min-w-[760px]">
+                                            <thead>
+                                              <tr className="text-left text-xs uppercase tracking-wide text-gray-400">
+                                                <th className="pb-2">Life Domain</th>
+                                                <th className="pb-2">Claim Axis</th>
+                                                <th className="pb-2">Outcome</th>
+                                                <th className="pb-2">Timing</th>
+                                                <th className="pb-2">Notes</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              {(entry.known_outcomes || []).map((outcome, index) => (
+                                                <tr key={`${entry.case_id}-outcome-${index}`} className="border-t border-gold/10 text-sm text-gray-200">
+                                                  <td className="py-2 pr-3">{outcome.life_domain || '—'}</td>
+                                                  <td className="py-2 pr-3">{outcome.claim_axis || '—'}</td>
+                                                  <td className="py-2 pr-3">{outcome.outcome || '—'}</td>
+                                                  <td className="py-2 pr-3">{outcome.timing || '—'}</td>
+                                                  <td className="py-2 pr-3">{outcome.notes || '—'}</td>
+                                                </tr>
+                                              ))}
+                                              {(entry.known_outcomes || []).length === 0 && (
+                                                <tr>
+                                                  <td colSpan={5} className="py-3 text-sm text-gray-500">
+                                                    No known outcomes recorded.
+                                                  </td>
+                                                </tr>
+                                              )}
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </div>
+
+                                      {(entry.engine_predictions || []).length > 0 && (
+                                        <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                                          <h4 className="text-sm font-semibold text-white mb-3">Engine Predictions</h4>
+                                          <div className="overflow-x-auto">
+                                            <table className="w-full min-w-[640px]">
+                                              <thead>
+                                                <tr className="text-left text-xs uppercase tracking-wide text-gray-400">
+                                                  <th className="pb-2">Domain</th>
+                                                  <th className="pb-2">Predicted Quality</th>
+                                                  <th className="pb-2">Confidence</th>
+                                                  <th className="pb-2">Match</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                {entry.engine_predictions.map((prediction, index) => {
+                                                  const matchValue =
+                                                    prediction.match ??
+                                                    prediction.is_match ??
+                                                    prediction.correct ??
+                                                    null;
+                                                  return (
+                                                    <tr key={`${entry.case_id}-prediction-${index}`} className="border-t border-gold/10 text-sm text-gray-200">
+                                                      <td className="py-2 pr-3">{prediction.life_domain || prediction.domain || '—'}</td>
+                                                      <td className="py-2 pr-3">
+                                                        {prediction.predicted_quality ||
+                                                          prediction.period_quality ||
+                                                          prediction.predicted_outcome ||
+                                                          '—'}
+                                                      </td>
+                                                      <td className="py-2 pr-3">{estimateConfidencePct(prediction)}</td>
+                                                      <td className="py-2 pr-3">
+                                                        {matchValue === true ? (
+                                                          <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                                        ) : matchValue === false ? (
+                                                          <X className="h-4 w-4 text-red-400" />
+                                                        ) : (
+                                                          <span className="text-gray-500">—</span>
+                                                        )}
+                                                      </td>
+                                                    </tr>
+                                                  );
+                                                })}
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                        </div>
+                                      )}
+
+                                      <div className="flex items-center gap-6 flex-wrap text-sm text-gray-300">
+                                        <p>
+                                          Accuracy score:{' '}
+                                          <span className="font-medium text-white">{formatPercent(entry.accuracy_score)}</span>
+                                        </p>
+                                        <p>
+                                          Validated:{' '}
+                                          <span className={`font-medium ${entry.validated ? 'text-green-400' : 'text-gray-400'}`}>
+                                            {entry.validated ? 'Yes' : 'No'}
+                                          </span>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </td>
+                                </tr>
+                              )}
+                            </React.Fragment>
+                          );
+                        })}
+                    {!casesLoading && filteredCases.length === 0 && (
+                      <tr>
+                        <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
+                          No case studies found.
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        )}
+
+        {showImportModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+            <div className="w-full max-w-3xl rounded-xl border border-gold/20 bg-background shadow-xl">
+              <div className="flex items-center justify-between border-b border-gold/10 px-6 py-4">
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Import Cases</h3>
+                  <p className="text-sm text-gray-400 mt-1">
+                    Upload a JSON file, preview the rows, then import into the case study library.
+                  </p>
+                </div>
+                <button onClick={() => setShowImportModal(false)} className="text-gray-400 hover:text-white">
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              <div className="space-y-4 px-6 py-5">
+                <label className="flex cursor-pointer items-center justify-center gap-3 rounded-xl border border-dashed border-gold/30 bg-gold/[0.04] px-4 py-6 text-sm text-gray-300 hover:bg-gold/[0.08]">
+                  <Upload className="h-4 w-4 text-gold" />
+                  <span>{caseImportFileName ? `Loaded: ${caseImportFileName}` : 'Upload JSON file'}</span>
+                  <input type="file" accept="application/json,.json" className="hidden" onChange={handleCaseImportFile} />
+                </label>
+
+                <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                  <div className="flex items-center gap-2">
+                    <FileJson className="h-4 w-4 text-gold" />
+                    <p className="text-sm font-medium text-white">Preview</p>
+                  </div>
+                  <div className="mt-3 max-h-72 overflow-auto">
+                    {caseImportPreview.length === 0 ? (
+                      <p className="text-sm text-gray-500">No file loaded yet.</p>
+                    ) : (
+                      <table className="w-full min-w-[640px]">
+                        <thead>
+                          <tr className="text-left text-xs uppercase tracking-wide text-gray-400">
+                            <th className="pb-2">Case ID</th>
+                            <th className="pb-2">Subject</th>
+                            <th className="pb-2">Birth Date</th>
+                            <th className="pb-2">Known Outcomes</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {caseImportPreview.map((entry) => (
+                            <tr key={`preview-${entry.case_id}`} className="border-t border-gold/10 text-sm text-gray-200">
+                              <td className="py-2 pr-3 font-mono text-xs">{entry.case_id}</td>
+                              <td className="py-2 pr-3">{truncateText(entry.subject, 40)}</td>
+                              <td className="py-2 pr-3">{entry.birth_data?.date || '—'}</td>
+                              <td className="py-2 pr-3">{entry.known_outcomes?.length || 0}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center justify-end gap-3 border-t border-gold/10 px-6 py-4">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowImportModal(false)}
+                  className="border-gold/40 text-gold hover:bg-gold/10"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={handleConfirmCaseImport}
+                  disabled={importingCases || caseImportPreview.length === 0}
+                  className="bg-gold text-background hover:bg-gold/90"
+                >
+                  {importingCases ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <Upload className="mr-2 h-4 w-4" />
+                  )}
+                  Confirm Import
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showValidationModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
+            <div className="w-full max-w-xl rounded-xl border border-gold/20 bg-background shadow-xl">
+              <div className="flex items-center justify-between border-b border-gold/10 px-6 py-4">
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Run Batch Validation</h3>
+                  <p className="text-sm text-gray-400 mt-1">
+                    This will run all unvalidated cases through the live engine.
+                  </p>
+                </div>
+                <button onClick={() => setShowValidationModal(false)} className="text-gray-400 hover:text-white">
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              <div className="space-y-4 px-6 py-5">
+                <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4 text-sm text-gray-200">
+                  <p>
+                    Estimated time: approximately{' '}
+                    <span className="font-semibold text-white">
+                      {Math.ceil(caseStats.pending * 0.5)} minute{Math.ceil(caseStats.pending * 0.5) === 1 ? '' : 's'}
+                    </span>
+                    .
+                  </p>
+                  <p className="mt-2 text-gray-400">
+                    The request returns immediately. Validation continues in the background, so results may take a few minutes to appear.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center justify-end gap-3 border-t border-gold/10 px-6 py-4">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowValidationModal(false)}
+                  className="border-gold/40 text-gold hover:bg-gold/10"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={handleRunCaseValidation}
+                  disabled={validatingCases}
+                  className="bg-gold text-background hover:bg-gold/90"
+                >
+                  {validatingCases ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <FlaskConical className="mr-2 h-4 w-4" />
+                  )}
+                  Start Validation
+                </Button>
+              </div>
+            </div>
+          </div>
         )}
       </div>
     </div>
