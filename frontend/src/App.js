@@ -53,6 +53,7 @@ import KundaliPage from './pages/KundaliPage';
 import LuminaPage from './pages/LuminaPage';
 import LongevityReportPage from './pages/LongevityReportPage';
 import ArcAngelPage from './pages/ArcAngelPage';
+const QuestionnairePage = lazy(() => import('./pages/QuestionnairePage'));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -171,6 +172,9 @@ function App() {
 
                   {/* Arc Angel — 12 Areas of Life */}
                   <Route path="/arc-angel" element={<ArcAngelPage />} />
+
+                  {/* Questionnaire — personalise readings (β/γ population) */}
+                  <Route path="/questionnaire" element={<ProtectedRoute><QuestionnairePage /></ProtectedRoute>} />
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
