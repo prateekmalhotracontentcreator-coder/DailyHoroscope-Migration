@@ -175,7 +175,7 @@ Append a new entry for every batch processed. Never overwrite.
 | 54 | Mars | bphs-ch54-dasha-20260417 | 86 | — | — | — | — |
 | 55 | Rahu | bphs-ch55-dasha-* | — | — | — | — | — |
 | 56 | Jupiter | bphs-ch56-dasha-20260418 | 124 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
-| **57** | **Saturn** | **bphs-ch57-dasha-20260419** | **130** | **103 (79%)** | **18 (14%)** | **9 (7%)** | **0 pairs** |
+| **57** | **Saturn** | **bphs-ch57-dasha-20260419** | **134** | **103 (79%)** | **18 (14%)** | **9 (7%)** | **0 pairs** |
 
 **Ch 57 Dry Run Notes (V2 — locked baseline):**
 - 35 slokas / 120 rules / temperature=0 locked
@@ -229,9 +229,15 @@ Append a new entry for every batch processed. Never overwrite.
 - temperature=0 reduces but does not eliminate API variance — per-sloka baseline check remains essential
 - `dasha_conditional: 1` from dry run absorbed into favourable/unfavourable in live run
 
+**Gap-Fill Results (20 Apr 2026):**
+- Slokas 51-52: +1 rule (R-BPHS57-PATCH-B8FB57 — Moon weak in 6th/8th/12th from Saturn)
+- Slokas 63-64: +3 rules (R-BPHS57-PATCH-526DDB, 7FEF0F, DC482A — Rahu antardasha distinct conditions)
+- **Ch 57 final total: 134 rules**
+
 **Open Points:**
 1. Review 9 flagged rules in Rules Browser (filter: flagged, batch: bphs-ch57-dasha-20260419) — check slokas 20-21 and 30-31 for over-split duplicates; merge via Rule Editor if confirmed
-2. 18 pending_human_review rules — awaiting co-founder sign-off
+2. 18 pending_human_review rules + 4 gap-fill pending_review — awaiting co-founder sign-off
+3. Verify 3 Rahu rules from sloka 63-64 are genuinely distinct (summaries truncated in output) — Rules Browser → filter gap_fill
 
 ---
 
@@ -243,9 +249,9 @@ Append a new entry for every batch processed. Never overwrite.
 
 | Ch | MD Lord | Batch ID | Total | auto_approved | pending_human_review | flagged | contradictions |
 |---|---|---|---|---|---|---|---|
-| 58 | Mercury | bphs-ch58-dasha-20260419 | 104 | — | — | — | — |
+| 58 | Mercury | bphs-ch58-dasha-20260419 | 106 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
 
-*(Validation pending — run `validate_rules.py --batch-id bphs-ch58-dasha-20260419`)*
+*(104 original rules + 2 gap-fill rules for sloka 59-61 — R-BPHS58-PATCH-D79179, R-BPHS58-PATCH-349360)*
 
 **Dry Run Baseline (2 runs — locked):**
 
@@ -287,9 +293,16 @@ Append a new entry for every batch processed. Never overwrite.
 | 34 | 71-72 | 3 | 3 | 3 | |
 | **Total** | | **105** | **106** | **104** | |
 
+**Validation Results (20 Apr 2026):** 76 auto_approved (73%) · 21 pending_human_review (20%) · 7 flagged (7%) · 0 contradictions
+
+**Gap-Fill Results (20 Apr 2026):**
+- Sloka 59-61: +2 rules (R-BPHS58-PATCH-D79179 — Jupiter debilitation; R-BPHS58-PATCH-349360 — Jupiter aspected by Saturn/Mars)
+- **Ch 58 final total: 106 rules**
+
 **Open Points:**
-1. Run validation — paste results here
-2. **Sloka 59-61 gap-fill** — lost 2 rules in live vs dry run; run `patch_slokas.py` after validation (see Gap-Fill section below)
+1. 7 flagged rules — review in Rules Browser (filter: flagged, batch: bphs-ch58-dasha-20260419)
+2. 21 pending_human_review + 2 gap-fill pending_review — awaiting co-founder sign-off
+3. Source typo sloka 32-33: "6th, the 6th" (should be "6th, the 8th") — captured as-is; flag for human review
 
 ---
 
@@ -305,13 +318,12 @@ Append a new entry for every batch processed. Never overwrite.
 
 #### Flagged slokas by chapter
 
-| Ch | MD Lord | Batch ID | Sloka | Live count | Expected | Gap-fill command |
+| Ch | MD Lord | Batch ID | Sloka | Live count | Gap-fill result | Status |
 |---|---|---|---|---|---|---|
-| 57 | Saturn | bphs-ch57-dasha-20260419 | 51-52 | 1 | 2-3 | see below |
-| 57 | Saturn | bphs-ch57-dasha-20260419 | 63-64 | 1 | 2-3 | see below |
-| 58 | Mercury | bphs-ch58-dasha-20260419 | 59-61 | 4 | 6 | see below |
-
-*(Ch 56 gap-fill slokas — to be identified after Rules Browser review of batch bphs-ch56-dasha-20260418)*
+| 57 | Saturn | bphs-ch57-dasha-20260419 | 51-52 | 1 | +1 (20 Apr 2026) | ✅ Done |
+| 57 | Saturn | bphs-ch57-dasha-20260419 | 63-64 | 1 | +3 (20 Apr 2026) | ✅ Done |
+| 58 | Mercury | bphs-ch58-dasha-20260419 | 59-61 | 4 | +2 (20 Apr 2026) | ✅ Done |
+| 56 | Jupiter | bphs-ch56-dasha-20260418 | TBD | TBD | — | 🔜 Review Rules Browser first |
 
 **Gap-fill commands (run after validation for each chapter):**
 
@@ -345,7 +357,7 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 
 ---
 
-### Cumulative Grand Total (All sources, Ch 12-24 + Ch 47)
+### Cumulative Grand Total (All sources, as of 20 Apr 2026)
 
 | Source | Rules | auto_approved | pending_human_review | flagged | contradictions |
 |---|---|---|---|---|---|
@@ -353,6 +365,10 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 | BPHS Vol 1 Ch 19-23 | 119 | 70 (59%) | 39 (33%) | 10 (8%) | 4 pairs |
 | BPHS Vol 1 Ch 24 | 376 | 267 (71%) | 77 (20%) | 32 (9%) | 0 pairs |
 | BPHS Vol 2 Ch 47 | 93 | 76 (82%) | 13 (14%) | 4 (4%) | 0 pairs |
-| **Grand Total** | **829** | **553 (67%)** | **208 (25%)** | **74 (9%)** | **13 pairs** |
+| BPHS Vol 2 Ch 54 (Mars) | 86 | — | — | — | — |
+| BPHS Vol 2 Ch 56 (Jupiter) | 124 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
+| BPHS Vol 2 Ch 57 (Saturn) | 134 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
+| BPHS Vol 2 Ch 58 (Mercury) | 106 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
+| **Grand Total** | **~1,279** | | | | |
 
 ---
