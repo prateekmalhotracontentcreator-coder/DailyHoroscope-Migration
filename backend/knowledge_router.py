@@ -57,7 +57,7 @@ USER_CONTEXT_MUTABLE_FIELDS = frozenset(
         "current_city",
         "travel_frequency",
         "relationship_status",
-        "parents_birth_data",
+        "parents_data",
     }
 )
 USER_CONTEXT_COMPLETION_FIELDS = (
@@ -67,7 +67,10 @@ USER_CONTEXT_COMPLETION_FIELDS = (
     "current_city",
     "travel_frequency",
     "relationship_status",
-    "parents_birth_data",
+    "parents_data.father.dob",
+    "parents_data.father.place",
+    "parents_data.mother.dob",
+    "parents_data.mother.place",
 )
 
 
@@ -104,18 +107,17 @@ def _recompute_context_profile_scores(profile: dict[str, Any]) -> tuple[float, f
     )
 
 
-def _parent_identity_complete(payload: Any) -> bool:
-    if not isinstance(payload, dict):
-        return False
-    required_fields = ("dob", "pob_city", "current_city")
-    return all(str(payload.get(field) or "").strip() for field in required_fields)
+def _get_path_value(payload: Any, path: str) -> Any:
+    current = payload
+    for part in path.split("."):
+        if not isinstance(current, dict):
+            return None
+        current = current.get(part)
+    return current
 
 
-def _context_field_complete(field_name: str, value: Any) -> bool:
-    if field_name == "parents_birth_data":
-        if not isinstance(value, dict):
-            return False
-        return _parent_identity_complete(value.get("father")) or _parent_identity_complete(value.get("mother"))
+def _context_field_complete(profile: dict[str, Any], field_name: str) -> bool:
+    value = _get_path_value(profile, field_name)
     if isinstance(value, str):
         return bool(value.strip())
     return value is not None
@@ -125,7 +127,7 @@ def _context_profile_completion(profile: dict[str, Any]) -> tuple[int, list[str]
     missing_fields = [
         field_name
         for field_name in USER_CONTEXT_COMPLETION_FIELDS
-        if not _context_field_complete(field_name, profile.get(field_name))
+        if not _context_field_complete(profile, field_name)
     ]
     completed = len(USER_CONTEXT_COMPLETION_FIELDS) - len(missing_fields)
     completion_pct = round((completed / len(USER_CONTEXT_COMPLETION_FIELDS)) * 100)
