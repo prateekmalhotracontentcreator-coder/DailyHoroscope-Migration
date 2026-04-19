@@ -12,13 +12,16 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 from pymongo import MongoClient
 
 from admin_utils import require_admin
+from auth_utils import get_current_user
 from knowledge_schema import (
     COLLECTION_CASE_STUDIES,
     COLLECTION_IMPORT_BATCHES,
     COLLECTION_INTERPRETATION_RULES,
+    COLLECTION_USER_CONTEXT_PROFILE,
     ApprovalStatus,
     CaseStudyDocument,
     EnginePrediction,
+    UserContextProfileDocument,
 )
 from vedic_calculator import calculate_vedic_chart, calculate_vimshottari_dasha
 
@@ -42,6 +45,104 @@ def _engine_from_request(request: Request):
     if engine is None:
         raise HTTPException(status_code=503, detail="Knowledge engine is not available")
     return engine
+
+
+DEFAULT_QUESTIONNAIRE_VERSION = "v1"
+USER_CONTEXT_MUTABLE_FIELDS = frozenset(
+    {
+        "questionnaire_version",
+        "salary_bracket",
+        "family_wealth_tier",
+        "siblings_count",
+        "current_city",
+        "travel_frequency",
+        "relationship_status",
+        "parents_birth_data",
+    }
+)
+USER_CONTEXT_COMPLETION_FIELDS = (
+    "salary_bracket",
+    "family_wealth_tier",
+    "siblings_count",
+    "current_city",
+    "travel_frequency",
+    "relationship_status",
+    "parents_birth_data",
+)
+
+
+async def _require_authenticated_user(request: Request, db: AsyncIOMotorDatabase):
+    user = await get_current_user(request, db)
+    if user is None:
+        raise HTTPException(status_code=401, detail="Authentication required")
+    return user
+
+
+def _serialize_user_context_profile(payload: dict[str, Any]) -> dict[str, Any]:
+    return UserContextProfileDocument(**payload).model_dump(
+        mode="json",
+        by_alias=True,
+        exclude_none=False,
+    )
+
+
+def _score_or_default(value: Any, default: float = 1.0) -> float:
+    try:
+        numeric = float(value)
+    except (TypeError, ValueError):
+        numeric = default
+    return max(0.0, numeric)
+
+
+def _recompute_context_profile_scores(profile: dict[str, Any]) -> tuple[float, float]:
+    # Commission I-Q owns the eventual questionnaire-derived scoring logic. Until
+    # then, the backend preserves neutral/default values and any previously
+    # computed server-side scores rather than accepting client-written ones.
+    return (
+        _score_or_default(profile.get("beta_score"), default=1.0),
+        _score_or_default(profile.get("gamma_score"), default=1.0),
+    )
+
+
+def _parent_identity_complete(payload: Any) -> bool:
+    if not isinstance(payload, dict):
+        return False
+    required_fields = ("dob", "pob_city", "current_city")
+    return all(str(payload.get(field) or "").strip() for field in required_fields)
+
+
+def _context_field_complete(field_name: str, value: Any) -> bool:
+    if field_name == "parents_birth_data":
+        if not isinstance(value, dict):
+            return False
+        return _parent_identity_complete(value.get("father")) or _parent_identity_complete(value.get("mother"))
+    if isinstance(value, str):
+        return bool(value.strip())
+    return value is not None
+
+
+def _context_profile_completion(profile: dict[str, Any]) -> tuple[int, list[str]]:
+    missing_fields = [
+        field_name
+        for field_name in USER_CONTEXT_COMPLETION_FIELDS
+        if not _context_field_complete(field_name, profile.get(field_name))
+    ]
+    completed = len(USER_CONTEXT_COMPLETION_FIELDS) - len(missing_fields)
+    completion_pct = round((completed / len(USER_CONTEXT_COMPLETION_FIELDS)) * 100)
+    return completion_pct, missing_fields
+
+
+async def _ensure_user_context_profile(db: AsyncIOMotorDatabase, user_id: str) -> dict[str, Any]:
+    existing = await db[COLLECTION_USER_CONTEXT_PROFILE].find_one({"user_id": user_id}, {"_id": 0})
+    if existing is not None:
+        return _serialize_user_context_profile(existing)
+
+    default_document = UserContextProfileDocument(
+        user_id=user_id,
+        questionnaire_version=DEFAULT_QUESTIONNAIRE_VERSION,
+    ).model_dump(mode="json", by_alias=True, exclude_none=False)
+    await db[COLLECTION_USER_CONTEXT_PROFILE].insert_one(default_document)
+    return default_document
 
 
 POSITIVE_HINTS = {
@@ -79,6 +180,66 @@ NEGATIVE_HINTS = {
 }
 CASE_STUDY_DASHA_ORDER = ["Ketu", "Venus", "Sun", "Moon", "Mars", "Rahu", "Jupiter", "Saturn", "Mercury"]
 CASE_STUDY_DASHA_YEARS = {"Ketu": 7, "Venus": 20, "Sun": 6, "Moon": 10, "Mars": 7, "Rahu": 18, "Jupiter": 16, "Saturn": 19, "Mercury": 17}
+
+
+@router.get("/api/user/context-profile")
+async def get_user_context_profile(request: Request):
+    db = _db_from_request(request)
+    user = await _require_authenticated_user(request, db)
+    profile = await _ensure_user_context_profile(db, user.user_id)
+    return profile
+
+
+@router.put("/api/user/context-profile")
+async def update_user_context_profile(request: Request, payload: dict[str, Any]):
+    db = _db_from_request(request)
+    user = await _require_authenticated_user(request, db)
+
+    existing_profile = await _ensure_user_context_profile(db, user.user_id)
+    raw_updates = payload if isinstance(payload, dict) else {}
+    allowed_updates = {
+        key: value
+        for key, value in raw_updates.items()
+        if key in USER_CONTEXT_MUTABLE_FIELDS
+    }
+
+    merged_profile = {**existing_profile, **allowed_updates}
+    merged_profile["user_id"] = user.user_id
+    merged_profile["questionnaire_version"] = (
+        str(merged_profile.get("questionnaire_version") or DEFAULT_QUESTIONNAIRE_VERSION)
+    )
+    beta_score, gamma_score = _recompute_context_profile_scores(existing_profile)
+    merged_profile["beta_score"] = beta_score
+    merged_profile["gamma_score"] = gamma_score
+    merged_profile["last_updated"] = utc_now()
+
+    serialized_profile = _serialize_user_context_profile(merged_profile)
+    await db[COLLECTION_USER_CONTEXT_PROFILE].update_one(
+        {"user_id": user.user_id},
+        {
+            "$set": serialized_profile,
+            "$setOnInsert": {"user_id": user.user_id},
+        },
+        upsert=True,
+    )
+    completion_pct, missing_fields = _context_profile_completion(serialized_profile)
+    return {
+        "profile": serialized_profile,
+        "completion_pct": completion_pct,
+        "missing_fields": missing_fields,
+    }
+
+
+@router.get("/api/user/context-profile/completion")
+async def get_user_context_profile_completion(request: Request):
+    db = _db_from_request(request)
+    user = await _require_authenticated_user(request, db)
+    profile = await _ensure_user_context_profile(db, user.user_id)
+    completion_pct, missing_fields = _context_profile_completion(profile)
+    return {
+        "completion_pct": completion_pct,
+        "missing_fields": missing_fields,
+    }
 
 
 def _case_outcome_text(outcome: dict[str, Any]) -> str:
