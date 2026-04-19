@@ -6,6 +6,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
 import { AdminAuthProvider } from './context/AdminAuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { PremiumRoute } from './components/PremiumRoute';
 import { AuthCallback } from './components/AuthCallback';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
@@ -170,11 +171,11 @@ function App() {
                   {/* Ayur Jyotish — Longevity & Health Report */}
                   <Route path="/longevity" element={<LongevityReportPage />} />
 
-                  {/* Arc Angel — 12 Areas of Life */}
-                  <Route path="/arc-angel" element={<ArcAngelPage />} />
+                  {/* Arc Angel — 12 Areas of Life (Premium only) */}
+                  <Route path="/arc-angel" element={<PremiumRoute><ArcAngelPage /></PremiumRoute>} />
 
-                  {/* Questionnaire — personalise readings (β/γ population) */}
-                  <Route path="/questionnaire" element={<ProtectedRoute><QuestionnairePage /></ProtectedRoute>} />
+                  {/* Questionnaire — personalise readings (Premium only) */}
+                  <Route path="/questionnaire" element={<PremiumRoute><QuestionnairePage /></PremiumRoute>} />
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
