@@ -180,8 +180,8 @@ The `EverydayHoroscope` database was a local-only mistake; 3,200 rules were migr
 | 53 | Moon | bphs-ch53-dasha-* | — | — | — | — | — |
 | 54 | Mars | bphs-ch54-dasha-20260417 | 86 | — | — | — | — |
 | 55 | Rahu | bphs-ch55-dasha-* | — | — | — | — | — |
-| 56 | Jupiter | bphs-ch56-dasha-20260418 | 124 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
-| **57** | **Saturn** | **bphs-ch57-dasha-20260419** | **130** | **103 (79%)** | **18 (14%)** | **9 (7%)** | **0 pairs** |
+| 56 | Jupiter | bphs-ch56-dasha-20260418 | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
+| **57** | **Saturn** | **bphs-ch57-dasha-20260419** | **132** | **103 (79%)** | **18 (14%)** | **9 (7%)** | **0 pairs** |
 
 **Ch 57 Dry Run Notes (V2 — locked baseline):**
 - 35 slokas / 120 rules / temperature=0 locked
@@ -329,7 +329,7 @@ The `EverydayHoroscope` database was a local-only mistake; 3,200 rules were migr
 | 57 | Saturn | bphs-ch57-dasha-20260419 | 51-52 | 1 | +0 (already covered) | ✅ Closed |
 | 57 | Saturn | bphs-ch57-dasha-20260419 | 63-64 | 1 | +2 (20 Apr 2026) | ✅ Done |
 | 58 | Mercury | bphs-ch58-dasha-20260419 | 59-61 | 4 | +0 (already covered) | ✅ Closed |
-| 56 | Jupiter | bphs-ch56-dasha-20260418 | TBD | TBD | — | 🔜 Review Rules Browser first |
+| 56 | Jupiter | bphs-ch56-dasha-20260418 | 33-34 | 1 | +2 (20 Apr 2026) | ✅ Done |
 
 **Gap-fill commands (run after validation for each chapter):**
 
@@ -372,9 +372,9 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 | BPHS Vol 1 Ch 24 | 376 | 267 (71%) | 77 (20%) | 32 (9%) | 0 pairs |
 | BPHS Vol 2 Ch 47 | 93 | 76 (82%) | 13 (14%) | 4 (4%) | 0 pairs |
 | BPHS Vol 2 Ch 54 (Mars) | 86 | — | — | — | — |
-| BPHS Vol 2 Ch 56 (Jupiter) | 124 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
+| BPHS Vol 2 Ch 56 (Jupiter) | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
 | BPHS Vol 2 Ch 57 (Saturn) | 132 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
 | BPHS Vol 2 Ch 58 (Mercury) | 104 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
-| **Grand Total** | **~1,275** | | | | |
+| **Grand Total** | **~1,277** | | | | |
 
 ---
