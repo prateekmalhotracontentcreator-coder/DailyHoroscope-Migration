@@ -4,7 +4,9 @@ import axios from 'axios';
 import { toast } from 'sonner';
 import {
   AlertCircle,
+  BarChart3,
   BookOpen,
+  Bug,
   Check,
   CheckCircle2,
   ChevronDown,
@@ -13,8 +15,12 @@ import {
   FileJson,
   FlaskConical,
   Loader2,
+  Pencil,
+  Play,
   RefreshCw,
+  Save,
   Upload,
+  Volume2,
   X,
 } from 'lucide-react';
 
@@ -30,6 +36,9 @@ const SUB_TABS = [
   { id: 'batches', label: 'Import Batches' },
   { id: 'index', label: 'Index Status' },
   { id: 'cases', label: 'Case Studies' },
+  { id: 'coverage', label: 'Coverage Dashboard' },
+  { id: 'test', label: 'Test Console' },
+  { id: 'voices', label: 'Voice Profiles' },
 ];
 
 const STATUS_BADGES = {
@@ -136,6 +145,57 @@ function estimateConfidencePct(prediction) {
   return '—';
 }
 
+function averagePercent(values) {
+  const normalized = values
+    .filter((value) => value !== null && value !== undefined && !Number.isNaN(Number(value)))
+    .map((value) => {
+      const numeric = Number(value);
+      return numeric <= 1 ? numeric * 100 : numeric;
+    });
+  if (normalized.length === 0) {
+    return null;
+  }
+  return Math.round(normalized.reduce((sum, value) => sum + value, 0) / normalized.length);
+}
+
+function aggregateCoverageCategories(categoryCounts = {}) {
+  const buckets = {
+    career: 0,
+    health: 0,
+    relationships: 0,
+    wealth: 0,
+    spirituality: 0,
+    other: 0,
+  };
+  Object.entries(categoryCounts || {}).forEach(([key, value]) => {
+    const numeric = Number(value) || 0;
+    if (key === 'career') {
+      buckets.career += numeric;
+    } else if (key === 'health' || key === 'longevity') {
+      buckets.health += numeric;
+    } else if (key === 'relationships' || key === 'family' || key === 'social') {
+      buckets.relationships += numeric;
+    } else if (key === 'wealth' || key === 'finances') {
+      buckets.wealth += numeric;
+    } else if (key === 'spirituality') {
+      buckets.spirituality += numeric;
+    } else {
+      buckets.other += numeric;
+    }
+  });
+  return buckets;
+}
+
+function normalizeVoices(payload) {
+  if (Array.isArray(payload)) {
+    return payload;
+  }
+  if (Array.isArray(payload?.voices)) {
+    return payload.voices;
+  }
+  return [];
+}
+
 function badgeClass(map, value) {
   return map[value] || 'bg-gray-500/20 text-gray-300';
 }
@@ -186,6 +246,27 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
   const [caseImportFileName, setCaseImportFileName] = useState('');
   const [importingCases, setImportingCases] = useState(false);
   const [validatingCases, setValidatingCases] = useState(false);
+  const [coverageData, setCoverageData] = useState(null);
+  const [coverageLoading, setCoverageLoading] = useState(false);
+  const [coverageError, setCoverageError] = useState('');
+  const [testForm, setTestForm] = useState({
+    birth_date: '',
+    birth_time: '',
+    birth_place: '',
+    report_type: 'career',
+    voice_blend: 'classical+modern_analytical',
+    depth: 'detailed',
+  });
+  const [testLoading, setTestLoading] = useState(false);
+  const [testError, setTestError] = useState('');
+  const [testResult, setTestResult] = useState(null);
+  const [testOutputTab, setTestOutputTab] = useState('narrative');
+  const [voices, setVoices] = useState([]);
+  const [voicesLoading, setVoicesLoading] = useState(false);
+  const [voicesError, setVoicesError] = useState('');
+  const [editingVoiceId, setEditingVoiceId] = useState(null);
+  const [voiceDrafts, setVoiceDrafts] = useState({});
+  const [savingVoiceId, setSavingVoiceId] = useState(null);
 
   useEffect(() => {
     const timer = window.setTimeout(() => setDebouncedScienceId(scienceInput.trim()), 400);
@@ -247,6 +328,36 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
       averageAccuracy: average,
     };
   }, [cases]);
+
+  const coverageCategoryBuckets = useMemo(
+    () => aggregateCoverageCategories(coverageData?.category_counts || {}),
+    [coverageData]
+  );
+
+  const coverageDonutSegments = useMemo(() => {
+    const colors = {
+      career: '#60a5fa',
+      health: '#34d399',
+      relationships: '#f472b6',
+      wealth: '#d4af37',
+      spirituality: '#a78bfa',
+      other: '#9ca3af',
+    };
+    const entries = Object.entries(coverageCategoryBuckets).map(([key, value]) => ({
+      key,
+      value,
+      color: colors[key],
+    }));
+    const total = entries.reduce((sum, entry) => sum + entry.value, 0);
+    let offset = 0;
+    return entries.map((entry) => {
+      const fraction = total > 0 ? entry.value / total : 0;
+      const length = fraction * 100;
+      const segment = { ...entry, total, percent: Math.round(fraction * 100), offset, length };
+      offset += length;
+      return segment;
+    });
+  }, [coverageCategoryBuckets]);
 
   const fetchRules = async (targetPage = page, filtersOverride = null) => {
     if (!canLoad) {
@@ -329,6 +440,46 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     }
   };
 
+  const fetchCoverage = async () => {
+    if (!canLoad) {
+      return;
+    }
+    setCoverageLoading(true);
+    setCoverageError('');
+    try {
+      const response = await axios.get(`${API}/knowledge-engine/coverage`, {
+        headers: getAuthHeaders(),
+      });
+      setCoverageData(response.data || {});
+    } catch (error) {
+      const message = error.response?.data?.detail || 'Failed to load coverage dashboard';
+      setCoverageError(message);
+      toast.error(message);
+    } finally {
+      setCoverageLoading(false);
+    }
+  };
+
+  const fetchVoices = async () => {
+    if (!canLoad) {
+      return;
+    }
+    setVoicesLoading(true);
+    setVoicesError('');
+    try {
+      const response = await axios.get(`${API}/knowledge-engine/voices`, {
+        headers: getAuthHeaders(),
+      });
+      setVoices(normalizeVoices(response.data));
+    } catch (error) {
+      const message = error.response?.data?.detail || 'Failed to load voice profiles';
+      setVoicesError(message);
+      toast.error(message);
+    } finally {
+      setVoicesLoading(false);
+    }
+  };
+
   useEffect(() => {
     if (activeTab === 'rules' && canLoad) {
       fetchRules(page);
@@ -352,6 +503,18 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
       fetchCases();
     }
   }, [activeTab, canLoad, cases.length, casesLoading]);
+
+  useEffect(() => {
+    if (activeTab === 'coverage' && canLoad && !coverageData && !coverageLoading) {
+      fetchCoverage();
+    }
+  }, [activeTab, canLoad, coverageData, coverageLoading]);
+
+  useEffect(() => {
+    if (activeTab === 'voices' && canLoad && voices.length === 0 && !voicesLoading) {
+      fetchVoices();
+    }
+  }, [activeTab, canLoad, voices.length, voicesLoading]);
 
   const handleLoadRules = async () => {
     const nextFilters = {
@@ -583,6 +746,85 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
     }
   };
 
+  const handleGenerateTestReport = async () => {
+    setTestLoading(true);
+    setTestError('');
+    setTestResult(null);
+    try {
+      const response = await axios.post(
+        `${API}/knowledge-engine/test`,
+        testForm,
+        { headers: getAuthHeaders() }
+      );
+      setTestResult(response.data || {});
+      setTestOutputTab('narrative');
+    } catch (error) {
+      const message = error.response?.data?.detail || error.message || 'Failed to generate test report';
+      setTestError(message);
+      toast.error(message);
+    } finally {
+      setTestLoading(false);
+    }
+  };
+
+  const startEditingVoice = (voice) => {
+    setEditingVoiceId(voice.voice_id);
+    setVoiceDrafts((current) => ({
+      ...current,
+      [voice.voice_id]: {
+        display_name: voice.display_name || '',
+        description: voice.description || '',
+        style_tokens: (voice.style_tokens || []).join(', '),
+        sample_phrase: voice.sample_phrase || '',
+      },
+    }));
+  };
+
+  const handleVoiceDraftChange = (voiceId, field, value) => {
+    setVoiceDrafts((current) => ({
+      ...current,
+      [voiceId]: {
+        ...(current[voiceId] || {}),
+        [field]: value,
+      },
+    }));
+  };
+
+  const handleSaveVoice = async (voiceId) => {
+    const draft = voiceDrafts[voiceId];
+    if (!draft) {
+      return;
+    }
+    setSavingVoiceId(voiceId);
+    try {
+      const payload = {
+        display_name: draft.display_name,
+        description: draft.description,
+        style_tokens: draft.style_tokens
+          .split(',')
+          .map((item) => item.trim())
+          .filter(Boolean),
+        sample_phrase: draft.sample_phrase,
+      };
+      await axios.put(`${API}/knowledge-engine/voices/${voiceId}`, payload, {
+        headers: getAuthHeaders(),
+      });
+      setVoices((current) =>
+        current.map((voice) =>
+          voice.voice_id === voiceId
+            ? { ...voice, ...payload }
+            : voice
+        )
+      );
+      setEditingVoiceId(null);
+      toast.success('Voice profile updated');
+    } catch (error) {
+      toast.error(error.response?.data?.detail || 'Failed to update voice profile');
+    } finally {
+      setSavingVoiceId(null);
+    }
+  };
+
   if (authLoading) {
     return <div className="text-center py-8 text-gray-400">Loading...</div>;
   }
@@ -645,6 +887,9 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
             {activeTab === 'batches' && `${batches.length} batches`}
             {activeTab === 'index' && 'Index monitor'}
             {activeTab === 'cases' && `${cases.length} case studies`}
+            {activeTab === 'coverage' && 'Coverage monitor'}
+            {activeTab === 'test' && 'Engine test harness'}
+            {activeTab === 'voices' && `${voices.length} voice profiles`}
           </div>
         </div>
 
@@ -1042,6 +1287,557 @@ export function LibraryConsolePage({ getAuthHeaders: getAuthHeadersProp }) {
               </div>
             )}
           </Card>
+        )}
+
+        {activeTab === 'coverage' && (
+          <div className="space-y-4">
+            {coverageError ? (
+              <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4">
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div className="flex items-start gap-3">
+                    <AlertCircle className="mt-0.5 h-4 w-4 text-red-400" />
+                    <div>
+                      <p className="text-sm font-medium text-red-300">Coverage dashboard failed to load</p>
+                      <p className="mt-1 text-sm text-red-200/80">{coverageError}</p>
+                    </div>
+                  </div>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={fetchCoverage}
+                    className="border-red-400/30 text-red-300 hover:bg-red-500/10"
+                  >
+                    Retry
+                  </Button>
+                </div>
+              </div>
+            ) : coverageLoading && !coverageData ? (
+              <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-8">
+                <div className="flex items-center justify-center gap-3 text-gray-400">
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  <span>Loading coverage dashboard...</span>
+                </div>
+              </Card>
+            ) : (
+              <>
+                <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5">
+                  <div className="flex items-center gap-2 mb-4">
+                    <BarChart3 className="h-4 w-4 text-gold" />
+                    <h3 className="text-lg font-semibold text-white">House × Planet Heatmap</h3>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="min-w-[760px] border-separate border-spacing-2">
+                      <thead>
+                        <tr>
+                          <th className="px-2 py-1 text-left text-xs uppercase tracking-wide text-gray-400">House</th>
+                          {['Sun', 'Moon', 'Mars', 'Rahu', 'Jupiter', 'Saturn', 'Mercury', 'Ketu', 'Venus'].map((planet) => (
+                            <th key={planet} className="px-2 py-1 text-center text-xs uppercase tracking-wide text-gray-400">
+                              {planet}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {Array.from({ length: 12 }, (_, index) => index + 1).map((house) => (
+                          <tr key={`heatmap-house-${house}`}>
+                            <td className="px-2 py-1 text-sm text-gray-300">House {house}</td>
+                            {['Sun', 'Moon', 'Mars', 'Rahu', 'Jupiter', 'Saturn', 'Mercury', 'Ketu', 'Venus'].map((planet) => {
+                              const cell = (coverageData?.heatmap || []).find(
+                                (entry) => entry.house === house && entry.planet === planet
+                              );
+                              const tier = cell?.tier || 'gap';
+                              const color =
+                                tier === 'covered'
+                                  ? 'bg-emerald-500/70'
+                                  : tier === 'sparse'
+                                    ? 'bg-amber-400/70'
+                                    : 'bg-red-500/70';
+                              return (
+                                <td key={`${house}-${planet}`} className="px-2 py-1">
+                                  <div
+                                    className={`mx-auto h-8 w-8 rounded-md border border-black/20 ${color}`}
+                                    title={`${planet} in House ${house} — ${cell?.count || 0} rules`}
+                                  />
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </Card>
+
+                <div className="grid gap-4 lg:grid-cols-[1.05fr_1fr]">
+                  <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5">
+                    <h3 className="text-lg font-semibold text-white">Category Coverage</h3>
+                    <div className="mt-4 flex flex-col items-center gap-4">
+                      <svg viewBox="0 0 120 120" className="h-48 w-48">
+                        <circle
+                          cx="60"
+                          cy="60"
+                          r="42"
+                          fill="transparent"
+                          stroke="rgba(255,255,255,0.08)"
+                          strokeWidth="14"
+                        />
+                        {coverageDonutSegments.map((segment) =>
+                          segment.length > 0 ? (
+                            <circle
+                              key={segment.key}
+                              cx="60"
+                              cy="60"
+                              r="42"
+                              fill="transparent"
+                              stroke={segment.color}
+                              strokeWidth="14"
+                              strokeDasharray={`${segment.length} ${100 - segment.length}`}
+                              strokeDashoffset={25 - segment.offset}
+                              pathLength="100"
+                              transform="rotate(-90 60 60)"
+                            />
+                          ) : null
+                        )}
+                        <text x="60" y="56" textAnchor="middle" className="fill-white text-[12px] font-semibold">
+                          {(coverageDonutSegments[0]?.total || 0)}
+                        </text>
+                        <text x="60" y="72" textAnchor="middle" className="fill-[#9ca3af] text-[8px] uppercase tracking-[1px]">
+                          categories
+                        </text>
+                      </svg>
+                      <div className="grid w-full gap-2">
+                        {coverageDonutSegments.map((segment) => (
+                          <div key={`legend-${segment.key}`} className="flex items-center justify-between gap-3 text-sm">
+                            <div className="flex items-center gap-2">
+                              <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ backgroundColor: segment.color }} />
+                              <span className="capitalize text-gray-200">{segment.key}</span>
+                            </div>
+                            <span className="text-gray-400">
+                              {segment.value} ({segment.percent}%)
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5">
+                    <h3 className="text-lg font-semibold text-white">Source Coverage</h3>
+                    <div className="mt-4 space-y-3">
+                      {Object.entries(coverageData?.source_counts || {})
+                        .sort(([, countA], [, countB]) => Number(countB) - Number(countA))
+                        .map(([source, count], index, entries) => {
+                          const max = Number(entries[0]?.[1] || 1);
+                          const width = max > 0 ? `${(Number(count) / max) * 100}%` : '0%';
+                          return (
+                            <div key={source} className="grid grid-cols-[140px_1fr_48px] items-center gap-3">
+                              <span className="truncate text-sm text-gray-200">{source}</span>
+                              <div className="h-3 rounded-full bg-white/5">
+                                <div className="h-3 rounded-full bg-gold/60" style={{ width }} />
+                              </div>
+                              <span className="text-right text-sm text-gray-400">{count}</span>
+                            </div>
+                          );
+                        })}
+                      {Object.keys(coverageData?.source_counts || {}).length === 0 && (
+                        <p className="text-sm text-gray-500">No source counts available.</p>
+                      )}
+                    </div>
+                  </Card>
+                </div>
+
+                <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5">
+                  <h3 className="text-lg font-semibold text-white">Gap Analysis</h3>
+                  <div className="mt-4 space-y-2">
+                    {(coverageData?.gap_analysis || [])
+                      .slice()
+                      .sort((a, b) => Number(a.count) - Number(b.count))
+                      .slice(0, 10)
+                      .map((gap, index) => (
+                        <div
+                          key={`gap-${gap.house}-${gap.planet}-${index}`}
+                          className="flex items-center justify-between gap-3 rounded-xl border border-gold/10 bg-black/10 px-4 py-3"
+                        >
+                          <span className="text-sm text-gray-200">
+                            House {gap.house} × {gap.planet} — {gap.count} rules
+                          </span>
+                          <span className="inline-flex rounded-full border border-red-500/30 bg-red-500/15 px-2 py-0.5 text-xs font-medium text-red-400">
+                            GAP
+                          </span>
+                        </div>
+                      ))}
+                    {(coverageData?.gap_analysis || []).length === 0 && (
+                      <p className="text-sm text-gray-500">No gap analysis available.</p>
+                    )}
+                  </div>
+                </Card>
+              </>
+            )}
+          </div>
+        )}
+
+        {activeTab === 'test' && (
+          <div className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
+            <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5">
+              <div className="flex items-center gap-2 mb-4">
+                <Bug className="h-4 w-4 text-gold" />
+                <h3 className="text-lg font-semibold text-white">Test Console</h3>
+              </div>
+              <div className="space-y-4">
+                <div>
+                  <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Date</label>
+                  <Input
+                    value={testForm.birth_date}
+                    onChange={(event) => setTestForm((current) => ({ ...current, birth_date: event.target.value }))}
+                    placeholder="YYYY-MM-DD"
+                    className="bg-card border-gold/20 text-foreground"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Time</label>
+                  <Input
+                    value={testForm.birth_time}
+                    onChange={(event) => setTestForm((current) => ({ ...current, birth_time: event.target.value }))}
+                    placeholder="HH:MM"
+                    className="bg-card border-gold/20 text-foreground"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Place</label>
+                  <Input
+                    value={testForm.birth_place}
+                    onChange={(event) => setTestForm((current) => ({ ...current, birth_place: event.target.value }))}
+                    placeholder="City, Country"
+                    className="bg-card border-gold/20 text-foreground"
+                  />
+                </div>
+                <div>
+                  <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Report Type</label>
+                  <select
+                    value={testForm.report_type}
+                    onChange={(event) => setTestForm((current) => ({ ...current, report_type: event.target.value }))}
+                    className="w-full rounded-lg border border-gold/20 bg-card px-3 py-2 text-sm text-foreground"
+                  >
+                    <option value="career">career</option>
+                    <option value="health">health</option>
+                    <option value="relationships">relationships</option>
+                    <option value="wealth">wealth</option>
+                    <option value="spirituality">spirituality</option>
+                    <option value="longevity">longevity</option>
+                    <option value="comprehensive">comprehensive</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Voice Blend</label>
+                  <select
+                    value={testForm.voice_blend}
+                    onChange={(event) => setTestForm((current) => ({ ...current, voice_blend: event.target.value }))}
+                    className="w-full rounded-lg border border-gold/20 bg-card px-3 py-2 text-sm text-foreground"
+                  >
+                    <option value="classical">classical</option>
+                    <option value="modern_analytical">modern_analytical</option>
+                    <option value="classical+modern_analytical">classical+modern_analytical</option>
+                    <option value="empathetic">empathetic</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Depth</label>
+                  <select
+                    value={testForm.depth}
+                    onChange={(event) => setTestForm((current) => ({ ...current, depth: event.target.value }))}
+                    className="w-full rounded-lg border border-gold/20 bg-card px-3 py-2 text-sm text-foreground"
+                  >
+                    <option value="summary">summary</option>
+                    <option value="detailed">detailed</option>
+                    <option value="full">full</option>
+                  </select>
+                </div>
+                <Button
+                  onClick={handleGenerateTestReport}
+                  disabled={testLoading}
+                  className="w-full bg-gold text-background hover:bg-gold/90"
+                >
+                  {testLoading ? (
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <Play className="mr-2 h-4 w-4" />
+                  )}
+                  Generate Report
+                </Button>
+              </div>
+            </Card>
+
+            <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5">
+              <div className="flex items-center justify-between gap-3 flex-wrap mb-4">
+                <h3 className="text-lg font-semibold text-white">Output</h3>
+                <div className="flex gap-2">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => setTestOutputTab('narrative')}
+                    className={
+                      testOutputTab === 'narrative'
+                        ? 'border-gold/40 bg-gold/10 text-gold'
+                        : 'border-gold/20 text-gray-300 hover:bg-gold/10'
+                    }
+                  >
+                    Narrative
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => setTestOutputTab('matched')}
+                    className={
+                      testOutputTab === 'matched'
+                        ? 'border-gold/40 bg-gold/10 text-gold'
+                        : 'border-gold/20 text-gray-300 hover:bg-gold/10'
+                    }
+                  >
+                    Matched Rules
+                  </Button>
+                </div>
+              </div>
+
+              {testLoading ? (
+                <div className="flex min-h-[320px] items-center justify-center gap-3 text-gray-400">
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  <span>Generating report…</span>
+                </div>
+              ) : testError ? (
+                <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4">
+                  <div className="flex items-start justify-between gap-4 flex-wrap">
+                    <div>
+                      <p className="text-sm font-medium text-red-300">Engine error: {testError}</p>
+                    </div>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={handleGenerateTestReport}
+                      className="border-red-400/30 text-red-300 hover:bg-red-500/10"
+                    >
+                      Retry
+                    </Button>
+                  </div>
+                </div>
+              ) : !testResult ? (
+                <div className="flex min-h-[320px] items-center justify-center text-sm text-gray-500">
+                  Fill in the test inputs and generate a report to inspect engine output.
+                </div>
+              ) : testOutputTab === 'narrative' ? (
+                <div className="space-y-4">
+                  <div className="min-h-[240px] whitespace-pre-wrap rounded-xl border border-gold/10 bg-black/10 p-4 text-sm leading-relaxed text-gray-200">
+                    {testResult.narrative || 'No narrative returned.'}
+                  </div>
+                  <div className="rounded-xl border border-gold/10 bg-black/10 p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <BookOpen className="h-4 w-4 text-gold" />
+                      <p className="text-sm font-medium text-white">Citation Trail</p>
+                    </div>
+                    <div className="space-y-2">
+                      {(testResult.citations || []).map((citation, index) => (
+                        <p key={`citation-${index}`} className="text-xs text-gray-400">
+                          Para {Number(citation.paragraph_index || 0) + 1}: {(citation.books || []).join(', ') || 'Unknown source'}
+                        </p>
+                      ))}
+                      {(testResult.citations || []).length === 0 && (
+                        <p className="text-xs text-gray-500">No citations returned.</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[760px]">
+                    <thead>
+                      <tr className="text-left text-xs uppercase tracking-wide text-gray-400">
+                        <th className="pb-3">Rule ID</th>
+                        <th className="pb-3">Life Domain</th>
+                        <th className="pb-3">Claim Axis</th>
+                        <th className="pb-3">Effective Confidence</th>
+                        <th className="pb-3">Tranche Adjusted</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {(testResult.matched_rules || []).map((rule) => {
+                        const confidence = Number(rule.effective_confidence || 0);
+                        const width = `${Math.max(0, Math.min(100, confidence * 100))}%`;
+                        return (
+                          <tr key={rule.rule_id} className="border-t border-gold/10 text-sm text-gray-200">
+                            <td className="py-3 pr-3 font-mono text-xs">{truncateId(rule.rule_id, 18)}</td>
+                            <td className="py-3 pr-3">{rule.life_domain || '—'}</td>
+                            <td className="py-3 pr-3">{rule.claim_axis || '—'}</td>
+                            <td className="py-3 pr-3">
+                              <div className="flex min-w-[180px] items-center gap-3">
+                                <div className="h-2 flex-1 rounded-full bg-white/5">
+                                  <div className="h-2 rounded-full bg-gold" style={{ width }} />
+                                </div>
+                                <span className="text-xs text-gray-400">{confidence.toFixed(2)}</span>
+                              </div>
+                            </td>
+                            <td className="py-3 pr-3">
+                              {rule._tranche_adjusted ? (
+                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                              ) : (
+                                <span className="text-gray-500">—</span>
+                              )}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                      {(testResult.matched_rules || []).length === 0 && (
+                        <tr>
+                          <td colSpan={5} className="py-8 text-center text-sm text-gray-500">
+                            No matched rules returned.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </Card>
+          </div>
+        )}
+
+        {activeTab === 'voices' && (
+          <div className="space-y-4">
+            {voicesError ? (
+              <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-4">
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                  <div className="flex items-start gap-3">
+                    <AlertCircle className="mt-0.5 h-4 w-4 text-red-400" />
+                    <div>
+                      <p className="text-sm font-medium text-red-300">Voice profiles failed to load</p>
+                      <p className="mt-1 text-sm text-red-200/80">{voicesError}</p>
+                    </div>
+                  </div>
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={fetchVoices}
+                    className="border-red-400/30 text-red-300 hover:bg-red-500/10"
+                  >
+                    Retry
+                  </Button>
+                </div>
+              </div>
+            ) : voicesLoading && voices.length === 0 ? (
+              <Card className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-8">
+                <div className="flex items-center justify-center gap-3 text-gray-400">
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  <span>Loading voice profiles...</span>
+                </div>
+              </Card>
+            ) : (
+              <div className="grid gap-4 xl:grid-cols-2">
+                {voices.map((voice) => {
+                  const isEditing = editingVoiceId === voice.voice_id;
+                  const draft = voiceDrafts[voice.voice_id] || {};
+                  return (
+                    <Card
+                      key={voice.voice_id}
+                      className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <Volume2 className="h-4 w-4 text-gold" />
+                            <h3 className="text-lg font-semibold text-white">{voice.display_name}</h3>
+                          </div>
+                          <p className="mt-2 text-sm text-gray-300">{voice.description}</p>
+                        </div>
+                        {!isEditing && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => startEditingVoice(voice)}
+                            className="border-gold/40 text-gold hover:bg-gold/10"
+                          >
+                            <Pencil className="mr-2 h-3.5 w-3.5" />
+                            Edit
+                          </Button>
+                        )}
+                      </div>
+
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        {(voice.style_tokens || []).map((token) => (
+                          <span
+                            key={`${voice.voice_id}-${token}`}
+                            className="inline-flex rounded-full bg-white/5 px-2 py-0.5 text-xs text-gray-300"
+                          >
+                            {token}
+                          </span>
+                        ))}
+                      </div>
+
+                      <p className="mt-4 italic text-sm text-gray-400">{voice.sample_phrase}</p>
+
+                      {isEditing && (
+                        <div className="mt-5 space-y-4 border-t border-gold/10 pt-4">
+                          <div>
+                            <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Display Name</label>
+                            <Input
+                              value={draft.display_name || ''}
+                              onChange={(event) => handleVoiceDraftChange(voice.voice_id, 'display_name', event.target.value)}
+                              className="bg-card border-gold/20 text-foreground"
+                            />
+                          </div>
+                          <div>
+                            <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Description</label>
+                            <textarea
+                              value={draft.description || ''}
+                              onChange={(event) => handleVoiceDraftChange(voice.voice_id, 'description', event.target.value)}
+                              rows={3}
+                              className="w-full rounded-lg border border-gold/20 bg-card px-3 py-2 text-sm text-foreground"
+                            />
+                          </div>
+                          <div>
+                            <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Style Tokens</label>
+                            <Input
+                              value={draft.style_tokens || ''}
+                              onChange={(event) => handleVoiceDraftChange(voice.voice_id, 'style_tokens', event.target.value)}
+                              placeholder="formal, reverent, precise"
+                              className="bg-card border-gold/20 text-foreground"
+                            />
+                          </div>
+                          <div>
+                            <label className="mb-2 block text-xs uppercase tracking-wide text-gray-400">Sample Phrase</label>
+                            <textarea
+                              value={draft.sample_phrase || ''}
+                              onChange={(event) => handleVoiceDraftChange(voice.voice_id, 'sample_phrase', event.target.value)}
+                              rows={3}
+                              className="w-full rounded-lg border border-gold/20 bg-card px-3 py-2 text-sm text-foreground"
+                            />
+                          </div>
+                          <div className="flex gap-2">
+                            <Button
+                              onClick={() => handleSaveVoice(voice.voice_id)}
+                              disabled={savingVoiceId === voice.voice_id}
+                              className="bg-gold text-background hover:bg-gold/90"
+                            >
+                              {savingVoiceId === voice.voice_id ? (
+                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              ) : (
+                                <Save className="mr-2 h-4 w-4" />
+                              )}
+                              Save
+                            </Button>
+                            <Button
+                              variant="outline"
+                              onClick={() => setEditingVoiceId(null)}
+                              className="border-gold/40 text-gold hover:bg-gold/10"
+                            >
+                              Cancel
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+                    </Card>
+                  );
+                })}
+              </div>
+            )}
+          </div>
         )}
 
         {activeTab === 'cases' && (
