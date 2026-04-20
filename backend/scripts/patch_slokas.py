@@ -114,8 +114,11 @@ def main():
                         help="Comma-separated sloka ranges, e.g. '39-40,59-61'")
     parser.add_argument("--mongo-url",  required=True)
     parser.add_argument("--db-name",    required=True)
-    parser.add_argument("--model",      default="claude-haiku-4-5")
-    parser.add_argument("--dry-run",    action="store_true")
+    parser.add_argument("--model",         default="claude-haiku-4-5")
+    parser.add_argument("--dry-run",       action="store_true")
+    parser.add_argument("--split-upgrade", action="store_true",
+                        help="Tag new rules as split_upgrade instead of gap_fill. "
+                             "Use when replacing pre_split_merged merged-condition rules.")
     args = parser.parse_args()
 
     chapter       = args.chapter
@@ -123,6 +126,7 @@ def main():
     batch_id      = args.batch_id
     target_slokas = parse_sloka_ranges(args.slokas)
     chapter_name  = CHAPTER_NAMES.get(chapter, f"Chapter {chapter}")
+    new_source_note = "split_upgrade" if args.split_upgrade else "gap_fill"
 
     print(f"\nPatch Slokas — Ch {chapter} {chapter_name}")
     print(f"Dasha lord : {dasha_lord}")
@@ -187,11 +191,15 @@ def main():
             ))
 
         # Two separate dedup lists with different thresholds:
-        #   db_summaries   — rules already in MongoDB (60% overlap = duplicate)
+        #   db_summaries   — clean DB rules (60% overlap = duplicate)
+        #                    EXCLUDES pre_split_merged rules — those are being superseded
         #   patch_summaries — rules added in THIS run (90% overlap = near-exact repeat only)
         # Keeping them separate prevents house-lord variants like "9th lord" vs "10th lord"
         # (75% overlap) from blocking each other mid-run, while still catching true DB dups.
-        db_summaries    = [rule_summary(d) for d in existing_docs]
+        db_summaries = [
+            rule_summary(d) for d in existing_docs
+            if d.get("metadata", {}).get("source_note") != "pre_split_merged"
+        ]
         patch_summaries: list[str] = []
         existing_count  = len(existing_docs)
 
@@ -235,10 +243,10 @@ def main():
                 sloka_skipped += 1
                 continue
 
-            # Tag as gap-fill and give unique ID
-            doc["rule_id"]              = f"R-BPHS{chapter}-PATCH-{uuid.uuid4().hex[:6].upper()}"
-            doc["metadata"]["source_note"] = "gap_fill"
-            doc["approval_status"]      = "pending_review"
+            # Tag as gap-fill / split-upgrade and give unique ID
+            doc["rule_id"]                 = f"R-BPHS{chapter}-PATCH-{uuid.uuid4().hex[:6].upper()}"
+            doc["metadata"]["source_note"] = new_source_note
+            doc["approval_status"]         = "pending_review"
 
             if args.dry_run:
                 sub = doc["condition"]["sub_type"]
@@ -262,7 +270,7 @@ def main():
     else:
         print(f"✅  Inserted {total_new} net-new rules  |  {total_skipped} duplicates skipped")
         if total_new:
-            print(f"    approval_status='pending_review', source_note='gap_fill'")
+            print(f"    approval_status='pending_review', source_note='{new_source_note}'")
             print(f"    Review: Admin > Library > Rules Browser → batch {batch_id}")
 
     mongo_client.close()
