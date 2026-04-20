@@ -186,8 +186,14 @@ def main():
                 {"batch_id": batch_id, "condition.sloka": sloka_label}
             ))
 
-        existing_summaries = [rule_summary(d) for d in existing_docs]
-        existing_count     = len(existing_docs)
+        # Two separate dedup lists with different thresholds:
+        #   db_summaries   — rules already in MongoDB (60% overlap = duplicate)
+        #   patch_summaries — rules added in THIS run (90% overlap = near-exact repeat only)
+        # Keeping them separate prevents house-lord variants like "9th lord" vs "10th lord"
+        # (75% overlap) from blocking each other mid-run, while still catching true DB dups.
+        db_summaries    = [rule_summary(d) for d in existing_docs]
+        patch_summaries: list[str] = []
+        existing_count  = len(existing_docs)
 
         print(f"\n  Sloka {sloka_label:10s} | existing: {existing_count} | re-extracting...")
 
@@ -219,7 +225,13 @@ def main():
 
             new_summary = doc["interpretation"]["summary"]
 
-            if is_duplicate(new_summary, existing_summaries):
+            # Block if already in DB (condition-only comparison, 60% threshold)
+            if is_duplicate(new_summary, db_summaries, threshold=0.60):
+                sloka_skipped += 1
+                continue
+
+            # Block near-exact repeats within this run only (90% threshold)
+            if is_duplicate(new_summary, patch_summaries, threshold=0.90):
                 sloka_skipped += 1
                 continue
 
@@ -236,7 +248,7 @@ def main():
                 sub = doc["condition"]["sub_type"]
                 print(f"    Inserted  {doc['rule_id']} | {sub:22s} | {new_summary[:70]}...")
 
-            existing_summaries.append(new_summary)
+            patch_summaries.append(new_summary)
             id_counter += 1
             sloka_new  += 1
 
