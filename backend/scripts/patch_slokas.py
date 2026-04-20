@@ -14,7 +14,7 @@ Usage:
     --batch-id bphs-ch58-dasha-20260419 \
     --slokas "59-61" \
     --mongo-url "$MONGO_URL" \
-    --db-name EverydayHoroscope \
+    --db-name horoscope_db \
     [--dry-run]
 """
 
@@ -54,8 +54,22 @@ def word_overlap(a: str, b: str) -> float:
     return len(wa & wb) / len(wa | wb)
 
 
+def condition_part(summary: str) -> str:
+    """Extract only the condition side of a summary (before ' → ').
+
+    Summaries are formatted as 'Condition text → Result text'.
+    Comparing the full string causes false duplicate hits when rules share
+    a long result sentence but have distinct conditions (e.g. different
+    house lords all producing the same broad life outcome).
+    Comparing only the condition side avoids this while still catching
+    true duplicates where the condition itself repeats.
+    """
+    return summary.split(" → ")[0].strip() if " → " in summary else summary
+
+
 def is_duplicate(new_summary: str, existing_summaries: list, threshold: float = 0.60) -> bool:
-    return any(word_overlap(new_summary, s) >= threshold for s in existing_summaries)
+    new_cond = condition_part(new_summary)
+    return any(word_overlap(new_cond, condition_part(s)) >= threshold for s in existing_summaries)
 
 
 # ── Sloka range helpers ────────────────────────────────────────────────────────
@@ -156,7 +170,7 @@ def main():
     total_skipped = 0
 
     # Count existing rules to generate non-colliding IDs
-    existing_total = collection.count_documents({"batch_id": batch_id})
+    existing_total = collection.count_documents({"source.batch_id": batch_id})
     id_counter = existing_total + 1
 
     for sloka_label, sloka_text, sloka_pos in targets:
