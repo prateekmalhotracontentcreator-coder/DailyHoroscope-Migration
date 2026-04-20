@@ -4,13 +4,11 @@ from __future__ import annotations
 import argparse
 import os
 import re
-import sys
-from pathlib import Path
 
 from pymongo import MongoClient
 
 
-TARGET_CHAPTERS = ["47", "54", "56", "57", "58"]
+TARGET_CHAPTERS = ["54", "56", "57", "58"]
 ANTARDASHA_RE = re.compile(r"during\s+(\w+)\s+Antardasha", re.IGNORECASE)
 PLANETS = {"Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"}
 
@@ -33,6 +31,26 @@ def extract_antardasha_planet(summary: str) -> str | None:
     return planet if planet in PLANETS else None
 
 
+def derive_antardasha_planet(condition: dict) -> tuple[str | None, str]:
+    dasha_lord = str(condition.get("dasha_lord") or "").strip().title()
+    planets_involved = condition.get("planets_involved") or []
+    candidates: list[str] = []
+    for planet in planets_involved:
+        normalized = str(planet or "").strip().title()
+        if normalized not in PLANETS:
+            continue
+        if normalized == dasha_lord:
+            continue
+        if normalized not in candidates:
+            candidates.append(normalized)
+
+    if len(candidates) == 1:
+        return candidates[0], "derived"
+    if len(candidates) > 1:
+        return None, "ambiguous"
+    return None, "missing"
+
+
 def main() -> int:
     args = parse_args()
     client = MongoClient(args.mongo_url)
@@ -47,24 +65,46 @@ def main() -> int:
             {"condition.antardasha_planet": ""},
         ],
     }
-    projection = {"_id": 1, "rule_id": 1, "interpretation.summary": 1}
+    projection = {
+        "_id": 1,
+        "rule_id": 1,
+        "interpretation.summary": 1,
+        "condition.dasha_lord": 1,
+        "condition.planets_involved": 1,
+    }
     docs = list(collection.find(query, projection))
 
     updated = 0
+    regex_hits = 0
+    derived_hits = 0
     failed: list[str] = []
+    ambiguous: list[str] = []
 
     print(f"Found {len(docs)} candidate rule(s) across chapters {', '.join(TARGET_CHAPTERS)}")
     for doc in docs:
         rule_id = str(doc.get("rule_id") or "")
         interpretation = doc.get("interpretation") or {}
         summary = str(interpretation.get("summary") or "")
+        condition = doc.get("condition") or {}
+
         antardasha_planet = extract_antardasha_planet(summary)
+        source = "regex"
         if not antardasha_planet:
-            failed.append(rule_id or str(doc.get("_id")))
+            antardasha_planet, source = derive_antardasha_planet(condition)
+        if not antardasha_planet:
+            if source == "ambiguous":
+                ambiguous.append(rule_id or str(doc.get("_id")))
+            else:
+                failed.append(rule_id or str(doc.get("_id")))
             continue
 
+        if source == "regex":
+            regex_hits += 1
+        elif source == "derived":
+            derived_hits += 1
+
         if args.dry_run:
-            print(f"[DRY RUN] {rule_id} -> {antardasha_planet}")
+            print(f"[DRY RUN] {rule_id} -> {antardasha_planet} ({source})")
             updated += 1
             continue
 
@@ -78,9 +118,17 @@ def main() -> int:
     remaining = collection.count_documents(query)
     print("")
     print(f"Updated: {updated}")
+    print(f"Regex matches: {regex_hits}")
+    print(f"Derived matches: {derived_hits}")
     print(f"Remaining missing antardasha_planet: {remaining}")
+    if ambiguous:
+        print(f"Ambiguous manual-review cases: {len(ambiguous)}")
+        for rule_id in ambiguous[:25]:
+            print(f"  - {rule_id}")
+        if len(ambiguous) > 25:
+            print(f"  ... and {len(ambiguous) - 25} more")
     if failed:
-        print(f"Regex failed for {len(failed)} rule(s):")
+        print(f"Unresolved after regex + derivation: {len(failed)} rule(s)")
         for rule_id in failed[:25]:
             print(f"  - {rule_id}")
         if len(failed) > 25:
