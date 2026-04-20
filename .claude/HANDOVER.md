@@ -110,22 +110,20 @@ Expected output for sloka 45-47: ~9 rules (was 2). For sloka 1-2: ~6 rules (was 
 
 ## 4. Immediate Next Steps (in priority order)
 
-### Step 1 — Test the new SPLITTING GUIDANCE (NEXT ACTION)
+### ✅ Step 0 — strength_band inference — COMPLETE (21 Apr 2026)
 
-```bash
-cd /Users/apple/DailyHoroscope-Migration/backend
-export ANTHROPIC_API_KEY="sk-ant-..."
-python3 /tmp/test_splitting.py
-```
+`infer_strength_band_from_condition()` added to `ingest_bphs_dasha_v1.py`.
+Committed: `19cec9e`. Wired into `extracted_to_rule()` and `_fallback_rule()`.
+All rules generated from this point carry `strength_band: "high"|"medium"|"low"`.
 
-Verify:
-- Sloka 45-47: ~9 rules extracted (3 dignity + 2 category + 3 house + 1 timing)
-- Sloka 1-2: ~6 rules (2 category + 1 Asc lord + 3 separate lord rules)
-- Sloka 3-4: 1-2 rules only (compound condition — do NOT over-split)
+### ✅ Step 1 — Test the new SPLITTING GUIDANCE — COMPLETE (21 Apr 2026)
 
-If output is correct → proceed. If wrong → adjust prompt before anything else.
+Test output (`/tmp/test_splitting.py`) confirmed:
+- Sloka 45-47: 9 rules ✅ (3 dignity + 2 category + 3 house + 1 timing)
+- Sloka 1-2: 6 rules ✅ (2 category + 1 Asc lord + 3 individual lords)
+- Sloka 3-4: 2 rules ✅ (8th vs 12th split, compound preserved)
 
-### Step 2 — Gap-fill sweep: Ch 59 sloka 1-2
+### Step 2 — Gap-fill sweep: Ch 59 sloka 1-2 (NEXT ACTION)
 
 ```bash
 python3 scripts/patch_slokas.py \
@@ -236,6 +234,7 @@ All scripts: `cd /Users/apple/DailyHoroscope-Migration/backend`
 | `SPLITTING GUIDANCE` OVERHAULED | House-by-house + dignity-by-dignity splits + strength_band | Ch 59 sloka 20-21 analysis — **21 Apr 2026** |
 | Period-as-range-separator `5.6.` → `5-6` | `split_into_sloka_blocks()` regex | Ch 59 sloka 5-6 missing |
 | Ch 59 added to `INTRO_SLOKAS_BY_CHAPTER` with empty set | No skip-list inheritance | Ch 59 sloka 1-2 |
+| `infer_strength_band_from_condition()` + `strength_band` field | `extracted_to_rule()` + `_fallback_rule()` — commit `19cec9e` | `strength_band` was completely absent from dasha pipeline — **21 Apr 2026** |
 
 ---
 
