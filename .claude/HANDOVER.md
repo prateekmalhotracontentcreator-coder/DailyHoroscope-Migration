@@ -5,6 +5,20 @@
 
 ---
 
+## ⚠️ How to Keep This Document Current
+
+**This file does NOT auto-update when context exhausts.** Three rules to prevent staleness:
+
+1. **INGEST_NOTES.md is the living operational log** — always accurate because it's committed after every batch. When this doc is stale, INGEST_NOTES.md is the ground truth for what has been done.
+
+2. **Update this doc at milestones, not just session end.** After every chapter ingest + validation, after every architectural decision, after every new script — update Section 4 (Next Steps) and the relevant section. Do not wait until context is nearly full.
+
+3. **Start every new session with:**
+   > *"Read `.claude/HANDOVER.md` and `backend/scripts/INGEST_NOTES.md`, then tell me what's pending before we proceed."*
+   This forces reconstruction of current state before any action is taken.
+
+---
+
 ## 1. Who You Are / What This Project Is
 
 You are the Claude Code agent for **EverydayHoroscope** (https://www.everydayhoroscope.in) — India's premium Vedic astrology platform. The Knowledge Engine is a rules library that will power AI-driven chart interpretations. The user is **Prateek** (founder). His philosophy: *"This is our only shot to success. This work vs. rest of our lives."* Build it right the first time.
