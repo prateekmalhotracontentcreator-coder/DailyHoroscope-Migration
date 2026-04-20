@@ -311,7 +311,7 @@ class SlokaExtractor:
             client = self._get_client()
             response = client.messages.parse(
                 model=self.model,
-                max_tokens=2048,
+                max_tokens=4096,
                 temperature=0,
                 system=[{
                     "type": "text",
@@ -351,7 +351,7 @@ class SlokaExtractor:
             client = self._get_client()
             response = client.messages.parse(
                 model=self.model,
-                max_tokens=2048,
+                max_tokens=4096,
                 temperature=0,
                 system=[{
                     "type": "text",
