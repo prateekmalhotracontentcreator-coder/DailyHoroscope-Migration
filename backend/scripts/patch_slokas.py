@@ -193,7 +193,15 @@ def main():
 
         for rule in new_rules:
             # Build rule doc using shared helper
-            doc = extracted_to_rule(rule, sloka_label, dasha_lord, chapter, batch_id, id_counter)
+            doc = extracted_to_rule(
+                rule,
+                sloka_label,
+                dasha_lord,
+                antardasha_planet,
+                chapter,
+                batch_id,
+                id_counter,
+            )
 
             new_summary = doc["interpretation"]["summary"]
 

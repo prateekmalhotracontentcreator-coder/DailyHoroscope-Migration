@@ -476,6 +476,7 @@ def extracted_to_rule(
     item: ExtractedRule,
     sloka_label: str,
     dasha_lord: str,
+    antardasha_planet: str | None,
     chapter: int,
     batch_id: str,
     index: int,
@@ -511,6 +512,7 @@ def extracted_to_rule(
         "condition": {
             "type":             "dasha_planet",
             "dasha_lord":       dasha_lord,
+            "antardasha_planet": antardasha_planet,
             "sub_type":         sub_type,
             "sloka":            sloka_label,
             "planets_involved": planets,
@@ -546,6 +548,7 @@ def _fallback_rule(
     label: str,
     raw_text: str,
     dasha_lord: str,
+    antardasha_planet: str | None,
     chapter: int,
     batch_id: str,
     index: int,
@@ -564,6 +567,7 @@ def _fallback_rule(
         "source":     make_source(chapter, label, batch_id),
         "condition": {
             "type": "dasha_planet", "dasha_lord": dasha_lord,
+            "antardasha_planet": antardasha_planet,
             "sub_type": "general_principle", "sloka": label,
             "planets_involved": planets, "houses_involved": [],
             "sub_conditions": [], "operator": "and",
@@ -765,6 +769,7 @@ def parse_rtf_file(
             continue
 
         effective_lord = _planet_at(sloka_pos)
+        antardasha_planet = effective_lord or None
 
         # Override for transition slokas that shift to a new planet mid-block.
         # e.g. sloka 16-22: "after describing the Sun Dasa... I will now come to
@@ -774,10 +779,13 @@ def parse_rtf_file(
         transition_planet = detect_transition_planet(text)
         if transition_planet:
             effective_lord = transition_planet
+            antardasha_planet = transition_planet
 
         # For Ch 52-60, use the chapter's fixed Mahadasha lord
         if chapter in ANTARDASHA_CHAPTER_LORD:
             effective_lord = ANTARDASHA_CHAPTER_LORD[chapter]
+        else:
+            antardasha_planet = None
 
         # Print section header when planet changes
         if effective_lord and effective_lord != last_printed_planet:
@@ -789,13 +797,13 @@ def parse_rtf_file(
         extracted = extractor.extract(label, rule_text, notes_text, chapter, effective_lord)
 
         if extracted:
-            batch = [extracted_to_rule(item, label, effective_lord, chapter, batch_id, idx + j)
+            batch = [extracted_to_rule(item, label, effective_lord, antardasha_planet, chapter, batch_id, idx + j)
                      for j, item in enumerate(extracted)]
             print(f"{len(batch)} rule(s)")
             rules.extend(batch)
             idx += len(batch)
         else:
-            fallback = _fallback_rule(label, text, effective_lord, chapter, batch_id, idx)
+            fallback = _fallback_rule(label, text, effective_lord, antardasha_planet, chapter, batch_id, idx)
             if fallback:
                 print("1 rule (fallback)")
                 rules.append(fallback)
