@@ -373,8 +373,9 @@ def split_into_sloka_blocks(text: str) -> list[tuple[str, str, int]]:
     # Dasha sloka pattern — accepts . : or - as separator, also handles single numbers
     # [ \t]* (zero or more) to handle "88-89.Similar" (no space after period)
     # Trailing dash handles RTF OCR artefact "15-16- Effects..." (separator rendered as dash)
+    # Inner [-.+\u2013] also accepts "." as range separator to handle "5.6. Text..." style
     sloka_re = re.compile(
-        r"(?m)^[ \t]*(\d+[a-z]?(?:\s*[-\u2013]\s*\d+[a-z]?)?)[.:\-][ \t]*([A-Z].+)$"
+        r"(?m)^[ \t]*(\d+[a-z]?(?:\s*[-\u2013+.]\s*\d+[a-z]?)?)[.:\-][ \t]*([A-Z].+)$"
     )
 
     matches = list(sloka_re.finditer(text))
@@ -383,7 +384,8 @@ def split_into_sloka_blocks(text: str) -> list[tuple[str, str, int]]:
 
     blocks: list[tuple[str, str, int]] = []
     for i, m in enumerate(matches):
-        label = m.group(1).strip()
+        # Normalise label: replace inner "." range separator with "-" for consistency
+        label = m.group(1).strip().replace(".", "-")
         heading_start = m.group(2).strip()
         start = m.end()
         end   = matches[i + 1].start() if i + 1 < len(matches) else len(text)
@@ -426,6 +428,7 @@ def clean_notes(text: str) -> tuple[str, str]:
 INTRO_SLOKAS_BY_CHAPTER: dict[int, set[str]] = {
     47: {"1", "2"},
     48: set(),  # Ch 48 sloka 1 has real prediction content
+    59: set(),  # Ch 59 sloka 1-2 is Ketu/Ketu antardasha — real prediction content, do not skip
 }
 
 SKIP_HEADINGS = {
