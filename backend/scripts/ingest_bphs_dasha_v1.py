@@ -176,20 +176,52 @@ RULES:
    dasha_remedy       — remedy or mitigation advice
    general_principle  — overarching timing principle not fitting above
 
-SPLITTING GUIDANCE — when a sloka lists multiple DISTINCT planetary states as conditions,
-extract EACH as a separate rule even if outcomes are similar. Rules must be individually
-matchable to a user's chart at query time.
+SPLITTING GUIDANCE — one rule per independently queryable astrological condition.
+Each rule must be matchable to a specific state in a user's chart at query time.
 
-  SPLIT these (distinct astrological states):
-    debilitation / combustion / house placement / malefic association → separate rules
-    "from the Ascendant" vs "from the Dasha lord" conditions → separate rules
-    Example: "if Jupiter be in debilitation, be combust, or be in the 6th/8th/12th,
-              or be aspected by Saturn and Mars" → 4 rules
+ALWAYS SPLIT into separate rules:
 
-  DO NOT split these (equivalent alternatives, same state category):
-    "kendra, trikona, or the 11th" → one rule (equivalent favourable placements)
-    "6th, 8th, or 12th" → one rule (same unfavourable house category)
-    "own sign or exaltation" → one rule (equivalent strength indicators)
+  1. SPECIFIC HOUSE NUMBERS — each house is a distinct, independently queryable position
+       "in the 6th, 8th, or 12th"              → 3 rules (one per house)
+       "in kendra, trikona, the 11th, the 3rd, or the 2nd"
+                                                → 5 rules (kendra as one, trikona as one, 11th, 3rd, 2nd each separate)
+       "in the 2nd or the 7th from Ascendant"  → 2 rules
+
+  2. PLANETARY DIGNITY STATES — each carries a different strength level for the knowledge engine
+       "in exaltation, own sign, or friend's sign"  → 3 rules
+       "in debilitation or enemy sign"              → 2 rules
+       "in exaltation" → strength_band: "high"
+       "in own sign"   → strength_band: "high"
+       "in friend's sign" → strength_band: "medium"
+       "in enemy sign" → strength_band: "low"
+       "in debilitation" → strength_band: "low"
+
+  3. DIFFERENT CONDITION TYPES — qualitatively different astrological states
+       debilitation / combustion / malefic aspect / maraka lordship → separate rules
+       "from the Ascendant" vs "from the Dasha lord" → separate rules
+       Example: "if Jupiter be in debilitation, combust, in 6th/8th/12th, or aspected by Saturn"
+                → 4 rules (debilitation, combust, 6th + 8th + 12th as 3, malefic aspect)
+
+KEEP AS ONE RULE:
+
+  1. NAMED HOUSE CATEGORIES (abstract groups, no specific number)
+       "in kendra"   → one rule (covers 1st/4th/7th/10th as a strength category)
+                        strength_band: "high"
+       "in trikona"  → one rule (covers 1st/5th/9th as a strength category)
+                        strength_band: "high"
+       "in upachaya" → one rule   strength_band: "medium"
+
+  2. COMPOUND CONDITIONS requiring ALL parts simultaneously
+       "combust AND in 8th house" → one rule (both must be true together)
+       "in debilitation AND in the 12th" → one rule
+
+  3. ADDITIVE QUALIFIERS that modify a parent condition (append to that rule, not a new split)
+       "if also associated with the lord of the 9th" → qualifier on the parent rule
+
+strength_band for house positions (unfavourable rules):
+  8th house → "high" (most malefic dusthana)
+  6th, 12th → "medium"
+  2nd, 7th  → "low" (maraka — death-inflicting)
 """
 
 EXTRACTION_PROMPT = """\
@@ -461,6 +493,49 @@ def should_skip(label: str, text: str, chapter: int = 47) -> bool:
 
 # ── Rule builders ──────────────────────────────────────────────────────────────
 
+def infer_strength_band_from_condition(condition_text: str, sub_type: str) -> str:
+    """Map condition text to strength_band based on dignity state or house position.
+
+    Dignity states take precedence over house positions.
+    Defaults to 'medium' when no signal is found.
+    """
+    text = condition_text.lower()
+
+    # ── Planetary dignity states ───────────────────────────────────────────────
+    if any(x in text for x in ["exaltation", "uchcha", "exalted"]):
+        return "high"
+    if any(x in text for x in ["own sign", "own house", "swakshetra", "svakshetra"]):
+        return "high"
+    if any(x in text for x in ["friend's sign", "friendly sign", "friend sign"]):
+        return "medium"
+    if any(x in text for x in ["enemy sign", "inimical sign", "enemy's sign"]):
+        return "low"
+    if any(x in text for x in ["debilitation", "neecha", "debilitated"]):
+        return "low"
+
+    # ── House positions — favourable / conditional context ─────────────────────
+    if sub_type in ("dasha_favourable", "dasha_conditional"):
+        if any(x in text for x in ["kendra", "trikona"]):
+            return "high"
+        if re.search(r"\b(11th|3rd|2nd)\b", text):
+            return "medium"
+
+    # ── House positions — unfavourable context ─────────────────────────────────
+    if sub_type == "dasha_unfavourable":
+        if re.search(r"\b8th\b", text):
+            return "high"   # highest intensity of harm
+        if re.search(r"\b(6th|12th)\b", text):
+            return "medium"
+        if re.search(r"\b(2nd|7th)\b", text):
+            return "low"
+
+    # ── Remedy rules are inherently low intensity (mitigation, not prediction) ─
+    if sub_type == "dasha_remedy":
+        return "low"
+
+    return "medium"
+
+
 def make_source(chapter: int, sloka: str, batch_id: str) -> dict:
     return {
         "book":           BOOK,
@@ -542,6 +617,9 @@ def extracted_to_rule(
             "source_weight":         0.95,
             "cross_book_multiplier": 1.0,
         },
+        "strength_band":   infer_strength_band_from_condition(
+            item.condition_summary + " " + item.full_condition, sub_type
+        ),
         "approval_status": "pending_review",
         "created_at":      datetime.now(timezone.utc).isoformat(),
     }
@@ -586,6 +664,7 @@ def _fallback_rule(
             "signs_involved": [], "condition_count": 1,
         },
         "confidence": {"base": 0.82, "source_weight": 0.95, "cross_book_multiplier": 1.0},
+        "strength_band":   infer_strength_band_from_condition(raw_text, "general_principle"),
         "approval_status": "pending_review",
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
