@@ -31,14 +31,26 @@ def extract_antardasha_planet(summary: str) -> str | None:
     return planet if planet in PLANETS else None
 
 
-def derive_antardasha_planet(condition: dict) -> tuple[str | None, str]:
+def _summary_planets(summary: str) -> list[str]:
+    planets: list[str] = []
+    for match in re.finditer(r"\b(Sun|Moon|Mars|Mercury|Jupiter|Venus|Saturn|Rahu|Ketu)\b", summary or "", re.IGNORECASE):
+        planet = match.group(1).strip().title()
+        if planet in PLANETS and planet not in planets:
+            planets.append(planet)
+    return planets
+
+
+def derive_antardasha_planet(summary: str, condition: dict) -> tuple[str | None, str]:
     dasha_lord = str(condition.get("dasha_lord") or "").strip().title()
     planets_involved = condition.get("planets_involved") or []
     candidates: list[str] = []
+    all_planets: list[str] = []
     for planet in planets_involved:
         normalized = str(planet or "").strip().title()
         if normalized not in PLANETS:
             continue
+        if normalized not in all_planets:
+            all_planets.append(normalized)
         if normalized == dasha_lord:
             continue
         if normalized not in candidates:
@@ -46,7 +58,12 @@ def derive_antardasha_planet(condition: dict) -> tuple[str | None, str]:
 
     if len(candidates) == 1:
         return candidates[0], "derived"
+    if not candidates and dasha_lord and dasha_lord in all_planets:
+        return dasha_lord, "self_antardasha"
     if len(candidates) > 1:
+        for planet in _summary_planets(summary):
+            if planet != dasha_lord:
+                return planet, "first_planet_heuristic"
         return None, "ambiguous"
     return None, "missing"
 
@@ -90,7 +107,7 @@ def main() -> int:
         antardasha_planet = extract_antardasha_planet(summary)
         source = "regex"
         if not antardasha_planet:
-            antardasha_planet, source = derive_antardasha_planet(condition)
+            antardasha_planet, source = derive_antardasha_planet(summary, condition)
         if not antardasha_planet:
             if source == "ambiguous":
                 ambiguous.append(rule_id or str(doc.get("_id")))
