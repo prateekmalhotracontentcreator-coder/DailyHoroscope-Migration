@@ -17,11 +17,13 @@ Append a new entry for every batch processed. Never overwrite.
 | Sloka regex accepts `,` separator | `[.,]?` instead of `\.?` — handles `14, If...` style headings | Ch 21 sloka 14 used comma instead of period after number |
 | Sloka regex accepts `+` range separator | `[-\u2013+]` — handles `14+15` style ranges | Ch 19 sloka `14+15` was not detected; content was misattributed to sloka 8-13 |
 
-### Ingest script — `ingest_bphs_dasha_v1.py`
+### Ingest script — `ingest_bphs_dasha_v1.py` + `patch_slokas.py`
 
 | Fix | What it does | Trigger |
 |---|---|---|
 | `temperature=0` (both call sites, lines 268 + 308) | Makes Claude extraction deterministic — identical sloka text → identical rule count on every run | Ch 57 dry runs produced 113 vs 118 rules on two consecutive runs due to LLM non-determinism at temp=0.1. Over-split detected at sloka 20-21 (4 vs 10 rules); under-split at sloka 71-73 (1 vs 3 rules). |
+| `condition.antardasha_planet` field added (commits 7df0fb9, 54f2b2c, 5ab6dd7) | All future dasha ingest stores the sub-period planet as a queryable field. `patch_slokas.py` updated to pass `antardasha_planet` into `extracted_to_rule()`. | Knowledge engine was filtering only on `dasha_lord` — all 9 antardashas returned together. Two-key filtering (`dasha_lord` + `antardasha_planet`) now required for correct rule matching. |
+| `backfill_antardasha_planet.py` — 3-pass backfill (20 Apr 2026) | Populated `condition.antardasha_planet` on all 448 existing antardasha rules (Ch 54, 56, 57, 58). Pass 1: regex; Pass 2: planets_involved derivation; Pass 3: self_antardasha + first_planet_heuristic. | 448/448 rules backfilled. Ch 47 (Mahadasha rules) correctly excluded — no antardasha_planet applies. |
 
 ### Validator — `knowledge_validator.py`
 
