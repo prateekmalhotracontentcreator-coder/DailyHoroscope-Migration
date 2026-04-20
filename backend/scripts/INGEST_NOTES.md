@@ -462,14 +462,18 @@ The missing house number in the final condition list means extracted rules for t
 **Key learning — dry run vs live divergence (21 Apr 2026):**
 Slokas 20-21 and 41-42 both showed dry run counts LOWER than live (1 vs 4, and 2 vs 4). In both cases the live run was correct — it properly applied SPLITTING GUIDANCE to produce one rule per distinct house placement. The dry runs under-extracted. **Rule: when live count is higher than dry run, always verify by reading the source sloka before rejecting. Higher count ≠ over-split.**
 
+**Gap-Fill Results (21 Apr 2026):**
+- Sloka 1-2: +3 new rules inserted (9th lord / 10th lord / 4th lord as individual rules). 3 duplicates correctly skipped (kendra / trikona / Asc lord already in DB). IDs: R-BPHS59-PATCH-FACB65, R-BPHS59-PATCH-5E398B, R-BPHS59-PATCH-2C21C9. `source_note='gap_fill'`, `approval_status='pending_review'`.
+- Two-stage dedup fix required (commits 8ee9944, f34e97d): condition-only comparison (not full summary) + separate DB vs within-run thresholds (60% / 90%).
+
 **Open Points:**
 1. ✅ **Sloka 20-21** — 4 rules confirmed correct (dry runs under-extracted). No action needed.
 2. ✅ **Sloka 41-42** — 4 rules confirmed correct (Mars in 8th/12th/2nd + qualifier). No action needed.
-3. ⚠️ **Sloka 45-47** — OCR-corrected sloka — verify 2 extracted rules capture all placement conditions correctly (kendra/trikona/11th/3rd/2nd)
-4. ⚠️ **Sloka 1-2** — Gap-fill candidate — add split rules for 9th/10th/4th lord conditions separately
+3. ⚠️ **Sloka 45-47** — OCR-corrected sloka — verify 9 extracted rules (post-split) capture all placement conditions correctly (kendra/trikona/11th/3rd/2nd + dignity states)
+4. ✅ **Sloka 1-2** — Gap-fill complete: 6 rules now in DB (kendra/trikona/Asc lord from original + 9th/10th/4th lord from patch)
 5. 4 flagged rules — review in Rules Browser (filter: flagged, batch: bphs-ch59-dasha-20260420)
 6. 29 pending_human_review — awaiting co-founder sign-off
-7. **Ch 59 final total: 88 rules** ✅ (no rejections — all rules confirmed valid)
+7. **Ch 59 final total: 91 rules** ✅ (88 original + 3 gap-fill)
 
 ---
 
@@ -539,8 +543,8 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 | BPHS Vol 2 Ch 56 (Jupiter MD) | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
 | BPHS Vol 2 Ch 57 (Saturn MD) | 132 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
 | BPHS Vol 2 Ch 58 (Mercury MD) | 104 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
-| BPHS Vol 2 Ch 59 (Ketu MD) | 88 | 55 (62%) | 29 (33%) | 4 (5%) | 0 pairs |
-| **RTF Grand Total** | **~1,726** | | | | |
+| BPHS Vol 2 Ch 59 (Ketu MD) | 91 | 55 (62%) | 29 (33%) | 4 (5%) | 0 pairs | +3 gap-fill (sloka 1-2) |
+| **RTF Grand Total** | **~1,729** | | | | |
 
 **`condition.antardasha_planet` coverage (as of 21 Apr 2026):**
 - Ch 47–58 dasha rules: **802 / 802 = 100%** ✅

@@ -123,23 +123,16 @@ Test output (`/tmp/test_splitting.py`) confirmed:
 - Sloka 1-2: 6 rules ✅ (2 category + 1 Asc lord + 3 individual lords)
 - Sloka 3-4: 2 rules ✅ (8th vs 12th split, compound preserved)
 
-### Step 2 — Gap-fill sweep: Ch 59 sloka 1-2 (NEXT ACTION)
+### ✅ Step 2 — Gap-fill sweep: Ch 59 sloka 1-2 — COMPLETE (21 Apr 2026)
 
-```bash
-python3 scripts/patch_slokas.py \
-  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_ch59_Vol2.rtf" \
-  --chapter 59 \
-  --dasha-lord Ketu \
-  --batch-id bphs-ch59-dasha-20260420 \
-  --slokas "1-2" \
-  --mongo-url "$MONGO_URL" \
-  --db-name horoscope_db \
-  --dry-run
-```
++3 rules inserted (9th/10th/4th lord). 3 correctly skipped (kendra/trikona/Asc lord already in DB).
+Ch 59 total: **91 rules** (88 original + 3 gap-fill). IDs: PATCH-FACB65, PATCH-5E398B, PATCH-2C21C9.
 
-Expected: +3 new rules (9th lord / 10th lord / 4th lord split that was merged in original ingest).
+Two dedup fixes committed during this step (required for house-lord variant rules):
+- `patch_slokas.py`: condition-only comparison (strip result text before overlap check)
+- `patch_slokas.py`: two-tier thresholds — 60% vs DB, 90% within-run (prevents 9th/10th/4th lord blocking each other)
 
-### Step 3 — Gap-fill sweep: ALL Ch 47-59 for splitting under-extractions
+### Step 3 — Gap-fill sweep: ALL Ch 47-59 for splitting under-extractions (NEXT ACTION)
 
 The new SPLITTING GUIDANCE will produce more rules per sloka than the old prompt. For previously ingested chapters (Ch 47-58), slokas with house-list or dignity-list conditions were under-extracted.
 
