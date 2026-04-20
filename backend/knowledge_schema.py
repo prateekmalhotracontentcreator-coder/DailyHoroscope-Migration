@@ -19,6 +19,8 @@ ConditionType = Literal[
     "house_lord_in_house",
     "yoga",
     "dasha_period",
+    "dasha_planet",
+    "dasha_of_house_lord",
     "transit",
     "kp_sublord",
     "composite",
@@ -86,6 +88,7 @@ class RuleCondition(FlexiblePayload):
     lord: str | None = None
     yoga_name: str | None = None
     dasha_lord: str | None = None
+    antardasha_planet: str | None = None
     level: str | None = None
     transit_house: int | None = None
     cusp_num: int | None = None

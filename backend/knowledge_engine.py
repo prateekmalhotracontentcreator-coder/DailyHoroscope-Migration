@@ -818,21 +818,33 @@ def _period_quality_reason(rule: dict[str, Any]) -> str:
     return sentence[0].lower() + sentence[1:] if len(sentence) > 1 else sentence.lower()
 
 
-def _matching_dasha_rules(domain_rules: list[dict[str, Any]], antardasha_planet: str | None) -> list[dict[str, Any]]:
-    if not antardasha_planet:
+def _matching_dasha_rules(
+    domain_rules: list[dict[str, Any]],
+    mahadasha_lord: str | None,
+    antardasha_planet: str | None,
+) -> list[dict[str, Any]]:
+    if not mahadasha_lord or not antardasha_planet:
         return []
-    normalized_planet = normalize_planet_name(antardasha_planet)
+    normalized_maha = normalize_planet_name(mahadasha_lord)
+    normalized_antar = normalize_planet_name(antardasha_planet)
     matches: list[dict[str, Any]] = []
     for rule in domain_rules:
         condition = _rule_condition(rule)
-        rule_lord = normalize_planet_name(condition.get("dasha_lord"))
-        if rule_lord and rule_lord == normalized_planet:
+        rule_maha = normalize_planet_name(condition.get("dasha_lord"))
+        rule_antar = normalize_planet_name(
+            condition.get("antardasha_planet") or condition.get("antardasha_lord")
+        )
+        if rule_maha and rule_antar and rule_maha == normalized_maha and rule_antar == normalized_antar:
             matches.append(rule)
     return matches
 
 
-def _quality_from_rules(domain_rules: list[dict[str, Any]], antardasha_planet: str | None) -> tuple[str, list[dict[str, Any]]]:
-    matching_rules = _matching_dasha_rules(domain_rules, antardasha_planet)
+def _quality_from_rules(
+    domain_rules: list[dict[str, Any]],
+    mahadasha_lord: str | None,
+    antardasha_planet: str | None,
+) -> tuple[str, list[dict[str, Any]]]:
+    matching_rules = _matching_dasha_rules(domain_rules, mahadasha_lord, antardasha_planet)
     favourable = [
         rule for rule in matching_rules if str(_rule_condition(rule).get("sub_type") or "") == "dasha_favourable"
     ]
@@ -853,12 +865,21 @@ def assign_period_quality(
     dasha_timeline: list[dict[str, Any]],
     as_of: date | None = None,
 ) -> str:
-    _, active_antar = _active_dasha_pair(dasha_timeline, as_of=as_of)
+    active_maha, active_antar = _active_dasha_pair(dasha_timeline, as_of=as_of)
+    active_maha_lord = normalize_planet_name((active_maha or {}).get("planet"))
     active_antar_planet = normalize_planet_name((active_antar or {}).get("planet"))
     condition = _rule_condition(rule)
     rule_lord = normalize_planet_name(condition.get("dasha_lord"))
+    rule_antar = normalize_planet_name(condition.get("antardasha_planet") or condition.get("antardasha_lord"))
     sub_type = str(condition.get("sub_type") or "")
-    if rule_lord and active_antar_planet and rule_lord == active_antar_planet:
+    if (
+        rule_lord
+        and rule_antar
+        and active_maha_lord
+        and active_antar_planet
+        and rule_lord == active_maha_lord
+        and rule_antar == active_antar_planet
+    ):
         if sub_type == "dasha_favourable":
             return "auspicious"
         if sub_type == "dasha_unfavourable":
@@ -871,11 +892,16 @@ def compute_period_quality_now(
     domain_matched_rules: dict[str, list[dict[str, Any]]],
     as_of: date | None = None,
 ) -> dict[str, str]:
-    _, active_antar = _active_dasha_pair(dasha_timeline, as_of=as_of)
+    active_maha, active_antar = _active_dasha_pair(dasha_timeline, as_of=as_of)
+    active_maha_planet = normalize_planet_name((active_maha or {}).get("planet"))
     active_antar_planet = normalize_planet_name((active_antar or {}).get("planet"))
     result = {domain: "neutral" for domain in ARC_ANGEL_DOMAIN_SLUGS}
     for domain in ARC_ANGEL_DOMAIN_SLUGS:
-        quality, _ = _quality_from_rules(domain_matched_rules.get(domain, []), active_antar_planet)
+        quality, _ = _quality_from_rules(
+            domain_matched_rules.get(domain, []),
+            active_maha_planet,
+            active_antar_planet,
+        )
         result[domain] = quality
     return result
 
@@ -1043,7 +1069,11 @@ def compute_arc_angel_windows(
     for domain in ARC_ANGEL_DOMAIN_SLUGS:
         domain_windows: list[dict[str, Any]] = []
         for period in periods:
-            quality, dominant_pool = _quality_from_rules(domain_matched_rules.get(domain, []), period["antar_planet"])
+            quality, dominant_pool = _quality_from_rules(
+                domain_matched_rules.get(domain, []),
+                period["maha_planet"],
+                period["antar_planet"],
+            )
             dominant_rule = None
             if dominant_pool:
                 dominant_rule = sorted(
