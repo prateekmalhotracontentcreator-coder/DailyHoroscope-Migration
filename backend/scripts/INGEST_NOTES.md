@@ -384,6 +384,40 @@ The `EverydayHoroscope` database was a local-only mistake; 3,200 rules were migr
 
 ---
 
+### BPHS Ch 59 | Ketu Mahadasha Antardasha | Apr 2026
+
+**Script used:** `ingest_bphs_dasha_v1.py`
+**Batch ID:** `bphs-ch59-dasha-20260421`
+**Dasha lord:** Ketu | **Antardasha sections:** 9 (Ketu/Ketu → Ketu/Mercury)
+**Slokas detected:** 33 blocks (slokas 1–79, with gap at 66 — absent from source)
+
+**Parser fix applied before ingest:**
+- Sloka 5-6 written as `5.6.` in RTF (period as range separator) — fixed by adding `.` to inner separator set in `split_into_sloka_blocks()` and normalising `5.6` → `5-6` on capture (commit afb78d8)
+- Ch 59 added to `INTRO_SLOKAS_BY_CHAPTER` with empty skip set
+
+**Source quality issue — Sloka 45-47 (Rahu AD in Ketu MD):**
+
+> ⚠️ OCR corruption — manual review REQUIRED after ingest
+
+The RTF contains multiple word-level omissions in this sloka:
+
+| Corrupted | Correct reading |
+|---|---|
+| `"ins, cattle"` | `"grains, cattle"` |
+| `"yavana ting"` | `"yavana king"` |
+| `"dignitary A foreign"` | `"dignitary of a foreign"` |
+| `"Rahu the Dasa"` | `"Rahu in the Dasa"` |
+| `"his r sign"` | `"his own sign"` |
+| `"the 11th, the or the 2nd"` | `"the 11th, the [3rd?] or the 2nd"` — **house number dropped** |
+
+The missing house number in the final condition list means extracted rules for this sloka may drop or incorrectly represent one placement condition. After ingest, find rules from batch `bphs-ch59-dasha-20260421` with `source.sloka = "45-47"` in Rules Browser and manually verify the condition list against other BPHS translations.
+
+**Universal rule check result:**
+- No opening meta-rules — Ch 59 begins directly with Ketu/Ketu antardasha at sloka 1-2 ✅
+- No `applies_to_all_dasha_lords` tagging needed for this chapter
+
+---
+
 ### Gap-Fill Protocol — Under-Extracted Slokas
 
 > Applies to Ch 56, 57, 58 (and all future chapters). Run after validation completes for each chapter.
