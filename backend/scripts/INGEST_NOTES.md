@@ -416,6 +416,58 @@ The missing house number in the final condition list means extracted rules for t
 - No opening meta-rules — Ch 59 begins directly with Ketu/Ketu antardasha at sloka 1-2 ✅
 - No `applies_to_all_dasha_lords` tagging needed for this chapter
 
+**Dry Run Baseline (2 runs — locked):**
+
+| Sloka | Run 1 | Run 2 | Live | Verdict |
+|---|---|---|---|---|
+| 1-2 | 3 | 5 | 3 | ⚠️ Gap-fill candidate — 9th/10th/4th lords should be split |
+| 3-4 | 5 | 5 | 5 | ✅ |
+| 5-6 | 5 | 5 | 5 | ✅ New sloka recovered by period-separator fix |
+| 7-9 | 2 | 2 | 2 | ✅ |
+| 10-11 | 1 | 1 | 1 | ✅ |
+| 12-14 | 3 | 3 | 3 | ✅ |
+| 15 | 2 | 3 | 2 | ⚠️ Minor — 2nd/7th lord rules may be merged |
+| 16-17 | 1 | 1 | 1 | ✅ |
+| 18-19 | 1 | 1 | 1 | ✅ |
+| 20-21 | 1 | 1 | 4 | 🔴 Over-split — both dry runs agreed on 1; live +3 likely duplicates |
+| 22-24 | 4 | 4 | 4 | ✅ |
+| 25-28 | 2 | 2 | 2 | ✅ |
+| 29-30 | 2 | 2 | 2 | ✅ |
+| 31-33 | 4 | 4 | 4 | ✅ |
+| 34-36 | 3 | 3 | 3 | ✅ |
+| 37-39 | 2 | 2 | 2 | ✅ |
+| 40 | 1 | 1 | 1 | ✅ |
+| 41-42 | 4 | 2 | 4 | ⚠️ Dry runs split 50/50 — review for over-split |
+| 43-44 | 2 | 2 | 2 | ✅ |
+| 45-47 | 2 | 2 | 2 | ✅ OCR-corrected — stable |
+| 48-50 | 3 | 3 | 3 | ✅ |
+| 51-54 | 1 | 1 | 1 | ✅ |
+| 55-56 | 2 | 3 | 3 | ✅ Run 2 confirmed correct |
+| 57-58 | 1 | 1 | 1 | ✅ |
+| 59-60 | 3 | 3 | 3 | ✅ |
+| 61-62 | 2 | 2 | 2 | ✅ |
+| 63-65 | 5 | 5 | 5 | ✅ |
+| 67-68 | 3 | 3 | 3 | ✅ |
+| 69-71 | 3 | 2 | 3 | ✅ Run 1 confirmed correct |
+| 72 | 2 | 2 | 2 | ✅ |
+| 73-74 | 4 | 4 | 4 | ✅ |
+| 75-76 | 1 | 1 | 1 | ✅ |
+| 77-79 | 4 | 4 | 4 | ✅ |
+| **TOTAL** | 84 | 85 | **88** | |
+
+**Validation Results (21 Apr 2026):** 55 auto_approved (62%) · 29 pending_human_review (33%) · 4 flagged (5%) · 0 contradictions · 0 structural failures
+
+*Note: 62% auto_approved is lower than 73–83% average for other dasha chapters. Expected — Ketu rules are heavily conditional ("if Ketu be related to X lord...") which the validator correctly routes to human review.*
+
+**Open Points:**
+1. 🔴 **Sloka 20-21** — Rules Browser → batch `bphs-ch59-dasha-20260420`, sloka `20-21` → expect 3 near-duplicate rules → Reject
+2. ⚠️ **Sloka 41-42** — Review 4 rules for over-split duplicates
+3. ⚠️ **Sloka 45-47** — OCR-corrected sloka — verify 2 extracted rules capture all placement conditions correctly (kendra/trikona/11th/3rd/2nd)
+4. ⚠️ **Sloka 1-2** — Gap-fill after Open Points 1–3 resolved — add split rules for 9th/10th/4th lord conditions
+5. 4 flagged rules — review in Rules Browser (filter: flagged, batch: bphs-ch59-dasha-20260420)
+6. 29 pending_human_review — awaiting co-founder sign-off
+7. **Ch 59 final total: 88 rules** (pending reduction after sloka 20-21 review)
+
 ---
 
 ### Gap-Fill Protocol — Under-Extracted Slokas
@@ -484,7 +536,8 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 | BPHS Vol 2 Ch 56 (Jupiter MD) | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
 | BPHS Vol 2 Ch 57 (Saturn MD) | 132 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
 | BPHS Vol 2 Ch 58 (Mercury MD) | 104 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
-| **RTF Grand Total** | **~1,638** | | | | |
+| BPHS Vol 2 Ch 59 (Ketu MD) | 88 | 55 (62%) | 29 (33%) | 4 (5%) | 0 pairs |
+| **RTF Grand Total** | **~1,726** | | | | |
 
 **`condition.antardasha_planet` coverage (as of 21 Apr 2026):**
 - Ch 47–58 dasha rules: **802 / 802 = 100%** ✅
