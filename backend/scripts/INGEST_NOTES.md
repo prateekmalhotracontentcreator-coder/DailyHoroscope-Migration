@@ -487,6 +487,49 @@ Slokas 20-21 and 41-42 both showed dry run counts LOWER than live (1 vs 4, and 2
 
 **Gap-fill script:** `scripts/patch_slokas.py` — re-extracts specific sloka ranges using the improved prompt, deduplicates against existing MongoDB rules (60% word-overlap threshold), inserts only net-new rules with `source_note='gap_fill'` and `approval_status='pending_review'`.
 
+### Split-Upgrade Sweep — Ch 47–59 (21 Apr 2026)
+
+**Scope:** 425 rules across Ch 47/48/52/53/54/55/56/57/58/59 identified by `assess_undersplit.py` as merged-condition rules (house lists or dignity bundles in one condition). Assessment script at `/tmp/assess_undersplit.py`.
+
+**Mechanism:**
+1. All 425 rules tagged `metadata.source_note = 'pre_split_merged'` via `/tmp/tag_presplit_merged.py`
+2. `patch_slokas.py --split-upgrade` excludes pre_split_merged from dedup, tags new rules as `split_upgrade`
+3. New individual-condition rules inserted alongside originals — nothing deleted until co-founder review
+
+**Additional fixes applied during this sweep:**
+- `max_tokens` raised from 2048 → 4096 (commit f1fd623) — prevents JSON truncation on large slokas
+- `patch_slokas.py` dedup uses condition-only comparison + two-tier thresholds (60% DB / 90% within-run)
+
+**Correct RTF paths for this sweep:**
+
+| Ch | MD Lord | RTF filename |
+|---|---|---|
+| 47 | Sun | `BPHS Ch 47 Vol 2.rtf` |
+| 48 | Moon | `BPHS Ch 48 Vol 2.rtf` |
+| 52 | Sun | `BPHS Ch 52 Vol 2.rtf` |
+| 53 | Venus | `BPHS Ch 53_Vol 2_ Sloka 53,54,55 missing from Book.rtf` |
+| 54 | Mars | `BPHS Ch 54 Vol 2.rtf` |
+| 55 | Moon | `BPHS ch 55 Vol 2.rtf` |
+| 56 | Jupiter | `BPHS_Ch56_Vol 2.rtf` |
+| 57 | Saturn | `BPHS ch 57 Vol 2.rtf` |
+| 58 | Mercury | `BPHS_ch 58_Vol 2.rtf` |
+| 59 | Ketu | `BPHS_ch59_Vol2.rtf` |
+
+**Progress:**
+
+| Ch | MD Lord | Batch ID | Candidates | Dry Run | Live | New Rules |
+|---|---|---|---|---|---|---|
+| 48 | Moon | bphs-ch48-dasha-20260416 | 9 | ✅ +34 | ✅ 21 Apr | +34 |
+| 52 | Sun | bphs-ch52-dasha-20260416 | 45 | — | — | — |
+| 53 | Venus | bphs-ch53-dasha-20260417 | 41 | — | — | — |
+| 54 | Mars | bphs-ch54-dasha-20260417 | 27 | — | — | — |
+| 55 | Moon | bphs-ch55-dasha-20260417 | 42 | — | — | — |
+| 56 | Jupiter | bphs-ch56-dasha-20260418 | 72 | — | — | — |
+| 57 | Saturn | bphs-ch57-dasha-20260419 | 56 | — | — | — |
+| 58 | Mercury | bphs-ch58-dasha-20260419 | 58 | — | — | — |
+| 59 | Ketu | bphs-ch59-dasha-20260420 | 37 | — | — | — |
+| 47 | Sun | bphs-ch47-dasha-20260416 | 39 | — | — | — |
+
 #### Flagged slokas by chapter
 
 | Ch | MD Lord | Batch ID | Sloka | Live count | Gap-fill result | Status |
@@ -543,8 +586,9 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 | BPHS Vol 2 Ch 56 (Jupiter MD) | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
 | BPHS Vol 2 Ch 57 (Saturn MD) | 132 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
 | BPHS Vol 2 Ch 58 (Mercury MD) | 104 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
+| BPHS Vol 2 Ch 48 (Moon MD) | 46+34 | — | — | — | — | +34 split_upgrade (21 Apr) |
 | BPHS Vol 2 Ch 59 (Ketu MD) | 91 | 55 (62%) | 29 (33%) | 4 (5%) | 0 pairs | +3 gap-fill (sloka 1-2) |
-| **RTF Grand Total** | **~1,729** | | | | |
+| **RTF Grand Total** | **~1,763** | | | | |
 
 **`condition.antardasha_planet` coverage (as of 21 Apr 2026):**
 - Ch 47–58 dasha rules: **802 / 802 = 100%** ✅
