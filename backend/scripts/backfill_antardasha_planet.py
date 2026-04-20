@@ -8,7 +8,7 @@ import re
 from pymongo import MongoClient
 
 
-TARGET_CHAPTERS = ["52", "53", "54", "55", "56", "57", "58"]
+TARGET_CHAPTERS = ["47", "48", "52", "53", "54", "55", "56", "57", "58"]
 ANTARDASHA_RE = re.compile(r"during\s+(\w+)\s+Antardasha", re.IGNORECASE)
 PLANETS = {"Sun", "Moon", "Mars", "Mercury", "Jupiter", "Venus", "Saturn", "Rahu", "Ketu"}
 
