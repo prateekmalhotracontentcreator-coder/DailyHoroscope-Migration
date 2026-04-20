@@ -135,6 +135,8 @@ class ExtractedRule(BaseModel):
     sub_type: str            # dasha_favourable | dasha_unfavourable | dasha_conditional | dasha_remedy | general_principle
     planets: list[str]       # canonical planet names involved
     houses: list[int]        # house numbers mentioned
+    dignity_state: str = ""  # primary condition type: exaltation|own_sign|moolatrikona|friendly_sign|neutral_sign|enemy_sign|debilitation|kendra|trikona|upachaya|11th|3rd|2nd|8th|6th|12th|7th|combust|retrograde|malefic_aspect|benefic_aspect|yogakaraka|maraka_lord|dusthana_lord|general
+    planet_context_note: str = ""  # short qualitative note e.g. "Exaltation: highest dignity" or "8th house: crisis and obstacles"
 
 class SlokaExtraction(BaseModel):
     rules: list[ExtractedRule]
@@ -149,6 +151,8 @@ class HouseLordExtractedRule(BaseModel):
     planets: list[str]       # canonical planet names involved
     houses: list[int]        # all house numbers mentioned in the rule
     house_of_lord: int | None  # which house's lord is running the Dasha (1-12); None for multi-house/general rules
+    dignity_state: str = ""  # primary condition type (same vocabulary as ExtractedRule)
+    planet_context_note: str = ""  # short qualitative note
 
 class HouseLordSlokaExtraction(BaseModel):
     rules: list[HouseLordExtractedRule]
@@ -222,6 +226,39 @@ strength_band for house positions (unfavourable rules):
   8th house → "high" (most malefic dusthana)
   6th, 12th → "medium"
   2nd, 7th  → "low" (maraka — death-inflicting)
+
+QUALITATIVE CONTEXT — set on every rule without exception.
+
+dignity_state: the single primary astrological condition type for this rule.
+  Choose exactly one from this list:
+  Dignity states  : exaltation | own_sign | moolatrikona | friendly_sign | neutral_sign | enemy_sign | debilitation
+  House categories: kendra | trikona | upachaya
+  Specific houses : 2nd | 3rd | 6th | 7th | 8th | 11th | 12th
+  Other conditions: combust | retrograde | malefic_aspect | benefic_aspect | yogakaraka | maraka_lord | dusthana_lord
+  Default         : general  (use when no specific dignity or house applies)
+
+planet_context_note: one concise phrase (≤12 words) giving the qualitative meaning.
+  Use the natural benefic / malefic nature of the planet where relevant.
+  Natural benefics : Jupiter, Venus, Mercury (waxing), Moon (waxing)
+  Natural malefics : Sun, Mars, Saturn, Rahu, Ketu, Mercury (waning), Moon (waning)
+
+  Examples:
+    dignity_state="exaltation"    → "Highest dignity — strongest, most auspicious expression"
+    dignity_state="own_sign"      → "Own sign — strong, comfortable, reliable results"
+    dignity_state="friendly_sign" → "Friendly sign — moderately favourable placement"
+    dignity_state="enemy_sign"    → "Enemy sign — weakened, uncomfortable, reduced results"
+    dignity_state="debilitation"  → "Debilitation — weakest dignity, adverse expression"
+    dignity_state="kendra"        → "Angular house — strong manifestation of results"
+    dignity_state="trikona"       → "Trine house — fortunate, dharmic placement"
+    dignity_state="8th"           → "8th house — crisis, obstacles, sudden events"
+    dignity_state="6th"           → "6th house — enemies, disease, service"
+    dignity_state="12th"          → "12th house — losses, isolation, foreign travel"
+    dignity_state="combust"       → "Combust — too close to Sun, significator weakened"
+    dignity_state="malefic_aspect"→ "Malefic aspect — adverse planetary influence on period"
+    dignity_state="yogakaraka"    → "Yogakaraka — lord of both kendra and trikona, powerful"
+    dignity_state="maraka_lord"   → "Maraka lord — 2nd/7th house lord, death-inflicting potential"
+    dignity_state="dusthana_lord" → "Dusthana lord — 6th/8th/12th house lord, challenging period"
+    dignity_state="general"       → brief summary of the condition in plain language
 """
 
 EXTRACTION_PROMPT = """\
@@ -588,15 +625,17 @@ def extracted_to_rule(
         "science_id": SCIENCE,
         "source":     make_source(chapter, sloka_label, batch_id),
         "condition": {
-            "type":             "dasha_planet",
-            "dasha_lord":       dasha_lord,
-            "antardasha_planet": antardasha_planet,
-            "sub_type":         sub_type,
-            "sloka":            sloka_label,
-            "planets_involved": planets,
-            "houses_involved":  houses_involved,
-            "sub_conditions":   [],
-            "operator":         "and",
+            "type":                "dasha_planet",
+            "dasha_lord":          dasha_lord,
+            "antardasha_planet":   antardasha_planet,
+            "sub_type":            sub_type,
+            "sloka":               sloka_label,
+            "planets_involved":    planets,
+            "houses_involved":     houses_involved,
+            "sub_conditions":      [],
+            "operator":            "and",
+            "dignity_state":       item.dignity_state or "",
+            "planet_context_note": item.planet_context_note or "",
         },
         "interpretation": {
             "summary":            summary,
@@ -699,14 +738,16 @@ def extracted_to_rule_house_lord(
         tags.append(f"house{house_num}")
 
     condition: dict = {
-        "type":             "dasha_of_house_lord",
-        "house":            house_num,
-        "sub_type":         sub_type,
-        "sloka":            sloka_label,
-        "planets_involved": planets,
-        "houses_involved":  houses_involved,
-        "sub_conditions":   [],
-        "operator":         "and",
+        "type":                "dasha_of_house_lord",
+        "house":               house_num,
+        "sub_type":            sub_type,
+        "sloka":               sloka_label,
+        "planets_involved":    planets,
+        "houses_involved":     houses_involved,
+        "sub_conditions":      [],
+        "operator":            "and",
+        "dignity_state":       item.dignity_state or "",
+        "planet_context_note": item.planet_context_note or "",
     }
 
     return {
