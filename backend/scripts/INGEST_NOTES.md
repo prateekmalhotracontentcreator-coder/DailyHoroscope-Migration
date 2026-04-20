@@ -23,7 +23,65 @@ Append a new entry for every batch processed. Never overwrite.
 |---|---|---|
 | `temperature=0` (both call sites, lines 268 + 308) | Makes Claude extraction deterministic — identical sloka text → identical rule count on every run | Ch 57 dry runs produced 113 vs 118 rules on two consecutive runs due to LLM non-determinism at temp=0.1. Over-split detected at sloka 20-21 (4 vs 10 rules); under-split at sloka 71-73 (1 vs 3 rules). |
 | `condition.antardasha_planet` field added (commits 7df0fb9, 54f2b2c, 5ab6dd7) | All future dasha ingest stores the sub-period planet as a queryable field. `patch_slokas.py` updated to pass `antardasha_planet` into `extracted_to_rule()`. | Knowledge engine was filtering only on `dasha_lord` — all 9 antardashas returned together. Two-key filtering (`dasha_lord` + `antardasha_planet`) now required for correct rule matching. |
-| `backfill_antardasha_planet.py` — 3-pass backfill (20 Apr 2026) | Populated `condition.antardasha_planet` on all 448 existing antardasha rules (Ch 54, 56, 57, 58). Pass 1: regex; Pass 2: planets_involved derivation; Pass 3: self_antardasha + first_planet_heuristic. | 448/448 rules backfilled. Ch 47 (Mahadasha rules) correctly excluded — no antardasha_planet applies. |
+| `backfill_antardasha_planet.py` — 5-pass backfill (20–21 Apr 2026) | Populated `condition.antardasha_planet` on all 802 dasha rules across Ch 47–58. Pass 1: regex ("during X Antardasha"); Pass 2: planets_involved derivation; Pass 3: self_antardasha + first_planet_heuristic; Pass 4: extended to Ch 52/53/55 (261 rules); Pass 5: Ch 47/48 (85 auto + 6 manual Sun self-period + 2 universal tags). | 802/802 rules covered. 2 rules (R-BPHS47-008, R-BPHS47-009) tagged as universal — see Universal Rule Pattern below. |
+
+### Universal Rule Pattern — Chapter-Opening Meta-Rules
+
+> **Identified: 21 Apr 2026. Applies to all dasha chapters, all books.**
+
+#### What they are
+
+Every dasha chapter (and often every chapter in any source book) opens with **meta-rules** that describe general principles before splitting into planet-specific or antardasha-specific sub-sections. These rules are **not tied to a specific antardasha** — they apply universally across the entire Mahadasha, or across ALL Mahadasha lords.
+
+Two distinct sub-types were identified in Ch 47:
+
+| Sub-type | Example | Correct Treatment |
+|---|---|---|
+| **MD-opening general rules** | Drekkana timing rules (001–005, 007) — describe timing of effects within any planet's own Dasha | `antardasha_planet = dasha_lord` (self-period assignment — these occur before any antardasha section begins) |
+| **Universal meta-rules** | "Dasa lord in exaltation → Favourable" (008–009) — `planets_involved` = all 9 planets, rule applies to ANY Mahadasha lord | `antardasha_planet = null` + `applies_to_all_dasha_lords = true` |
+
+#### Detection signals (backfill and future ingest)
+
+| Signal | Meaning |
+|---|---|
+| `planets_involved` = all 9 planets | Strong indicator of a universal meta-rule — no single antardasha owner |
+| Rule ID at chapter start (001–00x) before any antardasha sub-section | Likely MD-opening general rule |
+| Summary uses "Dasa lord" as a pronoun without naming a planet | Universal quality assessment rule |
+| `antardasha_planet_method = 'unresolved'` after all backfill passes | Flag for manual universal-rule review |
+
+#### Storage convention
+
+```python
+# Universal meta-rule (applies to any dasha lord)
+{
+  "condition.antardasha_planet": None,
+  "condition.antardasha_planet_method": "universal_dasha_quality_rule",
+  "condition.applies_to_all_dasha_lords": True
+}
+
+# MD-opening general rule (before antardasha sub-sections begin)
+{
+  "condition.antardasha_planet": "<same as dasha_lord>",
+  "condition.antardasha_planet_method": "manual_general_md_opening"
+}
+```
+
+#### Knowledge engine query behaviour
+
+- Rules with `antardasha_planet = null` AND `applies_to_all_dasha_lords = true` → returned for **any** active Mahadasha, regardless of antardasha
+- Rules with `antardasha_planet = dasha_lord` (self-period) → returned only during the self-antardasha sub-period (e.g. Sun/Sun, Jupiter/Jupiter)
+
+#### Where to look in other books
+
+| Book / Chapter type | Likely universal rules at |
+|---|---|
+| BPHS dasha chapters (Ch 47–58) | First 5–10 slokas before the first planet-named antardasha section |
+| BPHS house chapters (Ch 12–24) | Opening slokas before "Sun in X house" sub-sections begin |
+| A Text-Book of Astrology (Ch 15) | Chapter preamble before planet × house grid starts |
+| Lal Kitab chapters | Opening principle slokas before house-specific entries |
+| Any chapter with a planet-heading structure | Paragraphs before the first planet heading |
+
+#### Pre-batch checklist additions (see Checklist section below)
 
 ### Validator — `knowledge_validator.py`
 
@@ -39,11 +97,23 @@ The `EverydayHoroscope` database was a local-only mistake; 3,200 rules were migr
 
 ### Pre-Batch Checklist (run before every new ingest)
 
+**Structure checks:**
 - [ ] Inspect source RTF for numbered lists inside Notes/commentary sections — neutralize if present
 - [ ] Check sloka heading format — any trailing alpha, missing periods, leading apostrophes, period-separated ranges (e.g. `61.62.` instead of `61-62`)
+- [ ] Confirm translator editorial notes are NOT extracted as rules (e.g. "Our belief is…", "It is difficult to believe…")
+
+**Universal Rule check (dasha chapters):**
+- [ ] Read the first 10 slokas of the chapter before ingesting — identify any meta-rules (timing framework, Drekkana principles, general Dasha quality) that appear before the first named antardasha sub-section
+- [ ] After ingest, query `rule_id` range 001–010 of the new batch — check if any have `planets_involved` = all 9 planets → tag as `applies_to_all_dasha_lords = true`, `antardasha_planet = null`
+- [ ] Any rule with summary containing "Dasa lord" as a pronoun (not a named planet) is a universal quality rule → universal tag
+
+**Universal Rule check (house/sign chapters):**
+- [ ] Read opening slokas before the first "Sun in X house / sign" heading — these are general principles, not planet-specific
+- [ ] After ingest, check rule IDs at batch start — confirm `condition.planet` is populated (should be by the planet-heading injection in `extract_text_from_docx`), else flag for manual review
+
+**Ingest execution:**
 - [ ] Run dry run — record per-sloka rule counts as the confirmed baseline
 - [ ] Confirm 61-62-style verse ranges are captured (both runs of Ch 57 missed slokas 61-62 until RTF was corrected)
-- [ ] Confirm translator editorial notes are NOT extracted as rules (e.g. "Our belief is…", "It is difficult to believe…")
 - [ ] Live ingest per-sloka counts must match dry-run baseline exactly — any divergence = flag for manual review
 - [ ] After ingest, run `patch_punctuation.py` before validating
 - [ ] Run `reset_to_pending.py` if any rules were previously rejected
@@ -365,18 +435,31 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 
 ---
 
-### Cumulative Grand Total (All sources, as of 20 Apr 2026)
+### Cumulative Grand Total (All sources, as of 21 Apr 2026)
 
 | Source | Rules | auto_approved | pending_human_review | flagged | contradictions |
 |---|---|---|---|---|---|
 | BPHS Vol 1 Ch 12-18 | 241 | 140 (58%) | 79 (33%) | 28 (12%) | 9 pairs |
 | BPHS Vol 1 Ch 19-23 | 119 | 70 (59%) | 39 (33%) | 10 (8%) | 4 pairs |
 | BPHS Vol 1 Ch 24 | 376 | 267 (71%) | 77 (20%) | 32 (9%) | 0 pairs |
-| BPHS Vol 2 Ch 47 | 93 | 76 (82%) | 13 (14%) | 4 (4%) | 0 pairs |
-| BPHS Vol 2 Ch 54 (Mars) | 86 | — | — | — | — |
-| BPHS Vol 2 Ch 56 (Jupiter) | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
-| BPHS Vol 2 Ch 57 (Saturn) | 132 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
-| BPHS Vol 2 Ch 58 (Mercury) | 104 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
-| **Grand Total** | **~1,277** | | | | |
+| BPHS Vol 2 Ch 47 (Sun MD) | 93 | 76 (82%) | 13 (14%) | 4 (4%) | 0 pairs |
+| BPHS Vol 2 Ch 52 (Ketu MD) | 93 | — | — | — | — |
+| BPHS Vol 2 Ch 53 (Venus MD) | 72 | — | — | — | — |
+| BPHS Vol 2 Ch 54 (Mars MD) | 86 | — | — | — | — |
+| BPHS Vol 2 Ch 55 (Moon MD) | 96 | — | — | — | — |
+| BPHS Vol 2 Ch 56 (Jupiter MD) | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
+| BPHS Vol 2 Ch 57 (Saturn MD) | 132 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
+| BPHS Vol 2 Ch 58 (Mercury MD) | 104 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
+| **RTF Grand Total** | **~1,638** | | | | |
+
+**`condition.antardasha_planet` coverage (as of 21 Apr 2026):**
+- Ch 47–58 dasha rules: **802 / 802 = 100%** ✅
+- 2 rules tagged `applies_to_all_dasha_lords = true` (universal quality meta-rules: R-BPHS47-008, R-BPHS47-009)
+- 6 rules assigned `antardasha_planet = Sun` via `manual_general_md_opening` (Drekkana/strength principles at Ch 47 opening)
+
+**Next ingest targets (RTF files needed):**
+- BPHS Ch 59 (Ketu MD antardasha) — RTF pending from user
+- BPHS Vol 1 Ch 3 (already ingested: 48 rules, bphs-ch3-v1-20260414)
+- BPHS Vol 2 Ch 48 (Moon MD — 46 rules ingested, `antardasha_planet` backfill confirmed clean)
 
 ---
