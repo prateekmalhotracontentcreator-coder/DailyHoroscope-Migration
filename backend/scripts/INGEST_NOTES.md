@@ -546,33 +546,37 @@ python3 scripts/patch_slokas.py \
 
 **⚠️ Sloka 72-75 — sub_type anomaly (post-live fix required)**
 
-Rule `R-BPHS56-PATCH-D1BCEE` extracted as `dasha_grouped_outcome` + `is_group_summary=True` in dry run, but it is an individual Rahu-exaltation placement rule. Apply after live ingest:
+In the dry run, `R-BPHS56-PATCH-D1BCEE` was incorrectly tagged `dasha_grouped_outcome` + `is_group_summary=True`, but its summary reads "Rahu in exaltation → ..." — a single-condition individual rule. The true grouped summary (covering all 7 Rahu conditions) was never inserted.
 
-```python
-col.update_one(
-    {"rule_id": "R-BPHS56-PATCH-D1BCEE"},
-    {"$set": {
-        "condition.sub_type": "dasha_favourable",
-        "condition.is_group_summary": False
-    }}
-)
-# Then insert a true dasha_grouped_outcome rule covering all 7 Rahu conditions in sloka 72-75
+After live ingest, run the query-based fix script (does NOT rely on hardcoded rule_id):
+
+```bash
+cd /Users/apple/DailyHoroscope-Migration/backend
+python3 scripts/fix_ch56_sl7275.py --mongo-url "$MONGO_URL"
+# Dry run first: add --dry-run flag
 ```
+
+Script actions (22 Apr 2026 — `scripts/fix_ch56_sl7275.py`):
+1. Queries sloka 72-75 for any `is_group_summary=True` rules — finds the mis-tagged one
+2. Updates it: `sub_type → dasha_favourable`, `is_group_summary → False`
+3. Composes grouped summary from all 7 individual rule outcomes
+4. Inserts the true `dasha_grouped_outcome` rule with `condition_group_id`
+5. Back-fills `condition_group_id` on all individual rules
 
 Same pattern as Ch 55 sloka 21-24. Root cause: temperature=0 LLM variance in live vs dry run.
 
-**Phase 3 candidates — slokas missing grouped outcome rules:**
+**Phase 3 candidates — slokas missing grouped outcome rules (DEFERRED):**
 
-| Sloka | Condition count | Type |
-|---|---|---|
-| 33-34 | 4 | unfavourable |
-| 44 | 7 | unfavourable |
-| 51-53 | 7 | favourable |
-| 54-55 | 6 | unfavourable |
-| 61-63 | 8 | unfavourable |
-| 65-66 | 4 | favourable |
+| Sloka | Condition count | Type | Notes |
+|---|---|---|---|
+| 33-34 | 4 | unfavourable | 4 Jupiter AD malefic placement conditions |
+| 44 | 7 | unfavourable | 7 Saturn conditions |
+| 51-53 | 7 | favourable | 7 Sun favourable placements |
+| 54-55 | 6 | unfavourable | 6 Sun unfavourable from Asc/Jupiter |
+| 61-63 | 8 | unfavourable | 8 Moon conditions — largest group |
+| 65-66 | 4 | favourable | 4 Mars dignity-state conditions |
 
-These slokas will receive individual split rules but no grouped summary rule from the split-upgrade pass. Add to Phase 3 targeted patch after Phase 1 sweep completes.
+Individual split rules will be inserted by split-upgrade. Grouped summaries deferred to Phase 3 sweep after full split-upgrade sweep is complete.
 
 **Ch 56 totals (after live ingest):**
 - Original: 126 rules
@@ -580,9 +584,9 @@ These slokas will receive individual split rules but no grouped summary rule fro
 - **Total: 285 rules**
 
 **Open Points:**
-1. Live ingest not yet run — run command above
-2. Sloka 72-75 fix — apply immediately after live ingest confirms `R-BPHS56-PATCH-D1BCEE` in DB
-3. Phase 3 pass — 6 slokas need grouped summary rules (deferred to Phase 3 sweep)
+1. Live ingest not yet run — run command above (INGEST_NOTES command block)
+2. Sloka 72-75 fix — run `fix_ch56_sl7275.py` immediately after live ingest
+3. Phase 3 pass — 6 slokas need grouped summary rules (deferred)
 4. Validation not yet run — run `validate_rules.py --batch-id bphs-ch56-dasha-20260418` after sweep complete
 
 ---
