@@ -189,7 +189,7 @@ def main():
     total_skipped = 0
 
     # Count existing rules to generate non-colliding IDs (live mode only)
-    existing_total = collection.count_documents({"source.batch_id": batch_id}) if collection else 0
+    existing_total = collection.count_documents({"source.batch_id": batch_id}) if collection is not None else 0
     id_counter = existing_total + 1
 
     for sloka_label, sloka_text, sloka_pos in targets:
