@@ -102,7 +102,7 @@ Expected output for sloka 45-47: ~9 rules (was 2). For sloka 1-2: ~6 rules (was 
 | BPHS Vol 2 Ch 53 (Venus MD) | bphs-ch53-dasha-20260417 | 72 | +123 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 54 (Mars MD) | bphs-ch54-dasha-20260417 | 86 | +121 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 55 (Rahu MD) | bphs-ch55-dasha-20260417 | 96 | +153 ✅ | split-upgrade done, not validated |
-| BPHS Vol 2 Ch 56 (Jupiter MD) | bphs-ch56-dasha-20260418 | 126 | +159 🔄 dry run done, live pending | split-upgrade dry run ✅ — flag points in Section 8 |
+| BPHS Vol 2 Ch 56 (Jupiter MD) | bphs-ch56-dasha-20260418 | 126 | +118 ✅ live done 22 Apr | split-upgrade live ✅ — sloka 72-75 fix script ready; run fix_ch56_sl7275.py |
 | BPHS Vol 2 Ch 57 (Saturn MD) | bphs-ch57-dasha-20260419 | 132 | — | ✅ validated — split-upgrade pending |
 | BPHS Vol 2 Ch 58 (Mercury MD) | bphs-ch58-dasha-20260419 | 104 | — | ✅ validated — split-upgrade pending |
 | BPHS Vol 2 Ch 59 (Ketu MD) | bphs-ch59-dasha-20260421 | 91 | — | ✅ validated — split-upgrade pending |
@@ -145,8 +145,8 @@ Sweep mechanism: `patch_slokas.py --split-upgrade` re-extracts all slokas per ch
 | 53 | Venus | +123 | |
 | 54 | Mars | +121 | |
 | 55 | Rahu | +153 | First chapter with grouped outcome rules. Sloka 21-24 fix applied — see INGEST_NOTES |
-| 56 | Jupiter | +159 🔄 | Dry run done 22 Apr — live ingest pending. See Section 8 for sloka 72-75 anomaly + 6 Phase 3 candidates |
-| **Total confirmed live** | | **+570** | Ch 56 +159 pending live → total will be **+729** |
+| 56 | Jupiter | +118 ✅ | Live done 22 Apr. Sloka 72-75 fix script ready (fix_ch56_sl7275.py). Phase 3: 6 slokas deferred. |
+| **Total confirmed live** | | **+688** | Ch 56 +118 live (+1 grouped fix pending = **+689**) |
 
 **Remaining (run in this order):**
 
@@ -247,21 +247,16 @@ All scripts: `cd /Users/apple/DailyHoroscope-Migration/backend`
 
 Dry run shows `R-BPHS56-PATCH-D1BCEE` will be tagged `dasha_grouped_outcome` + `is_group_summary=True` but it is an **individual Rahu-exaltation condition rule**, not a grouped summary.
 
-**Fix to apply immediately after live ingest:**
-```python
-# In mongo shell or Python script — run after live ingest confirms R-BPHS56-PATCH-D1BCEE in DB
-col.update_one(
-    {"rule_id": "R-BPHS56-PATCH-D1BCEE"},
-    {"$set": {
-        "condition.sub_type": "dasha_favourable",
-        "condition.is_group_summary": False
-    }}
-)
-# Then insert a true grouped summary covering all 7 Rahu conditions in sloka 72-75
-# (Rahu exaltation, own sign, friend's sign, kendra, trikona, 3rd, 11th → one dasha_grouped_outcome rule)
+**Fix confirmed via dry run — ready to go live:**
+- Mis-tagged rule confirmed: `R-BPHS56-PATCH-6CC98D` (Rahu in exaltation, grp=True → must be dasha_favourable grp=False)
+- Actual conditions: 8 (exaltation, own sign, moolatrikona, kendra, trikona, aspected by kendra lord, associated with benefic, aspected by benefic)
+- True grouped rule to insert: `R-BPHS56-PATCH-68CC6F-GRP` (condition_group_id: ch56-sl7275-rahu-favourable)
+
+```bash
+python3 scripts/fix_ch56_sl7275.py --mongo-url "$MONGO_URL"
 ```
 
-Root cause: temperature=0 variance — model interpreted GROUPED OUTCOME RULE guidance differently in live run vs dry run. Same pattern as Ch 55 sloka 21-24.
+Script builds condition string dynamically from split-upgrade individual rules (excludes pre_split_merged). Root cause: temperature=0 LLM variance. Same pattern as Ch 55 sloka 21-24.
 
 #### Phase 3 candidates — slokas missing grouped outcome rules (6 slokas)
 
@@ -278,8 +273,9 @@ These 6 slokas will have individual split rules inserted by split-upgrade, but t
 
 #### Ch 56 totals
 - Original: 126 rules (bphs-ch56-dasha-20260418)
-- Split-upgrade dry run: +159 net-new rules
-- **Total after live ingest: 285 rules**
+- Split-upgrade live: +118 net-new rules (dry run predicted +159; −41 = temperature=0 variance)
+- Sloka 72-75 grouped fix: +1 (pending — run fix_ch56_sl7275.py)
+- **Total after fix: 245 rules**
 
 ---
 
