@@ -101,7 +101,7 @@ Expected output for sloka 45-47: ~9 rules (was 2). For sloka 1-2: ~6 rules (was 
 | BPHS Vol 2 Ch 52 (Sun MD) | bphs-ch52-dasha-20260416 | 93 | +139 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 53 (Venus MD) | bphs-ch53-dasha-20260417 | 72 | +123 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 54 (Mars MD) | bphs-ch54-dasha-20260417 | 86 | +121 ✅ | split-upgrade done, not validated |
-| BPHS Vol 2 Ch 55 (Rahu MD) | bphs-ch55-dasha-20260417 | 96 | — | ingested, not validated — split-upgrade NEXT |
+| BPHS Vol 2 Ch 55 (Rahu MD) | bphs-ch55-dasha-20260417 | 96 | +153 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 56 (Jupiter MD) | bphs-ch56-dasha-20260418 | 126 | — | ✅ validated — split-upgrade pending |
 | BPHS Vol 2 Ch 57 (Saturn MD) | bphs-ch57-dasha-20260419 | 132 | — | ✅ validated — split-upgrade pending |
 | BPHS Vol 2 Ch 58 (Mercury MD) | bphs-ch58-dasha-20260419 | 104 | — | ✅ validated — split-upgrade pending |
@@ -138,13 +138,14 @@ Two dedup fixes committed during this step (required for house-lord variant rule
 Sweep mechanism: `patch_slokas.py --split-upgrade` re-extracts all slokas per chapter under the new SPLITTING + ANTI-COLLISION + LORDSHIP QUALIFIER prompt. Dedup (60% DB threshold, excluding `pre_split_merged` originals) ensures only genuinely new individual rules are inserted, tagged `source_note='split_upgrade'`.
 
 **Completed (21 Apr 2026):**
-| Ch | MD Lord | New rules |
-|---|---|---|
-| 48 | Moon | +34 |
-| 52 | Sun | +139 |
-| 53 | Venus | +123 |
-| 54 | Mars | +121 |
-| **Total so far** | | **+417** |
+| Ch | MD Lord | New rules | Notes |
+|---|---|---|---|
+| 48 | Moon | +34 | |
+| 52 | Sun | +139 | |
+| 53 | Venus | +123 | |
+| 54 | Mars | +121 | |
+| 55 | Rahu | +153 | First chapter with grouped outcome rules. Sloka 21-24 fix applied — see INGEST_NOTES |
+| **Total so far** | | **+570** | |
 
 **Remaining (run in this order):**
 
@@ -242,6 +243,23 @@ All scripts: `cd /Users/apple/DailyHoroscope-Migration/backend`
 - Ch 57 slokas 20-21, 30-31 — over-split suspected, review in Rules Browser after split-upgrade
 - Ch 59 sloka 45-47 — OCR-corrupted sloka, verify extracted rules cover all placement conditions
 - Ch 59 batch ID in DB is `bphs-ch59-dasha-20260421` (not 20260420 as in some notes)
+
+### ⚠️ Pre-Split_Merged Deprecation — MANDATORY Step 0 Before Co-Founder Review
+
+All `pre_split_merged` original rules across ALL chapters must be deprecated **before Prateek opens Rules Browser for any review**. Without this, he will see:
+- 4-5 near-identical merged-condition rows per sloka sitting alongside the correct split rules
+- Mixed sub_type errors (e.g. R-BPHS55-020/021 tagged `dasha_unfavourable` on a favourable condition — original ingest error)
+
+**Script (run ONCE after full split-upgrade sweep is complete):**
+```python
+col.update_many(
+    {"metadata.source_note": "pre_split_merged"},
+    {"$set": {"approval_status": "deprecated"}}
+)
+```
+Verify with: `col.count_documents({"metadata.source_note": "pre_split_merged", "approval_status": {"$ne": "deprecated"}})` → should return 0.
+
+**Do NOT run mid-sweep** — chapters with pending split-upgrades (56/57/58/59/47) still need their pre_split_merged originals as the only existing coverage until split-upgrade runs.
 
 ### Phase 2 — Lordship Qualifier Compound Rules
 Chapters ingested before 21 Apr 2026 (Ch 47/48/52/53/54/56/57/58/59) may be missing compound placement+lordship rules. Prompt fix is now in `ingest_bphs_dasha_v1.py`. Audit deferred to after co-founder approval. See INGEST_NOTES.md Phase 2 section for query pattern.
