@@ -500,6 +500,105 @@ class SlokaExtractor:
             return []
 
 
+class OpenAISlokaExtractor:
+    """Drop-in replacement for SlokaExtractor using OpenAI structured outputs.
+
+    Uses client.beta.chat.completions.parse() with the same Pydantic models
+    (SlokaExtraction / HouseLordSlokaExtraction) and the same system prompts.
+    No prompt caching — EXTRACTION_SYSTEM is delivered as the system message role.
+    """
+
+    def __init__(self, model: str = "gpt-4o-mini"):
+        self.model = model
+        self._client = None
+
+    def _get_client(self):
+        try:
+            import openai as _openai
+        except ImportError:
+            raise RuntimeError("openai package not installed — run: pip install openai>=1.40.0")
+        if self._client is None:
+            api_key = os.getenv("OPENAI_API_KEY")
+            if not api_key:
+                raise RuntimeError("OPENAI_API_KEY not set in environment")
+            self._client = _openai.OpenAI(api_key=api_key)
+        return self._client
+
+    def extract_house_lord(
+        self,
+        sloka_label: str,
+        rule_text: str,
+        notes_text: str,
+        chapter: int,
+    ) -> list[HouseLordExtractedRule]:
+        """Extract house-lord Dasha rules (Ch 48). Returns empty list on failure."""
+        full_text = rule_text
+        if notes_text:
+            full_text = rule_text + "\n\nNote:\n" + notes_text.strip()
+
+        prompt = HOUSE_LORD_EXTRACTION_PROMPT.format(
+            chapter=chapter,
+            chapter_name=CHAPTER_NAMES.get(chapter, f"Chapter {chapter}"),
+            sloka=sloka_label,
+            text=full_text,
+        )
+
+        try:
+            client = self._get_client()
+            response = client.beta.chat.completions.parse(
+                model=self.model,
+                max_tokens=4096,
+                temperature=0,
+                messages=[
+                    {"role": "system", "content": HOUSE_LORD_EXTRACTION_SYSTEM},
+                    {"role": "user",   "content": prompt},
+                ],
+                response_format=HouseLordSlokaExtraction,
+            )
+            return response.choices[0].message.parsed.rules
+        except Exception as e:
+            print(f"⚠  OpenAI extraction failed for sloka {sloka_label}: {e}")
+            return []
+
+    def extract(
+        self,
+        sloka_label: str,
+        rule_text: str,
+        notes_text: str,
+        chapter: int,
+        dasha_lord: str,
+    ) -> list[ExtractedRule]:
+        """Extract individual rules from a sloka. Returns empty list on failure."""
+        full_text = rule_text
+        if notes_text:
+            full_text = rule_text + "\n\nNote:\n" + notes_text.strip()
+
+        prompt = EXTRACTION_PROMPT.format(
+            chapter=chapter,
+            chapter_name=CHAPTER_NAMES.get(chapter, f"Chapter {chapter}"),
+            dasha_lord=dasha_lord,
+            sloka=sloka_label,
+            text=full_text,
+        )
+
+        try:
+            client = self._get_client()
+            response = client.beta.chat.completions.parse(
+                model=self.model,
+                max_tokens=4096,
+                temperature=0,
+                messages=[
+                    {"role": "system", "content": EXTRACTION_SYSTEM},
+                    {"role": "user",   "content": prompt},
+                ],
+                response_format=SlokaExtraction,
+            )
+            return response.choices[0].message.parsed.rules
+        except Exception as e:
+            print(f"⚠  OpenAI extraction failed for sloka {sloka_label}: {e}")
+            return []
+
+
 # ── RTF parser ─────────────────────────────────────────────────────────────────
 
 def strip_rtf(raw: str) -> str:
@@ -940,7 +1039,7 @@ def parse_rtf_file(
     chapter: int,
     dasha_lord_filter: str | None,
     batch_id: str,
-    extractor: SlokaExtractor,
+    extractor: "SlokaExtractor | OpenAISlokaExtractor",
 ) -> list[dict]:
     raw    = Path(rtf_path).expanduser().read_text(encoding="utf-8", errors="replace")
     plain  = strip_rtf(raw)
@@ -1066,9 +1165,13 @@ def main():
     parser.add_argument("--db-name",    required=True)
     parser.add_argument("--sloka-filter", default=None,
                         help="Show full rules only for this sloka label in dry-run (e.g. '69-73')")
-    parser.add_argument("--model",      default="claude-haiku-4-5",
+    parser.add_argument("--model",        default="claude-haiku-4-5",
                         help="Claude model for extraction (default: claude-haiku-4-5)")
-    parser.add_argument("--dry-run",    action="store_true",
+    parser.add_argument("--provider",     choices=["anthropic", "openai"], default="anthropic",
+                        help="AI provider: 'anthropic' (default) or 'openai'")
+    parser.add_argument("--openai-model", default="gpt-4o-mini",
+                        help="OpenAI model when --provider=openai (default: gpt-4o-mini)")
+    parser.add_argument("--dry-run",      action="store_true",
                         help="Print rules but do NOT write to MongoDB")
     args = parser.parse_args()
 
@@ -1076,15 +1179,21 @@ def main():
     chap_name = CHAPTER_NAMES.get(args.chapter, f"Chapter {args.chapter}")
     lord_label = args.dasha_lord or ("auto-detect" if args.chapter == 47 else "N/A")
 
-    print(f"\nBPHS Chapter {args.chapter} — {chap_name}  [v1 Dasha extraction]")
-    print(f"Dasha lord: {lord_label}  |  model: {args.model}  |  batch_id: {batch_id}")
-    print("─" * 60)
+    if args.provider == "openai":
+        effective_model = args.openai_model
+        extractor = OpenAISlokaExtractor(model=effective_model)
+    else:
+        effective_model = args.model
+        extractor = SlokaExtractor(model=effective_model)
 
-    extractor = SlokaExtractor(model=args.model)
+    print(f"\nBPHS Chapter {args.chapter} — {chap_name}  [v1 Dasha extraction]")
+    print(f"Dasha lord: {lord_label}  |  provider: {args.provider}  |  model: {effective_model}  |  batch_id: {batch_id}")
+    print("─" * 60)
     rules     = parse_rtf_file(args.rtf, args.chapter, args.dasha_lord, batch_id, extractor)
 
     if not rules:
-        print("\n⚠  No rules extracted. Check RTF path and ANTHROPIC_API_KEY.")
+        key_hint = "OPENAI_API_KEY" if args.provider == "openai" else "ANTHROPIC_API_KEY"
+        print(f"\n⚠  No rules extracted. Check RTF path and {key_hint}.")
         return
 
     # Summary by sub_type and dasha_lord / house

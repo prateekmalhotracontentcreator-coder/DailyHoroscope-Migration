@@ -1,6 +1,6 @@
 # Knowledge Engine — Session Handover
-> Last updated: 21 Apr 2026 (end-of-session update — Ch 52/53/54 split-upgrade complete)
-> Written at end of Session 4 (context compressed multiple times)
+> Last updated: 22 Apr 2026 (Ch 56 dry run complete — flag points documented, live ingest pending)
+> Written at end of Session 4 (context compressed multiple times); updated Session 5
 > Next session: read this FIRST before touching any script or DB
 
 ---
@@ -102,7 +102,7 @@ Expected output for sloka 45-47: ~9 rules (was 2). For sloka 1-2: ~6 rules (was 
 | BPHS Vol 2 Ch 53 (Venus MD) | bphs-ch53-dasha-20260417 | 72 | +123 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 54 (Mars MD) | bphs-ch54-dasha-20260417 | 86 | +121 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 55 (Rahu MD) | bphs-ch55-dasha-20260417 | 96 | +153 ✅ | split-upgrade done, not validated |
-| BPHS Vol 2 Ch 56 (Jupiter MD) | bphs-ch56-dasha-20260418 | 126 | — | ✅ validated — split-upgrade pending |
+| BPHS Vol 2 Ch 56 (Jupiter MD) | bphs-ch56-dasha-20260418 | 126 | +159 🔄 dry run done, live pending | split-upgrade dry run ✅ — flag points in Section 8 |
 | BPHS Vol 2 Ch 57 (Saturn MD) | bphs-ch57-dasha-20260419 | 132 | — | ✅ validated — split-upgrade pending |
 | BPHS Vol 2 Ch 58 (Mercury MD) | bphs-ch58-dasha-20260419 | 104 | — | ✅ validated — split-upgrade pending |
 | BPHS Vol 2 Ch 59 (Ketu MD) | bphs-ch59-dasha-20260421 | 91 | — | ✅ validated — split-upgrade pending |
@@ -137,7 +137,7 @@ Two dedup fixes committed during this step (required for house-lord variant rule
 
 Sweep mechanism: `patch_slokas.py --split-upgrade` re-extracts all slokas per chapter under the new SPLITTING + ANTI-COLLISION + LORDSHIP QUALIFIER prompt. Dedup (60% DB threshold, excluding `pre_split_merged` originals) ensures only genuinely new individual rules are inserted, tagged `source_note='split_upgrade'`.
 
-**Completed (21 Apr 2026):**
+**Completed (21–22 Apr 2026):**
 | Ch | MD Lord | New rules | Notes |
 |---|---|---|---|
 | 48 | Moon | +34 | |
@@ -145,22 +145,26 @@ Sweep mechanism: `patch_slokas.py --split-upgrade` re-extracts all slokas per ch
 | 53 | Venus | +123 | |
 | 54 | Mars | +121 | |
 | 55 | Rahu | +153 | First chapter with grouped outcome rules. Sloka 21-24 fix applied — see INGEST_NOTES |
-| **Total so far** | | **+570** | |
+| 56 | Jupiter | +159 🔄 | Dry run done 22 Apr — live ingest pending. See Section 8 for sloka 72-75 anomaly + 6 Phase 3 candidates |
+| **Total confirmed live** | | **+570** | Ch 56 +159 pending live → total will be **+729** |
 
 **Remaining (run in this order):**
 
 ```bash
-# Ch 55 — Rahu MD (NEXT)
 cd /Users/apple/DailyHoroscope-Migration/backend
+
+# Ch 56 — Jupiter MD (NEXT — dry run done, run live)
 python3 scripts/patch_slokas.py \
-  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS ch 55 Vol 2.rtf" \
-  --chapter 55 --dasha-lord Rahu \
-  --batch-id bphs-ch55-dasha-20260417 \
-  --slokas "X" --mongo-url "$MONGO_URL" --db-name horoscope_db --dry-run
-# ^ Run with dummy sloka first to get the Available: list, then re-run with all slokas
+  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Ch56_Vol 2.rtf" \
+  --chapter 56 --dasha-lord Jupiter \
+  --batch-id bphs-ch56-dasha-20260418 \
+  --slokas "1-3,4-5,6-7,8-11,12-14,15,16-17,18-19,20-21,22,23-24,25-26,27-28,29-29,30-31,32,33-34,35-36,37-38,39-43,44,45-47,48-50,51-53,54-55,56-57,58-60,61-63,64,65-66,67-68,69-71,72-75,76-78,79-80" \
+  --mongo-url "$MONGO_URL" --db-name horoscope_db \
+  --split-upgrade
+# After live ingest: apply sloka 72-75 fix (Section 8)
 ```
 
-Repeat same pattern for: Ch 56 (Jupiter / bphs-ch56-dasha-20260418 / `BPHS_Ch56_Vol 2.rtf`), Ch 57 (Saturn / bphs-ch57-dasha-20260419 / `BPHS ch 57 Vol 2.rtf`), Ch 58 (Mercury / bphs-ch58-dasha-20260419 / `BPHS_ch 58_Vol 2.rtf`), Ch 59 (Ketu / bphs-ch59-dasha-20260421 / `BPHS_ch59_Vol2.rtf`), Ch 47 (Sun / bphs-ch47-dasha-20260416 / `BPHS Ch 47 Vol 2.rtf`).
+Ch 57 (Saturn / bphs-ch57-dasha-20260419 / `BPHS ch 57 Vol 2.rtf`), Ch 58 (Mercury / bphs-ch58-dasha-20260419 / `BPHS_ch 58_Vol 2.rtf`), Ch 59 (Ketu / bphs-ch59-dasha-20260421 / `BPHS_ch59_Vol2.rtf`), Ch 47 (Sun / bphs-ch47-dasha-20260416 / `BPHS Ch 47 Vol 2.rtf`).
 
 ### Step 4 — Validate Ch 52/53/54/55 (after split-upgrade done)
 
@@ -237,9 +241,51 @@ All scripts: `cd /Users/apple/DailyHoroscope-Migration/backend`
 - 197 pending_human_review — awaiting co-founder sign-off
 - **Under-split review pending** — same house/dignity bundling issue exists here; assess after dasha split-upgrade sweep is complete
 
+### Ch 56 — Jupiter MD (22 Apr 2026) — ⚠️ FLAG POINTS FOR REVIEW
+
+#### ⚠️ Sloka 72-75 — sub_type anomaly (same pattern as Ch 55 sloka 21-24)
+
+Dry run shows `R-BPHS56-PATCH-D1BCEE` will be tagged `dasha_grouped_outcome` + `is_group_summary=True` but it is an **individual Rahu-exaltation condition rule**, not a grouped summary.
+
+**Fix to apply immediately after live ingest:**
+```python
+# In mongo shell or Python script — run after live ingest confirms R-BPHS56-PATCH-D1BCEE in DB
+col.update_one(
+    {"rule_id": "R-BPHS56-PATCH-D1BCEE"},
+    {"$set": {
+        "condition.sub_type": "dasha_favourable",
+        "condition.is_group_summary": False
+    }}
+)
+# Then insert a true grouped summary covering all 7 Rahu conditions in sloka 72-75
+# (Rahu exaltation, own sign, friend's sign, kendra, trikona, 3rd, 11th → one dasha_grouped_outcome rule)
+```
+
+Root cause: temperature=0 variance — model interpreted GROUPED OUTCOME RULE guidance differently in live run vs dry run. Same pattern as Ch 55 sloka 21-24.
+
+#### Phase 3 candidates — slokas missing grouped outcome rules (6 slokas)
+
+| Sloka | Condition count | Type | Notes |
+|---|---|---|---|
+| 33-34 | 4 | unfavourable | 4 Jupiter AD malefic placement conditions |
+| 44 | 7 | unfavourable | 7 Saturn conditions with combined outcomes |
+| 51-53 | 7 | favourable | 7 distinct favourable conditions |
+| 54-55 | 6 | unfavourable | 6 unfavourable combinations |
+| 61-63 | 8 | unfavourable | 8 unfavourable conditions — largest group |
+| 65-66 | 4 | favourable | 4 favourable planet-in-sign conditions |
+
+These 6 slokas will have individual split rules inserted by split-upgrade, but their grouped summary (`dasha_grouped_outcome`, `is_group_summary=True`) will be absent. Add to Phase 3 re-run list alongside pre-Ch-55 chapters.
+
+#### Ch 56 totals
+- Original: 126 rules (bphs-ch56-dasha-20260418)
+- Split-upgrade dry run: +159 net-new rules
+- **Total after live ingest: 285 rules**
+
+---
+
 ### Ch 47-59 (Dasha chapters)
-- **Split-upgrade sweep IN PROGRESS** — Ch 48/52/53/54 done (+417 rules). Ch 55/56/57/58/59/47 still pending.
-- **Validation pending** — Ch 52/53/54/55 not yet validated. Run `validate_rules.py` after split-upgrade for each.
+- **Split-upgrade sweep IN PROGRESS** — Ch 48/52/53/54/55 done (+570 rules). Ch 56 (dry run done)/57/58/59/47 still pending live ingest.
+- **Validation pending** — Ch 52/53/54/55/56 not yet validated. Run `validate_rules.py` after split-upgrade for each.
 - Ch 57 slokas 20-21, 30-31 — over-split suspected, review in Rules Browser after split-upgrade
 - Ch 59 sloka 45-47 — OCR-corrupted sloka, verify extracted rules cover all placement conditions
 - Ch 59 batch ID in DB is `bphs-ch59-dasha-20260421` (not 20260420 as in some notes)
