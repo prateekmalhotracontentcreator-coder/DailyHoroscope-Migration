@@ -222,6 +222,49 @@ KEEP AS ONE RULE:
   3. ADDITIVE QUALIFIERS that modify a parent condition (append to that rule, not a new split)
        "if also associated with the lord of the 9th" → qualifier on the parent rule
 
+  4. LORDSHIP QUALIFIER COMPOUND RULES (MANDATORY — always extract as a standalone rule):
+       If the source text combines a placement list WITH a lordship qualifier, extract ONE
+       additional compound rule capturing BOTH parts together. Do NOT silently absorb the
+       lordship qualifier into condition text or drop it.
+
+       Example source: "Sun in kendra, trikona or 11th, associated with lord of 10th → great gain"
+         → Rule A: "Sun in kendra → great gain"           (individual placement — from ALWAYS SPLIT rule 1)
+         → Rule B: "Sun in trikona → great gain"          (individual placement)
+         → Rule C: "Sun in 11th → great gain"             (individual placement)
+         → Rule D: "Sun in kendra/trikona/11th associated with lord of 10th → great gain"
+                                                          (compound: placement list + lordship qualifier)
+       Rule D is a DISTINCT condition — it fires only when BOTH placement AND lordship are true.
+       It is NOT a collision with Rules A/B/C — it carries additional astrological specificity.
+
+       Lordship qualifier signals: "associated with lord of X", "with lord of X", "aspected by
+       lord of X", "combined with lord of X", "as lord of X and Y", "with lords of Xth and Yth"
+
+ANTI-COLLISION RULE — NO PARTIAL SPLITS (MANDATORY):
+
+  If you decide to split a list of conditions into individual rules, you MUST:
+    a) Generate ALL individual rules — one for every item in the list.
+    b) NOT also generate a merged rule covering the same conditions.
+
+  Either split completely OR keep as one merged rule. Never do both.
+
+  WRONG — partial split with merged remnant:
+    "Venus in 8th from Sun"          ← individual ✓
+    "Venus in 12th from Sun"         ← individual ✓
+    "Venus in 6th, 8th, or 12th"    ← merged still present ✗ (6th missing individually)
+
+  RIGHT — complete split, no merged:
+    "Venus in 6th from Sun"          ← individual ✓
+    "Venus in 8th from Sun"          ← individual ✓
+    "Venus in 12th from Sun"         ← individual ✓
+    (no merged rule)
+
+  RIGHT — keep merged when splitting is not warranted:
+    "Venus in 6th, 8th, or 12th"    ← merged ✓  (one rule, no individuals alongside it)
+
+  Same rule applies to dignity states:
+  WRONG: "Jupiter in exaltation" + "Jupiter in own sign" + "Jupiter in exaltation or own sign"
+  RIGHT: "Jupiter in exaltation" + "Jupiter in own sign"  (no merged alongside individuals)
+
 strength_band for house positions (unfavourable rules):
   8th house → "high" (most malefic dusthana)
   6th, 12th → "medium"
@@ -559,6 +602,11 @@ def infer_strength_band_from_condition(condition_text: str, sub_type: str) -> st
 
     # ── House positions — unfavourable context ─────────────────────────────────
     if sub_type == "dasha_unfavourable":
+        # Explicit moderation language overrides house-based intensity inference.
+        # e.g. "moderate effects at commencement" should not inherit "high" from 8th.
+        if any(x in text for x in ["moderate effect", "medium effect", "mixed effect",
+                                    "moderate result", "moderate at"]):
+            return "medium"
         if re.search(r"\b8th\b", text):
             return "high"   # highest intensity of harm
         if re.search(r"\b(6th|12th)\b", text):
@@ -634,7 +682,7 @@ def extracted_to_rule(
             "houses_involved":     houses_involved,
             "sub_conditions":      [],
             "operator":            "and",
-            "dignity_state":       item.dignity_state or "",
+            "dignity_state":       item.dignity_state or "general",
             "planet_context_note": item.planet_context_note or "",
         },
         "interpretation": {
@@ -746,7 +794,7 @@ def extracted_to_rule_house_lord(
         "houses_involved":     houses_involved,
         "sub_conditions":      [],
         "operator":            "and",
-        "dignity_state":       item.dignity_state or "",
+        "dignity_state":       item.dignity_state or "general",
         "planet_context_note": item.planet_context_note or "",
     }
 
@@ -953,6 +1001,8 @@ def main():
                         help="Override Mahadasha lord (auto-detected for Ch 47; required for Ch 48/52-60 if not auto-detected)")
     parser.add_argument("--mongo-url",  required=True)
     parser.add_argument("--db-name",    required=True)
+    parser.add_argument("--sloka-filter", default=None,
+                        help="Show full rules only for this sloka label in dry-run (e.g. '69-73')")
     parser.add_argument("--model",      default="claude-haiku-4-5",
                         help="Claude model for extraction (default: claude-haiku-4-5)")
     parser.add_argument("--dry-run",    action="store_true",
@@ -1004,17 +1054,28 @@ def main():
 
     if args.dry_run:
         print("\n[DRY RUN] — no changes written to MongoDB")
-        print("\nSample rules:")
-        for r in rules[:8]:
+
+        sloka_filter = args.sloka_filter
+        if sloka_filter:
+            filtered = [r for r in rules if r["condition"].get("sloka") == sloka_filter]
+            print(f"\nAll rules for sloka {sloka_filter} ({len(filtered)} rule(s)):")
+            display_rules = filtered
+        else:
+            print("\nSample rules (first 8):")
+            display_rules = rules[:8]
+
+        for r in display_rules:
             c = r["condition"]
             print(f"\n  {r['rule_id']}")
-            print(f"    sloka       : {c['sloka']}")
+            print(f"    sloka         : {c['sloka']}")
             if c["type"] == "dasha_of_house_lord":
-                print(f"    house       : {c.get('house', '?')}")
+                print(f"    house         : {c.get('house', '?')}")
             else:
-                print(f"    dasha_lord  : {c.get('dasha_lord', '?')}")
-            print(f"    sub_type    : {c['sub_type']}")
-            print(f"    summary     : {r['interpretation']['summary'][:100]}")
+                print(f"    dasha_lord    : {c.get('dasha_lord', '?')}")
+            print(f"    sub_type      : {c['sub_type']}")
+            print(f"    dignity_state : {c.get('dignity_state', '—')}")
+            print(f"    strength_band : {r.get('strength_band', '—')}")
+            print(f"    summary       : {r['interpretation']['summary'][:120]}")
         return
 
     # Insert
