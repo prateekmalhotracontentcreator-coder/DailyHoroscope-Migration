@@ -1,6 +1,6 @@
 # Knowledge Engine — Session Handover
-> Last updated: 21 Apr 2026
-> Written at end of Session 3 (context compressed twice before this point)
+> Last updated: 21 Apr 2026 (end-of-session update — Ch 52/53/54 split-upgrade complete)
+> Written at end of Session 4 (context compressed multiple times)
 > Next session: read this FIRST before touching any script or DB
 
 ---
@@ -83,28 +83,29 @@ Expected output for sloka 45-47: ~9 rules (was 2). For sloka 1-2: ~6 rules (was 
 
 ### MongoDB: `horoscope_db` (MANDATORY — never use `EverydayHoroscope`)
 
-### Rules in DB: ~1,726 RTF-sourced rules (all `approval_status = pending_review` or `auto_approved`)
+### Rules in DB: ~2,180 RTF-sourced rules (all `approval_status = pending_review` or `auto_approved`)
+**Split-upgrade rules (+417 added 21 Apr 2026):** Ch 48 (+34), Ch 52 (+139), Ch 53 (+123), Ch 54 (+121) — tagged `source_note = 'split_upgrade'`
 
-### antardasha_planet coverage: **802 / 802 = 100%** across Ch 47–58 ✅
+### antardasha_planet coverage: **802 / 802 = 100%** across Ch 47–59 ✅
 - 2 universal meta-rules: `R-BPHS47-008`, `R-BPHS47-009` → `applies_to_all_dasha_lords: true`
 
 ### Chapters ingested (RTF pipeline):
 
-| Source | Batch IDs | Rules | Status |
-|---|---|---|---|
-| BPHS Vol 1 Ch 12-18 | bphs-ch12..18-v2-20260414 | 241 | ✅ validated |
-| BPHS Vol 1 Ch 19-23 | bphs-ch19..23-v2-20260415 | 119 | ✅ validated |
-| BPHS Vol 1 Ch 24 | bphs-ch24-v2-20260416 | 376 | ✅ validated |
-| BPHS Vol 2 Ch 47 | bphs-ch47-dasha-20260416 | 93 | ✅ validated |
-| BPHS Vol 2 Ch 48 | bphs-ch48-dasha-20260416 | 46 | ✅ (antardasha backfill clean) |
-| BPHS Vol 2 Ch 52 | bphs-ch52-dasha-20260416 | 93 | ingested, not validated |
-| BPHS Vol 2 Ch 53 | bphs-ch53-dasha-20260417 | 72 | ingested, not validated |
-| BPHS Vol 2 Ch 54 | bphs-ch54-dasha-20260417 | 86 | ingested, not validated |
-| BPHS Vol 2 Ch 55 | bphs-ch55-dasha-20260417 | 96 | ingested, not validated |
-| BPHS Vol 2 Ch 56 | bphs-ch56-dasha-20260418 | 126 | ✅ validated |
-| BPHS Vol 2 Ch 57 | bphs-ch57-dasha-20260419 | 132 | ✅ validated |
-| BPHS Vol 2 Ch 58 | bphs-ch58-dasha-20260419 | 104 | ✅ validated |
-| BPHS Vol 2 Ch 59 | bphs-ch59-dasha-20260420 | 88 | ✅ validated |
+| Source | Batch ID | Original Rules | Split-Upgrade +Rules | Status |
+|---|---|---|---|---|
+| BPHS Vol 1 Ch 12-18 | bphs-ch12..18-v2-20260414 | 241 | — | ✅ validated |
+| BPHS Vol 1 Ch 19-23 | bphs-ch19..23-v2-20260415 | 119 | — | ✅ validated |
+| BPHS Vol 1 Ch 24 | bphs-ch24-v2-20260416 | 376 | — | ✅ validated |
+| BPHS Vol 2 Ch 47 (Sun MD) | bphs-ch47-dasha-20260416 | 93 | — | ✅ validated — split-upgrade pending |
+| BPHS Vol 2 Ch 48 (Moon MD) | bphs-ch48-dasha-20260416 | 46 | +34 ✅ | split-upgrade done, not validated |
+| BPHS Vol 2 Ch 52 (Sun MD) | bphs-ch52-dasha-20260416 | 93 | +139 ✅ | split-upgrade done, not validated |
+| BPHS Vol 2 Ch 53 (Venus MD) | bphs-ch53-dasha-20260417 | 72 | +123 ✅ | split-upgrade done, not validated |
+| BPHS Vol 2 Ch 54 (Mars MD) | bphs-ch54-dasha-20260417 | 86 | +121 ✅ | split-upgrade done, not validated |
+| BPHS Vol 2 Ch 55 (Rahu MD) | bphs-ch55-dasha-20260417 | 96 | — | ingested, not validated — split-upgrade NEXT |
+| BPHS Vol 2 Ch 56 (Jupiter MD) | bphs-ch56-dasha-20260418 | 126 | — | ✅ validated — split-upgrade pending |
+| BPHS Vol 2 Ch 57 (Saturn MD) | bphs-ch57-dasha-20260419 | 132 | — | ✅ validated — split-upgrade pending |
+| BPHS Vol 2 Ch 58 (Mercury MD) | bphs-ch58-dasha-20260419 | 104 | — | ✅ validated — split-upgrade pending |
+| BPHS Vol 2 Ch 59 (Ketu MD) | bphs-ch59-dasha-20260421 | 91 | — | ✅ validated — split-upgrade pending |
 
 ---
 
@@ -132,54 +133,44 @@ Two dedup fixes committed during this step (required for house-lord variant rule
 - `patch_slokas.py`: condition-only comparison (strip result text before overlap check)
 - `patch_slokas.py`: two-tier thresholds — 60% vs DB, 90% within-run (prevents 9th/10th/4th lord blocking each other)
 
-### Step 3 — Gap-fill sweep: ALL Ch 47-59 for splitting under-extractions (NEXT ACTION)
+### Step 3 — Split-Upgrade Sweep: ALL Ch 47-59 — **IN PROGRESS**
 
-The new SPLITTING GUIDANCE will produce more rules per sloka than the old prompt. For previously ingested chapters (Ch 47-58), slokas with house-list or dignity-list conditions were under-extracted.
+Sweep mechanism: `patch_slokas.py --split-upgrade` re-extracts all slokas per chapter under the new SPLITTING + ANTI-COLLISION + LORDSHIP QUALIFIER prompt. Dedup (60% DB threshold, excluding `pre_split_merged` originals) ensures only genuinely new individual rules are inserted, tagged `source_note='split_upgrade'`.
 
-**Strategy:** 
-- Do NOT re-ingest entire chapters (risk of duplicates)
-- Use `patch_slokas.py` targeted at specific slokas identified by a DB query
-- Query to find candidates: rules whose `interpretation.summary` contains patterns like `"kendra, trikona"` or `"6th, 8th"` or `"own sign"` — these are likely merged rules
+**Completed (21 Apr 2026):**
+| Ch | MD Lord | New rules |
+|---|---|---|
+| 48 | Moon | +34 |
+| 52 | Sun | +139 |
+| 53 | Venus | +123 |
+| 54 | Mars | +121 |
+| **Total so far** | | **+417** |
 
-Run this query first to assess scale:
+**Remaining (run in this order):**
 
-```python
-import pymongo, re
-client = pymongo.MongoClient("YOUR_MONGO_URL")
-col = client["horoscope_db"]["interpretation_rules"]
-patterns = [
-    r"kendra.*trikona",
-    r"6th.*8th",
-    r"8th.*12th",
-    r"own sign.*exaltation",
-    r"exaltation.*own sign",
-    r"friend.s sign",
-]
-candidates = []
-for doc in col.find({"source.batch_id": {"$regex": "bphs-ch(47|52|53|54|55|56|57|58|59)"}}, 
-                     {"rule_id":1, "source.sloka":1, "interpretation.summary":1, "source.batch_id":1}):
-    summary = doc.get("interpretation",{}).get("summary","")
-    for p in patterns:
-        if re.search(p, summary, re.IGNORECASE):
-            candidates.append(doc)
-            break
-print(f"Candidate under-split rules: {len(candidates)}")
-for d in candidates[:20]:
-    print(f"  {d['rule_id']} | {d['source'].get('batch_id','')} sloka {d['source'].get('sloka','')} | {d['interpretation']['summary'][:80]}")
+```bash
+# Ch 55 — Rahu MD (NEXT)
+cd /Users/apple/DailyHoroscope-Migration/backend
+python3 scripts/patch_slokas.py \
+  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS ch 55 Vol 2.rtf" \
+  --chapter 55 --dasha-lord Rahu \
+  --batch-id bphs-ch55-dasha-20260417 \
+  --slokas "X" --mongo-url "$MONGO_URL" --db-name horoscope_db --dry-run
+# ^ Run with dummy sloka first to get the Available: list, then re-run with all slokas
 ```
 
-### Step 4 — Ch 59 Open Points (Rules Browser)
+Repeat same pattern for: Ch 56 (Jupiter / bphs-ch56-dasha-20260418 / `BPHS_Ch56_Vol 2.rtf`), Ch 57 (Saturn / bphs-ch57-dasha-20260419 / `BPHS ch 57 Vol 2.rtf`), Ch 58 (Mercury / bphs-ch58-dasha-20260419 / `BPHS_ch 58_Vol 2.rtf`), Ch 59 (Ketu / bphs-ch59-dasha-20260421 / `BPHS_ch59_Vol2.rtf`), Ch 47 (Sun / bphs-ch47-dasha-20260416 / `BPHS Ch 47 Vol 2.rtf`).
 
-- Check 4 flagged rules: Rules Browser → filter flagged, batch `bphs-ch59-dasha-20260420`
-- Sloka 45-47: verify 2 extracted rules cover all placement conditions
+### Step 4 — Validate Ch 52/53/54/55 (after split-upgrade done)
+
+Run `validate_rules.py --batch-id <batch-id>` on each once split-upgrade is complete:
+```bash
+python3 scripts/validate_rules.py --batch-id bphs-ch52-dasha-20260416 --db-name horoscope_db
+```
 
 ### Step 5 — Next Chapter Ingestion
 
-**BPHS Ch 60** — Prateek has not yet provided RTF. Ask him.
-
-Other dasha chapters available:
-- Ch 48 (Moon MD) — already in DB but no RTF confirmed
-- Ch 52-55 (Ketu/Venus/Mars/Moon MD) — in DB, no validation stats recorded
+**BPHS Ch 60** — Prateek has not yet provided RTF. Ask him when sweep is done.
 
 ---
 
@@ -224,10 +215,16 @@ All scripts: `cd /Users/apple/DailyHoroscope-Migration/backend`
 | `temperature=0` | Deterministic extraction | Ch 57 non-determinism |
 | `condition.antardasha_planet` field | Queryable sub-period planet | KE filtering |
 | `SPLITTING GUIDANCE` added | Explicit split/no-split examples | Ch 58 under-extraction |
-| `SPLITTING GUIDANCE` OVERHAULED | House-by-house + dignity-by-dignity splits + strength_band | Ch 59 sloka 20-21 analysis — **21 Apr 2026** |
+| `SPLITTING GUIDANCE` OVERHAULED | House-by-house + dignity-by-dignity splits + strength_band mapping | Ch 59 sloka 20-21 analysis — **21 Apr 2026** |
 | Period-as-range-separator `5.6.` → `5-6` | `split_into_sloka_blocks()` regex | Ch 59 sloka 5-6 missing |
 | Ch 59 added to `INTRO_SLOKAS_BY_CHAPTER` with empty set | No skip-list inheritance | Ch 59 sloka 1-2 |
 | `infer_strength_band_from_condition()` + `strength_band` field | `extracted_to_rule()` + `_fallback_rule()` — commit `19cec9e` | `strength_band` was completely absent from dasha pipeline — **21 Apr 2026** |
+| **ANTI-COLLISION RULE** added to `EXTRACTION_SYSTEM` | Prevents partial splits: if splitting, must generate ALL individuals AND must NOT also keep a merged rule. Either split completely OR keep merged — never both. | Ch 52 sloka 69-73: Venus 6th missing individually while Venus 6th/8th/12th merged remained — **21 Apr 2026** |
+| **LORDSHIP QUALIFIER COMPOUND RULES** added (KEEP AS ONE — point 4) | When source text combines placement list WITH lordship qualifier ("associated with lord of X"), extract individual placement rules per ALWAYS SPLIT PLUS one standalone compound rule capturing placement+lordship | Ch 54 sloka 64-66: compound condition silently absorbed — **21 Apr 2026** |
+| `--sloka-filter` flag in dry-run | Shows all rules for a specific sloka label with full field details (dignity_state, strength_band, summary) — enables targeted verification before live ingest | Verification of anti-collision fix in Ch 52 sloka 69-73 — **21 Apr 2026** |
+| `strength_band` moderate override in `infer_strength_band_from_condition()` | Checks for "moderate effect/result/at" keywords BEFORE house-based intensity inference — prevents `high` being assigned to rules with explicitly moderated outcomes | Ch 52 fix — **21 Apr 2026** |
+| `dignity_state` default changed to `"general"` | Both `extracted_to_rule()` (line 668) and `extracted_to_rule_house_lord()` (line 780): `item.dignity_state or "general"` (was `or ""`) | Remedy rules and uncategorised rules had empty `dignity_state` — **21 Apr 2026** |
+| `max_tokens` raised from 2048 → 4096 (commit f1fd623) | Prevents JSON truncation on large slokas with many rules | Ch 52 large sloka extraction — **21 Apr 2026** |
 
 ---
 
@@ -237,16 +234,23 @@ All scripts: `cd /Users/apple/DailyHoroscope-Migration/backend`
 - 38 flagged rules — not yet reviewed in Rules Browser
 - 13 contradiction pairs — not yet resolved
 - 197 pending_human_review — awaiting co-founder sign-off
-- **Under-split review pending** — same house/dignity bundling issue exists here; assess after Step 3 gap-fill sweep methodology is proven on dasha chapters
+- **Under-split review pending** — same house/dignity bundling issue exists here; assess after dasha split-upgrade sweep is complete
 
 ### Ch 47-59 (Dasha chapters)
-- Ch 52/53/54/55 — in DB but no validation stats recorded. Run `validate_rules.py` on each when Prateek is ready
-- Ch 57 slokas 20-21, 30-31 — over-split suspected, review in Rules Browser
-- Ch 59 sloka 45-47 — verify 2 rules cover all conditions
-- Ch 59 sloka 1-2 — gap-fill with new splitting prompt (Step 2 above)
+- **Split-upgrade sweep IN PROGRESS** — Ch 48/52/53/54 done (+417 rules). Ch 55/56/57/58/59/47 still pending.
+- **Validation pending** — Ch 52/53/54/55 not yet validated. Run `validate_rules.py` after split-upgrade for each.
+- Ch 57 slokas 20-21, 30-31 — over-split suspected, review in Rules Browser after split-upgrade
+- Ch 59 sloka 45-47 — OCR-corrupted sloka, verify extracted rules cover all placement conditions
+- Ch 59 batch ID in DB is `bphs-ch59-dasha-20260421` (not 20260420 as in some notes)
+
+### Phase 2 — Lordship Qualifier Compound Rules
+Chapters ingested before 21 Apr 2026 (Ch 47/48/52/53/54/56/57/58/59) may be missing compound placement+lordship rules. Prompt fix is now in `ingest_bphs_dasha_v1.py`. Audit deferred to after co-founder approval. See INGEST_NOTES.md Phase 2 section for query pattern.
+
+### Ch 48 Schema Gap
+34 split-upgrade rules inserted pre-schema-upgrade may lack `dignity_state` or `planet_context_note`. One-shot DB update script needed.
 
 ### Co-founder Review Workflow
-Not yet commissioned. Brief needed for dedicated sign-off queue. Prateek must approve before any rule gets `approval_status = 'approved'` (the only status the live backend queries).
+Not yet commissioned. Prateek must approve before any rule gets `approval_status = 'approved'` (the only status the live backend queries). Zero approved rules currently — Knowledge Engine is interpretation-layer-ready but not live.
 
 ### CPath-1 Items
 - Item 18: `longevity_router.py` import fail — not addressed
@@ -282,9 +286,17 @@ Pending from Prateek:
 
 Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
 Branch: `main` (deploy-on-push to Vercel + Render)
-Last commit: `ea9bd7c` — Ch 59 sloka 20-21 / 41-42 assessment corrected
+Last committed: `f07589f` — `feat(ke): add dignity_state and planet_context_note to extraction schema`
 
-**Splitting Guidance overhaul** is committed locally but Prateek runs from the repo. Confirm push status at session start:
+**Uncommitted local changes (as of end of Session 4):**
+- `backend/scripts/ingest_bphs_dasha_v1.py` — ANTI-COLLISION RULE + LORDSHIP QUALIFIER COMPOUND RULES + `--sloka-filter` flag + moderate strength_band override + `dignity_state` default to "general"
+- `.claude/HANDOVER.md` — this document
+- `backend/scripts/INGEST_NOTES.md` — Ch 52/53/54 split-upgrade records, grand total update
+
+**Action required at next session start:**
 ```bash
-cd /Users/apple/DailyHoroscope-Migration && git log --oneline -5
+cd /Users/apple/DailyHoroscope-Migration
+git log --oneline -5        # confirm current state
+git diff --stat             # confirm uncommitted changes
+# then commit the script + doc updates before running any new ingests
 ```

@@ -246,11 +246,11 @@ The `EverydayHoroscope` database was a local-only mistake; 3,200 rules were migr
 
 **Script used:** `ingest_bphs_dasha_v1.py`
 
-| Ch | MD Lord | Batch ID | Total | auto_approved | pending_human_review | flagged | contradictions |
-|---|---|---|---|---|---|---|---|
-| 52 | Sun | bphs-ch52-dasha-* | — | — | — | — | — |
-| 53 | Moon | bphs-ch53-dasha-* | — | — | — | — | — |
-| 54 | Mars | bphs-ch54-dasha-20260417 | 86 | — | — | — | — |
+| Ch | MD Lord | Batch ID | Total (original) | Split-upgrade rules | auto_approved | pending_human_review | flagged | contradictions |
+|---|---|---|---|---|---|---|---|---|
+| 52 | Sun | bphs-ch52-dasha-20260416 | 93 | +139 (21 Apr) | — | — | — | — |
+| 53 | Venus | bphs-ch53-dasha-20260417 | 72 | +123 (21 Apr) | — | — | — | — |
+| 54 | Mars | bphs-ch54-dasha-20260417 | 86 | +121 (21 Apr) | — | — | — | — |
 | 55 | Rahu | bphs-ch55-dasha-* | — | — | — | — | — |
 | 56 | Jupiter | bphs-ch56-dasha-20260418 | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
 | **57** | **Saturn** | **bphs-ch57-dasha-20260419** | **132** | **103 (79%)** | **18 (14%)** | **9 (7%)** | **0 pairs** |
@@ -477,6 +477,36 @@ Slokas 20-21 and 41-42 both showed dry run counts LOWER than live (1 vs 4, and 2
 
 ---
 
+### Phase 2 — Lordship Qualifier Compound Rules (Post Co-Founder Approval)
+
+> **Identified: 21 Apr 2026 (Ch 54 sloka 64-66). Deferred to Phase 2.**
+
+#### What it is
+
+Some slokas combine a placement list WITH a lordship qualifier in a single condition:
+
+> "Sun in exaltation, own sign, kendra, trikona or 11th, **associated with lord of 10th** → great gain"
+
+The individual placement rules (Sun in exaltation / own sign / kendra / trikona / 11th) are split correctly by the ALWAYS SPLIT guidance. But the compound rule — "Sun in [any of those placements] **AND** associated with lord of 10th" — is a distinct, independently queryable condition with higher astrological specificity. It should be extracted as a separate rule.
+
+#### Fix applied (21 Apr 2026)
+
+Added **KEEP AS ONE RULE — point 4: LORDSHIP QUALIFIER COMPOUND RULES** to `EXTRACTION_SYSTEM` in `ingest_bphs_dasha_v1.py`. All chapters from Ch 55 onwards will benefit automatically.
+
+#### Phase 2 audit scope
+
+Chapters ingested **before** this fix (Ch 47, 48, 52, 53, 54 split-upgrade patches, Ch 56, 57, 58, 59 original ingests) may have silently absorbed or dropped lordship qualifier compound rules. A targeted audit is needed:
+
+1. Query each pre-fix batch for rules whose `full_condition` contains "associated with lord", "with lord of", "as lord of", "combined with lord" — these are candidates where the compound rule may not exist as a standalone.
+2. For each candidate, check whether a corresponding compound rule (placement + lordship) was separately extracted.
+3. If missing, run `patch_slokas.py --split-upgrade` on the affected slokas to insert the compound rule.
+
+#### Why deferred
+
+Zero rules are live (`approval_status = pending_review`). The missing compound rules are an enhancement (additional specificity), not a data error. Existing individual placement rules still fire correctly for basic queries. Address before co-founder approval of each batch.
+
+---
+
 ### Gap-Fill Protocol — Under-Extracted Slokas
 
 > Applies to Ch 56, 57, 58 (and all future chapters). Run after validation completes for each chapter.
@@ -520,10 +550,10 @@ Slokas 20-21 and 41-42 both showed dry run counts LOWER than live (1 vs 4, and 2
 | Ch | MD Lord | Batch ID | Candidates | Dry Run | Live | New Rules |
 |---|---|---|---|---|---|---|
 | 48 | Moon | bphs-ch48-dasha-20260416 | 9 | ✅ +34 | ✅ 21 Apr | +34 |
-| 52 | Sun | bphs-ch52-dasha-20260416 | 45 | — | — | — |
-| 53 | Venus | bphs-ch53-dasha-20260417 | 41 | — | — | — |
-| 54 | Mars | bphs-ch54-dasha-20260417 | 27 | — | — | — |
-| 55 | Moon | bphs-ch55-dasha-20260417 | 42 | — | — | — |
+| 52 | Sun | bphs-ch52-dasha-20260416 | 45 | ✅ +136 | ✅ 21 Apr | +139 |
+| 53 | Venus | bphs-ch53-dasha-20260417 | 41 | ✅ +123 | ✅ 21 Apr | +123 |
+| 54 | Mars | bphs-ch54-dasha-20260417 | 27 | ✅ +113 | ✅ 21 Apr | +121 |
+| 55 | Rahu | bphs-ch55-dasha-20260417 | 42 | — | — | — |
 | 56 | Jupiter | bphs-ch56-dasha-20260418 | 72 | — | — | — |
 | 57 | Saturn | bphs-ch57-dasha-20260419 | 56 | — | — | — |
 | 58 | Mercury | bphs-ch58-dasha-20260419 | 58 | — | — | — |
@@ -573,31 +603,43 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 
 ### Cumulative Grand Total (All sources, as of 21 Apr 2026)
 
-| Source | Rules | auto_approved | pending_human_review | flagged | contradictions |
-|---|---|---|---|---|---|
-| BPHS Vol 1 Ch 12-18 | 241 | 140 (58%) | 79 (33%) | 28 (12%) | 9 pairs |
-| BPHS Vol 1 Ch 19-23 | 119 | 70 (59%) | 39 (33%) | 10 (8%) | 4 pairs |
-| BPHS Vol 1 Ch 24 | 376 | 267 (71%) | 77 (20%) | 32 (9%) | 0 pairs |
-| BPHS Vol 2 Ch 47 (Sun MD) | 93 | 76 (82%) | 13 (14%) | 4 (4%) | 0 pairs |
-| BPHS Vol 2 Ch 52 (Ketu MD) | 93 | — | — | — | — |
-| BPHS Vol 2 Ch 53 (Venus MD) | 72 | — | — | — | — |
-| BPHS Vol 2 Ch 54 (Mars MD) | 86 | — | — | — | — |
-| BPHS Vol 2 Ch 55 (Moon MD) | 96 | — | — | — | — |
-| BPHS Vol 2 Ch 56 (Jupiter MD) | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
-| BPHS Vol 2 Ch 57 (Saturn MD) | 132 | 103 (79%) | 18 (14%) | 9 (7%) | 0 pairs |
-| BPHS Vol 2 Ch 58 (Mercury MD) | 104 | 76 (73%) | 21 (20%) | 7 (7%) | 0 pairs |
-| BPHS Vol 2 Ch 48 (Moon MD) | 46+34 | — | — | — | — | +34 split_upgrade (21 Apr) |
-| BPHS Vol 2 Ch 59 (Ketu MD) | 91 | 55 (62%) | 29 (33%) | 4 (5%) | 0 pairs | +3 gap-fill (sloka 1-2) |
-| **RTF Grand Total** | **~1,763** | | | | |
+| Source | Rules in DB | Notes |
+|---|---|---|
+| BPHS Vol 1 Ch 12-18 | 241 | 140 auto / 79 pending_human / 28 flagged / 9 contradiction pairs |
+| BPHS Vol 1 Ch 19-23 | 119 | 70 auto / 39 pending_human / 10 flagged / 4 contradiction pairs |
+| BPHS Vol 1 Ch 24 | 376 | 267 auto / 77 pending_human / 32 flagged / 0 contradictions |
+| BPHS Vol 2 Ch 47 (Sun MD) | 93 | 76 auto / 13 pending_human / 4 flagged — split-upgrade pending |
+| BPHS Vol 2 Ch 48 (Moon MD) | 80 | 46 original + 34 split-upgrade (21 Apr) — not validated |
+| BPHS Vol 2 Ch 52 (Sun MD) | 232 | 93 original + 139 split-upgrade (21 Apr) — not validated |
+| BPHS Vol 2 Ch 53 (Venus MD) | 195 | 72 original + 123 split-upgrade (21 Apr) — not validated |
+| BPHS Vol 2 Ch 54 (Mars MD) | 207 | 86 original + 121 split-upgrade (21 Apr) — not validated |
+| BPHS Vol 2 Ch 55 (Rahu MD) | 96 | split-upgrade pending |
+| BPHS Vol 2 Ch 56 (Jupiter MD) | 126 | 103 auto / 16 pending_human / 5 flagged — split-upgrade pending |
+| BPHS Vol 2 Ch 57 (Saturn MD) | 132 | 103 auto / 18 pending_human / 9 flagged — split-upgrade pending |
+| BPHS Vol 2 Ch 58 (Mercury MD) | 104 | 76 auto / 21 pending_human / 7 flagged — split-upgrade pending |
+| BPHS Vol 2 Ch 59 (Ketu MD) | 91 | 55 auto / 29 pending_human / 4 flagged — split-upgrade pending |
+| **RTF Grand Total** | **~2,180** | Includes 417 split-upgrade rules (Ch 48/52/53/54) added 21 Apr 2026 |
 
 **`condition.antardasha_planet` coverage (as of 21 Apr 2026):**
-- Ch 47–58 dasha rules: **802 / 802 = 100%** ✅
+- Ch 47–59 dasha rules: **802 / 802 = 100%** ✅ (original ingests — split-upgrade rules carry antardasha_planet from source context)
 - 2 rules tagged `applies_to_all_dasha_lords = true` (universal quality meta-rules: R-BPHS47-008, R-BPHS47-009)
 - 6 rules assigned `antardasha_planet = Sun` via `manual_general_md_opening` (Drekkana/strength principles at Ch 47 opening)
 
-**Next ingest targets (RTF files needed):**
-- BPHS Ch 59 (Ketu MD antardasha) — RTF pending from user
-- BPHS Vol 1 Ch 3 (already ingested: 48 rules, bphs-ch3-v1-20260414)
-- BPHS Vol 2 Ch 48 (Moon MD — 46 rules ingested, `antardasha_planet` backfill confirmed clean)
+**Split-upgrade sweep — current status (21 Apr 2026):**
+- ✅ Ch 48 (Moon MD): +34 rules — complete
+- ✅ Ch 52 (Sun MD): +139 rules — complete
+- ✅ Ch 53 (Venus MD): +123 rules — complete
+- ✅ Ch 54 (Mars MD): +121 rules — complete
+- ⬜ Ch 55 (Rahu MD): pending — RTF: `BPHS ch 55 Vol 2.rtf`
+- ⬜ Ch 56 (Jupiter MD): pending
+- ⬜ Ch 57 (Saturn MD): pending
+- ⬜ Ch 58 (Mercury MD): pending
+- ⬜ Ch 59 (Ketu MD): pending
+- ⬜ Ch 47 (Sun MD general): pending
+
+**Next ingest targets:**
+- Split-upgrade sweep: Ch 55 → 56 → 57 → 58 → 59 → 47 (in order)
+- BPHS Ch 60 — RTF not yet received from Prateek
+- Run `validate_rules.py` on Ch 52/53/54/55 after split-upgrade completes
 
 ---
