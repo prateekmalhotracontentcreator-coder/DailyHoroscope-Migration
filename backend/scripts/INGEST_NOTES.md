@@ -251,7 +251,7 @@ The `EverydayHoroscope` database was a local-only mistake; 3,200 rules were migr
 | 52 | Sun | bphs-ch52-dasha-20260416 | 93 | +139 (21 Apr) | — | — | — | — |
 | 53 | Venus | bphs-ch53-dasha-20260417 | 72 | +123 (21 Apr) | — | — | — | — |
 | 54 | Mars | bphs-ch54-dasha-20260417 | 86 | +121 (21 Apr) | — | — | — | — |
-| 55 | Rahu | bphs-ch55-dasha-* | — | — | — | — | — |
+| 55 | Rahu | bphs-ch55-dasha-20260417 | 96 | +153 (21 Apr) | — | — | — | — |
 | 56 | Jupiter | bphs-ch56-dasha-20260418 | 126 | 103 (83%) | 16 (13%) | 5 (4%) | 0 pairs |
 | **57** | **Saturn** | **bphs-ch57-dasha-20260419** | **132** | **103 (79%)** | **18 (14%)** | **9 (7%)** | **0 pairs** |
 
@@ -381,6 +381,54 @@ The `EverydayHoroscope` database was a local-only mistake; 3,200 rules were migr
 1. 7 flagged rules — review in Rules Browser (filter: flagged, batch: bphs-ch58-dasha-20260419)
 2. 21 pending_human_review — awaiting co-founder sign-off
 3. Source typo sloka 32-33: "6th, the 6th" (should be "6th, the 8th") — captured as-is; flag for human review
+
+---
+
+### BPHS Ch 55 | Rahu Mahadasha Antardasha | 21 Apr 2026
+
+**Script:** `patch_slokas.py --split-upgrade`
+**Batch ID:** `bphs-ch55-dasha-20260417` | **Dasha lord:** Rahu | **Slokas:** 35 blocks
+**Split-upgrade result:** +153 net-new rules | 37 duplicates skipped
+
+**First chapter with GROUPED OUTCOME RULE (dasha_grouped_outcome):**
+Ch 55 is the first chapter extracted under the full two-layer prompt (individual splits + grouped summary). Grouped rules fire correctly in 17 slokas. See Phase 3 note above for pre-Ch-55 chapter re-run scope.
+
+**Sloka 21-24 — sub_type anomaly + fix (21 Apr 2026):**
+
+Live ingest tagged all 7 individual Saturn placement split rules as `dasha_grouped_outcome` + `is_group_summary=True` instead of `dasha_conditional` + `is_group_summary=False`. Root cause: temperature=0 variance — model interpreted GROUPED OUTCOME RULE guidance differently in live run vs dry run.
+
+Fix applied via direct DB update script:
+- 7 individual rules updated: `sub_type → dasha_conditional`, `is_group_summary → False`
+- 1 true grouped summary rule inserted: `R-BPHS55-PATCH-SAT2124-GRP` (`dasha_grouped_outcome`, `is_group_summary=True`, `condition_group_id=ch55-sl21-24-saturn-mixed`)
+- Final state: 5 pre_split_merged + 7 dasha_conditional + 1 dasha_grouped_outcome = 13 rules ✅
+
+**⚠️ Co-founder review flag — R-BPHS55-018/019/020/021/022 (sloka 21-24 pre_split_merged originals):**
+
+These 5 original ingest rules all share the SAME merged condition summary ("Saturn in kendra, trikona, exaltation sign, own sign, moolatrikona, 3rd or 11th house during Rahu MD") but have mixed sub_types:
+- R-BPHS55-018: `dasha_favourable` — outcome A
+- R-BPHS55-019: `dasha_favourable` — outcome B
+- R-BPHS55-020: `dasha_unfavourable` ← **incorrect sub_type** — source condition is favourable placement; unfavourable tag was an original ingest error
+- R-BPHS55-021: `dasha_unfavourable` ← **incorrect sub_type** — same issue
+- R-BPHS55-022: `dasha_favourable` — outcome C
+
+**Action at co-founder review:** Mark all 5 as `deprecated` (part of the global pre_split_merged deprecation batch). Do NOT promote 018/021/022 to `approved` — their split-upgrade successors (7 individual + 1 grouped) are the correct rules.
+
+**Pre-split_merged deprecation script (run as Step 0 before ANY co-founder review begins):**
+
+```python
+# Run ONCE after split-upgrade sweep is complete across ALL chapters (47/48/52-59)
+# Clears pre_split_merged rules from review queue — do NOT run mid-sweep
+col.update_many(
+    {"metadata.source_note": "pre_split_merged"},
+    {"$set": {"approval_status": "deprecated"}}
+)
+# Verify: col.count_documents({"metadata.source_note": "pre_split_merged", "approval_status": {"$ne": "deprecated"}}) should return 0
+```
+
+**Open Points:**
+1. Validation not yet run — run `validate_rules.py --batch-id bphs-ch55-dasha-20260417` after sweep complete
+2. Sloka 21-24 fix confirmed ✅ — 13 rules, correct architecture
+3. All split-upgrade rules have `approval_status='pending_review'`, `source_note='split_upgrade'` (or `gap_fill` for the SAT2124-GRP fix rule)
 
 ---
 
@@ -604,7 +652,7 @@ Zero rules are live (`approval_status = pending_review`). The missing compound r
 | 52 | Sun | bphs-ch52-dasha-20260416 | 45 | ✅ +136 | ✅ 21 Apr | +139 |
 | 53 | Venus | bphs-ch53-dasha-20260417 | 41 | ✅ +123 | ✅ 21 Apr | +123 |
 | 54 | Mars | bphs-ch54-dasha-20260417 | 27 | ✅ +113 | ✅ 21 Apr | +121 |
-| 55 | Rahu | bphs-ch55-dasha-20260417 | 42 | — | — | — |
+| 55 | Rahu | bphs-ch55-dasha-20260417 | 42 | ✅ +150 dry | ✅ 21 Apr | +153 |
 | 56 | Jupiter | bphs-ch56-dasha-20260418 | 72 | — | — | — |
 | 57 | Saturn | bphs-ch57-dasha-20260419 | 56 | — | — | — |
 | 58 | Mercury | bphs-ch58-dasha-20260419 | 58 | — | — | — |
@@ -664,7 +712,7 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 | BPHS Vol 2 Ch 52 (Sun MD) | 232 | 93 original + 139 split-upgrade (21 Apr) — not validated |
 | BPHS Vol 2 Ch 53 (Venus MD) | 195 | 72 original + 123 split-upgrade (21 Apr) — not validated |
 | BPHS Vol 2 Ch 54 (Mars MD) | 207 | 86 original + 121 split-upgrade (21 Apr) — not validated |
-| BPHS Vol 2 Ch 55 (Rahu MD) | 96 | split-upgrade pending |
+| BPHS Vol 2 Ch 55 (Rahu MD) | 249 | 96 original + 153 split-upgrade (21 Apr) — not validated |
 | BPHS Vol 2 Ch 56 (Jupiter MD) | 126 | 103 auto / 16 pending_human / 5 flagged — split-upgrade pending |
 | BPHS Vol 2 Ch 57 (Saturn MD) | 132 | 103 auto / 18 pending_human / 9 flagged — split-upgrade pending |
 | BPHS Vol 2 Ch 58 (Mercury MD) | 104 | 76 auto / 21 pending_human / 7 flagged — split-upgrade pending |
@@ -681,7 +729,7 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 - ✅ Ch 52 (Sun MD): +139 rules — complete
 - ✅ Ch 53 (Venus MD): +123 rules — complete
 - ✅ Ch 54 (Mars MD): +121 rules — complete
-- ⬜ Ch 55 (Rahu MD): pending — RTF: `BPHS ch 55 Vol 2.rtf`
+- ✅ Ch 55 (Rahu MD): +153 rules — complete (21 Apr 2026)
 - ⬜ Ch 56 (Jupiter MD): pending
 - ⬜ Ch 57 (Saturn MD): pending
 - ⬜ Ch 58 (Mercury MD): pending
