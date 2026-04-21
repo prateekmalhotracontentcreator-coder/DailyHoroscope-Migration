@@ -122,7 +122,7 @@ def detect_transition_planet(text: str) -> str | None:
 
 VALID_SUB_TYPES = {
     "dasha_favourable", "dasha_unfavourable", "dasha_conditional",
-    "dasha_remedy", "general_principle",
+    "dasha_remedy", "general_principle", "dasha_grouped_outcome",
 }
 
 # ── Pydantic models ────────────────────────────────────────────────────────────
@@ -132,11 +132,13 @@ class ExtractedRule(BaseModel):
     result_summary: str      # ≤20 words: the then-clause / outcome
     full_condition: str      # complete condition text
     full_result: str         # complete result/effect text
-    sub_type: str            # dasha_favourable | dasha_unfavourable | dasha_conditional | dasha_remedy | general_principle
+    sub_type: str            # dasha_favourable | dasha_unfavourable | dasha_conditional | dasha_remedy | general_principle | dasha_grouped_outcome
     planets: list[str]       # canonical planet names involved
     houses: list[int]        # house numbers mentioned
     dignity_state: str = ""  # primary condition type: exaltation|own_sign|moolatrikona|friendly_sign|neutral_sign|enemy_sign|debilitation|kendra|trikona|upachaya|11th|3rd|2nd|8th|6th|12th|7th|combust|retrograde|malefic_aspect|benefic_aspect|yogakaraka|maraka_lord|dusthana_lord|general
     planet_context_note: str = ""  # short qualitative note e.g. "Exaltation: highest dignity" or "8th house: crisis and obstacles"
+    condition_group_id: str = ""   # links same-condition rules together for grouped outcome query (e.g. "ch55-sl8-12-jupiter-favourable")
+    is_group_summary: bool = False # True only on the single grouped summary rule; individual outcome rules = False
 
 class SlokaExtraction(BaseModel):
     rules: list[ExtractedRule]
@@ -174,11 +176,12 @@ RULES:
 4. Keep condition and result text close to the original wording.
 5. Canonical planet names: Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu.
 6. sub_type must be exactly one of:
-   dasha_favourable   — favourable/auspicious Dasha effects (exaltation, own sign, kendra, etc.)
-   dasha_unfavourable — unfavourable/inauspicious Dasha effects (debilitation, 6/8/12, etc.)
-   dasha_conditional  — mixed or conditional effects (if aspected by benefic, etc.)
-   dasha_remedy       — remedy or mitigation advice
-   general_principle  — overarching timing principle not fitting above
+   dasha_favourable      — favourable/auspicious Dasha effects (exaltation, own sign, kendra, etc.)
+   dasha_unfavourable    — unfavourable/inauspicious Dasha effects (debilitation, 6/8/12, etc.)
+   dasha_conditional     — mixed or conditional effects (if aspected by benefic, etc.)
+   dasha_remedy          — remedy or mitigation advice
+   general_principle     — overarching timing principle not fitting above
+   dasha_grouped_outcome — ONE grouped summary rule combining all outcomes from same-condition individual rules (see GROUPED OUTCOME RULE below)
 
 SPLITTING GUIDANCE — one rule per independently queryable astrological condition.
 Each rule must be matchable to a specific state in a user's chart at query time.
@@ -302,6 +305,56 @@ planet_context_note: one concise phrase (≤12 words) giving the qualitative mea
     dignity_state="maraka_lord"   → "Maraka lord — 2nd/7th house lord, death-inflicting potential"
     dignity_state="dusthana_lord" → "Dusthana lord — 6th/8th/12th house lord, challenging period"
     dignity_state="general"       → brief summary of the condition in plain language
+
+GROUPED OUTCOME RULE (MANDATORY when 3+ outcomes share one base condition):
+
+  When a sloka lists multiple distinct life-domain outcomes that ALL apply under the SAME
+  astrological condition, you MUST produce two layers of rules:
+
+  LAYER 1 — Individual outcome rules (one per outcome, for Q&A lookup):
+    - Normal extraction as per SPLITTING GUIDANCE
+    - sub_type = dasha_favourable / dasha_unfavourable / etc. (as appropriate)
+    - is_group_summary = false
+    - condition_group_id = same short identifier across all individual rules in this group
+      Format: "ch<N>-sl<SLOKA>-<antardasha_planet_lower>-<favourable|unfavourable>"
+      Example: "ch55-sl8-12-jupiter-favourable"
+
+  LAYER 2 — ONE grouped summary rule (for general period report generation):
+    - sub_type = "dasha_grouped_outcome"
+    - is_group_summary = true
+    - condition_group_id = same identifier as Layer 1 rules
+    - full_condition = the shared base condition (same as the individual rules)
+    - full_result = ALL outcomes combined into one comprehensive paragraph
+    - result_summary = "All outcomes: [comma-separated list of 3-5 word outcome phrases]"
+    - dignity_state = same as the individual rules' dominant dignity_state
+
+  WHEN to create a grouped rule:
+    ✓ 3 or more individual outcome rules sharing the same base condition
+    ✓ Outcomes are all simultaneously applicable (not mutually exclusive)
+    ✓ Outcomes cover distinct life domains (wealth, health, family, career, etc.)
+
+  DO NOT create a grouped rule when:
+    ✗ Fewer than 3 individual rules share the condition
+    ✗ Rules have different conditions (correctly split per ALWAYS SPLIT guidance)
+    ✗ Outcomes are conditional on each other (those remain dasha_conditional)
+
+  Example (Jupiter AD in Rahu MD, slokas 8-12, Jupiter in kendra/trikona):
+    Individual rules (Layer 1, all with condition_group_id="ch55-sl8-12-jupiter-favourable"):
+      "Jupiter in kendra → Gain of position, destruction of foes"          is_group_summary=false
+      "Jupiter in trikona → Gain of position, destruction of foes"         is_group_summary=false
+      "Jupiter in kendra → Gain of conveyance and cows"                    is_group_summary=false
+      "Jupiter in kendra → Visit to holy places"                           is_group_summary=false
+      "Jupiter in kendra → Happiness from wife and children"               is_group_summary=false
+
+    Grouped summary rule (Layer 2):
+      condition_group_id = "ch55-sl8-12-jupiter-favourable"
+      sub_type = "dasha_grouped_outcome"
+      is_group_summary = true
+      full_condition = "Jupiter in kendra or trikona during Rahu Mahadasha"
+      full_result = "Gain of position and patience, destruction of foes, gain of conveyance
+                    and cows, success in ventures, return to homeland with good deeds, visit
+                    to holy places, gain of a village, happiness from wife and children,
+                    availability of sweetish preparations daily."
 """
 
 EXTRACTION_PROMPT = """\
@@ -618,6 +671,10 @@ def infer_strength_band_from_condition(condition_text: str, sub_type: str) -> st
     if sub_type == "dasha_remedy":
         return "low"
 
+    # ── Grouped outcome rules: medium by default (aggregated summary, no single intensity) ─
+    if sub_type == "dasha_grouped_outcome":
+        return "medium"
+
     return "medium"
 
 
@@ -667,6 +724,10 @@ def extracted_to_rule(
         f"dasha_{dasha_lord.lower()}" if dasha_lord else "dasha_unknown",
         sub_type, "ai_extracted",
     ]
+    if item.is_group_summary:
+        tags.append("group_summary")
+    if item.condition_group_id:
+        tags.append(f"group:{item.condition_group_id}")
 
     return {
         "rule_id":    rule_id,
@@ -684,6 +745,8 @@ def extracted_to_rule(
             "operator":            "and",
             "dignity_state":       item.dignity_state or "general",
             "planet_context_note": item.planet_context_note or "",
+            "condition_group_id":  item.condition_group_id or None,
+            "is_group_summary":    item.is_group_summary,
         },
         "interpretation": {
             "summary":            summary,

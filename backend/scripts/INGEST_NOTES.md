@@ -477,6 +477,57 @@ Slokas 20-21 and 41-42 both showed dry run counts LOWER than live (1 vs 4, and 2
 
 ---
 
+### Phase 3 — Grouped Outcome Rules (Pre Co-Founder Review, after Phase 1 ingest complete)
+
+> **Identified: 21 Apr 2026 (Ch 55 sloka 8-12 analysis). Fix applied to extraction prompt 21 Apr 2026.**
+
+#### What it is
+
+When a sloka lists multiple distinct life-domain outcomes under the SAME astrological condition,
+the extraction now produces two layers:
+
+- **Layer 1 — Individual outcome rules** (`is_group_summary = false`): one rule per outcome — serve specific Q&A ("Will I gain a vehicle this period?")
+- **Layer 2 — ONE grouped summary rule** (`sub_type = dasha_grouped_outcome`, `is_group_summary = true`): all outcomes combined into one paragraph — serves General Period Report generation with zero grouping logic in the report layer
+
+Both layers carry the same `condition_group_id` (e.g. `"ch55-sl8-12-jupiter-favourable"`) for linking.
+
+#### Fix applied (21 Apr 2026)
+
+- `VALID_SUB_TYPES` extended with `"dasha_grouped_outcome"`
+- `ExtractedRule` model: `condition_group_id: str = ""` and `is_group_summary: bool = False` added
+- `EXTRACTION_SYSTEM`: new `GROUPED OUTCOME RULE` section added; `sub_type` list updated
+- `extracted_to_rule()`: `condition_group_id` and `is_group_summary` persisted to `condition` subdoc; `group_summary` and `group:<id>` tags added for Rules Browser filtering
+- `infer_strength_band_from_condition()`: `dasha_grouped_outcome` → `"medium"`
+
+All chapters from **Ch 55 onwards** benefit automatically.
+
+#### Phase 3 re-run scope
+
+Chapters ingested **before** this fix (Ch 47, 48, 52, 53, 54, 56, 57, 58, 59) are missing grouped summary rules for any slokas where 3+ individual outcome rules share the same base condition. These chapters will need a targeted `patch_slokas.py --split-upgrade` pass specifically to generate the grouped summary rules.
+
+**When to do this:** Before co-founder review of each batch, after Phase 1 ingest is complete. Zero rules are live — this is an enhancement, not a data error.
+
+**Query to find candidates in pre-fix chapters:**
+```python
+# Find slokas in pre-fix chapters that already have 3+ individual rules but no grouped rule
+import pymongo
+client = pymongo.MongoClient("YOUR_MONGO_URL")
+col = client["horoscope_db"]["interpretation_rules"]
+# Rules with condition_group_id = None (pre-fix) grouped by sloka, count > 2
+pipeline = [
+    {"$match": {"source.batch_id": {"$regex": "bphs-ch(47|48|52|53|54|56|57|58|59)"},
+                "condition.is_group_summary": {"$exists": False}}},
+    {"$group": {"_id": {"batch": "$source.batch_id", "sloka": "$source.sloka"},
+                "count": {"$sum": 1}}},
+    {"$match": {"count": {"$gte": 3}}},
+    {"$sort": {"count": -1}}
+]
+for doc in col.aggregate(pipeline):
+    print(f"  {doc['_id']['batch']} sloka {doc['_id']['sloka']} → {doc['count']} rules")
+```
+
+---
+
 ### Phase 2 — Lordship Qualifier Compound Rules (Post Co-Founder Approval)
 
 > **Identified: 21 Apr 2026 (Ch 54 sloka 64-66). Deferred to Phase 2.**
