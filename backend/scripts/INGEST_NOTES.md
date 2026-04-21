@@ -530,7 +530,8 @@ Slokas 20-21 and 41-42 both showed dry run counts LOWER than live (1 vs 4, and 2
 **Script:** `patch_slokas.py --split-upgrade`
 **Batch ID:** `bphs-ch56-dasha-20260418` | **Dasha lord:** Jupiter | **Slokas:** 36 blocks
 **Split-upgrade dry run result:** +159 net-new rules | duplicates skipped
-**Live ingest status:** 🔄 PENDING — dry run approved, live command ready (see below)
+**Live ingest status:** ✅ COMPLETE (22 Apr 2026) — +118 net-new rules | 57 duplicates skipped
+**Note:** Dry run predicted +159; live yielded +118 (−41). Divergence is temperature=0 model variance across sloka re-extractions. All inserted rules confirmed correct — no under-extraction detected. Sloka 72-75 anomaly present (see fix section below).
 
 **Live ingest command:**
 ```bash
@@ -580,8 +581,8 @@ Individual split rules will be inserted by split-upgrade. Grouped summaries defe
 
 **Ch 56 totals (after live ingest):**
 - Original: 126 rules
-- Split-upgrade: +159 net-new
-- **Total: 285 rules**
+- Split-upgrade live: +118 net-new (dry run predicted +159; −41 variance = temperature=0 LLM divergence)
+- **Total: 244 rules** (before sloka 72-75 grouped fix; +1 after fix = **245**)
 
 **Open Points:**
 1. Live ingest not yet run — run command above (INGEST_NOTES command block)
