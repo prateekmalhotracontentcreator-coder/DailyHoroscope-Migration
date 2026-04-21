@@ -579,14 +579,18 @@ Same pattern as Ch 55 sloka 21-24. Root cause: temperature=0 LLM variance in liv
 
 Individual split rules will be inserted by split-upgrade. Grouped summaries deferred to Phase 3 sweep after full split-upgrade sweep is complete.
 
-**Ch 56 totals (after live ingest):**
+**Ch 56 totals — FINAL ✅**
 - Original: 126 rules
-- Split-upgrade live: +118 net-new (dry run predicted +159; −41 variance = temperature=0 LLM divergence)
-- **Total: 244 rules** (before sloka 72-75 grouped fix; +1 after fix = **245**)
+- Split-upgrade live: +118 net-new (dry run predicted +159; −41 = temperature=0 LLM divergence)
+- Flag 1 fix (22 Apr 2026): +2 true grouped outcome rules; 2 mis-tagged rules retyped
+  - Sloka 72-75: `R-BPHS56-PATCH-66C586-GRP` (Rahu AD, 8 conditions, `ch56-sl7275-rahu-favourable`)
+  - Sloka 51-53: `R-BPHS56-PATCH-34CC52-GRP` (Sun AD, 8 conditions, `ch56-sl5153-sun-favourable`)
+  - condition_group_id back-filled on 16 individual rules (8 per sloka)
+- **Total: 246 rules** ✅
 
 **Open Points:**
-1. Live ingest not yet run — run command above (INGEST_NOTES command block)
-2. Sloka 72-75 fix — run `fix_ch56_sl7275.py` immediately after live ingest
+1. ✅ Live ingest complete (+118)
+2. ✅ Flag 1 fix complete — slokas 72-75 and 51-53 corrected
 3. Phase 3 pass — 6 slokas need grouped summary rules (deferred)
 4. Validation not yet run — run `validate_rules.py --batch-id bphs-ch56-dasha-20260418` after sweep complete
 
