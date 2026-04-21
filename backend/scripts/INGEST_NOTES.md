@@ -525,6 +525,68 @@ Slokas 20-21 and 41-42 both showed dry run counts LOWER than live (1 vs 4, and 2
 
 ---
 
+### BPHS Ch 56 | Jupiter Mahadasha Antardasha — Split-Upgrade | 22 Apr 2026
+
+**Script:** `patch_slokas.py --split-upgrade`
+**Batch ID:** `bphs-ch56-dasha-20260418` | **Dasha lord:** Jupiter | **Slokas:** 36 blocks
+**Split-upgrade dry run result:** +159 net-new rules | duplicates skipped
+**Live ingest status:** 🔄 PENDING — dry run approved, live command ready (see below)
+
+**Live ingest command:**
+```bash
+cd /Users/apple/DailyHoroscope-Migration/backend
+python3 scripts/patch_slokas.py \
+  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Ch56_Vol 2.rtf" \
+  --chapter 56 --dasha-lord Jupiter \
+  --batch-id bphs-ch56-dasha-20260418 \
+  --slokas "1-3,4-5,6-7,8-11,12-14,15,16-17,18-19,20-21,22,23-24,25-26,27-28,29-29,30-31,32,33-34,35-36,37-38,39-43,44,45-47,48-50,51-53,54-55,56-57,58-60,61-63,64,65-66,67-68,69-71,72-75,76-78,79-80" \
+  --mongo-url "$MONGO_URL" --db-name horoscope_db \
+  --split-upgrade
+```
+
+**⚠️ Sloka 72-75 — sub_type anomaly (post-live fix required)**
+
+Rule `R-BPHS56-PATCH-D1BCEE` extracted as `dasha_grouped_outcome` + `is_group_summary=True` in dry run, but it is an individual Rahu-exaltation placement rule. Apply after live ingest:
+
+```python
+col.update_one(
+    {"rule_id": "R-BPHS56-PATCH-D1BCEE"},
+    {"$set": {
+        "condition.sub_type": "dasha_favourable",
+        "condition.is_group_summary": False
+    }}
+)
+# Then insert a true dasha_grouped_outcome rule covering all 7 Rahu conditions in sloka 72-75
+```
+
+Same pattern as Ch 55 sloka 21-24. Root cause: temperature=0 LLM variance in live vs dry run.
+
+**Phase 3 candidates — slokas missing grouped outcome rules:**
+
+| Sloka | Condition count | Type |
+|---|---|---|
+| 33-34 | 4 | unfavourable |
+| 44 | 7 | unfavourable |
+| 51-53 | 7 | favourable |
+| 54-55 | 6 | unfavourable |
+| 61-63 | 8 | unfavourable |
+| 65-66 | 4 | favourable |
+
+These slokas will receive individual split rules but no grouped summary rule from the split-upgrade pass. Add to Phase 3 targeted patch after Phase 1 sweep completes.
+
+**Ch 56 totals (after live ingest):**
+- Original: 126 rules
+- Split-upgrade: +159 net-new
+- **Total: 285 rules**
+
+**Open Points:**
+1. Live ingest not yet run — run command above
+2. Sloka 72-75 fix — apply immediately after live ingest confirms `R-BPHS56-PATCH-D1BCEE` in DB
+3. Phase 3 pass — 6 slokas need grouped summary rules (deferred to Phase 3 sweep)
+4. Validation not yet run — run `validate_rules.py --batch-id bphs-ch56-dasha-20260418` after sweep complete
+
+---
+
 ### Phase 3 — Grouped Outcome Rules (Pre Co-Founder Review, after Phase 1 ingest complete)
 
 > **Identified: 21 Apr 2026 (Ch 55 sloka 8-12 analysis). Fix applied to extraction prompt 21 Apr 2026.**
@@ -653,7 +715,7 @@ Zero rules are live (`approval_status = pending_review`). The missing compound r
 | 53 | Venus | bphs-ch53-dasha-20260417 | 41 | ✅ +123 | ✅ 21 Apr | +123 |
 | 54 | Mars | bphs-ch54-dasha-20260417 | 27 | ✅ +113 | ✅ 21 Apr | +121 |
 | 55 | Rahu | bphs-ch55-dasha-20260417 | 42 | ✅ +150 dry | ✅ 21 Apr | +153 |
-| 56 | Jupiter | bphs-ch56-dasha-20260418 | 72 | — | — | — |
+| 56 | Jupiter | bphs-ch56-dasha-20260418 | 72 | ✅ +159 dry (22 Apr) | 🔄 pending | — |
 | 57 | Saturn | bphs-ch57-dasha-20260419 | 56 | — | — | — |
 | 58 | Mercury | bphs-ch58-dasha-20260419 | 58 | — | — | — |
 | 59 | Ketu | bphs-ch59-dasha-20260420 | 37 | — | — | — |
@@ -713,11 +775,11 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 | BPHS Vol 2 Ch 53 (Venus MD) | 195 | 72 original + 123 split-upgrade (21 Apr) — not validated |
 | BPHS Vol 2 Ch 54 (Mars MD) | 207 | 86 original + 121 split-upgrade (21 Apr) — not validated |
 | BPHS Vol 2 Ch 55 (Rahu MD) | 249 | 96 original + 153 split-upgrade (21 Apr) — not validated |
-| BPHS Vol 2 Ch 56 (Jupiter MD) | 126 | 103 auto / 16 pending_human / 5 flagged — split-upgrade pending |
+| BPHS Vol 2 Ch 56 (Jupiter MD) | 126 (+159 pending) | 103 auto / 16 pending_human / 5 flagged — split-upgrade dry run done, live pending |
 | BPHS Vol 2 Ch 57 (Saturn MD) | 132 | 103 auto / 18 pending_human / 9 flagged — split-upgrade pending |
 | BPHS Vol 2 Ch 58 (Mercury MD) | 104 | 76 auto / 21 pending_human / 7 flagged — split-upgrade pending |
 | BPHS Vol 2 Ch 59 (Ketu MD) | 91 | 55 auto / 29 pending_human / 4 flagged — split-upgrade pending |
-| **RTF Grand Total** | **~2,180** | Includes 417 split-upgrade rules (Ch 48/52/53/54) added 21 Apr 2026 |
+| **RTF Grand Total** | **~2,180** | Includes 570 confirmed split-upgrade rules (Ch 48/52/53/54/55). Ch 56 +159 pending → total ~2,339 when live. |
 
 **`condition.antardasha_planet` coverage (as of 21 Apr 2026):**
 - Ch 47–59 dasha rules: **802 / 802 = 100%** ✅ (original ingests — split-upgrade rules carry antardasha_planet from source context)
@@ -730,7 +792,7 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 - ✅ Ch 53 (Venus MD): +123 rules — complete
 - ✅ Ch 54 (Mars MD): +121 rules — complete
 - ✅ Ch 55 (Rahu MD): +153 rules — complete (21 Apr 2026)
-- ⬜ Ch 56 (Jupiter MD): pending
+- 🔄 Ch 56 (Jupiter MD): dry run ✅ +159 (22 Apr 2026) — live ingest pending; sloka 72-75 fix pending post-ingest
 - ⬜ Ch 57 (Saturn MD): pending
 - ⬜ Ch 58 (Mercury MD): pending
 - ⬜ Ch 59 (Ketu MD): pending

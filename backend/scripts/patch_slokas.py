@@ -31,6 +31,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 from ingest_bphs_dasha_v1 import (
     CHAPTER_NAMES,
     SlokaExtractor,
+    OpenAISlokaExtractor,
     strip_rtf,
     split_into_sloka_blocks,
     build_planet_position_map,
@@ -115,6 +116,10 @@ def main():
     parser.add_argument("--mongo-url",  required=True)
     parser.add_argument("--db-name",    required=True)
     parser.add_argument("--model",         default="claude-haiku-4-5")
+    parser.add_argument("--provider",      choices=["anthropic", "openai"], default="anthropic",
+                        help="AI provider: 'anthropic' (default) or 'openai'")
+    parser.add_argument("--openai-model",  default="gpt-4o-mini",
+                        help="OpenAI model when --provider=openai (default: gpt-4o-mini)")
     parser.add_argument("--dry-run",       action="store_true")
     parser.add_argument("--split-upgrade", action="store_true",
                         help="Tag new rules as split_upgrade instead of gap_fill. "
@@ -132,12 +137,18 @@ def main():
     print(f"Dasha lord : {dasha_lord}")
     print(f"Batch ID   : {batch_id}")
     print(f"Target     : {', '.join(target_slokas)}")
+    print(f"Provider   : {args.provider}  |  model: {args.openai_model if args.provider == 'openai' else args.model}")
     print(f"Mode       : {'DRY RUN' if args.dry_run else 'LIVE'}")
     print("─" * 60)
 
-    mongo_client = pymongo.MongoClient(args.mongo_url)
-    db           = mongo_client[args.db_name]
-    collection   = db["interpretation_rules"]
+    # In dry-run mode we skip MongoDB entirely — no connection needed
+    if args.dry_run:
+        mongo_client = None
+        collection   = None
+    else:
+        mongo_client = pymongo.MongoClient(args.mongo_url)
+        db           = mongo_client[args.db_name]
+        collection   = db["interpretation_rules"]
 
     # Parse RTF into sloka blocks
     raw   = Path(args.rtf).expanduser().read_text(encoding="utf-8", errors="replace")
@@ -166,29 +177,36 @@ def main():
     if not targets:
         print(f"ERROR: No slokas matched {target_slokas}.")
         print(f"Available: {[b[0] for b in blocks]}")
-        mongo_client.close()
+        if mongo_client:
+            mongo_client.close()
         return
 
-    extractor   = SlokaExtractor(model=args.model)
+    if args.provider == "openai":
+        extractor = OpenAISlokaExtractor(model=args.openai_model)
+    else:
+        extractor = SlokaExtractor(model=args.model)
     total_new   = 0
     total_skipped = 0
 
-    # Count existing rules to generate non-colliding IDs
-    existing_total = collection.count_documents({"source.batch_id": batch_id})
+    # Count existing rules to generate non-colliding IDs (live mode only)
+    existing_total = collection.count_documents({"source.batch_id": batch_id}) if collection else 0
     id_counter = existing_total + 1
 
     for sloka_label, sloka_text, sloka_pos in targets:
         rule_text, notes_text = clean_notes(sloka_text)
         antardasha_planet     = planet_at(sloka_pos)
 
-        existing_docs      = list(collection.find(
-            {"source.batch_id": batch_id, "source.sloka": sloka_label}
-        ))
-        # Also try flat sloka field for older documents
-        if not existing_docs:
+        # In dry-run: no DB lookup — treat every rule as new (dedup within run only)
+        if collection is not None:
             existing_docs = list(collection.find(
-                {"batch_id": batch_id, "condition.sloka": sloka_label}
+                {"source.batch_id": batch_id, "source.sloka": sloka_label}
             ))
+            if not existing_docs:
+                existing_docs = list(collection.find(
+                    {"batch_id": batch_id, "condition.sloka": sloka_label}
+                ))
+        else:
+            existing_docs = []
 
         # Two separate dedup lists with different thresholds:
         #   db_summaries   — clean DB rules (60% overlap = duplicate)
@@ -273,7 +291,8 @@ def main():
             print(f"    approval_status='pending_review', source_note='{new_source_note}'")
             print(f"    Review: Admin > Library > Rules Browser → batch {batch_id}")
 
-    mongo_client.close()
+    if mongo_client:
+        mongo_client.close()
 
 
 if __name__ == "__main__":
