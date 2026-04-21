@@ -117,12 +117,20 @@ def fix_sloka(col, sloka: str, dry_run: bool):
         print("\n⚠️  No split-upgrade individual rules found — run after live ingest.")
         return
 
-    # Auto-detect antardasha_planet and sub_type polarity from individual rules
-    antardasha_planets = list({
-        r.get("condition", {}).get("antardasha_planet") for r in individual_rules
-        if r.get("condition", {}).get("antardasha_planet")
-    })
-    antardasha_planet = antardasha_planets[0] if len(antardasha_planets) == 1 else DASHA_LORD
+    # Detect antardasha_planet from condition part of individual rule summaries.
+    # "Rahu in exaltation → ..." → "Rahu"; "Sun in own sign → ..." → "Sun"
+    # This is more reliable than the condition.antardasha_planet DB field, which may
+    # be unresolved or set to the dasha_lord as a fallback during ingest.
+    ALL_PLANETS = {"Sun", "Moon", "Mars", "Mercury", "Jupiter",
+                   "Venus", "Saturn", "Rahu", "Ketu"}
+    planet_votes: dict[str, int] = {}
+    for r in individual_rules:
+        summ = r.get("interpretation", {}).get("summary", "")
+        cond = summ.split(" → ")[0].strip() if " → " in summ else summ
+        first = cond.split()[0] if cond.split() else ""
+        if first in ALL_PLANETS and first != DASHA_LORD:
+            planet_votes[first] = planet_votes.get(first, 0) + 1
+    antardasha_planet = max(planet_votes, key=planet_votes.get) if planet_votes else DASHA_LORD
 
     polarities = [r.get("condition", {}).get("sub_type", "") for r in individual_rules]
     polarity   = "favourable" if "dasha_favourable" in polarities else "unfavourable"
