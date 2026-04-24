@@ -1334,3 +1334,73 @@ Full source spot-check was run on the four highest-variance Mars blocks:
 - Female: `"IF Mars is in own sign or exalted — prosperous"`
 
 ---
+
+## Validation Run — Full Library Clean Pass (2026-04-25)
+
+### Context
+
+After resetting 2,951 rules (133 `skipped_resume` + 2,818 `batch_error`) back to `pending_review`, a clean validation pass was run against the full library using `validate_rules.py` with `--batch-size 10` and retry-on-timeout logic (commit `c531553`).
+
+Run was interrupted twice by network issues (MongoDB Atlas timeout at batch 172/334, DNS error on resume attempt). Streaming writes preserved all progress — each re-run automatically picked up only remaining `pending_review` rules.
+
+### Final Results
+
+| Status | Count | % |
+|---|---|---|
+| `pending_human_review` | 741 | 39% |
+| `auto_approved` | 613 | 32% |
+| `flagged` | 549 | 29% |
+| `rejected` (structural) | 1 | <1% |
+| **Total this run** | **1,903** | |
+
+**Contradictions found: 132 pairs**
+
+### Key Findings
+
+#### 132 Contradiction Pairs — Highest Priority for Co-Founder Review
+
+Stage 3 detected 132 contradiction pairs across 121 condition groups. All rules involved in a contradiction were automatically downgraded from `auto_approved` → `pending_human_review`.
+
+These are rules that share the same `condition.type / planet / house` key but give conflicting interpretations. Root cause is likely:
+- Multiple source books covering the same planetary placement with different classical opinions
+- OR-condition rules that were not fully split (one merged rule conflicts with a later individual rule)
+
+**Action:** Review at `/admin/library` → Rules Browser → filter `flagged` and `pending_human_review`. Contradiction pairs are tagged with `contradiction_ids` in the `validation` sub-document.
+
+#### 549 Flagged Rules — Quality Issues Identified by Claude
+
+Claude flagged 29% of rules for one or more of: vague condition language, overly generic interpretation, missing Sanskrit/Hindi context, or suspicious confidence level. These require human editorial judgment before promotion.
+
+#### 613 Auto-Approved Rules — Clean and Ready
+
+613 rules passed both structural and Claude quality checks with no contradictions. These are ready for co-founder sign-off (`approval_status` promotion from `auto_approved` → `approved`).
+
+#### 1 Structural Failure — Hard Rejected
+
+One rule failed structural validation (missing required fields or malformed condition block). Marked `rejected`. Check Rules Browser → filter `rejected` to identify which rule and source book.
+
+### Combined Library State (Post This Run)
+
+Across all ingested batches, the library now has:
+
+| Status | Meaning |
+|---|---|
+| `auto_approved` | Clean — awaiting co-founder sign-off |
+| `flagged` | Quality concern — human review needed |
+| `pending_human_review` | Spot-check or contradiction-involved — human review needed |
+| `rejected` | Hard structural failure — excluded |
+| `approved` | **None yet** — no rules reach live users until co-founder promotes |
+
+### Retry Logic Added (commit `c531553`)
+
+`apply_verdict()` now retries on `pymongo.errors.AutoReconnect` with exponential backoff (1s / 2s / 4s, up to 3 retries) before raising. This prevents transient Atlas timeouts from killing future validation runs.
+
+### Next Steps
+
+1. **Co-founder review session** — work through flagged + pending_human_review rules in Rules Browser
+2. **Contradiction triage** — review the 132 pairs; deprecate the weaker rule in each pair or merge if both are valid classical sources
+3. **Mars-H03 manual correction** — see flag above (split 2 merged OR-conditions)
+4. **Promotion** — after review, promote clean rules: `approval_status` `auto_approved` → `approved` via co-founder sign-off
+5. **Next ingest** — remaining BPHS dasha interpretation chapters pending
+
+---
