@@ -468,17 +468,25 @@ def build_house_rule(
     planets_in = _canon_planets(item.planets)
     houses_in  = list(dict.fromkeys([house_num] + [h for h in item.houses if isinstance(h, int)]))
 
+    # Auto-generate condition_group_id from structural context (planet × house × gender).
+    # All rules from the same block and gender share this ID — both the grouped-description
+    # rule (is_group_summary=True) AND every individual IF rule (is_group_summary=False).
+    # Format mirrors BPHS pattern: "tba15-{planet}-h{N}-{gender}"
+    gender_key       = item.gender if item.gender in ("neutral", "female") else "neutral"
+    condition_group_id = f"tba15-{planet.lower()}-h{house_num:02d}-{gender_key}"
+
     detailed = f"Condition: {_punct(item.full_condition)}\n\nEffect: {_punct(item.full_result)}"
     summary  = f"{item.condition_summary} → {_punct(item.result_summary)}"
     if len(summary) > 200:
         summary = summary[:197] + "..."
 
     tags = ["verbatim", "planet_occupation", f"house{house_num}",
-            f"chapter{CHAPTER}", sub_type, "ai_extracted"]
+            f"chapter{CHAPTER}", sub_type, "ai_extracted",
+            f"group:{condition_group_id}"]          # on ALL rules — enables group queries
     if item.gender == "female":
         tags.append("female_horoscope")
     if item.is_group_summary:
-        tags.append("group_summary")
+        tags.append("group_summary")               # only on the grouped-description rule
 
     return {
         "rule_id":    rule_id,
@@ -495,18 +503,19 @@ def build_house_rule(
             "passage_ref_id": None,
         },
         "condition": {
-            "type":             "planet_occupation",
-            "planet":           planet,
-            "house":            house_num,
-            "sub_type":         sub_type,
-            "sloka":            block_lbl,
-            "heading":          f"{planet} in {ordinal} House",
-            "planets_involved": [planet] + planets_in,
-            "houses_involved":  houses_in,
-            "sub_conditions":   [],
-            "operator":         "and",
-            "gender_context":   item.gender,
-            "is_group_summary": item.is_group_summary,
+            "type":               "planet_occupation",
+            "planet":             planet,
+            "house":              house_num,
+            "sub_type":           sub_type,
+            "sloka":              block_lbl,
+            "heading":            f"{planet} in {ordinal} House",
+            "planets_involved":   [planet] + planets_in,
+            "houses_involved":    houses_in,
+            "sub_conditions":     [],
+            "operator":           "and",
+            "gender_context":     gender_key,
+            "condition_group_id": condition_group_id,
+            "is_group_summary":   item.is_group_summary,
         },
         "interpretation": {
             "summary":            summary,
@@ -517,12 +526,13 @@ def build_house_rule(
             "tags":               tags,
         },
         "metadata": {
-            "planets_involved": [planet] + planets_in,
-            "houses_involved":  houses_in,
-            "signs_involved":   [],
-            "condition_count":  1,
-            "gender_context":   item.gender,
-            "is_group_summary": item.is_group_summary,
+            "planets_involved":   [planet] + planets_in,
+            "houses_involved":    houses_in,
+            "signs_involved":     [],
+            "condition_count":    1,
+            "gender_context":     gender_key,
+            "condition_group_id": condition_group_id,
+            "is_group_summary":   item.is_group_summary,
         },
         "confidence": {
             "base": 0.85, "source_weight": 0.90, "cross_book_multiplier": 1.0,
