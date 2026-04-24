@@ -1404,3 +1404,100 @@ Across all ingested batches, the library now has:
 5. **Next ingest** — remaining BPHS dasha interpretation chapters pending
 
 ---
+
+## Validation Run — horoscope_db Remainder Pass (2026-04-25)
+
+386 pending_review rules remaining in `horoscope_db` after the main pass. Clean run — all 39 batches completed without interruption.
+
+### Results
+
+| Status | Count | % |
+|---|---|---|
+| `pending_human_review` | 140 | 36% |
+| `auto_approved` | 140 | 36% |
+| `flagged` | 106 | 27% |
+| `rejected` (structural) | 1 | <1% |
+| **Total** | **386** | |
+
+**Contradictions: 0 pairs** (only 4 condition groups with ≥2 rules — too sparse for conflicts)
+
+### horoscope_db Cumulative State (post both passes)
+
+| Status | From main pass | From remainder pass | Combined |
+|---|---|---|---|
+| `auto_approved` | 2,565 | +140 | **2,705** |
+| `flagged` | 1,223 | +106 | **1,329** |
+| `pending_human_review` | 1,710 | +140 | **1,850** |
+| `rejected` | 31 | +1 | **32** |
+| `pending_review` | 386 | −386 | **0** |
+
+`horoscope_db` is now fully validated. No rules remain in `pending_review`.
+
+---
+
+## Validation Run — EverydayHoroscope Remainder Pass (2026-04-25)
+
+950 pending_review rules in `EverydayHoroscope` database. All 95 batches completed without interruption.
+
+### Results
+
+| Status | Count | % |
+|---|---|---|
+| `flagged` | 534 | 56% |
+| `pending_human_review` | 317 | 33% |
+| `auto_approved` | 95 | 10% |
+| `pending_review` (residual) | 4 | <1% |
+| `rejected` (structural) | 5 | <1% |
+| **Total** | **950** | |
+
+**Contradictions: 4 pairs** — downgraded from `auto_approved` → `pending_human_review`
+
+### Notable Finding — High Flagged Rate (56%)
+
+The `EverydayHoroscope` database shows a significantly higher flagged rate (56%) vs `horoscope_db` (~21%). This indicates older or earlier-ingested rules with lower content quality — likely from an earlier ingest session before prompt refinements were applied. These 534 flagged rules require careful editorial review before any promotion consideration.
+
+### Residual 4 pending_review Rules
+
+4 rules remain in `pending_review` after this pass — likely edge cases from contradiction handling. Run one cleanup pass to clear them:
+
+```bash
+ANTHROPIC_API_KEY="sk-ant-..." python3 backend/scripts/validate_rules.py \
+  --mongo-url "mongodb+srv://..." \
+  --db-name "EverydayHoroscope" \
+  --batch-size 10 \
+  --report-path backend/scripts/reports/validation_report_EverydayHoroscope_cleanup_20260425.md
+```
+
+### EverydayHoroscope Cumulative State (post pass)
+
+| Status | Pre-pass | This pass | Combined |
+|---|---|---|---|
+| `auto_approved` | 1,434 | +95 | **1,529** |
+| `flagged` | 341 | +534 | **875** |
+| `pending_human_review` | 473 | +317 | **790** |
+| `rejected` | 2 | +5 | **7** |
+| `pending_review` | 950 | −946 | **4** (residual) |
+
+### Full Library State — Both Databases (2026-04-25)
+
+| Status | horoscope_db | EverydayHoroscope | Grand Total |
+|---|---|---|---|
+| `auto_approved` | 2,705 | 1,529 | **4,234** |
+| `flagged` | 1,329 | 875 | **2,204** |
+| `pending_human_review` | 1,850 | 790 | **2,640** |
+| `rejected` | 32 | 7 | **39** |
+| `pending_review` | 0 | 4 | **4** (residual) |
+| **Total** | **5,916** | **3,205** | **9,121** |
+
+No rules reach live users until `approved` status is granted via co-founder sign-off. Current `approved` count: **0**.
+
+### Next Steps
+
+1. Run EverydayHoroscope cleanup pass to clear residual 4 `pending_review` rules
+2. **Co-founder review session** — access live admin panel at `everydayhoroscope.in/admin` → Rules Browser (connected to `horoscope_db`)
+3. **Contradiction triage** — 132 pairs in main pass + 4 in EverydayHoroscope; deprecate weaker rule in each pair
+4. **High-flagged triage** — EverydayHoroscope's 875 flagged rules need editorial review; assess whether they are low-quality ingest candidates for deprecation en masse or individual salvage
+5. **Mars-H03 manual correction** — see earlier flag
+6. **Promotion gate** — co-founder sign-off required before any `auto_approved` → `approved` promotion
+
+---
