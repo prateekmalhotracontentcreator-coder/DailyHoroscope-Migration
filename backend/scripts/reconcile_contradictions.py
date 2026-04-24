@@ -37,8 +37,8 @@ OUTPUT_FIELDS = [
     "interpretation_b",
     "contradiction_summary",
     "recommended_action",
-    "codex_recommendation",
-    "codex_reasoning",
+    "claude_recommendation",
+    "claude_reasoning",
     "final_action",
 ]
 ALLOWED_ACTIONS = {"keep_a", "keep_b", "keep_both", "deprecate_both"}
@@ -152,7 +152,7 @@ def merge_export_with_db(export_rows: list[dict[str, str]], db_rows: list[dict[s
         fallback = db_map.get(key, {})
         row = dict(export_row)
         for field in OUTPUT_FIELDS:
-            if field in {"codex_recommendation", "codex_reasoning", "final_action"}:
+            if field in {"claude_recommendation", "claude_reasoning", "final_action"}:
                 continue
             if not row.get(field):
                 row[field] = fallback.get(field, "")
@@ -271,8 +271,8 @@ def main() -> None:
                         recommendation = "keep_both"
                         reasoning = f"Model call failed; conservative fallback is keep_both ({exc})."
                     output_row = dict(row)
-                    output_row["codex_recommendation"] = recommendation
-                    output_row["codex_reasoning"] = reasoning
+                    output_row["claude_recommendation"] = recommendation
+                    output_row["claude_reasoning"] = reasoning
                     output_row["final_action"] = ""
                     output_rows.append(output_row)
                     print(f"  {row['pair_id']}: {recommendation}")

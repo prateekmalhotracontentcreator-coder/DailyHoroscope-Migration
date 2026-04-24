@@ -27,8 +27,8 @@ OUTPUT_FIELDS = [
     "house",
     "flag_reason",
     "interpretation_summary",
-    "codex_recommendation",
-    "codex_reasoning",
+    "claude_recommendation",
+    "claude_reasoning",
     "suggested_edit",
     "final_action",
 ]
@@ -228,8 +228,8 @@ def main() -> None:
                             "house": str(condition.get("house", "")),
                             "flag_reason": validation.get("flag_reason", ""),
                             "interpretation_summary": interpretation_summary(rule),
-                            "codex_recommendation": decision["recommendation"],
-                            "codex_reasoning": decision["reasoning"],
+                            "claude_recommendation": decision["recommendation"],
+                            "claude_reasoning": decision["reasoning"],
                             "suggested_edit": decision["suggested_edit"],
                             "final_action": "",
                         }
