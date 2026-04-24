@@ -29,6 +29,15 @@ def parse_args():
     parser.add_argument("--batch-id", default=None, help="Filter to one import batch_id (default: all)")
     parser.add_argument("--dry-run", action="store_true", help="Print verdicts but do NOT write to MongoDB")
     parser.add_argument("--report-path", default=None, help="Optional path to write Markdown report")
+    parser.add_argument(
+        "--resume-from-batch", type=int, default=0,
+        help=(
+            "Skip the first N batches of Stage 2 (already processed in a previous run). "
+            "Rules in skipped batches are marked spot_check with reason 'skipped_resume'. "
+            "Rules are sorted by rule_id before batching to guarantee consistent ordering "
+            "across runs. Example: --resume-from-batch 54 restarts from batch 55."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -38,7 +47,8 @@ def fetch_pending(db, science_id: str | None, batch_id: str | None = None) -> li
         query["science_id"] = science_id
     if batch_id:
         query["source.batch_id"] = batch_id
-    return list(db["interpretation_rules"].find(query, {"_id": 0}))
+    # Sort by rule_id for deterministic ordering — essential for --resume-from-batch
+    return list(db["interpretation_rules"].find(query, {"_id": 0}).sort("rule_id", 1))
 
 
 def group_for_contradiction(rules: list[dict]) -> dict[str, list[dict]]:
@@ -182,11 +192,30 @@ def main():
         print(f"  Structural failures: {len(rejected_rules)} / {len(rules)}")
         print(f"  Proceeding with: {len(structurally_ok)} rules")
 
-        print(f"\nStage 2: Claude quality check (batch_size={args.batch_size})...")
+        resume_n   = args.resume_from_batch   # batches to skip (0 = no skip)
+        skipped_ids: set[str] = set()          # rule_ids skipped due to resume
+
+        print(f"\nStage 2: Claude quality check (batch_size={args.batch_size}"
+              + (f", resuming from batch {resume_n + 1}" if resume_n else "") + ")...")
         total_batches = (len(structurally_ok) + args.batch_size - 1) // args.batch_size
         for i in range(0, len(structurally_ok), args.batch_size):
             batch = structurally_ok[i : i + args.batch_size]
             batch_num = i // args.batch_size + 1
+
+            # ── Resume: skip batches already processed in a previous run ──────
+            if resume_n and batch_num <= resume_n:
+                for rule in batch:
+                    rid = rule["rule_id"]
+                    all_verdicts[rid] = {
+                        "rule_id": rid,
+                        "verdict": "spot_check",
+                        "reason": f"skipped_resume_from_batch_{resume_n}",
+                        "corrected_confidence": current_confidence(rule),
+                    }
+                    skipped_ids.add(rid)
+                print(f"  Batch {batch_num}/{total_batches} — skipped (resume mode)")
+                continue
+
             print(f"  Batch {batch_num}/{total_batches} ({len(batch)} rules)...", end=" ", flush=True)
             try:
                 results = validator.validate_batch(batch)
@@ -215,6 +244,23 @@ def main():
                     },
                 )
                 all_verdicts[rid] = res
+
+            # ── Streaming write: commit this batch immediately ─────────────────
+            # Protects against future interruptions — each batch is persisted
+            # before moving to the next. Contradiction updates happen in Stage 3.
+            if not args.dry_run:
+                for rule in batch:
+                    rid = rule["rule_id"]
+                    res = all_verdicts[rid]
+                    apply_verdict(
+                        db, rid,
+                        res.get("verdict", "spot_check"),
+                        res.get("reason", ""),
+                        res.get("corrected_confidence", current_confidence(rule)),
+                        "claude-haiku-4-5",
+                        [], "",   # contradictions resolved in Stage 3
+                        args.dry_run,
+                    )
             print("done")
 
         print("\nStage 3: Contradiction detection...")
@@ -233,7 +279,26 @@ def main():
             contra_map[contradiction["rule_id_b"]].append(contradiction["rule_id_a"])
         print(f"  Contradictions found: {len(all_contradictions)} pair(s)")
 
-        print(f"\nStage 4: {'[DRY RUN] ' if args.dry_run else ''}Writing verdicts...")
+        # Targeted contradiction updates — downgrade auto_approved → spot_check
+        # for any rule involved in a contradiction (streaming already wrote approve).
+        if not args.dry_run and all_contradictions:
+            print("  Applying contradiction downgrades...")
+            for contradiction in all_contradictions:
+                for rid in [contradiction["rule_id_a"], contradiction["rule_id_b"]]:
+                    contra_ids    = contra_map.get(rid, [])
+                    contra_summary = contradiction.get("contradiction_summary", "")
+                    db["interpretation_rules"].update_one(
+                        {"rule_id": rid, "approval_status": "auto_approved"},
+                        {"$set": {
+                            "approval_status": "pending_human_review",
+                            "validation.verdict": "spot_check",
+                            "validation.flag_reason": f"Contradicts rule(s): {', '.join(contra_ids)}",
+                            "validation.contradiction_ids": contra_ids,
+                            "validation.contradiction_summary": contra_summary,
+                        }},
+                    )
+
+        print(f"\nStage 4: {'[DRY RUN] ' if args.dry_run else ''}Writing skipped-batch verdicts + summary...")
         for rule in rules:
             rid = rule["rule_id"]
             verdict_info = all_verdicts.get(
@@ -241,27 +306,35 @@ def main():
                 {"verdict": "spot_check", "reason": "", "corrected_confidence": "MEDIUM"},
             )
             verdict = verdict_info.get("verdict", "spot_check")
-            reason = verdict_info.get("reason", "")
-            conf = verdict_info.get("corrected_confidence", current_confidence(rule))
+            reason  = verdict_info.get("reason", "")
+            conf    = verdict_info.get("corrected_confidence", current_confidence(rule))
             contra_ids = contra_map.get(rid, [])
+
+            # For streamed rules (not skipped), read back the actual status MongoDB has
+            # so the counter reflects the contradiction-downgraded values.
+            if rid not in skipped_ids and not args.dry_run:
+                doc = db["interpretation_rules"].find_one(
+                    {"rule_id": rid}, {"approval_status": 1, "_id": 0}
+                )
+                actual_status = (doc or {}).get("approval_status", "pending_review")
+                counters[actual_status] = counters.get(actual_status, 0) + 1
+                if actual_status == "flagged":
+                    rule["_reason"] = reason
+                    flagged_rules.append(rule)
+                continue
+
+            # Skipped-batch rules and dry-run: write / count here
             if verdict == "approve" and contra_ids:
                 verdict = "spot_check"
-                reason = f"Contradicts rule(s): {', '.join(contra_ids)}"
+                reason  = f"Contradicts rule(s): {', '.join(contra_ids)}"
             contra_summary = ""
             for contradiction in all_contradictions:
                 if contradiction["rule_id_a"] == rid or contradiction["rule_id_b"] == rid:
                     contra_summary = contradiction.get("contradiction_summary", "")
                     break
             new_status = apply_verdict(
-                db,
-                rid,
-                verdict,
-                reason,
-                conf,
-                "claude-haiku-4-5",
-                contra_ids,
-                contra_summary,
-                args.dry_run,
+                db, rid, verdict, reason, conf,
+                "claude-haiku-4-5", contra_ids, contra_summary, args.dry_run,
             )
             counters[new_status] = counters.get(new_status, 0) + 1
             if new_status == "flagged":
