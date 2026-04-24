@@ -1498,27 +1498,45 @@ Cleanup pass found 297 pending_review rules (not 4 as Stage 4 counter suggested 
 | `rejected` | 2 | +5 | +5 | **12** |
 | `pending_review` | 950 | −946 | −293 | **4** (persistent) |
 
-### Full Library State — Both Databases (2026-04-25, post all passes)
+### EverydayHoroscope Hollow Rule Bulk Deprecation (2026-04-25)
+
+280 hollow composite rules found in `pending_review` with `condition.type = composite`, empty `sub_conditions`, and duplicate `rule_id` values across multiple batch IDs. Root cause: earlier ingest script reset `rule_id` counter per batch instead of globally. All deprecated to `rejected` with reason `hollow_composite_empty_condition_duplicate_batch_ingest`.
+
+`validate_rules.py` fix applied (commit `ee0043b`): switched `update_one` → `update_many` in `apply_verdict()` so all documents sharing a `rule_id` are written in a single call. Eliminates persistent residual from duplicate-id ingest bugs.
+
+### EverydayHoroscope Final Pass (2026-04-25)
+
+17 remaining `pending_review` rules processed. 2 batches. Zero structural failures. Zero contradictions. 16 flagged (94%), 1 auto_approved (6%).
+
+### Full Library State — Both Databases (2026-04-25, FINAL)
 
 | Status | horoscope_db | EverydayHoroscope | Grand Total |
 |---|---|---|---|
-| `auto_approved` | 2,705 | 1,595 | **4,300** |
-| `flagged` | 1,329 | 1,047 | **2,376** |
+| `auto_approved` | 2,705 | 1,596 | **4,301** |
+| `flagged` | 1,329 | 1,063 | **2,392** |
 | `pending_human_review` | 1,850 | 845 | **2,695** |
-| `rejected` | 32 | 12 | **44** |
-| `pending_review` | 0 | 4 | **4** (persistent — investigate) |
+| `rejected` | 32 | 292 | **324** |
+| `pending_review` | **0** | **0** | **0** ✅ |
 | `approved` | 0 | 0 | **0** |
-| **Total** | **5,916** | **3,503** | **9,419** |
+| **Total** | **5,916** | **3,796** | **9,712** |
 
-No rules reach live users until `approved` status is granted via co-founder sign-off. Current `approved` count: **0**.
+**All validation passes complete. Zero `pending_review` in both databases.**
+
+No rules reach live users until `approved` status is granted via co-founder sign-off.
+
+### EverydayHoroscope Quality Assessment
+
+Consistently high flagged rates across all passes (56–94%) vs horoscope_db (~21%). 292 rejected (hollow duplicates from bugged ingest). Recommendation:
+
+- **horoscope_db is the authoritative library** — use this for co-founder review and promotion
+- **EverydayHoroscope options:** deprecate en masse / cherry-pick salvageable rules / re-ingest from source with corrected pipeline
 
 ### Next Steps
 
-1. Run EverydayHoroscope cleanup pass to clear residual 4 `pending_review` rules
-2. **Co-founder review session** — access live admin panel at `everydayhoroscope.in/admin` → Rules Browser (connected to `horoscope_db`)
-3. **Contradiction triage** — 132 pairs in main pass + 4 in EverydayHoroscope; deprecate weaker rule in each pair
-4. **High-flagged triage** — EverydayHoroscope's 875 flagged rules need editorial review; assess whether they are low-quality ingest candidates for deprecation en masse or individual salvage
-5. **Mars-H03 manual correction** — see earlier flag
-6. **Promotion gate** — co-founder sign-off required before any `auto_approved` → `approved` promotion
+1. **Co-founder review session** — `everydayhoroscope.in/admin` → Rules Browser → start with `horoscope_db`
+2. **Contradiction triage** — 132 pairs in horoscope_db; deprecate weaker rule in each pair
+3. **EverydayHoroscope decision** — deprecate en masse or salvage individually
+4. **Mars-H03 manual correction** — split 2 merged OR-conditions (see earlier flag)
+5. **Promotion gate** — co-founder sign-off required before any `auto_approved` → `approved` promotion
 
 ---
