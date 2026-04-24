@@ -132,9 +132,12 @@ For each sub-section, extract TWO layers:
     full_condition = "[Planet] in [N]th House"
     This captures the full range of effects in a compact summary.
     Skip this layer if the sub-section has no general trait text (only IF conditions).
+    *** This is the ONLY rule in the entire block that may have is_group_summary = true ***
 
   LAYER 2 — INDIVIDUAL IF RULES (is_group_summary = false):
     Each embedded "IF [condition] → [outcome]" = ONE rule. gender = same as its sub-section.
+    ALL rules from LAYER 2 MUST have is_group_summary = false — including sign-list
+    grouped summaries produced by SPLITTING GUIDANCE A below.
 
 sub_type values:
   planet_occupation — default for planet-in-house effects
@@ -146,7 +149,9 @@ sub_type values:
 
 SPLITTING GUIDANCE:
 A. Sign lists:  "IF in Taurus, Scorpio or Aquarius" → ONE rule per sign (sign_placement)
-   ALSO produce one grouped rule for all three signs together.
+   ALSO produce one grouped rule covering all three signs together.
+   *** Both the individual sign rules AND the sign-list grouped summary must have
+       is_group_summary = false. Only the LAYER 1 paragraph rule uses is_group_summary = true. ***
 B. Dignity alternatives: "IF exalted or in own sign" → TWO rules (exalted; own sign).
 C. Planet conjunctions: "IF with Saturn and Moon" = ONE combination rule (simultaneous).
 D. Alternative planets: "IF with Venus or Mars" = TWO rules (with Venus; with Mars).
@@ -155,7 +160,9 @@ E. Female IF conditions: separate rules, gender = "female".
 IMPORTANT:
 - Canonical planet names: Sun Moon Mars Mercury Jupiter Venus Saturn Rahu Ketu
 - gender must be exactly "neutral" or "female" — no other values
-- is_group_summary = true ONLY for the main paragraph grouped description rule
+- is_group_summary = true ONLY on the SINGLE LAYER 1 rule per sub-section (the main
+  paragraph description). Every other rule — including sign-list grouped summaries
+  produced by SPLITTING GUIDANCE A — must have is_group_summary = false.
 - Keep condition and result text close to the original wording
 """
 
@@ -236,7 +243,7 @@ class Extractor:
         try:
             resp = self._get_client().messages.parse(
                 model=self.model,
-                max_tokens=4096,
+                max_tokens=8192,   # raised from 4096 — Saturn-H01 saturated at 4096
                 temperature=0,
                 system=[{
                     "type": "text",
