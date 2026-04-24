@@ -42,7 +42,8 @@ def with_retry(label: str, fn):
 def main() -> None:
     args = parse_args()
     live = args.apply
-    rows = list(csv.DictReader(Path(args.csv_path).open(encoding="utf-8", newline="")))
+    with Path(args.csv_path).open(encoding="utf-8", newline="") as fh:
+        rows = list(csv.DictReader(fh))
     actionable = [row for row in rows if (row.get("final_action") or "").strip()]
     print(f"Loaded {len(rows)} rows from {args.csv_path}")
     print(f"Rows with final_action: {len(actionable)}")

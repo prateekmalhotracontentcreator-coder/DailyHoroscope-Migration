@@ -18,9 +18,14 @@ GROUP_FEMALE = "tba15-mars-h03-female"
 
 # Reviewable patch payload. The final inserted documents inherit stable source
 # metadata from the merged originals and apply these exact condition/text values.
+#
+# rule_id convention: lowercase, matches existing TBA Ch15 batch format.
+# condition_type convention: uses only types present in existing horoscope_db schema.
+#   combination  — planet + house + secondary condition (conjunct/aspect/dignity)
+#   aspect_rule  — aspect-only condition
 PATCH_RULES: list[dict[str, Any]] = [
     {
-        "rule_id": "R-TBA15-MARS-H03-NEUTRAL-101",
+        "rule_id": "tba15-mars-h03-neutral-101",
         "condition_group_id": GROUP_NEUTRAL,
         "gender": "neutral",
         "condition_type": "combination",
@@ -30,7 +35,7 @@ PATCH_RULES: list[dict[str, Any]] = [
         "tags": ["planet_occupation", "house_placement", "mars_h03_patch"],
     },
     {
-        "rule_id": "R-TBA15-MARS-H03-NEUTRAL-102",
+        "rule_id": "tba15-mars-h03-neutral-102",
         "condition_group_id": GROUP_NEUTRAL,
         "gender": "neutral",
         "condition_type": "aspect_rule",
@@ -40,40 +45,40 @@ PATCH_RULES: list[dict[str, Any]] = [
         "tags": ["planet_occupation", "house_placement", "mars_h03_patch"],
     },
     {
-        "rule_id": "R-TBA15-MARS-H03-NEUTRAL-103",
+        "rule_id": "tba15-mars-h03-neutral-103",
         "condition_group_id": GROUP_NEUTRAL,
         "gender": "neutral",
-        "condition_type": "general_principle",
+        "condition_type": "combination",
         "additional_condition": "Mars is conjunct malefics or aspected by malefics",
         "summary": "If Mars is conjunct malefics or aspected by malefics - unfavourable for elder co-borns.",
         "interpretation_text": "If Mars is conjunct malefics or aspected by malefics - unfavourable for elder co-borns.",
         "tags": ["planet_occupation", "house_placement", "mars_h03_patch", "grouped_condition_summary"],
     },
     {
-        "rule_id": "R-TBA15-MARS-H03-FEMALE-201",
+        "rule_id": "tba15-mars-h03-female-201",
         "condition_group_id": GROUP_FEMALE,
         "gender": "female",
-        "condition_type": "planet_in_house_special",
+        "condition_type": "combination",
         "additional_condition": "Mars is in own sign",
         "summary": "If Mars is in own sign - prosperous.",
         "interpretation_text": "If Mars is in own sign - prosperous.",
         "tags": ["planet_occupation", "house_placement", "mars_h03_patch", "female_horoscope"],
     },
     {
-        "rule_id": "R-TBA15-MARS-H03-FEMALE-202",
+        "rule_id": "tba15-mars-h03-female-202",
         "condition_group_id": GROUP_FEMALE,
         "gender": "female",
-        "condition_type": "planet_in_house_special",
+        "condition_type": "combination",
         "additional_condition": "Mars is exalted",
         "summary": "If Mars is exalted - prosperous.",
         "interpretation_text": "If Mars is exalted - prosperous.",
         "tags": ["planet_occupation", "house_placement", "mars_h03_patch", "female_horoscope"],
     },
     {
-        "rule_id": "R-TBA15-MARS-H03-FEMALE-203",
+        "rule_id": "tba15-mars-h03-female-203",
         "condition_group_id": GROUP_FEMALE,
         "gender": "female",
-        "condition_type": "general_principle",
+        "condition_type": "combination",
         "additional_condition": "Mars is in own sign or exalted",
         "summary": "If Mars is in own sign or exalted - prosperous.",
         "interpretation_text": "If Mars is in own sign or exalted - prosperous.",
@@ -110,23 +115,72 @@ def with_retry(label: str, fn):
                 raise
 
 
+def _rule_text(rule: dict[str, Any]) -> str:
+    """Collect every text field from a rule into a single lowercased string for keyword search."""
+    interpretation = rule.get("interpretation") or {}
+    condition = rule.get("condition") or {}
+    passages = interpretation.get("full_text_passages") or []
+    parts = [
+        interpretation.get("summary") or "",
+        interpretation.get("detailed") or "",
+        condition.get("additional_condition") or "",
+        condition.get("description") or "",
+        *[p.get("text", "") for p in passages],
+    ]
+    return " ".join(str(p) for p in parts).lower()
+
+
 def merged_match(rule: dict[str, Any], group_id: str) -> bool:
-    text = " ".join(
-        str(part)
-        for part in [
-            ((rule.get("interpretation") or {}).get("summary") or ""),
-            ((rule.get("interpretation") or {}).get("detailed") or ""),
-            ((rule.get("condition") or {}).get("additional_condition") or ""),
-        ]
-    ).lower()
+    """Return True only for the merged OR-condition original (the rule this patch replaces).
+
+    Uses multiple keyword variants so minor phrasing differences in stored text
+    don't cause a silent miss.  The rule must reference BOTH sides of the OR to
+    be considered the merged original — individual split rules will only mention
+    one side and will therefore not match.
+    """
+    text = _rule_text(rule)
     if group_id == GROUP_NEUTRAL:
-        return "with malefics" in text and "aspected by malefics" in text
+        # "conjunct malefics" side — accept several common phrasings
+        has_conjunct = any(
+            kw in text
+            for kw in [
+                "conjunct malefics",
+                "conjunct with malefics",
+                "with malefics",
+                "conjunction with malefics",
+            ]
+        )
+        # "aspected by malefics" side
+        has_aspected = any(
+            kw in text
+            for kw in [
+                "aspected by malefics",
+                "aspect by malefics",
+                "aspected malefics",
+                "malefics aspect",
+            ]
+        )
+        return has_conjunct and has_aspected
+
     if group_id == GROUP_FEMALE:
-        return "own sign" in text and "exalted" in text and "prosperous" in text
+        has_own_sign = any(kw in text for kw in ["own sign", "own house", "own_sign", "svakshetra"])
+        has_exalted = any(kw in text for kw in ["exalted", "exaltation", "uccha"])
+        has_prosperous = any(kw in text for kw in ["prosperous", "prosperity", "thriving"])
+        return has_own_sign and has_exalted and has_prosperous
+
     return False
 
 
 def find_merged_rules(col) -> list[dict[str, Any]]:
+    """Find the two merged OR-condition originals in horoscope_db.
+
+    Search strategy (broad-then-filter):
+      1. Any rule already tagged with the target condition_group_ids (if a previous
+         partial run set them), OR
+      2. Any non-deprecated Mars-in-House-3 rule (catches originals that were
+         ingested before this patch defined the group IDs).
+    Then apply merged_match() to isolate the two genuine merged originals.
+    """
     candidates = list(
         with_retry(
             "find merged rules",
@@ -136,15 +190,23 @@ def find_merged_rules(col) -> list[dict[str, Any]]:
                         {"condition_group_id": {"$in": [GROUP_NEUTRAL, GROUP_FEMALE]}},
                         {"condition.condition_group_id": {"$in": [GROUP_NEUTRAL, GROUP_FEMALE]}},
                         {"metadata.condition_group_id": {"$in": [GROUP_NEUTRAL, GROUP_FEMALE]}},
+                        # Broad fallback: any live Mars H3 rule from TBA source
+                        {
+                            "condition.planet": "Mars",
+                            "condition.house": 3,
+                            "approval_status": {"$nin": ["deprecated"]},
+                        },
                     ]
                 },
                 {"_id": 0},
             ).sort("rule_id", 1),
         )
     )
+
     merged: list[dict[str, Any]] = []
     for group_id in (GROUP_NEUTRAL, GROUP_FEMALE):
-        group_rules = [
+        # First pass: prefer rules already tagged with the group_id
+        tagged = [
             rule
             for rule in candidates
             if group_id
@@ -154,7 +216,9 @@ def find_merged_rules(col) -> list[dict[str, Any]]:
                 (rule.get("metadata") or {}).get("condition_group_id"),
             }
         ]
-        chosen = next((rule for rule in group_rules if merged_match(rule, group_id)), None)
+        # Second pass: fall back to all Mars H3 candidates if nothing tagged
+        pool = tagged if tagged else candidates
+        chosen = next((rule for rule in pool if merged_match(rule, group_id)), None)
         if chosen:
             merged.append(chosen)
     return merged
