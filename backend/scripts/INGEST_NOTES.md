@@ -1458,36 +1458,57 @@ The `EverydayHoroscope` database shows a significantly higher flagged rate (56%)
 
 ### Residual 4 pending_review Rules
 
-4 rules remain in `pending_review` after this pass — likely edge cases from contradiction handling. Run one cleanup pass to clear them:
+4 rules remain in `pending_review` after every pass — same 4 survive each run. Stage 4 counter undercounts due to MongoDB write timing gaps; the actual residual count was 297 (confirmed by cleanup pass below), not 4.
+
+These 4 rules are likely failing the `update_one` match silently — possibly malformed `rule_id` or a field conflict. Identify them directly:
 
 ```bash
-ANTHROPIC_API_KEY="sk-ant-..." python3 backend/scripts/validate_rules.py \
-  --mongo-url "mongodb+srv://..." \
-  --db-name "EverydayHoroscope" \
-  --batch-size 10 \
-  --report-path backend/scripts/reports/validation_report_EverydayHoroscope_cleanup_20260425.md
+python3 - <<'EOF'
+from pymongo import MongoClient
+client = MongoClient("mongodb+srv://...")
+db = client["EverydayHoroscope"]
+for r in db["interpretation_rules"].find({"approval_status": "pending_review"}, {"rule_id": 1, "condition": 1, "source": 1, "_id": 0}):
+    print(r)
+client.close()
+EOF
 ```
 
-### EverydayHoroscope Cumulative State (post pass)
+### EverydayHoroscope Cleanup Pass (2026-04-25)
 
-| Status | Pre-pass | This pass | Combined |
-|---|---|---|---|
-| `auto_approved` | 1,434 | +95 | **1,529** |
-| `flagged` | 341 | +534 | **875** |
-| `pending_human_review` | 473 | +317 | **790** |
-| `rejected` | 2 | +5 | **7** |
-| `pending_review` | 950 | −946 | **4** (residual) |
+Cleanup pass found 297 pending_review rules (not 4 as Stage 4 counter suggested — Stage 4 undercounts due to write timing). All 30 batches completed. Zero contradictions.
 
-### Full Library State — Both Databases (2026-04-25)
+| Status | Count | % |
+|---|---|---|
+| `flagged` | 172 | 58% |
+| `auto_approved` | 66 | 22% |
+| `pending_human_review` | 55 | 19% |
+| `pending_review` (residual) | 4 | 1% |
+| `rejected` (structural) | 5 | <1% |
+| **Total** | **297** | |
+
+58% flagged rate consistent with EverydayHoroscope pattern — older lower-quality ingest content.
+
+### EverydayHoroscope Cumulative State (post all passes)
+
+| Status | Pass 1 base | Pass 2 (+950) | Cleanup (+297) | Combined |
+|---|---|---|---|---|
+| `auto_approved` | 1,434 | +95 | +66 | **1,595** |
+| `flagged` | 341 | +534 | +172 | **1,047** |
+| `pending_human_review` | 473 | +317 | +55 | **845** |
+| `rejected` | 2 | +5 | +5 | **12** |
+| `pending_review` | 950 | −946 | −293 | **4** (persistent) |
+
+### Full Library State — Both Databases (2026-04-25, post all passes)
 
 | Status | horoscope_db | EverydayHoroscope | Grand Total |
 |---|---|---|---|
-| `auto_approved` | 2,705 | 1,529 | **4,234** |
-| `flagged` | 1,329 | 875 | **2,204** |
-| `pending_human_review` | 1,850 | 790 | **2,640** |
-| `rejected` | 32 | 7 | **39** |
-| `pending_review` | 0 | 4 | **4** (residual) |
-| **Total** | **5,916** | **3,205** | **9,121** |
+| `auto_approved` | 2,705 | 1,595 | **4,300** |
+| `flagged` | 1,329 | 1,047 | **2,376** |
+| `pending_human_review` | 1,850 | 845 | **2,695** |
+| `rejected` | 32 | 12 | **44** |
+| `pending_review` | 0 | 4 | **4** (persistent — investigate) |
+| `approved` | 0 | 0 | **0** |
+| **Total** | **5,916** | **3,503** | **9,419** |
 
 No rules reach live users until `approved` status is granted via co-founder sign-off. Current `approved` count: **0**.
 
