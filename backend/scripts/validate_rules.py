@@ -109,7 +109,7 @@ def apply_verdict(
     if not dry_run:
         for attempt in range(4):
             try:
-                db["interpretation_rules"].update_one(
+                db["interpretation_rules"].update_many(
                     {"rule_id": rule_id},
                     {"$set": {"approval_status": new_status, "validation": validation_doc}},
                 )
