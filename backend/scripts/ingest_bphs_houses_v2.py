@@ -108,7 +108,8 @@ structured object. A prediction rule is a specific if→then statement:
 
 RULES:
 1. Split compound slokas — each distinct condition→outcome pair is one rule.
-2. "Or / alternatively" conditions yielding the SAME outcome = one rule (combine them).
+2. "Or / alternatively" conditions with the SAME outcome: apply SPLITTING GUIDANCE below —
+   create individual rules per alternative PLUS one grouped-outcome rule.
 3. Opposite outcomes from different conditions = separate rules.
    Example: "if lord in angle → wealth" and "if lord in 6th/8th/12th → poverty" = 2 rules.
 4. Notes section: extract a new rule from Notes ONLY if it contains a genuinely distinct
@@ -122,6 +123,38 @@ RULES:
    combination       — multi-planet yoga or special combination
    birth_special     — unusual birth circumstances (twins, coiled birth, etc.)
    general_principle — overarching principle not fitting above
+
+SPLITTING GUIDANCE — house-rule context:
+A. HOUSE-LIST ALTERNATIVES: If a condition lists multiple house placements with the
+   same outcome ("lord in 6th, 8th or 12th → poverty"), create ONE rule per house:
+     • "lord in 6th → poverty"
+     • "lord in 8th → poverty"
+     • "lord in 12th → poverty"
+   ALSO create one grouped-outcome rule covering all placements together
+   (e.g., "lord in 6th, 8th or 12th → poverty"). Use sub_type = "general_principle".
+
+B. DIGNITY ALTERNATIVES: If a condition bundles dignity states ("planet in own sign or
+   exaltation → X"), create ONE rule per dignity state:
+     • "planet in own sign → X"
+     • "planet in exaltation → X"
+   These are separately queryable because own-sign and exaltation are distinct strengths.
+
+C. ALTERNATIVE PLANETS: If a condition names alternative planets for the same outcome
+   ("Venus or Mercury in 2nd → eloquence"), create ONE rule per planet:
+     • "Venus in 2nd → eloquence"
+     • "Mercury in 2nd → eloquence"
+
+D. YOGA CONDITIONS — DO NOT SPLIT: When multiple planets are described in a
+   simultaneous configuration — connected by words like "and", "while", "with",
+   "conjunct", "associated with", "aspected by", "joined by" — treat the entire
+   combination as ONE yoga rule with sub_type = "combination".
+   Example: "Mercury in 3rd while Moon and Saturn conjunct it" = 1 rule.
+   Example: "Rahu in 6th and Saturn in 8th from Rahu" = 1 rule.
+
+E. GROUPED OUTCOME RULE: After creating individual split rules for A/B/C above,
+   also produce ONE combined rule that captures all alternatives with their shared
+   outcome. This aids pattern-matching across the original grouping.
+   Use sub_type = "general_principle" for the grouped rule.
 """
 
 EXTRACTION_PROMPT = """\
@@ -176,8 +209,8 @@ class SlokaExtractor:
             client = self._get_client()
             response = client.messages.parse(
                 model=self.model,
-                max_tokens=2048,
-                temperature=0.1,
+                max_tokens=4096,
+                temperature=0,
                 system=[{
                     "type": "text",
                     "text": EXTRACTION_SYSTEM,
