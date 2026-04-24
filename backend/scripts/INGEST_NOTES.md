@@ -1039,9 +1039,9 @@ Remove `--dry-run` when satisfied with the dry-run output. New rules appear in A
 - ✅ **`pre_split_merged` deprecation complete** (24 Apr 2026) — 425 rules deprecated across Ch 47/48/52–59; 0 remaining
 - ✅ **Vol 1 house chapter assessment complete** (24 Apr 2026) — 59/736 candidates (8%); decision: no blanket split-upgrade; flag for co-founder human review
 - ✅ **`ingest_bphs_houses_v2.py` upgraded** (24 Apr 2026) — SPLITTING GUIDANCE + temperature=0 + max_tokens=4096; ready for all future house chapter ingests
-- Run `validate_rules.py --batch-id` for each batch: Ch 52/53/54/55/56/57/58/59/47/48/60
-- Co-founder review of all pending_review rules across all batches (~2,500+ rules)
-- Next chapter to ingest: **Text-Book of Astrology Ch 15** (use improved `ingest_bphs_houses_v2.py`)
+- ✅ **Text-Book of Astrology Ch 15** — ingested 24 Apr 2026, **1,530 rules total** (`tba-ch15-v1-20260424`)
+- Run `validate_rules.py --batch-id` for each batch: Ch 52/53/54/55/56/57/58/59/47/48/60 + `tba-ch15-v1-20260424`
+- Co-founder review of all pending_review rules across all batches (~4,000+ rules)
 
 ---
 
@@ -1243,5 +1243,60 @@ For each of the 59 flagged rules, the co-founder reviewer should:
 **All future house chapter ingests** (Text-Book of Astrology Ch 15, any future BPHS Vol 2 house chapters) will benefit automatically.
 
 **Old Vol 1 house chapters (Ch 12-24):** NOT re-ingested. 59 flagged candidates handled at co-founder review.
+
+---
+
+### Text-Book of Astrology Ch 15 | Planets in Different Houses: Prediction | 24 Apr 2026
+
+**Script used:** `ingest_tba_ch15_v1.py` (purpose-built; commit `a31099f`)
+**Batch ID:** `tba-ch15-v1-20260424`
+**Book:** A Text-Book of Astrology | Chapter 15
+**Structure:** Two-part chapter — Part 1: Planet × House (108 blocks), Part 2: Planet × Sign (108 entries)
+
+#### Script highlights
+
+- **RTF parser** — state-machine detecting Planet / House / "In female horoscope:" / "Result of Planets in 12 Signs" headings via regex; `join_colon_continuations()` fixes Part 2 split-line RTF artefact
+- **Two-layer extraction per block**: LAYER 1 = general paragraph description (`is_group_summary=True`, `planet_occupation`); LAYER 2 = individual IF conditions (`is_group_summary=False`)
+- **Female sub-sections**: Each block has a "In female horoscope:" paragraph extracted separately (`gender="female"`)
+- **`condition_group_id`**: Auto-generated deterministically — `tba15-{planet}-h{NN}-{gender}` (e.g. `tba15-saturn-h01-neutral`). All rules in a block share one ID; `group_summary` tag on LAYER 1 rule only
+- **Part 2 sign rules**: One API call per planet (12 signs batched); `build_sign_rule()` extracts sign from `full_condition` via regex
+
+#### Pre-ingest fixes (commit `a31099f`)
+
+| Issue | Fix |
+|---|---|
+| Saturn-H01 JSON truncation (`EOF at col 13647`) | `max_tokens` 4096 → 8192 in `Extractor.house_block()` |
+| `is_group_summary=True` bleeding onto sign-list grouped summaries (SPLITTING GUIDANCE A) | Added explicit `***` guards in LAYER 2, SPLITTING GUIDANCE A, and IMPORTANT block |
+
+#### Dry run validation (V1 → V2)
+
+- **V1** (before fixes): 1,480 rules; Saturn-H01 failed; Jupiter-H03 `grp:7`, Mars-H01 `grp:4`, Moon-H01 `grp:4`, Sun-H06 `grp:4`
+- **V2** (after fixes): 1,429 rules; Saturn-H01 = 37 rules; all 108 blocks `[grp:1  f-grp:1]` — perfect
+
+#### Live run results
+
+| Metric | Count |
+|---|---|
+| Part 1 blocks extracted | 108 / 108 |
+| Part 2 sign entries extracted | 108 / 108 |
+| **Total rules inserted** | **1,530** |
+| Group summaries | 216 (= 108 neutral + 108 female, exactly 2 per block) |
+| Neutral rules | 1,312 |
+| Female horoscope rules | 218 |
+
+**Sub-type breakdown:**
+
+| Sub-type | Count |
+|---|---|
+| sign_placement | 635 (embedded Part 1 IF-sign rules + 108 Part 2) |
+| combination | 274 |
+| planet_occupation | 251 |
+| conditional_rule | 249 |
+| aspect_rule | 119 |
+| general_principle | 2 |
+
+**Range:** Min = Rahu-H11/H12 (2 rules each — no IF conditions in source text, confirmed correct); Max = Jupiter-H03 (33 rules — rich block with many sign-list alternatives, confirmed correct)
+
+**Next step:** `python3 scripts/validate_rules.py --mongo-url $MONGO_URL --db-name horoscope_db --batch-id tba-ch15-v1-20260424`
 
 ---
