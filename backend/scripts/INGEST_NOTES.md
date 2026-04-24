@@ -1524,19 +1524,57 @@ Cleanup pass found 297 pending_review rules (not 4 as Stage 4 counter suggested 
 
 No rules reach live users until `approved` status is granted via co-founder sign-off.
 
-### EverydayHoroscope Quality Assessment
+### EverydayHoroscope — Full Deprecation (2026-04-25)
 
-Consistently high flagged rates across all passes (56–94%) vs horoscope_db (~21%). 292 rejected (hollow duplicates from bugged ingest). Recommendation:
+Decision: deprecate en masse. Reasons:
+- Confirmed stale pre-split-upgrade snapshot (INGEST_NOTES line 96)
+- 56–94% flagged rate across all passes vs ~21% in horoscope_db
+- Source books (A Text Book of Astrology General + Lal Kitab) have no current ingest scripts
+- Chapter headings garbled (bad OCR from old pipeline — e.g. `'7 10 1 4 7'`, `'Lal Kitab And'`)
+- Content to be re-ingested fresh into horoscope_db when source RTFs are available
 
-- **horoscope_db is the authoritative library** — use this for co-founder review and promotion
-- **EverydayHoroscope options:** deprecate en masse / cherry-pick salvageable rules / re-ingest from source with corrected pipeline
+```python
+db["interpretation_rules"].update_many(
+    {"approval_status": {"$nin": ["rejected", "approved"]}},
+    {"$set": {"approval_status": "rejected",
+              "validation.flag_reason": "deprecated_stale_pre_split_upgrade_snapshot_20260425"}}
+)
+# Result: 3,012 rules deprecated
+```
+
+**EverydayHoroscope is now fully retired. All 3,796 rules are rejected. Do not use for any operation.**
+
+---
+
+### Active Library — horoscope_db Only (2026-04-25, FINAL)
+
+| Status | Count |
+|---|---|
+| `auto_approved` | 2,705 |
+| `flagged` | 1,329 |
+| `pending_human_review` | 1,850 |
+| `rejected` | 32 |
+| `pending_review` | 0 |
+| `approved` | **0** |
+| **Total active** | **5,884** |
+
+### Pending Ingest — A Text Book of Astrology (General) + Lal Kitab
+
+Both sources need fresh ingest scripts built against the current pipeline before they can be added to horoscope_db. Source RTFs to be sourced first.
+
+| Book | Status |
+|---|---|
+| A Text Book of Astrology — General chapters | ❌ No current script — needs RTF source + new ingest script |
+| Lal Kitab | ❌ No current script — needs RTF source + new ingest script |
 
 ### Next Steps
 
-1. **Co-founder review session** — `everydayhoroscope.in/admin` → Rules Browser → start with `horoscope_db`
-2. **Contradiction triage** — 132 pairs in horoscope_db; deprecate weaker rule in each pair
-3. **EverydayHoroscope decision** — deprecate en masse or salvage individually
-4. **Mars-H03 manual correction** — split 2 merged OR-conditions (see earlier flag)
-5. **Promotion gate** — co-founder sign-off required before any `auto_approved` → `approved` promotion
+1. **Co-founder review session** — `everydayhoroscope.in/admin` → Rules Browser → `horoscope_db` only
+2. **Contradiction triage** — 125 unique pairs in `horoscope_db_contradictions.csv`; fill `recommended_action` column
+3. **Mars-H03 manual correction** — split 2 merged OR-conditions (see earlier flag)
+4. **Remaining source ingest** — BPHS chapters pending + A Text Book of Astrology General + Lal Kitab (new scripts needed)
+5. **Remedies Engine** — spec and build before promotion gate opens
+6. **1,000 use case litmus test** — required before any `auto_approved` → `approved` promotion
+7. **Promotion gate** — co-founder sign-off only after steps 1–6 complete
 
 ---
