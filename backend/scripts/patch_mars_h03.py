@@ -308,7 +308,18 @@ def main() -> None:
             print("Aborting to avoid duplicate inserts.")
             return
 
-        template_by_group = {rule["condition_group_id"]: rule for rule in merged_rules}
+        # merged originals may not have condition_group_id set (ingested before this patch
+        # defined the group IDs), so re-derive the mapping via merged_match() rather than
+        # relying on the stored field value.
+        template_by_group: dict[str, dict[str, Any]] = {}
+        for group_id in (GROUP_NEUTRAL, GROUP_FEMALE):
+            for rule in merged_rules:
+                if merged_match(rule, group_id):
+                    template_by_group[group_id] = rule
+                    break
+        if set(template_by_group) != {GROUP_NEUTRAL, GROUP_FEMALE}:
+            print(f"\nCould not map both merged originals to their groups: {set(template_by_group)}. Aborting.")
+            return
         docs = [build_patch_doc(template_by_group[item["condition_group_id"]], item) for item in PATCH_RULES]
 
         insert_result = with_retry("insert patch docs", lambda: col.insert_many(docs, ordered=True))
