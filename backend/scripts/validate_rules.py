@@ -3,11 +3,13 @@ from __future__ import annotations
 
 import argparse
 import sys
+import time
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
 from pymongo import MongoClient
+from pymongo.errors import AutoReconnect
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -105,10 +107,20 @@ def apply_verdict(
     }
 
     if not dry_run:
-        db["interpretation_rules"].update_one(
-            {"rule_id": rule_id},
-            {"$set": {"approval_status": new_status, "validation": validation_doc}},
-        )
+        for attempt in range(4):
+            try:
+                db["interpretation_rules"].update_one(
+                    {"rule_id": rule_id},
+                    {"$set": {"approval_status": new_status, "validation": validation_doc}},
+                )
+                break
+            except AutoReconnect as exc:
+                if attempt < 3:
+                    wait = 2 ** attempt  # 1s, 2s, 4s
+                    print(f"\n    [retry {attempt + 1}/3] MongoDB timeout for {rule_id} — retrying in {wait}s ({exc})")
+                    time.sleep(wait)
+                else:
+                    raise
     return new_status
 
 
