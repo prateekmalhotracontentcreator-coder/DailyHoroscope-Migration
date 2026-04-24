@@ -1299,4 +1299,38 @@ For each of the 59 flagged rules, the co-founder reviewer should:
 
 **Next step:** `python3 scripts/validate_rules.py --mongo-url $MONGO_URL --db-name horoscope_db --batch-id tba-ch15-v1-20260424`
 
+#### Post-ingest variance analysis — dry run V2 vs live run
+
+After live ingest, a block-by-block diff against the V2 dry run baseline revealed 16 blocks with ±1–4 rule variance (92/108 blocks identical). This is expected LLM non-determinism at temperature=0 across separate API sessions. All 108 blocks retain `[grp:1  f-grp:1]` — structural integrity is intact.
+
+Full source spot-check was run on the four highest-variance Mars blocks:
+
+| Block | V2 | Live | Source IFs | Assessment |
+|---|---|---|---|---|
+| Mars-H02 | 9 | 11 | 7 | Live more accurate — V2 under-split "own sign/exalted" (Guidance B) |
+| Mars-H03 | 16 | 12 | 10 | **V2 more accurate — live under-split (see flag below)** |
+| Mars-H05 | 24 | 21 | 12 | Both acceptable — heavy sign-list block, both within range |
+| Mars-H11 | 15 | 17 | 8 | Both acceptable — live picked up 2 inline prose IFs |
+
+#### ⚑ Manual review flag — Mars-H03 (`tba15-mars-h03-neutral` / `tba15-mars-h03-female`)
+
+**What happened:** The live run extracted 12 rules against an expected ~15-16. The model applied SPLITTING GUIDANCE correctly in V2 (16 rules) but skipped splits in the live run, leaving ~4 OR-conditions merged.
+
+**Specific missed splits in the live run:**
+
+| Condition in source | Expected split | What live run likely stored |
+|---|---|---|
+| `IF with malefics or aspected by malefics → unfavourable for elder co-borns` | 2 rules (with malefics; aspected by malefics) + 1 grouped | 1 merged rule |
+| `IF Mars in own sign or exalted → prosperous` (female) | 2 rules (own sign; exalted) + 1 grouped | 1 merged rule |
+
+**Action at co-founder review:**
+1. Open Rules Browser → filter `condition_group_id = "tba15-mars-h03-neutral"` and `"tba15-mars-h03-female"`
+2. Find the merged OR-condition rules above
+3. Manually create the individual split rules + grouped summary (or use `patch_slokas.py` if adapted for TBA format)
+4. Deprecate the merged originals (`approval_status = "deprecated"`)
+
+**Source text for reference (Mars in Third House):**
+- General: `"IF with malefics or aspected by malefics — unfavourable for elder co-borns"`
+- Female: `"IF Mars is in own sign or exalted — prosperous"`
+
 ---
