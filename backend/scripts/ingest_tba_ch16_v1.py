@@ -125,18 +125,55 @@ class PhysicalMarker(BaseModel):
     description: str    # verbatim or close-verbatim text from the source
     polarity: str       # "positive" | "negative" | "neutral"
 
+# yoga_check: machine-checkable formation condition for runtime yoga detection.
+# vedic_calculator.py evaluates these against a live birth chart to detect active yogas.
+# When checkable=False the condition is too complex/contextual — full_condition text is used.
+YOGA_CHECK_TYPES = [
+    "relative_position",          # planet X in position N from planet Y or Lagna
+    "any_planet_relative",        # any planet (excluding some) in position from Sun/Moon/Lagna
+    "no_planets_adjacent",        # no planets in 2nd and 12th from reference planet
+    "planet_in_dignity_in_kendra",# planet in own/exaltation sign in kendra (1/4/7/10)
+    "planet_in_absolute_house",   # planet in specific house(s) counted from Lagna
+    "planet_in_sign",             # planet in specific zodiac sign(s)
+    "planet_conjunction",         # specific planets conjunct in same house
+    "planet_aspected_by",         # planet aspected by specific planet
+    "lord_in_house",              # lord of house A placed in house(s) B
+    "lord_conjunction",           # lords of houses A and B conjunct
+    "lord_mutual_kendra",         # lords of houses A and B in mutual quadrant
+    "lord_exchange",              # lords of houses A and B exchange signs (parivartana)
+    "benefics_in_houses",         # benefic planets in specified houses
+    "malefics_in_houses",         # malefic planets in specified houses
+    "planet_exalted",             # specific planet in exaltation sign
+    "complex",                    # too complex for structured check — checkable=False
+]
+
+class YogaCheck(BaseModel):
+    type: str                   # one of YOGA_CHECK_TYPES
+    checkable: bool             # True = can be evaluated programmatically against a birth chart
+    description: str            # human-readable formation condition (verbatim or near-verbatim)
+    # Core parameters (populate only what the specific type requires; leave others as defaults)
+    planet: str                 # primary planet ("Jupiter", "Saturn", etc. — or "" if not applicable)
+    reference: str              # reference point — "Moon" | "Sun" | "Lagna" | "" if not applicable
+    positions: list[int]        # house positions from reference (e.g. [1,4,7,10] for quadrants)
+    houses: list[int]           # absolute house numbers from Lagna involved in the condition
+    lord_of: list[int]          # house(s) whose lord is the subject (for lord_in_house / lord_conjunction)
+    in_houses: list[int]        # destination house(s) for lord placement (for lord_in_house)
+    exclude_planets: list[str]  # planets to exclude (used in any_planet_relative, no_planets_adjacent)
+    dignity: list[str]          # dignities required: "own" | "exalted" | "moolatrikona" | "friendly"
+
 class YogaRule(BaseModel):
-    yoga_name: str             # e.g. "Gaja Kesari Yoga" | "Long life" | bullet slug
+    yoga_name: str             # e.g. "Gaja Kesari Yoga" | "Long life — 1" | bullet slug
     condition_summary: str     # ≤20 words: the if-clause
     result_summary: str        # ≤20 words: the effect (non-physical outcomes)
-    full_condition: str        # complete condition text (verbatim)
+    full_condition: str        # complete formation condition text (verbatim)
     full_result: str           # complete result/effect text (verbatim)
     condition_type: str        # yoga_combination | general_principle | dosha
     sub_type: str              # yoga_formation | benefic_rule | malefic_rule | neutral_rule | dosha_rule
     planets_involved: list[str]
     houses_involved: list[int]
     is_benefic: bool           # True = beneficial yoga/result, False = adverse
-    physical_markers: list[PhysicalMarker]  # physical appearance, voice, disability, behavioral markers
+    yoga_check: YogaCheck      # machine-checkable formation condition for runtime yoga detection
+    physical_markers: list[PhysicalMarker]  # physical appearance, voice, disability, behavioral
 
 class SectionExtraction(BaseModel):
     rules: list[YogaRule]
@@ -177,6 +214,45 @@ IMPORTANT:
   - "Ruddy complexion", "lion-like face" are neutral descriptors → polarity "neutral"
 """
 
+_YOGA_CHECK_INSTRUCTIONS = """\
+YOGA CHECK — extract a machine-checkable formation condition into the yoga_check field.
+This enables the backend to detect at runtime whether a native's birth chart satisfies the yoga.
+
+yoga_check fields:
+  type        = one of the YOGA_CHECK_TYPES (see below)
+  checkable   = True if the condition can be evaluated programmatically; False if too complex/contextual
+  description = verbatim formation condition text (same as full_condition, abbreviated if long)
+  planet      = primary planet involved ("Jupiter", "Saturn", etc.; "" if none)
+  reference   = reference point: "Moon" | "Sun" | "Lagna" | "" if not applicable
+  positions   = relative house positions from reference (e.g. quadrants = [1,4,7,10])
+  houses      = absolute house numbers from Lagna in the condition
+  lord_of     = house numbers whose lord is the subject (e.g. [6] for "6th lord")
+  in_houses   = destination houses for lord placement (e.g. [8,12] for "placed in 8th or 12th")
+  exclude_planets = planets excluded from the condition (e.g. ["Moon"] for "planet other than Moon")
+  dignity     = required dignities: ["own","exalted","moolatrikona","friendly"] as applicable
+
+Type mapping examples:
+  "planet in quadrant from Moon"               → type="relative_position", planet="Jupiter", reference="Moon", positions=[1,4,7,10]
+  "planet other than Moon in 2nd from Sun"     → type="any_planet_relative", reference="Sun", positions=[2], exclude_planets=["Moon"]
+  "no planets on either side of Moon"          → type="no_planets_adjacent", reference="Moon"
+  "Jupiter in quadrant in own/exaltation sign" → type="planet_in_dignity_in_kendra", planet="Jupiter", dignity=["own","exalted"]
+  "6th lord in 8th or 12th"                   → type="lord_in_house", lord_of=[6], in_houses=[8,12]
+  "lords of 5th and 6th in mutual quadrant"   → type="lord_mutual_kendra", lord_of=[5,6]
+  "exchange of 2nd and 9th lords"             → type="lord_exchange", lord_of=[2,9]
+  "Sun and Mercury conjunct"                   → type="planet_conjunction", planet="Mercury", reference="Sun"
+  "benefics in 6th, 7th and 8th from Moon"    → type="benefics_in_houses", reference="Moon", positions=[6,7,8]
+  "Lagna and 9th occupied with malefics"      → type="malefics_in_houses", houses=[1,9]
+  "Moon in 6th, 8th or 12th from Jupiter"     → type="relative_position", planet="Moon", reference="Jupiter", positions=[6,8,12]
+
+Set checkable=False for:
+  - Conditions involving "strongly disposed", "powerfully disposed", "well placed" (subjective)
+  - Conditions with more than 3 compound clauses (too complex for current engine)
+  - Conditions mentioning Navamsha chart checks
+
+For category bullet rules (general_principle): set checkable=False, type="complex",
+  description = the bullet text, all other fields empty/default.
+"""
+
 TYPE_A_SYSTEM = """\
 You are a Vedic astrology rule extractor working on "A Text-Book of Astrology", Chapter 16 — Planetary Combinations or Yogas.
 
@@ -204,7 +280,7 @@ Special cases:
   - Parvata Yoga: one rule with both Phaldeepika + Jatak Parijata variants in full_condition
   - is_benefic = False for: Kemadruma Yoga, Sakata Yoga, Dur Yoga, Daridra Yoga, Andha Yoga, Sasa Yoga
 
-""" + _PHYSICAL_MARKER_INSTRUCTIONS
+""" + _PHYSICAL_MARKER_INSTRUCTIONS + _YOGA_CHECK_INSTRUCTIONS
 
 TYPE_B_SYSTEM = """\
 You are a Vedic astrology rule extractor working on "A Text-Book of Astrology", Chapter 16 — Planetary Combinations or Yogas.
@@ -240,7 +316,7 @@ Category-level defaults:
   - Every bullet = one rule; do NOT merge or skip any
   - Canonical planet names: Sun Moon Mars Mercury Jupiter Venus Saturn Rahu Ketu
 
-""" + _PHYSICAL_MARKER_INSTRUCTIONS
+""" + _PHYSICAL_MARKER_INSTRUCTIONS + _YOGA_CHECK_INSTRUCTIONS
 
 # ── RTF parser ─────────────────────────────────────────────────────────────────
 
@@ -557,6 +633,23 @@ def build_rule(
         if cat in ("body_build", "height", "facial_features", "complexion", "body_marks"):
             has_appearance = True
 
+    # ── yoga_check — machine-checkable formation condition ─────────────────────
+    raw_yc = item.yoga_check
+    yc_type = raw_yc.type if raw_yc.type in YOGA_CHECK_TYPES else "complex"
+    yoga_check = {
+        "type":             yc_type,
+        "checkable":        bool(raw_yc.checkable) if yc_type != "complex" else False,
+        "description":      raw_yc.description.strip() if raw_yc.description else item.full_condition[:200],
+        "planet":           raw_yc.planet or "",
+        "reference":        raw_yc.reference or "",
+        "positions":        [p for p in (raw_yc.positions or []) if isinstance(p, int)],
+        "houses":           [h for h in (raw_yc.houses or []) if isinstance(h, int) and 1 <= h <= 12],
+        "lord_of":          [h for h in (raw_yc.lord_of or []) if isinstance(h, int) and 1 <= h <= 12],
+        "in_houses":        [h for h in (raw_yc.in_houses or []) if isinstance(h, int) and 1 <= h <= 12],
+        "exclude_planets":  [p for p in (raw_yc.exclude_planets or []) if p in PLANETS],
+        "dignity":          [d for d in (raw_yc.dignity or []) if d in ("own","exalted","moolatrikona","friendly")],
+    }
+
     # ── Tags ───────────────────────────────────────────────────────────────────
     tags = [
         "verbatim", "yoga", f"chapter{CHAPTER}", "ai_extracted",
@@ -575,6 +668,8 @@ def build_rule(
         tags.append("disability")
     if has_appearance:
         tags.append("physical_appearance")
+    if yoga_check.get("checkable"):
+        tags.append("yoga_checkable")
 
     return {
         "rule_id":    rule_id,
@@ -605,6 +700,10 @@ def build_rule(
             "condition_group_id": condition_group_id,
             "is_group_summary":   False,
             "is_benefic":         item.is_benefic,
+            # yoga_check: evaluated by vedic_calculator.py at runtime to detect active yogas.
+            # If checkable=True: backend can confirm this yoga in a native's chart programmatically.
+            # If checkable=False: condition is noted in description for human/AI report use.
+            "yoga_check":         yoga_check,
         },
         "interpretation": {
             "summary":            summary,
@@ -614,7 +713,8 @@ def build_rule(
             "life_domain":        life_domain,
             "tags":               tags,
             # Physical appearance / disability / behavioural markers
-            # Queryable separately: db.find({"interpretation.physical_markers.category": "disability"})
+            # Cross-module queries: db.find({"interpretation.physical_markers.category": "disability"})
+            # Premium report use: aggregate appearance markers across all active yogas for a native
             "physical_markers":   physical_markers,
         },
         "metadata": {
@@ -627,6 +727,7 @@ def build_rule(
             "is_group_summary":     False,
             "has_physical_markers": bool(physical_markers),
             "physical_categories":  sorted({m["category"] for m in physical_markers}),
+            "yoga_checkable":       yoga_check.get("checkable", False),
         },
         "confidence": {
             "base": 0.87, "source_weight": 0.90, "cross_book_multiplier": 1.0,
@@ -778,6 +879,18 @@ def main() -> None:
     print(f"\nIsolation: approval_status='pending_review' — zero rules reach live users")
 
     if args.dry_run:
+        # yoga_check summary
+        yc_checkable = sum(1 for r in all_rules if r["metadata"].get("yoga_checkable"))
+        yc_types: dict[str, int] = {}
+        for r in all_rules:
+            yc = r["condition"].get("yoga_check", {})
+            yct = yc.get("type", "—")
+            yc_types[yct] = yc_types.get(yct, 0) + 1
+        print(f"\nyoga_check: {yc_checkable}/{len(all_rules)} rules are programmatically checkable")
+        print("yoga_check type breakdown:")
+        for yct, cnt in sorted(yc_types.items(), key=lambda x: -x[1]):
+            print(f"  {yct:<35s} : {cnt}")
+
         # Physical marker summary
         pm_rules  = [r for r in all_rules if r["metadata"].get("has_physical_markers")]
         pm_cats: dict[str, int] = {}
@@ -793,18 +906,19 @@ def main() -> None:
         for r in all_rules[:8]:
             c = r["condition"]
             interp = r["interpretation"]
+            yc = c.get("yoga_check", {})
             markers = interp.get("physical_markers", [])
             print(f"\n  {r['rule_id']}")
-            print(f"    yoga_name    : {c.get('yoga_name','—')[:55]}")
-            print(f"    type         : {c['type']} / {c['sub_type']}")
-            print(f"    planets      : {c['planets_involved']}")
-            print(f"    houses       : {c['houses_involved']}")
-            print(f"    is_benefic   : {c.get('is_benefic','—')}")
-            print(f"    summary      : {interp['summary'][:90]}")
+            print(f"    yoga_name      : {c.get('yoga_name','—')[:55]}")
+            print(f"    type           : {c['type']} / {c['sub_type']}")
+            print(f"    planets        : {c['planets_involved']}")
+            print(f"    is_benefic     : {c.get('is_benefic','—')}")
+            print(f"    summary        : {interp['summary'][:85]}")
+            yc_desc = yc.get('description','')[:60] if yc else ''
+            print(f"    yoga_check     : [{yc.get('type','—')}] checkable={yc.get('checkable','—')} | {yc_desc}")
             if markers:
-                print(f"    physical_markers ({len(markers)}):")
-                for m in markers:
-                    print(f"      [{m['category']}/{m['polarity']}] {m['description'][:70]}")
+                print(f"    physical ({len(markers)}) : ", end="")
+                print(" | ".join(f"[{m['category']}] {m['description'][:35]}" for m in markers[:3]))
         return
 
     # ── Insert into MongoDB ────────────────────────────────────────────────────
