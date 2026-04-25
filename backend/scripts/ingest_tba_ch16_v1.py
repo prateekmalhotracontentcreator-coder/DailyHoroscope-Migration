@@ -33,6 +33,7 @@ Requires:
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import sys
@@ -765,6 +766,29 @@ def mongo_update_many(col, docs: list[dict], dry_run: bool) -> int:
     return inserted
 
 
+# ── MongoDB insert helper ──────────────────────────────────────────────────────
+
+def insert_rules_to_mongo(all_rules: list[dict], mongo_url: str, db_name: str, batch_id: str) -> None:
+    """Insert rules into MongoDB (upsert by rule_id). Prints result."""
+    client = MongoClient(mongo_url)
+    col    = client[db_name]["interpretation_rules"]
+
+    existing = col.count_documents({"source.batch_id": batch_id})
+    if existing:
+        print(f"\n⚠  Batch '{batch_id}' already has {existing} rules in MongoDB.")
+        print("   Delete those documents first, then re-run.")
+        client.close()
+        return
+
+    result = col.insert_many(all_rules, ordered=False)
+    print(f"\n✅  Inserted {len(result.inserted_ids)} rules into MongoDB")
+    print(f"   batch_id : {batch_id}")
+    print(f"\n   Validate with:")
+    print(f"   python3 scripts/validate_rules.py --mongo-url $MONGO_URL \\")
+    print(f"     --db-name {db_name} --batch-id {batch_id}")
+    client.close()
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -775,7 +799,12 @@ def main() -> None:
     parser.add_argument("--mongo-url", required=True)
     parser.add_argument("--db-name",   required=True)
     parser.add_argument("--model",     default="claude-haiku-4-5")
-    parser.add_argument("--dry-run",   action="store_true")
+    parser.add_argument("--dry-run",   action="store_true",
+                        help="Extract rules via AI and print summary — no MongoDB writes")
+    parser.add_argument("--save",      default=None, metavar="FILE",
+                        help="Save extracted rules to JSON file (use with --dry-run to avoid paying twice)")
+    parser.add_argument("--upload",    default=None, metavar="FILE",
+                        help="Upload a previously saved JSON file directly to MongoDB — ZERO AI calls")
     args = parser.parse_args()
 
     batch_id = f"tba-ch16-v1-{datetime.now(timezone.utc).strftime('%Y%m%d')}"
@@ -783,6 +812,19 @@ def main() -> None:
     print(f"\nA Text-Book of Astrology — Chapter 16  [v1 AI extraction]")
     print(f"Model : {args.model}  |  batch_id : {batch_id}")
     print(f"{'─' * 65}")
+
+    # ── UPLOAD MODE: skip all AI, load JSON and write to MongoDB ───────────────
+    if args.upload:
+        upload_path = Path(args.upload)
+        if not upload_path.exists():
+            print(f"\n⚠  File not found: {args.upload}")
+            sys.exit(1)
+        with open(upload_path, encoding="utf-8") as fh:
+            all_rules = json.load(fh)
+        print(f"\n✅  Loaded {len(all_rules)} rules from {args.upload}")
+        print(f"   (zero AI calls — uploading directly to MongoDB)")
+        insert_rules_to_mongo(all_rules, args.mongo_url, args.db_name, batch_id)
+        return
 
     # ── Parse RTF ──────────────────────────────────────────────────────────────
     print("\nParsing RTF...")
@@ -919,26 +961,28 @@ def main() -> None:
             if markers:
                 print(f"    physical ({len(markers)}) : ", end="")
                 print(" | ".join(f"[{m['category']}] {m['description'][:35]}" for m in markers[:3]))
+
+        # ── Save dry-run output to JSON if --save provided ─────────────────────
+        if args.save:
+            save_path = Path(args.save)
+            with open(save_path, "w", encoding="utf-8") as fh:
+                json.dump(all_rules, fh, indent=2, default=str)
+            print(f"\n✅  Rules saved to {args.save}  ({len(all_rules)} rules)")
+            print(f"   Review the file, then upload with:")
+            print(f"   python3 scripts/ingest_tba_ch16_v1.py \\")
+            print(f"     --rtf <rtf-path> --mongo-url $MONGO_URL --db-name <db> \\")
+            print(f"     --upload {args.save}")
         return
 
-    # ── Insert into MongoDB ────────────────────────────────────────────────────
-    client = MongoClient(args.mongo_url)
-    col    = client[args.db_name]["interpretation_rules"]
+    # ── Insert into MongoDB (live run without --dry-run) ──────────────────────
+    # ⚠  Prefer the --dry-run --save / --upload workflow to avoid paying twice.
+    if args.save:
+        save_path = Path(args.save)
+        with open(save_path, "w", encoding="utf-8") as fh:
+            json.dump(all_rules, fh, indent=2, default=str)
+        print(f"\n✅  Rules saved to {args.save}  ({len(all_rules)} rules)")
 
-    existing = col.count_documents({"source.batch_id": batch_id})
-    if existing:
-        print(f"\n⚠  Batch '{batch_id}' already has {existing} rules in MongoDB.")
-        print("   Delete those documents first, then re-run.")
-        client.close()
-        return
-
-    result = col.insert_many(all_rules, ordered=False)
-    print(f"\n✅  Inserted {len(result.inserted_ids)} rules into MongoDB")
-    print(f"   batch_id : {batch_id}")
-    print(f"\n   Validate with:")
-    print(f"   python3 scripts/validate_rules.py --mongo-url $MONGO_URL \\")
-    print(f"     --db-name {args.db_name} --batch-id {batch_id}")
-    client.close()
+    insert_rules_to_mongo(all_rules, args.mongo_url, args.db_name, batch_id)
 
 
 if __name__ == "__main__":
