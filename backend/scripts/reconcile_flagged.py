@@ -214,7 +214,7 @@ def main() -> None:
                         ]
 
                     rows: list[dict[str, str]] = []
-                    for rule, decision in zip(batch, decisions, strict=False):
+                    for rule, decision in zip(batch, decisions):
                         source = rule.get("source") or {}
                         condition = rule.get("condition") or {}
                         validation = rule.get("validation") or {}
