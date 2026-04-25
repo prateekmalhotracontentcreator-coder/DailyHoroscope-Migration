@@ -1686,3 +1686,57 @@ Two-pass validation required — see validator fix note below.
 3. **Phase 2 schema backfill** — TBA Ch 15 + BPHS Ch 12-59 need `physical_markers` + `yoga_check` fields added via `enrich_rules.py` (not yet built)
 
 ---
+
+## BPHS Chapter 35 — Nabhasa Yogas
+
+**Batch ID:** `bphs-ch35-v1-20260426`
+**Script:** `scripts/ingest_bphs_ch35_v1.py`
+**Dry-run JSON:** `scripts/bphs_ch35_rules.json`
+**Commit:** `b29e62b`
+
+### Source structure
+
+All 32 Nabhasa Yogas + 1 general meta-rule = **33 rules total**.
+Hard-coded from RTF — zero AI extraction cost (first fully hand-coded chapter).
+
+| Category | Yogas | Rules |
+|---|---|---|
+| Aashraya (sign modality) | Rajju, Musala, Nala | 3 |
+| Dala (angle occupation) | Maala, Sarpa | 2 |
+| Akriti (house patterns) | Gada → Samudra | 20 |
+| Sankhya (sign count) | Gola → Veena | 7 |
+| General | Meta-rule (dasa persistence) | 1 |
+| **Total** | | **33** |
+
+### yoga_check coverage — 29 / 33 checkable (best ratio any chapter)
+
+| yoga_check.type | Yogas | Checkable |
+|---|---|---|
+| `sign_quality_all` | Rajju, Musala, Nala | ✅ True |
+| `angles_by_planet_type` | Maala, Sarpa | ✅ True |
+| `all_planets_in_houses` | Gada, Sakata, Vihaga, Sringataka, Hala, Kamala, Vapi, Yupa, Sara, Sakthi, Danda, Nauka, Koota, Chatra, Chapa | ✅ True |
+| `all_planets_in_alt_signs` | Chakra, Samudra | ✅ True |
+| `planets_in_n_signs` | Gola, Yuga, Soola, Kedara, Paasa, Dama, Veena | ✅ True |
+| `complex` | Vajra, Yava, Ardha Chandra, Meta-rule | ❌ False |
+
+**Complex flags (4 rules):**
+- **Vajra Yoga** (bphs-ch35-011): Compound condition — all benefics in {1,7} + malefics in {4,10} OR vice versa. Phase 2 fix.
+- **Yava Yoga** (bphs-ch35-012): Opposite of Vajra — same compound structure. Phase 2 fix.
+- **Ardha Chandra Yoga** (bphs-ch35-023): Formation not explicitly stated in this RTF. Cross-reference needed.
+- **Meta-rule** (bphs-ch35-033): General principle — not a checkable yoga condition.
+
+**Sankhya precedence rule:** All 7 Sankhya yogas carry `yoga_check.precedence = "superseded_by_higher_nabhasa"` per BPHS verse: *"None of these seven yogas will be operable if another Nabhasa yoga is derivable."*
+
+### Validation — COMPLETE (26 Apr 2026)
+
+Single-pass — zero structural failures (yoga_combination types pass updated validator).
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 25 | 76% |
+| `pending_human_review` | 6 | 18% |
+| `flagged` | 2 | 6% |
+| Contradictions | 0 | — |
+| **Total** | **33** | |
+
+---
