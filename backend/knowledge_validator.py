@@ -107,6 +107,20 @@ class RuleValidator:
                 return str(confidence).upper()
         return "MEDIUM"
 
+    # Condition types that use the structured yoga schema
+    # (yoga_name / yoga_check / planets_involved / houses_involved).
+    # These types come from TBA-style extractions where the "detailed" field
+    # follows a fixed "Yoga/Category … Condition … Effect" template rather than
+    # being a direct prose passage.  The truncated_text guard (last-character
+    # punctuation check) is designed for OCR-extracted BPHS passages and must
+    # not be applied to structured yoga descriptors whose effect text naturally
+    # ends without a terminal period.
+    YOGA_SCHEMA_TYPES: frozenset[str] = frozenset({
+        "yoga_combination",
+        "general_principle",
+        "dosha",
+    })
+
     def structural_check(self, rule: dict) -> tuple[bool, str]:
         interp = rule.get("interpretation") or {}
         detailed = (interp.get("detailed") or "").strip()
@@ -120,10 +134,14 @@ class RuleValidator:
         min_words = 3 if cond_type in ("planet_in_house_in_sign", "planet_in_house_special") else 8
         if len(text.split()) < min_words:
             return False, "interpretation_too_short"
-        # Detect mid-sentence truncation — text ending without punctuation
-        last_char = text.strip()[-1] if text.strip() else ""
-        if last_char not in ".!?\"'":
-            return False, "truncated_text"
+        # Detect mid-sentence truncation — text ending without punctuation.
+        # Skip for yoga-schema types: their "Effect:" clause ends naturally
+        # without a period and the Claude quality check (Stage 2) handles
+        # content quality for those rules.
+        if cond_type not in self.YOGA_SCHEMA_TYPES:
+            last_char = text.strip()[-1] if text.strip() else ""
+            if last_char not in ".!?\"')":
+                return False, "truncated_text"
         condition = rule.get("condition")
         if not condition or not isinstance(condition, dict):
             return False, "missing_condition"
