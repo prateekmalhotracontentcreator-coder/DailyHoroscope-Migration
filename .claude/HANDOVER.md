@@ -1,6 +1,6 @@
 # Knowledge Engine — Session Handover
-> Last updated: 22 Apr 2026 (Ch 57 split-upgrade complete — +126 rules, no flags)
-> Written at end of Session 4 (context compressed multiple times); updated Session 5
+> Last updated: 26 Apr 2026 (TBA Ch 16 live — 129 Yoga rules; two workflow decisions locked)
+> Written at end of Session 4 (context compressed multiple times); updated Sessions 5–6
 > Next session: read this FIRST before touching any script or DB
 
 ---
@@ -179,7 +179,117 @@ python3 scripts/validate_rules.py --batch-id bphs-ch52-dasha-20260416 --db-name 
 
 ---
 
+## 9. TBA Chapter Ingestion Track (NEW — 26 Apr 2026)
+
+### What is the TBA track?
+
+Parallel to BPHS, we are ingesting **"A Text-Book of Astrology"** chapters into the same `interpretation_rules` collection. TBA rules use a separate ingest script (`ingest_tba_ch16_v1.py`) tuned for the Yoga chapter structure (Type A named yogas + Type B category bullet groups).
+
+Key schema additions vs. BPHS rules:
+- `condition.yoga_check` — machine-checkable formation condition (checkable: True/False)
+- `interpretation.physical_markers` — appearance/disability/behavioral observations per rule
+
+### TBA Chapters ingested:
+
+| Chapter | Batch ID | Rules | Status |
+|---|---|---|---|
+| Ch 16 — Planetary Combinations / Yogas | tba-ch16-v1-20260425 | **129** | ✅ Live — Apply run confirmed |
+
+Apply run confirmed:
+- 44 named yoga rules (Type A) — 42 yogas incl. 3 Vipreet Rajyoga variants + Kendradhipati Dosha
+- 85 category bullet rules (Type B) — Arishta/Wealth/Marriage/Progeny/Disability/Eye/Co-Borns etc.
+- 49/129 yoga_check checkable=True (programmatic runtime detection ready)
+- Physical markers in 44 rules (disability: 18, behavioral: 17, facial_features: 6, body_build: 5, voice: 5)
+- Minor variance vs dry run: 1 rule shifted neutral→benefic (expected AI float — eliminated going forward by --save/--upload workflow)
+
+### RTF files still pending from Prateek:
+- BPHS Ch 35-41
+- BPHS Ch 43-44
+- 300 Important Combinations
+
+### ⚠️ Phase 2 Schema Enrichment — physical_markers + yoga_check backfill (DEFERRED)
+
+TBA Ch 15 (1,530 rules) and BPHS Ch 12-59 lack `physical_markers` and `yoga_check` fields.
+Script `enrich_rules.py` — not yet built. Priority: TBA Ch 15 first (richest appearance data).
+Defer until at least two more TBA chapters are live and the pattern is stable.
+
+MongoDB query to find candidates when ready:
+```python
+db.interpretation_rules.count_documents({
+    "interpretation.physical_markers": {"$exists": False},
+    "approval_status": {"$ne": "deprecated"}
+})
+```
+
+---
+
+## 10. Two Workflow Decisions Locked — 26 Apr 2026
+
+### Decision 1: --dry-run --save / --upload pattern (all future ingest scripts)
+
+**Problem:** The old workflow ran AI extraction twice (dry run + apply = double cost). Any classification variance between runs (e.g., neutral→benefic) would silently diverge from the reviewed output.
+
+**Decision:** Standard ingest workflow for ALL future chapters:
+```
+Step 1: python3 scripts/ingest_xxx.py --dry-run --save rules.json
+         → AI runs ONCE. Output saved to JSON.
+Step 2: Review rules.json. Make any amendments / additions directly in the file.
+Step 3: python3 scripts/ingest_xxx.py --upload rules.json --mongo-url $MONGO_URL --db-name horoscope_db
+         → ZERO AI calls. JSON uploaded directly to MongoDB.
+Step 4: python3 scripts/validate_rules.py --batch-id <batch-id>
+```
+
+The --upload path guarantees the MongoDB content is byte-for-byte identical to the reviewed JSON. No variance possible.
+
+**Patch script** handles any section-specific fixes after upload — no need to re-run full extraction.
+
+### Decision 2: JSON review layer (audit + amendability)
+
+All JSON files downloaded from dry runs are kept as a human-readable audit trail.
+Rules can be:
+- Amended (edit a field in the JSON before upload)
+- Added (insert a new rule dict into the JSON before upload)
+- Flagged for removal (delete from JSON before upload)
+
+This means the Knowledge Engine ruleset has a human-review checkpoint at every chapter boundary, before anything reaches MongoDB.
+
+---
+
 ## 5. Key Architecture Decisions (locked — do not revisit without strong reason)
+
+### Premium Report Architecture — Confirmed 26 April 2026
+
+**Decision: Structure-first, AI for Articulation only.**
+
+The personalization in a premium report does NOT come from AI generating content from scratch. It comes from the structured intake data — the native's date/time/place of birth, answers to the 12 life-domain questions (family, career, relationships, health, etc.), active dasha period, active yogas detected by the engine. This contextual richness IS the personalization layer.
+
+**The three-layer report model:**
+
+| Layer | Source | Technology | API calls |
+|---|---|---|---|
+| **Detection** | vedic_calculator.py evaluates chart against yoga_check conditions | Pure Python | 0 |
+| **Content** | Knowledge Engine fetches full_result + physical_markers for active yogas/rules | MongoDB query | 0 |
+| **Articulation** | Claude converts structured KE output into flowing Vedic-style prose | ONE Claude API call per report | 1 |
+
+**What AI does and does NOT do:**
+- ✅ AI converts structured data into professional, humanized Vedic prose (articulation)
+- ✅ AI trained via system prompt on sample Vedic astrology reports to establish house style and language register
+- ✅ Temperature=0 ensures consistency across reports for the same chart
+- ❌ AI does NOT generate or invent astrological judgments
+- ❌ AI does NOT decide favorable/unfavorable outcomes — the KE rule provides that
+- ❌ AI does NOT personalize from the chart — the structured intake data does that
+
+**Why this is the professional standard:**
+A human Jyotishi also follows a confirmed, structured methodology. They do not free-form a chart. They follow a known sequence of evaluations (lagna, dashas, yogas, house lords) and then articulate findings in their professional voice. The KE is that methodology encoded. Claude is that professional voice — trained on our Vedic textbooks.
+
+**Free tier vs. Premium:**
+- Free report → Template output only (zero AI cost)
+- Premium report → Template + Articulation layer (one Haiku API call, ~₹0.20–0.30)
+
+**Future training path:**
+- System prompt includes: core Vedic language from ingested textbooks + sample premium reports
+- As more chapters are ingested, the system prompt's Vedic vocabulary depth increases automatically
+- A fine-tuned model (Phase 3) can eventually replace the API call entirely for this specific task
 
 ### Universal Rule Pattern
 Rules at chapter openings before any antardasha sub-section begins:
@@ -204,10 +314,16 @@ Always `horoscope_db`. Never `EverydayHoroscope` (that was a local mistake — 3
 |---|---|---|
 | `ingest_bphs_dasha_v1.py` | Ingest BPHS dasha chapters from RTF | `--chapter --dasha-lord --dry-run` |
 | `ingest_bphs_houses_v2.py` | Ingest BPHS house chapters from RTF | `--chapter --house --dry-run` |
+| `ingest_tba_ch16_v1.py` | Ingest TBA Ch 16 Yogas from RTF | `--rtf --dry-run --save FILE --upload FILE` |
 | `patch_slokas.py` | Gap-fill under-extracted slokas | `--slokas --dasha-lord --batch-id --dry-run` |
 | `validate_rules.py` | Run validator on a batch | `--batch-id` |
 | `backfill_antardasha_planet.py` | Backfill `condition.antardasha_planet` | `--dry-run` (Pass 5 complete) |
 | `extract_book.py` + `batch_ingest.py` | OCR/PDF pipeline (separate, keep archived) | not for RTF use |
+
+**Standard ingest workflow (all future chapters):**
+```
+--dry-run --save rules.json  →  review JSON  →  --upload rules.json
+```
 
 All scripts: `cd /Users/apple/DailyHoroscope-Migration/backend`
 
