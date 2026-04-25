@@ -1,5 +1,5 @@
 # Knowledge Engine — Session Handover
-> Last updated: 26 Apr 2026 (TBA Ch 16 fully validated — 86 auto_approved / 35 pending_human_review / 8 flagged; validator fix committed ccb475c)
+> Last updated: 26 Apr 2026 (BPHS Ch 35 Nabhasa Yogas live + validated — 33 rules, 25 auto / 6 PHR / 2 flagged)
 > Written at end of Session 4 (context compressed multiple times); updated Sessions 5–6
 > Next session: read this FIRST before touching any script or DB
 
@@ -124,6 +124,7 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 | BPHS Vol 2 Ch 60 (Venus MD) | bphs-ch60-dasha-20260424 | 182 | +12 ✅ | split-upgrade complete (24 Apr) — **194 rules total** — not validated |
 | TBA Ch 15 (Planets in Houses/Signs) | tba-ch15-v1-20260424 | 1,530 | — | ✅ ingested (24 Apr) — not validated — ⚠️ Mars-H03 flag (see INGEST_NOTES) |
 | TBA Ch 16 (Yogas) | tba-ch16-v1-20260425 | 129 | — | ✅ **fully validated** (26 Apr) — 86 auto_approved / 35 PHR / 8 flagged — ⚠️ tba16-003 yoga_check flag (see §9) |
+| BPHS Ch 35 (Nabhasa Yogas) | bphs-ch35-v1-20260426 | 33 | — | ✅ **fully validated** (26 Apr) — 25 auto / 6 PHR / 2 flagged — 0 contradictions |
 
 ---
 
