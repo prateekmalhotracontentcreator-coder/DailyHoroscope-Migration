@@ -1578,3 +1578,98 @@ Both sources need fresh ingest scripts built against the current pipeline before
 7. **Promotion gate** — co-founder sign-off only after steps 1–6 complete
 
 ---
+
+### Text-Book of Astrology Ch 16 | Planetary Combinations or Yogas | 25–26 Apr 2026
+
+**Script used:** `ingest_tba_ch16_v1.py` (purpose-built; commits `5738248`, `ec06bcd`)
+**Batch ID:** `tba-ch16-v1-20260425`
+**Book:** A Text-Book of Astrology | Chapter 16: Planetary Combinations or Yogas
+
+#### Script design — two-section-type parser
+
+| Type | Content | Sections | Rules |
+|---|---|---|---|
+| Type A | Named yogas (Gaja Kesari, Hansa, Vipreet Rajyoga etc.) | 42 | 44 |
+| Type B | Category bullet groups (Arishta/Wealth/Marriage/Progeny/Disability/Eye/Co-Borns) | 17 | 85 |
+| — | Skipped containers (Arishta Yoga, Yogas For Marriage) | 1 | 0 |
+
+#### New schema fields (TBA Ch 16 onwards)
+
+| Field | Path | Purpose |
+|---|---|---|
+| `yoga_check` | `condition.yoga_check` | Machine-checkable formation condition — vedic_calculator.py evaluates against live birth chart to detect active yogas |
+| `physical_markers` | `interpretation.physical_markers` | Physical appearance, disability, behavioral observations — cross-module verification against photographic evidence + premium report layer |
+
+Both fields are absent from BPHS Ch 12-59 and TBA Ch 15 rules — Phase 2 backfill via `enrich_rules.py` (not yet built).
+
+#### Dry run vs Apply results
+
+| Metric | Dry Run | Apply | Status |
+|---|---|---|---|
+| Total rules | 129 | 129 | ✅ Exact match |
+| yoga_combination | 43 | 43 | ✅ |
+| general_principle | 85 | 85 | ✅ |
+| dosha | 1 | 1 | ✅ |
+| benefic_rule | 35 | 36 | ⚠️ +1 neutral→benefic float |
+| neutral_rule | 7 | 6 | ⚠️ −1 (same float) |
+
+The 1-rule float was AI non-determinism across two separate API call sessions. **Eliminated going forward** by `--dry-run --save / --upload` pattern — JSON from dry run uploads directly with zero re-extraction.
+
+#### yoga_check coverage
+
+| Type | Count |
+|---|---|
+| complex (checkable=False) | 77 |
+| lord_in_house | 14 |
+| benefics_in_houses | 6 |
+| malefics_in_houses | 6 |
+| planet_in_dignity_in_kendra | 6 |
+| planet_conjunction | 5 |
+| any_planet_relative | 4 |
+| relative_position | 4 |
+| lord_exchange | 3 |
+| lord_mutual_kendra | 2 |
+| no_planets_adjacent | 1 |
+| lord_conjunction | 1 |
+| **Checkable (True)** | **49 / 129** |
+
+#### Physical markers summary
+
+Physical markers found in 44 rules:
+- disability: 18 (blindness, deafness, dumbness, speech defect)
+- behavioral: 17 (polite, generous, righteous, wicked etc.)
+- facial_features: 6 (lion-like face, majestic appearance, handsome)
+- body_build: 5 (well-proportioned limbs, strong physique)
+- voice: 5 (eloquent speaker, stammering, speech defects)
+- health: 3 · body_marks: 1 · complexion: 1
+
+#### ⚑ Manual Review Flag — tba16-003 (Ubhaychari Yoga)
+
+| Field | Value |
+|---|---|
+| rule_id | tba16-003 |
+| yoga_name | Ubhaychari Yoga |
+| yoga_check.type | complex |
+| yoga_check.checkable | False |
+| Condition | "Planets other than Moon on BOTH sides of Sun simultaneously" — requires a planet in 2nd FROM Sun AND a planet in 12th FROM Sun |
+| Why flagged | Each side is individually checkable (`any_planet_relative`), but the compound AND requirement was correctly marked `complex` by Claude (too many clauses for current engine). The yoga IS detectable — requires two `any_planet_relative` conditions joined with operator=AND. |
+| Fix path | Phase 2 `enrich_rules.py` — implement compound `yoga_check` with two clauses, OR add `compound_relative_position` check type to `YOGA_CHECK_TYPES`. |
+| Priority | Low — rule fires correctly in premium reports (full_condition text used). Only runtime programmatic detection is affected. |
+
+#### Standard ingest workflow — first use of --save/--upload pattern
+
+Ch 16 was ingested BEFORE the `--save/--upload` flags were implemented (the apply script re-ran AI extraction = double cost). From Ch 17 onwards, all ingests use:
+```
+python3 scripts/ingest_tba_ch<N>_v1.py --dry-run --save rules.json
+# Review rules.json — amend/add/remove as needed
+python3 scripts/ingest_tba_ch<N>_v1.py --upload rules.json --mongo-url $MONGO_URL --db-name horoscope_db
+python3 scripts/validate_rules.py --batch-id <batch-id>
+```
+
+#### Open Points
+
+1. **Validation not yet run** — run: `validate_rules.py --batch-id tba-ch16-v1-20260425`
+2. **tba16-003 yoga_check fix** — deferred to Phase 2 `enrich_rules.py` pass
+3. **Phase 2 schema backfill** — TBA Ch 15 + BPHS Ch 12-59 need `physical_markers` + `yoga_check` fields added via `enrich_rules.py` (not yet built)
+
+---
