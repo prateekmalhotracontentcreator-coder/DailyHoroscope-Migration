@@ -1,5 +1,5 @@
 # Codex Commission Brief — Live TV: Sai Baba Arti
-> Version 1.0 | 25 April 2026 | EverydayHoroscope
+> Version 1.1 | 25 April 2026 | EverydayHoroscope
 > YouTube Channel: https://www.youtube.com/@SkyHoundStudios
 
 ---
@@ -8,22 +8,27 @@
 
 Build a **Live Sai Baba Arti** experience comprising three parts:
 
-1. **Video Generation Pipeline** — ffmpeg generates a 60-minute looping Sai Baba Arti video and uploads it to the @SkyHoundStudios YouTube channel via the existing YouTube Data API integration
-2. **Live TV Side Panel** — a floating, always-playing embedded video panel on the EverydayHoroscope home page
-3. **SEO Landing Page** — a standalone `/live-sai-baba-arti` page optimised for organic search traffic on the keyword "Live Sai Baba Arti"
+1. **Video Generation Pipeline** — ffmpeg assembles a 60-minute looping Sai Baba Arti video from multiple source clips/images with crossfade transitions, then uploads to the @SkyHoundStudios YouTube channel via the existing YouTube Data API integration
+2. **Live TV Panel** — a viewport-fixed, always-playing embedded video panel in the **top-right corner of the Home page only**
+3. **SEO Full-Screen Page** — a standalone `/live-sai-baba-arti` page with a full-screen immersive player, optimised for organic search on "Live Sai Baba Arti"
 
-Future videos (other deities, other artis) will slot into the same infrastructure via Admin Console — this commission builds the foundation.
+Future videos (other deities, other artis) slot into the same infrastructure via Admin Console — this commission builds the foundation.
 
 ---
 
 ## 2. Video Generation Pipeline
 
 ### Source Material
-The commission assumes the following source files will be provided before the pipeline runs:
-- `sai_baba_arti.jpg` or `sai_baba_arti.png` — a high-resolution image of Sai Baba (min 1920×1080)
-- `sai_baba_arti.mp3` — the Sai Baba Arti audio track
+The commission assumes the following source files will be provided before the pipeline runs.
+All files placed in `backend/assets/live_tv/sai_baba/` before running the generation script.
 
-These files are placed in `backend/assets/live_tv/` before running the generation script.
+**Visual sources (provide any combination — more = richer video):**
+- 5–8 images or short AI-generated clips of Shirdi Sai Baba, temple arti flame, diya, Shirdi temple exterior, devotees in prayer
+- Recommended: generate 10–15 sec clips using Pika Labs / Kling AI with prompt *"Sai Baba temple arti, flickering diya flame, devotional atmosphere, warm golden light, cinematic slow motion"*
+- Accepted formats: `.jpg`, `.png`, `.mp4` — the script handles both
+
+**Audio source:**
+- `sai_baba_arti.mp3` — the Sai Baba Arti audio track
 
 ### Video Spec
 | Parameter | Value |
@@ -32,20 +37,43 @@ These files are placed in `backend/assets/live_tv/` before running the generatio
 | Duration | 60 minutes (audio looped to fill) |
 | Format | MP4, H.264, AAC audio |
 | ffmpeg preset | `-preset veryfast -crf 18 -threads 1` (matches existing YouTube pipeline) |
-| Frame rate | 25fps (still image — minimal CPU) |
+| Frame rate | 25fps |
 | Aspect ratio | 16:9 |
+| Transitions | Crossfade (xfade filter) between visual sources, 2-second blend |
 
-### ffmpeg Command (backend generates this)
+### ffmpeg Command — Slideshow with Crossfades (backend generates this)
 ```bash
-ffmpeg -loop 1 -i sai_baba_arti.jpg \
+# Step 1: Build input list — each image shown for 8 seconds, crossfade 2s between
+# Script auto-detects whether each source is image or video clip and constructs
+# the correct ffmpeg filter_complex chain
+
+# Example for 5 images:
+ffmpeg \
+  -loop 1 -t 10 -i img1.jpg \
+  -loop 1 -t 10 -i img2.jpg \
+  -loop 1 -t 10 -i img3.jpg \
+  -loop 1 -t 10 -i img4.jpg \
+  -loop 1 -t 10 -i img5.jpg \
   -stream_loop -1 -i sai_baba_arti.mp3 \
+  -filter_complex "
+    [0:v]scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2[v0];
+    [1:v]scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2[v1];
+    [2:v]scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2[v2];
+    [3:v]scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2[v3];
+    [4:v]scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2[v4];
+    [v0][v1]xfade=transition=fade:duration=2:offset=8[x1];
+    [x1][v2]xfade=transition=fade:duration=2:offset=16[x2];
+    [x2][v3]xfade=transition=fade:duration=2:offset=24[x3];
+    [x3][v4]xfade=transition=fade:duration=2:offset=32[out]
+  " \
+  -map "[out]" -map 5:a \
   -t 3600 \
   -c:v libx264 -preset veryfast -crf 18 -threads 1 \
   -c:a aac -b:a 192k \
-  -vf "scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/2:(oh-ih)/2" \
-  -tune stillimage \
   -shortest \
   output_sai_baba_arti_60min.mp4
+
+# The generation script loops the slideshow segment to fill 60 minutes automatically
 ```
 
 ### Backend Script: `backend/scripts/generate_live_tv_video.py`
@@ -97,92 +125,109 @@ Privacy:      Public
 
 ---
 
-## 3. Live TV Side Panel (Home Page)
+## 3. Live TV Panel (Home Page Only)
 
 ### Component: `frontend/src/components/LiveTVPanel.jsx`
 
-A floating panel fixed to the **bottom-right corner** of every page (not just home — bottom-right is unobtrusive and always accessible).
+A viewport-fixed panel anchored to the **top-right corner**, visible only on the **Home page** (`/`). It stays in place as the user scrolls.
 
 ### Visual Design
 ```
-┌─────────────────────────────────┐
-│ 🔴 LIVE  Sai Baba Arti    [─][✕]│
-│ ┌───────────────────────────┐   │
-│ │                           │   │
-│ │   [YouTube embed player]  │   │
-│ │                           │   │
-│ └───────────────────────────┘   │
-│ 🔇 Tap to unmute  ·  Full page → │
-└─────────────────────────────────┘
+                              ┌─────────────────────────────┐
+                              │ 🔴 LIVE  Sai Baba Arti  [─][⛶]│
+                              │ ┌─────────────────────────┐  │
+                              │ │                         │  │
+                              │ │  [YouTube embed player] │  │
+                              │ │                         │  │
+                              │ └─────────────────────────┘  │
+                              │ 🔇 Unmute  ·  ⛶ Full Screen  │
+                              └─────────────────────────────┘
 ```
 
-- **Width**: 280px (collapsed) | 480px (expanded via toggle)
-- **Position**: `fixed bottom-4 right-4 z-50`
-- **Header bar**: Gold gradient, `🔴 LIVE` pulsing red dot, title, minimise `—` and close `✕` buttons
-- **Player**: YouTube iframe embed, 16:9 ratio
-- **Autoplay**: `autoplay=1&mute=1` (browser-compliant — starts muted)
-- **Unmute prompt**: Visible button "🔇 Tap to unmute" — clicking sets `mute=0` via YouTube iframe API
-- **Full page link**: "Full page →" navigates to `/live-sai-baba-arti`
-- **Persistence**: Panel state (minimised/closed) saved to `localStorage`; closed state resets after 24 hours so it reappears daily
+- **Width**: 300px
+- **Position**: `fixed top-20 right-4 z-50` (top-20 = 80px — clears the navbar)
+- **Header bar**: Gold gradient, `🔴 LIVE` pulsing red dot, "Sai Baba Arti" title, minimise `—` and fullscreen `⛶` buttons
+- **Player**: YouTube iframe embed, 16:9 ratio (300×169px)
+- **Autoplay**: `autoplay=1&mute=1` — browser-compliant, starts muted automatically
+- **Unmute button**: "🔇 Unmute" — user clicks to enable audio via YouTube iframe API postMessage
+- **Full Screen button**: navigates to `/live-sai-baba-arti` (the dedicated SEO page)
+- **Persistence**: minimised/closed state saved to `localStorage`; closed resets after 24 hours
 
 ### Embed URL Format
 ```
-https://www.youtube.com/embed/{youtube_video_id}?autoplay=1&mute=1&loop=1&playlist={youtube_video_id}&rel=0&modestbranding=1
+https://www.youtube.com/embed/{youtube_video_id}?autoplay=1&mute=1&loop=1&playlist={youtube_video_id}&rel=0&modestbranding=1&enablejsapi=1
 ```
 
-`loop=1&playlist={id}` causes YouTube to loop the video indefinitely without showing related videos at the end.
+`loop=1&playlist={id}` — loops indefinitely, no related videos at end.
+`enablejsapi=1` — required for iframe API unmute control.
 
 ### Panel States
 | State | Behaviour |
 |---|---|
-| Open (default) | Full panel visible, video autoplaying muted |
-| Minimised | Only header bar visible (40px tall), video pauses |
-| Closed | Panel hidden, reappears after 24 hours |
-| Expanded | Wider panel (480px), better viewing |
+| Open (default on Home) | Full panel visible, autoplaying muted |
+| Minimised | Header bar only (48px), video pauses |
+| Closed | Hidden, reappears after 24 hours |
 
-### Integration in `frontend/src/App.js`
+### Integration — Home Page Only
 ```jsx
-// Add globally so panel appears on all pages
-import LiveTVPanel from './components/LiveTVPanel';
+// In frontend/src/pages/HomePage.jsx (or equivalent home route component):
+import LiveTVPanel from '../components/LiveTVPanel';
 
-// Inside App return:
+// Inside return:
 <LiveTVPanel />
+
+// Do NOT add to App.js — panel renders only within the Home page component
 ```
 
-The panel fetches the active video from `GET /api/live-tv/active` on mount. If no active video, panel does not render.
+The panel fetches the active video from `GET /api/live-tv/active` on mount. If no active video is configured, the panel does not render.
 
 ---
 
-## 4. SEO Landing Page
+## 4. SEO Full-Screen Page
 
 ### Route: `/live-sai-baba-arti`
 ### File: `frontend/src/pages/LiveSaiBabaArtiPage.jsx`
 
 ### Page Purpose
-A standalone, SEO-optimised page that ranks for searches like:
-- "Live Sai Baba Arti"
-- "Sai Baba Arti online"
-- "Om Sai Ram live"
-- "Sai Baba daily arti"
+A standalone, immersive, full-screen SEO page that:
+- Ranks organically for "Live Sai Baba Arti", "Sai Baba Arti online", "Om Sai Ram live"
+- Provides a premium devotional experience — the video is the centrepiece, not a sidebar
+- Drives return traffic (bookmarkable, shareable)
 
 ### Page Layout
 ```
-[Header: EverydayHoroscope nav]
-
-H1: 🙏 Live Sai Baba Arti — Om Sai Ram
-Subtitle: Experience the divine blessings of Sai Baba with our continuous live arti
-
-[Large YouTube embed — 16:9, full-width on mobile, 70% width on desktop]
-[🔴 LIVE badge] [🔊 Unmute] [📱 Share]
-
-[Arti Lyrics section — full Sai Baba Arti text in Hindi + English transliteration]
-
-[About Sai Baba section — 200 words, SEO content]
-
-[More Divine Content section — links to Panchang, Daily Horoscope, other artis when added]
-
-[Footer]
+┌────────────────────────────────────────────────────────────────┐
+│  [EverydayHoroscope nav — minimal, dark overlay style]         │
+├────────────────────────────────────────────────────────────────┤
+│                                                                │
+│  ╔══════════════════════════════════════════════════════════╗  │
+│  ║                                                          ║  │
+│  ║                                                          ║  │
+│  ║         YOUTUBE PLAYER — full viewport width            ║  │
+│  ║              16:9, ~75vh height                         ║  │
+│  ║                                                          ║  │
+│  ║  🔴 LIVE SAI BABA ARTI          🔇 Unmute  📱 Share  ║  │
+│  ╚══════════════════════════════════════════════════════════╝  │
+│                                                                │
+│  H1: 🙏 Live Sai Baba Arti — Om Sai Ram                      │
+│  Subheading: Continuous arti, 24/7 blessings                  │
+│                                                                │
+│  ┌──────────────────────┐  ┌───────────────────────────────┐  │
+│  │  Arti Lyrics         │  │  About Shirdi Sai Baba        │  │
+│  │  (Hindi + English)   │  │  (200 words SEO content)      │  │
+│  └──────────────────────┘  └───────────────────────────────┘  │
+│                                                                │
+│  [More Divine Content — Panchang, Daily Horoscope, other artis]│
+│  [Footer]                                                      │
+└────────────────────────────────────────────────────────────────┘
 ```
+
+**Player specifics:**
+- `width: 100vw` — edge to edge
+- `height: 75vh` — dominates the viewport
+- Autoplay muted on load, unmute button prominent
+- On mobile: `height: 56vw` (maintains 16:9)
+- Custom overlay: gold "🔴 LIVE SAI BABA ARTI" badge bottom-left of player
 
 ### SEO Implementation (use existing `SEO.jsx` component)
 ```jsx
