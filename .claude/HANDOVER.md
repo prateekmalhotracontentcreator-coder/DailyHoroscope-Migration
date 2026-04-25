@@ -83,8 +83,22 @@ Expected output for sloka 45-47: ~9 rules (was 2). For sloka 1-2: ~6 rules (was 
 
 ### MongoDB: `horoscope_db` (MANDATORY — never use `EverydayHoroscope`)
 
-### Rules in DB: ~2,180 RTF-sourced rules (all `approval_status = pending_review` or `auto_approved`)
-**Split-upgrade rules (+417 added 21 Apr 2026):** Ch 48 (+34), Ch 52 (+139), Ch 53 (+123), Ch 54 (+121) — tagged `source_note = 'split_upgrade'`
+### Rules in DB: ~6,000+ rules across `horoscope_db` (fully validated 25 Apr 2026)
+
+**Validation state (post full-library clean pass, 25 Apr 2026):**
+| Status | Count |
+|---|---|
+| `auto_approved` | 2,705 |
+| `pending_human_review` | 1,850 |
+| `flagged` | 1,329 |
+| `rejected` | 32 |
+| **132 contradiction pairs** | downgraded to pending_human_review |
+
+Note: TBA Ch 15 (1,530 rules, 24 Apr) and TBA Ch 16 (129 rules, 25 Apr) were ingested AFTER the validation pass — they sit at `pending_review` and have not yet been validated.
+
+**Split-upgrade rules (+1,150 total, 21–24 Apr 2026):** Ch 47–59 fully swept — see Step 3 table above.
+**TBA Ch 15 rules (+1,530, 24 Apr 2026):** `batch_id = tba-ch15-v1-20260424` — Planets × Houses × Signs
+**TBA Ch 16 rules (+129, 25 Apr 2026):** `batch_id = tba-ch16-v1-20260425` — Yoga rules (named + category groups)
 
 ### antardasha_planet coverage: **802 / 802 = 100%** across Ch 47–59 ✅
 - 2 universal meta-rules: `R-BPHS47-008`, `R-BPHS47-009` → `applies_to_all_dasha_lords: true`
@@ -96,16 +110,19 @@ Expected output for sloka 45-47: ~9 rules (was 2). For sloka 1-2: ~6 rules (was 
 | BPHS Vol 1 Ch 12-18 | bphs-ch12..18-v2-20260414 | 241 | — | ✅ validated |
 | BPHS Vol 1 Ch 19-23 | bphs-ch19..23-v2-20260415 | 119 | — | ✅ validated |
 | BPHS Vol 1 Ch 24 | bphs-ch24-v2-20260416 | 376 | — | ✅ validated |
-| BPHS Vol 2 Ch 47 (Sun MD) | bphs-ch47-dasha-20260416 | 93 | — | ✅ validated — split-upgrade pending |
+| BPHS Vol 2 Ch 47 (Sun MD) | bphs-ch47-dasha-20260416 | 93 | +126 ✅ + 1 GRP fix ✅ | split-upgrade complete (24 Apr) — **220 rules total** — not validated |
 | BPHS Vol 2 Ch 48 (Moon MD) | bphs-ch48-dasha-20260416 | 46 | +34 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 52 (Sun MD) | bphs-ch52-dasha-20260416 | 93 | +139 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 53 (Venus MD) | bphs-ch53-dasha-20260417 | 72 | +123 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 54 (Mars MD) | bphs-ch54-dasha-20260417 | 86 | +121 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 55 (Rahu MD) | bphs-ch55-dasha-20260417 | 96 | +153 ✅ | split-upgrade done, not validated |
-| BPHS Vol 2 Ch 56 (Jupiter MD) | bphs-ch56-dasha-20260418 | 126 | +118 ✅ + 2 grouped fix ✅ | split-upgrade + Flag 1 fix complete — 246 rules total |
-| BPHS Vol 2 Ch 57 (Saturn MD) | bphs-ch57-dasha-20260419 | 132 | +126 ✅ | split-upgrade done, not validated — 258 rules total |
-| BPHS Vol 2 Ch 58 (Mercury MD) | bphs-ch58-dasha-20260419 | 104 | — | ✅ validated — split-upgrade pending |
-| BPHS Vol 2 Ch 59 (Ketu MD) | bphs-ch59-dasha-20260421 | 91 | — | ✅ validated — split-upgrade pending |
+| BPHS Vol 2 Ch 56 (Jupiter MD) | bphs-ch56-dasha-20260418 | 126 | +118 ✅ + 2 grouped fix ✅ | split-upgrade + Flag 1 fix complete — **246 rules total** |
+| BPHS Vol 2 Ch 57 (Saturn MD) | bphs-ch57-dasha-20260419 | 132 | +126 ✅ + 7 gap-fill ✅ | split-upgrade done, not validated — **265 rules total** |
+| BPHS Vol 2 Ch 58 (Mercury MD) | bphs-ch58-dasha-20260419 | 104 | +132 ✅ | split-upgrade complete (24 Apr) — **236 rules total** — not validated post-split |
+| BPHS Vol 2 Ch 59 (Ketu MD) | bphs-ch59-dasha-20260421 | 91 | +195 ✅ | split-upgrade complete (24 Apr) — **286 rules total** — not validated post-split |
+| BPHS Vol 2 Ch 60 (Venus MD) | bphs-ch60-dasha-20260424 | 182 | +12 ✅ | split-upgrade complete (24 Apr) — **194 rules total** — not validated |
+| TBA Ch 15 (Planets in Houses/Signs) | tba-ch15-v1-20260424 | 1,530 | — | ✅ ingested (24 Apr) — not validated — ⚠️ Mars-H03 flag (see INGEST_NOTES) |
+| TBA Ch 16 (Yogas) | tba-ch16-v1-20260425 | 129 | — | ✅ ingested (25 Apr) — ⚠️ tba16-003 yoga_check flag (see below) |
 
 ---
 
@@ -133,38 +150,27 @@ Two dedup fixes committed during this step (required for house-lord variant rule
 - `patch_slokas.py`: condition-only comparison (strip result text before overlap check)
 - `patch_slokas.py`: two-tier thresholds — 60% vs DB, 90% within-run (prevents 9th/10th/4th lord blocking each other)
 
-### Step 3 — Split-Upgrade Sweep: ALL Ch 47-59 — **IN PROGRESS**
+### ✅ Step 3 — Split-Upgrade Sweep: ALL Ch 47-59 — **COMPLETE (24 Apr 2026)**
 
 Sweep mechanism: `patch_slokas.py --split-upgrade` re-extracts all slokas per chapter under the new SPLITTING + ANTI-COLLISION + LORDSHIP QUALIFIER prompt. Dedup (60% DB threshold, excluding `pre_split_merged` originals) ensures only genuinely new individual rules are inserted, tagged `source_note='split_upgrade'`.
 
-**Completed (21–22 Apr 2026):**
-| Ch | MD Lord | New rules | Notes |
-|---|---|---|---|
-| 48 | Moon | +34 | |
-| 52 | Sun | +139 | |
-| 53 | Venus | +123 | |
-| 54 | Mars | +121 | |
-| 55 | Rahu | +153 | First chapter with grouped outcome rules. Sloka 21-24 fix applied — see INGEST_NOTES |
-| 56 | Jupiter | +118 +2grp ✅ | Live + Flag 1 fix complete (22 Apr). 246 total. Phase 3: 6 slokas deferred. |
-| 57 | Saturn | +126 +7gf ✅ | Live complete (22 Apr). Gap-fill verified + inserted. 265 total. |
-| **Total confirmed live** | | **+823** | Ch 48/52/53/54/55 +570 · Ch 56 +120 · Ch 57 +133 (126 split + 7 gap-fill) |
+**Full sweep summary:**
+| Ch | MD Lord | New rules | Total rules | Notes |
+|---|---|---|---|---|
+| 47 | Sun | +126 +1grp ✅ | **220** | Sloka 45-48 mis-tagged fix (24 Apr). See INGEST_NOTES. |
+| 48 | Moon | +34 | — | |
+| 52 | Sun | +139 | — | |
+| 53 | Venus | +123 | — | |
+| 54 | Mars | +121 | — | |
+| 55 | Rahu | +153 | — | Sloka 21-24 mis-tag fix applied — see INGEST_NOTES |
+| 56 | Jupiter | +118 +2grp ✅ | **246** | Flag 1 fix complete (22 Apr). Phase 3: 6 slokas deferred. |
+| 57 | Saturn | +126 +7gf ✅ | **265** | Gap-fill verified + inserted (22 Apr). |
+| 58 | Mercury | +132 ✅ | **236** | No anomalies. All slokas clean. (24 Apr) |
+| 59 | Ketu | +195 ✅ | **286** | Sloka 69-71 mis-tag fix applied (24 Apr). (24 Apr) |
+| **TOTAL new rules** | | **+1,150** | | Across all 9 chapters |
 
-**Remaining (run in this order):**
-
-```bash
-cd /Users/apple/DailyHoroscope-Migration/backend
-
-# Ch 58 — Mercury MD (NEXT)
-python3 scripts/patch_slokas.py \
-  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_ch 58_Vol 2.rtf" \
-  --chapter 58 --dasha-lord Mercury \
-  --batch-id bphs-ch58-dasha-20260419 \
-  --slokas "1-3,4-5,6-8,9-11,12,13-15,16-17,18-19,20-22,23-24,25,26-27,28-29,30-31,32-33,34-35,36-38,39-40,41-42,43-44,45-46,47-49,50,51,52-53,54-55,56-58,59-61,62-63,64,65-66,67-68,69-70,71-72" \
-  --mongo-url "$MONGO_URL" --db-name horoscope_db \
-  --split-upgrade
-```
-
-Ch 59 (Ketu / bphs-ch59-dasha-20260421 / `BPHS_ch59_Vol2.rtf`), Ch 47 (Sun / bphs-ch47-dasha-20260416 / `BPHS Ch 47 Vol 2.rtf`).
+**pre_split_merged deprecation — ✅ COMPLETE (24 Apr 2026)**
+425 rules deprecated via `scripts/deprecate_pre_split_merged.py`. Zero non-deprecated pre_split_merged rules remain.
 
 ### Step 4 — Validate Ch 52/53/54/55 (after split-upgrade done)
 
@@ -201,6 +207,18 @@ Apply run confirmed:
 - 49/129 yoga_check checkable=True (programmatic runtime detection ready)
 - Physical markers in 44 rules (disability: 18, behavioral: 17, facial_features: 6, body_build: 5, voice: 5)
 - Minor variance vs dry run: 1 rule shifted neutral→benefic (expected AI float — eliminated going forward by --save/--upload workflow)
+
+**⚠️ Manual Review Flag — tba16-003 (Ubhaychari Yoga)**
+
+| Field | Value |
+|---|---|
+| rule_id | tba16-003 |
+| yoga_name | Ubhaychari Yoga |
+| yoga_check.type | complex |
+| yoga_check.checkable | False |
+| Issue | Condition is "Planets other than Moon on BOTH sides of Sun simultaneously" (2nd AND 12th from Sun). Each side is individually checkable as `any_planet_relative`, but the compound AND requirement was flagged as `complex`. |
+| Fix path | Phase 2 `enrich_rules.py` — implement as compound `yoga_check` with two `any_planet_relative` clauses joined by operator=AND, or add a new `compound_relative_position` check type. |
+| Priority | Low — rule is still usable for report generation; only runtime detection (yoga_check) is affected. |
 
 ### RTF files still pending from Prateek:
 - BPHS Ch 35-41
