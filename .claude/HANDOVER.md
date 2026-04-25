@@ -1,5 +1,5 @@
 # Knowledge Engine — Session Handover
-> Last updated: 22 Apr 2026 (Ch 56 dry run complete — flag points documented, live ingest pending)
+> Last updated: 22 Apr 2026 (Ch 57 split-upgrade complete — +126 rules, no flags)
 > Written at end of Session 4 (context compressed multiple times); updated Session 5
 > Next session: read this FIRST before touching any script or DB
 
@@ -103,7 +103,7 @@ Expected output for sloka 45-47: ~9 rules (was 2). For sloka 1-2: ~6 rules (was 
 | BPHS Vol 2 Ch 54 (Mars MD) | bphs-ch54-dasha-20260417 | 86 | +121 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 55 (Rahu MD) | bphs-ch55-dasha-20260417 | 96 | +153 ✅ | split-upgrade done, not validated |
 | BPHS Vol 2 Ch 56 (Jupiter MD) | bphs-ch56-dasha-20260418 | 126 | +118 ✅ + 2 grouped fix ✅ | split-upgrade + Flag 1 fix complete — 246 rules total |
-| BPHS Vol 2 Ch 57 (Saturn MD) | bphs-ch57-dasha-20260419 | 132 | — | ✅ validated — split-upgrade pending |
+| BPHS Vol 2 Ch 57 (Saturn MD) | bphs-ch57-dasha-20260419 | 132 | +126 ✅ | split-upgrade done, not validated — 258 rules total |
 | BPHS Vol 2 Ch 58 (Mercury MD) | bphs-ch58-dasha-20260419 | 104 | — | ✅ validated — split-upgrade pending |
 | BPHS Vol 2 Ch 59 (Ketu MD) | bphs-ch59-dasha-20260421 | 91 | — | ✅ validated — split-upgrade pending |
 
@@ -146,25 +146,25 @@ Sweep mechanism: `patch_slokas.py --split-upgrade` re-extracts all slokas per ch
 | 54 | Mars | +121 | |
 | 55 | Rahu | +153 | First chapter with grouped outcome rules. Sloka 21-24 fix applied — see INGEST_NOTES |
 | 56 | Jupiter | +118 +2grp ✅ | Live + Flag 1 fix complete (22 Apr). 246 total. Phase 3: 6 slokas deferred. |
-| **Total confirmed live** | | **+690** | Ch 48/52/53/54/55 +570 · Ch 56 +120 (118 split + 2 grouped) |
+| 57 | Saturn | +126 +7gf ✅ | Live complete (22 Apr). Gap-fill verified + inserted. 265 total. |
+| **Total confirmed live** | | **+823** | Ch 48/52/53/54/55 +570 · Ch 56 +120 · Ch 57 +133 (126 split + 7 gap-fill) |
 
 **Remaining (run in this order):**
 
 ```bash
 cd /Users/apple/DailyHoroscope-Migration/backend
 
-# Ch 56 — Jupiter MD (NEXT — dry run done, run live)
+# Ch 58 — Mercury MD (NEXT)
 python3 scripts/patch_slokas.py \
-  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Ch56_Vol 2.rtf" \
-  --chapter 56 --dasha-lord Jupiter \
-  --batch-id bphs-ch56-dasha-20260418 \
-  --slokas "1-3,4-5,6-7,8-11,12-14,15,16-17,18-19,20-21,22,23-24,25-26,27-28,29-29,30-31,32,33-34,35-36,37-38,39-43,44,45-47,48-50,51-53,54-55,56-57,58-60,61-63,64,65-66,67-68,69-71,72-75,76-78,79-80" \
+  --rtf "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_ch 58_Vol 2.rtf" \
+  --chapter 58 --dasha-lord Mercury \
+  --batch-id bphs-ch58-dasha-20260419 \
+  --slokas "1-3,4-5,6-8,9-11,12,13-15,16-17,18-19,20-22,23-24,25,26-27,28-29,30-31,32-33,34-35,36-38,39-40,41-42,43-44,45-46,47-49,50,51,52-53,54-55,56-58,59-61,62-63,64,65-66,67-68,69-70,71-72" \
   --mongo-url "$MONGO_URL" --db-name horoscope_db \
   --split-upgrade
-# After live ingest: apply sloka 72-75 fix (Section 8)
 ```
 
-Ch 57 (Saturn / bphs-ch57-dasha-20260419 / `BPHS ch 57 Vol 2.rtf`), Ch 58 (Mercury / bphs-ch58-dasha-20260419 / `BPHS_ch 58_Vol 2.rtf`), Ch 59 (Ketu / bphs-ch59-dasha-20260421 / `BPHS_ch59_Vol2.rtf`), Ch 47 (Sun / bphs-ch47-dasha-20260416 / `BPHS Ch 47 Vol 2.rtf`).
+Ch 59 (Ketu / bphs-ch59-dasha-20260421 / `BPHS_ch59_Vol2.rtf`), Ch 47 (Sun / bphs-ch47-dasha-20260416 / `BPHS Ch 47 Vol 2.rtf`).
 
 ### Step 4 — Validate Ch 52/53/54/55 (after split-upgrade done)
 
@@ -282,7 +282,7 @@ These 6 slokas will have individual split rules inserted by split-upgrade, but t
 ### Ch 47-59 (Dasha chapters)
 - **Split-upgrade sweep IN PROGRESS** — Ch 48/52/53/54/55 done (+570 rules). Ch 56 (dry run done)/57/58/59/47 still pending live ingest.
 - **Validation pending** — Ch 52/53/54/55/56 not yet validated. Run `validate_rules.py` after split-upgrade for each.
-- Ch 57 slokas 20-21, 30-31 — over-split suspected, review in Rules Browser after split-upgrade
+- Ch 57 split-upgrade ✅ complete (+126); slokas 20-21, 30-31 over-split check still pending (original ingest flags, not new)
 - Ch 59 sloka 45-47 — OCR-corrupted sloka, verify extracted rules cover all placement conditions
 - Ch 59 batch ID in DB is `bphs-ch59-dasha-20260421` (not 20260420 as in some notes)
 
@@ -316,6 +316,63 @@ Not yet commissioned. Prateek must approve before any rule gets `approval_status
 - Item 18: `longevity_router.py` import fail — not addressed
 - Item 19: science_registry editor — not addressed
 - Commission I-K: Kota Chakra — not addressed
+
+---
+
+### ⚠️ Phase 2 Schema Enrichment — physical_markers + yoga_check backfill
+
+**Decision date:** 26 April 2026
+
+#### What happened
+TBA Ch 16 (Yogas) introduced two new fields to the rule schema:
+
+| Field | Path in document | Purpose |
+|---|---|---|
+| `physical_markers[]` | `interpretation.physical_markers` | Physical appearance, voice, disability, behavioural markers extracted verbatim from source text |
+| `yoga_check{}` | `condition.yoga_check` | Machine-checkable yoga formation condition for runtime detection by `vedic_calculator.py` |
+
+These fields are **NOT present** in any previously ingested batches:
+- TBA Ch 15 (1,530 rules — tba-ch15-v1-*)
+- BPHS Ch 12–24 (house chapters — bphs-ch12..24-v2-*)
+- BPHS Ch 47–59 (dasha chapters — bphs-ch47..59-dasha-*)
+- Any OCR-sourced batches
+
+#### Why this matters
+1. **Premium Report — Yoga Detection**: Runtime yoga detection (vedic_calculator → yoga_check → active yogas → report) requires `yoga_check.checkable = True` on relevant rules. Without backfill, only Ch 16+ rules can be used for yoga detection.
+2. **Physical Appearance Verification Report**: Querying `db.find({"interpretation.physical_markers.category": "body_build"})` will return zero results from all pre-Ch-16 batches. The appearance data exists in the `full_text_passages` text but is not structured.
+3. **Ch 15 Planet-in-House rules**: These have rich physical appearance content (height, facial features, skin tone) for all 9 planets × 12 houses — the most important source for appearance-based birth chart verification.
+
+#### Phase 2 script to build: `enrich_rules.py`
+
+**Approach:**
+- Reads existing rules from MongoDB by `source.batch_id` or `source.book_id`
+- For each rule, sends `interpretation.full_text_passages[0].text` to Claude with a targeted prompt:
+  *"Extract physical_markers and yoga_check from this rule text. Return empty lists if none present."*
+- Patches existing documents using `update_many` with `$set` on only the new fields
+- Does NOT touch any existing fields — additive-only patch
+- Runs with `--dry-run` first
+
+**Priority order for backfill:**
+1. TBA Ch 15 (planet-in-house) — highest value for physical appearance data
+2. BPHS Ch 12–24 (house chapters) — secondary appearance data
+3. BPHS Ch 47–59 (dasha chapters) — yoga_check rarely applicable; physical markers sparse
+
+**Status:** NOT YET BUILT — deferred until Ch 16 is validated and live.
+
+**Query to identify backfill candidates when ready:**
+```python
+# Rules missing physical_markers field entirely
+db.interpretation_rules.count_documents({
+    "interpretation.physical_markers": {"$exists": False},
+    "approval_status": {"$ne": "deprecated"}
+})
+
+# Rules missing yoga_check field
+db.interpretation_rules.count_documents({
+    "condition.yoga_check": {"$exists": False},
+    "approval_status": {"$ne": "deprecated"}
+})
+```
 
 ---
 
