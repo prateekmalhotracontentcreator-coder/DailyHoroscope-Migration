@@ -1666,9 +1666,22 @@ python3 scripts/ingest_tba_ch<N>_v1.py --upload rules.json --mongo-url $MONGO_UR
 python3 scripts/validate_rules.py --batch-id <batch-id>
 ```
 
+#### Validation Results — COMPLETE (26 Apr 2026)
+
+Two-pass validation required — see validator fix note below.
+
+| Status | Run 1 (34 rules) | Re-run (95 rules) | Total |
+|---|---|---|---|
+| `auto_approved` | 26 | 60 | **86 (67%)** |
+| `pending_human_review` | 5 | 30 | **35 (27%)** |
+| `flagged` | 3 | 5 | **8 (6%)** |
+| Contradictions | 0 | 0 | 0 |
+
+**Validator fix (commit `ccb475c`, 26 Apr):** `knowledge_validator.py` `structural_check()` was failing 95/129 rules with `truncated_text` because the TBA-style `"Yoga/Category … Condition … Effect"` `detailed` field ends without a terminal period. Fix: skip `truncated_text` guard for `yoga_combination`, `general_principle`, `dosha` types. This fix covers all future yoga-schema chapters automatically.
+
 #### Open Points
 
-1. **Validation not yet run** — run: `validate_rules.py --batch-id tba-ch16-v1-20260425`
+1. ✅ ~~Validation not yet run~~ — COMPLETE (26 Apr 2026)
 2. **tba16-003 yoga_check fix** — deferred to Phase 2 `enrich_rules.py` pass
 3. **Phase 2 schema backfill** — TBA Ch 15 + BPHS Ch 12-59 need `physical_markers` + `yoga_check` fields added via `enrich_rules.py` (not yet built)
 
