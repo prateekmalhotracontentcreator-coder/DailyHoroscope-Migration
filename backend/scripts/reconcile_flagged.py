@@ -234,7 +234,7 @@ def main() -> None:
                             "final_action": "",
                         }
                         rows.append(row)
-                        print(f"  {row['rule_id']}: {row['codex_recommendation']}")
+                        print(f"  {row['rule_id']}: {row['claude_recommendation']}")
 
                     if writer is not None:
                         for row in rows:
