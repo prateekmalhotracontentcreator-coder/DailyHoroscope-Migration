@@ -1,5 +1,5 @@
 # Knowledge Engine — Session Handover
-> Last updated: 26 Apr 2026 (yoga_check reclassification — 4 rules promoted from complex → multi_house_requirements; patch script ready)
+> Last updated: 26 Apr 2026 (yoga_check audit complete — Ch 35–38 all complex/False rules classified; 4 promoted, 21 confirmed non-promotable with Phase 2 roadmap)
 > Written at end of Session 4 (context compressed multiple times); updated Sessions 5–7
 > Next session: read this FIRST before touching any script or DB
 
@@ -237,9 +237,39 @@ Apply run + validation confirmed:
 | Fix path | Promote to `planet_in_house_from_sun` with `houses: [2, 12]` and `operator: "both"` — equivalent to BPHS Ch 38 Ubhayachari (bphs-ch38-003). Or use `multi_house_requirements` with two `planet_in_house_from_sun` clauses. Cross-ref: bphs-ch38-003. |
 | Priority | Low — rule is still usable for report generation; only runtime detection (yoga_check) is affected. |
 
+### yoga_check audit — BPHS Ch 35–38 complete (26 Apr 2026)
+
+Full audit of all `complex/False` rules across Ch 35–38. Each rule inspected and classified. Summary:
+
+| Chapter | complex/False | Promoted | Confirmed non-promotable | Reason category |
+|---|---|---|---|---|
+| Ch 35 | 4 | 2 (Vajra, Yava → `multi_house_requirements`) | 2 | Source incomplete (Ardha Chandra) · General principle (Meta-rule) |
+| Ch 36 | 17 | 2 (Matsya type-fix, Parvata → `multi_house_requirements`) | 15 | House lord lookup (12) · Dignity/strength (2) · Multi-chart dispositor chain (1) |
+| Ch 37 | 3 | 0 | 3 | D-9 Navamsa chart + birth-time required |
+| Ch 38 | 1 | 0 | 1 | General principle / result modifier |
+| **Total** | **25** | **4** | **21** | |
+
+**Blocker key:**
+- **L** = House lord identification required
+- **D** = Dignity/strength calculation required (own sign, exalt, moolatrikona, "strong")
+- **N** = D-9 Navamsa chart required
+- **C** = Dispositor chain across multiple charts
+
+**Phase 2 promotion roadmap for the 21 confirmed non-promotable:**
+
+| When available | Rules unlocked | New type needed |
+|---|---|---|
+| Lord identification in engine | Kahala, Chamara, Sankha, Bheri, Mridanga, Srinatha, Sarada, Khadga, Lakshmi, Kusuma, Hari, Hara, Brahma (13) | `planet_in_house_from_lord` |
+| Dignity check in engine | Koorma (1) | Extend `multi_house_requirements` with `min_dignity` field |
+| D-9 Navamsa exposure | Moon Navamsa ×3 (Ch 37) | `moon_navamsa_check` |
+| Multi-chart chains | Kalpadruma (1) | `dispositor_chain` (lowest priority) |
+| Never | Ardha Chandra (source gap), Meta-rule, Solar modifier | — |
+
+Full per-rule details in INGEST_NOTES.md — Ch 35/36/37/38 `complex/False` audit tables.
+
 ### RTF files still pending from Prateek:
-- BPHS Ch 35-41
-- BPHS Ch 43-44
+- BPHS Ch 39–41
+- BPHS Ch 43–44
 - 300 Important Combinations
 
 ### ⚠️ Phase 2 Schema Enrichment — physical_markers + yoga_check backfill (DEFERRED)
