@@ -1,0 +1,5513 @@
+[
+  {
+    "rule_id": "lalkitab-ch27-corr-sun",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Sun",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Sun.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Sun correspondences: Lord Vishnu, colour Wheatish, body parts Body/Right face, objects Red wheat/Copper.",
+      "detailed": "Lord: Vishnu. Colour: Wheatish. Gem/Metal: Red copper. Animal: Cow, Monkey. Body parts: Body, Right face. Objects: Red wheat, Copper.",
+      "correspondence": {
+        "lord": "Vishnu",
+        "colour": "Wheatish",
+        "gem_metal": [
+          "Red copper"
+        ],
+        "animal": [
+          "Cow",
+          "Monkey"
+        ],
+        "body_parts": [
+          "Body",
+          "Right face"
+        ],
+        "objects": [
+          "Red wheat",
+          "Copper"
+        ]
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "sun",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-corr-moon",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Moon",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Moon.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Moon correspondences: Lord Shiva, colour Milky white, body parts Heart/Left face, objects Rice/Milk/Silver.",
+      "detailed": "Lord: Shiva. Colour: Milky white. Gem/Metal: Pearl, Silver. Animal: Horse, Mare. Body parts: Heart, Left face. Objects: Rice, Milk, Silver.",
+      "correspondence": {
+        "lord": "Shiva",
+        "colour": "Milky white",
+        "gem_metal": [
+          "Pearl",
+          "Silver"
+        ],
+        "animal": [
+          "Horse",
+          "Mare"
+        ],
+        "body_parts": [
+          "Heart",
+          "Left face"
+        ],
+        "objects": [
+          "Rice",
+          "Milk",
+          "Silver"
+        ]
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "moon",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-corr-mars-benefic",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00",
+      "data_quality_note": "Mars Benefic Objects field empty: source table column misalignment confirmed. Rice/Milk/Silver belong to Moon (cross-confirmed Section 3). Correct value unknown.",
+      "needs_review": true
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Mars Benefic",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Mars Benefic.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Mars Benefic correspondences: Lord Hanuman, colour Red, body parts Liver/Upper lip, objects unverified.",
+      "detailed": "Lord: Hanuman. Colour: Red. Gem/Metal: Non-shining red gems. Animal: Kite. Body parts: Liver, Upper lip. Objects: [data quality issue — see notes]. Note: Mars Benefic Objects field empty: source table column misalignment confirmed. Rice/Milk/Silver belong to Moon (cross-confirmed Section 3). Correct value unknown.",
+      "correspondence": {
+        "lord": "Hanuman",
+        "colour": "Red",
+        "gem_metal": [
+          "Non-shining red gems"
+        ],
+        "animal": [
+          "Kite"
+        ],
+        "body_parts": [
+          "Liver",
+          "Upper lip"
+        ],
+        "objects": []
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "mars_benefic",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-corr-mars-malefic",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Mars Malefic",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Mars Malefic.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Mars Malefic correspondences: Lord Ghost and spirit, colour Red, body parts Liver/Upper lip, objects Red masoor pulse.",
+      "detailed": "Lord: Ghost and spirit. Colour: Red. Gem/Metal: Bright red gem. Animal: Camel, Deer. Body parts: Liver, Upper lip. Objects: Red masoor pulse.",
+      "correspondence": {
+        "lord": "Ghost and spirit",
+        "colour": "Red",
+        "gem_metal": [
+          "Bright red gem"
+        ],
+        "animal": [
+          "Camel",
+          "Deer"
+        ],
+        "body_parts": [
+          "Liver",
+          "Upper lip"
+        ],
+        "objects": [
+          "Red masoor pulse"
+        ]
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "mars_malefic",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-corr-mercury",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Mercury",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Mercury.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury correspondences: Lord Durga, colour Green, body parts Brain/Teeth/Neuron/Tongue/Nose, objects Whole moong.",
+      "detailed": "Lord: Durga. Colour: Green. Gem/Metal: Diamond, Emerald. Animal: Sheep, Goat, Bat. Body parts: Brain, Teeth, Neuron, Tongue, Nose. Objects: Whole moong.",
+      "correspondence": {
+        "lord": "Durga",
+        "colour": "Green",
+        "gem_metal": [
+          "Diamond",
+          "Emerald"
+        ],
+        "animal": [
+          "Sheep",
+          "Goat",
+          "Bat"
+        ],
+        "body_parts": [
+          "Brain",
+          "Teeth",
+          "Neuron",
+          "Tongue",
+          "Nose"
+        ],
+        "objects": [
+          "Whole moong"
+        ]
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "mercury",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-corr-jupiter",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Jupiter",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Jupiter.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter correspondences: Lord Brahma, colour Yellow, body parts Neck/Nose, objects Gram pulse/Gold.",
+      "detailed": "Lord: Brahma. Colour: Yellow. Gem/Metal: Gold, Yellow sapphire. Animal: Lion, Lioness. Body parts: Neck, Nose. Objects: Gram pulse, Gold.",
+      "correspondence": {
+        "lord": "Brahma",
+        "colour": "Yellow",
+        "gem_metal": [
+          "Gold",
+          "Yellow sapphire"
+        ],
+        "animal": [
+          "Lion",
+          "Lioness"
+        ],
+        "body_parts": [
+          "Neck",
+          "Nose"
+        ],
+        "objects": [
+          "Gram pulse",
+          "Gold"
+        ]
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "jupiter",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-corr-venus",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Venus",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Venus.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Venus correspondences: Lord Lakshmi, colour Curd-like, body parts Voice system/Cheek, objects Butter/Camphor/Pearl.",
+      "detailed": "Lord: Lakshmi. Colour: Curd-like. Gem/Metal: Pearl, Fine soil. Animal: Cow, Bull. Body parts: Voice system, Cheek. Objects: Butter, Camphor, Pearl.",
+      "correspondence": {
+        "lord": "Lakshmi",
+        "colour": "Curd-like",
+        "gem_metal": [
+          "Pearl",
+          "Fine soil"
+        ],
+        "animal": [
+          "Cow",
+          "Bull"
+        ],
+        "body_parts": [
+          "Voice system",
+          "Cheek"
+        ],
+        "objects": [
+          "Butter",
+          "Camphor",
+          "Pearl"
+        ]
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "venus",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-corr-saturn",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Saturn",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Saturn.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Saturn correspondences: Lord Bhairav, colour Black, body parts Eye/Eyebrow/Hair, objects Whole black gram (Urad).",
+      "detailed": "Lord: Bhairav. Colour: Black. Gem/Metal: Iron, Steel. Animal: Buffalo. Body parts: Eye, Eyebrow, Hair. Objects: Whole black gram (Urad).",
+      "correspondence": {
+        "lord": "Bhairav",
+        "colour": "Black",
+        "gem_metal": [
+          "Iron",
+          "Steel"
+        ],
+        "animal": [
+          "Buffalo"
+        ],
+        "body_parts": [
+          "Eye",
+          "Eyebrow",
+          "Hair"
+        ],
+        "objects": [
+          "Whole black gram (Urad)"
+        ]
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "saturn",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-corr-rahu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Rahu",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Rahu.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Rahu correspondences: Lord Saraswati, colour Blue, body parts Head/Chin/Head-shaking, objects Mustard/Blue sapphire.",
+      "detailed": "Lord: Saraswati. Colour: Blue. Gem/Metal: Blue sapphire, Gomed. Animal: Wild rats. Body parts: Head, Chin, Head-shaking. Objects: Mustard, Blue sapphire.",
+      "correspondence": {
+        "lord": "Saraswati",
+        "colour": "Blue",
+        "gem_metal": [
+          "Blue sapphire",
+          "Gomed"
+        ],
+        "animal": [
+          "Wild rats"
+        ],
+        "body_parts": [
+          "Head",
+          "Chin",
+          "Head-shaking"
+        ],
+        "objects": [
+          "Mustard",
+          "Blue sapphire"
+        ]
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "rahu",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-corr-ketu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "correspondence_table",
+      "planet": "Ketu",
+      "description": "Lal Kitab Ch 27 planetary correspondence entry for Ketu.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Ketu correspondences: Lord Ganesh, colour Spotted, body parts Torso/Spinal cord/Knees/Toes/Palm/Ear, objects Sesame.",
+      "detailed": "Lord: Ganesh. Colour: Spotted. Gem/Metal: Vaidurya. Animal: Dog, Donkey, Pig, Lizard. Body parts: Torso, Spinal cord, Knees, Toes, Palm, Ear. Objects: Sesame.",
+      "correspondence": {
+        "lord": "Ganesh",
+        "colour": "Spotted",
+        "gem_metal": [
+          "Vaidurya"
+        ],
+        "animal": [
+          "Dog",
+          "Donkey",
+          "Pig",
+          "Lizard"
+        ],
+        "body_parts": [
+          "Torso",
+          "Spinal cord",
+          "Knees",
+          "Toes",
+          "Palm",
+          "Ear"
+        ],
+        "objects": [
+          "Sesame"
+        ]
+      },
+      "life_domains": [
+        "health",
+        "remedies",
+        "planetary_nature"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "correspondence",
+      "planetary_significator",
+      "ketu",
+      "body_parts",
+      "objects"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-rem-sun",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "planet": "Sun",
+      "description": "Sun affliction causing disease/difficulty (Lal Kitab Ch 27).",
+      "yoga_check": {
+        "type": "planet_afflicted",
+        "checkable": true,
+        "planet": "Sun"
+      }
+    },
+    "interpretation": {
+      "summary": "Sun affliction: Heart disease; Eye pain; Abdominal problem; Loss of money; False allegations. Remedy: Worship Sun; chant Harivansh Purana. | Donate copper or wheat. | Eat jaggery/sweets and drink water before starting any ...",
+      "detailed": "Symptoms of Sun affliction: Heart disease; Eye pain; Abdominal problem; Loss of money; False allegations. Remedies: Worship Sun; chant Harivansh Purana. | Donate copper or wheat. | Eat jaggery/sweets and drink water before starting any work. | Resolution with two equal copper pieces — immerse one in water, keep one always.",
+      "remedies": [
+        {
+          "text": "Worship Sun; chant Harivansh Purana.",
+          "category": "mantra"
+        },
+        {
+          "text": "Donate copper or wheat.",
+          "category": "offering"
+        },
+        {
+          "text": "Eat jaggery/sweets and drink water before starting any work.",
+          "category": "ritual"
+        },
+        {
+          "text": "Resolution with two equal copper pieces — immerse one in water, keep one always.",
+          "category": "gemstone_jewelry"
+        }
+      ],
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "affliction",
+      "remedy",
+      "sun",
+      "disease",
+      "donation",
+      "worship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-rem-moon",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "planet": "Moon",
+      "description": "Moon affliction causing disease/difficulty (Lal Kitab Ch 27).",
+      "yoga_check": {
+        "type": "planet_afflicted",
+        "checkable": true,
+        "planet": "Moon"
+      }
+    },
+    "interpretation": {
+      "summary": "Moon affliction: Mental tension; Worry; Lung disease; Chickenpox; Financial trouble. Remedy: Worship family God/Goddess. | Donate rice, milk, and silver. | Take blessings by touching elders' feet. | Adorn one pear...",
+      "detailed": "Symptoms of Moon affliction: Mental tension; Worry; Lung disease; Chickenpox; Financial trouble. Remedies: Worship family God/Goddess. | Donate rice, milk, and silver. | Take blessings by touching elders' feet. | Adorn one pearl/silver piece after immersing another in water.",
+      "remedies": [
+        {
+          "text": "Worship family God/Goddess.",
+          "category": "mantra"
+        },
+        {
+          "text": "Donate rice, milk, and silver.",
+          "category": "offering"
+        },
+        {
+          "text": "Take blessings by touching elders' feet.",
+          "category": "ritual"
+        },
+        {
+          "text": "Adorn one pearl/silver piece after immersing another in water.",
+          "category": "gemstone_jewelry"
+        }
+      ],
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "affliction",
+      "remedy",
+      "moon",
+      "disease",
+      "donation",
+      "worship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-rem-mars",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "planet": "Mars",
+      "description": "Mars affliction causing disease/difficulty (Lal Kitab Ch 27).",
+      "yoga_check": {
+        "type": "planet_afflicted",
+        "checkable": true,
+        "planet": "Mars"
+      }
+    },
+    "interpretation": {
+      "summary": "Mars affliction: Liver disease; Fluttering of lips. Remedy: Chant Hanuman Chalisa; fast on Tuesday. | Donate masoor and moong pulse. | Apply white kohl in eyes. | Adorn red stone o...",
+      "detailed": "Symptoms of Mars affliction: Liver disease; Fluttering of lips. Remedies: Chant Hanuman Chalisa; fast on Tuesday. | Donate masoor and moong pulse. | Apply white kohl in eyes. | Adorn red stone or coral based on Sun/Moon remedies.",
+      "remedies": [
+        {
+          "text": "Chant Hanuman Chalisa; fast on Tuesday.",
+          "category": "mantra"
+        },
+        {
+          "text": "Donate masoor and moong pulse.",
+          "category": "offering"
+        },
+        {
+          "text": "Apply white kohl in eyes.",
+          "category": "ritual"
+        },
+        {
+          "text": "Adorn red stone or coral based on Sun/Moon remedies.",
+          "category": "gemstone_jewelry"
+        }
+      ],
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "affliction",
+      "remedy",
+      "mars",
+      "disease",
+      "donation",
+      "worship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-rem-mercury",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "planet": "Mercury",
+      "description": "Mercury affliction causing disease/difficulty (Lal Kitab Ch 27).",
+      "yoga_check": {
+        "type": "planet_afflicted",
+        "checkable": true,
+        "planet": "Mercury"
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury affliction: Neurological disease; Dental problem. Remedy: Worship Durgaji; chant Durga Saptshati. | Donate whole moong. | Keep teeth clean; pierce nose. | Adorn diamond or shells...",
+      "detailed": "Symptoms of Mercury affliction: Neurological disease; Dental problem. Remedies: Worship Durgaji; chant Durga Saptshati. | Donate whole moong. | Keep teeth clean; pierce nose. | Adorn diamond or shells.",
+      "remedies": [
+        {
+          "text": "Worship Durgaji; chant Durga Saptshati.",
+          "category": "mantra"
+        },
+        {
+          "text": "Donate whole moong.",
+          "category": "offering"
+        },
+        {
+          "text": "Keep teeth clean; pierce nose.",
+          "category": "ritual"
+        },
+        {
+          "text": "Adorn diamond or shells.",
+          "category": "gemstone_jewelry"
+        }
+      ],
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "affliction",
+      "remedy",
+      "mercury",
+      "disease",
+      "donation",
+      "worship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-rem-jupiter",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "planet": "Jupiter",
+      "description": "Jupiter affliction causing disease/difficulty (Lal Kitab Ch 27).",
+      "yoga_check": {
+        "type": "planet_afflicted",
+        "checkable": true,
+        "planet": "Jupiter"
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter affliction: Loss of son; Throat trouble. Remedy: Chant Harivansh Purana; worship Brahmaji. | Donate gram pulse. | Apply saffron tilak on forehead; keep nose clean. | Kee...",
+      "detailed": "Symptoms of Jupiter affliction: Loss of son; Throat trouble. Remedies: Chant Harivansh Purana; worship Brahmaji. | Donate gram pulse. | Apply saffron tilak on forehead; keep nose clean. | Keep gold or saffron.",
+      "remedies": [
+        {
+          "text": "Chant Harivansh Purana; worship Brahmaji.",
+          "category": "mantra"
+        },
+        {
+          "text": "Donate gram pulse.",
+          "category": "offering"
+        },
+        {
+          "text": "Apply saffron tilak on forehead; keep nose clean.",
+          "category": "ritual"
+        },
+        {
+          "text": "Keep gold or saffron.",
+          "category": "gemstone_jewelry"
+        }
+      ],
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "affliction",
+      "remedy",
+      "jupiter",
+      "disease",
+      "donation",
+      "worship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-rem-venus",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "planet": "Venus",
+      "description": "Venus affliction causing disease/difficulty (Lal Kitab Ch 27).",
+      "yoga_check": {
+        "type": "planet_afflicted",
+        "checkable": true,
+        "planet": "Venus"
+      }
+    },
+    "interpretation": {
+      "summary": "Venus affliction: Unexpected hurdles; Hurdles in auspicious deeds. Remedy: Worship Lakshmi. | Donate ghee, curd, camphor, and pearl. | Wear clean clothes. | Adorn white pearl....",
+      "detailed": "Symptoms of Venus affliction: Unexpected hurdles; Hurdles in auspicious deeds. Remedies: Worship Lakshmi. | Donate ghee, curd, camphor, and pearl. | Wear clean clothes. | Adorn white pearl.",
+      "remedies": [
+        {
+          "text": "Worship Lakshmi.",
+          "category": "mantra"
+        },
+        {
+          "text": "Donate ghee, curd, camphor, and pearl.",
+          "category": "offering"
+        },
+        {
+          "text": "Wear clean clothes.",
+          "category": "ritual"
+        },
+        {
+          "text": "Adorn white pearl.",
+          "category": "gemstone_jewelry"
+        }
+      ],
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "affliction",
+      "remedy",
+      "venus",
+      "disease",
+      "donation",
+      "worship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-rem-saturn",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "planet": "Saturn",
+      "description": "Saturn affliction causing disease/difficulty (Lal Kitab Ch 27).",
+      "yoga_check": {
+        "type": "planet_afflicted",
+        "checkable": true,
+        "planet": "Saturn"
+      }
+    },
+    "interpretation": {
+      "summary": "Saturn affliction: Fire; Accidents; Incompetent progeny; Eye disease. Remedy: Worship Bhairav. | Donate iron or black urad. | Offer bread to crows for 43 consecutive days. | Wear iron ring; use blac...",
+      "detailed": "Symptoms of Saturn affliction: Fire; Accidents; Incompetent progeny; Eye disease. Remedies: Worship Bhairav. | Donate iron or black urad. | Offer bread to crows for 43 consecutive days. | Wear iron ring; use black salt or kohl.",
+      "remedies": [
+        {
+          "text": "Worship Bhairav.",
+          "category": "mantra"
+        },
+        {
+          "text": "Donate iron or black urad.",
+          "category": "offering"
+        },
+        {
+          "text": "Offer bread to crows for 43 consecutive days.",
+          "category": "ritual"
+        },
+        {
+          "text": "Wear iron ring; use black salt or kohl.",
+          "category": "gemstone_jewelry"
+        }
+      ],
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "affliction",
+      "remedy",
+      "saturn",
+      "disease",
+      "donation",
+      "worship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-rem-rahu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "planet": "Rahu",
+      "description": "Rahu affliction causing disease/difficulty (Lal Kitab Ch 27).",
+      "yoga_check": {
+        "type": "planet_afflicted",
+        "checkable": true,
+        "planet": "Rahu"
+      }
+    },
+    "interpretation": {
+      "summary": "Rahu affliction: Head injury; Mental disease; Leprosy; State penalties. Remedy: Worship Saraswatiji. | Donate mustard or blue sapphire. | Keep shikha (choti); maintain joint family and good in-law rel...",
+      "detailed": "Symptoms of Rahu affliction: Head injury; Mental disease; Leprosy; State penalties. Remedies: Worship Saraswatiji. | Donate mustard or blue sapphire. | Keep shikha (choti); maintain joint family and good in-law relations. | Wear blue sapphire.",
+      "remedies": [
+        {
+          "text": "Worship Saraswatiji.",
+          "category": "mantra"
+        },
+        {
+          "text": "Donate mustard or blue sapphire.",
+          "category": "offering"
+        },
+        {
+          "text": "Keep shikha (choti); maintain joint family and good in-law relations.",
+          "category": "ritual"
+        },
+        {
+          "text": "Wear blue sapphire.",
+          "category": "gemstone_jewelry"
+        }
+      ],
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "affliction",
+      "remedy",
+      "rahu",
+      "disease",
+      "donation",
+      "worship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-rem-ketu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "planet": "Ketu",
+      "description": "Ketu affliction causing disease/difficulty (Lal Kitab Ch 27).",
+      "yoga_check": {
+        "type": "planet_afflicted",
+        "checkable": true,
+        "planet": "Ketu"
+      }
+    },
+    "interpretation": {
+      "summary": "Ketu affliction: Knee pain; Urinary infection; Son trouble; Ill treatment; Attack on faith. Remedy: Worship Ganeshji. | Donate she-calf, cow, and sesame. | Keep pet dog; pierce ear. | Wear two-coloured stone....",
+      "detailed": "Symptoms of Ketu affliction: Knee pain; Urinary infection; Son trouble; Ill treatment; Attack on faith. Remedies: Worship Ganeshji. | Donate she-calf, cow, and sesame. | Keep pet dog; pierce ear. | Wear two-coloured stone.",
+      "remedies": [
+        {
+          "text": "Worship Ganeshji.",
+          "category": "mantra"
+        },
+        {
+          "text": "Donate she-calf, cow, and sesame.",
+          "category": "offering"
+        },
+        {
+          "text": "Keep pet dog; pierce ear.",
+          "category": "ritual"
+        },
+        {
+          "text": "Wear two-coloured stone.",
+          "category": "gemstone_jewelry"
+        }
+      ],
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "affliction",
+      "remedy",
+      "ketu",
+      "disease",
+      "donation",
+      "worship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-01",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "description": "Exalted/Debilitated general rule",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Never donate objects of an exalted planet; never accept objects of a debilitated planet.",
+      "detailed": "Exaltation/debilitation of a planet changes the energy of its associated objects. Donating exalted objects dissipates one's own strength; accepting debilitated objects invites the negative energy of that planet.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-01"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-02",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "description": "Temple visit prohibition (H2 vacant + evil in H8)",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "h2_vacant": true,
+      "h8_content": "evil_planets"
+    },
+    "interpretation": {
+      "summary": "If House 2 is vacant and evil planets occupy House 8, visiting a temple is strictly prohibited.",
+      "detailed": "House 2 (family/wealth) vacant combined with evil planets in House 8 (death/loss) creates a negative axis that makes temple visits inauspicious — potentially harmful to the native.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false,
+      "outcome_if_violated": "Death-like outcomes from temple visit."
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-02"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-03",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "description": "Moon in 6th — milk donation and water construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planet": "Moon",
+      "house": 6
+    },
+    "interpretation": {
+      "summary": "Moon in 6th house: do not donate milk; do not construct a well, pond, or water tap.",
+      "detailed": "Moon in 6th weakens the water/nourishment significations. Donating milk or creating water bodies amplifies this weakness — result: death in the family.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false,
+      "outcome_if_violated": "Death in family."
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-03"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-04",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "description": "Saturn in 8th — dharmashala construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planet": "Saturn",
+      "house": 8
+    },
+    "interpretation": {
+      "summary": "Saturn in 8th house: do not construct a welfare home (dharmashala).",
+      "detailed": "Saturn in the 8th house of obstruction/death makes charitable construction inauspicious for the native — it activates the obstructive qualities of Saturn against the donor.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false,
+      "outcome_if_violated": "Activates Saturn's obstructive 8th-house energy against the native."
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-04"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-05",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "description": "Saturn in Asc + Jupiter in 5th — copper donation to beggars",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "saturn": "ascendant",
+      "jupiter": "house_5"
+    },
+    "interpretation": {
+      "summary": "Saturn in Ascendant and Jupiter in 5th: do not give copper to beggars.",
+      "detailed": "Jupiter in 5th governs children/progeny. Saturn in the Ascendant restricts personal vitality. Donating copper (Sun's metal) to beggars under this combination results in suffering of one's own children.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false,
+      "outcome_if_violated": "Child suffering."
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-05"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-06",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "description": "Jupiter in 10th + Moon in 4th — temple construction",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "jupiter": "house_10",
+      "moon": "house_4"
+    },
+    "interpretation": {
+      "summary": "Jupiter in 10th and Moon in 4th: do not construct a temple.",
+      "detailed": "This combination activates a tension between public karma (Jupiter 10th) and domestic peace (Moon 4th). Temple construction under this combination inverts auspiciousness — outcome is jail/confinement for the native.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false,
+      "outcome_if_violated": "Jail risk."
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-06"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-07",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "description": "Venus in 9th — child adoption",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planet": "Venus",
+      "house": 9
+    },
+    "interpretation": {
+      "summary": "Venus in 9th house: do not adopt a child.",
+      "detailed": "Venus in 9th affects the dharma and fortune axis. Adopting a child under this placement creates an imbalance in progeny karma that works against the native's long-term fortune.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false,
+      "outcome_if_violated": "Adverse effect on fortune and progeny karma."
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-07"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-08",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "description": "Moon in 12th — feast to saints / school construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planet": "Moon",
+      "house": 12
+    },
+    "interpretation": {
+      "summary": "Moon in 12th house: do not offer feast to saints; do not build schools.",
+      "detailed": "Moon in 12th (loss/isolation) means nourishment given out (feast to saints) or knowledge infrastructure built (schools) is absorbed by the 12th house negativity — returning as painful death for the native.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false,
+      "outcome_if_violated": "Painful death."
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-08"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-09",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "description": "Jupiter in 7th — donating clothes",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planet": "Jupiter",
+      "house": 7
+    },
+    "interpretation": {
+      "summary": "Jupiter in 7th house: do not donate clothes.",
+      "detailed": "Jupiter governs wealth and abundance. In the 7th it concerns partnerships. Donating clothes (a Jupiter-governed article) from this position returns as deprivation — the native and family pine for clothes.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false,
+      "outcome_if_violated": "Native and family pine for clothes."
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-09"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-proh-10",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "description": "Sun in 7th or 8th — timing of donations",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planet": "Sun",
+      "houses": [
+        7,
+        8
+      ]
+    },
+    "interpretation": {
+      "summary": "Sun in 7th or 8th house: do not donate during morning or evening.",
+      "detailed": "Sun in 7th/8th creates sensitivity around transition periods (sunrise/sunset). Donations made at these times activate the negative potential of Sun's placement in these inauspicious positions.",
+      "life_domains": [
+        "remedies",
+        "dharma",
+        "health"
+      ],
+      "is_benefic": false,
+      "outcome_if_violated": "Activates inauspicious Sun placement."
+    },
+    "tags": [
+      "prohibition",
+      "donation_rule",
+      "conditional",
+      "proh-10"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h01",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 1,
+      "house_label": "Ascendant",
+      "description": "Planet Transfer Placement for Ascendant — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Adorn the object around the neck.",
+      "detailed": "House 1 (Ascendant/self) — the planet's object must remain on the native's body (adorned around the neck) to channel its energy into the self directly.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_1",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h02",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 2,
+      "house_label": "House 2",
+      "description": "Planet Transfer Placement for House 2 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Place the object at a temple or religious place.",
+      "detailed": "House 2 (family/wealth/speech) — the object is offered to a place of worship, activating the religious/familial dimension of the planet.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_2",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h03",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 3,
+      "house_label": "House 3",
+      "description": "Planet Transfer Placement for House 3 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Wear the object as a gem on the hand.",
+      "detailed": "House 3 (siblings/effort/hands) — the object is worn as a gem on the hand, channelling the planet's energy through the native's effort and action.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_3",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h04",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 4,
+      "house_label": "House 4",
+      "description": "Planet Transfer Placement for House 4 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Immerse the object in running water.",
+      "detailed": "House 4 (home/mother/comfort) — immersion in running water activates the cleansing/domestic dimension; water carries the planet's energy into the household.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_4",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h05",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 5,
+      "house_label": "House 5",
+      "description": "Planet Transfer Placement for House 5 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Transfer the object to a school or college.",
+      "detailed": "House 5 (children/intelligence/education) — the object is given to an educational institution, activating progeny and learning outcomes.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_5",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h06",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 6,
+      "house_label": "House 6",
+      "description": "Planet Transfer Placement for House 6 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Drop the object in a well.",
+      "detailed": "House 6 (enemies/disease/debt) — dropping in a well removes the negative energy associated with the planet's difficult placement in the 6th.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_6",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h07",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 7,
+      "house_label": "House 7",
+      "description": "Planet Transfer Placement for House 7 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Bury the object under the ground.",
+      "detailed": "House 7 (spouse/partnership/open enemies) — burying grounds and neutralises the conflicting energy of the planet in the partnership house.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_7",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h08",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 8,
+      "house_label": "House 8",
+      "description": "Planet Transfer Placement for House 8 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Bury the object at the pyre ground.",
+      "detailed": "House 8 (death/transformation/hidden matters) — the pyre ground is the appropriate locus for objects associated with this house; it transforms and neutralises the energy.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_8",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h09",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 9,
+      "house_label": "House 9",
+      "description": "Planet Transfer Placement for House 9 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Donate the object at a temple or wear it.",
+      "detailed": "House 9 (luck/dharma/father/long journeys) — the object is either donated at a temple (offering to the divine) or worn (keeping dharma aligned with the self).",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_9",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h10",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 10,
+      "house_label": "House 10",
+      "description": "Planet Transfer Placement for House 10 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Eatables: give to father. Wearables: wear them. Other objects: bury near public property shadow.",
+      "detailed": "House 10 (career/karma/authority/father) — three sub-rules based on object type: food items strengthen the father connection; wearables are kept on the self; other items are buried near a public property shadow to anchor career karma.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_10",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h11",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 11,
+      "house_label": "House 11",
+      "description": "Planet Transfer Placement for House 11 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "No action required.",
+      "detailed": "House 11 (gains/elder siblings/desires) — when a planet is in the 11th, no transfer action is needed; the planet's gains are self-actualising in this house.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_11",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-transfer-h12",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "transfer_protocol",
+      "house": 12,
+      "house_label": "House 12",
+      "description": "Planet Transfer Placement for House 12 — Lal Kitab Ch 27.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Install the object on the roof of the house.",
+      "detailed": "House 12 (loss/liberation/foreign lands/sleep) — installing on the roof elevates the energy out of the house and into the expansive/liberating dimension associated with the 12th house.",
+      "life_domains": [
+        "remedies"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "transfer_protocol",
+      "planet_placement",
+      "house_12",
+      "remedy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w01",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 1,
+      "house": 1,
+      "planet": "Venus / Saturn",
+      "wave_name": "Love and Romance",
+      "description": "42-section mental wave engine — Section 1: Love and Romance.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "age_window": "Active 16-36 years."
+    },
+    "interpretation": {
+      "summary": "Section 1, House 1, Venus / Saturn: Love and Romance. Physical/sexual love driven by Venus; verbal expression of love driven by Saturn.",
+      "detailed": "Mental wave 'Love and Romance' (Section 1): influenced by Venus / Saturn in House 1. Effect: Physical/sexual love driven by Venus; verbal expression of love driven by Saturn. Age window: Active 16-36 years.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_1",
+      "house_1",
+      "venus___saturn",
+      "love_and_romance"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w02",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 2,
+      "house": 2,
+      "planet": "Jupiter",
+      "wave_name": "Desire to Marry",
+      "description": "42-section mental wave engine — Section 2: Desire to Marry.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "age_window": "Intensifies 37-72 years."
+    },
+    "interpretation": {
+      "summary": "Section 2, House 2, Jupiter: Desire to Marry. Intensifying desire to formalise union and build family.",
+      "detailed": "Mental wave 'Desire to Marry' (Section 2): influenced by Jupiter in House 2. Effect: Intensifying desire to formalise union and build family. Age window: Intensifies 37-72 years.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_2",
+      "house_2",
+      "jupiter",
+      "desire_to_marry"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w03",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 3,
+      "house": 3,
+      "planet": "Venus",
+      "wave_name": "Offspring Affection",
+      "description": "42-section mental wave engine — Section 3: Offspring Affection.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 3, House 3, Venus: Offspring Affection. Deep longing for a son; paternal/parental affection wave.",
+      "detailed": "Mental wave 'Offspring Affection' (Section 3): influenced by Venus in House 3. Effect: Deep longing for a son; paternal/parental affection wave.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_3",
+      "house_3",
+      "venus",
+      "offspring_affection"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w04",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 3,
+      "house": 3,
+      "planet": "Mars",
+      "wave_name": "Childhood Affection",
+      "description": "42-section mental wave engine — Section 3: Childhood Affection.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "age_window": "Active 1-15 years."
+    },
+    "interpretation": {
+      "summary": "Section 3, House 3, Mars: Childhood Affection. Childhood bonding and affection for siblings.",
+      "detailed": "Mental wave 'Childhood Affection' (Section 3): influenced by Mars in House 3. Effect: Childhood bonding and affection for siblings. Age window: Active 1-15 years.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_3",
+      "house_3",
+      "mars",
+      "childhood_affection"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w05",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 4,
+      "house": 4,
+      "planet": "Moon",
+      "wave_name": "Friendship",
+      "description": "42-section mental wave engine — Section 4: Friendship.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 4, House 4, Moon: Friendship. Pure platonic friendship; feelings devoid of lust or ulterior motive.",
+      "detailed": "Mental wave 'Friendship' (Section 4): influenced by Moon in House 4. Effect: Pure platonic friendship; feelings devoid of lust or ulterior motive.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_4",
+      "house_4",
+      "moon",
+      "friendship"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w06",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 4,
+      "house": 4,
+      "planet": "Mars Malefic",
+      "wave_name": "Destructor",
+      "description": "42-section mental wave engine — Section 4: Destructor.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 4, House 4, Mars Malefic: Destructor. Destructive tendency towards love relationships and friendships.",
+      "detailed": "Mental wave 'Destructor' (Section 4): influenced by Mars Malefic in House 4. Effect: Destructive tendency towards love relationships and friendships.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_4",
+      "house_4",
+      "mars_malefic",
+      "destructor"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w07",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 5,
+      "house": 5,
+      "planet": "Jupiter",
+      "wave_name": "Love for Country",
+      "description": "42-section mental wave engine — Section 5: Love for Country.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 5, House 5, Jupiter: Love for Country. Love for nation and family members; patriotic and familial devotion.",
+      "detailed": "Mental wave 'Love for Country' (Section 5): influenced by Jupiter in House 5. Effect: Love for nation and family members; patriotic and familial devotion.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_5",
+      "house_5",
+      "jupiter",
+      "love_for_country"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w08",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 6,
+      "house": 6,
+      "planet": "Ketu",
+      "wave_name": "Sacrifice and Passion",
+      "description": "42-section mental wave engine — Section 6: Sacrifice and Passion.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 6, House 6, Ketu: Sacrifice and Passion. Self-sacrifice for a beloved person; capacity for selfless devotion.",
+      "detailed": "Mental wave 'Sacrifice and Passion' (Section 6): influenced by Ketu in House 6. Effect: Self-sacrifice for a beloved person; capacity for selfless devotion.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_6",
+      "house_6",
+      "ketu",
+      "sacrifice_and_passion"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w09",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 6,
+      "house": 6,
+      "planet": "Venus",
+      "wave_name": "Interest in Progeny",
+      "description": "42-section mental wave engine — Section 6: Interest in Progeny.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 6, House 6, Venus: Interest in Progeny. Heightened attention and investment towards the male child.",
+      "detailed": "Mental wave 'Interest in Progeny' (Section 6): influenced by Venus in House 6. Effect: Heightened attention and investment towards the male child.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_6",
+      "house_6",
+      "venus",
+      "interest_in_progeny"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w10",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 7,
+      "house": 7,
+      "planet": "Venus",
+      "wave_name": "Ambition",
+      "description": "42-section mental wave engine — Section 7: Ambition.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 7, House 7, Venus: Ambition. Burning desire to rise in social status and achieve higher standing.",
+      "detailed": "Mental wave 'Ambition' (Section 7): influenced by Venus in House 7. Effect: Burning desire to rise in social status and achieve higher standing.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_7",
+      "house_7",
+      "venus",
+      "ambition"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w11",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 7,
+      "house": 7,
+      "planet": "Mercury",
+      "wave_name": "Proof Desire",
+      "description": "42-section mental wave engine — Section 7: Proof Desire.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 7, House 7, Mercury: Proof Desire. Strong desire to prove oneself. Particularly strong in flat-headed natives.",
+      "detailed": "Mental wave 'Proof Desire' (Section 7): influenced by Mercury in House 7. Effect: Strong desire to prove oneself. Particularly strong in flat-headed natives.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_7",
+      "house_7",
+      "mercury",
+      "proof_desire"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w12",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 8,
+      "house": 8,
+      "planet": "Mars Benefic",
+      "wave_name": "Resolution",
+      "description": "42-section mental wave engine — Section 8: Resolution.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 8, House 8, Mars Benefic: Resolution. Completes tasks regardless of success or failure; unstoppable follow-through.",
+      "detailed": "Mental wave 'Resolution' (Section 8): influenced by Mars Benefic in House 8. Effect: Completes tasks regardless of success or failure; unstoppable follow-through.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_8",
+      "house_8",
+      "mars_benefic",
+      "resolution"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w13",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 8,
+      "house": 8,
+      "planet": "Sun",
+      "wave_name": "Difficulty Courage",
+      "description": "42-section mental wave engine — Section 8: Difficulty Courage.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 8, House 8, Sun: Difficulty Courage. Courage to face and overcome obstacles and adversity.",
+      "detailed": "Mental wave 'Difficulty Courage' (Section 8): influenced by Sun in House 8. Effect: Courage to face and overcome obstacles and adversity.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_8",
+      "house_8",
+      "sun",
+      "difficulty_courage"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w14",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 9,
+      "house": 9,
+      "planet": "Saturn",
+      "wave_name": "Revengefulness",
+      "description": "42-section mental wave engine — Section 9: Revengefulness.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 9, House 9, Saturn: Revengefulness. If unable to take revenge personally, the native teaches their child to take revenge before death.",
+      "detailed": "Mental wave 'Revengefulness' (Section 9): influenced by Saturn in House 9. Effect: If unable to take revenge personally, the native teaches their child to take revenge before death.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_9",
+      "house_9",
+      "saturn",
+      "revengefulness"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w15",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 10,
+      "house": 3,
+      "planet": "Mercury",
+      "wave_name": "Taste Strength",
+      "description": "42-section mental wave engine — Section 10: Taste Strength.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 10, House 3, Mercury: Taste Strength. Strong digestive capacity and hearty appetite; epicurean sensibility.",
+      "detailed": "Mental wave 'Taste Strength' (Section 10): influenced by Mercury in House 3. Effect: Strong digestive capacity and hearty appetite; epicurean sensibility.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_10",
+      "house_3",
+      "mercury",
+      "taste_strength"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w16",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 11,
+      "house": 11,
+      "planet": "Saturn",
+      "wave_name": "Wealth Amassing",
+      "description": "42-section mental wave engine — Section 11: Wealth Amassing.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 11, House 11, Saturn: Wealth Amassing. Persistent engagement in accumulating wealth; may shade into compulsive hoarding or theft.",
+      "detailed": "Mental wave 'Wealth Amassing' (Section 11): influenced by Saturn in House 11. Effect: Persistent engagement in accumulating wealth; may shade into compulsive hoarding or theft.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_11",
+      "house_11",
+      "saturn",
+      "wealth_amassing"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w17",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 12,
+      "house": 12,
+      "planet": "Rahu",
+      "wave_name": "Secrecy",
+      "description": "42-section mental wave engine — Section 12: Secrecy.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 12, House 12, Rahu: Secrecy. Tendency to swindle and maintain extreme secrecy about activities and intentions.",
+      "detailed": "Mental wave 'Secrecy' (Section 12): influenced by Rahu in House 12. Effect: Tendency to swindle and maintain extreme secrecy about activities and intentions.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_12",
+      "house_12",
+      "rahu",
+      "secrecy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w18",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 13,
+      "house": 10,
+      "planet": "Saturn",
+      "wave_name": "Ingenuity",
+      "description": "42-section mental wave engine — Section 13: Ingenuity.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 13, House 10, Saturn: Ingenuity. Accomplishes tasks by accurately guessing future timing and circumstances.",
+      "detailed": "Mental wave 'Ingenuity' (Section 13): influenced by Saturn in House 10. Effect: Accomplishes tasks by accurately guessing future timing and circumstances.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_13",
+      "house_10",
+      "saturn",
+      "ingenuity"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w19",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 14,
+      "house": 8,
+      "planet": "Mars Malefic",
+      "wave_name": "Egotist",
+      "description": "42-section mental wave engine — Section 14: Egotist.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 14, House 8, Mars Malefic: Egotist. Considers everyone else trivial or inconsequential; inflated sense of own importance.",
+      "detailed": "Mental wave 'Egotist' (Section 14): influenced by Mars Malefic in House 8. Effect: Considers everyone else trivial or inconsequential; inflated sense of own importance.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_14",
+      "house_8",
+      "mars_malefic",
+      "egotist"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w20",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 15,
+      "house": 5,
+      "planet": "Jupiter",
+      "wave_name": "Self-Pride",
+      "description": "42-section mental wave engine — Section 15: Self-Pride.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 15, House 5, Jupiter: Self-Pride. Never dishonours others to preserve personal honour; dignified self-respect.",
+      "detailed": "Mental wave 'Self-Pride' (Section 15): influenced by Jupiter in House 5. Effect: Never dishonours others to preserve personal honour; dignified self-respect.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_15",
+      "house_5",
+      "jupiter",
+      "self-pride"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w21",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 16,
+      "house": 6,
+      "planet": "Ketu",
+      "wave_name": "Patience",
+      "description": "42-section mental wave engine — Section 16: Patience.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 16, House 6, Ketu: Patience. Dedicated and persistent regardless of profit or loss; equanimous under pressure.",
+      "detailed": "Mental wave 'Patience' (Section 16): influenced by Ketu in House 6. Effect: Dedicated and persistent regardless of profit or loss; equanimous under pressure.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_16",
+      "house_6",
+      "ketu",
+      "patience"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w22",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 17,
+      "house": 3,
+      "planet": "Mars",
+      "wave_name": "Judicious",
+      "description": "42-section mental wave engine — Section 17: Judicious.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 17, House 3, Mars: Judicious. Cannot tolerate cruelty; sincerely wishes well for all people.",
+      "detailed": "Mental wave 'Judicious' (Section 17): influenced by Mars in House 3. Effect: Cannot tolerate cruelty; sincerely wishes well for all people.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_17",
+      "house_3",
+      "mars",
+      "judicious"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w23",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 18,
+      "house": 6,
+      "planet": "Mercury",
+      "wave_name": "Optimism",
+      "description": "42-section mental wave engine — Section 18: Optimism.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 18, House 6, Mercury: Optimism. Maintains hope of a good future even in adverse circumstances.",
+      "detailed": "Mental wave 'Optimism' (Section 18): influenced by Mercury in House 6. Effect: Maintains hope of a good future even in adverse circumstances.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_18",
+      "house_6",
+      "mercury",
+      "optimism"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w24",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 18,
+      "house": 6,
+      "planet": "Ketu",
+      "wave_name": "Future Faith",
+      "description": "42-section mental wave engine — Section 18: Future Faith.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 18, House 6, Ketu: Future Faith. Strong, unshakeable belief in a bright future ahead.",
+      "detailed": "Mental wave 'Future Faith' (Section 18): influenced by Ketu in House 6. Effect: Strong, unshakeable belief in a bright future ahead.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_18",
+      "house_6",
+      "ketu",
+      "future_faith"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w25",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 19,
+      "house": 9,
+      "planet": "Jupiter",
+      "wave_name": "Religious Power",
+      "description": "42-section mental wave engine — Section 19: Religious Power.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 19, House 9, Jupiter: Religious Power. God-fearing with supreme self-confidence; strong spiritual conviction.",
+      "detailed": "Mental wave 'Religious Power' (Section 19): influenced by Jupiter in House 9. Effect: God-fearing with supreme self-confidence; strong spiritual conviction.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_19",
+      "house_9",
+      "jupiter",
+      "religious_power"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w26",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 20,
+      "house": 5,
+      "planet": "Sun",
+      "wave_name": "Generosity",
+      "description": "42-section mental wave engine — Section 20: Generosity.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 20, House 5, Sun: Generosity. Respects others and fulfils duty; quietly generous and honourable.",
+      "detailed": "Mental wave 'Generosity' (Section 20): influenced by Sun in House 5. Effect: Respects others and fulfils duty; quietly generous and honourable.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_20",
+      "house_5",
+      "sun",
+      "generosity"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w27",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 21,
+      "house": 4,
+      "planet": "Moon",
+      "wave_name": "Sympathy",
+      "description": "42-section mental wave engine — Section 21: Sympathy.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 21, House 4, Moon: Sympathy. Deep empathy for others. Particularly high in wide/high-forehead natives.",
+      "detailed": "Mental wave 'Sympathy' (Section 21): influenced by Moon in House 4. Effect: Deep empathy for others. Particularly high in wide/high-forehead natives.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_21",
+      "house_4",
+      "moon",
+      "sympathy"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w28",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 22,
+      "house": 5,
+      "planet": "Jupiter",
+      "wave_name": "Intelligence",
+      "description": "42-section mental wave engine — Section 22: Intelligence.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 22, House 5, Jupiter: Intelligence. Acts according to own mind rather than following others. Strong in wide/raised-forehead natives.",
+      "detailed": "Mental wave 'Intelligence' (Section 22): influenced by Jupiter in House 5. Effect: Acts according to own mind rather than following others. Strong in wide/raised-forehead natives.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_22",
+      "house_5",
+      "jupiter",
+      "intelligence"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w29",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 23,
+      "house": 6,
+      "planet": "Ketu",
+      "wave_name": "Beauty Appreciation",
+      "description": "42-section mental wave engine — Section 23: Beauty Appreciation.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 23, House 6, Ketu: Beauty Appreciation. Appreciates beauty intensely; strongly desires a beautiful spouse.",
+      "detailed": "Mental wave 'Beauty Appreciation' (Section 23): influenced by Ketu in House 6. Effect: Appreciates beauty intensely; strongly desires a beautiful spouse.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_23",
+      "house_6",
+      "ketu",
+      "beauty_appreciation"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w30",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 24,
+      "house": 7,
+      "planet": "Mercury",
+      "wave_name": "Hopefulness",
+      "description": "42-section mental wave engine — Section 24: Hopefulness.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 24, House 7, Mercury: Hopefulness. Wishes to remain ahead in prosperity and opulence; forward-looking optimism.",
+      "detailed": "Mental wave 'Hopefulness' (Section 24): influenced by Mercury in House 7. Effect: Wishes to remain ahead in prosperity and opulence; forward-looking optimism.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_24",
+      "house_7",
+      "mercury",
+      "hopefulness"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w31",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 25,
+      "house": 8,
+      "planet": "Evil Planet",
+      "wave_name": "Imitator",
+      "description": "42-section mental wave engine — Section 25: Imitator.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 25, House 8, Evil Planet: Imitator. Wonderful capacity to imitate others; belligerent when crossed.",
+      "detailed": "Mental wave 'Imitator' (Section 25): influenced by Evil Planet in House 8. Effect: Wonderful capacity to imitate others; belligerent when crossed.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_25",
+      "house_8",
+      "evil_planet",
+      "imitator"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w32",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 26,
+      "house": 9,
+      "planet": "Jupiter",
+      "wave_name": "Humour",
+      "description": "42-section mental wave engine — Section 26: Humour.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 26, House 9, Jupiter: Humour. Affable and jovial; spreads warmth through humour.",
+      "detailed": "Mental wave 'Humour' (Section 26): influenced by Jupiter in House 9. Effect: Affable and jovial; spreads warmth through humour.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_26",
+      "house_9",
+      "jupiter",
+      "humour"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w33",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 26,
+      "house": 9,
+      "planet": "Mercury",
+      "wave_name": "Excess Humour",
+      "description": "42-section mental wave engine — Section 26: Excess Humour.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 26, House 9, Mercury: Excess Humour. Humour that tips into foolishness; wit without wisdom.",
+      "detailed": "Mental wave 'Excess Humour' (Section 26): influenced by Mercury in House 9. Effect: Humour that tips into foolishness; wit without wisdom.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_26",
+      "house_9",
+      "mercury",
+      "excess_humour"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w34",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 27,
+      "house": 3,
+      "planet": "Mars",
+      "wave_name": "Mental Strength",
+      "description": "42-section mental wave engine — Section 27: Mental Strength.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 27, House 3, Mars: Mental Strength. Knows the underlying truth behind every situation and person.",
+      "detailed": "Mental wave 'Mental Strength' (Section 27): influenced by Mars in House 3. Effect: Knows the underlying truth behind every situation and person.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_27",
+      "house_3",
+      "mars",
+      "mental_strength"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w35",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 28,
+      "house": 4,
+      "planet": "Moon",
+      "wave_name": "Memory",
+      "description": "42-section mental wave engine — Section 28: Memory.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 28, House 4, Moon: Memory. Exceptional ability to remember very old and distant details.",
+      "detailed": "Mental wave 'Memory' (Section 28): influenced by Moon in House 4. Effect: Exceptional ability to remember very old and distant details.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_28",
+      "house_4",
+      "moon",
+      "memory"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w36",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 29,
+      "house": 5,
+      "planet": "Sun",
+      "wave_name": "Survival Strength",
+      "description": "42-section mental wave engine — Section 29: Survival Strength.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 29, House 5, Sun: Survival Strength. Capacity to take on and complete extremely difficult tasks.",
+      "detailed": "Mental wave 'Survival Strength' (Section 29): influenced by Sun in House 5. Effect: Capacity to take on and complete extremely difficult tasks.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_29",
+      "house_5",
+      "sun",
+      "survival_strength"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w37",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 30,
+      "house": 6,
+      "planet": "Ketu",
+      "wave_name": "Penetration",
+      "description": "42-section mental wave engine — Section 30: Penetration.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 30, House 6, Ketu: Penetration. Recognises the true nature and character of every person encountered.",
+      "detailed": "Mental wave 'Penetration' (Section 30): influenced by Ketu in House 6. Effect: Recognises the true nature and character of every person encountered.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_30",
+      "house_6",
+      "ketu",
+      "penetration"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w38",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 31,
+      "house": 7,
+      "planet": "Venus",
+      "wave_name": "Object Recognition",
+      "description": "42-section mental wave engine — Section 31: Object Recognition.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 31, House 7, Venus: Object Recognition. Discerning perception of colour, face, and character of people and objects.",
+      "detailed": "Mental wave 'Object Recognition' (Section 31): influenced by Venus in House 7. Effect: Discerning perception of colour, face, and character of people and objects.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_31",
+      "house_7",
+      "venus",
+      "object_recognition"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w39",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 32,
+      "house": 8,
+      "planet": "Saturn",
+      "wave_name": "Cleanliness",
+      "description": "42-section mental wave engine — Section 32: Cleanliness.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 32, House 8, Saturn: Cleanliness. Highly organised external life; may mask inner cunning.",
+      "detailed": "Mental wave 'Cleanliness' (Section 32): influenced by Saturn in House 8. Effect: Highly organised external life; may mask inner cunning.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_32",
+      "house_8",
+      "saturn",
+      "cleanliness"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w40",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 33,
+      "house": 9,
+      "planet": "Mercury",
+      "wave_name": "Judgement Strength",
+      "description": "42-section mental wave engine — Section 33: Judgement Strength.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 33, House 9, Mercury: Judgement Strength. Balanced judgement between heart and mind; wise discernment.",
+      "detailed": "Mental wave 'Judgement Strength' (Section 33): influenced by Mercury in House 9. Effect: Balanced judgement between heart and mind; wise discernment.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_33",
+      "house_9",
+      "mercury",
+      "judgement_strength"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w41",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 34,
+      "house": 10,
+      "planet": "Mars Malefic",
+      "wave_name": "Memory Power",
+      "description": "42-section mental wave engine — Section 34: Memory Power.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 34, House 10, Mars Malefic: Memory Power. Exceptional memory; becomes a consummate cheat if Saturn is also malefic in House 10.",
+      "detailed": "Mental wave 'Memory Power' (Section 34): influenced by Mars Malefic in House 10. Effect: Exceptional memory; becomes a consummate cheat if Saturn is also malefic in House 10.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_34",
+      "house_10",
+      "mars_malefic",
+      "memory_power"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w42",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 35,
+      "house": 11,
+      "planet": "Jupiter",
+      "wave_name": "Old Memory",
+      "description": "42-section mental wave engine — Section 35: Old Memory.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 35, House 11, Jupiter: Old Memory. Focus on historical and political events; long-term pattern recognition.",
+      "detailed": "Mental wave 'Old Memory' (Section 35): influenced by Jupiter in House 11. Effect: Focus on historical and political events; long-term pattern recognition.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_35",
+      "house_11",
+      "jupiter",
+      "old_memory"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w43",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 36,
+      "house": 12,
+      "planet": "Rahu",
+      "wave_name": "Guessing Situation",
+      "description": "42-section mental wave engine — Section 36: Guessing Situation.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 36, House 12, Rahu: Guessing Situation. Ability to deduce the present situation accurately by analysing the past.",
+      "detailed": "Mental wave 'Guessing Situation' (Section 36): influenced by Rahu in House 12. Effect: Ability to deduce the present situation accurately by analysing the past.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_36",
+      "house_12",
+      "rahu",
+      "guessing_situation"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w44",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 37,
+      "house": 1,
+      "planet": "Saturn",
+      "wave_name": "Musical Note",
+      "description": "42-section mental wave engine — Section 37: Musical Note.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 37, House 1, Saturn: Musical Note. Natural understanding of musical notes and rhythmic patterns.",
+      "detailed": "Mental wave 'Musical Note' (Section 37): influenced by Saturn in House 1. Effect: Natural understanding of musical notes and rhythmic patterns.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_37",
+      "house_1",
+      "saturn",
+      "musical_note"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w45",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 38,
+      "house": 2,
+      "planet": "Jupiter",
+      "wave_name": "Language Knowledge",
+      "description": "42-section mental wave engine — Section 38: Language Knowledge.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 38, House 2, Jupiter: Language Knowledge. Ability to learn and discover languages with relative ease.",
+      "detailed": "Mental wave 'Language Knowledge' (Section 38): influenced by Jupiter in House 2. Effect: Ability to learn and discover languages with relative ease.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_38",
+      "house_2",
+      "jupiter",
+      "language_knowledge"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w46",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 39,
+      "house": 3,
+      "planet": "Mars",
+      "wave_name": "Search Tendency",
+      "description": "42-section mental wave engine — Section 39: Search Tendency.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 39, House 3, Mars: Search Tendency. Driven to discover the underlying reason and cause behind everything.",
+      "detailed": "Mental wave 'Search Tendency' (Section 39): influenced by Mars in House 3. Effect: Driven to discover the underlying reason and cause behind everything.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_39",
+      "house_3",
+      "mars",
+      "search_tendency"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w47",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 40,
+      "house": 4,
+      "planet": "Moon",
+      "wave_name": "Comparison Centre",
+      "description": "42-section mental wave engine — Section 40: Comparison Centre.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 40, House 4, Moon: Comparison Centre. Highly skilled at assessing genuineness and authenticity of people and objects.",
+      "detailed": "Mental wave 'Comparison Centre' (Section 40): influenced by Moon in House 4. Effect: Highly skilled at assessing genuineness and authenticity of people and objects.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_40",
+      "house_4",
+      "moon",
+      "comparison_centre"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w48",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 41,
+      "house": 5,
+      "planet": "Sun",
+      "wave_name": "Virtue",
+      "description": "42-section mental wave engine — Section 41: Virtue.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 41, House 5, Sun: Virtue. Gentle and beneficent by nature; innately ethical.",
+      "detailed": "Mental wave 'Virtue' (Section 41): influenced by Sun in House 5. Effect: Gentle and beneficent by nature; innately ethical.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_41",
+      "house_5",
+      "sun",
+      "virtue"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-wave-w49",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-v2-decode + pdf-json-extract",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mental_wave_engine",
+      "section": 42,
+      "house": 6,
+      "planet": "Mercury",
+      "wave_name": "Beneficence",
+      "description": "42-section mental wave engine — Section 42: Beneficence.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      }
+    },
+    "interpretation": {
+      "summary": "Section 42, House 6, Mercury: Beneficence. Pleases everyone; behaves tit-for-tat with fairness and reciprocity.",
+      "detailed": "Mental wave 'Beneficence' (Section 42): influenced by Mercury in House 6. Effect: Pleases everyone; behaves tit-for-tat with fairness and reciprocity.",
+      "life_domains": [
+        "psychology",
+        "character",
+        "mind"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "mental_wave",
+      "42_sections",
+      "section_42",
+      "house_6",
+      "mercury",
+      "beneficence"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-invis-sun",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-pdf-json-extract — invisible planets section absent from V2 decode; hard-coded directly from PDF JSON page 4-5.",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "invisible_planet",
+      "planet": "Sun",
+      "inauspicious_houses": [
+        6,
+        7,
+        10
+      ],
+      "description": "Sun invisible/inauspicious in houses 6/7/10 — remedial trial (totaka) required.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planet": "Sun"
+      }
+    },
+    "interpretation": {
+      "summary": "Sun invisible in houses 6/7/10. Totaka remedy: Immerse jaggery in running water.",
+      "detailed": "When Sun occupies inauspicious houses (6th, 7th, or 10th), the planet becomes invisible/weakened. Remedial trial: immerse jaggery (Sun's sweet) in running water to dissolve the obstruction and restore Sun's positive energy flow.",
+      "remedies": [
+        {
+          "text": "Immerse jaggery in running water.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "remedies",
+        "planetary_pacification"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "invisible_planet",
+      "totaka",
+      "remedial_trial",
+      "sun",
+      "houses_6_7_10"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-invis-moon",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-pdf-json-extract — invisible planets section absent from V2 decode; hard-coded directly from PDF JSON page 4-5.",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "invisible_planet",
+      "planet": "Moon",
+      "inauspicious_houses": [
+        6,
+        8,
+        10,
+        11,
+        12
+      ],
+      "description": "Moon invisible/inauspicious in houses 6/8/10/11/12 — remedial trial (totaka) required.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planet": "Moon"
+      }
+    },
+    "interpretation": {
+      "summary": "Moon invisible in houses 6/8/10/11/12. Totaka remedy: Keep a pot of water at the headpost of the bed; irrigate a keekar tree every morning.",
+      "detailed": "Moon invisible in houses 6, 8, 10, 11, 12. Dual trial: water at headpost maintains lunar nourishment during sleep; irrigating the keekar tree (associated with Moon) establishes a daily ritual of lunar reconnection.",
+      "remedies": [
+        {
+          "text": "Keep a pot of water at the headpost of the bed; irrigate a keekar tree every morning.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "remedies",
+        "planetary_pacification"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "invisible_planet",
+      "totaka",
+      "remedial_trial",
+      "moon",
+      "houses_6_8_10_11_12"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-invis-mars",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-pdf-json-extract — invisible planets section absent from V2 decode; hard-coded directly from PDF JSON page 4-5.",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "invisible_planet",
+      "planet": "Mars",
+      "inauspicious_houses": [
+        4,
+        8
+      ],
+      "description": "Mars invisible/inauspicious in houses 4/8 — remedial trial (totaka) required.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planet": "Mars"
+      }
+    },
+    "interpretation": {
+      "summary": "Mars invisible in houses 4/8. Totaka remedy: Immerse rewari (sesame-jaggery sweet) in running water.",
+      "detailed": "Mars invisible in 4th (home/mother) or 8th (death/transformation). Rewari combines sesame (Ketu/Mars-associated) with jaggery (Sun) — immersion in running water clears the obstacle created by Mars's difficult placement.",
+      "remedies": [
+        {
+          "text": "Immerse rewari (sesame-jaggery sweet) in running water.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "remedies",
+        "planetary_pacification"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "invisible_planet",
+      "totaka",
+      "remedial_trial",
+      "mars",
+      "houses_4_8"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-invis-mercury",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-pdf-json-extract — invisible planets section absent from V2 decode; hard-coded directly from PDF JSON page 4-5.",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "invisible_planet",
+      "planet": "Mercury",
+      "inauspicious_houses": [
+        3,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "description": "Mercury invisible/inauspicious in houses 3/8/9/10/11/12 — remedial trial (totaka) required.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planet": "Mercury"
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury invisible in houses 3/8/9/10/11/12. Totaka remedy: Take a copper coin with a hole; immerse in running water.",
+      "detailed": "Mercury invisible in houses 3, 8, 9, 10, 11, 12. Copper (Sun's metal, which Mercury orbits closely) with a hole (representing Mercury's quicksilver nature) — immersed in running water to dissolve the communication/intellect blockage.",
+      "remedies": [
+        {
+          "text": "Take a copper coin with a hole; immerse in running water.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "remedies",
+        "planetary_pacification"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "invisible_planet",
+      "totaka",
+      "remedial_trial",
+      "mercury",
+      "houses_3_8_9_10_11_12"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-invis-jupiter",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-pdf-json-extract — invisible planets section absent from V2 decode; hard-coded directly from PDF JSON page 4-5.",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "invisible_planet",
+      "planet": "Jupiter",
+      "inauspicious_houses": [
+        2,
+        4,
+        5,
+        7
+      ],
+      "description": "Jupiter invisible/inauspicious in houses 2/4/5/7 — remedial trial (totaka) required.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planet": "Jupiter"
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter invisible in houses 2/4/5/7. Totaka remedy: Apply saffron on the navel; or eat/drink saffron.",
+      "detailed": "Jupiter invisible in 2nd, 4th, 5th, 7th. Saffron is Jupiter's primary substance. Application on the navel (body's centre/solar plexus) or internal consumption reinstates Jupiter's wisdom and expansion energy directly into the body.",
+      "remedies": [
+        {
+          "text": "Apply saffron on the navel; or eat/drink saffron.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "remedies",
+        "planetary_pacification"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "invisible_planet",
+      "totaka",
+      "remedial_trial",
+      "jupiter",
+      "houses_2_4_5_7"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-invis-venus",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-pdf-json-extract — invisible planets section absent from V2 decode; hard-coded directly from PDF JSON page 4-5.",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "invisible_planet",
+      "planet": "Venus",
+      "inauspicious_houses": [
+        1,
+        6,
+        9
+      ],
+      "description": "Venus invisible/inauspicious in houses 1/6/9 — remedial trial (totaka) required.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planet": "Venus"
+      }
+    },
+    "interpretation": {
+      "summary": "Venus invisible in houses 1/6/9. Totaka remedy: Donate a chari (cow-feed utensil) at a cowshed.",
+      "detailed": "Venus invisible in 1st, 6th, 9th. Venus governs cows and fertility. Donating a chari (the vessel that feeds cows) at a cowshed directly activates Venus's nourishment-giving quality and restores its positive influence.",
+      "remedies": [
+        {
+          "text": "Donate a chari (cow-feed utensil) at a cowshed.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "remedies",
+        "planetary_pacification"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "invisible_planet",
+      "totaka",
+      "remedial_trial",
+      "venus",
+      "houses_1_6_9"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-invis-saturn",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-pdf-json-extract — invisible planets section absent from V2 decode; hard-coded directly from PDF JSON page 4-5.",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "invisible_planet",
+      "planet": "Saturn",
+      "inauspicious_houses": [
+        1,
+        4,
+        5,
+        6
+      ],
+      "description": "Saturn invisible/inauspicious in houses 1/4/5/6 — remedial trial (totaka) required.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planet": "Saturn"
+      }
+    },
+    "interpretation": {
+      "summary": "Saturn invisible in houses 1/4/5/6. Totaka remedy: Donate oil after seeing your own image reflected in it.",
+      "detailed": "Saturn invisible in 1st, 4th, 5th, 6th. Oil (Saturn's primary substance) — the act of seeing one's own reflection in the oil before donating it is a Saturn-specific ritual acknowledgement of karma and self-awareness before releasing the offering.",
+      "remedies": [
+        {
+          "text": "Donate oil after seeing your own image reflected in it.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "remedies",
+        "planetary_pacification"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "invisible_planet",
+      "totaka",
+      "remedial_trial",
+      "saturn",
+      "houses_1_4_5_6"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-invis-rahu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-pdf-json-extract — invisible planets section absent from V2 decode; hard-coded directly from PDF JSON page 4-5.",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "invisible_planet",
+      "planet": "Rahu",
+      "inauspicious_houses": [
+        1,
+        2,
+        5,
+        7,
+        8,
+        10,
+        11,
+        12
+      ],
+      "description": "Rahu invisible/inauspicious in houses 1/2/5/7/8/10/11/12 — remedial trial (totaka) required.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planet": "Rahu"
+      }
+    },
+    "interpretation": {
+      "summary": "Rahu invisible in houses 1/2/5/7/8/10/11/12. Totaka remedy: Donate radish; immerse coal in running water.",
+      "detailed": "Rahu invisible across 8 houses (1, 2, 5, 7, 8, 10, 11, 12). Dual trial: radish (Rahu's vegetable) is donated; coal (dark material associated with Rahu/Saturn) is immersed in running water to dissolve the shadow planet's obstructive energy.",
+      "remedies": [
+        {
+          "text": "Donate radish; immerse coal in running water.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "remedies",
+        "planetary_pacification"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "invisible_planet",
+      "totaka",
+      "remedial_trial",
+      "rahu",
+      "houses_1_2_5_7_8_10_11_12"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch27-invis-ketu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 27,
+      "chapter_name": "Lords of Planets, Parts of Body and Objects",
+      "batch_id": "lalkitab-ch27-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch27-pdf-json-extract — invisible planets section absent from V2 decode; hard-coded directly from PDF JSON page 4-5.",
+      "created_at": "2026-04-26T22:22:11.497741+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode reviewed against source PDF."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "invisible_planet",
+      "planet": "Ketu",
+      "inauspicious_houses": [
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "description": "Ketu invisible/inauspicious in houses 3/4/5/6/8 — remedial trial (totaka) required.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planet": "Ketu"
+      }
+    },
+    "interpretation": {
+      "summary": "Ketu invisible in houses 3/4/5/6/8. Totaka remedy: Offer bread to dogs.",
+      "detailed": "Ketu invisible in 3rd, 4th, 5th, 6th, 8th. Dogs are Ketu's primary animal. Offering bread (nourishment) to dogs directly appeases Ketu's karmic energy and neutralises its inauspicious placement in these houses.",
+      "remedies": [
+        {
+          "text": "Offer bread to dogs.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "remedies",
+        "planetary_pacification"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "invisible_planet",
+      "totaka",
+      "remedial_trial",
+      "ketu",
+      "houses_3_4_5_6_8"
+    ]
+  }
+]

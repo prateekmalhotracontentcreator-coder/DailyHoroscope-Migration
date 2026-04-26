@@ -2216,3 +2216,59 @@ Notebook LM intermediate decode had "Second house" (H2) for one column — confi
 Unlike Ch 19 (lookup table: Ascendant × Mars House → Remedies), Ch 20 is a **multi-system diagnostic engine** with 7 interlocking layers: aspect/affliction logic, Kaal Purush anatomy mapping, diagnostic priority sequence (H3→H8→H5→H11→H4), planetary disease library, nail diagnosis, symptom/remedy rules, and debilitation gate rules. The chapter cannot be reduced to a simple table — it requires the full rule set to function.
 
 ---
+
+## Lal Kitab Ch 27 — Lords of Planets, Parts of Body and Objects (27 Apr 2026)
+
+**Batch ID:** `lalkitab-ch27-v1-20260427`
+**Script:** `backend/scripts/ingest_lalkitab_ch27_v1.py`
+**JSON:** `backend/scripts/lalkitab_ch27_rules.json`
+**Rules:** 99 total across 6 groups
+
+**Source:** Lal Kitab Ch 27 original PDF + Notebook LM V2 decode (reviewed).
+Invisible planets section (IP rules) hard-coded directly from PDF JSON extract — absent from V2.
+
+### Rule Groups
+
+| Group | Count | Rule ID prefix | Description |
+|---|---|---|---|
+| Correspondence | 10 | `lalkitab-ch27-corr-{planet}` | Planetary lords, colours, gems, animals, body parts, objects |
+| Affliction/Remedy | 9 | `lalkitab-ch27-rem-{planet}` | Per-planet symptoms + worship/donation/totaka remedies |
+| Prohibition | 10 | `lalkitab-ch27-proh-{01-10}` | Conditional prohibited donation rules |
+| Transfer | 12 | `lalkitab-ch27-transfer-h{01-12}` | Planet object placement by house |
+| Mental Wave | 49 | `lalkitab-ch27-wave-{w01-w49}` | 42-section mind engine (49 units) |
+| Invisible Planets | 9 | `lalkitab-ch27-invis-{planet}` | Totaka trials for inauspicious house placements |
+
+### Validation (pending — run after upload)
+```
+python3 scripts/validate_rules.py \
+  --mongo-url "$MONGO_URL" --db-name horoscope_db \
+  --batch-id lalkitab-ch27-v1-20260427
+```
+
+### Schema decisions
+
+1. **Mars Benefic Objects (C3) left empty:** Source table column misalignment confirmed — Rice/Milk/Silver belong to Moon (cross-confirmed from Section 3 / donation table). Mars Benefic correct objects unknown. Field set to `[]` with `metadata.needs_review: true` and `metadata.data_quality_note`.
+
+2. **Invisible planets hard-coded:** The "Invisible Planets and Remedial Trials (totaka)" section (9 rules) was entirely absent from V2 decode. Data recovered directly from PDF JSON extract (pages 4-5) and hard-coded. Source note: `lalkitab-ch27-pdf-json-extract`.
+
+3. **Mental wave condition sub_type:** `"sub_type": "mental_wave_engine"` — new sub_type (first use). Captures section number, house, planet, wave_name, and optional age_window as structured fields.
+
+4. **Transfer protocol sub_type:** `"sub_type": "transfer_protocol"` — maps planet's house position to physical placement action for its associated objects.
+
+5. **Correspondence sub_type:** `"sub_type": "correspondence_table"` — stores full planetary significator data (lord, colour, gem/metal, animal, body_parts, objects) as structured `correspondence` dict inside `interpretation`.
+
+6. **V2 decode quality:** Strong improvement from V1. All 49 mental wave units present; all 12 transfer placements; all 10 prohibition rules. Two critical gaps in V2 resolved via Option B (hard-code): Mars C3 objects and invisible planets section.
+
+### What makes Ch 27 architecturally unique
+
+Ch 27 is a **multi-system reference chapter** with 6 distinct engines operating in parallel:
+- **Correspondence table** (C1-C10): Each planet's full significator profile — used for remedy selection and donation logic
+- **Affliction engine** (R): Per-planet disease triggers with layered remedy categories (mantra/offering/ritual/gem)
+- **Prohibition engine** (P): Conditional rules that override standard remedy logic — must be checked before any donation/construction action
+- **Transfer protocol** (H): Maps planet-in-house to physical placement action — the operative mechanism for remedy execution
+- **Mental wave engine** (W): 42-section × 49-unit psychological profiling system — maps mind sections to houses and planetary rulers
+- **Invisible planet totaka** (IP): Separate remedial trials for planets rendered inactive by inauspicious house placement
+
+The mental wave engine is the most complex section: 49 units spanning sections 1-42 (some sections have two units under different planets), each with house, planet, wave_name, effect text, and optional age window. This is a character profiling engine, not a predictive yoga system.
+
+---
