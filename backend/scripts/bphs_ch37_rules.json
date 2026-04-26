@@ -1,0 +1,1295 @@
+[
+  {
+    "rule_id": "bphs-ch37-001",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl01-kendra",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Moon in Kendra from Sun",
+      "yoga_group": "moon_sun_position",
+      "yoga_group_label": "Moon-Sun Position Yogas",
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_sun_position",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "moon_from_sun_position",
+        "checkable": true,
+        "position_type": "kendra",
+        "houses_from_sun": [
+          1,
+          4,
+          7,
+          10
+        ],
+        "description": "Moon is in angular (kendra) position from the Sun: the Moon's sign is the 1st, 4th, 7th, or 10th sign counted from the Sun's sign. Equivalent to Moon being 0°, 90°, 180°, or 270° ahead of the Sun."
+      }
+    },
+    "interpretation": {
+      "summary": "Moon in Kendra from Sun — One's wealth will be little. The kendra placement of the Moon from the Sun is associated with limited material prosperity, though other chart factors can modify the outcome.",
+      "detailed": "Yoga: Moon in Kendra from Sun [Moon-Sun Position Yogas]\n\nFormation: The Moon is in an angular position (1st, 4th, 7th, or 10th house) from the Sun — the Moon's sign is a kendra from the Sun's sign.\n\nEffect: One's wealth will be little. The kendra placement of the Moon from the Sun is associated with limited material prosperity, though other chart factors can modify the outcome.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Moon in Kendra from Sun [Moon-Sun Position Yogas]\n\nFormation: The Moon is in an angular position (1st, 4th, 7th, or 10th house) from the Sun — the Moon's sign is a kendra from the Sun's sign.\n\nEffect: One's wealth will be little. The kendra placement of the Moon from the Sun is associated with limited material prosperity, though other chart factors can modify the outcome.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-moon_sun_position",
+        "malefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_sun_position",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.670796+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-002",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl01-panaphara",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Moon in Panaphara from Sun",
+      "yoga_group": "moon_sun_position",
+      "yoga_group_label": "Moon-Sun Position Yogas",
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        5,
+        8,
+        11
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_sun_position",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "moon_from_sun_position",
+        "checkable": true,
+        "position_type": "panaphara",
+        "houses_from_sun": [
+          2,
+          5,
+          8,
+          11
+        ],
+        "description": "Moon is in Panaphara (succedent) position from the Sun: the Moon's sign is the 2nd, 5th, 8th, or 11th from the Sun's sign."
+      }
+    },
+    "interpretation": {
+      "summary": "Moon in Panaphara from Sun — One's intelligence will be meddling (ordinary / moderate). The Panaphara position of the Moon from the Sun indicates average intellectual capacity — neither exceptional nor deficient.",
+      "detailed": "Yoga: Moon in Panaphara from Sun [Moon-Sun Position Yogas]\n\nFormation: The Moon is in Panaphara (succedent position: 2nd, 5th, 8th, or 11th house) from the Sun — the Moon's sign is a Panaphara from the Sun's sign.\n\nEffect: One's intelligence will be meddling (ordinary / moderate). The Panaphara position of the Moon from the Sun indicates average intellectual capacity — neither exceptional nor deficient.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Moon in Panaphara from Sun [Moon-Sun Position Yogas]\n\nFormation: The Moon is in Panaphara (succedent position: 2nd, 5th, 8th, or 11th house) from the Sun — the Moon's sign is a Panaphara from the Sun's sign.\n\nEffect: One's intelligence will be meddling (ordinary / moderate). The Panaphara position of the Moon from the Sun indicates average intellectual capacity — neither exceptional nor deficient.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "intelligence",
+      "life_domains": [
+        "intelligence"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-moon_sun_position",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        5,
+        8,
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_sun_position",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671338+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-003",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl01-apoklima",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Moon in Apoklima from Sun",
+      "yoga_group": "moon_sun_position",
+      "yoga_group_label": "Moon-Sun Position Yogas",
+      "planets_involved": [],
+      "houses_involved": [
+        3,
+        6,
+        9,
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_sun_position",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "moon_from_sun_position",
+        "checkable": true,
+        "position_type": "apoklima",
+        "houses_from_sun": [
+          3,
+          6,
+          9,
+          12
+        ],
+        "description": "Moon is in Apoklima (cadent) position from the Sun: the Moon's sign is the 3rd, 6th, 9th, or 12th from the Sun's sign."
+      }
+    },
+    "interpretation": {
+      "summary": "Moon in Apoklima from Sun — One's skill will be excellent. The Apoklima position of the Moon from the Sun confers exceptional skill, dexterity, and technical mastery in one's chosen field.",
+      "detailed": "Yoga: Moon in Apoklima from Sun [Moon-Sun Position Yogas]\n\nFormation: The Moon is in Apoklima (cadent position: 3rd, 6th, 9th, or 12th house) from the Sun — the Moon's sign is an Apoklima from the Sun's sign.\n\nEffect: One's skill will be excellent. The Apoklima position of the Moon from the Sun confers exceptional skill, dexterity, and technical mastery in one's chosen field.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Moon in Apoklima from Sun [Moon-Sun Position Yogas]\n\nFormation: The Moon is in Apoklima (cadent position: 3rd, 6th, 9th, or 12th house) from the Sun — the Moon's sign is an Apoklima from the Sun's sign.\n\nEffect: One's skill will be excellent. The Apoklima position of the Moon from the Sun confers exceptional skill, dexterity, and technical mastery in one's chosen field.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "intelligence",
+      "life_domains": [
+        "intelligence",
+        "career"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-moon_sun_position",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        3,
+        6,
+        9,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_sun_position",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671347+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-004",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl02-04-day",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Moon Navamsa Yoga (Day Birth)",
+      "yoga_group": "moon_navamsa",
+      "yoga_group_label": "Moon Navamsa Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_navamsa",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Three simultaneous conditions: (1) Day birth — Sun above horizon at birth time, (2) Moon in own or friendly Navamsa in D-9 chart, (3) Jupiter aspects Moon in Rasi chart. Navamsa chart required. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Moon Navamsa Yoga (Day Birth) — One will be endowed with wealth and happiness. Jupiter's aspect on the Moon in a favorable Navamsa amplifies prosperity and contentment for those born during the day.",
+      "detailed": "Yoga: Moon Navamsa Yoga (Day Birth) [Moon Navamsa Yogas]\n\nFormation: Day birth: The Moon is placed in its own Navamsa or in a friendly Navamsa (D-9 chart), and is aspected by Jupiter in the Rasi chart.\n\nEffect: One will be endowed with wealth and happiness. Jupiter's aspect on the Moon in a favorable Navamsa amplifies prosperity and contentment for those born during the day.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Moon Navamsa Yoga (Day Birth) [Moon Navamsa Yogas]\n\nFormation: Day birth: The Moon is placed in its own Navamsa or in a friendly Navamsa (D-9 chart), and is aspected by Jupiter in the Rasi chart.\n\nEffect: One will be endowed with wealth and happiness. Jupiter's aspect on the Moon in a favorable Navamsa amplifies prosperity and contentment for those born during the day.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "happiness"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-moon_navamsa",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_navamsa",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671354+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-005",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl02-04-night",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Moon Navamsa Yoga (Night Birth)",
+      "yoga_group": "moon_navamsa",
+      "yoga_group_label": "Moon Navamsa Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_navamsa",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Three simultaneous conditions: (1) Night birth — Sun below horizon at birth time, (2) Moon in own or friendly Navamsa in D-9 chart, (3) Venus aspects Moon in Rasi chart. Navamsa chart required. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Moon Navamsa Yoga (Night Birth) — One will enjoy similar effects — endowed with wealth and happiness. Venus's aspect on the Moon in a favorable Navamsa confers prosperity and contentment for those born during the night.",
+      "detailed": "Yoga: Moon Navamsa Yoga (Night Birth) [Moon Navamsa Yogas]\n\nFormation: Night birth: The Moon is placed in its own Navamsa or in a friendly Navamsa (D-9 chart), and is aspected by Venus in the Rasi chart.\n\nEffect: One will enjoy similar effects — endowed with wealth and happiness. Venus's aspect on the Moon in a favorable Navamsa confers prosperity and contentment for those born during the night.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Moon Navamsa Yoga (Night Birth) [Moon Navamsa Yogas]\n\nFormation: Night birth: The Moon is placed in its own Navamsa or in a friendly Navamsa (D-9 chart), and is aspected by Venus in the Rasi chart.\n\nEffect: One will enjoy similar effects — endowed with wealth and happiness. Venus's aspect on the Moon in a favorable Navamsa confers prosperity and contentment for those born during the night.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "happiness"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-moon_navamsa",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_navamsa",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671362+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-006",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl02-04-adverse",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Moon Navamsa Adverse",
+      "yoga_group": "moon_navamsa",
+      "yoga_group_label": "Moon Navamsa Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_navamsa",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Moon in enemy or neutral Navamsa (not own or friendly Navamsa) AND aspected by Jupiter (day birth) or Venus (night birth). Navamsa chart required for dignity check. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Moon Navamsa Adverse — The native will have little wealth or even none at all. The auspicious aspect of Jupiter or Venus cannot overcome the Moon's unfavorable Navamsa placement.",
+      "detailed": "Yoga: Moon Navamsa Adverse [Moon Navamsa Yogas]\n\nFormation: Contrary situation: The Moon is NOT in its own Navamsa or a friendly Navamsa (Moon in enemy or neutral Navamsa), yet is aspected by Jupiter (day birth) or Venus (night birth).\n\nEffect: The native will have little wealth or even none at all. The auspicious aspect of Jupiter or Venus cannot overcome the Moon's unfavorable Navamsa placement.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Moon Navamsa Adverse [Moon Navamsa Yogas]\n\nFormation: Contrary situation: The Moon is NOT in its own Navamsa or a friendly Navamsa (Moon in enemy or neutral Navamsa), yet is aspected by Jupiter (day birth) or Venus (night birth).\n\nEffect: The native will have little wealth or even none at all. The auspicious aspect of Jupiter or Venus cannot overcome the Moon's unfavorable Navamsa placement.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-moon_navamsa",
+        "malefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-moon_navamsa",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671369+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-007",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl05-adhi",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Adhi Yoga (from Moon)",
+      "yoga_group": "adhi_yoga",
+      "yoga_group_label": "Adhi Yoga (from Moon)",
+      "planets_involved": [],
+      "houses_involved": [
+        6,
+        7,
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-adhi_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "benefics_in_houses",
+        "checkable": true,
+        "houses": [
+          6,
+          7,
+          8
+        ],
+        "reference": "Moon",
+        "planet_type": "benefic",
+        "description": "Natural benefics (Jupiter, Venus, Mercury) must occupy any of the 6th, 7th, and 8th houses counted from the Moon's sign. Optimal: all three houses occupied by distinct benefics. Cross-ref: Chandradhi Yoga (bphs-ch36-025) — identical formation."
+      }
+    },
+    "interpretation": {
+      "summary": "Adhi Yoga (from Moon) — According to the strength of the participating planets, the native will be either a king, a minister, or an army chief. Stronger benefics in these positions yield higher social rank and authority.",
+      "detailed": "Yoga: Adhi Yoga (from Moon) [Adhi Yoga (from Moon)]\n\nFormation: Natural benefics (Jupiter, Venus, Mercury) occupy the 6th, 7th, and 8th houses counted from the Moon's sign. Reference point is the Moon, not the ascendant. Cross-reference: BPHS Ch 36 Sloka 37 Notes describes the same formation as Chandradhi Yoga (rule bphs-ch36-025) — these are complementary textual sources for the same yoga.\n\nEffect: According to the strength of the participating planets, the native will be either a king, a minister, or an army chief. Stronger benefics in these positions yield higher social rank and authority.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Adhi Yoga (from Moon) [Adhi Yoga (from Moon)]\n\nFormation: Natural benefics (Jupiter, Venus, Mercury) occupy the 6th, 7th, and 8th houses counted from the Moon's sign. Reference point is the Moon, not the ascendant. Cross-reference: BPHS Ch 36 Sloka 37 Notes describes the same formation as Chandradhi Yoga (rule bphs-ch36-025) — these are complementary textual sources for the same yoga.\n\nEffect: According to the strength of the participating planets, the native will be either a king, a minister, or an army chief. Stronger benefics in these positions yield higher social rank and authority.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "leadership",
+        "power"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-adhi_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        6,
+        7,
+        8
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-adhi_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671377+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-008",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl06-dhana-full",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Dhana Yoga — Full (from Moon)",
+      "yoga_group": "dhana_yoga",
+      "yoga_group_label": "Dhana Yoga (from Moon)",
+      "planets_involved": [],
+      "houses_involved": [
+        3,
+        6,
+        10,
+        11
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-dhana_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "benefics_in_houses",
+        "checkable": true,
+        "houses": [
+          3,
+          6,
+          10,
+          11
+        ],
+        "reference": "Moon",
+        "planet_type": "benefic",
+        "minimum_count": 3,
+        "description": "All three natural benefics (Jupiter, Venus, Mercury) must each be placed in one of the Upachaya houses (3, 6, 10, 11) counted from the Moon. All three required for maximum effect."
+      }
+    },
+    "interpretation": {
+      "summary": "Dhana Yoga — Full (from Moon) — One will be very affluent. All three benefics in Upachaya from the Moon produces the greatest material prosperity of the three Dhana yoga variants.",
+      "detailed": "Yoga: Dhana Yoga — Full (from Moon) [Dhana Yoga (from Moon)]\n\nFormation: All three natural benefics (Jupiter, Venus, Mercury) are placed in Upachaya houses (3rd, 6th, 10th, or 11th) counted from the Moon.\n\nEffect: One will be very affluent. All three benefics in Upachaya from the Moon produces the greatest material prosperity of the three Dhana yoga variants.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Dhana Yoga — Full (from Moon) [Dhana Yoga (from Moon)]\n\nFormation: All three natural benefics (Jupiter, Venus, Mercury) are placed in Upachaya houses (3rd, 6th, 10th, or 11th) counted from the Moon.\n\nEffect: One will be very affluent. All three benefics in Upachaya from the Moon produces the greatest material prosperity of the three Dhana yoga variants.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-dhana_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        3,
+        6,
+        10,
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-dhana_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671406+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-009",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl06-dhana-medium",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Dhana Yoga — Medium (from Moon)",
+      "yoga_group": "dhana_yoga",
+      "yoga_group_label": "Dhana Yoga (from Moon)",
+      "planets_involved": [],
+      "houses_involved": [
+        3,
+        6,
+        10,
+        11
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-dhana_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "benefics_in_houses",
+        "checkable": true,
+        "houses": [
+          3,
+          6,
+          10,
+          11
+        ],
+        "reference": "Moon",
+        "planet_type": "benefic",
+        "minimum_count": 2,
+        "maximum_count": 2,
+        "description": "Exactly two natural benefics placed in Upachaya houses (3, 6, 10, 11) from the Moon. Third benefic absent from Upachaya."
+      }
+    },
+    "interpretation": {
+      "summary": "Dhana Yoga — Medium (from Moon) — One will have medium wealth. Two benefics in Upachaya from the Moon give moderate prosperity — lesser than the full Dhana yoga but still materially comfortable.",
+      "detailed": "Yoga: Dhana Yoga — Medium (from Moon) [Dhana Yoga (from Moon)]\n\nFormation: Exactly two of the three natural benefics (Jupiter, Venus, Mercury) are placed in Upachaya houses (3rd, 6th, 10th, or 11th) counted from the Moon.\n\nEffect: One will have medium wealth. Two benefics in Upachaya from the Moon give moderate prosperity — lesser than the full Dhana yoga but still materially comfortable.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Dhana Yoga — Medium (from Moon) [Dhana Yoga (from Moon)]\n\nFormation: Exactly two of the three natural benefics (Jupiter, Venus, Mercury) are placed in Upachaya houses (3rd, 6th, 10th, or 11th) counted from the Moon.\n\nEffect: One will have medium wealth. Two benefics in Upachaya from the Moon give moderate prosperity — lesser than the full Dhana yoga but still materially comfortable.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-dhana_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        3,
+        6,
+        10,
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-dhana_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671414+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-010",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl06-dhana-weak",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Dhana Yoga — Weak (from Moon)",
+      "yoga_group": "dhana_yoga",
+      "yoga_group_label": "Dhana Yoga (from Moon)",
+      "planets_involved": [],
+      "houses_involved": [
+        3,
+        6,
+        10,
+        11
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-dhana_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "benefics_in_houses",
+        "checkable": true,
+        "houses": [
+          3,
+          6,
+          10,
+          11
+        ],
+        "reference": "Moon",
+        "planet_type": "benefic",
+        "minimum_count": 1,
+        "maximum_count": 1,
+        "description": "Only one natural benefic placed in Upachaya houses (3, 6, 10, 11) from the Moon. Weakest form of Dhana yoga."
+      }
+    },
+    "interpretation": {
+      "summary": "Dhana Yoga — Weak (from Moon) — One will have negligible wealth. A single benefic in Upachaya from the Moon gives only minimal material prosperity — the weakest Dhana yoga variant.",
+      "detailed": "Yoga: Dhana Yoga — Weak (from Moon) [Dhana Yoga (from Moon)]\n\nFormation: Only one of the three natural benefics (Jupiter, Venus, Mercury) is placed in Upachaya houses (3rd, 6th, 10th, or 11th) counted from the Moon.\n\nEffect: One will have negligible wealth. A single benefic in Upachaya from the Moon gives only minimal material prosperity — the weakest Dhana yoga variant.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Dhana Yoga — Weak (from Moon) [Dhana Yoga (from Moon)]\n\nFormation: Only one of the three natural benefics (Jupiter, Venus, Mercury) is placed in Upachaya houses (3rd, 6th, 10th, or 11th) counted from the Moon.\n\nEffect: One will have negligible wealth. A single benefic in Upachaya from the Moon gives only minimal material prosperity — the weakest Dhana yoga variant.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-dhana_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        3,
+        6,
+        10,
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-dhana_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671421+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-011",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl07-10-sunapha",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Sunapha Yoga",
+      "yoga_group": "sunapha_group",
+      "yoga_group_label": "Sunapha / Anapha / Duradhara",
+      "planets_involved": [],
+      "houses_involved": [
+        2
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-sunapha_group",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_in_house_from_moon",
+        "checkable": true,
+        "house": 2,
+        "exclude_planets": [
+          "Sun"
+        ],
+        "description": "Any planet except the Sun must occupy the 2nd house counted from the Moon's sign. Mars, Mercury, Jupiter, Venus, Saturn, Rahu, or Ketu in the 2nd from Moon qualifies."
+      }
+    },
+    "interpretation": {
+      "summary": "Sunapha Yoga — One with Sunapha yoga will be a king or equal to a king, endowed with intelligence, wealth, fame, and self-earned wealth.",
+      "detailed": "Yoga: Sunapha Yoga [Sunapha / Anapha / Duradhara]\n\nFormation: A planet other than the Sun occupies the 2nd house from the Moon's sign. Any non-Sun planet (Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) in the 2nd from Moon qualifies.\n\nEffect: One with Sunapha yoga will be a king or equal to a king, endowed with intelligence, wealth, fame, and self-earned wealth.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Sunapha Yoga [Sunapha / Anapha / Duradhara]\n\nFormation: A planet other than the Sun occupies the 2nd house from the Moon's sign. Any non-Sun planet (Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) in the 2nd from Moon qualifies.\n\nEffect: One with Sunapha yoga will be a king or equal to a king, endowed with intelligence, wealth, fame, and self-earned wealth.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "wealth",
+        "fame",
+        "intelligence"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-sunapha_group",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        2
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-sunapha_group",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671429+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-012",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl07-10-anapha",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Anapha Yoga",
+      "yoga_group": "sunapha_group",
+      "yoga_group_label": "Sunapha / Anapha / Duradhara",
+      "planets_involved": [],
+      "houses_involved": [
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-sunapha_group",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_in_house_from_moon",
+        "checkable": true,
+        "house": 12,
+        "exclude_planets": [
+          "Sun"
+        ],
+        "description": "Any planet except the Sun must occupy the 12th house counted from the Moon's sign."
+      }
+    },
+    "interpretation": {
+      "summary": "Anapha Yoga — One born in Anapha yoga will be a king, free from diseases, virtuous, famous, charming, and happy.",
+      "detailed": "Yoga: Anapha Yoga [Sunapha / Anapha / Duradhara]\n\nFormation: A planet other than the Sun occupies the 12th house from the Moon's sign.\n\nEffect: One born in Anapha yoga will be a king, free from diseases, virtuous, famous, charming, and happy.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Anapha Yoga [Sunapha / Anapha / Duradhara]\n\nFormation: A planet other than the Sun occupies the 12th house from the Moon's sign.\n\nEffect: One born in Anapha yoga will be a king, free from diseases, virtuous, famous, charming, and happy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "health",
+        "fame",
+        "character",
+        "happiness"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-sunapha_group",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-sunapha_group",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671435+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-013",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl07-10-duradhara",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Duradhara Yoga",
+      "yoga_group": "sunapha_group",
+      "yoga_group_label": "Sunapha / Anapha / Duradhara",
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-sunapha_group",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_in_house_from_moon",
+        "checkable": true,
+        "houses": [
+          2,
+          12
+        ],
+        "operator": "and",
+        "exclude_planets": [
+          "Sun"
+        ],
+        "description": "Non-Sun planets must occupy BOTH the 2nd AND the 12th house from the Moon simultaneously. Compound of Sunapha + Anapha. Both positions must be filled by non-Sun planets."
+      }
+    },
+    "interpretation": {
+      "summary": "Duradhara Yoga — One born in Duradhara yoga will enjoy pleasures, be charitable, and be endowed with wealth, conveyances, and an excellent serving force.",
+      "detailed": "Yoga: Duradhara Yoga [Sunapha / Anapha / Duradhara]\n\nFormation: Planets other than the Sun occupy BOTH the 2nd and the 12th houses from the Moon simultaneously. This is the combined form of Sunapha (planet in 2nd from Moon) and Anapha (planet in 12th from Moon).\n\nEffect: One born in Duradhara yoga will enjoy pleasures, be charitable, and be endowed with wealth, conveyances, and an excellent serving force.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Duradhara Yoga [Sunapha / Anapha / Duradhara]\n\nFormation: Planets other than the Sun occupy BOTH the 2nd and the 12th houses from the Moon simultaneously. This is the combined form of Sunapha (planet in 2nd from Moon) and Anapha (planet in 12th from Moon).\n\nEffect: One born in Duradhara yoga will enjoy pleasures, be charitable, and be endowed with wealth, conveyances, and an excellent serving force.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "happiness",
+        "character"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-sunapha_group",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-sunapha_group",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671441+00:00"
+  },
+  {
+    "rule_id": "bphs-ch37-014",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 37,
+      "chapter_name": "Lunar Yogas",
+      "sloka": "ch37-sl11-13-kemadruma",
+      "batch_id": "bphs-ch37-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Kemadruma Yoga",
+      "yoga_group": "kemadruma",
+      "yoga_group_label": "Kemadruma Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-kemadruma",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "kemadruma_check",
+        "checkable": true,
+        "description": "Negative / absence check — the yoga forms when ALL three conditions are absent simultaneously: (1) no non-Sun planet conjunct the Moon, (2) no non-Sun planet in the 2nd or 12th from the Moon, (3) no planet (including Sun) in angular houses (1, 4, 7, 10) from the ascendant. Sun is excluded from conditions 1 and 2.",
+        "absent_conditions": [
+          "non_sun_planet_conjunct_moon",
+          "non_sun_planet_in_2nd_or_12th_from_moon",
+          "any_planet_in_angle_from_ascendant"
+        ]
+      }
+    },
+    "interpretation": {
+      "summary": "Kemadruma Yoga — One born in Kemadruma yoga will be very much reproached, bereft of intelligence and learning, and reduced to penury and perils.",
+      "detailed": "Yoga: Kemadruma Yoga [Kemadruma Yoga]\n\nFormation: Excluding the Sun, there is no planet in any of these three positions simultaneously: (1) conjunct the Moon (same sign), (2) in the 2nd or 12th from the Moon, OR (3) in any angular house (1st, 4th, 7th, 10th) from the ascendant. All three absence conditions must hold.\n\nEffect: One born in Kemadruma yoga will be very much reproached, bereft of intelligence and learning, and reduced to penury and perils.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Kemadruma Yoga [Kemadruma Yoga]\n\nFormation: Excluding the Sun, there is no planet in any of these three positions simultaneously: (1) conjunct the Moon (same sign), (2) in the 2nd or 12th from the Moon, OR (3) in any angular house (1st, 4th, 7th, 10th) from the ascendant. All three absence conditions must hold.\n\nEffect: One born in Kemadruma yoga will be very much reproached, bereft of intelligence and learning, and reduced to penury and perils.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "hardship",
+      "life_domains": [
+        "hardship",
+        "poverty",
+        "intelligence"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter37",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch37-kemadruma",
+        "malefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch37-kemadruma",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:55:10.671448+00:00"
+  }
+]
