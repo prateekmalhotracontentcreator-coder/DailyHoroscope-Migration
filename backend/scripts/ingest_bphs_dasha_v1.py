@@ -484,7 +484,7 @@ class SlokaExtractor:
             client = self._get_client()
             response = client.messages.parse(
                 model=self.model,
-                max_tokens=4096,
+                max_tokens=8192,
                 temperature=0,
                 system=[{
                     "type": "text",
@@ -621,6 +621,39 @@ def strip_rtf(raw: str) -> str:
     return '\n'.join(lines)
 
 
+_STANDALONE_HEADING_RE = re.compile(
+    r'^([ \t]*\d+[a-z]?(?:\s*[-\u2013+.]\s*\d+[a-z]?)?[.:\-])[ \t]*$'
+)
+
+
+def _join_standalone_headings(text: str) -> str:
+    """Join Word-exported RTF standalone sloka headings with the following text line.
+
+    Word's RTF export places bold-formatted headings on their own line:
+        1-2.
+        Effects like the gain of wealth...
+    The sloka_re needs both on the same line:
+        1-2. Effects like the gain of wealth...
+    """
+    lines = text.split('\n')
+    result: list[str] = []
+    i = 0
+    while i < len(lines):
+        line = lines[i]
+        if _STANDALONE_HEADING_RE.match(line):
+            # Find the next non-empty line
+            j = i + 1
+            while j < len(lines) and not lines[j].strip():
+                j += 1
+            if j < len(lines) and lines[j].strip() and lines[j].strip()[0].isupper():
+                result.append(line.rstrip() + ' ' + lines[j].strip())
+                i = j + 1
+                continue
+        result.append(line)
+        i += 1
+    return '\n'.join(result)
+
+
 def split_into_sloka_blocks(text: str) -> list[tuple[str, str, int]]:
     """
     Split plain text into (sloka_label, block_text, sloka_start_pos) tuples.
@@ -630,9 +663,14 @@ def split_into_sloka_blocks(text: str) -> list[tuple[str, str, int]]:
       34-39: In order to clarify...       ← colon separator
       78. Now I will describe...
       79-82. Should Venus...
+      1-2.                                ← Word-exported RTF: heading on own line
+      Effects like the gain of wealth...  ← joined by _join_standalone_headings()
     """
     # Normalise OCR artefacts: leading 'l' digit → '1'
     text = re.sub(r'(?m)^\s*l(?=[-\d.])', '1', text)
+
+    # Join Word-exported RTF standalone headings with their following text line
+    text = _join_standalone_headings(text)
 
     # Dasha sloka pattern — accepts . : or - as separator, also handles single numbers
     # [ \t]* (zero or more) to handle "88-89.Similar" (no space after period)
@@ -693,6 +731,7 @@ INTRO_SLOKAS_BY_CHAPTER: dict[int, set[str]] = {
     47: {"1", "2"},
     48: set(),  # Ch 48 sloka 1 has real prediction content
     59: set(),  # Ch 59 sloka 1-2 is Ketu/Ketu antardasha — real prediction content, do not skip
+    60: set(),  # Ch 60 sloka 1-2 is Venus/Venus antardasha — real prediction content, do not skip
 }
 
 SKIP_HEADINGS = {
