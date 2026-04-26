@@ -1,0 +1,3197 @@
+[
+  {
+    "rule_id": "lalkitab-ch20-gp-sign",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "anatomy_mapping",
+      "description": "Kaal Purush sign-to-body-part governance (Lal Kitab Ch 20).",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Kaal Purush sign-to-body-part mapping: affliction of a sign indicates disease of its governed parts.",
+      "detailed": "Aries: head/stomach/brain/eyes. Taurus: mouth/eye/bone/flesh. Gemini: throat/respiratory/shoulder/arms. Cancer: chest/lungs/blood. Leo: back/heart/intestine/kidney. Virgo: upper abdomen/intestine. Libra: waist/liver/breathing/genitals. Scorpio: genital/liver/testicles. Sagittarius: thighs/veins/rectum/buttocks. Capricorn: joints/flesh/knees. Aquarius: knee/bone/flesh/respiratory. Pisces: toes/veins/feet.",
+      "lookup_table": [
+        {
+          "sign": "Aries",
+          "body_parts": [
+            "head",
+            "stomach",
+            "brain",
+            "eyes"
+          ]
+        },
+        {
+          "sign": "Taurus",
+          "body_parts": [
+            "mouth",
+            "eye",
+            "bone",
+            "flesh"
+          ]
+        },
+        {
+          "sign": "Gemini",
+          "body_parts": [
+            "throat",
+            "respiratory tube",
+            "shoulder",
+            "arms"
+          ]
+        },
+        {
+          "sign": "Cancer",
+          "body_parts": [
+            "chest",
+            "lungs",
+            "blood"
+          ]
+        },
+        {
+          "sign": "Leo",
+          "body_parts": [
+            "back",
+            "heart",
+            "intestine",
+            "kidney",
+            "stomach"
+          ]
+        },
+        {
+          "sign": "Virgo",
+          "body_parts": [
+            "upper part of abdomen",
+            "intestine",
+            "bone",
+            "flesh"
+          ]
+        },
+        {
+          "sign": "Libra",
+          "body_parts": [
+            "waist",
+            "liver",
+            "breathing",
+            "genitals"
+          ]
+        },
+        {
+          "sign": "Scorpio",
+          "body_parts": [
+            "genital",
+            "liver",
+            "testicles"
+          ]
+        },
+        {
+          "sign": "Sagittarius",
+          "body_parts": [
+            "thighs",
+            "veins of thighs",
+            "rectum",
+            "buttocks"
+          ]
+        },
+        {
+          "sign": "Capricorn",
+          "body_parts": [
+            "bones at the joint",
+            "flesh",
+            "knees"
+          ]
+        },
+        {
+          "sign": "Aquarius",
+          "body_parts": [
+            "knee",
+            "bone of knee",
+            "flesh",
+            "respiratory system"
+          ]
+        },
+        {
+          "sign": "Pisces",
+          "body_parts": [
+            "toes and its veins",
+            "feet"
+          ]
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "anatomy",
+      "kaal_purush",
+      "sign_mapping",
+      "disease"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-gp-house",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "anatomy_mapping",
+      "description": "Kaal Purush house-to-body-part governance (Lal Kitab Ch 20).",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Kaal Purush house-to-body-part mapping: affliction of a house indicates disease of its governed parts.",
+      "detailed": "H1: mouth/teeth/tongue/forehead. H2: right eye/face. H3: ear/neck/hand/shoulder. H4: stomach/shoulder/chest. H5: upper waist/heart. H6: right leg/genital/kidney. H7: navel/central abdomen/genitals. H8: left leg/genital/testicles. H9: upper waist/buttocks. H10: stomach/shoulder/knees. H11: left hand/ear/neck/lower leg. H12: left eye/sole of feet/feet.",
+      "lookup_table": [
+        {
+          "house": 1,
+          "body_parts": [
+            "mouth",
+            "teeth",
+            "tongue",
+            "forehead",
+            "head"
+          ]
+        },
+        {
+          "house": 2,
+          "body_parts": [
+            "right eye",
+            "face"
+          ]
+        },
+        {
+          "house": 3,
+          "body_parts": [
+            "ear",
+            "neck",
+            "hand",
+            "shoulder",
+            "respiratory tube"
+          ]
+        },
+        {
+          "house": 4,
+          "body_parts": [
+            "stomach",
+            "shoulder",
+            "chest"
+          ]
+        },
+        {
+          "house": 5,
+          "body_parts": [
+            "upper part of waist",
+            "heart"
+          ]
+        },
+        {
+          "house": 6,
+          "body_parts": [
+            "right leg",
+            "genital",
+            "stomach",
+            "kidney",
+            "intestine"
+          ]
+        },
+        {
+          "house": 7,
+          "body_parts": [
+            "navel",
+            "central part of abdomen",
+            "genitals"
+          ]
+        },
+        {
+          "house": 8,
+          "body_parts": [
+            "left leg",
+            "genital",
+            "testicles"
+          ]
+        },
+        {
+          "house": 9,
+          "body_parts": [
+            "upper part of waist",
+            "buttocks"
+          ]
+        },
+        {
+          "house": 10,
+          "body_parts": [
+            "stomach",
+            "shoulder",
+            "knees"
+          ]
+        },
+        {
+          "house": 11,
+          "body_parts": [
+            "left hand",
+            "ear",
+            "neck",
+            "lower leg"
+          ]
+        },
+        {
+          "house": 12,
+          "body_parts": [
+            "left eye",
+            "sole of feet",
+            "feet"
+          ]
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "anatomy",
+      "kaal_purush",
+      "house_mapping",
+      "disease"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-gp-planet",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "anatomy_mapping",
+      "description": "Planetary anatomical governance — conditioning planet logic (Lal Kitab Ch 20, p.170).",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Each planet governs specific anatomical zones. Mars benefic/malefic state determined by conditioning planets (Sun/Mercury vs Sun/Saturn).",
+      "detailed": "Sun: whole body/right side. Moon: heart/left face. Mars Benefic (with Sun/Mercury): liver/upper lip. Mars Malefic (with Sun/Saturn): liver/lower lip. Mercury: brain/neurological/tongue/teeth. Jupiter: neck/nose. Venus: voice/cheeks. Saturn: eyes/eyebrows/hair. Rahu: head/chin/shaking of head. Ketu: torso/spinal cord/knees/toes/ear.",
+      "lookup_table": [
+        {
+          "planet": "Sun",
+          "body_parts": [
+            "whole body",
+            "right part of body"
+          ]
+        },
+        {
+          "planet": "Moon",
+          "body_parts": [
+            "heart",
+            "left part of face"
+          ]
+        },
+        {
+          "planet": "Mars Benefic",
+          "body_parts": [
+            "liver",
+            "upper lip"
+          ]
+        },
+        {
+          "planet": "Mars Malefic",
+          "body_parts": [
+            "liver",
+            "lower lip"
+          ]
+        },
+        {
+          "planet": "Mercury",
+          "body_parts": [
+            "brain",
+            "neurological system",
+            "tongue",
+            "teeth"
+          ]
+        },
+        {
+          "planet": "Jupiter",
+          "body_parts": [
+            "neck",
+            "nose"
+          ]
+        },
+        {
+          "planet": "Venus",
+          "body_parts": [
+            "voice system",
+            "cheeks"
+          ]
+        },
+        {
+          "planet": "Saturn",
+          "body_parts": [
+            "eyes",
+            "eyebrows",
+            "hair"
+          ]
+        },
+        {
+          "planet": "Rahu",
+          "body_parts": [
+            "shaking of head",
+            "head",
+            "chin"
+          ]
+        },
+        {
+          "planet": "Ketu",
+          "body_parts": [
+            "torso",
+            "spinal cord",
+            "knees",
+            "toes",
+            "paws",
+            "ear"
+          ]
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "anatomy",
+      "planetary_governance",
+      "conditioning_planet",
+      "disease"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-gp-seq",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "diagnostic_sequence",
+      "description": "Disease onset validation: malefic in H3 AND H9 triggers scan sequence 3→8→5→11→4.",
+      "primary_trigger": {
+        "houses": [
+          3,
+          9
+        ],
+        "requirement": "both_malefic"
+      },
+      "scan_sequence": [
+        3,
+        8,
+        5,
+        11,
+        4
+      ],
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Disease is triggered when H3 AND H9 are malefic. The engine then scans H3→H8→H5→H11→H4 in order. The first non-vacant house identifies the primary affliction. If any house in the sequence is afflicted, the native becomes a patient.",
+      "detailed": "Primary trigger (p.168): malefic in H3 AND H9 simultaneously activates disease state. Affliction search order (Varshaphalam basis): 3 → 8 → 5 → 11 → 4. If a house is vacant, proceed to the next. H3 = ferocity/doom. H5 = immunity/soul injection. H9 = basis/foundation. H2+H4 = type of illness. H10 = form and velocity of disease.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "diagnostic_engine",
+      "disease_trigger",
+      "house_sequence"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-gp-roles",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "functional_roles",
+      "description": "Functional role assignment to houses in the disease diagnostic engine.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Each key house has a specific functional role in disease diagnosis: H3=doom, H5=immunity, H9=basis, H2/H4=illness type, H10=velocity.",
+      "detailed": "H3: Expresses ferocity and possibility of illness — the 'Doom' house. H5: Capability to fight disease; infuses soul in the body — the immunity house. H9: The foundational basis/support for H5 and the soul/body. H2 and H4: Define the specific type or nature of the illness. H10: Defines the form and velocity (speed of progression) of the disease.",
+      "house_roles": [
+        {
+          "houses": [
+            3
+          ],
+          "function": "ferocity_and_doom"
+        },
+        {
+          "houses": [
+            5
+          ],
+          "function": "immunity_and_resistance"
+        },
+        {
+          "houses": [
+            9
+          ],
+          "function": "soul_basis_and_body_stability"
+        },
+        {
+          "houses": [
+            2,
+            4
+          ],
+          "function": "illness_type_definition"
+        },
+        {
+          "houses": [
+            10
+          ],
+          "function": "velocity_and_form_definition"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "diagnostic_engine",
+      "house_roles",
+      "disease"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-gp-interact",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "interaction_logic",
+      "description": "H3 and H5 support/injury interaction matrices + H3/H9 debilitation chain.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "H3 interaction: H1=unexpected injury, H2=help, H6=deception, H7=helpful, H8=unworthy deeds, H11=mutual help. H5 interaction: H1=mutual help, H4=help, H7=unexpected injury, H8=deception, H9=helpful, H10=confrontation. When H3 AND H9 both debilitated, H5 automatically debilitates (loss of immunity). Exception: Sun or Moon in H9 protects H5 from debilitation.",
+      "detailed": "House 3 interaction matrix — H3 with: H1: unexpected injury; H2: will help; H6: will deceive; H7: will be helpful; H8: will make native do unworthy deeds; H11: mutual help. House 5 interaction matrix — H5 with: H1: mutual help; H4: will help; H7: unexpected injury; H8: will deceive; H9: will be helpful; H10: will confront. Debilitation chain: if H3 AND H9 are both debilitated, H5 automatically becomes debilitated — complete loss of immunity. Solar/Lunar exception: if Sun or Moon is in H9, H5 is protected even if H3 is weak.",
+      "h3_interactions": [
+        {
+          "with_house": 1,
+          "outcome": "unexpected_injury"
+        },
+        {
+          "with_house": 2,
+          "outcome": "external_help"
+        },
+        {
+          "with_house": 6,
+          "outcome": "deception_threat"
+        },
+        {
+          "with_house": 7,
+          "outcome": "assistance_granted"
+        },
+        {
+          "with_house": 8,
+          "outcome": "unworthy_deeds"
+        },
+        {
+          "with_house": 11,
+          "outcome": "mutual_help"
+        }
+      ],
+      "h5_interactions": [
+        {
+          "with_house": 1,
+          "outcome": "mutual_help"
+        },
+        {
+          "with_house": 4,
+          "outcome": "external_help"
+        },
+        {
+          "with_house": 7,
+          "outcome": "unexpected_injury"
+        },
+        {
+          "with_house": 8,
+          "outcome": "deception_threat"
+        },
+        {
+          "with_house": 9,
+          "outcome": "assistance_granted"
+        },
+        {
+          "with_house": 10,
+          "outcome": "adversarial_confrontation"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "diagnostic_engine",
+      "house_interaction",
+      "debilitation_chain"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-01",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Malefic in/aspecting Aries AND Mars lord afflicted by malefic conjunction."
+      }
+    },
+    "interpretation": {
+      "summary": "Malefic occupancy or aspect on Aries, with Mars lord afflicted: injury or disease of head or mind.",
+      "detailed": "Aries contains a malefic (Sun/Saturn/Mars/Rahu/Ketu) OR is aspected by a malefic, AND Mars (lord of Aries) is conjugated with a malefic. When this triple condition is met, the native is subject to injury or disease of the head or mind.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "aries",
+      "malefic_affliction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-02",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Venus"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Multi-OR: malefic in/aspecting Libra, or Venus afflicted, or Libra lord afflicted."
+      }
+    },
+    "interpretation": {
+      "summary": "Malefic affliction of Libra or Venus/its lord: genital disease or impotency.",
+      "detailed": "Libra contains a malefic OR is aspected by malefic; OR Venus is aspected by malefic; OR the ruler of Libra (Venus) is with malefic or aspected by malefic. Any of these conditions indicates disease related to genitals or impotency.",
+      "life_domains": [
+        "health",
+        "relationships"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "libra",
+      "impotency",
+      "malefic_affliction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-03",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Jupiter",
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Jupiter-Rahu conjunction OR Jupiter-Mercury conjunction."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter conjunct Rahu or Mercury: asthma and respiratory/lung trouble.",
+      "detailed": "Jupiter in conjunction with Rahu, OR Jupiter in conjunction with Mercury, produces asthma and respiratory and lung trouble.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "asthma",
+      "lung",
+      "conjunction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-04",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Rahu-Ketu conjunction or opposition."
+      }
+    },
+    "interpretation": {
+      "summary": "Rahu and Ketu in interaction: madness or pneumonia.",
+      "detailed": "Rahu and Ketu interacting (conjunction or opposition) produces madness or pneumonia.",
+      "life_domains": [
+        "health",
+        "mind"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "madness",
+      "pneumonia",
+      "conjunction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-05",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Sun",
+        "Venus",
+        "Mercury",
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Sun + (Venus OR Mercury) + Jupiter in combination."
+      }
+    },
+    "interpretation": {
+      "summary": "Sun with Venus or Mercury, together with Jupiter: tuberculosis and asthma.",
+      "detailed": "Sun is with Venus OR Mercury, AND Jupiter is also involved in the combination. This triple conjunction indicates tuberculosis and asthma.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "tuberculosis",
+      "asthma",
+      "conjunction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-06",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Mars-Saturn conjunction."
+      }
+    },
+    "interpretation": {
+      "summary": "Mars conjunct Saturn: leprosy and blood infection.",
+      "detailed": "Conjunction of Mars and Saturn produces leprosy and blood infection.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "leprosy",
+      "blood_infection",
+      "conjunction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-07",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Venus",
+        "Rahu"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Venus-Rahu conjunction."
+      }
+    },
+    "interpretation": {
+      "summary": "Venus conjunct Rahu: impotence.",
+      "detailed": "Conjunction of Venus and Rahu produces impotence.",
+      "life_domains": [
+        "health",
+        "relationships"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "impotence",
+      "conjunction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-08",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Venus",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Venus-Ketu conjunction."
+      }
+    },
+    "interpretation": {
+      "summary": "Venus conjunct Ketu: premature ejaculation.",
+      "detailed": "Conjunction of Venus and Ketu produces premature ejaculation.",
+      "life_domains": [
+        "health",
+        "relationships"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "premature_ejaculation",
+      "conjunction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-09",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Jupiter",
+        "Mars",
+        "Sun",
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Jupiter + Mars Malefic (Sun-Saturn conditioning)."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter with Mars Malefic (Sun-Saturn): jaundice.",
+      "detailed": "Jupiter in conjunction with Mars when Mars is in malefic state (conditioned by Sun-Saturn) produces jaundice.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "jaundice",
+      "conjunction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-10",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Moon",
+        "Mercury",
+        "Mars"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Moon-Mercury conjunction OR Moon-Mars clash."
+      }
+    },
+    "interpretation": {
+      "summary": "Moon with Mercury (conjunction) or Moon clashing with Mars: glandular pathologies.",
+      "detailed": "Moon in conjunction with Mercury OR Moon in opposition/clash with Mars produces glandular pathologies.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "glands",
+      "conjunction"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-yog-11",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mercury",
+        "Venus"
+      ],
+      "houses_involved": [
+        1,
+        6,
+        7,
+        8,
+        10
+      ],
+      "yoga_check": {
+        "type": "varshaphalam_transit",
+        "checkable": false,
+        "requires": "varshaphalam",
+        "description": "Requires annual Varshaphalam chart injection — outside current engine scope."
+      }
+    },
+    "interpretation": {
+      "summary": "Varshaphalam: malefic with Sun/Moon entering houses 1/6/7/8/10 triggers acute illness attack.",
+      "detailed": "Natal anchor: Mercury, Venus, or a malefic is conjugated with Sun or Moon. Varshaphalam trigger: in the annual chart, these planets enter houses 1, 6, 7, 8, or 10. When both conditions are met, an acute attack of illness is activated. Remedy: perform planetary remedies for the specific malefic involved.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "varshaphalam",
+      "illness_attack"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-sun",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Sun"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Sun",
+        "description": "Affliction of Sun activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Sun is associated with: diphtheria; eye disease; indigestion; rheumatoid arthritis; blood pressure; neurological weakness; foaming of mouth; paralysis.",
+      "detailed": "Traditional Lal Kitab disease catalog for Sun (afflicted state). Diseases governed: diphtheria; eye disease; indigestion; rheumatoid arthritis; blood pressure; neurological weakness; foaming of mouth; paralysis.",
+      "diseases": [
+        "diphtheria",
+        "eye disease",
+        "indigestion",
+        "rheumatoid arthritis",
+        "blood pressure",
+        "neurological weakness",
+        "foaming of mouth",
+        "paralysis"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "sun"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-moon",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Moon"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Moon",
+        "description": "Affliction of Moon activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Moon is associated with: headache; minor accidents; heart disease; constipation; intestinal disease; urinary disease; wind formation; eye disease.",
+      "detailed": "Traditional Lal Kitab disease catalog for Moon (afflicted state). Diseases governed: headache; minor accidents; heart disease; constipation; intestinal disease; urinary disease; wind formation; eye disease.",
+      "diseases": [
+        "headache",
+        "minor accidents",
+        "heart disease",
+        "constipation",
+        "intestinal disease",
+        "urinary disease",
+        "wind formation",
+        "eye disease"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "moon"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-mars_benefic",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Mars Benefic"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Mars Benefic",
+        "description": "Affliction of Mars Benefic activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Mars Benefic is associated with: abdominal disease; diarrhoea; bile; kidney disease.",
+      "detailed": "Traditional Lal Kitab disease catalog for Mars Benefic (afflicted state). Diseases governed: abdominal disease; diarrhoea; bile; kidney disease.",
+      "diseases": [
+        "abdominal disease",
+        "diarrhoea",
+        "bile",
+        "kidney disease"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "mars_benefic"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-mars_malefic",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Mars Malefic"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Mars Malefic",
+        "description": "Affliction of Mars Malefic activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Mars Malefic is associated with: accident; paralysis; heart disease; blood pressure; piles; boil; chronic pain.",
+      "detailed": "Traditional Lal Kitab disease catalog for Mars Malefic (afflicted state). Diseases governed: accident; paralysis; heart disease; blood pressure; piles; boil; chronic pain.",
+      "diseases": [
+        "accident",
+        "paralysis",
+        "heart disease",
+        "blood pressure",
+        "piles",
+        "boil",
+        "chronic pain"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "mars_malefic"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-mercury",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Mercury"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Mercury",
+        "description": "Affliction of Mercury activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Mercury is associated with: skin disease; neurological weakness; anxiety; mental weakness; mental illness; tongue disease; dental disease.",
+      "detailed": "Traditional Lal Kitab disease catalog for Mercury (afflicted state). Diseases governed: skin disease; neurological weakness; anxiety; mental weakness; mental illness; tongue disease; dental disease.",
+      "diseases": [
+        "skin disease",
+        "neurological weakness",
+        "anxiety",
+        "mental weakness",
+        "mental illness",
+        "tongue disease",
+        "dental disease"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "mercury"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-jupiter",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Jupiter",
+        "description": "Affliction of Jupiter activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Jupiter is associated with: skin disease; ringworm; irritation; diabetes; septicemia; bile disorder; stomach pain; anxiety; impotence; disinterest in pleasure; blood disease; wind; respiratory and lung trouble.",
+      "detailed": "Traditional Lal Kitab disease catalog for Jupiter (afflicted state). Diseases governed: skin disease; ringworm; irritation; diabetes; septicemia; bile disorder; stomach pain; anxiety; impotence; disinterest in pleasure; blood disease; wind; respiratory and lung trouble.",
+      "diseases": [
+        "skin disease",
+        "ringworm",
+        "irritation",
+        "diabetes",
+        "septicemia",
+        "bile disorder",
+        "stomach pain",
+        "anxiety",
+        "impotence",
+        "disinterest in pleasure",
+        "blood disease",
+        "wind",
+        "respiratory and lung trouble"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "jupiter"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-venus",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Venus"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Venus",
+        "description": "Affliction of Venus activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Venus is associated with: lung disease; seminal weakness; genital weakness; weak heart; urinary disease; cough-related disease; cold; itching; skin disease.",
+      "detailed": "Traditional Lal Kitab disease catalog for Venus (afflicted state). Diseases governed: lung disease; seminal weakness; genital weakness; weak heart; urinary disease; cough-related disease; cold; itching; skin disease.",
+      "diseases": [
+        "lung disease",
+        "seminal weakness",
+        "genital weakness",
+        "weak heart",
+        "urinary disease",
+        "cough-related disease",
+        "cold",
+        "itching",
+        "skin disease"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "venus"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-saturn",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Saturn"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Saturn",
+        "description": "Affliction of Saturn activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Saturn is associated with: wind disease; rheumatoid arthritis; physical weakness; constipation; blood pressure; leprosy; urinary disease; baldness; pain in nose and ear; eyesight issues; asthma; wheezing; cough.",
+      "detailed": "Traditional Lal Kitab disease catalog for Saturn (afflicted state). Diseases governed: wind disease; rheumatoid arthritis; physical weakness; constipation; blood pressure; leprosy; urinary disease; baldness; pain in nose and ear; eyesight issues; asthma; wheezing; cough.",
+      "diseases": [
+        "wind disease",
+        "rheumatoid arthritis",
+        "physical weakness",
+        "constipation",
+        "blood pressure",
+        "leprosy",
+        "urinary disease",
+        "baldness",
+        "pain in nose and ear",
+        "eyesight issues",
+        "asthma",
+        "wheezing",
+        "cough"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "saturn"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-rahu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Rahu"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Rahu",
+        "description": "Affliction of Rahu activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Rahu is associated with: fever; mental illness; plague.",
+      "detailed": "Traditional Lal Kitab disease catalog for Rahu (afflicted state). Diseases governed: fever; mental illness; plague.",
+      "diseases": [
+        "fever",
+        "mental illness",
+        "plague"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "rahu"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-dos-ketu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Ketu"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Ketu",
+        "description": "Affliction of Ketu activates disease domain."
+      }
+    },
+    "interpretation": {
+      "summary": "Afflicted Ketu is associated with: urinary infection; boils and warts; filarial (galgand); testicles and venereal disease; pain in hands and legs; ear disease; spinal cord disease.",
+      "detailed": "Traditional Lal Kitab disease catalog for Ketu (afflicted state). Diseases governed: urinary infection; boils and warts; filarial (galgand); testicles and venereal disease; pain in hands and legs; ear disease; spinal cord disease.",
+      "diseases": [
+        "urinary infection",
+        "boils and warts",
+        "filarial (galgand)",
+        "testicles and venereal disease",
+        "pain in hands and legs",
+        "ear disease",
+        "spinal cord disease"
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "planet_disease_catalog",
+      "ketu"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-nail-mercury-color-change",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Mercury"
+      ],
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Nail symptom: General color change of hand nails → Mental illness governed by Mercury.",
+      "detailed": "Lal Kitab nail diagnosis logic (Ch 20). Symptom: General color change of hand nails. Planetary attribution: Mercury. Outcome: Mental illness governed by Mercury. Remedy action: Treat Mercury.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nail symptom: General color change of hand nails"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Treat Mercury.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "nail_diagnosis",
+      "mercury"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-nail-rahu-blue",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Rahu"
+      ],
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Nail symptom: Nails turn blue → Imminent blood dysfunction related to Rahu.",
+      "detailed": "Lal Kitab nail diagnosis logic (Ch 20). Symptom: Nails turn blue. Planetary attribution: Rahu. Outcome: Imminent blood dysfunction related to Rahu. Remedy action: Treat Rahu.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nail symptom: Nails turn blue"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Treat Rahu.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "nail_diagnosis",
+      "rahu"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-nail-venus-short-white",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Venus"
+      ],
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Nail symptom: Nails turn short and white → Anaemic disease governed by Venus.",
+      "detailed": "Lal Kitab nail diagnosis logic (Ch 20). Symptom: Nails turn short and white. Planetary attribution: Venus. Outcome: Anaemic disease governed by Venus. Remedy action: Treat Venus.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nail symptom: Nails turn short and white"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Treat Venus.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "nail_diagnosis",
+      "venus"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-nail-jupiter-small-pale",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Nail symptom: Nails turn small and pale → Heart disease related to Jupiter.",
+      "detailed": "Lal Kitab nail diagnosis logic (Ch 20). Symptom: Nails turn small and pale. Planetary attribution: Jupiter. Outcome: Heart disease related to Jupiter. Remedy action: Treat Jupiter.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nail symptom: Nails turn small and pale"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Treat Jupiter.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "nail_diagnosis",
+      "jupiter"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-nail-saturn-black",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Saturn"
+      ],
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Nail symptom: Nails turn black → Saturn-related diseases; high expenditure in treatment.",
+      "detailed": "Lal Kitab nail diagnosis logic (Ch 20). Symptom: Nails turn black. Planetary attribution: Saturn. Outcome: Saturn-related diseases; high expenditure in treatment. Remedy action: Treat Saturn.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nail symptom: Nails turn black"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Treat Saturn.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "nail_diagnosis",
+      "saturn"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-nail-yellowish-pulmonary",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [],
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Nail symptom: Nails turn yellowish → Lung and respiratory trouble.",
+      "detailed": "Lal Kitab nail diagnosis logic (Ch 20). Symptom: Nails turn yellowish. Planetary attribution: General/non-specific. Outcome: Lung and respiratory trouble. Remedy action: General trial of sweet breads (see lalkitab-ch20-trial-bread).",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nail symptom: Nails turn yellowish"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "General trial of sweet breads (see lalkitab-ch20-trial-bread).",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "nail_diagnosis",
+      "general"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-nail-rahu-thin-silvery",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Rahu"
+      ],
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Nail symptom: Nails turn thin, irregular, or silvery → Rahu-related affliction.",
+      "detailed": "Lal Kitab nail diagnosis logic (Ch 20). Symptom: Nails turn thin, irregular, or silvery. Planetary attribution: Rahu. Outcome: Rahu-related affliction. Remedy action: Treat Rahu.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nail symptom: Nails turn thin, irregular, or silvery"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Treat Rahu.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "nail_diagnosis",
+      "rahu"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-nail-ketu-spotty",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Ketu"
+      ],
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Nail symptom: Nails turn spotty, deep colored, black, or white → Ketu-related affliction.",
+      "detailed": "Lal Kitab nail diagnosis logic (Ch 20). Symptom: Nails turn spotty, deep colored, black, or white. Planetary attribution: Ketu. Outcome: Ketu-related affliction. Remedy action: Treat Ketu.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nail symptom: Nails turn spotty, deep colored, black, or white"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Treat Ketu.",
+          "category": "ritual"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "nail_diagnosis",
+      "ketu"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-rem-sun",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Sun"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Sun",
+        "description": "Sun in inauspicious state triggers these symptoms."
+      }
+    },
+    "interpretation": {
+      "summary": "Inauspicious Sun: Body parts turn inflexible and movement is difficult; Native always drools.",
+      "detailed": "When Sun becomes inauspicious the following manifest. Physical symptoms: Body parts turn inflexible and movement is difficult; Native always drools. Environmental omens: Red cow or brown buffalo dies or is lost. Remedies: Consume small amount of sweet (jaggery, sugar, or chocolate) and drink water before initiating work.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Body parts turn inflexible and movement is difficult"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Native always drools"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "Red cow or brown buffalo dies or is lost"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Consume small amount of sweet (jaggery, sugar, or chocolate) and drink water before initiating work",
+          "category": "lifestyle",
+          "duration": "daily"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "inauspicious_planet",
+      "sun",
+      "symptoms",
+      "remedies"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-rem-moon",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Moon"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Moon",
+        "description": "Moon in inauspicious state triggers these symptoms."
+      }
+    },
+    "interpretation": {
+      "summary": "Inauspicious Moon: Power to feel weakens.",
+      "detailed": "When Moon becomes inauspicious the following manifest. Physical symptoms: Power to feel weakens. Environmental omens: Well, pond, or hand pump stops working or dries up; Milk-giving pets die. Remedies: Touch feet of elders and accept blessings.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Power to feel weakens"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "Well, pond, or hand pump stops working or dries up"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "Milk-giving pets die"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Touch feet of elders and accept blessings",
+          "category": "lifestyle",
+          "duration": "daily"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "inauspicious_planet",
+      "moon",
+      "symptoms",
+      "remedies"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-rem-mars",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Mars"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Mars",
+        "description": "Mars in inauspicious state triggers these symptoms."
+      }
+    },
+    "interpretation": {
+      "summary": "Inauspicious Mars: Joint pain; Anemia.",
+      "detailed": "When Mars becomes inauspicious the following manifest. Physical symptoms: Joint pain; Anemia; Excessive anger and fighting. Environmental omens: No progeny, or progeny dies soon after birth, or progeny becomes impaired. Remedies: Apply white kohl (surma) in the eyes.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Joint pain"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Anemia"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Excessive anger and fighting"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "No progeny, or progeny dies soon after birth, or progeny becomes impaired"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Apply white kohl (surma) in the eyes",
+          "category": "ritual",
+          "duration": "occasional"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "inauspicious_planet",
+      "mars",
+      "symptoms",
+      "remedies"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-rem-mercury",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Mercury"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Mercury",
+        "description": "Mercury in inauspicious state triggers these symptoms."
+      }
+    },
+    "interpretation": {
+      "summary": "Inauspicious Mercury: Teeth are broken; Smell ability weakens.",
+      "detailed": "When Mercury becomes inauspicious the following manifest. Physical symptoms: Teeth are broken; Smell ability weakens; Power to copulate weakens. Environmental omens: None recorded. Remedies: Maintain dental hygiene; Pierce nose.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Teeth are broken"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Smell ability weakens"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Power to copulate weakens"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Maintain dental hygiene",
+          "category": "ritual",
+          "duration": "daily"
+        },
+        {
+          "text": "Pierce nose",
+          "category": "ritual",
+          "duration": "once"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "inauspicious_planet",
+      "mercury",
+      "symptoms",
+      "remedies"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-rem-jupiter",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Jupiter",
+        "description": "Jupiter in inauspicious state triggers these symptoms."
+      }
+    },
+    "interpretation": {
+      "summary": "Inauspicious Jupiter: Baldness; Habit of wearing garland around neck.",
+      "detailed": "When Jupiter becomes inauspicious the following manifest. Physical symptoms: Baldness; Habit of wearing garland around neck. Environmental omens: Education interrupted in the middle; False allegations and rumours propagate. Remedies: Apply saffron or yellow tilak on forehead; Keep nose dry and clear nose before starting work.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Baldness"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Habit of wearing garland around neck"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "Education interrupted in the middle"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "False allegations and rumours propagate"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Apply saffron or yellow tilak on forehead",
+          "category": "ritual",
+          "duration": "daily"
+        },
+        {
+          "text": "Keep nose dry and clear nose before starting work",
+          "category": "ritual",
+          "duration": "daily"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "inauspicious_planet",
+      "jupiter",
+      "symptoms",
+      "remedies"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-rem-venus",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Venus"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Venus",
+        "description": "Venus in inauspicious state triggers these symptoms."
+      }
+    },
+    "interpretation": {
+      "summary": "Inauspicious Venus: Skin disease; Premature ejaculation.",
+      "detailed": "When Venus becomes inauspicious the following manifest. Physical symptoms: Skin disease; Premature ejaculation; Thumb becomes weak or incapacitated. Environmental omens: None recorded. Remedies: Wear properly cleaned clothes and live hygienically; Execute remedies for Mercury (lalkitab-ch20-rem-mercury) and pierce nose.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Skin disease"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Premature ejaculation"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Thumb becomes weak or incapacitated"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Wear properly cleaned clothes and live hygienically",
+          "category": "lifestyle",
+          "duration": "daily"
+        },
+        {
+          "text": "Execute remedies for Mercury (lalkitab-ch20-rem-mercury) and pierce nose",
+          "category": "succour",
+          "duration": "once"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "inauspicious_planet",
+      "venus",
+      "symptoms",
+      "remedies"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-rem-saturn",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Saturn"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Saturn",
+        "description": "Saturn in inauspicious state triggers these symptoms."
+      }
+    },
+    "interpretation": {
+      "summary": "Inauspicious Saturn: Hair falls from eyebrows or eyelids.",
+      "detailed": "When Saturn becomes inauspicious the following manifest. Physical symptoms: Hair falls from eyebrows or eyelids. Environmental omens: Buffalo dies; Fire occurs at home; House collapses or is damaged. Remedies: Donate iron; Clean mouth with babool datoon (toothstick); Offer bread to crow; Float coconut in the river.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Hair falls from eyebrows or eyelids"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "Buffalo dies"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "Fire occurs at home"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "House collapses or is damaged"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Donate iron",
+          "category": "ritual",
+          "duration": "occasional"
+        },
+        {
+          "text": "Clean mouth with babool datoon (toothstick)",
+          "category": "ritual",
+          "duration": "daily"
+        },
+        {
+          "text": "Offer bread to crow",
+          "category": "ritual",
+          "duration": "43 days"
+        },
+        {
+          "text": "Float coconut in the river",
+          "category": "succour",
+          "duration": "occasional"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "inauspicious_planet",
+      "saturn",
+      "symptoms",
+      "remedies"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-rem-rahu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Rahu"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Rahu",
+        "description": "Rahu in inauspicious state triggers these symptoms."
+      }
+    },
+    "interpretation": {
+      "summary": "Inauspicious Rahu: Nails of hand fall off; Mind does not work (cognitive failure).",
+      "detailed": "When Rahu becomes inauspicious the following manifest. Physical symptoms: Nails of hand fall off; Mind does not work (cognitive failure). Environmental omens: Black dog dies; Rise in number of enemies. Remedies: Maintain a choti (braided tress) on head; Reside in joint family; Maintain good relations with in-laws.",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nails of hand fall off"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Mind does not work (cognitive failure)"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "Black dog dies"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "Rise in number of enemies"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Maintain a choti (braided tress) on head",
+          "category": "lifestyle",
+          "duration": "continuous"
+        },
+        {
+          "text": "Reside in joint family",
+          "category": "lifestyle",
+          "duration": "continuous"
+        },
+        {
+          "text": "Maintain good relations with in-laws",
+          "category": "lifestyle",
+          "duration": "continuous"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "inauspicious_planet",
+      "rahu",
+      "symptoms",
+      "remedies"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-rem-ketu",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "dosha",
+      "sub_type": "disease",
+      "dosha_type": "disease_logic",
+      "planets_involved": [
+        "Ketu"
+      ],
+      "yoga_check": {
+        "type": "planet_affliction",
+        "checkable": true,
+        "planet": "Ketu",
+        "description": "Ketu in inauspicious state triggers these symptoms."
+      }
+    },
+    "interpretation": {
+      "summary": "Inauspicious Ketu: Nails of feet fall off; Urinary infection.",
+      "detailed": "When Ketu becomes inauspicious the following manifest. Physical symptoms: Nails of feet fall off; Urinary infection; Joint pain. Environmental omens: Progeny remains sick. Remedies: Keep a pet dog; Pierce ear; Execute remedies for Moon (lalkitab-ch20-rem-moon).",
+      "physical_markers": [
+        {
+          "category": "physical_symptom",
+          "text": "Nails of feet fall off"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Urinary infection"
+        },
+        {
+          "category": "physical_symptom",
+          "text": "Joint pain"
+        },
+        {
+          "category": "environmental_omen",
+          "text": "Progeny remains sick"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Keep a pet dog",
+          "category": "ritual",
+          "duration": "continuous"
+        },
+        {
+          "text": "Pierce ear",
+          "category": "ritual",
+          "duration": "once"
+        },
+        {
+          "text": "Execute remedies for Moon (lalkitab-ch20-rem-moon)",
+          "category": "succour",
+          "duration": "occasional"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": false
+    },
+    "tags": [
+      "disease",
+      "inauspicious_planet",
+      "ketu",
+      "symptoms",
+      "remedies"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-trial-bread",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "general_trial",
+      "description": "Sweet bread offering for chronic/resistant diseases with multi-planet house occupancy.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "General trial for chronic illness or resistant diseases: calculate quantity of sweet breads as (family count + average monthly guests + non-zero buffer). Offer monthly to animals, dogs, and crows.",
+      "detailed": "Lal Kitab general trial for chronic or resistant disease where multiple planets occupy one house, creating conflict. Calculation formula: Quantity = (Family_Count + Avg_Monthly_Guests) + extra_buffer (non-zero). Prepare calculated number of sweet breads and offer once a month to animals, dogs, and crows. Applies when individual planetary remedies are insufficient.",
+      "remedies": [
+        {
+          "text": "Calculate sweet breads: (family members + avg monthly guests + buffer). Offer monthly to animals/dogs/crows.",
+          "category": "offering",
+          "duration": "monthly"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "disease",
+      "general_trial",
+      "sweet_bread",
+      "chronic_illness"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-trial-charity",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "general_trial",
+      "description": "Temple and charity offerings for general disease obstruction.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "General trial for health blockage: distribute pumpkin porridge at temple monthly; place coins at patient's head-post and give to sweeper in the morning; throw coins on the path when approaching a crematory or graveyard.",
+      "detailed": "Lal Kitab general trial for general disease obstruction. Three remedies: 1. Distribute porridge of ripe pumpkin at a temple, once monthly. 2. Place coins at the head-post of the patient at night; give them to a sweeper in the morning. 3. Throw coins on the path when approaching a crematory or graveyard.",
+      "remedies": [
+        {
+          "text": "Distribute porridge of ripe pumpkin at temple",
+          "category": "offering",
+          "duration": "monthly"
+        },
+        {
+          "text": "Place coins at head-post of patient at night; give to sweeper in morning",
+          "category": "ritual",
+          "duration": "daily"
+        },
+        {
+          "text": "Throw coins on path when approaching crematory or graveyard",
+          "category": "ritual",
+          "duration": "as_encountered"
+        }
+      ],
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "disease",
+      "general_trial",
+      "charity",
+      "temple"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-met-gate",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "debilitation_gate",
+      "description": "Sun or Moon in H9 protects H5 from automatic debilitation.",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "planets": [
+          "Sun",
+          "Moon"
+        ],
+        "houses": [
+          9
+        ],
+        "operator": "any",
+        "description": "Sun OR Moon in H9 activates H5 protection override."
+      }
+    },
+    "interpretation": {
+      "summary": "Exception rule: when Sun or Moon is placed in the 9th house, the 5th house (immunity) is protected and does NOT become debilitated — even if H3 is weak.",
+      "detailed": "Debilitation chain rule: if H3 AND H9 are both debilitated, H5 automatically debilitates (complete loss of immunity). Solar/Lunar exception overrides this: if Sun or Moon is in H9, H5 is protected regardless of H3 weakness. This exception preserves the native's disease-fighting capacity.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": true
+    },
+    "tags": [
+      "disease",
+      "debilitation_gate",
+      "immunity_protection",
+      "h5",
+      "h9"
+    ]
+  },
+  {
+    "rule_id": "lalkitab-ch20-met-succession",
+    "science_id": "jyotish",
+    "source": {
+      "primary": "lal-kitab",
+      "book": "Lal Kitab",
+      "chapter": 20,
+      "chapter_name": "Diseases",
+      "batch_id": "lalkitab-ch20-v1-20260427"
+    },
+    "metadata": {
+      "extraction_method": "hard_coded",
+      "source_note": "lalkitab-ch20-v2-decode",
+      "created_at": "2026-04-26T19:48:08.603715+00:00"
+    },
+    "approval_status": "pending_review",
+    "confidence": {
+      "score": 0.8,
+      "band": "HIGH",
+      "rationale": "Hard-coded from Notebook LM V2 decode — reviewed against source."
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "succession_rule",
+      "description": "In multi-planet houses, the planet that diminishes others takes priority.",
+      "yoga_check": {
+        "type": "none",
+        "checkable": false
+      }
+    },
+    "interpretation": {
+      "summary": "Succession/priority rule: in a house occupied by multiple planets, prioritize the planet that diminishes the influence of others. Example: Jupiter with Rahu destroys the effect of Rahu.",
+      "detailed": "When multiple planets occupy a single house in the natal chart, the disease diagnostic engine must apply the succession rule: identify the planet whose presence reduces or negates the influence of the others, and treat it as the primary signifier. Classical example: Jupiter sitting with Rahu destroys the effect of Rahu — Jupiter's benefic nature overrides Rahu's malefic influence in the disease context.",
+      "life_domains": [
+        "health"
+      ],
+      "is_benefic": null
+    },
+    "tags": [
+      "disease",
+      "succession_rule",
+      "multi_planet",
+      "priority_logic"
+    ]
+  }
+]
