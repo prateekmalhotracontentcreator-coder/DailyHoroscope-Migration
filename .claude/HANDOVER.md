@@ -130,7 +130,7 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 | BPHS Ch 38 (Solar Yogas) | bphs-ch38-v1-20260426 | 4 | — | ✅ **fully validated** (26 Apr) — 1 auto / 2 PHR / 1 flagged — 0 contradictions |
 | BPHS Ch 39 (Raja Yogas) | bphs-ch39-v1-20260426 | 50 | — | ✅ **fully validated** (26 Apr) — 41 auto / 6 PHR / 3 flagged — 0 contradictions · 82% auto-approved (best ratio any yoga chapter) |
 | **Lal Kitab Ch 19 (Mangalik Evil)** | lalkitab-ch19-v1-20260426 | **78** | — | ✅ **fully validated** (27 Apr) — 49 auto / 23 PHR / 6 flagged — 0 contradictions · 63% auto_approved · first Lal Kitab chapter |
-| **Lal Kitab Ch 20 (Diseases)** | lalkitab-ch20-v1-20260427 | **48** | — | ✅ **fully validated** (27 Apr) — 34 auto / 10 PHR / 3 flagged / 1 pending_review — 0 contradictions · 71% auto_approved · ⚠️ 1 rule needs re-validation (pending_review) |
+| **Lal Kitab Ch 20 (Diseases)** | lalkitab-ch20-v1-20260427 | **48** | — | ✅ **fully validated** (27 Apr) — 34 auto / 11 PHR / 3 flagged — 0 contradictions · 71% auto_approved · yog-07 (Venus-Rahu) forced PHR |
 
 ---
 
@@ -231,7 +231,7 @@ Step 4 — Dry-run --save JSON → review → --upload → validate
 | Chapter | Topic | Batch ID | Rules | Condition types | Status |
 |---|---|---|---|---|---|
 | Ch 19 — Mangalik Evil and Trials | Mars dosha + remedies | lalkitab-ch19-v1-20260426 | **78** | 65 dosha · 9 planetary_combination · 4 general_principle | ✅ **Fully validated** (27 Apr 2026) |
-| Ch 20 — Diseases | Diagnostic engine + planet disease library | lalkitab-ch20-v1-20260427 | **48** | 27 dosha · 11 planetary_combination · 10 general_principle | ✅ **Fully validated** (27 Apr 2026) · ⚠️ 1 pending_review |
+| Ch 20 — Diseases | Diagnostic engine + planet disease library | lalkitab-ch20-v1-20260427 | **48** | 27 dosha · 11 planetary_combination · 10 general_principle | ✅ **Fully validated** (27 Apr 2026) · 34 auto / 11 PHR / 3 flagged |
 
 **Validation summary — Ch 19 (27 Apr 2026):**
 | Status | Count | % |
