@@ -2,8 +2,14 @@
 """
 ingest_bphs_ch36_v1.py — BPHS Chapter 36: Many Other Yogas
 
-23 named yogas (Subha through Lagnadhi, incl. 3 Trimurthi sub-yogas)
-+ 7 divisional-dignity rules = 30 rules total.
+25 named yogas (Subha through Chandradhi, incl. 3 Trimurthi sub-yogas)
++ 7 divisional-dignity rules = 32 rules total.
+
+Added after dry-run review:
+  - Hamsa Yoga (Sloka 3-4 Notes): Jupiter in exaltation (Cancer) in kendra
+    from Moon; Pancha Mahapurusha form, distinct from ordinary Gajakesari.
+  - Chandradhi Yoga (Sloka 37 Notes): Benefics in 6th/7th/8th from the Moon;
+    Moon-based counterpart to Lagnadhi which counts from ascendant.
 
 All rules are hard-coded from the source RTF — zero AI extraction cost.
 
@@ -156,7 +162,46 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 4. AMALA YOGA (verses 5-6) ───────────────────────────────────────────
+    # ── 4. HAMSA YOGA (verses 3-4 notes) ────────────────────────────────────
+    {
+        "yoga_name":    "Hamsa Yoga",
+        "sloka":        "ch36-hamsa-yoga",
+        "group":        "raja_yoga",
+        "formation":    (
+            "Jupiter occupies its exaltation sign (Cancer) AND is placed in an "
+            "angular house (1st, 4th, 7th, or 10th) counted from the Moon. This "
+            "is a specific form of the Pancha Mahapurusha yoga, distinguished from "
+            "the broader Gajakesari formation by the requirement of Jupiter's "
+            "exaltation. Jupiter must be free from combustion."
+        ),
+        "effect":       (
+            "One born in Hamsa yoga will be splendorous, wealthy, and intelligent, "
+            "endowed with many laudable virtues. As a Pancha Mahapurusha yoga it "
+            "confers the highest order of Jupiter's blessings — learning, "
+            "spirituality, prosperity, physical grace, and honour from kings and "
+            "society."
+        ),
+        "is_benefic":   True,
+        "life_domains": ["wealth", "scholarship", "fame", "royalty", "spirituality"],
+        "yoga_check": {
+            "type":        "planet_in_kendra_from",
+            "checkable":   True,
+            "description": (
+                "Jupiter must be in Cancer (its exaltation sign) AND in an angular "
+                "house (1, 4, 7, or 10) counted from the Moon's sign position. "
+                "Jupiter must be free from combustion. Distinguished from ordinary "
+                "Gajakesari by requiring exaltation rather than merely kendra "
+                "placement from Moon."
+            ),
+            "planet":       "Jupiter",
+            "sign":         "Cancer",
+            "reference":    "Moon",
+            "houses":       [1, 4, 7, 10],
+            "conditions":   ["exalted_sign", "free_from_combustion"],
+        },
+    },
+
+    # ── 5. AMALA YOGA (verses 5-6) ───────────────────────────────────────────
     {
         "yoga_name":    "Amala Yoga",
         "sloka":        "ch36-amala-yoga",
@@ -190,7 +235,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 5. PARVATA YOGA (verses 7-8) ─────────────────────────────────────────
+    # ── 6. PARVATA YOGA (verses 7-8) ─────────────────────────────────────────
     {
         "yoga_name":    "Parvata Yoga",
         "sloka":        "ch36-parvata-yoga",
@@ -221,7 +266,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 6. KAHALA YOGA (verses 9-10) ─────────────────────────────────────────
+    # ── 7. KAHALA YOGA (verses 9-10) ─────────────────────────────────────────
     {
         "yoga_name":    "Kahala Yoga",
         "sloka":        "ch36-kahala-yoga",
@@ -250,7 +295,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 7. CHAMARA YOGA (verses 11-12) ───────────────────────────────────────
+    # ── 8. CHAMARA YOGA (verses 11-12) ───────────────────────────────────────
     {
         "yoga_name":    "Chamara Yoga",
         "sloka":        "ch36-chamara-yoga",
@@ -279,7 +324,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 8. SANKHA YOGA (verses 13-14) ────────────────────────────────────────
+    # ── 9. SANKHA YOGA (verses 13-14) ────────────────────────────────────────
     {
         "yoga_name":    "Sankha Yoga",
         "sloka":        "ch36-sankha-yoga",
@@ -309,7 +354,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 9. BHERI YOGA (verses 15-16) ─────────────────────────────────────────
+    # ── 10. BHERI YOGA (verses 15-16) ─────────────────────────────────────────
     {
         "yoga_name":    "Bheri Yoga",
         "sloka":        "ch36-bheri-yoga",
@@ -338,7 +383,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 10. MRIDANGA YOGA (verse 17) ─────────────────────────────────────────
+    # ── 11. MRIDANGA YOGA (verse 17) ─────────────────────────────────────────
     {
         "yoga_name":    "Mridanga Yoga",
         "sloka":        "ch36-mridanga-yoga",
@@ -364,7 +409,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 11. SRINATHA YOGA (verse 18) ─────────────────────────────────────────
+    # ── 12. SRINATHA YOGA (verse 18) ─────────────────────────────────────────
     {
         "yoga_name":    "Srinatha Yoga",
         "sloka":        "ch36-srinatha-yoga",
@@ -394,7 +439,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 12. SARADA YOGA (verses 19-20) ───────────────────────────────────────
+    # ── 13. SARADA YOGA (verses 19-20) ───────────────────────────────────────
     {
         "yoga_name":    "Sarada Yoga",
         "sloka":        "ch36-sarada-yoga",
@@ -424,7 +469,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 13. MATSYA YOGA (verses 21-22) ───────────────────────────────────────
+    # ── 14. MATSYA YOGA (verses 21-22) ───────────────────────────────────────
     {
         "yoga_name":    "Matsya Yoga",
         "sloka":        "ch36-matsya-yoga",
@@ -457,7 +502,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 14. KOORMA YOGA (verses 23-24) ───────────────────────────────────────
+    # ── 15. KOORMA YOGA (verses 23-24) ───────────────────────────────────────
     {
         "yoga_name":    "Koorma Yoga",
         "sloka":        "ch36-koorma-yoga",
@@ -485,7 +530,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 15. KHADGA YOGA (verses 25-26) ───────────────────────────────────────
+    # ── 16. KHADGA YOGA (verses 25-26) ───────────────────────────────────────
     {
         "yoga_name":    "Khadga Yoga",
         "sloka":        "ch36-khadga-yoga",
@@ -513,7 +558,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 16. LAKSHMI YOGA (verses 27-28) ──────────────────────────────────────
+    # ── 17. LAKSHMI YOGA (verses 27-28) ──────────────────────────────────────
     {
         "yoga_name":    "Lakshmi Yoga",
         "sloka":        "ch36-lakshmi-yoga",
@@ -541,7 +586,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 17. KUSUMA YOGA (verses 29-30) ───────────────────────────────────────
+    # ── 18. KUSUMA YOGA (verses 29-30) ───────────────────────────────────────
     {
         "yoga_name":    "Kusuma Yoga",
         "sloka":        "ch36-kusuma-yoga",
@@ -571,7 +616,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 18. KALANIDHI YOGA (verses 31-32) ────────────────────────────────────
+    # ── 19. KALANIDHI YOGA (verses 31-32) ────────────────────────────────────
     {
         "yoga_name":    "Kalanidhi Yoga",
         "sloka":        "ch36-kalanidhi-yoga",
@@ -600,7 +645,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 19. KALPADRUMA YOGA / PARIJATA YOGA (verses 33-34) ───────────────────
+    # ── 20. KALPADRUMA YOGA / PARIJATA YOGA (verses 33-34) ───────────────────
     {
         "yoga_name":    "Kalpadruma Yoga",
         "sloka":        "ch36-kalpadruma-yoga",
@@ -630,7 +675,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 20. HARI YOGA (verses 35-36 — Trimurthi group) ───────────────────────
+    # ── 21. HARI YOGA (verses 35-36 — Trimurthi group) ───────────────────────
     {
         "yoga_name":    "Hari Yoga",
         "sloka":        "ch36-hari-yoga",
@@ -659,7 +704,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 21. HARA YOGA (verses 35-36 — Trimurthi group) ───────────────────────
+    # ── 22. HARA YOGA (verses 35-36 — Trimurthi group) ───────────────────────
     {
         "yoga_name":    "Hara Yoga",
         "sloka":        "ch36-hara-yoga",
@@ -687,7 +732,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 22. BRAHMA YOGA (verses 35-36 — Trimurthi group) ─────────────────────
+    # ── 23. BRAHMA YOGA (verses 35-36 — Trimurthi group) ─────────────────────
     {
         "yoga_name":    "Brahma Yoga",
         "sloka":        "ch36-brahma-yoga",
@@ -715,7 +760,7 @@ YOGA_DATA: list[dict] = [
         },
     },
 
-    # ── 23. LAGNADHI YOGA (verse 37) ──────────────────────────────────────────
+    # ── 24. LAGNADHI YOGA (verse 37) ──────────────────────────────────────────
     {
         "yoga_name":    "Lagnadhi Yoga",
         "sloka":        "ch36-lagnadhi-yoga",
@@ -747,6 +792,47 @@ YOGA_DATA: list[dict] = [
             ),
             "houses":       [7, 8],
             "planet_type":  "benefic",
+            "no_malefic_aspect": True,
+        },
+    },
+
+    # ── 25. CHANDRADHI YOGA (verse 37 notes) ─────────────────────────────────
+    {
+        "yoga_name":    "Chandradhi Yoga",
+        "sloka":        "ch36-chandradhi-yoga",
+        "group":        "benefic_yoga",
+        "formation":    (
+            "Natural benefics (Jupiter, Venus, Mercury) occupy the 6th, 7th, and/or "
+            "8th houses counted from the Moon, devoid of malefic conjunction or "
+            "aspect. This is the Moon-based counterpart to Lagnadhi Yoga (which "
+            "counts from the ascendant). The key distinction is the inclusion of "
+            "the 6th house from the Moon. Optimal form: Mercury in 6th, Jupiter "
+            "in 7th, Venus in 8th from the Moon. The 4th from the Moon should be "
+            "unoccupied. Benefics must be free from combustion and debilitation."
+        ),
+        "effect":       (
+            "The native will be highly learned, wealthy, and among the most supreme "
+            "men on earth. The yoga confers greatness, scholarship, prosperity, and "
+            "exalted social standing. Effects are strongest when all three benefics "
+            "(Mercury, Jupiter, Venus) are optimally placed in the 6th, 7th, and "
+            "8th from the Moon."
+        ),
+        "is_benefic":   True,
+        "life_domains": ["scholarship", "wealth", "fame", "happiness"],
+        "yoga_check": {
+            "type":        "benefics_in_houses",
+            "checkable":   True,
+            "description": (
+                "Natural benefics (Jupiter, Venus, Mercury) must occupy the 6th, "
+                "7th, and/or 8th houses counted from the Moon's sign. No malefic "
+                "may conjoin or aspect the benefics in these positions. Optimal: "
+                "Mercury in 6th, Jupiter in 7th, Venus in 8th from Moon. 4th from "
+                "Moon should be vacant. Benefics must be free from combustion and "
+                "debilitation. Reference point: Moon (not ascendant)."
+            ),
+            "houses":            [6, 7, 8],
+            "reference":         "Moon",
+            "planet_type":       "benefic",
             "no_malefic_aspect": True,
         },
     },
