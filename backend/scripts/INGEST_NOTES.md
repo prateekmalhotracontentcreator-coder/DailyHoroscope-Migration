@@ -1788,7 +1788,8 @@ Two yogas were found during RTF review after the initial dry run and added befor
 | `planet_in_kendra_from` | Gajakesari, Hamsa | ✅ True |
 | `benefic_only_in_house` | Amala | ✅ True |
 | `planet_in_house` | Kalanidhi | ✅ True |
-| `complex` | Parvata, Kahala, Chamara, Sankha, Bheri, Mridanga, Srinatha, Sarada, Matsya, Koorma, Khadga, Lakshmi, Kusuma, Kalpadruma, Hari, Hara, Brahma | ❌ False |
+| `complex` (checkable=**True**) | **Matsya** | ✅ True — has fully enumerated `house_requirements` field; type is a misnomer (should be `multi_house_requirements`). Phase 2: rename type. |
+| `complex` (checkable=False) | Parvata, Kahala, Chamara, Sankha, Bheri, Mridanga, Srinatha, Sarada, Koorma, Khadga, Lakshmi, Kusuma, Kalpadruma, Hari, Hara, Brahma | ❌ False |
 | `divisional_dignity` | All 7 divisional rules | ❌ False |
 
 ### Validation — COMPLETE (26 Apr 2026)
