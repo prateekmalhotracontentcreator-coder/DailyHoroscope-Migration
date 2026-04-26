@@ -1,6 +1,6 @@
 # Knowledge Engine — Session Handover
-> Last updated: 26 Apr 2026 (BPHS Ch 39 Raja Yogas live + validated — 50 rules, 41 auto / 6 PHR / 3 flagged, 82% auto-approved)
-> Written at end of Session 4 (context compressed multiple times); updated Sessions 5–7
+> Last updated: 26 Apr 2026 — end of Session 8 (BPHS Ch 39 Raja Yogas live + validated)
+> All yoga chapters Ch 35–39 complete. Next: Ch 40 (PDF on disk). See Section 4 for exact next actions.
 > Next session: read this FIRST before touching any script or DB
 
 ---
@@ -132,62 +132,76 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 
 ---
 
-## 4. Immediate Next Steps (in priority order)
+## 4. Immediate Next Steps — as of 26 Apr 2026 (Session 8 end)
 
-### ✅ Step 0 — strength_band inference — COMPLETE (21 Apr 2026)
+> All dasha sweep steps (0–3) are COMPLETE. All yoga chapters Ch 35–39 are ingested and validated.
+> The active track is now: **Yoga Chapter Ingestion (Ch 40 → Ch 41 → Ch 43/44 → 300 Combinations)**.
 
-`infer_strength_band_from_condition()` added to `ingest_bphs_dasha_v1.py`.
-Committed: `19cec9e`. Wired into `extracted_to_rule()` and `_fallback_rule()`.
-All rules generated from this point carry `strength_band: "high"|"medium"|"low"`.
+### 🔜 Priority 1 — Ingest BPHS Ch 40 (Yogas for Royal Association)
 
-### ✅ Step 1 — Test the new SPLITTING GUIDANCE — COMPLETE (21 Apr 2026)
+**File on disk:** `/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Ch40_Yogas for Royal Association.pdf`
 
-Test output (`/tmp/test_splitting.py`) confirmed:
-- Sloka 45-47: 9 rules ✅ (3 dignity + 2 category + 3 house + 1 timing)
-- Sloka 1-2: 6 rules ✅ (2 category + 1 Asc lord + 3 individual lords)
-- Sloka 3-4: 2 rules ✅ (8th vs 12th split, compound preserved)
-
-### ✅ Step 2 — Gap-fill sweep: Ch 59 sloka 1-2 — COMPLETE (21 Apr 2026)
-
-+3 rules inserted (9th/10th/4th lord). 3 correctly skipped (kendra/trikona/Asc lord already in DB).
-Ch 59 total: **91 rules** (88 original + 3 gap-fill). IDs: PATCH-FACB65, PATCH-5E398B, PATCH-2C21C9.
-
-Two dedup fixes committed during this step (required for house-lord variant rules):
-- `patch_slokas.py`: condition-only comparison (strip result text before overlap check)
-- `patch_slokas.py`: two-tier thresholds — 60% vs DB, 90% within-run (prevents 9th/10th/4th lord blocking each other)
-
-### ✅ Step 3 — Split-Upgrade Sweep: ALL Ch 47-59 — **COMPLETE (24 Apr 2026)**
-
-Sweep mechanism: `patch_slokas.py --split-upgrade` re-extracts all slokas per chapter under the new SPLITTING + ANTI-COLLISION + LORDSHIP QUALIFIER prompt. Dedup (60% DB threshold, excluding `pre_split_merged` originals) ensures only genuinely new individual rules are inserted, tagged `source_note='split_upgrade'`.
-
-**Full sweep summary:**
-| Ch | MD Lord | New rules | Total rules | Notes |
-|---|---|---|---|---|
-| 47 | Sun | +126 +1grp ✅ | **220** | Sloka 45-48 mis-tagged fix (24 Apr). See INGEST_NOTES. |
-| 48 | Moon | +34 | — | |
-| 52 | Sun | +139 | — | |
-| 53 | Venus | +123 | — | |
-| 54 | Mars | +121 | — | |
-| 55 | Rahu | +153 | — | Sloka 21-24 mis-tag fix applied — see INGEST_NOTES |
-| 56 | Jupiter | +118 +2grp ✅ | **246** | Flag 1 fix complete (22 Apr). Phase 3: 6 slokas deferred. |
-| 57 | Saturn | +126 +7gf ✅ | **265** | Gap-fill verified + inserted (22 Apr). |
-| 58 | Mercury | +132 ✅ | **236** | No anomalies. All slokas clean. (24 Apr) |
-| 59 | Ketu | +195 ✅ | **286** | Sloka 69-71 mis-tag fix applied (24 Apr). (24 Apr) |
-| **TOTAL new rules** | | **+1,150** | | Across all 9 chapters |
-
-**pre_split_merged deprecation — ✅ COMPLETE (24 Apr 2026)**
-425 rules deprecated via `scripts/deprecate_pre_split_merged.py`. Zero non-deprecated pre_split_merged rules remain.
-
-### Step 4 — Validate Ch 52/53/54/55 (after split-upgrade done)
-
-Run `validate_rules.py --batch-id <batch-id>` on each once split-upgrade is complete:
+**Workflow:**
 ```bash
-python3 scripts/validate_rules.py --batch-id bphs-ch52-dasha-20260416 --db-name horoscope_db
+# Step 1: Extract text from PDF
+# Step 2: Build hard-coded ingest script backend/scripts/ingest_bphs_ch40_v1.py
+#         (template: use ingest_bphs_ch39_v1.py as the base — it has the correct schema)
+# Step 3: Dry-run → save JSON → review → upload
+python3 backend/scripts/ingest_bphs_ch40_v1.py --dry-run --save backend/scripts/bphs_ch40_rules.json
+python3 backend/scripts/ingest_bphs_ch40_v1.py --upload backend/scripts/bphs_ch40_rules.json --mongo-url "$MONGO_URL" --db-name horoscope_db
+# Step 4: Validate
+python3 backend/scripts/validate_rules.py --batch-id bphs-ch40-v1-20260426 --db-name horoscope_db
 ```
 
-### Step 5 — Next Chapter Ingestion
+**Schema template:** Copy `build_rule()` from `ingest_bphs_ch39_v1.py` exactly — it has the correct `source{}`, `metadata{}`, `confidence{}` block structure. Ch 39 is the canonical reference for yoga chapter scripts.
 
-**BPHS Ch 60** — Prateek has not yet provided RTF. Ask him when sweep is done.
+**Batch ID format:** `bphs-ch40-v1-YYYYMMDD`
+
+---
+
+### 🔜 Priority 2 — Ingest BPHS Ch 41 (Yogas for Wealth)
+
+**File on disk:** `/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Ch41_Yogas for wealth.pdf`
+Same workflow as Ch 40.
+
+---
+
+### 🔜 Priority 3 — Validate TBA Ch 15 (1,530 rules — PENDING)
+
+**Batch ID:** `tba-ch15-v1-20260424`
+**Status:** ingested, NOT validated.
+
+```bash
+cd /Users/apple/DailyHoroscope-Migration/backend
+python3 scripts/validate_rules.py --batch-id tba-ch15-v1-20260424 --db-name horoscope_db
+```
+
+⚠️ Known issue: Mars-H03 flag (see INGEST_NOTES.md). May see high `flagged` count due to appearance-text density.
+
+---
+
+### 🔜 Priority 4 — Validate Dasha Chapters (Ch 47–60, post-split)
+
+All dasha split-upgrades are complete. None of the split-upgrade batches have been re-validated.
+Run `validate_rules.py` for each — start with the smallest:
+
+```bash
+python3 scripts/validate_rules.py --batch-id bphs-ch48-dasha-20260416 --db-name horoscope_db
+python3 scripts/validate_rules.py --batch-id bphs-ch52-dasha-20260416 --db-name horoscope_db
+# ... etc for ch53/54/55/56/57/58/59/60
+```
+
+---
+
+### Commit needed: `ingest_bphs_dasha_v1.py`
+
+`backend/scripts/ingest_bphs_dasha_v1.py` has **40 uncommitted lines** (Session 8 changes).
+Commit before running any new ingests:
+```bash
+cd ~/DailyHoroscope-Migration
+git add backend/scripts/ingest_bphs_dasha_v1.py
+git commit -m "chore(knowledge-engine): uncommitted ingest_bphs_dasha_v1.py changes from Session 8"
+```
 
 ---
 
@@ -268,10 +282,12 @@ Full audit of all `complex/False` rules across Ch 35–38. Each rule inspected a
 
 Full per-rule details in INGEST_NOTES.md — Ch 35/36/37/38 `complex/False` audit tables.
 
-### RTF files still pending from Prateek:
-- BPHS Ch 39–41
-- BPHS Ch 43–44
-- 300 Important Combinations
+### Source files status (26 Apr 2026):
+- BPHS Ch 39 ✅ ingested and validated
+- BPHS Ch 40 — **PDF on disk**, ready to ingest: `BPHS_Ch40_Yogas for Royal Association.pdf`
+- BPHS Ch 41 — **PDF on disk**, ready to ingest: `BPHS_Ch41_Yogas for wealth.pdf`
+- BPHS Ch 43–44 — not yet confirmed on disk; ask Prateek
+- 300 Important Combinations — **PDF on disk**: `300_Important_Combinations_BV_Raman.pdf`
 
 ### ⚠️ Phase 2 Schema Enrichment — physical_markers + yoga_check backfill (DEFERRED)
 
@@ -566,36 +582,57 @@ Ch 59 slokas 20-21 and 41-42 both showed dry runs (1 and 2 rules) vs live (4 rul
 
 ---
 
-## 10. RTF Files Available
+## 10. Source Files on Disk
 
 Location: `/Users/apple/Documents/Knowledge Engine_eBooks/`
 
-Confirmed available:
-- BPHS Ch 57, 58, 59 Vol 2 ✅
-- BPHS Ch 56 Vol 2 ✅
+### Yoga chapters — available for immediate ingestion:
 
-Pending from Prateek:
-- BPHS Ch 60 (next in sequence)
-- BPHS Ch 52, 53, 54, 55 (in DB but RTF status unclear)
-- Lal Kitab, Longevity, Text-Book of Astrology — OCR batches in DB, RTF files not prepared
+| File | Format | Status |
+|---|---|---|
+| `BPHS_Ch35_Nabhasa Yogas.rtf` | RTF | ✅ ingested (Ch 35 done) |
+| `BPHS_Ch36_Many Other Yogas.rtf` | RTF | ✅ ingested (Ch 36 done) |
+| `BPHS_Ch37_Lunaryogas.pdf` | PDF | ✅ ingested (Ch 37 done) |
+| `BPHS-Ch38_SolarYogas.pdf` | PDF | ✅ ingested (Ch 38 done) |
+| `BPHS_Ch39_Raja Yogas.rtf` | RTF | ✅ ingested (Ch 39 done) |
+| `BPHS_Ch40_Yogas for Royal Association.pdf` | **PDF** | 🔜 **NEXT — ready to ingest** |
+| `BPHS_Ch41_Yogas for wealth.pdf` | **PDF** | 🔜 ready to ingest after Ch 40 |
+| `300_Important_Combinations_BV_Raman.pdf` | **PDF** | 🔜 ready (large — assess size first) |
+
+### Dasha chapters — all ingested:
+
+BPHS Ch 47/48/52/53/54/55/56/57/58/59/60 — all in `horoscope_db`. RTFs in eBooks folder.
+Ch 61 RTF: `BPHS_ch 61_Vol2.rtf` — available but not yet ingested.
+
+### TBA (Text-Book of Astrology):
+- Ch 15 (Planets in Houses/Signs): ingested, NOT validated → `tba-ch15-v1-20260424`
+- Ch 16 (Yogas): ✅ fully validated → `tba-ch16-v1-20260425`
+- Full TBA source: `ATextBookOfAstrology/` folder in eBooks
 
 ---
 
-## 11. Git Status
+## 11. Git Status — as of Session 8 end (26 Apr 2026)
 
 Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
 Branch: `main` (deploy-on-push to Vercel + Render)
-Last committed: `f07589f` — `feat(ke): add dignity_state and planet_context_note to extraction schema`
 
-**Uncommitted local changes (as of end of Session 4):**
-- `backend/scripts/ingest_bphs_dasha_v1.py` — ANTI-COLLISION RULE + LORDSHIP QUALIFIER COMPOUND RULES + `--sloka-filter` flag + moderate strength_band override + `dignity_state` default to "general"
-- `.claude/HANDOVER.md` — this document
-- `backend/scripts/INGEST_NOTES.md` — Ch 52/53/54 split-upgrade records, grand total update
+**Last commits (most recent first):**
+```
+fcb8a4f docs(knowledge-engine): add BPHS Ch 39 validation results to HANDOVER + INGEST_NOTES
+34f70dc fix(knowledge-engine): fix Ch39 schema — batch_id nested under source{}
+44bf0a9 feat(knowledge-engine): ingest BPHS Ch 39 Raja Yogas — 50 rules
+31968cf docs(knowledge-engine): complete complex/False audit for BPHS Ch 35–38
+afa8201 feat(knowledge-engine): yoga_check reclassification — complex → multi_house_requirements
+```
+
+**Uncommitted local changes (⚠️ commit before next ingest):**
+- `backend/scripts/ingest_bphs_dasha_v1.py` — 40 lines of Session 8 changes (unrelated to yoga track but should not be lost)
 
 **Action required at next session start:**
 ```bash
 cd /Users/apple/DailyHoroscope-Migration
 git log --oneline -5        # confirm current state
 git diff --stat             # confirm uncommitted changes
-# then commit the script + doc updates before running any new ingests
+git add backend/scripts/ingest_bphs_dasha_v1.py
+git commit -m "chore(knowledge-engine): ingest_bphs_dasha_v1 session-8 changes"
 ```
