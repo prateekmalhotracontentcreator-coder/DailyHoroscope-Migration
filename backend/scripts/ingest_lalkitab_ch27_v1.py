@@ -514,7 +514,7 @@ TRANSFER_DATA = [
      "House 6 (enemies/disease/debt) — dropping in a well removes the negative energy "
      "associated with the planet's difficult placement in the 6th."),
     (7,  "House 7",   "Bury the object under the ground.",
-     "House 7 (spouse/partnership/open enemies) — burying grounds and neutralises "
+     "House 7 (spouse/partnership/open enemies) — burying the object in the ground neutralises "
      "the conflicting energy of the planet in the partnership house."),
     (8,  "House 8",   "Bury the object at the pyre ground.",
      "House 8 (death/transformation/hidden matters) — the pyre ground is the appropriate "
