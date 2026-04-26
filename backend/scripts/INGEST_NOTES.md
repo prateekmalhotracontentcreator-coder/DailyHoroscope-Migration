@@ -1962,6 +1962,94 @@ Note: Low auto-approved % (25%) expected for a 4-rule chapter — small batches 
 
 ---
 
+## BPHS Chapter 39 — Raja Yogas
+
+**Batch ID:** `bphs-ch39-v1-20260426`
+**Script:** `scripts/ingest_bphs_ch39_v1.py`
+**Dry-run JSON:** `scripts/bphs_ch39_rules.json`
+**Commits:** `44bf0a9` (initial, wrong schema) → `34f70dc` (schema fix: batch_id under source{})
+
+### Source structure
+
+50 rules total — hard-coded from RTF, zero AI extraction cost.
+
+| Group | Rules | Notes |
+|---|---|---|
+| Framework / General Principle | 1 | Slokas 3-5 — Karakamsa + natal Lagna as twin reference points |
+| Maha Raja Yoga | 1 | Slokas 6-7 — supreme Raja Yoga (sign exchange OR Atmakaraka placement) |
+| Karakamsa & Jaimini Raja Yogas | 15 | Slokas 8-16, 22-23, 26-27 — Atmakaraka, Arudha Pada, special Lagnas |
+| Positional Raja Yogas | 10 | Slokas 17-21, 28-31 — includes 2 checkable rules |
+| Lord Conjunction Raja Yogas | 9 | Slokas 33-39 — 5th/9th/4th/10th lord combinations |
+| Birth Time & Named Yogas | 3 | Sloka 40 — Koteeswara, Lakshadheew, Dinardha/Nisardha birth |
+| Mutual Position Yogas | 2 | Sloka 41 — Moon + Venus mutual 3/11 or mutual aspect |
+| Dignity & Count Raja Yogas | 9 | Slokas 42-48 — Vargothamsa, exaltation counts, 1 checkable |
+| **Total** | **50** | |
+
+### Schema fix — batch_id nesting (26 Apr 2026)
+
+First upload used wrong schema (`batch_id` at document root). Correct schema
+nests it under `source.batch_id` (consistent with Ch 36–38). Bad docs deleted,
+corrected JSON re-uploaded. Fix committed at `34f70dc`.
+
+### yoga_check coverage — 3 / 50 checkable (6%)
+
+Chapter is overwhelmingly Jaimini-based and lord-heavy — 6% checkable is
+expected and correct.
+
+| yoga_check.type | Rules | Checkable |
+|---|---|---|
+| `multi_house_requirements` | bphs-ch39-012, bphs-ch39-050 | ✅ True |
+| `benefics_in_houses` | bphs-ch39-017 | ✅ True |
+| `complex` (47 rules) | All others | ❌ False |
+
+**Checkable rules:**
+
+| Rule ID | Yoga | Formation |
+|---|---|---|
+| bphs-ch39-012 | Benefics in 1-2-4, Malefic in 3 | benefic∈{1,2,4} ∧ malefic∈{3} |
+| bphs-ch39-017 | Benefics in Angles | benefic∈{1,4,7,10} |
+| bphs-ch39-050 | Benefics in Angles, Malefics in 3-6-11 | benefic∈{1,4,7,10} ∧ malefic∈{3,6,11} |
+
+**complex/False blocker distribution (47 rules):**
+
+| Blocker | Meaning | Rule count |
+|---|---|---|
+| K — Karakamsa/Jaimini | Atmakaraka, Karakamsa Lagna, Arudha Pada, Darapada, Hora/Ghatika Lagna | 15 |
+| L — Lord identification | Which planet rules house N? | 13 |
+| D — Dignity/strength | Own sign, exaltation, moolatrikona, debilitation | 10 |
+| V — Divisional charts | Shadvarga, Drekkana, Navamsa, Uttamamsa, Vargothamsa | 7 |
+| A — Mutual aspect | Aspect detection between planets | 8 |
+| T — Birth time | Dinardha/Nisardha — not a chart position | 1 |
+| R — Relative position | Planet-to-planet house distance (Moon↔Venus) | 1 |
+
+*(Many rules have multiple blockers — counts above reflect primary blocker.)*
+
+**Phase 2 promotion paths:**
+- **Lord identification unlocked** → 13 rules (031–036, 028–030 etc.) → new type `planet_in_house_from_lord`
+- **Dignity checks** → 10 rules (exaltation-count series 044–049 + dignity-based 013–016) → new type `planets_in_dignity_count`
+- **Jaimini engine** → 15 rules — lowest priority; requires full Jaimini implementation
+- **D-9/Navamsa** → partially overlaps Jaimini rules
+- **Birth time** → 1 rule (037) — already computed by panchang_router.py; Phase 2 link to birth chart engine
+
+### Validation — COMPLETE (26 Apr 2026)
+
+Single-pass — zero structural failures.
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 41 | 82% |
+| `pending_human_review` | 6 | 12% |
+| `flagged` | 3 | 6% |
+| Contradictions | 0 | — |
+| **Total** | **50** | |
+
+**82% auto-approved** is the best ratio of any yoga chapter ingested to date.
+High auto-approve rate reflects the uniform `raja_yoga` group + consistent
+`complex/False` yoga_check across 47 rules — the validator has strong
+cross-rule signal within the batch.
+
+---
+
 ## yoga_check Type: `multi_house_requirements` — Specification (26 Apr 2026)
 
 **Introduced:** BPHS Ch 35 (Vajra / Yava promotion), formalised from Matsya Yoga (Ch 36).

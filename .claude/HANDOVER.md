@@ -1,5 +1,5 @@
 # Knowledge Engine — Session Handover
-> Last updated: 26 Apr 2026 (yoga_check audit complete — Ch 35–38 all complex/False rules classified; 4 promoted, 21 confirmed non-promotable with Phase 2 roadmap)
+> Last updated: 26 Apr 2026 (BPHS Ch 39 Raja Yogas live + validated — 50 rules, 41 auto / 6 PHR / 3 flagged, 82% auto-approved)
 > Written at end of Session 4 (context compressed multiple times); updated Sessions 5–7
 > Next session: read this FIRST before touching any script or DB
 
@@ -128,6 +128,7 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 | BPHS Ch 36 (Many Other Yogas) | bphs-ch36-v1-20260426 | 32 | — | ✅ **fully validated** (26 Apr) — 13 auto / 17 PHR / 2 flagged — 0 contradictions · Matsya + Parvata promoted to `multi_house_requirements` (26 Apr) |
 | BPHS Ch 37 (Lunar Yogas) | bphs-ch37-v1-20260426 | 14 | — | ✅ **fully validated** (26 Apr) — 9 auto / 3 PHR / 2 flagged — 0 contradictions |
 | BPHS Ch 38 (Solar Yogas) | bphs-ch38-v1-20260426 | 4 | — | ✅ **fully validated** (26 Apr) — 1 auto / 2 PHR / 1 flagged — 0 contradictions |
+| BPHS Ch 39 (Raja Yogas) | bphs-ch39-v1-20260426 | 50 | — | ✅ **fully validated** (26 Apr) — 41 auto / 6 PHR / 3 flagged — 0 contradictions · 82% auto-approved (best ratio any yoga chapter) |
 
 ---
 
