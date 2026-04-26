@@ -1,0 +1,361 @@
+[
+  {
+    "rule_id": "bphs-ch38-001",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 38,
+      "chapter_name": "Solar Yogas",
+      "sloka": "ch38-sl01-03-vesi",
+      "batch_id": "bphs-ch38-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Vesi Yoga",
+      "yoga_group": "solar_yoga",
+      "yoga_group_label": "Solar Yogas (Vesi / Vosi / Ubhayachari)",
+      "planets_involved": [],
+      "houses_involved": [
+        2
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch38-solar_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_in_house_from_sun",
+        "checkable": true,
+        "house": 2,
+        "exclude_planets": [
+          "Moon"
+        ],
+        "description": "Any planet except the Moon must occupy the 2nd house counted from the Sun's sign. Mars, Mercury, Jupiter, Venus, Saturn, Rahu, or Ketu in the 2nd from the Sun qualifies. Cross-ref: Sunapha Yoga (bphs-ch37-011) — identical structure with Moon as reference."
+      }
+    },
+    "interpretation": {
+      "summary": "Vesi Yoga — One born in Vesi yoga will be even-sighted, truthful, long-bodied, indolent, happy, and endowed with negligible wealth. Effects are mixed — positive character traits alongside limited material prosper...",
+      "detailed": "Yoga: Vesi Yoga [Solar Yogas (Vesi / Vosi / Ubhayachari)]\n\nFormation: A planet other than the Moon occupies the 2nd house from the Sun's sign. Any non-Moon planet (Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) in the 2nd from the Sun qualifies. Benefics in this position give the stated effects; malefics produce contrary results (see modifier rule bphs-ch38-004). Solar counterpart of Sunapha Yoga (bphs-ch37-011).\n\nEffect: One born in Vesi yoga will be even-sighted, truthful, long-bodied, indolent, happy, and endowed with negligible wealth. Effects are mixed — positive character traits alongside limited material prosperity and a tendency toward indolence.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Vesi Yoga [Solar Yogas (Vesi / Vosi / Ubhayachari)]\n\nFormation: A planet other than the Moon occupies the 2nd house from the Sun's sign. Any non-Moon planet (Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) in the 2nd from the Sun qualifies. Benefics in this position give the stated effects; malefics produce contrary results (see modifier rule bphs-ch38-004). Solar counterpart of Sunapha Yoga (bphs-ch37-011).\n\nEffect: One born in Vesi yoga will be even-sighted, truthful, long-bodied, indolent, happy, and endowed with negligible wealth. Effects are mixed — positive character traits alongside limited material prosperity and a tendency toward indolence.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "character",
+      "life_domains": [
+        "character",
+        "happiness",
+        "wealth"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter38",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch38-solar_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        2
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch38-solar_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T01:09:37.661460+00:00"
+  },
+  {
+    "rule_id": "bphs-ch38-002",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 38,
+      "chapter_name": "Solar Yogas",
+      "sloka": "ch38-sl01-03-vosi",
+      "batch_id": "bphs-ch38-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Vosi Yoga",
+      "yoga_group": "solar_yoga",
+      "yoga_group_label": "Solar Yogas (Vesi / Vosi / Ubhayachari)",
+      "planets_involved": [],
+      "houses_involved": [
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch38-solar_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_in_house_from_sun",
+        "checkable": true,
+        "house": 12,
+        "exclude_planets": [
+          "Moon"
+        ],
+        "description": "Any planet except the Moon must occupy the 12th house counted from the Sun's sign. Cross-ref: Anapha Yoga (bphs-ch37-012) — identical structure with Moon as reference."
+      }
+    },
+    "interpretation": {
+      "summary": "Vosi Yoga — One born with Vosi yoga will be skilful, charitable, and endowed with fame, learning, and strength.",
+      "detailed": "Yoga: Vosi Yoga [Solar Yogas (Vesi / Vosi / Ubhayachari)]\n\nFormation: A planet other than the Moon occupies the 12th house from the Sun's sign. Benefics in this position give the stated effects; malefics produce contrary results. Solar counterpart of Anapha Yoga (bphs-ch37-012).\n\nEffect: One born with Vosi yoga will be skilful, charitable, and endowed with fame, learning, and strength.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Vosi Yoga [Solar Yogas (Vesi / Vosi / Ubhayachari)]\n\nFormation: A planet other than the Moon occupies the 12th house from the Sun's sign. Benefics in this position give the stated effects; malefics produce contrary results. Solar counterpart of Anapha Yoga (bphs-ch37-012).\n\nEffect: One born with Vosi yoga will be skilful, charitable, and endowed with fame, learning, and strength.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "career",
+      "life_domains": [
+        "career",
+        "fame",
+        "scholarship",
+        "character"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter38",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch38-solar_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch38-solar_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T01:09:37.661874+00:00"
+  },
+  {
+    "rule_id": "bphs-ch38-003",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 38,
+      "chapter_name": "Solar Yogas",
+      "sloka": "ch38-sl01-03-ubhayachari",
+      "batch_id": "bphs-ch38-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Ubhayachari Yoga",
+      "yoga_group": "solar_yoga",
+      "yoga_group_label": "Solar Yogas (Vesi / Vosi / Ubhayachari)",
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch38-solar_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_in_house_from_sun",
+        "checkable": true,
+        "houses": [
+          2,
+          12
+        ],
+        "operator": "and",
+        "exclude_planets": [
+          "Moon"
+        ],
+        "description": "Non-Moon planets must occupy BOTH the 2nd AND the 12th house from the Sun simultaneously. Compound of Vesi + Vosi. Both positions must be filled by non-Moon planets. Cross-ref: Duradhara (bphs-ch37-013) and tba16-003 (Ubhaychari Yoga)."
+      }
+    },
+    "interpretation": {
+      "summary": "Ubhayachari Yoga — The Ubhayachari native will be a king or equal to a king and be happy.",
+      "detailed": "Yoga: Ubhayachari Yoga [Solar Yogas (Vesi / Vosi / Ubhayachari)]\n\nFormation: Planets other than the Moon occupy BOTH the 2nd and the 12th houses from the Sun simultaneously. This is the combined form of Vesi (planet in 2nd from Sun) and Vosi (planet in 12th from Sun). Solar counterpart of Duradhara Yoga (bphs-ch37-013). Cross-ref: tba16-003 (Ubhaychari Yoga in TBA Ch 16) — same formation, same name.\n\nEffect: The Ubhayachari native will be a king or equal to a king and be happy.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Ubhayachari Yoga [Solar Yogas (Vesi / Vosi / Ubhayachari)]\n\nFormation: Planets other than the Moon occupy BOTH the 2nd and the 12th houses from the Sun simultaneously. This is the combined form of Vesi (planet in 2nd from Sun) and Vosi (planet in 12th from Sun). Solar counterpart of Duradhara Yoga (bphs-ch37-013). Cross-ref: tba16-003 (Ubhaychari Yoga in TBA Ch 16) — same formation, same name.\n\nEffect: The Ubhayachari native will be a king or equal to a king and be happy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "happiness",
+        "power"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter38",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch38-solar_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch38-solar_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T01:09:37.661883+00:00"
+  },
+  {
+    "rule_id": "bphs-ch38-004",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 38,
+      "chapter_name": "Solar Yogas",
+      "sloka": "ch38-sl04-modifier",
+      "batch_id": "bphs-ch38-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Solar Yoga Benefic/Malefic Modifier",
+      "yoga_group": "solar_yoga",
+      "yoga_group_label": "Solar Yogas (Vesi / Vosi / Ubhayachari)",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch38-solar_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Qualifying modifier for all three solar yogas (Vesi/Vosi/Ubhayachari). Determine the nature of the participating planet — natural benefic or malefic — to assess whether stated effects or contrary effects apply. Phase 2: implement as a planet-nature check layered on the base yoga."
+      }
+    },
+    "interpretation": {
+      "summary": "Solar Yoga Benefic/Malefic Modifier — Benefics (Jupiter, Venus, Mercury, waxing Moon) forming these solar yogas will give the effects described — even-sighted, truthful, charitable, fame, kingly status, etc. Malefics (Sun, Mars, Saturn, R...",
+      "detailed": "Yoga: Solar Yoga Benefic/Malefic Modifier [Solar Yogas (Vesi / Vosi / Ubhayachari)]\n\nFormation: The nature of the planet forming Vesi, Vosi, or Ubhayachari yoga determines the quality of results. This rule modifies all three solar yogas based on the planet type.\n\nEffect: Benefics (Jupiter, Venus, Mercury, waxing Moon) forming these solar yogas will give the effects described — even-sighted, truthful, charitable, fame, kingly status, etc. Malefics (Sun, Mars, Saturn, Rahu, Ketu, waning Moon) will produce contrary effects — the reverse of the stated beneficial qualities.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Solar Yoga Benefic/Malefic Modifier [Solar Yogas (Vesi / Vosi / Ubhayachari)]\n\nFormation: The nature of the planet forming Vesi, Vosi, or Ubhayachari yoga determines the quality of results. This rule modifies all three solar yogas based on the planet type.\n\nEffect: Benefics (Jupiter, Venus, Mercury, waxing Moon) forming these solar yogas will give the effects described — even-sighted, truthful, charitable, fame, kingly status, etc. Malefics (Sun, Mars, Saturn, Rahu, Ketu, waning Moon) will produce contrary effects — the reverse of the stated beneficial qualities.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "character",
+      "life_domains": [
+        "character",
+        "wealth",
+        "fame",
+        "royalty"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter38",
+        "general_principle",
+        "yoga_formation",
+        "group:bphs-ch38-solar_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch38-solar_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T01:09:37.661894+00:00"
+  }
+]
