@@ -1708,7 +1708,7 @@ Hard-coded from RTF — zero AI extraction cost (first fully hand-coded chapter)
 | General | Meta-rule (dasa persistence) | 1 |
 | **Total** | | **33** |
 
-### yoga_check coverage — 29 / 33 checkable (best ratio any chapter)
+### yoga_check coverage — 31 / 33 checkable *(updated 26 Apr 2026)*
 
 | yoga_check.type | Yogas | Checkable |
 |---|---|---|
@@ -1717,11 +1717,15 @@ Hard-coded from RTF — zero AI extraction cost (first fully hand-coded chapter)
 | `all_planets_in_houses` | Gada, Sakata, Vihaga, Sringataka, Hala, Kamala, Vapi, Yupa, Sara, Sakthi, Danda, Nauka, Koota, Chatra, Chapa | ✅ True |
 | `all_planets_in_alt_signs` | Chakra, Samudra | ✅ True |
 | `planets_in_n_signs` | Gola, Yuga, Soola, Kedara, Paasa, Dama, Veena | ✅ True |
-| `complex` | Vajra, Yava, Ardha Chandra, Meta-rule | ❌ False |
+| `multi_house_requirements` | **Vajra**, **Yava** | ✅ True — promoted from `complex` (26 Apr 2026) |
+| `complex` | Ardha Chandra, Meta-rule | ❌ False |
 
-**Complex flags (4 rules):**
-- **Vajra Yoga** (bphs-ch35-011): Compound condition — all benefics in {1,7} + malefics in {4,10} OR vice versa. Phase 2 fix.
-- **Yava Yoga** (bphs-ch35-012): Opposite of Vajra — same compound structure. Phase 2 fix.
+**`multi_house_requirements` schema** (new type introduced Ch 35):
+Each `house_requirements` entry: `{houses, planet_type, constraint}`.
+`constraint`: `"present"` (≥1 planet of type in any of these houses) · `"absent"` (0 planets).
+`operator`: `"and"` (all requirements must hold simultaneously).
+
+**Remaining `complex` flags (2 rules):**
 - **Ardha Chandra Yoga** (bphs-ch35-023): Formation not explicitly stated in this RTF. Cross-reference needed.
 - **Meta-rule** (bphs-ch35-033): General principle — not a checkable yoga condition.
 
@@ -1779,7 +1783,7 @@ Two yogas were found during RTF review after the initial dry run and added befor
 - Optimal form: Mercury in 6th, Jupiter in 7th, Venus in 8th from Moon
 - yoga_check: `benefics_in_houses`, reference: Moon, checkable=True
 
-### yoga_check coverage — 9 / 32 checkable
+### yoga_check coverage — 12 / 32 checkable *(updated 26 Apr 2026)*
 
 | yoga_check.type | Yogas | Checkable |
 |---|---|---|
@@ -1788,9 +1792,13 @@ Two yogas were found during RTF review after the initial dry run and added befor
 | `planet_in_kendra_from` | Gajakesari, Hamsa | ✅ True |
 | `benefic_only_in_house` | Amala | ✅ True |
 | `planet_in_house` | Kalanidhi | ✅ True |
-| `complex` (checkable=**True**) | **Matsya** | ✅ True — has fully enumerated `house_requirements` field; type is a misnomer (should be `multi_house_requirements`). Phase 2: rename type. |
-| `complex` (checkable=False) | Parvata, Kahala, Chamara, Sankha, Bheri, Mridanga, Srinatha, Sarada, Koorma, Khadga, Lakshmi, Kusuma, Kalpadruma, Hari, Hara, Brahma | ❌ False |
+| `multi_house_requirements` | **Matsya**, **Parvata** | ✅ True — both promoted from `complex` (26 Apr 2026) |
+| `complex` (checkable=False) | Kahala, Chamara, Sankha, Bheri, Mridanga, Srinatha, Sarada, Koorma, Khadga, Lakshmi, Kusuma, Kalpadruma, Hari, Hara, Brahma | ❌ False — require lord positions, Navamsa, or strength calculations |
 | `divisional_dignity` | All 7 divisional rules | ❌ False |
+
+**Promotion notes (26 Apr 2026):**
+- **Matsya** (bphs-ch36-014): type renamed `complex` → `multi_house_requirements`; `house_requirements` field already existed. No structural change to data.
+- **Parvata** (bphs-ch36-006): Promoted from `complex`/False. Condition is purely positional: benefics in angles + no malefics in houses 7–8. `house_requirements` added with `constraint: "absent"` on the malefic restriction.
 
 ### Validation — COMPLETE (26 Apr 2026)
 
@@ -1904,5 +1912,67 @@ Single-pass — zero structural failures.
 | **Total** | **4** | |
 
 Note: Low auto-approved % (25%) expected for a 4-rule chapter — small batches give the validator limited cross-rule signal. The 1 flagged rule likely relates to the general_principle modifier (rule 004) which has no direct checkable condition.
+
+---
+
+## yoga_check Type: `multi_house_requirements` — Specification (26 Apr 2026)
+
+**Introduced:** BPHS Ch 35 (Vajra / Yava promotion), formalised from Matsya Yoga (Ch 36).
+
+### When to use
+
+Apply `multi_house_requirements` when yoga detection requires evaluating planet-type occupancy across multiple **distinct** house groups simultaneously. All requirements are joined by `operator` (default `"and"`).
+
+Distinguishing test:
+- Single-group house check → use `benefics_in_houses` / `malefics_in_houses`
+- Multiple-group house checks (AND/OR) → use `multi_house_requirements`
+
+### Schema
+
+```json
+{
+  "type": "multi_house_requirements",
+  "checkable": true,
+  "description": "...",
+  "operator": "and",
+  "house_requirements": [
+    {
+      "houses": [1, 7],
+      "planet_type": "benefic",
+      "constraint": "present"
+    },
+    {
+      "houses": [4, 10],
+      "planet_type": "malefic",
+      "constraint": "present"
+    }
+  ]
+}
+```
+
+### Field reference
+
+| Field | Values | Notes |
+|---|---|---|
+| `houses` | list of house ints | Evaluated as a group — any of these houses |
+| `planet_type` | `"benefic"` · `"malefic"` · `"mixed"` | `"mixed"` = at least one benefic AND one malefic present |
+| `constraint` | `"present"` (default) · `"absent"` | `"present"` = ≥1 planet of type in any house in the list; `"absent"` = 0 planets of type in any house in the list |
+| `operator` | `"and"` (default) | How requirements are combined |
+
+### Rules using this type (Ch 35–36)
+
+| Rule ID | Yoga | house_requirements summary |
+|---|---|---|
+| bphs-ch35-011 | Vajra Yoga | benefic in {1,7} AND malefic in {4,10} |
+| bphs-ch35-012 | Yava Yoga | benefic in {4,10} AND malefic in {1,7} |
+| bphs-ch36-006 | Parvata Yoga | benefic in {1,4,7,10} AND malefic absent from {7,8} |
+| bphs-ch36-014 | Matsya Yoga | benefic in {1,9} AND mixed in {5} AND malefic in {4,8} |
+
+### MongoDB patch
+
+Reclassification committed to JSON files and applied via:
+```
+backend/scripts/patch_yoga_check_reclassify.py --mongo-url $MONGO_URL --db-name horoscope_db
+```
 
 ---

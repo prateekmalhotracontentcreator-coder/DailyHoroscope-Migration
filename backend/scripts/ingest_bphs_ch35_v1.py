@@ -313,14 +313,18 @@ YOGA_DATA: list[dict] = [
         "is_benefic":  False,
         "life_domains": ["character", "happiness", "hardship"],
         "yoga_check": {
-            "type":        "complex",
-            "checkable":   False,
+            "type":        "multi_house_requirements",
+            "checkable":   True,
             "description": (
-                "Compound condition requiring simultaneous tracking of benefic and malefic "
-                "planet positions across two house pairs: all benefics in {1,7} + all malefics "
-                "in {4,10}; OR all benefics in {4,10} + all malefics in {1,7}. "
-                "Phase 2: implement as compound 'angles_by_planet_type' with two clauses."
+                "Natural benefics placed in houses 1 and 7 (horizon axis); "
+                "natural malefics placed in houses 4 and 10 (meridian axis). "
+                "All conditions evaluated from the ascendant."
             ),
+            "operator": "and",
+            "house_requirements": [
+                {"houses": [1, 7],  "planet_type": "benefic", "constraint": "present"},
+                {"houses": [4, 10], "planet_type": "malefic", "constraint": "present"},
+            ],
         },
     },
     {
@@ -339,13 +343,18 @@ YOGA_DATA: list[dict] = [
         "is_benefic":  True,
         "life_domains": ["spirituality", "wealth", "family"],
         "yoga_check": {
-            "type":        "complex",
-            "checkable":   False,
+            "type":        "multi_house_requirements",
+            "checkable":   True,
             "description": (
-                "Compound condition opposite to Vajra Yoga: all benefics in {4,10} + "
-                "all malefics in {1,7}; OR all benefics in {1,7} + all malefics in {4,10}. "
-                "Phase 2: implement as compound 'angles_by_planet_type' with two clauses."
+                "Natural benefics placed in houses 4 and 10 (meridian axis); "
+                "natural malefics placed in houses 1 and 7 (horizon axis). "
+                "Mirror formation of Vajra Yoga."
             ),
+            "operator": "and",
+            "house_requirements": [
+                {"houses": [4, 10], "planet_type": "benefic", "constraint": "present"},
+                {"houses": [1, 7],  "planet_type": "malefic", "constraint": "present"},
+            ],
         },
     },
     {

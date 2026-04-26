@@ -1,5 +1,5 @@
 # Knowledge Engine — Session Handover
-> Last updated: 26 Apr 2026 (BPHS Ch 38 Solar Yogas live + validated — 4 rules, 1 auto / 2 PHR / 1 flagged)
+> Last updated: 26 Apr 2026 (yoga_check reclassification — 4 rules promoted from complex → multi_house_requirements; patch script ready)
 > Written at end of Session 4 (context compressed multiple times); updated Sessions 5–7
 > Next session: read this FIRST before touching any script or DB
 
@@ -124,8 +124,8 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 | BPHS Vol 2 Ch 60 (Venus MD) | bphs-ch60-dasha-20260424 | 182 | +12 ✅ | split-upgrade complete (24 Apr) — **194 rules total** — not validated |
 | TBA Ch 15 (Planets in Houses/Signs) | tba-ch15-v1-20260424 | 1,530 | — | ✅ ingested (24 Apr) — not validated — ⚠️ Mars-H03 flag (see INGEST_NOTES) |
 | TBA Ch 16 (Yogas) | tba-ch16-v1-20260425 | 129 | — | ✅ **fully validated** (26 Apr) — 86 auto_approved / 35 PHR / 8 flagged — ⚠️ tba16-003 yoga_check flag (see §9) |
-| BPHS Ch 35 (Nabhasa Yogas) | bphs-ch35-v1-20260426 | 33 | — | ✅ **fully validated** (26 Apr) — 25 auto / 6 PHR / 2 flagged — 0 contradictions |
-| BPHS Ch 36 (Many Other Yogas) | bphs-ch36-v1-20260426 | 32 | — | ✅ **fully validated** (26 Apr) — 13 auto / 17 PHR / 2 flagged — 0 contradictions |
+| BPHS Ch 35 (Nabhasa Yogas) | bphs-ch35-v1-20260426 | 33 | — | ✅ **fully validated** (26 Apr) — 25 auto / 6 PHR / 2 flagged — 0 contradictions · Vajra + Yava promoted to `multi_house_requirements` (26 Apr) |
+| BPHS Ch 36 (Many Other Yogas) | bphs-ch36-v1-20260426 | 32 | — | ✅ **fully validated** (26 Apr) — 13 auto / 17 PHR / 2 flagged — 0 contradictions · Matsya + Parvata promoted to `multi_house_requirements` (26 Apr) |
 | BPHS Ch 37 (Lunar Yogas) | bphs-ch37-v1-20260426 | 14 | — | ✅ **fully validated** (26 Apr) — 9 auto / 3 PHR / 2 flagged — 0 contradictions |
 | BPHS Ch 38 (Solar Yogas) | bphs-ch38-v1-20260426 | 4 | — | ✅ **fully validated** (26 Apr) — 1 auto / 2 PHR / 1 flagged — 0 contradictions |
 
@@ -234,7 +234,7 @@ Apply run + validation confirmed:
 | yoga_check.type | complex |
 | yoga_check.checkable | False |
 | Issue | Condition is "Planets other than Moon on BOTH sides of Sun simultaneously" (2nd AND 12th from Sun). Each side is individually checkable as `any_planet_relative`, but the compound AND requirement was flagged as `complex`. |
-| Fix path | Phase 2 `enrich_rules.py` — implement as compound `yoga_check` with two `any_planet_relative` clauses joined by operator=AND, or add a new `compound_relative_position` check type. |
+| Fix path | Promote to `planet_in_house_from_sun` with `houses: [2, 12]` and `operator: "both"` — equivalent to BPHS Ch 38 Ubhayachari (bphs-ch38-003). Or use `multi_house_requirements` with two `planet_in_house_from_sun` clauses. Cross-ref: bphs-ch38-003. |
 | Priority | Low — rule is still usable for report generation; only runtime detection (yoga_check) is affected. |
 
 ### RTF files still pending from Prateek:
