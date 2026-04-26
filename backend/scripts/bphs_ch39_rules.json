@@ -1,14 +1,18 @@
 [
   {
     "rule_id": "bphs-ch39-001",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-framework",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326084+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-framework",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "general_principle",
       "sub_type": "yoga_formation",
@@ -34,27 +38,61 @@
       }
     },
     "interpretation": {
-      "brief": "Framework rule — determines which planetary pairs and reference points to use when assessing the strength and maturity o",
+      "summary": "Framework rule — determines which planetary pairs and reference points to use when assessing the strength and maturity o",
       "detailed": "Formation: Raja Yogas are to be evaluated from two reference points: (1) the Karakamsa Lagna (Navamsa sign of the Atmakaraka) and (2) the natal ascendant. From the Karakamsa reference, the Atmakaraka and Putrakaraka (Chara Karaka, 6th in the Karakamsa scheme) are the key planets. From the natal ascendant, the ascendant lord and 5th lord are the key planets. The 5th lord is equated in importance to the 9th lord for Raja Yoga analysis. Effects are full, half, or quarter according to the strength of the participating planets.\n\nEffect: Framework rule — determines which planetary pairs and reference points to use when assessing the strength and maturity of any Raja Yoga in the horoscope.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Raja Yogas are to be evaluated from two reference points: (1) the Karakamsa Lagna (Navamsa sign of the Atmakaraka) and (2) the natal ascendant. From the Karakamsa reference, the Atmakaraka and Putrakaraka (Chara Karaka, 6th in the Karakamsa scheme) are the key planets. From the natal ascendant, the ascendant lord and 5th lord are the key planets. The 5th lord is equated in importance to the 9th lord for Raja Yoga analysis. Effects are full, half, or quarter according to the strength of the participating planets.\n\nEffect: Framework rule — determines which planetary pairs and reference points to use when assessing the strength and maturity of any Raja Yoga in the horoscope.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "power",
         "leadership"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:framework"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-framework",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.906957+00:00"
   },
   {
     "rule_id": "bphs-ch39-002",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-maha-raja-yoga",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326667+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-maha-raja-yoga",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -82,28 +120,62 @@
       }
     },
     "interpretation": {
-      "brief": "The native will be famous and happy. Considered the supreme Raja Yoga — bestows the highest status and recognition.",
+      "summary": "The native will be famous and happy. Considered the supreme Raja Yoga — bestows the highest status and recognition.",
       "detailed": "Formation: Condition A: Ascendant lord and 5th lord exchange their signs (Parivartana Yoga between houses 1 and 5). Condition B: Atmakaraka and Putrakaraka (Chara Karaka) are together in the natal ascendant or 5th house (or Karakamsa Lagna and 5th therefrom), OR separately in their exaltation/own/own Navamsa signs and aspected by a natural benefic.\n\nEffect: The native will be famous and happy. Considered the supreme Raja Yoga — bestows the highest status and recognition.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Condition A: Ascendant lord and 5th lord exchange their signs (Parivartana Yoga between houses 1 and 5). Condition B: Atmakaraka and Putrakaraka (Chara Karaka) are together in the natal ascendant or 5th house (or Karakamsa Lagna and 5th therefrom), OR separately in their exaltation/own/own Navamsa signs and aspected by a natural benefic.\n\nEffect: The native will be famous and happy. Considered the supreme Raja Yoga — bestows the highest status and recognition.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "fame",
       "life_domains": [
         "fame",
         "status",
         "royalty",
         "happiness"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:maha_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-maha_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907455+00:00"
   },
   {
     "rule_id": "bphs-ch39-003",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-08",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326677+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-08",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -129,26 +201,60 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is formed; the native attains high status.",
+      "summary": "A Raja yoga is formed; the native attains high status.",
       "detailed": "Formation: The natal ascendant lord and the Atmakaraka are conjunct in the ascendant, 5th, or 7th house, with a natural benefic in conjunction with or aspecting them. If the ascendant lord himself is the Atmakaraka, his placement in the 1st, 5th, or 7th with a benefic suffices.\n\nEffect: A Raja yoga is formed; the native attains high status.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The natal ascendant lord and the Atmakaraka are conjunct in the ascendant, 5th, or 7th house, with a natural benefic in conjunction with or aspecting them. If the ascendant lord himself is the Atmakaraka, his placement in the 1st, 5th, or 7th with a benefic suffices.\n\nEffect: A Raja yoga is formed; the native attains high status.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "power"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907463+00:00"
   },
   {
     "rule_id": "bphs-ch39-004",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-09-10a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326684+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-09-10a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -174,27 +280,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: Natural benefics occupy the 2nd, 4th, and 5th houses counted from the natal ascendant lord's sign position OR from the Atmakaraka's sign position.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Natural benefics occupy the 2nd, 4th, and 5th houses counted from the natal ascendant lord's sign position OR from the Atmakaraka's sign position.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "wealth"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907472+00:00"
   },
   {
     "rule_id": "bphs-ch39-005",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-09-10b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326692+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-09-10b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -220,27 +360,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: Natural malefics occupy the 3rd and 6th houses counted from the natal ascendant lord's sign position OR from the Atmakaraka's sign position.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Natural malefics occupy the 3rd and 6th houses counted from the natal ascendant lord's sign position OR from the Atmakaraka's sign position.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "enemies"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907478+00:00"
   },
   {
     "rule_id": "bphs-ch39-006",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-11",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326699+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-11",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -265,27 +439,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will be related to royal circles.",
+      "summary": "The native will be related to royal circles.",
       "detailed": "Formation: Venus occupies one of four positions: the Karakamsa Lagna, the 5th from Karakamsa Lagna, the natal ascendant, or the Arudha (Pada) ascendant — AND is in aspect to or conjunction with Jupiter or the Moon.\n\nEffect: The native will be related to royal circles.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Venus occupies one of four positions: the Karakamsa Lagna, the 5th from Karakamsa Lagna, the natal ascendant, or the Arudha (Pada) ascendant — AND is in aspect to or conjunction with Jupiter or the Moon.\n\nEffect: The native will be related to royal circles.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "social_position"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907484+00:00"
   },
   {
     "rule_id": "bphs-ch39-007",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-12",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326706+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-12",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -311,26 +519,60 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: Even a single planet aspects any one of the three special ascendants: the natal ascendant (Lagna), Hora Lagna, or Ghatika Lagna.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Even a single planet aspects any one of the three special ascendants: the natal ascendant (Lagna), Hora Lagna, or Ghatika Lagna.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907490+00:00"
   },
   {
     "rule_id": "bphs-ch39-008",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-13-14",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326713+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-13-14",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -356,27 +598,61 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is doubtlessly formed.",
+      "summary": "A Raja yoga is doubtlessly formed.",
       "detailed": "Formation: The six divisional ascendants (Shadvarga: Rasi, Hora, Drekkana, Trimsamsa, Navamsa, and Dvadasamsa) are all occupied or aspected by one and the same planet. The yoga is full/medium/negligible according to whether the planet's aspect is full/half/quarter.\n\nEffect: A Raja yoga is doubtlessly formed.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The six divisional ascendants (Shadvarga: Rasi, Hora, Drekkana, Trimsamsa, Navamsa, and Dvadasamsa) are all occupied or aspected by one and the same planet. The yoga is full/medium/negligible according to whether the planet's aspect is full/half/quarter.\n\nEffect: A Raja yoga is doubtlessly formed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "power",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907496+00:00"
   },
   {
     "rule_id": "bphs-ch39-009",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-15a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326720+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-15a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -402,26 +678,60 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is formed.",
+      "summary": "A Raja yoga is formed.",
       "detailed": "Formation: The natal ascendant, Hora Lagna, and Ghatika Lagna are each occupied by a planet in exaltation or in its own sign.\n\nEffect: A Raja yoga is formed.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The natal ascendant, Hora Lagna, and Ghatika Lagna are each occupied by a planet in exaltation or in its own sign.\n\nEffect: A Raja yoga is formed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907504+00:00"
   },
   {
     "rule_id": "bphs-ch39-010",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-15b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326726+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-15b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -447,26 +757,60 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is formed.",
+      "summary": "A Raja yoga is formed.",
       "detailed": "Formation: The natal ascendant, the Drekkana ascendant (ascendant of the Drekkana/D-3 chart), and the Navamsa ascendant (ascendant of the D-9 chart) are all occupied by exalted planets.\n\nEffect: A Raja yoga is formed.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The natal ascendant, the Drekkana ascendant (ascendant of the Drekkana/D-3 chart), and the Navamsa ascendant (ascendant of the D-9 chart) are all occupied by exalted planets.\n\nEffect: A Raja yoga is formed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907509+00:00"
   },
   {
     "rule_id": "bphs-ch39-011",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-16",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326737+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-16",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -493,27 +837,61 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is formed.",
+      "summary": "A Raja yoga is formed.",
       "detailed": "Formation: The Moon and a natural benefic are conjunct in the Arudha Lagna (Pada of the natal ascendant), Jupiter is in the 2nd house from the natal ascendant, and both the Arudha Lagna position and the 2nd house are aspected by planets in exaltation or in their own signs.\n\nEffect: A Raja yoga is formed.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The Moon and a natural benefic are conjunct in the Arudha Lagna (Pada of the natal ascendant), Jupiter is in the 2nd house from the natal ascendant, and both the Arudha Lagna position and the 2nd house are aspected by planets in exaltation or in their own signs.\n\nEffect: A Raja yoga is formed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "wealth",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907515+00:00"
   },
   {
     "rule_id": "bphs-ch39-012",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-17",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326749+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-17",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -559,27 +937,67 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king or equal to a king.",
+      "summary": "The native will become a king or equal to a king.",
       "detailed": "Formation: Natural benefics occupy the ascendant (1st), 2nd, and 4th houses while a natural malefic is placed in the 3rd house.\n\nEffect: The native will become a king or equal to a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Natural benefics occupy the ascendant (1st), 2nd, and 4th houses while a natural malefic is placed in the 3rd house.\n\nEffect: The native will become a king or equal to a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "wealth"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga",
+        "yoga_checkable"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907525+00:00"
   },
   {
     "rule_id": "bphs-ch39-013",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-18",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326755+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-18",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -604,25 +1022,59 @@
       }
     },
     "interpretation": {
-      "brief": "The native will be wealthy.",
+      "summary": "The native will be wealthy.",
       "detailed": "Formation: One among the Moon, Jupiter, Venus, or Mercury is placed in the 2nd house in its exaltation sign.\n\nEffect: The native will be wealthy.",
+      "full_text_passages": [
+        {
+          "text": "Formation: One among the Moon, Jupiter, Venus, or Mercury is placed in the 2nd house in its exaltation sign.\n\nEffect: The native will be wealthy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
       "life_domains": [
         "wealth"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907530+00:00"
   },
   {
     "rule_id": "bphs-ch39-014",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-19",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326762+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-19",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -648,27 +1100,61 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is formed.",
+      "summary": "A Raja yoga is formed.",
       "detailed": "Formation: Debilitated (neecha) planets occupy the 6th, 8th, and 3rd houses while the ascendant lord is in exaltation or in his other own sign and aspects the natal ascendant.\n\nEffect: A Raja yoga is formed.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Debilitated (neecha) planets occupy the 6th, 8th, and 3rd houses while the ascendant lord is in exaltation or in his other own sign and aspects the natal ascendant.\n\nEffect: A Raja yoga is formed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "power",
         "enemies"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907538+00:00"
   },
   {
     "rule_id": "bphs-ch39-015",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-20",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326769+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-20",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -694,27 +1180,61 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is formed.",
+      "summary": "A Raja yoga is formed.",
       "detailed": "Formation: The lords of the 6th, 8th, and 12th houses are in debilitation (fall), inimical signs, or combustion, while the ascendant lord is in his own sign or exaltation sign and aspects the natal ascendant.\n\nEffect: A Raja yoga is formed.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The lords of the 6th, 8th, and 12th houses are in debilitation (fall), inimical signs, or combustion, while the ascendant lord is in his own sign or exaltation sign and aspects the natal ascendant.\n\nEffect: A Raja yoga is formed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "power",
         "enemies"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907543+00:00"
   },
   {
     "rule_id": "bphs-ch39-016",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-21a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326775+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-21a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -741,27 +1261,61 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is formed.",
+      "summary": "A Raja yoga is formed.",
       "detailed": "Formation: The 10th lord is placed in his own sign or exaltation sign and aspects the natal ascendant.\n\nEffect: A Raja yoga is formed.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The 10th lord is placed in his own sign or exaltation sign and aspects the natal ascendant.\n\nEffect: A Raja yoga is formed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "career",
       "life_domains": [
         "career",
         "status",
         "power"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907548+00:00"
   },
   {
     "rule_id": "bphs-ch39-017",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-21b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326782+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-21b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -795,27 +1349,67 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is formed.",
+      "summary": "A Raja yoga is formed.",
       "detailed": "Formation: Natural benefics (Jupiter, Venus, Mercury, waxing Moon) are placed in the angular houses (1st, 4th, 7th, 10th).\n\nEffect: A Raja yoga is formed.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Natural benefics (Jupiter, Venus, Mercury, waxing Moon) are placed in the angular houses (1st, 4th, 7th, 10th).\n\nEffect: A Raja yoga is formed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "power",
         "wealth"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga",
+        "yoga_checkable"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907556+00:00"
   },
   {
     "rule_id": "bphs-ch39-018",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-22a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326789+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-22a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -841,25 +1435,59 @@
       }
     },
     "interpretation": {
-      "brief": "The native will be wealthy.",
+      "summary": "The native will be wealthy.",
       "detailed": "Formation: The Atmakaraka planet is placed in a sign owned by a natural benefic (Jupiter, Venus, Mercury, Moon) or in a benefic's Navamsa sign.\n\nEffect: The native will be wealthy.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The Atmakaraka planet is placed in a sign owned by a natural benefic (Jupiter, Venus, Mercury, Moon) or in a benefic's Navamsa sign.\n\nEffect: The native will be wealthy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
       "life_domains": [
         "wealth"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907562+00:00"
   },
   {
     "rule_id": "bphs-ch39-019",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-22b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326798+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-22b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -885,26 +1513,60 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: Natural benefics are placed in the angular houses (kendras) counted from the Karakamsa Lagna (Navamsa sign of the Atmakaraka).\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Natural benefics are placed in the angular houses (kendras) counted from the Karakamsa Lagna (Navamsa sign of the Atmakaraka).\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907642+00:00"
   },
   {
     "rule_id": "bphs-ch39-020",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-23a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326805+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-23a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -929,27 +1591,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will doubtlessly become a king.",
+      "summary": "The native will doubtlessly become a king.",
       "detailed": "Formation: The Arudha Lagna (Pada of the 1st house) and Darapada (Pada of the 7th house) are in mutual angular positions (1-4-7-10 from each other), mutual trinal positions (1-5-9), or in mutual 3rd/11th relationship.\n\nEffect: The native will doubtlessly become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The Arudha Lagna (Pada of the 1st house) and Darapada (Pada of the 7th house) are in mutual angular positions (1-4-7-10 from each other), mutual trinal positions (1-5-9), or in mutual 3rd/11th relationship.\n\nEffect: The native will doubtlessly become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "social_position"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907647+00:00"
   },
   {
     "rule_id": "bphs-ch39-021",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-23b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326811+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-23b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -974,27 +1670,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will suffer from poverty and will not receive the beneficial effects of any Raja Yogas in the horoscope. The ",
+      "summary": "The native will suffer from poverty and will not receive the beneficial effects of any Raja Yogas in the horoscope. The ",
       "detailed": "Formation: The Arudha Lagna and Darapada are in mutual 6th/8th signs or mutual 2nd/12th signs.\n\nEffect: The native will suffer from poverty and will not receive the beneficial effects of any Raja Yogas in the horoscope. The good relationship between Arudha Pada and Dara Pada is an essential prerequisite for maturity of Raja Yogas.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The Arudha Lagna and Darapada are in mutual 6th/8th signs or mutual 2nd/12th signs.\n\nEffect: The native will suffer from poverty and will not receive the beneficial effects of any Raja Yogas in the horoscope. The good relationship between Arudha Pada and Dara Pada is an essential prerequisite for maturity of Raja Yogas.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "poverty",
       "life_domains": [
         "poverty",
         "hardship",
         "status"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907655+00:00"
   },
   {
     "rule_id": "bphs-ch39-022",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-26-27a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326818+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-26-27a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1020,26 +1750,60 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: The Arudha Pada (Arudha Lagna) is occupied by an exalted planet — especially the Moon in exaltation (Taurus) or by Jupiter or Venus (with or without exaltation) — and there is no Argala (intervention) by a natural malefic planet.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The Arudha Pada (Arudha Lagna) is occupied by an exalted planet — especially the Moon in exaltation (Taurus) or by Jupiter or Venus (with or without exaltation) — and there is no Argala (intervention) by a natural malefic planet.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907661+00:00"
   },
   {
     "rule_id": "bphs-ch39-023",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-26-27b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326827+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-26-27b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1065,27 +1829,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: The Arudha Pada is a benefic sign (sign owned by Jupiter, Venus, Mercury, or Moon) AND the Moon occupies the Arudha Pada AND Jupiter is in the 2nd house from the natal ascendant.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The Arudha Pada is a benefic sign (sign owned by Jupiter, Venus, Mercury, or Moon) AND the Moon occupies the Arudha Pada AND Jupiter is in the 2nd house from the natal ascendant.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "wealth"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:karakamsa_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-karakamsa_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907667+00:00"
   },
   {
     "rule_id": "bphs-ch39-024",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-28",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326834+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-28",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1112,27 +1910,61 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is formed.",
+      "summary": "A Raja yoga is formed.",
       "detailed": "Formation: Even if one among the lords of the 6th, 8th, and 12th houses is in debilitation (neecha) and aspects the natal ascendant, a Raja yoga is formed.\n\nEffect: A Raja yoga is formed.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Even if one among the lords of the 6th, 8th, and 12th houses is in debilitation (neecha) and aspects the natal ascendant, a Raja yoga is formed.\n\nEffect: A Raja yoga is formed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "enemies",
         "obstacles"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907672+00:00"
   },
   {
     "rule_id": "bphs-ch39-025",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-29-31a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326840+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-29-31a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1159,27 +1991,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: A planet ruling the 4th, 10th, 2nd, or 11th house aspects the natal ascendant, while Venus aspects the 11th house from the Arudha Lagna AND the Arudha Lagna itself is occupied by a natural benefic.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: A planet ruling the 4th, 10th, 2nd, or 11th house aspects the natal ascendant, while Venus aspects the 11th house from the Arudha Lagna AND the Arudha Lagna itself is occupied by a natural benefic.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "wealth"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907681+00:00"
   },
   {
     "rule_id": "bphs-ch39-026",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-29-31b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326846+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-29-31b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1205,27 +2071,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: A debilitated (neecha) planet placed in the 6th or 8th house aspects the natal ascendant.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: A debilitated (neecha) planet placed in the 6th or 8th house aspects the natal ascendant.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "enemies",
         "obstacles"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907687+00:00"
   },
   {
     "rule_id": "bphs-ch39-027",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-29-31c",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326852+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-29-31c",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1251,26 +2151,60 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: A debilitated (neecha) planet placed in the 3rd or 11th house aspects the natal ascendant.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: A debilitated (neecha) planet placed in the 3rd or 11th house aspects the natal ascendant.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "upachaya"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:positional_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-positional_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907692+00:00"
   },
   {
     "rule_id": "bphs-ch39-028",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-33-34",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326858+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-33-34",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1296,27 +2230,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will obtain a kingdom.",
+      "summary": "The native will obtain a kingdom.",
       "detailed": "Formation: The 9th lord (equated to a minister) and the 5th lord (equated to the chief minister) mutually aspect each other, or are conjunct in any house, or are in mutual 7th positions. For a person of royal lineage, this combination gives the kingdom.\n\nEffect: The native will obtain a kingdom.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The 9th lord (equated to a minister) and the 5th lord (equated to the chief minister) mutually aspect each other, or are conjunct in any house, or are in mutual 7th positions. For a person of royal lineage, this combination gives the kingdom.\n\nEffect: The native will obtain a kingdom.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "power"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:lord_conjunction_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-lord_conjunction_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907697+00:00"
   },
   {
     "rule_id": "bphs-ch39-029",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-35",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326865+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-35",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1342,28 +2310,62 @@
       }
     },
     "interpretation": {
-      "brief": "The native will attain kingdom.",
+      "summary": "The native will attain kingdom.",
       "detailed": "Formation: The 4th lord is placed in the 10th house AND the 10th lord is placed in the 4th house (a Parivartana / sign-exchange between houses 4 and 10) and both are aspected by the 5th and 9th lords.\n\nEffect: The native will attain kingdom.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The 4th lord is placed in the 10th house AND the 10th lord is placed in the 4th house (a Parivartana / sign-exchange between houses 4 and 10) and both are aspected by the 5th and 9th lords.\n\nEffect: The native will attain kingdom.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "home",
         "career"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:lord_conjunction_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-lord_conjunction_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907702+00:00"
   },
   {
     "rule_id": "bphs-ch39-030",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-36",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326871+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-36",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1388,28 +2390,62 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a ruler with fame spreading over the four directions.",
+      "summary": "The native will become a ruler with fame spreading over the four directions.",
       "detailed": "Formation: The lords of the 5th, 10th, 4th, and ascendant are all conjunct in the 9th house.\n\nEffect: The native will become a ruler with fame spreading over the four directions.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The lords of the 5th, 10th, 4th, and ascendant are all conjunct in the 9th house.\n\nEffect: The native will become a ruler with fame spreading over the four directions.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "fame",
         "power"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:lord_conjunction_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-lord_conjunction_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907708+00:00"
   },
   {
     "rule_id": "bphs-ch39-031",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-37a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326877+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-37a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1434,27 +2470,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will obtain kingdom.",
+      "summary": "The native will obtain kingdom.",
       "detailed": "Formation: The lord of the 4th house is conjunct with the lord of the 5th house (angular lord joins trinal lord). Per the text: 'It will be still superior if the 4th lord joins both the 5th and 9th lords.'\n\nEffect: The native will obtain kingdom.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The lord of the 4th house is conjunct with the lord of the 5th house (angular lord joins trinal lord). Per the text: 'It will be still superior if the 4th lord joins both the 5th and 9th lords.'\n\nEffect: The native will obtain kingdom.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "home"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:lord_conjunction_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-lord_conjunction_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907714+00:00"
   },
   {
     "rule_id": "bphs-ch39-032",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-37b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326883+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-37b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1479,27 +2549,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will obtain kingdom.",
+      "summary": "The native will obtain kingdom.",
       "detailed": "Formation: The lord of the 4th house is conjunct with the lord of the 9th house (angular lord joins trinal lord).\n\nEffect: The native will obtain kingdom.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The lord of the 4th house is conjunct with the lord of the 9th house (angular lord joins trinal lord).\n\nEffect: The native will obtain kingdom.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "fortune"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:lord_conjunction_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-lord_conjunction_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907720+00:00"
   },
   {
     "rule_id": "bphs-ch39-033",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-37c",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326889+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-37c",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1524,27 +2628,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will obtain kingdom.",
+      "summary": "The native will obtain kingdom.",
       "detailed": "Formation: The lord of the 10th house is conjunct with the lord of the 9th house (angular lord joins trinal lord).\n\nEffect: The native will obtain kingdom.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The lord of the 10th house is conjunct with the lord of the 9th house (angular lord joins trinal lord).\n\nEffect: The native will obtain kingdom.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "career",
       "life_domains": [
         "career",
         "status",
         "fortune"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:lord_conjunction_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-lord_conjunction_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907725+00:00"
   },
   {
     "rule_id": "bphs-ch39-034",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-37d",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326899+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-37d",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1569,27 +2707,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will obtain kingdom.",
+      "summary": "The native will obtain kingdom.",
       "detailed": "Formation: The lord of the 10th house is conjunct with the lord of the 5th house (angular lord joins trinal lord).\n\nEffect: The native will obtain kingdom.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The lord of the 10th house is conjunct with the lord of the 5th house (angular lord joins trinal lord).\n\nEffect: The native will obtain kingdom.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "career",
       "life_domains": [
         "career",
         "status",
         "intelligence"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:lord_conjunction_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-lord_conjunction_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907730+00:00"
   },
   {
     "rule_id": "bphs-ch39-035",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-38",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326909+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-38",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1614,27 +2786,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: The lord of the 5th house is placed in the ascendant (1st), 4th, or 10th house AND is in conjunction with either the 9th lord or the ascendant lord.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The lord of the 5th house is placed in the ascendant (1st), 4th, or 10th house AND is in conjunction with either the 9th lord or the ascendant lord.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "intelligence"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:lord_conjunction_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-lord_conjunction_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907737+00:00"
   },
   {
     "rule_id": "bphs-ch39-036",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-39",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326915+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-39",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1660,28 +2866,62 @@
       }
     },
     "interpretation": {
-      "brief": "The native will obtain kinghood.",
+      "summary": "The native will obtain kinghood.",
       "detailed": "Formation: Jupiter is placed in the 9th house in his own sign (Sagittarius or Pisces must be the 9th house for the given ascendant) AND is in conjunction with either Venus or the lord of the 5th house.\n\nEffect: The native will obtain kinghood.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Jupiter is placed in the 9th house in his own sign (Sagittarius or Pisces must be the 9th house for the given ascendant) AND is in conjunction with either Venus or the lord of the 5th house.\n\nEffect: The native will obtain kinghood.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "fortune",
         "wisdom"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:lord_conjunction_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-lord_conjunction_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907742+00:00"
   },
   {
     "rule_id": "bphs-ch39-037",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-40",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326922+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-40",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1706,26 +2946,60 @@
       }
     },
     "interpretation": {
-      "brief": "The native will be a king or equal to a king.",
+      "summary": "The native will be a king or equal to a king.",
       "detailed": "Formation: Birth occurs within two-and-a-half ghatis (60 minutes by Parasara; 48 minutes per Uttara Kalamrita) of Dinardha (the middle of the day — half the daylight duration from sunrise) or Nisardha (the middle of the night — half the night duration from sunset). Note: Dinardha is NOT fixed 12 Noon but the actual midpoint of daylight hours at the given location.\n\nEffect: The native will be a king or equal to a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Birth occurs within two-and-a-half ghatis (60 minutes by Parasara; 48 minutes per Uttara Kalamrita) of Dinardha (the middle of the day — half the daylight duration from sunrise) or Nisardha (the middle of the night — half the night duration from sunset). Note: Dinardha is NOT fixed 12 Noon but the actual midpoint of daylight hours at the given location.\n\nEffect: The native will be a king or equal to a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:birth_time_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-birth_time_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907747+00:00"
   },
   {
     "rule_id": "bphs-ch39-038",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-40-koteeswara",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326928+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-40-koteeswara",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1751,26 +3025,60 @@
       }
     },
     "interpretation": {
-      "brief": "A Koteeswara (multi-millionaire / crorepati) is born.",
+      "summary": "A Koteeswara (multi-millionaire / crorepati) is born.",
       "detailed": "Formation: An exalted planet is placed in the 2nd house AND is aspected by another exalted planet (from Uttara Kalamrita tradition).\n\nEffect: A Koteeswara (multi-millionaire / crorepati) is born.",
+      "full_text_passages": [
+        {
+          "text": "Formation: An exalted planet is placed in the 2nd house AND is aspected by another exalted planet (from Uttara Kalamrita tradition).\n\nEffect: A Koteeswara (multi-millionaire / crorepati) is born.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "extreme_wealth",
       "life_domains": [
         "extreme_wealth",
         "status"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:birth_time_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-birth_time_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907755+00:00"
   },
   {
     "rule_id": "bphs-ch39-039",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-40-lakshadheew",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326935+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-40-lakshadheew",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1796,26 +3104,60 @@
       }
     },
     "interpretation": {
-      "brief": "The native will be a Lakshadhipati (lakhs-owner) — highly wealthy but with relatively less riches than Koteeswara.",
+      "summary": "The native will be a Lakshadhipati (lakhs-owner) — highly wealthy but with relatively less riches than Koteeswara.",
       "detailed": "Formation: An exalted planet is placed in the 2nd house AND is aspected by a planet in its own sign (not exaltation — lesser form of Koteeswara Yoga).\n\nEffect: The native will be a Lakshadhipati (lakhs-owner) — highly wealthy but with relatively less riches than Koteeswara.",
+      "full_text_passages": [
+        {
+          "text": "Formation: An exalted planet is placed in the 2nd house AND is aspected by a planet in its own sign (not exaltation — lesser form of Koteeswara Yoga).\n\nEffect: The native will be a Lakshadhipati (lakhs-owner) — highly wealthy but with relatively less riches than Koteeswara.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
       "life_domains": [
         "wealth",
         "status"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:birth_time_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-birth_time_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907760+00:00"
   },
   {
     "rule_id": "bphs-ch39-040",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-41a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326941+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-41a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1840,27 +3182,61 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is obtained.",
+      "summary": "A Raja yoga is obtained.",
       "detailed": "Formation: The Moon and Venus are placed in mutual 3rd and 11th positions from each other — one is in the 3rd sign from the other (and therefore the other is simultaneously in the 11th from the first).\n\nEffect: A Raja yoga is obtained.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The Moon and Venus are placed in mutual 3rd and 11th positions from each other — one is in the 3rd sign from the other (and therefore the other is simultaneously in the 11th from the first).\n\nEffect: A Raja yoga is obtained.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "wealth",
         "relationships"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:mutual_position_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-mutual_position_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907767+00:00"
   },
   {
     "rule_id": "bphs-ch39-041",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-41b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326947+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-41b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1885,27 +3261,61 @@
       }
     },
     "interpretation": {
-      "brief": "A Raja yoga is obtained.",
+      "summary": "A Raja yoga is obtained.",
       "detailed": "Formation: The Moon and Venus are placed in any houses but aspect each other mutually (either by 7th-house opposition aspect or by special aspects if applicable).\n\nEffect: A Raja yoga is obtained.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The Moon and Venus are placed in any houses but aspect each other mutually (either by 7th-house opposition aspect or by special aspects if applicable).\n\nEffect: A Raja yoga is obtained.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "wealth",
         "relationships"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:mutual_position_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-mutual_position_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907773+00:00"
   },
   {
     "rule_id": "bphs-ch39-042",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-42",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326954+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-42",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1931,27 +3341,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: The Moon is in Vargothamsa (same sign in the Rasi chart D-1 and the Navamsa chart D-9, indicating it is in the same Navamsa as its Rasi sign) AND is aspected by four or more planets.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The Moon is in Vargothamsa (same sign in the Rasi chart D-1 and the Navamsa chart D-9, indicating it is in the same Navamsa as its Rasi sign) AND is aspected by four or more planets.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "mind"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:dignity_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-dignity_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907778+00:00"
   },
   {
     "rule_id": "bphs-ch39-043",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-43",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326960+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-43",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -1977,26 +3421,60 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king.",
+      "summary": "The native will become a king.",
       "detailed": "Formation: The natal ascendant is in Uttamamsa (highest dignity classification in the Shadvarga / six-divisional scheme) AND is aspected by four or more planets, among which the Moon should NOT be one.\n\nEffect: The native will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The natal ascendant is in Uttamamsa (highest dignity classification in the Shadvarga / six-divisional scheme) AND is aspected by four or more planets, among which the Moon should NOT be one.\n\nEffect: The native will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:dignity_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-dignity_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907783+00:00"
   },
   {
     "rule_id": "bphs-ch39-044",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-44a",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.326967+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-44a",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -2021,26 +3499,60 @@
       }
     },
     "interpretation": {
-      "brief": "A person of royal lineage will become a king. This is the lowest tier of the exaltation-count Raja Yoga series.",
+      "summary": "A person of royal lineage will become a king. This is the lowest tier of the exaltation-count Raja Yoga series.",
       "detailed": "Formation: One planet is in its exaltation sign.\n\nEffect: A person of royal lineage will become a king. This is the lowest tier of the exaltation-count Raja Yoga series.",
+      "full_text_passages": [
+        {
+          "text": "Formation: One planet is in its exaltation sign.\n\nEffect: A person of royal lineage will become a king. This is the lowest tier of the exaltation-count Raja Yoga series.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:dignity_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-dignity_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907788+00:00"
   },
   {
     "rule_id": "bphs-ch39-045",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-44b",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.327087+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-44b",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -2065,26 +3577,60 @@
       }
     },
     "interpretation": {
-      "brief": "The native will be equal to a king.",
+      "summary": "The native will be equal to a king.",
       "detailed": "Formation: Two planets are in their respective exaltation signs.\n\nEffect: The native will be equal to a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Two planets are in their respective exaltation signs.\n\nEffect: The native will be equal to a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "near_royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:dignity_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-dignity_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907793+00:00"
   },
   {
     "rule_id": "bphs-ch39-046",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-44c",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.327094+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-44c",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -2109,25 +3655,59 @@
       }
     },
     "interpretation": {
-      "brief": "The native will be wealthy.",
+      "summary": "The native will be wealthy.",
       "detailed": "Formation: Three planets are in their respective exaltation signs.\n\nEffect: The native will be wealthy.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Three planets are in their respective exaltation signs.\n\nEffect: The native will be wealthy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
       "life_domains": [
         "wealth"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:dignity_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-dignity_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907800+00:00"
   },
   {
     "rule_id": "bphs-ch39-047",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-45",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.327106+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-45",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -2152,26 +3732,60 @@
       }
     },
     "interpretation": {
-      "brief": "Even a person of base birth will become a king.",
+      "summary": "Even a person of base birth will become a king.",
       "detailed": "Formation: Four or five planets are in their exaltation signs or Moolatrikona signs.\n\nEffect: Even a person of base birth will become a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Four or five planets are in their exaltation signs or Moolatrikona signs.\n\nEffect: Even a person of base birth will become a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:dignity_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-dignity_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907805+00:00"
   },
   {
     "rule_id": "bphs-ch39-048",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-46",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.327114+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-46",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -2196,27 +3810,61 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become emperor and will enjoy various royal paraphernalia.",
+      "summary": "The native will become emperor and will enjoy various royal paraphernalia.",
       "detailed": "Formation: Six planets are in their exaltation signs.\n\nEffect: The native will become emperor and will enjoy various royal paraphernalia.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Six planets are in their exaltation signs.\n\nEffect: The native will become emperor and will enjoy various royal paraphernalia.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "emperor",
         "power"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:dignity_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-dignity_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907810+00:00"
   },
   {
     "rule_id": "bphs-ch39-049",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-47",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.327120+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-47",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -2241,26 +3889,60 @@
       }
     },
     "interpretation": {
-      "brief": "The native will become a king or be equal to a king.",
+      "summary": "The native will become a king or be equal to a king.",
       "detailed": "Formation: At least one among Jupiter, Venus, and Mercury is in its exaltation sign AND a natural benefic is placed in an angular house (1st, 4th, 7th, or 10th).\n\nEffect: The native will become a king or be equal to a king.",
+      "full_text_passages": [
+        {
+          "text": "Formation: At least one among Jupiter, Venus, and Mercury is in its exaltation sign AND a natural benefic is placed in an angular house (1st, 4th, 7th, or 10th).\n\nEffect: The native will become a king or be equal to a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:dignity_raja_yoga"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-dignity_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907815+00:00"
   },
   {
     "rule_id": "bphs-ch39-050",
-    "batch_id": "bphs-ch39-v1-20260426",
-    "science": "jyotish",
-    "book": "Brihat Parashara Hora Shastra",
-    "book_id": "bphs",
-    "chapter": 39,
-    "sloka_ref": "ch39-sloka-48",
-    "approval_status": "pending_review",
-    "created_at": "2026-04-26T05:59:44.327130+00:00",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 39,
+      "chapter_name": "Raja Yogas",
+      "sloka": "ch39-sloka-48",
+      "batch_id": "bphs-ch39-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
     "condition": {
       "type": "yoga_combination",
       "sub_type": "yoga_formation",
@@ -2312,15 +3994,54 @@
       }
     },
     "interpretation": {
-      "brief": "The native, though of mean descent, will ascend the throne.",
+      "summary": "The native, though of mean descent, will ascend the throne.",
       "detailed": "Formation: All natural benefics are relegated to angular houses (1st, 4th, 7th, 10th) while natural malefics are placed in the 3rd, 6th, and 11th houses (Upachaya houses).\n\nEffect: The native, though of mean descent, will ascend the throne.",
+      "full_text_passages": [
+        {
+          "text": "Formation: All natural benefics are relegated to angular houses (1st, 4th, 7th, 10th) while natural malefics are placed in the 3rd, 6th, and 11th houses (Upachaya houses).\n\nEffect: The native, though of mean descent, will ascend the throne.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
       "life_domains": [
         "status",
         "royalty",
         "power"
       ],
-      "strength_band": "high",
+      "tags": [
+        "raja_yoga",
+        "group:dignity_raja_yoga",
+        "yoga_checkable"
+      ],
       "physical_markers": []
-    }
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        3,
+        4,
+        6,
+        7,
+        10,
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch39-dignity_raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T06:06:36.907827+00:00"
   }
 ]

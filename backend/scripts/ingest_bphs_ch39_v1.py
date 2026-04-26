@@ -1275,6 +1275,7 @@ def build_rule(yoga: dict, index: int) -> dict:
     effect       = yoga.get("effect", "")
     yoga_check   = yoga.get("yoga_check", {})
     cond_type    = yoga.get("condition_type", "yoga_combination")
+    checkable    = yoga_check.get("checkable", False)
 
     houses = []
     yc_type = yoga_check.get("type", "")
@@ -1285,7 +1286,7 @@ def build_rule(yoga: dict, index: int) -> dict:
             houses.extend(hr.get("houses", []))
         houses = sorted(set(houses))
 
-    group_label = {
+    group_lbl = {
         "framework":             "Framework",
         "maha_raja_yoga":        "Maha Raja Yoga",
         "karakamsa_raja_yoga":   "Karakamsa & Jaimini Raja Yoga",
@@ -1296,41 +1297,70 @@ def build_rule(yoga: dict, index: int) -> dict:
         "dignity_raja_yoga":     "Dignity & Count Raja Yoga",
     }.get(group, "Raja Yoga")
 
+    detailed = f"Formation: {formation}\n\nEffect: {effect}".strip()
+    tags = ["raja_yoga", f"group:{group}"]
+    if checkable:
+        tags.append("yoga_checkable")
+
     return {
-        "rule_id":   rule_id,
-        "batch_id":  BATCH_ID,
-        "science":   SCIENCE,
-        "book":      BOOK,
-        "book_id":   BOOK_ID,
-        "chapter":   CHAPTER,
-        "sloka_ref": sloka,
-        "approval_status": "pending_review",
-        "created_at": datetime.now(timezone.utc).isoformat(),
+        "rule_id":         rule_id,
+        "science_id":      SCIENCE,
+        "source": {
+            "book":           BOOK,
+            "book_id":        BOOK_ID,
+            "chapter":        CHAPTER,
+            "chapter_name":   CHAP_NAME,
+            "sloka":          sloka,
+            "batch_id":       BATCH_ID,
+            "primary":        BOOK,
+            "page_ref":       None,
+            "passage_ref_id": None,
+        },
         "condition": {
-            "type":        cond_type,
-            "sub_type":    "yoga_formation",
-            "yoga_name":   yoga_name,
-            "yoga_group":  group,
-            "yoga_group_label": group_label,
-            "planets_involved": [],
-            "houses_involved":  houses,
-            "sub_conditions":   [],
-            "operator":    "and",
-            "gender_context": "neutral",
+            "type":               cond_type,
+            "sub_type":           "yoga_formation",
+            "yoga_name":          yoga_name,
+            "yoga_group":         group,
+            "yoga_group_label":   group_lbl,
+            "planets_involved":   [],
+            "houses_involved":    houses,
+            "sub_conditions":     [],
+            "operator":           "and",
+            "gender_context":     "neutral",
             "condition_group_id": f"bphs-ch39-{group}",
-            "is_group_summary":  False,
-            "is_benefic":  is_benefic,
-            "yoga_check":  yoga_check,
+            "is_group_summary":   False,
+            "is_benefic":         is_benefic,
+            "yoga_check":         yoga_check,
         },
         "interpretation": {
-            "brief":    effect[:120] if effect else "",
-            "detailed": (
-                f"Formation: {formation}\n\nEffect: {effect}"
-            ).strip(),
-            "life_domains": life_domains,
-            "strength_band": "high",
-            "physical_markers": [],
+            "summary":            effect[:120] if effect else "",
+            "detailed":           detailed,
+            "full_text_passages": [{"text": detailed, "confidence": "HIGH"}],
+            "remedies":           [],
+            "life_domain":        life_domains[0] if life_domains else "general",
+            "life_domains":       life_domains,
+            "tags":               tags,
+            "physical_markers":   [],
         },
+        "metadata": {
+            "planets_involved":     [],
+            "houses_involved":      houses,
+            "signs_involved":       [],
+            "condition_count":      1,
+            "gender_context":       "neutral",
+            "condition_group_id":   f"bphs-ch39-{group}",
+            "is_group_summary":     False,
+            "has_physical_markers": False,
+            "physical_categories":  [],
+            "yoga_checkable":       checkable,
+        },
+        "confidence": {
+            "source_confidence":  "HIGH",
+            "extraction_method":  "hard_coded",
+            "validated":          False,
+        },
+        "approval_status": "pending_review",
+        "created_at":      datetime.now(timezone.utc).isoformat(),
     }
 
 
@@ -1377,7 +1407,7 @@ def main() -> None:
 
     # ── Summary ──────────────────────────────────────────────────────────────
     checkable = [r for r in rules
-                 if r["condition"]["yoga_check"].get("checkable")]
+                 if r["metadata"]["yoga_checkable"]]
     total = len(rules)
 
     print(f"\nBPHS Ch {CHAPTER} — {CHAP_NAME}")
