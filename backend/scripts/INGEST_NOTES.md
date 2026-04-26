@@ -1806,3 +1806,61 @@ Single-pass — zero structural failures.
 Note: Lower auto_approved % vs Ch 35 (41% vs 76%) expected — Ch 36 yogas are multi-lord complex formations with few checkable conditions, so the validator has less signal to auto-approve. All 17 PHR and 2 flagged rules await co-founder review.
 
 ---
+
+## BPHS Chapter 37 — Lunar Yogas
+
+**Batch ID:** `bphs-ch37-v1-20260426`
+**Script:** `scripts/ingest_bphs_ch37_v1.py`
+**Dry-run JSON:** `scripts/bphs_ch37_rules.json`
+**Commit:** `688b4e2`
+
+### Source structure
+
+14 rules total — hard-coded from RTF, zero AI extraction cost.
+
+| Group | Rules | Yoga names |
+|---|---|---|
+| Moon-Sun Position Yogas | 3 | Moon in Kendra / Panaphara / Apoklima from Sun |
+| Moon Navamsa Yogas | 3 | Day Birth, Night Birth, Adverse |
+| Adhi Yoga (from Moon) | 1 | Adhi Yoga (from Moon) |
+| Dhana Yoga (from Moon) | 3 | Full / Medium / Weak |
+| Sunapha / Anapha / Duradhara | 3 | Sunapha, Anapha, Duradhara |
+| Kemadruma Yoga | 1 | Kemadruma Yoga |
+| **Total** | **14** | |
+
+### New yoga_check types introduced in Ch 37
+
+| Type | Used by | Notes |
+|---|---|---|
+| `moon_from_sun_position` | Rules 001–003 | Moon's position relative to Sun: kendra / panaphara / apoklima. Field `position_type` + `houses_from_sun` distinguish the three cases. |
+| `planet_in_house_from_moon` | Rules 011–013 | Non-Sun planet in specific house(s) from Moon. `house` (single) or `houses` + `operator=and` (Duradhara). `exclude_planets: ["Sun"]` on all three. |
+| `kemadruma_check` | Rule 014 | Negative/absence check — yoga forms when all three positions are empty of qualifying planets simultaneously. `absent_conditions` list encodes the three checks. |
+
+### Design decisions
+
+**Dhana Yoga split into 3 rules (008–010):** The sloka explicitly defines three distinct intensity tiers (all 3 / 2 / 1 benefic in Upachaya from Moon → very affluent / medium / negligible wealth). Split allows runtime to return the exact matching rule based on benefic count. All three share `benefics_in_houses` type with Moon reference and Upachaya houses [3,6,10,11], differentiated by `minimum_count` / `maximum_count`.
+
+**Adhi Yoga (from Moon) cross-reference:** Rule 007 (Ch 37 Sloka 5) is the same formation as Chandradhi Yoga (bphs-ch36-025, Ch 36 Sloka 37 Notes) — benefics in 6th/7th/8th from Moon. Both rules retained as independent textual sources; cross-reference noted in `interpretation.detailed` of rule 007.
+
+**Moon-Sun position rules (001–003):** Sloka 1 is unnamed — three separate positional rules extracted (kendra=little wealth, panaphara=meddling intelligence, apoklima=excellent skill). Only rule 001 is `is_benefic=False`; 002–003 are True.
+
+### yoga_check coverage — 11 / 14 checkable (79%)
+
+| checkable | Rules |
+|---|---|
+| ✅ True (11) | 001–003 (moon_from_sun_position), 007–013 (benefics/planet_from_moon), 014 (kemadruma) |
+| ❌ False (3) | 004–006 (Moon Navamsa yogas — require D-9 chart + birth-time qualifier) |
+
+### Validation — COMPLETE (26 Apr 2026)
+
+Single-pass — zero structural failures.
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 9 | 64% |
+| `pending_human_review` | 3 | 21% |
+| `flagged` | 2 | 14% |
+| Contradictions | 0 | — |
+| **Total** | **14** | |
+
+---

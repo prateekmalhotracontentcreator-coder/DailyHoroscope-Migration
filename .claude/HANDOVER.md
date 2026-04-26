@@ -1,5 +1,5 @@
 # Knowledge Engine — Session Handover
-> Last updated: 26 Apr 2026 (BPHS Ch 36 Many Other Yogas live + validated — 32 rules, 13 auto / 17 PHR / 2 flagged)
+> Last updated: 26 Apr 2026 (BPHS Ch 37 Lunar Yogas live + validated — 14 rules, 9 auto / 3 PHR / 2 flagged)
 > Written at end of Session 4 (context compressed multiple times); updated Sessions 5–7
 > Next session: read this FIRST before touching any script or DB
 
@@ -126,6 +126,7 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 | TBA Ch 16 (Yogas) | tba-ch16-v1-20260425 | 129 | — | ✅ **fully validated** (26 Apr) — 86 auto_approved / 35 PHR / 8 flagged — ⚠️ tba16-003 yoga_check flag (see §9) |
 | BPHS Ch 35 (Nabhasa Yogas) | bphs-ch35-v1-20260426 | 33 | — | ✅ **fully validated** (26 Apr) — 25 auto / 6 PHR / 2 flagged — 0 contradictions |
 | BPHS Ch 36 (Many Other Yogas) | bphs-ch36-v1-20260426 | 32 | — | ✅ **fully validated** (26 Apr) — 13 auto / 17 PHR / 2 flagged — 0 contradictions |
+| BPHS Ch 37 (Lunar Yogas) | bphs-ch37-v1-20260426 | 14 | — | ✅ **fully validated** (26 Apr) — 9 auto / 3 PHR / 2 flagged — 0 contradictions |
 
 ---
 
