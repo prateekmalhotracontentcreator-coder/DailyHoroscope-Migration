@@ -1,0 +1,2596 @@
+[
+  {
+    "rule_id": "bphs-ch36-001",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-subha-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Subha Yoga",
+      "yoga_group": "benefic_malefic",
+      "yoga_group_label": "Benefic/Malefic Yogas",
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        2,
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_malefic",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "benefics_in_houses",
+        "checkable": true,
+        "description": "Natural benefics (Jupiter, Venus, Mercury, waxing Moon) in the 1st house; OR in both the 2nd and 12th houses. Superior form: benefics in all three (12th, 1st, and 2nd). Benefic must be free from debilitation and combustion for full effects. Planetary dignity and strength modify the results.",
+        "houses": [
+          1,
+          2,
+          12
+        ],
+        "planet_type": "benefic",
+        "operator": "or"
+      }
+    },
+    "interpretation": {
+      "summary": "Subha Yoga \u2014 One born in Subha yoga will be eloquent, charming, and virtuous. This yoga confers physical beauty, excellent virtues, eloquent disposition, a happy life, health, wealth, longevity, an...",
+      "detailed": "Yoga: Subha Yoga [Benefic/Malefic Yogas]\n\nFormation: A natural benefic (Jupiter, Venus, Mercury, waxing Moon) occupies the ascendant (1st house); OR benefics occupy both the 2nd and the 12th houses simultaneously. The stronger form is when benefics occupy all three houses (12th, 1st, and 2nd).\n\nEffect: One born in Subha yoga will be eloquent, charming, and virtuous. This yoga confers physical beauty, excellent virtues, eloquent disposition, a happy life, health, wealth, longevity, and fame.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Subha Yoga [Benefic/Malefic Yogas]\n\nFormation: A natural benefic (Jupiter, Venus, Mercury, waxing Moon) occupies the ascendant (1st house); OR benefics occupy both the 2nd and the 12th houses simultaneously. The stronger form is when benefics occupy all three houses (12th, 1st, and 2nd).\n\nEffect: One born in Subha yoga will be eloquent, charming, and virtuous. This yoga confers physical beauty, excellent virtues, eloquent disposition, a happy life, health, wealth, longevity, and fame.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "character",
+      "life_domains": [
+        "character",
+        "happiness",
+        "wealth",
+        "fame"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-benefic_malefic",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        2,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_malefic",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.259738+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-002",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-asubha-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Asubha Yoga",
+      "yoga_group": "benefic_malefic",
+      "yoga_group_label": "Benefic/Malefic Yogas",
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        2,
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_malefic",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "malefics_in_houses",
+        "checkable": true,
+        "description": "Natural malefics (Sun, Mars, Saturn, Rahu, Ketu) in the 1st house; OR in both the 12th and 2nd houses. More malefics in these positions intensify adverse results. Can be nullified by compensating benefic factors.",
+        "houses": [
+          1,
+          2,
+          12
+        ],
+        "planet_type": "malefic",
+        "operator": "or"
+      }
+    },
+    "interpretation": {
+      "summary": "Asubha Yoga \u2014 One born in Asubha yoga will be sensuous, will do sinful acts, and will enjoy or appropriate others' wealth. Two or three malefics in such positions produce most unfavourable results,...",
+      "detailed": "Yoga: Asubha Yoga [Benefic/Malefic Yogas]\n\nFormation: A natural malefic (Sun, Mars, Saturn, Rahu, Ketu, waning Moon) occupies the ascendant; OR malefics occupy both the 12th and 2nd houses simultaneously. Increasingly malefic with more malefics in these positions.\n\nEffect: One born in Asubha yoga will be sensuous, will do sinful acts, and will enjoy or appropriate others' wealth. Two or three malefics in such positions produce most unfavourable results, adversely affecting health and longevity.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Asubha Yoga [Benefic/Malefic Yogas]\n\nFormation: A natural malefic (Sun, Mars, Saturn, Rahu, Ketu, waning Moon) occupies the ascendant; OR malefics occupy both the 12th and 2nd houses simultaneously. Increasingly malefic with more malefics in these positions.\n\nEffect: One born in Asubha yoga will be sensuous, will do sinful acts, and will enjoy or appropriate others' wealth. Two or three malefics in such positions produce most unfavourable results, adversely affecting health and longevity.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "character",
+      "life_domains": [
+        "character",
+        "health",
+        "hardship"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-benefic_malefic",
+        "malefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        2,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_malefic",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.260816+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-003",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-gajakesari-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Gajakesari Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_in_kendra_from",
+        "checkable": true,
+        "description": "Jupiter must be in an angular house (1, 4, 7, 10) counted from the ascendant OR from the Moon's position. Additionally, Jupiter must be conjunct or receive an aspect from another natural benefic (Venus, Mercury, or waxing Moon). Jupiter must be free from debilitation (Capricorn), combustion (within 11\u00b0 of Sun), and inimical signs.",
+        "planet": "Jupiter",
+        "reference": [
+          "ascendant",
+          "Moon"
+        ],
+        "houses": [
+          1,
+          4,
+          7,
+          10
+        ],
+        "conditions": [
+          "aspected_by_benefic",
+          "free_from_debilitation",
+          "free_from_combustion"
+        ]
+      }
+    },
+    "interpretation": {
+      "summary": "Gajakesari Yoga \u2014 One born in Gaja Kesari yoga will be splendorous, wealthy, and intelligent, endowed with many laudable virtues, and will please the king. The yoga gives wealth, fame, intelligence...",
+      "detailed": "Yoga: Gajakesari Yoga [Raja Yoga]\n\nFormation: Jupiter is in an angular house (1st, 4th, 7th, or 10th) from the ascendant or from the Moon, AND is conjunct or aspected by another natural benefic. Jupiter must be free from debilitation, combustion, and placement in an inimical sign.\n\nEffect: One born in Gaja Kesari yoga will be splendorous, wealthy, and intelligent, endowed with many laudable virtues, and will please the king. The yoga gives wealth, fame, intelligence, and longevity, with full effects manifesting in the Dasa periods of Jupiter, Moon, and planets related to them.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Gajakesari Yoga [Raja Yoga]\n\nFormation: Jupiter is in an angular house (1st, 4th, 7th, or 10th) from the ascendant or from the Moon, AND is conjunct or aspected by another natural benefic. Jupiter must be free from debilitation, combustion, and placement in an inimical sign.\n\nEffect: One born in Gaja Kesari yoga will be splendorous, wealthy, and intelligent, endowed with many laudable virtues, and will please the king. The yoga gives wealth, fame, intelligence, and longevity, with full effects manifesting in the Dasa periods of Jupiter, Moon, and planets related to them.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "fame",
+        "intelligence",
+        "royalty"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.260940+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-004",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-amala-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Amala Yoga",
+      "yoga_group": "benefic_yoga",
+      "yoga_group_label": "Benefic Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "benefic_only_in_house",
+        "checkable": true,
+        "description": "A natural benefic (Jupiter, Venus, Mercury) must occupy the 10th house from the ascendant OR from the Moon. The 10th must have no malefic planet. A single malefic in the 10th nullifies the yoga entirely.",
+        "house": 10,
+        "reference": [
+          "ascendant",
+          "Moon"
+        ],
+        "planet_type": "benefic",
+        "no_malefic": true
+      }
+    },
+    "interpretation": {
+      "summary": "Amala Yoga \u2014 Amala yoga confers fame lasting till the moon and stars exist. The native will be honoured by the king, enjoy abundant pleasures, be charitable, fond of relatives, helpful to others, p...",
+      "detailed": "Yoga: Amala Yoga [Benefic Yoga]\n\nFormation: Exclusively a natural benefic (Jupiter, Venus, or Mercury) occupies the 10th house from the ascendant OR the 10th from the Moon. No malefic must be present in the same 10th house \u2014 any malefic co-occupation voids the yoga.\n\nEffect: Amala yoga confers fame lasting till the moon and stars exist. The native will be honoured by the king, enjoy abundant pleasures, be charitable, fond of relatives, helpful to others, pious and virtuous. It is primarily a yoga of lasting name and fame rather than wealth.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Amala Yoga [Benefic Yoga]\n\nFormation: Exclusively a natural benefic (Jupiter, Venus, or Mercury) occupies the 10th house from the ascendant OR the 10th from the Moon. No malefic must be present in the same 10th house \u2014 any malefic co-occupation voids the yoga.\n\nEffect: Amala yoga confers fame lasting till the moon and stars exist. The native will be honoured by the king, enjoy abundant pleasures, be charitable, fond of relatives, helpful to others, pious and virtuous. It is primarily a yoga of lasting name and fame rather than wealth.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "fame",
+      "life_domains": [
+        "fame",
+        "career",
+        "character",
+        "spirituality"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-benefic_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.260954+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-005",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-parvata-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Parvata Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Primary condition: natural benefics in angular houses (1, 4, 7, 10) AND houses 7 and 8 must be unoccupied or occupied by benefics only. Multiple classical variants exist across Parasara, Jataka Parijata, and Phala Deepika. Phase 2: implement primary form as compound check."
+      }
+    },
+    "interpretation": {
+      "summary": "Parvata Yoga \u2014 One born in Parvatha yoga will be wealthy, eloquent, charitable, learned in Sastras, fond of mirth, famous, splendorous, and be the leader of a city. The yoga matures during the Dasa...",
+      "detailed": "Yoga: Parvata Yoga [Raja Yoga]\n\nFormation: Benefics occupy the angular houses (1st, 4th, 7th, 10th) while the 7th and 8th houses are either vacant or occupied only by benefics. Alternative version: lords of the ascendant and 12th are in mutual angular positions aspected by friendly planets.\n\nEffect: One born in Parvatha yoga will be wealthy, eloquent, charitable, learned in Sastras, fond of mirth, famous, splendorous, and be the leader of a city. The yoga matures during the Dasa periods of the benefics placed in the angles.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Parvata Yoga [Raja Yoga]\n\nFormation: Benefics occupy the angular houses (1st, 4th, 7th, 10th) while the 7th and 8th houses are either vacant or occupied only by benefics. Alternative version: lords of the ascendant and 12th are in mutual angular positions aspected by friendly planets.\n\nEffect: One born in Parvatha yoga will be wealthy, eloquent, charitable, learned in Sastras, fond of mirth, famous, splendorous, and be the leader of a city. The yoga matures during the Dasa periods of the benefics placed in the angles.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "fame",
+        "scholarship",
+        "leadership"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.260963+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-006",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-kahala-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Kahala Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Condition 1: 4th lord and Jupiter in mutual kendra positions + strong ascendant lord. Condition 2 (OR): 4th lord in own/exaltation sign conjunct 10th lord. Requires lord-position computation and strength assessment. Phase 2 implementation needed."
+      }
+    },
+    "interpretation": {
+      "summary": "Kahala Yoga \u2014 The native will be energetic, adventurous, cunning, endowed with a complete army consisting of chariots, elephants, horses, and infantry, and will lord over a few villages.",
+      "detailed": "Yoga: Kahala Yoga [Raja Yoga]\n\nFormation: The 4th lord and Jupiter are in mutual angular positions while the ascendant lord is strong. Alternatively, the 4th lord is in his own or exaltation sign and is conjunct the 10th lord.\n\nEffect: The native will be energetic, adventurous, cunning, endowed with a complete army consisting of chariots, elephants, horses, and infantry, and will lord over a few villages.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Kahala Yoga [Raja Yoga]\n\nFormation: The 4th lord and Jupiter are in mutual angular positions while the ascendant lord is strong. Alternatively, the 4th lord is in his own or exaltation sign and is conjunct the 10th lord.\n\nEffect: The native will be energetic, adventurous, cunning, endowed with a complete army consisting of chariots, elephants, horses, and infantry, and will lord over a few villages.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "power",
+      "life_domains": [
+        "power",
+        "fame",
+        "career",
+        "leadership"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.260976+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-007",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-chamara-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Chamara Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Condition 1: ascendant lord exalted in angular house + aspected by Jupiter. Condition 2 (OR): 2+ natural benefics in houses 1, 7, 9, or 10. Requires ascendant lord identification and exaltation check. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Chamara Yoga \u2014 The native will be a king or be honoured by the king, long-lived, scholarly, eloquent, and versed in all arts. This yoga gives long life, prospering like the increasing Moon, fame, v...",
+      "detailed": "Yoga: Chamara Yoga [Raja Yoga]\n\nFormation: The ascendant lord is exalted in an angular house (1st, 4th, 7th, or 10th) and is aspected by Jupiter. Alternatively, two or more natural benefics are placed in the ascendant, 9th, 10th, or 7th house.\n\nEffect: The native will be a king or be honoured by the king, long-lived, scholarly, eloquent, and versed in all arts. This yoga gives long life, prospering like the increasing Moon, fame, virtue, and leadership.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Chamara Yoga [Raja Yoga]\n\nFormation: The ascendant lord is exalted in an angular house (1st, 4th, 7th, or 10th) and is aspected by Jupiter. Alternatively, two or more natural benefics are placed in the ascendant, 9th, 10th, or 7th house.\n\nEffect: The native will be a king or be honoured by the king, long-lived, scholarly, eloquent, and versed in all arts. This yoga gives long life, prospering like the increasing Moon, fame, virtue, and leadership.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "scholarship",
+        "fame",
+        "longevity"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.260988+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-008",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-sankha-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Sankha Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Condition 1: strong ascendant lord + lords of 5th and 6th in mutual kendra positions. Condition 2 (OR): ascendant lord + 10th lord in movable sign + strong 9th lord. Requires multiple lord positions and strength assessment."
+      }
+    },
+    "interpretation": {
+      "summary": "Sankha Yoga \u2014 One born with Sankha yoga will be endowed with wealth, spouse and sons, be kindly disposed, propitious, intelligent, meritorious and long-lived.",
+      "detailed": "Yoga: Sankha Yoga [Raja Yoga]\n\nFormation: The ascendant lord is strong while the lords of the 5th and 6th are in mutual angular positions. Alternatively, the ascendant lord together with the 10th lord is in a movable sign while the 9th lord is strong.\n\nEffect: One born with Sankha yoga will be endowed with wealth, spouse and sons, be kindly disposed, propitious, intelligent, meritorious and long-lived.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Sankha Yoga [Raja Yoga]\n\nFormation: The ascendant lord is strong while the lords of the 5th and 6th are in mutual angular positions. Alternatively, the ascendant lord together with the 10th lord is in a movable sign while the 9th lord is strong.\n\nEffect: One born with Sankha yoga will be endowed with wealth, spouse and sons, be kindly disposed, propitious, intelligent, meritorious and long-lived.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "family",
+        "longevity",
+        "character"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.260997+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-009",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-bheri-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Bheri Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Condition 1: planets in all four of houses 12, 1, 2, and 7 + strong 9th lord. Condition 2 (OR): Venus + Jupiter + ascendant lord all in angular houses + strong 9th lord. Requires lord position and strength assessment."
+      }
+    },
+    "interpretation": {
+      "summary": "Bheri Yoga \u2014 The native will be endowed with wealth, wife and sons, be a king, be famous, virtuous, and endowed with good behaviour, happiness and pleasures.",
+      "detailed": "Yoga: Bheri Yoga [Raja Yoga]\n\nFormation: The 12th, ascendant, 2nd, and 7th houses are all occupied by planets while the 9th lord is strong. Alternatively, Venus, Jupiter, and the ascendant lord are all in an angular house while the 9th lord is strong.\n\nEffect: The native will be endowed with wealth, wife and sons, be a king, be famous, virtuous, and endowed with good behaviour, happiness and pleasures.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Bheri Yoga [Raja Yoga]\n\nFormation: The 12th, ascendant, 2nd, and 7th houses are all occupied by planets while the 9th lord is strong. Alternatively, Venus, Jupiter, and the ascendant lord are all in an angular house while the 9th lord is strong.\n\nEffect: The native will be endowed with wealth, wife and sons, be a king, be famous, virtuous, and endowed with good behaviour, happiness and pleasures.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "royalty",
+        "fame",
+        "family"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261003+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-010",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-mridanga-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Mridanga Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Strong ascendant lord required. Remaining planets (excluding ascendant lord) must be in angular houses, trine houses, own signs, or exaltation signs. Requires strength assessment and dignity checks across all planets."
+      }
+    },
+    "interpretation": {
+      "summary": "Mridanga Yoga \u2014 The native concerned will be a king or equal to a king, and be happy.",
+      "detailed": "Yoga: Mridanga Yoga [Raja Yoga]\n\nFormation: The ascendant lord is strong while the remaining planets occupy angular houses (1, 4, 7, 10), trine houses (1, 5, 9), their own signs, or signs of exaltation.\n\nEffect: The native concerned will be a king or equal to a king, and be happy.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Mridanga Yoga [Raja Yoga]\n\nFormation: The ascendant lord is strong while the remaining planets occupy angular houses (1, 4, 7, 10), trine houses (1, 5, 9), their own signs, or signs of exaltation.\n\nEffect: The native concerned will be a king or equal to a king, and be happy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "happiness",
+        "power"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261011+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-011",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-srinatha-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Srinatha Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "7th lord must be in the 10th house + 10th lord exalted + 10th lord conjunct 9th lord. Requires identifying house lords for the specific ascendant and verifying exaltation and conjunction. Sagittarius-specific shortcut: Sun + Mercury in 10th in Virgo."
+      }
+    },
+    "interpretation": {
+      "summary": "Srinatha Yoga \u2014 The native with this yoga will be equal to lord Devendra (the supreme god), indicating the highest order of royal status, power, fame, and divine favour.",
+      "detailed": "Yoga: Srinatha Yoga [Raja Yoga]\n\nFormation: The 7th lord is placed in the 10th house while the 10th lord is exalted and is in the company of (conjunct) the 9th lord. For Sagittarius ascendant, this forms simply when Sun and Mercury are in the 10th house in Virgo (with Mercury in the first half of Virgo).\n\nEffect: The native with this yoga will be equal to lord Devendra (the supreme god), indicating the highest order of royal status, power, fame, and divine favour.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Srinatha Yoga [Raja Yoga]\n\nFormation: The 7th lord is placed in the 10th house while the 10th lord is exalted and is in the company of (conjunct) the 9th lord. For Sagittarius ascendant, this forms simply when Sun and Mercury are in the 10th house in Virgo (with Mercury in the first half of Virgo).\n\nEffect: The native with this yoga will be equal to lord Devendra (the supreme god), indicating the highest order of royal status, power, fame, and divine favour.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "fame",
+        "power",
+        "spirituality"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261022+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-012",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-sarada-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Sarada Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Condition 1: 10th lord in 5th + Mercury in angular house + Sun strong in Leo (Leo must be the Sun's actual sign position). Condition 2 (OR): Jupiter or Mercury in trine to Moon + Mars in 11th house. Requires lord positions, sign identification, and trine computation from Moon."
+      }
+    },
+    "interpretation": {
+      "summary": "Sarada Yoga \u2014 One born in either kind of Sarada yoga will obtain wealth, spouse and sons, be happy, scholarly, dear to king, pious and virtuous.",
+      "detailed": "Yoga: Sarada Yoga [Raja Yoga]\n\nFormation: The 10th lord is in the 5th house while Mercury is in an angular house and the Sun with strength is in Leo. Alternatively, Jupiter or Mercury is in a trine (1st, 5th, or 9th) to the Moon while Mars is in the 11th house.\n\nEffect: One born in either kind of Sarada yoga will obtain wealth, spouse and sons, be happy, scholarly, dear to king, pious and virtuous.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Sarada Yoga [Raja Yoga]\n\nFormation: The 10th lord is in the 5th house while Mercury is in an angular house and the Sun with strength is in Leo. Alternatively, Jupiter or Mercury is in a trine (1st, 5th, or 9th) to the Moon while Mars is in the 11th house.\n\nEffect: One born in either kind of Sarada yoga will obtain wealth, spouse and sons, be happy, scholarly, dear to king, pious and virtuous.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "scholarship",
+      "life_domains": [
+        "scholarship",
+        "wealth",
+        "royalty",
+        "family"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261030+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-013",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-matsya-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Matsya Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": true,
+        "description": "Three simultaneous house requirements: (1) natural benefics in houses 9 and 1; (2) mixed planets (at least one benefic AND one malefic) in house 5; (3) malefics in houses 4 and 8. All three conditions must hold simultaneously.",
+        "house_requirements": [
+          {
+            "houses": [
+              1,
+              9
+            ],
+            "planet_type": "benefic"
+          },
+          {
+            "houses": [
+              5
+            ],
+            "planet_type": "mixed"
+          },
+          {
+            "houses": [
+              4,
+              8
+            ],
+            "planet_type": "malefic"
+          }
+        ]
+      }
+    },
+    "interpretation": {
+      "summary": "Matsya Yoga \u2014 The native will be an astrologer, be a synonym of kindness, be virtuous, strong, beautiful, famous, learned and pious.",
+      "detailed": "Yoga: Matsya Yoga [Raja Yoga]\n\nFormation: Natural benefics occupy the 9th and 1st houses, mixed planets (both benefics and malefics) are in the 5th house, and malefics occupy the 4th and 8th houses.\n\nEffect: The native will be an astrologer, be a synonym of kindness, be virtuous, strong, beautiful, famous, learned and pious.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Matsya Yoga [Raja Yoga]\n\nFormation: Natural benefics occupy the 9th and 1st houses, mixed planets (both benefics and malefics) are in the 5th house, and malefics occupy the 4th and 8th houses.\n\nEffect: The native will be an astrologer, be a synonym of kindness, be virtuous, strong, beautiful, famous, learned and pious.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "scholarship",
+      "life_domains": [
+        "scholarship",
+        "astrology",
+        "fame",
+        "character"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261040+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-014",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-koorma-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Koorma Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Benefics in houses 5, 6, and 7 in own/exaltation/friendly signs + malefics in houses 3, 11, and 1 in own/exaltation signs. Dignity requirement (friendly/own/exaltation) makes this complex. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Koorma Yoga \u2014 The native will be a king, be courageous, virtuous, famous, helpful, happy and be leader of men.",
+      "detailed": "Yoga: Koorma Yoga [Raja Yoga]\n\nFormation: The 5th, 6th, and 7th houses are occupied by benefic planets in their own, exaltation, or friendly signs; while malefics occupy the 3rd, 11th, and 1st houses in their own signs or exaltation.\n\nEffect: The native will be a king, be courageous, virtuous, famous, helpful, happy and be leader of men.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Koorma Yoga [Raja Yoga]\n\nFormation: The 5th, 6th, and 7th houses are occupied by benefic planets in their own, exaltation, or friendly signs; while malefics occupy the 3rd, 11th, and 1st houses in their own signs or exaltation.\n\nEffect: The native will be a king, be courageous, virtuous, famous, helpful, happy and be leader of men.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "fame",
+        "character",
+        "leadership"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261047+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-015",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-khadga-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Khadga Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Parivartana (sign exchange) between lords of houses 2 and 9 + ascendant lord in angular or trine house. Requires identifying house lords and checking mutual sign placement. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Khadga Yoga \u2014 One with Khadga yoga will be endowed with wealth, fortunes and happiness, be learned in Sastras, be intelligent, mighty, grateful and skilful.",
+      "detailed": "Yoga: Khadga Yoga [Raja Yoga]\n\nFormation: The lords of the 2nd and 9th houses exchange signs (parivartana \u2014 each is placed in the other's sign) while the ascendant lord is in an angular house (1, 4, 7, 10) or a trine house (1, 5, 9).\n\nEffect: One with Khadga yoga will be endowed with wealth, fortunes and happiness, be learned in Sastras, be intelligent, mighty, grateful and skilful.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Khadga Yoga [Raja Yoga]\n\nFormation: The lords of the 2nd and 9th houses exchange signs (parivartana \u2014 each is placed in the other's sign) while the ascendant lord is in an angular house (1, 4, 7, 10) or a trine house (1, 5, 9).\n\nEffect: One with Khadga yoga will be endowed with wealth, fortunes and happiness, be learned in Sastras, be intelligent, mighty, grateful and skilful.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "scholarship",
+        "happiness",
+        "character"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261055+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-016",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-lakshmi-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Lakshmi Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "9th lord in angular house (1, 4, 7, 10) in own/moolatrikona/exaltation sign + strong ascendant lord. Requires computing 9th lord's sign placement and dignity check. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Lakshmi Yoga \u2014 The native with this yoga will be charming, virtuous, kingly in status, endowed with many sons and abundant wealth, be famous and be of high moral merits.",
+      "detailed": "Yoga: Lakshmi Yoga [Raja Yoga]\n\nFormation: The 9th lord is in an angular house (1, 4, 7, or 10) in his Moolatrikona sign, own sign, or sign of exaltation; while the ascendant lord is endowed with strength.\n\nEffect: The native with this yoga will be charming, virtuous, kingly in status, endowed with many sons and abundant wealth, be famous and be of high moral merits.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Lakshmi Yoga [Raja Yoga]\n\nFormation: The 9th lord is in an angular house (1, 4, 7, or 10) in his Moolatrikona sign, own sign, or sign of exaltation; while the ascendant lord is endowed with strength.\n\nEffect: The native with this yoga will be charming, virtuous, kingly in status, endowed with many sons and abundant wealth, be famous and be of high moral merits.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "royalty",
+        "fame",
+        "family"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261063+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-017",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-kusuma-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Kusuma Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Ascendant must be a fixed sign (Taurus=2, Leo=5, Scorpio=8, Aquarius=11) + Venus in angular house + Moon in trine with benefic aspect/conjunction + Saturn in 10th house. Compound multi-planet check with ascendant sign precondition."
+      }
+    },
+    "interpretation": {
+      "summary": "Kusuma Yoga \u2014 Such a native will be a king or equal to him, be charitable, will enjoy pleasures, be happy, prime among his race men, virtuous and red-lettered.",
+      "detailed": "Yoga: Kusuma Yoga [Raja Yoga]\n\nFormation: For a native born with a fixed sign (Taurus, Leo, Scorpio, or Aquarius) ascending: Venus is in an angular house, the Moon is in a trine house (1, 5, or 9) conjunct or aspected by a benefic, and Saturn is in the 10th house.\n\nEffect: Such a native will be a king or equal to him, be charitable, will enjoy pleasures, be happy, prime among his race men, virtuous and red-lettered.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Kusuma Yoga [Raja Yoga]\n\nFormation: For a native born with a fixed sign (Taurus, Leo, Scorpio, or Aquarius) ascending: Venus is in an angular house, the Moon is in a trine house (1, 5, or 9) conjunct or aspected by a benefic, and Saturn is in the 10th house.\n\nEffect: Such a native will be a king or equal to him, be charitable, will enjoy pleasures, be happy, prime among his race men, virtuous and red-lettered.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "wealth",
+        "happiness",
+        "character"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261070+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-018",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-kalanidhi-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Kalanidhi Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        5
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Jupiter in house 2 or house 5 AND aspected by Mercury (by Vedic full aspect: 7th-house aspect, or other applicable aspects) AND aspected by Venus. All three conditions must hold simultaneously.",
+        "planet": "Jupiter",
+        "houses": [
+          2,
+          5
+        ],
+        "aspected_by": [
+          "Mercury",
+          "Venus"
+        ]
+      }
+    },
+    "interpretation": {
+      "summary": "Kalanidhi Yoga \u2014 The native will be virtuous, honoured by kings, bereft of diseases, be happy, wealthy and learned.",
+      "detailed": "Yoga: Kalanidhi Yoga [Raja Yoga]\n\nFormation: Jupiter is placed in the 2nd or the 5th house and receives the aspects of both Mercury and Venus.\n\nEffect: The native will be virtuous, honoured by kings, bereft of diseases, be happy, wealthy and learned.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Kalanidhi Yoga [Raja Yoga]\n\nFormation: Jupiter is placed in the 2nd or the 5th house and receives the aspects of both Mercury and Venus.\n\nEffect: The native will be virtuous, honoured by kings, bereft of diseases, be happy, wealthy and learned.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "scholarship",
+      "life_domains": [
+        "scholarship",
+        "wealth",
+        "health",
+        "royalty"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        5
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261079+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-019",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-kalpadruma-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Kalpadruma Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Four-step dispositor chain from ascendant lord (Rasi + Navamsa). All four chain planets must be in angular/trine houses or exalted. Requires full divisional chart computation. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Kalpadruma Yoga \u2014 One with this yoga will be endowed with all kinds of wealth, be a king, pious, strong, fond of war and merciful. This yoga grants any boon to the possessor, equivalent to divine s...",
+      "detailed": "Yoga: Kalpadruma Yoga [Raja Yoga]\n\nFormation: Four planets form a chain of dispositors: (a) the ascendant lord, (b) the dispositor of (a), (c) the dispositor of (b), (d) the Navamsa dispositor of (c). ALL four of these planets must be placed in angular or trine houses from the ascendant, OR be exalted. Also known as Parijata Yoga.\n\nEffect: One with this yoga will be endowed with all kinds of wealth, be a king, pious, strong, fond of war and merciful. This yoga grants any boon to the possessor, equivalent to divine status (Devendra).",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Kalpadruma Yoga [Raja Yoga]\n\nFormation: Four planets form a chain of dispositors: (a) the ascendant lord, (b) the dispositor of (a), (c) the dispositor of (b), (d) the Navamsa dispositor of (c). ALL four of these planets must be placed in angular or trine houses from the ascendant, OR be exalted. Also known as Parijata Yoga.\n\nEffect: One with this yoga will be endowed with all kinds of wealth, be a king, pious, strong, fond of war and merciful. This yoga grants any boon to the possessor, equivalent to divine status (Devendra).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "royalty",
+        "spirituality",
+        "power"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261086+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-020",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-hari-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Hari Yoga",
+      "yoga_group": "trimurthi",
+      "yoga_group_label": "Trimurthi Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-trimurthi",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Identify the 2nd lord and its placement. From that position, houses 2, 12, and 8 must each be individually occupied by a natural benefic (Jupiter, Venus, Mercury; waxing Moon included, Sun excluded). Waning Moon is also excluded. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Hari Yoga \u2014 One born in Hari yoga will be happy, learned and endowed with wealth and sons.",
+      "detailed": "Yoga: Hari Yoga [Trimurthi Yoga]\n\nFormation: Counted from the position of the 2nd lord: natural benefics (Jupiter, Venus, Mercury, or waxing Moon) individually occupy the 2nd, 12th, and 8th positions from the 2nd lord's placement. One of the three Trimurthi yogas (representing Lord Vishnu).\n\nEffect: One born in Hari yoga will be happy, learned and endowed with wealth and sons.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Hari Yoga [Trimurthi Yoga]\n\nFormation: Counted from the position of the 2nd lord: natural benefics (Jupiter, Venus, Mercury, or waxing Moon) individually occupy the 2nd, 12th, and 8th positions from the 2nd lord's placement. One of the three Trimurthi yogas (representing Lord Vishnu).\n\nEffect: One born in Hari yoga will be happy, learned and endowed with wealth and sons.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "happiness",
+      "life_domains": [
+        "happiness",
+        "scholarship",
+        "wealth",
+        "family"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-trimurthi",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-trimurthi",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261092+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-021",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-hara-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Hara Yoga",
+      "yoga_group": "trimurthi",
+      "yoga_group_label": "Trimurthi Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-trimurthi",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Identify the 7th lord and its sign placement. From that sign, positions 4, 9, and 8 must each be occupied by a natural benefic. Sun and waning Moon excluded. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Hara Yoga \u2014 One born in Hara yoga will be happy, learned and endowed with wealth and sons.",
+      "detailed": "Yoga: Hara Yoga [Trimurthi Yoga]\n\nFormation: Counted from the sign occupied by the 7th lord: natural benefics individually occupy the 4th, 9th, and 8th positions from the 7th lord's placement. One of the three Trimurthi yogas (representing Lord Shiva).\n\nEffect: One born in Hara yoga will be happy, learned and endowed with wealth and sons.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Hara Yoga [Trimurthi Yoga]\n\nFormation: Counted from the sign occupied by the 7th lord: natural benefics individually occupy the 4th, 9th, and 8th positions from the 7th lord's placement. One of the three Trimurthi yogas (representing Lord Shiva).\n\nEffect: One born in Hara yoga will be happy, learned and endowed with wealth and sons.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "happiness",
+      "life_domains": [
+        "happiness",
+        "scholarship",
+        "wealth",
+        "family"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-trimurthi",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-trimurthi",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261144+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-022",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-brahma-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Brahma Yoga",
+      "yoga_group": "trimurthi",
+      "yoga_group_label": "Trimurthi Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-trimurthi",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "description": "Identify the ascendant lord and its sign placement. From that sign, positions 4, 10, and 11 must each be occupied by a natural benefic. Sun and waning Moon excluded. Phase 2 implementation."
+      }
+    },
+    "interpretation": {
+      "summary": "Brahma Yoga \u2014 One born in Brahma yoga will be happy, learned and endowed with wealth and sons.",
+      "detailed": "Yoga: Brahma Yoga [Trimurthi Yoga]\n\nFormation: Counted from the sign occupied by the ascendant lord: natural benefics individually occupy the 4th, 10th, and 11th positions from the ascendant lord's placement. One of the three Trimurthi yogas (representing Lord Brahma).\n\nEffect: One born in Brahma yoga will be happy, learned and endowed with wealth and sons.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Brahma Yoga [Trimurthi Yoga]\n\nFormation: Counted from the sign occupied by the ascendant lord: natural benefics individually occupy the 4th, 10th, and 11th positions from the ascendant lord's placement. One of the three Trimurthi yogas (representing Lord Brahma).\n\nEffect: One born in Brahma yoga will be happy, learned and endowed with wealth and sons.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "happiness",
+      "life_domains": [
+        "happiness",
+        "scholarship",
+        "wealth",
+        "family"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-trimurthi",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-trimurthi",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261151+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-023",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-lagnadhi-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Lagnadhi Yoga",
+      "yoga_group": "benefic_yoga",
+      "yoga_group_label": "Benefic Yoga",
+      "planets_involved": [],
+      "houses_involved": [
+        7,
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "benefics_in_houses",
+        "checkable": true,
+        "description": "Natural benefics (Jupiter, Venus, Mercury) must occupy the 7th and/or 8th houses from the ascendant. No malefic may conjoin or aspect these benefics. Optimal form: Mercury in 6th, Jupiter in 7th, Venus in 8th. The 4th house should be unoccupied per some versions. Best effects: all three benefics placed, free from combustion and debilitation.",
+        "houses": [
+          7,
+          8
+        ],
+        "planet_type": "benefic",
+        "no_malefic_aspect": true
+      }
+    },
+    "interpretation": {
+      "summary": "Lagnadhi Yoga \u2014 The native will be a great person, learned in Sastras and happy. When the three benefics (Mercury in 6th, Jupiter in 7th, Venus in 8th) are optimally placed, the native will be high...",
+      "detailed": "Yoga: Lagnadhi Yoga [Benefic Yoga]\n\nFormation: Natural benefics (Jupiter, Venus, Mercury) occupy the 7th and 8th houses from the ascendant, devoid of conjunction or aspect of any malefic planet. Note: This is the Lagna-based version (Chandradhi yoga applies the same rule from the Moon, adding the 6th house).\n\nEffect: The native will be a great person, learned in Sastras and happy. When the three benefics (Mercury in 6th, Jupiter in 7th, Venus in 8th) are optimally placed, the native will be highly learned, wealthy, and among the most supreme men on earth.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Lagnadhi Yoga [Benefic Yoga]\n\nFormation: Natural benefics (Jupiter, Venus, Mercury) occupy the 7th and 8th houses from the ascendant, devoid of conjunction or aspect of any malefic planet. Note: This is the Lagna-based version (Chandradhi yoga applies the same rule from the Moon, adding the 6th house).\n\nEffect: The native will be a great person, learned in Sastras and happy. When the three benefics (Mercury in 6th, Jupiter in 7th, Venus in 8th) are optimally placed, the native will be highly learned, wealthy, and among the most supreme men on earth.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "scholarship",
+      "life_domains": [
+        "scholarship",
+        "happiness",
+        "wealth"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-benefic_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        7,
+        8
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261158+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-024",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-divisional-parijathamsa",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "divisional_dignity",
+      "yoga_name": "Lagna Lord in Parijathamsa",
+      "yoga_group": "divisional",
+      "yoga_group_label": "Divisional Dignity",
+      "dignity_name": "Parijathamsa",
+      "dignity_rank": 1,
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "divisional_dignity",
+        "checkable": false,
+        "description": "Ascendant lord occupies Parijathamsa Varga dignity. Requires full divisional (Varga) chart computation across multiple divisional charts. Phase 2 implementation.",
+        "dignity_name": "Parijathamsa",
+        "dignity_rank": 1
+      }
+    },
+    "interpretation": {
+      "summary": "Lagna lord in Parijathamsa \u2014 The ascendant lord in Parijathamsa (a specific Varga dignity level) will make the native happy.",
+      "detailed": "Yoga: Ascendant Lord in Parijathamsa [Divisional Dignity \u2014 rank 1]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Parijathamsa.\n\nEffect: The ascendant lord in Parijathamsa (a specific Varga dignity level) will make the native happy.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Ascendant Lord in Parijathamsa [Divisional Dignity \u2014 rank 1]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Parijathamsa.\n\nEffect: The ascendant lord in Parijathamsa (a specific Varga dignity level) will make the native happy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "happiness",
+      "life_domains": [
+        "happiness"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "general_principle",
+        "divisional_dignity",
+        "varga:parijathamsa",
+        "group:bphs-ch36-divisional",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261167+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-025",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-divisional-vargothama",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "divisional_dignity",
+      "yoga_name": "Lagna Lord in Vargothama",
+      "yoga_group": "divisional",
+      "yoga_group_label": "Divisional Dignity",
+      "dignity_name": "Vargothama",
+      "dignity_rank": 2,
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "divisional_dignity",
+        "checkable": false,
+        "description": "Ascendant lord occupies Vargothama Varga dignity. Requires full divisional (Varga) chart computation across multiple divisional charts. Phase 2 implementation.",
+        "dignity_name": "Vargothama",
+        "dignity_rank": 2
+      }
+    },
+    "interpretation": {
+      "summary": "Lagna lord in Vargothama \u2014 The ascendant lord in Vargothama (occupying the same sign in both the Rasi and Navamsa charts) makes the native immune to diseases and grants excellent health and constit...",
+      "detailed": "Yoga: Ascendant Lord in Vargothama [Divisional Dignity \u2014 rank 2]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Vargothama.\n\nEffect: The ascendant lord in Vargothama (occupying the same sign in both the Rasi and Navamsa charts) makes the native immune to diseases and grants excellent health and constitution.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Ascendant Lord in Vargothama [Divisional Dignity \u2014 rank 2]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Vargothama.\n\nEffect: The ascendant lord in Vargothama (occupying the same sign in both the Rasi and Navamsa charts) makes the native immune to diseases and grants excellent health and constitution.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "longevity"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "general_principle",
+        "divisional_dignity",
+        "varga:vargothama",
+        "group:bphs-ch36-divisional",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261361+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-026",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-divisional-gopuramsa",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "divisional_dignity",
+      "yoga_name": "Lagna Lord in Gopuramsa",
+      "yoga_group": "divisional",
+      "yoga_group_label": "Divisional Dignity",
+      "dignity_name": "Gopuramsa",
+      "dignity_rank": 3,
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "divisional_dignity",
+        "checkable": false,
+        "description": "Ascendant lord occupies Gopuramsa Varga dignity. Requires full divisional (Varga) chart computation across multiple divisional charts. Phase 2 implementation.",
+        "dignity_name": "Gopuramsa",
+        "dignity_rank": 3
+      }
+    },
+    "interpretation": {
+      "summary": "Lagna lord in Gopuramsa \u2014 The ascendant lord in Gopuramsa makes the native rich with wealth and grains.",
+      "detailed": "Yoga: Ascendant Lord in Gopuramsa [Divisional Dignity \u2014 rank 3]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Gopuramsa.\n\nEffect: The ascendant lord in Gopuramsa makes the native rich with wealth and grains.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Ascendant Lord in Gopuramsa [Divisional Dignity \u2014 rank 3]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Gopuramsa.\n\nEffect: The ascendant lord in Gopuramsa makes the native rich with wealth and grains.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "general_principle",
+        "divisional_dignity",
+        "varga:gopuramsa",
+        "group:bphs-ch36-divisional",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261373+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-027",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-divisional-sinhasanamsa",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "divisional_dignity",
+      "yoga_name": "Lagna Lord in Sinhasanamsa",
+      "yoga_group": "divisional",
+      "yoga_group_label": "Divisional Dignity",
+      "dignity_name": "Sinhasanamsa",
+      "dignity_rank": 4,
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "divisional_dignity",
+        "checkable": false,
+        "description": "Ascendant lord occupies Sinhasanamsa Varga dignity. Requires full divisional (Varga) chart computation across multiple divisional charts. Phase 2 implementation.",
+        "dignity_name": "Sinhasanamsa",
+        "dignity_rank": 4
+      }
+    },
+    "interpretation": {
+      "summary": "Lagna lord in Sinhasanamsa \u2014 The ascendant lord in Sinhasanamsa (throne dignity) makes the native a king.",
+      "detailed": "Yoga: Ascendant Lord in Sinhasanamsa [Divisional Dignity \u2014 rank 4]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Sinhasanamsa.\n\nEffect: The ascendant lord in Sinhasanamsa (throne dignity) makes the native a king.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Ascendant Lord in Sinhasanamsa [Divisional Dignity \u2014 rank 4]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Sinhasanamsa.\n\nEffect: The ascendant lord in Sinhasanamsa (throne dignity) makes the native a king.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "royalty",
+      "life_domains": [
+        "royalty",
+        "power"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "general_principle",
+        "divisional_dignity",
+        "varga:sinhasanamsa",
+        "group:bphs-ch36-divisional",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261380+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-028",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-divisional-paravathamsa",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "divisional_dignity",
+      "yoga_name": "Lagna Lord in Paravathamsa",
+      "yoga_group": "divisional",
+      "yoga_group_label": "Divisional Dignity",
+      "dignity_name": "Paravathamsa",
+      "dignity_rank": 5,
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "divisional_dignity",
+        "checkable": false,
+        "description": "Ascendant lord occupies Paravathamsa Varga dignity. Requires full divisional (Varga) chart computation across multiple divisional charts. Phase 2 implementation.",
+        "dignity_name": "Paravathamsa",
+        "dignity_rank": 5
+      }
+    },
+    "interpretation": {
+      "summary": "Lagna lord in Paravathamsa \u2014 The ascendant lord in Paravathamsa makes the native a scholar.",
+      "detailed": "Yoga: Ascendant Lord in Paravathamsa [Divisional Dignity \u2014 rank 5]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Paravathamsa.\n\nEffect: The ascendant lord in Paravathamsa makes the native a scholar.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Ascendant Lord in Paravathamsa [Divisional Dignity \u2014 rank 5]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Paravathamsa.\n\nEffect: The ascendant lord in Paravathamsa makes the native a scholar.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "scholarship",
+      "life_domains": [
+        "scholarship"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "general_principle",
+        "divisional_dignity",
+        "varga:paravathamsa",
+        "group:bphs-ch36-divisional",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261386+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-029",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-divisional-devalokamsa",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "divisional_dignity",
+      "yoga_name": "Lagna Lord in Devalokamsa",
+      "yoga_group": "divisional",
+      "yoga_group_label": "Divisional Dignity",
+      "dignity_name": "Devalokamsa",
+      "dignity_rank": 6,
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "divisional_dignity",
+        "checkable": false,
+        "description": "Ascendant lord occupies Devalokamsa Varga dignity. Requires full divisional (Varga) chart computation across multiple divisional charts. Phase 2 implementation.",
+        "dignity_name": "Devalokamsa",
+        "dignity_rank": 6
+      }
+    },
+    "interpretation": {
+      "summary": "Lagna lord in Devalokamsa \u2014 The ascendant lord in Devalokamsa makes the native opulent and endowed with conveyances.",
+      "detailed": "Yoga: Ascendant Lord in Devalokamsa [Divisional Dignity \u2014 rank 6]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Devalokamsa.\n\nEffect: The ascendant lord in Devalokamsa makes the native opulent and endowed with conveyances.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Ascendant Lord in Devalokamsa [Divisional Dignity \u2014 rank 6]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Devalokamsa.\n\nEffect: The ascendant lord in Devalokamsa makes the native opulent and endowed with conveyances.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "comforts"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "general_principle",
+        "divisional_dignity",
+        "varga:devalokamsa",
+        "group:bphs-ch36-divisional",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261395+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-030",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-divisional-iravathramsa",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "divisional_dignity",
+      "yoga_name": "Lagna Lord in Iravathramsa",
+      "yoga_group": "divisional",
+      "yoga_group_label": "Divisional Dignity",
+      "dignity_name": "Iravathramsa",
+      "dignity_rank": 7,
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "divisional_dignity",
+        "checkable": false,
+        "description": "Ascendant lord occupies Iravathramsa Varga dignity. Requires full divisional (Varga) chart computation across multiple divisional charts. Phase 2 implementation.",
+        "dignity_name": "Iravathramsa",
+        "dignity_rank": 7
+      }
+    },
+    "interpretation": {
+      "summary": "Lagna lord in Iravathramsa \u2014 The ascendant lord in Iravathramsa makes the native famous and honoured by kings.",
+      "detailed": "Yoga: Ascendant Lord in Iravathramsa [Divisional Dignity \u2014 rank 7]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Iravathramsa.\n\nEffect: The ascendant lord in Iravathramsa makes the native famous and honoured by kings.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Ascendant Lord in Iravathramsa [Divisional Dignity \u2014 rank 7]\n\nFormation: The ascendant lord occupies the Varga dignity level known as Iravathramsa.\n\nEffect: The ascendant lord in Iravathramsa makes the native famous and honoured by kings.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "fame",
+      "life_domains": [
+        "fame",
+        "royalty"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "general_principle",
+        "divisional_dignity",
+        "varga:iravathramsa",
+        "group:bphs-ch36-divisional",
+        "benefic"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-divisional",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:24:14.261402+00:00"
+  }
+]
