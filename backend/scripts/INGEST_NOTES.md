@@ -1740,3 +1740,69 @@ Single-pass — zero structural failures (yoga_combination types pass updated va
 | **Total** | **33** | |
 
 ---
+
+## BPHS Chapter 36 — Many Other Yogas
+
+**Batch ID:** `bphs-ch36-v1-20260426`
+**Script:** `scripts/ingest_bphs_ch36_v1.py`
+**Dry-run JSON:** `scripts/bphs_ch36_rules.json`
+**Commits:** `4a51784` (initial 30 rules) → `8fe4b9d` (final 32 rules after Hamsa + Chandradhi added)
+
+### Source structure
+
+25 named yogas + 7 divisional-dignity rules = **32 rules total**.
+Hard-coded from RTF — zero AI extraction cost.
+
+| Group | Yogas | Rules |
+|---|---|---|
+| Benefic/Malefic | Subha, Asubha | 2 |
+| Raja Yoga | Gajakesari, Hamsa, Parvata, Kahala, Chamara, Sankha, Bheri, Mridanga, Srinatha, Sarada, Matsya, Koorma, Khadga, Lakshmi, Kusuma, Kalanidhi, Kalpadruma | 17 |
+| Benefic Yoga | Amala, Lagnadhi, Chandradhi | 3 |
+| Trimurthi | Hari, Hara, Brahma | 3 |
+| Divisional Dignity | Parijathamsa, Vargothama, Gopuramsa, Sinhasanamsa, Paravathamsa, Devalokamsa, Iravathramsa | 7 |
+| **Total** | | **32** |
+
+### Post-dry-run additions (identified from RTF before upload)
+
+Two yogas were found during RTF review after the initial dry run and added before upload:
+
+**Hamsa Yoga** (rule bphs-ch36-004, Sloka 3-4 Notes):
+- RTF location: Notes section of Gajakesari (Sloka 3-4), line: *"The case of mere of Jupiter being in exaltation in a lunar angle can better be known as Paicha Maha Purusha Yoga, specifically Hamsa Yoga."*
+- Formation: Jupiter in Cancer (exaltation) in an angular house (1, 4, 7, 10) from the Moon
+- Distinguishes Hamsa from ordinary Gajakesari — requires exaltation, not just kendra placement
+- yoga_check: `planet_in_kendra_from`, checkable=True; sign: Cancer, reference: Moon
+
+**Chandradhi Yoga** (rule bphs-ch36-025, Sloka 37 Notes):
+- RTF location: Notes section of Lagnadhi Yoga (Sloka 37): *"In Chandradhi yoga, the sage has included the 6th house."*
+- Formation: Natural benefics (Jupiter, Venus, Mercury) in the 6th, 7th, and/or 8th from the Moon, free from malefic aspect; 4th from Moon unoccupied
+- Distinct from Lagnadhi Yoga: Lagnadhi counts from ascendant (houses 7, 8 only); Chandradhi counts from Moon (houses 6, 7, 8)
+- Optimal form: Mercury in 6th, Jupiter in 7th, Venus in 8th from Moon
+- yoga_check: `benefics_in_houses`, reference: Moon, checkable=True
+
+### yoga_check coverage — 9 / 32 checkable
+
+| yoga_check.type | Yogas | Checkable |
+|---|---|---|
+| `benefics_in_houses` | Subha, Lagnadhi, Chandradhi | ✅ True |
+| `malefics_in_houses` | Asubha | ✅ True |
+| `planet_in_kendra_from` | Gajakesari, Hamsa | ✅ True |
+| `benefic_only_in_house` | Amala | ✅ True |
+| `planet_in_house` | Kalanidhi | ✅ True |
+| `complex` | Parvata, Kahala, Chamara, Sankha, Bheri, Mridanga, Srinatha, Sarada, Matsya, Koorma, Khadga, Lakshmi, Kusuma, Kalpadruma, Hari, Hara, Brahma | ❌ False |
+| `divisional_dignity` | All 7 divisional rules | ❌ False |
+
+### Validation — COMPLETE (26 Apr 2026)
+
+Single-pass — zero structural failures.
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 13 | 41% |
+| `pending_human_review` | 17 | 53% |
+| `flagged` | 2 | 6% |
+| Contradictions | 0 | — |
+| **Total** | **32** | |
+
+Note: Lower auto_approved % vs Ch 35 (41% vs 76%) expected — Ch 36 yogas are multi-lord complex formations with few checkable conditions, so the validator has less signal to auto-approve. All 17 PHR and 2 flagged rules await co-founder review.
+
+---
