@@ -1,6 +1,6 @@
 # Knowledge Engine — Session Handover
-> Last updated: 27 Apr 2026 — Session 9 (Lal Kitab Ch 19 ingested + validated)
-> Lal Kitab Ch 19 (78 rules, 63% auto_approved) complete. Next: BPHS Ch 40 (PDF on disk). See Section 4 for exact next actions.
+> Last updated: 27 Apr 2026 — Session 9 (Lal Kitab Ch 19 + Ch 20 ingested + validated)
+> Lal Kitab Ch 19 (78 rules, 63%) and Ch 20 (48 rules, 71% auto_approved) complete. Next: BPHS Ch 40 (PDF on disk). See Section 4 for exact next actions.
 > Next session: read this FIRST before touching any script or DB
 
 ---
@@ -130,6 +130,7 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 | BPHS Ch 38 (Solar Yogas) | bphs-ch38-v1-20260426 | 4 | — | ✅ **fully validated** (26 Apr) — 1 auto / 2 PHR / 1 flagged — 0 contradictions |
 | BPHS Ch 39 (Raja Yogas) | bphs-ch39-v1-20260426 | 50 | — | ✅ **fully validated** (26 Apr) — 41 auto / 6 PHR / 3 flagged — 0 contradictions · 82% auto-approved (best ratio any yoga chapter) |
 | **Lal Kitab Ch 19 (Mangalik Evil)** | lalkitab-ch19-v1-20260426 | **78** | — | ✅ **fully validated** (27 Apr) — 49 auto / 23 PHR / 6 flagged — 0 contradictions · 63% auto_approved · first Lal Kitab chapter |
+| **Lal Kitab Ch 20 (Diseases)** | lalkitab-ch20-v1-20260427 | **48** | — | ✅ **fully validated** (27 Apr) — 34 auto / 10 PHR / 3 flagged / 1 pending_review — 0 contradictions · 71% auto_approved · ⚠️ 1 rule needs re-validation (pending_review) |
 
 ---
 
@@ -230,6 +231,7 @@ Step 4 — Dry-run --save JSON → review → --upload → validate
 | Chapter | Topic | Batch ID | Rules | Condition types | Status |
 |---|---|---|---|---|---|
 | Ch 19 — Mangalik Evil and Trials | Mars dosha + remedies | lalkitab-ch19-v1-20260426 | **78** | 65 dosha · 9 planetary_combination · 4 general_principle | ✅ **Fully validated** (27 Apr 2026) |
+| Ch 20 — Diseases | Diagnostic engine + planet disease library | lalkitab-ch20-v1-20260427 | **48** | 27 dosha · 11 planetary_combination · 10 general_principle | ✅ **Fully validated** (27 Apr 2026) · ⚠️ 1 pending_review |
 
 **Validation summary — Ch 19 (27 Apr 2026):**
 | Status | Count | % |
@@ -659,11 +661,11 @@ Branch: `main` (deploy-on-push to Vercel + Render)
 
 **Last commits (most recent first):**
 ```
+fa1521f feat(knowledge-engine): ingest Lal Kitab Ch 20 Diseases — 48 rules
+e09cfc3 docs(knowledge-engine): add Lal Kitab Ch 19 validation results to HANDOVER + INGEST_NOTES
 39cd966 fix(knowledge-engine): dedup Lal Kitab Ch19 double-ingest + validator dosha guidance
 82da579 feat(knowledge-engine): ingest Lal Kitab Ch 19 Mangalik Evil — 78 rules
 21d82fc docs(knowledge-engine): refresh HANDOVER for Session 9 start
-0233bae fix(knowledge-engine): raise max_tokens to 8192 + join standalone RTF headings
-c2ecefb docs(knowledge-engine): refresh HANDOVER for Session 9 start
 ```
 
 **No uncommitted changes.** Repo is clean as of Session 9 end.
