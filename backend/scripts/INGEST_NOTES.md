@@ -2163,3 +2163,56 @@ backend/scripts/patch_yoga_check_reclassify.py --mongo-url $MONGO_URL --db-name 
 Notebook LM intermediate decode had "Second house" (H2) for one column — confirmed OCR scan error in source PDF. v2 decode correctly mapped to `mars_house: 4` (Fourth house). Ingest script uses v2 decode.
 
 ---
+
+## Lal Kitab Ch 20 — Diseases (27 Apr 2026)
+
+**Batch ID:** `lalkitab-ch20-v1-20260427`
+**Script:** `backend/scripts/ingest_lalkitab_ch20_v1.py`
+**Rules JSON:** `backend/scripts/lalkitab_ch20_rules.json`
+**Source:** Lal Kitab Ch 20 + Notebook LM V2 decode (reviewed, 3-pass flags resolved)
+
+### Rule breakdown
+
+| Group | Count | Condition type | Sub-type |
+|---|---|---|---|
+| GP anatomy mapping (sign/house/planet) | 3 | general_principle | anatomy_mapping |
+| GP engine rules (seq/roles/interact) | 3 | general_principle | diagnostic_sequence · functional_roles · interaction_logic |
+| Planetary combination diseases (YOG) | 11 | planetary_combination | — |
+| Planet disease catalog (split DOS-01) | 10 | dosha | disease |
+| Nail diagnosis (split DOS-02) | 8 | dosha | disease |
+| Planet symptom + remedy (REM) | 9 | dosha | disease |
+| General trials (bread + charity) | 2 | general_principle | general_trial |
+| Meta gate rules (MET) | 2 | general_principle | debilitation_gate · succession_rule |
+| **Total** | **48** | | |
+
+### Validation result (27 Apr 2026)
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 34 | 71% |
+| `pending_human_review` | 10 | 21% |
+| `flagged` | 3 | 6% |
+| `pending_review` | 1 | 2% ⚠️ |
+| Contradictions | 0 | — |
+
+71% auto_approved — best Lal Kitab chapter rate so far. ⚠️ 1 rule remained at `pending_review` (batch boundary miss during validation). Re-run with `--batch-id lalkitab-ch20-v1-20260427` to clear it.
+
+### Key schema decisions
+
+1. **DOS-01/DOS-02 split:** Consolidated planetary catalog (10 planets) and nail diagnosis (8 entries) split into individual rules for engine queryability. Rule IDs: `lalkitab-ch20-dos-{planet_slug}` and `lalkitab-ch20-nail-{symptom-slug}`.
+
+2. **New sub-types (all mapped to general_principle):** `diagnostic_sequence`, `functional_roles`, `interaction_logic`, `debilitation_gate`, `succession_rule`, `anatomy_mapping`. No schema change — sub-types preserved as `condition.sub_type` string.
+
+3. **Symptoms → physical_markers:** `symptoms.physical` → `{category: "physical_symptom"}` and `symptoms.environmental` → `{category: "environmental_omen"}` in `interpretation.physical_markers`. Consistent with TBA Ch 16 physical appearance data.
+
+4. **Succour remedies:** Venus (→ treat Mercury) and Ketu (→ treat Moon) succour instructions folded into `remedies` array with `category: "succour"`. Saturn also has a succour remedy (float coconut). Cross-references use rule IDs: `lalkitab-ch20-rem-mercury`, `lalkitab-ch20-rem-moon`.
+
+5. **Varshaphalam flag:** YOG-11 (`lalkitab-ch20-yog-11`) has `yoga_check.checkable: false` + `requires: "varshaphalam"`. Not activatable until annual chart engine is built.
+
+6. **Checkable rate:** 30/48 (62%). All DOS planet rules and REM planet rules are `planet_affliction` checkable. All YOG rules (except YOG-11) are `planetary_combination` checkable. GP/nail/trial/meta rules are non-checkable by design.
+
+### What makes Ch 20 architecturally unique
+
+Unlike Ch 19 (lookup table: Ascendant × Mars House → Remedies), Ch 20 is a **multi-system diagnostic engine** with 7 interlocking layers: aspect/affliction logic, Kaal Purush anatomy mapping, diagnostic priority sequence (H3→H8→H5→H11→H4), planetary disease library, nail diagnosis, symptom/remedy rules, and debilitation gate rules. The chapter cannot be reduced to a simple table — it requires the full rule set to function.
+
+---
