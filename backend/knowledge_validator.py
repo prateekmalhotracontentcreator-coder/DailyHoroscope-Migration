@@ -34,6 +34,10 @@ IMPORTANT — condition field guidance:
   This means the rule is a GENERAL astrological principle (e.g. a planet's nature, a house
   signification, a yoga, or a general interpretive statement). This is VALID — do NOT flag
   a rule solely because its condition is empty or composite.
+- Rules with condition: {{"type": "dosha", "sub_type": "mangalik", ...}} are Lal Kitab
+  Mangalik dosha rules. They contain extra fields (ascendant, aspect_houses, dosha_type,
+  ascendant_filter) which are schema extensions — VALID. Evaluate only the interpretation
+  text (summary / detailed / remedies) on its astrological merits.
 - Evaluate the "summary" and "detailed" interpretation text on its own merits.
 - Only flag if the interpretation text itself is wrong, incoherent, or garbled.
 
