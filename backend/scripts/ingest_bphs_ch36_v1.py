@@ -255,14 +255,18 @@ YOGA_DATA: list[dict] = [
         "is_benefic":   True,
         "life_domains": ["wealth", "fame", "scholarship", "leadership"],
         "yoga_check": {
-            "type":        "complex",
-            "checkable":   False,
+            "type":        "multi_house_requirements",
+            "checkable":   True,
             "description": (
-                "Primary condition: natural benefics in angular houses (1, 4, 7, 10) "
-                "AND houses 7 and 8 must be unoccupied or occupied by benefics only. "
-                "Multiple classical variants exist across Parasara, Jataka Parijata, "
-                "and Phala Deepika. Phase 2: implement primary form as compound check."
+                "Natural benefics must occupy the angular houses (1, 4, 7, 10); "
+                "houses 7 and 8 must be free from natural malefics "
+                "(vacant or benefic-only). Primary classical form per Parasara."
             ),
+            "operator": "and",
+            "house_requirements": [
+                {"houses": [1, 4, 7, 10], "planet_type": "benefic", "constraint": "present"},
+                {"houses": [7, 8],         "planet_type": "malefic", "constraint": "absent"},
+            ],
         },
     },
 
@@ -486,7 +490,7 @@ YOGA_DATA: list[dict] = [
         "is_benefic":   True,
         "life_domains": ["scholarship", "astrology", "fame", "character"],
         "yoga_check": {
-            "type":        "complex",
+            "type":        "multi_house_requirements",
             "checkable":   True,
             "description": (
                 "Three simultaneous house requirements: (1) natural benefics in "
@@ -494,6 +498,7 @@ YOGA_DATA: list[dict] = [
                 "malefic) in house 5; (3) malefics in houses 4 and 8. All three "
                 "conditions must hold simultaneously."
             ),
+            "operator": "and",
             "house_requirements": [
                 {"houses": [1, 9], "planet_type": "benefic"},
                 {"houses": [5],    "planet_type": "mixed"},
