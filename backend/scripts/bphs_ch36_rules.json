@@ -95,7 +95,7 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.259738+00:00"
+    "created_at": "2026-04-26T00:30:38.732633+00:00"
   },
   {
     "rule_id": "bphs-ch36-002",
@@ -192,7 +192,7 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.260816+00:00"
+    "created_at": "2026-04-26T00:30:38.733041+00:00"
   },
   {
     "rule_id": "bphs-ch36-003",
@@ -301,10 +301,117 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.260940+00:00"
+    "created_at": "2026-04-26T00:30:38.733050+00:00"
   },
   {
     "rule_id": "bphs-ch36-004",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-hamsa-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Hamsa Yoga",
+      "yoga_group": "raja_yoga",
+      "yoga_group_label": "Raja Yoga",
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_in_kendra_from",
+        "checkable": true,
+        "description": "Jupiter must be in Cancer (its exaltation sign) AND in an angular house (1, 4, 7, or 10) counted from the Moon's sign position. Jupiter must be free from combustion. Distinguished from ordinary Gajakesari by requiring exaltation rather than merely kendra placement from Moon.",
+        "planet": "Jupiter",
+        "sign": "Cancer",
+        "reference": "Moon",
+        "houses": [
+          1,
+          4,
+          7,
+          10
+        ],
+        "conditions": [
+          "exalted_sign",
+          "free_from_combustion"
+        ]
+      }
+    },
+    "interpretation": {
+      "summary": "Hamsa Yoga \u2014 One born in Hamsa yoga will be splendorous, wealthy, and intelligent, endowed with many laudable virtues. As a Pancha Mahapurusha yoga it confers the highest order of Jupiter's blessin...",
+      "detailed": "Yoga: Hamsa Yoga [Raja Yoga]\n\nFormation: Jupiter occupies its exaltation sign (Cancer) AND is placed in an angular house (1st, 4th, 7th, or 10th) counted from the Moon. This is a specific form of the Pancha Mahapurusha yoga, distinguished from the broader Gajakesari formation by the requirement of Jupiter's exaltation. Jupiter must be free from combustion.\n\nEffect: One born in Hamsa yoga will be splendorous, wealthy, and intelligent, endowed with many laudable virtues. As a Pancha Mahapurusha yoga it confers the highest order of Jupiter's blessings \u2014 learning, spirituality, prosperity, physical grace, and honour from kings and society.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Hamsa Yoga [Raja Yoga]\n\nFormation: Jupiter occupies its exaltation sign (Cancer) AND is placed in an angular house (1st, 4th, 7th, or 10th) counted from the Moon. This is a specific form of the Pancha Mahapurusha yoga, distinguished from the broader Gajakesari formation by the requirement of Jupiter's exaltation. Jupiter must be free from combustion.\n\nEffect: One born in Hamsa yoga will be splendorous, wealthy, and intelligent, endowed with many laudable virtues. As a Pancha Mahapurusha yoga it confers the highest order of Jupiter's blessings \u2014 learning, spirituality, prosperity, physical grace, and honour from kings and society.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "scholarship",
+        "fame",
+        "royalty",
+        "spirituality"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-raja_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-raja_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:30:38.733058+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-005",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -391,10 +498,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.260954+00:00"
+    "created_at": "2026-04-26T00:30:38.733064+00:00"
   },
   {
-    "rule_id": "bphs-ch36-005",
+    "rule_id": "bphs-ch36-006",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -473,10 +580,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.260963+00:00"
+    "created_at": "2026-04-26T00:30:38.733074+00:00"
   },
   {
-    "rule_id": "bphs-ch36-006",
+    "rule_id": "bphs-ch36-007",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -555,10 +662,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.260976+00:00"
+    "created_at": "2026-04-26T00:30:38.733081+00:00"
   },
   {
-    "rule_id": "bphs-ch36-007",
+    "rule_id": "bphs-ch36-008",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -637,10 +744,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.260988+00:00"
+    "created_at": "2026-04-26T00:30:38.733087+00:00"
   },
   {
-    "rule_id": "bphs-ch36-008",
+    "rule_id": "bphs-ch36-009",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -719,10 +826,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.260997+00:00"
+    "created_at": "2026-04-26T00:30:38.733093+00:00"
   },
   {
-    "rule_id": "bphs-ch36-009",
+    "rule_id": "bphs-ch36-010",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -801,10 +908,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261003+00:00"
+    "created_at": "2026-04-26T00:30:38.733101+00:00"
   },
   {
-    "rule_id": "bphs-ch36-010",
+    "rule_id": "bphs-ch36-011",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -882,10 +989,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261011+00:00"
+    "created_at": "2026-04-26T00:30:38.733107+00:00"
   },
   {
-    "rule_id": "bphs-ch36-011",
+    "rule_id": "bphs-ch36-012",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -964,10 +1071,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261022+00:00"
+    "created_at": "2026-04-26T00:30:38.733113+00:00"
   },
   {
-    "rule_id": "bphs-ch36-012",
+    "rule_id": "bphs-ch36-013",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1046,10 +1153,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261030+00:00"
+    "created_at": "2026-04-26T00:30:38.733119+00:00"
   },
   {
-    "rule_id": "bphs-ch36-013",
+    "rule_id": "bphs-ch36-014",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1151,10 +1258,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261040+00:00"
+    "created_at": "2026-04-26T00:30:38.733127+00:00"
   },
   {
-    "rule_id": "bphs-ch36-014",
+    "rule_id": "bphs-ch36-015",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1233,10 +1340,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261047+00:00"
+    "created_at": "2026-04-26T00:30:38.733134+00:00"
   },
   {
-    "rule_id": "bphs-ch36-015",
+    "rule_id": "bphs-ch36-016",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1315,10 +1422,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261055+00:00"
+    "created_at": "2026-04-26T00:30:38.733141+00:00"
   },
   {
-    "rule_id": "bphs-ch36-016",
+    "rule_id": "bphs-ch36-017",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1397,10 +1504,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261063+00:00"
+    "created_at": "2026-04-26T00:30:38.733147+00:00"
   },
   {
-    "rule_id": "bphs-ch36-017",
+    "rule_id": "bphs-ch36-018",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1479,10 +1586,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261070+00:00"
+    "created_at": "2026-04-26T00:30:38.733155+00:00"
   },
   {
-    "rule_id": "bphs-ch36-018",
+    "rule_id": "bphs-ch36-019",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1577,10 +1684,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261079+00:00"
+    "created_at": "2026-04-26T00:30:38.733161+00:00"
   },
   {
-    "rule_id": "bphs-ch36-019",
+    "rule_id": "bphs-ch36-020",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1659,10 +1766,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261086+00:00"
+    "created_at": "2026-04-26T00:30:38.733167+00:00"
   },
   {
-    "rule_id": "bphs-ch36-020",
+    "rule_id": "bphs-ch36-021",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1741,10 +1848,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261092+00:00"
+    "created_at": "2026-04-26T00:30:38.733173+00:00"
   },
   {
-    "rule_id": "bphs-ch36-021",
+    "rule_id": "bphs-ch36-022",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1823,10 +1930,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261144+00:00"
+    "created_at": "2026-04-26T00:30:38.733178+00:00"
   },
   {
-    "rule_id": "bphs-ch36-022",
+    "rule_id": "bphs-ch36-023",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1905,10 +2012,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261151+00:00"
+    "created_at": "2026-04-26T00:30:38.733184+00:00"
   },
   {
-    "rule_id": "bphs-ch36-023",
+    "rule_id": "bphs-ch36-024",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -1999,10 +2106,109 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261158+00:00"
+    "created_at": "2026-04-26T00:30:38.733191+00:00"
   },
   {
-    "rule_id": "bphs-ch36-024",
+    "rule_id": "bphs-ch36-025",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 36,
+      "chapter_name": "Many Other Yogas",
+      "sloka": "ch36-chandradhi-yoga",
+      "batch_id": "bphs-ch36-v1-20260426",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Chandradhi Yoga",
+      "yoga_group": "benefic_yoga",
+      "yoga_group_label": "Benefic Yoga",
+      "planets_involved": [],
+      "houses_involved": [
+        6,
+        7,
+        8
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "benefics_in_houses",
+        "checkable": true,
+        "description": "Natural benefics (Jupiter, Venus, Mercury) must occupy the 6th, 7th, and/or 8th houses counted from the Moon's sign. No malefic may conjoin or aspect the benefics in these positions. Optimal: Mercury in 6th, Jupiter in 7th, Venus in 8th from Moon. 4th from Moon should be vacant. Benefics must be free from combustion and debilitation. Reference point: Moon (not ascendant).",
+        "houses": [
+          6,
+          7,
+          8
+        ],
+        "reference": "Moon",
+        "planet_type": "benefic",
+        "no_malefic_aspect": true
+      }
+    },
+    "interpretation": {
+      "summary": "Chandradhi Yoga \u2014 The native will be highly learned, wealthy, and among the most supreme men on earth. The yoga confers greatness, scholarship, prosperity, and exalted social standing. Effects are ...",
+      "detailed": "Yoga: Chandradhi Yoga [Benefic Yoga]\n\nFormation: Natural benefics (Jupiter, Venus, Mercury) occupy the 6th, 7th, and/or 8th houses counted from the Moon, devoid of malefic conjunction or aspect. This is the Moon-based counterpart to Lagnadhi Yoga (which counts from the ascendant). The key distinction is the inclusion of the 6th house from the Moon. Optimal form: Mercury in 6th, Jupiter in 7th, Venus in 8th from the Moon. The 4th from the Moon should be unoccupied. Benefics must be free from combustion and debilitation.\n\nEffect: The native will be highly learned, wealthy, and among the most supreme men on earth. The yoga confers greatness, scholarship, prosperity, and exalted social standing. Effects are strongest when all three benefics (Mercury, Jupiter, Venus) are optimally placed in the 6th, 7th, and 8th from the Moon.",
+      "full_text_passages": [
+        {
+          "text": "Yoga: Chandradhi Yoga [Benefic Yoga]\n\nFormation: Natural benefics (Jupiter, Venus, Mercury) occupy the 6th, 7th, and/or 8th houses counted from the Moon, devoid of malefic conjunction or aspect. This is the Moon-based counterpart to Lagnadhi Yoga (which counts from the ascendant). The key distinction is the inclusion of the 6th house from the Moon. Optimal form: Mercury in 6th, Jupiter in 7th, Venus in 8th from the Moon. The 4th from the Moon should be unoccupied. Benefics must be free from combustion and debilitation.\n\nEffect: The native will be highly learned, wealthy, and among the most supreme men on earth. The yoga confers greatness, scholarship, prosperity, and exalted social standing. Effects are strongest when all three benefics (Mercury, Jupiter, Venus) are optimally placed in the 6th, 7th, and 8th from the Moon.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "scholarship",
+      "life_domains": [
+        "scholarship",
+        "wealth",
+        "fame",
+        "happiness"
+      ],
+      "tags": [
+        "verbatim",
+        "yoga",
+        "chapter36",
+        "yoga_combination",
+        "yoga_formation",
+        "group:bphs-ch36-benefic_yoga",
+        "benefic",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        6,
+        7,
+        8
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch36-benefic_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-04-26T00:30:38.733252+00:00"
+  },
+  {
+    "rule_id": "bphs-ch36-026",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -2083,10 +2289,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261167+00:00"
+    "created_at": "2026-04-26T00:30:38.733260+00:00"
   },
   {
-    "rule_id": "bphs-ch36-025",
+    "rule_id": "bphs-ch36-027",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -2168,10 +2374,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261361+00:00"
+    "created_at": "2026-04-26T00:30:38.733267+00:00"
   },
   {
-    "rule_id": "bphs-ch36-026",
+    "rule_id": "bphs-ch36-028",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -2252,10 +2458,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261373+00:00"
+    "created_at": "2026-04-26T00:30:38.733272+00:00"
   },
   {
-    "rule_id": "bphs-ch36-027",
+    "rule_id": "bphs-ch36-029",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -2337,10 +2543,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261380+00:00"
+    "created_at": "2026-04-26T00:30:38.733278+00:00"
   },
   {
-    "rule_id": "bphs-ch36-028",
+    "rule_id": "bphs-ch36-030",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -2421,10 +2627,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261386+00:00"
+    "created_at": "2026-04-26T00:30:38.733285+00:00"
   },
   {
-    "rule_id": "bphs-ch36-029",
+    "rule_id": "bphs-ch36-031",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -2506,10 +2712,10 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261395+00:00"
+    "created_at": "2026-04-26T00:30:38.733293+00:00"
   },
   {
-    "rule_id": "bphs-ch36-030",
+    "rule_id": "bphs-ch36-032",
     "science_id": "jyotish",
     "source": {
       "book": "Brihat Parashara Hora Shastra",
@@ -2591,6 +2797,6 @@
       "validated": false
     },
     "approval_status": "pending_review",
-    "created_at": "2026-04-26T00:24:14.261402+00:00"
+    "created_at": "2026-04-26T00:30:38.733300+00:00"
   }
 ]
