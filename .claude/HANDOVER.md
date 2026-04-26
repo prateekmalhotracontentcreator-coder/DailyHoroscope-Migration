@@ -1,6 +1,6 @@
 # Knowledge Engine — Session Handover
-> Last updated: 27 Apr 2026 — Session 9 (Lal Kitab Ch 19 + Ch 20 ingested + validated)
-> Lal Kitab Ch 19 (78 rules, 63%) and Ch 20 (48 rules, 71% auto_approved) complete. Next: BPHS Ch 40 (PDF on disk). See Section 4 for exact next actions.
+> Last updated: 27 Apr 2026 — Session 10 (Lal Kitab Ch 27 ingested + validated)
+> Lal Kitab Ch 19 (78 rules, 63%), Ch 20 (48 rules, 71%), Ch 27 (99 rules, 59% after post-fix) complete. Next: BPHS Ch 40 (PDF on disk). See Section 4 for exact next actions.
 > Next session: read this FIRST before touching any script or DB
 
 ---
@@ -232,6 +232,7 @@ Step 4 — Dry-run --save JSON → review → --upload → validate
 |---|---|---|---|---|---|
 | Ch 19 — Mangalik Evil and Trials | Mars dosha + remedies | lalkitab-ch19-v1-20260426 | **78** | 65 dosha · 9 planetary_combination · 4 general_principle | ✅ **Fully validated** (27 Apr 2026) |
 | Ch 20 — Diseases | Diagnostic engine + planet disease library | lalkitab-ch20-v1-20260427 | **48** | 27 dosha · 11 planetary_combination · 10 general_principle | ✅ **Fully validated** (27 Apr 2026) · 34 auto / 11 PHR / 3 flagged |
+| Ch 27 — Lords of Planets, Parts of Body and Objects | Correspondence + affliction + prohibition + transfer + mental wave + invisible planets | lalkitab-ch27-v1-20260427 | **99** | 10 general_principle (corr) · 9 dosha (rem) · 10 planetary_combination (proh) · 12 general_principle (transfer) · 49 general_principle (wave) · 9 planetary_combination (invis) | ✅ **Fully validated** (27 Apr 2026) · 58 auto / 40 PHR / 1 flagged |
 
 **Validation summary — Ch 19 (27 Apr 2026):**
 | Status | Count | % |
@@ -242,6 +243,22 @@ Step 4 — Dry-run --save JSON → review → --upload → validate
 | Contradictions | 0 | — |
 
 63% auto_approved on first clean run for a brand-new book + schema type is a healthy result. The 29% PHR reflects Claude being appropriately cautious on novel remedy specifics from Lal Kitab. 6 flagged = inspect manually via Rules Browser.
+
+**Validation summary — Ch 27 (27 Apr 2026):**
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 58 | 59% |
+| `pending_human_review` | 40 | 40% |
+| `flagged` | 1 | 1% |
+| Contradictions | 1 pair | w10/w38 false positive — resolved |
+
+Post-fix script `fix_flagged_ch27.py` resolved 7 rules: 5 validator-conservatism flags (proh-06, proh-10, wave-w01/w03/w09), 1 grammar patch (transfer-h07), and 1 false contradiction pair (w10/w38 — two distinct mental wave units sharing Venus+House7). `corr-mars-benefic` remains flagged intentionally (Objects field empty — source column misalignment, needs physical book lookup).
+
+New schema fields introduced by Ch 27:
+- `condition.sub_type: "mental_wave_engine"` — 42-section psychological mapping with `section`, `wave_name`, `age_window`
+- `condition.sub_type: "transfer_protocol"` — planet-in-house → physical placement action
+- `condition.sub_type: "correspondence_table"` — full planetary significator data as structured dict
+- `condition.sub_type: "invisible_planet"` — inauspicious house list + totaka remedy (IP rules from PDF extract, not V2 decode)
 
 ### validator fix applied (27 Apr 2026):
 `knowledge_validator.py` `VALIDATION_PROMPT` now includes explicit guidance for `dosha` condition type — Claude evaluates mangalik rules on interpretation text only, not on unfamiliar condition schema fields (commit `39cd966`).
@@ -654,18 +671,18 @@ Ch 61 RTF: `BPHS_ch 61_Vol2.rtf` — available but not yet ingested.
 
 ---
 
-## 11. Git Status — as of Session 9 end (27 Apr 2026)
+## 11. Git Status — as of Session 10 end (27 Apr 2026)
 
 Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
 Branch: `main` (deploy-on-push to Vercel + Render)
 
 **Last commits (most recent first):**
 ```
+61a8eb0 fix(knowledge-engine): resolve Lal Kitab Ch 27 flagged rules + grammar patch
+7548316 feat(knowledge-engine): ingest Lal Kitab Ch 27 — 99 rules across 6 groups
+859d78b fix(knowledge-engine): resolve stuck pending_review rule in Lal Kitab Ch 20
+a3938bd docs(knowledge-engine): add Lal Kitab Ch 20 validation results to HANDOVER + INGEST_NOTES
 fa1521f feat(knowledge-engine): ingest Lal Kitab Ch 20 Diseases — 48 rules
-e09cfc3 docs(knowledge-engine): add Lal Kitab Ch 19 validation results to HANDOVER + INGEST_NOTES
-39cd966 fix(knowledge-engine): dedup Lal Kitab Ch19 double-ingest + validator dosha guidance
-82da579 feat(knowledge-engine): ingest Lal Kitab Ch 19 Mangalik Evil — 78 rules
-21d82fc docs(knowledge-engine): refresh HANDOVER for Session 9 start
 ```
 
-**No uncommitted changes.** Repo is clean as of Session 9 end.
+**No uncommitted changes.** Repo is clean as of Session 10 end.

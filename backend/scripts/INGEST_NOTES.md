@@ -2238,12 +2238,18 @@ Invisible planets section (IP rules) hard-coded directly from PDF JSON extract �
 | Mental Wave | 49 | `lalkitab-ch27-wave-{w01-w49}` | 42-section mind engine (49 units) |
 | Invisible Planets | 9 | `lalkitab-ch27-invis-{planet}` | Totaka trials for inauspicious house placements |
 
-### Validation (pending — run after upload)
-```
-python3 scripts/validate_rules.py \
-  --mongo-url "$MONGO_URL" --db-name horoscope_db \
-  --batch-id lalkitab-ch27-v1-20260427
-```
+### Validation Results (27 Apr 2026)
+
+| Status | Count | % |
+|---|---|---|
+| auto_approved | 58 | 59% |
+| pending_human_review | 40 | 40% |
+| flagged | 1 | 1% |
+| **Total** | **99** | |
+| Contradictions | 1 pair | w10/w38 — false positive (resolved) |
+
+**Post-fix script:** `fix_flagged_ch27.py` — moved 7 rules from flagged → PHR, resolved w10/w38 false contradiction.
+Final flagged: `corr-mars-benefic` only (Objects field intentionally empty — source column misalignment).
 
 ### Schema decisions
 
