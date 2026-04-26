@@ -1725,9 +1725,12 @@ Each `house_requirements` entry: `{houses, planet_type, constraint}`.
 `constraint`: `"present"` (≥1 planet of type in any of these houses) · `"absent"` (0 planets).
 `operator`: `"and"` (all requirements must hold simultaneously).
 
-**Remaining `complex` flags (2 rules):**
-- **Ardha Chandra Yoga** (bphs-ch35-023): Formation not explicitly stated in this RTF. Cross-reference needed.
-- **Meta-rule** (bphs-ch35-033): General principle — not a checkable yoga condition.
+**Remaining `complex` flags — audit complete, both confirmed non-promotable (26 Apr 2026):**
+
+| Rule ID | Yoga | Why not checkable | Promotion path |
+|---|---|---|---|
+| bphs-ch35-023 | Ardha Chandra Yoga | Formation description says "seven consecutive houses" but **exact starting house not specified** in this RTF — arc start varies by commentator. Position-based check impossible without anchor house. | Cross-reference Phaladeepika / Saravali for canonical arc definition; if start = Lagna, implement as `all_planets_in_houses` with 7-house window. |
+| bphs-ch35-033 | Nabhasa General Principle | `condition.type = "general_principle"` — this is a **dasa persistence rule** (yoga results carry across all dasas), not a yoga formation condition. No chart check possible. | Permanently `complex/False`. Rule is consumed by the report layer as a modifier, not a detection condition. |
 
 **Sankhya precedence rule:** All 7 Sankhya yogas carry `yoga_check.precedence = "superseded_by_higher_nabhasa"` per BPHS verse: *"None of these seven yogas will be operable if another Nabhasa yoga is derivable."*
 
@@ -1800,6 +1803,34 @@ Two yogas were found during RTF review after the initial dry run and added befor
 - **Matsya** (bphs-ch36-014): type renamed `complex` → `multi_house_requirements`; `house_requirements` field already existed. No structural change to data.
 - **Parvata** (bphs-ch36-006): Promoted from `complex`/False. Condition is purely positional: benefics in angles + no malefics in houses 7–8. `house_requirements` added with `constraint: "absent"` on the malefic restriction.
 
+**Remaining `complex/False` — audit complete, all 15 confirmed non-promotable (26 Apr 2026):**
+
+Blocker categories:
+- **L** = House lord identification required (which planet rules house N?)
+- **D** = Dignity/strength calculation required (own sign, exaltation, moolatrikona, "strong")
+- **N** = Navamsa (D-9) chart required
+- **C** = Dispositor chain across multiple charts
+
+| Rule ID | Yoga | Blockers | Why specifically |
+|---|---|---|---|
+| bphs-ch36-007 | Kahala | L, D | Primary: 4th lord + Jupiter mutual kendra + strong Asc lord. Alt: 4th lord own/exalt + 10th lord. Both require lord lookup. |
+| bphs-ch36-008 | Chamara | L | Primary: Asc lord exalted in angle + Jupiter aspect. Alt: 2+ benefics in 1,7,9. Asc lord identity needed for primary condition. |
+| bphs-ch36-009 | Sankha | L, D | Lords of 5th and 6th in mutual kendra + strong Asc lord. All three conditions require lord identification. |
+| bphs-ch36-010 | Bheri | L, D | Venus + Jupiter + Asc lord in angles + strong 9th lord. 9th lord identity required. |
+| bphs-ch36-011 | Mridanga | L, D | Strong Asc lord required; remaining planets in angles/trines or own/exalt signs. Requires Asc lord identity + strength check. |
+| bphs-ch36-012 | Srinatha | L | 7th lord in 10th + 10th lord exalted conjunct 9th lord. Three separate lord lookups. |
+| bphs-ch36-013 | Sarada | L | 10th lord in 5th + Mercury in angle + Sun in Leo. 10th lord identification required. |
+| bphs-ch36-015 | Koorma | D | Benefics in {5,6,7} in own/exalt/friendly signs + malefics in {3,11,1} in own/exalt signs. Pure dignity check — no lord lookup, but dignity evaluation not in current engine. |
+| bphs-ch36-016 | Khadga | L | Parivartana (sign exchange) between lords of houses 2 and 9 + Asc lord in angle/trine. Lord identification ×3. |
+| bphs-ch36-017 | Lakshmi | L, D | 9th lord in angle in own/moolatrikona/exalt sign + strong Asc lord. Lord + dignity. |
+| bphs-ch36-018 | Kusuma | L | Fixed ascendant sign + Venus in angle + Moon in trine. Ascendant *sign type* (fixed/movable/dual) not a positional Rasi check — requires sign classification lookup. |
+| bphs-ch36-020 | Kalpadruma | L, D, N, C | Four-step dispositor chain from Asc lord through Rasi + Navamsa charts. Most complex in chapter — multi-chart lord chain. |
+| bphs-ch36-021 | Hari | L | From 2nd lord's sign position, houses 2,12,8 must hold benefics. Requires 2nd lord identification before relative check. |
+| bphs-ch36-022 | Hara | L | From 7th lord's sign position, houses 4,9,8 must hold benefics. Requires 7th lord identification. |
+| bphs-ch36-023 | Brahma | L | From Asc lord's sign position, houses 4,10,11 must hold benefics. Requires Asc lord identification. |
+
+**Phase 2 path for Hari / Hara / Brahma:** Once lord-identification is available, these three can be promoted to a new type `planet_in_house_from_lord` (analogous to `planet_in_house_from_moon` / `_from_sun`). The house_requirements structure would be: `{lord_house: N, houses_from_lord: [x,y,z], planet_type: "benefic"}`.
+
 ### Validation — COMPLETE (26 Apr 2026)
 
 Single-pass — zero structural failures.
@@ -1860,6 +1891,16 @@ Note: Lower auto_approved % vs Ch 35 (41% vs 76%) expected — Ch 36 yogas are m
 | ✅ True (11) | 001–003 (moon_from_sun_position), 007–013 (benefics/planet_from_moon), 014 (kemadruma) |
 | ❌ False (3) | 004–006 (Moon Navamsa yogas — require D-9 chart + birth-time qualifier) |
 
+**Remaining `complex/False` — audit complete, all 3 confirmed non-promotable (26 Apr 2026):**
+
+| Rule ID | Yoga | Blockers | Why specifically |
+|---|---|---|---|
+| bphs-ch37-004 | Moon Navamsa Yoga (Day Birth) | **N** (Navamsa/D-9) + birth-time | Three simultaneous conditions: (1) day birth — Sun above horizon, (2) Moon in own or friendly Navamsa in D-9 chart, (3) that Navamsa lord in angle/trine. D-9 chart computation and birth-time (day/night) check both required. |
+| bphs-ch37-005 | Moon Navamsa Yoga (Night Birth) | **N** + birth-time | Mirror of rule 004 for night birth. Same blockers — D-9 + Sun-horizon determination. |
+| bphs-ch37-006 | Moon Navamsa Adverse | **N** | Moon in enemy/neutral Navamsa (not own/friendly) + Jupiter aspect (day) or Venus aspect (night). D-9 required to determine Moon's Navamsa sign. |
+
+**Phase 2 path:** All three become checkable once `vedic_calculator.py` exposes D-9 Navamsa positions. Implement as a new type `moon_navamsa_check` with fields `navamsa_quality` (`own_friendly` / `enemy_neutral`) + `birth_time_qualifier` (`day` / `night` / `any`). Birth-time (day/night) is derivable from sunrise/sunset already computed by `panchang_router.py`.
+
 ### Validation — COMPLETE (26 Apr 2026)
 
 Single-pass — zero structural failures.
@@ -1900,6 +1941,12 @@ Single-pass — zero structural failures.
 - Ubhayachari ↔ Duradhara (bphs-ch37-013) + tba16-003: identical compound formation
 
 **Rule 004 (general_principle):** Sloka 4 states "benefics give stated effects, malefics give contrary effects" — applies as a modifier across all three solar yogas. `condition.type = "general_principle"`, checkable=False. Phase 2: implement as planet-nature check layered on each base yoga.
+
+**Remaining `complex/False` — audit complete, 1 rule confirmed non-promotable (26 Apr 2026):**
+
+| Rule ID | Yoga | Blocker | Why specifically |
+|---|---|---|---|
+| bphs-ch38-004 | Solar Yoga Benefic/Malefic Modifier | Modifier rule | `condition.type = "general_principle"` — not a yoga formation, it is a **result qualifier**: the planet that triggers Vesi/Vosi/Ubhayachari determines whether the effect is as stated (natural benefic) or reversed (natural malefic). Detection = check participating planet's nature at report-generation time, not at yoga-detection time. **Permanently non-promotable** as a standalone `yoga_check`. |
 
 ### Validation — COMPLETE (26 Apr 2026)
 
