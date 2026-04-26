@@ -1,6 +1,6 @@
 # Knowledge Engine — Session Handover
-> Last updated: 26 Apr 2026 — end of Session 8 (BPHS Ch 39 Raja Yogas live + validated)
-> All yoga chapters Ch 35–39 complete. Next: Ch 40 (PDF on disk). See Section 4 for exact next actions.
+> Last updated: 27 Apr 2026 — Session 9 (Lal Kitab Ch 19 ingested + validated)
+> Lal Kitab Ch 19 (78 rules, 63% auto_approved) complete. Next: BPHS Ch 40 (PDF on disk). See Section 4 for exact next actions.
 > Next session: read this FIRST before touching any script or DB
 
 ---
@@ -129,6 +129,7 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 | BPHS Ch 37 (Lunar Yogas) | bphs-ch37-v1-20260426 | 14 | — | ✅ **fully validated** (26 Apr) — 9 auto / 3 PHR / 2 flagged — 0 contradictions |
 | BPHS Ch 38 (Solar Yogas) | bphs-ch38-v1-20260426 | 4 | — | ✅ **fully validated** (26 Apr) — 1 auto / 2 PHR / 1 flagged — 0 contradictions |
 | BPHS Ch 39 (Raja Yogas) | bphs-ch39-v1-20260426 | 50 | — | ✅ **fully validated** (26 Apr) — 41 auto / 6 PHR / 3 flagged — 0 contradictions · 82% auto-approved (best ratio any yoga chapter) |
+| **Lal Kitab Ch 19 (Mangalik Evil)** | lalkitab-ch19-v1-20260426 | **78** | — | ✅ **fully validated** (27 Apr) — 49 auto / 23 PHR / 6 flagged — 0 contradictions · 63% auto_approved · first Lal Kitab chapter |
 
 ---
 
@@ -192,6 +193,56 @@ python3 scripts/validate_rules.py --batch-id bphs-ch52-dasha-20260416 --db-name 
 ```
 
 ---
+
+---
+
+## 9a. Lal Kitab Ingestion Track (NEW — 27 Apr 2026)
+
+### What is the Lal Kitab track?
+
+Parallel to BPHS and TBA, we are ingesting **Lal Kitab** chapters. Lal Kitab rules differ fundamentally from BPHS — they use a **table-based cross-reference structure** (Ascendant × Planet House → Trial Numbers → Remedies) rather than narrative slokas. Extraction method: **Notebook LM decode** (structured JSON extraction) → reviewed → hard-coded ingest script (zero API calls).
+
+### New schema fields introduced by Lal Kitab:
+
+| Field | Path | Purpose |
+|---|---|---|
+| `condition.ascendant` | condition | Ascendant sign specificity (Aries / Taurus / etc.) |
+| `condition.aspect_houses` | condition | Standard 4th/7th/8th from Mars house |
+| `condition.dosha_type` | condition | `"mangalik"` — identifies dosha type |
+| `condition.yoga_check.ascendant_filter` | condition.yoga_check | Ascendant-specific planet_in_house check |
+| `interpretation.remedies[].category` | interpretation | Remedy category (ritual / gem / donation / behavioral / marital) |
+| `interpretation.remedies[].trial_no` | interpretation | Trial number cross-ref to source table |
+
+### Aspect house standard (locked — Option 2):
+All aspect houses use standard 4th/7th/8th from Mars position:
+- H1 → [4, 7, 8] · H4 → [7, 10, 11] · H7 → [1, 2, 10] · H8 → [2, 3, 11] · H12 → [3, 6, 7]
+
+### Workflow for Lal Kitab chapters:
+```
+Step 1 — PDF → Notebook LM → structured decode (docx)
+Step 2 — Claude reviews decode against source PDF for accuracy
+Step 3 — Hard-coded ingest script (zero API) from decode
+Step 4 — Dry-run --save JSON → review → --upload → validate
+```
+
+### Lal Kitab chapters ingested:
+
+| Chapter | Topic | Batch ID | Rules | Condition types | Status |
+|---|---|---|---|---|---|
+| Ch 19 — Mangalik Evil and Trials | Mars dosha + remedies | lalkitab-ch19-v1-20260426 | **78** | 65 dosha · 9 planetary_combination · 4 general_principle | ✅ **Fully validated** (27 Apr 2026) |
+
+**Validation summary — Ch 19 (27 Apr 2026):**
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 49 | 63% |
+| `pending_human_review` | 23 | 29% |
+| `flagged` | 6 | 8% |
+| Contradictions | 0 | — |
+
+63% auto_approved on first clean run for a brand-new book + schema type is a healthy result. The 29% PHR reflects Claude being appropriately cautious on novel remedy specifics from Lal Kitab. 6 flagged = inspect manually via Rules Browser.
+
+### validator fix applied (27 Apr 2026):
+`knowledge_validator.py` `VALIDATION_PROMPT` now includes explicit guidance for `dosha` condition type — Claude evaluates mangalik rules on interpretation text only, not on unfamiliar condition schema fields (commit `39cd966`).
 
 ---
 
@@ -601,25 +652,18 @@ Ch 61 RTF: `BPHS_ch 61_Vol2.rtf` — available but not yet ingested.
 
 ---
 
-## 11. Git Status — as of Session 8 end (26 Apr 2026)
+## 11. Git Status — as of Session 9 end (27 Apr 2026)
 
 Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
 Branch: `main` (deploy-on-push to Vercel + Render)
 
 **Last commits (most recent first):**
 ```
-fcb8a4f docs(knowledge-engine): add BPHS Ch 39 validation results to HANDOVER + INGEST_NOTES
-34f70dc fix(knowledge-engine): fix Ch39 schema — batch_id nested under source{}
-44bf0a9 feat(knowledge-engine): ingest BPHS Ch 39 Raja Yogas — 50 rules
-31968cf docs(knowledge-engine): complete complex/False audit for BPHS Ch 35–38
-afa8201 feat(knowledge-engine): yoga_check reclassification — complex → multi_house_requirements
-```
-
-**No uncommitted changes.** Repo is clean as of Session 8 end.
-
-**Last 3 commits:**
-```
+39cd966 fix(knowledge-engine): dedup Lal Kitab Ch19 double-ingest + validator dosha guidance
+82da579 feat(knowledge-engine): ingest Lal Kitab Ch 19 Mangalik Evil — 78 rules
+21d82fc docs(knowledge-engine): refresh HANDOVER for Session 9 start
 0233bae fix(knowledge-engine): raise max_tokens to 8192 + join standalone RTF headings
 c2ecefb docs(knowledge-engine): refresh HANDOVER for Session 9 start
-fcb8a4f docs(knowledge-engine): add BPHS Ch 39 validation results to HANDOVER + INGEST_NOTES
 ```
+
+**No uncommitted changes.** Repo is clean as of Session 9 end.

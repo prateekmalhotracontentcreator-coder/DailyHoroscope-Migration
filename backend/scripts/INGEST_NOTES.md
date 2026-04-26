@@ -2111,3 +2111,55 @@ backend/scripts/patch_yoga_check_reclassify.py --mongo-url $MONGO_URL --db-name 
 ```
 
 ---
+
+## Lal Kitab Ch 19 — Mangalik Evil and Trials (27 Apr 2026)
+
+**Batch ID:** `lalkitab-ch19-v1-20260426`
+**Script:** `backend/scripts/ingest_lalkitab_ch19_v1.py`
+**Rules JSON:** `backend/scripts/lalkitab_ch19_rules.json`
+**Source:** Lal Kitab Ch 19 original PDF + Notebook LM v2 decode (reviewed)
+
+### Rule breakdown
+
+| Group | Count | Condition type |
+|---|---|---|
+| Base house rules (Mars in H1/H4/H7/H8/H12) | 5 | `dosha` |
+| Ascendant-specific rules (12 asc × 5 houses) | 60 | `dosha` |
+| Special conjunction/yog rules | 9 | `planetary_combination` |
+| General / social identification rules | 4 | `general_principle` |
+| **Total** | **78** | |
+
+### Validation result (27 Apr 2026)
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 49 | 63% |
+| `pending_human_review` | 23 | 29% |
+| `flagged` | 6 | 8% |
+| Contradictions | 0 | — |
+
+### Key decisions locked
+
+1. **Aspect houses — Option 2 (standard calculation):** Standard 4th/7th/8th from Mars position used for all 5 Mars houses. Lal Kitab textbook's universal statement ("Mars burns H4/H8 from any position") explains why Notebook LM intermediate decode had extra houses in H12 aspects. Corrected to standard: H1=[4,7,8] · H4=[7,10,11] · H7=[1,2,10] · H8=[2,3,11] · H12=[3,6,7].
+
+2. **Notebook LM decode route:** For table-heavy chapters (Ascendant × Mars House → Trial Numbers → Remedy Text), Notebook LM extraction is significantly faster than manual cross-referencing. Estimated 30–45 min saved per chapter vs direct hard-coding of lookup tables.
+
+3. **Double-ingest incident:** User ran ingest script twice → 156 rules. Fix: `delete_lalkitab_ch19.py` (delete all) → re-ingest once → validate. Root cause of original 0 auto_approved: duplicate rule_ids caused Claude quality check to return one result per pair; the fallback `no_response_from_model → spot_check` applied to the second copy. After clean re-ingest: 63% auto_approved.
+
+4. **Validator prompt updated (commit 39cd966):** `VALIDATION_PROMPT` in `knowledge_validator.py` now includes explicit guidance for `dosha` condition type — prevents Claude from treating Lal Kitab-specific fields (ascendant, aspect_houses, dosha_type, ascendant_filter) as suspicious schema anomalies.
+
+### New schema fields (first appearance)
+
+| Field | Path | Notes |
+|---|---|---|
+| `condition.ascendant` | string | Ascendant sign name or `null` for base rules |
+| `condition.dosha_type` | string | `"mangalik"` |
+| `condition.aspect_houses` | list[int] | Standard 4th/7th/8th from Mars position |
+| `condition.yoga_check.ascendant_filter` | string | Ascendant-specific `planet_in_house` check |
+| `interpretation.remedies[].trial_no` | int | Cross-ref to source trial table |
+| `interpretation.remedies[].category` | string | ritual / gem / donation / behavioral / marital |
+
+### OCR correction note
+Notebook LM intermediate decode had "Second house" (H2) for one column — confirmed OCR scan error in source PDF. v2 decode correctly mapped to `mars_house: 4` (Fourth house). Ingest script uses v2 decode.
+
+---
