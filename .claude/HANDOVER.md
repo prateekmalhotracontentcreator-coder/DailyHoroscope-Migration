@@ -193,16 +193,6 @@ python3 scripts/validate_rules.py --batch-id bphs-ch52-dasha-20260416 --db-name 
 
 ---
 
-### Commit needed: `ingest_bphs_dasha_v1.py`
-
-`backend/scripts/ingest_bphs_dasha_v1.py` has **40 uncommitted lines** (Session 8 changes).
-Commit before running any new ingests:
-```bash
-cd ~/DailyHoroscope-Migration
-git add backend/scripts/ingest_bphs_dasha_v1.py
-git commit -m "chore(knowledge-engine): uncommitted ingest_bphs_dasha_v1.py changes from Session 8"
-```
-
 ---
 
 ## 9. TBA Chapter Ingestion Track (NEW — 26 Apr 2026)
@@ -625,14 +615,11 @@ fcb8a4f docs(knowledge-engine): add BPHS Ch 39 validation results to HANDOVER + 
 afa8201 feat(knowledge-engine): yoga_check reclassification — complex → multi_house_requirements
 ```
 
-**Uncommitted local changes (⚠️ commit before next ingest):**
-- `backend/scripts/ingest_bphs_dasha_v1.py` — 40 lines of Session 8 changes (unrelated to yoga track but should not be lost)
+**No uncommitted changes.** Repo is clean as of Session 8 end.
 
-**Action required at next session start:**
-```bash
-cd /Users/apple/DailyHoroscope-Migration
-git log --oneline -5        # confirm current state
-git diff --stat             # confirm uncommitted changes
-git add backend/scripts/ingest_bphs_dasha_v1.py
-git commit -m "chore(knowledge-engine): ingest_bphs_dasha_v1 session-8 changes"
+**Last 3 commits:**
+```
+0233bae fix(knowledge-engine): raise max_tokens to 8192 + join standalone RTF headings
+c2ecefb docs(knowledge-engine): refresh HANDOVER for Session 9 start
+fcb8a4f docs(knowledge-engine): add BPHS Ch 39 validation results to HANDOVER + INGEST_NOTES
 ```
