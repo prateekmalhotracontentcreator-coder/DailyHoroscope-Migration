@@ -1864,3 +1864,44 @@ Single-pass — zero structural failures.
 | **Total** | **14** | |
 
 ---
+
+## BPHS Chapter 38 — Solar Yogas
+
+**Batch ID:** `bphs-ch38-v1-20260426`
+**Script:** `scripts/ingest_bphs_ch38_v1.py`
+**Dry-run JSON:** `scripts/bphs_ch38_rules.json`
+**Commit:** `b66edcf`
+
+### Source structure
+
+4 rules total — hard-coded from RTF, zero AI extraction cost.
+
+| Rule ID | Yoga | Sloka | Type | Checkable |
+|---|---|---|---|---|
+| bphs-ch38-001 | Vesi Yoga | 1–3 | `planet_in_house_from_sun` (h=2) | ✅ |
+| bphs-ch38-002 | Vosi Yoga | 1–3 | `planet_in_house_from_sun` (h=12) | ✅ |
+| bphs-ch38-003 | Ubhayachari Yoga | 1–3 | `planet_in_house_from_sun` (h=2+12, and) | ✅ |
+| bphs-ch38-004 | Solar Yoga Benefic/Malefic Modifier | 4 | `complex` (general_principle) | ❌ |
+
+**New yoga_check type:** `planet_in_house_from_sun` — Sun-based parallel to `planet_in_house_from_moon` (Ch 37). `exclude_planets: ["Moon"]` on all three yoga rules.
+
+**Cross-references:**
+- Vesi ↔ Sunapha Yoga (bphs-ch37-011): identical structure, Sun replaces Moon as reference
+- Vosi ↔ Anapha Yoga (bphs-ch37-012): identical structure
+- Ubhayachari ↔ Duradhara (bphs-ch37-013) + tba16-003: identical compound formation
+
+**Rule 004 (general_principle):** Sloka 4 states "benefics give stated effects, malefics give contrary effects" — applies as a modifier across all three solar yogas. `condition.type = "general_principle"`, checkable=False. Phase 2: implement as planet-nature check layered on each base yoga.
+
+### Validation — COMPLETE (26 Apr 2026)
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 1 | 25% |
+| `pending_human_review` | 2 | 50% |
+| `flagged` | 1 | 25% |
+| Contradictions | 0 | — |
+| **Total** | **4** | |
+
+Note: Low auto-approved % (25%) expected for a 4-rule chapter — small batches give the validator limited cross-rule signal. The 1 flagged rule likely relates to the general_principle modifier (rule 004) which has no direct checkable condition.
+
+---
