@@ -12,7 +12,7 @@ import axios from 'axios';
 import { toast } from 'sonner';
 
 const API  = `${process.env.REACT_APP_BACKEND_URL}/api`;
-const SITE = 'https://everydayhoroscope.in';
+const SITE = 'https://www.everydayhoroscope.in';
 
 const FOCUS_AREAS = [
   { value: 'guidance', label: 'Guidance', emoji: '🔮' },

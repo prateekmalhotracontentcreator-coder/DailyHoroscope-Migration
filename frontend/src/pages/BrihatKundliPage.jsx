@@ -920,9 +920,9 @@ export const BrihatKundliPage = () => {
         "@type": "Service",
         "name": "Brihat Kundli Pro — Comprehensive Vedic Astrology Life Report",
         "description": "40-page comprehensive Vedic astrology life report including 12-house analysis, planetary positions, career, love, health, wealth, Dasha periods, Mangal Dosha, yogas, gemstone remedies, and downloadable PDF.",
-        "provider": { "@type": "Organization", "name": "Everyday Horoscope", "url": "https://everydayhoroscope.in" },
+        "provider": { "@type": "Organization", "name": "Everyday Horoscope", "url": "https://www.everydayhoroscope.in" },
         "serviceType": "Vedic Astrology Report",
-        "url": "https://everydayhoroscope.in/brihat-kundli",
+        "url": "https://www.everydayhoroscope.in/brihat-kundli",
         "offers": { "@type": "Offer", "price": "1499", "priceCurrency": "INR" },
         "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1200" },
         "faqPage": {

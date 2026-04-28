@@ -37,7 +37,7 @@ export const ContactUs = () => {
       <SEO
         title="Contact Us — Everyday Horoscope"
         description="Get in touch with the Everyday Horoscope team. We're here to help with questions about your horoscope, reports, subscriptions, or anything else."
-        url="https://everydayhoroscope.in/contact"
+        url="https://www.everydayhoroscope.in/contact"
       />
 
 

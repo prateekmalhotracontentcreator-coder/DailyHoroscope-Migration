@@ -38,8 +38,8 @@ const schema = {
   '@type': 'WebPage',
   name: 'Vedic Numerology Reports — Life Path, Name, Timing & More',
   description: 'Generate personalised Vedic numerology reports. Life Path, Name Correction, Karmic Debt, Relationship Compatibility, Career Guidance and more.',
-  url: 'https://everydayhoroscope.in/numerology',
-  publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
+  url: 'https://www.everydayhoroscope.in/numerology',
+  publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://www.everydayhoroscope.in' },
 };
 
 export const NumerologyPage = () => {
@@ -197,7 +197,7 @@ export const NumerologyPage = () => {
       <SEO
         title="Vedic Numerology — Life Path, Name & Timing Reports"
         description="Generate personalised Vedic numerology reports. Life Path, Name Correction, Karmic Debt, Compatibility, Career, and more."
-        url="https://everydayhoroscope.in/numerology"
+        url="https://www.everydayhoroscope.in/numerology"
         schema={schema}
       />
 

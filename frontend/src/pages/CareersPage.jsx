@@ -108,7 +108,7 @@ export function CareersPage() {
       <SEO
         title="Careers — Everyday Horoscope"
         description="Join the team building India's premium Vedic astrology platform. Open roles in engineering, content, and growth."
-        url="https://everydayhoroscope.in/careers"
+        url="https://www.everydayhoroscope.in/careers"
       />
 
       <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">

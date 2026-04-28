@@ -7,7 +7,7 @@ export const RemedyPage = () => (
     <SEO
       title="Vedic Remedies — Coming Soon"
       description="Gemstones, Mantras, Yantras, Feng Shui, and Crystal Therapy — personalised Vedic remedies coming soon to Everyday Horoscope."
-      url="https://everydayhoroscope.in/remedies"
+      url="https://www.everydayhoroscope.in/remedies"
     />
     <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
       <Gem className="h-3 w-3" /> Vedic Remedies

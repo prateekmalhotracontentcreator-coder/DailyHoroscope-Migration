@@ -9,7 +9,7 @@ import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api/panchang`;
-const SITE = 'https://everydayhoroscope.in';
+const SITE = 'https://www.everydayhoroscope.in';
 const OG_IMAGE = `${SITE}/og-image.png`;
 const LOC_STORAGE_KEY = 'panchang_location_slug';
 const DEFAULT_SLUG = 'new-delhi-india';
