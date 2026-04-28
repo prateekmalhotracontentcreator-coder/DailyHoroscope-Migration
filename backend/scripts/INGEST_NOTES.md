@@ -2278,3 +2278,40 @@ Ch 27 is a **multi-system reference chapter** with 6 distinct engines operating 
 The mental wave engine is the most complex section: 49 units spanning sections 1-42 (some sections have two units under different planets), each with house, planet, wave_name, effect text, and optional age window. This is a character profiling engine, not a predictive yoga system.
 
 ---
+
+## Website Audit — Frontend (28 Apr 2026)
+
+> Not a knowledge engine entry — logged here as the canonical ops record for frontend changes made in this session.
+
+**Commits:** `f1e4fee` (P1) + `1725eec` (P2/P3)
+**Files changed:** 18 frontend files
+**Pushed:** 28 Apr 2026 — first push in 10 sessions (72 commits)
+
+### Issues found and fixed (12 total)
+
+**P1 — SEO Critical:**
+1. `https://everydayhoroscope.in` → `https://www.everydayhoroscope.in` across all 16 frontend files (SEO.jsx + 15 pages) — www/non-www duplicate content fix
+2. `twitter:card: summary_large_image` added to SEO.jsx
+3. Language bar in NavBar.jsx scoped to `/panchang` routes only
+4. sitemap.xml rebuilt: 32 → 43 URLs, all www, calendar Apr–Jul 2026, 14 new pages
+5. Landing.jsx JSON-LD: `founder @type` fixed, personal Gmail → `support@everydayhoroscope.in`
+
+**P2/P3 — UX & Design:**
+6. Footer logo: auth-aware navigate (/ vs /home)
+7. Footer: 4-col → 5-col, Horoscope + Tools columns, Careers added
+8. Pricing grid: orphaned 5-in-3 → Premium featured + 2×2 secondary grid
+9. Plan CTAs: Ask 1 Question + Career Plus pointed to correct pages
+10. Bottom tab bar: hardcoded colors → design tokens (bg-card, text-gold, border-border)
+11. Blog added to desktop NavBar
+12. Careers added to Footer Company section
+
+### Outstanding website items (next session)
+- PricingPage.jsx `/pricing` — separate route, not audited
+- Language Panchang pages — SEO meta titles not individualised per language
+- OG image verification (1200×630px for social sharing)
+- Blog page SEO audit
+
+### Discovery: 72 commits never pushed
+All knowledge engine commits (Sessions 1–10) had been made locally but never pushed to GitHub remote. Vercel and Render had been serving the pre-Session 1 code for ~3 weeks. All 72 commits pushed in one batch on 28 Apr 2026.
+
+---

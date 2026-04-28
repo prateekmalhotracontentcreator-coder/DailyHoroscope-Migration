@@ -1,6 +1,6 @@
 # Knowledge Engine — Session Handover
-> Last updated: 27 Apr 2026 — Session 10 (Lal Kitab Ch 27 ingested + validated)
-> Lal Kitab Ch 19 (78 rules, 63%), Ch 20 (48 rules, 71%), Ch 27 (99 rules, 59% after post-fix) complete. Next: BPHS Ch 40 (PDF on disk). See Section 4 for exact next actions.
+> Last updated: 28 Apr 2026 — Session 11 (Website audit + 12 frontend fixes shipped + pushed)
+> Lal Kitab Ch 19/20/27 complete (225 rules). Website: 12 SEO/UX fixes shipped across 2 commits, pushed to GitHub — Vercel + Render deploying. Next: BPHS Ch 40 (PDF on disk). See Section 4 for next actions.
 > Next session: read this FIRST before touching any script or DB
 
 ---
@@ -134,10 +134,11 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 
 ---
 
-## 4. Immediate Next Steps — as of 26 Apr 2026 (Session 8 end)
+## 4. Immediate Next Steps — as of 28 Apr 2026 (Session 11 end)
 
 > All dasha sweep steps (0–3) are COMPLETE. All yoga chapters Ch 35–39 are ingested and validated.
-> The active track is now: **Yoga Chapter Ingestion (Ch 40 → Ch 41 → Ch 43/44 → 300 Combinations)**.
+> Website audit complete — 12 fixes deployed. Active tracks: Knowledge Engine ingestion + P2/P3 website polish (next session).
+> The primary ingestion track is: **Yoga Chapter Ingestion (Ch 40 → Ch 41 → Ch 43/44 → 300 Combinations)**.
 
 ### 🔜 Priority 1 — Ingest BPHS Ch 40 (Yogas for Royal Association)
 
@@ -262,6 +263,47 @@ New schema fields introduced by Ch 27:
 
 ### validator fix applied (27 Apr 2026):
 `knowledge_validator.py` `VALIDATION_PROMPT` now includes explicit guidance for `dosha` condition type — Claude evaluates mangalik rules on interpretation text only, not on unfamiliar condition schema fields (commit `39cd966`).
+
+---
+
+## 8b. Website Audit Track — Completed 28 Apr 2026
+
+### What was done
+
+Full code audit of `everydayhoroscope.in` frontend — 12 issues found and fixed across 2 commits (f1e4fee + 1725eec), pushed to GitHub and deployed.
+
+### P1 Fixes — SEO Critical (commit f1e4fee)
+
+| Fix | Detail |
+|---|---|
+| **www canonical** | All 16 files had `https://everydayhoroscope.in` — bulk-replaced to `https://www.everydayhoroscope.in` across SEO.jsx + 15 page files. Eliminates www/non-www duplicate content split. |
+| **twitter:card** | Added `summary_large_image` to SEO.jsx — all pages now show large image preview on Twitter/X. |
+| **Language bar scoped** | NavBar.jsx language switcher (Hindi/Tamil/Telugu/etc.) wrapped in `location.pathname.startsWith('/panchang')` — was showing on every page site-wide. |
+| **Sitemap rebuilt** | 32 → 43 URLs, all `www.`, calendar updated Apr–Jul 2026, 14 new pages added: /panchang, 5 language variants, /rahukaal, /muhurat, /nakshatra, /lagna-kundali, /longevity, /palmistry, /lumina, /remedies, /careers. |
+| **JSON-LD schema** | Landing.jsx: `founder @type Organization → Person`, personal Gmail → `support@everydayhoroscope.in`. |
+
+### P2/P3 Fixes — UX & Design Consistency (commit 1725eec)
+
+| Fix | Detail |
+|---|---|
+| **Footer auth-aware logo** | `navigate('/home')` → `navigate(user ? '/home' : '/')` — logged-out users no longer hit protected route. |
+| **Footer expanded** | 4-col → 5-col grid. Single Explore column split into: Horoscope (7 links incl. Panchang, Birth Chart) + Tools (7 links incl. Tarot, Numerology, Palmistry, Lumina, Remedies). Careers added to Company. |
+| **Pricing grid layout** | 5-in-3-column orphaned layout → Premium Monthly featured solo (centred) + 4 secondary plans in `lg:grid-cols-4` balanced grid. |
+| **Plan CTAs fixed** | Ask 1 Question: `/home` → `/ask-question`. Career Plus: `/home` → `/career-plus`. |
+| **Bottom tab bar tokens** | `bg-white/dark:bg-zinc-900/text-amber-500` → `bg-card/border-border/text-gold/text-muted-foreground`. |
+| **Blog in desktop nav** | Added Blog entry to NAV array — now visible in desktop nav + sidebar. |
+
+### Remaining website work (next session)
+
+These were identified but not yet implemented — lower priority, no user-facing breakage:
+- `PricingPage.jsx` — separate `/pricing` route may have its own layout issues (not audited yet)
+- Language Panchang pages (Hindi/Tamil/etc.) — SEO meta titles not yet individualised per language
+- Blog page — no `<SEO>` component audit done
+- OG image (`/og-image.png`) — verify it exists and is 1200×630px for social sharing
+
+### Root cause note — 72 commits never pushed
+
+All commits from Sessions 1–10 had been made locally but **never pushed to GitHub**. Vercel and Render had been running the code from the last push (pre-session 1). Discovered during Session 11 — all 72 commits pushed in one batch on 28 Apr 2026.
 
 ---
 
@@ -671,18 +713,19 @@ Ch 61 RTF: `BPHS_ch 61_Vol2.rtf` — available but not yet ingested.
 
 ---
 
-## 11. Git Status — as of Session 10 end (27 Apr 2026)
+## 11. Git Status — as of Session 11 end (28 Apr 2026)
 
 Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
 Branch: `main` (deploy-on-push to Vercel + Render)
 
 **Last commits (most recent first):**
 ```
+1725eec fix(ux): P2/P3 website audit fixes — footer, pricing grid, nav, design tokens
+f1e4fee fix(seo): P1 website audit fixes — canonical www, language bar scope, sitemap refresh
+dcd6dec docs(knowledge-engine): add Lal Kitab Ch 27 validation results to HANDOVER + INGEST_NOTES
 61a8eb0 fix(knowledge-engine): resolve Lal Kitab Ch 27 flagged rules + grammar patch
 7548316 feat(knowledge-engine): ingest Lal Kitab Ch 27 — 99 rules across 6 groups
-859d78b fix(knowledge-engine): resolve stuck pending_review rule in Lal Kitab Ch 20
-a3938bd docs(knowledge-engine): add Lal Kitab Ch 20 validation results to HANDOVER + INGEST_NOTES
-fa1521f feat(knowledge-engine): ingest Lal Kitab Ch 20 Diseases — 48 rules
 ```
 
-**No uncommitted changes.** Repo is clean as of Session 10 end.
+**Pushed to GitHub**: 28 Apr 2026. Vercel + Render auto-deploy triggered.
+**No uncommitted changes.** Repo is clean as of Session 11 end.
