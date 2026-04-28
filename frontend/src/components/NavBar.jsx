@@ -83,6 +83,7 @@ const NAV = [
   { label: 'Tarot',      icon: BookOpen,  path: '/tarot' },
   { label: 'Lumina',     icon: Star,      path: '/lumina' },
   // Arc Angel removed from flat NAV — now a collapsible panel in the sidebar drawer
+  { label: 'Blog',       icon: BookMarked,path: '/blog' },
   { label: 'Pricing',    icon: Tag,       path: '/pricing' },
   { label: 'Careers',    icon: Users,     path: '/careers' },
 ];
@@ -361,7 +362,7 @@ export const NavBar = () => {
       )}
 
       {/* BOTTOM TAB BAR */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-700 shadow-lg">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-card border-t border-border shadow-lg">
         <div className="flex items-stretch h-16">
           {BOTTOM_NAV.map((item) => {
             const isActive =
@@ -375,7 +376,7 @@ export const NavBar = () => {
                 key={item.label}
                 onClick={() => navigate(item.path)}
                 className={`flex-1 flex flex-col items-center justify-center gap-1 py-2 transition-colors
-                  ${isActive ? 'text-amber-500' : 'text-gray-500 dark:text-gray-400'}`}
+                  ${isActive ? 'text-gold' : 'text-muted-foreground'}`}
               >
                 <item.icon className="h-5 w-5 flex-shrink-0" />
                 <span className="text-xs font-medium leading-none">{item.label}</span>

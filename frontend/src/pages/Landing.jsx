@@ -47,7 +47,7 @@ const PLANS = [
   },
   {
     name: 'Ask 1 Question', price: '₹99', period: 'one-time', description: 'KP precision answer to any life question', highlight: false, cta: 'Ask Now',
-    ctaAction: 'navigate', navigateTo: '/home',
+    ctaAction: 'navigate', navigateTo: '/ask-question',
     features: ['One specific life question', 'KP astrology engine', 'Ruling planet analysis', 'Personalised remedy', 'Instant report'],
   },
   {
@@ -57,7 +57,7 @@ const PLANS = [
   },
   {
     name: 'Career Plus', price: '₹3,999', period: 'one-time', description: 'Deep career intelligence report', highlight: false, cta: 'Get Report',
-    ctaAction: 'navigate', navigateTo: '/home',
+    ctaAction: 'navigate', navigateTo: '/career-plus',
     features: ['Career archetype analysis', 'Promotion probability forecast', 'Opportunity window timeline', 'Financial growth cycles', 'Workplace risk detection', 'KP + Parashari engines'],
   },
   {
@@ -292,27 +292,52 @@ export const Landing = () => {
             <h2 className="font-playfair text-3xl md:text-4xl font-semibold mb-4">Start free. Go deeper when ready.</h2>
             <p className="text-muted-foreground max-w-lg mx-auto">No hidden fees. Cancel anytime. Your cosmic journey begins for free.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {PLANS.map((plan) => (
-              <div key={plan.name} className={`relative p-6 rounded-sm border flex flex-col gap-5 transition-all ${plan.highlight ? 'border-gold bg-gold/5 shadow-[0_0_40px_-10px_rgba(197,160,89,0.3)]' : 'border-border bg-card'}`}>
-                {plan.highlight && <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-primary-foreground text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full whitespace-nowrap">Most Popular</div>}
+          {/* Row 1: Featured plan centred on its own */}
+          {PLANS.filter(p => p.highlight).map((plan) => (
+            <div key={plan.name} className="relative p-6 rounded-sm border border-gold bg-gold/5 shadow-[0_0_40px_-10px_rgba(197,160,89,0.3)] flex flex-col gap-5 mb-6 max-w-sm mx-auto w-full">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gold text-primary-foreground text-[10px] font-bold uppercase tracking-widest px-4 py-1 rounded-full whitespace-nowrap">Most Popular</div>
+              <div>
+                <h3 className="font-cinzel font-bold text-lg mb-1">{plan.name}</h3>
+                <p className="text-xs text-muted-foreground">{plan.description}</p>
+              </div>
+              <div className="flex items-end gap-1">
+                <span className="text-3xl font-bold font-playfair">{plan.price}</span>
+                <span className="text-sm text-muted-foreground mb-1">/ {plan.period}</span>
+              </div>
+              <ul className="space-y-2.5 flex-1">
+                {plan.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-sm">
+                    <Check className="h-4 w-4 text-gold flex-shrink-0 mt-0.5" />
+                    <span className="text-muted-foreground">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <button onClick={() => navigate('/register')} className="w-full py-3 rounded-sm font-semibold text-sm bg-gold hover:bg-gold/90 text-primary-foreground transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_20px_-5px_rgba(197,160,89,0.4)]">
+                {plan.cta}
+              </button>
+            </div>
+          ))}
+          {/* Row 2: 4 secondary plans in a balanced 2×2 grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {PLANS.filter(p => !p.highlight).map((plan) => (
+              <div key={plan.name} className="relative p-6 rounded-sm border border-border bg-card flex flex-col gap-5 transition-all hover:border-gold/40 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_-5px_rgba(197,160,89,0.1)]">
                 <div>
-                  <h3 className="font-cinzel font-bold text-lg mb-1">{plan.name}</h3>
+                  <h3 className="font-cinzel font-bold text-base mb-1">{plan.name}</h3>
                   <p className="text-xs text-muted-foreground">{plan.description}</p>
                 </div>
                 <div className="flex items-end gap-1">
-                  <span className="text-3xl font-bold font-playfair">{plan.price}</span>
-                  <span className="text-sm text-muted-foreground mb-1">/ {plan.period}</span>
+                  <span className="text-2xl font-bold font-playfair">{plan.price}</span>
+                  <span className="text-xs text-muted-foreground mb-1">/ {plan.period}</span>
                 </div>
-                <ul className="space-y-2.5 flex-1">
+                <ul className="space-y-2 flex-1">
                   {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm">
-                      <Check className="h-4 w-4 text-gold flex-shrink-0 mt-0.5" />
+                    <li key={f} className="flex items-start gap-2 text-xs">
+                      <Check className="h-3.5 w-3.5 text-gold flex-shrink-0 mt-0.5" />
                       <span className="text-muted-foreground">{f}</span>
                     </li>
                   ))}
                 </ul>
-                <button onClick={() => navigate('/register')} className={`w-full py-3 rounded-sm font-semibold text-sm transition-all hover:-translate-y-0.5 ${plan.highlight ? 'bg-gold hover:bg-gold/90 text-primary-foreground hover:shadow-[0_8px_20px_-5px_rgba(197,160,89,0.4)]' : 'border border-border hover:border-gold/50 text-foreground'}`}>
+                <button onClick={() => navigate(plan.navigateTo || '/register')} className="w-full py-2.5 rounded-sm font-semibold text-xs border border-border hover:border-gold/50 text-foreground transition-all hover:-translate-y-0.5">
                   {plan.cta}
                 </button>
               </div>

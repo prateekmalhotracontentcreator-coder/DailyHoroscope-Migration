@@ -1,19 +1,21 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { Sparkles, Mail, Shield, FileText, Cookie, RefreshCw, ScrollText } from 'lucide-react';
 
 export const Footer = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t border-border bg-card/50 mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
 
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center space-x-2 mb-4 cursor-pointer" onClick={() => navigate('/home')}>
+            <div className="flex items-center space-x-2 mb-4 cursor-pointer" onClick={() => navigate(user ? '/home' : '/')}>
               <Sparkles className="h-6 w-6 text-gold" />
               <span className="text-lg font-playfair font-semibold">Everyday Horoscope</span>
             </div>
@@ -29,19 +31,43 @@ export const Footer = () => {
             </a>
           </div>
 
-          {/* Explore */}
+          {/* Explore — Horoscope & Panchang */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Explore</h3>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Horoscope</h3>
             <ul className="space-y-2">
               {[
-                { label: 'Daily Horoscope', path: '/horoscope/daily' },
-                { label: 'Weekly Horoscope', path: '/horoscope/weekly' },
+                { label: 'Daily Horoscope',   path: '/horoscope/daily'   },
+                { label: 'Weekly Horoscope',  path: '/horoscope/weekly'  },
                 { label: 'Monthly Horoscope', path: '/horoscope/monthly' },
-                { label: 'Birth Chart', path: '/birth-chart' },
-                { label: 'Kundali Milan', path: '/kundali-milan' },
-                { label: 'Brihat Kundli Pro', path: '/brihat-kundli' },
-                { label: 'Pricing', path: '/pricing' },
-                { label: 'Blog', path: '/blog' },
+                { label: 'Panchang',          path: '/panchang'          },
+                { label: 'Birth Chart',       path: '/birth-chart'       },
+                { label: 'Kundali Milan',     path: '/kundali-milan'     },
+                { label: 'Brihat Kundli Pro', path: '/brihat-kundli'     },
+              ].map(({ label, path }) => (
+                <li key={path}>
+                  <span
+                    onClick={() => navigate(path)}
+                    className="text-sm text-muted-foreground hover:text-gold cursor-pointer transition-colors"
+                  >
+                    {label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Explore — Tools */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Tools</h3>
+            <ul className="space-y-2">
+              {[
+                { label: 'Tarot',         path: '/tarot'      },
+                { label: 'Numerology',    path: '/numerology' },
+                { label: 'Palmistry',     path: '/palmistry'  },
+                { label: 'Lumina',        path: '/lumina'     },
+                { label: 'Remedies',      path: '/remedies'   },
+                { label: 'Pricing',       path: '/pricing'    },
+                { label: 'Blog',          path: '/blog'       },
               ].map(({ label, path }) => (
                 <li key={path}>
                   <span
@@ -60,9 +86,10 @@ export const Footer = () => {
             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Company</h3>
             <ul className="space-y-2">
               {[
-                { label: 'About Us', path: '/about' },
-                { label: 'Contact Us', path: '/contact' },
-                { label: 'Blog', path: '/blog' },
+                { label: 'About Us',   path: '/about'    },
+                { label: 'Contact Us', path: '/contact'  },
+                { label: 'Careers',    path: '/careers'  },
+                { label: 'Blog',       path: '/blog'     },
               ].map(({ label, path }) => (
                 <li key={path}>
                   <span
