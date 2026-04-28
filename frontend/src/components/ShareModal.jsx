@@ -8,7 +8,7 @@ import { toast } from 'sonner';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
-const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'https://everydayhoroscope.in';
+const FRONTEND_URL = process.env.REACT_APP_FRONTEND_URL || 'https://www.everydayhoroscope.in';
 
 export const ShareModal = ({ isOpen, onClose, reportType, reportId }) => {
   const [shareLink, setShareLink] = useState('');

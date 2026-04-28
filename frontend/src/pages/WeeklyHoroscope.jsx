@@ -82,8 +82,8 @@ export const WeeklyHoroscope = () => {
     '@type': 'WebPage',
     name: 'Weekly Horoscope — Plan Your Week with the Stars',
     description: 'Free weekly Vedic horoscope for all 12 zodiac signs. Plan your week with AI-powered cosmic guidance.',
-    url: 'https://everydayhoroscope.in/horoscope/weekly',
-    publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
+    url: 'https://www.everydayhoroscope.in/horoscope/weekly',
+    publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://www.everydayhoroscope.in' },
   };
 
   return (
@@ -91,7 +91,7 @@ export const WeeklyHoroscope = () => {
       <SEO
         title="Weekly Horoscope — Plan Your Week with the Stars"
         description="Get your free weekly Vedic horoscope for all 12 zodiac signs. AI-powered cosmic guidance to plan your week ahead."
-        url="https://everydayhoroscope.in/horoscope/weekly"
+        url="https://www.everydayhoroscope.in/horoscope/weekly"
         schema={schema}
       />
 

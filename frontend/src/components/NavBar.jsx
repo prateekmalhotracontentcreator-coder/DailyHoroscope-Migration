@@ -271,30 +271,32 @@ export const NavBar = () => {
           </div>
         </div>
 
-        {/* LANGUAGE BAR — second tier */}
-        <div className="border-t border-border/60 bg-muted/30 overflow-x-auto">
-          <div className="flex items-center justify-end gap-1 h-8 px-4 min-w-max ml-auto">
-            {LANGUAGES.map((lang, idx) => {
-              const isActive = lang.code === activeLangCode;
-              return (
-                <React.Fragment key={lang.code}>
-                  {idx > 0 && <span className="text-border/80 text-[10px] select-none">|</span>}
-                  <button
-                    onClick={() => navigate(lang.route)}
-                    className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors whitespace-nowrap
-                      ${isActive
-                        ? 'text-gold font-semibold'
-                        : 'text-muted-foreground hover:text-foreground'
-                      }`}
-                    aria-current={isActive ? 'true' : undefined}
-                  >
-                    {lang.label}
-                  </button>
-                </React.Fragment>
-              );
-            })}
+        {/* LANGUAGE BAR — second tier (Panchang pages only) */}
+        {location.pathname.startsWith('/panchang') && (
+          <div className="border-t border-border/60 bg-muted/30 overflow-x-auto">
+            <div className="flex items-center justify-end gap-1 h-8 px-4 min-w-max ml-auto">
+              {LANGUAGES.map((lang, idx) => {
+                const isActive = lang.code === activeLangCode;
+                return (
+                  <React.Fragment key={lang.code}>
+                    {idx > 0 && <span className="text-border/80 text-[10px] select-none">|</span>}
+                    <button
+                      onClick={() => navigate(lang.route)}
+                      className={`px-2 py-0.5 rounded text-[11px] font-medium transition-colors whitespace-nowrap
+                        ${isActive
+                          ? 'text-gold font-semibold'
+                          : 'text-muted-foreground hover:text-foreground'
+                        }`}
+                      aria-current={isActive ? 'true' : undefined}
+                    >
+                      {lang.label}
+                    </button>
+                  </React.Fragment>
+                );
+              })}
+            </div>
           </div>
-        </div>
+        )}
       </header>
 
       {/* MOBILE SIDEBAR */}

@@ -287,9 +287,9 @@ export const BirthChartPage = () => {
         "@type": "Service",
         "name": "Free Vedic Birth Chart Analysis — Janam Kundali Online",
         "description": "Generate your personalised Vedic birth chart online. Includes North Indian Kundali chart, 12-house analysis, nakshatra, planetary positions, Mangal Dosha, Dasha periods, and downloadable PDF.",
-        "provider": { "@type": "Organization", "name": "Everyday Horoscope", "url": "https://everydayhoroscope.in" },
+        "provider": { "@type": "Organization", "name": "Everyday Horoscope", "url": "https://www.everydayhoroscope.in" },
         "serviceType": "Vedic Astrology Birth Chart",
-        "url": "https://everydayhoroscope.in/birth-chart",
+        "url": "https://www.everydayhoroscope.in/birth-chart",
         "offers": { "@type": "Offer", "price": "499", "priceCurrency": "INR" },
         "faqPage": {
           "@type": "FAQPage",

@@ -202,9 +202,9 @@ export const KundaliMilanPage = () => {
         "@type": "Service",
         "name": "Kundali Milan — Free Online Kundli Matching for Marriage",
         "description": "Free Vedic Kundali Milan based on Ashtakoot Guna Milan system. Get compatibility score out of 36 with detailed 8-Koota analysis, Mangal Dosha assessment, and personalised remedies.",
-        "provider": { "@type": "Organization", "name": "Everyday Horoscope", "url": "https://everydayhoroscope.in" },
+        "provider": { "@type": "Organization", "name": "Everyday Horoscope", "url": "https://www.everydayhoroscope.in" },
         "serviceType": "Vedic Astrology Compatibility",
-        "url": "https://everydayhoroscope.in/kundali-milan",
+        "url": "https://www.everydayhoroscope.in/kundali-milan",
         "offers": { "@type": "Offer", "price": "999", "priceCurrency": "INR" },
         "faqPage": {
           "@type": "FAQPage",

@@ -84,8 +84,8 @@ export const DailyHoroscope = () => {
     '@type': 'WebPage',
     name: 'Daily Horoscope — All 12 Zodiac Signs',
     description: 'Read today\'s free Vedic daily horoscope for all 12 zodiac signs. AI-powered personalised predictions.',
-    url: 'https://everydayhoroscope.in/horoscope/daily',
-    publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
+    url: 'https://www.everydayhoroscope.in/horoscope/daily',
+    publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://www.everydayhoroscope.in' },
   };
 
   return (
@@ -93,7 +93,7 @@ export const DailyHoroscope = () => {
       <SEO
         title="Daily Horoscope — All 12 Zodiac Signs"
         description="Read today's free Vedic daily horoscope for all 12 zodiac signs. AI-powered personalised predictions rooted in 5,000 years of ancient wisdom."
-        url="https://everydayhoroscope.in/horoscope/daily"
+        url="https://www.everydayhoroscope.in/horoscope/daily"
         schema={schema}
       />
 

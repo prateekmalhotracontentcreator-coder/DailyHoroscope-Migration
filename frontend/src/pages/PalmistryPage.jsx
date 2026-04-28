@@ -573,7 +573,7 @@ export const PalmistryPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <SEO title="Hasta Rekha — Vedic Palmistry" description="India's first AI-powered Vedic palmistry. Analyse your palm lines, mounts, and hand shape through the lens of Samudrika Shastra — the ancient Indian science of body reading." url="https://everydayhoroscope.in/palmistry" />
+      <SEO title="Hasta Rekha — Vedic Palmistry" description="India's first AI-powered Vedic palmistry. Analyse your palm lines, mounts, and hand shape through the lens of Samudrika Shastra — the ancient Indian science of body reading." url="https://www.everydayhoroscope.in/palmistry" />
 
       <style>{`
         .palmistry-loader .pulse-mount { opacity: 0.35; animation: palmistryPulse 2.6s ease-in-out infinite; transform-origin: center; }

@@ -140,16 +140,16 @@ export const Landing = () => {
       <SEO
         title="Free Daily Horoscope & Vedic Astrology"
         description="Get your free daily, weekly, and monthly horoscope predictions. AI-powered Birth Chart, Kundali Milan, and Brihat Kundli Pro reports based on Vedic astrology."
-        url="https://everydayhoroscope.in"
+        url="https://www.everydayhoroscope.in"
         schema={{
           "@context": "https://schema.org",
           "@type": "Organization",
           "name": "Everyday Horoscope",
-          "url": "https://everydayhoroscope.in",
-          "logo": "https://everydayhoroscope.in/og-image.png",
+          "url": "https://www.everydayhoroscope.in",
+          "logo": "https://www.everydayhoroscope.in/og-image.png",
           "description": "AI-powered Vedic astrology platform offering daily horoscopes, birth charts, and Kundali Milan.",
-          "founder": { "@type": "Organization", "name": "SkyHound Studios" },
-          "contactPoint": { "@type": "ContactPoint", "email": "prateekmalhotra.contentcreator@gmail.com", "contactType": "customer support" }
+          "founder": { "@type": "Person", "name": "SkyHound Studios" },
+          "contactPoint": { "@type": "ContactPoint", "email": "support@everydayhoroscope.in", "contactType": "customer support" }
         }}
       />
 

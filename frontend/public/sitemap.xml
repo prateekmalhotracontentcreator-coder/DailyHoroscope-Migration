@@ -1,46 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <!-- Core -->
-  <url><loc>https://everydayhoroscope.in/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://everydayhoroscope.in/pricing</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/pricing</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/blog</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
 
   <!-- Horoscope -->
-  <url><loc>https://everydayhoroscope.in/horoscope/daily</loc><changefreq>daily</changefreq><priority>0.95</priority></url>
-  <url><loc>https://everydayhoroscope.in/horoscope/weekly</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
-  <url><loc>https://everydayhoroscope.in/horoscope/monthly</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/horoscope/daily</loc><changefreq>daily</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/horoscope/weekly</loc><changefreq>weekly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/horoscope/monthly</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
 
   <!-- Panchang — daily-change pages -->
-  <url><loc>https://everydayhoroscope.in/panchang/today</loc><changefreq>daily</changefreq><priority>0.95</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/tomorrow</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/tithi</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/choghadiya</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/festivals</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang</loc><changefreq>daily</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/today</loc><changefreq>daily</changefreq><priority>0.95</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/tomorrow</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/tithi</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/choghadiya</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/festivals</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/rahukaal</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/muhurat</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/nakshatra</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+
+  <!-- Panchang — language variants -->
+  <url><loc>https://www.everydayhoroscope.in/panchang/hindi</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/tamil</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/telugu</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/malayalam</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/kannada</loc><changefreq>daily</changefreq><priority>0.85</priority></url>
 
   <!-- Panchang — calendar pages (current month + next 3) -->
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/3</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/4</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/5</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://everydayhoroscope.in/panchang/calendar/2026/6</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/calendar/2026/4</loc><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/calendar/2026/5</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/calendar/2026/6</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/panchang/calendar/2026/7</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+
+  <!-- Vedic Reports -->
+  <url><loc>https://www.everydayhoroscope.in/birth-chart</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/kundali-milan</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/brihat-kundli</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/lagna-kundali</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/longevity</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
 
   <!-- Tools -->
-  <url><loc>https://everydayhoroscope.in/birth-chart</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://everydayhoroscope.in/kundali-milan</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
-  <url><loc>https://everydayhoroscope.in/brihat-kundli</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/numerology</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://everydayhoroscope.in/tarot</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/numerology</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/tarot</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/palmistry</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/lumina</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/remedies</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
 
-  <!-- Blog -->
-  <url><loc>https://everydayhoroscope.in/blog</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <!-- Love & Relationships -->
+  <url><loc>https://www.everydayhoroscope.in/love</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
   <!-- Company -->
-  <url><loc>https://everydayhoroscope.in/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://everydayhoroscope.in/contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/contact</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/careers</loc><changefreq>monthly</changefreq><priority>0.4</priority></url>
 
   <!-- Policies -->
-  <url><loc>https://everydayhoroscope.in/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://everydayhoroscope.in/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://everydayhoroscope.in/subscription-terms</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
-  <url><loc>https://everydayhoroscope.in/refund-policy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
-  <url><loc>https://everydayhoroscope.in/cookie-policy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
-  <url><loc>https://www.everydayhoroscope.in/love</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/subscription-terms</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/refund-policy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/cookie-policy</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+
 </urlset>

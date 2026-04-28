@@ -82,8 +82,8 @@ export const MonthlyHoroscope = () => {
     '@type': 'WebPage',
     name: 'Monthly Horoscope — Your Month Ahead in the Stars',
     description: 'Free monthly Vedic horoscope for all 12 zodiac signs. Navigate the month ahead with AI-powered cosmic insights.',
-    url: 'https://everydayhoroscope.in/horoscope/monthly',
-    publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://everydayhoroscope.in' },
+    url: 'https://www.everydayhoroscope.in/horoscope/monthly',
+    publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://www.everydayhoroscope.in' },
   };
 
   return (
@@ -91,7 +91,7 @@ export const MonthlyHoroscope = () => {
       <SEO
         title="Monthly Horoscope — Your Month Ahead in the Stars"
         description="Read your free monthly Vedic horoscope for all 12 zodiac signs. Navigate the month ahead with AI-powered cosmic insights."
-        url="https://everydayhoroscope.in/horoscope/monthly"
+        url="https://www.everydayhoroscope.in/horoscope/monthly"
         schema={schema}
       />
 
