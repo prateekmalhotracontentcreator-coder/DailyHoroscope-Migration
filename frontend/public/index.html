@@ -81,18 +81,22 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="dns-prefetch" href="https://everydayhoroscope-api.onrender.com" />
         <!-- Non-blocking async font load — eliminates render-blocking -->
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Playfair+Display:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
         <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Playfair+Display:wght@400;500;600;700&display=swap" /></noscript>
         <script>window.addEventListener("error",function(e){if(e.error instanceof DOMException&&e.error.name==="DataCloneError"&&e.message&&e.message.includes("PerformanceServerTiming")){e.stopImmediatePropagation();e.preventDefault()}},true);</script>
 
-        <!-- Google Analytics GA4 -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3HJC8BTHRQ"></script>
+        <!-- Google Analytics GA4 — deferred to improve TBT -->
+        <script defer src="https://www.googletagmanager.com/gtag/js?id=G-3HJC8BTHRQ"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-3HJC8BTHRQ');
+          // Delay gtag init to avoid blocking main thread
+          setTimeout(() => {
+            gtag('js', new Date());
+            gtag('config', 'G-3HJC8BTHRQ');
+          }, 2000);
         </script>
     </head>
     <body>
