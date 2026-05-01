@@ -8,6 +8,11 @@ import { AdminAuthProvider } from './context/AdminAuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { PremiumRoute } from './components/PremiumRoute';
 import { AuthCallback } from './components/AuthCallback';
+import { Toaster } from './components/ui/sonner';
+import { CookieConsent } from './components/CookieConsent';
+import { NavBar } from './components/NavBar';
+import { ScrollToTop } from './components/ScrollToTop';
+
 // Critical path — loaded synchronously (first-paint routes)
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
