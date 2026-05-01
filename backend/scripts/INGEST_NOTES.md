@@ -2315,3 +2315,79 @@ The mental wave engine is the most complex section: 49 units spanning sections 1
 All knowledge engine commits (Sessions 1–10) had been made locally but never pushed to GitHub remote. Vercel and Render had been serving the pre-Session 1 code for ~3 weeks. All 72 commits pushed in one batch on 28 Apr 2026.
 
 ---
+
+## BPHS Chapter 40 — Yogas for Royal Association (2 May 2026)
+
+**Batch ID:** `bphs-ch40-v1-20260502`
+**Script:** `backend/scripts/ingest_bphs_ch40_v1.py`
+**JSON:** `backend/scripts/bphs_ch40_rules.json`
+**Source:** PDF (`BPHS_Vol1_PDF Chapters/BPHS_Ch40_Yogas for Royal Association.pdf`) + Notebook LM decode (`BPHS_Ch40_Yogas for Royal Association_JSON Ready+Diagnostic_LM.md`)
+
+### Source structure
+
+15 slokas (1–15) = 15 rules. Chapter ends at sloka 15; Ch 41 begins on page 402.
+
+⚠️ **Sloka 48 note:** The text "If all benefics are relegated to angles while malefics are in the 3rd, 6th and 11th…" appears at the top of the Ch 40 PDF page but is the **final sloka of Ch 39** — already ingested as `bphs-ch39-050`. It is NOT a Ch 40 rule.
+
+| Group | Slokas | Rules | Condition |
+|---|---|---|---|
+| Court & Ministerial Yoga | 1–6, 9, 15 | 8 | Chief in court / minister combinations |
+| Army Chief Yoga | 7 | 1 | Malefics in 3rd+6th from pivot |
+| Royal Association Yoga | 8, 10, 11, 12, 13 | 5 | Association / wealth / exchange |
+| Royal Insignia Yoga | 14 | 1 | Venus+Moon in 4th from Karakamsa Lagna |
+| **Total** | 1–15 | **15** | |
+
+### yoga_check coverage — 0 / 15 checkable (0%)
+
+All 15 rules are `complex / checkable: False`. This is the first chapter with **zero checkable rules** — expected because:
+- Every rule anchors on Jaimini concepts (Amatyakaraka, Atmakaraka, Karakamsa Lagna, Arudha Lagna)
+- Amatyakaraka and Atmakaraka require computing highest/second-highest degree planets among Sun–Saturn (Chara Karaka scheme) — not available in the current Rasi engine
+
+**Blocker distribution:**
+
+| Blocker | Meaning | Rules affected |
+|---|---|---|
+| K — Karakamsa/Jaimini | Amatyakaraka, Atmakaraka, Arudha Lagna, Karakamsa Lagna | 13 |
+| L — Lord identification | House lord lookup | 6 |
+| A — Aspect detection | Conjunction or aspect check | 4 |
+| D — Dignity/strength | Own sign, exaltation, "strong" | 1 |
+| V — Divisional chart | Navamsa (D-9) for Karakamsa Lagna | 1 |
+
+**Phase 2 promotion paths:**
+
+| When available | Rules unlocked |
+|---|---|
+| Jaimini karaka engine (AK + AmK identification) | 13 rules — most of the chapter |
+| Lord identification | Rules 002, 011, 012, 013, 015 (partially) |
+| Aspect detection | Rules 001, 008, 012 |
+| Dignity check | Rule 004 |
+| Navamsa (D-9) | Rule 014 (Karakamsa Lagna requires D-9) |
+
+**Notable Phase 2 notes per rule:**
+- **Rule 002** (Sloka 2): Once lord identification exists, implement as `malefic_free_house` check on H10+H11 + `lord_in_own_house` for H11 — no Jaimini needed.
+- **Rule 007** (Sloka 7): Natal ascendant branch (C) is checkable standalone — malefics in H3+H4 is a pure positional check. Split into 3 sub-rules in Phase 2.
+- **Rule 013** (Sloka 13): Parivartana between 10th and Asc lord → implement as `lord_exchange` type (same pattern as TBA Ch 16 Vipreet Rajyoga). Only L blocker — nearest to Phase 2 promotion.
+
+### Validation Results — COMPLETE (2 May 2026)
+
+Single-pass — zero structural failures, zero contradictions.
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 2 | 13% |
+| `pending_human_review` | 13 | 87% |
+| `flagged` | 0 | 0% |
+| Contradictions | 0 | — |
+| **Total** | **15** | |
+
+**13% auto_approved is expected and correct.** All 15 rules are `complex/False` with Jaimini blockers — the validator has zero yoga_check signal. Compare: Ch 39 (82%) had checkable rules giving the validator strong cross-rule signal; Ch 40 has none. The 0 flagged result confirms schema is clean. The 2 auto_approved are the rules with the clearest, most self-consistent benefic-formation text.
+
+### Key design decisions
+
+1. **Ch 40 is the new canonical reference for Jaimini-heavy yoga chapters.** Future chapters with similar Jaimini-dominant content (Karakamsa, Amatyakaraka) should use `ingest_bphs_ch40_v1.py` as the template, not Ch 39.
+
+2. **Sloka 2 dual interpretation preserved.** The source Notes section gives an alternate reading where BOTH 10th and 11th must be aspected by their own lords. Both interpretations documented in `formation` field — co-founder decides which to apply during review.
+
+3. **Rule 007 three-pivot OR structure kept as one rule.** Army chief yoga references AK, Arudha Lagna, OR natal ascendant as equivalent pivots. Kept as single rule; Phase 2 splits into 3 sub-rules once AK + AL are available.
+
+---

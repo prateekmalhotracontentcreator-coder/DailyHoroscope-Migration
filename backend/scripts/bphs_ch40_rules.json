@@ -1,0 +1,1207 @@
+[
+  {
+    "rule_id": "bphs-ch40-001",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-01",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Chief in King's Court — Amatyakaraka Connection",
+      "yoga_group": "court_ministerial_yoga",
+      "yoga_group_label": "Court & Ministerial Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K",
+          "L",
+          "A"
+        ],
+        "description": "Requires identifying Amatyakaraka (second highest degree planet — Jaimini Chara Karaka computation), then its dispositor (lord of AK's sign), then the 10th lord from ascendant. Finally, conjunction or aspect relationship between 10th lord and AK/AK-dispositor. All three steps outside current engine scope."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will be a chief in the king's court. In modern terms: a high governmental position, senior civil service, or ",
+      "detailed": "Formation: The 10th lord counted from the ascendant is conjunct or aspected by the dispositor of Amatyakaraka (the lord of the sign occupied by Amatyakaraka), OR the 10th lord is conjunct or aspected by Amatyakaraka himself. Amatyakaraka is the Chara Karaka that is the immediate successor of the Atmakaraka (second highest degree planet among Sun through Saturn).\n\nEffect: The native will be a chief in the king's court. In modern terms: a high governmental position, senior civil service, or chief of a major organisation. The Amatyakaraka taking the role of its dispositor yields similar effects.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The 10th lord counted from the ascendant is conjunct or aspected by the dispositor of Amatyakaraka (the lord of the sign occupied by Amatyakaraka), OR the 10th lord is conjunct or aspected by Amatyakaraka himself. Amatyakaraka is the Chara Karaka that is the immediate successor of the Atmakaraka (second highest degree planet among Sun through Saturn).\n\nEffect: The native will be a chief in the king's court. In modern terms: a high governmental position, senior civil service, or chief of a major organisation. The Amatyakaraka taking the role of its dispositor yields similar effects.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government",
+        "power",
+        "leadership"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:court_ministerial_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.685960+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-002",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-02",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Chief in King's Court — Clean House Diagnostic",
+      "yoga_group": "court_ministerial_yoga",
+      "yoga_group_label": "Court & Ministerial Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "L",
+          "A"
+        ],
+        "description": "Requires identifying the 11th lord (and optionally the 10th lord) — house lord identification needed. Malefic aspect/occupation check requires aspect detection across both houses. Phase 2: implement with lord-identification engine."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will be a chief in the king's court. The 'purity' of the Karma (10th) and Gains (11th) houses is the key diag",
+      "detailed": "Formation: The 10th and 11th houses are both devoid of malefic occupation and malefic aspect. The 11th house is aspected by its own lord (the planet that rules the 11th house sign). Alternate interpretation: the 10th house should additionally be aspected by its own lord, and both the 10th and 11th should be simultaneously free from malefic aspect and occupation.\n\nEffect: The native will be a chief in the king's court. The 'purity' of the Karma (10th) and Gains (11th) houses is the key diagnostic — if any malefic occupies or aspects these houses the result is voided unless overridden by Amatyakaraka strength.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The 10th and 11th houses are both devoid of malefic occupation and malefic aspect. The 11th house is aspected by its own lord (the planet that rules the 11th house sign). Alternate interpretation: the 10th house should additionally be aspected by its own lord, and both the 10th and 11th should be simultaneously free from malefic aspect and occupation.\n\nEffect: The native will be a chief in the king's court. The 'purity' of the Karma (10th) and Gains (11th) houses is the key diagnostic — if any malefic occupies or aspects these houses the result is voided unless overridden by Amatyakaraka strength.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government",
+        "leadership",
+        "gains"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:court_ministerial_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686441+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-003",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-03",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "King's Minister — Amatyakaraka + Atmakaraka Dispositor Conjunction",
+      "yoga_group": "court_ministerial_yoga",
+      "yoga_group_label": "Court & Ministerial Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K"
+        ],
+        "description": "Requires identifying Atmakaraka (highest degree planet among Sun–Saturn), its dispositor (lord of AK's sign), and Amatyakaraka (second highest degree). Both are Jaimini Chara Karaka computations outside current engine scope."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will be endowed with great intelligence and will be a king's minister. The conjunction of these two Jaimini a",
+      "detailed": "Formation: Amatyakaraka (second highest degree planet, Chara Karaka) and the dispositor of Atmakaraka (lord of the sign occupied by Atmakaraka, the highest degree planet) are conjunct in the same house.\n\nEffect: The native will be endowed with great intelligence and will be a king's minister. The conjunction of these two Jaimini anchor planets produces both intellectual distinction and high governmental service.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Amatyakaraka (second highest degree planet, Chara Karaka) and the dispositor of Atmakaraka (lord of the sign occupied by Atmakaraka, the highest degree planet) are conjunct in the same house.\n\nEffect: The native will be endowed with great intelligence and will be a king's minister. The conjunction of these two Jaimini anchor planets produces both intellectual distinction and high governmental service.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government",
+        "intelligence"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:court_ministerial_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686454+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-004",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-04",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "King's Minister — Dignified Amatyakaraka",
+      "yoga_group": "court_ministerial_yoga",
+      "yoga_group_label": "Court & Ministerial Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K",
+          "D"
+        ],
+        "description": "Requires identifying Amatyakaraka (Jaimini). Condition A requires a general 'strength' assessment of AK's placement. Condition B requires checking AK's dignity (own sign or exaltation) — both Jaimini identification and dignity check outside current engine scope."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will surely become a king's minister.",
+      "detailed": "Formation: Condition A: Amatyakaraka is strong (well-placed or in a powerful position) AND is conjunct a natural benefic planet. Condition B (alternate): Amatyakaraka is in its own house (the sign it rules) OR in its exaltation sign. Either condition is sufficient.\n\nEffect: The native will surely become a king's minister.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Condition A: Amatyakaraka is strong (well-placed or in a powerful position) AND is conjunct a natural benefic planet. Condition B (alternate): Amatyakaraka is in its own house (the sign it rules) OR in its exaltation sign. Either condition is sufficient.\n\nEffect: The native will surely become a king's minister.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:court_ministerial_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686461+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-005",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-05",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Famous King's Minister — Amatyakaraka in 1st/5th/9th",
+      "yoga_group": "court_ministerial_yoga",
+      "yoga_group_label": "Court & Ministerial Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K"
+        ],
+        "description": "Requires identifying Amatyakaraka (second highest degree planet — Jaimini Chara Karaka). Once identified, house position check against houses 1, 5, 9 would be straightforward. Phase 2: implement as 'planet_in_house' with planets=['Amatyakaraka'] and houses=[1,5,9] once AK identification is available."
+      }
+    },
+    "interpretation": {
+      "summary": "There is no doubt in the native becoming a king's minister and famous. Placement in the ascendant (personal power), 5th ",
+      "detailed": "Formation: Amatyakaraka (second highest degree Chara Karaka) is placed in the ascendant (1st house), the 5th house, or the 9th house counted from the natal ascendant.\n\nEffect: There is no doubt in the native becoming a king's minister and famous. Placement in the ascendant (personal power), 5th (intelligence, purva punya), or 9th (luck, dharma, fortune) from Lagna gives the highest ministerial distinction.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Amatyakaraka (second highest degree Chara Karaka) is placed in the ascendant (1st house), the 5th house, or the 9th house counted from the natal ascendant.\n\nEffect: There is no doubt in the native becoming a king's minister and famous. Placement in the ascendant (personal power), 5th (intelligence, purva punya), or 9th (luck, dharma, fortune) from Lagna gives the highest ministerial distinction.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government",
+        "fame"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:court_ministerial_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686467+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-006",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-06",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Royal Patronage & Happiness — Amatyakaraka or Atmakaraka in Angle/Trine",
+      "yoga_group": "court_ministerial_yoga",
+      "yoga_group_label": "Court & Ministerial Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K"
+        ],
+        "description": "Requires identifying both Atmakaraka (highest degree planet) and Amatyakaraka (second highest degree). Angular houses {1,4,7,10} and trinal houses {1,5,9} checks are straightforward once the karaka planets are identified. Phase 2: implement with Jaimini karaka engine."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will beget royal mercy, royal patronage, and happiness therefrom. In modern context: government favour, insti",
+      "detailed": "Formation: Amatyakaraka OR Atmakaraka (the two primary Jaimini Chara Karakas) is placed in an angular house (1st, 4th, 7th, or 10th) or in a trinal house (1st, 5th, or 9th) counted from the natal ascendant.\n\nEffect: The native will beget royal mercy, royal patronage, and happiness therefrom. In modern context: government favour, institutional support, and professional satisfaction through association with powerful figures.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Amatyakaraka OR Atmakaraka (the two primary Jaimini Chara Karakas) is placed in an angular house (1st, 4th, 7th, or 10th) or in a trinal house (1st, 5th, or 9th) counted from the natal ascendant.\n\nEffect: The native will beget royal mercy, royal patronage, and happiness therefrom. In modern context: government favour, institutional support, and professional satisfaction through association with powerful figures.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government",
+        "wealth",
+        "happiness"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:court_ministerial_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686473+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-007",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-07",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Army Chief — Malefics in 3rd and 6th from AK/AL/Ascendant",
+      "yoga_group": "army_yoga",
+      "yoga_group_label": "Army Chief Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-army_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K"
+        ],
+        "description": "The natal ascendant (C) reference is straightforward — malefics in houses 3 and 6 is a pure positional check. However, the Atmakaraka (A) and Arudha Lagna (B) reference points require Jaimini computation: AK = highest degree planet; AL = derived via counting the Lagna lord's distance from Lagna and then counting same distance from the lord. The OR structure across three pivots keeps this rule complex/False. Phase 2: split into three sub-rules once AK + AL are available."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will become an army chief. The 3rd and 6th house malefic placement from the key pivot (AK, AL, or Lagna) is t",
+      "detailed": "Formation: Natural malefic planets are placed in the 3rd and 6th houses counted from any one of three reference points: (A) the Atmakaraka's house position, (B) the Arudha Lagna (the Pada of the 1st house, derived via Jaimini counting algorithm), or (C) the natal ascendant (Lagna). Unlike court positions which require clean houses (free of malefics), military leadership specifically requires malefics in the 3rd (courage, conflict) and 6th (enemies, warfare) positions.\n\nEffect: The native will become an army chief. The 3rd and 6th house malefic placement from the key pivot (AK, AL, or Lagna) is the diagnostic for military authority — inversely, the same positions that would harm courtly functions enable warrior leadership.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Natural malefic planets are placed in the 3rd and 6th houses counted from any one of three reference points: (A) the Atmakaraka's house position, (B) the Arudha Lagna (the Pada of the 1st house, derived via Jaimini counting algorithm), or (C) the natal ascendant (Lagna). Unlike court positions which require clean houses (free of malefics), military leadership specifically requires malefics in the 3rd (courage, conflict) and 6th (enemies, warfare) positions.\n\nEffect: The native will become an army chief. The 3rd and 6th house malefic placement from the key pivot (AK, AL, or Lagna) is the diagnostic for military authority — inversely, the same positions that would harm courtly functions enable warrior leadership.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "military",
+      "life_domains": [
+        "military",
+        "leadership",
+        "power",
+        "enemies"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:army_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-army_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686481+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-008",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-08",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "King's Minister — Atmakaraka Strong + 9th Lord Aspect",
+      "yoga_group": "royal_association_yoga",
+      "yoga_group_label": "Royal Association Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K",
+          "L",
+          "A"
+        ],
+        "description": "Requires identifying Atmakaraka (Jaimini). Angle/trine check is straightforward once AK is identified. Exaltation/own-sign check requires dignity evaluation. The 9th lord identification and its aspect to AK require lord lookup + aspect detection. All three blockers must be cleared for Phase 2 promotion."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will be a king's minister. The 9th lord's aspect provides the dharmic sanction (fortune, luck, higher wisdom)",
+      "detailed": "Formation: Atmakaraka (highest degree planet, Chara Karaka) is placed in an angular house (1st, 4th, 7th, or 10th), a trinal house (1st, 5th, or 9th), in its exaltation sign, or in its own sign — AND is simultaneously aspected by the 9th lord (the planet ruling the 9th house sign). Both conditions must hold: AK in strength AND 9th lord's aspect.\n\nEffect: The native will be a king's minister. The 9th lord's aspect provides the dharmic sanction (fortune, luck, higher wisdom) that elevates the Atmakaraka's strength into ministerial authority.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Atmakaraka (highest degree planet, Chara Karaka) is placed in an angular house (1st, 4th, 7th, or 10th), a trinal house (1st, 5th, or 9th), in its exaltation sign, or in its own sign — AND is simultaneously aspected by the 9th lord (the planet ruling the 9th house sign). Both conditions must hold: AK in strength AND 9th lord's aspect.\n\nEffect: The native will be a king's minister. The 9th lord's aspect provides the dharmic sanction (fortune, luck, higher wisdom) that elevates the Atmakaraka's strength into ministerial authority.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government",
+        "fortune"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:royal_association_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686487+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-009",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-09",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "King's Minister at Advanced Age — Moon Sign Lord as Atmakaraka",
+      "yoga_group": "court_ministerial_yoga",
+      "yoga_group_label": "Court & Ministerial Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K"
+        ],
+        "description": "Requires identifying: (1) Moon sign lord (which planet rules the sign where Moon is placed — lord identification), (2) Atmakaraka (highest degree planet — Jaimini), (3) confirming they are the same planet. The ascendant placement and benefic conjunction would then be straightforward positional checks. Phase 2: implement once lord identification + AK engine exist."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will become a king's minister at his advanced age. This 'advanced age' timing is specific to this combination",
+      "detailed": "Formation: The lord of the Moon's natal sign (the planet that rules the sign where the Moon is placed in the birth chart) is itself the Atmakaraka (the highest degree planet among Sun through Saturn). This same planet — simultaneously the Moon sign lord and the Atmakaraka — is placed in the natal ascendant (1st house) and is conjunct a natural benefic.\n\nEffect: The native will become a king's minister at his advanced age. This 'advanced age' timing is specific to this combination — the dual role of the planet (Moon sign lord + Atmakaraka) delays the maturation of ministerial authority until later life.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The lord of the Moon's natal sign (the planet that rules the sign where the Moon is placed in the birth chart) is itself the Atmakaraka (the highest degree planet among Sun through Saturn). This same planet — simultaneously the Moon sign lord and the Atmakaraka — is placed in the natal ascendant (1st house) and is conjunct a natural benefic.\n\nEffect: The native will become a king's minister at his advanced age. This 'advanced age' timing is specific to this combination — the dual role of the planet (Moon sign lord + Atmakaraka) delays the maturation of ministerial authority until later life.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government",
+        "career",
+        "timing"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:court_ministerial_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686493+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-010",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-10",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Wealth Through Royal Patronage — Atmakaraka in Trikona/Kendra with Benefic",
+      "yoga_group": "royal_association_yoga",
+      "yoga_group_label": "Royal Association Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K"
+        ],
+        "description": "Requires identifying Atmakaraka (Jaimini). Once identified, house position check (5th, 7th, 9th, 10th) and benefic conjunction check are straightforward. Phase 2: implement as compound check 'planet_in_house' (AK) + conjunction with benefic once AK identification is available."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will earn wealth through royal patronage. Association with powerful figures (king, government, authority) bec",
+      "detailed": "Formation: Atmakaraka (highest degree Chara Karaka) is placed in the 5th, 7th, 10th, or 9th house from the natal ascendant AND is conjunct a natural benefic planet. Both conditions (house placement AND benefic conjunction) must hold simultaneously.\n\nEffect: The native will earn wealth through royal patronage. Association with powerful figures (king, government, authority) becomes the vehicle for material prosperity.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Atmakaraka (highest degree Chara Karaka) is placed in the 5th, 7th, 10th, or 9th house from the natal ascendant AND is conjunct a natural benefic planet. Both conditions (house placement AND benefic conjunction) must hold simultaneously.\n\nEffect: The native will earn wealth through royal patronage. Association with powerful figures (king, government, authority) becomes the vehicle for material prosperity.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "royal_patronage",
+        "government"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:royal_association_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686499+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-011",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-11",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Association with Royal Circles — Arudha of 9th or AK in 9th",
+      "yoga_group": "royal_association_yoga",
+      "yoga_group_label": "Royal Association Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K",
+          "L"
+        ],
+        "description": "Condition A requires Arudha (Pada) derivation for the 9th house — a Jaimini counting algorithm requiring 9th lord identification. Condition B (AK in 9th) requires Atmakaraka identification. Phase 2: Condition B alone becomes checkable once AK identification is available."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will be associated with royal circles. The 9th house connection (via its Pada or via the Atmakaraka's placeme",
+      "detailed": "Formation: Condition A: The Arudha of the 9th house (the Pada derived by counting the 9th lord's distance from the 9th house, then counting the same distance from the 9th lord) coincides with the natal ascendant sign. Condition B (alternate): Atmakaraka (highest degree planet) is placed in the 9th house from the natal ascendant. Either condition is sufficient.\n\nEffect: The native will be associated with royal circles. The 9th house connection (via its Pada or via the Atmakaraka's placement) links the native to fortune, higher authority, and powerful social networks.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Condition A: The Arudha of the 9th house (the Pada derived by counting the 9th lord's distance from the 9th house, then counting the same distance from the 9th lord) coincides with the natal ascendant sign. Condition B (alternate): Atmakaraka (highest degree planet) is placed in the 9th house from the natal ascendant. Either condition is sufficient.\n\nEffect: The native will be associated with royal circles. The 9th house connection (via its Pada or via the Atmakaraka's placement) links the native to fortune, higher authority, and powerful social networks.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "social_position",
+        "government",
+        "fortune"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:royal_association_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686506+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-012",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-12",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Gain Through Royal Association — 11th Lord in 11th + AK with Benefic",
+      "yoga_group": "royal_association_yoga",
+      "yoga_group_label": "Royal Association Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K",
+          "L",
+          "A"
+        ],
+        "description": "Condition 1 requires 11th lord identification (L). Condition 2 requires malefic aspect detection on house 11 (A). Condition 3 requires Atmakaraka identification (K). All three blockers active. Phase 2: conditions 1+2 become checkable once lord identification + aspect detection are available; condition 3 requires Jaimini engine."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will gain through royal association — material rewards, wealth, and advancement through connection with the p",
+      "detailed": "Formation: Three simultaneous conditions: (1) The 11th house is occupied by its own lord (the planet that rules the 11th house sign is placed in the 11th house itself). (2) The 11th house is devoid of any malefic aspect. (3) Atmakaraka is conjunct a natural benefic planet. All three conditions must hold together.\n\nEffect: The native will gain through royal association — material rewards, wealth, and advancement through connection with the powerful. The 11th house (gains/income) must be pure and strengthened by its own lord while the Atmakaraka's benefic support provides the social conduit.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Three simultaneous conditions: (1) The 11th house is occupied by its own lord (the planet that rules the 11th house sign is placed in the 11th house itself). (2) The 11th house is devoid of any malefic aspect. (3) Atmakaraka is conjunct a natural benefic planet. All three conditions must hold together.\n\nEffect: The native will gain through royal association — material rewards, wealth, and advancement through connection with the powerful. The 11th house (gains/income) must be pure and strengthened by its own lord while the Atmakaraka's benefic support provides the social conduit.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "wealth",
+      "life_domains": [
+        "wealth",
+        "gains",
+        "government",
+        "status"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:royal_association_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686512+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-013",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-13",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Highly Associated with the King — 10th-Ascendant Lord Sign Exchange",
+      "yoga_group": "royal_association_yoga",
+      "yoga_group_label": "Royal Association Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "L"
+        ],
+        "description": "Requires identifying the 10th lord and the ascendant lord — house lord identification for both. Sign exchange (Parivartana) verification is then a positional check (is 10th lord in Lagna lord's sign AND Lagna lord in 10th lord's sign?). Phase 2: implement as 'lord_exchange' yoga_check type (same as used for TBA Ch 16 Vipreet Rajyoga variants) once lord identification is available."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will be highly associated with the king — the strongest possible royal connection yoga in this chapter. In mo",
+      "detailed": "Formation: An exchange of signs (Parivartana Yoga) between the 10th lord and the ascendant lord: the 10th lord is placed in the sign of the ascendant lord, AND the ascendant lord is placed in the sign of the 10th lord. Both lords must simultaneously occupy each other's signs.\n\nEffect: The native will be highly associated with the king — the strongest possible royal connection yoga in this chapter. In modern context: deep integration into government, powerful institutional backing, or direct access to heads of state or major organisations.",
+      "full_text_passages": [
+        {
+          "text": "Formation: An exchange of signs (Parivartana Yoga) between the 10th lord and the ascendant lord: the 10th lord is placed in the sign of the ascendant lord, AND the ascendant lord is placed in the sign of the 10th lord. Both lords must simultaneously occupy each other's signs.\n\nEffect: The native will be highly associated with the king — the strongest possible royal connection yoga in this chapter. In modern context: deep integration into government, powerful institutional backing, or direct access to heads of state or major organisations.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government",
+        "royalty",
+        "power"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:royal_association_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_association_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686521+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-014",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-14",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "Royal Insignia — Venus and Moon in 4th from Karakamsa Lagna",
+      "yoga_group": "royal_insignia_yoga",
+      "yoga_group_label": "Royal Insignia Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_insignia_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K",
+          "V"
+        ],
+        "description": "Karakamsa Lagna requires: (1) identifying Atmakaraka (highest degree planet — Jaimini), (2) computing the D-9 Navamsa chart, (3) finding the Navamsa sign of the Atmakaraka. Houses are then counted from this Karakamsa Lagna. Both Jaimini (K) and divisional chart (V) blockers active — cannot be promoted until both are resolved."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will be endowed with royal insignia — symbols of authority, official titles, ceremonial objects, and distinct",
+      "detailed": "Formation: Venus and the Moon are both placed in the 4th house counted from the Karakamsa Lagna (the Navamsa sign occupied by the Atmakaraka, i.e., the sign of the Atmakaraka in the D-9 divisional chart, used as the ascendant for Jaimini analysis).\n\nEffect: The native will be endowed with royal insignia — symbols of authority, official titles, ceremonial objects, and distinctions of rank. The combination of Venus (luxury, beauty, authority symbols) and Moon (mind, public image) in the 4th from Karakamsa gives tangible tokens of royal or governmental recognition.",
+      "full_text_passages": [
+        {
+          "text": "Formation: Venus and the Moon are both placed in the 4th house counted from the Karakamsa Lagna (the Navamsa sign occupied by the Atmakaraka, i.e., the sign of the Atmakaraka in the D-9 divisional chart, used as the ascendant for Jaimini analysis).\n\nEffect: The native will be endowed with royal insignia — symbols of authority, official titles, ceremonial objects, and distinctions of rank. The combination of Venus (luxury, beauty, authority symbols) and Moon (mind, public image) in the 4th from Karakamsa gives tangible tokens of royal or governmental recognition.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "royalty",
+        "honors",
+        "recognition"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:royal_insignia_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-royal_insignia_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686526+00:00"
+  },
+  {
+    "rule_id": "bphs-ch40-015",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 40,
+      "chapter_name": "Yogas for Royal Association",
+      "sloka": "ch40-sloka-15",
+      "batch_id": "bphs-ch40-v1-20260502",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "yoga_combination",
+      "sub_type": "yoga_formation",
+      "yoga_name": "King's Minister — Ascendant Lord or Atmakaraka + 5th Lord in Angle/Trine",
+      "yoga_group": "court_ministerial_yoga",
+      "yoga_group_label": "Court & Ministerial Yoga",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "complex",
+        "checkable": false,
+        "blockers": [
+          "K",
+          "L"
+        ],
+        "description": "Requires: (1) ascendant lord identification (L), (2) Atmakaraka identification (K — Jaimini), (3) 5th lord identification (L). The conjunction and angle/trine placement are then positional checks. Phase 2: the ascendant-lord branch becomes checkable once lord identification is available (AK branch still requires Jaimini engine)."
+      }
+    },
+    "interpretation": {
+      "summary": "The native will be a king's minister. The 5th lord (intelligence, counsel, purva punya) joining the self (ascendant lord",
+      "detailed": "Formation: The ascendant lord OR the Atmakaraka (highest degree Chara Karaka) is conjunct the 5th lord (the planet ruling the 5th house sign), AND this conjunction is placed in an angular house (1st, 4th, 7th, or 10th) or a trinal house (1st, 5th, or 9th) from the natal ascendant. Both the conjunction AND the angular/trinal placement must hold.\n\nEffect: The native will be a king's minister. The 5th lord (intelligence, counsel, purva punya) joining the self (ascendant lord) or soul (Atmakaraka) in a power position (angle or trine) channels intellectual authority into ministerial service.",
+      "full_text_passages": [
+        {
+          "text": "Formation: The ascendant lord OR the Atmakaraka (highest degree Chara Karaka) is conjunct the 5th lord (the planet ruling the 5th house sign), AND this conjunction is placed in an angular house (1st, 4th, 7th, or 10th) or a trinal house (1st, 5th, or 9th) from the natal ascendant. Both the conjunction AND the angular/trinal placement must hold.\n\nEffect: The native will be a king's minister. The 5th lord (intelligence, counsel, purva punya) joining the self (ascendant lord) or soul (Atmakaraka) in a power position (angle or trine) channels intellectual authority into ministerial service.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "status",
+      "life_domains": [
+        "status",
+        "government",
+        "intelligence",
+        "counsel"
+      ],
+      "tags": [
+        "royal_association_yoga",
+        "group:court_ministerial_yoga"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch40-court_ministerial_yoga",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-01T22:13:29.686532+00:00"
+  }
+]
