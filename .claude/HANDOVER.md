@@ -131,59 +131,45 @@ TBA Ch 16 (129 rules, 25 Apr) is **fully validated** — see Section 9 for final
 | BPHS Ch 39 (Raja Yogas) | bphs-ch39-v1-20260426 | 50 | — | ✅ **fully validated** (26 Apr) — 41 auto / 6 PHR / 3 flagged — 0 contradictions · 82% auto-approved (best ratio any yoga chapter) |
 | **Lal Kitab Ch 19 (Mangalik Evil)** | lalkitab-ch19-v1-20260426 | **78** | — | ✅ **fully validated** (27 Apr) — 49 auto / 23 PHR / 6 flagged — 0 contradictions · 63% auto_approved · first Lal Kitab chapter |
 | **Lal Kitab Ch 20 (Diseases)** | lalkitab-ch20-v1-20260427 | **48** | — | ✅ **fully validated** (27 Apr) — 34 auto / 11 PHR / 3 flagged — 0 contradictions · 71% auto_approved · yog-07 (Venus-Rahu) forced PHR |
+| **BPHS Ch 40 (Royal Association)** | bphs-ch40-v1-20260502 | **15** | — | ✅ **fully validated** (2 May) — 2 auto / 13 PHR / 0 flagged — 0 contradictions · 13% auto_approved (expected — 100% Jaimini blockers) |
 
 ---
 
-## 4. Immediate Next Steps — as of 28 Apr 2026 (Session 11 end)
+## 4. Immediate Next Steps — as of 2 May 2026 (Session 12 end)
 
-> All dasha sweep steps (0–3) are COMPLETE. All yoga chapters Ch 35–39 are ingested and validated.
-> Website audit complete — 12 fixes deployed. Active tracks: Knowledge Engine ingestion + P2/P3 website polish (next session).
-> The primary ingestion track is: **Yoga Chapter Ingestion (Ch 40 → Ch 41 → Ch 43/44 → 300 Combinations)**.
+> Ch 40 ingested and validated. Active track: **Yoga Chapter Ingestion (Ch 41 → Ch 43/44 → 300 Combinations)**.
 
-### 🔜 Priority 1 — Ingest BPHS Ch 40 (Yogas for Royal Association)
+### 🔜 Priority 1 — Ingest BPHS Ch 41 (Yogas for Wealth)
 
-**File on disk:** `/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Ch40_Yogas for Royal Association.pdf`
+**Files on disk:** `BPHS Vol 1 De-code/BPHS_Vol1_PDF Chapters/BPHS_Ch41_Yogas for wealth.pdf`
+**Notebook LM decode + JSON:** `BPHS Vol 1 De-code/BPHS_Ch41_JSON Ready_LM.docx` + `BPHS_Ch41_Yogas for wealth.json`
+**Template:** `ingest_bphs_ch40_v1.py` (now canonical for Jaimini-heavy yoga chapters)
+**Batch ID:** `bphs-ch41-v1-YYYYMMDD`
 
-**Workflow:**
 ```bash
-# Step 1: Extract text from PDF
-# Step 2: Build hard-coded ingest script backend/scripts/ingest_bphs_ch40_v1.py
-#         (template: use ingest_bphs_ch39_v1.py as the base — it has the correct schema)
-# Step 3: Dry-run → save JSON → review → upload
-python3 backend/scripts/ingest_bphs_ch40_v1.py --dry-run --save backend/scripts/bphs_ch40_rules.json
-python3 backend/scripts/ingest_bphs_ch40_v1.py --upload backend/scripts/bphs_ch40_rules.json --mongo-url "$MONGO_URL" --db-name horoscope_db
-# Step 4: Validate
-python3 backend/scripts/validate_rules.py --batch-id bphs-ch40-v1-20260426 --db-name horoscope_db
+cd /Users/apple/DailyHoroscope-Migration/backend
+python3 scripts/ingest_bphs_ch41_v1.py --dry-run --save scripts/bphs_ch41_rules.json
+python3 scripts/ingest_bphs_ch41_v1.py --upload scripts/bphs_ch41_rules.json --mongo-url "$MONGO_URL" --db-name horoscope_db
+python3 scripts/validate_rules.py --batch-id bphs-ch41-v1-YYYYMMDD --mongo-url "$MONGO_URL" --db-name horoscope_db
 ```
 
-**Schema template:** Copy `build_rule()` from `ingest_bphs_ch39_v1.py` exactly — it has the correct `source{}`, `metadata{}`, `confidence{}` block structure. Ch 39 is the canonical reference for yoga chapter scripts.
-
-**Batch ID format:** `bphs-ch40-v1-YYYYMMDD`
-
 ---
 
-### 🔜 Priority 2 — Ingest BPHS Ch 41 (Yogas for Wealth)
-
-**File on disk:** `/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Ch41_Yogas for wealth.pdf`
-Same workflow as Ch 40.
-
----
-
-### 🔜 Priority 3 — Validate TBA Ch 15 (1,530 rules — PENDING)
+### 🔜 Priority 2 — Validate TBA Ch 15 (1,530 rules — PENDING)
 
 **Batch ID:** `tba-ch15-v1-20260424`
 **Status:** ingested, NOT validated.
 
 ```bash
 cd /Users/apple/DailyHoroscope-Migration/backend
-python3 scripts/validate_rules.py --batch-id tba-ch15-v1-20260424 --db-name horoscope_db
+python3 scripts/validate_rules.py --batch-id tba-ch15-v1-20260424 --mongo-url "$MONGO_URL" --db-name horoscope_db
 ```
 
 ⚠️ Known issue: Mars-H03 flag (see INGEST_NOTES.md). May see high `flagged` count due to appearance-text density.
 
 ---
 
-### 🔜 Priority 4 — Validate Dasha Chapters (Ch 47–60, post-split)
+### 🔜 Priority 3 — Validate Dasha Chapters (Ch 47–60, post-split)
 
 All dasha split-upgrades are complete. None of the split-upgrade batches have been re-validated.
 Run `validate_rules.py` for each — start with the smallest:
