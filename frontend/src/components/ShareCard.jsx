@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import html2canvas from 'html2canvas';
 
 // ─── Platform icons (inline SVG) ─────────────────────────────────────────────
 
@@ -51,9 +50,7 @@ const DownloadIcon = () => (
 async function captureCard(cardRef) {
   if (!cardRef?.current) return null;
   try {
-    // onclone receives the cloned document and the cloned element.
-    // We move only the clone into view — the real DOM element stays at left:-9999px,
-    // so there is zero visible flash on screen during capture.
+    const html2canvas = (await import('html2canvas')).default;
     return await html2canvas(cardRef.current, {
       scale: 2,
       useCORS: true,
