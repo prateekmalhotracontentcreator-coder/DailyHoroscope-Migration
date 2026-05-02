@@ -558,6 +558,9 @@ def _condition_matches(condition: dict[str, Any], facts: ChartFacts) -> bool:
     if condition_type == "dasha_period":
         planet = normalize_planet_name(condition.get("dasha_lord"))
         return str(condition.get("level")) in facts.dasha_levels.get(planet or "", set())
+    if condition_type == "yoga_combination":
+        from ke_yoga_evaluator import evaluate_yoga_check
+        return evaluate_yoga_check(condition, facts).matched
     if condition_type == "composite":
         sub_conditions = condition.get("sub_conditions") or []
         operator = str(condition.get("operator") or "and").lower()
