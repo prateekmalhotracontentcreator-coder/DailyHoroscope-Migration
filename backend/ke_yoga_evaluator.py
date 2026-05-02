@@ -114,6 +114,33 @@ DEBILITATION_SIGNS = {
     "Venus": "Virgo",
     "Saturn": "Aries",
 }
+VIMSHOPAKA_TIERS = {
+    2: "Parijatamsa",
+    3: "Uttamamsa",
+    4: "Gopuramsa",
+    5: "Simhasanamsa",
+    6: "Paravatamsa",
+    7: "Devalokamsa",
+    8: "Suralokamsa",
+    9: "Iravatamsa",
+    10: "Iravatamsa",
+}
+TIER_RANK = {
+    "Parijatamsa": 1,
+    "Uttamamsa": 2,
+    "Gopuramsa": 3,
+    "Simhasanamsa": 4,
+    "Paravatamsa": 5,
+    "Devalokamsa": 6,
+    "Suralokamsa": 7,
+    "Iravatamsa": 8,
+}
+TIER_ALIASES = {"Brahmalokamsa": "Suralokamsa"}
+PLANET_ROLE_HOUSES = {
+    "angular_lord": [10, 7, 4, 1],
+    "fifth_lord": [5],
+    "ninth_lord": [9],
+}
 
 
 @dataclass
@@ -320,6 +347,44 @@ def _planetary_payload(condition: dict[str, Any]) -> dict[str, Any]:
     payload.update(fallback)
     payload["planets_in_houses"] = [{"planet": planet, "house": house} for planet, house in fallback.get("planets_in_houses", [])]
     return payload
+
+
+def _canonical_tier(value: str | None) -> str | None:
+    if not value:
+        return None
+    return TIER_ALIASES.get(value, value)
+
+
+def _role_candidates(facts: ChartFacts, role: str) -> list[tuple[int, str]]:
+    candidates: list[tuple[int, str]] = []
+    for house in PLANET_ROLE_HOUSES.get(role, []):
+        planet = facts.house_lords.get(house)
+        if planet:
+            candidates.append((house, planet))
+    return candidates
+
+
+def _tier_matches(actual_tier: str | None, required_tier: str | None) -> bool:
+    actual_rank = TIER_RANK.get(_canonical_tier(actual_tier), 0)
+    required_rank = TIER_RANK.get(_canonical_tier(required_tier), 0)
+    return actual_rank >= required_rank > 0
+
+
+def _eval_varga_dignity_tier(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
+    payload = _yoga_check_payload(condition)
+    role = str(payload.get("planet_role") or "")
+    required_tier = _canonical_tier(str(payload.get("required_tier") or ""))
+    candidates = _role_candidates(facts, role)
+    if not candidates:
+        return _result("varga_dignity_tier", False, ["House lords not available in ChartFacts"])
+    evidence, matched = [], False
+    for house, planet in candidates:
+        actual_tier = _canonical_tier((facts.varga_dignities.get(planet) or {}).get("tier"))
+        ok = _tier_matches(actual_tier, required_tier)
+        evidence.append(f"House {house} lord {planet}: tier {actual_tier or 'None'} vs required {required_tier or 'None'} -> {'matched' if ok else 'not matched'}")
+        matched = matched or ok
+    confidence = 1.0 if matched else 0.0
+    return _result("varga_dignity_tier", matched, evidence, confidence)
 
 
 def _eval_planet_in_house(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
@@ -563,4 +628,5 @@ EVALUATOR_DISPATCH: dict[str, Callable[[dict[str, Any], ChartFacts], YogaCheckRe
     "kemadruma_check": _eval_kemadruma_check,
     "moon_from_sun_position": _eval_moon_from_sun_position,
     "dosha": _eval_dosha,
+    "varga_dignity_tier": _eval_varga_dignity_tier,
 }

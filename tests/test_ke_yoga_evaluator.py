@@ -36,6 +36,8 @@ def make_facts(
     lagna_sign: str = "Aries",
     aspects: dict[str, set[int]] | None = None,
     aspected_by: dict[int, set[str]] | None = None,
+    house_lords: dict[int, str] | None = None,
+    varga_dignities: dict[str, dict] | None = None,
 ) -> ChartFacts:
     planet_positions = {"Lagna": {"house": 1, "sign": lagna_sign, "dignity": "", "retrograde": False}}
     house_planets: dict[int, list[str]] = defaultdict(list)
@@ -60,11 +62,12 @@ def make_facts(
     return ChartFacts(
         planet_positions=planet_positions,
         house_planets=house_planets,
-        house_lords={},
+        house_lords=house_lords or {},
         yogas=set(),
         dasha_levels=defaultdict(set),
         aspect_targets=aspect_targets,
         aspected_by=reverse_aspects,
+        varga_dignities=varga_dignities or {},
     )
 
 
@@ -481,3 +484,75 @@ def test_condition_matches_dispatches_yoga_combination() -> None:
         "yoga_check": {"type": "planetary_combination", "checkable": True},
     }
     assert _condition_matches(condition, facts) is True
+
+
+# ---------------------------------------------------------------------------
+# varga_dignity_tier (Brief D — evaluator #17)
+# ---------------------------------------------------------------------------
+
+@pytest.mark.parametrize(
+    ("facts", "condition", "expected"),
+    [
+        (
+            # angular_lord is Jupiter (house 10), tier Iravatamsa ≥ required Devalokamsa → match
+            make_facts(
+                {"Jupiter": (10, "Capricorn")},
+                house_lords={10: "Jupiter"},
+                varga_dignities={"Jupiter": {"count": 9, "tier": "Iravatamsa"}},
+            ),
+            {
+                "yoga_check": {
+                    "type": "varga_dignity_tier",
+                    "checkable": True,
+                    "planet_role": "angular_lord",
+                    "required_tier": "Devalokamsa",
+                    "blockers": [],
+                },
+            },
+            True,
+        ),
+        (
+            # angular_lord is Saturn (house 10), tier Parijatamsa < required Gopuramsa → no match
+            make_facts(
+                {"Saturn": (10, "Capricorn")},
+                house_lords={10: "Saturn"},
+                varga_dignities={"Saturn": {"count": 2, "tier": "Parijatamsa"}},
+            ),
+            {
+                "yoga_check": {
+                    "type": "varga_dignity_tier",
+                    "checkable": True,
+                    "planet_role": "angular_lord",
+                    "required_tier": "Gopuramsa",
+                    "blockers": [],
+                },
+            },
+            False,
+        ),
+        (
+            # no house lords populated → evaluator returns False with explanation
+            make_facts(
+                {},
+                house_lords={},
+                varga_dignities={},
+            ),
+            {
+                "yoga_check": {
+                    "type": "varga_dignity_tier",
+                    "checkable": True,
+                    "planet_role": "angular_lord",
+                    "required_tier": "Gopuramsa",
+                    "blockers": [],
+                },
+            },
+            False,
+        ),
+    ],
+    ids=[
+        "varga_dignity_tier_positive",
+        "varga_dignity_tier_negative",
+        "varga_dignity_tier_no_lords",
+    ],
+)
+def test_varga_dignity_tier(facts: ChartFacts, condition: dict, expected: bool) -> None:
+    assert evaluate_yoga_check(condition, facts).matched is expected
