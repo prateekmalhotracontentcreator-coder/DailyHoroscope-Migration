@@ -47,7 +47,7 @@ SUPPORTED_CHARTS: tuple[ChartCode, ...] = (
     "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10",
     "D11", "D12", "D16", "D20", "D24", "D27", "D30", "D40", "D45", "D60",
 )
-ENABLED_CHARTS = {"D1", "D9", "D10"}
+ENABLED_CHARTS = {"D1", "D2", "D3", "D7", "D9", "D10", "D12", "D16", "D30", "D60"}
 DEFAULT_LAYER_CODES: tuple[LayerCode, ...] = (
     "graha",
     "upagraha",
@@ -475,6 +475,17 @@ def _divisional_sign(longitude: float, chart_code: ChartCode) -> str | None:
     sign = _sign_from_longitude(longitude)
     sign_index = SIGN_ORDER.index(sign)
     degree = _normalize_longitude(longitude) % 30
+    if chart_code == "D2":
+        if _is_odd_sign(sign):
+            return "Leo" if degree < 15 else "Cancer"
+        return "Cancer" if degree < 15 else "Leo"
+    if chart_code == "D3":
+        part = min(2, int(degree / 10))
+        return SIGN_ORDER[(sign_index + (part * 4)) % 12]
+    if chart_code == "D7":
+        part = min(6, int(degree / (30 / 7)))
+        start = sign_index if _is_odd_sign(sign) else (sign_index + 6) % 12
+        return SIGN_ORDER[(start + part) % 12]
     if chart_code == "D9":
         part = min(8, int(degree / (30 / 9)))
         if sign in {"Aries", "Cancer", "Libra", "Capricorn"}:
@@ -486,6 +497,42 @@ def _divisional_sign(longitude: float, chart_code: ChartCode) -> str | None:
         return SIGN_ORDER[(start + part) % 12]
     if chart_code == "D10":
         part = min(9, int(degree / 3))
+        start = sign_index if _is_odd_sign(sign) else (sign_index + 8) % 12
+        return SIGN_ORDER[(start + part) % 12]
+    if chart_code == "D12":
+        part = min(11, int(degree / 2.5))
+        return SIGN_ORDER[(sign_index + part) % 12]
+    if chart_code == "D16":
+        part = min(15, int(degree / 1.875))
+        if sign in {"Aries", "Cancer", "Libra", "Capricorn"}:
+            start = 0
+        elif sign in {"Taurus", "Leo", "Scorpio", "Aquarius"}:
+            start = 4
+        else:
+            start = 8
+        return SIGN_ORDER[(start + part) % 12]
+    if chart_code == "D30":
+        if _is_odd_sign(sign):
+            if degree < 5:
+                return "Aries"
+            if degree < 10:
+                return "Aquarius"
+            if degree < 18:
+                return "Sagittarius"
+            if degree < 25:
+                return "Gemini"
+            return "Libra"
+        if degree < 5:
+            return "Taurus"
+        if degree < 12:
+            return "Virgo"
+        if degree < 20:
+            return "Pisces"
+        if degree < 25:
+            return "Capricorn"
+        return "Scorpio"
+    if chart_code == "D60":
+        part = min(59, int(degree / 0.5))
         start = sign_index if _is_odd_sign(sign) else (sign_index + 8) % 12
         return SIGN_ORDER[(start + part) % 12]
     return None
