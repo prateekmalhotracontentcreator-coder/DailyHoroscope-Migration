@@ -192,6 +192,28 @@ ARC_ANGEL_DOMAIN_LABELS = {
 NATURAL_BENEFICS: frozenset[str] = frozenset({"Jupiter", "Venus", "Mercury", "Moon"})
 NATURAL_MALEFICS: frozenset[str] = frozenset({"Saturn", "Mars", "Rahu", "Ketu", "Sun"})
 
+MOOLATRIKONA_SIGNS = {
+    "Sun": "Leo",
+    "Moon": "Taurus",
+    "Mars": "Aries",
+    "Mercury": "Virgo",
+    "Jupiter": "Sagittarius",
+    "Venus": "Libra",
+    "Saturn": "Aquarius",
+}
+DASA_VARGA = ["D1", "D2", "D3", "D7", "D9", "D10", "D12", "D16", "D30", "D60"]
+VIMSHOPAKA_TIERS = {
+    2: "Parijatamsa",
+    3: "Uttamamsa",
+    4: "Gopuramsa",
+    5: "Simhasanamsa",
+    6: "Paravatamsa",
+    7: "Devalokamsa",
+    8: "Suralokamsa",
+    9: "Iravatamsa",
+    10: "Iravatamsa",
+}
+
 # Phase 1 baseline confidence (birth data only, no questionnaire, no module runs).
 ARC_ANGEL_BASELINE_CONFIDENCE_PCT: int = 42
 
@@ -287,6 +309,7 @@ class ChartFacts:
     dasha_levels: dict[str, set[str]] = field(default_factory=lambda: defaultdict(set))
     aspect_targets: dict[str, set[int]] = field(default_factory=lambda: defaultdict(set))
     aspected_by: dict[int, set[str]] = field(default_factory=lambda: defaultdict(set))
+    varga_dignities: dict[str, dict[str, Any]] = field(default_factory=dict)
 
 
 @dataclass
@@ -332,6 +355,7 @@ def extract_chart_facts(chart: dict[str, Any]) -> ChartFacts:
     _populate_yoga_facts(chart, facts)
     _populate_dasha_facts(chart, facts)
     _populate_aspect_facts(facts)
+    _populate_varga_dignity_facts(chart, facts)
     return facts
 
 
@@ -438,6 +462,46 @@ def _populate_dasha_facts(chart: dict[str, Any], facts: ChartFacts) -> None:
         if planet:
             facts.dasha_levels[planet].add(level_name)
             facts.keys.add(canonical_key("dasha_period", planet, level_name))
+
+
+def _planet_longitude(chart: dict[str, Any], planet: str) -> float | None:
+    payload = (chart.get("planets") or {}).get(planet) or {}
+    longitude = payload.get("longitude")
+    if isinstance(longitude, (int, float)):
+        return float(longitude)
+    d1_chart = ((chart.get("charts") or {}).get("D1") or {})
+    d1_planet = d1_chart.get(planet) or {}
+    longitude = d1_planet.get("longitude")
+    if isinstance(longitude, (int, float)):
+        return float(longitude)
+    for graha in d1_chart.get("grahas", []):
+        name = normalize_planet_name(graha.get("name") or graha.get("code"))
+        if name == planet and isinstance(graha.get("longitude"), (int, float)):
+            return float(graha["longitude"])
+    return None
+
+
+def _populate_varga_dignity_facts(chart: dict[str, Any], facts: ChartFacts) -> None:
+    from kundali_router import EXALTATION_SIGNS, _divisional_sign
+    from vedic_calculator import SIGN_LORDS
+
+    for planet in PLANETS[:7]:
+        longitude = _planet_longitude(chart, planet)
+        if longitude is None:
+            facts.varga_dignities[planet] = {"count": 0, "tier": None}
+            continue
+        count = 0
+        for chart_code in DASA_VARGA:
+            div_sign = _divisional_sign(longitude, chart_code)
+            if div_sign == EXALTATION_SIGNS.get(planet):
+                count += 1
+                continue
+            if SIGN_LORDS.get(div_sign) == planet:
+                count += 1
+                continue
+            if div_sign == MOOLATRIKONA_SIGNS.get(planet):
+                count += 1
+        facts.varga_dignities[planet] = {"count": count, "tier": VIMSHOPAKA_TIERS.get(count)}
 
 
 def _populate_aspect_facts(facts: ChartFacts) -> None:
