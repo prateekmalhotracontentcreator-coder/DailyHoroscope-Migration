@@ -2391,3 +2391,51 @@ Single-pass — zero structural failures, zero contradictions.
 3. **Rule 007 three-pivot OR structure kept as one rule.** Army chief yoga references AK, Arudha Lagna, OR natal ascendant as equivalent pivots. Kept as single rule; Phase 2 splits into 3 sub-rules once AK + AL are available.
 
 ---
+
+## KE Phase 2 — Evaluator + Migration Log (3 May 2026)
+
+### varga_dignity_tier — Evaluator #17 (Brief D)
+
+**Commit:** `587ed74`
+**Files:** `backend/ke_yoga_evaluator.py`, `backend/scripts/migrate_ch41_varga_checkable.py`, `tests/test_ke_yoga_evaluator.py`
+
+**What it does:** Checks whether the lord of a specific house role (angular_lord / fifth_lord / ninth_lord) has achieved a Vimshopaka Bala tier at or above the required threshold across 10 Dasa Varga charts (D1–D60).
+
+**Tier rank order (ascending):** Parijatamsa(1) → Uttamamsa(2) → Gopuramsa(3) → Simhasanamsa(4) → Paravatamsa(5) → Devalokamsa(6) → Suralokamsa(7) → Iravatamsa(8)
+
+**TIER_ALIASES:** `{"Brahmalokamsa": "Suralokamsa"}` — BPHS uses "Brahmalokamsa" for tier 8; deployed runtime uses "Suralokamsa". Alias applied in both evaluator and migration script.
+
+**Migration:** `migrate_ch41_varga_checkable.py` updates 24 Ch 41 rules (`angular_lord_varga`, `fifth_lord_varga`, `ninth_lord_varga` groups) to `checkable=True`. Rules 041–049 (`rajayoga_varga`) excluded — need aspect/exchange detection first (Blocker A).
+
+**Test count:** 37 total (3 new for varga_dignity_tier: positive, negative, no-lords edge case).
+
+---
+
+### TBA Ch 15 Triage (3 May 2026)
+
+**Batch:** `tba-ch15-v1-20260424` | **Source:** A Text-Book of Astrology, Ch 15
+**Schema:** `condition.type = "planet_occupation"` — no `yoga_check` field. Different schema from BPHS Ch 41.
+
+**Actions taken:**
+- 37 rules bulk-rejected (`truncated_text` × 34, `unverifiable_claim` × 3) — tag: `validation.auto_rejected_reason = "structural_failure_bulk"`
+- 294 remaining flagged (internal contradictions, vague groupings, sign mismatches) — left for co-founder review
+
+**Final state:** `auto_approved=503, pending_human_review=604, flagged=294, rejected=62`
+
+**Ch 49, 50, 51:** Intentionally excluded by Temple Team decision. Do not ingest unless co-founder instructs.
+
+---
+
+### Dasha Chapters Ch 47–60 Triage (3 May 2026)
+
+**Ch 52 duplicate resolution:** Old batch `bphs-ch52-dasha-20260416` (93 compound-condition rules) deleted after confirming new batch `bphs-ch52-dasha-20260421` (139 granular-split rules) is the correct production version. Status bug fixed first: 93 rules had `pending_review` → corrected to `pending_human_review` before deletion.
+
+**Ch 52 first validation pass:** 109 rules reset to `pending_review` → validator run → `auto_approved=87 (80%), pending_human_review=19, flagged=3, contradictions=1 pair`. Full batch: `auto_approved=113, pending_human_review=19, flagged=7, total=139`.
+
+**Ch 59 old batch:** `bphs-ch59-dasha-20260419` — 0 documents (already cleaned up). No action.
+
+**Structural failures bulk-rejected (30 rules):** Tag `structural_failure_bulk`. Affected: Ch 47 (1), Ch 53 (2), Ch 53p (1), Ch 55 (4), Ch 56 (7), Ch 57 (3), Ch 58 (6), Ch 60 (6).
+
+**Validator status:** All 12 batches validated. `pending_human_review` rules in Ch 47, 48, 53, 54–60 are `spot_check` verdicts from April ingest — not unprocessed. No further validator runs needed.
+
+**Final totals:** `approved=1,092 (49%), pending=582 (26%), flagged=190 (9%), rejected=30 (1%), total=2,227`
