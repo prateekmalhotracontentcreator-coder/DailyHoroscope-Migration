@@ -88,6 +88,117 @@ SIGN_ELEMENTS = {
     'Cancer': 'Water', 'Scorpio': 'Water', 'Pisces': 'Water',
 }
 
+# ── Planetary dignity tables ──────────────────────────────────────────────────
+
+# Exaltation: sign + degree of maximum exaltation
+EXALTATION_DATA = {
+    'Sun':     ('Aries',       10),
+    'Moon':    ('Taurus',       3),
+    'Mars':    ('Capricorn',   28),
+    'Mercury': ('Virgo',       15),
+    'Jupiter': ('Cancer',       5),
+    'Venus':   ('Pisces',      27),
+    'Saturn':  ('Libra',       20),
+}
+
+# Debilitation sign = 7th from exaltation (opposite)
+DEBILITATION_SIGNS = {
+    planet: SIGN_ORDER[(SIGN_ORDER.index(sign) + 6) % 12]
+    for planet, (sign, _) in EXALTATION_DATA.items()
+}
+
+# Moolatrikona: sign, start degree, end degree
+MOOLATRIKONA_DATA = {
+    'Sun':     ('Leo',          0, 20),
+    'Moon':    ('Taurus',       3, 30),
+    'Mars':    ('Aries',        0, 12),
+    'Mercury': ('Virgo',       16, 20),
+    'Jupiter': ('Sagittarius',  0, 10),
+    'Venus':   ('Libra',        0, 15),
+    'Saturn':  ('Aquarius',     0, 20),
+}
+
+# Own signs per planet (Moolatrikona sign always included)
+OWN_SIGNS = {
+    'Sun':     ['Leo'],
+    'Moon':    ['Cancer'],
+    'Mars':    ['Aries', 'Scorpio'],
+    'Mercury': ['Gemini', 'Virgo'],
+    'Jupiter': ['Sagittarius', 'Pisces'],
+    'Venus':   ['Taurus', 'Libra'],
+    'Saturn':  ['Capricorn', 'Aquarius'],
+}
+
+# Parashari natural friendship
+_FRIENDS = {
+    'Sun':     ['Moon', 'Mars', 'Jupiter'],
+    'Moon':    ['Sun', 'Mercury'],
+    'Mars':    ['Sun', 'Moon', 'Jupiter'],
+    'Mercury': ['Sun', 'Venus'],
+    'Jupiter': ['Sun', 'Moon', 'Mars'],
+    'Venus':   ['Mercury', 'Saturn'],
+    'Saturn':  ['Mercury', 'Venus'],
+}
+_ENEMIES = {
+    'Sun':     ['Venus', 'Saturn'],
+    'Moon':    [],
+    'Mars':    ['Mercury'],
+    'Mercury': ['Moon'],
+    'Jupiter': ['Mercury', 'Venus'],
+    'Venus':   ['Sun', 'Moon'],
+    'Saturn':  ['Sun', 'Moon', 'Mars'],
+}
+
+# Combustion orbs in degrees (Parashari — direct motion)
+COMBUSTION_ORBS = {
+    'Moon':    12,
+    'Mars':    17,
+    'Mercury': 14,
+    'Jupiter': 11,
+    'Venus':   10,
+    'Saturn':  15,
+}
+
+
+def get_planet_dignity(planet: str, sign: str, degree: float) -> str:
+    """Return Parashari dignity: exalted / moolatrikona / own_sign /
+    friendly / neutral / enemy / debilitated.
+    Nodes and unrecognised planets return 'neutral'."""
+    if planet not in EXALTATION_DATA:
+        return 'neutral'
+    # Exaltation
+    if sign == EXALTATION_DATA[planet][0]:
+        return 'exalted'
+    # Debilitation
+    if sign == DEBILITATION_SIGNS[planet]:
+        return 'debilitated'
+    # Moolatrikona
+    mt_sign, mt_start, mt_end = MOOLATRIKONA_DATA[planet]
+    if sign == mt_sign and mt_start <= degree <= mt_end:
+        return 'moolatrikona'
+    # Own sign (non-Moolatrikona portion)
+    if sign in OWN_SIGNS.get(planet, []):
+        return 'own_sign'
+    # Friendship with sign lord
+    sign_lord = SIGN_LORDS.get(sign, '')
+    if sign_lord in _FRIENDS.get(planet, []):
+        return 'friendly'
+    if sign_lord in _ENEMIES.get(planet, []):
+        return 'enemy'
+    return 'neutral'
+
+
+def is_planet_combust(planet: str, planet_lon: float, sun_lon: float) -> bool:
+    """True when planet is within its combustion orb of the Sun.
+    Sun, Rahu, and Ketu are never combust."""
+    if planet not in COMBUSTION_ORBS:
+        return False
+    orb = COMBUSTION_ORBS[planet]
+    diff = abs(planet_lon - sun_lon) % 360
+    if diff > 180:
+        diff = 360 - diff
+    return diff <= orb
+
 HOUSE_NAMES = {
     1: 'Lagna (Self, Personality, Body)',
     2: 'Dhana (Wealth, Family, Speech)',
@@ -426,6 +537,9 @@ def calculate_vedic_chart(
         lagna_sign = _lon_to_sign(asc_lon)
         lagna_degree = round(asc_lon % 30, 2)
 
+        # Sun longitude computed first — needed for combustion checks
+        sun_lon, _ = _calc_planet(jd, swe.SUN)
+
         planets = {}
         for pid in PLANET_IDS:
             if pid == const.SOUTH_NODE:
@@ -437,14 +551,19 @@ def calculate_vedic_chart(
                 planet_lon, speed = _calc_planet(jd, PLANET_SWE_IDS[pid])
 
             planet_sign = _lon_to_sign(planet_lon)
+            degree_in_sign = planet_lon % 30
             house = get_house_number(planet_sign, lagna_sign)
+            # Plain name (without Sanskrit suffix) for dignity/combustion lookups
+            plain_name = PLANET_NAMES[pid].split('(')[0].strip()
             planets[PLANET_NAMES[pid]] = {
                 'sign': planet_sign,
                 'sign_vedic': SIGN_NAMES.get(planet_sign, planet_sign),
-                'degree': round(planet_lon % 30, 2),
+                'degree': round(degree_in_sign, 2),
                 'house': house,
                 'lord_of_sign': SIGN_LORDS.get(planet_sign, ''),
                 'retrograde': speed < 0,
+                'dignity': get_planet_dignity(plain_name, planet_sign, degree_in_sign),
+                'combust': is_planet_combust(plain_name, planet_lon, sun_lon),
             }
 
         moon_lon, _ = _calc_planet(jd, swe.MOON)

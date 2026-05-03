@@ -38,16 +38,20 @@ def make_facts(
     aspected_by: dict[int, set[str]] | None = None,
     house_lords: dict[int, str] | None = None,
     varga_dignities: dict[str, dict] | None = None,
+    dignities: dict[str, str] | None = None,
+    combusts: dict[str, bool] | None = None,
+    retrogrades: dict[str, bool] | None = None,
 ) -> ChartFacts:
-    planet_positions = {"Lagna": {"house": 1, "sign": lagna_sign, "dignity": "", "retrograde": False}}
+    planet_positions = {"Lagna": {"house": 1, "sign": lagna_sign, "dignity": "", "retrograde": False, "combust": False}}
     house_planets: dict[int, list[str]] = defaultdict(list)
     for planet, (house, sign) in placements.items():
         planet_positions[planet] = {
             "house": house,
             "sign": sign,
             "nakshatra": None,
-            "dignity": "",
-            "retrograde": False,
+            "dignity": (dignities or {}).get(planet, ""),
+            "retrograde": (retrogrades or {}).get(planet, False),
+            "combust": (combusts or {}).get(planet, False),
         }
         house_planets[house].append(planet)
     aspect_targets = defaultdict(set)
@@ -556,3 +560,179 @@ def test_condition_matches_dispatches_yoga_combination() -> None:
 )
 def test_varga_dignity_tier(facts: ChartFacts, condition: dict, expected: bool) -> None:
     assert evaluate_yoga_check(condition, facts).matched is expected
+
+
+# ── Dignity tests ─────────────────────────────────────────────────────────────
+
+@pytest.mark.parametrize(
+    "facts, condition, expected",
+    [
+        (
+            # Sun in Aries → exalted
+            make_facts({"Sun": (1, "Aries")}, dignities={"Sun": "exalted"}),
+            {"type": "planet_dignity", "planet": "Sun", "dignity": "exalted"},
+            True,
+        ),
+        (
+            # Saturn in Aries → debilitated
+            make_facts({"Saturn": (1, "Aries")}, dignities={"Saturn": "debilitated"}),
+            {"type": "planet_dignity", "planet": "Saturn", "dignity": "debilitated"},
+            True,
+        ),
+        (
+            # Jupiter in Cancer (exalted) does NOT match "own_sign"
+            make_facts({"Jupiter": (4, "Cancer")}, dignities={"Jupiter": "exalted"}),
+            {"type": "planet_dignity", "planet": "Jupiter", "dignity": "own_sign"},
+            False,
+        ),
+        (
+            # Mercury in Virgo → moolatrikona
+            make_facts({"Mercury": (6, "Virgo")}, dignities={"Mercury": "moolatrikona"}),
+            {"type": "planet_dignity", "planet": "Mercury", "dignity": "moolatrikona"},
+            True,
+        ),
+    ],
+    ids=["dignity_exalted", "dignity_debilitated", "dignity_mismatch", "dignity_moolatrikona"],
+)
+def test_planet_dignity(_condition_matches_import, facts: ChartFacts, condition: dict, expected: bool) -> None:
+    assert _condition_matches(condition, facts) is expected
+
+
+# ── Combust tests ─────────────────────────────────────────────────────────────
+
+@pytest.mark.parametrize(
+    "facts, condition, expected",
+    [
+        (
+            # Mars combust → matches planet_combust condition
+            make_facts({"Mars": (1, "Aries")}, combusts={"Mars": True}),
+            {"type": "planet_combust", "planet": "Mars"},
+            True,
+        ),
+        (
+            # Jupiter not combust → does not match
+            make_facts({"Jupiter": (5, "Leo")}, combusts={"Jupiter": False}),
+            {"type": "planet_combust", "planet": "Jupiter"},
+            False,
+        ),
+        (
+            # combust flag absent → defaults to False → no match
+            make_facts({"Venus": (7, "Libra")}),
+            {"type": "planet_combust", "planet": "Venus"},
+            False,
+        ),
+    ],
+    ids=["combust_positive", "combust_negative", "combust_absent"],
+)
+def test_planet_combust(_condition_matches_import, facts: ChartFacts, condition: dict, expected: bool) -> None:
+    assert _condition_matches(condition, facts) is expected
+
+
+# ── Dignity + combustion pure-logic unit tests ───────────────────────────────
+# These replicate the logic from vedic_calculator.get_planet_dignity /
+# is_planet_combust inline — avoiding the flatlib + pyswisseph module-level
+# imports that make vedic_calculator.py hard to import in a stub environment.
+
+_SIGN_ORDER = [
+    'Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo',
+    'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'
+]
+_EXALTATION = {
+    'Sun': ('Aries', 10), 'Moon': ('Taurus', 3), 'Mars': ('Capricorn', 28),
+    'Mercury': ('Virgo', 15), 'Jupiter': ('Cancer', 5),
+    'Venus': ('Pisces', 27), 'Saturn': ('Libra', 20),
+}
+_DEBILITATION_SIGNS = {
+    p: _SIGN_ORDER[(_SIGN_ORDER.index(s) + 6) % 12]
+    for p, (s, _) in _EXALTATION.items()
+}
+_MOOLATRIKONA = {
+    'Sun': ('Leo', 0, 20), 'Moon': ('Taurus', 3, 30), 'Mars': ('Aries', 0, 12),
+    'Mercury': ('Virgo', 16, 20), 'Jupiter': ('Sagittarius', 0, 10),
+    'Venus': ('Libra', 0, 15), 'Saturn': ('Aquarius', 0, 20),
+}
+_OWN_SIGNS = {
+    'Sun': ['Leo'], 'Moon': ['Cancer'], 'Mars': ['Aries', 'Scorpio'],
+    'Mercury': ['Gemini', 'Virgo'], 'Jupiter': ['Sagittarius', 'Pisces'],
+    'Venus': ['Taurus', 'Libra'], 'Saturn': ['Capricorn', 'Aquarius'],
+}
+_FRIENDS = {
+    'Sun': ['Moon', 'Mars', 'Jupiter'], 'Moon': ['Sun', 'Mercury'],
+    'Mars': ['Sun', 'Moon', 'Jupiter'], 'Mercury': ['Sun', 'Venus'],
+    'Jupiter': ['Sun', 'Moon', 'Mars'], 'Venus': ['Mercury', 'Saturn'],
+    'Saturn': ['Mercury', 'Venus'],
+}
+_ENEMIES = {
+    'Sun': ['Venus', 'Saturn'], 'Moon': [], 'Mars': ['Mercury'],
+    'Mercury': ['Moon'], 'Jupiter': ['Mercury', 'Venus'],
+    'Venus': ['Sun', 'Moon'], 'Saturn': ['Sun', 'Moon', 'Mars'],
+}
+_SIGN_LORDS = {
+    'Aries': 'Mars', 'Taurus': 'Venus', 'Gemini': 'Mercury', 'Cancer': 'Moon',
+    'Leo': 'Sun', 'Virgo': 'Mercury', 'Libra': 'Venus', 'Scorpio': 'Mars',
+    'Sagittarius': 'Jupiter', 'Capricorn': 'Saturn', 'Aquarius': 'Saturn', 'Pisces': 'Jupiter',
+}
+_COMBUSTION_ORBS = {
+    'Moon': 12, 'Mars': 17, 'Mercury': 14, 'Jupiter': 11, 'Venus': 10, 'Saturn': 15,
+}
+
+
+def _dignity(planet: str, sign: str, degree: float) -> str:
+    if planet not in _EXALTATION:
+        return 'neutral'
+    if sign == _EXALTATION[planet][0]:
+        return 'exalted'
+    if sign == _DEBILITATION_SIGNS[planet]:
+        return 'debilitated'
+    mt_sign, mt_start, mt_end = _MOOLATRIKONA[planet]
+    if sign == mt_sign and mt_start <= degree <= mt_end:
+        return 'moolatrikona'
+    if sign in _OWN_SIGNS.get(planet, []):
+        return 'own_sign'
+    lord = _SIGN_LORDS.get(sign, '')
+    if lord in _FRIENDS.get(planet, []):
+        return 'friendly'
+    if lord in _ENEMIES.get(planet, []):
+        return 'enemy'
+    return 'neutral'
+
+
+def _combust(planet: str, planet_lon: float, sun_lon: float) -> bool:
+    if planet not in _COMBUSTION_ORBS:
+        return False
+    diff = abs(planet_lon - sun_lon) % 360
+    if diff > 180:
+        diff = 360 - diff
+    return diff <= _COMBUSTION_ORBS[planet]
+
+
+def test_dignity_computation_unit() -> None:
+    assert _dignity("Sun",     "Aries",       10) == "exalted"
+    assert _dignity("Moon",    "Taurus",       3) == "exalted"
+    assert _dignity("Mars",    "Capricorn",   28) == "exalted"
+    assert _dignity("Jupiter", "Capricorn",    5) == "debilitated"
+    assert _dignity("Saturn",  "Aries",       20) == "debilitated"
+    assert _dignity("Sun",     "Leo",         10) == "moolatrikona"
+    assert _dignity("Saturn",  "Aquarius",    10) == "moolatrikona"
+    assert _dignity("Mars",    "Scorpio",     20) == "own_sign"
+    assert _dignity("Jupiter", "Pisces",      15) == "own_sign"
+    assert _dignity("Sun",     "Sagittarius", 10) == "friendly"   # Jupiter's sign
+    assert _dignity("Saturn",  "Gemini",      10) == "friendly"   # Mercury's sign
+    assert _dignity("Sun",     "Libra",       15) == "debilitated"
+    assert _dignity("Moon",    "Scorpio",      5) == "debilitated"
+    assert _dignity("Rahu",    "Taurus",      10) == "neutral"    # nodes → neutral
+
+
+def test_combustion_computation_unit() -> None:
+    assert not _combust("Sun",   0.0,   0.0)    # Sun never combust
+    assert not _combust("Rahu",  10.0,  10.0)   # nodes exempt
+    assert _combust("Mars",     15.0,   0.0)    # within 17° orb
+    assert _combust("Mars",     17.0,   0.0)    # exactly at orb (inclusive)
+    assert not _combust("Mars", 18.0,   0.0)    # just outside orb
+    assert _combust("Saturn",  355.0,   5.0)    # across 0°/360° boundary, diff=10°
+
+
+# fixture alias so dignity/combust tests can import _condition_matches
+@pytest.fixture
+def _condition_matches_import():
+    return None

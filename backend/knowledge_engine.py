@@ -349,6 +349,8 @@ def extract_chart_facts(chart: dict[str, Any]) -> ChartFacts:
             facts.keys.add(canonical_key("planet_dignity", planet, dignity))
         if retrograde:
             facts.keys.add(canonical_key("planet_retrograde", planet, True))
+        if bool(payload.get("combust")):
+            facts.keys.add(canonical_key("planet_combust", planet, True))
 
     _populate_conjunction_facts(facts)
     _populate_house_lord_facts(chart, facts)
@@ -373,6 +375,7 @@ def _extract_planet_positions(chart: dict[str, Any]) -> dict[str, dict[str, Any]
                 "nakshatra": normalize_nakshatra_name(payload.get("nakshatra") if isinstance(payload.get("nakshatra"), str) else (payload.get("nakshatra") or {}).get("name")),
                 "retrograde": bool(payload.get("retrograde")),
                 "dignity": normalize_dignity(payload.get("dignity")),
+                "combust": bool(payload.get("combust")),
             }
 
     d1_chart = ((chart.get("charts") or {}).get("D1") or {})
@@ -387,6 +390,7 @@ def _extract_planet_positions(chart: dict[str, Any]) -> dict[str, dict[str, Any]
             "nakshatra": normalize_nakshatra_name(graha.get("nakshatra")),
             "retrograde": bool(graha.get("retrograde")),
             "dignity": normalize_dignity(graha.get("dignity")),
+            "combust": bool(graha.get("combust")),
         }
     return positions
 
@@ -545,6 +549,8 @@ def _condition_anchor_keys(condition: dict[str, Any]) -> set[str]:
         return {canonical_key(condition_type, normalize_planet_name(condition.get("planet")), normalize_dignity(condition.get("dignity")))}
     if condition_type == "planet_retrograde":
         return {canonical_key(condition_type, normalize_planet_name(condition.get("planet")), True)}
+    if condition_type == "planet_combust":
+        return {canonical_key(condition_type, normalize_planet_name(condition.get("planet")), True)}
     if condition_type == "house_lord_in_house":
         return {canonical_key(condition_type, condition.get("source_house"), condition.get("target_house"))}
     if condition_type == "yoga":
@@ -612,6 +618,9 @@ def _condition_matches(condition: dict[str, Any], facts: ChartFacts) -> bool:
     if condition_type == "planet_retrograde":
         planet = normalize_planet_name(condition.get("planet"))
         return bool((facts.planet_positions.get(planet or "") or {}).get("retrograde"))
+    if condition_type == "planet_combust":
+        planet = normalize_planet_name(condition.get("planet"))
+        return bool((facts.planet_positions.get(planet or "") or {}).get("combust"))
     if condition_type == "house_lord_in_house":
         lord = facts.house_lords.get(int(condition.get("source_house") or 0))
         if not lord:
