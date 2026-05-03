@@ -2439,3 +2439,52 @@ Single-pass — zero structural failures, zero contradictions.
 **Validator status:** All 12 batches validated. `pending_human_review` rules in Ch 47, 48, 53, 54–60 are `spot_check` verdicts from April ingest — not unprocessed. No further validator runs needed.
 
 **Final totals:** `approved=1,092 (49%), pending=582 (26%), flagged=190 (9%), rejected=30 (1%), total=2,227`
+
+---
+
+## BPHS Chapter 34 — Nature of Planets Due to Lordship (4 May 2026)
+
+**Batch:** `bphs-ch34-v1-20260503` | **Script:** `ingest_bphs_ch34_v1.py` | **Total:** 82 rules
+
+### Rule groups
+
+| Group | Count | Checkable | Notes |
+|---|---|---|---|
+| `lordship_principle` (LU 34.1–34.6) | 6 | 0 | Core engine rules — Kendradhipatya, trinal lordship, evil houses, Moolatrikona priority |
+| `general_principle` (LU 34.7–34.10) | 4 | 0 | Stalling logic, graduation scales, counterpart adversity, natural disposition graduation |
+| `rajayoga_definition` (LU 34.11–34.15) | 5 | **4** | Rajayoga triad, Yogakaraka, malefic gate (not checkable), evil-house obstruction, node trigger |
+| `lagna_planet_quality` (12 lagnas) | 67 | 0 | One rule per planet per lagna — needs `lagna_planet_quality` evaluator (Phase 3) |
+
+### Checkable rules (4 total — `planetary_combination` type)
+- **LU 34.11** Rajayoga Relationship Triad — conjunction branch immediately checkable
+- **LU 34.12** Single-Planet Yogakaraka — lagna lordship table lookup
+- **LU 34.14** Evil House Rajayoga Obstruction — set-membership check on lordship table
+- **LU 34.15** Node Rajayoga Trigger — node placement in Rajayoga lord's house
+
+All 4 use existing `planetary_combination` evaluator — no new evaluator needed.
+
+### Lagna planet quality coverage (67 rules)
+Aries=6, Taurus=5, Gemini=5, Cancer=5, Leo=7, Virgo=5, Libra=6, Scorpio=7, Sagittarius=4, Capricorn=5, Aquarius=5, Pisces=7.
+Not all 7 planets appear for every lagna — BPHS only classifies those with clear results. Missing planets for a lagna = quality not explicitly stated in Ch 34.
+
+### Post-validation content fixes (3 rules — `patch_ch34_content_fixes.py`)
+
+| Rule | Issue | Fix |
+|---|---|---|
+| `bphs-ch34-043` Moon for Leo — Killer | QUALITY_EFFECTS["killer"] claimed "lords 2nd or 7th" but Moon lords 12th for Leo | Custom effect: 12th lord adversarial designation, not classical Marak |
+| `bphs-ch34-056` Moon for Scorpio — Yogakaraka | QUALITY_EFFECTS["yogakaraka"] claimed "lords both angle + trine" but Moon lords only 9th | Custom effect: BPHS-specific Yogakaraka via pure 9th lordship |
+| `bphs-ch34-057` Sun for Scorpio — Yogakaraka | Same issue — Sun lords only 10th (angle only) | Custom effect: BPHS-specific Yogakaraka via pure 10th lordship |
+
+### Validator false-flag note
+15 rules remain flagged — 14 are **false truncation flags** by haiku validator. The stored text ends properly ("…during its Mahadasha and Antardasha periods.") and is complete. Validator incorrectly flagged rules where the first sentence was < 60 chars and the summary was ≤ 250 chars total. No rejection needed. All 15 go to co-founder review.
+
+### Final state
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 28 | 34% |
+| `pending_human_review` | 39 | 47% |
+| `flagged` | 15 | 18% |
+| **Total** | **82** | |
+
+By group: `lordship_principle` approved=1/pending=5 · `general_principle` approved=2/pending=2 · `rajayoga_definition` approved=3/pending=2 · `lagna_planet_quality` approved=22/pending=30/flagged=15
