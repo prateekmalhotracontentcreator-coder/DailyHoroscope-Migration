@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """
 EverydayHoroscope — Vedic Calculation Engine
 Proprietary IP of SkyHound Studios
@@ -298,7 +300,58 @@ def _setup_swe():
 
 _setup_swe()
 
-SWE_FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL
+SWE_FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL | swe.FLG_SPEED
+
+MEAN_DAILY_MOTION = {
+    'Sun': 0.9856,
+    'Moon': 13.1764,
+    'Mars': 0.5240,
+    'Mercury': 1.3833,
+    'Jupiter': 0.0831,
+    'Venus': 1.2000,
+    'Saturn': 0.0334,
+}
+
+NAISARGIKA_BALA = {
+    'Sun': 60.0,
+    'Moon': 51.43,
+    'Venus': 42.86,
+    'Jupiter': 34.29,
+    'Mercury': 25.71,
+    'Mars': 17.14,
+    'Saturn': 8.57,
+}
+
+MINIMUM_RUPAS = {
+    'Sun': 6.5,
+    'Moon': 6.0,
+    'Mars': 5.0,
+    'Mercury': 7.0,
+    'Jupiter': 6.5,
+    'Venus': 5.5,
+    'Saturn': 5.0,
+}
+
+DIG_BALA_HOUSE = {
+    'Sun': 10,
+    'Mars': 10,
+    'Mercury': 1,
+    'Jupiter': 1,
+    'Moon': 4,
+    'Venus': 4,
+    'Saturn': 7,
+}
+
+CLASSICAL_PLANETS = ('Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn')
+WEEKDAY_LORDS = ('Sun', 'Moon', 'Mars', 'Mercury', 'Jupiter', 'Venus', 'Saturn')
+CHALDEAN_SEQUENCE = ('Sun', 'Venus', 'Mercury', 'Moon', 'Saturn', 'Jupiter', 'Mars')
+DAY_PLANETS = {'Sun', 'Jupiter', 'Venus'}
+NIGHT_PLANETS = {'Moon', 'Mars', 'Saturn'}
+ODD_SIGN_PLANETS = {'Sun', 'Jupiter', 'Mars'}
+EVEN_SIGN_PLANETS = {'Moon', 'Venus'}
+KENDRA_HOUSES = {1, 4, 7, 10}
+SUCCEDENT_HOUSES = {2, 5, 8, 11}
+PARTIAL_ASPECT_HOUSES = {3, 4, 5, 8, 9, 10}
 
 
 def _parse_datetime_to_jd(date_of_birth: str, time_of_birth: str, timezone_offset: str) -> float:
@@ -333,6 +386,477 @@ def _calc_ascendant(jd: float, lat: float, lon: float) -> float:
     asc_tropical = ascmc[0]
     ayanamsa = swe.get_ayanamsa_ut(jd)
     return (asc_tropical - ayanamsa) % 360
+
+
+def _clamp(value: float, lower: float = 0.0, upper: float = 60.0) -> float:
+    """Clamp a float into the requested range."""
+    return max(lower, min(upper, value))
+
+
+def _round4(value: float) -> float:
+    """Round to four decimals for stable intermediate strength math."""
+    return round(value, 4)
+
+
+def _normalized_longitude(value: float) -> float:
+    """Wrap a longitude into the 0-360 range."""
+    return value % 360.0
+
+
+def _absolute_sign_longitude(sign: str, degree: float) -> float:
+    """Convert sign + intra-sign degree into absolute sidereal longitude."""
+    return _normalized_longitude((SIGN_ORDER.index(sign) * 30.0) + degree)
+
+
+def _shortest_arc_distance(a: float, b: float) -> float:
+    """Return the shortest separation between two longitudes."""
+    diff = abs(_normalized_longitude(a) - _normalized_longitude(b)) % 360.0
+    return min(diff, 360.0 - diff)
+
+
+def _is_odd_sign(sign: str) -> bool:
+    """True for odd zodiac signs with Aries treated as the first odd sign."""
+    return SIGN_ORDER.index(sign) % 2 == 0
+
+
+def _navamsa_sign(planet_lon: float) -> str:
+    """Return the navamsa sign using the commission's simplified D9 formula."""
+    sign_index = int(_normalized_longitude(planet_lon) // 30.0)
+    navamsa_position = int((planet_lon % 30.0) / (30.0 / 9.0))
+    d9_sign_index = (sign_index * 9 + navamsa_position) % 12
+    return SIGN_ORDER[d9_sign_index]
+
+
+def _planet_plain_name(display_name: str) -> str:
+    """Strip the Sanskrit suffix from display names like 'Sun (Surya)'."""
+    return display_name.split('(')[0].strip()
+
+
+def _planet_display_name(plain_name: str) -> str:
+    """Resolve the app's display key for a plain graha name."""
+    for display_name in PLANET_NAMES.values():
+        if _planet_plain_name(display_name) == plain_name:
+            return display_name
+    return plain_name
+
+
+def _get_planet_payload(planets: dict[str, dict], plain_name: str) -> dict:
+    """Fetch a planet payload whether the dict is keyed by plain or display names."""
+    if plain_name in planets:
+        return planets[plain_name]
+    return planets.get(_planet_display_name(plain_name), {})
+
+
+def _is_moolatrikona_position(planet: str, sign: str, degree: float) -> bool:
+    """True when a classical planet is inside its Moolatrikona span."""
+    if planet not in MOOLATRIKONA_DATA:
+        return False
+    mt_sign, mt_start, mt_end = MOOLATRIKONA_DATA[planet]
+    return sign == mt_sign and mt_start <= degree <= mt_end
+
+
+def _solar_day_start_jd(jd: float, lon: float) -> float:
+    """Approximate local midnight in UT using geographic longitude."""
+    solar_offset = lon / 360.0
+    local_jd = jd + solar_offset
+    return math.floor(local_jd - 0.5) + 0.5 - solar_offset
+
+
+def _solar_event_jd(jd_start: float, lat: float, lon: float, rsmi: int) -> float:
+    """Get the next sunrise or sunset after the given Julian Day."""
+    result = swe.rise_trans(
+        jd_start,
+        swe.SUN,
+        lon,
+        lat,
+        rsmi=rsmi | swe.BIT_DISC_CENTER | swe.BIT_NO_REFRACTION,
+        flag=swe.FLG_SWIEPH,
+    )
+    return result[1][0]
+
+
+def _day_night_context(jd: float, lat: float, lon: float) -> dict[str, float | bool]:
+    """Return sunrise/sunset anchors and whether the birth happened during daytime."""
+    day_start = _solar_day_start_jd(jd, lon)
+    sunrise_today = _solar_event_jd(day_start, lat, lon, swe.CALC_RISE)
+    sunset_today = _solar_event_jd(day_start, lat, lon, swe.CALC_SET)
+    sunrise_prev = _solar_event_jd(day_start - 1.0, lat, lon, swe.CALC_RISE)
+    sunset_prev = _solar_event_jd(day_start - 1.0, lat, lon, swe.CALC_SET)
+    sunrise_next = _solar_event_jd(day_start + 1.0, lat, lon, swe.CALC_RISE)
+
+    is_day = sunrise_today <= jd < sunset_today
+    if is_day:
+        period_start, period_end = sunrise_today, sunset_today
+        hora_anchor = sunrise_today
+    elif jd < sunrise_today:
+        period_start, period_end = sunset_prev, sunrise_today
+        hora_anchor = sunrise_prev
+    else:
+        period_start, period_end = sunset_today, sunrise_next
+        hora_anchor = sunrise_today
+
+    return {
+        'is_day': is_day,
+        'sunrise_today': sunrise_today,
+        'sunset_today': sunset_today,
+        'sunrise_prev': sunrise_prev,
+        'sunrise_next': sunrise_next,
+        'sunset_prev': sunset_prev,
+        'period_start': period_start,
+        'period_end': period_end,
+        'hora_anchor': hora_anchor,
+    }
+
+
+def _weekday_index_from_jd(jd: float, lon: float = 0.0) -> int:
+    """Return weekday index where 0=Sunday using local-solar adjustment."""
+    local_jd = jd + (lon / 360.0)
+    return int(local_jd + 1.5) % 7
+
+
+def _weekday_lord_from_jd(jd: float, lon: float = 0.0) -> str:
+    """Return the weekday lord for the supplied Julian Day."""
+    return WEEKDAY_LORDS[_weekday_index_from_jd(jd, lon)]
+
+
+def _signed_lunar_phase_angle(jd: float) -> float:
+    """Return Moon-Sun elongation folded into the [-180, 180) range."""
+    sun_lon, _ = _calc_planet(jd, swe.SUN)
+    moon_lon, _ = _calc_planet(jd, swe.MOON)
+    return ((moon_lon - sun_lon + 180.0) % 360.0) - 180.0
+
+
+def _refine_zero_crossing(
+    low_jd: float,
+    high_jd: float,
+    value_fn,
+    iterations: int = 24,
+) -> float:
+    """Binary-search a zero crossing between two Julian Day endpoints."""
+    low_value = value_fn(low_jd)
+    for _ in range(iterations):
+        mid_jd = (low_jd + high_jd) / 2.0
+        mid_value = value_fn(mid_jd)
+        if low_value <= 0.0 < mid_value:
+            high_jd = mid_jd
+        else:
+            low_jd = mid_jd
+            low_value = mid_value
+    return (low_jd + high_jd) / 2.0
+
+
+def _find_previous_new_moon_jd(jd: float) -> float:
+    """Find the Amavasya immediately preceding the birth Julian Day."""
+    probe = jd - 35.0
+    step = 0.5
+    prev_jd = probe
+    prev_value = _signed_lunar_phase_angle(prev_jd)
+    current_jd = prev_jd + step
+    while current_jd <= jd + step:
+        current_value = _signed_lunar_phase_angle(current_jd)
+        if prev_value <= 0.0 < current_value:
+            crossing = _refine_zero_crossing(prev_jd, current_jd, _signed_lunar_phase_angle)
+            if crossing <= jd:
+                last_crossing = crossing
+        prev_jd = current_jd
+        prev_value = current_value
+        current_jd += step
+    if 'last_crossing' in locals():
+        return last_crossing
+    return jd - 29.5
+
+
+def _find_previous_mesha_sankranti_jd(jd: float) -> float:
+    """Find the last sidereal Aries ingress of the Sun prior to birth."""
+    probe = jd - 400.0
+    step = 1.0
+    prev_jd = probe
+    prev_lon, _ = _calc_planet(prev_jd, swe.SUN)
+    current_jd = prev_jd + step
+    while current_jd <= jd + step:
+        current_lon, _ = _calc_planet(current_jd, swe.SUN)
+        if current_lon < prev_lon:
+            low_jd = prev_jd
+            high_jd = current_jd
+            for _ in range(24):
+                mid_jd = (low_jd + high_jd) / 2.0
+                mid_lon, _ = _calc_planet(mid_jd, swe.SUN)
+                if mid_lon > 300.0:
+                    low_jd = mid_jd
+                else:
+                    high_jd = mid_jd
+            candidate = (low_jd + high_jd) / 2.0
+            if candidate <= jd:
+                last_ingress = candidate
+        prev_jd = current_jd
+        prev_lon = current_lon
+        current_jd += step
+    if 'last_ingress' in locals():
+        return last_ingress
+    return jd - 365.25
+
+
+def _planet_declination(jd: float, swe_id: int) -> float:
+    """Return a planet's geocentric declination in degrees."""
+    result = swe.calc_ut(jd, swe_id, swe.FLG_SWIEPH | swe.FLG_EQUATORIAL)
+    return result[0][1]
+
+
+def _hora_lord(jd: float, lon: float, context: dict[str, float | bool]) -> str:
+    """Return the hora lord using sunrise as the daily sequence anchor."""
+    sunrise_anchor = float(context['hora_anchor'])
+    day_lord = _weekday_lord_from_jd(sunrise_anchor, lon)
+    sequence_index = CHALDEAN_SEQUENCE.index(day_lord)
+    elapsed_hours = max(0, int((jd - sunrise_anchor) * 24.0))
+    return CHALDEAN_SEQUENCE[(sequence_index + elapsed_hours) % len(CHALDEAN_SEQUENCE)]
+
+
+def _aspect_distance(from_house: int, to_house: int) -> int:
+    """Return Parashari aspect distance counting from source house."""
+    return ((to_house - from_house) % 12) + 1
+
+
+def _aspect_strength_factor(aspecting_planet: str, from_house: int, to_house: int) -> float:
+    """Return 1.0 for a full aspect, 0.5 for a simplified partial, else 0."""
+    distance = _aspect_distance(from_house, to_house)
+    full_aspects = {7}
+    if aspecting_planet == 'Mars':
+        full_aspects |= {4, 8}
+    elif aspecting_planet == 'Jupiter':
+        full_aspects |= {5, 9}
+    elif aspecting_planet == 'Saturn':
+        full_aspects |= {3, 10}
+    if distance in full_aspects:
+        return 1.0
+    if distance in PARTIAL_ASPECT_HOUSES:
+        return 0.5
+    return 0.0
+
+
+def _uchcha_bala(planet: str, longitude: float) -> float:
+    """Compute exaltation strength from distance to debilitation."""
+    exalted_sign, exalted_degree = EXALTATION_DATA[planet]
+    exalted_lon = _absolute_sign_longitude(exalted_sign, exalted_degree)
+    debilitation_lon = _normalized_longitude(exalted_lon + 180.0)
+    bala = _shortest_arc_distance(longitude, debilitation_lon) / 3.0
+    return _round4(_clamp(bala))
+
+
+def _ojayugma_bala(planet: str, sign: str, longitude: float) -> float:
+    """Compute odd/even sign and navamsa bonuses."""
+    if planet in {'Mercury', 'Saturn'}:
+        return 30.0
+    target_odd = planet in ODD_SIGN_PLANETS
+    sign_bonus = 15.0 if _is_odd_sign(sign) == target_odd else 0.0
+    navamsa_bonus = 15.0 if _is_odd_sign(_navamsa_sign(longitude)) == target_odd else 0.0
+    return _round4(sign_bonus + navamsa_bonus)
+
+
+def _kendradi_bala(house: int) -> float:
+    """Compute angular/succedent/cadent positional strength."""
+    if house in KENDRA_HOUSES:
+        return 60.0
+    if house in SUCCEDENT_HOUSES:
+        return 30.0
+    return 15.0
+
+
+def _sthana_bala(planet: str, payload: dict, longitude: float) -> float:
+    """Aggregate the five positional-strength subcomponents."""
+    sign = payload['sign']
+    degree = float(payload['degree'])
+    components = [
+        _uchcha_bala(planet, longitude),
+        45.0 if _is_moolatrikona_position(planet, sign, degree) else 0.0,
+        30.0 if sign in OWN_SIGNS.get(planet, []) and not _is_moolatrikona_position(planet, sign, degree) else 0.0,
+        _ojayugma_bala(planet, sign, longitude),
+        _kendradi_bala(int(payload['house'])),
+    ]
+    return _round4(sum(components))
+
+
+def _dig_bala(planet: str, house: int) -> float:
+    """Compute Dig Bala using the brief's whole-sign approximation."""
+    strong_house = DIG_BALA_HOUSE[planet]
+    distance = min((house - strong_house) % 12, (strong_house - house) % 12)
+    return _round4(_clamp((6 - distance) * 10.0))
+
+
+def _paksha_bala(planet: str, moon_elongation: float) -> float:
+    """Compute waxing/waning phase strength for benefics and malefics."""
+    benefics = {'Moon', 'Mercury', 'Jupiter', 'Venus'}
+    waxing = moon_elongation <= 180.0
+    if waxing:
+        base = moon_elongation / 3.0 if planet in benefics else (180.0 - moon_elongation) / 3.0
+    else:
+        base = (360.0 - moon_elongation) / 3.0 if planet in benefics else (moon_elongation - 180.0) / 3.0
+    return _round4(_clamp(base))
+
+
+def _tribhaga_bala(planet: str, jd: float, context: dict[str, float | bool]) -> float:
+    """Compute the three-part day/night segment strength."""
+    if planet == 'Mercury':
+        return 60.0
+    period_start = float(context['period_start'])
+    period_end = float(context['period_end'])
+    span = max(period_end - period_start, 1e-9)
+    part_index = min(2, int(((jd - period_start) / span) * 3.0))
+    if context['is_day']:
+        lords = ('Jupiter', 'Sun', 'Saturn')
+    else:
+        lords = ('Moon', 'Venus', 'Mars')
+    return 60.0 if planet == lords[part_index] else 0.0
+
+
+def _ayana_bala(planet: str, jd: float) -> float:
+    """Compute solstitial strength using the simplified declination formula."""
+    if planet == 'Mercury':
+        return 60.0
+    declination = _planet_declination(jd, PLANET_SWE_IDS[_planet_constant(planet)])
+    direct_bala = _clamp(30.0 + ((declination / 24.0) * 30.0))
+    if planet in {'Moon', 'Saturn'}:
+        return _round4(_clamp(60.0 - direct_bala))
+    return _round4(_clamp(direct_bala))
+
+
+def _yuddha_bala(_: dict[str, dict]) -> dict[str, float]:
+    """Return zeroed planetary-war strength until latitude comparison is added."""
+    return {planet: 0.0 for planet in CLASSICAL_PLANETS}
+
+
+def _chesta_bala(planet: str, payload: dict, speed: float) -> float:
+    """Compute motional strength from actual versus mean daily motion."""
+    if payload.get('retrograde'):
+        return 60.0
+    mean_motion = MEAN_DAILY_MOTION[planet]
+    bala = (abs(speed) / mean_motion) * 30.0 if mean_motion else 0.0
+    return _round4(_clamp(bala))
+
+
+def _is_waxing_moon(moon_elongation: float) -> bool:
+    """True when the Moon is in Shukla Paksha."""
+    return moon_elongation <= 180.0
+
+
+def _is_benefic_aspector(planet: str, moon_elongation: float) -> bool:
+    """Return benefic status for Drik Bala using the commission simplification."""
+    if planet in {'Jupiter', 'Venus', 'Mercury'}:
+        return True
+    if planet == 'Moon':
+        return _is_waxing_moon(moon_elongation)
+    return False
+
+
+def _drik_bala(planet: str, planets: dict[str, dict], moon_elongation: float) -> float:
+    """Compute simplified aspectual strength from benefic and malefic aspects."""
+    target_payload = _get_planet_payload(planets, planet)
+    target_house = int(target_payload['house'])
+    total = 0.0
+    contributors = 0
+    for aspector in CLASSICAL_PLANETS:
+        if aspector == planet:
+            continue
+        aspector_payload = _get_planet_payload(planets, aspector)
+        strength_factor = _aspect_strength_factor(aspector, int(aspector_payload['house']), target_house)
+        if strength_factor == 0.0:
+            continue
+        contributors += 1
+        if _is_benefic_aspector(aspector, moon_elongation):
+            total += 60.0 if strength_factor == 1.0 else 30.0
+        else:
+            total -= 30.0 if strength_factor == 1.0 else 15.0
+    if contributors == 0:
+        return 0.0
+    return _round4(_clamp(total / contributors))
+
+
+def _planet_constant(plain_name: str) -> str:
+    """Resolve the internal constant for a classical graha name."""
+    for key, display_name in PLANET_NAMES.items():
+        if _planet_plain_name(display_name) == plain_name:
+            return key
+    raise KeyError(f'Unknown planet name: {plain_name}')
+
+
+def calculate_shadbala(
+    planets: dict[str, dict],
+    jd: float,
+    lat: float,
+    lon: float,
+) -> dict[str, dict]:
+    """Compute Parashari Shadbala totals for the seven classical grahas."""
+    context = _day_night_context(jd, lat, lon)
+    sun_lon, _ = _calc_planet(jd, swe.SUN)
+    moon_lon, _ = _calc_planet(jd, swe.MOON)
+    moon_elongation = _normalized_longitude(moon_lon - sun_lon)
+    abda_lord = _weekday_lord_from_jd(_find_previous_mesha_sankranti_jd(jd), lon)
+    masa_lord = _weekday_lord_from_jd(_find_previous_new_moon_jd(jd), lon)
+    vara_lord = _weekday_lord_from_jd(jd, lon)
+    hora_lord = _hora_lord(jd, lon, context)
+    yuddha_bala = _yuddha_bala(planets)
+
+    positions: dict[str, dict[str, float | dict]] = {}
+    for planet in CLASSICAL_PLANETS:
+        payload = _get_planet_payload(planets, planet)
+        longitude, speed = _calc_planet(jd, PLANET_SWE_IDS[_planet_constant(planet)])
+        positions[planet] = {
+            'payload': payload,
+            'longitude': longitude,
+            'speed': speed,
+        }
+
+    results: dict[str, dict] = {}
+    for planet in CLASSICAL_PLANETS:
+        payload = positions[planet]['payload']
+        longitude = float(positions[planet]['longitude'])
+        speed = float(positions[planet]['speed'])
+
+        nathonnatha = 60.0 if (
+            planet == 'Mercury'
+            or (context['is_day'] and planet in DAY_PLANETS)
+            or ((not context['is_day']) and planet in NIGHT_PLANETS)
+        ) else 0.0
+        kala_bala = sum([
+            nathonnatha,
+            _paksha_bala(planet, moon_elongation),
+            _tribhaga_bala(planet, jd, context),
+            15.0 if planet == abda_lord else 0.0,
+            30.0 if planet == masa_lord else 0.0,
+            45.0 if planet == vara_lord else 0.0,
+            60.0 if planet == hora_lord else 0.0,
+            _ayana_bala(planet, jd),
+            yuddha_bala[planet],
+        ])
+
+        sthana_bala = _sthana_bala(planet, payload, longitude)
+        dig_bala = _dig_bala(planet, int(payload['house']))
+        chesta_bala = _chesta_bala(planet, payload, speed)
+        naisargika_bala = NAISARGIKA_BALA[planet]
+        drik_bala = _drik_bala(planet, planets, moon_elongation)
+        total = _round4(
+            sthana_bala
+            + dig_bala
+            + kala_bala
+            + chesta_bala
+            + naisargika_bala
+            + drik_bala
+        )
+        total_rupas = _round4(total / 60.0)
+        minimum_rupas = MINIMUM_RUPAS[planet]
+        results[planet] = {
+            'sthana_bala': _round4(sthana_bala),
+            'dig_bala': _round4(dig_bala),
+            'kala_bala': _round4(kala_bala),
+            'chesta_bala': _round4(chesta_bala),
+            'naisargika_bala': _round4(naisargika_bala),
+            'drik_bala': _round4(drik_bala),
+            'total': total,
+            'total_rupas': total_rupas,
+            'minimum_rupas': minimum_rupas,
+            'is_strong': total_rupas >= minimum_rupas,
+        }
+
+    return results
 
 
 # ─── Core Functions ───────────────────────────────────────────────────────────
@@ -565,6 +1089,12 @@ def calculate_vedic_chart(
                 'dignity': get_planet_dignity(plain_name, planet_sign, degree_in_sign),
                 'combust': is_planet_combust(plain_name, planet_lon, sun_lon),
             }
+
+        shadbala = calculate_shadbala(planets, jd, lat, lon)
+        for planet_name, bala in shadbala.items():
+            display_name = _planet_display_name(planet_name)
+            if display_name in planets:
+                planets[display_name]['shadbala'] = bala
 
         moon_lon, _ = _calc_planet(jd, swe.MOON)
         nakshatra = get_nakshatra(moon_lon)
