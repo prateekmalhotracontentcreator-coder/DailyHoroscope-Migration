@@ -694,15 +694,20 @@ def _paksha_bala(planet: str, moon_elongation: float) -> float:
 
 
 def _tribhaga_bala(planet: str, jd: float, context: dict[str, float | bool]) -> float:
-    """Compute the three-part day/night segment strength."""
-    if planet == 'Mercury':
+    """Compute the three-part day/night segment strength.
+    BPHS Ch 27 Sloka 9: Jupiter always receives 60 Virupas.
+    Day thirds: Mercury (1st) / Sun (2nd) / Saturn (3rd).
+    Night thirds: Moon (1st) / Venus (2nd) / Mars (3rd).
+    NOTE: Mercury's 'always 60' applies to Nathonnatha, NOT Tribhaga.
+    """
+    if planet == 'Jupiter':
         return 60.0
     period_start = float(context['period_start'])
     period_end = float(context['period_end'])
     span = max(period_end - period_start, 1e-9)
     part_index = min(2, int(((jd - period_start) / span) * 3.0))
     if context['is_day']:
-        lords = ('Jupiter', 'Sun', 'Saturn')
+        lords = ('Mercury', 'Sun', 'Saturn')
     else:
         lords = ('Moon', 'Venus', 'Mars')
     return 60.0 if planet == lords[part_index] else 0.0
