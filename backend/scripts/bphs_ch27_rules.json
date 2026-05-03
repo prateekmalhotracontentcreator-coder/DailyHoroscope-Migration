@@ -1,997 +1,2197 @@
 [
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-001",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-01-03",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Uchcha Bala \u2014 Exaltation Strength Formula",
-    "condition_type": "engine_specification",
-    "formation": "Component of Sthana Bala. Procedure: deduct the deep debilitation longitude from the planet's actual longitude. If the result is < 180\u00b0, use as-is; if > 180\u00b0, deduct from 360\u00b0. Divide final value by 3 to obtain Uchcha Bala in Virupas. Maximum = 60 Virupas (1 Rupa). Deep debilitation point = exaltation longitude + 180\u00b0.",
-    "effect": "Measures how close a planet is to its exaltation peak. A planet at exact exaltation scores maximum Uchcha Bala (60); at exact debilitation it scores 0. Contributes to Sthana Bala total.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-01-03",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._uchcha_bala(). Engine spec reference only \u2014 not a KE evaluator rule."
+      "sub_type": "engine_specification",
+      "yoga_name": "Uchcha Bala \u2014 Exaltation Strength Formula",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._uchcha_bala(). Engine spec reference only \u2014 not a KE evaluator rule."
+      }
+    },
+    "interpretation": {
+      "summary": "Measures how close a planet is to its exaltation peak. A planet at exact exaltation scores maximum Uchcha Bala (60); at ",
+      "detailed": "Component of Sthana Bala. Procedure: deduct the deep debilitation longitude from the planet's actual longitude. If the result is < 180\u00b0, use as-is; if > 180\u00b0, deduct from 360\u00b0. Divide final value by 3 to obtain Uchcha Bala in Virupas. Maximum = 60 Virupas (1 Rupa). Deep debilitation point = exaltation longitude + 180\u00b0. Effect: Measures how close a planet is to its exaltation peak. A planet at exact exaltation scores maximum Uchcha Bala (60); at exact debilitation it scores 0. Contributes to Sthana Bala total.",
+      "full_text_passages": [
+        {
+          "text": "Component of Sthana Bala. Procedure: deduct the deep debilitation longitude from the planet's actual longitude. If the result is < 180\u00b0, use as-is; if > 180\u00b0, deduct from 360\u00b0. Divide final value by 3 to obtain Uchcha Bala in Virupas. Maximum = 60 Virupas (1 Rupa). Deep debilitation point = exaltation longitude + 180\u00b0. Effect: Measures how close a planet is to its exaltation peak. A planet at exact exaltation scores maximum Uchcha Bala (60); at exact debilitation it scores 0. Contributes to Sthana Bala total.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-002",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-04-06",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Saptavargaja Bala \u2014 Divisional Dignity Strength",
-    "condition_type": "engine_specification",
-    "formation": "Component of Sthana Bala. Compute the dignity of a planet in each of the 7 divisional charts (D1 Rasi, D2 Hora, D3 Drekkana, D7 Saptamamsa, D9 Navamsa, D12 Dvadasamsa, D30 Trimsamsa) and award Virupas per dignity: Moolatrikona=45, Own Sign=30, Extreme Friend=20, Friend=15, Neutral=10, Enemy=4, Extreme Enemy=2. Sum all 7 divisions.",
-    "effect": "Measures how well-placed a planet is across all 7 divisional charts. A planet in Moolatrikona in all 7 divisions scores 315 Virupas maximum. Contributes to Sthana Bala total.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-04-06",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [
-        "V"
+      "sub_type": "engine_specification",
+      "yoga_name": "Saptavargaja Bala \u2014 Divisional Dignity Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [
+          "V"
+        ],
+        "description": "Requires all 7 divisional chart positions. Current engine computes D1 dignity only (own_sign/friendly/enemy etc.) via get_planet_dignity(). Full Saptavargaja requires D1\u2013D30 positions \u2014 Phase 2 once varga engine expands beyond D9."
+      }
+    },
+    "interpretation": {
+      "summary": "Measures how well-placed a planet is across all 7 divisional charts. A planet in Moolatrikona in all 7 divisions scores ",
+      "detailed": "Component of Sthana Bala. Compute the dignity of a planet in each of the 7 divisional charts (D1 Rasi, D2 Hora, D3 Drekkana, D7 Saptamamsa, D9 Navamsa, D12 Dvadasamsa, D30 Trimsamsa) and award Virupas per dignity: Moolatrikona=45, Own Sign=30, Extreme Friend=20, Friend=15, Neutral=10, Enemy=4, Extreme Enemy=2. Sum all 7 divisions. Effect: Measures how well-placed a planet is across all 7 divisional charts. A planet in Moolatrikona in all 7 divisions scores 315 Virupas maximum. Contributes to Sthana Bala total.",
+      "full_text_passages": [
+        {
+          "text": "Component of Sthana Bala. Compute the dignity of a planet in each of the 7 divisional charts (D1 Rasi, D2 Hora, D3 Drekkana, D7 Saptamamsa, D9 Navamsa, D12 Dvadasamsa, D30 Trimsamsa) and award Virupas per dignity: Moolatrikona=45, Own Sign=30, Extreme Friend=20, Friend=15, Neutral=10, Enemy=4, Extreme Enemy=2. Sum all 7 divisions. Effect: Measures how well-placed a planet is across all 7 divisional charts. A planet in Moolatrikona in all 7 divisions scores 315 Virupas maximum. Contributes to Sthana Bala total.",
+          "confidence": "HIGH"
+        }
       ],
-      "description": "Requires all 7 divisional chart positions. Current engine computes D1 dignity only (own_sign/friendly/enemy etc.) via get_planet_dignity(). Full Saptavargaja requires D1\u2013D30 positions \u2014 Phase 2 once varga engine expands beyond D9."
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-003",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-07-09",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Ojhayugmarasiamsa Bala \u2014 Odd/Even Sign Strength",
-    "condition_type": "engine_specification",
-    "formation": "Component of Sthana Bala. Male/neutral planets (Sun, Mars, Jupiter, Mercury, Saturn) in an odd Rasi \u2192 15 Virupas; same planets in an odd Navamsa \u2192 another 15 Virupas. Female planets (Moon, Venus) in an even Rasi \u2192 15 Virupas; in an even Navamsa \u2192 15 Virupas. Maximum = 30 per planet (15 Rasi + 15 Navamsa). Mercury and Saturn always score 30 (neutral, benefit from both).",
-    "effect": "Rewards planets placed in signs aligned with their gender polarity. Contributes to Sthana Bala total.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-07-09",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._ojayugma_bala(). Engine spec reference only \u2014 not a KE evaluator rule."
+      "sub_type": "engine_specification",
+      "yoga_name": "Ojhayugmarasiamsa Bala \u2014 Odd/Even Sign Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._ojayugma_bala(). Engine spec reference only \u2014 not a KE evaluator rule."
+      }
+    },
+    "interpretation": {
+      "summary": "Rewards planets placed in signs aligned with their gender polarity. Contributes to Sthana Bala total.",
+      "detailed": "Component of Sthana Bala. Male/neutral planets (Sun, Mars, Jupiter, Mercury, Saturn) in an odd Rasi \u2192 15 Virupas; same planets in an odd Navamsa \u2192 another 15 Virupas. Female planets (Moon, Venus) in an even Rasi \u2192 15 Virupas; in an even Navamsa \u2192 15 Virupas. Maximum = 30 per planet (15 Rasi + 15 Navamsa). Mercury and Saturn always score 30 (neutral, benefit from both). Effect: Rewards planets placed in signs aligned with their gender polarity. Contributes to Sthana Bala total.",
+      "full_text_passages": [
+        {
+          "text": "Component of Sthana Bala. Male/neutral planets (Sun, Mars, Jupiter, Mercury, Saturn) in an odd Rasi \u2192 15 Virupas; same planets in an odd Navamsa \u2192 another 15 Virupas. Female planets (Moon, Venus) in an even Rasi \u2192 15 Virupas; in an even Navamsa \u2192 15 Virupas. Maximum = 30 per planet (15 Rasi + 15 Navamsa). Mercury and Saturn always score 30 (neutral, benefit from both). Effect: Rewards planets placed in signs aligned with their gender polarity. Contributes to Sthana Bala total.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-004",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-10-11",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Kendradi Bala \u2014 House Quality Strength",
-    "condition_type": "engine_specification",
-    "formation": "Component of Sthana Bala. Planet in an angular house (1, 4, 7, 10) \u2192 60 Virupas. Planet in a succedent house (2, 5, 8, 11) \u2192 30 Virupas. Planet in a cadent house (3, 6, 9, 12) \u2192 15 Virupas.",
-    "effect": "Measures the strength of house placement. Angular placement confers maximum Kendradi Bala (1 Rupa). Contributes to Sthana Bala total.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-10-11",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._kendradi_bala(). Engine spec reference only \u2014 not a KE evaluator rule."
+      "sub_type": "engine_specification",
+      "yoga_name": "Kendradi Bala \u2014 House Quality Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._kendradi_bala(). Engine spec reference only \u2014 not a KE evaluator rule."
+      }
+    },
+    "interpretation": {
+      "summary": "Measures the strength of house placement. Angular placement confers maximum Kendradi Bala (1 Rupa). Contributes to Sthan",
+      "detailed": "Component of Sthana Bala. Planet in an angular house (1, 4, 7, 10) \u2192 60 Virupas. Planet in a succedent house (2, 5, 8, 11) \u2192 30 Virupas. Planet in a cadent house (3, 6, 9, 12) \u2192 15 Virupas. Effect: Measures the strength of house placement. Angular placement confers maximum Kendradi Bala (1 Rupa). Contributes to Sthana Bala total.",
+      "full_text_passages": [
+        {
+          "text": "Component of Sthana Bala. Planet in an angular house (1, 4, 7, 10) \u2192 60 Virupas. Planet in a succedent house (2, 5, 8, 11) \u2192 30 Virupas. Planet in a cadent house (3, 6, 9, 12) \u2192 15 Virupas. Effect: Measures the strength of house placement. Angular placement confers maximum Kendradi Bala (1 Rupa). Contributes to Sthana Bala total.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-005",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-12",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Drekkana Bala \u2014 Gender-Decanate Positional Strength",
-    "condition_type": "engine_specification",
-    "formation": "Component of Sthana Bala. 15 Virupas granted based on planetary gender and decanate (Drekkana) within a sign: Male planets (Sun, Mars, Jupiter) in the 1st Decanate (0\u00b0\u201310\u00b0) of any sign. Female planets (Moon, Venus) in the 2nd Decanate (10\u00b0\u201320\u00b0). Eunuch/neutral planets (Mercury, Saturn) in the 3rd Decanate (20\u00b0\u201330\u00b0). Otherwise 0.",
-    "effect": "Small positional bonus aligned with planetary gender and the masculine/feminine/neutral thirds of a sign. Contributes to Sthana Bala total.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-12",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Not separately implemented in current Shadbala engine \u2014 absorbed into Sthana Bala approximation. Phase 2 enhancement to add Drekkana sub-component."
+      "sub_type": "engine_specification",
+      "yoga_name": "Drekkana Bala \u2014 Gender-Decanate Positional Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Not separately implemented in current Shadbala engine \u2014 absorbed into Sthana Bala approximation. Phase 2 enhancement to add Drekkana sub-component."
+      }
+    },
+    "interpretation": {
+      "summary": "Small positional bonus aligned with planetary gender and the masculine/feminine/neutral thirds of a sign. Contributes to",
+      "detailed": "Component of Sthana Bala. 15 Virupas granted based on planetary gender and decanate (Drekkana) within a sign: Male planets (Sun, Mars, Jupiter) in the 1st Decanate (0\u00b0\u201310\u00b0) of any sign. Female planets (Moon, Venus) in the 2nd Decanate (10\u00b0\u201320\u00b0). Eunuch/neutral planets (Mercury, Saturn) in the 3rd Decanate (20\u00b0\u201330\u00b0). Otherwise 0. Effect: Small positional bonus aligned with planetary gender and the masculine/feminine/neutral thirds of a sign. Contributes to Sthana Bala total.",
+      "full_text_passages": [
+        {
+          "text": "Component of Sthana Bala. 15 Virupas granted based on planetary gender and decanate (Drekkana) within a sign: Male planets (Sun, Mars, Jupiter) in the 1st Decanate (0\u00b0\u201310\u00b0) of any sign. Female planets (Moon, Venus) in the 2nd Decanate (10\u00b0\u201320\u00b0). Eunuch/neutral planets (Mercury, Saturn) in the 3rd Decanate (20\u00b0\u201330\u00b0). Otherwise 0. Effect: Small positional bonus aligned with planetary gender and the masculine/feminine/neutral thirds of a sign. Contributes to Sthana Bala total.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-006",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-13-14",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Dig Bala \u2014 Directional Strength",
-    "condition_type": "engine_specification",
-    "formation": "Full strength direction (point of nil strength is the opposite): Jupiter and Mercury \u2192 Ascendant (1st house, East). Sun and Mars \u2192 10th house (South/Meridian). Saturn \u2192 7th house (West/Descendant). Moon and Venus \u2192 4th house (North/Nadir). Formula: deduct longitude of nil-strength house from planet longitude, divide by 3. If result > 180\u00b0, deduct from 360\u00b0. Max = 60 Virupas.",
-    "effect": "Rewards planets placed in their naturally strong direction. Jupiter and Mercury flourish near the Ascendant; Sun and Mars near the Midheaven; Saturn near the Descendant; Moon and Venus near the IC.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-13-14",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._dig_bala() using whole-sign house approximation. Engine spec reference only."
+      "sub_type": "engine_specification",
+      "yoga_name": "Dig Bala \u2014 Directional Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._dig_bala() using whole-sign house approximation. Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "Rewards planets placed in their naturally strong direction. Jupiter and Mercury flourish near the Ascendant; Sun and Mar",
+      "detailed": "Full strength direction (point of nil strength is the opposite): Jupiter and Mercury \u2192 Ascendant (1st house, East). Sun and Mars \u2192 10th house (South/Meridian). Saturn \u2192 7th house (West/Descendant). Moon and Venus \u2192 4th house (North/Nadir). Formula: deduct longitude of nil-strength house from planet longitude, divide by 3. If result > 180\u00b0, deduct from 360\u00b0. Max = 60 Virupas. Effect: Rewards planets placed in their naturally strong direction. Jupiter and Mercury flourish near the Ascendant; Sun and Mars near the Midheaven; Saturn near the Descendant; Moon and Venus near the IC.",
+      "full_text_passages": [
+        {
+          "text": "Full strength direction (point of nil strength is the opposite): Jupiter and Mercury \u2192 Ascendant (1st house, East). Sun and Mars \u2192 10th house (South/Meridian). Saturn \u2192 7th house (West/Descendant). Moon and Venus \u2192 4th house (North/Nadir). Formula: deduct longitude of nil-strength house from planet longitude, divide by 3. If result > 180\u00b0, deduct from 360\u00b0. Max = 60 Virupas. Effect: Rewards planets placed in their naturally strong direction. Jupiter and Mercury flourish near the Ascendant; Sun and Mars near the Midheaven; Saturn near the Descendant; Moon and Venus near the IC.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-007",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-15",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Nathonnatha Bala \u2014 Day/Night Temporal Strength",
-    "condition_type": "engine_specification",
-    "formation": "Based on proximity to midnight (Nata) or noon (Unnata). Day group (Sun, Jupiter, Venus): full 60 Virupas during daytime. Night group (Moon, Mars, Saturn): full 60 Virupas during night. Mercury: always 60 Virupas (neutral \u2014 neither day nor night planet). Formula: Natha Ghatis \u00d7 2 for night-group; 60 minus night-group value for day-group. Mercury constant = 60.",
-    "effect": "Temporal strength from diurnal or nocturnal dominance. A daytime birth empowers Sun, Jupiter, and Venus; a night birth empowers Moon, Mars, and Saturn. Mercury is always temporally favoured.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-15",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator.calculate_shadbala() as binary 60/0 day-night check (simplified). Full proximity-to-noon/midnight formula is a Phase 2 enhancement. Engine spec reference only."
+      "sub_type": "engine_specification",
+      "yoga_name": "Nathonnatha Bala \u2014 Day/Night Temporal Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator.calculate_shadbala() as binary 60/0 day-night check (simplified). Full proximity-to-noon/midnight formula is a Phase 2 enhancement. Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "Temporal strength from diurnal or nocturnal dominance. A daytime birth empowers Sun, Jupiter, and Venus; a night birth e",
+      "detailed": "Based on proximity to midnight (Nata) or noon (Unnata). Day group (Sun, Jupiter, Venus): full 60 Virupas during daytime. Night group (Moon, Mars, Saturn): full 60 Virupas during night. Mercury: always 60 Virupas (neutral \u2014 neither day nor night planet). Formula: Natha Ghatis \u00d7 2 for night-group; 60 minus night-group value for day-group. Mercury constant = 60. Effect: Temporal strength from diurnal or nocturnal dominance. A daytime birth empowers Sun, Jupiter, and Venus; a night birth empowers Moon, Mars, and Saturn. Mercury is always temporally favoured.",
+      "full_text_passages": [
+        {
+          "text": "Based on proximity to midnight (Nata) or noon (Unnata). Day group (Sun, Jupiter, Venus): full 60 Virupas during daytime. Night group (Moon, Mars, Saturn): full 60 Virupas during night. Mercury: always 60 Virupas (neutral \u2014 neither day nor night planet). Formula: Natha Ghatis \u00d7 2 for night-group; 60 minus night-group value for day-group. Mercury constant = 60. Effect: Temporal strength from diurnal or nocturnal dominance. A daytime birth empowers Sun, Jupiter, and Venus; a night birth empowers Moon, Mars, and Saturn. Mercury is always temporally favoured.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-008",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-16",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Paksha Bala \u2014 Lunar Fortnight Strength",
-    "condition_type": "engine_specification",
-    "formation": "Formula: (Moon Longitude \u2212 Sun Longitude) / 3 = elongation-based Virupas. Benefics (Moon, Mercury, Jupiter, Venus) receive higher strength in Sukla Paksha (Bright Half, 0\u00b0\u2013180\u00b0 elongation). Malefics (Sun, Mars, Saturn) receive higher strength in Krishna Paksha (Dark Half, 180\u00b0\u2013360\u00b0 elongation). Maximum = 60 Virupas.",
-    "effect": "Measures how well the Moon's phase aligns with the planet's natural benefic/malefic character. Moon's own Cheshta Bala is identically equal to its Paksha Bala (see Logic Unit 27.22).",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-16",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._paksha_bala(). Engine spec reference only."
+      "sub_type": "engine_specification",
+      "yoga_name": "Paksha Bala \u2014 Lunar Fortnight Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._paksha_bala(). Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "Measures how well the Moon's phase aligns with the planet's natural benefic/malefic character. Moon's own Cheshta Bala i",
+      "detailed": "Formula: (Moon Longitude \u2212 Sun Longitude) / 3 = elongation-based Virupas. Benefics (Moon, Mercury, Jupiter, Venus) receive higher strength in Sukla Paksha (Bright Half, 0\u00b0\u2013180\u00b0 elongation). Malefics (Sun, Mars, Saturn) receive higher strength in Krishna Paksha (Dark Half, 180\u00b0\u2013360\u00b0 elongation). Maximum = 60 Virupas. Effect: Measures how well the Moon's phase aligns with the planet's natural benefic/malefic character. Moon's own Cheshta Bala is identically equal to its Paksha Bala (see Logic Unit 27.22).",
+      "full_text_passages": [
+        {
+          "text": "Formula: (Moon Longitude \u2212 Sun Longitude) / 3 = elongation-based Virupas. Benefics (Moon, Mercury, Jupiter, Venus) receive higher strength in Sukla Paksha (Bright Half, 0\u00b0\u2013180\u00b0 elongation). Malefics (Sun, Mars, Saturn) receive higher strength in Krishna Paksha (Dark Half, 180\u00b0\u2013360\u00b0 elongation). Maximum = 60 Virupas. Effect: Measures how well the Moon's phase aligns with the planet's natural benefic/malefic character. Moon's own Cheshta Bala is identically equal to its Paksha Bala (see Logic Unit 27.22).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-009",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-17",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Tribhaga Bala \u2014 Diurnal/Nocturnal Division Strength",
-    "condition_type": "engine_specification",
-    "formation": "Day and night are each divided into three equal thirds. 60 Virupas granted to the lord of the third in which birth occurs. Day thirds: 1st = Mercury, 2nd = Sun, 3rd = Saturn. Night thirds: 1st = Moon, 2nd = Venus, 3rd = Mars. Jupiter: receives 60 Virupas at all times (constant). Note: Mercury's 'always 60' applies to Nathonnatha, NOT Tribhaga.",
-    "effect": "A temporal bonus awarded to the planet that 'rules' the current third of the day or night. Only one planet (plus Jupiter always) receives this bonus per chart.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-17",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._tribhaga_bala(). Codex bug fixed: Jupiter constant (not Mercury); day lords = Mercury/Sun/Saturn (not Jupiter/Sun/Saturn). Engine spec reference only."
+      "sub_type": "engine_specification",
+      "yoga_name": "Tribhaga Bala \u2014 Diurnal/Nocturnal Division Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._tribhaga_bala(). Codex bug fixed: Jupiter constant (not Mercury); day lords = Mercury/Sun/Saturn (not Jupiter/Sun/Saturn). Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "A temporal bonus awarded to the planet that 'rules' the current third of the day or night. Only one planet (plus Jupiter",
+      "detailed": "Day and night are each divided into three equal thirds. 60 Virupas granted to the lord of the third in which birth occurs. Day thirds: 1st = Mercury, 2nd = Sun, 3rd = Saturn. Night thirds: 1st = Moon, 2nd = Venus, 3rd = Mars. Jupiter: receives 60 Virupas at all times (constant). Note: Mercury's 'always 60' applies to Nathonnatha, NOT Tribhaga. Effect: A temporal bonus awarded to the planet that 'rules' the current third of the day or night. Only one planet (plus Jupiter always) receives this bonus per chart.",
+      "full_text_passages": [
+        {
+          "text": "Day and night are each divided into three equal thirds. 60 Virupas granted to the lord of the third in which birth occurs. Day thirds: 1st = Mercury, 2nd = Sun, 3rd = Saturn. Night thirds: 1st = Moon, 2nd = Venus, 3rd = Mars. Jupiter: receives 60 Virupas at all times (constant). Note: Mercury's 'always 60' applies to Nathonnatha, NOT Tribhaga. Effect: A temporal bonus awarded to the planet that 'rules' the current third of the day or night. Only one planet (plus Jupiter always) receives this bonus per chart.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-010",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-18",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Varsha-Maasa-Dina-Hora Bala \u2014 Temporal Lordship Multipliers",
-    "condition_type": "engine_specification",
-    "formation": "Fixed Virupa awards for the planet that holds each temporal lordship at birth: Hora Lord (current planetary hour) = 60 Virupas. Dina Lord (weekday lord) = 45 Virupas. Maasa Lord (lunar month lord, from new moon) = 30 Virupas. Varsha Lord (year lord, from Mesha Sankranti) = 15 Virupas. A planet may hold multiple lordships simultaneously.",
-    "effect": "Cumulative temporal bonus. A planet that is Hora, Dina, Maasa, and Varsha Lord simultaneously can score 150 additional Virupas within Kala Bala \u2014 a rare maximum condition.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-18",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator.calculate_shadbala(). Hora lord via _hora_lord(); Dina lord via _weekday_lord_from_jd(jd); Maasa lord via _find_previous_new_moon_jd(); Varsha lord via _find_previous_mesha_sankranti_jd(). Engine spec reference only."
+      "sub_type": "engine_specification",
+      "yoga_name": "Varsha-Maasa-Dina-Hora Bala \u2014 Temporal Lordship Multipliers",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator.calculate_shadbala(). Hora lord via _hora_lord(); Dina lord via _weekday_lord_from_jd(jd); Maasa lord via _find_previous_new_moon_jd(); Varsha lord via _find_previous_mesha_sankranti_jd(). Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "Cumulative temporal bonus. A planet that is Hora, Dina, Maasa, and Varsha Lord simultaneously can score 150 additional V",
+      "detailed": "Fixed Virupa awards for the planet that holds each temporal lordship at birth: Hora Lord (current planetary hour) = 60 Virupas. Dina Lord (weekday lord) = 45 Virupas. Maasa Lord (lunar month lord, from new moon) = 30 Virupas. Varsha Lord (year lord, from Mesha Sankranti) = 15 Virupas. A planet may hold multiple lordships simultaneously. Effect: Cumulative temporal bonus. A planet that is Hora, Dina, Maasa, and Varsha Lord simultaneously can score 150 additional Virupas within Kala Bala \u2014 a rare maximum condition.",
+      "full_text_passages": [
+        {
+          "text": "Fixed Virupa awards for the planet that holds each temporal lordship at birth: Hora Lord (current planetary hour) = 60 Virupas. Dina Lord (weekday lord) = 45 Virupas. Maasa Lord (lunar month lord, from new moon) = 30 Virupas. Varsha Lord (year lord, from Mesha Sankranti) = 15 Virupas. A planet may hold multiple lordships simultaneously. Effect: Cumulative temporal bonus. A planet that is Hora, Dina, Maasa, and Varsha Lord simultaneously can score 150 additional Virupas within Kala Bala \u2014 a rare maximum condition.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-011",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-19-21",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Ayana Bala \u2014 Equinoctial/Solstitial Strength",
-    "condition_type": "engine_specification",
-    "formation": "Based on a planet's declination (Kranti) from the celestial equator. Planets gain strength when their declination aligns with their natural hemisphere: Sun, Mars, Jupiter, Venus \u2192 gain from Northern declination (Uttara Kranti). Moon, Saturn \u2192 gain from Southern declination (Dakshina Kranti). Mercury \u2192 always gains regardless of direction. Sun's final Ayana Bala is multiplied by 2. Formula: 30 + (declination / 24\u00b0 \u00d7 30) for direct cases; reverse for Moon/Saturn. Clamped to 0\u201360 Virupas.",
-    "effect": "Temporal-directional strength from a planet's position relative to the equinoxes. A planet near its favoured solstice gains up to 60 Virupas. Part of Kala Bala total.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-19-21",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._ayana_bala(). Engine spec reference only."
+      "sub_type": "engine_specification",
+      "yoga_name": "Ayana Bala \u2014 Equinoctial/Solstitial Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._ayana_bala(). Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "Temporal-directional strength from a planet's position relative to the equinoxes. A planet near its favoured solstice ga",
+      "detailed": "Based on a planet's declination (Kranti) from the celestial equator. Planets gain strength when their declination aligns with their natural hemisphere: Sun, Mars, Jupiter, Venus \u2192 gain from Northern declination (Uttara Kranti). Moon, Saturn \u2192 gain from Southern declination (Dakshina Kranti). Mercury \u2192 always gains regardless of direction. Sun's final Ayana Bala is multiplied by 2. Formula: 30 + (declination / 24\u00b0 \u00d7 30) for direct cases; reverse for Moon/Saturn. Clamped to 0\u201360 Virupas. Effect: Temporal-directional strength from a planet's position relative to the equinoxes. A planet near its favoured solstice gains up to 60 Virupas. Part of Kala Bala total.",
+      "full_text_passages": [
+        {
+          "text": "Based on a planet's declination (Kranti) from the celestial equator. Planets gain strength when their declination aligns with their natural hemisphere: Sun, Mars, Jupiter, Venus \u2192 gain from Northern declination (Uttara Kranti). Moon, Saturn \u2192 gain from Southern declination (Dakshina Kranti). Mercury \u2192 always gains regardless of direction. Sun's final Ayana Bala is multiplied by 2. Formula: 30 + (declination / 24\u00b0 \u00d7 30) for direct cases; reverse for Moon/Saturn. Clamped to 0\u201360 Virupas. Effect: Temporal-directional strength from a planet's position relative to the equinoxes. A planet near its favoured solstice gains up to 60 Virupas. Part of Kala Bala total.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-012",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-22",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Naisargika Bala \u2014 Natural Luminosity Strength",
-    "condition_type": "engine_specification",
-    "formation": "Fixed natural strength by luminosity (Virupas): Sun=60.0, Moon=51.43, Venus=42.86, Jupiter=34.29, Mercury=25.71, Mars=17.14, Saturn=8.57. These values are permanent constants \u2014 never change per chart. Tie-breaker rule: when two planets have equal total Shadbala, the planet with higher Naisargika Bala prevails in effects.",
-    "effect": "The Sun is always the most naturally powerful graha; Saturn the weakest in inherent luminosity. Used as the final arbiter when other strengths are equal.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-22",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented as NAISARGIKA_BALA constant dict in vedic_calculator.py. Engine spec reference only."
+      "sub_type": "engine_specification",
+      "yoga_name": "Naisargika Bala \u2014 Natural Luminosity Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented as NAISARGIKA_BALA constant dict in vedic_calculator.py. Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "The Sun is always the most naturally powerful graha; Saturn the weakest in inherent luminosity. Used as the final arbite",
+      "detailed": "Fixed natural strength by luminosity (Virupas): Sun=60.0, Moon=51.43, Venus=42.86, Jupiter=34.29, Mercury=25.71, Mars=17.14, Saturn=8.57. These values are permanent constants \u2014 never change per chart. Tie-breaker rule: when two planets have equal total Shadbala, the planet with higher Naisargika Bala prevails in effects. Effect: The Sun is always the most naturally powerful graha; Saturn the weakest in inherent luminosity. Used as the final arbiter when other strengths are equal.",
+      "full_text_passages": [
+        {
+          "text": "Fixed natural strength by luminosity (Virupas): Sun=60.0, Moon=51.43, Venus=42.86, Jupiter=34.29, Mercury=25.71, Mars=17.14, Saturn=8.57. These values are permanent constants \u2014 never change per chart. Tie-breaker rule: when two planets have equal total Shadbala, the planet with higher Naisargika Bala prevails in effects. Effect: The Sun is always the most naturally powerful graha; Saturn the weakest in inherent luminosity. Used as the final arbiter when other strengths are equal.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-013",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-23",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Cheshta Bala \u2014 Motional Strength (Sun and Moon Equivalency)",
-    "condition_type": "engine_specification",
-    "formation": "Sun: Cheshta Bala is identical to Ayana Bala \u2014 no separate motional calculation required. Moon: Cheshta Bala is identical to Paksha Bala. For starry planets (Mars through Saturn), Cheshta Bala is computed separately via the Cheshta Kendra formula (see Logic Unit 27.24).",
-    "effect": "The Sun and Moon's motional strength is absorbed into their temporal and phase strengths. Only the five starry planets have an independent Cheshta Bala component.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-23",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._chesta_bala() using actual speed vs mean daily motion ratio (simplified). Full Seeghrocha-based formula is a Phase 2 enhancement. Engine spec reference only."
+      "sub_type": "engine_specification",
+      "yoga_name": "Cheshta Bala \u2014 Motional Strength (Sun and Moon Equivalency)",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._chesta_bala() using actual speed vs mean daily motion ratio (simplified). Full Seeghrocha-based formula is a Phase 2 enhancement. Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "The Sun and Moon's motional strength is absorbed into their temporal and phase strengths. Only the five starry planets h",
+      "detailed": "Sun: Cheshta Bala is identical to Ayana Bala \u2014 no separate motional calculation required. Moon: Cheshta Bala is identical to Paksha Bala. For starry planets (Mars through Saturn), Cheshta Bala is computed separately via the Cheshta Kendra formula (see Logic Unit 27.24). Effect: The Sun and Moon's motional strength is absorbed into their temporal and phase strengths. Only the five starry planets have an independent Cheshta Bala component.",
+      "full_text_passages": [
+        {
+          "text": "Sun: Cheshta Bala is identical to Ayana Bala \u2014 no separate motional calculation required. Moon: Cheshta Bala is identical to Paksha Bala. For starry planets (Mars through Saturn), Cheshta Bala is computed separately via the Cheshta Kendra formula (see Logic Unit 27.24). Effect: The Sun and Moon's motional strength is absorbed into their temporal and phase strengths. Only the five starry planets have an independent Cheshta Bala component.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-014",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-24-26",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Cheshta Bala \u2014 Eight Kinds of Planetary Motion",
-    "condition_type": "engine_specification",
-    "formation": "Applies to starry planets (Mars, Mercury, Jupiter, Venus, Saturn). Eight motion types with Virupa awards: Vakra (Retrogression) = 60. Anuvakra (Entering previous sign in retrograde) = 30. Vikala (Stationary/devoid of motion) = 15. Manda (Slower than normal) = 30. Mandatara (Slower than Manda) = 15. Sama (Somewhat increasing in motion) = 7.5. Chara (Faster than mean) = 45. Atichara (Entering next sign in accelerated motion) = 30.",
-    "effect": "Retrograde motion confers maximum Cheshta Bala (60). A stationary planet paradoxically scores low (15). Fast-moving planets near their mean speed score moderately. This table is the canonical lookup for precise Cheshta Bala \u2014 more granular than the simplified speed-ratio.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-24-26",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Current engine uses simplified speed-ratio approach. Phase 2 enhancement: detect motion type from speed and sign-crossing flags, then apply this 8-tier lookup table. Engine spec reference only."
+      "sub_type": "engine_specification",
+      "yoga_name": "Cheshta Bala \u2014 Eight Kinds of Planetary Motion",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Current engine uses simplified speed-ratio approach. Phase 2 enhancement: detect motion type from speed and sign-crossing flags, then apply this 8-tier lookup table. Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "Retrograde motion confers maximum Cheshta Bala (60). A stationary planet paradoxically scores low (15). Fast-moving plan",
+      "detailed": "Applies to starry planets (Mars, Mercury, Jupiter, Venus, Saturn). Eight motion types with Virupa awards: Vakra (Retrogression) = 60. Anuvakra (Entering previous sign in retrograde) = 30. Vikala (Stationary/devoid of motion) = 15. Manda (Slower than normal) = 30. Mandatara (Slower than Manda) = 15. Sama (Somewhat increasing in motion) = 7.5. Chara (Faster than mean) = 45. Atichara (Entering next sign in accelerated motion) = 30. Effect: Retrograde motion confers maximum Cheshta Bala (60). A stationary planet paradoxically scores low (15). Fast-moving planets near their mean speed score moderately. This table is the canonical lookup for precise Cheshta Bala \u2014 more granular than the simplified speed-ratio.",
+      "full_text_passages": [
+        {
+          "text": "Applies to starry planets (Mars, Mercury, Jupiter, Venus, Saturn). Eight motion types with Virupa awards: Vakra (Retrogression) = 60. Anuvakra (Entering previous sign in retrograde) = 30. Vikala (Stationary/devoid of motion) = 15. Manda (Slower than normal) = 30. Mandatara (Slower than Manda) = 15. Sama (Somewhat increasing in motion) = 7.5. Chara (Faster than mean) = 45. Atichara (Entering next sign in accelerated motion) = 30. Effect: Retrograde motion confers maximum Cheshta Bala (60). A stationary planet paradoxically scores low (15). Fast-moving planets near their mean speed score moderately. This table is the canonical lookup for precise Cheshta Bala \u2014 more granular than the simplified speed-ratio.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-015",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-27-29",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Cheshta Kendra \u2014 Mathematical Derivation of Motional Angle",
-    "condition_type": "engine_specification",
-    "formation": "For starry planets. Procedure: 1. Average the planet's Mean Longitude and True Longitude. 2. Deduct this average from the planet's Seeghrocha (Apogee).    Result = Cheshta Kendra. 3. If Cheshta Kendra > 180\u00b0, deduct from 360\u00b0. 4. Divide final value in degrees by 3 = Cheshta Bala Virupas. Applicable planets: Mars, Mercury, Jupiter, Venus, Saturn.",
-    "effect": "The precise BPHS formula for deriving motional strength from a planet's relationship to its apogee. A planet at Cheshta Kendra = 0\u00b0 or 360\u00b0 scores 0; at 180\u00b0 from apogee scores maximum 60 Virupas.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-27-29",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [
-        "S"
+      "sub_type": "engine_specification",
+      "yoga_name": "Cheshta Kendra \u2014 Mathematical Derivation of Motional Angle",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [
+          "S"
+        ],
+        "description": "Requires Seeghrocha (planetary apogee) data from Swiss Ephemeris. Phase 2: access swe.calc_ut with additional flags for apogee longitude per planet. Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "The precise BPHS formula for deriving motional strength from a planet's relationship to its apogee. A planet at Cheshta ",
+      "detailed": "For starry planets. Procedure: 1. Average the planet's Mean Longitude and True Longitude. 2. Deduct this average from the planet's Seeghrocha (Apogee).    Result = Cheshta Kendra. 3. If Cheshta Kendra > 180\u00b0, deduct from 360\u00b0. 4. Divide final value in degrees by 3 = Cheshta Bala Virupas. Applicable planets: Mars, Mercury, Jupiter, Venus, Saturn. Effect: The precise BPHS formula for deriving motional strength from a planet's relationship to its apogee. A planet at Cheshta Kendra = 0\u00b0 or 360\u00b0 scores 0; at 180\u00b0 from apogee scores maximum 60 Virupas.",
+      "full_text_passages": [
+        {
+          "text": "For starry planets. Procedure: 1. Average the planet's Mean Longitude and True Longitude. 2. Deduct this average from the planet's Seeghrocha (Apogee).    Result = Cheshta Kendra. 3. If Cheshta Kendra > 180\u00b0, deduct from 360\u00b0. 4. Divide final value in degrees by 3 = Cheshta Bala Virupas. Applicable planets: Mars, Mercury, Jupiter, Venus, Saturn. Effect: The precise BPHS formula for deriving motional strength from a planet's relationship to its apogee. A planet at Cheshta Kendra = 0\u00b0 or 360\u00b0 scores 0; at 180\u00b0 from apogee scores maximum 60 Virupas.",
+          "confidence": "HIGH"
+        }
       ],
-      "description": "Requires Seeghrocha (planetary apogee) data from Swiss Ephemeris. Phase 2: access swe.calc_ut with additional flags for apogee longitude per planet. Engine spec reference only."
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-016",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-30-32",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Drig Bala \u2014 Aspectual Strength",
-    "condition_type": "engine_specification",
-    "formation": "Sum of all aspectual influences received by a planet. For each aspecting planet: deduct 1/4 of the Drishti Pinda (aspect value) for malefic aspects; add 1/4 for benefic aspects. Super-addition: add the FULL aspect value of Mercury and Jupiter's aspects (not just 1/4). Net sum = Drig Bala in Virupas. Can be negative (net malefic pressure).",
-    "effect": "Measures the net quality of planetary influences received. A planet heavily aspected by benefics gains positive Drig Bala; malefic aspects reduce it. Jupiter and Mercury aspects are doubly weighted in this calculation.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-30-32",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._drik_bala() using simplified Parashari aspect model. Full Drishti Pinda with partial aspect values per degree is a Phase 2 enhancement. Engine spec reference."
+      "sub_type": "engine_specification",
+      "yoga_name": "Drig Bala \u2014 Aspectual Strength",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._drik_bala() using simplified Parashari aspect model. Full Drishti Pinda with partial aspect values per degree is a Phase 2 enhancement. Engine spec reference."
+      }
+    },
+    "interpretation": {
+      "summary": "Measures the net quality of planetary influences received. A planet heavily aspected by benefics gains positive Drig Bal",
+      "detailed": "Sum of all aspectual influences received by a planet. For each aspecting planet: deduct 1/4 of the Drishti Pinda (aspect value) for malefic aspects; add 1/4 for benefic aspects. Super-addition: add the FULL aspect value of Mercury and Jupiter's aspects (not just 1/4). Net sum = Drig Bala in Virupas. Can be negative (net malefic pressure). Effect: Measures the net quality of planetary influences received. A planet heavily aspected by benefics gains positive Drig Bala; malefic aspects reduce it. Jupiter and Mercury aspects are doubly weighted in this calculation.",
+      "full_text_passages": [
+        {
+          "text": "Sum of all aspectual influences received by a planet. For each aspecting planet: deduct 1/4 of the Drishti Pinda (aspect value) for malefic aspects; add 1/4 for benefic aspects. Super-addition: add the FULL aspect value of Mercury and Jupiter's aspects (not just 1/4). Net sum = Drig Bala in Virupas. Can be negative (net malefic pressure). Effect: Measures the net quality of planetary influences received. A planet heavily aspected by benefics gains positive Drig Bala; malefic aspects reduce it. Jupiter and Mercury aspects are doubly weighted in this calculation.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-017",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-33-35",
-    "rule_group": "shadbala_engine_spec",
-    "yoga_name": "Yuddha Bala \u2014 Planetary War Strength Redistribution",
-    "condition_type": "engine_specification",
-    "formation": "Applies when two starry planets (Mars through Saturn) are within 1\u00b0 of each other (Yuddha / Planetary War). The victor is determined by the planet with greater total Shadbala at that moment. Rule: the difference between the two planets' total Shadbalas is added to the victor's score and deducted from the vanquished planet's score. Sun, Moon, Rahu, and Ketu are exempt from Yuddha.",
-    "effect": "Planetary war amplifies the strong planet and further weakens the defeated planet. A planet vanquished in war loses Shadbala and correspondingly weakens its significations during its dashas.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-33-35",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [
-        "Y"
+      "sub_type": "engine_specification",
+      "yoga_name": "Yuddha Bala \u2014 Planetary War Strength Redistribution",
+      "yoga_group": "shadbala_engine_spec",
+      "yoga_group_label": "Shadbala Engine Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [
+          "Y"
+        ],
+        "description": "Implemented as _yuddha_bala() stub returning 0 for all planets. Full implementation: detect pairs within 1\u00b0 longitude, compare preliminary Shadbalas, redistribute difference. Staged simplification per commission brief. Phase 2 enhancement."
+      }
+    },
+    "interpretation": {
+      "summary": "Planetary war amplifies the strong planet and further weakens the defeated planet. A planet vanquished in war loses Shad",
+      "detailed": "Applies when two starry planets (Mars through Saturn) are within 1\u00b0 of each other (Yuddha / Planetary War). The victor is determined by the planet with greater total Shadbala at that moment. Rule: the difference between the two planets' total Shadbalas is added to the victor's score and deducted from the vanquished planet's score. Sun, Moon, Rahu, and Ketu are exempt from Yuddha. Effect: Planetary war amplifies the strong planet and further weakens the defeated planet. A planet vanquished in war loses Shadbala and correspondingly weakens its significations during its dashas.",
+      "full_text_passages": [
+        {
+          "text": "Applies when two starry planets (Mars through Saturn) are within 1\u00b0 of each other (Yuddha / Planetary War). The victor is determined by the planet with greater total Shadbala at that moment. Rule: the difference between the two planets' total Shadbalas is added to the victor's score and deducted from the vanquished planet's score. Sun, Moon, Rahu, and Ketu are exempt from Yuddha. Effect: Planetary war amplifies the strong planet and further weakens the defeated planet. A planet vanquished in war loses Shadbala and correspondingly weakens its significations during its dashas.",
+          "confidence": "HIGH"
+        }
       ],
-      "description": "Implemented as _yuddha_bala() stub returning 0 for all planets. Full implementation: detect pairs within 1\u00b0 longitude, compare preliminary Shadbalas, redistribute difference. Staged simplification per commission brief. Phase 2 enhancement."
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "shadbala_engine_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-shadbala_engine_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-018",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-36-38",
-    "rule_group": "bhava_bala_spec",
-    "yoga_name": "Bhava Bala \u2014 House Strength Composite Engine",
-    "condition_type": "engine_specification",
-    "formation": "Bhava Bala has four components: 1. Bhava Cusp Strength: degrees from nil-strength point / 3 = Virupas. 2. Occupancy Modifier: Jupiter/Mercury occupant +60 Virupas;    Sun/Mars/Saturn occupant \u221260 Virupas. 3. Aspect Modifier: +1/4 of Drishti Pinda for benefic aspects;    \u22121/4 for malefic aspects. 4. Time/Sign Modifier: +15 Virupas for Seershodaya signs at day birth,    Dual/Common signs at twilight birth, Prishtodaya signs at night birth.",
-    "effect": "The composite house strength. Higher Bhava Bala means the house and its significations are more potent and more likely to manifest clearly in the native's life.",
-    "is_benefic": null,
-    "life_domains": [
-      "house_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-36-38",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [
-        "B"
+      "sub_type": "engine_specification",
+      "yoga_name": "Bhava Bala \u2014 House Strength Composite Engine",
+      "yoga_group": "bhava_bala_spec",
+      "yoga_group_label": "Bhava Bala Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-bhava_bala_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [
+          "B"
+        ],
+        "description": "Bhava Bala engine not yet implemented. Phase 2: build calculate_bhava_bala() alongside Shadbala in vedic_calculator.py."
+      }
+    },
+    "interpretation": {
+      "summary": "The composite house strength. Higher Bhava Bala means the house and its significations are more potent and more likely t",
+      "detailed": "Bhava Bala has four components: 1. Bhava Cusp Strength: degrees from nil-strength point / 3 = Virupas. 2. Occupancy Modifier: Jupiter/Mercury occupant +60 Virupas;    Sun/Mars/Saturn occupant \u221260 Virupas. 3. Aspect Modifier: +1/4 of Drishti Pinda for benefic aspects;    \u22121/4 for malefic aspects. 4. Time/Sign Modifier: +15 Virupas for Seershodaya signs at day birth,    Dual/Common signs at twilight birth, Prishtodaya signs at night birth. Effect: The composite house strength. Higher Bhava Bala means the house and its significations are more potent and more likely to manifest clearly in the native's life.",
+      "full_text_passages": [
+        {
+          "text": "Bhava Bala has four components: 1. Bhava Cusp Strength: degrees from nil-strength point / 3 = Virupas. 2. Occupancy Modifier: Jupiter/Mercury occupant +60 Virupas;    Sun/Mars/Saturn occupant \u221260 Virupas. 3. Aspect Modifier: +1/4 of Drishti Pinda for benefic aspects;    \u22121/4 for malefic aspects. 4. Time/Sign Modifier: +15 Virupas for Seershodaya signs at day birth,    Dual/Common signs at twilight birth, Prishtodaya signs at night birth. Effect: The composite house strength. Higher Bhava Bala means the house and its significations are more potent and more likely to manifest clearly in the native's life.",
+          "confidence": "HIGH"
+        }
       ],
-      "description": "Bhava Bala engine not yet implemented. Phase 2: build calculate_bhava_bala() alongside Shadbala in vedic_calculator.py."
+      "remedies": [],
+      "life_domain": "house_strength",
+      "life_domains": [
+        "house_strength"
+      ],
+      "tags": [
+        "bhava_bala_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-bhava_bala_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-019",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-39-40",
-    "rule_group": "bhava_bala_spec",
-    "yoga_name": "Bhava Occupancy & Sign Modifiers \u2014 Detailed Rules",
-    "condition_type": "engine_specification",
-    "formation": "Bhava occupied by Jupiter or Mercury \u2192 +60 Virupas (house gains strength). Bhava occupied by Saturn, Mars, or Sun \u2192 \u221260 Virupas (house loses strength). Birth in Day AND bhava in Seershodaya Rasi (Gemini, Leo, Virgo, Libra, Scorpio, Aquarius) \u2192 +15 Virupas. Birth at Twilight AND bhava in Dual/Common Rasi (Gemini, Virgo, Sagittarius, Pisces) \u2192 +15 Virupas. Birth at Night AND bhava in Prishtodaya Rasi (Aries, Taurus, Cancer, Sagittarius, Capricorn) \u2192 +15 Virupas.",
-    "effect": "Beneficial natural planets (Jupiter, Mercury) elevate house strength; natural malefics (Saturn, Mars, Sun) depress it. The sign-type modifier aligns house strength with the day/night quality of the birth.",
-    "is_benefic": null,
-    "life_domains": [
-      "house_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-39-40",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [
-        "B"
+      "sub_type": "engine_specification",
+      "yoga_name": "Bhava Occupancy & Sign Modifiers \u2014 Detailed Rules",
+      "yoga_group": "bhava_bala_spec",
+      "yoga_group_label": "Bhava Bala Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-bhava_bala_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [
+          "B"
+        ],
+        "description": "Bhava Bala engine not yet implemented. These are sub-rules of the Bhava Bala calculation, not standalone KE evaluator rules. Phase 2 Bhava Bala engine."
+      }
+    },
+    "interpretation": {
+      "summary": "Beneficial natural planets (Jupiter, Mercury) elevate house strength; natural malefics (Saturn, Mars, Sun) depress it. T",
+      "detailed": "Bhava occupied by Jupiter or Mercury \u2192 +60 Virupas (house gains strength). Bhava occupied by Saturn, Mars, or Sun \u2192 \u221260 Virupas (house loses strength). Birth in Day AND bhava in Seershodaya Rasi (Gemini, Leo, Virgo, Libra, Scorpio, Aquarius) \u2192 +15 Virupas. Birth at Twilight AND bhava in Dual/Common Rasi (Gemini, Virgo, Sagittarius, Pisces) \u2192 +15 Virupas. Birth at Night AND bhava in Prishtodaya Rasi (Aries, Taurus, Cancer, Sagittarius, Capricorn) \u2192 +15 Virupas. Effect: Beneficial natural planets (Jupiter, Mercury) elevate house strength; natural malefics (Saturn, Mars, Sun) depress it. The sign-type modifier aligns house strength with the day/night quality of the birth.",
+      "full_text_passages": [
+        {
+          "text": "Bhava occupied by Jupiter or Mercury \u2192 +60 Virupas (house gains strength). Bhava occupied by Saturn, Mars, or Sun \u2192 \u221260 Virupas (house loses strength). Birth in Day AND bhava in Seershodaya Rasi (Gemini, Leo, Virgo, Libra, Scorpio, Aquarius) \u2192 +15 Virupas. Birth at Twilight AND bhava in Dual/Common Rasi (Gemini, Virgo, Sagittarius, Pisces) \u2192 +15 Virupas. Birth at Night AND bhava in Prishtodaya Rasi (Aries, Taurus, Cancer, Sagittarius, Capricorn) \u2192 +15 Virupas. Effect: Beneficial natural planets (Jupiter, Mercury) elevate house strength; natural malefics (Saturn, Mars, Sun) depress it. The sign-type modifier aligns house strength with the day/night quality of the birth.",
+          "confidence": "HIGH"
+        }
       ],
-      "description": "Bhava Bala engine not yet implemented. These are sub-rules of the Bhava Bala calculation, not standalone KE evaluator rules. Phase 2 Bhava Bala engine."
+      "remedies": [],
+      "life_domain": "house_strength",
+      "life_domains": [
+        "house_strength"
+      ],
+      "tags": [
+        "bhava_bala_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-bhava_bala_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-020",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-41-44",
-    "rule_group": "bhava_bala_spec",
-    "yoga_name": "Sign-Specific Bhava Cusp Strength Calculation",
-    "condition_type": "engine_specification",
-    "formation": "The nil-strength reference point for Bhava Cusp Strength varies by sign occupied by the bhava: Virgo, Gemini, Libra, Aquarius, 1st half Sagittarius \u2192 use 7th house (Descendant) longitude as nil-strength point. Aries, Taurus, Leo, 1st half Capricorn, 2nd half Sagittarius \u2192 use 4th house (Nadir) longitude. Cancer, Scorpio \u2192 use Ascendant longitude. 2nd half Capricorn, Pisces \u2192 use 10th house (Meridian) longitude. Rectification: if deduction result > 6 signs (180\u00b0), deduct again from 12 signs (360\u00b0) before dividing by 3 for Virupas.",
-    "effect": "The point of minimum house strength varies by sign, reflecting the compass-direction alignment of sign groups. This rule makes Bhava Bala sensitive to both time and geography.",
-    "is_benefic": null,
-    "life_domains": [
-      "house_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-41-44",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [
-        "B"
+      "sub_type": "engine_specification",
+      "yoga_name": "Sign-Specific Bhava Cusp Strength Calculation",
+      "yoga_group": "bhava_bala_spec",
+      "yoga_group_label": "Bhava Bala Spec",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-bhava_bala_spec",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [
+          "B"
+        ],
+        "description": "Bhava Bala engine not yet implemented. Phase 2. Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "The point of minimum house strength varies by sign, reflecting the compass-direction alignment of sign groups. This rule",
+      "detailed": "The nil-strength reference point for Bhava Cusp Strength varies by sign occupied by the bhava: Virgo, Gemini, Libra, Aquarius, 1st half Sagittarius \u2192 use 7th house (Descendant) longitude as nil-strength point. Aries, Taurus, Leo, 1st half Capricorn, 2nd half Sagittarius \u2192 use 4th house (Nadir) longitude. Cancer, Scorpio \u2192 use Ascendant longitude. 2nd half Capricorn, Pisces \u2192 use 10th house (Meridian) longitude. Rectification: if deduction result > 6 signs (180\u00b0), deduct again from 12 signs (360\u00b0) before dividing by 3 for Virupas. Effect: The point of minimum house strength varies by sign, reflecting the compass-direction alignment of sign groups. This rule makes Bhava Bala sensitive to both time and geography.",
+      "full_text_passages": [
+        {
+          "text": "The nil-strength reference point for Bhava Cusp Strength varies by sign occupied by the bhava: Virgo, Gemini, Libra, Aquarius, 1st half Sagittarius \u2192 use 7th house (Descendant) longitude as nil-strength point. Aries, Taurus, Leo, 1st half Capricorn, 2nd half Sagittarius \u2192 use 4th house (Nadir) longitude. Cancer, Scorpio \u2192 use Ascendant longitude. 2nd half Capricorn, Pisces \u2192 use 10th house (Meridian) longitude. Rectification: if deduction result > 6 signs (180\u00b0), deduct again from 12 signs (360\u00b0) before dividing by 3 for Virupas. Effect: The point of minimum house strength varies by sign, reflecting the compass-direction alignment of sign groups. This rule makes Bhava Bala sensitive to both time and geography.",
+          "confidence": "HIGH"
+        }
       ],
-      "description": "Bhava Bala engine not yet implemented. Phase 2. Engine spec reference only."
+      "remedies": [],
+      "life_domain": "house_strength",
+      "life_domains": [
+        "house_strength"
+      ],
+      "tags": [
+        "bhava_bala_spec",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-bhava_bala_spec",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-021",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-45-47",
-    "rule_group": "strength_interpretation",
-    "yoga_name": "Shadbala Minimum Threshold \u2014 Planet Deemed Strong",
-    "condition_type": "planet_shadbala_strong",
-    "formation": "A planet is deemed Strong (Bali) when its total Shadbala meets or exceeds the minimum Rupa threshold: Sun \u2265 6.5 Rupas, Moon \u2265 6.0, Mars \u2265 5.0, Mercury \u2265 7.0, Jupiter \u2265 6.5, Venus \u2265 5.5, Saturn \u2265 5.0. These thresholds are now encoded as MINIMUM_RUPAS constants in the Shadbala engine (vedic_calculator.py) and returned as 'is_strong' per planet in the chart payload.",
-    "effect": "A planet meeting its Rupa minimum is classed as Strong (Bali). It delivers its significations fully and positively during its Mahadasha and Antardasha periods. A planet below threshold is weak \u2014 its dasha effects are diminished, delayed, or obstructed.",
-    "is_benefic": true,
-    "life_domains": [
-      "planetary_strength",
-      "dasha_prediction"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-45-47",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "planet_shadbala_strong",
-      "checkable": false,
-      "blockers": [
-        "KE"
+      "sub_type": "interpretation",
+      "yoga_name": "Shadbala Minimum Threshold \u2014 Planet Deemed Strong",
+      "yoga_group": "strength_interpretation",
+      "yoga_group_label": "Strength Interpretation",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planet_shadbala_strong",
+        "checkable": false,
+        "blockers": [
+          "KE"
+        ],
+        "description": "Condition type 'planet_shadbala_strong' not yet wired in KE evaluator. Phase 2: add evaluator branch that reads planets[planet]['shadbala']['is_strong'] from chart payload. MINIMUM_RUPAS already enforced in calculate_shadbala()."
+      }
+    },
+    "interpretation": {
+      "summary": "A planet meeting its Rupa minimum is classed as Strong (Bali). It delivers its significations fully and positively durin",
+      "detailed": "A planet is deemed Strong (Bali) when its total Shadbala meets or exceeds the minimum Rupa threshold: Sun \u2265 6.5 Rupas, Moon \u2265 6.0, Mars \u2265 5.0, Mercury \u2265 7.0, Jupiter \u2265 6.5, Venus \u2265 5.5, Saturn \u2265 5.0. These thresholds are now encoded as MINIMUM_RUPAS constants in the Shadbala engine (vedic_calculator.py) and returned as 'is_strong' per planet in the chart payload. Effect: A planet meeting its Rupa minimum is classed as Strong (Bali). It delivers its significations fully and positively during its Mahadasha and Antardasha periods. A planet below threshold is weak \u2014 its dasha effects are diminished, delayed, or obstructed.",
+      "full_text_passages": [
+        {
+          "text": "A planet is deemed Strong (Bali) when its total Shadbala meets or exceeds the minimum Rupa threshold: Sun \u2265 6.5 Rupas, Moon \u2265 6.0, Mars \u2265 5.0, Mercury \u2265 7.0, Jupiter \u2265 6.5, Venus \u2265 5.5, Saturn \u2265 5.0. These thresholds are now encoded as MINIMUM_RUPAS constants in the Shadbala engine (vedic_calculator.py) and returned as 'is_strong' per planet in the chart payload. Effect: A planet meeting its Rupa minimum is classed as Strong (Bali). It delivers its significations fully and positively during its Mahadasha and Antardasha periods. A planet below threshold is weak \u2014 its dasha effects are diminished, delayed, or obstructed.",
+          "confidence": "HIGH"
+        }
       ],
-      "description": "Condition type 'planet_shadbala_strong' not yet wired in KE evaluator. Phase 2: add evaluator branch that reads planets[planet]['shadbala']['is_strong'] from chart payload. MINIMUM_RUPAS already enforced in calculate_shadbala()."
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength",
+        "dasha_prediction"
+      ],
+      "tags": [
+        "strength_interpretation",
+        "planet_shadbala_strong"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-022",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-48-49",
-    "rule_group": "strength_interpretation",
-    "yoga_name": "Saturn Strength Paradox \u2014 Long Life with Miseries",
-    "condition_type": "planet_shadbala_strong",
-    "formation": "When Saturn possesses the required or extreme Shadbala (is_strong = True, total Rupas \u2265 5.0), it simultaneously confers two contradictory outcomes: long life (Dirghayu) AND persistent miseries or suffering. This paradox is specific to Saturn \u2014 strength does not guarantee enjoyment, only endurance.",
-    "effect": "A strong Saturn in the chart grants the native longevity but does not protect against hardship. Saturn's dasha periods, even when the planet is fully Bali (strong), will involve discipline, delay, loss, and karmic reckoning alongside stability and persistence.",
-    "is_benefic": false,
-    "life_domains": [
-      "longevity",
-      "suffering",
-      "karma",
-      "dasha_prediction"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-48-49",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "planet_shadbala_strong",
-      "checkable": false,
-      "blockers": [
-        "KE"
+      "sub_type": "interpretation",
+      "yoga_name": "Saturn Strength Paradox \u2014 Long Life with Miseries",
+      "yoga_group": "strength_interpretation",
+      "yoga_group_label": "Strength Interpretation",
+      "planets_involved": [
+        "Saturn"
       ],
-      "planet": "Saturn",
-      "description": "Phase 2: evaluator checks planets['Saturn (Shani)']['shadbala']['is_strong']. If True, tag chart with 'saturn_strength_paradox' marker. Not yet wired to KE evaluator."
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "planet_shadbala_strong",
+        "checkable": false,
+        "blockers": [
+          "KE"
+        ],
+        "planet": "Saturn",
+        "description": "Phase 2: evaluator checks planets['Saturn (Shani)']['shadbala']['is_strong']. If True, tag chart with 'saturn_strength_paradox' marker. Not yet wired to KE evaluator."
+      }
+    },
+    "interpretation": {
+      "summary": "A strong Saturn in the chart grants the native longevity but does not protect against hardship. Saturn's dasha periods, ",
+      "detailed": "When Saturn possesses the required or extreme Shadbala (is_strong = True, total Rupas \u2265 5.0), it simultaneously confers two contradictory outcomes: long life (Dirghayu) AND persistent miseries or suffering. This paradox is specific to Saturn \u2014 strength does not guarantee enjoyment, only endurance. Effect: A strong Saturn in the chart grants the native longevity but does not protect against hardship. Saturn's dasha periods, even when the planet is fully Bali (strong), will involve discipline, delay, loss, and karmic reckoning alongside stability and persistence.",
+      "full_text_passages": [
+        {
+          "text": "When Saturn possesses the required or extreme Shadbala (is_strong = True, total Rupas \u2265 5.0), it simultaneously confers two contradictory outcomes: long life (Dirghayu) AND persistent miseries or suffering. This paradox is specific to Saturn \u2014 strength does not guarantee enjoyment, only endurance. Effect: A strong Saturn in the chart grants the native longevity but does not protect against hardship. Saturn's dasha periods, even when the planet is fully Bali (strong), will involve discipline, delay, loss, and karmic reckoning alongside stability and persistence.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "suffering",
+        "karma",
+        "dasha_prediction"
+      ],
+      "tags": [
+        "strength_interpretation",
+        "planet_shadbala_strong"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-023",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-50-52",
-    "rule_group": "strength_interpretation",
-    "yoga_name": "Constituent Strength Minimum \u2014 Group A (Jupiter, Mercury, Sun)",
-    "condition_type": "constituent_shadbala_minimum",
-    "formation": "Even if total Shadbala falls short of the minimum Rupas, a planet is still 'Considerably Favourable' if it meets these constituent minimums in Virupas. Group A applies to Jupiter, Mercury, and Sun: Sthana Bala \u2265 165, Dig Bala \u2265 35, Kala Bala \u2265 50, Cheshta Bala \u2265 112, Ayana Bala \u2265 30.",
-    "effect": "Jupiter, Mercury, or Sun meeting Group A minimums is classified as Considerably Favourable even without full Shadbala. This is a diagnostic fallback that prevents over-penalising a planet that is strong in specific dimensions while weak overall.",
-    "is_benefic": true,
-    "life_domains": [
-      "planetary_strength",
-      "dasha_prediction"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-50-52",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "constituent_shadbala_minimum",
-      "checkable": false,
-      "blockers": [
-        "KE"
-      ],
-      "planets": [
+      "sub_type": "interpretation",
+      "yoga_name": "Constituent Strength Minimum \u2014 Group A (Jupiter, Mercury, Sun)",
+      "yoga_group": "strength_interpretation",
+      "yoga_group_label": "Strength Interpretation",
+      "planets_involved": [
         "Jupiter",
         "Mercury",
         "Sun"
       ],
-      "group": "A",
-      "minimums_virupas": {
-        "sthana_bala": 165,
-        "dig_bala": 35,
-        "kala_bala": 50,
-        "chesta_bala": 112,
-        "ayana_bala": 30
-      },
-      "description": "Phase 2: evaluator reads individual component scores from planets[planet]['shadbala'] and compares against these thresholds. Not yet wired to KE evaluator."
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "constituent_shadbala_minimum",
+        "checkable": false,
+        "blockers": [
+          "KE"
+        ],
+        "planets": [
+          "Jupiter",
+          "Mercury",
+          "Sun"
+        ],
+        "group": "A",
+        "minimums_virupas": {
+          "sthana_bala": 165,
+          "dig_bala": 35,
+          "kala_bala": 50,
+          "chesta_bala": 112,
+          "ayana_bala": 30
+        },
+        "description": "Phase 2: evaluator reads individual component scores from planets[planet]['shadbala'] and compares against these thresholds. Not yet wired to KE evaluator."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter, Mercury, or Sun meeting Group A minimums is classified as Considerably Favourable even without full Shadbala. T",
+      "detailed": "Even if total Shadbala falls short of the minimum Rupas, a planet is still 'Considerably Favourable' if it meets these constituent minimums in Virupas. Group A applies to Jupiter, Mercury, and Sun: Sthana Bala \u2265 165, Dig Bala \u2265 35, Kala Bala \u2265 50, Cheshta Bala \u2265 112, Ayana Bala \u2265 30. Effect: Jupiter, Mercury, or Sun meeting Group A minimums is classified as Considerably Favourable even without full Shadbala. This is a diagnostic fallback that prevents over-penalising a planet that is strong in specific dimensions while weak overall.",
+      "full_text_passages": [
+        {
+          "text": "Even if total Shadbala falls short of the minimum Rupas, a planet is still 'Considerably Favourable' if it meets these constituent minimums in Virupas. Group A applies to Jupiter, Mercury, and Sun: Sthana Bala \u2265 165, Dig Bala \u2265 35, Kala Bala \u2265 50, Cheshta Bala \u2265 112, Ayana Bala \u2265 30. Effect: Jupiter, Mercury, or Sun meeting Group A minimums is classified as Considerably Favourable even without full Shadbala. This is a diagnostic fallback that prevents over-penalising a planet that is strong in specific dimensions while weak overall.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength",
+        "dasha_prediction"
+      ],
+      "tags": [
+        "strength_interpretation",
+        "constituent_shadbala_minimum"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Mercury",
+        "Sun"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-024",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-53-55",
-    "rule_group": "strength_interpretation",
-    "yoga_name": "Constituent Strength Minimum \u2014 Group B (Moon, Venus)",
-    "condition_type": "constituent_shadbala_minimum",
-    "formation": "Diagnostic fallback for Moon and Venus. Even if total Shadbala falls short of minimum Rupas, the planet is 'Considerably Favourable' if: Sthana Bala \u2265 133, Dig Bala \u2265 50, Kala Bala \u2265 30, Cheshta Bala \u2265 100, Ayana Bala \u2265 40.",
-    "effect": "Moon or Venus meeting Group B minimums is classified as Considerably Favourable. Moon and Venus require higher Dig Bala and Ayana Bala than the Sun group, reflecting their fundamentally receptive and relational nature.",
-    "is_benefic": true,
-    "life_domains": [
-      "planetary_strength",
-      "dasha_prediction"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-53-55",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "constituent_shadbala_minimum",
-      "checkable": false,
-      "blockers": [
-        "KE"
-      ],
-      "planets": [
+      "sub_type": "interpretation",
+      "yoga_name": "Constituent Strength Minimum \u2014 Group B (Moon, Venus)",
+      "yoga_group": "strength_interpretation",
+      "yoga_group_label": "Strength Interpretation",
+      "planets_involved": [
         "Moon",
         "Venus"
       ],
-      "group": "B",
-      "minimums_virupas": {
-        "sthana_bala": 133,
-        "dig_bala": 50,
-        "kala_bala": 30,
-        "chesta_bala": 100,
-        "ayana_bala": 40
-      },
-      "description": "Phase 2: evaluator reads individual component scores from planets[planet]['shadbala'] and compares against these thresholds. Not yet wired to KE evaluator."
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "constituent_shadbala_minimum",
+        "checkable": false,
+        "blockers": [
+          "KE"
+        ],
+        "planets": [
+          "Moon",
+          "Venus"
+        ],
+        "group": "B",
+        "minimums_virupas": {
+          "sthana_bala": 133,
+          "dig_bala": 50,
+          "kala_bala": 30,
+          "chesta_bala": 100,
+          "ayana_bala": 40
+        },
+        "description": "Phase 2: evaluator reads individual component scores from planets[planet]['shadbala'] and compares against these thresholds. Not yet wired to KE evaluator."
+      }
+    },
+    "interpretation": {
+      "summary": "Moon or Venus meeting Group B minimums is classified as Considerably Favourable. Moon and Venus require higher Dig Bala ",
+      "detailed": "Diagnostic fallback for Moon and Venus. Even if total Shadbala falls short of minimum Rupas, the planet is 'Considerably Favourable' if: Sthana Bala \u2265 133, Dig Bala \u2265 50, Kala Bala \u2265 30, Cheshta Bala \u2265 100, Ayana Bala \u2265 40. Effect: Moon or Venus meeting Group B minimums is classified as Considerably Favourable. Moon and Venus require higher Dig Bala and Ayana Bala than the Sun group, reflecting their fundamentally receptive and relational nature.",
+      "full_text_passages": [
+        {
+          "text": "Diagnostic fallback for Moon and Venus. Even if total Shadbala falls short of minimum Rupas, the planet is 'Considerably Favourable' if: Sthana Bala \u2265 133, Dig Bala \u2265 50, Kala Bala \u2265 30, Cheshta Bala \u2265 100, Ayana Bala \u2265 40. Effect: Moon or Venus meeting Group B minimums is classified as Considerably Favourable. Moon and Venus require higher Dig Bala and Ayana Bala than the Sun group, reflecting their fundamentally receptive and relational nature.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength",
+        "dasha_prediction"
+      ],
+      "tags": [
+        "strength_interpretation",
+        "constituent_shadbala_minimum"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Venus"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-025",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-56-58",
-    "rule_group": "strength_interpretation",
-    "yoga_name": "Constituent Strength Minimum \u2014 Group C (Mars, Saturn)",
-    "condition_type": "constituent_shadbala_minimum",
-    "formation": "Diagnostic fallback for Mars and Saturn. Even if total Shadbala falls short of minimum Rupas, the planet is 'Considerably Favourable' if: Sthana Bala \u2265 96, Dig Bala \u2265 30, Kala Bala \u2265 40, Cheshta Bala \u2265 67, Ayana Bala \u2265 20. Note: Saturn paradox (rule 27.18) still applies even when Group C minimums are met.",
-    "effect": "Mars or Saturn meeting Group C minimums is Considerably Favourable. The thresholds are lower than Groups A and B, reflecting the natural malefic character of these planets \u2014 they need less to achieve functional strength.",
-    "is_benefic": true,
-    "life_domains": [
-      "planetary_strength",
-      "dasha_prediction"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-56-58",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "constituent_shadbala_minimum",
-      "checkable": false,
-      "blockers": [
-        "KE"
-      ],
-      "planets": [
+      "sub_type": "interpretation",
+      "yoga_name": "Constituent Strength Minimum \u2014 Group C (Mars, Saturn)",
+      "yoga_group": "strength_interpretation",
+      "yoga_group_label": "Strength Interpretation",
+      "planets_involved": [
         "Mars",
         "Saturn"
       ],
-      "group": "C",
-      "minimums_virupas": {
-        "sthana_bala": 96,
-        "dig_bala": 30,
-        "kala_bala": 40,
-        "chesta_bala": 67,
-        "ayana_bala": 20
-      },
-      "description": "Phase 2: evaluator reads individual component scores from planets[planet]['shadbala'] and compares against these thresholds. Not yet wired to KE evaluator."
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "constituent_shadbala_minimum",
+        "checkable": false,
+        "blockers": [
+          "KE"
+        ],
+        "planets": [
+          "Mars",
+          "Saturn"
+        ],
+        "group": "C",
+        "minimums_virupas": {
+          "sthana_bala": 96,
+          "dig_bala": 30,
+          "kala_bala": 40,
+          "chesta_bala": 67,
+          "ayana_bala": 20
+        },
+        "description": "Phase 2: evaluator reads individual component scores from planets[planet]['shadbala'] and compares against these thresholds. Not yet wired to KE evaluator."
+      }
     },
-    "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
-  },
-  {
-    "batch_id": "bphs-ch27-v1-20260504",
-    "rule_id": "bphs-ch27-026",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-59-61",
-    "rule_group": "strength_interpretation",
-    "yoga_name": "Bhava Manifestation Protocol \u2014 Strongest Planet Governs",
-    "condition_type": "general_principle",
-    "formation": "Whatever yogas or effects are declared for a house (bhava), they shall manifest ONLY through the planet with the highest Shadbala associated with that bhava \u2014 either as its lord or as an occupant. If the strongest associated planet has insufficient Shadbala, the house effects are diminished regardless of the yoga's inherent strength.",
-    "effect": "No house acts independently. Its effects are funnelled through and amplified by its strongest planet. A house with a strong lord but malefic occupants will express through the lord; a house with a weak lord but a powerful occupant will express through the occupant.",
-    "is_benefic": null,
-    "life_domains": [
-      "house_strength",
-      "yoga_manifestation"
-    ],
-    "yoga_check": {
-      "type": "general_principle",
-      "checkable": false,
-      "blockers": [
-        "KE",
-        "B"
+    "interpretation": {
+      "summary": "Mars or Saturn meeting Group C minimums is Considerably Favourable. The thresholds are lower than Groups A and B, reflec",
+      "detailed": "Diagnostic fallback for Mars and Saturn. Even if total Shadbala falls short of minimum Rupas, the planet is 'Considerably Favourable' if: Sthana Bala \u2265 96, Dig Bala \u2265 30, Kala Bala \u2265 40, Cheshta Bala \u2265 67, Ayana Bala \u2265 20. Note: Saturn paradox (rule 27.18) still applies even when Group C minimums are met. Effect: Mars or Saturn meeting Group C minimums is Considerably Favourable. The thresholds are lower than Groups A and B, reflecting the natural malefic character of these planets \u2014 they need less to achieve functional strength.",
+      "full_text_passages": [
+        {
+          "text": "Diagnostic fallback for Mars and Saturn. Even if total Shadbala falls short of minimum Rupas, the planet is 'Considerably Favourable' if: Sthana Bala \u2265 96, Dig Bala \u2265 30, Kala Bala \u2265 40, Cheshta Bala \u2265 67, Ayana Bala \u2265 20. Note: Saturn paradox (rule 27.18) still applies even when Group C minimums are met. Effect: Mars or Saturn meeting Group C minimums is Considerably Favourable. The thresholds are lower than Groups A and B, reflecting the natural malefic character of these planets \u2014 they need less to achieve functional strength.",
+          "confidence": "HIGH"
+        }
       ],
-      "description": "Requires both Shadbala (for ranking planets) and Bhava Bala engine. This is an architectural principle for the interpretation layer, not a standalone condition. Phase 2 after both engines are wired."
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength",
+        "dasha_prediction"
+      ],
+      "tags": [
+        "strength_interpretation",
+        "constituent_shadbala_minimum"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars",
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
+    "rule_id": "bphs-ch27-026",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-59-61",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "interpretation",
+      "yoga_name": "Bhava Manifestation Protocol \u2014 Strongest Planet Governs",
+      "yoga_group": "strength_interpretation",
+      "yoga_group_label": "Strength Interpretation",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "KE",
+          "B"
+        ],
+        "description": "Requires both Shadbala (for ranking planets) and Bhava Bala engine. This is an architectural principle for the interpretation layer, not a standalone condition. Phase 2 after both engines are wired."
+      }
+    },
+    "interpretation": {
+      "summary": "No house acts independently. Its effects are funnelled through and amplified by its strongest planet. A house with a str",
+      "detailed": "Whatever yogas or effects are declared for a house (bhava), they shall manifest ONLY through the planet with the highest Shadbala associated with that bhava \u2014 either as its lord or as an occupant. If the strongest associated planet has insufficient Shadbala, the house effects are diminished regardless of the yoga's inherent strength. Effect: No house acts independently. Its effects are funnelled through and amplified by its strongest planet. A house with a strong lord but malefic occupants will express through the lord; a house with a weak lord but a powerful occupant will express through the occupant.",
+      "full_text_passages": [
+        {
+          "text": "Whatever yogas or effects are declared for a house (bhava), they shall manifest ONLY through the planet with the highest Shadbala associated with that bhava \u2014 either as its lord or as an occupant. If the strongest associated planet has insufficient Shadbala, the house effects are diminished regardless of the yoga's inherent strength. Effect: No house acts independently. Its effects are funnelled through and amplified by its strongest planet. A house with a strong lord but malefic occupants will express through the lord; a house with a weak lord but a powerful occupant will express through the occupant.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "house_strength",
+      "life_domains": [
+        "house_strength",
+        "yoga_manifestation"
+      ],
+      "tags": [
+        "strength_interpretation",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
+  },
+  {
     "rule_id": "bphs-ch27-027",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-18",
-    "rule_group": "strength_interpretation",
-    "yoga_name": "Ahargana Derivation \u2014 Varsha and Maasa Lord Calculation",
-    "condition_type": "engine_specification",
-    "formation": "Determines which planet receives the Varsha (Year) and Maasa (Month) temporal multipliers using day-count from creation (Ahargana). Varsha Lord: divide Ahargana by 360; multiply completed years by 3, add 1, divide by 7 \u2014 remainder is weekday index for Varsha lord. Maasa Lord: divide Ahargana by 30; multiply completed months by 2, add 1, divide by 7 \u2014 remainder is weekday index for Maasa lord. Dina Lord: Ahargana mod 7 = weekday index (Sunday=0, Saturday=6). Weekday sequence: Sun/Moon/Mars/Mercury/Jupiter/Venus/Saturn.",
-    "effect": "Provides the exact mathematical derivation for the temporal lordship multipliers. The current engine approximates Varsha lord from Mesha Sankranti (Sun's Aries ingress) and Maasa lord from the preceding new moon, which is equivalent in effect.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-18",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Current engine uses _find_previous_mesha_sankranti_jd() and _find_previous_new_moon_jd() for Varsha and Maasa lords \u2014 equivalent to Ahargana approach. Engine spec reference only."
+      "sub_type": "interpretation",
+      "yoga_name": "Ahargana Derivation \u2014 Varsha and Maasa Lord Calculation",
+      "yoga_group": "strength_interpretation",
+      "yoga_group_label": "Strength Interpretation",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Current engine uses _find_previous_mesha_sankranti_jd() and _find_previous_new_moon_jd() for Varsha and Maasa lords \u2014 equivalent to Ahargana approach. Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "Provides the exact mathematical derivation for the temporal lordship multipliers. The current engine approximates Varsha",
+      "detailed": "Determines which planet receives the Varsha (Year) and Maasa (Month) temporal multipliers using day-count from creation (Ahargana). Varsha Lord: divide Ahargana by 360; multiply completed years by 3, add 1, divide by 7 \u2014 remainder is weekday index for Varsha lord. Maasa Lord: divide Ahargana by 30; multiply completed months by 2, add 1, divide by 7 \u2014 remainder is weekday index for Maasa lord. Dina Lord: Ahargana mod 7 = weekday index (Sunday=0, Saturday=6). Weekday sequence: Sun/Moon/Mars/Mercury/Jupiter/Venus/Saturn. Effect: Provides the exact mathematical derivation for the temporal lordship multipliers. The current engine approximates Varsha lord from Mesha Sankranti (Sun's Aries ingress) and Maasa lord from the preceding new moon, which is equivalent in effect.",
+      "full_text_passages": [
+        {
+          "text": "Determines which planet receives the Varsha (Year) and Maasa (Month) temporal multipliers using day-count from creation (Ahargana). Varsha Lord: divide Ahargana by 360; multiply completed years by 3, add 1, divide by 7 \u2014 remainder is weekday index for Varsha lord. Maasa Lord: divide Ahargana by 30; multiply completed months by 2, add 1, divide by 7 \u2014 remainder is weekday index for Maasa lord. Dina Lord: Ahargana mod 7 = weekday index (Sunday=0, Saturday=6). Weekday sequence: Sun/Moon/Mars/Mercury/Jupiter/Venus/Saturn. Effect: Provides the exact mathematical derivation for the temporal lordship multipliers. The current engine approximates Varsha lord from Mesha Sankranti (Sun's Aries ingress) and Maasa lord from the preceding new moon, which is equivalent in effect.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "strength_interpretation",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   },
   {
-    "batch_id": "bphs-ch27-v1-20260504",
     "rule_id": "bphs-ch27-028",
-    "science": "jyotish",
-    "source_book": "Brihat Parashara Hora Shastra",
-    "source_book_id": "bphs",
-    "source_chapter": 27,
-    "source_chapter_name": "Evaluation of Strengths (Shadbala)",
-    "source_sloka": "ch27-sloka-20-22",
-    "rule_group": "strength_interpretation",
-    "yoga_name": "Ayana Bala Kranti Precision \u2014 Declination Direction Rules",
-    "condition_type": "engine_specification",
-    "formation": "Precise directional gate for Ayana Bala declination (Kranti): Sun, Mars, Jupiter, Venus \u2192 Northern declination (Uttara Kranti) = PLUS. Moon, Saturn \u2192 Southern declination (Dakshina Kranti) = PLUS. Mercury \u2192 any direction = always PLUS. Opposite conditions = MINUS for all except Mercury. Super-modifier: Sun's final Ayana Bala product is always multiplied by 2. Mercury exception: gains strength from any declination (always PLUS).",
-    "effect": "The directional gate determines whether a planet's distance from the equinox adds to or subtracts from Ayana Bala. Sun in Northern declination is doubly empowered (standard gain \u00d7 2). Mercury ignores direction entirely.",
-    "is_benefic": null,
-    "life_domains": [
-      "planetary_strength"
-    ],
-    "yoga_check": {
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 27,
+      "chapter_name": "Evaluation of Strengths (Shadbala)",
+      "sloka": "ch27-sloka-20-22",
+      "batch_id": "bphs-ch27-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
       "type": "engine_specification",
-      "checkable": false,
-      "blockers": [],
-      "description": "Implemented in vedic_calculator._ayana_bala() using _planet_declination() and the Moon/Saturn reversal logic. Sun \u00d7 2 modifier and Mercury always-PLUS both present. Engine spec reference only."
+      "sub_type": "interpretation",
+      "yoga_name": "Ayana Bala Kranti Precision \u2014 Declination Direction Rules",
+      "yoga_group": "strength_interpretation",
+      "yoga_group_label": "Strength Interpretation",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "engine_specification",
+        "checkable": false,
+        "blockers": [],
+        "description": "Implemented in vedic_calculator._ayana_bala() using _planet_declination() and the Moon/Saturn reversal logic. Sun \u00d7 2 modifier and Mercury always-PLUS both present. Engine spec reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "The directional gate determines whether a planet's distance from the equinox adds to or subtracts from Ayana Bala. Sun i",
+      "detailed": "Precise directional gate for Ayana Bala declination (Kranti): Sun, Mars, Jupiter, Venus \u2192 Northern declination (Uttara Kranti) = PLUS. Moon, Saturn \u2192 Southern declination (Dakshina Kranti) = PLUS. Mercury \u2192 any direction = always PLUS. Opposite conditions = MINUS for all except Mercury. Super-modifier: Sun's final Ayana Bala product is always multiplied by 2. Mercury exception: gains strength from any declination (always PLUS). Effect: The directional gate determines whether a planet's distance from the equinox adds to or subtracts from Ayana Bala. Sun in Northern declination is doubly empowered (standard gain \u00d7 2). Mercury ignores direction entirely.",
+      "full_text_passages": [
+        {
+          "text": "Precise directional gate for Ayana Bala declination (Kranti): Sun, Mars, Jupiter, Venus \u2192 Northern declination (Uttara Kranti) = PLUS. Moon, Saturn \u2192 Southern declination (Dakshina Kranti) = PLUS. Mercury \u2192 any direction = always PLUS. Opposite conditions = MINUS for all except Mercury. Super-modifier: Sun's final Ayana Bala product is always multiplied by 2. Mercury exception: gains strength from any declination (always PLUS). Effect: The directional gate determines whether a planet's distance from the equinox adds to or subtracts from Ayana Bala. Sun in Northern declination is doubly empowered (standard gain \u00d7 2). Mercury ignores direction entirely.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "planetary_strength",
+      "life_domains": [
+        "planetary_strength"
+      ],
+      "tags": [
+        "strength_interpretation",
+        "engine_specification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch27-strength_interpretation",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
     },
     "approval_status": "pending_review",
-    "validation": {
-      "status": "pending_review",
-      "validator_notes": [],
-      "last_validated": null
-    },
-    "created_at": "2026-05-03T21:53:39.751925+00:00",
-    "updated_at": "2026-05-03T21:53:39.751925+00:00"
+    "created_at": "2026-05-03T22:00:29.531604+00:00"
   }
 ]

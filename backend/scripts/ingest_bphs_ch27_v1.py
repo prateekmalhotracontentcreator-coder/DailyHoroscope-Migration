@@ -1029,32 +1029,84 @@ def _build_rules() -> list[dict]:
     now = datetime.now(timezone.utc)
     rules: list[dict] = []
     for i, entry in enumerate(YOGA_DATA, start=1):
-        rid = f"{BOOK_ID}-ch{CHAPTER:02d}-{i:03d}"
+        rid        = f"{BOOK_ID}-ch{CHAPTER:02d}-{i:03d}"
+        group      = entry["group"]
+        ctype      = entry["condition_type"]
+        yoga_name  = entry["yoga_name"]
+        formation  = entry["formation"]
+        effect     = entry.get("effect", "")
+        domains    = entry.get("life_domains", [])
+        is_benefic = entry.get("is_benefic")
+        ycheck     = entry["yoga_check"]
+        checkable  = bool(ycheck.get("checkable"))
+        detailed   = formation + (" Effect: " + effect if effect else "")
+        tags       = [group, ctype]
+        if checkable:
+            tags.append("yoga_checkable")
+
         rule = {
-            "batch_id":        BATCH_ID,
-            "rule_id":         rid,
-            "science":         SCIENCE,
-            "source_book":     BOOK,
-            "source_book_id":  BOOK_ID,
-            "source_chapter":  CHAPTER,
-            "source_chapter_name": CHAP_NAME,
-            "source_sloka":    entry.get("sloka", ""),
-            "rule_group":      entry["group"],
-            "yoga_name":       entry["yoga_name"],
-            "condition_type":  entry["condition_type"],
-            "formation":       entry["formation"],
-            "effect":          entry["effect"],
-            "is_benefic":      entry.get("is_benefic"),
-            "life_domains":    entry.get("life_domains", []),
-            "yoga_check":      entry["yoga_check"],
-            "approval_status": "pending_review",
-            "validation": {
-                "status":         "pending_review",
-                "validator_notes": [],
-                "last_validated": None,
+            "rule_id":   rid,
+            "science_id": SCIENCE,
+            "source": {
+                "book":           BOOK,
+                "book_id":        BOOK_ID,
+                "chapter":        CHAPTER,
+                "chapter_name":   CHAP_NAME,
+                "sloka":          entry.get("sloka", ""),
+                "batch_id":       BATCH_ID,
+                "primary":        BOOK,
+                "page_ref":       None,
+                "passage_ref_id": None,
             },
+            "condition": {
+                "type":               ctype,
+                "sub_type":           "engine_specification" if "spec" in group else "interpretation",
+                "yoga_name":          yoga_name,
+                "yoga_group":         group,
+                "yoga_group_label":   group.replace("_", " ").title(),
+                "planets_involved":   ycheck.get("planets", []) or (
+                    [ycheck["planet"]] if ycheck.get("planet") else []
+                ),
+                "houses_involved":    [],
+                "sub_conditions":     [],
+                "operator":           "and",
+                "gender_context":     "neutral",
+                "condition_group_id": f"bphs-ch{CHAPTER:02d}-{group}",
+                "is_group_summary":   False,
+                "is_benefic":         is_benefic,
+                "yoga_check":         ycheck,
+            },
+            "interpretation": {
+                "summary":            effect[:120] if effect else yoga_name[:120],
+                "detailed":           detailed,
+                "full_text_passages": [{"text": detailed, "confidence": "HIGH"}],
+                "remedies":           [],
+                "life_domain":        domains[0] if domains else "planetary_strength",
+                "life_domains":       domains,
+                "tags":               tags,
+                "physical_markers":   [],
+            },
+            "metadata": {
+                "planets_involved":     ycheck.get("planets", []) or (
+                    [ycheck["planet"]] if ycheck.get("planet") else []
+                ),
+                "houses_involved":      [],
+                "signs_involved":       [],
+                "condition_count":      1,
+                "gender_context":       "neutral",
+                "condition_group_id":   f"bphs-ch{CHAPTER:02d}-{group}",
+                "is_group_summary":     False,
+                "has_physical_markers": False,
+                "physical_categories":  [],
+                "yoga_checkable":       checkable,
+            },
+            "confidence": {
+                "source_confidence":  "HIGH",
+                "extraction_method":  "hard_coded",
+                "validated":          False,
+            },
+            "approval_status": "pending_review",
             "created_at":      now.isoformat(),
-            "updated_at":      now.isoformat(),
         }
         rules.append(rule)
     return rules
@@ -1080,9 +1132,9 @@ def main() -> None:
 
     # ── Summary ───────────────────────────────────────────────────────────────
     from collections import Counter
-    groups  = Counter(r["rule_group"]      for r in rules)
-    ctypes  = Counter(r["condition_type"]  for r in rules)
-    checkable_count = sum(1 for r in rules if r["yoga_check"].get("checkable"))
+    groups  = Counter(r["condition"]["yoga_group"]  for r in rules)
+    ctypes  = Counter(r["condition"]["type"]        for r in rules)
+    checkable_count = sum(1 for r in rules if r["condition"]["yoga_check"].get("checkable"))
     print(f"\nBPHS Ch {CHAPTER} — {CHAP_NAME}")
     print(f"  Batch:      {BATCH_ID}")
     print(f"  Rules:      {len(rules)}")
@@ -1121,9 +1173,9 @@ def main() -> None:
         from pymongo import MongoClient  # type: ignore
         client = MongoClient(args.mongo_url)
         db     = client[args.db_name]
-        col    = db["yoga_rules"]
+        col    = db["interpretation_rules"]
         result = col.insert_many(rules)
-        print(f"\n✅ Inserted {len(result.inserted_ids)} rules → {args.db_name}.yoga_rules")
+        print(f"\n✅ Inserted {len(result.inserted_ids)} rules → {args.db_name}.interpretation_rules")
         client.close()
         return
 
@@ -1133,9 +1185,9 @@ def main() -> None:
         from motor.motor_asyncio import AsyncIOMotorClient  # type: ignore
         client = AsyncIOMotorClient(args.mongo_url)
         db     = client[args.db_name]
-        col    = db["yoga_rules"]
+        col    = db["interpretation_rules"]
         result = await col.insert_many(rules)
-        print(f"\n✅ Inserted {len(result.inserted_ids)} rules → {args.db_name}.yoga_rules")
+        print(f"\n✅ Inserted {len(result.inserted_ids)} rules → {args.db_name}.interpretation_rules")
         client.close()
 
     asyncio.run(_upload())
