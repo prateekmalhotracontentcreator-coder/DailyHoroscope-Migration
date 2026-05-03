@@ -2488,3 +2488,59 @@ Not all 7 planets appear for every lagna — BPHS only classifies those with cle
 | **Total** | **82** | |
 
 By group: `lordship_principle` approved=1/pending=5 · `general_principle` approved=2/pending=2 · `rajayoga_definition` approved=3/pending=2 · `lagna_planet_quality` approved=22/pending=30/flagged=15
+
+---
+
+## BPHS Chapter 27 — Evaluation of Strengths / Shadbala (4 May 2026)
+
+**Batch ID:** `bphs-ch27-v1-20260504`
+**Script:** `backend/scripts/ingest_bphs_ch27_v1.py`
+**JSON:** `backend/scripts/bphs_ch27_rules.json`
+**Source:** PDF (`BPHS_Ch27_Vol1 _Strengths.pdf`) + Notebook LM decode (`BPHS_Ch27_Vol1_JSON Ready_LM.docx` + `BPHS_Ch27_Vol1_Diagnostic_LM.docx`)
+
+### Rule groups
+
+| Group | Rules | Purpose |
+|---|---|---|
+| `shadbala_engine_spec` | 17 | Canonical spec for all 6 Bala components — matches vedic_calculator.py |
+| `bhava_bala_spec` | 3 | Bhava Bala composite + occupancy modifiers + sign-specific cusp formula |
+| `strength_interpretation` | 8 | Min thresholds, Saturn paradox, constituent Groups A/B/C, Bhava manifestation |
+| **Total** | **28** | |
+
+### Checkable: 0 / 28
+
+All rules `checkable: False`. Two reasons:
+- **Engine spec rules (22):** Already implemented in `vedic_calculator.py → calculate_shadbala()`. KE stores them as canonical reference only.
+- **Interpretation rules (6):** Need `planet_shadbala_strong` and `constituent_shadbala_minimum` condition types wired to the `shadbala` payload in the chart response — Phase 2.
+
+New condition types introduced:
+- `engine_specification` — formula/mapping reference, no evaluator branch needed
+- `planet_shadbala_strong` — checks `planets[p]['shadbala']['is_strong']` — Phase 2
+- `constituent_shadbala_minimum` — checks per-component Virupa scores — Phase 2
+- `general_principle` — architectural principle, not evaluable standalone
+
+### Tribhaga Bala bug fixed (same commit)
+
+Codex's `_tribhaga_bala()` in `vedic_calculator.py` had two errors:
+- `Mercury` constant = 60 (wrong — that's Nathonnatha)
+- Day lords = `Jupiter/Sun/Saturn` (wrong — should be `Mercury/Sun/Saturn`)
+
+Fixed to: **Jupiter constant = 60**, day lords = **Mercury/Sun/Saturn** per BPHS Ch27 Sloka 9.
+
+### Schema fix required (3 upload attempts)
+
+First two uploads used a flat schema (top-level `batch_id`, `condition_type` etc.) instead of the nested schema the validator expects (`source.batch_id`, `condition.type`, `interpretation.*`). Fixed `_build_rules()` to match Ch 40 template. Also fixed `interpretation.summary` using `yoga_name` instead of `effect[:120]` to avoid mid-sentence truncation false flags.
+
+### Validation results
+
+Single pass. 12 false-flag truncation errors patched via `patch_ch27_summary_flags.py`.
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 8 | 29% |
+| `pending_human_review` | 20 | 71% |
+| `flagged` | 0 | 0% |
+| Contradictions | 0 | — |
+| **Total** | **28** | |
+
+By group: `shadbala_engine_spec` 17 · `bhava_bala_spec` 3 · `strength_interpretation` 8
