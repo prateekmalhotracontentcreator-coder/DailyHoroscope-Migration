@@ -1,0 +1,3904 @@
+[
+  {
+    "rule_id": "lalkitab-ch24-moon-h1",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "predicted_age": 90,
+      "day_of_death": "Wednesday",
+      "house_lords": [
+        "Mars"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H1 — Lifespan 90 Years, Death on Wednesday",
+      "detailed": "Moon placed in the 1st house: base lifespan = 90 years. Day of death = Wednesday. House lord(s) = Mars. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 1st house: base lifespan = 90 years. Day of death = Wednesday. House lord(s) = Mars. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h1",
+        "age_engine",
+        "lifespan",
+        "wednesday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h2",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "predicted_age": 96,
+      "day_of_death": "Friday",
+      "house_lords": [
+        "Venus"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H2 — Lifespan 96 Years, Death on Friday",
+      "detailed": "Moon placed in the 2nd house: base lifespan = 96 years. Day of death = Friday. House lord(s) = Venus. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 2nd house: base lifespan = 96 years. Day of death = Friday. House lord(s) = Venus. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h2",
+        "age_engine",
+        "lifespan",
+        "friday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h3",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "predicted_age": 80,
+      "day_of_death": "Wednesday",
+      "house_lords": [
+        "Mercury"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H3 — Lifespan 80 Years, Death on Wednesday",
+      "detailed": "Moon placed in the 3rd house: base lifespan = 80 years. Day of death = Wednesday. House lord(s) = Mercury. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 3rd house: base lifespan = 80 years. Day of death = Wednesday. House lord(s) = Mercury. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h3",
+        "age_engine",
+        "lifespan",
+        "wednesday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h4",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "predicted_age": 85,
+      "day_of_death": "Friday",
+      "house_lords": [
+        "Moon"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H4 — Lifespan 85 Years, Death on Friday",
+      "detailed": "Moon placed in the 4th house: base lifespan = 85 years. Day of death = Friday. House lord(s) = Moon. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 4th house: base lifespan = 85 years. Day of death = Friday. House lord(s) = Moon. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h4",
+        "age_engine",
+        "lifespan",
+        "friday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h5",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        5
+      ],
+      "predicted_age": 100,
+      "day_of_death": "Tuesday",
+      "house_lords": [
+        "Ketu",
+        "Mercury"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H5 — Lifespan 100 Years, Death on Tuesday",
+      "detailed": "Moon placed in the 5th house: base lifespan = 100 years. Day of death = Tuesday. House lord(s) = Ketu, Mercury. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 5th house: base lifespan = 100 years. Day of death = Tuesday. House lord(s) = Ketu, Mercury. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h5",
+        "age_engine",
+        "lifespan",
+        "tuesday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        5
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h6",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        6
+      ],
+      "predicted_age": 80,
+      "day_of_death": "Sunday",
+      "house_lords": [
+        "Venus"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H6 — Lifespan 80 Years, Death on Sunday",
+      "detailed": "Moon placed in the 6th house: base lifespan = 80 years. Day of death = Sunday. House lord(s) = Venus. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 6th house: base lifespan = 80 years. Day of death = Sunday. House lord(s) = Venus. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h6",
+        "age_engine",
+        "lifespan",
+        "sunday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        6
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h7",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "predicted_age": 85,
+      "day_of_death": "Monday",
+      "house_lords": [
+        "Mars"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H7 — Lifespan 85 Years, Death on Monday",
+      "detailed": "Moon placed in the 7th house: base lifespan = 85 years. Day of death = Monday. House lord(s) = Mars. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 7th house: base lifespan = 85 years. Day of death = Monday. House lord(s) = Mars. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h7",
+        "age_engine",
+        "lifespan",
+        "monday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h8",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "predicted_age": 90,
+      "day_of_death": "Wednesday",
+      "house_lords": [
+        "Jupiter"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H8 — Lifespan 90 Years, Death on Wednesday",
+      "detailed": "Moon placed in the 8th house: base lifespan = 90 years. Day of death = Wednesday. House lord(s) = Jupiter. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 8th house: base lifespan = 90 years. Day of death = Wednesday. House lord(s) = Jupiter. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h8",
+        "age_engine",
+        "lifespan",
+        "wednesday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h9",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "predicted_age": 75,
+      "day_of_death": "Thursday",
+      "house_lords": [
+        "Jupiter"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H9 — Lifespan 75 Years, Death on Thursday",
+      "detailed": "Moon placed in the 9th house: base lifespan = 75 years. Day of death = Thursday. House lord(s) = Jupiter. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 9th house: base lifespan = 75 years. Day of death = Thursday. House lord(s) = Jupiter. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h9",
+        "age_engine",
+        "lifespan",
+        "thursday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h10",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        10
+      ],
+      "predicted_age": 90,
+      "day_of_death": "Tuesday",
+      "house_lords": [
+        "Saturn"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H10 — Lifespan 90 Years, Death on Tuesday",
+      "detailed": "Moon placed in the 10th house: base lifespan = 90 years. Day of death = Tuesday. House lord(s) = Saturn. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 10th house: base lifespan = 90 years. Day of death = Tuesday. House lord(s) = Saturn. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h10",
+        "age_engine",
+        "lifespan",
+        "tuesday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        10
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h11",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "predicted_age": 90,
+      "day_of_death": "Saturday",
+      "house_lords": [
+        "Saturn"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H11 — Lifespan 90 Years, Death on Saturday",
+      "detailed": "Moon placed in the 11th house: base lifespan = 90 years. Day of death = Saturday. House lord(s) = Saturn. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 11th house: base lifespan = 90 years. Day of death = Saturday. House lord(s) = Saturn. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h11",
+        "age_engine",
+        "lifespan",
+        "saturday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-moon-h12",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_age_engine",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "predicted_age": 90,
+      "day_of_death": "Thursday",
+      "house_lords": [
+        "Rahu",
+        "Jupiter"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon in H12 — Lifespan 90 Years, Death on Thursday",
+      "detailed": "Moon placed in the 12th house: base lifespan = 90 years. Day of death = Thursday. House lord(s) = Rahu, Jupiter. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+      "full_text_passages": [
+        {
+          "text": "Moon placed in the 12th house: base lifespan = 90 years. Day of death = Thursday. House lord(s) = Rahu, Jupiter. The house lord determines the specific day of death and confirms the lifespan reading from the Moon-House primary engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h12",
+        "age_engine",
+        "lifespan",
+        "thursday"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-mod-venus",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_modifier",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Venus"
+      ],
+      "predicted_age": 85,
+      "modifier_type": "conjunction"
+    },
+    "interpretation": {
+      "summary": "Moon-Venus Conjunction Modifier — Age 85",
+      "detailed": "When Moon is conjunct Venus (in the same house), the lifespan modifier overrides the base Moon-House reading and sets the predicted age to 85 years.",
+      "full_text_passages": [
+        {
+          "text": "When Moon is conjunct Venus (in the same house), the lifespan modifier overrides the base Moon-House reading and sets the predicted age to 85 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "venus",
+        "conjunction",
+        "modifier",
+        "age_85"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Venus"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-mod-male-planet",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_modifier",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Jupiter",
+        "Sun",
+        "Mars"
+      ],
+      "predicted_age": 96,
+      "modifier_type": "conjunction",
+      "planet_set": "male"
+    },
+    "interpretation": {
+      "summary": "Moon-Male Planet Conjunction Modifier — Age 96",
+      "detailed": "When Moon is conjunct any male planet (Jupiter, Sun, or Mars), the lifespan modifier overrides the base Moon-House reading and sets the predicted age to 96 years.",
+      "full_text_passages": [
+        {
+          "text": "When Moon is conjunct any male planet (Jupiter, Sun, or Mars), the lifespan modifier overrides the base Moon-House reading and sets the predicted age to 96 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "jupiter",
+        "sun",
+        "mars",
+        "conjunction",
+        "modifier",
+        "age_96"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Jupiter",
+        "Sun",
+        "Mars"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-mod-evil-planet",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "moon_modifier",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Ketu"
+      ],
+      "age_adjustment": -3,
+      "modifier_type": "subtraction"
+    },
+    "interpretation": {
+      "summary": "Moon-Evil Planet Conjunction Modifier — Minus 3 Years",
+      "detailed": "When Moon is conjunct Rahu or Ketu (evil/shadow planets), the lifespan is reduced by 3 years from the base Moon-House reading. This is a subtractive modifier applied on top of the primary age calculation.",
+      "full_text_passages": [
+        {
+          "text": "When Moon is conjunct Rahu or Ketu (evil/shadow planets), the lifespan is reduced by 3 years from the base Moon-House reading. This is a subtractive modifier applied on top of the primary age calculation.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "rahu",
+        "ketu",
+        "conjunction",
+        "modifier",
+        "minus_3"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-mod-saturn-jup-h11",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "moon_modifier",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Saturn",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "modifier_type": "override",
+      "override_condition": "h11_not_vacant"
+    },
+    "interpretation": {
+      "summary": "Saturn-Jupiter in H11 — Override Moon Table with H11 Calculation",
+      "detailed": "Decision tree: If Saturn and Jupiter are both in H11 AND H11 is NOT vacant (other planets present), calculate lifespan from H11 data — do not use the Moon table. If H11 IS vacant, revert to the standard Moon table calculation. This is the priority override rule for the Moon-House Age Engine.",
+      "full_text_passages": [
+        {
+          "text": "Decision tree: If Saturn and Jupiter are both in H11 AND H11 is NOT vacant (other planets present), calculate lifespan from H11 data — do not use the Moon table. If H11 IS vacant, revert to the standard Moon table calculation. This is the priority override rule for the Moon-House Age Engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "saturn",
+        "jupiter",
+        "h11",
+        "override",
+        "decision_tree"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-luck-childhood",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "luck_window",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "age_threshold": 12,
+      "luck_state": "uncertain"
+    },
+    "interpretation": {
+      "summary": "Childhood Luck Uncertainty — Null State Until Age 12",
+      "detailed": "A child's luck remains in an uncertain/null state until the age of 12. Astrological predictions for life events, career, or wealth cannot be reliably made for natives under 12 years. The engine flags any query for a native under 12 as 'luck_state: uncertain.'",
+      "full_text_passages": [
+        {
+          "text": "A child's luck remains in an uncertain/null state until the age of 12. Astrological predictions for life events, career, or wealth cannot be reliably made for natives under 12 years. The engine flags any query for a native under 12 as 'luck_state: uncertain.'",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "general",
+        "timing",
+        "children"
+      ],
+      "tags": [
+        "luck",
+        "childhood",
+        "uncertainty",
+        "age_12"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-luck-senior",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "luck_window",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "age_threshold": 72,
+      "luck_state": "uncertain"
+    },
+    "interpretation": {
+      "summary": "Senior Luck Uncertainty — Null State After Age 70-72",
+      "detailed": "A native's luck returns to an uncertain state after the age of 70-72 years. Just as childhood luck is unpredictable before age 12, senior luck becomes unpredictable after 70-72. The engine flags queries for natives over 70-72 as 'luck_state: uncertain.'",
+      "full_text_passages": [
+        {
+          "text": "A native's luck returns to an uncertain state after the age of 70-72 years. Just as childhood luck is unpredictable before age 12, senior luck becomes unpredictable after 70-72. The engine flags queries for natives over 70-72 as 'luck_state: uncertain.'",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "general",
+        "timing",
+        "longevity"
+      ],
+      "tags": [
+        "luck",
+        "senior",
+        "uncertainty",
+        "age_70"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-maturity-catalog",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maturity_ages",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Jupiter",
+        "Venus",
+        "Saturn",
+        "Rahu",
+        "Ketu"
+      ],
+      "maturity_ages": {
+        "Sun": 2,
+        "Jupiter": 16,
+        "Moon": 24,
+        "Venus": 25,
+        "Mars": 28,
+        "Mercury": 34,
+        "Saturn": 36,
+        "Rahu": 42,
+        "Ketu": 48
+      }
+    },
+    "interpretation": {
+      "summary": "Planet Maturity Age Catalog — Special Effect Trigger Years",
+      "detailed": "Each planet manifests its 'special effect' in the native's life at its maturity age: Sun=2, Jupiter=16, Moon=24, Venus=25, Mars=28, Mercury=34, Saturn=36, Rahu=42, Ketu=48. These years are logic triggers — the engine checks for the relevant planet's placement and status when the native reaches that maturity year.",
+      "full_text_passages": [
+        {
+          "text": "Each planet manifests its 'special effect' in the native's life at its maturity age: Sun=2, Jupiter=16, Moon=24, Venus=25, Mars=28, Mercury=34, Saturn=36, Rahu=42, Ketu=48. These years are logic triggers — the engine checks for the relevant planet's placement and status when the native reaches that maturity year.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "general",
+        "timing",
+        "dasha"
+      ],
+      "tags": [
+        "maturity",
+        "planet_ages",
+        "special_effect",
+        "trigger_years"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Jupiter",
+        "Venus",
+        "Saturn",
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-mortality-harsh-nature",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mortality_symptom",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "remaining_lifespan": "1 year"
+    },
+    "interpretation": {
+      "summary": "Mortality Symptom — Harsh Nature Change (1 Year Remaining)",
+      "detailed": "If the native's habits change and their nature becomes harsh (sudden behavioral shift toward cruelty or bitterness), the remaining lifespan is approximately 1 year.",
+      "full_text_passages": [
+        {
+          "text": "If the native's habits change and their nature becomes harsh (sudden behavioral shift toward cruelty or bitterness), the remaining lifespan is approximately 1 year.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "death"
+      ],
+      "tags": [
+        "behavior",
+        "mortality_symptom",
+        "harsh_nature"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-mortality-north-star",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mortality_symptom",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "remaining_lifespan": "40 days"
+    },
+    "interpretation": {
+      "summary": "Mortality Symptom — Cannot Locate North Star (40 Days Remaining)",
+      "detailed": "If the native becomes unable to locate the North Star (Dhruv Tara) at night — a capability they previously possessed — the remaining lifespan is approximately 40 days.",
+      "full_text_passages": [
+        {
+          "text": "If the native becomes unable to locate the North Star (Dhruv Tara) at night — a capability they previously possessed — the remaining lifespan is approximately 40 days.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "death"
+      ],
+      "tags": [
+        "north_star",
+        "mortality_symptom",
+        "celestial_orientation"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-mortality-reflection-organic",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mortality_symptom",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "remaining_lifespan": "7 days"
+    },
+    "interpretation": {
+      "summary": "Mortality Symptom — No Reflection in Ghee/Oil/Water (7 Days Remaining)",
+      "detailed": "If the native's reflection is not visible in ghee, oil, or water (organic media), the critical mortality state is triggered. Remaining lifespan is approximately 7 days.",
+      "full_text_passages": [
+        {
+          "text": "If the native's reflection is not visible in ghee, oil, or water (organic media), the critical mortality state is triggered. Remaining lifespan is approximately 7 days.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "death"
+      ],
+      "tags": [
+        "reflection",
+        "ghee",
+        "oil",
+        "water",
+        "mortality_symptom"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-mortality-reflection-mirror",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mortality_symptom",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "remaining_lifespan": "1 day"
+    },
+    "interpretation": {
+      "summary": "Mortality Symptom — No Reflection in Mirror (1 Day Remaining)",
+      "detailed": "If the native's reflection is not visible in a mirror — a more severe indicator than organic media failure — the remaining lifespan is approximately 1 day.",
+      "full_text_passages": [
+        {
+          "text": "If the native's reflection is not visible in a mirror — a more severe indicator than organic media failure — the remaining lifespan is approximately 1 day.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "death"
+      ],
+      "tags": [
+        "reflection",
+        "mirror",
+        "mortality_symptom",
+        "critical"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-mortality-stasis",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "mortality_symptom",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "remaining_lifespan": "a few hours"
+    },
+    "interpretation": {
+      "summary": "Mortality Symptom — Physical Stasis (Few Hours Remaining)",
+      "detailed": "Final phase indicator: if the stomach does not stir during breathing AND the eyes become 'stoned' (fixed/glassy), the native has only a few hours remaining. This is the terminal physical stasis marker.",
+      "full_text_passages": [
+        {
+          "text": "Final phase indicator: if the stomach does not stir during breathing AND the eyes become 'stoned' (fixed/glassy), the native has only a few hours remaining. This is the terminal physical stasis marker.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "death"
+      ],
+      "tags": [
+        "physical_stasis",
+        "stomach",
+        "eyes",
+        "mortality_symptom",
+        "terminal"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-infancy-12d",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Sun",
+        "Ketu"
+      ],
+      "houses_involved": [
+        6,
+        10
+      ],
+      "predicted_age_days": 12
+    },
+    "interpretation": {
+      "summary": "Critical Infancy — Moon H6+Sun H10 or Moon+Ketu H6 → 12 Days",
+      "detailed": "Critical infancy mortality trigger: (A) Moon in H6 AND Sun in H10, OR (B) Moon conjunct Ketu in H6. Predicted age: 12 days. Applies to infant mortality within the first fortnight.",
+      "full_text_passages": [
+        {
+          "text": "Critical infancy mortality trigger: (A) Moon in H6 AND Sun in H10, OR (B) Moon conjunct Ketu in H6. Predicted age: 12 days. Applies to infant mortality within the first fortnight.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "progeny",
+        "infant_mortality"
+      ],
+      "tags": [
+        "infancy",
+        "moon",
+        "ketu",
+        "h6",
+        "short_life",
+        "12_days"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Sun",
+        "Ketu"
+      ],
+      "houses_involved": [
+        6,
+        10
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-childhood-12m",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun",
+        "Saturn",
+        "Jupiter"
+      ],
+      "predicted_age_months": 12
+    },
+    "interpretation": {
+      "summary": "Childhood Mortality — Sun+Saturn in Jupiter's House → 12 Months",
+      "detailed": "Childhood mortality trigger: Sun and Saturn conjunct in Jupiter's house OR Sun and Saturn conjunct with an unfriendly male planet. Predicted age: 12 months. Applies to mortality within the first year of life.",
+      "full_text_passages": [
+        {
+          "text": "Childhood mortality trigger: Sun and Saturn conjunct in Jupiter's house OR Sun and Saturn conjunct with an unfriendly male planet. Predicted age: 12 months. Applies to mortality within the first year of life.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "progeny",
+        "infant_mortality"
+      ],
+      "tags": [
+        "childhood",
+        "sun",
+        "saturn",
+        "jupiter",
+        "short_life",
+        "12_months"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Saturn",
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-early-9y",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun",
+        "Moon"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "predicted_age": 9
+    },
+    "interpretation": {
+      "summary": "Early Childhood — Sun+Moon in H11 → Age 9 Years",
+      "detailed": "Sun and Moon conjunct in the 11th house → predicted age: 9 years.",
+      "full_text_passages": [
+        {
+          "text": "Sun and Moon conjunct in the 11th house → predicted age: 9 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "sun",
+        "moon",
+        "h11",
+        "short_life",
+        "age_9"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Moon"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-early-10y",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Ketu"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "predicted_age": 10
+    },
+    "interpretation": {
+      "summary": "Early Childhood — Moon+Ketu in H1 → Age 10 Years",
+      "detailed": "Moon and Ketu conjunct in the 1st house → predicted age: 10 years.",
+      "full_text_passages": [
+        {
+          "text": "Moon and Ketu conjunct in the 1st house → predicted age: 10 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "ketu",
+        "h1",
+        "short_life",
+        "age_10"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Ketu"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-sudden-death",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Rahu"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "death_cause": "bullet_shot",
+      "death_time": "afternoon"
+    },
+    "interpretation": {
+      "summary": "Sudden Death — Moon+Rahu in H1 → Bullet Shot, Afternoon",
+      "detailed": "Moon conjunct Rahu in the 1st house: cause of death is bullet shot; time of death is afternoon. This is a sudden violent death marker.",
+      "full_text_passages": [
+        {
+          "text": "Moon conjunct Rahu in the 1st house: cause of death is bullet shot; time of death is afternoon. This is a sudden violent death marker.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "death",
+        "violence"
+      ],
+      "tags": [
+        "moon",
+        "rahu",
+        "h1",
+        "sudden_death",
+        "bullet",
+        "afternoon"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Rahu"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-long-illness",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "health_affliction",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Jupiter",
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [
+        2,
+        6
+      ],
+      "illness_duration_years": 20
+    },
+    "interpretation": {
+      "summary": "Long Illness — Jupiter+Rahu H2 or Mercury+Jupiter H6 → 20 Years",
+      "detailed": "Long illness trigger: (A) Jupiter conjunct Rahu in H2, OR (B) Mercury conjunct Jupiter in H6. The native suffers a prolonged illness lasting approximately 20 years.",
+      "full_text_passages": [
+        {
+          "text": "Long illness trigger: (A) Jupiter conjunct Rahu in H2, OR (B) Mercury conjunct Jupiter in H6. The native suffers a prolonged illness lasting approximately 20 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health"
+      ],
+      "tags": [
+        "jupiter",
+        "rahu",
+        "mercury",
+        "h2",
+        "h6",
+        "long_illness",
+        "20_years"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [
+        2,
+        6
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-survival-son",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_marker",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Mars",
+        "Venus",
+        "Ketu"
+      ],
+      "houses_involved": [
+        6
+      ],
+      "outcome": "survived_by_son",
+      "requires_physical_check": true
+    },
+    "interpretation": {
+      "summary": "Survival by Son Marker — Moon/Rahu H6 + Weakened Venus/Ketu + Physical Signs",
+      "detailed": "Complex survival marker: IF (Moon+Rahu in H6 OR Mars malefic in H6) AND (Venus weakened AND Ketu weakened) AND physical signs (gums visible when speaking, ear taut upwards) THEN the native will definitely be survived by his son.",
+      "full_text_passages": [
+        {
+          "text": "Complex survival marker: IF (Moon+Rahu in H6 OR Mars malefic in H6) AND (Venus weakened AND Ketu weakened) AND physical signs (gums visible when speaking, ear taut upwards) THEN the native will definitely be survived by his son.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "progeny",
+        "family"
+      ],
+      "tags": [
+        "survival",
+        "son",
+        "moon",
+        "rahu",
+        "h6",
+        "physical_marker"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Mars",
+        "Venus",
+        "Ketu"
+      ],
+      "houses_involved": [
+        6
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-father-dependency",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mercury",
+        "Jupiter",
+        "Rahu"
+      ],
+      "houses_involved": [
+        2,
+        3
+      ],
+      "predicted_age": 30,
+      "father_death_at_native_age": [
+        16,
+        19,
+        22
+      ]
+    },
+    "interpretation": {
+      "summary": "Father's Death Dependency — Mercury+Jupiter H2 or Jupiter+Rahu H3",
+      "detailed": "Father dependency trigger: (A) Mercury conjunct Jupiter in H2, OR (B) Jupiter conjunct Rahu in H3. Native's predicted age: 30 years. Father's death: certain at native's age 16, 19, or 22.",
+      "full_text_passages": [
+        {
+          "text": "Father dependency trigger: (A) Mercury conjunct Jupiter in H2, OR (B) Jupiter conjunct Rahu in H3. Native's predicted age: 30 years. Father's death: certain at native's age 16, 19, or 22.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "family",
+        "father"
+      ],
+      "tags": [
+        "mercury",
+        "jupiter",
+        "rahu",
+        "h2",
+        "h3",
+        "age_30",
+        "father_death"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Jupiter",
+        "Rahu"
+      ],
+      "houses_involved": [
+        2,
+        3
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-midlife",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Mercury",
+        "Jupiter",
+        "Ketu"
+      ],
+      "houses_involved": [
+        5,
+        6,
+        12
+      ],
+      "thresholds": [
+        {
+          "age": 35,
+          "condition": "Moon+Rahu+Mercury any house"
+        },
+        {
+          "age": 40,
+          "condition": "Jupiter+Rahu any house"
+        },
+        {
+          "age": 45,
+          "condition": "Rahu+Jupiter H6 OR Mercury+Ketu H12"
+        },
+        {
+          "age": 50,
+          "condition": "Moon+Rahu H5 OR debilitated planets"
+        },
+        {
+          "age": 56,
+          "condition": "Moon+Rahu+Mercury any house"
+        }
+      ]
+    },
+    "interpretation": {
+      "summary": "Mid-Life Age Thresholds — 35 / 40 / 45 / 50 / 56 Years",
+      "detailed": "Mid-life planetary age thresholds:\nAge 35: Moon+Rahu+Mercury in any house.\nAge 40: Jupiter+Rahu in any house.\nAge 45: Rahu+Jupiter in H6 OR Mercury+Ketu in H12.\nAge 50: Moon+Rahu in H5 OR any debilitated planets.\nAge 56: Moon+Rahu+Mercury in any house.",
+      "full_text_passages": [
+        {
+          "text": "Mid-life planetary age thresholds:\nAge 35: Moon+Rahu+Mercury in any house.\nAge 40: Jupiter+Rahu in any house.\nAge 45: Rahu+Jupiter in H6 OR Mercury+Ketu in H12.\nAge 50: Moon+Rahu in H5 OR any debilitated planets.\nAge 56: Moon+Rahu+Mercury in any house.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "midlife",
+        "age_35",
+        "age_40",
+        "age_45",
+        "age_50",
+        "age_56",
+        "threshold"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Mercury",
+        "Jupiter",
+        "Ketu"
+      ],
+      "houses_involved": [
+        5,
+        6,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-latelife",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Mercury",
+        "Rahu",
+        "Jupiter",
+        "Mars"
+      ],
+      "houses_involved": [
+        2,
+        7,
+        9,
+        4
+      ],
+      "thresholds": [
+        {
+          "age": 60,
+          "condition": "Moon+Mercury H2"
+        },
+        {
+          "age": 75,
+          "condition": "Moon+Rahu H9"
+        },
+        {
+          "age": 80,
+          "condition": "Moon+Jupiter H4"
+        },
+        {
+          "age": 85,
+          "condition": "Moon+Mars H7"
+        }
+      ]
+    },
+    "interpretation": {
+      "summary": "Late-Life Age Thresholds — 60 / 75 / 80 / 85 Years",
+      "detailed": "Late-life planetary age thresholds:\nAge 60: Moon+Mercury in H2.\nAge 75: Moon+Rahu in H9.\nAge 80: Moon+Jupiter in H4.\nAge 85: Moon+Mars in H7.",
+      "full_text_passages": [
+        {
+          "text": "Late-life planetary age thresholds:\nAge 60: Moon+Mercury in H2.\nAge 75: Moon+Rahu in H9.\nAge 80: Moon+Jupiter in H4.\nAge 85: Moon+Mars in H7.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "latelife",
+        "age_60",
+        "age_75",
+        "age_80",
+        "age_85",
+        "threshold"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Mercury",
+        "Rahu",
+        "Jupiter",
+        "Mars"
+      ],
+      "houses_involved": [
+        2,
+        7,
+        9,
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-shortlife-2y",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mars",
+        "Mercury",
+        "Venus",
+        "Moon",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        5,
+        7
+      ],
+      "predicted_age": 2
+    },
+    "interpretation": {
+      "summary": "Short Life Conjunction — 2 Years (Mars+Mercury+Venus H7 or Moon+Mercury+Venus H5)",
+      "detailed": "Two-year lifespan doshas:\n(A) Mars+Mercury+Venus conjunct in H7 (with Jupiter present), OR\n(B) Mercury+Venus+Moon conjunct in H5.\nBoth are critical short-life indicators with predicted age of 2 years.",
+      "full_text_passages": [
+        {
+          "text": "Two-year lifespan doshas:\n(A) Mars+Mercury+Venus conjunct in H7 (with Jupiter present), OR\n(B) Mercury+Venus+Moon conjunct in H5.\nBoth are critical short-life indicators with predicted age of 2 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "short_life",
+        "dosha",
+        "age_2",
+        "h5",
+        "h7"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars",
+        "Mercury",
+        "Venus",
+        "Moon",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        5,
+        7
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-shortlife-indicators",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mercury",
+        "Jupiter",
+        "Venus",
+        "Rahu",
+        "Moon"
+      ],
+      "houses_involved": [
+        9
+      ]
+    },
+    "interpretation": {
+      "summary": "General Short Life Indicators — Jupiter Surrounded or H9 Enemies",
+      "detailed": "General short life indicators:\n1. Many planets surrounding Jupiter (hemmed in).\n2. Mercury+Jupiter+Venus conjunct in H9.\n3. Mercury+Venus+Rahu (enemies of Jupiter) conjunct in H9.\n4. Moon+Rahu conjunct in any house AND Mercury in H9.",
+      "full_text_passages": [
+        {
+          "text": "General short life indicators:\n1. Many planets surrounding Jupiter (hemmed in).\n2. Mercury+Jupiter+Venus conjunct in H9.\n3. Mercury+Venus+Rahu (enemies of Jupiter) conjunct in H9.\n4. Moon+Rahu conjunct in any house AND Mercury in H9.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "short_life",
+        "dosha",
+        "jupiter",
+        "h9",
+        "indicators"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Jupiter",
+        "Venus",
+        "Rahu",
+        "Moon"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-physical-height",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "physical_metric",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "measurement_unit": "angul",
+      "baseline": {
+        "anguls": 90,
+        "years": 30
+      },
+      "increment": {
+        "per_angul": 1,
+        "years_added": 5
+      },
+      "maximum": {
+        "anguls": 108,
+        "years": 120
+      }
+    },
+    "interpretation": {
+      "summary": "Height-to-Age Ratio Engine — Angul Scale (90-108 Anguls)",
+      "detailed": "Standard: 48 angul = 36 inches. Formula: each angul above 90 adds 5 years. Scale: 90→30yr, 91→35yr, 92→40yr, 93→45yr, 94→50yr, 95→55yr, 96→60yr, 97→65yr, 98→70yr, 99→75yr, 100→80yr, 101→85yr, 102→90yr, 103→95yr, 104→100yr, 105→105yr, 106→110yr, 107→115yr, 108→120yr.",
+      "full_text_passages": [
+        {
+          "text": "Standard: 48 angul = 36 inches. Formula: each angul above 90 adds 5 years. Scale: 90→30yr, 91→35yr, 92→40yr, 93→45yr, 94→50yr, 95→55yr, 96→60yr, 97→65yr, 98→70yr, 99→75yr, 100→80yr, 101→85yr, 102→90yr, 103→95yr, 104→100yr, 105→105yr, 106→110yr, 107→115yr, 108→120yr.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "physical_diagnosis"
+      ],
+      "tags": [
+        "height",
+        "angul",
+        "physical_metric",
+        "age_engine"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-physical-maniband",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "physical_metric",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "measurement": "maniband_lines",
+      "scale": {
+        "1": 30,
+        "2": 60,
+        "3": 90,
+        "4": 120
+      }
+    },
+    "interpretation": {
+      "summary": "Maniband (Wrist) Lines — 1 Line=30yr, 2=60yr, 3=90yr, 4=120yr",
+      "detailed": "Count the lines at the start of the palm (wrist area). Each complete wrist line represents a 30-year lifecycle block: 1 line → 30 years, 2 lines → 60 years, 3 lines → 90 years, 4 lines → 120 years.",
+      "full_text_passages": [
+        {
+          "text": "Count the lines at the start of the palm (wrist area). Each complete wrist line represents a 30-year lifecycle block: 1 line → 30 years, 2 lines → 60 years, 3 lines → 90 years, 4 lines → 120 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "physical_diagnosis"
+      ],
+      "tags": [
+        "maniband",
+        "wrist_lines",
+        "palm",
+        "physical_metric",
+        "age_engine"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-physical-forehead-whole",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "physical_metric",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "line_type": "whole",
+      "scale": {
+        "0": {
+          "male": 100
+        },
+        "1": {
+          "male": 20,
+          "female": 40
+        },
+        "2": {
+          "male": 30,
+          "female": 60
+        },
+        "3": {
+          "male": 60,
+          "female": 70
+        },
+        "4": {
+          "male": 80,
+          "female": 80
+        },
+        "5": {
+          "male": 100,
+          "female": 100
+        },
+        "6": {
+          "male": 120,
+          "female": 80
+        }
+      }
+    },
+    "interpretation": {
+      "summary": "Forehead Lines — Whole Lines Gender-Specific Age Table",
+      "detailed": "Whole forehead lines (gender-specific): 0 lines: male=100yr. 1 line: male=20yr, female=40yr. 2 lines: male=30yr, female=60yr. 3 lines: male=60yr, female=70yr. 4 lines: male=80yr, female=80yr. 5 lines: male=100yr, female=100yr. 6 lines: male=120yr, female=80yr.",
+      "full_text_passages": [
+        {
+          "text": "Whole forehead lines (gender-specific): 0 lines: male=100yr. 1 line: male=20yr, female=40yr. 2 lines: male=30yr, female=60yr. 3 lines: male=60yr, female=70yr. 4 lines: male=80yr, female=80yr. 5 lines: male=100yr, female=100yr. 6 lines: male=120yr, female=80yr.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "physical_diagnosis"
+      ],
+      "tags": [
+        "forehead",
+        "whole_lines",
+        "gender_specific",
+        "physical_metric"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-physical-forehead-broken",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "physical_metric",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "line_type": "broken",
+      "scale": {
+        "1": {
+          "male": 10,
+          "female": 20
+        },
+        "2": {
+          "male": 30,
+          "female": 40
+        }
+      }
+    },
+    "interpretation": {
+      "summary": "Forehead Lines — Broken Lines (Reduced Lifespan) Gender Table",
+      "detailed": "Broken (incomplete) forehead lines carry significantly lower age markers: 1 broken line: male=10yr, female=20yr. 2 broken lines: male=30yr, female=40yr.",
+      "full_text_passages": [
+        {
+          "text": "Broken (incomplete) forehead lines carry significantly lower age markers: 1 broken line: male=10yr, female=20yr. 2 broken lines: male=30yr, female=40yr.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "physical_diagnosis"
+      ],
+      "tags": [
+        "forehead",
+        "broken_lines",
+        "gender_specific",
+        "physical_metric"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-physical-forehead-ear-to-ear",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "physical_metric",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "line_type": "whole_ear_to_ear",
+      "scale": {
+        "1": 100,
+        "2": 70
+      }
+    },
+    "interpretation": {
+      "summary": "Forehead Lines — Ear-to-Ear Whole Lines (1=100yr, 2=70yr)",
+      "detailed": "Whole forehead lines that reach ear-to-ear carry special longevity markers: 1 ear-to-ear line → 100 years. 2 ear-to-ear lines → 70 years.",
+      "full_text_passages": [
+        {
+          "text": "Whole forehead lines that reach ear-to-ear carry special longevity markers: 1 ear-to-ear line → 100 years. 2 ear-to-ear lines → 70 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "physical_diagnosis"
+      ],
+      "tags": [
+        "forehead",
+        "ear_to_ear",
+        "whole_lines",
+        "physical_metric"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-effect-sun-h4-exalted",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_effect",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "effect_age": 22,
+      "state": "exalted",
+      "outcome": "self_employment_and_assets"
+    },
+    "interpretation": {
+      "summary": "Sun in H4 Exalted/Lord — Self-Employment + House/Vehicle at Age 22",
+      "detailed": "Sun in the 4th house (exalted state or as H4 lord): at age 22 the native starts self-employment and gains a house and vehicle. This is a milestone prosperity trigger at the Sun's maturity-aligned age.",
+      "full_text_passages": [
+        {
+          "text": "Sun in the 4th house (exalted state or as H4 lord): at age 22 the native starts self-employment and gains a house and vehicle. This is a milestone prosperity trigger at the Sun's maturity-aligned age.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "career",
+      "life_domains": [
+        "career",
+        "property",
+        "timing"
+      ],
+      "tags": [
+        "sun",
+        "h4",
+        "exalted",
+        "age_22",
+        "self_employment",
+        "property"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-effect-sun-h4-debil",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_effect",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "state": "debilitated",
+      "outcome": "career_loss_and_mother_affliction"
+    },
+    "interpretation": {
+      "summary": "Sun in H4 Debilitated — Inauspicious Career + Mother Affliction",
+      "detailed": "Sun in the 4th house (debilitated state): inauspicious effect on career and assets; simultaneous affliction to the mother. Opposite outcome to the exalted Sun H4 rule.",
+      "full_text_passages": [
+        {
+          "text": "Sun in the 4th house (debilitated state): inauspicious effect on career and assets; simultaneous affliction to the mother. Opposite outcome to the exalted Sun H4 rule.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "career",
+      "life_domains": [
+        "career",
+        "property",
+        "mother"
+      ],
+      "tags": [
+        "sun",
+        "h4",
+        "debilitated",
+        "career",
+        "mother_affliction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-effect-moon-h7",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_effect",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "effect_age": 24,
+      "state": "exalted",
+      "outcome": "marriage"
+    },
+    "interpretation": {
+      "summary": "Moon in H7 Exalted/Lord — Marriage at Age 24",
+      "detailed": "Moon in the 7th house (exalted or as H7 lord): the native marries in the 24th year. Aligned with Moon's maturity age of 24.",
+      "full_text_passages": [
+        {
+          "text": "Moon in the 7th house (exalted or as H7 lord): the native marries in the 24th year. Aligned with Moon's maturity age of 24.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "marriage",
+      "life_domains": [
+        "marriage",
+        "timing"
+      ],
+      "tags": [
+        "moon",
+        "h7",
+        "exalted",
+        "age_24",
+        "marriage"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-effect-saturn-h4",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_effect",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "state": "exalted",
+      "outcome": "land_proprietary"
+    },
+    "interpretation": {
+      "summary": "Saturn in H4 Exalted/Lord — Land Proprietary",
+      "detailed": "Saturn in the 4th house (exalted or as H4 lord): facilitates proprietary of land — the native gains or inherits land/property. Saturn's slow nature ensures this manifests steadily over time.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 4th house (exalted or as H4 lord): facilitates proprietary of land — the native gains or inherits land/property. Saturn's slow nature ensures this manifests steadily over time.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "land",
+        "timing"
+      ],
+      "tags": [
+        "saturn",
+        "h4",
+        "exalted",
+        "land",
+        "property"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-effect-rahu-h9",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_effect",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Rahu"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "effect_age": 42,
+      "outcome": "luck_rises"
+    },
+    "interpretation": {
+      "summary": "Rahu in H9 — Luck Rises After Age 42",
+      "detailed": "Rahu in the 9th house: luck rises significantly after the native reaches the age of 42 — aligned with Rahu's maturity age of 42. The 9th house is the house of fortune; Rahu's late activation here signals a delayed but strong lucky period in the second half of life.",
+      "full_text_passages": [
+        {
+          "text": "Rahu in the 9th house: luck rises significantly after the native reaches the age of 42 — aligned with Rahu's maturity age of 42. The 9th house is the house of fortune; Rahu's late activation here signals a delayed but strong lucky period in the second half of life.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "luck",
+      "life_domains": [
+        "luck",
+        "timing",
+        "fortune"
+      ],
+      "tags": [
+        "rahu",
+        "h9",
+        "age_42",
+        "luck",
+        "fortune"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Rahu"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-foundation-beneficence",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "foundational",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "houses_involved": [
+        4,
+        9
+      ]
+    },
+    "interpretation": {
+      "summary": "General House Beneficence — H4/H9 Benefic Pass for Malefics",
+      "detailed": "Any planet placed in H4 or H9 receives a 'Benefic Pass' regardless of its natural malefic status, provided it is not severely debilitated. This environmental logic override means Mars, Saturn, Rahu, Ketu, and Sun in H4 or H9 are treated as conferring good effects in this engine.",
+      "full_text_passages": [
+        {
+          "text": "Any planet placed in H4 or H9 receives a 'Benefic Pass' regardless of its natural malefic status, provided it is not severely debilitated. This environmental logic override means Mars, Saturn, Rahu, Ketu, and Sun in H4 or H9 are treated as conferring good effects in this engine.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "general",
+        "longevity"
+      ],
+      "tags": [
+        "benefic_pass",
+        "h4",
+        "h9",
+        "malefic_override",
+        "foundational"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        4,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-foundation-exaltation-principle",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "foundational",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Exaltation/Debilitation Principle — State Determines Outcome",
+      "detailed": "Universal modifier: if any planet is exalted, its outcome is auspicious; if debilitated, its outcome is an affliction. The Moon-House Exaltation Principle applies to all planetary placements in the age determination engine — state overrides house placement in the final prediction.",
+      "full_text_passages": [
+        {
+          "text": "Universal modifier: if any planet is exalted, its outcome is auspicious; if debilitated, its outcome is an affliction. The Moon-House Exaltation Principle applies to all planetary placements in the age determination engine — state overrides house placement in the final prediction.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "general",
+        "longevity"
+      ],
+      "tags": [
+        "exaltation",
+        "debilitation",
+        "state_modifier",
+        "foundational"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-foundation-debilitation-clock",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "foundational",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "clock_offset_months": 1
+    },
+    "interpretation": {
+      "summary": "Debilitation Clock — Malefic Count Starts 1 Month After Birth",
+      "detailed": "Precision counting rule: for debilitated planets, the malefic effect countdown does NOT start at birth — it starts specifically 1 month after the date of birth. The 'Debilitation Clock' is offset by one month for precise timing of afflictions.",
+      "full_text_passages": [
+        {
+          "text": "Precision counting rule: for debilitated planets, the malefic effect countdown does NOT start at birth — it starts specifically 1 month after the date of birth. The 'Debilitation Clock' is offset by one month for precise timing of afflictions.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "general",
+        "timing",
+        "longevity"
+      ],
+      "tags": [
+        "debilitation_clock",
+        "timing",
+        "one_month_offset",
+        "foundational"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  }
+]
