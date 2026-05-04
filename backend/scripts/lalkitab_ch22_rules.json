@@ -1,0 +1,1188 @@
+[
+  {
+    "rule_id": "lalkitab-ch22-ctx-01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "context",
+      "yoga_check": {
+        "type": "contextual_inquiry",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Motherhood Foundation — Om, Ma, and the Sacred Bond",
+      "detailed": "The phonetic sound of 'Om' and the sacred word 'Ma' (mother) form the spiritual foundation of this chapter. A mother's affection is compared to the holy river Ganga — pure and life-giving. Every mother becomes Yashoda and every child symbolizes Krishna Kanhaya. This contextual recognition is the baseline for all progeny diagnostics in Lal Kitab Chapter 22.",
+      "full_text_passages": [
+        {
+          "text": "The phonetic sound of 'Om' and the sacred word 'Ma' (mother) form the spiritual foundation of this chapter. A mother's affection is compared to the holy river Ganga — pure and life-giving. Every mother becomes Yashoda and every child symbolizes Krishna Kanhaya. This contextual recognition is the baseline for all progeny diagnostics in Lal Kitab Chapter 22.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "spirituality",
+      "life_domains": [
+        "spirituality",
+        "family",
+        "progeny"
+      ],
+      "tags": [
+        "context",
+        "motherhood",
+        "foundation"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-ctx-02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "context",
+      "yoga_check": {
+        "type": "contextual_inquiry",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Four Ashrams Framework — Grihasthashram as the Highest",
+      "detailed": "The rishis and maharishis established four ashrams (phases) for human life: brahmcharya (celibacy), grihastha (householder), vaanprastha (forest dwelling), and sanyas (renunciation). Among these, grihasthashram is considered the highest — even the gods take birth on earth to enjoy this phase. The desire for children is therefore a sacred and sanctioned aspiration.",
+      "full_text_passages": [
+        {
+          "text": "The rishis and maharishis established four ashrams (phases) for human life: brahmcharya (celibacy), grihastha (householder), vaanprastha (forest dwelling), and sanyas (renunciation). Among these, grihasthashram is considered the highest — even the gods take birth on earth to enjoy this phase. The desire for children is therefore a sacred and sanctioned aspiration.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "spirituality",
+      "life_domains": [
+        "spirituality",
+        "family",
+        "dharma"
+      ],
+      "tags": [
+        "context",
+        "ashram",
+        "grihastha",
+        "foundation"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-ctx-03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "context",
+      "yoga_check": {
+        "type": "contextual_inquiry",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Erratic Mind Logic — Mind as Root of All Disturbance",
+      "detailed": "Joy, sorrow, victory, defeat, honor, and dishonor all reside in the mind. The mind is erratic and constantly moving. This baseline recognition establishes that all progeny-related suffering — anxiety about childlessness, fear of infant mortality, gender preference anguish — originates as a disturbance of the mind. Stabilizing the mind is the first step in all progeny remedial work.",
+      "full_text_passages": [
+        {
+          "text": "Joy, sorrow, victory, defeat, honor, and dishonor all reside in the mind. The mind is erratic and constantly moving. This baseline recognition establishes that all progeny-related suffering — anxiety about childlessness, fear of infant mortality, gender preference anguish — originates as a disturbance of the mind. Stabilizing the mind is the first step in all progeny remedial work.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "mind",
+      "life_domains": [
+        "mind",
+        "general",
+        "progeny"
+      ],
+      "tags": [
+        "context",
+        "mind",
+        "baseline"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-ctx-04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "context",
+      "yoga_check": {
+        "type": "contextual_inquiry",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Universal Human Suffering — The Wanderer's Diagnostic",
+      "detailed": "During life as a wanderer, multi-modal life afflictions are observed: sadness due to health, lack of wealth, joblessness, trade loss, expansion worries, childlessness, unworthy children, or marital status issues. The core diagnostic baseline is that 'everybody is bothered for one or the other reason.' Childlessness is one affliction among many; no seeker should feel uniquely cursed. This perspective shapes the compassionate framing of all Chapter 22 remedies.",
+      "full_text_passages": [
+        {
+          "text": "During life as a wanderer, multi-modal life afflictions are observed: sadness due to health, lack of wealth, joblessness, trade loss, expansion worries, childlessness, unworthy children, or marital status issues. The core diagnostic baseline is that 'everybody is bothered for one or the other reason.' Childlessness is one affliction among many; no seeker should feel uniquely cursed. This perspective shapes the compassionate framing of all Chapter 22 remedies.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "general",
+        "progeny",
+        "karma"
+      ],
+      "tags": [
+        "context",
+        "universal_suffering",
+        "diagnostic_baseline"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-dosha-gender-imbalance",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "progeny_imbalance",
+      "yoga_check": {
+        "type": "contextual_inquiry",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Gender Imbalance Dosha — Four Daughters, No Son",
+      "detailed": "A natal situation where the native has four daughters but no son creates a specific progeny imbalance dosha. The native faces family coaxing from husband and in-laws, along with emotional distress, sobbing while showing the horoscope. The prescribed experimental remedy is Santan Gopal Sadhana.",
+      "full_text_passages": [
+        {
+          "text": "A natal situation where the native has four daughters but no son creates a specific progeny imbalance dosha. The native faces family coaxing from husband and in-laws, along with emotional distress, sobbing while showing the horoscope. The prescribed experimental remedy is Santan Gopal Sadhana.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Observe Santan Gopal Sadhana — the primary experimental remedy for progeny imbalance.",
+          "category": "mantra"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "family",
+        "gender"
+      ],
+      "tags": [
+        "progeny_imbalance",
+        "dosha",
+        "sons",
+        "daughters"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-dosha-childlessness",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "childlessness",
+      "yoga_check": {
+        "type": "contextual_inquiry",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Childlessness Dosha — Santan Gopal Sadhana",
+      "detailed": "The native is bereft of the joy of progeny or branded as 'infertile' by society. The house craves the sound of a child's babbling; the native suffers verbal assault from family and society. This condition — regardless of astrological cause — is addressed by Santan Gopal Sadhana, observed with complete reverence, confidence, and devotion in God.",
+      "full_text_passages": [
+        {
+          "text": "The native is bereft of the joy of progeny or branded as 'infertile' by society. The house craves the sound of a child's babbling; the native suffers verbal assault from family and society. This condition — regardless of astrological cause — is addressed by Santan Gopal Sadhana, observed with complete reverence, confidence, and devotion in God.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Observe Santan Gopal Sadhana with complete faith, reverence, and devotion in God.",
+          "category": "mantra"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "health",
+        "family"
+      ],
+      "tags": [
+        "childlessness",
+        "dosha",
+        "santan_gopal",
+        "mantra"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-planet-saturn",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "childlessness",
+      "yoga_check": {
+        "type": "planetary_position",
+        "checkable": true,
+        "description": "Saturn affliction (inauspicious placement) identified in the natal chart as the cause of childlessness. Phase 2: implement as Saturn-specific affliction check."
+      },
+      "planets_involved": [
+        "Saturn"
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn-Induced Childlessness — Donate via Nephew and Niece",
+      "detailed": "When childlessness is specifically caused by the inauspicious effect of Saturn in the horoscope, the prescribed remedy is the donation of Saturn-associated objects (iron, oil, black sesame, black cloth) — but these donations MUST be made through the hands of a nephew and niece, not directly by the native. This relay-donation structure is the key operative element of the remedy.",
+      "full_text_passages": [
+        {
+          "text": "When childlessness is specifically caused by the inauspicious effect of Saturn in the horoscope, the prescribed remedy is the donation of Saturn-associated objects (iron, oil, black sesame, black cloth) — but these donations MUST be made through the hands of a nephew and niece, not directly by the native. This relay-donation structure is the key operative element of the remedy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Donate Saturn-associated objects (iron, oil, black sesame, black cloth) through the hands of a nephew and niece — not directly by the native.",
+          "category": "offering"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "saturn",
+        "karma"
+      ],
+      "tags": [
+        "saturn",
+        "childlessness",
+        "planetary_combination",
+        "donation"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-planet-ketu-h5",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity",
+      "yoga_check": {
+        "type": "house_placement",
+        "checkable": true,
+        "description": "Ketu or any natural malefic planet in H5 (house of progeny). Pure positional check."
+      },
+      "planets_involved": [
+        "Ketu"
+      ],
+      "houses_involved": [
+        5
+      ]
+    },
+    "interpretation": {
+      "summary": "Ketu / Evil Planet in 5th House — Child Ill Effects",
+      "detailed": "Presence of Ketu or any evil (malefic) planet in the 5th house — the house of progeny and intelligence — causes the child to face ill effects. This is a diagnostic marker for child health challenges, infant vulnerability, or progeny obstacles arising from 5th house affliction. No direct remedy is prescribed in the text; the other Chapter 22 longevity rituals serve as the remedial layer.",
+      "full_text_passages": [
+        {
+          "text": "Presence of Ketu or any evil (malefic) planet in the 5th house — the house of progeny and intelligence — causes the child to face ill effects. This is a diagnostic marker for child health challenges, infant vulnerability, or progeny obstacles arising from 5th house affliction. No direct remedy is prescribed in the text; the other Chapter 22 longevity rituals serve as the remedial layer.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "health",
+        "child_longevity"
+      ],
+      "tags": [
+        "ketu",
+        "h5",
+        "planetary_combination",
+        "child_health"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Ketu"
+      ],
+      "houses_involved": [
+        5
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-delivery-protocol",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "delivery",
+      "yoga_check": {
+        "type": "contextual_inquiry",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Painless Delivery Ritual — Milk Pot + Sugar Pot",
+      "detailed": "To ensure a painless delivery: fill one pot with milk and one pot with sugar. The pregnant woman must touch both pots before the birth occurs. After the delivery is complete, gift both pots to a temple. This ritual is a protective and auspicious preparation for childbirth.",
+      "full_text_passages": [
+        {
+          "text": "To ensure a painless delivery: fill one pot with milk and one pot with sugar. The pregnant woman must touch both pots before the birth occurs. After the delivery is complete, gift both pots to a temple. This ritual is a protective and auspicious preparation for childbirth.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Fill one pot with milk and one with sugar; pregnant woman touches both before birth. Gift both pots to a temple after delivery.",
+          "category": "offering"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "health",
+        "delivery"
+      ],
+      "tags": [
+        "delivery",
+        "ritual",
+        "pregnancy",
+        "temple"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-ritual-salt-birthday",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Birthday Salt Donation — Annual Progeny Welfare Remedy",
+      "detailed": "For general progeny welfare and support: donate salt or salty items on the native's own birthday each year. This annual offering maintains the protective channel for child longevity and family prosperity.",
+      "full_text_passages": [
+        {
+          "text": "For general progeny welfare and support: donate salt or salty items on the native's own birthday each year. This annual offering maintains the protective channel for child longevity and family prosperity.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Donate salt or salty items on your own birthday annually.",
+          "category": "offering"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "family",
+        "annual_ritual"
+      ],
+      "tags": [
+        "birthday",
+        "salt",
+        "offering",
+        "longevity"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-ritual-red-thread",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "survival",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Red Thread Transfer Protocol — Infant Mortality Prevention",
+      "detailed": "When children die soon after birth (infant mortality pattern): Step 1 — tie a red thread around the pregnant woman's wrist soon after conception. Step 2 — at birth, untie the thread from the mother and secure it around the child's wrist; simultaneously tie a new, second red thread around the mother's wrist. Step 3 — both threads must remain tied for exactly 18 months without being removed.",
+      "full_text_passages": [
+        {
+          "text": "When children die soon after birth (infant mortality pattern): Step 1 — tie a red thread around the pregnant woman's wrist soon after conception. Step 2 — at birth, untie the thread from the mother and secure it around the child's wrist; simultaneously tie a new, second red thread around the mother's wrist. Step 3 — both threads must remain tied for exactly 18 months without being removed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Tie red thread on pregnant woman's wrist at conception. At birth: transfer thread to child, tie new thread on mother. Both threads worn for exactly 18 months.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "health",
+        "infant_mortality"
+      ],
+      "tags": [
+        "red_thread",
+        "infant_mortality",
+        "survival",
+        "ritual"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-ritual-ganesha",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "survival",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Ganesha Worship — Riddhi-Siddhi for Progeny Obstacles",
+      "detailed": "For removal of progeny obstacles and attainment of success: observe daily worship and devotion to Ganeshji, the provider of Riddhi (prosperity) and Siddhi (spiritual accomplishment). Regular Ganesha worship clears the path for healthy progeny.",
+      "full_text_passages": [
+        {
+          "text": "For removal of progeny obstacles and attainment of success: observe daily worship and devotion to Ganeshji, the provider of Riddhi (prosperity) and Siddhi (spiritual accomplishment). Regular Ganesha worship clears the path for healthy progeny.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Observe daily worship and devotion to Ganeshji — provider of Riddhi-Siddhi.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "spirituality",
+        "obstacles"
+      ],
+      "tags": [
+        "ganesha",
+        "worship",
+        "riddhi_siddhi",
+        "survival"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-ritual-animal-feeding",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Daily Animal Feeding — Meal Portion to Cow and Animals",
+      "detailed": "For general longevity and progeny protection: offer some part of every daily meal to a cow and such animals. This daily offering of food maintains the protective shield around children and supports long life for existing progeny.",
+      "full_text_passages": [
+        {
+          "text": "For general longevity and progeny protection: offer some part of every daily meal to a cow and such animals. This daily offering of food maintains the protective shield around children and supports long life for existing progeny.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Offer a portion of every daily meal to a cow and other animals — daily, without interruption.",
+          "category": "offering"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "health",
+        "daily_ritual"
+      ],
+      "tags": [
+        "cow",
+        "animal_feeding",
+        "daily",
+        "longevity"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-ritual-dog-feeding",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Stray Dog Sweet Bread Offering — Child Longevity Protocol",
+      "detailed": "For general child longevity: feed stray dogs with sweet breads prepared in an earthen oven. The combination of the sweet bread and the earthen oven preparation is the specific ritual requirement — ordinary bread or modern cooking methods do not carry the same remedial potency.",
+      "full_text_passages": [
+        {
+          "text": "For general child longevity: feed stray dogs with sweet breads prepared in an earthen oven. The combination of the sweet bread and the earthen oven preparation is the specific ritual requirement — ordinary bread or modern cooking methods do not carry the same remedial potency.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Feed stray dogs with sweet breads prepared specifically in an earthen oven.",
+          "category": "offering"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "health",
+        "child_longevity"
+      ],
+      "tags": [
+        "dogs",
+        "sweet_bread",
+        "earthen_oven",
+        "longevity"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-ritual-she-dog",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "survival",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "One-Puppy She-Dog — Child Survival Longevity Marker",
+      "detailed": "To ensure the child 'starts living' (i.e., survives the vulnerable early period): keep a pet she-dog that has delivered only one puppy in her litter. The singularity of the litter — exactly one puppy — is the operative spiritual condition. This she-dog serves as a protective surrogate life-force anchor for the child.",
+      "full_text_passages": [
+        {
+          "text": "To ensure the child 'starts living' (i.e., survives the vulnerable early period): keep a pet she-dog that has delivered only one puppy in her litter. The singularity of the litter — exactly one puppy — is the operative spiritual condition. This she-dog serves as a protective surrogate life-force anchor for the child.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Keep a pet she-dog that has delivered exactly one puppy — not more, not less.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "health",
+        "infant_survival"
+      ],
+      "tags": [
+        "she_dog",
+        "one_puppy",
+        "survival",
+        "child_protection"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-prohibition-01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "prohibition",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      },
+      "constraint_flag": "strictly_prohibited"
+    },
+    "interpretation": {
+      "summary": "Prohibition — Childless Native Must Not Adopt Elder Brother's Son",
+      "detailed": "A childless native is strictly prohibited from adopting the son of their elder brother. This prohibition is absolute — the adoption of a fraternal nephew as a son carries karmic and progeny consequences that deepen, rather than resolve, the childlessness affliction.",
+      "full_text_passages": [
+        {
+          "text": "A childless native is strictly prohibited from adopting the son of their elder brother. This prohibition is absolute — the adoption of a fraternal nephew as a son carries karmic and progeny consequences that deepen, rather than resolve, the childlessness affliction.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "family",
+        "prohibition"
+      ],
+      "tags": [
+        "prohibition",
+        "adoption",
+        "elder_brother",
+        "childless"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch22-prohibition-02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 22,
+      "chapter_name": "Happiness of Having Children",
+      "sloka": null,
+      "batch_id": "lalkitab-ch22-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:10:11.098895+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "prohibition",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Behavioral/contextual rule — not automatable in Phase 1."
+      },
+      "constraint_flag": "strictly_prohibited"
+    },
+    "interpretation": {
+      "summary": "Prohibition — Childless Native Must Not Fund Elder Brother's Daughter's Wedding",
+      "detailed": "A childless native is strictly prohibited from arranging or funding the wedding of their elder brother's daughter at their own expense. Bearing the financial burden of this wedding — when the native has no children of their own — creates a karmic imbalance that further blocks the progeny channel.",
+      "full_text_passages": [
+        {
+          "text": "A childless native is strictly prohibited from arranging or funding the wedding of their elder brother's daughter at their own expense. Bearing the financial burden of this wedding — when the native has no children of their own — creates a karmic imbalance that further blocks the progeny channel.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "family",
+        "prohibition"
+      ],
+      "tags": [
+        "prohibition",
+        "wedding",
+        "elder_brother",
+        "childless"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  }
+]
