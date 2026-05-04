@@ -2580,7 +2580,17 @@ Correct nested schema (Ch 40 pattern) used from the start. `interpretation.summa
 
 ### Validation results
 
-*Pending — awaiting user to run upload + validate commands.*
+Single pass. Zero flags.
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 8 | 23% |
+| `pending_human_review` | 27 | 77% |
+| `flagged` | 0 | 0% |
+| Contradictions | 0 | — |
+| **Total** | **35** | |
+
+By group: `pindayu_engine` 10 · `ascendant_engine` 3 · `alternative_systems` 4 · `system_selection` 2 · `pair_span_logic` 4 · `class_modifiers` 3 · `longevity_yogas` 9
 
 ---
 
@@ -2626,4 +2636,18 @@ Correct nested schema (Ch 40 pattern) used throughout. `interpretation.summary` 
 
 ### Validation results
 
-*Pending — awaiting user to run upload + validate commands.*
+Single pass. 15 false-flag rules patched via `patch_ch44_flags.py`.
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 16 | 40% |
+| `pending_human_review` | 24 | 60% |
+| `flagged` | 0 | 0% |
+| Contradictions | 0 | — |
+| **Total** | **40** | |
+
+**14 truncation false positives:** validator's haiku model received a truncated slice of `interpretation.detailed` and misread the mid-sentence cut as incomplete content. Full text stored correctly in MongoDB — same root cause as Ch 27 flags.
+
+**1 vagueness false positive (CD04 — Mixed H3 Occupation):** haiku flagged "too generic / lacks textual grounding." Rule is intentionally general — BPHS Ch 44 provides no planet-specific sub-rules for the mixed-occupation case; "various reasons" is the direct classical reading.
+
+By group: `maraka_identification` 8 · `maraka_timing` 6 · `rahu_ketu` 3 · `cause_of_death` 7 · `eighth_house_library` 5 · `death_environment` 4 · `consciousness_fate` 7
