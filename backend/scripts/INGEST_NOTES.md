@@ -2544,3 +2544,86 @@ Single pass. 12 false-flag truncation errors patched via `patch_ch27_summary_fla
 | **Total** | **28** | |
 
 By group: `shadbala_engine_spec` 17 · `bhava_bala_spec` 3 · `strength_interpretation` 8
+
+---
+
+## BPHS Vol 1 — Chapter 43 (Longevity / Ayurdaya)
+
+**Date:** 2026-05-04
+**Batch ID:** `bphs-ch43-v1-20260504`
+**Script:** `backend/scripts/ingest_bphs_ch43_v1.py`
+**JSON:** `backend/scripts/bphs_ch43_rules.json`
+**Source:** PDF (`BPHS_Vol 1_Longevity_Ch 43.pdf`) + Notebook LM decode (`BPHS_Ch43_JSON ready_LM.md` V1+V4 Master) + `Summary Logic of Ch43 and Ch44.md`
+
+### Rule groups
+
+| Group | Rules | Purpose |
+|---|---|---|
+| `pindayu_engine` | 10 | Constants (Sun 19/Moon 25/etc.), formula, 4 rectifications (Astangata/Satru Kshetra/Vyayadi/Kroorodaya), highest-reduction override, calendar conversion |
+| `ascendant_engine` | 3 | Lagna contribution via Rasi and Navamsa methods, benefic exemption rule |
+| `alternative_systems` | 4 | Nisargayu (Moon-based), Amsayu (Ascendant-based), animal span catalog, Sauramana correction |
+| `system_selection` | 2 | System-choice protocol (strongest Shadbala), doubtful-case averaging |
+| `pair_span_logic` | 4 | Three diagnostic pairs, Movable/Fixed/Dual sign-placement rules, conflict resolution |
+| `class_modifiers` | 3 | Degreewise rectification, Saturn decline modifier, Jupiter rise modifier |
+| `longevity_yogas` | 9 | Seven-fold classification, Amitayu/Divya/Sage supernatural spans, Full/Long/Short life yoga groups |
+| **Total** | **35** | |
+
+### Checkable: 11 / 35
+
+Checkable rules use `planet_combust` (Astangata) and `planetary_combination` condition types for Satru Kshetra, Vyayadi, Kroorodaya, Saturn/Jupiter class modifiers, Amitayu, Divya, Full/Long/Short life yogas.
+
+All engine spec rules (`general_principle` for constants and formulas) are `checkable: False` — they are the computational spec already implemented in `vedic_calculator.py`. KE stores them as canonical reference for Phase 2 integration.
+
+### Schema
+
+Correct nested schema (Ch 40 pattern) used from the start. `interpretation.summary` = `yoga_name` throughout — no truncation false flags expected.
+
+### Validation results
+
+*Pending — awaiting user to run upload + validate commands.*
+
+---
+
+## BPHS Vol 1 — Chapter 44 (Marakas — Killer Planets)
+
+**Date:** 2026-05-04
+**Batch ID:** `bphs-ch44-v1-20260504`
+**Script:** `backend/scripts/ingest_bphs_ch44_v1.py`
+**JSON:** `backend/scripts/bphs_ch44_rules.json`
+**Source:** PDF (`BPHS_Vol 1_Ch 44_Marakas.pdf` + `BPHS_Vol 1_Ch 44_Part1.pdf`) + Notebook LM decode (`BPHS_Vol 1_Ch44_JSON Ready_LM.md` V14) + `Summary Logic of Ch43 and Ch44.md`
+
+### Rule groups
+
+| Group | Rules | Purpose |
+|---|---|---|
+| `maraka_identification` | 8 | Primary killer houses (H2/H7), malefic/benefic killer triggers, three-grade power hierarchy, Saturn override, Moon-centric dual sweep, Node-Signifier override |
+| `maraka_timing` | 6 | Sub-period benefic buffer, four-tier lifespan classes, Longevity-Maraka correlation gate, Vipat/Pratyak/Vadha star timing, 22nd decanate + asterism lords, sub-period triad |
+| `rahu_ketu` | 3 | Node killer status (H2/H7 or Maraka association), non-Maraka exclusion zones, benefic aspect neutralization |
+| `cause_of_death` | 7 | 3rd house planet-cause library, multi-planet H3, Venus+female gender-specific, mixed occupation, Moon-sign lordship Marakas, death environment (place/locality), H3 occupant priority |
+| `eighth_house_library` | 5 | 8th house planet-cause library, Sacred Passing yoga, corpse fate (22nd decanate), Serpent decanate identification, post-death world (vacant house fallback) |
+| `death_environment` | 4 | Pre-natal abode (luminary decanate), post-death world (terminal house planets), afterlife status ranking (dignity modifier), Grade 2 killer hierarchy |
+| `consciousness_fate` | 7 | Jupiter/Venus in H3 → conscious death, childhood vulnerability (<20), pre-natal sin diagnosis, childhood remedy, unconscious death trigger, asterism Dasa priority ordering, corpse-consciousness full decision tree |
+| **Total** | **40** | |
+
+### Checkable: 15 / 40
+
+Checkable rules use `planet_in_house` and `planetary_combination` condition types covering:
+- Malefic in H2/H7, Benefic+12th lord, Rahu/Ketu H2/H7 placement
+- Saturn override, Node-Signifier override, benefic aspect on Nodes
+- 3rd house cause library (per planet), multi-planet H3, Venus+female
+- 8th house cause library, Sacred Passing yoga
+- Consciousness protocol (Jupiter/Venus in H3), unconscious death (others in H3)
+
+### Notable patterns
+
+- **Longevity-Maraka Correlation Gate** (Logic Unit 44.25): the most critical gate in the engine — Maraka power only activates when Dasa coincides with calculated Ayurdaya end. Stored as `general_principle`, `checkable: False` — requires Ch 43 longevity output as input.
+- **Childhood remedy**: tagged `remedy_category: ["ritual"]` — flagged for human review by validator as expected.
+- **Dual-sweep protocol**: Moon-centric Maraka sweep runs in parallel with Ascendant sweep. Conflict resolution: Moon rule prevails (disease, not death) when benefic from Ascendant.
+
+### Schema
+
+Correct nested schema (Ch 40 pattern) used throughout. `interpretation.summary` = `yoga_name` — no truncation false flags expected.
+
+### Validation results
+
+*Pending — awaiting user to run upload + validate commands.*

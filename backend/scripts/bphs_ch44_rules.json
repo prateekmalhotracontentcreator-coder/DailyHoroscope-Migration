@@ -1,0 +1,2987 @@
+[
+  {
+    "rule_id": "bphs-ch44-MI01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-01-03",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Primary Maraka Houses — H2 and H7",
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        7
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The 2nd and 7th houses are designated Maraka (killer) houses. Lords and occupants of these houses gain power to cause death during their Dasa and Antar-dasa periods when the native's calculated lifespan window coincides."
+    },
+    "interpretation": {
+      "summary": "Primary Maraka Houses — H2 and H7",
+      "detailed": "The 2nd and 7th houses are designated Maraka (killer) houses. Lords and occupants of these houses gain power to cause death during their Dasa and Antar-dasa periods when the native's calculated lifespan window coincides.\n\nEffect: 2nd and 7th lords or occupants become primary killers. House 2 is more lethal than House 7 because it is simultaneously the 12th from the 3rd house (Longevity house) and the 7th from the 8th house (House of Death). This double-terminal positioning grants H2 the primary qualification as the chief killer.",
+      "full_text_passages": [
+        {
+          "text": "The 2nd and 7th houses are designated Maraka (killer) houses. Lords and occupants of these houses gain power to cause death during their Dasa and Antar-dasa periods when the native's calculated lifespan window coincides.\n\nEffect: 2nd and 7th lords or occupants become primary killers. House 2 is more lethal than House 7 because it is simultaneously the 12th from the 3rd house (Longevity house) and the 7th from the 8th house (House of Death). This double-terminal positioning grants H2 the primary qualification as the chief killer.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_identification",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MI02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-02",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Malefic in H2/H7 — Prime Killer Designation",
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "planets_involved": [
+        "Saturn",
+        "Mars",
+        "Rahu",
+        "Ketu",
+        "Sun"
+      ],
+      "houses_involved": [
+        2,
+        7
+      ],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "houses": [
+          2,
+          7
+        ],
+        "planets": [
+          "Saturn",
+          "Mars",
+          "Rahu",
+          "Ketu",
+          "Sun"
+        ]
+      },
+      "trigger_condition": "A natural malefic planet (Saturn, Mars, Rahu, Ketu, Sun) occupies or lords over the 2nd or 7th house."
+    },
+    "interpretation": {
+      "summary": "Malefic in H2/H7 — Prime Killer Designation",
+      "detailed": "A natural malefic planet (Saturn, Mars, Rahu, Ketu, Sun) occupies or lords over the 2nd or 7th house.\n\nEffect: The malefic planet becomes a prime killer and will inflict death during its Dasa period provided the lifespan window permits.",
+      "full_text_passages": [
+        {
+          "text": "A natural malefic planet (Saturn, Mars, Rahu, Ketu, Sun) occupies or lords over the 2nd or 7th house.\n\nEffect: The malefic planet becomes a prime killer and will inflict death during its Dasa period provided the lifespan window permits.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_identification",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MI03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-03",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Benefic Killer Trigger — 12th Lord Association",
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "planets_involved": [
+        "Jupiter",
+        "Venus",
+        "Mercury",
+        "Moon"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "houses": [
+          12
+        ],
+        "planets": [
+          "Jupiter",
+          "Venus",
+          "Mercury",
+          "Moon"
+        ]
+      },
+      "trigger_condition": "A natural benefic planet (Jupiter, Venus, Mercury waxing, Moon waxing) is related to (conjunct, aspects, or is aspected by) the lord of the 12th house."
+    },
+    "interpretation": {
+      "summary": "Benefic Killer Trigger — 12th Lord Association",
+      "detailed": "A natural benefic planet (Jupiter, Venus, Mercury waxing, Moon waxing) is related to (conjunct, aspects, or is aspected by) the lord of the 12th house.\n\nEffect: The benefic acquires Maraka power and can inflict death during its Dasa period. Without the 12th lord link, a benefic cannot cause death from the Maraka houses alone.",
+      "full_text_passages": [
+        {
+          "text": "A natural benefic planet (Jupiter, Venus, Mercury waxing, Moon waxing) is related to (conjunct, aspects, or is aspected by) the lord of the 12th house.\n\nEffect: The benefic acquires Maraka power and can inflict death during its Dasa period. Without the 12th lord link, a benefic cannot cause death from the Maraka houses alone.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_identification",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MI04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-04-07",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Maraka Power Hierarchy — Three-Grade Descending Order",
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "All planets are ranked for Maraka power based on the houses they lord or occupy: Grade 1 (maximum) through Grade 3 (minimum)."
+    },
+    "interpretation": {
+      "summary": "Maraka Power Hierarchy — Three-Grade Descending Order",
+      "detailed": "All planets are ranked for Maraka power based on the houses they lord or occupy: Grade 1 (maximum) through Grade 3 (minimum).\n\nEffect: Grade 1 (Maximum Power): Lords or occupants of Houses 12, 3, 8, 7, and 2. Grade 2 (Secondary Killers): Lords or occupants of Houses 6 and 11. Grade 3 (Least Power): Lords or occupants of Houses 5, 9, 10, 4, and 1 — these only become killers if specific secondary criteria (conjunction, asterism, or Moon-centric Maraka rules) are met.",
+      "full_text_passages": [
+        {
+          "text": "All planets are ranked for Maraka power based on the houses they lord or occupy: Grade 1 (maximum) through Grade 3 (minimum).\n\nEffect: Grade 1 (Maximum Power): Lords or occupants of Houses 12, 3, 8, 7, and 2. Grade 2 (Secondary Killers): Lords or occupants of Houses 6 and 11. Grade 3 (Least Power): Lords or occupants of Houses 5, 9, 10, 4, and 1 — these only become killers if specific secondary criteria (conjunction, asterism, or Moon-centric Maraka rules) are met.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_identification",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MI05",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-05",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Saturn Killer Priority Override",
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "planets": [
+          "Saturn"
+        ]
+      },
+      "trigger_condition": "Saturn is ill-disposed (debilitated, in enemy sign, combust, or afflicted) AND is related to (conjoins, aspects, or is aspected by) any Grade 1 or Grade 2 Maraka planet."
+    },
+    "interpretation": {
+      "summary": "Saturn Killer Priority Override",
+      "detailed": "Saturn is ill-disposed (debilitated, in enemy sign, combust, or afflicted) AND is related to (conjoins, aspects, or is aspected by) any Grade 1 or Grade 2 Maraka planet.\n\nEffect: Saturn will be the FIRST to kill in preference to all other Maraka planets regardless of their individual Maraka grade. This override supersedes the standard hierarchy and activates Saturn as the primary Maraka for the period in question.",
+      "full_text_passages": [
+        {
+          "text": "Saturn is ill-disposed (debilitated, in enemy sign, combust, or afflicted) AND is related to (conjoins, aspects, or is aspected by) any Grade 1 or Grade 2 Maraka planet.\n\nEffect: Saturn will be the FIRST to kill in preference to all other Maraka planets regardless of their individual Maraka grade. This override supersedes the standard hierarchy and activates Saturn as the primary Maraka for the period in question.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_identification",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MI06",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-15-21",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Moon-Centric Dual Maraka Sweep",
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        12
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The Maraka identification engine executes two sweeps: (1) from the Ascendant (Lagna), and (2) from the Moon sign. In the second sweep, the 2nd and 12th houses are counted from the Moon sign."
+    },
+    "interpretation": {
+      "summary": "Moon-Centric Dual Maraka Sweep",
+      "detailed": "The Maraka identification engine executes two sweeps: (1) from the Ascendant (Lagna), and (2) from the Moon sign. In the second sweep, the 2nd and 12th houses are counted from the Moon sign.\n\nEffect: If the lord of the 2nd or 12th from Moon is a malefic, it qualifies to cause physical death. If the lord is a benefic, it causes only disease and distress, not death. When a planet is a Maraka from the Moon but benefic from the Ascendant, the Moon rule prevails — the planet causes disease rather than death.",
+      "full_text_passages": [
+        {
+          "text": "The Maraka identification engine executes two sweeps: (1) from the Ascendant (Lagna), and (2) from the Moon sign. In the second sweep, the 2nd and 12th houses are counted from the Moon sign.\n\nEffect: If the lord of the 2nd or 12th from Moon is a malefic, it qualifies to cause physical death. If the lord is a benefic, it causes only disease and distress, not death. When a planet is a Maraka from the Moon but benefic from the Ascendant, the Moon rule prevails — the planet causes disease rather than death.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_identification",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MI07",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-06",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "First-Rate Exclusive Malefic Designation",
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "A planet classified as an exclusive malefic (natural malefic without any benefic dignity relief) is related to any Maraka house lord or occupant, regardless of the exclusive malefic's own house ownership."
+    },
+    "interpretation": {
+      "summary": "First-Rate Exclusive Malefic Designation",
+      "detailed": "A planet classified as an exclusive malefic (natural malefic without any benefic dignity relief) is related to any Maraka house lord or occupant, regardless of the exclusive malefic's own house ownership.\n\nEffect: The exclusive malefic is capable of inflicting death regardless of which house it lords, overriding the normal Grade 1/2/3 hierarchy. Its Maraka power is activated by the relationship to the Maraka house.",
+      "full_text_passages": [
+        {
+          "text": "A planet classified as an exclusive malefic (natural malefic without any benefic dignity relief) is related to any Maraka house lord or occupant, regardless of the exclusive malefic's own house ownership.\n\nEffect: The exclusive malefic is capable of inflicting death regardless of which house it lords, overriding the normal Grade 1/2/3 hierarchy. Its Maraka power is activated by the relationship to the Maraka house.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_identification",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MI08",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-22",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Node-Signifier Override — Rahu/Ketu Steal Maraka Power",
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "planets_involved": [
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [
+        2,
+        7
+      ],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "planets": [
+          "Rahu",
+          "Ketu"
+        ],
+        "houses": [
+          2,
+          7
+        ]
+      },
+      "trigger_condition": "Rahu or Ketu joins (conjuncts) a Maraka planet OR occupies the house of a Maraka planet (2nd or 7th lord's sign)."
+    },
+    "interpretation": {
+      "summary": "Node-Signifier Override — Rahu/Ketu Steal Maraka Power",
+      "detailed": "Rahu or Ketu joins (conjuncts) a Maraka planet OR occupies the house of a Maraka planet (2nd or 7th lord's sign).\n\nEffect: The Node steals the Maraka power from the original Maraka planet and acts as the primary killer itself during its Dasa or Antar-dasa. The original Maraka planet's killing power is diminished once the Node takes over the Maraka signification.",
+      "full_text_passages": [
+        {
+          "text": "Rahu or Ketu joins (conjuncts) a Maraka planet OR occupies the house of a Maraka planet (2nd or 7th lord's sign).\n\nEffect: The Node steals the Maraka power from the original Maraka planet and acts as the primary killer itself during its Dasa or Antar-dasa. The original Maraka planet's killing power is diminished once the Node takes over the Maraka signification.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "maraka_identification",
+      "yoga_group_label": "Maraka Identification",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_identification",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MT01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-08",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Sub-Period Death Prohibition — Benefic Antar-dasa Buffer",
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The major Dasa (Maha-dasa) is of a malefic Maraka planet AND the running sub-period (Antar-dasa) belongs to a benefic planet, even if the benefic is related to the malefic Maraka."
+    },
+    "interpretation": {
+      "summary": "Sub-Period Death Prohibition — Benefic Antar-dasa Buffer",
+      "detailed": "The major Dasa (Maha-dasa) is of a malefic Maraka planet AND the running sub-period (Antar-dasa) belongs to a benefic planet, even if the benefic is related to the malefic Maraka.\n\nEffect: Death will NOT occur during this combination. The benefic Antar-dasa acts as a safety buffer even within a malefic Maraka major period. Death instead occurs during the sub-period of an unrelated malefic planet within the same Maha-dasa.",
+      "full_text_passages": [
+        {
+          "text": "The major Dasa (Maha-dasa) is of a malefic Maraka planet AND the running sub-period (Antar-dasa) belongs to a benefic planet, even if the benefic is related to the malefic Maraka.\n\nEffect: Death will NOT occur during this combination. The benefic Antar-dasa acts as a safety buffer even within a malefic Maraka major period. Death instead occurs during the sub-period of an unrelated malefic planet within the same Maha-dasa.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_timing",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MT02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-09",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Lifespan Boundary Classes — Four-Tier Classification",
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The calculated Ayurdaya (longevity span from Ch 43) is compared to four boundary thresholds to classify the native into a lifespan tier."
+    },
+    "interpretation": {
+      "summary": "Lifespan Boundary Classes — Four-Tier Classification",
+      "detailed": "The calculated Ayurdaya (longevity span from Ch 43) is compared to four boundary thresholds to classify the native into a lifespan tier.\n\nEffect: Short Life: Death before 32 years. Medium Life: Death between 32 and 64 years. Long Life: Death between 64 and 100 years. Supreme Longevity: Life beyond 100 years. The Maraka Dasa must coincide with the calculated boundary of the native's tier for physical death to occur.",
+      "full_text_passages": [
+        {
+          "text": "The calculated Ayurdaya (longevity span from Ch 43) is compared to four boundary thresholds to classify the native into a lifespan tier.\n\nEffect: Short Life: Death before 32 years. Medium Life: Death between 32 and 64 years. Long Life: Death between 64 and 100 years. Supreme Longevity: Life beyond 100 years. The Maraka Dasa must coincide with the calculated boundary of the native's tier for physical death to occur.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_timing",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MT03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-15",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Longevity-Maraka Correlation Gate",
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "A Maraka Dasa is running AND the calculated Ayurdaya lifespan window is compared to the native's current age to determine activation state."
+    },
+    "interpretation": {
+      "summary": "Longevity-Maraka Correlation Gate",
+      "detailed": "A Maraka Dasa is running AND the calculated Ayurdaya lifespan window is compared to the native's current age to determine activation state.\n\nEffect: IF Maraka Dasa coincides with the calculated Ayurdaya end: Physical death occurs. IF Maraka Dasa occurs outside the calculated longevity window: The native experiences 'difficulties equal to death' — severe misery, disease, or poverty — but not physical death. This gate is the primary guard against false mortality predictions.",
+      "full_text_passages": [
+        {
+          "text": "A Maraka Dasa is running AND the calculated Ayurdaya lifespan window is compared to the native's current age to determine activation state.\n\nEffect: IF Maraka Dasa coincides with the calculated Ayurdaya end: Physical death occurs. IF Maraka Dasa occurs outside the calculated longevity window: The native experiences 'difficulties equal to death' — severe misery, disease, or poverty — but not physical death. This gate is the primary guard against false mortality predictions.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_timing",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MT04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-09",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Star-Based Mortality Timing — Vipat, Pratyak, Vadha",
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The native's birth Nakshatra is identified. The 3rd (Vipat), 5th (Pratyak), and 7th (Vadha) Nakshatras counted from birth are the Killer Asterisms. Their Dasa lords are the Asterism Marakas."
+    },
+    "interpretation": {
+      "summary": "Star-Based Mortality Timing — Vipat, Pratyak, Vadha",
+      "detailed": "The native's birth Nakshatra is identified. The 3rd (Vipat), 5th (Pratyak), and 7th (Vadha) Nakshatras counted from birth are the Killer Asterisms. Their Dasa lords are the Asterism Marakas.\n\nEffect: Short Life natives: The Dasa of the Vipat star (3rd from birth) is the mortality trigger. Medium Life natives: The Dasa of the Pratyak star (5th from birth) is the mortality trigger. Long Life natives: The Dasa of the Vadha star (7th from birth) is the mortality trigger. These asterism-based periods override general house-lord Dasa analysis and are prioritized in timing calculations.",
+      "full_text_passages": [
+        {
+          "text": "The native's birth Nakshatra is identified. The 3rd (Vipat), 5th (Pratyak), and 7th (Vadha) Nakshatras counted from birth are the Killer Asterisms. Their Dasa lords are the Asterism Marakas.\n\nEffect: Short Life natives: The Dasa of the Vipat star (3rd from birth) is the mortality trigger. Medium Life natives: The Dasa of the Pratyak star (5th from birth) is the mortality trigger. Long Life natives: The Dasa of the Vadha star (7th from birth) is the mortality trigger. These asterism-based periods override general house-lord Dasa analysis and are prioritized in timing calculations.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_timing",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MT05",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-19",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Specific Killer Asterisms — 22nd Decanate and Nakshatra Lords",
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The lord of the 22nd decanate (counted from the Ascendant decanate) OR the lords of the 23rd, 3rd, 5th, or 7th asterisms from the birth Nakshatra are identified as Specific Killer Lords."
+    },
+    "interpretation": {
+      "summary": "Specific Killer Asterisms — 22nd Decanate and Nakshatra Lords",
+      "detailed": "The lord of the 22nd decanate (counted from the Ascendant decanate) OR the lords of the 23rd, 3rd, 5th, or 7th asterisms from the birth Nakshatra are identified as Specific Killer Lords.\n\nEffect: These lords acquire the power to terminate life during their respective Dasa and Antar-dasa periods. They are ranked above standard house-lord Marakas in timing precision for mortality prediction.",
+      "full_text_passages": [
+        {
+          "text": "The lord of the 22nd decanate (counted from the Ascendant decanate) OR the lords of the 23rd, 3rd, 5th, or 7th asterisms from the birth Nakshatra are identified as Specific Killer Lords.\n\nEffect: These lords acquire the power to terminate life during their respective Dasa and Antar-dasa periods. They are ranked above standard house-lord Marakas in timing precision for mortality prediction.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_timing",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-MT06",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-20",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Sub-Period Triad — 6th Lord Dasa Mortality Window",
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "planets_involved": [],
+      "houses_involved": [
+        6,
+        8,
+        12
+      ],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "planets": [],
+        "houses": [
+          6,
+          8,
+          12
+        ]
+      },
+      "trigger_condition": "The major Dasa (Maha-dasa) belongs to the lord of the 6th house AND the sub-period (Antar-dasa) belongs to the lord of the 6th, 8th, or 12th house."
+    },
+    "interpretation": {
+      "summary": "Sub-Period Triad — 6th Lord Dasa Mortality Window",
+      "detailed": "The major Dasa (Maha-dasa) belongs to the lord of the 6th house AND the sub-period (Antar-dasa) belongs to the lord of the 6th, 8th, or 12th house.\n\nEffect: A high-mortality window is activated. These specific overlaps of dushtana lords (6th/8th/12th) in Dasa-Antar-dasa create a potent mortality trigger. Death is likely if the Longevity-Maraka Correlation Gate (Logic Unit 44.25) also confirms the native's lifespan boundary is reached.",
+      "full_text_passages": [
+        {
+          "text": "The major Dasa (Maha-dasa) belongs to the lord of the 6th house AND the sub-period (Antar-dasa) belongs to the lord of the 6th, 8th, or 12th house.\n\nEffect: A high-mortality window is activated. These specific overlaps of dushtana lords (6th/8th/12th) in Dasa-Antar-dasa create a potent mortality trigger. Death is likely if the Longevity-Maraka Correlation Gate (Logic Unit 44.25) also confirms the native's lifespan boundary is reached.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "maraka_timing",
+      "yoga_group_label": "Maraka Timing",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "maraka_timing",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-RK01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-22-24",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Rahu/Ketu Killer Status — H2/H7 or Maraka Lord Association",
+      "yoga_group": "rahu_ketu",
+      "yoga_group_label": "Rahu Ketu",
+      "planets_involved": [
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [
+        2,
+        7
+      ],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "houses": [
+          2,
+          7
+        ],
+        "planets": [
+          "Rahu",
+          "Ketu"
+        ]
+      },
+      "trigger_condition": "Rahu or Ketu occupies the 2nd or 7th house (Condition A), OR Rahu/Ketu is conjunct with or aspected by the lord of the 2nd or 7th house (Condition B)."
+    },
+    "interpretation": {
+      "summary": "Rahu/Ketu Killer Status — H2/H7 or Maraka Lord Association",
+      "detailed": "Rahu or Ketu occupies the 2nd or 7th house (Condition A), OR Rahu/Ketu is conjunct with or aspected by the lord of the 2nd or 7th house (Condition B).\n\nEffect: The Nodes acquire full Maraka power and can kill during their major or sub-periods. Restriction: If the Nodes are aspected by or conjunct with a benefic planet, they cause severe difficulties and disease rather than physical death.",
+      "full_text_passages": [
+        {
+          "text": "Rahu or Ketu occupies the 2nd or 7th house (Condition A), OR Rahu/Ketu is conjunct with or aspected by the lord of the 2nd or 7th house (Condition B).\n\nEffect: The Nodes acquire full Maraka power and can kill during their major or sub-periods. Restriction: If the Nodes are aspected by or conjunct with a benefic planet, they cause severe difficulties and disease rather than physical death.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "rahu_ketu",
+      "yoga_group_label": "Rahu Ketu",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "rahu_ketu",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-RK02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-23",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Rahu/Ketu Non-Maraka Exclusion Zones",
+      "yoga_group": "rahu_ketu",
+      "yoga_group_label": "Rahu Ketu",
+      "planets_involved": [
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "trigger_condition": "Rahu or Ketu occupies specific houses other than the 2nd and 7th — namely houses that do not confer Maraka lordship or Maraka-planet association upon them."
+    },
+    "interpretation": {
+      "summary": "Rahu/Ketu Non-Maraka Exclusion Zones",
+      "detailed": "Rahu or Ketu occupies specific houses other than the 2nd and 7th — namely houses that do not confer Maraka lordship or Maraka-planet association upon them.\n\nEffect: In these non-Maraka placements, Rahu and Ketu will NOT act as killers regardless of other conjunctions, aspects, or dasas running. The Nodes require either direct H2/H7 placement or Maraka-lord association to acquire killing power.",
+      "full_text_passages": [
+        {
+          "text": "Rahu or Ketu occupies specific houses other than the 2nd and 7th — namely houses that do not confer Maraka lordship or Maraka-planet association upon them.\n\nEffect: In these non-Maraka placements, Rahu and Ketu will NOT act as killers regardless of other conjunctions, aspects, or dasas running. The Nodes require either direct H2/H7 placement or Maraka-lord association to acquire killing power.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "rahu_ketu",
+      "yoga_group_label": "Rahu Ketu",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "rahu_ketu",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-RK03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-24",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Benefic Aspect on Nodes — Difficulty Not Death",
+      "yoga_group": "rahu_ketu",
+      "yoga_group_label": "Rahu Ketu",
+      "planets_involved": [
+        "Rahu",
+        "Ketu",
+        "Jupiter",
+        "Venus",
+        "Mercury",
+        "Moon"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "planets": [
+          "Rahu",
+          "Ketu",
+          "Jupiter",
+          "Venus",
+          "Mercury",
+          "Moon"
+        ]
+      },
+      "trigger_condition": "Rahu or Ketu has acquired Maraka status (H2/H7 placement or Maraka-lord association) AND the Node is aspected by or conjunct with a natural benefic planet (Jupiter, Venus, Mercury waxing, Moon waxing)."
+    },
+    "interpretation": {
+      "summary": "Benefic Aspect on Nodes — Difficulty Not Death",
+      "detailed": "Rahu or Ketu has acquired Maraka status (H2/H7 placement or Maraka-lord association) AND the Node is aspected by or conjunct with a natural benefic planet (Jupiter, Venus, Mercury waxing, Moon waxing).\n\nEffect: The Node's Maraka power is neutralized. Instead of physical death, the Dasa of the Node causes severe disease, prolonged suffering, or crisis-level difficulties equivalent to death — but the native survives.",
+      "full_text_passages": [
+        {
+          "text": "Rahu or Ketu has acquired Maraka status (H2/H7 placement or Maraka-lord association) AND the Node is aspected by or conjunct with a natural benefic planet (Jupiter, Venus, Mercury waxing, Moon waxing).\n\nEffect: The Node's Maraka power is neutralized. Instead of physical death, the Dasa of the Node causes severe disease, prolonged suffering, or crisis-level difficulties equivalent to death — but the native survives.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "rahu_ketu",
+      "yoga_group_label": "Rahu Ketu",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "rahu_ketu",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CD01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-25-31",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "3rd House Planet-Cause Library — Per Planet Diagnosis",
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Saturn",
+        "Rahu",
+        "Mercury",
+        "Jupiter",
+        "Venus"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "houses": [
+          3
+        ],
+        "planets": [
+          "Sun",
+          "Moon",
+          "Mars",
+          "Saturn",
+          "Rahu",
+          "Mercury",
+          "Jupiter",
+          "Venus"
+        ]
+      },
+      "trigger_condition": "A specific planet occupies the 3rd house of the natal chart."
+    },
+    "interpretation": {
+      "summary": "3rd House Planet-Cause Library — Per Planet Diagnosis",
+      "detailed": "A specific planet occupies the 3rd house of the natal chart.\n\nEffect: Sun in H3: Death by king's/legal punishment or cardiac problems. Moon in H3: Death by tuberculosis or lung disorders. Mars in H3: Death by wounds, weapons, fire, electricity, or thirst. Saturn or Rahu in H3: Death by poison, water, fire, falls from heights, or confinement. Mercury in H3: Death by severe fever (typhoid or similar). Jupiter in H3: Death by swelling, tumors, jaundice, or dropsy. Venus in H3: Death by urinary disorders or venereal diseases.",
+      "full_text_passages": [
+        {
+          "text": "A specific planet occupies the 3rd house of the natal chart.\n\nEffect: Sun in H3: Death by king's/legal punishment or cardiac problems. Moon in H3: Death by tuberculosis or lung disorders. Mars in H3: Death by wounds, weapons, fire, electricity, or thirst. Saturn or Rahu in H3: Death by poison, water, fire, falls from heights, or confinement. Mercury in H3: Death by severe fever (typhoid or similar). Jupiter in H3: Death by swelling, tumors, jaundice, or dropsy. Venus in H3: Death by urinary disorders or venereal diseases.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "cause_of_death",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CD02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-31",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Multi-Planet H3 — Death by Many Diseases",
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "planets_involved": [],
+      "houses_involved": [
+        3
+      ],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "houses": [
+          3
+        ],
+        "planets": []
+      },
+      "trigger_condition": "Multiple planets (more than one) occupy the 3rd house simultaneously."
+    },
+    "interpretation": {
+      "summary": "Multi-Planet H3 — Death by Many Diseases",
+      "detailed": "Multiple planets (more than one) occupy the 3rd house simultaneously.\n\nEffect: Death will be caused by a combination of many diseases rather than a single ailment. The exact diseases are diagnosed by reading each occupant's cause individually per the 3rd house library.",
+      "full_text_passages": [
+        {
+          "text": "Multiple planets (more than one) occupy the 3rd house simultaneously.\n\nEffect: Death will be caused by a combination of many diseases rather than a single ailment. The exact diseases are diagnosed by reading each occupant's cause individually per the 3rd house library.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "cause_of_death",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CD03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-30",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Venus in H3 — Gender-Specific Diagnosis (Female Native)",
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "planets_involved": [
+        "Venus"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "houses": [
+          3
+        ],
+        "planets": [
+          "Venus"
+        ]
+      },
+      "trigger_condition": "Venus occupies the 3rd house AND the native is female."
+    },
+    "interpretation": {
+      "summary": "Venus in H3 — Gender-Specific Diagnosis (Female Native)",
+      "detailed": "Venus occupies the 3rd house AND the native is female.\n\nEffect: For a female native specifically: death involving leucorrhea, urinary disorders, or venereal diseases. The gender-specific sub-diagnosis overrides the general Venus-in-H3 reading for male natives when the native is female.",
+      "full_text_passages": [
+        {
+          "text": "Venus occupies the 3rd house AND the native is female.\n\nEffect: For a female native specifically: death involving leucorrhea, urinary disorders, or venereal diseases. The gender-specific sub-diagnosis overrides the general Venus-in-H3 reading for male natives when the native is female.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "cause_of_death",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CD04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-31",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Mixed H3 Occupation — Multiple Reasons Diagnosis",
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "planets_involved": [],
+      "houses_involved": [
+        3
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The 3rd house contains a mix of planets with conflicting natures (benefic and malefic together, or planets representing different cause categories)."
+    },
+    "interpretation": {
+      "summary": "Mixed H3 Occupation — Multiple Reasons Diagnosis",
+      "detailed": "The 3rd house contains a mix of planets with conflicting natures (benefic and malefic together, or planets representing different cause categories).\n\nEffect: Death occurs for various reasons or under mixed environmental circumstances. No single cause dominates; the diagnosis reflects the combined influence of all occupants.",
+      "full_text_passages": [
+        {
+          "text": "The 3rd house contains a mix of planets with conflicting natures (benefic and malefic together, or planets representing different cause categories).\n\nEffect: Death occurs for various reasons or under mixed environmental circumstances. No single cause dominates; the diagnosis reflects the combined influence of all occupants.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "cause_of_death",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CD05",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-15-17",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Moon-Sign Lordship Marakas — Malefic vs Benefic Lords",
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "planets_involved": [],
+      "houses_involved": [
+        2,
+        12
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The 2nd and 12th houses are counted from the Moon sign (not Lagna). The lords of these houses are identified as Moon-centric Marakas."
+    },
+    "interpretation": {
+      "summary": "Moon-Sign Lordship Marakas — Malefic vs Benefic Lords",
+      "detailed": "The 2nd and 12th houses are counted from the Moon sign (not Lagna). The lords of these houses are identified as Moon-centric Marakas.\n\nEffect: If the lord of the 2nd or 12th from Moon is a malefic: it is qualified to bring physical death during its Dasa. If the lord is a benefic: it triggers only disease and distress, not physical death. The Moon-centric sweep must be run in parallel with the Ascendant-based sweep and conflicts resolved per the dual-sweep protocol.",
+      "full_text_passages": [
+        {
+          "text": "The 2nd and 12th houses are counted from the Moon sign (not Lagna). The lords of these houses are identified as Moon-centric Marakas.\n\nEffect: If the lord of the 2nd or 12th from Moon is a malefic: it is qualified to bring physical death during its Dasa. If the lord is a benefic: it triggers only disease and distress, not physical death. The Moon-centric sweep must be run in parallel with the Ascendant-based sweep and conflicts resolved per the dual-sweep protocol.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "cause_of_death",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CD06",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-32",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Death Environment — Place and Locality Diagnosis",
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "planets_involved": [],
+      "houses_involved": [
+        3
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The nature and placement of planets in the 3rd house, combined with the sign type of the 3rd house, determine the place and locality of death."
+    },
+    "interpretation": {
+      "summary": "Death Environment — Place and Locality Diagnosis",
+      "detailed": "The nature and placement of planets in the 3rd house, combined with the sign type of the 3rd house, determine the place and locality of death.\n\nEffect: Place of death (planet type): Benefic in H3 → Death in a shrine or sacred place. Malefic in H3 → Death in a sinful, inauspicious place. Locality (sign type): Movable sign in H3 (Aries/Cancer/Libra/Capricorn) → Death in a foreign place. Fixed sign in H3 (Taurus/Leo/Scorpio/ Aquarius) → Death in own house. Dual sign in H3 (Gemini/Virgo/ Sagittarius/Pisces) → Death while traveling or on the way.",
+      "full_text_passages": [
+        {
+          "text": "The nature and placement of planets in the 3rd house, combined with the sign type of the 3rd house, determine the place and locality of death.\n\nEffect: Place of death (planet type): Benefic in H3 → Death in a shrine or sacred place. Malefic in H3 → Death in a sinful, inauspicious place. Locality (sign type): Movable sign in H3 (Aries/Cancer/Libra/Capricorn) → Death in a foreign place. Fixed sign in H3 (Taurus/Leo/Scorpio/ Aquarius) → Death in own house. Dual sign in H3 (Gemini/Virgo/ Sagittarius/Pisces) → Death while traveling or on the way.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "cause_of_death",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CD07",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-25",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "3rd House Occupant Priority — Misnomer Prevention",
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "planets_involved": [],
+      "houses_involved": [
+        3
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The cause-of-death engine must not rely solely on the 2nd lord for death cause. The 3rd house occupants are equally capable death-givers and must be checked."
+    },
+    "interpretation": {
+      "summary": "3rd House Occupant Priority — Misnomer Prevention",
+      "detailed": "The cause-of-death engine must not rely solely on the 2nd lord for death cause. The 3rd house occupants are equally capable death-givers and must be checked.\n\nEffect: Prioritize 3rd house occupants as death-cause indicators alongside 2nd lord analysis to avoid 'misnomer' errors in prediction. The 3rd house planet-cause library (per-planet mapping) governs the nature of death, independent of the Maraka house hierarchy.",
+      "full_text_passages": [
+        {
+          "text": "The cause-of-death engine must not rely solely on the 2nd lord for death cause. The 3rd house occupants are equally capable death-givers and must be checked.\n\nEffect: Prioritize 3rd house occupants as death-cause indicators alongside 2nd lord analysis to avoid 'misnomer' errors in prediction. The 3rd house planet-cause library (per-planet mapping) governs the nature of death, independent of the Maraka house hierarchy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "cause_of_death",
+      "yoga_group_label": "Cause Of Death",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "cause_of_death",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-EH01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-35-36",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "8th House Occupancy Cause-of-Death Library",
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Jupiter",
+        "Venus",
+        "Saturn"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "houses": [
+          8
+        ],
+        "planets": [
+          "Sun",
+          "Moon",
+          "Mars",
+          "Mercury",
+          "Jupiter",
+          "Venus",
+          "Saturn"
+        ]
+      },
+      "trigger_condition": "A specific planet occupies the 8th house of the natal chart."
+    },
+    "interpretation": {
+      "summary": "8th House Occupancy Cause-of-Death Library",
+      "detailed": "A specific planet occupies the 8th house of the natal chart.\n\nEffect: Sun in H8: Death by fire. Moon in H8: Death by water. Mars in H8: Death by weapons. Mercury in H8: Death by fever. Jupiter in H8: Death by diseases (internal, chronic). Venus in H8: Death by hunger or starvation. Saturn in H8: Death by thirst.",
+      "full_text_passages": [
+        {
+          "text": "A specific planet occupies the 8th house of the natal chart.\n\nEffect: Sun in H8: Death by fire. Moon in H8: Death by water. Mars in H8: Death by weapons. Mercury in H8: Death by fever. Jupiter in H8: Death by diseases (internal, chronic). Venus in H8: Death by hunger or starvation. Saturn in H8: Death by thirst.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "eighth_house_library",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-EH02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-37",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Sacred Passing Yoga — Death in Shrine",
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "planets_involved": [],
+      "houses_involved": [
+        8,
+        9
+      ],
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "planets": [],
+        "houses": [
+          8,
+          9
+        ]
+      },
+      "trigger_condition": "The 8th house is occupied by a benefic OR aspected by a benefic, AND the 9th lord is conjunct with a benefic planet."
+    },
+    "interpretation": {
+      "summary": "Sacred Passing Yoga — Death in Shrine",
+      "detailed": "The 8th house is occupied by a benefic OR aspected by a benefic, AND the 9th lord is conjunct with a benefic planet.\n\nEffect: The native is guaranteed to die in a shrine, temple, or sacred place. Both conditions must be simultaneously satisfied: the benefic influence on H8 plus the 9th lord's benefic conjunction confirm the sacred environment of death.",
+      "full_text_passages": [
+        {
+          "text": "The 8th house is occupied by a benefic OR aspected by a benefic, AND the 9th lord is conjunct with a benefic planet.\n\nEffect: The native is guaranteed to die in a shrine, temple, or sacred place. Both conditions must be simultaneously satisfied: the benefic influence on H8 plus the 9th lord's benefic conjunction confirm the sacred environment of death.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "eighth_house_library",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-EH03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-38-40",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Fate of the Corpse — 22nd Decanate Diagnosis",
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "planets_involved": [],
+      "houses_involved": [
+        8
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The 22nd decanate (counted from the Ascendant decanate) is identified and classified as Benefic, Malefic, Mixed, or Serpent decanate."
+    },
+    "interpretation": {
+      "summary": "Fate of the Corpse — 22nd Decanate Diagnosis",
+      "detailed": "The 22nd decanate (counted from the Ascendant decanate) is identified and classified as Benefic, Malefic, Mixed, or Serpent decanate.\n\nEffect: Benefic 8th decanate: Corpse is burnt in fire as per the Shastras (traditional cremation). Malefic 8th decanate: Body is thrown away in water (immersed). Mixed 8th decanate: Dead body dries up (abandoned or delayed funeral). Serpent 8th decanate (Cancer 2nd/3rd, Scorpio 1st, Pisces 3rd): Body is eaten by animals or crows.",
+      "full_text_passages": [
+        {
+          "text": "The 22nd decanate (counted from the Ascendant decanate) is identified and classified as Benefic, Malefic, Mixed, or Serpent decanate.\n\nEffect: Benefic 8th decanate: Corpse is burnt in fire as per the Shastras (traditional cremation). Malefic 8th decanate: Body is thrown away in water (immersed). Mixed 8th decanate: Dead body dries up (abandoned or delayed funeral). Serpent 8th decanate (Cancer 2nd/3rd, Scorpio 1st, Pisces 3rd): Body is eaten by animals or crows.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "eighth_house_library",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-EH04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-39",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Serpent Decanate Identification",
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "planets_involved": [],
+      "houses_involved": [
+        8
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The 8th house decanate (or 22nd decanate from Ascendant) falls in one of the following positions: Cancer 2nd decanate, Cancer 3rd decanate, Scorpio 1st decanate, or Pisces 3rd decanate."
+    },
+    "interpretation": {
+      "summary": "Serpent Decanate Identification",
+      "detailed": "The 8th house decanate (or 22nd decanate from Ascendant) falls in one of the following positions: Cancer 2nd decanate, Cancer 3rd decanate, Scorpio 1st decanate, or Pisces 3rd decanate.\n\nEffect: The decanate is classified as a Serpent decanate. Applied to funeral fate: the dead body will be eaten by animals and crows rather than receiving a traditional funeral. This is the most inauspicious corpse treatment outcome.",
+      "full_text_passages": [
+        {
+          "text": "The 8th house decanate (or 22nd decanate from Ascendant) falls in one of the following positions: Cancer 2nd decanate, Cancer 3rd decanate, Scorpio 1st decanate, or Pisces 3rd decanate.\n\nEffect: The decanate is classified as a Serpent decanate. Applied to funeral fate: the dead body will be eaten by animals and crows rather than receiving a traditional funeral. This is the most inauspicious corpse treatment outcome.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "eighth_house_library",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-EH05",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-43-45",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Post-Death World — Vacant H12/H7/H6/H8 Fallback",
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "planets_involved": [],
+      "houses_involved": [
+        6,
+        7,
+        8,
+        12
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The 12th, 7th, 6th, and 8th houses are all vacant (no planet occupies them). The fallback rule activates: identify the stronger of the decanate lords of the 6th and 8th houses."
+    },
+    "interpretation": {
+      "summary": "Post-Death World — Vacant H12/H7/H6/H8 Fallback",
+      "detailed": "The 12th, 7th, 6th, and 8th houses are all vacant (no planet occupies them). The fallback rule activates: identify the stronger of the decanate lords of the 6th and 8th houses.\n\nEffect: The stronger decanate lord determines the native's post-death world. If Jupiter decanate lord: World of Gods. If Venus or Moon decanate lord: World of Manes. If Mars or Sun decanate lord: Earth (rebirth). If Mercury or Saturn decanate lord: Hell. This fallback only applies when the primary diagnostic houses are vacant.",
+      "full_text_passages": [
+        {
+          "text": "The 12th, 7th, 6th, and 8th houses are all vacant (no planet occupies them). The fallback rule activates: identify the stronger of the decanate lords of the 6th and 8th houses.\n\nEffect: The stronger decanate lord determines the native's post-death world. If Jupiter decanate lord: World of Gods. If Venus or Moon decanate lord: World of Manes. If Mars or Sun decanate lord: Earth (rebirth). If Mercury or Saturn decanate lord: Hell. This fallback only applies when the primary diagnostic houses are vacant.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "eighth_house_library",
+      "yoga_group_label": "Eighth House Library",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "eighth_house_library",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-DE01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-33-34",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Pre-Natal Abode — Luminary Decanate Diagnosis",
+      "yoga_group": "death_environment",
+      "yoga_group_label": "Death Environment",
+      "planets_involved": [
+        "Sun",
+        "Moon"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The strongest luminary (Sun or Moon, whichever has greater Shadbala or dignity) is identified. The decanate it occupies in the natal chart is classified by its planetary ruler."
+    },
+    "interpretation": {
+      "summary": "Pre-Natal Abode — Luminary Decanate Diagnosis",
+      "detailed": "The strongest luminary (Sun or Moon, whichever has greater Shadbala or dignity) is identified. The decanate it occupies in the natal chart is classified by its planetary ruler.\n\nEffect: Jupiter decanate: The native originates from and returns to the World of Gods. Venus or Moon decanate: The native originates from and returns to the World of Manes (ancestors). Sun or Mars decanate: The native originates from and returns to the World of the Dead (Yama, implying rebirth). Mercury or Saturn decanate: The native originates from and returns to Hell.",
+      "full_text_passages": [
+        {
+          "text": "The strongest luminary (Sun or Moon, whichever has greater Shadbala or dignity) is identified. The decanate it occupies in the natal chart is classified by its planetary ruler.\n\nEffect: Jupiter decanate: The native originates from and returns to the World of Gods. Venus or Moon decanate: The native originates from and returns to the World of Manes (ancestors). Sun or Mars decanate: The native originates from and returns to the World of the Dead (Yama, implying rebirth). Mercury or Saturn decanate: The native originates from and returns to Hell.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "death_environment",
+      "yoga_group_label": "Death Environment",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "death_environment",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-DE02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-43-45",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Post-Death World — Terminal House Planet Mapping",
+      "yoga_group": "death_environment",
+      "yoga_group_label": "Death Environment",
+      "planets_involved": [
+        "Jupiter",
+        "Moon",
+        "Venus",
+        "Mars",
+        "Sun",
+        "Mercury",
+        "Saturn"
+      ],
+      "houses_involved": [
+        6,
+        7,
+        8,
+        12
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "Planets occupying the terminal houses (12th, 7th, 6th, 8th) of the natal chart are identified. Each planet in these houses indicates a specific post-death destination."
+    },
+    "interpretation": {
+      "summary": "Post-Death World — Terminal House Planet Mapping",
+      "detailed": "Planets occupying the terminal houses (12th, 7th, 6th, 8th) of the natal chart are identified. Each planet in these houses indicates a specific post-death destination.\n\nEffect: Jupiter in terminal houses: Heaven (World of Gods). Moon or Venus in terminal houses: World of Manes. Mars or Sun in terminal houses: Earth (rebirth cycle). Mercury or Saturn in terminal houses: Hell. If multiple terminal houses are occupied, the strongest planet governs. If all terminal houses are vacant, the decanate fallback rule applies.",
+      "full_text_passages": [
+        {
+          "text": "Planets occupying the terminal houses (12th, 7th, 6th, 8th) of the natal chart are identified. Each planet in these houses indicates a specific post-death destination.\n\nEffect: Jupiter in terminal houses: Heaven (World of Gods). Moon or Venus in terminal houses: World of Manes. Mars or Sun in terminal houses: Earth (rebirth cycle). Mercury or Saturn in terminal houses: Hell. If multiple terminal houses are occupied, the strongest planet governs. If all terminal houses are vacant, the decanate fallback rule applies.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "death_environment",
+      "yoga_group_label": "Death Environment",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "death_environment",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-DE03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-45",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Afterlife Status Ranking — Dignity of World Planet",
+      "yoga_group": "death_environment",
+      "yoga_group_label": "Death Environment",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The planet indicating the native's post-death world (from terminal house or decanate analysis) is assessed for its dignity at the time of birth: exalted, own sign, friendly, neutral, enemy, debilitated."
+    },
+    "interpretation": {
+      "summary": "Afterlife Status Ranking — Dignity of World Planet",
+      "detailed": "The planet indicating the native's post-death world (from terminal house or decanate analysis) is assessed for its dignity at the time of birth: exalted, own sign, friendly, neutral, enemy, debilitated.\n\nEffect: The dignity level of the world-indicating planet determines the native's status within that afterlife world. Higher dignity → Higher rank and enjoyment in the world. Exalted → Supreme status. Debilitated → Low or suffering status in that world.",
+      "full_text_passages": [
+        {
+          "text": "The planet indicating the native's post-death world (from terminal house or decanate analysis) is assessed for its dignity at the time of birth: exalted, own sign, friendly, neutral, enemy, debilitated.\n\nEffect: The dignity level of the world-indicating planet determines the native's status within that afterlife world. Higher dignity → Higher rank and enjoyment in the world. Exalted → Supreme status. Debilitated → Low or suffering status in that world.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "death_environment",
+      "yoga_group_label": "Death Environment",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "death_environment",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-DE04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-07",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Second-Grade Killer Hierarchy — H6 and H11 Lords",
+      "yoga_group": "death_environment",
+      "yoga_group_label": "Death Environment",
+      "planets_involved": [],
+      "houses_involved": [
+        6,
+        11
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "After the Grade 1 Marakas (H12/H3/H8/H7/H2 lords and occupants) are identified, the engine sweeps for Grade 2 killers: lords or occupants of the 6th and 11th houses."
+    },
+    "interpretation": {
+      "summary": "Second-Grade Killer Hierarchy — H6 and H11 Lords",
+      "detailed": "After the Grade 1 Marakas (H12/H3/H8/H7/H2 lords and occupants) are identified, the engine sweeps for Grade 2 killers: lords or occupants of the 6th and 11th houses.\n\nEffect: The 6th and 11th lords are secondary killers with significant Maraka power. Grade 3 (H5/H9/H10/H4/H1) kill only when conjunction overrides or asterism triggers activate them per the secondary criteria in slokas 15-21. The hierarchy must be applied in descending grade order to identify the primary Maraka dasa.",
+      "full_text_passages": [
+        {
+          "text": "After the Grade 1 Marakas (H12/H3/H8/H7/H2 lords and occupants) are identified, the engine sweeps for Grade 2 killers: lords or occupants of the 6th and 11th houses.\n\nEffect: The 6th and 11th lords are secondary killers with significant Maraka power. Grade 3 (H5/H9/H10/H4/H1) kill only when conjunction overrides or asterism triggers activate them per the secondary criteria in slokas 15-21. The hierarchy must be applied in descending grade order to identify the primary Maraka dasa.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "death_environment",
+      "yoga_group_label": "Death Environment",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "death_environment",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CF01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-33",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Consciousness at Death — Jupiter/Venus in H3",
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "planets_involved": [
+        "Jupiter",
+        "Venus"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "houses": [
+          3
+        ],
+        "planets": [
+          "Jupiter",
+          "Venus"
+        ]
+      },
+      "trigger_condition": "Jupiter or Venus occupies the 3rd house of the natal chart."
+    },
+    "interpretation": {
+      "summary": "Consciousness at Death — Jupiter/Venus in H3",
+      "detailed": "Jupiter or Venus occupies the 3rd house of the natal chart.\n\nEffect: The native will maintain full consciousness at the time of death. Death arrives with awareness intact — the native can participate in final rituals, prayers, or farewells. Any other planet in H3 indicates unconsciousness or loss of awareness before death.",
+      "full_text_passages": [
+        {
+          "text": "Jupiter or Venus occupies the 3rd house of the natal chart.\n\nEffect: The native will maintain full consciousness at the time of death. Death arrives with awareness intact — the native can participate in final rituals, prayers, or farewells. Any other planet in H3 indicates unconsciousness or loss of awareness before death.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "consciousness_fate",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CF02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-10-14",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Childhood Vulnerability Protocol — Age Under 20",
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The native's current age is under 20 years and a Maraka Dasa or adverse transit is running."
+    },
+    "interpretation": {
+      "summary": "Childhood Vulnerability Protocol — Age Under 20",
+      "detailed": "The native's current age is under 20 years and a Maraka Dasa or adverse transit is running.\n\nEffect: Longevity cannot be decided with certainty for a child under 20. Standard Maraka and Ayurdaya calculations are probabilistic, not definitive, in this window. Protective remedy: Sacred recitations (mantras) and religious offerings (ghee poured into consecrated fire) must be performed to protect the child's life.",
+      "full_text_passages": [
+        {
+          "text": "The native's current age is under 20 years and a Maraka Dasa or adverse transit is running.\n\nEffect: Longevity cannot be decided with certainty for a child under 20. Standard Maraka and Ayurdaya calculations are probabilistic, not definitive, in this window. Protective remedy: Sacred recitations (mantras) and religious offerings (ghee poured into consecrated fire) must be performed to protect the child's life.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "consciousness_fate",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CF03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-10-14",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Pre-20 Premature Death — Father, Mother, Past Karma",
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "A native under 20 years shows strong mortality indicators (Maraka Dasa active, severe 8th house afflictions, no protective yogas)."
+    },
+    "interpretation": {
+      "summary": "Pre-20 Premature Death — Father, Mother, Past Karma",
+      "detailed": "A native under 20 years shows strong mortality indicators (Maraka Dasa active, severe 8th house afflictions, no protective yogas).\n\nEffect: Premature death in the under-20 window is diagnosed as the result of the sins of the father, the mother, or the native's own previous birth (karmic debt). This is a metaphysical root-cause diagnosis, not a planetary one. The standard Maraka rules are considered secondary to the karmic liability in this age bracket.",
+      "full_text_passages": [
+        {
+          "text": "A native under 20 years shows strong mortality indicators (Maraka Dasa active, severe 8th house afflictions, no protective yogas).\n\nEffect: Premature death in the under-20 window is diagnosed as the result of the sins of the father, the mother, or the native's own previous birth (karmic debt). This is a metaphysical root-cause diagnosis, not a planetary one. The standard Maraka rules are considered secondary to the karmic liability in this age bracket.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "consciousness_fate",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CF04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-13",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Childhood Remedy — Sacred Recitations and Ghee Offering",
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "A child under 20 is diagnosed as being in a mortality-risk window based on Maraka Dasa + adverse planetary patterns."
+    },
+    "interpretation": {
+      "summary": "Childhood Remedy — Sacred Recitations and Ghee Offering",
+      "detailed": "A child under 20 is diagnosed as being in a mortality-risk window based on Maraka Dasa + adverse planetary patterns.\n\nEffect: Protective remedy prescribed: perform sacred recitations (Vedic mantras, particularly Maha Mrityunjaya) and pour oblations of ghee into a consecrated ritual fire (Havan/Homam). This is the canonical BPHS remedy for childhood mortality risk and must be flagged as a ritual recommendation for human review.",
+      "full_text_passages": [
+        {
+          "text": "A child under 20 is diagnosed as being in a mortality-risk window based on Maraka Dasa + adverse planetary patterns.\n\nEffect: Protective remedy prescribed: perform sacred recitations (Vedic mantras, particularly Maha Mrityunjaya) and pour oblations of ghee into a consecrated ritual fire (Havan/Homam). This is the canonical BPHS remedy for childhood mortality risk and must be flagged as a ritual recommendation for human review.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "remedy_category": [
+        "ritual"
+      ],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "consciousness_fate",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CF05",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-33",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_in_house",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Unconsciousness at Death — Non-Jupiter/Venus in H3",
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Saturn",
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "houses": [
+          3
+        ],
+        "planets": [
+          "Sun",
+          "Moon",
+          "Mars",
+          "Mercury",
+          "Saturn",
+          "Rahu",
+          "Ketu"
+        ]
+      },
+      "trigger_condition": "Any planet other than Jupiter or Venus occupies the 3rd house, OR the 3rd house is occupied by malefic planets (Saturn, Mars, Rahu, Ketu, Sun)."
+    },
+    "interpretation": {
+      "summary": "Unconsciousness at Death — Non-Jupiter/Venus in H3",
+      "detailed": "Any planet other than Jupiter or Venus occupies the 3rd house, OR the 3rd house is occupied by malefic planets (Saturn, Mars, Rahu, Ketu, Sun).\n\nEffect: The native will lose consciousness or awareness before death arrives. The death is not peaceful or aware; the native may be in a coma, delirious, or otherwise unaware at the moment of passing.",
+      "full_text_passages": [
+        {
+          "text": "Any planet other than Jupiter or Venus occupies the 3rd house, OR the 3rd house is occupied by malefic planets (Saturn, Mars, Rahu, Ketu, Sun).\n\nEffect: The native will lose consciousness or awareness before death arrives. The death is not peaceful or aware; the native may be in a coma, delirious, or otherwise unaware at the moment of passing.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": true,
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "consciousness_fate",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CF06",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-19",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Asterism Dasa Master Logic — Priority Ordering",
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "planets_involved": [],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "Multiple Maraka indicators are active simultaneously: house-lord Marakas, Moon-centric Marakas, Asterism Marakas (Vipat/Pratyak/Vadha), and 22nd decanate/specific asterism lords."
+    },
+    "interpretation": {
+      "summary": "Asterism Dasa Master Logic — Priority Ordering",
+      "detailed": "Multiple Maraka indicators are active simultaneously: house-lord Marakas, Moon-centric Marakas, Asterism Marakas (Vipat/Pratyak/Vadha), and 22nd decanate/specific asterism lords.\n\nEffect: Priority order for timing death: (1) Asterism Marakas (Vipat, Pratyak, or Vadha per lifespan class) — highest timing precision. (2) 22nd decanate lord and 23rd/3rd/5th/7th asterism lords. (3) Sub-period Triad (6th lord Dasa + 6th/8th/12th Antar-dasa). (4) Grade 1 house-lord Marakas. (5) Saturn override if applicable. All must pass the Longevity-Maraka Correlation Gate before death is confirmed.",
+      "full_text_passages": [
+        {
+          "text": "Multiple Maraka indicators are active simultaneously: house-lord Marakas, Moon-centric Marakas, Asterism Marakas (Vipat/Pratyak/Vadha), and 22nd decanate/specific asterism lords.\n\nEffect: Priority order for timing death: (1) Asterism Marakas (Vipat, Pratyak, or Vadha per lifespan class) — highest timing precision. (2) 22nd decanate lord and 23rd/3rd/5th/7th asterism lords. (3) Sub-period Triad (6th lord Dasa + 6th/8th/12th Antar-dasa). (4) Grade 1 house-lord Marakas. (5) Saturn override if applicable. All must pass the Longevity-Maraka Correlation Gate before death is confirmed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "consciousness_fate",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  },
+  {
+    "rule_id": "bphs-ch44-CF07",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 44,
+      "chapter_name": "Marakas (Killer Planets)",
+      "sloka": "ch44-sloka-33-40",
+      "batch_id": "bphs-ch44-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "maraka_diagnostic",
+      "yoga_name": "Corpse Consciousness Diagnostic — Full Decision Tree",
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "planets_involved": [],
+      "houses_involved": [
+        3,
+        6,
+        7,
+        8,
+        12
+      ],
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "trigger_condition": "The engine evaluates: (1) H3 occupants for consciousness quality, (2) 22nd decanate type for corpse treatment, and (3) terminal house planets for post-death world. All three are independent diagnostic axes that run in parallel."
+    },
+    "interpretation": {
+      "summary": "Corpse Consciousness Diagnostic — Full Decision Tree",
+      "detailed": "The engine evaluates: (1) H3 occupants for consciousness quality, (2) 22nd decanate type for corpse treatment, and (3) terminal house planets for post-death world. All three are independent diagnostic axes that run in parallel.\n\nEffect: Axis 1 — Consciousness: Jupiter/Venus in H3 → Aware death. Others in H3 → Unconscious death. Axis 2 — Corpse: Benefic 22nd decanate → Cremation. Malefic → Water. Mixed → Dries up. Serpent → Eaten by animals. Axis 3 — World: Terminal house planets per planet-world mapping, with dignity modifier for status within that world. If terminal houses vacant, decanate lord fallback applies.",
+      "full_text_passages": [
+        {
+          "text": "The engine evaluates: (1) H3 occupants for consciousness quality, (2) 22nd decanate type for corpse treatment, and (3) terminal house planets for post-death world. All three are independent diagnostic axes that run in parallel.\n\nEffect: Axis 1 — Consciousness: Jupiter/Venus in H3 → Aware death. Others in H3 → Unconscious death. Axis 2 — Corpse: Benefic 22nd decanate → Cremation. Malefic → Water. Mixed → Dries up. Serpent → Eaten by animals. Axis 3 — World: Terminal house planets per planet-world mapping, with dignity modifier for status within that world. If terminal houses vacant, decanate lord fallback applies.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "consciousness_fate",
+      "yoga_group_label": "Consciousness Fate",
+      "remedy_category": [],
+      "source_quality": "PRIMARY",
+      "tags": [
+        "consciousness_fate",
+        "maraka",
+        "longevity",
+        "ch44",
+        "bphs",
+        "vol1"
+      ]
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-04T00:37:14.265359+00:00",
+    "updated_at": "2026-05-04T00:37:14.265359+00:00"
+  }
+]
