@@ -2722,3 +2722,281 @@ Both promoted to `pending_human_review` for co-founder sign-off on non-standard 
 ### Pending human review queue (50 rules)
 
 32 rules already in PHR from initial validation pass + 18 patched from false flags. Co-founder sign-off needed before any remedies rules reach `approved` status.
+
+---
+
+## Lal Kitab Ch 21 — Karmic Debts (4 May 2026)
+
+**Batch ID:** `lalkitab-ch21-v1-20260504`
+**Script:** `backend/scripts/ingest_lalkitab_ch21_v1.py`
+**Rules JSON:** `backend/scripts/lalkitab_ch21_rules.json`
+**Patch script:** `backend/scripts/patch_lalkitab_ch21_flags.py`
+**Source:** Lal Kitab Ch 21 Notebook LM decode (JSON Ready)
+
+### Rule breakdown
+
+| Group | Count | Condition type | Sub-type |
+|---|---|---|---|
+| Core Debt Doshas (9 debts) | 9 | `dosha` | `debt` |
+| Debt severity modifiers | 6 | `dosha` | `debt` |
+| Mercury rival logic | 8 | `planetary_combination` | `rival_affliction` |
+| Jupiter centre debt | 4 | `planetary_combination` | `anchor_affliction` |
+| General debt principles | 6 | `general_principle` | `debt_principle` |
+| Remedies catalog | 10 | `general_principle` | `remedy_catalog` |
+| **Total** | **43** | | |
+
+### Validation results (4 May 2026)
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 37 | 86% |
+| `pending_human_review` | 2 | 5% |
+| `flagged` | 4 | 9% |
+| Contradictions | 0 | — |
+
+4 flagged rules all patched → `pending_human_review` (all truncation false positives — haiku received truncated slice of `interpretation.detailed` for multi-section debt rules).
+
+### Key schema fields (first appearance in this batch)
+
+| Field | Notes |
+|---|---|
+| `condition.debt_planet` | Planet whose karmic debt is being triggered |
+| `condition.trigger_planets` | Planets that activate the debt |
+| `condition.trigger_houses` | Houses that activate the debt |
+| `condition.negative_condition` | `{planet, houses, constraint:"absent"}` — planet must be absent |
+| `condition.requires_equal_family_share` | `true` — debt triggered only if inheritance not shared equally |
+| `condition.multiplier_if_solo` | `10` — debt × 10 if native is sole inheritor |
+| `condition.planet_a` / `condition.planet_b` | Mercury rival logic pair |
+| `condition.spoiled_planet` | Planet corrupted by the Mercury-rival combination |
+| `condition.anchor_planet` | Jupiter in Jupiter-centre debt rules |
+| `interpretation.summary` | = debt name (e.g. "Father's Debt — Pitra Rina") — short, never truncated |
+
+### Key design decisions
+
+1. **Inspection-first patch script incident:** `patch_lalkitab_ch21_flags.py` was written without `--patch` flag separation — auto-patched all 4 flagged rules without user confirmation. Patches were correct (all truncation false positives), but script design was wrong. All subsequent patch scripts use `--patch` flag pattern.
+
+2. **`interpretation.summary` = rule name, never prose:** Established as anti-truncation practice across all future chapters. The haiku validator reads a truncated slice of `interpretation.detailed` — if `summary` is a short name, it cannot be flagged for truncation.
+
+### Final state
+
+| `auto_approved` | `pending_human_review` | `flagged` | Total |
+|---|---|---|---|
+| 37 (86%) | 6 (14%) | 0 | 43 |
+
+---
+
+## Lal Kitab Ch 22 — Family and Childhood (4 May 2026)
+
+**Batch ID:** `lalkitab-ch22-v1-20260504`
+**Script:** `backend/scripts/ingest_lalkitab_ch22_v1.py`
+**Rules JSON:** `backend/scripts/lalkitab_ch22_rules.json`
+**Source:** Lal Kitab Ch 22 Notebook LM decode (JSON Ready + Technical + Diagnostic + JSON Ready v2)
+
+### Rule breakdown
+
+| Group | Count | Condition type | Sub-type |
+|---|---|---|---|
+| Context / foundational principles | 5 | `general_principle` | `context` |
+| Mother–child bond rules | 4 | `planetary_combination` | `maternal_affliction` |
+| Childhood protection protocols | 3 | `general_principle` | `protection_protocol` |
+| Behavioral prohibitions | 3 | `general_principle` | `prohibition` |
+| Remedies | 2 | `general_principle` | `remedy_catalog` |
+| **Total** | **17** | | |
+
+### Validation results (4 May 2026)
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 15 | 88% |
+| `pending_human_review` | 1 | 6% |
+| `flagged` | 1 | 6% |
+| Contradictions | 0 | — |
+
+1 flagged rule (`lalkitab-ch22-ctx-04`) — truncation false positive. Patched inline → `pending_human_review`.
+
+### Key schema fields
+
+| Field | Notes |
+|---|---|
+| `condition.constraint_flag` | `"strictly_prohibited"` — used for all 3 behavioral prohibition rules |
+
+### Source typo corrected
+
+Source text stated "die soon after death" — confirmed OCR error. Corrected to "die soon after birth" in ingest script with comment.
+
+### Final state
+
+| `auto_approved` | `pending_human_review` | `flagged` | Total |
+|---|---|---|---|
+| 15 (88%) | 2 (12%) | 0 | 17 |
+
+---
+
+## Lal Kitab Ch 23 — House Construction Engine (4 May 2026)
+
+**Batch ID:** `lalkitab-ch23-v1-20260504`
+**Script:** `backend/scripts/ingest_lalkitab_ch23_v1.py`
+**Rules JSON:** `backend/scripts/lalkitab_ch23_rules.json`
+**Source:** Lal Kitab Ch 23 JSON Ready + `Lal Kitab_Ch23_House construction_Additional info.md`
+
+### Rule breakdown
+
+| Group | Count | Condition type | Sub-type |
+|---|---|---|---|
+| Saturn house rules (all 12) | 12 | `planetary_combination` | `saturn_house_rule` |
+| Geometric veto rules | 6 | `general_principle` | `geometric_veto` |
+| Wall formula remainder rules | 8 | `general_principle` | `mathematical_formula` |
+| Internal layout paradigm | 8 | `general_principle` | `layout_rule` |
+| Diagnostic gates | 3 | `general_principle` | `diagnostic_gate` |
+| Refinement rules | 4 | `general_principle` | `refinement_rule` |
+| **Total** | **41** | | → _Note: script header says 31; 41 is post-rewrite count. Verify against DB._ |
+
+### Validation results (4 May 2026)
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 18 | 58% |
+| `pending_human_review` | 12 | 39% |
+| `flagged` | 1 | 3% |
+| Contradictions | 0 | — |
+
+1 flagged rule (`lalkitab-ch23-formula-remainder`) — truncation false positive (8-entry remainder table cut at entry 5). Patched inline → `pending_human_review`.
+
+### Key Saturn house outcomes (all 12)
+
+| House | Key Rule |
+|---|---|
+| H1 | Poverty/ruin veto — exception: H7+H10 vacant |
+| H2 | Auspicious (Venus sign) — build freely |
+| H3 | Mercury enmity — remedy: keep 3 dogs |
+| H4 | In-law affliction veto — do not build |
+| H5 | Son's penalty — age 48 or son builds + buffalo remedy |
+| H6 | Virgo — build only after age 39 |
+| H7 | Ready-made houses favourable — keep old threshold on sale |
+| H8 | Death veto (Scorpio/Mars) — effects vary by Rahu/Ketu |
+| H9 | Pregnancy trigger — father dies if built from own earnings |
+| H10 | Money trap — becomes poor after building starts |
+| H11 | Age 55 veto — south entrance warning |
+| H12 | Rectangular rule — auspicious without desire |
+
+### Incidents
+
+1. **Initial script missing 8 Saturn-house rules:** First version had only 4 Saturn houses (H1/H4/H5/H9 — from JSON Ready only). Additional info file provided complete 12-house data. Script rewritten.
+2. **Wrong-database upload:** User ran upload with `--db-name horoscope_db3` (typo). Deleted 31 rules from horoscope_db3 via inline Python, re-uploaded to horoscope_db.
+
+### Final state
+
+| `auto_approved` | `pending_human_review` | `flagged` | Total |
+|---|---|---|---|
+| 18 (58%) | 13 (42%) | 0 | 31 |
+
+---
+
+## Lal Kitab Ch 24 — Determination of Age / Ayurdaya (4 May 2026)
+
+**Batch ID:** `lalkitab-ch24-v1-20260504`
+**Script:** `backend/scripts/ingest_lalkitab_ch24_v1.py`
+**Rules JSON:** `backend/scripts/lalkitab_ch24_rules.json`
+**Patch script:** `backend/scripts/patch_lalkitab_ch24_flags.py`
+**Source:** Lal Kitab Ch 24 JSON Ready (V7 + V11 Final Expansion) + Diagnostic file
+
+### Rule breakdown
+
+| Group | Count | Condition type | Sub-type |
+|---|---|---|---|
+| Moon-House Age Engine (H1–H12) | 12 | `planetary_combination` | `moon_age_engine` |
+| Moon modifiers | 4 | `general_principle` | `moon_modifier` |
+| Luck / maturity logic | 3 | `general_principle` | `maturity_logic` |
+| Mortality symptom engine | 5 | `general_principle` | `mortality_symptom` |
+| Complex planetary age logic | 12 | `planetary_combination` | `short_life` / `health_affliction` / `longevity_marker` / `age_threshold` |
+| Physical metric engine | 5 | `general_principle` | `physical_metric` |
+| Special effect cycles | 5 | `planetary_combination` | `age_effect` |
+| Foundational placement logic | 3 | `general_principle` | `foundational` |
+| **Total** | **49** | | |
+
+### Validation results (4 May 2026)
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 18 | 37% |
+| `pending_human_review` | 20 | 41% |
+| `flagged` | 11 | 22% |
+| Contradictions | 0 | — |
+
+11 flagged rules in two categories — all patched → `pending_human_review`:
+- **Group A (5 rules — content validity disputes):** Haiku validator disputed mortality symptom rules (North Star inability, reflection in ghee/oil/water, mirror, physical stasis) and debilitation-clock rule as non-classical. All ARE extracted from source material — Lal Kitab blends physiognomy and folk observation with astrology.
+- **Group B (6 rules — schema precision):** Content valid but condition field structurally imprecise: OR-logic not separated, "Jupiter's house" ambiguous, physiognomy mixed with planetary condition, duplicate age conditions, planet missing from `planets_involved`, multiple indicators not distinguished.
+
+### Key schema fields (first appearance in this batch)
+
+| Field | Notes |
+|---|---|
+| `condition.predicted_age` | Predicted age at death (int or string) from Moon-house engine |
+| `condition.day_of_death` | Day of week of death from Moon-house engine |
+| `condition.house_lords` | Lords of houses that determine age (list[str]) |
+| `condition.maturity_ages` | Dict of planet → age of maturity (planet maturity catalog) |
+| `condition.extra_cond` | Pattern for embedding rule-specific structured data |
+
+### Moon-House Age Engine data
+
+| Moon House | Predicted Age | Day of Death | Lords |
+|---|---|---|---|
+| H1 | 90 | Wednesday | [Mars] |
+| H2 | 96 | Friday | [Venus] |
+| H3 | 80 | Wednesday | [Mercury] |
+| H4 | 85 | Friday | [Moon] |
+| H5 | 100 | Tuesday | [Ketu, Mercury] |
+| H6 | 80 | Sunday | [Venus] |
+| H7 | 85 | Monday | [Mars] |
+| H8 | 90 | Wednesday | [Jupiter] |
+| H9 | 75 | Thursday | [Jupiter] |
+| H10 | 90 | Tuesday | [Saturn] |
+| H11 | 90 | Saturday | [Saturn] |
+| H12 | 90 | Thursday | [Rahu, Jupiter] |
+
+### Planet maturity ages
+
+Sun=2 · Jupiter=16 · Moon=24 · Venus=25 · Mars=28 · Mercury=34 · Saturn=36 · Rahu=42 · Ketu=48
+
+### Final state
+
+| `auto_approved` | `pending_human_review` | `flagged` | Total |
+|---|---|---|---|
+| 18 (37%) | 31 (63%) | 0 | 49 |
+
+---
+
+## Lal Kitab — Cumulative Ingest Summary (as of 4 May 2026)
+
+| Chapter | Topic | Batch ID | Total | auto_approved | pending_human_review | flagged | Patch script |
+|---|---|---|---|---|---|---|---|
+| Ch 19 | Mangalik Evil and Trials | `lalkitab-ch19-v1-20260426` | 78 | 49 (63%) | 23 (29%) | 6 (8%) | — |
+| Ch 20 | Diseases | `lalkitab-ch20-v1-20260427` | 48 | 34 (71%) | 14 (29%) | 0 | — |
+| Ch 21 | Karmic Debts | `lalkitab-ch21-v1-20260504` | 43 | 37 (86%) | 6 (14%) | 0 | `patch_lalkitab_ch21_flags.py` |
+| Ch 22 | Family and Childhood | `lalkitab-ch22-v1-20260504` | 17 | 15 (88%) | 2 (12%) | 0 | inline patch |
+| Ch 23 | House Construction Engine | `lalkitab-ch23-v1-20260504` | 31 | 18 (58%) | 13 (42%) | 0 | inline patch |
+| Ch 24 | Determination of Age | `lalkitab-ch24-v1-20260504` | 49 | 18 (37%) | 31 (63%) | 0 | `patch_lalkitab_ch24_flags.py` |
+| Ch 27 | Lords / Body Parts / Objects | `lalkitab-ch27-v1-20260427` | 99 | 58 (59%) | 40 (40%) | 1 (1%) | `fix_flagged_ch27.py` |
+| **Total ingested** | | | **365** | **229 (63%)** | **129 (35%)** | **7 (2%)** | |
+
+### Chapters pending ingest (target: Ch 25, 26, 28, 29)
+
+| Chapter | Topic | Source files available |
+|---|---|---|
+| Ch 25 | Remedial Measures for Planetary Dosh | JSON Ready (V8) + Diagnostic |
+| Ch 26 | — | JSON Ready + Diagnostics |
+| Ch 28 | — | JSON Ready + Diagnostic |
+| Ch 29 | — | JSON Ready + Diagnostic |
+
+### Co-founder sign-off queue (Lal Kitab)
+
+All 365 ingested rules are at `auto_approved` or `pending_human_review` — **zero rules are `approved`** until co-founder sign-off. PHR rules flagged for review:
+- Ch 22–24: high PHR% due to content-validity disputes (validator unfamiliar with folk/physiognomy sections) and schema precision issues
+- Ch 27: 1 remaining `flagged` rule (`corr-mars-benefic`) — Mars benefic objects unknown (source column misalignment)
+
+### Process improvements established (this ingest sprint)
+
+1. **Inspection-first patch scripts** — all patch scripts now require `--patch` flag; inspect-only by default
+2. **`interpretation.summary` = rule name, never prose** — prevents truncation false flags on multi-section detailed texts
+3. **Source gap documentation** — when source files are incomplete, document in script header and `metadata.source_gap`
+4. **`extra_cond` pattern** — rule-specific structured data embedded in condition dict without polluting standard schema (first used Ch 24)
