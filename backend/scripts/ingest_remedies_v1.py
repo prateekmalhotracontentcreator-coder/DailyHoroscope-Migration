@@ -388,27 +388,25 @@ CATEGORY_LABELS = {
 # ─────────────────────────────────────────────────────────────────────────────
 # ID 45 RECONSTRUCTION (source file has truncated mantra at section boundary)
 # ─────────────────────────────────────────────────────────────────────────────
-ID45_RECONSTRUCTED = {
+ID45_VERIFIED = {
     "id": 45,
-    "remedy_area": "Love/Attraction",
+    "remedy_area": "Love & Attraction",
     "deity": "Kamadeva",
     "severity": "Medium",
     "mantra": (
-        "ॐ कामदेवाय विद्महे पुष्पबाणाय धीमहि "
-        "तन्नः कन्दर्पः प्रचोदयात् "
-        "(Om Kamadevaaya Vidmahey Pushpabanaaya Dhimahi "
-        "Tanno Kandarpah Prachodayat)"
+        "ॐ कामदेवाय विद्महे पुष्पबाणाय धीमहि तन्नो अनंगः प्रचोदयात् "
+        "(Om Kamadevaya Vidmahe Pushpabanaya Dheemahi Tanno Anangah Prachodayat)"
     ),
     "yantra": "Kamadeva Yantra",
     "paksha": "Shukla",
-    "tithi_day": "Tritiya; Friday",
-    "season": "Vasanta (Spring)",
+    "tithi_day": "Trayodashi; Friday",
+    "season": "Vasant (Spring)",
     "frequency": "108 Times",
-    "process": "Face East; Offer red flowers and sandalwood paste",
-    "attire_color": "Red/Pink",
-    "muhurta": "Sunrise",
-    "guidance": "Maintain purity of thought; Avoid non-vegetarian food on Fridays.",
-    "_reconstructed": True,
+    "process": "Face South-East; Use Sandalwood incense and offer pink flowers",
+    "attire_color": "Pink or Floral patterns",
+    "muhurta": "Night (After Moonrise)",
+    "guidance": "Use to attract a compatible life partner; maintain a positive and loving mindset.",
+    "_reconstructed": False,   # Verified by user — source data confirmed
 }
 
 
@@ -471,7 +469,7 @@ def _load_source() -> list[dict]:
 
     # Inject reconstructed ID 45 (mantra truncated at section boundary)
     if 45 not in seen_ids:
-        all_entries.append(ID45_RECONSTRUCTED)
+        all_entries.append(ID45_VERIFIED)
 
     all_entries.sort(key=lambda x: x['id'])
     return all_entries
