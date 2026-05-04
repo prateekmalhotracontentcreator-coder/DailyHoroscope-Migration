@@ -1,0 +1,3546 @@
+[
+  {
+    "rule_id": "lalkitab-ch21-gp-01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "debt_identification",
+      "yoga_check": {
+        "type": "horoscope_only",
+        "checkable": false,
+        "description": "Requires comparison across multiple chart placements or multi-generational horoscopes. Not automatable in Phase 1."
+      },
+      "validation_note": "manual_validation_required"
+    },
+    "interpretation": {
+      "summary": "Weakening Effect — Debt Identification via Sign Occupation",
+      "detailed": "When a malefic planet occupies the sign of another planet, the sign's beneficial effect is destroyed and the malefic planet itself becomes weak. This simultaneous sign-destruction and self-weakening marks the presence of a Father's Debt (Pitra Rina) in the horoscope.",
+      "full_text_passages": [
+        {
+          "text": "When a malefic planet occupies the sign of another planet, the sign's beneficial effect is destroyed and the malefic planet itself becomes weak. This simultaneous sign-destruction and self-weakening marks the presence of a Father's Debt (Pitra Rina) in the horoscope.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "generational"
+      ],
+      "tags": [
+        "general_principle",
+        "pitra_rina",
+        "debt_identification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-gp-02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "debt_identification",
+      "yoga_check": {
+        "type": "horoscope_only",
+        "checkable": false,
+        "description": "Requires comparison across multiple chart placements or multi-generational horoscopes. Not automatable in Phase 1."
+      },
+      "validation_note": "manual_validation_required"
+    },
+    "interpretation": {
+      "summary": "Significator Affliction — Curse of Family Member",
+      "detailed": "If the significator house of Planet X contains an enemy planet of X, that house is afflicted. This affliction signals a curse from the corresponding family member represented by the significator.",
+      "full_text_passages": [
+        {
+          "text": "If the significator house of Planet X contains an enemy planet of X, that house is afflicted. This affliction signals a curse from the corresponding family member represented by the significator.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "generational"
+      ],
+      "tags": [
+        "general_principle",
+        "pitra_rina",
+        "debt_identification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-gp-03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "debt_identification",
+      "yoga_check": {
+        "type": "horoscope_only",
+        "checkable": false,
+        "description": "Requires comparison across multiple chart placements or multi-generational horoscopes. Not automatable in Phase 1."
+      },
+      "validation_note": "generational_mapping_required"
+    },
+    "interpretation": {
+      "summary": "Debilitated Recurrence — Generational Debt Confirmation",
+      "detailed": "If a debilitated planet occupies the same house (or a house of similar significance) in both the native's horoscope and in the horoscope of the father, son, or brother, the pattern confirms an inherited karmic obligation — a generational debt is locked in.",
+      "full_text_passages": [
+        {
+          "text": "If a debilitated planet occupies the same house (or a house of similar significance) in both the native's horoscope and in the horoscope of the father, son, or brother, the pattern confirms an inherited karmic obligation — a generational debt is locked in.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "generational"
+      ],
+      "tags": [
+        "general_principle",
+        "pitra_rina",
+        "debt_identification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-gp-04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "debt_identification",
+      "yoga_check": {
+        "type": "horoscope_only",
+        "checkable": false,
+        "description": "Requires comparison across multiple chart placements or multi-generational horoscopes. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter Aspect — H9 Lord Displaced + Enemy Aspects Jupiter",
+      "detailed": "If the lord of the 9th house (Jupiter's significator house) is placed in any other house AND an enemy planet aspects Jupiter, Jupiter is designated as the primary Debt Planet for that horoscope.",
+      "full_text_passages": [
+        {
+          "text": "If the lord of the 9th house (Jupiter's significator house) is placed in any other house AND an enemy planet aspects Jupiter, Jupiter is designated as the primary Debt Planet for that horoscope.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "generational"
+      ],
+      "tags": [
+        "general_principle",
+        "pitra_rina",
+        "debt_identification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-gp-05",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "debt_identification",
+      "yoga_check": {
+        "type": "horoscope_only",
+        "checkable": false,
+        "description": "Requires comparison across multiple chart placements or multi-generational horoscopes. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Diminishing Influence — Enemy in Planet's Own Sign",
+      "detailed": "If an enemy planet occupies the house of another planet and the enemy's own influence is in a state of diminishing, this marks a horoscope afflicted with Father's Debt.",
+      "full_text_passages": [
+        {
+          "text": "If an enemy planet occupies the house of another planet and the enemy's own influence is in a state of diminishing, this marks a horoscope afflicted with Father's Debt.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "generational"
+      ],
+      "tags": [
+        "general_principle",
+        "pitra_rina",
+        "debt_identification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-gp-06",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "debt_identification",
+      "yoga_check": {
+        "type": "horoscope_only",
+        "checkable": false,
+        "description": "Requires comparison across multiple chart placements or multi-generational horoscopes. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Mutual Destruction Gate — Enemies in Jupiter's Significator Houses",
+      "detailed": "If the planets occupying the significator houses of Jupiter (the 9th house) are mutual enemies, or if those planets operate to destroy Jupiter's influence, Father's Debt is confirmed.",
+      "full_text_passages": [
+        {
+          "text": "If the planets occupying the significator houses of Jupiter (the 9th house) are mutual enemies, or if those planets operate to destroy Jupiter's influence, Father's Debt is confirmed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "generational"
+      ],
+      "tags": [
+        "general_principle",
+        "pitra_rina",
+        "debt_identification"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-yoga-kalsarpa",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "generational_yoga",
+      "planets_involved": [
+        "Rahu",
+        "Ketu"
+      ],
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Kalsarpa Yoga — all seven planets hemmed between Rahu and Ketu. Standard yoga check."
+      }
+    },
+    "interpretation": {
+      "summary": "Kalsarpa Yoga — Generational Dosha",
+      "detailed": "Presence of Kalsarpa Yoga in the horoscope indicates a generational dosha. The native's economic progress stalls and family joy is nullified. The affliction propagates across family genitures (son, grandson, nephew). Recurrence of Kalsarpa in multiple family charts confirms Pitra Rina.",
+      "full_text_passages": [
+        {
+          "text": "Presence of Kalsarpa Yoga in the horoscope indicates a generational dosha. The native's economic progress stalls and family joy is nullified. The affliction propagates across family genitures (son, grandson, nephew). Recurrence of Kalsarpa in multiple family charts confirms Pitra Rina.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "generational",
+        "family"
+      ],
+      "tags": [
+        "planetary_combination",
+        "generational",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-yoga-khemdrum",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "generational_yoga",
+      "planets_involved": [
+        "Moon"
+      ],
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Khemdrum Yoga — Moon in isolation (no planets in 2nd or 12th from Moon). Phase 2 check."
+      }
+    },
+    "interpretation": {
+      "summary": "Khemdrum Yoga — Moon Affliction Generational Debt",
+      "detailed": "If the native has Khemdrum Yoga (Moon with no planets in the 2nd or 12th from Moon, i.e., Moon is alone), the same yoga is predicted to recur in the genitures of the son, grandson, brother, and nephew. This causes mental agitation and is a marker of generational Father's Debt.",
+      "full_text_passages": [
+        {
+          "text": "If the native has Khemdrum Yoga (Moon with no planets in the 2nd or 12th from Moon, i.e., Moon is alone), the same yoga is predicted to recur in the genitures of the son, grandson, brother, and nephew. This causes mental agitation and is a marker of generational Father's Debt.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "generational",
+        "family"
+      ],
+      "tags": [
+        "planetary_combination",
+        "generational",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-merc-rival-01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "mercury_rival",
+      "planet_a": "Mercury",
+      "planet_a_houses": [
+        1,
+        8
+      ],
+      "planet_b": "Jupiter",
+      "planet_b_houses": [
+        9
+      ],
+      "spoiled_planet": "Jupiter",
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Mercury in H1/8 AND Jupiter in H9. Two-planet positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury Rival — Mercury in H1/8: Jupiter in H9 Spoiled",
+      "detailed": "Mercury placed in house 1/8 AND Jupiter placed in the 9th house activates Mercury's 'rival planet' role — Jupiter is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+      "full_text_passages": [
+        {
+          "text": "Mercury placed in house 1/8 AND Jupiter placed in the 9th house activates Mercury's 'rival planet' role — Jupiter is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "debt"
+      ],
+      "tags": [
+        "mercury_rival",
+        "planetary_combination",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        1,
+        8,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-merc-rival-02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "mercury_rival",
+      "planet_a": "Mercury",
+      "planet_a_houses": [
+        2,
+        7
+      ],
+      "planet_b": "Venus",
+      "planet_b_houses": [
+        9
+      ],
+      "spoiled_planet": "Venus",
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Mercury in H2/7 AND Venus in H9. Two-planet positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury Rival — Mercury in H2/7: Venus in H9 Spoiled",
+      "detailed": "Mercury placed in house 2/7 AND Venus placed in the 9th house activates Mercury's 'rival planet' role — Venus is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+      "full_text_passages": [
+        {
+          "text": "Mercury placed in house 2/7 AND Venus placed in the 9th house activates Mercury's 'rival planet' role — Venus is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "debt"
+      ],
+      "tags": [
+        "mercury_rival",
+        "planetary_combination",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Venus"
+      ],
+      "houses_involved": [
+        2,
+        7,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-merc-rival-03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "mercury_rival",
+      "planet_a": "Mercury",
+      "planet_a_houses": [
+        3
+      ],
+      "planet_b": "Rahu",
+      "planet_b_houses": [
+        9
+      ],
+      "spoiled_planet": "Rahu",
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Mercury in H3 AND Rahu in H9. Two-planet positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury Rival — Mercury in H3: Rahu in H9 Spoiled",
+      "detailed": "Mercury placed in house 3 AND Rahu placed in the 9th house activates Mercury's 'rival planet' role — Rahu is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+      "full_text_passages": [
+        {
+          "text": "Mercury placed in house 3 AND Rahu placed in the 9th house activates Mercury's 'rival planet' role — Rahu is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "debt"
+      ],
+      "tags": [
+        "mercury_rival",
+        "planetary_combination",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Rahu"
+      ],
+      "houses_involved": [
+        3,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-merc-rival-04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "mercury_rival",
+      "planet_a": "Mercury",
+      "planet_a_houses": [
+        4
+      ],
+      "planet_b": "Moon",
+      "planet_b_houses": [
+        9
+      ],
+      "spoiled_planet": "Moon",
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Mercury in H4 AND Moon in H9. Two-planet positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury Rival — Mercury in H4: Moon in H9 Spoiled",
+      "detailed": "Mercury placed in house 4 AND Moon placed in the 9th house activates Mercury's 'rival planet' role — Moon is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+      "full_text_passages": [
+        {
+          "text": "Mercury placed in house 4 AND Moon placed in the 9th house activates Mercury's 'rival planet' role — Moon is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "debt"
+      ],
+      "tags": [
+        "mercury_rival",
+        "planetary_combination",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Moon"
+      ],
+      "houses_involved": [
+        4,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-merc-rival-05",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "mercury_rival",
+      "planet_a": "Mercury",
+      "planet_a_houses": [
+        5
+      ],
+      "planet_b": "Sun",
+      "planet_b_houses": [
+        9
+      ],
+      "spoiled_planet": "Sun",
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Mercury in H5 AND Sun in H9. Two-planet positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury Rival — Mercury in H5: Sun in H9 Spoiled",
+      "detailed": "Mercury placed in house 5 AND Sun placed in the 9th house activates Mercury's 'rival planet' role — Sun is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+      "full_text_passages": [
+        {
+          "text": "Mercury placed in house 5 AND Sun placed in the 9th house activates Mercury's 'rival planet' role — Sun is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "debt"
+      ],
+      "tags": [
+        "mercury_rival",
+        "planetary_combination",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Sun"
+      ],
+      "houses_involved": [
+        5,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-merc-rival-06",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "mercury_rival",
+      "planet_a": "Mercury",
+      "planet_a_houses": [
+        6
+      ],
+      "planet_b": "Ketu",
+      "planet_b_houses": [
+        9
+      ],
+      "spoiled_planet": "Ketu",
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Mercury in H6 AND Ketu in H9. Two-planet positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury Rival — Mercury in H6: Ketu in H9 Spoiled",
+      "detailed": "Mercury placed in house 6 AND Ketu placed in the 9th house activates Mercury's 'rival planet' role — Ketu is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+      "full_text_passages": [
+        {
+          "text": "Mercury placed in house 6 AND Ketu placed in the 9th house activates Mercury's 'rival planet' role — Ketu is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "debt"
+      ],
+      "tags": [
+        "mercury_rival",
+        "planetary_combination",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Ketu"
+      ],
+      "houses_involved": [
+        6,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-merc-rival-07",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "mercury_rival",
+      "planet_a": "Mercury",
+      "planet_a_houses": [
+        10,
+        11
+      ],
+      "planet_b": "Saturn",
+      "planet_b_houses": [
+        9
+      ],
+      "spoiled_planet": "Saturn",
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Mercury in H10/11 AND Saturn in H9. Two-planet positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury Rival — Mercury in H10/11: Saturn in H9 Spoiled",
+      "detailed": "Mercury placed in house 10/11 AND Saturn placed in the 9th house activates Mercury's 'rival planet' role — Saturn is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+      "full_text_passages": [
+        {
+          "text": "Mercury placed in house 10/11 AND Saturn placed in the 9th house activates Mercury's 'rival planet' role — Saturn is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "debt"
+      ],
+      "tags": [
+        "mercury_rival",
+        "planetary_combination",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Saturn"
+      ],
+      "houses_involved": [
+        10,
+        11,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-merc-rival-08",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "mercury_rival",
+      "planet_a": "Mercury",
+      "planet_a_houses": [
+        12
+      ],
+      "planet_b": "Jupiter",
+      "planet_b_houses": [
+        9
+      ],
+      "spoiled_planet": "Jupiter",
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Mercury in H12 AND Jupiter in H9. Two-planet positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury Rival — Mercury in H12: Jupiter in H9 Spoiled",
+      "detailed": "Mercury placed in house 12 AND Jupiter placed in the 9th house activates Mercury's 'rival planet' role — Jupiter is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+      "full_text_passages": [
+        {
+          "text": "Mercury placed in house 12 AND Jupiter placed in the 9th house activates Mercury's 'rival planet' role — Jupiter is designated as 'spoiled' (its influence is corrupted). This mercury-9th-house combination marks a debt affliction pattern through the spoiled planet's domain.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "debt"
+      ],
+      "tags": [
+        "mercury_rival",
+        "planetary_combination",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        12,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-jup-debt-01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "jupiter_center_debt",
+      "anchor_planet": "Jupiter",
+      "anchor_houses": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "secondary_planets": [
+        "Saturn"
+      ],
+      "secondary_houses": [
+        2
+      ],
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Jupiter in kendra [1, 4, 7, 10] AND ['Saturn'] in [2]. Two-condition positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter Debt — Saturn in H2",
+      "detailed": "Jupiter in a kendra house (1/4/7/10) AND Saturn in the 2nd house confirms Father's Debt via Jupiter. Saturn's position in the house of speech and accumulated wealth afflicts the Jupiter channel.",
+      "full_text_passages": [
+        {
+          "text": "Jupiter in a kendra house (1/4/7/10) AND Saturn in the 2nd house confirms Father's Debt via Jupiter. Saturn's position in the house of speech and accumulated wealth afflicts the Jupiter channel.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "father"
+      ],
+      "tags": [
+        "jupiter_center",
+        "pitra_rina",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Saturn"
+      ],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10,
+        2
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-jup-debt-02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "jupiter_center_debt",
+      "anchor_planet": "Jupiter",
+      "anchor_houses": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "secondary_planets": [
+        "Venus"
+      ],
+      "secondary_houses": [
+        5
+      ],
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Jupiter in kendra [1, 4, 7, 10] AND ['Venus'] in [5]. Two-condition positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter Debt — Venus in H5",
+      "detailed": "Jupiter in a kendra house (1/4/7/10) AND Venus in the 5th house confirms Father's Debt via Jupiter. Venus in H5 spoils Jupiter's progeny and intelligence channel.",
+      "full_text_passages": [
+        {
+          "text": "Jupiter in a kendra house (1/4/7/10) AND Venus in the 5th house confirms Father's Debt via Jupiter. Venus in H5 spoils Jupiter's progeny and intelligence channel.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "father"
+      ],
+      "tags": [
+        "jupiter_center",
+        "pitra_rina",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Venus"
+      ],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10,
+        5
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-jup-debt-03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "jupiter_center_debt",
+      "anchor_planet": "Jupiter",
+      "anchor_houses": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "secondary_planets": [
+        "Mercury"
+      ],
+      "secondary_houses": [
+        9
+      ],
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Jupiter in kendra [1, 4, 7, 10] AND ['Mercury'] in [9]. Two-condition positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter Debt — Mercury in H9",
+      "detailed": "Jupiter in a kendra house (1/4/7/10) AND Mercury in the 9th house confirms Father's Debt via Jupiter. Mercury in Jupiter's significator house rivals and spoils Jupiter's dharma channel.",
+      "full_text_passages": [
+        {
+          "text": "Jupiter in a kendra house (1/4/7/10) AND Mercury in the 9th house confirms Father's Debt via Jupiter. Mercury in Jupiter's significator house rivals and spoils Jupiter's dharma channel.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "father"
+      ],
+      "tags": [
+        "jupiter_center",
+        "pitra_rina",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Mercury"
+      ],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10,
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-jup-debt-04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "jupiter_center_debt",
+      "anchor_planet": "Jupiter",
+      "anchor_houses": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "secondary_planets": [
+        "Rahu"
+      ],
+      "secondary_houses": [
+        12
+      ],
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Jupiter in kendra [1, 4, 7, 10] AND ['Rahu'] in [12]. Two-condition positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter Debt — Rahu in H12",
+      "detailed": "Jupiter in a kendra house (1/4/7/10) AND Rahu in the 12th house confirms Father's Debt via Jupiter. Rahu's presence in the house of foreign lands and moksha disrupts Jupiter's expansive influence.",
+      "full_text_passages": [
+        {
+          "text": "Jupiter in a kendra house (1/4/7/10) AND Rahu in the 12th house confirms Father's Debt via Jupiter. Rahu's presence in the house of foreign lands and moksha disrupts Jupiter's expansive influence.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "father"
+      ],
+      "tags": [
+        "jupiter_center",
+        "pitra_rina",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Rahu"
+      ],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-jup-debt-05",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "jupiter_center_debt",
+      "anchor_planet": "Jupiter",
+      "anchor_houses": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "secondary_planets": [
+        "Mercury",
+        "Venus"
+      ],
+      "secondary_houses": [
+        3,
+        6
+      ],
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Jupiter in kendra [1, 4, 7, 10] AND ['Mercury', 'Venus'] in [3, 6]. Two-condition positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter Debt — Mercury in H3 + Venus in H6",
+      "detailed": "Jupiter in a kendra house (1/4/7/10) AND Mercury in the 3rd house AND Venus in the 6th house simultaneously confirms Father's Debt via Jupiter. This dual-planet affliction pattern is a compound trigger.",
+      "full_text_passages": [
+        {
+          "text": "Jupiter in a kendra house (1/4/7/10) AND Mercury in the 3rd house AND Venus in the 6th house simultaneously confirms Father's Debt via Jupiter. This dual-planet affliction pattern is a compound trigger.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "father"
+      ],
+      "tags": [
+        "jupiter_center",
+        "pitra_rina",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Mercury",
+        "Venus"
+      ],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10,
+        3,
+        6
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-jup-debt-06",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "jupiter_center_debt",
+      "anchor_planet": "Jupiter",
+      "anchor_houses": [
+        1,
+        4,
+        7,
+        10
+      ],
+      "secondary_planets": [
+        "Saturn"
+      ],
+      "secondary_houses": [
+        3,
+        6
+      ],
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Jupiter in kendra [1, 4, 7, 10] AND ['Saturn'] in [3, 6]. Two-condition positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter Debt — Saturn in H3 or H6",
+      "detailed": "Jupiter in a kendra house (1/4/7/10) AND Saturn in the 3rd or 6th house confirms Father's Debt via Jupiter. Saturn's presence in these houses of effort and enemies blocks Jupiter's protective blessings.",
+      "full_text_passages": [
+        {
+          "text": "Jupiter in a kendra house (1/4/7/10) AND Saturn in the 3rd or 6th house confirms Father's Debt via Jupiter. Saturn's presence in these houses of effort and enemies blocks Jupiter's protective blessings.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "father"
+      ],
+      "tags": [
+        "jupiter_center",
+        "pitra_rina",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Saturn"
+      ],
+      "houses_involved": [
+        1,
+        4,
+        7,
+        10,
+        3,
+        6
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-jup-secondary",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "jupiter_secondary_markers",
+      "markers": [
+        {
+          "planet": "Rahu",
+          "houses": [
+            11
+          ]
+        },
+        {
+          "planet": "Saturn",
+          "houses": [
+            4,
+            6
+          ]
+        },
+        {
+          "planet": "Mercury",
+          "houses": [
+            2,
+            3,
+            8,
+            11,
+            12
+          ]
+        }
+      ],
+      "operator": "or",
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Any of: Rahu in H11 · Saturn in H4 or H6 · Mercury in H2/3/8/11/12. OR-condition positional check."
+      }
+    },
+    "interpretation": {
+      "summary": "Father's Debt — Secondary Conjunction Markers",
+      "detailed": "Presence of any of the following secondary markers confirms a potential Father's Debt via secondary conjunction: Rahu in H11 · Saturn in H4 or H6 · Mercury in H2, H3, H8, H11, or H12. These are confirmatory markers used alongside the primary Jupiter Center logic gates.",
+      "full_text_passages": [
+        {
+          "text": "Presence of any of the following secondary markers confirms a potential Father's Debt via secondary conjunction: Rahu in H11 · Saturn in H4 or H6 · Mercury in H2, H3, H8, H11, or H12. These are confirmatory markers used alongside the primary Jupiter Center logic gates.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "karma",
+        "father"
+      ],
+      "tags": [
+        "secondary_markers",
+        "pitra_rina",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Rahu",
+        "Saturn",
+        "Mercury"
+      ],
+      "houses_involved": [
+        11,
+        4,
+        6,
+        2,
+        3,
+        8,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 3,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-debt-jupiter",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debt",
+      "debt_type": "pitra_rina",
+      "debt_planet": "Jupiter",
+      "trigger_planets": [
+        "Venus",
+        "Rahu",
+        "Mercury"
+      ],
+      "trigger_houses": [
+        2,
+        5,
+        9,
+        12
+      ],
+      "requires_equal_family_share": true,
+      "multiplier_if_solo": 10,
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Venus/Rahu/Mercury in H2/5/9/12 AND Jupiter in H2/5/9/12"
+      },
+      "anchor_planet": "Jupiter",
+      "anchor_houses": [
+        2,
+        5,
+        9,
+        12
+      ]
+    },
+    "interpretation": {
+      "summary": "Father's Debt — Pitra Rina",
+      "detailed": "Father's Debt — Pitra Rina\n\nKarmic Reason: Father changed the family priest; father caused or hired others to kill dogs.\n\nSymptoms: Nearby religious temple or Peepal tree destroyed; habit of wearing necklaces or garlands; premature whitening of hair; hair fall at the choti (braided tress); incomplete education or study hurdles; imprisonment despite innocence. Age window of impact: 16–24 years.\n\nOutcomes: Whitening hair by age 16–24; incomplete education; legal imprisonment despite innocence; ancestral spiritual markers (temple, Peepal tree) in ruins.",
+      "full_text_passages": [
+        {
+          "text": "Father's Debt — Pitra Rina\n\nKarmic Reason: Father changed the family priest; father caused or hired others to kill dogs.\n\nSymptoms: Nearby religious temple or Peepal tree destroyed; habit of wearing necklaces or garlands; premature whitening of hair; hair fall at the choti (braided tress); incomplete education or study hurdles; imprisonment despite innocence. Age window of impact: 16–24 years.\n\nOutcomes: Whitening hair by age 16–24; incomplete education; legal imprisonment despite innocence; ancestral spiritual markers (temple, Peepal tree) in ruins.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Collect equal money from all blood family members; donate the pooled sum to a temple.",
+          "category": "offering"
+        },
+        {
+          "text": "Clean a nearby neglected temple — restore it to a worshipful state.",
+          "category": "ritual"
+        },
+        {
+          "text": "Water and care for a Peepal tree regularly.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "ancestry",
+      "life_domains": [
+        "ancestry",
+        "education",
+        "legal",
+        "spirituality"
+      ],
+      "tags": [
+        "pitra_rina",
+        "jupiter",
+        "debt",
+        "generational"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Venus",
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [
+        2,
+        5,
+        9,
+        12,
+        2,
+        5,
+        9,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": true,
+      "physical_categories": [
+        "karmic_symptoms",
+        "environmental_markers"
+      ],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-debt-sun",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debt",
+      "debt_type": "swayam_rina",
+      "debt_planet": "Sun",
+      "trigger_planets": [
+        "Venus"
+      ],
+      "trigger_houses": [
+        5
+      ],
+      "requires_equal_family_share": true,
+      "multiplier_if_solo": 10,
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Venus in H5; NOT Sun in H1/11"
+      },
+      "negative_condition": {
+        "planet": "Sun",
+        "houses": [
+          1,
+          11
+        ],
+        "constraint": "absent"
+      }
+    },
+    "interpretation": {
+      "summary": "Self-Debt — Swayam Rina",
+      "detailed": "Self-Debt — Swayam Rina\n\nKarmic Reason: The native (or ancestor) dishonored religion/tradition; adopted atheism.\n\nSymptoms: A fire pot embedded under the floor of the home; an open section of the roof that allows light entry; heart disease present in the family.\n\nOutcomes: Doom or theft in the family when a son reaches 11 months or 11 years of age; body becomes inflexible with constant drooling; wealth status doomed.",
+      "full_text_passages": [
+        {
+          "text": "Self-Debt — Swayam Rina\n\nKarmic Reason: The native (or ancestor) dishonored religion/tradition; adopted atheism.\n\nSymptoms: A fire pot embedded under the floor of the home; an open section of the roof that allows light entry; heart disease present in the family.\n\nOutcomes: Doom or theft in the family when a son reaches 11 months or 11 years of age; body becomes inflexible with constant drooling; wealth status doomed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Collect equal contributions from all family members; perform Sun's yajna with the combined capital.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "wealth",
+        "spirituality",
+        "progeny"
+      ],
+      "tags": [
+        "swayam_rina",
+        "sun",
+        "debt",
+        "heart",
+        "yajna"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Venus"
+      ],
+      "houses_involved": [
+        5,
+        1,
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": true,
+      "physical_categories": [
+        "karmic_symptoms",
+        "environmental_markers"
+      ],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-debt-moon",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debt",
+      "debt_type": "matri_rina",
+      "debt_planet": "Moon",
+      "trigger_planets": [
+        "Ketu"
+      ],
+      "trigger_houses": [
+        4
+      ],
+      "requires_equal_family_share": true,
+      "multiplier_if_solo": 10,
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Ketu in H4; NOT Moon in H4"
+      },
+      "negative_condition": {
+        "planet": "Moon",
+        "houses": [
+          4
+        ],
+        "constraint": "absent"
+      }
+    },
+    "interpretation": {
+      "summary": "Mother's Debt — Matri Rina",
+      "detailed": "Mother's Debt — Matri Rina\n\nKarmic Reason: Mother was disregarded after progeny birth; mother sent out of home; mother's grief was ignored.\n\nSymptoms: A neighboring well, river, or drainage system has been converted into a rubbish pile or effluent drain — water body desecrated.\n\nOutcomes: Savings depleted; chronic illness; weakened sensory perception; affliction spreads to those who help the native.",
+      "full_text_passages": [
+        {
+          "text": "Mother's Debt — Matri Rina\n\nKarmic Reason: Mother was disregarded after progeny birth; mother sent out of home; mother's grief was ignored.\n\nSymptoms: A neighboring well, river, or drainage system has been converted into a rubbish pile or effluent drain — water body desecrated.\n\nOutcomes: Savings depleted; chronic illness; weakened sensory perception; affliction spreads to those who help the native.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Collect equal shares of silver from all blood family members; drop all silver into a river at one single time.",
+          "category": "offering"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "wealth",
+        "family",
+        "mother"
+      ],
+      "tags": [
+        "matri_rina",
+        "moon",
+        "debt",
+        "silver",
+        "water"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Ketu"
+      ],
+      "houses_involved": [
+        4,
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": true,
+      "physical_categories": [
+        "karmic_symptoms",
+        "environmental_markers"
+      ],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-debt-venus",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debt",
+      "debt_type": "stri_rina",
+      "debt_planet": "Venus",
+      "trigger_planets": [
+        "Sun",
+        "Rahu",
+        "Ketu",
+        "Moon"
+      ],
+      "trigger_houses": [
+        2,
+        7
+      ],
+      "requires_equal_family_share": true,
+      "multiplier_if_solo": 10,
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Sun/Rahu/Ketu/Moon in H2/7; NOT Venus in H1/8"
+      },
+      "negative_condition": {
+        "planet": "Venus",
+        "houses": [
+          1,
+          8
+        ],
+        "constraint": "absent"
+      },
+      "trigger_note": "Primary: Sun/Rahu/Ketu in H2. Secondary reinforcement: Sun/Moon/Rahu in H2 or H7."
+    },
+    "interpretation": {
+      "summary": "Wife's Debt — Stri Rina",
+      "detailed": "Wife's Debt — Stri Rina\n\nKarmic Reason: An ancestor killed a pregnant woman for greed; family members fought amongst themselves.\n\nSymptoms: Collective family loathing of cows/service to animals; sorrow or death occurring in the family during occasions of joy.\n\nOutcomes: Death in family during joyful events; financial misfortune linked to Venus affliction.",
+      "full_text_passages": [
+        {
+          "text": "Wife's Debt — Stri Rina\n\nKarmic Reason: An ancestor killed a pregnant woman for greed; family members fought amongst themselves.\n\nSymptoms: Collective family loathing of cows/service to animals; sorrow or death occurring in the family during occasions of joy.\n\nOutcomes: Death in family during joyful events; financial misfortune linked to Venus affliction.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Collect equal funds from all family members; feed fodder to 100 unimpaired (non-disabled) cows in a single day.",
+          "category": "succour"
+        },
+        {
+          "text": "Maintain proper traditional attire as respect for the feminine principle.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "marriage",
+      "life_domains": [
+        "marriage",
+        "family",
+        "wealth",
+        "karma"
+      ],
+      "tags": [
+        "stri_rina",
+        "venus",
+        "debt",
+        "cow",
+        "karma"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Venus",
+        "Sun",
+        "Rahu",
+        "Ketu",
+        "Moon"
+      ],
+      "houses_involved": [
+        2,
+        7,
+        1,
+        8
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": true,
+      "physical_categories": [
+        "karmic_symptoms",
+        "environmental_markers"
+      ],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-debt-mars",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debt",
+      "debt_type": "bandhu_rina",
+      "debt_planet": "Mars",
+      "trigger_planets": [
+        "Mercury",
+        "Ketu"
+      ],
+      "trigger_houses": [
+        1,
+        8
+      ],
+      "requires_equal_family_share": true,
+      "multiplier_if_solo": 10,
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Mercury/Ketu in H1/8; NOT Mars in H7"
+      },
+      "negative_condition": {
+        "planet": "Mars",
+        "houses": [
+          7
+        ],
+        "constraint": "absent"
+      }
+    },
+    "interpretation": {
+      "summary": "Kin's Debt — Bandhu Rina",
+      "detailed": "Kin's Debt — Bandhu Rina\n\nKarmic Reason: An ancestor poisoned or deceived a friend; committed arson (burning crops or a house); killed someone else's buffalo.\n\nSymptoms: Hatred among kith and kin; no birthday celebrations in the household.\n\nOutcomes: Lack of progeny or disabled offspring; anaemia; non-functional joints; blindness in one eye; beaten without reason.",
+      "full_text_passages": [
+        {
+          "text": "Kin's Debt — Bandhu Rina\n\nKarmic Reason: An ancestor poisoned or deceived a friend; committed arson (burning crops or a house); killed someone else's buffalo.\n\nSymptoms: Hatred among kith and kin; no birthday celebrations in the household.\n\nOutcomes: Lack of progeny or disabled offspring; anaemia; non-functional joints; blindness in one eye; beaten without reason.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Collect equal money from each family member; donate the pooled funds to a doctor for the treatment of poor patients.",
+          "category": "succour"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "progeny",
+        "relationships",
+        "karma"
+      ],
+      "tags": [
+        "bandhu_rina",
+        "mars",
+        "debt",
+        "medical",
+        "charity"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars",
+        "Mercury",
+        "Ketu"
+      ],
+      "houses_involved": [
+        1,
+        8,
+        7
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": true,
+      "physical_categories": [
+        "karmic_symptoms",
+        "environmental_markers"
+      ],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-debt-mercury",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debt",
+      "debt_type": "bhagin_rina",
+      "debt_planet": "Mercury",
+      "trigger_planets": [
+        "Moon"
+      ],
+      "trigger_houses": [
+        3,
+        6
+      ],
+      "requires_equal_family_share": true,
+      "multiplier_if_solo": 10,
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Moon in H3/6; NOT Mercury in H2/12"
+      },
+      "negative_condition": {
+        "planet": "Mercury",
+        "houses": [
+          2,
+          12
+        ],
+        "constraint": "absent"
+      }
+    },
+    "interpretation": {
+      "summary": "Sister/Daughter Debt — Bhagin Rina",
+      "detailed": "Sister/Daughter Debt — Bhagin Rina\n\nKarmic Reason: An ancestor deceived or killed a sister or daughter; dishonored a female relative's chastity.\n\nSymptoms: Desire to sell or replace innocent children (child trafficking urge in the family lineage).\n\nOutcomes: Misfortune during marriage of female relatives; loss of copulation power; teeth fall out; loss of sensory perception; wealth wasted during marriage.",
+      "full_text_passages": [
+        {
+          "text": "Sister/Daughter Debt — Bhagin Rina\n\nKarmic Reason: An ancestor deceived or killed a sister or daughter; dishonored a female relative's chastity.\n\nSymptoms: Desire to sell or replace innocent children (child trafficking urge in the family lineage).\n\nOutcomes: Misfortune during marriage of female relatives; loss of copulation power; teeth fall out; loss of sensory perception; wealth wasted during marriage.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Path A: Collect yellow shells from all family members; burn to ash and float in flowing water.",
+          "category": "offering"
+        },
+        {
+          "text": "Path B (Wednesday only): Prepare halwa/puri in pure ghee and feed 101 maids after washing their feet.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "marriage",
+      "life_domains": [
+        "marriage",
+        "health",
+        "family",
+        "female_relatives"
+      ],
+      "tags": [
+        "bhagin_rina",
+        "mercury",
+        "debt",
+        "sisters",
+        "daughters"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Moon"
+      ],
+      "houses_involved": [
+        3,
+        6,
+        2,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": true,
+      "physical_categories": [
+        "karmic_symptoms",
+        "environmental_markers"
+      ],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-debt-saturn",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debt",
+      "debt_type": "kroor_rina",
+      "debt_planet": "Saturn",
+      "trigger_planets": [
+        "Sun",
+        "Moon"
+      ],
+      "trigger_houses": [
+        10,
+        11
+      ],
+      "requires_equal_family_share": true,
+      "multiplier_if_solo": 10,
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Sun/Moon in H10/11; NOT Saturn in H3/4"
+      },
+      "negative_condition": {
+        "planet": "Saturn",
+        "houses": [
+          3,
+          4
+        ],
+        "constraint": "absent"
+      },
+      "trigger_operator": "and",
+      "trigger_note": "Both Sun AND Moon must be in H10 or H11 simultaneously."
+    },
+    "interpretation": {
+      "summary": "Ruthless Debt — Kroor Rina",
+      "detailed": "Ruthless Debt — Kroor Rina\n\nKarmic Reason: An ancestor committed murder; grabbed a house or property by deceit.\n\nSymptoms: South-facing main entrance to the home; house built on orphanage land, road, or atop a well.\n\nOutcomes: High frequency of accidents; family members become handicapped; hair falls from eyelids and eyebrows (alopecia of facial hair).",
+      "full_text_passages": [
+        {
+          "text": "Ruthless Debt — Kroor Rina\n\nKarmic Reason: An ancestor committed murder; grabbed a house or property by deceit.\n\nSymptoms: South-facing main entrance to the home; house built on orphanage land, road, or atop a well.\n\nOutcomes: High frequency of accidents; family members become handicapped; hair falls from eyelids and eyebrows (alopecia of facial hair).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Path A: Collect money from all family members and feed 100 laborers at the same time in one day.",
+          "category": "succour"
+        },
+        {
+          "text": "Path B: Offer bread to crows every day for 43 consecutive days.",
+          "category": "offering"
+        },
+        {
+          "text": "Path C: Collect fish from 100 separate sources and feed them in water.",
+          "category": "offering"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "property",
+        "karma",
+        "accidents"
+      ],
+      "tags": [
+        "kroor_rina",
+        "saturn",
+        "debt",
+        "murder",
+        "property"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn",
+        "Sun",
+        "Moon"
+      ],
+      "houses_involved": [
+        10,
+        11,
+        3,
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": true,
+      "physical_categories": [
+        "karmic_symptoms",
+        "environmental_markers"
+      ],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-debt-rahu",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debt",
+      "debt_type": "praan_rina",
+      "debt_planet": "Rahu",
+      "trigger_planets": [
+        "Sun",
+        "Moon",
+        "Mars"
+      ],
+      "trigger_houses": [
+        12
+      ],
+      "requires_equal_family_share": true,
+      "multiplier_if_solo": 10,
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Sun/Moon/Mars in H12; NOT Rahu in H6"
+      },
+      "negative_condition": {
+        "planet": "Rahu",
+        "houses": [
+          6
+        ],
+        "constraint": "absent"
+      },
+      "trigger_note": "Any of Sun/Moon/Mars in H12 triggers this debt. Note: Diagnostic cites Sun+Venus+Mars; JSON Ready cites Sun+Moon+Mars. JSON Ready used as primary source."
+    },
+    "interpretation": {
+      "summary": "Debt of the Unborn — Praan Rina",
+      "detailed": "Debt of the Unborn — Praan Rina\n\nKarmic Reason: An ancestor deceived in-laws or cheated contacts continuously until the entire family was doomed.\n\nSymptoms: The south wall of the home adjoins forlorn land or a popcorn factory; an effluent drain is situated under the main threshold of the home.\n\nOutcomes: All efforts produce the opposite of the intended result; imprisonment without cause.",
+      "full_text_passages": [
+        {
+          "text": "Debt of the Unborn — Praan Rina\n\nKarmic Reason: An ancestor deceived in-laws or cheated contacts continuously until the entire family was doomed.\n\nSymptoms: The south wall of the home adjoins forlorn land or a popcorn factory; an effluent drain is situated under the main threshold of the home.\n\nOutcomes: All efforts produce the opposite of the intended result; imprisonment without cause.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Gather one coconut from every family member; float all coconuts simultaneously in a river or flowing water.",
+          "category": "offering"
+        },
+        {
+          "text": "Maintain joint family residency and keep good relations with in-laws.",
+          "category": "succour"
+        }
+      ],
+      "life_domain": "karma",
+      "life_domains": [
+        "karma",
+        "legal",
+        "family",
+        "in_laws"
+      ],
+      "tags": [
+        "praan_rina",
+        "rahu",
+        "debt",
+        "coconut",
+        "in_laws"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Rahu",
+        "Sun",
+        "Moon",
+        "Mars"
+      ],
+      "houses_involved": [
+        12,
+        6
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": true,
+      "physical_categories": [
+        "karmic_symptoms",
+        "environmental_markers"
+      ],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-debt-ketu",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debt",
+      "debt_type": "prakriti_rina",
+      "debt_planet": "Ketu",
+      "trigger_planets": [
+        "Moon",
+        "Mars"
+      ],
+      "trigger_houses": [
+        6
+      ],
+      "requires_equal_family_share": true,
+      "multiplier_if_solo": 10,
+      "yoga_check": {
+        "type": "yoga",
+        "checkable": true,
+        "description": "Moon/Mars in H6; NOT Ketu in H2"
+      },
+      "negative_condition": {
+        "planet": "Ketu",
+        "houses": [
+          2
+        ],
+        "constraint": "absent"
+      },
+      "trigger_operator": "and",
+      "trigger_note": "Both Moon AND Mars must be in H6 simultaneously."
+    },
+    "interpretation": {
+      "summary": "Nature's Debt — Prakriti Rina",
+      "detailed": "Nature's Debt — Prakriti Rina\n\nKarmic Reason: An ancestor killed a dog out of ill will; troubled holy men or mendicants; lived dishonestly with a lewd character.\n\nSymptoms: Secretly killing others' offspring; killing dogs by bullet; intent to end relatives' bloodlines.\n\nOutcomes: Male child is born handicapped, dies shortly after birth, or is never born; urinary diseases present.",
+      "full_text_passages": [
+        {
+          "text": "Nature's Debt — Prakriti Rina\n\nKarmic Reason: An ancestor killed a dog out of ill will; troubled holy men or mendicants; lived dishonestly with a lewd character.\n\nSymptoms: Secretly killing others' offspring; killing dogs by bullet; intent to end relatives' bloodlines.\n\nOutcomes: Male child is born handicapped, dies shortly after birth, or is never born; urinary diseases present.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Collect equal money from all family members; feed 100 dogs at once in a single day.",
+          "category": "succour"
+        },
+        {
+          "text": "Provide aid and assistance to neighborhood widows.",
+          "category": "succour"
+        }
+      ],
+      "life_domain": "progeny",
+      "life_domains": [
+        "progeny",
+        "health",
+        "karma",
+        "animals"
+      ],
+      "tags": [
+        "prakriti_rina",
+        "ketu",
+        "debt",
+        "dogs",
+        "progeny"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Ketu",
+        "Moon",
+        "Mars"
+      ],
+      "houses_involved": [
+        6,
+        2
+      ],
+      "signs_involved": [],
+      "condition_count": 2,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": true,
+      "physical_categories": [
+        "karmic_symptoms",
+        "environmental_markers"
+      ],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-window-jupiter",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "remedial_timing",
+      "timing_constraint": true,
+      "planet": "Jupiter",
+      "max_age": 16,
+      "yoga_check": {
+        "type": "timing",
+        "checkable": false,
+        "description": "Age-based timing constraint. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Remedial Window — Jupiter: Before Age 16",
+      "detailed": "The debt remedy associated with Jupiter MUST be performed before the native reaches the age of 16 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+      "full_text_passages": [
+        {
+          "text": "The debt remedy associated with Jupiter MUST be performed before the native reaches the age of 16 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "timing",
+        "remedy"
+      ],
+      "tags": [
+        "timing",
+        "remedial_window",
+        "jupiter",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-window-sun",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "remedial_timing",
+      "timing_constraint": true,
+      "planet": "Sun",
+      "max_age": 22,
+      "yoga_check": {
+        "type": "timing",
+        "checkable": false,
+        "description": "Age-based timing constraint. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Remedial Window — Sun: Before Age 22",
+      "detailed": "The debt remedy associated with Sun MUST be performed before the native reaches the age of 22 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+      "full_text_passages": [
+        {
+          "text": "The debt remedy associated with Sun MUST be performed before the native reaches the age of 22 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "timing",
+        "remedy"
+      ],
+      "tags": [
+        "timing",
+        "remedial_window",
+        "sun",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-window-moon",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "remedial_timing",
+      "timing_constraint": true,
+      "planet": "Moon",
+      "max_age": 24,
+      "yoga_check": {
+        "type": "timing",
+        "checkable": false,
+        "description": "Age-based timing constraint. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Remedial Window — Moon: Before Age 24",
+      "detailed": "The debt remedy associated with Moon MUST be performed before the native reaches the age of 24 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+      "full_text_passages": [
+        {
+          "text": "The debt remedy associated with Moon MUST be performed before the native reaches the age of 24 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "timing",
+        "remedy"
+      ],
+      "tags": [
+        "timing",
+        "remedial_window",
+        "moon",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-window-venus",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "remedial_timing",
+      "timing_constraint": true,
+      "planet": "Venus",
+      "max_age": 25,
+      "yoga_check": {
+        "type": "timing",
+        "checkable": false,
+        "description": "Age-based timing constraint. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Remedial Window — Venus: Before Age 25",
+      "detailed": "The debt remedy associated with Venus MUST be performed before the native reaches the age of 25 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+      "full_text_passages": [
+        {
+          "text": "The debt remedy associated with Venus MUST be performed before the native reaches the age of 25 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "timing",
+        "remedy"
+      ],
+      "tags": [
+        "timing",
+        "remedial_window",
+        "venus",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Venus"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-window-mars",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "remedial_timing",
+      "timing_constraint": true,
+      "planet": "Mars",
+      "max_age": 28,
+      "yoga_check": {
+        "type": "timing",
+        "checkable": false,
+        "description": "Age-based timing constraint. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Remedial Window — Mars: Before Age 28",
+      "detailed": "The debt remedy associated with Mars MUST be performed before the native reaches the age of 28 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+      "full_text_passages": [
+        {
+          "text": "The debt remedy associated with Mars MUST be performed before the native reaches the age of 28 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "timing",
+        "remedy"
+      ],
+      "tags": [
+        "timing",
+        "remedial_window",
+        "mars",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-window-mercury",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "remedial_timing",
+      "timing_constraint": true,
+      "planet": "Mercury",
+      "max_age": 34,
+      "yoga_check": {
+        "type": "timing",
+        "checkable": false,
+        "description": "Age-based timing constraint. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Remedial Window — Mercury: Before Age 34",
+      "detailed": "The debt remedy associated with Mercury MUST be performed before the native reaches the age of 34 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+      "full_text_passages": [
+        {
+          "text": "The debt remedy associated with Mercury MUST be performed before the native reaches the age of 34 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "timing",
+        "remedy"
+      ],
+      "tags": [
+        "timing",
+        "remedial_window",
+        "mercury",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-window-saturn",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "remedial_timing",
+      "timing_constraint": true,
+      "planet": "Saturn",
+      "max_age": 36,
+      "yoga_check": {
+        "type": "timing",
+        "checkable": false,
+        "description": "Age-based timing constraint. Not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Remedial Window — Saturn: Before Age 36",
+      "detailed": "The debt remedy associated with Saturn MUST be performed before the native reaches the age of 36 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+      "full_text_passages": [
+        {
+          "text": "The debt remedy associated with Saturn MUST be performed before the native reaches the age of 36 years. Executing the remedy after this life-cycle threshold significantly reduces its efficacy. Vedic planetary cycles define these age-specific windows for maximum karmic rectification.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "timing",
+        "remedy"
+      ],
+      "tags": [
+        "timing",
+        "remedial_window",
+        "saturn",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-fam-01",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "family_remedy_protocol",
+      "yoga_check": {
+        "type": "procedural",
+        "checkable": false,
+        "description": "Procedural remedy execution rule. Not automatable."
+      }
+    },
+    "interpretation": {
+      "summary": "Equal Share Protocol — Blood Relation Contribution",
+      "detailed": "All debt remedies MUST include equal contributions (money, silver, or prescribed material) from ALL blood relations, specifically: Son, Daughter, Grandson (Dauhitra), Sister, Nephew, Niece. No family member may be excluded from the contribution pool.",
+      "full_text_passages": [
+        {
+          "text": "All debt remedies MUST include equal contributions (money, silver, or prescribed material) from ALL blood relations, specifically: Son, Daughter, Grandson (Dauhitra), Sister, Nephew, Niece. No family member may be excluded from the contribution pool.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "remedy",
+        "family"
+      ],
+      "tags": [
+        "family_protocol",
+        "remedy_sequencing",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 0,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-fam-02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "family_remedy_protocol",
+      "yoga_check": {
+        "type": "procedural",
+        "checkable": false,
+        "description": "Procedural remedy execution rule. Not automatable."
+      }
+    },
+    "interpretation": {
+      "summary": "Solitary Native Multiplier — 10× Individual Share",
+      "detailed": "If the native is the only available family member (no blood relations living), the native must perform the remedy alone but multiply their individual contribution by 10. One share performed solo = 10 shares of the standard remedy.",
+      "full_text_passages": [
+        {
+          "text": "If the native is the only available family member (no blood relations living), the native must perform the remedy alone but multiply their individual contribution by 10. One share performed solo = 10 shares of the standard remedy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "remedy",
+        "family"
+      ],
+      "tags": [
+        "family_protocol",
+        "remedy_sequencing",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 0,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-fam-03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "family_remedy_protocol",
+      "yoga_check": {
+        "type": "procedural",
+        "checkable": false,
+        "description": "Procedural remedy execution rule. Not automatable."
+      }
+    },
+    "interpretation": {
+      "summary": "Remedial Sequencing — One at a Time, 7–14 Day Break",
+      "detailed": "Only ONE debt remedy should be performed at a time. A mandatory rest period of 7 to 14 days must be observed before initiating the next remedial measure. Performing multiple remedies simultaneously is prohibited.",
+      "full_text_passages": [
+        {
+          "text": "Only ONE debt remedy should be performed at a time. A mandatory rest period of 7 to 14 days must be observed before initiating the next remedial measure. Performing multiple remedies simultaneously is prohibited.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "remedy",
+        "family"
+      ],
+      "tags": [
+        "family_protocol",
+        "remedy_sequencing",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 0,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch21-fam-04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 21,
+      "chapter_name": "Freedom From Debt — Pitra Rina",
+      "sloka": null,
+      "batch_id": "lalkitab-ch21-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:01:30.837255+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "family_remedy_protocol",
+      "yoga_check": {
+        "type": "procedural",
+        "checkable": false,
+        "description": "Procedural remedy execution rule. Not automatable."
+      }
+    },
+    "interpretation": {
+      "summary": "Family Growth Fast — 40 to 43 Day Consecutive Fasts",
+      "detailed": "To ensure family expansion and assist debt removal, the native should observe fasts for 40 to 43 days over a consecutive period of 40 to 43 weeks. This extended fasting protocol strengthens the family channel.",
+      "full_text_passages": [
+        {
+          "text": "To ensure family expansion and assist debt removal, the native should observe fasts for 40 to 43 days over a consecutive period of 40 to 43 weeks. This extended fasting protocol strengthens the family channel.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "general",
+      "life_domains": [
+        "karma",
+        "remedy",
+        "family"
+      ],
+      "tags": [
+        "family_protocol",
+        "remedy_sequencing",
+        "debt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 0,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  }
+]
