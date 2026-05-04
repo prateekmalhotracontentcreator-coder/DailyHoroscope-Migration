@@ -1,0 +1,2732 @@
+[
+  {
+    "rule_id": "bphs-ch43-001",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-04-05",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Pindayu \u2014 Deep Exaltation Longevity Constants",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "L"
+        ],
+        "description": "Engine spec \u2014 Pindayu system not yet implemented in vedic_calculator.py."
+      }
+    },
+    "interpretation": {
+      "summary": "Pindayu \u2014 Deep Exaltation Longevity Constants",
+      "detailed": "Each of the seven classical planets is allotted a fixed number of years at its deep exaltation point (Paramochcha). These are the Pindayu constants: Sun=19, Moon=25, Mars=15, Mercury=12, Jupiter=15, Venus=21, Saturn=20 years. At deep debilitation, the allotment is halved. Intermediate positions use the proportional formula (Logic Unit 43.2). Effect: The foundation of the Pindayu longevity system. Sum all seven planetary contributions (after rectifications) plus the Ascendant contribution to obtain the total Pindayu lifespan.",
+      "full_text_passages": [
+        {
+          "text": "Each of the seven classical planets is allotted a fixed number of years at its deep exaltation point (Paramochcha). These are the Pindayu constants: Sun=19, Moon=25, Mars=15, Mercury=12, Jupiter=15, Venus=21, Saturn=20 years. At deep debilitation, the allotment is halved. Intermediate positions use the proportional formula (Logic Unit 43.2). Effect: The foundation of the Pindayu longevity system. Sum all seven planetary contributions (after rectifications) plus the Ascendant contribution to obtain the total Pindayu lifespan.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-002",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-06-07",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Pindayu \u2014 Basic Contribution Formula (Distance d)",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "L"
+        ],
+        "description": "Engine spec \u2014 Pindayu calculation formula."
+      }
+    },
+    "interpretation": {
+      "summary": "Pindayu \u2014 Basic Contribution Formula (Distance d)",
+      "detailed": "Compute d = angular distance between the planet's deep exaltation longitude and its actual natal longitude. Rule A \u2014 if d < 180\u00b0: contribution c = f \u2212 (d \u00d7 f / 360), where f = full exaltation allotment. Rule B \u2014 if d > 180\u00b0: c = (d \u00d7 f) / 360. Result is in years. Apply rectifications (LU 43.3\u201343.8) before summing. Effect: Produces the planet's individual longevity contribution in years. Planets near exaltation contribute more; near debilitation, less. The formula is continuous \u2014 no binary strong/weak split.",
+      "full_text_passages": [
+        {
+          "text": "Compute d = angular distance between the planet's deep exaltation longitude and its actual natal longitude. Rule A \u2014 if d < 180\u00b0: contribution c = f \u2212 (d \u00d7 f / 360), where f = full exaltation allotment. Rule B \u2014 if d > 180\u00b0: c = (d \u00d7 f) / 360. Result is in years. Apply rectifications (LU 43.3\u201343.8) before summing. Effect: Produces the planet's individual longevity contribution in years. Planets near exaltation contribute more; near debilitation, less. The formula is continuous \u2014 no binary strong/weak split.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-003",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-08",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planet_combust",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Astangata Harana \u2014 Combustion Longevity Reduction",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "planet_combust",
+        "checkable": true,
+        "excluded_planets": [
+          "Venus",
+          "Saturn"
+        ],
+        "description": "Check planets[p]['combust'] == True for each planet except Venus and Saturn. Fire when any non-exempt planet is combust."
+      }
+    },
+    "interpretation": {
+      "summary": "Astangata Harana \u2014 Combustion Longevity Reduction",
+      "detailed": "When a classical planet is combust (within Sun's combustion orb), its Pindayu contribution is reduced by half (\u00d70.5). Exception: Venus and Saturn are EXEMPT \u2014 combustion does not reduce their longevity contributions. If a planet attracts both this and another reduction simultaneously, apply only the highest reduction (see Highest Reduction Priority rule). Effect: A combust planet contributes only half its calculated Pindayu years. For example, if Mercury's calculated contribution is 8 years and it is combust, only 4 years are counted. Venus and Saturn retain full contributions despite combustion.",
+      "full_text_passages": [
+        {
+          "text": "When a classical planet is combust (within Sun's combustion orb), its Pindayu contribution is reduced by half (\u00d70.5). Exception: Venus and Saturn are EXEMPT \u2014 combustion does not reduce their longevity contributions. If a planet attracts both this and another reduction simultaneously, apply only the highest reduction (see Highest Reduction Priority rule). Effect: A combust planet contributes only half its calculated Pindayu years. For example, if Mercury's calculated contribution is 8 years and it is combust, only 4 years are counted. Venus and Saturn retain full contributions despite combustion.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "combustion"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "planet_combust",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-004",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-09",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Satru Kshetra Harana \u2014 Inimical Sign Longevity Reduction",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Check planets[p]['dignity'] == 'enemy' AND planets[p]['retrograde'] == False. Fire when any planet is in enemy sign and direct."
+      }
+    },
+    "interpretation": {
+      "summary": "Satru Kshetra Harana \u2014 Inimical Sign Longevity Reduction",
+      "detailed": "When a planet occupies an enemy sign (Satru Kshetra \u2014 where dignity = 'enemy'), its Pindayu contribution is reduced by one-third (\u00d70.667). Exception: a planet in retrograde motion (Vakrachara) is EXEMPT \u2014 retrograde planets are not penalised even if in enemy sign. Use Highest Reduction Priority if multiple reductions apply. Effect: A planet in enemy sign loses one-third of its calculated Pindayu years. Retrograde planets are protected from this reduction regardless of sign placement, reflecting their increased Cheshta Bala.",
+      "full_text_passages": [
+        {
+          "text": "When a planet occupies an enemy sign (Satru Kshetra \u2014 where dignity = 'enemy'), its Pindayu contribution is reduced by one-third (\u00d70.667). Exception: a planet in retrograde motion (Vakrachara) is EXEMPT \u2014 retrograde planets are not penalised even if in enemy sign. Use Highest Reduction Priority if multiple reductions apply. Effect: A planet in enemy sign loses one-third of its calculated Pindayu years. Retrograde planets are protected from this reduction regardless of sign placement, reflecting their increased Cheshta Bala.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-005",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-10-11",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Vyayadi Harana \u2014 Visible-Half Harmonic Reduction",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [],
+      "houses_involved": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "houses": [
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "description": "Check planets[p]['house'] in [7,8,9,10,11,12]. Fire when any planet is in the visible half. Benefic/malefic status and Shadbala comparison for strongest-planet override are Phase 2 refinements."
+      }
+    },
+    "interpretation": {
+      "summary": "Vyayadi Harana \u2014 Visible-Half Harmonic Reduction",
+      "detailed": "Planets in houses 7 through 12 (the visible half) suffer a progressive harmonic reduction using the formula: loss = c / ((14 \u2212 house) \u2212 (DP / BL)), where DP = degrees from bhava cusp, BL = bhava span. Simplified scale: H12=Full, H11=1/2, H10=1/3, H9=1/4, H8=1/5, H7=1/6. For benefics (Jupiter, Venus, Mercury, Moon, Waning Moon treated as benefic): apply only HALF of the above reduction scale. Only the STRONGEST planet in a house suffers the reduction; others are exempt (Strongest Planet Over-rule \u2014 LU 43.6). Highest Reduction Priority applies if multiple rectifications conflict. Effect: Planets above the horizon (houses 7\u201312) lose longevity contribution proportional to their distance from the 12th house cusp. The 12th house planet loses the most; the 7th house planet loses the least (1/6). Benefics lose half as much as malefics.",
+      "full_text_passages": [
+        {
+          "text": "Planets in houses 7 through 12 (the visible half) suffer a progressive harmonic reduction using the formula: loss = c / ((14 \u2212 house) \u2212 (DP / BL)), where DP = degrees from bhava cusp, BL = bhava span. Simplified scale: H12=Full, H11=1/2, H10=1/3, H9=1/4, H8=1/5, H7=1/6. For benefics (Jupiter, Venus, Mercury, Moon, Waning Moon treated as benefic): apply only HALF of the above reduction scale. Only the STRONGEST planet in a house suffers the reduction; others are exempt (Strongest Planet Over-rule \u2014 LU 43.6). Highest Reduction Priority applies if multiple rectifications conflict. Effect: Planets above the horizon (houses 7\u201312) lose longevity contribution proportional to their distance from the 12th house cusp. The 12th house planet loses the most; the 7th house planet loses the least (1/6). Benefics lose half as much as malefics.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-006",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-11",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Vyayadi Strongest Planet Override",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": false,
+        "blockers": [
+          "KE"
+        ],
+        "description": "Requires Shadbala comparison between co-occupants of the same house. Phase 2 after 'planet_shadbala_strong' condition type is wired."
+      }
+    },
+    "interpretation": {
+      "summary": "Vyayadi Strongest Planet Override",
+      "detailed": "When multiple planets occupy the same house in the visible half (houses 7\u201312), ONLY the planet with the highest Shadbala in that house suffers the Vyayadi reduction. The contributions of all other co-occupants in that house are exempt from Vyayadi Harana on that account. Effect: Protects weaker planets in crowded houses from double-penalisation. Only the strongest planet bears the full weight of visible-half reduction for its house group.",
+      "full_text_passages": [
+        {
+          "text": "When multiple planets occupy the same house in the visible half (houses 7\u201312), ONLY the planet with the highest Shadbala in that house suffers the Vyayadi reduction. The contributions of all other co-occupants in that house are exempt from Vyayadi Harana on that account. Effect: Protects weaker planets in crowded houses from double-penalisation. Only the strongest planet bears the full weight of visible-half reduction for its house group.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "planetary_combination"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-007",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-11",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Benefic Planetary Class \u2014 Always Treated as Benefics",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "description": "Classification rule for Pindayu engine. Engine spec reference."
+      }
+    },
+    "interpretation": {
+      "summary": "Benefic Planetary Class \u2014 Always Treated as Benefics",
+      "detailed": "For all Pindayu longevity calculations and Vyayadi reductions, the Moon and Mercury are always treated as natural benefics regardless of their conjunctions. A Waning Moon is specifically classified as a benefic for these purposes. This means: (a) they lose only half of the malefic Vyayadi scale, and (b) neither Moon nor Mercury is ever liable for Kroorodaya Harana (the malefic-ascendant reduction). Effect: Moon and Mercury receive preferential treatment in longevity calculations \u2014 their contributions are better protected from reduction than those of the classical malefics (Sun, Mars, Saturn).",
+      "full_text_passages": [
+        {
+          "text": "For all Pindayu longevity calculations and Vyayadi reductions, the Moon and Mercury are always treated as natural benefics regardless of their conjunctions. A Waning Moon is specifically classified as a benefic for these purposes. This means: (a) they lose only half of the malefic Vyayadi scale, and (b) neither Moon nor Mercury is ever liable for Kroorodaya Harana (the malefic-ascendant reduction). Effect: Moon and Mercury receive preferential treatment in longevity calculations \u2014 their contributions are better protected from reduction than those of the classical malefics (Sun, Mars, Saturn).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-008",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-12-13",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Kroorodaya Harana \u2014 Malefic Ascendant Reduction",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [
+        "Sun",
+        "Mars",
+        "Saturn"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "planets": [
+          "Sun",
+          "Mars",
+          "Saturn"
+        ],
+        "houses": [
+          1
+        ],
+        "description": "Check planets[p]['house'] == 1 AND planet in ['Sun','Mars','Saturn']. Fire when a natural malefic is in the Ascendant. Exact cusp-degree formula is Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Kroorodaya Harana \u2014 Malefic Ascendant Reduction",
+      "detailed": "When a natural malefic (Sun, Mars, or Saturn) occupies the Ascendant, its Pindayu contribution is reduced by: (Ascendant cusp in arc-minutes \u00d7 malefic's basic years) / 21600. Modifier: if a benefic aspects the malefic in the Ascendant, reduce only HALF of the calculated figure. Exception: Mercury is totally exempt from Kroorodaya even when joined with a natural malefic. Moon and Mercury never attract this reduction. Effect: A malefic planet in the Ascendant has its longevity contribution progressively reduced based on the exact cusp degree. The later the Ascendant degree, the larger the reduction. Benefic aspect partially shields the malefic.",
+      "full_text_passages": [
+        {
+          "text": "When a natural malefic (Sun, Mars, or Saturn) occupies the Ascendant, its Pindayu contribution is reduced by: (Ascendant cusp in arc-minutes \u00d7 malefic's basic years) / 21600. Modifier: if a benefic aspects the malefic in the Ascendant, reduce only HALF of the calculated figure. Exception: Mercury is totally exempt from Kroorodaya even when joined with a natural malefic. Moon and Mercury never attract this reduction. Effect: A malefic planet in the Ascendant has its longevity contribution progressively reduced based on the exact cusp degree. The later the Ascendant degree, the larger the reduction. Benefic aspect partially shields the malefic.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "ascendant"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Mars",
+        "Saturn"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-009",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-14",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Highest Reduction Priority \u2014 One Reduction Per Planet",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "description": "Engine logic rule. Reference only."
+      }
+    },
+    "interpretation": {
+      "summary": "Highest Reduction Priority \u2014 One Reduction Per Planet",
+      "detailed": "If a single planet attracts more than one type of Pindayu rectification (e.g., both Astangata combustion reduction AND Satru Kshetra enemy-sign reduction), ONLY the highest single reduction figure is applied. All other lesser reductions for that planet are ignored entirely. This prevents compounded reductions from eliminating a planet's contribution below a reasonable floor. Effect: Conflict-resolution rule for the rectification layer. When multiple penalties apply to one planet, the engine picks the maximum penalty only. This sets an upper bound on how severely any single planet can be reduced.",
+      "full_text_passages": [
+        {
+          "text": "If a single planet attracts more than one type of Pindayu rectification (e.g., both Astangata combustion reduction AND Satru Kshetra enemy-sign reduction), ONLY the highest single reduction figure is applied. All other lesser reductions for that planet are ignored entirely. This prevents compounded reductions from eliminating a planet's contribution below a reasonable floor. Effect: Conflict-resolution rule for the rectification layer. When multiple penalties apply to one planet, the engine picks the maximum penalty only. This sets an upper bound on how severely any single planet can be reduced.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-010",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-15",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Calendar Conversion \u2014 Savanamana to Sauramana",
+      "yoga_group": "pindayu_engine",
+      "yoga_group_label": "Pindayu Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "description": "Engine spec \u2014 final conversion step for Pindayu."
+      }
+    },
+    "interpretation": {
+      "summary": "Calendar Conversion \u2014 Savanamana to Sauramana",
+      "detailed": "The Pindayu calculation uses a 360-day zodiacal year (Savanamana) because it operates over 360\u00b0 of the zodiac. The final longevity total must be converted to the solar (Sauramana / Gregorian) calendar by multiplying the Savanamana total by the constant 0.9856034. This is always the final step \u2014 applied after all rectifications. Effect: Converts the zodiacal longevity total to a real-world calendar year figure. For example, 120 Savanamana years = 120 \u00d7 0.9856034 \u2248 118.3 Gregorian years.",
+      "full_text_passages": [
+        {
+          "text": "The Pindayu calculation uses a 360-day zodiacal year (Savanamana) because it operates over 360\u00b0 of the zodiac. The final longevity total must be converted to the solar (Sauramana / Gregorian) calendar by multiplying the Savanamana total by the constant 0.9856034. This is always the final step \u2014 applied after all rectifications. Effect: Converts the zodiacal longevity total to a real-world calendar year figure. For example, 120 Savanamana years = 120 \u00d7 0.9856034 \u2248 118.3 Gregorian years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pindayu_engine",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pindayu_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-011",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-16-17",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Ascendant Contribution \u2014 Rasi Method (Lagnavayu)",
+      "yoga_group": "ascendant_engine",
+      "yoga_group_label": "Ascendant Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-ascendant_engine",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "KE"
+        ],
+        "description": "Requires Shadbala comparison of Rasi vs Navamsa ASC lord. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Ascendant Contribution \u2014 Rasi Method (Lagnavayu)",
+      "detailed": "Used when the Rasi Ascendant Lord is stronger in Shadbala than the Navamsa Ascendant Lord. Calculation A (Signs): Count completed signs from Aries up to (but not including) the Ascendant sign \u2014 each completed sign = 1 year. Calculation B (Degrees): Convert degrees gained within the current Ascendant sign to years \u2014 30\u00b0 = 1 year, 2.5\u00b0 = 1 month. Sum A + B = Rasi Lagnavayu contribution. Effect: The Ascendant itself contributes longevity years based on how far Aries-to-Ascendant has advanced through the zodiac. A Sagittarius Ascendant at 0\u00b0 contributes 8 years from sign count (8 completed signs) plus proportionate degrees.",
+      "full_text_passages": [
+        {
+          "text": "Used when the Rasi Ascendant Lord is stronger in Shadbala than the Navamsa Ascendant Lord. Calculation A (Signs): Count completed signs from Aries up to (but not including) the Ascendant sign \u2014 each completed sign = 1 year. Calculation B (Degrees): Convert degrees gained within the current Ascendant sign to years \u2014 30\u00b0 = 1 year, 2.5\u00b0 = 1 month. Sum A + B = Rasi Lagnavayu contribution. Effect: The Ascendant itself contributes longevity years based on how far Aries-to-Ascendant has advanced through the zodiac. A Sagittarius Ascendant at 0\u00b0 contributes 8 years from sign count (8 completed signs) plus proportionate degrees.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "ascendant"
+      ],
+      "tags": [
+        "ascendant_engine",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-ascendant_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-012",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-18-19",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Ascendant Contribution \u2014 Navamsa Method (Lagnavayu)",
+      "yoga_group": "ascendant_engine",
+      "yoga_group_label": "Ascendant Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-ascendant_engine",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "KE",
+          "V"
+        ],
+        "description": "Requires Shadbala comparison and Navamsa Lagna position. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Ascendant Contribution \u2014 Navamsa Method (Lagnavayu)",
+      "detailed": "Used when the Navamsa Ascendant Lord is stronger in Shadbala than the Rasi Ascendant Lord. Calculation: Count completed Navamsas from the start of Aries up to the Navamsa Lagna. Each completed Navamsa (3\u00b0 20' arc) = 1 full year. Proportionately convert remaining minutes of arc within the current Navamsa using the 3\u00b020' = 1 year ratio. Effect: The high-density Navamsa conversion makes each small arc unit (3\u00b020') equal to one full year \u2014 more granular than the Rasi method. Provides an alternative longevity anchor when the Navamsa Ascendant lord is the dominant factor.",
+      "full_text_passages": [
+        {
+          "text": "Used when the Navamsa Ascendant Lord is stronger in Shadbala than the Rasi Ascendant Lord. Calculation: Count completed Navamsas from the start of Aries up to the Navamsa Lagna. Each completed Navamsa (3\u00b0 20' arc) = 1 full year. Proportionately convert remaining minutes of arc within the current Navamsa using the 3\u00b020' = 1 year ratio. Effect: The high-density Navamsa conversion makes each small arc unit (3\u00b020') equal to one full year \u2014 more granular than the Rasi method. Provides an alternative longevity anchor when the Navamsa Ascendant lord is the dominant factor.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "ascendant"
+      ],
+      "tags": [
+        "ascendant_engine",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-ascendant_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-013",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-20",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Ascendant Exemption \u2014 No Rectification Applies to Lagnavayu",
+      "yoga_group": "ascendant_engine",
+      "yoga_group_label": "Ascendant Engine",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-ascendant_engine",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "description": "Engine rule \u2014 Ascendant exemption from rectification."
+      }
+    },
+    "interpretation": {
+      "summary": "Ascendant Exemption \u2014 No Rectification Applies to Lagnavayu",
+      "detailed": "Unlike the contributions of the seven planets, the Ascendant's longevity contribution (Lagnavayu) is FIXED once calculated. It undergoes NO rectification checks \u2014 it is not reduced for combustion, enemy sign placement, visible-half position, or malefic-ascendant penalties. Lagnavayu acts as the stable anchor of the Pindayu total. Effect: The Ascendant contribution is immune to all four Harana (rectification) rules. Once computed, it is added to the planetary sum without reduction. This provides a floor of stability in the longevity calculation.",
+      "full_text_passages": [
+        {
+          "text": "Unlike the contributions of the seven planets, the Ascendant's longevity contribution (Lagnavayu) is FIXED once calculated. It undergoes NO rectification checks \u2014 it is not reduced for combustion, enemy sign placement, visible-half position, or malefic-ascendant penalties. Lagnavayu acts as the stable anchor of the Pindayu total. Effect: The Ascendant contribution is immune to all four Harana (rectification) rules. Once computed, it is added to the planetary sum without reduction. This provides a floor of stability in the longevity calculation.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "ascendant"
+      ],
+      "tags": [
+        "ascendant_engine",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-ascendant_engine",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-014",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-22-23",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Nisargayu \u2014 Natural Longevity System Constants",
+      "yoga_group": "alternative_systems",
+      "yoga_group_label": "Alternative Systems",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-alternative_systems",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "L"
+        ],
+        "description": "Engine spec \u2014 Nisargayu system not yet implemented."
+      }
+    },
+    "interpretation": {
+      "summary": "Nisargayu \u2014 Natural Longevity System Constants",
+      "detailed": "The Nisargayu system uses fixed natural-year allotments per planet: Moon=1, Mars=2, Mercury=9, Venus=20, Jupiter=18, Sun=20, Saturn=50 years. Used when the Moon is the strongest of Sun/Moon/Ascendant in Shadbala. Sum all seven allotments for the base total, then apply same rectifications (Astangata, Satru Kshetra, Vyayadi, Kroorodaya) as in Pindayu. Effect: Saturn dominates in Nisargayu (50 years) and Moon contributes least (1 year). This system tends to produce shorter calculated spans than Pindayu for charts where Sun/Jupiter are well-placed.",
+      "full_text_passages": [
+        {
+          "text": "The Nisargayu system uses fixed natural-year allotments per planet: Moon=1, Mars=2, Mercury=9, Venus=20, Jupiter=18, Sun=20, Saturn=50 years. Used when the Moon is the strongest of Sun/Moon/Ascendant in Shadbala. Sum all seven allotments for the base total, then apply same rectifications (Astangata, Satru Kshetra, Vyayadi, Kroorodaya) as in Pindayu. Effect: Saturn dominates in Nisargayu (50 years) and Moon contributes least (1 year). This system tends to produce shorter calculated spans than Pindayu for charts where Sun/Jupiter are well-placed.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "alternative_systems",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-alternative_systems",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-015",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-24-25",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Amsayu \u2014 Divisional Longevity System (Treble/Double Rule)",
+      "yoga_group": "alternative_systems",
+      "yoga_group_label": "Alternative Systems",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-alternative_systems",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "L",
+          "V"
+        ],
+        "description": "Engine spec \u2014 requires Navamsa position per planet. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Amsayu \u2014 Divisional Longevity System (Treble/Double Rule)",
+      "detailed": "Used when the Ascendant is the strongest of Sun/Moon/Ascendant. Amsayu multipliers apply to each planet's Navamsa position: Treble (\u00d73): planet in exaltation or own sign in Navamsa. Double (\u00d72): planet in own Navamsa decanate. Override: if BOTH treble and double conditions apply simultaneously, use TREBLE only \u2014 do not compound. Sum all seven multiplied contributions for the Amsayu total. Effect: Strongly rewards exalted or own-sign Navamsa placements. A planet in exaltation in the Navamsa triples its Pindayu base contribution. Produces the longest calculated spans when many planets are well-placed in divisional charts.",
+      "full_text_passages": [
+        {
+          "text": "Used when the Ascendant is the strongest of Sun/Moon/Ascendant. Amsayu multipliers apply to each planet's Navamsa position: Treble (\u00d73): planet in exaltation or own sign in Navamsa. Double (\u00d72): planet in own Navamsa decanate. Override: if BOTH treble and double conditions apply simultaneously, use TREBLE only \u2014 do not compound. Sum all seven multiplied contributions for the Amsayu total. Effect: Strongly rewards exalted or own-sign Navamsa placements. A planet in exaltation in the Navamsa triples its Pindayu base contribution. Produces the longest calculated spans when many planets are well-placed in divisional charts.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "alternative_systems",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-alternative_systems",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-016",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-26",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Animal Longevity Formula",
+      "yoga_group": "alternative_systems",
+      "yoga_group_label": "Alternative Systems",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-alternative_systems",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "description": "Engine spec \u2014 animal longevity formula."
+      }
+    },
+    "interpretation": {
+      "summary": "Animal Longevity Formula",
+      "detailed": "To calculate the longevity of a non-human being: Formula: (Human_Calculation \u00d7 Animal_Full_Span) / 120. Where Human_Calculation = the Pindayu/Nisargayu/Amsayu result as if the animal were human, and Animal_Full_Span = the maximum natural lifespan for that species from the full span catalog. Effect: Scales the human longevity calculation proportionally to the natural lifespan of the species. Allows the same Pindayu engine to generate species-appropriate longevity figures.",
+      "full_text_passages": [
+        {
+          "text": "To calculate the longevity of a non-human being: Formula: (Human_Calculation \u00d7 Animal_Full_Span) / 120. Where Human_Calculation = the Pindayu/Nisargayu/Amsayu result as if the animal were human, and Animal_Full_Span = the maximum natural lifespan for that species from the full span catalog. Effect: Scales the human longevity calculation proportionally to the natural lifespan of the species. Allows the same Pindayu engine to generate species-appropriate longevity figures.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "alternative_systems",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-alternative_systems",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-017",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-27-29",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Full Lifespan Catalog \u2014 Beings and Their Natural Spans",
+      "yoga_group": "alternative_systems",
+      "yoga_group_label": "Alternative Systems",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-alternative_systems",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "description": "Reference table \u2014 not a KE evaluator rule."
+      }
+    },
+    "interpretation": {
+      "summary": "Full Lifespan Catalog \u2014 Beings and Their Natural Spans",
+      "detailed": "Maximum natural lifespan by being type: Gods/Sages=Endless, Eagles/Owls/Parrots/Crows/Snakes=1000, Falcons/Monkeys/Bears/Frogs=300, Demons=150, Humans=120, Horses=32, Donkeys/Camels=25, Oxen/Buffaloes=24, Peacocks=20, Goats/Rams=16, Swans=14, Dogs=12, Hens=8, Birds=7 years. Effect: Reference table used in the animal longevity formula. Establishes the maximum span denominator for each species. Humans have a maximum of 120 years \u2014 this is the baseline for Full Life (Poorna Ayu).",
+      "full_text_passages": [
+        {
+          "text": "Maximum natural lifespan by being type: Gods/Sages=Endless, Eagles/Owls/Parrots/Crows/Snakes=1000, Falcons/Monkeys/Bears/Frogs=300, Demons=150, Humans=120, Horses=32, Donkeys/Camels=25, Oxen/Buffaloes=24, Peacocks=20, Goats/Rams=16, Swans=14, Dogs=12, Hens=8, Birds=7 years. Effect: Reference table used in the animal longevity formula. Establishes the maximum span denominator for each species. Humans have a maximum of 120 years \u2014 this is the baseline for Full Life (Poorna Ayu).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "alternative_systems",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-alternative_systems",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-018",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-30-32",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Longevity System Selection \u2014 Strongest Pivot (Sun/Moon/Ascendant)",
+      "yoga_group": "system_selection",
+      "yoga_group_label": "System Selection",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-system_selection",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "KE"
+        ],
+        "description": "Requires three-way Shadbala comparison. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Longevity System Selection \u2014 Strongest Pivot (Sun/Moon/Ascendant)",
+      "detailed": "A Shadbala comparison of Sun, Moon, and Ascendant Lord determines which longevity system to use: If Ascendant Lord is strongest \u2192 use Amsayu. If Sun is strongest \u2192 use Pindayu. If Moon is strongest \u2192 use Nisargayu. This comparison is non-negotiable \u2014 calculating longevity without identifying the dominant pivot is logically invalid per BPHS. Effect: The system selection gate determines the entire longevity calculation path. Charts with a strong Sun will use Pindayu (the most commonly referenced system); strong Moon charts use Nisargayu; strong Ascendant charts use Amsayu.",
+      "full_text_passages": [
+        {
+          "text": "A Shadbala comparison of Sun, Moon, and Ascendant Lord determines which longevity system to use: If Ascendant Lord is strongest \u2192 use Amsayu. If Sun is strongest \u2192 use Pindayu. If Moon is strongest \u2192 use Nisargayu. This comparison is non-negotiable \u2014 calculating longevity without identifying the dominant pivot is logically invalid per BPHS. Effect: The system selection gate determines the entire longevity calculation path. Charts with a strong Sun will use Pindayu (the most commonly referenced system); strong Moon charts use Nisargayu; strong Ascendant charts use Amsayu.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "system_selection",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-system_selection",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-019",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-32",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Doubtful Case Averaging \u2014 Equal Strength Resolution",
+      "yoga_group": "system_selection",
+      "yoga_group_label": "System Selection",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-system_selection",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "KE"
+        ],
+        "description": "Requires Shadbala equality detection across three pivots. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Doubtful Case Averaging \u2014 Equal Strength Resolution",
+      "detailed": "When two of the three pivots (Sun, Moon, Ascendant) have equal Shadbala: calculate longevity using both applicable systems and take the average of the two results. When all three have equal Shadbala: calculate all three systems and take the average of all three results. This prevents bias toward any single calculation path. Effect: Produces a balanced longevity estimate when no single pivot clearly dominates. The averaging approach captures contributions from multiple calculation perspectives.",
+      "full_text_passages": [
+        {
+          "text": "When two of the three pivots (Sun, Moon, Ascendant) have equal Shadbala: calculate longevity using both applicable systems and take the average of the two results. When all three have equal Shadbala: calculate all three systems and take the average of all three results. This prevents bias toward any single calculation path. Effect: Produces a balanced longevity estimate when no single pivot clearly dominates. The averaging approach captures contributions from multiple calculation perspectives.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "system_selection",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-system_selection",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-020",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-33-34",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Three Diagnostic Pairs for Lifespan Class",
+      "yoga_group": "pair_span_logic",
+      "yoga_group_label": "Pair Span Logic",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pair_span_logic",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "L",
+          "KE"
+        ],
+        "description": "Requires lord identification + Hora Lagna. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Three Diagnostic Pairs for Lifespan Class",
+      "detailed": "Three planetary pairs are used to diagnose the class of longevity (Long / Medium / Short): Pair 1: Lord of Ascendant + Lord of 8th House. Pair 2: Saturn + Moon. Pair 3: Natal Ascendant + Hora Ascendant (Hora Lagna). Each pair is evaluated independently for sign-placement category (see Sign-Placement Longevity rule). A consensus of two out of three pairs establishes the baseline class. Effect: The three-pair system provides a redundant diagnostic with built-in conflict resolution. When all three agree, the lifespan class is certain; when they diverge, the conflict resolution hierarchy (LU 43.34) applies.",
+      "full_text_passages": [
+        {
+          "text": "Three planetary pairs are used to diagnose the class of longevity (Long / Medium / Short): Pair 1: Lord of Ascendant + Lord of 8th House. Pair 2: Saturn + Moon. Pair 3: Natal Ascendant + Hora Ascendant (Hora Lagna). Each pair is evaluated independently for sign-placement category (see Sign-Placement Longevity rule). A consensus of two out of three pairs establishes the baseline class. Effect: The three-pair system provides a redundant diagnostic with built-in conflict resolution. When all three agree, the lifespan class is certain; when they diverge, the conflict resolution hierarchy (LU 43.34) applies.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pair_span_logic",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pair_span_logic",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-021",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-35-37",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Sign-Placement Longevity \u2014 Movable/Fixed/Dual Classification",
+      "yoga_group": "pair_span_logic",
+      "yoga_group_label": "Pair Span Logic",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pair_span_logic",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "L"
+        ],
+        "description": "Requires lord identification for Pairs 1 and 2. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Sign-Placement Longevity \u2014 Movable/Fixed/Dual Classification",
+      "detailed": "For each of the three diagnostic pairs, classify the longevity span based on the modality of the signs occupied by both members of the pair: Long Life: both in Movable signs (Aries/Cancer/Libra/Capricorn) OR one in Fixed + one in Dual. Medium Life: both in Dual signs (Gemini/Virgo/Sagittarius/Pisces) OR one in Movable + one in Fixed. Short Life: both in Fixed signs (Taurus/Leo/Scorpio/Aquarius) OR one in Movable + one in Dual. Effect: Movable-sign dominance indicates a mobile, adaptive life energy and tends toward longer spans. Fixed-sign dominance indicates rigidity and tends toward shorter spans. Dual signs indicate medium spans.",
+      "full_text_passages": [
+        {
+          "text": "For each of the three diagnostic pairs, classify the longevity span based on the modality of the signs occupied by both members of the pair: Long Life: both in Movable signs (Aries/Cancer/Libra/Capricorn) OR one in Fixed + one in Dual. Medium Life: both in Dual signs (Gemini/Virgo/Sagittarius/Pisces) OR one in Movable + one in Fixed. Short Life: both in Fixed signs (Taurus/Leo/Scorpio/Aquarius) OR one in Movable + one in Dual. Effect: Movable-sign dominance indicates a mobile, adaptive life energy and tends toward longer spans. Fixed-sign dominance indicates rigidity and tends toward shorter spans. Dual signs indicate medium spans.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pair_span_logic",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pair_span_logic",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-022",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-38-40",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Conflict Resolution \u2014 Pair 3 Prevails, Moon Override",
+      "yoga_group": "pair_span_logic",
+      "yoga_group_label": "Pair Span Logic",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pair_span_logic",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "L",
+          "KE"
+        ],
+        "description": "Requires all three pair evaluations. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Conflict Resolution \u2014 Pair 3 Prevails, Moon Override",
+      "detailed": "When the three diagnostic pairs indicate different spans (e.g., Long, Medium, Short \u2014 all different): Primary rule: the indication of Pair 3 (Natal Ascendant + Hora Ascendant) prevails as the baseline span. Moon Override (Exception): if the Moon occupies the Ascendant (H1) or the 7th house, the indication of Pair 2 (Saturn + Moon) VETOES the above and becomes the master diagnostic, regardless of Pair 3. Effect: Establishes a clear hierarchy when all three pairs disagree. Pair 3 is the default arbiter; but the Moon's position in H1 or H7 triggers an override that gives Pair 2 (Saturn-Moon axis) the final word.",
+      "full_text_passages": [
+        {
+          "text": "When the three diagnostic pairs indicate different spans (e.g., Long, Medium, Short \u2014 all different): Primary rule: the indication of Pair 3 (Natal Ascendant + Hora Ascendant) prevails as the baseline span. Moon Override (Exception): if the Moon occupies the Ascendant (H1) or the 7th house, the indication of Pair 2 (Saturn + Moon) VETOES the above and becomes the master diagnostic, regardless of Pair 3. Effect: Establishes a clear hierarchy when all three pairs disagree. Pair 3 is the default arbiter; but the Moon's position in H1 or H7 triggers an override that gives Pair 2 (Saturn-Moon axis) the final word.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pair_span_logic",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pair_span_logic",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-023",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-41-44",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Quantum of Years \u2014 Harmonic Scale per Lifespan Class",
+      "yoga_group": "pair_span_logic",
+      "yoga_group_label": "Pair Span Logic",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pair_span_logic",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "L",
+          "KE"
+        ],
+        "description": "Requires all three pair evaluations and counts. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Quantum of Years \u2014 Harmonic Scale per Lifespan Class",
+      "detailed": "The number of pairs indicating a given class determines the exact quantum: Long Life: 3 pairs = 120 years, 2 pairs = 108 years, 1 pair = 96 years. Medium Life: 3 pairs = 80 years, 2 pairs = 72 years, 1 pair = 64 years. Short Life: 3 pairs = 32 years, 2 pairs = 36 years, 1 pair = 40 years. Note: Short Life increases with fewer pairs (32\u219236\u219240) \u2014 a counter-intuitive harmonic that reflects stronger confidence in a short span when all three pairs agree. Effect: Produces the specific longevity quantum in years. Strong consensus among all three pairs (120, 80, or 32 years) gives maximum/minimum values. Mixed signals produce intermediate quanta.",
+      "full_text_passages": [
+        {
+          "text": "The number of pairs indicating a given class determines the exact quantum: Long Life: 3 pairs = 120 years, 2 pairs = 108 years, 1 pair = 96 years. Medium Life: 3 pairs = 80 years, 2 pairs = 72 years, 1 pair = 64 years. Short Life: 3 pairs = 32 years, 2 pairs = 36 years, 1 pair = 40 years. Note: Short Life increases with fewer pairs (32\u219236\u219240) \u2014 a counter-intuitive harmonic that reflects stronger confidence in a short span when all three pairs agree. Effect: Produces the specific longevity quantum in years. Strong consensus among all three pairs (120, 80, or 32 years) gives maximum/minimum values. Mixed signals produce intermediate quanta.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "pair_span_logic",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-pair_span_logic",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-024",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-45-46",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Degreewise Pair Rectification \u2014 Proportional Precision",
+      "yoga_group": "class_modifiers",
+      "yoga_group_label": "Class Modifiers",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-class_modifiers",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "description": "Degree-precision rectification for pair engine. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Degreewise Pair Rectification \u2014 Proportional Precision",
+      "detailed": "Longevity contribution is maximised at 0\u00b0 of a sign and reduced to zero at 30\u00b0. For intermediate placements, use the Rule of Three: Sum the longitudes of contributing planets (devoid of sign multiples), divide by the number of contributors, multiply by the basic years of the class, and divide by 30. Formula: (Sum_of_degrees / count) \u00d7 basic_years / 30. Effect: Fine-tunes the quantum calculation with degree-level precision. A planet at 0\u00b0 of its sign contributes maximum years; one at 29\u00b0 contributes almost nothing on a per-degree basis.",
+      "full_text_passages": [
+        {
+          "text": "Longevity contribution is maximised at 0\u00b0 of a sign and reduced to zero at 30\u00b0. For intermediate placements, use the Rule of Three: Sum the longitudes of contributing planets (devoid of sign multiples), divide by the number of contributors, multiply by the basic years of the class, and divide by 30. Formula: (Sum_of_degrees / count) \u00d7 basic_years / 30. Effect: Fine-tunes the quantum calculation with degree-level precision. A planet at 0\u00b0 of its sign contributes maximum years; one at 29\u00b0 contributes almost nothing on a per-degree basis.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "class_modifiers",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-class_modifiers",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-025",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-47",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Saturn Class Decline \u2014 Longevity Class Downgrade",
+      "yoga_group": "class_modifiers",
+      "yoga_group_label": "Class Modifiers",
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-class_modifiers",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "planet": "Saturn",
+        "description": "Check planets['Saturn (Shani)']['dignity'] not in ['own_sign','exalted','moolatrikona']. If Saturn lacks dignity, flag as class-decline trigger."
+      }
+    },
+    "interpretation": {
+      "summary": "Saturn Class Decline \u2014 Longevity Class Downgrade",
+      "detailed": "When Saturn is one of the contributing factors in the longevity calculation, the CLASS of longevity declines by one step (e.g., Long \u2192 Medium, Medium \u2192 Short). Exception: no decline occurs if Saturn is in its own sign (Capricorn or Aquarius) or in exaltation (Libra), even if aspected by malefics. Effect: Saturn's natural constricting influence 'pulls down' the longevity class by one grade unless it holds essential dignity. A chart that would otherwise indicate Long Life becomes Medium Life when Saturn is a contributor without dignity.",
+      "full_text_passages": [
+        {
+          "text": "When Saturn is one of the contributing factors in the longevity calculation, the CLASS of longevity declines by one step (e.g., Long \u2192 Medium, Medium \u2192 Short). Exception: no decline occurs if Saturn is in its own sign (Capricorn or Aquarius) or in exaltation (Libra), even if aspected by malefics. Effect: Saturn's natural constricting influence 'pulls down' the longevity class by one grade unless it holds essential dignity. A chart that would otherwise indicate Long Life becomes Medium Life when Saturn is a contributor without dignity.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "class_modifiers",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-class_modifiers",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-026",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-48",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Jupiter Class Rise \u2014 Longevity Class Upgrade",
+      "yoga_group": "class_modifiers",
+      "yoga_group_label": "Class Modifiers",
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "houses_involved": [
+        1,
+        7
+      ],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-class_modifiers",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "planet": "Jupiter",
+        "houses": [
+          1,
+          7
+        ],
+        "description": "Check planets['Jupiter (Brihaspati)']['house'] in [1,7]. Malefic-only-aspect check is Phase 2 (requires aspect evaluation)."
+      }
+    },
+    "interpretation": {
+      "summary": "Jupiter Class Rise \u2014 Longevity Class Upgrade",
+      "detailed": "When Jupiter occupies the Ascendant (H1) or the 7th house AND is aspected by or conjunct ONLY benefics (no malefic aspect or conjunction), the CLASS of longevity increases by one step (Short \u2192 Medium, Medium \u2192 Long). Effect: Jupiter in an angular position with pure benefic company upgrades the longevity class. A chart indicating Short Life can be promoted to Medium Life through this single condition \u2014 Jupiter's protective grace must be uncontaminated by malefic influence.",
+      "full_text_passages": [
+        {
+          "text": "When Jupiter occupies the Ascendant (H1) or the 7th house AND is aspected by or conjunct ONLY benefics (no malefic aspect or conjunction), the CLASS of longevity increases by one step (Short \u2192 Medium, Medium \u2192 Long). Effect: Jupiter in an angular position with pure benefic company upgrades the longevity class. A chart indicating Short Life can be promoted to Medium Life through this single condition \u2014 Jupiter's protective grace must be uncontaminated by malefic influence.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "class_modifiers",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "houses_involved": [
+        1,
+        7
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-class_modifiers",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-027",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-52-54",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Seven-Fold Longevity Classification",
+      "yoga_group": "longevity_yogas",
+      "yoga_group_label": "Longevity Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "description": "Classification reference table."
+      }
+    },
+    "interpretation": {
+      "summary": "Seven-Fold Longevity Classification",
+      "detailed": "BPHS recognises seven classes of lifespan: Balarishta (childhood death) < 8 years. Yogarishta (youth death) < 20 years. Short (Alpayu) up to 32 years. Medium (Madhyamayu) up to 64 years. Long (Purnayu) up to 120 years. Supernatural (Divya) = 1000 years. Illimitable (Amitayu) = acquired by extraordinary merits. Effect: Provides the complete classification hierarchy for longevity assessment. Most human charts fall in the Short/Medium/Long range (0\u2013120 years). Divya and Amitayu are yogic/exceptional spans beyond normal human capacity.",
+      "full_text_passages": [
+        {
+          "text": "BPHS recognises seven classes of lifespan: Balarishta (childhood death) < 8 years. Yogarishta (youth death) < 20 years. Short (Alpayu) up to 32 years. Medium (Madhyamayu) up to 64 years. Long (Purnayu) up to 120 years. Supernatural (Divya) = 1000 years. Illimitable (Amitayu) = acquired by extraordinary merits. Effect: Provides the complete classification hierarchy for longevity assessment. Most human charts fall in the Short/Medium/Long range (0\u2013120 years). Divya and Amitayu are yogic/exceptional spans beyond normal human capacity.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "longevity_yogas",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-028",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-55-56",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Amitayu Yoga \u2014 Limitless Longevity",
+      "yoga_group": "longevity_yogas",
+      "yoga_group_label": "Longevity Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Check: lagna sign == 'Cancer' AND planets['Jupiter (Brihaspati)']['house'] == 1 AND planets['Moon (Chandra)']['house'] == 1 AND planets['Venus (Shukra)']['house'] in [1,4,7,10] AND planets['Mercury (Budha)']['house'] in [1,4,7,10]."
+      }
+    },
+    "interpretation": {
+      "summary": "Amitayu Yoga \u2014 Limitless Longevity",
+      "detailed": "Conditions for Amitayu (limitless/illimitable longevity): Cancer Ascendant AND Jupiter + Moon both in the 1st house AND Venus and Mercury in angular houses (H1, H4, H7, or H10) AND other planets in 3rd, 6th, and 11th houses (Upachaya positions). Effect: When fully satisfied, this yoga confers a lifespan beyond normal human reckoning \u2014 the 'Amitayu' or illimitable span, acquired through extraordinary spiritual merit. Extremely rare in natal charts.",
+      "full_text_passages": [
+        {
+          "text": "Conditions for Amitayu (limitless/illimitable longevity): Cancer Ascendant AND Jupiter + Moon both in the 1st house AND Venus and Mercury in angular houses (H1, H4, H7, or H10) AND other planets in 3rd, 6th, and 11th houses (Upachaya positions). Effect: When fully satisfied, this yoga confers a lifespan beyond normal human reckoning \u2014 the 'Amitayu' or illimitable span, acquired through extraordinary spiritual merit. Extremely rare in natal charts.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "supernatural"
+      ],
+      "tags": [
+        "longevity_yogas",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-029",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-57",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Divya Yoga \u2014 Supernatural 1000-Year Span",
+      "yoga_group": "longevity_yogas",
+      "yoga_group_label": "Longevity Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Check benefics in angles/trines AND malefics in [3,6,11] AND 8th house sign lord is a benefic. Complex multi-condition check."
+      }
+    },
+    "interpretation": {
+      "summary": "Divya Yoga \u2014 Supernatural 1000-Year Span",
+      "detailed": "Conditions for Divya (supernatural longevity of 1000 years): Benefics (Jupiter, Venus, Mercury, waxing Moon) occupy angular (H1, H4, H7, H10) and trinal (H1, H5, H9) houses AND malefics (Sun, Mars, Saturn, Rahu, Ketu) occupy the 3rd, 6th, and 11th houses (Upachaya) AND the 8th house is occupied by or receives the sign of a benefic planet. Effect: The ideal distribution of benefics in benefic houses and malefics in Upachaya houses \u2014 the classic 'Raj Yoga' pattern \u2014 when combined with a protected 8th house, confers a supernatural lifespan.",
+      "full_text_passages": [
+        {
+          "text": "Conditions for Divya (supernatural longevity of 1000 years): Benefics (Jupiter, Venus, Mercury, waxing Moon) occupy angular (H1, H4, H7, H10) and trinal (H1, H5, H9) houses AND malefics (Sun, Mars, Saturn, Rahu, Ketu) occupy the 3rd, 6th, and 11th houses (Upachaya) AND the 8th house is occupied by or receives the sign of a benefic planet. Effect: The ideal distribution of benefics in benefic houses and malefics in Upachaya houses \u2014 the classic 'Raj Yoga' pattern \u2014 when combined with a protected 8th house, confers a supernatural lifespan.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "supernatural"
+      ],
+      "tags": [
+        "longevity_yogas",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-030",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-58",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "End of Yuga Yoga \u2014 Jupiter + Venus Varga Conditions",
+      "yoga_group": "longevity_yogas",
+      "yoga_group_label": "Longevity Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": false,
+        "blockers": [
+          "V"
+        ],
+        "description": "Requires Gopuramsa and Paaravatamsa varga tier computation. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "End of Yuga Yoga \u2014 Jupiter + Venus Varga Conditions",
+      "detailed": "Conditions: Cancer Ascendant AND Jupiter in an angular house at Gopuramsa varga dignity (4th tier in the Vimshopaka system) AND Venus in a trinal house at Paaravatamsa varga dignity (5th tier). Outcome: 'End of Yuga' span \u2014 an astronomically long lifespan exceeding normal human bounds. Effect: A varga-triggered supernatural lifespan requiring both specific house placement AND advanced divisional dignity from Jupiter and Venus. The standard house-placement logic is overridden by Varga status.",
+      "full_text_passages": [
+        {
+          "text": "Conditions: Cancer Ascendant AND Jupiter in an angular house at Gopuramsa varga dignity (4th tier in the Vimshopaka system) AND Venus in a trinal house at Paaravatamsa varga dignity (5th tier). Outcome: 'End of Yuga' span \u2014 an astronomically long lifespan exceeding normal human bounds. Effect: A varga-triggered supernatural lifespan requiring both specific house placement AND advanced divisional dignity from Jupiter and Venus. The standard house-placement logic is overridden by Varga status.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "supernatural"
+      ],
+      "tags": [
+        "longevity_yogas",
+        "planetary_combination"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-031",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-58",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Sage Longevity Yoga \u2014 Varga Triad (Jupiter + Saturn + Mars)",
+      "yoga_group": "longevity_yogas",
+      "yoga_group_label": "Longevity Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": false,
+        "blockers": [
+          "V"
+        ],
+        "description": "Requires Simhasanamsa, Devalokamsa, Paaravatamsa varga tiers. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Sage Longevity Yoga \u2014 Varga Triad (Jupiter + Saturn + Mars)",
+      "detailed": "Conditions: Jupiter in the 1st house at Simhasanamsa varga dignity (4th tier) AND Saturn at Devalokamsa (6th tier) AND Mars at Paaravatamsa (5th tier). Outcome: 'Span of a Sage' \u2014 extraordinary longevity consistent with a spiritually elevated being. Effect: This yoga requires three planets to simultaneously achieve high varga dignity \u2014 an extremely rare condition. When met, it confers the lifespan associated with ancient sages and spiritually advanced beings.",
+      "full_text_passages": [
+        {
+          "text": "Conditions: Jupiter in the 1st house at Simhasanamsa varga dignity (4th tier) AND Saturn at Devalokamsa (6th tier) AND Mars at Paaravatamsa (5th tier). Outcome: 'Span of a Sage' \u2014 extraordinary longevity consistent with a spiritually elevated being. Effect: This yoga requires three planets to simultaneously achieve high varga dignity \u2014 an extremely rare condition. When met, it confers the lifespan associated with ancient sages and spiritually advanced beings.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "supernatural"
+      ],
+      "tags": [
+        "longevity_yogas",
+        "planetary_combination"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-032",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-60-64",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Full Life Span Yogas \u2014 120 Years (Purnayu)",
+      "yoga_group": "longevity_yogas",
+      "yoga_group_label": "Longevity Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Yoga A: check benefics in [1,4,7,10] + ASC lord aspected by benefic. Yoga D: check benefics in [6,7,8] AND malefics in [3,11]. Yogas B and C require aspect evaluation (Phase 2)."
+      }
+    },
+    "interpretation": {
+      "summary": "Full Life Span Yogas \u2014 120 Years (Purnayu)",
+      "detailed": "Four formations conferring full lifespan (Purnayu ~120 years): Yoga A: Benefics in angular houses AND Ascendant lord conjunct or aspected by a benefic or Jupiter. Yoga B: Ascendant lord in an angular house AND conjunct or aspected by both Jupiter and Venus. Yoga C: Three or more planets in exaltation (including lords of H1 and H8) AND 8th house empty AND 8th house not aspected by malefics. Yoga D: Benefics in H6, H7, H8 AND malefics in H3 and H11. Effect: Any of these four formations indicates a full human lifespan of approximately 120 years. Yoga D follows the Malefic Displacement Principle \u2014 malefics thrive in Upachaya houses (3, 11) while benefics protect the sensitive death/longevity axis (6, 7, 8).",
+      "full_text_passages": [
+        {
+          "text": "Four formations conferring full lifespan (Purnayu ~120 years): Yoga A: Benefics in angular houses AND Ascendant lord conjunct or aspected by a benefic or Jupiter. Yoga B: Ascendant lord in an angular house AND conjunct or aspected by both Jupiter and Venus. Yoga C: Three or more planets in exaltation (including lords of H1 and H8) AND 8th house empty AND 8th house not aspected by malefics. Yoga D: Benefics in H6, H7, H8 AND malefics in H3 and H11. Effect: Any of these four formations indicates a full human lifespan of approximately 120 years. Yoga D follows the Malefic Displacement Principle \u2014 malefics thrive in Upachaya houses (3, 11) while benefics protect the sensitive death/longevity axis (6, 7, 8).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "longevity_yogas",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-033",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-65-70",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Long Life Yogas \u2014 Dirghaayu",
+      "yoga_group": "longevity_yogas",
+      "yoga_group_label": "Longevity Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "is_benefic": true,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Yoga C: check malefics in [3,6,11] AND benefics in [1,4,7,10]. Yoga E: check ASC sign is dual (Gemini/Virgo/Sagittarius/Pisces). Other yogas require aspect/strength evaluation (Phase 2)."
+      }
+    },
+    "interpretation": {
+      "summary": "Long Life Yogas \u2014 Dirghaayu",
+      "detailed": "Five formations conferring long life (64\u2013120 years): Yoga A: Three or more planets in H8 in exaltation/own/friendly signs AND Ascendant lord is strong. Yoga B: Saturn or Ascendant lord conjunct any exalted planet. Yoga C: Malefics in H3, H6, H11 AND benefics in angular houses. Yoga D: A malefic in H8 AND the 10th lord is exalted. Yoga E: Dual/common sign Ascendant AND Ascendant lord in angle, exaltation, or trine. Effect: These combinations indicate a lifespan exceeding 64 years. Yoga C is the 'classical Raj Yoga longevity pattern' \u2014 malefics displaced to Upachaya houses, benefics holding the angular framework.",
+      "full_text_passages": [
+        {
+          "text": "Five formations conferring long life (64\u2013120 years): Yoga A: Three or more planets in H8 in exaltation/own/friendly signs AND Ascendant lord is strong. Yoga B: Saturn or Ascendant lord conjunct any exalted planet. Yoga C: Malefics in H3, H6, H11 AND benefics in angular houses. Yoga D: A malefic in H8 AND the 10th lord is exalted. Yoga E: Dual/common sign Ascendant AND Ascendant lord in angle, exaltation, or trine. Effect: These combinations indicate a lifespan exceeding 64 years. Yoga C is the 'classical Raj Yoga longevity pattern' \u2014 malefics displaced to Upachaya houses, benefics holding the angular framework.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "longevity_yogas",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-034",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-71-74",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Short Life Yogas \u2014 Alpayu",
+      "yoga_group": "longevity_yogas",
+      "yoga_group_label": "Longevity Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "is_benefic": false,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true,
+        "description": "Yoga B: check ASC lord's house contains malefics (no benefic aspect \u2014 Phase 2). Yoga D: check malefics in [12,2] (no benefic aspect check \u2014 Phase 2). Full evaluation of all four requires aspect data."
+      }
+    },
+    "interpretation": {
+      "summary": "Short Life Yogas \u2014 Alpayu",
+      "detailed": "Four formations indicating short life (< 32 years): Yoga A: Mars or 3rd lord combust OR 8th lord or Saturn combust AND additionally aspected/conjunct by malefics. Yoga B: Ascendant lord in a house with malefics AND no benefic aspect. Yoga C: Malefics in angular houses AND no benefic aspect AND Ascendant lord is weak. Yoga D: Malefics in H12 and H2 AND no benefic aspect. Upgrade: if lords of H1 and H8 are weak but receive aspect/help from other planets \u2192 diagnose Medium Life instead. Effect: These are warning indicators for significantly shortened lifespan. The 'Weakness-to-Help' modifier provides a diagnostic upgrade \u2014 if weak lords receive planetary support, Short Life is upgraded to Medium.",
+      "full_text_passages": [
+        {
+          "text": "Four formations indicating short life (< 32 years): Yoga A: Mars or 3rd lord combust OR 8th lord or Saturn combust AND additionally aspected/conjunct by malefics. Yoga B: Ascendant lord in a house with malefics AND no benefic aspect. Yoga C: Malefics in angular houses AND no benefic aspect AND Ascendant lord is weak. Yoga D: Malefics in H12 and H2 AND no benefic aspect. Upgrade: if lords of H1 and H8 are weak but receive aspect/help from other planets \u2192 diagnose Medium Life instead. Effect: These are warning indicators for significantly shortened lifespan. The 'Weakness-to-Help' modifier provides a diagnostic upgrade \u2014 if weak lords receive planetary support, Short Life is upgraded to Medium.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "longevity_yogas",
+        "planetary_combination",
+        "yoga_checkable"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  },
+  {
+    "rule_id": "bphs-ch43-035",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Brihat Parashara Hora Shastra",
+      "book_id": "bphs",
+      "chapter": 43,
+      "chapter_name": "Longevity (Ayurdaya)",
+      "sloka": "ch43-sloka-71-73",
+      "batch_id": "bphs-ch43-v1-20260504",
+      "primary": "Brihat Parashara Hora Shastra",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "longevity_calculation",
+      "yoga_name": "Strength-Placement Longevity \u2014 Stronger of H1/H8 Lords",
+      "yoga_group": "longevity_yogas",
+      "yoga_group_label": "Longevity Yogas",
+      "planets_involved": [],
+      "houses_involved": [],
+      "sub_conditions": [],
+      "operator": "and",
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "is_benefic": null,
+      "yoga_check": {
+        "type": "general_principle",
+        "checkable": false,
+        "blockers": [
+          "L",
+          "KE"
+        ],
+        "description": "Requires lord identification + Shadbala comparison. Phase 2."
+      }
+    },
+    "interpretation": {
+      "summary": "Strength-Placement Longevity \u2014 Stronger of H1/H8 Lords",
+      "detailed": "Compare the Shadbala strength of the Ascendant Lord and the 8th House Lord. Whichever is stronger determines the longevity class based on its house: Stronger lord in Angular house (H1, H4, H7, H10) \u2192 Long Life. Stronger lord in Panaphara house (H2, H5, H8, H11) \u2192 Medium Life. Stronger lord in Apoklima house (H3, H6, H9, H12) \u2192 Short Life. Final refinement: the classification is further adjusted by the lord's friendship relationship to the Sun (friendly/neutral/inimical). Effect: A strength-based longevity gate that integrates both Shadbala and house placement. The dominant lord's angular/panaphara/apoklima position sets the baseline class, then solar friendship refines it.",
+      "full_text_passages": [
+        {
+          "text": "Compare the Shadbala strength of the Ascendant Lord and the 8th House Lord. Whichever is stronger determines the longevity class based on its house: Stronger lord in Angular house (H1, H4, H7, H10) \u2192 Long Life. Stronger lord in Panaphara house (H2, H5, H8, H11) \u2192 Medium Life. Stronger lord in Apoklima house (H3, H6, H9, H12) \u2192 Short Life. Final refinement: the classification is further adjusted by the lord's friendship relationship to the Sun (friendly/neutral/inimical). Effect: A strength-based longevity gate that integrates both Shadbala and house placement. The dominant lord's angular/panaphara/apoklima position sets the baseline class, then solar friendship refines it.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity"
+      ],
+      "tags": [
+        "longevity_yogas",
+        "general_principle"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "condition_group_id": "bphs-ch43-longevity_yogas",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T00:37:29.819306+00:00"
+  }
+]
