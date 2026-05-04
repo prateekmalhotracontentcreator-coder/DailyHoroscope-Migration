@@ -1,0 +1,2333 @@
+[
+  {
+    "rule_id": "lalkitab-ch23-saturn-h1",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H1 (natal). JSON Ready V6 — Logic Unit 23.1"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        1
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H1 — The Ruin Rule",
+      "detailed": "If Saturn is in the 1st house and the native builds or arranges to build a house, the outcome is poverty and total ruin. Exception: if no planets occupy both the 7th and 10th houses simultaneously, construction becomes auspicious — the ruin rule activates only when H7 or H10 is occupied.",
+      "full_text_passages": [
+        {
+          "text": "If Saturn is in the 1st house and the native builds or arranges to build a house, the outcome is poverty and total ruin. Exception: if no planets occupy both the 7th and 10th houses simultaneously, construction becomes auspicious — the ruin rule activates only when H7 or H10 is occupied.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h1",
+        "ruin",
+        "poverty",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h2",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H2 (natal). Additional Info — Saturn House Rules H02"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        2
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H2 — Venus Sign (Auspicious Construction)",
+      "detailed": "Saturn in the 2nd house is a Venus sign placement for construction purposes. The native may build however they wish — the house will bestow good effects only. This is one of the fully auspicious Saturn positions for house construction with no restrictions.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 2nd house is a Venus sign placement for construction purposes. The native may build however they wish — the house will bestow good effects only. This is one of the fully auspicious Saturn positions for house construction with no restrictions.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h2",
+        "auspicious",
+        "venus_sign",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h3",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H3 (natal). Additional Info — Saturn House Rules H03"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        3
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H3 — Mercury Enmity (Three Dogs Remedy)",
+      "detailed": "Saturn in the 3rd house creates Mercury Enmity — both Saturn and Mercury are rendered 'impotent' in this configuration, making standard construction problematic. Remedy: keep three dogs as pets before and during construction to facilitate the building process and neutralize the enmity.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 3rd house creates Mercury Enmity — both Saturn and Mercury are rendered 'impotent' in this configuration, making standard construction problematic. Remedy: keep three dogs as pets before and during construction to facilitate the building process and neutralize the enmity.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Keep three dogs as pets before and during the construction period.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h3",
+        "mercury_enmity",
+        "three_dogs",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h4",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H4 (natal). JSON Ready V6 — Logic Unit 23.4 + Additional Info H04"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        4
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H4 — In-Law Affliction (Foundation Veto)",
+      "detailed": "Saturn in the 4th house creates enmity with the Moon. Starting to dig the foundation brings immediate trouble and problems to the maternal grandfather and in-laws. The Lal Kitab instruction is: do not build your own house with this placement.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 4th house creates enmity with the Moon. Starting to dig the foundation brings immediate trouble and problems to the maternal grandfather and in-laws. The Lal Kitab instruction is: do not build your own house with this placement.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h4",
+        "in_laws",
+        "foundation",
+        "veto",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h5",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H5 (natal). JSON Ready V6 — Logic Unit 23.5 + Additional Info H05"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        5
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H5 — Son's Penalty (Age 48 + Buffalo Remedy)",
+      "detailed": "Saturn in the 5th house: building a house causes an ill effect on the son. Exception: if the son himself builds the house, the outcome is auspicious. If the native must build: wait until the native reaches age 48 AND bring a buffalo, mark it, and feed it before starting construction.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 5th house: building a house causes an ill effect on the son. Exception: if the son himself builds the house, the outcome is auspicious. If the native must build: wait until the native reaches age 48 AND bring a buffalo, mark it, and feed it before starting construction.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Wait until age 48. Before starting: bring a buffalo, mark it, and feed it.",
+          "category": "ritual"
+        },
+        {
+          "text": "Allow the son to build the house himself — fully negates the ill effect.",
+          "category": "succour"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h5",
+        "son",
+        "age_48",
+        "buffalo",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        5
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h6",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H6 (natal). Additional Info — Saturn House Rules H06"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        6
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H6 — Virgo (Age 39 Rule, Daughter's Relatives)",
+      "detailed": "Saturn in the 6th house (Virgo-friendly sign): the native should build only after reaching the age of 39. Building before age 39 ruins the daughter's relatives (the family of married daughters). After age 39, construction proceeds without this penalty.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 6th house (Virgo-friendly sign): the native should build only after reaching the age of 39. Building before age 39 ruins the daughter's relatives (the family of married daughters). After age 39, construction proceeds without this penalty.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h6",
+        "age_39",
+        "daughters",
+        "virgo",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        6
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h7",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H7 (natal). Additional Info — Saturn House Rules H07"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        7
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H7 — Threshold Rule (Ready-Made Houses Favorable)",
+      "detailed": "Saturn in the 7th house: ready-made (pre-built) houses are favorable for the native to buy and occupy. If the native is selling a house, they must keep the oldest threshold (chaukhat — the door frame) to ensure future construction capacity is retained.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 7th house: ready-made (pre-built) houses are favorable for the native to buy and occupy. If the native is selling a house, they must keep the oldest threshold (chaukhat — the door frame) to ensure future construction capacity is retained.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "When selling a house: retain the oldest threshold (chaukhat) — do not sell it with the property.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h7",
+        "threshold",
+        "chaukhat",
+        "ready_made",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h8",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H8 (natal). Additional Info — Saturn House Rules H08"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        8
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H8 — Death Veto (Scorpio / Mars Sign)",
+      "detailed": "Saturn in the 8th house (Scorpio/Mars sign) is the most severe construction veto. Death starts to circle the native the moment building begins. The specific death effects vary depending on the positions of Rahu and Ketu in the chart — their house placements determine who in the family is affected and the timeline of the crisis.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 8th house (Scorpio/Mars sign) is the most severe construction veto. Death starts to circle the native the moment building begins. The specific death effects vary depending on the positions of Rahu and Ketu in the chart — their house placements determine who in the family is affected and the timeline of the crisis.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h8",
+        "death_veto",
+        "scorpio",
+        "mars_sign",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h9",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H9 (natal). JSON Ready V6 — Logic Unit 23.9 + Additional Info H09"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        9
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H9 — Father's Penalty (Pregnancy Trigger)",
+      "detailed": "Saturn in the 9th house: construction should begin ONLY when the wife or mother is pregnant — this is the auspicious trigger. Warning: building from the native's own earnings without this trigger causes the father's death with certainty upon completion of the 3rd house (third room or floor).",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 9th house: construction should begin ONLY when the wife or mother is pregnant — this is the auspicious trigger. Warning: building from the native's own earnings without this trigger causes the father's death with certainty upon completion of the 3rd house (third room or floor).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h9",
+        "father",
+        "pregnancy_trigger",
+        "death",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h10",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H10 (natal). Additional Info — Saturn House Rules H10"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        10
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H10 — Money Trap (Earns Until Building Begins)",
+      "detailed": "Saturn in the 10th house creates a money trap: the native earns well until the moment house construction begins, then becomes poor. If Saturn is additionally weak in the chart, the house remains permanently incomplete — the native cannot finish what they started.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 10th house creates a money trap: the native earns well until the moment house construction begins, then becomes poor. If Saturn is additionally weak in the chart, the house remains permanently incomplete — the native cannot finish what they started.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h10",
+        "poverty",
+        "money_trap",
+        "incomplete",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        10
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h11",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H11 (natal). Additional Info — Saturn House Rules H11"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        11
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H11 — Age Veto (Build After 55, South Entrance Warning)",
+      "detailed": "Saturn in the 11th house: the native should build only after reaching age 55. An additional specific warning: if the house has a south-facing main entrance, this leads to poor health and a painful death. Avoid south-facing construction with this placement regardless of age.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 11th house: the native should build only after reaching age 55. An additional specific warning: if the house has a south-facing main entrance, this leads to poor health and a painful death. Avoid south-facing construction with this placement regardless of age.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h11",
+        "age_55",
+        "south_entrance",
+        "health",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-saturn-h12",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H12 (natal). Additional Info — Saturn House Rules H12"
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        12
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn in H12 — Rectangular Rule (Auspicious Without Desire)",
+      "detailed": "Saturn in the 12th house: the native builds the house without true desire or emotional attachment — yet the results are auspicious. Even if the Sun is present in the chart, the native should not stop or abandon the construction once started. Completing it brings positive outcomes.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 12th house: the native builds the house without true desire or emotional attachment — yet the results are auspicious. Even if the Sun is present in the chart, the native should not stop or abandon the construction once started. Completing it brings positive outcomes.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "construction"
+      ],
+      "tags": [
+        "saturn",
+        "h12",
+        "auspicious",
+        "rectangular",
+        "no_desire",
+        "construction"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-structural-right-angle",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Architectural inspection — shape of house plot/structure."
+      }
+    },
+    "interpretation": {
+      "summary": "Right-Angle Structure — Four 90° Corners as Gold Standard",
+      "detailed": "A house with four right angles (90-degree corners) is the gold standard for auspiciousness in Lal Kitab construction logic. Any non-rectangular shape — octagon, pentagon, polygon, triangle, or fish-belly — carries a specific familial penalty defined by the deviated angle. Only four right-angle construction is recommended.",
+      "full_text_passages": [
+        {
+          "text": "A house with four right angles (90-degree corners) is the gold standard for auspiciousness in Lal Kitab construction logic. Any non-rectangular shape — octagon, pentagon, polygon, triangle, or fish-belly — carries a specific familial penalty defined by the deviated angle. Only four right-angle construction is recommended.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "family"
+      ],
+      "tags": [
+        "right_angle",
+        "structural_safety",
+        "rectangle",
+        "vastu",
+        "gold_standard"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-geoveto-octagon",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Architectural inspection — shape of house plot/structure."
+      }
+    },
+    "interpretation": {
+      "summary": "Octagon Plot — Disease Dosha",
+      "detailed": "Building on or in an octagonal (8-sided) plot or constructing an octagonal house is inauspicious. The outcome is disease for family members. Avoid octagonal plot shapes entirely for residential construction.",
+      "full_text_passages": [
+        {
+          "text": "Building on or in an octagonal (8-sided) plot or constructing an octagonal house is inauspicious. The outcome is disease for family members. Avoid octagonal plot shapes entirely for residential construction.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "family"
+      ],
+      "tags": [
+        "octagon",
+        "disease",
+        "structural_dosha",
+        "vastu"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-geoveto-polygon",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Architectural inspection — shape of house plot/structure."
+      }
+    },
+    "interpretation": {
+      "summary": "18-Sided Polygon Plot — Gold and Silver Destruction Dosha",
+      "detailed": "Building on an 18-sided polygon plot results in destruction of gold, silver, and jewelry belonging to the family. Accumulated wealth in precious metals is systematically lost when the native lives in a polygon-shaped structure.",
+      "full_text_passages": [
+        {
+          "text": "Building on an 18-sided polygon plot results in destruction of gold, silver, and jewelry belonging to the family. Accumulated wealth in precious metals is systematically lost when the native lives in a polygon-shaped structure.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "family"
+      ],
+      "tags": [
+        "polygon",
+        "gold_silver",
+        "wealth_destruction",
+        "structural_dosha",
+        "vastu"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-geoveto-triangle",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Architectural inspection — shape of house plot/structure."
+      }
+    },
+    "interpretation": {
+      "summary": "Triangular (13-Sided) Plot — Brothers' Trouble and Death Dosha",
+      "detailed": "Building on a triangular or 13-sided plot causes trouble for brothers, leading to punishment and death. The triangular form creates a Mars-like aggression that is directed at the native's fraternal relationships.",
+      "full_text_passages": [
+        {
+          "text": "Building on a triangular or 13-sided plot causes trouble for brothers, leading to punishment and death. The triangular form creates a Mars-like aggression that is directed at the native's fraternal relationships.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "family"
+      ],
+      "tags": [
+        "triangle",
+        "brothers",
+        "death",
+        "structural_dosha",
+        "vastu"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-geoveto-pentagon",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Architectural inspection — shape of house plot/structure."
+      }
+    },
+    "interpretation": {
+      "summary": "Pentagon Plot — Son's Doom Dosha",
+      "detailed": "Building on a pentagonal (5-sided) plot causes trouble to the son and brings doom to the progeny channel. The pentagon shape specifically afflicts the 5th house domain — children and intelligence — of the occupying family.",
+      "full_text_passages": [
+        {
+          "text": "Building on a pentagonal (5-sided) plot causes trouble to the son and brings doom to the progeny channel. The pentagon shape specifically afflicts the 5th house domain — children and intelligence — of the occupying family.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "family"
+      ],
+      "tags": [
+        "pentagon",
+        "son",
+        "doom",
+        "structural_dosha",
+        "vastu"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-geoveto-fish-belly",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Architectural inspection — shape of house plot/structure."
+      }
+    },
+    "interpretation": {
+      "summary": "Fish-Belly Plot — Childlessness Across Three Generations Dosha",
+      "detailed": "Building on a fish-belly shaped plot (wider in the middle, narrowing at both ends) results in childlessness and trouble across three generations. This is the most severe geometric veto — the affliction persists not just for the native but for the next three family generations.",
+      "full_text_passages": [
+        {
+          "text": "Building on a fish-belly shaped plot (wider in the middle, narrowing at both ends) results in childlessness and trouble across three generations. This is the most severe geometric veto — the affliction persists not just for the native but for the next three family generations.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "family"
+      ],
+      "tags": [
+        "fish_belly",
+        "childlessness",
+        "three_generations",
+        "structural_dosha",
+        "vastu"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-formula-remainder",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Calculated formula — requires length and breadth of the proposed house plot."
+      }
+    },
+    "interpretation": {
+      "summary": "Remainder Formula — (L+B)×3÷8 Complete Vibe Diagnostic",
+      "detailed": "Construction auspiciousness formula: (Length + Breadth) × 3 ÷ 8. Evaluate the remainder for the house's 'vibe':\nRemainder 1 — Royal Honor: Jupiter in H1 energy. Excellent.\nRemainder 2 — Poverty: Jupiter in H6. Native faces financial hardship.\nRemainder 3 — Lion's Den: Mars in H3. Good for trade; bad for children.\nRemainder 4 — Starvation: Moon in H4. Two meals difficult to earn daily.\nRemainder 5 — Peace: Sun in H5. Wife and children get happiness.\nRemainder 6 — Directionless: Sun in H6. Loss of happiness.\nRemainder 7 — Excellent: Venus in H7. Best outcome.\nRemainder 8 — Death Dwelling: Mars + Saturn in H8. Extreme inauspicious.\nAuspicious: 1, 3 (trade only), 5, 7. Inauspicious: 2, 4, 6, 8.",
+      "full_text_passages": [
+        {
+          "text": "Construction auspiciousness formula: (Length + Breadth) × 3 ÷ 8. Evaluate the remainder for the house's 'vibe':\nRemainder 1 — Royal Honor: Jupiter in H1 energy. Excellent.\nRemainder 2 — Poverty: Jupiter in H6. Native faces financial hardship.\nRemainder 3 — Lion's Den: Mars in H3. Good for trade; bad for children.\nRemainder 4 — Starvation: Moon in H4. Two meals difficult to earn daily.\nRemainder 5 — Peace: Sun in H5. Wife and children get happiness.\nRemainder 6 — Directionless: Sun in H6. Loss of happiness.\nRemainder 7 — Excellent: Venus in H7. Best outcome.\nRemainder 8 — Death Dwelling: Mars + Saturn in H8. Extreme inauspicious.\nAuspicious: 1, 3 (trade only), 5, 7. Inauspicious: 2, 4, 6, 8.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Remainder 2 (Poverty — Jupiter H6): perform Jupiter-strengthening remedy.",
+          "category": "succour"
+        },
+        {
+          "text": "Remainder 4 (Starvation — Moon H4): perform Moon + Saturn remedy.",
+          "category": "succour"
+        },
+        {
+          "text": "Remainder 8 (Death — Mars+Saturn H8): perform Mars + Venus remedy.",
+          "category": "succour"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "timing"
+      ],
+      "tags": [
+        "formula",
+        "remainder",
+        "construction",
+        "vastu",
+        "calculation"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-spatial-distribution",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires natal chart + house-to-physical-space mapping."
+      },
+      "houses_involved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    "interpretation": {
+      "summary": "Spatial Distribution — H1–9 Right Side, H10–12 Left Side, H7 Master",
+      "detailed": "Planets in houses 1–9 affect the right-hand side of the house at the entrance. Planets in houses 10–12 affect the left-hand side. House 7 acts as the master indicator for the home's overall joy, sorrow, and general situation — it is the primary house to examine when assessing a built home's character.",
+      "full_text_passages": [
+        {
+          "text": "Planets in houses 1–9 affect the right-hand side of the house at the entrance. Planets in houses 10–12 affect the left-hand side. House 7 acts as the master indicator for the home's overall joy, sorrow, and general situation — it is the primary house to examine when assessing a built home's character.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "spatial"
+      ],
+      "tags": [
+        "spatial_distribution",
+        "h7_master",
+        "right_left",
+        "vastu"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-structural-dead-end",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Spatial/environmental — requires physical inspection of house location."
+      }
+    },
+    "interpretation": {
+      "summary": "Dead-End Lane / Street Air — Structural Dosha",
+      "detailed": "A structural dosha arises when the house is the last house of a lane (dead-end position) OR when air blows directly from the street into the house. Both conditions cause problems for children and wife, including blindness, joint pain, or remaining unmarried.",
+      "full_text_passages": [
+        {
+          "text": "A structural dosha arises when the house is the last house of a lane (dead-end position) OR when air blows directly from the street into the house. Both conditions cause problems for children and wife, including blindness, joint pain, or remaining unmarried.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "family",
+        "health"
+      ],
+      "tags": [
+        "dead_end",
+        "structural_dosha",
+        "vastu",
+        "street_air"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-layout-entrance",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Architectural inspection — direction of main entrance."
+      }
+    },
+    "interpretation": {
+      "summary": "Main Entrance Direction — East Best, South Lethal for Females",
+      "detailed": "Directional outcomes for the main house entrance:\nEast — Excellent; total joy for the family.\nWest — Second best; generally good.\nNorth — Superb; happy journey through life.\nSouth — Jinxed and lethal specifically for females in the household. A south-facing main entrance should be avoided, especially when Saturn is in H11.",
+      "full_text_passages": [
+        {
+          "text": "Directional outcomes for the main house entrance:\nEast — Excellent; total joy for the family.\nWest — Second best; generally good.\nNorth — Superb; happy journey through life.\nSouth — Jinxed and lethal specifically for females in the household. A south-facing main entrance should be avoided, especially when Saturn is in H11.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "family"
+      ],
+      "tags": [
+        "entrance_direction",
+        "south_facing",
+        "vastu",
+        "layout"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-layout-corner-map",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Architectural layout — directional room placement within the house."
+      }
+    },
+    "interpretation": {
+      "summary": "Poonya Corner Map — Room Assignment by Direction",
+      "detailed": "Lal Kitab Poonya corner map for room assignment by compass direction:\nNortheast — Water storage and Worship/Prayer room.\nSoutheast — Kitchen (Fire element).\nSouthwest — Wealth storage / Treasure room.\nNorthwest — Guest Room.\nWest — Drawing Room / Reception.\nEast — Sitting Room / Main living area.",
+      "full_text_passages": [
+        {
+          "text": "Lal Kitab Poonya corner map for room assignment by compass direction:\nNortheast — Water storage and Worship/Prayer room.\nSoutheast — Kitchen (Fire element).\nSouthwest — Wealth storage / Treasure room.\nNorthwest — Guest Room.\nWest — Drawing Room / Reception.\nEast — Sitting Room / Main living area.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "spatial"
+      ],
+      "tags": [
+        "poonya_corner",
+        "room_layout",
+        "vastu",
+        "directions"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-diag-moon-pot",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Spatial/behavioral rule — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Moon"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon Pot Remedy — Illness / Court Cases During Construction",
+      "detailed": "Diagnostic: if the native or family members suffer illness, court cases, or public infamy during house construction, a 'Moon Pot' (sealed pot with Moon-associated items) must be buried for exactly 40 days, then drowned in running water to remove the unfavorable effect.",
+      "full_text_passages": [
+        {
+          "text": "Diagnostic: if the native or family members suffer illness, court cases, or public infamy during house construction, a 'Moon Pot' (sealed pot with Moon-associated items) must be buried for exactly 40 days, then drowned in running water to remove the unfavorable effect.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Bury a Moon Pot for exactly 40 days during construction; drown it in running water.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "health",
+        "legal"
+      ],
+      "tags": [
+        "moon_pot",
+        "construction",
+        "diagnosis",
+        "court_cases"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-diag-secret-pits",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Spatial/behavioral rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Secret Pits — Useless Talk Diagnostic",
+      "detailed": "Diagnostic: if the native habitually talks uselessly (excessive idle speech), secret empty pits exist somewhere in the house. Empty pits meant for wealth storage that have been left unfilled trigger this condition. Remedy: fill the pits with almonds, dates (or sweets), and bury with earth.",
+      "full_text_passages": [
+        {
+          "text": "Diagnostic: if the native habitually talks uselessly (excessive idle speech), secret empty pits exist somewhere in the house. Empty pits meant for wealth storage that have been left unfilled trigger this condition. Remedy: fill the pits with almonds, dates (or sweets), and bury with earth.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Locate secret pits in the house; fill completely with almonds, dates or sweets, and earth.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "mind"
+      ],
+      "tags": [
+        "secret_pits",
+        "useless_talk",
+        "vastu",
+        "diagnosis"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-env-peepal-shadow",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Spatial/behavioral rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Peepal Tree Shadow — House Doomed if Shadow Falls on Home",
+      "detailed": "If the shadow of a Peepal tree falls on the house at any time of day, the area is considered doomed. Remedies: (A) Water the Peepal tree's roots AND pour milk into a nearby well; OR (B) Water a Keekar tree every Saturday before dawn for 40 consecutive Saturdays.",
+      "full_text_passages": [
+        {
+          "text": "If the shadow of a Peepal tree falls on the house at any time of day, the area is considered doomed. Remedies: (A) Water the Peepal tree's roots AND pour milk into a nearby well; OR (B) Water a Keekar tree every Saturday before dawn for 40 consecutive Saturdays.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Path A: Water the Peepal tree roots AND pour milk into a nearby well.",
+          "category": "ritual"
+        },
+        {
+          "text": "Path B: Water a Keekar tree every Saturday before dawn for 40 consecutive Saturdays.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "vastu",
+        "environment"
+      ],
+      "tags": [
+        "peepal_tree",
+        "shadow",
+        "doomed",
+        "keekar",
+        "vastu"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-diag-danger-gate",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Saturn in H4 or H8 (natal) — triggers on act of digging foundation."
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        4,
+        8
+      ]
+    },
+    "interpretation": {
+      "summary": "Immediate Danger Gate — Saturn H4/H8 + Foundation Dug",
+      "detailed": "Immediate Crisis Gate: IF Saturn is in H4 OR H8 AND the foundation is dug, the result is an immediate crisis warning — high risk to in-laws (H4) or to the native's own life (H8). Lal Kitab categorizes this as a veto: stop construction immediately. Additional context: if Saturn's position is made auspicious via Rahu/Ketu configurations, the native will construct houses repeatedly throughout life — the longevity-of-construction check is the positive variant of this gate.",
+      "full_text_passages": [
+        {
+          "text": "Immediate Crisis Gate: IF Saturn is in H4 OR H8 AND the foundation is dug, the result is an immediate crisis warning — high risk to in-laws (H4) or to the native's own life (H8). Lal Kitab categorizes this as a veto: stop construction immediately. Additional context: if Saturn's position is made auspicious via Rahu/Ketu configurations, the native will construct houses repeatedly throughout life — the longevity-of-construction check is the positive variant of this gate.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "health",
+        "life_risk"
+      ],
+      "tags": [
+        "danger_gate",
+        "saturn",
+        "h4",
+        "h8",
+        "veto",
+        "foundation"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        4,
+        8
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-env-bhatti-mars-h8",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Mars in H8 in natal chart of child born while family has sealed bhatti in the house."
+      },
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [
+        8
+      ]
+    },
+    "interpretation": {
+      "summary": "Fixed Oven (Bhatti) + Mars in H8 — Family Ruin Trigger",
+      "detailed": "A fixed oven (bhatti) that has been sealed closed with earth inside the home is a 'ticking bomb.' If a child is born with Mars in the 8th house while the family lives in a house with this sealed bhatti, the entire family is ruined. The bhatti must be permanently opened or removed before such a child is born.",
+      "full_text_passages": [
+        {
+          "text": "A fixed oven (bhatti) that has been sealed closed with earth inside the home is a 'ticking bomb.' If a child is born with Mars in the 8th house while the family lives in a house with this sealed bhatti, the entire family is ruined. The bhatti must be permanently opened or removed before such a child is born.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Remove or permanently open the sealed fixed oven (bhatti) — especially before the birth of a child.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "vastu",
+        "health"
+      ],
+      "tags": [
+        "bhatti",
+        "fixed_oven",
+        "mars",
+        "h8",
+        "family_ruin",
+        "structural"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-refine-uncle-veto",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true,
+        "description": "Sun AND Saturn both in H4 (natal). Compound two-planet check."
+      },
+      "planets_involved": [
+        "Sun",
+        "Saturn"
+      ],
+      "houses_involved": [
+        4
+      ]
+    },
+    "interpretation": {
+      "summary": "Uncle in Saturn's Room — Sun+Saturn in H4 Death Veto",
+      "detailed": "If both Sun and Saturn occupy the 4th house, the native's uncle will certainly die in the room designated for Saturn (typically the left side of the house used for iron storage). This is a specific family fatality veto for the paternal uncle when the Saturn/Sun H4 combination is present.",
+      "full_text_passages": [
+        {
+          "text": "If both Sun and Saturn occupy the 4th house, the native's uncle will certainly die in the room designated for Saturn (typically the left side of the house used for iron storage). This is a specific family fatality veto for the paternal uncle when the Saturn/Sun H4 combination is present.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "family",
+        "death"
+      ],
+      "tags": [
+        "uncle_veto",
+        "sun",
+        "saturn",
+        "h4",
+        "death",
+        "room_veto"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Saturn"
+      ],
+      "houses_involved": [
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-refine-idol-veto",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "structural",
+      "yoga_check": {
+        "type": "behavioral",
+        "checkable": false,
+        "description": "Spatial/behavioral rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Idol Installation Veto — Pran Pratishtha Causes Childlessness",
+      "detailed": "If idols are installed in the house with full Pran Pratishtha ceremony (consecration ritual), the native will remain childless. Lal Kitab recommends using photos or paintings of deities instead of consecrated idols in the residential home to avoid this progeny affliction.",
+      "full_text_passages": [
+        {
+          "text": "If idols are installed in the house with full Pran Pratishtha ceremony (consecration ritual), the native will remain childless. Lal Kitab recommends using photos or paintings of deities instead of consecrated idols in the residential home to avoid this progeny affliction.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "text": "Use photos or paintings of deities instead of consecrated (Pran Pratishtha) idols in the home.",
+          "category": "ritual"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "progeny",
+        "spirituality"
+      ],
+      "tags": [
+        "idol_veto",
+        "pran_pratishtha",
+        "childlessness",
+        "photos",
+        "vastu"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch23-timing-pushya",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 23,
+      "chapter_name": "House Construction and Family Prosperity",
+      "sloka": null,
+      "batch_id": "lalkitab-ch23-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-04T07:48:25.977617+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "construction",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Spatial/behavioral rule — not automatable in Phase 1."
+      }
+    },
+    "interpretation": {
+      "summary": "Pushya Nakshatra — Mandatory Construction Start and Completion",
+      "detailed": "Pushya Nakshatra is mandatory for both starting AND completing construction to ensure auspicious results. The groundbreaking ceremony AND the final grihapravesh (housewarming) must be timed to occur when Pushya Nakshatra is active. Using any other Nakshatra for these milestone events removes the auspicious protection.",
+      "full_text_passages": [
+        {
+          "text": "Pushya Nakshatra is mandatory for both starting AND completing construction to ensure auspicious results. The groundbreaking ceremony AND the final grihapravesh (housewarming) must be timed to occur when Pushya Nakshatra is active. Using any other Nakshatra for these milestone events removes the auspicious protection.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "timing",
+        "nakshatra"
+      ],
+      "tags": [
+        "pushya",
+        "nakshatra",
+        "construction_timing",
+        "mandatory"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  }
+]
