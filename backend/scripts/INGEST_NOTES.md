@@ -2651,3 +2651,74 @@ Single pass. 15 false-flag rules patched via `patch_ch44_flags.py`.
 **1 vagueness false positive (CD04 — Mixed H3 Occupation):** haiku flagged "too generic / lacks textual grounding." Rule is intentionally general — BPHS Ch 44 provides no planet-specific sub-rules for the mixed-occupation case; "various reasons" is the direct classical reading.
 
 By group: `maraka_identification` 8 · `maraka_timing` 6 · `rahu_ketu` 3 · `cause_of_death` 7 · `eighth_house_library` 5 · `death_environment` 4 · `consciousness_fate` 7
+
+---
+
+## Book E — Jyotish Remedies & Mantras (100 Remedies)
+
+**Date:** 2026-05-04
+**Batch ID:** `remedies-mantras-v1-20260504`
+**Science ID:** `jyotish_remedies_mantras`
+**Script:** `backend/scripts/ingest_remedies_v1.py`
+**Patch script:** `backend/scripts/patch_remedies_flags.py`
+**JSON:** `backend/scripts/remedies_rules.json`
+**Source:** `/Users/apple/Documents/Knowledge Engine_eBooks/Book5_Mantra Remedies_Logic Trigger Answer.md`
+
+### Rule groups / trigger categories
+
+| Trigger Category | IDs (sample) | Purpose |
+|---|---|---|
+| `planetary_weakness` | remedy-001 to remedy-007 | Planet debilitated/combust/low Shadbala — strengthen base energy |
+| `planetary_strength` | remedy-018, 078, 015 | Low Shadbala targeted boosters |
+| `house_affliction` | remedy-010, 013, 088 | Malefic in 6th/8th/12th (Trik Houses) — protection/healing mantras |
+| `major_dosha` | remedy-081, 082, 084 | Kalsarpa, Manglik, Pitra Dosha direct mapping |
+| `timing_dasha` | remedy-023, 025, 029, 030 | Mahadasha/Antardasha of afflicted planet — preventive |
+| `transit_gochar` | remedy-019, 065, 083 | Sade Sati / Dhaiya real-time transit triggers |
+| `vastu_imbalance` | remedy-087 | Lagna Lord vs Home Direction discrepancy |
+| `health_mapping` | remedy-011, 012, 017, 018 | Weak planets associated with body parts |
+
+### Schema highlights
+
+- **`science_id`**: `"jyotish_remedies_mantras"` — dedicated namespace, separate from natal `"jyotish"` rules
+- **`condition.type`**: `"remedy_trigger"` — all `checkable: False` (Phase 2, requires live chart scoring)
+- **`condition.trigger_tags`**: Standardized KE condition codes (e.g., `sun_debilitated`, `shani_sade_sati`, `kalsarpa_yoga`)
+- **`condition.astrological_mapping`**: Structured dict `{planet, house, yoga, dasha, transit, status}` for scoring mechanism
+- **`remedy.*`**: 15-field top-level remedy record per rule:
+  - `mantra_devanagari` (Sanskrit on-screen display)
+  - `mantra_transliteration` (Roman English for PDF reports)
+  - `yantra`, `paksha`, `tithi_day`, `season`, `frequency`, `process`, `attire_color`, `muhurta`, `guidance`
+- **`interpretation.summary`**: `remedy_area` value — never truncated (truncation false-flag prevention)
+
+### Source file parsing
+
+Source MD contains 3 separate `\[...\]` JSON array sections at byte positions 171 / 23162 / 46483. Each section parsed independently from the raw (unescaped) text to avoid position-shift from escape replacement. ID 45 (Kamadeva — Love/Attraction) was split across the section boundary; replaced with `ID45_VERIFIED` constant (source-verified by co-founder, `data_quality: "source"`).
+
+### ID 45 — Kamadeva (Love & Attraction)
+
+Mantra: `ॐ कामदेवाय विद्महे पुष्पबाणाय धीमहि तन्नो अनंगः प्रचोदयात्`
+Source-verified data: Tithi = Trayodashi; Friday · Season = Vasant (Spring) · Muhurta = Night (After Moonrise) · `data_quality: "source"`, `_reconstructed: False`
+
+### Validation results
+
+Two-pass. 18 false-flag rules patched via `patch_remedies_flags.py`.
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 45 | 45% |
+| `pending_human_review` | 50 | 50% |
+| `flagged` | 0 | 0% |
+| `pending_review` | 5 | 5% |
+| Contradictions | 0 | — |
+| **Total** | **100** | |
+
+**16 truncation false positives** (remedy-021, 035, 038, 040, 086–098): validator's haiku model received a truncated slice of `interpretation.detailed` and misread the mid-sentence cut as incomplete content. Full text stored correctly in MongoDB. Same root cause as Ch 27, Ch 41, Ch 44 flags.
+
+**2 mantra format flags:**
+- **remedy-031 (Job Search — Hanuman)**: uses Hanuman Chalisa verse ("Kavan So Kaaj Kathin...") as prescribed remedy — intentional devotional format, not a structural bija mantra. Deliberate source choice.
+- **remedy-032 (Land/Property — Mangal)**: roman transliteration uses `...` as deliberate abbreviation. Full Devanagari mantra stored correctly.
+
+Both promoted to `pending_human_review` for co-founder sign-off on non-standard mantra format before production approval.
+
+### Pending human review queue (50 rules)
+
+32 rules already in PHR from initial validation pass + 18 patched from false flags. Co-founder sign-off needed before any remedies rules reach `approved` status.
