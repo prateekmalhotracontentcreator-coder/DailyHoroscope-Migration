@@ -2985,7 +2985,66 @@ Sun=2 · Jupiter=16 · Moon=24 · Venus=25 · Mars=28 · Mercury=34 · Saturn=36
 
 ---
 
-## Lal Kitab — Cumulative Ingest Summary (as of 4 May 2026)
+## Lal Kitab Ch 25 — Remedial Measures for Planetary Dosh (5 May 2026)
+
+**Batch ID:** `lalkitab-ch25-v1-20260505`
+**Script:** `backend/scripts/ingest_lalkitab_ch25_v1.py`
+**Rules JSON:** `backend/scripts/lalkitab_ch25_rules.json`
+**Patch script:** `backend/scripts/patch_lalkitab_ch25_flags.py`
+**Source:** `Lal Kitab_Ch 25_JSON Ready.md` (V8 + Final Expansion) · `Lal Kitab_Ch 25_Diagnostic.md`
+
+### Rule breakdown (35 rules)
+
+| Group | Count | Condition type | Sub-type |
+|---|---|---|---|
+| House modifiers (planet-in-house rules) | 14 | `planetary_combination` | `house_modifier` |
+| General planet afflictions (1 per planet, 9 planets) | 9 | `dosha` | `affliction` |
+| Conjunction remedies (LU 25.13–25.19) | 7 | `planetary_combination` | `conjunction_remedy` |
+| General principles / mechanisms | 3 | `general_principle` | `remedy_mechanism` / `temporal_constraint` |
+| Foundational (Aries-base significators) | 1 | `general_principle` | `foundational` |
+| Relational modifier (Moon afflicting mother) | 1 | `general_principle` | `relational_modifier` |
+| **Total** | **35** | | |
+
+### New schema fields (first appearance in this batch)
+
+| Field | Notes |
+|---|---|
+| `condition.symptoms` | Physical/social symptoms indicating a planet's affliction |
+| `condition.affliction_of` | Relational target: `'mother'` / `'wife'` / `'sister'` / `'son'` |
+| `condition.trigger` | Secondary condition: `'solar_eclipse'` / `'lunar_eclipse'` / `'financial_difficulty'` / `'construction'` |
+| `condition.diagnostic_markers` | Embedded in `sun-affliction`: salt intake ↔ Sun strength |
+| `interpretation.deity` | Presiding deity for each planet's remedies |
+| `interpretation.mantra` | Mantra text for each planet's remedies |
+| `interpretation.mechanism` | Explanatory note on WHY the remedy works (Significator Swap, Enemy Sacrifice etc.) |
+| `interpretation.remedies` | Already introduced in Ch 19; extended with `mechanism` notes here |
+
+### Validation results (5 May 2026)
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 26 | 74% |
+| `pending_human_review` | 7 | 20% |
+| `flagged` | 2 | 6% |
+| Contradictions | 1 pair | — |
+
+**74% auto_approved** — highest Lal Kitab rate to date (previous best: Ch 20 at 71%).
+
+**2 flagged rules — both validator reading-window truncation false flags:**
+- `moon-h11`: 52-day birth protocol complete in DB; validator read buffer cut off at "...to break the aspec". Source-confirmed (LU 25.5).
+- `mars-mercury-sister`: Earthen-pot burial remedy complete in DB; validator read buffer cut off. Source-confirmed (LU 25.19).
+
+**1 false contradiction pair — `sun-sat-property` ↔ `sun-sat-gold-loss`:**
+Both are Sun+Saturn conjunction rules but with mutually exclusive secondary triggers. Enemy Sacrifice Protocol is symmetric: attacker planet flips based on which domain is being destroyed. Not a conflict.
+
+### Final state (post patch)
+
+| `auto_approved` | `pending_human_review` | `flagged` | Total |
+|---|---|---|---|
+| 26 (74%) | 9 (26%) | 0 | 35 |
+
+---
+
+## Lal Kitab — Cumulative Ingest Summary (as of 5 May 2026)
 
 | Chapter | Topic | Batch ID | Total | auto_approved | pending_human_review | flagged | Patch script |
 |---|---|---|---|---|---|---|---|
@@ -2994,24 +3053,25 @@ Sun=2 · Jupiter=16 · Moon=24 · Venus=25 · Mars=28 · Mercury=34 · Saturn=36
 | Ch 21 | Karmic Debts | `lalkitab-ch21-v1-20260504` | 43 | 37 (86%) | 6 (14%) | 0 | `patch_lalkitab_ch21_flags.py` |
 | Ch 22 | Family and Childhood | `lalkitab-ch22-v1-20260504` | 17 | 15 (88%) | 2 (12%) | 0 | inline patch |
 | Ch 23 | House Construction Engine | `lalkitab-ch23-v1-20260504` | 31 | 18 (58%) | 13 (42%) | 0 | inline patch |
-| Ch 24 **v2** | Determination of Age | `lalkitab-ch24-v1-20260504` | **60** | **23 (38%)** | **37 (62%)** | 0 | `patch_lalkitab_ch24_v2_flags.py` |
+| Ch 24 **v2** | Determination of Age | `lalkitab-ch24-v1-20260504` | 60 | 23 (38%) | 37 (62%) | 0 | `patch_lalkitab_ch24_v2_flags.py` |
+| Ch 25 | Remedial Measures — Planetary Dosh | `lalkitab-ch25-v1-20260505` | 35 | 26 (74%) | 9 (26%) | 0 | `patch_lalkitab_ch25_flags.py` |
 | Ch 27 | Lords / Body Parts / Objects | `lalkitab-ch27-v1-20260427` | 99 | 58 (59%) | 40 (40%) | 1 (1%) | `fix_flagged_ch27.py` |
-| **Total ingested** | | | **376** | **234 (62%)** | **135 (36%)** | **7 (2%)** | |
+| **Total ingested** | | | **411** | **260 (63%)** | **144 (35%)** | **7 (2%)** | |
 
-### Chapters pending ingest (target: Ch 25, 26, 28, 29)
+### Chapters pending ingest (target: Ch 26, 28, 29)
 
 | Chapter | Topic | Source files available |
 |---|---|---|
-| Ch 25 | Remedial Measures for Planetary Dosh | JSON Ready (V8) + Diagnostic |
 | Ch 26 | — | JSON Ready + Diagnostics |
 | Ch 28 | — | JSON Ready + Diagnostic |
 | Ch 29 | — | JSON Ready + Diagnostic |
 
 ### Co-founder sign-off queue (Lal Kitab)
 
-All 376 ingested rules are at `auto_approved` or `pending_human_review` — **zero rules are `approved`** until co-founder sign-off. PHR rules flagged for review:
+All 411 ingested rules are at `auto_approved` or `pending_human_review` — **zero rules are `approved`** until co-founder sign-off. PHR rules flagged for review:
 - Ch 22–24: high PHR% due to content-validity disputes (validator unfamiliar with folk/physiognomy sections) and schema precision issues
 - Ch 24 v2 PHR specifically: Group A (4 mortality-symptom rules, folk/physiognomy teaching confirmed in source) + Group B (4 false structural flags) + Group C (1 debilitation-clock rule, confirmed in source)
+- Ch 25 PHR: 2 validator truncation false flags (moon-h11, mars-mercury-sister) — content complete in DB
 - Ch 27: 1 remaining `flagged` rule (`corr-mars-benefic`) — Mars benefic objects unknown (source column misalignment)
 
 ### Process improvements established (this ingest sprint)

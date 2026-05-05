@@ -1,0 +1,3240 @@
+[
+  {
+    "rule_id": "lalkitab-ch25-significators-aries-base",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "foundational",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Jupiter",
+        "Venus",
+        "Saturn",
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "significator_map": {
+        "H1": "Sun",
+        "H2": "Jupiter",
+        "H3": "Mars",
+        "H4": "Moon",
+        "H5": "Jupiter",
+        "H6": "Ketu",
+        "H7": "Venus",
+        "H8": [
+          "Saturn",
+          "Mars"
+        ],
+        "H9": "Jupiter",
+        "H10": "Saturn",
+        "H11": "Jupiter",
+        "H12": "Rahu"
+      },
+      "aries_base_rule": true,
+      "significator_swap": "If planet afflicts H1 (significator=Sun, lord=Mars/Aries), remedy may use Mars objects rather than Sun objects."
+    },
+    "interpretation": {
+      "summary": "Lal Kitab Permanent House Significators (Aries Ascendant Rule)",
+      "detailed": "In Lal Kitab, predictions are made by permanently fixing the ascendant as Aries, regardless of the native's natural ascendant. Permanent house significators: H1=Sun, H2=Jupiter, H3=Mars, H4=Moon, H5=Jupiter, H6=Ketu, H7=Venus, H8=Saturn/Mars, H9=Jupiter, H10=Saturn, H11=Jupiter, H12=Rahu. When a planet afflicts a specific house, remedies may involve the objects of EITHER the afflicting planet OR the house's permanent significator (the 'Significator Swap' methodology).",
+      "full_text_passages": [
+        {
+          "text": "In Lal Kitab, predictions are made by permanently fixing the ascendant as Aries, regardless of the native's natural ascendant. Permanent house significators: H1=Sun, H2=Jupiter, H3=Mars, H4=Moon, H5=Jupiter, H6=Ketu, H7=Venus, H8=Saturn/Mars, H9=Jupiter, H10=Saturn, H11=Jupiter, H12=Rahu. When a planet afflicts a specific house, remedies may involve the objects of EITHER the afflicting planet OR the house's permanent significator (the 'Significator Swap' methodology).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "general_principles"
+      ],
+      "tags": [
+        "significators",
+        "aries_base",
+        "foundational",
+        "remedy_framework"
+      ],
+      "physical_markers": [],
+      "mechanism": "Lal Kitab uses permanent (non-moving) house ownership based on Aries ascendant. This fixed map underlies all house-modifier remedy selection in this chapter."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Jupiter",
+        "Venus",
+        "Saturn",
+        "Rahu",
+        "Ketu"
+      ],
+      "houses_involved": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-sun-affliction",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "yoga_check": {
+        "type": "planet_weak",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Sun"
+      ],
+      "symptoms": [
+        "Right eye pain",
+        "Heart attack / cardiac issue",
+        "Abdominal dysfunction",
+        "Financial loss"
+      ],
+      "diagnostic_markers": {
+        "high_salt_intake": "Sun is weak/afflicted",
+        "low_salt_intake": "Sun is exalted/strong"
+      }
+    },
+    "interpretation": {
+      "summary": "Sun Affliction — Symptoms, Diagnostic Marker, and Remedies",
+      "detailed": "When Sun is afflicted (weak, debilitated, combust, or malefic-aspected): Symptoms: right eye pain, heart attack / cardiac issue, abdominal dysfunction, financial loss. Dietary diagnostic marker: native eats MORE salt when Sun is weak; eats LESS salt when Sun is exalted/strong. Remedies: donate jaggery (prepared as gulguley), wheat, or copper utensils; perform yajna; offer water to Sun at dawn; chant 'Vishnusahashra namawali' from 'Harivansh Puran'. Deity: Lord Vishnu.",
+      "full_text_passages": [
+        {
+          "text": "When Sun is afflicted (weak, debilitated, combust, or malefic-aspected): Symptoms: right eye pain, heart attack / cardiac issue, abdominal dysfunction, financial loss. Dietary diagnostic marker: native eats MORE salt when Sun is weak; eats LESS salt when Sun is exalted/strong. Remedies: donate jaggery (prepared as gulguley), wheat, or copper utensils; perform yajna; offer water to Sun at dawn; chant 'Vishnusahashra namawali' from 'Harivansh Puran'. Deity: Lord Vishnu.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Donate jaggery (prepared as gulguley), wheat, or copper utensils"
+        },
+        {
+          "category": "ritual",
+          "action": "Perform yajna"
+        },
+        {
+          "category": "ritual",
+          "action": "Offer water to Sun at dawn each morning"
+        },
+        {
+          "category": "mantra",
+          "action": "Chant 'Vishnusahashra namawali' from 'Harivansh Puran'"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Sun",
+        "affliction",
+        "dosha",
+        "right_eye",
+        "heart",
+        "yajna",
+        "Vishnu"
+      ],
+      "physical_markers": [],
+      "deity": "Lord Vishnu",
+      "mantra": "Vishnusahashra namawali from Harivansh Puran"
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-sun-h7",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "planet": "Sun",
+      "house": 7,
+      "house_lord": "Venus",
+      "enmity_note": "Venus and Sun are natural enemies — H7 placement intensifies Sun's malefic effect"
+    },
+    "interpretation": {
+      "summary": "Sun in H7 — Particularly Inauspicious State and Fire-Milk Remedy",
+      "detailed": "Sun placed in the 7th house is in a particularly inauspicious and debilitated state (H7 = Venus's house; Venus and Sun are enemies). Remedy A: Put out fire with milk at night (Water/Moon calms Fire/Sun). Remedy B: Habitually put sweets in the mouth followed by drinking water (cooperation of Mars and Moon — friends of Sun — to calm the affliction).",
+      "full_text_passages": [
+        {
+          "text": "Sun placed in the 7th house is in a particularly inauspicious and debilitated state (H7 = Venus's house; Venus and Sun are enemies). Remedy A: Put out fire with milk at night (Water/Moon calms Fire/Sun). Remedy B: Habitually put sweets in the mouth followed by drinking water (cooperation of Mars and Moon — friends of Sun — to calm the affliction).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "ritual",
+          "action": "Extinguish fire with milk at night"
+        },
+        {
+          "category": "ritual",
+          "action": "Habitually eat sweets then drink water (Mars+Moon cooperation to calm Sun)"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Sun",
+        "H7",
+        "house_modifier",
+        "fire_milk",
+        "inauspicious"
+      ],
+      "physical_markers": [],
+      "mechanism": "Sun (Fire) is calmed by Moon (Water/Milk) and Mars (Sweets/Honey) — its natural friends."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-sun-h10",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [
+        10
+      ],
+      "planet": "Sun",
+      "house": 10,
+      "house_lord": "Saturn"
+    },
+    "interpretation": {
+      "summary": "Sun in H10 — Copper Coins in Flowing Water Remedy",
+      "detailed": "Sun placed in the 10th house (career/action house). Remedy: Drop copper coins in flowing water. Symbolic logic: Copper = Sun's metal; Moveable Sign / Flowing Water = kinetic energy that disperses the Sun's pent-up malefic force.",
+      "full_text_passages": [
+        {
+          "text": "Sun placed in the 10th house (career/action house). Remedy: Drop copper coins in flowing water. Symbolic logic: Copper = Sun's metal; Moveable Sign / Flowing Water = kinetic energy that disperses the Sun's pent-up malefic force.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Drop copper coins in flowing water (river or stream)"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Sun",
+        "H10",
+        "house_modifier",
+        "copper",
+        "flowing_water"
+      ],
+      "physical_markers": [],
+      "mechanism": "Copper = Sun's metal. Flowing water (moveable sign) disperses accumulated malefic force."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [
+        10
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-moon-affliction",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "yoga_check": {
+        "type": "planet_weak",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "symptoms": [
+        "Mother ill",
+        "Mental worry / weakness",
+        "Lung-related disease",
+        "Depreciating wealth"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon Affliction — Symptoms and Remedies (Shiva)",
+      "detailed": "When Moon is afflicted: Symptoms: mother ill, mental worry / weakness, lung-related disease, depreciating wealth. Remedies: Float silver in the river; keep a pot of water or milk at the headpost during sleep and pour it on a Peepal tree in the morning. Lord: Lord Shiva. Ritual: Perform 'Rudrabhisheka' or chant 'Shiv Mahinm Strotra'; sprinkle holy water on Shiva idol.",
+      "full_text_passages": [
+        {
+          "text": "When Moon is afflicted: Symptoms: mother ill, mental worry / weakness, lung-related disease, depreciating wealth. Remedies: Float silver in the river; keep a pot of water or milk at the headpost during sleep and pour it on a Peepal tree in the morning. Lord: Lord Shiva. Ritual: Perform 'Rudrabhisheka' or chant 'Shiv Mahinm Strotra'; sprinkle holy water on Shiva idol.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Float silver in the river"
+        },
+        {
+          "category": "ritual",
+          "action": "Keep pot of water or milk at headpost during sleep; pour on Peepal tree in morning"
+        },
+        {
+          "category": "ritual",
+          "action": "Perform Rudrabhisheka"
+        },
+        {
+          "category": "mantra",
+          "action": "Chant 'Shiv Mahinm Strotra'; sprinkle holy water on Shiva"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Moon",
+        "affliction",
+        "dosha",
+        "mother",
+        "lungs",
+        "Shiva",
+        "silver"
+      ],
+      "physical_markers": [],
+      "deity": "Lord Shiva",
+      "mantra": "Shiv Mahinm Strotra"
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-moon-h1",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "planet": "Moon",
+      "house": 1,
+      "prohibition": "Do not sell milk"
+    },
+    "interpretation": {
+      "summary": "Moon Afflicting in H1 — Do Not Sell Milk",
+      "detailed": "Moon afflicting in the 1st house (Ascendant). Prohibition: Do NOT sell milk (selling milk = becoming bereft of Moon's mercy). Remedy: Cleanse self with natural water; keep rice and silver close.",
+      "full_text_passages": [
+        {
+          "text": "Moon afflicting in the 1st house (Ascendant). Prohibition: Do NOT sell milk (selling milk = becoming bereft of Moon's mercy). Remedy: Cleanse self with natural water; keep rice and silver close.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Do NOT sell milk — this depletes Moon's mercy"
+        },
+        {
+          "category": "ritual",
+          "action": "Spruce/cleanse self with natural water, rice, and silver"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Moon",
+        "H1",
+        "house_modifier",
+        "milk_prohibition",
+        "silver",
+        "rice"
+      ],
+      "physical_markers": [],
+      "mechanism": "Selling milk = surrendering Moon's nurturing energy; prohibition preserves Moon's grace."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-moon-h3",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "planet": "Moon",
+      "house": 3,
+      "house_lord": "Mars",
+      "succour_planet": "Mercury"
+    },
+    "interpretation": {
+      "summary": "Moon Afflicting in H3 — Donate Green Clothes to Maidens",
+      "detailed": "Moon afflicting in the 3rd house. Remedy: Donate green clothes to maidens (succour Mercury — H3 significator is Mars, but green = Mercury's color; this provides Mercury succour to stabilise the house).",
+      "full_text_passages": [
+        {
+          "text": "Moon afflicting in the 3rd house. Remedy: Donate green clothes to maidens (succour Mercury — H3 significator is Mars, but green = Mercury's color; this provides Mercury succour to stabilise the house).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Donate green clothes to maidens (Mercury succour for H3 stabilisation)"
+        }
+      ],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "remedies",
+        "relationships"
+      ],
+      "tags": [
+        "Moon",
+        "H3",
+        "house_modifier",
+        "green_clothes",
+        "Mercury_succour"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        3
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-moon-mother",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "relational_modifier",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "affliction_of": "mother",
+      "prohibition": "Do not use or drink milk at night"
+    },
+    "interpretation": {
+      "summary": "Moon Afflicting Mother — Milk Prohibition and Free Milk Offering",
+      "detailed": "When Moon is afflicting the native's mother (causing mother's illness). Prohibition: Do NOT use or drink milk at night. Remedy: Offering milk free of cost to others is excellent — it reverses the Moon-milk depletion dynamic and restores Moon's benefic energy.",
+      "full_text_passages": [
+        {
+          "text": "When Moon is afflicting the native's mother (causing mother's illness). Prohibition: Do NOT use or drink milk at night. Remedy: Offering milk free of cost to others is excellent — it reverses the Moon-milk depletion dynamic and restores Moon's benefic energy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Do NOT use or drink milk at night"
+        },
+        {
+          "category": "offering",
+          "action": "Offer milk free of cost to others — reverses Moon-milk depletion"
+        }
+      ],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "remedies",
+        "relationships"
+      ],
+      "tags": [
+        "Moon",
+        "mother",
+        "relational_modifier",
+        "milk_prohibition",
+        "free_milk"
+      ],
+      "physical_markers": [],
+      "mechanism": "Moon governs milk/mother. Charging for milk when Moon afflicts mother worsens the depletion. Gifting milk reverses it."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-moon-h10",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        10
+      ],
+      "planet": "Moon",
+      "house": 10,
+      "house_lord": "Saturn",
+      "prohibition": "Do not drink milk at night"
+    },
+    "interpretation": {
+      "summary": "Moon Afflicting in H10 — Do Not Drink Milk at Night",
+      "detailed": "Moon afflicting in the 10th house (career/Saturn's house). Prohibition: Do NOT drink milk at night.",
+      "full_text_passages": [
+        {
+          "text": "Moon afflicting in the 10th house (career/Saturn's house). Prohibition: Do NOT drink milk at night.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Do NOT drink milk at night"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Moon",
+        "H10",
+        "house_modifier",
+        "milk_prohibition",
+        "night"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        10
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-moon-h11",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "planet": "Moon",
+      "house": 11,
+      "house_lord": "Saturn",
+      "aspect_house": 5,
+      "birth_protocol": {
+        "location_change": "Wife must change location during labor",
+        "avoidance_days": 52,
+        "avoidance_rule": "Wife must not look at newborn's face for 52 days",
+        "reason": "Moon H11 aspects H5 (children); mother's gaze during/after birth extends the malefic aspect"
+      }
+    },
+    "interpretation": {
+      "summary": "Moon Afflicting in H11 — Bhairav Temple and 52-Day Birth Protocol",
+      "detailed": "Moon afflicting in the 11th house. Remedy: Visit Bhairav temple and offer milk. Birth Protocol (52-Day Rule): Moon in H11 aspects the 5th house (children). Because Moon signifies the mother, her presence during birth creates a malefic aspect on the child. Correction: The wife/mother must change locations during labor and must avoid looking at the newborn child's face for 52 days to break the aspectual cycle.",
+      "full_text_passages": [
+        {
+          "text": "Moon afflicting in the 11th house. Remedy: Visit Bhairav temple and offer milk. Birth Protocol (52-Day Rule): Moon in H11 aspects the 5th house (children). Because Moon signifies the mother, her presence during birth creates a malefic aspect on the child. Correction: The wife/mother must change locations during labor and must avoid looking at the newborn child's face for 52 days to break the aspectual cycle.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "ritual",
+          "action": "Visit Bhairav temple and offer milk"
+        },
+        {
+          "category": "succour",
+          "action": "Wife must change location during labor (breaks Moon H11 → H5 malefic aspect on child)"
+        },
+        {
+          "category": "succour",
+          "action": "Wife must avoid looking at newborn's face for 52 days after birth"
+        }
+      ],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "remedies",
+        "relationships"
+      ],
+      "tags": [
+        "Moon",
+        "H11",
+        "house_modifier",
+        "Bhairav",
+        "birth_protocol",
+        "52_days",
+        "children"
+      ],
+      "physical_markers": [],
+      "mechanism": "Moon H11 casts an aspect on H5 (children). The mother IS Moon's representative — her physical presence during birth prolongs the malefic aspectual link. 52-day avoidance breaks the cycle."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-mars-affliction",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "yoga_check": {
+        "type": "planet_weak",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Mars"
+      ]
+    },
+    "interpretation": {
+      "summary": "Mars Affliction — Symptoms and Remedies (Hanumanji)",
+      "detailed": "When Mars is afflicted: Remedies: Donate sweet bread prepared in an earthen oven; drop rewari or batashey (sugar candy) in running water. Lord: Hanumanji. Ritual: Worship with gur-churma (jaggery+wheat); offer vermilion and silver foil; take prasad.",
+      "full_text_passages": [
+        {
+          "text": "When Mars is afflicted: Remedies: Donate sweet bread prepared in an earthen oven; drop rewari or batashey (sugar candy) in running water. Lord: Hanumanji. Ritual: Worship with gur-churma (jaggery+wheat); offer vermilion and silver foil; take prasad.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Donate sweet bread prepared in an earthen oven"
+        },
+        {
+          "category": "offering",
+          "action": "Drop rewari or batashey (sugar candy) in running water"
+        },
+        {
+          "category": "ritual",
+          "action": "Worship Hanumanji with gur-churma (jaggery + wheat)"
+        },
+        {
+          "category": "ritual",
+          "action": "Offer vermilion and silver foil to Hanumanji; take prasad"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Mars",
+        "affliction",
+        "dosha",
+        "Hanuman",
+        "rewari",
+        "gur_churma"
+      ],
+      "physical_markers": [],
+      "deity": "Hanumanji"
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-mars-h2",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "planet": "Mars",
+      "house": 2,
+      "house_lord": "Jupiter",
+      "affliction": "childlessness_conjunction"
+    },
+    "interpretation": {
+      "summary": "Mars Malefic in H2 — Childlessness Conjunction and Foster Remedy",
+      "detailed": "Mars malefic in the 2nd house (Taurus house in Lal Kitab's Aries base): A 'conjunction of childlessness' occurs — the Mars malefic energy in the wealth/family house suppresses progeny potential. Remedy: Foster family members (provide shelter, care, or support to children of relatives) to mitigate the childlessness effect.",
+      "full_text_passages": [
+        {
+          "text": "Mars malefic in the 2nd house (Taurus house in Lal Kitab's Aries base): A 'conjunction of childlessness' occurs — the Mars malefic energy in the wealth/family house suppresses progeny potential. Remedy: Foster family members (provide shelter, care, or support to children of relatives) to mitigate the childlessness effect.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Foster family members — provide shelter or care to children of relatives"
+        }
+      ],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "remedies",
+        "relationships"
+      ],
+      "tags": [
+        "Mars",
+        "H2",
+        "house_modifier",
+        "childlessness",
+        "foster",
+        "progeny"
+      ],
+      "physical_markers": [],
+      "mechanism": "Mars (aggression/fire) in H2 (family/Jupiter's house) blocks Jupiter's progeny-giving function. Fostering acts as a surrogate Jupiter remedy."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-mars-h9",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "planet": "Mars",
+      "house": 9,
+      "house_lord": "Jupiter",
+      "affliction_of": "fortune"
+    },
+    "interpretation": {
+      "summary": "Mars Malefic in H9 — Brother's Wife Must Perform Nursing/Service",
+      "detailed": "Mars malefic in the 9th house (House of Luck/Fortune; Jupiter's house). Remedy: The wife of the native's brother must perform nursing or service duties for the native. This relational act neutralises Mars's malefic influence on fortune.",
+      "full_text_passages": [
+        {
+          "text": "Mars malefic in the 9th house (House of Luck/Fortune; Jupiter's house). Remedy: The wife of the native's brother must perform nursing or service duties for the native. This relational act neutralises Mars's malefic influence on fortune.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Brother's wife must perform nursing or service for the native"
+        }
+      ],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "remedies",
+        "relationships"
+      ],
+      "tags": [
+        "Mars",
+        "H9",
+        "house_modifier",
+        "brothers_wife",
+        "nursing",
+        "luck"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-mercury-affliction",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "yoga_check": {
+        "type": "planet_weak",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Mercury"
+      ],
+      "symptoms": [
+        "Sister and aunt (Bua) suffering",
+        "Teeth issues"
+      ]
+    },
+    "interpretation": {
+      "summary": "Mercury Affliction — Social Symptoms and Remedies (Goddess Durga)",
+      "detailed": "When Mercury is afflicted: Remedies: Burn shells and immerse ash in river; immerse pierced copper coins or holed coins; pierce nose; clean teeth with alum. If disease is caused by Mercury → Donate bland pumpkin at a religious place. Lord: Goddess Durga. Mantra: Chant 'Durga Saptshati'; fast during Navratri; serve maidens.",
+      "full_text_passages": [
+        {
+          "text": "When Mercury is afflicted: Remedies: Burn shells and immerse ash in river; immerse pierced copper coins or holed coins; pierce nose; clean teeth with alum. If disease is caused by Mercury → Donate bland pumpkin at a religious place. Lord: Goddess Durga. Mantra: Chant 'Durga Saptshati'; fast during Navratri; serve maidens.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "ritual",
+          "action": "Burn shells and immerse ash in river"
+        },
+        {
+          "category": "offering",
+          "action": "Immerse pierced copper or holed coins in river"
+        },
+        {
+          "category": "ritual",
+          "action": "Pierce nose"
+        },
+        {
+          "category": "ritual",
+          "action": "Clean teeth with alum"
+        },
+        {
+          "category": "offering",
+          "action": "If Mercury-caused disease: donate bland pumpkin at a religious place"
+        },
+        {
+          "category": "mantra",
+          "action": "Chant 'Durga Saptshati'; fast during Navratri; serve maidens"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Mercury",
+        "affliction",
+        "dosha",
+        "Durga",
+        "shells",
+        "alum",
+        "pumpkin"
+      ],
+      "physical_markers": [],
+      "deity": "Goddess Durga",
+      "mantra": "Durga Saptshati"
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-mercury-h7",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "symptoms": [
+        "Sister suffers massively",
+        "Aunt (Bua / father's sister) suffers massively"
+      ],
+      "planet": "Mercury",
+      "house": 7,
+      "house_lord": "Venus",
+      "affliction_of": [
+        "sister",
+        "aunt_bua"
+      ]
+    },
+    "interpretation": {
+      "summary": "Mercury in H7 — Sister and Aunt (Bua) Suffer Massively",
+      "detailed": "Mercury placed in the 7th house: sister and aunt (Bua — father's sister) suffer massively. H7 is Venus's house; Mercury's presence here creates cross-planet tension affecting female relatives signified by both Venus (sisters) and Mercury (aunts/Bua).",
+      "full_text_passages": [
+        {
+          "text": "Mercury placed in the 7th house: sister and aunt (Bua — father's sister) suffer massively. H7 is Venus's house; Mercury's presence here creates cross-planet tension affecting female relatives signified by both Venus (sisters) and Mercury (aunts/Bua).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "remedies",
+        "relationships"
+      ],
+      "tags": [
+        "Mercury",
+        "H7",
+        "house_modifier",
+        "sister",
+        "aunt",
+        "Bua",
+        "suffering"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-mercury-h1",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "planet": "Mercury",
+      "house": 1,
+      "house_significator": "Sun",
+      "house_lord_aries": "Mars",
+      "remedy_planet": "Mars",
+      "significator_swap": true
+    },
+    "interpretation": {
+      "summary": "Mercury Afflicting in H1 — Donate Objects of Mars (Significator Swap)",
+      "detailed": "Mercury afflicting in the 1st house (Ascendant). Remedy: Donate objects of Mars (H1 lord under Aries-base rule). Significator swap logic: H1 significator = Sun; H1 lord = Mars (Aries). Donating Mars objects (red items, coral, honey, sugar) pacifies Mercury's affliction of the Ascendant.",
+      "full_text_passages": [
+        {
+          "text": "Mercury afflicting in the 1st house (Ascendant). Remedy: Donate objects of Mars (H1 lord under Aries-base rule). Significator swap logic: H1 significator = Sun; H1 lord = Mars (Aries). Donating Mars objects (red items, coral, honey, sugar) pacifies Mercury's affliction of the Ascendant.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Donate objects of Mars (red items, coral, honey, sugar, masoor dal)"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Mercury",
+        "H1",
+        "house_modifier",
+        "significator_swap",
+        "Mars_objects"
+      ],
+      "physical_markers": [],
+      "mechanism": "H1 under Aries-base is ruled by Mars (Aries). Donating Mars objects supplies the energy the afflicted house needs to push back against Mercury."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [
+        1
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-jupiter-affliction",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "yoga_check": {
+        "type": "planet_weak",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "symptoms": [
+        "Childlessness",
+        "Financial difficulty",
+        "Spiritual decline"
+      ]
+    },
+    "interpretation": {
+      "summary": "Jupiter Affliction — Progeny/Financial Symptoms and Remedies (Lord Brahma)",
+      "detailed": "When Jupiter is afflicted: Symptoms include childlessness, financial difficulty, spiritual decline. Remedies: Collect one paisa from every blood relation and donate at a temple; plant Peepal trees; donate saffron, turmeric, gold, gram pulse (chana dal), yellow cloth, or books. Lord: Lord Brahma. If childless due to Jupiter affliction → Worship 'Shri Hari'.",
+      "full_text_passages": [
+        {
+          "text": "When Jupiter is afflicted: Symptoms include childlessness, financial difficulty, spiritual decline. Remedies: Collect one paisa from every blood relation and donate at a temple; plant Peepal trees; donate saffron, turmeric, gold, gram pulse (chana dal), yellow cloth, or books. Lord: Lord Brahma. If childless due to Jupiter affliction → Worship 'Shri Hari'.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Collect one paisa from every blood relation and donate at a temple"
+        },
+        {
+          "category": "ritual",
+          "action": "Plant Peepal trees"
+        },
+        {
+          "category": "offering",
+          "action": "Donate saffron, turmeric, gold, gram pulse (chana dal), yellow cloth, or books"
+        },
+        {
+          "category": "ritual",
+          "action": "If childless due to Jupiter: Worship 'Shri Hari'"
+        }
+      ],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "finance",
+        "remedies",
+        "spirituality"
+      ],
+      "tags": [
+        "Jupiter",
+        "affliction",
+        "dosha",
+        "Brahma",
+        "Peepal",
+        "saffron",
+        "childlessness"
+      ],
+      "physical_markers": [],
+      "deity": "Lord Brahma"
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-jupiter-h12",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "planet": "Jupiter",
+      "house": 12,
+      "house_lord": "Rahu",
+      "conditional_trigger": "Only applicable after death of father or grandfather"
+    },
+    "interpretation": {
+      "summary": "Jupiter Afflicting in H12 — Gram/Saffron/Gold at Night (Post-Father's Death)",
+      "detailed": "Jupiter afflicting in the 12th house. Remedy: Keep gram (chana), saffron, and gold close to self during the night to ensure sound sleep and restore Jupiter's protective energy. IMPORTANT CONDITION: This remedy is applicable ONLY after the death of the father or grandfather — not before.",
+      "full_text_passages": [
+        {
+          "text": "Jupiter afflicting in the 12th house. Remedy: Keep gram (chana), saffron, and gold close to self during the night to ensure sound sleep and restore Jupiter's protective energy. IMPORTANT CONDITION: This remedy is applicable ONLY after the death of the father or grandfather — not before.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Keep gram (chana), saffron, and gold close during night for sound sleep — ONLY after death of father or grandfather"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Jupiter",
+        "H12",
+        "house_modifier",
+        "gram",
+        "saffron",
+        "gold",
+        "night_remedy"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "houses_involved": [
+        12
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-venus-affliction",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "yoga_check": {
+        "type": "planet_weak",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Venus"
+      ]
+    },
+    "interpretation": {
+      "summary": "Venus Affliction — Remedies (Goddess Lakshmi)",
+      "detailed": "When Venus is afflicted: Remedies: Spare food from meals to feed cows; donate ghee, curd, camphor, items of makeup, and pearls. Succour: Offer support to a female native in need. Lord: Goddess Lakshmi. Mantra: Worship Lakshmi and chant 'Shri Sookt'.",
+      "full_text_passages": [
+        {
+          "text": "When Venus is afflicted: Remedies: Spare food from meals to feed cows; donate ghee, curd, camphor, items of makeup, and pearls. Succour: Offer support to a female native in need. Lord: Goddess Lakshmi. Mantra: Worship Lakshmi and chant 'Shri Sookt'.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Spare food from meals to feed cows"
+        },
+        {
+          "category": "offering",
+          "action": "Donate ghee, curd, camphor, makeup items, and pearls"
+        },
+        {
+          "category": "succour",
+          "action": "Offer support or assistance to a female native in need"
+        },
+        {
+          "category": "mantra",
+          "action": "Worship Goddess Lakshmi and chant 'Shri Sookt'"
+        }
+      ],
+      "life_domain": "relationships",
+      "life_domains": [
+        "relationships",
+        "remedies",
+        "wealth"
+      ],
+      "tags": [
+        "Venus",
+        "affliction",
+        "dosha",
+        "Lakshmi",
+        "cows",
+        "pearls",
+        "ghee"
+      ],
+      "physical_markers": [],
+      "deity": "Goddess Lakshmi",
+      "mantra": "Shri Sookt"
+    },
+    "metadata": {
+      "planets_involved": [
+        "Venus"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-saturn-affliction",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "yoga_check": {
+        "type": "planet_weak",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "symptoms": [
+        "Property / construction problems",
+        "Servant troubles",
+        "Longevity concerns"
+      ],
+      "saturn_objects": [
+        "black gram (urad dal)",
+        "iron",
+        "leather",
+        "stone",
+        "almond",
+        "oven",
+        "pincers (chimta)",
+        "pan (tawa)",
+        "wine",
+        "spirit"
+      ]
+    },
+    "interpretation": {
+      "summary": "Saturn Affliction — Construction/Property Symptoms and Remedies (Lord Shiva)",
+      "detailed": "When Saturn is afflicted: Symptoms relate to property, construction, servants, and longevity issues. Remedies: Feed wheat dough balls to fish; share meals with crows; view one's image in an oil-filled pot (Chhaya Patra / shadow vessel). Saturn's objects: black gram (urad dal), iron, leather, stone, almond, oven, pincers (chimta), pan (tawa), wine, spirit. Lord: Lord Shiva.",
+      "full_text_passages": [
+        {
+          "text": "When Saturn is afflicted: Symptoms relate to property, construction, servants, and longevity issues. Remedies: Feed wheat dough balls to fish; share meals with crows; view one's image in an oil-filled pot (Chhaya Patra / shadow vessel). Saturn's objects: black gram (urad dal), iron, leather, stone, almond, oven, pincers (chimta), pan (tawa), wine, spirit. Lord: Lord Shiva.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Feed wheat dough balls to fish"
+        },
+        {
+          "category": "ritual",
+          "action": "Share meals with crows (Saturn's bird)"
+        },
+        {
+          "category": "ritual",
+          "action": "View own image in an oil-filled pot (Chhaya Patra)"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Saturn",
+        "affliction",
+        "dosha",
+        "Shiva",
+        "crows",
+        "fish",
+        "Chhaya_Patra"
+      ],
+      "physical_markers": [],
+      "deity": "Lord Shiva"
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-saturn-h5-sun-leo",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Saturn",
+        "Sun"
+      ],
+      "houses_involved": [
+        5
+      ],
+      "planet": "Saturn",
+      "house": 5,
+      "secondary_planet": "Sun",
+      "secondary_sign": "Leo",
+      "trigger": "construction",
+      "affliction_of": "son",
+      "remedy_planet": "Sun"
+    },
+    "interpretation": {
+      "summary": "Saturn H5 AND Sun in Leo — Son Faces Risk During House Construction",
+      "detailed": "Condition: Saturn in 5th house AND Sun in Leo (sign). Trigger: Native begins house construction. Outcome: Son faces significant risk / trouble during the construction period. Remedy (Enemy Sacrifice Protocol): Use objects of Saturn's enemy (the Sun) — wheat, jaggery, copper — to neutralise Saturn's threatening force. Alternative: Wait for son to build the house rather than the native doing so.",
+      "full_text_passages": [
+        {
+          "text": "Condition: Saturn in 5th house AND Sun in Leo (sign). Trigger: Native begins house construction. Outcome: Son faces significant risk / trouble during the construction period. Remedy (Enemy Sacrifice Protocol): Use objects of Saturn's enemy (the Sun) — wheat, jaggery, copper — to neutralise Saturn's threatening force. Alternative: Wait for son to build the house rather than the native doing so.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Use Sun objects — wheat, jaggery, copper — during construction to neutralise Saturn's threat to son"
+        },
+        {
+          "category": "succour",
+          "action": "Alternative: Have the son himself build the house to remove Saturn's malefic aspect on him"
+        }
+      ],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "remedies",
+        "relationships"
+      ],
+      "tags": [
+        "Saturn",
+        "H5",
+        "Sun_Leo",
+        "son",
+        "construction",
+        "house_building",
+        "enemy_sacrifice"
+      ],
+      "physical_markers": [],
+      "mechanism": "Enemy Sacrifice Protocol: when Saturn is the threat (destroyer), donate objects of its enemy (Sun) to satisfy and neutralise the malefic force."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn",
+        "Sun"
+      ],
+      "houses_involved": [
+        5
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-saturn-h10-h4-benefit",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        10,
+        4
+      ],
+      "planet": "Saturn",
+      "house": 10,
+      "reference_house": 4,
+      "benefit_condition": "construction_in_progress",
+      "benefit_expires": "construction_complete",
+      "logic_type": "reference_house_7th_benefit",
+      "logic_note": "Saturn H10 is 7th from H4. Planet 7th from reference house benefits that house until its object (construction) is complete."
+    },
+    "interpretation": {
+      "summary": "Saturn H10 Benefits H4 ONLY During Active Construction (Reference House Logic)",
+      "detailed": "Saturn in the 10th house (7th from the 4th house) benefits the 4th house (home/property/construction) ONLY while construction is actively in progress. Reference House Rule: A planet in the 7th house from a reference house provides benefits to the original house until the goal (construction) is complete. Once the construction is finished, Saturn in H10 stops being useful and may turn malefic — the benefit window closes permanently.",
+      "full_text_passages": [
+        {
+          "text": "Saturn in the 10th house (7th from the 4th house) benefits the 4th house (home/property/construction) ONLY while construction is actively in progress. Reference House Rule: A planet in the 7th house from a reference house provides benefits to the original house until the goal (construction) is complete. Once the construction is finished, Saturn in H10 stops being useful and may turn malefic — the benefit window closes permanently.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Complete construction while Saturn is in H10 — the benefit window is time-limited"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "remedies",
+        "timing"
+      ],
+      "tags": [
+        "Saturn",
+        "H10",
+        "H4",
+        "construction",
+        "benefit_window",
+        "reference_house_logic",
+        "timing"
+      ],
+      "physical_markers": [],
+      "mechanism": "Reference House Benefit Rule: planet 7th from a reference house supports it until its associated goal is achieved. Once done, the supportive aspect closes."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [
+        10,
+        4
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-rahu-affliction",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "yoga_check": {
+        "type": "planet_weak",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Rahu"
+      ],
+      "symptoms": [
+        "Leprosy / skin disease (Rahu trial)",
+        "Eclipse-related disturbances"
+      ]
+    },
+    "interpretation": {
+      "summary": "Rahu Affliction — Leprosy Trial and Eclipse Remedies (Goddess Saraswati)",
+      "detailed": "When Rahu is afflicted: Standard remedies: Immerse coconut in water; float barley washed with milk in the river; immerse coal; donate radish, mustard, or sapphire. Leprosy Trial remedy: Wash barley with cow's urine, tie in red cloth, keep with self at all times; clean teeth with cow's urine. Lord: Goddess Saraswati.",
+      "full_text_passages": [
+        {
+          "text": "When Rahu is afflicted: Standard remedies: Immerse coconut in water; float barley washed with milk in the river; immerse coal; donate radish, mustard, or sapphire. Leprosy Trial remedy: Wash barley with cow's urine, tie in red cloth, keep with self at all times; clean teeth with cow's urine. Lord: Goddess Saraswati.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Immerse coconut in water"
+        },
+        {
+          "category": "offering",
+          "action": "Float barley washed with milk in the river"
+        },
+        {
+          "category": "offering",
+          "action": "Immerse coal in water"
+        },
+        {
+          "category": "offering",
+          "action": "Donate radish, mustard, or sapphire"
+        },
+        {
+          "category": "ritual",
+          "action": "Leprosy Trial: wash barley with cow's urine, tie in red cloth, keep on person at all times"
+        },
+        {
+          "category": "ritual",
+          "action": "Leprosy Trial: clean teeth with cow's urine"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Rahu",
+        "affliction",
+        "dosha",
+        "Saraswati",
+        "coconut",
+        "barley",
+        "sapphire",
+        "leprosy"
+      ],
+      "physical_markers": [],
+      "deity": "Goddess Saraswati"
+    },
+    "metadata": {
+      "planets_involved": [
+        "Rahu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-rahu-h8",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "house_modifier",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Rahu"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "planet": "Rahu",
+      "house": 8,
+      "house_lord": "Saturn"
+    },
+    "interpretation": {
+      "summary": "Rahu in H8 — Throw Gilded Coins in River",
+      "detailed": "Rahu placed in the 8th house (longevity/Saturn's house). Remedy: Throw gilded (gold-plated) coins in the river.",
+      "full_text_passages": [
+        {
+          "text": "Rahu placed in the 8th house (longevity/Saturn's house). Remedy: Throw gilded (gold-plated) coins in the river.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Throw gilded (gold-plated) coins in the river"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Rahu",
+        "H8",
+        "house_modifier",
+        "gilded_coins",
+        "river"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Rahu"
+      ],
+      "houses_involved": [
+        8
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-ketu-affliction",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "affliction",
+      "yoga_check": {
+        "type": "planet_weak",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Ketu"
+      ],
+      "symptoms": [
+        "Son's behavior improper",
+        "Foot trouble",
+        "Urinary infection"
+      ]
+    },
+    "interpretation": {
+      "summary": "Ketu Affliction — Son's Behavior, Foot/Urinary Issues and Remedies (Lord Ganapati)",
+      "detailed": "When Ketu is afflicted: Standard remedies: Feed dogs (Ketu = dog's planet); donate sesame (til). Son's behavior improper → Donate a quilt at a temple. Disease (foot trouble or urinary infection) → Adorn pure silk thread and a pearl set in a silver ring. Lord: Lord Ganapati.",
+      "full_text_passages": [
+        {
+          "text": "When Ketu is afflicted: Standard remedies: Feed dogs (Ketu = dog's planet); donate sesame (til). Son's behavior improper → Donate a quilt at a temple. Disease (foot trouble or urinary infection) → Adorn pure silk thread and a pearl set in a silver ring. Lord: Lord Ganapati.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Feed dogs (Ketu's representative animal)"
+        },
+        {
+          "category": "offering",
+          "action": "Donate sesame (til)"
+        },
+        {
+          "category": "offering",
+          "action": "If son's behavior is improper: donate a quilt at a temple"
+        },
+        {
+          "category": "gemstone_jewelry",
+          "action": "For foot trouble or urinary infection: wear pure silk thread and pearl in a silver ring"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Ketu",
+        "affliction",
+        "dosha",
+        "Ganapati",
+        "dogs",
+        "sesame",
+        "pearl",
+        "son"
+      ],
+      "physical_markers": [],
+      "deity": "Lord Ganapati"
+    },
+    "metadata": {
+      "planets_involved": [
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-jup-sun-financial",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "conjunction_remedy",
+      "yoga_check": {
+        "type": "planet_conjunction",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Jupiter",
+        "Sun"
+      ],
+      "conjunction": [
+        "Jupiter",
+        "Sun"
+      ],
+      "trigger": "financial_difficulty",
+      "secondary_condition": "Native is facing financial struggle"
+    },
+    "interpretation": {
+      "summary": "Jupiter+Sun Conjunction AND Financial Difficulty — Saffron/Gold/Books",
+      "detailed": "Condition: Jupiter and Sun are in conjunction AND the native is facing financial difficulty. Remedy A: Eat saffron (ingest directly). Remedy B: Adorn / wear gold. Remedy C: Donate books.",
+      "full_text_passages": [
+        {
+          "text": "Condition: Jupiter and Sun are in conjunction AND the native is facing financial difficulty. Remedy A: Eat saffron (ingest directly). Remedy B: Adorn / wear gold. Remedy C: Donate books.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "ritual",
+          "action": "Eat saffron (consume directly)"
+        },
+        {
+          "category": "gemstone_jewelry",
+          "action": "Adorn or wear gold jewelry"
+        },
+        {
+          "category": "offering",
+          "action": "Donate books"
+        }
+      ],
+      "life_domain": "finance",
+      "life_domains": [
+        "finance",
+        "remedies",
+        "wealth"
+      ],
+      "tags": [
+        "Jupiter",
+        "Sun",
+        "conjunction",
+        "financial_difficulty",
+        "saffron",
+        "gold",
+        "books"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Sun"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-sun-sat-wife-health",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "conjunction_remedy",
+      "yoga_check": {
+        "type": "planet_conjunction",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun",
+        "Saturn"
+      ],
+      "conjunction": [
+        "Sun",
+        "Saturn"
+      ],
+      "trigger": "wife_health_suffering",
+      "affliction_of": "wife",
+      "secondary_condition": "Wife's health is suffering"
+    },
+    "interpretation": {
+      "summary": "Sun+Saturn Conjunction AND Wife's Health Suffering — Donate Maize Equal to Wife's Weight",
+      "detailed": "Condition: Sun and Saturn are in conjunction AND the native's wife is suffering in health. Remedy: Donate maize equivalent to the weight of the wife.",
+      "full_text_passages": [
+        {
+          "text": "Condition: Sun and Saturn are in conjunction AND the native's wife is suffering in health. Remedy: Donate maize equivalent to the weight of the wife.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Donate maize (corn) equivalent to the weight of the wife"
+        }
+      ],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "remedies",
+        "relationships"
+      ],
+      "tags": [
+        "Sun",
+        "Saturn",
+        "conjunction",
+        "wife_health",
+        "maize",
+        "weight_donation"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-sun-sat-property",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "conjunction_remedy",
+      "yoga_check": {
+        "type": "planet_conjunction",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun",
+        "Saturn"
+      ],
+      "conjunction": [
+        "Sun",
+        "Saturn"
+      ],
+      "trigger": "saturn_objects_being_destroyed",
+      "attacker_planet": "Sun",
+      "remedy_planet": "Sun"
+    },
+    "interpretation": {
+      "summary": "Sun+Saturn Conjunction AND Saturn Objects Being Destroyed — Donate Sun Objects",
+      "detailed": "Condition: Sun and Saturn are in conjunction AND Saturn's objects/property are being destroyed (by the Sun's power/aggression). Mechanism: Saturn is afflicted specifically due to the Sun's dominance in the conjunction. The Sun is the attacker. Remedy (Enemy Sacrifice Protocol): Donate objects related to the attacker (Sun) — copper, jaggery, wheat.",
+      "full_text_passages": [
+        {
+          "text": "Condition: Sun and Saturn are in conjunction AND Saturn's objects/property are being destroyed (by the Sun's power/aggression). Mechanism: Saturn is afflicted specifically due to the Sun's dominance in the conjunction. The Sun is the attacker. Remedy (Enemy Sacrifice Protocol): Donate objects related to the attacker (Sun) — copper, jaggery, wheat.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Donate objects of the Sun (copper, jaggery, wheat) to pacify Sun's destruction of Saturn's domain"
+        }
+      ],
+      "life_domain": "property",
+      "life_domains": [
+        "property",
+        "remedies"
+      ],
+      "tags": [
+        "Sun",
+        "Saturn",
+        "conjunction",
+        "property_destruction",
+        "copper",
+        "jaggery",
+        "enemy_sacrifice"
+      ],
+      "physical_markers": [],
+      "mechanism": "Enemy Sacrifice: Saturn's objects are being destroyed by Sun's force. Donating Sun's objects to the divine satisfies Sun and stops the destruction."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-sun-sat-gold-loss",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "conjunction_remedy",
+      "yoga_check": {
+        "type": "planet_conjunction",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun",
+        "Saturn"
+      ],
+      "conjunction": [
+        "Sun",
+        "Saturn"
+      ],
+      "trigger": "gold_or_jaggery_loss",
+      "attacker_planet": "Saturn",
+      "remedy_planet": "Saturn"
+    },
+    "interpretation": {
+      "summary": "Sun+Saturn Conjunction AND Gold/Jaggery Loss — Donate Saturn Objects",
+      "detailed": "Condition: Sun and Saturn are in conjunction AND the native is experiencing loss of gold or jaggery (Sun's objects). Mechanism: The loss is triggered by Saturn's affliction of Sun's objects — Saturn is the attacker here. Remedy (Enemy Sacrifice Protocol): Donate objects of Saturn (the attacker) — iron, oil, or almonds.",
+      "full_text_passages": [
+        {
+          "text": "Condition: Sun and Saturn are in conjunction AND the native is experiencing loss of gold or jaggery (Sun's objects). Mechanism: The loss is triggered by Saturn's affliction of Sun's objects — Saturn is the attacker here. Remedy (Enemy Sacrifice Protocol): Donate objects of Saturn (the attacker) — iron, oil, or almonds.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Donate Saturn objects — iron, oil, or almonds — to pacify Saturn's destruction of Sun's domain"
+        }
+      ],
+      "life_domain": "finance",
+      "life_domains": [
+        "finance",
+        "remedies",
+        "wealth"
+      ],
+      "tags": [
+        "Sun",
+        "Saturn",
+        "conjunction",
+        "gold_loss",
+        "jaggery_loss",
+        "iron",
+        "oil",
+        "almonds"
+      ],
+      "physical_markers": [],
+      "mechanism": "Enemy Sacrifice: Sun's objects (gold/jaggery) are being lost due to Saturn's force. Donating Saturn's own objects satisfies and neutralises the attacker."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-sun-rahu-eclipse",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "conjunction_remedy",
+      "yoga_check": {
+        "type": "planet_conjunction",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun",
+        "Rahu"
+      ],
+      "conjunction": [
+        "Sun",
+        "Rahu"
+      ],
+      "trigger": "solar_eclipse",
+      "timing_constraint": "MUST be performed during solar eclipse — ineffective otherwise",
+      "remedy_objects": [
+        "coal",
+        "mustard"
+      ]
+    },
+    "interpretation": {
+      "summary": "Sun+Rahu Conjunction — Float Rahu Objects DURING Solar Eclipse Only",
+      "detailed": "Condition: Sun and Rahu are in conjunction. Remedy: Float objects of the harmful planet (Rahu) — coal or mustard — in the river. CRITICAL TIMING CONSTRAINT: This remedy is valid and useful ONLY if performed specifically within the window of a solar eclipse. Performing outside of an eclipse has no effect.",
+      "full_text_passages": [
+        {
+          "text": "Condition: Sun and Rahu are in conjunction. Remedy: Float objects of the harmful planet (Rahu) — coal or mustard — in the river. CRITICAL TIMING CONSTRAINT: This remedy is valid and useful ONLY if performed specifically within the window of a solar eclipse. Performing outside of an eclipse has no effect.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Float coal or mustard in the river — MUST be done during a solar eclipse window"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Sun",
+        "Rahu",
+        "conjunction",
+        "solar_eclipse",
+        "coal",
+        "mustard",
+        "eclipse_timing"
+      ],
+      "physical_markers": [],
+      "mechanism": "Eclipse Ingestion Logic: Sun+Rahu conjunction remedies are valid ONLY within the eclipse window, when the malefic conjunction is cosmically 'active' and receptive to intervention."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Rahu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-moon-rahu-eclipse",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "conjunction_remedy",
+      "yoga_check": {
+        "type": "planet_conjunction",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Rahu"
+      ],
+      "conjunction": [
+        "Moon",
+        "Rahu"
+      ],
+      "trigger": "lunar_eclipse",
+      "timing_constraint": "MUST be performed during lunar eclipse — ineffective otherwise",
+      "remedy_planets": [
+        "Rahu",
+        "Saturn"
+      ]
+    },
+    "interpretation": {
+      "summary": "Moon+Rahu Conjunction — Immerse Rahu/Saturn Objects DURING Lunar Eclipse Only",
+      "detailed": "Condition: Moon and Rahu are in conjunction. Remedy: Immerse objects of Rahu or Saturn (Saturn being an enemy of Moon) in the river. Outcome: This ritual exalts the Moon's effect — restores Moon's full benefic power. CRITICAL TIMING CONSTRAINT: This remedy is valid and useful ONLY if performed specifically within the window of a lunar eclipse.",
+      "full_text_passages": [
+        {
+          "text": "Condition: Moon and Rahu are in conjunction. Remedy: Immerse objects of Rahu or Saturn (Saturn being an enemy of Moon) in the river. Outcome: This ritual exalts the Moon's effect — restores Moon's full benefic power. CRITICAL TIMING CONSTRAINT: This remedy is valid and useful ONLY if performed specifically within the window of a lunar eclipse.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Immerse Rahu or Saturn objects in the river — MUST be done during a lunar eclipse window"
+        }
+      ],
+      "life_domain": "health",
+      "life_domains": [
+        "health",
+        "remedies"
+      ],
+      "tags": [
+        "Moon",
+        "Rahu",
+        "conjunction",
+        "lunar_eclipse",
+        "eclipse_timing",
+        "Saturn_objects"
+      ],
+      "physical_markers": [],
+      "mechanism": "Eclipse Ingestion Logic: Moon+Rahu conjunction remedies are valid ONLY within the lunar eclipse window. Saturn is included as enemy of Moon — its objects serve as additional sacrifice."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Rahu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-mars-mercury-sister",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "conjunction_remedy",
+      "yoga_check": {
+        "type": "planet_conjunction",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mars",
+        "Mercury"
+      ],
+      "conjunction": [
+        "Mars",
+        "Mercury"
+      ],
+      "trigger": "sister_health_suffering",
+      "affliction_of": "sister",
+      "remedy_objects": [
+        "brown sugar",
+        "honey",
+        "aniseed"
+      ],
+      "ritual_vessel": "earthen pot (surahi)"
+    },
+    "interpretation": {
+      "summary": "Mars+Mercury Conjunction AND Sister's Health Suffering — Bury Mars Objects in Earthen Pot",
+      "detailed": "Condition: Mars and Mercury are in conjunction AND the native's sister is suffering health issues. Diagnostic logic: Sister's illness is a marker for an overheated Mars in the Mars-Mercury conjunction. Remedy (Isolated Burial Protocol): Fill an earthen pot (surahi) with objects of Mars — brown sugar, honey, aniseed — and bury it at an isolated place. Outcome: This ritual removes Mars's malefic energy from the home environment and calms the overheated Mars.",
+      "full_text_passages": [
+        {
+          "text": "Condition: Mars and Mercury are in conjunction AND the native's sister is suffering health issues. Diagnostic logic: Sister's illness is a marker for an overheated Mars in the Mars-Mercury conjunction. Remedy (Isolated Burial Protocol): Fill an earthen pot (surahi) with objects of Mars — brown sugar, honey, aniseed — and bury it at an isolated place. Outcome: This ritual removes Mars's malefic energy from the home environment and calms the overheated Mars.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "ritual",
+          "action": "Fill earthen pot (surahi) with Mars objects (brown sugar, honey, aniseed) and bury at an isolated location"
+        }
+      ],
+      "life_domain": "family",
+      "life_domains": [
+        "family",
+        "remedies",
+        "relationships"
+      ],
+      "tags": [
+        "Mars",
+        "Mercury",
+        "conjunction",
+        "sister_health",
+        "earthen_pot",
+        "burial",
+        "isolated"
+      ],
+      "physical_markers": [],
+      "mechanism": "Sister's illness is a social symptom of Mars being overheated by Mercury's conjunction. The 'Isolated Burial' removes the malefic force away from the domestic environment."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars",
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-daytime-conjunction-rule",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "temporal_constraint",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Jupiter",
+        "Saturn",
+        "Rahu"
+      ],
+      "timing_rule": "daytime_only",
+      "applies_to": "all_conjunction_remedies_in_ch25",
+      "applies_to_rules": [
+        "lalkitab-ch25-jup-sun-financial",
+        "lalkitab-ch25-sun-sat-wife-health",
+        "lalkitab-ch25-sun-sat-property",
+        "lalkitab-ch25-sun-sat-gold-loss",
+        "lalkitab-ch25-sun-rahu-eclipse",
+        "lalkitab-ch25-moon-rahu-eclipse",
+        "lalkitab-ch25-mars-mercury-sister"
+      ]
+    },
+    "interpretation": {
+      "summary": "Conjunction Remedies Must Be Performed During Daytime (Universal Constraint)",
+      "detailed": "Universal rule for Chapter 25: ALL remedies mentioned for multi-planet conjunctions — including Sun+Saturn, Sun+Rahu, Moon+Rahu, Mars+Mercury, Jupiter+Sun — MUST be undertaken during the daytime. Performing conjunction remedies at night invalidates the remedy.",
+      "full_text_passages": [
+        {
+          "text": "Universal rule for Chapter 25: ALL remedies mentioned for multi-planet conjunctions — including Sun+Saturn, Sun+Rahu, Moon+Rahu, Mars+Mercury, Jupiter+Sun — MUST be undertaken during the daytime. Performing conjunction remedies at night invalidates the remedy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "general_principles"
+      ],
+      "tags": [
+        "conjunction_remedies",
+        "daytime_rule",
+        "temporal_constraint",
+        "universal"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "Mercury",
+        "Jupiter",
+        "Saturn",
+        "Rahu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-sun-friend-cooperation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "remedy_mechanism",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars"
+      ],
+      "mechanism_type": "friend_cooperation",
+      "afflicted_planet": "Sun",
+      "calming_elements": {
+        "Moon": "Water/Milk",
+        "Mars": "Sweets/Honey"
+      }
+    },
+    "interpretation": {
+      "summary": "Sun Friend-Cooperation Principle — Moon (Water) and Mars (Sweets) Calm Sun (Fire)",
+      "detailed": "Foundational remedy mechanism for Sun afflictions: Sun represents Fire. Sun is calmed by its natural friends — Moon (Water/Milk) and Mars (Sweets/Honey). Ritual application: Habitually put sweets in the mouth (Mars element) and then drink water (Moon element). This sequence activates the friend-cooperation formula to subdue Sun's malefic fire.",
+      "full_text_passages": [
+        {
+          "text": "Foundational remedy mechanism for Sun afflictions: Sun represents Fire. Sun is calmed by its natural friends — Moon (Water/Milk) and Mars (Sweets/Honey). Ritual application: Habitually put sweets in the mouth (Mars element) and then drink water (Moon element). This sequence activates the friend-cooperation formula to subdue Sun's malefic fire.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "ritual",
+          "action": "Habitually eat sweets (Mars element) then drink water (Moon element) — activates Sun friend-cooperation formula"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "general_principles"
+      ],
+      "tags": [
+        "Sun",
+        "Moon",
+        "Mars",
+        "friend_cooperation",
+        "fire_water_sweets",
+        "mechanism"
+      ],
+      "physical_markers": [],
+      "mechanism": "Sun (Fire) + Moon (Water) + Mars (Sweets/Honey) = elemental balance. Friends neutralise the afflicted planet's excess energy through their complementary elemental properties."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Moon",
+        "Mars"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch25-donation-modesty",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 25,
+      "chapter_name": "Remedial Measures for Planetary Dosh (Evil Effects)",
+      "sloka": null,
+      "batch_id": "lalkitab-ch25-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T01:21:16.968415+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "remedy_mechanism",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires contextual / ritual / diagnostic judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Sun"
+      ],
+      "mechanism_type": "donation_modesty",
+      "minimum_offering": "even a few grains",
+      "outcome": "Troubles flow away like running water"
+    },
+    "interpretation": {
+      "summary": "Donation Modesty Principle — Even Small Sun Offering Triggers 'Modesty' and Dissolves Troubles",
+      "detailed": "Universal remedy principle: Making a donation of even a few grains in the name of the Sun triggers 'modesty' (humility before the divine), which subdues the planet's anger. Outcome: The native's troubles 'flow off' like running water — they are dissolved rather than accumulated.",
+      "full_text_passages": [
+        {
+          "text": "Universal remedy principle: Making a donation of even a few grains in the name of the Sun triggers 'modesty' (humility before the divine), which subdues the planet's anger. Outcome: The native's troubles 'flow off' like running water — they are dissolved rather than accumulated.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Donate even a few grains in the name of the Sun — humility itself is the remedy"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "general_principles"
+      ],
+      "tags": [
+        "Sun",
+        "donation",
+        "modesty",
+        "humility",
+        "general_principle",
+        "remedy_mechanism"
+      ],
+      "physical_markers": [],
+      "mechanism": "Lal Kitab's donation philosophy: the ACT of giving — not its scale — activates cosmic 'modesty' (surrender of ego). This reverses the planet's anger regardless of donation size."
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  }
+]
