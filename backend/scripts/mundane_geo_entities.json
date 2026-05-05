@@ -1,0 +1,937 @@
+[
+  {
+    "entity_id": "koorma-center-back",
+    "entity_type": "koorma_zone",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Koorma Chakra",
+      "primary_chapter": "Gaur Ch 4/5 + Mehta Ch 7",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "zone_key": "center_back",
+    "body_part": "Center-Back of Tortoise",
+    "direction": "Central India / Interior Regions",
+    "nakshatras": [
+      "Krittika",
+      "Rohini",
+      "Mrigshira"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "Rohini is the CRITICAL GATE in this zone \u2014 Saturn or malefics transiting Rohini (Taurus 10\u00b0\u201323\u00b020') create the 'Rohini Gate' war/famine threshold (validated: WWI 1914, WWII 1939, 1971 Indo-Pak War). See mundane-war-rohini-gate in interpretation_rules."
+  },
+  {
+    "entity_id": "koorma-mouth-east",
+    "entity_type": "koorma_zone",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Koorma Chakra",
+      "primary_chapter": "Gaur Ch 4/5 + Mehta Ch 7",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "zone_key": "mouth_east",
+    "body_part": "Mouth / Eastern Face of Tortoise",
+    "direction": "East",
+    "nakshatras": [
+      "Ardra",
+      "Punarvasu",
+      "Pushya"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "Pushya nakshatra (Cancer 3\u00b020'\u201316\u00b040') in this zone: Saturn transiting Pushya triggers the 'Pushya Bull Run' \u2014 exceptional stock market growth. Validated: 2006 Sensex 6000 \u2192 12000+ rise (Gopal Ch 14)."
+  },
+  {
+    "entity_id": "koorma-front-right-southeast",
+    "entity_type": "koorma_zone",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Koorma Chakra",
+      "primary_chapter": "Gaur Ch 4/5 + Mehta Ch 7",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "zone_key": "front_right_foot_southeast",
+    "body_part": "Front Right Foot of Tortoise",
+    "direction": "South-East",
+    "nakshatras": [
+      "Ashlesha",
+      "Magha",
+      "Poorvaphalguni"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "koorma-right-stomach-south",
+    "entity_type": "koorma_zone",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Koorma Chakra",
+      "primary_chapter": "Gaur Ch 4/5 + Mehta Ch 7",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "zone_key": "right_stomach_south",
+    "body_part": "Right Stomach of Tortoise",
+    "direction": "South",
+    "nakshatras": [
+      "Uttaraphalguni",
+      "Hasta",
+      "Chitra"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "Mars in Taurus (South sign) identifies threats arriving FROM the South. Validated: Rajiv Gandhi assassination \u2014 LTTE/Tamil Tigers correctly identified as arriving from the South via Mars in Taurus (Mehta Ch 21)."
+  },
+  {
+    "entity_id": "koorma-back-right-southwest",
+    "entity_type": "koorma_zone",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Koorma Chakra",
+      "primary_chapter": "Gaur Ch 4/5 + Mehta Ch 7",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "zone_key": "back_right_foot_southwest",
+    "body_part": "Back Right Foot of Tortoise",
+    "direction": "South-West",
+    "nakshatras": [
+      "Swati",
+      "Anuradha",
+      "Vishakha"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "koorma-tail-west",
+    "entity_type": "koorma_zone",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Koorma Chakra",
+      "primary_chapter": "Gaur Ch 4/5 + Mehta Ch 7",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "zone_key": "tail_west",
+    "body_part": "Tail of Tortoise",
+    "direction": "West",
+    "nakshatras": [
+      "Jyeshtha",
+      "Mool",
+      "Poorvashadh"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "koorma-back-left-northwest",
+    "entity_type": "koorma_zone",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Koorma Chakra",
+      "primary_chapter": "Gaur Ch 4/5 + Mehta Ch 7",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "zone_key": "back_left_foot_northwest",
+    "body_part": "Back Left Foot of Tortoise",
+    "direction": "North-West",
+    "nakshatras": [
+      "Uttarashadh",
+      "Shravan",
+      "Dhanishtha"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "koorma-left-stomach-north",
+    "entity_type": "koorma_zone",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Koorma Chakra",
+      "primary_chapter": "Gaur Ch 4/5 + Mehta Ch 7",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "zone_key": "left_stomach_north",
+    "body_part": "Left Stomach of Tortoise",
+    "direction": "North",
+    "nakshatras": [
+      "Shatbhisha",
+      "Poorvabhadrapad",
+      "Uttarabhadrapad"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "koorma-front-left-northeast",
+    "entity_type": "koorma_zone",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Koorma Chakra",
+      "primary_chapter": "Gaur Ch 4/5 + Mehta Ch 7",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "zone_key": "front_left_foot_northeast",
+    "body_part": "Front Left Foot of Tortoise",
+    "direction": "North-East",
+    "nakshatras": [
+      "Revati",
+      "Ashwini",
+      "Bharani"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "geo-sign-aries",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "aries",
+    "sign_no": 1,
+    "element": "fire",
+    "modality": "cardinal",
+    "countries": [
+      "UK",
+      "France",
+      "Switzerland",
+      "Germany",
+      "Japan",
+      "Palestine",
+      "Syria",
+      "Denmark",
+      "Poland"
+    ],
+    "cities": [
+      "Birmingham",
+      "Brunswick",
+      "Florence",
+      "Leicester",
+      "Cracow",
+      "Naples",
+      "Utrecht",
+      "Marseilles"
+    ],
+    "india_regions": [
+      "Rajasthan",
+      "Madhya Pradesh (Eastern)"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "geo-sign-taurus",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "raphael_west"
+      ]
+    },
+    "sign": "taurus",
+    "sign_no": 2,
+    "element": "earth",
+    "modality": "fixed",
+    "countries": [
+      "Ireland",
+      "Iran",
+      "Cyprus",
+      "Australia",
+      "Sri Lanka",
+      "Pakistan"
+    ],
+    "cities": [
+      "Dublin",
+      "Tehran",
+      "Palermo",
+      "Parma",
+      "Leipzig",
+      "St. Louis",
+      "Mantua"
+    ],
+    "india_regions": [
+      "Gujarat",
+      "Rajasthan (Western)",
+      "Mumbai region"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "India's Lagna is TAURUS (Independence Chart: 15 Aug 1947). Pakistan's Lagna is ARIES \u2014 the 2/12 relationship between Taurus (India) and Aries (Pakistan) = permanent rivalry axis. See mundane-gopal-212-rivalry in interpretation_rules."
+  },
+  {
+    "entity_id": "geo-sign-gemini",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "gemini",
+    "sign_no": 3,
+    "element": "air",
+    "modality": "dual",
+    "countries": [
+      "USA",
+      "Wales",
+      "Belgium",
+      "Armenia",
+      "Eritrea",
+      "Tunisia",
+      "Sardinia"
+    ],
+    "cities": [
+      "London",
+      "Versailles",
+      "Nuremberg",
+      "Plymouth",
+      "San Francisco",
+      "Mecca"
+    ],
+    "india_regions": [
+      "Uttar Pradesh",
+      "Bihar (Northern)",
+      "Delhi NCR"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "geo-sign-cancer",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "cancer",
+    "sign_no": 4,
+    "element": "water",
+    "modality": "cardinal",
+    "countries": [
+      "Holland",
+      "Scotland",
+      "New Zealand",
+      "Paraguay",
+      "Mauritania",
+      "Morocco"
+    ],
+    "cities": [
+      "Amsterdam",
+      "Berne",
+      "Cadiz",
+      "Constantinople",
+      "Genoa",
+      "Milan",
+      "Venice",
+      "New York (Eastern)"
+    ],
+    "india_regions": [
+      "Bengal",
+      "Assam",
+      "Odisha",
+      "Coastal East India"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "India's Cancer-Capricorn AXIS is the critical war axis (Mehta Ch 19). Afflictions to Cancer proven more serious than Taurus-Scorpio axis in 1962 and 1971 Indian wars."
+  },
+  {
+    "entity_id": "geo-sign-leo",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "raphael_west"
+      ]
+    },
+    "sign": "leo",
+    "sign_no": 5,
+    "element": "fire",
+    "modality": "fixed",
+    "countries": [
+      "France",
+      "Italy",
+      "Macedonia",
+      "Sicily",
+      "Romania",
+      "Czech Republic"
+    ],
+    "cities": [
+      "Rome",
+      "Bath",
+      "Bristol",
+      "Bombay (financial)",
+      "Damascus",
+      "Los Angeles",
+      "Chicago"
+    ],
+    "india_regions": [
+      "Madhya Pradesh (Central)",
+      "Chhattisgarh"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "Saturn entering Leo = 'Real Estate Bull Run': 100% growth in property prices (validated 2006-2008). Saturn-Ketu conjunction in Leo = oil at $70/barrel. USA Foundation Chart: Leo Lagna (4 Jul 1776, 10:21:30 AM, Philadelphia)."
+  },
+  {
+    "entity_id": "geo-sign-virgo",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "virgo",
+    "sign_no": 6,
+    "element": "earth",
+    "modality": "dual",
+    "countries": [
+      "Greece",
+      "Turkey",
+      "Switzerland (southern)",
+      "Brazil",
+      "Croatia",
+      "Mesopotamia"
+    ],
+    "cities": [
+      "Athens",
+      "Corinth",
+      "Boston",
+      "Heidelberg",
+      "Jerusalem",
+      "Paris (financial district)"
+    ],
+    "india_regions": [
+      "Andhra Pradesh",
+      "Telangana",
+      "Karnataka (Northern)"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "geo-sign-libra",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "libra",
+    "sign_no": 7,
+    "element": "air",
+    "modality": "cardinal",
+    "countries": [
+      "China",
+      "Austria",
+      "Japan (cultural)",
+      "Argentina",
+      "Burma",
+      "Tibet"
+    ],
+    "cities": [
+      "Lisbon",
+      "Vienna",
+      "Frankfurt",
+      "Antwerp",
+      "Johannesburg",
+      "Nottingham",
+      "Spires"
+    ],
+    "india_regions": [
+      "Uttar Pradesh (Western)",
+      "Haryana",
+      "Punjab"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "India's Trika Axis: Sagittarius/Aries/LIBRA = 8th house of Independent India. Sun transit through Libra activates danger phase for national security (Gopal Ch 8)."
+  },
+  {
+    "entity_id": "geo-sign-scorpio",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "scorpio",
+    "sign_no": 8,
+    "element": "water",
+    "modality": "fixed",
+    "countries": [
+      "Norway",
+      "Morocco",
+      "Algeria",
+      "Mexico",
+      "Bavaria",
+      "North Africa (general)"
+    ],
+    "cities": [
+      "Liverpool",
+      "Baltimore",
+      "Newcastle",
+      "Washington DC",
+      "Frankfurt",
+      "Ghent"
+    ],
+    "india_regions": [
+      "Himachal Pradesh",
+      "Uttarakhand",
+      "J&K"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "Scorpio-Taurus axis = primary seismic trigger (Mehta Ch 11). Major malefics in Scorpio or Taurus + eclipse = highest earthquake risk."
+  },
+  {
+    "entity_id": "geo-sign-sagittarius",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "sagittarius",
+    "sign_no": 9,
+    "element": "fire",
+    "modality": "dual",
+    "countries": [
+      "Hungary",
+      "Spain",
+      "Australia (inland)",
+      "Arabia",
+      "Madagascar"
+    ],
+    "cities": [
+      "Cologne",
+      "Naples",
+      "Stuttgart",
+      "Avignon",
+      "Toledo",
+      "Budapest"
+    ],
+    "india_regions": [
+      "Maharashtra",
+      "Goa",
+      "Konkan coast"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "India's Trika Axis: SAGITTARIUS/Aries/Libra = 8th house of India. Sun transit through Sagittarius = India danger phase. Saturn + Ketu conjunct in Capricorn aspecting Sagittarius = 1962 China war."
+  },
+  {
+    "entity_id": "geo-sign-capricorn",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "capricorn",
+    "sign_no": 10,
+    "element": "earth",
+    "modality": "cardinal",
+    "countries": [
+      "India (Central/Northern)",
+      "Afghanistan",
+      "Bulgaria",
+      "Lithuania",
+      "Mexico (mountains)"
+    ],
+    "cities": [
+      "Oxford",
+      "Mecklenburg",
+      "Brandenburg",
+      "Delhi",
+      "Brussels",
+      "Port Said"
+    ],
+    "india_regions": [
+      "Delhi",
+      "Rajasthan (Northern)",
+      "Punjab-Haryana border"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "special_note": "India's Cancer-CAPRICORN axis is the critical war axis (Mehta Ch 19). Saturn/Ketu conjunction in Capricorn on Oct 20 1962 \u2192 China war outbreak. China Foundation Chart: Capricorn Lagna (1 Oct 1949, 15:15, Peking)."
+  },
+  {
+    "entity_id": "geo-sign-aquarius",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "aquarius",
+    "sign_no": 11,
+    "element": "air",
+    "modality": "fixed",
+    "countries": [
+      "Russia",
+      "Sweden",
+      "Abyssinia",
+      "Iran (northern)",
+      "Prussia"
+    ],
+    "cities": [
+      "Hamburg",
+      "Bremen",
+      "Moscow",
+      "Salzburg",
+      "Trent",
+      "St. Petersburg"
+    ],
+    "india_regions": [
+      "Bihar (Southern)",
+      "Jharkhand",
+      "West Bengal (Western)"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "geo-sign-pisces",
+    "entity_type": "zodiac_geography",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "Zodiac Geography",
+      "primary_chapter": "Mehta Ch 3 + Gopal Ch 3 + Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "sign": "pisces",
+    "sign_no": 12,
+    "element": "water",
+    "modality": "dual",
+    "countries": [
+      "Portugal",
+      "Norway (northern)",
+      "Calabria",
+      "Egypt",
+      "Normandy"
+    ],
+    "cities": [
+      "Alexandria",
+      "Compostella",
+      "Ratisbon",
+      "Seville",
+      "Worms"
+    ],
+    "india_regions": [
+      "Kerala",
+      "Tamil Nadu",
+      "Coastal South India"
+    ],
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00"
+  },
+  {
+    "entity_id": "nat-india",
+    "entity_type": "national_foundation_chart",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "National Foundation Chart",
+      "primary_chapter": "Mehta Ch 3, Gopal Ch 3/8",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "nation": "India",
+    "nation_slug": "india",
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "sovereignty_date": "1947-08-15",
+    "sovereignty_time": "00:00:00",
+    "sovereignty_tz": "IST (+5:30)",
+    "location": "New Delhi",
+    "lagna": "Taurus",
+    "lagna_lord": "Venus",
+    "moon_sign": "Capricorn",
+    "sun_sign": "Cancer",
+    "key_house_lords": {
+      "lagna_lord": "Venus (1st/6th)",
+      "8th_lord": "Jupiter",
+      "10th_lord": "Saturn"
+    },
+    "trika_axis": {
+      "description": "Sagittarius/Aries/Libra = 8th/12th/6th houses of India",
+      "significance": "Sun transit through Trika signs = national danger phase"
+    },
+    "critical_transits": {
+      "cancer_capricorn_axis": "Primary war axis \u2014 more dangerous than Taurus-Scorpio",
+      "rohini_gate": "Saturn/Mars in Rohini (Taurus 10\u00b0\u201323\u00b020') = war/famine threshold"
+    }
+  },
+  {
+    "entity_id": "nat-pakistan",
+    "entity_type": "national_foundation_chart",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "National Foundation Chart",
+      "primary_chapter": "Mehta Ch 3, Gopal Ch 8",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "nation": "Pakistan",
+    "nation_slug": "pakistan",
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "sovereignty_date": "1947-08-14",
+    "sovereignty_time": "00:00:00",
+    "sovereignty_tz": "PKT (+5:00)",
+    "location": "Karachi",
+    "lagna": "Aries",
+    "lagna_lord": "Mars",
+    "rivalry_note": "India (Taurus) and Pakistan (Aries) are in 2/12 relationship \u2014 nations with Lagnas in 2/12 axis cannot maintain lasting peace (Gopal Ch 8: Neighbor Rivalry Veto). This is a foundational rule for India-Pakistan predictions."
+  },
+  {
+    "entity_id": "nat-china",
+    "entity_type": "national_foundation_chart",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "National Foundation Chart",
+      "primary_chapter": "Mehta Ch 3, Mehta Ch 19",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao"
+      ]
+    },
+    "nation": "China (PRC)",
+    "nation_slug": "china",
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "sovereignty_date": "1949-10-01",
+    "sovereignty_time": "15:15:00",
+    "sovereignty_tz": "CST (+8:00)",
+    "location": "Peking (Beijing)",
+    "lagna": "Capricorn",
+    "lagna_lord": "Saturn",
+    "key_note": "India (Taurus) and China (Capricorn) are in 1/9 trine relationship \u2014 Capricorn falls on India's 9th house (luck/dharma axis). 1962 war: Saturn and Ketu conjunct at 11\u00b0 Capricorn, Mars in Cancer fully aspected \u2192 outbreak on October 20."
+  },
+  {
+    "entity_id": "nat-usa",
+    "entity_type": "national_foundation_chart",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "National Foundation Chart",
+      "primary_chapter": "Mehta Ch 3, Raphael Ch 1, Mehta Ch 21",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "nation": "USA",
+    "nation_slug": "usa",
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "sovereignty_date": "1776-07-04",
+    "sovereignty_time": "10:21:30",
+    "sovereignty_tz": "LMT Philadelphia",
+    "location": "Philadelphia, Pennsylvania",
+    "lagna": "Leo",
+    "lagna_lord": "Sun",
+    "moon_sign": "Aquarius",
+    "sun_sign": "Cancer",
+    "key_note": "Leo Lagna \u2014 USA is a 'natural king' chart. JFK assassination validation: Lagna lord Mercury (wrong \u2014 Sun rules Leo; Mercury rules 2nd/11th) conjunct 8th lord Mars in 8th, aspected by 6th lord Saturn = terminal assassination signature (JFK Gold Standard, Mehta Ch 21)."
+  },
+  {
+    "entity_id": "nat-uk",
+    "entity_type": "national_foundation_chart",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "National Foundation Chart",
+      "primary_chapter": "Mehta Ch 3, Raphael Ch 1",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "raphael_west"
+      ]
+    },
+    "nation": "United Kingdom",
+    "nation_slug": "uk",
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "sovereignty_date": "1801-01-01",
+    "sovereignty_time": "00:00:00",
+    "sovereignty_tz": "GMT",
+    "location": "London",
+    "lagna": "Libra",
+    "lagna_lord": "Venus",
+    "key_note": "UK traditionally assigned Aries (Raphael) or Libra (Mehta). Libra Lagna: UK is a partnership-oriented governance chart. Raphael's Aries assignment also used in Western mundane tradition."
+  },
+  {
+    "entity_id": "nat-bangladesh",
+    "entity_type": "national_foundation_chart",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "National Foundation Chart",
+      "primary_chapter": "Mehta Ch 3, Mehta Ch 19",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao"
+      ]
+    },
+    "nation": "Bangladesh",
+    "nation_slug": "bangladesh",
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "sovereignty_date": "1971-03-26",
+    "sovereignty_time": "00:01:00",
+    "sovereignty_tz": "BDT (+6:00)",
+    "location": "Dhaka",
+    "lagna": "Scorpio",
+    "key_note": "1971 war validation: Saturn retrograde in Rohini (Taurus) + Mars in Aquarius aspecting Saturn in Rohini \u2192 birth of Bangladesh / dismemberment of Pakistan. Mars (Lagna lord of Pakistan: Aries) aspected by Saturn was the critical trigger."
+  },
+  {
+    "entity_id": "nat-russia",
+    "entity_type": "national_foundation_chart",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "National Foundation Chart",
+      "primary_chapter": "Mehta Ch 3, Gopal Ch 3",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "nation": "Russia (Soviet/Post-Soviet)",
+    "nation_slug": "russia",
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "sovereignty_date": "1991-12-25",
+    "sovereignty_time": "19:38:00",
+    "sovereignty_tz": "MSK (+3:00)",
+    "location": "Moscow",
+    "lagna": "Gemini",
+    "traditional_sign": "Aquarius",
+    "key_note": "Traditional zodiac geography assigns Russia to Aquarius. Modern Russia (1991 dissolution) has Gemini Lagna. For transit purposes, Aquarius remains the primary national sign."
+  },
+  {
+    "entity_id": "nat-independent-india-annual",
+    "entity_type": "national_foundation_chart",
+    "source": {
+      "science": "mundane_jyotish",
+      "framework": "National Foundation Chart",
+      "primary_chapter": "Mehta Ch 2, Gaur Ch 1/2",
+      "batch_id": "mundane-geo-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "nation": "India \u2014 Annual Hindu New Year Reference",
+    "nation_slug": "india_annual",
+    "created_at": "2026-05-05T12:32:53.855446+00:00",
+    "updated_at": "2026-05-05T12:32:53.855446+00:00",
+    "chart_type": "Hindu_New_Year_Reference",
+    "key_note": "The Hindu New Year (Chaitra Shukla Pratipada) chart is cast annually for New Delhi as the primary mundane forecast vehicle for India. This entity records the chart TYPE, not a specific year's chart. Each annual chart is evaluated against India's Foundation Chart (nat-india). The Celestial Council (King, Minister, etc.) is re-appointed each year based on the weekday lord of the relevant ingress. See mundane_engine_specs.",
+    "evaluation_protocol": "Step 1 of Mehta's 9-Step Scheme. Foundation Chart is the DNA; Hindu New Year is the annual manifestation layer."
+  }
+]

@@ -1,0 +1,5527 @@
+[
+  {
+    "rule_id": "mundane-gaur-ch1-samvatsar-king",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 1,
+      "logic_unit": "LU_MA.global_tone.samvatsar_king",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_global_tone",
+      "sub_type": "samvatsar_king"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch1-samvatsar-king",
+      "detailed": "The planet that is King of the Samvatsar (Hindu year) governs the overall national and global tone for that year. Its natural significations manifest as the dominant theme: Sun-King = strong leadership/authoritarian; Moon-King = public welfare/emotional; Mars-King = war/violence; Mercury-King = commerce/communication; Jupiter-King = justice/religion; Venus-King = culture/luxury/diplomacy; Saturn-King = labour/austerity/disease.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "samvatsar_king",
+      "extra_cond": {
+        "king_results": {
+          "Sun": {
+            "theme": "Authority and power \u2014 rulers assert dominance; strong governance",
+            "risk": "Ego-driven conflict, authoritarian overreach"
+          },
+          "Moon": {
+            "theme": "Public welfare, water, women \u2014 popular governments flourish",
+            "risk": "Emotional instability, floods, indecisiveness"
+          },
+          "Mars": {
+            "theme": "War, courage, manufacturing \u2014 military budgets rise",
+            "risk": "Violence, fires, border conflicts, surgical strikes"
+          },
+          "Mercury": {
+            "theme": "Trade, communications, education \u2014 commerce booms",
+            "risk": "Fraud, misinformation, market manipulation"
+          },
+          "Jupiter": {
+            "theme": "Religion, justice, dharma \u2014 moral prosperity",
+            "risk": "Judicial crises, religious controversies"
+          },
+          "Venus": {
+            "theme": "Culture, luxury, diplomacy \u2014 arts and beauty flourish",
+            "risk": "Moral decline, excessive luxury spending, political compromise"
+          },
+          "Saturn": {
+            "theme": "Labour, crops, discipline \u2014 austerity drives reform",
+            "risk": "Famine, epidemics, strikes, agricultural failure"
+          },
+          "Rahu": {
+            "theme": "Foreign influence, disruption \u2014 outsiders reshape national policy",
+            "risk": "Foreign manipulation, identity crises, mass misinformation"
+          },
+          "Ketu": {
+            "theme": "Spiritual upheaval, hidden forces \u2014 mystical/covert events",
+            "risk": "Fires, epidemics, covert destabilization, mass disillusionment"
+          }
+        }
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch1-king-afflicted",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 1,
+      "logic_unit": "LU_MA.global_tone.king_afflicted",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_global_tone",
+      "sub_type": "affliction_flag"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch1-king-afflicted",
+      "detailed": "IF the Samvatsar King planet is afflicted (conjunct or aspected by malefics, combust, debilitated, or in enemy sign) THEN the domain it governs faces a national crisis for the year. Severity scales with the number of afflictions.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "samvatsar_king_afflicted",
+      "extra_cond": {
+        "severity_scale": "1 affliction = moderate; 2 = severe; 3+ = critical national crisis"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch1-king-minister-same",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 1,
+      "logic_unit": "LU_MA.global_tone.king_minister_same",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_global_tone",
+      "sub_type": "power_concentration"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch1-king-minister-same",
+      "detailed": "IF Samvatsar King and Minister are the same planet (weekday lord at Pratipada = weekday lord at Aries Ingress) THEN absolute concentration of power. Strong planet = decisive autocratic governance; afflicted = despotism and instability.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "king_minister_same_planet"
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch1-benefic-king",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 1,
+      "logic_unit": "LU_MA.global_tone.benefic_king",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_global_tone",
+      "sub_type": "prosperity_signal"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch1-benefic-king",
+      "detailed": "IF Samvatsar King is a natural benefic (Jupiter, Venus, Mercury-unafflicted, or waxing Moon) AND the King planet is strong (own sign, exaltation, or angular) THEN the year delivers national prosperity, abundance, and peace.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "samvatsar_king",
+      "extra_cond": {
+        "king_quality": "natural_benefic",
+        "king_strength": "strong"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch1-malefic-king",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 1,
+      "logic_unit": "LU_MA.global_tone.malefic_king",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_global_tone",
+      "sub_type": "turbulence_signal"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch1-malefic-king",
+      "detailed": "IF Samvatsar King is a natural malefic (Saturn, Mars, Rahu, Ketu, Sun) AND afflicted THEN the year is marked by conflict, hardship, or crisis in the domain governed by that planet. Saturn-King afflicted = famine/disease. Mars-King afflicted = war/fires. Rahu-King afflicted = foreign manipulation.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "samvatsar_king",
+      "extra_cond": {
+        "king_quality": "natural_malefic",
+        "king_strength": "afflicted"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch1-meghesh-afflicted",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 1,
+      "logic_unit": "LU_MA.global_tone.meghesh_afflicted",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_global_tone",
+      "sub_type": "rainfall_forecast"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch1-meghesh-afflicted",
+      "detailed": "IF Meghesh (Weather Secretary \u2014 weekday lord at Sun's Ardra ingress) is afflicted (debilitated, combust, or aspected by Saturn/Mars/Rahu) THEN monsoon will be deficient: drought risk HIGH for that year. Strong Meghesh in water sign = abundant rainfall.",
+      "remedies": [],
+      "result": "Monsoon deficient \u2014 drought risk elevated"
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_role",
+      "extra_cond": {
+        "role": "meghesh",
+        "planet_state": "afflicted"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch1-durgesh-afflicted",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 1,
+      "logic_unit": "LU_MA.global_tone.durgesh_afflicted",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_global_tone",
+      "sub_type": "security_forecast"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch1-durgesh-afflicted",
+      "detailed": "IF Durgesh (Defence Secretary \u2014 weekday lord at Sun's Leo ingress) is afflicted THEN national defence is compromised for the year: border incursions, military setbacks, or internal security failures likely. Mars as strong Durgesh = decisive military strength.",
+      "remedies": [],
+      "result": "Defence compromised \u2014 border/security threat elevated"
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_role",
+      "extra_cond": {
+        "role": "durgesh",
+        "planet_state": "afflicted"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch1-dhanesh-strong",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 1,
+      "logic_unit": "LU_MA.global_tone.dhanesh_strong",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_global_tone",
+      "sub_type": "economic_forecast"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch1-dhanesh-strong",
+      "detailed": "IF Dhanesh (Finance Secretary \u2014 weekday lord at Sun's Taurus ingress) is strong (own sign, exaltation, angular, aspected by Jupiter) THEN national economy grows: treasury surplus, stock market bullish, foreign investment rises.",
+      "remedies": [],
+      "result": "National economy growing \u2014 treasury surplus, markets bullish"
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_role",
+      "extra_cond": {
+        "role": "dhanesh",
+        "planet_state": "strong"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-king-sun",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.king_sun",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "king_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-king-sun",
+      "detailed": "Sun as King: Rulers assert dominance; decisive executive action; strong centralized government. Risk: authoritarian overreach, ego-driven conflict with neighbours.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_king",
+      "extra_cond": {
+        "king_planet": "sun"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-king-moon",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.king_moon",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "king_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-king-moon",
+      "detailed": "Moon as King: Public welfare policies dominate; emotional leadership; women gain prominence. Strong = floods (water abundance); afflicted = drought or public unrest.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_king",
+      "extra_cond": {
+        "king_planet": "moon"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-king-mars",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.king_mars",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "king_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-king-mars",
+      "detailed": "Mars as King: Military budgets rise; surgical strikes likely; manufacturing booms. Afflicted = war outbreak, fires, industrial accidents.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_king",
+      "extra_cond": {
+        "king_planet": "mars"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-king-mercury",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.king_mercury",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "king_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-king-mercury",
+      "detailed": "Mercury as King: Commerce, trade, and communications lead the year. Media/IT sector dominant. Afflicted = fraud epidemics, market manipulation, misinformation crisis.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_king",
+      "extra_cond": {
+        "king_planet": "mercury"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-king-jupiter",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.king_jupiter",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "king_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-king-jupiter",
+      "detailed": "Jupiter as King: Justice, education, and religious harmony prevail. Judiciary active. Afflicted = judicial scandal, religious controversy, educational system failure.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_king",
+      "extra_cond": {
+        "king_planet": "jupiter"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-king-venus",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.king_venus",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "king_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-king-venus",
+      "detailed": "Venus as King: Cultural golden age; diplomatic initiatives; luxury sector booms. Afflicted = moral decline, over-spending, political compromise and corruption.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_king",
+      "extra_cond": {
+        "king_planet": "venus"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-king-saturn",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.king_saturn",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "king_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-king-saturn",
+      "detailed": "Saturn as King: Austerity and labour reforms dominate. Agricultural stability if strong. Afflicted = famine, epidemic, mass strikes, or prolonged drought year.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_king",
+      "extra_cond": {
+        "king_planet": "saturn"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-king-rahu",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.king_rahu",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "king_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-king-rahu",
+      "detailed": "Rahu as King: Foreign influence reshapes national policy; outsiders gain power. Strong = international trade gains. Afflicted = foreign manipulation, identity crisis, conspiracy.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_king",
+      "extra_cond": {
+        "king_planet": "rahu"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-king-ketu",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.king_ketu",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "king_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-king-ketu",
+      "detailed": "Ketu as King: Spiritual and covert forces active; hidden events shape the year. Afflicted = fires, epidemics, mass religious disillusionment, covert destabilization.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_king",
+      "extra_cond": {
+        "king_planet": "ketu"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-minister-afflicted",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.minister_afflicted",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "minister_outcome"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-minister-afflicted",
+      "detailed": "IF Minister planet (weekday lord at Aries Ingress) is afflicted THEN administrative machinery breaks down: policy paralysis, bureaucratic corruption, and failed legislation define the year.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_minister",
+      "extra_cond": {
+        "planet_state": "afflicted"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-sasyesh-afflicted",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.sasyesh_afflicted",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "crop_forecast"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-sasyesh-afflicted",
+      "detailed": "IF Sasyesh (Summer Crops \u2014 weekday lord at Sun's Cancer ingress) is afflicted THEN Kharif (summer crop) season fails: food grain production below average, prices rise sharply from September onward.",
+      "remedies": [],
+      "result": "Kharif crop failure \u2014 grain prices rise from September"
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_role",
+      "extra_cond": {
+        "role": "sasyesh",
+        "planet_state": "afflicted"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch2-dhanyesh-afflicted",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 2,
+      "logic_unit": "LU_MA.celestial_council.dhanyesh_afflicted",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_celestial_council",
+      "sub_type": "grain_forecast"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch2-dhanyesh-afflicted",
+      "detailed": "IF Dhanyesh (Grains \u2014 weekday lord at Sun's Virgo ingress) is afflicted THEN cereal production (wheat, rice) falls below national requirement: food security risk, potential import dependency.",
+      "remedies": [],
+      "result": "Grain scarcity \u2014 cereal import dependency risk"
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "celestial_council_role",
+      "extra_cond": {
+        "role": "dhanyesh",
+        "planet_state": "afflicted"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch3-high-jal-stambha",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 3,
+      "logic_unit": "LU_MA.agricultural.jal_high",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_agricultural",
+      "sub_type": "jal_high"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch3-high-jal-stambha",
+      "detailed": "HIGH Jal Stambha (>50% water pillar at Pratipada) = abundant rainfall year. Rivers in flood; irrigation surplus; agricultural prosperity. Watch for waterlogging in low-lying areas.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "agricultural_indicator",
+      "extra_cond": {
+        "indicator": "jal_high"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch3-low-jal-stambha",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 3,
+      "logic_unit": "LU_MA.agricultural.jal_low",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_agricultural",
+      "sub_type": "jal_low"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch3-low-jal-stambha",
+      "detailed": "LOW Jal Stambha (<20% water pillar at Pratipada) = drought year. Water scarcity in arid zones; crop failures in rain-fed areas; wells/reservoirs at risk.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "agricultural_indicator",
+      "extra_cond": {
+        "indicator": "jal_low"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch3-high-anna-stambha",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 3,
+      "logic_unit": "LU_MA.agricultural.anna_high",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_agricultural",
+      "sub_type": "anna_high"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch3-high-anna-stambha",
+      "detailed": "HIGH Anna Stambha (>50% food pillar) = food surplus year. Grain prices fall; public contentment rises; agricultural income above average.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "agricultural_indicator",
+      "extra_cond": {
+        "indicator": "anna_high"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch3-low-anna-stambha",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 3,
+      "logic_unit": "LU_MA.agricultural.anna_low",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_agricultural",
+      "sub_type": "anna_low"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch3-low-anna-stambha",
+      "detailed": "LOW Anna Stambha (<20% food pillar) = food scarcity year. Grain prices rise sharply; social unrest risk; government may need to release strategic reserves.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "agricultural_indicator",
+      "extra_cond": {
+        "indicator": "anna_low"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch3-high-vayu-stambha",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 3,
+      "logic_unit": "LU_MA.agricultural.vayu_high",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_agricultural",
+      "sub_type": "vayu_high"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch3-high-vayu-stambha",
+      "detailed": "HIGH Vayu Stambha (>50% wind pillar) = storm/cyclone year. Coastal regions at cyclone risk; crop damage from strong winds; aviation disruption.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "agricultural_indicator",
+      "extra_cond": {
+        "indicator": "vayu_high"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch3-saturn-ardra",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 3,
+      "logic_unit": "LU_MA.agricultural.saturn_ardra",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_agricultural",
+      "sub_type": "saturn_ardra"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch3-saturn-ardra",
+      "detailed": "Saturn transiting Ardra nakshatra (Gemini 6\u00b040'\u201320\u00b0) during monsoon season = severely deficient rainfall: historic droughts have correlated with this transit. Priority alert for agriculture and water ministries.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "agricultural_indicator",
+      "extra_cond": {
+        "indicator": "saturn_ardra"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch3-rohini-protection",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 3,
+      "logic_unit": "LU_MA.agricultural.rohini_protection",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_agricultural",
+      "sub_type": "rohini_protection"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch3-rohini-protection",
+      "detailed": "IF Rohini nakshatra is UNAFFLICTED (no Saturn, Mars, or Rahu transiting it) AND the monsoon enters on schedule THEN rainfall will be abundant and well-distributed. Rohini = the 'King's Eye' \u2014 its health determines annual rainfall quality.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "agricultural_indicator",
+      "extra_cond": {
+        "indicator": "rohini_protection"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch3-yield-price-inverse",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 3,
+      "logic_unit": "LU_MA.agricultural.yield_price_inverse",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_agricultural",
+      "sub_type": "yield_price_inverse"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch3-yield-price-inverse",
+      "detailed": "Agricultural yield and food prices are INVERSELY correlated: High crop yield \u2192 prices LOW (oversupply). Low crop yield \u2192 prices HIGH (scarcity premium). This inverse law overrides all other commodity price signals when yield data is available.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "agricultural_indicator",
+      "extra_cond": {
+        "indicator": "yield_price_inverse"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch4-koorma-center-back",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 4,
+      "logic_unit": "LU_MA.koorma.center_back",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_koorma_directional",
+      "sub_type": "zone_malefic_transit"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch4-koorma-center-back",
+      "detailed": "IF a malefic planet (Saturn, Mars, Rahu, or Ketu) transits the nakshatras of the Koorma zone 'center-back' (Krittika/Rohini/Mrigshira) THEN the Central India faces trouble: Central India faces disruption; interior regions affected. Benefic transit (Jupiter, Venus) in same zone = prosperity in that direction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "koorma_zone_transit",
+      "extra_cond": {
+        "zone_slug": "center-back",
+        "nakshatras": "Krittika/Rohini/Mrigshira",
+        "direction": "Central India",
+        "malefic_result": "Central India faces disruption; interior regions affected",
+        "benefic_result": "Prosperity in Central India \u2014 good harvests, peaceful conditions",
+        "geo_entity_ref": "koorma-center-back"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch4-koorma-mouth-east",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 4,
+      "logic_unit": "LU_MA.koorma.mouth_east",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_koorma_directional",
+      "sub_type": "zone_malefic_transit"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch4-koorma-mouth-east",
+      "detailed": "IF a malefic planet (Saturn, Mars, Rahu, or Ketu) transits the nakshatras of the Koorma zone 'mouth-east' (Ardra/Punarvasu/Pushya) THEN the Eastern region faces trouble: Eastern zones face trouble; eastern neighbours trigger conflict. Benefic transit (Jupiter, Venus) in same zone = prosperity in that direction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "koorma_zone_transit",
+      "extra_cond": {
+        "zone_slug": "mouth-east",
+        "nakshatras": "Ardra/Punarvasu/Pushya",
+        "direction": "Eastern region",
+        "malefic_result": "Eastern zones face trouble; eastern neighbours trigger conflict",
+        "benefic_result": "Prosperity in Eastern region \u2014 good harvests, peaceful conditions",
+        "geo_entity_ref": "koorma-mouth-east"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch4-koorma-front-right-se",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 4,
+      "logic_unit": "LU_MA.koorma.front_right_se",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_koorma_directional",
+      "sub_type": "zone_malefic_transit"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch4-koorma-front-right-se",
+      "detailed": "IF a malefic planet (Saturn, Mars, Rahu, or Ketu) transits the nakshatras of the Koorma zone 'front-right-se' (Ashlesha/Magha/P.Phalguni) THEN the South-East faces trouble: South-East direction affected; Sri Lanka, Myanmar, Thailand at risk. Benefic transit (Jupiter, Venus) in same zone = prosperity in that direction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "koorma_zone_transit",
+      "extra_cond": {
+        "zone_slug": "front-right-se",
+        "nakshatras": "Ashlesha/Magha/P.Phalguni",
+        "direction": "South-East",
+        "malefic_result": "South-East direction affected; Sri Lanka, Myanmar, Thailand at risk",
+        "benefic_result": "Prosperity in South-East \u2014 good harvests, peaceful conditions",
+        "geo_entity_ref": "koorma-front-right-se"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch4-koorma-right-south",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 4,
+      "logic_unit": "LU_MA.koorma.right_south",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_koorma_directional",
+      "sub_type": "zone_malefic_transit"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch4-koorma-right-south",
+      "detailed": "IF a malefic planet (Saturn, Mars, Rahu, or Ketu) transits the nakshatras of the Koorma zone 'right-south' (U.Phalguni/Hasta/Chitra) THEN the Southern region faces trouble: Southern India/South Asia affected; Tamil Nadu, Kerala, South-East Asia. Benefic transit (Jupiter, Venus) in same zone = prosperity in that direction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "koorma_zone_transit",
+      "extra_cond": {
+        "zone_slug": "right-south",
+        "nakshatras": "U.Phalguni/Hasta/Chitra",
+        "direction": "Southern region",
+        "malefic_result": "Southern India/South Asia affected; Tamil Nadu, Kerala, South-East Asia",
+        "benefic_result": "Prosperity in Southern region \u2014 good harvests, peaceful conditions",
+        "geo_entity_ref": "koorma-right-south"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch4-koorma-back-right-sw",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 4,
+      "logic_unit": "LU_MA.koorma.back_right_sw",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_koorma_directional",
+      "sub_type": "zone_malefic_transit"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch4-koorma-back-right-sw",
+      "detailed": "IF a malefic planet (Saturn, Mars, Rahu, or Ketu) transits the nakshatras of the Koorma zone 'back-right-sw' (Swati/Anuradha/Vishakha) THEN the South-West faces trouble: South-West affected; Pakistan (inner region), Arabian Sea, Gulf. Benefic transit (Jupiter, Venus) in same zone = prosperity in that direction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "koorma_zone_transit",
+      "extra_cond": {
+        "zone_slug": "back-right-sw",
+        "nakshatras": "Swati/Anuradha/Vishakha",
+        "direction": "South-West",
+        "malefic_result": "South-West affected; Pakistan (inner region), Arabian Sea, Gulf",
+        "benefic_result": "Prosperity in South-West \u2014 good harvests, peaceful conditions",
+        "geo_entity_ref": "koorma-back-right-sw"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch4-koorma-tail-west",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 4,
+      "logic_unit": "LU_MA.koorma.tail_west",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_koorma_directional",
+      "sub_type": "zone_malefic_transit"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch4-koorma-tail-west",
+      "detailed": "IF a malefic planet (Saturn, Mars, Rahu, or Ketu) transits the nakshatras of the Koorma zone 'tail-west' (Jyeshtha/Mool/P.Ashadh) THEN the Western region faces trouble: Western zones affected; Rajasthan, Gujarat, Pakistan border. Benefic transit (Jupiter, Venus) in same zone = prosperity in that direction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "koorma_zone_transit",
+      "extra_cond": {
+        "zone_slug": "tail-west",
+        "nakshatras": "Jyeshtha/Mool/P.Ashadh",
+        "direction": "Western region",
+        "malefic_result": "Western zones affected; Rajasthan, Gujarat, Pakistan border",
+        "benefic_result": "Prosperity in Western region \u2014 good harvests, peaceful conditions",
+        "geo_entity_ref": "koorma-tail-west"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch4-koorma-back-left-nw",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 4,
+      "logic_unit": "LU_MA.koorma.back_left_nw",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_koorma_directional",
+      "sub_type": "zone_malefic_transit"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch4-koorma-back-left-nw",
+      "detailed": "IF a malefic planet (Saturn, Mars, Rahu, or Ketu) transits the nakshatras of the Koorma zone 'back-left-nw' (U.Ashadh/Shravan/Dhanishtha) THEN the North-West faces trouble: North-West affected; Punjab, Kashmir, Afghanistan, Pakistan (North). Benefic transit (Jupiter, Venus) in same zone = prosperity in that direction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "koorma_zone_transit",
+      "extra_cond": {
+        "zone_slug": "back-left-nw",
+        "nakshatras": "U.Ashadh/Shravan/Dhanishtha",
+        "direction": "North-West",
+        "malefic_result": "North-West affected; Punjab, Kashmir, Afghanistan, Pakistan (North)",
+        "benefic_result": "Prosperity in North-West \u2014 good harvests, peaceful conditions",
+        "geo_entity_ref": "koorma-back-left-nw"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch4-koorma-left-north",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 4,
+      "logic_unit": "LU_MA.koorma.left_north",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_koorma_directional",
+      "sub_type": "zone_malefic_transit"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch4-koorma-left-north",
+      "detailed": "IF a malefic planet (Saturn, Mars, Rahu, or Ketu) transits the nakshatras of the Koorma zone 'left-north' (Shatbhisha/P.Bhadra/U.Bhadra) THEN the Northern region faces trouble: Northern India affected; J&K, China border, Nepal, Himalayas. Benefic transit (Jupiter, Venus) in same zone = prosperity in that direction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "koorma_zone_transit",
+      "extra_cond": {
+        "zone_slug": "left-north",
+        "nakshatras": "Shatbhisha/P.Bhadra/U.Bhadra",
+        "direction": "Northern region",
+        "malefic_result": "Northern India affected; J&K, China border, Nepal, Himalayas",
+        "benefic_result": "Prosperity in Northern region \u2014 good harvests, peaceful conditions",
+        "geo_entity_ref": "koorma-left-north"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch4-koorma-front-left-ne",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 4,
+      "logic_unit": "LU_MA.koorma.front_left_ne",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_koorma_directional",
+      "sub_type": "zone_malefic_transit"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch4-koorma-front-left-ne",
+      "detailed": "IF a malefic planet (Saturn, Mars, Rahu, or Ketu) transits the nakshatras of the Koorma zone 'front-left-ne' (Revati/Ashwini/Bharani) THEN the North-East faces trouble: North-East affected; Bangladesh, Myanmar, China (Assam/Arunachal border). Benefic transit (Jupiter, Venus) in same zone = prosperity in that direction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "koorma_zone_transit",
+      "extra_cond": {
+        "zone_slug": "front-left-ne",
+        "nakshatras": "Revati/Ashwini/Bharani",
+        "direction": "North-East",
+        "malefic_result": "North-East affected; Bangladesh, Myanmar, China (Assam/Arunachal border)",
+        "benefic_result": "Prosperity in North-East \u2014 good harvests, peaceful conditions",
+        "geo_entity_ref": "koorma-front-left-ne"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-saturn-rohini-drought",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_saturn_rohini",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "drought_war_gate"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-saturn-rohini-drought",
+      "detailed": "Saturn transiting Rohini nakshatra (Taurus 10\u00b0\u201323\u00b020') = CRITICAL DROUGHT SIGNAL. Rohini is the 'King's Eye' of rainfall; Saturn's cold/dry nature in Rohini throttles monsoon. Also the Rohini Gate war threshold \u2014 see war rules. Historical: 1971 Indo-Pak war, WWI, WWII all triggered with Saturn in Rohini.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_saturn_rohini"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-saturn-retrograde-uttarashadh",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_saturn_retrograde_uttarashadh",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "drought_signal"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-saturn-retrograde-uttarashadh",
+      "detailed": "Saturn retrograde in Uttarashadha nakshatra (Sagittarius 26\u00b040'\u2013Capricorn 10\u00b0) and moving back into Poorvashadha = SEVERE DROUGHT AND GRAIN CRISIS. The retrograde motion backward across the Sagittarius/Capricorn junction signals prolonged disruption to winter crops.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_saturn_retrograde_uttarashadh"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-retrograde-mars-war-veto",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_mars_retrograde_veto",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "war_prerequisite"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-retrograde-mars-war-veto",
+      "detailed": "Retrograde Mars is a PREREQUISITE for war escalation. If Mars is DIRECT during border tensions, classify as 'Non-Escalatory Friction' \u2014 conflict will not escalate to full-scale war. Only retrograde Mars = war outbreak risk (validated: all major Indian wars). This rule VETOES war predictions when Mars is in direct motion.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_mars_retrograde_veto"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-mars-perigee-manufacturing",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_mars_perigee",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "sector_boom"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-mars-perigee-manufacturing",
+      "detailed": "Mars at perigee (closest approach to Earth) = Manufacturing and mechanical sector BOOM. Auto-ancillary exports peak. Also triggers the 'South Leadership Replacement' veto: incumbents in the Southern direction (Mars in southern sign) face electoral defeat.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_mars_perigee"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-jupiter-pushya-bull",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_saturn_pushya",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "market_bull_run"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-jupiter-pushya-bull",
+      "detailed": "Saturn OR Jupiter transiting Pushya nakshatra (Cancer 3\u00b020'\u201316\u00b040') = exceptional equity market bull run. 50-100% index growth expected. Sector winners: Banking, FMCG, IT, Telecom. Validated: 2006 Sensex rose from 6,000 to 12,000+ during Saturn in Pushya.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_saturn_pushya"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-saturn-leo-real-estate",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_saturn_leo",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "real_estate_boom"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-saturn-leo-real-estate",
+      "detailed": "Saturn entering Leo (Simha) = Real estate and property market 100% growth phase. Middle-class obsession with home ownership peaks. Builder stocks surge. Validated: 2006-2008 metro property surge during Saturn in Leo.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_saturn_leo"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-saturn-ketu-leo-oil",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_saturn_ketu_leo",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "oil_price_spike"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-saturn-ketu-leo-oil",
+      "detailed": "Saturn-Ketu conjunction in Leo = Crude oil prices surge to $70+/barrel. Energy sector pressures; proxy war risks increase. Validated: 2006 oil price peak.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_saturn_ketu_leo"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-rahu-ketu-cancer-capricorn",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_rahu_cancer_capricorn",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "india_war_axis"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-rahu-ketu-cancer-capricorn",
+      "detailed": "Rahu-Ketu axis in Cancer-Capricorn = India's critical vulnerability axis activated. This is the SAME axis as the 1962 China war and 1971 Pakistan war. Heightened risk of border conflict or leadership crisis for India when nodal axis falls on Cancer-Capricorn.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_rahu_cancer_capricorn"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-sun-ardra-rain",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_sun_ardra",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "monsoon_onset"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-sun-ardra-rain",
+      "detailed": "Sun entering Ardra nakshatra (Gemini 6\u00b040'\u201320\u00b0) = monsoon season officially activates (traditional: Ardra Pravesh = onset of rains). Weekday of Sun's Ardra entry sets the Meghesh for the entire monsoon season. Saturn/Rahu in Ardra at this point = deficient monsoon despite seasonal onset.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_sun_ardra"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-saturn-3rd-india-it",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_saturn_3rd_india",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "it_bpo_boom"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-saturn-3rd-india-it",
+      "detailed": "Saturn transiting the 3rd house of India's national foundation chart (Cancer Lagna = 3rd house Virgo) = IT/BPO sector becomes national economic backbone. Ignore all media skepticism about sector failure during this transit \u2014 the sector thrives. Validated: India's IT boom during Saturn's transit of India's 3rd house (2003-2006).",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_saturn_3rd_india"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-three-day-rule",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.temporal_three_day_rule",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "instability_gate"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-three-day-rule",
+      "detailed": "TEMPORAL INSTABILITY GATE: If a lunar month contains THREE Sundays, Tuesdays, OR Saturdays (any one of these three weekdays appearing 3 times in the same lunar month) then the 'Instability Coefficient' rises by 0.80 \u2014 high probability of inauspicious outbreak (conflict, natural disaster, political crisis) during that month.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "temporal_three_day_rule"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-retrograde-famine",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_saturn_retrograde_famine",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "famine_signal"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-retrograde-famine",
+      "detailed": "Saturn retrograde in Uttarashadha + moving back into Poorvashadha = severe drought and grain crisis at national scale. This specific retrograde pattern (crossing the Sagittarius/Capricorn nakshatra boundary backward) disrupts both monsoon and rabi crops simultaneously.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_saturn_retrograde_famine"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-sun-mool-gold-cheap",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_sun_mool",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "gold_cheap"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-sun-mool-gold-cheap",
+      "detailed": "Sun transiting Mool nakshatra (Sagittarius 0\u00b0\u201313\u00b020') = Gold and Silver prices FALL. Cotton and yarn also cheap. Counter-intuitive rule: Mool (root-destroying) sign suppresses precious metal prices. Buy window for gold accumulation.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_sun_mool"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-sun-anuradha",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_sun_anuradha",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "multi_cheap"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-sun-anuradha",
+      "detailed": "Sun transiting Anuradha nakshatra (Scorpio 3\u00b020'\u201316\u00b040') = Gold, Silver, AND Wheat ALL simultaneously cheap. Rare multi-commodity cheap window. Also: woolen clothes expensive in this window.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_sun_anuradha"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gaur-ch10-jupiter-direct-benefic",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gaur/AIFAS",
+      "chapter": 10,
+      "logic_unit": "LU_MA.transit.transit_jupiter_own_sign",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gaur_aifas",
+        "mehta_rao",
+        "gopal_modern"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_transit",
+      "sub_type": "benefic_peak"
+    },
+    "interpretation": {
+      "summary": "mundane-gaur-ch10-jupiter-direct-benefic",
+      "detailed": "Jupiter direct in own sign (Sagittarius or Pisces) OR exaltation (Cancer) = maximum benefic transit year. National dharma, judiciary, and education peak. Grain prices stable. International diplomacy favourable for the nation whose Lagna or 9th lord is Jupiter.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "planetary_transit",
+      "extra_cond": {
+        "transit_key": "transit_jupiter_own_sign"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch23-eclipse-leo1",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_leo_1st",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "leadership_death_grain"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch23-eclipse-leo1",
+      "detailed": "Solar eclipse in Leo 1st decanate (0\u00b0\u201310\u00b0) = Death of a famous prince or sovereign; scarcity of corn. National leaders in Leo-ruled countries at physical risk.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_leo_1st"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch23-eclipse-leo2",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_leo_2nd",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "leader_crisis"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch23-eclipse-leo2",
+      "detailed": "Solar eclipse in Leo 2nd decanate (10\u00b0\u201320\u00b0) = Many troubles for kings, princes, and great men; political turbulence at the top. Multi-leader crisis year.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_leo_2nd"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch23-eclipse-leo3",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_leo_3rd",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "religious_site_attacks"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch23-eclipse-leo3",
+      "detailed": "Solar eclipse in Leo 3rd decanate (20\u00b0\u201330\u00b0) = Profanation of holy places; captivity and ransacking of cities. Religious site attacks; urban conflict.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_leo_3rd"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch23-eclipse-scorpio",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_scorpio",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "mass_death_epidemic"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch23-eclipse-scorpio",
+      "detailed": "Solar or Lunar eclipse in Scorpio = Mass deaths, epidemics, and hidden conspiracies. Underground movements surface. Scorpio-ruled nations (Norway, Morocco) at risk. India: Scorpio = 7th house (war/open enemies) \u2014 heightened conflict risk.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_scorpio"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch23-eclipse-taurus",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_taurus",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "financial_agricultural_stress"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch23-eclipse-taurus",
+      "detailed": "Solar or Lunar eclipse in Taurus = Agricultural disruption; financial system stress. Taurus-ruled economies (Ireland, Iran, India's Lagna) face wealth shocks. Rohini Gate activated if eclipse falls between 10\u00b0\u201323\u00b020' Taurus.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_taurus"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch23-eclipse-aries",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_aries",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "leadership_transition"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch23-eclipse-aries",
+      "detailed": "Solar eclipse in Aries = Leadership transitions in Aries-ruled nations (UK, Germany, France, Japan). Heads of state face electoral defeat or forced removal.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_aries"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch23-eclipse-cancer",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_cancer",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "flood_leadership_crisis"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch23-eclipse-cancer",
+      "detailed": "Solar or Lunar eclipse in Cancer = Flooding, maritime disasters, public emotional crises. India's Sun is in Cancer (Independence Chart) \u2014 leadership under extreme pressure.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_cancer"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch25-saturn-mars",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.conjunction_saturn_mars",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "war_regicide"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch25-saturn-mars",
+      "detailed": "Saturn-Mars conjunction = War, rioting, and regicide. Frequency: approximately every 2 years. Intensity magnified if conjunction occurs in Rohini (Taurus) or Aries. Historical: every major Indo-Pak military confrontation features Saturn-Mars alignment.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "conjunction_saturn_mars"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch25-jupiter-saturn-20yr",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.conjunction_jupiter_saturn_20yr",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "generational_shift"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch25-jupiter-saturn-20yr",
+      "detailed": "Jupiter-Saturn conjunction (every 20 years) = Generational shift in world order. The sign of conjunction determines the dominant geopolitical theme for 20 years. Full mutation cycle: 724 years (complete journey through all elements).",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "conjunction_jupiter_saturn_20yr"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch25-eclipse-4th-8th",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_4th_10th_house",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "national_disruption"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch25-eclipse-4th-8th",
+      "detailed": "Eclipse falling in 4th or 10th house of a national foundation chart = The nation experiences its most intense disruption of the year in that chart. 4th house = land, domestic stability, agriculture. 10th house = government, leadership.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_4th_10th_house"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch25-eclipse-duration",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_duration_rule",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "effect_duration"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch25-eclipse-duration",
+      "detailed": "ECLIPSE DURATION RULE: A solar eclipse's effects last 1 year per hour of totality. A lunar eclipse's effects last 1 month per hour. Short eclipses = acute short events. Long eclipses = prolonged national challenges.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_duration_rule"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-raphael-ch25-eclipse-forerunner",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Raphael",
+      "chapter": 23,
+      "logic_unit": "LU_MA.eclipse.eclipse_forerunner_igniter",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "raphael_west",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_eclipse",
+      "sub_type": "causal_sequence"
+    },
+    "interpretation": {
+      "summary": "mundane-raphael-ch25-eclipse-forerunner",
+      "detailed": "Eclipse alone is not the trigger \u2014 it is the FORERUNNER. The malefic planet that subsequently aspects the eclipse degree fires the actual event. Rule: Eclipse primes the zone; first malefic to aspect that zodiacal degree ignites the outcome.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "eclipse_event",
+      "extra_cond": {
+        "eclipse_key": "eclipse_forerunner_igniter"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch19-rohini-gate",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.war_geopolitical.war_rohini_gate",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "war_rohini_gate"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch19-rohini-gate",
+      "detailed": "ROHINI GATE \u2014 Primary war/famine threshold: Saturn or malefics transiting Rohini nakshatra (Taurus 10\u00b0\u201323\u00b020') AND aspected by Mars = war or severe famine imminent. This is the single highest-confidence war indicator. Historical: WWI (1914-18), WWII (1939-45), 1971 Indo-Pak War all activated Rohini Gate.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "war_rohini_gate"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch19-destruction-scheme",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.war_geopolitical.war_destruction_scheme",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "war_destruction_scheme"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch19-destruction-scheme",
+      "detailed": "DESTRUCTION SCHEME \u2014 War prerequisite trigger: IF Saturn AND Mars AND Rahu all transit into mutual Vedha positions on the Sanghatta grid THEN Destruction_Scheme = TRUE. This is the foundational war axiom \u2014 when these three malefics 'meet and plan', large-scale conflict becomes near-certain.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "war_destruction_scheme"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch19-triple-affliction",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.war_geopolitical.war_triple_affliction",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "war_triple_affliction"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch19-triple-affliction",
+      "detailed": "WAR TRIPLE AFFLICTION \u2014 Mandatory prerequisite: War requires ALL THREE to be simultaneously afflicted: (1) Lagna/Lagna lord of the national chart, (2) Both luminaries (Sun AND Moon), (3) 7th house or 7th lord (open enemies / war axis). Partial affliction = border friction only. Full triple affliction = declared war.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "war_triple_affliction"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch19-india-cancer-capricorn",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.war_geopolitical.war_india_axis",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "war_india_axis"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch19-india-cancer-capricorn",
+      "detailed": "INDIA CRITICAL WAR AXIS \u2014 Cancer-Capricorn axis is MORE dangerous for India than the Taurus-Scorpio axis. Malefics afflicting India's Cancer-Capricorn axis = risk of national humiliation or territorial loss (validated: 1962 China war, 1971). Taurus-Scorpio axis = secondary war axis (validated: 1965 Pakistan war).",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "war_india_axis"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch19-victory-monitor",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.war_geopolitical.war_victory_monitor",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "war_victory_monitor"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch19-victory-monitor",
+      "detailed": "VICTORY MONITOR: IF malefics are in the 6th house (enemies defeated) AND the Lagna lord is in a Kendra (angular house) THEN despite heavy initial pressure the nation achieves victory in the conflict. Validated: 1965 war (Sun in own house Leo Kendra + Saturn as Yogakaraka) and 1999 Kargil (3rd lord/neighbours in 6th in own sign = steel of nerves).",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "war_victory_monitor"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch19-steel-of-nerves",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.war_geopolitical.war_steel_of_nerves",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "war_steel_of_nerves"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch19-steel-of-nerves",
+      "detailed": "STEEL OF NERVES \u2014 IF the lord of the 3rd house (Neighbours/Adjacent enemies) occupies the 6th house (Attack/Conflict) in its OWN SIGN THEN the nation will exhibit 'steel of nerves': successfully repels aggression despite media/international pressure. Validated: 1999 Kargil operation.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "war_steel_of_nerves"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch8-212-rivalry",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 8,
+      "logic_unit": "LU_MA.war_geopolitical.geopolitical_212_rivalry",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "geopolitical_212_rivalry"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch8-212-rivalry",
+      "detailed": "2/12 LAGNA RIVALRY \u2014 Nations whose foundation chart Lagnas are in 2/12 relationship CANNOT maintain lasting peace. The 2nd/12th relationship creates permanent economic and territorial friction. Benchmark: India (Taurus) and Pakistan (Aries) are in 2/12 \u2014 Aries is 12th from Taurus; Taurus is 2nd from Aries. Any peace treaty between them will break down within 5 years (historically validated).",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "geopolitical_212_rivalry"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch8-global-chaos",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 8,
+      "logic_unit": "LU_MA.war_geopolitical.geopolitical_global_chaos",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "geopolitical_global_chaos"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch8-global-chaos",
+      "detailed": "GLOBAL CHAOS PROTOCOL \u2014 IF Saturn, Rahu, Mars, Ketu, AND Jupiter all occupy a single sign simultaneously THEN Result = 'Global Chaos Protocol'. Mass displacement, multiple simultaneous wars, and systemic institutional collapse occur.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "geopolitical_global_chaos"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch8-india-trika-axis",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 8,
+      "logic_unit": "LU_MA.war_geopolitical.geopolitical_india_trika",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "geopolitical_india_trika"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch8-india-trika-axis",
+      "detailed": "INDIA TRIKA AXIS \u2014 Sun transiting Sagittarius, Aries, or Libra (= 8th, 12th, or 6th house of India's Independence Chart) activates India's national danger phase. These are India's Dusthana (harmful) houses \u2014 Sun here = national vulnerability window. Combine with other malefic transits for specific event prediction.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "geopolitical_india_trika"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch8-seismic-triad",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 8,
+      "logic_unit": "LU_MA.war_geopolitical.seismic_triad",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "seismic_triad"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch8-seismic-triad",
+      "detailed": "SEISMIC TRIAD \u2014 Saturn in Dhanus/Mesha + Rahu in Meena/Virgo + Jupiter in Simha/Rishaba simultaneously = Richter 6.0+ earthquake configuration. This three-planet configuration has historically preceded major seismic events in the Indian subcontinent.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "seismic_triad"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch8-war-perigee-veto",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 8,
+      "logic_unit": "LU_MA.war_geopolitical.war_perigee_veto",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "war_perigee_veto"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch8-war-perigee-veto",
+      "detailed": "WAR PERIGEE VETO \u2014 Mars at perigee (closest approach to Earth) = war risk rises to CRITICAL regardless of diplomatic treaties or ceasefires. Physical proximity of Mars amplifies its martial energy; conflicts that appeared resolved tend to re-ignite during Mars perigee.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "war_perigee_veto"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch19-7th-lord-6th",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.war_geopolitical.war_invasion_gate",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "war_invasion_gate"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch19-7th-lord-6th",
+      "detailed": "INVASION GATE \u2014 IF 7th lord (enemy/war) is in the 6th house (borders) AND Mars is retrograde THEN serious border incursions or sudden military attack predicted. The 7th lord in 6th = enemy has entered the border zone. Retrograde Mars confirms escalation from friction to conflict.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "war_invasion_gate"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch19-national-trauma",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.war_geopolitical.war_national_trauma",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "war_national_trauma"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch19-national-trauma",
+      "detailed": "NATIONAL TRAUMA ALERT \u2014 IF Sun AND Moon are both afflicted by Saturn/Nodes AND the 8th house is simultaneously triggered in the national chart THEN the nation enters a period of intense agony and difficult government decisions. Does not necessarily mean war \u2014 can be economic collapse, assassination, or natural disaster.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "war_national_trauma"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch8-cluster-boss",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 8,
+      "logic_unit": "LU_MA.war_geopolitical.governance_cluster_boss",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "governance_cluster_boss"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch8-cluster-boss",
+      "detailed": "CLUSTER BOSS GOVERNANCE \u2014 IF 3+ planets occupy the 9th house of an oath-taking chart THEN the leader will not have full autonomy: 'Cluster Bosses' (coalition partners or external forces) will dominate decisions. Surprisingly stabilising \u2014 leader survives via compromise rather than assertion. Validated: Manmohan Singh 2004.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "governance_cluster_boss"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch8-sri-lanka-saturn-kataka",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 8,
+      "logic_unit": "LU_MA.war_geopolitical.geopolitical_sri_lanka_saturn",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_war_geopolitical",
+      "sub_type": "geopolitical_sri_lanka_saturn"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch8-sri-lanka-saturn-kataka",
+      "detailed": "Saturn entering Kataka (Cancer) = 3-year high-risk window for bloodshed and high-profile assassinations in Sri Lanka and neighboring island/coastal nations. Validated: Saturn-Cancer transit correlation with Sri Lanka civil war escalations.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "geopolitical_indicator",
+      "extra_cond": {
+        "indicator_key": "geopolitical_sri_lanka_saturn"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-bhuj-scale",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_bhuj_scale",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_bhuj_scale"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-bhuj-scale",
+      "detailed": "BHUJ SCALE EARTHQUAKE \u2014 IF Saturn and Jupiter are conjunct in Taurus AND the conjunction is aspected by Mars THEN Critical Disaster Warning: Major earthquake (Richter 6+) predicted in the nation whose 4th house falls in Taurus region or whose Lagna is Taurus. Validated: 2001 Gujarat/Bhuj earthquake (Saturn-Jupiter conjunction in Taurus aspected by Mars).",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_bhuj_scale"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-eclipse-nadir",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_eclipse_nadir",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_eclipse_nadir"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-eclipse-nadir",
+      "detailed": "ECLIPSE NADIR TRIGGER \u2014 IF eclipse falls in a fixed sign (Taurus/Leo/Scorpio/Aquarius) AND planets in fixed signs are Rising, Setting, or on the Meridian/Nadir at eclipse moment THEN high probability of seismic activity within 3 months in that sign's geographic zone.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_eclipse_nadir"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-scorpio-taurus-primary",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_taurus_scorpio_axis",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_taurus_scorpio_axis"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-scorpio-taurus-primary",
+      "detailed": "PRIMARY SEISMIC AXIS \u2014 Major transits or eclipses in Taurus or Scorpio = notoriously seismic sign placements. These two signs represent the Earth's primary fault-line axis in Vedic mundane theory. Any three-planet pile-up in Taurus or Scorpio = immediate seismic monitoring alert.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_taurus_scorpio_axis"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-jupiter-mercury-friction",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_jupiter_mercury",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_jupiter_mercury"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-jupiter-mercury-friction",
+      "detailed": "JUPITER-MERCURY SEISMIC FRICTION \u2014 Jupiter in Taurus or Scorpio conjunct or opposed to Mercury = prolific source of earthquake activity. This specific two-planet configuration has repeatedly preceded earthquake sequences across India and Asia.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_jupiter_mercury"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-cardinal-clustering",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_cardinal_cluster",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_cardinal_cluster"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-cardinal-clustering",
+      "detailed": "CARDINAL CLUSTER ALARM \u2014 Concentration of 3+ planets in the first 10\u00b0 of any cardinal sign (Aries/Cancer/Libra/Capricorn) = high friction index. Combine with eclipse proximity for seismic risk assessment.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_cardinal_cluster"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-aries-ingress-4th-8th",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_aries_ingress_dual",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_aries_ingress_dual"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-aries-ingress-4th-8th",
+      "detailed": "ANNUAL SEISMIC AUDIT \u2014 IF the Aries Ingress chart (annual solar chart) shows affliction to BOTH the 4th house (Land) AND the 8th house (Mass Death) simultaneously THEN the year carries elevated earthquake risk for the nation in question.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_aries_ingress_dual"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-tsunami-vector",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_tsunami_vector",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_tsunami_vector"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-tsunami-vector",
+      "detailed": "TSUNAMI VECTOR \u2014 IF retrograde Saturn or Rahu occupies a Kendra (angular house) AND Mars or Moon is in a watery sign (Cancer/Scorpio/Pisces) THEN maritime hazard: high probability of undersea earthquake and subsequent tsunami.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_tsunami_vector"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-indra-circle-leaders",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_indra_circle",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_indra_circle"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-indra-circle-leaders",
+      "detailed": "INDRA CIRCLE CASUALTY \u2014 IF earthquake occurs when Moon or Sun is in an Indra-circle nakshatra (Abhijit/Shravan/Dhanishtha/Rohini/Jyeshtha/Uttarashadh/Anuradha) THEN quake likely results in death of 'celebrated men' or national leaders in addition to property damage and mass casualties.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_indra_circle"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-rasi-sandhi",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_rasi_sandhi",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_rasi_sandhi"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-rasi-sandhi",
+      "detailed": "RASI SANDHI SEISMIC INSTABILITY \u2014 Major malefics at sign junctions (0\u00b0 or 29\u00b0 of any sign) create a 'double transit' instability. If Jupiter is at end of one sign and Venus at beginning of another simultaneously, the resulting friction amplifies seismic risk.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_rasi_sandhi"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-forerunner-igniter",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_forerunner_igniter",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_forerunner_igniter"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-forerunner-igniter",
+      "detailed": "SEISMIC CAUSAL SEQUENCE \u2014 Eclipse alone does NOT cause earthquakes. Eclipse = forerunner (primes the zone). First malefic to aspect the eclipse degree = igniter (fires the actual event). Always identify the eclipse degree AND track subsequent malefic aspects to it.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_forerunner_igniter"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-mercury-saturn-timing",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_mercury_saturn_timing",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_mercury_saturn_timing"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-mercury-saturn-timing",
+      "detailed": "SEISMIC TIMING MARKER \u2014 Mercury-Saturn interconnection (conjunction, opposition, or mutual aspect) OR Mercury moving behind the Sun (combust approaching) = key temporal marker for upcoming seismic event within 30 days.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_mercury_saturn_timing"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch11-eclipse-longitude-overlap",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 11,
+      "logic_unit": "LU_MA.seismic.seismic_eclipse_longitude",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_seismic",
+      "sub_type": "seismic_eclipse_longitude"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch11-eclipse-longitude-overlap",
+      "detailed": "GEOGRAPHIC PRECISION \u2014 Eclipse longitude that overlaps with the ruling sign/longitude of a specific city or region refines the earthquake 'where'. Cross-reference eclipse degree against Koorma Chakra zone nakshatras for directional precision.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "seismic_indicator",
+      "extra_cond": {
+        "seismic_key": "seismic_eclipse_longitude"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch4-election-10th-lord",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 4,
+      "logic_unit": "LU_MA.governance.election_10th_lord_strength",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "election_10th_lord_strength"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch4-election-10th-lord",
+      "detailed": "ELECTION WINNER RULE \u2014 The candidate with the HIGHER frequency of 10th lord strength across three reference points (Lagna, Chandra Lagna, Karkamsha Lagna) wins the election. Count each reference: 10th lord in angle/trine = 1 point. Candidate with more points wins. This is Gopalakrishnan's core election prediction metric.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "election_10th_lord_strength"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch5-jaimini-long-life",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 5,
+      "logic_unit": "LU_MA.governance.election_jaimini_long_life",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "election_jaimini_long_life"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch5-jaimini-long-life",
+      "detailed": "JAIMINI LONGEVITY \u2014 LONG LIFE: Both Lagna lord AND 8th lord in MOVING signs (Aries, Cancer, Libra, Capricorn). Applied to national leaders and nations: moving-sign placements = sustained tenure.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "election_jaimini_long_life"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch5-jaimini-short-life",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 5,
+      "logic_unit": "LU_MA.governance.election_jaimini_short_life",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "election_jaimini_short_life"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch5-jaimini-short-life",
+      "detailed": "JAIMINI LONGEVITY \u2014 SHORT LIFE: Both Lagna lord AND 8th lord in FIXED signs (Taurus, Leo, Scorpio, Aquarius). Counter-intuitive: fixed signs = short political life despite apparent stability.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "election_jaimini_short_life"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch5-jaimini-medium-life",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 5,
+      "logic_unit": "LU_MA.governance.election_jaimini_medium_life",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "election_jaimini_medium_life"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch5-jaimini-medium-life",
+      "detailed": "JAIMINI LONGEVITY \u2014 MEDIUM LIFE: Both Lagna lord AND 8th lord in DUAL signs (Gemini, Virgo, Sagittarius, Pisces). Medium-life leaders: complete partial terms, transition mid-mandate, or serve coalition roles.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "election_jaimini_medium_life"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-simhasan-war-gate",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_simhasan_war",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_simhasan_war"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-simhasan-war-gate",
+      "detailed": "SIMHASAN WAR GATE \u2014 IF Moon in oath chart falls in Simha Nadi (Rohini, Ardra, Hasta, Swati, Shravan, Shatbhisha) AND conjunct Mars THEN the leader will be like a lion \u2014 decisive military king who leads the nation into territorial conflict. Validated: Lal Bahadur Shastri 1965 oath chart.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_simhasan_war"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-short-cabinet",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_short_cabinet",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_short_cabinet"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-short-cabinet",
+      "detailed": "SHORT-LIFE CABINET \u2014 IF Lagna lord of oath chart is in 8th house AND 10th lord is displaced to 12th house THEN cabinet collapses or resigns within first 12 months. Validated: Chandrashekhar 1990 \u2014 resigned within 7 months.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_short_cabinet"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-fixed-lagna-stability",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_fixed_lagna",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_fixed_lagna"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-fixed-lagna-stability",
+      "detailed": "FIXED SIGN STABILITY RULE \u2014 Oath chart must have a fixed sign Lagna (Taurus/Leo/Scorpio/Aquarius) for government longevity. Moving sign = short-lived cabinet. Dual sign = coalition, moderate duration. This is the SINGLE MOST IMPORTANT Lagna selection criterion for oath timing.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_fixed_lagna"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-8th-house-veto",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_8th_house_veto",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_8th_house_veto"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-8th-house-veto",
+      "detailed": "8TH HOUSE VETO \u2014 The 8th house of the oath chart MUST be vacant. Any malefic in the 8th (especially Mars) = severe governance trouble or death/sudden removal of the leader in office. Validated: Shastri (Mars-afflicted 8th) died in office; Vajpayee 1996 (Saturn+Ketu in 8th) resigned in 13 days.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_8th_house_veto"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-raman-libra-rule",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_raman_libra",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_raman_libra"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-raman-libra-rule",
+      "detailed": "RAMAN LIBRA RULE \u2014 Libra Lagna aspected by Jupiter in an oath chart = optimal governance marker for a democratic Head of State. Leader receives maximum protection and achieves policy goals. Aquarius Lagna with Saturn in dignity = sustainable democracy alternative.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_raman_libra"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-cancer-leo-coalition-discord",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_coalition_discord",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_coalition_discord"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-cancer-leo-coalition-discord",
+      "detailed": "COALITION DISCORD TRAP \u2014 Rising Cancer or Leo Lagna in oath chart = perpetual coalition bickering because Saturn becomes the 7th lord (Partners). Saturn = delays, obstruction, enmity \u2014 as coalition lord, it guarantees partner betrayal. Never choose Cancer or Leo for coalition government oath timing.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_coalition_discord"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-lagna-lord-stronger",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_longevity_math",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_longevity_math"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-lagna-lord-stronger",
+      "detailed": "LONGEVITY MATHEMATICS \u2014 IF Lagna lord's Ashtakvarga bindu score > 8th lord's bindu score AND Lagna lord is not in 6th/8th/12th THEN government achieves mandate completion. IF 8th lord is stronger than Lagna lord (as in Mulayam-Mayawati case) = early collapse.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_longevity_math"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-lagna-lord-afflicted-death",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_leader_death",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_leader_death"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-lagna-lord-afflicted-death",
+      "detailed": "LEADERSHIP DEATH IN OFFICE \u2014 IF Lagna lord of oath chart is afflicted by Mars AND 12th lord occupies 10th house THEN leader faces terminal risk \u2014 high probability of dying in office or mysterious removal (not electoral defeat). Validated: Lal Bahadur Shastri 1964 oath chart.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_leader_death"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-corruption-nexus",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_corruption_nexus",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_corruption_nexus"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-corruption-nexus",
+      "detailed": "CORRUPTION NEXUS \u2014 IF Venus (communications/trade) is afflicted by Saturn AND Mars in the oath chart THEN governance will be marred by high-level bribery, communications or trade scandals. Validated: Narasimha Rao's Urea and Mehta (Harshad Mehta) securities scam during his tenure.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_corruption_nexus"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-economic-liberalization",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_liberalization",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_liberalization"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-economic-liberalization",
+      "detailed": "ECONOMIC LIBERALIZATION SIGNAL \u2014 IF the 2nd, 5th, AND 11th lords form a connection (conjunction, mutual aspect, or exchange) in the oath chart THEN the administration will oversee major national economic liberalization: foreign investment, market reform, sustained GDP growth. Validated: Narasimha Rao 1991 \u2014 economic reforms despite minority government.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_liberalization"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-capricorn-exclusion",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_capricorn_exclusion",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_capricorn_exclusion"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-capricorn-exclusion",
+      "detailed": "CAPRICORN EXCLUSION RULE \u2014 Capricorn is NOT recommended as oath-taking Lagna because: (1) it is a movable/Cardinal sign (short life), (2) inherent enmity between lord Saturn and 7th lord Moon creates coalition friction. Avoid Capricorn for both democratic elections and coalition oath ceremonies.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_capricorn_exclusion"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch18-bharani-krittika-veto",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 18,
+      "logic_unit": "LU_MA.governance.governance_bharani_krittika",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_governance",
+      "sub_type": "governance_bharani_krittika"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch18-bharani-krittika-veto",
+      "detailed": "STELLAR SABOTAGE VETO \u2014 If the oath-taking nakshatra is Bharani (presided by Yama/Death) or Krittika (presided by Agni/Fire) = administration ends violently or in disgrace. Validated: Vajpayee 1996 oath in Bharani \u2014 resigned in 13 days. Never schedule swearing-in ceremony in Bharani or Krittika.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "governance_indicator",
+      "extra_cond": {
+        "governance_key": "governance_bharani_krittika"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-china-war-1962",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_china_1962",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-china-war-1962",
+      "detailed": "HISTORICAL VALIDATION \u2014 China War 1962: Saturn and Ketu conjunct in Capricorn at 11\u00b0; Mars in Cancer fully aspected Saturn/Ketu on October 20, 1962 \u2192 outbreak of war with China. India's Cancer-Capricorn war axis activated. National humiliation followed. Signature: 7th lord (Sun) and Lagna lord (Venus) both afflicted in 6th house (borders).",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_china_1962",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-pakistan-war-1965",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_pakistan_1965",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-pakistan-war-1965",
+      "detailed": "HISTORICAL VALIDATION \u2014 Pakistan War 1965: Lagna afflicted by Rahu and Mars; 7th house afflicted by Ketu and Saturn. Sun in own house Leo (Kendra) and Saturn as Yogakaraka = India's VICTORY despite aggression. Taurus-Scorpio axis (secondary war axis) activated.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_pakistan_1965",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-pakistan-war-1971",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_pakistan_1971",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-pakistan-war-1971",
+      "detailed": "HISTORICAL VALIDATION \u2014 Pakistan War 1971 / Birth of Bangladesh: Saturn retrograde in Rohini (Taurus 13\u00b0) + Mars in Aquarius aspecting Saturn = Rohini Gate activated. Luminaries afflicted by Saturn and 8th lord Mercury. Outcome: dismemberment of Pakistan, birth of Bangladesh.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_pakistan_1971",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-kargil-1999",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_kargil_1999",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-kargil-1999",
+      "detailed": "HISTORICAL VALIDATION \u2014 Kargil War 1999: Mars-Saturn opposition in 1/7 axis of Hindu New Year chart. 3rd lord (Neighbours) in 6th house (Attack) in own sign = 'Steel of Nerves' \u2014 India repelled aggression successfully. Operation Vijay validated the Steel of Nerves rule.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_kargil_1999",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-indira-gandhi-1984",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_indira_gandhi_1984",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-indira-gandhi-1984",
+      "detailed": "HISTORICAL VALIDATION \u2014 Assassination of Indira Gandhi (Oct 31, 1984): LUMINARY SIEGE: Sun and Moon both afflicted by Saturn in Annual Chart. 10th house (Prime Minister): malefic Sun aspected by Saturn. 10th lord Moon in 5th aspected by Mars and 8th lord Venus. No benefics in Kendras. Rahu-Ketu in 2/8 axis afflicting 8th house and India's Lagna lord. New Moon (Oct 24, 1984): occurred in 7th house (death), luminaries under Saturn siege.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_indira_gandhi_1984",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-rajiv-gandhi-1991",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_rajiv_gandhi_1991",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-rajiv-gandhi-1991",
+      "detailed": "HISTORICAL VALIDATION \u2014 Assassination of Rajiv Gandhi (May 21, 1991): INFILTRATION GATE: Mars in 12th house of Hindu New Year (1991) = terrorists inside borders. DIRECTIONAL RULE: Mars in Taurus (South sign) \u2192 threat from SOUTH (LTTE/Tamil Tigers). EXPLOSION MULTIPLIER: Mars in 12th aspected by Rahu = suicide bombing (coefficient 0.98). GENDER MARKER: Venus in 12th Mars configuration = female assassin. All four rules validated.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_rajiv_gandhi_1991",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-mahatma-gandhi-1948",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_mahatma_gandhi_1948",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-mahatma-gandhi-1948",
+      "detailed": "HISTORICAL VALIDATION \u2014 Assassination of Mahatma Gandhi (Jan 30, 1948): PRIMARY TRIGGER: Saturn transiting natal Moon (Sadhe-Sati) and natal Rahu simultaneously. WEAPON MARKER: Mars prominent in the natal and transit = martyrdom via firearm. LUMINARY SIEGE: Sun and Moon both afflicted by malefics in transit chart of assassination day.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_mahatma_gandhi_1948",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-bhuj-earthquake-2001",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_bhuj_2001",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-bhuj-earthquake-2001",
+      "detailed": "HISTORICAL VALIDATION \u2014 Bhuj Earthquake, Gujarat (Jan 26, 2001): Saturn and Jupiter CONJUNCT in Taurus, aspected by Mars = Bhuj-Scale trigger. India's 4th house = land/property in Taurus zone. Result: Richter 7.7 earthquake, 20,000+ deaths. Seismic 16-factor checklist: Taurus-Scorpio axis (Factor 4), Jupiter-Mercury friction (Factor 5), Eclipse proximity (Factor 1) all active.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_bhuj_2001",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-sensex-2006",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_sensex_2006",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-sensex-2006",
+      "detailed": "HISTORICAL VALIDATION \u2014 Sensex Bull Run 2006: Saturn in Pushya nakshatra (Cancer) \u2192 Sensex rose from 6,000 to 12,000+ (100% gain). Sector winners: Banking, IT, FMCG, Telecom. BPO/IT boom DESPITE all media predictions of failure \u2014 Saturn in India's 3rd house. Pushya Bull Rule validated.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_sensex_2006",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-south-cms-2006",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_south_cms_2006",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-south-cms-2006",
+      "detailed": "HISTORICAL VALIDATION \u2014 South Indian CM Replacements 2006: Mars at perigee (closest to Earth) + Mars in Fixed Sign \u2192 ALL major South Indian Chief Ministers replaced simultaneously: Jayalalitha (Tamil Nadu), Oommen Chandy (Kerala), Dharam Singh (Karnataka). South Leadership Veto Rule validated: Mars direction = South \u2192 incumbency failure.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_south_cms_2006",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-jfk-1963",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_jfk_1963",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-jfk-1963",
+      "detailed": "HISTORICAL VALIDATION \u2014 Assassination of JFK (Nov 22, 1963): GLOBAL GOLD STANDARD \u2014 JFK's chart: Lagna lord Mercury + 8th lord Mars conjunct in 8th house, aspected by 6th lord Saturn = Terminal Assassination Signature. This is the engine's benchmark for physical leadership strikes globally. Proves Vedic mundane principles apply outside Indian context.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_jfk_1963",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-lal-bahadur-shastri-1966",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_shastri_1966",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-lal-bahadur-shastri-1966",
+      "detailed": "HISTORICAL VALIDATION \u2014 Death of Lal Bahadur Shastri (Jan 11, 1966, Tashkent): FOREIGN SOIL MARKER: Hindu New Year 1965: 10th lord Jupiter in Node axis; 12th house afflicted by Saturn + Mars in 6th (enemies abroad). Shastri died in Tashkent under mysterious circumstances \u2014 Foreign Soil Veto validated. Chidra Dasha: Mercury/Mercury/Moon = exit period.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_shastri_1966",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-hist-ganguly-sachin-2006",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 19,
+      "logic_unit": "LU_MA.historical_validation.hist_ganguly_sachin_2006",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "gopal_modern",
+        "gaur_aifas"
+      ]
+    },
+    "metadata": {
+      "rule_type": "historical_validation",
+      "sub_type": "empirical_case_study"
+    },
+    "interpretation": {
+      "summary": "mundane-hist-ganguly-sachin-2006",
+      "detailed": "HISTORICAL VALIDATION \u2014 Ganguly/Sachin Career Decline 2006: NADI RULE: Saturn transiting 8th nakshatra from natal Jupiter = sudden sustained poor form and career break for elite performers. Both Sourav Ganguly and Sachin Tendulkar experienced form slumps timed precisely by this Nadi transit rule. Career fall rule validated for individual elite performers.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "historical_validation",
+      "extra_cond": {
+        "case_ref": "hist_ganguly_sachin_2006",
+        "checkable_note": "Historical validation \u2014 chart data fixed to historical dates. Use for engine calibration and pattern recognition, not live prediction."
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-luminary-siege",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_luminary_siege",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_luminary_siege"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-luminary-siege",
+      "detailed": "LUMINARY SIEGE RULE \u2014 MANDATORY BASE CONDITION for any assassination prediction: On the day of the assassination, BOTH the Sun AND the Moon MUST be afflicted by malefics in transit. If only one luminary is afflicted = serious threat but not assassination. Both afflicted = assassination event confirmed.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_luminary_siege"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-10th-saturn-affliction",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_pm_jeopardy",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_pm_jeopardy"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-10th-saturn-affliction",
+      "detailed": "PM JEOPARDY GATE \u2014 IF Annual 10th House is afflicted by Sun/Saturn AND Luminaries are in Node axis THEN Critical National Security Alert: high probability of violent change in central leadership. Coefficient: 0.85. Validated: 1984 Indira Gandhi case.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_pm_jeopardy"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-infiltration-gate",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_infiltration_gate",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_infiltration_gate"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-infiltration-gate",
+      "detailed": "INFILTRATION GATE \u2014 IF Mars occupies the 12th house of the Hindu New Year chart THEN terrorists/assassins have entered the country for secret intrigue. The sign of Mars identifies the direction of infiltration: Mars in Taurus = South; Aries = East; Capricorn = North; Cancer = West. Mars in 12th + aspected by Rahu = explosive/suicide attack method (coefficient 0.98).",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_infiltration_gate"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-religious-leader-hazard",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_religious_leader",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_religious_leader"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-religious-leader-hazard",
+      "detailed": "RELIGIOUS LEADER HAZARD \u2014 IF Jupiter (religion karaka) is afflicted by Saturn + Rahu + Mars simultaneously AND 9th lord is in 8th house THEN Critical Threat: high probability of assassination of a religious head or communal icon, leading to riots. Validated: Baba Gurbachan Singh assassination 1980 \u2014 Aries Ingress chart audit.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_religious_leader"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-mystery-plot",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_mystery_plot",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_mystery_plot"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-mystery-plot",
+      "detailed": "MYSTERY PLOT MONITOR \u2014 IF the leader is in Chidra Dasha (final sub-period) AND Mars + Rahu occupy the 12th house THEN Intelligence Warning: sudden and mysterious end of the leader predicted; foreign intrigue or poisoning likely. Validated: Lal Bahadur Shastri \u2014 Chidra Dasha Mercury/Mercury/Moon, Tashkent 1966.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_mystery_plot"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-army-coup-saturn-10th",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_army_coup",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_army_coup"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-army-coup-saturn-10th",
+      "detailed": "ARMY COUP SIGNATURE \u2014 IF Saturn occupies the 10th house of the national leader's chart AND the 7th house (war/enemies) is aspected by BOTH retrograde Mars AND retrograde Saturn THEN Army Coup or violent overthrow of the government predicted. Saturn in 10th = sudden rise followed by terminal fall. Validated: Sheikh Mujiburrahman 1975.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_army_coup"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-female-assassin",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_female_assassin",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_female_assassin"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-female-assassin",
+      "detailed": "ASSASSIN IDENTIFICATION MARKER \u2014 IF Mars is in the 12th house of an ingress/lunation chart AND Venus is ALSO in the 12th house (conjunct or in same sign as Mars) THEN the attack will likely involve: (a) an explosive device and/or (b) a female perpetrator. Validated: Rajiv Gandhi assassination \u2014 Venus + Mars in 12th confirmed female bomber.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_female_assassin"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-new-moon-7th",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_new_moon_7th",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_new_moon_7th"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-new-moon-7th",
+      "detailed": "TEMPORAL IGNITION \u2014 IF New Moon occurs in the 7th house of the national chart AND the 8th house is afflicted by Nodes THEN Fortnightly Stability Alert: violent leadership transition or national tragedy predicted within 14 days of that New Moon.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_new_moon_7th"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch8-decentralized-terror",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 8,
+      "logic_unit": "LU_MA.hazard.hazard_decentralized_terror",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_decentralized_terror"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch8-decentralized-terror",
+      "detailed": "DECENTRALIZED TERROR VETO \u2014 When Saturn is in the 12th house of the national coronation chart security forces must focus on 'spies and secret foes' rather than a standing army. Terrorism has moved from chain-of-command to cellular operations (Bin Laden model). Traditional military doctrine insufficient; intelligence-led approach required.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_decentralized_terror"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-12th-house-congestion",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_12th_congestion",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_12th_congestion"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-12th-house-congestion",
+      "detailed": "12TH HOUSE CONGESTION ALERT \u2014 IF 4+ planets cluster in the 12th house of a Solar Ingress chart THEN Maximum Infiltration Alert: multiple specialized enemy assets have entered the country for a coordinated strike. National security at highest risk level. Validated: Rajiv Gandhi \u2014 Sun, Moon, Mercury, Venus, Rahu ALL in 12th of Sun-Taurus ingress.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_12th_congestion"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-mehta-ch21-double-10th-lord-hit",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Mehta/Rao",
+      "chapter": 21,
+      "logic_unit": "LU_MA.hazard.hazard_double_10th_hit",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "mehta_rao",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_double_10th_hit"
+    },
+    "interpretation": {
+      "summary": "mundane-mehta-ch21-double-10th-lord-hit",
+      "detailed": "TERMINAL REMOVAL SIGNATURE \u2014 IF Mars afflicts the 10th lord (threat to leader's body) AND the 8th lord (death lord) further afflicts the same 10th lord THEN Terminal Assassination predicted \u2014 both the threat instrument (Mars) and the death force (8th lord) target the leader simultaneously. Validated: Rajiv Gandhi 1991 Sun-Taurus ingress.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_double_10th_hit"
+      }
+    }
+  },
+  {
+    "rule_id": "mundane-gopal-ch14-pushya-bull-refinement",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "mundane_jyotish",
+      "book": "Gopalakrishnan",
+      "chapter": 14,
+      "logic_unit": "LU_MA.hazard.hazard_pushya_refinement",
+      "batch_id": "mundane-interp-v1-20260505",
+      "synthesis_sources": [
+        "gopal_modern",
+        "mehta_rao"
+      ]
+    },
+    "metadata": {
+      "rule_type": "mundane_hazard",
+      "sub_type": "hazard_pushya_refinement"
+    },
+    "interpretation": {
+      "summary": "mundane-gopal-ch14-pushya-bull-refinement",
+      "detailed": "PUSHYA BULL RUN REFINEMENT \u2014 Pushya Bull Run is most powerful when COMBINED with India being in Mercury or Venus Mahadasha/Bhukti in its national dasha. IF (Saturn in Pushya) AND (India in Mercury/Venus/Rahu period) THEN maximum equity index growth: 50-100% gain within 12-18 months. Validated: 2006 confluence of Saturn-Pushya + India's Mercury Bhukti.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T12:32:54.296537+00:00",
+    "updated_at": "2026-05-05T12:32:54.296537+00:00",
+    "condition": {
+      "condition_type": "hazard_indicator",
+      "extra_cond": {
+        "hazard_key": "hazard_pushya_refinement"
+      }
+    }
+  }
+]

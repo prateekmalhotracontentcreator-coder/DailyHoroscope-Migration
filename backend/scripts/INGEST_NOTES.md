@@ -3185,4 +3185,123 @@ All 427 ingested rules are at `auto_approved` or `pending_human_review` — **ze
 1. **Inspection-first patch scripts** — all patch scripts now require `--patch` flag; inspect-only by default
 2. **`interpretation.summary` = rule name, never prose** — prevents truncation false flags on multi-section detailed texts
 3. **Source gap documentation** — when source files are incomplete, document in script header and `metadata.source_gap`
+
+---
+
+## Mundane Astrology Ingest Sprint — 5 May 2026
+
+**New Module: Mundane Astrology (4-Book Synthesis)**
+Science domain: `mundane_jyotish` — NEVER mix with `jyotish` personal rules.
+
+**Source books:**
+| Code | Book | Role |
+|---|---|---|
+| `gaur_aifas` | Gaur/AIFAS | Ancient Core — structural authority |
+| `mehta_rao` | Mehta/Rao | Operating System — modern Indian framework |
+| `gopal_modern` | Gopalakrishnan | Modern ontology — post-independence updates |
+| `raphael_west` | Raphael | Western granular calibrator — eclipse decanates |
+
+### Batch 1 — mundane-geo-v1-20260505
+
+**Collection:** `mundane_geo_entities` (lookup tables — NOT interpretation_rules)
+**Script:** `ingest_mundane_geo_entities_v1.py`
+**JSON:** `mundane_geo_entities.json`
+**Documents: 29**
+
+| Type | Count |
+|---|---|
+| koorma_zone | 9 (9 directional zones × 3 nakshatras each) |
+| zodiac_geography | 12 (12 signs → countries/cities/India regions) |
+| national_foundation_chart | 8 (India, Pakistan, China, USA, UK, Bangladesh, Russia, India-annual) |
+
+Key notes:
+- Koorma Chakra: Gaur Ch 4/5 primary, Mehta Ch 7 reconciliation
+- Zodiac Geography: Mehta Ch 3 primary, Raphael Ch 1 Western calibration
+- `nat-india`: Taurus Lagna, 15 Aug 1947 — Cancer-Capricorn critical war axis documented
+- `nat-pakistan`: Aries Lagna — 2/12 rivalry with India documented on the entity
+- Rohini Gate special note on `koorma-center-back` and `geo-sign-taurus`
+
+---
+
+### Batch 2 — mundane-engine-v1-20260505
+
+**Collection:** `mundane_engine_specs` (procedural OS — NOT interpretation_rules)
+**Script:** `ingest_mundane_engine_specs_v1.py`
+**JSON:** `mundane_engine_specs.json`
+**Documents: 15**
+
+| spec_id | Type | Source |
+|---|---|---|
+| mehta-9-step-scheme | procedural_scheme | Mehta Ch 2 |
+| gaur-celestial-council | appointment_protocol | Gaur Ch 2 |
+| gaur-cloud-engine | formula | Gaur Ch 2: (Shak×8)/9 → 9 cloud types |
+| gaur-snake-engine | formula | Gaur Ch 2: (Shak+2)/12 → 12 snake types |
+| gaur-samvat-stambha | formula | Gaur Ch 2: 4 pillars |
+| gaur-sanghatta-vedha-matrix | lookup_grid | Gaur Ch 6: 12 signs × 3 vedha vectors |
+| mehta-simhasan-chakra | lookup_grid | Mehta Ch 18: 5 levels × 27 nakshatras |
+| mehta-5yr-dasha-table | lookup_table | Mehta Ch 18: compressed dasha days |
+| gaur-transit-temporal-sun | transit_lookup_table | Gaur Ch 10: Sun × 12 signs + 27 nakshatras |
+| gaur-transit-temporal-moon | transit_lookup_table | Gaur Ch 10: Moon sign results |
+| gaur-sun-ingress-weekday | lookup_table | Gaur Ch 10: Sankranti weekday modifiers |
+| gopal-industrial-sector | transit_lookup_table | Gopal Ch 14: sector performance rules |
+| gaur-sarvatobhadra-trade | trade_engine | Gaur Ch 8/10: Vedha → commodity price |
+| mehta-assassination-engine | diagnostic_protocol | Mehta Ch 21: hazard module |
+| mehta-seismic-16factors | diagnostic_protocol | Mehta Ch 11: 16-point checklist |
+
+Key design decision (Q13 — School A, locked):
+- Procedural engines → `mundane_engine_specs`
+- Interpretive/predictive rules → `interpretation_rules`
+- These are COMPUTE specs; the KE calls them to produce values, then interpretation_rules interprets.
+
+---
+
+### Batch 3 — mundane-interp-v1-20260505
+
+**Collection:** `interpretation_rules` (science: `mundane_jyotish`)
+**Script:** `ingest_mundane_interpretation_v1.py`
+**JSON:** `mundane_interp_rules.json`
+**Rules: 132** | All `approval_status: pending_review` | All `checkable: False`
+
+| Group | Source | Rules |
+|---|---|---|
+| A — Global Tone / Samvatsar | Gaur Ch 1 | 8 |
+| B — Celestial Council | Gaur Ch 2 | 12 |
+| C — Agricultural & Weather | Gaur Ch 3 | 8 |
+| D — Koorma Directional | Gaur Ch 4/5 | 9 |
+| E — Transit Key Rules | Gaur Ch 10 | 15 |
+| F — Eclipse Rules | Raphael Ch 23/24/25 | 12 |
+| G — War & Geopolitical | Mehta Ch 19 / Gopal Ch 8 | 15 |
+| H — Seismic Engine | Mehta Ch 11 | 12 |
+| I — Governance & Election | Gopal Ch 4/5 / Mehta Ch 18 | 16 |
+| J — Historical Validation | Mehta Ch 19/21 / Gopal Ch 14 | 13 |
+| K — Hazard & Special | Mehta Ch 21 / Gopal Ch 8/14 | 12 |
+
+Schema patterns:
+- `source.science` = `"mundane_jyotish"` on every rule — never `"jyotish"`
+- `source.synthesis_sources` = array listing all contributing book codes per rule
+- `interpretation.summary` = rule_id slug (never prose)
+- Historical validation rules: `rule_type = "historical_validation"`, `sub_type = "empirical_case_study"`
+- `logic_unit` format: `LU_MA.<group>.<slug>`
+- All `checkable: False` — mundane evaluator not yet wired
+
+**Notable rules:**
+- `mundane-mehta-ch19-rohini-gate` — WWI/WWII/1971 validated war threshold
+- `mundane-mehta-ch19-destruction-scheme` — Saturn+Mars+Rahu Vedha = war imminent
+- `mundane-gopal-ch8-212-rivalry` — India-Pakistan permanent conflict geometry
+- `mundane-gaur-ch10-jupiter-pushya-bull` — 2006 Sensex 100% growth rule
+- `mundane-hist-*` (13 rules) — empirical case studies for engine calibration
+
+---
+
+### Cumulative DB state after Mundane sprint (5 May 2026)
+
+| Collection | New docs/rules | Total (estimate) |
+|---|---|---|
+| interpretation_rules | +132 mundane | ~599 total |
+| mundane_geo_entities | +29 (new collection) | 29 |
+| mundane_engine_specs | +15 (new collection) | 15 |
+
+**Lal Kitab interpretation_rules state (unchanged from prior sprint):**
+- 467 rules | 303 auto-approved | 157 pending_human_review | 7 flagged
+- Ch 27 open flag: `lalkitab-ch27-corr-mars-benefic` (source column misalignment — needs source verification)
 4. **`extra_cond` pattern** — rule-specific structured data embedded in condition dict without polluting standard schema (first used Ch 24)
