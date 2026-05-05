@@ -3072,6 +3072,82 @@ Both are Sun+Saturn conjunction rules but with mutually exclusive secondary trig
 
 ---
 
+## Lal Kitab Ch 28 — Varshaphalam and Journey (5 May 2026)
+
+**Topic:** Annual Horoscope Construction Engine + Ketu Journey Significator
+**Source:** `Lal Kitab_Ch28_JSON Ready_LM.md` · `Lal Kitab_ch28_Diagnostic_LM.md` · `Lal Kitab_Ch28_AI query Answers.md`
+**Batch ID:** `lalkitab-ch28-v1-20260505`
+**Rules:** 18 (4 varshaphalam_timing + 1 illness + 1 journey_principle + 12 journey_outcome)
+**Validation:** 12 auto_approved (67%) · 6 pending_human_review (33%) · 0 flagged · 0 contradiction pairs
+**Patch script:** `patch_lalkitab_ch28_flags.py` (1 content validity false flag cleared)
+
+### Ch 28 Rule breakdown
+
+| Sub-type | Count | Rule IDs |
+|---|---|---|
+| varshaphalam_timing | 4 | birth-month-rule, sun-timing-marker, annual-conversion-formula, influence-priority |
+| illness | 1 | illness-trigger |
+| journey_principle | 1 | ketu-journey-general |
+| journey_outcome | 12 | ketu-journey-h1 through ketu-journey-h12 |
+
+### Ch 28 Design notes
+
+- **Formula not table** — LU 28.3 encodes the cyclic rotation as a formula: `annual_house = ((natal_house - 1 + (age - 1) % 12) % 12) + 1`. Verified against source age-34 benchmark. Saves context window; handles any age without hallucination risk.
+- **Typed modifier schema** (from AI query guidance) — each Ketu journey rule carries two optional slots:
+  - `state_gate` — PRE-CONDITION (dependency, planet_state, house_state, counter_block, planet_activation, activation_trigger)
+  - `priority_override` — POST-CONDITION veto/blocker that overwrites primary outcome
+  - Both carry explicit `logic` strings in IF-THEN-ELSE form for LLM state-machine use
+- **Ketu journey: 12 atomic rules** (H1–H12) with per-house modifiers from AI reconciliation:
+  - H1: activation_trigger = birth of a son
+  - H2: Jupiter dependency for promotion
+  - H3: house-asleep gate → separation from siblings
+  - H4: Moon-in-H4 blocker (long-distance travel forbidden)
+  - H6: Ketu-awake gate (not awake → useless/troublesome)
+  - H7: Venus/Mercury awaken Ketu to trigger travel
+  - H8: Moon/Mars-in-H11 veto cancels negative diagnosis
+  - H9: enemy-in-H3 counter-block neutralises joy
+  - H10: Saturn dependency_proxy gatekeeper (Saturn in H4 → harmful)
+- **False flag cleared** — `influence-priority`: Lal Kitab Varshaphalam propagation sequence (natal → enemies → friends) confirmed in both source files; validator applied wrong classical Vedic frame
+
+---
+
+## Lal Kitab Ch 29 — Forecasting on Bodily Traits / Physiognomy (5 May 2026)
+
+**Topic:** Physical trait-to-outcome mapping (Physiognomy) — no planetary conditions, no remedies
+**Source:** `Lal Kitab_Ch29_JSON_AI Mode_Final.md` · `Lal Kitab_Ch 29_Diagnostic_LM.md` · `Lal Kitab_Ch 29_Queries Answers_AI Mode.md`
+**Batch ID:** `lalkitab-ch29-v1-20260505`
+**Rules:** 22 (18 body_trait + 3 archetype + 1 family_wealth)
+**Validation:** 18 auto_approved (82%) · 4 pending_human_review (18%) · 0 flagged · 0 contradiction pairs
+**Patch script:** `patch_lalkitab_ch29_flags.py` (2 read-buffer truncation false flags cleared)
+
+### Ch 29 Rule breakdown
+
+| Sub-type | Count | Rule IDs |
+|---|---|---|
+| body_trait | 18 | head-formation, hair-traits, forehead-temple, eyebrows, eyes, eyelids, nose, ears, face, tongue-lips-teeth, voice-beard, mouth, chin, neck-formation, neck-lines, upper-body, extremities, lower-body |
+| archetype | 3 | arch-thief, arch-shameless, arch-lion |
+| family_wealth | 1 | generational-wealth |
+
+### Ch 29 Design notes
+
+- **Grouped rules (Option A)** — ~98 trait-outcome pairs across 28 body part sections consolidated into 18 body_trait rules (one per logical section). All traits embedded as `diagnostic_array` in `condition.extra_cond`. Single KE call per body region retrieves the full diagnostic suite.
+- **Snake_case trait slugs** — trait descriptions normalised to snake_case for instantaneous KE matching (e.g., "Raised and big" → `raised_and_big`); original text preserved in `label` field
+- **`cross_ref` links** — body-part trait entries that trigger an archetype carry a `cross_ref` field pointing to the archetype `rule_id`, enabling second-pass Archetype Matching
+- **Global Archetype Engine** — 3 standalone rules:
+  - `arch-thief`: ARCH_THIEF — fused eyebrows OR excessively thick neck (OR gate)
+  - `arch-shameless`: ARCH_SHAMELESS — rooster eyes OR large nostrils (OR gate)
+  - `arch-lion`: ARCH_LION — fleshy elbows + strong fleshy thighs + fierce eyes (AND_OR_WEIGHTED, score threshold 1.0; any two of three = confirmed)
+- **Line-count formula separation** (per AI structural note):
+  - Forehead lines: NON-LINEAR inverted U-curve (0 = sage; 1 = prosperous; 2 = high position/long life; 4–5 = poor/struggling)
+  - Neck lines: STRICTLY LINEAR positive (1 = longevity; 2 = intelligence; 3 = affluence; 4 = impatient/worried)
+  - Kept as separate rules (`ch29-forehead-temple` and `ch29-neck-lines`) with explicit `formula_note` warnings never to conflate the two
+- **Generational wealth standalone rule** — `ch29-generational-wealth` surfaces the family continuity dimension (black+soft hair → Father + Native + Son all wealthy) as a HIGH PRIORITY flag for explicit multi-generational wealth queries
+- **No remedies throughout** — `remedies: []`, `checkable: False` for all 22 rules; physiognomy traits are non-computable
+- **LU naming: descriptive slugs** — `LU_29.head_formation` style (not sequential numbers) for semantic anchoring and cross-chapter linkability
+- **False flags cleared** — `arch-lion` and `generational-wealth`: both have complete text in DB; validator read-buffer cut off mid-display (buffer artifact)
+
+---
+
 ## Lal Kitab — Cumulative Ingest Summary (as of 5 May 2026)
 
 | Chapter | Topic | Batch ID | Total | auto_approved | pending_human_review | flagged | Patch script |
