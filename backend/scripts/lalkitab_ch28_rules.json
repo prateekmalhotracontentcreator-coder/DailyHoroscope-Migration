@@ -1,0 +1,805 @@
+[
+  {
+    "rule_id": "lalkitab-ch28-birth-month-rule",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.1",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "general_principle",
+      "sub_type": "varshaphalam_timing",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-birth-month-rule",
+      "detailed": "If the planet occupying Natal House 1 also appears in Varshaphalam House 1, that planet's effect manifests specifically during the native's birth month. House 1 in the annual horoscope represents the month of birth.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet_of": "natal_house_1",
+      "annual_house": 1,
+      "match_type": "natal_to_annual_h1"
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-sun-timing-marker",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.2",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "general_principle",
+      "sub_type": "varshaphalam_timing",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-sun-timing-marker",
+      "detailed": "The primary effect of the Varshaphalam (annual horoscope) becomes available in the calendar month where the Sun is positioned in the annual chart. Sun's annual house is the master timing calendar for all Varshaphalam effects.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Sun",
+      "role": "timing_marker",
+      "timing_method": "sun_annual_house_position"
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-annual-conversion-formula",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.3",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "general_principle",
+      "sub_type": "varshaphalam_timing",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-annual-conversion-formula",
+      "detailed": "Every planet's natal house maps to a Varshaphalam (annual) house based on the native's current age. The mapping follows a 12-year cycle. Formula: annual_house = ((natal_house - 1 + (age - 1) % 12) % 12) + 1. LLM should compute the annual house dynamically rather than retrieving from a static lookup table to preserve context precision. Verified: age 34 \u2192 shift 9; natal H1 \u2192 annual H10, natal H2 \u2192 annual H11. Identity years (shift = 0): ages 1, 13, 25, 37, 49, 61, 73, 85, 97, 109.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "conversion_method": "age_based_house_rotation",
+      "extra_cond": {
+        "engine_type": "algorithmic",
+        "component": "Varshaphalam_Rotation_Engine",
+        "formula": "annual_house = ((natal_house - 1 + (age - 1) % 12) % 12) + 1",
+        "cycle_period": 12,
+        "max_age": 120,
+        "validation_check": {
+          "age": 34,
+          "natal_house": 1,
+          "expected_annual_house": 10
+        },
+        "usage_instructions": "LLM should compute annual_house dynamically rather than retrieving from a static list to preserve context window and precision.",
+        "identity_ages": [
+          1,
+          13,
+          25,
+          37,
+          49,
+          61,
+          73,
+          85,
+          97,
+          109
+        ]
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-influence-priority",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.3",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "general_principle",
+      "sub_type": "varshaphalam_timing",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-influence-priority",
+      "detailed": "When a planet enters Annual House 1, its influence propagates in strict order: (1) First influences the Natal House where it originally resides. (2) Then influences its enemy planets in their current annual houses. (3) Finally influences its friendly planets in their annual houses. This sequence must be followed before determining the full Varshaphalam effect.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet_in": "annual_house_1",
+      "propagation": "natal_house \u2192 enemy_planets \u2192 friendly_planets"
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-illness-trigger",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.4",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "dosha",
+      "sub_type": "illness",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-illness-trigger",
+      "detailed": "In the Varshaphalam (annual chart), if any planet from Group A (Venus, Mercury, Rahu, or Ketu) forms a conjunction with any planet from Group B (Sun or Moon), the native is afflicted with illness during that annual period. The conjunction must occur in the annual chart houses.",
+      "remedies": [],
+      "outcome": "native_state: afflicted_with_illness"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "logic_gate": "AND",
+      "conjunction_set_a": [
+        "Venus",
+        "Mercury",
+        "Rahu",
+        "Ketu"
+      ],
+      "conjunction_set_b": [
+        "Sun",
+        "Moon"
+      ],
+      "set_operator": "any_a_with_any_b",
+      "houses": "any_annual_house"
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-general",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "general_principle",
+      "sub_type": "journey_principle",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-general",
+      "detailed": "For the Varshaphalam Journey Engine: A journey is favorable when Ketu occupies an earlier annual house than the Moon AND the Moon is not inauspicious. Ketu's annual house position is the primary significator of journey nature and outcome. Each house carries specific state_gate (pre-conditions) and priority_override (veto) logic that the LLM must evaluate in sequence.",
+      "remedies": []
+    },
+    "validation": {
+      "checkable": false,
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "role": "journey_significator",
+      "favorable_condition": {
+        "ketu_house_earlier_than_moon": true,
+        "moon_must_not_be_inauspicious": true
+      },
+      "evaluation_sequence": [
+        "1. Check primary_outcome",
+        "2. Evaluate state_gate (is pre-condition met?)",
+        "3. Evaluate priority_override (does veto/blocker apply?)"
+      ]
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h1",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h1",
+      "detailed": "Preparations manifest but journey fails or results in immediate return. Activated by the birth of a son.",
+      "remedies": [],
+      "primary_outcome": "Abortive Travel",
+      "outcome_quality": "inauspicious"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 1,
+      "state_gate": {
+        "type": "activation_trigger",
+        "activation_trigger": "Progeny (birth of a son)",
+        "logic": "IF birth of son occurs THEN travel intent activates BUT journey aborts or returns immediately"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h2",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h2",
+      "detailed": "Successful travel resulting in job promotion or increased social status. Jupiter must be auspicious to secure the promotion.",
+      "remedies": [],
+      "primary_outcome": "Elevation Journey",
+      "outcome_quality": "auspicious"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 2,
+      "state_gate": {
+        "type": "dependency",
+        "planet": "Jupiter",
+        "condition": "Jupiter must be auspicious",
+        "logic": "IF Jupiter IS auspicious THEN Outcome = 'Promotion secured via travel' ELSE promotion benefit diminished"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h3",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h3",
+      "detailed": "Professional life defined by frequent long-distance travel. If H3 is asleep, native lives separately from siblings with no journey.",
+      "remedies": [],
+      "primary_outcome": "Long-distance Employment Migration",
+      "outcome_quality": "conditional"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 3,
+      "state_gate": {
+        "type": "house_state",
+        "house": 3,
+        "condition": "House Asleep",
+        "logic": "IF H3 is asleep THEN Outcome = 'Native lives separately from siblings; No Journey' ELSE long-distance migration proceeds"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h4",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h4",
+      "detailed": "Minimal to zero travel; any travel restricted to mother's hometown. Moon in H4 strictly forbids long-distance travel.",
+      "remedies": [],
+      "primary_outcome": "Domestic Stasis",
+      "outcome_quality": "neutral"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 4,
+      "priority_override": {
+        "type": "blocker",
+        "condition": "Moon in H4",
+        "effect": "Strictly forbids long-distance travel",
+        "logic": "IF Moon IS in annual H4 THEN long-distance travel is forbidden regardless of primary outcome"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h5",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h5",
+      "detailed": "Change of residence within local city limits. Auspicious Jupiter makes the relocation profitable.",
+      "remedies": [],
+      "primary_outcome": "Intra-City Relocation",
+      "outcome_quality": "conditional"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 5,
+      "state_gate": {
+        "type": "dependency",
+        "planet": "Jupiter",
+        "logic": "IF Jupiter IS auspicious THEN Outcome = 'Profitable relocation' ELSE relocation proceeds with neutral result"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h6",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h6",
+      "detailed": "A one-time journey for health or environmental change. Journey only occurs if Ketu is awake; otherwise travel is useless or troublesome.",
+      "remedies": [],
+      "primary_outcome": "Climate-Based Single Journey",
+      "outcome_quality": "conditional"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 6,
+      "state_gate": {
+        "type": "planet_state",
+        "planet": "Ketu",
+        "state": "awake",
+        "logic": "IF Ketu is NOT awake THEN Outcome = 'Useless/Troublesome travel' ELSE climate journey proceeds"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h7",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h7",
+      "detailed": "Mandatory short-duration trips. Ketu must be awakened by Venus or Mercury to trigger the travel. Resistance creates a dead-body travel indicator.",
+      "remedies": [],
+      "primary_outcome": "Forced Short Travel",
+      "outcome_quality": "inauspicious"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 7,
+      "state_gate": {
+        "type": "planet_activation",
+        "activation_planets": [
+          "Venus",
+          "Mercury"
+        ],
+        "logic": "Ketu must be awakened by Venus or Mercury to trigger forced travel; without activation no journey manifests"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h8",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h8",
+      "detailed": "Journey against will involving financial loss. Vetoed (negative diagnosis cancelled) if Moon or Mars are in annual H11.",
+      "remedies": [],
+      "primary_outcome": "Involuntary Hardship Travel",
+      "outcome_quality": "inauspicious"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 8,
+      "priority_override": {
+        "type": "veto",
+        "veto_condition": [
+          "Moon in annual H11",
+          "Mars in annual H11"
+        ],
+        "veto_operator": "OR",
+        "logic": "IF Moon OR Mars IS in annual H11 THEN 'Negative diagnosis is cancelled'"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h9",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h9",
+      "detailed": "Pleasant travel toward hometown/roots with favorable results. Joy is neutralized if H3 is occupied by enemy planets.",
+      "remedies": [],
+      "primary_outcome": "Joyful Ancestral Journey",
+      "outcome_quality": "auspicious"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 9,
+      "state_gate": {
+        "type": "counter_block",
+        "counter_block": "Enemy in H3",
+        "logic": "IF annual H3 is occupied by enemy planets THEN Outcome = 'Joy is neutralized'"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h10",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h10",
+      "detailed": "Travel nature is a direct reflection of Saturn's status. Ketu is the vehicle; Saturn is the gatekeeper that determines safety and utility. Auspicious Saturn = extremely favorable; Saturn in H4 = harmful or useless.",
+      "remedies": [],
+      "primary_outcome": "Proxy-Driven Outcome",
+      "outcome_quality": "conditional"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 10,
+      "state_gate": {
+        "type": "dependency_proxy",
+        "dependency_proxy": "Saturn",
+        "logic": "IF Saturn IS auspicious THEN Outcome = 'Extremely Favorable' ELSE IF Saturn IS in H4 THEN Outcome = 'Harmful/Useless'"
+      }
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h11",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h11",
+      "detailed": "Decision to travel is deferred; path changes midway; results in waste of resources. Native loses control over decision-making.",
+      "remedies": [],
+      "primary_outcome": "Altered Course / Delayed Travel",
+      "outcome_quality": "inauspicious"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 11
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch28-ketu-journey-h12",
+    "approval_status": "pending_review",
+    "source": {
+      "science": "jyotish",
+      "book": "Lal Kitab",
+      "chapter": 28,
+      "logic_unit": "28.5",
+      "batch_id": "lalkitab-ch28-v1-20260505"
+    },
+    "metadata": {
+      "rule_type": "journey_outcome",
+      "sub_type": "journey_outcome",
+      "chart_type": "varshaphalam"
+    },
+    "interpretation": {
+      "summary": "ch28-ketu-journey-h12",
+      "detailed": "Gains and happiness achieved at home; physical travel is pleasant but unnecessary. Good time with children (progeny) activates the recreation benefit.",
+      "remedies": [],
+      "primary_outcome": "Profitable Recreation",
+      "outcome_quality": "auspicious"
+    },
+    "validation": {
+      "checkable": true,
+      "yoga_check": {
+        "type": "house_position",
+        "checkable": true
+      },
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-05T05:29:08.307628+00:00",
+    "updated_at": "2026-05-05T05:29:08.307628+00:00",
+    "condition": {
+      "chart_type": "varshaphalam",
+      "planet": "Ketu",
+      "ketu_annual_house": 12,
+      "state_gate": {
+        "type": "activation_trigger",
+        "activation_trigger": "Spending time with progeny",
+        "logic": "IF time with progeny occurs THEN recreation and home-based gains manifest"
+      }
+    }
+  }
+]
