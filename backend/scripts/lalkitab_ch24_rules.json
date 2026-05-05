@@ -14,7 +14,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -95,7 +95,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -176,7 +176,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -257,7 +257,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -338,7 +338,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -420,7 +420,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -501,7 +501,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -582,7 +582,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -663,7 +663,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -744,7 +744,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -825,7 +825,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -906,7 +906,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_age_engine",
@@ -988,7 +988,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_modifier",
@@ -1063,7 +1063,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_modifier",
@@ -1145,7 +1145,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "moon_modifier",
@@ -1163,10 +1163,10 @@
     },
     "interpretation": {
       "summary": "Moon-Evil Planet Conjunction Modifier — Minus 3 Years",
-      "detailed": "When Moon is conjunct Rahu or Ketu (evil/shadow planets), the lifespan is reduced by 3 years from the base Moon-House reading. This is a subtractive modifier applied on top of the primary age calculation.",
+      "detailed": "When Moon is conjunct Rahu or Ketu (evil/shadow planets), the lifespan is reduced by 3 years from the base Moon-House reading. Subtractive modifier applied on top of the primary age calculation.",
       "full_text_passages": [
         {
-          "text": "When Moon is conjunct Rahu or Ketu (evil/shadow planets), the lifespan is reduced by 3 years from the base Moon-House reading. This is a subtractive modifier applied on top of the primary age calculation.",
+          "text": "When Moon is conjunct Rahu or Ketu (evil/shadow planets), the lifespan is reduced by 3 years from the base Moon-House reading. Subtractive modifier applied on top of the primary age calculation.",
           "confidence": "HIGH"
         }
       ],
@@ -1223,7 +1223,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "moon_modifier",
@@ -1240,14 +1240,16 @@
         11
       ],
       "modifier_type": "override",
-      "override_condition": "h11_not_vacant"
+      "primary_house": 11,
+      "fallback_condition": "h11_vacant",
+      "fallback_action": "use_standard_moon_house_table"
     },
     "interpretation": {
-      "summary": "Saturn-Jupiter in H11 — Override Moon Table with H11 Calculation",
-      "detailed": "Decision tree: If Saturn and Jupiter are both in H11 AND H11 is NOT vacant (other planets present), calculate lifespan from H11 data — do not use the Moon table. If H11 IS vacant, revert to the standard Moon table calculation. This is the priority override rule for the Moon-House Age Engine.",
+      "summary": "Saturn+Jupiter Present — Age Calculated from H11 (H11 Vacant → Standard Table)",
+      "detailed": "When Saturn and Jupiter are both present in the chart, the age is determined from house number 11. If the 11th house is vacant, the estimate of age is made from the standard Moon-House table. Decision gate: IF Saturn+Jupiter present → use H11 calculation; IF H11 vacant → revert to Moon-House standard table.",
       "full_text_passages": [
         {
-          "text": "Decision tree: If Saturn and Jupiter are both in H11 AND H11 is NOT vacant (other planets present), calculate lifespan from H11 data — do not use the Moon table. If H11 IS vacant, revert to the standard Moon table calculation. This is the priority override rule for the Moon-House Age Engine.",
+          "text": "When Saturn and Jupiter are both present in the chart, the age is determined from house number 11. If the 11th house is vacant, the estimate of age is made from the standard Moon-House table. Decision gate: IF Saturn+Jupiter present → use H11 calculation; IF H11 vacant → revert to Moon-House standard table.",
           "confidence": "HIGH"
         }
       ],
@@ -1304,7 +1306,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "luck_window",
@@ -1318,10 +1320,10 @@
     },
     "interpretation": {
       "summary": "Childhood Luck Uncertainty — Null State Until Age 12",
-      "detailed": "A child's luck remains in an uncertain/null state until the age of 12. Astrological predictions for life events, career, or wealth cannot be reliably made for natives under 12 years. The engine flags any query for a native under 12 as 'luck_state: uncertain.'",
+      "detailed": "A child's luck remains in an uncertain/null state until the age of 12. Astrological predictions for life events, career, or wealth cannot be reliably made for natives under 12 years. Engine flags as luck_state: uncertain.",
       "full_text_passages": [
         {
-          "text": "A child's luck remains in an uncertain/null state until the age of 12. Astrological predictions for life events, career, or wealth cannot be reliably made for natives under 12 years. The engine flags any query for a native under 12 as 'luck_state: uncertain.'",
+          "text": "A child's luck remains in an uncertain/null state until the age of 12. Astrological predictions for life events, career, or wealth cannot be reliably made for natives under 12 years. Engine flags as luck_state: uncertain.",
           "confidence": "HIGH"
         }
       ],
@@ -1372,7 +1374,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "luck_window",
@@ -1386,10 +1388,10 @@
     },
     "interpretation": {
       "summary": "Senior Luck Uncertainty — Null State After Age 70-72",
-      "detailed": "A native's luck returns to an uncertain state after the age of 70-72 years. Just as childhood luck is unpredictable before age 12, senior luck becomes unpredictable after 70-72. The engine flags queries for natives over 70-72 as 'luck_state: uncertain.'",
+      "detailed": "A native's luck returns to an uncertain state after the age of 70-72 years. Engine flags queries for natives over 70-72 as luck_state: uncertain.",
       "full_text_passages": [
         {
-          "text": "A native's luck returns to an uncertain state after the age of 70-72 years. Just as childhood luck is unpredictable before age 12, senior luck becomes unpredictable after 70-72. The engine flags queries for natives over 70-72 as 'luck_state: uncertain.'",
+          "text": "A native's luck returns to an uncertain state after the age of 70-72 years. Engine flags queries for natives over 70-72 as luck_state: uncertain.",
           "confidence": "HIGH"
         }
       ],
@@ -1440,7 +1442,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "maturity_ages",
@@ -1474,10 +1476,10 @@
     },
     "interpretation": {
       "summary": "Planet Maturity Age Catalog — Special Effect Trigger Years",
-      "detailed": "Each planet manifests its 'special effect' in the native's life at its maturity age: Sun=2, Jupiter=16, Moon=24, Venus=25, Mars=28, Mercury=34, Saturn=36, Rahu=42, Ketu=48. These years are logic triggers — the engine checks for the relevant planet's placement and status when the native reaches that maturity year.",
+      "detailed": "Each planet manifests its special effect at its maturity age: Sun=2, Jupiter=16, Moon=24, Venus=25, Mars=28, Mercury=34, Saturn=36, Rahu=42, Ketu=48.",
       "full_text_passages": [
         {
-          "text": "Each planet manifests its 'special effect' in the native's life at its maturity age: Sun=2, Jupiter=16, Moon=24, Venus=25, Mars=28, Mercury=34, Saturn=36, Rahu=42, Ketu=48. These years are logic triggers — the engine checks for the relevant planet's placement and status when the native reaches that maturity year.",
+          "text": "Each planet manifests its special effect at its maturity age: Sun=2, Jupiter=16, Moon=24, Venus=25, Mars=28, Mercury=34, Saturn=36, Rahu=42, Ketu=48.",
           "confidence": "HIGH"
         }
       ],
@@ -1538,7 +1540,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "mortality_symptom",
@@ -1604,7 +1606,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "mortality_symptom",
@@ -1670,7 +1672,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "mortality_symptom",
@@ -1738,7 +1740,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "mortality_symptom",
@@ -1751,10 +1753,10 @@
     },
     "interpretation": {
       "summary": "Mortality Symptom — No Reflection in Mirror (1 Day Remaining)",
-      "detailed": "If the native's reflection is not visible in a mirror — a more severe indicator than organic media failure — the remaining lifespan is approximately 1 day.",
+      "detailed": "If the native's reflection is not visible in a mirror, the remaining lifespan is approximately 1 day. More severe indicator than the organic media reflection test.",
       "full_text_passages": [
         {
-          "text": "If the native's reflection is not visible in a mirror — a more severe indicator than organic media failure — the remaining lifespan is approximately 1 day.",
+          "text": "If the native's reflection is not visible in a mirror, the remaining lifespan is approximately 1 day. More severe indicator than the organic media reflection test.",
           "confidence": "HIGH"
         }
       ],
@@ -1805,7 +1807,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "mortality_symptom",
@@ -1818,10 +1820,10 @@
     },
     "interpretation": {
       "summary": "Mortality Symptom — Physical Stasis (Few Hours Remaining)",
-      "detailed": "Final phase indicator: if the stomach does not stir during breathing AND the eyes become 'stoned' (fixed/glassy), the native has only a few hours remaining. This is the terminal physical stasis marker.",
+      "detailed": "Final phase indicator: if the stomach does not stir during breathing, the native has only a few hours remaining. Terminal physical stasis marker.",
       "full_text_passages": [
         {
-          "text": "Final phase indicator: if the stomach does not stir during breathing AND the eyes become 'stoned' (fixed/glassy), the native has only a few hours remaining. This is the terminal physical stasis marker.",
+          "text": "Final phase indicator: if the stomach does not stir during breathing, the native has only a few hours remaining. Terminal physical stasis marker.",
           "confidence": "HIGH"
         }
       ],
@@ -1835,7 +1837,6 @@
       "tags": [
         "physical_stasis",
         "stomach",
-        "eyes",
         "mortality_symptom",
         "terminal"
       ],
@@ -1873,7 +1874,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "short_life",
@@ -1890,14 +1891,42 @@
         6,
         10
       ],
-      "predicted_age_days": 12
+      "predicted_age_days": 12,
+      "branch_operator": "OR",
+      "branches": [
+        {
+          "branch": "A",
+          "condition": "Moon in H6 AND Sun in H10",
+          "planets": [
+            "Moon",
+            "Sun"
+          ],
+          "houses": [
+            6,
+            10
+          ],
+          "operator": "AND"
+        },
+        {
+          "branch": "B",
+          "condition": "Moon conjunct Ketu in H6",
+          "planets": [
+            "Moon",
+            "Ketu"
+          ],
+          "houses": [
+            6
+          ],
+          "operator": "conjunction"
+        }
+      ]
     },
     "interpretation": {
-      "summary": "Critical Infancy — Moon H6+Sun H10 or Moon+Ketu H6 → 12 Days",
-      "detailed": "Critical infancy mortality trigger: (A) Moon in H6 AND Sun in H10, OR (B) Moon conjunct Ketu in H6. Predicted age: 12 days. Applies to infant mortality within the first fortnight.",
+      "summary": "Critical Infancy — 12 Days (Moon H6+Sun H10 OR Moon+Ketu H6)",
+      "detailed": "Critical infancy mortality trigger. Branch A: Moon in H6 AND Sun in H10 (two-house AND condition). Branch B: Moon conjunct Ketu in H6. Branch operator: OR — either branch alone triggers the 12-day prediction. Predicted age: 12 days.",
       "full_text_passages": [
         {
-          "text": "Critical infancy mortality trigger: (A) Moon in H6 AND Sun in H10, OR (B) Moon conjunct Ketu in H6. Predicted age: 12 days. Applies to infant mortality within the first fortnight.",
+          "text": "Critical infancy mortality trigger. Branch A: Moon in H6 AND Sun in H10 (two-house AND condition). Branch B: Moon conjunct Ketu in H6. Branch operator: OR — either branch alone triggers the 12-day prediction. Predicted age: 12 days.",
           "confidence": "HIGH"
         }
       ],
@@ -1957,7 +1986,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "short_life",
@@ -1967,17 +1996,42 @@
       },
       "planets_involved": [
         "Sun",
-        "Saturn",
-        "Jupiter"
+        "Saturn"
       ],
-      "predicted_age_months": 12
+      "houses_involved": [
+        2,
+        5,
+        9,
+        11
+      ],
+      "predicted_age_months": 12,
+      "branch_operator": "OR",
+      "branches": [
+        {
+          "branch": "A",
+          "condition": "Sun+Saturn in House of Jupiter",
+          "jupiter_houses": [
+            2,
+            5,
+            9,
+            11
+          ],
+          "operator": "conjunction_in_house"
+        },
+        {
+          "branch": "B",
+          "condition": "Sun+Saturn with unfriendly male planet",
+          "operator": "conjunction_with_planet_type",
+          "planet_type": "unfriendly_male"
+        }
+      ]
     },
     "interpretation": {
-      "summary": "Childhood Mortality — Sun+Saturn in Jupiter's House → 12 Months",
-      "detailed": "Childhood mortality trigger: Sun and Saturn conjunct in Jupiter's house OR Sun and Saturn conjunct with an unfriendly male planet. Predicted age: 12 months. Applies to mortality within the first year of life.",
+      "summary": "Childhood Mortality — 12 Months (Sun+Saturn in Jupiter's House OR with Unfriendly Male Planet)",
+      "detailed": "Childhood mortality trigger. Predicted age: 12 months. Branch A: Sun and Saturn conjunct in the house of Jupiter (Jupiter's natural houses in Kaal Purush: H2, H5, H9, H11). Branch B: Sun and Saturn conjunct with a male planet that is not friendly. Branch operator: OR.",
       "full_text_passages": [
         {
-          "text": "Childhood mortality trigger: Sun and Saturn conjunct in Jupiter's house OR Sun and Saturn conjunct with an unfriendly male planet. Predicted age: 12 months. Applies to mortality within the first year of life.",
+          "text": "Childhood mortality trigger. Predicted age: 12 months. Branch A: Sun and Saturn conjunct in the house of Jupiter (Jupiter's natural houses in Kaal Purush: H2, H5, H9, H11). Branch B: Sun and Saturn conjunct with a male planet that is not friendly. Branch operator: OR.",
           "confidence": "HIGH"
         }
       ],
@@ -2001,10 +2055,14 @@
     "metadata": {
       "planets_involved": [
         "Sun",
-        "Saturn",
-        "Jupiter"
+        "Saturn"
       ],
-      "houses_involved": [],
+      "houses_involved": [
+        2,
+        5,
+        9,
+        11
+      ],
       "signs_involved": [],
       "condition_count": 1,
       "gender_context": "neutral",
@@ -2034,7 +2092,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "short_life",
@@ -2053,10 +2111,10 @@
     },
     "interpretation": {
       "summary": "Early Childhood — Sun+Moon in H11 → Age 9 Years",
-      "detailed": "Sun and Moon conjunct in the 11th house → predicted age: 9 years.",
+      "detailed": "Sun and Moon conjunct in H11 → predicted age: 9 years.",
       "full_text_passages": [
         {
-          "text": "Sun and Moon conjunct in the 11th house → predicted age: 9 years.",
+          "text": "Sun and Moon conjunct in H11 → predicted age: 9 years.",
           "confidence": "HIGH"
         }
       ],
@@ -2113,7 +2171,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "short_life",
@@ -2132,10 +2190,10 @@
     },
     "interpretation": {
       "summary": "Early Childhood — Moon+Ketu in H1 → Age 10 Years",
-      "detailed": "Moon and Ketu conjunct in the 1st house → predicted age: 10 years.",
+      "detailed": "Moon and Ketu conjunct in H1 → predicted age: 10 years.",
       "full_text_passages": [
         {
-          "text": "Moon and Ketu conjunct in the 1st house → predicted age: 10 years.",
+          "text": "Moon and Ketu conjunct in H1 → predicted age: 10 years.",
           "confidence": "HIGH"
         }
       ],
@@ -2192,10 +2250,10 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
-      "sub_type": "short_life",
+      "sub_type": "death_cause",
       "yoga_check": {
         "type": "planetary_combination",
         "checkable": true
@@ -2212,10 +2270,10 @@
     },
     "interpretation": {
       "summary": "Sudden Death — Moon+Rahu in H1 → Bullet Shot, Afternoon",
-      "detailed": "Moon conjunct Rahu in the 1st house: cause of death is bullet shot; time of death is afternoon. This is a sudden violent death marker.",
+      "detailed": "Moon conjunct Rahu in H1: cause of death is bullet shot; time of death is afternoon. Sudden violent death marker.",
       "full_text_passages": [
         {
-          "text": "Moon conjunct Rahu in the 1st house: cause of death is bullet shot; time of death is afternoon. This is a sudden violent death marker.",
+          "text": "Moon conjunct Rahu in H1: cause of death is bullet shot; time of death is afternoon. Sudden violent death marker.",
           "confidence": "HIGH"
         }
       ],
@@ -2273,7 +2331,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "health_affliction",
@@ -2290,14 +2348,33 @@
         2,
         6
       ],
-      "illness_duration_years": 20
+      "illness_duration_years": 20,
+      "branch_operator": "OR",
+      "branches": [
+        {
+          "branch": "A",
+          "planets": [
+            "Jupiter",
+            "Rahu"
+          ],
+          "house": 2
+        },
+        {
+          "branch": "B",
+          "planets": [
+            "Mercury",
+            "Jupiter"
+          ],
+          "house": 6
+        }
+      ]
     },
     "interpretation": {
       "summary": "Long Illness — Jupiter+Rahu H2 or Mercury+Jupiter H6 → 20 Years",
-      "detailed": "Long illness trigger: (A) Jupiter conjunct Rahu in H2, OR (B) Mercury conjunct Jupiter in H6. The native suffers a prolonged illness lasting approximately 20 years.",
+      "detailed": "Long illness trigger. Branch A: Jupiter conjunct Rahu in H2. Branch B: Mercury conjunct Jupiter in H6. Branch operator: OR. Native suffers prolonged illness of approximately 20 years.",
       "full_text_passages": [
         {
-          "text": "Long illness trigger: (A) Jupiter conjunct Rahu in H2, OR (B) Mercury conjunct Jupiter in H6. The native suffers a prolonged illness lasting approximately 20 years.",
+          "text": "Long illness trigger. Branch A: Jupiter conjunct Rahu in H2. Branch B: Mercury conjunct Jupiter in H6. Branch operator: OR. Native suffers prolonged illness of approximately 20 years.",
           "confidence": "HIGH"
         }
       ],
@@ -2357,7 +2434,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "longevity_marker",
@@ -2377,14 +2454,19 @@
         6
       ],
       "outcome": "survived_by_son",
-      "requires_physical_check": true
+      "logic_gate": "AND",
+      "requires_physical_check": true,
+      "physical_markers": [
+        "gums_visible_when_speaking",
+        "ear_taut_upwards"
+      ]
     },
     "interpretation": {
-      "summary": "Survival by Son Marker — Moon/Rahu H6 + Weakened Venus/Ketu + Physical Signs",
-      "detailed": "Complex survival marker: IF (Moon+Rahu in H6 OR Mars malefic in H6) AND (Venus weakened AND Ketu weakened) AND physical signs (gums visible when speaking, ear taut upwards) THEN the native will definitely be survived by his son.",
+      "summary": "Survival by Son — Moon/Rahu H6 + Venus/Ketu Weakened + Physical Signs",
+      "detailed": "Complex AND gate survival marker. Condition 1: Moon+Rahu in H6 OR Mars malefic in H6. Condition 2: Venus weakened AND Ketu weakened. Condition 3 (physical): gums visible when speaking, ear taut upwards. IF all three conditions met THEN native will be survived by his son. Non-checkable — physical markers require observational assessment.",
       "full_text_passages": [
         {
-          "text": "Complex survival marker: IF (Moon+Rahu in H6 OR Mars malefic in H6) AND (Venus weakened AND Ketu weakened) AND physical signs (gums visible when speaking, ear taut upwards) THEN the native will definitely be survived by his son.",
+          "text": "Complex AND gate survival marker. Condition 1: Moon+Rahu in H6 OR Mars malefic in H6. Condition 2: Venus weakened AND Ketu weakened. Condition 3 (physical): gums visible when speaking, ear taut upwards. IF all three conditions met THEN native will be survived by his son. Non-checkable — physical markers require observational assessment.",
           "confidence": "HIGH"
         }
       ],
@@ -2445,7 +2527,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "short_life",
@@ -2467,14 +2549,33 @@
         16,
         19,
         22
+      ],
+      "branch_operator": "OR",
+      "branches": [
+        {
+          "branch": "A",
+          "planets": [
+            "Mercury",
+            "Jupiter"
+          ],
+          "house": 2
+        },
+        {
+          "branch": "B",
+          "planets": [
+            "Jupiter",
+            "Rahu"
+          ],
+          "house": 3
+        }
       ]
     },
     "interpretation": {
-      "summary": "Father's Death Dependency — Mercury+Jupiter H2 or Jupiter+Rahu H3",
-      "detailed": "Father dependency trigger: (A) Mercury conjunct Jupiter in H2, OR (B) Jupiter conjunct Rahu in H3. Native's predicted age: 30 years. Father's death: certain at native's age 16, 19, or 22.",
+      "summary": "Father's Death Dependency — Mercury+Jupiter H2 or Jupiter+Rahu H3 → Age 30",
+      "detailed": "Branch A: Mercury conjunct Jupiter in H2. Branch B: Jupiter conjunct Rahu in H3. Branch operator: OR. Native's predicted age: 30 years. Father's death certain at native's age 16, 19, or 22.",
       "full_text_passages": [
         {
-          "text": "Father dependency trigger: (A) Mercury conjunct Jupiter in H2, OR (B) Jupiter conjunct Rahu in H3. Native's predicted age: 30 years. Father's death: certain at native's age 16, 19, or 22.",
+          "text": "Branch A: Mercury conjunct Jupiter in H2. Branch B: Jupiter conjunct Rahu in H3. Branch operator: OR. Native's predicted age: 30 years. Father's death certain at native's age 16, 19, or 22.",
           "confidence": "HIGH"
         }
       ],
@@ -2521,7 +2622,7 @@
     }
   },
   {
-    "rule_id": "lalkitab-ch24-age-midlife",
+    "rule_id": "lalkitab-ch24-age-longlife-sun-rahu",
     "science_id": "jyotish",
     "source": {
       "book": "Lal Kitab",
@@ -2535,55 +2636,62 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
-      "sub_type": "age_threshold",
+      "sub_type": "longevity_marker",
       "yoga_check": {
         "type": "planetary_combination",
         "checkable": true
       },
       "planets_involved": [
-        "Moon",
+        "Sun",
         "Rahu",
-        "Mercury",
-        "Jupiter",
-        "Ketu"
+        "Saturn"
       ],
       "houses_involved": [
+        3,
         5,
         6,
-        12
+        8,
+        10,
+        11
       ],
-      "thresholds": [
-        {
-          "age": 35,
-          "condition": "Moon+Rahu+Mercury any house"
-        },
-        {
-          "age": 40,
-          "condition": "Jupiter+Rahu any house"
-        },
-        {
-          "age": 45,
-          "condition": "Rahu+Jupiter H6 OR Mercury+Ketu H12"
-        },
-        {
-          "age": 50,
-          "condition": "Moon+Rahu H5 OR debilitated planets"
-        },
-        {
-          "age": 56,
-          "condition": "Moon+Rahu+Mercury any house"
-        }
-      ]
+      "outcome": "long_life",
+      "logic_gate": "AND",
+      "conjunction": [
+        "Sun",
+        "Rahu"
+      ],
+      "conjunction_houses": [
+        10,
+        11
+      ],
+      "auxiliary_placement": {
+        "planet_type": "life_slashing",
+        "eligible_planets": [
+          "Mars",
+          "Saturn",
+          "Rahu",
+          "Ketu"
+        ],
+        "house": 8
+      },
+      "saturn_placement": {
+        "planet": "Saturn",
+        "eligible_houses": [
+          3,
+          5,
+          6
+        ]
+      }
     },
     "interpretation": {
-      "summary": "Mid-Life Age Thresholds — 35 / 40 / 45 / 50 / 56 Years",
-      "detailed": "Mid-life planetary age thresholds:\nAge 35: Moon+Rahu+Mercury in any house.\nAge 40: Jupiter+Rahu in any house.\nAge 45: Rahu+Jupiter in H6 OR Mercury+Ketu in H12.\nAge 50: Moon+Rahu in H5 OR any debilitated planets.\nAge 56: Moon+Rahu+Mercury in any house.",
+      "summary": "Long Life — Sun+Rahu H10/H11 AND Life-Slashers H8 AND Saturn H3/5/6",
+      "detailed": "Counter-intuitive 3-condition AND gate for long life. All three must be met. Condition 1: Sun and Rahu conjunct in H10 or H11. Condition 2: Life-slashing planets (Mars, Saturn, Rahu, Ketu) present in H8. Condition 3: Saturn placed in H3, H5, or H6. The normally malefic H8 life-slashers are neutralised and transformed into a longevity indicator by the Sun-Rahu conjunction in H10/H11 combined with Saturn's specific placement. Classic Lal Kitab counter-intuitive gate. Outcome: long life.",
       "full_text_passages": [
         {
-          "text": "Mid-life planetary age thresholds:\nAge 35: Moon+Rahu+Mercury in any house.\nAge 40: Jupiter+Rahu in any house.\nAge 45: Rahu+Jupiter in H6 OR Mercury+Ketu in H12.\nAge 50: Moon+Rahu in H5 OR any debilitated planets.\nAge 56: Moon+Rahu+Mercury in any house.",
+          "text": "Counter-intuitive 3-condition AND gate for long life. All three must be met. Condition 1: Sun and Rahu conjunct in H10 or H11. Condition 2: Life-slashing planets (Mars, Saturn, Rahu, Ketu) present in H8. Condition 3: Saturn placed in H3, H5, or H6. The normally malefic H8 life-slashers are neutralised and transformed into a longevity indicator by the Sun-Rahu conjunction in H10/H11 combined with Saturn's specific placement. Classic Lal Kitab counter-intuitive gate. Outcome: long life.",
           "confidence": "HIGH"
         }
       ],
@@ -2595,12 +2703,99 @@
         "timing"
       ],
       "tags": [
-        "midlife",
+        "long_life",
+        "sun",
+        "rahu",
+        "h10",
+        "h11",
+        "h8",
+        "saturn",
+        "counter_intuitive"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun",
+        "Rahu",
+        "Saturn"
+      ],
+      "houses_involved": [
+        3,
+        5,
+        6,
+        8,
+        10,
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-threshold-35",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Mercury"
+      ],
+      "predicted_age": 35,
+      "house_constraint": "any",
+      "rule_group": "mid-life-age-thresholds"
+    },
+    "interpretation": {
+      "summary": "Mid-Life Age 35 — Moon+Rahu+Mercury in Any House",
+      "detailed": "Moon, Rahu, and Mercury conjunct in any house → predicted age: 35 years.",
+      "full_text_passages": [
+        {
+          "text": "Moon, Rahu, and Mercury conjunct in any house → predicted age: 35 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
         "age_35",
-        "age_40",
-        "age_45",
-        "age_50",
-        "age_56",
+        "moon",
+        "rahu",
+        "mercury",
+        "midlife",
         "threshold"
       ],
       "physical_markers": []
@@ -2609,12 +2804,200 @@
       "planets_involved": [
         "Moon",
         "Rahu",
-        "Mercury",
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-threshold-40",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
         "Jupiter",
+        "Rahu"
+      ],
+      "houses_involved": [
+        9,
+        11
+      ],
+      "predicted_age": 40,
+      "house_constraint": "H9_or_H11",
+      "rule_group": "mid-life-age-thresholds"
+    },
+    "interpretation": {
+      "summary": "Mid-Life Age 40 — Jupiter+Rahu in H9 or H11",
+      "detailed": "Jupiter and Rahu conjunct in H9 or H11 → predicted age: 40 years.",
+      "full_text_passages": [
+        {
+          "text": "Jupiter and Rahu conjunct in H9 or H11 → predicted age: 40 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "age_40",
+        "jupiter",
+        "rahu",
+        "h9",
+        "h11",
+        "midlife",
+        "threshold"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter",
+        "Rahu"
+      ],
+      "houses_involved": [
+        9,
+        11
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-threshold-45",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Rahu",
+        "Jupiter",
+        "Mercury",
         "Ketu"
       ],
       "houses_involved": [
-        5,
+        6,
+        12
+      ],
+      "predicted_age": 45,
+      "rule_group": "mid-life-age-thresholds",
+      "branch_operator": "OR",
+      "branches": [
+        {
+          "branch": "A",
+          "planets": [
+            "Rahu",
+            "Jupiter"
+          ],
+          "house": 6
+        },
+        {
+          "branch": "B",
+          "planets": [
+            "Mercury",
+            "Ketu"
+          ],
+          "house": 12
+        }
+      ]
+    },
+    "interpretation": {
+      "summary": "Mid-Life Age 45 — Rahu+Jupiter H6 OR Mercury+Ketu H12",
+      "detailed": "Branch A: Rahu and Jupiter conjunct in H6. Branch B: Mercury and Ketu conjunct in H12. Branch operator: OR. Predicted age: 45 years.",
+      "full_text_passages": [
+        {
+          "text": "Branch A: Rahu and Jupiter conjunct in H6. Branch B: Mercury and Ketu conjunct in H12. Branch operator: OR. Predicted age: 45 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "age_45",
+        "rahu",
+        "jupiter",
+        "mercury",
+        "ketu",
+        "h6",
+        "h12",
+        "midlife",
+        "threshold"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Rahu",
+        "Jupiter",
+        "Mercury",
+        "Ketu"
+      ],
+      "houses_involved": [
         6,
         12
       ],
@@ -2633,7 +3016,7 @@
     }
   },
   {
-    "rule_id": "lalkitab-ch24-age-latelife",
+    "rule_id": "lalkitab-ch24-age-threshold-50",
     "science_id": "jyotish",
     "source": {
       "book": "Lal Kitab",
@@ -2647,7 +3030,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "age_threshold",
@@ -2657,42 +3040,42 @@
       },
       "planets_involved": [
         "Moon",
-        "Mercury",
-        "Rahu",
-        "Jupiter",
-        "Mars"
+        "Rahu"
       ],
       "houses_involved": [
         2,
-        7,
-        9,
-        4
+        5,
+        7
       ],
-      "thresholds": [
+      "predicted_age": 50,
+      "rule_group": "mid-life-age-thresholds",
+      "branch_operator": "OR",
+      "branches": [
         {
-          "age": 60,
-          "condition": "Moon+Mercury H2"
+          "branch": "A",
+          "planets": [
+            "Moon",
+            "Rahu"
+          ],
+          "house": 5,
+          "operator": "conjunction"
         },
         {
-          "age": 75,
-          "condition": "Moon+Rahu H9"
-        },
-        {
-          "age": 80,
-          "condition": "Moon+Jupiter H4"
-        },
-        {
-          "age": 85,
-          "condition": "Moon+Mars H7"
+          "branch": "B",
+          "condition": "planets_debilitated",
+          "houses": [
+            2,
+            7
+          ]
         }
       ]
     },
     "interpretation": {
-      "summary": "Late-Life Age Thresholds — 60 / 75 / 80 / 85 Years",
-      "detailed": "Late-life planetary age thresholds:\nAge 60: Moon+Mercury in H2.\nAge 75: Moon+Rahu in H9.\nAge 80: Moon+Jupiter in H4.\nAge 85: Moon+Mars in H7.",
+      "summary": "Mid-Life Age 50 — Moon+Rahu H5 OR Debilitated Planets in H2 and H7",
+      "detailed": "Branch A: Moon and Rahu conjunct in H5. Branch B: Planets in H2 and H7 are debilitated/powerless. Branch operator: OR. Predicted age: 50 years.",
       "full_text_passages": [
         {
-          "text": "Late-life planetary age thresholds:\nAge 60: Moon+Mercury in H2.\nAge 75: Moon+Rahu in H9.\nAge 80: Moon+Jupiter in H4.\nAge 85: Moon+Mars in H7.",
+          "text": "Branch A: Moon and Rahu conjunct in H5. Branch B: Planets in H2 and H7 are debilitated/powerless. Branch operator: OR. Predicted age: 50 years.",
           "confidence": "HIGH"
         }
       ],
@@ -2704,11 +3087,12 @@
         "timing"
       ],
       "tags": [
-        "latelife",
-        "age_60",
-        "age_75",
-        "age_80",
-        "age_85",
+        "age_50",
+        "moon",
+        "rahu",
+        "h5",
+        "debilitated",
+        "midlife",
         "threshold"
       ],
       "physical_markers": []
@@ -2716,16 +3100,451 @@
     "metadata": {
       "planets_involved": [
         "Moon",
-        "Mercury",
-        "Rahu",
-        "Jupiter",
-        "Mars"
+        "Rahu"
       ],
       "houses_involved": [
         2,
-        7,
-        9,
-        4
+        5,
+        7
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-threshold-56",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [
+        2,
+        5
+      ],
+      "predicted_age": 56,
+      "house_constraint": "H2_or_H5",
+      "rule_group": "mid-life-age-thresholds"
+    },
+    "interpretation": {
+      "summary": "Mid-Life Age 56 — Moon+Rahu+Mercury in H2 or H5",
+      "detailed": "Moon, Rahu, and Mercury conjunct in H2 or H5 → predicted age: 56 years.",
+      "full_text_passages": [
+        {
+          "text": "Moon, Rahu, and Mercury conjunct in H2 or H5 → predicted age: 56 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "age_56",
+        "moon",
+        "rahu",
+        "mercury",
+        "h2",
+        "h5",
+        "midlife",
+        "threshold"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [
+        2,
+        5
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-threshold-60",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Mercury"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "predicted_age": 60,
+      "rule_group": "late-life-age-thresholds"
+    },
+    "interpretation": {
+      "summary": "Late-Life Age 60 — Moon+Mercury in H2",
+      "detailed": "Moon and Mercury conjunct in H2 → predicted age: 60 years.",
+      "full_text_passages": [
+        {
+          "text": "Moon and Mercury conjunct in H2 → predicted age: 60 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "age_60",
+        "moon",
+        "mercury",
+        "h2",
+        "latelife",
+        "threshold"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Mercury"
+      ],
+      "houses_involved": [
+        2
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-threshold-75",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Rahu"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "predicted_age": 75,
+      "rule_group": "late-life-age-thresholds"
+    },
+    "interpretation": {
+      "summary": "Late-Life Age 75 — Moon+Rahu in H9",
+      "detailed": "Moon and Rahu conjunct in H9 → predicted age: 75 years.",
+      "full_text_passages": [
+        {
+          "text": "Moon and Rahu conjunct in H9 → predicted age: 75 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "age_75",
+        "moon",
+        "rahu",
+        "h9",
+        "latelife",
+        "threshold"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Rahu"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-threshold-80",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        3,
+        4,
+        6
+      ],
+      "predicted_age": 80,
+      "rule_group": "late-life-age-thresholds",
+      "branch_operator": "OR",
+      "branches": [
+        {
+          "branch": "A",
+          "planets": [
+            "Moon",
+            "Jupiter"
+          ],
+          "house": 4,
+          "operator": "conjunction"
+        },
+        {
+          "branch": "B",
+          "planet": "Moon",
+          "houses": [
+            3,
+            6
+          ],
+          "operator": "placement"
+        }
+      ]
+    },
+    "interpretation": {
+      "summary": "Late-Life Age 80 — Moon+Jupiter H4 OR Moon in H3/H6",
+      "detailed": "Branch A: Moon and Jupiter conjunct in H4 → predicted age: 80 years. Branch B: Moon placed in H3 or H6 (no conjunction required) → predicted age: 80 years. Branch operator: OR — either branch triggers the 80-year prediction.",
+      "full_text_passages": [
+        {
+          "text": "Branch A: Moon and Jupiter conjunct in H4 → predicted age: 80 years. Branch B: Moon placed in H3 or H6 (no conjunction required) → predicted age: 80 years. Branch operator: OR — either branch triggers the 80-year prediction.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "age_80",
+        "moon",
+        "jupiter",
+        "h3",
+        "h4",
+        "h6",
+        "latelife",
+        "threshold"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Jupiter"
+      ],
+      "houses_involved": [
+        3,
+        4,
+        6
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-age-threshold-85",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "planetary_combination",
+      "sub_type": "age_threshold",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Mars"
+      ],
+      "houses_involved": [
+        7
+      ],
+      "predicted_age": 85,
+      "rule_group": "late-life-age-thresholds"
+    },
+    "interpretation": {
+      "summary": "Late-Life Age 85 — Moon+Mars in H7",
+      "detailed": "Moon and Mars conjunct in H7 → predicted age: 85 years.",
+      "full_text_passages": [
+        {
+          "text": "Moon and Mars conjunct in H7 → predicted age: 85 years.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "age_85",
+        "moon",
+        "mars",
+        "h7",
+        "latelife",
+        "threshold"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Mars"
+      ],
+      "houses_involved": [
+        7
       ],
       "signs_involved": [],
       "condition_count": 1,
@@ -2756,7 +3575,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "dosha",
       "sub_type": "short_life",
@@ -2765,24 +3584,56 @@
         "checkable": true
       },
       "planets_involved": [
+        "Jupiter",
         "Mars",
         "Mercury",
         "Venus",
-        "Moon",
-        "Jupiter"
+        "Moon"
       ],
       "houses_involved": [
         5,
-        7
+        7,
+        8,
+        9,
+        10,
+        11
       ],
-      "predicted_age": 2
+      "predicted_age": 2,
+      "branch_operator": "OR",
+      "branches": [
+        {
+          "branch": "A",
+          "logic_gate": "AND",
+          "jupiter_in_houses": [
+            8,
+            9,
+            10,
+            11
+          ],
+          "conjunction": [
+            "Mars",
+            "Mercury",
+            "Venus"
+          ],
+          "conjunction_house": 7
+        },
+        {
+          "branch": "B",
+          "conjunction": [
+            "Mercury",
+            "Venus",
+            "Moon"
+          ],
+          "house": 5
+        }
+      ]
     },
     "interpretation": {
-      "summary": "Short Life Conjunction — 2 Years (Mars+Mercury+Venus H7 or Moon+Mercury+Venus H5)",
-      "detailed": "Two-year lifespan doshas:\n(A) Mars+Mercury+Venus conjunct in H7 (with Jupiter present), OR\n(B) Mercury+Venus+Moon conjunct in H5.\nBoth are critical short-life indicators with predicted age of 2 years.",
+      "summary": "Short Life — 2 Years (Jupiter H8-11+Mars/Mercury/Venus H7 OR Moon+Mercury+Venus H5)",
+      "detailed": "Two-year lifespan doshas. Branch A (AND gate): Jupiter in H8, H9, H10, or H11 AND Mars+Mercury+Venus conjunct in H7. Both sub-conditions must be met. Branch B: Mercury+Venus+Moon conjunct in H5. Branch operator: OR — either branch triggers predicted age 2 years.",
       "full_text_passages": [
         {
-          "text": "Two-year lifespan doshas:\n(A) Mars+Mercury+Venus conjunct in H7 (with Jupiter present), OR\n(B) Mercury+Venus+Moon conjunct in H5.\nBoth are critical short-life indicators with predicted age of 2 years.",
+          "text": "Two-year lifespan doshas. Branch A (AND gate): Jupiter in H8, H9, H10, or H11 AND Mars+Mercury+Venus conjunct in H7. Both sub-conditions must be met. Branch B: Mercury+Venus+Moon conjunct in H5. Branch operator: OR — either branch triggers predicted age 2 years.",
           "confidence": "HIGH"
         }
       ],
@@ -2798,21 +3649,26 @@
         "dosha",
         "age_2",
         "h5",
-        "h7"
+        "h7",
+        "jupiter"
       ],
       "physical_markers": []
     },
     "metadata": {
       "planets_involved": [
+        "Jupiter",
         "Mars",
         "Mercury",
         "Venus",
-        "Moon",
-        "Jupiter"
+        "Moon"
       ],
       "houses_involved": [
         5,
-        7
+        7,
+        8,
+        9,
+        10,
+        11
       ],
       "signs_involved": [],
       "condition_count": 1,
@@ -2829,7 +3685,7 @@
     }
   },
   {
-    "rule_id": "lalkitab-ch24-age-shortlife-indicators",
+    "rule_id": "lalkitab-ch24-shortlife-ind-01",
     "science_id": "jyotish",
     "source": {
       "book": "Lal Kitab",
@@ -2843,31 +3699,29 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "dosha",
       "sub_type": "short_life",
       "yoga_check": {
-        "type": "planetary_combination",
-        "checkable": true
+        "type": "manual",
+        "checkable": false,
+        "description": "Physical/behavioral/observational — not automatable in Phase 1."
       },
       "planets_involved": [
-        "Mercury",
-        "Jupiter",
-        "Venus",
-        "Rahu",
-        "Moon"
+        "Jupiter"
       ],
-      "houses_involved": [
-        9
-      ]
+      "outcome": "short_life",
+      "rule_group": "shortlife-indicators",
+      "indicator_number": 1,
+      "logic_note": "OR with shortlife-ind-02, -03, -04. Any single match sufficient."
     },
     "interpretation": {
-      "summary": "General Short Life Indicators — Jupiter Surrounded or H9 Enemies",
-      "detailed": "General short life indicators:\n1. Many planets surrounding Jupiter (hemmed in).\n2. Mercury+Jupiter+Venus conjunct in H9.\n3. Mercury+Venus+Rahu (enemies of Jupiter) conjunct in H9.\n4. Moon+Rahu conjunct in any house AND Mercury in H9.",
+      "summary": "Short Life Indicator 1 — Jupiter Hemmed by Many Planets",
+      "detailed": "Very many planets surrounding Jupiter (hemmed in on multiple sides) → short life. Non-checkable: 'very many' is qualitative, requires manual chart assessment. OR relationship with shortlife-ind-02, -03, -04. Any single match is sufficient.",
       "full_text_passages": [
         {
-          "text": "General short life indicators:\n1. Many planets surrounding Jupiter (hemmed in).\n2. Mercury+Jupiter+Venus conjunct in H9.\n3. Mercury+Venus+Rahu (enemies of Jupiter) conjunct in H9.\n4. Moon+Rahu conjunct in any house AND Mercury in H9.",
+          "text": "Very many planets surrounding Jupiter (hemmed in on multiple sides) → short life. Non-checkable: 'very many' is qualitative, requires manual chart assessment. OR relationship with shortlife-ind-02, -03, -04. Any single match is sufficient.",
           "confidence": "HIGH"
         }
       ],
@@ -2880,10 +3734,90 @@
       ],
       "tags": [
         "short_life",
-        "dosha",
         "jupiter",
+        "hemmed",
+        "indicator"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-shortlife-ind-02",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mercury",
+        "Jupiter",
+        "Venus"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "outcome": "short_life",
+      "rule_group": "shortlife-indicators",
+      "indicator_number": 2,
+      "logic_note": "OR with shortlife-ind-01, -03, -04. Any single match sufficient."
+    },
+    "interpretation": {
+      "summary": "Short Life Indicator 2 — Mercury+Jupiter+Venus in H9",
+      "detailed": "Mercury, Jupiter, and Venus conjunct in H9 → short life. OR relationship with shortlife-ind-01, -03, -04. Any single match is sufficient.",
+      "full_text_passages": [
+        {
+          "text": "Mercury, Jupiter, and Venus conjunct in H9 → short life. OR relationship with shortlife-ind-01, -03, -04. Any single match is sufficient.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "short_life",
+        "mercury",
+        "jupiter",
+        "venus",
         "h9",
-        "indicators"
+        "indicator"
       ],
       "physical_markers": []
     },
@@ -2891,11 +3825,210 @@
       "planets_involved": [
         "Mercury",
         "Jupiter",
-        "Venus",
-        "Rahu",
-        "Moon"
+        "Venus"
       ],
       "houses_involved": [
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-shortlife-ind-03",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mercury",
+        "Venus",
+        "Rahu"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "outcome": "short_life",
+      "rule_group": "shortlife-indicators",
+      "indicator_number": 3,
+      "jupiter_enemies": [
+        "Mercury",
+        "Venus",
+        "Rahu"
+      ],
+      "logic_note": "OR with shortlife-ind-01, -02, -04. Any single match sufficient."
+    },
+    "interpretation": {
+      "summary": "Short Life Indicator 3 — Jupiter's Enemies (Mercury+Venus+Rahu) in H9",
+      "detailed": "Enemy planets of Jupiter — Mercury, Venus, and Rahu — conjunct in H9 → short life. Jupiter's natural enemies placed in its karaka house (H9). OR relationship with shortlife-ind-01, -02, -04. Any single match is sufficient.",
+      "full_text_passages": [
+        {
+          "text": "Enemy planets of Jupiter — Mercury, Venus, and Rahu — conjunct in H9 → short life. Jupiter's natural enemies placed in its karaka house (H9). OR relationship with shortlife-ind-01, -02, -04. Any single match is sufficient.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "short_life",
+        "mercury",
+        "venus",
+        "rahu",
+        "h9",
+        "jupiter_enemies",
+        "indicator"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury",
+        "Venus",
+        "Rahu"
+      ],
+      "houses_involved": [
+        9
+      ],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch24-shortlife-ind-04",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 24,
+      "chapter_name": "Determination of Age — Ayurdaya",
+      "sloka": null,
+      "batch_id": "lalkitab-ch24-v1-20260504",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "short_life",
+      "yoga_check": {
+        "type": "planetary_combination",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [
+        7,
+        8,
+        9
+      ],
+      "outcome": "short_life",
+      "logic_gate": "AND",
+      "rule_group": "shortlife-indicators",
+      "indicator_number": 4,
+      "conditions": [
+        {
+          "planets": [
+            "Moon",
+            "Rahu"
+          ],
+          "houses": [
+            7,
+            8
+          ],
+          "operator": "conjunction_in_either"
+        },
+        {
+          "planet": "Mercury",
+          "house": 9,
+          "operator": "placement"
+        }
+      ],
+      "logic_note": "OR with shortlife-ind-01, -02, -03. Any single match sufficient."
+    },
+    "interpretation": {
+      "summary": "Short Life Indicator 4 — Moon+Rahu in H7/H8 AND Mercury in H9",
+      "detailed": "Compound AND condition: Moon and Rahu conjunct in H7 or H8, AND Mercury placed in H9. Both conditions must be met simultaneously. Outcome: short life. OR relationship with shortlife-ind-01, -02, -03. Any single match is sufficient.",
+      "full_text_passages": [
+        {
+          "text": "Compound AND condition: Moon and Rahu conjunct in H7 or H8, AND Mercury placed in H9. Both conditions must be met simultaneously. Outcome: short life. OR relationship with shortlife-ind-01, -02, -03. Any single match is sufficient.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "longevity",
+      "life_domains": [
+        "longevity",
+        "health",
+        "timing"
+      ],
+      "tags": [
+        "short_life",
+        "moon",
+        "rahu",
+        "h7",
+        "h8",
+        "mercury",
+        "h9",
+        "indicator"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon",
+        "Rahu",
+        "Mercury"
+      ],
+      "houses_involved": [
+        7,
+        8,
         9
       ],
       "signs_involved": [],
@@ -2927,7 +4060,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "physical_metric",
@@ -2937,6 +4070,11 @@
         "description": "Physical/behavioral/observational — not automatable in Phase 1."
       },
       "measurement_unit": "angul",
+      "conversion": {
+        "angul": 48,
+        "inches": 36,
+        "ratio_inch_per_angul": 0.75
+      },
       "baseline": {
         "anguls": 90,
         "years": 30
@@ -2948,14 +4086,35 @@
       "maximum": {
         "anguls": 108,
         "years": 120
+      },
+      "full_table": {
+        "90": 30,
+        "91": 35,
+        "92": 40,
+        "93": 45,
+        "94": 50,
+        "95": 55,
+        "96": 60,
+        "97": 65,
+        "98": 70,
+        "99": 75,
+        "100": 80,
+        "101": 85,
+        "102": 90,
+        "103": 95,
+        "104": 100,
+        "105": 105,
+        "106": 110,
+        "107": 115,
+        "108": 120
       }
     },
     "interpretation": {
-      "summary": "Height-to-Age Ratio Engine — Angul Scale (90-108 Anguls)",
-      "detailed": "Standard: 48 angul = 36 inches. Formula: each angul above 90 adds 5 years. Scale: 90→30yr, 91→35yr, 92→40yr, 93→45yr, 94→50yr, 95→55yr, 96→60yr, 97→65yr, 98→70yr, 99→75yr, 100→80yr, 101→85yr, 102→90yr, 103→95yr, 104→100yr, 105→105yr, 106→110yr, 107→115yr, 108→120yr.",
+      "summary": "Height-to-Age Engine — Angul Scale (90-108 Anguls → 30-120 Years)",
+      "detailed": "Standard: 48 angul = 36 inches (1 angul ≈ 0.75 inch). Base: 90 angul → 30 years. Each additional angul adds 5 years. 90→30yr, 91→35yr, 92→40yr, 93→45yr, 94→50yr, 95→55yr, 96→60yr, 97→65yr, 98→70yr, 99→75yr, 100→80yr, 101→85yr, 102→90yr, 103→95yr, 104→100yr, 105→105yr, 106→110yr, 107→115yr, 108→120yr.",
       "full_text_passages": [
         {
-          "text": "Standard: 48 angul = 36 inches. Formula: each angul above 90 adds 5 years. Scale: 90→30yr, 91→35yr, 92→40yr, 93→45yr, 94→50yr, 95→55yr, 96→60yr, 97→65yr, 98→70yr, 99→75yr, 100→80yr, 101→85yr, 102→90yr, 103→95yr, 104→100yr, 105→105yr, 106→110yr, 107→115yr, 108→120yr.",
+          "text": "Standard: 48 angul = 36 inches (1 angul ≈ 0.75 inch). Base: 90 angul → 30 years. Each additional angul adds 5 years. 90→30yr, 91→35yr, 92→40yr, 93→45yr, 94→50yr, 95→55yr, 96→60yr, 97→65yr, 98→70yr, 99→75yr, 100→80yr, 101→85yr, 102→90yr, 103→95yr, 104→100yr, 105→105yr, 106→110yr, 107→115yr, 108→120yr.",
           "confidence": "HIGH"
         }
       ],
@@ -3005,7 +4164,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "physical_metric",
@@ -3016,18 +4175,30 @@
       },
       "measurement": "maniband_lines",
       "scale": {
-        "1": 30,
-        "2": 60,
-        "3": 90,
-        "4": 120
+        "1": {
+          "years": 30,
+          "category": "short_life"
+        },
+        "2": {
+          "years": 60,
+          "category": "middle_life"
+        },
+        "3": {
+          "years": 90,
+          "category": "long_life"
+        },
+        "4": {
+          "years": 120,
+          "category": "extraordinary_long_life"
+        }
       }
     },
     "interpretation": {
-      "summary": "Maniband (Wrist) Lines — 1 Line=30yr, 2=60yr, 3=90yr, 4=120yr",
-      "detailed": "Count the lines at the start of the palm (wrist area). Each complete wrist line represents a 30-year lifecycle block: 1 line → 30 years, 2 lines → 60 years, 3 lines → 90 years, 4 lines → 120 years.",
+      "summary": "Maniband (Wrist) Lines — 1=30yr, 2=60yr, 3=90yr, 4=120yr",
+      "detailed": "Count clear, prominent lines at the wrist (maniband). 1 line → 30yr (Short Life). 2 lines → 60yr (Middle Life). 3 lines → 90yr (Long Life). 4 lines → 120yr (Extraordinary Long Life).",
       "full_text_passages": [
         {
-          "text": "Count the lines at the start of the palm (wrist area). Each complete wrist line represents a 30-year lifecycle block: 1 line → 30 years, 2 lines → 60 years, 3 lines → 90 years, 4 lines → 120 years.",
+          "text": "Count clear, prominent lines at the wrist (maniband). 1 line → 30yr (Short Life). 2 lines → 60yr (Middle Life). 3 lines → 90yr (Long Life). 4 lines → 120yr (Extraordinary Long Life).",
           "confidence": "HIGH"
         }
       ],
@@ -3041,8 +4212,7 @@
         "maniband",
         "wrist_lines",
         "palm",
-        "physical_metric",
-        "age_engine"
+        "physical_metric"
       ],
       "physical_markers": []
     },
@@ -3078,7 +4248,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "physical_metric",
@@ -3090,7 +4260,8 @@
       "line_type": "whole",
       "scale": {
         "0": {
-          "male": 100
+          "male": 100,
+          "female": null
         },
         "1": {
           "male": 20,
@@ -3115,15 +4286,20 @@
         "6": {
           "male": 120,
           "female": 80
+        },
+        "7": {
+          "male": 50,
+          "female": null
         }
-      }
+      },
+      "note": "7 lines non-linear: overextension. Female for 0 and 7 lines not in source."
     },
     "interpretation": {
-      "summary": "Forehead Lines — Whole Lines Gender-Specific Age Table",
-      "detailed": "Whole forehead lines (gender-specific): 0 lines: male=100yr. 1 line: male=20yr, female=40yr. 2 lines: male=30yr, female=60yr. 3 lines: male=60yr, female=70yr. 4 lines: male=80yr, female=80yr. 5 lines: male=100yr, female=100yr. 6 lines: male=120yr, female=80yr.",
+      "summary": "Forehead Whole Lines — Gender-Specific Age Table (0-7 Lines)",
+      "detailed": "Whole (unbroken) forehead lines, gender-specific. 0 lines: male=100yr. 1 line: male=20yr, female=40yr. 2 lines: male=30yr, female=60yr. 3 lines: male=60yr, female=70yr. 4 lines: male=80yr, female=80yr. 5 lines: male=100yr, female=100yr. 6 lines: male=120yr, female=80yr. 7 lines: male=50yr (non-linear — high count = overextension); female value not specified in source.",
       "full_text_passages": [
         {
-          "text": "Whole forehead lines (gender-specific): 0 lines: male=100yr. 1 line: male=20yr, female=40yr. 2 lines: male=30yr, female=60yr. 3 lines: male=60yr, female=70yr. 4 lines: male=80yr, female=80yr. 5 lines: male=100yr, female=100yr. 6 lines: male=120yr, female=80yr.",
+          "text": "Whole (unbroken) forehead lines, gender-specific. 0 lines: male=100yr. 1 line: male=20yr, female=40yr. 2 lines: male=30yr, female=60yr. 3 lines: male=60yr, female=70yr. 4 lines: male=80yr, female=80yr. 5 lines: male=100yr, female=100yr. 6 lines: male=120yr, female=80yr. 7 lines: male=50yr (non-linear — high count = overextension); female value not specified in source.",
           "confidence": "HIGH"
         }
       ],
@@ -3173,7 +4349,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "physical_metric",
@@ -3191,15 +4367,23 @@
         "2": {
           "male": 30,
           "female": 40
+        },
+        "3": {
+          "male": 40,
+          "female": 50
+        },
+        "4": {
+          "male": 40,
+          "female": null
         }
       }
     },
     "interpretation": {
-      "summary": "Forehead Lines — Broken Lines (Reduced Lifespan) Gender Table",
-      "detailed": "Broken (incomplete) forehead lines carry significantly lower age markers: 1 broken line: male=10yr, female=20yr. 2 broken lines: male=30yr, female=40yr.",
+      "summary": "Forehead Broken Lines — Gender-Specific Age Table (1-4 Broken Lines)",
+      "detailed": "Broken (incomplete) forehead lines, gender-specific. 1 broken line: male=10yr, female=20yr. 2 broken lines: male=30yr, female=40yr. 3 broken lines: male=40yr, female=50yr. 4 broken lines: male=40yr, female=not specified.",
       "full_text_passages": [
         {
-          "text": "Broken (incomplete) forehead lines carry significantly lower age markers: 1 broken line: male=10yr, female=20yr. 2 broken lines: male=30yr, female=40yr.",
+          "text": "Broken (incomplete) forehead lines, gender-specific. 1 broken line: male=10yr, female=20yr. 2 broken lines: male=30yr, female=40yr. 3 broken lines: male=40yr, female=50yr. 4 broken lines: male=40yr, female=not specified.",
           "confidence": "HIGH"
         }
       ],
@@ -3249,7 +4433,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "physical_metric",
@@ -3258,18 +4442,18 @@
         "checkable": false,
         "description": "Physical/behavioral/observational — not automatable in Phase 1."
       },
-      "line_type": "whole_ear_to_ear",
+      "line_type": "ear_to_ear_whole",
       "scale": {
         "1": 100,
         "2": 70
       }
     },
     "interpretation": {
-      "summary": "Forehead Lines — Ear-to-Ear Whole Lines (1=100yr, 2=70yr)",
-      "detailed": "Whole forehead lines that reach ear-to-ear carry special longevity markers: 1 ear-to-ear line → 100 years. 2 ear-to-ear lines → 70 years.",
+      "summary": "Forehead Ear-to-Ear Lines — 1 Line=100yr, 2 Lines=70yr",
+      "detailed": "Whole forehead lines extending from ear to ear. 1 ear-to-ear line → 100 years. 2 ear-to-ear lines → 70 years.",
       "full_text_passages": [
         {
-          "text": "Whole forehead lines that reach ear-to-ear carry special longevity markers: 1 ear-to-ear line → 100 years. 2 ear-to-ear lines → 70 years.",
+          "text": "Whole forehead lines extending from ear to ear. 1 ear-to-ear line → 100 years. 2 ear-to-ear lines → 70 years.",
           "confidence": "HIGH"
         }
       ],
@@ -3319,7 +4503,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "age_effect",
@@ -3333,16 +4517,18 @@
       "houses_involved": [
         4
       ],
-      "effect_age": 22,
-      "state": "exalted",
-      "outcome": "self_employment_and_assets"
+      "activation_age": 22,
+      "effects": [
+        "start_work_or_self_employed",
+        "joy_of_house_vehicle"
+      ]
     },
     "interpretation": {
-      "summary": "Sun in H4 Exalted/Lord — Self-Employment + House/Vehicle at Age 22",
-      "detailed": "Sun in the 4th house (exalted state or as H4 lord): at age 22 the native starts self-employment and gains a house and vehicle. This is a milestone prosperity trigger at the Sun's maturity-aligned age.",
+      "summary": "Sun Exalted / Lord of H4 — Starts Work + Home/Vehicle Joy at Age 22",
+      "detailed": "Sun exalted or sitting in / lord of H4. At age 22: native starts working or becomes self-employed; gains joy of house and vehicle.",
       "full_text_passages": [
         {
-          "text": "Sun in the 4th house (exalted state or as H4 lord): at age 22 the native starts self-employment and gains a house and vehicle. This is a milestone prosperity trigger at the Sun's maturity-aligned age.",
+          "text": "Sun exalted or sitting in / lord of H4. At age 22: native starts working or becomes self-employed; gains joy of house and vehicle.",
           "confidence": "HIGH"
         }
       ],
@@ -3358,7 +4544,7 @@
         "h4",
         "exalted",
         "age_22",
-        "self_employment",
+        "career",
         "property"
       ],
       "physical_markers": []
@@ -3399,7 +4585,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "age_effect",
@@ -3413,15 +4599,18 @@
       "houses_involved": [
         4
       ],
-      "state": "debilitated",
-      "outcome": "career_loss_and_mother_affliction"
+      "effects": [
+        "inauspicious_job_business",
+        "loss_house_vehicle",
+        "mother_affliction"
+      ]
     },
     "interpretation": {
-      "summary": "Sun in H4 Debilitated — Inauspicious Career + Mother Affliction",
-      "detailed": "Sun in the 4th house (debilitated state): inauspicious effect on career and assets; simultaneous affliction to the mother. Opposite outcome to the exalted Sun H4 rule.",
+      "summary": "Sun Debilitated in H4 — Inauspicious Job/Business + Loss of House/Vehicle",
+      "detailed": "Sun debilitated in H4: inauspicious effect on job and business; loss of joy of house and vehicle; affliction to mother.",
       "full_text_passages": [
         {
-          "text": "Sun in the 4th house (debilitated state): inauspicious effect on career and assets; simultaneous affliction to the mother. Opposite outcome to the exalted Sun H4 rule.",
+          "text": "Sun debilitated in H4: inauspicious effect on job and business; loss of joy of house and vehicle; affliction to mother.",
           "confidence": "HIGH"
         }
       ],
@@ -3430,14 +4619,15 @@
       "life_domains": [
         "career",
         "property",
-        "mother"
+        "family"
       ],
       "tags": [
         "sun",
         "h4",
         "debilitated",
         "career",
-        "mother_affliction"
+        "property",
+        "mother"
       ],
       "physical_markers": []
     },
@@ -3477,7 +4667,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "age_effect",
@@ -3491,16 +4681,17 @@
       "houses_involved": [
         7
       ],
-      "effect_age": 24,
-      "state": "exalted",
-      "outcome": "marriage"
+      "activation_age": 24,
+      "effects": [
+        "native_marries"
+      ]
     },
     "interpretation": {
-      "summary": "Moon in H7 Exalted/Lord — Marriage at Age 24",
-      "detailed": "Moon in the 7th house (exalted or as H7 lord): the native marries in the 24th year. Aligned with Moon's maturity age of 24.",
+      "summary": "Moon Exalted / Lord of H7 — Native Marries at Age 24",
+      "detailed": "Moon exalted or sitting in / lord of H7. At age 24: native marries.",
       "full_text_passages": [
         {
-          "text": "Moon in the 7th house (exalted or as H7 lord): the native marries in the 24th year. Aligned with Moon's maturity age of 24.",
+          "text": "Moon exalted or sitting in / lord of H7. At age 24: native marries.",
           "confidence": "HIGH"
         }
       ],
@@ -3555,7 +4746,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "age_effect",
@@ -3569,15 +4760,16 @@
       "houses_involved": [
         4
       ],
-      "state": "exalted",
-      "outcome": "land_proprietary"
+      "effects": [
+        "land_ownership"
+      ]
     },
     "interpretation": {
-      "summary": "Saturn in H4 Exalted/Lord — Land Proprietary",
-      "detailed": "Saturn in the 4th house (exalted or as H4 lord): facilitates proprietary of land — the native gains or inherits land/property. Saturn's slow nature ensures this manifests steadily over time.",
+      "summary": "Saturn Exalted / Lord of H4 — Native Acquires Land/Property",
+      "detailed": "Saturn exalted or sitting in / lord of H4: facilitates proprietary ownership of a piece of land.",
       "full_text_passages": [
         {
-          "text": "Saturn in the 4th house (exalted or as H4 lord): facilitates proprietary of land — the native gains or inherits land/property. Saturn's slow nature ensures this manifests steadily over time.",
+          "text": "Saturn exalted or sitting in / lord of H4: facilitates proprietary ownership of a piece of land.",
           "confidence": "HIGH"
         }
       ],
@@ -3585,15 +4777,14 @@
       "life_domain": "property",
       "life_domains": [
         "property",
-        "land",
-        "timing"
+        "wealth"
       ],
       "tags": [
         "saturn",
         "h4",
         "exalted",
-        "land",
-        "property"
+        "property",
+        "land"
       ],
       "physical_markers": []
     },
@@ -3633,7 +4824,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "planetary_combination",
       "sub_type": "age_effect",
@@ -3647,15 +4838,17 @@
       "houses_involved": [
         9
       ],
-      "effect_age": 42,
-      "outcome": "luck_rises"
+      "activation_age": 42,
+      "effects": [
+        "rise_of_luck"
+      ]
     },
     "interpretation": {
-      "summary": "Rahu in H9 — Luck Rises After Age 42",
-      "detailed": "Rahu in the 9th house: luck rises significantly after the native reaches the age of 42 — aligned with Rahu's maturity age of 42. The 9th house is the house of fortune; Rahu's late activation here signals a delayed but strong lucky period in the second half of life.",
+      "summary": "Rahu in H9 — Rise of Luck at Age 42",
+      "detailed": "Rahu in H9: at age 42 (Rahu's maturity year), the native experiences a rise of luck.",
       "full_text_passages": [
         {
-          "text": "Rahu in the 9th house: luck rises significantly after the native reaches the age of 42 — aligned with Rahu's maturity age of 42. The 9th house is the house of fortune; Rahu's late activation here signals a delayed but strong lucky period in the second half of life.",
+          "text": "Rahu in H9: at age 42 (Rahu's maturity year), the native experiences a rise of luck.",
           "confidence": "HIGH"
         }
       ],
@@ -3663,15 +4856,13 @@
       "life_domain": "luck",
       "life_domains": [
         "luck",
-        "timing",
-        "fortune"
+        "timing"
       ],
       "tags": [
         "rahu",
         "h9",
         "age_42",
-        "luck",
-        "fortune"
+        "luck"
       ],
       "physical_markers": []
     },
@@ -3711,7 +4902,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "foundational",
@@ -3720,41 +4911,40 @@
         "checkable": false,
         "description": "Physical/behavioral/observational — not automatable in Phase 1."
       },
-      "houses_involved": [
-        4,
-        9
-      ]
+      "dignity_effects": {
+        "exalted_sign": "auspicious",
+        "own_house": "excellent",
+        "friends_house": "auspicious",
+        "enemies_house": "evil"
+      }
     },
     "interpretation": {
-      "summary": "General House Beneficence — H4/H9 Benefic Pass for Malefics",
-      "detailed": "Any planet placed in H4 or H9 receives a 'Benefic Pass' regardless of its natural malefic status, provided it is not severely debilitated. This environmental logic override means Mars, Saturn, Rahu, Ketu, and Sun in H4 or H9 are treated as conferring good effects in this engine.",
+      "summary": "Foundational — Exalted/Own/Friend's House = Auspicious; Enemy's = Evil",
+      "detailed": "Planetary dignity table for Ch 24 age effects: Exalted sign → Auspicious. Own house → Excellent. Friend's house → Auspicious. Enemy's house → Evil.",
       "full_text_passages": [
         {
-          "text": "Any planet placed in H4 or H9 receives a 'Benefic Pass' regardless of its natural malefic status, provided it is not severely debilitated. This environmental logic override means Mars, Saturn, Rahu, Ketu, and Sun in H4 or H9 are treated as conferring good effects in this engine.",
+          "text": "Planetary dignity table for Ch 24 age effects: Exalted sign → Auspicious. Own house → Excellent. Friend's house → Auspicious. Enemy's house → Evil.",
           "confidence": "HIGH"
         }
       ],
       "remedies": [],
-      "life_domain": "general",
+      "life_domain": "longevity",
       "life_domains": [
-        "general",
-        "longevity"
+        "longevity",
+        "health",
+        "timing"
       ],
       "tags": [
-        "benefic_pass",
-        "h4",
-        "h9",
-        "malefic_override",
-        "foundational"
+        "dignity",
+        "exalted",
+        "own_house",
+        "foundation"
       ],
       "physical_markers": []
     },
     "metadata": {
       "planets_involved": [],
-      "houses_involved": [
-        4,
-        9
-      ],
+      "houses_involved": [],
       "signs_involved": [],
       "condition_count": 1,
       "gender_context": "neutral",
@@ -3784,7 +4974,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "foundational",
@@ -3792,34 +4982,55 @@
         "type": "manual",
         "checkable": false,
         "description": "Physical/behavioral/observational — not automatable in Phase 1."
+      },
+      "houses_involved": [
+        4,
+        9
+      ],
+      "favorable_houses": [
+        4,
+        9
+      ],
+      "moon_relative_houses": {
+        "houses": [
+          3,
+          6,
+          11
+        ],
+        "if_exalted": "auspicious",
+        "if_debilitated": "can_afflict"
       }
     },
     "interpretation": {
-      "summary": "Exaltation/Debilitation Principle — State Determines Outcome",
-      "detailed": "Universal modifier: if any planet is exalted, its outcome is auspicious; if debilitated, its outcome is an affliction. The Moon-House Exaltation Principle applies to all planetary placements in the age determination engine — state overrides house placement in the final prediction.",
+      "summary": "Foundational — H4 and H9 Give Good Effect",
+      "detailed": "Houses 4 and 9 give generally good effect. Moon's relative houses (H3, H6, H11): if exalted → auspicious; if debilitated → can afflict.",
       "full_text_passages": [
         {
-          "text": "Universal modifier: if any planet is exalted, its outcome is auspicious; if debilitated, its outcome is an affliction. The Moon-House Exaltation Principle applies to all planetary placements in the age determination engine — state overrides house placement in the final prediction.",
+          "text": "Houses 4 and 9 give generally good effect. Moon's relative houses (H3, H6, H11): if exalted → auspicious; if debilitated → can afflict.",
           "confidence": "HIGH"
         }
       ],
       "remedies": [],
-      "life_domain": "general",
+      "life_domain": "longevity",
       "life_domains": [
-        "general",
-        "longevity"
+        "longevity",
+        "health",
+        "timing"
       ],
       "tags": [
-        "exaltation",
-        "debilitation",
-        "state_modifier",
-        "foundational"
+        "h4",
+        "h9",
+        "foundation",
+        "house_quality"
       ],
       "physical_markers": []
     },
     "metadata": {
       "planets_involved": [],
-      "houses_involved": [],
+      "houses_involved": [
+        4,
+        9
+      ],
       "signs_involved": [],
       "condition_count": 1,
       "gender_context": "neutral",
@@ -3849,7 +5060,7 @@
       "passage_ref_id": null
     },
     "approval_status": "pending_review",
-    "created_at": "2026-05-04T08:17:45.522582+00:00",
+    "created_at": "2026-05-05T00:46:25.110823+00:00",
     "condition": {
       "type": "general_principle",
       "sub_type": "foundational",
@@ -3858,29 +5069,30 @@
         "checkable": false,
         "description": "Physical/behavioral/observational — not automatable in Phase 1."
       },
-      "clock_offset_months": 1
+      "effect_start_offset": "1_month_after_birth",
+      "applies_to": "debilitated_planets"
     },
     "interpretation": {
-      "summary": "Debilitation Clock — Malefic Count Starts 1 Month After Birth",
-      "detailed": "Precision counting rule: for debilitated planets, the malefic effect countdown does NOT start at birth — it starts specifically 1 month after the date of birth. The 'Debilitation Clock' is offset by one month for precise timing of afflictions.",
+      "summary": "Debilitation Clock — Malefic Effect Starts 1 Month After Birth",
+      "detailed": "For debilitated planets, the malefic effect countdown starts specifically 1 month after the date of birth — NOT at birth itself. Applies to all debilitation-based age and effect calculations in Ch 24.",
       "full_text_passages": [
         {
-          "text": "Precision counting rule: for debilitated planets, the malefic effect countdown does NOT start at birth — it starts specifically 1 month after the date of birth. The 'Debilitation Clock' is offset by one month for precise timing of afflictions.",
+          "text": "For debilitated planets, the malefic effect countdown starts specifically 1 month after the date of birth — NOT at birth itself. Applies to all debilitation-based age and effect calculations in Ch 24.",
           "confidence": "HIGH"
         }
       ],
       "remedies": [],
-      "life_domain": "general",
+      "life_domain": "longevity",
       "life_domains": [
-        "general",
-        "timing",
-        "longevity"
+        "longevity",
+        "health",
+        "timing"
       ],
       "tags": [
-        "debilitation_clock",
+        "debilitation",
         "timing",
-        "one_month_offset",
-        "foundational"
+        "birth_offset",
+        "foundation"
       ],
       "physical_markers": []
     },

@@ -2892,15 +2892,24 @@ Source text stated "die soon after death" — confirmed OCR error. Corrected to 
 
 ---
 
-## Lal Kitab Ch 24 — Determination of Age / Ayurdaya (4 May 2026)
+## Lal Kitab Ch 24 — Determination of Age / Ayurdaya v2 (4 May 2026)
 
-**Batch ID:** `lalkitab-ch24-v1-20260504`
-**Script:** `backend/scripts/ingest_lalkitab_ch24_v1.py`
-**Rules JSON:** `backend/scripts/lalkitab_ch24_rules.json`
-**Patch script:** `backend/scripts/patch_lalkitab_ch24_flags.py`
-**Source:** Lal Kitab Ch 24 JSON Ready (V7 + V11 Final Expansion) + Diagnostic file
+**Batch ID:** `lalkitab-ch24-v1-20260504` *(same batch; v2 upserted over v1)*
+**Scripts:** `backend/scripts/ingest_lalkitab_ch24_v1.py` (v1, 49 rules) → `backend/scripts/ingest_lalkitab_ch24_v2.py` (v2, 60 rules)
+**Rules JSON:** `backend/scripts/lalkitab_ch24_rules.json` (60 rules — v2 replaces v1)
+**Patch scripts:** `backend/scripts/patch_lalkitab_ch24_flags.py` (v1) · `backend/scripts/patch_lalkitab_ch24_v2_flags.py` (v2)
+**Source:** `Lal Kitab_Ch24_AI De-coded.md` — full chapter re-decode (supersedes V7+V11 source used for v1)
 
-### Rule breakdown
+### Why v2?
+
+v1 (49 rules) had validator-flagged structural issues in several rules (bundle rules covering multiple age thresholds, incorrect branch houses, incomplete physical-metric tables). v2 rewrites:
+- **Atomic splits** — midlife/latelife/shortlife thresholds split into one rule per age point (5 + 4 + 5 atomic rules replacing 3 bundles)
+- **Branch corrections** — `age-shortlife-2y` branch A corrected: Jupiter H8-11 AND Mars+Mercury+Venus in **H7** (not H1)
+- **New rule** — `age-longlife-sun-rahu`: 3-condition AND gate (Sun+Rahu in H10/H11 + life-slasher in H8 + Saturn in H3/H5/H6 → long life)
+- **Forehead table expanded** — complete 0-7 whole-lines and 1-4 broken-lines tables
+- **OR/AND gate integrity preserved** — `condition.branches` with `branch_operator` used throughout; no gate was dissolved in splitting
+
+### Rule breakdown (v2 — 60 rules)
 
 | Group | Count | Condition type | Sub-type |
 |---|---|---|---|
@@ -2908,36 +2917,46 @@ Source text stated "die soon after death" — confirmed OCR error. Corrected to 
 | Moon modifiers | 4 | `general_principle` | `moon_modifier` |
 | Luck / maturity logic | 3 | `general_principle` | `maturity_logic` |
 | Mortality symptom engine | 5 | `general_principle` | `mortality_symptom` |
-| Complex planetary age logic | 12 | `planetary_combination` | `short_life` / `health_affliction` / `longevity_marker` / `age_threshold` |
-| Physical metric engine | 5 | `general_principle` | `physical_metric` |
+| Core age logic (infancy/childhood/survival/longlife) | 9 | `planetary_combination` | `short_life` / `longevity_marker` |
+| Midlife thresholds (35/40/45/50/56yr) | 5 | `planetary_combination` | `age_threshold` |
+| Latelife thresholds (60/75/80/85yr) | 4 | `planetary_combination` | `age_threshold` |
+| Shortlife rules (2yr + 4 indicators) | 5 | `planetary_combination` | `short_life` |
+| Physical metric engine (forehead lines) | 5 | `general_principle` | `physical_metric` |
 | Special effect cycles | 5 | `planetary_combination` | `age_effect` |
 | Foundational placement logic | 3 | `general_principle` | `foundational` |
-| **Total** | **49** | | |
+| **Total** | **60** | | |
 
-### Validation results (4 May 2026)
-
-| Status | Count | % |
-|---|---|---|
-| `auto_approved` | 18 | 37% |
-| `pending_human_review` | 20 | 41% |
-| `flagged` | 11 | 22% |
-| Contradictions | 0 | — |
-
-11 flagged rules in two categories — all patched → `pending_human_review`:
-- **Group A (5 rules — content validity disputes):** Haiku validator disputed mortality symptom rules (North Star inability, reflection in ghee/oil/water, mirror, physical stasis) and debilitation-clock rule as non-classical. All ARE extracted from source material — Lal Kitab blends physiognomy and folk observation with astrology.
-- **Group B (6 rules — schema precision):** Content valid but condition field structurally imprecise: OR-logic not separated, "Jupiter's house" ambiguous, physiognomy mixed with planetary condition, duplicate age conditions, planet missing from `planets_involved`, multiple indicators not distinguished.
-
-### Key schema fields (first appearance in this batch)
+### Key schema patterns (introduced in v1, refined in v2)
 
 | Field | Notes |
 |---|---|
-| `condition.predicted_age` | Predicted age at death (int or string) from Moon-house engine |
+| `condition.predicted_age` | Predicted age at death (int or string) |
 | `condition.day_of_death` | Day of week of death from Moon-house engine |
 | `condition.house_lords` | Lords of houses that determine age (list[str]) |
-| `condition.maturity_ages` | Dict of planet → age of maturity (planet maturity catalog) |
-| `condition.extra_cond` | Pattern for embedding rule-specific structured data |
+| `condition.maturity_ages` | Dict of planet → age of maturity |
+| `condition.extra_cond` | Rule-specific structured data — branches, logic_gate, conjunction houses etc. |
+| `condition.extra_cond.branch_operator` | OR/AND for multi-branch rules |
+| `condition.extra_cond.logic_gate` | AND for compound 3-condition rules (e.g. age-longlife-sun-rahu) |
 
-### Moon-House Age Engine data
+### Validation results — v2 (4 May 2026, post-upload)
+
+| Status | Count | % |
+|---|---|---|
+| `auto_approved` | 23 | 38% |
+| `pending_human_review` | 28 | 47% |
+| `flagged` | 9 | 15% |
+| Contradictions | 2 pairs | — |
+
+**9 flagged rules in 3 groups** — all patched → `pending_human_review` via `patch_lalkitab_ch24_v2_flags.py`:
+- **Group A (4 rules — content validity disputes):** Haiku validator disputes mortality-symptom teachings (North Star, organic reflection, mirror, physical stasis) as esoteric/non-classical. All 4 confirmed in Ch 24 AI De-coded source.
+- **Group B (4 rules — false structural flags):** Content source-faithful; validator raises structural objections already addressed in schema design: two-house AND conditions (age-infancy-12d), OR branching correct per source (age-childhood-12m), physical markers already `checkable=False` (age-survival-son), compound AND gate is the source rule (age-shortlife-2y).
+- **Group C (1 rule — source-confidence dispute):** `foundation-debilitation-clock` — "1 month after birth" rule confirmed in source; same flag raised and resolved in v1.
+
+**2 false contradiction pairs — both cleared:**
+- `mod-venus` ↔ `mod-male-planet`: Venus is a female planet in Jyotish; not in the male set (Jupiter/Sun/Mars). Moon+Venus (85yr) and Moon+male-planet (96yr) are mutually exclusive by definition.
+- `age-threshold-85` ↔ `moon-h7`: Both produce identical output (85yr). Moon+Mars H7 confirms the base Moon-H7 reading — same prediction from two trigger paths is not a conflict.
+
+### Moon-House Age Engine data (unchanged from v1)
 
 | Moon House | Predicted Age | Day of Death | Lords |
 |---|---|---|---|
@@ -2958,11 +2977,11 @@ Source text stated "die soon after death" — confirmed OCR error. Corrected to 
 
 Sun=2 · Jupiter=16 · Moon=24 · Venus=25 · Mars=28 · Mercury=34 · Saturn=36 · Rahu=42 · Ketu=48
 
-### Final state
+### Final state (post patch)
 
 | `auto_approved` | `pending_human_review` | `flagged` | Total |
 |---|---|---|---|
-| 18 (37%) | 31 (63%) | 0 | 49 |
+| 23 (38%) | 37 (62%) | 0 | 60 |
 
 ---
 
@@ -2975,9 +2994,9 @@ Sun=2 · Jupiter=16 · Moon=24 · Venus=25 · Mars=28 · Mercury=34 · Saturn=36
 | Ch 21 | Karmic Debts | `lalkitab-ch21-v1-20260504` | 43 | 37 (86%) | 6 (14%) | 0 | `patch_lalkitab_ch21_flags.py` |
 | Ch 22 | Family and Childhood | `lalkitab-ch22-v1-20260504` | 17 | 15 (88%) | 2 (12%) | 0 | inline patch |
 | Ch 23 | House Construction Engine | `lalkitab-ch23-v1-20260504` | 31 | 18 (58%) | 13 (42%) | 0 | inline patch |
-| Ch 24 | Determination of Age | `lalkitab-ch24-v1-20260504` | 49 | 18 (37%) | 31 (63%) | 0 | `patch_lalkitab_ch24_flags.py` |
+| Ch 24 **v2** | Determination of Age | `lalkitab-ch24-v1-20260504` | **60** | **23 (38%)** | **37 (62%)** | 0 | `patch_lalkitab_ch24_v2_flags.py` |
 | Ch 27 | Lords / Body Parts / Objects | `lalkitab-ch27-v1-20260427` | 99 | 58 (59%) | 40 (40%) | 1 (1%) | `fix_flagged_ch27.py` |
-| **Total ingested** | | | **365** | **229 (63%)** | **129 (35%)** | **7 (2%)** | |
+| **Total ingested** | | | **376** | **234 (62%)** | **135 (36%)** | **7 (2%)** | |
 
 ### Chapters pending ingest (target: Ch 25, 26, 28, 29)
 
@@ -2990,8 +3009,9 @@ Sun=2 · Jupiter=16 · Moon=24 · Venus=25 · Mars=28 · Mercury=34 · Saturn=36
 
 ### Co-founder sign-off queue (Lal Kitab)
 
-All 365 ingested rules are at `auto_approved` or `pending_human_review` — **zero rules are `approved`** until co-founder sign-off. PHR rules flagged for review:
+All 376 ingested rules are at `auto_approved` or `pending_human_review` — **zero rules are `approved`** until co-founder sign-off. PHR rules flagged for review:
 - Ch 22–24: high PHR% due to content-validity disputes (validator unfamiliar with folk/physiognomy sections) and schema precision issues
+- Ch 24 v2 PHR specifically: Group A (4 mortality-symptom rules, folk/physiognomy teaching confirmed in source) + Group B (4 false structural flags) + Group C (1 debilitation-clock rule, confirmed in source)
 - Ch 27: 1 remaining `flagged` rule (`corr-mars-benefic`) — Mars benefic objects unknown (source column misalignment)
 
 ### Process improvements established (this ingest sprint)
