@@ -3044,6 +3044,34 @@ Both are Sun+Saturn conjunction rules but with mutually exclusive secondary trig
 
 ---
 
+## Lal Kitab Ch 26 — Day Generals and Debilitation Remedies (5 May 2026)
+
+**Topic:** Weekday General Principles + Planet Debilitation Remedies
+**Source:** `Lal Kitab_Ch 26_JSON Ready.md` · `Lal Kitab_Ch 26_Diagnostics.md`
+**Batch ID:** `lalkitab-ch26-v1-20260505`
+**Rules:** 16 (7 day_general_principle + 9 debilitation)
+**Validation:** 13 auto_approved (81%) · 3 pending_human_review (19%) · 0 flagged · 0 contradiction pairs
+**Patch script:** none required
+
+### Ch 26 Rule breakdown
+
+| Sub-type | Count | Rule IDs |
+|---|---|---|
+| day_general_principle | 7 | sunday/monday/tuesday/wednesday/thursday/friday/saturday-general |
+| debilitation | 9 | sun/moon/mars/mercury/jupiter/ketu/venus/saturn/rahu-debilitation |
+
+### Ch 26 Design notes
+
+- **DAY_DATA tuple pattern** — 7 structurally identical weekday rules generated via single `build_day_generals()` loop over a `DAY_DATA` list of tuples: `(slug, day_name, planet, logic_unit, auspicious[], inauspicious[], travel_dir, travel_note, birth_trait)`
+- **LU split pattern** — LU 26.10 covers Jupiter+Ketu; LU 26.12 covers Venus+Saturn → each split into 2 atomic rules, linked via `source.logic_unit` and `shared_lu_note` in `extra_cond`
+- **Mercury temporal constraints** — 100-day nose piercing duration; Tuesday soak → Wednesday morning feed moong cycle embedded in `condition.temporal_constraints`
+- **Mars exaltation distinction** — when Mars is exalted, remedy reverses: accept prasad yourself rather than donating
+- **Venus weight formula** — red maize donation = wife's weight OR wife's weight ÷ 10
+- **Saturn substitutive donation** — prohibits personal consumption of wine/meat/eggs; donate them instead
+- **Rahu silver** — square silver piece, permanent carry; color prohibition on Wednesday and Saturday embedded in `condition.prohibitions`
+
+---
+
 ## Lal Kitab — Cumulative Ingest Summary (as of 5 May 2026)
 
 | Chapter | Topic | Batch ID | Total | auto_approved | pending_human_review | flagged | Patch script |
@@ -3055,23 +3083,24 @@ Both are Sun+Saturn conjunction rules but with mutually exclusive secondary trig
 | Ch 23 | House Construction Engine | `lalkitab-ch23-v1-20260504` | 31 | 18 (58%) | 13 (42%) | 0 | inline patch |
 | Ch 24 **v2** | Determination of Age | `lalkitab-ch24-v1-20260504` | 60 | 23 (38%) | 37 (62%) | 0 | `patch_lalkitab_ch24_v2_flags.py` |
 | Ch 25 | Remedial Measures — Planetary Dosh | `lalkitab-ch25-v1-20260505` | 35 | 26 (74%) | 9 (26%) | 0 | `patch_lalkitab_ch25_flags.py` |
+| Ch 26 | Day Generals + Debilitation Remedies | `lalkitab-ch26-v1-20260505` | 16 | 13 (81%) | 3 (19%) | 0 | none required |
 | Ch 27 | Lords / Body Parts / Objects | `lalkitab-ch27-v1-20260427` | 99 | 58 (59%) | 40 (40%) | 1 (1%) | `fix_flagged_ch27.py` |
-| **Total ingested** | | | **411** | **260 (63%)** | **144 (35%)** | **7 (2%)** | |
+| **Total ingested** | | | **427** | **273 (64%)** | **147 (34%)** | **7 (2%)** | |
 
-### Chapters pending ingest (target: Ch 26, 28, 29)
+### Chapters pending ingest (target: Ch 28, 29)
 
 | Chapter | Topic | Source files available |
 |---|---|---|
-| Ch 26 | — | JSON Ready + Diagnostics |
 | Ch 28 | — | JSON Ready + Diagnostic |
 | Ch 29 | — | JSON Ready + Diagnostic |
 
 ### Co-founder sign-off queue (Lal Kitab)
 
-All 411 ingested rules are at `auto_approved` or `pending_human_review` — **zero rules are `approved`** until co-founder sign-off. PHR rules flagged for review:
+All 427 ingested rules are at `auto_approved` or `pending_human_review` — **zero rules are `approved`** until co-founder sign-off. PHR rules flagged for review:
 - Ch 22–24: high PHR% due to content-validity disputes (validator unfamiliar with folk/physiognomy sections) and schema precision issues
 - Ch 24 v2 PHR specifically: Group A (4 mortality-symptom rules, folk/physiognomy teaching confirmed in source) + Group B (4 false structural flags) + Group C (1 debilitation-clock rule, confirmed in source)
 - Ch 25 PHR: 2 validator truncation false flags (moon-h11, mars-mercury-sister) — content complete in DB
+- Ch 26 PHR: 3 rules at pending_human_review (19%) — no flagged rules, no contradictions
 - Ch 27: 1 remaining `flagged` rule (`corr-mars-benefic`) — Mars benefic objects unknown (source column misalignment)
 
 ### Process improvements established (this ingest sprint)
