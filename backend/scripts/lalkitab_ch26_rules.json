@@ -1,0 +1,1511 @@
+[
+  {
+    "rule_id": "lalkitab-ch26-sunday-general",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "day_general_principle",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires day-of-week / behavioral / ritual judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Sun"
+      ],
+      "weekday": "Sunday",
+      "ruling_planet": "Sun",
+      "logic_unit": "26.1",
+      "auspicious_activities": [
+        "All auspicious deeds",
+        "Seeking affection at dawn"
+      ],
+      "inauspicious_activities": [],
+      "travel_direction": "East",
+      "travel_note": "Journey towards East will be successful.",
+      "birth_trait": "Lucky",
+      "is_inauspicious_day": false
+    },
+    "interpretation": {
+      "summary": "Sunday — Auspicious Activities, Travel Direction, and Birth Trait",
+      "detailed": "Sunday is ruled by Sun. Auspicious activities: All auspicious deeds; Seeking affection at dawn. Travel: Journey towards East will be successful. Birth trait: Native born on Sunday will be Lucky.",
+      "full_text_passages": [
+        {
+          "text": "Sunday is ruled by Sun. Auspicious activities: All auspicious deeds; Seeking affection at dawn. Travel: Journey towards East will be successful. Birth trait: Native born on Sunday will be Lucky.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "timing",
+      "life_domains": [
+        "timing",
+        "auspicious_activities",
+        "daily_life"
+      ],
+      "tags": [
+        "sunday",
+        "sun",
+        "day_general",
+        "auspicious_timing",
+        "birth_trait",
+        "travel"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-monday-general",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "day_general_principle",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires day-of-week / behavioral / ritual judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "weekday": "Monday",
+      "ruling_planet": "Moon",
+      "logic_unit": "26.3",
+      "auspicious_activities": [
+        "Weddings",
+        "Nomenclature (naming ceremonies)",
+        "House construction",
+        "School admission"
+      ],
+      "inauspicious_activities": [],
+      "travel_direction": "South to West",
+      "travel_note": "Journey from South to West will be successful.",
+      "birth_trait": "Gentle and noble",
+      "is_inauspicious_day": false
+    },
+    "interpretation": {
+      "summary": "Monday — Auspicious Activities, Travel Direction, and Birth Trait",
+      "detailed": "Monday is ruled by Moon. Auspicious activities: Weddings; Nomenclature (naming ceremonies); House construction; School admission. Travel: Journey from South to West will be successful. Birth trait: Native born on Monday will be Gentle and noble.",
+      "full_text_passages": [
+        {
+          "text": "Monday is ruled by Moon. Auspicious activities: Weddings; Nomenclature (naming ceremonies); House construction; School admission. Travel: Journey from South to West will be successful. Birth trait: Native born on Monday will be Gentle and noble.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "timing",
+      "life_domains": [
+        "timing",
+        "auspicious_activities",
+        "daily_life"
+      ],
+      "tags": [
+        "monday",
+        "moon",
+        "day_general",
+        "auspicious_timing",
+        "birth_trait",
+        "travel"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-tuesday-general",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "day_general_principle",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires day-of-week / behavioral / ritual judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Mars"
+      ],
+      "weekday": "Tuesday",
+      "ruling_planet": "Mars",
+      "logic_unit": "26.5",
+      "auspicious_activities": [
+        "Buying and selling houses"
+      ],
+      "inauspicious_activities": [
+        "Sewing or wearing new clothes"
+      ],
+      "travel_direction": "East and South",
+      "travel_note": "No hurdles for journeys towards East and South.",
+      "birth_trait": "Aggressive by nature",
+      "is_inauspicious_day": false
+    },
+    "interpretation": {
+      "summary": "Tuesday — Auspicious Activities, Travel Direction, and Birth Trait",
+      "detailed": "Tuesday is ruled by Mars. Auspicious activities: Buying and selling houses. Inauspicious activities to avoid: Sewing or wearing new clothes (inauspicious). Travel: No hurdles for journeys towards East and South. Birth trait: Native born on Tuesday will be Aggressive by nature.",
+      "full_text_passages": [
+        {
+          "text": "Tuesday is ruled by Mars. Auspicious activities: Buying and selling houses. Inauspicious activities to avoid: Sewing or wearing new clothes (inauspicious). Travel: No hurdles for journeys towards East and South. Birth trait: Native born on Tuesday will be Aggressive by nature.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "timing",
+      "life_domains": [
+        "timing",
+        "auspicious_activities",
+        "daily_life"
+      ],
+      "tags": [
+        "tuesday",
+        "mars",
+        "day_general",
+        "auspicious_timing",
+        "birth_trait",
+        "travel"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-wednesday-general",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "day_general_principle",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires day-of-week / behavioral / ritual judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Mercury"
+      ],
+      "weekday": "Wednesday",
+      "ruling_planet": "Mercury",
+      "logic_unit": "26.7",
+      "auspicious_activities": [
+        "Wearing new clothes",
+        "House entry (griha pravesh)",
+        "Studying",
+        "Cultivating land"
+      ],
+      "inauspicious_activities": [],
+      "travel_direction": "East or West",
+      "travel_note": "No hurdles for journeys towards East or West.",
+      "birth_trait": "Inclined towards religion",
+      "is_inauspicious_day": false
+    },
+    "interpretation": {
+      "summary": "Wednesday — Auspicious Activities, Travel Direction, and Birth Trait",
+      "detailed": "Wednesday is ruled by Mercury. Auspicious activities: Wearing new clothes; House entry (griha pravesh); Studying; Cultivating land. Travel: No hurdles for journeys towards East or West. Birth trait: Native born on Wednesday will be Inclined towards religion.",
+      "full_text_passages": [
+        {
+          "text": "Wednesday is ruled by Mercury. Auspicious activities: Wearing new clothes; House entry (griha pravesh); Studying; Cultivating land. Travel: No hurdles for journeys towards East or West. Birth trait: Native born on Wednesday will be Inclined towards religion.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "timing",
+      "life_domains": [
+        "timing",
+        "auspicious_activities",
+        "daily_life"
+      ],
+      "tags": [
+        "wednesday",
+        "mercury",
+        "day_general",
+        "auspicious_timing",
+        "birth_trait",
+        "travel"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-thursday-general",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "day_general_principle",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires day-of-week / behavioral / ritual judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "weekday": "Thursday",
+      "ruling_planet": "Jupiter",
+      "logic_unit": "26.9",
+      "auspicious_activities": [
+        "All kinds of work",
+        "Success in jobs / career matters"
+      ],
+      "inauspicious_activities": [],
+      "travel_direction": null,
+      "travel_note": "No specific travel direction mentioned — Thursday is generally auspicious for all directions.",
+      "birth_trait": "Bright and virtuous",
+      "is_inauspicious_day": false
+    },
+    "interpretation": {
+      "summary": "Thursday — Auspicious Activities, Travel Direction, and Birth Trait",
+      "detailed": "Thursday is ruled by Jupiter. Auspicious activities: All kinds of work; Success in jobs / career matters. Travel: No specific travel direction mentioned — Thursday is generally auspicious for all directions. Birth trait: Native born on Thursday will be Bright and virtuous.",
+      "full_text_passages": [
+        {
+          "text": "Thursday is ruled by Jupiter. Auspicious activities: All kinds of work; Success in jobs / career matters. Travel: No specific travel direction mentioned — Thursday is generally auspicious for all directions. Birth trait: Native born on Thursday will be Bright and virtuous.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "timing",
+      "life_domains": [
+        "timing",
+        "auspicious_activities",
+        "daily_life"
+      ],
+      "tags": [
+        "thursday",
+        "jupiter",
+        "day_general",
+        "auspicious_timing",
+        "birth_trait",
+        "travel"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-friday-general",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "day_general_principle",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires day-of-week / behavioral / ritual judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Venus"
+      ],
+      "weekday": "Friday",
+      "ruling_planet": "Venus",
+      "logic_unit": "26.11",
+      "auspicious_activities": [
+        "All work",
+        "Evening journeys specifically favorable"
+      ],
+      "inauspicious_activities": [],
+      "travel_direction": "Evening (timing, not direction)",
+      "travel_note": "Evening journeys are favorable. No directional restriction.",
+      "birth_trait": "Romantic and choosy",
+      "is_inauspicious_day": false
+    },
+    "interpretation": {
+      "summary": "Friday — Auspicious Activities, Travel Direction, and Birth Trait",
+      "detailed": "Friday is ruled by Venus. Auspicious activities: All work; Evening journeys specifically favorable. Travel: Evening journeys are favorable. No directional restriction. Birth trait: Native born on Friday will be Romantic and choosy.",
+      "full_text_passages": [
+        {
+          "text": "Friday is ruled by Venus. Auspicious activities: All work; Evening journeys specifically favorable. Travel: Evening journeys are favorable. No directional restriction. Birth trait: Native born on Friday will be Romantic and choosy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "timing",
+      "life_domains": [
+        "timing",
+        "auspicious_activities",
+        "daily_life"
+      ],
+      "tags": [
+        "friday",
+        "venus",
+        "day_general",
+        "auspicious_timing",
+        "birth_trait",
+        "travel"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Venus"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-saturday-general",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "general_principle",
+      "sub_type": "day_general_principle",
+      "yoga_check": {
+        "type": "manual",
+        "checkable": false,
+        "description": "Requires day-of-week / behavioral / ritual judgment — not automatable in Phase 1."
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "weekday": "Saturday",
+      "ruling_planet": "Saturn",
+      "logic_unit": "26.13",
+      "auspicious_activities": [],
+      "inauspicious_activities": [
+        "Starting new work",
+        "Journeys of any kind",
+        "Sewing or wearing new clothes"
+      ],
+      "travel_direction": null,
+      "travel_note": "Absolutely inauspicious — avoid all new beginnings and travel.",
+      "birth_trait": "Generally sickly",
+      "is_inauspicious_day": true
+    },
+    "interpretation": {
+      "summary": "Saturday — Auspicious Activities, Travel Direction, and Birth Trait",
+      "detailed": "Saturday is ruled by Saturn. Inauspicious activities to avoid: Starting new work; Journeys of any kind; Sewing or wearing new clothes (inauspicious). Travel: Absolutely inauspicious — avoid all new beginnings and travel. Birth trait: Native born on Saturday will be Generally sickly.",
+      "full_text_passages": [
+        {
+          "text": "Saturday is ruled by Saturn. Inauspicious activities to avoid: Starting new work; Journeys of any kind; Sewing or wearing new clothes (inauspicious). Travel: Absolutely inauspicious — avoid all new beginnings and travel. Birth trait: Native born on Saturday will be Generally sickly.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [],
+      "life_domain": "timing",
+      "life_domains": [
+        "timing",
+        "auspicious_activities",
+        "daily_life"
+      ],
+      "tags": [
+        "saturday",
+        "saturn",
+        "day_general",
+        "auspicious_timing",
+        "birth_trait",
+        "travel",
+        "inauspicious_day"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": false
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-sun-debilitation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debilitation",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Sun"
+      ],
+      "symptoms": [
+        "Sun weak / debilitated"
+      ],
+      "planet": "Sun",
+      "planet_state": "debilitated",
+      "weekday": "Sunday",
+      "logic_unit": "26.2"
+    },
+    "interpretation": {
+      "summary": "Sun Debilitation — Remedies to Strengthen/Exalt Sun",
+      "detailed": "When Sun is debilitated or weak (requires strengthening): Remedy A: Immerse rice and jaggery in running water. Remedy B: Eat rice and milk cooked with jaggery (kheer with jaggery). Remedy C: Immerse copper coins in water. Remedy D: Donate wheat and jaggery wrapped in a red cloth.",
+      "full_text_passages": [
+        {
+          "text": "When Sun is debilitated or weak (requires strengthening): Remedy A: Immerse rice and jaggery in running water. Remedy B: Eat rice and milk cooked with jaggery (kheer with jaggery). Remedy C: Immerse copper coins in water. Remedy D: Donate wheat and jaggery wrapped in a red cloth.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Immerse rice and jaggery in running water"
+        },
+        {
+          "category": "ritual",
+          "action": "Eat rice and milk cooked with jaggery (jaggery kheer)"
+        },
+        {
+          "category": "offering",
+          "action": "Immerse copper coins in water"
+        },
+        {
+          "category": "offering",
+          "action": "Donate wheat and jaggery wrapped in a red cloth"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "health",
+        "wellbeing"
+      ],
+      "tags": [
+        "Sun",
+        "debilitation",
+        "Sunday",
+        "rice",
+        "jaggery",
+        "copper",
+        "wheat"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Sun"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-moon-debilitation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debilitation",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Moon"
+      ],
+      "symptoms": [
+        "Moon weak / debilitated"
+      ],
+      "planet": "Moon",
+      "planet_state": "debilitated",
+      "weekday": "Monday",
+      "logic_unit": "26.4"
+    },
+    "interpretation": {
+      "summary": "Moon Debilitation — Remedies (Kheer, Pearl, White Tilak)",
+      "detailed": "When Moon is debilitated or weak: Remedy A: Eat kheer (rice pudding / milk-rice). Remedy B: Wear white clothes and apply a white tilak. Remedy C: Wear a pearl set in a silver ring; donate pearls.",
+      "full_text_passages": [
+        {
+          "text": "When Moon is debilitated or weak: Remedy A: Eat kheer (rice pudding / milk-rice). Remedy B: Wear white clothes and apply a white tilak. Remedy C: Wear a pearl set in a silver ring; donate pearls.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "ritual",
+          "action": "Eat kheer (rice pudding / milk-rice)"
+        },
+        {
+          "category": "ritual",
+          "action": "Wear white clothes and apply a white tilak on forehead"
+        },
+        {
+          "category": "gemstone_jewelry",
+          "action": "Wear a pearl set in a silver ring"
+        },
+        {
+          "category": "offering",
+          "action": "Donate pearls"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "health",
+        "wellbeing"
+      ],
+      "tags": [
+        "Moon",
+        "debilitation",
+        "Monday",
+        "kheer",
+        "pearl",
+        "silver",
+        "white"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Moon"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-mars-debilitation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debilitation",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mars"
+      ],
+      "symptoms": [
+        "Mars weak / debilitated",
+        "Mangali dosha"
+      ],
+      "planet": "Mars",
+      "planet_state": [
+        "debilitated",
+        "malefic",
+        "mangali"
+      ],
+      "weekday": "Tuesday",
+      "logic_unit": "26.6",
+      "prohibition": "Do not use masoor dal (red lentils) for self",
+      "exalted_distinction": "When Mars is exalted: native must also accept and eat the prasad distributed at the temple — offering is both external and personal."
+    },
+    "interpretation": {
+      "summary": "Mars Debilitation / Mangali — Remedies (Hanuman, Rewari, Sweet Bread)",
+      "detailed": "When Mars is debilitated, malefic, or native is Mangali (Mars dosha): Prohibition: Do NOT use masoor dal (red lentils) for self. Remedy A: Immerse rewari (sesame-jaggery sweet) in water. Remedy B: Distribute sweet bread (paratha) among children and monkeys. Remedy C: Visit Hanumanji's temple. Exalted Mars distinction (Diagnostic): When Mars IS exalted/strong, the native must also accept/eat the prasad they distribute at the temple — this is not done for debilitated Mars where the offering is entirely external.",
+      "full_text_passages": [
+        {
+          "text": "When Mars is debilitated, malefic, or native is Mangali (Mars dosha): Prohibition: Do NOT use masoor dal (red lentils) for self. Remedy A: Immerse rewari (sesame-jaggery sweet) in water. Remedy B: Distribute sweet bread (paratha) among children and monkeys. Remedy C: Visit Hanumanji's temple. Exalted Mars distinction (Diagnostic): When Mars IS exalted/strong, the native must also accept/eat the prasad they distribute at the temple — this is not done for debilitated Mars where the offering is entirely external.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Do NOT use masoor dal (red lentils) for self — prohibition"
+        },
+        {
+          "category": "offering",
+          "action": "Immerse rewari (sesame-jaggery sweet) in water"
+        },
+        {
+          "category": "offering",
+          "action": "Distribute sweet bread (paratha) among children and monkeys"
+        },
+        {
+          "category": "ritual",
+          "action": "Visit Hanumanji's temple and offer worship"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "health",
+        "wellbeing"
+      ],
+      "tags": [
+        "Mars",
+        "debilitation",
+        "mangali",
+        "Tuesday",
+        "Hanuman",
+        "rewari",
+        "paratha",
+        "masoor_prohibition"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mars"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-mercury-debilitation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debilitation",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Mercury"
+      ],
+      "symptoms": [
+        "Mercury weak / debilitated"
+      ],
+      "planet": "Mercury",
+      "planet_state": "debilitated",
+      "weekday": "Wednesday",
+      "logic_unit": "26.8",
+      "prohibitions": [
+        "Do not eat whole moong (green gram)",
+        "Do not wear green clothes",
+        "Do not keep wide-leaf plants, bamboo, or grinding mill on roof"
+      ],
+      "temporal_constraints": {
+        "nose_piercing_duration_days": 100,
+        "moong_soak_day": "Tuesday",
+        "moong_feed_day": "Wednesday morning",
+        "moong_cycle_logic": "Soak Tuesday (Mars energy activation) → feed Wednesday morning (Mercury channeling)"
+      }
+    },
+    "interpretation": {
+      "summary": "Mercury Debilitation — 100-Day Nose Ritual, Moong Protocol, Structural Prohibitions",
+      "detailed": "When Mercury is debilitated or weak: Dietary prohibition: Do not eat whole moong (green gram). Clothing prohibition: Do not wear green clothes. Structural prohibition: Do not keep wide-leaf plants, bamboo, or a grinding mill on the roof of the house. Remedy A (100-Day Ritual): Pierce nose and wear silver in it for exactly 100 days. Remedy B (Split-Day Moong Protocol): Soak moong on Tuesday evening; feed the soaked moong to animals on Wednesday morning. The split-day cycle is essential — soaking on Tuesday activates Mars energy; feeding on Wednesday morning channels it through Mercury's day.",
+      "full_text_passages": [
+        {
+          "text": "When Mercury is debilitated or weak: Dietary prohibition: Do not eat whole moong (green gram). Clothing prohibition: Do not wear green clothes. Structural prohibition: Do not keep wide-leaf plants, bamboo, or a grinding mill on the roof of the house. Remedy A (100-Day Ritual): Pierce nose and wear silver in it for exactly 100 days. Remedy B (Split-Day Moong Protocol): Soak moong on Tuesday evening; feed the soaked moong to animals on Wednesday morning. The split-day cycle is essential — soaking on Tuesday activates Mars energy; feeding on Wednesday morning channels it through Mercury's day.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Do NOT eat whole moong (green gram) — prohibition"
+        },
+        {
+          "category": "succour",
+          "action": "Do NOT wear green clothes — prohibition"
+        },
+        {
+          "category": "succour",
+          "action": "Do NOT keep wide-leaf plants, bamboo, or grinding mill on roof — structural prohibition"
+        },
+        {
+          "category": "ritual",
+          "action": "Pierce nose and wear silver in it for exactly 100 days"
+        },
+        {
+          "category": "offering",
+          "action": "Soak moong on Tuesday evening; feed to animals on Wednesday morning (split-day cycle)"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "health",
+        "wellbeing"
+      ],
+      "tags": [
+        "Mercury",
+        "debilitation",
+        "Wednesday",
+        "nose_piercing",
+        "silver",
+        "moong",
+        "100_days",
+        "green_prohibition"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-jupiter-debilitation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debilitation",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "symptoms": [
+        "Jupiter weak / debilitated"
+      ],
+      "planet": "Jupiter",
+      "planet_state": "debilitated",
+      "weekday": "Thursday",
+      "logic_unit": "26.10",
+      "shared_lu_note": "LU 26.10 also covers Ketu debilitation (same Thursday day) — see ch26-ketu-debilitation"
+    },
+    "interpretation": {
+      "summary": "Jupiter Debilitation — Remedies (Yellow Clothes, Curry-Rice, Gram Pulse)",
+      "detailed": "When Jupiter is debilitated or weak (Thursday remedy): Remedy A: Donate yellow clothes to Brahmins. Remedy B: Eat curry and rice (Jupiter's food — yellow dal + rice). Remedy C: Immerse gram pulse (chana dal) in water.",
+      "full_text_passages": [
+        {
+          "text": "When Jupiter is debilitated or weak (Thursday remedy): Remedy A: Donate yellow clothes to Brahmins. Remedy B: Eat curry and rice (Jupiter's food — yellow dal + rice). Remedy C: Immerse gram pulse (chana dal) in water.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "offering",
+          "action": "Donate yellow clothes to Brahmins"
+        },
+        {
+          "category": "ritual",
+          "action": "Eat curry and rice (yellow dal + rice — Jupiter's food)"
+        },
+        {
+          "category": "offering",
+          "action": "Immerse gram pulse (chana dal) in water"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "health",
+        "wellbeing"
+      ],
+      "tags": [
+        "Jupiter",
+        "debilitation",
+        "Thursday",
+        "yellow_clothes",
+        "gram_pulse",
+        "Brahmins"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-ketu-debilitation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debilitation",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Ketu"
+      ],
+      "symptoms": [
+        "Ketu weak / debilitated"
+      ],
+      "planet": "Ketu",
+      "planet_state": "debilitated",
+      "weekday": "Thursday",
+      "logic_unit": "26.10",
+      "shared_lu_note": "LU 26.10 covers both Jupiter and Ketu debilitation under Thursday — see ch26-jupiter-debilitation"
+    },
+    "interpretation": {
+      "summary": "Ketu Debilitation — Gold in Ears, Saffron, Yellow Cloth Offering (Thursday)",
+      "detailed": "When Ketu is debilitated or weak (Thursday remedy): Remedy A: Put gold in ears (wear gold earrings). Remedy B: Eat saffron. Remedy C: Offer banana, wheat, gold, and jaggery wrapped in yellow cloth to a priest. Remedy D: Donate sesame (til) and a quilt to a saint.",
+      "full_text_passages": [
+        {
+          "text": "When Ketu is debilitated or weak (Thursday remedy): Remedy A: Put gold in ears (wear gold earrings). Remedy B: Eat saffron. Remedy C: Offer banana, wheat, gold, and jaggery wrapped in yellow cloth to a priest. Remedy D: Donate sesame (til) and a quilt to a saint.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "gemstone_jewelry",
+          "action": "Put gold in ears (wear gold earrings)"
+        },
+        {
+          "category": "ritual",
+          "action": "Eat saffron"
+        },
+        {
+          "category": "offering",
+          "action": "Offer banana, wheat, gold, and jaggery wrapped in yellow cloth to a priest"
+        },
+        {
+          "category": "offering",
+          "action": "Donate sesame (til) and a quilt to a saint"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "health",
+        "wellbeing"
+      ],
+      "tags": [
+        "Ketu",
+        "debilitation",
+        "Thursday",
+        "gold",
+        "saffron",
+        "yellow_cloth",
+        "sesame",
+        "quilt"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-venus-debilitation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debilitation",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Venus"
+      ],
+      "symptoms": [
+        "Venus weak / debilitated"
+      ],
+      "planet": "Venus",
+      "planet_state": "debilitated",
+      "weekday": "Friday",
+      "logic_unit": "26.12",
+      "weight_formula": "Offer red maize equal to wife's weight OR wife's weight / 10",
+      "shared_lu_note": "LU 26.12 covers both Venus and Saturn debilitation under Friday — see ch26-saturn-debilitation",
+      "succour_mechanism": "Consuming almonds alongside Saturn objects links Venus to its friend Saturn — boosts Venus energy through Saturn's stability"
+    },
+    "interpretation": {
+      "summary": "Venus Debilitation — Cow Service, Red Maize Offering, Almonds with Saturn Objects",
+      "detailed": "When Venus is debilitated or weak (Friday remedy): Remedy A: Serve the cow (clean, feed, care for cows). Remedy B: Offer curd and red maize at a temple in quantity equal to the wife's weight OR one-tenth of the wife's weight. Remedy C: Feed yellow-colored boiled potatoes to a black cow. Succour remedy (Diagnostic): Consume almonds specifically alongside objects of Saturn — this combination exalts Venus by linking it to its friend Saturn's grounding energy.",
+      "full_text_passages": [
+        {
+          "text": "When Venus is debilitated or weak (Friday remedy): Remedy A: Serve the cow (clean, feed, care for cows). Remedy B: Offer curd and red maize at a temple in quantity equal to the wife's weight OR one-tenth of the wife's weight. Remedy C: Feed yellow-colored boiled potatoes to a black cow. Succour remedy (Diagnostic): Consume almonds specifically alongside objects of Saturn — this combination exalts Venus by linking it to its friend Saturn's grounding energy.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Serve the cow — clean, feed, care for cows"
+        },
+        {
+          "category": "offering",
+          "action": "Offer curd and red maize at temple equal to wife's weight (or 1/10th of wife's weight)"
+        },
+        {
+          "category": "ritual",
+          "action": "Feed yellow-colored boiled potatoes to a black cow"
+        },
+        {
+          "category": "succour",
+          "action": "Consume almonds alongside Saturn objects — exalts Venus through Saturn's grounding energy (Diagnostic)"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "health",
+        "wellbeing"
+      ],
+      "tags": [
+        "Venus",
+        "debilitation",
+        "Friday",
+        "cow",
+        "red_maize",
+        "curd",
+        "almonds",
+        "Saturn_objects"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Venus"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-saturn-debilitation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debilitation",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Saturn"
+      ],
+      "symptoms": [
+        "Saturn weak / debilitated"
+      ],
+      "planet": "Saturn",
+      "planet_state": "debilitated",
+      "weekday": "Friday",
+      "logic_unit": "26.12",
+      "prohibitions": [
+        "Wine / alcohol",
+        "Urad dal (black gram)",
+        "Meat",
+        "Eggs"
+      ],
+      "prohibition_note": "Substitutive logic: instead of self-consumption, donate these items — transforms Saturn's malefic consumption into charitable offering",
+      "shared_lu_note": "LU 26.12 covers both Venus and Saturn debilitation under Friday — see ch26-venus-debilitation"
+    },
+    "interpretation": {
+      "summary": "Saturn Debilitation — Prohibitions (Wine/Meat/Eggs) and Crow/Cloth Remedies",
+      "detailed": "When Saturn is debilitated or weak (Friday remedy): Prohibition: Do NOT use wine, urad (black gram), meat, or eggs for self — donate these items to others instead of consuming them. Remedy A: Donate black cloth on Saturday. Remedy B: Feed pakoras fried in mustard oil to crows (Saturn's bird).",
+      "full_text_passages": [
+        {
+          "text": "When Saturn is debilitated or weak (Friday remedy): Prohibition: Do NOT use wine, urad (black gram), meat, or eggs for self — donate these items to others instead of consuming them. Remedy A: Donate black cloth on Saturday. Remedy B: Feed pakoras fried in mustard oil to crows (Saturn's bird).",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Do NOT consume wine, urad dal, meat, or eggs — donate them instead of self-consumption"
+        },
+        {
+          "category": "offering",
+          "action": "Donate black cloth on Saturday"
+        },
+        {
+          "category": "offering",
+          "action": "Feed pakoras fried in mustard oil to crows (Saturn's bird)"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "health",
+        "wellbeing"
+      ],
+      "tags": [
+        "Saturn",
+        "debilitation",
+        "Friday",
+        "Saturday",
+        "black_cloth",
+        "crows",
+        "pakoras",
+        "wine_prohibition"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Saturn"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  },
+  {
+    "rule_id": "lalkitab-ch26-rahu-debilitation",
+    "science_id": "jyotish",
+    "source": {
+      "book": "Lal Kitab",
+      "book_id": "lal-kitab",
+      "chapter": 26,
+      "chapter_name": "Auspicious Timings, Birth Traits, and Planetary Debilitation Remedies",
+      "sloka": null,
+      "batch_id": "lalkitab-ch26-v1-20260505",
+      "primary": "Lal Kitab",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "approval_status": "pending_review",
+    "created_at": "2026-05-05T03:35:04.606100+00:00",
+    "condition": {
+      "type": "dosha",
+      "sub_type": "debilitation",
+      "yoga_check": {
+        "type": "planet_in_house",
+        "checkable": true
+      },
+      "planets_involved": [
+        "Rahu"
+      ],
+      "symptoms": [
+        "Rahu weak / debilitated"
+      ],
+      "planet": "Rahu",
+      "planet_state": "debilitated",
+      "weekday": "Saturday",
+      "logic_unit": "26.14",
+      "prohibitions": [
+        "Blue or black clothes on Wednesday",
+        "Blue or black clothes on Saturday"
+      ],
+      "silver_shape": "square",
+      "silver_carry": "permanent / always-on-person"
+    },
+    "interpretation": {
+      "summary": "Rahu Debilitation — Color Prohibition, Square Silver in Pocket, Coconut/Almond/Barley",
+      "detailed": "When Rahu is debilitated or weak (Saturday remedy): Color prohibition: Do NOT wear blue or black clothes on Wednesday or Saturday. Remedy A: Always keep a square piece of silver in the pocket (permanent carry). Remedy B: Immerse coconut, almond, and barley in water.",
+      "full_text_passages": [
+        {
+          "text": "When Rahu is debilitated or weak (Saturday remedy): Color prohibition: Do NOT wear blue or black clothes on Wednesday or Saturday. Remedy A: Always keep a square piece of silver in the pocket (permanent carry). Remedy B: Immerse coconut, almond, and barley in water.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedies": [
+        {
+          "category": "succour",
+          "action": "Do NOT wear blue or black clothes on Wednesday or Saturday — color prohibition"
+        },
+        {
+          "category": "ritual",
+          "action": "Always keep a square piece of silver in pocket (permanent daily carry)"
+        },
+        {
+          "category": "offering",
+          "action": "Immerse coconut, almond, and barley in water"
+        }
+      ],
+      "life_domain": "remedies",
+      "life_domains": [
+        "remedies",
+        "health",
+        "wellbeing"
+      ],
+      "tags": [
+        "Rahu",
+        "debilitation",
+        "Saturday",
+        "silver_square",
+        "coconut",
+        "almond",
+        "barley",
+        "color_prohibition"
+      ],
+      "physical_markers": []
+    },
+    "metadata": {
+      "planets_involved": [
+        "Rahu"
+      ],
+      "houses_involved": [],
+      "signs_involved": [],
+      "condition_count": 1,
+      "gender_context": "neutral",
+      "is_group_summary": false,
+      "has_physical_markers": false,
+      "physical_categories": [],
+      "yoga_checkable": true
+    },
+    "confidence": {
+      "source_confidence": "HIGH",
+      "extraction_method": "hard_coded",
+      "validated": false
+    }
+  }
+]
