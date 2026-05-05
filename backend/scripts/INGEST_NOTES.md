@@ -3086,13 +3086,12 @@ Both are Sun+Saturn conjunction rules but with mutually exclusive secondary trig
 | Ch 26 | Day Generals + Debilitation Remedies | `lalkitab-ch26-v1-20260505` | 16 | 13 (81%) | 3 (19%) | 0 | none required |
 | Ch 27 | Lords / Body Parts / Objects | `lalkitab-ch27-v1-20260427` | 99 | 58 (59%) | 40 (40%) | 1 (1%) | `fix_flagged_ch27.py` |
 | Ch 28 | Varshaphalam + Journey (Ketu Engine) | `lalkitab-ch28-v1-20260505` | 18 | 12 (67%) | 6 (33%) | 0 | `patch_lalkitab_ch28_flags.py` |
-| **Total ingested** | | | **445** | **285 (64%)** | **153 (34%)** | **7 (2%)** | |
+| Ch 29 | Forecasting on Bodily Traits (Physiognomy) | `lalkitab-ch29-v1-20260505` | 22 | 18 (82%) | 4 (18%) | 0 | `patch_lalkitab_ch29_flags.py` |
+| **Total ingested** | | | **467** | **303 (65%)** | **157 (34%)** | **7 (1%)** | |
 
-### Chapters pending ingest (target: Ch 29)
+### Chapters pending ingest
 
-| Chapter | Topic | Source files available |
-|---|---|---|
-| Ch 29 | — | JSON Ready + Diagnostic |
+All planned Lal Kitab chapters (Ch 19–29 excl. Ch 27 already done) are now ingested. ✅
 
 ### Co-founder sign-off queue (Lal Kitab)
 
@@ -3102,6 +3101,7 @@ All 427 ingested rules are at `auto_approved` or `pending_human_review` — **ze
 - Ch 25 PHR: 2 validator truncation false flags (moon-h11, mars-mercury-sister) — content complete in DB
 - Ch 26 PHR: 3 rules at pending_human_review (19%) — no flagged rules, no contradictions
 - Ch 28 PHR: 1 validator content validity false flag (`influence-priority`) — Lal Kitab Varshaphalam propagation sequence confirmed in both source files; validator applied wrong classical frame
+- Ch 29 PHR: 2 validator read-buffer truncation false flags (`arch-lion`, `generational-wealth`) — content complete in DB; buffer artifact only
 - Ch 27: 1 remaining `flagged` rule (`corr-mars-benefic`) — Mars benefic objects unknown (source column misalignment)
 
 ### Process improvements established (this ingest sprint)
