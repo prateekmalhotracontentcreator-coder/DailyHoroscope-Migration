@@ -92,7 +92,7 @@ GARBAGE_RE = re.compile(
     r"\b[A-Z]{20,}\b"        # 20+ all-caps word
 )
 
-MIN_WORDS_CONDITION = 8
+MIN_WORDS_CONDITION = 4   # short but precise transit/ingress conditions are valid (e.g. "Saturn enters Leo")
 MIN_WORDS_RESULT    = 10
 
 
@@ -178,19 +178,39 @@ def structural_check(rule: dict) -> tuple[bool, str]:
        format "IF ... AND ... → trigger" which ends with a word by design.
        Only result text is checked for terminal punctuation.
     """
-    # ── Old-schema detection (v1/v2 legacy rules) ────────────────────────────
-    # These rules lack condition/result string fields entirely.
-    # Treat as spot_check (pending migration) rather than rejected.
+    # ── Old-schema / matrix-condition detection ──────────────────────────────
+    # Two non-rejected special cases:
+    #
+    # 1. Old-schema (v1/v2 pymongo rules): condition is a dict or missing AND
+    #    an 'interpretation' sub-dict is present. Different from motor schema.
+    #    → spot_check with reason 'old_schema_migration_pending'
+    #
+    # 2. Matrix-engine rules (v3–v7): condition is a dict lookup-table BUT
+    #    result IS a valid string. These are legitimate engine-input specs
+    #    (e.g. Celestial Council king/minister outcome matrices) where the
+    #    condition encodes a planet→outcome lookup rather than a prose IF clause.
+    #    → spot_check with reason 'matrix_condition_dict_pending_review'
+    #
+    # In both cases the rule is NOT rejected — it is routed to pending_human_review.
     condition_raw = rule.get("condition")
     result_raw    = rule.get("result")
     has_interp    = isinstance(rule.get("interpretation"), dict)
 
     if (condition_raw is None or isinstance(condition_raw, dict)) and has_interp:
-        # Looks like an old-schema BPHS/pymongo-style rule in the mundane collection
+        # Old-schema BPHS/pymongo-style rule in the mundane collection
         return True, "old_schema_migration_pending"
 
     if result_raw is None and has_interp:
         return True, "old_schema_migration_pending"
+
+    if isinstance(condition_raw, dict) and (
+        (isinstance(result_raw, str) and result_raw.strip())
+        or isinstance(result_raw, dict)
+    ):
+        # v3–v7 matrix-engine rules: structured dict condition + prose result
+        # (or dual-dict lookup table where both condition and result are dicts).
+        # These are valid rules awaiting a condition/result string migration pass.
+        return True, "matrix_condition_dict_pending_review"
 
     # ── Required string fields ────────────────────────────────────────────────
     for field in ("rule_id", "science_id", "sub_type", "title",
@@ -462,22 +482,26 @@ def main():
                 rejected_rules.append(rule)
                 if args.dry_run:
                     print(f"    ✗ REJECTED            {rule['rule_id']}  [{reason}]")
-            elif reason == "old_schema_migration_pending":
-                # Old-schema v1/v2 rules: bypass Claude quality check,
-                # go straight to pending_human_review
+            elif reason in ("old_schema_migration_pending",
+                            "matrix_condition_dict_pending_review"):
+                # These rules are valid but need a migration pass:
+                #   old_schema_migration_pending   → v1/v2 pymongo schema
+                #   matrix_condition_dict_pending_review → v3–v7 dict-condition matrix rules
+                # Both bypass Claude quality check and go straight to pending_human_review.
                 all_verdicts[rule["rule_id"]] = {
                     "verdict":              "spot_check",
-                    "reason":               "old_schema_migration_pending",
+                    "reason":               reason,
                     "corrected_confidence": "MEDIUM",
                 }
                 old_schema_rules.append(rule)
                 if args.dry_run:
-                    print(f"    ~ OLD_SCHEMA_PENDING  {rule['rule_id']}")
+                    tag = "OLD_SCHEMA" if reason == "old_schema_migration_pending" else "MATRIX_COND"
+                    print(f"    ~ {tag}_PENDING  {rule['rule_id']}")
             else:
                 structurally_ok.append(rule)
 
         print(f"  Structural failures    : {len(rejected_rules)} / {len(rules)}")
-        print(f"  Old-schema (migration) : {len(old_schema_rules)} / {len(rules)}")
+        print(f"  Migration-pending      : {len(old_schema_rules)} / {len(rules)}")
         print(f"  Proceeding with Claude : {len(structurally_ok)} rules")
 
         # ── Stage 2: Claude quality check ────────────────────────────────────
