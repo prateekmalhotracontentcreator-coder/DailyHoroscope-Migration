@@ -166,52 +166,72 @@ Rules to compare:
 def structural_check(rule: dict) -> tuple[bool, str]:
     """
     Validate the mundane rule schema.
-    Returns (True, 'ok') if the rule passes all structural checks.
-    Returns (False, reason) for the first failure encountered.
-    """
-    rule_id = rule.get("rule_id", "<no id>")
+    Returns (True, 'ok') or (True, 'old_schema') if the rule passes.
+    Returns (False, reason) for genuine structural failures.
 
-    # Required string fields
+    Two special cases handled gracefully (not rejected):
+    1. Old-schema rules (v1/v2): condition is a dict or missing, result is missing.
+       These use the legacy pymongo schema (interpretation.detailed / summary).
+       Marked spot_check with reason 'old_schema_migration_pending' — not rejected,
+       because they are not wrong, just awaiting a separate migration decision.
+    2. Condition terminal punctuation is NOT checked: mundane conditions use the
+       format "IF ... AND ... → trigger" which ends with a word by design.
+       Only result text is checked for terminal punctuation.
+    """
+    # ── Old-schema detection (v1/v2 legacy rules) ────────────────────────────
+    # These rules lack condition/result string fields entirely.
+    # Treat as spot_check (pending migration) rather than rejected.
+    condition_raw = rule.get("condition")
+    result_raw    = rule.get("result")
+    has_interp    = isinstance(rule.get("interpretation"), dict)
+
+    if (condition_raw is None or isinstance(condition_raw, dict)) and has_interp:
+        # Looks like an old-schema BPHS/pymongo-style rule in the mundane collection
+        return True, "old_schema_migration_pending"
+
+    if result_raw is None and has_interp:
+        return True, "old_schema_migration_pending"
+
+    # ── Required string fields ────────────────────────────────────────────────
     for field in ("rule_id", "science_id", "sub_type", "title",
                   "source_chapter", "condition", "result"):
         val = rule.get(field)
         if not val or not isinstance(val, str) or not val.strip():
             return False, f"missing_or_empty_{field}"
 
-    # science_id must be mundane
+    # ── science_id ────────────────────────────────────────────────────────────
     if rule.get("science_id") != "mundane_jyotish":
         return False, f"wrong_science_id:{rule.get('science_id')}"
 
-    # severity must be one of the known values
+    # ── Severity ─────────────────────────────────────────────────────────────
     severity = rule.get("severity", "")
     if severity not in VALID_SEVERITIES:
         return False, f"invalid_severity:{severity}"
 
-    # sub_type should be a known value (warn but don't reject unknown sub_types —
-    # future sub_types are valid; treat unknown as spot_check worthy)
-    # We allow unknown sub_types through structural check but flag for human review.
-
     condition = rule.get("condition", "")
     result    = rule.get("result", "")
 
-    # Garbage / OCR check
+    # ── Garbage / OCR check ──────────────────────────────────────────────────
     if GARBAGE_RE.search(condition) or GARBAGE_RE.search(result):
         return False, "garbage_text_detected"
 
-    # Minimum length
+    # ── Minimum word counts ───────────────────────────────────────────────────
     if len(condition.split()) < MIN_WORDS_CONDITION:
         return False, f"condition_too_short({len(condition.split())} words)"
 
     if len(result.split()) < MIN_WORDS_RESULT:
         return False, f"result_too_short({len(result.split())} words)"
 
-    # Both must end with terminal punctuation
-    for name, text in (("condition", condition), ("result", result)):
-        last = text.strip()[-1] if text.strip() else ""
-        if last not in ".!?)\"'":
-            return False, f"truncated_{name}_text"
+    # ── Terminal punctuation on RESULT only ───────────────────────────────────
+    # NOTE: condition is intentionally NOT checked for terminal punctuation.
+    # Mundane conditions use the "IF ... AND ... → trigger" format which
+    # ends with a word by design — this is valid mundane rule syntax, not
+    # truncation. The BPHS truncation-detection heuristic does not apply here.
+    last_result = result.strip()[-1] if result.strip() else ""
+    if last_result not in ".!?)\"'":
+        return False, "truncated_result_text"
 
-    # synthesis_sources must be a list if present
+    # ── synthesis_sources must be a list if present ───────────────────────────
     sources = rule.get("synthesis_sources")
     if sources is not None and not isinstance(sources, list):
         return False, "synthesis_sources_not_list"
@@ -428,7 +448,8 @@ def main():
 
         # ── Stage 1: Structural check ─────────────────────────────────────────
         print(f"\nStage 1: Structural checks ({len(rules)} rules)...")
-        structurally_ok: list[dict] = []
+        structurally_ok:  list[dict] = []
+        old_schema_rules: list[dict] = []
         for rule in rules:
             passed, reason = structural_check(rule)
             if not passed:
@@ -440,12 +461,24 @@ def main():
                 rule["_reason"] = reason
                 rejected_rules.append(rule)
                 if args.dry_run:
-                    print(f"    ✗ REJECTED  {rule['rule_id']}  [{reason}]")
+                    print(f"    ✗ REJECTED            {rule['rule_id']}  [{reason}]")
+            elif reason == "old_schema_migration_pending":
+                # Old-schema v1/v2 rules: bypass Claude quality check,
+                # go straight to pending_human_review
+                all_verdicts[rule["rule_id"]] = {
+                    "verdict":              "spot_check",
+                    "reason":               "old_schema_migration_pending",
+                    "corrected_confidence": "MEDIUM",
+                }
+                old_schema_rules.append(rule)
+                if args.dry_run:
+                    print(f"    ~ OLD_SCHEMA_PENDING  {rule['rule_id']}")
             else:
                 structurally_ok.append(rule)
 
-        print(f"  Structural failures : {len(rejected_rules)} / {len(rules)}")
-        print(f"  Proceeding with     : {len(structurally_ok)} rules")
+        print(f"  Structural failures    : {len(rejected_rules)} / {len(rules)}")
+        print(f"  Old-schema (migration) : {len(old_schema_rules)} / {len(rules)}")
+        print(f"  Proceeding with Claude : {len(structurally_ok)} rules")
 
         # ── Stage 2: Claude quality check ────────────────────────────────────
         if args.skip_claude:
@@ -619,6 +652,11 @@ def main():
         print(f"  {'-'*46}")
         print(f"  {'Total':<32} {total:>4}")
         print(f"\n  Contradictions: {len(all_contradictions)} pair(s)")
+
+        if old_schema_rules:
+            print(f"\n  ℹ️  {len(old_schema_rules)} old-schema rule(s) (v1/v2 legacy) set to "
+                  f"pending_human_review with reason 'old_schema_migration_pending'.\n"
+                  f"  These require a separate schema migration — not content errors.")
 
         if not args.dry_run:
             print(
