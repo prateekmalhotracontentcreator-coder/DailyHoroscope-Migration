@@ -3549,14 +3549,37 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 
 ---
 
-### Cumulative DB state after Phase 1 v3–v17 (7 May 2026)
+---
 
-| Collection | v1–v2 (old schema) | v3–v17 (motor schema) | Grand Total |
+### v18 — mundane-engine-v18-20260507 / mundane-interp-v18-20260507
+
+**Commit:** pending
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 8 | Gopal Ch5: Oath Chart 12-house mundane grid (all 12 houses with governance significations + 5 critical monitoring points), Jaimini Ayurdaya tenure longevity engine (sign_type comparison + Hora Lagna veto + Rasi Sandhi coefficient + Graha Yuddha veto), Oath chart case studies (Manmohan Singh 2004 + Oommen Chandy 2004); Mehta Ch18: 11-point Lagna selection protocol (4 longevity gates + Raman democratic lagnas), Luminaries/Nakshatra/Tithi vetting checklists (Sun 4pts + Moon 7pts + Nakshatra 6pts + Tithi 7pts + 4 Muhurta judgment factors), 5-Year Compressed Vimshottari Dasha Timer (all 9 planets in days), Simhasan Chakra complete (Tri-Simhasan Narapati/Gajapati/Ashwapati + 5-level Nadi grid with all 27 nakshatras + 8 operational rules), Leadership Autopsy Database (Shastri 1964, Chandrashekhar 1990, Narasimha Rao 1991, Mulayam Singh 1993, Vajpayee 1996, Manmohan Singh 2004 — all with oath timestamps) |
+| interpretation_rules | 27 | GROUP_AT (Oath Tenure x7), GROUP_AU (Muhurta Selection x6), GROUP_AV (Simhasan Chakra x6), GROUP_AW (Leadership Autopsy x8) |
+
+**Notable rules:**
+- `mundane-gopal-ch5-hora-lagna-fixed-veto` — both Lagna + Hora Lagna Fixed → Survival Probability 0.10 (critical)
+- `mundane-gopal-ch5-jaimini-short-tenure` — Fixed+Fixed sign types → government unlikely to complete mandate (high)
+- `mundane-gopal-ch5-graha-yuddha-veto` — Planetary War in oath chart → terminal stability veto (high)
+- `mundane-mehta-ch18-shastri-terminal-leadership` — 5+ adverse features → death in office pattern (critical)
+- `mundane-mehta-ch18-vajpayee-balarishta-pattern` — Balarishta configuration → 13-day government collapse (critical)
+- `mundane-mehta-ch18-sandhi-bharani-lethality` — Bharani at Rasi Sandhi → irreversible administration end (critical)
+- `mundane-mehta-ch18-simhasan-moon-absolute-power` — Moon in Simhasan nakshatra → absolute political authority (high)
+- `mundane-mehta-ch18-8th-house-vacancy-rule` — 8th house occupied → non-negotiable Muhurta veto (high)
+
+---
+
+### Cumulative DB state after v3–v18 (7 May 2026)
+
+| Collection | v1–v2 (old schema) | v3–v18 (motor schema) | Grand Total |
 |---|---|---|---|
-| mundane_engine_specs | 15 | +65 | **80** |
-| interpretation_rules (mundane_jyotish only) | 132 | +105 | **237** |
+| mundane_engine_specs | 15 | +73 | **88** |
+| interpretation_rules (mundane_jyotish only) | 132 | +132 | **264** |
 | mundane_geo_entities | 29 | — | 29 |
 
 **Pending next batches:**
-- **v18:** Governance engine — Elections + Oath Taking (Gopal Ch4–5, Mehta Ch18–22)
+- **v19:** Governance engine — Elections (Gopal Ch4, Mehta Ch19–22) — pending source extraction
 - **v1/v2 migration:** Old pymongo schema (different field layout) — migration decision pending

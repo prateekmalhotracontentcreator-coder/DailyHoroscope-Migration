@@ -1,7 +1,7 @@
 """
 Mundane Astrology — Staged Ingest Runner
 =========================================
-Runs all clean motor-schema ingest scripts (v3–v17) in order against MongoDB.
+Runs all clean motor-schema ingest scripts (v3–v18) in order against MongoDB.
 
 Usage:
     MONGO_URL="mongodb+srv://<user>:<pass>@<cluster>/horoscope_db?retryWrites=true&w=majority" \
@@ -61,6 +61,7 @@ SCRIPT_PAIRS = [
     ("ingest_mundane_engine_specs_v15.py",        "ingest_mundane_interpretation_v15.py"),
     ("ingest_mundane_engine_specs_v16.py",        "ingest_mundane_interpretation_v16.py"),
     ("ingest_mundane_engine_specs_v17.py",        "ingest_mundane_interpretation_v17.py"),
+    ("ingest_mundane_engine_specs_v18.py",        "ingest_mundane_interpretation_v18.py"),
 ]
 
 # Flatten to a single ordered list
