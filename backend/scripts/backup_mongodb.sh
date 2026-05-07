@@ -77,27 +77,24 @@ if [[ "$MODE" == "list" ]]; then
 fi
 
 # ── Critical-only backup ─────────────────────────────────────────────────────
+# Strategy: full DB dump with --excludeCollection for regeneratable collections.
+# This avoids "collection does not exist" errors entirely — mongodump only
+# touches what's actually in the DB and skips nothing unexpectedly.
 if [[ "$MODE" == "critical" ]]; then
   OUTFILE="$BACKUP_DIR/horoscope_critical_${TIMESTAMP}.gz"
   echo ""
   echo "▶ Critical-only backup → $OUTFILE"
+  echo "  (full dump minus regeneratable collections)"
   echo ""
 
-  # Build --collection flags — one per collection
-  COL_FLAGS=()
-  for c in "${CRITICAL_COLLECTIONS[@]}"; do
-    COL_FLAGS+=(--collection "$c")
-  done
-
-  # || true: mongodump exits non-zero when a listed collection doesn't exist yet
-  # (e.g. numerology_reports before any reports are saved). That's a warning, not
-  # a failure — the collections that DO exist are still dumped correctly.
   mongodump \
     --uri="$MONGO_URL" \
     --db="$DB_NAME" \
-    "${COL_FLAGS[@]}" \
+    --excludeCollection="interpretation_rules" \
+    --excludeCollection="mundane_engine_specs" \
+    --excludeCollection="mundane_geo_entities" \
     --gzip \
-    --archive="$OUTFILE" || true
+    --archive="$OUTFILE"
 
   if [[ -f "$OUTFILE" ]]; then
     SIZE=$(du -sh "$OUTFILE" | cut -f1)
@@ -106,8 +103,8 @@ if [[ "$MODE" == "critical" ]]; then
     echo "  File : $OUTFILE"
     echo "  Size : $SIZE"
     echo ""
-    echo "Collections requested (existing ones backed up, empty ones skipped):"
-    for c in "${CRITICAL_COLLECTIONS[@]}"; do echo "  • $c"; done
+    echo "Excluded (regeneratable from git):"
+    for c in "${REGENERATABLE_COLLECTIONS[@]}"; do echo "  ↺ $c"; done
     echo ""
     echo "To restore:"
     echo "  mongorestore --uri=\"\$MONGO_URL\" --db=$DB_NAME --gzip --archive=$OUTFILE"
