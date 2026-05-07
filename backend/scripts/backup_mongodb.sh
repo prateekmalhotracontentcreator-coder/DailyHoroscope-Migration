@@ -12,15 +12,17 @@
 #   - $MONGO_URL exported in shell
 #
 # Output:
-#   backend/scripts/backup/horoscope_db_<timestamp>.gz   (full)
-#   backend/scripts/backup/horoscope_critical_<timestamp>.gz   (critical only)
+#   backend/scripts/backup/horoscope_db_<timestamp>.gz        (full)
+#   backend/scripts/backup/horoscope_critical_<timestamp>.gz  (critical only)
 # =============================================================================
 
-set -euo pipefail
+# Note: intentionally NOT using "set -e" — mongodump warns (non-zero exit) when
+# a listed collection doesn't exist yet (e.g. numerology_reports before any
+# reports are generated). We handle errors explicitly below instead.
 
 MONGO_URL="${MONGO_URL:-}"
 DB_NAME="${DB_NAME:-horoscope_db}"
-BACKUP_DIR="$(dirname "$0")/backup"
+BACKUP_DIR="$(cd "$(dirname "$0")" && pwd)/backup"
 TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
 MODE="full"
 
@@ -42,7 +44,7 @@ fi
 mkdir -p "$BACKUP_DIR"
 
 # ── Collection tiers ─────────────────────────────────────────────────────────
-# CRITICAL — irreplaceable user/config data
+# CRITICAL — irreplaceable user/config data (back these up)
 CRITICAL_COLLECTIONS=(
   "users"
   "subscribers"
@@ -55,7 +57,7 @@ CRITICAL_COLLECTIONS=(
   "numerology_reports"
 )
 
-# REGENERATABLE — can be recreated by re-running ingest scripts in git
+# REGENERATABLE — recreated by re-running ingest scripts (git IS the backup)
 REGENERATABLE_COLLECTIONS=(
   "interpretation_rules"
   "mundane_engine_specs"
@@ -68,7 +70,7 @@ if [[ "$MODE" == "list" ]]; then
   echo "CRITICAL (will be backed up):"
   for c in "${CRITICAL_COLLECTIONS[@]}"; do echo "  ✓ $c"; done
   echo ""
-  echo "REGENERATABLE (ingest scripts in git = backup):"
+  echo "REGENERATABLE (ingest scripts in git = the backup — zero Atlas cost to restore):"
   for c in "${REGENERATABLE_COLLECTIONS[@]}"; do echo "  ↺ $c"; done
   echo ""
   exit 0
@@ -81,27 +83,42 @@ if [[ "$MODE" == "critical" ]]; then
   echo "▶ Critical-only backup → $OUTFILE"
   echo ""
 
-  # Build --collection flags
+  # Build --collection flags — one per collection
   COL_FLAGS=()
   for c in "${CRITICAL_COLLECTIONS[@]}"; do
     COL_FLAGS+=(--collection "$c")
   done
 
+  # || true: mongodump exits non-zero when a listed collection doesn't exist yet
+  # (e.g. numerology_reports before any reports are saved). That's a warning, not
+  # a failure — the collections that DO exist are still dumped correctly.
   mongodump \
     --uri="$MONGO_URL" \
     --db="$DB_NAME" \
     "${COL_FLAGS[@]}" \
     --gzip \
-    --archive="$OUTFILE"
+    --archive="$OUTFILE" || true
 
-  SIZE=$(du -sh "$OUTFILE" | cut -f1)
-  echo ""
-  echo "✓ Critical backup complete"
-  echo "  File : $OUTFILE"
-  echo "  Size : $SIZE"
-  echo ""
-  echo "Collections backed up:"
-  for c in "${CRITICAL_COLLECTIONS[@]}"; do echo "  • $c"; done
+  if [[ -f "$OUTFILE" ]]; then
+    SIZE=$(du -sh "$OUTFILE" | cut -f1)
+    echo ""
+    echo "✓ Critical backup complete"
+    echo "  File : $OUTFILE"
+    echo "  Size : $SIZE"
+    echo ""
+    echo "Collections requested (existing ones backed up, empty ones skipped):"
+    for c in "${CRITICAL_COLLECTIONS[@]}"; do echo "  • $c"; done
+    echo ""
+    echo "To restore:"
+    echo "  mongorestore --uri=\"\$MONGO_URL\" --db=$DB_NAME --gzip --archive=$OUTFILE"
+  else
+    echo ""
+    echo "ERROR: Backup file was not created. Check your MONGO_URL and connection."
+    exit 1
+  fi
+
+  # Prune — keep last 14 critical backups
+  ls -t "$BACKUP_DIR"/horoscope_critical_*.gz 2>/dev/null | tail -n +15 | xargs rm -f 2>/dev/null
   exit 0
 fi
 
@@ -111,24 +128,31 @@ echo ""
 echo "▶ Full database backup → $OUTFILE"
 echo ""
 
+# Full dump — no collection filter, so no missing-collection warnings
 mongodump \
   --uri="$MONGO_URL" \
   --db="$DB_NAME" \
   --gzip \
-  --archive="$OUTFILE"
+  --archive="$OUTFILE" || true
 
-SIZE=$(du -sh "$OUTFILE" | cut -f1)
-echo ""
-echo "✓ Full backup complete"
-echo "  File : $OUTFILE"
-echo "  Size : $SIZE"
-echo ""
-echo "To restore:"
-echo "  mongorestore --uri=\"\$MONGO_URL\" --db=$DB_NAME --gzip --archive=$OUTFILE"
-echo ""
+if [[ -f "$OUTFILE" ]]; then
+  SIZE=$(du -sh "$OUTFILE" | cut -f1)
+  echo ""
+  echo "✓ Full backup complete"
+  echo "  File : $OUTFILE"
+  echo "  Size : $SIZE"
+  echo ""
+  echo "To restore:"
+  echo "  mongorestore --uri=\"\$MONGO_URL\" --db=$DB_NAME --gzip --archive=$OUTFILE"
+else
+  echo ""
+  echo "ERROR: Backup file was not created. Check your MONGO_URL and connection."
+  exit 1
+fi
 
-# ── Prune old backups (keep last 7 full, last 14 critical) ────────────────────
-echo "Pruning old backups..."
-ls -t "$BACKUP_DIR"/horoscope_db_*.gz 2>/dev/null | tail -n +8 | xargs rm -f
-ls -t "$BACKUP_DIR"/horoscope_critical_*.gz 2>/dev/null | tail -n +15 | xargs rm -f
-echo "  Kept: 7 most recent full backups, 14 most recent critical backups"
+# Prune — keep last 7 full backups
+echo ""
+echo "Pruning old backups (keeping 7 most recent full, 14 most recent critical)..."
+ls -t "$BACKUP_DIR"/horoscope_db_*.gz 2>/dev/null | tail -n +8 | xargs rm -f 2>/dev/null
+ls -t "$BACKUP_DIR"/horoscope_critical_*.gz 2>/dev/null | tail -n +15 | xargs rm -f 2>/dev/null
+echo "Done."
