@@ -1,6 +1,6 @@
 # Handover Note — Knowledge Engine Ingest Sprint
 **Last updated:** 7 May 2026
-**Status:** Mundane Astrology v3–v18 live; v19 scripts written (pending ingest run) — 96 specs / 290 rules / 29 geo entities
+**Status:** Mundane Astrology v3–v19 COMPLETE and live in MongoDB — 96 specs / 290 rules / 29 geo entities
 
 ---
 
@@ -180,7 +180,7 @@ python3 backend/scripts/run_mundane_ingest.py
 | Version | Source | Content | Status |
 |---|---|---|---|
 | **v18** | Gopal Ch5, Mehta Ch18 | Oath Taking Charts + Muhurta selection + Simhasan Chakra + Leadership Autopsy | ✅ LIVE — 32/32 scripts, 0 errors |
-| **v19** | Gopal Ch4, Mehta Ch22/23 | Elections engine + Yearly Governance Cabinet | ✅ Scripts written, pending ingest run |
+| **v19** | Gopal Ch4, Mehta Ch22/23 | Elections engine + Yearly Governance Cabinet | ✅ LIVE — 34/34 scripts, 0 errors |
 | **v20** | Gopal Ch10–12 | Sports / Cinema / Celebrity (Gopal) | 🔜 Next |
 | **v1/v2 migration** | Old pymongo schema scripts | Different field layout — migration decision pending | 🔜 Deferred |
 
@@ -228,10 +228,11 @@ See `CLAUDE.md` Section 16 for full detail — read before touching any KE or Ar
 1. Read `CLAUDE.md` (project identity, infrastructure, all key file locations)
 2. Read `backend/scripts/INGEST_NOTES.md` (full ingest state — Mundane section at bottom)
 3. Confirm `$MONGO_URL` is set in terminal
-4. Next task: **v19 ingest run** — both scripts are written and added to runner.
-   Run: `python3 backend/scripts/run_mundane_ingest.py` → type "yes"
-   Expected: 34/34 scripts, 0 errors. New docs: +8 specs, +26 rules.
-5. After v19 confirmed live: **v20** — Gopal Ch10–12 (Sports/Cinema/Celebrity)
+4. Next task: **v20** — Gopal Ch10–12 (Sports / Cinema / Celebrity)
+5. Before every new version ingest, run dry run first:
+   `python3 backend/scripts/run_mundane_ingest.py --dry-run`
+6. After each ingest, run validation:
+   `python3 backend/scripts/validate_mundane_rules.py --mongo-url "$MONGO_URL" --db-name horoscope_db --report-path backend/scripts/reports/mundane_validation_vXX.md`
    Sources: Gopal Ch4, Mehta Ch19–22
    Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
    (Search for "election" or "Ch4" to locate relevant sections)
