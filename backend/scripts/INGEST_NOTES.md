@@ -3479,13 +3479,9 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 **Dry run (v3–v19):** `Mundane Astrology_Bulk_Validation_Step1_Output` — 34/34 scripts, 0 errors ✅ clean
 **Run log (v3–v19):** `Mundane Astrology_Bulk Validation_Step 2_Output` — 34/34 scripts, 0 errors ✅ live
 
-| Collection | v1–v2 (old schema) | v3–v16 (motor schema) | Grand Total |
-|---|---|---|---|
-| mundane_engine_specs | 15 | +57 | **72** |
-| interpretation_rules (mundane_jyotish only) | 132 | +77 | **209** |
-| mundane_geo_entities | 29 | — | **29** |
+**NOTE: Table below superseded — see "Cumulative DB state after v3–v19" section below for correct totals.**
 
-**v3–v16 engine specs breakdown:**
+**v3–v19 engine specs breakdown (81 total):**
 | Version | Specs | Key content |
 |---|---|---|
 | v3 | 10 | Celestial Council, Clouds, Snakes, Commodity ownership, Koorma geo |
@@ -3502,8 +3498,12 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 | v14 | 4 | Macro-conjunction engine, Sun+Moon transit, Saturn transit, Timing |
 | v15 | 6 | Mars/Mercury/Jupiter/Venus/Rahu transits, Synthesis engine, Koorma reconciled |
 | v16 | 8 | Ardra/Monsoon, Rohini Chakra, Trinadi, Saptnadi, Crop, Material DB, Sarvatobhadra |
+| v17 | 8 | Gopal Ch3: Celebrity Auth + Leadership Authenticity; Gopal Ch14: Saturn-Pushya/Leo markets, Mars Perigee, Nadi transit, Industrial sector matrix |
+| v18 | 8 | Gopal Ch5: Oath Chart 12-house grid, Jaimini Ayurdaya, Case studies; Mehta Ch18: Lagna protocol, Luminaries vetting, Dasha Timer, Simhasan Chakra, Leadership Autopsy DB |
+| v19 | 8 | Gopal Ch4: Tri-Lagna Election Engine, Spoiler Logic, Dasha Timing Vectors, Campaign Charts, Case Studies; Mehta Ch22/23: Cabinet Portfolios 10×7, Lord of Year Engine, Portfolio Synthesis |
+| **Total** | **81** | |
 
-**v3–v16 interpretation rules breakdown:**
+**v3–v19 interpretation rules breakdown (158 total, motor schema):**
 | Version | Rules | Groups |
 |---|---|---|
 | v3 | 27 | P (Council), Q (Cloud/Snake), R (Eclipse sign), S (Terrorism), T (Party dasha) |
@@ -3521,14 +3521,22 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 | v15 | 14 | AJ (Planetary transits + Koorma reconciliation) |
 | v16 | 29 | AK (Monsoon) + AL (Weather) + AM (Crops) + AN (Trade) — 5 critical |
 | v17 | 28 | AO (Celebrity Auth) + AP (Saturn Market) + AQ (Mars Perigee) + AR (Nadi) + AS (Sector) |
+| v18 | 27 | AT (Oath Tenure x7) + AU (Muhurta Selection x6) + AV (Simhasan Chakra x6) + AW (Leadership Autopsy x8) |
+| v19 | 26 | AX (Election Winner/Loser x8) + AY (Indian Political Context x4) + AZ (Lord of Year Quality x7) + BA (Cabinet Pair Diagnostics x7) |
+| **Total** | **158** | |
 
-**Schema notes for v3–v17 (motor-async pattern):**
+**Schema notes for v3–v19 (motor-async pattern):**
 - All scripts: `science_id = "mundane_jyotish"` (flat field, NOT nested `source.science`)
 - Upsert key: `spec_id` for engine specs, `rule_id` for interpretation rules
-- All `approval_status: "pending_review"` — no validator wired yet for mundane_jyotish
+- All `approval_status: "pending_review"` at ingest — validator (`validate_mundane_rules.py`) must be run separately
 - `severity` field on critical rules: `"low" / "medium" / "high" / "critical"`
 - `checkable: True/False` — most mundane rules are checkable=True (geo/transit conditions are verifiable)
 - Runner patches `DRY_RUN=False` and `MONGO_URL/DB_NAME` at load time — scripts are safe standalone (DRY_RUN=True default)
+
+**Validation status (mundane_jyotish):**
+- `validate_mundane_rules.py` committed in v19 commit (`9025725`) — **NOT yet run on live DB**
+- All 290 mundane interpretation rules currently sit at `approval_status: "pending_review"`
+- **Next step: run `validate_mundane_rules.py` — see Pending Next Steps below**
 
 ---
 
@@ -3606,6 +3614,33 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 | interpretation_rules (mundane_jyotish only) | 132 | +158 | **290** |
 | mundane_geo_entities | 29 | — | 29 |
 
-**Pending next batches:**
-- **v20:** Remaining Gopal chapters (Sports Ch10, Cinema/Celebrity Ch11-12) — TBD
-- **v1/v2 migration:** Old pymongo schema (different field layout) — migration decision pending
+**Pending next steps — Mundane Astrology:**
+
+**Priority 1 — Validate all live mundane rules (IMMEDIATE)**
+```bash
+# Run on ALL mundane rules (v3–v19, 158 rules):
+python3 backend/scripts/validate_mundane_rules.py \
+  --mongo-url "$MONGO_URL" --db-name horoscope_db
+
+# Or restrict to one batch for testing:
+python3 backend/scripts/validate_mundane_rules.py \
+  --mongo-url "$MONGO_URL" --db-name horoscope_db \
+  --batch-id mundane-interp-v19-20260507
+
+# Write a report:
+python3 backend/scripts/validate_mundane_rules.py \
+  --mongo-url "$MONGO_URL" --db-name horoscope_db \
+  --report-path backend/scripts/reports/mundane_validation.md
+```
+After running: inspect flagged rules, write patch scripts, update this file with results.
+
+**Priority 2 — v1/v2 migration decision**
+- 15 engine specs + 132 interpretation rules in old pymongo schema (different field layout)
+- Not compatible with the motor-async schema used in v3–v19
+- Decision options: (a) migrate to motor schema, (b) keep as legacy read-only, (c) delete and re-ingest
+- Do NOT proceed with v20 until this is decided
+
+**Priority 3 — v20 ingest (after validation complete)**
+- Remaining Gopal chapters: Sports (Ch10), Cinema/Celebrity (Ch11–12)
+- Follow standard workflow: dry-run → upload → validate → patch → commit
+- Use `validate_mundane_rules.py` (not `validate_rules.py`) for all mundane batches
