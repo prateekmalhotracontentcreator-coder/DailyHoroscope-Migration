@@ -1,6 +1,6 @@
 # Handover Note — Knowledge Engine Ingest Sprint
 **Last updated:** 7 May 2026
-**Status:** Mundane Astrology v3–v18 COMPLETE and live in MongoDB — 88 specs / 264 rules / 29 geo entities
+**Status:** Mundane Astrology v3–v18 live; v19 scripts written (pending ingest run) — 96 specs / 290 rules / 29 geo entities
 
 ---
 
@@ -42,8 +42,8 @@ backend/scripts/
 
 | Collection | Documents | Notes |
 |---|---|---|
-| `mundane_engine_specs` | **88** | v1–v2 (old schema, 15 docs) + v3–v18 (motor schema, 73 docs) |
-| `interpretation_rules` (mundane_jyotish) | **264** | v1–v2 (132) + v3–v18 (132) |
+| `mundane_engine_specs` | **96** | v1–v2 (old schema, 15 docs) + v3–v19 (motor schema, 81 docs) |
+| `interpretation_rules` (mundane_jyotish) | **290** | v1–v2 (132) + v3–v19 (158) |
 | `mundane_geo_entities` | **29** | Foundation charts, Koorma zones, Zodiac geography |
 
 ### What v3–v17 covers (all committed, all live)
@@ -66,6 +66,7 @@ backend/scripts/
 | v16 | 3a92413 | 8 | 29 | Ardra/Monsoon, Rohini Chakra, Trinadi, Saptnadi, Crops, Material DB, Sarvatobhadra (**5 critical rules**) |
 | v17 | 66d130e | 8 | 28 | Gopal Ch3 (Celebrity Auth, Yogi Karve Rectification, Truth Anchors) + Gopal Ch14 (Saturn-Pushya bull, Saturn-Leo real estate, Mars Perigee regional veto, Nadi career timing, Industrial sector matrix, Geopolitical nodes) |
 | v18 | 840b000 | 8 | 27 | Gopal Ch5 (Oath Chart 12-house grid, Jaimini Ayurdaya tenure engine, Hora Lagna/Rasi Sandhi/Graha Yuddha vetoes, case studies Manmohan+Chandy) + Mehta Ch18 (11-point Lagna protocol, Luminaries/Nakshatra/Tithi vetting, 5-yr Compressed Dasha Timer, Simhasan Chakra complete 27-nakshatra, Leadership Autopsy Database 6 PMs) |
+| v19 | pending | 8 | 26 | Gopal Ch4 (Tri-Lagna Election Engine, Spoiler Logic, Dasha Timing Vectors, Campaign Event Charts, Election Case Studies Bush/Gore/Kerry/Vajpayee) + Mehta Ch22/23 (Yearly Cabinet 10 portfolios × 7 planets, Lord of Year quality engine, Portfolio Synthesis rules) |
 
 ---
 
@@ -143,6 +144,21 @@ python3 backend/scripts/run_mundane_ingest.py
 - Saturn 8th from natal Jupiter → elite career break/fall (Ganguly 2006 validated)
 - Saturn in 12th of Coronation Chart → decentralised terror doctrine active
 
+**Critical rules added in v19 (severity=critical):**
+- Combustion Veto — combust/Grahayudha-lost Raja reverses ALL benefic results for the year
+- Saturn Durgesh in 12th house — national defense humiliation / territorial loss
+- Anarchy Gate: Sun Raja + Saturn Mantri — high-level leader mortality risk
+
+**High-severity rules added in v19 (severity=high, checkable):**
+- Tri-Lagna Sweep (2+ of 3 reference points) → election victory predicted
+- Rasi Sandhi 10th lord spoiler → negates apparent electoral strength (Kerry 2004)
+- 11th house Dasha lord → Winning Momentum 0.90 (Bush 2000 validated)
+- Incumbent Vulnerability: 8th lord Dasha + 10th in 3rd → regime shift (TDP 2004)
+- 8th house Saturn transit → sudden unexpected electoral reversal (Vajpayee 2004)
+- Sonia Dramatic Change Trigger: Saturn in Cancer + Cancer Lagna → regime transition
+- Saturn Raja year → famine/misery (validated 1991 India)
+- Afflicted Jupiter Raja → banking crisis / institutional collapse
+
 **Critical rules added in v18 (severity=critical):**
 - Hora Lagna Double-Fixed Veto → Survival Probability 0.10 (terminal governance collapse)
 - Shastri Terminal Leadership Pattern → 5+ adverse features = death in office
@@ -164,7 +180,8 @@ python3 backend/scripts/run_mundane_ingest.py
 | Version | Source | Content | Status |
 |---|---|---|---|
 | **v18** | Gopal Ch5, Mehta Ch18 | Oath Taking Charts + Muhurta selection + Simhasan Chakra + Leadership Autopsy | ✅ LIVE — 32/32 scripts, 0 errors |
-| **v19** | Gopal Ch4, Mehta Ch19–22 | Elections engine | 🔜 Next |
+| **v19** | Gopal Ch4, Mehta Ch22/23 | Elections engine + Yearly Governance Cabinet | ✅ Scripts written, pending ingest run |
+| **v20** | Gopal Ch10–12 | Sports / Cinema / Celebrity (Gopal) | 🔜 Next |
 | **v1/v2 migration** | Old pymongo schema scripts | Different field layout — migration decision pending | 🔜 Deferred |
 
 ---
@@ -211,8 +228,10 @@ See `CLAUDE.md` Section 16 for full detail — read before touching any KE or Ar
 1. Read `CLAUDE.md` (project identity, infrastructure, all key file locations)
 2. Read `backend/scripts/INGEST_NOTES.md` (full ingest state — Mundane section at bottom)
 3. Confirm `$MONGO_URL` is set in terminal
-4. Next task: **v19** — Elections engine (Gopal Ch4, Mehta Ch19–22)
-5. After v19 scripts written:
+4. Next task: **v19 ingest run** — both scripts are written and added to runner.
+   Run: `python3 backend/scripts/run_mundane_ingest.py` → type "yes"
+   Expected: 34/34 scripts, 0 errors. New docs: +8 specs, +26 rules.
+5. After v19 confirmed live: **v20** — Gopal Ch10–12 (Sports/Cinema/Celebrity)
    Sources: Gopal Ch4, Mehta Ch19–22
    Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
    (Search for "election" or "Ch4" to locate relevant sections)
