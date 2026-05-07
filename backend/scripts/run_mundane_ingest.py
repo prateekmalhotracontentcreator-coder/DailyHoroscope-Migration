@@ -4,11 +4,14 @@ Mundane Astrology — Staged Ingest Runner
 Runs all clean motor-schema ingest scripts (v3–v19) in order against MongoDB.
 
 Usage:
-    MONGO_URL="mongodb+srv://<user>:<pass>@<cluster>/horoscope_db?retryWrites=true&w=majority" \
-    python3 backend/scripts/run_mundane_ingest.py
+    # Live write (requires $MONGO_URL):
+    MONGO_URL="mongodb+srv://..." python3 backend/scripts/run_mundane_ingest.py
 
-    # Dry-run check only (default when MONGO_URL not set):
-    python3 backend/scripts/run_mundane_ingest.py
+    # Dry run — shows every spec_id / rule_id that WOULD be upserted, no DB writes:
+    MONGO_URL="mongodb+srv://..." python3 backend/scripts/run_mundane_ingest.py --dry-run
+
+    # Dry run without MONGO_URL (uses localhost stub):
+    python3 backend/scripts/run_mundane_ingest.py --dry-run
 
 Notes:
     - v1 and v2 use the old pymongo schema and are EXCLUDED from this runner.
@@ -16,8 +19,10 @@ Notes:
     - All scripts use upsert — re-running is fully idempotent (safe to run multiple times).
     - MONGO_URL is read from the environment; falls back to localhost for local testing.
     - DB_NAME defaults to "horoscope_db" (matches production).
+    - Always run --dry-run before a live write when adding new version scripts.
 """
 
+import argparse
 import asyncio
 import importlib
 import importlib.util
@@ -91,6 +96,91 @@ def load_and_patch(script_name: str) -> types.ModuleType:
     return mod
 
 
+async def dry_run_all():
+    """
+    Dry-run mode: load every script, call its run() with DRY_RUN=True (which
+    is the default in every ingest script), and collect what it WOULD upsert.
+    No MongoDB writes are made.
+    """
+    found   = []
+    missing = []
+    for name in ALL_SCRIPTS:
+        (found if (SCRIPTS_DIR / name).exists() else missing).append(name)
+
+    if missing:
+        print(f"\n⚠️  {len(missing)} script(s) not yet written (will be skipped):")
+        for m in missing:
+            print(f"    {m}")
+
+    print(f"\n{'='*60}")
+    print(f"Mundane Astrology Staged Ingest Runner  [DRY RUN]")
+    print(f"MONGO_URL : {MONGO_URL[:40]}{'...' if len(MONGO_URL) > 40 else ''}")
+    print(f"DB_NAME   : {DB_NAME}")
+    print(f"Scripts   : {len(found)} found, {len(missing)} pending")
+    print(f"DRY_RUN   : True  (no DB writes)")
+    print(f"{'='*60}\n")
+
+    total_specs = 0
+    total_rules = 0
+    total_err   = 0
+    skipped     = 0
+
+    for name in ALL_SCRIPTS:
+        path = SCRIPTS_DIR / name
+        if not path.exists():
+            print(f"  SKIP  {name}  (file not yet created)")
+            skipped += 1
+            continue
+
+        print(f"  DRY   {name} ...", end=" ", flush=True)
+        try:
+            # Load the script but keep DRY_RUN=True so nothing is written.
+            spec   = importlib.util.spec_from_file_location(name, path)
+            mod    = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+            # DRY_RUN defaults to True in every script — do NOT override here.
+            mod.MONGO_URL = MONGO_URL
+            mod.DB_NAME   = DB_NAME
+
+            # Capture stdout to count/display IDs without live DB calls.
+            import io, contextlib
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                entry = getattr(mod, "run", None) or getattr(mod, "main", None)
+                if entry is None:
+                    raise AttributeError("script has no run() or main() function")
+                await entry()
+
+            output = buf.getvalue().strip()
+            lines  = [l for l in output.splitlines() if l.strip().startswith("•")]
+            count  = len(lines)
+
+            if "_specs_" in name:
+                total_specs += count
+            else:
+                total_rules += count
+
+            print(f"✓  ({count} docs)")
+            if lines:
+                for line in lines:
+                    print(f"        {line}")
+        except Exception as e:
+            print(f"✗  ERROR: {e}")
+            total_err += 1
+
+    print(f"\n{'='*60}")
+    print(f"[DRY RUN] Would upsert:")
+    print(f"  mundane_engine_specs    : {total_specs}")
+    print(f"  interpretation_rules    : {total_rules}")
+    print(f"  Errors                  : {total_err}  |  Skipped: {skipped}")
+    print(f"{'='*60}")
+    if total_err:
+        print("\nFix errors above before running live.")
+        sys.exit(1)
+    else:
+        print("\nDry run clean. Run without --dry-run to write to MongoDB.")
+
+
 async def run_all():
     found    = []
     missing  = []
@@ -161,4 +251,17 @@ async def run_all():
 
 
 if __name__ == "__main__":
-    asyncio.run(run_all())
+    parser = argparse.ArgumentParser(
+        description="Mundane Astrology staged ingest runner"
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Preview what would be upserted without writing to MongoDB",
+    )
+    args = parser.parse_args()
+
+    if args.dry_run:
+        asyncio.run(dry_run_all())
+    else:
+        asyncio.run(run_all())
