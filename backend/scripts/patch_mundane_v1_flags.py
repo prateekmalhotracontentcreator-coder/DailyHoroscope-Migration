@@ -337,7 +337,7 @@ FALSE_FLAGS: list[tuple[str, str, str]] = [
 ]
 
 # Verify count
-assert len(FALSE_FLAGS) == 35, f"Expected 35 false flags, got {len(FALSE_FLAGS)}"
+assert len(FALSE_FLAGS) == 36, f"Expected 36 false flags, got {len(FALSE_FLAGS)}"
 
 # ── B) False contradiction pairs — sub_types affected ────────────────────────
 # These rules were downgraded from 'approve' → 'spot_check' (pending_human_review)
