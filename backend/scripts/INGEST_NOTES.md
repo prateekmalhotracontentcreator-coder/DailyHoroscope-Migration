@@ -3531,14 +3531,48 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 - `checkable: True/False` — most mundane rules are checkable=True (geo/transit conditions are verifiable)
 - Runner patches `DRY_RUN=False` and `MONGO_URL/DB_NAME` at load time — scripts are safe standalone (DRY_RUN=True default)
 
-**Validation status (mundane_jyotish):**
-- `validate_mundane_rules.py` committed and debugged (commit `2a05c46`) — **NOT yet run on live DB**
-- All 290 motor-schema mundane interpretation rules (v3–v19) currently at `approval_status: "pending_review"`
-- Validator fixes applied: matrix-condition dict detection (v3–v7 rules), MIN_WORDS_CONDITION lowered to 4, old-schema routing
-- Structural dry-run confirmed: **0 genuine structural failures** across all 290 rules
-  - 216 string-condition rules → proceed to Claude quality check
-  - 74 v3–v7 matrix-engine rules (dict condition) → `pending_human_review` pending migration pass
-- **Next step: run `validate_mundane_rules.py` live — see Pending Next Steps below**
+**Validation status (mundane_jyotish) — COMPLETE (7 May 2026):**
+
+Full validation run (`validate_mundane_rules.py`, model=`claude-haiku-4-5`) completed on all 290 rules.
+
+**Stage 1 — Structural (290 rules):**
+- 0 genuine structural failures
+- 216 string-condition rules → Claude quality check
+- 74 v3–v7 matrix-engine rules (dict condition) → `pending_human_review` pending migration pass
+
+**Stage 2 — Claude quality check (216 rules, 11 batches of 20):**
+- All 11 batches completed ✅
+
+**Stage 3 — Contradiction detection (26 sub_type groups):**
+- 10 contradiction pairs detected across 5 sub_types:
+  `eclipse` (2), `weather_forecast` (2), `commodity_price_forecast` (2),
+  `oath_chart_tenure` (2), `yearly_governance` (2)
+- All 10 pairs are **false contradictions** (complementary mutually-exclusive conditions)
+- Patched via `patch_mundane_v1_flags.py`
+
+**Stage 4 — Final verdicts (290 rules):**
+
+| Status | Count | % | Notes |
+|---|---|---|---|
+| `auto_approved` | 86 | 30% | Clean rules — awaiting co-founder sign-off to reach `approved` |
+| `pending_human_review` | 167 | 57% | 74 matrix-engine + 93 spot-check + false-flag patches |
+| `flagged` | 1 | <1% | `mehta-ch10-aries-1-degree-conjunction-paradigm-shift` — genuine, co-founder source review needed |
+| `pending_review` | 0 | — | All 290 processed |
+
+**Post-validation patch (`patch_mundane_v1_flags.py`):**
+- 35 false flags patched: `flagged` → `pending_human_review` with typed `patch_reason` codes
+  - 5 rules: `truncated_result_validator_bug` ([:400] clip artefact — fixed in validator)
+  - 10 rules: `extraordinary_claim_no_citation` (source citations present; AI over-applied scepticism)
+  - 8 rules: `non_standard_terminology` (Gaur/Gopal/Mehta use their own frameworks; not errors)
+  - 7 rules: `internal_logic_misread` (AI misread AND/OR logic or multi-clause conditions)
+  - 4 rules: `absolute_claim_reviewer_bias` (classical texts use absolute language; valid)
+  - 1 rule: `copy_paste_error_fixed` (`mundane-mehta-ch22-jupiter-raja-golden-year` — fixed in v19 script)
+- 10 false contradiction pairs annotated with `contradiction_resolved: true`
+- 1 genuine flag retained: `mehta-ch10-aries-1-degree-conjunction-paradigm-shift`
+
+**Validator improvements committed alongside patch:**
+- `[:400]` → `[:600]` + `"…"` ellipsis in `_rule_to_prompt_item()` — prevents future truncation false flags
+- `mundane-mehta-ch22-jupiter-raja-golden-year` condition fixed in `ingest_mundane_interpretation_v19.py`
 
 ---
 
@@ -3624,31 +3658,30 @@ A migration decision is required before they can be ingested — see Priority 2 
 
 **Pending next steps — Mundane Astrology:**
 
-**Priority 1 — Validate all live mundane rules (IMMEDIATE)**
+**Priority 1 — ✅ COMPLETE — Validation + patch done (7 May 2026)**
 ```bash
-# Run on ALL mundane rules (v3–v19, 290 rules live in MongoDB):
+# Run patch script (apply false-flag fixes to MongoDB):
+python3 backend/scripts/patch_mundane_v1_flags.py \
+  --mongo-url "$MONGO_URL" --db-name horoscope_db --patch
+
+# Re-run validator on remaining pending_review rules (none expected):
 python3 backend/scripts/validate_mundane_rules.py \
   --mongo-url "$MONGO_URL" --db-name horoscope_db
-
-# Or restrict to one batch for testing:
-python3 backend/scripts/validate_mundane_rules.py \
-  --mongo-url "$MONGO_URL" --db-name horoscope_db \
-  --batch-id mundane-interp-v19-20260507
-
-# Write a report:
-python3 backend/scripts/validate_mundane_rules.py \
-  --mongo-url "$MONGO_URL" --db-name horoscope_db \
-  --report-path backend/scripts/reports/mundane_validation.md
 ```
-After running: inspect flagged rules, write patch scripts, update this file with results.
 
 **Priority 2 — v1/v2 migration decision**
 - 15 engine specs + 132 interpretation rules in old pymongo schema (different field layout)
 - Not compatible with the motor-async schema used in v3–v19
 - Decision options: (a) migrate to motor schema, (b) keep as legacy read-only, (c) delete and re-ingest
-- Do NOT proceed with v20 until this is decided
+- Deferred — do NOT proceed with v20 until this is decided
 
-**Priority 3 — v20 ingest (after validation complete)**
+**Priority 3 — v20 ingest (after v1/v2 decision)**
 - Remaining Gopal chapters: Sports (Ch10), Cinema/Celebrity (Ch11–12)
 - Follow standard workflow: dry-run → upload → validate → patch → commit
+
+**Priority 4 — Co-founder sign-off**
+- 86 `auto_approved` rules ready for promotion to `approved`
+- 1 genuine flagged rule (`mehta-ch10-aries-1-degree-conjunction-paradigm-shift`) needs source review
+- Admin Console path: `/admin/library` → Rules Browser → filter: `auto_approved` / `flagged`
+- No rules reach live users until explicitly promoted to `approved` via co-founder sign-off
 - Use `validate_mundane_rules.py` (not `validate_rules.py`) for all mundane batches

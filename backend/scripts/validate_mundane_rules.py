@@ -262,13 +262,19 @@ def structural_check(rule: dict) -> tuple[bool, str]:
 # ── Claude quality check ──────────────────────────────────────────────────────
 
 def _rule_to_prompt_item(rule: dict) -> dict:
+    # Use 600-char window so long but complete rules aren't misread as truncated.
+    # Append "…" when clipped so Claude knows the text is intentionally abbreviated,
+    # not genuinely incomplete in MongoDB.
+    MAX = 600
+    cond = (rule.get("condition") or "")
+    res  = (rule.get("result") or "")
     return {
         "rule_id":        rule.get("rule_id", ""),
         "source_chapter": rule.get("source_chapter", ""),
         "sub_type":       rule.get("sub_type", ""),
         "severity":       rule.get("severity", ""),
-        "condition":      (rule.get("condition") or "")[:400],
-        "result":         (rule.get("result") or "")[:400],
+        "condition":      cond[:MAX] + ("…" if len(cond) > MAX else ""),
+        "result":         res[:MAX]  + ("…" if len(res) > MAX else ""),
     }
 
 
