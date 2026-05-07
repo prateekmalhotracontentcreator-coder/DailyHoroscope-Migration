@@ -3307,10 +3307,10 @@ Schema patterns:
 
 ---
 
-## Mundane Astrology Phase 1 — Staged Ingest Sprint (v3–v16, 6–7 May 2026)
+## Mundane Astrology — v3–v19 Staged Ingest Sprint (6–7 May 2026)
 
 **Runner script:** `backend/scripts/run_mundane_ingest.py`
-Loads v3–v16 in sequence, patches `MONGO_URL / DB_NAME / DRY_RUN` at runtime.
+Loads v3–v19 in sequence, patches `MONGO_URL / DB_NAME / DRY_RUN` at runtime.
 Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from env).
 
 **Runner bug fixes applied (commit 5f5c092):**
@@ -3471,15 +3471,13 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 
 ---
 
-### Cumulative DB state after Phase 1 v3–v16 (7 May 2026)
+### Cumulative DB state after v3–v19 (7 May 2026) — LIVE BREAKDOWN
 
 **Run log (v4–v16):** `Mundane Astrology_V4-V16 Ingest.rtf` — 28/28 scripts, 0 errors
 **Run log (v4–v17):** `Mundane Astrology_V4-V17 Ingest` — 30/30 scripts, 0 errors ✅ live
 **Run log (v4–v18):** `Mundane Astrology_v4-v18_Ingest` — 32/32 scripts, 0 errors ✅ live
 **Dry run (v3–v19):** `Mundane Astrology_Bulk_Validation_Step1_Output` — 34/34 scripts, 0 errors ✅ clean
 **Run log (v3–v19):** `Mundane Astrology_Bulk Validation_Step 2_Output` — 34/34 scripts, 0 errors ✅ live
-
-**NOTE: Table below superseded — see "Cumulative DB state after v3–v19" section below for correct totals.**
 
 **v3–v19 engine specs breakdown (81 total):**
 | Version | Specs | Key content |
@@ -3503,7 +3501,7 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 | v19 | 8 | Gopal Ch4: Tri-Lagna Election Engine, Spoiler Logic, Dasha Timing Vectors, Campaign Charts, Case Studies; Mehta Ch22/23: Cabinet Portfolios 10×7, Lord of Year Engine, Portfolio Synthesis |
 | **Total** | **81** | |
 
-**v3–v19 interpretation rules breakdown (158 total, motor schema):**
+**v3–v19 interpretation rules breakdown (290 total, motor schema):**
 | Version | Rules | Groups |
 |---|---|---|
 | v3 | 27 | P (Council), Q (Cloud/Snake), R (Eclipse sign), S (Terrorism), T (Party dasha) |
@@ -3523,7 +3521,7 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 | v17 | 28 | AO (Celebrity Auth) + AP (Saturn Market) + AQ (Mars Perigee) + AR (Nadi) + AS (Sector) |
 | v18 | 27 | AT (Oath Tenure x7) + AU (Muhurta Selection x6) + AV (Simhasan Chakra x6) + AW (Leadership Autopsy x8) |
 | v19 | 26 | AX (Election Winner/Loser x8) + AY (Indian Political Context x4) + AZ (Lord of Year Quality x7) + BA (Cabinet Pair Diagnostics x7) |
-| **Total** | **158** | |
+| **Total** | **290** | |
 
 **Schema notes for v3–v19 (motor-async pattern):**
 - All scripts: `science_id = "mundane_jyotish"` (flat field, NOT nested `source.science`)
@@ -3534,9 +3532,13 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 - Runner patches `DRY_RUN=False` and `MONGO_URL/DB_NAME` at load time — scripts are safe standalone (DRY_RUN=True default)
 
 **Validation status (mundane_jyotish):**
-- `validate_mundane_rules.py` committed in v19 commit (`9025725`) — **NOT yet run on live DB**
-- All 290 mundane interpretation rules currently sit at `approval_status: "pending_review"`
-- **Next step: run `validate_mundane_rules.py` — see Pending Next Steps below**
+- `validate_mundane_rules.py` committed and debugged (commit `2a05c46`) — **NOT yet run on live DB**
+- All 290 motor-schema mundane interpretation rules (v3–v19) currently at `approval_status: "pending_review"`
+- Validator fixes applied: matrix-condition dict detection (v3–v7 rules), MIN_WORDS_CONDITION lowered to 4, old-schema routing
+- Structural dry-run confirmed: **0 genuine structural failures** across all 290 rules
+  - 216 string-condition rules → proceed to Claude quality check
+  - 74 v3–v7 matrix-engine rules (dict condition) → `pending_human_review` pending migration pass
+- **Next step: run `validate_mundane_rules.py` live — see Pending Next Steps below**
 
 ---
 
@@ -3608,17 +3610,23 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 
 ### Cumulative DB state after v3–v19 — CONFIRMED LIVE (7 May 2026)
 
-| Collection | v1–v2 (old schema) | v3–v19 (motor schema) | Grand Total |
+| Collection | v1–v2 (old schema) | v3–v19 (motor schema) | Live in MongoDB |
 |---|---|---|---|
-| mundane_engine_specs | 15 | +81 | **96** |
-| interpretation_rules (mundane_jyotish only) | 132 | +158 | **290** |
-| mundane_geo_entities | 29 | — | 29 |
+| mundane_engine_specs | 15 (live) | 81 (live) | **96** |
+| interpretation_rules (mundane_jyotish) | 132 (scripts exist, NOT uploaded — pymongo schema, migration pending) | 290 (live) | **290** |
+| mundane_geo_entities | 29 | — | **29** |
+
+**Note on v1–v2 interpretation rules:** The 132 rules in `ingest_mundane_interpretation_v1.py` / `v2.py`
+use the old pymongo schema (`source.science` nested, `interpretation.detailed/summary` sub-dict).
+These scripts have NOT been run against MongoDB — the 132 rules are not live.
+The motor-schema query `{science_id: "mundane_jyotish"}` will not find them even if uploaded.
+A migration decision is required before they can be ingested — see Priority 2 below.
 
 **Pending next steps — Mundane Astrology:**
 
 **Priority 1 — Validate all live mundane rules (IMMEDIATE)**
 ```bash
-# Run on ALL mundane rules (v3–v19, 158 rules):
+# Run on ALL mundane rules (v3–v19, 290 rules live in MongoDB):
 python3 backend/scripts/validate_mundane_rules.py \
   --mongo-url "$MONGO_URL" --db-name horoscope_db
 
