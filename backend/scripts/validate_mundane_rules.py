@@ -504,6 +504,24 @@ def main():
         print(f"  Migration-pending      : {len(old_schema_rules)} / {len(rules)}")
         print(f"  Proceeding with Claude : {len(structurally_ok)} rules")
 
+        # Write migration-pending verdicts to MongoDB immediately after Stage 1.
+        # These rules (old-schema v1/v2 and v3–v7 matrix-condition dicts) are
+        # NOT passed through Stage 2's Claude batch, so they must be written here
+        # before Stage 4's read-back branch picks them up.
+        if not args.dry_run and old_schema_rules:
+            for rule in old_schema_rules:
+                rid = rule["rule_id"]
+                vd  = all_verdicts[rid]
+                apply_verdict(
+                    db, rid,
+                    vd.get("verdict", "spot_check"),
+                    vd.get("reason", ""),
+                    vd.get("corrected_confidence", "MEDIUM"),
+                    "structural_stage1",
+                    [], "",
+                    args.dry_run,
+                )
+
         # ── Stage 2: Claude quality check ────────────────────────────────────
         if args.skip_claude:
             print("\nStage 2: Skipped (--skip-claude flag set)")
@@ -678,9 +696,17 @@ def main():
         print(f"\n  Contradictions: {len(all_contradictions)} pair(s)")
 
         if old_schema_rules:
-            print(f"\n  ℹ️  {len(old_schema_rules)} old-schema rule(s) (v1/v2 legacy) set to "
-                  f"pending_human_review with reason 'old_schema_migration_pending'.\n"
-                  f"  These require a separate schema migration — not content errors.")
+            old_count    = sum(1 for r in old_schema_rules
+                               if all_verdicts.get(r["rule_id"], {}).get("reason")
+                               == "old_schema_migration_pending")
+            matrix_count = len(old_schema_rules) - old_count
+            if matrix_count:
+                print(f"\n  ℹ️  {matrix_count} matrix-engine rule(s) (v3–v7 dict-condition) set to "
+                      f"pending_human_review — condition encoded as structured lookup dict, not a prose IF clause. "
+                      f"Valid rules awaiting a condition-string migration pass.")
+            if old_count:
+                print(f"\n  ℹ️  {old_count} old-schema rule(s) (v1/v2 pymongo legacy) set to "
+                      f"pending_human_review — different schema layout, migration decision pending.")
 
         if not args.dry_run:
             print(
