@@ -3573,14 +3573,37 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 
 ---
 
-### Cumulative DB state after v3–v18 — CONFIRMED LIVE (7 May 2026)
+---
 
-| Collection | v1–v2 (old schema) | v3–v18 (motor schema) | Grand Total |
+### v19 — mundane-engine-v19-20260507 / mundane-interp-v19-20260507
+
+**Commit:** pending
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 8 | Gopal Ch4: Tri-Lagna Comparative Election Engine (Lagna/Chandra/Karkamsha 10th lord comparison + strength coefficients + data authenticity protocol), Election Spoiler Logic (Rasi Sandhi veto, 6th lord nexus, 8th house Saturn, incumbent vulnerability), Dasha/Bhukti Timing Vectors (11th house surge 0.90, winning/losing lords, Saturn transit veto, Destiny Anchor), Auxiliary Campaign Charts (announcement/nomination/manifesto timing rules), Election Case Studies (Bush/Gore 2000, Bush/Kerry 2004, Vajpayee/Sonia 2004 + Indian PM Lagna bias + widowhood rule); Mehta Ch22/23: Yearly Cabinet Portfolios (10 portfolios × 7 planets — full result matrix, expands v3 Celestial Council), Lord of Year Quality Engine (all 7 planets as Raja + combustion veto + modern sector mapping), Governance Portfolio Synthesis Rules (10 compound cabinet pair logic rules + modernization heuristics) |
+| interpretation_rules | 26 | GROUP_AX (Election Winner/Loser x8), GROUP_AY (Indian Political Context x4), GROUP_AZ (Lord of Year Quality x7), GROUP_BA (Cabinet Pair Diagnostics x7) |
+
+**Notable rules:**
+- `mundane-mehta-ch22-combustion-veto-reversal` — combust/Grahayudha-lost Raja reverses all benefic results (critical)
+- `mundane-mehta-ch22-saturn-durgesh-defense-humiliation` — Saturn Durgesh in 12th = national defense humiliation (critical)
+- `mundane-mehta-ch22-anarchy-gate-sun-raja-saturn-mantri` — Sun Raja + Saturn Mantri = leader mortality risk (critical)
+- `mundane-gopal-ch4-rasi-sandhi-10th-lord-spoiler` — Sandhi 10th lord negates apparent strength (high)
+- `mundane-gopal-ch4-eleventh-house-dasha-surge` — 11th house Dasha lord = Winning Momentum 0.90 (high)
+- `mundane-gopal-ch4-sonia-dramatic-change-trigger` — Saturn in Cancer + Cancer Lagna = regime shift (high, validated 2004)
+- `mundane-mehta-ch22-jupiter-raja-afflicted-banking-crisis` — afflicted Jupiter Raja = banking crisis (high)
+- `mundane-mehta-ch22-saturn-raja-famine-misery` — Saturn Raja = famine/misery year (high, validated 1991)
+
+---
+
+### Cumulative DB state after v3–v19 (7 May 2026)
+
+| Collection | v1–v2 (old schema) | v3–v19 (motor schema) | Grand Total |
 |---|---|---|---|
-| mundane_engine_specs | 15 | +73 | **88** |
-| interpretation_rules (mundane_jyotish only) | 132 | +132 | **264** |
+| mundane_engine_specs | 15 | +81 | **96** |
+| interpretation_rules (mundane_jyotish only) | 132 | +158 | **290** |
 | mundane_geo_entities | 29 | — | 29 |
 
 **Pending next batches:**
-- **v19:** Governance engine — Elections (Gopal Ch4, Mehta Ch19–22) — pending source extraction
+- **v20:** Remaining Gopal chapters (Sports Ch10, Cinema/Celebrity Ch11-12) — TBD
 - **v1/v2 migration:** Old pymongo schema (different field layout) — migration decision pending
