@@ -3516,8 +3516,9 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 | v14 | 16 | AI (Macro-conjunction + Transit timing) — 4 critical |
 | v15 | 14 | AJ (Planetary transits + Koorma reconciliation) |
 | v16 | 29 | AK (Monsoon) + AL (Weather) + AM (Crops) + AN (Trade) — 5 critical |
+| v17 | 28 | AO (Celebrity Auth) + AP (Saturn Market) + AQ (Mars Perigee) + AR (Nadi) + AS (Sector) |
 
-**Schema notes for v3–v16 (motor-async pattern):**
+**Schema notes for v3–v17 (motor-async pattern):**
 - All scripts: `science_id = "mundane_jyotish"` (flat field, NOT nested `source.science`)
 - Upsert key: `spec_id` for engine specs, `rule_id` for interpretation rules
 - All `approval_status: "pending_review"` — no validator wired yet for mundane_jyotish
@@ -3525,7 +3526,36 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 - `checkable: True/False` — most mundane rules are checkable=True (geo/transit conditions are verifiable)
 - Runner patches `DRY_RUN=False` and `MONGO_URL/DB_NAME` at load time — scripts are safe standalone (DRY_RUN=True default)
 
+---
+
+### v17 — mundane-engine-v17-20260507 / mundane-interp-v17-20260507
+
+**Commit:** `66d130e`
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 8 | Gopal Ch3: Celebrity/Leadership Authenticity Engine (Triple 10th Lord Check, National Native Alignment veto, Widow/Unmarried PM multiplier), Yogi Karve birth-time rectification (full Month/Lagna Number Grid), Celebrity Truth Anchors (Amitabh/Gates/Sonia); Gopal Ch14: Saturn-Pushya bull run + Saturn-Leo real estate engine, Mars Perigee regional leadership veto + manufacturing boost, Nadi transit rules (Saturn 8th from Jupiter, Mercury Bhukti epidemic recovery), Industrial sector transit matrix (Auto/IT/Pharma/Retail), Geopolitical validation nodes (Sri Lanka, decentralised terror, oil spike) |
+| interpretation_rules | 28 | GROUP_AO (Celebrity Auth x8), GROUP_AP (Saturn Market+Geopolitical x6), GROUP_AQ (Mars Perigee x4), GROUP_AR (Nadi Transit x5), GROUP_AS (Industrial Sector x5) |
+
+**Notable rules:**
+- `mundane-gopal-ch3-triple-check-fail` — Strength Coefficient < 0.60 → chart rejected (high)
+- `mundane-gopal-ch3-triple-check-pass` — All 3 reference points strong → Destiny Alert (high)
+- `mundane-gopal-ch14-saturn-pushya-bull-run` — Saturn in Pushya → 50–100% Sensex growth (high, checkable)
+- `mundane-gopal-ch14-saturn-leo-real-estate` — Saturn enters Leo → 100% real estate gains (high, checkable)
+- `mundane-gopal-ch14-mars-perigee-south-cm` — Mars at perigee in Fixed sign → multiple CMs replaced (high, checkable)
+- `mundane-gopal-ch14-nadi-saturn-8th-from-jupiter` — Saturn 8th from natal Jupiter → elite career break (high, checkable)
+- `mundane-gopal-ch14-decentralised-terror` — Saturn in 12th of Coronation Chart → cellular terror doctrine active (high)
+
+---
+
+### Cumulative DB state after Phase 1 v3–v17 (7 May 2026)
+
+| Collection | v1–v2 (old schema) | v3–v17 (motor schema) | Grand Total |
+|---|---|---|---|
+| mundane_engine_specs | 15 | +65 | ~80 |
+| interpretation_rules (mundane_jyotish only) | 132 | +105 | ~237 |
+| mundane_geo_entities | 29 | — | 29 |
+
 **Pending next batches:**
-- **v17:** Gopal Ch3 (Foundation Chart analysis) + Ch14 (Dasha timing validation)
 - **v18:** Governance engine — Elections + Oath Taking (Gopal Ch4–5, Mehta Ch18–22)
 - **v1/v2 migration:** Old pymongo schema (different field layout) — migration decision pending

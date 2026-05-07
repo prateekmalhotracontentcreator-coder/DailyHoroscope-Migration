@@ -42,11 +42,11 @@ backend/scripts/
 
 | Collection | Documents | Notes |
 |---|---|---|
-| `mundane_engine_specs` | **72** | v1–v2 (old schema, 15 docs) + v3–v16 (motor schema, 57 docs) |
-| `interpretation_rules` (mundane_jyotish) | **209** | v1–v2 (132) + v3–v16 (77) |
+| `mundane_engine_specs` | **~80** | v1–v2 (old schema, 15 docs) + v3–v17 (motor schema, ~65 docs) |
+| `interpretation_rules` (mundane_jyotish) | **~237** | v1–v2 (132) + v3–v17 (105) |
 | `mundane_geo_entities` | **29** | Foundation charts, Koorma zones, Zodiac geography |
 
-### What v3–v16 covers (all committed, all live)
+### What v3–v17 covers (all committed, all live)
 
 | Version | Commit | Specs | Rules | Key content |
 |---|---|---|---|---|
@@ -64,6 +64,7 @@ backend/scripts/
 | v14 | b634829 | 4 | 16 | Macro-conjunction engine, Sun/Moon/Saturn transit (**4 critical rules**) |
 | v15 | f93f19b | 6 | 14 | Planetary transits (Mars/Mercury/Jupiter/Venus/Rahu), Synthesis engine, Koorma kill-switch |
 | v16 | 3a92413 | 8 | 29 | Ardra/Monsoon, Rohini Chakra, Trinadi, Saptnadi, Crops, Material DB, Sarvatobhadra (**5 critical rules**) |
+| v17 | 66d130e | 8 | 28 | Gopal Ch3 (Celebrity Auth, Yogi Karve Rectification, Truth Anchors) + Gopal Ch14 (Saturn-Pushya bull, Saturn-Leo real estate, Mars Perigee regional veto, Nadi career timing, Industrial sector matrix, Geopolitical nodes) |
 
 ---
 
@@ -132,14 +133,22 @@ python3 backend/scripts/run_mundane_ingest.py
 - Sprouting failure (Yoga VIII) — crop destroyed at germination
 - Total crop failure (Yoga IX) — malefics in 7th + angular
 
+**High-severity rules added in v17 (severity=high, checkable):**
+- Celebrity chart rejected if Triple Check Score < 0.60 (data authenticity gate)
+- Celebrity chart passes → Destiny Alert (globally marked for greatness)
+- Saturn in Pushya Nakshatra → 50–100% stock market bull run (2006 Sensex validated)
+- Saturn enters Leo → 100% real estate price growth (2006–2008 validated)
+- Mars at perigee in Fixed sign → multiple regional CMs simultaneously replaced (2006 South India validated)
+- Saturn 8th from natal Jupiter → elite career break/fall (Ganguly 2006 validated)
+- Saturn in 12th of Coronation Chart → decentralised terror doctrine active
+
 ---
 
 ## Pending Next Batches
 
 | Version | Source | Content | Status |
 |---|---|---|---|
-| **v17** | Gopal Ch3 + Ch14 | Foundation Chart analysis + Dasha timing validation | 🔜 Next |
-| **v18** | Gopal Ch4–5, Mehta Ch18–22 | Governance engine — Elections + Oath Taking | 🔜 Queued |
+| **v18** | Gopal Ch4–5, Mehta Ch18–22 | Governance engine — Elections + Oath Taking | 🔜 Next |
 | **v1/v2 migration** | Old pymongo schema scripts | Different field layout — migration decision pending | 🔜 Deferred |
 
 ---
@@ -186,6 +195,9 @@ See `CLAUDE.md` Section 16 for full detail — read before touching any KE or Ar
 1. Read `CLAUDE.md` (project identity, infrastructure, all key file locations)
 2. Read `backend/scripts/INGEST_NOTES.md` (full ingest state — Mundane section at bottom)
 3. Confirm `$MONGO_URL` is set in terminal
-4. Next task: **v17** — Gopal Ch3 Foundation Chart + Ch14 Dasha timing
-   Source: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
-   (line ~8984 for Gopal Ch3, line ~13273+ for Ch14 content)
+4. Next task: **v18** — Governance engine: Elections + Oath Taking
+   Sources: Gopal Ch4–5, Mehta Ch18–22
+   Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
+   (Search for "oath" or "election" or "Ch4" to locate relevant sections)
+5. Run v17 against MongoDB first (if not already done):
+   `python3 backend/scripts/run_mundane_ingest.py` → type "yes"
