@@ -3304,4 +3304,228 @@ Schema patterns:
 **Lal Kitab interpretation_rules state (unchanged from prior sprint):**
 - 467 rules | 303 auto-approved | 157 pending_human_review | 7 flagged
 - Ch 27 open flag: `lalkitab-ch27-corr-mars-benefic` (source column misalignment — needs source verification)
-4. **`extra_cond` pattern** — rule-specific structured data embedded in condition dict without polluting standard schema (first used Ch 24)
+
+---
+
+## Mundane Astrology Phase 1 — Staged Ingest Sprint (v3–v16, 6–7 May 2026)
+
+**Runner script:** `backend/scripts/run_mundane_ingest.py`
+Loads v3–v16 in sequence, patches `MONGO_URL / DB_NAME / DRY_RUN` at runtime.
+Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from env).
+
+**Runner bug fixes applied (commit 5f5c092):**
+- Pre-imports `motor.motor_asyncio` at runner startup — prevents `_FakeClient` stub
+  from being injected when scripts check `if "motor" not in sys.modules`
+- Sets `os.environ["MONGO_URL"]` after confirmation — v3-style scripts read env directly
+- Falls back to `main()` when `run()` absent (v3 uses `async def main()`)
+
+---
+
+### v3 — mundane-engine-v3-20260506 / mundane-interp-v3-20260506
+
+**Scripts:** `ingest_mundane_engine_specs_v3.py` / `ingest_mundane_interpretation_v3.py`
+**Run:** `main()` entry point (old style) | uses `os.environ["MONGO_URL"]`
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 10 | Celestial Council outcomes, 9 Clouds, 12 Snakes, Commodity ownership (planet/sign/nakshatra), Koorma geo, Planet→direction, Nakshatra affliction, Planetary Cabinet |
+| interpretation_rules | 27 | Groups P (Council ×10), Q (Cloud+Snake ×2), R (Eclipse by sign element ×6), S (Terrorism parameters ×5), T (Party dasha ×4) |
+
+---
+
+### v4 — mundane-engine-v4-20260506 / mundane-interp-v4-20260506
+
+**Scripts:** `ingest_mundane_engine_specs_v4.py` / `ingest_mundane_interpretation_v4.py`
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 11 | Mehta 9-step hierarchy, New Year Cabinet engine, Solar Ingress engine, Paksha/Tithi engine, Ashtakavarga mundane, Varshaphala mundane, Simhasana Chakra, Planetary Cabinet domain lords, Upachaya-kendra transit, Retrograde transit, 5-year dasha compressed |
+| interpretation_rules | 15 | Groups U (Solar Ingress ×5), V (New Year Cabinet ×5), W (Retrograde-transit ×5) |
+
+---
+
+### v5 — mundane-engine-v5-20260506 / mundane-interp-v5-20260506
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 2 | Seismic engine (16-factor checklist), Assassination hazard engine |
+| interpretation_rules | 12 | Groups X (Seismic ×6), Y (Assassination hazard ×6) |
+
+---
+
+### v6 — mundane-engine-v6-20260506 / mundane-interp-v6-20260506
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 3 | Governance/election engine, Oath-taking muhurta, Foundation chart analysis |
+| interpretation_rules | 11 | Groups Z (Governance ×6), AA (Foundation chart ×5) |
+
+---
+
+### v7 — mundane-engine-v7-20260506 / mundane-interp-v7-20260506
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 3 | War engine (geometric triggers), Geopolitical rivalry matrix, India-Pakistan axis |
+| interpretation_rules | 9 | Groups AB (War triggers ×5), AC (Rivalry/geopolitical ×4) |
+
+---
+
+### v8 — mundane-engine-v8-20260506 / mundane-interp-v8-20260506
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 4 | Eclipse engine (shadow math + magnitude timing), Nakshatra eclipse lookup, Weekday eclipse matrix, Planetary aspect modifiers |
+| interpretation_rules | 11 | Groups AD (Eclipse severity ×6), AE (Eclipse commodity ×5) |
+
+---
+
+### v9 — mundane-engine-v9-20260506 / mundane-interp-v9-20260506
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 5 | Sun transit matrix (27 nakshatras), Moon transit matrix, Sun ingress weekday (12 signs), Ingress muhurti classification (15/30/45), Sun transit timing methodology |
+| interpretation_rules | 11 | Groups AF (Sun transit ×6), AG (Ingress weekday ×5) |
+
+---
+
+### v10 — mundane-engine-v10-20260506 / mundane-interp-v10-20260506
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 1 | Raphael western eclipse engine (decanate-level, visibility rules, eclipse pairs) |
+| interpretation_rules | 5 | Group (Raphael eclipse decanate rules ×5) |
+
+---
+
+### v11 — mundane-engine-v11-20260506 / mundane-interp-v11-20260506
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 3 | Historical benchmark matrix (WWI/WWII/1947/1971/2001), India foundation chart spec, Empirical validation engine |
+| interpretation_rules | 14 | Historical validation rules — empirical case studies for engine calibration |
+
+---
+
+### v12 — mundane-engine-v12-20260506 / mundane-interp-v12-20260506
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 4 | Saturn transit price matrix (12 signs + 27 nakshatras + navamsh/pad + retrograde triggers), Saturn timing methodology |
+| interpretation_rules | 17 | Groups (Saturn transit rules ×17) |
+
+---
+
+### v13 — mundane-engine-v13-20260506 / mundane-interp-v13-20260506
+
+**Commit:** `fe6a1d7`
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 8 | Koorma grid (9-direction, 27 nakshatras), Koorma fractal scaling (5 levels), Zodiac→geography (12 signs), 12-house ministry cabinet, Planetary elemental nature, Gaur Ch11 eclipse engine, Sanghatta Chakra (Vedha vectors + Rohini gate + war benchmarks), Commodity Ownership Dictionary |
+| interpretation_rules | 18 | Groups AH-01–AH-05 (Koorma directional), AH-06–AH-12 (eclipse), AH-13–AH-16 (Rohini War Gate `critical`, Mars-Ketu massacre `critical`, Triple Malefic `critical`, 7th-house Vedha war `critical`), AH-17–AH-18 (commodity spike, gold reserve crisis) |
+
+**Critical rules:** 4 at `severity=critical` — Rohini War Gate (WWI/WWII/1971), Mars-Ketu massacre, Triple Malefic Destruction, 7th-house Vedha war ignition.
+
+---
+
+### v14 — mundane-engine-v14-20260506 / mundane-interp-v14-20260506
+
+**Commit:** `b634829`
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 4 | Macro-conjunction engine (all profiles + ignition rule + historical benchmark matrix: 9/11/Tsunami/Massacre/Hiroshima/Gulf), Sun+Moon transit price matrix (all 12 signs + 27 constellations + weekday ingress all 12 + muhurti 15/30/45 + overrule principle), Saturn transit price matrix (12 signs + 27 constellations + navamsh logic + direct/retrograde ingress), Transit timing methodology |
+| interpretation_rules | 16 | Group AI — AI-01 (Aries 1° paradigm shift `critical`), AI-02 (Mars ignition rule), AI-03 (Saturn-Jupiter US president mortality), AI-04 (Great Mutation era shift), AI-05 (Saturn-Rahu Gemini nuclear), AI-06 (Saturn-Rahu Capricorn Middle East), AI-07 (Saturn-Mars watery tsunami `critical`), AI-08 (Saturn-Mars 6th massacre `critical`), AI-09 (Mars-Ketu terrorism `critical`), AI-10 (national humiliation), AI-11–AI-16 (transit timing rules) |
+
+---
+
+### v15 — mundane-engine-v15-20260506 / mundane-interp-v15-20260506
+
+**Commit:** `f93f19b`
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 6 | Mars transit price matrix (12 signs + 27 constellations + direct/retrograde), Mercury transit price matrix, Jupiter transit price matrix, Venus+Rahu transit matrices, Synthesis Engine (Step 4 weighted majority-vote + August 2002 case study), Mehta Ch7 Koorma reconciled (full 9-direction + tribal granularity + Destruction of Kings kill-switch table — all 9 entries) |
+| interpretation_rules | 14 | Group AJ — AJ-01–AJ-03 (Mars retrograde/Gemini/military coup), AJ-04–AJ-06 (Mercury weather/education/stock crash), AJ-07–AJ-08 (Jupiter banking/supremacy), AJ-09 (Venus luxury spike), AJ-10 (Rahu Libra drought veto), AJ-11–AJ-14 (Koorma reconciliation: regime collapse kill-switch, triple directional audit, Saturn-West amplifier, NW affliction tribal insurgency) |
+
+**Koorma kill-switch table:** 9 entries mapping 3-star clusters to regime-at-risk regions (Punjab/Bihar/Bengal/Malwa/Gujarat/Sindh/Indus/Sialkot/Himalayan foothills).
+
+---
+
+### v16 — mundane-engine-v16-20260506 / mundane-interp-v16-20260506
+
+**Commit:** `3a92413`
+
+| Collection | Docs | Content |
+|---|---|---|
+| mundane_engine_specs | 8 | Gaur Ch5 Ardra monsoon engine (tithi×16, weekday×7, nakshatra×27, yoga×27, time-of-entry×7), Rohini/Samudra Chakra spatial grid (Sea/Shore/Mountain/Junction), Snake Trinadi weather engine (Heaven/Earth/Patal + 8 rules), Constellation ownership+gender weather engine (Sun/Moon stars, male/female/eunuch), Saptnadi precipitation engine (7 nadis × 28 constellations + Vedha rules + 20 rain combinations + duration), Sasya Jatak crop engine (10 yield yogas + inverse pricing), Material & Commodity database (planetary/zodiac/nakshatra ownership, 28-row nakshatra table, nomenclature rule), Sarvatobhadra trade engine (motion logic + 28-row Vedha commodity matrix) |
+| interpretation_rules | 29 | GROUP_AK (Monsoon/Ardra ×8), GROUP_AL (Weather/Atmospheric ×8), GROUP_AM (Crop Yield/Inverse Pricing ×6), GROUP_AN (Commodity/Sarvatobhadra Trade ×7) |
+
+**Notable rules:**
+- `mundane-gaur-ch5-rohini-mountain-drought` — Mountain residence = drought confirmed (critical, overrides all other signals)
+- `mundane-gaur-ch6-trinadi-no-rain-veto` — Malefics in Patal + Benefics in Heaven = no rain (critical)
+- `mundane-gaur-ch6-mars-venus-jupiter-catastrophic` — Mars 7th from Venus + Jupiter 7th from Saturn = annihilating floods (critical)
+- `mundane-gaur-ch7-sprouting-failure-yoga-viii` — Malefic in 2nd from Sun = crop destroyed at sprouting (critical)
+- `mundane-gaur-ch7-total-crop-failure-yoga-ix` — Malefics 7th + angular = total crop failure (critical)
+
+---
+
+### Cumulative DB state after Phase 1 v3–v16 (7 May 2026)
+
+**Run log:** `Mundane Astrology_V4-V16 Ingest.rtf` — 28/28 scripts, 0 errors
+
+| Collection | v1–v2 (old schema) | v3–v16 (motor schema) | Grand Total |
+|---|---|---|---|
+| mundane_engine_specs | 15 | +57 | **72** |
+| interpretation_rules (mundane_jyotish only) | 132 | +77 | **209** |
+| mundane_geo_entities | 29 | — | **29** |
+
+**v3–v16 engine specs breakdown:**
+| Version | Specs | Key content |
+|---|---|---|
+| v3 | 10 | Celestial Council, Clouds, Snakes, Commodity ownership, Koorma geo |
+| v4 | 11 | Mehta 9-step, Cabinet engine, Solar ingress, Paksha, Simhasana, Varshaphala |
+| v5 | 2 | Seismic 16-factor, Assassination hazard |
+| v6 | 3 | Governance/election, Oath-taking, Foundation chart |
+| v7 | 3 | War engine, Geopolitical rivalry, India-Pakistan axis |
+| v8 | 4 | Eclipse engine, Nakshatra lookup, Weekday matrix, Aspect modifiers |
+| v9 | 5 | Sun/Moon transit matrices, Ingress weekday, Muhurti classification |
+| v10 | 1 | Raphael western eclipse decanate engine |
+| v11 | 3 | Historical benchmark matrix, India foundation spec, Validation engine |
+| v12 | 4 | Saturn transit matrix (signs + nakshatras + navamsh) |
+| v13 | 8 | Koorma grid, Fractal scaling, Sanghatta Chakra, Commodity dict |
+| v14 | 4 | Macro-conjunction engine, Sun+Moon transit, Saturn transit, Timing |
+| v15 | 6 | Mars/Mercury/Jupiter/Venus/Rahu transits, Synthesis engine, Koorma reconciled |
+| v16 | 8 | Ardra/Monsoon, Rohini Chakra, Trinadi, Saptnadi, Crop, Material DB, Sarvatobhadra |
+
+**v3–v16 interpretation rules breakdown:**
+| Version | Rules | Groups |
+|---|---|---|
+| v3 | 27 | P (Council), Q (Cloud/Snake), R (Eclipse sign), S (Terrorism), T (Party dasha) |
+| v4 | 15 | U (Solar ingress), V (Cabinet), W (Retrograde transit) |
+| v5 | 12 | X (Seismic), Y (Assassination) |
+| v6 | 11 | Z (Governance), AA (Foundation chart) |
+| v7 | 9 | AB (War triggers), AC (Rivalry) |
+| v8 | 11 | AD (Eclipse severity), AE (Eclipse commodity) |
+| v9 | 11 | AF (Sun transit), AG (Ingress weekday) |
+| v10 | 5 | Raphael eclipse decanate |
+| v11 | 14 | Historical validation case studies |
+| v12 | 17 | Saturn transit rules |
+| v13 | 18 | AH (Koorma + Eclipse + Rohini Gate + Commodity) — 4 critical |
+| v14 | 16 | AI (Macro-conjunction + Transit timing) — 4 critical |
+| v15 | 14 | AJ (Planetary transits + Koorma reconciliation) |
+| v16 | 29 | AK (Monsoon) + AL (Weather) + AM (Crops) + AN (Trade) — 5 critical |
+
+**Schema notes for v3–v16 (motor-async pattern):**
+- All scripts: `science_id = "mundane_jyotish"` (flat field, NOT nested `source.science`)
+- Upsert key: `spec_id` for engine specs, `rule_id` for interpretation rules
+- All `approval_status: "pending_review"` — no validator wired yet for mundane_jyotish
+- `severity` field on critical rules: `"low" / "medium" / "high" / "critical"`
+- `checkable: True/False` — most mundane rules are checkable=True (geo/transit conditions are verifiable)
+- Runner patches `DRY_RUN=False` and `MONGO_URL/DB_NAME` at load time — scripts are safe standalone (DRY_RUN=True default)
+
+**Pending next batches:**
+- **v17:** Gopal Ch3 (Foundation Chart analysis) + Ch14 (Dasha timing validation)
+- **v18:** Governance engine — Elections + Oath Taking (Gopal Ch4–5, Mehta Ch18–22)
+- **v1/v2 migration:** Old pymongo schema (different field layout) — migration decision pending
