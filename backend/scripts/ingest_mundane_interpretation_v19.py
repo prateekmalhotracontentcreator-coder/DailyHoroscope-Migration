@@ -475,7 +475,7 @@ GROUP_AZ = [
         title    = "Jupiter as Raja — Golden Year (Prosperity / Banking / Legal Welfare)",
         source_chapter = "Mehta Ch 22 — Yearly Governance Engine",
         condition = (
-            "IF Mars is the Raja for the year (unafflicted, not combust, not in Grahayudha) "
+            "IF Jupiter is the Raja for the year (unafflicted, not combust, not in Grahayudha) "
             "→ Jupiter prosperity activation "
             "IF Jupiter is also unafflicted in the Hindu New Year chart"
         ),
