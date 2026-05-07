@@ -1,6 +1,6 @@
 # Handover Note — Knowledge Engine Ingest Sprint
 **Last updated:** 7 May 2026
-**Status:** Mundane Astrology v3–v18 encoded (v18 pending ingest run) — 88 specs / 264 rules / 29 geo entities
+**Status:** Mundane Astrology v3–v18 COMPLETE and live in MongoDB — 88 specs / 264 rules / 29 geo entities
 
 ---
 
@@ -65,7 +65,7 @@ backend/scripts/
 | v15 | f93f19b | 6 | 14 | Planetary transits (Mars/Mercury/Jupiter/Venus/Rahu), Synthesis engine, Koorma kill-switch |
 | v16 | 3a92413 | 8 | 29 | Ardra/Monsoon, Rohini Chakra, Trinadi, Saptnadi, Crops, Material DB, Sarvatobhadra (**5 critical rules**) |
 | v17 | 66d130e | 8 | 28 | Gopal Ch3 (Celebrity Auth, Yogi Karve Rectification, Truth Anchors) + Gopal Ch14 (Saturn-Pushya bull, Saturn-Leo real estate, Mars Perigee regional veto, Nadi career timing, Industrial sector matrix, Geopolitical nodes) |
-| v18 | pending | 8 | 27 | Gopal Ch5 (Oath Chart 12-house grid, Jaimini Ayurdaya tenure engine, Hora Lagna/Rasi Sandhi/Graha Yuddha vetoes, case studies Manmohan+Chandy) + Mehta Ch18 (11-point Lagna protocol, Luminaries/Nakshatra/Tithi vetting, 5-yr Compressed Dasha Timer, Simhasan Chakra complete 27-nakshatra, Leadership Autopsy Database 6 PMs) |
+| v18 | 840b000 | 8 | 27 | Gopal Ch5 (Oath Chart 12-house grid, Jaimini Ayurdaya tenure engine, Hora Lagna/Rasi Sandhi/Graha Yuddha vetoes, case studies Manmohan+Chandy) + Mehta Ch18 (11-point Lagna protocol, Luminaries/Nakshatra/Tithi vetting, 5-yr Compressed Dasha Timer, Simhasan Chakra complete 27-nakshatra, Leadership Autopsy Database 6 PMs) |
 
 ---
 
@@ -163,7 +163,7 @@ python3 backend/scripts/run_mundane_ingest.py
 
 | Version | Source | Content | Status |
 |---|---|---|---|
-| **v18** | Gopal Ch5, Mehta Ch18 | Oath Taking Charts + Muhurta selection + Simhasan Chakra + Leadership Autopsy | ✅ Scripts written, pending ingest run |
+| **v18** | Gopal Ch5, Mehta Ch18 | Oath Taking Charts + Muhurta selection + Simhasan Chakra + Leadership Autopsy | ✅ LIVE — 32/32 scripts, 0 errors |
 | **v19** | Gopal Ch4, Mehta Ch19–22 | Elections engine | 🔜 Next |
 | **v1/v2 migration** | Old pymongo schema scripts | Different field layout — migration decision pending | 🔜 Deferred |
 
@@ -211,10 +211,8 @@ See `CLAUDE.md` Section 16 for full detail — read before touching any KE or Ar
 1. Read `CLAUDE.md` (project identity, infrastructure, all key file locations)
 2. Read `backend/scripts/INGEST_NOTES.md` (full ingest state — Mundane section at bottom)
 3. Confirm `$MONGO_URL` is set in terminal
-4. Next task: **v18 ingest run** — both scripts are written and added to runner.
-   Run: `python3 backend/scripts/run_mundane_ingest.py` → type "yes"
-   Expected: 32/32 scripts, 0 errors. New docs: +8 specs, +27 rules.
-5. After v18 confirmed live: **v19** — Elections engine (Gopal Ch4, Mehta Ch19–22)
+4. Next task: **v19** — Elections engine (Gopal Ch4, Mehta Ch19–22)
+5. After v19 scripts written:
    Sources: Gopal Ch4, Mehta Ch19–22
    Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
    (Search for "election" or "Ch4" to locate relevant sections)
