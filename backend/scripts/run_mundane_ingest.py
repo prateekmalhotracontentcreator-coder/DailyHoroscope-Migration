@@ -59,6 +59,7 @@ SCRIPT_PAIRS = [
     ("ingest_mundane_engine_specs_v13.py",        "ingest_mundane_interpretation_v13.py"),
     ("ingest_mundane_engine_specs_v14.py",        "ingest_mundane_interpretation_v14.py"),
     ("ingest_mundane_engine_specs_v15.py",        "ingest_mundane_interpretation_v15.py"),
+    ("ingest_mundane_engine_specs_v16.py",        "ingest_mundane_interpretation_v16.py"),
 ]
 
 # Flatten to a single ordered list
