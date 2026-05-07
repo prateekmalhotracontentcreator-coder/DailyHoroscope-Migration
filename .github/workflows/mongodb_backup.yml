@@ -1,0 +1,109 @@
+name: MongoDB Weekly Backup
+
+on:
+  # Every Sunday at 2:00 AM IST (20:30 UTC Saturday)
+  schedule:
+    - cron: '30 20 * * 6'
+
+  # Manual trigger from GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Backup mode'
+        required: true
+        default: 'critical'
+        type: choice
+        options:
+          - critical
+          - full
+
+jobs:
+  backup:
+    name: Dump MongoDB → Upload Artifact
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # ── Install mongodump ───────────────────────────────────────────────────
+      - name: Install MongoDB Database Tools
+        run: |
+          wget -q https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu2204-arm64-100.16.0.tgz \
+            -O /tmp/mongo-tools.tgz || \
+          wget -q https://fastdl.mongodb.org/tools/db/mongodb-database-tools-ubuntu2204-x86_64-100.16.0.tgz \
+            -O /tmp/mongo-tools.tgz
+          tar -xzf /tmp/mongo-tools.tgz -C /tmp
+          sudo mv /tmp/mongodb-database-tools-*/bin/mongodump /usr/local/bin/mongodump
+          mongodump --version
+
+      # ── Run backup ─────────────────────────────────────────────────────────
+      - name: Run critical backup
+        if: ${{ github.event_name == 'schedule' || inputs.mode == 'critical' }}
+        env:
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+          DB_NAME: horoscope_db
+        run: |
+          mkdir -p backend/scripts/backup
+          TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+          OUTFILE="backend/scripts/backup/horoscope_critical_${TIMESTAMP}.gz"
+
+          # Critical collections only
+          mongodump \
+            --uri="$MONGO_URL" \
+            --db="$DB_NAME" \
+            --collection="users" \
+            --collection="subscribers" \
+            --collection="scheduled_notifications" \
+            --collection="notification_logs" \
+            --collection="social_post_logs" \
+            --collection="app_settings" \
+            --collection="payments" \
+            --gzip \
+            --archive="$OUTFILE" || true
+
+          echo "BACKUP_FILE=$OUTFILE" >> $GITHUB_ENV
+          echo "BACKUP_TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
+          du -sh "$OUTFILE" && echo "✓ Backup complete"
+
+      - name: Run full backup
+        if: ${{ inputs.mode == 'full' }}
+        env:
+          MONGO_URL: ${{ secrets.MONGO_URL }}
+          DB_NAME: horoscope_db
+        run: |
+          mkdir -p backend/scripts/backup
+          TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+          OUTFILE="backend/scripts/backup/horoscope_full_${TIMESTAMP}.gz"
+
+          mongodump \
+            --uri="$MONGO_URL" \
+            --db="$DB_NAME" \
+            --gzip \
+            --archive="$OUTFILE" || true
+
+          echo "BACKUP_FILE=$OUTFILE" >> $GITHUB_ENV
+          echo "BACKUP_TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
+          du -sh "$OUTFILE" && echo "✓ Full backup complete"
+
+      # ── Upload as GitHub Actions artifact (retained 90 days) ───────────────
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mongodb-backup-${{ env.BACKUP_TIMESTAMP }}
+          path: backend/scripts/backup/*.gz
+          retention-days: 90
+          if-no-files-found: error
+
+      # ── Summary ────────────────────────────────────────────────────────────
+      - name: Print summary
+        run: |
+          echo "## MongoDB Backup Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Field | Value |" >> $GITHUB_STEP_SUMMARY
+          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+          echo "| Timestamp | ${{ env.BACKUP_TIMESTAMP }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| File | ${{ env.BACKUP_FILE }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Retention | 90 days |" >> $GITHUB_STEP_SUMMARY
+          echo "| Restore | \`mongorestore --uri=\$MONGO_URL --db=horoscope_db --gzip --archive=<file>\` |" >> $GITHUB_STEP_SUMMARY
