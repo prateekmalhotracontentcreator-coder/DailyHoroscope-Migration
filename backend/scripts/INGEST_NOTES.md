@@ -3473,7 +3473,8 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 
 ### Cumulative DB state after Phase 1 v3–v16 (7 May 2026)
 
-**Run log:** `Mundane Astrology_V4-V16 Ingest.rtf` — 28/28 scripts, 0 errors
+**Run log (v4–v16):** `Mundane Astrology_V4-V16 Ingest.rtf` — 28/28 scripts, 0 errors
+**Run log (v4–v17):** `Mundane Astrology_V4-V17 Ingest` — 30/30 scripts, 0 errors ✅ live
 
 | Collection | v1–v2 (old schema) | v3–v16 (motor schema) | Grand Total |
 |---|---|---|---|
@@ -3552,8 +3553,8 @@ Usage: `python3 backend/scripts/run_mundane_ingest.py` (reads `$MONGO_URL` from 
 
 | Collection | v1–v2 (old schema) | v3–v17 (motor schema) | Grand Total |
 |---|---|---|---|
-| mundane_engine_specs | 15 | +65 | ~80 |
-| interpretation_rules (mundane_jyotish only) | 132 | +105 | ~237 |
+| mundane_engine_specs | 15 | +65 | **80** |
+| interpretation_rules (mundane_jyotish only) | 132 | +105 | **237** |
 | mundane_geo_entities | 29 | — | 29 |
 
 **Pending next batches:**

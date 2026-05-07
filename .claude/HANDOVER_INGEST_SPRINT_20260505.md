@@ -1,6 +1,6 @@
 # Handover Note — Knowledge Engine Ingest Sprint
 **Last updated:** 7 May 2026
-**Status:** Mundane Astrology Phase 1 (v3–v16) COMPLETE and live in MongoDB
+**Status:** Mundane Astrology Phase 1 (v3–v17) COMPLETE and live in MongoDB — 80 specs / 237 rules / 29 geo entities
 
 ---
 
@@ -42,8 +42,8 @@ backend/scripts/
 
 | Collection | Documents | Notes |
 |---|---|---|
-| `mundane_engine_specs` | **~80** | v1–v2 (old schema, 15 docs) + v3–v17 (motor schema, ~65 docs) |
-| `interpretation_rules` (mundane_jyotish) | **~237** | v1–v2 (132) + v3–v17 (105) |
+| `mundane_engine_specs` | **80** | v1–v2 (old schema, 15 docs) + v3–v17 (motor schema, 65 docs) |
+| `interpretation_rules` (mundane_jyotish) | **237** | v1–v2 (132) + v3–v17 (105) |
 | `mundane_geo_entities` | **29** | Foundation charts, Koorma zones, Zodiac geography |
 
 ### What v3–v17 covers (all committed, all live)
