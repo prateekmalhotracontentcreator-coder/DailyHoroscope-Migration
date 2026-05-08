@@ -181,8 +181,10 @@ python3 backend/scripts/run_mundane_ingest.py
 |---|---|---|---|
 | **v18** | Gopal Ch5, Mehta Ch18 | Oath Taking Charts + Muhurta selection + Simhasan Chakra + Leadership Autopsy | ✅ LIVE — 32/32 scripts, 0 errors |
 | **v19** | Gopal Ch4, Mehta Ch22/23 | Elections engine + Yearly Governance Cabinet | ✅ LIVE — 34/34 scripts, 0 errors |
-| **v20** | Gopal Ch10–12 | Sports / Cinema / Celebrity (Gopal) | 🔜 Next |
-| **v1/v2 migration** | Old pymongo schema scripts | Different field layout — migration decision pending | 🔜 Deferred |
+| **v2-novel** | Gopal Ch2, Mehta Ch6, Raphael Ch3 | 13 novel rules migrated from v2 (Groups L+N+O) | ✅ LIVE — 13/13 inserted, validate pending |
+| **v20** | Gopal Ch10–12 | Sports / Cinema / Celebrity (Gopal) | 🔜 Next (unblocked — v1/v2 decision complete) |
+| **v1 migration** | Old pymongo schema scripts | DISCARDED — pymongo + nested schema + all chapters superseded by v3–v19 | ✅ Decision made 8 May 2026 |
+| **v2 migration** | Gopal Ch2, Mehta Ch6/Ch10, Raphael Ch3 | PARTIALLY MIGRATED — 13 novel rules live; 8 Mehta Ch10 rules discarded (covered by v14) | ✅ Decision made 8 May 2026 |
 
 ---
 
