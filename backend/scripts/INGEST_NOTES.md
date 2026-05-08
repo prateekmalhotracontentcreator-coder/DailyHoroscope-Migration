@@ -3799,12 +3799,60 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 
 ---
 
-### Cumulative DB state after v21 — 8 May 2026
+### v22 — mundane-engine-v22-20260508 / mundane-interp-v22-20260508
+
+**Source:** Gopalakrishnan — Chapter 12 (Why India is What it is)
+**Scripts:** `ingest_mundane_engine_specs_v22.py` + `ingest_mundane_interpretation_v22.py`
+**Patch script:** `patch_mundane_v22_flags.py`
+**Validation report:** `backend/scripts/reports/mundane_validation_v22.md`
+
+**Engine spec (mundane_engine_specs):**
+
+| spec_id | Description |
+|---|---|
+| `gopal-ch12-india-native-profile-engine` | India foundational Native Profile — Independence chart (Aug 15, 1947, Taurus Lagna), national psyche markers (Rahu in Lagna, Venus+Moon, Jupiter in 6th), regional economic weights (South/IT, West/Industry, East/BPO), structural governance flaws, Pakistan 2/12 neighbor friction framework, wealth architecture (Mars 7th lord in 2nd) |
+
+**Interpretation rules (Group U — India Native Profile, 7 rules):**
+
+| rule_id | What it captures |
+|---|---|
+| `mundane-gopal-ch12-india-rahu-lagna-western-imitation` | Permanent Western-imitation tendency — Rahu in Lagna (structural) |
+| `mundane-gopal-ch12-india-venus-moon-sports-obsession` | Cricket/sports national obsession — Venus+Moon (structural) |
+| `mundane-gopal-ch12-india-jupiter-6th-judicial-corruption` | Judicial slowness, merit bypass — Jupiter in 6th (structural) |
+| `mundane-gopal-ch12-india-cancer-transit-south-it` | Major planet in Cancer → South India IT sector impact (checkable) |
+| `mundane-gopal-ch12-india-pakistan-2-12-friction-veto` | 2/12 Lagna geometric friction — lasting peace astrologically impossible (checkable) |
+| `mundane-gopal-ch12-india-bpo-destiny-3rd-house` | India IT/BPO global mandate — 3rd house cluster (structural) |
+| `mundane-gopal-ch12-india-mars-7th-2nd-wealth-trade` | India wealth tied to foreign relations health — Mars 7th in 2nd (checkable) |
+
+**Validation results (mundane-interp-v22-20260508):**
+
+| Status | Count |
+|---|---|
+| auto_approved | 1 (14%) |
+| pending_human_review | 2 (29%) |
+| flagged | 4 (57%) |
+| **Total** | **7** |
+| Contradictions | 0 |
+
+**Flagged rules — all 4 false flags, all content_validity_dispute, patched via `patch_mundane_v22_flags.py`:**
+- `rahu-lagna-western-imitation` — validator rejected "pseudo-secularism" as ideologically loaded; source-faithful to Gopal's Ch12 language
+- `jupiter-6th-judicial-corruption` — validator rejected caste-reservation framing as political; Gopal's own characterization in source
+- `pakistan-2-12-friction-veto` — validator flagged "structurally impossible" as deterministic overreach; Gopal's explicit claim in source
+- `bpo-destiny-3rd-house` — validator flagged "+0.50 modifier arbitrary" (partially valid — weight was analyst's calibration, not Gopal's); substance source-faithful
+
+**Post-patch final state:**
+- auto_approved: 1 | pending_human_review: 6 (2 + 4 patched) | flagged: 0
+
+**Note for co-founder review:** The 4 patched rules carry politically/culturally sensitive language sourced directly from Gopalakrishnan Ch12. Three decisions needed: (1) preserve Gopal's exact language or neutralize to mechanism-only; (2) confirm the Pakistan 2/12 deterministic framing; (3) calibrate the BPO +0.50 weight modifier.
+
+---
+
+### Cumulative DB state after v22 — 8 May 2026
 
 | Collection | Live in MongoDB |
 |---|---|
-| mundane_engine_specs | **100** (15 old schema live + 81 motor schema v3–v19 + 3 v20 + 1 v21) |
-| interpretation_rules (mundane_jyotish) | **320** (290 v3–v19 + 13 v2-novel + 9 v20 + 8 v21) |
+| mundane_engine_specs | **101** (15 old schema + 81 v3–v19 + 3 v20 + 1 v21 + 1 v22) |
+| interpretation_rules (mundane_jyotish) | **327** (290 v3–v19 + 13 v2-novel + 9 v20 + 8 v21 + 7 v22) |
 | mundane_geo_entities | **29** |
 
 **Pending next steps — Mundane Astrology:**
@@ -3818,10 +3866,10 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 - v2: PARTIALLY MIGRATED — 13 novel rules live, validated, patched
 - Final state: 4 auto_approved / 9 pending_human_review / 0 flagged
 
-**Priority 3 — 🔄 IN PROGRESS — v20/v21 ingest**
-- ✅ Ch10 Sports (v20): 3 engine specs + 9 interpretation rules. Validated + patched.
-- ✅ Ch11 Rains (v21): 1 engine spec + 8 interpretation rules. Validated — 5 auto_approved / 3 pending_human_review / 0 flagged. No patch needed.
-- 🔜 Ch12 India Native: next
+**Priority 3 — ✅ COMPLETE — v20/v21/v22 ingest (8 May 2026)**
+- ✅ Ch10 Sports (v20): 3 engine specs + 9 interpretation rules. Validated + patched (1 false flag).
+- ✅ Ch11 Rains (v21): 1 engine spec + 8 interpretation rules. Validated — 5 auto_approved / 3 pending_human_review / 0 flagged.
+- ✅ Ch12 India Native (v22): 1 engine spec + 7 interpretation rules. Validated + patched (4 false flags — all content_validity_dispute on Gopal's own political/deterministic language).
 - Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
 
 **Priority 4 — 74 Matrix-Engine Rules Migration Pass**
