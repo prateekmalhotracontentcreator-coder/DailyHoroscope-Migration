@@ -3756,12 +3756,55 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 
 ---
 
-### Cumulative DB state after v20 — 8 May 2026
+### v21 — mundane-engine-v21-20260508 / mundane-interp-v21-20260508
+
+**Source:** Gopalakrishnan — Chapter 11 (How to Predict Rains)
+**Scripts:** `ingest_mundane_engine_specs_v21.py` + `ingest_mundane_interpretation_v21.py`
+**Validation report:** `backend/scripts/reports/mundane_validation_v21.md`
+
+**Complementary layer design:** Gaur Ch5/6 (v16) operates at entry-nakshatra / day-specific level (Ardra Entry chart, Rohini Samudra Chakra, Trinadi, Saptnadi). Gopal Ch11 operates at seasonal/annual macro level. Zero rule overlap confirmed before authoring.
+
+**Engine spec (mundane_engine_specs):**
+
+| spec_id | Description |
+|---|---|
+| `gopal-ch11-rain-forecasting-engine` | Full seasonal rain framework — drought classification (Meteorological/Hydrological/Agricultural), SW/NE monsoon windows, Rahu Transit Veto (4 signs + priority ranking), Dhana Chakra nakshatra moisture score, Tajika ingress 4th-house audit, Prasna Marga income-vs-expense balance, Narada Samhita yearly ruler, 2002 drought case study |
+
+**Interpretation rules (Group T — Rainfall Forecasting, 8 rules):**
+
+| rule_id | Trigger | Severity |
+|---|---|---|
+| `mundane-gopal-ch11-rains-rahu-taurus-critical` | Rahu in Taurus → Critical drought alert (2002 validated) | critical |
+| `mundane-gopal-ch11-rains-rahu-scorpio-severe` | Rahu in Scorpio → Severe NE monsoon disruption | high |
+| `mundane-gopal-ch11-rains-rahu-leo-moderate` | Rahu in Leo → SW monsoon onset delay | medium |
+| `mundane-gopal-ch11-rains-rahu-capricorn-moderate` | Rahu in Capricorn → Himalayan watershed stress | medium |
+| `mundane-gopal-ch11-rains-rahu-saturn-bhukti-monsoon-failure` | Rahu Taurus/Scorpio + Saturn Bhukti → compound critical gate | critical |
+| `mundane-gopal-ch11-rains-tajika-4th-watery-positive` | 4th house Moon/Venus/Jupiter in ingress chart → good rains | low |
+| `mundane-gopal-ch11-rains-prasna-balance-negative` | 12th malefics > 2nd benefics in ingress chart → rainfall deficit | medium |
+| `mundane-gopal-ch11-rains-mars-4th-agri-stress` | Mars in 4th + 12th lord in 1st of ingress → famine-risk alert | high |
+
+**Validation results (mundane-interp-v21-20260508):**
+
+| Status | Count |
+|---|---|
+| auto_approved | 5 (62%) |
+| pending_human_review | 3 (38%) |
+| flagged | 0 |
+| **Total** | **8** |
+| Contradictions | 0 |
+
+**No patch script needed — 0 flagged rules.**
+
+**Fix applied during ingest:** `_rule()` function was missing top-level `source_chapter` field (nested inside `source.chapter` only). Validator requires top-level `rule.get("source_chapter")`. Fixed and re-uploaded before validation.
+
+---
+
+### Cumulative DB state after v21 — 8 May 2026
 
 | Collection | Live in MongoDB |
 |---|---|
-| mundane_engine_specs | **99** (15 old schema live + 81 motor schema v3–v19 + 3 v20) |
-| interpretation_rules (mundane_jyotish) | **312** (290 v3–v19 + 13 v2-novel + 9 v20) |
+| mundane_engine_specs | **100** (15 old schema live + 81 motor schema v3–v19 + 3 v20 + 1 v21) |
+| interpretation_rules (mundane_jyotish) | **320** (290 v3–v19 + 13 v2-novel + 9 v20 + 8 v21) |
 | mundane_geo_entities | **29** |
 
 **Pending next steps — Mundane Astrology:**
@@ -3775,10 +3818,10 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 - v2: PARTIALLY MIGRATED — 13 novel rules live, validated, patched
 - Final state: 4 auto_approved / 9 pending_human_review / 0 flagged
 
-**Priority 3 — 🔄 IN PROGRESS — v20 ingest**
-- ✅ Ch10 Sports: 3 engine specs + 9 interpretation rules. Validated + patched.
-- 🔜 Ch11 Rains: reconcile with Gaur Ch5 content in v16 (Ardra, Rohini, Trinadi, Saptnadi rules). Add complementary layer only — no duplicate of v16 content.
-- 🔜 Ch12 India Native: after Ch11
+**Priority 3 — 🔄 IN PROGRESS — v20/v21 ingest**
+- ✅ Ch10 Sports (v20): 3 engine specs + 9 interpretation rules. Validated + patched.
+- ✅ Ch11 Rains (v21): 1 engine spec + 8 interpretation rules. Validated — 5 auto_approved / 3 pending_human_review / 0 flagged. No patch needed.
+- 🔜 Ch12 India Native: next
 - Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
 
 **Priority 4 — 74 Matrix-Engine Rules Migration Pass**
