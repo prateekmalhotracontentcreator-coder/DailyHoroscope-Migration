@@ -197,6 +197,8 @@ git commit -m "chore(ingest): [source] vN — [topic] (N rules)"
 
 | Script | Batch ID |
 |---|---|
+| v22 interp (Ch12 India Native) | `mundane-interp-v22-20260508` |
+| v22 specs (Ch12 India Native) | `mundane-engine-v22-20260508` |
 | v21 interp (Ch11 Rains) | `mundane-interp-v21-20260508` |
 | v21 specs (Ch11 Rains) | `mundane-engine-v21-20260508` |
 | v20 interp (Ch10 Sports) | `mundane-interp-v20-20260508` |
