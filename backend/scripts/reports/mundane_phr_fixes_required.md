@@ -1,11 +1,15 @@
-# Mundane PHR — 72 Rules Requiring Fixes Before Promotion
+# Mundane PHR — 81 Rules Requiring Fixes Before Promotion
 
-**Generated:** May 2026
-**Scope:** Rules marked "To be reviewed" in NotebookLM 186-rule triage.
+**Generated:** May 2026 | **Updated:** May 2026 (post-audit pass)
+**Scope:** Rules marked "To be reviewed" in NotebookLM 186-rule triage + 9 additional rules
+surfaced by `audit_mundane_phr_unknown.py` (post-promotion audit).
 **Next step:** Fix each rule per the action below → re-validate → promote.
 
 All 114 approved PHR rules have been promoted via `promote_mundane_phr_approved.py`.
-These 72 rules are held back pending specific corrections.
+1 false flag (`mundane-mehta-ch13-eclipse-national-validation`) approved via `approve_mundane_false_flags.py`.
+These 81 rules are held back pending specific corrections.
+
+**Library status as of audit:** approved: 246 | pending_human_review: 77 | flagged: 1
 
 ---
 
@@ -49,7 +53,7 @@ These 72 rules are held back pending specific corrections.
 
 ---
 
-## CATEGORY B — Arithmetic Artifacts (6 rules)
+## CATEGORY B — Arithmetic Artifacts (8 rules)
 *Strip all quantitative multipliers. Rules must be purely qualitative.*
 
 | Rule ID | Artifact | Fix |
@@ -60,6 +64,8 @@ These 72 rules are held back pending specific corrections.
 | `mundane-gopal-ch4-destiny-anchor-karkamsha` | "+0.30 weight modifier" | Remove modifier; restate as "Marked by destiny for high office" |
 | `mundane-gopal-ch4-eleventh-house-dasha-surge` | "0.90 winning momentum coefficient" | Remove coefficient; restate as "Strongest surge for electoral victory" |
 | `mundane-gopal-ch12-india-bpo-destiny-3rd-house` | "+0.50 weight modifier" | Remove modifier; restate qualitatively |
+| `mundane-gopal-ch5-rasi-sandhi-veto` | "0.20 governance coefficient" | Remove coefficient; restate as "Effective governance collapse risk" |
+| *(from audit)* | | |
 
 **Fix pattern for all Category B:**
 ```python
@@ -71,7 +77,7 @@ col.update_one({"rule_id": RID}, {"$set": {"condition": CLEANED_CONDITION, "resu
 
 ---
 
-## CATEGORY C — Logic Fixes / Splits (10 rules)
+## CATEGORY C — Logic Fixes / Splits (14 rules)
 
 ### C1 — Split into separate rules
 
@@ -97,10 +103,15 @@ col.update_one({"rule_id": RID}, {"$set": {"condition": CLEANED_CONDITION, "resu
 | `mundane-mehta-ch13-eclipse-ruler-royalty` | Mixes elevation (Jupiter aspect) and assassination (Mars/Saturn) without bifurcation | Split into: benefic aspect → elevation, malefic aspect → assassination risk |
 | `mundane-mehta-ch22-raja-mantri-enemy-deadlock` | Natural planetary enemies list inconsistent with OS definitions elsewhere | Cross-reference OS enemy-planet matrix; align list to standard definitions |
 | `mundane-gaur-ch6-saptnadi-amrita-rain` | Logic collision with Trinadi no-rain veto (rule: trinadi-no-rain-veto) | Define hierarchy: Trinadi veto > Saptnadi confirmation; document in engine_specs |
+| `gaur-ch10-45-muhurti-ingress-overrides-drought` | "Overrides ALL dry-season signals" — too absolute; not supported classically | Remove "overrides all" language; replace with "strongly mitigates dry-season signals" |
+| `mundane-gopal-ch3-trikona-trikona-billionaire` | "Billionaire calibre" overstates certainty without Dasha/transit context | Soften to "exceptional wealth potential; Dasha confirmation required for timing" |
+| `mundane-gopal-ch5-jaimini-short-tenure` | Flagged as contradiction of jaimini-long-tenure — actually a complementary pair | Rewrite condition to make Fixed+Fixed = short tenure explicit; note it is the inverse of Chara+Chara = long tenure; then approve |
+| `mundane-mehta-ch18-8th-house-vacancy-rule` | Internal contradiction: condition says 8th MUST be empty, then discusses malefics/benefics in 8th | Rewrite: split into (a) 8th empty = longevity gate; (b) malefic/benefic in 8th = modifier rules |
+| *(from audit)* | | |
 
 ---
 
-## CATEGORY D — Source Verification Needed (10 rules)
+## CATEGORY D — Source Verification Needed (13 rules)
 
 | Rule ID | Verification Required |
 |---|---|
@@ -115,10 +126,14 @@ col.update_one({"rule_id": RID}, {"$set": {"condition": CLEANED_CONDITION, "resu
 | `mundane-gopal-ch14-saturn-pushya-bull-run` | "50–100% growth" is quantitative extreme — revise to "Significant Bullish Trend" |
 | `mundane-mehta-ch18-aadhaar-dependency-governance` | Aadhaar nakshatra list requires manual verification against five-level Simhasan Chakra map (Source 2, pp.460–462) |
 | `mundane-gopal-ch7-rahu-ketu-ic-mc-axis` | Eclipse on IC pinpoints national capital epicenter — high-specificity claim; needs direct textual confirmation |
+| `gaur-ch1-samvatsar-venus-year-earthquake-calamity-specific` | Validator flagged "#37 Shobhan doesn't exist" but NLM confirmed Venus/#37 Shobhan IS in Gaur's source table. Verify earthquake/calamity outcome specifically in Gaur Ch1; if confirmed → approve |
+| `mehta-ch7-koorma-northwest-affliction-tribal-insurgency` | Regional correlation (Oxus Valley, Madra, Sialkot) and "tribal unrest" outcome need Mehta Ch7 textual confirmation |
+| `mundane-gopal-ch14-saturn-3rd-it-backbone` | Very similar to approved rule `mundane-gopal-ch15-saturn-3rd-national-it-boom`. Check if duplicate (different chapter tag, same content → discard) or distinct rule (verify Saturn-in-3rd anchor in Gopal Ch14 specifically) |
+| *(from audit)* | |
 
 ---
 
-## CATEGORY E — Contextual Modifiers / Over-Synthesis (8 rules)
+## CATEGORY E — Contextual Modifiers / Over-Synthesis (9 rules)
 
 | Rule ID | Issue | Fix |
 |---|---|---|
@@ -130,6 +145,8 @@ col.update_one({"rule_id": RID}, {"$set": {"condition": CLEANED_CONDITION, "resu
 | `mundane-gopal-ch7-cardinal-stellium-upheaval` | Cardinal sign clusters → geopolitical upheaval is sound, but seismic link needs clearer differentiation from fixed-sign earthquake rules | Add hierarchy note: cardinal = upheaval/geopolitical; fixed = seismic |
 | `mundane-gopal-ch9-malefics-trika-entry` | Jupiter listed as "malefic" when entering Trika houses — borderline | Verify: if Source 3 explicitly includes Jupiter, keep; otherwise remove Jupiter from malefic list |
 | `mundane-gopal-ch12-india-bpo-destiny-3rd-house` | *(Also Category B for +0.50 artifact)* After artifact removal, verify remaining logic stands independently | After stripping artifact: confirm qualitative 3rd-house BPO logic is complete |
+| `mundane-gopal-ch14-mall-culture-venus-rahu` | "12+ metros simultaneously" is hyper-specific modern inference — not classical | Strip metro-count specificity; restate as general Venus-Rahu material-expansion signal; tag `sub_type: "contextual_heuristic"` |
+| *(from audit)* | | |
 
 ---
 
@@ -155,27 +172,27 @@ col.update_one({"rule_id": RID}, {"$set": {"condition": CLEANED_CONDITION, "resu
 
 ## Processing Order (Recommended)
 
-1. **Category B** (6 rules) — fastest; simple text edits to strip multipliers → re-validate → promote
-2. **Category C, C3 subset** (5 rules) — targeted field corrections → re-validate → promote
+1. **Category B** (8 rules) — fastest; simple text edits to strip multipliers → re-validate → promote
+2. **Category C, C3 subset** (9 rules) — targeted field corrections → re-validate → promote
 3. **Category C, C1+C2** (5 rules) — requires DB splits and new rule creation → re-validate new rules → promote
 4. **Category A** (32 rules) — requires source book text lookup per rule → complete text → re-validate → promote
-5. **Category D+E** (18 rules) — requires source verification round with LLM → update/discard → re-validate → promote
+5. **Category D+E** (22 rules) — requires source verification round with LLM → update/discard → re-validate → promote
 6. **Category F** (3 rules) — full rewrites → re-validate → promote
 
-**Total: 72 rules to fix across 6 categories**
+**Total: 81 rules to fix across 6 categories**
 
 ---
 
 ## Summary
 
-| Category | Rules | Effort |
-|---|---|---|
-| A — Truncated text | 32 | Medium (source lookup per rule) |
-| B — Arithmetic artifacts | 6 | Low (text edit only) |
-| C — Logic fixes/splits | 10 | Medium-High (some splits = new rules) |
-| D — Source verification | 10 | High (requires book cross-reference) |
-| E — Contextual modifiers | 8 | Medium (re-tagging + context notes) |
-| F — Rewrites | 3 | High (full rewrite + re-validate) |
-| **Total** | **72** | |
+| Category | Rules | Effort | Notes |
+|---|---|---|---|
+| A — Truncated text | 32 | Medium (source lookup per rule) | |
+| B — Arithmetic artifacts | 8 | Low (text edit only) | +2 from audit |
+| C — Logic fixes/splits | 14 | Medium-High (some splits = new rules) | +4 from audit |
+| D — Source verification | 13 | High (requires book cross-reference) | +3 from audit |
+| E — Contextual modifiers | 9 | Medium (re-tagging + context notes) | +1 from audit |
+| F — Rewrites | 3 | High (full rewrite + re-validate) | |
+| **Total** | **81** | | |
 
-*After all 72 fixes: full 186-rule PHR set will be at `approved` status and live to users.*
+*After all 81 fixes: full PHR set will be at `approved` status and live to users.*
