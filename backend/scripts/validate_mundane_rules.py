@@ -65,25 +65,60 @@ from pymongo.errors import AutoReconnect
 # ── Constants ─────────────────────────────────────────────────────────────────
 
 VALID_SEVERITIES  = {"low", "medium", "high", "critical"}
-VALID_SUB_TYPES   = {
-    # weather / natural
-    "monsoon_forecast", "weather_prediction", "seismic_prediction",
-    "crop_prediction", "flood_prediction",
-    # governance / political
-    "oath_chart_tenure", "oath_chart_finance", "oath_muhurta_selection",
-    "election_prediction", "yearly_governance", "leadership_autopsy",
-    # simhasan / authority
-    "simhasan_chakra",
-    # market / economic
-    "market_prediction", "commodity_prediction",
-    # war / geopolitical
-    "war_prediction", "geopolitical_prediction", "assassination_hazard",
-    "terrorism_prediction",
-    # celebrity / natal
-    "celebrity_authenticity", "natal_timing",
-    # general
-    "eclipse_prediction", "transit_prediction", "foundation_chart",
-    "synthesis_rule", "validation_rule",
+
+# VALID_SUB_TYPES — DOCUMENTATION ONLY. NOT ENFORCED in structural_check.
+#
+# Sub-types are free-form descriptive labels. The structural check only verifies
+# that sub_type is a non-empty string. New ingest batches may introduce new
+# sub_types freely — no validator update required.
+#
+# The sub_type field's functional role is CONTRADICTION GROUPING (Stage 3):
+# only rules sharing the same sub_type are checked against each other for
+# contradictions. Consistent naming within a domain therefore matters for
+# contradiction detection quality — but wrong naming is never a hard failure.
+#
+# Full inventory of sub_types in use (v3–v19 + v2-novel, as of 8 May 2026):
+VALID_SUB_TYPES = {
+    # Celestial Council (v3–v5) — Samvatsar planetary roles
+    "celestial_council_king", "celestial_council_minister",
+    "celestial_council_sasyesh", "celestial_council_dhanyesh",
+    "celestial_council_dhanesh", "celestial_council_meghesh",
+    "celestial_council_rasesh", "celestial_council_neersesh",
+    "celestial_council_phalesh", "celestial_council_durgesh",
+    "king_outcome",
+    # Weather / monsoon / natural events (v3–v16)
+    "rainfall_forecast", "rainfall_auxiliary", "drought_signal",
+    "turbulence_signal", "causal_sequence",
+    # Seismic (v5)
+    "seismic_cardinal_cluster", "seismic_forerunner_igniter",
+    "seismic_rasi_sandhi", "seismic_taurus_scorpio_axis",
+    # Commodity / market (v3–v16)
+    "commodity_forecast_synthesis", "eclipse_commodity_month",
+    "eclipse_commodity_severity", "eclipse_saturn_metals",
+    "planet_motion_commodity", "market_bull_run", "sector_boom",
+    # Eclipse (v8–v10)
+    "eclipse_double_calamity", "eclipse_empirical_case",
+    "eclipse_jupiter_benefic", "eclipse_leader_effect",
+    "eclipse_lord_rule", "eclipse_rashi_effect",
+    # War / geopolitical (v7, v13–v15)
+    "war_india_axis", "war_triple_affliction",
+    "zone_malefic_transit", "instability_gate", "national_disruption",
+    # Governance / leadership (v6, v17–v19)
+    "governance_corruption_nexus", "governance_leader_death",
+    "leadership_transition", "political_leadership_death",
+    "political_party_dasha", "political_party_empirical",
+    "mass_death_epidemic",
+    # Terrorism (v13–v15)
+    "terrorism_composite_gate", "terrorism_empirical_case",
+    # Gopal Ch2 heuristics (v2-novel)
+    "chart_authentication", "india_leadership_filter",
+    "governance_longevity_math", "election_winner_logic",
+    # Mehta Ch6 diagnostics (v2-novel)
+    "hazard_border_conflict", "governance_8th_house_veto",
+    "hazard_pm_jeopardy", "governance_fixed_lagna",
+    # Raphael Ch3 diagnostics (v2-novel)
+    "house_strength_weighting", "national_mindset_audit",
+    "governance_coalition_discord",
 }
 
 GARBAGE_RE = re.compile(
