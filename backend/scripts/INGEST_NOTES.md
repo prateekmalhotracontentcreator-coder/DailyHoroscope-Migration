@@ -3642,46 +3642,92 @@ Full validation run (`validate_mundane_rules.py`, model=`claude-haiku-4-5`) comp
 
 ---
 
-### Cumulative DB state after v3–v19 — CONFIRMED LIVE (7 May 2026)
+---
 
-| Collection | v1–v2 (old schema) | v3–v19 (motor schema) | Live in MongoDB |
+### v2-novel — mundane-interp-v2-novel-20260508
+
+**V1/V2 Migration Decision — 8 May 2026 (COMPLETE)**
+
+Full content and schema audit of both v1 and v2 ingest scripts. Decision:
+
+**v1 (`ingest_mundane_interpretation_v1.py`) → DISCARDED**
+- Uses `pymongo` synchronous driver (incompatible with motor-async stack)
+- Uses nested `source: {science: "mundane_jyotish"}` schema — invisible to `science_id` query
+- All 11 chapter areas covered are already superseded by v3–v19 content
+- Script kept as historical reference only; never run against MongoDB
+
+**v2 (`ingest_mundane_interpretation_v2.py`) → PARTIALLY MIGRATED**
+- Uses `motor.motor_asyncio` (compatible driver) ✅
+- Uses flat `science_id: "mundane_jyotish"` ✅
+- However, `condition` fields were Python dicts (same problem as 74 matrix-engine rules)
+- Group M (Mehta Ch10, 8 rules) → **discarded** — same content covered by v14 under different rule_ids
+- Groups L+N+O (13 novel rules) → **migrated** via new script below, with conditions converted to prose
+
+**Migration script: `ingest_mundane_v2_novel_migrate.py`**
+- batch_id: `mundane-interp-v2-novel-20260508`
+- Dry run: ✅ clean (13 rules, 0 errors)
+- Upload: ✅ Inserted 13 / Updated 0
+
+| Group | Chapter | Rules | Decision |
 |---|---|---|---|
-| mundane_engine_specs | 15 (live) | 81 (live) | **96** |
-| interpretation_rules (mundane_jyotish) | 132 (scripts exist, NOT uploaded — pymongo schema, migration pending) | 290 (live) | **290** |
-| mundane_geo_entities | 29 | — | **29** |
+| L | Gopal Ch 2 — Heuristic Filters | 6 | ✅ MIGRATED — novel, not in v3–v19 |
+| M | Mehta Ch 10 — Macro-Conjunctions | 8 | ❌ DISCARDED — covered by v14 |
+| N | Mehta Ch 6 — Diagnostic Rules | 4 | ✅ MIGRATED — novel, not in v3–v19 |
+| O | Raphael Ch 3 — Diagnostic Rules | 3 | ✅ MIGRATED — novel, not in v3–v19 |
 
-**Note on v1–v2 interpretation rules:** The 132 rules in `ingest_mundane_interpretation_v1.py` / `v2.py`
-use the old pymongo schema (`source.science` nested, `interpretation.detailed/summary` sub-dict).
-These scripts have NOT been run against MongoDB — the 132 rules are not live.
-The motor-schema query `{science_id: "mundane_jyotish"}` will not find them even if uploaded.
-A migration decision is required before they can be ingested — see Priority 2 below.
+**Migrated rules (13):**
+- `mundane-gopal-ch2-10th-lord-triage` — 10th lord triage gate (chart authenticity veto)
+- `mundane-gopal-ch2-india-lagna-filter` — India alignment Lagna filter for national leaders
+- `mundane-gopal-ch2-governance-longevity` — Saturnine longevity rule for Indian PM (widowhood)
+- `mundane-gopal-ch2-celebrity-authentication` — Celebrity/leader chart authentication (2-gate)
+- `mundane-gopal-ch2-election-comparative-audit` — Election winner 4-step comparative audit
+- `mundane-gopal-ch2-saturn-transit-regime-cycle` — Saturn 4th/8th/12th transit → regime fall
+- `mundane-mehta-ch6-sun-6th-border-war` — Sun in 6th + malefic → border clash alert (critical)
+- `mundane-mehta-ch6-eclipse-10th-overthrow` — Eclipse/malefic in 10th → govt overthrow (critical)
+- `mundane-mehta-ch6-5th-malefic-assassination` — 5th malefic + 10th afflicted → assassination risk (critical)
+- `mundane-mehta-ch6-sat-10th-democracy` — Saturn in 10th: democracy benefic / autocracy fatal
+- `mundane-raphael-ch3-angular-multiplier` — Angular/succedent/cadent house power weights
+- `mundane-raphael-ch3-intellectual-triad` — Houses 1+3+9: national intellectual triad audit
+- `mundane-raphael-ch3-opposition-4th-trigger` — 4th house opposition rise + agriculture dual trigger
+
+**Validation:** Run `validate_mundane_rules.py --batch-id mundane-interp-v2-novel-20260508` after upload.
+
+---
+
+### Cumulative DB state after v2-novel migration — 8 May 2026
+
+| Collection | Live in MongoDB |
+|---|---|
+| mundane_engine_specs | **96** (15 old schema live + 81 motor schema v3–v19) |
+| interpretation_rules (mundane_jyotish) | **303** (290 v3–v19 + 13 v2-novel) |
+| mundane_geo_entities | **29** |
 
 **Pending next steps — Mundane Astrology:**
 
 **Priority 1 — ✅ COMPLETE — Validation + patch done (7 May 2026)**
-```bash
-# Run patch script (apply false-flag fixes to MongoDB):
-python3 backend/scripts/patch_mundane_v1_flags.py \
-  --mongo-url "$MONGO_URL" --db-name horoscope_db --patch
+- 290 v3–v19 rules validated. 36 false flags patched. 1 genuine flag remains.
+- `mehta-ch10-aries-1-degree-conjunction-paradigm-shift` — keep flagged; needs Mehta Ch10 source check.
 
-# Re-run validator on remaining pending_review rules (none expected):
-python3 backend/scripts/validate_mundane_rules.py \
-  --mongo-url "$MONGO_URL" --db-name horoscope_db
-```
+**Priority 2 — ✅ COMPLETE — v1/v2 migration decision (8 May 2026)**
+- v1: DISCARDED (pymongo + nested schema + superseded content)
+- v2: PARTIALLY MIGRATED — 13 novel rules live via `ingest_mundane_v2_novel_migrate.py`
+- Validate the 13 new rules: `python3 backend/scripts/validate_mundane_rules.py --mongo-url "$MONGO_URL" --db-name horoscope_db --batch-id mundane-interp-v2-novel-20260508 --report-path backend/scripts/reports/mundane_validation_v2_novel.md`
 
-**Priority 2 — v1/v2 migration decision**
-- 15 engine specs + 132 interpretation rules in old pymongo schema (different field layout)
-- Not compatible with the motor-async schema used in v3–v19
-- Decision options: (a) migrate to motor schema, (b) keep as legacy read-only, (c) delete and re-ingest
-- Deferred — do NOT proceed with v20 until this is decided
-
-**Priority 3 — v20 ingest (after v1/v2 decision)**
+**Priority 3 — v20 ingest (now unblocked)**
 - Remaining Gopal chapters: Sports (Ch10), Cinema/Celebrity (Ch11–12)
-- Follow standard workflow: dry-run → upload → validate → patch → commit
+- Standard workflow: dry-run → upload → validate → patch → commit
+- Use batch_id: `mundane-interp-v20-YYYYMMDD`
+- Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
 
-**Priority 4 — Co-founder sign-off**
-- 86 `auto_approved` rules ready for promotion to `approved`
-- 1 genuine flagged rule (`mehta-ch10-aries-1-degree-conjunction-paradigm-shift`) needs source review
+**Priority 4 — 74 Matrix-Engine Rules Migration Pass**
+- v3–v7 rules have `condition` as Python dict (not prose string)
+- Currently at `pending_human_review` with reason `matrix_condition_dict_pending_review`
+- Need: convert dict conditions to prose IF-clause strings, then re-validate
+- Pattern already established in `ingest_mundane_v2_novel_migrate.py` (Group L/N/O condition style)
+
+**Priority 5 — Co-founder sign-off**
+- 86 `auto_approved` rules (v3–v19) + 13 new v2-novel rules (pending validation) ready for review
+- 1 genuine flagged rule (`mehta-ch10-aries-1-degree-conjunction-paradigm-shift`) needs source verification
 - Admin Console path: `/admin/library` → Rules Browser → filter: `auto_approved` / `flagged`
 - No rules reach live users until explicitly promoted to `approved` via co-founder sign-off
 - Use `validate_mundane_rules.py` (not `validate_rules.py`) for all mundane batches
