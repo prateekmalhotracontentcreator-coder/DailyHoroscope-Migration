@@ -3690,7 +3690,22 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 - `mundane-raphael-ch3-intellectual-triad` — Houses 1+3+9: national intellectual triad audit
 - `mundane-raphael-ch3-opposition-4th-trigger` — 4th house opposition rise + agriculture dual trigger
 
-**Validation:** Run `validate_mundane_rules.py --batch-id mundane-interp-v2-novel-20260508` after upload.
+**Validation:** ✅ COMPLETE (8 May 2026)
+
+| Status | Count | % |
+|---|---|---|
+| auto_approved | 4 | 31% |
+| pending_human_review | 7 | 54% |
+| flagged | 2 | 15% |
+| **Total** | **13** | |
+| Contradictions | 0 | |
+
+**Flagged rules — both false flags, patched via `patch_mundane_v2_novel_flags.py`:**
+- `mundane-gopal-ch2-governance-longevity` → `content_validity_dispute` — validator applied classical Vedic causal frame to Gopal's empirical observational heuristic (widowhood/PM tenure pattern, validated against Nehru/Indira/Vajpayee)
+- `mundane-raphael-ch3-opposition-4th-trigger` → `non_standard_terminology` — validator applied single-signification Vedic frame to Raphael's western mundane system (4th house dual signification is Raphael's published doctrine)
+
+**Post-patch final state:**
+- auto_approved: 4 | pending_human_review: 9 (7 + 2 patched) | flagged: 0
 
 ---
 
@@ -3708,10 +3723,10 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 - 290 v3–v19 rules validated. 36 false flags patched. 1 genuine flag remains.
 - `mehta-ch10-aries-1-degree-conjunction-paradigm-shift` — keep flagged; needs Mehta Ch10 source check.
 
-**Priority 2 — ✅ COMPLETE — v1/v2 migration decision (8 May 2026)**
+**Priority 2 — ✅ COMPLETE — v1/v2 migration decision + validation + patch (8 May 2026)**
 - v1: DISCARDED (pymongo + nested schema + superseded content)
-- v2: PARTIALLY MIGRATED — 13 novel rules live via `ingest_mundane_v2_novel_migrate.py`
-- Validate the 13 new rules: `python3 backend/scripts/validate_mundane_rules.py --mongo-url "$MONGO_URL" --db-name horoscope_db --batch-id mundane-interp-v2-novel-20260508 --report-path backend/scripts/reports/mundane_validation_v2_novel.md`
+- v2: PARTIALLY MIGRATED — 13 novel rules live, validated, patched
+- Final state: 4 auto_approved / 9 pending_human_review / 0 flagged
 
 **Priority 3 — v20 ingest (now unblocked)**
 - Remaining Gopal chapters: Sports (Ch10), Cinema/Celebrity (Ch11–12)
