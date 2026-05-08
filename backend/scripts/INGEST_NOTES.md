@@ -3872,11 +3872,39 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 - ✅ Ch12 India Native (v22): 1 engine spec + 7 interpretation rules. Validated + patched (4 false flags — all content_validity_dispute on Gopal's own political/deterministic language).
 - Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
 
-**Priority 4 — 74 Matrix-Engine Rules Migration Pass**
-- v3–v7 rules have `condition` as Python dict (not prose string)
-- Currently at `pending_human_review` with reason `matrix_condition_dict_pending_review`
-- Need: convert dict conditions to prose IF-clause strings, then re-validate
-- Pattern already established in `ingest_mundane_v2_novel_migrate.py` (Group L/N/O condition style)
+**Priority 4 — ✅ COMPLETE — 74 Matrix-Engine Rules Migration Pass (8 May 2026)**
+
+**Migration scripts:**
+- `migrate_mundane_v3_v7_conditions.py` — dict→prose conversion (7 patterns) + reset to pending_review
+- `patch_mundane_v3_v7_severity.py` — added missing `severity` field on 24 rules (v3: 13, v4: 11)
+- `patch_mundane_v3_v7_flags.py` — 5 content fixes (result dicts + truncated conditions) + 11 PHR patches
+- `patch_mundane_v3_terrorism_empirical.py` — 2 terrorism empirical cases → PHR (post-hoc case study classification)
+
+**Issues resolved:**
+1. **Condition dict→prose** (74 rules): 7 pattern handlers (primary key / planet_outcomes matrix / trigger / motion-state / formula / house-outcome / fallback)
+2. **Missing severity** (24 rules): v3/v4 `_rule()` function used `severity=None` default and only stored field if truthy — absent field fails `invalid_severity:` structural check. Fixed: `low` for commodity price rules, `medium` default, `high` for terrorism/eclipse rules
+3. **Result field also dict** (3 v4 rules): migration only converted `condition`, not `result`. Fixed with prose conversions for 15/30/45-muhurti, 12-Hindu-month eclipse table, and Scorpio drought expansion
+4. **Truncated conditions** (2 v3 rules): Pattern 7 fallback cut complex nested dicts mid-sentence. Fixed with full expanded prose for 9/11 and Madrid-London terrorism cases
+5. **False flags** (11 rules): validator challenged Gopal's counterintuitive teachings and Mehta's empirical case studies — all content_validity_dispute, all → PHR
+6. **Empirical case study class** (2 v3 rules): terrorism post-hoc validations correctly identified as evidentiary, not predictive — architecture note for co-founder: consider separate `case_studies` collection
+
+**Final validation results (all 74 rules — zero flagged, zero rejected):**
+
+| Batch | Rules | Auto-approved | PHR | Flagged | Rejected |
+|---|---|---|---|---|---|
+| v3 — Gaur Ch2 (Celestial Council) + Mehta Ch13/20/26 | 27 | ~12 | ~15 | 0 | 0 |
+| v4 — Gaur Ch10 (price differentials) + Ch11 (eclipse) | 15 | 6 | 6 | 0 | 0 |
+| v5 — Gopal Ch6 (mass death) + Ch7 (earthquakes) | 12 | 9 | 3 | 0 | 0 |
+| v6 — Gopal Ch8 (war) + Ch9 (civil unrest) | 11 | 8 | 3 | 0 | 0 |
+| v7 — Gopal Ch10/13/15 (career/governance/economy) | 9 | 2 | 7 | 0 | 0 |
+| **Total** | **74** | **~37** | **~34** | **0** | **0** |
+
+**PHR notes for co-founder review:**
+- v3 Celestial Council (10 officials): Gaur's planet-outcome matrix — confirm crop/commodity attributions are verbatim
+- v3 Mehta Ch20 terrorism empirical cases (9/11, Madrid, London, Ayodhya, Delhi): evidentiary case studies — decide on library vs. case-study collection placement
+- v4 Jupiter/Venus/Saturn motion differentials: result summaries emphasise single motion state; decide if both states need equal weighting in result
+- v4 Saturn motion differentials: result references retrograde nakshatra transitions not in condition — condition enrichment needed
+- v7 Mars perigee, Saturn-Ketu civil war, Saturn-3rd IT boom: Gopal Ch10/13/15 counterintuitive teachings — confirm source verbatim preservation vs. classical qualification
 
 **Priority 5 — Co-founder sign-off**
 - ~95 `auto_approved` rules (v3–v19 + v2-novel + v20) ready for review
