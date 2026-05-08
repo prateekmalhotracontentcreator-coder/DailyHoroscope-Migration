@@ -3906,9 +3906,37 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 - v4 Saturn motion differentials: result references retrograde nakshatra transitions not in condition — condition enrichment needed
 - v7 Mars perigee, Saturn-Ketu civil war, Saturn-3rd IT boom: Gopal Ch10/13/15 counterintuitive teachings — confirm source verbatim preservation vs. classical qualification
 
-**Priority 5 — Co-founder sign-off**
-- ~95 `auto_approved` rules (v3–v19 + v2-novel + v20) ready for review
-- 1 genuine flagged rule (`mehta-ch10-aries-1-degree-conjunction-paradigm-shift`) needs source verification
-- Admin Console path: `/admin/library` → Rules Browser → filter: `auto_approved` / `flagged`
+**Priority 5 — Co-founder sign-off — ✅ COMPLETE (8 May 2026)**
+
+**NotebookLM 186-rule PHR triage completed:** Full rule-by-rule analysis of all 186 pending_human_review rules.
+
+**Triage outcome:**
+- **114 PHR rules → Approved** (source-faithful, structurally clean, no artifacts)
+- **72 PHR rules → Held** (need fixes: truncation/artifacts/logic splits/source verification)
+- **137 auto_approved Part A rules** — all confirmed clean by generation
+
+**Scripts created:**
+- `promote_mundane_phr_approved.py` — promotes 114 PHR rules from `pending_human_review` → `approved`
+- `reports/mundane_phr_fixes_required.md` — full 72-rule fix catalogue (6 categories)
+
+**72-rule fix breakdown:**
+| Category | Rules | Action |
+|---|---|---|
+| A — Truncated text | 32 | Source book text completion per rule |
+| B — Arithmetic artifacts | 6 | Strip quantitative multipliers → re-validate |
+| C — Logic fixes/splits | 10 | Condition corrections + DB splits for 4 rules |
+| D — Source verification | 10 | Cross-reference books with LLM |
+| E — Contextual modifiers | 8 | Re-tagging + context notes |
+| F — Rewrites | 3 | Full rewrite + re-validate |
+
+**Flagged rule:** `mehta-ch10-aries-1-degree-conjunction-paradigm-shift`
+- Rewrite confirmed: prioritise Saturn-Jupiter Great Mutation as anchor; broaden to any heavy conjunction at Aries 0°–1° as secondary signal
+
+**Next steps (Priority 6):**
+1. Run `promote_mundane_phr_approved.py --apply` → promotes 114 PHR rules
+2. Run bulk `auto_approved → approved` promotion for 137 Part A rules (separate script needed)
+3. Fix 72 held rules (Cat B first = fastest; Cat A = source lookup with LLM; Cat F = rewrites)
+4. Re-validate fixed rules → promote remaining 72
+
 - No rules reach live users until explicitly promoted to `approved` via co-founder sign-off
 - Use `validate_mundane_rules.py` (not `validate_rules.py`) for all mundane batches
