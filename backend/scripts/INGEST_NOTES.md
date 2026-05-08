@@ -3709,12 +3709,59 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 
 ---
 
-### Cumulative DB state after v2-novel migration — 8 May 2026
+### v20 — mundane-engine-v20-20260508 / mundane-interp-v20-20260508
+
+**Source:** Gopalakrishnan — Chapter 10 (Sports Match Prediction)
+**Scripts:** `ingest_mundane_engine_specs_v20.py` + `ingest_mundane_interpretation_v20.py`
+**Patch script:** `patch_mundane_v20_flags.py`
+**Validation report:** `backend/scripts/reports/mundane_validation_v20.md`
+
+**Engine specs (mundane_engine_specs):**
+
+| rule_id | Description |
+|---|---|
+| `gopal-ch10-sports-dual-team-engine` | Full dual-team match framework: team_assignment (1st/7th house), victory_logic (10th vs 4th lord triage), captain_lagna_filter (+0.15), reduced_vimshottari_timer (cricket: ~4 overs/sign), case studies (India vs WI May 2006 ×2) |
+| `gopal-ch10-cricket-event-house-map` | Houses 1/3/5/6/9/11/12 cricket significations + alert_combinations (match_fixing_alert, rain_alert) |
+| `gopal-ch10-tennis-football-event-house-map` | Tennis (houses 3/6/10) + Football (houses 1/3/5/8/9) + cross_sport_constants |
+
+**Interpretation rules (Group S — Sports Match Prediction, 9 rules):**
+
+| rule_id | Trigger | sub_type |
+|---|---|---|
+| `mundane-gopal-ch10-sports-toss-winner-victory-gate` | 10th lord stronger than 4th lord → Team A wins | sports_match_prediction |
+| `mundane-gopal-ch10-sports-chasing-victory-trigger` | 4th lord Exalted/Vargottam → Team B chase wins (+0.30) | sports_match_prediction |
+| `mundane-gopal-ch10-sports-batting-first-winner-gate` | 10th lord in Trikona + not Retrograde → batting first wins | sports_match_prediction |
+| `mundane-gopal-ch10-sports-close-finish-trigger` | Equal strength + 8th lord Dual sign → last-over result | sports_match_prediction |
+| `mundane-gopal-ch10-sports-rain-delay-monitor` | Watery 4th house planets + 4th lord in watery sign | sports_match_prediction |
+| `mundane-gopal-ch10-sports-injury-scandal-alert` | Mars/Rahu in 6th → injury or integrity alert | sports_match_prediction |
+| `mundane-gopal-ch10-sports-umpire-conflict-filter` | Mars/Rahu in 9th → officiating controversy | sports_match_prediction |
+| `mundane-gopal-ch10-sports-captain-lagna-boost` | Captain's natal chart strong during match window (+0.15) | sports_match_prediction |
+| `mundane-gopal-ch10-sports-match-longevity-gate` | 8th lord in Fixed sign → full match duration guaranteed | sports_match_prediction |
+
+**Validation results (mundane-interp-v20-20260508):**
+
+| Status | Count |
+|---|---|
+| auto_approved | 4 |
+| pending_human_review | 4 |
+| flagged | 1 |
+| **Total** | **9** |
+| Contradictions | 0 |
+
+**Flagged rule — false flag, patched via `patch_mundane_v20_flags.py`:**
+- `mundane-gopal-ch10-sports-chasing-victory-trigger` → `internal_logic_misread` — validator treated "Exalted/Vargottam 4th lord overrides moderately strong 10th lord" as a separate mechanic, but an Exalted planet IS by definition stronger in the Vedic hierarchy (Exaltation > Own Sign > Friendly > Neutral > Debilitation). Both rules describe the same mechanism — the stronger lord wins. The +0.30 weight is the quantified expression of elevated strength. No genuine contradiction exists.
+
+**Post-patch final state:**
+- auto_approved: 4 | pending_human_review: 5 (4 + 1 patched) | flagged: 0
+
+---
+
+### Cumulative DB state after v20 — 8 May 2026
 
 | Collection | Live in MongoDB |
 |---|---|
-| mundane_engine_specs | **96** (15 old schema live + 81 motor schema v3–v19) |
-| interpretation_rules (mundane_jyotish) | **303** (290 v3–v19 + 13 v2-novel) |
+| mundane_engine_specs | **99** (15 old schema live + 81 motor schema v3–v19 + 3 v20) |
+| interpretation_rules (mundane_jyotish) | **312** (290 v3–v19 + 13 v2-novel + 9 v20) |
 | mundane_geo_entities | **29** |
 
 **Pending next steps — Mundane Astrology:**
@@ -3728,10 +3775,10 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 - v2: PARTIALLY MIGRATED — 13 novel rules live, validated, patched
 - Final state: 4 auto_approved / 9 pending_human_review / 0 flagged
 
-**Priority 3 — v20 ingest (now unblocked)**
-- Remaining Gopal chapters: Sports (Ch10), Cinema/Celebrity (Ch11–12)
-- Standard workflow: dry-run → upload → validate → patch → commit
-- Use batch_id: `mundane-interp-v20-YYYYMMDD`
+**Priority 3 — 🔄 IN PROGRESS — v20 ingest**
+- ✅ Ch10 Sports: 3 engine specs + 9 interpretation rules. Validated + patched.
+- 🔜 Ch11 Rains: reconcile with Gaur Ch5 content in v16 (Ardra, Rohini, Trinadi, Saptnadi rules). Add complementary layer only — no duplicate of v16 content.
+- 🔜 Ch12 India Native: after Ch11
 - Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
 
 **Priority 4 — 74 Matrix-Engine Rules Migration Pass**
@@ -3741,7 +3788,7 @@ Full content and schema audit of both v1 and v2 ingest scripts. Decision:
 - Pattern already established in `ingest_mundane_v2_novel_migrate.py` (Group L/N/O condition style)
 
 **Priority 5 — Co-founder sign-off**
-- 86 `auto_approved` rules (v3–v19) + 13 new v2-novel rules (pending validation) ready for review
+- ~95 `auto_approved` rules (v3–v19 + v2-novel + v20) ready for review
 - 1 genuine flagged rule (`mehta-ch10-aries-1-degree-conjunction-paradigm-shift`) needs source verification
 - Admin Console path: `/admin/library` → Rules Browser → filter: `auto_approved` / `flagged`
 - No rules reach live users until explicitly promoted to `approved` via co-founder sign-off

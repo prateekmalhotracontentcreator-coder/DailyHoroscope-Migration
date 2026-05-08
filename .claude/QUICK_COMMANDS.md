@@ -116,6 +116,15 @@ python3 backend/scripts/patch_SCRIPTNAME.py --mongo-url "$MONGO_URL"
 python3 backend/scripts/patch_SCRIPTNAME.py --mongo-url "$MONGO_URL" --patch
 ```
 
+**v20 patch (1 false flag — chasing-victory-trigger):**
+```bash
+# Inspect:
+python3 backend/scripts/patch_mundane_v20_flags.py --mongo-url "$MONGO_URL"
+
+# Apply:
+python3 backend/scripts/patch_mundane_v20_flags.py --mongo-url "$MONGO_URL" --patch
+```
+
 ---
 
 ## ⑦ Dry Run Any Ingest Script
@@ -188,6 +197,8 @@ git commit -m "chore(ingest): [source] vN — [topic] (N rules)"
 
 | Script | Batch ID |
 |---|---|
+| v20 interp (Ch10 Sports) | `mundane-interp-v20-20260508` |
+| v20 specs (Ch10 Sports) | `mundane-engine-v20-20260508` |
 | v2-novel migrate | `mundane-interp-v2-novel-20260508` |
 | v19 interp | `mundane-interp-v19-20260507` |
 | v19 specs | `mundane-engine-v19-20260507` |
