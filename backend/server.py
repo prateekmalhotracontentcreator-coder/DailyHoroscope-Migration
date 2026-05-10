@@ -59,6 +59,7 @@ from admin_utils import (
     ChangePasswordRequest, verify_admin_password, create_admin_session, require_admin,
     set_admin_session_cookie, update_admin_password, hash_new_password, ADMIN_USERNAME
 )
+from remedies_router import router as remedies_router
 from panchang_router import router as panchang_router
 from numerology_router import router as numerology_router
 from tarot_router import router as tarot_router
@@ -2043,6 +2044,7 @@ app.include_router(palmistry_router)
 app.include_router(knowledge_router)
 app.include_router(lk_router)
 app.include_router(strategist_router)
+app.include_router(remedies_router)
 if _longevity_router_ok and longevity_router is not None:
     app.include_router(longevity_router)
 
