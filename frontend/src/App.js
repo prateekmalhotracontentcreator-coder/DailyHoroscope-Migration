@@ -59,6 +59,16 @@ const LuminaPage = lazy(() => import('./pages/LuminaPage'));
 const LongevityReportPage = lazy(() => import('./pages/LongevityReportPage'));
 const ArcAngelPage = lazy(() => import('./pages/ArcAngelPage'));
 const QuestionnairePage = lazy(() => import('./pages/QuestionnairePage'));
+const LKRemediesPage = lazy(() => import('./pages/LKRemediesPage'));
+const LKOnboardPage = lazy(() => import('./pages/LKOnboardPage'));
+const LKReportPage = lazy(() => import('./pages/LKReportPage'));
+const LKTrackerPage = lazy(() => import('./pages/LKTrackerPage'));
+const LKDebtAuditPage = lazy(() => import('./pages/LKDebtAuditPage'));
+const LKBrowsePage = lazy(() => import('./pages/LKBrowsePage'));
+const StrategistPage = lazy(() => import('./pages/StrategistPage'));
+const StrategistMissionsPage = lazy(() => import('./pages/StrategistMissionsPage'));
+const StrategistReportPage = lazy(() => import('./pages/StrategistReportPage'));
+const StrategistSurrogatePage = lazy(() => import('./pages/StrategistSurrogatePage'));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -183,6 +193,21 @@ function App() {
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
+
+                  {/* LK Standalone Remedies */}
+                  <Route path="/lk-remedies" element={<LKRemediesPage />} />
+                  <Route path="/lk-remedies/onboard" element={<ProtectedRoute><LKOnboardPage /></ProtectedRoute>} />
+                  <Route path="/lk-remedies/report" element={<ProtectedRoute><LKReportPage /></ProtectedRoute>} />
+                  <Route path="/lk-remedies/tracker" element={<ProtectedRoute><LKTrackerPage /></ProtectedRoute>} />
+                  <Route path="/lk-remedies/debt-audit" element={<ProtectedRoute><LKDebtAuditPage /></ProtectedRoute>} />
+                  <Route path="/lk-remedies/remedies" element={<LKBrowsePage />} />
+
+                  {/* The Strategist */}
+                  <Route path="/strategist" element={<ProtectedRoute><StrategistPage /></ProtectedRoute>} />
+                  <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />
+                  <Route path="/strategist/report" element={<ProtectedRoute><StrategistReportPage /></ProtectedRoute>} />
+                  <Route path="/strategist/surrogate" element={<ProtectedRoute><StrategistSurrogatePage /></ProtectedRoute>} />
+
                   <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
                   <Route path="/careers" element={<CareersPage />} />
 
