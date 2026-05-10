@@ -54,6 +54,11 @@ SOURCE_STRATEGY_PATCH = Path(
     "Remedies + The Strategist/"
     "The Strategist_Missing Field__Strategy_.md"
 )
+SOURCE_STRATEGY_PATCH_V2 = Path(
+    "/Users/apple/Documents/Knowledge Engine_eBooks/"
+    "Remedies + The Strategist/"
+    "The Strategist_Missing Field__Strategy__V2.md"
+)
 
 REQUIRED_FIELDS = [
     "id", "science_id", "trigger_condition", "strategy",
@@ -239,7 +244,7 @@ def validate_batch(batch):
 def load_records():
     all_records = {}
 
-    for source in [SOURCE_QA, SOURCE_RECONCILIATION, SOURCE_PATCH_V2, SOURCE_STRATEGY_PATCH]:
+    for source in [SOURCE_QA, SOURCE_RECONCILIATION, SOURCE_PATCH_V2, SOURCE_STRATEGY_PATCH, SOURCE_STRATEGY_PATCH_V2]:
         if not source.exists():
             print("[WARN] Source not found: {}".format(source), file=sys.stderr)
             continue
