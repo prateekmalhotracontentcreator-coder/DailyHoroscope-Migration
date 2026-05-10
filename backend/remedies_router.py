@@ -81,7 +81,7 @@ async def get_tiles(remedy_type: str, request: Request) -> dict[str, Any]:
         }},
         {"$sort": {"_id": 1}},
     ]
-    areas = await db.knowledge_rules.aggregate(pipeline).to_list(None)
+    areas = await db.interpretation_rules.aggregate(pipeline).to_list(None)
     tiles = [
         {
             "focus": a["_id"],
@@ -126,7 +126,7 @@ async def query_remedies(
             "remedy.remedy_area": {"$regex": focus, "$options": "i"},
         }
 
-    docs = await db.knowledge_rules.find(query, {"_id": 0}).limit(limit).to_list(None)
+    docs = await db.interpretation_rules.find(query, {"_id": 0}).limit(limit).to_list(None)
     return {
         "type": remedy_type,
         "focus": focus,
@@ -144,7 +144,7 @@ async def get_all(remedy_type: str, request: Request, limit: int = 100) -> dict[
 
     db = _get_db(request)
     science_id = REMEDY_TYPES[remedy_type]
-    docs = await db.knowledge_rules.find(
+    docs = await db.interpretation_rules.find(
         {"science_id": science_id}, {"_id": 0}
     ).limit(limit).to_list(None)
     return {"type": remedy_type, "count": len(docs), "rules": docs}
