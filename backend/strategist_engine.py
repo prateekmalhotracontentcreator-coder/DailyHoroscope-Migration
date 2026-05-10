@@ -71,7 +71,7 @@ async def get_surrogate(
     record = await db.knowledge_rules.find_one(
         {
             "science_id": SCIENCE_ID,
-            "id": {"$gte": 651, "$lte": 675},
+            "id": {"$gte": 1201, "$lte": 1225},
             "$or": [
                 {"relative_unavailable": relative_unavailable},
                 {"industry": {"$regex": industry, "$options": "i"}},

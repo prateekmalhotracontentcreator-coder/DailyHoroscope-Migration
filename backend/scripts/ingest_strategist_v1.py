@@ -44,6 +44,16 @@ SOURCE_RECONCILIATION = Path(
     "Remedies + The Strategist/"
     "Premium Report Generator (ID 1022 Narrative) + Full Module JSON Reconciliation Statement.md"
 )
+SOURCE_PATCH_V2 = Path(
+    "/Users/apple/Documents/Knowledge Engine_eBooks/"
+    "Remedies + The Strategist/"
+    "The Strategist_Patch Work_Pivot, etc Fields_(850+)_V2.md"
+)
+SOURCE_STRATEGY_PATCH = Path(
+    "/Users/apple/Documents/Knowledge Engine_eBooks/"
+    "Remedies + The Strategist/"
+    "The Strategist_Missing Field__Strategy_.md"
+)
 
 REQUIRED_FIELDS = [
     "id", "science_id", "trigger_condition", "strategy",
@@ -51,8 +61,8 @@ REQUIRED_FIELDS = [
     "kpi_target", "remedy_id", "approval_status",
 ]
 
-# Only accept IDs in Strategist range
-VALID_ID_RANGES = [(651, 675), (701, 1027)]
+# Only accept IDs in Strategist range (651-675 retired — replaced by 1201-1225 Universal Surrogates)
+VALID_ID_RANGES = [(701, 1125), (1201, 1225)]
 
 # Field aliases: master doc early batches use older names
 FIELD_ALIASES = {
@@ -67,6 +77,7 @@ FIELD_ALIASES = {
     "scenario":          "mission_name",
     "battle_type":       "mission_objective",
     "decision_route":    "decision_logic",
+    "forecast_window":   "trigger_condition",
 }
 
 
@@ -221,7 +232,7 @@ def validate_batch(batch):
 def load_records():
     all_records = {}
 
-    for source in [SOURCE_MASTER, SOURCE_QA, SOURCE_RECONCILIATION]:
+    for source in [SOURCE_QA, SOURCE_RECONCILIATION, SOURCE_PATCH_V2, SOURCE_STRATEGY_PATCH]:
         if not source.exists():
             print("[WARN] Source not found: {}".format(source), file=sys.stderr)
             continue
