@@ -11,6 +11,7 @@ REMEDY_TYPES: dict[str, str] = {
     "gemstones": "jyotish_remedies_gemstones",
     "crystals":  "jyotish_remedies_crystals",
     "chakra":    "jyotish_remedies_chakra",
+    "mantras":   "jyotish_remedies_mantras",
 }
 
 GEMSTONE_PLANET_META: list[dict] = [

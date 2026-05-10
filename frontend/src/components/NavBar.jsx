@@ -80,7 +80,7 @@ const NAV = [
       { label: 'Gemstones',       path: '/gemstone-remedies', icon: Gem },
       { label: 'Crystal Therapy', path: '/crystal-therapy',   icon: Zap },
       { label: 'Chakra Healing',  path: '/chakra-healing',    icon: Sparkles },
-      { label: 'Mantras',         path: '/remedies',          icon: BookMarked },
+      { label: 'Mantras',         path: '/mantra-remedies',   icon: BookMarked },
       { label: 'Yantras',         path: '/remedies',          icon: Shield },
       { label: 'Feng Shui',       path: '/remedies',          icon: Leaf },
     ],

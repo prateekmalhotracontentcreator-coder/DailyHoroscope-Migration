@@ -65,6 +65,7 @@ const DanaRemediesPage     = lazy(() => import('./pages/DanaRemediesPage'));
 const GemstoneRemediesPage = lazy(() => import('./pages/GemstoneRemediesPage'));
 const CrystalRemediesPage  = lazy(() => import('./pages/CrystalRemediesPage'));
 const ChakraRemediesPage   = lazy(() => import('./pages/ChakraRemediesPage'));
+const MantraRemediesPage   = lazy(() => import('./pages/MantraRemediesPage'));
 const LKOnboardPage = lazy(() => import('./pages/LKOnboardPage'));
 const LKReportPage = lazy(() => import('./pages/LKReportPage'));
 const LKTrackerPage = lazy(() => import('./pages/LKTrackerPage'));
@@ -206,6 +207,7 @@ function App() {
                   <Route path="/gemstone-remedies" element={<GemstoneRemediesPage />} />
                   <Route path="/crystal-therapy"   element={<CrystalRemediesPage />} />
                   <Route path="/chakra-healing"    element={<ChakraRemediesPage />} />
+                  <Route path="/mantra-remedies"   element={<MantraRemediesPage />} />
                   <Route path="/lk-remedies/onboard" element={<ProtectedRoute><LKOnboardPage /></ProtectedRoute>} />
                   <Route path="/lk-remedies/report" element={<ProtectedRoute><LKReportPage /></ProtectedRoute>} />
                   <Route path="/lk-remedies/tracker" element={<ProtectedRoute><LKTrackerPage /></ProtectedRoute>} />
