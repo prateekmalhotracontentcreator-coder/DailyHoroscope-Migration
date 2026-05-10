@@ -52,40 +52,40 @@ const NAV = [
       { label: 'Monthly Horoscope', path: '/horoscope/monthly', icon: Calendar },
     ],
   },
-  {
-    label: 'Reports', icon: FileText,
-    children: [
-      { label: 'My Reports',        path: '/my-reports',    icon: FileText },
-      { label: 'Birth Chart',       path: '/birth-chart',     icon: Sparkles },
-      { label: 'Lagna Kundali',     path: '/lagna-kundali',   icon: Gem },
-      { label: 'Kundali Milan',     path: '/kundali-milan',   icon: Heart },
-      { label: 'Brihat Kundli Pro', path: '/brihat-kundli', icon: Crown },
-      { label: 'Ask 1 Question',    path: '/ask-question',  icon: Hash },
-      { label: 'Love Bundle',        path: '/love',          icon: Heart },
-      { label: 'Career Plus',       path: '/career-plus',   icon: Briefcase },
-      { label: 'Hasta Rekha',       path: '/palmistry',     icon: Layers },
-      { label: 'Longevity Report',  path: '/longevity',     icon: Leaf },
-    ],
-  },
-  {
-    // Remedies: all sub-items point to /remedies (Coming Soon) until module is built
-    label: 'Remedies', icon: Gem,
-    children: [
-      { label: 'Gemstones',       path: '/remedies', icon: Gem },
-      { label: 'Mantras',         path: '/remedies', icon: BookMarked },
-      { label: 'Yantras',         path: '/remedies', icon: Shield },
-      { label: 'Feng Shui',       path: '/remedies', icon: Leaf },
-      { label: 'Crystal Therapy', path: '/remedies', icon: Zap },
-    ],
-  },
+  { label: 'The Strategist', icon: Briefcase, path: '/strategist' },
   { label: 'Numerology', icon: Hash,      path: '/numerology' },
   { label: 'Palmistry',  icon: Layers,    path: '/palmistry' },
   { label: 'Tarot',      icon: BookOpen,  path: '/tarot' },
+  {
+    label: 'Reports', icon: FileText,
+    children: [
+      { label: 'My Reports',        path: '/my-reports',      icon: FileText },
+      { label: 'Birth Chart',       path: '/birth-chart',     icon: Sparkles },
+      { label: 'Lagna Kundali',     path: '/lagna-kundali',   icon: Gem },
+      { label: 'Kundali Milan',     path: '/kundali-milan',   icon: Heart },
+      { label: 'Brihat Kundli Pro', path: '/brihat-kundli',   icon: Crown },
+      { label: 'Ask 1 Question',    path: '/ask-question',    icon: Hash },
+      { label: 'Love Bundle',       path: '/love',            icon: Heart },
+      { label: 'Career Plus',       path: '/career-plus',     icon: Briefcase },
+      { label: 'Hasta Rekha',       path: '/palmistry',       icon: Layers },
+      { label: 'Longevity Report',  path: '/longevity',       icon: Leaf },
+    ],
+  },
   { label: 'Lumina',     icon: Star,      path: '/lumina' },
-  // Arc Angel removed from flat NAV — now a collapsible panel in the sidebar drawer
-  { label: 'Blog',       icon: BookMarked,path: '/blog' },
-  { label: 'Pricing',    icon: Tag,       path: '/pricing' },
-  { label: 'Careers',    icon: Users,     path: '/careers' },
+  {
+    label: 'Remedies', icon: Gem,
+    children: [
+      { label: 'LK Remedies',     path: '/lk-remedies',  icon: Shield },
+      { label: 'Gemstones',       path: '/remedies',      icon: Gem },
+      { label: 'Mantras',         path: '/remedies',      icon: BookMarked },
+      { label: 'Yantras',         path: '/remedies',      icon: Shield },
+      { label: 'Feng Shui',       path: '/remedies',      icon: Leaf },
+      { label: 'Crystal Therapy', path: '/remedies',      icon: Zap },
+    ],
+  },
+  { label: 'Blog',     icon: BookMarked, path: '/blog' },
+  { label: 'Pricing',  icon: Tag,        path: '/pricing' },
+  { label: 'Careers',  icon: Users,      path: '/careers' },
 ];
 
 const BOTTOM_NAV = [
