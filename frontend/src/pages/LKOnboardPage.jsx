@@ -100,7 +100,7 @@ export default function LKOnboardPage() {
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-2xl mx-auto">
       <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-6">
-        <h1 className="text-xl font-bold text-gold mb-1">LK Onboarding</h1>
+        <h1 className="text-xl font-bold text-gold mb-1">Lal Kitab Onboarding</h1>
         <p className="text-muted-foreground text-sm mb-5">Step {step} of 3</p>
 
         {/* Step indicator */}

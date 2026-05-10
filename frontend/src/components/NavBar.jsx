@@ -75,7 +75,7 @@ const NAV = [
   {
     label: 'Remedies', icon: Gem,
     children: [
-      { label: 'LK Remedies',     path: '/lk-remedies',       icon: Shield },
+      { label: 'Lal Kitab Remedies', path: '/lk-remedies',     icon: Shield },
       { label: 'Dana Remedies',   path: '/dana-remedies',     icon: Gem },
       { label: 'Gemstones',       path: '/gemstone-remedies', icon: Gem },
       { label: 'Crystal Therapy', path: '/crystal-therapy',   icon: Zap },

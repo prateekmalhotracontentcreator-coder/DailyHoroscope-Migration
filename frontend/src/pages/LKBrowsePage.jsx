@@ -3,7 +3,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 const PLANETS = ['', 'Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Rahu', 'Ketu'];
 const SCIENCE_IDS = [
-  { value: 'jyotish_lk_remedies', label: 'LK Core Remedies' },
+  { value: 'jyotish_lk_remedies', label: 'Lal Kitab Core Remedies' },
   { value: 'jyotish_remedies_dhana', label: 'Dhana Remedies' },
   { value: 'jyotish_remedies_gemstones', label: 'Gemstones' },
   { value: 'jyotish_remedies_crystals', label: 'Crystals' },

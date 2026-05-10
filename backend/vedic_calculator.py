@@ -467,10 +467,10 @@ def _solar_event_jd(jd_start: float, lat: float, lon: float, rsmi: int) -> float
     result = swe.rise_trans(
         jd_start,
         swe.SUN,
-        lon,
-        lat,
-        rsmi=rsmi | swe.BIT_DISC_CENTER | swe.BIT_NO_REFRACTION,
-        flag=swe.FLG_SWIEPH,
+        rsmi,
+        [lon, lat, 0.0],
+        1013.25,
+        15.0,
     )
     return result[1][0]
 
