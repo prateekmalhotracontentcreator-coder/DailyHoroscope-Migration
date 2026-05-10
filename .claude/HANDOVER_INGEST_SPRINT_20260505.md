@@ -36,15 +36,23 @@ backend/scripts/
 
 ---
 
-## Current State — Mundane Astrology (7 May 2026)
+## Current State — Mundane Astrology (8 May 2026)
 
 ### MongoDB collections
 
 | Collection | Documents | Notes |
 |---|---|---|
-| `mundane_engine_specs` | **96** | v1–v2 (old schema, 15 docs) + v3–v19 (motor schema, 81 docs) |
-| `interpretation_rules` (mundane_jyotish) | **290** | v1–v2 (132) + v3–v19 (158) |
+| `mundane_engine_specs` | **102** | v1–v2 (15 old schema) + v3–v22 (86 motor schema) + 1 dual-mapping conflict spec |
+| `interpretation_rules` (mundane_jyotish) | **active — 278 approved / 50 PHR** | v3–v22 + splits + migrations |
 | `mundane_geo_entities` | **29** | Foundation charts, Koorma zones, Zodiac geography |
+
+### Approval state
+| Status | Count |
+|---|---|
+| `approved` | **278** |
+| `pending_human_review` | **50** |
+| `pending_review` | **0** (clean) |
+| `flagged` | **0** (clean) |
 
 ### What v3–v17 covers (all committed, all live)
 
@@ -181,10 +189,13 @@ python3 backend/scripts/run_mundane_ingest.py
 |---|---|---|---|
 | **v18** | Gopal Ch5, Mehta Ch18 | Oath Taking Charts + Muhurta selection + Simhasan Chakra + Leadership Autopsy | ✅ LIVE — 32/32 scripts, 0 errors |
 | **v19** | Gopal Ch4, Mehta Ch22/23 | Elections engine + Yearly Governance Cabinet | ✅ LIVE — 34/34 scripts, 0 errors |
-| **v2-novel** | Gopal Ch2, Mehta Ch6, Raphael Ch3 | 13 novel rules migrated from v2 (Groups L+N+O) | ✅ LIVE — 13/13 inserted, validate pending |
-| **v20** | Gopal Ch10–12 | Sports / Cinema / Celebrity (Gopal) | 🔜 Next (unblocked — v1/v2 decision complete) |
-| **v1 migration** | Old pymongo schema scripts | DISCARDED — pymongo + nested schema + all chapters superseded by v3–v19 | ✅ Decision made 8 May 2026 |
-| **v2 migration** | Gopal Ch2, Mehta Ch6/Ch10, Raphael Ch3 | PARTIALLY MIGRATED — 13 novel rules live; 8 Mehta Ch10 rules discarded (covered by v14) | ✅ Decision made 8 May 2026 |
+| **v2-novel** | Gopal Ch2, Mehta Ch6, Raphael Ch3 | 13 novel rules migrated from v2 (Groups L+N+O) | ✅ LIVE — validated + 2 false flags approved |
+| **v20** | Gopal Ch10 | Sports prediction rules | ✅ LIVE — 9 rules, 4 auto_approved / 5 PHR |
+| **v21** | Gopal Ch11 | Rains / Monsoon (Rahu positions + Tajika + Prasna) | ✅ LIVE — 8 rules, 5 auto_approved / 3 PHR |
+| **v22** | Gopal Ch12 | India natal chart structural rules | ✅ LIVE — 7 rules, 1 auto_approved / 6 PHR |
+| **v1 migration** | Old pymongo schema scripts | DISCARDED — superseded by v3–v22 | ✅ Decision made 8 May 2026 |
+| **v2 migration** | Gopal Ch2, Mehta Ch6/Ch10, Raphael Ch3 | PARTIALLY MIGRATED — 13 novel rules live; 8 Mehta Ch10 discarded (covered by v14) | ✅ Decision made 8 May 2026 |
+| **72-rule fix catalogue** | All versions | Cat B/C/A/F fixes — PHR → approved pipeline | ✅ Cat B + Cat C + Cat A (10 rules) + Cat F (1/3) DONE; Cat D/E/F(2) pending |
 
 ---
 
@@ -228,13 +239,13 @@ See `CLAUDE.md` Section 16 for full detail — read before touching any KE or Ar
 ## How to Start a New Session
 
 1. Read `CLAUDE.md` (project identity, infrastructure, all key file locations)
-2. Read `backend/scripts/INGEST_NOTES.md` (full ingest state — Mundane section at bottom)
+2. Read `backend/scripts/INGEST_NOTES.md` (full ingest state — Priority 7 section at bottom for fix-catalogue status)
 3. Confirm `$MONGO_URL` is set in terminal
-4. Next task: **v20** — Gopal Ch10–12 (Sports / Cinema / Celebrity)
-5. Before every new version ingest, run dry run first:
-   `python3 backend/scripts/run_mundane_ingest.py --dry-run`
-6. After each ingest, run validation:
-   `python3 backend/scripts/validate_mundane_rules.py --mongo-url "$MONGO_URL" --db-name horoscope_db --report-path backend/scripts/reports/mundane_validation_vXX.md`
-   Sources: Gopal Ch4, Mehta Ch19–22
-   Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
-   (Search for "election" or "Ch4" to locate relevant sections)
+4. **Current next task: 72-rule fix catalogue — remaining categories:**
+   - **Cat F (2 rules):** monsoon-failure broaden + famine downgrade
+   - **Cat D (13 rules):** source verification via NLM
+   - **Cat E (9 rules):** contextual modifier re-tagging + context notes
+   - **Cat A remaining (~22 rules):** source book text completion via NLM
+5. Fix workflow: patch script → validate → triage (false flag vs genuine) → NLM verify if disputed → approve
+6. Master JSON: `/Users/apple/Documents/Knowledge Engine_eBooks/New Ingest_5 Books/3. Mundane Astrology/3. Mundane Astrology_JSON_LM.md`
+7. Fix catalogue reference: `backend/scripts/reports/mundane_phr_fixes_required.md`

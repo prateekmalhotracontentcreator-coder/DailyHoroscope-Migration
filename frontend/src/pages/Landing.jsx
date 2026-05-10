@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Footer } from '../components/Footer';
+import { LiveTVPanel } from '../components/LiveTVPanel';
 import { SEO } from '../components/SEO';
 import {
   Sparkles, Star, Sun, Calendar, TrendingUp, Heart,
@@ -152,6 +153,7 @@ export const Landing = () => {
           "contactPoint": { "@type": "ContactPoint", "email": "support@everydayhoroscope.in", "contactType": "customer support" }
         }}
       />
+      <LiveTVPanel />
 
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 bg-background/80 backdrop-blur-md">

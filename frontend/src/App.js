@@ -44,6 +44,7 @@ const MyReportsPage = lazy(() => import('./pages/MyReportsPage').then(m => ({ de
 const IndividualReportsPage = lazy(() => import('./pages/IndividualReportsPage'));
 const LovePage = lazy(() => import('./pages/LovePage'));
 const LoveReportsPage = lazy(() => import('./pages/LoveReportsPage'));
+const LiveSaiBabaArtiPage = lazy(() => import('./pages/LiveSaiBabaArtiPage'));
 const RitualEnginePage = lazy(() => import('./pages/RitualEnginePage'));
 const ComingSoonPage = lazy(() => import('./pages/ComingSoonPage').then(m => ({ default: m.ComingSoonPage })));
 const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
@@ -99,6 +100,7 @@ function App() {
                   <Route path="/horoscope/daily" element={<DailyHoroscope />} />
                   <Route path="/horoscope/weekly" element={<WeeklyHoroscope />} />
                   <Route path="/horoscope/monthly" element={<MonthlyHoroscope />} />
+                  <Route path="/live-sai-baba-arti" element={<LiveSaiBabaArtiPage />} />
 
                   {/* Blog */}
                   <Route path="/blog" element={<BlogList />} />
