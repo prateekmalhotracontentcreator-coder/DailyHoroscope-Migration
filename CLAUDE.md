@@ -121,3 +121,13 @@ Facebook posting ✅ | YouTube posting ✅ | Email (Resend) ✅ | Razorpay ✅
 WhatsApp 🔜 (OTP pending) | Instagram 🔜 (Account ID pending)
 
 Full feature detail: `.claude/REFERENCE.md`
+
+---
+
+## Compact Instructions
+
+When compacting this conversation, produce the absolute minimum summary possible — 5 lines or fewer. Do NOT summarize chat history, completed tasks, code written, errors fixed, or files changed. Only preserve:
+1. The single task currently in progress (if any), in one sentence.
+2. Any explicit user instruction given in the last message that hasn't been acted on yet.
+
+Do not include architecture notes, file paths, pending backlogs, or any other context — all of that is already in CLAUDE.md and `.claude/REFERENCE.md` and will be reloaded automatically.
