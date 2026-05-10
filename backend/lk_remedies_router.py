@@ -52,6 +52,58 @@ class OnboardRequest(BaseModel):
     location_slug: str = "new-delhi"
 
 
+class ComputeChartRequest(BaseModel):
+    date_of_birth: str
+    time_of_birth: str = "12:00"
+    place_of_birth: str = "New Delhi"
+    timezone_offset: str = "+05:30"
+
+
+@router.post("/compute-chart")
+async def compute_chart(body: ComputeChartRequest):
+    """Compute Vedic + Lal Kitab chart from birth details. No auth required."""
+    try:
+        from vedic_calculator import calculate_vedic_chart, SIGN_ORDER, get_house_number
+        chart = calculate_vedic_chart(
+            body.date_of_birth,
+            body.time_of_birth,
+            body.place_of_birth,
+            body.timezone_offset,
+        )
+    except Exception as e:
+        raise HTTPException(status_code=422, detail=f"Chart computation failed: {str(e)}")
+
+    planets_raw = chart.get("planets", {})
+    lagna_raw = chart.get("lagna", {})
+    lagna_sign = lagna_raw.get("sign", "Aries") if isinstance(lagna_raw, dict) else str(lagna_raw)
+
+    lk_chart: dict[str, int] = {}
+    vedic_display = []
+
+    for display_name, data in planets_raw.items():
+        plain_name = display_name.split("(")[0].strip()
+        sign = data.get("sign", "Aries")
+        jyotish_house = data.get("house", get_house_number(sign, lagna_sign))
+        lk_house = (SIGN_ORDER.index(sign) + 1) if sign in SIGN_ORDER else 1
+
+        lk_chart[plain_name] = lk_house
+        vedic_display.append({
+            "planet": plain_name,
+            "sign": sign,
+            "jyotish_house": jyotish_house,
+            "lk_house": lk_house,
+            "degree": round(data.get("degree", 0.0), 1),
+            "retrograde": data.get("retrograde", False),
+            "dignity": data.get("dignity", ""),
+        })
+
+    return {
+        "lagna": lagna_sign,
+        "vedic_display": vedic_display,
+        "lk_chart": lk_chart,
+    }
+
+
 @router.post("/onboard")
 async def onboard(body: OnboardRequest, request: Request):
     db = get_db(request)

@@ -6,6 +6,14 @@ from pydantic import BaseModel
 
 router = APIRouter(prefix="/api/remedies", tags=["remedies"])
 
+
+class RemedyReportRequest(BaseModel):
+    focus_area: str
+    date_of_birth: str
+    time_of_birth: str = "12:00"
+    place_of_birth: str = "New Delhi"
+    timezone_offset: str = "+05:30"
+
 REMEDY_TYPES: dict[str, str] = {
     "dana":      "jyotish_remedies_dhana",
     "gemstones": "jyotish_remedies_gemstones",
@@ -148,3 +156,75 @@ async def get_all(remedy_type: str, request: Request, limit: int = 100) -> dict[
         {"science_id": science_id}, {"_id": 0}
     ).limit(limit).to_list(None)
     return {"type": remedy_type, "count": len(docs), "rules": docs}
+
+
+# ── Generate personalised remedy report ────────────────────────────────────────
+
+@router.post("/{remedy_type}/generate-report")
+async def generate_report(
+    remedy_type: str,
+    body: RemedyReportRequest,
+    request: Request,
+) -> dict[str, Any]:
+    if remedy_type not in REMEDY_TYPES:
+        raise HTTPException(status_code=404, detail=f"Unknown remedy type: {remedy_type}")
+
+    try:
+        from vedic_calculator import calculate_vedic_chart
+        chart = calculate_vedic_chart(
+            body.date_of_birth,
+            body.time_of_birth,
+            body.place_of_birth,
+            body.timezone_offset,
+        )
+    except Exception as e:
+        raise HTTPException(status_code=422, detail=f"Chart computation failed: {str(e)}")
+
+    db = _get_db(request)
+    science_id = REMEDY_TYPES[remedy_type]
+
+    if remedy_type == "gemstones":
+        query = {
+            "science_id": science_id,
+            "condition.planets_involved": {"$in": [body.focus_area]},
+        }
+    elif remedy_type == "chakra":
+        query = {
+            "science_id": science_id,
+            "remedy.chakra": {
+                "$regex": body.focus_area.split("(")[0].strip(),
+                "$options": "i",
+            },
+        }
+    else:
+        query = {
+            "science_id": science_id,
+            "remedy.remedy_area": {"$regex": body.focus_area, "$options": "i"},
+        }
+
+    rules = await db.interpretation_rules.find(query, {"_id": 0}).limit(20).to_list(None)
+
+    planets_raw = chart.get("planets", {})
+    chart_summary = [
+        {
+            "planet": name.split("(")[0].strip(),
+            "sign": data.get("sign", ""),
+            "house": data.get("house", 0),
+            "degree": round(data.get("degree", 0.0), 1),
+            "retrograde": data.get("retrograde", False),
+            "dignity": data.get("dignity", ""),
+        }
+        for name, data in planets_raw.items()
+    ]
+
+    lagna_raw = chart.get("lagna", {})
+    lagna_sign = lagna_raw.get("sign", "") if isinstance(lagna_raw, dict) else str(lagna_raw)
+
+    return {
+        "type": remedy_type,
+        "focus": body.focus_area,
+        "lagna": lagna_sign,
+        "chart_summary": chart_summary,
+        "rules": rules,
+        "count": len(rules),
+    }

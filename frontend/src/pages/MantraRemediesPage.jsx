@@ -1,11 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { ArrowLeft, Copy, Check, BookOpen, Sparkles } from 'lucide-react';
+import { ArrowLeft, Copy, Check, BookOpen, Sparkles, Loader2 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
 import { toast } from 'sonner';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import SharedBirthCityPicker from '../components/SharedBirthCityPicker';
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api/remedies/mantras`;
+const API_BASE = `${process.env.REACT_APP_BACKEND_URL}/api/remedies/mantras`;
 
 const SEVERITY_BADGE = {
   High:   'bg-red-500/15 text-red-400 border border-red-400/30',
@@ -28,13 +31,47 @@ function CopyBtn({ text }) {
   );
 }
 
+function ChartPanel({ lagna, chartSummary }) {
+  return (
+    <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4 mb-6">
+      <p className="text-[10px] uppercase tracking-widest text-gold/60 mb-3">
+        Birth Chart · Ascendant: {lagna}
+      </p>
+      <div className="overflow-x-auto">
+        <table className="w-full text-xs">
+          <thead>
+            <tr className="text-muted-foreground/60">
+              <th className="text-left pb-2 font-medium pr-4">Planet</th>
+              <th className="text-left pb-2 font-medium pr-4">Sign</th>
+              <th className="text-left pb-2 font-medium pr-4">House</th>
+              <th className="text-left pb-2 font-medium">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {chartSummary.map(p => (
+              <tr key={p.planet} className="border-t border-gold/10">
+                <td className="py-1.5 font-medium pr-4">{p.planet}</td>
+                <td className="py-1.5 text-muted-foreground pr-4">{p.sign}</td>
+                <td className="py-1.5 text-muted-foreground pr-4">H{p.house}</td>
+                <td className="py-1.5 text-muted-foreground/70">
+                  {p.retrograde && <span className="text-amber-400 mr-1">℞</span>}
+                  {p.dignity && <span className="text-[9px]">{p.dignity}</span>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 function MantraCard({ rule }) {
   const r = rule.remedy || {};
   const sev = r.severity || '';
 
   return (
     <Card className="rounded-2xl border-gold/20 bg-gold/[0.03] p-5 shadow-none flex flex-col gap-4">
-      {/* Header */}
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-xs uppercase tracking-widest text-gold/60 mb-0.5">Mantra Remedy</p>
@@ -48,7 +85,6 @@ function MantraCard({ rule }) {
         )}
       </div>
 
-      {/* Devanagari Mantra */}
       {r.mantra_devanagari && (
         <div className="rounded-xl border border-gold/25 bg-gold/[0.07] px-4 py-4 text-center">
           <p className="text-[10px] uppercase tracking-wider text-gold/60 mb-2">Mantra (Sanskrit)</p>
@@ -59,7 +95,6 @@ function MantraCard({ rule }) {
         </div>
       )}
 
-      {/* Transliteration */}
       {r.mantra_transliteration && (
         <div className="rounded-xl border border-gold/15 bg-background/50 px-4 py-3">
           <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-1">Transliteration</p>
@@ -70,7 +105,6 @@ function MantraCard({ rule }) {
         </div>
       )}
 
-      {/* Yantra */}
       {r.yantra && (
         <div className="rounded-xl border border-gold/15 bg-background/60 px-3 py-2.5">
           <p className="text-[10px] uppercase tracking-wider text-muted-foreground mb-0.5">Yantra</p>
@@ -78,7 +112,6 @@ function MantraCard({ rule }) {
         </div>
       )}
 
-      {/* Protocol grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
         {[
           { label: 'Paksha',   value: r.paksha },
@@ -95,7 +128,6 @@ function MantraCard({ rule }) {
         ))}
       </div>
 
-      {/* Guidance */}
       {r.guidance && (
         <div className="flex items-start gap-2 text-xs text-muted-foreground/80">
           <Sparkles className="h-3.5 w-3.5 text-gold/50 mt-0.5 shrink-0" />
@@ -113,38 +145,55 @@ function MantraCard({ rule }) {
 }
 
 export default function MantraRemediesPage() {
-  const [tiles, setTiles]       = useState([]);
-  const [selected, setSelected] = useState(null);
-  const [rules, setRules]       = useState([]);
-  const [loading, setLoading]   = useState(false);
+  const { user } = useAuth();
+  const navigate = useNavigate();
+
+  const [view, setView]             = useState('tiles');
+  const [tiles, setTiles]           = useState([]);
   const [tilesLoading, setTilesLoading] = useState(true);
+  const [focus, setFocus]           = useState(null);
+  const [form, setForm]             = useState({ date_of_birth: '', time_of_birth: '', city_name: 'New Delhi', city_slug: 'new-delhi', timezone_offset: '+05:30' });
+  const [report, setReport]         = useState(null);
+  const [generating, setGenerating] = useState(false);
 
   useEffect(() => {
-    axios.get(`${API}/tiles`)
+    axios.get(`${API_BASE}/tiles`)
       .then(r => setTiles(r.data.tiles || []))
       .catch(() => toast.error('Could not load mantra categories'))
       .finally(() => setTilesLoading(false));
   }, []);
 
-  const selectFocus = useCallback(async (focus) => {
-    setSelected(focus);
-    setLoading(true);
-    setRules([]);
+  const selectFocus = (tile) => {
+    if (!user) { navigate('/login'); return; }
+    setFocus(tile);
+    setView('form');
+  };
+
+  const handleGenerate = async () => {
+    if (!form.date_of_birth) { toast.error('Date of birth is required'); return; }
+    setGenerating(true);
     try {
-      const res = await axios.get(`${API}/query`, { params: { focus } });
-      setRules(res.data.rules || []);
-    } catch {
-      toast.error('Could not load mantras');
+      const res = await axios.post(`${API_BASE}/generate-report`, {
+        focus_area: focus.focus,
+        date_of_birth: form.date_of_birth,
+        time_of_birth: form.time_of_birth || '12:00',
+        place_of_birth: form.city_name,
+        timezone_offset: form.timezone_offset,
+      });
+      setReport(res.data);
+      setView('report');
+    } catch (e) {
+      toast.error(e.response?.data?.detail || 'Report generation failed');
     } finally {
-      setLoading(false);
+      setGenerating(false);
     }
-  }, []);
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-10">
       <SEO
-        title="Mantra Remedies — Vedic Mantras & Yantras | EverydayHoroscope"
-        description="Personalised Vedic mantra remedies with Sanskrit text, transliteration, yantra, and japa protocol for planetary healing."
+        title="Mantra Remedy Report — Vedic Mantras & Yantras | EverydayHoroscope"
+        description="Get a personalised Vedic mantra remedy report based on your birth chart. Sanskrit text, transliteration, yantra, and complete japa protocol."
         url="https://www.everydayhoroscope.in/mantra-remedies"
       />
 
@@ -153,14 +202,14 @@ export default function MantraRemediesPage() {
         <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded-full mb-4">
           <BookOpen className="h-3 w-3" /> Mantra Remedies
         </div>
-        <h1 className="font-playfair text-3xl font-semibold mb-2">Mantra & Yantra Remedies</h1>
+        <h1 className="font-playfair text-3xl font-semibold mb-2">Mantra & Yantra Remedy Report</h1>
         <p className="text-muted-foreground text-sm max-w-xl">
-          Select your planetary concern. Each mantra remedy provides the Sanskrit text, transliteration, yantra prescription, and complete japa protocol.
+          Select your planetary concern, enter birth details, and receive a chart-based mantra prescription with Sanskrit text, yantra, and complete japa protocol.
         </p>
       </div>
 
-      {/* Tile Grid */}
-      {!selected && (
+      {/* ── TILES VIEW ── */}
+      {view === 'tiles' && (
         <div>
           <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Select Concern Area</p>
           {tilesLoading ? (
@@ -174,7 +223,7 @@ export default function MantraRemediesPage() {
               {tiles.map(tile => (
                 <button
                   key={tile.focus}
-                  onClick={() => selectFocus(tile.focus)}
+                  onClick={() => selectFocus(tile)}
                   className="rounded-xl border border-gold/20 bg-gold/[0.03] hover:bg-gold/[0.08] hover:border-gold/40 transition-all p-4 text-left"
                 >
                   <BookOpen className="h-5 w-5 text-gold mb-2" />
@@ -186,39 +235,105 @@ export default function MantraRemediesPage() {
               ))}
             </div>
           )}
+          {!user && (
+            <p className="text-center text-sm text-muted-foreground mt-6">
+              <button onClick={() => navigate('/login')} className="text-gold underline">Sign in</button> to generate your report
+            </p>
+          )}
         </div>
       )}
 
-      {/* Results */}
-      {selected && (
+      {/* ── FORM VIEW ── */}
+      {view === 'form' && focus && (
         <div>
-          <button
-            onClick={() => { setSelected(null); setRules([]); }}
-            className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition mb-5"
-          >
+          <button onClick={() => setView('tiles')} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition mb-5">
             <ArrowLeft className="h-4 w-4" /> All categories
           </button>
 
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="font-playfair text-2xl font-semibold">{selected}</h2>
-            {rules.length > 0 && (
-              <span className="text-xs text-muted-foreground">{rules.length} mantra{rules.length > 1 ? 's' : ''}</span>
-            )}
+          <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-5 mb-6">
+            <p className="text-xs uppercase tracking-widest text-gold/60 mb-0.5">Selected Focus</p>
+            <p className="font-playfair text-xl font-semibold">{focus.focus}</p>
           </div>
 
-          {loading ? (
-            <div className="grid gap-4">
-              {Array.from({ length: 2 }).map((_, i) => (
-                <div key={i} className="h-64 rounded-2xl border border-gold/10 bg-gold/[0.03] animate-pulse" />
-              ))}
+          <div className="rounded-xl border border-border p-6 space-y-5">
+            <h2 className="font-semibold">Enter Your Birth Details</h2>
+
+            <div>
+              <label className="block text-sm font-medium mb-1.5">Date of Birth <span className="text-red-400">*</span></label>
+              <input
+                type="date"
+                value={form.date_of_birth}
+                onChange={e => setForm(f => ({ ...f, date_of_birth: e.target.value }))}
+                className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-gold/40"
+              />
             </div>
-          ) : rules.length === 0 ? (
+
+            <div>
+              <label className="block text-sm font-medium mb-1.5">
+                Time of Birth <span className="text-muted-foreground text-xs font-normal">(improves accuracy)</span>
+              </label>
+              <input
+                type="time"
+                value={form.time_of_birth}
+                onChange={e => setForm(f => ({ ...f, time_of_birth: e.target.value }))}
+                className="w-full px-3 py-2.5 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-gold/40"
+              />
+            </div>
+
+            <SharedBirthCityPicker
+              inputId="mantra-birth-city"
+              label="Place of Birth"
+              value={form.city_slug}
+              onChange={city => setForm(f => ({
+                ...f,
+                city_name: city.city_name,
+                city_slug: city.slug,
+                timezone_offset: city.timezone_offset || '+05:30',
+              }))}
+            />
+
+            <button
+              onClick={handleGenerate}
+              disabled={!form.date_of_birth || generating}
+              className="w-full bg-gold text-background font-semibold rounded-lg px-4 py-3 flex items-center justify-center gap-2 disabled:opacity-40 transition"
+            >
+              {generating
+                ? <><Loader2 className="h-4 w-4 animate-spin" /> Generating Report...</>
+                : <><Sparkles className="h-4 w-4" /> Generate Mantra Report</>
+              }
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ── REPORT VIEW ── */}
+      {view === 'report' && report && (
+        <div>
+          <button onClick={() => setView('form')} className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition mb-5">
+            <ArrowLeft className="h-4 w-4" /> Edit Details
+          </button>
+
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="font-playfair text-2xl font-semibold">{report.focus} — Mantra Report</h2>
+            <span className="text-xs text-muted-foreground">{report.count} mantra{report.count !== 1 ? 's' : ''}</span>
+          </div>
+
+          <ChartPanel lagna={report.lagna} chartSummary={report.chart_summary || []} />
+
+          {report.count === 0 ? (
             <div className="text-center py-16 text-muted-foreground">No mantras found for this category.</div>
           ) : (
             <div className="grid gap-5">
-              {rules.map((rule, i) => <MantraCard key={rule.rule_id || i} rule={rule} />)}
+              {report.rules.map((rule, i) => <MantraCard key={rule.rule_id || i} rule={rule} />)}
             </div>
           )}
+
+          <button
+            onClick={() => { setFocus(null); setReport(null); setView('tiles'); }}
+            className="mt-8 w-full border border-gold/30 text-gold rounded-lg px-4 py-2.5 text-sm hover:bg-gold/5 transition"
+          >
+            Generate Another Report
+          </button>
         </div>
       )}
     </div>

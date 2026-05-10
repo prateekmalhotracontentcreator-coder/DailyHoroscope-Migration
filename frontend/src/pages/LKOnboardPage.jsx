@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Loader2, Sparkles } from 'lucide-react';
+import SharedBirthCityPicker from '../components/SharedBirthCityPicker';
 
-const PLANETS = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Rahu', 'Ketu'];
 const RELATIVES = ['father', 'mother', 'brother', 'sister', 'grandfather_paternal', 'grandfather_maternal'];
 const REL_LABELS = {
   father: 'Father', mother: 'Mother', brother: 'Brother',
@@ -12,37 +13,73 @@ const STATUS_OPTIONS = ['living', 'deceased', 'unknown'];
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 
+const PLANET_ORDER = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Rahu', 'Ketu'];
+
 export default function LKOnboardPage() {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
+
+  // Step 1 — birth details
+  const [birthForm, setBirthForm] = useState({
+    date_of_birth: '',
+    time_of_birth: '',
+    city_name: 'New Delhi',
+    city_slug: 'new-delhi',
+    timezone_offset: '+05:30',
+  });
   const [age, setAge] = useState('');
-  const [natal, setNatal] = useState(Object.fromEntries(PLANETS.map(p => [p, ''])));
+  const [computingChart, setComputingChart] = useState(false);
+  const [computedChart, setComputedChart] = useState(null); // {lagna, vedic_display, lk_chart}
+
+  // Step 2 — family census
   const [census, setCensus] = useState(Object.fromEntries(RELATIVES.map(r => [r, 'unknown'])));
+
+  // Step 3 — location slug
   const [locationSlug, setLocationSlug] = useState('new-delhi');
+
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
   const token = localStorage.getItem('token') || '';
 
-  const handleNatal = (planet, val) => {
-    const house = parseInt(val, 10);
-    setNatal(prev => ({ ...prev, [planet]: isNaN(house) ? '' : Math.min(12, Math.max(1, house)) }));
+  const handleComputeChart = async () => {
+    if (!birthForm.date_of_birth) { setError('Date of birth is required'); return; }
+    setError('');
+    setComputingChart(true);
+    try {
+      const res = await fetch(`${BACKEND}/api/lk/compute-chart`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          date_of_birth: birthForm.date_of_birth,
+          time_of_birth: birthForm.time_of_birth || '12:00',
+          place_of_birth: birthForm.city_name,
+          timezone_offset: birthForm.timezone_offset,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.detail || 'Chart computation failed');
+      }
+      const data = await res.json();
+      setComputedChart(data);
+    } catch (e) {
+      setError(e.message);
+    } finally {
+      setComputingChart(false);
+    }
   };
-
-  const handleCensus = (rel, val) => setCensus(prev => ({ ...prev, [rel]: val }));
 
   const handleSubmit = async () => {
     setSaving(true);
     setError('');
     try {
-      const natalChart = Object.fromEntries(
-        Object.entries(natal).filter(([, v]) => v !== '').map(([k, v]) => [k, parseInt(v, 10)])
-      );
+      const natalChart = computedChart?.lk_chart || {};
       const res = await fetch(`${BACKEND}/api/lk/onboard`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({
-          age: parseInt(age, 10),
+          age: parseInt(age, 10) || 0,
           natal_chart: natalChart,
           family_census: census,
           location_slug: locationSlug,
@@ -73,9 +110,14 @@ export default function LKOnboardPage() {
           ))}
         </div>
 
+        {/* ── STEP 1: Birth Details ── */}
         {step === 1 && (
-          <div className="space-y-4">
-            <h2 className="font-semibold text-foreground">Age & Natal Chart</h2>
+          <div className="space-y-5">
+            <h2 className="font-semibold text-foreground">Birth Details</h2>
+            <p className="text-sm text-muted-foreground">
+              Your birth details are used to auto-compute your Lal Kitab chart. We show both the Jyotish house (Lagna-relative) and the Lal Kitab house (natural zodiac, Aries=1) so you can see the distinction.
+            </p>
+
             <div>
               <label className="block text-sm text-muted-foreground mb-1">Your Age</label>
               <input
@@ -85,32 +127,115 @@ export default function LKOnboardPage() {
                 placeholder="e.g. 36"
               />
             </div>
+
             <div>
-              <p className="text-sm text-muted-foreground mb-2">Enter house number (1–12) for each planet in your birth chart. Leave blank if unknown.</p>
-              <div className="grid grid-cols-3 gap-3">
-                {PLANETS.map(p => (
-                  <div key={p}>
-                    <label className="block text-xs text-muted-foreground mb-1">{p}</label>
-                    <input
-                      type="number" min="1" max="12" value={natal[p]}
-                      onChange={e => handleNatal(p, e.target.value)}
-                      className="w-full rounded border border-gold/20 bg-background px-2 py-1.5 text-sm text-foreground focus:outline-none focus:border-gold/50"
-                      placeholder="House"
-                    />
-                  </div>
-                ))}
-              </div>
+              <label className="block text-sm text-muted-foreground mb-1">Date of Birth <span className="text-red-400">*</span></label>
+              <input
+                type="date"
+                value={birthForm.date_of_birth}
+                onChange={e => setBirthForm(f => ({ ...f, date_of_birth: e.target.value }))}
+                className="w-full rounded-lg border border-gold/20 bg-background px-3 py-2 text-foreground text-sm focus:outline-none focus:border-gold/50"
+              />
             </div>
-            <button
-              onClick={() => setStep(2)}
-              disabled={!age}
-              className="w-full bg-gold text-background font-semibold rounded-lg px-4 py-2 mt-2 disabled:opacity-40"
-            >
-              Next →
-            </button>
+
+            <div>
+              <label className="block text-sm text-muted-foreground mb-1">
+                Time of Birth <span className="text-muted-foreground/60 text-xs">(improves Lagna accuracy)</span>
+              </label>
+              <input
+                type="time"
+                value={birthForm.time_of_birth}
+                onChange={e => setBirthForm(f => ({ ...f, time_of_birth: e.target.value }))}
+                className="w-full rounded-lg border border-gold/20 bg-background px-3 py-2 text-foreground text-sm focus:outline-none focus:border-gold/50"
+              />
+            </div>
+
+            <SharedBirthCityPicker
+              inputId="lk-birth-city"
+              label="Place of Birth"
+              value={birthForm.city_slug}
+              onChange={city => setBirthForm(f => ({
+                ...f,
+                city_name: city.city_name,
+                city_slug: city.slug,
+                timezone_offset: city.timezone_offset || '+05:30',
+              }))}
+            />
+
+            {error && <p className="text-red-400 text-sm">{error}</p>}
+
+            {/* Compute button */}
+            {!computedChart && (
+              <button
+                onClick={handleComputeChart}
+                disabled={!birthForm.date_of_birth || computingChart}
+                className="w-full bg-gold text-background font-semibold rounded-lg px-4 py-2.5 flex items-center justify-center gap-2 disabled:opacity-40"
+              >
+                {computingChart
+                  ? <><Loader2 className="h-4 w-4 animate-spin" /> Computing Chart...</>
+                  : <><Sparkles className="h-4 w-4" /> Compute My Chart</>
+                }
+              </button>
+            )}
+
+            {/* Chart preview */}
+            {computedChart && (
+              <div className="space-y-4">
+                <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                  <p className="text-[10px] uppercase tracking-widest text-gold/60 mb-3">
+                    Computed Chart · Lagna: {computedChart.lagna}
+                  </p>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-xs">
+                      <thead>
+                        <tr className="text-muted-foreground/60">
+                          <th className="text-left pb-2 font-medium pr-3">Planet</th>
+                          <th className="text-left pb-2 font-medium pr-3">Sign</th>
+                          <th className="text-left pb-2 font-medium pr-3">Jyotish H.</th>
+                          <th className="text-left pb-2 font-medium text-amber-400/80">LK House</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {PLANET_ORDER.map(pName => {
+                          const p = computedChart.vedic_display?.find(d => d.planet === pName);
+                          if (!p) return null;
+                          return (
+                            <tr key={p.planet} className="border-t border-gold/10">
+                              <td className="py-1.5 font-medium pr-3">{p.planet}</td>
+                              <td className="py-1.5 text-muted-foreground pr-3">{p.sign}</td>
+                              <td className="py-1.5 text-muted-foreground pr-3">H{p.jyotish_house}</td>
+                              <td className="py-1.5 font-semibold text-amber-400">H{p.lk_house}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                  <p className="text-[10px] text-muted-foreground/50 mt-3">
+                    <span className="text-muted-foreground/70">Jyotish House</span> = Lagna-relative · <span className="text-amber-400/80">LK House</span> = natural zodiac (Aries always H1)
+                  </p>
+                </div>
+
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setComputedChart(null)}
+                    className="flex-1 border border-gold/30 text-gold rounded-lg px-4 py-2 text-sm"
+                  >
+                    Recompute
+                  </button>
+                  <button
+                    onClick={() => setStep(2)}
+                    className="flex-1 bg-gold text-background font-semibold rounded-lg px-4 py-2 text-sm"
+                  >
+                    Next →
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         )}
 
+        {/* ── STEP 2: Family Census ── */}
         {step === 2 && (
           <div className="space-y-4">
             <h2 className="font-semibold text-foreground">Family Census</h2>
@@ -122,7 +247,7 @@ export default function LKOnboardPage() {
                   {STATUS_OPTIONS.map(s => (
                     <button
                       key={s}
-                      onClick={() => handleCensus(rel, s)}
+                      onClick={() => setCensus(prev => ({ ...prev, [rel]: s }))}
                       className={`text-xs px-2 py-1 rounded ${census[rel] === s ? 'bg-gold text-background font-semibold' : 'border border-gold/20 text-muted-foreground'}`}
                     >
                       {s}
@@ -138,6 +263,7 @@ export default function LKOnboardPage() {
           </div>
         )}
 
+        {/* ── STEP 3: Location ── */}
         {step === 3 && (
           <div className="space-y-4">
             <h2 className="font-semibold text-foreground">Location</h2>
