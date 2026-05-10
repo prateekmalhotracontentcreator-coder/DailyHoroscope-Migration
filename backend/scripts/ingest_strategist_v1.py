@@ -27,7 +27,7 @@ from pathlib import Path
 
 SCIENCE_ID = "lalkitab_strategist"
 APPROVAL   = "pending_human_review"
-MODULE_IDS = {1022, 1027}
+MODULE_IDS = {933, 936, 937, 939, 1022, 1027}
 
 SOURCE_MASTER = Path(
     "/Users/apple/Documents/Knowledge Engine_eBooks/"
@@ -93,6 +93,9 @@ def _unescape_markdown(text):
     text = text.replace("\\+", "+")
     # Unescape \\== -> ==
     text = text.replace("\\==", "==")
+    # Unescape remaining markdown special chars invalid as JSON escapes
+    for ch in (")", ">", "<", "-", "&", ".", "*", "#", "`", "="):
+        text = text.replace("\\" + ch, ch)
     # Curly/smart quotes -> ASCII (using chr() to avoid encoding issues in source)
     text = text.replace(chr(0x2018), "'").replace(chr(0x2019), "'")
     text = text.replace(chr(0x201C), '"').replace(chr(0x201D), '"')
@@ -202,6 +205,10 @@ def _normalise_record(r):
             val = v
         if key not in out:
             out[key] = val
+
+    # Fallback: use mission_objective (from focus_area alias) as strategy if strategy still absent
+    if "strategy" not in out and "mission_objective" in out:
+        out["strategy"] = out["mission_objective"]
 
     out["science_id"]      = SCIENCE_ID
     out["approval_status"] = APPROVAL
