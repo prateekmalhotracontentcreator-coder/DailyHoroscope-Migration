@@ -199,6 +199,76 @@ async def dashboard(request: Request):
     return state
 
 
+@router.get("/surrender-context")
+async def surrender_context(request: Request):
+    db = get_db(request)
+    user_email = get_user_email(request)
+    now = datetime.now(timezone.utc)
+
+    # Gate 0 last PRAY session
+    last_kp = await db.kp_sessions.find_one(
+        {"user_email": user_email, "context": "strategist_gate0", "verdict": "PRAY"},
+        sort=[("created_at", -1)],
+    )
+    gate0_days_since = None
+    if last_kp and last_kp.get("created_at"):
+        created = last_kp["created_at"]
+        created = created.replace(tzinfo=timezone.utc) if created.tzinfo is None else created
+        gate0_days_since = max(0, (now - created).days)
+
+    # Gate 1 — karmic debt
+    cached = await db.lk_diagnose_cache.find_one({"user_id": user_email}, {"_id": 0})
+    gate1 = {}
+    if cached:
+        gate1 = cached.get("result", {}).get("gates", {}).get("gate1_karmic_debt", {})
+    pitru_rin = gate1.get("active_pitru_rin", False)
+    gate1_narrative = gate1.get("narrative", "Run LK Debt Audit to assess karmic obligations.")
+
+    # Conquest score
+    tracker = await db.lk_tracker.find_one({"user_id": user_email, "status": "active"}, {"streak_days": 1, "_id": 0})
+    streak = tracker.get("streak_days", 0) if tracker else 0
+    prob = calculate_conquest_probability(
+        {"command_planet_strength": 1.0, "office_location": "", "success_direction": "",
+         "active_pitru_rin": pitru_rin, "surrogate_active": False, "ritual_streak": streak},
+        {"primary_planet_degree": 15},
+    )
+    score = prob["score"]
+
+    # Featured mantra — prefer Saturn/Ketu/surrender tags, fallback to any
+    mantra_rec = await db.knowledge_rules.find_one(
+        {"science_id": "jyotish_remedies_mantras", "metadata.tags": {"$in": ["saturn", "ketu", "saturn_retrograde"]}},
+        {"_id": 0},
+    )
+    if not mantra_rec:
+        mantra_rec = await db.knowledge_rules.find_one({"science_id": "jyotish_remedies_mantras"}, {"_id": 0})
+
+    featured_mantra = None
+    if mantra_rec:
+        r = mantra_rec.get("remedy", {})
+        featured_mantra = {
+            "remedy_area": r.get("remedy_area", ""),
+            "deity": r.get("deity", ""),
+            "mantra_devanagari": r.get("mantra_devanagari", ""),
+            "mantra_transliteration": r.get("mantra_transliteration", ""),
+            "frequency": r.get("frequency", "108 Times"),
+            "guidance": r.get("guidance", ""),
+        }
+
+    return {
+        "gate0_days_since": gate0_days_since,
+        "conquest_score": score,
+        "points_to_75": max(0, 75 - score),
+        "karmic_debt_active": pitru_rin,
+        "gate1_narrative": gate1_narrative,
+        "featured_mantra": featured_mantra,
+        "surrender_steps": [
+            "Complete LK Debt Audit — acknowledge and resolve karmic obligations",
+            "Begin daily Mantra practice for minimum 21 days",
+            "Return to Gate 0 when Conquest score reaches 75%",
+        ],
+    }
+
+
 @router.get("/action-plan")
 async def action_plan(request: Request):
     db = get_db(request)

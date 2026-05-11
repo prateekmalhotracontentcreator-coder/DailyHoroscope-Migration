@@ -134,8 +134,117 @@ function VerdictBanner({ verdict, reading }) {
   );
 }
 
-// ── Pre-flight action panel for blocked verdicts ───────────────────────────────
-function PreFlightPanel({ gateStatus, conquestScore }) {
+// ── PRAY Full Surrender panel ─────────────────────────────────────────────────
+function PraySurrenderPanel({ token }) {
+  const [ctx, setCtx] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${BACKEND}/api/strategist/surrender-context`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(r => r.json())
+      .then(setCtx)
+      .catch(() => setCtx(null))
+      .finally(() => setLoading(false));
+  }, [token]);
+
+  const score = ctx?.conquest_score ?? null;
+  const ptsTo75 = ctx?.points_to_75 ?? null;
+  const pct = score != null ? Math.min(100, Math.round((score / 75) * 100)) : 0;
+
+  return (
+    <div className="rounded-xl border border-purple-500/40 bg-purple-500/[0.06] p-5 mb-4 space-y-4">
+      {/* Header */}
+      <div>
+        <p className="font-semibold text-sm text-purple-300 mb-1">🙏 Full Surrender Path — PRAY Verdict Active</p>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          Krishna calls you inward before any outward mission. Complete the surrender sequence below, then re-test at Gate 0 when your score reaches 75%.
+        </p>
+      </div>
+
+      {/* Score progress to 75% */}
+      {score != null && (
+        <div>
+          <div className="flex justify-between text-[10px] text-muted-foreground mb-1">
+            <span>Conquest score: <span className="text-purple-300 font-semibold">{score}%</span></span>
+            <span>{ptsTo75} pts to re-test threshold (75%)</span>
+          </div>
+          <div className="h-2 rounded-full bg-purple-900/40 overflow-hidden">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-purple-600 to-purple-400 transition-all duration-500"
+              style={{ width: `${pct}%` }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Featured mantra */}
+      {!loading && ctx?.featured_mantra && (
+        <div className="rounded-lg border border-purple-500/30 bg-purple-900/20 p-4">
+          <p className="text-[10px] uppercase tracking-widest text-purple-400 mb-2">
+            Featured Mantra — {ctx.featured_mantra.deity || ctx.featured_mantra.remedy_area}
+          </p>
+          <p className="text-xl leading-relaxed text-purple-100 font-medium mb-1">
+            {ctx.featured_mantra.mantra_devanagari}
+          </p>
+          <p className="text-xs text-purple-300 italic mb-2">
+            {ctx.featured_mantra.mantra_transliteration}
+          </p>
+          <div className="flex flex-wrap gap-3 text-[10px] text-muted-foreground">
+            <span>Frequency: <span className="text-purple-300">{ctx.featured_mantra.frequency}</span></span>
+          </div>
+          {ctx.featured_mantra.guidance && (
+            <p className="text-[11px] text-muted-foreground mt-2 leading-relaxed">{ctx.featured_mantra.guidance}</p>
+          )}
+          <Link to="/mantra-remedies" className="mt-3 inline-block text-xs text-purple-300 hover:text-purple-100 hover:underline">
+            Full Mantra Library →
+          </Link>
+        </div>
+      )}
+
+      {/* Gate 1 debt status */}
+      {ctx?.gate1_narrative && (
+        <div className="rounded-lg border border-amber-500/30 bg-amber-500/[0.06] p-3">
+          <p className="text-[10px] uppercase tracking-widest text-amber-400 mb-1">Karmic Debt Status</p>
+          <p className="text-xs text-muted-foreground leading-relaxed">{ctx.gate1_narrative}</p>
+          <Link to="/lk-remedies/debt-audit" className="mt-2 inline-block text-xs text-amber-400 hover:underline">
+            Run Debt Audit →
+          </Link>
+        </div>
+      )}
+
+      {/* Surrender steps */}
+      {ctx?.surrender_steps?.length > 0 && (
+        <ol className="space-y-2">
+          {ctx.surrender_steps.map((step, i) => (
+            <li key={i} className="flex gap-3 text-xs text-muted-foreground">
+              <span className="shrink-0 font-bold text-purple-400">{i + 1}.</span>
+              <span className="leading-relaxed">{step}</span>
+            </li>
+          ))}
+        </ol>
+      )}
+
+      {/* CTAs */}
+      <div className="flex gap-3 flex-wrap pt-1">
+        <Link to="/mantra-remedies" className="inline-block rounded-lg border border-purple-500/50 bg-purple-500/20 px-4 py-2 text-sm font-semibold text-purple-300 hover:bg-purple-500/30 transition">
+          Mantra Remedies →
+        </Link>
+        <Link to="/lk-remedies/debt-audit" className="inline-block rounded-lg border border-amber-500/40 bg-amber-500/10 px-4 py-2 text-sm font-semibold text-amber-300 hover:bg-amber-500/20 transition">
+          LK Debt Audit →
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+// ── Pre-flight action panel for WAIT and NO verdicts ──────────────────────────
+function PreFlightPanel({ gateStatus, conquestScore, token }) {
+  if (gateStatus === 'pray_blocked') {
+    return <PraySurrenderPanel token={token} />;
+  }
+
   if (gateStatus === 'wait_active') {
     return (
       <div className="rounded-xl border border-orange-500/40 bg-orange-500/10 p-5 mb-4">
@@ -166,28 +275,6 @@ function PreFlightPanel({ gateStatus, conquestScore }) {
           </Link>
           <Link to="/lk-remedies/tracker" className="inline-block rounded-lg border border-gold/30 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold hover:bg-gold/20 transition">
             LK Tracker →
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  if (gateStatus === 'pray_blocked') {
-    return (
-      <div className="rounded-xl border border-purple-500/40 bg-purple-500/10 p-5 mb-4">
-        <p className="font-semibold text-sm mb-2">🙏 Full Surrender — Score Required 75%+</p>
-        {conquestScore != null && (
-          <p className="text-sm text-muted-foreground mb-2">Current score: <span className="font-bold text-purple-400">{conquestScore}%</span></p>
-        )}
-        <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-          Krishna calls you to full surrender. Complete your Mantra practice and LK Debt Audit. Return when Conquest Probability reaches 75%.
-        </p>
-        <div className="flex gap-3 flex-wrap">
-          <Link to="/mantra-remedies" className="inline-block rounded-lg border border-purple-500/50 bg-purple-500/20 px-4 py-2 text-sm font-semibold text-purple-300 hover:bg-purple-500/30 transition">
-            Mantra Remedies →
-          </Link>
-          <Link to="/lk-remedies/debt-audit" className="inline-block rounded-lg border border-purple-500/50 bg-purple-500/20 px-4 py-2 text-sm font-semibold text-purple-300 hover:bg-purple-500/30 transition">
-            LK Debt Audit →
           </Link>
         </div>
       </div>
@@ -463,7 +550,7 @@ function Dashboard() {
         )}
 
         {blocked && (
-          <PreFlightPanel gateStatus={gateStatus} conquestScore={conquestScore} />
+          <PreFlightPanel gateStatus={gateStatus} conquestScore={conquestScore} token={token} />
         )}
 
         {showDashboard && (
