@@ -36,7 +36,7 @@ function LayerBadge({ n, label, status }) {
 }
 
 // ── Gate 0 compact oracle panel ───────────────────────────────────────────────
-function Gate0Panel({ token, onVerdict }) {
+function Gate0Panel({ onVerdict }) {
   const [gridMatrix, setGridMatrix] = useState([]);
   const [loadingGrid, setLoadingGrid] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(null);
@@ -45,13 +45,13 @@ function Gate0Panel({ token, onVerdict }) {
 
   useEffect(() => {
     fetch(`${BACKEND}/api/oracle/krishna-prashnavali/meta`, {
-      headers: { Authorization: `Bearer ${token}` },
+      credentials: 'include',
     })
       .then(r => r.json())
       .then(d => setGridMatrix(d.grid_matrix || []))
       .catch(() => setError('Unable to load Oracle grid.'))
       .finally(() => setLoadingGrid(false));
-  }, [token]);
+  }, []);
 
   async function handleCellSelect({ row, col, index }) {
     setSelectedIndex(index);
@@ -60,7 +60,8 @@ function Gate0Panel({ token, onVerdict }) {
     try {
       const res = await fetch(`${BACKEND}/api/strategist/gate0/select`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ row, col }),
       });
       const data = await res.json();
@@ -125,19 +126,19 @@ function VerdictBanner({ verdict, reading }) {
 }
 
 // ── PRAY full surrender panel ─────────────────────────────────────────────────
-function PraySurrenderPanel({ token }) {
+function PraySurrenderPanel() {
   const [ctx, setCtx] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${BACKEND}/api/strategist/surrender-context`, {
-      headers: { Authorization: `Bearer ${token}` },
+      credentials: 'include',
     })
       .then(r => r.json())
       .then(setCtx)
       .catch(() => setCtx(null))
       .finally(() => setLoading(false));
-  }, [token]);
+  }, []);
 
   const score   = ctx?.conquest_score ?? null;
   const ptsTo75 = ctx?.points_to_75  ?? null;
@@ -201,8 +202,8 @@ function PraySurrenderPanel({ token }) {
 }
 
 // ── Pre-flight panel (WAIT / NO) ──────────────────────────────────────────────
-function PreFlightPanel({ gateStatus, conquestScore, token }) {
-  if (gateStatus === 'pray_blocked') return <PraySurrenderPanel token={token} />;
+function PreFlightPanel({ gateStatus, conquestScore }) {
+  if (gateStatus === 'pray_blocked') return <PraySurrenderPanel />;
 
   if (gateStatus === 'wait_active') return (
     <div className="rounded-xl border border-orange-500/40 bg-orange-500/10 p-5">
@@ -452,7 +453,7 @@ function MissionQuickLinks({ data }) {
 
 
 // ── Always-on War Room data (Layers 1 + 2, shown regardless of Gate 0) ───────
-function WarRoomAlways({ token }) {
+function WarRoomAlways() {
   const { state: warState, countdown } = useWarRoom();
   const [data,    setData]    = useState(null);
   const [loading, setLoading] = useState(true);
@@ -460,13 +461,13 @@ function WarRoomAlways({ token }) {
 
   useEffect(() => {
     fetch(`${BACKEND}/api/strategist/dashboard`, {
-      headers: { Authorization: `Bearer ${token}` },
+      credentials: 'include',
     })
       .then(r => r.json())
       .then(d => { if (d.error) throw new Error(d.error); setData(d); })
       .catch(e => setError(e.message))
       .finally(() => setLoading(false));
-  }, [token]);
+  }, []);
 
   return (
     <div className="space-y-4">
@@ -505,19 +506,19 @@ function WarRoomAlways({ token }) {
 }
 
 // ── Layer 3 unlocked: missions + links (Gate 0 cleared) ───────────────────────
-function WarRoomUnlocked({ token }) {
+function WarRoomUnlocked() {
   const [data, setData]     = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`${BACKEND}/api/strategist/dashboard`, {
-      headers: { Authorization: `Bearer ${token}` },
+      credentials: 'include',
     })
       .then(r => r.json())
       .then(d => setData(d))
       .catch(() => {})
       .finally(() => setLoading(false));
-  }, [token]);
+  }, []);
 
   if (loading || !data) return null;
   return (
@@ -542,8 +543,6 @@ function Layer3Locked() {
 function Dashboard() {
   const { state: warState } = useWarRoom();
   const bgGrad = WAR_ROOM_BG[warState] || WAR_ROOM_BG.OFFENSIVE_GOLD;
-  const token  = localStorage.getItem('token') || '';
-
   const [gateStatus,    setGateStatus]    = useState('loading');
   const [conquestScore, setConquestScore] = useState(null);
   const [freshVerdict,  setFreshVerdict]  = useState(null);
@@ -551,7 +550,7 @@ function Dashboard() {
 
   useEffect(() => {
     fetch(`${BACKEND}/api/strategist/gate0/status`, {
-      headers: { Authorization: `Bearer ${token}` },
+      credentials: 'include',
     })
       .then(r => r.json())
       .then(d => {
@@ -560,7 +559,7 @@ function Dashboard() {
         setLastVerdict(d.last_verdict ?? null);
       })
       .catch(() => setGateStatus('required'));
-  }, [token]);
+  }, []);
 
   function handleVerdict(verdict, reading) {
     setFreshVerdict({ verdict, reading });
@@ -607,7 +606,7 @@ function Dashboard() {
         </div>
 
         {/* ── Layers 1 & 2 — always loaded ─────────────────────── */}
-        {gateStatus !== 'loading' && <WarRoomAlways token={token} />}
+        {gateStatus !== 'loading' && <WarRoomAlways />}
 
         {/* ── Gate 0 — compact oracle card ─────────────────────── */}
         {gateStatus === 'loading' && (
@@ -623,7 +622,7 @@ function Dashboard() {
                 </p>
               </div>
             )}
-            <Gate0Panel token={token} onVerdict={handleVerdict} />
+            <Gate0Panel onVerdict={handleVerdict} />
           </>
         )}
 
@@ -648,11 +647,11 @@ function Dashboard() {
 
         {/* ── Pre-flight panels ─────────────────────────────────── */}
         {blocked && (
-          <PreFlightPanel gateStatus={gateStatus} conquestScore={conquestScore} token={token} />
+          <PreFlightPanel gateStatus={gateStatus} conquestScore={conquestScore} />
         )}
 
         {/* ── Layer 3 — unlocked or locked ─────────────────────── */}
-        {missionsUnlocked ? <WarRoomUnlocked token={token} /> : <Layer3Locked />}
+        {missionsUnlocked ? <WarRoomUnlocked /> : <Layer3Locked />}
 
       </div>
     </div>

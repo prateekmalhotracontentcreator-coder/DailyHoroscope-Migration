@@ -42,14 +42,13 @@ export default function LKDebtAuditPage() {
   const [debts, setDebts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const token = localStorage.getItem('token') || '';
-
   useEffect(() => {
     (async () => {
       try {
         const res = await fetch(`${BACKEND}/api/lk/debt-audit`, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({}),
         });
         if (!res.ok) {

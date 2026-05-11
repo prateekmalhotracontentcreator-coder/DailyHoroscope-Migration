@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useAuth } from '../context/AuthContext';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 const TOTAL_DAYS = 43;
@@ -38,14 +39,14 @@ export default function LKTrackerPage() {
   const [checkIn, setCheckIn] = useState({ completed: false, within_window: false, prohibited_avoided: false });
   const [activeRemedy, setActiveRemedy] = useState(null);
   const [msg, setMsg] = useState('');
-  const token = localStorage.getItem('token') || '';
-  const userEmail = (() => { try { return JSON.parse(atob(token.split('.')[1])).sub || ''; } catch { return ''; } })();
+  const { user } = useAuth();
+  const userEmail = user?.email || '';
 
   const fetchTrackers = async () => {
     if (!userEmail) { setLoading(false); return; }
     try {
       const res = await fetch(`${BACKEND}/api/lk/tracker/${encodeURIComponent(userEmail)}`, {
-        headers: { Authorization: `Bearer ${token}` },
+        credentials: 'include',
       });
       if (res.ok) {
         const data = await res.json();
@@ -63,7 +64,8 @@ export default function LKTrackerPage() {
     try {
       const res = await fetch(`${BACKEND}/api/lk/tracker/log`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ remedy_id: activeRemedy, ...checkIn }),
       });
       const data = await res.json();

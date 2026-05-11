@@ -46,8 +46,6 @@ export default function LKBrowsePage() {
   const [minSev, setMinSev] = useState('');
   const [skip, setSkip] = useState(0);
   const LIMIT = 20;
-  const token = localStorage.getItem('token') || '';
-
   const fetchRemedies = useCallback(async () => {
     setLoading(true);
     try {
@@ -55,16 +53,14 @@ export default function LKBrowsePage() {
       if (planet) params.append('planet', planet);
       if (house) params.append('house', house);
       if (minSev) params.append('severity', minSev);
-      const res = await fetch(`${BACKEND}/api/lk/remedies?${params}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await fetch(`${BACKEND}/api/lk/remedies?${params}`);
       if (res.ok) {
         const data = await res.json();
         setRecords(data.records || []);
         setTotal(data.total || 0);
       }
     } finally { setLoading(false); }
-  }, [scienceId, planet, house, minSev, skip, token]);
+  }, [scienceId, planet, house, minSev, skip]);
 
   useEffect(() => { fetchRemedies(); }, [fetchRemedies]);
 

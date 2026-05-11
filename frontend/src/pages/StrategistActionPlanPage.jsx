@@ -63,7 +63,6 @@ function ActiveRemedyCard({ remedy }) {
 
 export default function StrategistActionPlanPage() {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token') || '';
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -71,7 +70,7 @@ export default function StrategistActionPlanPage() {
   useEffect(() => {
     document.title = 'Action Plan | The Strategist';
     fetch(`${BACKEND}/api/strategist/action-plan`, {
-      headers: { Authorization: `Bearer ${token}` },
+      credentials: 'include',
     })
       .then(r => r.json())
       .then(d => {

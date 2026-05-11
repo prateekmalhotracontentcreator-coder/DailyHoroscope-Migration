@@ -12,14 +12,13 @@ export default function StrategistSurrogatePage() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const token = localStorage.getItem('token') || '';
-
   const findSurrogate = async () => {
     setLoading(true); setError(''); setResult(null);
     try {
       const res = await fetch(`${BACKEND}/api/strategist/surrogate`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ planet, relative_unavailable: relative, industry }),
       });
       if (!res.ok) {

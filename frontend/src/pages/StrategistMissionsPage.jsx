@@ -9,19 +9,18 @@ export default function StrategistMissionsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [filterPlanet, setFilterPlanet] = useState('');
-  const token = localStorage.getItem('token') || '';
-
   useEffect(() => {
     fetch(`${BACKEND}/api/strategist/missions`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({}),
     })
       .then(r => r.json())
       .then(d => setMissions(d.missions || []))
       .catch(e => setError(e.message))
       .finally(() => setLoading(false));
-  }, [token]);
+  }, []);
 
   const filtered = filterPlanet
     ? missions.filter(m => (m.trigger_condition || '').includes(filterPlanet))

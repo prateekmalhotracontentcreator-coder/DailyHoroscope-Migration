@@ -5,13 +5,11 @@ const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 export default function StrategistReportPage() {
   const [loading, setLoading] = useState(false);
   const [reportHtml, setReportHtml] = useState('');
-  const token = localStorage.getItem('token') || '';
-
   const generateReport = async () => {
     setLoading(true);
     try {
       const res = await fetch(`${BACKEND}/api/strategist/report/pdf`, {
-        headers: { Authorization: `Bearer ${token}` },
+        credentials: 'include',
       });
       const html = await res.text();
       setReportHtml(html);
