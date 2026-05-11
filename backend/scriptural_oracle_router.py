@@ -58,14 +58,16 @@ class KrishnaCanonicalAnswer(StrictModel):
     krishna_answer: BilingualBlock
     meaning: BilingualBlock
     what_to_do: BilingualBlock
-    remedy: BilingualBlock
+    remedy: BilingualBlock | None = None          # v1 bundle only; None in v2
     precaution: BilingualBlock
-    mantra: BilingualBlock
+    mantra: BilingualBlock | None = None          # v1 bundle only; None in v2
     duration: BilingualBlock
     krishna_message: BilingualBlock
     theme_tags: list[str] = Field(default_factory=list)
     source_ref: str | None = None
     content_status: str = "provisional_seed"
+    behavioral_remedy: BilingualBlock | None = None   # v2 bundle: contemplative practice
+    remedy_ref: str | None = None                     # v2 bundle: lookup key → krishna_prashnavali_remedies
 
 
 class KrishnaSelectionRequest(StrictModel):
@@ -269,6 +271,16 @@ def _resolve_astrology_context(request: Request) -> AstrologyContext:
     return AstrologyContext()
 
 
+async def _resolve_kp_remedy_doc(request: Request, remedy_ref: str) -> dict[str, Any] | None:
+    """Look up the approved KP remedy record by remedy_ref (e.g. 'kp-001')."""
+    try:
+        db = request.state.db
+        col = db["krishna_prashnavali_remedies"]
+        return await col.find_one({"remedy_id": remedy_ref, "approval_status": "approved"})
+    except Exception:
+        return None
+
+
 def _source_bundle_path() -> Path:
     env_path = os.getenv("KRISHNA_ORACLE_BUNDLE_PATH")
     if env_path:
@@ -424,11 +436,17 @@ def _astrology_context_block(astrology: AstrologyContext, answer: KrishnaCanonic
     )
 
 
-def _practical_action_block(answer: KrishnaCanonicalAnswer) -> BilingualBlock:
-    english = f"{answer.what_to_do.english_block} {answer.remedy.english_block}"
+def _practical_action_block(
+    answer: KrishnaCanonicalAnswer,
+    ritual_remedy_doc: dict[str, Any] | None = None,
+) -> BilingualBlock:
+    # Prefer resolved DB ritual remedy; fall back to inline v1 remedy field
+    ritual = (ritual_remedy_doc or {}).get("ritual_remedy") or {}
+    remedy_en = ritual.get("english_block") or (answer.remedy.english_block if answer.remedy else "")
+    remedy_hi = ritual.get("sanskrit_block") or (answer.remedy.sanskrit_block if answer.remedy else "")
     return BilingualBlock(
-        sanskrit_block=f"{answer.what_to_do.sanskrit_block} {answer.remedy.sanskrit_block}",
-        english_block=english.strip(),
+        sanskrit_block=f"{answer.what_to_do.sanskrit_block} {remedy_hi}".strip(),
+        english_block=f"{answer.what_to_do.english_block} {remedy_en}".strip(),
     )
 
 
@@ -466,13 +484,29 @@ def _summary_report(
     astrology: AstrologyContext,
     question_text: str | None,
     focus_area: str | None,
+    ritual_remedy_doc: dict[str, Any] | None = None,
 ) -> dict[str, BilingualBlock]:
-    return {
+    report: dict[str, BilingualBlock] = {
         "sacred_verse": answer.krishna_answer,
         "question_response": _question_response_block(answer, question_text, focus_area),
         "astro_scientific_context": _astrology_context_block(astrology, answer),
-        "practical_action": _practical_action_block(answer),
+        "practical_action": _practical_action_block(answer, ritual_remedy_doc),
     }
+    # Phase 2 runtime wiring: surface resolved ritual remedy + mantra from Remedies Engine
+    if ritual_remedy_doc:
+        ritual = ritual_remedy_doc.get("ritual_remedy") or {}
+        mantra = ritual_remedy_doc.get("mantra") or {}
+        if ritual.get("english_block"):
+            report["ritual_remedy"] = BilingualBlock(
+                sanskrit_block=ritual.get("sanskrit_block", ""),
+                english_block=ritual.get("english_block", ""),
+            )
+        if mantra.get("english_block"):
+            report["ritual_mantra"] = BilingualBlock(
+                sanskrit_block=mantra.get("sanskrit_block", ""),
+                english_block=mantra.get("english_block", ""),
+            )
+    return report
 
 
 def _serialize_history_item(document: dict[str, Any]) -> KrishnaHistoryItem:
@@ -544,6 +578,12 @@ async def select_krishna_cell(payload: KrishnaSelectionRequest, request: Request
     sequence_indices = _extract_indices(selected_index)
     sequence_glyphs = [bundle["grid_matrix"][index] for index in sequence_indices]
     answer = _resolve_answer(selected_index, payload.row, payload.col, bundle)
+
+    # Phase 2: resolve ritual remedy + mantra from Remedies Engine via remedy_ref
+    ritual_remedy_doc: dict[str, Any] | None = None
+    if answer.remedy_ref:
+        ritual_remedy_doc = await _resolve_kp_remedy_doc(request, answer.remedy_ref)
+
     now = _now()
     report = KrishnaReadingDocument(
         id=str(uuid4()),
@@ -563,7 +603,7 @@ async def select_krishna_cell(payload: KrishnaSelectionRequest, request: Request
         answer_slot=answer.answer_slot,
         answer=answer,
         astrology=astrology,
-        summary_report=_summary_report(answer, astrology, payload.question_text, payload.focus_area),
+        summary_report=_summary_report(answer, astrology, payload.question_text, payload.focus_area, ritual_remedy_doc),
         meta={
             "engine_version": ENGINE_VERSION,
             "jump_interval": JUMP_INTERVAL,

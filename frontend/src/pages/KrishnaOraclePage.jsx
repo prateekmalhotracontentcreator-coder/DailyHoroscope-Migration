@@ -293,12 +293,23 @@ export default function KrishnaOraclePage() {
                 <BilingualBlockView label="Meaning" block={reading.answer.meaning} />
                 <div className="grid gap-4 md:grid-cols-2">
                   <BilingualBlockView label="What to Do" block={reading.answer.what_to_do} />
-                  <BilingualBlockView label="Remedy" block={reading.answer.remedy} />
+                  {reading.summary_report?.ritual_remedy
+                    ? <BilingualBlockView label="Temple Remedy" block={reading.summary_report.ritual_remedy} />
+                    : reading.answer.remedy
+                      ? <BilingualBlockView label="Remedy" block={reading.answer.remedy} />
+                      : null}
                   <BilingualBlockView label="Precaution" block={reading.answer.precaution} />
                   <BilingualBlockView label="Duration" block={reading.answer.duration} />
                 </div>
+                {reading.answer.behavioral_remedy && (
+                  <BilingualBlockView label="Sacred Practice" block={reading.answer.behavioral_remedy} />
+                )}
                 <div className="grid gap-4 md:grid-cols-2">
-                  <BilingualBlockView label="Mantra" block={reading.answer.mantra} />
+                  {reading.summary_report?.ritual_mantra
+                    ? <BilingualBlockView label="Mantra" block={reading.summary_report.ritual_mantra} />
+                    : reading.answer.mantra
+                      ? <BilingualBlockView label="Mantra" block={reading.answer.mantra} />
+                      : null}
                   <BilingualBlockView label="Krishna's Message" block={reading.answer.krishna_message} />
                 </div>
               </div>
