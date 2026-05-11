@@ -287,9 +287,74 @@ function Scoreboard({ sb }) {
   );
 }
 
+// ── 3-Step Onboarding prompt (shown when no LK profile exists) ───────────────
+function OnboardingRequired() {
+  const steps = [
+    {
+      n: 1,
+      title: 'Complete LK Onboarding',
+      desc: 'Enter your birth details, family census, and office location. This powers your natal chart, command planet, and Digbala direction.',
+      cta: 'Start Onboarding →',
+      to: '/lk-remedies/onboard',
+      color: 'border-gold/40 bg-gold/[0.06]',
+      ctaColor: 'border-gold/50 bg-gold/20 text-gold hover:bg-gold/30',
+    },
+    {
+      n: 2,
+      title: 'Run LK 5-Gate Diagnosis',
+      desc: 'Audit your karmic debt, house awakening, year cycle planet, Mercury scan, and geographical alignment.',
+      cta: 'Run Diagnosis →',
+      to: '/lk-remedies/report',
+      color: 'border-amber-500/30 bg-amber-500/[0.04]',
+      ctaColor: 'border-amber-500/40 bg-amber-500/10 text-amber-400 hover:bg-amber-500/20',
+    },
+    {
+      n: 3,
+      title: 'War Room Goes Live',
+      desc: 'Your birth chart drives every signal — conquest probability, active missions, hurdle alerts, and remedy timing all load automatically.',
+      cta: null,
+      to: null,
+      color: 'border-emerald-500/20 bg-emerald-500/[0.03]',
+      ctaColor: '',
+    },
+  ];
+
+  return (
+    <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-5">
+      <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Layer 1 — Astrology Engine</p>
+      <p className="text-sm font-semibold text-foreground mb-1">3-Step War Room Setup</p>
+      <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
+        Complete onboarding once. Your live birth chart, dasha, and LK diagnosis power every layer of the Strategist.
+      </p>
+      <div className="space-y-3">
+        {steps.map(s => (
+          <div key={s.n} className={`rounded-lg border ${s.color} p-4`}>
+            <div className="flex items-start gap-3">
+              <span className="shrink-0 flex h-6 w-6 items-center justify-center rounded-full border border-gold/30 bg-gold/10 text-[11px] font-bold text-gold">
+                {s.n}
+              </span>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-foreground">{s.title}</p>
+                <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{s.desc}</p>
+                {s.cta && (
+                  <Link to={s.to} className={`mt-3 inline-block rounded-lg border px-3 py-1.5 text-xs font-semibold transition ${s.ctaColor}`}>
+                    {s.cta}
+                  </Link>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ── Layer 1: Astrology strip ──────────────────────────────────────────────────
 function AstrologyStrip({ data }) {
   if (!data) return null;
+  // If no command planet, profile isn't set up — show onboarding
+  if (!data.command_planet) return <OnboardingRequired />;
   return (
     <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
       <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-3">Layer 1 — Astrology Engine</p>
