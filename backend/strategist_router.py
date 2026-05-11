@@ -91,6 +91,53 @@ async def _build_war_room_state(db, user_email: str) -> dict:
     missions = await get_active_missions(natal_chart, {}, db)
     hurdles = await get_active_hurdles(db)
 
+    # Last Gate 0 for scoreboard
+    now = datetime.now(timezone.utc)
+    last_kp = await db.kp_sessions.find_one(
+        {"user_email": user_email, "context": "strategist_gate0"},
+        sort=[("created_at", -1)],
+    )
+    gate0_verdict = last_kp.get("verdict") if last_kp else None
+    gate0_days_since = None
+    if last_kp and last_kp.get("created_at"):
+        delta = now - last_kp["created_at"].replace(tzinfo=timezone.utc) if last_kp["created_at"].tzinfo is None else now - last_kp["created_at"]
+        gate0_days_since = max(0, delta.days)
+
+    score = prob["score"]
+    streak_tier = (
+        "No Streak" if ritual_streak == 0 else
+        "Building" if ritual_streak < 7 else
+        "Momentum" if ritual_streak < 15 else
+        "Established" if ritual_streak < 30 else
+        "Iron Discipline"
+    )
+    if score >= 85:
+        next_threshold = None
+        next_label = "Sovereign — peak reached"
+    elif score >= 75:
+        next_threshold = 85
+        next_label = "85% — Sovereign Dominance"
+    elif score >= 60:
+        next_threshold = 75
+        next_label = "75% — PRAY gate clears"
+    else:
+        next_threshold = 60
+        next_label = "60% — NO gate clears"
+
+    scoreboard = {
+        "conquest_score": score,
+        "score_tier": prob["tier"],
+        "score_directive": prob["directive"],
+        "streak_days": ritual_streak,
+        "streak_tier": streak_tier,
+        "karmic_debt_cleared": not active_pitru_rin,
+        "gate0_last_verdict": gate0_verdict,
+        "gate0_days_since": gate0_days_since,
+        "next_threshold": next_threshold,
+        "next_threshold_label": next_label,
+        "points_to_next": (next_threshold - score) if next_threshold else 0,
+    }
+
     return {
         "user_id": user_email,
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -104,6 +151,7 @@ async def _build_war_room_state(db, user_email: str) -> dict:
             "pitru_rin_active": active_pitru_rin,
             "year_lord": gate3.get("planet", ""),
         },
+        "scoreboard": scoreboard,
         "gate_summaries": [
             {
                 "gate": 1,

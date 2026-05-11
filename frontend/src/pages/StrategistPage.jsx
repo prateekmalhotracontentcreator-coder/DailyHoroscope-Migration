@@ -197,6 +197,78 @@ function PreFlightPanel({ gateStatus, conquestScore }) {
   return null;
 }
 
+// ── Success & Debt Scoreboard ─────────────────────────────────────────────────
+function Scoreboard({ sb }) {
+  const pct = sb.next_threshold
+    ? Math.min(100, Math.round((sb.conquest_score / sb.next_threshold) * 100))
+    : 100;
+
+  const verdictColor = {
+    YES:  'text-emerald-400',
+    WAIT: 'text-orange-400',
+    NO:   'text-red-400',
+    PRAY: 'text-purple-400',
+  }[sb.gate0_last_verdict] || 'text-muted-foreground';
+
+  return (
+    <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-5 mt-1">
+      <p className="text-[11px] uppercase tracking-widest text-muted-foreground mb-4">Success &amp; Debt Scoreboard</p>
+
+      {/* Score + tier */}
+      <div className="flex items-end justify-between mb-3">
+        <div>
+          <p className="text-3xl font-bold text-gold">{sb.conquest_score}<span className="text-lg">%</span></p>
+          <p className="text-xs text-muted-foreground mt-0.5">{sb.score_tier} — {sb.score_directive}</p>
+        </div>
+        <div className="text-right">
+          <p className="text-xs text-muted-foreground">Streak</p>
+          <p className="text-lg font-bold text-emerald-400">{sb.streak_days}d</p>
+          <p className="text-[10px] text-muted-foreground">{sb.streak_tier}</p>
+        </div>
+      </div>
+
+      {/* Progress bar to next threshold */}
+      {sb.next_threshold && (
+        <div className="mb-4">
+          <div className="flex justify-between text-[10px] text-muted-foreground mb-1">
+            <span>Progress to {sb.next_threshold_label}</span>
+            <span>{sb.points_to_next} pts remaining</span>
+          </div>
+          <div className="h-2 rounded-full bg-gold/10 overflow-hidden">
+            <div
+              className="h-full rounded-full bg-gradient-to-r from-gold/60 to-gold transition-all duration-500"
+              style={{ width: `${pct}%` }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Status row */}
+      <div className="grid grid-cols-2 gap-3 text-center">
+        <div className="rounded-lg border border-gold/10 bg-background/40 p-3">
+          <p className="text-[10px] text-muted-foreground mb-1">Karmic Debt</p>
+          <p className={`text-sm font-semibold ${sb.karmic_debt_cleared ? 'text-emerald-400' : 'text-amber-400'}`}>
+            {sb.karmic_debt_cleared ? 'Cleared ✓' : 'Active ⚠'}
+          </p>
+        </div>
+        <div className="rounded-lg border border-gold/10 bg-background/40 p-3">
+          <p className="text-[10px] text-muted-foreground mb-1">Last Gate 0</p>
+          {sb.gate0_last_verdict ? (
+            <>
+              <p className={`text-sm font-semibold ${verdictColor}`}>{sb.gate0_last_verdict}</p>
+              <p className="text-[10px] text-muted-foreground">
+                {sb.gate0_days_since === 0 ? 'Today' : `${sb.gate0_days_since}d ago`}
+              </p>
+            </>
+          ) : (
+            <p className="text-sm text-muted-foreground">None yet</p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── War Room dashboard (shown when Gate 0 is clear) ───────────────────────────
 function WarRoomDashboard({ token }) {
   const { state: warState, countdown } = useWarRoom();
@@ -291,7 +363,7 @@ function WarRoomDashboard({ token }) {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 mb-4">
             <Link to="/strategist/missions" className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4 text-center hover:bg-gold/10 transition">
               <p className="text-xs text-muted-foreground mb-1">Mission Board</p>
               <p className="text-gold font-semibold text-sm">View All →</p>
@@ -309,6 +381,9 @@ function WarRoomDashboard({ token }) {
               <p className="text-gold font-semibold text-sm">Premium →</p>
             </Link>
           </div>
+
+          {/* Success & Debt Scoreboard */}
+          {data.scoreboard && <Scoreboard sb={data.scoreboard} />}
         </>
       )}
     </>
