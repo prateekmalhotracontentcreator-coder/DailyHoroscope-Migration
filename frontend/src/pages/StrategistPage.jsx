@@ -246,6 +246,32 @@ function WarRoomDashboard({ token }) {
             <ConquestGauge {...(data.conquest_probability || {})} />
           </div>
 
+          {/* 5-Gate LK Summary */}
+          {data.gate_summaries?.length > 0 && (
+            <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4 mb-4">
+              <p className="text-[11px] uppercase tracking-widest text-muted-foreground mb-3">Lal Kitab — 5-Gate Status</p>
+              <div className="space-y-2">
+                {data.gate_summaries.map(g => {
+                  const isWarning = ['WARNING', 'DORMANT', 'RAHU_COLLISION', 'EMPTY_VESSEL'].includes(g.status);
+                  const isClear   = ['CLEAR', 'ACTIVE'].includes(g.status);
+                  const dot = isWarning ? 'bg-amber-400' : isClear ? 'bg-emerald-400' : 'bg-muted-foreground';
+                  return (
+                    <div key={g.gate} className="flex items-start gap-3">
+                      <span className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${dot}`} />
+                      <div className="min-w-0">
+                        <span className="text-xs font-semibold text-foreground">Gate {g.gate} — {g.name}</span>
+                        <p className="text-xs text-muted-foreground leading-relaxed">{g.narrative}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+              <Link to="/lk-remedies/report" className="mt-3 inline-block text-xs text-gold hover:underline">
+                Full LK Diagnosis Report →
+              </Link>
+            </div>
+          )}
+
           <div className="grid grid-cols-2 gap-3 mb-4">
             <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4 text-center">
               <p className="text-xs text-muted-foreground mb-1">Command Planet</p>

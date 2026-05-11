@@ -46,7 +46,12 @@ async def _build_war_room_state(db, user_email: str) -> dict:
     else:
         diagnosis = await run_full_diagnosis(db, profile)
 
-    gate1 = diagnosis.get("gates", {}).get("gate1_karmic_debt", {})
+    gates = diagnosis.get("gates", {})
+    gate1 = gates.get("gate1_karmic_debt", {})
+    gate2 = gates.get("gate2_house_awakening", {})
+    gate3 = gates.get("gate3_year_cycle", {})
+    gate4 = gates.get("gate4_mercury_scan", {})
+    gate5 = gates.get("gate5_geographical", {})
     active_pitru_rin = gate1.get("active_pitru_rin", False)
 
     # Tracker streak
@@ -97,8 +102,44 @@ async def _build_war_room_state(db, user_email: str) -> dict:
         "ritual_streak": ritual_streak,
         "diagnosis_summary": {
             "pitru_rin_active": active_pitru_rin,
-            "year_lord": diagnosis.get("gates", {}).get("gate3_year_cycle", {}).get("planet", ""),
+            "year_lord": gate3.get("planet", ""),
         },
+        "gate_summaries": [
+            {
+                "gate": 1,
+                "name": "Karmic Debt",
+                "status": gate1.get("status", "UNKNOWN"),
+                "narrative": gate1.get("narrative", ""),
+            },
+            {
+                "gate": 2,
+                "name": "House Awakening",
+                "status": gate2.get("status", "UNKNOWN"),
+                "narrative": gate2.get("narrative", ""),
+                "dormant_count": len(gate2.get("dormant_houses", [])),
+            },
+            {
+                "gate": 3,
+                "name": "Year Cycle",
+                "status": "ACTIVE",
+                "narrative": gate3.get("narrative", ""),
+                "planet": gate3.get("planet", ""),
+                "age_range": gate3.get("age_range", ""),
+            },
+            {
+                "gate": 4,
+                "name": "Mercury Scan",
+                "status": gate4.get("status", "UNKNOWN"),
+                "narrative": gate4.get("narrative", ""),
+            },
+            {
+                "gate": 5,
+                "name": "Geographical",
+                "status": "ACTIVE",
+                "narrative": gate5.get("narrative", ""),
+                "direction": gate5.get("user_direction", ""),
+            },
+        ],
     }
 
 
