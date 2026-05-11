@@ -7,11 +7,6 @@ import KrishnaOracleGrid from '../components/KrishnaOracleGrid';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 
-const WAR_ROOM_BG = {
-  OFFENSIVE_GOLD:     'from-yellow-950/20 via-background to-background',
-  GOLDEN_HOUR:        'from-orange-950/30 via-background to-background',
-  DEFENSIVE_MIDNIGHT: 'from-blue-950/30 via-background to-background',
-};
 
 const WAR_ROOM_LABEL = {
   OFFENSIVE_GOLD:     '⚔️ OFFENSIVE — Rituals OPEN',
@@ -542,7 +537,6 @@ function Layer3Locked() {
 // ── Main page ─────────────────────────────────────────────────────────────────
 function Dashboard() {
   const { state: warState } = useWarRoom();
-  const bgGrad = WAR_ROOM_BG[warState] || WAR_ROOM_BG.OFFENSIVE_GOLD;
   const [gateStatus,    setGateStatus]    = useState('loading');
   const [conquestScore, setConquestScore] = useState(null);
   const [freshVerdict,  setFreshVerdict]  = useState(null);
@@ -582,7 +576,7 @@ function Dashboard() {
   };
 
   return (
-    <div className={`min-h-screen bg-gradient-to-b ${bgGrad} text-foreground`}>
+    <div className="min-h-screen bg-background text-foreground">
       <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
 
         {/* ── Module header ─────────────────────────────────────── */}
