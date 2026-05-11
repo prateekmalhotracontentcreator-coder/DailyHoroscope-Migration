@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
@@ -85,8 +86,28 @@ export default function LKTrackerPage() {
     <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground text-sm">Loading tracker…</div>
   );
 
+  if (trackers.length === 0) return (
+    <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-md mx-auto">
+      <div className="flex items-center mb-4">
+        <Link to="/lk-remedies/report" className="text-xs text-muted-foreground hover:text-gold transition">← Diagnostic Report</Link>
+      </div>
+      <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-6 text-center">
+        <p className="text-gold font-semibold mb-2">No Active Remedies</p>
+        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+          Run your 5-Gate Diagnosis, then tap "Add to 43-Day Tracker" on a remedy in the Execution Roadmap.
+        </p>
+        <Link to="/lk-remedies/report" className="inline-block bg-gold text-background font-semibold rounded-lg px-5 py-2.5 text-sm">
+          Go to Diagnostic Report →
+        </Link>
+      </div>
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-md mx-auto">
+      <div className="flex items-center mb-4">
+        <Link to="/lk-remedies/report" className="text-xs text-muted-foreground hover:text-gold transition">← Diagnostic Report</Link>
+      </div>
       <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-6 text-center mb-4">
         <h1 className="text-xl font-bold text-gold mb-1">43-Day Remedy Tracker</h1>
         <p className="text-sm text-muted-foreground mb-4">Phase: <span className="text-gold font-medium">{PHASE_LABEL(streak)}</span></p>
@@ -134,7 +155,7 @@ export default function LKTrackerPage() {
         {msg && <p className="text-sm text-emerald-400 mb-2">{msg}</p>}
         <button
           onClick={handleLog}
-          disabled={logging || !activeRemedy}
+          disabled={logging || !activeRemedy || !checkIn.completed || !checkIn.within_window || !checkIn.prohibited_avoided}
           className="w-full bg-gold text-background font-semibold rounded-lg px-4 py-2 mt-1 disabled:opacity-40"
         >
           {logging ? 'Logging…' : 'Log Today\'s Ritual'}

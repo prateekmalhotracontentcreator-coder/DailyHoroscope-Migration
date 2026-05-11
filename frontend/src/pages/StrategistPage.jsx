@@ -581,9 +581,21 @@ function Dashboard() {
 
         {/* ── Module header ─────────────────────────────────────── */}
         <div>
-          <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Bloomberg Terminal for Karma</p>
-          <h1 className="text-2xl font-bold text-foreground">The Strategist</h1>
-          <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Bloomberg Terminal for Karma</p>
+              <h1 className="text-2xl font-bold text-foreground">The Strategist</h1>
+            </div>
+            {gateStatus !== 'loading' && gateStatus !== 'required' && (
+              <button
+                onClick={() => { setGateStatus('required'); setFreshVerdict(null); }}
+                className="shrink-0 mt-1 rounded-lg border border-gold/30 bg-gold/[0.06] px-3 py-1.5 text-xs font-medium text-gold hover:bg-gold/15 transition"
+              >
+                Reset Oracle
+              </button>
+            )}
+          </div>
+          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
             A business intelligence war room powered by Lal Kitab, Vedic Astrology, and the Krishna Oracle.
             Your birth chart drives every signal — missions, remedies, and timing are all live.
           </p>
@@ -625,12 +637,6 @@ function Dashboard() {
           <div className="flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/[0.06] px-4 py-2">
             <span className="h-2 w-2 rounded-full bg-emerald-400" />
             <p className="text-xs text-muted-foreground">Gate 0 cleared — Oracle verdict: <span className="font-semibold text-emerald-400">{lastVerdict}</span></p>
-            <button
-              onClick={() => { setGateStatus('required'); setFreshVerdict(null); }}
-              className="ml-auto text-[10px] text-muted-foreground hover:text-foreground transition"
-            >
-              Re-consult →
-            </button>
           </div>
         )}
 

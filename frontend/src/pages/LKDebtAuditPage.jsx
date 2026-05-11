@@ -59,7 +59,7 @@ export default function LKDebtAuditPage() {
         setDebts(data.debts || []);
       } catch (e) { setError(e.message); } finally { setLoading(false); }
     })();
-  }, [token]);
+  }, []);
 
   if (loading) return (
     <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground text-sm">
