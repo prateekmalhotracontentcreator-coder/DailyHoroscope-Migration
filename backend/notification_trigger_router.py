@@ -91,6 +91,56 @@ TRIGGER_CONFIG = {
         "in_app_type": "report_ready",
         "default_action_url": "/reports",
     },
+    # ── Strategist triggers ──────────────────────────────────────────────────
+    "strategist-gate0-expired": {
+        "notification_type": "strategist_gate0_expired",
+        "email_template_id": "strategist_gate0_expired",
+        "whatsapp_template_name": None,
+        "in_app_type": "strategist_gate0",
+        "default_action_url": "/strategist",
+    },
+    "strategist-streak-at-risk": {
+        "notification_type": "strategist_streak_at_risk",
+        "email_template_id": "strategist_streak_at_risk",
+        "whatsapp_template_name": None,
+        "in_app_type": "strategist_streak",
+        "default_action_url": "/lk-remedies/tracker",
+    },
+    "strategist-streak-milestone": {
+        "notification_type": "strategist_streak_milestone",
+        "email_template_id": "strategist_streak_milestone",
+        "whatsapp_template_name": None,
+        "in_app_type": "strategist_streak",
+        "default_action_url": "/strategist",
+    },
+    "strategist-score-unlocked": {
+        "notification_type": "strategist_score_unlocked",
+        "email_template_id": "strategist_score_unlocked",
+        "whatsapp_template_name": None,
+        "in_app_type": "strategist_score",
+        "default_action_url": "/strategist",
+    },
+    "strategist-mission-activated": {
+        "notification_type": "strategist_mission_activated",
+        "email_template_id": "strategist_mission_activated",
+        "whatsapp_template_name": None,
+        "in_app_type": "strategist_mission",
+        "default_action_url": "/strategist/missions",
+    },
+    "strategist-golden-hour": {
+        "notification_type": "strategist_golden_hour",
+        "email_template_id": "strategist_golden_hour",
+        "whatsapp_template_name": None,
+        "in_app_type": "strategist_golden_hour",
+        "default_action_url": "/strategist",
+    },
+    "strategist-debt-cleared": {
+        "notification_type": "strategist_debt_cleared",
+        "email_template_id": "strategist_debt_cleared",
+        "whatsapp_template_name": None,
+        "in_app_type": "strategist_debt",
+        "default_action_url": "/strategist",
+    },
 }
 
 

@@ -168,6 +168,92 @@ EMAIL_TEMPLATES: dict[str, EmailTemplate] = {
         action_label_builder=lambda context: "Open App",
         action_url_builder=lambda context: _action_url(context, "/"),
     ),
+    # ── Strategist triggers ──────────────────────────────────────────────────
+    "strategist_gate0_expired": EmailTemplate(
+        template_id="strategist_gate0_expired",
+        required_keys=[],
+        subject_builder=lambda context: "Your War Room Oracle clearance has expired",
+        preview_builder=lambda context: "Ask Krishna again to re-enter the War Room.",
+        body_builder=lambda context: [
+            "Your Gate 0 Oracle clearance has expired.",
+            "Ask Lord Krishna again through the Prashnavali to restore your War Room access.",
+        ],
+        action_label_builder=lambda context: "Re-test at Gate 0",
+        action_url_builder=lambda context: _action_url(context, "/strategist"),
+    ),
+    "strategist_streak_at_risk": EmailTemplate(
+        template_id="strategist_streak_at_risk",
+        required_keys=[],
+        subject_builder=lambda context: f"Don't break your {_stringify(_get_nested(context, 'content.score', ''))}‑day ritual streak",
+        preview_builder=lambda context: "Complete today's LK remedy before midnight.",
+        body_builder=lambda context: [
+            f"Your {_stringify(_get_nested(context, 'content.score', 'ritual'))}‑day streak is at risk.",
+            "Log today's LK remedy before midnight to keep your momentum alive.",
+            _stringify(_get_nested(context, "content.summary", "")),
+        ],
+        action_label_builder=lambda context: "Log Today's Remedy",
+        action_url_builder=lambda context: _action_url(context, "/lk-remedies/tracker"),
+    ),
+    "strategist_streak_milestone": EmailTemplate(
+        template_id="strategist_streak_milestone",
+        required_keys=["content.score"],
+        subject_builder=lambda context: f"{_get_nested(context, 'content.score')} days of unbroken ritual momentum",
+        preview_builder=lambda context: "Your streak is building real Conquest power.",
+        body_builder=lambda context: [
+            f"You have reached {_get_nested(context, 'content.score')} consecutive days of ritual momentum.",
+            "Each day adds points to your Conquest Probability and keeps Gate 0 within reach.",
+        ],
+        action_label_builder=lambda context: "View War Room",
+        action_url_builder=lambda context: _action_url(context, "/strategist"),
+    ),
+    "strategist_score_unlocked": EmailTemplate(
+        template_id="strategist_score_unlocked",
+        required_keys=["content.score"],
+        subject_builder=lambda context: f"Conquest score reached {_get_nested(context, 'content.score')}% — re‑test at Gate 0",
+        preview_builder=lambda context: "Your score crossed the threshold. Gate 0 is open for re-testing.",
+        body_builder=lambda context: [
+            f"Your Conquest Probability has reached {_get_nested(context, 'content.score')}%.",
+            _stringify(_get_nested(context, "content.summary", "Your score crossed the threshold — re‑test at Gate 0 to restore War Room access.")),
+        ],
+        action_label_builder=lambda context: "Re‑test at Gate 0",
+        action_url_builder=lambda context: _action_url(context, "/strategist"),
+    ),
+    "strategist_mission_activated": EmailTemplate(
+        template_id="strategist_mission_activated",
+        required_keys=[],
+        subject_builder=lambda context: "New strategic mission activated for your chart",
+        preview_builder=lambda context: "A transit-triggered mission is now live in your War Room.",
+        body_builder=lambda context: [
+            "A new strategic mission has been activated based on your natal chart and current transits.",
+            _stringify(_get_nested(context, "content.summary", "Open your Mission Board to review the next action.")),
+        ],
+        action_label_builder=lambda context: "Open Mission Board",
+        action_url_builder=lambda context: _action_url(context, "/strategist/missions"),
+    ),
+    "strategist_golden_hour": EmailTemplate(
+        template_id="strategist_golden_hour",
+        required_keys=[],
+        subject_builder=lambda context: "Golden Hour is OPEN — strategic rituals active now",
+        preview_builder=lambda context: "Act before sunrise closes the window.",
+        body_builder=lambda context: [
+            "Your War Room is now in Golden Hour mode.",
+            "This is the highest‑leverage window for strategic rituals. Act before sunrise closes it.",
+        ],
+        action_label_builder=lambda context: "Enter War Room",
+        action_url_builder=lambda context: _action_url(context, "/strategist"),
+    ),
+    "strategist_debt_cleared": EmailTemplate(
+        template_id="strategist_debt_cleared",
+        required_keys=[],
+        subject_builder=lambda context: "Karmic Debt cleared — Gate 1 is green",
+        preview_builder=lambda context: "Your Conquest score just improved.",
+        body_builder=lambda context: [
+            "Gate 1 — Karmic Debt is now clear.",
+            "This lifts the Pitru Rin penalty from your Conquest score. Re-open the War Room to see the updated probability.",
+        ],
+        action_label_builder=lambda context: "View War Room",
+        action_url_builder=lambda context: _action_url(context, "/strategist"),
+    ),
 }
 
 
