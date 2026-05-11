@@ -7,7 +7,6 @@ import KrishnaOracleGrid from '../components/KrishnaOracleGrid';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 
-
 const WAR_ROOM_LABEL = {
   OFFENSIVE_GOLD:     '⚔️ OFFENSIVE — Rituals OPEN',
   GOLDEN_HOUR:        '🌅 GOLDEN HOUR — Act NOW',
@@ -39,9 +38,7 @@ function Gate0Panel({ onVerdict }) {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    fetch(`${BACKEND}/api/oracle/krishna-prashnavali/meta`, {
-      credentials: 'include',
-    })
+    fetch(`${BACKEND}/api/oracle/krishna-prashnavali/meta`, { credentials: 'include' })
       .then(r => r.json())
       .then(d => setGridMatrix(d.grid_matrix || []))
       .catch(() => setError('Unable to load Oracle grid.'))
@@ -82,7 +79,7 @@ function Gate0Panel({ onVerdict }) {
         </Link>
       </div>
       <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-        Touch one cell. The answer determines your mission clearance for today.
+        Touch one cell. Krishna's answer determines your mission clearance for today.
       </p>
       {error && <p className="text-amber-400 text-xs mb-3">{error}</p>}
       {loadingGrid ? (
@@ -126,9 +123,7 @@ function PraySurrenderPanel() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`${BACKEND}/api/strategist/surrender-context`, {
-      credentials: 'include',
-    })
+    fetch(`${BACKEND}/api/strategist/surrender-context`, { credentials: 'include' })
       .then(r => r.json())
       .then(setCtx)
       .catch(() => setCtx(null))
@@ -283,52 +278,42 @@ function Scoreboard({ sb }) {
   );
 }
 
-// ── 3-Step Onboarding prompt (shown when no LK profile exists) ───────────────
+// ── 3-Step Onboarding prompt ──────────────────────────────────────────────────
 function OnboardingRequired() {
   const steps = [
     {
-      n: 1,
-      title: 'Complete LK Onboarding',
-      desc: 'Enter your birth details, family census, and office location. This powers your natal chart, command planet, and Digbala direction.',
-      cta: 'Start Onboarding →',
-      to: '/lk-remedies/onboard',
+      n: 1, title: 'Complete LK Onboarding',
+      desc: 'Enter birth details, family census, and office location. Powers your natal chart, command planet, and Digbala direction.',
+      cta: 'Start Onboarding →', to: '/lk-remedies/onboard',
       color: 'border-gold/40 bg-gold/[0.06]',
       ctaColor: 'border-gold/50 bg-gold/20 text-gold hover:bg-gold/30',
     },
     {
-      n: 2,
-      title: 'Run LK 5-Gate Diagnosis',
-      desc: 'Audit your karmic debt, house awakening, year cycle planet, Mercury scan, and geographical alignment.',
-      cta: 'Run Diagnosis →',
-      to: '/lk-remedies/report',
+      n: 2, title: 'Run LK 5-Gate Diagnosis',
+      desc: 'Audit karmic debt, house awakening, year cycle planet, Mercury scan, and geographical alignment.',
+      cta: 'Run Diagnosis →', to: '/lk-remedies/report',
       color: 'border-amber-500/30 bg-amber-500/[0.04]',
       ctaColor: 'border-amber-500/40 bg-amber-500/10 text-amber-400 hover:bg-amber-500/20',
     },
     {
-      n: 3,
-      title: 'War Room Goes Live',
-      desc: 'Your birth chart drives every signal — conquest probability, active missions, hurdle alerts, and remedy timing all load automatically.',
-      cta: null,
-      to: null,
-      color: 'border-emerald-500/20 bg-emerald-500/[0.03]',
-      ctaColor: '',
+      n: 3, title: 'War Room Goes Live',
+      desc: 'Your birth chart drives every signal — conquest probability, active missions, hurdle alerts, and remedy timing load automatically.',
+      cta: null, to: null,
+      color: 'border-emerald-500/20 bg-emerald-500/[0.03]', ctaColor: '',
     },
   ];
-
   return (
     <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-5">
       <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Layer 1 — Astrology Engine</p>
       <p className="text-sm font-semibold text-foreground mb-1">3-Step War Room Setup</p>
       <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-        Complete onboarding once. Your live birth chart, dasha, and LK diagnosis power every layer of the Strategist.
+        Complete onboarding once. Your live birth chart, dasha, and LK diagnosis power every layer.
       </p>
       <div className="space-y-3">
         {steps.map(s => (
           <div key={s.n} className={`rounded-lg border ${s.color} p-4`}>
             <div className="flex items-start gap-3">
-              <span className="shrink-0 flex h-6 w-6 items-center justify-center rounded-full border border-gold/30 bg-gold/10 text-[11px] font-bold text-gold">
-                {s.n}
-              </span>
+              <span className="shrink-0 flex h-6 w-6 items-center justify-center rounded-full border border-gold/30 bg-gold/10 text-[11px] font-bold text-gold">{s.n}</span>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-foreground">{s.title}</p>
                 <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">{s.desc}</p>
@@ -349,7 +334,6 @@ function OnboardingRequired() {
 // ── Layer 1: Astrology strip ──────────────────────────────────────────────────
 function AstrologyStrip({ data }) {
   if (!data) return null;
-  // If no command planet, profile isn't set up — show onboarding
   if (!data.command_planet) return <OnboardingRequired />;
   return (
     <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
@@ -446,84 +430,6 @@ function MissionQuickLinks({ data }) {
   );
 }
 
-
-// ── Always-on War Room data (Layers 1 + 2, shown regardless of Gate 0) ───────
-function WarRoomAlways() {
-  const { state: warState, countdown } = useWarRoom();
-  const [data,    setData]    = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error,   setError]   = useState('');
-
-  useEffect(() => {
-    fetch(`${BACKEND}/api/strategist/dashboard`, {
-      credentials: 'include',
-    })
-      .then(r => r.json())
-      .then(d => { if (d.error) throw new Error(d.error); setData(d); })
-      .catch(e => setError(e.message))
-      .finally(() => setLoading(false));
-  }, []);
-
-  return (
-    <div className="space-y-4">
-      {/* War state banner */}
-      <div className={`rounded-xl border ${warState === 'GOLDEN_HOUR' ? 'border-orange-500/50 bg-orange-500/10 animate-pulse' : 'border-gold/20 bg-gold/[0.04]'} p-4 text-center`}>
-        <p className="text-sm font-semibold text-gold">{WAR_ROOM_LABEL[warState] || WAR_ROOM_LABEL.OFFENSIVE_GOLD}</p>
-        {countdown && <p className="text-2xl font-mono text-orange-400 mt-1">{countdown}</p>}
-      </div>
-
-      {loading && <div className="text-center text-muted-foreground text-sm py-4">Loading War Room data…</div>}
-
-      {error && (
-        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4">
-          <p className="text-amber-400 text-sm">{error}</p>
-          <Link to="/lk-remedies/onboard" className="text-gold text-xs underline mt-1 block">Complete LK Onboarding first →</Link>
-        </div>
-      )}
-
-      {data && (
-        <>
-          {/* Conquest Probability */}
-          <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-5 text-center">
-            <p className="text-xs text-muted-foreground mb-3">Conquest Probability</p>
-            <ConquestGauge {...(data.conquest_probability || {})} />
-          </div>
-
-          {/* Layer 1 — Astrology */}
-          <AstrologyStrip data={data} />
-
-          {/* Layer 2 — LK 5-Gate */}
-          <LKGateStatus gates={data.gate_summaries} />
-        </>
-      )}
-    </div>
-  );
-}
-
-// ── Layer 3 unlocked: missions + links (Gate 0 cleared) ───────────────────────
-function WarRoomUnlocked() {
-  const [data, setData]     = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch(`${BACKEND}/api/strategist/dashboard`, {
-      credentials: 'include',
-    })
-      .then(r => r.json())
-      .then(d => setData(d))
-      .catch(() => {})
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading || !data) return null;
-  return (
-    <div className="space-y-4">
-      <MissionQuickLinks data={data} />
-      {data.scoreboard && <Scoreboard sb={data.scoreboard} />}
-    </div>
-  );
-}
-
 // ── Layer 3 locked placeholder ────────────────────────────────────────────────
 function Layer3Locked() {
   return (
@@ -534,18 +440,23 @@ function Layer3Locked() {
   );
 }
 
-// ── Main page ─────────────────────────────────────────────────────────────────
+// ── Main Dashboard ────────────────────────────────────────────────────────────
 function Dashboard() {
-  const { state: warState } = useWarRoom();
+  const { state: warState, countdown } = useWarRoom();
+
+  // Gate 0
   const [gateStatus,    setGateStatus]    = useState('loading');
   const [conquestScore, setConquestScore] = useState(null);
   const [freshVerdict,  setFreshVerdict]  = useState(null);
   const [lastVerdict,   setLastVerdict]   = useState(null);
 
+  // Dashboard data (shared between Layer 1, 2, and 3)
+  const [dash,        setDash]        = useState(null);
+  const [dashLoading, setDashLoading] = useState(true);
+  const [dashError,   setDashError]   = useState('');
+
   useEffect(() => {
-    fetch(`${BACKEND}/api/strategist/gate0/status`, {
-      credentials: 'include',
-    })
+    fetch(`${BACKEND}/api/strategist/gate0/status`, { credentials: 'include' })
       .then(r => r.json())
       .then(d => {
         setGateStatus(d.status || 'required');
@@ -553,6 +464,14 @@ function Dashboard() {
         setLastVerdict(d.last_verdict ?? null);
       })
       .catch(() => setGateStatus('required'));
+  }, []);
+
+  useEffect(() => {
+    fetch(`${BACKEND}/api/strategist/dashboard`, { credentials: 'include' })
+      .then(r => r.json())
+      .then(d => { if (d.error) throw new Error(d.error); setDash(d); })
+      .catch(e => setDashError(e.message))
+      .finally(() => setDashLoading(false));
   }, []);
 
   function handleVerdict(verdict, reading) {
@@ -570,29 +489,29 @@ function Dashboard() {
 
   const layerStatus = (n) => {
     if (n === 0) return missionsUnlocked ? 'complete' : 'active';
-    if (n <= 2)  return 'active';   // Layers 1 & 2 always active
+    if (n <= 2)  return 'active';
     if (n >= 3)  return missionsUnlocked ? 'active' : 'locked';
     return 'locked';
   };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
+      <div className="max-w-2xl mx-auto px-4 py-8 space-y-5">
 
-        {/* ── Module header ─────────────────────────────────────── */}
+        {/* ── Header ───────────────────────────────────────────────── */}
         <div>
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Bloomberg Terminal for Karma</p>
               <h1 className="text-2xl font-bold text-foreground">The Strategist</h1>
             </div>
-            {gateStatus !== 'loading' && gateStatus !== 'required' && (
-              <button
-                onClick={() => { setGateStatus('required'); setFreshVerdict(null); }}
+            {gateStatus !== 'loading' && (
+              <Link
+                to="/lk-remedies/onboard"
                 className="shrink-0 mt-1 rounded-lg border border-gold/30 bg-gold/[0.06] px-3 py-1.5 text-xs font-medium text-gold hover:bg-gold/15 transition"
               >
-                Reset Oracle
-              </button>
+                Redo Setup
+              </Link>
             )}
           </div>
           <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
@@ -601,7 +520,7 @@ function Dashboard() {
           </p>
         </div>
 
-        {/* ── Layer journey strip ───────────────────────────────── */}
+        {/* ── Layer journey strip ───────────────────────────────────── */}
         <div className="flex flex-wrap gap-2">
           <LayerBadge n={0} label="Oracle Gate"  status={layerStatus(0)} />
           <LayerBadge n={1} label="Astrology"    status={layerStatus(1)} />
@@ -611,14 +530,37 @@ function Dashboard() {
           <LayerBadge n={5} label="Report"       status={layerStatus(5)} />
         </div>
 
-        {/* ── Layers 1 & 2 — always loaded ─────────────────────── */}
-        {gateStatus !== 'loading' && <WarRoomAlways />}
+        {/* ── War state banner ──────────────────────────────────────── */}
+        <div className={`rounded-xl border ${warState === 'GOLDEN_HOUR' ? 'border-orange-500/50 bg-orange-500/10 animate-pulse' : 'border-gold/20 bg-gold/[0.04]'} p-4 text-center`}>
+          <p className="text-sm font-semibold text-gold">{WAR_ROOM_LABEL[warState] || WAR_ROOM_LABEL.OFFENSIVE_GOLD}</p>
+          {countdown && <p className="text-2xl font-mono text-orange-400 mt-1">{countdown}</p>}
+        </div>
 
-        {/* ── Gate 0 — compact oracle card ─────────────────────── */}
-        {gateStatus === 'loading' && (
-          <div className="text-center text-muted-foreground text-sm py-4">Checking Oracle clearance…</div>
+        {/* ── Layer 1 — Astrology (always shown) ───────────────────── */}
+        {dashLoading && (
+          <div className="text-center text-muted-foreground text-sm py-2">Loading War Room data…</div>
         )}
+        {dashError && (
+          <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4">
+            <p className="text-amber-400 text-sm">{dashError}</p>
+            <Link to="/lk-remedies/onboard" className="text-gold text-xs underline mt-1 block">Complete LK Onboarding first →</Link>
+          </div>
+        )}
+        {!dashLoading && dash && (
+          <>
+            <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-5 text-center">
+              <p className="text-xs text-muted-foreground mb-3">Conquest Probability</p>
+              <ConquestGauge {...(dash.conquest_probability || {})} />
+            </div>
+            <AstrologyStrip data={dash} />
+          </>
+        )}
+        {!dashLoading && !dash && !dashError && <AstrologyStrip data={null} />}
 
+        {/* ── Gate 0 — Oracle check (between Layer 1 and Layer 2) ──── */}
+        {gateStatus === 'loading' && (
+          <div className="text-center text-muted-foreground text-sm py-2">Checking Oracle clearance…</div>
+        )}
         {needsGate0 && (
           <>
             {lastVerdict && (
@@ -631,27 +573,31 @@ function Dashboard() {
             <Gate0Panel onVerdict={handleVerdict} />
           </>
         )}
-
-        {/* ── Gate 0 cleared badge ──────────────────────────────── */}
         {missionsUnlocked && lastVerdict && (
           <div className="flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/[0.06] px-4 py-2">
             <span className="h-2 w-2 rounded-full bg-emerald-400" />
             <p className="text-xs text-muted-foreground">Gate 0 cleared — Oracle verdict: <span className="font-semibold text-emerald-400">{lastVerdict}</span></p>
           </div>
         )}
-
-        {/* ── Verdict banner ────────────────────────────────────── */}
         {freshVerdict && !needsGate0 && (
           <VerdictBanner verdict={freshVerdict.verdict} reading={freshVerdict.reading} />
         )}
-
-        {/* ── Pre-flight panels ─────────────────────────────────── */}
         {blocked && (
           <PreFlightPanel gateStatus={gateStatus} conquestScore={conquestScore} />
         )}
 
-        {/* ── Layer 3 — unlocked or locked ─────────────────────── */}
-        {missionsUnlocked ? <WarRoomUnlocked /> : <Layer3Locked />}
+        {/* ── Layer 2 — LK 5-Gate (AFTER Gate 0) ──────────────────── */}
+        {dash && <LKGateStatus gates={dash.gate_summaries} />}
+
+        {/* ── Layer 3 — Missions (unlocked or locked) ──────────────── */}
+        {missionsUnlocked && dash ? (
+          <div className="space-y-4">
+            <MissionQuickLinks data={dash} />
+            {dash.scoreboard && <Scoreboard sb={dash.scoreboard} />}
+          </div>
+        ) : (
+          <Layer3Locked />
+        )}
 
       </div>
     </div>

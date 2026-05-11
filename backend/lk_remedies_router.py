@@ -209,11 +209,42 @@ async def debt_audit(body: DebtAuditRequest, request: Request):
 
 # ── Tracker ───────────────────────────────────────────────────────────────────
 
+class TrackerStartRequest(BaseModel):
+    remedy_id: int
+
+
 class TrackerLogRequest(BaseModel):
     remedy_id: int
     completed: bool
     within_window: bool = True
     prohibited_avoided: bool = True
+
+
+@router.post("/tracker/start")
+async def start_tracker(body: TrackerStartRequest, request: Request):
+    db = get_db(request)
+    user_email = get_user_email(request)
+    now = datetime.now(timezone.utc)
+
+    existing = await db.lk_tracker.find_one(
+        {"user_id": user_email, "remedy_id": body.remedy_id}, {"_id": 0}
+    )
+    if existing:
+        return {"ok": True, "message": "already_exists", "tracker": existing}
+
+    tracker = {
+        "user_id": user_email,
+        "remedy_id": body.remedy_id,
+        "status": "active",
+        "streak_days": 0,
+        "last_completed_date": None,
+        "day_log": [],
+        "created_at": now.isoformat(),
+        "updated_at": now.isoformat(),
+    }
+    await db.lk_tracker.insert_one(tracker)
+    tracker.pop("_id", None)
+    return {"ok": True, "message": "started", "tracker": tracker}
 
 
 @router.get("/tracker/{user_id}")

@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+const GATE_CONTEXT = {
+  gate1_karmic_debt:     { what: 'Karmic Debt Gate', why: 'Identifies active ancestral debts based on your family census. Each unpaid debt corresponds to a missing ritual from a relative.' },
+  gate2_house_awakening: { what: 'House Awakening Gate', why: 'Maps which natal houses are dormant. Dormant houses block energy flow until a specific ritual activates them.' },
+  gate3_year_cycle:      { what: '35-Year Cycle Gate', why: 'Lal Kitab assigns each year of life to a planetary lord. Your current year-lord determines which remedies are effective right now.' },
+  gate4_mercury_scan:    { what: 'Mercury Scan Gate', why: 'Mercury governs communication, business clarity, and mental precision. This gate flags if Mercury is an empty vessel or in Rahu collision.' },
+  gate5_geographical:    { what: 'Geographical Alignment Gate', why: 'Your office and home direction relative to birth city determines whether your Digbala (directional strength) amplifies or weakens outcomes.' },
+};
+
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 
 const STATUS_STYLE = {
@@ -18,12 +26,13 @@ const STATUS_ICON = {
   EMPTY_VESSEL: '🔍', RAHU_COLLISION: '⚠️', SCAN: '🔍',
 };
 
-function GateCard({ title, gate }) {
+function GateCard({ title, gate, gateKey }) {
   const [open, setOpen] = useState(false);
   if (!gate) return null;
   const status = gate.status || 'SCAN';
   const style = STATUS_STYLE[status] || STATUS_STYLE.SCAN;
   const icon = STATUS_ICON[status] || '🔍';
+  const ctx = GATE_CONTEXT[gateKey] || {};
 
   return (
     <div className={`rounded-xl border mb-3 overflow-hidden ${style}`}>
@@ -37,9 +46,22 @@ function GateCard({ title, gate }) {
         <span className="text-xs opacity-60">{open ? '▲' : '▼'}</span>
       </button>
       {open && (
-        <div className="px-4 pb-4 pt-1 border-t border-current/10 space-y-1.5">
-          {gate.narrative && <p className="text-xs opacity-80 leading-relaxed">{gate.narrative}</p>}
-          {gate.planet && <p className="text-xs opacity-70">Year-Lord: <strong>{gate.planet}</strong>{gate.age_range ? ` (${gate.age_range})` : ''}</p>}
+        <div className="px-4 pb-4 pt-2 border-t border-current/10 space-y-2.5">
+          {ctx.why && (
+            <div className="rounded-lg bg-current/5 px-3 py-2">
+              <p className="text-[10px] uppercase tracking-widest opacity-60 mb-0.5">What this gate checks</p>
+              <p className="text-xs opacity-80 leading-relaxed">{ctx.why}</p>
+            </div>
+          )}
+          {gate.narrative && (
+            <div>
+              <p className="text-[10px] uppercase tracking-widest opacity-60 mb-0.5">Your Result</p>
+              <p className="text-xs opacity-90 leading-relaxed font-medium">{gate.narrative}</p>
+            </div>
+          )}
+          {gate.planet && (
+            <p className="text-xs opacity-70">Year-Lord: <strong>{gate.planet}</strong>{gate.age_range ? ` (${gate.age_range})` : ''}</p>
+          )}
           {gate.dormant_houses?.length > 0 && (
             <p className="text-xs opacity-70">Dormant Houses: {gate.dormant_houses.join(', ')}</p>
           )}
@@ -55,6 +77,7 @@ export default function LKReportPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [trackerMsg, setTrackerMsg] = useState(null);
+  const [addingTracker, setAddingTracker] = useState(false);
   useEffect(() => {
     (async () => {
       try {
@@ -96,16 +119,24 @@ export default function LKReportPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-2xl mx-auto">
-      <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5 mb-4">
-        <h1 className="text-xl font-bold text-gold mb-1">5-Gate Diagnostic Report</h1>
-        <p className="text-xs text-muted-foreground">Generated {new Date(report.generated_at).toLocaleString()}</p>
+      <div className="flex items-center mb-5">
+        <Link to="/strategist" className="text-xs text-muted-foreground hover:text-gold transition">← The Strategist</Link>
       </div>
 
-      <GateCard title="Gate 1 — Karmic Debt" gate={gates?.gate1_karmic_debt} />
-      <GateCard title="Gate 2 — House Awakening" gate={gates?.gate2_house_awakening} />
-      <GateCard title="Gate 3 — 35-Year Cycle" gate={gates?.gate3_year_cycle} />
-      <GateCard title="Gate 4 — Mercury Scan" gate={gates?.gate4_mercury_scan} />
-      <GateCard title="Gate 5 — Geographical Alignment" gate={gates?.gate5_geographical} />
+      <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5 mb-4">
+        <h1 className="text-xl font-bold text-gold mb-1">5-Gate Diagnostic Report</h1>
+        <p className="text-xs text-muted-foreground mb-2">Generated {new Date(report.generated_at).toLocaleString()}</p>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          Lal Kitab runs five diagnostic gates on your natal chart, age, family census, and location.
+          Each gate can block or amplify your strategic outcomes. Tap each gate to read your result and understand what it means.
+        </p>
+      </div>
+
+      <GateCard title="Gate 1 — Karmic Debt" gate={gates?.gate1_karmic_debt} gateKey="gate1_karmic_debt" />
+      <GateCard title="Gate 2 — House Awakening" gate={gates?.gate2_house_awakening} gateKey="gate2_house_awakening" />
+      <GateCard title="Gate 3 — 35-Year Cycle" gate={gates?.gate3_year_cycle} gateKey="gate3_year_cycle" />
+      <GateCard title="Gate 4 — Mercury Scan" gate={gates?.gate4_mercury_scan} gateKey="gate4_mercury_scan" />
+      <GateCard title="Gate 5 — Geographical Alignment" gate={gates?.gate5_geographical} gateKey="gate5_geographical" />
 
       {execution_roadmap?.length > 0 && (
         <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5 mt-4">
@@ -139,18 +170,31 @@ export default function LKReportPage() {
       {trackerMsg && (
         <div className="fixed inset-0 z-50 flex items-end justify-center pb-8 px-4 pointer-events-none">
           <div className="pointer-events-auto rounded-xl border border-gold/30 bg-card shadow-xl p-5 max-w-sm w-full">
-            <p className="text-sm font-semibold text-foreground mb-1">Add to 43-Day Tracker</p>
+            <p className="text-sm font-semibold text-foreground mb-1">Start 43-Day Tracker</p>
             <p className="text-xs text-muted-foreground mb-4 leading-relaxed">
-              Remedy #{trackerMsg} will be tracked on the LK Tracker page. Open the tracker to begin your daily ritual log.
+              This remedy comes from your Execution Roadmap. Tapping "Start Tracker" will activate it and open the daily check-in.
             </p>
             <div className="flex gap-3">
-              <Link
-                to="/lk-remedies/tracker"
-                className="flex-1 text-center bg-gold text-background font-semibold rounded-lg px-4 py-2 text-xs"
-                onClick={() => setTrackerMsg(null)}
+              <button
+                disabled={addingTracker}
+                onClick={async () => {
+                  setAddingTracker(true);
+                  try {
+                    await fetch(`${BACKEND}/api/lk/tracker/start`, {
+                      method: 'POST',
+                      credentials: 'include',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ remedy_id: trackerMsg }),
+                    });
+                  } catch {}
+                  setTrackerMsg(null);
+                  setAddingTracker(false);
+                  navigate('/lk-remedies/tracker');
+                }}
+                className="flex-1 bg-gold text-background font-semibold rounded-lg px-4 py-2 text-xs disabled:opacity-50"
               >
-                Open Tracker →
-              </Link>
+                {addingTracker ? 'Starting…' : 'Start Tracker →'}
+              </button>
               <button
                 onClick={() => setTrackerMsg(null)}
                 className="flex-1 border border-gold/30 text-gold rounded-lg px-4 py-2 text-xs"
