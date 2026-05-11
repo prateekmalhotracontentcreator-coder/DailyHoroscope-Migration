@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from datetime import datetime, timezone
@@ -273,8 +274,8 @@ def load_records():
 
 def main():
     parser = argparse.ArgumentParser(description="Ingest Strategist records")
-    parser.add_argument("--mongo-url", default="")
-    parser.add_argument("--db-name", default="horoscope_db")
+    parser.add_argument("--mongo-url", default=os.environ.get("MONGO_URL", ""))
+    parser.add_argument("--db-name", default=os.environ.get("DB_NAME", "horoscope_db"))
     parser.add_argument("--dry-run", action="store_true", default=False)
     args = parser.parse_args()
 

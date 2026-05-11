@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import datetime, timezone
 
@@ -275,8 +276,8 @@ def _stamp(r: dict) -> dict:
 
 def main():
     parser = argparse.ArgumentParser(description="Strategist patch v2: IDs 1011-1020 + 1126-1137")
-    parser.add_argument("--mongo-url", default="")
-    parser.add_argument("--db-name",   default="horoscope_db")
+    parser.add_argument("--mongo-url", default=os.environ.get("MONGO_URL", ""))
+    parser.add_argument("--db-name",   default=os.environ.get("DB_NAME", "horoscope_db"))
     parser.add_argument("--dry-run",   action="store_true", default=False)
     args = parser.parse_args()
 
