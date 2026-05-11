@@ -40,8 +40,6 @@ export default function LKOnboardPage() {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
-  const token = localStorage.getItem('token') || '';
-
   const handleComputeChart = async () => {
     if (!birthForm.date_of_birth) { setError('Date of birth is required'); return; }
     setError('');
@@ -77,7 +75,8 @@ export default function LKOnboardPage() {
       const natalChart = computedChart?.lk_chart || {};
       const res = await fetch(`${BACKEND}/api/lk/onboard`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           age: parseInt(age, 10) || 0,
           natal_chart: natalChart,
