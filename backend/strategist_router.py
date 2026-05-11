@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Request
@@ -196,6 +196,84 @@ async def surrogate(body: SurrogateRequest, request: Request):
     if not record:
         raise HTTPException(status_code=404, detail="No surrogate record found for this combination.")
     return {"surrogate": record, "surrogate_active": True}
+
+
+class Gate0RecordRequest(BaseModel):
+    row: int
+    col: int
+    verdict: str  # "YES" | "WAIT" | "NO" | "PRAY"
+    answer_slot: int
+    report_id: Optional[str] = None
+
+
+_GATE0_TTL_DAYS: dict[str, int] = {"YES": 7, "WAIT": 3, "NO": 1, "PRAY": 1}
+
+
+@router.post("/gate0/record")
+async def gate0_record(body: Gate0RecordRequest, request: Request):
+    db = get_db(request)
+    user_email = get_user_email(request)
+    now = datetime.now(timezone.utc)
+    ttl = _GATE0_TTL_DAYS.get(body.verdict, 1)
+    await db.kp_sessions.insert_one({
+        "user_email": user_email,
+        "verdict": body.verdict,
+        "answer_slot": body.answer_slot,
+        "report_id": body.report_id,
+        "context": "strategist_gate0",
+        "created_at": now,
+        "expires_at": now + timedelta(days=ttl),
+    })
+    return {"recorded": True, "verdict": body.verdict, "expires_in_days": ttl}
+
+
+@router.get("/gate0/status")
+async def gate0_status(request: Request):
+    db = get_db(request)
+    user_email = get_user_email(request)
+    now = datetime.now(timezone.utc)
+
+    last = await db.kp_sessions.find_one(
+        {"user_email": user_email, "context": "strategist_gate0", "expires_at": {"$gt": now}},
+        sort=[("created_at", -1)],
+    )
+
+    if not last:
+        return {"status": "required", "last_verdict": None, "conquest_score": None, "can_retest": False}
+
+    verdict = last.get("verdict", "")
+
+    if verdict == "YES":
+        return {"status": "clear", "last_verdict": verdict, "conquest_score": None, "can_retest": False}
+
+    if verdict == "WAIT":
+        tracker = await db.lk_tracker.find_one(
+            {"user_id": user_email, "status": "active"}, {"streak_days": 1, "_id": 0}
+        )
+        streak = tracker.get("streak_days", 0) if tracker else 0
+        if streak > 0:
+            return {"status": "clear", "last_verdict": verdict, "conquest_score": None, "can_retest": False}
+        return {"status": "wait_active", "last_verdict": verdict, "conquest_score": None, "can_retest": False}
+
+    # NO or PRAY — check conquest score to determine re-test eligibility
+    tracker = await db.lk_tracker.find_one(
+        {"user_id": user_email, "status": "active"}, {"streak_days": 1, "_id": 0}
+    )
+    streak = tracker.get("streak_days", 0) if tracker else 0
+    prob = calculate_conquest_probability(
+        {"command_planet_strength": 1.0, "office_location": "", "success_direction": "",
+         "active_pitru_rin": False, "surrogate_active": False, "ritual_streak": streak},
+        {"primary_planet_degree": 15},
+    )
+    score = prob["score"]
+    threshold = 60 if verdict == "NO" else 75
+    can_retest = score >= threshold
+
+    if can_retest:
+        return {"status": "required", "last_verdict": verdict, "conquest_score": score, "can_retest": True}
+
+    blocked = "no_blocked" if verdict == "NO" else "pray_blocked"
+    return {"status": blocked, "last_verdict": verdict, "conquest_score": score, "can_retest": False}
 
 
 @router.get("/report/pdf")
