@@ -21,7 +21,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 REPORT_DIR  = Path(__file__).resolve().parent / "reports"
-SCIENCE_ID  = "jyotish_lk"
+SCIENCE_ID  = "jyotish"
 COLLECTION  = "interpretation_rules"
 TRUNC       = 320
 
@@ -137,7 +137,11 @@ def main() -> None:
     col    = client[args.db_name][COLLECTION]
 
     rules = list(col.find(
-        {"science_id": SCIENCE_ID, "approval_status": "pending_human_review"},
+        {
+            "science_id": SCIENCE_ID,
+            "approval_status": "pending_human_review",
+            "source.batch_id": {"$regex": "^lalkitab-"},
+        },
         {"_id": 0},
     ).sort("rule_id", 1))
 
@@ -161,7 +165,7 @@ def main() -> None:
         "# LK Interpretation Rules — PHR Review Report",
         f"Generated: {now}  ",
         f"Total rules: **{len(rules)}**  ",
-        f"Collection: `{COLLECTION}` | `science_id: {SCIENCE_ID}`",
+        f"Collection: `{COLLECTION}` | `science_id: {SCIENCE_ID}` (Lal Kitab chapters)",
         "",
         "---",
         "",
