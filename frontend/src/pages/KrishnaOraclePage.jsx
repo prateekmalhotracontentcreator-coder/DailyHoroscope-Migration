@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 import KrishnaOracleGrid from "../components/KrishnaOracleGrid";
@@ -180,6 +181,14 @@ export default function KrishnaOraclePage() {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(217,168,74,0.18),_transparent_42%),linear-gradient(180deg,_#fffaf0_0%,_#f6ead6_52%,_#efe2cd_100%)] px-4 py-8 text-stone-900 dark:bg-[radial-gradient(circle_at_top,_rgba(180,83,9,0.18),_transparent_40%),linear-gradient(180deg,_#0a0604_0%,_#120a06_48%,_#090605_100%)] dark:text-white md:px-8">
       <div className="mx-auto max-w-7xl space-y-6">
+        <div className="flex items-center justify-between">
+          <Link
+            to="/strategist"
+            className="inline-flex items-center gap-1.5 rounded-lg border border-amber-400/40 bg-amber-50/60 px-3 py-1.5 text-xs font-medium text-amber-800 transition hover:bg-amber-100/80 dark:border-amber-700/40 dark:bg-amber-900/20 dark:text-amber-300 dark:hover:bg-amber-900/40"
+          >
+            ← War Room
+          </Link>
+        </div>
         <SectionCard eyebrow="Krishna Oracle" title="Ask Lord Krishna Through the 18 × 18 Prashnavali">
           <div className="grid gap-6 lg:grid-cols-[1.15fr,0.85fr]">
             <div className="space-y-4">

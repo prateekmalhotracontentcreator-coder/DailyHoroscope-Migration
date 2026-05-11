@@ -1243,20 +1243,30 @@ def generate_north_indian_chart_svg(houses: dict, lagna_sign: str) -> str:
 # ─── Today's Transits ─────────────────────────────────────────────────────────
 
 def get_current_transits() -> dict:
-    """Get today's planetary positions for transit analysis."""
+    """Get today's planetary positions for transit analysis.
+
+    Returns per planet: sign, degree, house (natural zodiac 1=Aries),
+    longitude (0-360), retrograde flag.
+    """
     now = datetime.now()
     jd = swe.julday(now.year, now.month, now.day, now.hour + now.minute / 60)
-    lat, lon = 28.6139, 77.2090  # Delhi reference
 
     transits = {}
     for pid in PLANET_IDS:
         if pid == const.SOUTH_NODE:
-            north_lon, _ = _calc_planet(jd, swe.MEAN_NODE)
+            north_lon, north_speed = _calc_planet(jd, swe.MEAN_NODE)
             planet_lon = (north_lon + 180.0) % 360
+            speed = north_speed  # Ketu moves with Rahu
         else:
-            planet_lon, _ = _calc_planet(jd, PLANET_SWE_IDS[pid])
+            planet_lon, speed = _calc_planet(jd, PLANET_SWE_IDS[pid])
+        sign = _lon_to_sign(planet_lon)
+        # Natural-zodiac house: Aries=1 … Pisces=12 (Lal Kitab convention)
+        house = SIGN_ORDER.index(sign) + 1
         transits[PLANET_NAMES[pid]] = {
-            'sign': _lon_to_sign(planet_lon),
+            'sign': sign,
             'degree': round(planet_lon % 30, 2),
+            'longitude': round(planet_lon, 4),
+            'house': house,
+            'retrograde': speed < 0,
         }
     return transits

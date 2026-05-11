@@ -7,6 +7,8 @@ from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 
 from lk_diagnostics import run_full_diagnosis
+from scriptural_oracle_router import KrishnaSelectionRequest as _KPSelectRequest
+from scriptural_oracle_router import select_krishna_cell as _kp_select
 from strategist_engine import (
     DIGBALA_DIRECTIONS,
     SCIENCE_ID,
@@ -14,6 +16,11 @@ from strategist_engine import (
     get_active_hurdles,
     get_active_missions,
     get_surrogate,
+)
+from vedic_calculator import (
+    calculate_vimshottari_dasha,
+    get_current_dasha,
+    get_current_transits,
 )
 from vedic_shared_utils import get_db, get_user_email
 
@@ -77,6 +84,9 @@ async def _build_war_room_state(db, user_email: str) -> dict:
                     surrogate_active = True
                     break
 
+    current_transits = get_current_transits()
+    primary_planet_degree = current_transits.get(command_planet, {}).get("degree", 15)
+
     user_data = {
         "command_planet_strength": 1.0,
         "office_location": location_slug,
@@ -85,10 +95,10 @@ async def _build_war_room_state(db, user_email: str) -> dict:
         "surrogate_active": surrogate_active,
         "ritual_streak": ritual_streak,
     }
-    transit_data = {"primary_planet_degree": 15}
+    transit_data = {"primary_planet_degree": primary_planet_degree}
 
     prob = calculate_conquest_probability(user_data, transit_data)
-    missions = await get_active_missions(natal_chart, {}, db)
+    missions = await get_active_missions(natal_chart, current_transits, db)
     hurdles = await get_active_hurdles(db)
 
     # Last Gate 0 for scoreboard
@@ -529,6 +539,65 @@ async def gate0_record(body: Gate0RecordRequest, request: Request):
         "expires_at": now + timedelta(days=ttl),
     })
     return {"recorded": True, "verdict": body.verdict, "expires_in_days": ttl}
+
+
+class Gate0SelectRequest(BaseModel):
+    row: int
+    col: int
+
+
+@router.post("/gate0/select")
+async def gate0_select(body: Gate0SelectRequest, request: Request):
+    """KP oracle select with live astro context injected — single call replaces frontend two-step."""
+    db = get_db(request)
+    user_email = get_user_email(request)
+
+    # Build astrology context from user profile
+    profile = await db.lk_user_profiles.find_one({"user_id": user_email}, {"_id": 0})
+    astro_ctx: dict = {}
+    if profile:
+        birth_date = profile.get("birth_date") or profile.get("dob")
+        moon_lon = profile.get("moon_longitude")
+        if birth_date and moon_lon is not None:
+            try:
+                dashas = calculate_vimshottari_dasha(birth_date, float(moon_lon))
+                current = get_current_dasha(dashas)
+                astro_ctx["current_mahadasha"] = current.get("dasha", "")
+                astro_ctx["antardasha"] = current.get("antardasha", "")
+            except Exception:
+                pass
+        transits = get_current_transits()
+        astro_ctx["transit_planets"] = {p: {"sign": v["sign"], "degree": v["degree"]} for p, v in transits.items()}
+        astro_ctx["transit_house_map"] = {p: v["house"] for p, v in transits.items()}
+
+    # Inject into request state so KP oracle can read it
+    request.state.astrology = astro_ctx
+
+    kp_payload = _KPSelectRequest(
+        row=body.row,
+        col=body.col,
+        question_text="Should I proceed with my strategic mission?",
+        focus_area="career",
+        language_preference="bilingual",
+        reveal_mode="instant",
+    )
+    result = await _kp_select(kp_payload, request)
+
+    # Record verdict to kp_sessions
+    verdict = result.reading.answer.verdict_display
+    now = datetime.now(timezone.utc)
+    ttl = _GATE0_TTL_DAYS.get(verdict, 1)
+    await db.kp_sessions.insert_one({
+        "user_email": user_email,
+        "verdict": verdict,
+        "answer_slot": result.reading.answer_slot,
+        "report_id": result.reading.report_id,
+        "context": "strategist_gate0",
+        "created_at": now,
+        "expires_at": now + timedelta(days=ttl),
+    })
+
+    return result
 
 
 @router.get("/gate0/status")

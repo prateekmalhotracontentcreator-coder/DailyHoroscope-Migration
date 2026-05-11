@@ -42,29 +42,15 @@ function Gate0Panel({ token, onVerdict }) {
     setSubmitting(true);
     setError('');
     try {
-      const selectRes = await fetch(`${BACKEND}/api/oracle/krishna-prashnavali/select`, {
+      // Single endpoint: injects live astro context + records to kp_sessions
+      const res = await fetch(`${BACKEND}/api/strategist/gate0/select`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({
-          row, col,
-          question_text: 'Should I proceed with my strategic mission?',
-          focus_area: 'career',
-          language_preference: 'bilingual',
-          reveal_mode: 'instant',
-        }),
+        body: JSON.stringify({ row, col }),
       });
-      const selectData = await selectRes.json();
-      const verdict   = selectData?.reading?.answer?.verdict_display || 'WAIT';
-      const answerSlot = selectData?.reading?.answer_slot || 1;
-      const reportId  = selectData?.reading?.report_id || null;
-
-      await fetch(`${BACKEND}/api/strategist/gate0/record`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ row, col, verdict, answer_slot: answerSlot, report_id: reportId }),
-      });
-
-      onVerdict(verdict, selectData?.reading || null);
+      const data = await res.json();
+      const verdict = data?.reading?.answer?.verdict_display || 'WAIT';
+      onVerdict(verdict, data?.reading || null);
     } catch {
       setError('Unable to generate Krishna guidance right now.');
       setSelectedIndex(null);

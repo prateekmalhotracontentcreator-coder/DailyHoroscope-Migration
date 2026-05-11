@@ -68,14 +68,18 @@ async def get_surrogate(
     industry: str,
     db,
 ) -> dict | None:
-    record = await db.knowledge_rules.find_one(
-        {
-            "science_id": SCIENCE_ID,
-            "id": {"$gte": 1201, "$lte": 1225},
-            "category": {"$regex": planet, "$options": "i"},
-        },
-        {"_id": 0},
-    )
+    query: dict = {
+        "science_id": SCIENCE_ID,
+        "id": {"$gte": 1201, "$lte": 1225},
+        "command_planet": {"$regex": planet, "$options": "i"},
+    }
+    record = await db.knowledge_rules.find_one(query, {"_id": 0})
+    if not record:
+        # Fallback: any surrogate for this planet regardless of relative
+        record = await db.knowledge_rules.find_one(
+            {"science_id": SCIENCE_ID, "id": {"$gte": 1201, "$lte": 1225}},
+            {"_id": 0},
+        )
     return record
 
 
