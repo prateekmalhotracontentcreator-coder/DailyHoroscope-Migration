@@ -385,12 +385,13 @@ function MissionQuickLinks({ data }) {
   );
 }
 
-// ── Full War Room (Layer 1 → 2 → 3 → Scoreboard) ─────────────────────────────
-function WarRoomDashboard({ token }) {
+
+// ── Always-on War Room data (Layers 1 + 2, shown regardless of Gate 0) ───────
+function WarRoomAlways({ token }) {
   const { state: warState, countdown } = useWarRoom();
-  const [data, setData]     = useState(null);
+  const [data,    setData]    = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError]   = useState('');
+  const [error,   setError]   = useState('');
 
   useEffect(() => {
     fetch(`${BACKEND}/api/strategist/dashboard`, {
@@ -402,8 +403,6 @@ function WarRoomDashboard({ token }) {
       .finally(() => setLoading(false));
   }, [token]);
 
-  if (loading) return <div className="text-center text-muted-foreground text-sm py-8">Loading War Room…</div>;
-
   return (
     <div className="space-y-4">
       {/* War state banner */}
@@ -412,7 +411,8 @@ function WarRoomDashboard({ token }) {
         {countdown && <p className="text-2xl font-mono text-orange-400 mt-1">{countdown}</p>}
       </div>
 
-      {/* Error: no LK profile */}
+      {loading && <div className="text-center text-muted-foreground text-sm py-4">Loading War Room data…</div>}
+
       {error && (
         <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4">
           <p className="text-amber-400 text-sm">{error}</p>
@@ -422,7 +422,7 @@ function WarRoomDashboard({ token }) {
 
       {data && (
         <>
-          {/* Conquest Probability gauge */}
+          {/* Conquest Probability */}
           <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-5 text-center">
             <p className="text-xs text-muted-foreground mb-3">Conquest Probability</p>
             <ConquestGauge {...(data.conquest_probability || {})} />
@@ -433,14 +433,42 @@ function WarRoomDashboard({ token }) {
 
           {/* Layer 2 — LK 5-Gate */}
           <LKGateStatus gates={data.gate_summaries} />
-
-          {/* Layer 3 — Strategist engine + quick links */}
-          <MissionQuickLinks data={data} />
-
-          {/* Scoreboard */}
-          {data.scoreboard && <Scoreboard sb={data.scoreboard} />}
         </>
       )}
+    </div>
+  );
+}
+
+// ── Layer 3 unlocked: missions + links (Gate 0 cleared) ───────────────────────
+function WarRoomUnlocked({ token }) {
+  const [data, setData]     = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${BACKEND}/api/strategist/dashboard`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(r => r.json())
+      .then(d => setData(d))
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [token]);
+
+  if (loading || !data) return null;
+  return (
+    <div className="space-y-4">
+      <MissionQuickLinks data={data} />
+      {data.scoreboard && <Scoreboard sb={data.scoreboard} />}
+    </div>
+  );
+}
+
+// ── Layer 3 locked placeholder ────────────────────────────────────────────────
+function Layer3Locked() {
+  return (
+    <div className="rounded-xl border border-gold/10 bg-gold/[0.02] p-5 text-center opacity-60">
+      <p className="text-xs text-muted-foreground mb-1">🔒 Layer 3 — Missions &amp; Action Plan</p>
+      <p className="text-[11px] text-muted-foreground">Consult the Oracle above to unlock your active missions.</p>
     </div>
   );
 }
@@ -478,22 +506,22 @@ function Dashboard() {
     else                          setGateStatus('pray_blocked');
   }
 
-  const showDashboard = gateStatus === 'clear';
-  const blocked       = ['wait_active', 'no_blocked', 'pray_blocked'].includes(gateStatus);
-  const needsGate0    = gateStatus === 'required';
+  const missionsUnlocked = gateStatus === 'clear';
+  const blocked          = ['wait_active', 'no_blocked', 'pray_blocked'].includes(gateStatus);
+  const needsGate0       = gateStatus === 'required';
 
-  // Derive layer status for the journey strip
   const layerStatus = (n) => {
-    if (n === 0) return showDashboard ? 'complete' : 'active';
-    if (!showDashboard) return 'locked';
-    return 'active';
+    if (n === 0) return missionsUnlocked ? 'complete' : 'active';
+    if (n <= 2)  return 'active';   // Layers 1 & 2 always active
+    if (n >= 3)  return missionsUnlocked ? 'active' : 'locked';
+    return 'locked';
   };
 
   return (
     <div className={`min-h-screen bg-gradient-to-b ${bgGrad} text-foreground`}>
       <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
 
-        {/* ── Module header (always visible) ───────────────────── */}
+        {/* ── Module header ─────────────────────────────────────── */}
         <div>
           <p className="text-[10px] uppercase tracking-widest text-muted-foreground mb-1">Bloomberg Terminal for Karma</p>
           <h1 className="text-2xl font-bold text-foreground">The Strategist</h1>
@@ -503,18 +531,39 @@ function Dashboard() {
           </p>
         </div>
 
-        {/* ── Layer journey strip (always visible) ─────────────── */}
+        {/* ── Layer journey strip ───────────────────────────────── */}
         <div className="flex flex-wrap gap-2">
-          <LayerBadge n={0} label="Oracle Gate"   status={layerStatus(0)} />
-          <LayerBadge n={1} label="Astrology"     status={layerStatus(1)} />
-          <LayerBadge n={2} label="LK Diagnosis"  status={layerStatus(2)} />
-          <LayerBadge n={3} label="Missions"      status={layerStatus(3)} />
-          <LayerBadge n={4} label="Action Plan"   status={layerStatus(4)} />
-          <LayerBadge n={5} label="Report"        status={layerStatus(5)} />
+          <LayerBadge n={0} label="Oracle Gate"  status={layerStatus(0)} />
+          <LayerBadge n={1} label="Astrology"    status={layerStatus(1)} />
+          <LayerBadge n={2} label="LK Diagnosis" status={layerStatus(2)} />
+          <LayerBadge n={3} label="Missions"     status={layerStatus(3)} />
+          <LayerBadge n={4} label="Action Plan"  status={layerStatus(4)} />
+          <LayerBadge n={5} label="Report"       status={layerStatus(5)} />
         </div>
 
-        {/* ── Gate 0 status badge (when clear, show last verdict) ── */}
-        {showDashboard && lastVerdict && (
+        {/* ── Layers 1 & 2 — always loaded ─────────────────────── */}
+        {gateStatus !== 'loading' && <WarRoomAlways token={token} />}
+
+        {/* ── Gate 0 — compact oracle card ─────────────────────── */}
+        {gateStatus === 'loading' && (
+          <div className="text-center text-muted-foreground text-sm py-4">Checking Oracle clearance…</div>
+        )}
+
+        {needsGate0 && (
+          <>
+            {lastVerdict && (
+              <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-3 text-center">
+                <p className="text-xs text-muted-foreground">
+                  Previous verdict: <span className="text-gold font-semibold">{lastVerdict}</span> — Score qualifies you for re-test.
+                </p>
+              </div>
+            )}
+            <Gate0Panel token={token} onVerdict={handleVerdict} />
+          </>
+        )}
+
+        {/* ── Gate 0 cleared badge ──────────────────────────────── */}
+        {missionsUnlocked && lastVerdict && (
           <div className="flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/[0.06] px-4 py-2">
             <span className="h-2 w-2 rounded-full bg-emerald-400" />
             <p className="text-xs text-muted-foreground">Gate 0 cleared — Oracle verdict: <span className="font-semibold text-emerald-400">{lastVerdict}</span></p>
@@ -527,37 +576,18 @@ function Dashboard() {
           </div>
         )}
 
-        {/* ── Loading ───────────────────────────────────────────── */}
-        {gateStatus === 'loading' && (
-          <div className="text-center text-muted-foreground text-sm py-6">Checking Oracle clearance…</div>
-        )}
-
-        {/* ── Gate 0 — Oracle panel (compact, inline) ──────────── */}
-        {needsGate0 && (
-          <>
-            {lastVerdict && (
-              <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-3 text-center">
-                <p className="text-xs text-muted-foreground">
-                  Previous verdict: <span className="text-gold font-semibold">{lastVerdict}</span> — Score now qualifies you for re-test.
-                </p>
-              </div>
-            )}
-            <Gate0Panel token={token} onVerdict={handleVerdict} />
-          </>
-        )}
-
-        {/* ── Verdict banner (fresh tap result) ────────────────── */}
+        {/* ── Verdict banner ────────────────────────────────────── */}
         {freshVerdict && !needsGate0 && (
           <VerdictBanner verdict={freshVerdict.verdict} reading={freshVerdict.reading} />
         )}
 
-        {/* ── Pre-flight / surrender panels (WAIT / NO / PRAY) ─── */}
+        {/* ── Pre-flight panels ─────────────────────────────────── */}
         {blocked && (
           <PreFlightPanel gateStatus={gateStatus} conquestScore={conquestScore} token={token} />
         )}
 
-        {/* ── War Room (Layer 1 → 2 → 3 → Scoreboard) ─────────── */}
-        {showDashboard && <WarRoomDashboard token={token} />}
+        {/* ── Layer 3 — unlocked or locked ─────────────────────── */}
+        {missionsUnlocked ? <WarRoomUnlocked token={token} /> : <Layer3Locked />}
 
       </div>
     </div>
