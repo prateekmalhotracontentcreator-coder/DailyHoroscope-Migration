@@ -259,6 +259,7 @@ class BirthChartReport(BaseModel):
     profile_id: str; report_content: str
     generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     lagna: dict = {}; moon_sign: dict = {}; nakshatra: dict = {}; current_dasha: dict = {}; chart_svg: str = ""; mangal_dosha: dict = {}
+    planets: dict = {}; houses: dict = {}
 
 class BirthChartRequest(BaseModel):
     profile_id: str
@@ -648,6 +649,42 @@ async def generate_birth_chart(request: BirthChartRequest):
     birth_profile = BirthProfile(**profile)
     existing = await db.birth_chart_reports.find_one({"profile_id": request.profile_id}, {"_id": 0})
     if existing:
+        needs_structured_backfill = not existing.get("planets") or not existing.get("houses")
+        if needs_structured_backfill:
+            bc_chart_data = None
+            try:
+                bc_chart_data = calculate_vedic_chart(
+                    date_of_birth=birth_profile.date_of_birth,
+                    time_of_birth=birth_profile.time_of_birth,
+                    place_of_birth=birth_profile.location,
+                )
+            except Exception as ce:
+                logging.warning("Birth chart structured backfill failed: %s", ce)
+            if bc_chart_data:
+                bc_chart_svg = existing.get("chart_svg", "")
+                if not bc_chart_svg and bc_chart_data.get("houses"):
+                    try:
+                        bc_chart_svg = generate_north_indian_chart_svg(
+                            bc_chart_data["houses"],
+                            bc_chart_data["lagna"]["sign"],
+                        )
+                    except Exception as se:
+                        logging.warning("Birth chart backfill SVG generation failed: %s", se)
+                backfill = {
+                    "lagna": bc_chart_data.get("lagna", {}),
+                    "moon_sign": bc_chart_data.get("moon_sign", {}),
+                    "nakshatra": bc_chart_data.get("nakshatra", {}),
+                    "current_dasha": bc_chart_data.get("current_dasha", {}),
+                    "mangal_dosha": bc_chart_data.get("mangal_dosha", {}),
+                    "planets": bc_chart_data.get("planets", {}),
+                    "houses": bc_chart_data.get("houses", {}),
+                    "chart_svg": bc_chart_svg,
+                }
+                existing.update(backfill)
+                await db.birth_chart_reports.update_one(
+                    {"profile_id": request.profile_id},
+                    {"$set": backfill},
+                )
         if isinstance(existing['generated_at'], str): existing['generated_at'] = datetime.fromisoformat(existing['generated_at'])
         return BirthChartReport(**existing)
     content = await generate_birth_chart_with_llm(birth_profile)
@@ -658,7 +695,7 @@ async def generate_birth_chart(request: BirthChartRequest):
     if bc_chart_data and bc_chart_data.get('houses'):
         try: bc_chart_svg = generate_north_indian_chart_svg(bc_chart_data['houses'], bc_chart_data['lagna']['sign'])
         except Exception as se: logging.warning("SVG generation failed: %s", se)
-    report = BirthChartReport(profile_id=request.profile_id, report_content=content, lagna=bc_chart_data['lagna'] if bc_chart_data else {}, moon_sign=bc_chart_data['moon_sign'] if bc_chart_data else {}, nakshatra=bc_chart_data['nakshatra'] if bc_chart_data else {}, current_dasha=bc_chart_data.get('current_dasha', {}) if bc_chart_data else {}, mangal_dosha=bc_chart_data.get('mangal_dosha', {}) if bc_chart_data else {}, chart_svg=bc_chart_svg)
+    report = BirthChartReport(profile_id=request.profile_id, report_content=content, lagna=bc_chart_data['lagna'] if bc_chart_data else {}, moon_sign=bc_chart_data['moon_sign'] if bc_chart_data else {}, nakshatra=bc_chart_data['nakshatra'] if bc_chart_data else {}, current_dasha=bc_chart_data.get('current_dasha', {}) if bc_chart_data else {}, mangal_dosha=bc_chart_data.get('mangal_dosha', {}) if bc_chart_data else {}, planets=bc_chart_data.get('planets', {}) if bc_chart_data else {}, houses=bc_chart_data.get('houses', {}) if bc_chart_data else {}, chart_svg=bc_chart_svg)
     import json as _json
     doc = _json.loads(report.model_dump_json())
     await db.birth_chart_reports.insert_one({**doc})

@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Button } from '../components/ui/button';
-import { Sparkles, ArrowLeft, Crown, Check } from 'lucide-react';
+import { Card } from '../components/ui/card';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../components/ui/collapsible';
+import { Sparkles, ArrowLeft, Crown, Check, ChevronDown, Loader2, Orbit, ScrollText } from 'lucide-react';
 import { BirthDetailsForm } from '../components/BirthDetailsForm';
 import { BirthChartDisplay } from '../components/BirthChartDisplay';
 import axios from 'axios';
@@ -12,6 +15,124 @@ import { toast } from 'sonner';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+const DIGNITY_WEIGHTS = {
+  debilitated: 0,
+  enemy: 1,
+  neutral: 2,
+  friendly: 3,
+  own_sign: 4,
+  moolatrikona: 5,
+  exalted: 6,
+};
+
+const HOUSE_DOMAIN_MAP = {
+  1: 'health',
+  2: 'wealth',
+  3: 'career',
+  4: 'family',
+  5: 'children',
+  6: 'enemies',
+  7: 'marriage',
+  8: 'mental',
+  9: 'spiritual',
+  10: 'career',
+  11: 'wealth',
+  12: 'mental',
+};
+
+const toPlainPlanet = (planetLabel = '') => planetLabel.split('(')[0].trim();
+
+const formatLabel = (value = '') =>
+  value
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+
+const scoreAffliction = (planetData = {}) => {
+  const dignity = planetData?.dignity || 'neutral';
+  const dignityScore = DIGNITY_WEIGHTS[dignity] ?? 2;
+  const shadbala = Number(planetData?.shadbala?.total_rupas || 0);
+  const minimum = Number(planetData?.shadbala?.minimum_rupas || 0);
+
+  let score = (6 - dignityScore) * 10;
+  if (planetData?.combust) score += 14;
+  if (planetData?.retrograde) score += 4;
+  if (minimum && shadbala) {
+    if (shadbala < minimum) {
+      score += 12;
+    } else {
+      score -= 4;
+    }
+  }
+  return score;
+};
+
+const deriveAffliction = (planetData = {}) => {
+  if (planetData?.combust) return 'combust';
+  if (planetData?.dignity === 'debilitated') return 'debilitated';
+  if (planetData?.dignity === 'enemy') return 'enemy_sign';
+  if (planetData?.retrograde) return 'retrograde';
+  if (planetData?.shadbala && planetData.shadbala.total_rupas < planetData.shadbala.minimum_rupas) {
+    return 'low_shadbala';
+  }
+  return 'planetary_weakness';
+};
+
+const deriveIntensity = (planetData = {}) => {
+  if (planetData?.combust || planetData?.dignity === 'debilitated') return 'severe';
+  if (planetData?.dignity === 'enemy') return 'moderate';
+  if (planetData?.shadbala && planetData.shadbala.total_rupas < planetData.shadbala.minimum_rupas) {
+    return 'moderate';
+  }
+  return 'mild';
+};
+
+const getTopAfflictedPlanets = (report) => {
+  const planets = Object.entries(report?.planets || {});
+  return planets
+    .map(([planetLabel, planetData]) => ({
+      key: planetLabel,
+      planet: toPlainPlanet(planetLabel),
+      house: planetData?.house || null,
+      dignity: planetData?.dignity || 'neutral',
+      affliction: deriveAffliction(planetData),
+      intensity: deriveIntensity(planetData),
+      lifeDomain: HOUSE_DOMAIN_MAP[planetData?.house] || 'career',
+      score: scoreAffliction(planetData),
+      planetData,
+    }))
+    .sort((left, right) => right.score - left.score)
+    .slice(0, 3);
+};
+
+const RemedyItemCard = ({ remedy }) => (
+  <div className="rounded-sm border border-gold/20 bg-background/80 p-4 space-y-3">
+    <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+      <div>
+        <p className="font-semibold text-base">{remedy.title}</p>
+        <p className="text-xs uppercase tracking-widest text-gold mt-1">
+          {`${formatLabel(remedy.tradition)}_${formatLabel(remedy.category)}_${formatLabel(remedy.action_type)}`}
+        </p>
+      </div>
+      <div className="text-xs text-muted-foreground">
+        <p>Ease: {formatLabel(remedy.ease)}</p>
+        <p>Confidence: {Math.round((remedy.confidence || 0) * 100)}%</p>
+      </div>
+    </div>
+    <p className="text-sm leading-relaxed text-foreground/85">{remedy.description}</p>
+    {remedy.behavioral_remedy && (
+      <div className="rounded-sm border border-dashed border-gold/30 bg-gold/5 p-3">
+        <p className="text-xs uppercase tracking-widest text-gold mb-1">Behavioral Support</p>
+        <p className="text-sm text-foreground/80">{remedy.behavioral_remedy}</p>
+      </div>
+    )}
+    <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
+      <span>Duration: {remedy.duration}</span>
+      <span>Source: {remedy.source_collection}</span>
+      <span>Science: {remedy.science_id}</span>
+    </div>
+  </div>
+);
+
 export const BirthChartPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -19,10 +140,22 @@ export const BirthChartPage = () => {
   const [birthChart, setBirthChart] = useState(null);
   const [loading, setLoading] = useState({ birthChart: false });
   const [profileLoading, setProfileLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('report');
+  const [remediesLoading, setRemediesLoading] = useState(false);
+  const [remediesError, setRemediesError] = useState('');
+  const [remedyPacks, setRemedyPacks] = useState([]);
 
   useEffect(() => {
     loadBirthProfile();
   }, []);
+
+  useEffect(() => {
+    if (birthChart?.planets) {
+      loadRemediesForChart(birthChart);
+    } else {
+      setRemedyPacks([]);
+    }
+  }, [birthChart]);
 
   const loadBirthProfile = async () => {
     const savedProfileId = localStorage.getItem('birth-profile-id');
@@ -87,6 +220,46 @@ export const BirthChartPage = () => {
       toast.error('Failed to generate birth chart. Please try again.');
     } finally {
       setLoading({ birthChart: false });
+    }
+  };
+
+  const loadRemediesForChart = async (chartReport) => {
+    const afflictedPlanets = getTopAfflictedPlanets(chartReport);
+    if (!afflictedPlanets.length) {
+      setRemedyPacks([]);
+      return;
+    }
+
+    setRemediesLoading(true);
+    setRemediesError('');
+    try {
+      const responses = await Promise.all(
+        afflictedPlanets.map(async (planetContext) => {
+          const payload = {
+            trigger: 'birth_chart',
+            planet: planetContext.planet,
+            house: planetContext.house,
+            affliction: planetContext.affliction,
+            dasha_planet: chartReport?.current_dasha?.planet || null,
+            life_domain: planetContext.lifeDomain,
+            nakshatra: chartReport?.nakshatra?.name || null,
+            intensity: planetContext.intensity,
+            remedy_type_filter: 'both',
+          };
+          const response = await axios.post(`${API}/remedies/suggest`, payload);
+          return {
+            ...planetContext,
+            pack: response.data,
+          };
+        })
+      );
+      setRemedyPacks(responses);
+    } catch (error) {
+      console.error('Error loading remedy suggestions:', error);
+      setRemediesError('Remedy suggestions are not available yet. Please try again after the engine data is installed.');
+      setRemedyPacks([]);
+    } finally {
+      setRemediesLoading(false);
     }
   };
 
@@ -160,11 +333,116 @@ export const BirthChartPage = () => {
                   {loading.birthChart ? 'Generating...' : 'Generate Birth Chart'}
                 </Button>
               )}
-              <BirthChartDisplay
-                report={birthChart}
-                isLoading={loading.birthChart}
-                profile={birthProfile}
-              />
+              {birthChart && (
+                <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                  <TabsList className="grid w-full grid-cols-2 mb-6 bg-muted p-1 rounded-sm h-auto">
+                    <TabsTrigger value="report" className="text-sm data-[state=active]:bg-background">
+                      Report
+                    </TabsTrigger>
+                    <TabsTrigger value="remedies" className="text-sm data-[state=active]:bg-background">
+                      Remedies
+                    </TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent value="report">
+                    <BirthChartDisplay
+                      report={birthChart}
+                      isLoading={loading.birthChart}
+                      profile={birthProfile}
+                    />
+                  </TabsContent>
+
+                  <TabsContent value="remedies">
+                    <Card className="p-6 border-2 border-gold/20 bg-card space-y-5">
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-2">
+                            Context-Driven Remedy Layer
+                          </p>
+                          <h3 className="text-2xl font-playfair font-semibold">Remedies For Your Chart</h3>
+                          <p className="text-sm text-muted-foreground mt-2 max-w-3xl">
+                            These suggestions use the weakest visible planets in your computed chart and return a mixed remedy pack across Jyotish, Lal Kitab, crystal, chakra, and Krishna-ready structures where available.
+                          </p>
+                        </div>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="border-gold hover:bg-gold hover:text-primary-foreground"
+                          onClick={() => loadRemediesForChart(birthChart)}
+                          disabled={remediesLoading}
+                        >
+                          {remediesLoading ? 'Refreshing...' : 'Refresh Remedies'}
+                        </Button>
+                      </div>
+
+                      {remediesLoading && (
+                        <div className="rounded-sm border border-gold/20 bg-background/70 p-6 flex items-center gap-3 text-sm text-muted-foreground">
+                          <Loader2 className="h-5 w-5 animate-spin text-gold" />
+                          Building your cross-tradition remedy pack from the current chart context...
+                        </div>
+                      )}
+
+                      {!remediesLoading && remediesError && (
+                        <div className="rounded-sm border border-destructive/30 bg-destructive/5 p-4 text-sm text-foreground/85">
+                          {remediesError}
+                        </div>
+                      )}
+
+                      {!remediesLoading && !remediesError && remedyPacks.length === 0 && (
+                        <div className="rounded-sm border border-gold/20 bg-background/70 p-6 text-sm text-muted-foreground">
+                          Remedy suggestions will appear here once approved remedy records are available for the current chart context.
+                        </div>
+                      )}
+
+                      <div className="space-y-4">
+                        {remedyPacks.map((entry, index) => (
+                          <Collapsible key={`${entry.planet}-${entry.house || index}`} defaultOpen={index === 0}>
+                            <div className="rounded-sm border border-gold/20 bg-background/60 overflow-hidden">
+                              <CollapsibleTrigger className="w-full text-left p-4 flex items-center justify-between gap-4 hover:bg-gold/5 transition-colors">
+                                <div>
+                                  <div className="flex items-center gap-2 text-gold text-xs uppercase tracking-widest mb-1">
+                                    <Orbit className="h-3.5 w-3.5" />
+                                    <span>Planet Trigger</span>
+                                  </div>
+                                  <p className="font-playfair text-xl font-semibold">{entry.planet}</p>
+                                  <p className="text-sm text-muted-foreground mt-1">
+                                    House {entry.house || '—'} • {formatLabel(entry.dignity)} • {formatLabel(entry.affliction)}
+                                  </p>
+                                  <p className="text-sm text-foreground/80 mt-2">
+                                    {entry.pack?.context_summary || 'Remedy context unavailable.'}
+                                  </p>
+                                </div>
+                                <ChevronDown className="h-5 w-5 text-gold" />
+                              </CollapsibleTrigger>
+                              <CollapsibleContent className="border-t border-gold/10">
+                                <div className="p-4 space-y-4">
+                                  <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
+                                    <span>Life domain: {formatLabel(entry.lifeDomain)}</span>
+                                    <span>Intensity: {formatLabel(entry.intensity)}</span>
+                                    <span>Mode: {formatLabel(entry.pack?.advisory_mode || 'supportive')}</span>
+                                  </div>
+
+                                  {entry.pack?.remedies?.length ? (
+                                    <div className="space-y-3">
+                                      {entry.pack.remedies.map((remedy) => (
+                                        <RemedyItemCard key={remedy.remedy_id} remedy={remedy} />
+                                      ))}
+                                    </div>
+                                  ) : (
+                                    <div className="rounded-sm border border-dashed border-border p-4 text-sm text-muted-foreground">
+                                      No approved remedies matched this trigger yet.
+                                    </div>
+                                  )}
+                                </div>
+                              </CollapsibleContent>
+                            </div>
+                          </Collapsible>
+                        ))}
+                      </div>
+                    </Card>
+                  </TabsContent>
+                </Tabs>
+              )}
             </>
           )}
           </div>
