@@ -76,6 +76,7 @@ const StrategistMissionsPage = lazy(() => import('./pages/StrategistMissionsPage
 const StrategistReportPage = lazy(() => import('./pages/StrategistReportPage'));
 const StrategistSurrogatePage = lazy(() => import('./pages/StrategistSurrogatePage'));
 const KrishnaOraclePage = lazy(() => import('./pages/KrishnaOraclePage'));
+const StrategistActionPlanPage = lazy(() => import('./pages/StrategistActionPlanPage'));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -220,6 +221,7 @@ function App() {
                   <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />
                   <Route path="/strategist/report" element={<ProtectedRoute><StrategistReportPage /></ProtectedRoute>} />
                   <Route path="/strategist/surrogate" element={<ProtectedRoute><StrategistSurrogatePage /></ProtectedRoute>} />
+                  <Route path="/strategist/action-plan" element={<ProtectedRoute><StrategistActionPlanPage /></ProtectedRoute>} />
                   <Route path="/krishna-prashnavali" element={<ProtectedRoute><KrishnaOraclePage /></ProtectedRoute>} />
 
                   <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />

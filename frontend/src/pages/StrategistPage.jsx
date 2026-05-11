@@ -376,7 +376,11 @@ function WarRoomDashboard({ token }) {
               <p className="text-xs text-muted-foreground mb-1">Surrogate Bridge</p>
               <p className="text-gold font-semibold text-sm">Activate →</p>
             </Link>
-            <Link to="/strategist/report" className="rounded-xl border border-gold/30 bg-gradient-to-br from-gold/15 to-gold/5 p-4 text-center hover:bg-gold/20 transition">
+            <Link to="/strategist/action-plan" className="rounded-xl border border-gold/30 bg-gradient-to-br from-gold/15 to-gold/5 p-4 text-center hover:bg-gold/20 transition">
+              <p className="text-xs text-muted-foreground mb-1">Action Plan</p>
+              <p className="text-gold font-semibold text-sm">View →</p>
+            </Link>
+            <Link to="/strategist/report" className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4 text-center hover:bg-gold/10 transition">
               <p className="text-xs text-muted-foreground mb-1">Intelligence Brief</p>
               <p className="text-gold font-semibold text-sm">Premium →</p>
             </Link>

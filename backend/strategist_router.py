@@ -199,6 +199,151 @@ async def dashboard(request: Request):
     return state
 
 
+@router.get("/action-plan")
+async def action_plan(request: Request):
+    db = get_db(request)
+    user_email = get_user_email(request)
+    now = datetime.now(timezone.utc)
+
+    # Profile + diagnosis
+    profile = await db.lk_user_profiles.find_one({"user_id": user_email}, {"_id": 0})
+    if not profile:
+        raise HTTPException(status_code=404, detail="LK profile missing — complete /api/lk/onboard first.")
+
+    natal_chart = profile.get("natal_chart", {})
+    age = profile.get("age", 30)
+
+    cached = await db.lk_diagnose_cache.find_one({"user_id": user_email}, {"_id": 0})
+    diagnosis = cached.get("result", {}) if cached else await run_full_diagnosis(db, profile)
+    gates = diagnosis.get("gates", {})
+    gate1 = gates.get("gate1_karmic_debt", {})
+    gate4 = gates.get("gate4_mercury_scan", {})
+    pitru_rin = gate1.get("active_pitru_rin", False)
+    mercury_status = gate4.get("status", "CLEAR")
+
+    # Streak + active remedy
+    tracker = await db.lk_tracker.find_one({"user_id": user_email, "status": "active"}, {"_id": 0})
+    streak = tracker.get("streak_days", 0) if tracker else 0
+    remedy_id = tracker.get("remedy_id") if tracker else None
+    active_remedy = None
+    if remedy_id:
+        rec = await db.knowledge_rules.find_one({"science_id": "jyotish_lk_remedies", "id": remedy_id}, {"_id": 0})
+        if rec:
+            active_remedy = {
+                "remedy_id": remedy_id,
+                "rule_text": rec.get("rule_text") or rec.get("ke_inference", ""),
+                "planet": rec.get("primary_planet", ""),
+                "house": rec.get("house"),
+                "streak_days": streak,
+            }
+
+    # Gate 0
+    last_kp = await db.kp_sessions.find_one(
+        {"user_email": user_email, "context": "strategist_gate0"},
+        sort=[("created_at", -1)],
+    )
+    gate0_verdict = last_kp.get("verdict") if last_kp else None
+    gate0_days_since = None
+    gate0_expired = True
+    if last_kp:
+        exp = last_kp.get("expires_at")
+        if exp:
+            exp_aware = exp.replace(tzinfo=timezone.utc) if exp.tzinfo is None else exp
+            gate0_expired = now > exp_aware
+        created = last_kp.get("created_at")
+        if created:
+            created_aware = created.replace(tzinfo=timezone.utc) if created.tzinfo is None else created
+            gate0_days_since = max(0, (now - created_aware).days)
+
+    # Conquest score
+    command_planet = _get_command_planet(natal_chart)
+    success_direction = DIGBALA_DIRECTIONS.get(command_planet, "North")
+    prob = calculate_conquest_probability(
+        {"command_planet_strength": 1.0, "office_location": "", "success_direction": success_direction,
+         "active_pitru_rin": pitru_rin, "surrogate_active": False, "ritual_streak": streak},
+        {"primary_planet_degree": 15},
+    )
+    score = prob["score"]
+
+    # Top missions
+    missions_list = await get_active_missions(natal_chart, {}, db, limit=3)
+
+    # Priority actions
+    actions = []
+
+    if gate0_expired or not gate0_verdict:
+        actions.append({
+            "priority": 1, "type": "gate0",
+            "label": "Gate 0 — Oracle Clearance Required",
+            "detail": "Ask Krishna before entering the War Room. No active clearance found.",
+            "cta_label": "Enter War Room", "cta_path": "/strategist",
+        })
+    elif gate0_verdict == "WAIT" and streak == 0:
+        actions.append({
+            "priority": 1, "type": "remedy",
+            "label": "Start LK Tracker — WAIT verdict active",
+            "detail": "Oracle asks for patience. Activate your daily remedy streak to unlock the War Room.",
+            "cta_label": "Start Tracker", "cta_path": "/lk-remedies/tracker",
+        })
+    elif gate0_verdict == "NO" and score < 60:
+        actions.append({
+            "priority": 1, "type": "remedy",
+            "label": f"Raise Score to 60% — {60 - score} pts needed",
+            "detail": "Oracle blocked entry. Complete remedy cycle to clear the NO gate.",
+            "cta_label": "Browse Remedies", "cta_path": "/lk-remedies/remedies",
+        })
+    elif gate0_verdict == "PRAY" and score < 75:
+        actions.append({
+            "priority": 1, "type": "surrender",
+            "label": f"Full Surrender — {75 - score} pts to re-test",
+            "detail": "Complete Mantra practice and LK Debt Audit. Return at 75%.",
+            "cta_label": "Mantra Remedies", "cta_path": "/mantra-remedies",
+        })
+
+    if pitru_rin:
+        actions.append({
+            "priority": len(actions) + 1, "type": "debt",
+            "label": "Karmic Debt Active — Debt Audit Required",
+            "detail": "Ancestral debt is suppressing your score. Run a full LK Debt Audit.",
+            "cta_label": "LK Debt Audit", "cta_path": "/lk-remedies/debt-audit",
+        })
+
+    if mercury_status in ("EMPTY_VESSEL", "RAHU_COLLISION"):
+        actions.append({
+            "priority": len(actions) + 1, "type": "mercury",
+            "label": f"Mercury Alert — {mercury_status.replace('_', ' ').title()}",
+            "detail": gate4.get("narrative", "Mercury configuration requires attention."),
+            "cta_label": "LK Remedies", "cta_path": "/lk-remedies/remedies",
+        })
+
+    if streak == 0 and not any(a["type"] == "remedy" for a in actions):
+        actions.append({
+            "priority": len(actions) + 1, "type": "remedy",
+            "label": "No Active Remedy Streak",
+            "detail": "Begin a daily LK remedy to build Ritual Momentum and raise your Conquest score.",
+            "cta_label": "Start Tracker", "cta_path": "/lk-remedies/tracker",
+        })
+
+    for m in missions_list:
+        actions.append({
+            "priority": len(actions) + 1, "type": "mission",
+            "label": m.get("title", m.get("trigger_condition", "Active Mission")),
+            "detail": m.get("ke_inference") or m.get("rule_text", ""),
+            "cta_label": "Mission Board", "cta_path": "/strategist/missions",
+        })
+
+    return {
+        "generated_at": now.isoformat(),
+        "gate0": {"verdict": gate0_verdict, "days_since": gate0_days_since, "expired": gate0_expired},
+        "active_remedy": active_remedy,
+        "conquest_score": score,
+        "score_tier": prob["tier"],
+        "score_directive": prob["directive"],
+        "streak_days": streak,
+        "priority_actions": actions,
+    }
+
+
 class MissionsRequest(BaseModel):
     user_id: Optional[str] = None
     date: Optional[str] = None
