@@ -10,7 +10,7 @@ import {
   ChevronDown, ChevronRight, Sparkles, LogIn, User,
   Sun, Moon as MoonIcon, Calendar, Gem, Hash, Globe,
   Heart, Briefcase, Shield, Leaf, Zap, Crown,
-  BookMarked, Layers, Users
+  BookMarked, Layers
 } from 'lucide-react';
 
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
@@ -85,9 +85,8 @@ const NAV = [
       { label: 'Feng Shui',       path: '/remedies',          icon: Leaf },
     ],
   },
-  { label: 'Blog',     icon: BookMarked, path: '/blog' },
+  { label: 'Krishna Prashanavali', icon: Sparkles, path: '/krishna-prashnavali' },
   { label: 'Pricing',  icon: Tag,        path: '/pricing' },
-  { label: 'Careers',  icon: Users,      path: '/careers' },
 ];
 
 const BOTTOM_NAV = [

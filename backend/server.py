@@ -99,6 +99,7 @@ from knowledge_router import router as knowledge_router
 from knowledge_schema import KnowledgeNarrativeRequest, KnowledgeNarrativeResponse
 from lk_remedies_router import router as lk_router
 from strategist_router import router as strategist_router
+from scriptural_oracle_router import router as kp_router
 try:
     from longevity_router import router as longevity_router
     _longevity_router_ok = True
@@ -2044,6 +2045,7 @@ app.include_router(palmistry_router)
 app.include_router(knowledge_router)
 app.include_router(lk_router)
 app.include_router(strategist_router)
+app.include_router(kp_router)
 app.include_router(remedies_router)
 if _longevity_router_ok and longevity_router is not None:
     app.include_router(longevity_router)
