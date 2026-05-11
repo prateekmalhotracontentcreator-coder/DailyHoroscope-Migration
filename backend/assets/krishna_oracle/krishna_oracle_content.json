@@ -1,0 +1,2586 @@
+{
+  "bundle_version": "canonical-v1",
+  "content_status": "canonical",
+  "mapping_status": "canonical",
+  "bundle_note": "Canonical 36-answer Krishna Oracle bundle compiled from Temple reference documents using Sanskrit primacy and parallel English interpretation.",
+  "grid_matrix": [
+    "सु",
+    "ध",
+    "रे",
+    "म",
+    "स",
+    "ब",
+    "का",
+    "ज",
+    "वि",
+    "चा",
+    "र",
+    "त",
+    "स",
+    "र",
+    "ज",
+    "ब",
+    "म",
+    "न",
+    "रा",
+    "म",
+    "ल",
+    "ख",
+    "न",
+    "क",
+    "जु",
+    "प",
+    "स",
+    "प",
+    "न",
+    "बि",
+    "र",
+    "च",
+    "सि",
+    "रि",
+    "ब",
+    "ठ",
+    "सु",
+    "न",
+    "वि",
+    "स",
+    "वा",
+    "स",
+    "फ",
+    "ल",
+    "म",
+    "न",
+    "आ",
+    "स",
+    "क",
+    "ल",
+    "क",
+    "ल्या",
+    "ण",
+    "सु",
+    "ध",
+    "र",
+    "म",
+    "म",
+    "सु",
+    "ख",
+    "भा",
+    "ष",
+    "त",
+    "ग",
+    "त",
+    "सु",
+    "ख",
+    "द",
+    "स",
+    "र",
+    "व",
+    "सि",
+    "धि",
+    "जा",
+    "न",
+    "हु",
+    "सु",
+    "फ",
+    "ल",
+    "म",
+    "नो",
+    "र",
+    "थ",
+    "पु",
+    "रा",
+    "न",
+    "ध",
+    "म",
+    "म",
+    "र",
+    "ज",
+    "ह",
+    "म",
+    "न",
+    "रा",
+    "म",
+    "क",
+    "रु",
+    "पा",
+    "स",
+    "ब",
+    "ल",
+    "र",
+    "त",
+    "स",
+    "ब",
+    "क",
+    "र",
+    "स",
+    "हि",
+    "त",
+    "सु",
+    "ख",
+    "स",
+    "र",
+    "व",
+    "सि",
+    "धि",
+    "क",
+    "म",
+    "क",
+    "र",
+    "सु",
+    "फ",
+    "ल",
+    "ज",
+    "न",
+    "न",
+    "पु",
+    "र",
+    "वि",
+    "ज",
+    "य",
+    "ध",
+    "न",
+    "ला",
+    "भ",
+    "स",
+    "ब",
+    "क",
+    "र",
+    "न",
+    "सु",
+    "फ",
+    "ल",
+    "स",
+    "न",
+    "दि",
+    "व",
+    "स",
+    "सु",
+    "ख",
+    "द",
+    "आ",
+    "न",
+    "न",
+    "द",
+    "म",
+    "नो",
+    "र",
+    "थ",
+    "सु",
+    "फ",
+    "ल",
+    "व",
+    "र",
+    "ष",
+    "अ",
+    "च",
+    "ल",
+    "स",
+    "र",
+    "व",
+    "सु",
+    "ख",
+    "ह",
+    "रि",
+    "भ",
+    "क्ति",
+    "सु",
+    "फ",
+    "ल",
+    "ज",
+    "न",
+    "न",
+    "सु",
+    "ख",
+    "भा",
+    "ष",
+    "त",
+    "ग",
+    "त",
+    "सु",
+    "ख",
+    "द",
+    "ज",
+    "न",
+    "न",
+    "वि",
+    "ज",
+    "य",
+    "ध",
+    "न",
+    "ला",
+    "भ",
+    "सु",
+    "फ",
+    "ल",
+    "सु",
+    "म",
+    "ति",
+    "सु",
+    "ख",
+    "र",
+    "च",
+    "अ",
+    "ल",
+    "क",
+    "ल्या",
+    "ण",
+    "सु",
+    "फ",
+    "ल",
+    "भ",
+    "व",
+    "न",
+    "सु",
+    "ख",
+    "स",
+    "र",
+    "व",
+    "क",
+    "र",
+    "म",
+    "सु",
+    "ध",
+    "रे",
+    "ज",
+    "य",
+    "स",
+    "म",
+    "प",
+    "र",
+    "क",
+    "रि",
+    "सु",
+    "फ",
+    "ल",
+    "ज",
+    "न",
+    "न",
+    "म",
+    "नो",
+    "र",
+    "थ",
+    "वि",
+    "ज",
+    "य",
+    "ध",
+    "न",
+    "आ",
+    "श",
+    "सु",
+    "फ",
+    "ल",
+    "ल",
+    "र",
+    "ष",
+    "म",
+    "ति",
+    "सु",
+    "ख",
+    "द",
+    "स",
+    "र",
+    "व",
+    "क",
+    "र",
+    "म",
+    "सु",
+    "ध",
+    "रे",
+    "म",
+    "स",
+    "ब",
+    "का",
+    "ज",
+    "क",
+    "ल्या",
+    "ण",
+    "सु",
+    "फ",
+    "ल",
+    "भ",
+    "व",
+    "न",
+    "वि",
+    "ज",
+    "य",
+    "सु",
+    "ख",
+    "द",
+    "स",
+    "र",
+    "व",
+    "म",
+    "नो",
+    "र",
+    "थ",
+    "वि",
+    "ज",
+    "य",
+    "ध",
+    "न",
+    "आ",
+    "म",
+    "स",
+    "ब",
+    "का",
+    "ज",
+    "वि",
+    "चा",
+    "र",
+    "त"
+  ],
+  "cell_answer_map": {
+    "0": 1,
+    "1": 1,
+    "2": 1,
+    "3": 2,
+    "4": 2,
+    "5": 2,
+    "6": 3,
+    "7": 3,
+    "8": 3,
+    "9": 4,
+    "10": 4,
+    "11": 4,
+    "12": 5,
+    "13": 5,
+    "14": 5,
+    "15": 6,
+    "16": 6,
+    "17": 6,
+    "18": 1,
+    "19": 1,
+    "20": 1,
+    "21": 2,
+    "22": 2,
+    "23": 2,
+    "24": 3,
+    "25": 3,
+    "26": 3,
+    "27": 4,
+    "28": 4,
+    "29": 4,
+    "30": 5,
+    "31": 5,
+    "32": 5,
+    "33": 6,
+    "34": 6,
+    "35": 6,
+    "36": 1,
+    "37": 1,
+    "38": 1,
+    "39": 2,
+    "40": 2,
+    "41": 2,
+    "42": 3,
+    "43": 3,
+    "44": 3,
+    "45": 4,
+    "46": 4,
+    "47": 4,
+    "48": 5,
+    "49": 5,
+    "50": 5,
+    "51": 6,
+    "52": 6,
+    "53": 6,
+    "54": 7,
+    "55": 7,
+    "56": 7,
+    "57": 8,
+    "58": 8,
+    "59": 8,
+    "60": 9,
+    "61": 9,
+    "62": 9,
+    "63": 10,
+    "64": 10,
+    "65": 10,
+    "66": 11,
+    "67": 11,
+    "68": 11,
+    "69": 12,
+    "70": 12,
+    "71": 12,
+    "72": 7,
+    "73": 7,
+    "74": 7,
+    "75": 8,
+    "76": 8,
+    "77": 8,
+    "78": 9,
+    "79": 9,
+    "80": 9,
+    "81": 10,
+    "82": 10,
+    "83": 10,
+    "84": 11,
+    "85": 11,
+    "86": 11,
+    "87": 12,
+    "88": 12,
+    "89": 12,
+    "90": 7,
+    "91": 7,
+    "92": 7,
+    "93": 8,
+    "94": 8,
+    "95": 8,
+    "96": 9,
+    "97": 9,
+    "98": 9,
+    "99": 10,
+    "100": 10,
+    "101": 10,
+    "102": 11,
+    "103": 11,
+    "104": 11,
+    "105": 12,
+    "106": 12,
+    "107": 12,
+    "108": 13,
+    "109": 13,
+    "110": 13,
+    "111": 14,
+    "112": 14,
+    "113": 14,
+    "114": 15,
+    "115": 15,
+    "116": 15,
+    "117": 16,
+    "118": 16,
+    "119": 16,
+    "120": 17,
+    "121": 17,
+    "122": 17,
+    "123": 18,
+    "124": 18,
+    "125": 18,
+    "126": 13,
+    "127": 13,
+    "128": 13,
+    "129": 14,
+    "130": 14,
+    "131": 14,
+    "132": 15,
+    "133": 15,
+    "134": 15,
+    "135": 16,
+    "136": 16,
+    "137": 16,
+    "138": 17,
+    "139": 17,
+    "140": 17,
+    "141": 18,
+    "142": 18,
+    "143": 18,
+    "144": 13,
+    "145": 13,
+    "146": 13,
+    "147": 14,
+    "148": 14,
+    "149": 14,
+    "150": 15,
+    "151": 15,
+    "152": 15,
+    "153": 16,
+    "154": 16,
+    "155": 16,
+    "156": 17,
+    "157": 17,
+    "158": 17,
+    "159": 18,
+    "160": 18,
+    "161": 18,
+    "162": 19,
+    "163": 19,
+    "164": 19,
+    "165": 20,
+    "166": 20,
+    "167": 20,
+    "168": 21,
+    "169": 21,
+    "170": 21,
+    "171": 22,
+    "172": 22,
+    "173": 22,
+    "174": 23,
+    "175": 23,
+    "176": 23,
+    "177": 24,
+    "178": 24,
+    "179": 24,
+    "180": 19,
+    "181": 19,
+    "182": 19,
+    "183": 20,
+    "184": 20,
+    "185": 20,
+    "186": 21,
+    "187": 21,
+    "188": 21,
+    "189": 22,
+    "190": 22,
+    "191": 22,
+    "192": 23,
+    "193": 23,
+    "194": 23,
+    "195": 24,
+    "196": 24,
+    "197": 24,
+    "198": 19,
+    "199": 19,
+    "200": 19,
+    "201": 20,
+    "202": 20,
+    "203": 20,
+    "204": 21,
+    "205": 21,
+    "206": 21,
+    "207": 22,
+    "208": 22,
+    "209": 22,
+    "210": 23,
+    "211": 23,
+    "212": 23,
+    "213": 24,
+    "214": 24,
+    "215": 24,
+    "216": 25,
+    "217": 25,
+    "218": 25,
+    "219": 26,
+    "220": 26,
+    "221": 26,
+    "222": 27,
+    "223": 27,
+    "224": 27,
+    "225": 28,
+    "226": 28,
+    "227": 28,
+    "228": 29,
+    "229": 29,
+    "230": 29,
+    "231": 30,
+    "232": 30,
+    "233": 30,
+    "234": 25,
+    "235": 25,
+    "236": 25,
+    "237": 26,
+    "238": 26,
+    "239": 26,
+    "240": 27,
+    "241": 27,
+    "242": 27,
+    "243": 28,
+    "244": 28,
+    "245": 28,
+    "246": 29,
+    "247": 29,
+    "248": 29,
+    "249": 30,
+    "250": 30,
+    "251": 30,
+    "252": 25,
+    "253": 25,
+    "254": 25,
+    "255": 26,
+    "256": 26,
+    "257": 26,
+    "258": 27,
+    "259": 27,
+    "260": 27,
+    "261": 28,
+    "262": 28,
+    "263": 28,
+    "264": 29,
+    "265": 29,
+    "266": 29,
+    "267": 30,
+    "268": 30,
+    "269": 30,
+    "270": 31,
+    "271": 31,
+    "272": 31,
+    "273": 32,
+    "274": 32,
+    "275": 32,
+    "276": 33,
+    "277": 33,
+    "278": 33,
+    "279": 34,
+    "280": 34,
+    "281": 34,
+    "282": 35,
+    "283": 35,
+    "284": 35,
+    "285": 36,
+    "286": 36,
+    "287": 36,
+    "288": 31,
+    "289": 31,
+    "290": 31,
+    "291": 32,
+    "292": 32,
+    "293": 32,
+    "294": 33,
+    "295": 33,
+    "296": 33,
+    "297": 34,
+    "298": 34,
+    "299": 34,
+    "300": 35,
+    "301": 35,
+    "302": 35,
+    "303": 36,
+    "304": 36,
+    "305": 36,
+    "306": 31,
+    "307": 31,
+    "308": 31,
+    "309": 32,
+    "310": 32,
+    "311": 32,
+    "312": 33,
+    "313": 33,
+    "314": 33,
+    "315": 34,
+    "316": 34,
+    "317": 34,
+    "318": 35,
+    "319": 35,
+    "320": 35,
+    "321": 36,
+    "322": 36,
+    "323": 36
+  },
+  "answers": [
+    {
+      "answer_id": "ka-001",
+      "answer_slot": 1,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "सब काज सुधरेगा",
+      "title": {
+        "sanskrit_block": "कार्य सिद्ध होगा",
+        "english_block": "Work will be successful"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "कार्य सिद्ध होगा।",
+        "english_block": "Work will be successful."
+      },
+      "meaning": {
+        "sanskrit_block": "यह प्रश्न अनुकूल है और आपका प्रयास सिद्धि की ओर बढ़ रहा है।",
+        "english_block": "The indication is favorable and your effort is moving toward completion."
+      },
+      "what_to_do": {
+        "sanskrit_block": "आत्मविश्वास और संयम के साथ आगे बढ़ें।",
+        "english_block": "Move forward with confidence, steadiness, and clean intention."
+      },
+      "remedy": {
+        "sanskrit_block": "गीता के अठारहवें अध्याय के अंतिम श्लोक का स्मरण करें।",
+        "english_block": "Contemplate the final assurance of Gita Chapter 18 before acting."
+      },
+      "precaution": {
+        "sanskrit_block": "अहंकार, असावधानी और परिणाम-लालसा से बचें।",
+        "english_block": "Avoid pride, carelessness, and attachment to the outcome."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "शीघ्र फल प्राप्त होने की संभावना है।",
+        "english_block": "Results are likely to arrive soon."
+      },
+      "krishna_message": {
+        "sanskrit_block": "हे साधक, स्थिर कर्म और श्रद्धा से मार्ग खुलता है।",
+        "english_block": "Steady action and faith are opening the way for you."
+      },
+      "theme_tags": [
+        "success",
+        "career",
+        "confidence"
+      ],
+      "source_ref": "Gita Ch.18 V.78 / Traditional Prashnavali Answer 1",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-002",
+      "answer_slot": 2,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "मनोरथ पूरा होवेगा",
+      "title": {
+        "sanskrit_block": "मनोरथ पूर्ण होगा",
+        "english_block": "Desire will be fulfilled"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "मनोरथ पूर्ण होगा।",
+        "english_block": "Desire will be fulfilled."
+      },
+      "meaning": {
+        "sanskrit_block": "मन की सच्ची इच्छा पूर्ण होने की दिशा में है।",
+        "english_block": "Your heartfelt wish is moving toward fulfillment."
+      },
+      "what_to_do": {
+        "sanskrit_block": "आत्मविश्वास और संयम के साथ आगे बढ़ें।",
+        "english_block": "Move forward with confidence, steadiness, and clean intention."
+      },
+      "remedy": {
+        "sanskrit_block": "तुलसी अर्पित कर श्रीकृष्ण को अपनी प्रार्थना समर्पित करें।",
+        "english_block": "Offer tulsi leaves and dedicate your wish to Krishna."
+      },
+      "precaution": {
+        "sanskrit_block": "अहंकार, असावधानी और परिणाम-लालसा से बचें।",
+        "english_block": "Avoid pride, carelessness, and attachment to the outcome."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अनुकूल समय-चक्र में फल प्रकट होगा।",
+        "english_block": "The result should unfold within a favorable cycle."
+      },
+      "krishna_message": {
+        "sanskrit_block": "श्रद्धा बनाए रखें; अनुकूलता आपके पक्ष में काम कर रही है।",
+        "english_block": "Keep your faith steady; favorable forces are moving with you."
+      },
+      "theme_tags": [
+        "desire",
+        "love",
+        "wish"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 2",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-003",
+      "answer_slot": 3,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "विजय धन लाभ मिले",
+      "title": {
+        "sanskrit_block": "लाभ होगा",
+        "english_block": "Profit will occur"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "लाभ होगा।",
+        "english_block": "Profit will occur."
+      },
+      "meaning": {
+        "sanskrit_block": "धन, अवसर या उपयोगी सहयोग के रूप में लाभ मिलेगा।",
+        "english_block": "Gain is indicated through money, opportunity, or helpful support."
+      },
+      "what_to_do": {
+        "sanskrit_block": "आत्मविश्वास और संयम के साथ आगे बढ़ें।",
+        "english_block": "Move forward with confidence, steadiness, and clean intention."
+      },
+      "remedy": {
+        "sanskrit_block": "गुरुवार को पीला अन्न या मिठाई दान करें।",
+        "english_block": "On Thursday, offer a yellow food item or sweets in charity."
+      },
+      "precaution": {
+        "sanskrit_block": "लाभ के लोभ में अति-आशा न बढ़ाएँ।",
+        "english_block": "Do not let greed distort a favorable gain."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "ईश्वर-नियत समय पर ही फल स्पष्ट होगा।",
+        "english_block": "The result will reveal itself in divine timing."
+      },
+      "krishna_message": {
+        "sanskrit_block": "श्रद्धा बनाए रखें; अनुकूलता आपके पक्ष में काम कर रही है।",
+        "english_block": "Keep your faith steady; favorable forces are moving with you."
+      },
+      "theme_tags": [
+        "profit",
+        "wealth",
+        "gain"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 3",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-004",
+      "answer_slot": 4,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "विजय प्राप्त होगी",
+      "title": {
+        "sanskrit_block": "विजय प्राप्त होगी",
+        "english_block": "Victory will be achieved"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "विजय प्राप्त होगी।",
+        "english_block": "Victory will be achieved."
+      },
+      "meaning": {
+        "sanskrit_block": "प्रतिस्पर्धा, परीक्षा या संघर्ष में विजय के संकेत हैं।",
+        "english_block": "Victory is indicated in competition, exams, or conflict."
+      },
+      "what_to_do": {
+        "sanskrit_block": "आत्मविश्वास और संयम के साथ आगे बढ़ें।",
+        "english_block": "Move forward with confidence, steadiness, and clean intention."
+      },
+      "remedy": {
+        "sanskrit_block": "कर्म आरम्भ से पहले विजय हेतु श्रीकृष्ण स्मरण करें।",
+        "english_block": "Invoke Krishna before beginning any decisive action."
+      },
+      "precaution": {
+        "sanskrit_block": "अहंकार, असावधानी और परिणाम-लालसा से बचें।",
+        "english_block": "Avoid pride, carelessness, and attachment to the outcome."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "ईश्वर-नियत समय पर ही फल स्पष्ट होगा।",
+        "english_block": "The result will reveal itself in divine timing."
+      },
+      "krishna_message": {
+        "sanskrit_block": "जहाँ धर्म और धैर्य है, वहाँ विजय भी साथ चलती है।",
+        "english_block": "Where dharma and steadiness stand, victory follows."
+      },
+      "theme_tags": [
+        "victory",
+        "competition",
+        "dispute"
+      ],
+      "source_ref": "Gita Ch.18 V.78 / Traditional Prashnavali Answer 4",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-005",
+      "answer_slot": 5,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "सुख की प्राप्ति",
+      "title": {
+        "sanskrit_block": "सुख की प्राप्ति",
+        "english_block": "Attainment of happiness"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "सुख की प्राप्ति।",
+        "english_block": "Attainment of happiness."
+      },
+      "meaning": {
+        "sanskrit_block": "वर्तमान चिंता के बाद शांति और संतोष प्राप्त होगा।",
+        "english_block": "Peace and emotional relief are likely after the present concern."
+      },
+      "what_to_do": {
+        "sanskrit_block": "आत्मविश्वास और संयम के साथ आगे बढ़ें।",
+        "english_block": "Move forward with confidence, steadiness, and clean intention."
+      },
+      "remedy": {
+        "sanskrit_block": "प्रतिदिन कुछ क्षण कृतज्ञता और शांत जप में दें।",
+        "english_block": "Spend a few minutes daily in gratitude and calm japa."
+      },
+      "precaution": {
+        "sanskrit_block": "अहंकार, असावधानी और परिणाम-लालसा से बचें।",
+        "english_block": "Avoid pride, carelessness, and attachment to the outcome."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अनुकूल समय-चक्र में फल प्रकट होगा।",
+        "english_block": "The result should unfold within a favorable cycle."
+      },
+      "krishna_message": {
+        "sanskrit_block": "श्रद्धा बनाए रखें; अनुकूलता आपके पक्ष में काम कर रही है।",
+        "english_block": "Keep your faith steady; favorable forces are moving with you."
+      },
+      "theme_tags": [
+        "happiness",
+        "peace",
+        "relief"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 5",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-006",
+      "answer_slot": 6,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "मंगल कार्य होगा",
+      "title": {
+        "sanskrit_block": "मंगल कार्य होगा",
+        "english_block": "Auspicious event will occur"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "मंगल कार्य होगा।",
+        "english_block": "Auspicious event will occur."
+      },
+      "meaning": {
+        "sanskrit_block": "शुभ आरम्भ, संस्कार, मिलन या नया कदम अनुकूल रहेगा।",
+        "english_block": "An auspicious beginning, ceremony, or new step is supported."
+      },
+      "what_to_do": {
+        "sanskrit_block": "शुभ कार्य का आरम्भ निष्ठा और स्पष्टता से करें।",
+        "english_block": "Begin the auspicious step with sincerity and clear intention."
+      },
+      "remedy": {
+        "sanskrit_block": "शुभ कार्य से पहले दीपक प्रज्वलित करें।",
+        "english_block": "Light a lamp before beginning the auspicious event."
+      },
+      "precaution": {
+        "sanskrit_block": "अहंकार, असावधानी और परिणाम-लालसा से बचें।",
+        "english_block": "Avoid pride, carelessness, and attachment to the outcome."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अनुकूल समय-चक्र में फल प्रकट होगा।",
+        "english_block": "The result should unfold within a favorable cycle."
+      },
+      "krishna_message": {
+        "sanskrit_block": "श्रद्धा बनाए रखें; अनुकूलता आपके पक्ष में काम कर रही है।",
+        "english_block": "Keep your faith steady; favorable forces are moving with you."
+      },
+      "theme_tags": [
+        "auspicious",
+        "marriage",
+        "new-beginning"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 6",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-007",
+      "answer_slot": 7,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "मन की इच्छा पूरी होगी",
+      "title": {
+        "sanskrit_block": "मन की इच्छा पूरी होगी",
+        "english_block": "Heart's desire will be met"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "मन की इच्छा पूरी होगी।",
+        "english_block": "Heart's desire will be met."
+      },
+      "meaning": {
+        "sanskrit_block": "भीतर की प्रार्थना सुनी जा रही है और परिणाम अनुकूल हो सकता है।",
+        "english_block": "The prayer within your heart is being heard and may resolve favorably."
+      },
+      "what_to_do": {
+        "sanskrit_block": "आत्मविश्वास और संयम के साथ आगे बढ़ें।",
+        "english_block": "Move forward with confidence, steadiness, and clean intention."
+      },
+      "remedy": {
+        "sanskrit_block": "अपनी इच्छा लिखकर कृष्ण चरणों में मानसिक रूप से अर्पित करें।",
+        "english_block": "Write your intention and mentally offer it at Krishna’s feet."
+      },
+      "precaution": {
+        "sanskrit_block": "अहंकार, असावधानी और परिणाम-लालसा से बचें।",
+        "english_block": "Avoid pride, carelessness, and attachment to the outcome."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अनुकूल समय-चक्र में फल प्रकट होगा।",
+        "english_block": "The result should unfold within a favorable cycle."
+      },
+      "krishna_message": {
+        "sanskrit_block": "श्रद्धा बनाए रखें; अनुकूलता आपके पक्ष में काम कर रही है।",
+        "english_block": "Keep your faith steady; favorable forces are moving with you."
+      },
+      "theme_tags": [
+        "heart",
+        "wish",
+        "spiritual-wish"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 7",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-008",
+      "answer_slot": 8,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "शीघ्र कार्य होगा",
+      "title": {
+        "sanskrit_block": "शीघ्र कार्य होगा",
+        "english_block": "Work will happen quickly"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "शीघ्र कार्य होगा।",
+        "english_block": "Work will happen quickly."
+      },
+      "meaning": {
+        "sanskrit_block": "विलम्ब अधिक नहीं रहेगा; कार्य शीघ्र गति पकड़ेगा।",
+        "english_block": "Delay should be minimal; the matter can move quickly now."
+      },
+      "what_to_do": {
+        "sanskrit_block": "अब आवश्यक कार्य को टालें नहीं; संगठित होकर तुरंत कदम उठाएँ।",
+        "english_block": "Do not delay the necessary work now; move in an organized and timely way."
+      },
+      "remedy": {
+        "sanskrit_block": "कार्य शुरू करने से पहले तीन बार गहरी श्वास लेकर मंत्र जप करें।",
+        "english_block": "Take three deep breaths and chant before starting the work."
+      },
+      "precaution": {
+        "sanskrit_block": "शीघ्रता में गुणवत्ता और मर्यादा न खोएँ।",
+        "english_block": "Do not sacrifice quality or ethics for speed."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "शीघ्र फल प्राप्त होने की संभावना है।",
+        "english_block": "Results are likely to arrive soon."
+      },
+      "krishna_message": {
+        "sanskrit_block": "श्रद्धा बनाए रखें; अनुकूलता आपके पक्ष में काम कर रही है।",
+        "english_block": "Keep your faith steady; favorable forces are moving with you."
+      },
+      "theme_tags": [
+        "speed",
+        "timing",
+        "action"
+      ],
+      "source_ref": "Gita Ch.3 V.19 / Traditional Prashnavali Answer 8",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-009",
+      "answer_slot": 9,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "मित्र से सहायता मिलेगी",
+      "title": {
+        "sanskrit_block": "मित्र से सहायता मिलेगी",
+        "english_block": "Help from a friend"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "मित्र से सहायता मिलेगी।",
+        "english_block": "Help from a friend."
+      },
+      "meaning": {
+        "sanskrit_block": "विश्वसनीय मित्र, सहयोगी या शुभचिंतक से मदद मिलेगी।",
+        "english_block": "Help is likely to arrive through a trusted friend, ally, or supporter."
+      },
+      "what_to_do": {
+        "sanskrit_block": "मित्र या सहयोगी की मदद स्वीकार करें और समन्वय बनाए रखें।",
+        "english_block": "Accept help from a friend or collaborator and stay coordinated."
+      },
+      "remedy": {
+        "sanskrit_block": "सहयोग देने वाले व्यक्ति के प्रति आभार व्यक्त करें।",
+        "english_block": "Offer gratitude to the person who supports you."
+      },
+      "precaution": {
+        "sanskrit_block": "सहायता पर पूर्ण निर्भर होकर अपनी जिम्मेदारी न छोड़ें।",
+        "english_block": "Do not abandon your own responsibility just because help is available."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अनुकूल समय-चक्र में फल प्रकट होगा।",
+        "english_block": "The result should unfold within a favorable cycle."
+      },
+      "krishna_message": {
+        "sanskrit_block": "श्रद्धा बनाए रखें; अनुकूलता आपके पक्ष में काम कर रही है।",
+        "english_block": "Keep your faith steady; favorable forces are moving with you."
+      },
+      "theme_tags": [
+        "friend",
+        "support",
+        "collaboration"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 9",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-010",
+      "answer_slot": 10,
+      "source_category": "Positive",
+      "verdict_traditional": "Pratibha",
+      "verdict_backend": "SUCCESS",
+      "verdict_display": "YES",
+      "chaupai_phrase": "ईश्वर की कृपा",
+      "title": {
+        "sanskrit_block": "ईश्वर की कृपा",
+        "english_block": "God's grace"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "ईश्वर की कृपा।",
+        "english_block": "God's grace."
+      },
+      "meaning": {
+        "sanskrit_block": "यह परिणाम कृपा, संरक्षण और अदृश्य सहायता से जुड़ा है।",
+        "english_block": "This result is connected to grace, protection, and unseen help."
+      },
+      "what_to_do": {
+        "sanskrit_block": "कृतज्ञता व्यक्त करें और अपने कर्म को पूजा की तरह करें।",
+        "english_block": "Express gratitude and treat your work as an offering."
+      },
+      "remedy": {
+        "sanskrit_block": "भक्ति-भाव से नामस्मरण करें और प्रसाद बाँटें।",
+        "english_block": "Practice devotional name-chanting and share prasad."
+      },
+      "precaution": {
+        "sanskrit_block": "कृपा को स्व-अहंकार का प्रमाण न मानें।",
+        "english_block": "Do not mistake grace for personal superiority."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अनुकूल समय-चक्र में फल प्रकट होगा।",
+        "english_block": "The result should unfold within a favorable cycle."
+      },
+      "krishna_message": {
+        "sanskrit_block": "कृपा तब उतरती है जब हृदय नम्र और जागरूक रहता है।",
+        "english_block": "Grace descends when the heart stays humble and awake."
+      },
+      "theme_tags": [
+        "grace",
+        "devotion",
+        "protection"
+      ],
+      "source_ref": "Gita Ch.9 V.34 / Traditional Prashnavali Answer 10",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-011",
+      "answer_slot": 11,
+      "source_category": "Mixed",
+      "verdict_traditional": "Dhairya",
+      "verdict_backend": "PATIENCE",
+      "verdict_display": "WAIT",
+      "chaupai_phrase": "विलम्ब से सफलता मिले",
+      "title": {
+        "sanskrit_block": "कार्य में विलम्ब",
+        "english_block": "Delay in work"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "कार्य में विलम्ब।",
+        "english_block": "Delay in work — patience and preparation are needed."
+      },
+      "meaning": {
+        "sanskrit_block": "कार्य होगा, पर अभी समय की कसौटी शेष है।",
+        "english_block": "The work can happen, but timing remains the main test."
+      },
+      "what_to_do": {
+        "sanskrit_block": "अभी तैयारी, धैर्य और पुनर्मूल्यांकन पर ध्यान दें।",
+        "english_block": "Focus on preparation, patience, and reassessment for now."
+      },
+      "remedy": {
+        "sanskrit_block": "शनिवार को काले तिल या तेल का दान करें।",
+        "english_block": "On Saturday, donate black sesame or oil to soften delay."
+      },
+      "precaution": {
+        "sanskrit_block": "जल्दबाजी, हताशा और अधैर्य से बचें।",
+        "english_block": "Avoid haste, frustration, and impatience."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ शं शनैश्चराय नमः",
+        "english_block": "Om Sham Shanishcharaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "कुछ समय, तैयारी और धैर्य के बाद स्पष्टता आएगी।",
+        "english_block": "More time, preparation, and patience are needed before clarity arrives."
+      },
+      "krishna_message": {
+        "sanskrit_block": "विलम्ब दंड नहीं, तैयारी का संकेत है।",
+        "english_block": "Delay is not punishment; it is a call to prepare."
+      },
+      "theme_tags": [
+        "delay",
+        "patience",
+        "timing"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 11 / Gita Ch.2 V.14",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-012",
+      "answer_slot": 12,
+      "source_category": "Mixed",
+      "verdict_traditional": "Dhairya",
+      "verdict_backend": "PATIENCE",
+      "verdict_display": "WAIT",
+      "chaupai_phrase": "कठिन परिश्रम से काज",
+      "title": {
+        "sanskrit_block": "परिश्रम से सफलता",
+        "english_block": "Success through hard work"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "परिश्रम से सफलता।",
+        "english_block": "Success through hard work — patience and preparation are needed."
+      },
+      "meaning": {
+        "sanskrit_block": "सफलता संभव है, पर केवल श्रम और अनुशासन से।",
+        "english_block": "Success is possible, but only through sustained effort and discipline."
+      },
+      "what_to_do": {
+        "sanskrit_block": "अभी तैयारी, धैर्य और पुनर्मूल्यांकन पर ध्यान दें।",
+        "english_block": "Focus on preparation, patience, and reassessment for now."
+      },
+      "remedy": {
+        "sanskrit_block": "प्रतिदिन कर्म आरम्भ से पहले 11 बार मंत्र जप करें।",
+        "english_block": "Chant 11 times daily before beginning work."
+      },
+      "precaution": {
+        "sanskrit_block": "जल्दबाजी, हताशा और अधैर्य से बचें।",
+        "english_block": "Avoid haste, frustration, and impatience."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "कुछ समय, तैयारी और धैर्य के बाद स्पष्टता आएगी।",
+        "english_block": "More time, preparation, and patience are needed before clarity arrives."
+      },
+      "krishna_message": {
+        "sanskrit_block": "धैर्य रखो; समय पर खुलने वाला मार्ग अधिक स्थायी होता है।",
+        "english_block": "Be patient; the path that opens in time is more enduring."
+      },
+      "theme_tags": [
+        "effort",
+        "discipline",
+        "labor"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 12 / Gita Ch.2 V.47",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-013",
+      "answer_slot": 13,
+      "source_category": "Mixed",
+      "verdict_traditional": "Dhairya",
+      "verdict_backend": "PATIENCE",
+      "verdict_display": "WAIT",
+      "chaupai_phrase": "कुछ समय बाद फल",
+      "title": {
+        "sanskrit_block": "कुछ समय बाद फल",
+        "english_block": "Fruit after some time"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "कुछ समय बाद फल।",
+        "english_block": "Fruit after some time — patience and preparation are needed."
+      },
+      "meaning": {
+        "sanskrit_block": "फल मिलेगा, पर धैर्य और प्रतीक्षा आवश्यक है।",
+        "english_block": "Results will come, but patience and waiting are required."
+      },
+      "what_to_do": {
+        "sanskrit_block": "अभी तैयारी, धैर्य और पुनर्मूल्यांकन पर ध्यान दें।",
+        "english_block": "Focus on preparation, patience, and reassessment for now."
+      },
+      "remedy": {
+        "sanskrit_block": "श्वास पर ध्यान और प्रतीक्षा का अभ्यास करें।",
+        "english_block": "Practice breath awareness and patient waiting."
+      },
+      "precaution": {
+        "sanskrit_block": "जल्दबाजी, हताशा और अधैर्य से बचें।",
+        "english_block": "Avoid haste, frustration, and impatience."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "कुछ समय, तैयारी और धैर्य के बाद स्पष्टता आएगी।",
+        "english_block": "More time, preparation, and patience are needed before clarity arrives."
+      },
+      "krishna_message": {
+        "sanskrit_block": "धैर्य रखो; समय पर खुलने वाला मार्ग अधिक स्थायी होता है।",
+        "english_block": "Be patient; the path that opens in time is more enduring."
+      },
+      "theme_tags": [
+        "patience",
+        "delayed-result",
+        "maturity"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 13 / Gita Ch.2 V.14",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-014",
+      "answer_slot": 14,
+      "source_category": "Mixed",
+      "verdict_traditional": "Dhairya",
+      "verdict_backend": "PATIENCE",
+      "verdict_display": "WAIT",
+      "chaupai_phrase": "सफलता में संदेह",
+      "title": {
+        "sanskrit_block": "सफलता में संदेह",
+        "english_block": "Doubt in success"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "सफलता में संदेह।",
+        "english_block": "Doubt in success — patience and preparation are needed."
+      },
+      "meaning": {
+        "sanskrit_block": "अभी स्थिति स्पष्ट नहीं है; परिणाम आधा-अधूरा दिखाई देता है।",
+        "english_block": "The situation is still unclear and the outcome remains uncertain."
+      },
+      "what_to_do": {
+        "sanskrit_block": "अभी तैयारी, धैर्य और पुनर्मूल्यांकन पर ध्यान दें।",
+        "english_block": "Focus on preparation, patience, and reassessment for now."
+      },
+      "remedy": {
+        "sanskrit_block": "गीता 6.35 का चिंतन कर मन को केंद्रित करें।",
+        "english_block": "Reflect on Gita 6.35 to steady the restless mind."
+      },
+      "precaution": {
+        "sanskrit_block": "अस्पष्टता में बड़ा वचन या निवेश न करें।",
+        "english_block": "Do not make major promises or investments in uncertainty."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "कुछ समय, तैयारी और धैर्य के बाद स्पष्टता आएगी।",
+        "english_block": "More time, preparation, and patience are needed before clarity arrives."
+      },
+      "krishna_message": {
+        "sanskrit_block": "अस्पष्टता में विराम ही बुद्धिमत्ता है।",
+        "english_block": "In uncertainty, pause itself is wisdom."
+      },
+      "theme_tags": [
+        "uncertain",
+        "doubt",
+        "clarity"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 14 / Gita Ch.6 V.35",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-015",
+      "answer_slot": 15,
+      "source_category": "Mixed",
+      "verdict_traditional": "Dhairya",
+      "verdict_backend": "PATIENCE",
+      "verdict_display": "WAIT",
+      "chaupai_phrase": "सोच समझकर करें",
+      "title": {
+        "sanskrit_block": "सोच-समझकर करें",
+        "english_block": "Do with careful thought"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "सोच-समझकर करें।",
+        "english_block": "Do with careful thought — patience and preparation are needed."
+      },
+      "meaning": {
+        "sanskrit_block": "जल्दबाजी के बजाय विवेकपूर्ण निर्णय आवश्यक है।",
+        "english_block": "This matter asks for discernment rather than speed."
+      },
+      "what_to_do": {
+        "sanskrit_block": "निर्णय लेने से पहले सभी पक्षों की शांतिपूर्वक समीक्षा करें।",
+        "english_block": "Review every side calmly before you decide."
+      },
+      "remedy": {
+        "sanskrit_block": "निर्णय से पहले एक दिन का मौन या सीमित वाणी रखें।",
+        "english_block": "Keep a day of silence or restrained speech before deciding."
+      },
+      "precaution": {
+        "sanskrit_block": "भावना के उफान में निर्णय न लें।",
+        "english_block": "Do not decide in a surge of emotion."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "कुछ समय, तैयारी और धैर्य के बाद स्पष्टता आएगी।",
+        "english_block": "More time, preparation, and patience are needed before clarity arrives."
+      },
+      "krishna_message": {
+        "sanskrit_block": "धैर्य रखो; समय पर खुलने वाला मार्ग अधिक स्थायी होता है।",
+        "english_block": "Be patient; the path that opens in time is more enduring."
+      },
+      "theme_tags": [
+        "careful-thought",
+        "decision",
+        "discernment"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 15 / Gita Ch.17 V.16",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-016",
+      "answer_slot": 16,
+      "source_category": "Mixed",
+      "verdict_traditional": "Dhairya",
+      "verdict_backend": "PATIENCE",
+      "verdict_display": "WAIT",
+      "chaupai_phrase": "बाधा आएगी",
+      "title": {
+        "sanskrit_block": "बाधा आएगी",
+        "english_block": "Obstacles will come"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "बाधा आएगी।",
+        "english_block": "Obstacles will come — patience and preparation are needed."
+      },
+      "meaning": {
+        "sanskrit_block": "रास्ते में रुकावटें आएँगी, इसलिए तैयारी बढ़ाएँ।",
+        "english_block": "Obstacles are likely, so strengthen your preparation."
+      },
+      "what_to_do": {
+        "sanskrit_block": "अभी तैयारी, धैर्य और पुनर्मूल्यांकन पर ध्यान दें।",
+        "english_block": "Focus on preparation, patience, and reassessment for now."
+      },
+      "remedy": {
+        "sanskrit_block": "रोज़ 5 मिनट प्राणायाम करें और कार्यसूची स्पष्ट लिखें।",
+        "english_block": "Do five minutes of pranayama and write a clear task list."
+      },
+      "precaution": {
+        "sanskrit_block": "जल्दबाजी, हताशा और अधैर्य से बचें।",
+        "english_block": "Avoid haste, frustration, and impatience."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "कुछ समय, तैयारी और धैर्य के बाद स्पष्टता आएगी।",
+        "english_block": "More time, preparation, and patience are needed before clarity arrives."
+      },
+      "krishna_message": {
+        "sanskrit_block": "धैर्य रखो; समय पर खुलने वाला मार्ग अधिक स्थायी होता है।",
+        "english_block": "Be patient; the path that opens in time is more enduring."
+      },
+      "theme_tags": [
+        "obstacle",
+        "resistance",
+        "preparation"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 16 / Gita Ch.6 V.35",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-017",
+      "answer_slot": 17,
+      "source_category": "Mixed",
+      "verdict_traditional": "Dhairya",
+      "verdict_backend": "PATIENCE",
+      "verdict_display": "WAIT",
+      "chaupai_phrase": "स्थान परिवर्तन",
+      "title": {
+        "sanskrit_block": "स्थान परिवर्तन",
+        "english_block": "Change of place"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "स्थान परिवर्तन।",
+        "english_block": "Change of place — patience and preparation are needed."
+      },
+      "meaning": {
+        "sanskrit_block": "स्थान, रणनीति या वातावरण बदलने से लाभ मिल सकता है।",
+        "english_block": "A change of place, method, or environment may improve the outcome."
+      },
+      "what_to_do": {
+        "sanskrit_block": "स्थान, पद्धति या दृष्टिकोण बदलने की संभावना पर विचार करें।",
+        "english_block": "Consider changing place, method, or approach."
+      },
+      "remedy": {
+        "sanskrit_block": "यात्रा या परिवर्तन से पहले ईश्वर स्मरण कर दिशा-शुद्धि करें।",
+        "english_block": "Purify intention with prayer before any move or change."
+      },
+      "precaution": {
+        "sanskrit_block": "परिवर्तन केवल बेचैनी में नहीं, विवेक से करें।",
+        "english_block": "Do not change course out of restlessness alone."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "कुछ समय, तैयारी और धैर्य के बाद स्पष्टता आएगी।",
+        "english_block": "More time, preparation, and patience are needed before clarity arrives."
+      },
+      "krishna_message": {
+        "sanskrit_block": "धैर्य रखो; समय पर खुलने वाला मार्ग अधिक स्थायी होता है।",
+        "english_block": "Be patient; the path that opens in time is more enduring."
+      },
+      "theme_tags": [
+        "change",
+        "travel",
+        "shift"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 17",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-018",
+      "answer_slot": 18,
+      "source_category": "Mixed",
+      "verdict_traditional": "Dhairya",
+      "verdict_backend": "PATIENCE",
+      "verdict_display": "WAIT",
+      "chaupai_phrase": "सावधानी आवश्यक",
+      "title": {
+        "sanskrit_block": "सावधानी आवश्यक",
+        "english_block": "Caution is necessary"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "सावधानी आवश्यक।",
+        "english_block": "Caution is necessary — patience and preparation are needed."
+      },
+      "meaning": {
+        "sanskrit_block": "अदृश्य जोखिम हैं; सावधानी और निरीक्षण ज़रूरी है।",
+        "english_block": "Hidden risks are present, so care and close observation are needed."
+      },
+      "what_to_do": {
+        "sanskrit_block": "छोटे संकेतों, दस्तावेज़ों और समय-चक्र पर विशेष ध्यान दें।",
+        "english_block": "Pay close attention to subtle signals, documents, and timing."
+      },
+      "remedy": {
+        "sanskrit_block": "किसी अनुभवी व्यक्ति से सलाह लेकर ही अगला कदम उठाएँ।",
+        "english_block": "Take the next step only after consulting an experienced person."
+      },
+      "precaution": {
+        "sanskrit_block": "छिपे हुए संकेतों और कानूनी बिंदुओं को नज़रअंदाज़ न करें।",
+        "english_block": "Do not ignore hidden signals or legal details."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "कुछ समय, तैयारी और धैर्य के बाद स्पष्टता आएगी।",
+        "english_block": "More time, preparation, and patience are needed before clarity arrives."
+      },
+      "krishna_message": {
+        "sanskrit_block": "सावधानी भी एक प्रकार की कृपा है।",
+        "english_block": "Caution itself can be a form of grace."
+      },
+      "theme_tags": [
+        "caution",
+        "risk",
+        "awareness"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 18",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-019",
+      "answer_slot": 19,
+      "source_category": "Warning",
+      "verdict_traditional": "Pratrodha",
+      "verdict_backend": "WARNING",
+      "verdict_display": "NO",
+      "chaupai_phrase": "कार्य सिद्ध नहीं होगा",
+      "title": {
+        "sanskrit_block": "कार्य सिद्ध नहीं होगा",
+        "english_block": "Work will not be successful"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "कार्य सिद्ध नहीं होगा।",
+        "english_block": "Work will not be successful — do not force this matter in its current form."
+      },
+      "meaning": {
+        "sanskrit_block": "वर्तमान रूप में यह कार्य सिद्ध होने की संभावना कम है।",
+        "english_block": "In its current form, this matter is unlikely to succeed."
+      },
+      "what_to_do": {
+        "sanskrit_block": "रुकें, पुनर्विचार करें और दबाव में कोई बड़ा कदम न उठाएँ।",
+        "english_block": "Pause, reconsider, and avoid major action under pressure."
+      },
+      "remedy": {
+        "sanskrit_block": "हनुमान चालीसा या संरक्षण मंत्र का पाठ करें।",
+        "english_block": "Recite the Hanuman Chalisa or a protection mantra."
+      },
+      "precaution": {
+        "sanskrit_block": "जिद, क्रोध और भ्रम में आगे न बढ़ें।",
+        "english_block": "Do not proceed through stubbornness, anger, or confusion."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अभी यह समय अनुकूल नहीं; परिवर्तन के बाद ही पुनः देखें।",
+        "english_block": "This is not the right period; revisit only after conditions change."
+      },
+      "krishna_message": {
+        "sanskrit_block": "मेरा निषेध भी तुम्हारी रक्षा के लिए है।",
+        "english_block": "My refusal is also a form of protection."
+      },
+      "theme_tags": [
+        "no",
+        "stop",
+        "misalignment"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 19",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-020",
+      "answer_slot": 20,
+      "source_category": "Warning",
+      "verdict_traditional": "Pratrodha",
+      "verdict_backend": "WARNING",
+      "verdict_display": "NO",
+      "chaupai_phrase": "हानि होगी सचेत रह",
+      "title": {
+        "sanskrit_block": "हानि की संभावना",
+        "english_block": "Possibility of loss"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "हानि की संभावना।",
+        "english_block": "Possibility of loss — do not force this matter in its current form."
+      },
+      "meaning": {
+        "sanskrit_block": "धन, मान या ऊर्जा की हानि का संकेत है।",
+        "english_block": "There is a real possibility of loss in money, reputation, or energy."
+      },
+      "what_to_do": {
+        "sanskrit_block": "जोखिम घटाएँ, खर्च सीमित करें और सुरक्षा को प्राथमिकता दें।",
+        "english_block": "Reduce exposure, limit spending, and prioritize safety."
+      },
+      "remedy": {
+        "sanskrit_block": "दान-पुण्य कर अनावश्यक व्यय पर रोक लगाएँ।",
+        "english_block": "Practice charity and cut unnecessary expenditure."
+      },
+      "precaution": {
+        "sanskrit_block": "जिद, क्रोध और भ्रम में आगे न बढ़ें।",
+        "english_block": "Do not proceed through stubbornness, anger, or confusion."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ शं शनैश्चराय नमः",
+        "english_block": "Om Sham Shanishcharaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अभी यह समय अनुकूल नहीं; परिवर्तन के बाद ही पुनः देखें।",
+        "english_block": "This is not the right period; revisit only after conditions change."
+      },
+      "krishna_message": {
+        "sanskrit_block": "हानि से पहले चेतावनी मिलना भी कृपा है।",
+        "english_block": "Being warned before loss is itself grace."
+      },
+      "theme_tags": [
+        "loss",
+        "finance",
+        "risk"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 20",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-021",
+      "answer_slot": 21,
+      "source_category": "Warning",
+      "verdict_traditional": "Pratrodha",
+      "verdict_backend": "WARNING",
+      "verdict_display": "NO",
+      "chaupai_phrase": "शत्रु भय",
+      "title": {
+        "sanskrit_block": "शत्रु भय",
+        "english_block": "Fear of enemies"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "शत्रु भय।",
+        "english_block": "Fear of enemies — do not force this matter in its current form."
+      },
+      "meaning": {
+        "sanskrit_block": "विरोधी, ईर्ष्यालु या छिपे अवरोध सक्रिय हो सकते हैं।",
+        "english_block": "Opposition, jealousy, or hidden resistance may be active."
+      },
+      "what_to_do": {
+        "sanskrit_block": "अपने योजनाओं को गोपनीय रखें और रक्षात्मक रणनीति अपनाएँ।",
+        "english_block": "Keep your plans discreet and take a protective strategy."
+      },
+      "remedy": {
+        "sanskrit_block": "रक्षा-कवच भाव से हनुमान स्मरण करें।",
+        "english_block": "Invoke Hanuman with a protective inner attitude."
+      },
+      "precaution": {
+        "sanskrit_block": "गोपनीय बातों को खुलकर साझा न करें।",
+        "english_block": "Do not share sensitive matters openly."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अभी यह समय अनुकूल नहीं; परिवर्तन के बाद ही पुनः देखें।",
+        "english_block": "This is not the right period; revisit only after conditions change."
+      },
+      "krishna_message": {
+        "sanskrit_block": "जो मार्ग अशांत करे, उससे पीछे हटना ही बुद्धिमानी है।",
+        "english_block": "Stepping back from a disturbing path is wisdom."
+      },
+      "theme_tags": [
+        "enemies",
+        "opposition",
+        "protection"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 21",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-022",
+      "answer_slot": 22,
+      "source_category": "Warning",
+      "verdict_traditional": "Pratrodha",
+      "verdict_backend": "WARNING",
+      "verdict_display": "NO",
+      "chaupai_phrase": "चिंता बढ़ेगी",
+      "title": {
+        "sanskrit_block": "चिंता बढ़ेगी",
+        "english_block": "Anxiety will increase"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "चिंता बढ़ेगी।",
+        "english_block": "Anxiety will increase — do not force this matter in its current form."
+      },
+      "meaning": {
+        "sanskrit_block": "यह मार्ग मानसिक दबाव और अस्थिरता बढ़ा सकता है।",
+        "english_block": "This path may intensify stress, worry, or inner instability."
+      },
+      "what_to_do": {
+        "sanskrit_block": "रुकें, पुनर्विचार करें और दबाव में कोई बड़ा कदम न उठाएँ।",
+        "english_block": "Pause, reconsider, and avoid major action under pressure."
+      },
+      "remedy": {
+        "sanskrit_block": "मन को शांत करने हेतु प्राणायाम और मौन अपनाएँ।",
+        "english_block": "Use breathwork and silence to calm mental pressure."
+      },
+      "precaution": {
+        "sanskrit_block": "भय या तनाव में प्रतिक्रिया-प्रधान निर्णय न लें।",
+        "english_block": "Do not make reactionary decisions under fear or stress."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अभी यह समय अनुकूल नहीं; परिवर्तन के बाद ही पुनः देखें।",
+        "english_block": "This is not the right period; revisit only after conditions change."
+      },
+      "krishna_message": {
+        "sanskrit_block": "जो मार्ग अशांत करे, उससे पीछे हटना ही बुद्धिमानी है।",
+        "english_block": "Stepping back from a disturbing path is wisdom."
+      },
+      "theme_tags": [
+        "anxiety",
+        "stress",
+        "mental-load"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 22 / Gita Ch.6 V.35",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-023",
+      "answer_slot": 23,
+      "source_category": "Warning",
+      "verdict_traditional": "Pratrodha",
+      "verdict_backend": "WARNING",
+      "verdict_display": "NO",
+      "chaupai_phrase": "असफलता",
+      "title": {
+        "sanskrit_block": "असफलता",
+        "english_block": "Failure"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "असफलता।",
+        "english_block": "Failure — do not force this matter in its current form."
+      },
+      "meaning": {
+        "sanskrit_block": "उद्देश्य के अनुसार फल न मिलने की आशंका अधिक है।",
+        "english_block": "The present effort is likely to fall short of its intended result."
+      },
+      "what_to_do": {
+        "sanskrit_block": "रुकें, पुनर्विचार करें और दबाव में कोई बड़ा कदम न उठाएँ।",
+        "english_block": "Pause, reconsider, and avoid major action under pressure."
+      },
+      "remedy": {
+        "sanskrit_block": "रुके हुए कार्य को छोड़कर नई रणनीति बनाएं।",
+        "english_block": "Release the failing effort and build a new strategy."
+      },
+      "precaution": {
+        "sanskrit_block": "जिद, क्रोध और भ्रम में आगे न बढ़ें।",
+        "english_block": "Do not proceed through stubbornness, anger, or confusion."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अभी यह समय अनुकूल नहीं; परिवर्तन के बाद ही पुनः देखें।",
+        "english_block": "This is not the right period; revisit only after conditions change."
+      },
+      "krishna_message": {
+        "sanskrit_block": "जो मार्ग अशांत करे, उससे पीछे हटना ही बुद्धिमानी है।",
+        "english_block": "Stepping back from a disturbing path is wisdom."
+      },
+      "theme_tags": [
+        "failure",
+        "setback",
+        "loss"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 23",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-024",
+      "answer_slot": 24,
+      "source_category": "Warning",
+      "verdict_traditional": "Pratrodha",
+      "verdict_backend": "WARNING",
+      "verdict_display": "NO",
+      "chaupai_phrase": "विवाद बढ़ेगा दुख हो",
+      "title": {
+        "sanskrit_block": "विवाद होगा",
+        "english_block": "Dispute will occur"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "विवाद होगा।",
+        "english_block": "Dispute will occur — do not force this matter in its current form."
+      },
+      "meaning": {
+        "sanskrit_block": "विवाद, तकरार या कानूनी उलझन पैदा हो सकती है।",
+        "english_block": "Argument, confrontation, or legal strain may arise."
+      },
+      "what_to_do": {
+        "sanskrit_block": "वाणी संयमित रखें और टकराव को बढ़ने न दें।",
+        "english_block": "Keep your speech restrained and do not escalate conflict."
+      },
+      "remedy": {
+        "sanskrit_block": "विवाद-निवारण हेतु संवाद को सीमित और स्पष्ट रखें।",
+        "english_block": "Keep communication limited and precise to avoid escalation."
+      },
+      "precaution": {
+        "sanskrit_block": "कटु वाणी या लिखित विवाद को बढ़ावा न दें।",
+        "english_block": "Do not escalate with harsh speech or written hostility."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अभी यह समय अनुकूल नहीं; परिवर्तन के बाद ही पुनः देखें।",
+        "english_block": "This is not the right period; revisit only after conditions change."
+      },
+      "krishna_message": {
+        "sanskrit_block": "जो मार्ग अशांत करे, उससे पीछे हटना ही बुद्धिमानी है।",
+        "english_block": "Stepping back from a disturbing path is wisdom."
+      },
+      "theme_tags": [
+        "dispute",
+        "conflict",
+        "legal"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 24",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-025",
+      "answer_slot": 25,
+      "source_category": "Warning",
+      "verdict_traditional": "Pratrodha",
+      "verdict_backend": "WARNING",
+      "verdict_display": "NO",
+      "chaupai_phrase": "कष्ट होगा",
+      "title": {
+        "sanskrit_block": "कष्ट होगा",
+        "english_block": "Trouble will occur"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "कष्ट होगा।",
+        "english_block": "Trouble will occur — do not force this matter in its current form."
+      },
+      "meaning": {
+        "sanskrit_block": "यह मार्ग कष्ट, थकान या पीड़ा दे सकता है।",
+        "english_block": "This path may bring trouble, fatigue, or pain."
+      },
+      "what_to_do": {
+        "sanskrit_block": "रुकें, पुनर्विचार करें और दबाव में कोई बड़ा कदम न उठाएँ।",
+        "english_block": "Pause, reconsider, and avoid major action under pressure."
+      },
+      "remedy": {
+        "sanskrit_block": "शरीर और मन को विश्राम दें; कठिन निर्णय स्थगित करें।",
+        "english_block": "Give body and mind rest; postpone hard decisions."
+      },
+      "precaution": {
+        "sanskrit_block": "जिद, क्रोध और भ्रम में आगे न बढ़ें।",
+        "english_block": "Do not proceed through stubbornness, anger, or confusion."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अभी यह समय अनुकूल नहीं; परिवर्तन के बाद ही पुनः देखें।",
+        "english_block": "This is not the right period; revisit only after conditions change."
+      },
+      "krishna_message": {
+        "sanskrit_block": "जो मार्ग अशांत करे, उससे पीछे हटना ही बुद्धिमानी है।",
+        "english_block": "Stepping back from a disturbing path is wisdom."
+      },
+      "theme_tags": [
+        "trouble",
+        "pain",
+        "difficulty"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 25",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-026",
+      "answer_slot": 26,
+      "source_category": "Warning",
+      "verdict_traditional": "Pratrodha",
+      "verdict_backend": "WARNING",
+      "verdict_display": "NO",
+      "chaupai_phrase": "व्यर्थ प्रयास",
+      "title": {
+        "sanskrit_block": "व्यर्थ प्रयास",
+        "english_block": "Vain effort"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "व्यर्थ प्रयास।",
+        "english_block": "Vain effort — do not force this matter in its current form."
+      },
+      "meaning": {
+        "sanskrit_block": "इस दिशा में ऊर्जा लगाने पर उचित फल नहीं मिलेगा।",
+        "english_block": "This effort may consume energy without meaningful return."
+      },
+      "what_to_do": {
+        "sanskrit_block": "इस दिशा को रोककर ऊर्जा को अधिक सार्थक कार्य में लगाएँ।",
+        "english_block": "Stop pushing this direction and redirect your energy to something more meaningful."
+      },
+      "remedy": {
+        "sanskrit_block": "ऊर्जा बचाने हेतु इस प्रयास को विराम दें और पुनर्निर्देशन करें।",
+        "english_block": "Suspend the effort and redirect your energy elsewhere."
+      },
+      "precaution": {
+        "sanskrit_block": "केवल जिद के कारण प्रयास जारी न रखें।",
+        "english_block": "Do not continue merely out of stubbornness."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अभी यह समय अनुकूल नहीं; परिवर्तन के बाद ही पुनः देखें।",
+        "english_block": "This is not the right period; revisit only after conditions change."
+      },
+      "krishna_message": {
+        "sanskrit_block": "जहाँ श्रम व्यर्थ हो, वहाँ विराम ही साधना है।",
+        "english_block": "Where effort is futile, stopping is a spiritual act."
+      },
+      "theme_tags": [
+        "vain-effort",
+        "waste",
+        "redirection"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 26",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-027",
+      "answer_slot": 27,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "हनुमान जी की कृपा",
+      "title": {
+        "sanskrit_block": "हनुमान जी की कृपा",
+        "english_block": "Grace of Lord Hanuman"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "हनुमान जी की कृपा।",
+        "english_block": "Grace of Lord Hanuman — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "भक्ति, साहस और संरक्षण से यह स्थिति सुधर सकती है।",
+        "english_block": "Devotion, courage, and protection can change this situation."
+      },
+      "what_to_do": {
+        "sanskrit_block": "हनुमान स्मरण के साथ साहस और सेवा का संकल्प लें।",
+        "english_block": "Anchor yourself in Hanuman devotion with courage and service."
+      },
+      "remedy": {
+        "sanskrit_block": "हनुमान चालीसा, बजरंग बाण या हनुमान नामस्मरण करें।",
+        "english_block": "Recite Hanuman Chalisa, Bajrang Baan, or Hanuman japa."
+      },
+      "precaution": {
+        "sanskrit_block": "भक्ति को भय-आधारित लेन-देन न बनाएं।",
+        "english_block": "Do not turn devotion into fear-based bargaining."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ नमो हनुमते रुद्रावताराय",
+        "english_block": "Om Namo Hanumate Rudravataraya"
+      },
+      "duration": {
+        "sanskrit_block": "ईश्वर-नियत समय पर ही फल स्पष्ट होगा।",
+        "english_block": "The result will reveal itself in divine timing."
+      },
+      "krishna_message": {
+        "sanskrit_block": "साहस, सेवा और स्मरण से रुकावटें हल्की होती हैं।",
+        "english_block": "Obstacles lighten through courage, service, and remembrance."
+      },
+      "theme_tags": [
+        "hanuman",
+        "grace",
+        "protection"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 27",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-028",
+      "answer_slot": 28,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "दान पुण्य करें",
+      "title": {
+        "sanskrit_block": "दान-पुण्य करें",
+        "english_block": "Perform charity"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "दान-पुण्य करें।",
+        "english_block": "Perform charity — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "परोपकार और दान से रुकी हुई ऊर्जा खुल सकती है।",
+        "english_block": "Charity and selfless action can release blocked energy."
+      },
+      "what_to_do": {
+        "sanskrit_block": "आज ही कोई छोटा दान, सेवा या सहायक कर्म करें।",
+        "english_block": "Perform a small act of charity or service today."
+      },
+      "remedy": {
+        "sanskrit_block": "अन्न, वस्त्र या समय का दान करके ऊर्जा संतुलित करें।",
+        "english_block": "Balance the energy through charity of food, clothing, or time."
+      },
+      "precaution": {
+        "sanskrit_block": "दान दिखावे या फल-लालसा से न करें।",
+        "english_block": "Do not perform charity for display or reward-seeking."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ नमो भगवते वासुदेवाय",
+        "english_block": "Om Namo Bhagavate Vasudevaya"
+      },
+      "duration": {
+        "sanskrit_block": "ईश्वर-नियत समय पर ही फल स्पष्ट होगा।",
+        "english_block": "The result will reveal itself in divine timing."
+      },
+      "krishna_message": {
+        "sanskrit_block": "देना ही ऊर्जा को फिर से प्रवाहित करता है।",
+        "english_block": "Giving restores the flow of energy."
+      },
+      "theme_tags": [
+        "charity",
+        "service",
+        "remedy"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 28",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-029",
+      "answer_slot": 29,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "धैर्य रखें",
+      "title": {
+        "sanskrit_block": "धैर्य रखें",
+        "english_block": "Keep patience"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "धैर्य रखें।",
+        "english_block": "Keep patience — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "समय अभी पूर्ण नहीं हुआ; धैर्य ही उपाय है।",
+        "english_block": "The timing is not complete yet; patience itself is the remedy."
+      },
+      "what_to_do": {
+        "sanskrit_block": "जल्दबाजी छोड़कर प्रतीक्षा को साधना बना लें।",
+        "english_block": "Release urgency and turn waiting into a spiritual practice."
+      },
+      "remedy": {
+        "sanskrit_block": "धैर्यपूर्वक जप, प्रार्थना और प्रतीक्षा को साधना बनाएं।",
+        "english_block": "Turn chanting, prayer, and waiting into a devotional practice."
+      },
+      "precaution": {
+        "sanskrit_block": "धैर्य को निष्क्रियता या पराजय न समझें।",
+        "english_block": "Do not confuse patience with helpless passivity."
+      },
+      "mantra": {
+        "sanskrit_block": "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
+        "english_block": "Hare Krishna Hare Krishna Krishna Krishna Hare Hare"
+      },
+      "duration": {
+        "sanskrit_block": "कुछ समय, तैयारी और धैर्य के बाद स्पष्टता आएगी।",
+        "english_block": "More time, preparation, and patience are needed before clarity arrives."
+      },
+      "krishna_message": {
+        "sanskrit_block": "धैर्य रखो; दिव्य समय तुम्हारे पक्ष में काम कर रहा है।",
+        "english_block": "Stay patient; divine timing is working on your behalf."
+      },
+      "theme_tags": [
+        "patience",
+        "surrender",
+        "timing"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 29 / Gita Ch.2 V.14",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-030",
+      "answer_slot": 30,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "सत्य की जीत",
+      "title": {
+        "sanskrit_block": "सत्य की जीत",
+        "english_block": "Truth will win"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "सत्य की जीत।",
+        "english_block": "Truth will win — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "यदि आपका भाव शुद्ध है, अंततः सत्य की विजय होगी।",
+        "english_block": "If your intention is pure, truth will ultimately prevail."
+      },
+      "what_to_do": {
+        "sanskrit_block": "सत्य, पारदर्शिता और धर्म से विचलित न हों।",
+        "english_block": "Do not deviate from truth, transparency, and dharma."
+      },
+      "remedy": {
+        "sanskrit_block": "सत्य का पालन करें और किसी भी प्रकार की कपट-चेष्टा छोड़ें।",
+        "english_block": "Hold to truth and give up any attempt at manipulation."
+      },
+      "precaution": {
+        "sanskrit_block": "सत्य के नाम पर कठोर अहंकार न पालें।",
+        "english_block": "Do not hide harsh ego behind the name of truth."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अनुकूल समय-चक्र में फल प्रकट होगा।",
+        "english_block": "The result should unfold within a favorable cycle."
+      },
+      "krishna_message": {
+        "sanskrit_block": "सत्य देर से सही, पर विजयी होकर ही लौटता है।",
+        "english_block": "Truth may be delayed, but it returns in victory."
+      },
+      "theme_tags": [
+        "truth",
+        "justice",
+        "integrity"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 30",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-031",
+      "answer_slot": 31,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "अभिमान त्यागें",
+      "title": {
+        "sanskrit_block": "अभिमान त्यागें",
+        "english_block": "Leave pride"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "अभिमान त्यागें।",
+        "english_block": "Leave pride — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "अहंकार छोड़ने पर ही मार्ग स्पष्ट और फलदायी होगा।",
+        "english_block": "The path becomes clear only when pride is released."
+      },
+      "what_to_do": {
+        "sanskrit_block": "अभिमान छोड़कर नम्रता और सीखने की भावना अपनाएँ।",
+        "english_block": "Let go of pride and adopt humility and willingness to learn."
+      },
+      "remedy": {
+        "sanskrit_block": "विनय का अभ्यास करें और अहंकार-जनित प्रतिक्रिया रोकें।",
+        "english_block": "Practice humility and stop ego-driven reactions."
+      },
+      "precaution": {
+        "sanskrit_block": "आत्मग्लानि में न जाएँ; केवल अहंकार छोड़ें।",
+        "english_block": "Do not slide into self-blame; release only the pride."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "ईश्वर-नियत समय पर ही फल स्पष्ट होगा।",
+        "english_block": "The result will reveal itself in divine timing."
+      },
+      "krishna_message": {
+        "sanskrit_block": "नम्रता वह द्वार है जिससे अनुग्रह भीतर आता है।",
+        "english_block": "Humility is the doorway through which grace enters."
+      },
+      "theme_tags": [
+        "humility",
+        "ego",
+        "self-work"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 31 / Gita Ch.2 V.71",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-032",
+      "answer_slot": 32,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "सत्संग से लाभ",
+      "title": {
+        "sanskrit_block": "सत्संग से लाभ",
+        "english_block": "Benefit through good company"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "सत्संग से लाभ।",
+        "english_block": "Benefit through good company — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "सज्जनों, गुरुजनों या विवेकी मित्रों की संगति लाभ देगी।",
+        "english_block": "Wise company, elders, or a spiritual guide will benefit you."
+      },
+      "what_to_do": {
+        "sanskrit_block": "गुरु, सज्जन या विवेकी मित्र की संगति ग्रहण करें।",
+        "english_block": "Seek the company of a guide, elder, or wise friend."
+      },
+      "remedy": {
+        "sanskrit_block": "सत्संग, स्वाध्याय या गुरु-वचन सुनें।",
+        "english_block": "Attend satsang, self-study, or guidance from a teacher."
+      },
+      "precaution": {
+        "sanskrit_block": "कुसंगति और शोर से दूर रहें।",
+        "english_block": "Stay away from poor company and inner noise."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "ईश्वर-नियत समय पर ही फल स्पष्ट होगा।",
+        "english_block": "The result will reveal itself in divine timing."
+      },
+      "krishna_message": {
+        "sanskrit_block": "सत्संग मन को दिशा देता है और भ्रम घटाता है।",
+        "english_block": "Good company gives direction and reduces confusion."
+      },
+      "theme_tags": [
+        "satsang",
+        "guidance",
+        "community"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 32",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-033",
+      "answer_slot": 33,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "कुलदेवता का पूजन",
+      "title": {
+        "sanskrit_block": "कुलदेवता का पूजन",
+        "english_block": "Worship of family deity"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "कुलदेवता का पूजन।",
+        "english_block": "Worship of family deity — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "वंश, परंपरा या कुल-ऋण से जुड़ा आध्यात्मिक कर्तव्य सामने है।",
+        "english_block": "A family, lineage, or ancestral spiritual duty needs attention."
+      },
+      "what_to_do": {
+        "sanskrit_block": "कुलदेवता, पितृ-स्मरण या पारिवारिक परंपरा का सम्मान करें।",
+        "english_block": "Honor your family deity, ancestors, or sacred lineage duties."
+      },
+      "remedy": {
+        "sanskrit_block": "कुलदेवता या पारिवारिक इष्ट के सामने दीप और नमस्कार करें।",
+        "english_block": "Offer a lamp and prayer before the family deity."
+      },
+      "precaution": {
+        "sanskrit_block": "परंपरा निभाते समय अंधविश्वास या भय में न फँसें।",
+        "english_block": "Do not fall into fear or superstition while honoring tradition."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ नमो भगवते वासुदेवाय",
+        "english_block": "Om Namo Bhagavate Vasudevaya"
+      },
+      "duration": {
+        "sanskrit_block": "ईश्वर-नियत समय पर ही फल स्पष्ट होगा।",
+        "english_block": "The result will reveal itself in divine timing."
+      },
+      "krishna_message": {
+        "sanskrit_block": "जो जड़ों को सम्मान देता है, उसे मार्ग भी स्थिर मिलता है।",
+        "english_block": "One who honors the roots finds steadiness on the path."
+      },
+      "theme_tags": [
+        "family-deity",
+        "ancestral",
+        "worship"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 33",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-034",
+      "answer_slot": 34,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "यात्रा सुखद",
+      "title": {
+        "sanskrit_block": "यात्रा सुखद",
+        "english_block": "Pleasant journey"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "यात्रा सुखद।",
+        "english_block": "Pleasant journey — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "यात्रा, स्थानांतरण या मार्ग-संबंधी प्रश्न अनुकूल हैं।",
+        "english_block": "Travel, relocation, or movement-related matters are favorable."
+      },
+      "what_to_do": {
+        "sanskrit_block": "यात्रा से पहले प्रार्थना करें और मार्ग को शांत मन से स्वीकारें।",
+        "english_block": "Pray before travel and enter the journey with a calm mind."
+      },
+      "remedy": {
+        "sanskrit_block": "यात्रा से पूर्व प्रार्थना, जल और शांत संकल्प रखें।",
+        "english_block": "Before travel, pray, carry water, and set a calm intention."
+      },
+      "precaution": {
+        "sanskrit_block": "यात्रा में लापरवाही और जल्दबाजी न करें।",
+        "english_block": "Do not travel carelessly or in haste."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "अनुकूल समय-चक्र में फल प्रकट होगा।",
+        "english_block": "The result should unfold within a favorable cycle."
+      },
+      "krishna_message": {
+        "sanskrit_block": "यात्रा केवल स्थान की नहीं, भीतर की भी होती है।",
+        "english_block": "Every journey is outer movement and inner movement together."
+      },
+      "theme_tags": [
+        "travel",
+        "journey",
+        "movement"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 34",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-035",
+      "answer_slot": 35,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "शुभ समाचार",
+      "title": {
+        "sanskrit_block": "शुभ समाचार",
+        "english_block": "Good news"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "शुभ समाचार।",
+        "english_block": "Good news — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "निकट भविष्य में प्रसन्न करने वाला समाचार मिल सकता है।",
+        "english_block": "Encouraging news is likely to arrive soon."
+      },
+      "what_to_do": {
+        "sanskrit_block": "आने वाले समाचार को श्रद्धा और विवेक से ग्रहण करें।",
+        "english_block": "Receive the coming news with faith and discernment."
+      },
+      "remedy": {
+        "sanskrit_block": "शुभ समाचार मिलने पर कृतज्ञता और संयम बनाए रखें।",
+        "english_block": "When good news arrives, respond with gratitude and steadiness."
+      },
+      "precaution": {
+        "sanskrit_block": "समाचार मिलते ही असावधान उत्साह में न बहें।",
+        "english_block": "Do not become careless in excitement when news arrives."
+      },
+      "mantra": {
+        "sanskrit_block": "ॐ श्री कृष्णाय नमः",
+        "english_block": "Om Shri Krishnaya Namah"
+      },
+      "duration": {
+        "sanskrit_block": "शीघ्र फल प्राप्त होने की संभावना है।",
+        "english_block": "Results are likely to arrive soon."
+      },
+      "krishna_message": {
+        "sanskrit_block": "शुभ समाचार आशा को जगाता है; उसे कृतज्ञता से ग्रहण करो।",
+        "english_block": "Good news awakens hope; receive it with gratitude."
+      },
+      "theme_tags": [
+        "good-news",
+        "message",
+        "hope"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 35",
+      "content_status": "canonical"
+    },
+    {
+      "answer_id": "ka-036",
+      "answer_slot": 36,
+      "source_category": "Spiritual",
+      "verdict_traditional": "Bhakti",
+      "verdict_backend": "SURRENDER",
+      "verdict_display": "PRAY",
+      "chaupai_phrase": "मन शान्त रखें",
+      "title": {
+        "sanskrit_block": "मन शान्त रखें",
+        "english_block": "Keep mind calm"
+      },
+      "krishna_answer": {
+        "sanskrit_block": "मन शान्त रखें।",
+        "english_block": "Keep mind calm — devotion and surrender are part of the answer."
+      },
+      "meaning": {
+        "sanskrit_block": "उत्तर शांति, प्रार्थना और भीतर की स्थिरता में मिलेगा।",
+        "english_block": "The answer will be found through calmness, prayer, and inner stillness."
+      },
+      "what_to_do": {
+        "sanskrit_block": "ध्यान, श्वास और मौन के द्वारा मन को स्थिर करें।",
+        "english_block": "Stabilize the mind through prayer, breath, and silence."
+      },
+      "remedy": {
+        "sanskrit_block": "मौन, ध्यान और नामस्मरण से मन को स्थिर करें।",
+        "english_block": "Steady the mind through silence, meditation, and name-chanting."
+      },
+      "precaution": {
+        "sanskrit_block": "अशांत मन से तुरंत निर्णय न लें।",
+        "english_block": "Do not decide from an agitated mind."
+      },
+      "mantra": {
+        "sanskrit_block": "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
+        "english_block": "Hare Krishna Hare Krishna Krishna Krishna Hare Hare"
+      },
+      "duration": {
+        "sanskrit_block": "ईश्वर-नियत समय पर ही फल स्पष्ट होगा।",
+        "english_block": "The result will reveal itself in divine timing."
+      },
+      "krishna_message": {
+        "sanskrit_block": "शांति में वही उत्तर प्रकट होता है जिसे शोर छिपा देता है।",
+        "english_block": "The answer that noise hides is revealed in peace."
+      },
+      "theme_tags": [
+        "peace",
+        "calm",
+        "meditation"
+      ],
+      "source_ref": "Traditional Prashnavali Answer 36 / Gita Ch.18 V.66",
+      "content_status": "canonical"
+    }
+  ],
+  "bundle_instructions": {
+    "total_answers_required": 36,
+    "answers_provided_in_this_file": 36,
+    "answers_provided_note": "All 36 canonical answers are populated. English blocks are parallel interpretations; Sanskrit/Hindi remains the source-facing layer.",
+    "fields_per_answer": [
+      "answer_id",
+      "answer_slot",
+      "source_category",
+      "verdict_traditional",
+      "verdict_backend",
+      "verdict_display",
+      "chaupai_phrase",
+      "title",
+      "krishna_answer",
+      "meaning",
+      "what_to_do",
+      "remedy",
+      "precaution",
+      "mantra",
+      "duration",
+      "krishna_message",
+      "theme_tags",
+      "source_ref",
+      "content_status"
+    ],
+    "bilingual_field_structure": {
+      "sanskrit_block": "string",
+      "english_block": "string"
+    },
+    "verdict_mapping": {
+      "Pratibha": {
+        "backend": "SUCCESS",
+        "display": "YES",
+        "category": "Positive"
+      },
+      "Dhairya": {
+        "backend": "PATIENCE",
+        "display": "WAIT",
+        "category": "Mixed"
+      },
+      "Pratrodha": {
+        "backend": "WARNING",
+        "display": "NO",
+        "category": "Warning"
+      },
+      "Bhakti": {
+        "backend": "SURRENDER",
+        "display": "PRAY",
+        "category": "Spiritual"
+      }
+    },
+    "grid_matrix_note": "324-element array sourced from the traditional 18x18 Krishna Prashnavali grid. Selection logic uses a 12-step jump across 9 positions.",
+    "mapping_note": "cell_answer_map freezes the 324-cell to 36-answer slot assignment used by the Temple-reviewed host integration."
+  }
+}
