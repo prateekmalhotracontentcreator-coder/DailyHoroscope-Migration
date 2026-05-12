@@ -508,8 +508,13 @@ function KundaliPage() {
     setLoading(true);
     setError("");
     try {
+      // city_slug is a UI-only field — backend model uses extra="forbid", strip it
       const payload = {
-        ...form,
+        date: form.date,
+        time: form.time,
+        time_precision: form.time_precision,
+        place_label: form.place_label,
+        timezone: form.timezone,
         latitude: form.latitude ? Number(form.latitude) : undefined,
         longitude: form.longitude ? Number(form.longitude) : undefined,
         requested_chart_codes: ["D1"],
@@ -524,7 +529,9 @@ function KundaliPage() {
         setOrientation(response.data?.ui_state_defaults?.orientation || "north");
       });
     } catch (err) {
-      setError(err?.response?.data?.detail || "Unable to compute the Lagna Kundali right now.");
+      // detail can be a FastAPI validation array — always stringify to prevent React render crash
+      const detail = err?.response?.data?.detail;
+      setError(typeof detail === "string" ? detail : detail?.[0]?.msg || "Unable to compute the Lagna Kundali right now.");
     } finally {
       setLoading(false);
     }
@@ -534,8 +541,13 @@ function KundaliPage() {
     setSaving(true);
     setError("");
     try {
+      // Strip city_slug — backend model uses extra="forbid"
       const payload = {
-        ...form,
+        date: form.date,
+        time: form.time,
+        time_precision: form.time_precision,
+        place_label: form.place_label,
+        timezone: form.timezone,
         latitude: form.latitude ? Number(form.latitude) : undefined,
         longitude: form.longitude ? Number(form.longitude) : undefined,
         requested_chart_codes: ["D1"],
@@ -545,7 +557,8 @@ function KundaliPage() {
         setChart((current) => ({ ...current, chart_id: response.data?.chart_id || current.chart_id }));
       }
     } catch (err) {
-      setError(err?.response?.data?.detail || "Unable to save this chart.");
+      const detail = err?.response?.data?.detail;
+      setError(typeof detail === "string" ? detail : detail?.[0]?.msg || "Unable to save this chart.");
     } finally {
       setSaving(false);
     }
