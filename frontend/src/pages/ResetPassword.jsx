@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -52,6 +53,7 @@ export const ResetPassword = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 py-12">
+      <SEO title="Reset Password — Everyday Horoscope" noindex={true} />
       <Card className="w-full max-w-md p-8 border-2 border-gold/30">
         <div className="text-center mb-8">
           <Sparkles className="h-10 w-10 text-gold mx-auto mb-4" />

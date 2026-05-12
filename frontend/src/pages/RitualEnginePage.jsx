@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { SEO } from "../components/SEO";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -239,6 +240,7 @@ function RitualEnginePage() {
 
   return (
     <div style={pageStyle}>
+      <SEO title="Ritual Engine — Vedic Personalised Rituals" noindex={true} />
       <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gap: 18 }}>
         <section style={{ ...cardStyle, padding: 24 }}>
           <p style={{ margin: "0 0 10px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "#8c6a39" }}>Ritual Engine</p>
