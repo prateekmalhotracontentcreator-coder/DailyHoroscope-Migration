@@ -1,6 +1,7 @@
 import { SEO } from '../components/SEO';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { WarRoomStateProvider, useWarRoom } from '../components/WarRoomStateProvider';
 import ConquestGauge from '../components/ConquestGauge';
 import HurdleAlert from '../components/HurdleAlert';
@@ -605,8 +606,98 @@ function Dashboard() {
   );
 }
 
+function StrategistLanding() {
+  const navigate = useNavigate();
+  const pillars = [
+    { icon: "🔱", title: "Gate 0 — Krishna Oracle", body: "Before any campaign, consult Lord Krishna via the 18×18 Prashnavali. The War Room unlocks only on YES or WAIT." },
+    { icon: "📊", title: "5-Gate Lal Kitab Engine", body: "Your birth chart is decoded across 5 planetary gates — Finance, Career, Health, Relationships, Dharma. Each gate produces a live remedy plan." },
+    { icon: "⚔️", title: "War Room Missions", body: "Live missions aligned to your Dasha — daily conquest actions with KPIs, deadlines, and surrogate rituals for blocked gates." },
+    { icon: "📈", title: "Conquest Score & Streak", body: "Every logged action builds your Conquest Score. Hit thresholds to unlock advanced missions and premium strategy reports." },
+  ];
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is The Strategist?", "acceptedAnswer": { "@type": "Answer", "text": "The Strategist is a Vedic business strategy system combining Lal Kitab planetary diagnostics, Krishna Prashnavali oracle, and a live mission board — built for founders, professionals, and serious decision-makers." } },
+      { "@type": "Question", "name": "How does the Gate 0 oracle work?", "acceptedAnswer": { "@type": "Answer", "text": "Gate 0 is powered by the Krishna Prashnavali oracle. Before entering the War Room, you receive a YES, WAIT, NO, or PRAY verdict overlaid with your live Dasha and transits. The War Room unlocks on YES or WAIT; NO and PRAY trigger specific remedy paths." } },
+      { "@type": "Question", "name": "What is a Conquest Score?", "acceptedAnswer": { "@type": "Answer", "text": "Your Conquest Score accumulates as you complete daily missions and remedy rituals. Higher scores unlock premium reports and advanced War Room features." } },
+    ]
+  };
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title="The Strategist — Vedic Business War Room"
+        description="A Vedic strategy system for founders and professionals. Gate 0 Krishna Oracle, 5-Gate Lal Kitab diagnostics, live missions, Conquest Score, and premium intelligence reports — all driven by your birth chart."
+        url="https://www.everydayhoroscope.in/strategist"
+        schema={schema}
+      />
+      <div className="max-w-4xl mx-auto px-4 py-16">
+        <div className="text-center mb-14">
+          <p className="text-xs uppercase tracking-[0.3em] text-gold/70 mb-3">Vedic Strategy Intelligence</p>
+          <h1 className="text-4xl sm:text-5xl font-playfair font-bold mb-4">The Strategist</h1>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            The War Room that merges Krishna's oracle, Lal Kitab planetary analysis, and live mission tracking into one decisive command centre.
+          </p>
+          <button
+            onClick={() => navigate('/login')}
+            className="inline-flex items-center gap-2 rounded-xl bg-gold px-8 py-4 text-base font-semibold text-stone-950 shadow-lg hover:bg-gold/90 transition"
+          >
+            Enter the War Room →
+          </button>
+          <p className="mt-4 text-xs text-muted-foreground">Requires an EverydayHoroscope account · Free to join</p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-5 mb-14">
+          {pillars.map(p => (
+            <div key={p.title} className="rounded-2xl border border-gold/20 bg-gold/[0.04] p-6">
+              <p className="text-2xl mb-3">{p.icon}</p>
+              <h3 className="font-semibold text-foreground mb-2">{p.title}</h3>
+              <p className="text-sm text-muted-foreground leading-6">{p.body}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="rounded-2xl border border-gold/20 bg-gold/[0.04] p-8 mb-14">
+          <h2 className="text-2xl font-playfair font-semibold mb-6 text-center">How The War Room Works</h2>
+          <ol className="space-y-5">
+            {[
+              ["Onboard your birth chart", "Enter your birth details. The engine auto-computes your Jyotish chart, Lal Kitab house positions, and current Dasha lord."],
+              ["Gate 0 — Ask Krishna", "Before entering the War Room, you must consult the Krishna Prashnavali. Your answer (YES/WAIT/NO/PRAY) determines your entry path."],
+              ["Diagnose all 5 Gates", "Each planetary gate is scored. Weak gates trigger remedy assignments. Strong gates unlock offensive missions."],
+              ["Execute daily missions", "Your mission board updates with Dasha-aligned daily actions. Log completions to build your Conquest Score."],
+              ["Read your Intelligence Brief", "A weekly Executive Report synthesises your chart, score, gate health, and strategic outlook."],
+            ].map(([title, body], i) => (
+              <li key={i} className="flex gap-4">
+                <span className="w-7 h-7 rounded-full bg-gold/10 border border-gold/30 text-gold font-bold flex items-center justify-center shrink-0 text-sm">{i + 1}</span>
+                <div>
+                  <p className="font-semibold text-foreground mb-1">{title}</p>
+                  <p className="text-sm text-muted-foreground leading-6">{body}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-2xl font-playfair font-semibold mb-4">Ready to enter the War Room?</h2>
+          <p className="text-muted-foreground text-sm mb-6">Build your Conquest Score. Unlock premium intelligence. Dominate your Dasha.</p>
+          <button onClick={() => navigate('/register')} className="inline-flex items-center gap-2 rounded-xl bg-gold px-8 py-4 text-base font-semibold text-stone-950 hover:bg-gold/90 transition">
+            Create Free Account →
+          </button>
+          <p className="mt-3 text-xs text-muted-foreground">Already registered? <button onClick={() => navigate('/login')} className="text-gold underline">Sign in</button></p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function StrategistPage() {
+  const { user, loading: authLoading } = useAuth();
   const locationSlug = localStorage.getItem('lk_location_slug') || 'new-delhi';
+
+  if (!authLoading && !user) return <StrategistLanding />;
+  if (authLoading) return null;
+
   return (
     <WarRoomStateProvider locationSlug={locationSlug}>
       <SEO title="The Strategist — War Room" noindex={true} />

@@ -1,7 +1,8 @@
 import { SEO } from '../components/SEO';
 import React, { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 import KrishnaOracleGrid from "../components/KrishnaOracleGrid";
 import { extractChaupaiIndices } from "../utils/chaupaiExtractor";
@@ -55,7 +56,140 @@ function SummaryBlock({ title, content }) {
   );
 }
 
+// ─── Public landing page (shown to logged-out visitors) ──────────────────────
+const KP_FAQS = [
+  { q: "What is Krishna Prashnavali?", a: "Krishna Prashnavali is an ancient Vedic oracle rooted in Srimad Bhagavad Gita and traditional Prashna Shastra. The 18×18 grid (324 cells) maps to 36 canonical answers — YES, WAIT, NO, or PRAY — each drawn from Krishna's sacred chaupais. Your selection is guided by your intent, not by chance." },
+  { q: "How is it different from a regular online oracle?", a: "Unlike random-number generators, EverydayHoroscope's KP Oracle overlays your live Vedic dasha, planetary transits, and yogas onto your answer — so every reading carries your actual astrological fingerprint at that moment." },
+  { q: "What does each verdict mean?", a: "YES (Pratibha) — move forward with confidence. WAIT (Dhairya) — pause and prepare; timing is not yet ripe. NO (Pratrodha) — the path is obstructed; reconsider. PRAY (Bhakti) — surrender and seek divine alignment before acting." },
+  { q: "What is the 'Temple Remedy' shown after a reading?", a: "Each answer is paired with a specific ritual remedy and mantra sourced from our Remedies Engine — 36 temple-reviewed prescriptions aligned to the verdict. These are optional — they support, not override, your own wisdom." },
+  { q: "Can I ask any question?", a: "Yes — personal, professional, spiritual, or relational. The oracle responds to sincere intent. The more specific and clear your question, the more precise the guidance." },
+];
+
+function KrishnaOracleLanding() {
+  const navigate = useNavigate();
+  const verdicts = [
+    { v: "YES", label: "Pratibha", color: "#16a34a", desc: "Move forward with faith and disciplined action." },
+    { v: "WAIT", label: "Dhairya", color: "#ca8a04", desc: "Pause. Timing is not yet aligned. Prepare within." },
+    { v: "NO",   label: "Pratrodha", color: "#dc2626", desc: "The path is obstructed. Reconsider before acting." },
+    { v: "PRAY", label: "Bhakti", color: "#7c3aed", desc: "Surrender. Seek divine alignment first." },
+  ];
+
+  return (
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(217,168,74,0.14),_transparent_50%),linear-gradient(180deg,_#fffaf0_0%,_#f6ead6_55%,_#efe2cd_100%)] text-stone-900">
+      <SEO
+        title="Krishna Prashnavali — Ancient Vedic Oracle by Lord Krishna"
+        description="Consult the 18×18 Krishna Prashnavali — India's most sacred Vedic oracle. Get a YES, WAIT, NO, or PRAY answer from Lord Krishna, enriched with your live Dasha, planetary transits, temple remedy, and mantra."
+        url="https://www.everydayhoroscope.in/krishna-prashnavali"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": KP_FAQS.map(f => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": { "@type": "Answer", "text": f.a }
+          }))
+        }}
+      />
+
+      {/* Hero */}
+      <section className="max-w-4xl mx-auto px-4 py-16 text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-amber-700/70 mb-3">Ancient Vedic Oracle</p>
+        <h1 className="text-4xl sm:text-5xl font-playfair font-bold text-stone-900 mb-4 leading-tight">
+          Krishna Prashnavali
+        </h1>
+        <p className="text-lg text-stone-600 max-w-2xl mx-auto mb-2">
+          The sacred 18×18 oracle rooted in Srimad Bhagavad Gita
+        </p>
+        <p className="text-sm text-amber-700/80 mb-10 italic">
+          "Sarva-dharmān parityajya mām ekaṁ śaraṇaṁ vraja" — Gita 18.66
+        </p>
+        <button
+          onClick={() => navigate('/login')}
+          className="inline-flex items-center gap-2 rounded-xl bg-amber-600 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-amber-500 transition"
+        >
+          Consult Lord Krishna →
+        </button>
+        <p className="mt-4 text-xs text-stone-500">Free for all registered seekers · No credit card required</p>
+      </section>
+
+      {/* 4 Verdicts */}
+      <section className="max-w-4xl mx-auto px-4 pb-14">
+        <h2 className="text-center text-2xl font-playfair font-semibold text-stone-800 mb-8">The Four Sacred Verdicts</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {verdicts.map(v => (
+            <div key={v.v} className="rounded-2xl border border-amber-200/60 bg-white/70 p-5 text-center shadow-sm">
+              <p className="text-2xl font-bold mb-1" style={{ color: v.color }}>{v.v}</p>
+              <p className="text-xs uppercase tracking-widest text-amber-700/60 mb-2">{v.label}</p>
+              <p className="text-xs text-stone-600 leading-5">{v.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-amber-50/60 border-y border-amber-200/40 py-14">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-center text-2xl font-playfair font-semibold text-stone-800 mb-10">How It Works</h2>
+          <div className="grid sm:grid-cols-3 gap-8 text-center">
+            {[
+              { n: "1", title: "Hold your question", body: "Frame one sincere, clear question — personal, professional, or spiritual." },
+              { n: "2", title: "Choose a cell", body: "Close your eyes, breathe, and tap any cell in the 18×18 grid. Your live planetary chart is read at that exact moment." },
+              { n: "3", title: "Receive Krishna's answer", body: "A verdict (YES/WAIT/NO/PRAY) arrives with sacred verse, practical action, temple remedy, and mantra." },
+            ].map(s => (
+              <div key={s.n}>
+                <div className="w-10 h-10 rounded-full bg-amber-600/10 border border-amber-400/40 text-amber-700 font-bold flex items-center justify-center mx-auto mb-3 text-lg">{s.n}</div>
+                <h3 className="font-semibold text-stone-800 mb-2">{s.title}</h3>
+                <p className="text-sm text-stone-600 leading-6">{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="max-w-3xl mx-auto px-4 py-14">
+        <h2 className="text-center text-2xl font-playfair font-semibold text-stone-800 mb-8">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          {KP_FAQS.map((f, i) => (
+            <div key={i} className="rounded-2xl border border-amber-200/60 bg-white/70 p-5">
+              <p className="font-semibold text-stone-800 mb-2">{f.q}</p>
+              <p className="text-sm text-stone-600 leading-6">{f.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="text-center pb-16 px-4">
+        <h2 className="text-2xl font-playfair font-semibold text-stone-800 mb-4">Ready to ask your question?</h2>
+        <p className="text-stone-500 text-sm mb-6">Join thousands of seekers who consult Lord Krishna daily.</p>
+        <button
+          onClick={() => navigate('/register')}
+          className="inline-flex items-center gap-2 rounded-xl bg-amber-600 px-8 py-4 text-base font-semibold text-white shadow-lg hover:bg-amber-500 transition"
+        >
+          Create Free Account →
+        </button>
+        <p className="mt-3 text-xs text-stone-500">Already registered? <button onClick={() => navigate('/login')} className="text-amber-700 underline">Sign in</button></p>
+      </section>
+    </div>
+  );
+}
+
+// ─── Main export — auth-aware ─────────────────────────────────────────────────
 export default function KrishnaOraclePage() {
+  const { user, loading: authLoading } = useAuth();
+
+  // Show landing page for logged-out visitors (indexed by Google)
+  if (!authLoading && !user) return <KrishnaOracleLanding />;
+
+  // Authenticated path — original oracle UI below
+  // (authLoading state: show nothing briefly to avoid flash)
+  if (authLoading) return null;
+
+  return <KrishnaOracleApp />;
+}
+
+function KrishnaOracleApp() {
   const [metadata, setMetadata] = useState(null);
   const [history, setHistory] = useState([]);
   const [loadingMeta, setLoadingMeta] = useState(true);

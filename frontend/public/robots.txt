@@ -32,8 +32,12 @@ Disallow: /home
 Disallow: /birth-chart
 Disallow: /kundali-milan
 Disallow: /brihat-kundli
-Disallow: /krishna-prashnavali
-Disallow: /strategist
+Allow: /krishna-prashnavali
+Allow: /strategist
+Disallow: /strategist/missions
+Disallow: /strategist/report
+Disallow: /strategist/surrogate
+Disallow: /strategist/action-plan
 Disallow: /lk-remedies/
 Disallow: /my-reports
 Disallow: /individual-reports
