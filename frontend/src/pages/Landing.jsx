@@ -144,13 +144,54 @@ export const Landing = () => {
         url="https://www.everydayhoroscope.in"
         schema={{
           "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Everyday Horoscope",
-          "url": "https://www.everydayhoroscope.in",
-          "logo": "https://www.everydayhoroscope.in/og-image.png",
-          "description": "AI-powered Vedic astrology platform offering daily horoscopes, birth charts, and Kundali Milan.",
-          "founder": { "@type": "Person", "name": "SkyHound Studios" },
-          "contactPoint": { "@type": "ContactPoint", "email": "support@everydayhoroscope.in", "contactType": "customer support" }
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://www.everydayhoroscope.in/#organization",
+              "name": "Everyday Horoscope",
+              "alternateName": "EverydayHoroscope",
+              "url": "https://www.everydayhoroscope.in",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.everydayhoroscope.in/og-image.png",
+                "width": 1200,
+                "height": 630
+              },
+              "description": "India's premier Vedic astrology platform offering daily horoscopes, birth charts, Kundali Milan, and AI-powered astrological insights rooted in 5,000 years of Vedic wisdom.",
+              "foundingDate": "2024",
+              "areaServed": "IN",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "support@everydayhoroscope.in",
+                "contactType": "customer support",
+                "availableLanguage": ["English", "Hindi"]
+              },
+              "sameAs": [
+                "https://www.facebook.com/EverydayHoroscope",
+                "https://www.youtube.com/@EverydayHoroscope",
+                "https://www.instagram.com/everydayhoroscope.in"
+              ]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://www.everydayhoroscope.in/#website",
+              "name": "Everyday Horoscope",
+              "url": "https://www.everydayhoroscope.in",
+              "description": "Free daily horoscope, Vedic birth chart analysis, Kundali Milan, and premium astrology reports — rooted in 5,000 years of ancient Vedic wisdom.",
+              "publisher": {
+                "@id": "https://www.everydayhoroscope.in/#organization"
+              },
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://www.everydayhoroscope.in/horoscope/daily?sign={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              },
+              "inLanguage": "en-IN"
+            }
+          ]
         }}
       />
       <LiveTVPanel />
