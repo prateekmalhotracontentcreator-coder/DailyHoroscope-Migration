@@ -1,9 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 export default function LKRemediesPage() {
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-3xl mx-auto">
+      <SEO
+        title="Lal Kitab Remedies — Karmic Diagnostics & 43-Day Cycles"
+        description="Ancient Lal Kitab wisdom for modern life. Karmic debt scans, dormant house awakening, 35-year planetary cycles, and personalised 43-day remedy protocols."
+        url="https://www.everydayhoroscope.in/lk-remedies"
+      />
       <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-6 mb-6">
         <h1 className="text-2xl font-bold text-gold mb-2">Lal Kitab Remedies</h1>
         <p className="text-muted-foreground text-sm mb-4">

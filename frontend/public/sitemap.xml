@@ -43,6 +43,16 @@
   <url><loc>https://www.everydayhoroscope.in/numerology</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://www.everydayhoroscope.in/tarot</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://www.everydayhoroscope.in/palmistry</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/lumina</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/longevity</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Lal Kitab Remedies -->
+  <url><loc>https://www.everydayhoroscope.in/lk-remedies</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/dana-remedies</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/gemstone-remedies</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/crystal-therapy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/chakra-healing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.everydayhoroscope.in/mantra-remedies</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Love & Relationships -->
   <url><loc>https://www.everydayhoroscope.in/love</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>

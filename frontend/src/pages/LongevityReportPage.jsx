@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import SharedBirthCityPicker from "../components/SharedBirthCityPicker";
+import { SEO } from "../components/SEO";
 
 // Host app wiring:
 // <Route path="/longevity" element={<LongevityReportPage />} />
@@ -264,6 +265,11 @@ export default function LongevityReportPage() {
 
   return (
     <div className="min-h-screen bg-[#09101b] text-white">
+      <SEO
+        title="Ayur Jyotish — Vedic Longevity & Health Report"
+        description="Discover your Vedic health blueprint. KP-based longevity classification, prakriti analysis, vulnerable body systems, disease windows, and remedial guidance."
+        url="https://www.everydayhoroscope.in/longevity"
+      />
       <style>{`
         .longevity-shell {
           background:

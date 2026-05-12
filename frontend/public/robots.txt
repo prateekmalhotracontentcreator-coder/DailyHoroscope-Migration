@@ -19,6 +19,14 @@ Allow: /subscription-terms
 Allow: /refund-policy
 Allow: /cookie-policy
 Allow: /live-sai-baba-arti
+Allow: /lumina
+Allow: /longevity
+Allow: /lk-remedies
+Allow: /dana-remedies
+Allow: /gemstone-remedies
+Allow: /crystal-therapy
+Allow: /chakra-healing
+Allow: /mantra-remedies
 
 # Disallow admin, auth, and user-only pages
 Disallow: /admin/

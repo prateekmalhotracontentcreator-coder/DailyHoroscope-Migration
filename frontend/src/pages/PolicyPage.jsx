@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { Footer } from '../components/Footer';
+import { SEO } from '../components/SEO';
 import { Shield, FileText, RefreshCw, Cookie, ScrollText, ArrowLeft, Loader } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
@@ -43,9 +44,22 @@ export const PolicyPage = ({ type }) => {
   if (!meta) return null;
   const Icon = meta.icon;
 
+  const slugMap = {
+    terms: 'terms',
+    privacy: 'privacy',
+    'subscription-terms': 'subscription-terms',
+    'refund-policy': 'refund-policy',
+    'cookie-policy': 'cookie-policy',
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
-
+      <SEO
+        title={`${meta.title} — Everyday Horoscope`}
+        description={`Read the ${meta.title} for Everyday Horoscope, India's trusted Vedic astrology platform.`}
+        url={`https://www.everydayhoroscope.in/${slugMap[type] || type}`}
+        noindex={true}
+      />
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Button variant="ghost" onClick={() => navigate(-1)} className="mb-6">
           <ArrowLeft className="h-4 w-4 mr-2" />Back

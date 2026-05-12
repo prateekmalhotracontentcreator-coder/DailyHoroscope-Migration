@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
+import { SEO } from "../components/SEO";
 
 // Host app wiring:
 // <Route path="/lumina" element={<LuminaPage />} />
@@ -1292,6 +1293,11 @@ function LuminaPage() {
 
   return (
     <div className="min-h-screen bg-background px-4 pb-24 pt-4 md:px-8 md:pb-8">
+      <SEO
+        title="Lumina — Daily Scripture, Meditation & Devotion"
+        description="Your Vedic and Biblical spiritual companion. Daily scripture readings from Bhagavad Gita and Bible, guided meditation, mantras, and devotion tracking."
+        url="https://www.everydayhoroscope.in/lumina"
+      />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500;1,700&display=swap');
         .lumina-shell {

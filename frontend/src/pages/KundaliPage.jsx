@@ -2,6 +2,7 @@ import React, { startTransition, useDeferredValue, useEffect, useState } from "r
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import SharedBirthCityPicker from "../components/SharedBirthCityPicker";
+import { SEO } from "../components/SEO";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -350,7 +351,7 @@ function KundaliPage() {
     let active = true;
     async function loadDefinitions() {
       try {
-        const response = await axios.get(`${API}/lagna-kundali/chart-definitions`);
+        const response = await axios.get(`${API}/lagna-kundali/chart-definitions`, { withCredentials: true });
         if (!active) return;
         setDefinitions(response.data?.charts || []);
       } catch (_err) {
@@ -580,6 +581,7 @@ function KundaliPage() {
         padding: "28px 18px 56px",
       }}
     >
+      <SEO title="Lagna Kundali — Vedic Birth Chart" noindex={true} />
       <div style={{ maxWidth: 1380, margin: "0 auto" }}>
         <section style={{ marginBottom: 24 }}>
           <div style={{ color: "#8B6A30", letterSpacing: "0.2em", textTransform: "uppercase", fontSize: 12 }}>Lagna Kundali</div>
