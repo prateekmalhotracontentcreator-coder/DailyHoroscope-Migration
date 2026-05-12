@@ -19,6 +19,7 @@ import { Register } from './pages/Register';
 import { Home } from './pages/Home';
 import { Landing } from './pages/Landing';
 import { DailyHoroscope } from './pages/DailyHoroscope';
+import { DailyHoroscopeSign } from './pages/DailyHoroscopeSign';
 import { WeeklyHoroscope } from './pages/WeeklyHoroscope';
 import { MonthlyHoroscope } from './pages/MonthlyHoroscope';
 import { BirthChartPage } from './pages/BirthChartPage';
@@ -115,6 +116,7 @@ function App() {
                   <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                   <Route path="/pricing" element={<PricingPage />} />
                   <Route path="/horoscope/daily" element={<DailyHoroscope />} />
+                  <Route path="/horoscope/daily/:sign" element={<DailyHoroscopeSign />} />
                   <Route path="/horoscope/weekly" element={<PremiumRoute feature="Weekly Horoscope" description="Full 7-day Vedic horoscope across all 12 signs is a Premium feature. Upgrade to unlock weekly predictions."><WeeklyHoroscope /></PremiumRoute>} />
                   <Route path="/horoscope/monthly" element={<PremiumRoute feature="Monthly Horoscope" description="Comprehensive monthly Vedic forecast across all 12 signs is a Premium feature. Upgrade for the full picture."><MonthlyHoroscope /></PremiumRoute>} />
                   <Route path="/live-sai-baba-arti" element={<LiveSaiBabaArtiPage />} />
