@@ -115,8 +115,8 @@ function App() {
                   <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
                   <Route path="/pricing" element={<PricingPage />} />
                   <Route path="/horoscope/daily" element={<DailyHoroscope />} />
-                  <Route path="/horoscope/weekly" element={<WeeklyHoroscope />} />
-                  <Route path="/horoscope/monthly" element={<MonthlyHoroscope />} />
+                  <Route path="/horoscope/weekly" element={<PremiumRoute feature="Weekly Horoscope" description="Full 7-day Vedic horoscope across all 12 signs is a Premium feature. Upgrade to unlock weekly predictions."><WeeklyHoroscope /></PremiumRoute>} />
+                  <Route path="/horoscope/monthly" element={<PremiumRoute feature="Monthly Horoscope" description="Comprehensive monthly Vedic forecast across all 12 signs is a Premium feature. Upgrade for the full picture."><MonthlyHoroscope /></PremiumRoute>} />
                   <Route path="/live-sai-baba-arti" element={<LiveSaiBabaArtiPage />} />
 
                   {/* Blog */}
@@ -139,15 +139,15 @@ function App() {
 
                   {/* Protected */}
                   <Route path="/account" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
-                  <Route path="/birth-chart" element={<ProtectedRoute><BirthChartPage /></ProtectedRoute>} />
-                  <Route path="/kundali-milan" element={<ProtectedRoute><KundaliMilanPage /></ProtectedRoute>} />
-                  <Route path="/brihat-kundli" element={<ProtectedRoute><BrihatKundliPage /></ProtectedRoute>} />
-                  <Route path="/my-reports" element={<ProtectedRoute><MyReportsPage /></ProtectedRoute>} />
-                  <Route path="/individual-reports" element={<ProtectedRoute><IndividualReportsPage /></ProtectedRoute>} />
-                  <Route path="/reports" element={<ProtectedRoute><IndividualReportsPage /></ProtectedRoute>} />
+                  <Route path="/birth-chart" element={<PremiumRoute feature="Birth Chart" description="Your Vedic birth chart analysis is a Premium feature. Upgrade to unlock your full chart with planetary positions, dashas, and yogas."><BirthChartPage /></PremiumRoute>} />
+                  <Route path="/kundali-milan" element={<PremiumRoute feature="Kundali Milan" description="Kundali matching and compatibility scoring is a Premium feature. Upgrade to unlock full compatibility analysis."><KundaliMilanPage /></PremiumRoute>} />
+                  <Route path="/brihat-kundli" element={<PremiumRoute feature="Brihat Kundli Pro" description="Comprehensive Vedic chart with all 16 divisional charts is a Premium feature. Upgrade to unlock the full Brihat Kundli."><BrihatKundliPage /></PremiumRoute>} />
+                  <Route path="/my-reports" element={<PremiumRoute feature="My Reports" description="Your personalised Vedic reports are available to Premium members. Upgrade to access all your saved reports."><MyReportsPage /></PremiumRoute>} />
+                  <Route path="/individual-reports" element={<PremiumRoute feature="Reports" description="Individual Vedic reports are a Premium feature. Upgrade to unlock your full report library."><IndividualReportsPage /></PremiumRoute>} />
+                  <Route path="/reports" element={<PremiumRoute feature="Reports" description="Individual Vedic reports are a Premium feature. Upgrade to unlock your full report library."><IndividualReportsPage /></PremiumRoute>} />
                   <Route path="/love" element={<LovePage />} />
-                  <Route path="/love-reports" element={<ProtectedRoute><LoveReportsPage /></ProtectedRoute>} />
-                  <Route path="/ritual-engine" element={<ProtectedRoute><RitualEnginePage /></ProtectedRoute>} />
+                  <Route path="/love-reports" element={<PremiumRoute feature="Love Reports" description="Your Vedic love compatibility reports are a Premium feature. Upgrade to unlock full relationship insights."><LoveReportsPage /></PremiumRoute>} />
+                  <Route path="/ritual-engine" element={<PremiumRoute feature="Ritual Engine" description="Personalised Vedic ritual prescriptions are a Premium feature. Upgrade to unlock your ritual protocol."><RitualEnginePage /></PremiumRoute>} />
 
                   {/* Admin */}
                   <Route path="/admin" element={<Navigate to="/admin/login" replace />} />
@@ -180,13 +180,13 @@ function App() {
 
                   {/* Phase 2 modules */}
                   <Route path="/numerology" element={<NumerologyPage />} />
-                  <Route path="/numerology/report/:reportId" element={<ProtectedRoute><NumerologyReportPage /></ProtectedRoute>} />
+                  <Route path="/numerology/report/:reportId" element={<PremiumRoute feature="Numerology Report" description="Your personalised numerology report is a Premium feature. Upgrade to unlock your full life number analysis."><NumerologyReportPage /></PremiumRoute>} />
                   <Route path="/palmistry" element={<PalmistryPage />} />
                   <Route path="/tarot" element={<TarotPage />} />
-                  <Route path="/tarot/history" element={<ProtectedRoute><TarotHistoryPage /></ProtectedRoute>} />
+                  <Route path="/tarot/history" element={<PremiumRoute feature="Tarot History" description="Your saved tarot reading history is a Premium feature. Upgrade to review all your past readings."><TarotHistoryPage /></PremiumRoute>} />
                   <Route path="/remedies" element={<RemedyPage />} />
-                  <Route path="/lagna-kundali" element={<ProtectedRoute><KundaliPage /></ProtectedRoute>} />
-                  <Route path="/lagna-kundali/chart/:chartId" element={<ProtectedRoute><KundaliPage /></ProtectedRoute>} />
+                  <Route path="/lagna-kundali" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace — D1 through all divisional charts — is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
+                  <Route path="/lagna-kundali/chart/:chartId" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
 
                   {/* Lumina — Spiritual companion module */}
                   <Route path="/lumina" element={<LuminaPage />} />

@@ -1,4 +1,5 @@
 import { SEO } from '../components/SEO';
+import { PremiumGateCard } from '../components/PremiumRoute';
 import React, { useEffect, useMemo, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -175,17 +176,24 @@ function KrishnaOracleLanding() {
   );
 }
 
-// ─── Main export — auth-aware ─────────────────────────────────────────────────
+// ─── Main export — auth-aware + premium-aware ─────────────────────────────────
 export default function KrishnaOraclePage() {
   const { user, loading: authLoading } = useAuth();
 
-  // Show landing page for logged-out visitors (indexed by Google)
-  if (!authLoading && !user) return <KrishnaOracleLanding />;
-
-  // Authenticated path — original oracle UI below
-  // (authLoading state: show nothing briefly to avoid flash)
   if (authLoading) return null;
 
+  // Logged-out visitors → public landing (indexed by Google)
+  if (!user) return <KrishnaOracleLanding />;
+
+  // Logged-in but not premium → premium gate
+  if (!user.is_premium) return (
+    <PremiumGateCard
+      feature="Krishna Prashnavali"
+      description="Receive guidance from Lord Krishna's sacred oracle — an exclusive Premium feature. Upgrade to ask your question and receive a divine answer."
+    />
+  );
+
+  // Premium → full oracle
   return <KrishnaOracleApp />;
 }
 

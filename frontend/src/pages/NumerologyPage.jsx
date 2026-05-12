@@ -3,6 +3,7 @@ import SharedBirthCityPicker from '../components/SharedBirthCityPicker';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { SEO } from '../components/SEO';
+import { PremiumGateCard } from '../components/PremiumRoute';
 import LoShuGrid from '../components/LoShuGrid';
 import LuckyElementsTable from '../components/LuckyElementsTable';
 import ContinueJourney from '../components/ContinueJourney';
@@ -191,6 +192,14 @@ export const NumerologyPage = () => {
     };
     return map[field]?.includes(tc);
   };
+
+  // Premium gate — logged-in non-premium users
+  if (user && !user.is_premium) return (
+    <PremiumGateCard
+      feature="Vedic Numerology"
+      description="Personalised numerology reports — Life Path, Name Correction, Karmic Debt, and more — are exclusive to Premium subscribers. Upgrade to unlock your number blueprint."
+    />
+  );
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">

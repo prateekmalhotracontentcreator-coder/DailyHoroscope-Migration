@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import { SEO } from "../components/SEO";
+import { PremiumGateCard } from "../components/PremiumRoute";
 
 // Host app wiring:
 // <Route path="/lumina" element={<LuminaPage />} />
@@ -1290,6 +1291,14 @@ function LuminaPage() {
       </div>
     );
   }
+
+  // Premium gate — logged-in non-premium users
+  if (user && !user.is_premium) return (
+    <PremiumGateCard
+      feature="Lumina"
+      description="Daily scripture readings, guided meditation, devotion tracking, and AI spiritual companion are exclusive to Premium subscribers. Upgrade to begin your Lumina journey."
+    />
+  );
 
   return (
     <div className="min-h-screen bg-background px-4 pb-24 pt-4 md:px-8 md:pb-8">

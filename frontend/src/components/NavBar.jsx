@@ -25,6 +25,7 @@ const StarsLogo = ({ size = 56 }) => (
   />
 );
 
+// premium: true  →  Crown badge rendered next to label in nav
 const NAV = [
   { label: 'Home', icon: Home, path: '/home' },
   {
@@ -48,30 +49,30 @@ const NAV = [
     label: 'Horoscope', icon: Star,
     children: [
       { label: 'Daily Horoscope',   path: '/horoscope/daily',   icon: Sun },
-      { label: 'Weekly Horoscope',  path: '/horoscope/weekly',  icon: Star },
-      { label: 'Monthly Horoscope', path: '/horoscope/monthly', icon: Calendar },
+      { label: 'Weekly Horoscope',  path: '/horoscope/weekly',  icon: Star,     premium: true },
+      { label: 'Monthly Horoscope', path: '/horoscope/monthly', icon: Calendar, premium: true },
     ],
   },
-  { label: 'The Strategist', icon: Briefcase, path: '/strategist' },
-  { label: 'Numerology', icon: Hash,      path: '/numerology' },
-  { label: 'Palmistry',  icon: Layers,    path: '/palmistry' },
-  { label: 'Tarot',      icon: BookOpen,  path: '/tarot' },
+  { label: 'The Strategist',       icon: Briefcase, path: '/strategist',          premium: true },
+  { label: 'Numerology',           icon: Hash,      path: '/numerology',           premium: true },
+  { label: 'Palmistry',            icon: Layers,    path: '/palmistry',            premium: true },
+  { label: 'Tarot',                icon: BookOpen,  path: '/tarot',                premium: true },
   {
     label: 'Reports', icon: FileText,
     children: [
-      { label: 'My Reports',        path: '/my-reports',      icon: FileText },
-      { label: 'Birth Chart',       path: '/birth-chart',     icon: Sparkles },
-      { label: 'Lagna Kundali',     path: '/lagna-kundali',   icon: Gem },
-      { label: 'Kundali Milan',     path: '/kundali-milan',   icon: Heart },
-      { label: 'Brihat Kundli Pro', path: '/brihat-kundli',   icon: Crown },
+      { label: 'My Reports',        path: '/my-reports',      icon: FileText,  premium: true },
+      { label: 'Birth Chart',       path: '/birth-chart',     icon: Sparkles,  premium: true },
+      { label: 'Lagna Kundali',     path: '/lagna-kundali',   icon: Gem,       premium: true },
+      { label: 'Kundali Milan',     path: '/kundali-milan',   icon: Heart,     premium: true },
+      { label: 'Brihat Kundli Pro', path: '/brihat-kundli',   icon: Crown,     premium: true },
       { label: 'Ask 1 Question',    path: '/ask-question',    icon: Hash },
-      { label: 'Love Bundle',       path: '/love',            icon: Heart },
+      { label: 'Love Bundle',       path: '/love',            icon: Heart,     premium: true },
       { label: 'Career Plus',       path: '/career-plus',     icon: Briefcase },
-      { label: 'Hasta Rekha',       path: '/palmistry',       icon: Layers },
-      { label: 'Longevity Report',  path: '/longevity',       icon: Leaf },
+      { label: 'Hasta Rekha',       path: '/palmistry',       icon: Layers,    premium: true },
+      { label: 'Longevity Report',  path: '/longevity',       icon: Leaf,      premium: true },
     ],
   },
-  { label: 'Lumina',     icon: Star,      path: '/lumina' },
+  { label: 'Lumina',               icon: Star,      path: '/lumina',               premium: true },
   {
     label: 'Remedies', icon: Gem,
     children: [
@@ -85,8 +86,8 @@ const NAV = [
       { label: 'Feng Shui',       path: '/remedies',          icon: Leaf },
     ],
   },
-  { label: 'Krishna Prashanavali', icon: Sparkles, path: '/krishna-prashnavali' },
-  { label: 'Pricing',  icon: Tag,        path: '/pricing' },
+  { label: 'Krishna Prashanavali', icon: Sparkles,  path: '/krishna-prashnavali',  premium: true },
+  { label: 'Pricing',              icon: Tag,        path: '/pricing' },
 ];
 
 const BOTTOM_NAV = [
@@ -118,6 +119,7 @@ const DesktopDropdown = ({ item, isActive }) => {
           ${isActive ? 'text-gold' : 'text-muted-foreground hover:text-foreground'}`}
       >
         {item.label}
+        {item.premium && <Crown className="h-3 w-3 text-gold/70 flex-shrink-0" />}
       </button>
     );
   }
@@ -142,7 +144,8 @@ const DesktopDropdown = ({ item, isActive }) => {
               className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-gold/5 transition-colors text-left"
             >
               <child.icon className="h-3.5 w-3.5 text-gold/60 flex-shrink-0" />
-              {child.label}
+              <span className="flex-1">{child.label}</span>
+              {child.premium && <Crown className="h-3 w-3 text-gold/60 flex-shrink-0" />}
             </button>
           ))}
         </div>
@@ -168,7 +171,8 @@ const SidebarItem = ({ item, onNavigate, depth = 0 }) => {
         style={{ paddingLeft: depth > 0 ? '2.5rem' : undefined }}
       >
         <item.icon className={`h-4 w-4 flex-shrink-0 ${isActive ? 'text-gold' : 'text-muted-foreground/60'}`} />
-        {item.label}
+        <span className="flex-1">{item.label}</span>
+        {item.premium && <Crown className="h-3.5 w-3.5 text-gold/70 flex-shrink-0" />}
       </button>
     );
   }

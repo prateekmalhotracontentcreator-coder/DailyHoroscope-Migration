@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
 import { ArrowLeft, Check, ChevronDown, Compass, Hand, Layers, LoaderCircle, MoonStar, Orbit, Shield, Sparkles, Star, SunMedium } from 'lucide-react';
+import { PremiumGateCard } from '../components/PremiumRoute';
 
 import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/button';
@@ -570,6 +571,14 @@ export const PalmistryPage = () => {
       toast.error('Could not open this saved reading.');
     }
   };
+
+  // Premium gate — logged-in non-premium users
+  if (user && !user.is_premium) return (
+    <PremiumGateCard
+      feature="Hasta Rekha Palmistry"
+      description="AI-powered Vedic palmistry analysis — palm lines, mounts, and Samudrika Shastra readings — is exclusive to Premium subscribers. Upgrade to unlock your hand's story."
+    />
+  );
 
   return (
     <div className="min-h-screen bg-background">

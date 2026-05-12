@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { SEO } from '../components/SEO';
+import { PremiumGateCard } from '../components/PremiumRoute';
 import { Card } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import {
@@ -284,6 +285,14 @@ export const TarotPage = () => {
   const currentScene = reading?.scenes?.[sceneIndex];
   const primaryCard  = reading?.cards?.[0];
   const primarySVG   = primaryCard ? cardSVGs[primaryCard.card_id] : null;
+
+  // ── Premium gate — logged-in non-premium users ────────────────────────────
+  if (user && !user.is_premium) return (
+    <PremiumGateCard
+      feature="Tarot Reading"
+      description="Daily tarot draws, card spreads, and reading history are exclusive to Premium subscribers. Upgrade to unlock full tarot guidance."
+    />
+  );
 
   // ── Render ────────────────────────────────────────────────────────────────
 

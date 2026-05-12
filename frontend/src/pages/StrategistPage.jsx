@@ -1,4 +1,5 @@
 import { SEO } from '../components/SEO';
+import { PremiumGateCard } from '../components/PremiumRoute';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -695,9 +696,20 @@ export default function StrategistPage() {
   const { user, loading: authLoading } = useAuth();
   const locationSlug = localStorage.getItem('lk_location_slug') || 'new-delhi';
 
-  if (!authLoading && !user) return <StrategistLanding />;
   if (authLoading) return null;
 
+  // Logged-out → public landing (indexed by Google)
+  if (!user) return <StrategistLanding />;
+
+  // Logged-in, not premium → premium gate
+  if (!user.is_premium) return (
+    <PremiumGateCard
+      feature="The Strategist"
+      description="The Vedic Business War Room — KP oracle, LK diagnostics, Missions, and Conquest Score — is an exclusive Premium feature. Upgrade to activate your war room."
+    />
+  );
+
+  // Premium → full dashboard
   return (
     <WarRoomStateProvider locationSlug={locationSlug}>
       <SEO title="The Strategist — War Room" noindex={true} />
