@@ -2,10 +2,16 @@ import React from 'react';
 
 import { Footer } from '../components/Footer';
 import { Sparkles, Star, Heart, Shield } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 export const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="About Us — India's Vedic Astrology Platform"
+        description="EverydayHoroscope bridges ancient Vedic wisdom with modern AI — personalised birth charts, Panchang, Lal Kitab remedies, and Krishna Prashnavali for every seeker."
+        url="https://www.everydayhoroscope.in/about"
+      />
 
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">

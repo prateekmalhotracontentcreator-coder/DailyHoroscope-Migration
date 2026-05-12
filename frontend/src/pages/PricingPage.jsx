@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { SEO } from '../components/SEO';
 
 import { Footer } from '../components/Footer';
 import { PaymentModal } from '../components/PaymentModal';
@@ -181,7 +182,11 @@ export const PricingPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-
+      <SEO
+        title="Pricing — Unlock All Vedic Reports"
+        description="Choose your plan and unlock personalised birth chart analysis, Lal Kitab remedies, The Strategist War Room, Krishna Prashnavali, and 20+ premium Vedic reports."
+        url="https://www.everydayhoroscope.in/pricing"
+      />
 
       <main className="flex-1">
         {/* Hero */}

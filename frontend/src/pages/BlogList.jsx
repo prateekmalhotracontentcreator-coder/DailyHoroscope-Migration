@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Card } from '../components/ui/card';
+import { SEO } from '../components/SEO';
 import { Button } from '../components/ui/button';
 import { Calendar, User, Eye, Tag, ArrowRight, BookOpen } from 'lucide-react';
 import axios from 'axios';
@@ -54,8 +55,12 @@ export const BlogList = () => {
 
   return (
     <div className="min-h-screen bg-background">
-
-      
+      <SEO
+        title="Vedic Astrology Blog — Insights, Guides & Forecasts"
+        description="Explore articles on Vedic astrology, Lal Kitab remedies, Panchang, birth charts, and daily guidance from India's premier Jyotish platform."
+        url="https://www.everydayhoroscope.in/blog"
+        type="blog"
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
         <div className="text-center mb-12">

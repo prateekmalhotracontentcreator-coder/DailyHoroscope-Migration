@@ -8,14 +8,17 @@ Allow: /blog/
 Allow: /about
 Allow: /contact
 Allow: /pricing
-Allow: /birth-chart
-Allow: /kundali-milan
-Allow: /brihat-kundli
+Allow: /panchang/
+Allow: /numerology
+Allow: /tarot
+Allow: /palmistry
+Allow: /love
 Allow: /terms
 Allow: /privacy
 Allow: /subscription-terms
 Allow: /refund-policy
 Allow: /cookie-policy
+Allow: /live-sai-baba-arti
 
 # Disallow admin, auth, and user-only pages
 Disallow: /admin/
@@ -25,6 +28,20 @@ Disallow: /register
 Disallow: /auth/
 Disallow: /account
 Disallow: /reset-password
+Disallow: /home
+Disallow: /birth-chart
+Disallow: /kundali-milan
+Disallow: /brihat-kundli
+Disallow: /krishna-prashnavali
+Disallow: /strategist
+Disallow: /lk-remedies/
+Disallow: /my-reports
+Disallow: /individual-reports
+Disallow: /reports
+Disallow: /love-reports
+Disallow: /ritual-engine
+Disallow: /numerology/report/
+Disallow: /tarot/history
 
 # Sitemap
-Sitemap: https://everydayhoroscope.in/sitemap.xml
+Sitemap: https://www.everydayhoroscope.in/sitemap.xml

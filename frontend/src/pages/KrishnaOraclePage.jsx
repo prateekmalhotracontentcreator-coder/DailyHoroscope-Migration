@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -180,6 +181,7 @@ export default function KrishnaOraclePage() {
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(217,168,74,0.18),_transparent_42%),linear-gradient(180deg,_#fffaf0_0%,_#f6ead6_52%,_#efe2cd_100%)] px-4 py-8 text-stone-900 dark:bg-[radial-gradient(circle_at_top,_rgba(180,83,9,0.18),_transparent_40%),linear-gradient(180deg,_#0a0604_0%,_#120a06_48%,_#090605_100%)] dark:text-white md:px-8">
+      <SEO title="Krishna Prashnavali Oracle" noindex={true} />
       <div className="mx-auto max-w-7xl space-y-6">
         <div className="flex items-center justify-between">
           <Link

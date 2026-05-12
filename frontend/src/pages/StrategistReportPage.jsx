@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useState } from 'react';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
@@ -22,6 +23,7 @@ export default function StrategistReportPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-3xl mx-auto">
+      <SEO title="Executive Intelligence Brief — The Strategist" noindex={true} />
       <div className="rounded-xl border border-gold/30 bg-gradient-to-br from-gold/15 to-gold/5 shadow-sm p-5 mb-5">
         <h1 className="text-xl font-bold text-gold mb-1">Executive Intelligence Brief</h1>
         <p className="text-sm text-muted-foreground mb-4">

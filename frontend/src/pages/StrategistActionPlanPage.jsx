@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -89,6 +90,7 @@ export default function StrategistActionPlanPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-950/20 to-background text-foreground">
+      <SEO title="Action Plan — The Strategist" noindex={true} />
       <div className="max-w-2xl mx-auto px-4 py-8">
 
         {/* Header */}

@@ -4,6 +4,7 @@ import { Link, useParams, useSearchParams } from "react-router-dom";
 import PanchangCosmicMap from "../components/PanchangCosmicMap";
 import PanchangLanguageToggle from "../components/PanchangLanguageToggle";
 import { buildPanchangPath, getPanchangCopy, getPanchangLanguage } from "../components/panchangLocale";
+import { SEO } from "../components/SEO";
 
 function PanchangLandingPage() {
   const { lang } = useParams();
@@ -12,8 +13,18 @@ function PanchangLandingPage() {
   const copy = getPanchangCopy(language);
   const locationSlug = searchParams.get("location_slug") || "new-delhi-india";
 
+  const langLabel = language === "hindi" ? "Hindi" : language === "tamil" ? "Tamil" : language === "telugu" ? "Telugu" : language === "malayalam" ? "Malayalam" : language === "kannada" ? "Kannada" : "";
+  const seoTitle = langLabel ? `Panchang Today in ${langLabel} — Tithi, Nakshatra & Muhurat` : "Panchang Today — Daily Hindu Calendar, Tithi & Auspicious Timings";
+  const seoDesc = langLabel
+    ? `Today's Panchang in ${langLabel} — Tithi, Nakshatra, Yoga, Karana, Rahukaal, Choghadiya, and auspicious Muhurat timings from EverydayHoroscope.`
+    : "Free daily Panchang — Tithi, Nakshatra, Yoga, Karana, Rahukaal, Choghadiya, and Muhurat timings for 318 cities across India and the world.";
+  const seoUrl = langLabel
+    ? `https://www.everydayhoroscope.in/panchang/${language}`
+    : "https://www.everydayhoroscope.in/panchang";
+
   return (
     <div className="panchang-page panchang-landing-page">
+      <SEO title={seoTitle} description={seoDesc} url={seoUrl} />
       {/* Interactive cosmic time-map hero */}
       <PanchangCosmicMap locationSlug={locationSlug} dayOffset={0} />
 

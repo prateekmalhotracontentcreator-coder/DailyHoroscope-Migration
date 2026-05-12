@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -110,6 +111,7 @@ export default function LKDebtAuditPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-2xl mx-auto">
+      <SEO title="Debt Audit — Lal Kitab Remedies" noindex={true} />
       <div className="flex items-center mb-5">
         <Link to="/lk-remedies/report" className="text-xs text-muted-foreground hover:text-gold transition">← Diagnostic Report</Link>
       </div>

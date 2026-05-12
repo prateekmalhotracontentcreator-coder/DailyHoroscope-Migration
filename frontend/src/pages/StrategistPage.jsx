@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { WarRoomStateProvider, useWarRoom } from '../components/WarRoomStateProvider';
@@ -608,6 +609,7 @@ export default function StrategistPage() {
   const locationSlug = localStorage.getItem('lk_location_slug') || 'new-delhi';
   return (
     <WarRoomStateProvider locationSlug={locationSlug}>
+      <SEO title="The Strategist — War Room" noindex={true} />
       <Dashboard />
     </WarRoomStateProvider>
   );

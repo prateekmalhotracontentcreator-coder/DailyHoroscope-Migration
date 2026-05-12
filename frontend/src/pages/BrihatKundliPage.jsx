@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -623,6 +624,7 @@ export const BrihatKundliPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <SEO title="Brihat Kundli Pro — Advanced Vedic Report" noindex={true} />
 
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10">

@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -119,6 +120,7 @@ export default function LKReportPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-2xl mx-auto">
+      <SEO title="Lal Kitab Diagnostic Report" noindex={true} />
       <div className="flex items-center mb-5">
         <Link to="/strategist" className="text-xs text-muted-foreground hover:text-gold transition">← The Strategist</Link>
       </div>

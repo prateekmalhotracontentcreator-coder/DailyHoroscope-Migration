@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -105,6 +106,7 @@ export default function LKTrackerPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-md mx-auto">
+      <SEO title="Remedy Tracker — Lal Kitab" noindex={true} />
       <div className="flex items-center mb-4">
         <Link to="/lk-remedies/report" className="text-xs text-muted-foreground hover:text-gold transition">← Diagnostic Report</Link>
       </div>

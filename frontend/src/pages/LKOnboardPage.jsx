@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Loader2, Sparkles } from 'lucide-react';
@@ -98,6 +99,7 @@ export default function LKOnboardPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-2xl mx-auto">
+      <SEO title="Lal Kitab Setup — EverydayHoroscope" noindex={true} />
       <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-6">
         <h1 className="text-xl font-bold text-gold mb-1">Lal Kitab Onboarding</h1>
         <p className="text-muted-foreground text-sm mb-5">Step {step} of 3</p>

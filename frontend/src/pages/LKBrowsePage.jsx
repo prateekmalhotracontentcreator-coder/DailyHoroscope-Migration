@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useEffect, useState, useCallback } from 'react';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
@@ -70,6 +71,7 @@ export default function LKBrowsePage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-3xl mx-auto">
+      <SEO title="Browse Lal Kitab Remedies" noindex={true} />
       <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5 mb-5">
         <h1 className="text-xl font-bold text-gold mb-3">Browse Remedies</h1>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">

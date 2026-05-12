@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useEffect, useState } from 'react';
 import MissionCard from '../components/MissionCard';
 
@@ -28,6 +29,7 @@ export default function StrategistMissionsPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-2xl mx-auto">
+      <SEO title="Mission Board — The Strategist" noindex={true} />
       <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5 mb-5">
         <h1 className="text-xl font-bold text-gold mb-3">Mission Board</h1>
         <div className="flex items-center gap-3">

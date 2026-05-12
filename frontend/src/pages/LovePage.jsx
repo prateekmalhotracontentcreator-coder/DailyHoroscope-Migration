@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import { SEO } from "../components/SEO";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -179,6 +180,11 @@ function LovePage() {
 
   return (
     <div style={pageStyle}>
+      <SEO
+        title="Love & Relationships Astrology"
+        description="Discover your Vedic love forecast — romance timing, Venus-Mars windows, soulmate patterns, and 8 personalised love reports based on your birth chart."
+        url="https://www.everydayhoroscope.in/love"
+      />
       <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gap: 18 }}>
         <section style={{ ...cardStyle, padding: "28px 24px", overflow: "hidden" }}>
           <div style={{ display: "grid", gap: 20, gridTemplateColumns: "minmax(0, 1.25fr) minmax(280px, 0.75fr)" }}>

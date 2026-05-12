@@ -6,6 +6,7 @@ import { Button } from '../components/ui/button';
 import { Calendar, User, Eye, Tag, ArrowLeft, Share2, BookOpen, X } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
+import { SEO } from '../components/SEO';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -109,7 +110,13 @@ export const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background">
-
+      <SEO
+        title={post.title}
+        description={post.excerpt || post.meta_description || post.title}
+        image={post.featured_image || undefined}
+        url={`https://www.everydayhoroscope.in/blog/${post.slug}`}
+        type="article"
+      />
 
       {/* Fullscreen Video Modal */}
       {showVideo && videoId && (

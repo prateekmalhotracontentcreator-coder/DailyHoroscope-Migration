@@ -1,3 +1,4 @@
+import { SEO } from '../components/SEO';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
@@ -265,6 +266,7 @@ export const BirthChartPage = () => {
 
   return (
     <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+      <SEO title="Vedic Birth Chart — Your Kundali Report" noindex={true} />
       <div className="max-w-5xl mx-auto">
         <Button
           data-testid="back-to-home"
