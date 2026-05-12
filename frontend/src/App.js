@@ -62,6 +62,7 @@ const LongevityReportPage = lazy(() => import('./pages/LongevityReportPage'));
 const ArcAngelPage = lazy(() => import('./pages/ArcAngelPage'));
 const QuestionnairePage = lazy(() => import('./pages/QuestionnairePage'));
 const LKRemediesPage       = lazy(() => import('./pages/LKRemediesPage'));
+const LalKitabLandingPage  = lazy(() => import('./pages/LalKitabLandingPage'));
 const DanaRemediesPage     = lazy(() => import('./pages/DanaRemediesPage'));
 const GemstoneRemediesPage = lazy(() => import('./pages/GemstoneRemediesPage'));
 const CrystalRemediesPage  = lazy(() => import('./pages/CrystalRemediesPage'));
@@ -204,6 +205,9 @@ function App() {
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
+
+                  {/* Lal Kitab public SEO landing */}
+                  <Route path="/lal-kitab-remedies" element={<LalKitabLandingPage />} />
 
                   {/* LK Standalone Remedies */}
                   <Route path="/lk-remedies"       element={<LKRemediesPage />} />
