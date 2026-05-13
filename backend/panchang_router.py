@@ -16,7 +16,7 @@ _log = logging.getLogger("panchang")
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v16-kp-bundle-remedies"
+ENGINE_VERSION = "panchang-router-v17-kp-bundle-default-engine-fallback"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]

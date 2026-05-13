@@ -272,6 +272,16 @@ def _resolve_astrology_context(request: Request) -> AstrologyContext:
 
 
 
+async def _resolve_kp_remedy_doc(request: Request, remedy_ref: str) -> dict[str, Any] | None:
+    """Fallback: fetch Engine remedy record when bundle fields are empty."""
+    try:
+        db = request.state.db
+        col = db["krishna_prashnavali_remedies"]
+        return await col.find_one({"remedy_id": remedy_ref, "approval_status": "approved"})
+    except Exception:
+        return None
+
+
 def _source_bundle_path() -> Path:
     env_path = os.getenv("KRISHNA_ORACLE_BUNDLE_PATH")
     if env_path:
@@ -427,10 +437,17 @@ def _astrology_context_block(astrology: AstrologyContext, answer: KrishnaCanonic
     )
 
 
-def _practical_action_block(answer: KrishnaCanonicalAnswer) -> BilingualBlock:
-    # Read remedy directly from bundle (v1: answer.remedy present; v2: None, what_to_do stands alone)
+def _practical_action_block(
+    answer: KrishnaCanonicalAnswer,
+    ritual_remedy_doc: dict[str, Any] | None = None,
+) -> BilingualBlock:
+    # Bundle first (v1: answer.remedy; v2: None) — Engine fallback when bundle remedy absent
     remedy_en = answer.remedy.english_block if answer.remedy else ""
     remedy_hi = answer.remedy.sanskrit_block if answer.remedy else ""
+    if not remedy_en and ritual_remedy_doc:
+        ritual = ritual_remedy_doc.get("ritual_remedy") or {}
+        remedy_en = ritual.get("english_block", "")
+        remedy_hi = ritual.get("sanskrit_block", "")
     return BilingualBlock(
         sanskrit_block=f"{answer.what_to_do.sanskrit_block} {remedy_hi}".strip(),
         english_block=f"{answer.what_to_do.english_block} {remedy_en}".strip(),
@@ -471,19 +488,34 @@ def _summary_report(
     astrology: AstrologyContext,
     question_text: str | None,
     focus_area: str | None,
+    ritual_remedy_doc: dict[str, Any] | None = None,
 ) -> dict[str, BilingualBlock]:
     report: dict[str, BilingualBlock] = {
         "sacred_verse": answer.krishna_answer,
         "question_response": _question_response_block(answer, question_text, focus_area),
         "astro_scientific_context": _astrology_context_block(astrology, answer),
-        "practical_action": _practical_action_block(answer),
+        "practical_action": _practical_action_block(answer, ritual_remedy_doc),
     }
-    # Surface behavioral_remedy directly from v2 bundle (module-specific, hardcoded per 36 slots)
+    # behavioral_remedy: bundle (v2) first → Engine fallback
     if answer.behavioral_remedy and answer.behavioral_remedy.english_block:
         report["behavioral_remedy"] = answer.behavioral_remedy
-    # Surface mantra directly from v1/v2 bundle if present
+    elif ritual_remedy_doc:
+        ritual = ritual_remedy_doc.get("ritual_remedy") or {}
+        if ritual.get("english_block"):
+            report["behavioral_remedy"] = BilingualBlock(
+                sanskrit_block=ritual.get("sanskrit_block", ""),
+                english_block=ritual.get("english_block", ""),
+            )
+    # sacred_mantra: bundle (v1) first → Engine fallback
     if answer.mantra and answer.mantra.english_block:
         report["sacred_mantra"] = answer.mantra
+    elif ritual_remedy_doc:
+        mantra = ritual_remedy_doc.get("mantra") or {}
+        if mantra.get("english_block"):
+            report["sacred_mantra"] = BilingualBlock(
+                sanskrit_block=mantra.get("sanskrit_block", ""),
+                english_block=mantra.get("english_block", ""),
+            )
     return report
 
 
@@ -557,6 +589,12 @@ async def select_krishna_cell(payload: KrishnaSelectionRequest, request: Request
     sequence_glyphs = [bundle["grid_matrix"][index] for index in sequence_indices]
     answer = _resolve_answer(selected_index, payload.row, payload.col, bundle)
 
+    # Engine fallback: only called when bundle behavioral_remedy is absent AND remedy_ref exists
+    ritual_remedy_doc: dict[str, Any] | None = None
+    bundle_remedy_missing = not (answer.behavioral_remedy and answer.behavioral_remedy.english_block)
+    if bundle_remedy_missing and answer.remedy_ref:
+        ritual_remedy_doc = await _resolve_kp_remedy_doc(request, answer.remedy_ref)
+
     now = _now()
     report = KrishnaReadingDocument(
         id=str(uuid4()),
@@ -576,7 +614,7 @@ async def select_krishna_cell(payload: KrishnaSelectionRequest, request: Request
         answer_slot=answer.answer_slot,
         answer=answer,
         astrology=astrology,
-        summary_report=_summary_report(answer, astrology, payload.question_text, payload.focus_area),
+        summary_report=_summary_report(answer, astrology, payload.question_text, payload.focus_area, ritual_remedy_doc),
         meta={
             "engine_version": ENGINE_VERSION,
             "jump_interval": JUMP_INTERVAL,
