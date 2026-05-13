@@ -506,6 +506,35 @@ function KrishnaOracleApp() {
             </div>
           )}
         </SectionCard>
+
+        {/* ── On-page SEO content ─────────────────────────────────────────── */}
+        <div className="mt-12 space-y-8 border-t border-amber-200/50 pt-10 text-sm text-stone-600 dark:border-amber-900/40 dark:text-amber-100/60">
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">What is Krishna Prashnavali?</h2>
+            <p className="leading-7">Krishna Prashnavali (कृष्ण प्रश्नावली) is one of the most revered Prashna oracles in the Vedic tradition. Rooted in the sacred chaupais of Srimad Bhagavad Gita and traditional Prashna Shastra, it presents 36 divine answers arranged in an 18×18 grid of 324 cells. Each cell, when selected with sincere intent, resolves to a verdict — YES (Pratibha), WAIT (Dhairya), NO (Pratrodha), or PRAY (Bhakti) — drawn directly from Lord Krishna's teachings to Arjuna.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">How the 18×18 Grid Works</h2>
+            <p className="leading-7">The oracle operates on a sacred 9-step chaupai sequence. When you select a cell, the system treats it as position 0 and advances deterministically through 9 chaupai letters using a 12-letter interval — always producing the same answer for a given grid position regardless of when it is consulted. This is not randomness; it is structured Vedic Prashna logic, where the sincerity of your question, not chance, guides your hand.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">Understanding the Four Verdicts</h2>
+            <p className="leading-7"><strong className="text-stone-800 dark:text-amber-100">YES — Pratibha:</strong> Lord Krishna signals a clear forward path. Act with confidence and discipline. <strong className="text-stone-800 dark:text-amber-100">WAIT — Dhairya:</strong> The timing is not yet aligned. Pause, prepare internally, and let circumstances mature. <strong className="text-stone-800 dark:text-amber-100">NO — Pratrodha:</strong> An obstacle is present on the current path. Reconsider your approach, not your goal. <strong className="text-stone-800 dark:text-amber-100">PRAY — Bhakti:</strong> Surrender the outcome. Seek divine alignment through devotion before any action is taken.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">What is Prashna Shastra?</h2>
+            <p className="leading-7">Prashna Shastra is the Vedic science of answering questions — an ancient branch of Jyotish (Vedic astrology) in which the moment of the question itself is cast as a horoscope. Unlike natal astrology, which requires a birth chart, Prashna works solely from the energy of the query and the moment it is posed. EverydayHoroscope layers this with your live dasha, planetary transits, and current yogas to give each reading an astrological fingerprint unique to you and the moment of asking.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">Behavioural Remedy & Sacred Practice</h2>
+            <p className="leading-7">Each of the 36 answers carries a module-specific behavioural remedy — a contemplative practice drawn from Krishna's own teachings and aligned to the verdict received. These are not generic prescriptions; they are precisely paired to the chaupai, the verdict, and the spiritual intent of Lord Krishna's answer. The remedy guides how to carry the oracle's wisdom into your daily life.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">Using Krishna Prashnavali Effectively</h2>
+            <p className="leading-7">Approach each session with one sincere, clearly framed question. Avoid repeating the same question in one session — the oracle is consulted for genuine matters, not for confirmation. Hold your question in mind as you close your eyes, breathe, and let your hand fall on a cell. Read the full answer including the sacred verse (chaupai), meaning, practical action, and behavioural remedy before forming your response. Your Historical Readings above allow you to track patterns across multiple consultations over time.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   );
