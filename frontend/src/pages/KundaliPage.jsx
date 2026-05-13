@@ -921,6 +921,31 @@ function KundaliPage() {
             ) : null}
           </main>
         </section>
+
+        {/* ── On-page SEO content ──────────────────────────────────────────── */}
+        <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">What is Lagna Kundali?</h2>
+            <p className="leading-7">Lagna Kundali (लग्न कुण्डली) — also called the Natal Birth Chart or D1 chart — is the foundational map of Vedic astrology. It captures the exact positions of all nine planets across the 12 zodiac signs and 12 houses at the precise moment of your birth. The Lagna (Ascendant) is the zodiac sign rising on the eastern horizon at birth — it forms the first house of your chart and becomes the lens through which every planet's influence is interpreted.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">The 12 Houses & What They Govern</h2>
+            <p className="leading-7">Each of the 12 houses governs a domain of life: 1st (self, personality), 2nd (wealth, speech), 3rd (siblings, courage), 4th (home, mother), 5th (children, intellect, past-life merit), 6th (enemies, disease, debt), 7th (marriage, partnerships), 8th (longevity, transformation), 9th (dharma, fortune), 10th (career, authority), 11th (gains, ambitions), 12th (liberation, foreign lands). A planet in a house colours that domain with its own planetary nature — benefic or malefic, exalted or debilitated.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Divisional Charts — Varga</h2>
+            <p className="leading-7">Beyond the D1 (Rasi chart), Vedic astrology uses divisional charts (Varga) that magnify specific life domains. D9 (Navamsa) is the most important after D1 — showing the soul's dharmic purpose and the inner quality of marriage. D10 (Dasamsa) governs career. D7 governs children. EverydayHoroscope generates multiple Varga charts from your birth data so each life domain can be examined at full resolution, not estimated from D1 alone.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Vimshottari Dasha — Planetary Timing</h2>
+            <p className="leading-7">The Vimshottari Dasha system divides your life into planetary periods totalling 120 years, beginning from the Moon's nakshatra at birth. Each Mahadasha is ruled by a planet — Ketu 7y, Venus 20y, Sun 6y, Moon 10y, Mars 7y, Rahu 18y, Jupiter 16y, Saturn 19y, Mercury 17y. Within each Mahadasha are Antardashas (sub-periods). Your active Dasha lord heavily colours the themes, opportunities, and challenges of that life phase. EverydayHoroscope computes your full Dasha sequence live from your birth data.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Ashtakavarga — Planetary Strength Scoring</h2>
+            <p className="leading-7">Ashtakavarga quantifies planetary strength in each house. Each of 8 contributors (7 planets + Lagna) assigns bindus (points) to houses based on relative position — producing a Sarva-Ashtakavarga score (0–56) per house. Houses scoring 28+ are strong — transiting planets through high-SAV houses tend to produce results. EverydayHoroscope computes the full Ashtakavarga table alongside Bhavabala (house strength) and Shadbala (planetary strength) from your birth data.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   );

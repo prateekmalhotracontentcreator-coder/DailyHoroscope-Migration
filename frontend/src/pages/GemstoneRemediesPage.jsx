@@ -399,6 +399,30 @@ export default function GemstoneRemediesPage() {
           </button>
         </div>
       )}
+
+      {/* ── On-page SEO content ──────────────────────────────────────────── */}
+      <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">What is Vedic Gemstone Therapy?</h2>
+          <p className="leading-7">Vedic Gemstone Therapy (Ratna Shastra) is the science of using natural gemstones to amplify, balance, or redirect planetary energies in your birth chart. Each gemstone is the primary stone of a specific planet — Ruby for the Sun, Pearl for Moon, Red Coral for Mars, Emerald for Mercury, Yellow Sapphire for Jupiter, Diamond for Venus, Blue Sapphire for Saturn, Hessonite for Rahu, Cat's Eye for Ketu. When worn correctly, the stone acts as a resonance amplifier for that planet's frequencies.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">How Gemstones Work — Planetary Resonance</h2>
+          <p className="leading-7">Vedic astrology understands each planet as emitting a specific spectrum of cosmic light. Gemstones filter and concentrate that spectrum through their crystalline structure — natural gems act as piezoelectric transmitters that, when worn against the skin, interact with the body's bioelectric field. The principle is not metaphorical — it is the same physics underlying quartz oscillators in electronics. The prescribed stone must be natural (not synthetic), flawless, and of sufficient weight (typically 3–5 carats minimum).</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Choosing the Right Gemstone — Critical Rules</h2>
+          <p className="leading-7">Never wear a gemstone without proper Vedic analysis. The wrong stone amplifies a malefic planet's harmful influence. The prescription depends on: (1) your Lagna lord and its strength, (2) the planet's functional nature in your specific chart (benefic or malefic), (3) your active Dasha period, and (4) any contraindications between proposed stones. Blue Sapphire (Saturn), for example, produces dramatic results — positive or negative — within days of wearing, making it the most dangerous stone to wear without a proper prescription.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Wearing Protocols — Metal, Finger & Timing</h2>
+          <p className="leading-7">Each planetary gemstone has a prescribed metal setting, finger, and activation timing. Ruby: gold, ring finger, Sunday sunrise. Pearl: silver, little finger, Monday. Red Coral: copper or gold, ring finger, Tuesday. Emerald: gold, little finger, Wednesday. Yellow Sapphire: gold, index finger, Thursday. Diamond: platinum or silver, middle or little finger, Friday. Blue Sapphire: silver or panchdhatu, middle finger, Saturday. The stone should be activated (abhishek and mantra) before first wearing.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Primary Stones vs Substitute Stones (Uparatna)</h2>
+          <p className="leading-7">Each primary gemstone has less expensive substitutes (Uparatna) that carry similar but gentler energies. Ruby → Red Spinel or Red Garnet. Pearl → Moonstone. Red Coral → Red Jasper. Emerald → Green Tourmaline or Peridot. Yellow Sapphire → Yellow Topaz or Citrine. Diamond → White Zircon or White Sapphire. Blue Sapphire → Amethyst or Blue Spinel. Substitutes are appropriate when the primary stone is unaffordable or when a gentler influence is needed — but they are not equivalent in strength.</p>
+        </div>
+      </div>
     </div>
   );
 }

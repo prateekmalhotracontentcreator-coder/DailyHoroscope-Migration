@@ -62,7 +62,7 @@ const KP_FAQS = [
   { q: "What is Krishna Prashnavali?", a: "Krishna Prashnavali is an ancient Vedic oracle rooted in Srimad Bhagavad Gita and traditional Prashna Shastra. The 18×18 grid (324 cells) maps to 36 canonical answers — YES, WAIT, NO, or PRAY — each drawn from Krishna's sacred chaupais. Your selection is guided by your intent, not by chance." },
   { q: "How is it different from a regular online oracle?", a: "Unlike random-number generators, EverydayHoroscope's KP Oracle overlays your live Vedic dasha, planetary transits, and yogas onto your answer — so every reading carries your actual astrological fingerprint at that moment." },
   { q: "What does each verdict mean?", a: "YES (Pratibha) — move forward with confidence. WAIT (Dhairya) — pause and prepare; timing is not yet ripe. NO (Pratrodha) — the path is obstructed; reconsider. PRAY (Bhakti) — surrender and seek divine alignment before acting." },
-  { q: "What is the 'Temple Remedy' shown after a reading?", a: "Each answer is paired with a specific ritual remedy and mantra sourced from our Remedies Engine — 36 temple-reviewed prescriptions aligned to the verdict. These are optional — they support, not override, your own wisdom." },
+  { q: "What is the 'Sacred Remedy' shown after a reading?", a: "Each of the 36 answers carries its own module-specific sacred remedy and behavioural practice — drawn directly from Lord Krishna's teachings and precisely matched to the chaupai and verdict received. These are optional — they support, not override, your own wisdom." },
   { q: "Can I ask any question?", a: "Yes — personal, professional, spiritual, or relational. The oracle responds to sincere intent. The more specific and clear your question, the more precise the guidance." },
 ];
 
@@ -135,7 +135,7 @@ function KrishnaOracleLanding() {
             {[
               { n: "1", title: "Hold your question", body: "Frame one sincere, clear question — personal, professional, or spiritual." },
               { n: "2", title: "Choose a cell", body: "Close your eyes, breathe, and tap any cell in the 18×18 grid. Your live planetary chart is read at that exact moment." },
-              { n: "3", title: "Receive Krishna's answer", body: "A verdict (YES/WAIT/NO/PRAY) arrives with sacred verse, practical action, temple remedy, and mantra." },
+              { n: "3", title: "Receive Krishna's answer", body: "A verdict (YES/WAIT/NO/PRAY) arrives with sacred verse, practical action, and a behavioural remedy drawn directly from Lord Krishna's teachings." },
             ].map(s => (
               <div key={s.n}>
                 <div className="w-10 h-10 rounded-full bg-amber-600/10 border border-amber-400/40 text-amber-700 font-bold flex items-center justify-center mx-auto mb-3 text-lg">{s.n}</div>
@@ -437,8 +437,8 @@ function KrishnaOracleApp() {
                 <BilingualBlockView label="Meaning" block={reading.answer.meaning} />
                 <div className="grid gap-4 md:grid-cols-2">
                   <BilingualBlockView label="What to Do" block={reading.answer.what_to_do} />
-                  {reading.summary_report?.ritual_remedy
-                    ? <BilingualBlockView label="Temple Remedy" block={reading.summary_report.ritual_remedy} />
+                  {reading.summary_report?.behavioral_remedy
+                    ? <BilingualBlockView label="Sacred Remedy" block={reading.summary_report.behavioral_remedy} />
                     : reading.answer.remedy
                       ? <BilingualBlockView label="Remedy" block={reading.answer.remedy} />
                       : null}
@@ -449,11 +449,9 @@ function KrishnaOracleApp() {
                   <BilingualBlockView label="Sacred Practice" block={reading.answer.behavioral_remedy} />
                 )}
                 <div className="grid gap-4 md:grid-cols-2">
-                  {reading.summary_report?.ritual_mantra
-                    ? <BilingualBlockView label="Mantra" block={reading.summary_report.ritual_mantra} />
-                    : reading.answer.mantra
-                      ? <BilingualBlockView label="Mantra" block={reading.answer.mantra} />
-                      : null}
+                  {(reading.summary_report?.sacred_mantra || reading.answer.mantra)
+                    ? <BilingualBlockView label="Mantra" block={reading.summary_report?.sacred_mantra || reading.answer.mantra} />
+                    : null}
                   <BilingualBlockView label="Krishna's Message" block={reading.answer.krishna_message} />
                 </div>
               </div>

@@ -363,6 +363,30 @@ export default function CrystalRemediesPage() {
           </button>
         </div>
       )}
+
+      {/* ── On-page SEO content ──────────────────────────────────────────── */}
+      <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">What is Crystal Therapy?</h2>
+          <p className="leading-7">Crystal therapy uses the natural vibrational frequency of mineral crystals to harmonise the body's energy field. Unlike Vedic gemstones (which amplify specific planetary energies through direct skin contact), crystals work more broadly on the auric field — they absorb, transmit, and modulate subtle electromagnetic energies. In the Vedic context, crystals are used alongside classical remedies as an accessible, lower-intensity energy tool — particularly effective for emotional clearing, environmental harmony, and chakra balancing.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Crystals vs Vedic Gemstones</h2>
+          <p className="leading-7">The key distinction: Vedic gemstones (ruby, sapphire, emerald) are prescribed by Jyotish for specific planetary amplification — their effect is potent, targeted, and can be adverse if wrongly prescribed. Crystals are gentler, work on the auric/emotional field, and carry far less risk. Crystals are appropriate for everyone regardless of chart; gemstones require individual Vedic prescription. Many practitioners use crystals for daily energy maintenance and Jyotish gemstones for long-term planetary correction simultaneously.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Common Crystal Prescriptions by Planet</h2>
+          <p className="leading-7">Sun: Sunstone, Citrine, Amber — vitality and clarity. Moon: Moonstone, Selenite, Pearl — emotional balance. Mars: Red Jasper, Carnelian — courage and energy. Mercury: Green Aventurine, Fluorite — clarity and communication. Jupiter: Amethyst, Lapis Lazuli — wisdom and abundance. Venus: Rose Quartz, Rhodonite — love and harmony. Saturn: Black Tourmaline, Obsidian — grounding and protection. Rahu: Labradorite, Smoky Quartz — intuition and shadow work. Ketu: Charoite, Lepidolite — spiritual insight and detachment.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Cleansing & Charging Crystals</h2>
+          <p className="leading-7">Crystals absorb environmental energy and require regular cleansing — especially after emotional sessions, illness in the home, or high-stress periods. Cleansing methods: running water (for non-water-soluble stones), sunlight or moonlight (full moon light is particularly effective), burying in earth overnight, smudging with sage or frankincense, or sound cleansing with a singing bowl. After cleansing, set a clear intention to charge the crystal. Never cleanse selenite, malachite, or halite in water — they dissolve.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Using Crystals for Planetary Balance</h2>
+          <p className="leading-7">EverydayHoroscope prescribes crystals based on your active Dasha lord and the planets most in need of support in your current chart cycle. During a Saturn Mahadasha, Black Tourmaline and Obsidian help ground and protect against Saturn's tendency toward isolation and depression. During a Rahu period, Labradorite and Smoky Quartz assist with the confusion and illusion Rahu can create. Crystal prescriptions are updated each time you generate a new report, reflecting your evolving planetary weather.</p>
+        </div>
+      </div>
     </div>
   );
 }

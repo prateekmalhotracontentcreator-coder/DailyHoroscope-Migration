@@ -332,6 +332,30 @@ export default function ChakraRemediesPage() {
           </button>
         </div>
       )}
+
+      {/* ── On-page SEO content ──────────────────────────────────────────── */}
+      <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">What are the 7 Chakras?</h2>
+          <p className="leading-7">Chakras (चक्र — "wheels") are the seven primary energy centres of the subtle body in the Vedic and Tantric tradition, arranged along the spinal axis from the base to the crown. They are: Muladhara (Root — base of spine), Svadhisthana (Sacral — lower abdomen), Manipura (Solar Plexus — navel), Anahata (Heart — centre of chest), Vishuddha (Throat — neck), Ajna (Third Eye — between brows), Sahasrara (Crown — top of head). Each governs specific physical organs, emotional states, and domains of consciousness.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Chakras & Their Vedic Planetary Rulers</h2>
+          <p className="leading-7">In Jyotish, each chakra maps to a planetary ruler: Muladhara → Saturn (survival, structure), Svadhisthana → Jupiter (expansion, pleasure), Manipura → Mars (will, power), Anahata → Venus (love, connection), Vishuddha → Mercury (communication, expression), Ajna → Sun/Moon (intuition, perception), Sahasrara → Ketu/all planets (liberation, cosmic consciousness). Planetary afflictions in your birth chart often manifest as blockages in the corresponding chakra — making Jyotish and chakra healing naturally complementary systems.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">How EverydayHoroscope Diagnoses Chakra Imbalance</h2>
+          <p className="leading-7">Our system identifies chakra imbalances by cross-referencing your birth chart's planetary afflictions with the chakra-planet mapping. A debilitated or heavily aspected Saturn indicates a likely Root Chakra blockage — manifesting as financial insecurity, fear, and lack of groundedness. An afflicted Venus or Moon points to Heart Chakra deficiency — difficulty with love, self-worth, and emotional intimacy. Each report surfaces the specific chakras requiring attention and the practices most aligned with your current Dasha period.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Chakra Healing Practices</h2>
+          <p className="leading-7">Each chakra responds to a specific combination of practices: colour visualisation (each chakra has an associated colour — red for Root through violet for Crown), bija mantras (seed syllables — LAM, VAM, RAM, YAM, HAM, OM, AUM), yoga asanas (poses that activate the associated spinal region), pranayama (breath work for energy movement), and crystal placement on the chakra point during meditation. EverydayHoroscope prescribes the specific combination most relevant to your chart imbalances.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Chakra Healing & Your Dasha Period</h2>
+          <p className="leading-7">Chakra blockages intensify during the Dasha of the ruling planet. During a Saturn Mahadasha, Root Chakra work becomes especially critical — grounding practices, earthing, and Muladhara activation can significantly reduce Saturnine anxiety and stagnation. During a Venus Antardasha, Heart Chakra practices (loving-kindness meditation, rose quartz work, anahata pranayama) support the flowering of Venus's gifts. EverydayHoroscope's prescriptions update with your evolving planetary periods.</p>
+        </div>
+      </div>
     </div>
   );
 }

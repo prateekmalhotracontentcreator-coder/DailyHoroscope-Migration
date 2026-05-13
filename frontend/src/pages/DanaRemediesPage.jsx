@@ -359,6 +359,30 @@ export default function DanaRemediesPage() {
           </button>
         </div>
       )}
+
+      {/* ── On-page SEO content ──────────────────────────────────────────── */}
+      <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">What is Dana in Vedic Astrology?</h2>
+          <p className="leading-7">Dana (दान — charitable giving) is one of the most powerful karmic remedies in Vedic astrology. The principle is rooted in the law of karma: planets afflicting specific houses indicate a karmic debt in that domain, and targeted charitable acts toward the significations of that planet discharge the debt. Dana is not random generosity — it is precise, planet-specific giving, prescribed based on the exact nature and placement of the afflicting planet in your birth chart.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Planetary Dana Prescriptions</h2>
+          <p className="leading-7">Each planet has specific items, colours, metals, grains, and recipients associated with it. Sun Dana: wheat, jaggery, copper — offered on Sundays. Moon Dana: rice, milk, silver — on Mondays. Mars: red lentils, copper, land — Tuesdays. Mercury: green dal, books — Wednesdays. Jupiter: yellow items, gold, education — Thursdays. Venus: white sweets, silk, cows — Fridays. Saturn: black sesame, iron, oil — Saturdays. Rahu: blue or black items — Saturdays. Ketu: multi-coloured items, blankets.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">How Dana Works Karmically</h2>
+          <p className="leading-7">Dana neutralises planetary afflictions by enacting the opposite of the karma that created the debt. A debilitated Saturn (indicating past neglect of the poor or elderly) is pacified by consistent giving to labourers or the underprivileged. An afflicted Jupiter (indicating past disrespect of teachers or scripture) is softened by supporting education or brahmins. The key is sincerity and consistency — mechanical giving without awareness produces minimal effect.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Timing Your Dana</h2>
+          <p className="leading-7">The most effective Dana is given on the planet's ruling weekday, during the planet's hora (planetary hour), and during the planet's Dasha or Antardasha period. Giving Saturn Dana during a Saturn Mahadasha, on a Saturday, during Saturn's hora compounds the remedial power significantly. EverydayHoroscope's Dana reports factor in your current Dasha period when prioritising which planetary Danas to prescribe.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Dana vs Ritual Remedies</h2>
+          <p className="leading-7">Dana (charity) works at the karmic/social level — it discharges debt through giving to others. Ritual remedies (puja, homa) work at the energetic/devotional level — they propitiate the planetary deity directly. Mantra works at the vibrational level — it aligns the mind with the planet's frequency. Gemstones work at the electromagnetic level — amplifying the planet's energy field. All four types are complementary; Dana is often prescribed alongside one other modality for maximum effect.</p>
+        </div>
+      </div>
     </div>
   );
 }
