@@ -602,6 +602,30 @@ function Dashboard() {
           <Layer3Locked />
         )}
 
+        {/* ── On-page SEO content ──────────────────────────────────────────── */}
+        <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">What is The Strategist?</h2>
+            <p className="leading-7">The Strategist is EverydayHoroscope's Vedic Business War Room — a decision-support system for entrepreneurs, leaders, and professionals that combines Vedic planetary intelligence with strategic execution frameworks. It integrates three ancient sciences — Krishna Prashnavali (oracle guidance), Lal Kitab diagnostics (karmic analysis by life domain), and Vimshottari Dasha timing — into a unified war room for high-stakes decisions.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Gate 0 — Krishna Oracle Pre-Flight</h2>
+            <p className="leading-7">Before any strategic campaign begins, The Strategist requires a Gate 0 consultation with the Krishna Prashnavali oracle. This is not optional — it is the Vedic principle of Prashna (consulting the divine before acting). A YES or WAIT verdict from Lord Krishna unlocks the War Room for that campaign. A NO or PRAY verdict signals that the conditions for success are not yet aligned, and redirects focus to remedy and preparation.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">The 5-Gate Lal Kitab Diagnostic Engine</h2>
+            <p className="leading-7">At the core of The Strategist is a 5-Gate analysis of your birth chart using Lal Kitab principles. The five gates — Finance, Career, Health, Relationships, and Dharma — correspond to the planetary houses most relevant to strategic action. Each gate produces a live remedy plan drawn from the 666-record Lal Kitab knowledge base. A gate's strength directly determines which Missions become available and the intensity of the 43-day remedy cycles prescribed.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Missions & the Conquest Score</h2>
+            <p className="leading-7">Missions are 7-day to 43-day structured action protocols generated from your gate scores and dasha period. Each Mission targets a specific planetary weakness identified in your chart and prescribes a combination of ritual, behavioural, and strategic remedies. The Conquest Score aggregates your gate health, mission completion rate, and streak performance into a single strategic readiness metric — telling you, at any moment, how aligned your planetary environment is with high-stakes action.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Vedic Timing — Dasha-Aware Strategy</h2>
+            <p className="leading-7">The Strategist is dasha-aware. Your current Vimshottari Dasha period (the ruling planetary sequence from your moon at birth) determines which domains of life are energised and which are under stress. The War Room surfaces your active dasha lord's influence on each of the 5 gates, meaning the strategic guidance you receive shifts as your dasha changes — keeping your decisions calibrated to the actual planetary weather of your life, not static advice.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   );

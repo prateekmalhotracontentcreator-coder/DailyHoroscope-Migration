@@ -883,6 +883,31 @@ export const PalmistryPage = () => {
             ) : null}
           </div>
         </div>
+
+        {/* ── On-page SEO content ──────────────────────────────────────────── */}
+        <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">What is Vedic Palmistry?</h2>
+            <p className="leading-7">Vedic Palmistry — known as Hasta Samudrika Shastra (हस्त सामुद्रिक शास्त्र) — is the ancient Indian science of reading the hand. Part of the broader Samudrika Shastra tradition (the study of body marks), it interprets the lines, mounts, shape, and texture of both hands to reveal karmic patterns, planetary influences, health tendencies, and life trajectory. Unlike Western palmistry, the Vedic system is deeply integrated with Jyotish — each mount and line corresponds to a specific planet.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">The Four Major Lines</h2>
+            <p className="leading-7"><strong className="text-foreground">Heart Line</strong> — runs below the fingers and governs emotional nature, relationships, and the capacity for love. <strong className="text-foreground">Head Line</strong> — crosses the palm horizontally and reveals intellectual style, decision-making, and mental strength. <strong className="text-foreground">Life Line</strong> — curves around the base of the thumb and indicates vitality, major life changes, and physical constitution (not, as commonly believed, lifespan). <strong className="text-foreground">Fate Line</strong> — rises from the base of the palm toward Saturn's mount and maps career trajectory, responsibility, and dharmic direction.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">The Mounts & Their Planetary Rulers</h2>
+            <p className="leading-7">The fleshy pads (mounts) on the palm are each ruled by a planet: Mount of Jupiter (index finger base) — ambition and leadership; Mount of Saturn (middle finger) — discipline and karma; Mount of Apollo/Sun (ring finger) — creativity and success; Mount of Mercury (little finger) — communication and commerce; Mount of Venus (thumb base) — love, sensuality, and vitality; Mount of Moon (lower palm, opposite thumb) — intuition and imagination; Mount of Mars (between Jupiter and Moon, and between Mercury and Life Line) — courage and aggression.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Which Hand to Read?</h2>
+            <p className="leading-7">In Vedic Hasta Shastra, both hands are read together. The dominant hand (usually right) shows the active life — what you are doing with your potential, your choices, and your current trajectory. The non-dominant hand (usually left) shows the passive or natal hand — the karmic blueprint you were born with. Discrepancies between the two hands reveal how much a person has grown beyond (or fallen short of) their innate potential.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Palmistry & Your Vedic Birth Chart</h2>
+            <p className="leading-7">EverydayHoroscope's AI palmistry overlays your hand analysis with your live Vedic planetary positions. This means the reading you receive is not generic — your current dasha lord, transit influences, and natal planetary strengths are all factored into the planetary remedies and insights provided. The combination of palm reading and Jyotish produces a more nuanced and personally calibrated reading than either system alone.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   );

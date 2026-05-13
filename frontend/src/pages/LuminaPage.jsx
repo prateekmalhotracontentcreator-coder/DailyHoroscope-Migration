@@ -1430,6 +1430,31 @@ function LuminaPage() {
         <main className="mt-5">
           <div>{renderActiveTab()}</div>
         </main>
+
+        {/* ── On-page SEO content ──────────────────────────────────────────── */}
+        <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">What is Lumina?</h2>
+            <p className="leading-7">Lumina is EverydayHoroscope's integrated devotional companion — a daily sacred space combining scripture study, guided meditation, devotion tracking, and an AI spiritual guide. Built on the Vedic understanding that spiritual practice (sadhana) thrives on consistency, Lumina is designed to help you build a daily inner life rather than consuming wisdom passively. Every element of Lumina adapts to your current planetary period and the sacred calendar.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Daily Scripture — Shloka of the Day</h2>
+            <p className="leading-7">Each day, Lumina surfaces a scripture passage — a shloka from the Bhagavad Gita, Upanishads, Vedas, or devotional texts — selected in alignment with the current Panchang (Tithi, Nakshatra, and planetary ruler of the day). The shloka is presented in Sanskrit with transliteration, meaning, and a contemplative note. This practice builds a living relationship with sacred text rather than a once-read familiarity.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Guided Meditation Practices</h2>
+            <p className="leading-7">Lumina provides structured meditation sessions anchored in Vedic tradition — pranayama, trataka (candle gazing), mantra japa, and breath-awareness practices. Sessions are tuned to the time of day and your dasha lord, since Vedic wisdom prescribes different inner practices for different planetary periods. Brahma Muhurta (pre-dawn) practices differ from evening dhyana — Lumina accounts for this.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Devotion Tracking & Sadhana Streaks</h2>
+            <p className="leading-7">Consistency is the foundation of sadhana. Lumina tracks your daily practice — which scriptures you read, which meditations you completed, how many days in a row you have maintained your inner work. Sadhana streaks are not gamification; they reflect the Vedic principle that 40-day and 90-day cycles create lasting neurological and karmic transformation. The tracker keeps your commitment visible and honest.</p>
+          </div>
+          <div>
+            <h2 className="mb-2 text-base font-semibold text-foreground">AI Spiritual Companion</h2>
+            <p className="leading-7">Lumina's AI companion is trained on Vedic philosophy and scripture — it can answer questions about shloka meanings, help you apply teachings to daily life, suggest practices for your current dasha, and reflect wisdom from the Gita, Upanishads, and Puranas. It is not a chatbot — it is a reflective guide that draws from a curated spiritual knowledge base, always pointing inward rather than outward for answers.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   );

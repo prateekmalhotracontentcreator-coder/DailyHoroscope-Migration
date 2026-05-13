@@ -701,6 +701,31 @@ export const TarotPage = () => {
           })}
         </div>
       )}
+
+      {/* ── On-page SEO content ──────────────────────────────────────────── */}
+      <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">What is Tarot?</h2>
+          <p className="leading-7">Tarot is a system of 78 illustrated cards used for reflective guidance, spiritual insight, and decision-making. Dating back to 15th-century Europe and deeply enriched by Hermetic, Kabbalistic, and astrological traditions, Tarot is not fortune-telling — it is a mirror for the subconscious. Each card carries archetypal energy that, when drawn at a sincere moment, surfaces what the intuitive mind already knows.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">The 78-Card Rider-Waite Deck</h2>
+          <p className="leading-7">The Rider-Waite deck — illustrated by Pamela Colman Smith in 1909 — is the most widely used Tarot system. It divides into 22 Major Arcana cards (the Fool through the World — representing life's universal themes) and 56 Minor Arcana across four suits: Wands (fire, ambition), Cups (water, emotion), Swords (air, intellect), and Pentacles (earth, material). Every card carries distinct symbolism, numerological significance, and planetary correspondence.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">How a Daily Draw Works</h2>
+          <p className="leading-7">A daily draw selects one card from the full 78-card deck to represent the energy, theme, or lesson most relevant to your current moment. EverydayHoroscope layers your live Vedic dasha, planetary transits, and current yogas onto the draw — meaning your card is contextualised against your actual astrological fingerprint for the day, not a generic pull.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Upright vs Reversed Cards</h2>
+          <p className="leading-7">When a Tarot card is drawn in reverse (inverted orientation), its energy is considered internalised, blocked, or in shadow form. A reversed card does not mean a negative outcome — it signals that the card's theme needs inward attention rather than outward action. For example, reversed Strength suggests self-doubt to be overcome, not weakness itself. EverydayHoroscope reads both orientations with full nuance.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Tarot Spreads & Multi-Card Readings</h2>
+          <p className="leading-7">Beyond single-card draws, structured spreads place multiple cards in positional relationships — Past / Present / Future, Situation / Action / Outcome, or the classic Celtic Cross. Each position in the spread has a defined meaning, and the cards interact to form a narrative. EverydayHoroscope supports multiple spread types so you can explore both quick daily guidance and in-depth situational readings.</p>
+        </div>
+      </div>
+
     </div>
   );
 };

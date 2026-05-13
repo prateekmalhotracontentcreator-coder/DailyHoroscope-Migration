@@ -547,6 +547,31 @@ export const NumerologyPage = () => {
           ))}
         </div>
       )}
+
+      {/* ── On-page SEO content ──────────────────────────────────────────── */}
+      <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">What is Vedic Numerology?</h2>
+          <p className="leading-7">Vedic Numerology (Ankjyotish) is the ancient Indian science of numbers — a branch of Jyotish that reveals the vibrational blueprint encoded in your birth date and name. Unlike Western Pythagorean numerology, the Vedic system is rooted in the nine planets (Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) and assigns each number 1–9 a planetary ruler. Your numbers govern personality, karmic lessons, timing, and compatibility at a planetary level.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Life Path Number — Your Karmic Blueprint</h2>
+          <p className="leading-7">The Life Path number is derived from your full date of birth reduced to a single digit (1–9) or master number (11, 22, 33). It is the most significant number in your chart — representing the core lessons your soul chose for this lifetime, the natural talents you carry, and the challenges built into your journey. In the Vedic system, each Life Path number corresponds to a planetary lord whose qualities shape your dharmic path.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Name Numerology & Name Correction</h2>
+          <p className="leading-7">Every letter in your name carries a numerical value. The sum of your name's letters produces your Expression Number and Soul Urge Number — revealing how the world perceives you and what you inwardly crave. Name Correction in Vedic Numerology involves adjusting spelling to bring your name's vibration into harmony with your birth date, potentially reducing friction in career, relationships, or health.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Karmic Debt Numbers</h2>
+          <p className="leading-7">Karmic Debt Numbers (13, 14, 16, 19) appear when specific double-digit numbers arise in your chart before reduction. They signal patterns carried over from past-life actions that require conscious resolution in this lifetime. Number 13 relates to laziness and transformation; 14 to misuse of freedom; 16 to ego and spiritual pride; 19 to misuse of power. Recognising these patterns is the first step to dissolving them.</p>
+        </div>
+        <div>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Numerology for Business, Timing & Compatibility</h2>
+          <p className="leading-7">Beyond personal charts, Vedic Numerology applies to business names (brand vibration alignment), residential numbers (harmony of living space), target years (favourable timing for launches and decisions), and compatibility between individuals or partnerships. Each application follows the same planetary correspondence system — matching the vibrational frequency of numbers to the energy needed for the goal at hand.</p>
+        </div>
+      </div>
+
     </div>
   );
 };
