@@ -199,6 +199,7 @@ export default function KrishnaOraclePage() {
 }
 
 function KrishnaOracleApp() {
+  const { user } = useAuth();
   const [metadata, setMetadata] = useState(null);
   const [history, setHistory] = useState([]);
   const [loadingMeta, setLoadingMeta] = useState(true);
@@ -427,7 +428,16 @@ function KrishnaOracleApp() {
                 </label>
               </div>
               <label className="block rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
-                <span className="block text-[11px] uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Question</span>
+                <span className="block text-[11px] uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Your Question</span>
+                <div className="mt-2 rounded-xl border border-amber-300/60 bg-amber-50/60 px-3 py-2 dark:border-amber-700/40 dark:bg-amber-900/20">
+                  <p className="m-0 text-xs font-semibold text-amber-800 dark:text-amber-300">Important: Ask a direct, decisive question only.</p>
+                  <p className="m-0 mt-1 text-xs text-amber-700/90 dark:text-amber-400/80">
+                    Krishna Prashnavali answers YES, WAIT, NO, or PRAY -- it is designed for single, clear questions. Questions that can be answered with a decisive choice qualify. Examples: "Should I accept this job offer?", "Is this the right time to move cities?", "Should I invest in this opportunity?"
+                  </p>
+                  <p className="m-0 mt-1 text-xs text-amber-700/70 dark:text-amber-400/60">
+                    Vague or descriptive questions ("What is my purpose?", "Tell me about my career") do not qualify and will produce a general response.
+                  </p>
+                </div>
                 <textarea
                   value={questionText}
                   onChange={(event) => {
@@ -438,13 +448,10 @@ function KrishnaOracleApp() {
                     }
                   }}
                   onBlur={() => setQuestionError(validateQuestion(questionText))}
-                  rows={4}
-                  placeholder="What should I understand about this situation?"
+                  rows={3}
+                  placeholder="Should I proceed with this decision? (Frame as a direct question)"
                   className="mt-3 w-full rounded-xl border border-amber-300 bg-white px-3 py-3 text-sm text-stone-900 outline-none placeholder:text-stone-400 dark:border-amber-900/60 dark:bg-[#1d120b] dark:text-amber-50 dark:placeholder:text-amber-100/30"
                 />
-                <p className="mt-3 text-sm leading-6 text-stone-600 dark:text-amber-100/70">
-                  Ask one clear question. Your result will now include a direct Krishna response framed against what you entered.
-                </p>
                 {questionError ? <p className="mt-2 text-sm leading-6 text-rose-700 dark:text-rose-200">{questionError}</p> : null}
               </label>
             </div>

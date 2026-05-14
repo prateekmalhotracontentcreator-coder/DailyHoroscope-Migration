@@ -670,7 +670,7 @@ async def _summary_report(
                 sanskrit_block=mantra.get("sanskrit_block", ""),
                 english_block=mantra.get("english_block", ""),
             )
-    return report
+    return {k: v for k, v in report.items() if v is not None}
 
 
 def _serialize_history_item(document: dict[str, Any]) -> KrishnaHistoryItem:
