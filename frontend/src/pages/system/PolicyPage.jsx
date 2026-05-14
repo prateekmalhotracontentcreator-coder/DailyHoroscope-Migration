@@ -55,10 +55,10 @@ export const PolicyPage = ({ type }) => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title={`${meta.title} — Everyday Horoscope`}
+        title={`${meta.title} -- Everyday Horoscope`}
         description={`Read the ${meta.title} for Everyday Horoscope, India's trusted Vedic astrology platform.`}
         url={`https://www.everydayhoroscope.in/${slugMap[type] || type}`}
-        noindex={true}
+        noindex={false}
       />
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Button variant="ghost" onClick={() => navigate(-1)} className="mb-6">

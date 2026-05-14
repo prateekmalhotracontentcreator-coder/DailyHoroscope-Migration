@@ -12,16 +12,16 @@
   "categories": ["lifestyle", "astrology"],
   "icons": [
     {
-      "src": "/Logo.png",
+      "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/Logo.png",
+      "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     }
   ],
   "shortcuts": [
@@ -30,21 +30,21 @@
       "short_name": "Panchang",
       "description": "View today's Vedic almanac",
       "url": "/panchang/daily",
-      "icons": [{ "src": "/Logo.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Daily Horoscope",
       "short_name": "Horoscope",
       "description": "Read today's horoscope",
       "url": "/horoscope/daily",
-      "icons": [{ "src": "/Logo.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Birth Chart",
       "short_name": "Birth Chart",
       "description": "Generate your Janma Kundali",
       "url": "/birth-chart",
-      "icons": [{ "src": "/Logo.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }]
     }
   ],
   "screenshots": [

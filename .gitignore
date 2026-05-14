@@ -90,3 +90,6 @@ frontend/node_modules/.cache/default-development/0.pack
 # MongoDB local backup dumps
 backend/scripts/backup/*.gz
 backend/scripts/backup/*.bson
+
+# Claude Code worktrees (internal working dirs, not part of codebase)
+.claude/worktrees/

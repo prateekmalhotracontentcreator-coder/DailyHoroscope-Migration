@@ -227,14 +227,12 @@ Features live:
 
 ## Legal / Compliance Documents
 
-All drafted (Word format in repo root):
-- `1__TERMS_OF_SERVICE.docx`
-- `2__Privacy_Policy.docx`
-- `3__SUBSCRIPTION_TERMS.docx`
-- `4__Refund___Cancellation_Policy.docx`
-- `5__Cookie_Policy.docx`
+Routes live: `/terms` `/privacy` `/subscription-terms` `/refund-policy` `/cookie-policy`
+Footer "Legal" column links all 5 pages.
+Backend: `GET /api/policies/{type}` serves from `horoscope_db.policies` collection.
 
-**Status: Drafted -- not yet rendered as pages on site** (pending Commission)
+**Status: Pages live and indexed (noindex removed). MongoDB seed required.**
+Run: `python3 backend/scripts/seed_policies_v1.py --mongo-url "$MONGO_URL" --db-name horoscope_db`
 
 ---
 

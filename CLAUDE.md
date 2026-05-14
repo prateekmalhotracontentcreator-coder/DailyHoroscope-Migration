@@ -101,7 +101,13 @@ Smart quote fix for Codex output: `.claude/REFERENCE.md §Codex`
 
 ---
 
-## 7. Current Build Focus
+## 7. KE Ingest Freeze
+
+> **INGEST FREEZE in effect (14 May 2026).** No new chapters until KE Phase 1.2 Sprint 2 (arbitration runtime) is delivered. Validation re-runs on existing batches still allowed. All ingest targets `horoscope_db`. Do NOT use stale `EverydayHoroscope` DB.
+
+---
+
+## 8. Current Build Focus
 
 | Module | Spec | Status |
 |---|---|---|
