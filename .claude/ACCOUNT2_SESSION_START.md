@@ -82,7 +82,6 @@ Backend (`scriptural_oracle_router.py`): Reinstate conditional `_resolve_kp_reme
 4. **Remedies Engine Phase 1** -- endpoint ✅ ingest ✅; brief at `.claude/briefs/remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md`
 
 ### Pending User Decisions
-- Strategist 22 records: `approval_status: pending_human_review` -- needs confirmation before approval pass
 - Lagna Kundali tier -- currently Premium; decision pending
 - Punya Rewards route -- built (`/punya-rewards`), no App.js wire yet
 - 5 split-required LK rules -- `lalkitab-ch21-fam-04` + 4 others
