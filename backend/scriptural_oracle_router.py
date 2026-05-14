@@ -10,6 +10,21 @@ from uuid import uuid4
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+# Dasha computation -- private helpers are stable; imported by name
+try:
+    from vedic_calculator import (  # type: ignore
+        _parse_datetime_to_jd as _vc_jd,
+        _calc_planet as _vc_planet,
+        calculate_vimshottari_dasha,
+        get_current_dasha,
+    )
+    import swisseph as _swe  # type: ignore
+    _DASHA_ENGINE_OK = True
+except Exception:
+    _DASHA_ENGINE_OK = False
+
+CLAUDE_MODEL = "claude-sonnet-4-6"
+
 
 router = APIRouter(prefix="/api/oracle/krishna-prashnavali", tags=["krishna-oracle"])
 
@@ -77,6 +92,12 @@ class KrishnaSelectionRequest(StrictModel):
     focus_area: str | None = None
     language_preference: Literal["en", "hi", "bilingual"] = "bilingual"
     reveal_mode: Literal["instant", "ritual"] = "instant"
+    # Optional birth fields for live dasha computation
+    date_of_birth: str | None = None
+    time_of_birth: str | None = None
+    latitude: float | None = None
+    longitude: float | None = None
+    timezone_offset: str = "+05:30"
 
 
 class KrishnaShareRequest(StrictModel):
@@ -442,6 +463,117 @@ def _astrology_context_block(astrology: AstrologyContext, answer: KrishnaCanonic
     )
 
 
+def _dasha_astrology_from_birth(
+    date_of_birth: str,
+    time_of_birth: str,
+    timezone_offset: str,
+) -> AstrologyContext | None:
+    """Compute current Mahadasha/Antardasha from birth details using Swiss Ephemeris."""
+    if not _DASHA_ENGINE_OK:
+        return None
+    try:
+        jd = _vc_jd(date_of_birth, time_of_birth, timezone_offset)
+        moon_lon, _ = _vc_planet(jd, _swe.MOON)
+        dashas = calculate_vimshottari_dasha(date_of_birth, moon_lon)
+        current = get_current_dasha(dashas)
+        if not current:
+            return None
+        maha = current.get("planet") or current.get("maha_dasha", {}).get("planet", "")
+        antar = (
+            current.get("antardasha_planet")
+            or current.get("antar_dasha", {}).get("planet", "")
+        )
+        mahadasha_label = f"{maha} Mahadasha" if maha else None
+        antardasha_label = f"{antar} Antardasha" if antar else None
+        return AstrologyContext(
+            current_mahadasha=mahadasha_label,
+            antardasha=antardasha_label,
+        )
+    except Exception:
+        return None
+
+
+async def _claude_enrich_summary(
+    question_text: str | None,
+    focus_area: str | None,
+    verdict: str,
+    answer: KrishnaCanonicalAnswer,
+    astrology: AstrologyContext,
+) -> dict[str, str] | None:
+    """Call Claude to generate full-length personalised question_response and practical_action."""
+    try:
+        from anthropic import AsyncAnthropic  # type: ignore
+    except Exception:
+        return None
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
+        return None
+
+    question = (question_text or "").strip() or "a general life question"
+    focus = (focus_area or "guidance").replace("_", " ")
+    dasha_context = ""
+    if astrology.current_mahadasha:
+        dasha_context = f"The seeker is currently in {astrology.current_mahadasha}"
+        if astrology.antardasha:
+            dasha_context += f" / {astrology.antardasha}"
+        dasha_context += ". "
+
+    prompt = f"""You are interpreting a sacred Krishna Prashnavali oracle reading. Your tone is wise, warm, and grounded in Vedic tradition -- never generic or vague.
+
+ORACLE DATA:
+- Seeker's question: "{question}"
+- Focus area: {focus}
+- Krishna's verdict: {verdict} ({answer.verdict_traditional})
+- Krishna's answer: {answer.krishna_answer.english_block}
+- Meaning: {answer.meaning.english_block}
+- What to do: {answer.what_to_do.english_block}
+- Precaution: {answer.precaution.english_block}
+- Duration: {answer.duration.english_block}
+- Sacred message: {answer.krishna_message.english_block}
+- {dasha_context}
+
+Generate two sections. Return ONLY valid JSON with these two keys:
+
+"question_response": A 4-5 sentence personalised response to the seeker's specific question.
+  - Address the question directly by name at the start
+  - Explain what this specific verdict (not generic oracle language) means for their situation
+  - Bring in the meaning and Krishna's message with context
+  - Close with one clear orienting insight for their next step
+
+"practical_action": 4-6 concrete, actionable steps structured as a short paragraph per step.
+  - Each step must be specific and grounded in the oracle's guidance (what_to_do, precaution, duration)
+  - Include timing where relevant
+  - Step 1 should be immediate (today/this week), later steps should extend over the duration
+  - Do not repeat the verdict word -- embody its meaning through the actions
+
+Return ONLY the JSON object, no markdown fences."""
+
+    try:
+        client = AsyncAnthropic(api_key=api_key)
+        response = await client.messages.create(
+            model=CLAUDE_MODEL,
+            max_tokens=1200,
+            temperature=0.4,
+            messages=[{"role": "user", "content": [{"type": "text", "text": prompt}]}],
+        )
+        text = ""
+        for block in response.content:
+            if hasattr(block, "text"):
+                text = block.text.strip()
+                break
+        if not text:
+            return None
+        # Strip markdown fences if present
+        text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+        parsed = json.loads(text)
+        return {
+            "question_response": str(parsed.get("question_response", "")),
+            "practical_action": str(parsed.get("practical_action", "")),
+        }
+    except Exception:
+        return None
+
+
 def _practical_action_block(
     answer: KrishnaCanonicalAnswer,
     ritual_remedy_doc: dict[str, Any] | None = None,
@@ -488,18 +620,35 @@ def _question_response_block(
     )
 
 
-def _summary_report(
+async def _summary_report(
     answer: KrishnaCanonicalAnswer,
     astrology: AstrologyContext,
     question_text: str | None,
     focus_area: str | None,
     ritual_remedy_doc: dict[str, Any] | None = None,
 ) -> dict[str, BilingualBlock | None]:
+    q_response = _question_response_block(answer, question_text, focus_area)
+    p_action = _practical_action_block(answer, ritual_remedy_doc)
+
+    # Claude enrichment: generates full-length personalised text for both blocks
+    enriched = await _claude_enrich_summary(question_text, focus_area, answer.verdict_display, answer, astrology)
+    if enriched:
+        if enriched.get("question_response"):
+            q_response = BilingualBlock(
+                sanskrit_block=q_response.sanskrit_block,
+                english_block=enriched["question_response"],
+            )
+        if enriched.get("practical_action"):
+            p_action = BilingualBlock(
+                sanskrit_block=p_action.sanskrit_block,
+                english_block=enriched["practical_action"],
+            )
+
     report: dict[str, BilingualBlock | None] = {
         "sacred_verse": answer.krishna_answer,
-        "question_response": _question_response_block(answer, question_text, focus_area),
+        "question_response": q_response,
         "astro_scientific_context": _astrology_context_block(astrology, answer),
-        "practical_action": _practical_action_block(answer, ritual_remedy_doc),
+        "practical_action": p_action,
     }
     # behavioral_remedy: bundle (v2) first → Engine fallback
     if answer.behavioral_remedy and answer.behavioral_remedy.english_block:
@@ -587,7 +736,15 @@ async def select_krishna_cell(payload: KrishnaSelectionRequest, request: Request
         user_email = "anonymous"
         is_authenticated = False
 
+    # Resolve astrology: payload birth fields take priority over middleware context
     astrology = _resolve_astrology_context(request)
+    if payload.date_of_birth and payload.time_of_birth:
+        computed = _dasha_astrology_from_birth(
+            payload.date_of_birth, payload.time_of_birth, payload.timezone_offset
+        )
+        if computed:
+            astrology = computed
+
     bundle = _load_bundle()
     selected_index = _selected_index(payload.row, payload.col)
     sequence_indices = _extract_indices(selected_index)
@@ -619,7 +776,7 @@ async def select_krishna_cell(payload: KrishnaSelectionRequest, request: Request
         answer_slot=answer.answer_slot,
         answer=answer,
         astrology=astrology,
-        summary_report=_summary_report(answer, astrology, payload.question_text, payload.focus_area, ritual_remedy_doc),
+        summary_report=await _summary_report(answer, astrology, payload.question_text, payload.focus_area, ritual_remedy_doc),
         meta={
             "engine_version": ENGINE_VERSION,
             "jump_interval": JUMP_INTERVAL,

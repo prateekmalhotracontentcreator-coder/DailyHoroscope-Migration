@@ -7,6 +7,7 @@ import { useAuth } from "../../context/AuthContext";
 
 import KrishnaOracleGrid from "../../components/KrishnaOracleGrid";
 import { extractChaupaiIndices } from "../../utils/chaupaiExtractor";
+import SharedBirthCityPicker from "../../components/SharedBirthCityPicker";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
 const API = `${BACKEND_URL}/api/oracle/krishna-prashnavali`;
@@ -36,22 +37,22 @@ function SectionCard({ title, eyebrow, children, className = "" }) {
 }
 
 function BilingualBlockView({ label, block }) {
-  if (!block?.english_block?.trim()) return null;
+  if (!block) return null;
   return (
     <div className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
       <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">{label}</p>
-      {block.sanskrit_block?.trim() ? <p className="m-0 mt-3 text-lg leading-8 text-stone-900 dark:text-amber-50">{block.sanskrit_block}</p> : null}
+      {block.sanskrit_block ? <p className="m-0 mt-3 text-lg leading-8 text-stone-900 dark:text-amber-50">{block.sanskrit_block}</p> : null}
       <p className="m-0 mt-2 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{block.english_block}</p>
     </div>
   );
 }
 
 function SummaryBlock({ title, content }) {
-  if (!content?.english_block?.trim()) return null;
+  if (!content) return null;
   return (
     <div className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
       <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">{title}</p>
-      {content.sanskrit_block?.trim() ? <p className="m-0 mt-3 text-base leading-7 text-stone-900 dark:text-amber-50">{content.sanskrit_block}</p> : null}
+      {content.sanskrit_block ? <p className="m-0 mt-3 text-base leading-7 text-stone-900 dark:text-amber-50">{content.sanskrit_block}</p> : null}
       <p className="m-0 mt-2 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{content.english_block}</p>
     </div>
   );
@@ -212,6 +213,11 @@ function KrishnaOracleApp() {
   const [loadingPastReading, setLoadingPastReading] = useState(false);
   const [questionError, setQuestionError] = useState("");
 
+  // Birth details for dasha computation
+  const [birthForm, setBirthForm] = useState({ date_of_birth: "", time_of_birth: "", latitude: "", longitude: "", timezone_offset: "+05:30", place_label: "", city_slug: "" });
+  const [birthFormOpen, setBirthFormOpen] = useState(false);
+  const [birthAutoFilled, setBirthAutoFilled] = useState(false);
+
   const gridMatrix = metadata?.grid_matrix || [];
   const revealIndices = useMemo(() => {
     if (selectedIndex == null) return [];
@@ -263,6 +269,30 @@ function KrishnaOracleApp() {
     loadHistory();
   }, []);
 
+  // Auto-populate birth form from saved profile
+  useEffect(() => {
+    if (!user) return;
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
+    axios.get(`${BACKEND_URL}/api/profile/birth`, { withCredentials: true })
+      .then(res => {
+        const profiles = Array.isArray(res.data) ? res.data : [];
+        if (profiles.length === 0) { setBirthFormOpen(true); return; }
+        const p = profiles[0];
+        // Convert timezone name to offset -- default IST if not stored as offset
+        const tzOffset = p.timezone?.includes(":") ? p.timezone : "+05:30";
+        setBirthForm({
+          date_of_birth: p.date_of_birth || "",
+          time_of_birth: p.time_of_birth || "",
+          latitude: p.latitude ?? "",
+          longitude: p.longitude ?? "",
+          timezone_offset: tzOffset,
+          place_label: p.location || "",
+        });
+        setBirthAutoFilled(true);
+      })
+      .catch(() => { setBirthFormOpen(true); });
+  }, [user]);
+
   async function loadPastReading(reportId) {
     if (!reportId) return;
     setLoadingPastReading(true);
@@ -299,6 +329,15 @@ function KrishnaOracleApp() {
     setError("");
     setQuestionError("");
     try {
+      const birthPayload = (birthForm.date_of_birth && birthForm.time_of_birth && birthForm.latitude !== "")
+        ? {
+            date_of_birth: birthForm.date_of_birth,
+            time_of_birth: birthForm.time_of_birth,
+            latitude: Number(birthForm.latitude),
+            longitude: Number(birthForm.longitude),
+            timezone_offset: birthForm.timezone_offset || "+05:30",
+          }
+        : {};
       const response = await axios.post(
         `${API}/select`,
         {
@@ -308,6 +347,7 @@ function KrishnaOracleApp() {
           focus_area: focusArea,
           language_preference: "bilingual",
           reveal_mode: revealEnabled ? "ritual" : "instant",
+          ...birthPayload,
         },
         { withCredentials: true }
       );
@@ -428,6 +468,101 @@ function KrishnaOracleApp() {
             <p className="m-0 text-sm leading-7 text-rose-700 dark:text-rose-200">{error}</p>
           </SectionCard>
         ) : null}
+
+        {/* Birth Details -- for live Dasha context */}
+        <div className="rounded-[1.75rem] border border-amber-200/70 bg-[#fff8ec]/92 p-5 shadow-sm dark:border-amber-900/60 dark:bg-[#140e08]/95">
+          <div className="flex items-center justify-between gap-4">
+            <div>
+              <p className="m-0 text-[11px] uppercase tracking-[0.3em] text-amber-700/80 dark:text-amber-300/70">Vedic Context</p>
+              <h2 className="m-0 mt-1 text-lg font-semibold text-stone-900 dark:text-amber-50">Your Birth Details</h2>
+              {birthAutoFilled && !birthFormOpen && (
+                <p className="m-0 mt-1 text-xs text-amber-700/80 dark:text-amber-400/70">
+                  Auto-filled from your saved profile -- {birthForm.place_label || "birth location"}. Your current Dasha will be included in every reading.
+                </p>
+              )}
+              {!birthAutoFilled && !birthFormOpen && (
+                <p className="m-0 mt-1 text-xs text-stone-500 dark:text-amber-100/50">
+                  Add your birth details to include your live Mahadasha in this reading.
+                </p>
+              )}
+            </div>
+            <button
+              type="button"
+              onClick={() => setBirthFormOpen(v => !v)}
+              className="shrink-0 rounded-lg border border-amber-300/60 px-3 py-1.5 text-xs font-medium text-amber-800 transition hover:bg-amber-50 dark:border-amber-700/40 dark:text-amber-300 dark:hover:bg-amber-900/20"
+            >
+              {birthFormOpen ? "Collapse" : birthAutoFilled ? "Edit" : "Add Details"}
+            </button>
+          </div>
+          {birthFormOpen && (
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <label className="space-y-1">
+                <span className="text-xs font-medium text-stone-600 dark:text-amber-200/70">Date of Birth</span>
+                <input
+                  type="date"
+                  value={birthForm.date_of_birth}
+                  onChange={e => setBirthForm(f => ({ ...f, date_of_birth: e.target.value }))}
+                  className="w-full rounded-xl border border-amber-300/60 bg-white px-3 py-2 text-sm text-stone-900 outline-none dark:border-amber-900/50 dark:bg-stone-900 dark:text-amber-50"
+                />
+              </label>
+              <label className="space-y-1">
+                <span className="text-xs font-medium text-stone-600 dark:text-amber-200/70">Time of Birth</span>
+                <input
+                  type="time"
+                  value={birthForm.time_of_birth}
+                  onChange={e => setBirthForm(f => ({ ...f, time_of_birth: e.target.value }))}
+                  className="w-full rounded-xl border border-amber-300/60 bg-white px-3 py-2 text-sm text-stone-900 outline-none dark:border-amber-900/50 dark:bg-stone-900 dark:text-amber-50"
+                />
+              </label>
+              <div className="sm:col-span-2">
+                <SharedBirthCityPicker
+                  inputId="kp-birth-city"
+                  label={<span className="text-xs font-medium text-stone-600 dark:text-amber-200/70">Place of Birth</span>}
+                  placeholder="Search city, country, or timezone..."
+                  value={birthForm.city_slug}
+                  onChange={city => {
+                    // Convert IANA timezone to +HH:MM offset for vedic_calculator
+                    let tzOffset = "+05:30";
+                    try {
+                      const d = new Date();
+                      const utc = new Date(d.toLocaleString("en-US", { timeZone: "UTC" }));
+                      const local = new Date(d.toLocaleString("en-US", { timeZone: city.timezone }));
+                      const diff = (local - utc) / 60000;
+                      const h = String(Math.floor(Math.abs(diff) / 60)).padStart(2, "0");
+                      const m = String(Math.abs(diff) % 60).padStart(2, "0");
+                      tzOffset = `${diff >= 0 ? "+" : "-"}${h}:${m}`;
+                    } catch { /* keep IST default */ }
+                    setBirthForm(f => ({
+                      ...f,
+                      city_slug: city.slug,
+                      place_label: `${city.city_name}, ${city.country || city.country_name}`,
+                      latitude: city.latitude,
+                      longitude: city.longitude,
+                      timezone_offset: tzOffset,
+                    }));
+                  }}
+                  wrapperStyle={{ width: "100%" }}
+                  labelStyle={{ display: "block" }}
+                />
+                {birthForm.place_label && (
+                  <p className="mt-1 text-xs text-amber-700/70 dark:text-amber-400/60">
+                    Selected: {birthForm.place_label}
+                  </p>
+                )}
+              </div>
+              <div className="sm:col-span-2">
+                <button
+                  type="button"
+                  onClick={() => { setBirthFormOpen(false); setBirthAutoFilled(true); }}
+                  disabled={!birthForm.date_of_birth || !birthForm.time_of_birth || birthForm.latitude === ""}
+                  className="rounded-xl bg-amber-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-amber-500 disabled:opacity-40"
+                >
+                  Save & Use These Details
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
 
         <SectionCard title="Selection Grid" eyebrow="Deterministic Matrix">
           {loadingMeta ? (
