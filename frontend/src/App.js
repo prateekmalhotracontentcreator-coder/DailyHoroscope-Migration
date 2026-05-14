@@ -55,11 +55,13 @@ const NumerologyPage = lazy(() => import('./pages/numerology/NumerologyPage').th
 const NumerologyReportPage = lazy(() => import('./pages/numerology/NumerologyReportPage'));
 const PalmistryPage = lazy(() => import('./pages/palmistry/PalmistryPage').then(m => ({ default: m.PalmistryPage })));
 const TarotPage = lazy(() => import('./pages/tarot/TarotPage').then(m => ({ default: m.TarotPage })));
+const TarotLanding = lazy(() => import('./pages/tarot/TarotLanding'));
 const TarotHistoryPage = lazy(() => import('./pages/tarot/TarotHistoryPage'));
 const RemedyPage = lazy(() => import('./pages/remedies/RemedyPage').then(m => ({ default: m.RemedyPage })));
 const KundaliPage = lazy(() => import('./pages/kundali/KundaliPage'));
 const LuminaPage = lazy(() => import('./pages/lumina/LuminaPage'));
 const LongevityReportPage = lazy(() => import('./pages/reports/LongevityReportPage'));
+const LongevityLanding = lazy(() => import('./pages/reports/LongevityLanding'));
 const ArcAngelPage = lazy(() => import('./pages/arc-angel/ArcAngelPage'));
 const QuestionnairePage = lazy(() => import('./pages/account/QuestionnairePage'));
 const LKRemediesPage       = lazy(() => import('./pages/lk/LKRemediesPage'));
@@ -190,6 +192,7 @@ function App() {
                   <Route path="/numerology/report/:reportId" element={<PremiumRoute feature="Numerology Report" description="Your personalised numerology report is a Premium feature. Upgrade to unlock your full life number analysis."><NumerologyReportPage /></PremiumRoute>} />
                   <Route path="/palmistry" element={<PalmistryPage />} />
                   <Route path="/tarot" element={<TarotPage />} />
+                  <Route path="/the-tarot" element={<TarotLanding />} />
                   <Route path="/tarot/history" element={<PremiumRoute feature="Tarot History" description="Your saved tarot reading history is a Premium feature. Upgrade to review all your past readings."><TarotHistoryPage /></PremiumRoute>} />
                   <Route path="/remedies" element={<RemedyPage />} />
                   <Route path="/lagna-kundali" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace -- D1 through all divisional charts -- is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
@@ -200,6 +203,8 @@ function App() {
 
                   {/* Ayur Jyotish -- Longevity & Health Report */}
                   <Route path="/longevity" element={<LongevityReportPage />} />
+                  <Route path="/longevity-report" element={<LongevityReportPage />} />
+                  <Route path="/the-longevity-report" element={<LongevityLanding />} />
 
                   {/* Arc Angel -- 12 Areas of Life (Premium only) */}
                   <Route path="/arc-angel" element={<PremiumRoute><ArcAngelPage /></PremiumRoute>} />

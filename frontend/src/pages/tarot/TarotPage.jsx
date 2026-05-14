@@ -437,6 +437,11 @@ export const TarotPage = () => {
                       <Star className="h-4 w-4 text-gold flex-shrink-0" />
                       <p className="font-semibold">{primaryCard.name}</p>
                       <OrientationBadge orientation={primaryCard.orientation} />
+                      {reading.moon_phase && (
+                        <span className="rounded-full border border-border bg-muted/40 px-2 py-0.5 text-[11px] text-muted-foreground">
+                          {reading.moon_phase}
+                        </span>
+                      )}
                     </div>
                     <p className="text-xs text-muted-foreground mb-1">{primaryCard.position_label}</p>
                     <p className="text-sm">{primaryCard.meaning_snippet}</p>
@@ -622,6 +627,11 @@ export const TarotPage = () => {
                   <p className="text-xs text-muted-foreground mb-3">
                     {spread.positions.join(' · ')}
                   </p>
+                  {spread.ritual_note && (
+                    <p className="text-xs text-muted-foreground/70 italic mb-3 leading-5">
+                      ✦ {spread.ritual_note}
+                    </p>
+                  )}
                   <Button
                     onClick={() => handleSpreadGenerate(spread)}
                     disabled={loading}
