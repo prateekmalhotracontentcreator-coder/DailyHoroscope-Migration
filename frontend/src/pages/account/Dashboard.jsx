@@ -1,0 +1,340 @@
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { HoroscopeCard } from '../../components/HoroscopeCard';
+import { BirthDetailsForm } from '../../components/BirthDetailsForm';
+import { BirthChartDisplay } from '../../components/BirthChartDisplay';
+import { KundaliMilanForm } from '../../components/KundaliMilanForm';
+import { KundaliMilanDisplay } from '../../components/KundaliMilanDisplay';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../components/ui/tabs';
+import { Button } from '../../components/ui/button';
+import axios from 'axios';
+import { ArrowLeft, Sparkles } from 'lucide-react';
+import { toast } from 'sonner';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+export const Dashboard = () => {
+  const navigate = useNavigate();
+  const [selectedSign, setSelectedSign] = useState(null);
+  const [signs, setSigns] = useState([]);
+  const [horoscopes, setHoroscopes] = useState({
+    daily: null,
+    weekly: null,
+    monthly: null
+  });
+  const [loading, setLoading] = useState({
+    daily: false,
+    weekly: false,
+    monthly: false,
+    birthChart: false,
+    kundaliMilan: false
+  });
+  const [activeTab, setActiveTab] = useState('daily');
+  const [birthProfile, setBirthProfile] = useState(null);
+  const [birthChart, setBirthChart] = useState(null);
+  const [kundaliMilan, setKundaliMilan] = useState(null);
+  const [savedProfiles, setSavedProfiles] = useState([]);
+
+  useEffect(() => {
+    const savedSign = localStorage.getItem('selected-sign');
+    if (!savedSign) {
+      navigate('/');
+      return;
+    }
+    setSelectedSign(savedSign);
+    fetchSigns();
+    fetchHoroscope(savedSign, 'daily');
+    loadBirthProfile();
+  }, [navigate]);
+
+  const fetchSigns = async () => {
+    try {
+      const response = await axios.get(`${API}/signs`);
+      setSigns(response.data);
+    } catch (error) {
+      console.error('Error fetching signs:', error);
+    }
+  };
+
+  const fetchHoroscope = async (sign, type) => {
+    if (horoscopes[type]) return; // Already loaded
+
+    setLoading((prev) => ({ ...prev, [type]: true }));
+    try {
+      const response = await axios.get(`${API}/horoscope/${sign}/${type}`);
+      setHoroscopes((prev) => ({ ...prev, [type]: response.data }));
+    } catch (error) {
+      console.error(`Error fetching ${type} horoscope:`, error);
+    } finally {
+      setLoading((prev) => ({ ...prev, [type]: false }));
+    }
+  };
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    if (!horoscopes[tab] && selectedSign && ['daily', 'weekly', 'monthly'].includes(tab)) {
+      fetchHoroscope(selectedSign, tab);
+    }
+  };
+
+  const loadBirthProfile = async () => {
+    const savedProfileId = localStorage.getItem('birth-profile-id');
+    if (savedProfileId) {
+      try {
+        const response = await axios.get(`${API}/profile/birth/${savedProfileId}`);
+        setBirthProfile(response.data);
+      } catch (error) {
+        console.error('Error loading birth profile:', error);
+      }
+    }
+  };
+
+  const handleBirthDetailsSubmit = async (formData) => {
+    setLoading((prev) => ({ ...prev, birthChart: true }));
+    try {
+      // Create birth profile
+      const profileResponse = await axios.post(`${API}/profile/birth`, formData);
+      const profile = profileResponse.data;
+      setBirthProfile(profile);
+      localStorage.setItem('birth-profile-id', profile.id);
+      
+      toast.success('Birth details saved successfully!');
+      
+      // Generate birth chart
+      const chartResponse = await axios.post(`${API}/birthchart/generate`, {
+        profile_id: profile.id
+      });
+      setBirthChart(chartResponse.data);
+      toast.success('Birth chart generated!');
+    } catch (error) {
+      console.error('Error creating birth profile:', error);
+      toast.error('Failed to save birth details. Please try again.');
+    } finally {
+      setLoading((prev) => ({ ...prev, birthChart: false }));
+    }
+  };
+
+  const handleGenerateBirthChart = async () => {
+    if (!birthProfile) return;
+    
+    setLoading((prev) => ({ ...prev, birthChart: true }));
+    try {
+      const response = await axios.post(`${API}/birthchart/generate`, {
+        profile_id: birthProfile.id
+      });
+      setBirthChart(response.data);
+      toast.success('Birth chart generated!');
+    } catch (error) {
+      console.error('Error generating birth chart:', error);
+      toast.error('Failed to generate birth chart. Please try again.');
+    } finally {
+      setLoading((prev) => ({ ...prev, birthChart: false }));
+    }
+  };
+
+  const handleKundaliMilanSubmit = async (data) => {
+    setLoading((prev) => ({ ...prev, kundaliMilan: true }));
+    try {
+      // Create profiles for both people
+      const profile1Response = await axios.post(`${API}/profile/birth`, data.person1);
+      const profile2Response = await axios.post(`${API}/profile/birth`, data.person2);
+      
+      const person1 = profile1Response.data;
+      const person2 = profile2Response.data;
+      
+      // Generate Kundali Milan report
+      const milanResponse = await axios.post(`${API}/kundali-milan/generate`, {
+        person1_id: person1.id,
+        person2_id: person2.id
+      });
+      
+      setKundaliMilan({
+        report: milanResponse.data,
+        person1,
+        person2
+      });
+      
+      toast.success('Kundali Milan report generated!');
+    } catch (error) {
+      console.error('Error generating Kundali Milan:', error);
+      toast.error('Failed to generate compatibility report. Please try again.');
+    } finally {
+      setLoading((prev) => ({ ...prev, kundaliMilan: false }));
+    }
+  };
+
+  const currentSignData = signs.find((s) => s.id === selectedSign);
+
+  if (!selectedSign) {
+    return null;
+  }
+
+  return (
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="mb-8">
+          <Button
+            data-testid="back-button"
+            onClick={() => navigate('/')}
+            variant="ghost"
+            className="mb-6 hover:bg-muted transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Change Sign
+          </Button>
+
+          {currentSignData && (
+            <div className="flex items-center space-x-6 p-8 rounded-sm border border-border bg-card">
+              <span className="text-8xl font-playfair leading-none">
+                {currentSignData.symbol}
+              </span>
+              <div className="flex-1">
+                <h1 className="text-4xl md:text-5xl font-playfair font-semibold tracking-tight mb-2">
+                  {currentSignData.name}
+                </h1>
+                <p className="text-sm text-muted-foreground uppercase tracking-[0.2em] font-semibold mb-1">
+                  {currentSignData.dates}
+                </p>
+                <p className="text-sm text-gold uppercase tracking-wider flex items-center">
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  {currentSignData.element} Element
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Horoscope Tabs */}
+        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
+          <TabsList className="grid w-full grid-cols-5 mb-8 bg-muted p-1 rounded-sm h-auto">
+            <TabsTrigger
+              data-testid="tab-daily"
+              value="daily"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+            >
+              Daily
+            </TabsTrigger>
+            <TabsTrigger
+              data-testid="tab-weekly"
+              value="weekly"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+            >
+              Weekly
+            </TabsTrigger>
+            <TabsTrigger
+              data-testid="tab-monthly"
+              value="monthly"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+            >
+              Monthly
+            </TabsTrigger>
+            <TabsTrigger
+              data-testid="tab-birthchart"
+              value="birthchart"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+            >
+              Birth Chart
+            </TabsTrigger>
+            <TabsTrigger
+              data-testid="tab-kundali"
+              value="kundali"
+              className="py-3 text-sm md:text-base font-semibold data-[state=active]:bg-card data-[state=active]:text-foreground data-[state=active]:shadow-sm rounded-sm transition-all"
+            >
+              Kundali Milan
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="daily" data-testid="content-daily">
+            <HoroscopeCard
+              title="Daily Horoscope"
+              content={horoscopes.daily?.content}
+              isLoading={loading.daily}
+              type="daily"
+            />
+          </TabsContent>
+
+          <TabsContent value="weekly" data-testid="content-weekly">
+            <HoroscopeCard
+              title="Weekly Horoscope"
+              content={horoscopes.weekly?.content}
+              isLoading={loading.weekly}
+              type="weekly"
+            />
+          </TabsContent>
+
+          <TabsContent value="monthly" data-testid="content-monthly">
+            <HoroscopeCard
+              title="Monthly Horoscope"
+              content={horoscopes.monthly?.content}
+              isLoading={loading.monthly}
+              type="monthly"
+            />
+          </TabsContent>
+
+          <TabsContent value="birthchart" data-testid="content-birthchart">
+            <div className="space-y-6">
+              {!birthProfile ? (
+                <BirthDetailsForm
+                  onSubmit={handleBirthDetailsSubmit}
+                  isLoading={loading.birthChart}
+                />
+              ) : (
+                <>
+                  <BirthDetailsForm
+                    existingProfile={birthProfile}
+                    isLoading={false}
+                  />
+                  {!birthChart && (
+                    <Button
+                      data-testid="generate-birthchart"
+                      onClick={handleGenerateBirthChart}
+                      disabled={loading.birthChart}
+                      className="w-full h-12 text-base font-semibold bg-primary hover:bg-gold hover:text-primary-foreground transition-all duration-300"
+                    >
+                      {loading.birthChart ? 'Generating...' : 'Generate Birth Chart'}
+                    </Button>
+                  )}
+                  <BirthChartDisplay
+                    report={birthChart}
+                    isLoading={loading.birthChart}
+                    profile={birthProfile}
+                  />
+                </>
+              )}
+            </div>
+          </TabsContent>
+
+          <TabsContent value="kundali" data-testid="content-kundali">
+            <div className="space-y-6">
+              {!kundaliMilan ? (
+                <KundaliMilanForm
+                  onSubmit={handleKundaliMilanSubmit}
+                  isLoading={loading.kundaliMilan}
+                />
+              ) : (
+                <>
+                  <KundaliMilanDisplay
+                    report={kundaliMilan.report}
+                    person1={kundaliMilan.person1}
+                    person2={kundaliMilan.person2}
+                    isLoading={loading.kundaliMilan}
+                  />
+                  <Button
+                    data-testid="new-kundali-milan"
+                    onClick={() => setKundaliMilan(null)}
+                    variant="outline"
+                    className="w-full h-12 text-base font-semibold border-gold hover:bg-gold hover:text-primary-foreground transition-all duration-300"
+                  >
+                    Check Another Compatibility
+                  </Button>
+                </>
+              )}
+            </div>
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
+  );
+};

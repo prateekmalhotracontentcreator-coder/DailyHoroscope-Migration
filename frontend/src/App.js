@@ -13,74 +13,74 @@ import { CookieConsent } from './components/CookieConsent';
 import { NavBar } from './components/NavBar';
 import { ScrollToTop } from './components/ScrollToTop';
 
-// Critical path — loaded synchronously (first-paint routes)
-import { Login } from './pages/Login';
-import { Register } from './pages/Register';
-import { Home } from './pages/Home';
-import { Landing } from './pages/Landing';
-import { DailyHoroscope } from './pages/DailyHoroscope';
-import { DailyHoroscopeSign } from './pages/DailyHoroscopeSign';
-import { WeeklyHoroscope } from './pages/WeeklyHoroscope';
-import { MonthlyHoroscope } from './pages/MonthlyHoroscope';
-import { BirthChartPage } from './pages/BirthChartPage';
-import { KundaliMilanPage } from './pages/KundaliMilanPage';
+// Critical path -- loaded synchronously (first-paint routes)
+import { Login } from './pages/account/Login';
+import { Register } from './pages/account/Register';
+import { Home } from './pages/home/Home';
+import { Landing } from './pages/home/Landing';
+import { DailyHoroscope } from './pages/horoscope/DailyHoroscope';
+import { DailyHoroscopeSign } from './pages/horoscope/DailyHoroscopeSign';
+import { WeeklyHoroscope } from './pages/horoscope/WeeklyHoroscope';
+import { MonthlyHoroscope } from './pages/horoscope/MonthlyHoroscope';
+import { BirthChartPage } from './pages/kundali/BirthChartPage';
+import { KundaliMilanPage } from './pages/kundali/KundaliMilanPage';
 import { AdminLogin } from './pages/admin/AdminLogin';
-import { PanchangLangPage } from './pages/PanchangLangPage';
-import PanchangLandingPage from './pages/PanchangLandingPage';
+import { PanchangLangPage } from './pages/panchang/PanchangLangPage';
+import PanchangLandingPage from './pages/panchang/PanchangLandingPage';
 
-// Lazy-loaded — split into separate chunks, loaded on demand
-const BrihatKundliPage = lazy(() => import('./pages/BrihatKundliPage').then(m => ({ default: m.BrihatKundliPage })));
+// Lazy-loaded -- split into separate chunks, loaded on demand
+const BrihatKundliPage = lazy(() => import('./pages/kundali/BrihatKundliPage').then(m => ({ default: m.BrihatKundliPage })));
 const AdminDashboard = lazy(() => import('./pages/admin/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
 const LibraryConsolePage = lazy(() => import('./pages/admin/LibraryConsolePage').then(m => ({ default: m.LibraryConsolePage })));
 const AdminBlogManager = lazy(() => import('./pages/admin/AdminBlogManager').then(m => ({ default: m.AdminBlogManager })));
-const PricingPage = lazy(() => import('./pages/PricingPage').then(m => ({ default: m.PricingPage })));
-const BlogList = lazy(() => import('./pages/BlogList').then(m => ({ default: m.BlogList })));
-const BlogPost = lazy(() => import('./pages/BlogPost').then(m => ({ default: m.BlogPost })));
-const AboutUs = lazy(() => import('./pages/AboutUs').then(m => ({ default: m.AboutUs })));
-const ContactUs = lazy(() => import('./pages/ContactUs').then(m => ({ default: m.ContactUs })));
-const PolicyPage = lazy(() => import('./pages/PolicyPage').then(m => ({ default: m.PolicyPage })));
-const ResetPassword = lazy(() => import('./pages/ResetPassword').then(m => ({ default: m.ResetPassword })));
-const AccountSettings = lazy(() => import('./pages/AccountSettings').then(m => ({ default: m.AccountSettings })));
-const MyReportsPage = lazy(() => import('./pages/MyReportsPage').then(m => ({ default: m.MyReportsPage })));
-const IndividualReportsPage = lazy(() => import('./pages/IndividualReportsPage'));
-const LovePage = lazy(() => import('./pages/LovePage'));
-const LoveReportsPage = lazy(() => import('./pages/LoveReportsPage'));
-const LiveSaiBabaArtiPage = lazy(() => import('./pages/LiveSaiBabaArtiPage'));
-const RitualEnginePage = lazy(() => import('./pages/RitualEnginePage'));
-const ComingSoonPage = lazy(() => import('./pages/ComingSoonPage').then(m => ({ default: m.ComingSoonPage })));
-const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
-const PanchangPage = lazy(() => import('./pages/PanchangPage').then(m => ({ default: m.PanchangPage })));
-const NumerologyPage = lazy(() => import('./pages/NumerologyPage').then(m => ({ default: m.NumerologyPage })));
-const NumerologyReportPage = lazy(() => import('./pages/NumerologyReportPage'));
-const PalmistryPage = lazy(() => import('./pages/PalmistryPage').then(m => ({ default: m.PalmistryPage })));
-const TarotPage = lazy(() => import('./pages/TarotPage').then(m => ({ default: m.TarotPage })));
-const TarotHistoryPage = lazy(() => import('./pages/TarotHistoryPage'));
-const RemedyPage = lazy(() => import('./pages/RemedyPage').then(m => ({ default: m.RemedyPage })));
-const KundaliPage = lazy(() => import('./pages/KundaliPage'));
-const LuminaPage = lazy(() => import('./pages/LuminaPage'));
-const LongevityReportPage = lazy(() => import('./pages/LongevityReportPage'));
-const ArcAngelPage = lazy(() => import('./pages/ArcAngelPage'));
-const QuestionnairePage = lazy(() => import('./pages/QuestionnairePage'));
-const LKRemediesPage       = lazy(() => import('./pages/LKRemediesPage'));
-const LalKitabLandingPage  = lazy(() => import('./pages/LalKitabLandingPage'));
-const DanaRemediesPage     = lazy(() => import('./pages/DanaRemediesPage'));
-const GemstoneRemediesPage = lazy(() => import('./pages/GemstoneRemediesPage'));
-const CrystalRemediesPage  = lazy(() => import('./pages/CrystalRemediesPage'));
-const ChakraRemediesPage   = lazy(() => import('./pages/ChakraRemediesPage'));
-const MantraRemediesPage   = lazy(() => import('./pages/MantraRemediesPage'));
-const LKOnboardPage = lazy(() => import('./pages/LKOnboardPage'));
-const LKReportPage = lazy(() => import('./pages/LKReportPage'));
-const LKTrackerPage = lazy(() => import('./pages/LKTrackerPage'));
-const LKDebtAuditPage = lazy(() => import('./pages/LKDebtAuditPage'));
-const LKBrowsePage = lazy(() => import('./pages/LKBrowsePage'));
-const TheStrategistLandingPage = lazy(() => import('./pages/TheStrategistLandingPage'));
-const StrategistPage = lazy(() => import('./pages/StrategistPage'));
-const StrategistMissionsPage = lazy(() => import('./pages/StrategistMissionsPage'));
-const StrategistReportPage = lazy(() => import('./pages/StrategistReportPage'));
-const StrategistSurrogatePage = lazy(() => import('./pages/StrategistSurrogatePage'));
-const KrishnaOraclePage = lazy(() => import('./pages/KrishnaOraclePage'));
-const PunyaRewardsPage = lazy(() => import('./pages/PunyaRewardsPage'));
-const StrategistActionPlanPage = lazy(() => import('./pages/StrategistActionPlanPage'));
+const PricingPage = lazy(() => import('./pages/system/PricingPage').then(m => ({ default: m.PricingPage })));
+const BlogList = lazy(() => import('./pages/content/BlogList').then(m => ({ default: m.BlogList })));
+const BlogPost = lazy(() => import('./pages/content/BlogPost').then(m => ({ default: m.BlogPost })));
+const AboutUs = lazy(() => import('./pages/home/AboutUs').then(m => ({ default: m.AboutUs })));
+const ContactUs = lazy(() => import('./pages/content/ContactUs').then(m => ({ default: m.ContactUs })));
+const PolicyPage = lazy(() => import('./pages/system/PolicyPage').then(m => ({ default: m.PolicyPage })));
+const ResetPassword = lazy(() => import('./pages/account/ResetPassword').then(m => ({ default: m.ResetPassword })));
+const AccountSettings = lazy(() => import('./pages/account/AccountSettings').then(m => ({ default: m.AccountSettings })));
+const MyReportsPage = lazy(() => import('./pages/reports/MyReportsPage').then(m => ({ default: m.MyReportsPage })));
+const IndividualReportsPage = lazy(() => import('./pages/reports/IndividualReportsPage'));
+const LovePage = lazy(() => import('./pages/reports/LovePage'));
+const LoveReportsPage = lazy(() => import('./pages/reports/LoveReportsPage'));
+const LiveSaiBabaArtiPage = lazy(() => import('./pages/live/LiveSaiBabaArtiPage'));
+const RitualEnginePage = lazy(() => import('./pages/rewards/RitualEnginePage'));
+const ComingSoonPage = lazy(() => import('./pages/system/ComingSoonPage').then(m => ({ default: m.ComingSoonPage })));
+const CareersPage = lazy(() => import('./pages/content/CareersPage').then(m => ({ default: m.CareersPage })));
+const PanchangPage = lazy(() => import('./pages/panchang/PanchangPage').then(m => ({ default: m.PanchangPage })));
+const NumerologyPage = lazy(() => import('./pages/numerology/NumerologyPage').then(m => ({ default: m.NumerologyPage })));
+const NumerologyReportPage = lazy(() => import('./pages/numerology/NumerologyReportPage'));
+const PalmistryPage = lazy(() => import('./pages/palmistry/PalmistryPage').then(m => ({ default: m.PalmistryPage })));
+const TarotPage = lazy(() => import('./pages/tarot/TarotPage').then(m => ({ default: m.TarotPage })));
+const TarotHistoryPage = lazy(() => import('./pages/tarot/TarotHistoryPage'));
+const RemedyPage = lazy(() => import('./pages/remedies/RemedyPage').then(m => ({ default: m.RemedyPage })));
+const KundaliPage = lazy(() => import('./pages/kundali/KundaliPage'));
+const LuminaPage = lazy(() => import('./pages/lumina/LuminaPage'));
+const LongevityReportPage = lazy(() => import('./pages/reports/LongevityReportPage'));
+const ArcAngelPage = lazy(() => import('./pages/arc-angel/ArcAngelPage'));
+const QuestionnairePage = lazy(() => import('./pages/account/QuestionnairePage'));
+const LKRemediesPage       = lazy(() => import('./pages/lk/LKRemediesPage'));
+const LalKitabLandingPage  = lazy(() => import('./pages/lk/LalKitabLandingPage'));
+const DanaRemediesPage     = lazy(() => import('./pages/remedies/DanaRemediesPage'));
+const GemstoneRemediesPage = lazy(() => import('./pages/remedies/GemstoneRemediesPage'));
+const CrystalRemediesPage  = lazy(() => import('./pages/remedies/CrystalRemediesPage'));
+const ChakraRemediesPage   = lazy(() => import('./pages/remedies/ChakraRemediesPage'));
+const MantraRemediesPage   = lazy(() => import('./pages/remedies/MantraRemediesPage'));
+const LKOnboardPage = lazy(() => import('./pages/lk/LKOnboardPage'));
+const LKReportPage = lazy(() => import('./pages/lk/LKReportPage'));
+const LKTrackerPage = lazy(() => import('./pages/lk/LKTrackerPage'));
+const LKDebtAuditPage = lazy(() => import('./pages/lk/LKDebtAuditPage'));
+const LKBrowsePage = lazy(() => import('./pages/lk/LKBrowsePage'));
+const TheStrategistLandingPage = lazy(() => import('./pages/strategist/TheStrategistLandingPage'));
+const StrategistPage = lazy(() => import('./pages/strategist/StrategistPage'));
+const StrategistMissionsPage = lazy(() => import('./pages/strategist/StrategistMissionsPage'));
+const StrategistReportPage = lazy(() => import('./pages/strategist/StrategistReportPage'));
+const StrategistSurrogatePage = lazy(() => import('./pages/strategist/StrategistSurrogatePage'));
+const KrishnaOraclePage = lazy(() => import('./pages/kp/KrishnaOraclePage'));
+const PunyaRewardsPage = lazy(() => import('./pages/rewards/PunyaRewardsPage'));
+const StrategistActionPlanPage = lazy(() => import('./pages/strategist/StrategistActionPlanPage'));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -161,7 +161,7 @@ function App() {
                   <Route path="/admin/blog" element={<AdminBlogManager />} />
                   <Route path="/admin/library" element={<LibraryConsolePage />} />
 
-                  {/* Panchang — order matters: most specific first */}
+                  {/* Panchang -- order matters: most specific first */}
                   <Route path="/panchang" element={<PanchangLandingPage />} />
                   <Route path="/panchang/calendar/:year/:month" element={<PanchangPage />} />
                   <Route path="/panchang/date/:dateValue" element={<PanchangPage />} />
@@ -190,19 +190,19 @@ function App() {
                   <Route path="/tarot" element={<TarotPage />} />
                   <Route path="/tarot/history" element={<PremiumRoute feature="Tarot History" description="Your saved tarot reading history is a Premium feature. Upgrade to review all your past readings."><TarotHistoryPage /></PremiumRoute>} />
                   <Route path="/remedies" element={<RemedyPage />} />
-                  <Route path="/lagna-kundali" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace — D1 through all divisional charts — is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
+                  <Route path="/lagna-kundali" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace -- D1 through all divisional charts -- is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
                   <Route path="/lagna-kundali/chart/:chartId" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
 
-                  {/* Lumina — Spiritual companion module */}
+                  {/* Lumina -- Spiritual companion module */}
                   <Route path="/lumina" element={<LuminaPage />} />
 
-                  {/* Ayur Jyotish — Longevity & Health Report */}
+                  {/* Ayur Jyotish -- Longevity & Health Report */}
                   <Route path="/longevity" element={<LongevityReportPage />} />
 
-                  {/* Arc Angel — 12 Areas of Life (Premium only) */}
+                  {/* Arc Angel -- 12 Areas of Life (Premium only) */}
                   <Route path="/arc-angel" element={<PremiumRoute><ArcAngelPage /></PremiumRoute>} />
 
-                  {/* Questionnaire — personalise readings (Premium only) */}
+                  {/* Questionnaire -- personalise readings (Premium only) */}
                   <Route path="/questionnaire" element={<PremiumRoute><QuestionnairePage /></PremiumRoute>} />
 
                   {/* Coming soon */}
@@ -233,7 +233,7 @@ function App() {
                   <Route path="/strategist/action-plan" element={<ProtectedRoute><StrategistActionPlanPage /></ProtectedRoute>} />
                   <Route path="/krishna-prashnavali" element={<KrishnaOraclePage />} />
 
-                  {/* Punya Rewards — loyalty & gamification (all logged-in users) */}
+                  {/* Punya Rewards -- loyalty & gamification (all logged-in users) */}
                   <Route path="/punya-rewards" element={<ProtectedRoute><PunyaRewardsPage /></ProtectedRoute>} />
 
                   <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
