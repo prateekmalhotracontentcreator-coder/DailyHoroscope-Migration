@@ -1,5 +1,7 @@
-# Knowledge Engine — Ingest Roadmap
-Last updated: 17 April 2026 — 1,040 rules in DB; Ch 48 + Ch 52 + Ch 53 complete (Ch 53 includes 4-rule Venus Antardasha supplement patch)
+# Knowledge Engine -- Ingest Roadmap
+Last updated: 17 April 2026 -- 1,040 rules in DB; Ch 48 + Ch 52 + Ch 53 complete (Ch 53 includes 4-rule Venus Antardasha supplement patch)
+
+> **INGEST FREEZE in effect (14 May 2026).** No new chapters to be ingested until KE Phase 1.2 Sprint 2 (arbitration runtime) is delivered and gated. Validation re-runs on existing batches are still allowed.
 
 ---
 
@@ -32,29 +34,29 @@ Decision: promote only after full multi-book ingest is complete.
 
 ---
 
-## Tier 1 — Ingest Next (Core Prediction Engine)
+## Tier 1 -- Ingest Next (Core Prediction Engine)
 
-### BPHS Vol 1 — Ch 24: Effects of Bhava Lords ✅ DONE
+### BPHS Vol 1 -- Ch 24: Effects of Bhava Lords ✅ DONE
 - **Rules ingested:** 376 · auto_approved: 71% · flagged: 9% · contradictions: 0
 - **batch_id:** bphs-ch24-v2-20260416
 
-### BPHS Vol 2 — Ch 48: Dasas of Lords of Various Houses ✅ DONE
+### BPHS Vol 2 -- Ch 48: Dasas of Lords of Various Houses ✅ DONE
 - **Rules ingested:** 46 · auto_approved: 74% · flagged: 2% · contradictions: 5 pairs
 - **batch_id:** bphs-ch48-dasha-20260416
 - **Condition type:** `dasha_of_house_lord` with `condition.house` 1-12
 
-### BPHS Vol 2 — Ch 47: Effects of Dasas (Mahadasha by Planet) ✅ DONE
+### BPHS Vol 2 -- Ch 47: Effects of Dasas (Mahadasha by Planet) ✅ DONE
 - **Rules ingested:** 93 · auto_approved: 82% · flagged: 4% · contradictions: 0
 - **batch_id:** bphs-ch47-dasha-20260416
 - **Parser fixes shipped:** colon separator, zero-space period, transition planet detection
 
 ---
 
-## Tier 2 — Precision Layer
+## Tier 2 -- Precision Layer
 
-### BPHS Vol 2 — Ch 52-60: Antardasha Effects (9 chapters)
+### BPHS Vol 2 -- Ch 52-60: Antardasha Effects (9 chapters)
 - **What:** Sub-period effects for each Mahadasha × Antardasha combination
-- **Why Tier 2:** Precision timing layer — high rule count but more granular than Tier 1
+- **Why Tier 2:** Precision timing layer -- high rule count but more granular than Tier 1
 - **Chapters:**
 
 | Ch | Dasha lord | Antardasha planets covered | Status |
@@ -73,44 +75,44 @@ Decision: promote only after full multi-book ingest is complete.
 - **Est. rules:** ~80 per chapter × 9 = ~720 rules total
 - **RTF status:** Needs conversion (9 files)
 
-### BPHS Vol 1 — Ch 34: Yoga Karakas
-- **What:** Planet effects per ascendant — all 12 Lagnas. Which planet becomes a Yogakaraka for which ascendant.
+### BPHS Vol 1 -- Ch 34: Yoga Karakas
+- **What:** Planet effects per ascendant -- all 12 Lagnas. Which planet becomes a Yogakaraka for which ascendant.
 - **Condition type:** `yoga_karaka` (planet + ascendant combination)
 - **Est. rules:** ~60-80
 - **RTF status:** Needs conversion
 
-### BPHS Vol 1 — Ch 36: Many Other Yogas
+### BPHS Vol 1 -- Ch 36: Many Other Yogas
 - **What:** Gajakesari, Amala, Parvatha, Chamara, Sankha, Bheri and 15+ named yogas
 - **Condition type:** `yoga_combination`
 - **Est. rules:** ~60-80
 - **RTF status:** Needs conversion
 
-### A Text Book of Astrology — Ch 15: Planets in Different Houses
+### A Text Book of Astrology -- Ch 15: Planets in Different Houses
 - **What:** All 9 planets × 12 houses = 108 combinations with prediction rules (p.171-232, ~62 pages)
-- **Why here:** Cross-book validation source for BPHS house rules — same content, different author's lens
+- **Why here:** Cross-book validation source for BPHS house rules -- same content, different author's lens
 - **Condition type:** `planet_occupation` (same as existing house chapters)
 - **Script:** Extend `ingest_bphs_houses_v2.py` or create `ingest_textbook_v1.py` (different source metadata)
 - **Est. rules:** ~100-150
 - **RTF status:** Needs conversion
 
-### A Text Book of Astrology — Ch 16: Planetary Combinations / Yogas
+### A Text Book of Astrology -- Ch 16: Planetary Combinations / Yogas
 - **What:** Important Yogas, Sun/Moon Yogas, Auspicious-Inauspicious Yogas, Panch Maha Purusha Yogas
 - **Est. rules:** ~40-60
 - **RTF status:** Needs conversion
 
-### BPHS Vol 2 — Ch 75: Panchamahapurusha Yogas
-- **What:** 5 named yogas (Ruchaka/Bhadra/Hamsa/Malavya/Sasa) — very clean if-then structure
+### BPHS Vol 2 -- Ch 75: Panchamahapurusha Yogas
+- **What:** 5 named yogas (Ruchaka/Bhadra/Hamsa/Malavya/Sasa) -- very clean if-then structure
 - **Why here:** High precision, clean rules, good cross-validation with A Text Book Ch 16
 - **Est. rules:** ~20-30
 - **RTF status:** Needs conversion
 
 ---
 
-## Tier 3 — Valuable but Defer
+## Tier 3 -- Valuable but Defer
 
 | Ch | Source | What | Est. rules | Note |
 |---|---|---|---|---|
-| Ch 39 | BPHS Vol 1 | Raja Yogas | ~40 | Kingly combinations — valuable for premium reports |
+| Ch 39 | BPHS Vol 1 | Raja Yogas | ~40 | Kingly combinations -- valuable for premium reports |
 | Ch 41 | BPHS Vol 1 | Yogas for Wealth | ~50 | High user interest |
 | Ch 70 | BPHS Vol 2 | Effects of Ashtakavarga | ~60 | Timing precision layer |
 | Ch 84 | BPHS Vol 2 | Remedial measures per planet | ~80 | Premium report content |
@@ -145,15 +147,15 @@ Files needed before ingest (in priority order):
 
 | Priority | Source | Chapter | Notes |
 |---|---|---|---|
-| 1 | BPHS Vol 1 | Ch 24 | Bhava Lords — extend existing script |
+| 1 | BPHS Vol 1 | Ch 24 | Bhava Lords -- extend existing script |
 | 2 | BPHS Vol 2 | Ch 48 | Dasha of house lords |
 | 3 | BPHS Vol 2 | Ch 52-60 | 9 Antardasha chapters (bulk conversion) |
 | 4 | BPHS Vol 1 | Ch 34, 36 | Yoga chapters |
-| 5 | A Text Book of Astrology | Ch 15, 16 | Different book — needs source metadata update |
+| 5 | A Text Book of Astrology | Ch 15, 16 | Different book -- needs source metadata update |
 | 6 | BPHS Vol 1 | Ch 39, 41 | Tier 3 yogas |
 | 7 | BPHS Vol 2 | Ch 70, 75, 84 | Tier 3 |
 
-**Ch 47 is already converted** (`BPHS Ch 47 Vol 2.rtf`) — waiting on script only.
+**Ch 47 is already converted** (`BPHS Ch 47 Vol 2.rtf`) -- waiting on script only.
 
 ---
 
@@ -168,8 +170,8 @@ Files needed before ingest (in priority order):
 ## Approval Milestone
 
 **Target before co-founder review:**
-- BPHS Vol 1 complete (Ch 12-24) ✅ Done — 736 rules
-- BPHS Vol 2 Tier 1 complete (Ch 47-48) — Ch 47 ✅ done (93 rules), Ch 48 pending
+- BPHS Vol 1 complete (Ch 12-24) ✅ Done -- 736 rules
+- BPHS Vol 2 Tier 1 complete (Ch 47-48) -- Ch 47 ✅ done (93 rules), Ch 48 pending
 - A Text Book Ch 15 ingested (cross-validation baseline)
 
 Estimated rules at that milestone: **~950 rules**

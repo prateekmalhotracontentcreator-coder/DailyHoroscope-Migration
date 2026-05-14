@@ -1,7 +1,8 @@
-# EverydayHoroscope — Project Status
+# EverydayHoroscope -- Project Status
 
-> Last updated: 7 April 2026
-> Based on 13 chat sessions + 50+ commits in `DailyHoroscope-Migration`
+> Last updated: 14 May 2026
+
+> **KE Sprint 2 (arbitration runtime) -- pending brief submission. Ingest freeze in effect.**
 
 ---
 
@@ -18,8 +19,8 @@
 | Numerology frontend UI | ✅ Live |
 | Kundali / Birth Chart UI | ✅ Live (BirthChartPage + BrihatKundliPage) |
 | Razorpay subscription / paywall | ✅ Test keys active |
-| Lumina (Spiritual Companion) | ✅ Live — 9-tab layout |
-| Palmistry (Hasta Rekha) | ✅ Live — AI-powered, hand anatomy SVG |
+| Lumina (Spiritual Companion) | ✅ Live -- 9-tab layout |
+| Palmistry (Hasta Rekha) | ✅ Live -- AI-powered, hand anatomy SVG |
 | Careers Page | ✅ Live at /careers |
 | SEO (OG tags, GA4, JSON-LD, GSC, Bing) | ✅ Live |
 | Admin Console (subscribers, email, scheduler) | ✅ Live |
@@ -32,7 +33,7 @@
 
 ## Module Status Detail
 
-### ✅ Panchang Module — COMPLETE
+### ✅ Panchang Module -- COMPLETE
 File: `frontend/src/pages/PanchangPage.jsx`
 Engine: `backend/panchang_router.py` (v8-swiss)
 
@@ -45,7 +46,7 @@ All features live:
 - Panchang share card (WhatsApp/Facebook/Instagram/Save/Copy)
 - Full SEO + JSON-LD on all 7 routes
 
-### ✅ Tarot Module — COMPLETE
+### ✅ Tarot Module -- COMPLETE
 File: `frontend/src/pages/TarotPage.jsx`
 Backend: `backend/tarot_router.py` + `frontend/public/tarot_cards.json`
 
@@ -55,7 +56,7 @@ Features live:
 - Card detail modal (upright + reversed meaning)
 - Reminder setup UI, History tab
 
-### ✅ Numerology Module — COMPLETE
+### ✅ Numerology Module -- COMPLETE
 File: `frontend/src/pages/NumerologyPage.jsx`
 Backend: `backend/numerology_router.py`
 
@@ -65,7 +66,7 @@ Features live:
 - Premium Ankjyotish report (7-day remediation)
 - 4 tabs: Select / Generate / Report / History
 
-### ✅ Kundali / Birth Chart Module — COMPLETE
+### ✅ Kundali / Birth Chart Module -- COMPLETE
 Files: `frontend/src/pages/BirthChartPage.jsx`, `BrihatKundliPage.jsx`, `KundaliMilanPage.jsx`
 Backend: `backend/vedic_calculator.py`
 
@@ -75,14 +76,14 @@ Features live:
 - Kundali Milan (compatibility matching)
 - Brihat Kundli extended report
 
-### ✅ Lumina Module — LIVE (Phase 1 complete, Phase 2 pending)
+### ✅ Lumina Module -- LIVE (Phase 1 complete, Phase 2 pending)
 File: `frontend/src/pages/LuminaPage.jsx`
 
 Features live:
 - 9-tab layout (Home / Bible / Manifest / Marketplace / Spiritual / Devotion / Community / Journal / Chat)
 - 4-pointed sparkle star logo
 - GlassCard gold-tinted tiles (bg-gold/[0.04])
-- Daily verse with hardcoded fallback (Joshua 1:8) — shows "OFFLINE — FEATURED" badge when API unavailable
+- Daily verse with hardcoded fallback (Joshua 1:8) -- shows "OFFLINE -- FEATURED" badge when API unavailable
 - 21-day Manifestation Journal
 - Devotion Points gamification: 750pt hero, streak/chapters/days stats, gold progress bar, 5 reward tiers (redeem UI)
 - Marketplace Vision tab (Kingdom Vision / AI Blueprint)
@@ -90,12 +91,12 @@ Features live:
 - 6-item FAQ
 
 **Phase 2 pending (Codex Commission A & beyond):**
-- Full gold/illuminating theme pass — tiles need gradient glow, text auto-alignment
+- Full gold/illuminating theme pass -- tiles need gradient glow, text auto-alignment
 - Community Hub real backend (Circle, Prayer Chain, Bridge endpoints)
 - TTS audio for 21-day manifestation
 - AI wallpapers
 
-### ✅ Palmistry Module (Hasta Rekha) — LIVE (Phase 1 complete, Phase 2 pending)
+### ✅ Palmistry Module (Hasta Rekha) -- LIVE (Phase 1 complete, Phase 2 pending)
 File: `frontend/src/pages/PalmistryPage.jsx`
 
 Features live:
@@ -112,7 +113,7 @@ Features live:
 - Palm photo upload + Claude Vision analysis (process-and-discard pattern)
 - AES-256 encryption for stored reports
 
-### ✅ Horoscope Pages — LIVE
+### ✅ Horoscope Pages -- LIVE
 Files: `DailyHoroscope.jsx`, `WeeklyHoroscope.jsx`, `MonthlyHoroscope.jsx`
 
 Features live:
@@ -120,17 +121,17 @@ Features live:
 - Element-based color theming (Fire/Earth/Air/Water)
 - Share cards (WhatsApp/Facebook/Instagram/Save/Copy)
 
-### ✅ Careers Page — LIVE
+### ✅ Careers Page -- LIVE
 File: `frontend/src/pages/CareersPage.jsx`
 Route: `/careers`
 
 4 open roles:
-- Frontend Engineer (React) — Product / Remote India
-- Python Backend Engineer (FastAPI) — Engineering / Remote India
-- Vedic Astrologer & Content Lead — Content / Remote Global
-- Growth Marketer — SEO & Organic — Growth / Remote India
+- Frontend Engineer (React) -- Product / Remote India
+- Python Backend Engineer (FastAPI) -- Engineering / Remote India
+- Vedic Astrologer & Content Lead -- Content / Remote Global
+- Growth Marketer -- SEO & Organic -- Growth / Remote India
 
-### ✅ Admin Console — LIVE
+### ✅ Admin Console -- LIVE
 Route: `/admin/dashboard`
 
 Features live:
@@ -146,42 +147,42 @@ Features live:
 
 > These are the next development commissions to be issued to Codex, in priority order.
 
-### Commission A — Lumina Gold Theme Pass 🔴 HIGH
+### Commission A -- Lumina Gold Theme Pass 🔴 HIGH
 - Full color audit of `LuminaPage.jsx`
 - Replace any hardcoded greys/blacks with theme tokens (`text-foreground`, `text-muted-foreground`)
 - Tiles: `bg-gradient-to-br from-gold/15 to-gold/5` for warm illuminating glow
-- No new features — pure visual polish
+- No new features -- pure visual polish
 
-### Commission B — Palm Anatomy Illustration 🔴 HIGH
-- Produce `frontend/public/palm_anatomy.svg` — high-quality illustrated right hand (Tarot card line art style)
+### Commission B -- Palm Anatomy Illustration 🔴 HIGH
+- Produce `frontend/public/palm_anatomy.svg` -- high-quality illustrated right hand (Tarot card line art style)
 - Heart/Head/Life/Fate/Sun lines labeled with leader arrows
 - 7 planetary mount ellipse zones labeled
 - React component `HandIllustration` with `questionId` prop for per-line highlighting
 - Replaces current programmatic SVG in `PalmistryPage.jsx`
 
-### Commission C — AES-256 Encryption Layer 🟡 MEDIUM
+### Commission C -- AES-256 Encryption Layer 🟡 MEDIUM
 - Add `cryptography` to `requirements.txt`
 - Encrypt at write / decrypt at read for `palmistry_reports` + `lumina_prayers` MongoDB collections
 - `ENCRYPTION_KEY` env var on Render (32-byte base64)
 - Zero UI changes
 
-### Commission D — Razorpay Subscription Paywall 🟡 MEDIUM
+### Commission D -- Razorpay Subscription Paywall 🟡 MEDIUM
 - Build upgrade flow in `PricingPage.jsx`
 - Razorpay Checkout JS (test keys already in Render env)
 - 3 plans: Free / Basic (₹199/mo) / Pro (₹499/mo)
 - Report unlock blur overlay + "Unlock with Pro" CTA on Numerology, Kundali, Brihat reports
 - Subscription management in `AccountSettings.jsx`
 
-### Commission E — WhatsApp Notifications 🟢 WHEN READY
+### Commission E -- WhatsApp Notifications 🟢 WHEN READY
 - Blocked on: `WHATSAPP_PHONE_NUMBER_ID` + `WHATSAPP_ACCESS_TOKEN` on Render
 - Backend stub already in `admin_router.py`
 - Frontend UI stub already in Admin Console Notifications tab
 
-### Commission F — Instagram Posting 🟢 WHEN READY
+### Commission F -- Instagram Posting 🟢 WHEN READY
 - Blocked on: `INSTAGRAM_BUSINESS_ACCOUNT_ID`
-- Facebook posting already working — Instagram is same Meta graph API pattern
+- Facebook posting already working -- Instagram is same Meta graph API pattern
 
-### Commission G — 2 New Strategic Modules 🔴 HIGH (details TBD)
+### Commission G -- 2 New Strategic Modules 🔴 HIGH (details TBD)
 - User to brief in next session
 - Full backend router spec + frontend page spec to be drafted
 
@@ -233,7 +234,7 @@ All drafted (Word format in repo root):
 - `4__Refund___Cancellation_Policy.docx`
 - `5__Cookie_Policy.docx`
 
-**Status: Drafted — not yet rendered as pages on site** (pending Commission)
+**Status: Drafted -- not yet rendered as pages on site** (pending Commission)
 
 ---
 

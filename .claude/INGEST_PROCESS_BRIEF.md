@@ -1,13 +1,15 @@
-# Knowledge Engine — Full Ingest & Validation Process Brief
+# Knowledge Engine -- Full Ingest & Validation Process Brief
 **Version:** 7 May 2026
 **Purpose:** Step-by-step reference for any new Claude Code session picking up ingest work.
 **Read this before writing or running any ingest script.**
+
+> **FREEZE ACTIVE (14 May 2026).** Do not run `ingest_*.py` for new chapters. See `CODEX_MASTER_ROADMAP.md` for Sprint 2 gate conditions.
 
 ---
 
 ## The Non-Negotiable Rule
 
-> **NEVER upload rules directly to MongoDB without completing Steps 1–3 first.**
+> **NEVER upload rules directly to MongoDB without completing Steps 1-3 first.**
 > Dry run → Save JSON → Review → Upload → Validate → Patch → Commit.
 > Every step exists for a reason. Skipping any step wastes credits fixing problems downstream.
 
@@ -15,7 +17,7 @@
 
 ## The Complete 7-Step Workflow
 
-### STEP 1 — Dry Run (mandatory before every upload)
+### STEP 1 -- Dry Run (mandatory before every upload)
 
 ```bash
 python3 backend/scripts/ingest_[name]_v[N].py \
@@ -38,7 +40,7 @@ python3 backend/scripts/ingest_[name]_v[N].py \
 
 ---
 
-### STEP 2 — Review the JSON (optional but recommended for complex batches)
+### STEP 2 -- Review the JSON (optional but recommended for complex batches)
 
 ```bash
 # Spot-check a few entries in the saved JSON
@@ -63,7 +65,7 @@ pprint.pprint(rules[-1])
 
 ---
 
-### STEP 3 — Upload to MongoDB
+### STEP 3 -- Upload to MongoDB
 
 ```bash
 python3 backend/scripts/ingest_[name]_v[N].py \
@@ -80,13 +82,13 @@ Inserted 22 / Updated 0 rules → horoscope_db.interpretation_rules
 
 - `Inserted N` = new documents (first run)
 - `Updated N` = existing documents replaced (re-run after a fix)
-- Both are safe — the upsert pattern is idempotent
+- Both are safe -- the upsert pattern is idempotent
 
 **If you see `Inserted 0 / Updated 0`:** The rule_ids already exist unchanged. Check if the script is building the correct data.
 
 ---
 
-### STEP 4 — Validate
+### STEP 4 -- Validate
 
 ```bash
 python3 backend/scripts/validate_rules.py \
@@ -110,10 +112,10 @@ VALIDATION COMPLETE
 **Status meanings:**
 | Status | Meaning | Action needed |
 |---|---|---|
-| `auto_approved` | Validator passed — content is clean | None |
+| `auto_approved` | Validator passed -- content is clean | None |
 | `pending_human_review` | Validator had minor doubts but didn't flag | Co-founder review queue |
-| `flagged` | Validator found a problem | MUST investigate — see Step 5 |
-| Contradictions | Two rules give conflicting outputs | MUST investigate — see Step 5 |
+| `flagged` | Validator found a problem | MUST investigate -- see Step 5 |
+| Contradictions | Two rules give conflicting outputs | MUST investigate -- see Step 5 |
 
 **For mundane science_id filter:**
 ```bash
@@ -126,9 +128,9 @@ python3 backend/scripts/validate_rules.py \
 
 ---
 
-### STEP 5 — Inspect Flagged Rules and Contradictions
+### STEP 5 -- Inspect Flagged Rules and Contradictions
 
-**If flagged rules exist — run this query:**
+**If flagged rules exist -- run this query:**
 ```python
 python3 -c "
 from pymongo import MongoClient
@@ -148,7 +150,7 @@ client.close()
 "
 ```
 
-**If contradiction pairs exist — run this query:**
+**If contradiction pairs exist -- run this query:**
 ```python
 python3 -c "
 from pymongo import MongoClient
@@ -172,18 +174,18 @@ client.close()
 
 ---
 
-### STEP 6 — Write and Run a Patch Script
+### STEP 6 -- Write and Run a Patch Script
 
 Once you understand why rules were flagged, write a patch script.
 
-**Three types of flags — classify before patching:**
+**Three types of flags -- classify before patching:**
 
 | Flag type | Description | Resolution |
 |---|---|---|
 | **Truncation false flag** | Validator read buffer cut off mid-sentence. Content IS complete in DB. | Patch to `pending_human_review` |
 | **Content validity dispute** | Validator applies classical Vedic frame to folk/mundane rules. Rule IS in source. | Patch to `pending_human_review` |
 | **Structural false flag** | Validator questions schema patterns already addressed in design. | Patch to `pending_human_review` |
-| **Genuine flag** | Rule has a real problem — missing data, wrong content, source gap. | Fix the script and re-upload first |
+| **Genuine flag** | Rule has a real problem -- missing data, wrong content, source gap. | Fix the script and re-upload first |
 | **False contradiction** | Two rules appear to conflict but have mutually exclusive conditions. | Clear contradiction fields with resolution note |
 
 **Patch script template:**
@@ -211,7 +213,7 @@ FLAGGED_RULES = {
 }
 
 REASON = (
-    "False flag — [type]: [explanation of why it's wrong]. "
+    "False flag -- [type]: [explanation of why it's wrong]. "
     "[Source confirmation: where in the source document this is confirmed]. "
     "Promoted to pending_human_review for co-founder source-fidelity confirmation."
 )
@@ -268,7 +270,7 @@ if __name__ == "__main__":
     main()
 ```
 
-**Running the patch script — always inspect first:**
+**Running the patch script -- always inspect first:**
 ```bash
 # Inspect (no changes):
 python3 backend/scripts/patch_[name]_vN_flags.py --mongo-url "$MONGO_URL"
@@ -279,7 +281,7 @@ python3 backend/scripts/patch_[name]_vN_flags.py --mongo-url "$MONGO_URL" --patc
 
 ---
 
-### STEP 7 — Commit All Files
+### STEP 7 -- Commit All Files
 
 Only commit after:
 - ✅ Dry run passed
@@ -293,7 +295,7 @@ git add backend/scripts/ingest_[name]_vN.py \
         backend/scripts/patch_[name]_vN_flags.py \
         backend/scripts/INGEST_NOTES.md
 
-git commit -m "chore(ingest): [source] vN — [topic] (N rules)"
+git commit -m "chore(ingest): [source] vN -- [topic] (N rules)"
 ```
 
 **Always update `INGEST_NOTES.md` before committing:**
@@ -345,7 +347,7 @@ patch_[batch]_flags.py
     },
     "metadata":        {"rule_type": "...", "sub_type": "..."},
     "interpretation":  {
-        "summary": "ch28-rule-slug",                 # NEVER prose — prevents truncation flags
+        "summary": "ch28-rule-slug",                 # NEVER prose -- prevents truncation flags
         "detailed": "Full explanation...",
         "remedies": [],
     },
@@ -378,7 +380,7 @@ patch_[batch]_flags.py
     "science_id":       "mundane_jyotish",
     "sub_type":         "monsoon_forecast",
     "title":            "...",
-    "source_chapter":   "Gaur Ch 5 — ...",
+    "source_chapter":   "Gaur Ch 5 -- ...",
     "condition":        "IF (...) AND (...)",
     "result":           "...",
     "synthesis_sources": ["spec-id-1", "spec-id-2"],
@@ -395,16 +397,16 @@ patch_[batch]_flags.py
 
 | Pattern | How to recognise | Resolution |
 |---|---|---|
-| **Truncation artifact** | Flag says "truncated mid-sentence ('...text cu')" but you can see full text in script | `pending_human_review` — buffer artifact |
-| **Classical vs folk frame** | Validator says "not standard Vedic principle" for Lal Kitab / mundane rules | `pending_human_review` — different tradition |
-| **Structural objection** | Validator questions AND/OR gates, two-house conditions already designed intentionally | `pending_human_review` — schema is correct |
-| **Non-classical practice** | Validator disputes folk astronomy, physiognomy, farmer's almanac rules | `pending_human_review` — source-confirmed |
+| **Truncation artifact** | Flag says "truncated mid-sentence ('...text cu')" but you can see full text in script | `pending_human_review` -- buffer artifact |
+| **Classical vs folk frame** | Validator says "not standard Vedic principle" for Lal Kitab / mundane rules | `pending_human_review` -- different tradition |
+| **Structural objection** | Validator questions AND/OR gates, two-house conditions already designed intentionally | `pending_human_review` -- schema is correct |
+| **Non-classical practice** | Validator disputes folk astronomy, physiognomy, farmer's almanac rules | `pending_human_review` -- source-confirmed |
 | **False contradiction** | Two rules appear opposite but have mutually exclusive triggers/conditions | Clear contradiction fields with resolution note |
 
 **Genuine flags (fix the script, don't just patch):**
 - Missing source data (field is empty when it should have content)
-- Wrong chapter — rule content doesn't match the chapter it's in
-- Duplicate rule_id — two rules with the same ID
+- Wrong chapter -- rule content doesn't match the chapter it's in
+- Duplicate rule_id -- two rules with the same ID
 - Calculation error in a formula or lookup table
 
 ---
@@ -412,7 +414,7 @@ patch_[batch]_flags.py
 ## Environment Setup
 
 ```bash
-# Required for all MongoDB operations — set before running any script
+# Required for all MongoDB operations -- set before running any script
 export MONGO_URL="mongodb+srv://..."
 
 # Verify it's set
@@ -425,9 +427,9 @@ echo $MONGO_URL   # Should print the full connection string, not empty
 
 | Collection | Documents |
 |---|---|
-| `interpretation_rules` (jyotish — Lal Kitab) | **467 rules** across Ch 19–29 |
-| `interpretation_rules` (mundane_jyotish) | **290 rules** across v1–v19 |
-| `mundane_engine_specs` | **96 specs** across v1–v19 |
+| `interpretation_rules` (jyotish -- Lal Kitab) | **467 rules** across Ch 19-29 |
+| `interpretation_rules` (mundane_jyotish) | **290 rules** across v1-v19 |
+| `mundane_engine_specs` | **96 specs** across v1-v19 |
 | `mundane_geo_entities` | **29 entities** |
 
 **For full chapter-by-chapter breakdown:** read `backend/scripts/INGEST_NOTES.md`
