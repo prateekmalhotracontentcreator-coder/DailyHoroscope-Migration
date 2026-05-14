@@ -249,7 +249,7 @@ def _build_context_summary(body: RemedySuggestRequest) -> str:
         parts.append(body.affliction.replace("_", " "))
     if body.life_domain:
         parts.append(body.life_domain.replace("_", " "))
-    return " — ".join(parts)
+    return " -- ".join(parts)
 
 
 def _science_alias_to_query(collection_name: str | None) -> tuple[str, str | None]:
@@ -822,6 +822,24 @@ async def get_remedy_rule(
         "document": doc,
         "resolved": normalized,
     }
+
+
+@router.get("/ref/{remedy_ref_id}")
+async def get_remedy_by_ref(
+    remedy_ref_id: str,
+    request: Request,
+) -> dict[str, Any]:
+    db = _get_db(request)
+    doc = await db["krishna_prashnavali_remedies"].find_one(
+        {"remedy_id": remedy_ref_id, "approval_status": "approved"},
+        {"_id": 0},
+    )
+    if not doc:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Remedy ref '{remedy_ref_id}' not found or not approved",
+        )
+    return {"remedy_ref_id": remedy_ref_id, "remedy": doc}
 
 
 @router.get("/traditions")

@@ -2,11 +2,12 @@ import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import QuestionnaireWidget from "./QuestionnaireWidget";
 
 const BASE_URL =
   process.env.REACT_APP_BACKEND_URL || "https://everydayhoroscope-api.onrender.com";
 
-// Domain definitions — IDs match backend ARC_ANGEL_DOMAIN_SLUGS exactly
+// Domain definitions -- IDs match backend ARC_ANGEL_DOMAIN_SLUGS exactly
 const ARC_ANGEL_DOMAINS = [
   { id: "health",        label: "Health & Fitness",             description: "Physical well-being, nutrition, exercise and energy levels" },
   { id: "career",        label: "Career & Work",                description: "Professional fulfillment, vocational growth and passion" },
@@ -157,11 +158,9 @@ export default function ArcAngelPanel() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Phase 1: show data to all logged-in users with birth profiles.
-  // Premium gate on period columns will activate when subscription check is wired.
-  const isPremium = false;
+  const isPremium = user?.is_premium ?? false;
 
-  // Step 1 — Fetch birth profile when user logs in
+  // Step 1 -- Fetch birth profile when user logs in
   useEffect(() => {
     if (!user) {
       setBirthProfile(null);
@@ -185,7 +184,7 @@ export default function ArcAngelPanel() {
     return () => { active = false; };
   }, [user]);
 
-  // Step 2 — Fetch Arc Angel windows once birth profile is ready
+  // Step 2 -- Fetch Arc Angel windows once birth profile is ready
   useEffect(() => {
     if (!birthProfile) {
       setPayload(null);
@@ -247,10 +246,10 @@ export default function ArcAngelPanel() {
     [payload, windowsByDomain]
   );
 
-  // Not logged in — hide entirely
+  // Not logged in -- hide entirely
   if (!user) return null;
 
-  // No birth profile — prompt to add birth details
+  // No birth profile -- prompt to add birth details
   if (!profileLoading && !birthProfile) {
     return (
       <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-4 space-y-3">
@@ -308,8 +307,8 @@ export default function ArcAngelPanel() {
                       <p className="mt-1 text-xs leading-5 text-muted-foreground">{row.description}</p>
                     </div>
 
-                    <PeriodCell periods={row.auspiciousPeriods} locked={isPremium === false ? false : true} />
-                    <PeriodCell periods={row.inauspiciousPeriods} locked={isPremium === false ? false : true} />
+                    <PeriodCell periods={row.auspiciousPeriods} locked={!isPremium} />
+                    <PeriodCell periods={row.inauspiciousPeriods} locked={!isPremium} />
 
                     <div className="flex items-center justify-center">
                       <Donut pct={row.confidencePct} label={`${row.confidencePct}%`} />
@@ -318,6 +317,15 @@ export default function ArcAngelPanel() {
                 ))}
               </div>
             </div>
+
+            {user && payload && (payload.overall_confidence_pct || 0) < 100 && (
+              <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
+                  Complete your profile to improve confidence
+                </p>
+                <QuestionnaireWidget compact={true} />
+              </div>
+            )}
 
             <Link
               to="/arc-angel"
