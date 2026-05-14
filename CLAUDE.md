@@ -1,4 +1,4 @@
-# EverydayHoroscope — Claude Code Working Guide
+# EverydayHoroscope -- Claude Code Working Guide
 > Last updated: 2026-05-09 | Full reference: `.claude/REFERENCE.md`
 
 ---
@@ -12,17 +12,17 @@
 | Repo | `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration` |
 | Frontend | React → Vercel (~2 min deploy) |
 | Backend | FastAPI → Render Docker (~3 min deploy) |
-| DB | MongoDB Motor async — env: `MONGO_URL`, `DB_NAME=horoscope_db` |
+| DB | MongoDB Motor async -- env: `MONGO_URL`, `DB_NAME=horoscope_db` |
 
 ---
 
 ## 2. Key Files
 
 ```
-backend/server.py              # ⭐ Main app — all routers
+backend/server.py              # ⭐ Main app -- all routers
 backend/panchang_router.py     # ⭐ Panchang engine v8-swiss
-backend/vedic_calculator.py    # Birth chart / Dasha engine — SINGLE SOURCE OF TRUTH
-backend/knowledge_engine.py    # Interpretation layer only — never computes live data
+backend/vedic_calculator.py    # Birth chart / Dasha engine -- SINGLE SOURCE OF TRUTH
+backend/knowledge_engine.py    # Interpretation layer only -- never computes live data
 backend/tarot_router.py
 backend/numerology_router.py
 frontend/src/pages/            # All page components
@@ -31,13 +31,13 @@ frontend/src/components/ShareCard.jsx
 
 ---
 
-## 3. Architecture Rule — MANDATORY
+## 3. Architecture Rule -- MANDATORY
 
 **All live astronomical and dasha computations: `vedic_calculator.py` + `pyswisseph` ONLY.**
-`knowledge_engine.py` is interpretation layer — never replace or duplicate Legacy Model functions.
+`knowledge_engine.py` is interpretation layer -- never replace or duplicate Legacy Model functions.
 
 ```python
-# Always call these — never rewrite:
+# Always call these -- never rewrite:
 calculate_vimshottari_dasha(birth_date, moon_longitude)
 get_current_dasha(dashas)
 DASHA_ORDER = ['Ketu','Venus','Sun','Moon','Mars','Rahu','Jupiter','Saturn','Mercury']
@@ -62,6 +62,7 @@ docs: description          # docs only
 - Never use GitHub browser editor
 - Before every backend change: bump `ENGINE_VERSION` in `panchang_router.py`
 - Never push while YouTube upload in progress (Render rolling deploy kills background tasks)
+- Smart quotes are auto-sanitised pre-commit via `scripts/sanitise-smart-quotes.sh`. Run manually after pasting Codex output to inspect diff first.
 
 ---
 
@@ -84,12 +85,12 @@ Smart quote fix for Codex output: `.claude/REFERENCE.md §Codex`
 | `MONGO_URL` | Render env |
 | `DB_NAME` | `horoscope_db` |
 | `REACT_APP_BACKEND_URL` | Vercel env |
-| `RAZORPAY_KEY_ID/SECRET` | Render — test keys active |
+| `RAZORPAY_KEY_ID/SECRET` | Render -- test keys active |
 | `RESEND_API_KEY` | ✅ working |
 | `FACEBOOK_PAGE_ID` | `1084672598054073` |
 | `FACEBOOK_PAGE_ACCESS_TOKEN` | System User token (never expires) |
 | `YOUTUBE_CLIENT_ID/SECRET` | ✅ OAuth connected |
-| `WHATSAPP_PHONE_NUMBER_ID` | `1062698816928895` — 🔜 Pending OTP |
+| `WHATSAPP_PHONE_NUMBER_ID` | `1062698816928895` -- 🔜 Pending OTP |
 | `INSTAGRAM_BUSINESS_ACCOUNT_ID` | 🔜 Pending |
 
 ---
@@ -126,8 +127,8 @@ Full feature detail: `.claude/REFERENCE.md`
 
 ## Compact Instructions
 
-When compacting this conversation, produce the absolute minimum summary possible — 5 lines or fewer. Do NOT summarize chat history, completed tasks, code written, errors fixed, or files changed. Only preserve:
+When compacting this conversation, produce the absolute minimum summary possible -- 5 lines or fewer. Do NOT summarize chat history, completed tasks, code written, errors fixed, or files changed. Only preserve:
 1. The single task currently in progress (if any), in one sentence.
 2. Any explicit user instruction given in the last message that hasn't been acted on yet.
 
-Do not include architecture notes, file paths, pending backlogs, or any other context — all of that is already in CLAUDE.md and `.claude/REFERENCE.md` and will be reloaded automatically.
+Do not include architecture notes, file paths, pending backlogs, or any other context -- all of that is already in CLAUDE.md and `.claude/REFERENCE.md` and will be reloaded automatically.
