@@ -1,5 +1,5 @@
 # EverydayHoroscope -- Claude Code Working Guide
-> Last updated: 2026-05-09 | Full reference: `.claude/REFERENCE.md`
+> Last updated: 2026-05-14 | Full reference: `.claude/REFERENCE.md`
 
 ---
 
@@ -44,7 +44,13 @@ DASHA_ORDER = ['Ketu','Venus','Sun','Moon','Mars','Rahu','Jupiter','Saturn','Mer
 DASHA_YEARS = {'Ketu':7,'Venus':20,'Sun':6,'Moon':10,'Mars':7,'Rahu':18,'Jupiter':16,'Saturn':19,'Mercury':17}
 ```
 
-KE rules additive only when `approval_status = 'approved'`. Zero approved rules → Legacy Model is the only signal.
+**KE approval status -- two distinct levels:**
+- `auto_approved` -- AI validation passed. Still co-founder gated. Does NOT reach live users.
+- `approved` -- Co-founder signed off. This is the ONLY status that reaches live users.
+Zero `approved` rules → Legacy Model is the only signal. Do not confuse these two.
+
+**`compute_dasha_timeline()` in `knowledge_engine.py` (line 829):**
+This function reads from a pre-computed `chart["layers"]["vimshottari_dasha"]` dict -- it does NOT call pyswisseph or compute from moon longitude. It is a chart-data reshaper, not a duplicate calculator. However it builds antardasha sub-periods from date arithmetic independently of vedic_calculator. Flag for future refactor to import directly from vedic_calculator. Do not add further dasha logic here.
 
 Natural benefic/malefic: Jupiter/Venus/Mercury(waxing)/Moon(waxing) = Auspicious | Saturn/Mars/Rahu/Ketu/Sun = Inauspicious.
 
@@ -99,11 +105,13 @@ Smart quote fix for Codex output: `.claude/REFERENCE.md §Codex`
 
 | Module | Spec | Status |
 |---|---|---|
-| LK Standalone Remedies | `.claude/LK_STANDALONE_MODULE_SPEC.md` | 🔨 Building |
-| The Strategist | `.claude/THE_STRATEGIST_SPEC.md` | 🔨 After LK Standalone |
-| Strategist Ingest | `backend/scripts/ingest_strategist_v1.py` | 🔨 Needed first |
+| LK Standalone Remedies | `.claude/briefs/lk/LK_STANDALONE_MODULE_SPEC.md` | ✅ Live |
+| The Strategist | `.claude/_archive/briefs/THE_STRATEGIST_SPEC.md` | ✅ Live |
+| Remedies Engine Phase 1 | `.claude/briefs/remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | 🔜 Next commission |
+| Legal Pages (seed) | `backend/scripts/seed_policies_v1.py` | 🔜 Run with Render MONGO_URL |
+| SEO / Technical SEO | User to share thread findings | 🔜 Pending |
 
-Data live: 666 remedy records in `knowledge_rules`. Verify: `python3 backend/scripts/verify_lk_remedies_v1.py --mongo-url "$MONGO_URL"`
+KP Remedy: bundle-native remedies live. Engine-fallback (conditional) still pending -- see HANDOVER_2026-05-14.md.
 
 ---
 
@@ -118,10 +126,38 @@ Routes: `/api/panchang/daily` `/api/panchang/locations` `/api/panchang/calendar/
 ## 9. Platforms Live
 
 Panchang ✅ | Tarot ✅ | Numerology ✅ | Birth Chart ✅ | Horoscopes ✅ | Admin Console ✅
-Facebook posting ✅ | YouTube posting ✅ | Email (Resend) ✅ | Razorpay ✅
+LK Standalone ✅ | All 5 Remedy Modules ✅ | The Strategist ✅ | KP Oracle ✅
+Lagna Kundali ✅ | Lumina ✅ | Palmistry ✅ | Arc Angel ✅ | Longevity ✅
+Facebook posting ✅ | YouTube posting ✅ | Email (Resend) ✅ | Razorpay test keys ✅
+Punya Rewards ✅ (built, route pending user confirmation)
 WhatsApp 🔜 (OTP pending) | Instagram 🔜 (Account ID pending)
+Legal pages 🔜 (code ready -- seed_policies_v1.py needs running with Render MONGO_URL)
 
 Full feature detail: `.claude/REFERENCE.md`
+
+---
+
+## 10. Premium Gating
+
+`user.is_premium` sourced from `/api/auth/me` → `auth_utils.py` (queries `db.subscriptions`).
+
+**Route-level gate (App.js):**
+```jsx
+<Route path="/..." element={<PremiumRoute feature="..." description="..."><Page /></PremiumRoute>} />
+```
+
+**Inline gate (auth-aware pages -- KP, Strategist, Tarot, Numerology, Palmistry, Lumina):**
+```jsx
+if (user && !user.is_premium) return <PremiumGateCard feature="..." description="..." />;
+```
+
+**Routes currently behind PremiumRoute:**
+Weekly Horoscope, Monthly Horoscope, Birth Chart, Kundali Milan, Brihat Kundli,
+My Reports, Individual Reports, Love Reports, Ritual Engine, Numerology Report,
+Tarot History, Lagna Kundali (×2), Arc Angel, Questionnaire.
+
+Free users: Daily Horoscope, Panchang, Gemstones, Crystals, Blog -- full access.
+Logged-out: most pages show public SEO landing (noindex) with auth CTA.
 
 ---
 
