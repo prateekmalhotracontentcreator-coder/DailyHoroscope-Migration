@@ -2,9 +2,9 @@
 > Max 30 lines. Rewrite at END of every session. Last updated: 2026-05-13
 
 ## Current State
-- **Active task:** KP remedy display — bundle default + Remedies Engine fallback (NOT YET DONE — backend + frontend fix required)
-- **Last completed (Account 2, 2026-05-13):** KP bundle-native revert + on-page SEO content for ALL 13 modules — 4 commits pushed ✅
-- **Last completed (Account 1, 2026-05-12 night):** Strategist 22-record approval + SEO Sprints D/E/F — 4 commits pushed ✅
+- **Active task (Account 1):** BPHS Vol 1 NLM pass — Stage A contradiction pairs (13) + Stage B Ch 15/19 PHR batch
+- **Last completed (Account 2, 2026-05-13):** KP bundle-native revert + bundle-default/Engine-fallback fix + on-page SEO all 13 modules ✅
+- **Last completed (Account 1, 2026-05-12 night):** Strategist 22-record approval + full module audit (823 active records) + SEO Sprints D/E/F ✅
 
 ## DB State (horoscope_db — as of 2026-05-11)
 | Science | Approved | PHR | Flagged | Notes |
@@ -15,14 +15,14 @@
 | jyotish (TBA Ch 15+16) | 589 auto_approved | ~639 PHR | 302 flagged | Pending |
 | jyotish (Lal Kitab Ch 19–28) | ~275 auto_approved | ~149 PHR | ~10 flagged | Pending |
 | jyotish_remedies_mantras | 45 auto_approved | 50 PHR | 0 | Pending |
-| knowledge_rules (LK remedies) | **666** records live | — | 5 split_required | Used by LK Standalone + Strategist |
+| knowledge_rules (LK remedies + Strategist) | **823** active records | — | 5 split_required | 666 LK + 22 Strategist approved 2026-05-12 + others |
 | krishna_prashnavali_remedies | **36 approved** | — | — | Ingested + approved 2026-05-11 |
 
 ## Immediate Next Steps (priority order)
-1. **KP remedy fix** — bundle as default, Remedies Engine as fallback: reinstate conditional `_resolve_kp_remedy_doc` in `scriptural_oracle_router.py` (only when bundle fields empty + `remedy_ref` exists)
-2. **NLM pass** — BPHS Ch 12–23 contradiction pairs (13 pairs) + Ch 15/19 PHR batch
-3. **Punya Rewards** — fully built, no App.js route; user reviewing before Temple Team migration
-4. **Lagna Kundali tier decision** — currently Premium; user said "still needs a decision"
+1. **NLM pass** — BPHS Ch 12–23 contradiction pairs (13 pairs) + Ch 15/19 PHR batch (see `.claude/nlm/BPHS_VOL1_NLM.md`)
+2. **Ch 34 false flags** — 15 flagged rules confirmed truncation false positives; write + run `bulk_approve_ch34_false_flags.py`
+3. **Punya Rewards** — fully built, no App.js route; user reviewing before Temple Team migration (Account 2 decision)
+4. **Lagna Kundali tier decision** — currently Premium (Account 2 decision pending)
 
 ## DO NOT
 - Use `EverydayHoroscope` DB (retired — all 3,796 rules deprecated 25 Apr 2026)
