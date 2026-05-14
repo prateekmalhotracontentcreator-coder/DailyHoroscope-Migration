@@ -73,11 +73,13 @@ const LKReportPage = lazy(() => import('./pages/LKReportPage'));
 const LKTrackerPage = lazy(() => import('./pages/LKTrackerPage'));
 const LKDebtAuditPage = lazy(() => import('./pages/LKDebtAuditPage'));
 const LKBrowsePage = lazy(() => import('./pages/LKBrowsePage'));
+const TheStrategistLandingPage = lazy(() => import('./pages/TheStrategistLandingPage'));
 const StrategistPage = lazy(() => import('./pages/StrategistPage'));
 const StrategistMissionsPage = lazy(() => import('./pages/StrategistMissionsPage'));
 const StrategistReportPage = lazy(() => import('./pages/StrategistReportPage'));
 const StrategistSurrogatePage = lazy(() => import('./pages/StrategistSurrogatePage'));
 const KrishnaOraclePage = lazy(() => import('./pages/KrishnaOraclePage'));
+const PunyaRewardsPage = lazy(() => import('./pages/PunyaRewardsPage'));
 const StrategistActionPlanPage = lazy(() => import('./pages/StrategistActionPlanPage'));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
@@ -223,12 +225,16 @@ function App() {
                   <Route path="/lk-remedies/remedies" element={<LKBrowsePage />} />
 
                   {/* The Strategist */}
+                  <Route path="/the-strategist" element={<TheStrategistLandingPage />} />
                   <Route path="/strategist" element={<StrategistPage />} />
                   <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />
                   <Route path="/strategist/report" element={<ProtectedRoute><StrategistReportPage /></ProtectedRoute>} />
                   <Route path="/strategist/surrogate" element={<ProtectedRoute><StrategistSurrogatePage /></ProtectedRoute>} />
                   <Route path="/strategist/action-plan" element={<ProtectedRoute><StrategistActionPlanPage /></ProtectedRoute>} />
                   <Route path="/krishna-prashnavali" element={<KrishnaOraclePage />} />
+
+                  {/* Punya Rewards — loyalty & gamification (all logged-in users) */}
+                  <Route path="/punya-rewards" element={<ProtectedRoute><PunyaRewardsPage /></ProtectedRoute>} />
 
                   <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
                   <Route path="/careers" element={<CareersPage />} />
