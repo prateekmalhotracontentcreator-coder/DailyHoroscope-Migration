@@ -7,7 +7,7 @@ import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
 import {
   BookOpen, Sparkles, Star, Loader2,
-  Bookmark, BookmarkCheck, Zap, Crown, RotateCcw,
+  Bookmark, BookmarkCheck, Zap, Crown, RotateCcw, NotebookPen, Flame,
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -113,6 +113,12 @@ export const TarotPage = () => {
   const [premiumState,    setPremiumState]    = useState({ checked: false, hasAccess: false, reason: '' });
   const [periods,         setPeriods]         = useState([]);
   const [offers,          setOffers]          = useState([]);
+  const [gamification,    setGamification]    = useState(null);
+  const [journalEntries,  setJournalEntries]  = useState([]);
+  const [journalStats,    setJournalStats]    = useState(null);
+  const [journalLoading,  setJournalLoading]  = useState(false);
+  const [newIntention,    setNewIntention]    = useState('');
+  const [savingIntention, setSavingIntention] = useState(false);
 
   // Load card SVG bundle from frontend/public/tarot_cards.json
   useEffect(() => {
@@ -126,6 +132,7 @@ export const TarotPage = () => {
 
   useEffect(() => {
     if (activeTab === 'history' && user) fetchHistory();
+    if (activeTab === 'journal' && user) fetchJournal();
   }, [activeTab, user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => () => clearTimeout(sceneTimer.current), []);
@@ -190,6 +197,43 @@ export const TarotPage = () => {
     }
   };
 
+  const fetchJournal = async () => {
+    setJournalLoading(true);
+    try {
+      const [journalRes, statsRes] = await Promise.all([
+        axios.get(`${API}/tarot/manifestations`, { withCredentials: true }),
+        axios.get(`${API}/tarot/manifestation/stats`, { withCredentials: true }),
+      ]);
+      setJournalEntries(journalRes.data?.items || []);
+      setJournalStats(statsRes.data || null);
+    } catch {
+      toast.error('Could not load journal');
+    } finally {
+      setJournalLoading(false);
+    }
+  };
+
+  const saveIntention = async () => {
+    if (!newIntention.trim()) return;
+    setSavingIntention(true);
+    try {
+      const today = new Date().toISOString().slice(0, 10);
+      await axios.post(`${API}/tarot/manifestation`, {
+        date: today,
+        intention_text: newIntention.trim(),
+        linked_reading_id: reading?.id || null,
+        card_name: reading?.cards?.[0]?.name || null,
+      }, { withCredentials: true });
+      setNewIntention('');
+      toast.success('Intention saved to your journal');
+      fetchJournal();
+    } catch (e) {
+      toast.error(e.response?.data?.detail || 'Could not save intention');
+    } finally {
+      setSavingIntention(false);
+    }
+  };
+
   const startSceneSequence = (scenes) => {
     setSceneIndex(0);
     setPlaying(true);
@@ -220,12 +264,14 @@ export const TarotPage = () => {
       }, { withCredentials: true });
       const r = res.data.reading;
       setReading(r);
+      if (res.data.gamification) setGamification(res.data.gamification);
       if (res.data.message === 'Already drawn today.') {
         toast.info("Today's card already drawn -- showing your reading.");
         setSceneIndex((r.scenes?.length || 1) - 1);
         setCardFlipped(true);
       } else {
-        toast.success(`+${res.data.xp_earned} XP earned!`);
+        const xp = res.data.gamification?.xp_awarded || res.data.xp_earned || 0;
+        if (xp) toast.success(`+${xp} XP earned!`);
         startSceneSequence(r.scenes || []);
       }
     } catch (e) {
@@ -314,16 +360,34 @@ export const TarotPage = () => {
         <p className="text-muted-foreground">Western Tarot cross-referenced with Vedic astrology for deeper cosmic guidance.</p>
       </div>
 
+      {/* Gamification bar -- shown after a draw */}
+      {gamification && (
+        <div className="flex flex-wrap items-center gap-3 rounded-xl border border-gold/20 bg-gold/[0.04] px-4 py-2 text-xs mb-2">
+          <span className="flex items-center gap-1 font-semibold text-gold">
+            <Zap className="h-3.5 w-3.5" /> {gamification.xp_awarded > 0 ? `+${gamification.xp_awarded} XP` : `Lv ${gamification.level}`}
+          </span>
+          {gamification.daily_streak > 0 && (
+            <span className="flex items-center gap-1 text-orange-500 font-semibold">
+              <Flame className="h-3.5 w-3.5" /> {gamification.daily_streak}-day streak
+            </span>
+          )}
+          {gamification.new_badges?.map(b => (
+            <span key={b} className="rounded-full border border-gold/30 bg-gold/10 px-2 py-0.5 text-gold">{b}</span>
+          ))}
+        </div>
+      )}
+
       {/* Tabs */}
-      <div className="flex gap-1 border-b border-border mb-8">
+      <div className="flex gap-1 border-b border-border mb-8 overflow-x-auto">
         {[
           { key: 'daily',   label: 'Daily Draw' },
           { key: 'spreads', label: 'Spreads' },
           { key: 'timing',  label: 'Favorable Periods', disabled: !user },
+          { key: 'journal', label: 'Journal', disabled: !user },
           { key: 'history', label: 'History', disabled: !user },
         ].map(t => (
           <button key={t.key} onClick={() => !t.disabled && setActiveTab(t.key)} disabled={t.disabled}
-            className={`px-4 py-2.5 text-sm font-medium transition-colors ${
+            className={`px-4 py-2.5 text-sm font-medium whitespace-nowrap transition-colors ${
               activeTab === t.key ? 'border-b-2 border-gold text-gold' :
               t.disabled ? 'text-muted-foreground/40 cursor-not-allowed' : 'text-muted-foreground hover:text-foreground'
             }`}>{t.label}
@@ -632,6 +696,102 @@ export const TarotPage = () => {
               )}
             </>
           )}
+        </div>
+      )}
+
+      {/* ── JOURNAL TAB ── */}
+      {activeTab === 'journal' && (
+        <div className="space-y-5">
+
+          {/* Stats bar */}
+          {journalStats && (
+            <div className="flex flex-wrap gap-4 rounded-xl border border-gold/20 bg-gold/[0.04] px-5 py-3">
+              <div className="flex items-center gap-2">
+                <Flame className="h-4 w-4 text-orange-500" />
+                <span className="text-sm font-semibold">{journalStats.streak_days}-day streak</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <NotebookPen className="h-4 w-4 text-gold" />
+                <span className="text-sm font-semibold">{journalStats.total_intentions} intentions set</span>
+              </div>
+              {journalStats.most_drawn_card && (
+                <div className="flex items-center gap-2">
+                  <Star className="h-4 w-4 text-gold" />
+                  <span className="text-sm text-muted-foreground">Most drawn: <strong>{journalStats.most_drawn_card}</strong></span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* New intention form */}
+          <Card className="p-5 border border-gold/20">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-gold">Set Today's Intention</p>
+            {reading && (
+              <p className="mb-2 text-xs text-muted-foreground">
+                Linked to today's draw: <strong>{reading.cards?.[0]?.name}</strong>
+              </p>
+            )}
+            <textarea
+              value={newIntention}
+              onChange={e => setNewIntention(e.target.value)}
+              rows={3}
+              placeholder="What do you intend to manifest or release today?"
+              className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground/60 outline-none focus:ring-1 focus:ring-gold/40 resize-none"
+            />
+            <Button
+              onClick={saveIntention}
+              disabled={savingIntention || !newIntention.trim()}
+              className="mt-3 bg-gold hover:bg-gold/90 text-primary-foreground"
+              size="sm"
+            >
+              {savingIntention ? <Loader2 className="h-3.5 w-3.5 animate-spin mr-1.5" /> : <NotebookPen className="h-3.5 w-3.5 mr-1.5" />}
+              Save Intention
+            </Button>
+          </Card>
+
+          {/* Journal entries */}
+          {journalLoading && (
+            <div className="py-8 text-center">
+              <Loader2 className="h-6 w-6 animate-spin text-gold mx-auto" />
+            </div>
+          )}
+          {!journalLoading && journalEntries.length === 0 && (
+            <div className="py-10 text-center">
+              <NotebookPen className="h-10 w-10 text-muted-foreground/30 mx-auto mb-3" />
+              <p className="text-muted-foreground text-sm">No journal entries yet. Set your first intention above.</p>
+            </div>
+          )}
+          {journalEntries.map(entry => (
+            <Card key={entry.id} className="p-4 border border-border hover:border-gold/30 transition-colors">
+              <div className="flex items-start justify-between gap-3">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
+                    <span className="text-xs text-muted-foreground">{entry.date}</span>
+                    {entry.moon_phase && (
+                      <span className="text-xs rounded-full border border-border px-2 py-0.5 text-muted-foreground">{entry.moon_phase}</span>
+                    )}
+                    {entry.card_name && (
+                      <span className="text-xs text-gold">{entry.card_name}</span>
+                    )}
+                  </div>
+                  <p className="text-sm leading-6 text-foreground">{entry.intention_text}</p>
+                  {(entry.tasks_total > 0 || entry.reminders_count > 0) && (
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {entry.tasks_done}/{entry.tasks_total} tasks · {entry.reminders_count} reminders
+                    </p>
+                  )}
+                </div>
+                <button
+                  className="text-muted-foreground hover:text-gold transition-colors flex-shrink-0"
+                  aria-label={entry.bookmarked ? "Bookmarked" : "Bookmark"}
+                >
+                  {entry.bookmarked
+                    ? <BookmarkCheck className="h-4 w-4 text-gold" />
+                    : <Bookmark className="h-4 w-4" />}
+                </button>
+              </div>
+            </Card>
+          ))}
         </div>
       )}
 

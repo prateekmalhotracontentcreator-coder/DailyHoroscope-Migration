@@ -43,6 +43,7 @@ const ResetPassword = lazy(() => import('./pages/account/ResetPassword').then(m 
 const AccountSettings = lazy(() => import('./pages/account/AccountSettings').then(m => ({ default: m.AccountSettings })));
 const MyReportsPage = lazy(() => import('./pages/reports/MyReportsPage').then(m => ({ default: m.MyReportsPage })));
 const IndividualReportsPage = lazy(() => import('./pages/reports/IndividualReportsPage'));
+const PremiumReportsLanding = lazy(() => import('./pages/reports/PremiumReportsLanding'));
 const LovePage = lazy(() => import('./pages/reports/LovePage'));
 const LoveReportsPage = lazy(() => import('./pages/reports/LoveReportsPage'));
 const LiveSaiBabaArtiPage = lazy(() => import('./pages/live/LiveSaiBabaArtiPage'));
@@ -148,6 +149,7 @@ function App() {
                   <Route path="/kundali-milan" element={<PremiumRoute feature="Kundali Milan" description="Kundali matching and compatibility scoring is a Premium feature. Upgrade to unlock full compatibility analysis."><KundaliMilanPage /></PremiumRoute>} />
                   <Route path="/brihat-kundli" element={<PremiumRoute feature="Brihat Kundli Pro" description="Comprehensive Vedic chart with all 16 divisional charts is a Premium feature. Upgrade to unlock the full Brihat Kundli."><BrihatKundliPage /></PremiumRoute>} />
                   <Route path="/my-reports" element={<PremiumRoute feature="My Reports" description="Your personalised Vedic reports are available to Premium members. Upgrade to access all your saved reports."><MyReportsPage /></PremiumRoute>} />
+                  <Route path="/premium-reports" element={<PremiumReportsLanding />} />
                   <Route path="/individual-reports" element={<PremiumRoute feature="Reports" description="Individual Vedic reports are a Premium feature. Upgrade to unlock your full report library."><IndividualReportsPage /></PremiumRoute>} />
                   <Route path="/reports" element={<PremiumRoute feature="Reports" description="Individual Vedic reports are a Premium feature. Upgrade to unlock your full report library."><IndividualReportsPage /></PremiumRoute>} />
                   <Route path="/love" element={<LovePage />} />
