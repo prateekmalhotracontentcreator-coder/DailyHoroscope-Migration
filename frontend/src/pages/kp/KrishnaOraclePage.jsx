@@ -36,22 +36,22 @@ function SectionCard({ title, eyebrow, children, className = "" }) {
 }
 
 function BilingualBlockView({ label, block }) {
-  if (!block) return null;
+  if (!block?.english_block?.trim()) return null;
   return (
     <div className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
       <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">{label}</p>
-      <p className="m-0 mt-3 text-lg leading-8 text-stone-900 dark:text-amber-50">{block.sanskrit_block}</p>
+      {block.sanskrit_block?.trim() ? <p className="m-0 mt-3 text-lg leading-8 text-stone-900 dark:text-amber-50">{block.sanskrit_block}</p> : null}
       <p className="m-0 mt-2 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{block.english_block}</p>
     </div>
   );
 }
 
 function SummaryBlock({ title, content }) {
-  if (!content) return null;
+  if (!content?.english_block?.trim()) return null;
   return (
     <div className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
       <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">{title}</p>
-      <p className="m-0 mt-3 text-base leading-7 text-stone-900 dark:text-amber-50">{content.sanskrit_block}</p>
+      {content.sanskrit_block?.trim() ? <p className="m-0 mt-3 text-base leading-7 text-stone-900 dark:text-amber-50">{content.sanskrit_block}</p> : null}
       <p className="m-0 mt-2 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{content.english_block}</p>
     </div>
   );
@@ -59,11 +59,11 @@ function SummaryBlock({ title, content }) {
 
 // ─── Public landing page (shown to logged-out visitors) ──────────────────────
 const KP_FAQS = [
-  { q: "What is Krishna Prashnavali?", a: "Krishna Prashnavali is an ancient Vedic oracle rooted in Srimad Bhagavad Gita and traditional Prashna Shastra. The 18×18 grid (324 cells) maps to 36 canonical answers — YES, WAIT, NO, or PRAY — each drawn from Krishna's sacred chaupais. Your selection is guided by your intent, not by chance." },
-  { q: "How is it different from a regular online oracle?", a: "Unlike random-number generators, EverydayHoroscope's KP Oracle overlays your live Vedic dasha, planetary transits, and yogas onto your answer — so every reading carries your actual astrological fingerprint at that moment." },
-  { q: "What does each verdict mean?", a: "YES (Pratibha) — move forward with confidence. WAIT (Dhairya) — pause and prepare; timing is not yet ripe. NO (Pratrodha) — the path is obstructed; reconsider. PRAY (Bhakti) — surrender and seek divine alignment before acting." },
-  { q: "What is the 'Sacred Remedy' shown after a reading?", a: "Each of the 36 answers carries its own module-specific sacred remedy and behavioural practice — drawn directly from Lord Krishna's teachings and precisely matched to the chaupai and verdict received. These are optional — they support, not override, your own wisdom." },
-  { q: "Can I ask any question?", a: "Yes — personal, professional, spiritual, or relational. The oracle responds to sincere intent. The more specific and clear your question, the more precise the guidance." },
+  { q: "What is Krishna Prashnavali?", a: "Krishna Prashnavali is an ancient Vedic oracle rooted in Srimad Bhagavad Gita and traditional Prashna Shastra. The 18×18 grid (324 cells) maps to 36 canonical answers -- YES, WAIT, NO, or PRAY -- each drawn from Krishna's sacred chaupais. Your selection is guided by your intent, not by chance." },
+  { q: "How is it different from a regular online oracle?", a: "Unlike random-number generators, EverydayHoroscope's KP Oracle overlays your live Vedic dasha, planetary transits, and yogas onto your answer -- so every reading carries your actual astrological fingerprint at that moment." },
+  { q: "What does each verdict mean?", a: "YES (Pratibha) -- move forward with confidence. WAIT (Dhairya) -- pause and prepare; timing is not yet ripe. NO (Pratrodha) -- the path is obstructed; reconsider. PRAY (Bhakti) -- surrender and seek divine alignment before acting." },
+  { q: "What is the 'Sacred Remedy' shown after a reading?", a: "Each of the 36 answers carries its own module-specific sacred remedy and behavioural practice -- drawn directly from Lord Krishna's teachings and precisely matched to the chaupai and verdict received. These are optional -- they support, not override, your own wisdom." },
+  { q: "Can I ask any question?", a: "Yes -- personal, professional, spiritual, or relational. The oracle responds to sincere intent. The more specific and clear your question, the more precise the guidance." },
 ];
 
 function KrishnaOracleLanding() {
@@ -78,8 +78,8 @@ function KrishnaOracleLanding() {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(217,168,74,0.14),_transparent_50%),linear-gradient(180deg,_#fffaf0_0%,_#f6ead6_55%,_#efe2cd_100%)] text-stone-900">
       <SEO
-        title="Krishna Prashnavali — Ancient Vedic Oracle by Lord Krishna"
-        description="Consult the 18×18 Krishna Prashnavali — India's most sacred Vedic oracle. Get a YES, WAIT, NO, or PRAY answer from Lord Krishna, enriched with your live Dasha, planetary transits, temple remedy, and mantra."
+        title="Krishna Prashnavali -- Ancient Vedic Oracle by Lord Krishna"
+        description="Consult the 18×18 Krishna Prashnavali -- India's most sacred Vedic oracle. Get a YES, WAIT, NO, or PRAY answer from Lord Krishna, enriched with your live Dasha, planetary transits, temple remedy, and mantra."
         url="https://www.everydayhoroscope.in/krishna-prashnavali"
         schema={{
           "@context": "https://schema.org",
@@ -102,7 +102,7 @@ function KrishnaOracleLanding() {
           The sacred 18×18 oracle rooted in Srimad Bhagavad Gita
         </p>
         <p className="text-sm text-amber-700/80 mb-10 italic">
-          "Sarva-dharmān parityajya mām ekaṁ śaraṇaṁ vraja" — Gita 18.66
+          "Sarva-dharmān parityajya mām ekaṁ śaraṇaṁ vraja" -- Gita 18.66
         </p>
         <button
           onClick={() => navigate('/login')}
@@ -133,7 +133,7 @@ function KrishnaOracleLanding() {
           <h2 className="text-center text-2xl font-playfair font-semibold text-stone-800 mb-10">How It Works</h2>
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             {[
-              { n: "1", title: "Hold your question", body: "Frame one sincere, clear question — personal, professional, or spiritual." },
+              { n: "1", title: "Hold your question", body: "Frame one sincere, clear question -- personal, professional, or spiritual." },
               { n: "2", title: "Choose a cell", body: "Close your eyes, breathe, and tap any cell in the 18×18 grid. Your live planetary chart is read at that exact moment." },
               { n: "3", title: "Receive Krishna's answer", body: "A verdict (YES/WAIT/NO/PRAY) arrives with sacred verse, practical action, and a behavioural remedy drawn directly from Lord Krishna's teachings." },
             ].map(s => (
@@ -176,7 +176,7 @@ function KrishnaOracleLanding() {
   );
 }
 
-// ─── Main export — auth-aware + premium-aware ─────────────────────────────────
+// ─── Main export -- auth-aware + premium-aware ─────────────────────────────────
 export default function KrishnaOraclePage() {
   const { user, loading: authLoading } = useAuth();
 
@@ -189,7 +189,7 @@ export default function KrishnaOraclePage() {
   if (!user.is_premium) return (
     <PremiumGateCard
       feature="Krishna Prashnavali"
-      description="Receive guidance from Lord Krishna's sacred oracle — an exclusive Premium feature. Upgrade to ask your question and receive a divine answer."
+      description="Receive guidance from Lord Krishna's sacred oracle -- an exclusive Premium feature. Upgrade to ask your question and receive a divine answer."
     />
   );
 
@@ -209,6 +209,7 @@ function KrishnaOracleApp() {
   const [revealEnabled, setRevealEnabled] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [reading, setReading] = useState(null);
+  const [loadingPastReading, setLoadingPastReading] = useState(false);
   const [questionError, setQuestionError] = useState("");
 
   const gridMatrix = metadata?.grid_matrix || [];
@@ -262,11 +263,26 @@ function KrishnaOracleApp() {
     loadHistory();
   }, []);
 
+  async function loadPastReading(reportId) {
+    if (!reportId) return;
+    setLoadingPastReading(true);
+    setError("");
+    try {
+      const response = await axios.get(`${API}/reports/${reportId}`, { withCredentials: true });
+      setReading(response.data || null);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch {
+      setError("Could not load that reading. Please try again.");
+    } finally {
+      setLoadingPastReading(false);
+    }
+  }
+
   function validateQuestion(value) {
     const trimmed = value.trim();
     if (!trimmed) return "";
     if (trimmed.length < 12 || trimmed.split(/\s+/).length < 3) {
-      return "Enter one clear question with at least 3 words so Krishna’s response can address it properly.";
+      return "Enter one clear question with at least 3 words so Krishna's response can address it properly.";
     }
     return "";
   }
@@ -415,7 +431,7 @@ function KrishnaOracleApp() {
 
         <SectionCard title="Selection Grid" eyebrow="Deterministic Matrix">
           {loadingMeta ? (
-            <p className="m-0 text-sm text-stone-600 dark:text-amber-100/75">Loading Krishna grid…</p>
+            <p className="m-0 text-sm text-stone-600 dark:text-amber-100/75">Loading Krishna grid...</p>
           ) : (
             <KrishnaOracleGrid
               gridMatrix={gridMatrix}
@@ -486,20 +502,27 @@ function KrishnaOracleApp() {
 
         <SectionCard title="Recent Krishna Readings" eyebrow="History">
           {loadingHistory ? (
-            <p className="m-0 text-sm text-stone-600 dark:text-amber-100/75">Loading history…</p>
+            <p className="m-0 text-sm text-stone-600 dark:text-amber-100/75">Loading history...</p>
           ) : history.length === 0 ? (
             <p className="m-0 text-sm text-stone-600 dark:text-amber-100/75">Your Krishna readings will appear here after the first selection.</p>
           ) : (
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               {history.map((item) => (
-                <div key={item.id} className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => loadPastReading(item.report_id)}
+                  disabled={loadingPastReading}
+                  className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 text-left transition hover:border-amber-400 hover:shadow-md dark:border-amber-900/60 dark:bg-stone-950/40 dark:hover:border-amber-600/60 disabled:opacity-50"
+                >
                   <p className="m-0 text-[11px] uppercase tracking-[0.24em] text-amber-700/80 dark:text-amber-300/70">{item.verdict_display}</p>
                   <h3 className="m-0 mt-2 text-lg font-semibold text-stone-900 dark:text-amber-50">{item.summary}</h3>
                   <p className="m-0 mt-2 text-sm leading-7 text-stone-700 dark:text-amber-100/75">
                     Cell [{item.row}][{item.col}] • slot {item.answer_slot}
                   </p>
                   <p className="m-0 mt-2 text-xs text-stone-500 dark:text-amber-100/50">{formatTimestamp(item.created_at)}</p>
-                </div>
+                  <p className="m-0 mt-3 text-[11px] font-medium text-amber-600 dark:text-amber-400">Tap to reload reading →</p>
+                </button>
               ))}
             </div>
           )}
@@ -509,27 +532,27 @@ function KrishnaOracleApp() {
         <div className="mt-12 space-y-8 border-t border-amber-200/50 pt-10 text-sm text-stone-600 dark:border-amber-900/40 dark:text-amber-100/60">
           <div>
             <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">What is Krishna Prashnavali?</h2>
-            <p className="leading-7">Krishna Prashnavali (कृष्ण प्रश्नावली) is one of the most revered Prashna oracles in the Vedic tradition. Rooted in the sacred chaupais of Srimad Bhagavad Gita and traditional Prashna Shastra, it presents 36 divine answers arranged in an 18×18 grid of 324 cells. Each cell, when selected with sincere intent, resolves to a verdict — YES (Pratibha), WAIT (Dhairya), NO (Pratrodha), or PRAY (Bhakti) — drawn directly from Lord Krishna's teachings to Arjuna.</p>
+            <p className="leading-7">Krishna Prashnavali (कृष्ण प्रश्नावली) is one of the most revered Prashna oracles in the Vedic tradition. Rooted in the sacred chaupais of Srimad Bhagavad Gita and traditional Prashna Shastra, it presents 36 divine answers arranged in an 18×18 grid of 324 cells. Each cell, when selected with sincere intent, resolves to a verdict -- YES (Pratibha), WAIT (Dhairya), NO (Pratrodha), or PRAY (Bhakti) -- drawn directly from Lord Krishna's teachings to Arjuna.</p>
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">How the 18×18 Grid Works</h2>
-            <p className="leading-7">The oracle operates on a sacred 9-step chaupai sequence. When you select a cell, the system treats it as position 0 and advances deterministically through 9 chaupai letters using a 12-letter interval — always producing the same answer for a given grid position regardless of when it is consulted. This is not randomness; it is structured Vedic Prashna logic, where the sincerity of your question, not chance, guides your hand.</p>
+            <p className="leading-7">The oracle operates on a sacred 9-step chaupai sequence. When you select a cell, the system treats it as position 0 and advances deterministically through 9 chaupai letters using a 12-letter interval -- always producing the same answer for a given grid position regardless of when it is consulted. This is not randomness; it is structured Vedic Prashna logic, where the sincerity of your question, not chance, guides your hand.</p>
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">Understanding the Four Verdicts</h2>
-            <p className="leading-7"><strong className="text-stone-800 dark:text-amber-100">YES — Pratibha:</strong> Lord Krishna signals a clear forward path. Act with confidence and discipline. <strong className="text-stone-800 dark:text-amber-100">WAIT — Dhairya:</strong> The timing is not yet aligned. Pause, prepare internally, and let circumstances mature. <strong className="text-stone-800 dark:text-amber-100">NO — Pratrodha:</strong> An obstacle is present on the current path. Reconsider your approach, not your goal. <strong className="text-stone-800 dark:text-amber-100">PRAY — Bhakti:</strong> Surrender the outcome. Seek divine alignment through devotion before any action is taken.</p>
+            <p className="leading-7"><strong className="text-stone-800 dark:text-amber-100">YES -- Pratibha:</strong> Lord Krishna signals a clear forward path. Act with confidence and discipline. <strong className="text-stone-800 dark:text-amber-100">WAIT -- Dhairya:</strong> The timing is not yet aligned. Pause, prepare internally, and let circumstances mature. <strong className="text-stone-800 dark:text-amber-100">NO -- Pratrodha:</strong> An obstacle is present on the current path. Reconsider your approach, not your goal. <strong className="text-stone-800 dark:text-amber-100">PRAY -- Bhakti:</strong> Surrender the outcome. Seek divine alignment through devotion before any action is taken.</p>
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">What is Prashna Shastra?</h2>
-            <p className="leading-7">Prashna Shastra is the Vedic science of answering questions — an ancient branch of Jyotish (Vedic astrology) in which the moment of the question itself is cast as a horoscope. Unlike natal astrology, which requires a birth chart, Prashna works solely from the energy of the query and the moment it is posed. EverydayHoroscope layers this with your live dasha, planetary transits, and current yogas to give each reading an astrological fingerprint unique to you and the moment of asking.</p>
+            <p className="leading-7">Prashna Shastra is the Vedic science of answering questions -- an ancient branch of Jyotish (Vedic astrology) in which the moment of the question itself is cast as a horoscope. Unlike natal astrology, which requires a birth chart, Prashna works solely from the energy of the query and the moment it is posed. EverydayHoroscope layers this with your live dasha, planetary transits, and current yogas to give each reading an astrological fingerprint unique to you and the moment of asking.</p>
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">Behavioural Remedy & Sacred Practice</h2>
-            <p className="leading-7">Each of the 36 answers carries a module-specific behavioural remedy — a contemplative practice drawn from Krishna's own teachings and aligned to the verdict received. These are not generic prescriptions; they are precisely paired to the chaupai, the verdict, and the spiritual intent of Lord Krishna's answer. The remedy guides how to carry the oracle's wisdom into your daily life.</p>
+            <p className="leading-7">Each of the 36 answers carries a module-specific behavioural remedy -- a contemplative practice drawn from Krishna's own teachings and aligned to the verdict received. These are not generic prescriptions; they are precisely paired to the chaupai, the verdict, and the spiritual intent of Lord Krishna's answer. The remedy guides how to carry the oracle's wisdom into your daily life.</p>
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-stone-800 dark:text-amber-100">Using Krishna Prashnavali Effectively</h2>
-            <p className="leading-7">Approach each session with one sincere, clearly framed question. Avoid repeating the same question in one session — the oracle is consulted for genuine matters, not for confirmation. Hold your question in mind as you close your eyes, breathe, and let your hand fall on a cell. Read the full answer including the sacred verse (chaupai), meaning, practical action, and behavioural remedy before forming your response. Your Historical Readings above allow you to track patterns across multiple consultations over time.</p>
+            <p className="leading-7">Approach each session with one sincere, clearly framed question. Avoid repeating the same question in one session -- the oracle is consulted for genuine matters, not for confirmation. Hold your question in mind as you close your eyes, breathe, and let your hand fall on a cell. Read the full answer including the sacred verse (chaupai), meaning, practical action, and behavioural remedy before forming your response. Your Historical Readings above allow you to track patterns across multiple consultations over time.</p>
           </div>
         </div>
 

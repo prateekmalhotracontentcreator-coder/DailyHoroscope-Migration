@@ -422,8 +422,13 @@ def _chaupai_block(sequence_glyphs: list[str]) -> BilingualBlock:
     return BilingualBlock(sanskrit_block=sanskrit, english_block=english)
 
 
-def _astrology_context_block(astrology: AstrologyContext, answer: KrishnaCanonicalAnswer) -> BilingualBlock:
-    mahadasha = astrology.current_mahadasha or "Current cycle unavailable"
+def _astrology_context_block(astrology: AstrologyContext, answer: KrishnaCanonicalAnswer) -> BilingualBlock | None:
+    # Only surface astro context when there is real data -- suppress the block entirely
+    # when no dasha/transit/yoga data is available so the UI doesn't show placeholder text.
+    has_data = astrology.current_mahadasha or astrology.transit_house_map or astrology.yogas
+    if not has_data:
+        return None
+    mahadasha = astrology.current_mahadasha
     transit_summary = ", ".join(sorted(astrology.transit_house_map.keys())) if astrology.transit_house_map else "no mapped transit houses"
     yogas = ", ".join(astrology.yogas) if astrology.yogas else "no declared yogas"
     english = (
@@ -441,7 +446,7 @@ def _practical_action_block(
     answer: KrishnaCanonicalAnswer,
     ritual_remedy_doc: dict[str, Any] | None = None,
 ) -> BilingualBlock:
-    # Bundle first (v1: answer.remedy; v2: None) — Engine fallback when bundle remedy absent
+    # Bundle first (v1: answer.remedy; v2: None) -- Engine fallback when bundle remedy absent
     remedy_en = answer.remedy.english_block if answer.remedy else ""
     remedy_hi = answer.remedy.sanskrit_block if answer.remedy else ""
     if not remedy_en and ritual_remedy_doc:
@@ -489,8 +494,8 @@ def _summary_report(
     question_text: str | None,
     focus_area: str | None,
     ritual_remedy_doc: dict[str, Any] | None = None,
-) -> dict[str, BilingualBlock]:
-    report: dict[str, BilingualBlock] = {
+) -> dict[str, BilingualBlock | None]:
+    report: dict[str, BilingualBlock | None] = {
         "sacred_verse": answer.krishna_answer,
         "question_response": _question_response_block(answer, question_text, focus_area),
         "astro_scientific_context": _astrology_context_block(astrology, answer),
@@ -642,7 +647,7 @@ async def get_krishna_history(
     page: int = Query(default=1, ge=1),
     limit: int = Query(default=12, ge=1, le=50),
 ) -> KrishnaHistoryResponse:
-    # Graceful degradation for unauthenticated users — matches Tarot pattern
+    # Graceful degradation for unauthenticated users -- matches Tarot pattern
     try:
         user_email = _resolve_user_email(request)
     except HTTPException:

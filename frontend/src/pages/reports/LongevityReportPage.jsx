@@ -207,12 +207,10 @@ export default function LongevityReportPage() {
     setForm(prev => ({ ...prev, [key]: value }));
   };
 
-  const buildPayload = (preview) => ({
-    ...form,
-    latitude: Number(form.latitude),
-    longitude: Number(form.longitude),
-    preview,
-  });
+  const buildPayload = (preview) => {
+    const { city_slug, ...rest } = form;
+    return { ...rest, latitude: Number(form.latitude), longitude: Number(form.longitude), preview };
+  };
 
   const handleGenerate = async (preview) => {
     if (!form.date_of_birth || !form.time_of_birth || form.latitude === "" || form.longitude === "") {
@@ -266,7 +264,7 @@ export default function LongevityReportPage() {
   return (
     <div className="min-h-screen bg-[#09101b] text-white">
       <SEO
-        title="Ayur Jyotish — Vedic Longevity & Health Report"
+        title="Ayur Jyotish -- Vedic Longevity & Health Report"
         description="Discover your Vedic health blueprint. KP-based longevity classification, prakriti analysis, vulnerable body systems, disease windows, and remedial guidance."
         url="https://www.everydayhoroscope.in/longevity"
       />
@@ -371,7 +369,7 @@ export default function LongevityReportPage() {
                   <SharedBirthCityPicker
                     inputId="longevity-birth-city"
                     label={<span className="text-xs uppercase tracking-[0.24em] text-white/45">Birth Location</span>}
-                    placeholder="Search city, country, or timezone…"
+                    placeholder="Search city, country, or timezone..."
                     value={form.city_slug}
                     helpText="Search by city, country, or timezone abbreviation."
                     onChange={(city) => setForm(prev => ({
