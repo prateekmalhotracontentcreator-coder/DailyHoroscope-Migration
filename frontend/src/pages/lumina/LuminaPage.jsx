@@ -30,7 +30,7 @@ const REWARD_TIERS = [
   { points: 500,  icon: "🎁", label: "$5 Amazon Gift Card", desc: "Exchange your devotion points for a digital gift card." },
   { points: 1000, icon: "✦",  label: "Premium Gift Month",  desc: "Gift a month of Lumina Premium to a loved one." },
   { points: 2500, icon: "💳", label: "$10 Gift Card",       desc: "Stay consistent to earn gift cards directly via email." },
-  { points: 5000, icon: "🏆", label: "$25 Gift Card",       desc: "Elite devotion milestone — you're in the top tier." },
+  { points: 5000, icon: "🏆", label: "$25 Gift Card",       desc: "Elite devotion milestone -- you're in the top tier." },
 ];
 
 const BIBLE_BOOKS = [
@@ -570,9 +570,9 @@ function LuminaPage() {
     verse_reference: 'Joshua 1:8 (KJV)',
     revelation_context: "God's instruction to Joshua at the threshold of the Promised Land \u2014 a call to daily immersion in the Word as the foundation of every decision and direction.",
     speak_it: 'I meditate on the Word day and night. Every step I take is aligned with divine instruction.',
-    think_it: 'The Word is not an add-on to my day — it is the blueprint of my day.',
+    think_it: 'The Word is not an add-on to my day -- it is the blueprint of my day.',
     do_it: 'Before opening your phone this morning, open a verse. Let scripture set the first frame of your mind.',
-    prophets_promise: 'Your way will be prosperous and you will have good success — not by striving, but by staying in the Word.',
+    prophets_promise: 'Your way will be prosperous and you will have good success -- not by striving, but by staying in the Word.',
     daily_application: 'Identify one decision you are facing today. Find a scripture that speaks to it and carry it into that situation.',
   };
 
@@ -582,7 +582,7 @@ function LuminaPage() {
     if (dailyLoading) {
       return (
         <GlassCard className="lumina-animate p-10 text-center">
-          <p className="m-0 text-sm text-muted-foreground">Opening today's verse…</p>
+          <p className="m-0 text-sm text-muted-foreground">Opening today's verse...</p>
         </GlassCard>
       );
     }
@@ -598,7 +598,7 @@ function LuminaPage() {
           <div className="flex items-center justify-between mb-4">
             <p className="m-0 text-[11px] uppercase tracking-[0.35em] text-gold">Daily Verse</p>
             {isFallback && (
-              <span className="rounded-full border border-gold/25 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-gold">Offline — Featured</span>
+              <span className="rounded-full border border-gold/25 bg-gold/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-gold">Offline -- Featured</span>
             )}
           </div>
           <blockquote className="m-0 font-playfair text-2xl font-semibold italic leading-snug text-foreground md:text-3xl">
@@ -818,7 +818,7 @@ function LuminaPage() {
               disabled={kingdomLoading || !kingdomGoal.trim()}
               className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-primary-foreground transition hover:bg-gold/90 disabled:opacity-40"
             >
-              {kingdomLoading ? "Scribing mandate…" : "Scribe Mandate"}
+              {kingdomLoading ? "Scribing mandate..." : "Scribe Mandate"}
             </button>
           </div>
 
@@ -897,7 +897,7 @@ function LuminaPage() {
               <div className="h-full rounded-full bg-gold transition-all duration-700" style={{ width: `${progressPct}%` }} />
             </div>
             <p className="m-0 mt-2 text-center text-[10px] font-semibold uppercase tracking-[0.25em] text-gold">
-              Next milestone: {nextTier.points.toLocaleString()} pts — {nextTier.label}
+              Next milestone: {nextTier.points.toLocaleString()} pts -- {nextTier.label}
             </p>
           </GlassCard>
         ) : (
@@ -1254,8 +1254,8 @@ function LuminaPage() {
           <SectionTitle eyebrow="Community Bridge" title="Collective intercession." copy="Pray with others, track your circle's devotion journey, and share testimonies across the global prayer chain." />
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {[
-              { icon: "🔵", title: "Inner Circle", desc: "Invite 3–5 trusted believers. Track each other's reading progress and prayer requests privately.", tag: "Coming Soon" },
-              { icon: "🌍", title: "Global Prayer Chain", desc: "Add your prayer request to the live worldwide chain. Over 14,000 believers interceding in real time.", tag: "Phase 2" },
+              { icon: "🔵", title: "Inner Circle", desc: "Invite 3-5 trusted believers. Track each other's reading progress and prayer requests privately.", tag: "Coming Soon" },
+              { icon: "🌍", title: "Global Prayer Chain", desc: "Add your prayer request to the worldwide chain. Join believers interceding together across the community.", tag: "Phase 2" },
               { icon: "🌉", title: "Bridge", desc: "Share testimonies to Facebook, WhatsApp, or X directly from Lumina. Let others celebrate with you.", tag: "Phase 2" },
             ].map((item) => (
               <GlassCard key={item.title} className="lumina-animate p-5">
@@ -1279,7 +1279,7 @@ function LuminaPage() {
               { q: "What is the 21-Day Manifestation plan?", a: "A guided 21-day cycle of scripture meditation, kingdom declarations, and daily prompts designed to align your calling with purpose. Requires a Sanctuary email to sync progress." },
               { q: "What are Devotion Points?", a: "Points are earned by reading chapters (25 pts each), completing manifestation days (25 pts), and realising prayers (50 pts). Redeem at future milestones for gift rewards." },
               { q: "Is my data encrypted?", a: "Sanctuary profiles and saved prayers are stored encrypted in our database. We never sell user data. Phase 2 will add AES-256 application-layer encryption for all spiritual content." },
-              { q: "Can I switch between Bible and Gita modes?", a: "Yes — the BIBLE / GITA toggle at the top switches both the Daily Verse and the Scripture Reader. Your progress in each mode is tracked separately." },
+              { q: "Can I switch between Bible and Gita modes?", a: "Yes -- the BIBLE / GITA toggle at the top switches both the Daily Verse and the Scripture Reader. Your progress in each mode is tracked separately." },
             ].map((item) => (
               <div key={item.q} className="rounded-[24px] border border-white/10 bg-black/20 p-5">
                 <p className="m-0 text-sm font-semibold text-amber-300">{item.q}</p>
@@ -1292,7 +1292,7 @@ function LuminaPage() {
     );
   }
 
-  // Premium gate — logged-in non-premium users
+  // Premium gate -- logged-in non-premium users
   if (user && !user.is_premium) return (
     <PremiumGateCard
       feature="Lumina"
@@ -1303,7 +1303,7 @@ function LuminaPage() {
   return (
     <div className="min-h-screen bg-background px-4 pb-24 pt-4 md:px-8 md:pb-8">
       <SEO
-        title="Lumina — Daily Scripture, Meditation & Devotion"
+        title="Lumina -- Daily Scripture, Meditation & Devotion"
         description="Your Vedic and Biblical spiritual companion. Daily scripture readings from Bhagavad Gita and Bible, guided meditation, mantras, and devotion tracking."
         url="https://www.everydayhoroscope.in/lumina"
       />
@@ -1435,23 +1435,23 @@ function LuminaPage() {
         <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
           <div>
             <h2 className="mb-2 text-base font-semibold text-foreground">What is Lumina?</h2>
-            <p className="leading-7">Lumina is EverydayHoroscope's integrated devotional companion — a daily sacred space combining scripture study, guided meditation, devotion tracking, and an AI spiritual guide. Built on the Vedic understanding that spiritual practice (sadhana) thrives on consistency, Lumina is designed to help you build a daily inner life rather than consuming wisdom passively. Every element of Lumina adapts to your current planetary period and the sacred calendar.</p>
+            <p className="leading-7">Lumina is EverydayHoroscope's integrated devotional companion -- a daily sacred space combining scripture study, guided meditation, devotion tracking, and an AI spiritual guide. Built on the Vedic understanding that spiritual practice (sadhana) thrives on consistency, Lumina is designed to help you build a daily inner life rather than consuming wisdom passively. Every element of Lumina adapts to your current planetary period and the sacred calendar.</p>
           </div>
           <div>
-            <h2 className="mb-2 text-base font-semibold text-foreground">Daily Scripture — Shloka of the Day</h2>
-            <p className="leading-7">Each day, Lumina surfaces a scripture passage — a shloka from the Bhagavad Gita, Upanishads, Vedas, or devotional texts — selected in alignment with the current Panchang (Tithi, Nakshatra, and planetary ruler of the day). The shloka is presented in Sanskrit with transliteration, meaning, and a contemplative note. This practice builds a living relationship with sacred text rather than a once-read familiarity.</p>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Daily Scripture -- Shloka of the Day</h2>
+            <p className="leading-7">Each day, Lumina surfaces a scripture passage -- a shloka from the Bhagavad Gita, Upanishads, Vedas, or devotional texts -- selected in alignment with the current Panchang (Tithi, Nakshatra, and planetary ruler of the day). The shloka is presented in Sanskrit with transliteration, meaning, and a contemplative note. This practice builds a living relationship with sacred text rather than a once-read familiarity.</p>
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-foreground">Guided Meditation Practices</h2>
-            <p className="leading-7">Lumina provides structured meditation sessions anchored in Vedic tradition — pranayama, trataka (candle gazing), mantra japa, and breath-awareness practices. Sessions are tuned to the time of day and your dasha lord, since Vedic wisdom prescribes different inner practices for different planetary periods. Brahma Muhurta (pre-dawn) practices differ from evening dhyana — Lumina accounts for this.</p>
+            <p className="leading-7">Lumina provides structured meditation sessions anchored in Vedic tradition -- pranayama, trataka (candle gazing), mantra japa, and breath-awareness practices. Sessions are tuned to the time of day and your dasha lord, since Vedic wisdom prescribes different inner practices for different planetary periods. Brahma Muhurta (pre-dawn) practices differ from evening dhyana -- Lumina accounts for this.</p>
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-foreground">Devotion Tracking & Sadhana Streaks</h2>
-            <p className="leading-7">Consistency is the foundation of sadhana. Lumina tracks your daily practice — which scriptures you read, which meditations you completed, how many days in a row you have maintained your inner work. Sadhana streaks are not gamification; they reflect the Vedic principle that 40-day and 90-day cycles create lasting neurological and karmic transformation. The tracker keeps your commitment visible and honest.</p>
+            <p className="leading-7">Consistency is the foundation of sadhana. Lumina tracks your daily practice -- which scriptures you read, which meditations you completed, how many days in a row you have maintained your inner work. Sadhana streaks are not gamification; they reflect the Vedic principle that 40-day and 90-day cycles create lasting neurological and karmic transformation. The tracker keeps your commitment visible and honest.</p>
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-foreground">AI Spiritual Companion</h2>
-            <p className="leading-7">Lumina's AI companion is trained on Vedic philosophy and scripture — it can answer questions about shloka meanings, help you apply teachings to daily life, suggest practices for your current dasha, and reflect wisdom from the Gita, Upanishads, and Puranas. It is not a chatbot — it is a reflective guide that draws from a curated spiritual knowledge base, always pointing inward rather than outward for answers.</p>
+            <p className="leading-7">Lumina's AI companion is trained on Vedic philosophy and scripture -- it can answer questions about shloka meanings, help you apply teachings to daily life, suggest spiritual practices suited to your journey, and reflect wisdom from the Gita, Upanishads, and Puranas. It is not a chatbot -- it is a reflective guide that draws from a curated spiritual knowledge base, always pointing inward rather than outward for answers.</p>
           </div>
         </div>
 
