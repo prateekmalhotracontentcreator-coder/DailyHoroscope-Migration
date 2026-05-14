@@ -1,6 +1,6 @@
 # Account 2 -- Session Start Brief
 # EverydayHoroscope: Live App
-> Last updated: 2026-05-14 | Supersedes all prior versions
+> Last updated: 2026-05-14 (late evening) | Supersedes all prior versions
 
 ---
 
@@ -39,7 +39,11 @@ Full session detail: `.claude/HANDOVER_2026-05-14.md`
 | Premium / Free tier | ✅ Live | 16+ routes behind PremiumRoute |
 | On-page SEO -- all 13 modules | ✅ Live | |
 | Smart-quote pre-commit hook | ✅ Live | Auto-sanitises staged files |
-| Legal pages (code) | ✅ Ready | MongoDB empty -- needs seed script run |
+| Legal pages | ✅ Live | /terms /privacy /subscription-terms /refund-policy /cookie-policy -- MongoDB seeded |
+| /the-tarot public SEO landing | ✅ Live | Dark-themed, FAQ JSON-LD, auth-aware CTA |
+| /the-longevity-report public SEO landing | ✅ Live | Green-themed, FAQ JSON-LD, auth-aware CTA |
+| /premium-reports public SEO landing | ✅ Live | 5-report tiles, blurred teaser, FAQ JSON-LD |
+| Tarot v4 | ✅ Live | Journal tab, XP/streak gamification, moon phase badge, ritual notes |
 
 ---
 
@@ -68,18 +72,14 @@ if (user && !user.is_premium) return <PremiumGateCard feature="..." description=
 
 ## Pending -- Next Session
 
-### User Action Required
-- **Legal pages seed**: `python3 backend/scripts/seed_policies_v1.py --mongo-url "$MONGO_URL" --db-name horoscope_db`
-  (pages exist at /terms, /privacy etc. -- MongoDB collection is empty)
-
-### KP Remedy Engine Fallback (pending from 2026-05-13)
+### KP Remedy Engine Fallback (pending from 2026-05-13, parked)
 Backend (`scriptural_oracle_router.py`): Reinstate conditional `_resolve_kp_remedy_doc` -- call only when `answer.behavioral_remedy` is None/empty AND `answer.remedy_ref` exists. Bundle first, Engine fills gaps only.
 
 ### Open Commissions (priority order)
-1. Remedies Engine Phase 1 -- brief at `.claude/briefs/remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md`
-2. Tarot v4 -- Manifestation tab + gamification (Codex-Test backend has +759 lines vs Temple)
-3. Individual Reports -- 5 public landing pages + Web App onboarding
-4. SEO / Technical SEO -- user to share thread findings
+1. **Individual Reports** -- /premium-reports landing ✅ done; remaining: Web App tool page redesign (`/individual-reports` page -- animated reveals, GlassCard data)
+2. **SEO / Technical SEO** -- user to share thread findings
+3. **KP Remedy Engine Fallback** -- parked; reinstate when ready
+4. **Remedies Engine Phase 1** -- endpoint ✅ ingest ✅; brief at `.claude/briefs/remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md`
 
 ### Pending User Decisions
 - Strategist 22 records: `approval_status: pending_human_review` -- needs confirmation before approval pass
