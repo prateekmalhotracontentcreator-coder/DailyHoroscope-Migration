@@ -13,13 +13,13 @@ export const Home = () => {
   const { primarySign, primarySignMeta, favouritesMeta, dobDone, saveDOB, dismissDOBPrompt } = useHoroscope();
   const [showDOBModal, setShowDOBModal] = useState(false);
 
-  // Show DOB modal on Home if not yet done and user is logged in
+  // Show DOB modal whenever no zodiac sign is registered (fresh login, hard refresh, or dismissed without selecting)
   useEffect(() => {
-    if (!dobDone && user) {
+    if (!primarySign && user) {
       const t = setTimeout(() => setShowDOBModal(true), 1000);
       return () => clearTimeout(t);
     }
-  }, [dobDone, user]);
+  }, [primarySign, user]);
 
   const handleDOBSave = (dob, sign) => {
     saveDOB(dob);
@@ -33,8 +33,8 @@ export const Home = () => {
     { id: 'birthchart',title: 'Birth Chart Analysis', description: 'Comprehensive Vedic astrology report',             icon: Star,      color: 'text-gold',       bgColor: 'bg-gold/10',       path: '/birth-chart',   premium: true },
     { id: 'kundali',   title: 'Kundali Milan',        description: 'Marriage compatibility analysis',                  icon: Heart,     color: 'text-pink-500',  bgColor: 'bg-pink-500/10',   path: '/kundali-milan', premium: true },
     { id: 'brihat',    title: 'Brihat Kundli Pro',    description: '40+ page comprehensive Vedic life report',         icon: Crown,     color: 'text-purple-500',bgColor: 'bg-purple-500/10', path: '/brihat-kundli', premium: true },
-    { id: 'palmistry', title: 'Hasta Rekha',           description: 'AI-powered Vedic palm reading — Samudrika Shastra', icon: Layers,   color: 'text-rose-500',   bgColor: 'bg-rose-500/10',   path: '/palmistry' },
-    { id: 'lumina',    title: 'Lumina',               description: 'AI spiritual companion — Bible, Gita & prayer',    icon: BookMarked,color: 'text-amber-500',  bgColor: 'bg-amber-500/10',  path: '/lumina' },
+    { id: 'palmistry', title: 'Hasta Rekha',           description: 'AI-powered Vedic palm reading -- Samudrika Shastra', icon: Layers,   color: 'text-rose-500',   bgColor: 'bg-rose-500/10',   path: '/palmistry' },
+    { id: 'lumina',    title: 'Lumina',               description: 'AI spiritual companion -- Bible, Gita & prayer',    icon: BookMarked,color: 'text-amber-500',  bgColor: 'bg-amber-500/10',  path: '/lumina' },
     { id: 'blog',      title: 'Cosmic Blog',          description: 'Astrology insights and zodiac guides',             icon: BookOpen,  color: 'text-purple-500',bgColor: 'bg-purple-500/10', path: '/blog' },
   ];
 
@@ -42,7 +42,7 @@ export const Home = () => {
 
   return (
     <div className="min-h-screen">
-      {/* DOB modal — shown once on Home for logged-in users */}
+      {/* DOB modal -- shown once on Home for logged-in users */}
       {showDOBModal && (
         <DOBModal
           onSave={handleDOBSave}
@@ -107,7 +107,7 @@ export const Home = () => {
             )}
           </div>
         ) : (
-          /* No sign saved — generic welcome + CTA */
+          /* No sign saved -- generic welcome + CTA */
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-playfair font-semibold mb-4">Your Daily Dose of Cosmic Guidance</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
