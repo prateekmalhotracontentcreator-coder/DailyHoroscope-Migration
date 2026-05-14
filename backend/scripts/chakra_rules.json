@@ -1,0 +1,706 @@
+[
+  {
+    "rule_id": "chakra-301",
+    "science_id": "jyotish_remedies_chakra",
+    "source": {
+      "book": "7 Chakra Healing Remedy Library",
+      "book_id": "remedies_chakra_v1",
+      "chapter": null,
+      "chapter_name": "7 Chakra Healing Remedies",
+      "sloka": null,
+      "batch_id": "remedies-chakra-v1-20260509",
+      "primary": "7 Chakra Healing Remedy Library",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "remedy_trigger",
+      "sub_type": "chakra_imbalance",
+      "yoga_name": "Root (Muladhara)",
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "planets_involved": [
+        "Saturn",
+        "Mars"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "chs_evaluation",
+        "checkable": false,
+        "chs_threshold": 50,
+        "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+      },
+      "trigger_condition": "KE fires when Chakra Health Score (CHS) < 50% (Blocked state). CHS = (Shadbala + Bhava Bala + Tattva) / 3. Planet(s): Mars / Saturn. Condition: Alignment Score < 40% (Root)",
+      "astrological_mapping": {
+        "planet": [
+          "Saturn",
+          "Mars"
+        ]
+      },
+      "trigger_tags": [
+        "root_chakra_blocked",
+        "saturn_afflicted",
+        "mars_weak"
+      ]
+    },
+    "interpretation": {
+      "summary": "Root (Muladhara) — Red Jasper",
+      "detailed": "Chakra: Root (Muladhara)\nPrimary Crystal: Red Jasper\nBija Mantra: LAM\nAssociated Planet: Mars / Saturn\nTattva Element: Earth\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Root)\n\nHealing Process:\nBury in earth for 24h before first use; keep at base of spine during meditation.",
+      "full_text_passages": [
+        {
+          "text": "Chakra: Root (Muladhara)\nPrimary Crystal: Red Jasper\nBija Mantra: LAM\nAssociated Planet: Mars / Saturn\nTattva Element: Earth\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Root)\n\nHealing Process:\nBury in earth for 24h before first use; keep at base of spine during meditation.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "remedy": {
+      "id": 301,
+      "chakra": "Root (Muladhara)",
+      "primary_crystal": "Red Jasper",
+      "bija_mantra": "LAM",
+      "planet": "Mars / Saturn",
+      "tattva": "Earth",
+      "trigger_condition": "Alignment Score < 40% (Root)",
+      "process": "Bury in earth for 24h before first use; keep at base of spine during meditation.",
+      "chs_threshold": 50,
+      "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "remedy_category": [
+        "chakra",
+        "crystal",
+        "healing"
+      ],
+      "source_quality": "PRIMARY",
+      "data_quality": "source",
+      "tags": [
+        "remedy",
+        "chakra",
+        "crystal",
+        "root",
+        "mars / saturn"
+      ],
+      "trigger_category": "chakra_imbalance"
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-09T08:45:46.621920+00:00",
+    "updated_at": "2026-05-09T08:45:46.621920+00:00"
+  },
+  {
+    "rule_id": "chakra-302",
+    "science_id": "jyotish_remedies_chakra",
+    "source": {
+      "book": "7 Chakra Healing Remedy Library",
+      "book_id": "remedies_chakra_v1",
+      "chapter": null,
+      "chapter_name": "7 Chakra Healing Remedies",
+      "sloka": null,
+      "batch_id": "remedies-chakra-v1-20260509",
+      "primary": "7 Chakra Healing Remedy Library",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "remedy_trigger",
+      "sub_type": "chakra_imbalance",
+      "yoga_name": "Sacral (Swadhisthana)",
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "planets_involved": [
+        "Moon",
+        "Venus"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "chs_evaluation",
+        "checkable": false,
+        "chs_threshold": 50,
+        "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+      },
+      "trigger_condition": "KE fires when Chakra Health Score (CHS) < 50% (Blocked state). CHS = (Shadbala + Bhava Bala + Tattva) / 3. Planet(s): Venus / Moon. Condition: Alignment Score < 40% (Sacral)",
+      "astrological_mapping": {
+        "planet": [
+          "Moon",
+          "Venus"
+        ]
+      },
+      "trigger_tags": [
+        "sacral_chakra_blocked",
+        "moon_afflicted",
+        "venus_weak"
+      ]
+    },
+    "interpretation": {
+      "summary": "Sacral (Swadhisthana) — Carnelian",
+      "detailed": "Chakra: Sacral (Swadhisthana)\nPrimary Crystal: Carnelian\nBija Mantra: VAM\nAssociated Planet: Venus / Moon\nTattva Element: Water\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Sacral)\n\nHealing Process:\nCharge under Crescent Moon; place 2 inches below navel.",
+      "full_text_passages": [
+        {
+          "text": "Chakra: Sacral (Swadhisthana)\nPrimary Crystal: Carnelian\nBija Mantra: VAM\nAssociated Planet: Venus / Moon\nTattva Element: Water\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Sacral)\n\nHealing Process:\nCharge under Crescent Moon; place 2 inches below navel.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "remedy": {
+      "id": 302,
+      "chakra": "Sacral (Swadhisthana)",
+      "primary_crystal": "Carnelian",
+      "bija_mantra": "VAM",
+      "planet": "Venus / Moon",
+      "tattva": "Water",
+      "trigger_condition": "Alignment Score < 40% (Sacral)",
+      "process": "Charge under Crescent Moon; place 2 inches below navel.",
+      "chs_threshold": 50,
+      "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "remedy_category": [
+        "chakra",
+        "crystal",
+        "healing"
+      ],
+      "source_quality": "PRIMARY",
+      "data_quality": "source",
+      "tags": [
+        "remedy",
+        "chakra",
+        "crystal",
+        "sacral",
+        "venus / moon"
+      ],
+      "trigger_category": "chakra_imbalance"
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-09T08:45:46.621920+00:00",
+    "updated_at": "2026-05-09T08:45:46.621920+00:00"
+  },
+  {
+    "rule_id": "chakra-303",
+    "science_id": "jyotish_remedies_chakra",
+    "source": {
+      "book": "7 Chakra Healing Remedy Library",
+      "book_id": "remedies_chakra_v1",
+      "chapter": null,
+      "chapter_name": "7 Chakra Healing Remedies",
+      "sloka": null,
+      "batch_id": "remedies-chakra-v1-20260509",
+      "primary": "7 Chakra Healing Remedy Library",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "remedy_trigger",
+      "sub_type": "chakra_imbalance",
+      "yoga_name": "Solar Plexus (Manipura)",
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "planets_involved": [
+        "Sun",
+        "Mars"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "chs_evaluation",
+        "checkable": false,
+        "chs_threshold": 50,
+        "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+      },
+      "trigger_condition": "KE fires when Chakra Health Score (CHS) < 50% (Blocked state). CHS = (Shadbala + Bhava Bala + Tattva) / 3. Planet(s): Sun / Jupiter. Condition: Alignment Score < 40% (Solar)",
+      "astrological_mapping": {
+        "planet": [
+          "Sun",
+          "Mars"
+        ]
+      },
+      "trigger_tags": [
+        "solar_plexus_blocked",
+        "sun_weak",
+        "low_shadbala_sun"
+      ]
+    },
+    "interpretation": {
+      "summary": "Solar Plexus (Manipura) — Citrine",
+      "detailed": "Chakra: Solar Plexus (Manipura)\nPrimary Crystal: Citrine\nBija Mantra: RAM\nAssociated Planet: Sun / Jupiter\nTattva Element: Fire\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Solar)\n\nHealing Process:\nCharge in Noon Sun for 1 hour; place above navel.",
+      "full_text_passages": [
+        {
+          "text": "Chakra: Solar Plexus (Manipura)\nPrimary Crystal: Citrine\nBija Mantra: RAM\nAssociated Planet: Sun / Jupiter\nTattva Element: Fire\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Solar)\n\nHealing Process:\nCharge in Noon Sun for 1 hour; place above navel.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "remedy": {
+      "id": 303,
+      "chakra": "Solar Plexus (Manipura)",
+      "primary_crystal": "Citrine",
+      "bija_mantra": "RAM",
+      "planet": "Sun / Jupiter",
+      "tattva": "Fire",
+      "trigger_condition": "Alignment Score < 40% (Solar)",
+      "process": "Charge in Noon Sun for 1 hour; place above navel.",
+      "chs_threshold": 50,
+      "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "remedy_category": [
+        "chakra",
+        "crystal",
+        "healing"
+      ],
+      "source_quality": "PRIMARY",
+      "data_quality": "source",
+      "tags": [
+        "remedy",
+        "chakra",
+        "crystal",
+        "solar",
+        "sun / jupiter"
+      ],
+      "trigger_category": "chakra_imbalance"
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-09T08:45:46.621920+00:00",
+    "updated_at": "2026-05-09T08:45:46.621920+00:00"
+  },
+  {
+    "rule_id": "chakra-304",
+    "science_id": "jyotish_remedies_chakra",
+    "source": {
+      "book": "7 Chakra Healing Remedy Library",
+      "book_id": "remedies_chakra_v1",
+      "chapter": null,
+      "chapter_name": "7 Chakra Healing Remedies",
+      "sloka": null,
+      "batch_id": "remedies-chakra-v1-20260509",
+      "primary": "7 Chakra Healing Remedy Library",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "remedy_trigger",
+      "sub_type": "chakra_imbalance",
+      "yoga_name": "Heart (Anahata)",
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "planets_involved": [
+        "Venus",
+        "Moon"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "chs_evaluation",
+        "checkable": false,
+        "chs_threshold": 50,
+        "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+      },
+      "trigger_condition": "KE fires when Chakra Health Score (CHS) < 50% (Blocked state). CHS = (Shadbala + Bhava Bala + Tattva) / 3. Planet(s): Venus / Moon. Condition: Alignment Score < 40% (Heart)",
+      "astrological_mapping": {
+        "planet": [
+          "Venus",
+          "Moon"
+        ]
+      },
+      "trigger_tags": [
+        "heart_chakra_blocked",
+        "venus_afflicted"
+      ]
+    },
+    "interpretation": {
+      "summary": "Heart (Anahata) — Rose Quartz",
+      "detailed": "Chakra: Heart (Anahata)\nPrimary Crystal: Rose Quartz\nBija Mantra: YAM\nAssociated Planet: Venus / Moon\nTattva Element: Air\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Heart)\n\nHealing Process:\nRinse with Rose Water; place in the center of the chest.",
+      "full_text_passages": [
+        {
+          "text": "Chakra: Heart (Anahata)\nPrimary Crystal: Rose Quartz\nBija Mantra: YAM\nAssociated Planet: Venus / Moon\nTattva Element: Air\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Heart)\n\nHealing Process:\nRinse with Rose Water; place in the center of the chest.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "remedy": {
+      "id": 304,
+      "chakra": "Heart (Anahata)",
+      "primary_crystal": "Rose Quartz",
+      "bija_mantra": "YAM",
+      "planet": "Venus / Moon",
+      "tattva": "Air",
+      "trigger_condition": "Alignment Score < 40% (Heart)",
+      "process": "Rinse with Rose Water; place in the center of the chest.",
+      "chs_threshold": 50,
+      "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "remedy_category": [
+        "chakra",
+        "crystal",
+        "healing"
+      ],
+      "source_quality": "PRIMARY",
+      "data_quality": "source",
+      "tags": [
+        "remedy",
+        "chakra",
+        "crystal",
+        "heart",
+        "venus / moon"
+      ],
+      "trigger_category": "chakra_imbalance"
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-09T08:45:46.621920+00:00",
+    "updated_at": "2026-05-09T08:45:46.621920+00:00"
+  },
+  {
+    "rule_id": "chakra-305",
+    "science_id": "jyotish_remedies_chakra",
+    "source": {
+      "book": "7 Chakra Healing Remedy Library",
+      "book_id": "remedies_chakra_v1",
+      "chapter": null,
+      "chapter_name": "7 Chakra Healing Remedies",
+      "sloka": null,
+      "batch_id": "remedies-chakra-v1-20260509",
+      "primary": "7 Chakra Healing Remedy Library",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "remedy_trigger",
+      "sub_type": "chakra_imbalance",
+      "yoga_name": "Throat (Vishuddha)",
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "planets_involved": [
+        "Mercury"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "chs_evaluation",
+        "checkable": false,
+        "chs_threshold": 50,
+        "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+      },
+      "trigger_condition": "KE fires when Chakra Health Score (CHS) < 50% (Blocked state). CHS = (Shadbala + Bhava Bala + Tattva) / 3. Planet(s): Mercury. Condition: Alignment Score < 40% (Throat)",
+      "astrological_mapping": {
+        "planet": [
+          "Mercury"
+        ]
+      },
+      "trigger_tags": [
+        "throat_chakra_blocked",
+        "mercury_combust",
+        "mercury_weak"
+      ]
+    },
+    "interpretation": {
+      "summary": "Throat (Vishuddha) — Blue Lace Agate",
+      "detailed": "Chakra: Throat (Vishuddha)\nPrimary Crystal: Blue Lace Agate\nBija Mantra: HAM\nAssociated Planet: Mercury\nTattva Element: Ether\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Throat)\n\nHealing Process:\nSmudge with Sandalwood; wear as a choker or place at throat base.",
+      "full_text_passages": [
+        {
+          "text": "Chakra: Throat (Vishuddha)\nPrimary Crystal: Blue Lace Agate\nBija Mantra: HAM\nAssociated Planet: Mercury\nTattva Element: Ether\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Throat)\n\nHealing Process:\nSmudge with Sandalwood; wear as a choker or place at throat base.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "remedy": {
+      "id": 305,
+      "chakra": "Throat (Vishuddha)",
+      "primary_crystal": "Blue Lace Agate",
+      "bija_mantra": "HAM",
+      "planet": "Mercury",
+      "tattva": "Ether",
+      "trigger_condition": "Alignment Score < 40% (Throat)",
+      "process": "Smudge with Sandalwood; wear as a choker or place at throat base.",
+      "chs_threshold": 50,
+      "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "remedy_category": [
+        "chakra",
+        "crystal",
+        "healing"
+      ],
+      "source_quality": "PRIMARY",
+      "data_quality": "source",
+      "tags": [
+        "remedy",
+        "chakra",
+        "crystal",
+        "throat",
+        "mercury"
+      ],
+      "trigger_category": "chakra_imbalance"
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-09T08:45:46.621920+00:00",
+    "updated_at": "2026-05-09T08:45:46.621920+00:00"
+  },
+  {
+    "rule_id": "chakra-306",
+    "science_id": "jyotish_remedies_chakra",
+    "source": {
+      "book": "7 Chakra Healing Remedy Library",
+      "book_id": "remedies_chakra_v1",
+      "chapter": null,
+      "chapter_name": "7 Chakra Healing Remedies",
+      "sloka": null,
+      "batch_id": "remedies-chakra-v1-20260509",
+      "primary": "7 Chakra Healing Remedy Library",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "remedy_trigger",
+      "sub_type": "chakra_imbalance",
+      "yoga_name": "Third Eye (Ajna)",
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "planets_involved": [
+        "Jupiter",
+        "Ketu"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "chs_evaluation",
+        "checkable": false,
+        "chs_threshold": 50,
+        "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+      },
+      "trigger_condition": "KE fires when Chakra Health Score (CHS) < 50% (Blocked state). CHS = (Shadbala + Bhava Bala + Tattva) / 3. Planet(s): Jupiter / Sun. Condition: Alignment Score < 40% (Third Eye)",
+      "astrological_mapping": {
+        "planet": [
+          "Jupiter",
+          "Ketu"
+        ]
+      },
+      "trigger_tags": [
+        "third_eye_blocked",
+        "jupiter_weak",
+        "ketu_afflicted"
+      ]
+    },
+    "interpretation": {
+      "summary": "Third Eye (Ajna) — Lapis Lazuli",
+      "detailed": "Chakra: Third Eye (Ajna)\nPrimary Crystal: Lapis Lazuli\nBija Mantra: OM\nAssociated Planet: Jupiter / Sun\nTattva Element: Ether\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Third Eye)\n\nHealing Process:\nRest on a Selenite plate; place between eyebrows during meditation.",
+      "full_text_passages": [
+        {
+          "text": "Chakra: Third Eye (Ajna)\nPrimary Crystal: Lapis Lazuli\nBija Mantra: OM\nAssociated Planet: Jupiter / Sun\nTattva Element: Ether\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Third Eye)\n\nHealing Process:\nRest on a Selenite plate; place between eyebrows during meditation.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "remedy": {
+      "id": 306,
+      "chakra": "Third Eye (Ajna)",
+      "primary_crystal": "Lapis Lazuli",
+      "bija_mantra": "OM",
+      "planet": "Jupiter / Sun",
+      "tattva": "Ether",
+      "trigger_condition": "Alignment Score < 40% (Third Eye)",
+      "process": "Rest on a Selenite plate; place between eyebrows during meditation.",
+      "chs_threshold": 50,
+      "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "remedy_category": [
+        "chakra",
+        "crystal",
+        "healing"
+      ],
+      "source_quality": "PRIMARY",
+      "data_quality": "source",
+      "tags": [
+        "remedy",
+        "chakra",
+        "crystal",
+        "third",
+        "jupiter / sun"
+      ],
+      "trigger_category": "chakra_imbalance"
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-09T08:45:46.621920+00:00",
+    "updated_at": "2026-05-09T08:45:46.621920+00:00"
+  },
+  {
+    "rule_id": "chakra-307",
+    "science_id": "jyotish_remedies_chakra",
+    "source": {
+      "book": "7 Chakra Healing Remedy Library",
+      "book_id": "remedies_chakra_v1",
+      "chapter": null,
+      "chapter_name": "7 Chakra Healing Remedies",
+      "sloka": null,
+      "batch_id": "remedies-chakra-v1-20260509",
+      "primary": "7 Chakra Healing Remedy Library",
+      "page_ref": null,
+      "passage_ref_id": null
+    },
+    "condition": {
+      "type": "remedy_trigger",
+      "sub_type": "chakra_imbalance",
+      "yoga_name": "Crown (Sahasrara)",
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "planets_involved": [
+        "Ketu",
+        "Jupiter"
+      ],
+      "houses_involved": [],
+      "yoga_check": {
+        "type": "chs_evaluation",
+        "checkable": false,
+        "chs_threshold": 50,
+        "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+      },
+      "trigger_condition": "KE fires when Chakra Health Score (CHS) < 50% (Blocked state). CHS = (Shadbala + Bhava Bala + Tattva) / 3. Planet(s): Ketu. Condition: Alignment Score < 40% (Crown)",
+      "astrological_mapping": {
+        "planet": [
+          "Ketu",
+          "Jupiter"
+        ]
+      },
+      "trigger_tags": [
+        "crown_chakra_blocked",
+        "ketu_1st_12th",
+        "jupiter_debilitated"
+      ]
+    },
+    "interpretation": {
+      "summary": "Crown (Sahasrara) — Amethyst",
+      "detailed": "Chakra: Crown (Sahasrara)\nPrimary Crystal: Amethyst\nBija Mantra: Silence / AH\nAssociated Planet: Ketu\nTattva Element: Ether\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Crown)\n\nHealing Process:\nCharge on an Amethyst Geode; place at the top of the head.",
+      "full_text_passages": [
+        {
+          "text": "Chakra: Crown (Sahasrara)\nPrimary Crystal: Amethyst\nBija Mantra: Silence / AH\nAssociated Planet: Ketu\nTattva Element: Ether\n\nCHS Trigger: CHS < 50% → Blocked\nTrigger Condition: Alignment Score < 40% (Crown)\n\nHealing Process:\nCharge on an Amethyst Geode; place at the top of the head.",
+          "confidence": "HIGH"
+        }
+      ],
+      "remedy": [],
+      "timing_indicator": false,
+      "strength_modifier": null
+    },
+    "remedy": {
+      "id": 307,
+      "chakra": "Crown (Sahasrara)",
+      "primary_crystal": "Amethyst",
+      "bija_mantra": "Silence / AH",
+      "planet": "Ketu",
+      "tattva": "Ether",
+      "trigger_condition": "Alignment Score < 40% (Crown)",
+      "process": "Charge on an Amethyst Geode; place at the top of the head.",
+      "chs_threshold": 50,
+      "chs_formula": "( Shadbala + Bhava_Bala + Tattva ) / 3"
+    },
+    "metadata": {
+      "phase": 2,
+      "checkable": false,
+      "yoga_group": "chakra_imbalance",
+      "yoga_group_label": "Chakra Imbalance",
+      "remedy_category": [
+        "chakra",
+        "crystal",
+        "healing"
+      ],
+      "source_quality": "PRIMARY",
+      "data_quality": "source",
+      "tags": [
+        "remedy",
+        "chakra",
+        "crystal",
+        "crown",
+        "ketu"
+      ],
+      "trigger_category": "chakra_imbalance"
+    },
+    "confidence": "HIGH",
+    "approval_status": "pending_review",
+    "validation": {
+      "verdict": "pending",
+      "flag_reason": null,
+      "validated_by": null,
+      "validated_at": null
+    },
+    "created_at": "2026-05-09T08:45:46.621920+00:00",
+    "updated_at": "2026-05-09T08:45:46.621920+00:00"
+  }
+]

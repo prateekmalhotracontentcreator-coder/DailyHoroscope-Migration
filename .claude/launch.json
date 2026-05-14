@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "frontend",
+      "runtimeExecutable": "/usr/local/bin/npx",
+      "runtimeArgs": ["--prefix", "/Users/apple/DailyHoroscope-Migration/frontend", "craco", "start"],
+      "port": 3000
+    },
+    {
+      "name": "backend",
+      "runtimeExecutable": "uvicorn",
+      "runtimeArgs": ["main:app", "--reload", "--port", "8000"],
+      "port": 8000
+    }
+  ]
+}

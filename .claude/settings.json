@@ -1,0 +1,39 @@
+{
+  "autoCompactWindow": 202500,
+
+  "compactCustomInstructions": "MAXIMUM 50 LINES. Hard limit. Four sections only:\n\n### Covered This Cycle\n[3–5 bullets. One line each. What was worked on.]\n\n### Next Steps\n[2–3 bullets. Most critical actions for the next session. One line each.]\n\n### Key Notes\n[1–2 bullets. Critical context, blockers, or warnings only. Omit section if none.]\n\n### Docs Updated\n[File paths only. One per line.]\n\nNothing else. No DB output. No rule text. No code. No tables. No explanations. 50 lines hard limit.",
+
+  "hooks": {
+    "PostCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 /Users/apple/DailyHoroscope-Migration/.claude/compact_hook.py 2>/dev/null || true",
+            "timeout": 15,
+            "statusMessage": "Logging compaction..."
+          }
+        ]
+      }
+    ]
+  },
+
+  "permissions": {
+    "allow": [
+      "Read(.claude/SESSION_START.md)",
+      "Read(.claude/BOOK_STATUS.md)",
+      "Read(.claude/COMPACTION_LOG.md)",
+      "Read(.claude/ingest/*.md)",
+      "Read(.claude/nlm/*.md)",
+      "Read(.claude/_archive/*.md)",
+      "Read(backend/scripts/SCRIPTS_INDEX.md)",
+      "Edit(.claude/SESSION_START.md)",
+      "Edit(.claude/BOOK_STATUS.md)",
+      "Edit(.claude/ingest/*.md)",
+      "Edit(.claude/nlm/*.md)",
+      "Edit(.claude/COMPACTION_LOG.md)",
+      "Bash(python3 backend/scripts/*.py *)",
+      "Bash(python3 .claude/compact_hook.py)"
+    ]
+  }
+}
