@@ -20,6 +20,8 @@ import axios from 'axios';
 import { toast } from 'sonner';
 import { AdminBlogManager } from './AdminBlogManager';
 import { LibraryConsolePage } from './LibraryConsolePage';
+import { RemediesAdminPanel } from './RemediesAdminPanel';
+import { PunyaRewardsAdminPanel } from './PunyaRewardsAdminPanel';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -509,7 +511,9 @@ export const AdminDashboard = () => {
     { id: 'contacts',       label: 'Messages',       icon: MessageSquare },
     { id: 'blog',           label: 'Blog',           icon: BookOpen },
     { id: 'library',        label: 'Library',        icon: BookOpen },
+    { id: 'remedies',       label: 'Remedies',       icon: ShieldCheck },
     { id: 'notifications',  label: 'Notifications',  icon: Bell },
+    { id: 'rewards',        label: 'Rewards',        icon: Star },
   ];
 
   return (
@@ -983,6 +987,8 @@ export const AdminDashboard = () => {
 
         {/* LIBRARY */}
         {activeTab === 'library' && <LibraryConsolePage getAuthHeaders={getAuthHeaders} />}
+        {activeTab === 'remedies' && <RemediesAdminPanel getAuthHeaders={getAuthHeaders} />}
+        {activeTab === 'rewards' && <PunyaRewardsAdminPanel getAuthHeaders={getAuthHeaders} />}
 
         {/* NOTIFICATIONS */}
         {activeTab === 'notifications' && (

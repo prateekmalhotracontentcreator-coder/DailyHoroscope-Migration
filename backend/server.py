@@ -100,6 +100,8 @@ from knowledge_schema import KnowledgeNarrativeRequest, KnowledgeNarrativeRespon
 from lk_remedies_router import router as lk_router
 from strategist_router import router as strategist_router
 from scriptural_oracle_router import router as kp_router
+from live_tv_router import router as live_tv_router
+from punya_rewards_router import router as punya_rewards_router
 try:
     from longevity_router import router as longevity_router
     _longevity_router_ok = True
@@ -1030,7 +1032,7 @@ async def get_my_reports(user_email: str, request: Request):
         if profile_ids:
             for r in await db.birth_chart_reports.find({"profile_id": {"$in": profile_ids}}, {"_id": 0}).sort("generated_at", -1).to_list(50):
                 pf = profile_map.get(r.get("profile_id"), {})
-                reports.append({"id": r["id"], "type": "birth_chart", "type_label": "Birth Chart", "name": pf.get("name", "Unknown"), "subtitle": pf.get('date_of_birth', '') + " \u00b7 " + pf.get('location', ''), "profile_id": r.get("profile_id"), "generated_at": r.get("generated_at"), "lagna": r.get("lagna", {}), "nakshatra": r.get("nakshatra", {})})
+                reports.append({"id": r["id"], "type": "birth_chart", "type_label": "Birth Chart", "name": pf.get("name", "Unknown"), "subtitle": pf.get('date_of_birth', '') + " \u00b7 " + pf.get('location', ''), "profile_id": r.get("profile_id"), "generated_at": r.get("generated_at"), "lagna": r.get("lagna", {}), "nakshatra": r.get("nakshatra", {}), "current_dasha": r.get("current_dasha", {})})
         if profile_ids:
             for r in await db.kundali_milan_reports.find({"$or": [{"person1_id": {"$in": profile_ids}}, {"person2_id": {"$in": profile_ids}}]}, {"_id": 0}).sort("generated_at", -1).to_list(50):
                 p1 = profile_map.get(r.get("person1_id"), {})
@@ -2084,6 +2086,8 @@ app.include_router(lk_router)
 app.include_router(strategist_router)
 app.include_router(kp_router)
 app.include_router(remedies_router)
+app.include_router(live_tv_router)
+app.include_router(punya_rewards_router)
 if _longevity_router_ok and longevity_router is not None:
     app.include_router(longevity_router)
 

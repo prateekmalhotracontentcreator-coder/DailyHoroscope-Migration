@@ -2,20 +2,42 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card } from '../components/ui/card';
+import { useAuth } from '../context/AuthContext';
 import { HoroscopeCard } from '../components/HoroscopeCard';
 import { ZodiacCard } from '../components/ZodiacCard';
 import { DOBBanner, DOBModal } from '../components/DOBPrompt';
 import { SEO } from '../components/SEO';
 import { HoroscopeShareCard, ShareButtons } from '../components/ShareCard';
-import { ArrowLeft, Star } from 'lucide-react';
+import { ArrowLeft, Crown, Loader2, Star } from 'lucide-react';
 import { useHoroscope, ZODIAC_MAP } from '../hooks/useHoroscope';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
+const SIGN_RULER_MAP = {
+  aries: 'Mars',
+  taurus: 'Venus',
+  gemini: 'Mercury',
+  cancer: 'Moon',
+  leo: 'Sun',
+  virgo: 'Mercury',
+  libra: 'Venus',
+  scorpio: 'Mars',
+  sagittarius: 'Jupiter',
+  capricorn: 'Saturn',
+  aquarius: 'Saturn',
+  pisces: 'Jupiter',
+};
+
+const formatTag = (value = '') =>
+  value
+    .replace(/_/g, ' ')
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+
 export const DailyHoroscope = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { primarySign, favourites, favouritesMeta, dobDone, saveDOB, toggleFavourite, dismissDOBPrompt, isFavourite } = useHoroscope();
   const shareCardRef = useRef(null);
 
@@ -26,6 +48,8 @@ export const DailyHoroscope = () => {
   const [loading, setLoading] = useState(false);
   const [signsLoading, setSignsLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
+  const [remedyCard, setRemedyCard] = useState(null);
+  const [remedyLoading, setRemedyLoading] = useState(false);
 
   useEffect(() => { fetchSigns(); }, []);
 
@@ -51,6 +75,14 @@ export const DailyHoroscope = () => {
     }
   }, [selectedSign, signs]);
 
+  useEffect(() => {
+    if (selectedSignData && user) {
+      fetchDailyRemedy(selectedSignData.id);
+    } else {
+      setRemedyCard(null);
+    }
+  }, [selectedSignData, user]);
+
   const fetchSigns = async () => {
     try { const r = await axios.get(`${API}/signs`); setSigns(r.data); }
     catch (e) { console.error(e); }
@@ -62,6 +94,49 @@ export const DailyHoroscope = () => {
     try { const r = await axios.get(`${API}/horoscope/${sign}/daily`); setHoroscope(r.data); }
     catch (e) { console.error(e); }
     finally { setLoading(false); }
+  };
+
+  const getCurrentDashaPlanet = async () => {
+    if (!user?.email) return null;
+    try {
+      const response = await axios.get(`${API}/my-reports`, {
+        params: { user_email: user.email },
+        withCredentials: true,
+      });
+      const birthChartReport = (response.data.reports || []).find((report) => report.type === 'birth_chart');
+      return birthChartReport?.current_dasha?.planet || null;
+    } catch (error) {
+      console.error('Could not load birth-chart dasha context:', error);
+      return null;
+    }
+  };
+
+  const fetchDailyRemedy = async (signId) => {
+    const rulingPlanet = SIGN_RULER_MAP[signId];
+    if (!rulingPlanet || !user) {
+      setRemedyCard(null);
+      return;
+    }
+
+    setRemedyLoading(true);
+    try {
+      const dashaPlanet = await getCurrentDashaPlanet();
+      const response = await axios.post(`${API}/remedies/suggest`, {
+        trigger: 'daily_horoscope',
+        planet: rulingPlanet,
+        dasha_planet: dashaPlanet || null,
+        life_domain: 'general',
+        intensity: 'mild',
+        remedy_type_filter: 'both',
+      });
+      const firstRemedy = response.data?.remedies?.[0] || null;
+      setRemedyCard(firstRemedy ? { ...firstRemedy, advisory_mode: response.data?.advisory_mode || 'supportive' } : null);
+    } catch (error) {
+      console.error('Could not load daily remedy:', error);
+      setRemedyCard(null);
+    } finally {
+      setRemedyLoading(false);
+    }
   };
 
   const handleSignSelect = (sign) => {
@@ -78,6 +153,73 @@ export const DailyHoroscope = () => {
   };
 
   const handleDismiss = () => { dismissDOBPrompt(); setShowModal(false); };
+
+  const renderRemedyCard = () => {
+    if (!user) return null;
+    if (remedyLoading) {
+      return (
+        <Card className="border border-gold/20 p-5">
+          <div className="flex items-center gap-3 text-sm text-muted-foreground">
+            <Loader2 className="h-4 w-4 animate-spin text-gold" />
+            Preparing today&apos;s Vedic remedy...
+          </div>
+        </Card>
+      );
+    }
+    if (!remedyCard) return null;
+
+    const cardBody = (
+      <div className="space-y-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="inline-flex rounded-full border border-gold/30 bg-gold/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-widest text-gold">
+            {formatTag(remedyCard.tradition)}
+          </span>
+          <span className="inline-flex rounded-full border border-border px-2 py-1 text-[11px] uppercase tracking-widest text-muted-foreground">
+            {formatTag(remedyCard.action_type)}
+          </span>
+        </div>
+        <div>
+          <p className="font-semibold text-lg text-foreground">{remedyCard.title}</p>
+          <p className="text-sm leading-relaxed text-muted-foreground mt-2">{remedyCard.description}</p>
+        </div>
+      </div>
+    );
+
+    return (
+      <Card className="border border-gold/20 p-5 overflow-hidden">
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-gold mb-2">Today&apos;s Vedic Remedy</p>
+            <p className="text-sm text-muted-foreground">
+              Drawn from your sign ruler{remedyCard.advisory_mode ? ` • ${formatTag(remedyCard.advisory_mode)} mode` : ''}.
+            </p>
+          </div>
+          {!user.is_premium && (
+            <Button onClick={() => navigate('/pricing')} size="sm" className="bg-gold hover:bg-gold/90 text-primary-foreground">
+              <Crown className="h-4 w-4 mr-1.5" />
+              Upgrade
+            </Button>
+          )}
+        </div>
+
+        {user.is_premium ? (
+          cardBody
+        ) : (
+          <div className="relative">
+            <div className="pointer-events-none select-none blur-sm opacity-70">
+              {cardBody}
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="rounded-xl border border-gold/30 bg-background/95 px-5 py-4 text-center shadow-sm">
+                <p className="text-sm font-semibold text-foreground">Premium members unlock the full remedy card.</p>
+                <p className="text-xs text-muted-foreground mt-1">Upgrade to view today&apos;s complete Vedic support.</p>
+              </div>
+            </div>
+          </div>
+        )}
+      </Card>
+    );
+  };
 
   const schema = {
     '@context': 'https://schema.org',
@@ -199,6 +341,7 @@ ${horoscope?.content?.overview?.slice(0, 200)}...
                   />
                 </Card>
               )}
+              {renderRemedyCard()}
               <HoroscopeShareCard
                 cardRef={shareCardRef}
                 signName={selectedSignData?.name}

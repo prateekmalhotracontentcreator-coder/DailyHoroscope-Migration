@@ -904,7 +904,7 @@ export const PalmistryPage = () => {
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-foreground">Palmistry & Your Vedic Birth Chart</h2>
-            <p className="leading-7">EverydayHoroscope's AI palmistry overlays your hand analysis with your live Vedic planetary positions. This means the reading you receive is not generic — your current dasha lord, transit influences, and natal planetary strengths are all factored into the planetary remedies and insights provided. The combination of palm reading and Jyotish produces a more nuanced and personally calibrated reading than either system alone.</p>
+            <p className="leading-7">EverydayHoroscope's AI palmistry combines your hand analysis with your Vedic birth data. This means the reading you receive is personalised to you — your birth details are used to contextualise the lines, mounts, and patterns of your palm within the Jyotish framework. The combination of Hasta Shastra and Vedic astrology produces a more nuanced and personally calibrated reading than either system alone.</p>
           </div>
         </div>
 

@@ -8,6 +8,8 @@ from uuid import uuid4
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, Field
 
+from admin_utils import require_admin
+
 router = APIRouter(prefix="/api/remedies", tags=["remedies"])
 
 
@@ -33,6 +35,13 @@ class RemedySuggestRequest(BaseModel):
     gender: Literal["male", "female", "neutral"] | None = None
     intensity: Literal["mild", "moderate", "severe"] = "moderate"
     remedy_type_filter: Literal["ritual", "behavioral", "both"] = "both"
+
+
+class RemedyStatusUpdateRequest(BaseModel):
+    collection: Literal["interpretation_rules", "knowledge_rules", "krishna_prashnavali_remedies"]
+    science_id: str
+    record_id: str
+    approval_status: Literal["approved", "pending_human_review", "flagged"]
 
 REMEDY_TYPES: dict[str, str] = {
     "dana":      "jyotish_remedies_dhana",
@@ -232,6 +241,8 @@ def _build_context_summary(body: RemedySuggestRequest) -> str:
     parts = [body.trigger.replace("_", " ").title()]
     if body.planet:
         parts.append(body.planet)
+    if body.dasha_planet:
+        parts.append(f"Dasha {body.dasha_planet}")
     if body.house:
         parts.append(f"House {body.house}")
     if body.affliction:
@@ -393,6 +404,10 @@ def _document_score(doc: dict, body: RemedySuggestRequest) -> float:
 
     if body.affliction and body.affliction.lower() in blob:
         score += 1.0
+    if body.dasha_planet and body.dasha_planet.lower() in blob:
+        score += 1.0
+    if body.antardasha_planet and body.antardasha_planet.lower() in blob:
+        score += 0.75
     if body.life_domain and body.life_domain.lower() in blob:
         score += 1.0
     if body.nakshatra and body.nakshatra.lower() in blob:
@@ -583,6 +598,86 @@ async def _resolve_remedy_doc(db, remedy_id: str, collection: str = "", science_
     return "", None
 
 
+def _status_sort_value(status: str) -> tuple[int, str]:
+    order = {
+        "flagged": 0,
+        "pending_human_review": 1,
+        "pending_review": 2,
+        "approved": 3,
+    }
+    return (order.get(status, 9), status)
+
+
+def _admin_record_from_doc(collection_name: str, doc: dict) -> dict[str, Any]:
+    science_id = str(doc.get("science_id", ""))
+    approval_status = str(doc.get("approval_status", "unknown"))
+    if collection_name == "interpretation_rules":
+        normalized = _normalize_interpretation_rule(doc)
+        record_id = str(doc.get("rule_id", ""))
+    elif collection_name == "knowledge_rules":
+        normalized = _normalize_lk_rule(doc)
+        record_id = f"lk-{doc.get('id')}"
+    else:
+        record_id = str(doc.get("remedy_id", ""))
+        normalized = {
+            "tradition": "krishna_bhakti",
+            "category": "behavioral" if _flatten_text(doc.get("behavioral_display_hint")) else "mantra",
+            "action_type": "behavioral" if _flatten_text(doc.get("behavioral_display_hint")) else "one_time",
+            "title": _flatten_text(doc.get("title")),
+            "description": _flatten_text(doc.get("behavioral_display_hint")) or _flatten_text(doc.get("ritual_remedy")),
+        }
+
+    updated_at = doc.get("updated_at") or doc.get("created_at") or ""
+    return {
+        "source_collection": collection_name,
+        "science_id": science_id,
+        "record_id": record_id,
+        "tradition": normalized.get("tradition", "unknown"),
+        "category": normalized.get("category", "ritual"),
+        "action_type": normalized.get("action_type", "ongoing"),
+        "approval_status": approval_status,
+        "title": normalized.get("title", ""),
+        "description": normalized.get("description", ""),
+        "updated_at": updated_at,
+        "search_blob": (
+            f"{record_id} {science_id} {normalized.get('title', '')} "
+            f"{normalized.get('description', '')} {_flatten_text(doc.get('title'))}"
+        ).lower(),
+        "document": doc,
+    }
+
+
+async def _load_admin_remedy_records(db) -> list[dict[str, Any]]:
+    records: list[dict[str, Any]] = []
+
+    interpretation_docs = await db.interpretation_rules.find(
+        {"science_id": {"$in": list(INTERPRETATION_SCIENCE_META.keys())}},
+        {"_id": 0},
+    ).to_list(None)
+    records.extend(_admin_record_from_doc("interpretation_rules", doc) for doc in interpretation_docs)
+
+    lk_docs = await db.knowledge_rules.find(
+        {"science_id": "jyotish_lk_remedies"},
+        {"_id": 0},
+    ).to_list(None)
+    records.extend(_admin_record_from_doc("knowledge_rules", doc) for doc in lk_docs)
+
+    kp_docs = await db.krishna_prashnavali_remedies.find(
+        {"science_id": "krishna_prashnavali_remedies"},
+        {"_id": 0},
+    ).to_list(None)
+    records.extend(_admin_record_from_doc("krishna_prashnavali_remedies", doc) for doc in kp_docs)
+
+    records.sort(
+        key=lambda item: (
+            _status_sort_value(item.get("approval_status", "unknown")),
+            str(item.get("updated_at") or ""),
+            item.get("record_id", ""),
+        )
+    )
+    return records
+
+
 # ── Tiles ──────────────────────────────────────────────────────────────────────
 
 @router.get("/{remedy_type}/tiles")
@@ -747,6 +842,54 @@ async def get_remedy_traditions(request: Request) -> dict[str, Any]:
     return {
         "generated_at": _utcnow_iso(),
         "traditions": traditions,
+    }
+
+
+@router.get("/admin/records")
+async def get_admin_remedy_records(request: Request) -> dict[str, Any]:
+    db = _get_db(request)
+    await require_admin(request, db)
+    records = await _load_admin_remedy_records(db)
+    return {
+        "generated_at": _utcnow_iso(),
+        "total": len(records),
+        "records": records,
+    }
+
+
+@router.post("/admin/status")
+async def update_admin_remedy_status(
+    body: RemedyStatusUpdateRequest,
+    request: Request,
+) -> dict[str, Any]:
+    db = _get_db(request)
+    await require_admin(request, db)
+
+    if body.collection == "interpretation_rules":
+        query = {"rule_id": body.record_id, "science_id": body.science_id}
+        collection = db.interpretation_rules
+    elif body.collection == "knowledge_rules":
+        numeric_part = body.record_id.removeprefix("lk-")
+        query = {
+            "science_id": body.science_id,
+            "id": int(numeric_part) if numeric_part.isdigit() else body.record_id,
+        }
+        collection = db.knowledge_rules
+    else:
+        query = {"remedy_id": body.record_id, "science_id": body.science_id}
+        collection = db.krishna_prashnavali_remedies
+
+    update_result = await collection.update_one(
+        query,
+        {"$set": {"approval_status": body.approval_status, "updated_at": _utcnow_iso()}},
+    )
+    if update_result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Remedy record not found")
+
+    updated = await collection.find_one(query, {"_id": 0})
+    return {
+        "ok": True,
+        "record": _admin_record_from_doc(body.collection, updated),
     }
 
 
