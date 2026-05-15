@@ -1,6 +1,6 @@
 import { SEO } from '../../components/SEO';
 import { PremiumGateCard } from '../../components/PremiumRoute';
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
@@ -212,6 +212,14 @@ function KrishnaOracleApp() {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [reading, setReading] = useState(null);
   const [loadingPastReading, setLoadingPastReading] = useState(false);
+  const guidanceRef = useRef(null);
+
+  // Scroll to Guidance Report whenever a reading is loaded (new or past)
+  useEffect(() => {
+    if (reading && guidanceRef.current) {
+      guidanceRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [reading]);
   const [questionError, setQuestionError] = useState("");
 
   // Birth details for dasha computation
@@ -301,7 +309,6 @@ function KrishnaOracleApp() {
     try {
       const response = await axios.get(`${API}/reports/${reportId}`, { withCredentials: true });
       setReading(response.data || null);
-      window.scrollTo({ top: 0, behavior: "smooth" });
     } catch {
       setError("Could not load that reading. Please try again.");
     } finally {
@@ -586,6 +593,7 @@ function KrishnaOracleApp() {
         </SectionCard>
 
         {reading ? (
+          <div ref={guidanceRef}>
           <SectionCard title="Guidance Report" eyebrow={`Answer slot ${reading.answer_slot}`}>
             <div className="grid gap-4 xl:grid-cols-[1.2fr,0.8fr]">
               <div className="space-y-4">
@@ -640,6 +648,7 @@ function KrishnaOracleApp() {
               </div>
             </div>
           </SectionCard>
+          </div>
         ) : null}
 
         <SectionCard title="Recent Krishna Readings" eyebrow="History">
