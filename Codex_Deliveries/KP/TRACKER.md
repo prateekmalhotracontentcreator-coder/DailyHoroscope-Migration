@@ -9,9 +9,9 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- live, commissions pending |
-| **Frontend** | `frontend/src/pages/KrishnaOraclePage.jsx` |
-| **Backend** | `backend/krishna_prashnavali_router.py` |
+| **Status** | 🟡 ACTIVE -- KP-2A + KP-Sprint2 ready to issue · all CC blockers cleared |
+| **Frontend** | `frontend/src/pages/kp/KrishnaOraclePage.jsx` |
+| **Backend** | `backend/scriptural_oracle_router.py` · `backend/remedies_router.py` |
 | **Live URL** | `/krishna-prashnavali` |
 | **DB Collections** | `krishna_prashnavali_answers` · `krishna_prashnavali_remedies` · `krishna_prashnavali_history` |
 | **Bundle version** | v2 -- `behavioral_remedy` and `remedy_ref` fields populated |
@@ -36,8 +36,8 @@
 | ~~KP-OP-8~~ | ~~**Saved Previous Readings not loading**~~ | CC | ✅ DONE | Root cause: `loadPastReading` called `window.scrollTo({top:0})` before React re-rendered the Guidance Report into the DOM -- user was scrolled to page top while the report appeared silently below the grid. Fix: removed broken scrollTo, added `guidanceRef` + `useEffect` scroll-into-view that fires after render. Commit `80238a5` 2026-05-15. |
 | ~~KP-OP-2~~ | ~~**`/api/remedies/ref/{remedy_ref_id}` endpoint missing**~~ | CC | ✅ CONFIRMED PRESENT | Endpoint exists at `remedies_router.py` line 827. Prefix `/api/remedies`, registered in `server.py`. `{"_id": 0}` projection already in place. Was a false alarm -- confirmed live 2026-05-15. |
 | ~~KP-OP-3~~ | ~~Run `ingest_krishna_prashnavali_remedies_v1.py` on Render~~  | TT | ✅ DONE | Run 2026-05-15. upserted=0, modified=36 -- collection was already seeded; all 36 records refreshed with current bundle. `remedy_ref` pipeline confirmed populated. |
-| KP-OP-4 | **Issue KP-Sprint2** to Codex (Week 1 -- independent, no dependency) | TT | 🟠 HIGH | `/ask-question` is currently a `ComingSoonPage` stub |
-| KP-OP-5 | **Issue KP-2A** to Codex after M-3 smoke test done | TT | 🟠 HIGH | Bundle slot-level editorial + visual share card + Remedies Admin tab |
+| ~~KP-OP-4~~ | ~~**Issue KP-Sprint2** to Codex~~ | TT | ✅ DONE | KP-Sprint2 issued 2026-05-15. |
+| KP-OP-5 | **Issue KP-2A** to Codex -- all CC blockers cleared | TT | 🟠 HIGH | Brief reviewed + updated 2026-05-15. Ready to send. |
 | KP-OP-6 | **Issue KP-2B** after KP-2A delivered (White Light ritual + 3-pillar Guidance Report + Astro-Filter) | TT | 🟡 MED | Depends on KP-2A |
 | KP-OP-7 | `krishna_answer` ≠ slot title audit (KP-G13) -- slot-level editorial verify | TT | 🟡 MED | Flagged in KP-2A brief. Treat as Phase 2 if not addressed in KP-2A. |
 
@@ -58,4 +58,5 @@
 | v1.0 | 2026-05-14 | KP-2A, KP-Sprint2, KP-2B briefs written. Module fully live (v2 bundle). | CC | `KP/` folder |
 | v1.1 | 2026-05-15 | KP-OP-2 identified (`/remedies/ref/` endpoint missing). Tracker created. | CC | This session |
 | v1.2 | 2026-05-15 | M-3 smoke test cleared (KP-OP-1 closed). KP-2A unblocked. Smoke test findings added to KP-2A brief context. | TT | M-3 2026-05-15 |
-| v1.3 | 2026-05-15 | KP-OP-8 added: Saved Previous Readings not loading in KrishnaOraclePage. CC to investigate history endpoint + collection + frontend wiring. | TT | Flagged post-M-3 |
+| v1.3 | 2026-05-15 | KP-OP-8 added: Saved Previous Readings not loading. KP-OP-2 confirmed present (false alarm). KP-OP-3 remedies seeded (36 records). | TT + CC | Flagged post-M-3 |
+| v1.4 | 2026-05-15 | KP-OP-8 fixed (two commits): (1) scroll bug -- `guidanceRef` + `useEffect` replacing broken `window.scrollTo` (`80238a5`); (2) MongoDB `_id` ValidationError on `/reports/{report_id}` -- added `{"_id": 0}` projection (`302f24e`). KP-2A brief reviewed and updated with CC changes. All CC open points closed. KP-2A ready to issue. | CC | `80238a5`, `302f24e` |

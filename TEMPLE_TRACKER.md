@@ -37,9 +37,9 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | # | Module | Tracker | Status | Hottest Open Point | Owner |
 |---|---|---|---|---|---|
 | 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🔵 IN PROGRESS | Sprint 2 RECONCILIATION-FIRST -- helpers already in main repo. 3 CC verify items (OP-9/10/11). INGEST FREEZE active. | CC + TT |
-| 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | M-3 smoke test (TT) + `/remedies/ref/` endpoint (CC) | TT + CC |
+| 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | KP-2A + KP-Sprint2 ready to issue (TT). All CC blockers cleared 2026-05-15. | TT |
 | 3 | Individual Reports | [`Individual_Reports/TRACKER.md`](Codex_Deliveries/Individual_Reports/TRACKER.md) | 🟣 PLANNED | IR-1 ready to issue Week 1 -- no dependency | TT |
-| 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` endpoint -- CC direct fix | CC |
+| 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` confirmed live. `krishna_prashnavali_remedies` seeded (36 records). REM-P1 ready to issue. | TT |
 | 5 | The Strategist | [`Strategist/TRACKER.md`](Codex_Deliveries/Strategist/TRACKER.md) | ✅ LIVE | STR-OP-3: Verify DashaTimingBar live data on `/strategist/missions` (TT) | TT |
 | 6 | Arc Angel | [`Arc_Angel/TRACKER.md`](Codex_Deliveries/Arc_Angel/TRACKER.md) | 🟡 ACTIVE | Confidence % hardcoded 42 -- ARC-2 ready to issue | TT |
 | 7 | Tarot | [`Tarot/TRACKER.md`](Codex_Deliveries/Tarot/TRACKER.md) | 🟡 ACTIVE | TAR-v4 visual uplift -- issue Week 3 | TT |
@@ -62,7 +62,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 |---|---|---|---|
 | M-1 | Replace OG image -- 1200×630 PNG ≤80 KB (`frontend/public/og-image.png`) | 🔴 HIGH | Open |
 | M-2 | Run `seed_policies_v1.py` on Render (`--mongo-url "$MONGO_URL" --db-name horoscope_db`) | 🔴 HIGH | Open |
-| M-3 | KP Oracle end-to-end production smoke test | 🔴 HIGH | Open -- blocks KP-2A |
+| ~~M-3~~ | ~~KP Oracle end-to-end production smoke test~~ | ✅ DONE | Cleared 2026-05-15. KP-2A unblocked. |
 | ~~M-4~~ | ~~Strategist 22 records sign-off~~ | -- | ✅ CLEARED 2026-05-15 |
 | M-5 | WhatsApp OTP + payment method on WABA Meta | 🟡 MED | Open |
 | M-6 | Instagram Business Account ID -- not loading in Meta dashboard | 🟡 MED | Open |
@@ -82,9 +82,9 @@ Week 1 (NOW):
   IR-1         🟠 HIGH -- pure frontend, zero dependency
 
 Week 2:
-  KP-2A        after M-3 smoke test (TT) + /remedies/ref/ endpoint (CC)
+  KP-2A        ✅ ALL BLOCKERS CLEARED -- issue now (brief updated 2026-05-15)
   KE-IQ        ideally after Sprint 2 gate; can run parallel
-  REM-P1       after /remedies/ref/ endpoint (CC direct fix)
+  REM-P1       remedies endpoint confirmed live + collection seeded -- issue now
   ARC-2        after KE Sprint 2 ideally
 
 Week 3:

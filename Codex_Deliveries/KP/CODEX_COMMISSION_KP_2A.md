@@ -3,7 +3,7 @@
 > EverydayHoroscope · Stack: React 18, Tailwind CSS, FastAPI, MongoDB  
 > Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`  
 > Live app: https://www.everydayhoroscope.in/krishna-prashnavali  
-> Date issued: 2026-05-14
+> Date issued: 2026-05-15
 
 ---
 
@@ -16,14 +16,15 @@ The Krishna Prashnavali oracle is fully live. The 18×18 grid, 36-answer bundle,
 - Premium gate: ✅ Confirmed working
 - Share card / download: ❌ Not present -- Task 2 of this commission delivers it
 - Section box alignment: Minor re-alignment needed -- address as part of Task 1 UI polish
-- Saved Previous Readings: not loading in the history section -- under CC investigation (KP-OP-8); do NOT attempt to fix in this commission
+- Saved Previous Readings: ✅ Fixed by CC 2026-05-15 (commits `80238a5` + `302f24e`) -- do NOT touch history logic in this commission
 
 **Existing files (do NOT restructure):**
 - `backend/assets/krishna_oracle/krishna_oracle_content.json` -- the v2 canonical bundle
 - `backend/scriptural_oracle_router.py` -- router prefix `/api/oracle/krishna-prashnavali`
-- `frontend/src/pages/kp/KrishnaOraclePage.jsx` -- main page (704 lines)
+- `frontend/src/pages/kp/KrishnaOraclePage.jsx` -- main page. **CC modified 2026-05-15:** `useRef` is already imported; `guidanceRef` + scroll `useEffect` already added for history tile UX. Do NOT remove these. Add your `shareCardRef` alongside the existing `guidanceRef`.
 - `frontend/src/components/KrishnaOracleGrid.jsx` -- grid component
-- `backend/remedies_router.py` -- remedies router (prefix `/api/remedies`)
+- `backend/remedies_router.py` -- remedies router (prefix `/api/remedies`). `GET /ref/{remedy_ref_id}` already live at line 827. `GET /admin/records` already live at line 866. Only add the new `PATCH /admin/records/{remedy_id}/status` endpoint.
+- `backend/scriptural_oracle_router.py` -- `{"_id": 0}` projection already present on `/history` and `/reports/{report_id}` queries (CC fix 2026-05-15). Do NOT remove.
 
 ---
 
@@ -144,7 +145,7 @@ This follows the exact same pattern as `HoroscopeShareCard` in `frontend/src/com
 ### Wire into KrishnaOraclePage.jsx
 
 In `KrishnaOraclePage.jsx`, the share button currently calls a clipboard copy function. Replace/extend with:
-1. Add `useRef` for `KrishnaShareCard`
+1. Add `shareCardRef` using `useRef` -- **`useRef` is already imported**, just add the new ref declaration alongside the existing `guidanceRef`
 2. On "Share" click: capture card via html2canvas (same pattern as `ShareButtons` in `ShareCard.jsx`)
 3. Show 4 share buttons: WhatsApp, Facebook, Save, Copy Link
 4. "Post to Page" Facebook button: include `fbPageCaption` prop when admin is logged in
@@ -153,6 +154,8 @@ Import pattern (same as existing):
 ```jsx
 import html2canvas from 'html2canvas';
 ```
+
+**Do NOT remove or modify `guidanceRef` or its `useEffect` -- these are a separate CC fix for history tile scroll.**
 
 ---
 
