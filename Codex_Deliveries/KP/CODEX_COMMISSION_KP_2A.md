@@ -11,6 +11,12 @@
 
 The Krishna Prashnavali oracle is fully live. The 18×18 grid, 36-answer bundle, deterministic chaupai algorithm, bilingual content, and all backend routes are production-ready. This commission covers three discrete, non-overlapping tasks that complete the Phase 2A layer.
 
+**Production smoke test completed 2026-05-15 (M-3):**
+- Report generation: ✅ Excellent
+- Premium gate: ✅ Confirmed working
+- Share card / download: ❌ Not present -- Task 2 of this commission delivers it
+- Section box alignment: Minor re-alignment needed -- address as part of Task 1 UI polish
+
 **Existing files (do NOT restructure):**
 - `backend/assets/krishna_oracle/krishna_oracle_content.json` -- the v2 canonical bundle
 - `backend/scriptural_oracle_router.py` -- router prefix `/api/oracle/krishna-prashnavali`

@@ -22,7 +22,7 @@
 
 | ID | Commission | Status | Brief |
 |---|---|---|---|
-| **KP-2A** | Bundle Editorial + Share Card + Remedies Admin Frontend | 🟣 READY TO ISSUE | `CODEX_COMMISSION_KP_2A.md` · Gate: M-3 smoke test before integration |
+| **KP-2A** | Bundle Editorial + Share Card + Remedies Admin Frontend | 🟠 READY TO ISSUE -- M-3 CLEARED | `CODEX_COMMISSION_KP_2A.md` · M-3 passed 2026-05-15. Issue now. |
 | **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | 🟣 READY TO ISSUE | `CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` · Independent of KP-2A |
 | **KP-2B** | Ritual Animation + 3-Pillar UX + Astro-Filter | 🟣 READY TO ISSUE | `CODEX_COMMISSION_KP_2B.md` · Depends on KP-2A delivered |
 
@@ -32,7 +32,7 @@
 
 | # | Item | Owner | Priority | Notes |
 |---|---|---|---|---|
-| KP-OP-1 | **M-3: KP production smoke test** -- verify grid tap, answer render, remedy display, history log end-to-end | TT | 🔴 HIGH | Must complete before KP-2A integration begins |
+| ~~KP-OP-1~~ | ~~**M-3: KP production smoke test**~~ | TT | ✅ DONE | Passed 2026-05-15. Report excellent. Premium gate working. Share card absent (in KP-2A scope). Minor section re-alignment noted (in KP-2A scope). KP-2A unblocked. |
 | KP-OP-2 | **`/api/remedies/ref/{remedy_ref_id}` endpoint missing** from `remedies_router.py` | CC | 🔴 HIGH | Claude Code direct fix. One endpoint lookup into `krishna_prashnavali_remedies`. Blocks KP-2A integration. |
 | KP-OP-3 | Run `ingest_krishna_prashnavali_remedies_v1.py` on Render if not yet seeded | TT | 🟠 HIGH | Required for `remedy_ref` pipeline to be populated |
 | KP-OP-4 | **Issue KP-Sprint2** to Codex (Week 1 -- independent, no dependency) | TT | 🟠 HIGH | `/ask-question` is currently a `ComingSoonPage` stub |
@@ -56,3 +56,4 @@
 |---|---|---|---|---|
 | v1.0 | 2026-05-14 | KP-2A, KP-Sprint2, KP-2B briefs written. Module fully live (v2 bundle). | CC | `KP/` folder |
 | v1.1 | 2026-05-15 | KP-OP-2 identified (`/remedies/ref/` endpoint missing). Tracker created. | CC | This session |
+| v1.2 | 2026-05-15 | M-3 smoke test cleared (KP-OP-1 closed). KP-2A unblocked. Smoke test findings added to KP-2A brief context. | TT | M-3 2026-05-15 |
