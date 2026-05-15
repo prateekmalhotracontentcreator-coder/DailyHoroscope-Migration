@@ -1,7 +1,7 @@
 # The Strategist -- Module Tracker
 > Path: `Codex_Deliveries/Strategist/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.3
+> Last updated: 2026-05-15 · v1.4
 
 ---
 
@@ -23,7 +23,7 @@
 | ID | Commission | Status | Brief |
 |---|---|---|---|
 | **STR-2J** | Strategist Missions UI (MissionCard responsive + dasha display) | ✅ INTEGRATED | `CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · Commit `9ad2e0a` |
-| **STR-1** | Premium Landing Page + War Room Visual Rebuild | 🟣 READY TO ISSUE -- **FULLY UNBLOCKED** | `CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` |
+| **STR-1** | Premium Landing Page + War Room Visual Rebuild | 🔵 DELIVERED -- PENDING INTEGRATION | `CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` · Built in Codex workspace 2026-05-15 |
 
 ---
 
@@ -31,9 +31,10 @@
 
 | # | Item | Owner | Priority | Notes |
 |---|---|---|---|---|
-| STR-OP-1 | **Issue STR-1 to Codex now** | TT | 🔴 HIGH | M-4 cleared. STR-2J integrated. No blockers. Brief at `CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` |
-| STR-OP-2 | Verify DashaTimingBar live data after `9ad2e0a` deploy | TT | 🟠 HIGH | Check `/strategist/missions` -- Mahadasha + Antardasha should show planet names + date ranges + progress bar |
-| STR-OP-3 | STR-1 must NOT touch `StrategistMissionsPage.jsx` or `MissionCard.jsx` -- those are STR-2J-owned and integrated | CX | 🔴 ENFORCE | Coordinate scope boundary if STR-1 Codex thread asks about missions page |
+| STR-OP-1 | ~~Issue STR-1 to Codex~~ | -- | ✅ DONE | Delivered by Codex 2026-05-15. Pending Temple review + integration. |
+| STR-OP-2 | **Review and integrate STR-1 Codex delivery** | CC | 🔴 HIGH | Paste Codex output into Claude Code session. Review, align to Temple theme, wire routes, build-verify, commit to main. |
+| STR-OP-3 | Verify DashaTimingBar live data after `9ad2e0a` deploy | TT | 🟠 HIGH | Check `/strategist/missions` -- Mahadasha + Antardasha should show planet names + date ranges + progress bar |
+| STR-OP-4 | STR-1 must NOT overwrite `StrategistMissionsPage.jsx` or `MissionCard.jsx` -- STR-2J-owned and already integrated | CC | 🔴 ENFORCE | Verify scope during integration review. |
 
 ---
 
@@ -63,3 +64,4 @@
 | v1.1 | 2026-05-14 | STR-1 and STR-2J briefs written. | CC | `CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` · `CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` |
 | v1.2 | 2026-05-15 | STR-2J delivered and integrated. `MissionCard.jsx` + `StrategistMissionsPage.jsx` from Codex. Antardasha backend fix added to `_build_war_room_state`. | Codex + CC | Commit `9ad2e0a` |
 | v1.3 | 2026-05-15 | M-4 confirmed cleared (22 records live, no `approval_status` filter). STR-1 unblocked across all trackers. Tracker created. | CC | Commit `df49e5e` |
+| v1.4 | 2026-05-15 | STR-1 delivered by Codex -- built in Codex workspace. Status: DELIVERED -- PENDING INTEGRATION. Codex MASTER_TRACKER + 06_RESPONSE_SUMMARY updated in cross-thread audit pack. Awaiting Temple review + CC integration. | Codex + TT | Codex workspace |
