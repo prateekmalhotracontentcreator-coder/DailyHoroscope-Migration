@@ -16,6 +16,7 @@ The Krishna Prashnavali oracle is fully live. The 18×18 grid, 36-answer bundle,
 - Premium gate: ✅ Confirmed working
 - Share card / download: ❌ Not present -- Task 2 of this commission delivers it
 - Section box alignment: Minor re-alignment needed -- address as part of Task 1 UI polish
+- Saved Previous Readings: not loading in the history section -- under CC investigation (KP-OP-8); do NOT attempt to fix in this commission
 
 **Existing files (do NOT restructure):**
 - `backend/assets/krishna_oracle/krishna_oracle_content.json` -- the v2 canonical bundle

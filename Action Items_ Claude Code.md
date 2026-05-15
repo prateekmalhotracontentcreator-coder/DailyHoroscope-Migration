@@ -95,6 +95,7 @@ Small direct fixes completed in-session. No Codex thread required.
 
 ### Still to do (Claude Code direct — small, no commission)
 - 🔧 **`/api/remedies/ref/{remedy_ref_id}` endpoint** — missing from `remedies_router.py`. Blocks KP-2A integration. One-file backend fix.
+- 🔧 **KP Saved Previous Readings not loading** (KP-OP-8) — history section in KrishnaOraclePage shows no saved readings. CC to investigate: history endpoint response, `krishna_prashnavali_history` collection state, and frontend wiring. Flagged 2026-05-15.
 
 ---
 
