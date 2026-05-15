@@ -252,7 +252,7 @@ def _candidate_planets(facts: ChartFacts, payload: dict[str, Any]) -> list[str]:
 
 
 def _normalize_ch41_name(name: str | None) -> str:
-    return str(name or "").replace("—", "-").strip()
+    return str(name or "").replace("--", "-").strip()
 
 
 def _aspect_or_conjunction(facts: ChartFacts, planet: str, target_house: int) -> bool:
@@ -280,8 +280,7 @@ def _no_malefic_pressure(facts: ChartFacts, houses: set[int]) -> bool:
 
 
 def _unsupported_note(payload: dict[str, Any], evidence: list[str]) -> None:
-    if "free_from_combustion" in _to_list(payload.get("conditions")):
-        evidence.append("Combustion is not exposed in ChartFacts; skipped")
+    pass  # free_from_combustion now handled via ChartFacts.planet_positions["combust"]
 
 
 def _reference_target_houses(facts: ChartFacts, references: list[str], distance: int) -> list[int]:
@@ -494,14 +493,15 @@ def _planet_in_kendra_conditions_ok(payload: dict[str, Any], facts: ChartFacts, 
     deb_ok = "free_from_debilitation" not in conds or _planet_sign(facts, planet) != DEBILITATION_SIGNS.get(planet)
     exalt_ok = "exalted_sign" not in conds or _planet_sign(facts, planet) == EXALTATION_SIGNS.get(planet)
     support_ok = "aspected_by_benefic" not in conds or bool(planet_house and _benefic_support(facts, planet_house, planet))
-    _unsupported_note(payload, evidence)
+    combust_ok = "free_from_combustion" not in conds or not bool((facts.planet_positions.get(planet) or {}).get("combust"))
     evidence.extend([
         f"Specific sign requirement {'passed' if sign_ok else 'failed'}",
         f"Debilitation guard {'passed' if deb_ok else 'failed'}",
         f"Exaltation requirement {'passed' if exalt_ok else 'failed'}",
         f"Benefic support {'passed' if support_ok else 'failed'}",
+        f"Combustion guard {'passed' if combust_ok else 'failed'}",
     ])
-    return sign_ok and deb_ok and exalt_ok and support_ok
+    return sign_ok and deb_ok and exalt_ok and support_ok and combust_ok
 
 
 def _eval_sign_quality_all(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:

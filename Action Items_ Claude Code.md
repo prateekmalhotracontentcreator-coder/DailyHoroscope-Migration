@@ -20,6 +20,9 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 | M-7 | **react-snap vs helmet-async** — design decision on pre-render strategy. Await SEO-1 thread findings before deciding | SEO-1 thread will recommend | 🟢 LOW |
 | M-8 | **Service worker** — decide if PWA offline caching is in scope. Await SEO-1 thread | SEO-1 thread scope | 🟢 LOW |
 | M-9 | **App.js lazy audit** — confirm: keep Landing + DailyHoroscope + Login eager, lazy-load the rest? | Minor perf gain; not blocking | 🟢 LOW |
+| M-10 | **MODULE_ARC_ANGEL doc audit** — only 3 files present post-cleanup. Verify whether additional docs (specs, QA notes, handoff notes, source maps) should be migrated from `Codex_Deliveries/Arc_Angel/` into the module home. | Reconciliation gap found 2026-05-15 | 🟢 LOW |
+| M-11 | **MODULE_LAL_KITAB doc audit** — only 3 files present post-cleanup (created 2026-05-15). Verify whether additional docs should migrate from `Codex_Deliveries/LK/` into the module home. | Reconciliation gap found 2026-05-15 | 🟢 LOW |
+| M-12 | **MODULE_SEO_WEB_PERFORMANCE doc audit** — only 3 files present post-cleanup (created 2026-05-15). Verify whether additional docs should migrate from `Codex_Deliveries/SEO/` into the module home. | Reconciliation gap found 2026-05-15 | 🟢 LOW |
 
 ---
 
@@ -33,8 +36,8 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 - ~~KE-IQ: Questionnaire UI + β/γ wiring (TD-19/TD-25/G-10)~~ → `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` · READY TO ISSUE *(written 2026-05-15)*
 
 **CC Direct Actions — KE gaps confirmed by Codex intake audit 2026-05-15:**
-- [ ] **KE-OP-9** — Verify `knowledge_engine.py` dispatches `yoga_combination` through `ke_yoga_evaluator.evaluate_yoga_check`. If missing, port the dispatch hook from `/Users/apple/Documents/New project/ke_phase2a_worktree/backend/knowledge_engine.py`.
-- [ ] **KE-OP-10** — Verify `combust` extraction path in `knowledge_engine.py` for `free_from_combustion` conditions. If absent, rules silently skip.
+- [x] **KE-OP-9** — ✅ Already present: `knowledge_engine.py` lines 634–636 dispatch `yoga_combination` through `ke_yoga_evaluator.evaluate_yoga_check`. No action needed. Confirmed 2026-05-15.
+- [x] **KE-OP-10** — ✅ Fixed 2026-05-15: added `combust_ok` guard to `_planet_in_kendra_conditions_ok` in `ke_yoga_evaluator.py`. `free_from_combustion` now evaluated via `ChartFacts.planet_positions[planet]["combust"]`. `_unsupported_note` cleaned up.
 - [ ] **KE-OP-11** — Run `migrate_ch41_varga_checkable.py` against `horoscope_db` (24 Ch 41 Varga-tier rules). Script at `backend/scripts/_archive/migrate_ch41_varga_checkable.py`. Coordinate with TT for Render `MONGO_URL`.
 
 ### KP Oracle Thread
