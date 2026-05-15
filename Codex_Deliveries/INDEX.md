@@ -85,7 +85,7 @@ Codex_Deliveries/
 | ID | Commission | Brief file | Status | Issued |
 |---|---|---|---|---|
 | STR-1 | Premium Landing Page + War Room Visual Rebuild | `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` | READY TO ISSUE | 2026-05-14 |
-| STR-2J | Strategist Missions UI -- MissionCard responsive + decision_logic + dasha timing | `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` | READY TO ISSUE | 2026-05-15 |
+| STR-2J | Strategist Missions UI -- MissionCard responsive + decision_logic + dasha timing | `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` | INTEGRATED | 2026-05-15 |
 | STR-Spec | Full Strategist Build Spec | `Strategist/THE_STRATEGIST_FULL_SPEC.md` | REFERENCE DOC | 2026-05-09 |
 
 ### Arc Angel
