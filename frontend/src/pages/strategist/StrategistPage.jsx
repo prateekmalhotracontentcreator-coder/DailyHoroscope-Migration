@@ -18,8 +18,8 @@ const LAYERS = [
     id: 'layer-0',
     n: 0,
     short: 'Oracle',
-    title: 'Gate 0 — Krishna Prashnavali Oracle',
-    tagline: 'Ask Krishna before any campaign. One verdict determines the day’s route into the War Room.',
+    title: 'Gate 0 -- Krishna Prashnavali Oracle',
+    tagline: 'Ask Krishna before any campaign. One verdict determines the day's route into the War Room.',
     icon: '⚔️',
   },
   {
@@ -72,27 +72,27 @@ const GATE_ZERO_PATHS = [
 ];
 
 const SCORE_BANDS = [
-  { range: '85–99%', title: 'Sovereign Dominance', body: 'Expansion / All-In', tone: 'border-emerald-500/35 bg-emerald-500/10 text-emerald-300' },
-  { range: '60–84%', title: 'Operational Friction', body: 'Patch & Pivot', tone: 'border-amber-500/35 bg-amber-500/10 text-amber-300' },
-  { range: '40–59%', title: 'Strategic Siege', body: 'Hold Ground / Remedy', tone: 'border-orange-500/35 bg-orange-500/10 text-orange-300' },
-  { range: '0–39%', title: 'Karmic Lockdown', body: 'Withdraw / Full Reset', tone: 'border-red-500/35 bg-red-500/10 text-red-300' },
+  { range: '85-99%', title: 'Sovereign Dominance', body: 'Expansion / All-In', tone: 'border-emerald-500/35 bg-emerald-500/10 text-emerald-300' },
+  { range: '60-84%', title: 'Operational Friction', body: 'Patch & Pivot', tone: 'border-amber-500/35 bg-amber-500/10 text-amber-300' },
+  { range: '40-59%', title: 'Strategic Siege', body: 'Hold Ground / Remedy', tone: 'border-orange-500/35 bg-orange-500/10 text-orange-300' },
+  { range: '0-39%', title: 'Karmic Lockdown', body: 'Withdraw / Full Reset', tone: 'border-red-500/35 bg-red-500/10 text-red-300' },
 ];
 
 const WAR_ROOM_CONFIG = {
   OFFENSIVE_GOLD: {
-    label: '⚔️ OFFENSIVE — RITUALS OPEN',
+    label: '⚔️ OFFENSIVE -- RITUALS OPEN',
     kicker: 'Expansion window live',
     shell: 'border-gold/30 bg-gradient-to-br from-gold/20 via-gold/8 to-transparent',
     chip: 'border-gold/30 bg-gold/12 text-gold',
   },
   GOLDEN_HOUR: {
-    label: '🌅 GOLDEN HOUR — ACT NOW',
+    label: '🌅 GOLDEN HOUR -- ACT NOW',
     kicker: '30-minute execution window',
     shell: 'border-orange-400/45 bg-gradient-to-br from-orange-500/30 via-red-500/20 to-transparent strategist-signal-pulse',
     chip: 'border-orange-400/35 bg-orange-500/12 text-orange-200',
   },
   DEFENSIVE_MIDNIGHT: {
-    label: '🌙 DEFENSIVE — RITUALS LOCKED',
+    label: '🌙 DEFENSIVE -- RITUALS LOCKED',
     kicker: 'Night protocol active',
     shell: 'border-slate-700/70 bg-gradient-to-br from-slate-950 via-slate-900/95 to-[#08111f]',
     chip: 'border-slate-700/70 bg-slate-800/70 text-slate-200',
@@ -254,7 +254,7 @@ function Gate0Panel({ onVerdict }) {
       </div>
 
       <p className="mb-4 max-w-3xl text-sm leading-7 text-muted-foreground">
-        Touch one cell. The answer routes today’s strategist state into YES, WAIT, NO, or PRAY.
+        Touch one cell. The answer routes today's strategist state into YES, WAIT, NO, or PRAY.
       </p>
 
       {error ? <p className="mb-4 rounded-2xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">{error}</p> : null}
@@ -284,22 +284,22 @@ function VerdictBanner({ verdict, reading }) {
   const configs = {
     YES: {
       shell: 'border-emerald-500/35 bg-emerald-500/10 text-emerald-200',
-      heading: '✅ YES — Path is Clear',
+      heading: '✅ YES -- Path is Clear',
       body: reading?.answer?.meaning?.english_block || 'The path is favorable. Proceed with your strategic mission.',
     },
     WAIT: {
       shell: 'border-orange-500/35 bg-orange-500/10 text-orange-200',
-      heading: '⏳ WAIT — Pre-Flight Mode',
+      heading: '⏳ WAIT -- Pre-Flight Mode',
       body: reading?.answer?.meaning?.english_block || 'Patience is required. Build your remedy rhythm, then re-enter.',
     },
     NO: {
       shell: 'border-red-500/35 bg-red-500/10 text-red-200',
-      heading: '🛑 NO — Strategic Realignment Required',
+      heading: '🛑 NO -- Strategic Realignment Required',
       body: reading?.answer?.meaning?.english_block || 'Resistance is active. Raise your conquest score before a re-test.',
     },
     PRAY: {
       shell: 'border-purple-500/35 bg-purple-500/10 text-purple-200',
-      heading: '🙏 PRAY — Full Surrender Path',
+      heading: '🙏 PRAY -- Full Surrender Path',
       body: reading?.answer?.meaning?.english_block || 'Krishna calls you inward first. Complete mantra and debt work before the next mission.',
     },
   };
@@ -376,7 +376,7 @@ function PraySurrenderPanel() {
       {!loading && context?.featured_mantra ? (
         <div className="mt-5 rounded-2xl border border-purple-400/20 bg-purple-950/20 p-4">
           <p className="text-[11px] uppercase tracking-[0.24em] text-purple-200/80">
-            Featured Mantra — {context.featured_mantra.deity || context.featured_mantra.remedy_area}
+            Featured Mantra -- {context.featured_mantra.deity || context.featured_mantra.remedy_area}
           </p>
           <p className="mt-3 text-xl text-purple-50">{context.featured_mantra.mantra_devanagari}</p>
           <p className="mt-1 text-sm italic text-purple-200/85">{context.featured_mantra.mantra_transliteration}</p>
@@ -442,7 +442,7 @@ function PreFlightPanel({ gateStatus, conquestScore }) {
     return (
       <div className="rounded-[26px] border border-red-500/35 bg-[linear-gradient(135deg,rgba(153,27,27,0.28),rgba(69,10,10,0.34))] p-5">
         <p className="text-[11px] uppercase tracking-[0.28em] text-red-200/80">NO Verdict</p>
-        <h3 className="mt-2 text-2xl font-cinzel text-red-50">Conquest Score Required — 60%+</h3>
+        <h3 className="mt-2 text-2xl font-cinzel text-red-50">Conquest Score Required -- 60%+</h3>
         <p className="mt-2 max-w-2xl text-sm leading-7 text-red-100/78">
           Resistance is active. Raise your remedy score, repair momentum, and re-test at Gate 0 once the threshold clears.
         </p>
@@ -453,7 +453,7 @@ function PreFlightPanel({ gateStatus, conquestScore }) {
             <span>Target: 60%</span>
           </div>
           <div className="flex items-end gap-4">
-            <p className="text-4xl font-bold text-red-50">{conquestScore ?? '—'}%</p>
+            <p className="text-4xl font-bold text-red-50">{conquestScore ?? '--'}%</p>
             <div className="flex-1 pb-2">
               <div className="h-2 overflow-hidden rounded-full bg-red-950/50">
                 <div className="h-full rounded-full bg-gradient-to-r from-red-600 via-orange-500 to-amber-400 transition-all duration-500" style={{ width: `${progress}%` }} />
@@ -606,10 +606,10 @@ function AstrologyStrip({ data }) {
   if (!data.command_planet) return <OnboardingRequired />;
 
   const cards = [
-    { label: 'Command Planet', value: data.command_planet || '—' },
-    { label: 'Power Direction', value: data.success_direction || '—' },
-    { label: 'Current Dasha', value: data.mahadasha || '—' },
-    { label: 'Antardasha', value: data.antardasha || '—' },
+    { label: 'Command Planet', value: data.command_planet || '--' },
+    { label: 'Power Direction', value: data.success_direction || '--' },
+    { label: 'Current Dasha', value: data.mahadasha || '--' },
+    { label: 'Antardasha', value: data.antardasha || '--' },
   ];
 
   return (
@@ -641,7 +641,7 @@ function LKGateStatus({ gates }) {
         return (
           <div key={gate.gate} className={`rounded-[24px] border p-5 ${tone}`}>
             <div className="flex items-center justify-between gap-3">
-              <p className="text-lg font-semibold text-foreground">Gate {gate.gate} — {gate.name}</p>
+              <p className="text-lg font-semibold text-foreground">Gate {gate.gate} -- {gate.name}</p>
               <div className={`h-2.5 w-2.5 rounded-full ${isWarning ? 'bg-amber-400' : isClear ? 'bg-emerald-400' : 'bg-muted-foreground'}`} />
             </div>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">{gate.narrative}</p>
@@ -665,7 +665,7 @@ function MissionQuickLinks({ data }) {
       <div className="grid gap-4 md:grid-cols-2">
         <div className="rounded-[24px] border border-gold/20 bg-[#0c1422]/92 p-5">
           <p className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">Active Missions</p>
-          <p className="mt-3 text-5xl font-bold text-gold">{data.active_missions_count ?? '—'}</p>
+          <p className="mt-3 text-5xl font-bold text-gold">{data.active_missions_count ?? '--'}</p>
         </div>
         <div className="rounded-[24px] border border-emerald-500/20 bg-emerald-500/[0.06] p-5">
           <p className="text-[11px] uppercase tracking-[0.24em] text-emerald-100/75">Ritual Streak</p>
@@ -737,7 +737,7 @@ function ActionPlanCard({ missionsUnlocked, gateStatus, conquestScore }) {
           Open Action Plan <ArrowRight className="h-4 w-4" />
         </Link>
         <Link to="/lk-remedies/tracker" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-white/[0.06]">
-          Log Today’s Ritual <ArrowRight className="h-4 w-4" />
+          Log Today's Ritual <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     </div>
@@ -787,7 +787,7 @@ function ModuleIntroScreen({ userName, birthDate, commandPlanet, currentDasha, o
       <div className="relative">
         <p className="text-[11px] uppercase tracking-[0.34em] text-gold/80">War Room Wake-Up</p>
         <h2 className="mt-3 max-w-4xl text-3xl font-cinzel text-foreground sm:text-4xl">
-          Welcome back, {userName} — Your War Room is Active
+          Welcome back, {userName} -- Your War Room is Active
         </h2>
         <div className="mt-4 flex flex-wrap gap-3 text-sm text-muted-foreground">
           {birthDate ? <span className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5">{birthDate}</span> : null}
@@ -880,19 +880,43 @@ function Dashboard() {
   useEffect(() => {
     let mounted = true;
 
-    fetch(`${BACKEND}/api/strategist/dashboard`, { credentials: 'include' })
-      .then((response) => response.json())
-      .then((data) => {
+    async function loadDashboard() {
+      // If the landing-page form stored birth data in localStorage, persist it to
+      // the backend first so _build_war_room_state can compute Vimshottari Dasha.
+      try {
+        const draft = JSON.parse(localStorage.getItem('strategist-profile-draft') || 'null');
+        if (draft?.dob) {
+          await fetch(`${BACKEND}/api/strategist/profile`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              dob: draft.dob,
+              tob: draft.tob || '',
+              city: draft.city || '',
+            }),
+          });
+        }
+      } catch {
+        // Best-effort -- do not block dashboard if birth-data save fails
+      }
+
+      if (!mounted) return;
+
+      try {
+        const response = await fetch(`${BACKEND}/api/strategist/dashboard`, { credentials: 'include' });
+        const data = await response.json();
         if (!mounted) return;
         if (data.error) throw new Error(data.error);
         setDash(data);
-      })
-      .catch((error) => {
+      } catch (error) {
         if (mounted) setDashError(error.message);
-      })
-      .finally(() => {
+      } finally {
         if (mounted) setDashLoading(false);
-      });
+      }
+    }
+
+    loadDashboard();
 
     return () => {
       mounted = false;
@@ -1280,7 +1304,7 @@ function StrategistLanding() {
   return (
     <div className="min-h-screen overflow-hidden bg-background text-foreground">
       <SEO
-        title="The Strategist — Vedic Business War Room"
+        title="The Strategist -- Vedic Business War Room"
         description="A premium Vedic strategist surface for founders and professionals. Gate 0 Krishna Oracle, Lal Kitab diagnostics, live missions, Conquest Score, and executive intelligence."
         url="https://www.everydayhoroscope.in/strategist"
         schema={schema}
@@ -1355,7 +1379,7 @@ function StrategistLanding() {
             <div className="mt-5 space-y-3">
               {LAYERS.map((layer) => (
                 <div key={layer.id} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
-                  <p className="text-sm font-semibold text-foreground">{layer.icon} Layer {layer.n} — {layer.title}</p>
+                  <p className="text-sm font-semibold text-foreground">{layer.icon} Layer {layer.n} -- {layer.title}</p>
                   <p className="mt-2 text-sm leading-7 text-muted-foreground">{layer.tagline}</p>
                 </div>
               ))}
@@ -1398,14 +1422,14 @@ export default function StrategistPage() {
     return (
       <PremiumGateCard
         feature="The Strategist"
-        description="The Vedic Business War Room — KP oracle, LK diagnostics, Missions, and Conquest Score — is an exclusive Premium feature. Upgrade to activate your war room."
+        description="The Vedic Business War Room -- KP oracle, LK diagnostics, Missions, and Conquest Score -- is an exclusive Premium feature. Upgrade to activate your war room."
       />
     );
   }
 
   return (
     <WarRoomStateProvider locationSlug={locationSlug}>
-      <SEO title="The Strategist — War Room" noindex={true} />
+      <SEO title="The Strategist -- War Room" noindex={true} />
       <Dashboard />
     </WarRoomStateProvider>
   );

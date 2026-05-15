@@ -48,7 +48,7 @@ function ActiveRemedyCard({ remedy }) {
   if (!remedy) return null;
   return (
     <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/[0.06] p-4 mb-5">
-      <p className="text-[11px] uppercase tracking-widest text-muted-foreground mb-2">Active LK Remedy — Day {remedy.streak_days}</p>
+      <p className="text-[11px] uppercase tracking-widest text-muted-foreground mb-2">Active LK Remedy -- Day {remedy.streak_days}</p>
       <p className="text-sm leading-relaxed text-foreground mb-1">{remedy.rule_text}</p>
       {remedy.planet && (
         <p className="text-xs text-muted-foreground">Planet: <span className="text-gold font-semibold">{remedy.planet}</span>
@@ -80,17 +80,17 @@ export default function StrategistActionPlanPage() {
       })
       .catch(e => setError(e.message))
       .finally(() => setLoading(false));
-  }, [token]);
+  }, []);
 
   if (loading) return (
     <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground text-sm">
-      Building your Action Plan…
+      Building your Action Plan...
     </div>
   );
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-yellow-950/20 to-background text-foreground">
-      <SEO title="Action Plan — The Strategist" noindex={true} />
+      <SEO title="Action Plan -- The Strategist" noindex={true} />
       <div className="max-w-2xl mx-auto px-4 py-8">
 
         {/* Header */}
@@ -162,7 +162,7 @@ export default function StrategistActionPlanPage() {
               </div>
             ) : (
               <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-6 text-center">
-                <p className="text-gold font-semibold">All clear — no urgent actions.</p>
+                <p className="text-gold font-semibold">All clear -- no urgent actions.</p>
                 <p className="text-sm text-muted-foreground mt-1">Maintain your streak and monitor the Scoreboard.</p>
               </div>
             )}

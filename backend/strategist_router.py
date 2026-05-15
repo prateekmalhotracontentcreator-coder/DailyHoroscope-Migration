@@ -470,6 +470,53 @@ async def action_plan(request: Request):
     }
 
 
+class StrategistProfileRequest(BaseModel):
+    dob: str                        # YYYY-MM-DD -- birth date from landing form
+    tob: Optional[str] = None       # HH:MM -- birth time (empty if unknown)
+    city: Optional[str] = None      # City name from landing form
+
+
+@router.post("/profile")
+async def save_strategist_profile(body: StrategistProfileRequest, request: Request):
+    """
+    Receives birth details from TheStrategistLandingPage localStorage draft.
+    Computes and persists moon_longitude to lk_user_profiles so that
+    _build_war_room_state can compute Vimshottari Dasha for DashaTimingBar.
+    Only updates existing profiles (no upsert) -- LK onboard must run first.
+    """
+    db = get_db(request)
+    user_email = get_user_email(request)
+
+    tob = body.tob or "12:00"
+    city = body.city or "New Delhi"
+
+    moon_longitude: Optional[float] = None
+    try:
+        from vedic_calculator import calculate_vedic_chart, SIGN_ORDER
+        chart = calculate_vedic_chart(body.dob, tob, city, "+05:30")
+        for key, val in chart.get("planets", {}).items():
+            if "Moon" in key:
+                sign = val.get("sign", "")
+                degree = float(val.get("degree", 0))
+                if sign in SIGN_ORDER:
+                    moon_longitude = float(SIGN_ORDER.index(sign) * 30 + degree)
+                break
+    except Exception:
+        pass
+
+    update: dict = {"birth_date": body.dob}
+    if moon_longitude is not None:
+        update["moon_longitude"] = moon_longitude
+
+    await db.lk_user_profiles.update_one(
+        {"user_id": user_email},
+        {"$set": update},
+        # no upsert -- require LK onboard to have run first
+    )
+
+    return {"ok": True, "birth_date": body.dob, "moon_longitude": moon_longitude}
+
+
 class MissionsRequest(BaseModel):
     user_id: Optional[str] = None
     date: Optional[str] = None
