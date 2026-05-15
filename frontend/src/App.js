@@ -44,6 +44,11 @@ const AccountSettings = lazy(() => import('./pages/account/AccountSettings').the
 const MyReportsPage = lazy(() => import('./pages/reports/MyReportsPage').then(m => ({ default: m.MyReportsPage })));
 const IndividualReportsPage = lazy(() => import('./pages/reports/IndividualReportsPage'));
 const PremiumReportsLanding = lazy(() => import('./pages/reports/PremiumReportsLanding'));
+const KarmicDebtLandingPage = lazy(() => import('./pages/reports/landing/KarmicDebtLandingPage'));
+const CareerBlueprintLandingPage = lazy(() => import('./pages/reports/landing/CareerBlueprintLandingPage'));
+const ShadowSelfLandingPage = lazy(() => import('./pages/reports/landing/ShadowSelfLandingPage'));
+const RetrogradeSurvivalLandingPage = lazy(() => import('./pages/reports/landing/RetrogradeSurvivalLandingPage'));
+const LifeCyclesLandingPage = lazy(() => import('./pages/reports/landing/LifeCyclesLandingPage'));
 const LovePage = lazy(() => import('./pages/reports/LovePage'));
 const LoveReportsPage = lazy(() => import('./pages/reports/LoveReportsPage'));
 const LiveSaiBabaArtiPage = lazy(() => import('./pages/live/LiveSaiBabaArtiPage'));
@@ -152,7 +157,12 @@ function App() {
                   <Route path="/brihat-kundli" element={<PremiumRoute feature="Brihat Kundli Pro" description="Comprehensive Vedic chart with all 16 divisional charts is a Premium feature. Upgrade to unlock the full Brihat Kundli."><BrihatKundliPage /></PremiumRoute>} />
                   <Route path="/my-reports" element={<PremiumRoute feature="My Reports" description="Your personalised Vedic reports are available to Premium members. Upgrade to access all your saved reports."><MyReportsPage /></PremiumRoute>} />
                   <Route path="/premium-reports" element={<PremiumReportsLanding />} />
-                  <Route path="/individual-reports" element={<PremiumRoute feature="Reports" description="Individual Vedic reports are a Premium feature. Upgrade to unlock your full report library."><IndividualReportsPage /></PremiumRoute>} />
+                  <Route path="/individual-reports" element={<PremiumReportsLanding />} />
+                  <Route path="/karmic-debt-report" element={<KarmicDebtLandingPage />} />
+                  <Route path="/career-blueprint-report" element={<CareerBlueprintLandingPage />} />
+                  <Route path="/shadow-self-report" element={<ShadowSelfLandingPage />} />
+                  <Route path="/retrograde-survival-report" element={<RetrogradeSurvivalLandingPage />} />
+                  <Route path="/life-cycles-report" element={<LifeCyclesLandingPage />} />
                   <Route path="/reports" element={<PremiumRoute feature="Reports" description="Individual Vedic reports are a Premium feature. Upgrade to unlock your full report library."><IndividualReportsPage /></PremiumRoute>} />
                   <Route path="/love" element={<LovePage />} />
                   <Route path="/love-reports" element={<PremiumRoute feature="Love Reports" description="Your Vedic love compatibility reports are a Premium feature. Upgrade to unlock full relationship insights."><LoveReportsPage /></PremiumRoute>} />

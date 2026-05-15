@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { SEO } from "../../components/SEO";
 
@@ -12,6 +12,7 @@ const REPORTS = [
     icon: "◎",
     hook: "Decode the spiritual loop you keep meeting in different disguises.",
     what: "Karmic themes, past-life echoes, soul lessons, and release practices drawn from your South Node, 12th house, and Saturn placement.",
+    landingRoute: "/karmic-debt-report",
   },
   {
     type: "career_blueprint",
@@ -21,6 +22,7 @@ const REPORTS = [
     icon: "▲",
     hook: "See the work pattern, public calling, and success rhythm written into your chart.",
     what: "Strengths, wealth signals, career timing, and practical next moves from your 10th house, 2nd house, and current Mahadasha.",
+    landingRoute: "/career-blueprint-report",
   },
   {
     type: "shadow_self",
@@ -30,6 +32,7 @@ const REPORTS = [
     icon: "◐",
     hook: "Name the hidden pressure shaping your reactions before it chooses for you.",
     what: "Hidden strengths, blind spots, emotional drivers, and integration guidance from your Rahu, Ketu, and 8th house.",
+    landingRoute: "/shadow-self-report",
   },
   {
     type: "retrograde_survival",
@@ -39,6 +42,7 @@ const REPORTS = [
     icon: "↺",
     hook: "Track the retrograde weather around you and move through it with less chaos.",
     what: "Mercury, Venus, and Mars retrograde timing mapped to your natal chart with grounded, practical remedies.",
+    landingRoute: "/retrograde-survival-report",
   },
   {
     type: "life_cycles",
@@ -48,6 +52,7 @@ const REPORTS = [
     icon: "◌",
     hook: "Understand the chapter you are in now and the one already rising behind it.",
     what: "Current chapter, sub-cycle, decade arc, and upcoming transitions from your Vimshottari Dasha sequence.",
+    landingRoute: "/life-cycles-report",
   },
 ];
 
@@ -70,9 +75,9 @@ export default function PremiumReportsLanding() {
 
   function handleCTA() {
     if (user) {
-      navigate("/individual-reports");
+      navigate("/reports");
     } else {
-      navigate("/login", { state: { from: { pathname: "/individual-reports" } } });
+      navigate("/login", { state: { from: { pathname: "/reports" } } });
     }
   }
 
@@ -81,7 +86,7 @@ export default function PremiumReportsLanding() {
       <SEO
         title="Individual Vedic Reports -- Karmic Debt, Career, Shadow Self & More"
         description="Five in-depth Vedic astrology reports generated from your personal birth chart. Karmic Debt, Career Blueprint, Shadow Self, Retrograde Survival Guide, and Life Cycles -- each calculated to arc-minute precision with Swiss Ephemeris."
-        url="https://www.everydayhoroscope.in/premium-reports"
+        url="https://www.everydayhoroscope.in/individual-reports"
         schema={{
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -116,7 +121,7 @@ export default function PremiumReportsLanding() {
           <p className="mt-3 text-xs text-stone-500">
             Already registered?{" "}
             <button
-              onClick={() => navigate("/login", { state: { from: { pathname: "/individual-reports" } } })}
+              onClick={() => navigate("/login", { state: { from: { pathname: "/reports" } } })}
               className="text-[#c9961f] underline"
             >
               Sign in
@@ -143,6 +148,15 @@ export default function PremiumReportsLanding() {
               </div>
               <p className="mb-3 text-sm font-medium leading-6 text-stone-700 italic">{r.hook}</p>
               <p className="text-xs leading-5 text-stone-500">{r.what}</p>
+              <div className="mt-4">
+                <Link
+                  to={r.landingRoute}
+                  className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-stone-700 transition hover:opacity-75"
+                >
+                  Explore report
+                  <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </div>
           ))}
           {/* CTA tile */}
