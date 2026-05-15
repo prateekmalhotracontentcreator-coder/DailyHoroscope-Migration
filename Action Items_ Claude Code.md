@@ -94,7 +94,7 @@ Small direct fixes completed in-session. No Codex thread required.
 | `ArcAngelPanel.jsx` API amendments (subscription, birth data source, birth_place param) | ✅ Done | `c01ec8d` |
 
 ### Still to do (Claude Code direct — small, no commission)
-- 🔧 **`/api/remedies/ref/{remedy_ref_id}` endpoint** — missing from `remedies_router.py`. Blocks KP-2A integration. One-file backend fix.
+- ~~🔧 **`/api/remedies/ref/{remedy_ref_id}` endpoint**~~ — ✅ Already present at `remedies_router.py` line 827. Confirmed live 2026-05-15. Was a false alarm.
 - ~~🔧 **KP Saved Previous Readings not loading** (KP-OP-8)~~ — ✅ Fixed commit `80238a5`. Broken `window.scrollTo({top:0})` in `loadPastReading` was scrolling user away from the Guidance Report before React rendered it. Replaced with `useRef` + `useEffect` scroll-into-view.
 
 ---
