@@ -1,5 +1,19 @@
 # EverydayHoroscope -- Claude Code Working Guide
-> Last updated: 2026-05-14 | Full reference: `.claude/REFERENCE.md`
+> Last updated: 2026-05-15 | Full reference: `.claude/REFERENCE.md`
+
+---
+
+## ⭐ SESSION START PROTOCOL -- READ FIRST
+
+Before writing a single line of code, read these three files in order:
+
+| # | File | Purpose |
+|---|---|---|
+| 1 | **`TEMPLE_TRACKER.md`** | Per-module status, open points, revision history. The definitive live state of every module. |
+| 2 | **`Action Items_ Claude Code.md`** | Temple Team (TT) and Claude Code (CC) action items -- what is blocked and on whom. |
+| 3 | **`Codex_Deliveries/List_of_Pending_Codex_Commissions.md`** | Commission queue -- what is ready to issue, in progress, or integrated. |
+
+**At the end of every session:** update `TEMPLE_TRACKER.md` for every module touched (status, open points, revision log row). This is mandatory -- no exceptions.
 
 ---
 
@@ -109,15 +123,15 @@ Smart quote fix for Codex output: `.claude/REFERENCE.md §Codex`
 
 ## 8. Current Build Focus
 
-| Module | Spec | Status |
-|---|---|---|
-| LK Standalone Remedies | `.claude/briefs/lk/LK_STANDALONE_MODULE_SPEC.md` | ✅ Live |
-| The Strategist | `.claude/_archive/briefs/THE_STRATEGIST_SPEC.md` | ✅ Live |
-| Remedies Engine Phase 1 | `.claude/briefs/remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | 🔜 Next commission |
-| Legal Pages (seed) | `backend/scripts/seed_policies_v1.py` | 🔜 Run with Render MONGO_URL |
-| SEO / Technical SEO | User to share thread findings | 🔜 Pending |
+> This section is intentionally brief. The authoritative live state of every module is in **`TEMPLE_TRACKER.md`**. Read that file -- do not rely on a static snapshot here.
 
-KP Remedy: bundle-native remedies live. Engine-fallback (conditional) still pending -- see HANDOVER_2026-05-14.md.
+**Active hotlist (as of 2026-05-15):**
+- 🔴 KE-Sprint2 (arbitration runtime) -- INGEST FREEZE until delivered
+- 🔴 KE-2A (Yoga Check) -- issue to Codex this week
+- 🟠 STR-1 (Strategist War Room visual) -- fully unblocked, issue to Codex
+- 🟠 KP-Sprint2 + IR-1 -- issue to Codex Week 1
+- 🔧 `/api/remedies/ref/{remedy_ref_id}` endpoint -- Claude Code direct fix, blocks KP-2A
+- 🔧 M-1 OG image + M-2 legal pages seed -- Temple Team actions
 
 ---
 
@@ -167,10 +181,19 @@ Logged-out: most pages show public SEO landing (noindex) with auth CTA.
 
 ---
 
+## End-of-Session Protocol (MANDATORY)
+
+Before the session closes or context is compacted, Claude Code must:
+1. Update `TEMPLE_TRACKER.md` for every module touched -- status badge, open points, revision log row.
+2. Strike off any completed items in `Action Items_ Claude Code.md`.
+3. Update commission status in `Codex_Deliveries/List_of_Pending_Codex_Commissions.md` if any commission moved state.
+
+---
+
 ## Compact Instructions
 
 When compacting this conversation, produce the absolute minimum summary possible -- 5 lines or fewer. Do NOT summarize chat history, completed tasks, code written, errors fixed, or files changed. Only preserve:
 1. The single task currently in progress (if any), in one sentence.
 2. Any explicit user instruction given in the last message that hasn't been acted on yet.
 
-Do not include architecture notes, file paths, pending backlogs, or any other context -- all of that is already in CLAUDE.md and `.claude/REFERENCE.md` and will be reloaded automatically.
+Do not include architecture notes, file paths, pending backlogs, or any other context -- all of that is already in CLAUDE.md, `TEMPLE_TRACKER.md`, and `.claude/REFERENCE.md` and will be reloaded automatically.

@@ -5,6 +5,8 @@
 >
 > **Rule:** Every commission issued to Codex gets a row here + a file in the relevant module folder.
 > Temple Team creates the Codex folder and adds the INDEX row before issuing each commission.
+>
+> **Live module status + open points → `TEMPLE_TRACKER.md` (repo root).** Always check that file before opening a new thread or issuing a commission.
 
 ---
 

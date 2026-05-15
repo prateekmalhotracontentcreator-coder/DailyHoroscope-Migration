@@ -1,6 +1,8 @@
 # Module Briefs -- EverydayHoroscope
 > One-pager orientation for every Codex thread. Read your module brief before opening the full commission file.
 > Last updated: 2026-05-15
+>
+> **For live status, open points, and revision history per module → `TEMPLE_TRACKER.md` (repo root).** This file is the orientation brief for Codex. The tracker is the live state for Temple Team.
 
 ---
 

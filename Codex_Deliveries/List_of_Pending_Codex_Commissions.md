@@ -2,6 +2,8 @@
 > EverydayHoroscope · Temple Team Master Tracker
 > Last updated: 2026-05-15
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
+>
+> **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
 
 ---
 
