@@ -45,7 +45,7 @@
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
 | **KP-2B** | Ritual Animation + 3-Pillar UX + Astro-Filter | KP Oracle | `KP/CODEX_COMMISSION_KP_2B.md` | READY TO ISSUE | KP-2A delivered | White Light meditation + 3-pillar Guidance Report + transit/dasha enrichment |
-| **STR-1** | Strategist Premium Landing Page + War Room Visual Rebuild | The Strategist | `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` | **DELIVERED -- PENDING INTEGRATION** | None ✅ M-4 cleared | Built in Codex workspace 2026-05-15. Paste output to Claude Code for review + integration. |
+| ~~STR-1~~ | ~~Strategist Premium Landing Page + War Room Visual Rebuild~~ | The Strategist | `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` | ✅ INTEGRATED -- commit `ba58192` | -- | TheStrategistLandingPage.jsx + StrategistPage.jsx + App.js + sitemap.xml all live. Build verified. |
 | ~~STR-2J~~ | ~~Strategist Missions UI (MissionCard responsive + dasha display)~~ | The Strategist | `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` | ✅ INTEGRATED -- commit `9ad2e0a` | -- | Delivered by Codex 2026-05-15. Dasha backend fix applied by Claude Code. |
 | **TAR-v4** | Tarot UI v4 Enhancement | Tarot | `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` | READY TO ISSUE | None | Existing Tarot UI visual uplift to v4 standard |
 | **KUN-1** | Lagna Kundali Module Contract | Kundali | `Kundali/CODEX_COMMISSION_KUNDALI_LAGNA_CONTRACT.md` | READY TO ISSUE | None | Full Kundali/birth chart module |
@@ -107,7 +107,6 @@ Week 2:  KP-2A (after KP smoke test M-3 done)
 
 Week 3:  KP-2B (after KP-2A delivered)
          ARC-2 (after KE Sprint 2 gate passes)
-         STR-1 + STR-2J (after M-4 Strategist sign-off)
          TAR-v4
 
 Week 4+: LON-1 · LK-1 · KUN-1 · PAN-L1 · SEO-1

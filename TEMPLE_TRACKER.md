@@ -40,7 +40,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | M-3 smoke test (TT) + `/remedies/ref/` endpoint (CC) | TT + CC |
 | 3 | Individual Reports | [`Individual_Reports/TRACKER.md`](Codex_Deliveries/Individual_Reports/TRACKER.md) | 🟣 PLANNED | IR-1 ready to issue Week 1 -- no dependency | TT |
 | 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` endpoint -- CC direct fix | CC |
-| 5 | The Strategist | [`Strategist/TRACKER.md`](Codex_Deliveries/Strategist/TRACKER.md) | 🔵 COMMISSION OPEN | STR-1 **DELIVERED** -- paste Codex output to Claude Code for integration | CC |
+| 5 | The Strategist | [`Strategist/TRACKER.md`](Codex_Deliveries/Strategist/TRACKER.md) | ✅ LIVE | STR-OP-3: Verify DashaTimingBar live data on `/strategist/missions` (TT) | TT |
 | 6 | Arc Angel | [`Arc_Angel/TRACKER.md`](Codex_Deliveries/Arc_Angel/TRACKER.md) | 🟡 ACTIVE | Confidence % hardcoded 42 -- ARC-2 ready to issue | TT |
 | 7 | Tarot | [`Tarot/TRACKER.md`](Codex_Deliveries/Tarot/TRACKER.md) | 🟡 ACTIVE | TAR-v4 visual uplift -- issue Week 3 | TT |
 | 8 | Kundali / Birth Chart | [`Kundali/TRACKER.md`](Codex_Deliveries/Kundali/TRACKER.md) | 🟣 PLANNED | KUN-1 ready to issue Week 4+ | TT |
@@ -80,7 +80,6 @@ Week 1 (NOW):
   KE-2A        🔴 CRITICAL -- independent, issue alongside Sprint 2
   KP-Sprint2   🟠 HIGH -- independent, no dependency
   IR-1         🟠 HIGH -- pure frontend, zero dependency
-  STR-1        🟠 HIGH -- M-4 cleared, fully unblocked
 
 Week 2:
   KP-2A        after M-3 smoke test (TT) + /remedies/ref/ endpoint (CC)

@@ -1,7 +1,7 @@
 # The Strategist -- Module Tracker
 > Path: `Codex_Deliveries/Strategist/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.4
+> Last updated: 2026-05-15 · v1.5
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- fully functional backend, visual uplift (STR-1) unblocked |
+| **Status** | ✅ LIVE -- STR-1 integrated (commit `ba58192`). STR-2J integrated (commit `9ad2e0a`). Only open point: STR-OP-3 DashaTimingBar verify (TT). |
 | **Frontend** | `frontend/src/pages/strategist/` (StrategistPage, StrategistMissionsPage, etc.) |
 | **Backend** | `backend/strategist_router.py` · `backend/strategist_engine.py` |
 | **Live URL** | `/strategist` · `/strategist/missions` |
@@ -23,7 +23,7 @@
 | ID | Commission | Status | Brief |
 |---|---|---|---|
 | **STR-2J** | Strategist Missions UI (MissionCard responsive + dasha display) | ✅ INTEGRATED | `CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · Commit `9ad2e0a` |
-| **STR-1** | Premium Landing Page + War Room Visual Rebuild | 🔵 DELIVERED -- PENDING INTEGRATION | `CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` · Built in Codex workspace 2026-05-15 |
+| **STR-1** | Premium Landing Page + War Room Visual Rebuild | ✅ INTEGRATED -- commit `ba58192` | `CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` · Built Codex workspace 2026-05-14, integrated same session |
 
 ---
 
@@ -31,10 +31,10 @@
 
 | # | Item | Owner | Priority | Notes |
 |---|---|---|---|---|
-| STR-OP-1 | ~~Issue STR-1 to Codex~~ | -- | ✅ DONE | Delivered by Codex 2026-05-15. Pending Temple review + integration. |
-| STR-OP-2 | **Review and integrate STR-1 Codex delivery** | CC | 🔴 HIGH | Paste Codex output into Claude Code session. Review, align to Temple theme, wire routes, build-verify, commit to main. |
+| ~~STR-OP-1~~ | ~~Issue STR-1 to Codex~~ | -- | ✅ DONE | Delivered by Codex 2026-05-15. |
+| ~~STR-OP-2~~ | ~~Review and integrate STR-1 Codex delivery~~ | CC | ✅ DONE | All 4 files confirmed live at commit `ba58192`. App.js, sitemap.xml, TheStrategistLandingPage.jsx, StrategistPage.jsx all match handoff exactly. |
 | STR-OP-3 | Verify DashaTimingBar live data after `9ad2e0a` deploy | TT | 🟠 HIGH | Check `/strategist/missions` -- Mahadasha + Antardasha should show planet names + date ranges + progress bar |
-| STR-OP-4 | STR-1 must NOT overwrite `StrategistMissionsPage.jsx` or `MissionCard.jsx` -- STR-2J-owned and already integrated | CC | 🔴 ENFORCE | Verify scope during integration review. |
+| ~~STR-OP-4~~ | ~~STR-1 must NOT overwrite STR-2J files~~ | CC | ✅ SATISFIED | Confirmed: StrategistMissionsPage.jsx + MissionCard.jsx untouched. |
 
 ---
 
@@ -65,3 +65,4 @@
 | v1.2 | 2026-05-15 | STR-2J delivered and integrated. `MissionCard.jsx` + `StrategistMissionsPage.jsx` from Codex. Antardasha backend fix added to `_build_war_room_state`. | Codex + CC | Commit `9ad2e0a` |
 | v1.3 | 2026-05-15 | M-4 confirmed cleared (22 records live, no `approval_status` filter). STR-1 unblocked across all trackers. Tracker created. | CC | Commit `df49e5e` |
 | v1.4 | 2026-05-15 | STR-1 delivered by Codex -- built in Codex workspace. Status: DELIVERED -- PENDING INTEGRATION. Codex MASTER_TRACKER + 06_RESPONSE_SUMMARY updated in cross-thread audit pack. Awaiting Temple review + CC integration. | Codex + TT | Codex workspace |
+| v1.5 | 2026-05-15 | STR-1 confirmed INTEGRATED. All 4 handoff files verified live in repo at commit `ba58192` (2026-05-14) -- TheStrategistLandingPage.jsx, StrategistPage.jsx, App.js, sitemap.xml all match handoff exactly. STR-2J boundary confirmed: MissionCard.jsx + StrategistMissionsPage.jsx untouched. STR-OP-2 + STR-OP-4 closed. Commission closed. | CC | `ba58192` |
