@@ -41,7 +41,7 @@ def _get_command_planet(natal_chart: dict) -> str:
 async def _build_war_room_state(db, user_email: str) -> dict:
     profile = await db.lk_user_profiles.find_one({"user_id": user_email}, {"_id": 0})
     if not profile:
-        return {"error": "LK profile missing — complete /api/lk/onboard first"}
+        return {"error": "LK profile missing -- complete /api/lk/onboard first"}
 
     natal_chart = profile.get("natal_chart", {})
     age = profile.get("age", 30)
@@ -72,6 +72,51 @@ async def _build_war_room_state(db, user_email: str) -> dict:
     command_planet = _get_command_planet(natal_chart)
     success_direction = DIGBALA_DIRECTIONS.get(command_planet, "North")
     location_slug = profile.get("location_slug", "")
+
+    # Vimshottari Dasha -- current Mahadasha + Antardasha with date ranges
+    # Exposes fields consumed by StrategistMissionsPage DashaTimingBar (STR-2J)
+    _dasha_context: dict = {}
+    try:
+        _birth_date = profile.get("birth_date") or profile.get("dob")
+        _moon_lon = profile.get("moon_longitude")
+        if _birth_date and _moon_lon is not None:
+            _dashas = calculate_vimshottari_dasha(_birth_date, float(_moon_lon))
+            _current_md = get_current_dasha(_dashas)
+            _md_planet = _current_md.get("planet", "")
+            _md_start = _current_md.get("start", "")
+            _md_end = _current_md.get("end", "")
+            _md_years = float(_current_md.get("years", 0))
+            # Compute current Antardasha inline (vedic_calculator has no helper for this)
+            _AD_ORDER = ["Ketu","Venus","Sun","Moon","Mars","Rahu","Jupiter","Saturn","Mercury"]
+            _AD_YEARS = {"Ketu":7,"Venus":20,"Sun":6,"Moon":10,"Mars":7,"Rahu":18,"Jupiter":16,"Saturn":19,"Mercury":17}
+            _ad_planet, _ad_start, _ad_end = "", "", ""
+            try:
+                from datetime import timedelta as _td, datetime as _dt
+                _idx = _AD_ORDER.index(_md_planet)
+                _cursor = _dt.strptime(_md_start, "%Y-%m-%d")
+                _today = _dt.now()
+                for _i in range(9):
+                    _ap = _AD_ORDER[(_idx + _i) % 9]
+                    _dur_days = int((_AD_YEARS[_ap] / 120.0) * _md_years * 365.25)
+                    _ad_end_dt = _cursor + _td(days=_dur_days)
+                    if _cursor <= _today <= _ad_end_dt:
+                        _ad_planet = _ap
+                        _ad_start = _cursor.strftime("%Y-%m-%d")
+                        _ad_end = _ad_end_dt.strftime("%Y-%m-%d")
+                        break
+                    _cursor = _ad_end_dt
+            except Exception:
+                pass
+            _dasha_context = {
+                "current_mahadasha": _md_planet,
+                "current_mahadasha_start": _md_start,
+                "current_mahadasha_end": _md_end,
+                "current_antardasha": _ad_planet,
+                "current_antardasha_start": _ad_start,
+                "current_antardasha_end": _ad_end,
+            }
+    except Exception:
+        pass
 
     # Surrogate active check
     surrogate_active = False
@@ -123,16 +168,16 @@ async def _build_war_room_state(db, user_email: str) -> dict:
     )
     if score >= 85:
         next_threshold = None
-        next_label = "Sovereign — peak reached"
+        next_label = "Sovereign -- peak reached"
     elif score >= 75:
         next_threshold = 85
-        next_label = "85% — Sovereign Dominance"
+        next_label = "85% -- Sovereign Dominance"
     elif score >= 60:
         next_threshold = 75
-        next_label = "75% — PRAY gate clears"
+        next_label = "75% -- PRAY gate clears"
     else:
         next_threshold = 60
-        next_label = "60% — NO gate clears"
+        next_label = "60% -- NO gate clears"
 
     scoreboard = {
         "conquest_score": score,
@@ -153,6 +198,7 @@ async def _build_war_room_state(db, user_email: str) -> dict:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "command_planet": command_planet,
         "success_direction": success_direction,
+        **_dasha_context,
         "conquest_probability": prob,
         "active_missions_count": len(missions),
         "active_hurdles_count": len(hurdles),
@@ -226,7 +272,7 @@ async def surrender_context(request: Request):
         created = created.replace(tzinfo=timezone.utc) if created.tzinfo is None else created
         gate0_days_since = max(0, (now - created).days)
 
-    # Gate 1 — karmic debt
+    # Gate 1 -- karmic debt
     cached = await db.lk_diagnose_cache.find_one({"user_id": user_email}, {"_id": 0})
     gate1 = {}
     if cached:
@@ -244,7 +290,7 @@ async def surrender_context(request: Request):
     )
     score = prob["score"]
 
-    # Featured mantra — prefer Saturn/Ketu/surrender tags, fallback to any
+    # Featured mantra -- prefer Saturn/Ketu/surrender tags, fallback to any
     mantra_rec = await db.knowledge_rules.find_one(
         {"science_id": "jyotish_remedies_mantras", "metadata.tags": {"$in": ["saturn", "ketu", "saturn_retrograde"]}},
         {"_id": 0},
@@ -272,7 +318,7 @@ async def surrender_context(request: Request):
         "gate1_narrative": gate1_narrative,
         "featured_mantra": featured_mantra,
         "surrender_steps": [
-            "Complete LK Debt Audit — acknowledge and resolve karmic obligations",
+            "Complete LK Debt Audit -- acknowledge and resolve karmic obligations",
             "Begin daily Mantra practice for minimum 21 days",
             "Return to Gate 0 when Conquest score reaches 75%",
         ],
@@ -288,7 +334,7 @@ async def action_plan(request: Request):
     # Profile + diagnosis
     profile = await db.lk_user_profiles.find_one({"user_id": user_email}, {"_id": 0})
     if not profile:
-        raise HTTPException(status_code=404, detail="LK profile missing — complete /api/lk/onboard first.")
+        raise HTTPException(status_code=404, detail="LK profile missing -- complete /api/lk/onboard first.")
 
     natal_chart = profile.get("natal_chart", {})
     age = profile.get("age", 30)
@@ -354,28 +400,28 @@ async def action_plan(request: Request):
     if gate0_expired or not gate0_verdict:
         actions.append({
             "priority": 1, "type": "gate0",
-            "label": "Gate 0 — Oracle Clearance Required",
+            "label": "Gate 0 -- Oracle Clearance Required",
             "detail": "Ask Krishna before entering the War Room. No active clearance found.",
             "cta_label": "Enter War Room", "cta_path": "/strategist",
         })
     elif gate0_verdict == "WAIT" and streak == 0:
         actions.append({
             "priority": 1, "type": "remedy",
-            "label": "Start LK Tracker — WAIT verdict active",
+            "label": "Start LK Tracker -- WAIT verdict active",
             "detail": "Oracle asks for patience. Activate your daily remedy streak to unlock the War Room.",
             "cta_label": "Start Tracker", "cta_path": "/lk-remedies/tracker",
         })
     elif gate0_verdict == "NO" and score < 60:
         actions.append({
             "priority": 1, "type": "remedy",
-            "label": f"Raise Score to 60% — {60 - score} pts needed",
+            "label": f"Raise Score to 60% -- {60 - score} pts needed",
             "detail": "Oracle blocked entry. Complete remedy cycle to clear the NO gate.",
             "cta_label": "Browse Remedies", "cta_path": "/lk-remedies/remedies",
         })
     elif gate0_verdict == "PRAY" and score < 75:
         actions.append({
             "priority": 1, "type": "surrender",
-            "label": f"Full Surrender — {75 - score} pts to re-test",
+            "label": f"Full Surrender -- {75 - score} pts to re-test",
             "detail": "Complete Mantra practice and LK Debt Audit. Return at 75%.",
             "cta_label": "Mantra Remedies", "cta_path": "/mantra-remedies",
         })
@@ -383,7 +429,7 @@ async def action_plan(request: Request):
     if pitru_rin:
         actions.append({
             "priority": len(actions) + 1, "type": "debt",
-            "label": "Karmic Debt Active — Debt Audit Required",
+            "label": "Karmic Debt Active -- Debt Audit Required",
             "detail": "Ancestral debt is suppressing your score. Run a full LK Debt Audit.",
             "cta_label": "LK Debt Audit", "cta_path": "/lk-remedies/debt-audit",
         })
@@ -391,7 +437,7 @@ async def action_plan(request: Request):
     if mercury_status in ("EMPTY_VESSEL", "RAHU_COLLISION"):
         actions.append({
             "priority": len(actions) + 1, "type": "mercury",
-            "label": f"Mercury Alert — {mercury_status.replace('_', ' ').title()}",
+            "label": f"Mercury Alert -- {mercury_status.replace('_', ' ').title()}",
             "detail": gate4.get("narrative", "Mercury configuration requires attention."),
             "cta_label": "LK Remedies", "cta_path": "/lk-remedies/remedies",
         })
@@ -548,7 +594,7 @@ class Gate0SelectRequest(BaseModel):
 
 @router.post("/gate0/select")
 async def gate0_select(body: Gate0SelectRequest, request: Request):
-    """KP oracle select with live astro context injected — single call replaces frontend two-step."""
+    """KP oracle select with live astro context injected -- single call replaces frontend two-step."""
     db = get_db(request)
     user_email = get_user_email(request)
 
@@ -628,7 +674,7 @@ async def gate0_status(request: Request):
             return {"status": "clear", "last_verdict": verdict, "conquest_score": None, "can_retest": False}
         return {"status": "wait_active", "last_verdict": verdict, "conquest_score": None, "can_retest": False}
 
-    # NO or PRAY — check conquest score to determine re-test eligibility
+    # NO or PRAY -- check conquest score to determine re-test eligibility
     tracker = await db.lk_tracker.find_one(
         {"user_id": user_email, "status": "active"}, {"streak_days": 1, "_id": 0}
     )
@@ -669,7 +715,7 @@ async def report_pdf(request: Request):
     <div class="section">
       <h2>I. Conquest Probability</h2>
       <div class="score">{state['conquest_probability']['score']}%</div>
-      <p><strong>{state['conquest_probability']['tier']}</strong> — {state['conquest_probability']['directive']}</p>
+      <p><strong>{state['conquest_probability']['tier']}</strong> -- {state['conquest_probability']['directive']}</p>
       <p>{state['conquest_probability']['narrative']}</p>
     </div>
 
