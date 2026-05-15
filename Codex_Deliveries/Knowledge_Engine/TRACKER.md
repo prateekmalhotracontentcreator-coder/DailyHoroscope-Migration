@@ -1,7 +1,7 @@
 # Knowledge Engine -- Module Tracker
 > Path: `Codex_Deliveries/Knowledge_Engine/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.3
+> Last updated: 2026-05-15 · v1.5
 
 ---
 
@@ -13,7 +13,9 @@
 | **Backend** | `backend/knowledge_engine.py` · `backend/ke_router.py` |
 | **Live endpoint** | `GET /api/knowledge-engine/arc-angel-windows` |
 | **Rules in DB** | 1,036+ · zero `approved` · all `pending_human_review` |
-| **Sprint phase** | Phase 1.2 -- Sprint 2 IN PROGRESS (issued to Codex 2026-05-15) · KE-2A issued in parallel |
+| **Sprint phase** | Phase 1.2 -- Sprint 2 IN PROGRESS · **RECONCILIATION-FIRST** -- arbitration helpers already in main repo; Codex to verify gate criteria, not re-implement |
+| **Module home** | `/Users/apple/Documents/New project/MODULE_KNOWLEDGE_ENGINE/` |
+| **Codex metrics** | Spec 88% · Build 79% · Integration 63% · Live readiness 28% (source: 05_MODULE_DASHBOARD.md 2026-05-15) |
 
 ---
 
@@ -22,7 +24,7 @@
 | Sprint | Gaps | Status | Gate |
 |---|---|---|---|
 | Sprint 1 -- Scoring Foundation | G-01 (α/β/γ wiring) | ✅ COMPLETE | Commit `57e347a` -- all 6 tests passed |
-| **Sprint 2 -- Arbitration Runtime** | G-03, G-05, G-06, G-04 | 🔵 IN PROGRESS | Issued to Codex 2026-05-15. ⚠️ INGEST FREEZE until gate passes. |
+| **Sprint 2 -- Arbitration Runtime** | G-03, G-05, G-06, G-04 | 🔵 IN PROGRESS -- RECONCILIATION-FIRST | Issued to Codex 2026-05-15. `_contradiction_score`, `_representation_mode`, `_build_tension_block` already present in main repo. Codex task: verify gate criteria against live code, not re-implement. ⚠️ INGEST FREEZE until gate passes. |
 | Sprint 3 -- Arc Angel Computation | G-07, G-08, G-09 | ⛔ BLOCKED on Sprint 2 | Must consume post-arbitration output |
 | Sprint 4 -- Questionnaire β/γ | G-10 | 🟣 KE-IQ commission (separate track) | Independent of Sprint 2/3 |
 
@@ -58,6 +60,9 @@
 | KE-OP-6 | Architecture rule enforcement: never add dasha functions to `knowledge_engine.py` | CC | 🔴 ENFORCE | All astronomical data from `vedic_calculator.py`. Verify on every integration. |
 | KE-OP-7 | `compute_dasha_timeline()` in `knowledge_engine.py` (line 829) -- flag for future refactor to import from `vedic_calculator` | CC | 🟢 LOW | Reads pre-computed dict only -- not a duplicate calculator. Do not add further dasha logic here. |
 | KE-OP-8 | Reconcile Sprint 2 acceptance against current repo state | CX | 🔴 CRITICAL | Intake audit on 2026-05-15 found `_contradiction_score`, `_representation_mode`, `_build_tension_block`, and arbitration summary wiring already present in `backend/knowledge_engine.py`. Do not re-implement blindly; verify gate criteria and tracker alignment first. |
+| KE-OP-9 | Verify `yoga_combination` dispatch hook: `knowledge_engine.py` → `ke_yoga_evaluator.evaluate_yoga_check` | CC | 🔴 HIGH | Codex reference build confirms `ke_yoga_evaluator.py` exists but `knowledge_engine.py` does not yet dispatch `yoga_combination` through it. Verify in main repo. If missing, port the one-line hook from the KE Phase 2 worktree at `/Users/apple/Documents/New project/ke_phase2a_worktree`. |
+| KE-OP-10 | Verify `combust` extraction path in `knowledge_engine.py` for `free_from_combustion` conditions | CC | 🟠 HIGH | Codex audit found this path missing in reference build. Verify in main repo. `free_from_combustion` rules are silently skipped if absent. |
+| KE-OP-11 | Run `migrate_ch41_varga_checkable.py` -- 24 Ch 41 Varga-tier rules need Mongo update | CC + TT | 🟠 HIGH | Script confirmed in `backend/scripts/_archive/`. Run against `horoscope_db` when ready: `python migrate_ch41_varga_checkable.py --mongo-url "$MONGO_URL" --db-name horoscope_db`. Sets 24 rules to `checkable=True` with `varga_dignity_tier` condition type. |
 
 ---
 
@@ -81,3 +86,4 @@
 | v1.2 | 2026-05-15 | KE-Sprint2 brief written. KE-2A brief written. KE-IQ brief written. Tracker created. | CC | `CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` etc. |
 | v1.3 | 2026-05-15 | KE-2B2 (Varga Dignity Wiring) + KE-2D (Varga Dignity Tier Evaluator) confirmed INTEGRATED via live-repo audit -- both built internally, not issued to Codex. KE-Sprint2 + KE-2A issued to Codex KE thread. KE-OP-1 + KE-OP-2 closed. Sprint 2 status: IN PROGRESS. | TT + CC | 2026-05-15 |
 | v1.4 | 2026-05-15 | Commission intake audit added KE-OP-8 after confirming the current repo already contains Sprint 2 arbitration helpers. Active work now centers on acceptance / integration reconciliation, not assuming a zero-state implementation. | CX | Intake audit 2026-05-15 19:28 IST |
+| v1.5 | 2026-05-15 | Codex KE thread response summary ingested. Sprint 2 row updated to RECONCILIATION-FIRST. Module home recorded. Codex dashboard metrics added (Spec 88% / Build 79% / Integration 63% / Live 28%). Three new open points added: KE-OP-9 (yoga_combination dispatch verify), KE-OP-10 (combust extraction verify), KE-OP-11 (migration script run). | TT + CX | 06_RESPONSE_SUMMARY.md 2026-05-15 |

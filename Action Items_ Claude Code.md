@@ -28,9 +28,14 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 All items below have been moved into commission briefs in `Codex_Deliveries/`. Nothing is pending here — each is either READY TO ISSUE or has a brief written and ready to issue.
 
 ### Knowledge Engine Thread
-- ~~KE-2A: Yoga Check Evaluation Engine (16 evaluator types)~~ → `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` · READY TO ISSUE
-- ~~KE-Sprint2: Arbitration Runtime (G-03/G-05/G-06/G-04 — ingest freeze active)~~ → `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` · READY TO ISSUE *(written 2026-05-15)*
+- ~~KE-2A: Yoga Check Evaluation Engine (16 evaluator types)~~ → 🔵 IN PROGRESS (issued 2026-05-15)
+- ~~KE-Sprint2: Arbitration Runtime (G-03/G-05/G-06/G-04)~~ → 🔵 IN PROGRESS -- RECONCILIATION-FIRST (issued 2026-05-15). Arbitration helpers already in main repo; Codex verifying gate criteria.
 - ~~KE-IQ: Questionnaire UI + β/γ wiring (TD-19/TD-25/G-10)~~ → `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` · READY TO ISSUE *(written 2026-05-15)*
+
+**CC Direct Actions — KE gaps confirmed by Codex intake audit 2026-05-15:**
+- [ ] **KE-OP-9** — Verify `knowledge_engine.py` dispatches `yoga_combination` through `ke_yoga_evaluator.evaluate_yoga_check`. If missing, port the dispatch hook from `/Users/apple/Documents/New project/ke_phase2a_worktree/backend/knowledge_engine.py`.
+- [ ] **KE-OP-10** — Verify `combust` extraction path in `knowledge_engine.py` for `free_from_combustion` conditions. If absent, rules silently skip.
+- [ ] **KE-OP-11** — Run `migrate_ch41_varga_checkable.py` against `horoscope_db` (24 Ch 41 Varga-tier rules). Script at `backend/scripts/_archive/migrate_ch41_varga_checkable.py`. Coordinate with TT for Render `MONGO_URL`.
 
 ### KP Oracle Thread
 - ~~KP-2A: Bundle editorial + visual share card + Remedies Admin tab~~ → `KP/CODEX_COMMISSION_KP_2A.md` · READY TO ISSUE

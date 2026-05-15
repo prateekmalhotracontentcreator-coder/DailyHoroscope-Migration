@@ -36,7 +36,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 
 | # | Module | Tracker | Status | Hottest Open Point | Owner |
 |---|---|---|---|---|---|
-| 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🔵 IN PROGRESS | KE-Sprint2 + KE-2A issued to Codex 2026-05-15. Awaiting delivery. INGEST FREEZE still active until Sprint 2 gate passes. | TT |
+| 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🔵 IN PROGRESS | Sprint 2 RECONCILIATION-FIRST -- helpers already in main repo. 3 CC verify items (OP-9/10/11). INGEST FREEZE active. | CC + TT |
 | 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | M-3 smoke test (TT) + `/remedies/ref/` endpoint (CC) | TT + CC |
 | 3 | Individual Reports | [`Individual_Reports/TRACKER.md`](Codex_Deliveries/Individual_Reports/TRACKER.md) | 🟣 PLANNED | IR-1 ready to issue Week 1 -- no dependency | TT |
 | 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` endpoint -- CC direct fix | CC |

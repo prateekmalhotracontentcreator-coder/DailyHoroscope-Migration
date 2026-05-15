@@ -22,7 +22,7 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **KE-Sprint2** | KE Arbitration Runtime (G-03/G-05/G-06/G-04) | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | 🔵 IN PROGRESS | KE Sprint 1 ✅ done | Issued to Codex 2026-05-15. INGEST FREEZE active until gate passes. Blocks Sprint 3. |
+| **KE-Sprint2** | KE Arbitration Runtime (G-03/G-05/G-06/G-04) | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | 🔵 IN PROGRESS -- RECONCILIATION-FIRST | KE Sprint 1 ✅ done | Issued 2026-05-15. `_contradiction_score`, `_representation_mode`, `_build_tension_block` already in main repo. Codex to verify gate criteria against live code, not re-implement. INGEST FREEZE active until gate passes. |
 | **KE-2A** | Yoga Check Evaluation Engine (16 evaluator types) | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | 🔵 IN PROGRESS | None | Issued to Codex 2026-05-15. Note: `ke_yoga_evaluator.py` scaffold + `varga_dignity_tier` evaluator already live (KE-2B2/KE-2D confirmed integrated). |
 
 ---
