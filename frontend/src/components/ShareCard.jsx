@@ -68,7 +68,7 @@ async function captureCard(cardRef) {
 }
 
 function downloadCanvas(canvas, filename) {
-  // iOS Safari silently ignores <a download> — use toBlob + window.open so the
+  // iOS Safari silently ignores <a download> -- use toBlob + window.open so the
   // user can long-press → "Save to Photos" / "Download".
   if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
     canvas.toBlob((blob) => {
@@ -81,7 +81,7 @@ function downloadCanvas(canvas, filename) {
   }
 
   // Desktop / Android: toDataURL is synchronous so the anchor click fires
-  // immediately in the same call stack — no async gap to lose gesture context.
+  // immediately in the same call stack -- no async gap to lose gesture context.
   const url = canvas.toDataURL('image/png');
   const a = document.createElement('a');
   a.href = url;
@@ -112,7 +112,7 @@ function nativeShareImage(canvas, filename, title, text) {
 
 // Format ISO datetime string → "6:18 AM" using the offset baked into the string
 function fmtISO(iso) {
-  if (!iso) return '—';
+  if (!iso) return '--';
   // Slice HH:MM from the time portion of the ISO string (location-local time)
   const timePart = iso.slice(11, 16); // "HH:MM"
   const [hStr, mStr] = timePart.split(':');
@@ -149,7 +149,7 @@ export function PanchangShareCard({ data, cardRef }) {
     }}>
       <span style={{ color: '#f5f0e8', fontSize: 16, fontWeight: 500 }}>{label}</span>
       <span style={{ color: accent, fontSize: 15, fontFamily: 'monospace', fontWeight: 700 }}>
-        {fmtISO(start)} – {fmtISO(end)}
+        {fmtISO(start)} - {fmtISO(end)}
       </span>
     </div>
   );
@@ -198,8 +198,8 @@ export function PanchangShareCard({ data, cardRef }) {
         {[
           { label: 'Sunrise',  value: summary?.sunrise,          icon: '☀' },
           { label: 'Sunset',   value: summary?.sunset,           icon: '🌅' },
-          { label: 'Moonrise', value: summary?.moonrise || '—',  icon: '🌙' },
-          { label: 'Moonset',  value: summary?.moonset  || '—',  icon: '🌑' },
+          { label: 'Moonrise', value: summary?.moonrise || '--',  icon: '🌙' },
+          { label: 'Moonset',  value: summary?.moonset  || '--',  icon: '🌑' },
         ].map(({ label, value, icon }) => (
           <div key={label} style={{
             background: 'rgba(197,160,89,0.06)',
@@ -208,7 +208,7 @@ export function PanchangShareCard({ data, cardRef }) {
           }}>
             <p style={{ fontSize: 22, margin: '0 0 5px' }}>{icon}</p>
             <p style={{ color: 'rgba(245,240,232,0.5)', fontSize: 11, letterSpacing: 1.5, textTransform: 'uppercase', margin: '0 0 4px' }}>{label}</p>
-            <p style={{ color: '#f5f0e8', fontSize: 17, fontWeight: 700, margin: 0, fontFamily: 'monospace' }}>{value || '—'}</p>
+            <p style={{ color: '#f5f0e8', fontSize: 17, fontWeight: 700, margin: 0, fontFamily: 'monospace' }}>{value || '--'}</p>
           </div>
         ))}
       </div>
@@ -216,7 +216,7 @@ export function PanchangShareCard({ data, cardRef }) {
       {/* Five Limbs */}
       <div style={{ marginBottom: 22 }}>
         <p style={{ color: '#C5A059', fontSize: 12, letterSpacing: 3.5, textTransform: 'uppercase', margin: '0 0 12px', textAlign: 'center' }}>
-          Pancha Anga — Five Limbs
+          Pancha Anga -- Five Limbs
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
           {[
@@ -232,13 +232,13 @@ export function PanchangShareCard({ data, cardRef }) {
               borderLeft: '3px solid rgba(197,160,89,0.4)',
             }}>
               <p style={{ color: '#C5A059', fontSize: 11, letterSpacing: 2, textTransform: 'uppercase', margin: '0 0 4px' }}>{label}</p>
-              <p style={{ color: '#f5f0e8', fontSize: 17, fontWeight: 700, margin: 0 }}>{value || '—'}</p>
+              <p style={{ color: '#f5f0e8', fontSize: 17, fontWeight: 700, margin: 0 }}>{value || '--'}</p>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Timing Windows — side by side */}
+      {/* Timing Windows -- side by side */}
       {(auspicious.length > 0 || inauspicious.length > 0) && (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 20 }}>
           {/* Auspicious */}
@@ -293,7 +293,7 @@ export function PanchangShareCard({ data, cardRef }) {
           <div>
             <p style={{ color: '#f5f0e8', fontSize: 18, fontWeight: 700, margin: '0 0 3px' }}>{yoga.name}</p>
             <p style={{ color: 'rgba(245,240,232,0.6)', fontSize: 14, margin: 0 }}>
-              {yoga.meaning?.split('—')[0]?.trim()}
+              {yoga.meaning?.split('--')[0]?.trim()}
             </p>
           </div>
         </div>
@@ -334,7 +334,7 @@ function extractOverview(content) {
     .replace(/\*\*([^*]+)\*\*/g, '$1')
     .replace(/\*([^*]+)\*/g, '$1')
     .replace(/#{1,6}\s?/g, '')
-    .replace(/^([A-Za-z]+)\s*[—\-]+\s*/s, '')
+    .replace(/^([A-Za-z]+)\s*[--\-]+\s*/s, '')
     .trim();
   const cutIdx = cleaned.search(/(Love\s*[&and]+\s*Relationships|Career\s*[&and]+\s*Finances|Health\s*[&and]+\s*Wellness|Lucky\s*Elements?)\s*:/i);
   const overview = cutIdx > 0 ? cleaned.substring(0, cutIdx).trim() : cleaned;
@@ -444,7 +444,7 @@ export function HoroscopeShareCard({ cardRef, signName, signSymbol, signDates, s
 
 // ─── Share Buttons ────────────────────────────────────────────────────────────
 
-export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-card', fbPageCaption = null }) {
+export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-card', fbPageCaption = null, visibleButtons = null }) {
   const [copied, setCopied]           = useState(false);
   const [generating, setGenerating]   = useState(false);
   const [hint, setHint]               = useState(null);
@@ -478,7 +478,7 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
       return;
     }
     // On mobile, try native share sheet (Android/iOS WhatsApp can receive the file directly).
-    // Skip this on desktop — nativeShareImage adds extra async overhead and the
+    // Skip this on desktop -- nativeShareImage adds extra async overhead and the
     // Windows/macOS share sheet doesn't reliably send images to WhatsApp anyway.
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
     if (isMobile) {
@@ -500,7 +500,7 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
       downloadCanvas(canvas, cardFilename);
     }
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`, '_blank');
-    showHint('📷 Card downloaded — create a new Facebook post and upload the image directly for best results.');
+    showHint('📷 Card downloaded -- create a new Facebook post and upload the image directly for best results.');
   };
 
   // ── X/Twitter: share URL (no image API without auth) ─────────────────────
@@ -508,11 +508,11 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
     window.open(`https://twitter.com/intent/tweet?text=${encodedTweet}&url=${encodedUrl}`, '_blank');
   };
 
-  // ── Instagram / YouTube / Save — always download directly, no share sheet ──
+  // ── Instagram / YouTube / Save -- always download directly, no share sheet ──
   const handleDownload = async (platform) => {
     const canvas = await getCanvas();
     if (!canvas) return;
-    // Download straight to device — never open native share sheet here,
+    // Download straight to device -- never open native share sheet here,
     // as dismissing it would skip the download entirely.
     downloadCanvas(canvas, cardFilename);
     const messages = {
@@ -593,12 +593,15 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
       action: handleCopy,
     },
   ];
+  const filteredButtons = Array.isArray(visibleButtons) && visibleButtons.length
+    ? buttons.filter((button) => visibleButtons.includes(button.id))
+    : buttons;
 
   return (
     <div className="space-y-3">
       <p className="text-xs font-semibold uppercase tracking-widest text-gold">Share</p>
       <div className="flex flex-wrap gap-2">
-        {buttons.map(btn => (
+        {filteredButtons.map(btn => (
           <button
             key={btn.id}
             onClick={btn.action}
@@ -616,7 +619,7 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
             className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-all bg-[#1877F2] hover:bg-[#1464d4] text-white ${(generating || fbPosting) ? 'opacity-60 cursor-wait' : ''}`}
           >
             <FacebookIcon />
-            {fbPosting ? 'Posting…' : 'Post to Page'}
+            {fbPosting ? 'Posting...' : 'Post to Page'}
           </button>
         )}
       </div>

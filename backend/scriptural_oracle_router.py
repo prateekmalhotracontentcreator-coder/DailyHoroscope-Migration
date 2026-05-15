@@ -50,6 +50,12 @@ class BilingualBlock(StrictModel):
     english_block: str
 
 
+class CrossModuleTrigger(StrictModel):
+    module: str
+    condition: str
+    prompt: str
+
+
 class AstrologyContext(StrictModel):
     current_mahadasha: str | None = None
     antardasha: str | None = None
@@ -83,6 +89,7 @@ class KrishnaCanonicalAnswer(StrictModel):
     content_status: str = "provisional_seed"
     behavioral_remedy: BilingualBlock | None = None   # v2 bundle: contemplative practice
     remedy_ref: str | None = None                     # v2 bundle: lookup key → krishna_prashnavali_remedies
+    cross_module_trigger: CrossModuleTrigger | None = None
 
 
 class KrishnaSelectionRequest(StrictModel):

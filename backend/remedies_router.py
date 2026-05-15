@@ -43,6 +43,12 @@ class RemedyStatusUpdateRequest(BaseModel):
     record_id: str
     approval_status: Literal["approved", "pending_human_review", "flagged"]
 
+
+class RemedyStatusPatchBody(BaseModel):
+    collection: Literal["interpretation_rules", "knowledge_rules", "krishna_prashnavali_remedies"]
+    science_id: str
+    approval_status: Literal["approved", "pending_human_review", "flagged"]
+
 REMEDY_TYPES: dict[str, str] = {
     "dana":      "jyotish_remedies_dhana",
     "gemstones": "jyotish_remedies_gemstones",
@@ -611,12 +617,25 @@ def _status_sort_value(status: str) -> tuple[int, str]:
 def _admin_record_from_doc(collection_name: str, doc: dict) -> dict[str, Any]:
     science_id = str(doc.get("science_id", ""))
     approval_status = str(doc.get("approval_status", "unknown"))
+    collection_key = {
+        "interpretation_rules": "jyotish_remedies",
+        "knowledge_rules": "lk_remedies",
+        "krishna_prashnavali_remedies": "krishna_prashnavali_remedies",
+    }.get(collection_name, collection_name)
     if collection_name == "interpretation_rules":
         normalized = _normalize_interpretation_rule(doc)
         record_id = str(doc.get("rule_id", ""))
+        planet = _normalize_planet_name(
+            doc.get("primary_planet")
+            or ((doc.get("condition") or {}).get("planets_involved") or [None])[0]
+        )
     elif collection_name == "knowledge_rules":
         normalized = _normalize_lk_rule(doc)
         record_id = f"lk-{doc.get('id')}"
+        planet = _normalize_planet_name(
+            doc.get("primary_planet")
+            or ((doc.get("condition") or {}).get("planets_involved") or [None])[0]
+        )
     else:
         record_id = str(doc.get("remedy_id", ""))
         normalized = {
@@ -626,22 +645,27 @@ def _admin_record_from_doc(collection_name: str, doc: dict) -> dict[str, Any]:
             "title": _flatten_text(doc.get("title")),
             "description": _flatten_text(doc.get("behavioral_display_hint")) or _flatten_text(doc.get("ritual_remedy")),
         }
+        planet = _normalize_planet_name(doc.get("planet"))
 
     updated_at = doc.get("updated_at") or doc.get("created_at") or ""
     return {
         "source_collection": collection_name,
+        "collection_key": collection_key,
         "science_id": science_id,
         "record_id": record_id,
+        "remedy_id": record_id,
         "tradition": normalized.get("tradition", "unknown"),
         "category": normalized.get("category", "ritual"),
         "action_type": normalized.get("action_type", "ongoing"),
+        "planet": planet or "--",
         "approval_status": approval_status,
         "title": normalized.get("title", ""),
         "description": normalized.get("description", ""),
         "updated_at": updated_at,
         "search_blob": (
             f"{record_id} {science_id} {normalized.get('title', '')} "
-            f"{normalized.get('description', '')} {_flatten_text(doc.get('title'))}"
+            f"{normalized.get('description', '')} {_flatten_text(doc.get('title'))} "
+            f"{planet or ''} {normalized.get('tradition', '')} {collection_key}"
         ).lower(),
         "document": doc,
     }
@@ -909,6 +933,24 @@ async def update_admin_remedy_status(
         "ok": True,
         "record": _admin_record_from_doc(body.collection, updated),
     }
+
+
+@router.patch("/admin/records/{remedy_id}/status")
+async def patch_admin_remedy_status(
+    remedy_id: str,
+    body: RemedyStatusPatchBody,
+    request: Request,
+) -> dict[str, Any]:
+    db = _get_db(request)
+    await require_admin(request, db)
+
+    update_request = RemedyStatusUpdateRequest(
+        collection=body.collection,
+        science_id=body.science_id,
+        record_id=remedy_id,
+        approval_status=body.approval_status,
+    )
+    return await update_admin_remedy_status(update_request, request)
 
 
 # ── Generate personalised remedy report ────────────────────────────────────────

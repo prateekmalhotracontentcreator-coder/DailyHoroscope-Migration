@@ -8,6 +8,8 @@ import { useAuth } from "../../context/AuthContext";
 import KrishnaOracleGrid from "../../components/KrishnaOracleGrid";
 import { extractChaupaiIndices } from "../../utils/chaupaiExtractor";
 import SharedBirthCityPicker from "../../components/SharedBirthCityPicker";
+import KrishnaShareCard from "../../components/KrishnaShareCard";
+import { ShareButtons } from "../../components/ShareCard";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
 const API = `${BACKEND_URL}/api/oracle/krishna-prashnavali`;
@@ -213,6 +215,7 @@ function KrishnaOracleApp() {
   const [reading, setReading] = useState(null);
   const [loadingPastReading, setLoadingPastReading] = useState(false);
   const guidanceRef = useRef(null);
+  const shareCardRef = useRef(null);
 
   // Scroll to Guidance Report whenever a reading is loaded (new or past)
   useEffect(() => {
@@ -365,23 +368,6 @@ function KrishnaOracleApp() {
       setError(submitError?.response?.data?.detail || "Unable to generate Krishna guidance right now.");
     } finally {
       setSubmitting(false);
-    }
-  }
-
-  async function handleShare() {
-    if (!reading?.report_id) return;
-    try {
-      const response = await axios.post(
-        `${API}/share`,
-        { report_id: reading.report_id },
-        { withCredentials: true }
-      );
-      const text = response.data?.share_text || "";
-      if (navigator?.clipboard?.writeText) {
-        await navigator.clipboard.writeText(text);
-      }
-    } catch (shareError) {
-      setError(shareError?.response?.data?.detail || "Unable to prepare share text.");
     }
   }
 
@@ -638,13 +624,25 @@ function KrishnaOracleApp() {
                   <p className="m-0 text-[11px] uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Sequence indices</p>
                   <p className="m-0 mt-3 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{revealIndices.join(", ")}</p>
                 </div>
-                <button
-                  type="button"
-                  onClick={handleShare}
-                  className="w-full rounded-xl border border-amber-500 bg-amber-500 px-4 py-3 text-sm font-semibold text-stone-950 transition hover:bg-amber-400"
-                >
-                  Copy share text
-                </button>
+                <KrishnaShareCard
+                  ref={shareCardRef}
+                  reading={{
+                    verdict_display: reading.answer.verdict_display,
+                    chaupai_phrase: reading.answer.chaupai_phrase || reading.chaupai_string?.sanskrit_block || "",
+                    title: reading.answer.title,
+                    krishna_answer: reading.answer.krishna_answer,
+                    what_to_do: reading.answer.what_to_do,
+                    krishna_message: reading.answer.krishna_message,
+                  }}
+                />
+                <ShareButtons
+                  pageUrl={`${window.location.origin}/krishna-prashnavali`}
+                  shareText={`${reading.answer.krishna_answer.english_block}\nVerdict: ${reading.answer.verdict_display}\n${reading.answer.what_to_do.english_block}`}
+                  cardRef={shareCardRef}
+                  filename={`krishna-prashnavali-${reading.answer.answer_id || reading.answer_id || reading.report_id || 'reading'}`}
+                  fbPageCaption={localStorage.getItem('admin_token') ? `🪔 Krishna Prashnavali -- ${reading.answer.verdict_display}\n\n${reading.answer.krishna_answer.english_block}\n\n${reading.answer.what_to_do.english_block}\n\n🔮 everydayhoroscope.in/krishna-prashnavali` : null}
+                  visibleButtons={['whatsapp', 'facebook', 'save', 'copy']}
+                />
               </div>
             </div>
           </SectionCard>
