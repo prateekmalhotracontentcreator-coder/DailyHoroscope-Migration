@@ -1,7 +1,7 @@
 # Knowledge Engine -- Module Tracker
 > Path: `Codex_Deliveries/Knowledge_Engine/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.2
+> Last updated: 2026-05-15 · v1.3
 
 ---
 
@@ -13,7 +13,7 @@
 | **Backend** | `backend/knowledge_engine.py` · `backend/ke_router.py` |
 | **Live endpoint** | `GET /api/knowledge-engine/arc-angel-windows` |
 | **Rules in DB** | 1,036+ · zero `approved` · all `pending_human_review` |
-| **Sprint phase** | Phase 1.2 -- Sprint 2 in progress (brief complete, not yet issued) |
+| **Sprint phase** | Phase 1.2 -- Sprint 2 IN PROGRESS (issued to Codex 2026-05-15) · KE-2A issued in parallel |
 
 ---
 
@@ -22,7 +22,7 @@
 | Sprint | Gaps | Status | Gate |
 |---|---|---|---|
 | Sprint 1 -- Scoring Foundation | G-01 (α/β/γ wiring) | ✅ COMPLETE | Commit `57e347a` -- all 6 tests passed |
-| **Sprint 2 -- Arbitration Runtime** | G-03, G-05, G-06, G-04 | 🔴 READY TO ISSUE | ⚠️ INGEST FREEZE until this gate passes |
+| **Sprint 2 -- Arbitration Runtime** | G-03, G-05, G-06, G-04 | 🔵 IN PROGRESS | Issued to Codex 2026-05-15. ⚠️ INGEST FREEZE until gate passes. |
 | Sprint 3 -- Arc Angel Computation | G-07, G-08, G-09 | ⛔ BLOCKED on Sprint 2 | Must consume post-arbitration output |
 | Sprint 4 -- Questionnaire β/γ | G-10 | 🟣 KE-IQ commission (separate track) | Independent of Sprint 2/3 |
 
@@ -38,8 +38,10 @@
 | KE-Item6 | Brihat Kundali × KE Route (CPath-1 Item 6) | ✅ INTEGRATED | `_archive/` |
 | KE-Item7 | Simplified Tranche Filter (CPath-1 Item 7) | ✅ INTEGRATED | `_archive/` |
 | KE-Item8 | Tranche Filter UI Feedback (CPath-1 Item 8) | ✅ INTEGRATED | `_archive/` |
-| **KE-Sprint2** | Arbitration Runtime (G-03/G-04/G-05/G-06) | 🔴 READY TO ISSUE | `CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` |
-| **KE-2A** | Yoga Check Evaluation Engine (16 evaluator types) | 🔴 READY TO ISSUE | `CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` |
+| **KE-2B2** | Varga Dignity Wiring (facts layer) | ✅ INTEGRATED -- confirmed 2026-05-15 | `knowledge_engine.py` lines 195-208, 312, 360, 488-508. Built internally. |
+| **KE-2D** | Varga Dignity Tier Evaluator | ✅ INTEGRATED -- confirmed 2026-05-15 | `ke_yoga_evaluator.py` lines 373-387, 631. 37 tests green. Migration script archived. Built internally. |
+| **KE-Sprint2** | Arbitration Runtime (G-03/G-04/G-05/G-06) | 🔵 IN PROGRESS | Issued to Codex 2026-05-15. `CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` |
+| **KE-2A** | Yoga Check Evaluation Engine (16 evaluator types) | 🔵 IN PROGRESS | Issued to Codex 2026-05-15. `CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` |
 | **KE-IQ** | Questionnaire UI + β/γ KE Wiring (TD-19/TD-25/G-10) | 🟣 READY TO ISSUE | `CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` |
 
 ---
@@ -48,13 +50,14 @@
 
 | # | Item | Owner | Priority | Notes |
 |---|---|---|---|---|
-| KE-OP-1 | **Issue KE-Sprint2 to Codex immediately** | TT | 🔴 CRITICAL | Ingest freeze lifts only after Sprint 2 gate passes. Brief complete. |
-| KE-OP-2 | **Issue KE-2A to Codex** (independent of Sprint 2) | TT | 🔴 CRITICAL | New `ke_yoga_evaluator.py` + one-line hook into `_condition_matches()` |
+| ~~KE-OP-1~~ | ~~Issue KE-Sprint2 to Codex immediately~~ | TT | ✅ DONE | Issued 2026-05-15. |
+| ~~KE-OP-2~~ | ~~Issue KE-2A to Codex~~ | TT | ✅ DONE | Issued 2026-05-15. |
 | KE-OP-3 | Issue KE-IQ (ideally after Sprint 2; can run parallel) | TT | 🟠 HIGH | `QuestionnairePage.jsx` exists (29 lines). `QuestionnaireWidget.jsx` exists (1101 lines). Backend β/γ wiring needed. |
 | KE-OP-4 | Co-founder sign-off on first rule batch (`pending_human_review` → `approved`) | TT | 🟠 HIGH | Until signed off, Legacy Model is the only active signal. Zero `approved` rules currently. |
 | KE-OP-5 | After Sprint 2 gate passes: issue Sprint 3 (G-07/G-08/G-09 Arc Angel computation) | TT | 🟠 HIGH | Depends strictly on KE-Sprint2 gate. |
 | KE-OP-6 | Architecture rule enforcement: never add dasha functions to `knowledge_engine.py` | CC | 🔴 ENFORCE | All astronomical data from `vedic_calculator.py`. Verify on every integration. |
 | KE-OP-7 | `compute_dasha_timeline()` in `knowledge_engine.py` (line 829) -- flag for future refactor to import from `vedic_calculator` | CC | 🟢 LOW | Reads pre-computed dict only -- not a duplicate calculator. Do not add further dasha logic here. |
+| KE-OP-8 | Reconcile Sprint 2 acceptance against current repo state | CX | 🔴 CRITICAL | Intake audit on 2026-05-15 found `_contradiction_score`, `_representation_mode`, `_build_tension_block`, and arbitration summary wiring already present in `backend/knowledge_engine.py`. Do not re-implement blindly; verify gate criteria and tracker alignment first. |
 
 ---
 
@@ -76,3 +79,5 @@
 | v1.0 | 2026-04-10 | CPath-1 Items 1-8 complete. Ingest, validation, tranche filter, library console, Brihat KE route. `science_registry` seeded. | Codex + CC | Multiple commits |
 | v1.1 | 2026-05-14 | Sprint 1 gate passed (α/β/γ scoring). All 6 acceptance tests green. INGEST FREEZE declared. | CC | Commit `57e347a` |
 | v1.2 | 2026-05-15 | KE-Sprint2 brief written. KE-2A brief written. KE-IQ brief written. Tracker created. | CC | `CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` etc. |
+| v1.3 | 2026-05-15 | KE-2B2 (Varga Dignity Wiring) + KE-2D (Varga Dignity Tier Evaluator) confirmed INTEGRATED via live-repo audit -- both built internally, not issued to Codex. KE-Sprint2 + KE-2A issued to Codex KE thread. KE-OP-1 + KE-OP-2 closed. Sprint 2 status: IN PROGRESS. | TT + CC | 2026-05-15 |
+| v1.4 | 2026-05-15 | Commission intake audit added KE-OP-8 after confirming the current repo already contains Sprint 2 arbitration helpers. Active work now centers on acceptance / integration reconciliation, not assuming a zero-state implementation. | CX | Intake audit 2026-05-15 19:28 IST |

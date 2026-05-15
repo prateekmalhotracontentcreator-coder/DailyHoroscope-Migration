@@ -22,8 +22,8 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **KE-Sprint2** | KE Arbitration Runtime (G-03/G-05/G-06/G-04) | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | READY TO ISSUE | KE Sprint 1 ✅ done | **INGEST FREEZE active** -- no new chapters until this gate passes. Blocks Sprint 3 (Arc Angel computation) |
-| **KE-2A** | Yoga Check Evaluation Engine (16 evaluator types) | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | READY TO ISSUE | None | New `ke_yoga_evaluator.py` + one-line hook into `_condition_matches()` |
+| **KE-Sprint2** | KE Arbitration Runtime (G-03/G-05/G-06/G-04) | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | 🔵 IN PROGRESS | KE Sprint 1 ✅ done | Issued to Codex 2026-05-15. INGEST FREEZE active until gate passes. Blocks Sprint 3. |
+| **KE-2A** | Yoga Check Evaluation Engine (16 evaluator types) | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | 🔵 IN PROGRESS | None | Issued to Codex 2026-05-15. Note: `ke_yoga_evaluator.py` scaffold + `varga_dignity_tier` evaluator already live (KE-2B2/KE-2D confirmed integrated). |
 
 ---
 
@@ -68,6 +68,8 @@
 
 | ID | Commission | File | Commit |
 |---|---|---|---|
+| KE-2B2 | Varga Dignity Wiring (facts layer) | `knowledge_engine.py` lines 195-208, 312, 488-508 | Built internally -- confirmed live 2026-05-15 |
+| KE-2D | Varga Dignity Tier Evaluator | `ke_yoga_evaluator.py` lines 373-387, 631 | Built internally -- 37 tests green, migration archived -- confirmed live 2026-05-15 |
 | ARC-UI | Arc Angel UI Panel (ArcAngelPanel.jsx) | `Arc_Angel/CODEX_COMMISSION_ARC_ANGEL_UI_PANEL.md` (archived) | `c01ec8d` |
 | KE-Ingest | Batch Book Ingest Automation v2 | `Knowledge_Engine/CODEX_COMMISSION_KE_BATCH_INGEST.md` | ✅ |
 | KE-Val | Automated Rule Validation Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_VALIDATION_ENGINE.md` | ✅ |
@@ -89,7 +91,7 @@
 | Sprint | Gaps | Status | Gate |
 |---|---|---|---|
 | Sprint 1 -- Scoring Foundation | G-01 (α/β/γ wiring) | ✅ COMPLETE -- commit `57e347a` | ✅ ALL 6 tests passed |
-| **Sprint 2 -- Arbitration Runtime** | G-03, G-05, G-06, G-04 | **READY TO ISSUE** → brief at `KE-Sprint2` | Ingest freeze until gate passes |
+| **Sprint 2 -- Arbitration Runtime** | G-03, G-05, G-06, G-04 | 🔵 IN PROGRESS -- issued to Codex 2026-05-15 | Ingest freeze until gate passes |
 | Sprint 3 -- Arc Angel Computation | G-07, G-08, G-09 | Blocked on Sprint 2 gate | Must consume post-arbitration output |
 | Sprint 4 -- Questionnaire β/γ | G-10 | Separate commission KE-IQ | -- |
 
