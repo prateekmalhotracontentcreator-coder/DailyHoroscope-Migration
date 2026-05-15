@@ -1,7 +1,7 @@
 # Codex Deliveries -- Master Commission Index
 
 > EverydayHoroscope · Repo: `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`
-> Last updated: 2026-05-15
+> Last updated: 2026-05-15 (5 new commissions added: KE-Sprint2, KE-IQ, ARC-2, STR-2J, ORACLE-P3)
 >
 > **Rule:** Every commission issued to Codex gets a row here + a file in the relevant module folder.
 > Temple Team creates the Codex folder and adds the INDEX row before issuing each commission.
@@ -53,6 +53,8 @@ Codex_Deliveries/
 | KE-Item6 | Brihat Kundali × KE Route (CPath-1 Item 6) | `Knowledge_Engine/_archive/CODEX_KE_ITEM6_BRIHAT_KUNDALI_KE_delivered.md` | INTEGRATED | 2026-04-10 |
 | KE-Item7 | Simplified Tranche Filter (CPath-1 Item 7) | `Knowledge_Engine/_archive/CODEX_KE_ITEM7_TRANCHE_FILTER_delivered.md` | INTEGRATED | 2026-04-10 |
 | KE-Item8 | Tranche Filter UI Feedback (CPath-1 Item 8) | `Knowledge_Engine/_archive/CODEX_KE_ITEM8_TRANCHE_UI_delivered.md` | INTEGRATED | 2026-04-10 |
+| KE-Sprint2 | KE Phase 1.2 Sprint 2 -- Arbitration Runtime (G-03/G-04/G-05/G-06) | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | READY TO ISSUE | 2026-05-15 |
+| KE-IQ | Questionnaire UI + β/γ Knowledge Engine Wiring (TD-19/TD-25/G-10) | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | READY TO ISSUE | 2026-05-15 |
 | KE-2A | Yoga Check Evaluation Engine (16 evaluator types) | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | READY TO ISSUE | 2026-05-15 |
 
 ### KP Oracle (Krishna Prashnavali)
@@ -83,6 +85,7 @@ Codex_Deliveries/
 | ID | Commission | Brief file | Status | Issued |
 |---|---|---|---|---|
 | STR-1 | Premium Landing Page + War Room Visual Rebuild | `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` | READY TO ISSUE | 2026-05-14 |
+| STR-2J | Strategist Missions UI -- MissionCard responsive + decision_logic + dasha timing | `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` | READY TO ISSUE | 2026-05-15 |
 | STR-Spec | Full Strategist Build Spec | `Strategist/THE_STRATEGIST_FULL_SPEC.md` | REFERENCE DOC | 2026-05-09 |
 
 ### Arc Angel
@@ -90,6 +93,7 @@ Codex_Deliveries/
 | ID | Commission | Brief file | Status | Issued |
 |---|---|---|---|---|
 | ARC-UI | Arc Angel UI Panel (ArcAngelPanel.jsx) | `Arc_Angel/CODEX_COMMISSION_ARC_ANGEL_UI_PANEL.md` | INTEGRATED | 2026-04-19 |
+| ARC-2 | Arc Angel Phase 2 -- Confidence % lift + Questionnaire gating + Desktop sidebar | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | READY TO ISSUE | 2026-05-15 |
 
 ### Tarot
 
@@ -148,6 +152,12 @@ Codex_Deliveries/
 |---|---|---|---|---|
 | PAN-L1 | Language/Regional Pages (Tamil, Telugu, Malayalam, etc.) | `Panchang/CODEX_COMMISSION_PANCHANG_LANGUAGE_PAGES.md` | READY TO ISSUE | 2026-04-30 |
 
+### World Oracles (Phase 3)
+
+| ID | Commission | Brief file | Status | Issued |
+|---|---|---|---|---|
+| ORACLE-P3 | Multi-Scriptural World Oracles -- Bible, Islamic Fal-nama, Taoist I Ching, Greek Oracle, Sikh Hukamnama | `World_Oracles/CODEX_COMMISSION_ORACLE_P3_WORLD_ORACLES.md` | READY TO ISSUE | 2026-05-15 |
+
 ### SEO & Web Performance
 
 | ID | Commission | Brief file | Status | Issued |
@@ -185,3 +195,4 @@ When a commission is superseded or completed:
 | `Notifications/` | Notification Engine (email, push, WhatsApp) |
 | `Panchang/` | Panchang language/regional pages |
 | `SEO/` | SEO + Marketing + Web Performance |
+| `World_Oracles/` | Multi-Scriptural Oracle Modules (Bible, Islamic, Taoist, Greek, Sikh) -- Phase 3 |
