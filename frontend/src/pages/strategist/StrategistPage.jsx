@@ -19,7 +19,7 @@ const LAYERS = [
     n: 0,
     short: 'Oracle',
     title: 'Gate 0 -- Krishna Prashnavali Oracle',
-    tagline: 'Ask Krishna before any campaign. One verdict determines the day's route into the War Room.',
+    tagline: "Ask Krishna before any campaign. One verdict determines the day's route into the War Room.",
     icon: '⚔️',
   },
   {
