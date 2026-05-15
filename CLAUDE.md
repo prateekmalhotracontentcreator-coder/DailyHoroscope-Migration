@@ -5,15 +5,16 @@
 
 ## ⭐ SESSION START PROTOCOL -- READ FIRST
 
-Before writing a single line of code, read these three files in order:
+Before writing a single line of code, read these files in order:
 
 | # | File | Purpose |
 |---|---|---|
-| 1 | **`TEMPLE_TRACKER.md`** | Per-module status, open points, revision history. The definitive live state of every module. |
-| 2 | **`Action Items_ Claude Code.md`** | Temple Team (TT) and Claude Code (CC) action items -- what is blocked and on whom. |
-| 3 | **`Codex_Deliveries/List_of_Pending_Codex_Commissions.md`** | Commission queue -- what is ready to issue, in progress, or integrated. |
+| 1 | **`TEMPLE_TRACKER.md`** | Master dashboard -- 17-module status index. Tells you what is CRITICAL, BLOCKED, or ACTIVE at a glance. |
+| 2 | **`Codex_Deliveries/[Module]/TRACKER.md`** | Individual module tracker for the module(s) you are about to work on. Open points, commission status, version history. |
+| 3 | **`Action Items_ Claude Code.md`** | Temple Team (TT) and Claude Code (CC) action items -- what is blocked and on whom. |
+| 4 | **`Codex_Deliveries/List_of_Pending_Codex_Commissions.md`** | Commission queue -- what is ready to issue, in progress, or integrated. |
 
-**At the end of every session:** update `TEMPLE_TRACKER.md` for every module touched (status, open points, revision log row). This is mandatory -- no exceptions.
+**At the end of every session:** update `Codex_Deliveries/[Module]/TRACKER.md` for every module touched -- add a version history row, update open points, update status badge if it changed. This is mandatory -- no exceptions.
 
 ---
 
@@ -184,9 +185,10 @@ Logged-out: most pages show public SEO landing (noindex) with auth CTA.
 ## End-of-Session Protocol (MANDATORY)
 
 Before the session closes or context is compacted, Claude Code must:
-1. Update `TEMPLE_TRACKER.md` for every module touched -- status badge, open points, revision log row.
-2. Strike off any completed items in `Action Items_ Claude Code.md`.
-3. Update commission status in `Codex_Deliveries/List_of_Pending_Codex_Commissions.md` if any commission moved state.
+1. Update **`Codex_Deliveries/[Module]/TRACKER.md`** for every module touched -- add version history row, update open points table, change status badge if applicable.
+2. Update **`TEMPLE_TRACKER.md`** dashboard row for any module whose status changed.
+3. Strike off any completed items in `Action Items_ Claude Code.md`.
+4. Update commission status in `Codex_Deliveries/List_of_Pending_Codex_Commissions.md` if any commission moved state.
 
 ---
 
