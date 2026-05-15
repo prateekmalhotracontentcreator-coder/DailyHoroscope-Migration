@@ -55,7 +55,7 @@ Each section below is a **5-line brief** for one module. It tells you: what the 
 **What it is:** A premium Integrated Vedic Career Mentor -- "Bloomberg Terminal for Karma". Combines Krishna Prashnavali (Gate 0), Lal Kitab 5-gate diagnostics, and live Vedic birth chart into a war room for founders and executives. 823 rules in MongoDB. Live at `/strategist`.
 **What's live:** Full backend (strategist_router.py, strategist_engine.py), all 6 layers, Gate 0 oracle, Conquest Gauge, Golden Hour state machine, Scoreboard, 5-gate LK diagnostics, Mission Board, Surrogate Bridge, 43-day Action Plan, PDF Executive Report -- all working. Visually basic.
 **What's pending:** STR-1 -- new public landing page at `/the-strategist` + full War Room visual rebuild (premium UX to match Longevity/KP quality bar). STR-2J -- Missions page improvements (decision_logic/pivot_logic rendering, command planet badge, Dasha timing bar, responsive grid).
-**Key constraint:** Temple Team must sign off on the Strategist 22 records (M-4) before STR-1 integration. STR-2J explicitly excludes all files covered by STR-1 -- coordinate if running in the same Codex thread.
+**Key constraint:** STR-1 is fully unblocked -- M-4 cleared 2026-05-15 (22 records confirmed live; `strategist_engine.py` does not filter on `approval_status`). STR-2J ✅ INTEGRATED commit `9ad2e0a`. STR-1 explicitly excludes `StrategistMissionsPage.jsx` (owned by STR-2J).
 **Commission files:** `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` (STR-1) · `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` (STR-2J) · Reference: `Strategist/THE_STRATEGIST_FULL_SPEC.md`
 
 ---

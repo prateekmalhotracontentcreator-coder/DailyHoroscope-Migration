@@ -14,7 +14,7 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 | M-1 | **OG image** — replace `frontend/public/og-image.png` with proper 1200×630 PNG (~80 KB). Current file is 626 KB at wrong aspect ratio. | SEO + social sharing broken until fixed | 🔴 HIGH |
 | M-2 | **Legal pages seed** — run `python3 backend/scripts/seed_policies_v1.py --mongo-url "$MONGO_URL" --db-name horoscope_db` against Render | Legal/Privacy/Terms pages show empty | 🔴 HIGH |
 | M-3 | **KP production smoke test** (manual) — verify KrishnaOraclePage end-to-end before opening KP-2A commission integration | Blocks KP-2A integration | 🔴 HIGH |
-| M-4 | **Strategist 22 records approval sign-off** — confirm the 22 Strategist/LK records are production-ready before STR-1 integration | Blocks STR-1 integration | 🔴 HIGH |
+| ~~M-4~~ | ~~**Strategist 22 records approval sign-off**~~ — ✅ **CLEARED 2026-05-15.** All 22 records (IDs 1011–1020 + 1126–1137) confirmed ingested and live. `strategist_engine.py` does not filter on `approval_status` — pending_human_review has zero functional effect. STR-1 is unblocked. | ~~Blocks STR-1 integration~~ | ✅ DONE |
 | M-5 | **WhatsApp** — complete OTP verification for +91 96431 10001 in WhatsApp Manager + add payment method to WABA on Meta | WhatsApp notifications blocked | 🟡 MED |
 | M-6 | **Instagram Business Account ID** — not loading in Meta dashboard. Resolve to enable Instagram posting from Admin Console | Instagram posting blocked | 🟡 MED |
 | M-7 | **react-snap vs helmet-async** — design decision on pre-render strategy. Await SEO-1 thread findings before deciding | SEO-1 thread will recommend | 🟢 LOW |
@@ -45,7 +45,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 
 ### The Strategist Thread
 - ~~STR-1: Premium Landing Page + War Room Visual Rebuild~~ → `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` · READY TO ISSUE
-- ~~STR-2J: Strategist Missions UI improvements (MissionCard responsive + dasha display)~~ → `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · READY TO ISSUE *(written 2026-05-15)*
+- ~~STR-2J: Strategist Missions UI improvements (MissionCard responsive + dasha display)~~ → `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · ✅ INTEGRATED commit `9ad2e0a` *(delivered + dasha backend fix 2026-05-15)*
 
 ### Arc Angel Thread
 - ~~ARC-2: Arc Angel Phase 2 — Confidence % lift + questionnaire gating + desktop sidebar~~ → `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` · READY TO ISSUE *(written 2026-05-15)*
