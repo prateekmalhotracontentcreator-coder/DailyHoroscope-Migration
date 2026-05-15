@@ -701,7 +701,8 @@ async def _fetch_report(request: Request, report_id: str) -> dict[str, Any]:
             "doc_type": "report",
             "oracle_mode": "krishna_prashnavali",
             "report_id": report_id,
-        }
+        },
+        {"_id": 0},
     )
     if document is None:
         raise HTTPException(status_code=404, detail="Krishna oracle report not found.")
@@ -817,7 +818,7 @@ async def get_krishna_history(
     skip = (page - 1) * limit
     collection = _collection(request)
     total = await collection.count_documents(query)
-    documents = await collection.find(query).sort("created_at", -1).skip(skip).limit(limit).to_list(length=limit)
+    documents = await collection.find(query, {"_id": 0}).sort("created_at", -1).skip(skip).limit(limit).to_list(length=limit)
     return KrishnaHistoryResponse(
         items=[_serialize_history_item(document) for document in documents],
         page=page,
