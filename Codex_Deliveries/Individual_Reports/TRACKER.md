@@ -1,7 +1,7 @@
 # Individual Reports -- Module Tracker
 > Path: `Codex_Deliveries/Individual_Reports/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.0
+> Last updated: 2026-05-15 · v1.1
 
 ---
 
@@ -9,10 +9,10 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟣 PLANNED -- backend live, no public SEO landing pages |
-| **Frontend (live)** | `frontend/src/pages/BirthChartPage.jsx` · `BrihatKundliPage.jsx` |
+| **Status** | 🔵 IN PROGRESS -- IR-1 issued to Codex 2026-05-15. Awaiting delivery. |
+| **Frontend (live)** | `frontend/src/pages/BirthChartPage.jsx` · `frontend/src/pages/kundali/BrihatKundliPage.jsx` · premium report tool at `/reports` |
 | **Backend** | `backend/vedic_calculator.py` + individual report endpoints |
-| **Live URL** | App-only (no public pages -- zero Google discoverability) |
+| **Live URL** | Current production remains app-only for report generation; new public SEO pages are built locally and awaiting Temple integration |
 | **Report types** | Natal · Dasha · Compatibility · Career · Remedial |
 
 ---
@@ -24,7 +24,7 @@
 | IR-Contract-v1 | Original contract (30 Mar 2026) | SUPERSEDED | `_archive/CONTRACT_APPOINTMENT_v2026-03-30.md` |
 | IR-Contract-v2 | Contract update (2 Apr 2026) | SUPERSEDED | `_archive/CONTRACT_UPDATE_v2026-04-02.md` |
 | IR-Frontend-v1 | Frontend commission (2 Apr 2026) | SUPERSEDED by IR-1 | `_archive/INDIVIDUAL_REPORTS_FRONTEND_v2026-04-02.md` |
-| **IR-1** | 5 Public SEO Landing Pages + `/individual-reports` hub | 🟣 READY TO ISSUE | `CODEX_COMMISSION_IR_1_LANDING_PAGES.md` |
+| **IR-1** | 5 Public SEO Landing Pages + `/individual-reports` hub | 🔵 IN PROGRESS | `CODEX_COMMISSION_IR_1_LANDING_PAGES.md` · Issued 2026-05-15 |
 
 ---
 
@@ -32,8 +32,9 @@
 
 | # | Item | Owner | Priority | Notes |
 |---|---|---|---|---|
-| IR-OP-1 | **Issue IR-1 to Codex** -- pure frontend, no dependency, issue Week 1 | TT | 🟠 HIGH | Can run in parallel with KE-Sprint2. Zero backend changes. |
-| IR-OP-2 | Confirm 5 report type landing page names before issuing (Natal, Dasha, Compatibility, Career, Remedial) | TT | 🟠 HIGH | Review `CODEX_COMMISSION_IR_1_LANDING_PAGES.md` §Deliverables before opening thread |
+| IR-OP-1 | Temple review of IR-1 frontend slice | TT | 🟠 HIGH | Build completed locally in repo. Await route/copy/integration review. |
+| IR-OP-2 | Decide whether `/individual-reports` public hub behavior is accepted as canonical | TT | 🟠 HIGH | Local build uses `/reports` as premium tool route and `/individual-reports` as public hub per module brief interpretation. |
+| ~~IR-OP-3~~ | ~~Resolve unrelated global frontend build blocker in `StrategistPage.jsx`~~ | CC | ✅ DONE | Unescaped apostrophe in tagline string fixed by CC. Commit `667fc34` 2026-05-15. Vercel build green. |
 
 ---
 
@@ -42,6 +43,7 @@
 - IR-1 is purely frontend -- no backend dependency whatsoever
 - Do NOT modify `vedic_calculator.py` or report generation endpoints as part of IR-1
 - All five landing pages must include proper JSON-LD schema and OG tags
+- Local IR-1 build also repurposes `/individual-reports` into the public hub while preserving the premium tool at `/reports`
 
 ---
 
@@ -50,3 +52,5 @@
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
 | v1.0 | 2026-05-15 | Tracker created. IR-1 brief finalised. Module state documented. | CC | This session |
+| v1.1 | 2026-05-15 | IR-1 landing pages built locally, public routes added, sitemap updated, `/individual-reports` hub made public, and unrelated Strategist build blocker noted. | Codex | This session |
+| v1.2 | 2026-05-15 | IR-1 issued to Codex IR thread. Status updated to IN PROGRESS. IR-OP-3 (Strategist build blocker) closed -- fixed by CC at commit `667fc34`. | TT + CC | `667fc34` |

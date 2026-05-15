@@ -33,7 +33,7 @@
 |---|---|---|---|---|
 | ~~STR-OP-1~~ | ~~Issue STR-1 to Codex~~ | -- | ✅ DONE | Delivered by Codex 2026-05-15. |
 | ~~STR-OP-2~~ | ~~Review and integrate STR-1 Codex delivery~~ | CC | ✅ DONE | All 4 files confirmed live at commit `ba58192`. App.js, sitemap.xml, TheStrategistLandingPage.jsx, StrategistPage.jsx all match handoff exactly. |
-| STR-OP-3 | Verify DashaTimingBar live data after `9ad2e0a` deploy | TT | 🟠 HIGH | Check `/strategist/missions` -- Mahadasha + Antardasha should show planet names + date ranges + progress bar |
+| STR-OP-3 | Verify DashaTimingBar live data on `/strategist/missions` | TT | 🟠 HIGH | DashaTimingBar backend fix shipped 2026-05-15: new `POST /api/strategist/profile` endpoint stores birth_date + moon_longitude; sequential fetch ensures data present before dashboard call. StrategistActionPlanPage crash (undefined `token`) also fixed. Vercel syntax fix `667fc34` (apostrophe in tagline). Verify date ranges + progress bar are now rendering on production. |
 | ~~STR-OP-4~~ | ~~STR-1 must NOT overwrite STR-2J files~~ | CC | ✅ SATISFIED | Confirmed: StrategistMissionsPage.jsx + MissionCard.jsx untouched. |
 
 ---
@@ -66,3 +66,4 @@
 | v1.3 | 2026-05-15 | M-4 confirmed cleared (22 records live, no `approval_status` filter). STR-1 unblocked across all trackers. Tracker created. | CC | Commit `df49e5e` |
 | v1.4 | 2026-05-15 | STR-1 delivered by Codex -- built in Codex workspace. Status: DELIVERED -- PENDING INTEGRATION. Codex MASTER_TRACKER + 06_RESPONSE_SUMMARY updated in cross-thread audit pack. Awaiting Temple review + CC integration. | Codex + TT | Codex workspace |
 | v1.5 | 2026-05-15 | STR-1 confirmed INTEGRATED. All 4 handoff files verified live in repo at commit `ba58192` (2026-05-14) -- TheStrategistLandingPage.jsx, StrategistPage.jsx, App.js, sitemap.xml all match handoff exactly. STR-2J boundary confirmed: MissionCard.jsx + StrategistMissionsPage.jsx untouched. STR-OP-2 + STR-OP-4 closed. Commission closed. | CC | `ba58192` |
+| v1.6 | 2026-05-15 | DashaTimingBar backend fix: new `POST /api/strategist/profile` endpoint added to `strategist_router.py` -- stores birth_date + computes moon_longitude via `calculate_vedic_chart`. Sequential fetch pattern in `StrategistPage.jsx` useEffect ensures birth data in DB before dashboard call. StrategistActionPlanPage crash fixed (undefined token in useEffect dep array). MODULE_STRATEGIST handoff bundle cleaned: 4 runtime files removed per PROCESS_RUNTIME_CODE_OWNERSHIP.md. Vercel build fix: unescaped apostrophe in tagline (`667fc34`). | CC | `667fc34` |
