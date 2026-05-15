@@ -31,7 +31,7 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **KP-2A** | KP Bundle Editorial + Share Card + Remedies Admin Frontend | KP Oracle | `KP/CODEX_COMMISSION_KP_2A.md` | READY TO ISSUE | ~~KP smoke test (M-3)~~ ✅ ALL BLOCKERS CLEARED | M-3 passed. History bug fixed. Remedies seeded. `useRef` already in file -- Codex must not overwrite. Brief updated 2026-05-15. |
+| ~~**KP-2A**~~ | ~~KP Bundle Editorial + Share Card + Remedies Admin Frontend~~ | KP Oracle | `KP/CODEX_COMMISSION_KP_2A.md` | ✅ INTEGRATED -- commit `7d42880` | -- | Delivered + integrated 2026-05-15. TT live verification (KP-OP-9) required before issuing KP-2B. |
 | **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | KP Oracle | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | READY TO ISSUE | None | Independent of KP-2A |
 | **KE-IQ** | Questionnaire UI + β/γ KE Wiring | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | READY TO ISSUE | KE Sprint 2 (ideally) | QuestionnairePage.jsx exists (29 lines). QuestionnaireWidget.jsx exists (1101 lines). Need backend β/γ wiring + endpoint |
 | ~~**IR-1**~~ | ~~5 Public SEO Landing Pages (Individual Reports)~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` | ✅ INTEGRATED -- commit `825a294` | None | 5 landing pages + public hub live. Route canonical confirmed by TT 2026-05-15. |
