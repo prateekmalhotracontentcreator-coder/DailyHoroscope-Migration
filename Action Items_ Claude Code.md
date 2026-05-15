@@ -38,7 +38,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 **CC Direct Actions — KE gaps confirmed by Codex intake audit 2026-05-15:**
 - [x] **KE-OP-9** — ✅ Already present: `knowledge_engine.py` lines 634–636 dispatch `yoga_combination` through `ke_yoga_evaluator.evaluate_yoga_check`. No action needed. Confirmed 2026-05-15.
 - [x] **KE-OP-10** — ✅ Fixed 2026-05-15: added `combust_ok` guard to `_planet_in_kendra_conditions_ok` in `ke_yoga_evaluator.py`. `free_from_combustion` now evaluated via `ChartFacts.planet_positions[planet]["combust"]`. `_unsupported_note` cleaned up.
-- [ ] **KE-OP-11** — Run `migrate_ch41_varga_checkable.py` against `horoscope_db` (24 Ch 41 Varga-tier rules). Script at `backend/scripts/_archive/migrate_ch41_varga_checkable.py`. Coordinate with TT for Render `MONGO_URL`.
+- [x] **KE-OP-11** — ✅ Done 2026-05-15. `migrate_ch41_varga_checkable.py` run against `horoscope_db`. 24 Ch 41 Varga-tier rules updated: `checkable=True`, `condition_type: varga_dignity_tier`. Summary: updated=24, skipped=0, errors=0.
 
 ### KP Oracle Thread
 - ~~KP-2A: Bundle editorial + visual share card + Remedies Admin tab~~ → `KP/CODEX_COMMISSION_KP_2A.md` · READY TO ISSUE
