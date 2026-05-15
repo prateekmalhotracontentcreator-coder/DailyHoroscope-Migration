@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
+import { safeClaimPunyaAction } from '../../lib/punyaRewards';
 
 const API  = `${process.env.REACT_APP_BACKEND_URL}/api`;
 const SITE = 'https://www.everydayhoroscope.in';
@@ -265,6 +266,7 @@ export const TarotPage = () => {
       const r = res.data.reading;
       setReading(r);
       if (res.data.gamification) setGamification(res.data.gamification);
+      safeClaimPunyaAction('tarot_daily_draw', { referenceId: r.report_id });
       if (res.data.message === 'Already drawn today.') {
         toast.info("Today's card already drawn -- showing your reading.");
         setSceneIndex((r.scenes?.length || 1) - 1);
@@ -295,6 +297,7 @@ export const TarotPage = () => {
       }, { withCredentials: true });
       setReading(res.data.reading);
       setActiveTab('daily');
+      safeClaimPunyaAction('tarot_spread_complete', { referenceId: res.data.reading.report_id });
       toast.success(`+${res.data.xp_earned} XP earned!`);
       startSceneSequence(res.data.reading.scenes || []);
     } catch (e) {
@@ -313,6 +316,7 @@ export const TarotPage = () => {
       );
       if (reading?.report_id === reportId) setReading(r => ({ ...r, bookmarked: !current }));
       setHistory(h => h.map(i => i.report_id === reportId ? { ...i, bookmarked: !current } : i));
+      if (!current) safeClaimPunyaAction('tarot_bookmark', { referenceId: reportId });
       toast.success(!current ? 'Bookmarked' : 'Removed bookmark');
     } catch {
       toast.error('Could not update bookmark');

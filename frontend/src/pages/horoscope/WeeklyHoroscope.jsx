@@ -9,6 +9,8 @@ import { SEO } from '../../components/SEO';
 import { HoroscopeShareCard, ShareButtons } from '../../components/ShareCard';
 import { ArrowLeft, Star } from 'lucide-react';
 import { useHoroscope } from '../../hooks/useHoroscope';
+import { useAuth } from '../../context/AuthContext';
+import { safeClaimPunyaAction } from '../../lib/punyaRewards';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -16,6 +18,7 @@ const API = `${BACKEND_URL}/api`;
 
 export const WeeklyHoroscope = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { primarySign, favouritesMeta, dobDone, saveDOB, toggleFavourite, dismissDOBPrompt, isFavourite } = useHoroscope();
   const shareCardRef = useRef(null);
 
@@ -59,7 +62,11 @@ export const WeeklyHoroscope = () => {
 
   const fetchHoroscope = async (sign) => {
     setLoading(true);
-    try { const r = await axios.get(`${API}/horoscope/${sign}/weekly`); setHoroscope(r.data); }
+    try {
+      const r = await axios.get(`${API}/horoscope/${sign}/weekly`);
+      setHoroscope(r.data);
+      if (user) safeClaimPunyaAction('horoscope_weekly_view', { referenceId: sign });
+    }
     catch (e) { console.error(e); }
     finally { setLoading(false); }
   };
@@ -80,7 +87,7 @@ export const WeeklyHoroscope = () => {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Weekly Horoscope — Plan Your Week with the Stars',
+    name: 'Weekly Horoscope -- Plan Your Week with the Stars',
     description: 'Free weekly Vedic horoscope for all 12 zodiac signs. Plan your week with AI-powered cosmic guidance.',
     url: 'https://www.everydayhoroscope.in/horoscope/weekly',
     publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://www.everydayhoroscope.in' },
@@ -89,7 +96,7 @@ export const WeeklyHoroscope = () => {
   return (
     <div className="min-h-screen pb-24 lg:pb-0">
       <SEO
-        title="Weekly Horoscope — Plan Your Week with the Stars"
+        title="Weekly Horoscope -- Plan Your Week with the Stars"
         description="Get your free weekly Vedic horoscope for all 12 zodiac signs. AI-powered cosmic guidance to plan your week ahead."
         url="https://www.everydayhoroscope.in/horoscope/weekly"
         schema={schema}

@@ -9,6 +9,8 @@ import { SEO } from '../../components/SEO';
 import { HoroscopeShareCard, ShareButtons } from '../../components/ShareCard';
 import { ArrowLeft, Star } from 'lucide-react';
 import { useHoroscope } from '../../hooks/useHoroscope';
+import { useAuth } from '../../context/AuthContext';
+import { safeClaimPunyaAction } from '../../lib/punyaRewards';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -16,6 +18,7 @@ const API = `${BACKEND_URL}/api`;
 
 export const MonthlyHoroscope = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   const { primarySign, favouritesMeta, dobDone, saveDOB, toggleFavourite, dismissDOBPrompt, isFavourite } = useHoroscope();
   const shareCardRef = useRef(null);
 
@@ -59,7 +62,11 @@ export const MonthlyHoroscope = () => {
 
   const fetchHoroscope = async (sign) => {
     setLoading(true);
-    try { const r = await axios.get(`${API}/horoscope/${sign}/monthly`); setHoroscope(r.data); }
+    try {
+      const r = await axios.get(`${API}/horoscope/${sign}/monthly`);
+      setHoroscope(r.data);
+      if (user) safeClaimPunyaAction('horoscope_monthly_view', { referenceId: sign });
+    }
     catch (e) { console.error(e); }
     finally { setLoading(false); }
   };
@@ -80,7 +87,7 @@ export const MonthlyHoroscope = () => {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Monthly Horoscope — Your Month Ahead in the Stars',
+    name: 'Monthly Horoscope -- Your Month Ahead in the Stars',
     description: 'Free monthly Vedic horoscope for all 12 zodiac signs. Navigate the month ahead with AI-powered cosmic insights.',
     url: 'https://www.everydayhoroscope.in/horoscope/monthly',
     publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://www.everydayhoroscope.in' },
@@ -89,7 +96,7 @@ export const MonthlyHoroscope = () => {
   return (
     <div className="min-h-screen pb-24 lg:pb-0">
       <SEO
-        title="Monthly Horoscope — Your Month Ahead in the Stars"
+        title="Monthly Horoscope -- Your Month Ahead in the Stars"
         description="Read your free monthly Vedic horoscope for all 12 zodiac signs. Navigate the month ahead with AI-powered cosmic insights."
         url="https://www.everydayhoroscope.in/horoscope/monthly"
         schema={schema}

@@ -10,6 +10,7 @@ import { SEO } from '../../components/SEO';
 import { HoroscopeShareCard, ShareButtons } from '../../components/ShareCard';
 import { ArrowLeft, Crown, Loader2, Star } from 'lucide-react';
 import { useHoroscope, ZODIAC_MAP } from '../../hooks/useHoroscope';
+import { safeClaimPunyaAction } from '../../lib/punyaRewards';
 import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -91,7 +92,11 @@ export const DailyHoroscope = () => {
 
   const fetchHoroscope = async (sign) => {
     setLoading(true);
-    try { const r = await axios.get(`${API}/horoscope/${sign}/daily`); setHoroscope(r.data); }
+    try {
+      const r = await axios.get(`${API}/horoscope/${sign}/daily`);
+      setHoroscope(r.data);
+      if (user) safeClaimPunyaAction('horoscope_daily_view', { referenceId: sign });
+    }
     catch (e) { console.error(e); }
     finally { setLoading(false); }
   };
@@ -224,7 +229,7 @@ export const DailyHoroscope = () => {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Daily Horoscope — All 12 Zodiac Signs',
+    name: 'Daily Horoscope -- All 12 Zodiac Signs',
     description: 'Read today\'s free Vedic daily horoscope for all 12 zodiac signs. AI-powered personalised predictions.',
     url: 'https://www.everydayhoroscope.in/horoscope/daily',
     publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://www.everydayhoroscope.in' },
@@ -233,7 +238,7 @@ export const DailyHoroscope = () => {
   return (
     <div className="min-h-screen pb-24 lg:pb-0">
       <SEO
-        title="Daily Horoscope — All 12 Zodiac Signs"
+        title="Daily Horoscope -- All 12 Zodiac Signs"
         description="Read today's free Vedic daily horoscope for all 12 zodiac signs. AI-powered personalised predictions rooted in 5,000 years of ancient wisdom."
         url="https://www.everydayhoroscope.in/horoscope/daily"
         schema={schema}
@@ -329,10 +334,10 @@ export const DailyHoroscope = () => {
                 <Card className="border border-gold/20 p-5">
                   <ShareButtons
                     pageUrl={`https://www.everydayhoroscope.in/horoscope/daily`}
-                    shareText={`${selectedSignData?.name} Daily Horoscope — ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} ✦`}
+                    shareText={`${selectedSignData?.name} Daily Horoscope -- ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })} ✦`}
                     cardRef={shareCardRef}
                     filename={`horoscope-${selectedSign}-daily`}
-                    fbPageCaption={`⭐ ${selectedSignData?.name} Daily Horoscope — ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
+                    fbPageCaption={`⭐ ${selectedSignData?.name} Daily Horoscope -- ${new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}
 
 ${horoscope?.content?.overview?.slice(0, 200)}...
 

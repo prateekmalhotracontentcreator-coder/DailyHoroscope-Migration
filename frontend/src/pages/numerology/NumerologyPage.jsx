@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
+import { safeClaimPunyaAction } from '../../lib/punyaRewards';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -37,7 +38,7 @@ const TILE_META = {
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  name: 'Vedic Numerology Reports — Life Path, Name, Timing & More',
+  name: 'Vedic Numerology Reports -- Life Path, Name, Timing & More',
   description: 'Generate personalised Vedic numerology reports. Life Path, Name Correction, Karmic Debt, Relationship Compatibility, Career Guidance and more.',
   url: 'https://www.everydayhoroscope.in/numerology',
   publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: 'https://www.everydayhoroscope.in' },
@@ -85,7 +86,7 @@ export const NumerologyPage = () => {
       const res = await axios.get(`${API}/numerology/tiles`);
       setTiles(res.data.tiles || []);
     } catch {
-      // tiles fallback — use TILE_META keys
+      // tiles fallback -- use TILE_META keys
       setTiles(Object.keys(TILE_META).map(k => ({ tile_code: k, name: TILE_META[k].label, description: '', is_premium: true })));
     }
   };
@@ -133,13 +134,14 @@ export const NumerologyPage = () => {
       if (form.business_name) payload.business_name = form.business_name;
       if (form.candidate_name) payload.candidate_name = form.candidate_name;
       if (selectedTile.tile_code === 'favorable_timing') payload.target_year = parseInt(form.target_year);
-      // Ankjyotish premium fields — lagna/moon/nakshatra are auto-computed on the backend
+      // Ankjyotish premium fields -- lagna/moon/nakshatra are auto-computed on the backend
       if (form.time_of_birth)  payload.time_of_birth  = form.time_of_birth;
       if (form.place_of_birth) payload.place_of_birth = form.place_of_birth;
 
       const res = await axios.post(`${API}/numerology/report/generate`, payload, { withCredentials: true });
       setReport(res.data.report);
       setActiveTab('report');
+      safeClaimPunyaAction('numerology_report_generate', { referenceId: res.data.report?.id });
       toast.success('Report generated!');
     } catch (e) {
       toast.error(e.response?.data?.detail || 'Generation failed');
@@ -193,18 +195,18 @@ export const NumerologyPage = () => {
     return map[field]?.includes(tc);
   };
 
-  // Premium gate — logged-in non-premium users
+  // Premium gate -- logged-in non-premium users
   if (user && !user.is_premium) return (
     <PremiumGateCard
       feature="Vedic Numerology"
-      description="Personalised numerology reports — Life Path, Name Correction, Karmic Debt, and more — are exclusive to Premium subscribers. Upgrade to unlock your number blueprint."
+      description="Personalised numerology reports -- Life Path, Name Correction, Karmic Debt, and more -- are exclusive to Premium subscribers. Upgrade to unlock your number blueprint."
     />
   );
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10">
       <SEO
-        title="Vedic Numerology — Life Path, Name & Timing Reports"
+        title="Vedic Numerology -- Life Path, Name & Timing Reports"
         description="Generate personalised Vedic numerology reports. Life Path, Name Correction, Karmic Debt, Compatibility, Career, and more."
         url="https://www.everydayhoroscope.in/numerology"
         schema={schema}
@@ -288,7 +290,7 @@ export const NumerologyPage = () => {
           </Card>
 
           <Card className="p-6 border border-border space-y-4">
-            {/* Core fields — always shown */}
+            {/* Core fields -- always shown */}
             <div>
               <label className="block text-sm font-medium mb-1.5">Full Birth Name <span className="text-red-400">*</span></label>
               <input
@@ -463,7 +465,7 @@ export const NumerologyPage = () => {
             </Card>
           ))}
 
-          {/* Structured blocks — Lo Shu Grid, Lucky Elements, Timing Panel */}
+          {/* Structured blocks -- Lo Shu Grid, Lucky Elements, Timing Panel */}
           {(() => {
             const trace = report.calculation_trace || {};
             const tileCode = report.tile_code;
@@ -552,15 +554,15 @@ export const NumerologyPage = () => {
       <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
         <div>
           <h2 className="mb-2 text-base font-semibold text-foreground">What is Vedic Numerology?</h2>
-          <p className="leading-7">Vedic Numerology (Ankjyotish) is the ancient Indian science of numbers — a branch of Jyotish that reveals the vibrational blueprint encoded in your birth date and name. Unlike Western Pythagorean numerology, the Vedic system is rooted in the nine planets (Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) and assigns each number 1–9 a planetary ruler. Your numbers govern personality, karmic lessons, timing, and compatibility at a planetary level.</p>
+          <p className="leading-7">Vedic Numerology (Ankjyotish) is the ancient Indian science of numbers -- a branch of Jyotish that reveals the vibrational blueprint encoded in your birth date and name. Unlike Western Pythagorean numerology, the Vedic system is rooted in the nine planets (Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu) and assigns each number 1-9 a planetary ruler. Your numbers govern personality, karmic lessons, timing, and compatibility at a planetary level.</p>
         </div>
         <div>
-          <h2 className="mb-2 text-base font-semibold text-foreground">Life Path Number — Your Karmic Blueprint</h2>
-          <p className="leading-7">The Life Path number is derived from your full date of birth reduced to a single digit (1–9) or master number (11, 22, 33). It is the most significant number in your chart — representing the core lessons your soul chose for this lifetime, the natural talents you carry, and the challenges built into your journey. In the Vedic system, each Life Path number corresponds to a planetary lord whose qualities shape your dharmic path.</p>
+          <h2 className="mb-2 text-base font-semibold text-foreground">Life Path Number -- Your Karmic Blueprint</h2>
+          <p className="leading-7">The Life Path number is derived from your full date of birth reduced to a single digit (1-9) or master number (11, 22, 33). It is the most significant number in your chart -- representing the core lessons your soul chose for this lifetime, the natural talents you carry, and the challenges built into your journey. In the Vedic system, each Life Path number corresponds to a planetary lord whose qualities shape your dharmic path.</p>
         </div>
         <div>
           <h2 className="mb-2 text-base font-semibold text-foreground">Name Numerology & Name Correction</h2>
-          <p className="leading-7">Every letter in your name carries a numerical value. The sum of your name's letters produces your Expression Number and Soul Urge Number — revealing how the world perceives you and what you inwardly crave. Name Correction in Vedic Numerology involves adjusting spelling to bring your name's vibration into harmony with your birth date, potentially reducing friction in career, relationships, or health.</p>
+          <p className="leading-7">Every letter in your name carries a numerical value. The sum of your name's letters produces your Expression Number and Soul Urge Number -- revealing how the world perceives you and what you inwardly crave. Name Correction in Vedic Numerology involves adjusting spelling to bring your name's vibration into harmony with your birth date, potentially reducing friction in career, relationships, or health.</p>
         </div>
         <div>
           <h2 className="mb-2 text-base font-semibold text-foreground">Karmic Debt Numbers</h2>
@@ -568,7 +570,7 @@ export const NumerologyPage = () => {
         </div>
         <div>
           <h2 className="mb-2 text-base font-semibold text-foreground">Numerology for Business, Timing & Compatibility</h2>
-          <p className="leading-7">Beyond personal charts, Vedic Numerology applies to business names (brand vibration alignment), residential numbers (harmony of living space), target years (favourable timing for launches and decisions), and compatibility between individuals or partnerships. Each application follows the same planetary correspondence system — matching the vibrational frequency of numbers to the energy needed for the goal at hand.</p>
+          <p className="leading-7">Beyond personal charts, Vedic Numerology applies to business names (brand vibration alignment), residential numbers (harmony of living space), target years (favourable timing for launches and decisions), and compatibility between individuals or partnerships. Each application follows the same planetary correspondence system -- matching the vibrational frequency of numbers to the energy needed for the goal at hand.</p>
         </div>
       </div>
 
