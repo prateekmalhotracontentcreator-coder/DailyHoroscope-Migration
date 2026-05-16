@@ -118,10 +118,10 @@ function buildSchema(video) {
   };
 }
 
-// ─── Full-viewport hero player ────────────────────────────────────────────────
+// ─── Full-viewport hero player + control console ─────────────────────────────
 // Uses a callback ref to set elem.muted=true SYNCHRONOUSLY before the browser
 // evaluates its autoplay policy -- the React `muted` JSX prop is unreliable.
-function HeroPlayer({ videoUrl, posterUrl }) {
+function HeroPlayer({ videoUrl, posterUrl, title }) {
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
   const [playing, setPlaying] = useState(false);
@@ -154,43 +154,105 @@ function HeroPlayer({ videoUrl, posterUrl }) {
   };
 
   return (
-    <div className="relative h-full w-full bg-black">
-      <video
-        ref={attachRef}
-        key={videoUrl}
-        src={videoUrl}
-        poster={posterUrl}
-        autoPlay
-        loop
-        playsInline
-        preload="auto"
-        className="h-full w-full object-contain"
-        onPlay={() => setPlaying(true)}
-      />
+    <div className="flex h-full w-full flex-col bg-black">
+      {/* ── Video canvas ── */}
+      <div className="relative flex-1 overflow-hidden">
+        <video
+          ref={attachRef}
+          key={videoUrl}
+          src={videoUrl}
+          poster={posterUrl}
+          autoPlay
+          loop
+          playsInline
+          preload="auto"
+          className="h-full w-full object-contain"
+          onPlay={() => setPlaying(true)}
+        />
 
-      {/* Manual play overlay -- shown only when autoplay is blocked by browser */}
-      {!playing && (
-        <button
-          type="button"
-          onClick={handleManualPlay}
-          className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition hover:bg-black/50"
-          aria-label="Play Sai Baba Arti"
-        >
-          <div className="grid h-24 w-24 place-items-center rounded-full bg-gold/90 text-black shadow-[0_12px_40px_rgba(197,160,89,0.6)]">
-            <Play className="h-10 w-10 translate-x-0.5" />
+        {/* 🔴 LIVE badge */}
+        <div className="absolute left-4 top-4 z-20 flex items-center gap-2 rounded-full bg-black/75 px-3 py-1.5 backdrop-blur-sm">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
+            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
+          </span>
+          <span className="text-xs font-bold uppercase tracking-[0.18em] text-white">
+            Live · Sai Baba Arti
+          </span>
+        </div>
+
+        {/* Manual play overlay -- shown only when autoplay is blocked */}
+        {!playing && (
+          <button
+            type="button"
+            onClick={handleManualPlay}
+            className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition hover:bg-black/50"
+            aria-label="Play Sai Baba Arti"
+          >
+            <div className="grid h-24 w-24 place-items-center rounded-full bg-gold/90 text-black shadow-[0_12px_40px_rgba(197,160,89,0.6)]">
+              <Play className="h-10 w-10 translate-x-0.5" />
+            </div>
+          </button>
+        )}
+      </div>
+
+      {/* ── Player console / control bar ── */}
+      <div className="flex shrink-0 items-center justify-between gap-4 border-t border-gold/20 bg-card/95 px-5 py-3 backdrop-blur-sm">
+        <div className="flex items-center gap-3 min-w-0">
+          {/* Play / status indicator */}
+          {!playing ? (
+            <button
+              type="button"
+              onClick={handleManualPlay}
+              className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gold text-black shadow-[0_4px_14px_rgba(197,160,89,0.5)] transition hover:bg-gold/90"
+              aria-label="Play"
+            >
+              <Play className="h-4 w-4 translate-x-0.5" />
+            </button>
+          ) : (
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center gap-0.5">
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  className="inline-block w-1 rounded-full bg-gold"
+                  style={{
+                    height: `${12 + i * 4}px`,
+                    animation: `pulse 0.8s ease-in-out ${i * 0.15}s infinite alternate`,
+                  }}
+                />
+              ))}
+            </div>
+          )}
+          <div className="min-w-0">
+            <p className="truncate text-sm font-semibold text-foreground">
+              {title || 'LIVE Sai Baba Arti | Om Sai Ram'}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              {playing ? 'Playing · continuous loop · 24/7' : 'Tap ▶ to begin devotional stream'}
+            </p>
           </div>
-        </button>
-      )}
+        </div>
 
-      {/* Mute/Unmute -- bottom-right */}
-      <button
-        type="button"
-        onClick={toggleMute}
-        className="absolute bottom-4 right-4 z-20 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-black/70 px-4 py-2 text-xs font-semibold text-gold backdrop-blur-sm transition hover:bg-black/90 sm:bottom-6 sm:right-6"
-      >
-        {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
-        {muted ? 'Unmute' : 'Mute'}
-      </button>
+        <div className="flex shrink-0 items-center gap-2">
+          <button
+            type="button"
+            onClick={toggleMute}
+            className="inline-flex items-center gap-1.5 rounded-full border border-gold/30 bg-background/60 px-4 py-2 text-xs font-semibold text-gold transition hover:bg-gold/10"
+          >
+            {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+            {muted ? 'Unmute' : 'Mute'}
+          </button>
+          <a
+            href={YT_CHANNEL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-red-500/30 bg-red-500/10 px-4 py-2 text-xs font-semibold text-red-400 transition hover:bg-red-500/20"
+          >
+            <Youtube className="h-4 w-4" />
+            YouTube
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
@@ -208,10 +270,10 @@ export default function LiveSaiBabaArtiPage() {
         schema={buildSchema(data)}
       />
 
-      {/* ── HERO: Full-viewport immersive player ─────────────────────────────── */}
+      {/* ── HERO: Full-viewport immersive player + console ───────────────────── */}
       <section
-        className="relative w-full overflow-hidden bg-black aspect-video lg:aspect-auto lg:h-[75vh]"
-        style={{ minHeight: '240px' }}
+        className="w-full overflow-hidden bg-black aspect-video lg:aspect-auto lg:h-[75vh]"
+        style={{ minHeight: '280px' }}
       >
         {loading ? (
           <div className="flex h-full w-full items-center justify-center bg-black">
@@ -221,7 +283,11 @@ export default function LiveSaiBabaArtiPage() {
             </div>
           </div>
         ) : data?.website_video_url ? (
-          <HeroPlayer videoUrl={data.website_video_url} posterUrl={data.thumbnail_url} />
+          <HeroPlayer
+            videoUrl={data.website_video_url}
+            posterUrl={data.thumbnail_url}
+            title={data.title}
+          />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-gradient-to-br from-black via-[#0d0a05] to-[#191205]">
             <div className="grid h-28 w-28 place-items-center rounded-full border border-gold/30 bg-gold/10 text-6xl shadow-[0_0_60px_rgba(197,160,89,0.2)]">
@@ -235,20 +301,6 @@ export default function LiveSaiBabaArtiPage() {
             </div>
           </div>
         )}
-
-        {/* 🔴 LIVE badge */}
-        <div className="absolute left-4 top-4 z-20 flex items-center gap-2 rounded-full bg-black/75 px-3 py-1.5 backdrop-blur-sm sm:left-6 sm:top-6">
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
-            <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-red-500" />
-          </span>
-          <span className="text-xs font-bold uppercase tracking-[0.18em] text-white">
-            Live · Sai Baba Arti
-          </span>
-        </div>
-
-        {/* Bottom gradient */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent" />
       </section>
 
       {/* ── YouTube channel strip ─────────────────────────────────────────────── */}
