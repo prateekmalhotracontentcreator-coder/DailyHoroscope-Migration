@@ -1,7 +1,7 @@
 # KP Oracle (Krishna Prashnavali) -- Module Tracker
 > Path: `Codex_Deliveries/KP/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.5
+> Last updated: 2026-05-16 · v1.6
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- KP-2A INTEGRATED (`7d42880`) · KP-Sprint2 IN PROGRESS · KP-2B ready to issue after TT live verification |
+| **Status** | 🟡 ACTIVE -- KP-2A INTEGRATED · KP-Sprint2 IN PROGRESS · Share bar visible ✅ · Share card format + report structure UX review pending (TT) |
 | **Frontend** | `frontend/src/pages/kp/KrishnaOraclePage.jsx` |
 | **Backend** | `backend/scriptural_oracle_router.py` · `backend/remedies_router.py` |
 | **Live URL** | `/krishna-prashnavali` |
@@ -23,7 +23,7 @@
 | ID | Commission | Status | Brief |
 |---|---|---|---|
 | **KP-2A** | Bundle Editorial + Share Card + Remedies Admin Frontend | ✅ INTEGRATED -- commit `7d42880` | `CODEX_COMMISSION_KP_2A.md` · Delivered + integrated 2026-05-15. TT live verification pending. |
-| **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | 🟣 READY TO ISSUE | `CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` · Independent of KP-2A |
+| **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | 🔵 IN PROGRESS | `CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` · Issued 2026-05-15. |
 | **KP-2B** | Ritual Animation + 3-Pillar UX + Astro-Filter | 🟣 READY TO ISSUE | `CODEX_COMMISSION_KP_2B.md` · Depends on KP-2A delivered |
 
 ---
@@ -39,7 +39,9 @@
 | ~~KP-OP-4~~ | ~~**Issue KP-Sprint2** to Codex~~ | TT | ✅ DONE | KP-Sprint2 issued 2026-05-15. |
 | ~~KP-OP-5~~ | ~~**Issue KP-2A** to Codex~~  | TT | ✅ DONE | Issued 2026-05-15. Delivered + integrated same day at commit `7d42880`. |
 | KP-OP-6 | **Issue KP-2B** after TT live verification of KP-2A | TT | 🟠 HIGH | KP-2A integrated. TT to verify share card (WhatsApp/Facebook/Save/Copy), bundle slots 11/19/31/33, remedies admin PATCH. Issue KP-2B once satisfied. |
-| KP-OP-9 | **TT live verification of KP-2A** | TT | 🟠 HIGH | Verify: (1) Share card renders + 4-button share works; (2) Bundle slots 11/19/31/33 content correct; (3) Remedies Admin Panel -- search, filters, inline status patch. Blocker for KP-2B. |
+| KP-OP-9 | **TT live verification of KP-2A** (partial) | TT | 🟠 HIGH | (1) Share bar visible ✅ confirmed 2026-05-16; (2) Bundle slots 11/19/31/33 content -- pending TT; (3) Remedies Admin PATCH -- pending TT. Blocker for KP-2B. |
+| KP-OP-10 | **Share Card visual format** -- needs redesign | TT + CC | 🟠 HIGH | TT noted share card format needs work. Card currently uses `KrishnaShareCard.jsx` (gold dark theme). Full card format + capture review needed. To be addressed in KP-2B scope or as standalone CC fix after TT review. |
+| KP-OP-11 | **KP Oracle report structure UX review** | TT + CC | 🟠 HIGH | TT noted the web app report structure needs improvement. Two-column grid layout (`xl:grid-cols-[1.2fr,0.8fr]`) + section arrangement to be reviewed. Likely KP-2B scope. |
 | KP-OP-7 | `krishna_answer` ≠ slot title audit (KP-G13) -- slot-level editorial verify | TT | 🟡 MED | Flagged in KP-2A brief. Treat as Phase 2 if not addressed in KP-2A. |
 
 ---
@@ -62,3 +64,4 @@
 | v1.3 | 2026-05-15 | KP-OP-8 added: Saved Previous Readings not loading. KP-OP-2 confirmed present (false alarm). KP-OP-3 remedies seeded (36 records). | TT + CC | Flagged post-M-3 |
 | v1.4 | 2026-05-15 | KP-OP-8 fixed (two commits): (1) scroll bug -- `guidanceRef` + `useEffect` replacing broken `window.scrollTo` (`80238a5`); (2) MongoDB `_id` ValidationError on `/reports/{report_id}` -- added `{"_id": 0}` projection (`302f24e`). KP-2A brief reviewed and updated with CC changes. All CC open points closed. KP-2A ready to issue. | CC | `80238a5`, `302f24e` |
 | v1.5 | 2026-05-15 | KP-2A delivered by Codex and integrated. Build verified green. Python parse clean. CC fixes (guidanceRef + _id projection) confirmed preserved. KP-OP-5 closed. KP-OP-6 + KP-OP-9 (TT live verification) opened. Commission status → INTEGRATED `7d42880`. | CC | `7d42880` |
+| v1.6 | 2026-05-16 | Share bar confirmed visible by TT (KP-OP-9 item 1 ✅). Share bar moved full-width below reading, matching Panchang/Horoscope pattern (`22ae365`). Copy button now copies full reading text + URL. KP-Sprint2 status corrected to IN PROGRESS. KP-OP-10 (share card format) + KP-OP-11 (report structure UX) opened per TT review. | CC + TT | `22ae365` |

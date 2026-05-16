@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-15
+> Last updated: 2026-05-16
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -32,11 +32,12 @@
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
 | ~~**KP-2A**~~ | ~~KP Bundle Editorial + Share Card + Remedies Admin Frontend~~ | KP Oracle | `KP/CODEX_COMMISSION_KP_2A.md` | ✅ INTEGRATED -- commit `7d42880` | -- | Delivered + integrated 2026-05-15. TT live verification (KP-OP-9) required before issuing KP-2B. |
-| **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | KP Oracle | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | READY TO ISSUE | None | Independent of KP-2A |
+| **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | KP Oracle | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | 🔵 IN PROGRESS | None | Issued 2026-05-15. Independent of KP-2A. |
 | **KE-IQ** | Questionnaire UI + β/γ KE Wiring | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | READY TO ISSUE | KE Sprint 2 (ideally) | QuestionnairePage.jsx exists (29 lines). QuestionnaireWidget.jsx exists (1101 lines). Need backend β/γ wiring + endpoint |
 | ~~**IR-1**~~ | ~~5 Public SEO Landing Pages (Individual Reports)~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` | ✅ INTEGRATED -- commit `825a294` | None | 5 landing pages + public hub live. Route canonical confirmed by TT 2026-05-15. |
 | **ARC-2** | Arc Angel Phase 2 -- Confidence % lift + Questionnaire gating + Desktop sidebar | Arc Angel | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | READY TO ISSUE | KE Sprint 2 (for confidence scoring) | `ArcAngelPanel.jsx` is live and baseline. This is the next phase. |
-| **REM-P1** | Remedies Engine Phase 1 (KP collection + remedy_ref pipeline) | Remedies | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | READY TO ISSUE | None | `/api/remedies/ref/{remedy_ref_id}` endpoint also needed (Claude Code direct fix -- not Codex) |
+| **REM-P1** | Remedies Engine Phase 1 (KP collection + remedy_ref pipeline) | Remedies | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | READY TO ISSUE | None | `/api/remedies/ref/{remedy_ref_id}` confirmed live at line 827. Ready to issue. |
+| **PUN-2** | Punya Rewards Home Page Promo + Module Hooks + SVG Wheel | Punya Rewards | `Punya_Rewards/CODEX_COMMISSION_PUN_2_FRONTEND_INTEGRATION.md` | READY TO ISSUE | PUN-1 ✅ | Backend fully live. PunyaRewardsPage baseline exists. Home promo section + 8 module hooks + wheel UX upgrade needed. No NavBar entry. |
 
 ---
 
@@ -97,20 +98,31 @@
 
 ---
 
-## Recommended Issue Order
+## Recommended Issue Order (updated 2026-05-16)
 
 ```
-Week 1:  KE-Sprint2 + KE-2A + KP-Sprint2 (3 independent threads)
-Week 1:  IR-1 (pure frontend -- zero backend dependency)
+NOW (IN PROGRESS):
+  KE-Sprint2  -- Arbitration Runtime (CRITICAL, blocking KE Sprint 3 + ARC-2)
+  KE-2A       -- Yoga Check Evaluators (CRITICAL)
+  KP-Sprint2  -- Ask-Question LLM Router (HIGH, independent)
 
-Week 2:  KP-2A (after KP smoke test M-3 done)
-         KE-IQ (ideally after Sprint 2 gate passes)
-         REM-P1 (plus Claude Code direct fix for /ref/ endpoint)
+NEXT TO ISSUE (all briefs complete):
+  REM-P1      -- Remedies Engine Phase 1 (all blockers cleared)
+  PUN-2       -- Punya Rewards Home Promo + Module Hooks (brief ready 2026-05-16)
+  KE-IQ       -- Questionnaire UI (ideally after Sprint 2 gate)
+  KP-2B       -- Ritual Animation + 3-Pillar UX (after KP-OP-9 TT verification)
 
-Week 3:  KP-2B (after KP-2A delivered)
-         ARC-2 (after KE Sprint 2 gate passes)
-         TAR-v4
+AFTER HIGH PRIORITY THREADS RUNNING:
+  ARC-2       -- Arc Angel Phase 2 (after KE Sprint 2 gate)
+  TAR-v4      -- Tarot UI v4
+  KUN-1       -- Lagna Kundali Module
+  LK-1        -- Lal Kitab Standalone (after jyotish_lk_remedies batch-approved)
+  SEO-1       -- SEO + Web Performance (issue last, after threads running)
 
-Week 4+: LON-1 · LK-1 · KUN-1 · PAN-L1 · SEO-1
-Phase 3: ORACLE-P3
+PHASE 2:
+  LON-1       -- Longevity Report (after KE Sprint 2 gate)
+  PAN-L1      -- Panchang Language Pages
+
+PHASE 3:
+  ORACLE-P3   -- 5 World Oracle Modules
 ```
