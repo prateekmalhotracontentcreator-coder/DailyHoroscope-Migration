@@ -14,7 +14,7 @@ export function useLiveTv() {
     const load = async () => {
       setLoading(true);
       try {
-        const response = await fetch(API, { credentials: 'include' });
+        const response = await fetch(API);
         if (!response.ok) {
           throw new Error(response.status === 404 ? 'Live TV is not configured yet.' : 'Failed to load Live TV.');
         }
