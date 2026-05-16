@@ -482,7 +482,7 @@ export const REPORT_LANDING_CONTENT = {
     ctaLabel: 'Generate My Report',
     features: [
       { title: 'Phase-by-Phase Guidance', body: 'Translates the current lunar phase into practical support for energy, mood, and decision timing.', icon: MoonStar },
-      { title: 'Nakshatra-Specific Insight', body: 'Uses the Moon's current nakshatra and pada to give the emotional field real texture and specificity.', icon: Sparkles },
+      { title: 'Nakshatra-Specific Insight', body: "Uses the Moon's current nakshatra and pada to give the emotional field real texture and specificity.", icon: Sparkles },
       { title: 'Natal Moon Overlay', body: 'Explains how the current cycle interacts with your own Moon sign rather than giving generic moon advice.', icon: Orbit },
       { title: 'Weekly Rhythm Cues', body: 'Gives three concrete pacing principles for the week ahead instead of vague wellness slogans.', icon: Workflow },
       { title: '7-Day Action Tracker', body: 'Turns the lunar weather into a Monday-through-Sunday plan you can actually use.', icon: CalendarClock },
