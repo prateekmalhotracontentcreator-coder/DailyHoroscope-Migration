@@ -60,8 +60,9 @@ const NAV = [
   {
     label: 'Reports', icon: FileText,
     children: [
-      { label: 'My Reports',        path: '/my-reports',      icon: FileText,  premium: true },
-      { label: 'Birth Chart',       path: '/birth-chart',     icon: Sparkles,  premium: true },
+      { label: 'My Reports',        path: '/my-reports',        icon: FileText,  premium: true },
+      { label: 'Individual Reports', path: '/individual-reports', icon: Layers,   premium: false },
+      { label: 'Birth Chart',        path: '/birth-chart',       icon: Sparkles,  premium: true },
       { label: 'Lagna Kundali',     path: '/lagna-kundali',   icon: Gem,       premium: true },
       { label: 'Kundali Milan',     path: '/kundali-milan',   icon: Heart,     premium: true },
       { label: 'Brihat Kundli Pro', path: '/brihat-kundli',   icon: Crown,     premium: true },
