@@ -7,6 +7,15 @@
 
 ---
 
+## Dependencies
+
+| Commission | Status | Notes |
+|---|---|---|
+| IR-2 | ✅ Live | Lunar Cycle backend live at `/api/reports/lunar-cycle` |
+| IR-2A | 🟠 In progress | Lunar Cycle rework (Action Tracker + richer content) -- IR-3 landing page copy for Lunar Cycle should reflect the richer output described in IR-2A brief |
+
+---
+
 ## Context
 
 Phase 1 Individual Reports (5 natal reports) have public SEO landing pages at:

@@ -67,8 +67,9 @@
 | IR-Contract-v2 | Contract update (2 Apr 2026) | SUPERSEDED | `_archive/CONTRACT_UPDATE_v2026-04-02.md` |
 | IR-Frontend-v1 | Frontend commission (2 Apr 2026) | SUPERSEDED by IR-1 | `_archive/INDIVIDUAL_REPORTS_FRONTEND_v2026-04-02.md` |
 | **IR-1** | 5 Public SEO Landing Pages + `/individual-reports` hub | ✅ INTEGRATED -- commit `825a294` | `CODEX_COMMISSION_IR_1_LANDING_PAGES.md` · Delivered + integrated 2026-05-15 |
-| **IR-2** | Lunar Cycle Wellness backend (`lunar_cycle_router.py`) | 🟡 DELIVERED LOCALLY -- pending Temple review | `CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` · Router, prompt service, server registration, and LoveReportsPage card added locally 2026-05-16 |
-| **IR-3** | 8 Love Report public SEO landing pages | 🟣 READY TO ISSUE | `CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` · Frontend-only, no backend dependency |
+| **IR-2** | Lunar Cycle Wellness backend (`lunar_cycle_router.py`) | ✅ INTEGRATED -- commit `f9f6690` | `CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` · Integrated. Datetime bug fixed `021a799`. |
+| **IR-2A** | Lunar Cycle Rework -- Action Tracker + Rich Content | 🟣 READY TO ISSUE | `CODEX_COMMISSION_IR_2A_LUNAR_CYCLE_REWORK.md` · Amends router + prompt service + frontend display. 7-day Action Tracker, richer Claude output. |
+| **IR-3** | 8 Love Report public SEO landing pages | 🟣 READY TO ISSUE | `CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` · Frontend-only. Lunar Cycle copy should reflect IR-2A richer output. |
 
 ---
 
@@ -79,10 +80,11 @@
 | ~~IR-OP-1~~ | ~~Temple review of IR-1 frontend slice~~ | TT | ✅ DONE | Reviewed and approved 2026-05-15. Build green. Integrated at commit `825a294`. |
 | ~~IR-OP-2~~ | ~~Decide whether `/individual-reports` public hub behavior is accepted as canonical~~ | TT | ✅ DONE | Confirmed canonical 2026-05-15. |
 | ~~IR-OP-3~~ | ~~Resolve unrelated global frontend build blocker in `StrategistPage.jsx`~~ | CC | ✅ DONE | Fixed at commit `667fc34` 2026-05-15. |
-| IR-OP-4 | Temple review and validate IR-2 (Lunar Cycle backend) | TT | 🟠 HIGH | Local runtime files added; confirm route behavior and deploy readiness. |
+| ~~IR-OP-4~~ | ~~Temple review and validate IR-2 (Lunar Cycle backend)~~ | TT | ✅ DONE | Live verified 2026-05-16. Datetime bug fixed `021a799`. Tile visible on LovePage. |
 | IR-OP-5 | Issue IR-3 to Codex (8 Love landing pages) | TT | 🟠 HIGH | Brief complete. No backend dependency -- can issue independently. |
 | IR-OP-6 | Issue KUN-1 to Codex (Kundali frontend only) | TT | 🟡 MED | Brief updated 2026-05-16 -- backend already live, frontend only. |
-| IR-OP-7 | TT live verification of Love Reports at `/love-reports` | TT | 🟡 MED | LoveReportsPage is live -- TT to spot-check report generation for one report type. |
+| ~~IR-OP-7~~ | ~~TT live verification of Love Reports at `/love-reports`~~ | TT | ✅ DONE | Verified 2026-05-16 -- 5 Phase 1 reports visible. Lunar Cycle tile confirmed in Love hub. |
+| IR-OP-8 | Issue IR-2A to Codex (Lunar Cycle rework + Action Tracker) | TT | 🟠 HIGH | Brief ready 2026-05-16. Amends router + prompt service + LoveReportsPage display. |
 
 ---
 
@@ -108,3 +110,4 @@
 | v1.3 | 2026-05-15 | IR-1 delivered + integrated. Route canonical confirmed. | CC + TT | `825a294` |
 | v2.0 | 2026-05-16 | **Full reconciliation.** All backends audited against server.py. Phase 1 fully live. Phase 2+3 backends mostly live (lunar_cycle missing). LoveReportsPage confirmed as Phase 2+3 frontend hub. Kundali backend confirmed fully live at `/api/lagna-kundali`. IR-2 (lunar cycle backend) + IR-3 (8 love landing pages) briefs written and ready to issue. KUN-1 re-scoped to frontend-only. | CC | 2026-05-16 |
 | v2.1 | 2026-05-16 | IR-2 delivered locally. Added `lunar_cycle_router.py`, `lunar_cycle_prompt_service.py`, `server.py` registration, and the `LoveReportsPage.jsx` card entry. Temple review still pending. | Codex | 2026-05-16 |
+| v2.2 | 2026-05-16 | IR-2 integrated + bugs fixed (`021a799`): datetime serialisation crash + LovePage hub tile. IR-2A brief written (Action Tracker + rich content rework). 12 Areas of Life map published. Architecture doc published. IR-3 cross-referenced with IR-2A. | CC | `ced0972` |
