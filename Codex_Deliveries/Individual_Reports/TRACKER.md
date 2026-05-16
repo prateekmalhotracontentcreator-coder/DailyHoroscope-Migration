@@ -85,7 +85,9 @@
 | IR-OP-6 | Issue KUN-1 to Codex (Kundali frontend only) | TT | 🟡 MED | Brief updated 2026-05-16 -- backend already live, frontend only. |
 | ~~IR-OP-7~~ | ~~TT live verification of Love Reports at `/love-reports`~~ | TT | ✅ DONE | Verified 2026-05-16 -- 5 Phase 1 reports visible. Lunar Cycle tile confirmed in Love hub. |
 | ~~IR-OP-8~~ | ~~Temple review and validate IR-2A~~ | CC | ✅ DONE | Integrated `692fefa` 2026-05-16. Two runtime bugs fixed before commit. TT to verify live report content quality. |
-| IR-OP-9 | TT live verification of Lunar Cycle richer output | TT | 🟠 HIGH | Generate a Lunar Cycle report and confirm: 3-section prose, 7-day Action Tracker visible, today's row gold-highlighted. |
+| ~~IR-OP-9~~ | ~~TT live verification of Lunar Cycle richer output~~ | TT | ✅ DONE | Verified live 2026-05-16. Report confirmed brilliant. Minor display formatting improvements noted -- logged as IR-OP-10. |
+| IR-OP-10 | Minor display formatting polish on Lunar Cycle report | CC | 🟡 MED | TT flagged minor formatting improvements post live review. Scope to be defined; candidate for inclusion in a future IR patch or IR-3 delivery scope. |
+| IR-OP-11 | Issue IR-3 to Codex (8 Love Report SEO landing pages) | TT | 🟠 HIGH | Brief at `CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md`. TT confirmed ready to issue 2026-05-16. |
 
 ---
 
@@ -113,4 +115,5 @@
 | v2.1 | 2026-05-16 | IR-2 delivered locally. Added `lunar_cycle_router.py`, `lunar_cycle_prompt_service.py`, `server.py` registration, and the `LoveReportsPage.jsx` card entry. Temple review still pending. | Codex | 2026-05-16 |
 | v2.2 | 2026-05-16 | IR-2 integrated + bugs fixed (`021a799`): datetime serialisation crash + LovePage hub tile. IR-2A brief written (Action Tracker + rich content rework). 12 Areas of Life map published. Architecture doc published. IR-3 cross-referenced with IR-2A. | CC | `ced0972` |
 | v2.3 | 2026-05-16 | IR-2A delivered by Codex + integrated by CC. Two runtime bugs fixed: transit_house subscript crash + fallback f-string. Frontend LunarCycleRenderer with 7-Day Action Tracker and today-highlight committed. | CC | `692fefa` |
+| v2.4 | 2026-05-16 | IR-2A live-verified by TT -- report confirmed brilliant. Minor formatting note logged IR-OP-10. IR-OP-9 closed. IR-3 confirmed ready to issue (IR-OP-11). | TT + CC | `0a4d16f` |
 | v2.3 | 2026-05-16 | IR-2A delivered locally. Expanded lunar prompt richness, added 7-day action tracker output, waxing/waning-aware fallback logic, dedicated Lunar renderer, and passed frontend production build. | Codex | 2026-05-16 |

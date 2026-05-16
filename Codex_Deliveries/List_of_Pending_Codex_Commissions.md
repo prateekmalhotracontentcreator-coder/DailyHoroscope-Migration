@@ -35,8 +35,8 @@
 | **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | KP Oracle | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | 🔵 IN PROGRESS | None | Issued 2026-05-15. Independent of KP-2A. |
 | **KE-IQ** | Questionnaire UI + β/γ KE Wiring | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | READY TO ISSUE | KE Sprint 2 (ideally) | QuestionnairePage.jsx exists (29 lines). QuestionnaireWidget.jsx exists (1101 lines). Need backend β/γ wiring + endpoint |
 | ~~**IR-1**~~ | ~~5 Public SEO Landing Pages (Individual Reports)~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` | ✅ INTEGRATED -- commit `825a294` | None | 5 landing pages + public hub live. Route canonical confirmed by TT 2026-05-15. |
-| **IR-2** | Lunar Cycle Wellness Backend (`lunar_cycle_router.py`) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | READY TO ISSUE | None | Only missing Phase 2 backend. 2 files: router + prompt_service. Add 1 entry to LoveReportsPage LOVE_REPORTS array. |
-| **IR-3** | 8 Love Report Public SEO Landing Pages | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` | READY TO ISSUE | None | Frontend only. 8 landing pages for Phase 2+3 reports. Same ReportLandingPageShell pattern as IR-1. |
+| ~~**IR-2**~~ | ~~Lunar Cycle Wellness Backend~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | ✅ INTEGRATED -- commit `f9f6690` + `021a799` | -- | Live. Datetime bug fixed. Tile on LovePage. IR-2A rework also integrated `692fefa`. |
+| **IR-3** | 8 Love Report Public SEO Landing Pages | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` | 🔵 ISSUED -- 2026-05-16 | IR-2A ✅ | Issued to Codex IR thread 2026-05-16. Frontend only. 8 landing pages + App.js routes + sitemap. |
 | **ARC-2** | Arc Angel Phase 2 -- Confidence % lift + Questionnaire gating + Desktop sidebar | Arc Angel | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | READY TO ISSUE | KE Sprint 2 (for confidence scoring) | `ArcAngelPanel.jsx` is live and baseline. This is the next phase. |
 | ~~**REM-P1**~~ | ~~Remedies Engine Phase 1 (KP collection + remedy_ref pipeline)~~ | Remedies | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | ✅ INTEGRATED -- runtime confirmed 2026-05-16 | -- | All 3 tasks complete: `/ref/` endpoint live (line 851), 36 KP remedy records seeded (modified=36 2026-05-15), KP fallback wiring confirmed. ⚠️ TT content note: JSON verdict split is 10/8/8/10 (YES/WAIT/NO/PRAY) vs spec'd 9/9/9/9 -- confirm intentional or re-ingest. |
 | **PUN-2** | Punya Rewards Home Page Promo + Module Hooks + SVG Wheel | Punya Rewards | `Punya_Rewards/CODEX_COMMISSION_PUN_2_FRONTEND_INTEGRATION.md` | READY TO ISSUE | PUN-1 ✅ | Backend fully live. PunyaRewardsPage baseline exists. Home promo section + 8 module hooks + wheel UX upgrade needed. No NavBar entry. |
@@ -71,6 +71,10 @@
 
 | ID | Commission | File | Commit |
 |---|---|---|---|
+| IR-1 | 5 Public SEO Landing Pages + `/individual-reports` hub | `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` | `825a294` |
+| IR-2 | Lunar Cycle Wellness Backend | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | `f9f6690` · `021a799` (bug fixes) |
+| IR-2A | Lunar Cycle Rework -- Action Tracker + Rich Content | `Individual_Reports/CODEX_COMMISSION_IR_2A_LUNAR_CYCLE_REWORK.md` | `692fefa` · Live-verified by TT 2026-05-16 ✅ |
+| KP-2A | KP Bundle Editorial + Share Card + Remedies Admin Frontend | `KP/CODEX_COMMISSION_KP_2A.md` | `7d42880` |
 | REM-P1 | Remedies Engine Phase 1 (KP collection + remedy_ref pipeline) | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | Runtime confirmed 2026-05-16 -- endpoint line 851, 36 records seeded |
 | KE-2B2 | Varga Dignity Wiring (facts layer) | `knowledge_engine.py` lines 195-208, 312, 488-508 | Built internally -- confirmed live 2026-05-15 |
 | KE-2D | Varga Dignity Tier Evaluator | `ke_yoga_evaluator.py` lines 373-387, 631 | Built internally -- 37 tests green, migration archived -- confirmed live 2026-05-15 |
@@ -111,9 +115,11 @@ NOW (IN PROGRESS):
 
 NEXT TO ISSUE (all briefs complete):
   PUN-2       -- Punya Rewards Home Promo + Module Hooks (brief ready 2026-05-16)
-  IR-2        -- Lunar Cycle Wellness Backend (1 missing Phase 2 backend, brief ready 2026-05-16)
-  IR-3        -- 8 Love Report Landing Pages (frontend only, brief ready 2026-05-16, no dependencies)
   KE-IQ       -- Questionnaire UI (ideally after Sprint 2 gate)
+  KP-2B       -- Ritual Animation + 3-Pillar UX (after KP-OP-9 TT verification)
+
+IN PROGRESS (issued 2026-05-16):
+  IR-3        -- 8 Love Report Landing Pages ✅ ISSUED
   KP-2B       -- Ritual Animation + 3-Pillar UX (after KP-OP-9 TT verification)
 
 AFTER HIGH PRIORITY THREADS RUNNING:
