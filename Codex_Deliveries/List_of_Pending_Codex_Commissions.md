@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-16
+> Last updated: 2026-05-16 (IR reconciliation complete)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -35,6 +35,8 @@
 | **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | KP Oracle | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | 🔵 IN PROGRESS | None | Issued 2026-05-15. Independent of KP-2A. |
 | **KE-IQ** | Questionnaire UI + β/γ KE Wiring | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | READY TO ISSUE | KE Sprint 2 (ideally) | QuestionnairePage.jsx exists (29 lines). QuestionnaireWidget.jsx exists (1101 lines). Need backend β/γ wiring + endpoint |
 | ~~**IR-1**~~ | ~~5 Public SEO Landing Pages (Individual Reports)~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` | ✅ INTEGRATED -- commit `825a294` | None | 5 landing pages + public hub live. Route canonical confirmed by TT 2026-05-15. |
+| **IR-2** | Lunar Cycle Wellness Backend (`lunar_cycle_router.py`) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | READY TO ISSUE | None | Only missing Phase 2 backend. 2 files: router + prompt_service. Add 1 entry to LoveReportsPage LOVE_REPORTS array. |
+| **IR-3** | 8 Love Report Public SEO Landing Pages | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` | READY TO ISSUE | None | Frontend only. 8 landing pages for Phase 2+3 reports. Same ReportLandingPageShell pattern as IR-1. |
 | **ARC-2** | Arc Angel Phase 2 -- Confidence % lift + Questionnaire gating + Desktop sidebar | Arc Angel | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | READY TO ISSUE | KE Sprint 2 (for confidence scoring) | `ArcAngelPanel.jsx` is live and baseline. This is the next phase. |
 | **REM-P1** | Remedies Engine Phase 1 (KP collection + remedy_ref pipeline) | Remedies | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | READY TO ISSUE | None | `/api/remedies/ref/{remedy_ref_id}` confirmed live at line 827. Ready to issue. |
 | **PUN-2** | Punya Rewards Home Page Promo + Module Hooks + SVG Wheel | Punya Rewards | `Punya_Rewards/CODEX_COMMISSION_PUN_2_FRONTEND_INTEGRATION.md` | READY TO ISSUE | PUN-1 ✅ | Backend fully live. PunyaRewardsPage baseline exists. Home promo section + 8 module hooks + wheel UX upgrade needed. No NavBar entry. |
@@ -49,7 +51,7 @@
 | ~~STR-1~~ | ~~Strategist Premium Landing Page + War Room Visual Rebuild~~ | The Strategist | `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` | ✅ INTEGRATED -- commit `ba58192` | -- | TheStrategistLandingPage.jsx + StrategistPage.jsx + App.js + sitemap.xml all live. Build verified. |
 | ~~STR-2J~~ | ~~Strategist Missions UI (MissionCard responsive + dasha display)~~ | The Strategist | `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` | ✅ INTEGRATED -- commit `9ad2e0a` | -- | Delivered by Codex 2026-05-15. Dasha backend fix applied by Claude Code. |
 | **TAR-v4** | Tarot UI v4 Enhancement | Tarot | `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` | READY TO ISSUE | None | Existing Tarot UI visual uplift to v4 standard |
-| **KUN-1** | Lagna Kundali Module Contract | Kundali | `Kundali/CODEX_COMMISSION_KUNDALI_LAGNA_CONTRACT.md` | READY TO ISSUE | None | Full Kundali/birth chart module |
+| **KUN-1** | Lagna Kundali Frontend Module | Kundali | `Kundali/CODEX_COMMISSION_KUNDALI_LAGNA_CONTRACT.md` | READY TO ISSUE | None | **Backend already live** at `/api/lagna-kundali` (re-scoped 2026-05-16). Frontend only: `KundaliPage.jsx` + SVG chart + planet table + dasha timeline. |
 | **LK-1** | LK Standalone Module (onboard, remedies, debt audit, tracker) | Lal Kitab | `LK/CODEX_COMMISSION_LK_STANDALONE_MODULE.md` | READY TO ISSUE | None | Lal Kitab standalone product |
 | **SEO-1** | SEO + Marketing + Web Performance Optimisation | SEO | `SEO/CODEX_COMMISSION_SEO_WEBPERF.md` | READY TO ISSUE | None | ⚠️ Issue LAST -- start only after high-priority Codex threads are running |
 
@@ -98,7 +100,7 @@
 
 ---
 
-## Recommended Issue Order (updated 2026-05-16)
+## Recommended Issue Order (updated 2026-05-16 post-IR reconciliation)
 
 ```
 NOW (IN PROGRESS):
@@ -109,13 +111,15 @@ NOW (IN PROGRESS):
 NEXT TO ISSUE (all briefs complete):
   REM-P1      -- Remedies Engine Phase 1 (all blockers cleared)
   PUN-2       -- Punya Rewards Home Promo + Module Hooks (brief ready 2026-05-16)
+  IR-2        -- Lunar Cycle Wellness Backend (1 missing Phase 2 backend, brief ready 2026-05-16)
+  IR-3        -- 8 Love Report Landing Pages (frontend only, brief ready 2026-05-16, no dependencies)
   KE-IQ       -- Questionnaire UI (ideally after Sprint 2 gate)
   KP-2B       -- Ritual Animation + 3-Pillar UX (after KP-OP-9 TT verification)
 
 AFTER HIGH PRIORITY THREADS RUNNING:
   ARC-2       -- Arc Angel Phase 2 (after KE Sprint 2 gate)
   TAR-v4      -- Tarot UI v4
-  KUN-1       -- Lagna Kundali Module
+  KUN-1       -- Lagna Kundali Frontend (re-scoped -- backend done, frontend only)
   LK-1        -- Lal Kitab Standalone (after jyotish_lk_remedies batch-approved)
   SEO-1       -- SEO + Web Performance (issue last, after threads running)
 

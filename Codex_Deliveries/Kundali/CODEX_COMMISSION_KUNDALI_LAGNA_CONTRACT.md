@@ -1,32 +1,55 @@
-# Contract: Lagna Kundli (Birth Chart) Module
+# Commission KUN-1 -- Lagna Kundali: Frontend Module
 > Client: EverydayHoroscope (SkyHound Studios)
 > Platform: https://www.everydayhoroscope.in
 > Backend: FastAPI on Render · Frontend: React 18 on Vercel
 > Repo: github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration
 > Astronomy Engine: pyswisseph 2.10.x (Lahiri ayanamsa, Swiss Ephemeris)
+> **Re-scoped 2026-05-16: BACKEND IS COMPLETE. This is now a FRONTEND-ONLY commission.**
+
+---
+
+## ⚠️ SCOPE UPDATE (2026-05-16)
+
+**`backend/kundali_router.py` is already built and live in production at prefix `/api/lagna-kundali`.**
+
+Do NOT build any backend code. Do NOT create a new router. Do NOT touch `server.py` for backend registration.
+
+**Live endpoints you must wire the frontend to:**
+
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/api/lagna-kundali/compute` | POST | Compute chart from birth details |
+| `/api/lagna-kundali/save` | POST | Save chart (auth required) |
+| `/api/lagna-kundali/my-charts` | GET | Retrieve saved charts for user |
+| `/api/lagna-kundali/chart/{chart_id}` | GET | Load a saved chart |
+| `/api/lagna-kundali/chart-definitions` | GET | Chart metadata |
+
+**Frontend target file:** `frontend/src/pages/kundali/KundaliPage.jsx` (create new -- file does not exist)
+**App.js route:** `/kundali`
+
+The original contract below documents the schema and UX spec. All of it stands -- only the backend deliverables section is superseded.
 
 ---
 
 ## 1. Module Overview
 
-Build a complete **Lagna Kundli (Vedic Birth Chart)** module with:
+Build the **Lagna Kundali (Vedic Birth Chart) frontend** wired to the live backend:
 1. Birth details input form
 2. North Indian diamond-style chart SVG renderer (client-side)
 3. Planet positions table with degrees & rashi
 4. House (Bhava) summary
 5. Dasha periods (Vimshottari) timeline
 6. Optional: Navamsa (D9) chart
-7. Full SEO on all sub-routes
-
-The backend `vedic_calculator.py` is **already committed** and computing birth charts via pyswisseph. The contract is to build the API endpoints + frontend UI on top of it.
+7. Full SEO on `/kundali`
 
 ---
 
-## 2. Existing Backend
+## 2. Existing Backend (ALREADY LIVE -- READ ONLY)
 
-File: `backend/vedic_calculator.py`
+File: `backend/kundali_router.py` -- registered in `server.py` at line ~2062.
+Prefix: `/api/lagna-kundali`
 
-Already computes:
+Already computes and returns via API:
 - Planet longitudes (sidereal, Lahiri)
 - Lagna (Ascendant) degree & rashi
 - House (Bhava) cusps
@@ -34,15 +57,15 @@ Already computes:
 - Navamsa (D9) positions
 - Vimshottari Dasha periods
 
-Currently **not exposed via API** -- needs a router added.
+**Backend is complete. Skip Section 3 entirely.**
 
 ---
 
-## 3. Backend Deliverables
+## ~~3. Backend Deliverables~~ (SUPERSEDED -- BACKEND ALREADY LIVE)
 
-### 3a. New router file: `backend/kundali_router.py`
+~~### 3a. New router file: `backend/kundali_router.py`~~
 
-Register at prefix `/api/kundali` in `backend/main.py`.
+~~Register at prefix `/api/kundali` in `backend/main.py`.~~
 
 #### Endpoint 1 -- Compute Kundali
 ```

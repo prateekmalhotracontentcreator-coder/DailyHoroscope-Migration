@@ -1,7 +1,7 @@
 # Individual Reports -- Module Tracker
 > Path: `Codex_Deliveries/Individual_Reports/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.3
+> Last updated: 2026-05-16 · v2.0
 
 ---
 
@@ -9,11 +9,53 @@
 
 | Field | Value |
 |---|---|
-| **Status** | ✅ LIVE -- IR-1 integrated at commit `825a294`. 5 public landing pages + `/individual-reports` hub live. |
-| **Frontend (live)** | `frontend/src/pages/BirthChartPage.jsx` · `frontend/src/pages/kundali/BrihatKundliPage.jsx` · premium report tool at `/reports` |
-| **Backend** | `backend/vedic_calculator.py` + individual report endpoints |
-| **Live URL** | Current production remains app-only for report generation; new public SEO pages are built locally and awaiting Temple integration |
-| **Report types** | Natal · Dasha · Compatibility · Career · Remedial |
+| **Status** | 🟡 ACTIVE -- Phase 1 fully live · Phase 2 backends mostly live · Phase 3 backends fully live · Love frontend hub live · Public SEO gap for Phase 2+3 reports · IR-2 + IR-3 briefs issued 2026-05-16 |
+| **Phase 1 Frontend** | `frontend/src/pages/reports/IndividualReportsPage.jsx` at `/reports` (PremiumRoute) |
+| **Phase 2+3 Frontend** | `frontend/src/pages/reports/LoveReportsPage.jsx` at `/love-reports` (PremiumRoute) |
+| **Public Hub** | `frontend/src/pages/reports/PremiumReportsLanding.jsx` at `/individual-reports` |
+| **Backend prefix (Phase 1)** | `/api/reports/{report-slug}` |
+| **Backend prefix (Phase 2+3)** | `/api/reports/{report-slug}` |
+| **Backend prefix (Kundali)** | `/api/lagna-kundali` |
+
+---
+
+## Full Reconciliation (2026-05-16)
+
+### Phase 1 -- Natal Reports (Contract Items 9-A to 9-E)
+
+| Report | Backend Router | Frontend (generation) | Public SEO Page | Status |
+|---|---|---|---|---|
+| Karmic Debt | `karmic_debt_router.py` ✅ | `IndividualReportsPage.jsx` ✅ | `KarmicDebtLandingPage.jsx` ✅ (IR-1) | **FULLY LIVE** |
+| Career Blueprint | `career_blueprint_router.py` ✅ | `IndividualReportsPage.jsx` ✅ | `CareerBlueprintLandingPage.jsx` ✅ (IR-1) | **FULLY LIVE** |
+| Shadow Self | `shadow_self_router.py` ✅ | `IndividualReportsPage.jsx` ✅ | `ShadowSelfLandingPage.jsx` ✅ (IR-1) | **FULLY LIVE** |
+| Retrograde Survival | `retrograde_survival_router.py` ✅ | `IndividualReportsPage.jsx` ✅ | `RetrogradeSurvivalLandingPage.jsx` ✅ (IR-1) | **FULLY LIVE** |
+| Life Cycles | `life_cycles_router.py` ✅ | `IndividualReportsPage.jsx` ✅ | `LifeCyclesLandingPage.jsx` ✅ (IR-1) | **FULLY LIVE** |
+
+### Phase 2 -- Transit / Love Reports (Contract Items 8)
+
+| Report | Backend Router | Frontend (generation) | Public SEO Page | Status |
+|---|---|---|---|---|
+| Encounter Window | `encounter_window_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+| Seasonal Love Weather | `love_weather_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+| **Lunar Cycle Wellness** | ❌ **MISSING** | ❌ | ❌ (IR-3 pending) | **Backend not built (IR-2 pending)** |
+| Date-Night Score | `date_night_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+| Intimacy & Vitality | `intimacy_vitality_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+| Venus Retrograde (bonus) | `venus_retrograde_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+
+### Phase 3 -- Extended Reports (Contract Item 9+)
+
+| Report | Backend Router | Frontend (generation) | Public SEO Page | Status |
+|---|---|---|---|---|
+| Soulmate Timing | `soulmate_timing_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+| Soul Connection | `soul_connection_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+| Digital Dating | `digital_dating_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+
+### Contract 8A -- Lagna Kundali
+
+| Component | Status | Notes |
+|---|---|---|
+| Backend router | ✅ LIVE | `kundali_router.py` at `/api/lagna-kundali` -- all endpoints live |
+| Frontend module | ❌ NOT BUILT | KUN-1 re-scoped to frontend-only 2026-05-16 |
 
 ---
 
@@ -25,6 +67,8 @@
 | IR-Contract-v2 | Contract update (2 Apr 2026) | SUPERSEDED | `_archive/CONTRACT_UPDATE_v2026-04-02.md` |
 | IR-Frontend-v1 | Frontend commission (2 Apr 2026) | SUPERSEDED by IR-1 | `_archive/INDIVIDUAL_REPORTS_FRONTEND_v2026-04-02.md` |
 | **IR-1** | 5 Public SEO Landing Pages + `/individual-reports` hub | ✅ INTEGRATED -- commit `825a294` | `CODEX_COMMISSION_IR_1_LANDING_PAGES.md` · Delivered + integrated 2026-05-15 |
+| **IR-2** | Lunar Cycle Wellness backend (`lunar_cycle_router.py`) | 🟣 READY TO ISSUE | `CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` · Only missing Phase 2 backend |
+| **IR-3** | 8 Love Report public SEO landing pages | 🟣 READY TO ISSUE | `CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` · Frontend-only, no backend dependency |
 
 ---
 
@@ -33,17 +77,24 @@
 | # | Item | Owner | Priority | Notes |
 |---|---|---|---|---|
 | ~~IR-OP-1~~ | ~~Temple review of IR-1 frontend slice~~ | TT | ✅ DONE | Reviewed and approved 2026-05-15. Build green. Integrated at commit `825a294`. |
-| ~~IR-OP-2~~ | ~~Decide whether `/individual-reports` public hub behavior is accepted as canonical~~ | TT | ✅ DONE | Confirmed canonical 2026-05-15: `/individual-reports` = public hub (PremiumReportsLanding), `/reports` = premium tool (PremiumRoute gated IndividualReportsPage). |
-| ~~IR-OP-3~~ | ~~Resolve unrelated global frontend build blocker in `StrategistPage.jsx`~~ | CC | ✅ DONE | Unescaped apostrophe in tagline string fixed by CC. Commit `667fc34` 2026-05-15. Vercel build green. |
+| ~~IR-OP-2~~ | ~~Decide whether `/individual-reports` public hub behavior is accepted as canonical~~ | TT | ✅ DONE | Confirmed canonical 2026-05-15. |
+| ~~IR-OP-3~~ | ~~Resolve unrelated global frontend build blocker in `StrategistPage.jsx`~~ | CC | ✅ DONE | Fixed at commit `667fc34` 2026-05-15. |
+| IR-OP-4 | Issue IR-2 to Codex (Lunar Cycle backend) | TT | 🟠 HIGH | Brief complete. Issue to Individual Reports Codex thread. |
+| IR-OP-5 | Issue IR-3 to Codex (8 Love landing pages) | TT | 🟠 HIGH | Brief complete. No backend dependency -- can issue independently. |
+| IR-OP-6 | Issue KUN-1 to Codex (Kundali frontend only) | TT | 🟡 MED | Brief updated 2026-05-16 -- backend already live, frontend only. |
+| IR-OP-7 | TT live verification of Love Reports at `/love-reports` | TT | 🟡 MED | LoveReportsPage is live -- TT to spot-check report generation for one report type. |
 
 ---
 
 ## Architecture Notes
 
-- IR-1 is purely frontend -- no backend dependency whatsoever
-- Do NOT modify `vedic_calculator.py` or report generation endpoints as part of IR-1
-- All five landing pages must include proper JSON-LD schema and OG tags
-- Local IR-1 build also repurposes `/individual-reports` into the public hub while preserving the premium tool at `/reports`
+- **Phase 1** reports live at `/reports` (PremiumRoute, `IndividualReportsPage.jsx`) -- natal only, no birth partner needed
+- **Phase 2+3** reports live at `/love-reports` (PremiumRoute, `LoveReportsPage.jsx`) -- transit-based, one birth chart input
+- **Public hubs**: `/individual-reports` (Phase 1 hub), no Phase 2 public hub yet
+- **Public landing pages**: `/karmic-debt-report` etc (Phase 1 ✅), Phase 2+3 missing (IR-3 scope)
+- **Kundali backend**: `/api/lagna-kundali` (NOT `/api/kundali` -- old brief had wrong prefix)
+- **Lunar Cycle**: Only Phase 2 backend not yet built -- add to LoveReportsPage LOVE_REPORTS array after IR-2 delivery
+- `vedic_shared_utils.py` is the shared utility layer for all report routers -- do not duplicate its functions
 
 ---
 
@@ -52,6 +103,7 @@
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
 | v1.0 | 2026-05-15 | Tracker created. IR-1 brief finalised. Module state documented. | CC | This session |
-| v1.1 | 2026-05-15 | IR-1 landing pages built locally, public routes added, sitemap updated, `/individual-reports` hub made public, and unrelated Strategist build blocker noted. | Codex | This session |
-| v1.2 | 2026-05-15 | IR-1 issued to Codex IR thread. Status updated to IN PROGRESS. IR-OP-3 (Strategist build blocker) closed -- fixed by CC at commit `667fc34`. | TT + CC | `667fc34` |
-| v1.3 | 2026-05-15 | IR-1 delivered by Codex and integrated. Build verified green. Route canonical confirmed by TT: `/individual-reports` = public hub, `/reports` = premium tool. IR-OP-1 + IR-OP-2 closed. Commission INTEGRATED at commit `825a294`. | CC + TT | `825a294` |
+| v1.1 | 2026-05-15 | IR-1 landing pages built locally, public routes added, sitemap updated. | Codex | This session |
+| v1.2 | 2026-05-15 | IR-1 issued to Codex IR thread. IR-OP-3 (Strategist build blocker) closed. | TT + CC | `667fc34` |
+| v1.3 | 2026-05-15 | IR-1 delivered + integrated. Route canonical confirmed. | CC + TT | `825a294` |
+| v2.0 | 2026-05-16 | **Full reconciliation.** All backends audited against server.py. Phase 1 fully live. Phase 2+3 backends mostly live (lunar_cycle missing). LoveReportsPage confirmed as Phase 2+3 frontend hub. Kundali backend confirmed fully live at `/api/lagna-kundali`. IR-2 (lunar cycle backend) + IR-3 (8 love landing pages) briefs written and ready to issue. KUN-1 re-scoped to frontend-only. | CC | 2026-05-16 |
