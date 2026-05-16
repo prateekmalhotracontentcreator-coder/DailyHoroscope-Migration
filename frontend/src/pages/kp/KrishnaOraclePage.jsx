@@ -579,6 +579,7 @@ function KrishnaOracleApp() {
         </SectionCard>
 
         {reading ? (
+          <>
           <div ref={guidanceRef}>
           <SectionCard title="Guidance Report" eyebrow={`Answer slot ${reading.answer_slot}`}>
             <div className="grid gap-4 xl:grid-cols-[1.2fr,0.8fr]">
@@ -638,19 +639,17 @@ function KrishnaOracleApp() {
                 />
               </div>
             </div>
-            {/* ShareButtons below grid -- full width on all screen sizes */}
-            <div className="mt-4 border-t border-amber-200/40 pt-4 dark:border-amber-900/30">
-              <ShareButtons
-                pageUrl={`${window.location.origin}/krishna-prashnavali`}
-                shareText={`${reading.answer.krishna_answer.english_block}\nVerdict: ${reading.answer.verdict_display}\n${reading.answer.what_to_do.english_block}`}
-                cardRef={shareCardRef}
-                filename={`krishna-prashnavali-${reading.answer.answer_id || reading.answer_id || reading.report_id || 'reading'}`}
-                fbPageCaption={localStorage.getItem('admin_token') ? `🪔 Krishna Prashnavali -- ${reading.answer.verdict_display}\n\n${reading.answer.krishna_answer.english_block}\n\n${reading.answer.what_to_do.english_block}\n\n🔮 everydayhoroscope.in/krishna-prashnavali` : null}
-                visibleButtons={['whatsapp', 'facebook', 'save', 'copy']}
-              />
-            </div>
           </SectionCard>
           </div>
+          {/* Share bar -- full-width below reading, matching Panchang/Horoscope pattern */}
+          <ShareButtons
+            pageUrl={`${window.location.origin}/krishna-prashnavali`}
+            shareText={`${reading.answer.krishna_answer.english_block}\nVerdict: ${reading.answer.verdict_display}\n${reading.answer.what_to_do.english_block}`}
+            cardRef={shareCardRef}
+            filename={`krishna-prashnavali-${reading.answer.answer_id || reading.answer_id || reading.report_id || 'reading'}`}
+            fbPageCaption={localStorage.getItem('admin_token') ? `🪔 Krishna Prashnavali -- ${reading.answer.verdict_display}\n\n${reading.answer.krishna_answer.english_block}\n\n${reading.answer.what_to_do.english_block}\n\n🔮 everydayhoroscope.in/krishna-prashnavali` : null}
+          />
+          </>
         ) : null}
 
         <SectionCard title="Recent Krishna Readings" eyebrow="History">
