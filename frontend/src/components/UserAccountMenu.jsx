@@ -11,7 +11,7 @@ import {
 } from './ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { Button } from './ui/button';
-import { Crown, User, LogOut, CreditCard, Check, X, FileText } from 'lucide-react';
+import { Crown, User, LogOut, CreditCard, Check, X, FileText, Gift } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
 
@@ -23,9 +23,13 @@ export const UserAccountMenu = () => {
   const navigate = useNavigate();
   const [subscription, setSubscription] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [punyaPoints, setPunyaPoints] = useState(null);
 
   useEffect(() => {
-    if (user) checkSubscription();
+    if (user) {
+      checkSubscription();
+      fetchPunyaPoints();
+    }
   }, [user]);
 
   const checkSubscription = async () => {
@@ -40,6 +44,18 @@ export const UserAccountMenu = () => {
       console.error('Error checking subscription:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchPunyaPoints = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${API}/punya/summary`, {
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      setPunyaPoints(response.data?.balance ?? null);
+    } catch {
+      // Silently ignore -- Punya summary is non-critical
     }
   };
 
@@ -163,6 +179,16 @@ export const UserAccountMenu = () => {
         <DropdownMenuItem className="cursor-pointer" onClick={() => navigate('/my-reports')}>
           <FileText className="mr-2 h-4 w-4" />
           <span>My Reports</span>
+        </DropdownMenuItem>
+
+        <DropdownMenuItem className="cursor-pointer" onClick={() => navigate('/punya-rewards')}>
+          <Gift className="mr-2 h-4 w-4 text-amber-500" />
+          <span className="flex-1">Punya Rewards</span>
+          {punyaPoints !== null && (
+            <span className="ml-2 rounded-full bg-amber-500/15 px-2 py-0.5 text-xs font-semibold text-amber-600 dark:text-amber-400">
+              {punyaPoints} pts
+            </span>
+          )}
         </DropdownMenuItem>
 
         <DropdownMenuItem className="cursor-pointer" onClick={() => navigate('/account')}>

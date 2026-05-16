@@ -524,10 +524,25 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(pageUrl);
+      const textToCopy = shareText ? `${shareText}\n${pageUrl}` : pageUrl;
+      await navigator.clipboard.writeText(textToCopy);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch {}
+    } catch {
+      // Fallback: create a temporary textarea for browsers that block clipboard API
+      try {
+        const textToCopy = shareText ? `${shareText}\n${pageUrl}` : pageUrl;
+        const el = document.createElement('textarea');
+        el.value = textToCopy;
+        el.style.cssText = 'position:fixed;left:-9999px;top:0';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } catch {}
+    }
   };
 
   // ── Post card image directly to Facebook Page (admin only) ──────────────────
@@ -586,7 +601,7 @@ export function ShareButtons({ pageUrl, shareText, cardRef, filename = 'share-ca
     { id: 'youtube',   label: 'YouTube',   icon: <YouTubeIcon />,   color: 'bg-[#FF0000] hover:bg-[#cc0000] text-white',                                             action: () => handleDownload('youtube') },
     { id: 'save',      label: 'Save Card', icon: <DownloadIcon />,  color: 'bg-gold/20 hover:bg-gold/30 text-gold border border-gold/30',                            action: () => handleDownload('save') },
     {
-      id: 'copy', label: copied ? 'Copied!' : 'Copy Link', icon: <CopyIcon />,
+      id: 'copy', label: copied ? 'Copied!' : 'Copy Text', icon: <CopyIcon />,
       color: copied
         ? 'bg-emerald-500/20 text-emerald-500 border border-emerald-500/30'
         : 'bg-muted hover:bg-muted/80 text-muted-foreground border border-border',

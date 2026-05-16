@@ -624,6 +624,7 @@ function KrishnaOracleApp() {
                   <p className="m-0 text-[11px] uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Sequence indices</p>
                   <p className="m-0 mt-3 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{revealIndices.join(", ")}</p>
                 </div>
+                {/* KrishnaShareCard is offscreen -- position:fixed left:-9999 -- capture target only */}
                 <KrishnaShareCard
                   ref={shareCardRef}
                   reading={{
@@ -635,15 +636,18 @@ function KrishnaOracleApp() {
                     krishna_message: reading.answer.krishna_message,
                   }}
                 />
-                <ShareButtons
-                  pageUrl={`${window.location.origin}/krishna-prashnavali`}
-                  shareText={`${reading.answer.krishna_answer.english_block}\nVerdict: ${reading.answer.verdict_display}\n${reading.answer.what_to_do.english_block}`}
-                  cardRef={shareCardRef}
-                  filename={`krishna-prashnavali-${reading.answer.answer_id || reading.answer_id || reading.report_id || 'reading'}`}
-                  fbPageCaption={localStorage.getItem('admin_token') ? `🪔 Krishna Prashnavali -- ${reading.answer.verdict_display}\n\n${reading.answer.krishna_answer.english_block}\n\n${reading.answer.what_to_do.english_block}\n\n🔮 everydayhoroscope.in/krishna-prashnavali` : null}
-                  visibleButtons={['whatsapp', 'facebook', 'save', 'copy']}
-                />
               </div>
+            </div>
+            {/* ShareButtons below grid -- full width on all screen sizes */}
+            <div className="mt-4 border-t border-amber-200/40 pt-4 dark:border-amber-900/30">
+              <ShareButtons
+                pageUrl={`${window.location.origin}/krishna-prashnavali`}
+                shareText={`${reading.answer.krishna_answer.english_block}\nVerdict: ${reading.answer.verdict_display}\n${reading.answer.what_to_do.english_block}`}
+                cardRef={shareCardRef}
+                filename={`krishna-prashnavali-${reading.answer.answer_id || reading.answer_id || reading.report_id || 'reading'}`}
+                fbPageCaption={localStorage.getItem('admin_token') ? `🪔 Krishna Prashnavali -- ${reading.answer.verdict_display}\n\n${reading.answer.krishna_answer.english_block}\n\n${reading.answer.what_to_do.english_block}\n\n🔮 everydayhoroscope.in/krishna-prashnavali` : null}
+                visibleButtons={['whatsapp', 'facebook', 'save', 'copy']}
+              />
             </div>
           </SectionCard>
           </div>

@@ -10,7 +10,7 @@ import {
   ChevronDown, ChevronRight, Sparkles, LogIn, User,
   Sun, Moon as MoonIcon, Calendar, Gem, Hash, Globe,
   Heart, Briefcase, Shield, Leaf, Zap, Crown,
-  BookMarked, Layers
+  BookMarked, Layers, RadioTower
 } from 'lucide-react';
 
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
@@ -87,6 +87,7 @@ const NAV = [
     ],
   },
   { label: 'Krishna Prashanavali', icon: Sparkles,  path: '/krishna-prashnavali',  premium: true },
+  { label: 'Live TV',              icon: RadioTower, path: '/live-sai-baba-arti' },
   { label: 'Pricing',              icon: Tag,        path: '/pricing' },
 ];
 
@@ -277,7 +278,7 @@ export const NavBar = () => {
           </div>
         </div>
 
-        {/* LANGUAGE BAR — second tier (Panchang pages only) */}
+        {/* LANGUAGE BAR -- second tier (Panchang pages only) */}
         {location.pathname.startsWith('/panchang') && (
           <div className="border-t border-border/60 bg-muted/30 overflow-x-auto">
             <div className="flex items-center justify-end gap-1 h-8 px-4 min-w-max ml-auto">
@@ -321,7 +322,7 @@ export const NavBar = () => {
             </div>
             <div className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
             <nav className="flex-1 overflow-y-auto py-3 space-y-0.5">
-              {/* ── Janma Kundali Snapshot — Arc Angel panel (top of drawer) ── */}
+              {/* ── Janma Kundali Snapshot -- Arc Angel panel (top of drawer) ── */}
               {user && (
                 <div className="border-b border-gold/20 pb-3 mb-1 mx-1">
                   <button
