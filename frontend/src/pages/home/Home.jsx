@@ -6,6 +6,7 @@ import { DOBModal } from '../../components/DOBPrompt';
 import { Sparkles, Sun, Calendar, TrendingUp, Star, Heart, Crown, BookOpen, ChevronRight, BookMarked, Layers } from 'lucide-react';
 import { Footer } from '../../components/Footer';
 import { useHoroscope, ZODIAC_MAP } from '../../hooks/useHoroscope';
+import { LiveTVPanel } from '../../components/LiveTVPanel';
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -169,6 +170,7 @@ export const Home = () => {
           </Card>
         </div>
       </div>
+      <LiveTVPanel />
       <Footer />
     </div>
   );
