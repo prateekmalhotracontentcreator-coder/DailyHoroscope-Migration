@@ -1,0 +1,25 @@
+{
+  "video_id": "live-sai-baba-arti-om-sai-ram-everydayhoroscope-2026-05-16t13-16-31-082914-00-00",
+  "title": "LIVE Sai Baba Arti | Om Sai Ram | EverydayHoroscope",
+  "description": "Watch Sai Baba Arti live on EverydayHoroscope. Experience continuous Om Sai Ram darshan at https://www.everydayhoroscope.in/live-sai-baba-arti",
+  "deity": "Sai Baba",
+  "arti_type": "general",
+  "is_active": true,
+  "display_order": 1,
+  "duration_seconds": 28.63,
+  "tags": [
+    "Sai Baba",
+    "Aarti",
+    "Live",
+    "Om Sai Ram",
+    "EverydayHoroscope"
+  ],
+  "generated_at": "2026-05-16T13:16:31.082914+00:00",
+  "uploaded_at": null,
+  "source_video_path": "assets/live_tv/sai_baba/source.mp4",
+  "website_video_path": "assets/live_tv/output/sai-baba-arti-20260516-131625-source.mp4",
+  "thumbnail_path": "assets/live_tv/output/sai-baba-arti-20260516-131625-source.jpg",
+  "youtube_video_id": null,
+  "youtube_url": null,
+  "youtube_embed_url": null
+}
