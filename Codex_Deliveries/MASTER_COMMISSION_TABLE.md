@@ -98,7 +98,7 @@
 
 | Commission ID | Commission Name | Status | Brief File | Notes |
 |---|---|---|---|---|
-| **REM-P1** | Remedies Engine Phase 1 (KP collection + remedy_ref pipeline) | 🟣 READY TO ISSUE | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | `/api/remedies/ref/{remedy_ref_id}` confirmed live. All blockers cleared. |
+| **REM-P1** | Remedies Engine Phase 1 (KP collection + remedy_ref pipeline) | ✅ INTEGRATED -- runtime confirmed | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | All 3 tasks complete: `/ref/` endpoint live (line 851), `krishna_prashnavali_remedies` seeded (36 records, modified=36 on 2026-05-15), KP fallback wiring confirmed. ⚠️ Open content note: JSON verdict split is 10/8/8/10 (YES/WAIT/NO/PRAY) vs spec'd 9/9/9/9 -- TT to confirm intentional or re-ingest needed. Commission closed. |
 
 ---
 
@@ -216,7 +216,7 @@
 | 🔴 CRITICAL | KE-Sprint2 | Knowledge Engine | KE Arbitration Runtime | 🔵 IN PROGRESS |
 | 🔴 CRITICAL | KE-2A | Knowledge Engine | Yoga Check Evaluation Engine | 🔵 IN PROGRESS |
 | 🔴 HIGH | KP-Sprint2 | KP Oracle | /ask-question LLM Router | 🔵 IN PROGRESS |
-| 🟠 HIGH | REM-P1 | Remedies Engine | Remedies Engine Phase 1 | 🟣 READY TO ISSUE |
+| 🟠 HIGH | REM-P1 | Remedies Engine | Remedies Engine Phase 1 | ✅ INTEGRATED (runtime confirmed 2026-05-16) |
 | 🟠 HIGH | PUN-2 | Punya Rewards | Home Promo + Module Hooks + Wheel | 🟣 READY TO ISSUE |
 | 🟠 HIGH | IR-2 | Individual Reports | Lunar Cycle Wellness Backend | 🟣 READY TO ISSUE |
 | 🟠 HIGH | IR-3 | Individual Reports | 8 Love Report SEO Landing Pages | 🟣 READY TO ISSUE |
@@ -243,7 +243,6 @@ NOW ACTIVE (Codex threads open):
   KP-Sprint2   KP /ask-question LLM Router
 
 ISSUE THIS WEEK (all briefs complete, no blockers):
-  REM-P1       Remedies Engine Phase 1
   PUN-2        Punya Rewards Home Promo + Module Hooks + Wheel
   IR-2         Lunar Cycle Wellness Backend
   IR-3         8 Love Report SEO Landing Pages

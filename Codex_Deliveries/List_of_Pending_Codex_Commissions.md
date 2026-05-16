@@ -38,7 +38,7 @@
 | **IR-2** | Lunar Cycle Wellness Backend (`lunar_cycle_router.py`) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | READY TO ISSUE | None | Only missing Phase 2 backend. 2 files: router + prompt_service. Add 1 entry to LoveReportsPage LOVE_REPORTS array. |
 | **IR-3** | 8 Love Report Public SEO Landing Pages | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` | READY TO ISSUE | None | Frontend only. 8 landing pages for Phase 2+3 reports. Same ReportLandingPageShell pattern as IR-1. |
 | **ARC-2** | Arc Angel Phase 2 -- Confidence % lift + Questionnaire gating + Desktop sidebar | Arc Angel | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | READY TO ISSUE | KE Sprint 2 (for confidence scoring) | `ArcAngelPanel.jsx` is live and baseline. This is the next phase. |
-| **REM-P1** | Remedies Engine Phase 1 (KP collection + remedy_ref pipeline) | Remedies | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | READY TO ISSUE | None | `/api/remedies/ref/{remedy_ref_id}` confirmed live at line 827. Ready to issue. |
+| ~~**REM-P1**~~ | ~~Remedies Engine Phase 1 (KP collection + remedy_ref pipeline)~~ | Remedies | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | ✅ INTEGRATED -- runtime confirmed 2026-05-16 | -- | All 3 tasks complete: `/ref/` endpoint live (line 851), 36 KP remedy records seeded (modified=36 2026-05-15), KP fallback wiring confirmed. ⚠️ TT content note: JSON verdict split is 10/8/8/10 (YES/WAIT/NO/PRAY) vs spec'd 9/9/9/9 -- confirm intentional or re-ingest. |
 | **PUN-2** | Punya Rewards Home Page Promo + Module Hooks + SVG Wheel | Punya Rewards | `Punya_Rewards/CODEX_COMMISSION_PUN_2_FRONTEND_INTEGRATION.md` | READY TO ISSUE | PUN-1 ✅ | Backend fully live. PunyaRewardsPage baseline exists. Home promo section + 8 module hooks + wheel UX upgrade needed. No NavBar entry. |
 
 ---
@@ -71,6 +71,7 @@
 
 | ID | Commission | File | Commit |
 |---|---|---|---|
+| REM-P1 | Remedies Engine Phase 1 (KP collection + remedy_ref pipeline) | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | Runtime confirmed 2026-05-16 -- endpoint line 851, 36 records seeded |
 | KE-2B2 | Varga Dignity Wiring (facts layer) | `knowledge_engine.py` lines 195-208, 312, 488-508 | Built internally -- confirmed live 2026-05-15 |
 | KE-2D | Varga Dignity Tier Evaluator | `ke_yoga_evaluator.py` lines 373-387, 631 | Built internally -- 37 tests green, migration archived -- confirmed live 2026-05-15 |
 | ARC-UI | Arc Angel UI Panel (ArcAngelPanel.jsx) | `Arc_Angel/CODEX_COMMISSION_ARC_ANGEL_UI_PANEL.md` (archived) | `c01ec8d` |
@@ -109,7 +110,6 @@ NOW (IN PROGRESS):
   KP-Sprint2  -- Ask-Question LLM Router (HIGH, independent)
 
 NEXT TO ISSUE (all briefs complete):
-  REM-P1      -- Remedies Engine Phase 1 (all blockers cleared)
   PUN-2       -- Punya Rewards Home Promo + Module Hooks (brief ready 2026-05-16)
   IR-2        -- Lunar Cycle Wellness Backend (1 missing Phase 2 backend, brief ready 2026-05-16)
   IR-3        -- 8 Love Report Landing Pages (frontend only, brief ready 2026-05-16, no dependencies)
