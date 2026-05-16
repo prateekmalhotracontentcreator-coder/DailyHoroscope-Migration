@@ -36,7 +36,7 @@ import asyncio
 import tempfile
 from concurrent.futures import ThreadPoolExecutor
 
-# ── Google / YouTube libraries (optional — graceful fallback if not installed) ─
+# ── Google / YouTube libraries (optional -- graceful fallback if not installed) ─
 try:
     from google.oauth2.credentials import Credentials as GoogleCredentials
     from google.auth.transport.requests import Request as GoogleRequest
@@ -73,6 +73,7 @@ from encounter_window_router import router as encounter_window_router
 from date_night_router import router as date_night_router
 from digital_dating_router import router as digital_dating_router
 from intimacy_vitality_router import router as intimacy_vitality_router
+from lunar_cycle_router import router as lunar_cycle_router
 from love_weather_router import router as love_weather_router
 from ritual_trigger_router import router as ritual_trigger_router
 from soul_connection_router import router as soul_connection_router
@@ -139,10 +140,10 @@ app = FastAPI()
 @app.get("/", include_in_schema=False)
 @app.head("/", include_in_schema=False)
 async def health_check():
-    """Render health check — must return 2xx or deploy is marked failed."""
+    """Render health check -- must return 2xx or deploy is marked failed."""
     return {"status": "ok", "service": "EverydayHoroscope API"}
 
-# ── Session middleware — populates request.state.user for ALL routers ──────────
+# ── Session middleware -- populates request.state.user for ALL routers ──────────
 # Codex routers (Numerology, Tarot) read request.state.user to resolve the
 # authenticated user. This middleware bridges our session-cookie auth system
 # to that pattern, running before every request reaches any router.
@@ -373,7 +374,7 @@ class UpdateSubscriberRequest(BaseModel):
 class NotificationRequest(BaseModel):
     subject: str
     body: str                      # HTML content
-    channels: List[str]            # ["email"] — WhatsApp added when BSP is wired
+    channels: List[str]            # ["email"] -- WhatsApp added when BSP is wired
     audience: str = "all"          # "all" | "tagged"
     tags: List[str] = []           # used when audience == "tagged"
     scheduled_at: Optional[str] = None  # ISO datetime; None = send immediately
@@ -413,7 +414,7 @@ async def send_whatsapp_message(to_phone: str, message: str, recipient_name: str
     to = to_phone.replace(" ", "").replace("-", "").lstrip("+")
     template_name = os.environ.get("WHATSAPP_TEMPLATE_NAME", "hello_world")
     template_lang = os.environ.get("WHATSAPP_TEMPLATE_LANG", "en_US")  # must match approved template lang
-    # Build template payload — hello_world has no variables; custom templates may add body params
+    # Build template payload -- hello_world has no variables; custom templates may add body params
     payload: dict = {
         "messaging_product": "whatsapp",
         "to": to,
@@ -1440,7 +1441,7 @@ async def _post_to_instagram(message: str, image_url: Optional[str] = None) -> S
         return SocialPostResult(channel="instagram", success=False, error=str(e))
 
 async def _post_image_to_facebook(image_bytes: bytes, filename: str, caption: str) -> SocialPostResult:
-    """Upload raw image bytes directly to Facebook Page — no third-party hosting needed."""
+    """Upload raw image bytes directly to Facebook Page -- no third-party hosting needed."""
     page_id      = os.environ.get("FACEBOOK_PAGE_ID", "")
     system_token = os.environ.get("FACEBOOK_PAGE_ACCESS_TOKEN", "")
     if not page_id or not system_token:
@@ -1470,7 +1471,7 @@ async def _youtube_upload_task(image_bytes: bytes, message: str):
                "error": result.error, "message_preview": message[:100],
                "posted_at": datetime.now(timezone.utc).isoformat()}
     await db.social_post_logs.insert_one(log_doc)
-    logging.info(f"[YouTube] Background task complete — success={result.success} post_id={result.post_id} error={result.error}")
+    logging.info(f"[YouTube] Background task complete -- success={result.success} post_id={result.post_id} error={result.error}")
 
 @api_router.post("/admin/social/post-image")
 async def post_image_to_social(
@@ -1491,11 +1492,11 @@ async def post_image_to_social(
         if channel == "facebook":
             results.append(await _post_image_to_facebook(image_bytes, image.filename or "card.png", message))
         elif channel == "youtube":
-            # YouTube encode + upload can take 2-4 minutes — run in background to avoid browser timeout
+            # YouTube encode + upload can take 2-4 minutes -- run in background to avoid browser timeout
             background_tasks.add_task(_youtube_upload_task, image_bytes, message)
             results.append(SocialPostResult(channel="youtube", success=True,
                                             post_id="queued",
-                                            error="Uploading in background (~2 min) — check Post History to confirm"))
+                                            error="Uploading in background (~2 min) -- check Post History to confirm"))
             yt_queued = True
         elif channel == "instagram":
             results.append(SocialPostResult(channel="instagram", success=False, error="Direct image upload for Instagram coming soon"))
@@ -1508,7 +1509,7 @@ async def post_image_to_social(
     if log_docs:
         await db.social_post_logs.insert_many(log_docs)
     if yt_queued:
-        logging.info("[YouTube] Upload queued as background task — response returned immediately")
+        logging.info("[YouTube] Upload queued as background task -- response returned immediately")
     return {"results": [r.model_dump() for r in results]}
 
 @api_router.post("/admin/social/post")
@@ -1552,7 +1553,7 @@ async def _get_youtube_service():
     token_doc     = await db.app_settings.find_one({"key": "youtube_refresh_token"})
     refresh_token = (token_doc or {}).get("value") or os.environ.get("YOUTUBE_REFRESH_TOKEN", "")
     if not refresh_token:
-        return None, "YouTube not connected — click 'Connect YouTube Channel' in Admin Console"
+        return None, "YouTube not connected -- click 'Connect YouTube Channel' in Admin Console"
     def _build():
         creds = GoogleCredentials(
             token=None, refresh_token=refresh_token,
@@ -1577,7 +1578,7 @@ async def _image_bytes_to_mp4(image_bytes: bytes, duration: int = 30) -> bytes:
         with os.fdopen(img_fd, "wb") as f:
             f.write(image_bytes)
         os.close(vid_fd)
-        logging.info(f"[YouTube] ffmpeg encoding started — input {len(image_bytes)//1024} KB, duration {duration}s")
+        logging.info(f"[YouTube] ffmpeg encoding started -- input {len(image_bytes)//1024} KB, duration {duration}s")
         proc = await asyncio.create_subprocess_exec(
             "ffmpeg", "-y",
             "-loop", "1", "-i", img_path,
@@ -1601,7 +1602,7 @@ async def _image_bytes_to_mp4(image_bytes: bytes, duration: int = 30) -> bytes:
             raise RuntimeError(f"ffmpeg failed: {err_msg}")
         with open(vid_path, "rb") as f:
             video_bytes = f.read()
-        logging.info(f"[YouTube] ffmpeg encoding complete — output {len(video_bytes)//1024} KB")
+        logging.info(f"[YouTube] ffmpeg encoding complete -- output {len(video_bytes)//1024} KB")
         return video_bytes
     finally:
         try: os.unlink(img_path)
@@ -1648,7 +1649,7 @@ async def _post_image_to_youtube(image_bytes: bytes, title: str, description: st
         loop    = asyncio.get_event_loop()
         resp    = await loop.run_in_executor(_yt_executor, _upload)
         vid_id  = resp.get("id", "")
-        logging.info(f"[YouTube] Upload complete — video ID: {vid_id}")
+        logging.info(f"[YouTube] Upload complete -- video ID: {vid_id}")
         return SocialPostResult(channel="youtube", success=True, post_id=vid_id)
     except Exception as e:
         logging.error(f"[YouTube] Upload failed: {e}", exc_info=True)
@@ -1732,7 +1733,7 @@ async def youtube_callback(code: str = "", error: str = ""):
             padding:40px;background:#111;color:#fff;">
             <h2 style="color:#4ade80">✅ YouTube Connected!</h2>
             <p>Your channel is now linked to EverydayHoroscope.</p>
-            <p style="color:#9ca3af">This tab will close automatically…</p>
+            <p style="color:#9ca3af">This tab will close automatically...</p>
             <script>
             if(window.opener){window.opener.postMessage({type:'youtube_connected'},'*');}
             setTimeout(()=>window.close(),2000);
@@ -2032,7 +2033,7 @@ async def get_arc_angel_windows(
             domain_matched_rules=domain_rule_map,
             horizon_years=horizon_years,
         )
-        # Build enriched list (TD-29 Integrated Approach — Legacy Model baseline active).
+        # Build enriched list (TD-29 Integrated Approach -- Legacy Model baseline active).
         arc_angel_list = [
             {
                 "domain_id": domain_id,
@@ -2070,6 +2071,7 @@ app.include_router(love_weather_router)
 app.include_router(date_night_router)
 app.include_router(digital_dating_router)
 app.include_router(intimacy_vitality_router)
+app.include_router(lunar_cycle_router)
 app.include_router(soul_connection_router)
 app.include_router(venus_retrograde_router)
 app.include_router(soulmate_timing_router)
@@ -2110,10 +2112,10 @@ async def send_scheduled_notifications():
             logging.error("Failed to send scheduled notification %s: %s", notif["id"], str(e))
 
 async def _call_notification_trigger(trigger_path: str, payload: dict) -> None:
-    """Internal helper — calls a notification trigger endpoint from APScheduler."""
+    """Internal helper -- calls a notification trigger endpoint from APScheduler."""
     trigger_key = os.getenv("TEMPLE_TRIGGER_KEY", "")
     if not trigger_key:
-        logging.warning("TEMPLE_TRIGGER_KEY not set — skipping notification trigger: %s", trigger_path)
+        logging.warning("TEMPLE_TRIGGER_KEY not set -- skipping notification trigger: %s", trigger_path)
         return
     try:
         async with httpx.AsyncClient() as client:
@@ -2129,22 +2131,22 @@ async def _call_notification_trigger(trigger_path: str, payload: dict) -> None:
 
 
 async def notification_trigger_panchang_daily():
-    """Daily Panchang digest — runs at 00:00 UTC (5:30 AM IST)."""
+    """Daily Panchang digest -- runs at 00:00 UTC (5:30 AM IST)."""
     await _call_notification_trigger("panchang-daily", {"audience": "all"})
 
 
 async def notification_trigger_encounter_window():
-    """Encounter window check — runs at 01:00 UTC (6:30 AM IST) daily."""
+    """Encounter window check -- runs at 01:00 UTC (6:30 AM IST) daily."""
     await _call_notification_trigger("encounter-window", {"audience": "all"})
 
 
 async def notification_trigger_love_weather_weekly():
-    """Weekly Love Weather summary — runs every Sunday at 02:00 UTC (7:30 AM IST)."""
+    """Weekly Love Weather summary -- runs every Sunday at 02:00 UTC (7:30 AM IST)."""
     await _call_notification_trigger("love-weather-weekly", {"audience": "all"})
 
 
 async def notification_trigger_date_night_score():
-    """Date Night score — runs at 12:30 UTC (6:00 PM IST) daily."""
+    """Date Night score -- runs at 12:30 UTC (6:00 PM IST) daily."""
     await _call_notification_trigger("date-night-score", {"audience": "all"})
 
 
