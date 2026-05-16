@@ -1,7 +1,7 @@
 # Individual Reports -- Module Tracker
 > Path: `Codex_Deliveries/Individual_Reports/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-16 · v2.3
+> Last updated: 2026-05-16 · v2.5
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- Phase 1 fully live · Phase 2 backends integrated with IR-2 and locally reworked by IR-2A · Phase 3 backends fully live · Love frontend hub live · Public SEO gap for Phase 2+3 reports · IR-3 still ready to issue |
+| **Status** | 🟡 ACTIVE -- Phase 1 fully live · Phase 2 backends integrated with IR-2 and IR-2A · Phase 3 backends fully live · Love frontend hub live · IR-3 Love landing pages delivered locally · Temple review pending on the new public SEO slice |
 | **Phase 1 Frontend** | `frontend/src/pages/reports/IndividualReportsPage.jsx` at `/reports` (PremiumRoute) |
 | **Phase 2+3 Frontend** | `frontend/src/pages/reports/LoveReportsPage.jsx` at `/love-reports` (PremiumRoute) |
 | **Public Hub** | `frontend/src/pages/reports/PremiumReportsLanding.jsx` at `/individual-reports` |
@@ -35,20 +35,20 @@
 
 | Report | Backend Router | Frontend (generation) | Public SEO Page | Status |
 |---|---|---|---|---|
-| Encounter Window | `encounter_window_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
-| Seasonal Love Weather | `love_weather_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
-| **Lunar Cycle Wellness** | `lunar_cycle_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend delivered locally via IR-2; Temple review/integration pending |
-| Date-Night Score | `date_night_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
-| Intimacy & Vitality | `intimacy_vitality_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
-| Venus Retrograde (bonus) | `venus_retrograde_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+| Encounter Window | `encounter_window_router.py` ✅ | `LoveReportsPage.jsx` ✅ | `EncounterWindowLandingPage.jsx` ✅ (IR-3) | SEO landing page delivered locally; Temple review pending |
+| Seasonal Love Weather | `love_weather_router.py` ✅ | `LoveReportsPage.jsx` ✅ | `LoveWeatherLandingPage.jsx` ✅ (IR-3) | SEO landing page delivered locally; Temple review pending |
+| **Lunar Cycle Wellness** | `lunar_cycle_router.py` ✅ | `LoveReportsPage.jsx` ✅ | `LunarCycleWellnessLandingPage.jsx` ✅ (IR-3) | Backend integrated; Love SEO landing page delivered locally |
+| Date-Night Score | `date_night_router.py` ✅ | `LoveReportsPage.jsx` ✅ | `DateNightLandingPage.jsx` ✅ (IR-3) | SEO landing page delivered locally; Temple review pending |
+| Intimacy & Vitality | `intimacy_vitality_router.py` ✅ | `LoveReportsPage.jsx` ✅ | `IntimacyVitalityLandingPage.jsx` ✅ (IR-3) | SEO landing page delivered locally; Temple review pending |
+| Venus Retrograde (bonus) | `venus_retrograde_router.py` ✅ | `LoveReportsPage.jsx` ✅ | `VenusRetrogradeLandingPage.jsx` ✅ (IR-3) | SEO landing page delivered locally; Temple review pending |
 
 ### Phase 3 -- Extended Reports (Contract Item 9+)
 
 | Report | Backend Router | Frontend (generation) | Public SEO Page | Status |
 |---|---|---|---|---|
-| Soulmate Timing | `soulmate_timing_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
-| Soul Connection | `soul_connection_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
-| Digital Dating | `digital_dating_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ (IR-3 pending) | Backend + frontend live; SEO page missing |
+| Soulmate Timing | `soulmate_timing_router.py` ✅ | `LoveReportsPage.jsx` ✅ | `SoulmateLandingPage.jsx` ✅ (IR-3) | SEO landing page delivered locally; Temple review pending |
+| Soul Connection | `soul_connection_router.py` ✅ | `LoveReportsPage.jsx` ✅ | `SoulConnectionLandingPage.jsx` ✅ (IR-3) | SEO landing page delivered locally; Temple review pending |
+| Digital Dating | `digital_dating_router.py` ✅ | `LoveReportsPage.jsx` ✅ | ❌ | No IR-3 landing page in brief; premium tool only for now |
 
 ### Contract 8A -- Lagna Kundali
 
@@ -69,7 +69,7 @@
 | **IR-1** | 5 Public SEO Landing Pages + `/individual-reports` hub | ✅ INTEGRATED -- commit `825a294` | `CODEX_COMMISSION_IR_1_LANDING_PAGES.md` · Delivered + integrated 2026-05-15 |
 | **IR-2** | Lunar Cycle Wellness backend (`lunar_cycle_router.py`) | ✅ INTEGRATED -- commit `f9f6690` | `CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` · Integrated. Datetime bug fixed `021a799`. |
 | **IR-2A** | Lunar Cycle Rework -- Action Tracker + Rich Content | ✅ INTEGRATED -- commit `692fefa` | `CODEX_COMMISSION_IR_2A_LUNAR_CYCLE_REWORK.md` · CC fixes applied: transit_house subscript bug + f-string fix. Build green. Pushed. |
-| **IR-3** | 8 Love Report public SEO landing pages | 🟣 READY TO ISSUE | `CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` · Frontend-only. Lunar Cycle copy should reflect IR-2A richer output. |
+| **IR-3** | 8 Love Report public SEO landing pages | ✅ INTEGRATED -- commit `739c3fa` | `CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` · 8 wrappers, 8 routes, 8 sitemap URLs, content-driven CTA (love→/love-reports, phase1→/reports). Build green. |
 
 ---
 
@@ -81,13 +81,13 @@
 | ~~IR-OP-2~~ | ~~Decide whether `/individual-reports` public hub behavior is accepted as canonical~~ | TT | ✅ DONE | Confirmed canonical 2026-05-15. |
 | ~~IR-OP-3~~ | ~~Resolve unrelated global frontend build blocker in `StrategistPage.jsx`~~ | CC | ✅ DONE | Fixed at commit `667fc34` 2026-05-15. |
 | ~~IR-OP-4~~ | ~~Temple review and validate IR-2 (Lunar Cycle backend)~~ | TT | ✅ DONE | Live verified 2026-05-16. Datetime bug fixed `021a799`. Tile visible on LovePage. |
-| IR-OP-5 | Issue IR-3 to Codex (8 Love landing pages) | TT | 🟠 HIGH | Brief complete. No backend dependency -- can issue independently. |
+| IR-OP-5 | TT live verification of IR-3 (8 Love landing pages) | TT | 🟠 HIGH | Integrated `739c3fa`. Spot-check 2-3 public routes, confirm CTA routes to `/love-reports`, check mobile layout. |
 | IR-OP-6 | Issue KUN-1 to Codex (Kundali frontend only) | TT | 🟡 MED | Brief updated 2026-05-16 -- backend already live, frontend only. |
 | ~~IR-OP-7~~ | ~~TT live verification of Love Reports at `/love-reports`~~ | TT | ✅ DONE | Verified 2026-05-16 -- 5 Phase 1 reports visible. Lunar Cycle tile confirmed in Love hub. |
 | ~~IR-OP-8~~ | ~~Temple review and validate IR-2A~~ | CC | ✅ DONE | Integrated `692fefa` 2026-05-16. Two runtime bugs fixed before commit. TT to verify live report content quality. |
 | ~~IR-OP-9~~ | ~~TT live verification of Lunar Cycle richer output~~ | TT | ✅ DONE | Verified live 2026-05-16. Report confirmed brilliant. Minor display formatting improvements noted -- logged as IR-OP-10. |
 | IR-OP-10 | Minor display formatting polish on Lunar Cycle report | CC | 🟡 MED | TT flagged minor formatting improvements post live review. Scope to be defined; candidate for inclusion in a future IR patch or IR-3 delivery scope. |
-| IR-OP-11 | Issue IR-3 to Codex (8 Love Report SEO landing pages) | TT | 🟠 HIGH | Brief at `CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md`. TT confirmed ready to issue 2026-05-16. |
+| ~~IR-OP-11~~ | ~~Issue IR-3 to Codex (8 Love Report SEO landing pages)~~ | TT | ✅ DONE | Delivered locally by Codex 2026-05-16. Awaiting Temple review under IR-OP-5. |
 
 ---
 
@@ -96,7 +96,7 @@
 - **Phase 1** reports live at `/reports` (PremiumRoute, `IndividualReportsPage.jsx`) -- natal only, no birth partner needed
 - **Phase 2+3** reports live at `/love-reports` (PremiumRoute, `LoveReportsPage.jsx`) -- transit-based, one birth chart input
 - **Public hubs**: `/individual-reports` (Phase 1 hub), no Phase 2 public hub yet
-- **Public landing pages**: `/karmic-debt-report` etc (Phase 1 ✅), Phase 2+3 missing (IR-3 scope)
+- **Public landing pages**: Phase 1 set integrated; IR-3 adds 8 Love landing pages locally on public routes, all CTA-linked to `/love-reports`
 - **Kundali backend**: `/api/lagna-kundali` (NOT `/api/kundali` -- old brief had wrong prefix)
 - **Lunar Cycle**: IR-2 now adds the final missing Phase 2 backend plus the LoveReportsPage config entry; public SEO page still belongs to IR-3
 - `vedic_shared_utils.py` is the shared utility layer for all report routers -- do not duplicate its functions
@@ -116,4 +116,5 @@
 | v2.2 | 2026-05-16 | IR-2 integrated + bugs fixed (`021a799`): datetime serialisation crash + LovePage hub tile. IR-2A brief written (Action Tracker + rich content rework). 12 Areas of Life map published. Architecture doc published. IR-3 cross-referenced with IR-2A. | CC | `ced0972` |
 | v2.3 | 2026-05-16 | IR-2A delivered by Codex + integrated by CC. Two runtime bugs fixed: transit_house subscript crash + fallback f-string. Frontend LunarCycleRenderer with 7-Day Action Tracker and today-highlight committed. | CC | `692fefa` |
 | v2.4 | 2026-05-16 | IR-2A live-verified by TT -- report confirmed brilliant. Minor formatting note logged IR-OP-10. IR-OP-9 closed. IR-3 confirmed ready to issue (IR-OP-11). | TT + CC | `0a4d16f` |
-| v2.3 | 2026-05-16 | IR-2A delivered locally. Expanded lunar prompt richness, added 7-day action tracker output, waxing/waning-aware fallback logic, dedicated Lunar renderer, and passed frontend production build. | Codex | 2026-05-16 |
+| v2.5 | 2026-05-16 | IR-3 delivered by Codex + integrated by CC. 8 landing pages, 8 routes, 8 sitemap URLs. CTA content-driven shell tweak (Phase 1 unaffected). Build green. | CC | `739c3fa` |
+| v2.5 | 2026-05-16 | IR-3 delivered locally. Added 8 Love landing pages via shared shell, public routes, sitemap URLs, `/love-reports` CTA wiring, and successful frontend production build. | Codex | 2026-05-16 |
