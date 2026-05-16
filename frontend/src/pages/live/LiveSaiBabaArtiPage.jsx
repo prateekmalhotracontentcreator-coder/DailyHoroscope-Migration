@@ -1,5 +1,14 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { ExternalLink, Heart, Radio, ScrollText, Volume2, VolumeX, Youtube } from 'lucide-react';
+import React, { useCallback, useRef, useState } from 'react';
+import {
+  ExternalLink,
+  Heart,
+  Play,
+  Radio,
+  ScrollText,
+  Volume2,
+  VolumeX,
+  Youtube,
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import { Footer } from '../../components/Footer';
@@ -9,7 +18,7 @@ import { useLiveTv } from '../../hooks/useLiveTv';
 const SITE = 'https://www.everydayhoroscope.in';
 const YT_CHANNEL = 'https://www.youtube.com/@SkyHoundStudios';
 
-// ─── Full Arti lyrics with transliteration + English meaning ───────────────
+// ─── Full Arti lyrics ─────────────────────────────────────────────────────────
 const LYRICS = [
   {
     hindi: 'आरती साईं बाबा, सौख्यदातारा जीवा',
@@ -58,7 +67,42 @@ const LYRICS = [
   },
 ];
 
-// ─── Schema.org VideoObject ─────────────────────────────────────────────────
+// ─── Devotional library items (future playlist foundation) ───────────────────
+const ARTI_LIBRARY = [
+  {
+    id: 'sai-baba',
+    label: 'Sai Baba Arti',
+    sub: 'Om Sai Ram · Shirdi',
+    icon: '🙏',
+    active: true,
+  },
+  {
+    id: 'ganesh',
+    label: 'Ganesh Vandana',
+    sub: 'Jai Ganesh · Morning',
+    icon: '🐘',
+    active: false,
+    soon: true,
+  },
+  {
+    id: 'hanuman',
+    label: 'Hanuman Chalisa',
+    sub: 'Jai Bajrangbali · Daily',
+    icon: '🚩',
+    active: false,
+    soon: true,
+  },
+  {
+    id: 'durga',
+    label: 'Durga Arti',
+    sub: 'Jai Ambe Gauri · Evening',
+    icon: '🪔',
+    active: false,
+    soon: true,
+  },
+];
+
+// ─── Schema.org VideoObject ───────────────────────────────────────────────────
 function buildSchema(video) {
   return {
     '@context': 'https://schema.org',
@@ -70,43 +114,78 @@ function buildSchema(video) {
     uploadDate: video?.generated_at || new Date().toISOString(),
     contentUrl: video?.website_video_url || SITE,
     embedUrl: video?.youtube_embed_url || video?.website_video_url || SITE,
-    publisher: {
-      '@type': 'Organization',
-      name: 'EverydayHoroscope',
-      url: SITE,
-    },
+    publisher: { '@type': 'Organization', name: 'EverydayHoroscope', url: SITE },
   };
 }
 
-// ─── Inline hero video player (edge-to-edge, no card wrapper) ────────────────
-function HeroPlayer({ videoUrl, posterUrl, title }) {
+// ─── Full-viewport hero player ────────────────────────────────────────────────
+// Uses a callback ref to set elem.muted=true SYNCHRONOUSLY before the browser
+// evaluates its autoplay policy -- the React `muted` JSX prop is unreliable.
+function HeroPlayer({ videoUrl, posterUrl }) {
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
+  const attachRef = useCallback(
+    (el) => {
+      if (!el) return;
+      el.muted = true;
+      el.defaultMuted = true;
+      videoRef.current = el;
+      el.play()
+        .then(() => setPlaying(true))
+        .catch(() => setPlaying(false));
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [videoUrl],
+  );
+
+  const toggleMute = () => {
+    const next = !muted;
+    setMuted(next);
+    if (videoRef.current) videoRef.current.muted = next;
+  };
+
+  const handleManualPlay = () => {
     if (!videoRef.current) return;
-    videoRef.current.muted = muted;
-    const p = videoRef.current.play();
-    if (p && p.catch) p.catch(() => {});
-  }, [muted, videoUrl]);
+    videoRef.current.play()
+      .then(() => setPlaying(true))
+      .catch(() => {});
+  };
 
   return (
     <div className="relative h-full w-full bg-black">
       <video
-        ref={videoRef}
+        ref={attachRef}
         key={videoUrl}
         src={videoUrl}
         poster={posterUrl}
         autoPlay
-        muted
         loop
         playsInline
+        preload="auto"
         className="h-full w-full object-contain"
+        onPlay={() => setPlaying(true)}
       />
-      {/* Mute / Unmute button -- bottom-right overlay */}
+
+      {/* Manual play overlay -- shown only when autoplay is blocked by browser */}
+      {!playing && (
+        <button
+          type="button"
+          onClick={handleManualPlay}
+          className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px] transition hover:bg-black/50"
+          aria-label="Play Sai Baba Arti"
+        >
+          <div className="grid h-24 w-24 place-items-center rounded-full bg-gold/90 text-black shadow-[0_12px_40px_rgba(197,160,89,0.6)]">
+            <Play className="h-10 w-10 translate-x-0.5" />
+          </div>
+        </button>
+      )}
+
+      {/* Mute/Unmute -- bottom-right */}
       <button
         type="button"
-        onClick={() => setMuted((m) => !m)}
+        onClick={toggleMute}
         className="absolute bottom-4 right-4 z-20 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-black/70 px-4 py-2 text-xs font-semibold text-gold backdrop-blur-sm transition hover:bg-black/90 sm:bottom-6 sm:right-6"
       >
         {muted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
@@ -116,7 +195,7 @@ function HeroPlayer({ videoUrl, posterUrl, title }) {
   );
 }
 
-// ─── Page ────────────────────────────────────────────────────────────────────
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function LiveSaiBabaArtiPage() {
   const { data, loading } = useLiveTv();
 
@@ -129,7 +208,7 @@ export default function LiveSaiBabaArtiPage() {
         schema={buildSchema(data)}
       />
 
-      {/* ── HERO: Full-viewport immersive player ────────────────────────────── */}
+      {/* ── HERO: Full-viewport immersive player ─────────────────────────────── */}
       <section
         className="relative w-full overflow-hidden bg-black aspect-video lg:aspect-auto lg:h-[75vh]"
         style={{ minHeight: '240px' }}
@@ -142,11 +221,7 @@ export default function LiveSaiBabaArtiPage() {
             </div>
           </div>
         ) : data?.website_video_url ? (
-          <HeroPlayer
-            title={data.title || 'Live Sai Baba Arti'}
-            videoUrl={data.website_video_url}
-            posterUrl={data.thumbnail_url}
-          />
+          <HeroPlayer videoUrl={data.website_video_url} posterUrl={data.thumbnail_url} />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-gradient-to-br from-black via-[#0d0a05] to-[#191205]">
             <div className="grid h-28 w-28 place-items-center rounded-full border border-gold/30 bg-gold/10 text-6xl shadow-[0_0_60px_rgba(197,160,89,0.2)]">
@@ -155,14 +230,13 @@ export default function LiveSaiBabaArtiPage() {
             <div className="text-center">
               <p className="font-playfair text-3xl font-semibold text-gold">Om Sai Ram</p>
               <p className="mt-3 max-w-md text-sm leading-7 text-white/45">
-                Live stream activates when a source video is configured by Temple Team. Place the source video
-                in <code className="text-gold/60">backend/assets/live_tv/sai_baba/</code> and run the generator script.
+                Live stream activates when a source video is configured.
               </p>
             </div>
           </div>
         )}
 
-        {/* 🔴 LIVE badge -- top-left absolute overlay */}
+        {/* 🔴 LIVE badge */}
         <div className="absolute left-4 top-4 z-20 flex items-center gap-2 rounded-full bg-black/75 px-3 py-1.5 backdrop-blur-sm sm:left-6 sm:top-6">
           <span className="relative flex h-2.5 w-2.5">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-500 opacity-75" />
@@ -173,16 +247,16 @@ export default function LiveSaiBabaArtiPage() {
           </span>
         </div>
 
-        {/* Bottom gradient fade into page background */}
+        {/* Bottom gradient */}
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent" />
       </section>
 
-      {/* ── YouTube channel strip ─────────────────────────────────────────── */}
+      {/* ── YouTube channel strip ─────────────────────────────────────────────── */}
       <div className="border-b border-gold/15 bg-gold/[0.05]">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 text-sm text-muted-foreground">
             <Radio className="h-4 w-4 shrink-0 text-gold" />
-            <span>Continuous devotional stream · loops 24/7 · starts muted for browser safety</span>
+            <span>Continuous devotional stream · loops 24/7 · starts muted</span>
           </div>
           <a
             href={YT_CHANNEL}
@@ -197,7 +271,7 @@ export default function LiveSaiBabaArtiPage() {
         </div>
       </div>
 
-      {/* ── Main content ─────────────────────────────────────────────────── */}
+      {/* ── Main content ──────────────────────────────────────────────────────── */}
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
 
         {/* Page title */}
@@ -211,50 +285,103 @@ export default function LiveSaiBabaArtiPage() {
           </h1>
           <p className="mt-6 max-w-3xl text-lg leading-8 text-muted-foreground">
             Experience the divine grace of Shirdi Sai Baba through a continuous devotional Arti stream.
-            The player loops at the source level, starts muted for browser compatibility, and gives
-            devotees a single tap to unmute the full Arti audio.{' '}
+            The player loops at source level, starts muted for browser compatibility, and offers
+            one-tap unmute for the full Arti audio.{' '}
             <strong className="font-semibold text-foreground">Om Sai Ram.</strong>
           </p>
         </div>
 
-        {/* ── About Shirdi Sai Baba ─────────────────────────────────────── */}
+        {/* ── Arti Library / Playlist ───────────────────────────────────────── */}
+        <section className="mb-16">
+          <div className="mb-6">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-gold/80">
+              Devotional Library
+            </p>
+            <h2 className="font-playfair text-3xl font-semibold text-foreground">
+              Arti Playlist
+            </h2>
+            <p className="mt-2 text-sm text-muted-foreground">
+              The active stream is shown below. More Artis are added as the library grows.
+            </p>
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {ARTI_LIBRARY.map((item) => (
+              <div
+                key={item.id}
+                className={`relative flex items-center gap-4 rounded-2xl border px-5 py-4 transition ${
+                  item.active
+                    ? 'border-gold/40 bg-gold/[0.08] shadow-[0_0_24px_rgba(197,160,89,0.12)]'
+                    : 'border-gold/10 bg-card/60 opacity-60'
+                }`}
+              >
+                <div
+                  className={`grid h-12 w-12 shrink-0 place-items-center rounded-2xl text-2xl ${
+                    item.active ? 'bg-gold/15 border border-gold/30' : 'bg-card border border-gold/10'
+                  }`}
+                >
+                  {item.icon}
+                </div>
+                <div className="min-w-0">
+                  <p className="truncate font-semibold text-foreground">{item.label}</p>
+                  <p className="mt-0.5 truncate text-xs text-muted-foreground">{item.sub}</p>
+                </div>
+                {item.active && (
+                  <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-gold/20 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-gold">
+                    <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
+                    Live
+                  </div>
+                )}
+                {item.soon && (
+                  <div className="absolute right-3 top-3 rounded-full bg-card px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                    Soon
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── About Shirdi Sai Baba ─────────────────────────────────────────── */}
         <section className="mb-16 overflow-hidden rounded-[30px] border border-gold/20 bg-gradient-to-br from-gold/[0.08] via-card to-card p-8 shadow-[0_28px_70px_-24px_rgba(197,160,89,0.22)] lg:p-12">
           <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:items-start">
             <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-gold/80">About the Saint</p>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-gold/80">
+                About the Saint
+              </p>
               <h2 className="mb-7 font-playfair text-4xl font-semibold text-foreground">
                 Shirdi Sai Baba
               </h2>
               <div className="space-y-5 text-base leading-8 text-muted-foreground">
                 <p>
-                  Shirdi Sai Baba was a revered spiritual master who resided in the small village of Shirdi,
-                  Maharashtra, India. Venerated by millions of devotees worldwide -- Hindu and Muslim alike --
-                  he is considered an incarnation of divine compassion. His core teaching,{' '}
-                  <em className="text-foreground">"Shraddha and Saburi"</em> (Faith and Patience), remains the
-                  eternal cornerstone of his philosophy.
+                  Shirdi Sai Baba was a revered spiritual master who resided in the small village of
+                  Shirdi, Maharashtra, India. Venerated by millions of devotees worldwide -- Hindu and
+                  Muslim alike -- he is considered an incarnation of divine compassion. His core
+                  teaching,{' '}
+                  <em className="text-foreground">"Shraddha and Saburi"</em> (Faith and Patience),
+                  remains the eternal cornerstone of his philosophy.
                 </p>
                 <p>
-                  Sai Baba performed countless miracles throughout his lifetime -- healing the sick, feeding the
-                  hungry, and guiding seekers of all faiths toward the one formless God. He spent his days at
-                  the Dwarkamai mosque in Shirdi, always keeping a sacred fire (dhuni) burning: a symbol of
-                  his eternal, unwavering presence and warmth for every devotee who approached him.
+                  Sai Baba performed countless miracles throughout his lifetime -- healing the sick,
+                  feeding the hungry, and guiding seekers of all faiths toward the one formless God.
+                  He spent his days at the Dwarkamai mosque in Shirdi, always keeping a sacred fire
+                  (dhuni) burning: a symbol of his eternal, unwavering presence and warmth.
                 </p>
                 <p>
-                  He took Mahasamadhi on 15 October 1918, yet his devotees believe with unshakeable faith that
-                  he continues to guide, protect, and bless all who call upon his name. The Arti offered at
-                  Shirdi -- sung five times daily -- is the sacred hymn honouring his eternal divine grace.
-                  May his blessings reach you through this continuous devotional stream.
+                  He took Mahasamadhi on 15 October 1918, yet his devotees believe he continues to
+                  guide and bless all who call upon his name with sincere faith. The Arti sung at
+                  Shirdi -- five times daily -- is the sacred hymn honouring his eternal divine grace.
+                  May his blessings reach you through this continuous stream.
                 </p>
               </div>
             </div>
-
             <div className="grid gap-3">
               {[
                 { label: 'Core Teaching', value: 'Shraddha & Saburi -- Faith and Patience' },
-                { label: 'Sacred Abode', value: 'Dwarkamai Mosque, Shirdi, Maharashtra, India' },
+                { label: 'Sacred Abode', value: 'Dwarkamai Mosque, Shirdi, Maharashtra' },
                 { label: 'Mahasamadhi', value: '15 October 1918' },
-                { label: 'Daily Artis', value: 'Five times -- Kakad, Madhyan, Dhoop, Shej, Satka' },
-                { label: 'Philosophy', value: 'Sarva Dharma Sambhav -- all religions lead to one God' },
+                { label: 'Daily Artis', value: 'Five -- Kakad, Madhyan, Dhoop, Shej, Satka' },
+                { label: 'Philosophy', value: 'Sarva Dharma Sambhav -- all paths lead to one God' },
                 { label: 'Mantra', value: 'Om Sai Ram · Sai Baba Ki Jai' },
               ].map(({ label, value }) => (
                 <div
@@ -263,7 +390,9 @@ export default function LiveSaiBabaArtiPage() {
                 >
                   <div className="mt-0.5 shrink-0 text-gold">✦</div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold/70">{label}</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold/70">
+                      {label}
+                    </p>
                     <p className="mt-1 text-sm leading-6 text-foreground">{value}</p>
                   </div>
                 </div>
@@ -272,29 +401,27 @@ export default function LiveSaiBabaArtiPage() {
           </div>
         </section>
 
-        {/* ── Arti Lyrics ───────────────────────────────────────────────── */}
+        {/* ── Lyrics table ─────────────────────────────────────────────────── */}
         <section id="lyrics" className="mb-16">
           <div className="mb-8">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-gold/80">Sacred Hymn</p>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-gold/80">
+              Sacred Hymn
+            </p>
             <h2 className="font-playfair text-4xl font-semibold text-foreground">
               Sai Baba Arti -- Lyrics &amp; English Meaning
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
-              The Arti is sung in Marathi and Hindi. Below you will find the original Devanagari script,
-              Roman transliteration, and the English meaning of each verse, so every devotee can follow
-              along regardless of their language background.
+              The Arti is sung in Marathi and Hindi. Below you will find the original Devanagari
+              script, Roman transliteration, and the English meaning of each verse.
             </p>
           </div>
 
-          {/* 3-column lyrics table -- scrollable on mobile */}
           <div className="overflow-x-auto rounded-[24px] border border-gold/20 bg-card/80">
-            {/* Header */}
             <div className="min-w-[720px] grid grid-cols-[1.1fr_1fr_1.2fr] border-b border-gold/15 bg-gold/[0.06] px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.22em] text-gold/70">
               <span>Original (Hindi / Marathi)</span>
               <span className="border-l border-gold/10 pl-6">Transliteration</span>
               <span className="border-l border-gold/10 pl-6">English Meaning</span>
             </div>
-            {/* Rows */}
             <div className="min-w-[720px] divide-y divide-gold/10">
               {LYRICS.map((line, i) => (
                 <div
@@ -312,32 +439,28 @@ export default function LiveSaiBabaArtiPage() {
               ))}
             </div>
           </div>
-
           <p className="mt-4 text-xs text-muted-foreground">
-            Scroll right on smaller screens to see all three columns. ✦ The full Arti has additional stanzas sung at Shirdi temple.
+            Scroll right on smaller screens to see all three columns.
           </p>
         </section>
 
-        {/* ── Feature cards ─────────────────────────────────────────────── */}
+        {/* ── Feature cards ─────────────────────────────────────────────────── */}
         <section className="mb-16 grid gap-5 sm:grid-cols-3">
           {[
             {
               icon: Heart,
               title: 'Continuous Darshan',
-              body:
-                'The website stream uses a normalized MP4 directly -- it loops without waiting for a YouTube publish cycle, giving devotees uninterrupted Sai Baba darshan at any time of day.',
+              body: 'The stream uses a normalised MP4 directly -- it loops without waiting for a YouTube publish cycle, giving uninterrupted Sai Baba darshan any time of day.',
             },
             {
               icon: Radio,
               title: 'Temple-Safe Playback',
-              body:
-                'Autoplay begins muted for browser compliance. A single tap on the Unmute button lets devotees receive the complete, full-volume Arti audio experience.',
+              body: 'Autoplay begins muted for browser compliance. One tap on Unmute enables the full Arti audio experience.',
             },
             {
               icon: ScrollText,
               title: 'SEO Discovery Page',
-              body:
-                'Shareable, indexable, and rich with structured content -- lyrics, meaning, and schema markup -- so new devotees searching for Sai Baba Arti find their way here.',
+              body: 'Shareable, indexable, and rich with lyrics, meaning, and schema markup -- so new devotees searching for Sai Baba Arti find their way here.',
             },
           ].map(({ icon: Icon, title, body }) => (
             <div
@@ -353,10 +476,12 @@ export default function LiveSaiBabaArtiPage() {
           ))}
         </section>
 
-        {/* ── Cross-links ───────────────────────────────────────────────── */}
+        {/* ── Cross-links ───────────────────────────────────────────────────── */}
         <section className="mb-16">
           <div className="mb-7">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-gold/80">Explore the Temple</p>
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[0.28em] text-gold/80">
+              Explore the Temple
+            </p>
             <h2 className="font-playfair text-3xl font-semibold text-foreground">
               More sacred tools for your daily practice
             </h2>
@@ -398,7 +523,9 @@ export default function LiveSaiBabaArtiPage() {
                     {icon}
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground transition-colors group-hover:text-gold">{label}</p>
+                    <p className="font-semibold text-foreground transition-colors group-hover:text-gold">
+                      {label}
+                    </p>
                     <p className="mt-1 text-xs leading-5 text-muted-foreground">{description}</p>
                   </div>
                 </>
@@ -418,7 +545,7 @@ export default function LiveSaiBabaArtiPage() {
           </div>
         </section>
 
-        {/* ── YouTube subscribe banner ──────────────────────────────────── */}
+        {/* ── YouTube subscribe banner ──────────────────────────────────────── */}
         <section className="overflow-hidden rounded-[28px] border border-red-500/20 bg-gradient-to-br from-red-950/30 via-card to-card p-8 shadow-[0_24px_60px_-20px_rgba(239,68,68,0.14)] sm:p-10">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="max-w-xl">
@@ -430,8 +557,8 @@ export default function LiveSaiBabaArtiPage() {
                 Watch Sai Baba Arti on YouTube
               </h3>
               <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                Subscribe for Sai Baba Arti videos, daily horoscope updates, Vedic astrology guidance,
-                and devotional content published regularly. Om Sai Ram.
+                Subscribe for Sai Baba Arti videos, daily horoscope updates, Vedic astrology
+                guidance, and devotional content. Om Sai Ram.
               </p>
             </div>
             <a
