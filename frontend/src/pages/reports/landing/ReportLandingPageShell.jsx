@@ -148,6 +148,8 @@ function SamplePreview({ page }) {
 export default function ReportLandingPageShell({ page }) {
   const sampleRef = useRef(null);
   const schema = useMemo(() => buildFaqSchema(page), [page]);
+  const ctaPath = page.ctaPath || '/reports';
+  const ctaLabel = page.ctaLabel || `Generate My ${page.name}`;
 
   function scrollToSample() {
     sampleRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -190,8 +192,8 @@ export default function ReportLandingPageShell({ page }) {
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-white/72">{page.description}</p>
             <div className="mt-10 flex flex-wrap gap-4">
-              <AccentButton href="/reports" color={page.color}>
-                <span>{`Generate My ${page.name}`}</span>
+              <AccentButton href={ctaPath} color={page.color}>
+                <span>{ctaLabel}</span>
                 <ArrowRight className="h-4 w-4" />
               </AccentButton>
               <OutlineButton onClick={scrollToSample} color={page.color}>
@@ -245,8 +247,8 @@ export default function ReportLandingPageShell({ page }) {
         </div>
         <SamplePreview page={page} />
         <div className="mt-8">
-          <AccentButton href="/reports" color={page.color}>
-            <span>{`Generate My ${page.name}`}</span>
+          <AccentButton href={ctaPath} color={page.color}>
+            <span>{ctaLabel}</span>
             <ArrowRight className="h-4 w-4" />
           </AccentButton>
         </div>
@@ -293,8 +295,8 @@ export default function ReportLandingPageShell({ page }) {
               <h2 className="mt-3 font-playfair text-4xl font-semibold">{`Ready to see what ${page.name} reveals for you?`}</h2>
               <p className="mt-4 text-sm leading-7 text-white/80">{page.hook}</p>
             </div>
-            <AccentButton href="/reports" color="#111827">
-              <span>{`Generate My ${page.name}`}</span>
+            <AccentButton href={ctaPath} color="#111827">
+              <span>{ctaLabel}</span>
               <ArrowRight className="h-4 w-4" />
             </AccentButton>
           </div>

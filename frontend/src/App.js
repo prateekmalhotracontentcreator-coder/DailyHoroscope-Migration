@@ -49,6 +49,14 @@ const CareerBlueprintLandingPage = lazy(() => import('./pages/reports/landing/Ca
 const ShadowSelfLandingPage = lazy(() => import('./pages/reports/landing/ShadowSelfLandingPage'));
 const RetrogradeSurvivalLandingPage = lazy(() => import('./pages/reports/landing/RetrogradeSurvivalLandingPage'));
 const LifeCyclesLandingPage = lazy(() => import('./pages/reports/landing/LifeCyclesLandingPage'));
+const EncounterWindowLandingPage = lazy(() => import('./pages/reports/landing/EncounterWindowLandingPage'));
+const LoveWeatherLandingPage = lazy(() => import('./pages/reports/landing/LoveWeatherLandingPage'));
+const LunarCycleWellnessLandingPage = lazy(() => import('./pages/reports/landing/LunarCycleWellnessLandingPage'));
+const DateNightLandingPage = lazy(() => import('./pages/reports/landing/DateNightLandingPage'));
+const IntimacyVitalityLandingPage = lazy(() => import('./pages/reports/landing/IntimacyVitalityLandingPage'));
+const VenusRetrogradeLandingPage = lazy(() => import('./pages/reports/landing/VenusRetrogradeLandingPage'));
+const SoulmateLandingPage = lazy(() => import('./pages/reports/landing/SoulmateLandingPage'));
+const SoulConnectionLandingPage = lazy(() => import('./pages/reports/landing/SoulConnectionLandingPage'));
 const LovePage = lazy(() => import('./pages/reports/LovePage'));
 const LoveReportsPage = lazy(() => import('./pages/reports/LoveReportsPage'));
 const LiveSaiBabaArtiPage = lazy(() => import('./pages/live/LiveSaiBabaArtiPage'));
@@ -163,6 +171,14 @@ function App() {
                   <Route path="/shadow-self-report" element={<ShadowSelfLandingPage />} />
                   <Route path="/retrograde-survival-report" element={<RetrogradeSurvivalLandingPage />} />
                   <Route path="/life-cycles-report" element={<LifeCyclesLandingPage />} />
+                  <Route path="/encounter-window-report" element={<EncounterWindowLandingPage />} />
+                  <Route path="/love-weather-report" element={<LoveWeatherLandingPage />} />
+                  <Route path="/lunar-cycle-wellness" element={<LunarCycleWellnessLandingPage />} />
+                  <Route path="/date-night-report" element={<DateNightLandingPage />} />
+                  <Route path="/intimacy-vitality-report" element={<IntimacyVitalityLandingPage />} />
+                  <Route path="/venus-retrograde-report" element={<VenusRetrogradeLandingPage />} />
+                  <Route path="/soulmate-timing-report" element={<SoulmateLandingPage />} />
+                  <Route path="/soul-connection-report" element={<SoulConnectionLandingPage />} />
                   <Route path="/reports" element={<PremiumRoute feature="Reports" description="Individual Vedic reports are a Premium feature. Upgrade to unlock your full report library."><IndividualReportsPage /></PremiumRoute>} />
                   <Route path="/love" element={<LovePage />} />
                   <Route path="/love-reports" element={<PremiumRoute feature="Love Reports" description="Your Vedic love compatibility reports are a Premium feature. Upgrade to unlock full relationship insights."><LoveReportsPage /></PremiumRoute>} />
