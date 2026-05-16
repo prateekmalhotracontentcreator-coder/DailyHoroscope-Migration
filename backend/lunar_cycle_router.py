@@ -71,12 +71,23 @@ class LunarCycleWellness(StrictModel):
     caution_note: str
 
 
+class LunarCycleActionDay(StrictModel):
+    day: str
+    intention: str
+    action: str
+
+
+class LunarCycleActionTracker(StrictModel):
+    days: list[LunarCycleActionDay] = Field(default_factory=list)
+
+
 class LunarCycleOutput(StrictModel):
     reference_date: str
     moon_phase: LunarCycleMoonPhase
     moon_nakshatra: LunarCycleMoonNakshatra
     natal_context: LunarCycleNatalContext
     wellness: LunarCycleWellness
+    action_tracker: LunarCycleActionTracker
     generated_at: datetime
 
 
@@ -200,36 +211,88 @@ def _nearest_phase_day(reference_date: date, timezone_name: str, target_angle: f
 
 
 def _default_wellness(phase_name: str, nakshatra_name: str, transit_house: int) -> LunarCycleWellness:
+    is_waxing = phase_name in {"New Moon", "Waxing Crescent", "First Quarter", "Waxing Gibbous"}
     return LunarCycleWellness(
         phase_wellness_note=(
-            f"{phase_name} days are best used as a rhythm cue. Stay close to the pace that feels emotionally sustainable, "
-            "and let your body show you whether this is a moment for gathering energy, expressing it, or releasing it."
+            f"{phase_name} days are best used as a rhythm cue rather than a performance test. During this part of the lunar cycle, "
+            "the body usually responds best to steadier pacing, simpler inputs, and a little more honesty about what feels sustainable.\n\n"
+            f"Because the Moon is moving through {nakshatra_name} and activating your {transit_house}th-house terrain, this is a better time to "
+            f"{'build momentum carefully and stay outwardly engaged' if is_waxing else 'clear space, reduce overstimulation, and let unfinished feelings settle'}. "
+            "Use the phase to shape rhythm, not to force certainty.\n\n"
+            "If your energy feels inconsistent, treat that as information. The most supportive choice is the one that leaves you more regulated at the end of the day than at the beginning."
         ),
         nakshatra_wellness_note=(
-            f"With the Moon in {nakshatra_name}, the emotional field is moving through your {transit_house}th-house themes. "
-            "Use that as a lens for reflection and self-care rather than a fixed prediction."
+            f"With the Moon in {nakshatra_name}, the emotional field is moving through your {transit_house}th-house themes in a distinctly textured way. "
+            "This is where mood, memory, and sensitivity pick up nuance, especially if you are already feeling slightly stretched or unusually open.\n\n"
+            f"In practical terms, let {nakshatra_name} inform how you care for yourself: softer timing, clearer boundaries, and a little more respect for the emotional meaning of ordinary tasks. "
+            "The wellness instruction here is not dramatic. It is precise, small, and repeatable."
         ),
         weekly_rhythm=[
-            "Notice which days feel naturally expansive and place your more visible tasks there.",
-            "Keep one lower-stimulation pocket in the week so emotional noise can settle before it compounds.",
-            "Use gentle rituals and regular sleep as the foundation for steadier lunar sensitivity.",
+            "Front-load the week with the tasks that need the clearest emotional bandwidth and least second-guessing.",
+            "Keep one evening unstructured enough for your nervous system to come down before the week starts feeling noisy.",
+            "Treat sleep, hydration, and one repeated calming ritual as non-negotiable anchors for the week.",
         ],
         recommended_practices=[
             LunarCyclePractice(
                 practice_name="Evening Check-In",
-                description="Spend a few quiet minutes each evening naming your mood, energy, and what helped you feel regulated.",
+                description="Spend a few quiet minutes each evening naming your mood, energy, and what helped you feel regulated. This works best at the same time each night so the cycle becomes easier to read.",
             ),
             LunarCyclePractice(
                 practice_name="Moon-Aligned Rest",
-                description="Protect extra rest or softer scheduling around the emotionally fuller parts of the cycle.",
+                description="Protect extra rest or softer scheduling around the more emotionally loaded part of the week. This gives the body room to process the lunar tone instead of reacting to it.",
             ),
             LunarCyclePractice(
                 practice_name="Water + Breath Reset",
-                description="Use a simple hydration, breath, or bathing ritual when emotions feel louder than usual.",
+                description="Use a simple hydration, breath, or bathing ritual when emotions feel louder than usual. The goal is not escape but a quick return to steadier internal pacing.",
             ),
         ],
-        caution_note="Do not force clarity on an emotionally charged day. Let the cycle settle before turning a temporary wave into a permanent conclusion.",
+        caution_note=(
+            "Do not mistake emotional immediacy for final truth this week. "
+            "If a reaction comes in hot, slow the pace first and let the phase reveal what is signal and what is temporary amplification."
+        ),
     )
+
+
+def _default_action_tracker(phase_name: str) -> LunarCycleActionTracker:
+    is_waxing = phase_name in ("New Moon", "Waxing Crescent", "First Quarter", "Waxing Gibbous")
+    days = [
+        LunarCycleActionDay(
+            day="Monday",
+            intention="Set the week's anchor",
+            action="Write one clear intention for the week before checking messages." if is_waxing else "Review last week's open threads before opening anything new.",
+        ),
+        LunarCycleActionDay(
+            day="Tuesday",
+            intention="Forward motion",
+            action="Schedule your most demanding task in the morning window." if is_waxing else "Delegate or defer anything non-essential.",
+        ),
+        LunarCycleActionDay(
+            day="Wednesday",
+            intention="Connection and communication",
+            action="Initiate a meaningful conversation or collaboration." if is_waxing else "Listen more than you speak in group settings today.",
+        ),
+        LunarCycleActionDay(
+            day="Thursday",
+            intention="Energy check",
+            action="Notice your energy at noon and use it as a guide for the rest of the week." if is_waxing else "Protect your afternoon for restorative, solo work.",
+        ),
+        LunarCycleActionDay(
+            day="Friday",
+            intention="Consolidate gains",
+            action="Finish what you started and resist opening new projects." if is_waxing else "Close loops rather than beginning anything new.",
+        ),
+        LunarCycleActionDay(
+            day="Saturday",
+            intention="Nourish the body",
+            action="Spend 20 minutes outdoors, ideally near water or greenery." if is_waxing else "Extra rest today is not laziness; it is phase-appropriate recovery.",
+        ),
+        LunarCycleActionDay(
+            day="Sunday",
+            intention="Inner review",
+            action="Journal briefly on what expanded this week and what drained you." if is_waxing else "Set tomorrow's one priority before the evening ends.",
+        ),
+    ]
+    return LunarCycleActionTracker(days=days)
 
 
 def _build_report(payload: LunarCycleGenerateRequest) -> tuple[LunarCycleOutput, dict[str, Any]]:
@@ -248,10 +311,10 @@ def _build_report(payload: LunarCycleGenerateRequest) -> tuple[LunarCycleOutput,
     previous_new_day, _ = _nearest_phase_day(reference_date, payload.timezone, 0.0, direction=-1)
     cycle_day = min(30, max(1, (reference_date - previous_new_day).days + 1))
 
-    transit_house = house_entry_from_longitude(
+    transit_house = int(house_entry_from_longitude(
         today_metrics["moon_longitude"],
         natal["ascendant_sign"],
-    )
+    ))
     moon_nakshatra = today_metrics["nakshatra"]
     output = LunarCycleOutput(
         reference_date=reference_date.isoformat(),
@@ -270,13 +333,14 @@ def _build_report(payload: LunarCycleGenerateRequest) -> tuple[LunarCycleOutput,
         ),
         natal_context=LunarCycleNatalContext(
             natal_moon_sign=str(natal["planets"]["Moon"]["sign"]),
-            transit_house=int(transit_house),
+            transit_house=transit_house,
         ),
         wellness=_default_wellness(
             today_metrics["phase_name"],
             str(moon_nakshatra["name"]),
-            int(transit_house),
+            transit_house,
         ),
+        action_tracker=_default_action_tracker(today_metrics["phase_name"]),
         generated_at=datetime.now(timezone.utc),
     )
     input_payload = {

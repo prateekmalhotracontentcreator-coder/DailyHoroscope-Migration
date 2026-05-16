@@ -652,6 +652,160 @@ function SoulConnectionRenderer({ output, report }) {
   );
 }
 
+function LunarCycleRenderer({ output }) {
+  const moonPhase = output.moon_phase || {};
+  const moonNakshatra = output.moon_nakshatra || {};
+  const natalContext = output.natal_context || {};
+  const wellness = output.wellness || {};
+  const practices = Array.isArray(wellness.recommended_practices) ? wellness.recommended_practices : [];
+  const actionDays = Array.isArray(output.action_tracker?.days) ? output.action_tracker.days : [];
+  const todayName = new Date().toLocaleDateString("en-US", { weekday: "long" });
+
+  return (
+    <>
+      <StackCard title="Current Lunar Snapshot">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(170px, 1fr))", gap: 12 }}>
+          <div style={{ padding: 14, borderRadius: 18, background: "rgba(123,94,167,0.1)" }}>
+            <strong>{moonPhase.phase_name || "Current Phase"}</strong>
+            <p style={{ margin: "8px 0 0", color: "#62574a", lineHeight: 1.6 }}>
+              Cycle day {moonPhase.cycle_day || "-"} · {moonPhase.illumination_pct ?? "-"}% illumination
+            </p>
+          </div>
+          <div style={{ padding: 14, borderRadius: 18, background: "rgba(255,255,255,0.78)" }}>
+            <strong>{moonNakshatra.name || "Nakshatra"}</strong>
+            <p style={{ margin: "8px 0 0", color: "#62574a", lineHeight: 1.6 }}>
+              Pada {moonNakshatra.pada || "-"} · Lord {moonNakshatra.lord || "-"}
+            </p>
+          </div>
+          <div style={{ padding: 14, borderRadius: 18, background: "rgba(255,255,255,0.78)" }}>
+            <strong>Natal Context</strong>
+            <p style={{ margin: "8px 0 0", color: "#62574a", lineHeight: 1.6 }}>
+              Natal Moon {natalContext.natal_moon_sign || "-"} · Transit house {natalContext.transit_house || "-"}
+            </p>
+          </div>
+          <div style={{ padding: 14, borderRadius: 18, background: "rgba(255,255,255,0.78)" }}>
+            <strong>Phase Timing</strong>
+            <p style={{ margin: "8px 0 0", color: "#62574a", lineHeight: 1.6 }}>
+              Full Moon in {moonPhase.days_to_full_moon ?? "-"} days · New Moon in {moonPhase.days_to_new_moon ?? "-"} days
+            </p>
+          </div>
+        </div>
+      </StackCard>
+
+      <StackCard title="Phase Wellness Note">
+        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.72, whiteSpace: "pre-line" }}>
+          {wellness.phase_wellness_note || "Your phase wellness note will appear here after generation."}
+        </p>
+      </StackCard>
+
+      <StackCard title="Nakshatra Wellness Note">
+        <p style={{ margin: 0, color: "#62574a", lineHeight: 1.72, whiteSpace: "pre-line" }}>
+          {wellness.nakshatra_wellness_note || "Your nakshatra wellness note will appear here after generation."}
+        </p>
+      </StackCard>
+
+      <StackCard title="This Week's Rhythm">
+        {toList(wellness.weekly_rhythm).length ? (
+          <ul style={{ margin: 0, paddingLeft: 20, color: "#62574a", lineHeight: 1.7 }}>
+            {toList(wellness.weekly_rhythm).map((item, index) => (
+              <li key={`${item}-${index}`} style={{ marginBottom: 10 }}>{item}</li>
+            ))}
+          </ul>
+        ) : (
+          <p style={{ margin: 0, color: "#74685c" }}>Weekly pacing guidance will appear here once the report is generated.</p>
+        )}
+      </StackCard>
+
+      <StackCard title="Recommended Practices">
+        {practices.length ? (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 12 }}>
+            {practices.map((item, index) => (
+              <div key={`${item.practice_name || "practice"}-${index}`} style={{ padding: 16, borderRadius: 18, background: "rgba(123,94,167,0.08)", border: "1px solid rgba(123,94,167,0.14)" }}>
+                <strong style={{ display: "block", marginBottom: 8 }}>{item.practice_name || "Practice"}</strong>
+                <p style={{ margin: 0, color: "#62574a", lineHeight: 1.66 }}>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p style={{ margin: 0, color: "#74685c" }}>Practices will appear here once the report is generated.</p>
+        )}
+      </StackCard>
+
+      <StackCard title="Your 7-Day Lunar Action Tracker">
+        {actionDays.length ? (
+          <>
+            <div style={{ display: "grid", gap: 10 }}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "minmax(100px, 0.8fr) minmax(160px, 1fr) minmax(240px, 1.5fr)",
+                  gap: 10,
+                  padding: 14,
+                  borderRadius: 18,
+                  background: "linear-gradient(135deg, rgba(183,134,70,0.22) 0%, rgba(216,175,106,0.18) 100%)",
+                  fontWeight: 700,
+                  color: "#4b3717",
+                }}
+              >
+                <div>Day</div>
+                <div>Intention</div>
+                <div>Today's Action</div>
+              </div>
+              {actionDays.map((item, index) => {
+                const isToday = item.day === todayName;
+                return (
+                  <div
+                    key={`${item.day}-${index}`}
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+                      gap: 10,
+                      padding: 16,
+                      borderRadius: 18,
+                      background: isToday
+                        ? "linear-gradient(135deg, rgba(216,175,106,0.2) 0%, rgba(255,255,255,0.92) 100%)"
+                        : index % 2 === 0
+                          ? "rgba(255,255,255,0.78)"
+                          : "rgba(123,94,167,0.06)",
+                      border: isToday ? "1px solid rgba(183,134,70,0.45)" : "1px solid rgba(120,90,55,0.12)",
+                      boxShadow: isToday ? "0 10px 24px rgba(183,134,70,0.12)" : "none",
+                    }}
+                  >
+                    <div>
+                      <p style={{ margin: "0 0 6px", fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "#8c6a39" }}>Day</p>
+                      <strong>{item.day}</strong>
+                    </div>
+                    <div>
+                      <p style={{ margin: "0 0 6px", fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "#8c6a39" }}>Intention</p>
+                      <p style={{ margin: 0, color: "#62574a", lineHeight: 1.6 }}>{item.intention}</p>
+                    </div>
+                    <div>
+                      <p style={{ margin: "0 0 6px", fontSize: 12, letterSpacing: "0.12em", textTransform: "uppercase", color: "#8c6a39" }}>Today's Action</p>
+                      <p style={{ margin: 0, color: "#62574a", lineHeight: 1.6 }}>{item.action}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </>
+        ) : (
+          <div style={{ padding: 16, borderRadius: 18, background: "rgba(255,255,255,0.76)" }}>
+            <p style={{ margin: 0, color: "#74685c", lineHeight: 1.66 }}>
+              This report was generated before the 7-day action tracker was added. Generate a fresh Lunar Cycle report to get your daily plan.
+            </p>
+          </div>
+        )}
+      </StackCard>
+
+      <StackCard title="⚠️ Caution Note">
+        <div style={{ padding: 16, borderRadius: 18, background: "rgba(183,134,70,0.12)", border: "1px solid rgba(183,134,70,0.18)" }}>
+          <p style={{ margin: 0, color: "#5f4b2d", lineHeight: 1.7 }}>{wellness.caution_note || "A caution note will appear here after generation."}</p>
+        </div>
+      </StackCard>
+    </>
+  );
+}
+
 function ReportRenderer({ report, selected, onGenerateAgain }) {
   if (!report) {
     return (
@@ -695,6 +849,7 @@ function ReportRenderer({ report, selected, onGenerateAgain }) {
       {type === "date_night_score" ? <DateNightRenderer output={output} /> : null}
       {type === "digital_dating_strategy" ? <DigitalDatingRenderer output={output} /> : null}
       {type === "intimacy_vitality_forecast" ? <IntimacyRenderer output={output} /> : null}
+      {type === "lunar_cycle_wellness" ? <LunarCycleRenderer output={output} /> : null}
       {type === "venus_retrograde_personal_impact" ? <VenusRetrogradeRenderer output={output} /> : null}
       {type === "soulmate_timing" ? <SoulmateTimingRenderer output={output} /> : null}
       {type === "deep_synastry_soul_connection" ? <SoulConnectionRenderer output={output} report={report} /> : null}
