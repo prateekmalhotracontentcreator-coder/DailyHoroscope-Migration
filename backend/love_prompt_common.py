@@ -58,10 +58,10 @@ async def try_claude_generation(prompt: str, *, max_tokens: int = 700, temperatu
     try:
         return json.loads(cleaned)
     except Exception as exc:
-        logger.error("Love enrichment: JSON parse failed — %s | raw: %.200s", exc, cleaned)
+        logger.error("Love enrichment: JSON parse failed -- %s | raw: %.200s", exc, cleaned)
         return None
 
 
 def payload_json(report: Any) -> str:
-    output = report.output_payload.model_dump(mode="python") if hasattr(report.output_payload, "model_dump") else report.output_payload
+    output = report.output_payload.model_dump(mode="json") if hasattr(report.output_payload, "model_dump") else report.output_payload
     return json.dumps(output, ensure_ascii=True)

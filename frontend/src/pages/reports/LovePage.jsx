@@ -15,6 +15,7 @@ const LOVE_REPORTS = [
   { slug: "venus-retrograde", label: "Venus Retrograde", description: "How the current retrograde is affecting your love life", accent: "rgba(215, 175, 106, 0.14)", icon: "♀" },
   { slug: "soulmate-timing", label: "Soulmate Timing", description: "Jupiter and Dasha windows for long-term partnership", accent: "rgba(215, 175, 106, 0.14)", icon: "⏳" },
   { slug: "soul-connection", label: "Soul Connection", description: "Karmic and evolutionary patterns in your relationships", accent: "rgba(100, 60, 160, 0.12)", icon: "∞" },
+  { slug: "lunar-cycle", label: "Lunar Cycle Wellness", description: "Your personal wellness rhythm across the 30-day moon cycle", accent: "rgba(123, 94, 167, 0.12)", icon: "☽" },
 ];
 
 const TRIGGERS = [
@@ -182,7 +183,7 @@ function LovePage() {
     <div style={pageStyle}>
       <SEO
         title="Love & Relationships Astrology"
-        description="Discover your Vedic love forecast — romance timing, Venus-Mars windows, soulmate patterns, and 8 personalised love reports based on your birth chart."
+        description="Discover your Vedic love forecast -- romance timing, Venus-Mars windows, soulmate patterns, and 8 personalised love reports based on your birth chart."
         url="https://www.everydayhoroscope.in/love"
       />
       <div style={{ maxWidth: 1180, margin: "0 auto", display: "grid", gap: 18 }}>
@@ -217,7 +218,7 @@ function LovePage() {
               }}
             >
               <div style={{ display: "grid", gap: 6 }}>
-                <p style={{ margin: 0, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#8a4d5e" }}>What’s inside</p>
+                <p style={{ margin: 0, fontSize: 12, letterSpacing: "0.16em", textTransform: "uppercase", color: "#8a4d5e" }}>What's inside</p>
                 <strong style={{ fontSize: 22, fontFamily: "Georgia, Times New Roman, serif" }}>Eight reports. One live engine.</strong>
               </div>
               <div style={{ display: "grid", gap: 10 }}>
