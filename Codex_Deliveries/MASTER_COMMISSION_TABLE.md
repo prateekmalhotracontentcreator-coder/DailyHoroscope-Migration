@@ -50,7 +50,7 @@
 | Commission ID | Commission Name | Status | Brief File | Notes |
 |---|---|---|---|---|
 | **IR-1** | 5 Public SEO Landing Pages + `/individual-reports` hub | ✅ INTEGRATED | `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` | Commit `825a294`. All 5 natal report landing pages live. |
-| **IR-2** | Lunar Cycle Wellness Backend (`lunar_cycle_router.py`) | 🟣 READY TO ISSUE | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | Only missing Phase 2 backend. 2 files + 2-line server.py + 1 LoveReportsPage entry. |
+| **IR-2** | Lunar Cycle Wellness Backend (`lunar_cycle_router.py`) | ✅ INTEGRATED -- commit `f9f6690` | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | Delivered by Codex IR 2026-05-16. CC fix: removed erroneous `["house"]` subscript on `house_entry_from_longitude` (returns int, not dict). All 4 files live. |
 | **IR-3** | 8 Love Report Public SEO Landing Pages | 🟣 READY TO ISSUE | `Individual_Reports/CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` | Frontend-only. 8 landing pages for Love Bundle reports. No backend dependency. |
 
 > **CC Direct Fix (not Codex):** Phase 1 reports now added to NavBar Reports dropdown → `/individual-reports` (commit pending this session).
@@ -218,7 +218,7 @@
 | 🔴 HIGH | KP-Sprint2 | KP Oracle | /ask-question LLM Router | 🔵 IN PROGRESS |
 | 🟠 HIGH | REM-P1 | Remedies Engine | Remedies Engine Phase 1 | ✅ INTEGRATED (runtime confirmed 2026-05-16) |
 | 🟠 HIGH | PUN-2 | Punya Rewards | Home Promo + Module Hooks + Wheel | 🟣 READY TO ISSUE |
-| 🟠 HIGH | IR-2 | Individual Reports | Lunar Cycle Wellness Backend | 🟣 READY TO ISSUE |
+| 🟠 HIGH | IR-2 | Individual Reports | Lunar Cycle Wellness Backend | ✅ INTEGRATED `f9f6690` |
 | 🟠 HIGH | IR-3 | Individual Reports | 8 Love Report SEO Landing Pages | 🟣 READY TO ISSUE |
 | 🟡 MED | KP-2B | KP Oracle | Ritual Animation + 3-Pillar UX | 🟡 BLOCKED (KP-OP-9) |
 | 🟡 MED | KE-IQ | Knowledge Engine | Questionnaire UI + β/γ Wiring | 🟡 BLOCKED (KE Sprint 2) |
