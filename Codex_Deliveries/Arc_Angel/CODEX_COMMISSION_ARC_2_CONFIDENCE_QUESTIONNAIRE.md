@@ -2,8 +2,9 @@
 > Commission ID: ARC-2
 > Thread: Arc Angel
 > Brief rewritten: 2026-05-17 (supersedes 2026-05-15 draft)
-> Pre-condition: ARC-UI ✅ INTEGRATED · KE-Sprint3 ✅ must be INTEGRATED before issuing ARC-2
-> Priority: 🟠 HIGH -- issue immediately after KE-Sprint3 gate passes
+> UI design finalised: 2026-05-17 (all HOLDs lifted -- see Section UI-SPEC)
+> Pre-condition: ARC-UI ✅ INTEGRATED · KE-Sprint3 ✅ LIVE · KE-OP-14 ✅ FIXED
+> Priority: 🔴 HIGH -- all blockers cleared, issue immediately
 
 ---
 
@@ -11,7 +12,7 @@
 
 **Architecture rule (TD-28):** All dasha/astronomical computations come from `vedic_calculator.py`. Do NOT add dasha logic to `knowledge_engine.py`.
 
-**UI lock (Temple Team -- 2026-05-17):** The 3-column LeftNav Arc Angel panel with Confidence % donut scores is **locked**. No UI/UX changes to the existing panel without explicit Temple Team approval. Deliverables 2 and 3 in this brief are flagged accordingly.
+**UI redesign approved (2026-05-17):** The Left Nav Bar and Janamkundali Snapshot panel are being redesigned in this commission. Full spec in Section UI-SPEC below. The existing `ArcAngelPanel.jsx` is the starting point -- rebuild it to match the spec.
 
 **Sprint 3 dependency:** KE-Sprint3 builds the `user_arc_angel_profile` schema skeleton with the 3-pillar structure and the `_compute_confidence()` function. ARC-2 wires the dynamic data into those pillars -- it does NOT rebuild the schema or the collection.
 
@@ -52,6 +53,178 @@ backend/knowledge_engine.py                                            ← Arc A
 backend/server.py                                                      ← arc-angel-windows endpoint
 frontend/src/components/ArcAngelPanel.jsx                              ← live panel (UI locked)
 frontend/src/pages/ArcAngelPage.jsx                                    ← full detail view
+```
+
+---
+
+---
+
+## UI-SPEC -- Approved Design (Temple Team, 2026-05-17)
+
+> All items in this section are **approved and active**. No HOLDs. Build exactly as specified.
+
+### Left Nav Bar -- 2-Section Split
+
+The Left Nav Bar is split into two independently scrollable / collapsible sections:
+
+```
+┌─────────────────────────────────┐
+│  Section 1: Janamkundali        │  ← Snapshot panel (see below)
+│  Snapshot                       │
+├─────────────────────────────────┤
+│  Section 2: Navigation          │  ← Replica of Top Menu Bar links
+│  Home · Panchang · Tarot · ...  │    (same links as the top nav)
+└─────────────────────────────────┘
+```
+
+Both sections are clickable. Section 2 mirrors the existing top nav structure -- no new routes needed.
+
+---
+
+### Section 1 -- Janamkundali Snapshot Panel
+
+**Access:** All signed-up users (free and premium). No gate on the dashboard itself.
+
+**Top of panel -- Consolidated Donut:**
+```
+┌─────────────────────────────────────────────────────┐
+│   [Consolidated Donut]   Arc Angel Confidence       │
+│        40%               Vedic Astrology Engine     │
+│                          Activated                  │
+│  🔓 Unlock the Potential of Vedic Astrology         │
+│     in all 12 Areas of Life                         │
+└─────────────────────────────────────────────────────┘
+```
+- Consolidated donut = `overall_confidence_pct` from KE (the 3-pillar formula result)
+- CTA text: **"🔓 Unlock the Potential of Vedic Astrology in all 12 Areas of Life"**
+- CTA links to the full Questionnaire page (`/arc-angel/questionnaire` or `QuestionnairePage.jsx`)
+
+**12 Domain Rows (2-column layout):**
+
+Each row has two columns:
+- **Column 1:** Focus area name (e.g. "Health & Fitness")
+- **Column 2:** Individual domain donut showing `domain_confidence_pct` for that domain
+
+```
+┌──────────────────────────────┬────────────┐
+│  Health & Fitness         ▼  │  [donut]   │
+│                              │    42%     │
+├──────────────────────────────┴────────────┤
+│  ▸ Favourable Periods                     │
+│    Moon AD in Rahu MD    2027-05→2028-11  │
+│    Jupiter AD in Jup MD  2029-12→2032-01  │
+│    Mercury AD in Jup MD  2034-08→2036-05  │
+├───────────────────────────────────────────┤
+│  ▸ Unfavourable Periods                   │
+│    Venus AD in Rahu MD   2026-05→2027-05  │
+│    Mars AD in Rahu MD    2028-11→2029-12  │
+│    Saturn AD in Jup MD   2032-01→2034-08  │
+└───────────────────────────────────────────┘
+```
+
+- Row is collapsed by default; clicking expands it
+- Sub-dropdowns: **Favourable Periods** (3 rows) and **Unfavourable Periods** (3 rows)
+- Period data comes from `/api/knowledge-engine/arc-angel-windows` (already live)
+- **All 12 rows and all period data visible to all signed-up users** -- no blurring, no hiding
+- If a domain has a Quality Badge (user ran a premium IR for this domain): show a small `⭐ Premium` chip alongside the donut in Column 2
+
+**Per-domain confidence (`domain_confidence_pct`):**
+
+Add a new field `domain_confidence_pct` to each domain object in the arc-angel-windows response:
+
+```python
+def _compute_domain_confidence(domain_id: str, profile: dict) -> int:
+    """
+    Per-domain confidence reflects data completeness for that specific area.
+    Base 40% (birth data, same for all) + 2% if questionnaire answered for this domain.
+    Quality badges (IR premium data) are separate visual indicators -- not % contributors.
+    """
+    score = 40
+    areas_completed = (profile.get("pillar_1") or {}).get("areas_completed") or []
+    if domain_id in areas_completed:
+        score += 2
+    return score
+```
+
+Consolidated donut = `overall_confidence_pct` (existing KE formula -- reflects all 3 pillars).
+
+---
+
+### Premium Gate -- What Is and Isn't Gated
+
+| Element | Free Users | Premium Users |
+|---|---|---|
+| Arc Angel Dashboard | ✅ Full access | ✅ Full access |
+| 12 domain rows | ✅ Visible | ✅ Visible |
+| Period windows (Favourable / Unfavourable) | ✅ Visible | ✅ Visible |
+| Questionnaire (all 12 areas) | ✅ Open | ✅ Open |
+| Individual Reports (IRs) | 🔒 Premium only | ✅ Full access |
+| Quality Badges (per domain) | Not shown | ⭐ Shown when IR run |
+| Consolidated Donut | ✅ Visible | ✅ Visible + richer data |
+
+**Free user lock CTA on Left Sidebar:**
+
+For users without premium subscription, show at the bottom of Section 1:
+```
+🔒 Upgrade to Arc Angel Pro
+   Get High-Fidelity Forecasts with Individual Reports
+   [ Explore Reports → ]
+```
+- Links to the Individual Reports catalogue (`/individual-reports`)
+- This is the ONLY lock shown to free users -- it's a soft upsell, not a content gate
+
+---
+
+### Quality Badges
+
+A Quality Badge (`⭐ Premium`) appears in Column 2 of a domain row when the user has generated a premium IR that maps to that domain. Badge renders alongside the donut %, not replacing it.
+
+**Domain → IR mapping (for badge logic):**
+
+```python
+DOMAIN_IR_MAP = {
+    "health":        ["longevity", "individual_natal"],
+    "career":        ["brihat_kundali", "numerology", "individual_natal"],
+    "finances":      ["brihat_kundali", "lal_kitab", "numerology"],
+    "learning":      ["brihat_kundali", "kp_oracle"],
+    "emotional":     ["love_compatibility", "lunar_cycle"],
+    "spirituality":  ["kp_oracle", "individual_natal"],
+    "relationships": ["love_compatibility", "soul_connection"],
+    "family":        ["brihat_kundali", "individual_natal"],
+    "social":        ["numerology", "individual_natal"],
+    "adventure":     ["individual_natal", "solar_return"],
+    "environment":   ["lal_kitab", "individual_natal"],
+    "creativity":    ["numerology", "tarot_spread"],
+}
+
+def domain_has_quality_badge(domain_id: str, reports_run: list) -> bool:
+    mapped_irs = DOMAIN_IR_MAP.get(domain_id, [])
+    return any(ir in reports_run for ir in mapped_irs)
+```
+
+Return `has_quality_badge: bool` per domain in the arc-angel-windows response.
+
+---
+
+### Upgrade Prompt Placements (Approved)
+
+**Placement 1 -- User Account Section:**
+1-line prompt with link to dedicated page:
+```
+Unlock Arc Angel Pro -- Higher confidence forecasts across all 12 life areas. Learn more →
+```
+Links to `/arc-angel/upgrade` or the Individual Reports catalogue.
+
+**Placement 2 -- Questionnaire Page:**
+Full CTA block at the top/bottom of the Questionnaire page:
+```
+┌─────────────────────────────────────────────────────┐
+│  ✦ Complete Your Arc Angel Profile                  │
+│  Every question answered raises your confidence %.  │
+│  Upgrade to Arc Angel Pro for Individual Reports    │
+│  that elevate each domain's accuracy by up to 43%. │
+│                  [ Explore Reports → ]              │
+└─────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -231,60 +404,70 @@ Hook into the existing Notifications router. The decay job flags profiles for no
 
 ---
 
-## Deliverable 5 -- "Upgrade Confidence" Dashboard Prompt
+## Deliverable 5 -- Left Nav Bar Redesign + Snapshot Panel
 
-> **UI note:** This is a new UI element, not a change to the existing panel. Requires Temple Team visual review before Codex builds. TT to confirm design or provide mockup before issuing this deliverable.
+> **Approved by Temple Team 2026-05-17. Build as specified in Section UI-SPEC.**
 
-**Concept (subject to TT approval):**
+### 5a -- Left Nav Bar 2-Section Split
 
-When a user views the Arc Angel dashboard and their score is below 86%, show a contextual upgrade prompt:
+Modify the left sidebar component to show two independently collapsible sections:
 
-```
-┌─────────────────────────────────────────────┐
-│  ✦  Upgrade your Confidence Score           │
-│  Unlock 2 modules for +10% accuracy         │
-│                                             │
-│  [ Tarot Daily Draw +5% ]  [ Strategist +5% ]│
-│                  [ Explore →]               │
-└─────────────────────────────────────────────┘
-```
+1. **Janamkundali Snapshot** -- Arc Angel confidence panel (built in 5b)
+2. **Navigation** -- replica of existing Top Menu Bar links (Home, Panchang, Tarot, KP Oracle, Strategist, etc.) -- same routes, no new pages
 
-Shown when:
-- `pillar_3_score < 10` (user has not yet earned full ritual score)
-- User is Premium (non-premium users see the premium gate first)
+Primary UX requirement: all 12 domain rows must be visible without scroll. This split is what enables that.
 
-Links: Tarot button → `/tarot` · Strategist button → `/strategist`
+### 5b -- Janamkundali Snapshot Panel Rebuild
 
-**This deliverable is gated on TT design approval. Do not build until confirmed.**
+Rebuild `ArcAngelPanel.jsx` to the approved design in Section UI-SPEC:
 
----
+- **Top:** 1 consolidated donut (`overall_confidence_pct`) + engine label + CTA button
+- **12 rows:** 2-column layout (Focus Area name | per-domain donut `domain_confidence_pct`)
+- **Expand each row:** 2 sub-dropdowns -- Favourable Periods (3 rows) + Unfavourable Periods (3 rows)
+- **Quality badge:** `⭐ Premium` chip on Column 2 when `has_quality_badge = true`
+- **Free user lock CTA:** at bottom of panel for non-premium users -- "🔒 Upgrade to Arc Angel Pro" → `/individual-reports`
 
-## Deliverables 6 & 7 -- Premium Gate + Desktop Sidebar
+### 5c -- Per-domain API extension
 
-> **UI lock (2026-05-17):** These were in the original ARC-2 brief. They are valid product features but are gated on explicit Temple Team visual approval before Codex can build. Do not include in the initial ARC-2 issue.
->
-> **Deliverable 6 (Premium Gate on period columns):** Free users see blurred/locked auspicious/inauspicious windows with upgrade CTA. Premium users see full data.
->
-> **Deliverable 7 (Desktop Sidebar):** Persistent `w-80` sticky sidebar on `lg+` in `ArcAngelPage.jsx`, collapsible, preference saved in `localStorage`.
->
-> TT to explicitly confirm these two deliverables before they are added to the active commission.
+Add `domain_confidence_pct` and `has_quality_badge` to each domain object in the `GET /api/knowledge-engine/arc-angel-windows` response. Compute using the functions defined in Section UI-SPEC. No changes to the `user_arc_angel_profile` MongoDB schema.
+
+### 5d -- Upgrade Prompt placements (both approved)
+
+- **User Account section:** 1-liner -- *"Unlock Arc Angel Pro -- Higher confidence forecasts across all 12 life areas. Learn more →"* -- links to `/individual-reports`
+- **Questionnaire page:** Full CTA block (copy defined in Section UI-SPEC)
+
+### Acceptance gates
+
+1. Left Nav shows 2 distinct sections: Snapshot above, Navigation below
+2. All 12 domain rows visible without scroll
+3. Each row: Focus Area name (col 1) + per-domain donut % (col 2)
+4. Expanding a row shows Favourable (3 rows) and Unfavourable (3 rows) sub-dropdowns with real period data from the API
+5. Domain with IR run → `⭐ Premium` badge visible alongside donut
+6. Free user sees "🔒 Upgrade to Arc Angel Pro" CTA at bottom of Snapshot → `/individual-reports`
+7. Premium user: no lock CTA shown
+8. `domain_confidence_pct` = 40% + 2% if questionnaire complete for that domain (range 40-42%)
+9. Consolidated donut = `overall_confidence_pct` (existing KE formula -- reflects all 3 pillars)
+10. Upgrade prompt 1-liner present in User Account section
+11. Upgrade prompt full CTA block present on Questionnaire page
 
 ---
 
 ## Files to Modify
 
 ```
-backend/server.py                             ← Pillar 3 decay job (APScheduler)
+backend/server.py                             ← Pillar 3 decay job (APScheduler) + domain_confidence_pct + has_quality_badge in arc-angel-windows response
 backend/questionnaire_router.py              ← Pillar 1 area-complete hook
 backend/[report routers]                     ← Pillar 2 IR-generated hook
-backend/knowledge_engine.py                  ← log_ritual_event(), tiered_recovery_points()
+backend/knowledge_engine.py                  ← log_ritual_event(), tiered_recovery_points(), _compute_domain_confidence(), domain_has_quality_badge()
+frontend/src/components/ArcAngelPanel.jsx    ← Full redesign per UI-SPEC (2-section split, 2-col rows, expandable sub-dropdowns)
+frontend/src/components/NavBar.jsx           ← Add 2-section Left Nav split
+frontend/src/pages/ArcAngelPage.jsx          ← Upgrade prompt placements
+frontend/src/pages/QuestionnairePage.jsx     ← Upgrade prompt full CTA block
 ```
 
 **Do NOT touch:**
 ```
 backend/vedic_calculator.py
-frontend/src/components/ArcAngelPanel.jsx    ← UI locked -- no changes without TT approval
-frontend/src/components/NavBar.jsx           ← UI locked
 backend/knowledge_schema.py                  ← schema owned by Sprint 3
 ```
 
@@ -341,8 +524,15 @@ feat(arc-angel): ARC-2 -- dynamic confidence engine, pillar 1/2/3 wiring, decay 
 - [ ] Day 3+ miss → `notification_pending: "score_dip_risk"` flagged
 - [ ] Re-fire every 2 days during continued decay
 
-**Upgrade prompt:**
-- [ ] ⏸ HOLD -- pending TT design approval (Deliverable 5)
-
-**Premium gate + sidebar:**
-- [ ] ⏸ HOLD -- pending TT explicit approval (Deliverables 6 + 7)
+**Left Nav + Snapshot Panel (Deliverable 5 -- approved):**
+- [ ] Left Nav split: Janamkundali Snapshot section + Navigation section
+- [ ] All 12 domain rows visible without scroll
+- [ ] 2-column row layout: Focus Area name + per-domain donut %
+- [ ] Expand each row: Favourable (3 rows) + Unfavourable (3 rows) sub-dropdowns with live API data
+- [ ] Quality badge (`⭐ Premium`) shown when domain has matching IR in `pillar_2.reports_run`
+- [ ] Free user: "🔒 Upgrade to Arc Angel Pro" CTA at bottom → `/individual-reports`
+- [ ] Premium user: no lock CTA
+- [ ] `domain_confidence_pct` and `has_quality_badge` added to arc-angel-windows API response
+- [ ] Consolidated donut = `overall_confidence_pct` (3-pillar formula)
+- [ ] Upgrade prompt 1-liner in User Account section
+- [ ] Upgrade prompt full CTA block on Questionnaire page
