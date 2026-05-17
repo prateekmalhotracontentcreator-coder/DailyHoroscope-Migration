@@ -35,7 +35,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 ### Knowledge Engine Thread
 - ~~KE-2A: Yoga Check Evaluation Engine~~ → ✅ INTEGRATED 2026-05-17. 9 handlers added, 52 tests pass, 0 missing mappings, 26 dispatch entries.
 - ~~KE-Sprint2: Arbitration Runtime~~ → ✅ INTEGRATED 2026-05-17 (self-certified). All 5 gates passed against live code.
-- ~~KE-Sprint3: Arc Angel Computation (G-07/G-08/G-09)~~ → ✅ LIVE 2026-05-17. KE-OP-13 cleared — both routes verified on Render (confidence 40, engine_label, profile 200, MongoDB ✅). **KE-OP-14 open**: window granularity returns MD-level (1 period/domain) — needs AD-level sub-periods (3/domain). Issue KE-OP-14 to KE Codex thread before ARC-2 finalises.
+- ~~KE-Sprint3: Arc Angel Computation (G-07/G-08/G-09)~~ → ✅ FULLY COMPLETE 2026-05-17. KE-OP-13 ✅ (live verified) + KE-OP-14 ✅ (AD-level window granularity fixed, commit `c4f4b43`, 72/72 tests). **ARC-2 is now fully unblocked — issue immediately.**
 - ~~KE-IQ: Questionnaire UI + β/γ wiring (TD-19/TD-25/G-10)~~ → `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` · READY TO ISSUE
 
 **CC Direct Actions — KE gaps confirmed by Codex intake audit 2026-05-15:**
@@ -59,7 +59,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 - ~~STR-2J: Strategist Missions UI improvements (MissionCard responsive + dasha display)~~ → `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · ✅ INTEGRATED commit `9ad2e0a` *(delivered + dasha backend fix 2026-05-15)*
 
 ### Arc Angel Thread
-- ~~ARC-2: Arc Angel Dynamic Confidence Engine~~ → `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` · 🟣 READY TO ISSUE *(brief fully rewritten 2026-05-17 — 3-pillar formula locked, decay engine, notification hooks. KE-Sprint3 blocker cleared. Issue after KE-Sprint3 live verification passes.)*
+- ~~ARC-2: Arc Angel Dynamic Confidence Engine~~ → `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` · 🟣 **ISSUE NOW** *(all pre-conditions met 2026-05-17 — KE-Sprint3 live + KE-OP-14 fixed. 3-pillar formula locked, decay engine, notification hooks. No remaining blockers.)*
 
 ### Tarot Thread
 - ~~TAR-v4: Tarot UI v4 Enhancement~~ → `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` · READY TO ISSUE
