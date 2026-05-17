@@ -70,7 +70,7 @@
 | **IR-2** | Lunar Cycle Wellness backend (`lunar_cycle_router.py`) | ✅ INTEGRATED -- commit `f9f6690` | `CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` · Integrated. Datetime bug fixed `021a799`. |
 | **IR-2A** | Lunar Cycle Rework -- Action Tracker + Rich Content | ✅ INTEGRATED -- commit `692fefa` | `CODEX_COMMISSION_IR_2A_LUNAR_CYCLE_REWORK.md` · CC fixes applied: transit_house subscript bug + f-string fix. Build green. Pushed. |
 | **IR-3** | 8 Love Report public SEO landing pages | ✅ INTEGRATED -- commit `739c3fa` | `CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` · 8 wrappers, 8 routes, 8 sitemap URLs, content-driven CTA (love→/love-reports, phase1→/reports). Build green. |
-| **IR-4** | 6 New Phase 3 Natal Reports (Wealth · Romance · Vitality · Partnership · Dharma · Gains) | 🟡 DELIVERED LOCALLY -- Temple review pending | `CODEX_COMMISSION_IR_4_SIX_NEW_REPORTS.md` · Delivered 2026-05-18. 12 new backend files, 6 new public landing wrappers, frontend `/reports` expansion, `server.py` registration, routes, sitemap, and build verification complete. |
+| **IR-4** | 6 New Phase 3 Natal Reports (Wealth · Romance · Vitality · Partnership · Dharma · Gains) | ✅ INTEGRATED -- commit `1be1e58` | `CODEX_COMMISSION_IR_4_SIX_NEW_REPORTS.md` · Integrated 2026-05-18. 12 backend files, 6 landing wrappers, `server.py` registration, `/reports` expansion (5→11 reports), routes, sitemap, build green. Temple live verification pending (IR-OP-12). |
 
 ---
 
@@ -89,7 +89,7 @@
 | ~~IR-OP-9~~ | ~~TT live verification of Lunar Cycle richer output~~ | TT | ✅ DONE | Verified live 2026-05-16. Report confirmed brilliant. Minor display formatting improvements noted -- logged as IR-OP-10. |
 | IR-OP-10 | Minor display formatting polish on Lunar Cycle report | CC | 🟡 MED | TT flagged minor formatting improvements post live review. Scope to be defined; candidate for inclusion in a future IR patch or IR-3 delivery scope. |
 | ~~IR-OP-11~~ | ~~Issue IR-3 to Codex (8 Love Report SEO landing pages)~~ | TT | ✅ DONE | Delivered locally by Codex 2026-05-16. Awaiting Temple review under IR-OP-5. |
-| IR-OP-12 | Temple / CC review of IR-4 six-report natal suite | TT | 🟠 HIGH | Local delivery completed 2026-05-18. Review backend response shapes, `/reports` expansion, six new SEO landing pages, and collection/report-type assumptions before integration. |
+| IR-OP-12 | Temple live verification of IR-4 six Phase 3 natal reports | TT | 🟠 HIGH | Integrated `1be1e58` 2026-05-18. Spot-check `/reports` -- confirm all 11 report tiles visible. Generate one new Phase 3 report (e.g. Wealth Blueprint) end-to-end. Verify six new SEO landing pages load at their public routes. |
 
 ---
 
@@ -123,3 +123,4 @@
 | v2.5 | 2026-05-16 | IR-3 delivered locally. Added 8 Love landing pages via shared shell, public routes, sitemap URLs, `/love-reports` CTA wiring, and successful frontend production build. | Codex | 2026-05-16 |
 | v2.6 | 2026-05-18 | IR-4 commission brief written. 6 Phase 3 natal reports (Wealth/H2, Romance/H5, Vitality/H6, Partnership/H7, Dharma/H9, Gains/H11). 516-line brief, 18 new files, 4 modified. READY TO ISSUE. IR-OP-12 opened. | CC | 2026-05-18 |
 | v2.7 | 2026-05-18 | IR-4 delivered locally. Added 6 backend routers, 6 prompt services, `server.py` registration, `/reports` expansion for all 6 report types, 6 public landing pages, routes, sitemap entries, backend `py_compile`, and successful frontend production build. | Codex | 2026-05-18 |
+| v2.8 | 2026-05-18 | IR-4 integrated. `Promise.all` → `Promise.allSettled` in `IndividualReportsPage.jsx` loadHistory (root cause of Karmic Debt "no Render logs" bug). Questionnaire save hardened: secondary enrichment steps (`sync_arc_angel`, `_upsert_questionnaire_profile`) wrapped in best-effort try/except so a secondary crash cannot return 500 and block the save. All pushed commit `1be1e58`. | CC | `1be1e58` |
