@@ -8,6 +8,7 @@ from uuid import uuid4
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from knowledge_engine import register_arc_angel_report_run
 from palmistry_prompt_service import generate_hasta_rekha_report
 
 
@@ -267,6 +268,9 @@ async def analyse_palmistry(payload: PalmistryAnalyseRequest, request: Request) 
 
     if user_email:
         await _collection(request).insert_one(document)
+        state_user = getattr(request.state, "user", None) or {}
+        if state_user.get("user_id"):
+            await register_arc_angel_report_run(_db(request), str(state_user["user_id"]), "palmistry")
 
     return _serialize_document(document)
 

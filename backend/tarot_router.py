@@ -9,6 +9,7 @@ from uuid import uuid4
 
 from fastapi import APIRouter, Body, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
+from knowledge_engine import log_ritual_event, register_arc_angel_report_run
 
 
 router = APIRouter(prefix="/api/tarot", tags=["tarot"])
@@ -1070,6 +1071,9 @@ async def draw_daily_tarot(payload: TarotDailyDrawRequest, request: Request) -> 
         linked_manifestation_id=payload.linked_manifestation_id,
     )
     await collection.insert_one(doc)
+    state_user = getattr(request.state, "user", None) or {}
+    if state_user.get("user_id"):
+        await log_ritual_event(_db(request), str(state_user["user_id"]), "tarot_love")
     if payload.linked_manifestation_id:
         await _manifestations_collection(request).update_many(
             {"user_email": user_email, "id": payload.linked_manifestation_id, "type": "intention"},
@@ -1186,6 +1190,10 @@ async def generate_tarot_spread(payload: TarotSpreadGenerateRequest, request: Re
 
     collection = _readings_collection(request)
     await collection.insert_one(doc)
+    state_user = getattr(request.state, "user", None) or {}
+    if state_user.get("user_id"):
+        await register_arc_angel_report_run(_db(request), str(state_user["user_id"]), "tarot_spread")
+        await log_ritual_event(_db(request), str(state_user["user_id"]), "tarot_love")
     gamification = await _compute_xp(collection, user_email, 18 if spread.tier == "monthly" else 28)
     return TarotReadingResponse(reading=TarotReading(**doc), gamification=gamification, cached=False)
 

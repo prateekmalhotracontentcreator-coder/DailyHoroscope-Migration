@@ -7,6 +7,7 @@ from uuid import uuid4
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from knowledge_engine import register_arc_angel_report_run
 from soul_connection_prompt_service import enrich_soul_connection_with_claude
 from vedic_shared_utils import (
     build_natal_snapshot,
@@ -202,6 +203,9 @@ async def generate_soul_connection_report(payload: SoulConnectionGenerateRequest
     document = report.model_dump(mode="python")
     document["synastry_snapshot"] = natal
     await _collection(request).insert_one(document)
+    state_user = getattr(request.state, "user", None) or {}
+    if state_user.get("user_id"):
+        await register_arc_angel_report_run(get_db(request), str(state_user["user_id"]), document.get("report_type"))
     return SoulConnectionGenerateResponse(report=report)
 
 

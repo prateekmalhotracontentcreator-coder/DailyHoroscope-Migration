@@ -11,6 +11,7 @@ from uuid import uuid4
 
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
+from knowledge_engine import register_arc_angel_report_run
 
 try:
     from backend.kp_engine import MEDICAL_DISCLAIMER, ReportInput, compute_longevity_report
@@ -413,6 +414,9 @@ async def generate_longevity_report(payload: LongevityGenerateRequest, request: 
     should_persist = bool(user_email) and access_mode == "full"
     if should_persist:
         await _collection(request).insert_one(report.model_dump(mode="python"))
+        state_user = getattr(request.state, "user", None) or {}
+        if state_user.get("user_id"):
+            await register_arc_angel_report_run(_db(request), str(state_user["user_id"]), REPORT_SLUG)
 
     return LongevityGenerateResponse(report=report, access=access)
 

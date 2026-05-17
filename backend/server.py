@@ -98,6 +98,8 @@ from knowledge_engine import (
     compute_arc_angel_windows,
     compute_period_quality_now,
     configure_default_knowledge_engine,
+    register_arc_angel_report_run,
+    run_arc_angel_pillar3_decay_job,
 )
 from knowledge_router import router as knowledge_router
 from knowledge_schema import KnowledgeNarrativeRequest, KnowledgeNarrativeResponse
@@ -848,6 +850,9 @@ async def generate_brihat_kundli(request: BrihatKundliRequest, http_request: Req
         import json
         doc = json.loads(report.model_dump_json())
         await db.brihat_kundli_reports.insert_one({**doc})
+        state_user = getattr(http_request.state, "user", None) or {}
+        if state_user.get("user_id"):
+            await register_arc_angel_report_run(db, str(state_user["user_id"]), "brihat_kundali")
         return {"success": True, "report_id": report.id, "report": doc}
     except Exception as e:
         logging.error("Brihat Kundli generation error: %s", str(e), exc_info=True)
@@ -2024,6 +2029,8 @@ def _arc_angel_windows_response(profile: dict, *, cached: bool) -> dict:
                 "inauspicious_periods": domain.get("inauspicious_periods", []),
                 "period_quality_now": domain.get("period_quality", "neutral"),
                 "confidence_pct": int(domain.get("confidence_pct") or overall_confidence),
+                "domain_confidence_pct": int(domain.get("domain_confidence_pct") or ARC_ANGEL_BASELINE_CONFIDENCE_PCT),
+                "has_quality_badge": bool(domain.get("has_quality_badge")),
             }
             for domain in domains
         ],
@@ -2054,10 +2061,12 @@ async def get_arc_angel_windows(
             time_of_birth=birth_time,
             place_of_birth=birth_place,
         )
+        session_user = getattr(request.state, "user", None) or {}
+        effective_user_id = user_id or session_user.get("user_id")
         existing_profile = None
         data_completeness = build_arc_angel_data_completeness()
-        if user_id:
-            existing_profile = await db.user_arc_angel_profile.find_one({"user_id": user_id}, {"_id": 0})
+        if effective_user_id:
+            existing_profile = await db.user_arc_angel_profile.find_one({"user_id": effective_user_id}, {"_id": 0})
             if existing_profile:
                 data_completeness = build_arc_angel_data_completeness(
                     questionnaire_areas=((existing_profile.get("pillar_1") or {}).get("areas_completed") or []),
@@ -2105,10 +2114,10 @@ async def get_arc_angel_windows(
             "arc_angel_windows": arc_angel_list,
             "cached": False,
         }
-        if not user_id:
+        if not effective_user_id:
             return response
         profile_doc = build_arc_angel_profile_doc(
-            user_id=user_id,
+            user_id=effective_user_id,
             birth_date=birth_date,
             birth_time=birth_time,
             birth_place=birth_place,
@@ -2117,7 +2126,7 @@ async def get_arc_angel_windows(
             data_completeness=data_completeness,
             existing_profile=existing_profile,
         )
-        await upsert_arc_angel_profile(db, user_id, profile_doc)
+        await upsert_arc_angel_profile(db, effective_user_id, profile_doc)
         return _arc_angel_windows_response(profile_doc, cached=False)
     except HTTPException:
         raise
@@ -2227,6 +2236,11 @@ async def notification_trigger_date_night_score():
     await _call_notification_trigger("date-night-score", {"audience": "all"})
 
 
+async def arc_angel_pillar3_decay_scheduler():
+    updated = await run_arc_angel_pillar3_decay_job(db)
+    logging.info("Arc Angel pillar 3 decay job updated %d profiles", updated)
+
+
 async def prefetch_all_horoscopes():
     logging.info("Starting scheduled horoscope prefetch...")
     signs = [s["id"] for s in ZODIAC_SIGNS]; types = ["daily", "weekly", "monthly"]; generated = skipped = 0
@@ -2259,6 +2273,7 @@ async def startup_event():
     scheduler.add_job(notification_trigger_encounter_window, CronTrigger(hour=1, minute=0, timezone="UTC"), id="notif_encounter_window", replace_existing=True)
     scheduler.add_job(notification_trigger_love_weather_weekly, CronTrigger(day_of_week="sun", hour=2, minute=0, timezone="UTC"), id="notif_love_weather_weekly", replace_existing=True)
     scheduler.add_job(notification_trigger_date_night_score, CronTrigger(hour=12, minute=30, timezone="UTC"), id="notif_date_night_score", replace_existing=True)
+    scheduler.add_job(arc_angel_pillar3_decay_scheduler, CronTrigger(hour=20, minute=30, timezone="UTC"), id="arc_angel_pillar3_decay", replace_existing=True)
     scheduler.start()
     logging.info("Horoscope prefetch scheduler started")
 

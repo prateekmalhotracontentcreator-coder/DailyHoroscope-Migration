@@ -6,6 +6,7 @@ from typing import Literal
 from fastapi import APIRouter, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from knowledge_engine import register_arc_angel_report_run
 from karmic_debt_prompt_service import enrich_karmic_debt_with_claude
 
 from vedic_shared_utils import (
@@ -230,6 +231,9 @@ async def generate_karmic_debt_report(payload: BirthInput, request: Request) -> 
     document = report.model_dump(mode="python")
     document["natal_snapshot"] = natal
     await _collection(request).insert_one(document)
+    state_user = getattr(request.state, "user", None) or {}
+    if state_user.get("user_id"):
+        await register_arc_angel_report_run(get_db(request), str(state_user["user_id"]), document.get("report_type"))
     return GenerateResponse(report=report)
 
 

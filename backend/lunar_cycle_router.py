@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
 
+from knowledge_engine import register_arc_angel_report_run
 from lunar_cycle_prompt_service import enrich_lunar_cycle_with_claude
 from vedic_shared_utils import (
     base_history_query,
@@ -378,7 +379,10 @@ async def generate_lunar_cycle_report(
     report = await enrich_lunar_cycle_with_claude(report, meta)
     if user_email:
         await _report_collection(request).insert_one(report.model_dump(mode="python"))
-    return LunarCycleGenerateResponse(report=report)
+        state_user = getattr(request.state, "user", None) or {}
+        if state_user.get("user_id"):
+            await register_arc_angel_report_run(get_db(request), str(state_user["user_id"]), report.report_type)
+        return LunarCycleGenerateResponse(report=report)
 
 
 @router.get("/history", response_model=LunarCycleHistoryResponse)

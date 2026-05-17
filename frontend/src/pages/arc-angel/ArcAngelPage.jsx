@@ -394,11 +394,17 @@ export default function ArcAngelPage() {
   );
 
   const domainQualityNow = apiResponse?.domain_quality_now || {};
-  const arcAngelWindows = apiResponse?.arc_angel_windows || {};
+  const arcAngelWindows = Array.isArray(apiResponse?.arc_angel_windows) ? apiResponse.arc_angel_windows : [];
+  const arcAngelWindowsByDomain = arcAngelWindows.reduce((accumulator, item) => {
+    if (item?.domain_id) {
+      accumulator[item.domain_id] = item;
+    }
+    return accumulator;
+  }, {});
   const selectedDomainConfig = DOMAINS.find((domain) => domain.slug === selectedDomain) || DOMAINS[1];
   const SelectedDomainIcon = DOMAIN_ICONS[selectedDomainConfig.icon];
   const selectedQuality = domainQualityNow[selectedDomainConfig.slug] || "neutral";
-  const selectedDomainWindows = arcAngelWindows[selectedDomainConfig.slug] || {};
+  const selectedDomainWindows = arcAngelWindowsByDomain[selectedDomainConfig.slug] || {};
   const auspiciousPeriods = Array.isArray(selectedDomainWindows.auspicious_periods)
     ? selectedDomainWindows.auspicious_periods
     : [];
@@ -428,8 +434,8 @@ export default function ArcAngelPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SEO
-        title="Arc Angel — 12 Areas of Life | EverydayHoroscope"
-        description="Discover your 10-year Vedic dasha windows across 12 life domains — career, relationships, finances, health and more."
+        title="Arc Angel -- 12 Areas of Life | EverydayHoroscope"
+        description="Discover your 10-year Vedic dasha windows across 12 life domains -- career, relationships, finances, health and more."
         canonical="https://www.everydayhoroscope.in/arc-angel"
       />
 
@@ -440,7 +446,7 @@ export default function ArcAngelPage() {
             Mahadasha guidance
           </div>
           <h1 className="font-playfair text-4xl font-semibold text-foreground sm:text-5xl">
-            Arc Angel — 12 Areas of Life
+            Arc Angel -- 12 Areas of Life
           </h1>
           <p className="max-w-3xl text-base leading-7 text-muted-foreground">
             Explore the next 10 years of favourable and challenging dasha windows across the 12 life domains that shape your journey.

@@ -30,18 +30,18 @@ const API = `${BACKEND_URL}/api`;
 const SECTIONS = ['profile', 'security', 'payments', 'privacy'];
 
 const ZODIAC_SIGNS = [
-  { id: 'aries',       name: 'Aries',       symbol: '\u2648', dates: 'Mar 21 – Apr 19' },
-  { id: 'taurus',      name: 'Taurus',      symbol: '\u2649', dates: 'Apr 20 – May 20' },
-  { id: 'gemini',      name: 'Gemini',      symbol: '\u264a', dates: 'May 21 – Jun 20' },
-  { id: 'cancer',      name: 'Cancer',      symbol: '\u264b', dates: 'Jun 21 – Jul 22' },
-  { id: 'leo',         name: 'Leo',         symbol: '\u264c', dates: 'Jul 23 – Aug 22' },
-  { id: 'virgo',       name: 'Virgo',       symbol: '\u264d', dates: 'Aug 23 – Sep 22' },
-  { id: 'libra',       name: 'Libra',       symbol: '\u264e', dates: 'Sep 23 – Oct 22' },
-  { id: 'scorpio',     name: 'Scorpio',     symbol: '\u264f', dates: 'Oct 23 – Nov 21' },
-  { id: 'sagittarius', name: 'Sagittarius', symbol: '\u2650', dates: 'Nov 22 – Dec 21' },
-  { id: 'capricorn',   name: 'Capricorn',   symbol: '\u2651', dates: 'Dec 22 – Jan 19' },
-  { id: 'aquarius',    name: 'Aquarius',    symbol: '\u2652', dates: 'Jan 20 – Feb 18' },
-  { id: 'pisces',      name: 'Pisces',      symbol: '\u2653', dates: 'Feb 19 – Mar 20' },
+  { id: 'aries',       name: 'Aries',       symbol: '\u2648', dates: 'Mar 21 - Apr 19' },
+  { id: 'taurus',      name: 'Taurus',      symbol: '\u2649', dates: 'Apr 20 - May 20' },
+  { id: 'gemini',      name: 'Gemini',      symbol: '\u264a', dates: 'May 21 - Jun 20' },
+  { id: 'cancer',      name: 'Cancer',      symbol: '\u264b', dates: 'Jun 21 - Jul 22' },
+  { id: 'leo',         name: 'Leo',         symbol: '\u264c', dates: 'Jul 23 - Aug 22' },
+  { id: 'virgo',       name: 'Virgo',       symbol: '\u264d', dates: 'Aug 23 - Sep 22' },
+  { id: 'libra',       name: 'Libra',       symbol: '\u264e', dates: 'Sep 23 - Oct 22' },
+  { id: 'scorpio',     name: 'Scorpio',     symbol: '\u264f', dates: 'Oct 23 - Nov 21' },
+  { id: 'sagittarius', name: 'Sagittarius', symbol: '\u2650', dates: 'Nov 22 - Dec 21' },
+  { id: 'capricorn',   name: 'Capricorn',   symbol: '\u2651', dates: 'Dec 22 - Jan 19' },
+  { id: 'aquarius',    name: 'Aquarius',    symbol: '\u2652', dates: 'Jan 20 - Feb 18' },
+  { id: 'pisces',      name: 'Pisces',      symbol: '\u2653', dates: 'Feb 19 - Mar 20' },
 ];
 
 export const AccountSettings = () => {
@@ -233,6 +233,16 @@ export const AccountSettings = () => {
             <h1 className="text-3xl font-playfair font-semibold">Account Settings</h1>
             <p className="text-sm text-muted-foreground mt-1">Manage your profile, security, and preferences</p>
           </div>
+        </div>
+
+        <div className="mb-6 rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-4">
+          <button
+            onClick={() => navigate('/individual-reports')}
+            className="text-left text-sm text-muted-foreground transition hover:text-foreground"
+          >
+            <span className="font-semibold text-gold">Unlock Arc Angel Pro</span>
+            {' '}Higher confidence forecasts across all 12 life areas. Learn more &rarr;
+          </button>
         </div>
 
         <div className="flex flex-col md:flex-row gap-6">

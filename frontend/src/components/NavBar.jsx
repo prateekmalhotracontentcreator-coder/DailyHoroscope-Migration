@@ -214,6 +214,7 @@ const BrandWordmark = () => (
 export const NavBar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [arcAngelOpen, setArcAngelOpen] = useState(false);
+  const [navigationOpen, setNavigationOpen] = useState(true);
   const navigate = useNavigate();
   const location = useLocation();
   const { user, loading } = useAuth();
@@ -323,7 +324,7 @@ export const NavBar = () => {
             </div>
             <div className="h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
             <nav className="flex-1 overflow-y-auto py-3 space-y-0.5">
-              {/* ── Janma Kundali Snapshot -- Arc Angel panel (top of drawer) ── */}
+              {/* Section 1 -- Janamkundali Snapshot */}
               {user && (
                 <div className="border-b border-gold/20 pb-3 mb-1 mx-1">
                   <button
@@ -343,9 +344,27 @@ export const NavBar = () => {
                   )}
                 </div>
               )}
-              {NAV.map((item) => (
-                <SidebarItem key={item.label} item={item} onNavigate={handleNavigate} />
-              ))}
+
+              {/* Section 2 -- Navigation */}
+              <div className="mx-1">
+                <button
+                  onClick={() => setNavigationOpen((prev) => !prev)}
+                  className="flex w-full items-center justify-between rounded-sm px-3 py-2.5 text-sm font-semibold text-gold hover:bg-gold/10 transition-colors"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <Home className="h-4 w-4 text-gold flex-shrink-0" />
+                    Navigation
+                  </div>
+                  <ChevronDown className={`h-3.5 w-3.5 transition-transform ${navigationOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {navigationOpen ? (
+                  <div className="mt-2 space-y-0.5">
+                    {NAV.map((item) => (
+                      <SidebarItem key={item.label} item={item} onNavigate={handleNavigate} />
+                    ))}
+                  </div>
+                ) : null}
+              </div>
             </nav>
             <div className="border-t border-border p-4">
               {user ? (

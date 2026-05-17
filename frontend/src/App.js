@@ -232,11 +232,11 @@ function App() {
                   <Route path="/longevity-report" element={<LongevityReportPage />} />
                   <Route path="/the-longevity-report" element={<LongevityLanding />} />
 
-                  {/* Arc Angel -- 12 Areas of Life (Premium only) */}
-                  <Route path="/arc-angel" element={<PremiumRoute><ArcAngelPage /></PremiumRoute>} />
+                  {/* Arc Angel -- 12 Areas of Life */}
+                  <Route path="/arc-angel" element={<ProtectedRoute><ArcAngelPage /></ProtectedRoute>} />
 
-                  {/* Questionnaire -- personalise readings (Premium only) */}
-                  <Route path="/questionnaire" element={<PremiumRoute><QuestionnairePage /></PremiumRoute>} />
+                  {/* Questionnaire -- personalise readings */}
+                  <Route path="/questionnaire" element={<ProtectedRoute><QuestionnairePage /></ProtectedRoute>} />
 
                   {/* Coming soon */}
                   <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />

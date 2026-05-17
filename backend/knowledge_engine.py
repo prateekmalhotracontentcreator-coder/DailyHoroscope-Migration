@@ -218,7 +218,76 @@ PILLAR_1_PER_AREA = 2
 PILLAR_2_PER_IR = 1
 PILLAR_3_MAX = 10
 CONFIDENCE_CAP = 86
-ARC_ANGEL_SOCIAL_SPHERE_AREAS = {"relationships", "family", "social", "emotional", "spirituality", "creativity"}
+ARC_ANGEL_SOCIAL_SPHERE_AREAS = {"family", "social", "environment", "relationships", "adventure", "spirituality"}
+
+ARC_ANGEL_REPORT_SLUGS = {
+    "brihat_kundali",
+    "numerology",
+    "longevity",
+    "kp_oracle",
+    "tarot_spread",
+    "palmistry",
+    "lal_kitab",
+    "love_compatibility",
+    "lunar_cycle",
+    "solar_return",
+    "karmic_debt",
+    "individual_natal",
+    "soul_connection",
+}
+
+ARC_ANGEL_DOMAIN_IR_MAP = {
+    "health": {"longevity", "individual_natal"},
+    "career": {"brihat_kundali", "numerology", "individual_natal"},
+    "finances": {"brihat_kundali", "lal_kitab", "numerology"},
+    "learning": {"brihat_kundali", "kp_oracle"},
+    "emotional": {"love_compatibility", "lunar_cycle"},
+    "spirituality": {"kp_oracle", "individual_natal"},
+    "relationships": {"love_compatibility", "soul_connection"},
+    "family": {"brihat_kundali", "individual_natal"},
+    "social": {"numerology", "individual_natal"},
+    "adventure": {"individual_natal", "solar_return"},
+    "environment": {"lal_kitab", "individual_natal"},
+    "creativity": {"numerology", "tarot_spread"},
+}
+
+ARC_ANGEL_REPORT_ALIASES = {
+    "brihat_kundali": "brihat_kundali",
+    "brihat-kundli": "brihat_kundali",
+    "brihat_kundli": "brihat_kundali",
+    "numerology": "numerology",
+    "numerology_core_profile": "numerology",
+    "numerology_name_correction": "numerology",
+    "numerology_annual_forecast": "numerology",
+    "numerology_premium_ankjyotish": "numerology",
+    "longevity": "longevity",
+    "longevity_report": "longevity",
+    "kp_oracle": "kp_oracle",
+    "krishna_oracle": "kp_oracle",
+    "tarot_spread": "tarot_spread",
+    "daily-draw": "tarot_spread",
+    "daily_draw": "tarot_spread",
+    "spread": "tarot_spread",
+    "palmistry": "palmistry",
+    "hasta_rekha": "palmistry",
+    "lal_kitab": "lal_kitab",
+    "lk_remedies": "lal_kitab",
+    "love_compatibility": "love_compatibility",
+    "soul_connection": "soul_connection",
+    "deep_synastry_soul_connection": "soul_connection",
+    "lunar_cycle": "lunar_cycle",
+    "lunar_cycle_wellness": "lunar_cycle",
+    "solar_return": "solar_return",
+    "karmic_debt": "karmic_debt",
+    "individual_natal": "individual_natal",
+}
+
+ARC_ANGEL_RUNTIME_SECTION_MAP = {
+    "personal": {"career", "finances", "learning"},
+    "life": {"health", "emotional", "adventure", "environment"},
+    "relationships": {"relationships", "social", "spirituality"},
+    "family": {"family", "creativity"},
+}
 
 # Phase 1 baseline confidence (birth data only, no questionnaire, no module runs).
 ARC_ANGEL_BASELINE_CONFIDENCE_PCT: int = CONFIDENCE_BASE
@@ -1152,11 +1221,102 @@ def _normalize_modules_run(values: list[Any] | None) -> list[str]:
     seen: set[str] = set()
     modules: list[str] = []
     for value in values or []:
-        slug = str(value or "").strip()
+        slug = canonicalize_arc_angel_report_slug(value) or str(value or "").strip()
         if slug and slug not in seen:
             seen.add(slug)
             modules.append(slug)
     return modules
+
+
+def canonicalize_arc_angel_report_slug(value: Any) -> str | None:
+    if value is None:
+        return None
+    raw = str(value).strip()
+    if not raw:
+        return None
+    candidates = [
+        raw,
+        raw.lower(),
+        raw.lower().replace("-", "_"),
+        raw.lower().replace(" ", "_"),
+        raw.lower().replace("-", "_").replace(" ", "_"),
+    ]
+    for candidate in candidates:
+        mapped = ARC_ANGEL_REPORT_ALIASES.get(candidate)
+        if mapped:
+            return mapped
+    return None
+
+
+def domain_has_quality_badge(domain_id: str, reports_run: list[Any] | None) -> bool:
+    modules = set(_normalize_modules_run(reports_run))
+    return bool(modules & ARC_ANGEL_DOMAIN_IR_MAP.get(domain_id, set()))
+
+
+def _compute_domain_confidence(domain_id: str, profile: dict[str, Any]) -> int:
+    areas_completed = {
+        str(area)
+        for area in ((profile.get("pillar_1") or {}).get("areas_completed") or [])
+        if str(area or "").strip()
+    }
+    score = CONFIDENCE_BASE
+    if domain_id in areas_completed:
+        score += PILLAR_1_PER_AREA
+    return score
+
+
+def _context_path_complete(payload: dict[str, Any], path: str) -> bool:
+    current: Any = payload
+    for part in path.split("."):
+        if not isinstance(current, dict):
+            return False
+        current = current.get(part)
+    if isinstance(current, str):
+        return bool(current.strip())
+    return current is not None
+
+
+def _context_parent_complete(payload: dict[str, Any], parent_key: str) -> bool:
+    return _context_path_complete(payload, f"parents_data.{parent_key}.dob") and _context_path_complete(
+        payload, f"parents_data.{parent_key}.place"
+    )
+
+
+def build_arc_angel_questionnaire_state(context_profile: dict[str, Any] | None) -> dict[str, Any]:
+    payload = context_profile or {}
+    section_complete = {
+        "personal": all(
+            _context_path_complete(payload, field_name)
+            for field_name in ("salary_bracket", "family_wealth_tier", "siblings_count")
+        ),
+        "life": all(
+            _context_path_complete(payload, field_name)
+            for field_name in ("current_city", "travel_frequency")
+        ),
+        "relationships": _context_path_complete(payload, "relationship_status"),
+        "family": _context_parent_complete(payload, "father") and _context_parent_complete(payload, "mother"),
+    }
+
+    areas_completed: set[str] = set()
+    for section_id, areas in ARC_ANGEL_RUNTIME_SECTION_MAP.items():
+        if section_complete.get(section_id):
+            areas_completed.update(areas)
+
+    current_city_bonus = 0.5 if _context_path_complete(payload, "current_city") else 0.0
+    father_bonus = 0.5 if _context_parent_complete(payload, "father") else 0.0
+    mother_bonus = 0.5 if _context_parent_complete(payload, "mother") else 0.0
+    partial_points = current_city_bonus + father_bonus + mother_bonus
+    score = min((len(areas_completed) * PILLAR_1_PER_AREA) + partial_points, 24)
+
+    return {
+        "areas_completed": sorted(areas_completed),
+        "social_sphere_areas_completed": sorted(area for area in areas_completed if area in ARC_ANGEL_SOCIAL_SPHERE_AREAS),
+        "current_city_bonus": current_city_bonus,
+        "parents_bonus": father_bonus + mother_bonus,
+        "partial_points": partial_points,
+        "score": score,
+        "max_score": 24,
+    }
 
 
 def _normalized_data_completeness(value: dict[str, Any] | None) -> dict[str, Any]:
@@ -1192,10 +1352,16 @@ def _coerce_pillar_1(existing: dict[str, Any] | None) -> dict[str, Any]:
     social_sphere = [str(area) for area in payload.get("social_sphere_areas_completed") or [] if str(area or "").strip()]
     if not social_sphere:
         social_sphere = [area for area in areas_completed if area in ARC_ANGEL_SOCIAL_SPHERE_AREAS]
-    score = min(len(areas_completed), 12) * PILLAR_1_PER_AREA
+    current_city_bonus = float(payload.get("current_city_bonus") or 0.0)
+    parents_bonus = float(payload.get("parents_bonus") or 0.0)
+    partial_points = float(payload.get("partial_points") or (current_city_bonus + parents_bonus))
+    score = min((len(areas_completed) * PILLAR_1_PER_AREA) + partial_points, 24)
     return {
         "areas_completed": areas_completed,
         "social_sphere_areas_completed": social_sphere,
+        "current_city_bonus": current_city_bonus,
+        "parents_bonus": parents_bonus,
+        "partial_points": partial_points,
         "score": score,
         "max_score": 24,
     }
@@ -1226,20 +1392,35 @@ def _coerce_pillar_3(existing: dict[str, Any] | None) -> dict[str, Any]:
         "pillar_3_score": pillar_3_score,
         "last_ritual_date": _coerce_datetime(payload.get("last_ritual_date")),
         "decay_started_at": _coerce_datetime(payload.get("decay_started_at")),
+        "tarot_love_last_ritual_date": _coerce_datetime(payload.get("tarot_love_last_ritual_date")),
+        "strategist_last_ritual_date": _coerce_datetime(payload.get("strategist_last_ritual_date")),
+        "tarot_love_decay_started_at": _coerce_datetime(payload.get("tarot_love_decay_started_at")),
+        "strategist_decay_started_at": _coerce_datetime(payload.get("strategist_decay_started_at")),
+        "tarot_love_last_notification_at": _coerce_datetime(payload.get("tarot_love_last_notification_at")),
+        "strategist_last_notification_at": _coerce_datetime(payload.get("strategist_last_notification_at")),
+        "notification_pending": payload.get("notification_pending") or [],
         "max_score": 10,
         "note": "Decay engine wired in ARC-2. Sprint 3 reads stored pillar_3_score only.",
     }
 
 
 def _compute_confidence(profile: dict[str, Any]) -> int:
-    score = CONFIDENCE_BASE
-    areas_completed = (profile.get("pillar_1") or {}).get("areas_completed") or []
-    score += min(len(areas_completed), 12) * PILLAR_1_PER_AREA
-    reports_run = (profile.get("pillar_2") or {}).get("reports_run") or []
-    score += min(len(reports_run), 12) * PILLAR_2_PER_IR
-    pillar_3_score = (profile.get("pillar_3") or {}).get("pillar_3_score", 0)
-    score += min(int(pillar_3_score), PILLAR_3_MAX)
-    return min(score, CONFIDENCE_CAP)
+    p1 = profile.get("pillar_1") or {}
+    areas_completed = p1.get("areas_completed")
+    if areas_completed is not None:
+        pillar_1_score = float(min(len(areas_completed), 12) * PILLAR_1_PER_AREA)
+    else:
+        pillar_1_score = min(float(p1.get("score") or 0.0), 24.0)
+
+    p2 = profile.get("pillar_2") or {}
+    reports_run = p2.get("reports_run")
+    if reports_run is not None:
+        pillar_2_score = int(min(len(reports_run), 12) * PILLAR_2_PER_IR)
+    else:
+        pillar_2_score = min(int(p2.get("score") or 0), 12)
+
+    pillar_3_score = min(int((profile.get("pillar_3") or {}).get("pillar_3_score") or 0), PILLAR_3_MAX)
+    return min(int(round(CONFIDENCE_BASE + pillar_1_score + pillar_2_score + pillar_3_score)), CONFIDENCE_CAP)
 
 
 def _period_indicator_for_domain(domain: str, quality: str, windows: dict[str, Any]) -> str:
@@ -1270,6 +1451,75 @@ def build_arc_angel_data_completeness(
     }
 
 
+def _default_arc_angel_domain(domain_id: str, computed_at: datetime) -> dict[str, Any]:
+    return {
+        "domain_id": domain_id,
+        "domain_label": ARC_ANGEL_DOMAIN_LABELS.get(domain_id, domain_id),
+        "period_quality": "neutral",
+        "confidence_pct": ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
+        "domain_confidence_pct": ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
+        "has_quality_badge": False,
+        "period_indicator": _period_indicator_for_domain(domain_id, "neutral", {}),
+        "auspicious_periods": [],
+        "inauspicious_periods": [],
+        "last_updated": computed_at,
+    }
+
+
+def refresh_arc_angel_profile(profile: dict[str, Any]) -> dict[str, Any]:
+    computed_at = _coerce_datetime(profile.get("computed_at")) or utc_now()
+    profile["computed_at"] = computed_at
+    profile["engine_label"] = profile.get("engine_label") or ARC_ANGEL_ENGINE_LABEL
+    profile["data_completeness"] = _normalized_data_completeness(profile.get("data_completeness"))
+    profile["pillar_1"] = _coerce_pillar_1(profile.get("pillar_1"))
+    profile["pillar_2"] = _coerce_pillar_2(profile.get("pillar_2"), profile["data_completeness"])
+    profile["pillar_3"] = _coerce_pillar_3(profile.get("pillar_3"))
+
+    pillar_3 = profile["pillar_3"]
+    sub_last_dates = [
+        value
+        for value in (
+            pillar_3.get("tarot_love_last_ritual_date"),
+            pillar_3.get("strategist_last_ritual_date"),
+            pillar_3.get("last_ritual_date"),
+        )
+        if isinstance(value, datetime)
+    ]
+    pillar_3["last_ritual_date"] = max(sub_last_dates) if sub_last_dates else pillar_3.get("last_ritual_date")
+    active_decays = [
+        value
+        for value in (
+            pillar_3.get("tarot_love_decay_started_at"),
+            pillar_3.get("strategist_decay_started_at"),
+        )
+        if isinstance(value, datetime)
+    ]
+    pillar_3["decay_started_at"] = min(active_decays) if active_decays else None
+    pillar_3["pillar_3_score"] = min(
+        int(pillar_3.get("tarot_love_score", 0) or 0) + int(pillar_3.get("strategist_score", 0) or 0),
+        PILLAR_3_MAX,
+    )
+
+    profile["overall_confidence_pct"] = _compute_confidence(profile)
+    existing_domains = {
+        str(domain.get("domain_id")): domain
+        for domain in (profile.get("domains") or [])
+        if isinstance(domain, dict) and domain.get("domain_id")
+    }
+    reports_run = (profile.get("pillar_2") or {}).get("reports_run") or []
+    refreshed_domains: list[dict[str, Any]] = []
+    for domain_id in ARC_ANGEL_DOMAIN_SLUGS:
+        current = {**_default_arc_angel_domain(domain_id, computed_at), **(existing_domains.get(domain_id) or {})}
+        current["domain_label"] = ARC_ANGEL_DOMAIN_LABELS.get(domain_id, domain_id)
+        current["confidence_pct"] = profile["overall_confidence_pct"]
+        current["domain_confidence_pct"] = _compute_domain_confidence(domain_id, profile)
+        current["has_quality_badge"] = domain_has_quality_badge(domain_id, reports_run)
+        current["last_updated"] = computed_at
+        refreshed_domains.append(current)
+    profile["domains"] = refreshed_domains
+    return profile
+
+
 def build_arc_angel_profile_doc(
     *,
     user_id: str,
@@ -1296,13 +1546,12 @@ def build_arc_angel_profile_doc(
         "pillar_2": _coerce_pillar_2(existing.get("pillar_2"), completeness),
         "pillar_3": _coerce_pillar_3(existing.get("pillar_3")),
     }
-    profile["overall_confidence_pct"] = _compute_confidence(profile)
     profile["domains"] = [
         {
             "domain_id": domain_id,
             "domain_label": ARC_ANGEL_DOMAIN_LABELS.get(domain_id, domain_id),
             "period_quality": domain_quality_now.get(domain_id, "neutral"),
-            "confidence_pct": profile["overall_confidence_pct"],
+            "confidence_pct": ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
             "period_indicator": _period_indicator_for_domain(
                 domain_id,
                 domain_quality_now.get(domain_id, "neutral"),
@@ -1314,7 +1563,179 @@ def build_arc_angel_profile_doc(
         }
         for domain_id in ARC_ANGEL_DOMAIN_SLUGS
     ]
-    return profile
+    return refresh_arc_angel_profile(profile)
+
+
+async def load_arc_angel_profile(db: AsyncIOMotorDatabase, user_id: str) -> dict[str, Any]:
+    existing = await db.user_arc_angel_profile.find_one({"user_id": user_id}, {"_id": 0})
+    if existing:
+        return refresh_arc_angel_profile(existing)
+    return refresh_arc_angel_profile(
+        {
+            "user_id": user_id,
+            "birth_date": "",
+            "birth_time": "",
+            "birth_place": "",
+            "computed_at": utc_now(),
+            "engine_label": ARC_ANGEL_ENGINE_LABEL,
+            "data_completeness": build_arc_angel_data_completeness(birth_data=False),
+            "pillar_1": {},
+            "pillar_2": {},
+            "pillar_3": {},
+            "domains": [],
+        }
+    )
+
+
+async def sync_arc_angel_questionnaire_state(
+    db: AsyncIOMotorDatabase,
+    user_id: str,
+    context_profile: dict[str, Any] | None,
+) -> dict[str, Any]:
+    profile = await load_arc_angel_profile(db, user_id)
+    questionnaire_state = build_arc_angel_questionnaire_state(context_profile)
+    profile["pillar_1"] = questionnaire_state
+    profile["data_completeness"] = build_arc_angel_data_completeness(
+        birth_data=bool(profile.get("birth_date") and profile.get("birth_time") and profile.get("birth_place")),
+        questionnaire_areas=questionnaire_state.get("areas_completed") or [],
+        modules_run=((profile.get("pillar_2") or {}).get("reports_run") or []),
+        parents_data=bool(questionnaire_state.get("parents_bonus")),
+    )
+    refreshed = refresh_arc_angel_profile(profile)
+    await upsert_arc_angel_profile(db, user_id, refreshed)
+    return refreshed
+
+
+async def register_arc_angel_report_run(
+    db: AsyncIOMotorDatabase,
+    user_id: str,
+    report_slug: Any,
+) -> dict[str, Any] | None:
+    canonical_slug = canonicalize_arc_angel_report_slug(report_slug)
+    if not canonical_slug:
+        return None
+    profile = await load_arc_angel_profile(db, user_id)
+    reports_run = _normalize_modules_run(((profile.get("pillar_2") or {}).get("reports_run") or []) + [canonical_slug])
+    profile["pillar_2"] = {
+        **(profile.get("pillar_2") or {}),
+        "reports_run": reports_run,
+        "score": min(len(reports_run), 12) * PILLAR_2_PER_IR,
+        "max_score": 12,
+    }
+    profile["data_completeness"] = build_arc_angel_data_completeness(
+        birth_data=bool(profile.get("birth_date") and profile.get("birth_time") and profile.get("birth_place")),
+        questionnaire_areas=((profile.get("pillar_1") or {}).get("areas_completed") or []),
+        modules_run=reports_run,
+        parents_data=bool(((profile.get("pillar_1") or {}).get("parents_bonus"))),
+    )
+    refreshed = refresh_arc_angel_profile(profile)
+    await upsert_arc_angel_profile(db, user_id, refreshed)
+    return refreshed
+
+
+def tiered_recovery_points(days_since_decay_start: int | None) -> int:
+    if not days_since_decay_start or days_since_decay_start <= 1:
+        return 1
+    return 2
+
+
+async def log_ritual_event(
+    db: AsyncIOMotorDatabase,
+    user_id: str,
+    ritual_type: str,
+    *,
+    occurred_at: datetime | None = None,
+) -> dict[str, Any]:
+    if ritual_type not in {"tarot_love", "strategist"}:
+        raise ValueError(f"Unsupported ritual_type: {ritual_type}")
+    now = occurred_at or utc_now()
+    profile = await load_arc_angel_profile(db, user_id)
+    pillar_3 = dict(profile.get("pillar_3") or {})
+    score_key = "tarot_love_score" if ritual_type == "tarot_love" else "strategist_score"
+    last_key = "tarot_love_last_ritual_date" if ritual_type == "tarot_love" else "strategist_last_ritual_date"
+    decay_key = "tarot_love_decay_started_at" if ritual_type == "tarot_love" else "strategist_decay_started_at"
+    max_score = 5
+    existing_score = max(0, min(int(pillar_3.get(score_key, 0) or 0), max_score))
+    decay_started_at = _coerce_datetime(pillar_3.get(decay_key))
+    recovery = tiered_recovery_points(
+        max((now.date() - decay_started_at.date()).days, 1) if decay_started_at else None
+    )
+    pillar_3[score_key] = min(existing_score + recovery, max_score)
+    pillar_3[last_key] = now
+    pillar_3[decay_key] = None
+    pillar_3["notification_pending"] = [
+        item for item in (pillar_3.get("notification_pending") or []) if item.get("ritual_type") != ritual_type
+    ]
+    profile["pillar_3"] = pillar_3
+    refreshed = refresh_arc_angel_profile(profile)
+    await upsert_arc_angel_profile(db, user_id, refreshed)
+    return refreshed
+
+
+async def run_arc_angel_pillar3_decay_job(
+    db: AsyncIOMotorDatabase,
+    *,
+    now: datetime | None = None,
+) -> int:
+    reference = now or utc_now()
+    updated = 0
+    cursor = db.user_arc_angel_profile.find({}, {"_id": 0})
+    async for raw_profile in cursor:
+        profile = refresh_arc_angel_profile(raw_profile)
+        pillar_3 = dict(profile.get("pillar_3") or {})
+        changed = False
+        pending = [item for item in (pillar_3.get("notification_pending") or []) if isinstance(item, dict)]
+
+        for ritual_type, score_key, last_key, decay_key, notif_key in (
+            ("tarot_love", "tarot_love_score", "tarot_love_last_ritual_date", "tarot_love_decay_started_at", "tarot_love_last_notification_at"),
+            ("strategist", "strategist_score", "strategist_last_ritual_date", "strategist_decay_started_at", "strategist_last_notification_at"),
+        ):
+            last_ritual_at = _coerce_datetime(pillar_3.get(last_key))
+            decay_started_at = _coerce_datetime(pillar_3.get(decay_key))
+            last_notification_at = _coerce_datetime(pillar_3.get(notif_key))
+            score_value = max(0, min(int(pillar_3.get(score_key, 0) or 0), 5))
+            days_since = 999999 if last_ritual_at is None else (reference.date() - last_ritual_at.date()).days
+
+            if days_since == 2:
+                should_notify = not last_notification_at or (reference.date() - last_notification_at.date()).days >= 2
+                if should_notify:
+                    pending.append(
+                        {
+                            "type": "motivational",
+                            "ritual_type": ritual_type,
+                            "score": score_value,
+                            "queued_at": reference,
+                        }
+                    )
+                    pillar_3[notif_key] = reference
+                    changed = True
+                continue
+
+            if days_since >= 3 and score_value > 0:
+                pillar_3[decay_key] = decay_started_at or reference
+                pillar_3[score_key] = max(score_value - 1, 0)
+                should_notify = not last_notification_at or (reference.date() - last_notification_at.date()).days >= 2
+                if should_notify:
+                    pending.append(
+                        {
+                            "type": "score_dip_risk",
+                            "ritual_type": ritual_type,
+                            "score": pillar_3[score_key],
+                            "queued_at": reference,
+                        }
+                    )
+                    pillar_3[notif_key] = reference
+                changed = True
+
+        if not changed:
+            continue
+
+        pillar_3["notification_pending"] = pending
+        profile["pillar_3"] = pillar_3
+        refreshed = refresh_arc_angel_profile(profile)
+        await upsert_arc_angel_profile(db, str(refreshed.get("user_id") or ""), refreshed)
+        updated += 1
+    return updated
 
 
 def _rule_payload(rule: dict[str, Any] | Any) -> dict[str, Any]:

@@ -24,6 +24,7 @@ from knowledge_schema import (
     UserContextProfileDocument,
 )
 from vedic_calculator import calculate_vedic_chart, calculate_vimshottari_dasha
+from knowledge_engine import sync_arc_angel_questionnaire_state
 
 
 router = APIRouter(tags=["knowledge-library"])
@@ -224,11 +225,13 @@ async def update_user_context_profile(request: Request, payload: dict[str, Any])
         },
         upsert=True,
     )
+    arc_angel_profile = await sync_arc_angel_questionnaire_state(db, user.user_id, serialized_profile)
     completion_pct, missing_fields = _context_profile_completion(serialized_profile)
     return {
         "profile": serialized_profile,
         "completion_pct": completion_pct,
         "missing_fields": missing_fields,
+        "arc_angel_confidence_pct": arc_angel_profile.get("overall_confidence_pct", 40),
     }
 
 

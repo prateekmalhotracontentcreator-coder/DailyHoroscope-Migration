@@ -427,8 +427,8 @@ export default function QuestionnaireWidget({
   compact = false,
   onSaveSuccess = () => {},
 }) {
-  const { user, subscription } = useAuth();
-  const premiumActive = hasActiveSubscription(subscription, user);
+  const { user } = useAuth();
+  const premiumActive = hasActiveSubscription(true, user);
 
   const [profile, setProfile] = useState(DEFAULT_PROFILE);
   const [completion, setCompletion] = useState({

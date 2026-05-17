@@ -5,6 +5,7 @@ from typing import Optional
 
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
+from knowledge_engine import log_ritual_event
 
 from lk_diagnostics import run_full_diagnosis
 from scriptural_oracle_router import KrishnaSelectionRequest as _KPSelectRequest
@@ -689,6 +690,9 @@ async def gate0_select(body: Gate0SelectRequest, request: Request):
         "created_at": now,
         "expires_at": now + timedelta(days=ttl),
     })
+    state_user = getattr(request.state, "user", None) or {}
+    if state_user.get("user_id"):
+        await log_ritual_event(db, str(state_user["user_id"]), "strategist")
 
     return result
 

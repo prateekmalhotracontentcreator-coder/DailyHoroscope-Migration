@@ -11,6 +11,7 @@ _log = logging.getLogger("numerology")
 
 from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
+from knowledge_engine import register_arc_angel_report_run
 from numerology_prompt_service import enrich_numerology_report_with_claude
 from vedic_calculator import calculate_vedic_chart
 
@@ -631,7 +632,7 @@ async def generate_numerology_report(payload: NumerologyGenerateRequest, request
     report = await enrich_numerology_report_with_claude(report)
 
     # ── Internal checkpoint NUM-01 / NUM-04 ──────────────────────────────────
-    # NUM-01: Confirm Claude enrichment ran — summary should not be generic
+    # NUM-01: Confirm Claude enrichment ran -- summary should not be generic
     #         fallback boilerplate.  We detect the two most common fallback
     #         openers; if either appears, enrichment silently fell back.
     _FALLBACK_MARKERS = ("Your profile centers on Life Path", "This premium Ankjyotish report combines")
@@ -648,7 +649,7 @@ async def generate_numerology_report(payload: NumerologyGenerateRequest, request
     _INTERNAL_MARKERS = ("Temple App renders", "structured JSON", "delivery note", "dropin")
     if report.remedy_note and any(m.lower() in report.remedy_note.lower() for m in _INTERNAL_MARKERS):
         _log.error(
-            "NUM-04 CHECKPOINT: remedy_note contains internal text — "
+            "NUM-04 CHECKPOINT: remedy_note contains internal text -- "
             "must NOT reach users.  [tile=%s] remedy_note=%r",
             payload.tile_code, report.remedy_note[:120],
         )
@@ -657,6 +658,9 @@ async def generate_numerology_report(payload: NumerologyGenerateRequest, request
     # ─────────────────────────────────────────────────────────────────────────
 
     await collection.insert_one(report.model_dump(mode="python"))
+    state_user = getattr(request.state, "user", None) or {}
+    if state_user.get("user_id"):
+        await register_arc_angel_report_run(_get_db(request), str(state_user["user_id"]), report.report_type)
     return NumerologyGenerateResponse(report=report)
 
 
