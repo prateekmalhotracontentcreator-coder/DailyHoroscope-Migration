@@ -1030,7 +1030,7 @@ def _merge_consecutive_quality_windows(windows: list[dict[str, Any]]) -> list[di
 
 
 def _collapse_short_windows(windows: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    collapsed = _merge_consecutive_quality_windows(list(windows))
+    collapsed = list(windows)
     index = 0
     while index < len(collapsed):
         window = collapsed[index]
@@ -1060,7 +1060,7 @@ def _collapse_short_windows(windows: list[dict[str, Any]]) -> list[dict[str, Any
                 collapsed[index : index + 2] = [_merge_window_group([window, following], following["quality"])]
             continue
         index += 1
-    return _merge_consecutive_quality_windows(collapsed)
+    return collapsed
 
 
 def _dominant_rule_for_window(window: dict[str, Any], quality: str) -> tuple[str | None, str | None, dict[str, Any] | None]:

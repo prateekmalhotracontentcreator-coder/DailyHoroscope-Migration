@@ -141,6 +141,32 @@ def test_arc_angel_windows_sorted_chronologically() -> None:
     assert populated_domains >= 4
 
 
+def test_arc_angel_windows_preserve_ad_granularity_for_long_same_quality_periods() -> None:
+    timeline = [
+        {
+            "planet": "Jupiter",
+            "start": "2026-01-01",
+            "end": "2027-12-31",
+            "antardashas": [
+                {"planet": "Moon", "start": "2026-01-01", "end": "2026-04-30"},
+                {"planet": "Jupiter", "start": "2026-05-01", "end": "2026-08-31"},
+                {"planet": "Venus", "start": "2026-09-01", "end": "2026-12-31"},
+                {"planet": "Saturn", "start": "2027-01-01", "end": "2027-04-30"},
+            ],
+        }
+    ]
+    result = compute_arc_angel_windows(timeline, build_domain_rule_map([]), horizon_years=2, as_of=date(2026, 1, 1))
+    career = result["career"]
+    assert len(career["auspicious_periods"]) == 3
+    assert [
+        period["driver"] for period in career["auspicious_periods"]
+    ] == [
+        "Moon AD in Jupiter MD -- career auspicious period",
+        "Jupiter AD in Jupiter MD -- career auspicious period",
+        "Venus AD in Jupiter MD -- career auspicious period",
+    ]
+
+
 def test_build_dasha_timeline_returns_9_maha_periods() -> None:
     result = build_dasha_timeline("1990-05-15", 123.45)
     assert len(result) == 9
