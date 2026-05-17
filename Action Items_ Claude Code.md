@@ -50,6 +50,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 
 ### Individual Reports Thread
 - ~~IR-1: 5 public SEO landing pages~~ → `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` · READY TO ISSUE
+- ~~IR-4: 6 Phase 3 Natal Reports (Wealth/H2 · Romance/H5 · Vitality/H6 · Partnership/H7 · Dharma/H9 · Gains/H11)~~ → `Individual_Reports/CODEX_COMMISSION_IR_4_SIX_NEW_REPORTS.md` · READY TO ISSUE (written 2026-05-18 — 516 lines, 18 new files)
 
 ### Remedies Engine Thread
 - ~~REM-P1: Remedies Engine Phase 1 (KP collection + remedy_ref pipeline)~~ → `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` · READY TO ISSUE
