@@ -1,7 +1,7 @@
 # Arc Angel -- Module Tracker
 > Path: `Codex_Deliveries/Arc_Angel/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-17 · v1.3
+> Last updated: 2026-05-18 · v1.6
 
 ---
 
@@ -9,11 +9,11 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- KE-Sprint3 live ✅ · ARC-2 ready to issue (after KE-OP-14 fix) |
+| **Status** | 🟡 ACTIVE -- KE-Sprint3 live ✅ · ARC-2 INTEGRATED commit `c1a7cb0` 2026-05-18 |
 | **Frontend** | `frontend/src/components/ArcAngelPanel.jsx` (NavBar drawer) · `frontend/src/pages/ArcAngelPage.jsx` (full view) |
 | **Backend** | `GET /api/knowledge-engine/arc-angel-windows` · `GET /api/knowledge-engine/arc-angel-profile/{user_id}` |
 | **Live URL** | `/arc-angel` + NavBar mobile drawer |
-| **Confidence %** | Base 40% live (3-pillar formula built, dynamic wiring in ARC-2) |
+| **Confidence %** | Full 3-pillar live: Base 40% + P1 +24% (questionnaire hook) + P2 +12% (IR hooks) + P3 +10% (decay) cap 86%. ARC-2 wiring complete. |
 | **Premium gate** | None yet -- ⏸ HOLD pending TT design approval |
 | **Persistence** | `user_arc_angel_profiles` MongoDB collection live. 6h cache. Profile upserted on every arc-angel-windows call. KE-Sprint3 2026-05-17. |
 
@@ -24,7 +24,7 @@
 | ID | Commission | Status | Brief |
 |---|---|---|---|
 | ARC-UI | Arc Angel UI Panel (ArcAngelPanel.jsx) | ✅ INTEGRATED | `CODEX_COMMISSION_ARC_ANGEL_UI_PANEL.md` · Commit `c01ec8d` |
-| **ARC-2** | Dynamic Confidence Engine (3-pillar wiring + decay + notifications) | 🟣 READY TO ISSUE -- **ISSUE NOW** | `CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` -- brief rewritten 2026-05-17. All pre-conditions met: KE-Sprint3 live ✅ (KE-OP-13) + AD-level window granularity fixed ✅ (KE-OP-14, commit `c4f4b43`). No remaining blockers. |
+| **ARC-2** | Dynamic Confidence Engine (3-pillar wiring + decay + notifications) | ✅ INTEGRATED -- commit `c1a7cb0` 2026-05-18 | 18 files changed, 746 insertions. 72/72 tests green. Pillar 1 questionnaire bridge (4-section → 12-domain) live. Pillar 2 IR hooks wired in 8 routers. Pillar 3 decay job live. ArcAngelPanel rebuilt. Left nav split. Premium gate removed -- PrivateRoute for all signed-up users. |
 
 ---
 
@@ -32,7 +32,7 @@
 
 | # | Item | Owner | Priority | Notes |
 |---|---|---|---|---|
-| ARC-OP-1 | **Issue ARC-2 to Codex** -- all pre-conditions cleared | TT | 🔴 ISSUE NOW | Brief at `CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md`. KE-Sprint3 live ✅ + KE-OP-14 ✅ (AD-level granularity fixed commit `c4f4b43`). No remaining blockers. |
+| ~~ARC-OP-1~~ | ~~**Issue ARC-2 to Codex**~~ | TT | ✅ DONE 2026-05-18 | ARC-2 integrated commit `c1a7cb0`. 72/72 tests green. |
 | ARC-OP-2 | **3-Pillar confidence formula** (locked 2026-05-17): Base 40% + Pillar 1 +24% (questionnaire, 2%/area) + Pillar 2 +12% (IRs, 1%/report) + Pillar 3 +10% (daily rituals, decay) = cap 86%. Schema + `_compute_confidence()` skeleton owned by KE-Sprint3. ARC-2 wires dynamic data. | CX | 🟠 HIGH | Formula locked. Case studies = internal KE benchmark only, not formula. |
 | ARC-OP-3 | Pillar 3 decay engine: APScheduler job at 02:00 IST. 2-day grace → decay day 3+ → −1/day → tiered recovery on resume. Sub-pillars (tarot_love, strategist) decay independently. | CX | 🟠 HIGH | Part of ARC-2. Requires KE-Sprint3 schema. |
 | ARC-OP-4 | Notification hooks: day-2 miss = motivational alert · day-3+ miss = score-dip-risk alert · re-fire every 2 days during decay. | CX | 🟠 HIGH | Part of ARC-2. Hooks into existing Notifications module. |
@@ -61,4 +61,5 @@
 | v1.2 | 2026-05-17 | **ARC-2 brief fully rewritten.** Formula locked: 3-pillar model (Base 40% + Pillar 1 24% + Pillar 2 12% + Pillar 3 10%, cap 86%). Old formula (42 base, +18 questionnaire, +4/module, 72 max) retired. Decay engine specified (2-day grace, −1/day, tiered recovery). Notification hooks added. Deliverables 6+7 (premium gate + sidebar) moved to ⏸ HOLD pending TT UI approval. Schema/persistence split: KE-Sprint3 owns skeleton, ARC-2 owns dynamic wiring. Case studies confirmed as internal KE benchmark only. Pre-condition updated: ARC-2 must wait for KE-Sprint3. | TT + CC | `CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` |
 | v1.3 | 2026-05-17 | **KE-Sprint3 live verified (KE-OP-13 cleared).** Tracker updated to reflect live state: `confidence_pct: 40` live, `engine_label` live, `arc-angel-profile/{user_id}` route live, MongoDB persistence live, 6h cache live. Status field updated from "hardcoded 42 / stateless" to live values. ARC-2 pre-condition updated: issue after KE-OP-14 (window granularity fix in KE thread) -- returns 1 period/domain instead of expected 3 AD-level windows. | CC | KE-OP-13 cleared 2026-05-17 |
 | v1.4 | 2026-05-17 | **KE-OP-14 FIXED -- ARC-2 fully unblocked.** `build_arc_angel_windows()` now preserves AD-level granularity; long same-quality ADs no longer collapsed into single MD block. 72/72 combined KE tests green. Commit `c4f4b43`. ARC-OP-1 escalated to ISSUE NOW -- no remaining pre-conditions. | Codex + CC | `c4f4b43` |
+| v1.6 | 2026-05-18 | **ARC-2 INTEGRATED.** 18 files, 746 insertions, commit `c1a7cb0`. Fix: `_compute_confidence()` regression (ARC-2 had switched to reading pre-computed `.score` fields; fixed to derive from `areas_completed`/`reports_run` lists with `.score` fallback). 72/72 tests green. Pillar 1 questionnaire bridge (4-section → 12-domain) live. Pillar 2 IR hooks wired across 8 routers. Pillar 3 APScheduler decay job active. ArcAngelPanel rebuilt (consolidated donut + 12 expandable domain rows). Left nav 2-section split. `/arc-angel` + `/questionnaire` switched to PrivateRoute. Upgrade CTAs in QuestionnairePage + AccountSettings. ARC-OP-1 closed. | Codex + CC | `c1a7cb0` |
 | v1.5 | 2026-05-17 | **UI design finalised -- all HOLDs lifted.** (1) No content gate -- period data visible to all signed-up users. (2) Premium gate = soft IR upsell CTA only. (3) Left Nav splits into 2 sections: Snapshot + Navigation. (4) Snapshot: consolidated donut + 12 expandable rows with per-domain donuts + Favourable/Unfavourable sub-dropdowns. (5) Quality badges when premium IR run for a domain. (6) Upgrade prompt: User Account (1-liner) + Questionnaire page (full CTA). ARC-2 brief updated with full UI-SPEC section. ARC-OP-6 and ARC-OP-7 redesigned and closed. | TT + CC | ARC-2 brief v3 2026-05-17 |

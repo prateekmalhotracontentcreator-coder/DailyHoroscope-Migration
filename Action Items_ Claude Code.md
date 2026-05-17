@@ -35,7 +35,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 ### Knowledge Engine Thread
 - ~~KE-2A: Yoga Check Evaluation Engine~~ → ✅ INTEGRATED 2026-05-17. 9 handlers added, 52 tests pass, 0 missing mappings, 26 dispatch entries.
 - ~~KE-Sprint2: Arbitration Runtime~~ → ✅ INTEGRATED 2026-05-17 (self-certified). All 5 gates passed against live code.
-- ~~KE-Sprint3: Arc Angel Computation (G-07/G-08/G-09)~~ → ✅ FULLY COMPLETE 2026-05-17. KE-OP-13 ✅ (live verified) + KE-OP-14 ✅ (AD-level window granularity fixed, commit `c4f4b43`, 72/72 tests). **ARC-2 is now fully unblocked — issue immediately.**
+- ~~KE-Sprint3: Arc Angel Computation (G-07/G-08/G-09)~~ → ✅ FULLY COMPLETE 2026-05-17. KE-OP-13 ✅ (live verified) + KE-OP-14 ✅ (AD-level window granularity fixed, commit `c4f4b43`, 72/72 tests).
 - ~~KE-IQ: Questionnaire UI + β/γ wiring (TD-19/TD-25/G-10)~~ → `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` · READY TO ISSUE
 
 **CC Direct Actions — KE gaps confirmed by Codex intake audit 2026-05-15:**
@@ -59,7 +59,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 - ~~STR-2J: Strategist Missions UI improvements (MissionCard responsive + dasha display)~~ → `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · ✅ INTEGRATED commit `9ad2e0a` *(delivered + dasha backend fix 2026-05-15)*
 
 ### Arc Angel Thread
-- ~~ARC-2: Arc Angel Dynamic Confidence Engine~~ → `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` · 🟣 **ISSUE NOW** *(all pre-conditions met 2026-05-17 — KE-Sprint3 live + KE-OP-14 fixed. 3-pillar formula locked, decay engine, notification hooks. No remaining blockers.)*
+- ~~ARC-2: Arc Angel Dynamic Confidence Engine~~ → ✅ **INTEGRATED 2026-05-18** commit `c1a7cb0`. 18 files, 746 insertions, 72/72 tests green. 3-pillar confidence fully wired. Pillar 1 bridge (4-section → 12-domain) is stopgap pending KE-IQ. Decay engine + notification hooks live. ArcAngelPanel rebuilt. Premium gate removed (PrivateRoute).
 
 ### Tarot Thread
 - ~~TAR-v4: Tarot UI v4 Enhancement~~ → `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` · READY TO ISSUE

@@ -1,7 +1,7 @@
 # Temple Tracker -- Master Index
 > EverydayHoroscope · Module Status Dashboard
 > **Read this at session start. Then open the individual module tracker for the module you are working on.**
-> Last updated: 2026-05-17 (session 3 -- KE-OP-13 + KE-OP-14 cleared, ARC-2 unblocked)
+> Last updated: 2026-05-18 (session 4 -- ARC-2 integrated commit `c1a7cb0`, 72/72 tests)
 
 ---
 
@@ -41,7 +41,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | 3 | Individual Reports | [`Individual_Reports/TRACKER.md`](Codex_Deliveries/Individual_Reports/TRACKER.md) | 🟣 PLANNED | IR-1 ready to issue Week 1 -- no dependency | TT |
 | 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` confirmed live. `krishna_prashnavali_remedies` seeded (36 records). REM-P1 ready to issue. | TT |
 | 5 | The Strategist | [`Strategist/TRACKER.md`](Codex_Deliveries/Strategist/TRACKER.md) | ✅ LIVE | STR-OP-3: Verify DashaTimingBar live data on `/strategist/missions` (TT) | TT |
-| 6 | Arc Angel | [`Arc_Angel/TRACKER.md`](Codex_Deliveries/Arc_Angel/TRACKER.md) | 🟡 ACTIVE | **ARC-2 🟣 CLEAR TO ISSUE NOW** -- KE-Sprint3 live ✅ + KE-OP-14 fixed ✅. TT to issue ARC-2 to Arc Angel Codex thread. Note: premium gate + sidebar UI still ⏸ HOLD pending TT design approval. | TT |
+| 6 | Arc Angel | [`Arc_Angel/TRACKER.md`](Codex_Deliveries/Arc_Angel/TRACKER.md) | 🟡 ACTIVE | **ARC-2 ✅ INTEGRATED** commit `c1a7cb0` 2026-05-18. 3-pillar confidence live, decay engine active, ArcAngelPanel rebuilt. Pillar 1 bridge (4-section → 12-domain) is a stopgap -- KE-IQ will deliver full 12-area questionnaire. | TT |
 | 7 | Tarot | [`Tarot/TRACKER.md`](Codex_Deliveries/Tarot/TRACKER.md) | 🟡 ACTIVE | TAR-v4 visual uplift -- issue Week 3 | TT |
 | 8 | Kundali / Birth Chart | [`Kundali/TRACKER.md`](Codex_Deliveries/Kundali/TRACKER.md) | 🟣 PLANNED | KUN-1 ready to issue Week 4+ | TT |
 | 9 | Lal Kitab | [`LK/TRACKER.md`](Codex_Deliveries/LK/TRACKER.md) | 🟣 PLANNED | LK-1 ready to issue Week 4+ | TT |
