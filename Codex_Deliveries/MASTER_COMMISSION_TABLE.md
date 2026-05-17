@@ -1,7 +1,7 @@
 # EverydayHoroscope -- Master Codex Commission Table
 > Single source of truth for all commissions ever issued, in progress, or pending.
 > Use the **Commission ID** when opening or referencing a Codex thread.
-> Last updated: 2026-05-17
+> Last updated: 2026-05-17 (session 3 -- KE-OP-13 cleared, ARC-2 pre-condition updated)
 
 ---
 
@@ -31,7 +31,7 @@
 | KE-2D | Varga Dignity Tier Evaluator | ✅ INTEGRATED | `ke_yoga_evaluator.py` | 37 tests green |
 | **KE-Sprint2** | KE Arbitration Runtime (G-03/G-05/G-06/G-04) | ✅ INTEGRATED | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | Self-certified 2026-05-17. All 5 acceptance gates pass: `_contradiction_score`, `_representation_mode`, `_build_tension_block`, supersession lookup, `scan_chart()` payload confirmed. INGEST FREEZE lifted. |
 | **KE-2A** | Yoga Check Evaluation Engine (26 evaluator types) | ✅ INTEGRATED | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | Delivered + CC-verified 2026-05-17. 9 missing handlers added (`yoga`, `planet_affliction`, `house_position`, `planet_afflicted`, `planet_conjunction`, `planet_in_house_from_sun`, `planetary_position`, `planet_combust`, `house_placement`). 52/52 tests pass. 0 missing mappings. 26 total dispatch entries. |
-| **KE-Sprint3** | Arc Angel Computation (G-07/G-08/G-09) | 🟡 DELIVERED LOCAL | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT3_ARC_ANGEL.md` | Delivered 2026-05-17. 19/19 Sprint 3 tests + 71/71 combined KE tests green. G-07 ✅ G-08 ✅ G-09 ✅ TD-28 ✅. `build_dasha_timeline()` in `vedic_calculator.py`, `_build_sub_dashas` removed, profile persistence + cache + retrieval route live. **Pending: TT live verification** of `/api/knowledge-engine/arc-angel-windows` + `/api/knowledge-engine/arc-angel-profile/{user_id}` + Mongo persistence on Render (KE-OP-13). |
+| **KE-Sprint3** | Arc Angel Computation (G-07/G-08/G-09) | ✅ LIVE -- verified 2026-05-17 | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT3_ARC_ANGEL.md` | KE-OP-13 CLEARED. Both routes live on Render: `confidence_pct: 40` ✅ · `engine_label` ✅ · `arc-angel-profile/{user_id}` 200 ✅ · MongoDB persistence ✅ · 6h cache ✅. **KE-OP-14 open:** window granularity returns MD-level (1 period/domain) instead of AD-level (3/domain) -- fix in KE Codex thread before ARC-2 finalises. |
 | **KE-IQ** | Questionnaire UI + β/γ KE Wiring | 🟣 READY TO ISSUE | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | KE Sprint 2 gate passed 2026-05-17. Blocker cleared. QuestionnaireWidget.jsx (1101 lines) exists. Issue now. |
 
 ---
@@ -117,7 +117,7 @@
 | Commission ID | Commission Name | Status | Brief File | Notes |
 |---|---|---|---|---|
 | **ARC-UI** | Arc Angel UI Panel (ArcAngelPanel.jsx) | ✅ INTEGRATED | `Arc_Angel/CODEX_COMMISSION_ARC_ANGEL_UI_PANEL.md` (archived) | Commit `c01ec8d`. |
-| **ARC-2** | Arc Angel Dynamic Confidence Engine (3-pillar wiring + decay + notifications) | 🟣 READY TO ISSUE | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | KE-Sprint3 delivered 2026-05-17 -- blocker cleared. Formula: Base 40% + Pillar 1 24% + Pillar 2 12% + Pillar 3 10% (decay) = cap 86%. Deliverables: questionnaire hooks, IR hooks, Pillar 3 decay APScheduler job, notification triggers. UI deliverables (premium gate, sidebar, upgrade prompt) on HOLD pending TT approval. Issue after KE-Sprint3 live verification passes. |
+| **ARC-2** | Arc Angel Dynamic Confidence Engine (3-pillar wiring + decay + notifications) | 🟣 READY TO ISSUE | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | KE-Sprint3 live ✅ (KE-OP-13 cleared 2026-05-17). Formula: Base 40% + Pillar 1 24% + Pillar 2 12% + Pillar 3 10% (decay) = cap 86%. Deliverables: questionnaire hooks, IR hooks, Pillar 3 decay APScheduler job, notification triggers. UI deliverables (premium gate, sidebar, upgrade prompt) ⏸ HOLD pending TT approval. **Pre-condition: issue KE-OP-14 (window granularity fix) to KE Codex thread first** so ARC-2 gets 3 AD-level windows per domain. |
 
 ---
 
@@ -212,63 +212,82 @@
 
 ## Summary Dashboard
 
-> Last refreshed: 2026-05-17
+> Last refreshed: 2026-05-17 (session 3)
 
 | Priority | Commission ID | Module | Name | Status |
 |---|---|---|---|---|
 | ✅ DONE | KE-Sprint2 | Knowledge Engine | KE Arbitration Runtime | ✅ INTEGRATED 2026-05-17 |
 | ✅ DONE | KE-2A | Knowledge Engine | Yoga Check Evaluation Engine (26 types) | ✅ INTEGRATED 2026-05-17 |
-| ✅ DONE | KE-Sprint3 | Knowledge Engine | Arc Angel Computation (G-07/08/09) | 🟡 DELIVERED LOCAL -- TT live verify pending |
-| 🔴 HIGH | KP-Sprint2 | KP Oracle | /ask-question LLM Router | 🔵 IN PROGRESS |
-| 🔴 HIGH | KE-IQ | Knowledge Engine | Questionnaire UI + β/γ Wiring | 🟣 READY TO ISSUE |
-| 🔴 HIGH | ARC-2 | Arc Angel | Dynamic Confidence Engine (3-pillar + decay + notifications) | 🟣 READY TO ISSUE (KE-Sprint3 blocker cleared) |
-| 🟠 HIGH | KP-2B | KP Oracle | Ritual Animation + 3-Pillar UX | 🟡 BLOCKED (KP-OP-9 TT verify) |
-| 🟠 HIGH | REM-P1 | Remedies Engine | Remedies Engine Phase 1 | ✅ INTEGRATED 2026-05-16 |
-| 🟠 HIGH | PUN-2 | Punya Rewards | Home Promo + Module Hooks + Wheel | 🟣 READY TO ISSUE |
-| 🟠 HIGH | IR-3 | Individual Reports | 8 Love Report SEO Landing Pages | 🟣 READY TO ISSUE |
-| ✅ DONE | IR-2 | Individual Reports | Lunar Cycle Wellness Backend | ✅ INTEGRATED `f9f6690` |
-| 🟡 MED | TAR-v4 | Tarot | Tarot UI v4 Enhancement | 🟣 READY TO ISSUE |
-| 🟡 MED | KUN-1 | Kundali | Lagna Kundali Frontend | 🟣 READY TO ISSUE |
-| 🟡 MED | LK-1 | Lal Kitab | LK Standalone Module | 🟣 READY TO ISSUE |
-| 🟡 MED | LON-1 | Longevity | Ayur Jyotish Longevity Report | 🟣 READY TO ISSUE (large scope -- after priorities) |
-| 🟢 LOW | PAN-L1 | Panchang | Language/Regional Pages | 🟣 READY TO ISSUE |
-| 🟢 LOW | SEO-1 | SEO | SEO + Web Performance | 🟣 READY TO ISSUE (LAST) |
-| ⏸ HOLD | ORACLE-P3 | World Oracles | 5 World Oracle Modules | ⏸ PARKING LOT |
-| ⏸ HOLD | WCE-1 | Commission J | [TBD] | ⏸ PARKING LOT |
+| ✅ DONE | KE-Sprint3 | Knowledge Engine | Arc Angel Computation (G-07/08/09) | ✅ LIVE -- KE-OP-13 cleared 2026-05-17. KE-OP-14 open (window granularity -- fix in KE thread) |
+| ✅ DONE | KP-2A | KP Oracle | Bundle Editorial + Share Card + Remedies Admin | ✅ INTEGRATED commit `7d42880`. KP-OP-9 items 2+3 pending TT. |
+| ✅ DONE | REM-P1 | Remedies Engine | Remedies Engine Phase 1 | ✅ INTEGRATED 2026-05-16 |
+| ✅ DONE | IR-1 | Individual Reports | 5 Public SEO Landing Pages | ✅ INTEGRATED commit `825a294` |
+| ✅ DONE | IR-2 | Individual Reports | Lunar Cycle Wellness Backend | ✅ INTEGRATED commit `f9f6690` |
+| ✅ DONE | STR-1 | The Strategist | Premium Landing + War Room Visual Rebuild | ✅ INTEGRATED commit `ba58192` |
+| ✅ DONE | STR-2J | The Strategist | Missions UI (MissionCard + dasha display) | ✅ INTEGRATED commit `9ad2e0a` |
+| 🔴 HIGH | KE-OP-14 | Knowledge Engine | Window granularity fix (AD-level periods) | 🔴 ISSUE TO KE THREAD FIRST -- blocks ARC-2 final UI |
+| 🔴 HIGH | KP-Sprint2 | KP Oracle | /ask-question LLM Router (Guna + Gita) | 🔵 IN PROGRESS -- issued 2026-05-15 |
+| 🔴 HIGH | KE-IQ | Knowledge Engine | Questionnaire UI + β/γ Wiring | 🟣 READY TO ISSUE -- no dependency |
+| 🔴 HIGH | ARC-2 | Arc Angel | Dynamic Confidence Engine (3-pillar + decay + notifications) | 🟣 READY TO ISSUE -- issue after KE-OP-14 fix confirmed |
+| 🟠 HIGH | KP-2B | KP Oracle | Ritual Animation + 3-Pillar UX + Astro-Filter | 🟡 BLOCKED -- KP-OP-9 items 2+3 pending TT verification |
+| 🟠 HIGH | PUN-2 | Punya Rewards | Home Promo + Module Hooks + SVG Wheel | 🟣 READY TO ISSUE -- no dependency |
+| 🟠 HIGH | IR-3 | Individual Reports | 8 Love Report SEO Landing Pages | 🟣 READY TO ISSUE -- frontend only, no dependency |
+| 🟡 MED | TAR-v4 | Tarot | Tarot UI v4 Enhancement | 🟣 READY TO ISSUE -- independent |
+| 🟡 MED | KUN-1 | Kundali | Lagna Kundali Frontend (backend live) | 🟣 READY TO ISSUE -- frontend only |
+| 🟡 MED | LK-1 | Lal Kitab | LK Standalone Module | 🟣 READY TO ISSUE -- after batch TT approval |
+| 🟡 MED | LON-1 | Longevity | Ayur Jyotish Longevity Report | 🟣 READY TO ISSUE -- verify LON-OP-1 (Render load) first. Large scope ~48h. |
+| 🟢 LOW | PAN-L1 | Panchang | Language/Regional Pages (Tamil, Telugu, etc.) | 🟣 READY TO ISSUE -- independent |
+| 🟢 LOW | SEO-1 | SEO | SEO + Web Performance Optimisation | 🟣 READY TO ISSUE -- issue LAST |
+| ⏸ HOLD | ORACLE-P3 | World Oracles | 5 World Oracle Modules | ⏸ PARKING LOT -- Phase 3, after KP 30+ days live |
+| ⏸ HOLD | WCE-1 | Commission J | World Context Engine | ⏸ PARKING LOT -- Phase 2, brief not written |
 
 ---
 
-## Recommended Issue Order (updated 2026-05-17)
+## Recommended Issue Order (updated 2026-05-17 session 3)
 
 ```
-✅ CLOSED THIS SESSION (2026-05-17):
-  KE-Sprint2   Arbitration Runtime -- self-certified, all 5 gates passed
-  KE-2A        Yoga Check Evaluation Engine -- 52 tests pass, 0 missing mappings
+✅ CLOSED / LIVE (no action needed):
+  KE-Sprint2   ✅ INTEGRATED -- arbitration runtime, all 5 gates
+  KE-2A        ✅ INTEGRATED -- 26 evaluator types, 52 tests
+  KE-Sprint3   ✅ LIVE -- arc angel persistence + formula (KE-OP-13 cleared)
+  KP-2A        ✅ INTEGRATED -- bundle editorial + share card + remedies admin
+  REM-P1       ✅ INTEGRATED -- remedies ref pipeline + 36 records seeded
+  IR-1         ✅ INTEGRATED -- 5 natal report SEO landing pages
+  IR-2         ✅ INTEGRATED -- lunar cycle wellness backend
+  STR-1        ✅ INTEGRATED -- strategist premium landing + war room
+  STR-2J       ✅ INTEGRATED -- missions UI + dasha display
 
-NOW ACTIVE (Codex threads open):
-  KP-Sprint2   KP /ask-question LLM Router
+NOW ACTIVE (Codex threads in flight):
+  KP-Sprint2   🔵 IN PROGRESS -- KP /ask-question LLM router
 
-ISSUE IMMEDIATELY (all blockers cleared 2026-05-17):
-  KE-Sprint3   Arc Angel Computation (G-07/G-08/G-09) -- brief ready, issue now
-  KE-IQ        Questionnaire UI + β/γ Wiring -- brief ready
+ISSUE IMMEDIATELY -- NEXT UP:
+  KE-OP-14     🔴 Issue to KE Codex thread -- window granularity fix (AD-level periods
+               instead of MD-level). Blocks ARC-2 full UI. Small scope.
+  KE-IQ        🟣 Issue to KE Codex thread -- questionnaire UI + β/γ wiring.
+               No dependency. Can run parallel with KE-OP-14.
 
-ISSUE NOW (KE-Sprint3 blocker cleared 2026-05-17):
-  ARC-2        Dynamic Confidence Engine -- issue after KE-Sprint3 live verification
-  PUN-2        Punya Rewards Home Promo + Module Hooks + Wheel -- brief ready
-  IR-3         8 Love Report SEO Landing Pages -- brief ready
+ISSUE AFTER KE-OP-14 CONFIRMED:
+  ARC-2        🟣 Issue to Arc Angel thread -- 3-pillar dynamic wiring + decay engine
+               + notification hooks. Pre-condition: KE-OP-14 fix must be live.
+
+ISSUE IN PARALLEL (no dependencies -- any time):
+  PUN-2        🟣 Punya Rewards home promo + module hooks + SVG wheel
+  IR-3         🟣 8 Love Report SEO landing pages (frontend only)
 
 ISSUE AFTER KP-OP-9 TT VERIFICATION:
-  KP-2B        KP Ritual Animation + 3-Pillar UX
+  KP-2B        🟡 KP ritual animation + 3-pillar UX + astro-filter
 
 ISSUE AFTER HIGH-PRIORITY THREADS RUNNING:
-  TAR-v4       Tarot UI v4
-  KUN-1        Lagna Kundali Frontend (backend live)
-  LK-1         Lal Kitab Standalone
-  LON-1        Longevity Report (large scope)
-  PAN-L1       Panchang Language Pages
-  SEO-1        SEO + Web Performance (issue LAST)
+  TAR-v4       Tarot UI v4 -- independent
+  KUN-1        Lagna Kundali frontend -- backend live, verify LON-OP-1 pattern
+  LK-1         Lal Kitab standalone -- after TT batch approval
+  LON-1        Longevity report -- verify LON-OP-1 (Render load) first. Large scope.
+  PAN-L1       Panchang language pages -- independent
+
+ISSUE LAST:
+  SEO-1        SEO + web performance -- only after all high-priority threads running
 
 PARKING LOT (Phase 2/3 -- hold):
-  ORACLE-P3    5 World Oracle Modules
-  WCE-1        Commission J / WCE
+  ORACLE-P3    5 World Oracle Modules -- after KP 30+ days live
+  WCE-1        World Context Engine -- Phase 2, brief not written
 ```
