@@ -27,6 +27,8 @@ from vedic_calculator import calculate_vedic_chart, calculate_vimshottari_dasha
 from knowledge_engine import build_arc_angel_questionnaire_state, sync_arc_angel_questionnaire_state
 
 
+logger = logging.getLogger(__name__)
+
 router = APIRouter(tags=["knowledge-library"])
 
 
@@ -410,14 +412,24 @@ async def update_user_context_profile(request: Request, payload: dict[str, Any])
         },
         upsert=True,
     )
-    arc_angel_profile = await sync_arc_angel_questionnaire_state(db, user.user_id, serialized_profile)
-    await _upsert_questionnaire_profile_document(db, user.user_id, serialized_profile)
+    # Secondary enrichment steps -- best-effort only; never block the primary save response
+    arc_angel_confidence_pct = 40
+    try:
+        arc_angel_profile = await sync_arc_angel_questionnaire_state(db, user.user_id, serialized_profile)
+        arc_angel_confidence_pct = arc_angel_profile.get("overall_confidence_pct", 40)
+    except Exception:
+        logger.exception("sync_arc_angel_questionnaire_state failed for user=%s (non-fatal)", user.user_id)
+    try:
+        await _upsert_questionnaire_profile_document(db, user.user_id, serialized_profile)
+    except Exception:
+        logger.exception("_upsert_questionnaire_profile_document failed for user=%s (non-fatal)", user.user_id)
+
     completion_pct, missing_fields = _context_profile_completion(serialized_profile)
     return {
         "profile": serialized_profile,
         "completion_pct": completion_pct,
         "missing_fields": missing_fields,
-        "arc_angel_confidence_pct": arc_angel_profile.get("overall_confidence_pct", 40),
+        "arc_angel_confidence_pct": arc_angel_confidence_pct,
     }
 
 
@@ -468,7 +480,11 @@ async def submit_questionnaire_profile(request: Request, payload: dict[str, Any]
     )
 
     questionnaire_profile = await _upsert_questionnaire_profile_document(db, user.user_id, serialized_profile)
-    await sync_arc_angel_questionnaire_state(db, user.user_id, serialized_profile)
+    # Secondary enrichment -- best-effort only
+    try:
+        await sync_arc_angel_questionnaire_state(db, user.user_id, serialized_profile)
+    except Exception:
+        logger.exception("sync_arc_angel_questionnaire_state failed on submit for user=%s (non-fatal)", user.user_id)
     return {
         "beta": questionnaire_profile["beta"],
         "gamma": questionnaire_profile["gamma"],

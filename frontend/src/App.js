@@ -49,6 +49,12 @@ const CareerBlueprintLandingPage = lazy(() => import('./pages/reports/landing/Ca
 const ShadowSelfLandingPage = lazy(() => import('./pages/reports/landing/ShadowSelfLandingPage'));
 const RetrogradeSurvivalLandingPage = lazy(() => import('./pages/reports/landing/RetrogradeSurvivalLandingPage'));
 const LifeCyclesLandingPage = lazy(() => import('./pages/reports/landing/LifeCyclesLandingPage'));
+const WealthBlueprintLandingPage = lazy(() => import('./pages/reports/landing/WealthBlueprintLandingPage'));
+const RomanceCreativeLandingPage = lazy(() => import('./pages/reports/landing/RomanceCreativeLandingPage'));
+const VitalityHealthLandingPage = lazy(() => import('./pages/reports/landing/VitalityHealthLandingPage'));
+const PartnershipWindowLandingPage = lazy(() => import('./pages/reports/landing/PartnershipWindowLandingPage'));
+const DharmaPurposeLandingPage = lazy(() => import('./pages/reports/landing/DharmaPurposeLandingPage'));
+const GainsNetworkLandingPage = lazy(() => import('./pages/reports/landing/GainsNetworkLandingPage'));
 const EncounterWindowLandingPage = lazy(() => import('./pages/reports/landing/EncounterWindowLandingPage'));
 const LoveWeatherLandingPage = lazy(() => import('./pages/reports/landing/LoveWeatherLandingPage'));
 const LunarCycleWellnessLandingPage = lazy(() => import('./pages/reports/landing/LunarCycleWellnessLandingPage'));
@@ -171,6 +177,12 @@ function App() {
                   <Route path="/shadow-self-report" element={<ShadowSelfLandingPage />} />
                   <Route path="/retrograde-survival-report" element={<RetrogradeSurvivalLandingPage />} />
                   <Route path="/life-cycles-report" element={<LifeCyclesLandingPage />} />
+                  <Route path="/wealth-blueprint-report" element={<WealthBlueprintLandingPage />} />
+                  <Route path="/romance-creative-report" element={<RomanceCreativeLandingPage />} />
+                  <Route path="/vitality-health-report" element={<VitalityHealthLandingPage />} />
+                  <Route path="/partnership-window-report" element={<PartnershipWindowLandingPage />} />
+                  <Route path="/dharma-purpose-report" element={<DharmaPurposeLandingPage />} />
+                  <Route path="/gains-network-report" element={<GainsNetworkLandingPage />} />
                   <Route path="/encounter-window-report" element={<EncounterWindowLandingPage />} />
                   <Route path="/love-weather-report" element={<LoveWeatherLandingPage />} />
                   <Route path="/lunar-cycle-wellness" element={<LunarCycleWellnessLandingPage />} />

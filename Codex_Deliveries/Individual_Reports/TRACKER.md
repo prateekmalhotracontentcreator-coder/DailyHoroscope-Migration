@@ -1,7 +1,7 @@
 # Individual Reports -- Module Tracker
 > Path: `Codex_Deliveries/Individual_Reports/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-18 · v2.6
+> Last updated: 2026-05-18 · v2.7
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- Phase 1 fully live · Phase 2 backends integrated with IR-2 and IR-2A · Phase 3 backends fully live · Love frontend hub live · IR-3 Love landing pages delivered locally · Temple review pending on the new public SEO slice |
+| **Status** | 🟡 ACTIVE -- Phase 1 fully live · Phase 2 backends integrated with IR-2 and IR-2A · Phase 3 Love frontend hub live · IR-3 Love landing pages delivered locally · IR-4 six-report natal suite delivered locally and build-verified · Temple review pending on the newest IR slices |
 | **Phase 1 Frontend** | `frontend/src/pages/reports/IndividualReportsPage.jsx` at `/reports` (PremiumRoute) |
 | **Phase 2+3 Frontend** | `frontend/src/pages/reports/LoveReportsPage.jsx` at `/love-reports` (PremiumRoute) |
 | **Public Hub** | `frontend/src/pages/reports/PremiumReportsLanding.jsx` at `/individual-reports` |
@@ -70,7 +70,7 @@
 | **IR-2** | Lunar Cycle Wellness backend (`lunar_cycle_router.py`) | ✅ INTEGRATED -- commit `f9f6690` | `CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` · Integrated. Datetime bug fixed `021a799`. |
 | **IR-2A** | Lunar Cycle Rework -- Action Tracker + Rich Content | ✅ INTEGRATED -- commit `692fefa` | `CODEX_COMMISSION_IR_2A_LUNAR_CYCLE_REWORK.md` · CC fixes applied: transit_house subscript bug + f-string fix. Build green. Pushed. |
 | **IR-3** | 8 Love Report public SEO landing pages | ✅ INTEGRATED -- commit `739c3fa` | `CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` · 8 wrappers, 8 routes, 8 sitemap URLs, content-driven CTA (love→/love-reports, phase1→/reports). Build green. |
-| **IR-4** | 6 New Phase 3 Natal Reports (Wealth · Romance · Vitality · Partnership · Dharma · Gains) | 🟣 READY TO ISSUE | `CODEX_COMMISSION_IR_4_SIX_NEW_REPORTS.md` · Written 2026-05-18. 516 lines. 18 new files + 4 modified. Full Vedic house spec, backend router contract, 15-item AC. Issue to new Codex IR thread. |
+| **IR-4** | 6 New Phase 3 Natal Reports (Wealth · Romance · Vitality · Partnership · Dharma · Gains) | 🟡 DELIVERED LOCALLY -- Temple review pending | `CODEX_COMMISSION_IR_4_SIX_NEW_REPORTS.md` · Delivered 2026-05-18. 12 new backend files, 6 new public landing wrappers, frontend `/reports` expansion, `server.py` registration, routes, sitemap, and build verification complete. |
 
 ---
 
@@ -89,7 +89,7 @@
 | ~~IR-OP-9~~ | ~~TT live verification of Lunar Cycle richer output~~ | TT | ✅ DONE | Verified live 2026-05-16. Report confirmed brilliant. Minor display formatting improvements noted -- logged as IR-OP-10. |
 | IR-OP-10 | Minor display formatting polish on Lunar Cycle report | CC | 🟡 MED | TT flagged minor formatting improvements post live review. Scope to be defined; candidate for inclusion in a future IR patch or IR-3 delivery scope. |
 | ~~IR-OP-11~~ | ~~Issue IR-3 to Codex (8 Love Report SEO landing pages)~~ | TT | ✅ DONE | Delivered locally by Codex 2026-05-16. Awaiting Temple review under IR-OP-5. |
-| IR-OP-12 | Issue IR-4 to Codex (6 Phase 3 Natal Reports) | TT | 🟡 MED | Brief complete. Issue to new Codex IR thread. After delivery, CC reviews before integration. |
+| IR-OP-12 | Temple / CC review of IR-4 six-report natal suite | TT | 🟠 HIGH | Local delivery completed 2026-05-18. Review backend response shapes, `/reports` expansion, six new SEO landing pages, and collection/report-type assumptions before integration. |
 
 ---
 
@@ -101,6 +101,7 @@
 - **Public landing pages**: Phase 1 set integrated; IR-3 adds 8 Love landing pages locally on public routes, all CTA-linked to `/love-reports`
 - **Kundali backend**: `/api/lagna-kundali` (NOT `/api/kundali` -- old brief had wrong prefix)
 - **Lunar Cycle**: IR-2 now adds the final missing Phase 2 backend plus the LoveReportsPage config entry; public SEO page still belongs to IR-3
+- **IR-4 natal suite**: extends the original `/reports` premium surface from 5 to 11 report types while preserving the live single-collection `individual_reports` storage helper and existing report-envelope pattern
 - `vedic_shared_utils.py` is the shared utility layer for all report routers -- do not duplicate its functions
 
 ---
@@ -121,3 +122,4 @@
 | v2.5 | 2026-05-16 | IR-3 delivered by Codex + integrated by CC. 8 landing pages, 8 routes, 8 sitemap URLs. CTA content-driven shell tweak (Phase 1 unaffected). Build green. | CC | `739c3fa` |
 | v2.5 | 2026-05-16 | IR-3 delivered locally. Added 8 Love landing pages via shared shell, public routes, sitemap URLs, `/love-reports` CTA wiring, and successful frontend production build. | Codex | 2026-05-16 |
 | v2.6 | 2026-05-18 | IR-4 commission brief written. 6 Phase 3 natal reports (Wealth/H2, Romance/H5, Vitality/H6, Partnership/H7, Dharma/H9, Gains/H11). 516-line brief, 18 new files, 4 modified. READY TO ISSUE. IR-OP-12 opened. | CC | 2026-05-18 |
+| v2.7 | 2026-05-18 | IR-4 delivered locally. Added 6 backend routers, 6 prompt services, `server.py` registration, `/reports` expansion for all 6 report types, 6 public landing pages, routes, sitemap entries, backend `py_compile`, and successful frontend production build. | Codex | 2026-05-18 |

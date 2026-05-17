@@ -59,6 +59,66 @@ const REPORT_CONFIGS = [
     hook: "Understand the chapter you are in now and the one already rising behind it.",
     description: "A Vimshottari Dasha report for current chapter, sub-cycle, decade arc, and upcoming transitions.",
   },
+  {
+    type: "wealth_blueprint",
+    slug: "wealth-blueprint",
+    name: "Wealth & Abundance Blueprint",
+    shortName: "Wealth Blueprint",
+    color: "#c8930a",
+    icon: "◈",
+    hook: "See the wealth signals, abundance timing, and Dhana yogas written into your Vedic chart.",
+    description: "A Vedic wealth reading for Dhana yogas, 2nd house strength, Jupiter/Venus influence, and key abundance windows.",
+  },
+  {
+    type: "romance_creative",
+    slug: "romance-creative",
+    name: "Romance & Creative Intelligence",
+    shortName: "Romance & Creativity",
+    color: "#d4538a",
+    icon: "✦",
+    hook: "Unlock the romantic and creative intelligence wired into your 5th house.",
+    description: "A Vedic reading for romantic timing, creative gifts, 5th lord strength, and the windows where both peak together.",
+  },
+  {
+    type: "vitality_health",
+    slug: "vitality-health",
+    name: "Vitality & Health Report",
+    shortName: "Vitality & Health",
+    color: "#2a9d6f",
+    icon: "⬡",
+    hook: "Read the health rhythm your chart encodes and the periods that need the most care.",
+    description: "A Vedic health reading for 6th house analysis, Mars/Saturn influence, vulnerable patterns, and daily rhythm guidance.",
+  },
+  {
+    type: "partnership_window",
+    slug: "partnership-window",
+    name: "Partnership & Marriage Window",
+    shortName: "Partnership Window",
+    color: "#6b4fbd",
+    icon: "◇",
+    hook: "Find the Vedic marriage timing and see the partnership pattern your 7th house reveals.",
+    description: "A Vedic partnership reading for Darakaraka, 7th lord, Upapada Lagna, and marriage/commitment dasha windows.",
+  },
+  {
+    type: "dharma_purpose",
+    slug: "dharma-purpose",
+    name: "Dharma & Soul Purpose Report",
+    shortName: "Dharma & Purpose",
+    color: "#1e5fa8",
+    icon: "☉",
+    hook: "Trace the dharmic thread running through your chart to the purpose this life is asking you to fulfill.",
+    description: "A Vedic dharma reading for 9th lord, Jupiter strength, Atmakaraka path, and the soul-level direction already written in your chart.",
+  },
+  {
+    type: "gains_network",
+    slug: "gains-network",
+    name: "Gains & Network Activator",
+    shortName: "Gains & Network",
+    color: "#d46f22",
+    icon: "◆",
+    hook: "See the aspiration fulfillment windows and the social leverage points your 11th house encodes.",
+    description: "A Vedic gains reading for 11th lord strength, Saturn's role in aspiration, key gains dasha windows, and network activation timing.",
+  },
 ];
 
 const EMPTY_CITY = {
@@ -182,7 +242,7 @@ function useSeo(selectedReport, activeTab, currentReport) {
     const description =
       activeTab === "history"
         ? "Review your saved Individual Reports inside the Everyday Horoscope archive."
-        : selectedReport?.description || "Generate premium AI-enriched Vedic reports for karma, career, shadow work, retrogrades, and life cycles.";
+        : selectedReport?.description || "Generate premium AI-enriched Vedic reports for karma, career, shadow work, retrogrades, life cycles, wealth, romance, vitality, partnership, dharma, and gains.";
     document.title = title;
 
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -251,7 +311,7 @@ function ReportCards({ selectedReport, onSelect, onGenerate }) {
           Premium chart readings for the questions that keep returning.
         </h1>
         <p style={{ margin: 0, maxWidth: 760, color: "#675548", lineHeight: 1.72 }}>
-          Each report blends deterministic Vedic logic with the live enrichment layer already active on Temple’s backend, then returns a polished reading with structure, guidance, and remedies.
+          Each report blends deterministic Vedic logic with the live enrichment layer already active on Temple's backend, then returns a polished reading with structure, guidance, and remedies.
         </p>
       </div>
 
@@ -464,7 +524,7 @@ function GeneratePanel({ selectedReport, form, onFormChange, onSubmit, submittin
 
           {isRetrograde ? (
             <>
-              <FormField label="Check date" note="Leave today’s date for the current retrograde weather, or choose another date to inspect.">
+              <FormField label="Check date" note="Leave today's date for the current retrograde weather, or choose another date to inspect.">
                 <FieldInput type="date" value={form.check_date} onChange={(event) => onFormChange("check_date", event.target.value)} />
               </FormField>
 
@@ -714,13 +774,258 @@ function LifeCyclesRenderer({ report, config }) {
   );
 }
 
+function WealthRenderer({ report, config }) {
+  const output = report.output_payload;
+  const indicators = output.wealth_indicators;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Wealth signature" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.wealth_signature}</p>
+        <p style={{ margin: 0 }}>{output.dhanayoga_profile}</p>
+        <p style={{ margin: 0 }}>{output.abundance_blocks}</p>
+        <p style={{ margin: 0 }}>{output.prosperity_path}</p>
+      </ReportSection>
+      <ReportSection title="Abundance indicators" accent={config.color}>
+        <LabelValueGrid
+          items={[
+            { label: "2nd Lord", value: `${indicators.second_lord} • House ${indicators.second_lord_house}` },
+            { label: "11th Lord", value: `${indicators.eleventh_lord} • House ${indicators.eleventh_lord_house}` },
+            { label: "Jupiter", value: `House ${indicators.jupiter_house}` },
+            { label: "Venus", value: `House ${indicators.venus_house}` },
+            { label: "Dhana Links", value: indicators.dhana_yoga_count },
+            { label: "Planets In 2nd", value: indicators.planets_in_second?.length ? indicators.planets_in_second.join(", ") : "None" },
+          ]}
+        />
+      </ReportSection>
+      <ReportSection title="Wealth windows" accent={config.color}>
+        {output.wealth_windows?.map((period) => (
+          <div key={`${period.planet}-${period.start}`} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+            <strong>{period.planet}</strong>
+            <p style={{ margin: "6px 0" }}>
+              {period.start} to {period.end}
+            </p>
+            <p style={{ margin: 0 }}>{period.description}</p>
+          </div>
+        ))}
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={output.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
+function RomanceCreativeRenderer({ report, config }) {
+  const output = report.output_payload;
+  const indicators = output.romance_indicators;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Romantic and creative signature" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.romantic_signature}</p>
+        <p style={{ margin: 0 }}>{output.creative_intelligence}</p>
+        <p style={{ margin: 0 }}>{output.heart_blocks}</p>
+        <p style={{ margin: 0 }}>{output.expression_path}</p>
+      </ReportSection>
+      <ReportSection title="5th house indicators" accent={config.color}>
+        <LabelValueGrid
+          items={[
+            { label: "5th Lord", value: `${indicators.fifth_lord} • House ${indicators.fifth_lord_house}` },
+            { label: "Putrakaraka", value: indicators.putrakaraka },
+            { label: "Venus", value: `House ${indicators.venus_house}` },
+            { label: "Sun", value: `House ${indicators.sun_house}` },
+            { label: "Moon Nakshatra", value: indicators.moon_nakshatra },
+            { label: "Planets In 5th", value: indicators.planets_in_fifth?.length ? indicators.planets_in_fifth.join(", ") : "None" },
+          ]}
+        />
+      </ReportSection>
+      <ReportSection title="Opening windows" accent={config.color}>
+        {output.opening_windows?.map((period) => (
+          <div key={`${period.planet}-${period.start}`} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+            <strong>{period.planet}</strong>
+            <p style={{ margin: "6px 0" }}>
+              {period.start} to {period.end}
+            </p>
+            <p style={{ margin: 0 }}>{period.description}</p>
+          </div>
+        ))}
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={output.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
+function VitalityHealthRenderer({ report, config }) {
+  const output = report.output_payload;
+  const indicators = output.vitality_indicators;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Vitality signature" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.vitality_signature}</p>
+        <p style={{ margin: 0 }}>{output.pressure_pattern}</p>
+        <p style={{ margin: 0 }}>{output.recovery_path}</p>
+        <p style={{ margin: 0 }}>{output.daily_rhythm_guidance}</p>
+      </ReportSection>
+      <ReportSection title="Health indicators" accent={config.color}>
+        <LabelValueGrid
+          items={[
+            { label: "Lagna", value: indicators.lagna_sign },
+            { label: "6th Lord", value: `${indicators.sixth_lord} • House ${indicators.sixth_lord_house}` },
+            { label: "Mars", value: `House ${indicators.mars_house}` },
+            { label: "Saturn", value: `House ${indicators.saturn_house}` },
+            { label: "Sun", value: `House ${indicators.sun_house}` },
+            { label: "Moon", value: `House ${indicators.moon_house}` },
+          ]}
+        />
+        <div style={{ marginTop: 14, color: "#665548" }}>
+          <strong>Planets in 6th:</strong> {indicators.planets_in_sixth?.length ? indicators.planets_in_sixth.join(", ") : "None"}
+        </div>
+      </ReportSection>
+      <ReportSection title="Care windows" accent={config.color}>
+        {output.care_windows?.map((period) => (
+          <div key={`${period.planet}-${period.start}`} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+            <strong>{period.planet}</strong>
+            <p style={{ margin: "6px 0" }}>
+              {period.start} to {period.end}
+            </p>
+            <p style={{ margin: 0 }}>{period.description}</p>
+          </div>
+        ))}
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={output.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
+function PartnershipRenderer({ report, config }) {
+  const output = report.output_payload;
+  const indicators = output.partnership_indicators;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Partnership signature" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.partnership_signature}</p>
+        <p style={{ margin: 0 }}>{output.commitment_pattern}</p>
+        <p style={{ margin: 0 }}>{output.relationship_blocks}</p>
+        <p style={{ margin: 0 }}>{output.readiness_path}</p>
+      </ReportSection>
+      <ReportSection title="7th house indicators" accent={config.color}>
+        <LabelValueGrid
+          items={[
+            { label: "7th Lord", value: `${indicators.seventh_lord} • House ${indicators.seventh_lord_house}` },
+            { label: "Darakaraka", value: indicators.darakaraka },
+            { label: "Venus", value: `House ${indicators.venus_house}` },
+            { label: "Upapada", value: indicators.upapada_sign },
+            { label: "Planets In 7th", value: indicators.planets_in_seventh?.length ? indicators.planets_in_seventh.join(", ") : "None" },
+          ]}
+        />
+      </ReportSection>
+      <ReportSection title="Partnership windows" accent={config.color}>
+        {output.partnership_windows?.map((period) => (
+          <div key={`${period.planet}-${period.start}`} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+            <strong>{period.planet}</strong>
+            <p style={{ margin: "6px 0" }}>
+              {period.start} to {period.end}
+            </p>
+            <p style={{ margin: 0 }}>{period.description}</p>
+          </div>
+        ))}
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={output.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
+function DharmaPurposeRenderer({ report, config }) {
+  const output = report.output_payload;
+  const indicators = output.dharma_indicators;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Dharma signature" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.dharma_signature}</p>
+        <p style={{ margin: 0 }}>{output.soul_calling}</p>
+        <p style={{ margin: 0 }}>{output.faith_tests}</p>
+        <p style={{ margin: 0 }}>{output.alignment_path}</p>
+      </ReportSection>
+      <ReportSection title="9th house indicators" accent={config.color}>
+        <LabelValueGrid
+          items={[
+            { label: "9th Lord", value: `${indicators.ninth_lord} • House ${indicators.ninth_lord_house}` },
+            { label: "Jupiter", value: `House ${indicators.jupiter_house}` },
+            { label: "Atmakaraka", value: `${indicators.atmakaraka} (${indicators.atmakaraka_degree}°)` },
+            { label: "Moon Nakshatra Lord", value: indicators.moon_nakshatra_lord },
+            { label: "Planets In 9th", value: indicators.planets_in_ninth?.length ? indicators.planets_in_ninth.join(", ") : "None" },
+          ]}
+        />
+      </ReportSection>
+      <ReportSection title="Purpose windows" accent={config.color}>
+        {output.purpose_windows?.map((period) => (
+          <div key={`${period.planet}-${period.start}`} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+            <strong>{period.planet}</strong>
+            <p style={{ margin: "6px 0" }}>
+              {period.start} to {period.end}
+            </p>
+            <p style={{ margin: 0 }}>{period.description}</p>
+          </div>
+        ))}
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={output.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
+function GainsNetworkRenderer({ report, config }) {
+  const output = report.output_payload;
+  const indicators = output.gains_indicators;
+  return (
+    <div style={{ display: "grid", gap: 18 }}>
+      <ReportSection title="Gains signature" accent={config.color}>
+        <p style={{ margin: 0 }}>{output.gains_signature}</p>
+        <p style={{ margin: 0 }}>{output.network_style}</p>
+        <p style={{ margin: 0 }}>{output.aspiration_blocks}</p>
+        <p style={{ margin: 0 }}>{output.activation_path}</p>
+      </ReportSection>
+      <ReportSection title="11th house indicators" accent={config.color}>
+        <LabelValueGrid
+          items={[
+            { label: "11th Lord", value: `${indicators.eleventh_lord} • House ${indicators.eleventh_lord_house}` },
+            { label: "Saturn", value: `House ${indicators.saturn_house}` },
+            { label: "Lagna Lord", value: `${indicators.lagna_lord} • House ${indicators.lagna_lord_house}` },
+            { label: "Planets In 11th", value: indicators.planets_in_eleventh?.length ? indicators.planets_in_eleventh.join(", ") : "None" },
+          ]}
+        />
+      </ReportSection>
+      <ReportSection title="Gains windows" accent={config.color}>
+        {output.gains_windows?.map((period) => (
+          <div key={`${period.planet}-${period.start}`} style={{ borderRadius: 18, padding: 16, background: "rgba(244, 236, 225, 0.78)" }}>
+            <strong>{period.planet}</strong>
+            <p style={{ margin: "6px 0" }}>
+              {period.start} to {period.end}
+            </p>
+            <p style={{ margin: 0 }}>{period.description}</p>
+          </div>
+        ))}
+      </ReportSection>
+      <ReportSection title="Supportive remedies" accent={config.color}>
+        <RemediesGrid remedies={output.remedies} />
+      </ReportSection>
+    </div>
+  );
+}
+
 function ArchivedSummary({ item, config }) {
   return (
     <div style={{ display: "grid", gap: 18 }}>
       <ReportSection title="Archived summary" accent={config.color}>
         <p style={{ margin: 0 }}>{item.summary}</p>
         <p style={{ margin: 0, color: "#6d5b4d" }}>
-          Temple’s Phase 3 backend does not expose a report detail endpoint yet, so history can always show the stored summary and can show the full renderer when this device has the generated payload cached locally.
+          Temple's Phase 3 backend does not expose a report detail endpoint yet, so history can always show the stored summary and can show the full renderer when this device has the generated payload cached locally.
         </p>
       </ReportSection>
     </div>
@@ -739,6 +1044,18 @@ function renderFullReport(report, config) {
       return <RetrogradeRenderer report={report} config={config} />;
     case "life_cycles":
       return <LifeCyclesRenderer report={report} config={config} />;
+    case "wealth_blueprint":
+      return <WealthRenderer report={report} config={config} />;
+    case "romance_creative":
+      return <RomanceCreativeRenderer report={report} config={config} />;
+    case "vitality_health":
+      return <VitalityHealthRenderer report={report} config={config} />;
+    case "partnership_window":
+      return <PartnershipRenderer report={report} config={config} />;
+    case "dharma_purpose":
+      return <DharmaPurposeRenderer report={report} config={config} />;
+    case "gains_network":
+      return <GainsNetworkRenderer report={report} config={config} />;
     default:
       return <ArchivedSummary item={report} config={config} />;
   }
@@ -781,7 +1098,7 @@ function HistoryPanel({ items, loading, error, onOpenReport, onGenerate }) {
         <p style={{ margin: "0 0 10px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: "#94734c" }}>History</p>
         <h2 style={{ margin: "0 0 8px", fontSize: 32, fontFamily: "Georgia, Times New Roman, serif" }}>All individual reports in one timeline</h2>
         <p style={{ margin: 0, color: "#675548", lineHeight: 1.68 }}>
-          The page fetches all five history endpoints in parallel, merges the results, and sorts them by creation time so the most recent reading stays on top.
+          The page fetches all individual report history endpoints in parallel, merges the results, and sorts them by creation time so the most recent reading stays on top.
         </p>
       </section>
 
@@ -871,12 +1188,12 @@ function IndividualReportsPage() {
       setHistoryLoading(true);
       setHistoryError("");
       try {
-        const responses = await Promise.all(
+        const responses = await Promise.allSettled(
           REPORT_CONFIGS.map((config) => axios.get(`${API_BASE}/reports/${config.slug}/history`, { withCredentials: true }))
         );
         if (!active) return;
         const merged = REPORT_CONFIGS.flatMap((config, index) =>
-          (responses[index].data?.items || []).map((item) => normalizeHistoryEntry(item, config))
+          (responses[index].status === "fulfilled" ? (responses[index].value.data?.items || []) : []).map((item) => normalizeHistoryEntry(item, config))
         ).sort((left, right) => new Date(right.created_at).getTime() - new Date(left.created_at).getTime());
         setHistoryItems(merged);
       } catch (error) {

@@ -69,6 +69,12 @@ from career_blueprint_router import router as career_blueprint_router
 from shadow_self_router import router as shadow_self_router
 from retrograde_survival_router import router as retrograde_survival_router
 from life_cycles_router import router as life_cycles_router
+from wealth_blueprint_router import router as wealth_blueprint_router
+from romance_creative_router import router as romance_creative_router
+from vitality_health_router import router as vitality_health_router
+from partnership_window_router import router as partnership_window_router
+from dharma_purpose_router import router as dharma_purpose_router
+from gains_network_router import router as gains_network_router
 from encounter_window_router import router as encounter_window_router
 from date_night_router import router as date_night_router
 from digital_dating_router import router as digital_dating_router
@@ -2192,6 +2198,12 @@ app.include_router(career_blueprint_router)
 app.include_router(shadow_self_router)
 app.include_router(retrograde_survival_router)
 app.include_router(life_cycles_router)
+app.include_router(wealth_blueprint_router)
+app.include_router(romance_creative_router)
+app.include_router(vitality_health_router)
+app.include_router(partnership_window_router)
+app.include_router(dharma_purpose_router)
+app.include_router(gains_network_router)
 app.include_router(encounter_window_router)
 app.include_router(love_weather_router)
 app.include_router(date_night_router)

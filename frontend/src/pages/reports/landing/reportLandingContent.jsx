@@ -849,6 +849,390 @@ export const REPORT_LANDING_CONTENT = {
       },
     ],
   },
+  'wealth-blueprint-report': {
+    slug: 'wealth-blueprint-report',
+    name: 'Wealth & Abundance Blueprint',
+    titleStem: 'Wealth & Abundance Blueprint -- Vedic Dhana Report',
+    route: '/wealth-blueprint-report',
+    seoUrl: 'https://www.everydayhoroscope.in/wealth-blueprint-report',
+    seoDescription:
+      'See the wealth signals, Dhana yogas, and abundance timing written into your chart with a personalised Vedic Wealth & Abundance Blueprint.',
+    color: '#c8930a',
+    icon: '◈',
+    hook: 'See the wealth signals, abundance timing, and Dhana yogas written into your Vedic chart.',
+    description:
+      'A premium natal report focused on your 2nd house, wealth-building style, prosperity windows, and the practical rituals that help abundance feel steadier.',
+    ctaPath: '/reports',
+    ctaLabel: 'Generate My Wealth Blueprint',
+    features: [
+      { title: '2nd House Wealth Pattern', body: 'Reads the house of savings, speech, family assets, and accumulated value.', icon: HandCoins },
+      { title: 'Dhana Yoga Signals', body: 'Looks for visible combinations that support stronger wealth-building potential.', icon: Sparkles },
+      { title: 'Jupiter & Venus Influence', body: 'Explains how wisdom, expansion, beauty, and attraction shape prosperity in your chart.', icon: Gem },
+      { title: 'Abundance Windows', body: 'Uses dasha logic to surface the chapters where wealth decisions carry extra weight.', icon: CalendarClock },
+      { title: 'Prosperity Blocks', body: 'Names where money pressure comes from values, self-worth, or unstable gain patterns.', icon: TriangleAlert },
+      { title: 'Supportive Remedies', body: 'Offers mantra, gemstone, and ritual guidance as spiritual support for steadier abundance.', icon: Repeat },
+    ],
+    sample: {
+      eyebrow: 'Sample Report -- Wealth & Abundance Blueprint',
+      heading: 'Wealth signature: slow accumulation through trust, skill, and disciplined value',
+      sections: [
+        {
+          title: 'Dhana profile',
+          body: 'This chart does not reward reckless spikes. It strengthens when value compounds through credibility, stable work, and patient accumulation.',
+        },
+        {
+          title: 'Abundance block',
+          body: 'Money tends to tighten when self-worth is outsourced to appearances or when gains are pursued faster than structure can hold.',
+        },
+        {
+          title: 'Prosperity path',
+          body: 'The cleanest path is deliberate: protect resources, price yourself honestly, and let confidence grow from proof rather than urgency.',
+        },
+      ],
+      remedies: {
+        mantra: 'Om Shreem Mahalakshmiyei Namah',
+        gemstone: 'Citrine or yellow sapphire guidance, when appropriate',
+        ritual: 'A weekly Friday gratitude-and-savings ritual for value, order, and clean intention',
+      },
+    },
+    faqs: [
+      {
+        question: 'Does this predict exact money outcomes?',
+        answer:
+          'No. It shows wealth patterns, timing signals, and leverage points in your natal chart. It is guidance about potential, not a guaranteed income forecast.',
+      },
+      {
+        question: 'What are Dhana yogas?',
+        answer:
+          'They are classical Vedic combinations associated with stronger wealth-building potential. The report explains whether your chart shows those links clearly.',
+      },
+      {
+        question: 'Is this only about earnings?',
+        answer:
+          'No. It also covers value, retention, confidence, and how your chart converts work and timing into steadier material support.',
+      },
+    ],
+  },
+  'romance-creative-report': {
+    slug: 'romance-creative-report',
+    name: 'Romance & Creative Intelligence',
+    titleStem: 'Romance & Creative Intelligence -- Vedic 5th House Reading',
+    route: '/romance-creative-report',
+    seoUrl: 'https://www.everydayhoroscope.in/romance-creative-report',
+    seoDescription:
+      'Unlock your 5th house with a personalised Vedic Romance & Creative Intelligence report for love style, creative gifts, and timing windows.',
+    color: '#d4538a',
+    icon: '✦',
+    hook: 'Unlock the romantic and creative intelligence wired into your 5th house.',
+    description:
+      'A premium natal report for attraction style, creative gifts, emotional playfulness, and the dasha windows where love and expression rise together.',
+    ctaPath: '/reports',
+    ctaLabel: 'Generate My Romance Report',
+    features: [
+      { title: '5th House Story', body: 'Reads romance, self-expression, attraction, joy, and creative intelligence through the natal chart.', icon: HeartHandshake },
+      { title: 'Putrakaraka Signal', body: 'Surfaces a subtle classical indicator tied to creative legacy and emotional expression.', icon: Sparkles },
+      { title: 'Venus & Sun Dynamics', body: 'Explains how desire, magnetism, confidence, and visibility shape your romantic style.', icon: Telescope },
+      { title: 'Creative Gift Pattern', body: 'Shows where art, writing, performance, or playful intelligence wants to emerge.', icon: Lightbulb },
+      { title: 'Opening Windows', body: 'Uses dasha logic to identify periods that support love, confidence, and fertile creativity.', icon: CalendarClock },
+      { title: 'Supportive Remedies', body: 'Offers spiritual support for heart-opening and cleaner creative flow without overclaiming outcomes.', icon: MoonStar },
+    ],
+    sample: {
+      eyebrow: 'Sample Report -- Romance & Creative Intelligence',
+      heading: 'Romantic signature: warmth first, trust second, vulnerability after proof',
+      sections: [
+        {
+          title: 'Heart pattern',
+          body: 'This chart opens through delight, curiosity, and shared intelligence, but becomes guarded when affection starts to feel monitored or transactional.',
+        },
+        {
+          title: 'Creative intelligence',
+          body: 'The same 5th-house pattern that shapes romance also powers expression: beauty strengthens when you stop editing desire before it becomes visible.',
+        },
+        {
+          title: 'Opening path',
+          body: 'Love and creativity both improve when the nervous system feels safer, play returns, and attention stops living only in the future.',
+        },
+      ],
+      remedies: {
+        mantra: 'Om Shukraya Namah',
+        gemstone: 'Rose quartz or Venus-support stone guidance, when appropriate',
+        ritual: 'A Friday beauty-and-expression ritual for joy, honesty, and emotional warmth',
+      },
+    },
+    faqs: [
+      {
+        question: 'Is this only for romance?',
+        answer:
+          'No. The 5th house also rules creativity, pleasure, and self-expression, so the report reads both love style and creative intelligence together.',
+      },
+      {
+        question: 'Does it predict when love will happen?',
+        answer:
+          'It identifies stronger timing windows and emotional openings through dasha logic. It does not promise a specific event or person.',
+      },
+      {
+        question: 'What if I care more about creativity than dating?',
+        answer:
+          'That is still a strong fit. The report is built to show how the same natal signatures shape both romance and artistic or expressive gifts.',
+      },
+    ],
+  },
+  'vitality-health-report': {
+    slug: 'vitality-health-report',
+    name: 'Vitality & Health Report',
+    titleStem: 'Vitality & Health Report -- Vedic 6th House Reading',
+    route: '/vitality-health-report',
+    seoUrl: 'https://www.everydayhoroscope.in/vitality-health-report',
+    seoDescription:
+      'Understand your health rhythm with a personalised Vedic Vitality & Health Report focused on the 6th house, stress patterns, and recovery timing.',
+    color: '#2a9d6f',
+    icon: '⬡',
+    hook: 'Read the health rhythm your chart encodes and the periods that need the most care.',
+    description:
+      'A premium natal report for energy management, stress signatures, recovery habits, and the dasha windows that deserve a gentler pace.',
+    ctaPath: '/reports',
+    ctaLabel: 'Generate My Vitality Report',
+    features: [
+      { title: '6th House Analysis', body: 'Reads the house of strain, repair, work pressure, and maintenance rituals.', icon: ShieldAlert },
+      { title: 'Mars & Saturn Pressure', body: 'Shows how effort, depletion, frustration, and long-haul stress move through the chart.', icon: TriangleAlert },
+      { title: 'Sun & Moon Rhythm', body: 'Maps vitality and emotional cycles to the routines that either restore or drain you.', icon: MoonStar },
+      { title: 'Care Windows', body: 'Uses dasha logic to flag periods where pacing and body-awareness matter more.', icon: CalendarClock },
+      { title: 'Recovery Path', body: 'Translates natal patterns into practical rhythm guidance instead of generic wellness advice.', icon: Workflow },
+      { title: 'Supportive Remedies', body: 'Frames mantra, gemstone, and ritual support as steadying companions, not medical claims.', icon: Sparkles },
+    ],
+    sample: {
+      eyebrow: 'Sample Report -- Vitality & Health Report',
+      heading: 'Vitality signature: strong output, but only when recovery is treated as non-negotiable',
+      sections: [
+        {
+          title: 'Pressure pattern',
+          body: 'This chart can push hard and perform well, but it does not forgive neglected restoration. Energy collapses when discipline becomes self-punishment.',
+        },
+        {
+          title: 'Recovery path',
+          body: 'Health improves through repeatable routines, calmer mornings, and earlier interventions before stress becomes identity.',
+        },
+        {
+          title: 'Daily rhythm guidance',
+          body: 'The clearest medicine here is rhythm: fewer dramatic resets, more stable practices that support body, mind, and breath together.',
+        },
+      ],
+      remedies: {
+        mantra: 'Om Suryaya Namah',
+        gemstone: 'Carnelian or sun-support stone guidance, when appropriate',
+        ritual: 'A sunrise grounding ritual for breath, hydration, and nervous-system steadiness',
+      },
+    },
+    faqs: [
+      {
+        question: 'Is this medical advice?',
+        answer:
+          'No. This report is spiritual and pattern-based. It may help you understand stress and recovery themes, but it does not diagnose or replace professional care.',
+      },
+      {
+        question: 'What does the 6th house show?',
+        answer:
+          'In Vedic astrology it often relates to strain, routines, repair, obstacles, and how daily habits affect stability and wellbeing.',
+      },
+      {
+        question: 'Will it tell me what to do every day?',
+        answer:
+          'It offers rhythm guidance and supportive remedies, not a rigid routine. The goal is sustainable self-awareness, not a punishing checklist.',
+      },
+    ],
+  },
+  'partnership-window-report': {
+    slug: 'partnership-window-report',
+    name: 'Partnership & Marriage Window',
+    titleStem: 'Partnership & Marriage Window -- Vedic 7th House Reading',
+    route: '/partnership-window-report',
+    seoUrl: 'https://www.everydayhoroscope.in/partnership-window-report',
+    seoDescription:
+      'See your Vedic partnership pattern, marriage timing windows, and commitment dynamics with a personalised 7th house report.',
+    color: '#6b4fbd',
+    icon: '◇',
+    hook: 'Find the Vedic marriage timing and see the partnership pattern your 7th house reveals.',
+    description:
+      'A premium natal report for your partnership pattern, commitment style, relationship readiness, and the dasha windows where bonds deepen.',
+    ctaPath: '/reports',
+    ctaLabel: 'Generate My Partnership Report',
+    features: [
+      { title: '7th House Commitment Pattern', body: 'Reads relationship style, devotion, and the kind of partnership your chart can sustain.', icon: HeartHandshake },
+      { title: 'Darakaraka Clue', body: 'Surfaces a classical indicator tied to marriage and one-to-one commitment dynamics.', icon: Orbit },
+      { title: 'Upapada Lagna Layer', body: 'Adds a deeper symbolic view of how relationship karma and public partnership themes appear.', icon: Compass },
+      { title: 'Venus Patterning', body: 'Explains how attraction, intimacy, and romantic expectations operate in your natal chart.', icon: Gem },
+      { title: 'Marriage Windows', body: 'Uses dasha logic to highlight periods that emphasize commitment and relational maturity.', icon: CalendarClock },
+      { title: 'Supportive Remedies', body: 'Offers spiritual support for cleaner vows, clearer standards, and steadier closeness.', icon: Sparkles },
+    ],
+    sample: {
+      eyebrow: 'Sample Report -- Partnership & Marriage Window',
+      heading: 'Partnership signature: deep commitment, but only after emotional standards become clear',
+      sections: [
+        {
+          title: 'Commitment pattern',
+          body: 'This chart does not thrive on casual ambiguity. It wants sincerity, but it also needs time before trust becomes stable enough to hold it.',
+        },
+        {
+          title: 'Relationship block',
+          body: 'Pressure tends to rise when longing outruns discernment or when clarity is postponed in order to preserve temporary harmony.',
+        },
+        {
+          title: 'Readiness path',
+          body: 'The strongest marriage windows appear when boundaries, values, and emotional pace begin working together rather than against each other.',
+        },
+      ],
+      remedies: {
+        mantra: 'Om Kleem Krishnaya Namah',
+        gemstone: 'Rose quartz or Venus-support stone guidance, when appropriate',
+        ritual: 'A Friday vow-clarity ritual for standards, devotion, and emotional honesty',
+      },
+    },
+    faqs: [
+      {
+        question: 'Does this promise marriage timing?',
+        answer:
+          'No. It identifies stronger windows for commitment themes using natal and dasha logic. It is guidance about readiness and emphasis, not a guaranteed event date.',
+      },
+      {
+        question: 'What is Upapada Lagna?',
+        answer:
+          'It is a classical Vedic relationship indicator often used to deepen the understanding of marriage and partnership symbolism in the chart.',
+      },
+      {
+        question: 'Is this useful if I am already partnered?',
+        answer:
+          'Yes. It can still help you understand how commitment, closeness, and emotional standards operate inside an existing relationship.',
+      },
+    ],
+  },
+  'dharma-purpose-report': {
+    slug: 'dharma-purpose-report',
+    name: 'Dharma & Soul Purpose Report',
+    titleStem: 'Dharma & Soul Purpose Report -- Vedic 9th House Reading',
+    route: '/dharma-purpose-report',
+    seoUrl: 'https://www.everydayhoroscope.in/dharma-purpose-report',
+    seoDescription:
+      'Trace your dharmic path with a personalised Vedic Dharma & Soul Purpose Report for 9th house direction, Atmakaraka, and purpose timing.',
+    color: '#1e5fa8',
+    icon: '☉',
+    hook: 'Trace the dharmic thread running through your chart to the purpose this life is asking you to fulfill.',
+    description:
+      'A premium natal report for the 9th house, soul-direction themes, purpose-alignment windows, and the spiritual practices that keep meaning alive.',
+    ctaPath: '/reports',
+    ctaLabel: 'Generate My Dharma Report',
+    features: [
+      { title: '9th House Dharma', body: 'Reads meaning, faith, mentors, worldview, and the kind of life direction your chart wants to honor.', icon: Compass },
+      { title: 'Atmakaraka Path', body: 'Shows the soul-planet quality your life keeps asking you to mature.', icon: Orbit },
+      { title: 'Jupiter Strength', body: 'Explains how wisdom, guidance, teaching, and ethical judgment appear in your chart.', icon: Telescope },
+      { title: 'Faith Tests', body: 'Names the places where doubt, overbelief, or disillusionment may interrupt alignment.', icon: BadgeHelp },
+      { title: 'Purpose Windows', body: 'Uses dasha logic to show when calling, study, or life-direction questions become louder.', icon: CalendarClock },
+      { title: 'Supportive Remedies', body: 'Offers spiritual practices for steadier conviction, reverence, and inner direction.', icon: Sparkles },
+    ],
+    sample: {
+      eyebrow: 'Sample Report -- Dharma & Soul Purpose',
+      heading: 'Dharma signature: wisdom through lived integrity, not borrowed certainty',
+      sections: [
+        {
+          title: 'Soul calling',
+          body: 'This chart is not built to imitate another person's meaning. It strengthens when belief becomes lived practice instead of borrowed language.',
+        },
+        {
+          title: 'Faith tests',
+          body: 'Purpose becomes cloudy when admiration replaces discernment or when exhaustion is mistaken for spiritual failure.',
+        },
+        {
+          title: 'Alignment path',
+          body: 'Your cleanest path is devotional but practical: learn deeply, walk slowly, and let conviction become visible through action.',
+        },
+      ],
+      remedies: {
+        mantra: 'Om Gurave Namah',
+        gemstone: 'Yellow sapphire or Jupiter-support stone guidance, when appropriate',
+        ritual: 'A Thursday mentor-and-gratitude ritual for wisdom, humility, and inner alignment',
+      },
+    },
+    faqs: [
+      {
+        question: 'What does dharma mean in this report?',
+        answer:
+          'Here dharma means right direction, moral alignment, meaningful responsibility, and the kind of life path that feels internally coherent.',
+      },
+      {
+        question: 'Is purpose shown by one planet only?',
+        answer:
+          'No. The report reads multiple signals together, including the 9th house, Jupiter, Atmakaraka, and dasha timing patterns.',
+      },
+      {
+        question: 'Can a purpose report be practical?',
+        answer:
+          'Yes. The goal is not abstract inspiration alone. It is to turn symbolic chart signals into clearer direction and grounded next steps.',
+      },
+    ],
+  },
+  'gains-network-report': {
+    slug: 'gains-network-report',
+    name: 'Gains & Network Activator',
+    titleStem: 'Gains & Network Activator -- Vedic 11th House Reading',
+    route: '/gains-network-report',
+    seoUrl: 'https://www.everydayhoroscope.in/gains-network-report',
+    seoDescription:
+      'Read your 11th house with a personalised Vedic Gains & Network Activator report for aspirations, alliances, and gains timing.',
+    color: '#d46f22',
+    icon: '◆',
+    hook: 'See the aspiration fulfillment windows and the social leverage points your 11th house encodes.',
+    description:
+      'A premium natal report for gains, networks, alliance strategy, and the periods where social traction and long-range payoff strengthen.',
+    ctaPath: '/reports',
+    ctaLabel: 'Generate My Gains Report',
+    features: [
+      { title: '11th House Gains Logic', body: 'Reads earnings from networks, audience support, and long-term aspiration fulfilment.', icon: TrendingUp },
+      { title: 'Saturn's Role', body: 'Shows how discipline, maturity, and time affect your social and material gains pattern.', icon: Scale },
+      { title: 'Network Style', body: 'Explains whether your chart gains through visibility, trust, select circles, or broad alliances.', icon: RadioTower },
+      { title: 'Aspiration Blocks', body: 'Names where community, ambition, or reciprocity can become strained or uneven.', icon: LockKeyhole },
+      { title: 'Gains Windows', body: 'Uses dasha logic to show when payoff, support, and expansion themes become louder.', icon: CalendarClock },
+      { title: 'Supportive Remedies', body: 'Frames mantra, gemstone, and ritual support as companions to disciplined relationship-building.', icon: Repeat },
+    ],
+    sample: {
+      eyebrow: 'Sample Report -- Gains & Network Activator',
+      heading: 'Gains signature: expansion through patient alliances, not noisy reach',
+      sections: [
+        {
+          title: 'Network style',
+          body: 'This chart gains more from quality of connection than sheer volume. Trust, consistency, and long-memory relationships matter more than quick visibility.',
+        },
+        {
+          title: 'Aspiration block',
+          body: 'Momentum slows when collaboration becomes extractive, when support is not reciprocated, or when ambition outpaces structure.',
+        },
+        {
+          title: 'Activation path',
+          body: 'The 11th house opens when you become easier to trust, clearer to work with, and more deliberate about the circles you cultivate.',
+        },
+      ],
+      remedies: {
+        mantra: 'Om Sham Shanicharaya Namah',
+        gemstone: 'Amethyst or Saturn-support stone guidance, when appropriate',
+        ritual: 'A Saturday reciprocity ritual for service, alliance, and long-range intention',
+      },
+    },
+    faqs: [
+      {
+        question: 'Is this report only about social life?',
+        answer:
+          'No. The 11th house also covers gains, fulfillment, audience support, and the systems of people that help ambitions become real.',
+      },
+      {
+        question: 'Why is Saturn important here?',
+        answer:
+          'Saturn often shapes long-term payoff, credibility, and what becomes durable over time. The report explains how that principle operates in your chart.',
+      },
+      {
+        question: 'Does this help with business growth?',
+        answer:
+          'Yes, especially if your growth depends on community, clients, collaboration, referrals, or audience trust. It reads the relationship side of gains as carefully as the financial side.',
+      },
+    ],
+  },
 };
 
 export const REPORT_LANDING_ORDER = [
@@ -865,4 +1249,10 @@ export const REPORT_LANDING_ORDER = [
   'venus-retrograde-report',
   'soulmate-timing-report',
   'soul-connection-report',
+  'wealth-blueprint-report',
+  'romance-creative-report',
+  'vitality-health-report',
+  'partnership-window-report',
+  'dharma-purpose-report',
+  'gains-network-report',
 ];
