@@ -170,24 +170,63 @@ Also update the `fetchReports` call to include all 6 new slugs in the history fe
 
 ### D5 -- Frontend: 6 Public SEO Landing Pages
 
-**Files** in `frontend/src/pages/reports/landing/`:
-```
-WealthBlueprintLandingPage.jsx
-RomanceCreativeLandingPage.jsx
-VitalityHealthLandingPage.jsx
-PartnershipWindowLandingPage.jsx
-DharmaPurposeLandingPage.jsx
-GainsNetworkLandingPage.jsx
+**IMPORTANT -- Pattern:** Read `KarmicDebtLandingPage.jsx` (already in the repo). Every IR landing page is a 7-line wrapper that imports `ReportLandingPageShell` + `REPORT_LANDING_CONTENT`. The content lives in `reportLandingContent.jsx` -- do NOT create standalone HTML structures in the wrapper files.
+
+**Step 1 -- Add 6 entries to the EXISTING file `reportLandingContent.jsx`** (append, do not modify existing entries):
+
+Each entry must have exactly this shape (copy from `'karmic-debt'` entry as template):
+```js
+'wealth-blueprint-report': {
+  slug: 'wealth-blueprint-report',           // the key
+  name: 'Wealth & Abundance Blueprint',
+  titleStem: 'Wealth & Abundance Blueprint -- Vedic Dhana Report',
+  route: '/wealth-blueprint-report',
+  seoUrl: 'https://www.everydayhoroscope.in/wealth-blueprint-report',
+  seoDescription: '...',                    // 1 sentence SEO description
+  color: '#c8930a',
+  icon: '◈',
+  hook: '...',                              // main hero headline (1 sentence)
+  description: '...',                       // 1-2 sentence subtitle
+  ctaPath: '/reports',
+  ctaLabel: 'Generate My Wealth Blueprint',
+  features: [                              // 6 items, each with title + body + icon (lucide)
+    { title: '...', body: '...', icon: SomeLucideIcon },
+    ...
+  ],
+  sample: {
+    eyebrow: 'Sample Report -- Wealth & Abundance Blueprint',
+    heading: '...',                        // chart-specific sample heading
+    sections: [                            // 3 sections
+      { title: '...', body: '...' },
+      { title: '...', body: '...' },
+      { title: '...', body: '...' },
+    ],
+    remedies: {
+      mantra: '...',
+      gemstone: '...',
+      ritual: '...',
+    },
+  },
+  faqs: [                                  // 3-4 FAQ items
+    { question: '...', answer: '...' },
+  ],
+},
 ```
 
-**Pattern:** Follow the IR-1 landing page shell pattern exactly. Each page must have:
-- Hero section with report name, hook, and CTA → `/reports`
-- "What this report reveals" -- 4-5 bullet points specific to that report
-- "Your Vedic foundation" -- house + key planets (report-specific)
-- "Who this is for" -- 2-3 audience lines
-- Testimonial placeholder block
-- SEO `<title>` and meta description (use `SEO.jsx` component)
-- CTA: "Generate My [Report Name] →" → `/reports`
+Repeat this pattern for all 6 reports. Use the Vedic content from the Report-by-Report spec below to populate `features`, `sample.sections`, and `faqs` with report-specific content.
+
+**Step 2 -- Create 6 wrapper files** (identical structure, 7 lines each):
+```jsx
+// WealthBlueprintLandingPage.jsx
+import React from 'react';
+import ReportLandingPageShell from './ReportLandingPageShell';
+import { REPORT_LANDING_CONTENT } from './reportLandingContent';
+
+export default function WealthBlueprintLandingPage() {
+  return <ReportLandingPageShell page={REPORT_LANDING_CONTENT['wealth-blueprint-report']} />;
+}
+```
+Apply the same pattern for the other 5 reports (RomanceCreativeLandingPage, VitalityHealthLandingPage, PartnershipWindowLandingPage, DharmaPurposeLandingPage, GainsNetworkLandingPage).
 
 **Routes in `App.js`:**
 ```jsx
@@ -470,8 +509,9 @@ backend/gains_network_prompt_service.py
 **Modified files:**
 ```
 backend/server.py          -- 6 new import + include_router lines only
-frontend/src/App.js        -- 6 new public routes only
+frontend/src/App.js        -- 6 new public routes + 6 imports only
 frontend/src/pages/reports/IndividualReportsPage.jsx  -- REPORT_CONFIGS + history fetch
+frontend/src/pages/reports/landing/reportLandingContent.jsx  -- 6 new content entries appended
 frontend/public/sitemap.xml -- 6 new <url> entries
 ```
 
@@ -485,7 +525,7 @@ frontend/src/pages/reports/landing/DharmaPurposeLandingPage.jsx
 frontend/src/pages/reports/landing/GainsNetworkLandingPage.jsx
 ```
 
-**Total: 18 new files + 4 modified files**
+**Total: 18 new files + 5 modified files**
 
 ---
 
@@ -509,7 +549,8 @@ Before writing any code, read these existing files in the repo:
 | `backend/karmic_debt_prompt_service.py` | Prompt service pattern: `try_claude_generation()`, structured prompt, fallback |
 | `backend/vedic_shared_utils.py` | All available helper functions -- use these, don't recreate |
 | `frontend/src/pages/reports/IndividualReportsPage.jsx` | `REPORT_CONFIGS` structure + `fetchReports` pattern |
-| `frontend/src/pages/reports/landing/KarmicDebtLandingPage.jsx` | Landing page shell + SEO component usage |
+| `frontend/src/pages/reports/landing/KarmicDebtLandingPage.jsx` | Landing page wrapper pattern (7 lines) |
+| `frontend/src/pages/reports/landing/reportLandingContent.jsx` | Content data structure -- add 6 new entries here |
 
 ---
 
