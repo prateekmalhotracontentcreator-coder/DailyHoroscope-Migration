@@ -88,7 +88,7 @@ ARC_ANGEL_DOMAIN_MAP = {
     "spirituality": "Spirituality",
     "longevity": "Health & Fitness",
     "general": "Emotional Life",
-    # Phase 1 additions — complete the 12-domain coverage
+    # Phase 1 additions -- complete the 12-domain coverage
     "family": "Family Life",
     "social": "Social Life & Friendship",
     "travel": "Adventure & Travel",
@@ -157,8 +157,6 @@ TIMING_DISTANCE_MAP = {
 }
 STRENGTH_BAND_VALUES = {"low": 0, "medium": 1, "high": 2, "extreme": 3}
 MODE_SEVERITY = {"synthesis": 0, "tension": 1, "honest_uncertainty": 2}
-VIMSHOTTARI_ORDER = ["Ketu", "Venus", "Sun", "Moon", "Mars", "Rahu", "Jupiter", "Saturn", "Mercury"]
-VIMSHOTTARI_YEARS = {"Ketu": 7, "Venus": 20, "Sun": 6, "Moon": 10, "Mars": 7, "Rahu": 18, "Jupiter": 16, "Saturn": 19, "Mercury": 17}
 ARC_ANGEL_DOMAIN_SLUGS = [
     "health",
     "career",
@@ -187,7 +185,7 @@ ARC_ANGEL_DOMAIN_LABELS = {
     "environment": "Environment",
     "creativity": "Creativity & Hobbies",
 }
-# TD-29: Natural benefic/malefic baseline — fallback when no approved KE rules match.
+# TD-29: Natural benefic/malefic baseline -- fallback when no approved KE rules match.
 # Source: Legacy Model (vedic_calculator.py) planetary classification.
 NATURAL_BENEFICS: frozenset[str] = frozenset({"Jupiter", "Venus", "Mercury", "Moon"})
 NATURAL_MALEFICS: frozenset[str] = frozenset({"Saturn", "Mars", "Rahu", "Ketu", "Sun"})
@@ -214,12 +212,20 @@ VIMSHOPAKA_TIERS = {
     10: "Iravatamsa",
 }
 
+ARC_ANGEL_ENGINE_LABEL = "Vedic Astrology Engine Activated"
+CONFIDENCE_BASE = 40
+PILLAR_1_PER_AREA = 2
+PILLAR_2_PER_IR = 1
+PILLAR_3_MAX = 10
+CONFIDENCE_CAP = 86
+ARC_ANGEL_SOCIAL_SPHERE_AREAS = {"relationships", "family", "social", "emotional", "spirituality", "creativity"}
+
 # Phase 1 baseline confidence (birth data only, no questionnaire, no module runs).
-ARC_ANGEL_BASELINE_CONFIDENCE_PCT: int = 42
+ARC_ANGEL_BASELINE_CONFIDENCE_PCT: int = CONFIDENCE_BASE
 
 
 def _natural_quality(planet: str | None) -> str:
-    """TD-29 — Legacy Model fallback: natural benefic/malefic classification.
+    """TD-29 -- Legacy Model fallback: natural benefic/malefic classification.
     Used when zero approved KE rules exist for the active antardasha planet.
     Jupiter/Venus/Mercury/Moon → auspicious.
     Saturn/Mars/Rahu/Ketu/Sun → inauspicious.
@@ -794,58 +800,16 @@ def _coerce_date(value: Any) -> date | None:
     return dt.date() if dt else None
 
 
-def _get_vimshottari_sequence(start_lord: str) -> list[str]:
-    if start_lord not in VIMSHOTTARI_ORDER:
-        return list(VIMSHOTTARI_ORDER)
-    start_index = VIMSHOTTARI_ORDER.index(start_lord)
-    return VIMSHOTTARI_ORDER[start_index:] + VIMSHOTTARI_ORDER[:start_index]
-
-
-def _build_sub_dashas(parent_lord: str, start_value: Any, end_value: Any) -> list[dict[str, Any]]:
-    start = _coerce_datetime(start_value)
-    end = _coerce_datetime(end_value)
-    if start is None or end is None or end <= start:
-        return []
-    total_seconds = (end - start).total_seconds()
-    cursor = start
-    sub_dashas: list[dict[str, Any]] = []
-    for lord in _get_vimshottari_sequence(parent_lord):
-        share = VIMSHOTTARI_YEARS.get(lord, 0) / 120.0
-        duration = total_seconds * share
-        item_end = cursor + timedelta(seconds=duration)
-        sub_dashas.append(
-            {
-                "planet": lord,
-                "start": cursor.date().isoformat(),
-                "end": item_end.date().isoformat(),
-            }
-        )
-        cursor = item_end
-    if sub_dashas:
-        sub_dashas[-1]["end"] = end.date().isoformat()
-    return sub_dashas
-
-
 def compute_dasha_timeline(chart: dict[str, Any]) -> list[dict[str, Any]]:
-    dasha_layer = ((chart.get("layers") or {}).get("vimshottari_dasha") or {})
-    maha_dashas = dasha_layer.get("maha_dashas") or chart.get("dashas") or []
-    timeline: list[dict[str, Any]] = []
-    for maha in maha_dashas:
-        planet = normalize_planet_name(maha.get("planet"))
-        start_dt = _coerce_datetime(maha.get("start"))
-        end_dt = _coerce_datetime(maha.get("end"))
-        if not planet or start_dt is None or end_dt is None:
-            continue
-        antardashas = _build_sub_dashas(planet, start_dt, end_dt)
-        timeline.append(
-            {
-                "planet": planet,
-                "start": start_dt.date().isoformat(),
-                "end": end_dt.date().isoformat(),
-                "antardashas": antardashas,
-            }
-        )
-    return timeline
+    from vedic_calculator import build_dasha_timeline
+
+    birth_details = chart.get("birth_details") or {}
+    birth_date = str(birth_details.get("date") or "").strip()
+    moon_longitude = chart.get("moon_longitude")
+    if not birth_date or not isinstance(moon_longitude, (int, float)):
+        return []
+    # Removed: TD-28 -- moved to vedic_calculator.build_dasha_timeline()
+    return build_dasha_timeline(birth_date, float(moon_longitude))
 
 
 def _active_dasha_pair(
@@ -931,7 +895,7 @@ def _quality_from_rules(
         return "auspicious", favourable
     if len(unfavourable) > len(favourable):
         return "inauspicious", unfavourable
-    # TD-29: No approved KE rules matched — fall back to Legacy Model natural
+    # TD-29: No approved KE rules matched -- fall back to Legacy Model natural
     # benefic/malefic classification for the active antardasha planet.
     return _natural_quality(antardasha_planet), []
 
@@ -1125,9 +1089,9 @@ def _window_driver(domain: str, quality: str, window: dict[str, Any]) -> str:
     domain_phrase = domain.replace("_", " ")
     reason = _period_quality_reason(dominant_rule or {})
     if reason:
-        return f"{antar_planet} AD in {maha_planet} MD — {domain_phrase} {reason}"
+        return f"{antar_planet} AD in {maha_planet} MD -- {domain_phrase} {reason}"
     if antar_planet and maha_planet:
-        return f"{antar_planet} AD in {maha_planet} MD — {domain_phrase} {quality} period"
+        return f"{antar_planet} AD in {maha_planet} MD -- {domain_phrase} {quality} period"
     return f"{domain_phrase} {quality} window"
 
 
@@ -1182,6 +1146,175 @@ def compute_arc_angel_windows(
                 }
             )
     return result
+
+
+def _normalize_modules_run(values: list[Any] | None) -> list[str]:
+    seen: set[str] = set()
+    modules: list[str] = []
+    for value in values or []:
+        slug = str(value or "").strip()
+        if slug and slug not in seen:
+            seen.add(slug)
+            modules.append(slug)
+    return modules
+
+
+def _normalized_data_completeness(value: dict[str, Any] | None) -> dict[str, Any]:
+    payload = value or {}
+    return {
+        "birth_data": bool(payload.get("birth_data")),
+        "questionnaire": bool(payload.get("questionnaire")),
+        "modules_run": sorted(_normalize_modules_run(payload.get("modules_run"))),
+        "parents_data": bool(payload.get("parents_data")),
+    }
+
+
+def arc_angel_profile_is_fresh(
+    profile: dict[str, Any] | None,
+    data_completeness: dict[str, Any],
+    *,
+    now: datetime | None = None,
+    freshness_hours: int = 6,
+) -> bool:
+    payload = profile or {}
+    computed_at = _coerce_datetime(payload.get("computed_at"))
+    if computed_at is None:
+        return False
+    reference = now or utc_now()
+    if computed_at + timedelta(hours=freshness_hours) <= reference:
+        return False
+    return _normalized_data_completeness(payload.get("data_completeness")) == _normalized_data_completeness(data_completeness)
+
+
+def _coerce_pillar_1(existing: dict[str, Any] | None) -> dict[str, Any]:
+    payload = existing or {}
+    areas_completed = [str(area) for area in payload.get("areas_completed") or [] if str(area or "").strip()]
+    social_sphere = [str(area) for area in payload.get("social_sphere_areas_completed") or [] if str(area or "").strip()]
+    if not social_sphere:
+        social_sphere = [area for area in areas_completed if area in ARC_ANGEL_SOCIAL_SPHERE_AREAS]
+    score = min(len(areas_completed), 12) * PILLAR_1_PER_AREA
+    return {
+        "areas_completed": areas_completed,
+        "social_sphere_areas_completed": social_sphere,
+        "score": score,
+        "max_score": 24,
+    }
+
+
+def _coerce_pillar_2(existing: dict[str, Any] | None, data_completeness: dict[str, Any]) -> dict[str, Any]:
+    payload = existing or {}
+    reports_run = _normalize_modules_run(payload.get("reports_run") or data_completeness.get("modules_run"))
+    score = min(len(reports_run), 12) * PILLAR_2_PER_IR
+    return {
+        "reports_run": reports_run,
+        "score": score,
+        "max_score": 12,
+    }
+
+
+def _coerce_pillar_3(existing: dict[str, Any] | None) -> dict[str, Any]:
+    payload = existing or {}
+    tarot_love_score = max(0, min(int(payload.get("tarot_love_score", 0) or 0), 5))
+    strategist_score = max(0, min(int(payload.get("strategist_score", 0) or 0), 5))
+    pillar_3_score = payload.get("pillar_3_score")
+    if pillar_3_score is None:
+        pillar_3_score = tarot_love_score + strategist_score
+    pillar_3_score = max(0, min(int(pillar_3_score or 0), PILLAR_3_MAX))
+    return {
+        "tarot_love_score": tarot_love_score,
+        "strategist_score": strategist_score,
+        "pillar_3_score": pillar_3_score,
+        "last_ritual_date": _coerce_datetime(payload.get("last_ritual_date")),
+        "decay_started_at": _coerce_datetime(payload.get("decay_started_at")),
+        "max_score": 10,
+        "note": "Decay engine wired in ARC-2. Sprint 3 reads stored pillar_3_score only.",
+    }
+
+
+def _compute_confidence(profile: dict[str, Any]) -> int:
+    score = CONFIDENCE_BASE
+    areas_completed = (profile.get("pillar_1") or {}).get("areas_completed") or []
+    score += min(len(areas_completed), 12) * PILLAR_1_PER_AREA
+    reports_run = (profile.get("pillar_2") or {}).get("reports_run") or []
+    score += min(len(reports_run), 12) * PILLAR_2_PER_IR
+    pillar_3_score = (profile.get("pillar_3") or {}).get("pillar_3_score", 0)
+    score += min(int(pillar_3_score), PILLAR_3_MAX)
+    return min(score, CONFIDENCE_CAP)
+
+
+def _period_indicator_for_domain(domain: str, quality: str, windows: dict[str, Any]) -> str:
+    if quality == "auspicious":
+        period = ((windows.get("auspicious_periods") or [{}])[0]) if windows.get("auspicious_periods") else {}
+    elif quality == "inauspicious":
+        period = ((windows.get("inauspicious_periods") or [{}])[0]) if windows.get("inauspicious_periods") else {}
+    else:
+        period = {}
+    driver = str(period.get("driver") or "").strip()
+    if driver:
+        return driver
+    return f"{ARC_ANGEL_DOMAIN_LABELS.get(domain, domain)} is currently {quality}"
+
+
+def build_arc_angel_data_completeness(
+    *,
+    birth_data: bool = True,
+    questionnaire_areas: list[str] | None = None,
+    modules_run: list[str] | None = None,
+    parents_data: bool = False,
+) -> dict[str, Any]:
+    return {
+        "birth_data": bool(birth_data),
+        "questionnaire": bool(questionnaire_areas),
+        "modules_run": _normalize_modules_run(modules_run),
+        "parents_data": bool(parents_data),
+    }
+
+
+def build_arc_angel_profile_doc(
+    *,
+    user_id: str,
+    birth_date: str,
+    birth_time: str,
+    birth_place: str,
+    domain_quality_now: dict[str, str],
+    raw_windows: dict[str, dict[str, Any]],
+    data_completeness: dict[str, Any] | None = None,
+    existing_profile: dict[str, Any] | None = None,
+    computed_at: datetime | None = None,
+) -> dict[str, Any]:
+    existing = existing_profile or {}
+    completeness = _normalized_data_completeness(data_completeness)
+    profile: dict[str, Any] = {
+        "user_id": user_id,
+        "birth_date": birth_date,
+        "birth_time": birth_time,
+        "birth_place": birth_place,
+        "computed_at": computed_at or utc_now(),
+        "engine_label": ARC_ANGEL_ENGINE_LABEL,
+        "data_completeness": completeness,
+        "pillar_1": _coerce_pillar_1(existing.get("pillar_1")),
+        "pillar_2": _coerce_pillar_2(existing.get("pillar_2"), completeness),
+        "pillar_3": _coerce_pillar_3(existing.get("pillar_3")),
+    }
+    profile["overall_confidence_pct"] = _compute_confidence(profile)
+    profile["domains"] = [
+        {
+            "domain_id": domain_id,
+            "domain_label": ARC_ANGEL_DOMAIN_LABELS.get(domain_id, domain_id),
+            "period_quality": domain_quality_now.get(domain_id, "neutral"),
+            "confidence_pct": profile["overall_confidence_pct"],
+            "period_indicator": _period_indicator_for_domain(
+                domain_id,
+                domain_quality_now.get(domain_id, "neutral"),
+                raw_windows.get(domain_id, {}),
+            ),
+            "auspicious_periods": raw_windows.get(domain_id, {}).get("auspicious_periods", []),
+            "inauspicious_periods": raw_windows.get(domain_id, {}).get("inauspicious_periods", []),
+            "last_updated": profile["computed_at"],
+        }
+        for domain_id in ARC_ANGEL_DOMAIN_SLUGS
+    ]
+    return profile
 
 
 def _rule_payload(rule: dict[str, Any] | Any) -> dict[str, Any]:

@@ -278,17 +278,47 @@ class ArcAngelDomainSnapshot(StrictDocument):
     primary_bhavas: list[int] = Field(default_factory=list)
     auspicious_periods: list[ArcAngelPeriod] = Field(default_factory=list)
     inauspicious_periods: list[ArcAngelPeriod] = Field(default_factory=list)
-    period_quality_now: PeriodQuality | None = None
+    period_quality: PeriodQuality | None = None
     confidence_pct: int = Field(default=0, ge=0, le=100)
     period_indicator: str | None = None
     correlated_modules: list[str] = Field(default_factory=list)
     last_updated: datetime = Field(default_factory=utc_now)
 
 
+class ArcAngelPillar1(StrictDocument):
+    areas_completed: list[str] = Field(default_factory=list)
+    social_sphere_areas_completed: list[str] = Field(default_factory=list)
+    score: int = Field(default=0, ge=0, le=24)
+    max_score: int = Field(default=24, ge=0)
+
+
+class ArcAngelPillar2(StrictDocument):
+    reports_run: list[str] = Field(default_factory=list)
+    score: int = Field(default=0, ge=0, le=12)
+    max_score: int = Field(default=12, ge=0)
+
+
+class ArcAngelPillar3(StrictDocument):
+    tarot_love_score: int = Field(default=0, ge=0, le=5)
+    strategist_score: int = Field(default=0, ge=0, le=5)
+    pillar_3_score: int = Field(default=0, ge=0, le=10)
+    last_ritual_date: datetime | None = None
+    decay_started_at: datetime | None = None
+    max_score: int = Field(default=10, ge=0)
+    note: str = "Decay engine wired in ARC-2. Sprint 3 reads stored pillar_3_score only."
+
+
 class UserArcAngelProfileDocument(StrictDocument):
     user_id: str
+    birth_date: str
+    birth_time: str
+    birth_place: str
     computed_at: datetime = Field(default_factory=utc_now)
+    engine_label: str = "Vedic Astrology Engine Activated"
     overall_confidence_pct: int = Field(default=0, ge=0, le=100)
+    pillar_1: ArcAngelPillar1 = Field(default_factory=ArcAngelPillar1)
+    pillar_2: ArcAngelPillar2 = Field(default_factory=ArcAngelPillar2)
+    pillar_3: ArcAngelPillar3 = Field(default_factory=ArcAngelPillar3)
     data_completeness: ArcAngelDataCompleteness = Field(default_factory=ArcAngelDataCompleteness)
     domains: list[ArcAngelDomainSnapshot] = Field(default_factory=list)
 

@@ -171,6 +171,8 @@ def evaluate_yoga_check(condition: dict[str, Any], facts: ChartFacts) -> YogaChe
 
 def _yoga_check_payload(condition: dict[str, Any]) -> dict[str, Any]:
     payload = condition.get("yoga_check") or {}
+    if not payload and isinstance(condition.get("validation"), dict):
+        payload = (condition.get("validation") or {}).get("yoga_check") or {}
     return payload if isinstance(payload, dict) else {}
 
 
@@ -201,6 +203,22 @@ def _to_list(value: Any) -> list[Any]:
     if value is None:
         return []
     return value if isinstance(value, list) else [value]
+
+
+def _normalize_planet_label(value: Any) -> str:
+    label = str(value or "").strip()
+    return label.split()[0] if label else ""
+
+
+def _unique_planets(values: list[Any]) -> list[str]:
+    planets: list[str] = []
+    seen: set[str] = set()
+    for value in values:
+        planet = _normalize_planet_label(value)
+        if planet and planet not in seen:
+            seen.add(planet)
+            planets.append(planet)
+    return planets
 
 
 def _distinct_sign_count(facts: ChartFacts) -> int:
@@ -241,6 +259,21 @@ def _houses_with_planet_type(facts: ChartFacts, planet_type: str) -> set[int]:
     return {house for house, occupants in facts.house_planets.items() if any(planet in planets for planet in occupants)}
 
 
+def _planet_in_any_house(facts: ChartFacts, planet: str, houses: list[int]) -> bool:
+    actual_house = _planet_house(facts, planet)
+    return actual_house is not None and actual_house in {int(house) for house in houses}
+
+
+def _group_house_matches(facts: ChartFacts, planets: list[str], houses: list[int]) -> dict[str, bool]:
+    return {planet: _planet_in_any_house(facts, planet, houses) for planet in planets}
+
+
+def _combine_matches(matches: dict[str, bool], operator: str = "or") -> bool:
+    if not matches:
+        return False
+    return all(matches.values()) if operator == "and" else any(matches.values())
+
+
 def _candidate_planets(facts: ChartFacts, payload: dict[str, Any]) -> list[str]:
     planet = payload.get("planet")
     if isinstance(planet, str) and planet not in {"any_except_sun", "any_benefic"}:
@@ -260,6 +293,39 @@ def _aspect_or_conjunction(facts: ChartFacts, planet: str, target_house: int) ->
     if house is None:
         return False
     return house == target_house or target_house in facts.aspect_targets.get(planet, set())
+
+
+def _yoga_name_matches(facts: ChartFacts, *names: str) -> bool:
+    normalized = {name.lower() for name in facts.yogas}
+    return any(name.lower() in normalized for name in names if name)
+
+
+def _affliction_evidence(facts: ChartFacts, planet: str) -> list[str]:
+    evidence: list[str] = []
+    planet_house = _planet_house(facts, planet)
+    planet_sign = _planet_sign(facts, planet)
+    if planet_house is None:
+        return [f"{planet} house is missing"]
+    conjunct_malefics = sorted(
+        malefic
+        for malefic in NATURAL_MALEFICS
+        if malefic != planet and _planet_house(facts, malefic) == planet_house
+    )
+    if conjunct_malefics:
+        evidence.append(f"Malefic conjunctions: {conjunct_malefics}")
+    aspecting_malefics = sorted(
+        malefic
+        for malefic in NATURAL_MALEFICS
+        if malefic != planet and planet_house in facts.aspect_targets.get(malefic, set())
+    )
+    if aspecting_malefics:
+        evidence.append(f"Malefic aspects: {aspecting_malefics}")
+    if bool((facts.planet_positions.get(planet) or {}).get("combust")):
+        evidence.append("Planet is combust")
+    dignity = str((facts.planet_positions.get(planet) or {}).get("dignity") or "").lower()
+    if dignity == "debilitated" or planet_sign == DEBILITATION_SIGNS.get(planet):
+        evidence.append(f"Planet is debilitated in {planet_sign or 'unknown sign'}")
+    return evidence or [f"No classical affliction detected for {planet}"]
 
 
 def _benefic_support(facts: ChartFacts, house: int, primary_planet: str) -> bool:
@@ -384,6 +450,171 @@ def _eval_varga_dignity_tier(condition: dict[str, Any], facts: ChartFacts) -> Yo
         matched = matched or ok
     confidence = 1.0 if matched else 0.0
     return _result("varga_dignity_tier", matched, evidence, confidence)
+
+
+def _eval_yoga(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
+    payload = _yoga_check_payload(condition)
+    description = str(payload.get("description") or "")
+    sub_type = str(condition.get("sub_type") or "")
+    if "kalsarpa" in description.lower():
+        matched = any("kalsarpa" in yoga.lower() for yoga in facts.yogas)
+        evidence = [f"Known chart yogas: {sorted(facts.yogas) or ['none']}"]
+        return _result("yoga", matched, evidence)
+    if "khemdrum" in description.lower() or "kemadruma" in description.lower():
+        kemadruma = _eval_kemadruma_check({"yoga_check": {"type": "kemadruma_check", "checkable": True}}, facts)
+        return _result("yoga", kemadruma.matched, kemadruma.evidence, kemadruma.confidence)
+    if sub_type == "mercury_rival":
+        planet_a = _normalize_planet_label(condition.get("planet_a"))
+        planet_b = _normalize_planet_label(condition.get("planet_b"))
+        checks = {
+            f"{planet_a} in {condition.get('planet_a_houses', [])}": _planet_in_any_house(facts, planet_a, [int(item) for item in condition.get("planet_a_houses", [])]),
+            f"{planet_b} in {condition.get('planet_b_houses', [])}": _planet_in_any_house(facts, planet_b, [int(item) for item in condition.get("planet_b_houses", [])]),
+        }
+        evidence = [f"{label}: {'passed' if ok else 'failed'}" for label, ok in checks.items()]
+        matched = all(checks.values())
+        return _result("yoga", matched, evidence, sum(int(ok) for ok in checks.values()) / len(checks))
+    if sub_type == "jupiter_center_debt":
+        anchor_planet = _normalize_planet_label(condition.get("anchor_planet"))
+        anchor_houses = [int(item) for item in condition.get("anchor_houses", [])]
+        secondary_planets = _unique_planets(condition.get("secondary_planets") or [])
+        secondary_houses = [int(item) for item in condition.get("secondary_houses", [])]
+        anchor_ok = _planet_in_any_house(facts, anchor_planet, anchor_houses)
+        secondary_matches = _group_house_matches(facts, secondary_planets, secondary_houses)
+        secondary_ok = _combine_matches(secondary_matches, str(condition.get("operator") or "or").lower())
+        evidence = [
+            f"{anchor_planet} in {anchor_houses}: {'passed' if anchor_ok else 'failed'}",
+            f"Secondary matches {secondary_matches} in houses {secondary_houses}",
+        ]
+        matched = anchor_ok and secondary_ok
+        return _result("yoga", matched, evidence, (int(anchor_ok) + int(secondary_ok)) / 2.0)
+    if sub_type == "jupiter_secondary_markers":
+        marker_results: list[bool] = []
+        evidence: list[str] = []
+        for marker in condition.get("markers", []):
+            planet = _normalize_planet_label(marker.get("planet"))
+            houses = [int(item) for item in marker.get("houses", [])]
+            ok = _planet_in_any_house(facts, planet, houses)
+            marker_results.append(ok)
+            evidence.append(f"{planet} in {houses}: {'passed' if ok else 'failed'}")
+        matched = all(marker_results) if str(condition.get("operator") or "or").lower() == "and" else any(marker_results)
+        confidence = sum(int(ok) for ok in marker_results) / len(marker_results) if marker_results else 0.0
+        return _result("yoga", matched, evidence, confidence)
+    if sub_type == "debt":
+        trigger_planets = _unique_planets(condition.get("trigger_planets") or [])
+        trigger_houses = [int(item) for item in condition.get("trigger_houses", [])]
+        trigger_matches = _group_house_matches(facts, trigger_planets, trigger_houses)
+        trigger_ok = _combine_matches(trigger_matches, str(condition.get("trigger_operator") or "or").lower())
+        anchor_planet = _normalize_planet_label(condition.get("anchor_planet"))
+        anchor_houses = [int(item) for item in condition.get("anchor_houses", [])]
+        anchor_ok = True if not anchor_planet or not anchor_houses else _planet_in_any_house(facts, anchor_planet, anchor_houses)
+        negative = condition.get("negative_condition") or {}
+        blocked_planet = _normalize_planet_label(negative.get("planet"))
+        blocked_houses = [int(item) for item in negative.get("houses", [])]
+        absent_ok = True if not blocked_planet or not blocked_houses else not _planet_in_any_house(facts, blocked_planet, blocked_houses)
+        evidence = [
+            f"Trigger matches {trigger_matches} in houses {trigger_houses}",
+            f"Anchor {anchor_planet or 'none'} in {anchor_houses or []}: {'passed' if anchor_ok else 'failed'}",
+            f"Negative condition {blocked_planet or 'none'} absent from {blocked_houses or []}: {'passed' if absent_ok else 'failed'}",
+        ]
+        matched = trigger_ok and anchor_ok and absent_ok
+        return _result("yoga", matched, evidence, sum(int(ok) for ok in [trigger_ok, anchor_ok, absent_ok]) / 3.0)
+    yoga_name = str(condition.get("yoga_name") or payload.get("yoga_name") or "")
+    matched = bool(yoga_name) and _yoga_name_matches(facts, yoga_name)
+    evidence = [f"Known chart yogas: {sorted(facts.yogas) or ['none']}"]
+    return _result("yoga", matched, evidence)
+
+
+def _eval_planet_affliction(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
+    payload = _yoga_check_payload(condition)
+    planet = _normalize_planet_label(payload.get("planet") or condition.get("planet") or (_to_list(condition.get("planets_involved")) or [""])[0])
+    evidence = _affliction_evidence(facts, planet)
+    matched = bool(evidence) and not evidence[0].startswith("No classical affliction detected")
+    confidence = 1.0 if matched else 0.0
+    return _result(str(payload.get("type") or "planet_affliction"), matched, evidence, confidence)
+
+
+def _eval_planetary_position(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
+    if condition.get("houses_involved") or condition.get("house") or condition.get("planet"):
+        return _eval_house_placement(condition, facts)
+    payload = dict(_yoga_check_payload(condition))
+    if not payload.get("planet") and condition.get("planets_involved"):
+        payload["planet"] = _normalize_planet_label((condition.get("planets_involved") or [""])[0])
+    return _eval_planet_affliction({**condition, "yoga_check": payload}, facts)
+
+
+def _eval_house_position(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
+    payload = _yoga_check_payload(condition)
+    planet = _normalize_planet_label(payload.get("planet") or condition.get("planet") or "Ketu")
+    target_houses = [int(item) for item in _to_list(payload.get("houses") or payload.get("house") or condition.get("houses_involved") or [condition.get("ketu_annual_house")])]
+    actual_house = _planet_house(facts, planet)
+    matched = actual_house in target_houses
+    evidence = [f"{planet} is in house {actual_house or 'missing'}; required one of {target_houses}"]
+    return _result("house_position", matched, evidence)
+
+
+def _eval_house_placement(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
+    payload = _yoga_check_payload(condition)
+    target_houses = [int(item) for item in _to_list(payload.get("houses") or payload.get("house") or condition.get("houses_involved"))]
+    planets = _unique_planets(
+        _to_list(payload.get("planet"))
+        + _to_list(condition.get("planet"))
+        + _to_list(condition.get("planets_involved"))
+    )
+    description = str(payload.get("description") or "")
+    if "malefic" in description.lower() or "evil" in description.lower():
+        planets = _unique_planets(planets + sorted(NATURAL_MALEFICS))
+    matches = {planet: _planet_in_any_house(facts, planet, target_houses) for planet in planets}
+    matched = any(matches.values())
+    evidence = [f"Candidate placements in houses {target_houses}: {matches}"]
+    return _result("house_placement", matched, evidence, sum(int(ok) for ok in matches.values()) / len(matches) if matches else 0.0)
+
+
+def _eval_planet_conjunction(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
+    payload = _yoga_check_payload(condition)
+    planets = _unique_planets(_to_list(payload.get("planets")) + _to_list(condition.get("conjunction")) + _to_list(condition.get("planets_involved")))
+    houses = {planet: _planet_house(facts, planet) for planet in planets}
+    present_houses = {house for house in houses.values() if house is not None}
+    matched = len(planets) >= 2 and len(present_houses) == 1
+    evidence = [f"Conjunction houses: {houses}"]
+    return _result("planet_conjunction", matched, evidence)
+
+
+def _eval_planet_in_house_from_sun(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
+    payload = _yoga_check_payload(condition)
+    sun_house = _planet_house(facts, "Sun")
+    target_houses = [int(item) for item in _to_list(payload.get("houses") or payload.get("house") or payload.get("distance_from_sun"))]
+    if sun_house is None or not target_houses:
+        return _result("planet_in_house_from_sun", False, ["Sun house or target house is missing"])
+    candidates = _candidate_planets(facts, payload)
+    operator = str(payload.get("operator") or "or").lower()
+    present = {
+        target: any(_relative_house(_planet_house(facts, planet), sun_house) == target for planet in candidates if _planet_house(facts, planet))
+        for target in target_houses
+    }
+    matched = all(present.values()) if operator == "and" else any(present.values())
+    evidence = [f"Sun-relative houses satisfied: {present} with candidates {candidates}"]
+    confidence = sum(int(flag) for flag in present.values()) / len(present)
+    return _result("planet_in_house_from_sun", matched, evidence, confidence)
+
+
+def _eval_planet_combust(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
+    payload = _yoga_check_payload(condition)
+    excluded = set(_unique_planets(payload.get("excluded_planets") or payload.get("exclude_planets") or []))
+    candidates = _unique_planets(
+        _to_list(payload.get("planet"))
+        + _to_list(condition.get("planet"))
+        + _to_list(condition.get("planets_involved"))
+        + [planet for planet in facts.planet_positions if planet != "Lagna"]
+    )
+    combust_matches = {
+        planet: bool((facts.planet_positions.get(planet) or {}).get("combust"))
+        for planet in candidates
+        if planet and planet not in excluded
+    }
+    matched = any(combust_matches.values())
+    evidence = [f"Combustion states (excluding {sorted(excluded)}): {combust_matches}"]
+    confidence = 1.0 if matched else 0.0
+    return _result("planet_combust", matched, evidence, confidence)
 
 
 def _eval_planet_in_house(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult:
@@ -613,7 +844,11 @@ def _eval_dosha(condition: dict[str, Any], facts: ChartFacts) -> YogaCheckResult
 
 EVALUATOR_DISPATCH: dict[str, Callable[[dict[str, Any], ChartFacts], YogaCheckResult]] = {
     "planetary_combination": _eval_planetary_combination,
+    "yoga": _eval_yoga,
     "planet_in_house": _eval_planet_in_house,
+    "house_position": _eval_house_position,
+    "planetary_position": _eval_planetary_position,
+    "house_placement": _eval_house_placement,
     "multi_house_requirements": _eval_multi_house_requirements,
     "benefics_in_houses": _eval_benefics_in_houses,
     "malefics_in_houses": _eval_malefics_in_houses,
@@ -624,7 +859,12 @@ EVALUATOR_DISPATCH: dict[str, Callable[[dict[str, Any], ChartFacts], YogaCheckRe
     "planets_in_n_signs": _eval_planets_in_n_signs,
     "all_planets_in_alt_signs": _eval_all_planets_in_alt_signs,
     "all_planets_in_houses": _eval_all_planets_in_houses,
+    "planet_affliction": _eval_planet_affliction,
+    "planet_afflicted": _eval_planet_affliction,
+    "planet_conjunction": _eval_planet_conjunction,
+    "planet_in_house_from_sun": _eval_planet_in_house_from_sun,
     "planet_in_house_from_moon": _eval_planet_in_house_from_moon,
+    "planet_combust": _eval_planet_combust,
     "kemadruma_check": _eval_kemadruma_check,
     "moon_from_sun_position": _eval_moon_from_sun_position,
     "dosha": _eval_dosha,

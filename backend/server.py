@@ -47,7 +47,7 @@ try:
 except ImportError:
     GOOGLE_LIBS_AVAILABLE = False
 from pdf_generator import generate_birth_chart_pdf, generate_kundali_milan_pdf, generate_brihat_kundli_pdf, generate_report_password
-from vedic_calculator import calculate_vedic_chart, calculate_ashtakoot, check_mangal_dosha, generate_north_indian_chart_svg
+from vedic_calculator import build_dasha_timeline, calculate_vedic_chart, calculate_ashtakoot, check_mangal_dosha, generate_north_indian_chart_svg
 import secrets
 from auth_utils import (
     User, UserSession, RegisterRequest, LoginRequest, UserResponse,
@@ -90,9 +90,12 @@ from knowledge_engine import (
     ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
     ARC_ANGEL_DOMAIN_LABELS,
     ARC_ANGEL_DOMAIN_SLUGS,
+    ARC_ANGEL_ENGINE_LABEL,
+    arc_angel_profile_is_fresh,
+    build_arc_angel_data_completeness,
+    build_arc_angel_profile_doc,
     build_domain_rule_map,
     compute_arc_angel_windows,
-    compute_dasha_timeline,
     compute_period_quality_now,
     configure_default_knowledge_engine,
 )
@@ -1994,6 +1997,40 @@ async def generate_knowledge_narrative(payload: KnowledgeNarrativeRequest, reque
         )
 
 
+async def upsert_arc_angel_profile(db, user_id: str, profile_data: dict) -> None:
+    await db.user_arc_angel_profile.update_one(
+        {"user_id": user_id},
+        {"$set": profile_data},
+        upsert=True,
+    )
+
+
+def _arc_angel_windows_response(profile: dict, *, cached: bool) -> dict:
+    domains = profile.get("domains") or []
+    overall_confidence = int(profile.get("overall_confidence_pct") or ARC_ANGEL_BASELINE_CONFIDENCE_PCT)
+    return {
+        "overall_confidence_pct": overall_confidence,
+        "engine_label": profile.get("engine_label") or ARC_ANGEL_ENGINE_LABEL,
+        "domain_quality_now": {
+            str(domain.get("domain_id") or ""): str(domain.get("period_quality") or "neutral")
+            for domain in domains
+            if domain.get("domain_id")
+        },
+        "arc_angel_windows": [
+            {
+                "domain_id": domain.get("domain_id"),
+                "domain_label": domain.get("domain_label"),
+                "auspicious_periods": domain.get("auspicious_periods", []),
+                "inauspicious_periods": domain.get("inauspicious_periods", []),
+                "period_quality_now": domain.get("period_quality", "neutral"),
+                "confidence_pct": int(domain.get("confidence_pct") or overall_confidence),
+            }
+            for domain in domains
+        ],
+        "cached": cached,
+    }
+
+
 @api_router.get("/knowledge-engine/arc-angel-windows")
 async def get_arc_angel_windows(
     birth_date: str,
@@ -2001,6 +2038,7 @@ async def get_arc_angel_windows(
     birth_place: str,
     request: Request,
     horizon_years: int = 10,
+    user_id: str | None = None,
 ):
     if horizon_years < 1 or horizon_years > 20:
         raise HTTPException(status_code=400, detail="horizon_years must be between 1 and 20")
@@ -2016,7 +2054,22 @@ async def get_arc_angel_windows(
             time_of_birth=birth_time,
             place_of_birth=birth_place,
         )
-        dasha_timeline = compute_dasha_timeline(chart_data)
+        existing_profile = None
+        data_completeness = build_arc_angel_data_completeness()
+        if user_id:
+            existing_profile = await db.user_arc_angel_profile.find_one({"user_id": user_id}, {"_id": 0})
+            if existing_profile:
+                data_completeness = build_arc_angel_data_completeness(
+                    questionnaire_areas=((existing_profile.get("pillar_1") or {}).get("areas_completed") or []),
+                    modules_run=((existing_profile.get("pillar_2") or {}).get("reports_run") or []),
+                    parents_data=bool(((existing_profile.get("data_completeness") or {}).get("parents_data"))),
+                )
+                if arc_angel_profile_is_fresh(existing_profile, data_completeness):
+                    return _arc_angel_windows_response(existing_profile, cached=True)
+        moon_longitude = chart_data.get("moon_longitude")
+        if not isinstance(moon_longitude, (int, float)):
+            raise HTTPException(status_code=500, detail="Chart payload missing moon_longitude")
+        dasha_timeline = build_dasha_timeline(birth_date, float(moon_longitude))
         matched_rules = await engine.scan_chart(
             chart=chart_data,
             max_rules=2000,
@@ -2045,16 +2098,40 @@ async def get_arc_angel_windows(
             }
             for domain_id in ARC_ANGEL_DOMAIN_SLUGS
         ]
-        return {
+        response = {
             "overall_confidence_pct": ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
+            "engine_label": ARC_ANGEL_ENGINE_LABEL,
             "domain_quality_now": domain_quality_now,
             "arc_angel_windows": arc_angel_list,
+            "cached": False,
         }
+        if not user_id:
+            return response
+        profile_doc = build_arc_angel_profile_doc(
+            user_id=user_id,
+            birth_date=birth_date,
+            birth_time=birth_time,
+            birth_place=birth_place,
+            domain_quality_now=domain_quality_now,
+            raw_windows=raw_windows,
+            data_completeness=data_completeness,
+            existing_profile=existing_profile,
+        )
+        await upsert_arc_angel_profile(db, user_id, profile_doc)
+        return _arc_angel_windows_response(profile_doc, cached=False)
     except HTTPException:
         raise
     except Exception as exc:
         logging.error("Arc Angel windows endpoint failed: %s", exc)
         raise HTTPException(status_code=500, detail=f"Failed to compute Arc Angel windows: {exc}")
+
+
+@api_router.get("/knowledge-engine/arc-angel-profile/{user_id}")
+async def get_arc_angel_profile(user_id: str):
+    profile = await db.user_arc_angel_profile.find_one({"user_id": user_id}, {"_id": 0})
+    if not profile:
+        raise HTTPException(status_code=404, detail="Arc Angel profile not found")
+    return profile
 
 app.include_router(api_router)
 app.include_router(panchang_router)

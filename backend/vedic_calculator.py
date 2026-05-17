@@ -1,13 +1,13 @@
 from __future__ import annotations
 
 """
-EverydayHoroscope — Vedic Calculation Engine
+EverydayHoroscope -- Vedic Calculation Engine
 Proprietary IP of SkyHound Studios
 Powered by Swiss Ephemeris
 
 Architecture:
-  Layer 1 (this file): Mathematical calculation — deterministic, always same result
-  Layer 2 (Claude prompts): Interpretation — human-readable insights from calculated positions
+  Layer 1 (this file): Mathematical calculation -- deterministic, always same result
+  Layer 2 (Claude prompts): Interpretation -- human-readable insights from calculated positions
 """
 
 import math
@@ -151,7 +151,7 @@ _ENEMIES = {
     'Saturn':  ['Sun', 'Moon', 'Mars'],
 }
 
-# Combustion orbs in degrees (Parashari — direct motion)
+# Combustion orbs in degrees (Parashari -- direct motion)
 COMBUSTION_ORBS = {
     'Moon':    12,
     'Mars':    17,
@@ -381,7 +381,7 @@ def _calc_planet(jd: float, swe_id: int) -> tuple[float, float]:
 
 def _calc_ascendant(jd: float, lat: float, lon: float) -> float:
     """Return sidereal ascendant longitude."""
-    # Whole sign houses — standard for Vedic
+    # Whole sign houses -- standard for Vedic
     cusps, ascmc = swe.houses(jd, lat, lon, b'W')
     asc_tropical = ascmc[0]
     ayanamsa = swe.get_ayanamsa_ut(jd)
@@ -928,6 +928,54 @@ def calculate_vimshottari_dasha(birth_date: str, moon_longitude: float) -> list:
     return dashas
 
 
+def build_dasha_timeline(birth_date: str, moon_longitude: float) -> list[dict]:
+    """
+    Returns the authoritative Vimshottari dasha timeline with antardasha sub-periods.
+    This is the single source of truth for dasha + antardasha data.
+    """
+    top_level = calculate_vimshottari_dasha(birth_date, moon_longitude)
+    timeline: list[dict] = []
+    for maha in top_level:
+        maha_planet = str(maha["planet"])
+        maha_start = datetime.strptime(maha["start"], "%Y-%m-%d")
+        maha_end = datetime.strptime(maha["end"], "%Y-%m-%d")
+        maha_total_days = max(1, (maha_end - maha_start).days)
+        maha_years = DASHA_YEARS[maha_planet]
+
+        lord_idx = DASHA_ORDER.index(maha_planet)
+        antardashas: list[dict] = []
+        cursor = maha_start
+        for i in range(9):
+            antar_lord = DASHA_ORDER[(lord_idx + i) % 9]
+            antar_years = DASHA_YEARS[antar_lord]
+            antar_fraction = antar_years / maha_years
+            antar_days = max(1, int(maha_total_days * antar_fraction))
+            antar_end = cursor + timedelta(days=antar_days)
+            if antar_end > maha_end:
+                antar_end = maha_end
+            antardashas.append(
+                {
+                    "planet": antar_lord,
+                    "start": cursor.strftime("%Y-%m-%d"),
+                    "end": antar_end.strftime("%Y-%m-%d"),
+                }
+            )
+            cursor = antar_end
+        if antardashas:
+            antardashas[-1]["end"] = maha["end"]
+
+        timeline.append(
+            {
+                "planet": maha_planet,
+                "start": maha["start"],
+                "end": maha["end"],
+                "years": maha["years"],
+                "antardashas": antardashas,
+            }
+        )
+    return timeline
+
+
 def get_current_dasha(dashas: list) -> dict:
     """Find the currently active Mahadasha."""
     today = datetime.now()
@@ -950,11 +998,11 @@ def check_mangal_dosha(mars_house: int) -> dict:
         'present': present,
         'mars_house': mars_house,
         'severity': severity,
-        'description': f'Mars in House {mars_house} — ' + (f'{severity} Mangal Dosha' if present else 'No Mangal Dosha'),
+        'description': f'Mars in House {mars_house} -- ' + (f'{severity} Mangal Dosha' if present else 'No Mangal Dosha'),
         'cancellation_rules': [],
         'cancelled': False,
         'cancellation_reason': '',
-        'note': f'Mars in house {mars_house}' + (' — Mangal Dosha present' if present else ' — No Mangal Dosha'),
+        'note': f'Mars in house {mars_house}' + (' -- Mangal Dosha present' if present else ' -- No Mangal Dosha'),
     }
 
 
@@ -1033,7 +1081,7 @@ def calculate_ashtakoot(nak1: str, sign1: str, nak2: str, sign2: str) -> dict:
     scores['nadi'] = {'max': 8, 'score': nadi_score, 'label': 'Excellent' if nadi_score == 8 else 'Nadi Dosha Present', 'meaning': 'Health and progeny compatibility'}
 
     total = sum(s['score'] for s in scores.values())
-    verdict = ('Excellent Match — Highly Recommended' if total >= 32 else 'Very Good Match' if total >= 24 else 'Good Match — Recommended with Remedies' if total >= 18 else 'Below Threshold — Consult Astrologer')
+    verdict = ('Excellent Match -- Highly Recommended' if total >= 32 else 'Very Good Match' if total >= 24 else 'Good Match -- Recommended with Remedies' if total >= 18 else 'Below Threshold -- Consult Astrologer')
 
     return {'kootas': scores, 'total_score': total, 'max_score': 36, 'verdict': verdict, 'percentage': round((total / 36) * 100)}
 
@@ -1047,7 +1095,7 @@ def calculate_vedic_chart(
     timezone_offset: str = '+05:30'
 ) -> dict:
     """
-    Master function — calculates complete Vedic birth chart using Swiss Ephemeris.
+    Master function -- calculates complete Vedic birth chart using Swiss Ephemeris.
 
     Args:
         date_of_birth: 'YYYY-MM-DD'
@@ -1066,7 +1114,7 @@ def calculate_vedic_chart(
         lagna_sign = _lon_to_sign(asc_lon)
         lagna_degree = round(asc_lon % 30, 2)
 
-        # Sun longitude computed first — needed for combustion checks
+        # Sun longitude computed first -- needed for combustion checks
         sun_lon, _ = _calc_planet(jd, swe.SUN)
 
         planets = {}
@@ -1140,6 +1188,7 @@ def calculate_vedic_chart(
                 'sign_vedic': SIGN_NAMES.get(moon_sign, moon_sign),
             },
             'nakshatra': nakshatra,
+            'moon_longitude': moon_lon,
             'planets': planets,
             'houses': houses,
             'dashas': dashas,
@@ -1260,7 +1309,7 @@ def get_current_transits() -> dict:
         else:
             planet_lon, speed = _calc_planet(jd, PLANET_SWE_IDS[pid])
         sign = _lon_to_sign(planet_lon)
-        # Natural-zodiac house: Aries=1 … Pisces=12 (Lal Kitab convention)
+        # Natural-zodiac house: Aries=1 ... Pisces=12 (Lal Kitab convention)
         house = SIGN_ORDER.index(sign) + 1
         transits[PLANET_NAMES[pid]] = {
             'sign': sign,

@@ -38,6 +38,7 @@ def make_facts(
     aspected_by: dict[int, set[str]] | None = None,
     house_lords: dict[int, str] | None = None,
     varga_dignities: dict[str, dict] | None = None,
+    yogas: set[str] | None = None,
     dignities: dict[str, str] | None = None,
     combusts: dict[str, bool] | None = None,
     retrogrades: dict[str, bool] | None = None,
@@ -67,7 +68,7 @@ def make_facts(
         planet_positions=planet_positions,
         house_planets=house_planets,
         house_lords=house_lords or {},
-        yogas=set(),
+        yogas=yogas or set(),
         dasha_levels=defaultdict(set),
         aspect_targets=aspect_targets,
         aspected_by=reverse_aspects,
@@ -491,7 +492,7 @@ def test_condition_matches_dispatches_yoga_combination() -> None:
 
 
 # ---------------------------------------------------------------------------
-# varga_dignity_tier (Brief D — evaluator #17)
+# varga_dignity_tier (Brief D -- evaluator #17)
 # ---------------------------------------------------------------------------
 
 @pytest.mark.parametrize(
@@ -630,7 +631,7 @@ def test_planet_combust(_condition_matches_import, facts: ChartFacts, condition:
 
 # ── Dignity + combustion pure-logic unit tests ───────────────────────────────
 # These replicate the logic from vedic_calculator.get_planet_dignity /
-# is_planet_combust inline — avoiding the flatlib + pyswisseph module-level
+# is_planet_combust inline -- avoiding the flatlib + pyswisseph module-level
 # imports that make vedic_calculator.py hard to import in a stub environment.
 
 _SIGN_ORDER = [
@@ -730,6 +731,78 @@ def test_combustion_computation_unit() -> None:
     assert _combust("Mars",     17.0,   0.0)    # exactly at orb (inclusive)
     assert not _combust("Mars", 18.0,   0.0)    # just outside orb
     assert _combust("Saturn",  355.0,   5.0)    # across 0°/360° boundary, diff=10°
+
+
+def test_yoga_handler_supports_structured_debt_rules() -> None:
+    facts = make_facts({"Sun": (10, "Capricorn"), "Moon": (11, "Aquarius"), "Saturn": (5, "Leo")})
+    condition = {
+        "type": "dosha",
+        "sub_type": "debt",
+        "trigger_planets": ["Sun", "Moon"],
+        "trigger_houses": [10, 11],
+        "trigger_operator": "and",
+        "negative_condition": {"planet": "Saturn", "houses": [3, 4], "constraint": "absent"},
+        "yoga_check": {"type": "yoga", "checkable": True},
+    }
+    result = evaluate_yoga_check(condition, facts)
+    assert result.matched is True
+
+
+def test_planet_affliction_detects_malefic_pressure() -> None:
+    facts = make_facts({"Mars": (7, "Libra"), "Saturn": (7, "Libra")})
+    condition = {"yoga_check": {"type": "planet_affliction", "checkable": True, "planet": "Mars Benefic"}}
+    result = evaluate_yoga_check(condition, facts)
+    assert result.matched is True
+    assert any("conjunction" in note.lower() for note in result.evidence)
+
+
+def test_planet_conjunction_checks_shared_house() -> None:
+    facts = make_facts({"Jupiter": (4, "Cancer"), "Sun": (4, "Cancer")})
+    condition = {
+        "planets_involved": ["Jupiter", "Sun"],
+        "conjunction": ["Jupiter", "Sun"],
+        "yoga_check": {"type": "planet_conjunction", "checkable": True},
+    }
+    assert evaluate_yoga_check(condition, facts).matched is True
+
+
+def test_planet_in_house_from_sun_supports_compound_requirements() -> None:
+    facts = make_facts({"Sun": (1, "Aries"), "Mars": (2, "Taurus"), "Jupiter": (12, "Pisces")})
+    condition = {
+        "yoga_check": {
+            "type": "planet_in_house_from_sun",
+            "checkable": True,
+            "houses": [2, 12],
+            "operator": "and",
+            "exclude_planets": ["Moon"],
+        }
+    }
+    assert evaluate_yoga_check(condition, facts).matched is True
+
+
+def test_planet_combust_honors_exclusions() -> None:
+    facts = make_facts({"Mercury": (2, "Taurus"), "Venus": (3, "Gemini")}, combusts={"Mercury": True, "Venus": True})
+    condition = {
+        "yoga_check": {
+            "type": "planet_combust",
+            "checkable": True,
+            "excluded_planets": ["Venus"],
+        }
+    }
+    result = evaluate_yoga_check(condition, facts)
+    assert result.matched is True
+    assert "Mercury" in result.evidence[0]
+
+
+def test_house_position_supports_annual_house_shape() -> None:
+    facts = make_facts({"Ketu": (8, "Scorpio")})
+    condition = {
+        "type": "journey_outcome",
+        "planet": "Ketu",
+        "ketu_annual_house": 8,
+        "validation": {"yoga_check": {"type": "house_position", "checkable": True}},
+    }
+    assert evaluate_yoga_check(condition, facts).matched is True
 
 
 # fixture alias so dignity/combust tests can import _condition_matches
