@@ -1,7 +1,7 @@
 # Temple Tracker -- Master Index
 > EverydayHoroscope · Module Status Dashboard
 > **Read this at session start. Then open the individual module tracker for the module you are working on.**
-> Last updated: 2026-05-17 (session 2)
+> Last updated: 2026-05-17 (session 3 -- KE-OP-13 cleared)
 
 ---
 
@@ -36,12 +36,12 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 
 | # | Module | Tracker | Status | Hottest Open Point | Owner |
 |---|---|---|---|---|---|
-| 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🟡 ACTIVE | Sprint 3 delivered locally 2026-05-17 (19/19 tests ✅). **KE-OP-13: TT to run live verification** of arc-angel-windows + arc-angel-profile routes on Render + confirm Mongo persistence. KE-OP-4 (rule approval) + KE-OP-3 (KE-IQ issue) still open. | TT |
+| 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🟡 ACTIVE | **KE-OP-13 ✅ CLEARED 2026-05-17** -- Sprint 3 live on Render (confidence 40, engine_label, profile route 200, MongoDB ✅). **KE-OP-14 🟠 OPEN**: window granularity returns 1 period/domain (MD-level) -- needs AD-level fix in KE thread before ARC-2 finalises. KE-OP-4 (rule approval) + KE-OP-3 (KE-IQ issue) still open. | TT |
 | 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | KP-2A + KP-Sprint2 ready to issue (TT). All CC blockers cleared 2026-05-15. | TT |
 | 3 | Individual Reports | [`Individual_Reports/TRACKER.md`](Codex_Deliveries/Individual_Reports/TRACKER.md) | 🟣 PLANNED | IR-1 ready to issue Week 1 -- no dependency | TT |
 | 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` confirmed live. `krishna_prashnavali_remedies` seeded (36 records). REM-P1 ready to issue. | TT |
 | 5 | The Strategist | [`Strategist/TRACKER.md`](Codex_Deliveries/Strategist/TRACKER.md) | ✅ LIVE | STR-OP-3: Verify DashaTimingBar live data on `/strategist/missions` (TT) | TT |
-| 6 | Arc Angel | [`Arc_Angel/TRACKER.md`](Codex_Deliveries/Arc_Angel/TRACKER.md) | 🟡 ACTIVE | Confidence % hardcoded 42. ARC-2 🟣 READY TO ISSUE -- KE-Sprint3 blocker cleared 2026-05-17. Issue after KE-Sprint3 live verification. | TT |
+| 6 | Arc Angel | [`Arc_Angel/TRACKER.md`](Codex_Deliveries/Arc_Angel/TRACKER.md) | 🟡 ACTIVE | KE-Sprint3 live ✅. ARC-2 🟣 READY TO ISSUE -- **but issue KE-OP-14 (window granularity) to KE thread first**, so ARC-2 UI gets 3 AD-level windows per domain. TT to approve premium gate + sidebar UI before ARC-2 builds them. | TT |
 | 7 | Tarot | [`Tarot/TRACKER.md`](Codex_Deliveries/Tarot/TRACKER.md) | 🟡 ACTIVE | TAR-v4 visual uplift -- issue Week 3 | TT |
 | 8 | Kundali / Birth Chart | [`Kundali/TRACKER.md`](Codex_Deliveries/Kundali/TRACKER.md) | 🟣 PLANNED | KUN-1 ready to issue Week 4+ | TT |
 | 9 | Lal Kitab | [`LK/TRACKER.md`](Codex_Deliveries/LK/TRACKER.md) | 🟣 PLANNED | LK-1 ready to issue Week 4+ | TT |

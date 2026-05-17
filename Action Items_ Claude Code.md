@@ -35,7 +35,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 ### Knowledge Engine Thread
 - ~~KE-2A: Yoga Check Evaluation Engine~~ → ✅ INTEGRATED 2026-05-17. 9 handlers added, 52 tests pass, 0 missing mappings, 26 dispatch entries.
 - ~~KE-Sprint2: Arbitration Runtime~~ → ✅ INTEGRATED 2026-05-17 (self-certified). All 5 gates passed against live code.
-- ~~KE-Sprint3: Arc Angel Computation (G-07/G-08/G-09)~~ → 🟡 DELIVERED LOCAL 2026-05-17. 19/19 tests green. **TT to run live verification (KE-OP-13)** of `/api/knowledge-engine/arc-angel-windows` + `/api/knowledge-engine/arc-angel-profile/{user_id}` on Render.
+- ~~KE-Sprint3: Arc Angel Computation (G-07/G-08/G-09)~~ → ✅ LIVE 2026-05-17. KE-OP-13 cleared — both routes verified on Render (confidence 40, engine_label, profile 200, MongoDB ✅). **KE-OP-14 open**: window granularity returns MD-level (1 period/domain) — needs AD-level sub-periods (3/domain). Issue KE-OP-14 to KE Codex thread before ARC-2 finalises.
 - ~~KE-IQ: Questionnaire UI + β/γ wiring (TD-19/TD-25/G-10)~~ → `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` · READY TO ISSUE
 
 **CC Direct Actions — KE gaps confirmed by Codex intake audit 2026-05-15:**
