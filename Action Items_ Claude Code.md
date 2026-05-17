@@ -1,7 +1,7 @@
 # Action Items — Temple App
 > Single Source of Truth for all open items across Claude Code sessions.
 > Referenced in all handover docs. **Do not create parallel lists elsewhere.**
-> Last updated: 2026-05-15
+> Last updated: 2026-05-17 (session 2 update)
 
 ---
 
@@ -23,6 +23,8 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 | M-10 | **MODULE_ARC_ANGEL doc audit** — only 3 files present post-cleanup. Verify whether additional docs (specs, QA notes, handoff notes, source maps) should be migrated from `Codex_Deliveries/Arc_Angel/` into the module home. | Reconciliation gap found 2026-05-15 | 🟢 LOW |
 | M-11 | **MODULE_LAL_KITAB doc audit** — only 3 files present post-cleanup (created 2026-05-15). Verify whether additional docs should migrate from `Codex_Deliveries/LK/` into the module home. | Reconciliation gap found 2026-05-15 | 🟢 LOW |
 | M-12 | **MODULE_SEO_WEB_PERFORMANCE doc audit** — only 3 files present post-cleanup (created 2026-05-15). Verify whether additional docs should migrate from `Codex_Deliveries/SEO/` into the module home. | Reconciliation gap found 2026-05-15 | 🟢 LOW |
+| M-13 | **Live TV console polish (LTV-OP-1)** — player console bar on `/live-sai-baba-arti` functional but visual design does not match original spec intent. Raise as Codex commission when final design is confirmed. | Design decision needed from TT | 🟡 MED |
+| ~~M-14~~ | ~~**Render Free → Starter upgrade**~~ — ✅ **DONE 2026-05-17.** Render now on Starter plan ($7/mo). Server always-on, no more cold starts. API responds in ms for first user of each session. SEO crawlers now get instant 200 responses. | ~~Cold starts hurting UX + SEO~~ | ✅ DONE |
 
 ---
 
@@ -31,9 +33,10 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 All items below have been moved into commission briefs in `Codex_Deliveries/`. Nothing is pending here — each is either READY TO ISSUE or has a brief written and ready to issue.
 
 ### Knowledge Engine Thread
-- ~~KE-2A: Yoga Check Evaluation Engine (16 evaluator types)~~ → 🔵 IN PROGRESS (issued 2026-05-15)
-- ~~KE-Sprint2: Arbitration Runtime (G-03/G-05/G-06/G-04)~~ → 🔵 IN PROGRESS -- RECONCILIATION-FIRST (issued 2026-05-15). Arbitration helpers already in main repo; Codex verifying gate criteria.
-- ~~KE-IQ: Questionnaire UI + β/γ wiring (TD-19/TD-25/G-10)~~ → `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` · READY TO ISSUE *(written 2026-05-15)*
+- ~~KE-2A: Yoga Check Evaluation Engine~~ → ✅ INTEGRATED 2026-05-17. 9 handlers added, 52 tests pass, 0 missing mappings, 26 dispatch entries.
+- ~~KE-Sprint2: Arbitration Runtime~~ → ✅ INTEGRATED 2026-05-17 (self-certified). All 5 gates passed against live code.
+- ~~KE-Sprint3: Arc Angel Computation (G-07/G-08/G-09)~~ → 🟡 DELIVERED LOCAL 2026-05-17. 19/19 tests green. **TT to run live verification (KE-OP-13)** of `/api/knowledge-engine/arc-angel-windows` + `/api/knowledge-engine/arc-angel-profile/{user_id}` on Render.
+- ~~KE-IQ: Questionnaire UI + β/γ wiring (TD-19/TD-25/G-10)~~ → `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` · READY TO ISSUE
 
 **CC Direct Actions — KE gaps confirmed by Codex intake audit 2026-05-15:**
 - [x] **KE-OP-9** — ✅ Already present: `knowledge_engine.py` lines 634–636 dispatch `yoga_combination` through `ke_yoga_evaluator.evaluate_yoga_check`. No action needed. Confirmed 2026-05-15.
@@ -56,7 +59,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 - ~~STR-2J: Strategist Missions UI improvements (MissionCard responsive + dasha display)~~ → `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · ✅ INTEGRATED commit `9ad2e0a` *(delivered + dasha backend fix 2026-05-15)*
 
 ### Arc Angel Thread
-- ~~ARC-2: Arc Angel Phase 2 — Confidence % lift + questionnaire gating + desktop sidebar~~ → `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` · READY TO ISSUE *(written 2026-05-15)*
+- ~~ARC-2: Arc Angel Dynamic Confidence Engine~~ → `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` · 🟣 READY TO ISSUE *(brief fully rewritten 2026-05-17 — 3-pillar formula locked, decay engine, notification hooks. KE-Sprint3 blocker cleared. Issue after KE-Sprint3 live verification passes.)*
 
 ### Tarot Thread
 - ~~TAR-v4: Tarot UI v4 Enhancement~~ → `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` · READY TO ISSUE
@@ -106,7 +109,7 @@ Items confirmed deferred. Not in any active commission. Will be picked up in fut
 | Item | Phase | Priority | Thread |
 |---|---|---|---|
 | Commission J — World Context Engine (macro α signals: conflict zones, festivals, exam periods) | Phase 2 | 🟢 LOW | KE / Commission J |
-| Arc Angel: persist `user_arc_angel_profile` in MongoDB (currently stateless) | Phase 2 | 🟡 MED | ARC-2 (partially) |
+| ~~Arc Angel: persist `user_arc_angel_profile` in MongoDB (currently stateless)~~ | ✅ DONE 2026-05-17 | KE-Sprint3 built the full persistence layer — schema, upsert, 6h cache, GET route. No longer parking lot. |
 | TD-26 Country Kundali as Alpha Signal | Phase 2 | 🟡 MED | KE |
 | TD-27 Forecast Tier / Life Area Outlook | Phase 2 | 🟡 MED | KE |
 | KP-G7 Audio soundscapes (binaural + Sanskrit chanting) | Phase 3 | 🟢 LOW | KP |
