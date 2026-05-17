@@ -114,6 +114,7 @@ def _serialize_user_context_profile(payload: dict[str, Any]) -> dict[str, Any]:
         mode="json",
         by_alias=True,
         exclude_none=False,
+        exclude={"id"},  # never include _id in $set payloads -- MongoDB rejects it
     )
 
 
@@ -325,9 +326,11 @@ async def _ensure_user_context_profile(db: AsyncIOMotorDatabase, user_id: str) -
     default_document = UserContextProfileDocument(
         user_id=user_id,
         questionnaire_version=DEFAULT_QUESTIONNAIRE_VERSION,
-    ).model_dump(mode="json", by_alias=True, exclude_none=False)
+    ).model_dump(mode="json", by_alias=True, exclude_none=False, exclude={"id"})
     await db[COLLECTION_USER_CONTEXT_PROFILE].insert_one(default_document)
-    return default_document
+    # insert_one mutates the dict to add _id (ObjectId); strip it so downstream
+    # callers never accidentally include _id in a $set payload.
+    return {k: v for k, v in default_document.items() if k != "_id"}
 
 
 POSITIVE_HINTS = {
