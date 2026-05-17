@@ -1,7 +1,7 @@
 # Knowledge Engine -- Module Tracker
 > Path: `Codex_Deliveries/Knowledge_Engine/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-17 · v2.4
+> Last updated: 2026-05-18 · v2.5
 
 ---
 
@@ -9,11 +9,11 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- Sprint 1 + 2 + 3 + KE-2A complete · KE-OP-14 ✅ FIXED · **ARC-2 now clear to issue** · KE-IQ ready to issue |
+| **Status** | 🟡 ACTIVE -- Sprint 1 + 2 + 3 + KE-2A complete · KE-OP-14 ✅ FIXED · KE-IQ ✅ LOCAL DELIVERY · ARC-2 dependency path clearer |
 | **Backend** | `backend/knowledge_engine.py` · `backend/ke_router.py` · `backend/ke_yoga_evaluator.py` |
 | **Live endpoint** | `GET /api/knowledge-engine/arc-angel-windows` |
 | **Rules in DB** | 1,036+ · zero `approved` · all `pending_human_review` |
-| **Sprint phase** | Phase 1.2 -- Sprint 2 ✅ · KE-2A ✅ · Sprint 3 ✅ LIVE 2026-05-17 · KE-OP-14 ✅ FIXED 2026-05-17 |
+| **Sprint phase** | Phase 1.2 -- Sprint 2 ✅ · KE-2A ✅ · Sprint 3 ✅ LIVE 2026-05-17 · KE-OP-14 ✅ FIXED 2026-05-17 · Sprint 4/KE-IQ ✅ LOCAL 2026-05-18 |
 | **Yoga evaluators** | 26 types in `EVALUATOR_DISPATCH` · 0 missing mappings · 52 tests green |
 | **Module home** | `/Users/apple/Documents/New project/MODULE_KNOWLEDGE_ENGINE/` |
 
@@ -25,8 +25,8 @@
 |---|---|---|---|
 | Sprint 1 -- Scoring Foundation | G-01 (α/β/γ wiring) | ✅ COMPLETE | Commit `57e347a` -- all 6 tests passed |
 | **Sprint 2 -- Arbitration Runtime** | G-03, G-05, G-06, G-04 | ✅ COMPLETE -- self-certified 2026-05-17 | All 5 gates verified against live code by CC. Codex was in admin reconciliation state. TT self-certified. INGEST FREEZE lifted for Sprint 2 dependency. Sprint 3 now unblocked. |
-| Sprint 3 -- Arc Angel Computation | G-07, G-08, G-09 | ✅ LIVE -- verified 2026-05-17 | G-07 verified, G-08 verified, G-09 built, TD-28 corrected. Both routes live on Render, persistence confirmed in MongoDB, 6h cache working. KE-OP-14 open: window granularity returns MD-level (1 period/domain) instead of AD-level (3 periods/domain). Fix in KE thread before ARC-2 finalises. |
-| Sprint 4 -- Questionnaire β/γ | G-10 | 🟣 KE-IQ commission (separate track) | Independent of Sprint 2/3 |
+| Sprint 3 -- Arc Angel Computation | G-07, G-08, G-09 | ✅ LIVE -- verified 2026-05-17 | G-07 verified, G-08 verified, G-09 built, TD-28 corrected. Both routes live on Render, persistence confirmed in MongoDB, 6h cache working. KE-OP-14 is fixed locally: AD-level windows are preserved for long same-quality antardasha periods. |
+| Sprint 4 -- Questionnaire β/γ | G-10 | ✅ LOCAL DELIVERY -- 2026-05-18 | New KE questionnaire submit/profile endpoints added, Arc Angel β/γ wiring now flows through `scan_chart()`, and frontend questionnaire / Arc Angel CTA wiring is integrated in the runtime repo. Await Temple-side live verification. |
 
 ---
 
@@ -45,7 +45,7 @@
 | **KE-Sprint2** | Arbitration Runtime (G-03/G-04/G-05/G-06) | ✅ INTEGRATED -- self-certified 2026-05-17 | All 5 acceptance gates pass against live code. `_contradiction_score`, `_representation_mode`, `_build_tension_block`, supersession lookup, `scan_chart()` payload all confirmed. Codex was in admin reconciliation state -- TT self-certified per gate evidence. |
 | **KE-2A** | Yoga Check Evaluation Engine (16 evaluator types) | ✅ INTEGRATED -- 2026-05-17 | All 9 missing handlers added by Codex (`yoga`, `planet_affliction`, `house_position`, `planet_afflicted`, `planet_conjunction`, `planet_in_house_from_sun`, `planetary_position`, `planet_combust`, `house_placement`). 52 tests pass. 0 missing mappings. 26 total dispatch entries. CC-verified. |
 | **KE-Sprint3** | Arc Angel Computation Engine (G-07/G-08/G-09) | ✅ LIVE -- verified 2026-05-17 | Routes live on Render. `overall_confidence_pct: 40` ✅ · `engine_label` ✅ · `arc-angel-profile` 200 ✅ · MongoDB persistence ✅ · 6h cache ✅. KE-OP-13 CLOSED. KE-OP-14 FIXED: long same-quality AD windows now remain separate instead of collapsing into MD-level blocks. 20 Sprint 3 tests green, 72 combined KE tests green. |
-| **KE-IQ** | Questionnaire UI + β/γ KE Wiring (TD-19/TD-25/G-10) | 🟣 READY TO ISSUE | `CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` |
+| **KE-IQ** | Questionnaire UI + β/γ KE Wiring (TD-19/TD-25/G-10) | ✅ INTEGRATED -- commit `f7aa78b` 2026-05-18 | `knowledge_router.py`, `server.py`, `frontend/src/components/QuestionnaireWidget.jsx`, `frontend/src/components/ArcAngelPanel.jsx`, `frontend/src/pages/account/QuestionnairePage.jsx`, `tests/test_ke_iq_questionnaire.py`. 75/75 KE tests green. Awaiting Temple live verification (KE-OP-15). |
 
 ---
 
@@ -55,7 +55,8 @@
 |---|---|---|---|---|
 | ~~KE-OP-1~~ | ~~Issue KE-Sprint2 to Codex immediately~~ | TT | ✅ DONE | Issued 2026-05-15. |
 | ~~KE-OP-2~~ | ~~Issue KE-2A to Codex~~ | TT | ✅ DONE | Issued 2026-05-15. |
-| KE-OP-3 | Issue KE-IQ (ideally after Sprint 3 integration check; can run parallel) | TT | 🟠 HIGH | `QuestionnairePage.jsx` exists (29 lines). `QuestionnaireWidget.jsx` exists (1101 lines). Backend β/γ wiring needed. |
+| ~~KE-OP-3~~ | ~~Issue KE-IQ (ideally after Sprint 3 integration check; can run parallel)~~ | TT | ✅ DONE | Issued and delivered locally by Codex on 2026-05-18. |
+| KE-OP-15 | Temple live verification for KE-IQ questionnaire/profile flow | TT | 🟠 HIGH | Verify `POST /api/knowledge-engine/questionnaire/submit`, `GET /api/knowledge-engine/questionnaire/profile`, Arc Angel β/γ scan-context wiring, and live persistence in `user_questionnaire_profiles`. |
 | KE-OP-4 | Co-founder sign-off on first rule batch (`pending_human_review` → `approved`) | TT | 🟠 HIGH | Until signed off, Legacy Model is the only active signal. Zero `approved` rules currently. |
 | ~~KE-OP-5~~ | ~~Issue Sprint 3 brief to Codex~~ | TT | ✅ DONE | Issued 2026-05-17 and delivered locally the same day. |
 | KE-OP-6 | Architecture rule enforcement: never add dasha functions to `knowledge_engine.py` | CC | 🔴 ENFORCE | TD-28 corrected on 2026-05-17. `knowledge_engine.compute_dasha_timeline()` is now only a shim into `vedic_calculator.build_dasha_timeline()`. Keep it that way. |
@@ -100,3 +101,4 @@
 | v2.2 | 2026-05-17 | **KE-Sprint3 locally delivered.** Added `vedic_calculator.build_dasha_timeline()`, exposed `moon_longitude` from `calculate_vedic_chart()`, converted `knowledge_engine.compute_dasha_timeline()` to a TD-28 shim, added Arc Angel confidence/profile builders and freshness logic, extended `server.py` with cached `arc-angel-windows` + new `arc-angel-profile/{user_id}` retrieval, expanded `user_arc_angel_profile` schema, and added 19 Sprint 3 acceptance tests. Verification: 19/19 Sprint 3 tests pass; 71/71 combined KE tests pass. | Codex | `knowledge_engine.py`, `knowledge_schema.py`, `vedic_calculator.py`, `server.py`, `tests/test_ke_sprint3_arc_angel.py` |
 | v2.3 | 2026-05-17 | **KE-OP-13 CLEARED -- Sprint 3 live verified.** Both routes confirmed live on Render: `overall_confidence_pct: 40` ✅, `engine_label: "Vedic Astrology Engine Activated"` ✅, `arc-angel-profile/{user_id}` returns 200 ✅, MongoDB document stored and retrieved ✅, 6h cache `cached: false` on first call ✅. KE-OP-13 closed. KE-OP-14 opened: window granularity returns 1 period/domain (MD-level) instead of 3 (AD-level) -- ARC-2 UI needs the granular AD sub-period view. Fix to be issued to KE Codex thread. | TT + CC | URL V2 outputs 2026-05-17 |
 | v2.4 | 2026-05-17 | **KE-OP-14 FIXED.** Arc Angel window collapse logic now preserves AD-level granularity for long same-quality periods instead of flattening them into a single MD-sized block. Added regression coverage proving three consecutive auspicious ADs remain three windows. Verification: 20/20 Sprint 3 tests pass; 72/72 combined KE tests pass. | Codex | `knowledge_engine.py`, `tests/test_ke_sprint3_arc_angel.py` |
+| v2.5 | 2026-05-18 | **KE-IQ INTEGRATED.** Added KE-branded questionnaire submit/profile endpoints in `knowledge_router.py`, persisted questionnaire snapshots to `user_questionnaire_profiles`, wired Arc Angel `scan_chart()` context to include questionnaire-derived `beta`/`gamma`, and updated the questionnaire / Arc Angel frontend surfaces to support completion, retake, and confidence-upgrade CTA behavior. Runtime gap fixed: questionnaire completeness helpers were missing -- added before close. Verification: frontend production build succeeds, `test_ke_iq_questionnaire.py` passes, combined KE regression suite 75/75 green. Commit `f7aa78b`. KE-OP-15 opened: Temple live verification required. | Codex + CC | `f7aa78b` |

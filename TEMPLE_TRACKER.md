@@ -1,7 +1,7 @@
 # Temple Tracker -- Master Index
 > EverydayHoroscope · Module Status Dashboard
 > **Read this at session start. Then open the individual module tracker for the module you are working on.**
-> Last updated: 2026-05-18 (session 4 -- ARC-2 integrated commit `c1a7cb0`, 72/72 tests)
+> Last updated: 2026-05-18 (session 4 -- ARC-2 `c1a7cb0` + KE-IQ `f7aa78b` integrated, 75/75 tests)
 
 ---
 
@@ -36,7 +36,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 
 | # | Module | Tracker | Status | Hottest Open Point | Owner |
 |---|---|---|---|---|---|
-| 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🟡 ACTIVE | KE-OP-13 ✅ KE-OP-14 ✅ -- **all Sprint 3 gates cleared**. 20/20 tests. AD-level window granularity fixed (commit `c4f4b43`). **ARC-2 is now unblocked -- issue to Arc Angel thread.** KE-IQ also ready to issue. KE-OP-4 (rule approval) open. | TT |
+| 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🟡 ACTIVE | KE-IQ ✅ INTEGRATED commit `f7aa78b` 2026-05-18. 75/75 tests. **KE-OP-15 open: TT to verify `POST /api/knowledge-engine/questionnaire/submit`, `GET /api/knowledge-engine/questionnaire/profile`, Arc Angel β/γ enrichment, and `user_questionnaire_profiles` persistence on Render.** KE-OP-4 (rule approval) open. | TT |
 | 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | KP-2A + KP-Sprint2 ready to issue (TT). All CC blockers cleared 2026-05-15. | TT |
 | 3 | Individual Reports | [`Individual_Reports/TRACKER.md`](Codex_Deliveries/Individual_Reports/TRACKER.md) | 🟣 PLANNED | IR-1 ready to issue Week 1 -- no dependency | TT |
 | 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` confirmed live. `krishna_prashnavali_remedies` seeded (36 records). REM-P1 ready to issue. | TT |
