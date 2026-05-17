@@ -7,6 +7,7 @@ import { useAuth } from "../context/AuthContext";
 
 const BASE_URL =
   process.env.REACT_APP_BACKEND_URL || "https://everydayhoroscope-api.onrender.com";
+const QUESTIONNAIRE_PROFILE_API = `${BASE_URL}/api/knowledge-engine/questionnaire/profile`;
 
 const ARC_ANGEL_DOMAINS = [
   { id: "health", label: "Health & Fitness", description: "Physical well-being, nutrition, exercise and energy levels" },
@@ -145,6 +146,12 @@ export default function ArcAngelPanel() {
   const { user } = useAuth();
   const [birthProfile, setBirthProfile] = useState(null);
   const [profileLoading, setProfileLoading] = useState(false);
+  const [questionnaireProfile, setQuestionnaireProfile] = useState({
+    completed: false,
+    beta: 1.0,
+    gamma: 1.0,
+    focus_domains: [],
+  });
   const [payload, setPayload] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -153,6 +160,7 @@ export default function ArcAngelPanel() {
   useEffect(() => {
     if (!user) {
       setBirthProfile(null);
+      setQuestionnaireProfile({ completed: false, beta: 1.0, gamma: 1.0, focus_domains: [] });
       return;
     }
     let active = true;
@@ -170,6 +178,28 @@ export default function ArcAngelPanel() {
       }
     }
     fetchProfile();
+    return () => {
+      active = false;
+    };
+  }, [user]);
+
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+    let active = true;
+    async function fetchQuestionnaireProfile() {
+      try {
+        const res = await axios.get(QUESTIONNAIRE_PROFILE_API, { withCredentials: true });
+        if (!active) return;
+        setQuestionnaireProfile(res.data || { completed: false, beta: 1.0, gamma: 1.0, focus_domains: [] });
+      } catch {
+        if (active) {
+          setQuestionnaireProfile({ completed: false, beta: 1.0, gamma: 1.0, focus_domains: [] });
+        }
+      }
+    }
+    fetchQuestionnaireProfile();
     return () => {
       active = false;
     };
@@ -267,12 +297,23 @@ export default function ArcAngelPanel() {
               <p className="text-xs text-muted-foreground">Vedic Astrology Engine Activated</p>
             </div>
           </div>
-          <Link
-            to="/questionnaire"
-            className="mt-4 inline-flex text-sm font-semibold text-gold transition hover:opacity-80"
-          >
-            🔓 Unlock the Potential of Vedic Astrology in all 12 Areas of Life
-          </Link>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Accuracy: {payload?.overall_confidence_pct || 0}%{" "}
+            {questionnaireProfile?.completed ? "✦ questionnaire calibrated" : "(birth data only)"}
+          </p>
+          {!questionnaireProfile?.completed ? (
+            <div className="mt-3 rounded-xl border border-gold/20 bg-background/60 p-3">
+              <p className="text-sm text-muted-foreground">
+                ✦ Complete your Cosmic Profile to improve accuracy to 60%+
+              </p>
+              <Link
+                to="/questionnaire"
+                className="mt-3 inline-flex text-sm font-semibold text-gold transition hover:opacity-80"
+              >
+                Complete Questionnaire →
+              </Link>
+            </div>
+          ) : null}
         </div>
 
         {profileLoading || loading ? (

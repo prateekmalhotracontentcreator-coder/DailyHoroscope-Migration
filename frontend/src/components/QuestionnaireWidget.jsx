@@ -52,6 +52,15 @@ const FIELD_LABELS = {
   "parents_data.mother.place": "Mother's place of birth",
 };
 
+const FINAL_SUBMIT_REQUIRED_FIELDS = [
+  "salary_bracket",
+  "family_wealth_tier",
+  "siblings_count",
+  "current_city",
+  "travel_frequency",
+  "relationship_status",
+];
+
 const SECTION_DEFINITIONS = [
   {
     id: "personal",
@@ -426,6 +435,7 @@ function UpgradePrompt() {
 export default function QuestionnaireWidget({
   compact = false,
   onSaveSuccess = () => {},
+  onComplete = () => {},
 }) {
   const { user } = useAuth();
   const premiumActive = hasActiveSubscription(true, user);
@@ -539,6 +549,11 @@ export default function QuestionnaireWidget({
       .map((field) => FIELD_LABELS[field] || field)
       .filter(Boolean);
   }, [completion.missing_fields]);
+
+  const canFinalizeQuestionnaire = useMemo(
+    () => FINAL_SUBMIT_REQUIRED_FIELDS.every((fieldPath) => !completion.missing_fields.includes(fieldPath)),
+    [completion.missing_fields]
+  );
 
   const updateField = (key, value) => {
     setProfile((previousValue) => ({
@@ -827,6 +842,26 @@ export default function QuestionnaireWidget({
           View My Arc Angel Profile
           <ChevronRight className="ml-1 h-4 w-4" />
         </Link>
+
+        <div className="rounded-xl border border-gold/15 bg-background/60 p-4">
+          <p className="text-sm font-medium text-foreground">Finalize your Cosmic Profile</p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Saving your sections stores the details. Finalize here to calibrate your beta and gamma context for Knowledge Engine readings.
+          </p>
+          <button
+            type="button"
+            onClick={() => onComplete(normalizeProfile(profile))}
+            disabled={!canFinalizeQuestionnaire}
+            className="mt-4 inline-flex items-center justify-center rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-background transition hover:bg-gold/90 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            Set My Cosmic Profile
+          </button>
+          {!canFinalizeQuestionnaire ? (
+            <p className="mt-2 text-xs text-muted-foreground">
+              Complete Personal Circumstances, Life & Location, and Relationships to submit. Family Background remains optional.
+            </p>
+          ) : null}
+        </div>
       </div>
     );
   };

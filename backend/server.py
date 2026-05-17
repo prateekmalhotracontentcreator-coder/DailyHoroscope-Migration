@@ -2038,6 +2038,29 @@ def _arc_angel_windows_response(profile: dict, *, cached: bool) -> dict:
     }
 
 
+async def _questionnaire_runtime_state(user_id: str | None) -> dict:
+    if not user_id:
+        return {"completed": False, "beta": 1.0, "gamma": 1.0, "focus_domains": [], "modules_used": 0}
+    profile = await db.user_questionnaire_profiles.find_one({"user_id": user_id}, {"_id": 0})
+    if not profile or not profile.get("completed"):
+        return {"completed": False, "beta": 1.0, "gamma": 1.0, "focus_domains": [], "modules_used": 0}
+    return {
+        "completed": True,
+        "beta": float(profile.get("beta") or 1.0),
+        "gamma": float(profile.get("gamma") or 1.0),
+        "focus_domains": list(profile.get("focus_domains") or []),
+        "modules_used": int(profile.get("modules_used") or 0),
+    }
+
+
+def _arc_angel_confidence_breakdown(profile: dict) -> dict:
+    return {
+        "birth_data": ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
+        "questionnaire": int(round(float((profile.get("pillar_1") or {}).get("score") or 0))),
+        "module_usage": int((profile.get("pillar_2") or {}).get("score") or 0),
+    }
+
+
 @api_router.get("/knowledge-engine/arc-angel-windows")
 async def get_arc_angel_windows(
     birth_date: str,
@@ -2063,6 +2086,7 @@ async def get_arc_angel_windows(
         )
         session_user = getattr(request.state, "user", None) or {}
         effective_user_id = user_id or session_user.get("user_id")
+        questionnaire_state = await _questionnaire_runtime_state(effective_user_id)
         existing_profile = None
         data_completeness = build_arc_angel_data_completeness()
         if effective_user_id:
@@ -2074,7 +2098,10 @@ async def get_arc_angel_windows(
                     parents_data=bool(((existing_profile.get("data_completeness") or {}).get("parents_data"))),
                 )
                 if arc_angel_profile_is_fresh(existing_profile, data_completeness):
-                    return _arc_angel_windows_response(existing_profile, cached=True)
+                    response = _arc_angel_windows_response(existing_profile, cached=True)
+                    response["questionnaire_completed"] = questionnaire_state["completed"]
+                    response["confidence_breakdown"] = _arc_angel_confidence_breakdown(existing_profile)
+                    return response
         moon_longitude = chart_data.get("moon_longitude")
         if not isinstance(moon_longitude, (int, float)):
             raise HTTPException(status_code=500, detail="Chart payload missing moon_longitude")
@@ -2082,7 +2109,11 @@ async def get_arc_angel_windows(
         matched_rules = await engine.scan_chart(
             chart=chart_data,
             max_rules=2000,
-            context={"backbone_science_id": "vedic_astrology"},
+            context={
+                "backbone_science_id": "vedic_astrology",
+                "beta": questionnaire_state["beta"],
+                "gamma": questionnaire_state["gamma"],
+            },
             dasha_timeline=dasha_timeline,
         )
         domain_rule_map = build_domain_rule_map(matched_rules)
@@ -2112,6 +2143,12 @@ async def get_arc_angel_windows(
             "engine_label": ARC_ANGEL_ENGINE_LABEL,
             "domain_quality_now": domain_quality_now,
             "arc_angel_windows": arc_angel_list,
+            "questionnaire_completed": questionnaire_state["completed"],
+            "confidence_breakdown": {
+                "birth_data": ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
+                "questionnaire": 0,
+                "module_usage": 0,
+            },
             "cached": False,
         }
         if not effective_user_id:
@@ -2127,7 +2164,10 @@ async def get_arc_angel_windows(
             existing_profile=existing_profile,
         )
         await upsert_arc_angel_profile(db, effective_user_id, profile_doc)
-        return _arc_angel_windows_response(profile_doc, cached=False)
+        response = _arc_angel_windows_response(profile_doc, cached=False)
+        response["questionnaire_completed"] = questionnaire_state["completed"]
+        response["confidence_breakdown"] = _arc_angel_confidence_breakdown(profile_doc)
+        return response
     except HTTPException:
         raise
     except Exception as exc:

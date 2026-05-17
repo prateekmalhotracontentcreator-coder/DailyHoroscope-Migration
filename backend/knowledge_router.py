@@ -24,7 +24,7 @@ from knowledge_schema import (
     UserContextProfileDocument,
 )
 from vedic_calculator import calculate_vedic_chart, calculate_vimshottari_dasha
-from knowledge_engine import sync_arc_angel_questionnaire_state
+from knowledge_engine import build_arc_angel_questionnaire_state, sync_arc_angel_questionnaire_state
 
 
 router = APIRouter(tags=["knowledge-library"])
@@ -49,6 +49,15 @@ def _engine_from_request(request: Request):
 
 
 DEFAULT_QUESTIONNAIRE_VERSION = "v1"
+QUESTIONNAIRE_PROFILE_COLLECTION = "user_questionnaire_profiles"
+QUESTIONNAIRE_PROFILE_VERSION = 1
+PUNYA_TRANSACTION_COLLECTION = "punya_transactions"
+QUESTIONNAIRE_MODULE_ACTIONS = (
+    "birth_chart_generate",
+    "numerology_report_generate",
+    "tarot_daily_draw",
+    "panchang_daily_view",
+)
 USER_CONTEXT_MUTABLE_FIELDS = frozenset(
     {
         "questionnaire_version",
@@ -75,6 +84,24 @@ USER_CONTEXT_COMPLETION_FIELDS = (
 )
 
 
+def _context_path_complete(profile: dict[str, Any], dotted_path: str) -> bool:
+    current: Any = profile
+    for segment in dotted_path.split("."):
+        if not isinstance(current, dict):
+            return False
+        current = current.get(segment)
+    if isinstance(current, str):
+        return bool(current.strip())
+    return current is not None
+
+
+def _context_parent_complete(profile: dict[str, Any], parent_key: str) -> bool:
+    return _context_path_complete(profile, f"parents_data.{parent_key}.dob") and _context_path_complete(
+        profile,
+        f"parents_data.{parent_key}.place",
+    )
+
+
 async def _require_authenticated_user(request: Request, db: AsyncIOMotorDatabase):
     user = await get_current_user(request, db)
     if user is None:
@@ -98,14 +125,169 @@ def _score_or_default(value: Any, default: float = 1.0) -> float:
     return max(0.0, numeric)
 
 
+def _clamp_context_multiplier(value: float) -> float:
+    return round(max(0.78, min(1.22, value)), 2)
+
+
+def _relationship_weight(value: str) -> float:
+    mapping = {
+        "single": -0.02,
+        "relationship": 0.02,
+        "married": 0.04,
+        "separated": -0.04,
+        "widowed": -0.02,
+    }
+    return mapping.get(str(value or "").strip().lower(), 0.0)
+
+
+def _derive_focus_domains(profile: dict[str, Any]) -> list[str]:
+    questionnaire_state = build_arc_angel_questionnaire_state(profile)
+    ordered_domains: list[str] = []
+    for section_id in ("personal", "relationships", "life", "family"):
+        if section_id == "personal" and any(_context_path_complete(profile, field) for field in ("salary_bracket", "family_wealth_tier", "siblings_count")):
+            ordered_domains.extend(["career", "finances", "learning"])
+        if section_id == "relationships" and _context_path_complete(profile, "relationship_status"):
+            ordered_domains.extend(["relationships", "social", "spirituality"])
+        if section_id == "life" and any(_context_path_complete(profile, field) for field in ("current_city", "travel_frequency")):
+            ordered_domains.extend(["emotional", "adventure", "environment"])
+        if section_id == "family" and (
+            _context_parent_complete(profile, "father") or _context_parent_complete(profile, "mother")
+        ):
+            ordered_domains.extend(["family", "creativity"])
+    if not ordered_domains:
+        ordered_domains.extend(questionnaire_state.get("areas_completed") or [])
+    unique_domains: list[str] = []
+    for domain in ordered_domains:
+        if domain not in unique_domains:
+            unique_domains.append(domain)
+    return unique_domains[:3]
+
+
+def _questionnaire_completed(profile: dict[str, Any]) -> bool:
+    required_groups = {
+        "personal": ("salary_bracket", "family_wealth_tier", "siblings_count"),
+        "life": ("current_city", "travel_frequency"),
+        "relationships": ("relationship_status",),
+    }
+    return all(all(_context_path_complete(profile, field_name) for field_name in field_names) for field_names in required_groups.values())
+
+
 def _recompute_context_profile_scores(profile: dict[str, Any]) -> tuple[float, float]:
-    # Commission I-Q owns the eventual questionnaire-derived scoring logic. Until
-    # then, the backend preserves neutral/default values and any previously
-    # computed server-side scores rather than accepting client-written ones.
-    return (
-        _score_or_default(profile.get("beta_score"), default=1.0),
-        _score_or_default(profile.get("gamma_score"), default=1.0),
+    beta = 1.0
+    gamma = 1.0
+
+    salary_bracket = str(profile.get("salary_bracket") or "").strip().lower()
+    if salary_bracket == "high":
+        beta += 0.04
+    elif salary_bracket == "low":
+        beta -= 0.04
+
+    wealth_tier = str(profile.get("family_wealth_tier") or "").strip().lower()
+    if wealth_tier == "high":
+        beta += 0.02
+    elif wealth_tier == "low":
+        beta -= 0.02
+
+    siblings_count = profile.get("siblings_count")
+    try:
+        if siblings_count is not None and int(siblings_count) >= 3:
+            beta += 0.02
+    except (TypeError, ValueError):
+        pass
+
+    if _context_path_complete(profile, "current_city"):
+        beta += 0.02
+
+    travel_frequency = str(profile.get("travel_frequency") or "").strip().lower()
+    if travel_frequency == "frequently":
+        beta += 0.04
+    elif travel_frequency == "rarely":
+        beta -= 0.02
+
+    beta += _relationship_weight(str(profile.get("relationship_status") or ""))
+
+    if _context_parent_complete(profile, "father") and _context_parent_complete(profile, "mother"):
+        beta += 0.04
+
+    focus_domains = _derive_focus_domains(profile)
+    gamma += min(len(focus_domains), 3) * 0.04
+    if any(domain in {"relationships", "social", "spirituality"} for domain in focus_domains):
+        gamma += 0.02
+    if len(build_arc_angel_questionnaire_state(profile).get("areas_completed") or []) >= 6:
+        gamma += 0.04
+
+    return (_clamp_context_multiplier(beta), _clamp_context_multiplier(gamma))
+
+
+def _questionnaire_answers_from_profile(profile: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "salary_bracket": profile.get("salary_bracket"),
+        "family_wealth_tier": profile.get("family_wealth_tier"),
+        "siblings_count": profile.get("siblings_count"),
+        "current_city": profile.get("current_city"),
+        "travel_frequency": profile.get("travel_frequency"),
+        "relationship_status": profile.get("relationship_status"),
+        "parents_data": profile.get("parents_data") or {},
+    }
+
+
+async def _count_modules_used(db: AsyncIOMotorDatabase, user_id: str) -> int:
+    used: list[str] = await db[PUNYA_TRANSACTION_COLLECTION].distinct(
+        "reason_code",
+        {
+            "user_id": user_id,
+            "transaction_type": "action_reward",
+            "reason_code": {"$in": list(QUESTIONNAIRE_MODULE_ACTIONS)},
+        },
     )
+    return min(len(set(str(item) for item in used if item)), 3)
+
+
+async def _build_questionnaire_profile_document(
+    db: AsyncIOMotorDatabase,
+    user_id: str,
+    context_profile: dict[str, Any],
+) -> dict[str, Any]:
+    serialized_profile = _serialize_user_context_profile(context_profile)
+    beta_score, gamma_score = _recompute_context_profile_scores(serialized_profile)
+    focus_domains = _derive_focus_domains(serialized_profile)
+    modules_used = await _count_modules_used(db, user_id)
+    completed = _questionnaire_completed(serialized_profile)
+    completed_at = utc_now() if completed else None
+    document = {
+        "user_id": user_id,
+        "answers": _questionnaire_answers_from_profile(serialized_profile),
+        "beta": beta_score,
+        "gamma": gamma_score,
+        "focus_domains": focus_domains,
+        "modules_used": modules_used,
+        "completed": completed,
+        "completed_at": completed_at,
+        "version": QUESTIONNAIRE_PROFILE_VERSION,
+    }
+    return document
+
+
+async def _upsert_questionnaire_profile_document(
+    db: AsyncIOMotorDatabase,
+    user_id: str,
+    context_profile: dict[str, Any],
+) -> dict[str, Any]:
+    document = await _build_questionnaire_profile_document(db, user_id, context_profile)
+    await db[QUESTIONNAIRE_PROFILE_COLLECTION].update_one(
+        {"user_id": user_id},
+        {"$set": document},
+        upsert=True,
+    )
+    return document
+
+
+async def _get_or_build_questionnaire_profile(
+    db: AsyncIOMotorDatabase,
+    user_id: str,
+) -> dict[str, Any]:
+    profile = await _ensure_user_context_profile(db, user_id)
+    return await _upsert_questionnaire_profile_document(db, user_id, profile)
 
 
 def _get_path_value(payload: Any, path: str) -> Any:
@@ -211,7 +393,7 @@ async def update_user_context_profile(request: Request, payload: dict[str, Any])
     merged_profile["questionnaire_version"] = (
         str(merged_profile.get("questionnaire_version") or DEFAULT_QUESTIONNAIRE_VERSION)
     )
-    beta_score, gamma_score = _recompute_context_profile_scores(existing_profile)
+    beta_score, gamma_score = _recompute_context_profile_scores(merged_profile)
     merged_profile["beta_score"] = beta_score
     merged_profile["gamma_score"] = gamma_score
     merged_profile["last_updated"] = utc_now()
@@ -226,6 +408,7 @@ async def update_user_context_profile(request: Request, payload: dict[str, Any])
         upsert=True,
     )
     arc_angel_profile = await sync_arc_angel_questionnaire_state(db, user.user_id, serialized_profile)
+    await _upsert_questionnaire_profile_document(db, user.user_id, serialized_profile)
     completion_pct, missing_fields = _context_profile_completion(serialized_profile)
     return {
         "profile": serialized_profile,
@@ -244,6 +427,68 @@ async def get_user_context_profile_completion(request: Request):
     return {
         "completion_pct": completion_pct,
         "missing_fields": missing_fields,
+    }
+
+
+@router.post("/api/knowledge-engine/questionnaire/submit")
+async def submit_questionnaire_profile(request: Request, payload: dict[str, Any]):
+    db = _db_from_request(request)
+    user = await _require_authenticated_user(request, db)
+    existing_profile = await _ensure_user_context_profile(db, user.user_id)
+
+    answers = payload.get("answers") if isinstance(payload, dict) else {}
+    raw_answers = answers if isinstance(answers, dict) else {}
+    allowed_updates = {
+        key: value
+        for key, value in raw_answers.items()
+        if key in USER_CONTEXT_MUTABLE_FIELDS
+    }
+
+    merged_profile = {**existing_profile, **allowed_updates}
+    merged_profile["user_id"] = user.user_id
+    merged_profile["questionnaire_version"] = (
+        str(merged_profile.get("questionnaire_version") or DEFAULT_QUESTIONNAIRE_VERSION)
+    )
+    beta_score, gamma_score = _recompute_context_profile_scores(merged_profile)
+    merged_profile["beta_score"] = beta_score
+    merged_profile["gamma_score"] = gamma_score
+    merged_profile["last_updated"] = utc_now()
+
+    serialized_profile = _serialize_user_context_profile(merged_profile)
+    await db[COLLECTION_USER_CONTEXT_PROFILE].update_one(
+        {"user_id": user.user_id},
+        {
+            "$set": serialized_profile,
+            "$setOnInsert": {"user_id": user.user_id},
+        },
+        upsert=True,
+    )
+
+    questionnaire_profile = await _upsert_questionnaire_profile_document(db, user.user_id, serialized_profile)
+    await sync_arc_angel_questionnaire_state(db, user.user_id, serialized_profile)
+    return {
+        "beta": questionnaire_profile["beta"],
+        "gamma": questionnaire_profile["gamma"],
+        "questionnaire_id": f"{user.user_id}:v{questionnaire_profile['version']}",
+        "completed_at": questionnaire_profile["completed_at"],
+        "focus_domains": questionnaire_profile["focus_domains"],
+    }
+
+
+@router.get("/api/knowledge-engine/questionnaire/profile")
+async def get_questionnaire_profile(request: Request):
+    db = _db_from_request(request)
+    user = await _require_authenticated_user(request, db)
+    questionnaire_profile = await _get_or_build_questionnaire_profile(db, user.user_id)
+    if not questionnaire_profile.get("completed"):
+        return {"completed": False, "beta": 1.0, "gamma": 1.0, "focus_domains": []}
+    return {
+        "completed": True,
+        "beta": questionnaire_profile["beta"],
+        "gamma": questionnaire_profile["gamma"],
+        "focus_domains": questionnaire_profile["focus_domains"],
+        "completed_at": questionnaire_profile["completed_at"],
+        "modules_used": questionnaire_profile["modules_used"],
     }
 
 
