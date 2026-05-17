@@ -1587,6 +1587,16 @@ async def load_arc_angel_profile(db: AsyncIOMotorDatabase, user_id: str) -> dict
     )
 
 
+async def _upsert_arc_angel_profile_doc(db: AsyncIOMotorDatabase, user_id: str, profile_data: dict[str, Any]) -> None:
+    """Persist an Arc Angel profile document. Defined here so knowledge_engine functions
+    can call it without creating a circular import with server.py."""
+    await db.user_arc_angel_profile.update_one(
+        {"user_id": user_id},
+        {"$set": profile_data, "$setOnInsert": {"user_id": user_id}},
+        upsert=True,
+    )
+
+
 async def sync_arc_angel_questionnaire_state(
     db: AsyncIOMotorDatabase,
     user_id: str,
@@ -1602,7 +1612,7 @@ async def sync_arc_angel_questionnaire_state(
         parents_data=bool(questionnaire_state.get("parents_bonus")),
     )
     refreshed = refresh_arc_angel_profile(profile)
-    await upsert_arc_angel_profile(db, user_id, refreshed)
+    await _upsert_arc_angel_profile_doc(db, user_id, refreshed)
     return refreshed
 
 
@@ -1629,7 +1639,7 @@ async def register_arc_angel_report_run(
         parents_data=bool(((profile.get("pillar_1") or {}).get("parents_bonus"))),
     )
     refreshed = refresh_arc_angel_profile(profile)
-    await upsert_arc_angel_profile(db, user_id, refreshed)
+    await _upsert_arc_angel_profile_doc(db, user_id, refreshed)
     return refreshed
 
 
@@ -1668,7 +1678,7 @@ async def log_ritual_event(
     ]
     profile["pillar_3"] = pillar_3
     refreshed = refresh_arc_angel_profile(profile)
-    await upsert_arc_angel_profile(db, user_id, refreshed)
+    await _upsert_arc_angel_profile_doc(db, user_id, refreshed)
     return refreshed
 
 
@@ -1733,7 +1743,7 @@ async def run_arc_angel_pillar3_decay_job(
         pillar_3["notification_pending"] = pending
         profile["pillar_3"] = pillar_3
         refreshed = refresh_arc_angel_profile(profile)
-        await upsert_arc_angel_profile(db, str(refreshed.get("user_id") or ""), refreshed)
+        await _upsert_arc_angel_profile_doc(db, str(refreshed.get("user_id") or ""), refreshed)
         updated += 1
     return updated
 
