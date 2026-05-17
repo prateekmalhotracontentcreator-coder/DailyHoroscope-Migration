@@ -68,7 +68,7 @@ function FeatureGrid({ page }) {
         return (
           <article
             key={feature.title}
-            className="rounded-xl border border-gold/20 bg-gold/[0.04] p-5 shadow-sm backdrop-blur-sm"
+            className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4 shadow-sm backdrop-blur-sm sm:p-5"
           >
             <div
               className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl border"
@@ -175,23 +175,23 @@ export default function ReportLandingPageShell({ page }) {
             `,
           }}
         />
-        <section className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+        <section className="relative mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-20 lg:px-8 lg:py-28">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center gap-3 rounded-full border border-gold/20 bg-gold/[0.06] px-4 py-2 text-xs uppercase tracking-[0.28em] text-gold/80">
+            <div className="inline-flex items-center gap-3 rounded-full border border-gold/20 bg-gold/[0.06] px-3 py-1.5 text-xs uppercase tracking-[0.22em] text-gold/80 sm:px-4 sm:py-2 sm:tracking-[0.28em]">
               <span style={{ color: page.color }}>{page.icon}</span>
               <span>Public Vedic Report Preview</span>
             </div>
             <div
-              className="mt-8 grid h-20 w-20 place-items-center rounded-[28px] border text-4xl shadow-[0_20px_40px_rgba(0,0,0,0.18)]"
+              className="mt-5 grid h-14 w-14 place-items-center rounded-[20px] border text-3xl shadow-[0_20px_40px_rgba(0,0,0,0.18)] sm:mt-8 sm:h-20 sm:w-20 sm:rounded-[28px] sm:text-4xl"
               style={{ background: `${page.color}24`, color: page.color, borderColor: `${page.color}55` }}
             >
               {page.icon}
             </div>
-            <h1 className="mt-8 max-w-3xl font-playfair text-5xl font-semibold leading-tight text-white sm:text-6xl">
+            <h1 className="mt-5 max-w-3xl font-playfair text-3xl font-semibold leading-tight text-white sm:mt-8 sm:text-5xl lg:text-6xl">
               {page.hook}
             </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-white/72">{page.description}</p>
-            <div className="mt-10 flex flex-wrap gap-4">
+            <p className="mt-4 max-w-3xl text-base leading-7 text-white/72 sm:mt-6 sm:text-lg sm:leading-8">{page.description}</p>
+            <div className="mt-7 flex flex-wrap gap-3 sm:mt-10 sm:gap-4">
               <AccentButton href={ctaPath} color={page.color}>
                 <span>{ctaLabel}</span>
                 <ArrowRight className="h-4 w-4" />
@@ -204,44 +204,44 @@ export default function ReportLandingPageShell({ page }) {
         </section>
       </div>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 flex items-end justify-between gap-6">
+      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
+        <div className="mb-7 flex items-end justify-between gap-6 sm:mb-10">
           <div>
             <p className="text-xs uppercase tracking-[0.26em] text-gold/80">What This Report Reveals</p>
-            <h2 className="mt-3 font-playfair text-4xl font-semibold text-foreground">Six focused lenses inside one premium reading</h2>
+            <h2 className="mt-2 font-playfair text-2xl font-semibold text-foreground sm:mt-3 sm:text-4xl">Six focused lenses inside one premium reading</h2>
           </div>
         </div>
         <FeatureGrid page={page} />
       </section>
 
-      <section className="border-y border-gold/10 bg-gold/[0.03] py-16">
+      <section className="border-y border-gold/10 bg-gold/[0.03] py-10 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
+          <div className="mb-7 text-center sm:mb-10">
             <p className="text-xs uppercase tracking-[0.26em] text-gold/80">How It Works</p>
-            <h2 className="mt-3 font-playfair text-4xl font-semibold text-foreground">From birth data to finished insight</h2>
+            <h2 className="mt-2 font-playfair text-2xl font-semibold text-foreground sm:mt-3 sm:text-4xl">From birth data to finished insight</h2>
           </div>
-          <div className="grid gap-5 md:grid-cols-3">
+          <div className="grid gap-4 sm:gap-5 md:grid-cols-3">
             {PROCESS_STEPS.map((step) => (
-              <article key={step.number} className="rounded-[24px] border border-gold/20 bg-background p-6 shadow-sm">
+              <article key={step.number} className="rounded-[20px] border border-gold/20 bg-background p-4 shadow-sm sm:rounded-[24px] sm:p-6">
                 <div
-                  className="inline-flex h-12 w-12 items-center justify-center rounded-full text-lg font-semibold"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full text-base font-semibold sm:h-12 sm:w-12 sm:text-lg"
                   style={{ background: `${page.color}16`, color: page.color }}
                 >
                   {step.number}
                 </div>
-                <h3 className="mt-5 font-playfair text-2xl font-semibold text-foreground">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-muted-foreground">{step.body}</p>
+                <h3 className="mt-3 font-playfair text-xl font-semibold text-foreground sm:mt-5 sm:text-2xl">{step.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground sm:mt-3 sm:leading-7">{step.body}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section ref={sampleRef} className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 max-w-3xl">
+      <section ref={sampleRef} className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
+        <div className="mb-7 max-w-3xl sm:mb-10">
           <p className="text-xs uppercase tracking-[0.26em] text-gold/80">Sample Report Preview</p>
-          <h2 className="mt-3 font-playfair text-4xl font-semibold text-foreground">A preview of the structure, tone, and remedies layer</h2>
-          <p className="mt-4 text-sm leading-7 text-muted-foreground">
+          <h2 className="mt-2 font-playfair text-2xl font-semibold text-foreground sm:mt-3 sm:text-4xl">A preview of the structure, tone, and remedies layer</h2>
+          <p className="mt-3 text-sm leading-7 text-muted-foreground sm:mt-4">
             The full report is personalised from your chart. This preview only shows the section style and presentation pattern.
           </p>
         </div>
@@ -254,25 +254,25 @@ export default function ReportLandingPageShell({ page }) {
         </div>
       </section>
 
-      <section className="border-t border-gold/10 bg-background py-16">
+      <section className="border-t border-gold/10 bg-background py-10 sm:py-16">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 text-center">
+          <div className="mb-7 text-center sm:mb-10">
             <p className="text-xs uppercase tracking-[0.26em] text-gold/80">FAQ</p>
-            <h2 className="mt-3 font-playfair text-4xl font-semibold text-foreground">Questions people usually ask first</h2>
+            <h2 className="mt-2 font-playfair text-2xl font-semibold text-foreground sm:mt-3 sm:text-4xl">Questions people usually ask first</h2>
           </div>
-          <div className="grid gap-4">
+          <div className="grid gap-3 sm:gap-4">
             {page.faqs.map((faq) => (
-              <article key={faq.question} className="rounded-[22px] border border-gold/20 bg-gold/[0.04] p-6 shadow-sm">
-                <div className="flex items-start gap-4">
+              <article key={faq.question} className="rounded-[18px] border border-gold/20 bg-gold/[0.04] p-4 shadow-sm sm:rounded-[22px] sm:p-6">
+                <div className="flex items-start gap-3 sm:gap-4">
                   <div
-                    className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+                    className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full sm:mt-1 sm:h-10 sm:w-10"
                     style={{ background: `${page.color}16`, color: page.color }}
                   >
-                    <CheckCircle2 className="h-5 w-5" />
+                    <CheckCircle2 className="h-4 w-4 sm:h-5 sm:w-5" />
                   </div>
                   <div>
-                    <h3 className="font-playfair text-2xl font-semibold text-foreground">{faq.question}</h3>
-                    <p className="mt-3 text-sm leading-7 text-muted-foreground">{faq.answer}</p>
+                    <h3 className="font-playfair text-lg font-semibold text-foreground sm:text-2xl">{faq.question}</h3>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground sm:mt-3 sm:leading-7">{faq.answer}</p>
                   </div>
                 </div>
               </article>
@@ -281,18 +281,18 @@ export default function ReportLandingPageShell({ page }) {
         </div>
       </section>
 
-      <section className="px-4 py-16 sm:px-6 lg:px-8">
+      <section className="px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
         <div
-          className="mx-auto max-w-6xl rounded-[30px] border p-8 text-white shadow-[0_28px_80px_rgba(2,6,23,0.24)] sm:p-10"
+          className="mx-auto max-w-6xl rounded-[24px] border p-6 text-white shadow-[0_28px_80px_rgba(2,6,23,0.24)] sm:rounded-[30px] sm:p-8 lg:p-10"
           style={{
             borderColor: `${page.color}55`,
             background: `linear-gradient(135deg, ${page.color} 0%, #111827 100%)`,
           }}
         >
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-col gap-5 sm:gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div className="max-w-3xl">
               <p className="text-xs uppercase tracking-[0.28em] text-white/70">Ready when you are</p>
-              <h2 className="mt-3 font-playfair text-4xl font-semibold">{`Ready to see what ${page.name} reveals for you?`}</h2>
+              <h2 className="mt-2 font-playfair text-2xl font-semibold sm:mt-3 sm:text-4xl">{`Ready to see what ${page.name} reveals for you?`}</h2>
               <p className="mt-4 text-sm leading-7 text-white/80">{page.hook}</p>
             </div>
             <AccentButton href={ctaPath} color="#111827">
