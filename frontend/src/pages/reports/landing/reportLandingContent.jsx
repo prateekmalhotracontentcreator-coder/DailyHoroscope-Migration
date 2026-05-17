@@ -482,7 +482,7 @@ export const REPORT_LANDING_CONTENT = {
     ctaLabel: 'Generate My Report',
     features: [
       { title: 'Phase-by-Phase Guidance', body: 'Translates the current lunar phase into practical support for energy, mood, and decision timing.', icon: MoonStar },
-      { title: 'Nakshatra-Specific Insight', body: "Uses the Moon's current nakshatra and pada to give the emotional field real texture and specificity.", icon: Sparkles },
+      { title: 'Nakshatra-Specific Insight', body: "Uses the Moon\'s current nakshatra and pada to give the emotional field real texture and specificity.", icon: Sparkles },
       { title: 'Natal Moon Overlay', body: 'Explains how the current cycle interacts with your own Moon sign rather than giving generic moon advice.', icon: Orbit },
       { title: 'Weekly Rhythm Cues', body: 'Gives three concrete pacing principles for the week ahead instead of vague wellness slogans.', icon: Workflow },
       { title: '7-Day Action Tracker', body: 'Turns the lunar weather into a Monday-through-Sunday plan you can actually use.', icon: CalendarClock },
@@ -1134,7 +1134,7 @@ export const REPORT_LANDING_CONTENT = {
       sections: [
         {
           title: 'Soul calling',
-          body: 'This chart is not built to imitate another person's meaning. It strengthens when belief becomes lived practice instead of borrowed language.',
+          body: 'This chart is not built to imitate another person\'s meaning. It strengthens when belief becomes lived practice instead of borrowed language.',
         },
         {
           title: 'Faith tests',
@@ -1186,7 +1186,7 @@ export const REPORT_LANDING_CONTENT = {
     ctaLabel: 'Generate My Gains Report',
     features: [
       { title: '11th House Gains Logic', body: 'Reads earnings from networks, audience support, and long-term aspiration fulfilment.', icon: TrendingUp },
-      { title: 'Saturn's Role', body: 'Shows how discipline, maturity, and time affect your social and material gains pattern.', icon: Scale },
+      { title: 'Saturn\'s Role', body: 'Shows how discipline, maturity, and time affect your social and material gains pattern.', icon: Scale },
       { title: 'Network Style', body: 'Explains whether your chart gains through visibility, trust, select circles, or broad alliances.', icon: RadioTower },
       { title: 'Aspiration Blocks', body: 'Names where community, ambition, or reciprocity can become strained or uneven.', icon: LockKeyhole },
       { title: 'Gains Windows', body: 'Uses dasha logic to show when payoff, support, and expansion themes become louder.', icon: CalendarClock },
