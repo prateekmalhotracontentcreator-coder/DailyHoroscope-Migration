@@ -154,9 +154,9 @@ function HeroPlayer({ videoUrl, posterUrl, title }) {
   };
 
   return (
-    <div className="flex h-full w-full flex-col bg-black">
+    <div className="flex w-full flex-col bg-black">
       {/* ── Video canvas ── */}
-      <div className="relative flex-1 overflow-hidden">
+      <div className="relative w-full aspect-video lg:aspect-auto lg:h-[calc(75vh-56px)] overflow-hidden" style={{ minHeight: '220px' }}>
         <video
           ref={attachRef}
           key={videoUrl}
@@ -271,12 +271,9 @@ export default function LiveSaiBabaArtiPage() {
       />
 
       {/* ── HERO: Full-viewport immersive player + console ───────────────────── */}
-      <section
-        className="w-full overflow-hidden bg-black aspect-video lg:aspect-auto lg:h-[75vh]"
-        style={{ minHeight: '280px' }}
-      >
+      <section className="w-full bg-black">
         {loading ? (
-          <div className="flex h-full w-full items-center justify-center bg-black">
+          <div className="flex h-[56vw] max-h-[60vh] min-h-[220px] w-full items-center justify-center bg-black">
             <div className="text-center">
               <div className="mx-auto mb-5 h-12 w-12 animate-spin rounded-full border-4 border-gold/25 border-t-gold" />
               <p className="text-sm font-medium tracking-wider text-gold/60">Connecting to Live Arti...</p>
@@ -289,7 +286,7 @@ export default function LiveSaiBabaArtiPage() {
             title={data.title}
           />
         ) : (
-          <div className="flex h-full w-full flex-col items-center justify-center gap-6 bg-gradient-to-br from-black via-[#0d0a05] to-[#191205]">
+          <div className="flex h-[56vw] max-h-[60vh] min-h-[220px] w-full flex-col items-center justify-center gap-6 bg-gradient-to-br from-black via-[#0d0a05] to-[#191205]">
             <div className="grid h-28 w-28 place-items-center rounded-full border border-gold/30 bg-gold/10 text-6xl shadow-[0_0_60px_rgba(197,160,89,0.2)]">
               🙏
             </div>

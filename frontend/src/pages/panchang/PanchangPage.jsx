@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { SEO } from '../../components/SEO';
+import { LiveTVPanel } from '../../components/LiveTVPanel';
 import { Card } from '../../components/ui/card';
 import { PanchangShareCard, ShareButtons } from '../../components/ShareCard';
 import PanchangCosmicMap from '../../components/PanchangCosmicMap';
@@ -1853,6 +1854,7 @@ export const PanchangPage = ({ lang } = {}) => {
 
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 pb-24 lg:pb-10">
+      <LiveTVPanel />
       <PanchangSEO
         view={activeView} calYear={calYear} calMonth={calMonth}
         dateValue={dateValue} festivalData={festivalData}
