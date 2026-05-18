@@ -1262,8 +1262,16 @@ function IndividualReportsPage() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    setSubmitting(true);
     setFormError("");
+
+    // Guard: city picker must be selected (latitude + longitude are required by all backends)
+    const needsBirth = selectedReport.type !== "retrograde_survival" || form.retrograde_mode === "personal";
+    if (needsBirth && (!form.latitude || !form.longitude)) {
+      setFormError("Please select a birth city from the dropdown -- start typing and choose a result.");
+      return;
+    }
+
+    setSubmitting(true);
     try {
       let payload;
       if (selectedReport.type === "retrograde_survival") {

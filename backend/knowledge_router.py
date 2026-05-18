@@ -111,8 +111,14 @@ async def _require_authenticated_user(request: Request, db: AsyncIOMotorDatabase
     return user
 
 
+_USER_CONTEXT_KNOWN_FIELDS: frozenset[str] = frozenset(UserContextProfileDocument.model_fields.keys())
+
+
 def _serialize_user_context_profile(payload: dict[str, Any]) -> dict[str, Any]:
-    return UserContextProfileDocument(**payload).model_dump(
+    # Filter to known schema fields only -- prevents ValidationError from stale
+    # extra keys in MongoDB documents when extra="forbid" is set on StrictDocument.
+    filtered = {k: v for k, v in payload.items() if k in _USER_CONTEXT_KNOWN_FIELDS}
+    return UserContextProfileDocument(**filtered).model_dump(
         mode="json",
         by_alias=True,
         exclude_none=False,
