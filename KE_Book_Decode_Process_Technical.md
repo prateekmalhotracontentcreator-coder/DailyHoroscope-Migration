@@ -184,12 +184,16 @@ This is the preferred path. NotebookLM (NLM) has already processed the source bo
 | **Data Tables doc** | Structured tables of planetary correspondences, lookup tables, grid coordinates, threshold values | Source for lookup-type rules; use tables directly as rule conditions |
 | **JSON Ready doc** | Draft JSON rules already structured in near-ingest format by NLM | Primary working source -- refine, validate fields, add TD-15 fields, fix condition types |
 
+> **CRITICAL -- Branch A is refinement, NOT writing from scratch.**
+> The JSON Ready doc is your starting point. NLM has already extracted the rules. Your job is to complete the NLM draft to the full schema standard -- adding all missing TD-15 fields (`claim_axis`, `claim_polarity`, `timing_bias`, `strength_band`, `subject_scope`, `mutually_exclusive_with`), correcting `condition.type` values to the correct vocabulary for this science, and cross-checking intent against the Summaries doc. Writing rules from scratch when a JSON Ready doc exists is wasted effort and a process violation. If a chapter has a JSON Ready doc, you must start from it.
+
 **Three-document parallel read protocol:**
 1. Open all three docs simultaneously in the decode session.
-2. Start from the JSON Ready doc as primary.
-3. Cross-check every rule's intent against the Summaries doc.
+2. **Start from the JSON Ready doc as your working base -- do not write rules from scratch.**
+3. Cross-check every rule's intent against the Summaries doc. Flag any rule in the JSON doc that is contradicted by or absent from the Summaries doc -- these are NLM extraction errors to correct.
 4. Pull precise values (threshold numbers, star indices, directional codes) from the Data Tables doc.
-5. Flag any rule in the JSON doc that is contradicted by or absent from the Summaries doc -- these are extraction errors.
+5. Add all missing TD-15 fields to every rule.
+6. Correct `condition.type` values to match the valid types for this science (see Part 5).
 
 **Branch A books in the current pipeline:**
 - Sarvato Bhadra Chakra V2 (8 NLM docs -- superset of the triple-doc)
@@ -317,7 +321,8 @@ Before writing a single rule:
 
 ### Step 1 -- Decode the Chapter
 
-**Branch A:** Use the three-document parallel-read protocol (Section 4).  
+**Branch A:** Use the three-document parallel-read protocol (Section 4). Start from the NLM JSON Ready doc -- refine and complete it. Do NOT write rules from scratch. The NLM has already done the extraction; your job is schema completion and quality control.
+
 **Branch B:** Read the PDF, draft rules manually.
 
 For every rule extracted:
@@ -554,6 +559,7 @@ These are the specific failures of the previous Account 2 thread:
 
 | What they did | What to do instead |
 |---|---|
+| **Wrote rules from scratch on a Branch A chapter when a JSON Ready doc existed** | Branch A = refine the NLM JSON. Open the JSON Ready doc first. Add TD-15 fields, fix condition types, cross-check against Summaries. Never start from zero when NLM work already exists. |
 | Wrote rules directly to MongoDB without running a Dry Run | Always run `--dry-run` first. Zero exceptions. |
 | Ignored the Validator; submitted rules with missing TD-15 fields | Run `validate_rules.py` to 0 errors before anything else. |
 | Called new rule creation "upserting" | Upsert = patching an existing rule. New rules = ingesting a new batch. |
