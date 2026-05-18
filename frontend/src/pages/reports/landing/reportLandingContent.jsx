@@ -350,7 +350,7 @@ export const REPORT_LANDING_CONTENT = {
     hook: 'See when new connection is most likely to find an opening in your chart.',
     description:
       'A 90-day Vedic transit forecast highlighting the windows when Venus, Jupiter, and partnership indicators make new encounters more responsive.',
-    ctaPath: '/love-reports',
+    ctaPath: '/love-reports?reportType=encounter-window',
     ctaLabel: 'Generate My Report',
     features: [
       { title: '90-Day Timing Map', body: 'Tracks the next quarter so you can see when romantic movement is building rather than guessing day to day.', icon: CalendarClock },
@@ -414,7 +414,7 @@ export const REPORT_LANDING_CONTENT = {
     hook: 'Know when love feels open, charged, delicate, or worth handling more carefully.',
     description:
       'A 90-day romantic forecast that maps the emotional weather around love, attraction, timing, and relational pacing through Moon, Venus, and Mars cycles.',
-    ctaPath: '/love-reports',
+    ctaPath: '/love-reports?reportType=love-weather',
     ctaLabel: 'Generate My Report',
     features: [
       { title: 'Best Date Windows', body: 'Shows where the month feels naturally warmer, softer, and more emotionally responsive.', icon: HeartHandshake },
@@ -478,7 +478,7 @@ export const REPORT_LANDING_CONTENT = {
     hook: 'Read the Moon as a personal rhythm guide, not just a symbol in the sky.',
     description:
       'A premium lunar wellness reading that links phase, nakshatra, natal Moon sign, and transit house to your energy, mood, rest, and weekly action plan.',
-    ctaPath: '/love-reports',
+    ctaPath: '/love-reports?reportType=lunar-cycle',
     ctaLabel: 'Generate My Report',
     features: [
       { title: 'Phase-by-Phase Guidance', body: 'Translates the current lunar phase into practical support for energy, mood, and decision timing.', icon: MoonStar },
@@ -542,7 +542,7 @@ export const REPORT_LANDING_CONTENT = {
     hook: 'Stop guessing which days feel flat and which ones carry real romantic voltage.',
     description:
       'A daily love battery report showing which days this month support chemistry, closeness, softness, or slower pacing in romance.',
-    ctaPath: '/love-reports',
+    ctaPath: '/love-reports?reportType=date-night',
     ctaLabel: 'Generate My Report',
     features: [
       { title: 'Daily Love Battery', body: 'Scores the relational charge of each day so you can see where emotional and romantic energy actually peaks.', icon: TrendingUp },
@@ -606,7 +606,7 @@ export const REPORT_LANDING_CONTENT = {
     hook: 'See when desire, confidence, and emotional depth are moving together instead of pulling apart.',
     description:
       'A Mars-Venus timing report for intimacy, confidence, chemistry, and emotional depth, grounded in your personal relationship signatures.',
-    ctaPath: '/love-reports',
+    ctaPath: '/love-reports?reportType=intimacy-vitality',
     ctaLabel: 'Generate My Report',
     features: [
       { title: 'Mars-Venus Windows', body: 'Maps the periods when attraction, courage, and emotional closeness intensify together.', icon: Orbit },
@@ -670,7 +670,7 @@ export const REPORT_LANDING_CONTENT = {
     hook: 'See what Venus retrograde is really asking you to review, reclaim, and stop repeating.',
     description:
       'A personalised Venus retrograde reading for love themes, past connections, values, beauty, self-worth, and the relationship patterns coming up for review.',
-    ctaPath: '/love-reports',
+    ctaPath: '/love-reports?reportType=venus-retrograde',
     ctaLabel: 'Generate My Report',
     features: [
       { title: 'Retrograde Status', body: 'Confirms whether Venus retrograde is active and what that means for your current relational timing.', icon: Repeat },
@@ -734,7 +734,7 @@ export const REPORT_LANDING_CONTENT = {
     hook: 'Read partnership timing as a sequence of openings, not one dramatic prophecy.',
     description:
       'A Vedic timing report that highlights Jupiter and Dasha windows most aligned for long-term relationship growth, commitment, and crystallisation.',
-    ctaPath: '/love-reports',
+    ctaPath: '/love-reports?reportType=soulmate-timing',
     ctaLabel: 'Generate My Report',
     features: [
       { title: 'Jupiter Partnership Windows', body: 'Shows the stretches when long-term relational support is more active in your chart.', icon: Telescope },
@@ -798,7 +798,7 @@ export const REPORT_LANDING_CONTENT = {
     hook: 'Understand the karmic relationship pattern your chart keeps trying to resolve.',
     description:
       'A deep natal relationship reading for karmic bonds, emotional resonance, past-life echoes, attachment patterns, and the deeper lesson of connection.',
-    ctaPath: '/love-reports',
+    ctaPath: '/love-reports?reportType=soul-connection',
     ctaLabel: 'Generate My Report',
     features: [
       { title: 'Karmic Relationship Themes', body: 'Surfaces the repeating emotional signatures your chart brings into connection.', icon: Ghost },
