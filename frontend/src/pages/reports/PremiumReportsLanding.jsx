@@ -5,7 +5,6 @@ import { SEO } from "../../components/SEO";
 
 const REPORTS = [
   {
-    type: "karmic_debt",
     slug: "karmic-debt",
     name: "Karmic Debt & Past Life",
     color: "#7f4be0",
@@ -15,7 +14,6 @@ const REPORTS = [
     landingRoute: "/karmic-debt-report",
   },
   {
-    type: "career_blueprint",
     slug: "career-blueprint",
     name: "Career & Success Blueprint",
     color: "#c9961f",
@@ -25,7 +23,6 @@ const REPORTS = [
     landingRoute: "/career-blueprint-report",
   },
   {
-    type: "shadow_self",
     slug: "shadow-self",
     name: "Shadow Self & Hidden Qualities",
     color: "#3f7ae0",
@@ -35,7 +32,6 @@ const REPORTS = [
     landingRoute: "/shadow-self-report",
   },
   {
-    type: "retrograde_survival",
     slug: "retrograde-survival",
     name: "Retrograde Survival Guide",
     color: "#e27c33",
@@ -45,7 +41,6 @@ const REPORTS = [
     landingRoute: "/retrograde-survival-report",
   },
   {
-    type: "life_cycles",
     slug: "life-cycles",
     name: "Pattern of Life Cycles",
     color: "#3fa56a",
@@ -53,6 +48,60 @@ const REPORTS = [
     hook: "Understand the chapter you are in now and the one already rising behind it.",
     what: "Current chapter, sub-cycle, decade arc, and upcoming transitions from your Vimshottari Dasha sequence.",
     landingRoute: "/life-cycles-report",
+  },
+  {
+    slug: "wealth-blueprint",
+    name: "Wealth & Abundance Blueprint",
+    color: "#c8930a",
+    icon: "◈",
+    hook: "See the wealth signals, abundance timing, and Dhana yogas written into your chart.",
+    what: "Dhana yogas, 2nd house strength, Jupiter and Venus influence, and key abundance windows from your Vimshottari Dasha.",
+    landingRoute: "/wealth-blueprint-report",
+  },
+  {
+    slug: "romance-creative",
+    name: "Romance & Creative Intelligence",
+    color: "#d4538a",
+    icon: "✦",
+    hook: "Unlock the romantic and creative intelligence wired into your 5th house.",
+    what: "Romantic timing, creative gifts, 5th lord strength, and the windows where both peak together.",
+    landingRoute: "/romance-creative-report",
+  },
+  {
+    slug: "vitality-health",
+    name: "Vitality & Health Report",
+    color: "#2a9d6f",
+    icon: "⬡",
+    hook: "Read the health rhythm your chart encodes and the periods that need the most care.",
+    what: "6th house analysis, Mars and Saturn influence, vulnerable patterns, and daily rhythm guidance.",
+    landingRoute: "/vitality-health-report",
+  },
+  {
+    slug: "partnership-window",
+    name: "Partnership & Marriage Window",
+    color: "#6b4fbd",
+    icon: "◇",
+    hook: "Find the Vedic marriage timing and see the partnership pattern your 7th house reveals.",
+    what: "Darakaraka, 7th lord, Upapada Lagna, and marriage and commitment dasha windows.",
+    landingRoute: "/partnership-window-report",
+  },
+  {
+    slug: "dharma-purpose",
+    name: "Dharma & Soul Purpose Report",
+    color: "#1e5fa8",
+    icon: "☉",
+    hook: "Trace the dharmic thread running through your chart to the purpose this life is asking you to fulfil.",
+    what: "9th lord, Jupiter strength, Atmakaraka path, and the soul-level direction already written in your chart.",
+    landingRoute: "/dharma-purpose-report",
+  },
+  {
+    slug: "gains-network",
+    name: "Gains & Network Activator",
+    color: "#d46f22",
+    icon: "◆",
+    hook: "See the aspiration fulfilment windows and the social leverage points your 11th house encodes.",
+    what: "11th lord strength, Saturn role in aspiration, key gains dasha windows, and network activation timing.",
+    landingRoute: "/gains-network-report",
   },
 ];
 
@@ -63,10 +112,10 @@ const STEPS = [
 ];
 
 const FAQS = [
-  { q: "What are Individual Vedic Reports?", a: "Five in-depth Vedic astrology reports -- each focused on a single life domain -- generated from your personal birth chart using Swiss Ephemeris computation and Vimshottari Dasha timing. Unlike sun-sign horoscopes, these are calculated specifically for your chart." },
-  { q: "How is this different from my birth chart?", a: "Your birth chart shows the full picture. Each Individual Report is a focused lens on one domain -- karmic patterns, career, shadow work, retrograde timing, or life cycle phase -- giving you depth rather than breadth." },
+  { q: "What are Individual Vedic Reports?", a: "Eleven in-depth Vedic astrology reports -- each focused on a single life domain -- generated from your personal birth chart using Swiss Ephemeris computation and Vimshottari Dasha timing. Unlike sun-sign horoscopes, these are calculated specifically for your chart." },
+  { q: "How is this different from my birth chart?", a: "Your birth chart shows the full picture. Each Individual Report is a focused lens on one domain -- karmic patterns, career, wealth, shadow work, retrograde timing, life cycles, romance, vitality, partnership, dharma, or gains -- giving you depth rather than breadth." },
   { q: "What information do I need to generate a report?", a: "Date of birth, approximate time of birth (within 30 minutes for best accuracy), and city of birth. Time of birth affects house cusps and the Dasha start date significantly." },
-  { q: "Can I generate all five reports?", a: "Yes. Each report is generated independently. You can run one per session or all five -- each request generates a fresh report. Past reports are saved to your account history." },
+  { q: "Can I generate all eleven reports?", a: "Yes. Each report is generated independently. You can run one per session or all eleven -- each request generates a fresh report. Past reports are saved to your account history." },
 ];
 
 export default function PremiumReportsLanding() {
@@ -84,8 +133,8 @@ export default function PremiumReportsLanding() {
   return (
     <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_left,rgba(127,75,224,0.18),transparent_40%),radial-gradient(ellipse_at_top_right,rgba(201,150,31,0.14),transparent_36%),linear-gradient(180deg,#f9f3ea_0%,#efe4d2_60%,#e8ddc8_100%)] text-stone-900">
       <SEO
-        title="Individual Vedic Reports -- Karmic Debt, Career, Shadow Self & More"
-        description="Five in-depth Vedic astrology reports generated from your personal birth chart. Karmic Debt, Career Blueprint, Shadow Self, Retrograde Survival Guide, and Life Cycles -- each calculated to arc-minute precision with Swiss Ephemeris."
+        title="Individual Vedic Reports -- Karmic, Career, Wealth, Dharma & More"
+        description="Eleven in-depth Vedic astrology reports generated from your personal birth chart -- Karmic Debt, Career Blueprint, Shadow Self, Retrograde Survival, Life Cycles, Wealth Blueprint, Romance, Vitality, Partnership, Dharma, and Gains. Each calculated to arc-minute precision with Swiss Ephemeris."
         url="https://www.everydayhoroscope.in/individual-reports"
         schema={{
           "@context": "https://schema.org",
@@ -103,13 +152,13 @@ export default function PremiumReportsLanding() {
         <p className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-amber-700/70">Premium Vedic Reports</p>
         <h1 className="mb-4 font-cinzel text-4xl font-bold leading-tight text-stone-900 sm:text-5xl">
           Your Chart,{" "}
-          <span className="text-[#c9961f]">Five Lenses</span>
+          <span className="text-[#c9961f]">Eleven Lenses</span>
         </h1>
         <p className="mx-auto mb-2 max-w-2xl font-playfair text-lg italic text-stone-600">
           Not a sun-sign reading. Not a template. A report generated specifically from your birth chart -- calculated to arc-minute precision.
         </p>
         <p className="mx-auto mb-10 max-w-xl text-sm text-stone-500">
-          Swiss Ephemeris · Lahiri Ayanamsha · Vimshottari Dasha timing · Five focused domains
+          Swiss Ephemeris · Lahiri Ayanamsha · Vimshottari Dasha timing · Eleven focused domains
         </p>
         <button
           onClick={handleCTA}
@@ -133,7 +182,7 @@ export default function PremiumReportsLanding() {
       {/* ── 5 Report Tiles ── */}
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <h2 className="mb-8 text-center font-playfair text-2xl font-semibold text-stone-800">
-          Five Reports. Five Domains of Your Life.
+          Eleven Reports. Eleven Domains of Your Life.
         </h2>
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {REPORTS.map((r) => (
@@ -163,7 +212,7 @@ export default function PremiumReportsLanding() {
           <div
             className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#c9961f]/40 bg-[#c9961f]/[0.04] p-6 text-center"
           >
-            <p className="mb-2 font-playfair text-base font-semibold text-stone-700">All five included with Premium</p>
+            <p className="mb-2 font-playfair text-base font-semibold text-stone-700">All eleven included with Premium</p>
             <p className="mb-4 text-xs text-stone-500">Generate any report, any time. History saved automatically.</p>
             <button
               onClick={handleCTA}
@@ -238,7 +287,7 @@ export default function PremiumReportsLanding() {
         <p className="mb-2 font-cinzel text-xs uppercase tracking-[0.3em] text-amber-400/80">Ready to begin</p>
         <h2 className="mb-4 font-cinzel text-3xl font-bold">See What Your Chart Really Says</h2>
         <p className="mx-auto mb-8 max-w-xl text-sm leading-7 text-stone-300">
-          Five reports. One birth chart. Infinite clarity. Available to all Premium members with no extra cost per report.
+          Eleven reports. One birth chart. Infinite clarity. Available to all Premium members with no extra cost per report.
         </p>
         <button
           onClick={handleCTA}
