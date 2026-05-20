@@ -1,463 +1,901 @@
-import React, { useEffect, useRef, useState } from 'react';
+// ─────────────────────────────────────────────────────────────────────────────
+// TheStrategistLandingPage.jsx
+// STR-R2-A · Public Landing V1
+//
+// Fresh design, 9 sections. Replaces the previous Codex draft in full.
+// Delivered by Claude Design 2026-05-20. Integrated by Claude Code.
+// ─────────────────────────────────────────────────────────────────────────────
+
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, ChevronDown } from 'lucide-react';
+import {
+  ArrowRight, ChevronDown,
+  Trophy, ListChecks, Clock, AlertTriangle, Zap,
+} from 'lucide-react';
+
 import { SEO } from '../../components/SEO';
 import { useAuth } from '../../context/AuthContext';
+import { cn } from '../../lib/utils';
 
-const LOGIN_REDIRECT = { state: { from: { pathname: '/strategist' } } };
+import {
+  StrategistThemeProvider, useStrategistTheme,
+} from '../../components/strategist/StrategistThemeProvider';
+import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
+import { StrategistGoldSeal } from '../../components/strategist/StrategistGoldSeal';
+import { ControlRoomBackdrop } from '../../components/strategist/ControlRoomBackdrop';
+import { GlassCard } from '../../components/strategist/GlassCard';
+
+import '../../styles/strategist-tokens.css';
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Locked copy
+// ─────────────────────────────────────────────────────────────────────────────
+const HERO = {
+  headline: 'Run your career like a war room.',
+  subhead:  'KP Oracle decides your entry. Dashas time your missions. You command the war room.',
+};
+
+const ORACLE_PROMPT = 'What weighs on your career most right now?';
+
+const PROBLEMS = [
+  {
+    n: '01',
+    title: "You're working hard at the wrong thing.",
+    body: 'Without a Dasha-aware compass, effort is mistimed. The right action in the wrong sub-period returns nothing.',
+  },
+  {
+    n: '02',
+    title: "You're carrying debts you can't see.",
+    body: 'Pitru-Rin and karmic blockers compound silently. Strategy that ignores ancestral debt under-reads every result.',
+  },
+  {
+    n: '03',
+    title: "Your remedies need people you can't reach.",
+    body: "Many Vedic remedies require a Command-Planet relative. When they're absent, the Surrogate Bridge takes over.",
+  },
+];
 
 const LAYERS = [
+  { n: '05', name: 'Golden Hour Windows', sub: 'Live ephemeris timing for offensive vs. defensive lanes.',    Icon: Clock },
+  { n: '04', name: 'Pitru-Rin Status',    sub: 'Ancestral debt ledger. Until cleared, results under-read.',  Icon: AlertTriangle },
+  { n: '03', name: 'Dasha Timeline',      sub: 'Mahadasha · Antardasha · Pratyantar -- what governs each day.', Icon: Zap },
+  { n: '02', name: 'Mission Board',       sub: 'Sub-Lord-routed missions across 9 strategic parameters.',    Icon: ListChecks },
+  { n: '01', name: 'Conquest Score',      sub: 'The single number that summarises strategic standing.',      Icon: Trophy },
+];
+
+const MECHANISMS = [
+  { n: 'I',   title: 'Missions',  body: 'Each mission carries a Command Planet, a 9-parameter schema, decision logic and a pivot rule.' },
+  { n: 'II',  title: 'Pitru-Rin', body: 'Surfaces ancestral debt blocking the current Dasha. Cleared first, before any offensive mission runs.' },
+  { n: 'III', title: 'Surrogate', body: "When a Command-Planet relative is absent, the Surrogate Bridge maps the remedy to an available stand-in." },
+];
+
+const CREDIBILITY = [
+  'KP Sub-Lord Theory',
+  'Brihat Parashara Hora Shastra',
+  'Lal Kitab',
+  'Vimshottari Dasha',
+  'Live Swiss Ephemeris',
+];
+
+const FAQ = [
   {
-    badge: 'Layer 0',
-    title: 'The Oracle Gate',
-    body: 'Ask Krishna before any campaign. YES unlocks the War Room. WAIT triggers a remedy sequence. NO or PRAY activates specific recovery protocols.',
-    accent: 'border-gold/30 bg-gold/[0.08]',
+    q: 'Do I need to be a Vedic astrology expert?',
+    a: 'No. The Strategist speaks in plain strategic language -- Mission, Dasha, Window, Remedy -- and only renders the underlying KP / Lal Kitab logic when you ask for it.',
   },
   {
-    badge: 'Layer 1',
-    title: 'Astrology Engine',
-    body: 'Your Vedic birth chart powers live dasha timing, command planet, and power-direction strategy inside the dashboard.',
-    accent: 'border-white/10 bg-white/[0.03]',
+    q: 'Is this guaranteed?',
+    a: 'No. The system is diagnostic, not deterministic. It surfaces the strategic shape of a window. You still run the play.',
   },
   {
-    badge: 'Layer 2',
-    title: 'Lal Kitab 5-Gate Diagnostic',
-    body: 'Karmic debt, dormant houses, Mercury collisions, year-lord timing, and geography alignment stay visible in one diagnosis rail.',
-    accent: 'border-white/10 bg-white/[0.03]',
+    q: 'What is Gate 0?',
+    a: 'A free KP Oracle reading on a single career question. The reading returns one of four verdicts -- YES, WAIT, NO, PRAY -- and routes you accordingly.',
   },
   {
-    badge: 'Layer 3',
-    title: 'Strategist Engine',
-    body: 'Transit-triggered missions, hurdle alerts, Golden Hour state changes, and surrogate pivots convert the chart into operating intelligence.',
-    accent: 'border-white/10 bg-white/[0.03]',
+    q: 'Can I use The Strategist without completing KP Oracle?',
+    a: 'No. The Oracle is the gate. Until you have a verdict, the War Room is locked.',
   },
   {
-    badge: 'Layer 4',
-    title: '43-Day Remedy Roadmap',
-    body: 'Mission pivot actions and LK remedies merge into one execution sequence with streak tracking and debt-clearance momentum.',
-    accent: 'border-white/10 bg-white/[0.03]',
+    q: 'How is this different from horoscopes?',
+    a: 'A horoscope describes weather. The Strategist routes missions, tracks debts, and gates entry on diagnosis. It is a command system, not a forecast.',
   },
   {
-    badge: 'Layer 5',
-    title: 'Premium Executive Brief',
-    body: 'A polished strategist report packages conquest probability, Gate 0 verdict, timeline, and tactical recommendations into one premium layer.',
-    accent: 'border-gold/30 bg-gradient-to-br from-gold/12 to-gold/[0.03]',
+    q: "What happens if my Command Planet's relative isn't available?",
+    a: 'The Surrogate Bridge maps the required remedy to a substitute relation, preserving the karmic vector. Detailed inside the War Room.',
+  },
+  {
+    q: 'Is there a free tier?',
+    a: 'Yes -- the Gate 0 oracle reading is free. The War Room is Premium and only opens after the verdict permits it.',
   },
 ];
 
-const WAR_STATES = [
-  { icon: '⚔️', title: 'OFFENSIVE', sub: 'Rituals Open', tone: 'border-gold/25 bg-gold/[0.08]', color: '#FFD700 glow' },
-  { icon: '🌅', title: 'GOLDEN HOUR', sub: 'Act Now — 30min window', tone: 'border-orange-500/25 bg-orange-500/[0.08]', color: '#FFC42E→#FF3131 pulse' },
-  { icon: '🌙', title: 'DEFENSIVE', sub: 'Rituals Locked', tone: 'border-slate-700/60 bg-slate-950/80', color: '#000B1E bg' },
-];
-
-const SCORE_TIERS = [
-  { range: '85–99%', title: 'Sovereign Dominance', sub: 'Expansion / All-In', tone: 'border-emerald-500/35 bg-emerald-500/10 text-emerald-300' },
-  { range: '60–84%', title: 'Operational Friction', sub: 'Patch & Pivot', tone: 'border-amber-500/35 bg-amber-500/10 text-amber-300' },
-  { range: '40–59%', title: 'Strategic Siege', sub: 'Hold Ground / Remedy', tone: 'border-orange-500/35 bg-orange-500/10 text-orange-300' },
-  { range: '0–39%', title: 'Karmic Lockdown', sub: 'Withdraw / Full Reset', tone: 'border-red-500/35 bg-red-500/10 text-red-300' },
-];
-
-const GATE_PATHS = [
-  { icon: '✅', title: 'YES', body: 'War Room unlocked' },
-  { icon: '⏳', title: 'WAIT', body: 'Pre-Flight remedy plan' },
-  { icon: '🛑', title: 'NO', body: 'Score to 60%' },
-  { icon: '🙏', title: 'PRAY', body: 'Full Surrender path' },
-];
-
-const STATS = [
-  { value: '361', label: 'LK Remedy Rules' },
-  { value: '462', label: 'Strategist Mission Rules' },
-  { value: '43', label: 'Days per Cycle' },
-];
-
-function StrategistStarField({ opacity = 0.62 }) {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return undefined;
-
-    const context = canvas.getContext('2d');
-    let frameId = 0;
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    const stars = Array.from({ length: 135 }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      radius: Math.random() * 1.6 + 0.25,
-      speed: Math.random() * 0.008 + 0.002,
-      phase: Math.random() * Math.PI * 2,
-    }));
-
-    const draw = (time) => {
-      context.clearRect(0, 0, canvas.width, canvas.height);
-      stars.forEach((star) => {
-        const alpha = 0.24 + 0.72 * Math.abs(Math.sin(time * star.speed + star.phase));
-        context.beginPath();
-        context.arc(star.x * canvas.width, star.y * canvas.height, star.radius, 0, Math.PI * 2);
-        context.fillStyle = `rgba(197,160,89,${alpha * opacity})`;
-        context.fill();
-      });
-      frameId = requestAnimationFrame(draw);
-    };
-
-    frameId = requestAnimationFrame(draw);
-
-    return () => {
-      cancelAnimationFrame(frameId);
-      window.removeEventListener('resize', resize);
-    };
-  }, [opacity]);
-
-  return <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 h-full w-full" />;
-}
-
-function formatFormValue(value) {
-  if (!value) return '';
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) return value;
-  return parsed.toISOString().slice(0, 10);
-}
-
-export default function TheStrategistLandingPage() {
-  const navigate = useNavigate();
-  const { user } = useAuth();
-  const [form, setForm] = useState({
-    name: '',
-    dob: '',
-    tob: '',
-    tob_unknown: false,
-    city: '',
-  });
-  const layersRef = useRef(null);
-
-  const schema = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebPage',
-        '@id': 'https://www.everydayhoroscope.in/the-strategist#webpage',
-        name: 'The Strategist — Premium Integrated Vedic Career Mentor',
-        description: 'Bloomberg Terminal for Karma. 823 Lal Kitab rules, Krishna Prashnavali Gate 0 oracle, Conquest Probability scoring, transit-triggered missions, and 43-day remedy roadmap.',
-        url: 'https://www.everydayhoroscope.in/the-strategist',
-        isPartOf: { '@id': 'https://www.everydayhoroscope.in/#website' },
-        publisher: { '@id': 'https://www.everydayhoroscope.in/#organization' },
-        breadcrumb: {
-          '@type': 'BreadcrumbList',
-          itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.everydayhoroscope.in' },
-            { '@type': 'ListItem', position: 2, name: 'The Strategist', item: 'https://www.everydayhoroscope.in/the-strategist' },
-          ],
-        },
-      },
-      {
-        '@type': 'Service',
-        '@id': 'https://www.everydayhoroscope.in/the-strategist#service',
-        name: 'The Strategist — Premium Integrated Vedic Career Mentor',
-        description: 'Premium career and business intelligence combining Lal Kitab diagnostics, Krishna Prashnavali oracle, and Vedic birth chart analysis into a live war room with 823 rules, Conquest Probability scoring, and 43-day remedy protocols.',
-        provider: { '@id': 'https://www.everydayhoroscope.in/#organization' },
-        serviceType: 'Vedic Astrology Career Consulting',
-        areaServed: 'IN',
-        offers: {
-          '@type': 'Offer',
-          price: '1599',
-          priceCurrency: 'INR',
-          description: 'Premium Monthly subscription',
-        },
-      },
-    ],
-  };
-
-  function goToWarRoom() {
-    if (user) {
-      navigate('/strategist');
-      return;
-    }
-    navigate('/login', LOGIN_REDIRECT);
-  }
-
-  function updateField(key, value) {
-    setForm((current) => ({ ...current, [key]: value }));
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const payload = {
-      name: form.name.trim(),
-      dob: formatFormValue(form.dob),
-      tob: form.tob_unknown ? '' : form.tob,
-      tob_unknown: form.tob_unknown,
-      city: form.city.trim(),
-      timestamp: Date.now(),
-    };
-
-    localStorage.setItem('strategist-profile-draft', JSON.stringify(payload));
-    goToWarRoom();
-  }
-
+// ─────────────────────────────────────────────────────────────────────────────
+// Small reusable atoms
+// ─────────────────────────────────────────────────────────────────────────────
+function Eyebrow({ children, className }) {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      <SEO
-        title="The Strategist — Premium Vedic Career Mentor | War Room"
-        description="Bloomberg Terminal for Karma. 823 Lal Kitab rules, Krishna Prashnavali oracle, and live Vedic birth chart intelligence — all in one war room for founders and executives."
-        url="https://www.everydayhoroscope.in/the-strategist"
-        schema={schema}
-      />
+    <div className={cn(
+      'font-cinzel text-[11px] font-semibold uppercase tracking-[0.22em]',
+      'text-[color:var(--strategist-gold)]',
+      className,
+    )}>
+      {children}
+    </div>
+  );
+}
 
-      <style>{`
-        .strategist-shell {
-          background:
-            radial-gradient(circle at 16% 18%, rgba(197,160,89,0.18), transparent 24%),
-            radial-gradient(circle at 82% 12%, rgba(249,115,22,0.12), transparent 20%),
-            linear-gradient(180deg, #050b15 0%, #09111d 44%, #111925 100%);
-        }
-        .strategist-reveal {
-          opacity: 0;
-          transform: translateY(24px);
-          animation: strategistReveal 0.8s ease forwards;
-        }
-        @keyframes strategistReveal {
-          from {
-            opacity: 0;
-            transform: translateY(24px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+function SectionHead({ kicker, title, sub, center }) {
+  return (
+    <div className={cn(
+      'flex flex-col gap-2 max-w-[760px]',
+      center && 'mx-auto text-center',
+    )}>
+      <Eyebrow>{kicker}</Eyebrow>
+      <h2 className={cn(
+        'font-cinzel font-medium leading-[1.08] tracking-[-0.005em]',
+        'text-[1.875rem] md:text-[2.75rem]',
+        'text-[color:var(--strategist-text-primary)]',
+        'mt-1.5',
+      )}>{title}</h2>
+      {sub && (
+        <p className={cn(
+          'font-playfair italic leading-[1.5] mt-1.5',
+          'text-base md:text-[1.1875rem]',
+          'text-[color:var(--strategist-text-muted)]',
+        )}>{sub}</p>
+      )}
+    </div>
+  );
+}
 
-      <div className="strategist-shell relative overflow-hidden">
-        <StrategistStarField />
-        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <div className="relative rounded-[34px] border border-gold/15 bg-black/10 px-6 py-12 shadow-[0_35px_120px_rgba(2,6,23,0.35)] backdrop-blur-[2px] sm:px-10 lg:px-12">
-            <div className="pointer-events-none absolute inset-0 rounded-[34px] bg-[radial-gradient(circle_at_50%_18%,rgba(197,160,89,0.18),transparent_26%)]" />
-            <div className="relative max-w-4xl strategist-reveal">
-              <div className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-gold/[0.06] px-4 py-2 text-xs uppercase tracking-[0.3em] text-gold/80">
-                <span>⚔️</span>
-                <span>Premium Integrated Vedic Career Mentor</span>
-              </div>
-              <h1 className="mt-6 text-5xl font-cinzel text-foreground sm:text-6xl lg:text-7xl">The Strategist</h1>
-              <p className="mt-5 max-w-3xl text-lg font-playfair leading-8 text-white/76 sm:text-xl">
-                Bloomberg Terminal for Karma. 823 Rules. Six Intelligence Layers. One War Room.
-              </p>
-              <p className="mt-5 max-w-3xl text-base leading-8 text-white/70 sm:text-lg">
-                A business intelligence system for founders, executives, and professionals. Your Vedic birth chart powers live missions, strategic timing, and karmic diagnostics — all in one command centre.
-              </p>
-              <div className="mt-9 flex flex-wrap gap-3">
-                <button
-                  type="button"
-                  onClick={goToWarRoom}
-                  className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-stone-950 transition hover:bg-gold/90"
-                >
-                  Enter the War Room <ArrowRight className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => layersRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-white/[0.06]"
-                >
-                  See How It Works <ChevronDown className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-          </div>
+function PrimaryCTA({ children, onClick, size = 'md', className }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        'inline-flex items-center gap-2.5 rounded-full',
+        'bg-gold text-[#1b1610] font-cinzel font-semibold uppercase',
+        'tracking-[0.14em]',
+        'shadow-[0_1px_2px_rgba(0,0,0,0.10),0_0_0_1px_rgba(197,160,89,0.30)]',
+        'hover:bg-gold-hover transition-colors',
+        size === 'lg' ? 'px-9 py-[18px] text-[17px]' : 'px-[26px] py-[14px] text-sm',
+        className,
+      )}
+    >
+      {children}
+      <ArrowRight className="opacity-70" size={size === 'lg' ? 16 : 14} />
+    </button>
+  );
+}
 
-          <div className="mt-10 grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
-            <div className="strategist-reveal rounded-[30px] border border-gold/15 bg-card/90 p-6 shadow-[0_25px_90px_rgba(2,6,23,0.18)] sm:p-8" style={{ animationDelay: '120ms' }}>
-              <p className="text-[11px] uppercase tracking-[0.28em] text-gold/70">Begin Your Karmic Intelligence Profile</p>
-              <h2 className="mt-3 text-3xl font-cinzel text-foreground">30 seconds. Pre-loaded into your War Room after login.</h2>
-              <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <label className="space-y-2">
-                    <span className="text-xs uppercase tracking-[0.24em] text-white/48">Name</span>
-                    <input
-                      type="text"
-                      value={form.name}
-                      onChange={(event) => updateField('name', event.target.value)}
-                      className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition focus:border-gold/55"
-                      placeholder="Your full name"
-                      required
-                    />
-                  </label>
-                  <label className="space-y-2">
-                    <span className="text-xs uppercase tracking-[0.24em] text-white/48">Date of Birth</span>
-                    <input
-                      type="date"
-                      value={form.dob}
-                      onChange={(event) => updateField('dob', event.target.value)}
-                      className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition focus:border-gold/55"
-                      required
-                    />
-                  </label>
-                  <label className="space-y-2">
-                    <span className="text-xs uppercase tracking-[0.24em] text-white/48">Time of Birth</span>
-                    <input
-                      type="time"
-                      value={form.tob}
-                      onChange={(event) => updateField('tob', event.target.value)}
-                      disabled={form.tob_unknown}
-                      className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition disabled:cursor-not-allowed disabled:opacity-60 focus:border-gold/55"
-                      required={!form.tob_unknown}
-                    />
-                  </label>
-                  <label className="space-y-2">
-                    <span className="text-xs uppercase tracking-[0.24em] text-white/48">City of Birth</span>
-                    <input
-                      type="text"
-                      value={form.city}
-                      onChange={(event) => updateField('city', event.target.value)}
-                      className="w-full rounded-2xl border border-white/10 bg-[#09111e] px-4 py-3 text-sm text-white outline-none transition focus:border-gold/55"
-                      placeholder="City, State"
-                      required
-                    />
-                  </label>
-                </div>
+function GhostCTA({ children, href = '#problem', size = 'md', className }) {
+  return (
+    <a
+      href={href}
+      className={cn(
+        'inline-flex items-center gap-2 rounded-full',
+        'font-cinzel font-medium uppercase tracking-[0.14em]',
+        'border border-[color:var(--strategist-card-border)]',
+        'text-[color:var(--strategist-text-primary)]',
+        'hover:border-gold/50 hover:text-[color:var(--strategist-gold)] transition-colors',
+        size === 'lg' ? 'px-8 py-[17px] text-[15px]' : 'px-[22px] py-[13px] text-xs',
+        className,
+      )}
+    >
+      {children}
+    </a>
+  );
+}
 
-                <label className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
-                  <input
-                    type="checkbox"
-                    checked={form.tob_unknown}
-                    onChange={(event) => updateField('tob_unknown', event.target.checked)}
-                    className="mt-1 h-4 w-4 rounded border-gray-300 text-gold focus:ring-gold"
-                  />
-                  <span className="text-sm text-muted-foreground">I don&apos;t know my birth time</span>
-                </label>
+function DiamondDot({ className }) {
+  return (
+    <span
+      aria-hidden
+      className={cn('text-[10px] leading-none text-[color:var(--strategist-gold)] opacity-70', className)}
+    >&#9670;</span>
+  );
+}
 
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-stone-950 transition hover:bg-gold/90"
-                >
-                  Start My Intelligence Profile <ArrowRight className="h-4 w-4" />
-                </button>
-              </form>
-
-              <button
-                type="button"
-                onClick={() => navigate('/login', LOGIN_REDIRECT)}
-                className="mt-5 text-sm text-gold transition hover:text-gold/85"
-              >
-                Already have an account? Sign in →
-              </button>
-            </div>
-
-            <div className="strategist-reveal grid gap-4" style={{ animationDelay: '220ms' }}>
-              <div className="rounded-[28px] border border-gold/15 bg-card/90 p-6">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-gold/70">The War Room Never Sleeps</p>
-                <div className="mt-5 grid gap-3 md:grid-cols-3">
-                  {WAR_STATES.map((state) => (
-                    <div key={state.title} className={`rounded-2xl border p-4 ${state.tone}`}>
-                      <p className="text-sm font-semibold text-foreground">{state.icon} {state.title}</p>
-                      <p className="mt-2 text-sm text-muted-foreground">{state.sub}</p>
-                      <p className="mt-3 text-xs uppercase tracking-[0.2em] text-muted-foreground">{state.color}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                  The War Room state changes with sunset. Golden Hour is your 30-minute execution window.
-                </p>
-              </div>
-
-              <div className="rounded-[28px] border border-gold/15 bg-card/90 p-6">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-gold/70">823 Rules. Mapped to Your Chart.</p>
-                <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                  {STATS.map((stat) => (
-                    <div key={stat.label} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 text-center">
-                      <p className="text-3xl font-bold text-gold">{stat.value}</p>
-                      <p className="mt-2 text-sm text-muted-foreground">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                  361 Lal Kitab remedy records and 462 strategist mission rules combine into one guided command system for timing, action, and karmic recovery.
-                </p>
-              </div>
-            </div>
-          </div>
+// ─────────────────────────────────────────────────────────────────────────────
+// Top nav
+// ─────────────────────────────────────────────────────────────────────────────
+function TopNav({ onSignIn }) {
+  const { mode } = useStrategistTheme();
+  const isDark = mode !== 'light';
+  return (
+    <header className={cn(
+      'sticky top-0 z-20 flex items-center justify-between',
+      'px-5 py-3.5 md:px-14 md:py-5',
+      'backdrop-blur-md',
+      'border-b border-[color:var(--strategist-card-border)]',
+      isDark ? 'bg-[#0a0d14]/70' : 'bg-[hsl(var(--background))]/70',
+    )}>
+      <div className="flex items-center gap-2.5">
+        <StrategistGoldSeal size={28} />
+        <div className="flex flex-col leading-none">
+          <span className="font-cinzel text-sm font-semibold tracking-[0.10em] text-[color:var(--strategist-text-primary)]">
+            The Strategist
+          </span>
+          <span className="font-playfair italic text-[11px] mt-0.5 text-[color:var(--strategist-text-muted)]">
+            Everyday Horoscope
+          </span>
         </div>
       </div>
 
-      <div ref={layersRef} className="mx-auto max-w-7xl space-y-10 px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-[30px] border border-gold/15 bg-card/90 p-6 shadow-[0_25px_90px_rgba(2,6,23,0.18)] sm:p-8">
-            <p className="text-[11px] uppercase tracking-[0.28em] text-gold/70">Six Layers of Intelligence. Zero Guesswork.</p>
-            <div className="mt-6 space-y-4">
-              {LAYERS.map((layer, index) => (
-                <div key={layer.title} className={`rounded-[24px] border p-5 strategist-reveal ${layer.accent}`} style={{ animationDelay: `${120 + index * 100}ms` }}>
-                  <div className="flex items-center gap-3">
-                    <span className="rounded-full border border-gold/20 bg-gold/[0.06] px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-gold">
-                      {layer.badge}
-                    </span>
-                    {index === 5 ? <span className="rounded-full border border-gold/30 bg-gold/12 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-gold">Premium</span> : null}
-                  </div>
-                  <p className="mt-3 text-xl font-cinzel text-foreground">{layer.title}</p>
-                  <p className="mt-2 text-sm leading-7 text-muted-foreground">{layer.body}</p>
-                </div>
-              ))}
+      <div className="flex items-center gap-2 md:gap-3.5">
+        <nav className="hidden md:flex gap-[18px] mr-2.5">
+          {[
+            ['How it works', '#problem'],
+            ['KP Oracle',    '#gating'],
+            ['War Room',     '#layers'],
+            ['FAQ',          '#faq'],
+          ].map(([label, href]) => (
+            <a key={label} href={href} className="font-cinzel text-[11px] font-medium uppercase tracking-[0.16em] text-[color:var(--strategist-text-muted)] hover:text-[color:var(--strategist-gold)] transition-colors">
+              {label}
+            </a>
+          ))}
+        </nav>
+        <StrategistThemeToggle />
+        <button
+          type="button"
+          onClick={onSignIn}
+          className="font-cinzel text-[11px] font-semibold uppercase tracking-[0.18em] text-[color:var(--strategist-gold)] px-3.5 py-2 rounded-full border border-gold/35 hover:bg-gold/10 transition-colors"
+        >
+          Sign in
+        </button>
+      </div>
+    </header>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section 1 -- Hero
+// ─────────────────────────────────────────────────────────────────────────────
+function SecHero({ onEnter }) {
+  return (
+    <section
+      id="hero"
+      className="px-5 py-9 md:px-20 md:pt-24 md:pb-20 grid items-center gap-8 md:gap-16 md:grid-cols-[1.15fr_0.85fr] md:min-h-[88vh]"
+    >
+      <div className="order-2 md:order-1">
+        <Eyebrow>The Strategist &middot; Premium</Eyebrow>
+        <h1 className="font-cinzel font-medium leading-[1.05] tracking-[-0.005em] text-[38px] md:text-[64px] mt-3.5 mb-4 text-pretty text-[color:var(--strategist-text-primary)]">
+          {HERO.headline}
+        </h1>
+        <p className="font-playfair italic text-[17px] md:text-[21px] leading-[1.45] max-w-[560px] text-[color:var(--strategist-text-muted)]">
+          {HERO.subhead}
+        </p>
+
+        <div className="flex flex-wrap gap-3.5 mt-8">
+          <PrimaryCTA size="lg" onClick={onEnter}>Enter the War Room</PrimaryCTA>
+          <GhostCTA size="lg" href="#problem">See how it works</GhostCTA>
+        </div>
+
+        <div className="flex flex-wrap gap-x-5 gap-y-2.5 mt-8">
+          {[
+            'Gated by KP Oracle',
+            'Vimshottari Dasha aware',
+            'No LLM guesswork',
+          ].map((t) => (
+            <div key={t} className="flex items-center gap-2 font-cinzel text-[10.5px] font-medium uppercase tracking-[0.16em] text-[color:var(--strategist-text-muted)]">
+              <DiamondDot />
+              {t}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="order-1 md:order-2 grid place-items-center">
+        <HeroSeal />
+      </div>
+    </section>
+  );
+}
+
+function HeroSeal() {
+  return (
+    <div className="relative grid place-items-center w-[200px] h-[200px] md:w-[320px] md:h-[320px]">
+      <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full" aria-hidden>
+        <defs>
+          <radialGradient id="hexg" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"   stopColor="#C5A059" stopOpacity="0.12" />
+            <stop offset="65%"  stopColor="#C5A059" stopOpacity="0.02" />
+            <stop offset="100%" stopColor="#C5A059" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+        <polygon points="100,8 180,52 180,148 100,192 20,148 20,52"
+          fill="url(#hexg)" stroke="#C5A059" strokeOpacity="0.45" strokeWidth="1" />
+        <polygon points="100,28 162,64 162,136 100,172 38,136 38,64"
+          fill="none" stroke="#C5A059" strokeOpacity="0.18" strokeWidth="1" />
+      </svg>
+      <StrategistGoldSeal size={96} rotating className="md:hidden" />
+      <StrategistGoldSeal size={160} rotating className="hidden md:inline-block" />
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section 2 -- The Problem
+// ─────────────────────────────────────────────────────────────────────────────
+function SecProblem() {
+  return (
+    <section id="problem" className="px-5 py-14 md:px-20 md:py-[110px]">
+      <SectionHead
+        kicker="&#9670; The Problem &middot; Why most systems fail"
+        title="Three strategic failures."
+        sub="The Strategist is built to solve all three -- using Vedic diagnostics, not motivational copy."
+      />
+      <div className="grid gap-3.5 md:gap-5 md:grid-cols-3 mt-6 md:mt-11">
+        {PROBLEMS.map((it) => (
+          <GlassCard key={it.n} className="p-6 md:p-7">
+            <div className="font-strategist-mono text-[11px] tracking-[0.20em] text-[color:var(--strategist-gold)] mb-4">
+              {it.n} / 03
+            </div>
+            <h3 className="font-cinzel text-xl font-medium leading-[1.25] mb-3 text-[color:var(--strategist-text-primary)]">
+              {it.title}
+            </h3>
+            <p className="font-playfair text-[15px] leading-[1.6] text-[color:var(--strategist-text-muted)]">
+              {it.body}
+            </p>
+          </GlassCard>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section 3 -- The Gating Model
+// ─────────────────────────────────────────────────────────────────────────────
+function SecGating({ onBeginReading }) {
+  return (
+    <section id="gating" className="px-5 py-14 md:px-20 md:py-[110px]">
+      <SectionHead
+        kicker="&#9670; The Gating Model &middot; Signature"
+        title="Entry is by oracle, not by payment."
+        sub="The Strategist gates on diagnosis. You only enter the War Room when the KP Oracle returns the right verdict."
+      />
+
+      <div className="mt-7 md:mt-11 mb-7 md:mb-10">
+        <OraclePromptSlot onBegin={onBeginReading} />
+      </div>
+
+      <div className="grid gap-3.5 md:gap-4 md:grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch">
+        <GateStep n="01" name="KP Oracle 18x18"
+          desc="Ask Krishna one question. The 18x18 sub-lord matrix returns a verdict from the live ephemeris." />
+        <FlowArrow />
+        <GateStep n="02" name="Gate 0 Verdict" highlight
+          desc="YES · WAIT · NO · PRAY. Each verdict routes you to a different next surface. Only YES opens the War Room." />
+        <FlowArrow />
+        <GateStep n="03" name="The War Room"
+          desc="Five layers unlock: Conquest Score, Mission Board, Dasha Timeline, Pitru-Rin Status, Golden Hour windows." />
+      </div>
+
+      <div className="mt-7 md:mt-11 text-center">
+        <div className="font-cinzel font-medium leading-[1.3] tracking-[0.02em] text-lg md:text-[26px] max-w-[660px] mx-auto text-[color:var(--strategist-text-primary)]">
+          <DiamondDot />&nbsp; "Entry is by oracle, not by payment." &nbsp;<DiamondDot />
+        </div>
+        <div className="font-playfair italic text-[13px] mt-2 text-[color:var(--strategist-text-muted)]">
+          Gate 0 is free. The War Room is Premium -- but only opens after the verdict.
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OraclePromptSlot({ onBegin }) {
+  return (
+    <GlassCard variant="highlight" className="relative overflow-hidden p-5 md:p-8 max-w-[880px] mx-auto">
+      <div className="grid gap-4 md:gap-7 md:grid-cols-[auto_1fr_auto] items-center">
+        <div className="grid place-items-center">
+          <StrategistGoldSeal size={56} className="md:hidden" />
+          <StrategistGoldSeal size={72} className="hidden md:inline-block" />
+        </div>
+        <div>
+          <div className="font-cinzel text-[10px] font-semibold uppercase tracking-[0.26em] text-[color:var(--strategist-gold)] mb-2">
+            &#9670; Oracle Trigger &middot; Gate 0 Entry Prompt
+          </div>
+          <div className="font-playfair italic leading-[1.35] text-lg md:text-2xl text-[color:var(--strategist-text-primary)]">
+            "{ORACLE_PROMPT}"
+          </div>
+          <div className="font-strategist-mono text-[11px] tracking-[0.10em] mt-2.5 text-[color:var(--strategist-text-muted)]">
+            ONE QUESTION &middot; ONE READING &middot; ASKED OF KRISHNA, NOT OF THE APP
+          </div>
+        </div>
+        <div className="md:contents">
+          <PrimaryCTA onClick={onBegin} className="hidden md:inline-flex">Begin a reading</PrimaryCTA>
+        </div>
+      </div>
+      <div className="md:hidden mt-4">
+        <PrimaryCTA onClick={onBegin}>Begin a reading</PrimaryCTA>
+      </div>
+      <span aria-hidden className="absolute top-3 right-3.5 font-strategist-mono text-[10px] tracking-[0.10em] text-[color:var(--strategist-text-muted)]">
+        GATE-0
+      </span>
+    </GlassCard>
+  );
+}
+
+function GateStep({ n, name, desc, highlight }) {
+  const verdicts = ['YES', 'WAIT', 'NO', 'PRAY'];
+  return (
+    <GlassCard variant={highlight ? 'highlight' : 'default'} className="p-5 md:p-6 h-full relative">
+      <div className="flex items-center gap-3 mb-3.5">
+        <StrategistGoldSeal size={36} />
+        <div className="font-strategist-mono text-[10.5px] tracking-[0.20em] text-[color:var(--strategist-text-muted)]">
+          STEP {n}
+        </div>
+      </div>
+      <h3 className="font-cinzel text-[19px] font-medium leading-[1.25] mb-2 text-[color:var(--strategist-text-primary)]">{name}</h3>
+      <p className="font-playfair text-sm leading-[1.55] text-[color:var(--strategist-text-muted)]">{desc}</p>
+      {highlight && (
+        <div className="mt-4 pt-3.5 border-t border-dashed border-[color:var(--strategist-card-border)] flex flex-wrap gap-1.5">
+          {verdicts.map((v) => (
+            <span key={v} className={cn(
+              'font-cinzel text-[10px] font-semibold tracking-[0.18em] px-2.5 py-1 rounded-full border',
+              v === 'YES'
+                ? 'border-emerald-500/40 text-emerald-500 bg-emerald-500/10'
+                : 'border-gold/35 text-[color:var(--strategist-text-primary)]',
+            )}>{v}</span>
+          ))}
+        </div>
+      )}
+    </GlassCard>
+  );
+}
+
+function FlowArrow() {
+  return (
+    <>
+      <div className="grid place-items-center h-9 md:hidden">
+        <svg width="20" height="36" viewBox="0 0 20 36" aria-hidden>
+          <line x1="10" y1="0" x2="10" y2="28" stroke="#C5A059" strokeWidth="1.5" />
+          <polyline points="3,22 10,32 17,22" fill="none" stroke="#C5A059" strokeWidth="1.5" strokeLinejoin="round" />
+        </svg>
+      </div>
+      <div className="hidden md:grid place-items-center min-w-[40px]">
+        <svg width="60" height="20" viewBox="0 0 60 20" aria-hidden>
+          <defs>
+            <linearGradient id="arrgrad" x1="0" x2="1">
+              <stop offset="0%"   stopColor="#C5A059" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#C5A059" stopOpacity="0.95" />
+            </linearGradient>
+          </defs>
+          <line x1="2" y1="10" x2="52" y2="10" stroke="url(#arrgrad)" strokeWidth="1.5" />
+          <polyline points="48,4 56,10 48,16" fill="none" stroke="#C5A059" strokeWidth="1.5" strokeLinejoin="round" />
+        </svg>
+      </div>
+    </>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section 4 -- The 5-Layer War Room
+// ─────────────────────────────────────────────────────────────────────────────
+function SecLayers() {
+  return (
+    <section id="layers" className="px-5 py-14 md:px-20 md:py-[110px]">
+      <SectionHead
+        kicker="&#9670; The 5-Layer War Room"
+        title="Anatomy of a Strategist session."
+        sub="Five stacked layers, one card language. Each band is its own diagnostic surface."
+      />
+
+      <div className="mt-7 md:mt-11">
+        <GlassCard className="p-4 md:p-6">
+          <div className="flex items-center justify-between pb-3 px-2 border-b border-dashed border-[color:var(--strategist-card-border)]">
+            <div className="font-strategist-mono text-[10.5px] tracking-[0.20em] text-[color:var(--strategist-text-muted)]">
+              &#9670; SCHEMATIC &middot; TOP-DOWN
+            </div>
+            <div className="font-strategist-mono text-[10.5px] tracking-[0.10em] text-[color:var(--strategist-text-muted)]">
+              05 &rarr; 01
             </div>
           </div>
 
-          <div className="space-y-6">
-            <div className="rounded-[30px] border border-gold/15 bg-card/90 p-6 sm:p-8">
-              <p className="text-[11px] uppercase tracking-[0.28em] text-gold/70">Your Conquest Score. Recalculated Daily.</p>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                {SCORE_TIERS.map((tier) => (
-                  <div key={tier.title} className={`rounded-2xl border p-4 ${tier.tone}`}>
-                    <p className="text-[11px] uppercase tracking-[0.24em]">{tier.range}</p>
-                    <p className="mt-2 text-lg font-semibold">{tier.title}</p>
-                    <p className="mt-1 text-sm opacity-80">{tier.sub}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                Computed from Shadbala strength, Digbala alignment, Karmic Debt, transit peak, and ritual streak.
-              </p>
-            </div>
-
-            <div className="rounded-[30px] border border-gold/15 bg-card/90 p-6 sm:p-8">
-              <p className="text-[11px] uppercase tracking-[0.28em] text-gold/70">Gate 0 — Ask Krishna Before You Act</p>
-              <div className="mt-5 grid gap-3 sm:grid-cols-2">
-                {GATE_PATHS.map((path) => (
-                  <div key={path.title} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
-                    <p className="text-lg font-semibold text-foreground">{path.icon} {path.title}</p>
-                    <p className="mt-2 text-sm leading-7 text-muted-foreground">{path.body}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-4 text-sm leading-7 text-muted-foreground">
-                The 18×18 Krishna Prashnavali grid. One tap. Divine direction.
-              </p>
-            </div>
+          <div className="grid gap-2.5 mt-3.5">
+            {LAYERS.map((l, i) => (
+              <LayerBand key={l.n} layer={l} idx={i} />
+            ))}
           </div>
-        </section>
+        </GlassCard>
+      </div>
+    </section>
+  );
+}
 
-        <section className="rounded-[34px] border border-gold/18 bg-[linear-gradient(135deg,rgba(197,160,89,0.16),rgba(15,23,42,0.46))] px-6 py-10 text-center shadow-[0_30px_100px_rgba(2,6,23,0.22)] sm:px-10">
-          <p className="text-[11px] uppercase tracking-[0.32em] text-gold/80">Your Karmic War Room Is Ready</p>
-          <h2 className="mt-4 text-4xl font-cinzel text-foreground sm:text-5xl">Premium Vedic Career Intelligence, built like a command centre.</h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-white/72 sm:text-lg">
-            Free account. Premium access from ₹1,599/month. Save your birth details now and arrive inside the War Room ready for Gate 0.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <button
-              type="button"
-              onClick={goToWarRoom}
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-stone-950 transition hover:bg-gold/90"
-            >
-              Enter the War Room <ArrowRight className="h-4 w-4" />
-            </button>
-          </div>
-        </section>
+function LayerBand({ layer, idx }) {
+  const intensity = 0.04 + idx * 0.025;
+  const Icon = layer.Icon;
+  return (
+    <div
+      className="grid items-center gap-3 md:gap-4 px-3 md:px-4 py-3.5 md:py-4 rounded-[10px] border border-[color:var(--strategist-card-border)] grid-cols-[36px_60px_1fr] md:grid-cols-[52px_100px_1fr_90px]"
+      style={{ background: `rgba(197,160,89,${intensity})` }}
+    >
+      <div className="grid place-items-center w-8 h-8 md:w-11 md:h-11 rounded-lg border border-gold/35 text-[color:var(--strategist-gold)] bg-gold/[0.06]">
+        <Icon size={18} strokeWidth={1.6} className="md:hidden" />
+        <Icon size={20} strokeWidth={1.6} className="hidden md:block" />
+      </div>
+
+      <div className="font-strategist-mono text-[11px] tracking-[0.18em] text-[color:var(--strategist-text-muted)]">
+        LAYER &middot; {layer.n}
+      </div>
+
+      <div>
+        <div className="font-cinzel text-[15px] md:text-[17px] font-medium leading-[1.2] text-[color:var(--strategist-text-primary)]">
+          {layer.name}
+        </div>
+        <div className="hidden md:block font-playfair text-[13px] mt-1 leading-[1.4] text-[color:var(--strategist-text-muted)]">
+          {layer.sub}
+        </div>
+      </div>
+
+      <div className="hidden md:flex justify-end">
+        <span className="px-2.5 py-1 rounded-full border border-[color:var(--strategist-card-border)] font-cinzel text-[9.5px] font-semibold tracking-[0.20em] text-[color:var(--strategist-text-muted)]">
+          SURFACE
+        </span>
       </div>
     </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section 5 -- The Mission Engine
+// ─────────────────────────────────────────────────────────────────────────────
+function SecMissionEngine() {
+  return (
+    <section id="engine" className="px-5 py-14 md:px-20 md:py-[110px]">
+      <SectionHead
+        kicker="&#9670; The Mission Engine"
+        title="Mission &rarr; Dasha &rarr; Surrogate."
+        sub="The three primitives that route every Strategist action. One mission is never one variable."
+      />
+
+      <div className="mt-7 md:mt-11 grid gap-4 md:gap-9 md:grid-cols-[1.05fr_0.95fr] items-stretch">
+        <MissionFlowDiagram />
+        <div className="grid gap-3.5 content-start">
+          {MECHANISMS.map((m, i) => (
+            <GlassCard key={m.n} variant={i === 0 ? 'highlight' : 'default'} className="p-5 md:p-6">
+              <div className="flex items-baseline gap-3.5">
+                <span className="font-cinzel text-[22px] font-semibold tracking-[0.04em] min-w-[28px] text-[color:var(--strategist-gold)]">
+                  {m.n}
+                </span>
+                <div>
+                  <h3 className="font-cinzel text-lg font-medium text-[color:var(--strategist-text-primary)]">{m.title}</h3>
+                  <p className="font-playfair text-sm leading-[1.55] mt-1.5 text-[color:var(--strategist-text-muted)]">{m.body}</p>
+                </div>
+              </div>
+            </GlassCard>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function MissionFlowDiagram() {
+  return (
+    <GlassCard className="p-5 md:p-7 min-h-[320px] md:min-h-[420px] relative overflow-hidden">
+      <Eyebrow className="text-[10px] text-[color:var(--strategist-text-muted)]">&#9670; FLOW &middot; MISSION ROUTING</Eyebrow>
+
+      <div className="mt-5 grid gap-4">
+        <FlowNode tone="primary" label="MISSION &middot; OP-MERCURY-WEST" sub="Closing window &middot; Q2 enterprise tier" />
+        <FlowConnector ok label="DASHA ALIGNMENT &middot; Mercury sub-period active" />
+        <FlowNode tone="success" label="DECISION &middot; Run sprint" sub="Shadbala &gt; 340 &middot; H7 clear &middot; no Mars aspect" />
+        <FlowConnector label="PIVOT RULE &middot; CTR check at day 14" />
+        <FlowNode tone="muted" label="SURROGATE &middot; Bridge fires" sub="Command-Planet relative absent &rarr; stand-in mapped" />
+      </div>
+
+      <span aria-hidden className="absolute bottom-3 right-3.5 font-strategist-mono text-[10px] tracking-[0.10em] text-[color:var(--strategist-text-muted)]">
+        ID&middot;1019 &middot; LIVE
+      </span>
+    </GlassCard>
+  );
+}
+
+function FlowNode({ label, sub, tone }) {
+  const dot =
+    tone === 'success' ? 'bg-emerald-500 shadow-[0_0_0_4px_rgba(63,170,122,0.18)]' :
+    tone === 'muted'   ? 'bg-[color:var(--strategist-text-muted)] shadow-[0_0_0_4px_rgba(138,133,118,0.18)]' :
+                         'bg-[color:var(--strategist-gold)] shadow-[0_0_0_4px_rgba(197,160,89,0.18)]';
+  const border =
+    tone === 'success' ? 'border-emerald-500/35' :
+    tone === 'muted'   ? 'border-[color:var(--strategist-card-border)]' :
+                         'border-gold/35';
+  return (
+    <div className={cn('grid grid-cols-[auto_1fr] gap-3 items-center px-3.5 py-3 rounded-[10px] border', border)}>
+      <span className={cn('w-2.5 h-2.5 rounded-full', dot)} />
+      <div>
+        <div className="font-cinzel text-[12.5px] font-semibold tracking-[0.10em] text-[color:var(--strategist-text-primary)]">{label}</div>
+        <div className="font-playfair italic text-[12.5px] mt-0.5 text-[color:var(--strategist-text-muted)]">{sub}</div>
+      </div>
+    </div>
+  );
+}
+
+function FlowConnector({ label, ok }) {
+  return (
+    <div className="pl-[22px] ml-1 py-1 border-l-2 border-dashed border-gold/35 font-strategist-mono text-[10.5px] tracking-[0.12em] text-[color:var(--strategist-text-muted)]">
+      <span className={ok ? 'text-emerald-500 mr-1.5' : 'text-[color:var(--strategist-gold)] mr-1.5'}>
+        {ok ? '✓' : '↓'}
+      </span>
+      {label}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section 6 -- Control Room preview
+// Always renders Control Room regardless of page-level mode.
+// ─────────────────────────────────────────────────────────────────────────────
+function SecControlRoom() {
+  const { mode } = useStrategistTheme();
+  const variant = mode === 'cr-tactical' ? 'tactical' : 'ambient';
+  return (
+    <section id="control-room">
+      <ControlRoomBackdrop variant={variant} className="px-5 py-14 md:px-20 md:py-28 min-h-[540px]">
+        <SectionHeadOnDark
+          kicker={`&#9670; Control Room Preview &middot; Variant ${variant === 'tactical' ? 'B' : 'A'}`}
+          title="The signature aesthetic."
+          sub="Same card language. Different canvas behind. Toggle Control Room mode anywhere in The Strategist."
+        />
+
+        <div className="mt-6 md:mt-10 grid gap-4 md:gap-7 md:grid-cols-[1.2fr_0.8fr] items-stretch">
+          <CRWarCardSample />
+          <CRSeriesSample />
+        </div>
+
+        <div className="mt-6 md:mt-8 text-center font-playfair italic text-sm text-[#8A8576]">
+          The grid is felt, not seen on Variant&nbsp;A &mdash; and visible on Variant&nbsp;B.
+        </div>
+      </ControlRoomBackdrop>
+    </section>
+  );
+}
+
+function SectionHeadOnDark({ kicker, title, sub }) {
+  return (
+    <div className="flex flex-col gap-2 max-w-[760px]">
+      <div className="font-cinzel text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--strategist-gold)]"
+        dangerouslySetInnerHTML={{ __html: kicker }} />
+      <h2 className="font-cinzel font-medium leading-[1.08] tracking-[-0.005em] text-[1.875rem] md:text-[2.75rem] text-[#ECE6D6] mt-1.5">
+        {title}
+      </h2>
+      <p className="font-playfair italic leading-[1.5] mt-1.5 text-base md:text-[1.1875rem] text-[#8A8576]">
+        {sub}
+      </p>
+    </div>
+  );
+}
+
+function CRCard({ children, variant = 'default', className }) {
+  const surface =
+    variant === 'highlight' ? 'border-gold/40 bg-[#1c2230]'
+  : variant === 'muted'     ? 'border-gold/10 bg-[#161b27]/60'
+  : variant === 'warning'   ? 'border-red-500/30 bg-[#1c2230]'
+                            : 'border-gold/20 bg-[#161b27]';
+  return (
+    <div className={cn('rounded-xl border shadow-sm', surface, className)}>
+      {children}
+    </div>
+  );
+}
+
+function CRWarCardSample() {
+  return (
+    <CRCard variant="highlight" className="p-5 md:p-7">
+      <div className="flex items-center justify-between mb-3.5">
+        <div className="font-cinzel text-[11px] font-semibold uppercase tracking-[0.22em] text-[color:var(--strategist-gold)]">
+          &#9670; Active Mission &middot; OP-MERCURY-WEST
+        </div>
+        <span className="font-strategist-mono text-[10.5px] tracking-[0.18em] text-[#8A8576]">PEAK &middot; 64%</span>
+      </div>
+      <h3 className="font-cinzel text-[22px] font-medium leading-[1.2] mb-2 text-[#ECE6D6]">
+        Closing Window &mdash; Q2 Enterprise Tier
+      </h3>
+      <p className="font-playfair text-sm leading-[1.55] text-[#8A8576]">
+        Mercury sub-period closes in 11 days. Push contract signatures before pre-rx shadow.
+      </p>
+
+      <div className="mt-4">
+        <div className="flex justify-between font-strategist-mono text-[10.5px] tracking-[0.10em] text-[#8A8576]">
+          <span>ORGANIC CTR</span>
+          <span>3.2 / 3.0 pts &nbsp;&middot;&nbsp; +64%</span>
+        </div>
+        <div className="mt-2 h-1.5 rounded-full bg-white/5 overflow-hidden">
+          <div className="h-full rounded-full bg-[color:var(--strategist-gold)]" style={{ width: '64%' }} />
+        </div>
+      </div>
+
+      <div className="flex gap-2 mt-4 flex-wrap">
+        {['ME · BUDH', 'H7 · 25°02′', 'PRE-RX', 'OP-1019'].map((t) => (
+          <span key={t} className="font-strategist-mono text-[10px] px-2 py-1 rounded-md border border-gold/20 text-[#8A8576] tracking-[0.10em]">
+            {t}
+          </span>
+        ))}
+      </div>
+    </CRCard>
+  );
+}
+
+function CRSeriesSample() {
+  return (
+    <div className="grid gap-2.5 content-start">
+      <CRCard className="p-4">
+        <div className="font-cinzel text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8A8576]">&#9670; DASHA</div>
+        <div className="font-cinzel text-base font-medium mt-1.5 text-[#ECE6D6]">Mercury &middot; Saturn &middot; Moon</div>
+        <div className="font-playfair italic text-[13px] mt-1 text-[#8A8576]">Pratyantardasha &middot; 2y 4m remaining</div>
+      </CRCard>
+      <CRCard variant="muted" className="p-4">
+        <div className="font-cinzel text-[10px] font-semibold uppercase tracking-[0.22em] text-[#8A8576]">&#9671; COMPLETED</div>
+        <div className="font-cinzel text-sm mt-1.5 text-[#ECE6D6]">OP-SOLAR-SOUTH &middot; Pillar URL refresh</div>
+      </CRCard>
+      <CRCard variant="warning" className="p-4">
+        <div className="font-cinzel text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E25C4B]">&#9670; STREAK AT RISK</div>
+        <div className="font-cinzel text-sm mt-1.5 text-[#ECE6D6]">Pitru-Rin &middot; Day 12 ritual missed</div>
+      </CRCard>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section 7 -- Credibility Bar
+// ─────────────────────────────────────────────────────────────────────────────
+function SecCredibility() {
+  return (
+    <section
+      id="credibility"
+      className="px-5 py-11 md:px-20 md:py-[70px] border-y border-[color:var(--strategist-card-border)]"
+    >
+      <div className="flex flex-wrap justify-center items-center gap-2.5 md:gap-[22px]">
+        {CREDIBILITY.map((t, i) => (
+          <React.Fragment key={t}>
+            <span className="font-cinzel font-medium uppercase tracking-[0.20em] text-[11px] md:text-[13px] text-[color:var(--strategist-text-primary)]">
+              {t}
+            </span>
+            {i < CREDIBILITY.length - 1 && <DiamondDot />}
+          </React.Fragment>
+        ))}
+      </div>
+      <div className="text-center mt-3.5 md:mt-5 font-playfair italic text-[13px] text-[color:var(--strategist-text-muted)]">
+        Diagnostic, not deterministic. No LLM guesswork. Every verdict is derivable from the chart.
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section 8 -- FAQ
+// ─────────────────────────────────────────────────────────────────────────────
+function SecFaq() {
+  const [openIdx, setOpenIdx] = useState(0);
+  return (
+    <section id="faq" className="px-5 py-14 md:px-20 md:py-[110px]">
+      <SectionHead kicker="&#9670; FAQ" title="Questions, answered." />
+      <div className="mt-6 md:mt-10">
+        <GlassCard className="px-4 md:px-8 py-1 md:py-3.5">
+          {FAQ.map((it, i) => (
+            <FaqRow
+              key={i}
+              q={it.q}
+              a={it.a}
+              open={openIdx === i}
+              onClick={() => setOpenIdx(openIdx === i ? -1 : i)}
+            />
+          ))}
+        </GlassCard>
+      </div>
+    </section>
+  );
+}
+
+function FaqRow({ q, a, open, onClick }) {
+  return (
+    <div className="border-b border-[color:var(--strategist-card-border)] last:border-b-0">
+      <button
+        type="button"
+        onClick={onClick}
+        className="w-full grid grid-cols-[24px_1fr_auto] gap-3.5 items-center py-4 text-left"
+      >
+        <ChevronDown
+          size={16}
+          className={cn(
+            'text-[color:var(--strategist-gold)] transition-transform duration-200',
+            open ? 'rotate-180' : 'rotate-0',
+          )}
+        />
+        <span className="font-cinzel font-medium text-base leading-[1.3] text-[color:var(--strategist-text-primary)]">
+          {q}
+        </span>
+        <span className="font-strategist-mono text-[10px] tracking-[0.12em] text-[color:var(--strategist-text-muted)]">
+          {open ? '- CLOSE' : '+ OPEN'}
+        </span>
+      </button>
+      {open && (
+        <div className="pl-[38px] pr-1 pb-5 font-playfair text-[15px] leading-[1.6] max-w-[720px] text-[color:var(--strategist-text-muted)]">
+          {a}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Section 9 -- Final CTA
+// ─────────────────────────────────────────────────────────────────────────────
+function SecFinalCta({ onEnter }) {
+  return (
+    <section id="final-cta" className="px-5 py-14 md:px-20 md:pt-[110px] md:pb-10 text-center">
+      <div className="flex justify-center">
+        <StrategistGoldSeal size={72} rotating className="md:hidden" />
+        <StrategistGoldSeal size={96} rotating className="hidden md:inline-block" />
+      </div>
+      <h2 className="font-cinzel font-medium leading-[1.1] tracking-[-0.005em] text-[32px] md:text-[52px] max-w-[760px] mx-auto mt-5 mb-3.5 text-[color:var(--strategist-text-primary)]">
+        {HERO.headline}
+      </h2>
+      <p className="font-playfair italic text-base md:text-[19px] leading-[1.5] max-w-[580px] mx-auto mb-8 text-[color:var(--strategist-text-muted)]">
+        Begin with one oracle reading. The grid decides.
+      </p>
+      <PrimaryCTA size="lg" onClick={onEnter}>Enter the War Room</PrimaryCTA>
+
+      <div className="mt-10 md:mt-14 pt-5 border-t border-[color:var(--strategist-card-border)] flex flex-wrap justify-between items-center gap-3">
+        <div className="font-cinzel text-[11px] uppercase tracking-[0.18em] text-[color:var(--strategist-text-muted)]">
+          &#9670; Everyday Horoscope &middot; The Strategist Module
+        </div>
+        <div className="font-playfair italic text-xs text-[color:var(--strategist-text-muted)]">
+          &copy; {new Date().getFullYear()} EverydayHoroscope.in
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Page composition
+// ─────────────────────────────────────────────────────────────────────────────
+function LandingInner() {
+  const navigate = useNavigate();
+  const { user } = useAuth() || {};
+
+  const goEnter = () => {
+    if (user) {
+      navigate('/strategist');
+    } else {
+      navigate('/login', { state: { from: { pathname: '/strategist' } } });
+    }
+  };
+
+  const goReading = () => {
+    if (user) {
+      navigate('/kp/oracle');
+    } else {
+      navigate('/login', { state: { from: { pathname: '/kp/oracle' } } });
+    }
+  };
+
+  return (
+    <>
+      <SEO
+        title="The Strategist · Run your career like a war room"
+        description="A Vedic command system gated by KP Oracle. Dashas time your missions. You command the war room."
+      />
+      <TopNav onSignIn={goEnter} />
+      <SecHero       onEnter={goEnter} />
+      <SecProblem    />
+      <SecGating     onBeginReading={goReading} />
+      <SecLayers     />
+      <SecMissionEngine />
+      <SecControlRoom />
+      <SecCredibility />
+      <SecFaq        />
+      <SecFinalCta   onEnter={goEnter} />
+    </>
+  );
+}
+
+export default function TheStrategistLandingPage() {
+  return (
+    <StrategistThemeProvider>
+      <LandingInner />
+    </StrategistThemeProvider>
   );
 }

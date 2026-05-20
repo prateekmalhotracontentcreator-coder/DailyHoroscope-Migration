@@ -1,0 +1,118 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * strategist-tokens.css
+ * STR-R2-A · Visual Foundation
+ *
+ * The Strategist module's full token registry. All 12 surface/accent tokens
+ * listed in the Temple memo (Re: STR-R2-A · Canvas Review) plus the two
+ * Strategist-scoped grid greens.
+ *
+ * Scoping strategy
+ * ─────────────────
+ * Tokens are bound to the `.strategist-module` wrapper (set by
+ * <StrategistThemeProvider>) and switched by its [data-mode] attribute.
+ * This prevents collisions with the host app's existing :root tokens
+ * (e.g. the global --gold), keeps the Strategist visually portable
+ * across the rest of the app, and lets Claude Code merge into
+ * tailwind.config.js without rewriting host theme variables.
+ *
+ * Mode values
+ * ─────────────
+ *   data-mode="light"         · default · warm host background
+ *   data-mode="dark"          · #0a0d14 navy + dark card layers
+ *   data-mode="cr-ambient"    · dark navy + ambient green grid (Variant A)
+ *   data-mode="cr-tactical"   · dark navy + tactical green grid (Variant B)
+ * ───────────────────────────────────────────────────────────────────────── */
+
+/* ── Brand-fixed, mode-agnostic ─────────────────────────────────────────── */
+.strategist-module {
+  /* Gold family — unchanged across modes */
+  --strategist-gold:         #C5A059;   /* primary accent */
+  --strategist-gold-mustard: #E3B341;   /* secondary gold · active states / highlights */
+  --strategist-gold-hover:   #D4AF37;   /* gold hover state */
+
+  /* Two new Strategist-scoped grid greens (Control Room only) */
+  --strategist-green-ambient:  oklch(0.65 0.15 145);  /* Variant A · muted */
+  --strategist-green-tactical: oklch(0.72 0.18 145);  /* Variant B · brighter */
+
+  /* Semantic accents — only surfaced in dark/CR modes per memo,
+     but registered here for portability so any module surface can use them. */
+  --strategist-emerald: #3FAA7A;   /* success · auspicious */
+  --strategist-amber:   #E3A341;   /* warning · moderate */
+  --strategist-orange:  #E27A3F;   /* alert · elevated warning */
+  --strategist-red:     #E25C4B;   /* error · inauspicious / critical */
+}
+
+/* ── Light (default) ────────────────────────────────────────────────────── */
+.strategist-module[data-mode="light"] {
+  --strategist-bg:           hsl(var(--background));     /* host app warm off-white */
+  --strategist-fg:           hsl(var(--foreground));     /* host text */
+  --strategist-text-primary: hsl(var(--foreground));
+  --strategist-text-muted:   hsl(var(--muted-foreground));
+
+  --strategist-card-bg:      hsl(38 60% 50% / 0.04);     /* gold/[0.04] · existing GlassCard pattern */
+  --strategist-card-elev:    hsl(38 60% 50% / 0.08);     /* highlight surface */
+  --strategist-card-border:  hsl(38 60% 50% / 0.20);     /* gold/20 · existing */
+  --strategist-card-border-strong: hsl(38 60% 50% / 0.40);
+}
+
+/* ── Dark (corrected — navy/charcoal, not warm brown) ───────────────────── */
+.strategist-module[data-mode="dark"],
+.strategist-module[data-mode="cr-ambient"],
+.strategist-module[data-mode="cr-tactical"] {
+  --background-dark-strategist: #0a0d14;   /* Page background (Dark + Control Room) */
+  --card-dark:                  #161b27;   /* Card surface */
+  --card-dark-elevated:         #1c2230;   /* Elevated card / modal surface */
+
+  --strategist-bg:           var(--background-dark-strategist);
+  --strategist-fg:           #ECE6D6;
+  --strategist-text-primary: #ECE6D6;
+  --strategist-text-muted:   #8A8576;
+
+  --strategist-card-bg:           var(--card-dark);
+  --strategist-card-elev:         var(--card-dark-elevated);
+  --strategist-card-border:       rgba(197, 160, 89, 0.20);   /* gold/20 — per memo */
+  --strategist-card-border-strong: rgba(197, 160, 89, 0.40);  /* gold/40 — highlight */
+}
+
+/* ── Page background painter ────────────────────────────────────────────── */
+.strategist-module {
+  background: var(--strategist-bg);
+  color: var(--strategist-fg);
+  min-height: 100vh;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Light mode gets a soft gold radial wash that the canvas approved. */
+.strategist-module[data-mode="light"] {
+  background:
+    radial-gradient(ellipse at 80% -10%, hsl(38 60% 50% / 0.10), transparent 55%),
+    hsl(var(--background));
+}
+
+/* Dark mode gets a faint gold ember in the same corner. */
+.strategist-module[data-mode="dark"] {
+  background:
+    radial-gradient(ellipse at 80% -10%, hsl(38 60% 50% / 0.08), transparent 55%),
+    var(--background-dark-strategist);
+}
+
+/* Control Room modes paint their own grid via ControlRoomBackdrop;
+   the wrapper just supplies the dark base. */
+.strategist-module[data-mode="cr-ambient"],
+.strategist-module[data-mode="cr-tactical"] {
+  background: var(--background-dark-strategist);
+}
+
+/* ── Type families — registered once so all Strategist surfaces inherit ─── */
+.strategist-module .font-cinzel    { font-family: 'Cinzel', Georgia, serif; }
+.strategist-module .font-playfair  { font-family: 'Playfair Display', Georgia, serif; }
+.strategist-module .font-strategist-mono {
+  font-family: ui-monospace, 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+}
+
+/* ── Seal rotation keyframe used by <StrategistGoldSeal rotating /> ────── */
+@keyframes strategist-seal-rot {
+  0%   { transform: rotate(-2deg); }
+  50%  { transform: rotate( 2deg); }
+  100% { transform: rotate(-2deg); }
+}
