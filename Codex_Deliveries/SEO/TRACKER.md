@@ -1,7 +1,7 @@
 # SEO & Web Performance -- Module Tracker
 > Path: `Codex_Deliveries/SEO/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.0
+> Last updated: 2026-05-20 · v3.2
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- multiple local SEO commissions delivered, pending review/integration |
+| **Status** | ✅ LIVE -- 12 of 13 commissions live in production |
 | **GA4** | G-3HJC8BTHRQ -- wired and live |
 | **GSC** | Verified + sitemap submitted |
 | **Bing** | Verified + sitemap submitted |
@@ -25,18 +25,18 @@
 | ID | Commission | Track | Priority | Status | Brief |
 |---|---|---|---|---|---|
 | **SEO-WebPerf** | SEO + Marketing + Web Performance Optimisation | -- | Issue Last | 🟣 READY -- ISSUE LAST | `CODEX_COMMISSION_SEO_WEBPERF.md` |
-| **SEO-C1** | Legal Pages Content (populate MongoDB policies) | C | Phase 1 | 🟡 DELIVERED -- pending live seed approval | `CODEX_COMMISSION_SEO-C1.md` |
-| **SEO-B1** | Tomorrow / Weekly / Monthly Per-Sign Horoscope (36 pages) | B | Phase 3 | 🟡 DELIVERED -- pending review | `CODEX_COMMISSION_SEO-B1.md` |
-| **SEO-B3** | Festival Calendar Hub + Hora Today + Indian Calendar | B | Phase 2 | 🟡 DELIVERED -- pending review | `CODEX_COMMISSION_SEO-B3.md` |
-| **SEO-B2** | Festival Pages (Holi, Diwali, Karwa Chauth) | B | Phase 2 | 🟡 DELIVERED -- pending review | `CODEX_COMMISSION_SEO-B2.md` |
-| **SEO-C2** | Rashi Calculator + Nakshatra Calculator | C | Phase 4 | 🟡 DELIVERED -- pending review | `CODEX_COMMISSION_SEO-C2.md` |
-| **SEO-C3** | Compatibility by Name | C | Phase 4 | 🟡 DELIVERED -- pending review | `CODEX_COMMISSION_SEO-C3.md` |
-| **SEO-C4** | Ekadashi / Amavasya / Purnima Hub Pages | C | Phase 5 | 🟡 DELIVERED -- pending review | `CODEX_COMMISSION_SEO-C4.md` |
-| **SEO-C5** | Marriage Muhurat Page | C | Phase 4 | 🟡 DELIVERED -- pending review | `CODEX_COMMISSION_SEO-C5.md` |
-| **SEO-C6** | Report Category Discovery Pages (4 pages) | C | Phase 6 | 🟣 READY -- needs Razorpay live first | `CODEX_COMMISSION_SEO-C6.md` |
-| **SEO-C7** | Celebrity Horoscope Hub | C | Phase 7 | 🟡 DELIVERED -- pending review | `CODEX_COMMISSION_SEO-C7.md` |
-| **SEO-C8** | Love Calculator | C | Phase 8 | 🟣 READY TO ISSUE | `CODEX_COMMISSION_SEO-C8.md` |
-| **SEO-C9** | Angel Numbers Hub (14 pages) | C | Phase 8 | 🟣 READY TO ISSUE | `CODEX_COMMISSION_SEO-C9.md` |
+| **SEO-C1** | Legal Pages Content (populate MongoDB policies) | C | Phase 1 | ✅ LIVE -- policies seeded to production 2026-05-20 | `CODEX_COMMISSION_SEO-C1.md` |
+| **SEO-B1** | Tomorrow / Weekly / Monthly Per-Sign Horoscope (36 pages) | B | Phase 3 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-B1.md` |
+| **SEO-B3** | Festival Calendar Hub + Hora Today + Indian Calendar | B | Phase 2 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-B3.md` |
+| **SEO-B2** | Festival Pages (Holi, Diwali, Karwa Chauth) | B | Phase 2 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-B2.md` |
+| **SEO-C2** | Rashi Calculator + Nakshatra Calculator | C | Phase 4 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-C2.md` |
+| **SEO-C3** | Compatibility by Name | C | Phase 4 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-C3.md` |
+| **SEO-C4** | Ekadashi / Amavasya / Purnima Hub Pages | C | Phase 5 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-C4.md` |
+| **SEO-C5** | Marriage Muhurat Page | C | Phase 4 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-C5.md` |
+| **SEO-C6** | Report Category Discovery Pages (4 pages) | C | Phase 6 | 🟡 CODE LIVE -- launch gated (Razorpay live keys required) | `CODEX_COMMISSION_SEO-C6.md` |
+| **SEO-C7** | Celebrity Horoscope Hub | C | Phase 7 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-C7.md` |
+| **SEO-C8** | Love Calculator | C | Phase 8 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-C8.md` |
+| **SEO-C9** | Angel Numbers Hub (14 pages) | C | Phase 8 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-C9.md` |
 
 ---
 
@@ -68,3 +68,5 @@
 | v2.8 | 2026-05-20 | SEO-C3 local delivery prepared. Added a pure-Python `/api/numerology/name-compatibility` endpoint in `numerology_router.py` and public `/compatibility/name` with query-string sharing, copy-link UX, and FAQ schema. Frontend production build and backend syntax checks passed. | Codex | `CODEX_COMMISSION_SEO-C3.md` |
 | v2.9 | 2026-05-20 | SEO-C5 local delivery prepared. Added cached `/api/panchang/muhurat/marriage` for New Delhi reference dates plus public `/muhurat/marriage` with year switching, month tabs, Panchang links, and FAQ schema. Frontend production build passed and backend source compiled locally. | Codex | `CODEX_COMMISSION_SEO-C5.md` |
 | v3.0 | 2026-05-20 | SEO-C7 local delivery prepared. Added cached celebrity chart endpoints in `server.py` plus public `/celebrity-horoscopes` hub and `/:slug` detail pages with Person schema, category filters, and Vedic chart summaries sourced from `vedic_calculator.py`. Frontend production build passed and backend source compiled locally. | Codex | `CODEX_COMMISSION_SEO-C7.md` |
+| v3.1 | 2026-05-20 | SEO-C6, SEO-C8, and SEO-C9 local deliveries prepared. Added 4 public report-category discovery pages, public `/love-calculator` with shareable URL support plus a top-level API alias, and the full `/angel-numbers` hub with 14 static detail pages, FAQ schema, and article metadata. Frontend production build passed and backend AST syntax checks passed. | Codex | `CODEX_COMMISSION_SEO-C6.md` · `CODEX_COMMISSION_SEO-C8.md` · `CODEX_COMMISSION_SEO-C9.md` |
+| v3.2 | 2026-05-20 | All 12 SEO commissions integrated and pushed to main (commit 963dc82). 13 new pages live. Policy seed run against production MongoDB (5 docs). OG image replaced (<82KB, 1200×630). SEO-C6 code live but launch gated on Razorpay live keys. SEO-WebPerf held for last. | CC | -- |

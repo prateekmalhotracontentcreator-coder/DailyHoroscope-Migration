@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-20 (SEO-C7 local delivery logged)
+> Last updated: 2026-05-20 (SEO wave 1 integrated -- all 12 SEO commissions live)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -54,15 +54,6 @@
 | **KUN-1** | Lagna Kundali Frontend Module | Kundali | `Kundali/CODEX_COMMISSION_KUNDALI_LAGNA_CONTRACT.md` | READY TO ISSUE | None | **Backend already live** at `/api/lagna-kundali` (re-scoped 2026-05-16). Frontend only: `KundaliPage.jsx` + SVG chart + planet table + dasha timeline. |
 | **LK-1** | LK Standalone Module (onboard, remedies, debt audit, tracker) | Lal Kitab | `LK/CODEX_COMMISSION_LK_STANDALONE_MODULE.md` | READY TO ISSUE | None | Lal Kitab standalone product |
 | **SEO-1** | SEO + Marketing + Web Performance Optimisation | SEO | `SEO/CODEX_COMMISSION_SEO_WEBPERF.md` | READY TO ISSUE | None | ⚠️ Issue LAST -- start only after high-priority Codex threads are running |
-| **SEO-C1** | Legal Pages Content Refresh | SEO | `SEO/CODEX_COMMISSION_SEO-C1.md` | DELIVERED -- PENDING INTEGRATION | No live writes this session | Local seed script and policy-page SEO cleanup are ready. TT still needs to apply the refreshed policy seed to production when approved. |
-| **SEO-B3** | Festival Calendar Hub + Hora Today + Indian Calendar | SEO | `SEO/CODEX_COMMISSION_SEO-B3.md` | DELIVERED -- PENDING INTEGRATION | Reuses Panchang APIs | Added three new pages plus a new `/api/panchang/hora` endpoint. Frontend production build passed locally; browser smoke test not yet run. |
-| **SEO-B1** | Tomorrow / Weekly / Monthly Per-Sign Horoscope Pages | SEO | `SEO/CODEX_COMMISSION_SEO-B1.md` | DELIVERED -- PENDING INTEGRATION | Public SEO discovery pages | Added `tomorrow` horoscope support in the backend plus new public per-sign routes and `HoroscopeSignPage.jsx`. Frontend production build passed locally; browser smoke test not yet run. |
-| **SEO-B2** | Festival Pages Bundle (Holi, Diwali, Karwa Chauth) | SEO | `SEO/CODEX_COMMISSION_SEO-B2.md` | DELIVERED -- PENDING INTEGRATION | Depends on B3 hub structure | Added `FestivalPage.jsx` and the 3 explicit festival routes with dynamic dates, Panchang card data, and Event + FAQ schema. Frontend production build passed locally; browser smoke test not yet run. |
-| **SEO-C2** | Rashi Calculator + Nakshatra Calculator | SEO | `SEO/CODEX_COMMISSION_SEO-C2.md` | DELIVERED -- PENDING INTEGRATION | Reuses `vedic_calculator.py` via public chart alias | Added public `/rashi-calculator` and `/nakshatra-calculator` pages plus a thin `/api/calculate-birth-chart` route that delegates to the existing birth chart engine. Frontend production build and backend syntax checks passed locally; browser smoke test not yet run. |
-| **SEO-C3** | Compatibility by Name | SEO | `SEO/CODEX_COMMISSION_SEO-C3.md` | DELIVERED -- PENDING INTEGRATION | Reuses existing Chaldean map in numerology router | Added a pure-Python `/api/numerology/name-compatibility` endpoint plus public `/compatibility/name` with query-string auto-calculate, share-link copy, and FAQ schema. Frontend production build and backend syntax checks passed locally; browser smoke test not yet run. |
-| **SEO-C4** | Ekadashi / Amavasya / Purnima Hub Pages | SEO | `SEO/CODEX_COMMISSION_SEO-C4.md` | DELIVERED -- PENDING INTEGRATION | Reuses Panchang festival + daily APIs | Added a single parameterised devotional page for `/ekadashi`, `/amavasya`, and `/purnima`, with dynamic next-date lookup, Panchang cards, and Event + FAQ schema. Frontend production build passed locally; browser smoke test not yet run. |
-| **SEO-C5** | Marriage Muhurat Page | SEO | `SEO/CODEX_COMMISSION_SEO-C5.md` | DELIVERED -- PENDING INTEGRATION | Reuses Panchang engine + MongoDB cache | Added cached `/api/panchang/muhurat/marriage` plus public `/muhurat/marriage` with year switching, month tabs, Panchang links, and FAQ schema. Frontend production build passed locally; backend source compiled cleanly; browser smoke test not yet run. |
-| **SEO-C7** | Celebrity Horoscope Hub | SEO | `SEO/CODEX_COMMISSION_SEO-C7.md` | DELIVERED -- PENDING INTEGRATION | Reuses `vedic_calculator.py` + MongoDB cache | Added cached `/api/celebrities` endpoints in `server.py` plus public `/celebrity-horoscopes` hub and `/:slug` chart pages with Person schema, category filters, and seeded celebrity metadata. Frontend production build passed locally; backend source compiled cleanly; browser smoke test not yet run. |
 
 ---
 
@@ -80,6 +71,18 @@
 
 | ID | Commission | File | Commit |
 |---|---|---|---|
+| SEO-B1 | 36 Per-Sign Horoscope Pages (tomorrow/weekly/monthly) | `SEO/CODEX_COMMISSION_SEO-B1.md` | `963dc82` |
+| SEO-B2 | Festival Pages (Holi, Diwali, Karwa Chauth) | `SEO/CODEX_COMMISSION_SEO-B2.md` | `963dc82` |
+| SEO-B3 | Festival Hub + Indian Calendar + Hora Today | `SEO/CODEX_COMMISSION_SEO-B3.md` | `963dc82` |
+| SEO-C1 | Legal Pages noindex + Policy Seed (production seeded 2026-05-20) | `SEO/CODEX_COMMISSION_SEO-C1.md` | `963dc82` |
+| SEO-C2 | Rashi Calculator + Nakshatra Calculator | `SEO/CODEX_COMMISSION_SEO-C2.md` | `963dc82` |
+| SEO-C3 | Name Compatibility (/compatibility/name) | `SEO/CODEX_COMMISSION_SEO-C3.md` | `963dc82` |
+| SEO-C4 | Ekadashi / Amavasya / Purnima Hubs | `SEO/CODEX_COMMISSION_SEO-C4.md` | `963dc82` |
+| SEO-C5 | Marriage Muhurat Page | `SEO/CODEX_COMMISSION_SEO-C5.md` | `963dc82` |
+| SEO-C6 | Report Category Discovery Pages (code live, launch gated -- Razorpay) | `SEO/CODEX_COMMISSION_SEO-C6.md` | `963dc82` |
+| SEO-C7 | Celebrity Horoscope Hub | `SEO/CODEX_COMMISSION_SEO-C7.md` | `963dc82` |
+| SEO-C8 | Love Calculator | `SEO/CODEX_COMMISSION_SEO-C8.md` | `963dc82` |
+| SEO-C9 | Angel Numbers Hub (14 pages) | `SEO/CODEX_COMMISSION_SEO-C9.md` | `963dc82` |
 | IR-1 | 5 Public SEO Landing Pages + `/individual-reports` hub | `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` | `825a294` |
 | IR-2 | Lunar Cycle Wellness Backend | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | `f9f6690` · `021a799` (bug fixes) |
 | IR-2A | Lunar Cycle Rework -- Action Tracker + Rich Content | `Individual_Reports/CODEX_COMMISSION_IR_2A_LUNAR_CYCLE_REWORK.md` | `692fefa` · Live-verified by TT 2026-05-16 ✅ |

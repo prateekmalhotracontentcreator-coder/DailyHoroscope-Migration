@@ -1,7 +1,7 @@
 # Action Items — Temple App
 > Single Source of Truth for all open items across Claude Code sessions.
 > Referenced in all handover docs. **Do not create parallel lists elsewhere.**
-> Last updated: 2026-05-17 (session 2 update)
+> Last updated: 2026-05-20 (SEO wave 1 live; M-1 and M-2 cleared)
 
 ---
 
@@ -11,8 +11,8 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 
 | # | Item | Why Blocked | Priority |
 |---|---|---|---|
-| M-1 | **OG image** — replace `frontend/public/og-image.png` with proper 1200×630 PNG (~80 KB). Current file is 626 KB at wrong aspect ratio. | SEO + social sharing broken until fixed | 🔴 HIGH |
-| M-2 | **Legal pages seed** — run `python3 backend/scripts/seed_policies_v1.py --mongo-url "$MONGO_URL" --db-name horoscope_db` against Render | Legal/Privacy/Terms pages show empty | 🔴 HIGH |
+| ~~M-1~~ | ~~OG image replaced~~ | -- | ✅ DONE — replaced 2026-05-20, <82KB 1200×630 |
+| ~~M-2~~ | ~~Legal pages compliance refresh~~ | -- | ✅ DONE — seed run 2026-05-20, 5 policies updated in production |
 | ~~M-3~~ | ~~**KP production smoke test**~~ — ✅ **CLEARED 2026-05-15.** Report excellent. Premium gate confirmed working. Two findings fed into KP-2A scope: (a) section box re-alignment needed, (b) share card + download not yet present in module — both in KP-2A brief. KP-2A now unblocked. | ~~Blocks KP-2A integration~~ | ✅ DONE |
 | ~~M-4~~ | ~~**Strategist 22 records approval sign-off**~~ — ✅ **CLEARED 2026-05-15.** All 22 records (IDs 1011–1020 + 1126–1137) confirmed ingested and live. `strategist_engine.py` does not filter on `approval_status` — pending_human_review has zero functional effect. STR-1 is unblocked. | ~~Blocks STR-1 integration~~ | ✅ DONE |
 | M-5 | **WhatsApp** — complete OTP verification for +91 96431 10001 in WhatsApp Manager + add payment method to WABA on Meta | WhatsApp notifications blocked | 🟡 MED |

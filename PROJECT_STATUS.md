@@ -1,6 +1,6 @@
 # EverydayHoroscope -- Project Status
 
-> Last updated: 14 May 2026
+> Last updated: 20 May 2026
 
 > **KE Sprint 2 (arbitration runtime) -- pending brief submission. Ingest freeze in effect.**
 
@@ -22,7 +22,7 @@
 | Lumina (Spiritual Companion) | ✅ Live -- 9-tab layout |
 | Palmistry (Hasta Rekha) | ✅ Live -- AI-powered, hand anatomy SVG |
 | Careers Page | ✅ Live at /careers |
-| SEO (OG tags, GA4, JSON-LD, GSC, Bing) | ✅ Live |
+| SEO (OG tags, GA4, JSON-LD, GSC, Bing) + 13 new SEO pages | ✅ Live |
 | Admin Console (subscribers, email, scheduler) | ✅ Live |
 | Facebook Page posting | ✅ Live |
 | WhatsApp notifications | 🔜 Pending Meta BSP setup |
@@ -140,6 +140,40 @@ Features live:
 - Scheduled notifications (APScheduler, MongoDB: `scheduled_notifications`)
 - Notification history log (MongoDB: `notification_logs`)
 - Social Media tab: Facebook Page posting (one-click from Panchang + Horoscope pages + Admin Console)
+
+---
+
+### ✅ SEO Module -- 13 New Pages LIVE (commit 963dc82, 2026-05-20)
+
+**Horoscope pages:**
+- 36 per-sign pages: `/horoscope/:sign/tomorrow|weekly|monthly`
+
+**Festival & Calendar:**
+- `/festivals` -- hub, `/festivals/holi`, `/festivals/diwali`, `/festivals/karwa-chauth`
+- `/calendar` -- Indian calendar
+- `/hora` -- Hora Today (planetary hours)
+
+**Calculators:**
+- `/rashi-calculator`, `/nakshatra-calculator`
+- `/compatibility/name` -- Name Compatibility (Chaldean)
+- `/love-calculator` -- Love Calculator (name + DOB modes)
+
+**Devotional Hubs:**
+- `/ekadashi`, `/amavasya`, `/purnima`
+
+**Muhurat:**
+- `/muhurat/marriage` -- Marriage Muhurat with year switching
+
+**Celebrity:**
+- `/celebrity-horoscopes` + `/:slug` -- 20 seeded celebrities
+
+**Angel Numbers:**
+- `/angel-numbers` + 14 detail pages (111-3333)
+
+**Report Categories (code live, promotion gated on Razorpay):**
+- `/reports/kundali`, `/reports/numerology`, `/reports/love`, `/reports/career`
+
+**Legal:** 5 policies re-seeded to production MongoDB (terms, privacy, subscription-terms, refund-policy, cookie-policy).
 
 ---
 
