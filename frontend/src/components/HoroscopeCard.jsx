@@ -21,10 +21,10 @@ const parseHoroscopeContent = (content) => {
 
   const cleaned = cleanMarkdown(content);
 
-  // Extract sign name from first line if present (format: "Aries — ...")
+  // Extract sign name from first line if present (format: "Aries -- ...")
   let signLine = '';
   let body = cleaned;
-  const dashMatch = cleaned.match(/^([A-Za-z]+)\s*[—\-]+\s*(.*)/s);
+  const dashMatch = cleaned.match(/^([A-Za-z]+)\s*[--\-]+\s*(.*)/s);
   if (dashMatch) {
     signLine = dashMatch[1];
     body = dashMatch[2];
@@ -54,7 +54,7 @@ const parseHoroscopeContent = (content) => {
     introText = remaining.substring(0, earliestIdx).trim();
     remaining = remaining.substring(earliestIdx);
   } else {
-    // No structured sections found — return as single general block
+    // No structured sections found -- return as single general block
     return [{
       title: 'Today\'s Reading',
       icon: 'star',
@@ -152,11 +152,19 @@ const sectionColors = {
   },
 };
 
-export const HoroscopeCard = ({ title, content, isLoading, type, signName, signSymbol }) => {
+export const HoroscopeCard = ({ title, content, isLoading, type, signName, signSymbol, dateLabel = null }) => {
   const today = new Date();
-  const formattedDate = today.toLocaleDateString('en-IN', {
+  const formattedDate = dateLabel || today.toLocaleDateString('en-IN', {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
   });
+
+  const typeLabel = type === 'daily'
+    ? 'Daily'
+    : type === 'tomorrow'
+      ? 'Tomorrow'
+      : type === 'weekly'
+        ? 'Weekly'
+        : 'Monthly';
 
   if (isLoading) {
     return (
@@ -182,7 +190,7 @@ export const HoroscopeCard = ({ title, content, isLoading, type, signName, signS
           <div>
             <h2 className="text-2xl font-playfair font-semibold">{signName}</h2>
             <p className="text-xs text-muted-foreground uppercase tracking-widest">
-              {type === 'daily' ? 'Daily' : type === 'weekly' ? 'Weekly' : 'Monthly'} Horoscope
+              {typeLabel} Horoscope
             </p>
           </div>
         </div>

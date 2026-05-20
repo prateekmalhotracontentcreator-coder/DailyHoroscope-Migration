@@ -11,11 +11,36 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const policyMeta = {
-  terms:                { icon: ScrollText, title: 'Terms of Service' },
-  privacy:              { icon: Shield,     title: 'Privacy Policy' },
-  'subscription-terms': { icon: FileText,   title: 'Subscription Terms' },
-  'refund-policy':      { icon: RefreshCw,  title: 'Refund & Cancellation Policy' },
-  'cookie-policy':      { icon: Cookie,     title: 'Cookie Policy' },
+  terms: {
+    icon: ScrollText,
+    title: 'Terms of Service',
+    description: 'Read the terms that govern access to Everyday Horoscope services, accounts, subscriptions, and digital reports.',
+    slug: 'terms',
+  },
+  privacy: {
+    icon: Shield,
+    title: 'Privacy Policy',
+    description: 'Learn what data Everyday Horoscope collects, how it is used, and how payments, analytics, and user rights are handled.',
+    slug: 'privacy',
+  },
+  'subscription-terms': {
+    icon: FileText,
+    title: 'Subscription Terms',
+    description: 'Review Everyday Horoscope subscription billing, renewal, cancellation, and plan terms before purchasing.',
+    slug: 'subscription-terms',
+  },
+  'refund-policy': {
+    icon: RefreshCw,
+    title: 'Refund & Cancellation Policy',
+    description: 'See Everyday Horoscope refund eligibility, cancellation rules, processing timelines, and report refund exclusions.',
+    slug: 'refund-policy',
+  },
+  'cookie-policy': {
+    icon: Cookie,
+    title: 'Cookie Policy',
+    description: 'Understand how Everyday Horoscope uses essential, analytics, and preference cookies across the website and app.',
+    slug: 'cookie-policy',
+  },
 };
 
 export const PolicyPage = ({ type }) => {
@@ -44,21 +69,13 @@ export const PolicyPage = ({ type }) => {
   if (!meta) return null;
   const Icon = meta.icon;
 
-  const slugMap = {
-    terms: 'terms',
-    privacy: 'privacy',
-    'subscription-terms': 'subscription-terms',
-    'refund-policy': 'refund-policy',
-    'cookie-policy': 'cookie-policy',
-  };
-
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <SEO
-        title={`${meta.title} -- Everyday Horoscope`}
-        description={`Read the ${meta.title} for Everyday Horoscope, India's trusted Vedic astrology platform.`}
-        url={`https://www.everydayhoroscope.in/${slugMap[type] || type}`}
-        noindex={false}
+        title={meta.title}
+        description={meta.description}
+        url={`https://www.everydayhoroscope.in/${meta.slug}`}
+        noindex={true}
       />
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Button variant="ghost" onClick={() => navigate(-1)} className="mb-6">

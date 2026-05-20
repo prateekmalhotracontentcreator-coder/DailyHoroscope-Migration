@@ -51,7 +51,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | 13 | Punya Rewards | [`Punya_Rewards/TRACKER.md`](Codex_Deliveries/Punya_Rewards/TRACKER.md) | ✅ LIVE | Nothing open | -- |
 | 14 | Notifications | [`Notifications/TRACKER.md`](Codex_Deliveries/Notifications/TRACKER.md) | 🟡 ACTIVE | M-5 WhatsApp OTP + M-6 Instagram Business ID | TT |
 | 15 | Panchang | [`Panchang/TRACKER.md`](Codex_Deliveries/Panchang/TRACKER.md) | ✅ LIVE | PAN-L1 language pages -- issue Week 3+ | TT |
-| 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | 🟣 PLANNED | Issue LAST -- after high-priority threads running | TT |
+| 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | 🟡 ACTIVE | SEO-C1, SEO-B3, SEO-B1, SEO-B2, SEO-C2, SEO-C3, SEO-C4, SEO-C5, and SEO-C7 are all locally delivered pending TT review/integration. No live production writes from these sessions. | TT |
 | 17 | World Oracles | [`World_Oracles/TRACKER.md`](Codex_Deliveries/World_Oracles/TRACKER.md) | 🟣 PLANNED | Phase 3 -- do not issue until KP Oracle 30+ days live | TT |
 
 ---
@@ -61,7 +61,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | ID | Item | Priority | Status |
 |---|---|---|---|
 | M-1 | Replace OG image -- 1200×630 PNG ≤80 KB (`frontend/public/og-image.png`) | 🔴 HIGH | Open |
-| M-2 | Run `seed_policies_v1.py` on Render (`--mongo-url "$MONGO_URL" --db-name horoscope_db`) | 🔴 HIGH | Open |
+| M-2 | Run refreshed `seed_policies_v1.py` on Render (`--mongo-url "$MONGO_URL" --db-name horoscope_db`) to update legal wording (Razorpay, Google Analytics, cookie controls, 7-day unused-service refund terms) | 🔴 HIGH | Open |
 | ~~M-3~~ | ~~KP Oracle end-to-end production smoke test~~ | ✅ DONE | Cleared 2026-05-15. KP-2A unblocked. |
 | ~~M-4~~ | ~~Strategist 22 records sign-off~~ | -- | ✅ CLEARED 2026-05-15 |
 | M-5 | WhatsApp OTP + payment method on WABA Meta | 🟡 MED | Open |

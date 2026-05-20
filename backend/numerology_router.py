@@ -216,6 +216,50 @@ class NumerologyFeedbackResponse(StrictModel):
     message: str
 
 
+class NameCompatibilityRequest(StrictModel):
+    name1: str
+    name2: str
+
+
+class NameCompatibilityResponse(StrictModel):
+    name1: str
+    name2: str
+    number1: int
+    number2: int
+    score: int
+    band: Literal["high", "good", "moderate", "challenging"]
+    summary: str
+
+
+class LoveCalculatorRequest(StrictModel):
+    mode: Literal["name", "birthdate"]
+    name1: str | None = None
+    name2: str | None = None
+    dob1: str | None = None
+    dob2: str | None = None
+
+
+class LoveCalculatorElementScores(StrictModel):
+    mind: int
+    heart: int
+    energy: int
+
+
+class LoveCalculatorResponse(StrictModel):
+    mode: Literal["name", "birthdate"]
+    score: int
+    band: Literal["cosmic", "high", "good", "moderate", "challenging", "low"]
+    label: str
+    description: str
+    elements: LoveCalculatorElementScores
+    name1: str | None = None
+    name2: str | None = None
+    dob1: str | None = None
+    dob2: str | None = None
+    number1: int
+    number2: int
+
+
 DEFAULT_TILES = [
     NumerologyTilePreview(tile_code="life_path_soul_mission", name="Life Path & Soul Mission", description="Decode your core numbers, direction, and inner drivers through a premium numerology profile."),
     NumerologyTilePreview(tile_code="name_correction_energy_alignment", name="Name Correction & Energy Alignment", description="Compare your birth vibration with your current name usage to understand public-name fit, energetic drift, and correction guidance."),
@@ -397,6 +441,152 @@ def _score_compatibility(primary: int, secondary: int) -> dict[str, Any]:
     if diff in (3, 4):
         return {"score": 0.58, "band": "mixed", "difference": diff}
     return {"score": 0.42, "band": "frictional", "difference": diff}
+
+
+def _name_to_chaldean_number(name: str) -> int:
+    cleaned = "".join(char.upper() for char in name if char.isalpha())
+    total = sum(CHALDEAN_MAP.get(char, 0) for char in cleaned)
+    while total > 9 and total not in MASTER_NUMBERS - {33}:
+        total = _digit_sum(total)
+    return total
+
+
+def _compatibility_base_number(value: int) -> int:
+    if value == 11:
+        return 2
+    if value == 22:
+        return 4
+    return _reduce_number(value, preserve_masters=False)
+
+
+COMPAT_MATRIX: dict[tuple[int, int], tuple[int, Literal["high", "good", "moderate", "challenging"]]] = {
+    (1, 1): (74, "good"),
+    (1, 2): (67, "good"),
+    (1, 3): (63, "moderate"),
+    (1, 4): (46, "challenging"),
+    (1, 5): (91, "high"),
+    (1, 6): (69, "good"),
+    (1, 7): (58, "moderate"),
+    (1, 8): (61, "moderate"),
+    (1, 9): (71, "good"),
+    (2, 2): (76, "good"),
+    (2, 3): (48, "challenging"),
+    (2, 4): (86, "high"),
+    (2, 5): (59, "moderate"),
+    (2, 6): (68, "good"),
+    (2, 7): (62, "moderate"),
+    (2, 8): (84, "high"),
+    (2, 9): (57, "moderate"),
+    (3, 3): (75, "good"),
+    (3, 4): (60, "moderate"),
+    (3, 5): (69, "good"),
+    (3, 6): (88, "high"),
+    (3, 7): (55, "moderate"),
+    (3, 8): (58, "moderate"),
+    (3, 9): (90, "high"),
+    (4, 4): (78, "good"),
+    (4, 5): (44, "challenging"),
+    (4, 6): (63, "moderate"),
+    (4, 7): (57, "moderate"),
+    (4, 8): (89, "high"),
+    (4, 9): (60, "moderate"),
+    (5, 5): (77, "good"),
+    (5, 6): (85, "high"),
+    (5, 7): (45, "challenging"),
+    (5, 8): (61, "moderate"),
+    (5, 9): (68, "good"),
+    (6, 6): (79, "good"),
+    (6, 7): (60, "moderate"),
+    (6, 8): (47, "challenging"),
+    (6, 9): (87, "high"),
+    (7, 7): (73, "good"),
+    (7, 8): (56, "moderate"),
+    (7, 9): (59, "moderate"),
+    (8, 8): (78, "good"),
+    (8, 9): (64, "moderate"),
+    (9, 9): (80, "high"),
+}
+
+
+def _build_name_pair_summary(first: int, second: int, band: str) -> str:
+    if band == "high":
+        return (
+            f"This pairing between {first} and {second} is naturally harmonious in Chaldean numerology, with both names reinforcing each other's rhythm. "
+            "It usually supports easier attraction, smoother communication, and a stronger sense of mutual encouragement."
+        )
+    if band == "good":
+        return (
+            f"This combination between {first} and {second} shows a healthy numerological fit with more support than friction. "
+            "The connection can grow steadily when both people stay clear in communication and consistent in expectations."
+        )
+    if band == "moderate":
+        return (
+            f"This pairing between {first} and {second} is workable but mixed, so compatibility depends more on maturity than instant ease. "
+            "The relationship often benefits from patience, clearer emotional pacing, and conscious adjustment around differences."
+        )
+    return (
+        f"This combination between {first} and {second} is considered challenging in Chaldean numerology and may create contrasting expectations. "
+        "It can still work, but the bond usually needs stronger communication, compromise, and deliberate effort to stay balanced."
+    )
+
+
+SUMMARY_MAP: dict[tuple[int, int], str] = {
+    pair: _build_name_pair_summary(pair[0], pair[1], band)
+    for pair, (_, band) in COMPAT_MATRIX.items()
+}
+
+
+def _score_name_pair(first: int, second: int) -> tuple[int, Literal["high", "good", "moderate", "challenging"], str]:
+    normalized_pair = tuple(sorted((_compatibility_base_number(first), _compatibility_base_number(second))))
+    score, band = COMPAT_MATRIX[normalized_pair]
+    return score, band, SUMMARY_MAP[normalized_pair]
+
+
+LOVE_BAND_LABELS: dict[str, str] = {
+    "cosmic": "Cosmic Match",
+    "high": "Soulmate Connection",
+    "good": "Strong Compatibility",
+    "moderate": "Balanced Pair",
+    "challenging": "Growth Relationship",
+    "low": "Opposites Attract",
+}
+
+
+def _score_to_love_band(score: int) -> tuple[Literal["cosmic", "high", "good", "moderate", "challenging", "low"], str]:
+    if score >= 90:
+        return "cosmic", LOVE_BAND_LABELS["cosmic"]
+    if score >= 75:
+        return "high", LOVE_BAND_LABELS["high"]
+    if score >= 60:
+        return "good", LOVE_BAND_LABELS["good"]
+    if score >= 45:
+        return "moderate", LOVE_BAND_LABELS["moderate"]
+    if score >= 30:
+        return "challenging", LOVE_BAND_LABELS["challenging"]
+    return "low", LOVE_BAND_LABELS["low"]
+
+
+def _build_love_elements(base_score: int, first: int, second: int) -> LoveCalculatorElementScores:
+    diff = abs(_compatibility_base_number(first) - _compatibility_base_number(second))
+    mind = max(18, min(98, base_score - diff * 4 + 6))
+    heart = max(18, min(99, base_score + max(0, 5 - diff) * 3))
+    energy = max(18, min(97, base_score - diff * 2 + ((first + second) % 7)))
+    return LoveCalculatorElementScores(mind=int(mind), heart=int(heart), energy=int(energy))
+
+
+def _build_love_description(mode: Literal["name", "birthdate"], label: str, first: int, second: int, score: int) -> str:
+    basis = "Chaldean name vibrations" if mode == "name" else "Life Path number resonance"
+    if score >= 90:
+        return f"{label} reflects a rare level of alignment between {first} and {second}. {basis} suggests instinctive chemistry, emotional reinforcement, and a shared rhythm that feels unusually natural."
+    if score >= 75:
+        return f"{label} suggests strong harmony between {first} and {second}. {basis} shows supportive attraction, better emotional flow, and a relationship style that usually grows with trust and consistency."
+    if score >= 60:
+        return f"{label} means this pairing carries more support than friction. {basis} points to real potential, especially when communication stays open and both people respect each other's pace."
+    if score >= 45:
+        return f"{label} indicates a workable middle ground between {first} and {second}. {basis} shows meaningful chemistry, but the relationship tends to improve when both people stay patient and intentional."
+    if score >= 30:
+        return f"{label} signals a relationship that teaches through contrast. {basis} shows attraction with visible differences, so compatibility depends on maturity, honesty, and emotional effort."
+    return f"{label} points to a highly contrasting pairing between {first} and {second}. {basis} can still create magnetism, but balance usually requires deeper understanding, compromise, and strong self-awareness."
 
 
 def _monthly_highlights(py: int) -> list[str]:
@@ -622,6 +812,76 @@ def _build_report(payload: NumerologyGenerateRequest, user_email: str) -> Numero
 @router.get("/tiles", response_model=NumerologyTileListResponse)
 async def list_numerology_tiles() -> NumerologyTileListResponse:
     return NumerologyTileListResponse(tiles=DEFAULT_TILES)
+
+
+@router.post("/name-compatibility", response_model=NameCompatibilityResponse)
+async def name_compatibility(payload: NameCompatibilityRequest) -> NameCompatibilityResponse:
+    name1 = payload.name1.strip()
+    name2 = payload.name2.strip()
+    if not name1 or not name2:
+        raise HTTPException(status_code=400, detail="Both names required")
+
+    number1 = _name_to_chaldean_number(name1)
+    number2 = _name_to_chaldean_number(name2)
+    score, band, summary = _score_name_pair(number1, number2)
+
+    return NameCompatibilityResponse(
+        name1=name1,
+        name2=name2,
+        number1=number1,
+        number2=number2,
+        score=score,
+        band=band,
+        summary=summary,
+    )
+
+
+@router.post("/love-calculator", response_model=LoveCalculatorResponse)
+async def love_calculator(payload: LoveCalculatorRequest) -> LoveCalculatorResponse:
+    if payload.mode == "name":
+        name1 = (payload.name1 or "").strip()
+        name2 = (payload.name2 or "").strip()
+        if not name1 or not name2:
+            raise HTTPException(status_code=400, detail="Both names required")
+        number1 = _name_to_chaldean_number(name1)
+        number2 = _name_to_chaldean_number(name2)
+        score, _, _ = _score_name_pair(number1, number2)
+        band, label = _score_to_love_band(score)
+        return LoveCalculatorResponse(
+            mode="name",
+            score=score,
+            band=band,
+            label=label,
+            description=_build_love_description("name", label, number1, number2, score),
+            elements=_build_love_elements(score, number1, number2),
+            name1=name1,
+            name2=name2,
+            number1=number1,
+            number2=number2,
+        )
+
+    dob1 = (payload.dob1 or "").strip()
+    dob2 = (payload.dob2 or "").strip()
+    if not dob1 or not dob2:
+        raise HTTPException(status_code=400, detail="Both birth dates required")
+
+    number1 = _calculate_life_path(dob1, "grouping")[0].reduced
+    number2 = _calculate_life_path(dob2, "grouping")[0].reduced
+    base = _score_compatibility(number1, number2)
+    score = int(round(float(base["score"]) * 100))
+    band, label = _score_to_love_band(score)
+    return LoveCalculatorResponse(
+        mode="birthdate",
+        score=score,
+        band=band,
+        label=label,
+        description=_build_love_description("birthdate", label, number1, number2, score),
+        elements=_build_love_elements(score, number1, number2),
+        dob1=dob1,
+        dob2=dob2,
+        number1=number1,
+        number2=number2,
+    )
 
 
 @router.post("/report/generate", response_model=NumerologyGenerateResponse)

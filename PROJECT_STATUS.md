@@ -231,8 +231,9 @@ Routes live: `/terms` `/privacy` `/subscription-terms` `/refund-policy` `/cookie
 Footer "Legal" column links all 5 pages.
 Backend: `GET /api/policies/{type}` serves from `horoscope_db.policies` collection.
 
-**Status: Pages live and indexed (noindex removed). MongoDB seed required.**
-Run: `python3 backend/scripts/seed_policies_v1.py --mongo-url "$MONGO_URL" --db-name horoscope_db`
+**Status: Pages live. Local SEO-C1 refresh prepared, but no live production changes were applied in this session.**
+Next step when approved: `python3 backend/scripts/seed_policies_v1.py --mongo-url "$MONGO_URL" --db-name horoscope_db`
+Local refresh includes: `PolicyPage.jsx` `noindex` cleanup plus updated legal seed wording for Razorpay, Google Analytics, cookie controls, and 7-day unused-service refund eligibility.
 
 ---
 

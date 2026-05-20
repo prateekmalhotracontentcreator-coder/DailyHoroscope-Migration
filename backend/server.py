@@ -13,6 +13,7 @@ from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import List, Literal, Optional
 import uuid
 from datetime import datetime, timezone, date, timedelta
+from zoneinfo import ZoneInfo
 import anthropic
 
 # ── pkg_resources shim ────────────────────────────────────────────────────────
@@ -47,6 +48,7 @@ try:
 except ImportError:
     GOOGLE_LIBS_AVAILABLE = False
 from pdf_generator import generate_birth_chart_pdf, generate_kundali_milan_pdf, generate_brihat_kundli_pdf, generate_report_password
+import vedic_calculator as vedic_calculator_module
 from vedic_calculator import build_dasha_timeline, calculate_vedic_chart, calculate_ashtakoot, check_mangal_dosha, generate_north_indian_chart_svg
 import secrets
 from auth_utils import (
@@ -225,11 +227,47 @@ ZODIAC_SIGNS = [
     {"id": "pisces", "name": "Pisces", "symbol": "\u2653", "dates": "Feb 19 - Mar 20", "element": "Water"}
 ]
 
-HoroscopeType = Literal["daily", "weekly", "monthly"]
+CELEBRITY_CATEGORY_LABELS = {
+    "bollywood": "Bollywood",
+    "politics": "Politics",
+    "cricket": "Cricket",
+    "business": "Business",
+    "global": "Global",
+    "spiritual": "Spiritual",
+    "historical": "Historical",
+}
+
+CELEBRITY_DATA = [
+    {"slug": "amitabh-bachchan", "name": "Amitabh Bachchan", "category": "bollywood", "dob": "1942-10-11", "tob": "16:00", "pob": "Allahabad, India", "lat": 25.4358, "lon": 81.8463, "tz": "Asia/Kolkata"},
+    {"slug": "shah-rukh-khan", "name": "Shah Rukh Khan", "category": "bollywood", "dob": "1965-11-02", "tob": "02:00", "pob": "New Delhi, India", "lat": 28.6139, "lon": 77.2090, "tz": "Asia/Kolkata"},
+    {"slug": "deepika-padukone", "name": "Deepika Padukone", "category": "bollywood", "dob": "1986-01-05", "tob": "00:00", "pob": "Copenhagen, Denmark", "lat": 55.6761, "lon": 12.5683, "tz": "Europe/Copenhagen"},
+    {"slug": "priyanka-chopra", "name": "Priyanka Chopra", "category": "bollywood", "dob": "1982-07-18", "tob": "10:00", "pob": "Jamshedpur, India", "lat": 22.8046, "lon": 86.2029, "tz": "Asia/Kolkata"},
+    {"slug": "narendra-modi", "name": "Narendra Modi", "category": "politics", "dob": "1950-09-17", "tob": "11:00", "pob": "Vadnagar, India", "lat": 23.7869, "lon": 72.6394, "tz": "Asia/Kolkata"},
+    {"slug": "rahul-gandhi", "name": "Rahul Gandhi", "category": "politics", "dob": "1970-06-19", "tob": "14:28", "pob": "New Delhi, India", "lat": 28.6139, "lon": 77.2090, "tz": "Asia/Kolkata"},
+    {"slug": "virat-kohli", "name": "Virat Kohli", "category": "cricket", "dob": "1988-11-05", "tob": "05:00", "pob": "New Delhi, India", "lat": 28.6139, "lon": 77.2090, "tz": "Asia/Kolkata"},
+    {"slug": "ms-dhoni", "name": "MS Dhoni", "category": "cricket", "dob": "1981-07-07", "tob": "02:30", "pob": "Ranchi, India", "lat": 23.3441, "lon": 85.3096, "tz": "Asia/Kolkata"},
+    {"slug": "sachin-tendulkar", "name": "Sachin Tendulkar", "category": "cricket", "dob": "1973-04-24", "tob": "17:45", "pob": "Mumbai, India", "lat": 19.0760, "lon": 72.8777, "tz": "Asia/Kolkata"},
+    {"slug": "rohit-sharma", "name": "Rohit Sharma", "category": "cricket", "dob": "1987-04-30", "tob": "07:00", "pob": "Nagpur, India", "lat": 21.1458, "lon": 79.0882, "tz": "Asia/Kolkata"},
+    {"slug": "mukesh-ambani", "name": "Mukesh Ambani", "category": "business", "dob": "1957-04-19", "tob": "06:00", "pob": "Aden, Yemen", "lat": 12.7855, "lon": 45.0187, "tz": "Asia/Aden"},
+    {"slug": "ratan-tata", "name": "Ratan Tata", "category": "business", "dob": "1937-12-28", "tob": "06:30", "pob": "Mumbai, India", "lat": 19.0760, "lon": 72.8777, "tz": "Asia/Kolkata"},
+    {"slug": "elon-musk", "name": "Elon Musk", "category": "global", "dob": "1971-06-28", "tob": "07:30", "pob": "Pretoria, South Africa", "lat": -25.7479, "lon": 28.2293, "tz": "Africa/Johannesburg"},
+    {"slug": "taylor-swift", "name": "Taylor Swift", "category": "global", "dob": "1989-12-13", "tob": "05:17", "pob": "West Reading, USA", "lat": 40.3362, "lon": -75.9471, "tz": "America/New_York"},
+    {"slug": "cristiano-ronaldo", "name": "Cristiano Ronaldo", "category": "global", "dob": "1985-02-05", "tob": "05:25", "pob": "Funchal, Portugal", "lat": 32.6669, "lon": -16.9241, "tz": "Atlantic/Madeira"},
+    {"slug": "sadhguru", "name": "Sadhguru", "category": "spiritual", "dob": "1957-09-03", "tob": "09:00", "pob": "Mysore, India", "lat": 12.2958, "lon": 76.6394, "tz": "Asia/Kolkata"},
+    {"slug": "baba-ramdev", "name": "Baba Ramdev", "category": "spiritual", "dob": "1965-12-25", "tob": "06:00", "pob": "Mahendragarh, India", "lat": 28.2780, "lon": 76.1514, "tz": "Asia/Kolkata"},
+    {"slug": "mahatma-gandhi", "name": "Mahatma Gandhi", "category": "historical", "dob": "1869-10-02", "tob": "07:35", "pob": "Porbandar, India", "lat": 21.6417, "lon": 69.6293, "tz": "Asia/Kolkata"},
+    {"slug": "jawaharlal-nehru", "name": "Jawaharlal Nehru", "category": "historical", "dob": "1889-11-14", "tob": "23:15", "pob": "Allahabad, India", "lat": 25.4358, "lon": 81.8463, "tz": "Asia/Kolkata"},
+    {"slug": "subhas-chandra-bose", "name": "Subhas Chandra Bose", "category": "historical", "dob": "1897-01-23", "tob": "12:15", "pob": "Cuttack, India", "lat": 20.4625, "lon": 85.8830, "tz": "Asia/Kolkata"},
+]
+
+CELEBRITY_INDEX = {item["slug"]: item for item in CELEBRITY_DATA}
+
+HoroscopeType = Literal["daily", "tomorrow", "weekly", "monthly"]
 
 def get_prediction_date(horoscope_type: str) -> str:
     today = date.today()
     if horoscope_type == "daily": return today.isoformat()
+    elif horoscope_type == "tomorrow": return (today + timedelta(days=1)).isoformat()
     elif horoscope_type == "weekly": return (today - timedelta(days=today.weekday())).isoformat()
     elif horoscope_type == "monthly": return today.replace(day=1).isoformat()
     return today.isoformat()
@@ -277,6 +315,44 @@ class BirthChartReport(BaseModel):
 
 class BirthChartRequest(BaseModel):
     profile_id: str
+
+class BirthChartCalculationRequest(BaseModel):
+    date_of_birth: str
+    time_of_birth: str | None = None
+    place_of_birth: str | None = None
+    timezone: str | None = "Asia/Kolkata"
+
+class CelebrityListItem(BaseModel):
+    slug: str
+    name: str
+    category: str
+    category_label: str
+    dob: str
+    tob: str
+    pob: str
+    birth_time_confirmed: bool = True
+
+class CelebrityChartResponse(BaseModel):
+    slug: str
+    name: str
+    category: str
+    category_label: str
+    dob: str
+    tob: str
+    pob: str
+    tz: str
+    lat: float
+    lon: float
+    birth_time_confirmed: bool = True
+    cached: bool = False
+    source: str = "vedic_calculator.py"
+    chart_summary: dict = {}
+    chart_svg: str = ""
+    planet_positions: list = []
+    dasha_timeline: list = []
+    notable_yogas: list = []
+    interpretation_note: str = ""
+    generated_at: str = ""
 
 class BlogPost(BaseModel):
     model_config = ConfigDict(extra="ignore")
@@ -548,10 +624,11 @@ async def send_email_notification(to_email: str, subject: str, body: str):
 async def generate_horoscope_with_llm(sign: str, horoscope_type: str) -> str:
     sign_dash = sign + " \u2014"
     daily_prompt = ("You are a Vedic astrologer specialising in Jyotish. Generate a daily horoscope for " + sign + ".\n\nCRITICAL FORMATTING RULES:\n1. Start with one sentence of overall energy.\n2. Output EXACTLY these 4 sections with EXACTLY these headings on their own line:\n   Love & Relationships:\n   Career & Finances:\n   Health & Wellness:\n   Lucky Elements:\n3. Under Lucky Elements include: Lucky Number: [number], Lucky Colour: [colour], Lucky Time: [time]\n4. NO markdown (no **, no ##, no ---)\n5. Each section: 2-3 sentences. Total 120-150 words.\n6. Begin with: \"" + sign_dash + "\" as the very first word.")
+    tomorrow_prompt = ("You are a Vedic astrologer specialising in Jyotish. Generate a tomorrow's horoscope for " + sign + ".\n\nCRITICAL FORMATTING RULES:\n1. Start with one sentence of tomorrow's overall energy.\n2. Output EXACTLY these 4 sections with EXACTLY these headings on their own line:\n   Love & Relationships:\n   Career & Finances:\n   Health & Wellness:\n   Lucky Elements:\n3. Under Lucky Elements include: Lucky Number: [number], Lucky Colour: [colour], Lucky Time: [time]\n4. NO markdown (no **, no ##, no ---)\n5. Each section: 2-3 sentences. Total 120-150 words.\n6. Begin with: \"" + sign_dash + "\"")
     weekly_prompt = ("You are a Vedic astrologer. Generate a weekly horoscope for " + sign + ".\n\nCRITICAL FORMATTING RULES:\n1. Start with one sentence summarising the week.\n2. Output EXACTLY these 4 sections:\n   Love & Relationships:\n   Career & Finances:\n   Health & Wellness:\n   Lucky Elements:\n3. Under Lucky Elements include: Lucky Days: [days], Lucky Colour: [colour], Focus Mantra: [mantra]\n4. NO markdown\n5. Each section: 3-4 sentences. Total 180-220 words.\n6. Begin with: \"" + sign_dash + "\"")
     monthly_prompt = ("You are a Vedic astrologer. Generate a monthly horoscope for " + sign + ".\n\nCRITICAL FORMATTING RULES:\n1. Start with one sentence summarising the month.\n2. Output EXACTLY these 4 sections:\n   Love & Relationships:\n   Career & Finances:\n   Health & Wellness:\n   Lucky Elements:\n3. Under Lucky Elements include: Power Dates: [3 dates], Lucky Gemstone: [stone], Monthly Mantra: [mantra]\n4. NO markdown\n5. Each section: 4-5 sentences. Total 250-300 words.\n6. Begin with: \"" + sign_dash + "\"")
-    system_prompts = {"daily": daily_prompt, "weekly": weekly_prompt, "monthly": monthly_prompt}
-    user_prompts = {"daily": "Generate today's Vedic horoscope for " + sign + ".", "weekly": "Generate this week's Vedic horoscope for " + sign + ".", "monthly": "Generate this month's Vedic horoscope for " + sign + "."}
+    system_prompts = {"daily": daily_prompt, "tomorrow": tomorrow_prompt, "weekly": weekly_prompt, "monthly": monthly_prompt}
+    user_prompts = {"daily": "Generate today's Vedic horoscope for " + sign + ".", "tomorrow": "Generate tomorrow's Vedic horoscope for " + sign + ".", "weekly": "Generate this week's Vedic horoscope for " + sign + ".", "monthly": "Generate this month's Vedic horoscope for " + sign + "."}
     try:
         llm = anthropic.Anthropic(api_key=os.environ.get('ANTHROPIC_API_KEY'))
         message = llm.messages.create(model="claude-sonnet-4-20250514", max_tokens=1024, system=system_prompts[horoscope_type], messages=[{"role": "user", "content": user_prompts[horoscope_type]}])
@@ -575,35 +652,36 @@ async def get_zodiac_signs(): return ZODIAC_SIGNS
 async def generate_horoscope(request: HoroscopeRequest):
     valid_signs = [sign["id"] for sign in ZODIAC_SIGNS]
     if request.sign not in valid_signs: raise HTTPException(status_code=400, detail="Invalid zodiac sign")
-    today = date.today().isoformat()
-    existing = await db.horoscopes.find_one({"sign": request.sign, "type": request.type, "prediction_date": today}, {"_id": 0})
+    prediction_date = get_prediction_date(request.type)
+    existing = await db.horoscopes.find_one({"sign": request.sign, "type": request.type, "prediction_date": prediction_date}, {"_id": 0})
     if existing:
         if isinstance(existing['created_at'], str): existing['created_at'] = datetime.fromisoformat(existing['created_at'])
         return Horoscope(**existing)
     content = await generate_horoscope_with_llm(request.sign, request.type)
-    horoscope = Horoscope(sign=request.sign, type=request.type, content=content, prediction_date=today)
+    horoscope = Horoscope(sign=request.sign, type=request.type, content=content, prediction_date=prediction_date)
     await db.horoscopes.insert_one(horoscope.model_dump(mode='json'))
     return horoscope
 
 @api_router.get("/horoscope/prefetch-status")
 async def prefetch_status():
-    daily_date = get_prediction_date('daily'); weekly_date = get_prediction_date('weekly'); monthly_date = get_prediction_date('monthly')
+    daily_date = get_prediction_date('daily'); tomorrow_date = get_prediction_date('tomorrow'); weekly_date = get_prediction_date('weekly'); monthly_date = get_prediction_date('monthly')
     daily_count = await db.horoscopes.count_documents({'type': 'daily', 'prediction_date': daily_date})
+    tomorrow_count = await db.horoscopes.count_documents({'type': 'tomorrow', 'prediction_date': tomorrow_date})
     weekly_count = await db.horoscopes.count_documents({'type': 'weekly', 'prediction_date': weekly_date})
     monthly_count = await db.horoscopes.count_documents({'type': 'monthly', 'prediction_date': monthly_date})
-    return {'daily': {'cached': daily_count, 'total': 12, 'date': daily_date}, 'weekly': {'cached': weekly_count, 'total': 12, 'date': weekly_date}, 'monthly': {'cached': monthly_count, 'total': 12, 'date': monthly_date}, 'total_cached': daily_count + weekly_count + monthly_count}
+    return {'daily': {'cached': daily_count, 'total': 12, 'date': daily_date}, 'tomorrow': {'cached': tomorrow_count, 'total': 12, 'date': tomorrow_date}, 'weekly': {'cached': weekly_count, 'total': 12, 'date': weekly_date}, 'monthly': {'cached': monthly_count, 'total': 12, 'date': monthly_date}, 'total_cached': daily_count + tomorrow_count + weekly_count + monthly_count}
 
 @api_router.get("/horoscope/{sign}/{type}", response_model=Horoscope)
 async def get_horoscope(sign: str, type: HoroscopeType):
     valid_signs = [s["id"] for s in ZODIAC_SIGNS]
     if sign not in valid_signs: raise HTTPException(status_code=400, detail="Invalid zodiac sign")
-    today = date.today().isoformat()
-    horoscope_doc = await db.horoscopes.find_one({"sign": sign, "type": type, "prediction_date": today}, {"_id": 0})
+    prediction_date = get_prediction_date(type)
+    horoscope_doc = await db.horoscopes.find_one({"sign": sign, "type": type, "prediction_date": prediction_date}, {"_id": 0})
     if horoscope_doc:
         if isinstance(horoscope_doc['created_at'], str): horoscope_doc['created_at'] = datetime.fromisoformat(horoscope_doc['created_at'])
         return Horoscope(**horoscope_doc)
     content = await generate_horoscope_with_llm(sign, type)
-    horoscope = Horoscope(sign=sign, type=type, content=content, prediction_date=today)
+    horoscope = Horoscope(sign=sign, type=type, content=content, prediction_date=prediction_date)
     await db.horoscopes.insert_one(horoscope.model_dump(mode='json'))
     return horoscope
 
@@ -631,6 +709,254 @@ async def list_birth_profiles():
     for p in profiles:
         if isinstance(p['created_at'], str): p['created_at'] = datetime.fromisoformat(p['created_at'])
     return profiles
+
+def _resolve_birth_timezone_offset(date_of_birth: str, time_of_birth: str, timezone_value: str | None) -> str:
+    tz_name = (timezone_value or "Asia/Kolkata").strip()
+    if len(tz_name) == 6 and tz_name[0] in {"+", "-"} and tz_name[3] == ":":
+        return tz_name
+    try:
+        naive_dt = datetime.strptime(f"{date_of_birth} {time_of_birth}", "%Y-%m-%d %H:%M")
+        offset = naive_dt.replace(tzinfo=ZoneInfo(tz_name)).utcoffset() or timedelta()
+        total_minutes = int(offset.total_seconds() // 60)
+        sign = "+" if total_minutes >= 0 else "-"
+        total_minutes = abs(total_minutes)
+        hours, minutes = divmod(total_minutes, 60)
+        return f"{sign}{hours:02d}:{minutes:02d}"
+    except Exception:
+        logging.warning("Falling back to IST offset for timezone value: %s", tz_name)
+        return "+05:30"
+
+def _planet_plain_name(label: str) -> str:
+    return label.split("(")[0].strip()
+
+def _format_planet_status(planet_data: dict) -> str:
+    parts: list[str] = []
+    dignity = str(planet_data.get("dignity") or "").replace("_", " ").strip()
+    if dignity:
+        parts.append(dignity.title())
+    if planet_data.get("retrograde"):
+        parts.append("Retrograde")
+    if planet_data.get("combust"):
+        parts.append("Combust")
+    return ", ".join(parts) if parts else "Neutral"
+
+def _build_notable_yogas(chart_data: dict) -> list[dict]:
+    planets = chart_data.get("planets", {})
+    highlights: list[dict] = []
+
+    exalted = [name for name, data in planets.items() if data.get("dignity") == "exalted"]
+    own_sign = [name for name, data in planets.items() if data.get("dignity") in {"own_sign", "moolatrikona"}]
+    retrograde = [name for name, data in planets.items() if data.get("retrograde")]
+    combust = [name for name, data in planets.items() if data.get("combust")]
+    mangal = chart_data.get("mangal_dosha", {})
+
+    if exalted:
+        highlights.append({
+            "name": "Exalted Planet Strength",
+            "detail": ", ".join(_planet_plain_name(name) for name in exalted[:3]) + " shows exalted dignity in this chart.",
+        })
+    if own_sign:
+        highlights.append({
+            "name": "Own-Sign Support",
+            "detail": ", ".join(_planet_plain_name(name) for name in own_sign[:3]) + " occupies an especially supportive dignity placement.",
+        })
+    if retrograde:
+        highlights.append({
+            "name": "Retrograde Focus",
+            "detail": ", ".join(_planet_plain_name(name) for name in retrograde[:3]) + " adds reflective or intensified karmic themes.",
+        })
+    if combust:
+        highlights.append({
+            "name": "Combustion Note",
+            "detail": ", ".join(_planet_plain_name(name) for name in combust[:3]) + " is close to the Sun, which can modify its expression.",
+        })
+    if mangal.get("has_dosha"):
+        highlights.append({
+            "name": "Mangal Dosha Signature",
+            "detail": mangal.get("description") or "Mars creates a classic Mangal Dosha pattern in this chart.",
+        })
+
+    if not highlights:
+        nakshatra = chart_data.get("nakshatra", {})
+        moon_sign = chart_data.get("moon_sign", {})
+        highlights.append({
+            "name": "Nakshatra Emphasis",
+            "detail": f"{nakshatra.get('name', 'The Moon')} in {moon_sign.get('sign', 'its sign')} shapes the strongest public-facing emotional signature here.",
+        })
+
+    return highlights[:4]
+
+def _build_celebrity_list_item(celebrity: dict) -> dict:
+    return CelebrityListItem(
+        slug=celebrity["slug"],
+        name=celebrity["name"],
+        category=celebrity["category"],
+        category_label=CELEBRITY_CATEGORY_LABELS.get(celebrity["category"], celebrity["category"].title()),
+        dob=celebrity["dob"],
+        tob=celebrity["tob"],
+        pob=celebrity["pob"],
+        birth_time_confirmed=celebrity["tob"] != "00:00",
+    ).model_dump(mode="json")
+
+def _compute_celebrity_chart_payload(celebrity: dict) -> dict:
+    time_confirmed = celebrity["tob"] != "00:00"
+    chart_time = celebrity["tob"] if time_confirmed else "12:00"
+    timezone_offset = _resolve_birth_timezone_offset(celebrity["dob"], chart_time, celebrity["tz"])
+
+    original_geocode = vedic_calculator_module.geocode_place
+    vedic_calculator_module.geocode_place = lambda _place: (celebrity["lat"], celebrity["lon"])
+    try:
+        chart_data = calculate_vedic_chart(
+            date_of_birth=celebrity["dob"],
+            time_of_birth=chart_time,
+            place_of_birth=celebrity["pob"],
+            timezone_offset=timezone_offset,
+        )
+    finally:
+        vedic_calculator_module.geocode_place = original_geocode
+
+    moon_longitude = chart_data.get("moon_longitude")
+    dasha_timeline = build_dasha_timeline(celebrity["dob"], moon_longitude) if moon_longitude else []
+    lagna = chart_data.get("lagna", {}) if time_confirmed else {}
+    houses = chart_data.get("houses", {}) if time_confirmed else {}
+    chart_svg = ""
+    if time_confirmed and houses and lagna.get("sign"):
+        try:
+            chart_svg = generate_north_indian_chart_svg(houses, lagna["sign"])
+        except Exception as exc:
+            logging.warning("Celebrity chart SVG generation failed for %s: %s", celebrity["slug"], exc)
+
+    sun_data = chart_data.get("planets", {}).get("Sun (Surya)", {})
+    moon_sign = chart_data.get("moon_sign", {})
+    nakshatra = chart_data.get("nakshatra", {})
+    current_dasha = chart_data.get("current_dasha", {})
+    planet_positions = []
+    for planet_name, planet_data in chart_data.get("planets", {}).items():
+        planet_positions.append({
+            "planet": _planet_plain_name(planet_name),
+            "sign": planet_data.get("sign", ""),
+            "sign_vedic": planet_data.get("sign_vedic", planet_data.get("sign", "")),
+            "house": planet_data.get("house") if time_confirmed else None,
+            "degree": planet_data.get("degree"),
+            "status": _format_planet_status(planet_data),
+        })
+
+    planet_positions.sort(key=lambda item: item["planet"])
+    interpretation_note = (
+        "This chart is computed using Vedic astrology (KP Ayanamsha, Placidus houses). "
+        "Time of birth accuracy affects house positions."
+    )
+    if not time_confirmed:
+        interpretation_note = (
+            "Time of birth is not confirmed for this celebrity. Lagna and house positions are intentionally omitted, "
+            "while sign-based chart factors are shown from a neutral midday reference."
+        )
+
+    return CelebrityChartResponse(
+        slug=celebrity["slug"],
+        name=celebrity["name"],
+        category=celebrity["category"],
+        category_label=CELEBRITY_CATEGORY_LABELS.get(celebrity["category"], celebrity["category"].title()),
+        dob=celebrity["dob"],
+        tob=celebrity["tob"],
+        pob=celebrity["pob"],
+        tz=celebrity["tz"],
+        lat=celebrity["lat"],
+        lon=celebrity["lon"],
+        birth_time_confirmed=time_confirmed,
+        cached=False,
+        source="vedic_calculator.py",
+        chart_summary={
+            "lagna": lagna,
+            "moon_sign": moon_sign,
+            "sun_sign": {
+                "sign": sun_data.get("sign", ""),
+                "sign_vedic": sun_data.get("sign_vedic", sun_data.get("sign", "")),
+            },
+            "nakshatra": nakshatra,
+            "current_dasha": current_dasha,
+            "mangal_dosha": chart_data.get("mangal_dosha", {}),
+        },
+        chart_svg=chart_svg,
+        planet_positions=planet_positions,
+        dasha_timeline=dasha_timeline,
+        notable_yogas=_build_notable_yogas(chart_data),
+        interpretation_note=interpretation_note,
+        generated_at=datetime.now(timezone.utc).isoformat(),
+    ).model_dump(mode="json")
+
+@api_router.post("/calculate-birth-chart")
+async def calculate_birth_chart_public(payload: BirthChartCalculationRequest):
+    birth_time = (payload.time_of_birth or "12:00").strip() or "12:00"
+    birth_place = (payload.place_of_birth or "New Delhi").strip() or "New Delhi"
+    timezone_offset = _resolve_birth_timezone_offset(
+        payload.date_of_birth,
+        birth_time,
+        payload.timezone,
+    )
+
+    try:
+        chart_data = calculate_vedic_chart(
+            date_of_birth=payload.date_of_birth,
+            time_of_birth=birth_time,
+            place_of_birth=birth_place,
+            timezone_offset=timezone_offset,
+        )
+    except Exception as exc:
+        logging.error("Public calculator birth chart failed: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail="Unable to calculate the birth chart right now.")
+
+    moon_sign = chart_data.get("moon_sign", {})
+    sign_name = moon_sign.get("sign", "")
+    moon_longitude = chart_data.get("moon_longitude")
+    moon_degree = round(float(moon_longitude) % 30, 2) if isinstance(moon_longitude, (int, float)) else None
+    nakshatra = chart_data.get("nakshatra", {})
+
+    return {
+        "moon_sign": sign_name,
+        "moon_sign_vedic": moon_sign.get("sign_vedic", sign_name),
+        "moon_sign_lord": SIGN_LORDS.get(sign_name, ""),
+        "moon_degree": moon_degree,
+        "moon_nakshatra": nakshatra.get("name", ""),
+        "moon_nakshatra_lord": nakshatra.get("lord", ""),
+        "moon_nakshatra_pada": nakshatra.get("pada"),
+        "current_dasha": chart_data.get("current_dasha", {}),
+        "birth_details": chart_data.get("birth_details", {}),
+        "chart": {
+            "moon_sign": moon_sign,
+            "nakshatra": nakshatra,
+            "moon_longitude": moon_longitude,
+        },
+        "source": "vedic_calculator.py",
+    }
+
+@api_router.get("/celebrities", response_model=List[CelebrityListItem])
+async def get_celebrities():
+    return [_build_celebrity_list_item(item) for item in CELEBRITY_DATA]
+
+@api_router.get("/celebrities/{slug}", response_model=CelebrityChartResponse)
+async def get_celebrity_chart(slug: str):
+    celebrity = CELEBRITY_INDEX.get(slug)
+    if not celebrity:
+        raise HTTPException(status_code=404, detail="Celebrity not found")
+
+    cached_doc = await db.celebrities.find_one({"slug": slug}, {"_id": 0})
+    if cached_doc:
+        cached_doc["cached"] = True
+        return CelebrityChartResponse(**cached_doc)
+
+    try:
+        payload = _compute_celebrity_chart_payload(celebrity)
+    except Exception as exc:
+        logging.error("Celebrity chart generation failed for %s: %s", slug, exc, exc_info=True)
+        raise HTTPException(status_code=500, detail="Unable to load the celebrity chart right now.")
+
+    await db.celebrities.update_one(
+        {"slug": slug},
+        {"$set": payload},
+        upsert=True,
+    )
+    return CelebrityChartResponse(**payload)
 
 async def generate_birth_chart_with_llm(profile: BirthProfile) -> str:
     try:
@@ -2295,7 +2621,7 @@ async def arc_angel_pillar3_decay_scheduler():
 
 async def prefetch_all_horoscopes():
     logging.info("Starting scheduled horoscope prefetch...")
-    signs = [s["id"] for s in ZODIAC_SIGNS]; types = ["daily", "weekly", "monthly"]; generated = skipped = 0
+    signs = [s["id"] for s in ZODIAC_SIGNS]; types = ["daily", "tomorrow", "weekly", "monthly"]; generated = skipped = 0
     for horoscope_type in types:
         prediction_date = get_prediction_date(horoscope_type)
         for sign in signs:

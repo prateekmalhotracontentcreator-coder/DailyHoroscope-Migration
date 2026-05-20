@@ -76,6 +76,7 @@ const PalmistryPage = lazy(() => import('./pages/palmistry/PalmistryPage').then(
 const TarotPage = lazy(() => import('./pages/tarot/TarotPage').then(m => ({ default: m.TarotPage })));
 const TarotLanding = lazy(() => import('./pages/tarot/TarotLanding'));
 const TarotHistoryPage = lazy(() => import('./pages/tarot/TarotHistoryPage'));
+const HoroscopeSignPage = lazy(() => import('./pages/horoscope/HoroscopeSignPage').then(m => ({ default: m.HoroscopeSignPage })));
 const RemedyPage = lazy(() => import('./pages/remedies/RemedyPage').then(m => ({ default: m.RemedyPage })));
 const KundaliPage = lazy(() => import('./pages/kundali/KundaliPage'));
 const LuminaPage = lazy(() => import('./pages/lumina/LuminaPage'));
@@ -103,6 +104,17 @@ const StrategistSurrogatePage = lazy(() => import('./pages/strategist/Strategist
 const KrishnaOraclePage = lazy(() => import('./pages/kp/KrishnaOraclePage'));
 const PunyaRewardsPage = lazy(() => import('./pages/rewards/PunyaRewardsPage'));
 const StrategistActionPlanPage = lazy(() => import('./pages/strategist/StrategistActionPlanPage'));
+const FestivalsHubPage = lazy(() => import('./pages/festivals/FestivalsHubPage').then(m => ({ default: m.FestivalsHubPage })));
+const FestivalPage = lazy(() => import('./pages/festivals/FestivalPage').then(m => ({ default: m.FestivalPage })));
+const IndianCalendarPage = lazy(() => import('./pages/calendar/IndianCalendarPage').then(m => ({ default: m.IndianCalendarPage })));
+const HoraTodayPage = lazy(() => import('./pages/hora/HoraTodayPage').then(m => ({ default: m.HoraTodayPage })));
+const RashiCalculatorPage = lazy(() => import('./pages/calculators/RashiCalculatorPage').then(m => ({ default: m.RashiCalculatorPage })));
+const NakshatraCalculatorPage = lazy(() => import('./pages/calculators/NakshatraCalculatorPage').then(m => ({ default: m.NakshatraCalculatorPage })));
+const NameCompatibilityPage = lazy(() => import('./pages/calculators/NameCompatibilityPage').then(m => ({ default: m.NameCompatibilityPage })));
+const DevotionalDatePage = lazy(() => import('./pages/devotional/DevotionalDatePage').then(m => ({ default: m.DevotionalDatePage })));
+const MarriageMuhuratPage = lazy(() => import('./pages/muhurat/MarriageMuhuratPage').then(m => ({ default: m.MarriageMuhuratPage })));
+const CelebrityHubPage = lazy(() => import('./pages/celebrity/CelebrityHubPage').then(m => ({ default: m.CelebrityHubPage })));
+const CelebrityChartPage = lazy(() => import('./pages/celebrity/CelebrityChartPage').then(m => ({ default: m.CelebrityChartPage })));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -144,6 +156,18 @@ function App() {
                   <Route path="/horoscope/daily/:sign" element={<DailyHoroscopeSign />} />
                   <Route path="/horoscope/weekly" element={<PremiumRoute feature="Weekly Horoscope" description="Full 7-day Vedic horoscope across all 12 signs is a Premium feature. Upgrade to unlock weekly predictions."><WeeklyHoroscope /></PremiumRoute>} />
                   <Route path="/horoscope/monthly" element={<PremiumRoute feature="Monthly Horoscope" description="Comprehensive monthly Vedic forecast across all 12 signs is a Premium feature. Upgrade for the full picture."><MonthlyHoroscope /></PremiumRoute>} />
+                  <Route path="/horoscope/:sign/tomorrow" element={<HoroscopeSignPage period="tomorrow" />} />
+                  <Route path="/horoscope/:sign/weekly" element={<HoroscopeSignPage period="weekly" />} />
+                  <Route path="/horoscope/:sign/monthly" element={<HoroscopeSignPage period="monthly" />} />
+                  <Route path="/rashi-calculator" element={<RashiCalculatorPage />} />
+                  <Route path="/nakshatra-calculator" element={<NakshatraCalculatorPage />} />
+                  <Route path="/compatibility/name" element={<NameCompatibilityPage />} />
+                  <Route path="/ekadashi" element={<DevotionalDatePage type="ekadashi" />} />
+                  <Route path="/amavasya" element={<DevotionalDatePage type="amavasya" />} />
+                  <Route path="/purnima" element={<DevotionalDatePage type="purnima" />} />
+                  <Route path="/muhurat/marriage" element={<MarriageMuhuratPage />} />
+                  <Route path="/celebrity-horoscopes" element={<CelebrityHubPage />} />
+                  <Route path="/celebrity-horoscopes/:slug" element={<CelebrityChartPage />} />
                   <Route path="/live-sai-baba-arti" element={<LiveSaiBabaArtiPage />} />
 
                   {/* Blog */}
@@ -204,6 +228,13 @@ function App() {
                   <Route path="/admin/library" element={<LibraryConsolePage />} />
 
                   {/* Panchang -- order matters: most specific first */}
+                  <Route path="/festivals/holi" element={<FestivalPage slug="holi" />} />
+                  <Route path="/festivals/diwali" element={<FestivalPage slug="diwali" />} />
+                  <Route path="/festivals/karwa-chauth" element={<FestivalPage slug="karwa-chauth" />} />
+                  <Route path="/festivals" element={<FestivalsHubPage />} />
+                  <Route path="/calendar" element={<IndianCalendarPage />} />
+                  <Route path="/calendar/:year/:month" element={<IndianCalendarPage />} />
+                  <Route path="/hora" element={<HoraTodayPage />} />
                   <Route path="/panchang" element={<PanchangLandingPage />} />
                   <Route path="/panchang/calendar/:year/:month" element={<PanchangPage />} />
                   <Route path="/panchang/date/:dateValue" element={<PanchangPage />} />

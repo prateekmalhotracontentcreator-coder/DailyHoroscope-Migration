@@ -9,14 +9,14 @@ from typing import Literal
 from zoneinfo import ZoneInfo
 
 import swisseph as swe
-from fastapi import APIRouter, HTTPException, Query
+from fastapi import APIRouter, HTTPException, Query, Request
 from pydantic import BaseModel, ConfigDict, Field
 
 _log = logging.getLogger("panchang")
 
 router = APIRouter(prefix="/api/panchang", tags=["panchang"])
 
-ENGINE_VERSION = "panchang-router-v17-kp-bundle-default-engine-fallback"
+ENGINE_VERSION = "panchang-router-v20-seo-c5-marriage-muhurat"
 CalendarVariant = Literal["amanta", "purnimanta"]
 RegionCode = Literal["general", "north_india", "south_india", "western_india"]
 ObservanceType = Literal["festival", "vrat", "observance"]
@@ -36,20 +36,20 @@ _SWE_FLAGS = swe.FLG_SWIEPH | swe.FLG_SIDEREAL
 
 # ---------------------------------------------------------------------------
 # Traditional Vedic inauspicious timing slot tables
-# Verified against Drik Panchang — New Delhi, 26 March 2026 (Thu).
-# weekday key = Python date.isoweekday(): Mon=1 … Sun=7
+# Verified against Drik Panchang -- New Delhi, 26 March 2026 (Thu).
+# weekday key = Python date.isoweekday(): Mon=1 ... Sun=7
 # ---------------------------------------------------------------------------
 
-# Rahu Kaal  — Sun=8, Mon=2, Tue=7, Wed=5, Thu=6, Fri=4, Sat=3
+# Rahu Kaal  -- Sun=8, Mon=2, Tue=7, Wed=5, Thu=6, Fri=4, Sat=3
 _RAHU_KAAL_SLOT = {1: 2, 2: 7, 3: 5, 4: 6, 5: 4, 6: 3, 7: 8}
 
-# Yamaganda  — Sun=5, Mon=4, Tue=3, Wed=2, Thu=1, Fri=7, Sat=6
+# Yamaganda  -- Sun=5, Mon=4, Tue=3, Wed=2, Thu=1, Fri=7, Sat=6
 _YAMAGANDA_SLOT = {1: 4, 2: 3, 3: 2, 4: 1, 5: 7, 6: 6, 7: 5}
 
-# Gulika Kaal — Sun=7, Mon=6, Tue=5, Wed=4, Thu=3, Fri=2, Sat=1
+# Gulika Kaal -- Sun=7, Mon=6, Tue=5, Wed=4, Thu=3, Fri=2, Sat=1
 _GULIKA_SLOT    = {1: 6, 2: 5, 3: 4, 4: 3, 5: 2, 6: 1, 7: 7}
 
-# Dur Muhurta — two windows per day (0-indexed Muhurta from sunrise, daylight/15 each)
+# Dur Muhurta -- two windows per day (0-indexed Muhurta from sunrise, daylight/15 each)
 # Thu verified: Muhurtas 5 & 11 → 10:24 AM and 03:19 PM ✓
 _DUR_MUHURTA_MUHURTAS: dict[int, tuple[int, int]] = {
     1: (6, 11),   # Monday
@@ -64,7 +64,7 @@ _DUR_MUHURTA_MUHURTAS: dict[int, tuple[int, int]] = {
 # ---------------------------------------------------------------------------
 # True Choghadiya tables
 # Each weekday has 8 day slots + 8 night slots.
-# weekday key = Python date.isoweekday(): Mon=1 … Sun=7
+# weekday key = Python date.isoweekday(): Mon=1 ... Sun=7
 # ---------------------------------------------------------------------------
 _CHOG_QUALITY: dict[str, TimingQuality] = {
     "Amrit": "good", "Shubh": "good", "Labh": "good",
@@ -96,11 +96,11 @@ _NIGHT_CHOG: dict[int, list[str]] = {
 }
 
 # ---------------------------------------------------------------------------
-# Special Yogas — Nakshatra × Weekday rule tables
-# weekday key = Python date.isoweekday(): Mon=1 … Sun=7
+# Special Yogas -- Nakshatra × Weekday rule tables
+# weekday key = Python date.isoweekday(): Mon=1 ... Sun=7
 # ---------------------------------------------------------------------------
 
-# Sarvartha Siddhi Yoga — "All-Purpose Accomplishment"; auspicious for new ventures
+# Sarvartha Siddhi Yoga -- "All-Purpose Accomplishment"; auspicious for new ventures
 _SARVARTHA_SIDDHI: dict[int, set[str]] = {
     7: {"Hasta", "Pushya", "Uttara Phalguni", "Uttara Ashadha", "Uttara Bhadrapada"},
     1: {"Rohini", "Mrigashira", "Punarvasu", "Pushya", "Anuradha", "Shravana"},
@@ -111,7 +111,7 @@ _SARVARTHA_SIDDHI: dict[int, set[str]] = {
     6: {"Rohini", "Swati", "Dhanishtha", "Shravana", "Shatabhisha"},
 }
 
-# Amrit Siddhi Yoga — "Nectar of Accomplishment"; rarest and most auspicious
+# Amrit Siddhi Yoga -- "Nectar of Accomplishment"; rarest and most auspicious
 _AMRIT_SIDDHI: dict[int, str] = {
     7: "Hasta",       # Sunday
     1: "Mrigashira",  # Monday
@@ -122,7 +122,7 @@ _AMRIT_SIDDHI: dict[int, str] = {
     6: "Rohini",      # Saturday
 }
 
-# Ravi Yoga — Sun yoga; avoid starting new work (inauspicious)
+# Ravi Yoga -- Sun yoga; avoid starting new work (inauspicious)
 _RAVI_YOGA: dict[int, set[str]] = {
     7: {"Krittika", "Uttara Phalguni", "Uttara Ashadha"},
     1: {"Hasta", "Shravana"},
@@ -133,7 +133,7 @@ _RAVI_YOGA: dict[int, set[str]] = {
     6: {"Pushya", "Anuradha", "Uttara Bhadrapada"},
 }
 
-# Vijaya Muhurta — weekday-specific Muhurta index from sunrise
+# Vijaya Muhurta -- weekday-specific Muhurta index from sunrise
 _VIJAYA_MUHURTA: dict[int, int] = {
     1:  9,   # Monday
     2:  2,   # Tuesday
@@ -305,7 +305,7 @@ class PanchangFestivalListResponse(BaseModel):
 
 class ChoghadiyaSlot(BaseModel):
     model_config = ConfigDict(extra="ignore")
-    index: int          # 1–8
+    index: int          # 1-8
     name: str           # Amrit / Shubh / Labh / Char / Udveg / Kaal / Rog
     ruler: str          # planet name
     quality: TimingQuality
@@ -322,6 +322,63 @@ class ChoghadiyaResponse(BaseModel):
     next_sunrise: str
     day_choghadiya: list[ChoghadiyaSlot] = Field(default_factory=list)
     night_choghadiya: list[ChoghadiyaSlot] = Field(default_factory=list)
+    meta: PanchangMeta
+
+
+class HoraSlot(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    index: int
+    planet: str
+    start: str
+    end: str
+    quality: str
+    period: Literal["day", "night"]
+
+
+class HoraResponse(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    date: str
+    location: PanchangLocation
+    sunrise: str
+    sunset: str
+    next_sunrise: str
+    day_hora: list[HoraSlot] = Field(default_factory=list)
+    night_hora: list[HoraSlot] = Field(default_factory=list)
+    meta: PanchangMeta
+
+
+class MarriageMuhuratDate(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    date: str
+    day_of_week: str
+    month: int
+    month_label: str
+    tithi: str
+    nakshatra: str
+    lunar_month: str
+    quality: Literal["Highly Auspicious", "Auspicious"]
+    quality_score: int = Field(default=4, ge=1, le=5)
+    notes: str
+    panchang_path: str
+
+
+class MarriageMuhuratMonthSummary(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    month: int
+    label: str
+    count: int
+
+
+class MarriageMuhuratResponse(BaseModel):
+    model_config = ConfigDict(extra="ignore")
+    year: int
+    location: PanchangLocation
+    count: int
+    cached: bool = False
+    computed_at: str
+    advisory: str
+    month_summary: list[MarriageMuhuratMonthSummary] = Field(default_factory=list)
+    muhurat_dates: list[MarriageMuhuratDate] = Field(default_factory=list)
     meta: PanchangMeta
 
 
@@ -1065,7 +1122,7 @@ def _amrit_kalam_window(
     sunrise: datetime, sunset: datetime, moon_longitude: float,
 ) -> PanchangTimingWindow:
     """
-    Amrit Kalam — nakshatra-based auspicious window.
+    Amrit Kalam -- nakshatra-based auspicious window.
 
     Formula (verified vs Drik Panchang, New Delhi 26 Mar 2026 ±1 min):
       offset   = nakshatra_remaining_fraction × daylight / 10
@@ -1145,20 +1202,75 @@ def _day_indexes(
 
 
 _WEEKDAY_NAMES = {1:"Monday",2:"Tuesday",3:"Wednesday",4:"Thursday",5:"Friday",6:"Saturday",7:"Sunday"}
+_WEEKDAY_HORA_RULER = {
+    1: "Moon",
+    2: "Mars",
+    3: "Mercury",
+    4: "Jupiter",
+    5: "Venus",
+    6: "Saturn",
+    7: "Sun",
+}
+_HORA_SEQUENCE = ["Sun", "Venus", "Mercury", "Moon", "Saturn", "Jupiter", "Mars"]
+_HORA_QUALITY = {
+    "Sun": "Power & Authority",
+    "Moon": "Mind & Emotions",
+    "Mars": "Energy & Action",
+    "Mercury": "Communication & Trade",
+    "Jupiter": "Wisdom & Expansion",
+    "Venus": "Love & Creativity",
+    "Saturn": "Discipline & Labour",
+}
+_MARRIAGE_AUSPICIOUS_TITHIS = {1, 2, 4, 6, 9, 10, 12}
+_MARRIAGE_AUSPICIOUS_NAKSHATRAS = {
+    "Rohini",
+    "Mrigashira",
+    "Magha",
+    "Uttara Phalguni",
+    "Hasta",
+    "Swati",
+    "Anuradha",
+    "Mula",
+    "Uttara Ashadha",
+    "Uttara Bhadrapada",
+    "Revati",
+}
+_MARRIAGE_HIGHLY_AUSPICIOUS_NAKSHATRAS = {"Rohini", "Uttara Phalguni", "Hasta", "Revati"}
+_MARRIAGE_NOTES = {
+    "Rohini": "Rohini Nakshatra is especially favoured for harmony, grace, and family prosperity.",
+    "Mrigashira": "Mrigashira supports gentle bonding, adaptability, and a steady emotional rhythm.",
+    "Magha": "Magha after the 1st Pada is traditionally preferred for dignified family beginnings.",
+    "Uttara Phalguni": "Uttara Phalguni is one of the classic marriage nakshatras for commitment and stability.",
+    "Hasta": "Hasta brings skill, warmth, and practical support into the household.",
+    "Swati": "Swati supports flexibility, mutual growth, and a balanced partnership.",
+    "Anuradha": "Anuradha is cherished for devotion, loyalty, and emotional depth in marriage.",
+    "Mula": "Mula after the 1st Pada is used selectively for transformative new beginnings.",
+    "Uttara Ashadha": "Uttara Ashadha favours endurance, shared purpose, and long-term dharmic alignment.",
+    "Uttara Bhadrapada": "Uttara Bhadrapada supports maturity, steadiness, and spiritual depth.",
+    "Revati": "Revati is a soft and prosperous marriage nakshatra associated with protection and blessings.",
+}
+_MARRIAGE_KHARMAS_SUN_SIGNS = {8, 11}
+_MARRIAGE_PITRU_PAKSHA_LUNAR_MONTHS = {5, 6}
+
+
+def _nakshatra_pada(moon_longitude: float) -> int:
+    span = 360.0 / 27.0
+    pada_span = span / 4.0
+    return int((_normalize_angle(moon_longitude) % span) // pada_span) + 1
 
 def _special_yogas(nakshatra: str, isoweekday: int) -> list[SpecialYoga]:
     """Return all special yogas active today based on Nakshatra × Weekday rules."""
     yogas: list[SpecialYoga] = []
     vara = _WEEKDAY_NAMES[isoweekday]
 
-    # Amrit Siddhi (most auspicious — check first, subset of Sarvartha Siddhi days)
+    # Amrit Siddhi (most auspicious -- check first, subset of Sarvartha Siddhi days)
     if _AMRIT_SIDDHI.get(isoweekday) == nakshatra:
         yogas.append(SpecialYoga(
             name="Amrit Siddhi Yoga",
             quality="good",
             nakshatra=nakshatra,
             vara=vara,
-            meaning="Nectar of Accomplishment — the rarest and most powerful auspicious yoga. Excellent for all new beginnings.",
+            meaning="Nectar of Accomplishment -- the rarest and most powerful auspicious yoga. Excellent for all new beginnings.",
         ))
     # Sarvartha Siddhi
     elif nakshatra in _SARVARTHA_SIDDHI.get(isoweekday, set()):
@@ -1167,17 +1279,17 @@ def _special_yogas(nakshatra: str, isoweekday: int) -> list[SpecialYoga]:
             quality="good",
             nakshatra=nakshatra,
             vara=vara,
-            meaning="All-Purpose Accomplishment — highly auspicious for starting new ventures, travel, business, and ceremonies.",
+            meaning="All-Purpose Accomplishment -- highly auspicious for starting new ventures, travel, business, and ceremonies.",
         ))
 
-    # Ravi Yoga (inauspicious — can coexist with auspicious yogas in edge cases)
+    # Ravi Yoga (inauspicious -- can coexist with auspicious yogas in edge cases)
     if nakshatra in _RAVI_YOGA.get(isoweekday, set()):
         yogas.append(SpecialYoga(
             name="Ravi Yoga",
             quality="caution",
             nakshatra=nakshatra,
             vara=vara,
-            meaning="Sun Yoga — avoid initiating important new work. Good for spiritual practices and Sun worship.",
+            meaning="Sun Yoga -- avoid initiating important new work. Good for spiritual practices and Sun worship.",
         ))
 
     return yogas
@@ -1223,7 +1335,7 @@ def _meta(calendar_variant: CalendarVariant, region: RegionCode) -> PanchangMeta
 
 
 def _fmt_hhmmss(dt: datetime | None) -> str | None:
-    """Format datetime as HH:MM:SS — includes seconds for precision."""
+    """Format datetime as HH:MM:SS -- includes seconds for precision."""
     return dt.strftime("%H:%M:%S") if dt else None
 
 
@@ -1408,6 +1520,203 @@ def _build_choghadiya(
     )
 
 
+def _build_hora_response(
+    base_date: date,
+    location: PanchangLocation,
+    calendar_variant: CalendarVariant,
+    region: RegionCode,
+) -> HoraResponse:
+    sunrise, sunset, _, _ = _sunrise_sunset_moonrise_moonset(
+        base_date, location.latitude, location.longitude, location.timezone,
+    )
+    next_date = base_date + timedelta(days=1)
+    next_sunrise, _, _, _ = _sunrise_sunset_moonrise_moonset(
+        next_date, location.latitude, location.longitude, location.timezone,
+    )
+
+    isoweekday = base_date.isoweekday()
+    day_ruler = _WEEKDAY_HORA_RULER[isoweekday]
+    start_index = _HORA_SEQUENCE.index(day_ruler)
+    planets = [_HORA_SEQUENCE[(start_index + idx) % len(_HORA_SEQUENCE)] for idx in range(24)]
+
+    day_slot_duration = (sunset - sunrise).total_seconds() / 12
+    night_slot_duration = (next_sunrise - sunset).total_seconds() / 12
+
+    def _make_slots(
+        anchor: datetime,
+        duration_seconds: float,
+        start_at: int,
+        period: Literal["day", "night"],
+    ) -> list[HoraSlot]:
+        slots: list[HoraSlot] = []
+        for offset in range(12):
+            start = anchor + timedelta(seconds=offset * duration_seconds)
+            end = anchor + timedelta(seconds=(offset + 1) * duration_seconds)
+            planet = planets[start_at + offset]
+            slots.append(
+                HoraSlot(
+                    index=start_at + offset + 1,
+                    planet=planet,
+                    start=start.isoformat(),
+                    end=end.isoformat(),
+                    quality=_HORA_QUALITY[planet],
+                    period=period,
+                )
+            )
+        return slots
+
+    return HoraResponse(
+        date=base_date.isoformat(),
+        location=location,
+        sunrise=sunrise.isoformat(),
+        sunset=sunset.isoformat(),
+        next_sunrise=next_sunrise.isoformat(),
+        day_hora=_make_slots(sunrise, day_slot_duration, 0, "day"),
+        night_hora=_make_slots(sunset, night_slot_duration, 12, "night"),
+        meta=_meta(calendar_variant, region),
+    )
+
+
+def _build_marriage_muhurat_response(
+    year: int,
+    calendar_variant: CalendarVariant = "amanta",
+    region: RegionCode = "general",
+) -> MarriageMuhuratResponse:
+    location = DEFAULT_LOCATIONS["new-delhi-india"]
+    start_date = date(year, 1, 1)
+    end_date = date(year, 12, 31)
+    day_records: list[dict] = []
+    current_date = start_date
+
+    while current_date <= end_date:
+        indexes, context = _day_indexes(current_date, location, calendar_variant)
+        astro: DailyAstronomy = context["astro"]
+        tithi_name = TITHI_NAMES[indexes["tithi"]]
+        nakshatra_name = NAKSHATRA_NAMES[indexes["nakshatra"]]
+        paksha = _paksha_from_tithi(indexes["tithi"])
+        observances = _observances_for_day(current_date, indexes, f"{paksha} {tithi_name}")
+        day_records.append({
+            "date": current_date,
+            "indexes": indexes,
+            "paksha": paksha,
+            "tithi_name": tithi_name,
+            "nakshatra_name": nakshatra_name,
+            "nakshatra_pada": _nakshatra_pada(astro.moon_longitude),
+            "observances": observances,
+        })
+        current_date += timedelta(days=1)
+
+    month_starts: list[dict] = []
+    for idx, record in enumerate(day_records):
+        prev_tithi = day_records[idx - 1]["indexes"]["tithi"] if idx > 0 else None
+        if record["indexes"]["tithi"] == 0 and prev_tithi != 0:
+            month_starts.append({
+                "start": record["date"],
+                "lunar_month_index": record["indexes"]["lunar_month"],
+            })
+
+    adhik_ranges: list[tuple[date, date]] = []
+    for idx, start_info in enumerate(month_starts[:-1]):
+        next_info = month_starts[idx + 1]
+        if start_info["lunar_month_index"] == next_info["lunar_month_index"]:
+            adhik_ranges.append((start_info["start"], next_info["start"] - timedelta(days=1)))
+
+    holi_date = next(
+        (
+            record["date"]
+            for record in day_records
+            for observance in record["observances"]
+            if observance.slug == "holi"
+        ),
+        None,
+    )
+    holashtak_dates = {
+        holi_date - timedelta(days=offset)
+        for offset in range(1, 9)
+    } if holi_date else set()
+
+    ekadashi_dates = {
+        record["date"]
+        for record in day_records
+        if record["indexes"]["tithi"] in {10, 25}
+    }
+    ekadashi_cooldown_dates: set[date] = set()
+    for ekadashi_date in ekadashi_dates:
+        for offset in range(1, 4):
+            blocked_date = ekadashi_date + timedelta(days=offset)
+            if blocked_date.year == year:
+                ekadashi_cooldown_dates.add(blocked_date)
+
+    pitru_paksha_dates = {
+        record["date"]
+        for record in day_records
+        if record["paksha"] == "Krishna" and record["indexes"]["lunar_month"] in _MARRIAGE_PITRU_PAKSHA_LUNAR_MONTHS
+    }
+
+    def _in_adhik_range(target_date: date) -> bool:
+        return any(start <= target_date <= end for start, end in adhik_ranges)
+
+    muhurat_dates: list[MarriageMuhuratDate] = []
+    for record in day_records:
+        indexes = record["indexes"]
+        current_date = record["date"]
+        nakshatra_name = record["nakshatra_name"]
+
+        if record["paksha"] != "Shukla":
+            continue
+        if indexes["tithi"] not in _MARRIAGE_AUSPICIOUS_TITHIS:
+            continue
+        if nakshatra_name not in _MARRIAGE_AUSPICIOUS_NAKSHATRAS:
+            continue
+        if nakshatra_name in {"Magha", "Mula"} and record["nakshatra_pada"] == 1:
+            continue
+        if indexes["sun_sign"] in _MARRIAGE_KHARMAS_SUN_SIGNS:
+            continue
+        if current_date in holashtak_dates or current_date in ekadashi_cooldown_dates or current_date in pitru_paksha_dates:
+            continue
+        if _in_adhik_range(current_date):
+            continue
+
+        quality = "Highly Auspicious" if nakshatra_name in _MARRIAGE_HIGHLY_AUSPICIOUS_NAKSHATRAS else "Auspicious"
+        quality_score = 5 if quality == "Highly Auspicious" else 4
+        muhurat_dates.append(MarriageMuhuratDate(
+            date=current_date.isoformat(),
+            day_of_week=current_date.strftime("%A"),
+            month=current_date.month,
+            month_label=current_date.strftime("%B"),
+            tithi=f"{record['paksha']} {record['tithi_name']}",
+            nakshatra=nakshatra_name,
+            lunar_month=LUNAR_MONTHS[indexes["lunar_month"]],
+            quality=quality,
+            quality_score=quality_score,
+            notes=_MARRIAGE_NOTES.get(nakshatra_name, "A traditionally supportive marriage combination from the Panchang."),
+            panchang_path=f"/panchang/date/{current_date.isoformat()}",
+        ))
+
+    month_counts: dict[int, int] = {}
+    for item in muhurat_dates:
+        month_counts[item.month] = month_counts.get(item.month, 0) + 1
+
+    return MarriageMuhuratResponse(
+        year=year,
+        location=location,
+        count=len(muhurat_dates),
+        cached=False,
+        computed_at=datetime.now(timezone.utc).isoformat(),
+        advisory="Calculated for New Delhi as a national reference. Muhurat timings can shift by 10-30 minutes depending on your city.",
+        month_summary=[
+            MarriageMuhuratMonthSummary(
+                month=month,
+                label=datetime(year, month, 1).strftime("%B"),
+                count=count,
+            )
+            for month, count in sorted(month_counts.items())
+        ],
+        muhurat_dates=muhurat_dates,
+        meta=_meta(calendar_variant, region),
+    )
+
+
 # ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
@@ -1531,3 +1840,63 @@ async def get_choghadiya(
     location = _resolve_location(location_slug=location_slug, lat=lat, lng=lng, tz_name=tz)
     resolved_date = _parse_date(date_value) if date_value else datetime.now(ZoneInfo(location.timezone)).date()
     return _build_choghadiya(resolved_date, location, calendar_variant, region)
+
+
+@router.get("/hora", response_model=HoraResponse)
+async def get_hora(
+    date_value: str | None = Query(default=None, alias="date"),
+    location_slug: str | None = None,
+    lat: float | None = None,
+    lng: float | None = None,
+    tz: str | None = None,
+    calendar_variant: CalendarVariant = "amanta",
+    region: RegionCode = "general",
+) -> HoraResponse:
+    location = _resolve_location(location_slug=location_slug, lat=lat, lng=lng, tz_name=tz)
+    resolved_date = _parse_date(date_value) if date_value else datetime.now(ZoneInfo(location.timezone)).date()
+    return _build_hora_response(resolved_date, location, calendar_variant, region)
+
+
+@router.get("/muhurat/marriage", response_model=MarriageMuhuratResponse)
+async def get_marriage_muhurat(
+    request: Request,
+    year: int = Query(default_factory=lambda: datetime.now(ZoneInfo("Asia/Kolkata")).year, ge=2000, le=2100),
+) -> MarriageMuhuratResponse:
+    cache_key = f"marriage_muhurat_{year}"
+    db = getattr(getattr(request.app, "state", None), "db", None)
+
+    if db is not None:
+        try:
+            cached_doc = await db.panchang_cache.find_one(
+                {"key": cache_key, "engine_version": ENGINE_VERSION},
+                {"_id": 0, "payload": 1},
+            )
+            if cached_doc and cached_doc.get("payload"):
+                cached_payload = dict(cached_doc["payload"])
+                cached_payload["cached"] = True
+                return MarriageMuhuratResponse.model_validate(cached_payload)
+        except Exception as exc:
+            _log.warning("Marriage muhurat cache read failed for %s: %s", cache_key, exc)
+
+    response = _build_marriage_muhurat_response(year)
+
+    if db is not None:
+        try:
+            await db.panchang_cache.update_one(
+                {"key": cache_key},
+                {
+                    "$set": {
+                        "key": cache_key,
+                        "kind": "marriage_muhurat",
+                        "year": year,
+                        "engine_version": ENGINE_VERSION,
+                        "payload": response.model_dump(mode="json"),
+                        "updated_at": datetime.now(timezone.utc).isoformat(),
+                    }
+                },
+                upsert=True,
+            )
+        except Exception as exc:
+            _log.warning("Marriage muhurat cache write failed for %s: %s", cache_key, exc)
+
+    return response
