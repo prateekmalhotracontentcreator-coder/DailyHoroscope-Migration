@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-20 (SEO wave 1 integrated -- all 12 SEO commissions live)
+> Last updated: 2026-05-20 (KE-Sprint2, KE-2A, KE-IQ, ARC-2, IR-4 confirmed INTEGRATED -- commissions list reconciled)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -22,8 +22,8 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **KE-Sprint2** | KE Arbitration Runtime (G-03/G-05/G-06/G-04) | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | 🔵 IN PROGRESS -- RECONCILIATION-FIRST | KE Sprint 1 ✅ done | Issued 2026-05-15. `_contradiction_score`, `_representation_mode`, `_build_tension_block` already in main repo. Codex to verify gate criteria against live code, not re-implement. INGEST FREEZE active until gate passes. |
-| **KE-2A** | Yoga Check Evaluation Engine (16 evaluator types) | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | 🔵 IN PROGRESS | None | Issued to Codex 2026-05-15. Note: `ke_yoga_evaluator.py` scaffold + `varga_dignity_tier` evaluator already live (KE-2B2/KE-2D confirmed integrated). |
+| ~~**KE-Sprint2**~~ | ~~KE Arbitration Runtime (G-03/G-05/G-06/G-04)~~ | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | ✅ INTEGRATED -- self-certified 2026-05-17 | -- | All 5 acceptance gates pass. `_contradiction_score`, `_representation_mode`, `_build_tension_block`, supersession lookup, `scan_chart()` payload confirmed. |
+| ~~**KE-2A**~~ | ~~Yoga Check Evaluation Engine (16 evaluator types)~~ | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | ✅ INTEGRATED -- 2026-05-17 | -- | All 9 missing handlers added. 52 tests pass. 26 dispatch entries. CC-verified. |
 
 ---
 
@@ -33,11 +33,11 @@
 |---|---|---|---|---|---|---|
 | ~~**KP-2A**~~ | ~~KP Bundle Editorial + Share Card + Remedies Admin Frontend~~ | KP Oracle | `KP/CODEX_COMMISSION_KP_2A.md` | ✅ INTEGRATED -- commit `7d42880` | -- | Delivered + integrated 2026-05-15. TT live verification (KP-OP-9) required before issuing KP-2B. |
 | **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | KP Oracle | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | 🔵 IN PROGRESS | None | Issued 2026-05-15. Independent of KP-2A. |
-| **KE-IQ** | Questionnaire UI + β/γ KE Wiring | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | READY TO ISSUE | KE Sprint 2 (ideally) | QuestionnairePage.jsx exists (29 lines). QuestionnaireWidget.jsx exists (1101 lines). Need backend β/γ wiring + endpoint |
+| ~~**KE-IQ**~~ | ~~Questionnaire UI + β/γ KE Wiring~~ | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | ✅ INTEGRATED -- commit `f7aa78b` 2026-05-18 | -- | `knowledge_router.py`, `QuestionnaireWidget.jsx`, `QuestionnairePage.jsx`, `ArcAngelPanel.jsx`. 75/75 KE tests green. TT live verification pending (KE-OP-15). |
 | ~~**IR-1**~~ | ~~5 Public SEO Landing Pages (Individual Reports)~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` | ✅ INTEGRATED -- commit `825a294` | None | 5 landing pages + public hub live. Route canonical confirmed by TT 2026-05-15. |
 | ~~**IR-2**~~ | ~~Lunar Cycle Wellness Backend~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | ✅ INTEGRATED -- commit `f9f6690` + `021a799` | -- | Live. Datetime bug fixed. Tile on LovePage. IR-2A rework also integrated `692fefa`. |
 | ~~**IR-3**~~ | ~~8 Love Report Public SEO Landing Pages~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` | ✅ INTEGRATED -- commit `739c3fa` | -- | 8 wrappers + 8 routes + 8 sitemap URLs. CTA content-driven. TT live spot-check pending. |
-| **ARC-2** | Arc Angel Phase 2 -- Confidence % lift + Questionnaire gating + Desktop sidebar | Arc Angel | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | READY TO ISSUE | KE Sprint 2 (for confidence scoring) | `ArcAngelPanel.jsx` is live and baseline. This is the next phase. |
+| ~~**ARC-2**~~ | ~~Arc Angel Phase 2 -- Confidence % lift + Questionnaire gating + Desktop sidebar~~ | Arc Angel | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | ✅ INTEGRATED -- commit `c1a7cb0` 2026-05-18 | -- | 18 files, 746 insertions. 72/72 tests green. 3-pillar confidence live (40% base + P1 24% + P2 12% + P3 10%, cap 86%). ArcAngelPanel rebuilt. Left nav split. PrivateRoute for all signed-up users. |
 | ~~**REM-P1**~~ | ~~Remedies Engine Phase 1 (KP collection + remedy_ref pipeline)~~ | Remedies | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | ✅ INTEGRATED -- runtime confirmed 2026-05-16 | -- | All 3 tasks complete: `/ref/` endpoint live (line 851), 36 KP remedy records seeded (modified=36 2026-05-15), KP fallback wiring confirmed. ⚠️ TT content note: JSON verdict split is 10/8/8/10 (YES/WAIT/NO/PRAY) vs spec'd 9/9/9/9 -- confirm intentional or re-ingest. |
 | **PUN-2** | Punya Rewards Home Page Promo + Module Hooks + SVG Wheel | Punya Rewards | `Punya_Rewards/CODEX_COMMISSION_PUN_2_FRONTEND_INTEGRATION.md` | READY TO ISSUE | PUN-1 ✅ | Backend fully live. PunyaRewardsPage baseline exists. Home promo section + 8 module hooks + wheel UX upgrade needed. No NavBar entry. |
 
@@ -87,11 +87,16 @@
 | IR-2 | Lunar Cycle Wellness Backend | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | `f9f6690` · `021a799` (bug fixes) |
 | IR-2A | Lunar Cycle Rework -- Action Tracker + Rich Content | `Individual_Reports/CODEX_COMMISSION_IR_2A_LUNAR_CYCLE_REWORK.md` | `692fefa` · Live-verified by TT 2026-05-16 ✅ |
 | IR-3 | 8 Love Report SEO Landing Pages | `Individual_Reports/CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` | `739c3fa` |
+| IR-4 | 6 Phase 3 Natal Reports (Wealth, Romance, Vitality, Partnership, Dharma, Gains) | `Individual_Reports/CODEX_COMMISSION_IR_4_SIX_NEW_REPORTS.md` | `1be1e58` · `/reports` expanded 5→11 tiles · TT live verification pending (IR-OP-12) |
 | KP-2A | KP Bundle Editorial + Share Card + Remedies Admin Frontend | `KP/CODEX_COMMISSION_KP_2A.md` | `7d42880` |
 | REM-P1 | Remedies Engine Phase 1 (KP collection + remedy_ref pipeline) | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | Runtime confirmed 2026-05-16 -- endpoint line 851, 36 records seeded |
 | KE-2B2 | Varga Dignity Wiring (facts layer) | `knowledge_engine.py` lines 195-208, 312, 488-508 | Built internally -- confirmed live 2026-05-15 |
 | KE-2D | Varga Dignity Tier Evaluator | `ke_yoga_evaluator.py` lines 373-387, 631 | Built internally -- 37 tests green, migration archived -- confirmed live 2026-05-15 |
 | ARC-UI | Arc Angel UI Panel (ArcAngelPanel.jsx) | `Arc_Angel/CODEX_COMMISSION_ARC_ANGEL_UI_PANEL.md` (archived) | `c01ec8d` |
+| ARC-2 | Arc Angel Phase 2 -- 3-Pillar Confidence Engine + Decay + Notification hooks | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | `c1a7cb0` · 72/72 tests green |
+| KE-Sprint2 | KE Arbitration Runtime (G-03/G-04/G-05/G-06) | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | Self-certified 2026-05-17 · All 5 gates pass |
+| KE-2A | Yoga Check Evaluation Engine (16 evaluator types) | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | 52 tests green · 26 dispatch entries · 2026-05-17 |
+| KE-IQ | Questionnaire UI + β/γ KE Wiring | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | `f7aa78b` · 75/75 tests green · 2026-05-18 |
 | KE-Ingest | Batch Book Ingest Automation v2 | `Knowledge_Engine/CODEX_COMMISSION_KE_BATCH_INGEST.md` | ✅ |
 | KE-Val | Automated Rule Validation Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_VALIDATION_ENGINE.md` | ✅ |
 | KE-Item5 | Library Console (CPath-1 Item 5) | archived | ✅ |
@@ -112,40 +117,36 @@
 | Sprint | Gaps | Status | Gate |
 |---|---|---|---|
 | Sprint 1 -- Scoring Foundation | G-01 (α/β/γ wiring) | ✅ COMPLETE -- commit `57e347a` | ✅ ALL 6 tests passed |
-| **Sprint 2 -- Arbitration Runtime** | G-03, G-05, G-06, G-04 | 🔵 IN PROGRESS -- issued to Codex 2026-05-15 | Ingest freeze until gate passes |
-| Sprint 3 -- Arc Angel Computation | G-07, G-08, G-09 | Blocked on Sprint 2 gate | Must consume post-arbitration output |
-| Sprint 4 -- Questionnaire β/γ | G-10 | Separate commission KE-IQ | -- |
+| Sprint 2 -- Arbitration Runtime | G-03, G-05, G-06, G-04 | ✅ INTEGRATED -- self-certified 2026-05-17 | ✅ All 5 gates pass |
+| Sprint 3 -- Arc Angel Computation | G-07, G-08, G-09 | ✅ INTEGRATED -- KE-Sprint3 live 2026-05-17 | ✅ KE-OP-13 cleared |
+| Sprint 4 -- Questionnaire β/γ | G-10 | ✅ INTEGRATED -- commit `f7aa78b` 2026-05-18 | ✅ 75/75 tests green · KE-OP-15 TT verification pending |
 
 ---
 
-## Recommended Issue Order (updated 2026-05-16 post-IR reconciliation)
+## Recommended Issue Order (updated 2026-05-20 post-reconciliation)
 
 ```
-NOW (IN PROGRESS):
-  KE-Sprint2  -- Arbitration Runtime (CRITICAL, blocking KE Sprint 3 + ARC-2)
-  KE-2A       -- Yoga Check Evaluators (CRITICAL)
-  KP-Sprint2  -- Ask-Question LLM Router (HIGH, independent)
+INTEGRATED (all complete as of 2026-05-18):
+  KE-Sprint2  ✅ -- Arbitration Runtime
+  KE-2A       ✅ -- Yoga Check Evaluators
+  KE-IQ       ✅ -- Questionnaire β/γ Wiring  (commit f7aa78b · KE-OP-15 TT verify pending)
+  ARC-2       ✅ -- Arc Angel 3-Pillar Confidence (commit c1a7cb0 · TT verify pending)
+  IR-4        ✅ -- 6 Phase 3 Natal Reports     (commit 1be1e58 · IR-OP-12 TT verify pending)
 
-NEXT TO ISSUE (all briefs complete):
-  PUN-2       -- Punya Rewards Home Promo + Module Hooks (brief ready 2026-05-16)
-  KE-IQ       -- Questionnaire UI (ideally after Sprint 2 gate)
-  KP-2B       -- Ritual Animation + 3-Pillar UX (after KP-OP-9 TT verification)
+IN PROGRESS:
+  KP-Sprint2  🔵 -- Ask-Question LLM Router (issued 2026-05-15)
 
-IN PROGRESS (issued 2026-05-16):
-  IR-3        -- 8 Love Report Landing Pages ✅ INTEGRATED `739c3fa`
-  KP-2B       -- Ritual Animation + 3-Pillar UX (after KP-OP-9 TT verification)
+ISSUE NOW (no blockers -- priority order):
+  1. KUN-1    -- Lagna Kundali Frontend (backend live, frontend only)
+  2. KP-2B    -- Ritual Animation + 3-Pillar UX
+  3. PUN-2    -- Punya Rewards Home Promo + Module Hooks
+  4. TAR-v4   -- Tarot UI v4
+  5. PAN-L1   -- Panchang Language Pages
+  6. LK-1     -- Lal Kitab Standalone Module
+  7. LON-1    -- Longevity Report (large scope -- separate thread)
 
-AFTER HIGH PRIORITY THREADS RUNNING:
-  ARC-2       -- Arc Angel Phase 2 (after KE Sprint 2 gate)
-  TAR-v4      -- Tarot UI v4
-  KUN-1       -- Lagna Kundali Frontend (re-scoped -- backend done, frontend only)
-  LK-1        -- Lal Kitab Standalone (after jyotish_lk_remedies batch-approved)
-  SEO-1       -- SEO + Web Performance (issue last, after threads running)
-
-PHASE 2:
-  LON-1       -- Longevity Report (after KE Sprint 2 gate)
-  PAN-L1      -- Panchang Language Pages
-
-PHASE 3:
-  ORACLE-P3   -- 5 World Oracle Modules
+HOLD / NOT READY:
+  SEO-WebPerf -- Issue LAST (all content pages must be live first)
+  ORACLE-P3   -- Phase 3 (KP must be live 30+ days)
+  KE-TV-1     -- Ch 19 test vectors (TechSpec TT approval needed)
 ```
