@@ -42,11 +42,24 @@
 - Sitemap splitting: one sitemap per content type, capped at 1,000 URLs each, referenced from `sitemap-index.xml`
 
 #### A2 -- Dynamic XML Sitemap Generator (FastAPI)
-- `GET /api/seo/sitemap/panchang` -- generates URLs for all 318 city × 7 day combinations
+
+All sitemaps are **served dynamically from the FastAPI backend** (Render). Do NOT write XML files into `frontend/public/` -- Render cannot update Vercel's deployed static assets at runtime. See Part D for the full architecture.
+
+Active M1-M3 sitemap endpoints to build now:
+- `GET /api/seo/sitemap/panchang` -- 318 cities × 7 days = 2,226 URLs
+- `GET /api/seo/sitemap/choghadiya` -- 318 cities × 4 periods = 1,272 URLs
 - `GET /api/seo/sitemap/horoscope` -- 36 sign × 3 period pages
-- `GET /api/seo/sitemap/angel-numbers` -- 9,000 URLs (once Batch 5 is built)
-- `GET /api/seo/sitemap/tarot` -- 2,184 URLs (once Batch 6 is built)
-- Save output files to `frontend/public/` as static XML on each build
+- `GET /api/seo/sitemap/compatibility` -- 144 canonical sign-pair URLs
+- `GET /api/seo/sitemap/remedies` -- 12 affliction hub URLs
+- `GET /api/seo/sitemap/transits` -- 108 URLs (9 planets × 12 signs)
+- `GET /api/seo/sitemap/traits` -- 432 URLs (12 signs × 3 chart points × 12 houses)
+- `GET /api/seo/sitemap/festivals` -- 300 URLs (50 festivals × 6 regions)
+
+Parked -- build when engines are ready (do not build now):
+- `GET /api/seo/sitemap/angel-numbers` -- 9,000 URLs (Batch 5 ⏸)
+- `GET /api/seo/sitemap/tarot` -- 2,184 URLs (Batch 6 ⏸)
+
+Update `frontend/public/sitemap-index.xml` manually to reference all Render-hosted sitemap URLs (see Part D for the exact XML block).
 
 #### A3 -- Performance Optimisation
 - Implement Vercel Edge Caching headers on all programmatic pages (`Cache-Control: s-maxage=86400`)
@@ -57,7 +70,7 @@
 #### A4 -- 30-Day SEO Launch Plan
 Write `docs/SEO_30DAY_PLAN.md` covering:
 - Week 1: Technical fixes (above)
-- Week 2: Content seeding (festival pages, angel number hub, panchang city pages)
+- Week 2: Content seeding (festival pages, panchang city pages, compatibility pages -- Angel Numbers parked)
 - Week 3: Link building triggers (shareable cards, social posting)
 - Week 4: GSC + Bing monitoring, keyword ranking baseline
 
