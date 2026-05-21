@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-20 (KE-Sprint2, KE-2A, KE-IQ, ARC-2, IR-4 confirmed INTEGRATED -- commissions list reconciled)
+> Last updated: 2026-05-22 (SEO-20K + IR-5 added; KE-Sprint2, KE-2A, KE-IQ, ARC-2, IR-4 confirmed INTEGRATED)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -22,6 +22,11 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
+| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | READY TO ISSUE | None | Merges SEO-1. Deliver in 4 milestones: M1=Panchang city+Choghadiya, M2=Angel Numbers (9K), M3=Tarot+Compat+Remedies, M4=Festivals+Transits+Character. Internal engines only. |
+| **IR-5** | 12 Areas of Life Enhancement (Donut Chart + 10-Year Timeline + Graha Drishti + Claude 4-page reports) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_5_12AREAS_ENHANCEMENT.md` | READY TO ISSUE | IR-4 must be integrated first | Vedic-only (Rahu/Ketu replace Uranus/Neptune). Adds 3 new calc functions to vedic_calculator.py + new router + 2 UI components. |
+
+---
+
 | ~~**KE-Sprint2**~~ | ~~KE Arbitration Runtime (G-03/G-05/G-06/G-04)~~ | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT2_ARBITRATION.md` | ✅ INTEGRATED -- self-certified 2026-05-17 | -- | All 5 acceptance gates pass. `_contradiction_score`, `_representation_mode`, `_build_tension_block`, supersession lookup, `scan_chart()` payload confirmed. |
 | ~~**KE-2A**~~ | ~~Yoga Check Evaluation Engine (16 evaluator types)~~ | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | ✅ INTEGRATED -- 2026-05-17 | -- | All 9 missing handlers added. 52 tests pass. 26 dispatch entries. CC-verified. |
 
