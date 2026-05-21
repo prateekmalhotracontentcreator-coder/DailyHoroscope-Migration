@@ -147,27 +147,47 @@ Write `docs/SEO_30DAY_PLAN.md` covering:
 
 ### BATCH 9 -- Remedy Hub Pages (12 pages + remedy matching engine) 🟠 PRIORITY 2
 
-**Revised scope:** No city-specific pages. One SEO hub page per planetary affliction, pulling from the existing ~1,000 remedy catalog already in the database.
+**Revised scope:** No city-specific pages. One SEO hub page per planetary affliction, pulling from the existing remedy catalog across all collections.
 **Formula:** 12 affliction hub pages + remedy matching/filtering engine
-**Internal engine:** ✅ Affliction detection via `vedic_calculator.py`. Remedy content from existing `spiritual_remedies` MongoDB collection (~1,000 remedies already seeded).
+**Internal engine:** ✅ Affliction detection via `vedic_calculator.py`. Remedy content from existing MongoDB remedy collections (~800 remedies already seeded).
 **URL pattern:** `/remedies/{dosha-slug}/` (e.g., `/remedies/shani-sade-sati/`)
 
 **12 afflictions:** Shani Sade Sati, Manglik Dosha, Pitru Dosha, Kaal Sarp Dosha, Shani Mahadasha, Rahu Mahadasha, Ketu Mahadasha, Guru Chandal Yoga, Grahan Yoga, Nadi Dosha, Gana Dosha, Bhakoot Dosha
 
+**Actual MongoDB collections (NOT `spiritual_remedies` -- use these):**
+
+| Collection | `science_id` filter | Count | Remedy type |
+|---|---|---|---|
+| `interpretation_rules` | `jyotish_remedies_mantras` | 100 | Mantra + Yantra |
+| `interpretation_rules` | `jyotish_remedies_gemstones` | 100 | Gemstone |
+| `interpretation_rules` | `jyotish_remedies_crystals` | 100 | Crystal |
+| `interpretation_rules` | `jyotish_remedies_dhana` | 100 | Donation / Dhana |
+| `interpretation_rules` | `jyotish_remedies_chakra` | 7 | Chakra healing |
+| `knowledge_rules` | `jyotish_lk_remedies` | 361 | Lal Kitab ritual |
+
+**Tagging -- ALREADY DONE:** Multi-parameter tags have been pre-generated and are ready to upload via:
+`backend/scripts/tag_remedies_afflictions_v1.py --mongo-url "$MONGO_URL" --db-name horoscope_db`
+
+**Tags added per remedy document:**
+- `affliction_tags: [str]` -- list of dosha slugs (e.g. `["shani-sade-sati", "shani-mahadasha"]`)
+- `seo_focus_area: [str]` -- e.g. `["Career & Work", "Finances"]`
+- `seo_problem_area: [str]` -- e.g. `["Job Loss", "Financial Loss"]`
+- `seo_planet_remedy: [str]` -- canonical planet names (e.g. `["Saturn"]`)
+- `seo_zodiac_sign: [str]` -- e.g. `["Capricorn", "Aquarius", "Libra"]`
+- `remedy_type: str` -- `mantra | gemstone | crystal | donation | chakra_ritual | lk_ritual`
+
 **Remedy matching engine (new -- `backend/remedy_matching_router.py`):**
-- `GET /api/remedies/{dosha-slug}` -- returns all remedies tagged for this affliction, sorted by `priority_weight`
-- Each remedy document in `spiritual_remedies` must have a `affliction_tags: [str]` field added
-- Temple Team to confirm which of the ~1,000 remedies map to which afflictions (or CC to auto-tag by remedy type)
+- `GET /api/remedies/{dosha-slug}` -- queries both `interpretation_rules` AND `knowledge_rules` where `affliction_tags` contains `{dosha-slug}`, returns combined list sorted by `remedy_type` priority (gemstone → mantra → donation → crystal → lk_ritual), then by `priority_weight` if present
+- Response shape: `{ "dosha": str, "remedies": [{ "rule_id", "remedy_type", "summary", "planet", "zodiac_signs", "detailed" }] }`
 
 **Each hub page includes:**
 - Affliction explanation (what it is, how it manifests)
 - How to detect it in your chart (inline calculator widget linking to Kundali page)
-- Remedy listing filtered from the ~1,000 catalog: gemstones, yantras, mantras, rituals -- filtered by `affliction_tags`
+- Remedy listing filtered from the ~800 catalog: gemstones, yantras, mantras, Lal Kitab rituals -- filtered by `affliction_tags`
+- Tabs or sections by `remedy_type` (Gemstones / Mantras / Donations / Crystals / Lal Kitab)
 - CTA: "Check if you have {dosha} in your chart"
 
-**What Temple Team needs to confirm before build:**
-- Do the existing ~1,000 remedies have affliction tags, or does tagging need to be added?
-- Provide the MongoDB collection name and document schema for the remedy catalog
+**No Temple Team confirmation needed** -- tagging script and collection schema are confirmed.
 
 ---
 
