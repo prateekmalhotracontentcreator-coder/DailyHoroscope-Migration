@@ -479,62 +479,53 @@ function SecLayers() {
       <SectionHead
         kicker="&#9670; The 5-Layer War Room"
         title="Anatomy of a Strategist session."
-        sub="Five stacked layers, one card language. Each band is its own diagnostic surface."
+        sub="Five layers, one card language. Each is its own diagnostic surface."
       />
 
       <div className="mt-7 md:mt-11">
-        <GlassCard className="p-4 md:p-6">
-          <div className="flex items-center justify-between pb-3 px-2 border-b border-dashed border-[color:var(--strategist-card-border)]">
-            <div className="font-strategist-mono text-[10.5px] tracking-[0.20em] text-[color:var(--strategist-text-muted)]">
-              &#9670; SCHEMATIC &middot; TOP-DOWN
-            </div>
-            <div className="font-strategist-mono text-[10.5px] tracking-[0.10em] text-[color:var(--strategist-text-muted)]">
-              05 &rarr; 01
-            </div>
-          </div>
-
-          <div className="grid gap-2.5 mt-3.5">
-            {LAYERS.map((l, i) => (
-              <LayerBand key={l.n} layer={l} idx={i} />
-            ))}
-          </div>
-        </GlassCard>
+        {/* Mobile: horizontal scroll strip · Desktop: 5 equal columns */}
+        <div className="flex gap-3 overflow-x-auto pb-2 md:pb-0 md:grid md:grid-cols-5 md:gap-4 snap-x snap-mandatory">
+          {LAYERS.map((l, i) => (
+            <LayerCard key={l.n} layer={l} idx={i} />
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function LayerBand({ layer, idx }) {
-  const intensity = 0.04 + idx * 0.025;
+function LayerCard({ layer, idx }) {
+  const intensity = 0.03 + idx * 0.022;
   const Icon = layer.Icon;
   return (
     <div
-      className="grid items-center gap-3 md:gap-4 px-3 md:px-4 py-3.5 md:py-4 rounded-[10px] border border-[color:var(--strategist-card-border)] grid-cols-[36px_60px_1fr] md:grid-cols-[52px_100px_1fr_90px]"
+      className="flex-shrink-0 w-[160px] md:w-auto snap-start flex flex-col items-center text-center gap-3 px-3 py-5 md:py-6 rounded-xl border border-[color:var(--strategist-card-border)]"
       style={{ background: `rgba(197,160,89,${intensity})` }}
     >
-      <div className="grid place-items-center w-8 h-8 md:w-11 md:h-11 rounded-lg border border-gold/35 text-[color:var(--strategist-gold)] bg-gold/[0.06]">
-        <Icon size={18} strokeWidth={1.6} className="md:hidden" />
-        <Icon size={20} strokeWidth={1.6} className="hidden md:block" />
+      {/* Icon */}
+      <div className="grid place-items-center w-10 h-10 rounded-lg border border-gold/35 text-[color:var(--strategist-gold)] bg-gold/[0.06]">
+        <Icon size={20} strokeWidth={1.6} />
       </div>
 
-      <div className="font-strategist-mono text-[11px] tracking-[0.18em] text-[color:var(--strategist-text-muted)]">
+      {/* Layer number */}
+      <div className="font-strategist-mono text-[10px] tracking-[0.22em] text-[color:var(--strategist-gold)]">
         LAYER &middot; {layer.n}
       </div>
 
-      <div>
-        <div className="font-cinzel text-[15px] md:text-[17px] font-medium leading-[1.2] text-[color:var(--strategist-text-primary)]">
-          {layer.name}
-        </div>
-        <div className="hidden md:block font-playfair text-[13px] mt-1 leading-[1.4] text-[color:var(--strategist-text-muted)]">
-          {layer.sub}
-        </div>
+      {/* Name */}
+      <div className="font-cinzel text-[13px] md:text-[14px] font-medium leading-[1.25] text-[color:var(--strategist-text-primary)]">
+        {layer.name}
       </div>
 
-      <div className="hidden md:flex justify-end">
-        <span className="px-2.5 py-1 rounded-full border border-[color:var(--strategist-card-border)] font-cinzel text-[9.5px] font-semibold tracking-[0.20em] text-[color:var(--strategist-text-muted)]">
-          SURFACE
-        </span>
+      {/* Sub -- hidden on smallest screens */}
+      <div className="font-playfair text-[11.5px] leading-[1.45] text-[color:var(--strategist-text-muted)] hidden sm:block">
+        {layer.sub}
       </div>
+
+      {/* Badge */}
+      <span className="mt-auto px-2.5 py-1 rounded-full border border-[color:var(--strategist-card-border)] font-cinzel text-[9px] font-semibold tracking-[0.20em] text-[color:var(--strategist-text-muted)]">
+        SURFACE
+      </span>
     </div>
   );
 }
@@ -769,6 +760,20 @@ function SecCredibility() {
 // ─────────────────────────────────────────────────────────────────────────────
 function SecFaq() {
   const [openIdx, setOpenIdx] = useState(0);
+
+  const handleFaqClick = (i, q) => {
+    const isOpening = openIdx !== i;
+    setOpenIdx(openIdx === i ? -1 : i);
+    // GA4 tracking -- fires only when a row is opened (not on close)
+    if (isOpening && typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'faq_opened', {
+        event_category: 'Strategist Landing',
+        faq_index: i + 1,
+        faq_question: q,
+      });
+    }
+  };
+
   return (
     <section id="faq" className="px-5 py-14 md:px-20 md:py-[110px]">
       <SectionHead kicker="&#9670; FAQ" title="Questions, answered." />
@@ -780,7 +785,7 @@ function SecFaq() {
               q={it.q}
               a={it.a}
               open={openIdx === i}
-              onClick={() => setOpenIdx(openIdx === i ? -1 : i)}
+              onClick={() => handleFaqClick(i, it.q)}
             />
           ))}
         </GlassCard>
