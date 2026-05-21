@@ -7,8 +7,8 @@
 
 import React, { useCallback, useRef } from 'react';
 import { Sun, Moon, Grid3x3, LayoutGrid } from 'lucide-react';
-import { cn } from '../../lib/utils';
-import { useStrategistTheme, STRATEGIST_MODES } from './StrategistThemeProvider';
+import { cn } from '@/lib/utils';
+import { useStrategistTheme, STRATEGIST_MODES } from '@/components/strategist/StrategistThemeProvider';
 
 const OPTIONS = [
   { id: 'light',       label: 'Light',  short: 'Light', Icon: Sun,        description: 'Default · matches the rest of the web app' },

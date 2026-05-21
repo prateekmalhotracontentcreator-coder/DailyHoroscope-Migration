@@ -12,7 +12,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useEffect, useState } from 'react';
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 
 const GREEN = {
   ambient:  'oklch(0.65 0.15 145)',

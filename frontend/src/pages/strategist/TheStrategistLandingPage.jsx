@@ -13,19 +13,20 @@ import {
   Trophy, ListChecks, Clock, AlertTriangle, Zap,
 } from 'lucide-react';
 
-import { SEO } from '../../components/SEO';
-import { useAuth } from '../../context/AuthContext';
-import { cn } from '../../lib/utils';
+import { SEO } from '@/components/SEO';
+import { useAuth } from '@/context/AuthContext';
+import { cn } from '@/lib/utils';
 
 import {
   StrategistThemeProvider, useStrategistTheme,
-} from '../../components/strategist/StrategistThemeProvider';
-import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
-import { StrategistGoldSeal } from '../../components/strategist/StrategistGoldSeal';
-import { ControlRoomBackdrop } from '../../components/strategist/ControlRoomBackdrop';
-import { GlassCard } from '../../components/strategist/GlassCard';
+} from '@/components/strategist/StrategistThemeProvider';
+import { StrategistThemeToggle } from '@/components/strategist/StrategistThemeToggle';
+import { StrategistGoldSeal } from '@/components/strategist/StrategistGoldSeal';
+import { ControlRoomBackdrop } from '@/components/strategist/ControlRoomBackdrop';
+import { GlassCard } from '@/components/strategist/GlassCard';
+import { Footer } from '@/components/Footer';
 
-import '../../styles/strategist-tokens.css';
+import '@/styles/strategist-tokens.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Locked copy
@@ -841,9 +842,6 @@ function SecFinalCta({ onEnter }) {
         <div className="font-cinzel text-[11px] uppercase tracking-[0.18em] text-[color:var(--strategist-text-muted)]">
           &#9670; Everyday Horoscope &middot; The Strategist Module
         </div>
-        <div className="font-playfair italic text-xs text-[color:var(--strategist-text-muted)]">
-          &copy; {new Date().getFullYear()} EverydayHoroscope.in
-        </div>
       </div>
     </section>
   );
@@ -888,6 +886,7 @@ function LandingInner() {
       <SecCredibility />
       <SecFaq        />
       <SecFinalCta   onEnter={goEnter} />
+      <Footer />
     </>
   );
 }

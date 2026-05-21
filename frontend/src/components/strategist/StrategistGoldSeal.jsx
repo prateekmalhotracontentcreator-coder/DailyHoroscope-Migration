@@ -14,7 +14,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React, { useId } from 'react';
-import { cn } from '../../lib/utils';
+import { cn } from '@/lib/utils';
 
 const GOLD = '#C5A059';
 

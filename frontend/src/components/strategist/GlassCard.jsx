@@ -20,8 +20,8 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import React from 'react';
-import { cn } from '../../lib/utils';
-import { useStrategistTheme } from './StrategistThemeProvider';
+import { cn } from '@/lib/utils';
+import { useStrategistTheme } from '@/components/strategist/StrategistThemeProvider';
 
 const LIGHT_VARIANTS = {
   default:   'border-gold/20 bg-gold/[0.04]',
