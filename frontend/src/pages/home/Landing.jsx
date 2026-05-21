@@ -4,24 +4,27 @@ import { useAuth } from '../../context/AuthContext';
 import { Footer } from '../../components/Footer';
 import { LiveTVPanel } from '../../components/LiveTVPanel';
 import { SEO } from '../../components/SEO';
+import { Button } from '../../components/ui/button';
+import { Card } from '../../components/ui/card';
+import { fetchPunyaSummary } from '../../lib/punyaRewards';
 import {
   Sparkles, Star, Sun, Calendar, TrendingUp, Heart,
-  Crown, ArrowRight, Check, Moon
+  Crown, ArrowRight, Check, Moon, Gift, Trophy, Coins
 } from 'lucide-react';
 
 const ZODIAC_SIGNS = [
-  { id: 'aries',       symbol: '♈', name: 'Aries',       dates: 'Mar 21 – Apr 19', element: 'Fire'  },
-  { id: 'taurus',      symbol: '♉', name: 'Taurus',      dates: 'Apr 20 – May 20', element: 'Earth' },
-  { id: 'gemini',      symbol: '♊', name: 'Gemini',      dates: 'May 21 – Jun 20', element: 'Air'   },
-  { id: 'cancer',      symbol: '♋', name: 'Cancer',      dates: 'Jun 21 – Jul 22', element: 'Water' },
-  { id: 'leo',         symbol: '♌', name: 'Leo',         dates: 'Jul 23 – Aug 22', element: 'Fire'  },
-  { id: 'virgo',       symbol: '♍', name: 'Virgo',       dates: 'Aug 23 – Sep 22', element: 'Earth' },
-  { id: 'libra',       symbol: '♎', name: 'Libra',       dates: 'Sep 23 – Oct 22', element: 'Air'   },
-  { id: 'scorpio',     symbol: '♏', name: 'Scorpio',     dates: 'Oct 23 – Nov 21', element: 'Water' },
-  { id: 'sagittarius', symbol: '♐', name: 'Sagittarius', dates: 'Nov 22 – Dec 21', element: 'Fire'  },
-  { id: 'capricorn',   symbol: '♑', name: 'Capricorn',   dates: 'Dec 22 – Jan 19', element: 'Earth' },
-  { id: 'aquarius',    symbol: '♒', name: 'Aquarius',    dates: 'Jan 20 – Feb 18', element: 'Air'   },
-  { id: 'pisces',      symbol: '♓', name: 'Pisces',      dates: 'Feb 19 – Mar 20', element: 'Water' },
+  { id: 'aries',       symbol: '♈', name: 'Aries',       dates: 'Mar 21 - Apr 19', element: 'Fire'  },
+  { id: 'taurus',      symbol: '♉', name: 'Taurus',      dates: 'Apr 20 - May 20', element: 'Earth' },
+  { id: 'gemini',      symbol: '♊', name: 'Gemini',      dates: 'May 21 - Jun 20', element: 'Air'   },
+  { id: 'cancer',      symbol: '♋', name: 'Cancer',      dates: 'Jun 21 - Jul 22', element: 'Water' },
+  { id: 'leo',         symbol: '♌', name: 'Leo',         dates: 'Jul 23 - Aug 22', element: 'Fire'  },
+  { id: 'virgo',       symbol: '♍', name: 'Virgo',       dates: 'Aug 23 - Sep 22', element: 'Earth' },
+  { id: 'libra',       symbol: '♎', name: 'Libra',       dates: 'Sep 23 - Oct 22', element: 'Air'   },
+  { id: 'scorpio',     symbol: '♏', name: 'Scorpio',     dates: 'Oct 23 - Nov 21', element: 'Water' },
+  { id: 'sagittarius', symbol: '♐', name: 'Sagittarius', dates: 'Nov 22 - Dec 21', element: 'Fire'  },
+  { id: 'capricorn',   symbol: '♑', name: 'Capricorn',   dates: 'Dec 22 - Jan 19', element: 'Earth' },
+  { id: 'aquarius',    symbol: '♒', name: 'Aquarius',    dates: 'Jan 20 - Feb 18', element: 'Air'   },
+  { id: 'pisces',      symbol: '♓', name: 'Pisces',      dates: 'Feb 19 - Mar 20', element: 'Water' },
 ];
 
 const FEATURES = [
@@ -30,7 +33,7 @@ const FEATURES = [
   { icon: TrendingUp,title: 'Monthly Outlook',      description: 'See the big picture. Navigate major planetary transits and seize the month\'s best moments.',                      free: true,  color: 'text-green-500', bg: 'bg-green-500/10' },
   { icon: Star,      title: 'Birth Chart Analysis', description: 'A deep Vedic astrology report built from your exact birth time, date, and location.',                             free: false, color: 'text-gold',      bg: 'bg-gold/10'      },
   { icon: Heart,     title: 'Kundali Milan',         description: 'Compatibility scoring for couples. Guna matching, doshas, and full relationship analysis.',                        free: false, color: 'text-pink-500',  bg: 'bg-pink-500/10'  },
-  { icon: Crown,     title: 'Brihat Kundli Pro',    description: 'The most comprehensive Vedic report — 40+ pages covering every aspect of your destiny.',                          free: false, color: 'text-purple-500',bg: 'bg-purple-500/10'},
+  { icon: Crown,     title: 'Brihat Kundli Pro',    description: 'The most comprehensive Vedic report -- 40+ pages covering every aspect of your destiny.',                          free: false, color: 'text-purple-500',bg: 'bg-purple-500/10'},
 ];
 
 const TESTIMONIALS = [
@@ -68,6 +71,17 @@ const PLANS = [
   },
 ];
 
+const PUNYA_WHEEL_SEGMENTS = [
+  { label: '10% Off', color: '#c89d42' },
+  { label: 'Tarot', color: '#8f5f2a' },
+  { label: '+50', color: '#f2d089' },
+  { label: 'Numerology', color: '#7d5730' },
+  { label: '+100', color: '#ddba71' },
+  { label: '20% Off', color: '#a06f30' },
+  { label: 'Birth Chart', color: '#f5dfab' },
+  { label: 'Blessing', color: '#6e4e1f' },
+];
+
 const StarField = () => {
   const canvasRef = useRef(null);
   useEffect(() => {
@@ -101,19 +115,103 @@ const StarField = () => {
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.6 }} />;
 };
 
+const TAU = Math.PI * 2;
+
+function polarToCartesian(cx, cy, radius, angleRadians) {
+  return {
+    x: cx + radius * Math.cos(angleRadians),
+    y: cy + radius * Math.sin(angleRadians),
+  };
+}
+
+function buildArcPath(cx, cy, radius, startAngle, endAngle) {
+  const start = polarToCartesian(cx, cy, radius, startAngle);
+  const end = polarToCartesian(cx, cy, radius, endAngle);
+  const largeArcFlag = endAngle - startAngle > Math.PI ? 1 : 0;
+  return `M ${cx} ${cy} L ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${end.x} ${end.y} Z`;
+}
+
+function PunyaTeaserWheel() {
+  const size = 280;
+  const center = size / 2;
+  const radius = 126;
+
+  return (
+    <div className="relative mx-auto w-[280px] max-w-full">
+      <div className="absolute left-1/2 top-[-16px] z-20 h-0 w-0 -translate-x-1/2 border-l-[14px] border-r-[14px] border-b-[24px] border-l-transparent border-r-transparent border-b-gold" />
+      <svg
+        viewBox={`0 0 ${size} ${size}`}
+        className="h-[280px] w-[280px] drop-shadow-[0_16px_40px_rgba(0,0,0,0.18)]"
+        role="img"
+        aria-label="Punya Rewards preview wheel"
+      >
+        <circle cx={center} cy={center} r={radius + 10} fill="rgba(201,150,31,0.08)" stroke="rgba(201,150,31,0.28)" strokeWidth="8" />
+        {PUNYA_WHEEL_SEGMENTS.map((segment, index) => {
+          const startAngle = -Math.PI / 2 + (index / PUNYA_WHEEL_SEGMENTS.length) * TAU;
+          const endAngle = -Math.PI / 2 + ((index + 1) / PUNYA_WHEEL_SEGMENTS.length) * TAU;
+          const labelAngle = startAngle + (endAngle - startAngle) / 2;
+          const labelPoint = polarToCartesian(center, center, 78, labelAngle);
+          return (
+            <g key={segment.label}>
+              <path d={buildArcPath(center, center, radius, startAngle, endAngle)} fill={segment.color} stroke="rgba(255,255,255,0.22)" strokeWidth="1.25" />
+              <text
+                x={labelPoint.x}
+                y={labelPoint.y}
+                fill={index % 2 === 0 ? '#2d1e0d' : '#fff7eb'}
+                fontSize="11"
+                fontWeight="700"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                transform={`rotate(${(labelAngle * 180) / Math.PI + 90} ${labelPoint.x} ${labelPoint.y})`}
+              >
+                {segment.label}
+              </text>
+            </g>
+          );
+        })}
+        <circle cx={center} cy={center} r="34" fill="rgba(18,12,7,0.94)" stroke="rgba(201,150,31,0.35)" strokeWidth="2.5" />
+        <circle cx={center} cy={center} r="18" fill="rgba(201,150,31,0.12)" />
+        <text x={center} y={center - 4} fill="#f2d089" fontSize="18" fontWeight="700" textAnchor="middle">✦</text>
+        <text x={center} y={center + 14} fill="#f6e8ca" fontSize="9" fontWeight="700" textAnchor="middle" letterSpacing="1.6">PUNYA</text>
+      </svg>
+    </div>
+  );
+}
+
 export const Landing = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [selectedSign, setSelectedSign] = useState(null);
   const [visible, setVisible] = useState(new Set());
+  const [punyaBalance, setPunyaBalance] = useState(null);
   const refs = useRef({});
 
-  // Landing page is accessible to all users — logged-in users can view it too
+  // Landing page is accessible to all users -- logged-in users can view it too
 
   useEffect(() => {
     const saved = localStorage.getItem('selected-sign');
     if (saved) setSelectedSign(saved);
   }, []);
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!user?.email) {
+      setPunyaBalance(null);
+      return undefined;
+    }
+
+    fetchPunyaSummary()
+      .then((response) => {
+        if (!cancelled) setPunyaBalance(response?.balance ?? 0);
+      })
+      .catch(() => {
+        if (!cancelled) setPunyaBalance(null);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [user?.email]);
 
   useEffect(() => {
     const obs = new IntersectionObserver((entries) => {
@@ -177,7 +275,7 @@ export const Landing = () => {
               "@id": "https://www.everydayhoroscope.in/#website",
               "name": "Everyday Horoscope",
               "url": "https://www.everydayhoroscope.in",
-              "description": "Free daily horoscope, Vedic birth chart analysis, Kundali Milan, and premium astrology reports — rooted in 5,000 years of ancient Vedic wisdom.",
+              "description": "Free daily horoscope, Vedic birth chart analysis, Kundali Milan, and premium astrology reports -- rooted in 5,000 years of ancient Vedic wisdom.",
               "publisher": {
                 "@id": "https://www.everydayhoroscope.in/#organization"
               },
@@ -231,7 +329,7 @@ export const Landing = () => {
             Your Stars.<br /><span className="text-gold">Your Story.</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed font-playfair">
-            Personalised daily horoscopes, birth charts, and Vedic reports — rooted in 5,000 years of ancient wisdom, interpreted for you.
+            Personalised daily horoscopes, birth charts, and Vedic reports -- rooted in 5,000 years of ancient wisdom, interpreted for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <button onClick={() => document.getElementById('sign-picker')?.scrollIntoView({ behavior: 'smooth' })} className="group inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-primary-foreground px-8 py-4 rounded-sm font-semibold text-base transition-all hover:shadow-[0_8px_30px_-5px_rgba(197,160,89,0.5)] hover:-translate-y-0.5">
@@ -286,7 +384,7 @@ export const Landing = () => {
           <div className="text-center mb-14">
             <div className="inline-flex items-center gap-2 text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-4"><Star className="h-3 w-3" /> Everything you need</div>
             <h2 className="font-playfair text-3xl md:text-4xl font-semibold mb-4">Cosmic tools for every seeker</h2>
-            <p className="text-muted-foreground max-w-xl mx-auto">From free daily readings to in-depth Vedic reports — insights for every stage of your journey.</p>
+            <p className="text-muted-foreground max-w-xl mx-auto">From free daily readings to in-depth Vedic reports -- insights for every stage of your journey.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {FEATURES.map((f, i) => {
@@ -301,6 +399,93 @@ export const Landing = () => {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* PUNYA REWARDS */}
+      <section ref={ref('punya')} className="py-20 px-4 border-t border-border/50" style={anim('punya', 100)}>
+        <div className="mx-auto max-w-6xl">
+          <div className="overflow-hidden rounded-[2rem] border border-gold/20 bg-[radial-gradient(circle_at_top_left,rgba(201,150,31,0.16),transparent_28%),linear-gradient(140deg,rgba(201,150,31,0.06),rgba(17,12,8,0.96))] px-6 py-8 shadow-[0_24px_70px_rgba(28,20,12,0.18)] sm:px-8 lg:px-10">
+            <div className="grid gap-10 lg:grid-cols-[1.15fr,0.85fr] lg:items-center">
+              <div className="space-y-6">
+                <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
+                  <Coins className="h-3.5 w-3.5" />
+                  Punya Rewards
+                </div>
+                <div className="space-y-3">
+                  <h2 className="font-playfair text-3xl font-semibold text-white sm:text-4xl">
+                    Earn spiritual merit while you practice.
+                  </h2>
+                  <p className="max-w-2xl text-sm leading-7 text-[#d9c8af] sm:text-base">
+                    Every reading, chart, and return visit can build your Punya Points balance. Spin the wheel for discounts, bonus points, and premium blessings while you rise through the weekly leaderboard.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-3">
+                  {[
+                    {
+                      icon: Sparkles,
+                      title: 'Earn',
+                      copy: 'Points flow in from the Temple modules you already use every day.',
+                    },
+                    {
+                      icon: Gift,
+                      title: 'Spin',
+                      copy: 'Turn your points into discounts, free reports, and Daily Blessing rewards.',
+                    },
+                    {
+                      icon: Trophy,
+                      title: 'Rise',
+                      copy: 'Weekly leaders climb the board and unlock extra attention from the wheel.',
+                    },
+                  ].map((item) => {
+                    const Icon = item.icon;
+                    return (
+                      <Card key={item.title} className="rounded-2xl border border-gold/20 bg-gold/[0.04] p-5 text-left shadow-sm">
+                        <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-full border border-gold/25 bg-gold/10 text-gold">
+                          <Icon className="h-4 w-4" />
+                        </div>
+                        <h3 className="font-playfair text-xl font-semibold text-white">{item.title}</h3>
+                        <p className="mt-2 text-sm leading-6 text-[#d6c3a8]">{item.copy}</p>
+                      </Card>
+                    );
+                  })}
+                </div>
+
+                {user?.email ? (
+                  <div className="flex flex-col gap-4 rounded-2xl border border-gold/20 bg-gold/[0.05] px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold/80">Temple wallet</p>
+                      <p className="mt-1 text-2xl font-semibold text-white">
+                        {punyaBalance ?? '...'} Punya Points
+                      </p>
+                      <p className="mt-1 text-sm text-[#d8c7ae]">Your next spin is waiting inside the rewards page.</p>
+                    </div>
+                    <Button onClick={() => navigate('/punya-rewards')} className="bg-gold text-primary-foreground hover:bg-gold/90">
+                      Spin Now
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="flex flex-col gap-4 rounded-2xl border border-gold/20 bg-gold/[0.05] px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold/80">Start earning</p>
+                      <p className="mt-1 text-xl font-semibold text-white">Sign in to start collecting Punya Points.</p>
+                      <p className="mt-1 text-sm text-[#d8c7ae]">Guest visitors can preview the wheel. Logged-in seekers earn from the Temple.</p>
+                    </div>
+                    <Button onClick={() => navigate('/login')} className="bg-gold text-primary-foreground hover:bg-gold/90">
+                      Create Free Account
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex justify-center">
+                <PunyaTeaserWheel />
+              </div>
+            </div>
           </div>
         </div>
       </section>

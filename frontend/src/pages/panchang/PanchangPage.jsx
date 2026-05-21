@@ -19,12 +19,14 @@ const DEFAULT_SLUG = 'new-delhi-india';
 
 // ─── Language translation tables ─────────────────────────────────────────────
 const LANG_META_MAP = {
-  tamil:    { code:'ta', nativeName:'தமிழ்',    badge:'தமிழ் பஞ்சாங்கம்',   titlePrefix:'இன்றைய தமிழ் பஞ்சாங்கம்',   desc:'இன்றைய தமிழ் பஞ்சாங்கம் -- திதி, நட்சத்திரம், யோகம், கரணம், சூரிய உதயம், ராகு காலம்' },
-  telugu:   { code:'te', nativeName:'తెలుగు',   badge:'తెలుగు పంచాంగం',     titlePrefix:'నేటి తెలుగు పంచాంగం',       desc:'నేటి తెలుగు పంచాంగం -- తిథి, నక్షత్రం, యోగం, కరణం, సూర్యోదయం, రాహు కాలం' },
-  malayalam:{ code:'ml', nativeName:'മലയാളം',  badge:'മലയാളം പഞ്ചാംഗം',    titlePrefix:'ഇന്നത്തെ മലയാളം പഞ്ചാംഗം',  desc:'ഇന്നത്തെ മലയാളം പഞ്ചാംഗം -- തിഥി, നക്ഷത്രം, യോഗം, കരണം, സൂര്യോദയം, രാഹു കാലം' },
-  kannada:  { code:'kn', nativeName:'ಕನ್ನಡ',    badge:'ಕನ್ನಡ ಪಂಚಾಂಗ',       titlePrefix:'ಇಂದಿನ ಕನ್ನಡ ಪಂಚಾಂಗ',        desc:'ಇಂದಿನ ಕನ್ನಡ ಪಂಚಾಂಗ -- ತಿಥಿ, ನಕ್ಷತ್ರ, ಯೋಗ, ಕರಣ, ಸೂರ್ಯೋದಯ, ರಾಹು ಕಾಲ' },
-  hindi:    { code:'hi', nativeName:'हिंदी',    badge:'हिंदी पंचांग',         titlePrefix:'आज का हिंदी पंचांग',         desc:'आज का हिंदी पंचांग -- तिथि, नक्षत्र, योग, करण, सूर्योदय, राहु काल' },
+  tamil:    { code:'ta-IN', route:'tamil',     nativeName:'தமிழ்',    englishName:'Tamil Panchangam',    badge:'தமிழ் பஞ்சாங்கம்',   titlePrefix:'இன்றைய தமிழ் பஞ்சாங்கம்',   desc:'இன்றைய தமிழ் பஞ்சாங்கம் -- திதி, நட்சத்திரம், யோகம், கரணம், சூரிய உதயம், ராகு காலம்' },
+  telugu:   { code:'te-IN', route:'telugu',    nativeName:'తెలుగు',   englishName:'Telugu Panchangam',   badge:'తెలుగు పంచాంగం',     titlePrefix:'నేటి తెలుగు పంచాంగం',       desc:'నేటి తెలుగు పంచాంగం -- తిథి, నక్షత్రం, యోగం, కరణం, సూర్యోదయం, రాహు కాలం' },
+  malayalam:{ code:'ml-IN', route:'malayalam', nativeName:'മലയാളം',  englishName:'Malayalam Panchangam',badge:'മലയാളം പഞ്ചാംഗം',    titlePrefix:'ഇന്നത്തെ മലയാളം പഞ്ചാംഗം',  desc:'ഇന്നത്തെ മലയാളം പഞ്ചാംഗം -- തിഥി, നക്ഷത്രം, യോഗം, കരണം, സൂര്യോദയം, രാഹു കാലം' },
+  kannada:  { code:'kn-IN', route:'kannada',   nativeName:'ಕನ್ನಡ',    englishName:'Kannada Panchanga',   badge:'ಕನ್ನಡ ಪಂಚಾಂಗ',       titlePrefix:'ಇಂದಿನ ಕನ್ನಡ ಪಂಚಾಂಗ',        desc:'ಇಂದಿನ ಕನ್ನಡ ಪಂಚಾಂಗ -- ತಿಥಿ, ನಕ್ಷತ್ರ, ಯೋಗ, ಕರಣ, ಸೂರ್ಯೋದಯ, ರಾಹು ಕಾಲ' },
+  hindi:    { code:'hi-IN', route:'hindi',     nativeName:'हिंदी',    englishName:'Hindi Panchang',      badge:'हिंदी पंचांग',         titlePrefix:'आज का हिंदी पंचांग',         desc:'आज का हिंदी पंचांग -- तिथि, नक्षत्र, योग, करण, सूर्योदय, राहु काल' },
 };
+
+const PANCHANG_LANGUAGE_ROUTES = ['hindi', 'tamil', 'telugu', 'malayalam', 'kannada'];
 
 const LANG_LABELS_MAP = {
   tamil:    { sunrise:'சூரிய உதயம்', sunset:'சூரிய அஸ்தமனம்', moonrise:'சந்திர உதயம்', moonset:'சந்திர அஸ்தமனம்', tithi:'திதி', nakshatra:'நட்சத்திரம்', yoga:'யோகம்', karana:'கரணம்', vara:'வாரம்', fiveLimbs:'பஞ்சாங்கம் -- ஐந்து அங்கங்கள்', timingWindows:'நேர அட்டவணை', auspicious:'நல்ல நேரம்', inauspicious:'தீய நேரம்', observances:'இன்றைய விசேஷங்கள்', now:'இப்போது', sunIn:'சூரியன்', moonIn:'சந்திரன்', paksha:'பக்ஷம்', todayTithi:'இன்றைய திதி', moonPosition:'சந்திர நிலை', moonSign:'சந்திர ராசி', samvat:'சம்வத்', shubhMuhurat:'சுப முகூர்த்தம்', auspiciousWindows:'சுப நேரங்கள்', inauspiciousWindows:'தீய நேரங்கள் -- தவிர்க்கவும்', dayChoghadiya:'பகல் சோகடியா', nightChoghadiya:'இரவு சோகடியா', tapDate:'தேதியை தட்டவும்', neutral:'நடுநிலை', tabToday:'இன்று', tabTomorrow:'நாளை', tabTithi:'திதி', tabMuhurat:'முகூர்த்தம்', tabChoghadiya:'சோகடியா', tabCalendar:'நாட்காட்டி', tabFestivals:'விழாக்கள்', },
@@ -430,29 +432,104 @@ function LocationPicker({ selectedSlug, onSelect }) {
 }
 
 // ─── SEO helpers ────────────────────────────────────────────────────────────
-function webPageSchema({ name, description, url, datePublished }) {
+function webPageSchema({ name, description, url, datePublished, inLanguage = 'en-IN' }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name, description, url,
-    inLanguage: 'en-IN',
+    inLanguage,
     ...(datePublished ? { datePublished } : {}),
     isPartOf: { '@type': 'WebSite', name: 'Everyday Horoscope', url: SITE },
     provider: { '@type': 'Organization', name: 'Everyday Horoscope', url: SITE },
   };
 }
 
-function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData, locationTZ }) {
+function panchangLanguagePath(lang, view, calYear, calMonth) {
+  if (!lang) return null;
+  if (view === 'calendar') {
+    const y = calYear || new Date().getFullYear();
+    const mo = calMonth || (new Date().getMonth() + 1);
+    return `/panchang/${lang}/calendar/${y}/${mo}`;
+  }
+  if (view === 'daily') return `/panchang/${lang}`;
+  if (view === 'date') return null;
+  return `/panchang/${lang}/${view}`;
+}
+
+function panchangEnglishPath(view, calYear, calMonth, dateValue) {
+  if (view === 'calendar') {
+    const y = calYear || new Date().getFullYear();
+    const mo = calMonth || (new Date().getMonth() + 1);
+    return `/panchang/calendar/${y}/${mo}`;
+  }
+  if (view === 'date') return dateValue ? `/panchang/date/${dateValue}` : '/panchang/today';
+  if (view === 'daily') return '/panchang/today';
+  return `/panchang/${view}`;
+}
+
+function buildPanchangHreflang({ view, lang, calYear, calMonth, dateValue }) {
+  const englishPath = panchangEnglishPath(view, calYear, calMonth, dateValue);
+  const alternates = [
+    { lang: 'en-IN', href: `${SITE}${englishPath}` },
+    { lang: 'x-default', href: `${SITE}${englishPath}` },
+  ];
+  if (view !== 'date') {
+    PANCHANG_LANGUAGE_ROUTES.forEach((route) => {
+      const meta = LANG_META_MAP[route];
+      const path = panchangLanguagePath(route, view, calYear, calMonth);
+      if (meta?.code && path) alternates.push({ lang: meta.code, href: `${SITE}${path}` });
+    });
+  }
+  return alternates.filter((item, index, arr) => (
+    item.href && arr.findIndex((other) => other.lang === item.lang && other.href === item.href) === index
+  ));
+}
+
+function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData, locationTZ, lang }) {
   const tz = locationTZ || 'Asia/Kolkata';
   const todayISO    = getTodayInTZ(tz);
   const tomorrowISO = getTomorrowInTZ(tz);
+  const langMeta = lang ? LANG_META_MAP[lang] : null;
+  const inLanguage = langMeta?.code || 'en-IN';
+  const englishCanonical = `${SITE}${panchangEnglishPath(view, calYear, calMonth, dateValue)}`;
+  const langUrl = langMeta ? `${SITE}${panchangLanguagePath(lang, view, calYear, calMonth) || panchangEnglishPath(view, calYear, calMonth, dateValue)}` : null;
+  const hreflang = buildPanchangHreflang({ view, lang, calYear, calMonth, dateValue });
+
+  if (langMeta && view !== 'date') {
+    const dateForView = view === 'tomorrow' ? tomorrowISO : todayISO;
+    const humanDay = humanDate(dateForView, tz);
+    const viewSuffix = view === 'tomorrow'
+      ? 'Tomorrow'
+      : view === 'calendar'
+        ? 'Calendar'
+        : view === 'tithi'
+          ? 'Tithi'
+          : view === 'choghadiya'
+            ? 'Choghadiya'
+            : view === 'muhurat'
+              ? 'Shubh Muhurat'
+              : view === 'festivals'
+                ? 'Festivals & Vrats'
+                : 'Today';
+    const title = `${langMeta.titlePrefix} -- ${humanDay} | ${langMeta.englishName}`;
+    const description = `${langMeta.desc}. ${langMeta.badge} (${langMeta.englishName}) ${viewSuffix} page for ${humanDay} with live Swiss Ephemeris Panchang data for New Delhi and selectable global locations.`;
+    const schema = webPageSchema({
+      name: title,
+      description,
+      url: langUrl,
+      datePublished: dateForView,
+      inLanguage,
+    });
+    return { title, description, url: langUrl, canonical: englishCanonical, hreflang, schema };
+  }
+
   switch (view) {
     case 'daily': {
       const humanToday = humanDate(todayISO, tz);
       const title = `Today's Panchang -- ${humanToday}`;
       const description = `Free daily Panchang for ${humanToday}. Tithi, Nakshatra, Yoga, Karana, Brahma Muhurta, Rahu Kaal, Abhijit Muhurta, Vijaya Muhurta, Sunrise & Moonrise with seconds.`;
       const url = `${SITE}/panchang/today`;
-      return { title, description, url, schema: webPageSchema({ name: title, description, url, datePublished: todayISO }) };
+      return { title, description, url, hreflang, schema: webPageSchema({ name: title, description, url, datePublished: todayISO }) };
     }
     case 'tomorrow': {
       const humanTomorrow = humanDate(tomorrowISO, tz);
@@ -528,15 +605,15 @@ function buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, pa
   }
 }
 
-function PanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData, locationTZ }) {
+function PanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData, locationTZ, lang }) {
   const seo = useMemo(
-    () => buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData, locationTZ }),
+    () => buildPanchangSEO({ view, calYear, calMonth, dateValue, festivalData, panchangData, locationTZ, lang }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [view, calYear, calMonth, dateValue, festivalData?.items?.length, panchangData?.panchang?.tithi?.name, locationTZ]
+    [view, calYear, calMonth, dateValue, festivalData?.items?.length, panchangData?.panchang?.tithi?.name, locationTZ, lang]
   );
   if (!seo) return null;
   const schemas = Array.isArray(seo.schema) ? seo.schema : seo.schema ? [seo.schema] : [];
-  return <SEO title={seo.title} description={seo.description} url={seo.url} image={OG_IMAGE} type="website" schema={schemas.length === 1 ? schemas[0] : schemas.length > 1 ? schemas : null} />;
+  return <SEO title={seo.title} description={seo.description} url={seo.url} canonical={seo.canonical} hreflang={seo.hreflang} image={OG_IMAGE} type="website" schema={schemas.length === 1 ? schemas[0] : schemas.length > 1 ? schemas : null} />;
 }
 
 // ─── TZ footer note ─────────────────────────────────────────────────────────
@@ -1859,6 +1936,7 @@ export const PanchangPage = ({ lang } = {}) => {
         view={activeView} calYear={calYear} calMonth={calMonth}
         dateValue={dateValue} festivalData={festivalData}
         panchangData={panchangData} locationTZ={locationTZ}
+        lang={lang}
       />
       <div className="text-center mb-6">
         {lang && LANG_META_MAP[lang] ? (

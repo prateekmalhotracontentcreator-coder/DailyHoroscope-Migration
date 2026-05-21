@@ -5,9 +5,11 @@ import { SEO } from '../../components/SEO';
 import { PremiumGateCard } from '../../components/PremiumRoute';
 import { Card } from '../../components/ui/card';
 import { Button } from '../../components/ui/button';
+import { Drawer } from 'vaul';
 import {
   BookOpen, Sparkles, Star, Loader2,
   Bookmark, BookmarkCheck, Zap, Crown, RotateCcw, NotebookPen, Flame,
+  X, Share2, Eye, Heart, Briefcase, Moon, Brain, ChevronRight,
 } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
@@ -17,12 +19,14 @@ const API  = `${process.env.REACT_APP_BACKEND_URL}/api`;
 const SITE = 'https://www.everydayhoroscope.in';
 
 const FOCUS_AREAS = [
-  { value: 'guidance', label: 'Guidance', emoji: '🔮' },
-  { value: 'love',     label: 'Love',     emoji: '❤️'  },
-  { value: 'career',   label: 'Career',   emoji: '⭐'  },
-  { value: 'healing',  label: 'Healing',  emoji: '🌿' },
-  { value: 'clarity',  label: 'Clarity',  emoji: '✨' },
+  { value: 'guidance', label: 'Guidance', emoji: '🔮', planet: 'Rahu/Ketu insight', Icon: Eye },
+  { value: 'love',     label: 'Love',     emoji: '❤️', planet: 'Venus (Shukra) energy', Icon: Heart },
+  { value: 'career',   label: 'Career',   emoji: '⭐', planet: 'Saturn (Shani) karma', Icon: Briefcase },
+  { value: 'healing',  label: 'Healing',  emoji: '🌿', planet: 'Moon (Chandra) nourishment', Icon: Moon },
+  { value: 'clarity',  label: 'Clarity',  emoji: '✨', planet: 'Mercury (Budha) wisdom', Icon: Brain },
 ];
+
+const WEEK_DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
 const schema = {
   '@context': 'https://schema.org',
@@ -31,6 +35,101 @@ const schema = {
   description: 'Daily Tarot card draw and premium spreads, cross-referenced with Vedic astrology.',
   url: `${SITE}/tarot`,
   publisher: { '@type': 'Organization', name: 'Everyday Horoscope', url: SITE },
+};
+
+function TarotV4Styles() {
+  return (
+    <style>{`
+      @keyframes tarotBurst {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.25); }
+        18% { opacity: 1; }
+        100% { opacity: 0; transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1); }
+      }
+      @keyframes tarotGlow {
+        0% { box-shadow: 0 0 0 rgba(197,160,89,0); }
+        20% { box-shadow: 0 0 32px rgba(197,160,89,0.65); }
+        100% { box-shadow: 0 0 0 rgba(197,160,89,0); }
+      }
+      @keyframes tarotFloat {
+        0%, 100% { transform: translateY(0); opacity: 0.35; }
+        50% { transform: translateY(-10px); opacity: 0.9; }
+      }
+      @keyframes tarotFadeUp {
+        from { opacity: 0; transform: translateY(16px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .tarot-burst-dot {
+        animation: tarotBurst 650ms ease-out forwards;
+      }
+      .tarot-reveal-glow {
+        animation: tarotGlow 1100ms ease-out;
+      }
+      .tarot-fade-up {
+        animation: tarotFadeUp 420ms ease-out both;
+      }
+      .tarot-star {
+        animation: tarotFloat var(--dur) ease-in-out infinite;
+        animation-delay: var(--delay);
+      }
+    `}</style>
+  );
+}
+
+const getCardKeywords = (card, fallbackFocus = 'guidance') => {
+  if (!card) return [];
+  if (Array.isArray(card.keywords) && card.keywords.length) return card.keywords.slice(0, 5);
+  const seeds = [card.arcana, card.suit, card.orientation, fallbackFocus, card.position_label]
+    .filter(Boolean)
+    .map(v => String(v).replace(/_/g, ' '));
+  return [...new Set(seeds)].slice(0, 5);
+};
+
+const getCardMeaning = (card, reading) => {
+  if (!card) return '';
+  return card.meaning || card.meaning_full || card.full_meaning || card.interpretation ||
+    reading?.guidance || card.meaning_snippet || 'The card opens a reflective message for this moment.';
+};
+
+const getReadingGuidance = (reading, card) => {
+  return reading?.guidance || reading?.interpretation || card?.guidance ||
+    'Pause before acting. Let the card name one practical step, one feeling to honor, and one pattern to release today.';
+};
+
+const getCardDate = (item) => {
+  if (!item?.created_at) return '';
+  return new Date(item.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+};
+
+const getMonthLabel = (item) => {
+  if (!item?.created_at) return 'Earlier';
+  return new Date(item.created_at).toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+};
+
+const computeStreakStats = (history = [], gamification) => {
+  const dateSet = new Set(
+    history
+      .map(item => item.created_at ? new Date(item.created_at).toISOString().slice(0, 10) : null)
+      .filter(Boolean),
+  );
+  const today = new Date();
+  let streak = Number(gamification?.daily_streak || 0);
+  if (!streak) {
+    for (let i = 0; i < 60; i++) {
+      const d = new Date(today);
+      d.setDate(today.getDate() - i);
+      if (dateSet.has(d.toISOString().slice(0, 10))) streak += 1;
+      else if (i > 0) break;
+    }
+  }
+  const weekFilled = WEEK_DAYS.map((_, index) => {
+    const d = new Date(today);
+    const mondayOffset = (today.getDay() + 6) % 7;
+    d.setDate(today.getDate() - mondayOffset + index);
+    return dateSet.has(d.toISOString().slice(0, 10));
+  });
+  const xp = Number(gamification?.total_xp || gamification?.xp || 0);
+  const xpProgress = Math.min(100, Number(gamification?.level_progress || xp % 100));
+  return { streak, weekFilled, xpProgress, level: gamification?.level || Math.floor(xp / 100) + 1 };
 };
 
 // ── Card visuals ────────────────────────────────────────────────────────────
@@ -61,12 +160,35 @@ function CardFace({ svgData, cardName, orientation, className = '' }) {
   );
 }
 
-function FlippingCard({ cardId, cardName, orientation, svgData, flipped }) {
+function FlippingCard({ cardId, cardName, orientation, svgData, flipped, onClick }) {
   // w-40 = 160px → height = 160 × 3/2 = 240px
+  const particles = [
+    [-56, -42], [-24, -64], [18, -58], [52, -34],
+    [66, 4], [46, 42], [12, 64], [-28, 58],
+    [-62, 22], [-70, -12], [0, -78], [74, -58],
+    [82, 34], [-82, 38],
+  ];
   return (
-    <div className="w-40 mx-auto" style={{ perspective: '800px' }}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`relative block w-40 mx-auto ${flipped && onClick ? 'cursor-pointer' : 'cursor-default'}`}
+      style={{ perspective: '1200px' }}
+      aria-label={flipped ? `Open details for ${cardName}` : 'Tarot card'}
+    >
+      {flipped && particles.map(([tx, ty], index) => (
+        <span
+          key={`${cardId || cardName}-${index}`}
+          className="tarot-burst-dot pointer-events-none absolute left-1/2 top-1/2 z-20 h-1.5 w-1.5 rounded-full bg-gold"
+          style={{
+            '--tx': `${tx}px`,
+            '--ty': `${ty}px`,
+            animationDelay: `${index * 18}ms`,
+          }}
+        />
+      ))}
       <div
-        className="relative transition-all duration-700"
+        className={`relative transition-all duration-700 ${flipped ? 'tarot-reveal-glow rounded-xl' : ''}`}
         style={{ transformStyle: 'preserve-3d', transform: flipped ? 'rotateY(180deg)' : 'rotateY(0deg)', height: '240px' }}
       >
         <div className="absolute inset-0" style={{ backfaceVisibility: 'hidden' }}>
@@ -76,7 +198,7 @@ function FlippingCard({ cardId, cardName, orientation, svgData, flipped }) {
           <CardFace svgData={svgData} cardName={cardName} orientation={orientation} />
         </div>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -87,6 +209,374 @@ function OrientationBadge({ orientation }) {
     }`}>
       {orientation === 'upright' ? '↑ Upright' : '↓ Reversed'}
     </span>
+  );
+}
+
+function TarotHero({ onDrawClick }) {
+  const stars = Array.from({ length: 52 }, (_, index) => ({
+    left: `${(index * 37) % 100}%`,
+    top: `${(index * 53) % 78}%`,
+    dur: `${3 + (index % 5)}s`,
+    delay: `${(index % 9) * 0.35}s`,
+  }));
+  return (
+    <section className="relative mb-8 overflow-hidden rounded-3xl border border-gold/20 bg-gradient-to-br from-neutral-950 via-purple-950/20 to-neutral-950 px-5 py-10 text-center shadow-2xl shadow-black/20">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(197,160,89,0.18),transparent_32%),radial-gradient(circle_at_15%_80%,rgba(232,201,122,0.10),transparent_24%)]" />
+      {stars.map((star, index) => (
+        <span
+          key={index}
+          className="tarot-star absolute h-0.5 w-0.5 rounded-full bg-white/80"
+          style={{ left: star.left, top: star.top, '--dur': star.dur, '--delay': star.delay }}
+        />
+      ))}
+      <div className="relative z-10 mx-auto max-w-xl">
+        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.32em] text-gold">
+          <Sparkles className="h-3.5 w-3.5" /> Vedic Tarot
+        </div>
+        <h1 className="font-playfair text-4xl font-semibold tracking-tight text-white md:text-6xl">
+          The Cards Know
+        </h1>
+        <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-white/70 md:text-base">
+          Draw your card. Receive your message. Trust the cosmos.
+        </p>
+        <div className="group relative mx-auto mt-8 h-36 w-64">
+          <div className="absolute left-10 top-3 w-24 origin-bottom -rotate-8 translate-x-[-10px] transition-transform duration-300 group-hover:-translate-x-8 group-hover:-rotate-12">
+            <CardBack className="shadow-xl shadow-black/40" />
+          </div>
+          <div className="absolute left-20 top-0 z-10 w-24 transition-transform duration-300 group-hover:-translate-y-2">
+            <CardBack className="shadow-xl shadow-gold/10" />
+          </div>
+          <div className="absolute right-10 top-3 w-24 origin-bottom rotate-8 translate-x-[10px] transition-transform duration-300 group-hover:translate-x-8 group-hover:rotate-12">
+            <CardBack className="shadow-xl shadow-black/40" />
+          </div>
+        </div>
+        <Button
+          onClick={onDrawClick}
+          className="mt-2 bg-gold px-6 py-5 text-sm font-semibold text-primary-foreground hover:bg-gold/90"
+        >
+          Draw Today's Card <ChevronRight className="ml-1 h-4 w-4" />
+        </Button>
+      </div>
+    </section>
+  );
+}
+
+function FocusAreaCards({ value, onChange }) {
+  return (
+    <div className="grid grid-cols-2 gap-2 md:grid-cols-5">
+      {FOCUS_AREAS.map(({ value: itemValue, label, emoji, planet, Icon }) => {
+        const selected = value === itemValue;
+        return (
+          <button
+            key={itemValue}
+            type="button"
+            onClick={() => onChange(itemValue)}
+            className={`rounded-xl border p-3 text-left transition-all duration-200 hover:scale-[1.02] ${
+              selected
+                ? 'border-gold bg-gold/10 text-foreground shadow-sm shadow-gold/10'
+                : 'border-border bg-card/70 text-muted-foreground hover:border-gold/50'
+            }`}
+          >
+            <div className="mb-2 flex items-center justify-between">
+              <span className="text-2xl">{emoji}</span>
+              <Icon className={`h-4 w-4 ${selected ? 'text-gold' : 'text-muted-foreground/60'}`} />
+            </div>
+            <p className="text-sm font-semibold text-foreground">{label}</p>
+            <p className="mt-1 text-[11px] leading-4 text-muted-foreground">{planet}</p>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+function StreakWidget({ history, gamification }) {
+  const stats = computeStreakStats(history, gamification);
+  return (
+    <Card className="mb-5 overflow-hidden border border-gold/20 bg-gold/[0.04] p-4">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <div className="flex items-center gap-2">
+            <Flame className="h-4 w-4 text-orange-500" />
+            <p className="text-sm font-semibold">
+              {stats.streak >= 3 ? `${stats.streak}-day streak!` : `${stats.streak || 0}-day Tarot rhythm`}
+            </p>
+          </div>
+          <p className="mt-1 text-xs text-muted-foreground">Return daily to keep your oracle thread alive.</p>
+        </div>
+        <div className="flex items-center gap-1.5">
+          {WEEK_DAYS.map((day, index) => (
+            <div key={day} className="text-center">
+              <div className={`mx-auto mb-1 flex h-7 w-7 items-center justify-center rounded-full border text-[10px] font-semibold transition-transform ${
+                stats.weekFilled[index] ? 'scale-105 border-gold bg-gold text-primary-foreground' : 'border-gold/20 bg-background text-muted-foreground'
+              }`}>
+                {day.slice(0, 1)}
+              </div>
+              <span className="text-[10px] text-muted-foreground">{day}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-4">
+        <div className="mb-1 flex items-center justify-between text-[11px] text-muted-foreground">
+          <span>Level {stats.level}</span>
+          <span>{Math.round(stats.xpProgress)}% to next level</span>
+        </div>
+        <div className="h-2 rounded-full bg-muted/50">
+          <div className="h-full rounded-full bg-gold transition-all duration-500" style={{ width: `${stats.xpProgress}%` }} />
+        </div>
+      </div>
+    </Card>
+  );
+}
+
+function FadeInOnView({ children, delay = 0 }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return undefined;
+    if (!('IntersectionObserver' in window)) {
+      setVisible(true);
+      return undefined;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.16 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-500 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+}
+
+function ReadingDetailsContent({ card, reading, svgData, onShare }) {
+  const keywords = getCardKeywords(card, reading?.focus_area);
+  return (
+    <div className="grid gap-6 md:grid-cols-[0.8fr_1.2fr]">
+      <div>
+        <CardFace svgData={svgData} cardName={card?.name} orientation={card?.orientation} className="mx-auto max-w-[240px] shadow-2xl shadow-black/40" />
+      </div>
+      <div className="space-y-4">
+        <div>
+          <div className="mb-2 flex flex-wrap items-center gap-2">
+            <h2 className="font-playfair text-3xl font-semibold">{card?.name || 'Your Card'}</h2>
+            {card?.orientation && <OrientationBadge orientation={card.orientation} />}
+          </div>
+          <p className="text-sm leading-7 text-muted-foreground">{getCardMeaning(card, reading)}</p>
+        </div>
+        {keywords.length > 0 && (
+          <div className="flex flex-wrap gap-2">
+            {keywords.map(keyword => (
+              <span key={keyword} className="rounded-full border border-gold/20 bg-gold/10 px-2.5 py-1 text-xs capitalize text-gold">
+                {keyword}
+              </span>
+            ))}
+          </div>
+        )}
+        <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4">
+          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-gold">Vedic Cross-Reference</p>
+          <p className="text-sm leading-6 text-muted-foreground">
+            Read this card as a mirror for your current karma: the symbol speaks first, then your focus area and timing reveal where its energy wants expression.
+          </p>
+        </div>
+        {reading?.affirmation && (
+          <blockquote className="border-l-4 border-gold bg-gold/5 px-4 py-3 font-playfair text-base italic">
+            "{reading.affirmation}"
+          </blockquote>
+        )}
+        <div>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-muted-foreground">How to apply this today</p>
+          <p className="text-sm leading-7">{getReadingGuidance(reading, card)}</p>
+        </div>
+        <Button onClick={onShare} variant="outline" className="border-gold/30 text-gold hover:bg-gold/10">
+          <Share2 className="mr-2 h-4 w-4" /> Share Reading
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function ReadingModal({ open, onClose, card, reading, svgData, onShare }) {
+  if (!open || !card) return null;
+  return (
+    <div className="fixed inset-0 z-50 hidden items-end justify-center bg-black/80 p-4 backdrop-blur-sm md:flex" role="dialog" aria-modal="true">
+      <div className="tarot-fade-up relative max-h-[90vh] w-full max-w-5xl overflow-y-auto rounded-3xl border border-gold/20 bg-background p-6 shadow-2xl">
+        <button
+          type="button"
+          onClick={onClose}
+          className="absolute right-4 top-4 rounded-full border border-border bg-card p-2 text-muted-foreground transition-colors hover:text-foreground"
+          aria-label="Close reading details"
+        >
+          <X className="h-4 w-4" />
+        </button>
+        <ReadingDetailsContent card={card} reading={reading} svgData={svgData} onShare={onShare} />
+      </div>
+    </div>
+  );
+}
+
+function CardDrawer({ open, onOpenChange, card, reading, svgData, onShare }) {
+  return (
+    <Drawer.Root open={open} onOpenChange={onOpenChange}>
+      <Drawer.Portal>
+        <Drawer.Overlay className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm md:hidden" />
+        <Drawer.Content className="fixed inset-x-0 bottom-0 z-50 max-h-[88vh] rounded-t-3xl border border-gold/20 bg-background p-4 shadow-2xl md:hidden">
+          <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-muted" />
+          <div className="max-h-[78vh] overflow-y-auto pb-4">
+            {card && <ReadingDetailsContent card={card} reading={reading} svgData={svgData} onShare={onShare} />}
+          </div>
+        </Drawer.Content>
+      </Drawer.Portal>
+    </Drawer.Root>
+  );
+}
+
+function CelticCrossLayout({ cards, cardSVGs, onCardClick }) {
+  if (!cards?.length) return null;
+  const labels = [
+    'The Heart', 'The Cross', 'Foundation', 'Recent Past', 'Crown', 'Near Future',
+    'Self', 'Others', 'Hopes & Fears', 'Final Outcome',
+  ];
+  const positionClass = [
+    'left-[38%] top-[34%] z-20 w-20',
+    'left-[38%] top-[34%] z-30 w-20 rotate-90',
+    'left-[38%] top-[62%] w-20',
+    'left-[13%] top-[34%] w-20',
+    'left-[38%] top-[6%] w-20',
+    'left-[63%] top-[34%] w-20',
+    'right-0 top-[68%] w-16',
+    'right-0 top-[47%] w-16',
+    'right-0 top-[26%] w-16',
+    'right-0 top-[5%] w-16',
+  ];
+  return (
+    <Card className="overflow-hidden border border-gold/20 bg-gold/[0.03] p-4">
+      <div className="mb-4 flex items-center justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-widest text-gold">Premium Celtic Cross</p>
+          <p className="text-sm text-muted-foreground">Ten positions revealed as one complete oracle map.</p>
+        </div>
+        <span className="rounded-full border border-gold/30 bg-gold/10 px-2 py-1 text-xs font-semibold text-gold">Premium</span>
+      </div>
+      <div className="relative mx-auto h-[420px] max-w-md">
+        {cards.slice(0, 10).map((card, index) => (
+          <button
+            key={`${card.card_id}-${card.position_code || index}`}
+            type="button"
+            onClick={() => onCardClick(card)}
+            className={`tarot-fade-up group absolute ${positionClass[index] || 'w-20'}`}
+            style={{ animationDelay: `${index * 90}ms` }}
+          >
+            <CardFace svgData={cardSVGs[card.card_id]} cardName={card.name} orientation={card.orientation} className="shadow-lg shadow-black/25" />
+            <span className="mt-1 block rounded-full bg-background/90 px-1.5 py-0.5 text-[10px] text-gold opacity-90">
+              {index + 1}
+            </span>
+          </button>
+        ))}
+      </div>
+      <div className="grid gap-2 md:grid-cols-2">
+        {cards.slice(0, 10).map((card, index) => (
+          <div key={`${card.card_id}-label-${index}`} className="rounded-lg border border-border bg-card/70 p-2 text-xs">
+            <span className="font-semibold text-gold">{index + 1}. {card.position_label || labels[index]}</span>
+            <span className="ml-1 text-muted-foreground">{card.name}</span>
+          </div>
+        ))}
+      </div>
+    </Card>
+  );
+}
+
+function DefaultSpreadGrid({ cards, cardSVGs, onCardClick }) {
+  return (
+    <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+      {cards.map(card => (
+        <button
+          key={card.card_id + card.position_code}
+          type="button"
+          onClick={() => onCardClick(card)}
+          className="text-center transition-transform hover:scale-[1.02]"
+        >
+          <CardFace
+            svgData={cardSVGs[card.card_id]}
+            cardName={card.name}
+            orientation={card.orientation}
+            className="mb-2"
+          />
+          <p className="text-xs text-muted-foreground mb-0.5">{card.position_label}</p>
+          <p className="text-xs font-semibold mb-1 leading-tight">{card.name}</p>
+          <OrientationBadge orientation={card.orientation} />
+          <p className="text-xs text-muted-foreground mt-1">{card.meaning_snippet}</p>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function HistoryTimeline({ history, cardSVGs, onBookmark, onCardClick }) {
+  const groups = history.reduce((acc, item) => {
+    const label = getMonthLabel(item);
+    if (!acc[label]) acc[label] = [];
+    acc[label].push(item);
+    return acc;
+  }, {});
+  return (
+    <div className="space-y-8">
+      {Object.entries(groups).map(([month, items]) => (
+        <section key={month}>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-widest text-gold/70">{month}</p>
+          <div className="relative space-y-4 border-l-2 border-gold/20 pl-5">
+            {items.map((item, index) => {
+              const card = item.cards?.[0];
+              return (
+                <FadeInOnView key={item.id || item.report_id} delay={index * 80}>
+                  <Card className="relative border border-border p-4 hover:border-gold/30">
+                    <span className="absolute -left-[27px] top-5 h-3 w-3 rounded-full bg-gold/50 ring-4 ring-background" />
+                    <div className="flex items-start gap-3">
+                      <button type="button" onClick={() => card && onCardClick(card, item)} className="w-12 flex-shrink-0 transition-transform hover:scale-105">
+                        {card && cardSVGs[card.card_id]
+                          ? <CardFace svgData={cardSVGs[card.card_id]} cardName={card.name} orientation={card.orientation} />
+                          : <CardBack />}
+                      </button>
+                      <div className="min-w-0 flex-1">
+                        <div className="mb-1 flex flex-wrap items-center gap-2">
+                          <span className="text-xs text-muted-foreground">{getCardDate(item)}</span>
+                          {card && <OrientationBadge orientation={card.orientation} />}
+                        </div>
+                        <p className="font-semibold text-sm">{card?.name || item.spread_name || 'Tarot Reading'}</p>
+                        {item.affirmation && (
+                          <p className="mt-1 line-clamp-2 text-xs italic text-muted-foreground">"{item.affirmation}"</p>
+                        )}
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onBookmark(item.report_id, item.bookmarked)}
+                        className="text-muted-foreground transition-colors hover:text-gold"
+                        aria-label={item.bookmarked ? 'Remove bookmark' : 'Bookmark reading'}
+                      >
+                        {item.bookmarked ? <BookmarkCheck className="h-4 w-4 text-gold" /> : <Bookmark className="h-4 w-4" />}
+                      </button>
+                    </div>
+                  </Card>
+                </FadeInOnView>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+    </div>
   );
 }
 
@@ -120,6 +610,9 @@ export const TarotPage = () => {
   const [journalLoading,  setJournalLoading]  = useState(false);
   const [newIntention,    setNewIntention]    = useState('');
   const [savingIntention, setSavingIntention] = useState(false);
+  const [detailCard,      setDetailCard]      = useState(null);
+  const [detailReading,   setDetailReading]   = useState(null);
+  const [detailOpen,      setDetailOpen]      = useState(false);
 
   // Load card SVG bundle from frontend/public/tarot_cards.json
   useEffect(() => {
@@ -128,7 +621,10 @@ export const TarotPage = () => {
 
   useEffect(() => {
     fetchSpreads();
-    if (user) checkTodayReading();
+    if (user) {
+      checkTodayReading();
+      fetchHistory({ silent: true });
+    }
   }, [user]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
@@ -186,13 +682,13 @@ export const TarotPage = () => {
     } catch {}
   };
 
-  const fetchHistory = async () => {
+  const fetchHistory = async (options = {}) => {
     setHistoryLoading(true);
     try {
       const res = await axios.get(`${API}/tarot/history`, { withCredentials: true });
       setHistory(res.data.items || []);
     } catch {
-      toast.error('Could not load history');
+      if (!options.silent) toast.error('Could not load history');
     } finally {
       setHistoryLoading(false);
     }
@@ -330,11 +826,34 @@ export const TarotPage = () => {
     setPlaying(false);
   };
 
+  const openCardDetails = (card, sourceReading = reading) => {
+    if (!card) return;
+    setDetailCard(card);
+    setDetailReading(sourceReading || reading);
+    setDetailOpen(true);
+  };
+
+  const shareReading = async () => {
+    const shareText = detailCard
+      ? `${detailCard.name} ${detailCard.orientation ? `(${detailCard.orientation})` : ''} - ${getCardMeaning(detailCard, detailReading)}`
+      : 'My Tarot reading from EverydayHoroscope';
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: 'My Tarot Reading', text: shareText, url: `${SITE}/tarot` });
+      } else {
+        await navigator.clipboard.writeText(`${shareText}\n${SITE}/tarot`);
+        toast.success('Reading copied to clipboard');
+      }
+    } catch {}
+  };
+
   // ── Derived ───────────────────────────────────────────────────────────────
 
   const currentScene = reading?.scenes?.[sceneIndex];
   const primaryCard  = reading?.cards?.[0];
   const primarySVG   = primaryCard ? cardSVGs[primaryCard.card_id] : null;
+  const isCelticCross = reading?.cards?.length === 10 || reading?.layout === 'celtic_cross' || reading?.meta?.layout === 'celtic_cross';
+  const detailSVG = detailCard ? cardSVGs[detailCard.card_id] : null;
 
   // ── Premium gate -- logged-in non-premium users ────────────────────────────
   if (user && !user.is_premium) return (
@@ -347,7 +866,8 @@ export const TarotPage = () => {
   // ── Render ────────────────────────────────────────────────────────────────
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
+    <div className="max-w-5xl mx-auto px-4 py-10">
+      <TarotV4Styles />
       <SEO
         title="Free Tarot Reading -- Daily Draw & Spreads | EverydayHoroscope"
         description="Get your free daily tarot card draw and multi-card spreads. Cosmic guidance powered by the 78-card Rider-Waite deck. EverydayHoroscope."
@@ -355,14 +875,14 @@ export const TarotPage = () => {
         schema={schema}
       />
 
-      {/* Header */}
-      <div className="text-center mb-8">
-        <div className="inline-flex items-center gap-2 border border-gold/30 bg-gold/5 text-gold text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
-          <BookOpen className="h-3 w-3" /> Vedic Tarot
-        </div>
-        <h1 className="text-3xl font-playfair font-semibold mb-2">Tarot Reading</h1>
-        <p className="text-muted-foreground">Western Tarot cross-referenced with Vedic astrology for deeper cosmic guidance.</p>
-      </div>
+      <TarotHero
+        onDrawClick={() => {
+          setActiveTab('daily');
+          setTimeout(() => document.getElementById('tarot-draw-panel')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+        }}
+      />
+
+      <StreakWidget history={history} gamification={gamification} />
 
       {/* Gamification bar -- shown after a draw */}
       {gamification && (
@@ -401,7 +921,7 @@ export const TarotPage = () => {
 
       {/* ── DAILY DRAW TAB ── */}
       {activeTab === 'daily' && (
-        <div className="space-y-5">
+        <div id="tarot-draw-panel" className="space-y-5 scroll-mt-6">
 
           {/* Scene player (shown while playing) */}
           {reading && currentScene && playing && (
@@ -432,6 +952,7 @@ export const TarotPage = () => {
                 orientation={primaryCard.orientation}
                 svgData={primarySVG}
                 flipped={cardFlipped}
+                onClick={cardFlipped ? () => openCardDetails(primaryCard) : undefined}
               />
 
               <Card className="p-5 border border-border">
@@ -469,22 +990,11 @@ export const TarotPage = () => {
               {reading.cards?.length > 1 && (
                 <Card className="p-5 border border-border">
                   <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">The Spread</p>
-                  <div className="grid grid-cols-3 gap-4">
-                    {reading.cards.map(card => (
-                      <div key={card.card_id + card.position_code} className="text-center">
-                        <CardFace
-                          svgData={cardSVGs[card.card_id]}
-                          cardName={card.name}
-                          orientation={card.orientation}
-                          className="mb-2"
-                        />
-                        <p className="text-xs text-muted-foreground mb-0.5">{card.position_label}</p>
-                        <p className="text-xs font-semibold mb-1 leading-tight">{card.name}</p>
-                        <OrientationBadge orientation={card.orientation} />
-                        <p className="text-xs text-muted-foreground mt-1">{card.meaning_snippet}</p>
-                      </div>
-                    ))}
-                  </div>
+                  {isCelticCross ? (
+                    <CelticCrossLayout cards={reading.cards} cardSVGs={cardSVGs} onCardClick={openCardDetails} />
+                  ) : (
+                    <DefaultSpreadGrid cards={reading.cards} cardSVGs={cardSVGs} onCardClick={openCardDetails} />
+                  )}
                 </Card>
               )}
             </>
@@ -495,16 +1005,8 @@ export const TarotPage = () => {
             <>
               <Card className="p-5 border border-border">
                 <p className="text-sm font-medium mb-3">Focus Area</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {FOCUS_AREAS.map(f => (
-                    <button key={f.value} onClick={() => setFocusArea(f.value)}
-                      className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
-                        focusArea === f.value
-                          ? 'bg-gold text-primary-foreground'
-                          : 'border border-border hover:border-gold/50 text-muted-foreground'
-                      }`}>{f.emoji} {f.label}
-                    </button>
-                  ))}
+                <div className="mb-4">
+                  <FocusAreaCards value={focusArea} onChange={setFocusArea} />
                 </div>
                 <input
                   type="text"
@@ -601,17 +1103,7 @@ export const TarotPage = () => {
 
           <div>
             <p className="text-xs text-muted-foreground mb-2">Focus Area</p>
-            <div className="flex flex-wrap gap-2">
-              {FOCUS_AREAS.map(f => (
-                <button key={f.value} onClick={() => setFocusArea(f.value)}
-                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
-                    focusArea === f.value
-                      ? 'bg-gold text-primary-foreground'
-                      : 'border border-border text-muted-foreground hover:border-gold/50'
-                  }`}>{f.emoji} {f.label}
-                </button>
-              ))}
-            </div>
+            <FocusAreaCards value={focusArea} onChange={setFocusArea} />
           </div>
 
           {spreads.map(spread => (
@@ -827,52 +1319,14 @@ export const TarotPage = () => {
               </Button>
             </div>
           )}
-          {history.map(item => {
-            const card = item.cards?.[0];
-            const dateStr = item.created_at
-              ? new Date(item.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })
-              : '';
-            return (
-              <Card key={item.id} className="p-4 border border-border hover:border-gold/30 transition-colors">
-                <div className="flex items-start gap-3">
-                  {/* Thumbnail */}
-                  <div className="w-10 flex-shrink-0">
-                    {card && cardSVGs[card.card_id]
-                      ? <CardFace svgData={cardSVGs[card.card_id]} cardName={card.name} orientation={card.orientation} />
-                      : <div className="aspect-[2/3] rounded bg-gold/10 flex items-center justify-center">
-                          <Star className="h-3 w-3 text-gold/40" />
-                        </div>
-                    }
-                  </div>
-                  {/* Info */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-0.5 flex-wrap">
-                      {card && <p className="font-medium text-sm">{card.name}</p>}
-                      {card && <OrientationBadge orientation={card.orientation} />}
-                    </div>
-                    {item.focus_area && (
-                      <p className="text-xs text-muted-foreground capitalize">{item.focus_area}</p>
-                    )}
-                    {item.affirmation && (
-                      <p className="text-xs text-muted-foreground/70 italic mt-0.5 line-clamp-1">
-                        "{item.affirmation}"
-                      </p>
-                    )}
-                    <p className="text-xs text-muted-foreground mt-1">{dateStr}</p>
-                  </div>
-                  {/* Bookmark */}
-                  <button
-                    onClick={() => toggleBookmark(item.report_id, item.bookmarked)}
-                    className="text-muted-foreground hover:text-gold transition-colors flex-shrink-0"
-                  >
-                    {item.bookmarked
-                      ? <BookmarkCheck className="h-4 w-4 text-gold" />
-                      : <Bookmark className="h-4 w-4" />}
-                  </button>
-                </div>
-              </Card>
-            );
-          })}
+          {history.length > 0 && (
+            <HistoryTimeline
+              history={history}
+              cardSVGs={cardSVGs}
+              onBookmark={toggleBookmark}
+              onCardClick={openCardDetails}
+            />
+          )}
         </div>
       )}
 
@@ -899,6 +1353,23 @@ export const TarotPage = () => {
           <p className="leading-7">Beyond single-card draws, structured spreads place multiple cards in positional relationships -- Past / Present / Future, Situation / Action / Outcome, or the classic Celtic Cross. Each position in the spread has a defined meaning, and the cards interact to form a narrative. EverydayHoroscope supports multiple spread types so you can explore both quick daily guidance and in-depth situational readings.</p>
         </div>
       </div>
+
+      <ReadingModal
+        open={detailOpen}
+        onClose={() => setDetailOpen(false)}
+        card={detailCard}
+        reading={detailReading}
+        svgData={detailSVG}
+        onShare={shareReading}
+      />
+      <CardDrawer
+        open={detailOpen}
+        onOpenChange={setDetailOpen}
+        card={detailCard}
+        reading={detailReading}
+        svgData={detailSVG}
+        onShare={shareReading}
+      />
 
     </div>
   );

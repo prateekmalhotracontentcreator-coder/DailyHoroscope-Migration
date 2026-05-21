@@ -15,12 +15,57 @@ import {
 import { ArrowRight, Coins, Sparkles, Trophy, Gift, Loader2 } from 'lucide-react';
 
 const WHEEL_COLORS = ['#c5a059', '#8f5f2a', '#f2d089', '#6e4e1f', '#ddba71', '#9d6f34', '#f5dfab', '#7d5730'];
+const STREAK_MILESTONES = [
+  { days: 7, points: 50 },
+  { days: 30, points: 200 },
+  { days: 90, points: 500 },
+];
+const TAU = Math.PI * 2;
 
 function formatPrize(segment) {
   if (!segment) return 'Temple blessing recorded';
   if (segment.prize_type === 'points') return `${segment.prize_value} Punya Points`;
   if (segment.prize_type === 'soft_loss') return segment.label;
   return segment.label;
+}
+
+function polarToCartesian(cx, cy, radius, angleRadians) {
+  return {
+    x: cx + radius * Math.cos(angleRadians),
+    y: cy + radius * Math.sin(angleRadians),
+  };
+}
+
+function buildArcPath(cx, cy, radius, startAngle, endAngle) {
+  const start = polarToCartesian(cx, cy, radius, startAngle);
+  const end = polarToCartesian(cx, cy, radius, endAngle);
+  const largeArcFlag = endAngle - startAngle > Math.PI ? 1 : 0;
+  return `M ${cx} ${cy} L ${start.x} ${start.y} A ${radius} ${radius} 0 ${largeArcFlag} 1 ${end.x} ${end.y} Z`;
+}
+
+function toNextIstMidnightParts() {
+  const now = new Date();
+  const istNow = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' }));
+  const nextIstMidnight = new Date(istNow);
+  nextIstMidnight.setHours(24, 0, 0, 0);
+  const remainingMs = nextIstMidnight.getTime() - istNow.getTime();
+  const totalSeconds = Math.max(0, Math.floor(remainingMs / 1000));
+  const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+  const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+  const seconds = String(totalSeconds % 60).padStart(2, '0');
+  return `${hours}:${minutes}:${seconds}`;
+}
+
+function prettifyActionLabel(reasonCode, actionRules) {
+  if (actionRules?.[reasonCode]?.label) return actionRules[reasonCode].label;
+  const fallbacks = {
+    spin_paid: 'Paid Spin',
+    spin_free: 'Daily Blessing Spin',
+    spin_prize_points: 'Wheel Points Prize',
+    admin_adjustment: 'Temple Balance Adjustment',
+  };
+  if (fallbacks[reasonCode]) return fallbacks[reasonCode];
+  return reasonCode.replace(/_/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
 }
 
 export default function PunyaRewardsPage() {
@@ -37,6 +82,7 @@ export default function PunyaRewardsPage() {
   const [rotation, setRotation] = useState(0);
   const [spinResult, setSpinResult] = useState(null);
   const [error, setError] = useState('');
+  const [countdown, setCountdown] = useState(() => toNextIstMidnightParts());
 
   const segments = (summary?.wheel_segments?.length ? summary.wheel_segments : publicConfig?.wheel_segments) || [];
   const actionRules = publicConfig?.action_rules || {};
@@ -86,20 +132,14 @@ export default function PunyaRewardsPage() {
     };
   }, [user?.email]);
 
-  const wheelStyle = useMemo(() => {
-    if (!segments.length) return {};
-    const slice = 360 / segments.length;
-    const stops = segments.map((segment, index) => {
-      const start = index * slice;
-      const end = start + slice;
-      return `${WHEEL_COLORS[index % WHEEL_COLORS.length]} ${start}deg ${end}deg`;
-    });
-    return {
-      background: `conic-gradient(${stops.join(', ')})`,
-      transform: `rotate(${rotation}deg)`,
-      transition: spinning ? 'transform 4.5s cubic-bezier(0.12, 0.72, 0, 1)' : 'transform 0.9s ease',
-    };
-  }, [rotation, segments, spinning]);
+  useEffect(() => {
+    if (summary?.daily_free_spin_available) return undefined;
+    const intervalId = window.setInterval(() => {
+      setCountdown(toNextIstMidnightParts());
+    }, 1000);
+    setCountdown(toNextIstMidnightParts());
+    return () => window.clearInterval(intervalId);
+  }, [summary?.daily_free_spin_available]);
 
   const earnRows = Object.entries(actionRules).map(([actionCode, rule]) => ({
     actionCode,
@@ -134,10 +174,74 @@ export default function PunyaRewardsPage() {
     }
   }
 
+  const streakReward = useMemo(() => {
+    const streak = Number(summary?.login_streak || 0);
+    return [...STREAK_MILESTONES].reverse().find((milestone) => streak >= milestone.days) || null;
+  }, [summary?.login_streak]);
+
+  const ledgerGroups = useMemo(() => {
+    const grouped = new Map();
+    ledger.forEach((entry) => {
+      const label = new Date(entry.created_at).toLocaleDateString('en-IN', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      });
+      if (!grouped.has(label)) grouped.set(label, []);
+      grouped.get(label).push(entry);
+    });
+    return Array.from(grouped.entries());
+  }, [ledger]);
+
+  const wheelSvg = useMemo(() => {
+    if (!segments.length) return null;
+    const size = 320;
+    const center = size / 2;
+    const radius = 136;
+    return (
+      <svg
+        viewBox={`0 0 ${size} ${size}`}
+        className="h-[320px] w-[320px]"
+        role="img"
+        aria-label="Punya Rewards spinning wheel"
+      >
+        <circle cx={center} cy={center} r={radius + 10} fill="rgba(201,160,89,0.08)" stroke="rgba(201,160,89,0.28)" strokeWidth="8" />
+        {segments.map((segment, index) => {
+          const startAngle = -Math.PI / 2 + (index / segments.length) * TAU;
+          const endAngle = -Math.PI / 2 + ((index + 1) / segments.length) * TAU;
+          const labelAngle = startAngle + (endAngle - startAngle) / 2;
+          const labelPoint = polarToCartesian(center, center, 86, labelAngle);
+          const label = segment.label.length > 14 ? `${segment.label.slice(0, 13)}...` : segment.label;
+          return (
+            <g key={segment.segment_id || segment.label}>
+              <path d={buildArcPath(center, center, radius, startAngle, endAngle)} fill={WHEEL_COLORS[index % WHEEL_COLORS.length]} stroke="rgba(255,255,255,0.24)" strokeWidth="1.2" />
+              <text
+                x={labelPoint.x}
+                y={labelPoint.y}
+                fill={index % 2 === 0 ? '#2d1e0d' : '#fff7eb'}
+                fontSize="11"
+                fontWeight="700"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                transform={`rotate(${(labelAngle * 180) / Math.PI + 90} ${labelPoint.x} ${labelPoint.y})`}
+              >
+                {label}
+              </text>
+            </g>
+          );
+        })}
+        <circle cx={center} cy={center} r="42" fill="rgba(15,11,8,0.94)" stroke="rgba(201,160,89,0.35)" strokeWidth="2.5" />
+        <circle cx={center} cy={center} r="22" fill="rgba(201,160,89,0.14)" />
+        <text x={center} y={center - 5} fill="#f2d089" fontSize="21" fontWeight="700" textAnchor="middle">✦</text>
+        <text x={center} y={center + 16} fill="#f7ead1" fontSize="9" fontWeight="700" textAnchor="middle" letterSpacing="1.8">TEMPLE</text>
+      </svg>
+    );
+  }, [segments]);
+
   return (
     <div className="min-h-screen px-4 py-10 sm:px-6 lg:px-8">
       <SEO
-        title="Punya Rewards — Earn Points, Spin the Wheel"
+        title="Punya Rewards -- Earn Points, Spin the Wheel"
         description="Earn Punya Points across EverydayHoroscope, claim your Daily Blessing, and spin the wheel for rewards."
         url="https://www.everydayhoroscope.in/punya-rewards"
       />
@@ -158,7 +262,19 @@ export default function PunyaRewardsPage() {
               </p>
 
               {user?.email && summary ? (
-                <div className="grid gap-3 sm:grid-cols-3">
+                <div className="space-y-4">
+                  {streakReward ? (
+                    <Card className="border-gold/25 bg-gold/10 p-4">
+                      <p className="text-sm font-semibold text-foreground">
+                        🔥 {summary.login_streak}-day streak → +{streakReward.points} Punya Points bonus earned
+                      </p>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        Keep checking in daily to stay on the streak ladder and unlock the next milestone.
+                      </p>
+                    </Card>
+                  ) : null}
+
+                  <div className="grid gap-3 sm:grid-cols-3">
                   <Card className="border-gold/25 bg-gold/10 p-5">
                     <p className="text-xs uppercase tracking-[0.24em] text-gold/80">Balance</p>
                     <p className="mt-2 text-3xl font-semibold text-foreground">{summary.balance}</p>
@@ -169,13 +285,16 @@ export default function PunyaRewardsPage() {
                     <p className="mt-2 text-lg font-semibold text-foreground">
                       {summary.daily_free_spin_available ? 'Ready to spin' : 'Already used today'}
                     </p>
-                    <p className="mt-1 text-xs text-muted-foreground">1 free spin each IST day</p>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {summary.daily_free_spin_available ? '1 free spin each IST day' : `Resets in ${countdown} IST`}
+                    </p>
                   </Card>
                   <Card className="border-gold/25 bg-gold/10 p-5">
                     <p className="text-xs uppercase tracking-[0.24em] text-gold/80">Login Streak</p>
                     <p className="mt-2 text-3xl font-semibold text-foreground">{summary.login_streak}</p>
                     <p className="mt-1 text-xs text-muted-foreground">Consecutive Temple days</p>
                   </Card>
+                  </div>
                 </div>
               ) : (
                 <Card className="max-w-xl border-gold/20 bg-gold/10 p-5">
@@ -192,13 +311,15 @@ export default function PunyaRewardsPage() {
             <div className="flex flex-col items-center justify-center">
               <div className="relative">
                 <div className="absolute left-1/2 top-[-18px] z-20 h-0 w-0 -translate-x-1/2 border-l-[16px] border-r-[16px] border-b-[28px] border-l-transparent border-r-transparent border-b-gold" />
-                <div
-                  className="relative h-[300px] w-[300px] rounded-full border-[10px] border-gold/40 shadow-[0_18px_60px_rgba(0,0,0,0.35)]"
-                  style={wheelStyle}
-                >
-                  <div className="absolute inset-[18px] rounded-full border border-white/10" />
-                  <div className="absolute left-1/2 top-1/2 z-10 flex h-20 w-20 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-gold/30 bg-background/90 text-center shadow-lg">
-                    <span className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">Spin</span>
+                <div className="relative h-[320px] w-[320px]">
+                  <div
+                    className="absolute inset-0 transition-transform"
+                    style={{
+                      transform: `rotate(${rotation}deg)`,
+                      transition: spinning ? 'transform 4.5s cubic-bezier(0.12, 0.72, 0, 1)' : 'transform 0.9s ease',
+                    }}
+                  >
+                    {wheelSvg}
                   </div>
                 </div>
               </div>
@@ -324,16 +445,21 @@ export default function PunyaRewardsPage() {
               </div>
               {user?.email ? (
                 <div className="space-y-3">
-                  {ledger.length ? ledger.slice(0, 8).map(entry => (
-                    <div key={entry.transaction_id} className="flex items-center justify-between rounded-2xl border border-border/70 px-4 py-3">
-                      <div>
-                        <p className="text-sm font-medium text-foreground">{entry.reason_code.replace(/_/g, ' ')}</p>
-                        <p className="text-xs text-muted-foreground">{new Date(entry.created_at).toLocaleString('en-IN')}</p>
-                      </div>
-                      <div className={`text-sm font-semibold ${entry.direction === 'credit' ? 'text-emerald-400' : 'text-red-300'}`}>
-                        {entry.direction === 'credit' ? '+' : '-'}
-                        {entry.amount}
-                      </div>
+                  {ledgerGroups.length ? ledgerGroups.slice(0, 4).map(([dateLabel, entries]) => (
+                    <div key={dateLabel} className="space-y-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold/70">{dateLabel}</p>
+                      {entries.map((entry) => (
+                        <div key={entry.transaction_id} className="flex items-center justify-between rounded-2xl border border-border/70 px-4 py-3">
+                          <div>
+                            <p className="text-sm font-medium text-foreground">{prettifyActionLabel(entry.reason_code, actionRules)}</p>
+                            <p className="text-xs text-muted-foreground">{new Date(entry.created_at).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' })}</p>
+                          </div>
+                          <div className={`rounded-full px-3 py-1 text-sm font-semibold ${entry.direction === 'credit' ? 'bg-emerald-500/10 text-emerald-300' : 'bg-amber-500/10 text-amber-200'}`}>
+                            {entry.direction === 'credit' ? '+' : '-'}
+                            {entry.amount}
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   )) : (
                     <p className="text-sm text-muted-foreground">Your Punya ledger will appear here after your first earning event.</p>

@@ -70,6 +70,8 @@ const RitualEnginePage = lazy(() => import('./pages/rewards/RitualEnginePage'));
 const ComingSoonPage = lazy(() => import('./pages/system/ComingSoonPage').then(m => ({ default: m.ComingSoonPage })));
 const CareersPage = lazy(() => import('./pages/content/CareersPage').then(m => ({ default: m.CareersPage })));
 const PanchangPage = lazy(() => import('./pages/panchang/PanchangPage').then(m => ({ default: m.PanchangPage })));
+const CityPanchangPage = lazy(() => import('./pages/panchang/CityPanchangPage').then(m => ({ default: m.CityPanchangPage })));
+const ChoghadiyaPage = lazy(() => import('./pages/panchang/ChoghadiyaPage').then(m => ({ default: m.ChoghadiyaPage })));
 const NumerologyPage = lazy(() => import('./pages/numerology/NumerologyPage').then(m => ({ default: m.NumerologyPage })));
 const NumerologyReportPage = lazy(() => import('./pages/numerology/NumerologyReportPage'));
 const PalmistryPage = lazy(() => import('./pages/palmistry/PalmistryPage').then(m => ({ default: m.PalmistryPage })));
@@ -250,7 +252,9 @@ function App() {
                   <Route path="/calendar" element={<IndianCalendarPage />} />
                   <Route path="/calendar/:year/:month" element={<IndianCalendarPage />} />
                   <Route path="/hora" element={<HoraTodayPage />} />
+                  <Route path="/choghadiya/:citySlug/:period" element={<ChoghadiyaPage />} />
                   <Route path="/panchang" element={<PanchangLandingPage />} />
+                  <Route path="/panchang/:citySlug/:date" element={<CityPanchangPage />} />
                   <Route path="/panchang/calendar/:year/:month" element={<PanchangPage />} />
                   <Route path="/panchang/date/:dateValue" element={<PanchangPage />} />
                   {/* Language-specific Panchang pages + sub-views (must come before generic :type) */}
@@ -288,6 +292,7 @@ function App() {
                   {/* Ayur Jyotish -- Longevity & Health Report */}
                   <Route path="/longevity" element={<LongevityReportPage />} />
                   <Route path="/longevity-report" element={<LongevityReportPage />} />
+                  <Route path="/longevity/report/:reportId" element={<ProtectedRoute><LongevityReportPage /></ProtectedRoute>} />
                   <Route path="/the-longevity-report" element={<LongevityLanding />} />
 
                   {/* Arc Angel -- 12 Areas of Life */}

@@ -77,6 +77,11 @@ class LongevityGenerateResponse(StrictModel):
     access: AccessStatus
 
 
+class LongevitySaveRequest(StrictModel):
+    report: LongevityReportDocument | None = None
+    report_id: str | None = None
+
+
 class LongevityHistoryItem(StrictModel):
     id: str
     summary: str
@@ -90,6 +95,20 @@ class LongevityHistoryResponse(StrictModel):
     page: int
     limit: int
     has_more: bool
+
+
+class LongevityAlertsItem(StrictModel):
+    type: str
+    severity: str
+    date: str
+    detail: str
+    support: str
+
+
+class LongevityAlertsResponse(StrictModel):
+    items: list[LongevityAlertsItem] = Field(default_factory=list)
+    source_report_id: str | None = None
+    generated_for_date: str | None = None
 
 
 def _db(request: Request):
@@ -292,6 +311,7 @@ def _fallback_narrative(output_payload: dict[str, Any], knowledge_context: dict[
         "timing_narrative": timing_summary,
         "prevention_narrative": output_payload["remedial_guidance"]["body_focus"],
         "knowledge_engine_notes": knowledge_items[:4],
+        "full_report_markdown": _report_summary_markdown(output_payload),
     }
 
 
@@ -316,6 +336,7 @@ Output keys:
 - timing_narrative
 - prevention_narrative
 - knowledge_engine_notes
+- full_report_markdown
 
 Knowledge engine context:
 {knowledge_json}
@@ -333,6 +354,7 @@ def _apply_narrative(output_payload: dict[str, Any], narrative: dict[str, Any], 
         "timing_narrative": str(narrative.get("timing_narrative") or ""),
         "prevention_narrative": str(narrative.get("prevention_narrative") or ""),
         "knowledge_engine_notes": narrative.get("knowledge_engine_notes") if isinstance(narrative.get("knowledge_engine_notes"), list) else [],
+        "full_report_markdown": str(narrative.get("full_report_markdown") or _report_summary_markdown(output_payload)),
     }
     payload["knowledge_engine"] = {
         "available": bool(knowledge_context),
@@ -359,6 +381,39 @@ def _build_report_document(*, user_email: str, access_mode: str, input_payload: 
     )
 
 
+def _report_summary_markdown(output_payload: dict[str, Any]) -> str:
+    longevity = output_payload.get("longevity_classification") or {}
+    prakriti = output_payload.get("constitutional_health_profile") or {}
+    windows = output_payload.get("disease_susceptibility_windows") or []
+    alerts = output_payload.get("critical_period_alerts") or []
+    remedies = output_payload.get("remedial_guidance") or {}
+    decades = output_payload.get("decade_quality_forecast") or []
+    parts = [
+        "## Longevity Overview",
+        str(longevity.get("summary") or output_payload.get("summary") or ""),
+        "",
+        "## Constitutional Health Profile",
+        str(prakriti.get("summary") or ""),
+        "",
+        "## Vulnerable Body Systems",
+    ]
+    for item in (output_payload.get("vulnerable_systems") or [])[:4]:
+        parts.append(f"- **{item.get('title', 'System')}**: {item.get('prevention_focus', '')}")
+    parts.extend(["", "## Disease Susceptibility Windows"])
+    for item in windows[:3]:
+        parts.append(f"- **{item.get('start_date')} to {item.get('end_date')}**: {item.get('headline', '')}")
+    parts.extend(["", "## Critical Period Alerts"])
+    for item in alerts[:3]:
+        parts.append(f"- **{item.get('date')} · {item.get('type')}**: {item.get('detail', '')}")
+    parts.extend(["", "## Remedial & Preventive Guidance"])
+    for item in (remedies.get("preventive_guidance") or [])[:3]:
+        parts.append(f"- {item}")
+    parts.extend(["", "## Quality of Life Forecast"])
+    for item in decades[:3]:
+        parts.append(f"- **Age {item.get('age_band')}**: {item.get('note', '')}")
+    return "\n".join(part for part in parts if part is not None).strip()
+
+
 def _history_query(user_email: str) -> dict[str, Any]:
     return {"user_email": user_email, "document_type": "report", "report_type": REPORT_TYPE}
 
@@ -367,6 +422,31 @@ def _serialize_report_document(document: dict[str, Any]) -> LongevityReportDocum
     payload = dict(document)
     payload.pop("_id", None)
     return LongevityReportDocument(**payload)
+
+
+async def _persist_report_document(request: Request, report: LongevityReportDocument) -> LongevityReportDocument:
+    payload = report.model_dump(mode="python")
+    payload["updated_at"] = _now()
+    await _collection(request).update_one(
+        {"id": report.id, "report_type": REPORT_TYPE},
+        {"$set": payload},
+        upsert=True,
+    )
+    return LongevityReportDocument(**payload)
+
+
+async def _load_report_document(request: Request, report_id: str) -> LongevityReportDocument:
+    collection = _collection(request)
+    filters: dict[str, Any] = {"id": report_id, "report_type": REPORT_TYPE}
+    user = _resolve_user(request)
+    if user.get("email"):
+        filters["user_email"] = _normalize_email(str(user["email"]))
+    document = await collection.find_one(filters)
+    if document is None and "user_email" in filters:
+        document = await collection.find_one({"id": report_id, "report_type": REPORT_TYPE})
+    if document is None:
+        raise HTTPException(status_code=404, detail="Longevity report not found.")
+    return _serialize_report_document(document)
 
 
 @router.get("/eligibility", response_model=AccessStatus)
@@ -413,12 +493,37 @@ async def generate_longevity_report(payload: LongevityGenerateRequest, request: 
 
     should_persist = bool(user_email) and access_mode == "full"
     if should_persist:
-        await _collection(request).insert_one(report.model_dump(mode="python"))
+        report = await _persist_report_document(request, report)
         state_user = getattr(request.state, "user", None) or {}
         if state_user.get("user_id"):
             await register_arc_angel_report_run(_db(request), str(state_user["user_id"]), REPORT_SLUG)
 
     return LongevityGenerateResponse(report=report, access=access)
+
+
+@router.post("/report", response_model=LongevityGenerateResponse)
+async def generate_longevity_report_contract(payload: LongevityGenerateRequest, request: Request) -> LongevityGenerateResponse:
+    return await generate_longevity_report(payload, request)
+
+
+@router.post("/save", response_model=LongevityReportDocument)
+async def save_longevity_report(payload: LongevitySaveRequest, request: Request) -> LongevityReportDocument:
+    user_email = _resolve_user_email(request)
+    access = _access_status(request)
+    if not access.entitled:
+        raise HTTPException(status_code=402, detail="Longevity premium access is required before saving a report.")
+
+    if payload.report is not None:
+        report = payload.report
+    elif payload.report_id:
+        report = await _load_report_document(request, payload.report_id)
+    else:
+        raise HTTPException(status_code=422, detail="Provide either report or report_id.")
+
+    if report.access_mode != "full":
+        report = report.model_copy(update={"access_mode": "full"})
+    report = report.model_copy(update={"user_email": user_email})
+    return await _persist_report_document(request, report)
 
 
 @router.get("/history", response_model=LongevityHistoryResponse)
@@ -447,16 +552,37 @@ async def get_longevity_history(
     return LongevityHistoryResponse(items=items, page=page, limit=limit, has_more=skip + limit < total)
 
 
+@router.get("/my-reports", response_model=LongevityHistoryResponse)
+async def get_longevity_my_reports(
+    request: Request,
+    page: int = Query(default=1, ge=1),
+    limit: int = Query(default=10, ge=1, le=25),
+) -> LongevityHistoryResponse:
+    return await get_longevity_history(request=request, page=page, limit=limit)
+
+
+@router.get("/alerts", response_model=LongevityAlertsResponse)
+async def get_longevity_alerts(request: Request) -> LongevityAlertsResponse:
+    user_email = _resolve_user_email(request)
+    document = await _collection(request).find_one(_history_query(user_email), sort=[("created_at", -1)])
+    if not document:
+        return LongevityAlertsResponse(items=[], source_report_id=None, generated_for_date=None)
+    report = _serialize_report_document(document)
+    output_payload = report.output_payload
+    alert_items = output_payload.get("critical_period_alerts")
+    items = [LongevityAlertsItem(**item) for item in alert_items] if isinstance(alert_items, list) else []
+    return LongevityAlertsResponse(
+        items=items,
+        source_report_id=report.id,
+        generated_for_date=str(output_payload.get("generated_for_date") or ""),
+    )
+
+
 @router.get("/reports/{report_id}", response_model=LongevityReportDocument)
 async def get_longevity_report(report_id: str, request: Request) -> LongevityReportDocument:
-    collection = _collection(request)
-    filters: dict[str, Any] = {"id": report_id, "report_type": REPORT_TYPE}
-    user = _resolve_user(request)
-    if user.get("email"):
-        filters["user_email"] = _normalize_email(str(user["email"]))
-    document = await collection.find_one(filters)
-    if document is None and "user_email" in filters:
-        document = await collection.find_one({"id": report_id, "report_type": REPORT_TYPE})
-    if document is None:
-        raise HTTPException(status_code=404, detail="Longevity report not found.")
-    return _serialize_report_document(document)
+    return await _load_report_document(request, report_id)
+
+
+@router.get("/report/{report_id}", response_model=LongevityReportDocument)
+async def get_longevity_report_contract(report_id: str, request: Request) -> LongevityReportDocument:
+    return await _load_report_document(request, report_id)

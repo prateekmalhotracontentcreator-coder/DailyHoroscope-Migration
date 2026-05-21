@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { Link, useParams } from "react-router-dom";
 import SharedBirthCityPicker from "../../components/SharedBirthCityPicker";
 import { SEO } from "../../components/SEO";
 
@@ -141,6 +142,7 @@ function SectionPreviewGrid() {
 }
 
 export default function LongevityReportPage() {
+  const { reportId } = useParams();
   const [access, setAccess] = useState(null);
   const [accessLoading, setAccessLoading] = useState(true);
   const [accessError, setAccessError] = useState("");
@@ -160,6 +162,9 @@ export default function LongevityReportPage() {
   const [history, setHistory] = useState([]);
   const [historyLoading, setHistoryLoading] = useState(false);
   const [historyError, setHistoryError] = useState("");
+  const [saveLoading, setSaveLoading] = useState(false);
+  const [saveMessage, setSaveMessage] = useState("");
+  const [narrativeOpen, setNarrativeOpen] = useState(false);
 
   useEffect(() => {
     document.title = "Ayur Jyotish | EverydayHoroscope";
@@ -260,6 +265,44 @@ export default function LongevityReportPage() {
       setLoading(false);
     }
   };
+
+  const handleSave = async () => {
+    if (!report) return;
+    setSaveLoading(true);
+    setSaveMessage("");
+    try {
+      const response = await axios.post(`${API}/save`, { report }, { withCredentials: true });
+      setReport(response.data || report);
+      setSaveMessage("Report saved to your Longevity history.");
+    } catch (err) {
+      setSaveMessage(fieldError(err, "The report could not be saved right now."));
+    } finally {
+      setSaveLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (!reportId) return;
+    let active = true;
+    async function loadReportFromRoute() {
+      setLoading(true);
+      setError("");
+      try {
+        const response = await axios.get(`${API}/report/${reportId}`, { withCredentials: true });
+        if (!active) return;
+        setReport(response.data || null);
+      } catch (err) {
+        if (!active) return;
+        setError(fieldError(err, "That saved report could not be opened."));
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+    loadReportFromRoute();
+    return () => {
+      active = false;
+    };
+  }, [reportId]);
 
   return (
     <div className="min-h-screen bg-[#09101b] text-white">
@@ -444,6 +487,7 @@ export default function LongevityReportPage() {
               </div>
 
               {error ? <p className="mt-4 rounded-2xl border border-[#df8a8a]/30 bg-[#df8a8a]/10 px-4 py-3 text-sm text-[#f5c7c7]">{error}</p> : null}
+              {saveMessage ? <p className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/70">{saveMessage}</p> : null}
               {historyError ? <p className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white/65">{historyError}</p> : null}
 
               {history.length ? (
@@ -501,6 +545,26 @@ export default function LongevityReportPage() {
                         </div>
                       </div>
                     ) : null}
+                    <div className="flex flex-wrap gap-3">
+                      {report?.access_mode === "full" ? (
+                        <button
+                          type="button"
+                          onClick={handleSave}
+                          disabled={saveLoading}
+                          className="rounded-full border border-white/12 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/82 transition hover:bg-white/[0.08] disabled:cursor-not-allowed disabled:opacity-60"
+                        >
+                          {saveLoading ? "Saving..." : "Save Report"}
+                        </button>
+                      ) : null}
+                      {report?.id ? (
+                        <Link
+                          to={`/longevity/report/${report.id}`}
+                          className="rounded-full border border-[#d5a14a]/30 bg-[#d5a14a]/10 px-4 py-2 text-sm font-semibold text-[#f4d69e] transition hover:bg-[#d5a14a]/18"
+                        >
+                          Open Saved Report URL
+                        </Link>
+                      ) : null}
+                    </div>
                   </div>
                   <div className="grid gap-3">
                     <KeyValue label="Classification" value={longevity?.label || "Unavailable"} />
@@ -678,6 +742,23 @@ export default function LongevityReportPage() {
                   </p>
                 </div>
               </SectionCard>
+
+              {narrative?.full_report_markdown ? (
+                <SectionCard title="Read Full Report" eyebrow="Narrative View">
+                  <button
+                    type="button"
+                    onClick={() => setNarrativeOpen(prev => !prev)}
+                    className="mb-4 rounded-full border border-white/12 bg-white/[0.03] px-4 py-2 text-sm font-semibold text-white/82 transition hover:bg-white/[0.08]"
+                  >
+                    {narrativeOpen ? "Hide full narrative" : "Show full narrative"}
+                  </button>
+                  {narrativeOpen ? (
+                    <div className="whitespace-pre-wrap rounded-[24px] border border-white/8 bg-white/[0.03] p-5 text-sm leading-8 text-white/74">
+                      {narrative.full_report_markdown}
+                    </div>
+                  ) : null}
+                </SectionCard>
+              ) : null}
             </div>
           ) : null}
         </div>

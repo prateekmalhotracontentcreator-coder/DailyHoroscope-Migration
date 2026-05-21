@@ -26,6 +26,10 @@ export async function safeClaimPunyaAction(actionCode, options = {}) {
   }
 }
 
+export async function awardPunyaPoints(actionCode, options = {}) {
+  return safeClaimPunyaAction(actionCode, options);
+}
+
 export async function fetchPunyaSummary() {
   const response = await axios.get(`${API}/summary`, { withCredentials: true });
   return response.data;

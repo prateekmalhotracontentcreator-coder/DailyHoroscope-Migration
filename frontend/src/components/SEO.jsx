@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
 const DEFAULT = {
-  title: 'Everyday Horoscope — Free Daily, Weekly & Monthly Horoscope',
-  description: 'Get your free daily, weekly, and monthly horoscope predictions. Explore Birth Chart Analysis, Kundali Milan, and Brihat Kundli Pro — AI-powered Vedic astrology insights.',
+  title: 'Everyday Horoscope -- Free Daily, Weekly & Monthly Horoscope',
+  description: 'Get your free daily, weekly, and monthly horoscope predictions. Explore Birth Chart Analysis, Kundali Milan, and Brihat Kundli Pro -- AI-powered Vedic astrology insights.',
   image: 'https://www.everydayhoroscope.in/og-image.png',
   url: 'https://www.everydayhoroscope.in',
 };
@@ -23,9 +23,12 @@ export const SEO = ({
   description,
   image,
   url,
+  canonical,
+  hreflang = null,
   type = 'website',
   noindex = false,
   schema = null,
+  jsonLd = null,
 }) => {
   useEffect(() => {
     const fullTitle = title
@@ -33,7 +36,9 @@ export const SEO = ({
       : DEFAULT.title;
     const desc = description || DEFAULT.description;
     const img = image || DEFAULT.image;
-    const pageUrl = url || DEFAULT.url;
+    const pageUrl = url || canonical || DEFAULT.url;
+    const canonicalUrl = canonical || pageUrl;
+    const structuredData = jsonLd || schema;
 
     document.title = fullTitle;
 
@@ -58,25 +63,42 @@ export const SEO = ({
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', pageUrl);
+    canonical.setAttribute('href', canonicalUrl);
 
-    if (schema) {
+    const managedHreflangNodes = Array.from(document.querySelectorAll('link[data-seo-hreflang="true"]'));
+    managedHreflangNodes.forEach((node) => node.remove());
+
+    if (Array.isArray(hreflang)) {
+      hreflang.forEach((item) => {
+        if (!item?.lang || !item?.href) return;
+        const link = document.createElement('link');
+        link.setAttribute('rel', 'alternate');
+        link.setAttribute('hrefLang', item.lang);
+        link.setAttribute('href', item.href);
+        link.setAttribute('data-seo-hreflang', 'true');
+        document.head.appendChild(link);
+      });
+    }
+
+    if (structuredData) {
       const existingSchema = document.getElementById('page-schema');
       if (existingSchema) existingSchema.remove();
       const script = document.createElement('script');
       script.id = 'page-schema';
       script.type = 'application/ld+json';
-      script.text = JSON.stringify(schema);
+      script.text = JSON.stringify(structuredData);
       document.head.appendChild(script);
     }
 
     return () => {
-      if (schema) {
+      if (structuredData) {
         const s = document.getElementById('page-schema');
         if (s) s.remove();
       }
+      const hreflangNodes = Array.from(document.querySelectorAll('link[data-seo-hreflang="true"]'));
+      hreflangNodes.forEach((node) => node.remove());
     };
-  }, [title, description, image, url, type, noindex, schema]);
+  }, [title, description, image, url, canonical, hreflang, type, noindex, schema, jsonLd]);
 
   return null;
 };

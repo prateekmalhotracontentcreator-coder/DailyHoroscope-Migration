@@ -11,6 +11,36 @@
 
   "headers": [
     {
+      "source": "/panchang/:citySlug/:date",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=3600, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/choghadiya/:citySlug/:period",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=3600, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/horoscope/:sign/tomorrow",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/horoscope/:sign/weekly",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/horoscope/:sign/monthly",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
       "source": "/static/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }

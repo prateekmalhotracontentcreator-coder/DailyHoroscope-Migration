@@ -56,4 +56,4 @@ Disallow: /numerology/report/
 Disallow: /tarot/history
 
 # Sitemap
-Sitemap: https://www.everydayhoroscope.in/sitemap.xml
+Sitemap: https://www.everydayhoroscope.in/sitemap-index.xml

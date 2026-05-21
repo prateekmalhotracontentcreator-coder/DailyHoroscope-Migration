@@ -51,7 +51,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | 13 | Punya Rewards | [`Punya_Rewards/TRACKER.md`](Codex_Deliveries/Punya_Rewards/TRACKER.md) | ✅ LIVE | Nothing open | -- |
 | 14 | Notifications | [`Notifications/TRACKER.md`](Codex_Deliveries/Notifications/TRACKER.md) | 🟡 ACTIVE | M-5 WhatsApp OTP + M-6 Instagram Business ID | TT |
 | 15 | Panchang | [`Panchang/TRACKER.md`](Codex_Deliveries/Panchang/TRACKER.md) | ✅ LIVE | PAN-L1 language pages -- issue Week 3+ | TT |
-| 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | ✅ LIVE | SEO-C6 code live, launch gated on Razorpay live keys. SEO-WebPerf brief ready -- issue last. Next: Strategist CD Step 3 integration. | TT |
+| 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | 🟡 ACTIVE | SEO-20K M1 is prepared locally: city Panchang routes, Choghadiya routes, sitemap endpoints, sitemap index, robots update, cache headers, and 2 docs. Build passed locally. No live production changes in this session. | TT |
 | 17 | World Oracles | [`World_Oracles/TRACKER.md`](Codex_Deliveries/World_Oracles/TRACKER.md) | 🟣 PLANNED | Phase 3 -- do not issue until KP Oracle 30+ days live | TT |
 
 ---

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.everydayhoroscope.in/sitemap.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/panchang</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/choghadiya</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/horoscope</loc>
+  </sitemap>
+</sitemapindex>

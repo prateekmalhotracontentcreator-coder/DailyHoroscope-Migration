@@ -63,7 +63,8 @@ from admin_utils import (
 )
 from remedies_router import router as remedies_router
 from panchang_router import router as panchang_router
-from numerology_router import router as numerology_router
+from seo_router import router as seo_router
+from numerology_router import LoveCalculatorRequest, LoveCalculatorResponse, love_calculator, router as numerology_router
 from tarot_router import router as tarot_router
 from kundali_router import router as kundali_router
 from karmic_debt_router import router as karmic_debt_router
@@ -77,6 +78,7 @@ from vitality_health_router import router as vitality_health_router
 from partnership_window_router import router as partnership_window_router
 from dharma_purpose_router import router as dharma_purpose_router
 from gains_network_router import router as gains_network_router
+from ir_enhancement_router import router as ir_enhancement_router
 from encounter_window_router import router as encounter_window_router
 from date_night_router import router as date_night_router
 from digital_dating_router import router as digital_dating_router
@@ -929,6 +931,11 @@ async def calculate_birth_chart_public(payload: BirthChartCalculationRequest):
         },
         "source": "vedic_calculator.py",
     }
+
+
+@api_router.post("/love-calculator", response_model=LoveCalculatorResponse)
+async def love_calculator_public(payload: LoveCalculatorRequest) -> LoveCalculatorResponse:
+    return await love_calculator(payload)
 
 @api_router.get("/celebrities", response_model=List[CelebrityListItem])
 async def get_celebrities():
@@ -2516,6 +2523,7 @@ async def get_arc_angel_profile(user_id: str):
 
 app.include_router(api_router)
 app.include_router(panchang_router)
+app.include_router(seo_router)
 app.include_router(numerology_router)
 app.include_router(tarot_router)
 app.include_router(kundali_router)
@@ -2530,6 +2538,7 @@ app.include_router(vitality_health_router)
 app.include_router(partnership_window_router)
 app.include_router(dharma_purpose_router)
 app.include_router(gains_network_router)
+app.include_router(ir_enhancement_router)
 app.include_router(encounter_window_router)
 app.include_router(love_weather_router)
 app.include_router(date_night_router)

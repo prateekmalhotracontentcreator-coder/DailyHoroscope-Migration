@@ -1,7 +1,7 @@
 # Panchang -- Module Tracker
 > Path: `Codex_Deliveries/Panchang/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.0
+> Last updated: 2026-05-22 · v1.1
 
 ---
 
@@ -23,7 +23,7 @@
 
 | ID | Commission | Status | Brief |
 |---|---|---|---|
-| **PAN-L1** | Language/Regional Pages (Tamil, Telugu, Malayalam, Kannada, Hindi, Marathi) | 🟣 READY TO ISSUE | `CODEX_COMMISSION_PANCHANG_LANGUAGE_PAGES.md` · Issue Week 3+ |
+| **PAN-L1** | Language/Regional Pages (Tamil, Telugu, Malayalam, Kannada, Hindi) | 🟢 CODEX IMPLEMENTED | `CODEX_COMMISSION_PANCHANG_LANGUAGE_PAGES.md` · SEO wiring completed 2026-05-22 |
 
 ---
 
@@ -31,7 +31,7 @@
 
 | # | Item | Owner | Priority | Notes |
 |---|---|---|---|---|
-| PAN-OP-1 | **Issue PAN-L1 to Codex** (Week 3+) | TT | 🟡 MED | Pure frontend SEO play -- no backend changes. Regional panchang searches in India. |
+| PAN-OP-1 | **PAN-L1 language SEO pages** | CX | 🟢 DONE | Existing routes/page wrapper verified; language-aware SEO, hreflang, canonical, and regional JSON-LD added in `frontend/src/pages/panchang/PanchangPage.jsx`. |
 | PAN-OP-2 | **Bump `ENGINE_VERSION`** in `panchang_router.py` before any backend change | CC | 🔴 ENFORCE | Format: `panchang-router-vN-swiss` (currently v11). Never skip this. |
 | PAN-OP-3 | PAN-L1 must use existing `/api/panchang/daily` endpoint with location slugs -- no new backend routes | CX | 🔴 ENFORCE | `hreflang` tags and regional JSON-LD schema required |
 
@@ -51,3 +51,4 @@
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
 | v1.0 | 2026-04-30 | PAN-L1 brief written. Panchang engine fully live (v11-swiss, 318 cities). Tracker created. | CC | `CODEX_COMMISSION_PANCHANG_LANGUAGE_PAGES.md` |
+| v1.1 | 2026-05-22 | PAN-L1 implemented. Existing language routes and sitemap were already present; Codex added language-aware SEO title/description, hreflang alternates, English-primary canonical, and language-aware JSON-LD without backend changes. Build passed. Live route headers for all 5 language URLs returned HTTP 200. | CX | `frontend/src/pages/panchang/PanchangPage.jsx`, `frontend/src/components/SEO.jsx` |
