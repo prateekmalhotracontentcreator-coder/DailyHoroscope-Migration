@@ -55,11 +55,9 @@
   --strategist-card-border-strong: hsl(38 60% 50% / 0.40);
 }
 
-/* ── Dark (corrected — navy/charcoal, not warm brown) ───────────────────── */
-.strategist-module[data-mode="dark"],
-.strategist-module[data-mode="cr-ambient"],
-.strategist-module[data-mode="cr-tactical"] {
-  --background-dark-strategist: #0a0d14;   /* Page background (Dark + Control Room) */
+/* ── Dark (navy/charcoal — not warm brown) ──────────────────────────────── */
+.strategist-module[data-mode="dark"] {
+  --background-dark-strategist: #0a0d14;   /* Page background */
   --card-dark:                  #161b27;   /* Card surface */
   --card-dark-elevated:         #1c2230;   /* Elevated card / modal surface */
 
@@ -68,10 +66,28 @@
   --strategist-text-primary: #ECE6D6;
   --strategist-text-muted:   #8A8576;
 
-  --strategist-card-bg:           var(--card-dark);
-  --strategist-card-elev:         var(--card-dark-elevated);
-  --strategist-card-border:       rgba(197, 160, 89, 0.20);   /* gold/20 — per memo */
-  --strategist-card-border-strong: rgba(197, 160, 89, 0.40);  /* gold/40 — highlight */
+  --strategist-card-bg:            var(--card-dark);
+  --strategist-card-elev:          var(--card-dark-elevated);
+  --strategist-card-border:        rgba(197, 160, 89, 0.20);
+  --strategist-card-border-strong: rgba(197, 160, 89, 0.40);
+}
+
+/* ── Control Room modes: WHITE base + green matrix grid ─────────────────── */
+/* Per Q12 approval: CR background = white; grid = green lines; cards unchanged */
+.strategist-module[data-mode="cr-ambient"],
+.strategist-module[data-mode="cr-tactical"] {
+  --background-dark-strategist: #0a0d14;   /* kept so ControlRoomBackdrop preview stays dark */
+
+  /* Light-mode tokens — text and cards stay gold/grey on white */
+  --strategist-bg:           hsl(var(--background));
+  --strategist-fg:           hsl(var(--foreground));
+  --strategist-text-primary: hsl(var(--foreground));
+  --strategist-text-muted:   hsl(var(--muted-foreground));
+
+  --strategist-card-bg:            hsl(38 60% 50% / 0.04);
+  --strategist-card-elev:          hsl(38 60% 50% / 0.08);
+  --strategist-card-border:        hsl(38 60% 50% / 0.20);
+  --strategist-card-border-strong: hsl(38 60% 50% / 0.40);
 }
 
 /* ── Page background painter ────────────────────────────────────────────── */
@@ -96,11 +112,24 @@
     var(--background-dark-strategist);
 }
 
-/* Control Room modes paint their own grid via ControlRoomBackdrop;
-   the wrapper just supplies the dark base. */
-.strategist-module[data-mode="cr-ambient"],
+/* ── Control Room A (Ambient) — white + muted green grid ────────────────── */
+/* Minor grid: 48px cell · #4a9866 · 10% opacity · 1px               */
+/* Major grid: 192px cell · #4a9866 · 15% opacity · 1px              */
+.strategist-module[data-mode="cr-ambient"] {
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Cpath d='M 192 0 L 0 0 0 192' fill='none' stroke='%234a9866' stroke-opacity='0.15' stroke-width='1'/%3E%3C/svg%3E") 0 0 / 192px 192px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M 48 0 L 0 0 0 48' fill='none' stroke='%234a9866' stroke-opacity='0.10' stroke-width='1'/%3E%3C/svg%3E") 0 0 / 48px 48px,
+    hsl(var(--background));
+}
+
+/* ── Control Room B (Tactical) — white + brighter green grid ────────────── */
+/* Minor grid: 48px cell · #45b060 · 15% opacity · 1.5px             */
+/* Major grid: 192px cell · #45b060 · 20% opacity · 1.5px            */
 .strategist-module[data-mode="cr-tactical"] {
-  background: var(--background-dark-strategist);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Cpath d='M 192 0 L 0 0 0 192' fill='none' stroke='%2345b060' stroke-opacity='0.20' stroke-width='1.5'/%3E%3C/svg%3E") 0 0 / 192px 192px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M 48 0 L 0 0 0 48' fill='none' stroke='%2345b060' stroke-opacity='0.15' stroke-width='1.5'/%3E%3C/svg%3E") 0 0 / 48px 48px,
+    hsl(var(--background));
 }
 
 /* ── Type families — registered once so all Strategist surfaces inherit ─── */

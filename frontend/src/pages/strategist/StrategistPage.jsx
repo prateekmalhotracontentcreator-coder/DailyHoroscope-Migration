@@ -8,6 +8,9 @@ import { WarRoomStateProvider, useWarRoom } from '../../components/WarRoomStateP
 import ConquestGauge from '../../components/ConquestGauge';
 import HurdleAlert from '../../components/HurdleAlert';
 import KrishnaOracleGrid from '../../components/KrishnaOracleGrid';
+import { StrategistThemeProvider } from '@/components/strategist/StrategistThemeProvider';
+import { StrategistThemeToggle } from '@/components/strategist/StrategistThemeToggle';
+import '@/styles/strategist-tokens.css';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
@@ -1072,10 +1075,13 @@ function Dashboard() {
       ) : null}
 
       <div className="sticky top-0 z-30 border-b border-gold/10 bg-background/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl gap-2 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">
           {LAYERS.map((layer) => (
             <LayerPill key={layer.id} layer={layer} status={layerStatus(layer.n)} onClick={scrollToSection} />
           ))}
+          <div className="ml-auto flex-shrink-0 pl-2">
+            <StrategistThemeToggle size="md" />
+          </div>
         </div>
       </div>
 
@@ -1410,7 +1416,7 @@ function StrategistLanding() {
   );
 }
 
-export default function StrategistPage() {
+function StrategistPageInner() {
   const { user, loading: authLoading } = useAuth();
   const locationSlug = localStorage.getItem('lk_location_slug') || 'new-delhi';
 
@@ -1432,5 +1438,13 @@ export default function StrategistPage() {
       <SEO title="The Strategist -- War Room" noindex={true} />
       <Dashboard />
     </WarRoomStateProvider>
+  );
+}
+
+export default function StrategistPage() {
+  return (
+    <StrategistThemeProvider>
+      <StrategistPageInner />
+    </StrategistThemeProvider>
   );
 }
