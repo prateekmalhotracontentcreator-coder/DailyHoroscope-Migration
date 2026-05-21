@@ -1,6 +1,6 @@
-import React, { startTransition, useDeferredValue, useEffect, useState } from "react";
+import React, { startTransition, useDeferredValue, useEffect, useMemo, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import SharedBirthCityPicker from "../../components/SharedBirthCityPicker";
 import { SEO } from "../../components/SEO";
 
@@ -256,7 +256,11 @@ function NoteBlock({ title, children }) {
 
 function KundaliPage() {
   const params = useParams();
+  const location = useLocation();
   const routeChartId = params.chartId || params.id || "";
+  const isKundaliRoute = location.pathname.startsWith("/kundali");
+  const canonicalBase = isKundaliRoute ? "/kundali" : "/lagna-kundali";
+  const [unknownBirthTime, setUnknownBirthTime] = useState(false);
   const [form, setForm] = useState({
     date: "",
     time: "14:30",
@@ -290,8 +294,12 @@ function KundaliPage() {
     const previousTitle = document.title;
     const previousDescription = document.querySelector('meta[name="description"]')?.getAttribute("content") || "";
     const previousCanonical = document.querySelector('link[rel="canonical"]')?.getAttribute("href") || "";
-    const title = "Lagna Kundali — Free Birth Chart & Vedic Ascendant Calculator | EverydayHoroscope";
-    const description = "Explore your D1 Lagna Kundali with ascendant precision, Bhav Chalit movement, Vedic yoga registry, and lazy-loaded Vargas inside EverydayHoroscope.";
+    const title = isKundaliRoute
+      ? "Free Kundali -- Vedic Birth Chart Online | EverydayHoroscope"
+      : "Lagna Kundali -- Free Birth Chart & Vedic Ascendant Calculator | EverydayHoroscope";
+    const description = isKundaliRoute
+      ? "Generate your free Kundali online with D1 chart, planet positions, Vimshottari Dasha, and Navamsa-ready Vedic chart tools."
+      : "Explore your D1 Lagna Kundali with ascendant precision, Bhav Chalit movement, Vedic yoga registry, and lazy-loaded Vargas inside EverydayHoroscope.";
     document.title = title;
 
     let descriptionNode = document.querySelector('meta[name="description"]');
@@ -308,7 +316,7 @@ function KundaliPage() {
       canonicalNode.setAttribute("rel", "canonical");
       document.head.appendChild(canonicalNode);
     }
-    canonicalNode.setAttribute("href", "https://www.everydayhoroscope.in/lagna-kundali");
+    canonicalNode.setAttribute("href", `https://www.everydayhoroscope.in${canonicalBase}`);
 
     const jsonLdId = "lagna-kundali-jsonld";
     let jsonLdNode = document.getElementById(jsonLdId);
@@ -321,12 +329,12 @@ function KundaliPage() {
     jsonLdNode.textContent = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      name: "Lagna Kundali",
+      name: isKundaliRoute ? "Kundali" : "Lagna Kundali",
       applicationCategory: "LifestyleApplication",
       operatingSystem: "Web",
       description,
-      url: "https://www.everydayhoroscope.in/lagna-kundali",
-      keywords: ["lagna kundali", "vedic ascendant calculator", "d1 chart", "bhav chalit", "vedic yoga registry"],
+      url: `https://www.everydayhoroscope.in${canonicalBase}`,
+      keywords: ["lagna kundali", "free kundali online", "vedic birth chart", "d1 chart", "vimshottari dasha"],
       publisher: {
         "@type": "Organization",
         name: "EverydayHoroscope",
@@ -339,13 +347,22 @@ function KundaliPage() {
       if (canonicalNode) canonicalNode.setAttribute("href", previousCanonical);
       if (jsonLdNode) jsonLdNode.remove();
     };
-  }, []);
+  }, [canonicalBase, isKundaliRoute]);
 
   useEffect(() => {
     if (typeof window === "undefined") return undefined;
     window.localStorage.setItem("lagnaKundaliOrientation", orientation);
     return undefined;
   }, [orientation]);
+
+  useEffect(() => {
+    if (!unknownBirthTime) return;
+    setForm((current) => ({
+      ...current,
+      time_precision: "unknown",
+      time: "12:00",
+    }));
+  }, [unknownBirthTime]);
 
   useEffect(() => {
     let active = true;
@@ -508,7 +525,7 @@ function KundaliPage() {
     setLoading(true);
     setError("");
     try {
-      // city_slug is a UI-only field — backend model uses extra="forbid", strip it
+      // city_slug is a UI-only field -- backend model uses extra="forbid", strip it
       const payload = {
         date: form.date,
         time: form.time,
@@ -529,7 +546,7 @@ function KundaliPage() {
         setOrientation(response.data?.ui_state_defaults?.orientation || "north");
       });
     } catch (err) {
-      // detail can be a FastAPI validation array — always stringify to prevent React render crash
+      // detail can be a FastAPI validation array -- always stringify to prevent React render crash
       const detail = err?.response?.data?.detail;
       setError(typeof detail === "string" ? detail : detail?.[0]?.msg || "Unable to compute the Lagna Kundali right now.");
     } finally {
@@ -541,7 +558,7 @@ function KundaliPage() {
     setSaving(true);
     setError("");
     try {
-      // Strip city_slug — backend model uses extra="forbid"
+      // Strip city_slug -- backend model uses extra="forbid"
       const payload = {
         date: form.date,
         time: form.time,
@@ -574,6 +591,15 @@ function KundaliPage() {
     planet,
     ...values.reduce((acc, value, index) => ({ ...acc, [`house_${index + 1}`]: value }), {}),
   }));
+  const houseSummaryRows = useMemo(
+    () =>
+      (chart?.charts?.D1?.houses || []).map((house) => ({
+        house_num: house.house_num,
+        sign: house.sign,
+        lord: house.lord,
+      })),
+    [chart]
+  );
   const visibleTabs = TAB_LABELS.filter(([key]) => !restrictedLayers[key]);
   const renderChartPanel = (panelChart, title) => {
     if (orientation === "south") {
@@ -594,7 +620,11 @@ function KundaliPage() {
         padding: "28px 18px 56px",
       }}
     >
-      <SEO title="Lagna Kundali — Vedic Birth Chart" noindex={true} />
+      <SEO
+        title={isKundaliRoute ? "Free Kundali -- Vedic Birth Chart Online" : "Lagna Kundali -- Vedic Birth Chart"}
+        canonical={`https://www.everydayhoroscope.in${canonicalBase}`}
+        noindex={!isKundaliRoute}
+      />
       <div style={{ maxWidth: 1380, margin: "0 auto" }}>
         <section style={{ marginBottom: 24 }}>
           <div style={{ color: "#8B6A30", letterSpacing: "0.2em", textTransform: "uppercase", fontSize: 12 }}>Lagna Kundali</div>
@@ -622,11 +652,20 @@ function KundaliPage() {
             </label>
             <label style={{ display: "grid", gap: 6 }}>
               <span style={{ color: "#6D542A", fontSize: 13 }}>Time of birth</span>
-              <input type="time" value={form.time} onChange={(event) => setForm((current) => ({ ...current, time: event.target.value }))} />
+              <input
+                type="time"
+                value={form.time}
+                disabled={unknownBirthTime}
+                onChange={(event) => setForm((current) => ({ ...current, time: event.target.value, time_precision: "exact" }))}
+              />
             </label>
             <label style={{ display: "grid", gap: 6 }}>
               <span style={{ color: "#6D542A", fontSize: 13 }}>Time precision</span>
-              <select value={form.time_precision} onChange={(event) => setForm((current) => ({ ...current, time_precision: event.target.value }))}>
+              <select
+                value={form.time_precision}
+                disabled={unknownBirthTime}
+                onChange={(event) => setForm((current) => ({ ...current, time_precision: event.target.value }))}
+              >
                 <option value="exact">Exact</option>
                 <option value="approximate">Approximate</option>
                 <option value="unknown">Unknown</option>
@@ -650,6 +689,14 @@ function KundaliPage() {
                 }
               />
             </div>
+            <label style={{ display: "flex", alignItems: "center", gap: 8, gridColumn: "span 2", color: "#5A4321", fontSize: 14 }}>
+              <input
+                type="checkbox"
+                checked={unknownBirthTime}
+                onChange={(event) => setUnknownBirthTime(event.target.checked)}
+              />
+              I don&apos;t know my exact birth time -- use 12:00 noon (chart will be marked as approximate).
+            </label>
           </div>
           <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 18 }}>
             <button onClick={handleCompute} disabled={loading} style={{ padding: "12px 18px", borderRadius: 999, border: "none", background: "#6E4C18", color: "#FFF8EA", fontWeight: 700 }}>
@@ -772,6 +819,15 @@ function KundaliPage() {
                     { key: "nakshatra", label: "Nakshatra" },
                     { key: "house_d1", label: "D1 House" },
                     { key: "house_bhav_chalit", label: "Bhav Chalit" },
+                  ]}
+                />
+                <DataTable
+                  title="House Summary"
+                  rows={houseSummaryRows}
+                  columns={[
+                    { key: "house_num", label: "House" },
+                    { key: "sign", label: "Rashi" },
+                    { key: "lord", label: "Lord" },
                   ]}
                 />
               </>
@@ -926,23 +982,23 @@ function KundaliPage() {
         <div className="mt-12 space-y-8 border-t border-border pt-10 text-sm text-muted-foreground">
           <div>
             <h2 className="mb-2 text-base font-semibold text-foreground">What is Lagna Kundali?</h2>
-            <p className="leading-7">Lagna Kundali (लग्न कुण्डली) — also called the Natal Birth Chart or D1 chart — is the foundational map of Vedic astrology. It captures the exact positions of all nine planets across the 12 zodiac signs and 12 houses at the precise moment of your birth. The Lagna (Ascendant) is the zodiac sign rising on the eastern horizon at birth — it forms the first house of your chart and becomes the lens through which every planet's influence is interpreted.</p>
+            <p className="leading-7">Lagna Kundali (लग्न कुण्डली) -- also called the Natal Birth Chart or D1 chart -- is the foundational map of Vedic astrology. It captures the exact positions of all nine planets across the 12 zodiac signs and 12 houses at the precise moment of your birth. The Lagna (Ascendant) is the zodiac sign rising on the eastern horizon at birth -- it forms the first house of your chart and becomes the lens through which every planet's influence is interpreted.</p>
           </div>
           <div>
             <h2 className="mb-2 text-base font-semibold text-foreground">The 12 Houses & What They Govern</h2>
-            <p className="leading-7">Each of the 12 houses governs a domain of life: 1st (self, personality), 2nd (wealth, speech), 3rd (siblings, courage), 4th (home, mother), 5th (children, intellect, past-life merit), 6th (enemies, disease, debt), 7th (marriage, partnerships), 8th (longevity, transformation), 9th (dharma, fortune), 10th (career, authority), 11th (gains, ambitions), 12th (liberation, foreign lands). A planet in a house colours that domain with its own planetary nature — benefic or malefic, exalted or debilitated.</p>
+            <p className="leading-7">Each of the 12 houses governs a domain of life: 1st (self, personality), 2nd (wealth, speech), 3rd (siblings, courage), 4th (home, mother), 5th (children, intellect, past-life merit), 6th (enemies, disease, debt), 7th (marriage, partnerships), 8th (longevity, transformation), 9th (dharma, fortune), 10th (career, authority), 11th (gains, ambitions), 12th (liberation, foreign lands). A planet in a house colours that domain with its own planetary nature -- benefic or malefic, exalted or debilitated.</p>
           </div>
           <div>
-            <h2 className="mb-2 text-base font-semibold text-foreground">Divisional Charts — Varga</h2>
-            <p className="leading-7">Beyond the D1 (Rasi chart), Vedic astrology uses divisional charts (Varga) that magnify specific life domains. D9 (Navamsa) is the most important after D1 — showing the soul's dharmic purpose and the inner quality of marriage. D10 (Dasamsa) governs career. D7 governs children. EverydayHoroscope generates multiple Varga charts from your birth data so each life domain can be examined at full resolution, not estimated from D1 alone.</p>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Divisional Charts -- Varga</h2>
+            <p className="leading-7">Beyond the D1 (Rasi chart), Vedic astrology uses divisional charts (Varga) that magnify specific life domains. D9 (Navamsa) is the most important after D1 -- showing the soul's dharmic purpose and the inner quality of marriage. D10 (Dasamsa) governs career. D7 governs children. EverydayHoroscope generates multiple Varga charts from your birth data so each life domain can be examined at full resolution, not estimated from D1 alone.</p>
           </div>
           <div>
-            <h2 className="mb-2 text-base font-semibold text-foreground">Vimshottari Dasha — Planetary Timing</h2>
-            <p className="leading-7">The Vimshottari Dasha system divides your life into planetary periods totalling 120 years, beginning from the Moon's nakshatra at birth. Each Mahadasha is ruled by a planet — Ketu 7y, Venus 20y, Sun 6y, Moon 10y, Mars 7y, Rahu 18y, Jupiter 16y, Saturn 19y, Mercury 17y. Within each Mahadasha are Antardashas (sub-periods). Your active Dasha lord heavily colours the themes, opportunities, and challenges of that life phase. EverydayHoroscope computes your full Dasha sequence live from your birth data.</p>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Vimshottari Dasha -- Planetary Timing</h2>
+            <p className="leading-7">The Vimshottari Dasha system divides your life into planetary periods totalling 120 years, beginning from the Moon's nakshatra at birth. Each Mahadasha is ruled by a planet -- Ketu 7y, Venus 20y, Sun 6y, Moon 10y, Mars 7y, Rahu 18y, Jupiter 16y, Saturn 19y, Mercury 17y. Within each Mahadasha are Antardashas (sub-periods). Your active Dasha lord heavily colours the themes, opportunities, and challenges of that life phase. EverydayHoroscope computes your full Dasha sequence live from your birth data.</p>
           </div>
           <div>
-            <h2 className="mb-2 text-base font-semibold text-foreground">Ashtakavarga — Planetary Strength Scoring</h2>
-            <p className="leading-7">Ashtakavarga quantifies planetary strength in each house. Each of 8 contributors (7 planets + Lagna) assigns bindus (points) to houses based on relative position — producing a Sarva-Ashtakavarga score (0–56) per house. Houses scoring 28+ are strong — transiting planets through high-SAV houses tend to produce results. EverydayHoroscope computes the full Ashtakavarga table alongside Bhavabala (house strength) and Shadbala (planetary strength) from your birth data.</p>
+            <h2 className="mb-2 text-base font-semibold text-foreground">Ashtakavarga -- Planetary Strength Scoring</h2>
+            <p className="leading-7">Ashtakavarga quantifies planetary strength in each house. Each of 8 contributors (7 planets + Lagna) assigns bindus (points) to houses based on relative position -- producing a Sarva-Ashtakavarga score (0-56) per house. Houses scoring 28+ are strong -- transiting planets through high-SAV houses tend to produce results. EverydayHoroscope computes the full Ashtakavarga table alongside Bhavabala (house strength) and Shadbala (planetary strength) from your birth data.</p>
           </div>
         </div>
 

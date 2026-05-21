@@ -283,6 +283,9 @@ function App() {
                   <Route path="/the-tarot" element={<TarotLanding />} />
                   <Route path="/tarot/history" element={<PremiumRoute feature="Tarot History" description="Your saved tarot reading history is a Premium feature. Upgrade to review all your past readings."><TarotHistoryPage /></PremiumRoute>} />
                   <Route path="/remedies" element={<RemedyPage />} />
+                  {/* /kundali = free public entry point for Vedic Kundali */}
+                  <Route path="/kundali" element={<KundaliPage />} />
+                  <Route path="/kundali/view/:chartId" element={<KundaliPage />} />
                   <Route path="/lagna-kundali" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace -- D1 through all divisional charts -- is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
                   <Route path="/lagna-kundali/chart/:chartId" element={<PremiumRoute feature="Lagna Kundali" description="Your full Vedic birth chart workspace is a Premium feature. Upgrade to unlock."><KundaliPage /></PremiumRoute>} />
 
