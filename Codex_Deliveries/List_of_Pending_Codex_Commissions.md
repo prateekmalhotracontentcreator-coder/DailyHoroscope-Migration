@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-22 (SEO-20K + IR-5 added; KE-Sprint2, KE-2A, KE-IQ, ARC-2, IR-4 confirmed INTEGRATED)
+> Last updated: 2026-05-22 (SEO-20K M1 CC-reviewed PASS -- ready to deploy; 9 commissions issued to Codex today: KUN-1, IR-5, PUN-2, LK-1, TAR-v4, PAN-L1, LON-1, ORACLE-P3, SEO-20K M1→M2 handoff; SEO-1 reclassified)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -22,8 +22,8 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | READY TO ISSUE | None | Merges SEO-1. M1=SEO infra+Panchang city+Choghadiya. M2=Compatibility+Remedy hubs. M3=Festivals+Transits+Character. PARKED=Angel Numbers+Tarot+Faith (need engine source). Internal engines only. |
-| **IR-5** | 12 Areas of Life Enhancement (Donut Chart + 10-Year Timeline + Graha Drishti + Claude 4-page reports) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_5_12AREAS_ENHANCEMENT.md` | READY TO ISSUE | IR-4 must be integrated first | Vedic-only (Rahu/Ketu replace Uranus/Neptune). Adds 3 new calc functions to vedic_calculator.py + new router + 2 UI components. |
+| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | 🔵 M1 DELIVERED -- PENDING DEPLOY | None | M1 CC-reviewed: PASS. Files: `seo_router.py`, `SEO.jsx` (canonical+hreflang+jsonLd), `CityPanchangPage.jsx`, `ChoghadiyaPage.jsx`, App.js routes, `sitemap-index.xml`, `vercel.json`, 2 docs. Build verified. **Next: deploy to production, smoke-test `/panchang/new-delhi/` and `/choghadiya/mumbai/today/`, then issue M2 (Compatibility + Remedy hubs).** |
+| **IR-5** | 12 Areas of Life Enhancement (Donut Chart + 10-Year Timeline + Graha Drishti + Claude 4-page reports) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_5_12AREAS_ENHANCEMENT.md` | 🔵 IN PROGRESS | IR-4 live verification (IR-OP-12) must pass first | Issued 2026-05-22. Vedic-only (Rahu/Ketu replace Uranus/Neptune). Adds 3 new calc functions to vedic_calculator.py + new router + 2 UI components. |
 
 ---
 
@@ -44,7 +44,7 @@
 | ~~**IR-3**~~ | ~~8 Love Report Public SEO Landing Pages~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_3_LOVE_LANDING_PAGES.md` | ✅ INTEGRATED -- commit `739c3fa` | -- | 8 wrappers + 8 routes + 8 sitemap URLs. CTA content-driven. TT live spot-check pending. |
 | ~~**ARC-2**~~ | ~~Arc Angel Phase 2 -- Confidence % lift + Questionnaire gating + Desktop sidebar~~ | Arc Angel | `Arc_Angel/CODEX_COMMISSION_ARC_2_CONFIDENCE_QUESTIONNAIRE.md` | ✅ INTEGRATED -- commit `c1a7cb0` 2026-05-18 | -- | 18 files, 746 insertions. 72/72 tests green. 3-pillar confidence live (40% base + P1 24% + P2 12% + P3 10%, cap 86%). ArcAngelPanel rebuilt. Left nav split. PrivateRoute for all signed-up users. |
 | ~~**REM-P1**~~ | ~~Remedies Engine Phase 1 (KP collection + remedy_ref pipeline)~~ | Remedies | `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` | ✅ INTEGRATED -- runtime confirmed 2026-05-16 | -- | All 3 tasks complete: `/ref/` endpoint live (line 851), 36 KP remedy records seeded (modified=36 2026-05-15), KP fallback wiring confirmed. ⚠️ TT content note: JSON verdict split is 10/8/8/10 (YES/WAIT/NO/PRAY) vs spec'd 9/9/9/9 -- confirm intentional or re-ingest. |
-| **PUN-2** | Punya Rewards Home Page Promo + Module Hooks + SVG Wheel | Punya Rewards | `Punya_Rewards/CODEX_COMMISSION_PUN_2_FRONTEND_INTEGRATION.md` | READY TO ISSUE | PUN-1 ✅ | Backend fully live. PunyaRewardsPage baseline exists. Home promo section + 8 module hooks + wheel UX upgrade needed. No NavBar entry. |
+| **PUN-2** | Punya Rewards Home Page Promo + Module Hooks + SVG Wheel | Punya Rewards | `Punya_Rewards/CODEX_COMMISSION_PUN_2_FRONTEND_INTEGRATION.md` | 🔵 IN PROGRESS | PUN-1 ✅ | Issued 2026-05-22. Backend fully live. Home promo section + 8 module hooks + wheel UX. |
 
 ---
 
@@ -52,13 +52,13 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **KP-2B** | Ritual Animation + 3-Pillar UX + Astro-Filter | KP Oracle | `KP/CODEX_COMMISSION_KP_2B.md` | READY TO ISSUE | KP-2A delivered | White Light meditation + 3-pillar Guidance Report + transit/dasha enrichment |
+| **KP-2B** | Ritual Animation + 3-Pillar UX + Astro-Filter | KP Oracle | `KP/CODEX_COMMISSION_KP_2B.md` | ⚠️ READY -- VERIFY FIRST | KP-2A ✅ but KP-OP-9 TT live check required | Brief ready. **Do not issue until Temple Team confirms KP-2A feature is working live in production (KP-OP-9).** Once confirmed, clear to award immediately. |
 | ~~STR-1~~ | ~~Strategist Premium Landing Page + War Room Visual Rebuild~~ | The Strategist | `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` | ✅ INTEGRATED -- commit `ba58192` | -- | TheStrategistLandingPage.jsx + StrategistPage.jsx + App.js + sitemap.xml all live. Build verified. |
 | ~~STR-2J~~ | ~~Strategist Missions UI (MissionCard responsive + dasha display)~~ | The Strategist | `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` | ✅ INTEGRATED -- commit `9ad2e0a` | -- | Delivered by Codex 2026-05-15. Dasha backend fix applied by Claude Code. |
-| **TAR-v4** | Tarot UI v4 Enhancement | Tarot | `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` | READY TO ISSUE | None | Existing Tarot UI visual uplift to v4 standard |
-| **KUN-1** | Lagna Kundali Frontend Module | Kundali | `Kundali/CODEX_COMMISSION_KUNDALI_LAGNA_CONTRACT.md` | READY TO ISSUE | None | **Backend already live** at `/api/lagna-kundali` (re-scoped 2026-05-16). Frontend only: `KundaliPage.jsx` + SVG chart + planet table + dasha timeline. |
-| **LK-1** | LK Standalone Module (onboard, remedies, debt audit, tracker) | Lal Kitab | `LK/CODEX_COMMISSION_LK_STANDALONE_MODULE.md` | READY TO ISSUE | None | Lal Kitab standalone product |
-| **SEO-1** | SEO + Marketing + Web Performance Optimisation | SEO | `SEO/CODEX_COMMISSION_SEO_WEBPERF.md` | READY TO ISSUE | None | ⚠️ Issue LAST -- start only after high-priority Codex threads are running |
+| **TAR-v4** | Tarot UI v4 Enhancement | Tarot | `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` | 🔵 IN PROGRESS | None | Issued 2026-05-22. Existing Tarot UI visual uplift to v4 standard. |
+| **KUN-1** | Lagna Kundali Frontend Module | Kundali | `Kundali/CODEX_COMMISSION_KUNDALI_LAGNA_CONTRACT.md` | 🔵 IN PROGRESS | None | Issued 2026-05-22. Backend live at `/api/lagna-kundali`. Frontend only: `KundaliPage.jsx` + SVG chart + planet table + dasha timeline. |
+| **LK-1** | LK Standalone Module (onboard, remedies, debt audit, tracker) | Lal Kitab | `LK/CODEX_COMMISSION_LK_STANDALONE_MODULE.md` | 🔵 IN PROGRESS | None | Issued 2026-05-22. 361 LK rules + affliction/SEO tags live in MongoDB. |
+| ~~**SEO-1**~~ | ~~SEO + Marketing + Web Performance Optimisation~~ | SEO | `SEO/CODEX_COMMISSION_SEO_WEBPERF.md` | 🔒 RECLASSIFIED | -- | **Technical SEO items (Core Web Vitals, JSON-LD, sitemaps, caching, hreflang) → absorbed into SEO-20K Part A. Do NOT re-issue to Codex.** Remaining marketing items (blog content, social scheduling, email drip, influencer outreach) are **Temple Team operational tasks**, not Codex commissions. No further Codex action needed on SEO-1. |
 
 ---
 
@@ -66,9 +66,9 @@
 
 | ID | Commission | Thread | Brief File | Status | Phase | Notes |
 |---|---|---|---|---|---|---|
-| **LON-1** | Ayur Jyotish Longevity Report | Longevity | `Longevity/CODEX_COMMISSION_LONGEVITY_REPORT_CONTRACT.md` | READY TO ISSUE | Phase 2 | Large scope -- build after KE Sprint 2 gate passes |
-| **PAN-L1** | Panchang Language/Regional Pages (Tamil, Telugu, Malayalam) | Panchang | `Panchang/CODEX_COMMISSION_PANCHANG_LANGUAGE_PAGES.md` | READY TO ISSUE | Phase 2 | -- |
-| **ORACLE-P3** | 5 World Oracle Modules (Bible, Islamic, Taoist, Greek, Sikh) | World Oracles | `World_Oracles/CODEX_COMMISSION_ORACLE_P3_WORLD_ORACLES.md` | READY TO ISSUE | Phase 3 | LOW -- planning document. Same grid mechanic as KP Oracle. |
+| **LON-1** | Ayur Jyotish Longevity Report | Longevity | `Longevity/CODEX_COMMISSION_LONGEVITY_REPORT_CONTRACT.md` | 🔵 IN PROGRESS | Phase 2 | Issued 2026-05-22. Large scope -- KE rules will feed this once approved. |
+| **PAN-L1** | Panchang Language/Regional Pages (Tamil, Telugu, Malayalam) | Panchang | `Panchang/CODEX_COMMISSION_PANCHANG_LANGUAGE_PAGES.md` | 🔵 IN PROGRESS | Phase 2 | Issued 2026-05-22. |
+| **ORACLE-P3** | 5 World Oracle Modules (Bible, Islamic, Taoist, Greek, Sikh) | World Oracles | `World_Oracles/CODEX_COMMISSION_ORACLE_P3_WORLD_ORACLES.md` | 🔵 IN PROGRESS | Phase 3 | Issued 2026-05-22. Same grid mechanic as KP Oracle. KP must be live 30+ days before launch. |
 
 ---
 
@@ -128,30 +128,34 @@
 
 ---
 
-## Recommended Issue Order (updated 2026-05-20 post-reconciliation)
+## Commission Status Snapshot (updated 2026-05-22)
 
 ```
-INTEGRATED (all complete as of 2026-05-18):
-  KE-Sprint2  ✅ -- Arbitration Runtime
-  KE-2A       ✅ -- Yoga Check Evaluators
-  KE-IQ       ✅ -- Questionnaire β/γ Wiring  (commit f7aa78b · KE-OP-15 TT verify pending)
-  ARC-2       ✅ -- Arc Angel 3-Pillar Confidence (commit c1a7cb0 · TT verify pending)
-  IR-4        ✅ -- 6 Phase 3 Natal Reports     (commit 1be1e58 · IR-OP-12 TT verify pending)
+INTEGRATED:
+  KE-Sprint2  ✅  KE-2A  ✅  KE-IQ  ✅  ARC-2  ✅  IR-4  ✅
+  KP-2A  ✅  REM-P1  ✅  IR-1  ✅  IR-2  ✅  IR-2A  ✅  IR-3  ✅
+  STR-1  ✅  STR-2J  ✅  + all SEO-B/C series ✅
 
-IN PROGRESS:
-  KP-Sprint2  🔵 -- Ask-Question LLM Router (issued 2026-05-15)
+IN PROGRESS (Codex threads open -- 2026-05-22):
+  SEO-20K     🔵 M1 DELIVERED (CC PASS) -- deploy to prod + smoke test, then trigger M2
+  KP-Sprint2  🔵 Issued 2026-05-15
+  IR-5        🔵 Issued 2026-05-22 (blocked on IR-OP-12 TT live verify)
+  KUN-1       🔵 Issued 2026-05-22
+  PUN-2       🔵 Issued 2026-05-22
+  LK-1        🔵 Issued 2026-05-22
+  TAR-v4      🔵 Issued 2026-05-22
+  PAN-L1      🔵 Issued 2026-05-22
+  LON-1       🔵 Issued 2026-05-22
+  ORACLE-P3   🔵 Issued 2026-05-22
 
-ISSUE NOW (no blockers -- priority order):
-  1. KUN-1    -- Lagna Kundali Frontend (backend live, frontend only)
-  2. KP-2B    -- Ritual Animation + 3-Pillar UX
-  3. PUN-2    -- Punya Rewards Home Promo + Module Hooks
-  4. TAR-v4   -- Tarot UI v4
-  5. PAN-L1   -- Panchang Language Pages
-  6. LK-1     -- Lal Kitab Standalone Module
-  7. LON-1    -- Longevity Report (large scope -- separate thread)
+VERIFY BEFORE ISSUING:
+  KP-2B       ⚠️ Brief ready -- issue only after KP-OP-9 TT live check of KP-2A passes
 
-HOLD / NOT READY:
-  SEO-WebPerf -- Issue LAST (all content pages must be live first)
-  ORACLE-P3   -- Phase 3 (KP must be live 30+ days)
-  KE-TV-1     -- Ch 19 test vectors (TechSpec TT approval needed)
+RECLASSIFIED (no Codex action):
+  SEO-1       🔒 Technical scope → SEO-20K Part A. Marketing scope → Temple Team ops.
+
+PARKED (awaiting engine source textbooks from Temple Team):
+  SEO-20K Batch 5 (Angel Numbers)
+  SEO-20K Batch 6 (Tarot Spread Matrices)
+  SEO-20K Batch 7 (Faith Hubs)
 ```
