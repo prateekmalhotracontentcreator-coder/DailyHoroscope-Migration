@@ -1273,7 +1273,7 @@ function Dashboard() {
   );
 }
 
-function StrategistLanding() {
+export function StrategistLanding() {
   const navigate = useNavigate();
 
   const schema = {
@@ -1422,8 +1422,8 @@ function StrategistPageInner() {
 
   if (authLoading) return null;
 
-  if (!user) return <StrategistLanding />;
-
+  // /strategist/war-room is a ProtectedRoute -- user is always logged in here.
+  // Non-logged-in users are redirected to /login by ProtectedRoute before reaching this.
   if (!user.is_premium) {
     return (
       <PremiumGateCard

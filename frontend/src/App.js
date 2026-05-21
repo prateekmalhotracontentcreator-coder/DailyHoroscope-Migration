@@ -98,6 +98,7 @@ const LKDebtAuditPage = lazy(() => import('./pages/lk/LKDebtAuditPage'));
 const LKBrowsePage = lazy(() => import('./pages/lk/LKBrowsePage'));
 const TheStrategistLandingPage = lazy(() => import('./pages/strategist/TheStrategistLandingPage'));
 const StrategistPage = lazy(() => import('./pages/strategist/StrategistPage'));
+const StrategistExecutivePage = lazy(() => import('./pages/strategist/StrategistExecutivePage'));
 const StrategistMissionsPage = lazy(() => import('./pages/strategist/StrategistMissionsPage'));
 const StrategistReportPage = lazy(() => import('./pages/strategist/StrategistReportPage'));
 const StrategistSurrogatePage = lazy(() => import('./pages/strategist/StrategistSurrogatePage'));
@@ -111,10 +112,17 @@ const HoraTodayPage = lazy(() => import('./pages/hora/HoraTodayPage').then(m => 
 const RashiCalculatorPage = lazy(() => import('./pages/calculators/RashiCalculatorPage').then(m => ({ default: m.RashiCalculatorPage })));
 const NakshatraCalculatorPage = lazy(() => import('./pages/calculators/NakshatraCalculatorPage').then(m => ({ default: m.NakshatraCalculatorPage })));
 const NameCompatibilityPage = lazy(() => import('./pages/calculators/NameCompatibilityPage').then(m => ({ default: m.NameCompatibilityPage })));
+const LoveCalculatorPage = lazy(() => import('./pages/calculators/LoveCalculatorPage').then(m => ({ default: m.LoveCalculatorPage })));
 const DevotionalDatePage = lazy(() => import('./pages/devotional/DevotionalDatePage').then(m => ({ default: m.DevotionalDatePage })));
 const MarriageMuhuratPage = lazy(() => import('./pages/muhurat/MarriageMuhuratPage').then(m => ({ default: m.MarriageMuhuratPage })));
 const CelebrityHubPage = lazy(() => import('./pages/celebrity/CelebrityHubPage').then(m => ({ default: m.CelebrityHubPage })));
 const CelebrityChartPage = lazy(() => import('./pages/celebrity/CelebrityChartPage').then(m => ({ default: m.CelebrityChartPage })));
+const AngelNumbersHubPage = lazy(() => import('./pages/angel-numbers/AngelNumbersHubPage').then(m => ({ default: m.AngelNumbersHubPage })));
+const AngelNumberPage = lazy(() => import('./pages/angel-numbers/AngelNumberPage').then(m => ({ default: m.AngelNumberPage })));
+const KundaliReportsCategoryPage = lazy(() => import('./pages/reports/category/KundaliReportsPage').then(m => ({ default: m.KundaliReportsPage })));
+const NumerologyReportsCategoryPage = lazy(() => import('./pages/reports/category/NumerologyReportsPage').then(m => ({ default: m.NumerologyReportsPage })));
+const LoveReportsCategoryPage = lazy(() => import('./pages/reports/category/LoveReportsPage').then(m => ({ default: m.LoveReportsPage })));
+const CareerReportsCategoryPage = lazy(() => import('./pages/reports/category/CareerReportsPage').then(m => ({ default: m.CareerReportsPage })));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -162,6 +170,9 @@ function App() {
                   <Route path="/rashi-calculator" element={<RashiCalculatorPage />} />
                   <Route path="/nakshatra-calculator" element={<NakshatraCalculatorPage />} />
                   <Route path="/compatibility/name" element={<NameCompatibilityPage />} />
+                  <Route path="/love-calculator" element={<LoveCalculatorPage />} />
+                  <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
+                  <Route path="/angel-numbers/:number" element={<AngelNumberPage />} />
                   <Route path="/ekadashi" element={<DevotionalDatePage type="ekadashi" />} />
                   <Route path="/amavasya" element={<DevotionalDatePage type="amavasya" />} />
                   <Route path="/purnima" element={<DevotionalDatePage type="purnima" />} />
@@ -215,6 +226,10 @@ function App() {
                   <Route path="/venus-retrograde-report" element={<VenusRetrogradeLandingPage />} />
                   <Route path="/soulmate-timing-report" element={<SoulmateLandingPage />} />
                   <Route path="/soul-connection-report" element={<SoulConnectionLandingPage />} />
+                  <Route path="/reports/kundali" element={<KundaliReportsCategoryPage />} />
+                  <Route path="/reports/numerology" element={<NumerologyReportsCategoryPage />} />
+                  <Route path="/reports/love" element={<LoveReportsCategoryPage />} />
+                  <Route path="/reports/career" element={<CareerReportsCategoryPage />} />
                   <Route path="/reports" element={<PremiumRoute feature="Reports" description="Individual Vedic reports are a Premium feature. Upgrade to unlock your full report library."><IndividualReportsPage /></PremiumRoute>} />
                   <Route path="/love" element={<LovePage />} />
                   <Route path="/love-reports" element={<PremiumRoute feature="Love Reports" description="Your Vedic love compatibility reports are a Premium feature. Upgrade to unlock full relationship insights."><LoveReportsPage /></PremiumRoute>} />
@@ -301,8 +316,14 @@ function App() {
                   <Route path="/lk-remedies/remedies" element={<LKBrowsePage />} />
 
                   {/* The Strategist */}
+                  {/* Public SEO landing -- logged-out + logged-in entry point */}
                   <Route path="/the-strategist" element={<TheStrategistLandingPage />} />
-                  <Route path="/strategist" element={<StrategistPage />} />
+                  {/* /strategist = CD landing page for all users (logged in or out) */}
+                  <Route path="/strategist" element={<TheStrategistLandingPage />} />
+                  {/* War Room -- the actual Dashboard (premium users only) */}
+                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistPage /></ProtectedRoute>} />
+                  {/* Executive page -- repurposed Codex overview, inside module nav */}
+                  <Route path="/strategist/executive" element={<ProtectedRoute><StrategistExecutivePage /></ProtectedRoute>} />
                   <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />
                   <Route path="/strategist/report" element={<ProtectedRoute><StrategistReportPage /></ProtectedRoute>} />
                   <Route path="/strategist/surrogate" element={<ProtectedRoute><StrategistSurrogatePage /></ProtectedRoute>} />
