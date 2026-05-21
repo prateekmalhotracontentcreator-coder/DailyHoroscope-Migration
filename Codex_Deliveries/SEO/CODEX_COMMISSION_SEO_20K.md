@@ -110,52 +110,19 @@ Write `docs/SEO_30DAY_PLAN.md` covering:
 
 ---
 
-### BATCH 5 -- Angel Numbers Module (9,000 pages) 🔴 PRIORITY 1
+### BATCH 5 -- Angel Numbers Module ⏸ PARKED
 
-**Formula:** 1,000 base numbers (0-999) × 9 intent vectors
-**Internal engine:** ⚠️ Content-based -- NO live calculation required. Pre-generate all 9,000 interpretations in one Codex session. Store in MongoDB collection `angel_number_content`. Serve statically -- zero ongoing API cost.
-**URL pattern:** `/angel-number/{number}/{intent}/` (e.g., `/angel-number/444/career/`)
-
-**9 Intent vectors:** `love`, `career`, `money`, `health`, `twin-flame`, `spiritual`, `manifestation`, `warning`, `general`
-
-**Each page includes:**
-- Number breakdown (digit sum, repeating pattern analysis)
-- Intent-specific interpretation (pre-written, stored in MongoDB)
-- Related numbers section (sequential, mirror, reduce)
-- CTA: "Get your personal numerology reading"
-
-**Pre-generation task (Codex writes the content corpus):**
-- Write 9,000 unique interpretation blocks (avg 150 words each)
-- Structure as MongoDB documents: `{ number: int, intent: str, title: str, interpretation: str, related_numbers: [] }`
-- Batch insert into `angel_number_content` collection
-- FastAPI route: `GET /api/angel-numbers/{number}/{intent}` → reads from MongoDB
-
-**SEO metadata:**
-- Title: `Angel Number {number} Meaning for {Intent} -- What It Signifies | EverydayHoroscope`
-- Description: `Seeing {number} repeatedly? Discover the spiritual meaning of angel number {number} for {intent} and what your guides are telling you.`
+**Status:** PARKED -- requires a dedicated Angel Number interpretation engine built from textbook source material. Temple Team will provide source books. Do not build until engine spec is issued separately.
+**Pages:** 9,000 (1,000 numbers × 9 intent vectors) -- reserved for future commission.
 
 ---
 
-### BATCH 6 -- Tarot Spread Matrices (2,184 pages) 🟠 PRIORITY 2
+### BATCH 6 -- Tarot Spread Matrices ⏸ PARKED
 
-**Formula:** 78 Tarot cards × 28 classic spreads
-**Internal engine:** ⚠️ Content-based -- pre-generate card × spread combination meanings. Store in MongoDB `tarot_combination_content`. Serve statically.
-**URL pattern:** `/tarot/{card-slug}/{spread-slug}/` (e.g., `/tarot/the-tower/three-card-love/`)
+**Status:** PARKED -- requires a dedicated Tarot combination engine built from authoritative tarot textbooks. Temple Team will provide source material. Do not build until engine spec is issued separately.
+**Pages:** 2,184 (78 cards × 28 spreads) -- reserved for future commission.
 
-**28 spreads:** Celtic Cross, Three-Card (Love/Career/General/Past-Present-Future), Single Card, Yes-No, Daily Draw, Horseshoe, Relationship, Career Path, Month Ahead, Year Ahead, chakra spread, obstacle spread, decision spread, new moon, full moon, and 13 others (Codex to define the complete 28-spread list)
-
-**Each page includes:**
-- Card meaning in isolation
-- How this card modifies the spread
-- Common combinations with other cards in this spread
-- Reversal interpretation
-- CTA: "Draw your own {spread} reading now"
-
-**Pre-generation:** 2,184 interpretation documents → MongoDB `tarot_combination_content`
-
-**SEO metadata:**
-- Title: `{Card Name} in a {Spread Name} Tarot Reading -- Meaning & Interpretation`
-- Description: `What does {Card} mean in a {Spread} reading? Full interpretation for love, career, and life decisions.`
+---
 
 ---
 
@@ -178,20 +145,29 @@ Write `docs/SEO_30DAY_PLAN.md` covering:
 
 ---
 
-### BATCH 9 -- Localized Remedies (1,284 pages) 🟠 PRIORITY 2
+### BATCH 9 -- Remedy Hub Pages (12 pages + remedy matching engine) 🟠 PRIORITY 2
 
-**Formula:** 12 planetary afflictions × 107 metro regions
-**Internal engine:** ⚠️ Remedy content is static/pre-written. Planetary affliction detection is internal (`vedic_calculator.py`). Store remedy content in MongoDB `remedy_content` (extending existing `spiritual_remedies` collection).
-**URL pattern:** `/remedies/{dosha}/{city-slug}/` (e.g., `/remedies/shani-dosha/mumbai/`)
+**Revised scope:** No city-specific pages. One SEO hub page per planetary affliction, pulling from the existing ~1,000 remedy catalog already in the database.
+**Formula:** 12 affliction hub pages + remedy matching/filtering engine
+**Internal engine:** ✅ Affliction detection via `vedic_calculator.py`. Remedy content from existing `spiritual_remedies` MongoDB collection (~1,000 remedies already seeded).
+**URL pattern:** `/remedies/{dosha-slug}/` (e.g., `/remedies/shani-sade-sati/`)
 
 **12 afflictions:** Shani Sade Sati, Manglik Dosha, Pitru Dosha, Kaal Sarp Dosha, Shani Mahadasha, Rahu Mahadasha, Ketu Mahadasha, Guru Chandal Yoga, Grahan Yoga, Nadi Dosha, Gana Dosha, Bhakoot Dosha
 
-**Each page includes:**
-- Affliction explanation
-- How to detect it in your chart (link to Kundali page)
-- City-specific remedy guidance (local temple suggestions, regional practices)
-- Gemstone + yantra recommendations
-- CTA: "Check your chart for {dosha}"
+**Remedy matching engine (new -- `backend/remedy_matching_router.py`):**
+- `GET /api/remedies/{dosha-slug}` -- returns all remedies tagged for this affliction, sorted by `priority_weight`
+- Each remedy document in `spiritual_remedies` must have a `affliction_tags: [str]` field added
+- Temple Team to confirm which of the ~1,000 remedies map to which afflictions (or CC to auto-tag by remedy type)
+
+**Each hub page includes:**
+- Affliction explanation (what it is, how it manifests)
+- How to detect it in your chart (inline calculator widget linking to Kundali page)
+- Remedy listing filtered from the ~1,000 catalog: gemstones, yantras, mantras, rituals -- filtered by `affliction_tags`
+- CTA: "Check if you have {dosha} in your chart"
+
+**What Temple Team needs to confirm before build:**
+- Do the existing ~1,000 remedies have affliction tags, or does tagging need to be added?
+- Provide the MongoDB collection name and document schema for the remedy catalog
 
 ---
 
@@ -223,12 +199,10 @@ Write `docs/SEO_30DAY_PLAN.md` covering:
 
 ---
 
-### BATCH 7 -- Lumina Faith Hubs (450 pages) 🟢 PRIORITY 4
+### BATCH 7 -- Lumina Faith Hubs ⏸ PARKED
 
-**Formula:** 150 Bible verses × 3 transit intersections
-**Internal engine:** ⚠️ Bible verse content is static. Transit intersection content pre-generated. Store in MongoDB `faith_hub_content`.
-**URL pattern:** `/faith/{verse-id}/{transit}/`
-**Note:** Transit calculation (which planet is active) uses internal `panchang_router.py` / `vedic_calculator.py`.
+**Status:** PARKED -- requires a dedicated Faith interpretation engine. Temple Team will provide textbook/scripture source material. Do not build until engine spec is issued separately.
+**Pages:** 450 reserved for future commission.
 
 ---
 
@@ -275,10 +249,10 @@ Issue to Codex as sequential milestones:
 
 | Milestone | Batches | Pages | Deliverable |
 |---|---|---|---|
-| M1 | Part A (SEO-1) + Batch 1 + Batch 2 | 3,498 + infra | SEO audit doc + Panchang city pages + Choghadiya pages |
-| M2 | Batch 5 (Angel Numbers content corpus + pages) | 9,000 | Content DB + route + 9,000 pages |
-| M3 | Batch 6 + Batch 3 + Batch 9 | 4,764 | Tarot combos + Compatibility + Remedies |
-| M4 | Batch 8 + Batch 4 + Batch 10 + Batch 7 | 1,290 | Festivals + Transits + Character + Faith |
+| M1 | Part A (SEO-1 merged) + Batch 1 + Batch 2 | 3,498 + infra | SEO audit doc + 318-city Panchang pages + Choghadiya pages |
+| M2 | Batch 3 + Batch 9 | 1,308 | Compatibility (144 pairs) + Remedy hub pages (12) + remedy matching engine |
+| M3 | Batch 8 + Batch 4 + Batch 10 | 840 | Festival region pages + Transit profiles + Character placements |
+| PARKED | Batch 5, 6, 7 | 11,634 | Angel Numbers + Tarot + Faith -- awaiting engine source material |
 
 ---
 
