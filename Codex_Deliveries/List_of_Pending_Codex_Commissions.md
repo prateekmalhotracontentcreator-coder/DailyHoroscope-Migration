@@ -22,7 +22,7 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | READY TO ISSUE | None | Merges SEO-1. Deliver in 4 milestones: M1=Panchang city+Choghadiya, M2=Angel Numbers (9K), M3=Tarot+Compat+Remedies, M4=Festivals+Transits+Character. Internal engines only. |
+| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | READY TO ISSUE | None | Merges SEO-1. M1=SEO infra+Panchang city+Choghadiya. M2=Compatibility+Remedy hubs. M3=Festivals+Transits+Character. PARKED=Angel Numbers+Tarot+Faith (need engine source). Internal engines only. |
 | **IR-5** | 12 Areas of Life Enhancement (Donut Chart + 10-Year Timeline + Graha Drishti + Claude 4-page reports) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_5_12AREAS_ENHANCEMENT.md` | READY TO ISSUE | IR-4 must be integrated first | Vedic-only (Rahu/Ketu replace Uranus/Neptune). Adds 3 new calc functions to vedic_calculator.py + new router + 2 UI components. |
 
 ---

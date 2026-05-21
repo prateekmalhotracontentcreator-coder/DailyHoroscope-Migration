@@ -139,6 +139,12 @@ Write `docs/SEO_30DAY_PLAN.md` covering:
 - Marriage timing recommendations
 - CTA: "Get your full 36-attribute Gun Milan report"
 
+**Canonicalization (IMPORTANT):** Sign pairs are symmetric. Always sort signs alphabetically to determine the canonical URL.
+- Canonical: `/compatibility/aries-and-scorpio/` (aries < scorpio alphabetically)
+- Non-canonical: `/compatibility/scorpio-and-aries/` → 301 redirect to canonical URL
+- React Router must detect reversed order and redirect before rendering
+- `<link rel="canonical">` always points to the alphabetically-sorted URL
+
 **SEO metadata:**
 - Title: `{Sign1} and {Sign2} Compatibility -- Marriage Gun Milan Score | EverydayHoroscope`
 - Description: `Are {Sign1} and {Sign2} compatible for marriage? View full Ashta-Koota Gun Milan analysis with score out of 36.`
@@ -203,19 +209,45 @@ Write `docs/SEO_30DAY_PLAN.md` covering:
 
 ---
 
-### BATCH 4 -- Transit & Dasha Profiles (108 pages) 🟡 PRIORITY 3
+### BATCH 4 -- Transit Profiles (108 pages) 🟡 PRIORITY 3
 
-**Formula:** 9 planets × 12 target houses
-**Internal engine:** ✅ `vedic_calculator.py` -- transit effects fully computable
+**Formula:** 9 planets × 12 zodiac signs = 108 pages (planet transiting each sign, not houses)
+**Internal engine:** ✅ `vedic_calculator.py` -- planetary sign placements fully computable
 **URL pattern:** `/transits/{planet}-in-{sign}/` (e.g., `/transits/saturn-in-aquarius/`)
+
+**9 planets:** Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn, Rahu, Ketu
+**12 signs:** Aries through Pisces
+
+**Each page includes:**
+- What this planet's transit through this sign means generally
+- Effects on each of the 12 rising signs (brief per-ascendant impact)
+- Duration of this transit (pulled from ephemeris via `vedic_calculator.py`)
+- Current/upcoming transit dates
+
+**SEO metadata:**
+- Title: `{Planet} in {Sign} Transit Effects -- All Rising Signs | EverydayHoroscope`
+- Description: `What does {Planet} in {Sign} mean? Find effects on all 12 rising signs, transit duration, and dates.`
 
 ---
 
 ### BATCH 10 -- Character Placements (432 pages) 🟡 PRIORITY 3
 
-**Formula:** 12 zodiac signs × 12 dimensions × 3 chart points (Sun/Moon/Rising)
-**Internal engine:** ✅ `vedic_calculator.py` -- sign placements fully computable
-**URL pattern:** `/traits/{sign}/{placement}/` (e.g., `/traits/scorpio/moon-sign/`)
+**Formula:** 12 zodiac signs × 12 houses × 3 chart points (Sun/Moon/Rising) = 432 pages
+**Internal engine:** ✅ `vedic_calculator.py` -- sign and house placements fully computable
+**URL pattern:** `/traits/{sign}/{chart-point}/{house}/` (e.g., `/traits/scorpio/moon/7th-house/`)
+
+**3 chart points:** `sun`, `moon`, `rising`
+**12 houses:** `1st-house` through `12th-house`
+**Example URLs:**
+- `/traits/scorpio/moon/7th-house/` → Moon in Scorpio in the 7th House: relationship traits
+- `/traits/aries/sun/10th-house/` → Sun in Aries in the 10th House: career identity traits
+- `/traits/cancer/rising/1st-house/` → Cancer Rising in the 1st House: personality traits
+
+**React Router param:** `/traits/:sign/:chartPoint/:house` → `CharacterPlacementPage.jsx`
+
+**SEO metadata:**
+- Title: `{ChartPoint} in {Sign} in {House} -- Traits & Personality | EverydayHoroscope`
+- Description: `What does {ChartPoint} in {Sign} in the {House} mean? Explore personality traits, strengths, and Vedic insights.`
 
 ---
 
@@ -228,17 +260,30 @@ Write `docs/SEO_30DAY_PLAN.md` covering:
 
 ## Part C -- Directory Routing (React Router additions)
 
+**Active routes (M1-M3 only):**
 ```
-/panchang/:citySlug/:date/          → CityPanchangPage.jsx
-/choghadiya/:citySlug/:period/      → ChoghadiyaPage.jsx
-/angel-number/:number/:intent/      → AngelNumberPage.jsx
-/tarot/:cardSlug/:spreadSlug/       → TarotCombinationPage.jsx
-/compatibility/:signPair/           → CompatibilityPage.jsx
-/remedies/:dosha/:citySlug/         → RemedyCityPage.jsx
-/festivals/:festivalSlug/:region/   → FestivalRegionPage.jsx
-/transits/:planet-in-:sign/         → TransitProfilePage.jsx
-/traits/:sign/:placement/           → CharacterPlacementPage.jsx
-/faith/:verseId/:transit/           → FaithHubPage.jsx
+/panchang/:citySlug/:date/               → CityPanchangPage.jsx       (Batch 1)
+/choghadiya/:citySlug/:period/           → ChoghadiyaPage.jsx          (Batch 2)
+/compatibility/:signPair/                → CompatibilityPage.jsx       (Batch 3)
+/remedies/:dosha/                        → RemedyHubPage.jsx           (Batch 9 -- NO citySlug)
+/festivals/:festivalSlug/:region/        → FestivalRegionPage.jsx      (Batch 8)
+/transits/:planet/:sign/                 → TransitProfilePage.jsx      (Batch 4)
+/traits/:sign/:chartPoint/:house/        → CharacterPlacementPage.jsx  (Batch 10)
+```
+
+**Parked routes (do NOT build yet -- awaiting engine source material):**
+```
+/angel-number/:number/:intent/           → AngelNumberPage.jsx         (Batch 5 ⏸)
+/tarot/:cardSlug/:spreadSlug/            → TarotCombinationPage.jsx    (Batch 6 ⏸)
+/faith/:verseId/:transit/               → FaithHubPage.jsx            (Batch 7 ⏸)
+```
+
+**Compatibility redirect rule:**
+```javascript
+// In CompatibilityPage.jsx -- detect non-canonical order, redirect before render
+const [s1, s2] = signPair.split('-and-');
+const sorted = [s1, s2].sort().join('-and-');
+if (sorted !== signPair) return <Navigate to={`/compatibility/${sorted}/`} replace />;
 ```
 
 ---
@@ -246,20 +291,110 @@ Write `docs/SEO_30DAY_PLAN.md` covering:
 ## Part D -- SEO Infrastructure
 
 ### Metadata Builder (Dynamic per page)
-All pages inject via `react-helmet-async`:
-- `<title>` -- per batch formula above (max 60 chars)
-- `<meta name="description">` -- per batch formula (max 155 chars)
-- `<link rel="canonical">`
-- `<link rel="alternate" hreflang="en-in">` + `<link rel="alternate" hreflang="en-us">`
-- JSON-LD structured data per page type
+
+**Use the existing `SEO.jsx` component** (`frontend/src/components/SEO.jsx`) -- do NOT add `react-helmet-async` as a new dependency. `SEO.jsx` already wraps Helmet internally. Add a `jsonLd` prop if not already present:
+
+```jsx
+// Usage pattern on every new page:
+<SEO
+  title="{City} Panchang Today {Date} | EverydayHoroscope"
+  description="Accurate daily Panchang for {City}..."
+  canonical={`https://everydayhoroscope.in${location.pathname}`}
+  hreflang={[
+    { lang: "en-in", href: `https://everydayhoroscope.in${location.pathname}` },
+    { lang: "en-us", href: `https://everydayhoroscope.in${location.pathname}` }
+  ]}
+  jsonLd={datasetSchema}   // JSON-LD object -- SEO.jsx renders as <script type="application/ld+json">
+/>
+```
+
+Fields per page:
+- `title` -- per batch formula (max 60 chars)
+- `description` -- per batch formula (max 155 chars)
+- `canonical` -- always `https://everydayhoroscope.in` + `location.pathname`
+- `hreflang` -- en-IN and en-US pointing to same canonical URL
+- `jsonLd` -- JSON-LD structured data object (Dataset / HoroscopeReading / FAQPage per batch)
 
 ### Sitemap Generation
-FastAPI generates separate sitemaps per batch. Frontend `public/sitemap-index.xml` references all.
+
+**Architecture constraint:** FastAPI runs on Render; Vercel serves the frontend. A Render endpoint cannot write files into Vercel's deployed static assets at runtime. Do NOT attempt to save sitemap XML into `frontend/public/` via an API call.
+
+**Correct approach -- backend-served dynamic sitemaps:**
+
+Add FastAPI routes that serve XML directly. Vercel's `frontend/public/sitemap-index.xml` references the Render backend URLs:
+
+```
+FastAPI endpoints (serve XML, no file writes):
+  GET /api/seo/sitemap/panchang     → 318 cities × 7 days = 2,226 URLs
+  GET /api/seo/sitemap/choghadiya   → 318 cities × 4 periods = 1,272 URLs
+  GET /api/seo/sitemap/horoscope    → 36 sign × 3 period pages = 108 URLs
+  GET /api/seo/sitemap/compatibility → 144 pair URLs
+  GET /api/seo/sitemap/remedies     → 12 affliction hub URLs
+  GET /api/seo/sitemap/transits     → 108 URLs
+  GET /api/seo/sitemap/traits       → 432 URLs
+  GET /api/seo/sitemap/festivals    → 300 URLs
+```
+
+`frontend/public/sitemap-index.xml` (update manually, not generated):
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/panchang</loc></sitemap>
+  <sitemap><loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/choghadiya</loc></sitemap>
+  <sitemap><loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/horoscope</loc></sitemap>
+  <sitemap><loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/compatibility</loc></sitemap>
+  <sitemap><loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/remedies</loc></sitemap>
+  <sitemap><loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/transits</loc></sitemap>
+  <sitemap><loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/traits</loc></sitemap>
+  <sitemap><loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/festivals</loc></sitemap>
+</sitemapindex>
+```
+
+FastAPI sitemap response headers: `Content-Type: application/xml`, `Cache-Control: s-maxage=86400`
 
 ### Caching Strategy
-- Panchang/Choghadiya pages: `Cache-Control: s-maxage=3600` (hourly -- data changes daily)
-- Static content pages (Angel Numbers, Tarot, Faith): `Cache-Control: s-maxage=604800` (7 days)
-- Compatibility/Character/Transit pages: `Cache-Control: s-maxage=86400` (daily)
+
+**Vercel Edge Caching is configured via `vercel.json` headers** -- NOT in React component code. Add/update `frontend/vercel.json`:
+
+```json
+{
+  "headers": [
+    {
+      "source": "/panchang/:citySlug/:date/",
+      "headers": [{ "key": "Cache-Control", "value": "s-maxage=3600, stale-while-revalidate" }]
+    },
+    {
+      "source": "/choghadiya/:citySlug/:period/",
+      "headers": [{ "key": "Cache-Control", "value": "s-maxage=3600, stale-while-revalidate" }]
+    },
+    {
+      "source": "/compatibility/:signPair/",
+      "headers": [{ "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }]
+    },
+    {
+      "source": "/remedies/:dosha/",
+      "headers": [{ "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }]
+    },
+    {
+      "source": "/transits/:planet/:sign/",
+      "headers": [{ "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }]
+    },
+    {
+      "source": "/traits/:sign/:chartPoint/:house/",
+      "headers": [{ "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }]
+    },
+    {
+      "source": "/festivals/:festivalSlug/:region/",
+      "headers": [{ "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }]
+    }
+  ]
+}
+```
+
+TTL values:
+- Panchang/Choghadiya: `s-maxage=3600` (hourly -- data changes daily)
+- Compatibility/Character/Transit/Festivals/Remedies: `s-maxage=86400` (daily)
+- Parked batches (Angel Numbers, Tarot, Faith): `s-maxage=604800` when built (7 days)
 
 ---
 
@@ -279,7 +414,7 @@ Issue to Codex as sequential milestones:
 ## Architecture Rules
 
 1. **Internal engines only** -- no paid API call per page request
-2. **Pre-generated content** (Batches 5, 6, 7, 9) stored in MongoDB, served from DB
+2. **Pre-generated content** (Batches 5, 6, 7 -- PARKED) stored in MongoDB, served from DB when built. Batch 9 remedy content is already seeded; served via `remedy_matching_router.py` query on request.
 3. **Database:** MongoDB with Motor async driver -- NOT PostgreSQL. Use Motor patterns matching existing codebase.
 4. **Do NOT modify** `vedic_calculator.py`, `panchang_router.py`, `server.py` core logic
 5. **Add new routes** to `server.py` via `include_router()` pattern (see existing panchang, tarot, numerology routers)
