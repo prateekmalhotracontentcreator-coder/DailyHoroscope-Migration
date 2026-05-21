@@ -1,7 +1,7 @@
 # Temple Tracker -- Master Index
 > EverydayHoroscope · Module Status Dashboard
 > **Read this at session start. Then open the individual module tracker for the module you are working on.**
-> Last updated: 2026-05-20 (session 5 -- SEO wave 1 live, 12 new pages, commit 963dc82)
+> Last updated: 2026-05-22 (session 6 -- 6 commissions integrated: LON-1, PAN-L1, PUN-2, TAR-v4, SEO-20K M1, KUN-1 · commits 2a4ed4e + 1d6fc47 + e741ee5)
 
 ---
 
@@ -42,16 +42,16 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` confirmed live. `krishna_prashnavali_remedies` seeded (36 records). REM-P1 ready to issue. | TT |
 | 5 | The Strategist | [`Strategist/TRACKER.md`](Codex_Deliveries/Strategist/TRACKER.md) | ✅ LIVE | STR-OP-3: Verify DashaTimingBar live data on `/strategist/missions` (TT) | TT |
 | 6 | Arc Angel | [`Arc_Angel/TRACKER.md`](Codex_Deliveries/Arc_Angel/TRACKER.md) | 🟡 ACTIVE | **ARC-2 ✅ INTEGRATED** commit `c1a7cb0` 2026-05-18. 3-pillar confidence live, decay engine active, ArcAngelPanel rebuilt. Pillar 1 bridge (4-section → 12-domain) is a stopgap -- KE-IQ will deliver full 12-area questionnaire. | TT |
-| 7 | Tarot | [`Tarot/TRACKER.md`](Codex_Deliveries/Tarot/TRACKER.md) | 🟡 ACTIVE | TAR-v4 visual uplift -- issue Week 3 | TT |
-| 8 | Kundali / Birth Chart | [`Kundali/TRACKER.md`](Codex_Deliveries/Kundali/TRACKER.md) | 🟣 PLANNED | KUN-1 ready to issue Week 4+ | TT |
+| 7 | Tarot | [`Tarot/TRACKER.md`](Codex_Deliveries/Tarot/TRACKER.md) | ✅ LIVE | TAR-v4 integrated commit `2a4ed4e`. TarotHero, particle burst, Celtic Cross, streak/XP widget. | -- |
+| 8 | Kundali / Birth Chart | [`Kundali/TRACKER.md`](Codex_Deliveries/Kundali/TRACKER.md) | 🟡 ACTIVE | KUN-1 integrated `1d6fc47`. Public `/kundali` free route, unknown birth time, House Summary table, User Manual. **KUN-OP-4: TT browser smoke test `/kundali` in production.** | TT |
 | 9 | Lal Kitab | [`LK/TRACKER.md`](Codex_Deliveries/LK/TRACKER.md) | 🟣 PLANNED | LK-1 ready to issue Week 4+ | TT |
-| 10 | Longevity Report | [`Longevity/TRACKER.md`](Codex_Deliveries/Longevity/TRACKER.md) | 🟣 PLANNED | KE Sprint 2 gate ✅ cleared 2026-05-17. LON-1 READY TO ISSUE. Verify Render load (LON-OP-1) first. Large scope (~48h). | TT |
+| 10 | Longevity Report | [`Longevity/TRACKER.md`](Codex_Deliveries/Longevity/TRACKER.md) | 🟡 ACTIVE | LON-1 integrated `2a4ed4e` -- backend aliases `/report`,`/save`,`/my-reports`,`/alerts`,`/report/:id` + LongevityReportPage. **LON-OP-1: TT live review of save/detail flow required.** | TT |
 | 11 | Love & Engagement | [`Love_Module/TRACKER.md`](Codex_Deliveries/Love_Module/TRACKER.md) | ✅ LIVE | Nothing open | -- |
 | 12 | Live TV | [`Live_TV/TRACKER.md`](Codex_Deliveries/Live_TV/TRACKER.md) | 🟡 ACTIVE | LTV-OP-1: console polish deferred. Panel live on Home (logged-in) + PanchangPage. Render Starter activated. | TT |
-| 13 | Punya Rewards | [`Punya_Rewards/TRACKER.md`](Codex_Deliveries/Punya_Rewards/TRACKER.md) | ✅ LIVE | Nothing open | -- |
+| 13 | Punya Rewards | [`Punya_Rewards/TRACKER.md`](Codex_Deliveries/Punya_Rewards/TRACKER.md) | 🟡 ACTIVE | PUN-2 integrated `2a4ed4e` -- Landing promo, SVG wheel, streak, grouped ledger. **PUN-OP-1: `individual_report` action code missing from `DEFAULT_ACTION_RULES` -- backend fix needed before that hook can be wired.** | TT |
 | 14 | Notifications | [`Notifications/TRACKER.md`](Codex_Deliveries/Notifications/TRACKER.md) | 🟡 ACTIVE | M-5 WhatsApp OTP + M-6 Instagram Business ID | TT |
-| 15 | Panchang | [`Panchang/TRACKER.md`](Codex_Deliveries/Panchang/TRACKER.md) | ✅ LIVE | PAN-L1 language pages -- issue Week 3+ | TT |
-| 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | 🟡 ACTIVE | SEO-20K M1 is prepared locally: city Panchang routes, Choghadiya routes, sitemap endpoints, sitemap index, robots update, cache headers, and 2 docs. Build passed locally. No live production changes in this session. | TT |
+| 15 | Panchang | [`Panchang/TRACKER.md`](Codex_Deliveries/Panchang/TRACKER.md) | ✅ LIVE | PAN-L1 integrated `2a4ed4e` -- 5 language pages (Hindi/Tamil/Telugu/Malayalam/Kannada), hreflang, JSON-LD. HTTP 200 confirmed. | -- |
+| 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | 🟡 ACTIVE | SEO-20K M1 integrated `2a4ed4e` -- CityPanchangPage, ChoghadiyaPage, seo_router.py, sitemap-index.xml, vercel.json caching. **Next: TT smoke-test `/panchang/new-delhi/` + `/choghadiya/mumbai/today/` in prod, then issue M2.** | TT |
 | 17 | World Oracles | [`World_Oracles/TRACKER.md`](Codex_Deliveries/World_Oracles/TRACKER.md) | 🟣 PLANNED | Phase 3 -- do not issue until KP Oracle 30+ days live | TT |
 
 ---
