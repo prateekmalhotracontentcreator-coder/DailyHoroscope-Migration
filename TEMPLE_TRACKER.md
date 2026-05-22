@@ -69,6 +69,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | M-7 | react-snap vs helmet-async design decision | 🟢 LOW | Await SEO-1 recommendation |
 | M-8 | PWA offline caching decision | 🟢 LOW | Await SEO-1 |
 | M-9 | App.js lazy audit sign-off | 🟢 LOW | Non-blocking |
+| M-10 | **Approve LK decoded rules in `knowledge_rules` collection** -- Admin → Remedies tab → review + approve Ch25/Ch26 decoded rules so they flow through the Remedies Engine to users | 🟠 HIGH | Blocker for REM-P1 delivering LK remedies in KP Oracle + other modules. TT to review and approve/flag each rule. |
 
 ---
 
