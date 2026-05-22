@@ -1,7 +1,7 @@
 # KP Oracle (Krishna Prashnavali) -- Module Tracker
 > Path: `Codex_Deliveries/KP/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-22 · v1.8
+> Last updated: 2026-05-22 · v1.9
 
 ---
 
@@ -110,3 +110,4 @@
 | v1.6 | 2026-05-16 | Share bar confirmed visible by TT (KP-OP-9 item 1 ✅). Share bar moved full-width below reading, matching Panchang/Horoscope pattern (`22ae365`). Copy button now copies full reading text + URL. KP-Sprint2 status corrected to IN PROGRESS, with commission issue date aligned to 2026-05-14 and `/ask-question` still explicitly tracked as a ComingSoon stub pending delivery. KP-OP-10 (share card format) + KP-OP-11 (report structure UX) opened per TT review. | CC + TT | `22ae365` |
 | v1.7 | 2026-05-22 | KP-Sprint2 handover summary filed by Codex KP thread (`MODULE_KRISHNA_PRASHANAVALI/KP_SPRINT2_HANDOVER_SUMMARY_2026-05-22.md`). Acceptance checklist (11 items), locked functional spec, and premium/auth rules added to tracker. `/ask-question` confirmed still on ComingSoon stub. ORACLE-P3 dependency on KP-Sprint2 confirmed and recorded. | Codex + CC | handover doc |
 | v1.8 | 2026-05-22 | KP-OP-9 fully cleared via browser verification: all 4 bundle slots confirmed live (11/WAIT · 19/NO · 31/PRAY · 33/PRAY), Remedies Admin PATCH endpoint confirmed live (422 schema validation). KP-2B unblocked -- TT to issue. | CC | browser session |
+| v1.9 | 2026-05-22 | **Critical bug fixed:** `_source_bundle_path()` had `.parent.parent` causing bundle to never load on Render -- every reading served provisional seed content since launch. Fixed to `.parent`. Frontend remedy display changed from OR to AND -- both `behavioral_remedy` (Behavioural Practice) and `remedy` (Sacred Remedy) now always shown. Commit `0db820b`. | CC | TT report |
