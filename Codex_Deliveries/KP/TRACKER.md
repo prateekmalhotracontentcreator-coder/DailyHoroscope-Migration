@@ -1,7 +1,7 @@
 # KP Oracle (Krishna Prashnavali) -- Module Tracker
 > Path: `Codex_Deliveries/KP/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-22 · v1.9
+> Last updated: 2026-05-22 · v2.1
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- KP-2A INTEGRATED · KP-Sprint2 IN PROGRESS · KP-OP-9 ✅ CLEARED 2026-05-22 · **KP-2B READY TO ISSUE** (TT action) · Share card format + report structure UX review pending (KP-2B scope) |
+| **Status** | 🟡 ACTIVE -- KP-2A ✅ · KP-Sprint2 ✅ INTEGRATED `20d4d29` · KP-2B ✅ INTEGRATED `20f7b83` · **TT to verify both on production** · KP-OP-10 (share card) + KP-OP-11 (report UX) open |
 | **Frontend** | `frontend/src/pages/kp/KrishnaOraclePage.jsx` |
 | **Backend** | `backend/scriptural_oracle_router.py` · `backend/remedies_router.py` |
 | **Live URL** | `/krishna-prashnavali` |
@@ -23,8 +23,8 @@
 | ID | Commission | Status | Brief |
 |---|---|---|---|
 | **KP-2A** | Bundle Editorial + Share Card + Remedies Admin Frontend | ✅ INTEGRATED -- commit `7d42880` | `CODEX_COMMISSION_KP_2A.md` · Delivered + integrated 2026-05-15. TT live verification pending. |
-| **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | 🔵 IN PROGRESS | `CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` · Issued 2026-05-14. Route still on ComingSoon stub pending delivery. |
-| **KP-2B** | Ritual Animation + 3-Pillar UX + Astro-Filter | 🟣 READY TO ISSUE | `CODEX_COMMISSION_KP_2B.md` · Depends on KP-2A delivered |
+| ~~**KP-Sprint2**~~ | ~~KP Ask Question -- Guna Logic Router~~ | ✅ INTEGRATED -- commit `20d4d29` | `CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` · `AskQuestionPage.jsx` (514 lines), `ask_question_logic_router.json` (60 routes: 20 SATTVA/RAJAS/TAMAS), ask endpoint in `scriptural_oracle_router.py`. Build clean. TT acceptance checklist pending. |
+| ~~**KP-2B**~~ | ~~Ritual Animation + 3-Pillar UX + Astro-Filter~~ | ✅ INTEGRATED -- commit `20f7b83` | `CODEX_COMMISSION_KP_2B.md` · `KrishnaRitualScreen.jsx` (95 lines), 3-pillar `KrishnaOraclePage.jsx` (799 lines), astro enrichment in `scriptural_oracle_router.py`. CC fix: lazy sessionStorage init (no flash). Build clean. TT acceptance checklist pending. |
 
 ---
 
@@ -38,7 +38,9 @@
 | ~~KP-OP-3~~ | ~~Run `ingest_krishna_prashnavali_remedies_v1.py` on Render~~  | TT | ✅ DONE | Run 2026-05-15. upserted=0, modified=36 -- collection was already seeded; all 36 records refreshed with current bundle. `remedy_ref` pipeline confirmed populated. |
 | ~~KP-OP-4~~ | ~~**Issue KP-Sprint2** to Codex~~ | TT | ✅ DONE | KP-Sprint2 issued 2026-05-14. |
 | ~~KP-OP-5~~ | ~~**Issue KP-2A** to Codex~~  | TT | ✅ DONE | Issued 2026-05-15. Delivered + integrated same day at commit `7d42880`. |
-| KP-OP-6 | **Issue KP-2B** after TT live verification of KP-2A | TT | 🟠 HIGH | KP-OP-9 fully cleared 2026-05-22. **TT to issue KP-2B now -- all blockers resolved.** |
+| ~~KP-OP-6~~ | ~~**Issue KP-2B**~~ | TT | ✅ DONE | KP-2B issued AND integrated same session 2026-05-22. Commit `20f7b83`. |
+| KP-OP-12 | **TT acceptance verification -- KP-Sprint2** on production | TT | 🟠 HIGH | Verify: `/ask-question` loads, 20 focus areas render, Guna classification shows (SATTVA/RAJAS/TAMAS), 3-card reveal works, free quota (2/month) enforced, readings persist. |
+| KP-OP-13 | **TT acceptance verification -- KP-2B** on production | TT | 🟠 HIGH | Verify: ritual screen fires on first visit, skips on return (sessionStorage), orb animates, "I'm ready" skip works, grid fades in, 3 pillars visible in Guidance Report, Verdict badge colour-coded, Cosmic Context shows Mahadasha+Antardasha when birth data present, "Add birth details" CTA when absent. |
 | ~~KP-OP-9~~ | ~~**TT live verification of KP-2A**~~ | CC | ✅ DONE | (1) Share bar ✅ confirmed 2026-05-16; (2) Bundle slots 11 (WAIT) ✅ · 19 (NO/Pratrodha) ✅ · 31 (PRAY/Bhakti) ✅ · 33 (PRAY/Bhakti) ✅ -- all 4 verified via browser 2026-05-22; (3) Remedies Admin PATCH ✅ endpoint live (`PATCH /api/remedies/admin/records/{id}/status` returns 422 with correct schema validation). KP-OP-9 fully cleared. |
 | KP-OP-10 | **Share Card visual format** -- needs redesign | TT + CC | 🟠 HIGH | TT noted share card format needs work. Card currently uses `KrishnaShareCard.jsx` (gold dark theme). Full card format + capture review needed. To be addressed in KP-2B scope or as standalone CC fix after TT review. |
 | KP-OP-11 | **KP Oracle report structure UX review** | TT + CC | 🟠 HIGH | TT noted the web app report structure needs improvement. Two-column grid layout (`xl:grid-cols-[1.2fr,0.8fr]`) + section arrangement to be reviewed. Likely KP-2B scope. |
@@ -111,3 +113,5 @@
 | v1.7 | 2026-05-22 | KP-Sprint2 handover summary filed by Codex KP thread (`MODULE_KRISHNA_PRASHANAVALI/KP_SPRINT2_HANDOVER_SUMMARY_2026-05-22.md`). Acceptance checklist (11 items), locked functional spec, and premium/auth rules added to tracker. `/ask-question` confirmed still on ComingSoon stub. ORACLE-P3 dependency on KP-Sprint2 confirmed and recorded. | Codex + CC | handover doc |
 | v1.8 | 2026-05-22 | KP-OP-9 fully cleared via browser verification: all 4 bundle slots confirmed live (11/WAIT · 19/NO · 31/PRAY · 33/PRAY), Remedies Admin PATCH endpoint confirmed live (422 schema validation). KP-2B unblocked -- TT to issue. | CC | browser session |
 | v1.9 | 2026-05-22 | **Critical bug fixed:** `_source_bundle_path()` had `.parent.parent` causing bundle to never load on Render -- every reading served provisional seed content since launch. Fixed to `.parent`. Frontend remedy display changed from OR to AND -- both `behavioral_remedy` (Behavioural Practice) and `remedy` (Sacred Remedy) now always shown. Commit `0db820b`. | CC | TT report |
+| v2.0 | 2026-05-22 | **KP-Sprint2 INTEGRATED.** Codex delivery reviewed and committed (`20d4d29`): `AskQuestionPage.jsx` (514 lines, 20 focus areas, Guna display, 3-card reveal, share/save, free quota), `ask_question_logic_router.json` (60 routes), ask endpoint in `scriptural_oracle_router.py`. Route wired in `App.js`. Build clean. TT acceptance checklist (KP-OP-12) opened. Context update + KP-2B brief sent to KP Oracle Codex thread. | CC | `20d4d29` |
+| v2.1 | 2026-05-22 | **KP-2B INTEGRATED.** `KrishnaRitualScreen.jsx` (25s white-orb meditation, sequential text reveals, sessionStorage gate, "I'm ready" skip). `KrishnaOraclePage.jsx` rebuilt with 3-pillar Guidance Report (Sacred Verse · Cosmic Context · Practical Action), VerdictBadge (YES/WAIT/NO/PRAY), OracleGlassCard, staggered fadeInUp animation, Pillar 2 birth-data conditional. CC fix: lazy `useState(() => sessionStorage)` init prevents grid flash on first load. `scriptural_oracle_router.py`: `astro_context`, `current_mahadasha`, `current_antardasha`, `birth_data_present` fields added with Claude enrichment + fallback. Build clean. TT acceptance checklist (KP-OP-13) opened. | CC | `20f7b83` |

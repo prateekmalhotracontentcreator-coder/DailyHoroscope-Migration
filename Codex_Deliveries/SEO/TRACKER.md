@@ -1,7 +1,7 @@
 # SEO & Web Performance -- Module Tracker
 > Path: `Codex_Deliveries/SEO/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-22 · v3.3
+> Last updated: 2026-05-22 · v3.5
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- prior SEO wave live; SEO-20K M1 prepared locally pending review/integration |
+| **Status** | 🟡 ACTIVE -- prior SEO wave live; SEO-20K M2 local delivery prepared after M1 verification |
 | **GA4** | G-3HJC8BTHRQ -- wired and live |
 | **GSC** | Verified + sitemap submitted |
 | **Bing** | Verified + sitemap submitted |
@@ -25,7 +25,7 @@
 | ID | Commission | Track | Priority | Status | Brief |
 |---|---|---|---|---|---|
 | **SEO-WebPerf** | SEO + Marketing + Web Performance Optimisation | -- | Issue Last | 🟣 READY -- ISSUE LAST | `CODEX_COMMISSION_SEO_WEBPERF.md` |
-| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | M1-M3 | 🟡 IN PROGRESS -- M1 local delivery prepared | `CODEX_COMMISSION_SEO_20K.md` |
+| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | M1-M3 | 🟡 IN PROGRESS -- M2 ✅ INTEGRATED `aba7d5c` · M3 awaiting next Codex cycle | `CODEX_COMMISSION_SEO_20K.md` |
 | **SEO-C1** | Legal Pages Content (populate MongoDB policies) | C | Phase 1 | ✅ LIVE -- policies seeded to production 2026-05-20 | `CODEX_COMMISSION_SEO-C1.md` |
 | **SEO-B1** | Tomorrow / Weekly / Monthly Per-Sign Horoscope (36 pages) | B | Phase 3 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-B1.md` |
 | **SEO-B3** | Festival Calendar Hub + Hora Today + Indian Calendar | B | Phase 2 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-B3.md` |
@@ -50,7 +50,8 @@
 | SEO-OP-3 | **M-7: react-snap vs helmet-async** design decision needed before SEO-1 can start | TT | 🟢 LOW | Await SEO-1 thread recommendation |
 | SEO-OP-4 | **M-8: PWA offline caching** -- decide if in scope | TT | 🟢 LOW | Await SEO-1 thread |
 | SEO-OP-5 | **M-9: App.js lazy audit** -- confirm eager/lazy split: Landing + DailyHoroscope + Login eager, rest lazy | TT | 🟢 LOW | Minor perf gain, non-blocking |
-| SEO-OP-6 | **SEO-20K M1 review** -- verify new city Panchang routes, Choghadiya routes, sitemap endpoints, and Vercel cache headers before any live rollout | TT | 🟠 MED | Local build passed. No browser smoke or live deploy was performed in this session. |
+| ~~SEO-OP-6~~ | ~~**SEO-20K M2 review**~~ | CC | ✅ DONE | CC reviewed, committed, and pushed `aba7d5c`. `compatibility_router.py` (214 lines, ashtakoot via vedic_calculator), `remedy_matching_router.py` (204 lines, 12 dosha slugs), `CompatibilityPage.jsx`, `RemedyHubPage.jsx`, server.py wiring, seo_router.py sitemap, App.js routes, vercel.json cache headers, sitemap-index.xml updated. Build clean. |
+| SEO-OP-7 | **TT production smoke test** -- `/compatibility/aries-and-scorpio/` and `/remedies/shani-sade-sati/` | TT | 🟠 MED | After Render deploy settles (~3 min from push). Verify pages render, ashtakoot score appears, dosha content loads, JSON-LD in source. |
 
 ---
 
@@ -73,3 +74,5 @@
 | v3.1 | 2026-05-20 | SEO-C6, SEO-C8, and SEO-C9 local deliveries prepared. Added 4 public report-category discovery pages, public `/love-calculator` with shareable URL support plus a top-level API alias, and the full `/angel-numbers` hub with 14 static detail pages, FAQ schema, and article metadata. Frontend production build passed and backend AST syntax checks passed. | Codex | `CODEX_COMMISSION_SEO-C6.md` · `CODEX_COMMISSION_SEO-C8.md` · `CODEX_COMMISSION_SEO-C9.md` |
 | v3.2 | 2026-05-20 | All 12 SEO commissions integrated and pushed to main (commit 963dc82). 13 new pages live. Policy seed run against production MongoDB (5 docs). OG image replaced (<82KB, 1200×630). SEO-C6 code live but launch gated on Razorpay live keys. SEO-WebPerf held for last. | CC | -- |
 | v3.3 | 2026-05-22 | SEO-20K M1 local delivery prepared. Added dynamic sitemap endpoints in `backend/seo_router.py`, upgraded `SEO.jsx` with canonical/hreflang/JSON-LD support, added `/panchang/:citySlug/:date` and `/choghadiya/:citySlug/:period`, created `sitemap-index.xml`, updated robots, added Vercel route cache headers, and wrote `docs/SEO_WEBPERF_REPORT.md` plus `docs/SEO_30DAY_PLAN.md`. Frontend production build passed and backend AST syntax checks passed. No live production changes in this session. | Codex | `CODEX_COMMISSION_SEO_20K.md` |
+| v3.4 | 2026-05-22 | SEO-20K M2 local delivery prepared. Added sign-pair compatibility pages, remedy hub pages, new backend compatibility and remedy-matching routers, compatibility/remedies sitemap endpoints, `App.js` public routes, and Vercel cache headers for the new programmatic route groups. No live production changes in this session. | Codex | `CODEX_COMMISSION_SEO_20K.md` |
+| v3.5 | 2026-05-22 | SEO-20K M2 INTEGRATED. CC reviewed `compatibility_router.py` (no architecture violations -- uses `vedic_calculator.calculate_ashtakoot()`), `remedy_matching_router.py` (no KE/dasha imports), `CompatibilityPage.jsx`, `RemedyHubPage.jsx`. All 9 files committed `aba7d5c` and pushed to main. M2 confirmation sent to SEO Codex thread requesting M3. SEO-OP-6 closed. SEO-OP-7 (TT production smoke test) opened. | CC | `aba7d5c` |

@@ -1,7 +1,7 @@
 # Temple Tracker -- Master Index
 > EverydayHoroscope · Module Status Dashboard
 > **Read this at session start. Then open the individual module tracker for the module you are working on.**
-> Last updated: 2026-05-22 (session 6 -- 6 commissions integrated: LON-1, PAN-L1, PUN-2, TAR-v4, SEO-20K M1, KUN-1 · commits 2a4ed4e + 1d6fc47 + e741ee5)
+> Last updated: 2026-05-22 (session 7 -- 3 commissions integrated: KP-Sprint2 `20d4d29` · KP-2B `20f7b83` · SEO-20K M2 `aba7d5c` · Pushed to main · Shifting focus to CD -- The Strategist Delivery · Codex quota exhausted for cycle)
 
 ---
 
@@ -37,7 +37,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | # | Module | Tracker | Status | Hottest Open Point | Owner |
 |---|---|---|---|---|---|
 | 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🟡 ACTIVE | KE-IQ ✅ INTEGRATED commit `f7aa78b` 2026-05-18. 75/75 tests. **KE-OP-15 open: TT to verify `POST /api/knowledge-engine/questionnaire/submit`, `GET /api/knowledge-engine/questionnaire/profile`, Arc Angel β/γ enrichment, and `user_questionnaire_profiles` persistence on Render.** KE-OP-4 (rule approval) open. | TT |
-| 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | KP-2A ✅ INTEGRATED `7d42880`. KP-Sprint2 🔵 IN PROGRESS (not yet delivered -- `/ask-question` still ComingSoon stub). KP-OP-9 ✅ CLEARED 2026-05-22 (all 4 slots + PATCH endpoint verified). **KP-OP-6: TT to issue KP-2B now -- all blockers cleared.** | TT |
+| 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | KP-Sprint2 ✅ INTEGRATED `20d4d29` (AskQuestionPage, 60-route logic router, ask endpoint). KP-2B ✅ INTEGRATED `20f7b83` (ritual screen, 3-pillar UX, astro enrichment). **KP-OP-10: Share card format needs redesign. KP-OP-11: Report structure UX review. TT to verify both deliveries on production (acceptance checklists).** | TT |
 | 3 | Individual Reports | [`Individual_Reports/TRACKER.md`](Codex_Deliveries/Individual_Reports/TRACKER.md) | 🟣 PLANNED | IR-1 ready to issue Week 1 -- no dependency | TT |
 | 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` confirmed live. `krishna_prashnavali_remedies` seeded (36 records). REM-P1 ready to issue. | TT |
 | 5 | The Strategist | [`Strategist/TRACKER.md`](Codex_Deliveries/Strategist/TRACKER.md) | ✅ LIVE | STR-OP-3: Verify DashaTimingBar live data on `/strategist/missions` (TT) | TT |
@@ -51,7 +51,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | 13 | Punya Rewards | [`Punya_Rewards/TRACKER.md`](Codex_Deliveries/Punya_Rewards/TRACKER.md) | 🟡 ACTIVE | PUN-2 integrated `2a4ed4e` -- Landing promo, SVG wheel, streak, grouped ledger. **PUN-OP-1: `individual_report` action code missing from `DEFAULT_ACTION_RULES` -- backend fix needed before that hook can be wired.** | TT |
 | 14 | Notifications | [`Notifications/TRACKER.md`](Codex_Deliveries/Notifications/TRACKER.md) | 🟡 ACTIVE | M-5 WhatsApp OTP + M-6 Instagram Business ID | TT |
 | 15 | Panchang | [`Panchang/TRACKER.md`](Codex_Deliveries/Panchang/TRACKER.md) | ✅ LIVE | PAN-L1 integrated `2a4ed4e` -- 5 language pages (Hindi/Tamil/Telugu/Malayalam/Kannada), hreflang, JSON-LD. HTTP 200 confirmed. | -- |
-| 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | 🟡 ACTIVE | SEO-20K M1 integrated `2a4ed4e` -- CityPanchangPage, ChoghadiyaPage, seo_router.py, sitemap-index.xml, vercel.json caching. **Next: TT smoke-test `/panchang/new-delhi/` + `/choghadiya/mumbai/today/` in prod, then issue M2.** | TT |
+| 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | 🟡 ACTIVE | SEO-20K M1 ✅ live. M2 ✅ INTEGRATED `aba7d5c` (144 compatibility pages, 12 remedy hubs, routers, sitemap, Vercel cache headers). M3 brief confirmed to SEO thread -- response awaiting next Codex cycle. **TT to verify `/compatibility/aries-and-scorpio/` and `/remedies/shani-sade-sati/` on production after Render deploy settles.** | TT |
 | 17 | World Oracles | [`World_Oracles/TRACKER.md`](Codex_Deliveries/World_Oracles/TRACKER.md) | 🟣 PLANNED | Phase 3 -- do not issue until KP Oracle 30+ days live | TT |
 
 ---

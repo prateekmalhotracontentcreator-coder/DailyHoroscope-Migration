@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-22 (SEO-20K M1 CC-reviewed PASS -- ready to deploy; 9 commissions issued to Codex today: KUN-1, IR-5, PUN-2, LK-1, TAR-v4, PAN-L1, LON-1, ORACLE-P3, SEO-20K M1→M2 handoff; SEO-1 reclassified)
+> Last updated: 2026-05-22 (Session 7 -- KP-Sprint2 ✅ integrated `20d4d29` · KP-2B ✅ integrated `20f7b83` · SEO-20K M2 ✅ integrated `aba7d5c` · All pushed to main · Codex quota exhausted -- KP/IR-LON/SEO thread responses expected next Codex cycle)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -22,7 +22,7 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | 🔵 M1 INTEGRATED -- commit `2a4ed4e` -- PENDING SMOKE TEST | None | M1 integrated: `seo_router.py`, `SEO.jsx` (canonical+hreflang+jsonLd), `CityPanchangPage.jsx`, `ChoghadiyaPage.jsx`, App.js routes, `sitemap-index.xml`, `vercel.json`, 2 docs. **Next: smoke-test `/panchang/new-delhi/` and `/choghadiya/mumbai/today/` in production, then issue M2 (Compatibility + Remedy hubs).** |
+| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | 🔵 M2 INTEGRATED -- AWAITING M3 | None | M1 ✅ live. M2 ✅ integrated `aba7d5c` (144 compatibility pages + 12 remedy hubs, routers, sitemap, App.js routes, Vercel cache headers). Confirmation sent to SEO thread. M3 pending next Codex cycle. |
 | **IR-5** | 12 Areas of Life Enhancement (Donut Chart + 10-Year Timeline + Graha Drishti + Claude 4-page reports) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_5_12AREAS_ENHANCEMENT.md` | 🔵 IN PROGRESS | IR-4 live verification (IR-OP-12) must pass first | Issued 2026-05-22. Vedic-only (Rahu/Ketu replace Uranus/Neptune). Adds 3 new calc functions to vedic_calculator.py + new router + 2 UI components. |
 
 ---
@@ -37,7 +37,7 @@
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
 | ~~**KP-2A**~~ | ~~KP Bundle Editorial + Share Card + Remedies Admin Frontend~~ | KP Oracle | `KP/CODEX_COMMISSION_KP_2A.md` | ✅ INTEGRATED -- commit `7d42880` | -- | Delivered + integrated 2026-05-15. TT live verification (KP-OP-9) required before issuing KP-2B. |
-| **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | KP Oracle | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | 🔵 IN PROGRESS | None | Issued 2026-05-15. Independent of KP-2A. |
+| ~~**KP-Sprint2**~~ | ~~KP Ask Question -- Guna Logic Router (20 focus areas, 60-route JSON, 3-card reveal)~~ | KP Oracle | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | ✅ INTEGRATED -- commit `20d4d29` | None | `AskQuestionPage.jsx` + `ask_question_logic_router.json` (60 routes) + `scriptural_oracle_router.py` ask endpoint. Build clean. TT acceptance checklist verification pending. |
 | ~~**KE-IQ**~~ | ~~Questionnaire UI + β/γ KE Wiring~~ | Knowledge Engine | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | ✅ INTEGRATED -- commit `f7aa78b` 2026-05-18 | -- | `knowledge_router.py`, `QuestionnaireWidget.jsx`, `QuestionnairePage.jsx`, `ArcAngelPanel.jsx`. 75/75 KE tests green. TT live verification pending (KE-OP-15). |
 | ~~**IR-1**~~ | ~~5 Public SEO Landing Pages (Individual Reports)~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` | ✅ INTEGRATED -- commit `825a294` | None | 5 landing pages + public hub live. Route canonical confirmed by TT 2026-05-15. |
 | ~~**IR-2**~~ | ~~Lunar Cycle Wellness Backend~~ | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_2_LUNAR_CYCLE.md` | ✅ INTEGRATED -- commit `f9f6690` + `021a799` | -- | Live. Datetime bug fixed. Tile on LovePage. IR-2A rework also integrated `692fefa`. |
@@ -52,7 +52,7 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **KP-2B** | Ritual Animation + 3-Pillar UX + Astro-Filter | KP Oracle | `KP/CODEX_COMMISSION_KP_2B.md` | ⚠️ READY -- VERIFY FIRST | KP-2A ✅ but KP-OP-9 TT live check required | Brief ready. **Do not issue until Temple Team confirms KP-2A feature is working live in production (KP-OP-9).** Once confirmed, clear to award immediately. |
+| ~~**KP-2B**~~ | ~~Ritual Animation + 3-Pillar UX + Astro-Filter~~ | KP Oracle | `KP/CODEX_COMMISSION_KP_2B.md` | ✅ INTEGRATED -- commit `20f7b83` | KP-2A ✅ KP-OP-9 ✅ | `KrishnaRitualScreen.jsx` + 3-pillar `KrishnaOraclePage.jsx` + `scriptural_oracle_router.py` astro enrichment. sessionStorage ritual gate, VerdictBadge, Mahadasha/Antardasha Pillar 2, lazy init fix applied by CC. Build clean. TT acceptance checklist verification pending. |
 | ~~STR-1~~ | ~~Strategist Premium Landing Page + War Room Visual Rebuild~~ | The Strategist | `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` | ✅ INTEGRATED -- commit `ba58192` | -- | TheStrategistLandingPage.jsx + StrategistPage.jsx + App.js + sitemap.xml all live. Build verified. |
 | ~~STR-2J~~ | ~~Strategist Missions UI (MissionCard responsive + dasha display)~~ | The Strategist | `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` | ✅ INTEGRATED -- commit `9ad2e0a` | -- | Delivered by Codex 2026-05-15. Dasha backend fix applied by Claude Code. |
 | ~~**TAR-v4**~~ | ~~Tarot UI v4 Enhancement~~ | Tarot | `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` | ✅ INTEGRATED -- commit `2a4ed4e` | None | TarotHero, animated starfield, particle burst, card modal+drawer, Celtic Cross layout, streak/XP widget, month-grouped history. Build passed. |
@@ -129,29 +129,32 @@
 
 ---
 
-## Commission Status Snapshot (updated 2026-05-22)
+## Commission Status Snapshot (updated 2026-05-22 · Session 7)
 
 ```
-INTEGRATED -- 2026-05-22:
-  LON-1  ✅ (2a4ed4e)  PAN-L1  ✅ (2a4ed4e)  PUN-2  ✅ (2a4ed4e)
-  TAR-v4  ✅ (2a4ed4e)  SEO-20K M1  ✅ (2a4ed4e, smoke test pending)
-  KUN-1  ✅ (1d6fc47 + e741ee5)
+INTEGRATED TODAY (Session 7):
+  KP-Sprint2  ✅ (20d4d29)  KP-2B       ✅ (20f7b83)
+  SEO-20K M2  ✅ (aba7d5c)
 
-INTEGRATED (prior):
+INTEGRATED (Session 6 -- 2026-05-22):
+  LON-1  ✅ (2a4ed4e)  PAN-L1  ✅ (2a4ed4e)  PUN-2   ✅ (2a4ed4e)
+  TAR-v4 ✅ (2a4ed4e)  SEO-20K M1 ✅ (2a4ed4e) KUN-1  ✅ (1d6fc47 + e741ee5)
+
+INTEGRATED (prior sessions):
   KE-Sprint2  ✅  KE-2A  ✅  KE-IQ  ✅  ARC-2  ✅  IR-4  ✅
   KP-2A  ✅  REM-P1  ✅  IR-1  ✅  IR-2  ✅  IR-2A  ✅  IR-3  ✅
   STR-1  ✅  STR-2J  ✅  + all SEO-B/C series ✅
 
-IN PROGRESS (Codex threads open):
-  SEO-20K     🔵 M1 integrated -- smoke test prod, then trigger M2
-  KP-Sprint2  🔵 Issued 2026-05-15
+IN PROGRESS (Codex threads open -- responses pending next Codex cycle):
+  SEO-20K     🔵 M2 integrated -- M3 brief confirmed to SEO thread, awaiting delivery
   IR-5        🔵 Issued 2026-05-22 (blocked on IR-OP-12 TT live verify)
-  KUN-1       🔵 Delivered to worktree -- CC integration pending TT approval
   LK-1        🔵 Issued 2026-05-22 -- reconciliation phase
-  ORACLE-P3   ⏸ Dependency-blocked on KP stack
+  ORACLE-P3   ⏸ Dependency-blocked (KP-Sprint2 + KP-2B now live -- re-evaluate next cycle)
 
-VERIFY BEFORE ISSUING:
-  KP-2B       ⚠️ Brief ready -- issue only after KP-OP-9 TT live check of KP-2A passes
+PENDING TT ACCEPTANCE VERIFICATION (live on production):
+  KP-Sprint2  ⚠️ TT to verify /ask-question acceptance checklist on production
+  KP-2B       ⚠️ TT to verify ritual screen + 3-pillar UX + astro enrichment on production
+  LON-1       ⚠️ TT live review of save/detail flow (LON-OP-1)
 
 RECLASSIFIED (no Codex action):
   SEO-1       🔒 Technical scope → SEO-20K Part A. Marketing scope → Temple Team ops.
