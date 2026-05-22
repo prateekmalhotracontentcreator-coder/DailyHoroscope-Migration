@@ -1,0 +1,544 @@
+{
+  "routes": [
+    {
+      "focus_area": "job_change_promotion",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 2, Verse 47",
+      "verse_sanskrit": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन",
+      "verse_english": "You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Nishkama Karma"
+    },
+    {
+      "focus_area": "job_change_promotion",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 3, Verse 21",
+      "verse_sanskrit": "यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः",
+      "verse_english": "Whatever actions a great person performs, common people follow. Whatever standards they set, the world pursues.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Dharmic Leadership"
+    },
+    {
+      "focus_area": "job_change_promotion",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 6, Verse 35",
+      "verse_sanskrit": "असंशयं महाबाहो मनो दुर्निग्रहं चलम्",
+      "verse_english": "The mind is restless and difficult to restrain, but it can be mastered through practice and detachment.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Mind Mastery"
+    },
+    {
+      "focus_area": "workplace_conflict",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 13, Verse 8",
+      "verse_sanskrit": "अमानित्वमदम्भित्वमहिंसा क्षान्तिरार्जवम्",
+      "verse_english": "Humility, sincerity, nonviolence, patience, and straightforwardness are signs of wisdom.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Relational Humility"
+    },
+    {
+      "focus_area": "workplace_conflict",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 16, Verses 1-3",
+      "verse_sanskrit": "अभयं सत्त्वसंशुद्धिर्ज्ञानयोगव्यवस्थितिः",
+      "verse_english": "Fearlessness, purity of heart, self-mastery, compassion, and truthfulness are divine qualities.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Divine Conduct"
+    },
+    {
+      "focus_area": "workplace_conflict",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 18, Verse 66",
+      "verse_sanskrit": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज",
+      "verse_english": "Abandon all varieties of invented duty and take refuge in Me alone; I will free you from sorrow.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Sacred Surrender"
+    },
+    {
+      "focus_area": "startup_business_risk",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 2, Verse 47",
+      "verse_sanskrit": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन",
+      "verse_english": "You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Nishkama Karma"
+    },
+    {
+      "focus_area": "startup_business_risk",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 3, Verse 21",
+      "verse_sanskrit": "यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः",
+      "verse_english": "Whatever actions a great person performs, common people follow. Whatever standards they set, the world pursues.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Dharmic Leadership"
+    },
+    {
+      "focus_area": "startup_business_risk",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 6, Verse 35",
+      "verse_sanskrit": "असंशयं महाबाहो मनो दुर्निग्रहं चलम्",
+      "verse_english": "The mind is restless and difficult to restrain, but it can be mastered through practice and detachment.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Mind Mastery"
+    },
+    {
+      "focus_area": "leadership_decision",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 18, Verse 47",
+      "verse_sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्",
+      "verse_english": "It is better to live your own dharma imperfectly than to perform another’s perfectly.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Swadharma"
+    },
+    {
+      "focus_area": "leadership_decision",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 3, Verse 35",
+      "verse_sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्",
+      "verse_english": "Better one’s own duty, though imperfect, than another’s duty done well.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Duty Alignment"
+    },
+    {
+      "focus_area": "leadership_decision",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 9, Verse 34",
+      "verse_sanskrit": "मन्मना भव मद्भक्तो मद्याजी मां नमस्कुरु",
+      "verse_english": "Fix your mind on Me, become devoted to Me, worship Me, and bow to Me.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Devotional Reorientation"
+    },
+    {
+      "focus_area": "anxiety_stress",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 4, Verse 10",
+      "verse_sanskrit": "वीतरागभयक्रोधा मन्मया मामुपाश्रिताः",
+      "verse_english": "Freed from attachment, fear, and anger, many have become purified by taking refuge in Me.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Fearlessness Through Surrender"
+    },
+    {
+      "focus_area": "anxiety_stress",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 2, Verse 14",
+      "verse_sanskrit": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः",
+      "verse_english": "Pleasure and pain are temporary; endure them with steadiness.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Emotional Regulation"
+    },
+    {
+      "focus_area": "anxiety_stress",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 18, Verse 58",
+      "verse_sanskrit": "मच्चित्तः सर्वदुर्गाणि मत्प्रसादात्तरिष्यसि",
+      "verse_english": "When your consciousness is fixed on Me, you will cross all obstacles by My grace.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Obstacle Crossing"
+    },
+    {
+      "focus_area": "grief_loss",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 2, Verse 20",
+      "verse_sanskrit": "न जायते म्रियते वा कदाचित्",
+      "verse_english": "The soul is never born and never dies; it is eternal and indestructible.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Soul Continuity"
+    },
+    {
+      "focus_area": "grief_loss",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 2, Verse 23",
+      "verse_sanskrit": "नैनं छिन्दन्ति शस्त्राणि नैनं दहति पावकः",
+      "verse_english": "No weapon can cut the soul, nor can fire burn it.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Sacred Perspective"
+    },
+    {
+      "focus_area": "grief_loss",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 9, Verse 33",
+      "verse_sanskrit": "अनित्यमसुखं लोकमिमं प्राप्य भजस्व माम्",
+      "verse_english": "Having come into this temporary world, turn toward devotion.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Turn Toward Devotion"
+    },
+    {
+      "focus_area": "anger_resentment",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 6, Verse 5",
+      "verse_sanskrit": "उद्धरेदात्मनात्मानं नात्मानमवसादयेत्",
+      "verse_english": "Lift yourself by your own mind; do not let yourself fall, for the mind can be friend or foe.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Self-Upliftment"
+    },
+    {
+      "focus_area": "anger_resentment",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 2, Verses 62-63",
+      "verse_sanskrit": "क्रोधाद्भवति सम्मोहः सम्मोहात्स्मृतिविभ्रमः",
+      "verse_english": "From attachment comes desire, from desire anger, and from anger confusion and downfall.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Attachment Chain"
+    },
+    {
+      "focus_area": "anger_resentment",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 2, Verse 14",
+      "verse_sanskrit": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः",
+      "verse_english": "Contact with the world creates passing sensations of heat, cold, pleasure, and pain; endure them steadily.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Steady Endurance"
+    },
+    {
+      "focus_area": "inner_peace",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 6, Verse 5",
+      "verse_sanskrit": "उद्धरेदात्मनात्मानं नात्मानमवसादयेत्",
+      "verse_english": "Lift yourself by your own mind; do not let yourself fall, for the mind can be friend or foe.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Self-Upliftment"
+    },
+    {
+      "focus_area": "inner_peace",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 2, Verses 62-63",
+      "verse_sanskrit": "क्रोधाद्भवति सम्मोहः सम्मोहात्स्मृतिविभ्रमः",
+      "verse_english": "From attachment comes desire, from desire anger, and from anger confusion and downfall.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Attachment Chain"
+    },
+    {
+      "focus_area": "inner_peace",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 2, Verse 14",
+      "verse_sanskrit": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः",
+      "verse_english": "Contact with the world creates passing sensations of heat, cold, pleasure, and pain; endure them steadily.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Steady Endurance"
+    },
+    {
+      "focus_area": "marriage_partnership",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 13, Verse 8",
+      "verse_sanskrit": "अमानित्वमदम्भित्वमहिंसा क्षान्तिरार्जवम्",
+      "verse_english": "Humility, sincerity, nonviolence, patience, and straightforwardness are signs of wisdom.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Relational Humility"
+    },
+    {
+      "focus_area": "marriage_partnership",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 16, Verses 1-3",
+      "verse_sanskrit": "अभयं सत्त्वसंशुद्धिर्ज्ञानयोगव्यवस्थितिः",
+      "verse_english": "Fearlessness, purity of heart, self-mastery, compassion, and truthfulness are divine qualities.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Divine Conduct"
+    },
+    {
+      "focus_area": "marriage_partnership",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 18, Verse 66",
+      "verse_sanskrit": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज",
+      "verse_english": "Abandon all varieties of invented duty and take refuge in Me alone; I will free you from sorrow.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Sacred Surrender"
+    },
+    {
+      "focus_area": "parenting_family",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 13, Verse 8",
+      "verse_sanskrit": "अमानित्वमदम्भित्वमहिंसा क्षान्तिरार्जवम्",
+      "verse_english": "Humility, sincerity, nonviolence, patience, and straightforwardness are signs of wisdom.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Relational Humility"
+    },
+    {
+      "focus_area": "parenting_family",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 16, Verses 1-3",
+      "verse_sanskrit": "अभयं सत्त्वसंशुद्धिर्ज्ञानयोगव्यवस्थितिः",
+      "verse_english": "Fearlessness, purity of heart, self-mastery, compassion, and truthfulness are divine qualities.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Divine Conduct"
+    },
+    {
+      "focus_area": "parenting_family",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 18, Verse 66",
+      "verse_sanskrit": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज",
+      "verse_english": "Abandon all varieties of invented duty and take refuge in Me alone; I will free you from sorrow.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Sacred Surrender"
+    },
+    {
+      "focus_area": "forgiveness",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 12, Verse 13",
+      "verse_sanskrit": "अद्वेष्टा सर्वभूतानां मैत्रः करुण एव च",
+      "verse_english": "One who is free from hatred and full of compassion is dear to Me.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Compassionate Release"
+    },
+    {
+      "focus_area": "forgiveness",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 16, Verse 3",
+      "verse_sanskrit": "तेजः क्षमा धृतिः शौचमद्रोहो नातिमानिता",
+      "verse_english": "Forgiveness, fortitude, purity, and freedom from malice are divine qualities.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Divine Restraint"
+    },
+    {
+      "focus_area": "forgiveness",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 18, Verse 66",
+      "verse_sanskrit": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज",
+      "verse_english": "Take refuge in Me alone, and I will free you from sorrow.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Release Through Refuge"
+    },
+    {
+      "focus_area": "exam_study_focus",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 2, Verse 47",
+      "verse_sanskrit": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन",
+      "verse_english": "You have a right to perform your prescribed duties, but you are not entitled to the fruits of your actions.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Nishkama Karma"
+    },
+    {
+      "focus_area": "exam_study_focus",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 3, Verse 21",
+      "verse_sanskrit": "यद्यदाचरति श्रेष्ठस्तत्तदेवेतरो जनः",
+      "verse_english": "Whatever actions a great person performs, common people follow. Whatever standards they set, the world pursues.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Dharmic Leadership"
+    },
+    {
+      "focus_area": "exam_study_focus",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 6, Verse 35",
+      "verse_sanskrit": "असंशयं महाबाहो मनो दुर्निग्रहं चलम्",
+      "verse_english": "The mind is restless and difficult to restrain, but it can be mastered through practice and detachment.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Mind Mastery"
+    },
+    {
+      "focus_area": "life_purpose",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 18, Verse 47",
+      "verse_sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्",
+      "verse_english": "It is better to live your own dharma imperfectly than to perform another’s perfectly.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Swadharma"
+    },
+    {
+      "focus_area": "life_purpose",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 3, Verse 35",
+      "verse_sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्",
+      "verse_english": "Better one’s own duty, though imperfect, than another’s duty done well.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Duty Alignment"
+    },
+    {
+      "focus_area": "life_purpose",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 9, Verse 34",
+      "verse_sanskrit": "मन्मना भव मद्भक्तो मद्याजी मां नमस्कुरु",
+      "verse_english": "Fix your mind on Me, become devoted to Me, worship Me, and bow to Me.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Devotional Reorientation"
+    },
+    {
+      "focus_area": "procrastination",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 17, Verse 16",
+      "verse_sanskrit": "मनःप्रसादः सौम्यत्वं मौनमात्मविनिग्रहः",
+      "verse_english": "Serenity of mind, gentleness, silence, and self-mastery are austerities of the mind.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Mental Serenity"
+    },
+    {
+      "focus_area": "procrastination",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 4, Verse 38",
+      "verse_sanskrit": "न हि ज्ञानेन सदृशं पवित्रमिह विद्यते",
+      "verse_english": "In time, disciplined practice ripens into clarity; nothing purifies like true knowledge.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Ripening Insight"
+    },
+    {
+      "focus_area": "procrastination",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 2, Verse 14",
+      "verse_sanskrit": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः",
+      "verse_english": "Passing discomfort should be endured without collapse or haste.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Endure the Interval"
+    },
+    {
+      "focus_area": "financial_stability",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 9, Verse 22",
+      "verse_sanskrit": "अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते",
+      "verse_english": "To those who are devoted and steady, I carry what they lack and preserve what they have.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Provision Through Devotion"
+    },
+    {
+      "focus_area": "financial_stability",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 3, Verse 12",
+      "verse_sanskrit": "इष्टान्भोगान्हि वो देवा दास्यन्ते यज्ञभाविताः",
+      "verse_english": "Prosperity flows where action is offered in a spirit of sacred reciprocity.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Sacred Reciprocity"
+    },
+    {
+      "focus_area": "financial_stability",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 4, Verse 31",
+      "verse_sanskrit": "यज्ञशिष्टामृतभुजो यान्ति ब्रह्म सनातनम्",
+      "verse_english": "Those who act in the spirit of offering receive lasting nourishment.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Consecrated Use of Resources"
+    },
+    {
+      "focus_area": "health_healing",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 17, Verse 8",
+      "verse_sanskrit": "आयुःसत्त्वबलारोग्यसुखप्रीतिविवर्धनाः",
+      "verse_english": "That which increases life, vitality, strength, health, happiness, and satisfaction is dear to those in goodness.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Healing Through Balance"
+    },
+    {
+      "focus_area": "health_healing",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 6, Verse 17",
+      "verse_sanskrit": "युक्ताहारविहारस्य युक्तचेष्टस्य कर्मसु",
+      "verse_english": "For one who is moderate in food, recreation, work, and rest, yoga destroys suffering.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Rhythmic Discipline"
+    },
+    {
+      "focus_area": "health_healing",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 17, Verse 9",
+      "verse_sanskrit": "कट्वम्ललवणात्युष्णतीक्ष्णरूक्षविदाहिनः",
+      "verse_english": "Excess and agitation create suffering; what is harsh and imbalanced increases distress.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Reduce Agitation"
+    },
+    {
+      "focus_area": "travel_relocation",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 17, Verse 16",
+      "verse_sanskrit": "मनःप्रसादः सौम्यत्वं मौनमात्मविनिग्रहः",
+      "verse_english": "Serenity of mind, gentleness, silence, and self-mastery are austerities of the mind.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Mental Serenity"
+    },
+    {
+      "focus_area": "travel_relocation",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 4, Verse 38",
+      "verse_sanskrit": "न हि ज्ञानेन सदृशं पवित्रमिह विद्यते",
+      "verse_english": "In time, disciplined practice ripens into clarity; nothing purifies like true knowledge.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Ripening Insight"
+    },
+    {
+      "focus_area": "travel_relocation",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 2, Verse 14",
+      "verse_sanskrit": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः",
+      "verse_english": "Passing discomfort should be endured without collapse or haste.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Endure the Interval"
+    },
+    {
+      "focus_area": "toxic_relationship",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 13, Verse 8",
+      "verse_sanskrit": "अमानित्वमदम्भित्वमहिंसा क्षान्तिरार्जवम्",
+      "verse_english": "Humility, sincerity, nonviolence, patience, and straightforwardness are signs of wisdom.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Relational Humility"
+    },
+    {
+      "focus_area": "toxic_relationship",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 16, Verses 1-3",
+      "verse_sanskrit": "अभयं सत्त्वसंशुद्धिर्ज्ञानयोगव्यवस्थितिः",
+      "verse_english": "Fearlessness, purity of heart, self-mastery, compassion, and truthfulness are divine qualities.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Divine Conduct"
+    },
+    {
+      "focus_area": "toxic_relationship",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 18, Verse 66",
+      "verse_sanskrit": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज",
+      "verse_english": "Abandon all varieties of invented duty and take refuge in Me alone; I will free you from sorrow.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Sacred Surrender"
+    },
+    {
+      "focus_area": "overcoming_habit",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 6, Verse 5",
+      "verse_sanskrit": "उद्धरेदात्मनात्मानं नात्मानमवसादयेत्",
+      "verse_english": "Lift yourself by your own mind; do not let yourself fall, for the mind can be friend or foe.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Self-Upliftment"
+    },
+    {
+      "focus_area": "overcoming_habit",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 2, Verses 62-63",
+      "verse_sanskrit": "क्रोधाद्भवति सम्मोहः सम्मोहात्स्मृतिविभ्रमः",
+      "verse_english": "From attachment comes desire, from desire anger, and from anger confusion and downfall.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Attachment Chain"
+    },
+    {
+      "focus_area": "overcoming_habit",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 2, Verse 14",
+      "verse_sanskrit": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः",
+      "verse_english": "Contact with the world creates passing sensations of heat, cold, pleasure, and pain; endure them steadily.",
+      "base_verdict": "PAUSE",
+      "logic_tag": "Steady Endurance"
+    },
+    {
+      "focus_area": "daily_inspiration",
+      "guna": "SATTVA",
+      "verse_ref": "Chapter 18, Verse 47",
+      "verse_sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्",
+      "verse_english": "It is better to live your own dharma imperfectly than to perform another’s perfectly.",
+      "base_verdict": "PROCEED",
+      "logic_tag": "Swadharma"
+    },
+    {
+      "focus_area": "daily_inspiration",
+      "guna": "RAJAS",
+      "verse_ref": "Chapter 3, Verse 35",
+      "verse_sanskrit": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्",
+      "verse_english": "Better one’s own duty, though imperfect, than another’s duty done well.",
+      "base_verdict": "REFLECT",
+      "logic_tag": "Duty Alignment"
+    },
+    {
+      "focus_area": "daily_inspiration",
+      "guna": "TAMAS",
+      "verse_ref": "Chapter 9, Verse 34",
+      "verse_sanskrit": "मन्मना भव मद्भक्तो मद्याजी मां नमस्कुरु",
+      "verse_english": "Fix your mind on Me, become devoted to Me, worship Me, and bow to Me.",
+      "base_verdict": "SURRENDER",
+      "logic_tag": "Devotional Reorientation"
+    }
+  ]
+}

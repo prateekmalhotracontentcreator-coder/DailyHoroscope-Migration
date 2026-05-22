@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import json
 import os
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Any, Literal
 from uuid import uuid4
@@ -35,10 +36,16 @@ TOTAL_CELLS = 324
 JUMP_INTERVAL = 12
 SEQUENCE_LENGTH = 9
 CANONICAL_ANSWER_COUNT = 36
+ASK_COLLECTION_NAME = "ask_question_readings"
+ASK_ENGINE_VERSION = "krishna-ask-v1"
+FREE_ASK_READINGS_PER_MONTH = 2
+CLAUDE_HAIKU_MODEL = os.getenv("KP_GUNA_MODEL", "claude-3-5-haiku-latest")
 
 VerdictTraditional = Literal["Pratibha", "Pratrodha", "Dhairya", "Bhakti"]
 VerdictBackend = Literal["SUCCESS", "WARNING", "PATIENCE", "SURRENDER"]
 VerdictDisplay = Literal["YES", "NO", "WAIT", "PRAY"]
+AskGuna = Literal["SATTVA", "RAJAS", "TAMAS"]
+AskVerdictLabel = Literal["PROCEED", "PAUSE", "REFLECT", "SURRENDER"]
 
 
 class StrictModel(BaseModel):
@@ -189,6 +196,77 @@ class KrishnaShareResponse(StrictModel):
     share_payload: dict[str, Any]
 
 
+class AskQuestionLogicRoute(StrictModel):
+    focus_area: str
+    guna: AskGuna
+    verse_ref: str
+    verse_sanskrit: str
+    verse_english: str
+    base_verdict: AskVerdictLabel
+    logic_tag: str
+
+
+class AskQuestionRequest(StrictModel):
+    question: str = Field(min_length=10, max_length=200)
+    focus_area: str
+    birth_date: str | None = None
+    birth_time: str | None = None
+    birth_place: str | None = None
+    timezone_offset: str | None = None
+
+
+class AskQuestionReadingDocument(StrictModel):
+    id: str
+    reading_id: str
+    doc_type: str = "report"
+    report_type: str = "kp_ask_question"
+    oracle_mode: str = "krishna_ask_question"
+    user_email: str
+    question: str
+    focus_area: str
+    focus_area_label: str
+    guna: AskGuna
+    verse_ref: str
+    verse_sanskrit: str
+    verse_english: str
+    verdict_label: AskVerdictLabel
+    logic_tag: str
+    krishna_voice: str
+    what_to_do: str
+    inner_shift: str
+    timeframe: str
+    astro_context: str | None = None
+    current_mahadasha: str | None = None
+    current_antardasha: str | None = None
+    birth_data_present: bool = False
+    created_at: datetime
+    updated_at: datetime
+
+
+class AskQuestionResponse(StrictModel):
+    reading_id: str
+    question: str
+    focus_area: str
+    focus_area_label: str
+    guna: AskGuna
+    verse_ref: str
+    verse_sanskrit: str
+    verse_english: str
+    verdict_label: AskVerdictLabel
+    logic_tag: str
+    krishna_voice: str
+    what_to_do: str
+    inner_shift: str
+    timeframe: str
+    astro_context: str | None = None
+    current_mahadasha: str | None = None
+    current_antardasha: str | None = None
+    birth_data_present: bool = False
+    saved_to_history: bool = False
+    remaining_free_readings: int | None = None
+    monthly_usage_count: int | None = None
+
+
 PROVISIONAL_GRID_MATRIX: list[str] = [
     "सु", "ध", "रे", "म", "स", "ब", "का", "ज", "वि", "चा", "र", "त", "स", "र", "ज", "ब", "म", "न",
     "रा", "म", "ल", "ख", "न", "क", "जु", "प", "स", "प", "न", "बि", "र", "च", "सि", "रि", "ब", "ठ",
@@ -262,6 +340,10 @@ def _collection(request: Request):
     return getattr(_db(request), COLLECTION_NAME)
 
 
+def _ask_collection(request: Request):
+    return getattr(_db(request), ASK_COLLECTION_NAME)
+
+
 def _now() -> datetime:
     return datetime.now(timezone.utc)
 
@@ -315,6 +397,10 @@ def _source_bundle_path() -> Path:
     if env_path:
         return Path(env_path).expanduser().resolve()
     return (Path(__file__).resolve().parent / "assets" / "krishna_oracle" / "krishna_oracle_content.json").resolve()
+
+
+def _ask_logic_router_path() -> Path:
+    return (Path(__file__).resolve().parent / "assets" / "krishna_oracle" / "ask_question_logic_router.json").resolve()
 
 
 def _verdict_triplet(category: str) -> tuple[VerdictTraditional, VerdictBackend, VerdictDisplay]:
@@ -678,6 +764,372 @@ async def _summary_report(
                 english_block=mantra.get("english_block", ""),
             )
     return {k: v for k, v in report.items() if v is not None}
+
+
+ASK_FOCUS_AREA_LABELS: dict[str, str] = {
+    "job_change_promotion": "Job Change / Promotion",
+    "workplace_conflict": "Workplace Conflict",
+    "startup_business_risk": "Startup / Business Risk",
+    "leadership_decision": "Leadership Decision",
+    "anxiety_stress": "Anxiety & Stress",
+    "grief_loss": "Grief & Loss",
+    "anger_resentment": "Anger & Resentment",
+    "inner_peace": "Inner Peace",
+    "marriage_partnership": "Marriage & Partnership",
+    "parenting_family": "Parenting & Family",
+    "forgiveness": "Forgiveness",
+    "exam_study_focus": "Exam / Study Focus",
+    "life_purpose": "Life Purpose",
+    "procrastination": "Procrastination",
+    "financial_stability": "Financial Stability",
+    "health_healing": "Health & Healing",
+    "travel_relocation": "Travel & Relocation",
+    "toxic_relationship": "Toxic Relationship",
+    "overcoming_habit": "Overcoming a Habit",
+    "daily_inspiration": "Daily Inspiration",
+}
+
+
+def _focus_area_label(focus_area: str) -> str:
+    return ASK_FOCUS_AREA_LABELS.get(focus_area, focus_area.replace("_", " ").title())
+
+
+def _resolve_timezone_offset(date_of_birth: str, time_of_birth: str, timezone_value: str | None) -> str:
+    tz_name = (timezone_value or "+05:30").strip()
+    if len(tz_name) == 6 and tz_name[0] in {"+", "-"} and tz_name[3] == ":":
+        return tz_name
+    try:
+        naive_dt = datetime.strptime(f"{date_of_birth} {time_of_birth}", "%Y-%m-%d %H:%M")
+        offset = naive_dt.replace(tzinfo=ZoneInfo(tz_name)).utcoffset() or timedelta()
+        total_minutes = int(offset.total_seconds() // 60)
+        sign = "+" if total_minutes >= 0 else "-"
+        total_minutes = abs(total_minutes)
+        hours, minutes = divmod(total_minutes, 60)
+        return f"{sign}{hours:02d}:{minutes:02d}"
+    except Exception:
+        return "+05:30"
+
+
+def _heuristic_guna(question: str, focus_area: str) -> AskGuna:
+    lowered = f"{focus_area} {question}".lower()
+    tamas_markers = ["afraid", "fear", "stuck", "overwhelmed", "lost", "grief", "anxious", "panic", "toxic", "leave", "resent", "habit"]
+    rajas_markers = ["accept", "launch", "promotion", "business", "win", "success", "decision", "money", "salary", "change", "move"]
+    if any(marker in lowered for marker in tamas_markers):
+        return "TAMAS"
+    if any(marker in lowered for marker in rajas_markers):
+        return "RAJAS"
+    return "SATTVA"
+
+
+async def _classify_guna(question: str, focus_area: str) -> AskGuna:
+    fallback = _heuristic_guna(question, focus_area)
+    try:
+        from anthropic import AsyncAnthropic  # type: ignore
+    except Exception:
+        return fallback
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
+        return fallback
+    prompt = f"Focus area: {focus_area}. Question: {question}"
+    try:
+        client = AsyncAnthropic(api_key=api_key)
+        response = await client.messages.create(
+            model=CLAUDE_HAIKU_MODEL,
+            max_tokens=8,
+            temperature=0,
+            system=(
+                "You are a Bhagavad Gita Guna classifier. Given a user question and focus area, "
+                "classify the underlying state as exactly one of: SATTVA, RAJAS, TAMAS. Return only the word."
+            ),
+            messages=[{"role": "user", "content": [{"type": "text", "text": prompt}]}],
+        )
+        text = ""
+        for block in response.content:
+            if hasattr(block, "text"):
+                text = block.text.strip().upper()
+                break
+        if text in {"SATTVA", "RAJAS", "TAMAS"}:
+            return text  # type: ignore[return-value]
+    except Exception:
+        pass
+    return fallback
+
+
+def _load_ask_logic_routes() -> dict[tuple[str, str], AskQuestionLogicRoute]:
+    path = _ask_logic_router_path()
+    if not path.exists():
+        raise HTTPException(status_code=500, detail="Ask Question logic router JSON is missing.")
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    routes = [AskQuestionLogicRoute(**item) for item in payload.get("routes", [])]
+    if len(routes) != 60:
+        raise HTTPException(status_code=500, detail="Ask Question logic router must contain exactly 60 routes.")
+    return {(route.focus_area, route.guna): route for route in routes}
+
+
+def _resolve_ask_logic_route(focus_area: str, guna: AskGuna) -> AskQuestionLogicRoute:
+    route_map = _load_ask_logic_routes()
+    route = route_map.get((focus_area, guna))
+    if route is None:
+        raise HTTPException(status_code=400, detail=f"Unsupported focus area for ask-question flow: {focus_area}.")
+    return route
+
+
+async def _is_premium_user(request: Request, user_email: str) -> bool:
+    if not user_email:
+        return False
+    sub = await _db(request).subscriptions.find_one({"user_email": user_email, "status": "active"})
+    if not sub:
+        return False
+    expires_at = sub.get("expires_at")
+    if expires_at is None:
+        return True
+    if isinstance(expires_at, str):
+        expires_at = datetime.fromisoformat(expires_at.replace("Z", "+00:00"))
+    if expires_at.tzinfo is None:
+        expires_at = expires_at.replace(tzinfo=timezone.utc)
+    return expires_at > datetime.now(timezone.utc)
+
+
+async def _monthly_ask_reading_count(request: Request, user_email: str) -> int:
+    month_start = _now().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+    return await _ask_collection(request).count_documents({
+        "user_email": user_email,
+        "created_at": {"$gte": month_start},
+    })
+
+
+async def _resolve_birth_inputs(
+    request: Request,
+    user_email: str,
+    payload: AskQuestionRequest,
+) -> tuple[str | None, str | None, str | None]:
+    if payload.birth_date and payload.birth_time:
+        timezone_offset = _resolve_timezone_offset(payload.birth_date, payload.birth_time, payload.timezone_offset)
+        return payload.birth_date, payload.birth_time, timezone_offset
+    if not user_email:
+        return None, None, None
+    profile = await _db(request).birth_profiles.find_one(
+        {"user_email": user_email},
+        {"_id": 0},
+        sort=[("created_at", -1)],
+    )
+    if not profile:
+        return None, None, None
+    birth_date = str(profile.get("date_of_birth") or "")
+    birth_time = str(profile.get("time_of_birth") or "")
+    if not birth_date or not birth_time:
+        return None, None, None
+    timezone_offset = _resolve_timezone_offset(birth_date, birth_time, profile.get("timezone"))
+    return birth_date, birth_time, timezone_offset
+
+
+def _fallback_verdict_guidance(verdict: AskVerdictLabel) -> tuple[str, str, str]:
+    mapping = {
+        "PROCEED": (
+            "Krishna asks you to move with clean intention rather than fear about the result.",
+            "Take one concrete step now, but stay unattached to immediate validation.",
+            "Momentum is favored in the present cycle if your effort remains disciplined.",
+        ),
+        "PAUSE": (
+            "Krishna is not denying your path; He is asking for ripeness before movement.",
+            "Stabilise your routine, gather facts, and delay any irreversible decision for the moment.",
+            "Give this matter a little space before forcing an outcome.",
+        ),
+        "REFLECT": (
+            "Krishna is turning your attention inward before you act outwardly.",
+            "Step back from reaction, examine your motive, and let clarity mature before responding.",
+            "Use the coming days to observe rather than rush to closure.",
+        ),
+        "SURRENDER": (
+            "Krishna is asking for trust, humility, and surrender before strategy.",
+            "Offer this burden through prayer, simplify your next step, and release the need to control every outcome.",
+            "Let devotion come first; outer movement will follow more cleanly after that.",
+        ),
+    }
+    return mapping[verdict]
+
+
+async def _synthesise_ask_guidance(
+    question: str,
+    focus_area: str,
+    route: AskQuestionLogicRoute,
+    guna: AskGuna,
+    astrology: AstrologyContext | None,
+) -> dict[str, str | None]:
+    fallback_voice, fallback_action, fallback_timeframe = _fallback_verdict_guidance(route.base_verdict)
+    fallback_inner = {
+        "SATTVA": "Stay clear, sincere, and anchored in truth rather than urgency.",
+        "RAJAS": "Loosen your grip on outcome and let disciplined effort replace restlessness.",
+        "TAMAS": "Bring light into confusion through steadiness, prayer, and one small intentional action.",
+    }[guna]
+    fallback_astro = None
+    if astrology and astrology.current_mahadasha:
+        fallback_astro = (
+            f"Your current {astrology.current_mahadasha}"
+            + (f" and {astrology.antardasha}" if astrology.antardasha else "")
+            + f" asks you to read this {route.base_verdict.lower()} answer through timing, maturity, and self-command."
+        )
+    try:
+        from anthropic import AsyncAnthropic  # type: ignore
+    except Exception:
+        return {
+            "krishna_voice": fallback_voice,
+            "what_to_do": fallback_action,
+            "inner_shift": fallback_inner,
+            "timeframe": fallback_timeframe,
+            "astro_context": fallback_astro,
+        }
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key:
+        return {
+            "krishna_voice": fallback_voice,
+            "what_to_do": fallback_action,
+            "inner_shift": fallback_inner,
+            "timeframe": fallback_timeframe,
+            "astro_context": fallback_astro,
+        }
+
+    dasha_context = "omit"
+    if astrology and astrology.current_mahadasha:
+        dasha_context = astrology.current_mahadasha
+        if astrology.antardasha:
+            dasha_context += f", {astrology.antardasha}"
+
+    prompt = f'''Gita verse: {route.verse_ref} -- {route.verse_sanskrit} -- {route.verse_english}
+Seeker's state (Guna): {guna}
+Focus area: {_focus_area_label(focus_area)}
+Question: {question}
+Dasha context: {dasha_context}
+
+Return JSON with keys:
+verdict_label, krishna_voice, what_to_do, inner_shift, timeframe, astro_context
+
+Rules:
+- verdict_label must remain exactly {route.base_verdict}
+- krishna_voice: 2-3 compassionate sentences in second person
+- what_to_do: 1-2 specific action sentences
+- inner_shift: 1 sentence
+- timeframe: 1 sentence
+- astro_context: one sentence only if dasha context is present, else empty string
+- no markdown'''
+    try:
+        client = AsyncAnthropic(api_key=api_key)
+        response = await client.messages.create(
+            model=CLAUDE_MODEL,
+            max_tokens=900,
+            temperature=0.35,
+            system=(
+                "You are Krishna speaking to a seeker through the Bhagavad Gita. Provide grounded, specific, and compassionate guidance. "
+                "Never be vague. Never say 'the stars align'. Speak in second person to the seeker. Return only valid JSON."
+            ),
+            messages=[{"role": "user", "content": [{"type": "text", "text": prompt}]}],
+        )
+        text = ""
+        for block in response.content:
+            if hasattr(block, "text"):
+                text = block.text.strip()
+                break
+        text = text.removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+        parsed = json.loads(text) if text else {}
+        return {
+            "krishna_voice": str(parsed.get("krishna_voice") or fallback_voice),
+            "what_to_do": str(parsed.get("what_to_do") or fallback_action),
+            "inner_shift": str(parsed.get("inner_shift") or fallback_inner),
+            "timeframe": str(parsed.get("timeframe") or fallback_timeframe),
+            "astro_context": str(parsed.get("astro_context") or "").strip() or fallback_astro,
+        }
+    except Exception:
+        return {
+            "krishna_voice": fallback_voice,
+            "what_to_do": fallback_action,
+            "inner_shift": fallback_inner,
+            "timeframe": fallback_timeframe,
+            "astro_context": fallback_astro,
+        }
+
+
+@router.post("/ask", response_model=AskQuestionResponse)
+async def ask_krishna_question(payload: AskQuestionRequest, request: Request) -> AskQuestionResponse:
+    question = payload.question.strip()
+    if not (10 <= len(question) <= 200):
+        raise HTTPException(status_code=422, detail="Question must be between 10 and 200 characters.")
+
+    state_user = getattr(request.state, "user", None) or {}
+    user_email = _normalize_email(state_user.get("email")) if isinstance(state_user, dict) else ""
+    is_authenticated = bool(user_email)
+    is_premium = await _is_premium_user(request, user_email) if is_authenticated else False
+
+    monthly_usage_count: int | None = None
+    remaining_free_reads: int | None = None
+    if is_authenticated and not is_premium:
+        monthly_usage_count = await _monthly_ask_reading_count(request, user_email)
+        if monthly_usage_count >= FREE_ASK_READINGS_PER_MONTH:
+            raise HTTPException(status_code=402, detail="You have used your 2 free Ask Question readings this month. Upgrade to Premium for unlimited guidance.")
+        remaining_free_reads = FREE_ASK_READINGS_PER_MONTH - (monthly_usage_count + 1)
+
+    guna = await _classify_guna(question, payload.focus_area)
+    route = _resolve_ask_logic_route(payload.focus_area, guna)
+
+    birth_date, birth_time, timezone_offset = await _resolve_birth_inputs(request, user_email, payload)
+    astrology: AstrologyContext | None = None
+    if birth_date and birth_time and timezone_offset:
+        astrology = _dasha_astrology_from_birth(birth_date, birth_time, timezone_offset)
+    guidance = await _synthesise_ask_guidance(question, payload.focus_area, route, guna, astrology)
+
+    now = _now()
+    reading_id = f"kp-ask-{uuid4()}"
+    birth_data_present = bool(astrology and astrology.current_mahadasha)
+
+    if is_authenticated:
+        document = AskQuestionReadingDocument(
+            id=str(uuid4()),
+            reading_id=reading_id,
+            user_email=user_email,
+            question=question,
+            focus_area=payload.focus_area,
+            focus_area_label=_focus_area_label(payload.focus_area),
+            guna=guna,
+            verse_ref=route.verse_ref,
+            verse_sanskrit=route.verse_sanskrit,
+            verse_english=route.verse_english,
+            verdict_label=route.base_verdict,
+            logic_tag=route.logic_tag,
+            krishna_voice=str(guidance.get("krishna_voice") or ""),
+            what_to_do=str(guidance.get("what_to_do") or ""),
+            inner_shift=str(guidance.get("inner_shift") or ""),
+            timeframe=str(guidance.get("timeframe") or ""),
+            astro_context=str(guidance.get("astro_context") or "").strip() or None,
+            current_mahadasha=astrology.current_mahadasha if astrology else None,
+            current_antardasha=astrology.antardasha if astrology else None,
+            birth_data_present=birth_data_present,
+            created_at=now,
+            updated_at=now,
+        )
+        await _ask_collection(request).insert_one(document.model_dump(mode="python"))
+
+    return AskQuestionResponse(
+        reading_id=reading_id,
+        question=question,
+        focus_area=payload.focus_area,
+        focus_area_label=_focus_area_label(payload.focus_area),
+        guna=guna,
+        verse_ref=route.verse_ref,
+        verse_sanskrit=route.verse_sanskrit,
+        verse_english=route.verse_english,
+        verdict_label=route.base_verdict,
+        logic_tag=route.logic_tag,
+        krishna_voice=str(guidance.get("krishna_voice") or ""),
+        what_to_do=str(guidance.get("what_to_do") or ""),
+        inner_shift=str(guidance.get("inner_shift") or ""),
+        timeframe=str(guidance.get("timeframe") or ""),
+        astro_context=str(guidance.get("astro_context") or "").strip() or None,
+        current_mahadasha=astrology.current_mahadasha if astrology else None,
+        current_antardasha=astrology.antardasha if astrology else None,
+        birth_data_present=birth_data_present,
+        saved_to_history=is_authenticated,
+        remaining_free_readings=remaining_free_reads,
+        monthly_usage_count=(monthly_usage_count + 1) if monthly_usage_count is not None else None,
+    )
 
 
 def _serialize_history_item(document: dict[str, Any]) -> KrishnaHistoryItem:

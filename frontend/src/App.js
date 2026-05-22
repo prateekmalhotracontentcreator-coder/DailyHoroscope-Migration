@@ -105,6 +105,7 @@ const StrategistMissionsPage = lazy(() => import('./pages/strategist/StrategistM
 const StrategistReportPage = lazy(() => import('./pages/strategist/StrategistReportPage'));
 const StrategistSurrogatePage = lazy(() => import('./pages/strategist/StrategistSurrogatePage'));
 const KrishnaOraclePage = lazy(() => import('./pages/kp/KrishnaOraclePage'));
+const AskQuestionPage = lazy(() => import('./pages/kp/AskQuestionPage'));
 const PunyaRewardsPage = lazy(() => import('./pages/rewards/PunyaRewardsPage'));
 const StrategistActionPlanPage = lazy(() => import('./pages/strategist/StrategistActionPlanPage'));
 const FestivalsHubPage = lazy(() => import('./pages/festivals/FestivalsHubPage').then(m => ({ default: m.FestivalsHubPage })));
@@ -305,7 +306,7 @@ function App() {
                   <Route path="/questionnaire" element={<ProtectedRoute><QuestionnairePage /></ProtectedRoute>} />
 
                   {/* Coming soon */}
-                  <Route path="/ask-question" element={<ComingSoonPage title="Ask 1 Question" subtitle="KP Astrology-powered personalised answers" eta="Sprint 2" />} />
+                  <Route path="/ask-question" element={<AskQuestionPage />} />
 
                   {/* Lal Kitab public SEO landing */}
                   <Route path="/lal-kitab-remedies" element={<LalKitabLandingPage />} />
