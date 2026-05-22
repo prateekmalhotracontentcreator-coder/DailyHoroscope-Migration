@@ -57,13 +57,13 @@ export const SEO = ({
     setMeta('twitter:image', img, 'property');
     setMeta('twitter:url', pageUrl, 'property');
 
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
     }
-    canonical.setAttribute('href', canonicalUrl);
+    canonicalLink.setAttribute('href', canonicalUrl);
 
     const managedHreflangNodes = Array.from(document.querySelectorAll('link[data-seo-hreflang="true"]'));
     managedHreflangNodes.forEach((node) => node.remove());
