@@ -1,7 +1,7 @@
 # KP Oracle (Krishna Prashnavali) -- Module Tracker
 > Path: `Codex_Deliveries/KP/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-22 · v1.7
+> Last updated: 2026-05-22 · v1.8
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- KP-2A INTEGRATED · KP-Sprint2 IN PROGRESS · Share bar visible ✅ · Share card format + report structure UX review pending (TT) |
+| **Status** | 🟡 ACTIVE -- KP-2A INTEGRATED · KP-Sprint2 IN PROGRESS · KP-OP-9 ✅ CLEARED 2026-05-22 · **KP-2B READY TO ISSUE** (TT action) · Share card format + report structure UX review pending (KP-2B scope) |
 | **Frontend** | `frontend/src/pages/kp/KrishnaOraclePage.jsx` |
 | **Backend** | `backend/scriptural_oracle_router.py` · `backend/remedies_router.py` |
 | **Live URL** | `/krishna-prashnavali` |
@@ -38,8 +38,8 @@
 | ~~KP-OP-3~~ | ~~Run `ingest_krishna_prashnavali_remedies_v1.py` on Render~~  | TT | ✅ DONE | Run 2026-05-15. upserted=0, modified=36 -- collection was already seeded; all 36 records refreshed with current bundle. `remedy_ref` pipeline confirmed populated. |
 | ~~KP-OP-4~~ | ~~**Issue KP-Sprint2** to Codex~~ | TT | ✅ DONE | KP-Sprint2 issued 2026-05-14. |
 | ~~KP-OP-5~~ | ~~**Issue KP-2A** to Codex~~  | TT | ✅ DONE | Issued 2026-05-15. Delivered + integrated same day at commit `7d42880`. |
-| KP-OP-6 | **Issue KP-2B** after TT live verification of KP-2A | TT | 🟠 HIGH | KP-2A integrated. TT to verify share card (WhatsApp/Facebook/Save/Copy), bundle slots 11/19/31/33, remedies admin PATCH. Issue KP-2B once satisfied. |
-| KP-OP-9 | **TT live verification of KP-2A** (partial) | TT | 🟠 HIGH | (1) Share bar visible ✅ confirmed 2026-05-16; (2) Bundle slots 11/19/31/33 content -- pending TT; (3) Remedies Admin PATCH -- pending TT. Blocker for KP-2B. |
+| KP-OP-6 | **Issue KP-2B** after TT live verification of KP-2A | TT | 🟠 HIGH | KP-OP-9 fully cleared 2026-05-22. **TT to issue KP-2B now -- all blockers resolved.** |
+| ~~KP-OP-9~~ | ~~**TT live verification of KP-2A**~~ | CC | ✅ DONE | (1) Share bar ✅ confirmed 2026-05-16; (2) Bundle slots 11 (WAIT) ✅ · 19 (NO/Pratrodha) ✅ · 31 (PRAY/Bhakti) ✅ · 33 (PRAY/Bhakti) ✅ -- all 4 verified via browser 2026-05-22; (3) Remedies Admin PATCH ✅ endpoint live (`PATCH /api/remedies/admin/records/{id}/status` returns 422 with correct schema validation). KP-OP-9 fully cleared. |
 | KP-OP-10 | **Share Card visual format** -- needs redesign | TT + CC | 🟠 HIGH | TT noted share card format needs work. Card currently uses `KrishnaShareCard.jsx` (gold dark theme). Full card format + capture review needed. To be addressed in KP-2B scope or as standalone CC fix after TT review. |
 | KP-OP-11 | **KP Oracle report structure UX review** | TT + CC | 🟠 HIGH | TT noted the web app report structure needs improvement. Two-column grid layout (`xl:grid-cols-[1.2fr,0.8fr]`) + section arrangement to be reviewed. Likely KP-2B scope. |
 | KP-OP-7 | `krishna_answer` ≠ slot title audit (KP-G13) -- slot-level editorial verify | TT | 🟡 MED | Flagged in KP-2A brief. Treat as Phase 2 if not addressed in KP-2A. |
@@ -109,3 +109,4 @@
 | v1.5 | 2026-05-15 | KP-2A delivered by Codex and integrated. Build verified green. Python parse clean. CC fixes (guidanceRef + _id projection) confirmed preserved. KP-OP-5 closed. KP-OP-6 + KP-OP-9 (TT live verification) opened. Commission status → INTEGRATED `7d42880`. | CC | `7d42880` |
 | v1.6 | 2026-05-16 | Share bar confirmed visible by TT (KP-OP-9 item 1 ✅). Share bar moved full-width below reading, matching Panchang/Horoscope pattern (`22ae365`). Copy button now copies full reading text + URL. KP-Sprint2 status corrected to IN PROGRESS, with commission issue date aligned to 2026-05-14 and `/ask-question` still explicitly tracked as a ComingSoon stub pending delivery. KP-OP-10 (share card format) + KP-OP-11 (report structure UX) opened per TT review. | CC + TT | `22ae365` |
 | v1.7 | 2026-05-22 | KP-Sprint2 handover summary filed by Codex KP thread (`MODULE_KRISHNA_PRASHANAVALI/KP_SPRINT2_HANDOVER_SUMMARY_2026-05-22.md`). Acceptance checklist (11 items), locked functional spec, and premium/auth rules added to tracker. `/ask-question` confirmed still on ComingSoon stub. ORACLE-P3 dependency on KP-Sprint2 confirmed and recorded. | Codex + CC | handover doc |
+| v1.8 | 2026-05-22 | KP-OP-9 fully cleared via browser verification: all 4 bundle slots confirmed live (11/WAIT · 19/NO · 31/PRAY · 33/PRAY), Remedies Admin PATCH endpoint confirmed live (422 schema validation). KP-2B unblocked -- TT to issue. | CC | browser session |
