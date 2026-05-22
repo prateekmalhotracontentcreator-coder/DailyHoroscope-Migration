@@ -617,27 +617,54 @@ function FlowConnector({ label, ok }) {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Section 6 -- Control Room preview
-// Always renders Control Room regardless of page-level mode.
+// Renders a CR backdrop preview regardless of page-level mode.
+// Local A/B toggle lets users compare Variant A (Ambient) vs B (Tactical)
+// independently of the global theme toggle.
+// When page mode = 'light', preview uses CR-A/B grid on the host background
+// with light GlassCards. When mode = 'dark' or CR, uses dark card surfaces.
 // ─────────────────────────────────────────────────────────────────────────────
 function SecControlRoom() {
   const { mode } = useStrategistTheme();
-  const variant = mode === 'cr-tactical' ? 'tactical' : 'ambient';
+  // Local A/B toggle -- independent of global mode
+  const globalVariant = mode === 'cr-tactical' ? 'tactical' : 'ambient';
+  const [localVariant, setLocalVariant] = React.useState(globalVariant);
+  const isLight = mode === 'light';
+
   return (
     <section id="control-room">
-      <ControlRoomBackdrop variant={variant} className="px-5 py-14 md:px-20 md:py-28 min-h-[540px]">
-        <SectionHeadOnDark
-          kicker={`&#9670; Control Room Preview &middot; Variant ${variant === 'tactical' ? 'B' : 'A'}`}
-          title="The signature aesthetic."
-          sub="Same card language. Different canvas behind. Toggle Control Room mode anywhere in The Strategist."
-        />
+      <ControlRoomBackdrop variant={localVariant} className="px-5 py-14 md:px-20 md:py-28 min-h-[540px]">
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <SectionHeadOnDark
+            kicker={`&#9670; Control Room Preview &middot; Variant ${localVariant === 'tactical' ? 'B · Tactical' : 'A · Ambient'}`}
+            title="The signature aesthetic."
+            sub="Same card language. Different canvas behind. Toggle Control Room mode anywhere in The Strategist."
+          />
+          {/* Local A/B toggle -- switches just this preview section */}
+          <div className="flex items-center gap-1.5 rounded-full border border-gold/30 bg-black/20 px-1 py-1 backdrop-blur-sm">
+            {[{ key: 'ambient', label: 'A' }, { key: 'tactical', label: 'B' }].map(({ key, label }) => (
+              <button
+                key={key}
+                type="button"
+                onClick={() => setLocalVariant(key)}
+                className={`rounded-full px-3 py-1 text-[11px] font-cinzel font-semibold uppercase tracking-[0.18em] transition ${
+                  localVariant === key
+                    ? 'bg-gold text-black'
+                    : 'text-gold/70 hover:text-gold'
+                }`}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div className="mt-6 md:mt-10 grid gap-4 md:gap-7 md:grid-cols-[1.2fr_0.8fr] items-stretch">
-          <CRWarCardSample />
-          <CRSeriesSample />
+          {isLight ? <GlassWarCardSample /> : <CRWarCardSample />}
+          {isLight ? <GlassSeriesSample /> : <CRSeriesSample />}
         </div>
 
         <div className="mt-6 md:mt-8 text-center font-playfair italic text-sm text-[#8A8576]">
-          The grid is felt, not seen on Variant&nbsp;A &mdash; and visible on Variant&nbsp;B.
+          Variant A &mdash; grid is felt, not seen. Variant&nbsp;B &mdash; grid visible, tactical display.
         </div>
       </ControlRoomBackdrop>
     </section>
@@ -725,6 +752,56 @@ function CRSeriesSample() {
         <div className="font-cinzel text-[10px] font-semibold uppercase tracking-[0.22em] text-[#E25C4B]">&#9670; STREAK AT RISK</div>
         <div className="font-cinzel text-sm mt-1.5 text-[#ECE6D6]">Pitru-Rin &middot; Day 12 ritual missed</div>
       </CRCard>
+    </div>
+  );
+}
+
+// Light-mode equivalents for Section 6 preview (used when page theme = Light)
+function GlassWarCardSample() {
+  return (
+    <GlassCard variant="highlight" className="p-5 md:p-7">
+      <div className="flex items-center justify-between mb-3.5">
+        <div className="font-cinzel text-[11px] font-semibold uppercase tracking-[0.22em] text-gold">
+          &#9670; Active Mission &middot; OP-MERCURY-WEST
+        </div>
+        <span className="font-mono text-[10.5px] tracking-[0.18em] text-muted-foreground">PEAK &middot; 64%</span>
+      </div>
+      <h3 className="font-cinzel text-[22px] font-medium leading-[1.2] mb-2 text-foreground">
+        Organic Authority Sprint
+      </h3>
+      <p className="font-playfair text-[13.5px] leading-[1.65] text-muted-foreground mb-4">
+        Elevate domain rating by 10 points in 90 days via topical cluster completion during Mercury direct.
+      </p>
+      <div className="rounded-lg border border-gold/20 bg-gold/[0.04] p-3">
+        <div className="font-cinzel text-[10px] uppercase tracking-[0.20em] text-gold/70">KPI</div>
+        <div className="flex items-end justify-between mt-1.5">
+          <span className="font-cinzel text-base font-medium text-foreground">ORGANIC CTR</span>
+          <span className="text-xs text-muted-foreground">3.2 / 3.0 pts &nbsp;&middot;&nbsp; +64%</span>
+        </div>
+        <div className="mt-2 h-1.5 rounded-full bg-gold/10 overflow-hidden">
+          <div className="h-full rounded-full bg-gold" style={{ width: '64%' }} />
+        </div>
+      </div>
+    </GlassCard>
+  );
+}
+
+function GlassSeriesSample() {
+  return (
+    <div className="grid gap-2.5 content-start">
+      <GlassCard className="p-4">
+        <div className="font-cinzel text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">&#9670; DASHA</div>
+        <div className="font-cinzel text-base font-medium mt-1.5 text-foreground">Mercury &middot; Saturn &middot; Moon</div>
+        <div className="font-playfair italic text-[13px] mt-1 text-muted-foreground">Pratyantardasha &middot; 2y 4m remaining</div>
+      </GlassCard>
+      <GlassCard variant="muted" className="p-4">
+        <div className="font-cinzel text-[10px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">&#9671; COMPLETED</div>
+        <div className="font-cinzel text-sm mt-1.5 text-foreground">OP-SOLAR-SOUTH &middot; Pillar URL refresh</div>
+      </GlassCard>
+      <GlassCard variant="warning" className="p-4">
+        <div className="font-cinzel text-[10px] font-semibold uppercase tracking-[0.22em] text-red-500">&#9670; STREAK AT RISK</div>
+        <div className="font-cinzel text-sm mt-1.5 text-foreground">Pitru-Rin &middot; Day 12 ritual missed</div>
+      </GlassCard>
     </div>
   );
 }

@@ -70,6 +70,20 @@
   --strategist-card-elev:          var(--card-dark-elevated);
   --strategist-card-border:        rgba(197, 160, 89, 0.20);
   --strategist-card-border-strong: rgba(197, 160, 89, 0.40);
+
+  /* ── Override host Tailwind CSS vars so bg-card, bg-background,
+     text-foreground, text-muted-foreground etc. all shift in dark mode
+     without requiring component refactors.                               ── */
+  --background:         222 37% 6%;    /* #0a0d14 */
+  --foreground:         40 28% 88%;    /* #ECE6D6 */
+  --card:               217 27% 12%;   /* #161b27 */
+  --card-foreground:    40 28% 88%;    /* #ECE6D6 */
+  --muted:              218 27% 15%;   /* #1c2230 */
+  --muted-foreground:   42 5% 51%;     /* #8A8576 */
+  --border:             217 20% 22%;   /* dark gold-tinted border */
+  --input:              217 27% 18%;
+  --popover:            217 27% 12%;
+  --popover-foreground: 40 28% 88%;
 }
 
 /* ── Control Room modes: WHITE base + green matrix grid ─────────────────── */
