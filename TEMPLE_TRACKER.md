@@ -37,7 +37,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | # | Module | Tracker | Status | Hottest Open Point | Owner |
 |---|---|---|---|---|---|
 | 1 | Knowledge Engine | [`Knowledge_Engine/TRACKER.md`](Codex_Deliveries/Knowledge_Engine/TRACKER.md) | 🟡 ACTIVE | KE-IQ ✅ INTEGRATED commit `f7aa78b` 2026-05-18. 75/75 tests. **KE-OP-15 open: TT to verify `POST /api/knowledge-engine/questionnaire/submit`, `GET /api/knowledge-engine/questionnaire/profile`, Arc Angel β/γ enrichment, and `user_questionnaire_profiles` persistence on Render.** KE-OP-4 (rule approval) open. | TT |
-| 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | KP-2A + KP-Sprint2 ready to issue (TT). All CC blockers cleared 2026-05-15. | TT |
+| 2 | KP Oracle | [`KP/TRACKER.md`](Codex_Deliveries/KP/TRACKER.md) | 🟡 ACTIVE | KP-2A ✅ INTEGRATED `7d42880`. KP-Sprint2 🔵 IN PROGRESS (issued 2026-05-14, not yet delivered -- `/ask-question` still ComingSoon stub). **KP-OP-9: TT verify KP-2A features live (bundle slots 11/19/31/33 + Remedies Admin PATCH) → then issue KP-2B.** | TT |
 | 3 | Individual Reports | [`Individual_Reports/TRACKER.md`](Codex_Deliveries/Individual_Reports/TRACKER.md) | 🟣 PLANNED | IR-1 ready to issue Week 1 -- no dependency | TT |
 | 4 | Remedies Engine | [`Remedies/TRACKER.md`](Codex_Deliveries/Remedies/TRACKER.md) | 🟡 ACTIVE | `/api/remedies/ref/{id}` confirmed live. `krishna_prashnavali_remedies` seeded (36 records). REM-P1 ready to issue. | TT |
 | 5 | The Strategist | [`Strategist/TRACKER.md`](Codex_Deliveries/Strategist/TRACKER.md) | ✅ LIVE | STR-OP-3: Verify DashaTimingBar live data on `/strategist/missions` (TT) | TT |
