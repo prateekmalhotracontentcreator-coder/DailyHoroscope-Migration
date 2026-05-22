@@ -314,7 +314,7 @@ def _source_bundle_path() -> Path:
     env_path = os.getenv("KRISHNA_ORACLE_BUNDLE_PATH")
     if env_path:
         return Path(env_path).expanduser().resolve()
-    return (Path(__file__).resolve().parent.parent / "assets" / "krishna_oracle" / "krishna_oracle_content.json").resolve()
+    return (Path(__file__).resolve().parent / "assets" / "krishna_oracle" / "krishna_oracle_content.json").resolve()
 
 
 def _verdict_triplet(category: str) -> tuple[VerdictTraditional, VerdictBackend, VerdictDisplay]:

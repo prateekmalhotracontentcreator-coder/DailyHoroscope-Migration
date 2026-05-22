@@ -590,16 +590,14 @@ function KrishnaOracleApp() {
                 <BilingualBlockView label="Meaning" block={reading.answer.meaning} />
                 <div className="grid gap-4 md:grid-cols-2">
                   <BilingualBlockView label="What to Do" block={reading.answer.what_to_do} />
-                  {reading.summary_report?.behavioral_remedy
-                    ? <BilingualBlockView label="Sacred Remedy" block={reading.summary_report.behavioral_remedy} />
-                    : reading.answer.remedy
-                      ? <BilingualBlockView label="Remedy" block={reading.answer.remedy} />
-                      : null}
+                  {(reading.summary_report?.behavioral_remedy || reading.answer.behavioral_remedy) && (
+                    <BilingualBlockView label="Behavioural Practice" block={reading.summary_report?.behavioral_remedy || reading.answer.behavioral_remedy} />
+                  )}
                   <BilingualBlockView label="Precaution" block={reading.answer.precaution} />
                   <BilingualBlockView label="Duration" block={reading.answer.duration} />
                 </div>
-                {reading.answer.behavioral_remedy && (
-                  <BilingualBlockView label="Sacred Practice" block={reading.answer.behavioral_remedy} />
+                {reading.answer.remedy && (
+                  <BilingualBlockView label="Sacred Remedy" block={reading.answer.remedy} />
                 )}
                 <div className="grid gap-4 md:grid-cols-2">
                   {(reading.summary_report?.sacred_mantra || reading.answer.mantra)
