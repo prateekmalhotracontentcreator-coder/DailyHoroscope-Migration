@@ -59,6 +59,7 @@ function ExpandableCopy({ label, text, previewLength = 120, collapsedByDefault =
 
 export default function MissionCard({ mission, commandPlanet = '' }) {
   const navigate = useNavigate();
+  const missionPlanet = useMemo(() => inferMissionPlanet(mission), [mission]);
   if (!mission) return null;
 
   const {
@@ -74,7 +75,6 @@ export default function MissionCard({ mission, commandPlanet = '' }) {
     id,
     approval_status,
   } = mission;
-  const missionPlanet = useMemo(() => inferMissionPlanet(mission), [mission]);
   const isCommandPlanet = missionPlanet && commandPlanet && missionPlanet.toLowerCase() === commandPlanet.toLowerCase();
   const planetTone = PLANET_STYLES[missionPlanet] || 'border-white/10 bg-white/[0.03] text-muted-foreground';
   const statusTone = approval_status === 'approved'
