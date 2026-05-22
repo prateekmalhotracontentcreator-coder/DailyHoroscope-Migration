@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-22 (Session 7 -- KP-Sprint2 ✅ integrated `20d4d29` · KP-2B ✅ integrated `20f7b83` · SEO-20K M2 ✅ integrated `aba7d5c` · All pushed to main · Codex quota exhausted -- KP/IR-LON/SEO thread responses expected next Codex cycle)
+> Last updated: 2026-05-23 (Session 8 -- All 7 new module commission briefs drafted and ready to queue: ANGEL-1, RUD-1, LSG-1, TAR-SEO-1, CRY-1, FAITH-1, ZIB-1 · SEO-20K M3 brief also ready · Codex 3-week unlimited window active)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -22,7 +22,14 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | 🔵 M2 INTEGRATED -- AWAITING M3 | None | M1 ✅ live. M2 ✅ integrated `aba7d5c` (144 compatibility pages + 12 remedy hubs, routers, sitemap, App.js routes, Vercel cache headers). Confirmation sent to SEO thread. M3 pending next Codex cycle. |
+| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | 🔵 M2 INTEGRATED -- M3 BRIEF READY | None | M1 ✅ live. M2 ✅ integrated `aba7d5c`. M3 brief complete (`SEO/CODEX_COMMISSION_SEO_20K_M3.md`) -- Batches 4+8+10 (840 pages). Ready to issue to SEO thread. |
+| **ANGEL-1** | Angel Numbers Module -- 19 core number pages × 9 intents = 191 SEO pages (Phase 1) | Angel Numbers | `Angel_Numbers/CODEX_COMMISSION_ANGEL_NUMBERS.md` | 🟡 READY TO ISSUE | None | Maps to SEO 20K Batch 5. Source: Kyle Gray PDF + Fortuna Noir PDF. Priority 1 of new module sprint. |
+| **RUD-1** | Rudraksha Hub + 21 Mukhi Pages + Calculator | Rudraksha | `Rudraksha/CODEX_COMMISSION_RUDRAKSHA.md` | 🟡 READY TO ISSUE | None | 23 pages total. Calculator uses `vedic_calculator.py`. Source: Rudraksha-Revealed PDF. Priority 2. |
+| **LSG-1** | Lo Shu Grid Calculator + Hub + 9 Missing Number + 8 Arrow Pages | Lo Shu Grid | `Lo_Shu_Grid/CODEX_COMMISSION_LO_SHU_GRID.md` | 🟡 READY TO ISSUE | None | 19 pages. Decoded rules JSON already available. Pure numerology math -- no vedic_calculator.py. Priority 3. |
+| **TAR-SEO-1** | Tarot SEO Pages (78 cards × 60 spreads = ~4,820 pages) | Tarot SEO | `Tarot/CODEX_COMMISSION_TAROT_SEO.md` | 🟡 READY TO ISSUE | None | Maps to SEO 20K Batch 6. Source: single EPUB (22MB). Additive to existing /tarot route. Priority 4. |
+| **CRY-1** | Crystal Healing Hub + 50 Crystal Pages + 20 Intention Pages + Calculator | Crystal Healing | `Crystal_Healing/CODEX_COMMISSION_CRYSTAL_HEALING.md` | 🟡 READY TO ISSUE | None | 72 pages. Calculator uses `vedic_calculator.py`. Decoded gemstone data available. Priority 5. |
+| **FAITH-1** | Bible Promises (100 themes) + Bhagavad Gita (60 shlokas Ch1-4) | Faith Hubs | `Faith_Hubs/CODEX_COMMISSION_FAITH_HUBS.md` | 🟡 READY TO ISSUE | None | 163 pages. Maps to SEO 20K Batch 7. KJV + Sanskrit public domain. Priority 6. |
+| **ZIB-1** | Zibu Symbols Hub + 88 Symbol Pages | Zibu Symbols | `Zibu_Symbols/CODEX_COMMISSION_ZIBU_SYMBOLS.md` | 🟡 READY TO ISSUE | None | 89 pages. Source: docx + PDF. Phase 2 Manifestation Engine plug-in. Priority 7. |
 | **IR-5** | 12 Areas of Life Enhancement (Donut Chart + 10-Year Timeline + Graha Drishti + Claude 4-page reports) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_5_12AREAS_ENHANCEMENT.md` | 🔵 IN PROGRESS | IR-4 live verification (IR-OP-12) must pass first | Issued 2026-05-22. Vedic-only (Rahu/Ketu replace Uranus/Neptune). Adds 3 new calc functions to vedic_calculator.py + new router + 2 UI components. |
 
 ---
@@ -129,10 +136,16 @@
 
 ---
 
-## Commission Status Snapshot (updated 2026-05-22 · Session 7)
+## Commission Status Snapshot (updated 2026-05-23 · Session 8)
 
 ```
-INTEGRATED TODAY (Session 7):
+BRIEFS DRAFTED THIS SESSION (Session 8 -- 2026-05-23):
+  ANGEL-1  🟡 READY TO ISSUE   RUD-1    🟡 READY TO ISSUE
+  LSG-1    🟡 READY TO ISSUE   TAR-SEO-1 🟡 READY TO ISSUE
+  CRY-1    🟡 READY TO ISSUE   FAITH-1  🟡 READY TO ISSUE
+  ZIB-1    🟡 READY TO ISSUE   SEO-20K M3 🟡 READY TO ISSUE
+
+INTEGRATED (Session 7 -- 2026-05-22):
   KP-Sprint2  ✅ (20d4d29)  KP-2B       ✅ (20f7b83)
   SEO-20K M2  ✅ (aba7d5c)
 
@@ -145,22 +158,24 @@ INTEGRATED (prior sessions):
   KP-2A  ✅  REM-P1  ✅  IR-1  ✅  IR-2  ✅  IR-2A  ✅  IR-3  ✅
   STR-1  ✅  STR-2J  ✅  + all SEO-B/C series ✅
 
-IN PROGRESS (Codex threads open -- responses pending next Codex cycle):
-  SEO-20K     🔵 M2 integrated -- M3 brief confirmed to SEO thread, awaiting delivery
-  IR-5        🔵 Issued 2026-05-22 (blocked on IR-OP-12 TT live verify)
-  LK-1        🔵 Issued 2026-05-22 -- reconciliation phase
-  ORACLE-P3   ⏸ Dependency-blocked (KP-Sprint2 + KP-2B now live -- re-evaluate next cycle)
+IN PROGRESS (Codex threads open):
+  SEO-20K     🔵 M2 integrated -- M3 brief ready to issue
+  IR-5        🔵 Issued 2026-05-22
+  LK-1        🔵 Reconciliation phase
+  ORACLE-P3   ⏸ Dependency-blocked
 
 PENDING TT ACCEPTANCE VERIFICATION (live on production):
-  KP-Sprint2  ⚠️ TT to verify /ask-question acceptance checklist on production
-  KP-2B       ⚠️ TT to verify ritual screen + 3-pillar UX + astro enrichment on production
+  KP-Sprint2  ⚠️ TT to verify /ask-question acceptance checklist
+  KP-2B       ⚠️ TT to verify ritual screen + 3-pillar UX + astro enrichment
   LON-1       ⚠️ TT live review of save/detail flow (LON-OP-1)
 
-RECLASSIFIED (no Codex action):
-  SEO-1       🔒 Technical scope → SEO-20K Part A. Marketing scope → Temple Team ops.
-
-PARKED (awaiting engine source textbooks from Temple Team):
-  SEO-20K Batch 5 (Angel Numbers)
-  SEO-20K Batch 6 (Tarot Spread Matrices)
-  SEO-20K Batch 7 (Faith Hubs)
+ISSUING ORDER (Priority sequence for next Codex cycle):
+  1. SEO-20K M3  → SEO thread   (840 pages, no dependencies)
+  2. ANGEL-1     → new thread   (191 pages, Priority 1 module)
+  3. RUD-1       → new thread   (23 pages, Priority 2 module)
+  4. LSG-1       → new thread   (19 pages, Priority 3 module)
+  5. TAR-SEO-1   → new thread   (4,820 pages, Priority 4)
+  6. CRY-1       → new thread   (72 pages, Priority 5)
+  7. FAITH-1     → new thread   (163 pages, Priority 6)
+  8. ZIB-1       → new thread   (89 pages, Priority 7)
 ```
