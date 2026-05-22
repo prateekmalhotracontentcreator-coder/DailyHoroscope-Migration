@@ -8,7 +8,7 @@ import { SEO } from '../../components/SEO';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../components/ui/accordion';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api/numerology`;
+const API = `${BACKEND_URL}/api`;
 const SITE = 'https://www.everydayhoroscope.in';
 const CIRCLE = 2 * Math.PI * 54;
 

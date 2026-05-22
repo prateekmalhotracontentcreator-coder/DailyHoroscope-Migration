@@ -2,6 +2,8 @@ import React, { startTransition, useDeferredValue, useEffect, useMemo, useState 
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SharedBirthCityPicker from "../../components/SharedBirthCityPicker";
+import DonutChart from "../../components/reports/DonutChart";
+import TenYearTimeline from "../../components/reports/TenYearTimeline";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
 const API_BASE = `${BACKEND_URL}/api`;
@@ -602,6 +604,79 @@ function RemediesGrid({ remedies }) {
   );
 }
 
+function buildEnhancementRequest(report) {
+  if (!report?.report_type || !report?.input_payload) return null;
+  if (report.report_type === "retrograde_survival") {
+    if (!report.input_payload?.birth_data?.date || !report.input_payload?.birth_data?.time) return null;
+    return {
+      report_type: report.report_type,
+      input_payload: report.input_payload.birth_data,
+    };
+  }
+  if (!report.input_payload?.date || !report.input_payload?.time) return null;
+  return {
+    report_type: report.report_type,
+    input_payload: report.input_payload,
+  };
+}
+
+function EnhancementInsights({ enhancement, loading, error, accent }) {
+  if (loading) {
+    return <section style={{ ...surfaceStyle, padding: 24 }}>Loading 12-areas enhancement layer...</section>;
+  }
+  if (error) {
+    return (
+      <section style={{ ...surfaceStyle, padding: 24, color: "#8d392b" }}>
+        {error}
+      </section>
+    );
+  }
+  if (!enhancement) return null;
+  return (
+    <section style={{ display: "grid", gap: 18 }}>
+      <section style={{ ...surfaceStyle, padding: 24 }}>
+        <p style={{ margin: "0 0 10px", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: accent }}>
+          12 Areas Enhancement
+        </p>
+        <div style={{ display: "grid", gap: 18, gridTemplateColumns: "minmax(220px, 280px) minmax(0, 1fr)" }}>
+          <DonutChart percentage={enhancement.donut_resilience_percentage} />
+          <div style={{ display: "grid", gap: 14 }}>
+            <h3 style={{ margin: 0, fontSize: 26, fontFamily: "Georgia, Times New Roman, serif" }}>10-Year Vedic horizon</h3>
+            <TenYearTimeline flags={enhancement.ten_year_horizon_flags} />
+          </div>
+        </div>
+      </section>
+      <section style={{ ...surfaceStyle, padding: 24 }}>
+        <h3 style={{ margin: "0 0 12px", fontSize: 26, fontFamily: "Georgia, Times New Roman, serif" }}>Graha Drishti on this area</h3>
+        {enhancement.graha_drishti_on_house?.length ? (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+            {enhancement.graha_drishti_on_house.map((planet) => (
+              <span
+                key={planet}
+                style={{
+                  borderRadius: 999,
+                  padding: "10px 14px",
+                  background: "rgba(244, 236, 225, 0.78)",
+                  border: "1px solid rgba(92, 66, 32, 0.12)",
+                  fontWeight: 700,
+                }}
+              >
+                {planet}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <p style={{ margin: 0, color: "#6d5b4d" }}>No dominant graha drishti was surfaced for this house in the enhancement layer.</p>
+        )}
+      </section>
+      <section style={{ ...surfaceStyle, padding: 24 }}>
+        <h3 style={{ margin: "0 0 12px", fontSize: 26, fontFamily: "Georgia, Times New Roman, serif" }}>4-page Vedic narrative</h3>
+        <div style={{ color: "#625347", lineHeight: 1.74, whiteSpace: "pre-wrap" }}>{enhancement.generated_report_markdown}</div>
+      </section>
+    </section>
+  );
+}
+
 function KarmicDebtRenderer({ report, config }) {
   const output = report.output_payload;
   const body = output.report;
@@ -1061,7 +1136,7 @@ function renderFullReport(report, config) {
   }
 }
 
-function ReportPanel({ selectedReport, currentReport, archivedSummary, onGenerateMore }) {
+function ReportPanel({ selectedReport, currentReport, archivedSummary, onGenerateMore, enhancement, enhancementLoading, enhancementError }) {
   const content = currentReport ? renderFullReport(currentReport, selectedReport) : archivedSummary ? <ArchivedSummary item={archivedSummary} config={selectedReport} /> : null;
 
   return (
@@ -1075,6 +1150,9 @@ function ReportPanel({ selectedReport, currentReport, archivedSummary, onGenerat
           Generated reports render in full on this page. Archived history entries can always reopen their summary, and reopen the complete report when the full payload is available on this device.
         </p>
       </section>
+      {currentReport ? (
+        <EnhancementInsights enhancement={enhancement} loading={enhancementLoading} error={enhancementError} accent={selectedReport.color} />
+      ) : null}
       {content || (
         <section style={{ ...surfaceStyle, padding: 24 }}>
           <h3 style={{ marginTop: 0 }}>Nothing generated yet</h3>
@@ -1157,6 +1235,9 @@ function IndividualReportsPage() {
   const [historyItems, setHistoryItems] = useState([]);
   const [currentReport, setCurrentReport] = useState(null);
   const [archivedSummary, setArchivedSummary] = useState(null);
+  const [enhancement, setEnhancement] = useState(null);
+  const [enhancementLoading, setEnhancementLoading] = useState(false);
+  const [enhancementError, setEnhancementError] = useState("");
 
   useSeo(selectedReport, activeTab, currentReport || archivedSummary);
 
@@ -1208,6 +1289,46 @@ function IndividualReportsPage() {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    async function loadEnhancement() {
+      if (!currentReport) {
+        setEnhancement(null);
+        setEnhancementError("");
+        setEnhancementLoading(false);
+        return;
+      }
+      const requestPayload = buildEnhancementRequest(currentReport);
+      if (!requestPayload) {
+        setEnhancement(null);
+        setEnhancementLoading(false);
+        setEnhancementError(
+          currentReport.report_type === "retrograde_survival"
+            ? "Enhanced 12-areas analytics require personal birth data, so this panel is unavailable for general retrograde mode."
+            : ""
+        );
+        return;
+      }
+      setEnhancementLoading(true);
+      setEnhancementError("");
+      try {
+        const response = await axios.post(`${API_BASE}/reports/enhanced-analysis`, requestPayload, { withCredentials: true });
+        if (!active) return;
+        setEnhancement(response.data || null);
+      } catch (requestError) {
+        if (!active) return;
+        setEnhancement(null);
+        setEnhancementError(requestError?.response?.data?.detail || "Unable to load the 12-areas enhancement layer right now.");
+      } finally {
+        if (active) setEnhancementLoading(false);
+      }
+    }
+    loadEnhancement();
+    return () => {
+      active = false;
+    };
+  }, [currentReport]);
 
   useEffect(() => {
     setForm((previous) => {
@@ -1362,6 +1483,9 @@ function IndividualReportsPage() {
             currentReport={currentReport}
             archivedSummary={archivedSummary}
             onGenerateMore={() => handleGeneratePath(selectedReport)}
+            enhancement={enhancement}
+            enhancementLoading={enhancementLoading}
+            enhancementError={enhancementError}
           />
         ) : null}
 

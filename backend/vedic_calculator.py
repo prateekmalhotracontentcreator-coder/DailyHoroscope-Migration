@@ -987,6 +987,151 @@ def get_current_dasha(dashas: list) -> dict:
     return dashas[-1]
 
 
+def calculate_donut_resilience(house_data: dict) -> int:
+    """
+    Calculate the structural resilience percentage for a focus-area house.
+
+    The score starts at 50, then applies dignity and aspect modifiers, and is
+    capped between 5 and 95.
+    """
+    dignity_weights = {
+        "Exalted": 30,
+        "Moolatrikona": 25,
+        "Own Sign": 20,
+        "Neutral": 0,
+        "Enemy Sign": -15,
+        "Debilitated": -30,
+    }
+    resilience_score = 50
+    resilience_score += dignity_weights.get(str(house_data.get("essential_dignity") or "Neutral"), 0)
+    aspect_modifier = (int(house_data.get("benefic_aspects_count", 0)) * 10) - (int(house_data.get("malefic_aspects_count", 0)) * 10)
+    aspect_modifier = max(-20, min(20, aspect_modifier))
+    resilience_score += aspect_modifier
+    return max(5, min(95, resilience_score))
+
+
+def calculate_graha_drishti(planet_positions: dict) -> dict:
+    """
+    Compute Whole Sign Graha Drishti using Vedic sign-to-sign aspects.
+
+    Input values are 1-based sign indices.
+    """
+    special_aspects = {
+        "Saturn": [3, 10],
+        "Mars": [4, 8],
+        "Jupiter": [5, 9],
+        "Rahu": [5, 9],
+        "Ketu": [5, 9],
+    }
+    drishti_map = {}
+    for planet, current_sign in planet_positions.items():
+        try:
+            sign_index = int(current_sign)
+        except (TypeError, ValueError):
+            continue
+        target_houses = [7]
+        if planet in special_aspects:
+            target_houses.extend(special_aspects[planet])
+        aspected_signs = []
+        for house in target_houses:
+            target_sign = (sign_index + house - 1) % 12
+            aspected_signs.append(12 if target_sign == 0 else target_sign)
+        drishti_map[str(planet)] = sorted(set(aspected_signs))
+    return drishti_map
+
+
+def generate_10_year_horizon(natal_house_cusp_deg: float, running_dashas: list) -> list:
+    """
+    Generate a 10-year Temporal Optimisation Index horizon using dasha and
+    mid-year transit checks for Jupiter, Saturn, Rahu, and Ketu.
+    """
+    benefic_planets = {"Jupiter", "Venus", "Mercury", "Moon"}
+    malefic_planets = {"Saturn", "Mars", "Rahu", "Ketu", "Sun"}
+
+    def get_dasha_weight(check_date):
+        for dasha in running_dashas:
+            start = dasha.get("start")
+            end = dasha.get("end")
+            if isinstance(start, datetime):
+                start = start.date()
+            if isinstance(end, datetime):
+                end = end.date()
+            if start and end and start <= check_date <= end:
+                lord = str(dasha.get("lord") or dasha.get("planet") or "")
+                status = str(dasha.get("status") or "")
+                if status == "Benefic" or lord in benefic_planets:
+                    return 30
+                if status == "Malefic" or lord in malefic_planets:
+                    return -30
+                return 0
+        return 0
+
+    def midyear_julian_day(year: int) -> float:
+        moment = datetime(year, 6, 1, 12, 0, tzinfo=timezone.utc)
+        return swe.julday(moment.year, moment.month, moment.day, 12.0)
+
+    def angular_distance(a: float, b: float) -> float:
+        raw_diff = abs(a - b)
+        return 180.0 - abs(180.0 - raw_diff)
+
+    def within_orb(distance: float, target: float, orb: float) -> bool:
+        return abs(distance - target) <= orb
+
+    def get_transit_weight(year: int):
+        jd_ut = midyear_julian_day(year)
+        total = 0
+        notes: list[str] = []
+        transit_bodies = {
+            "Jupiter": swe.JUPITER,
+            "Saturn": swe.SATURN,
+            "Rahu": swe.MEAN_NODE,
+        }
+        longitudes: dict[str, float] = {}
+        for body, swe_id in transit_bodies.items():
+            result = swe.calc_ut(jd_ut, swe_id, SWE_FLAGS)[0]
+            longitudes[body] = result[0] % 360.0
+        longitudes["Ketu"] = (longitudes["Rahu"] + 180.0) % 360.0
+
+        jupiter_distance = angular_distance(longitudes["Jupiter"], natal_house_cusp_deg)
+        if within_orb(jupiter_distance, 0.0, 3.0) or within_orb(jupiter_distance, 120.0, 3.0):
+            total += 20
+            notes.append("Jupiter harmonises with the target house")
+
+        saturn_distance = angular_distance(longitudes["Saturn"], natal_house_cusp_deg)
+        if any(within_orb(saturn_distance, target, 3.0) for target in (0.0, 90.0, 180.0)):
+            total -= 20
+            notes.append("Saturn pressures the target house")
+
+        for node_name in ("Rahu", "Ketu"):
+            node_distance = angular_distance(longitudes[node_name], natal_house_cusp_deg)
+            if within_orb(node_distance, 0.0, 2.0):
+                total -= 15
+                notes.append(f"{node_name} conjoins the target house")
+
+        return total, notes
+
+    horizon_flags = []
+    start_year = datetime.now(timezone.utc).year
+    for year in range(start_year, start_year + 10):
+        eval_date = datetime(year, 6, 1, tzinfo=timezone.utc).date()
+        dasha_weight = get_dasha_weight(eval_date)
+        transit_weight, transit_notes = get_transit_weight(year)
+        toi = dasha_weight + transit_weight
+        if toi >= 15:
+            status = "Auspicious"
+            trigger = "Benefic dasha + harmonious planetary configurations active."
+        elif toi <= -15:
+            status = "Inauspicious"
+            trigger = "Malefic dasha or challenging transit -- consolidate and plan."
+        else:
+            status = "Stabilized"
+            trigger = "Neutral baseline -- steady progress possible."
+        if transit_notes:
+            trigger = f"{trigger} {'; '.join(transit_notes)}."
+        horizon_flags.append({"year": str(year), "status": status, "trigger": trigger})
+    return horizon_flags
+
+
 def check_mangal_dosha(mars_house: int) -> dict:
     """Check Mangal Dosha based on Mars house position."""
     dosha_houses = [1, 2, 4, 7, 8, 12]

@@ -2,6 +2,8 @@ import React, { startTransition, useDeferredValue, useEffect, useState } from "r
 import axios from "axios";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SharedBirthCityPicker from "../../components/SharedBirthCityPicker";
+import DonutChart from "../../components/reports/DonutChart";
+import TenYearTimeline from "../../components/reports/TenYearTimeline";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -372,6 +374,68 @@ function ListBlock({ items }) {
         <li key={`${index}-${String(item)}`}>{item}</li>
       ))}
     </ul>
+  );
+}
+
+function buildEnhancementRequest(report) {
+  if (!report?.report_type || report.report_type !== "lunar_cycle_wellness") return null;
+  if (!report.input_payload?.date_of_birth || !report.input_payload?.time_of_birth) return null;
+  return {
+    report_type: report.report_type,
+    input_payload: report.input_payload,
+  };
+}
+
+function EnhancementPanel({ enhancement, loading, error, accent }) {
+  if (loading) {
+    return <StackCard title="12 Areas Enhancement">Loading 12-areas enhancement layer...</StackCard>;
+  }
+  if (error) {
+    return (
+      <StackCard title="12 Areas Enhancement">
+        <p style={{ margin: 0, color: "#8c3b2e", lineHeight: 1.7 }}>{error}</p>
+      </StackCard>
+    );
+  }
+  if (!enhancement) return null;
+
+  return (
+    <>
+      <StackCard title="12 Areas Enhancement">
+        <div style={{ display: "grid", gap: 18, gridTemplateColumns: "minmax(220px, 280px) minmax(0, 1fr)" }}>
+          <DonutChart percentage={enhancement.donut_resilience_percentage} />
+          <div style={{ display: "grid", gap: 14 }}>
+            <p style={{ margin: 0, fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: accent }}>House-based analytics</p>
+            <TenYearTimeline flags={enhancement.ten_year_horizon_flags} />
+          </div>
+        </div>
+      </StackCard>
+      <StackCard title="Graha Drishti On This Area">
+        {enhancement.graha_drishti_on_house?.length ? (
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            {enhancement.graha_drishti_on_house.map((planet) => (
+              <span
+                key={planet}
+                style={{
+                  borderRadius: 999,
+                  padding: "10px 14px",
+                  background: "rgba(255,255,255,0.76)",
+                  border: "1px solid rgba(120,90,55,0.14)",
+                  fontWeight: 700,
+                }}
+              >
+                {planet}
+              </span>
+            ))}
+          </div>
+        ) : (
+          <p style={{ margin: 0, color: "#6d6256" }}>No dominant graha drishti surfaced for this house in the enhancement layer.</p>
+        )}
+      </StackCard>
+      <StackCard title="4-Page Vedic Narrative">
+        <div style={{ color: "#62574a", lineHeight: 1.74, whiteSpace: "pre-wrap" }}>{enhancement.generated_report_markdown}</div>
+      </StackCard>
+    </>
   );
 }
 
@@ -806,7 +870,7 @@ function LunarCycleRenderer({ output }) {
   );
 }
 
-function ReportRenderer({ report, selected, onGenerateAgain }) {
+function ReportRenderer({ report, selected, onGenerateAgain, enhancement, enhancementLoading, enhancementError }) {
   if (!report) {
     return (
       <section style={{ ...cardStyle, padding: 24 }}>
@@ -843,6 +907,10 @@ function ReportRenderer({ report, selected, onGenerateAgain }) {
         <h2 style={{ margin: "0 0 10px", fontSize: 34, fontFamily: "Georgia, Times New Roman, serif" }}>{report.summary}</h2>
         <p style={{ margin: 0, color: "#7a6d60" }}>Generated {prettifyDate(report.created_at)}</p>
       </div>
+
+      {type === "lunar_cycle_wellness" ? (
+        <EnhancementPanel enhancement={enhancement} loading={enhancementLoading} error={enhancementError} accent={selected.accent} />
+      ) : null}
 
       {type === "love_weather" ? <LoveWeatherRenderer output={output} /> : null}
       {type === "encounter_window" ? <EncounterRenderer output={output} /> : null}
@@ -922,6 +990,9 @@ function LoveReportsPage() {
   const [historyRows, setHistoryRows] = useState([]);
   const [loadingHistory, setLoadingHistory] = useState(true);
   const [historyError, setHistoryError] = useState("");
+  const [enhancement, setEnhancement] = useState(null);
+  const [enhancementLoading, setEnhancementLoading] = useState(false);
+  const [enhancementError, setEnhancementError] = useState("");
 
   useProtectedSeo();
 
@@ -965,6 +1036,36 @@ function LoveReportsPage() {
       active = false;
     };
   }, []);
+
+  useEffect(() => {
+    let active = true;
+    async function loadEnhancement() {
+      const requestPayload = buildEnhancementRequest(currentReport);
+      if (!requestPayload) {
+        setEnhancement(null);
+        setEnhancementLoading(false);
+        setEnhancementError("");
+        return;
+      }
+      setEnhancementLoading(true);
+      setEnhancementError("");
+      try {
+        const response = await axios.post(`${API}/reports/enhanced-analysis`, requestPayload, { withCredentials: true });
+        if (!active) return;
+        setEnhancement(response.data || null);
+      } catch (requestError) {
+        if (!active) return;
+        setEnhancement(null);
+        setEnhancementError(requestError?.response?.data?.detail || "Unable to load the 12-areas enhancement layer right now.");
+      } finally {
+        if (active) setEnhancementLoading(false);
+      }
+    }
+    loadEnhancement();
+    return () => {
+      active = false;
+    };
+  }, [currentReport]);
 
   useEffect(() => {
     const params = queryParams(location.search);
@@ -1065,7 +1166,16 @@ function LoveReportsPage() {
             />
           </>
         ) : null}
-        {activeTab === "report" ? <ReportRenderer report={currentReport} selected={selected} onGenerateAgain={resetForNew} /> : null}
+        {activeTab === "report" ? (
+          <ReportRenderer
+            report={currentReport}
+            selected={selected}
+            onGenerateAgain={resetForNew}
+            enhancement={enhancement}
+            enhancementLoading={enhancementLoading}
+            enhancementError={enhancementError}
+          />
+        ) : null}
         {activeTab === "history" ? <HistoryPanel historyRows={historyRows} loadingHistory={loadingHistory} historyError={historyError} onOpen={openHistoryItem} /> : null}
       </div>
     </div>

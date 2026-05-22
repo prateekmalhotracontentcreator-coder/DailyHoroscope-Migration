@@ -26,7 +26,7 @@ Before writing a single line of code, read these files in order:
 | API | https://everydayhoroscope-api.onrender.com |
 | Repo | `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration` |
 | Frontend | React → Vercel (~2 min deploy) |
-| Backend | FastAPI → Render Docker (~3 min deploy) |
+| Backend | FastAPI → Render Docker (~3 min deploy) · **Starter plan (always-on, no cold starts)** |
 | DB | MongoDB Motor async -- env: `MONGO_URL`, `DB_NAME=horoscope_db` |
 
 ---
