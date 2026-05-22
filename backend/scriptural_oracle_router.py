@@ -178,6 +178,10 @@ class KrishnaReadingDocument(StrictModel):
     answer: KrishnaCanonicalAnswer
     astrology: AstrologyContext = Field(default_factory=AstrologyContext)
     summary_report: dict[str, BilingualBlock]
+    astro_context: str | None = None
+    current_mahadasha: str | None = None
+    current_antardasha: str | None = None
+    birth_data_present: bool = False
     meta: dict[str, Any] = Field(default_factory=dict)
     created_at: datetime
     updated_at: datetime
@@ -556,6 +560,19 @@ def _astrology_context_block(astrology: AstrologyContext, answer: KrishnaCanonic
     )
 
 
+def _fallback_oracle_astro_context(astrology: AstrologyContext, answer: KrishnaCanonicalAnswer) -> str | None:
+    if not astrology.current_mahadasha:
+        return None
+    verdict = answer.verdict_display
+    if verdict == "YES":
+        return f"Your {astrology.current_mahadasha} supports forward movement, but Krishna still asks for disciplined action over impulse."
+    if verdict == "WAIT":
+        return f"Your {astrology.current_mahadasha} makes patience essential; this is a period for timing, not force."
+    if verdict == "NO":
+        return f"Your {astrology.current_mahadasha} highlights friction around this path, so restraint is wiser than pushing ahead."
+    return f"Your {astrology.current_mahadasha} points inward now; devotion and surrender matter more than direct effort."
+
+
 def _dasha_astrology_from_birth(
     date_of_birth: str,
     time_of_birth: str,
@@ -625,7 +642,7 @@ ORACLE DATA:
 - Sacred message: {answer.krishna_message.english_block}
 - {dasha_context}
 
-Generate two sections. Return ONLY valid JSON with these two keys:
+Generate three sections. Return ONLY valid JSON with these three keys:
 
 "question_response": A 4-5 sentence personalised response to the seeker's specific question.
   - Address the question directly by name at the start
@@ -638,6 +655,11 @@ Generate two sections. Return ONLY valid JSON with these two keys:
   - Include timing where relevant
   - Step 1 should be immediate (today/this week), later steps should extend over the duration
   - Do not repeat the verdict word -- embody its meaning through the actions
+
+"astro_context": one sentence, maximum 20 words.
+  - Only include this if dasha context is present
+  - Connect the current dasha period directly to the oracle verdict
+  - Be specific and grounded, never mystical filler
 
 Return ONLY the JSON object, no markdown fences."""
 
@@ -662,6 +684,7 @@ Return ONLY the JSON object, no markdown fences."""
         return {
             "question_response": str(parsed.get("question_response", "")),
             "practical_action": str(parsed.get("practical_action", "")),
+            "astro_context": str(parsed.get("astro_context", "")),
         }
     except Exception:
         return None
@@ -723,6 +746,8 @@ async def _summary_report(
     q_response = _question_response_block(answer, question_text, focus_area)
     p_action = _practical_action_block(answer, ritual_remedy_doc)
 
+    astro_context_text = _fallback_oracle_astro_context(astrology, answer)
+
     # Claude enrichment: generates full-length personalised text for both blocks
     enriched = await _claude_enrich_summary(question_text, focus_area, answer.verdict_display, answer, astrology)
     if enriched:
@@ -736,11 +761,20 @@ async def _summary_report(
                 sanskrit_block=p_action.sanskrit_block,
                 english_block=enriched["practical_action"],
             )
+        if enriched.get("astro_context"):
+            astro_context_text = str(enriched["astro_context"]).strip() or astro_context_text
 
     report: dict[str, BilingualBlock | None] = {
         "sacred_verse": answer.krishna_answer,
         "question_response": q_response,
-        "astro_scientific_context": _astrology_context_block(astrology, answer),
+        "astro_scientific_context": (
+            BilingualBlock(
+                sanskrit_block="आपकी वर्तमान दशा इस उत्तर की समय-संवेदना को और स्पष्ट करती है।",
+                english_block=f"{astro_context_text} {answer.meaning.english_block}".strip(),
+            )
+            if astro_context_text
+            else _astrology_context_block(astrology, answer)
+        ),
         "practical_action": p_action,
     }
     # behavioral_remedy: bundle (v2) first → Engine fallback
@@ -1198,6 +1232,7 @@ async def select_krishna_cell(payload: KrishnaSelectionRequest, request: Request
 
     # Resolve astrology: payload birth fields take priority over middleware context
     astrology = _resolve_astrology_context(request)
+    birth_data_present = bool(payload.date_of_birth and payload.time_of_birth and payload.latitude is not None and payload.longitude is not None)
     if payload.date_of_birth and payload.time_of_birth:
         computed = _dasha_astrology_from_birth(
             payload.date_of_birth, payload.time_of_birth, payload.timezone_offset
@@ -1216,6 +1251,14 @@ async def select_krishna_cell(payload: KrishnaSelectionRequest, request: Request
     bundle_remedy_missing = not (answer.behavioral_remedy and answer.behavioral_remedy.english_block)
     if bundle_remedy_missing and answer.remedy_ref:
         ritual_remedy_doc = await _resolve_kp_remedy_doc(request, answer.remedy_ref)
+
+    summary_report = await _summary_report(answer, astrology, payload.question_text, payload.focus_area, ritual_remedy_doc)
+    astro_context = None
+    astro_block = summary_report.get("astro_scientific_context")
+    if astro_block:
+        raw_context = astro_block.english_block.strip()
+        if raw_context:
+            astro_context = raw_context.split(". ")[0].strip()
 
     now = _now()
     report = KrishnaReadingDocument(
@@ -1236,7 +1279,11 @@ async def select_krishna_cell(payload: KrishnaSelectionRequest, request: Request
         answer_slot=answer.answer_slot,
         answer=answer,
         astrology=astrology,
-        summary_report=await _summary_report(answer, astrology, payload.question_text, payload.focus_area, ritual_remedy_doc),
+        summary_report=summary_report,
+        astro_context=astro_context,
+        current_mahadasha=astrology.current_mahadasha if birth_data_present else None,
+        current_antardasha=astrology.antardasha if birth_data_present else None,
+        birth_data_present=birth_data_present and bool(astrology.current_mahadasha),
         meta={
             "engine_version": ENGINE_VERSION,
             "jump_interval": JUMP_INTERVAL,

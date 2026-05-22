@@ -1,15 +1,15 @@
 import { SEO } from '../../components/SEO';
 import { PremiumGateCard } from '../../components/PremiumRoute';
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 
 import KrishnaOracleGrid from "../../components/KrishnaOracleGrid";
-import { extractChaupaiIndices } from "../../utils/chaupaiExtractor";
 import SharedBirthCityPicker from "../../components/SharedBirthCityPicker";
 import KrishnaShareCard from "../../components/KrishnaShareCard";
 import { ShareButtons } from "../../components/ShareCard";
+import KrishnaRitualScreen from "../../components/kp/KrishnaRitualScreen";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "";
 const API = `${BACKEND_URL}/api/oracle/krishna-prashnavali`;
@@ -38,24 +38,38 @@ function SectionCard({ title, eyebrow, children, className = "" }) {
   );
 }
 
-function BilingualBlockView({ label, block }) {
-  if (!block) return null;
+function OracleGlassCard({ title, className = "", children, delay = "0s" }) {
   return (
-    <div className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
-      <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">{label}</p>
-      {block.sanskrit_block ? <p className="m-0 mt-3 text-lg leading-8 text-stone-900 dark:text-amber-50">{block.sanskrit_block}</p> : null}
-      <p className="m-0 mt-2 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{block.english_block}</p>
-    </div>
+    <section
+      className={`rounded-xl border border-amber-300/30 bg-amber-500/[0.04] p-5 shadow-sm backdrop-blur-sm dark:border-amber-300/15 ${className}`}
+      style={{ animation: `kpFadeInUp 0.7s ease-out ${delay} both` }}
+    >
+      {title ? <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">{title}</p> : null}
+      {children}
+    </section>
   );
 }
 
-function SummaryBlock({ title, content }) {
-  if (!content) return null;
+function VerdictBadge({ verdict }) {
+  const classes = {
+    YES: "bg-green-900/40 border-green-500/40 text-green-300",
+    WAIT: "bg-blue-900/40 border-blue-500/40 text-blue-300",
+    NO: "bg-red-900/40 border-red-500/40 text-red-300",
+    PRAY: "bg-purple-900/40 border-purple-500/40 text-purple-300",
+  };
   return (
-    <div className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
-      <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">{title}</p>
-      {content.sanskrit_block ? <p className="m-0 mt-3 text-base leading-7 text-stone-900 dark:text-amber-50">{content.sanskrit_block}</p> : null}
-      <p className="m-0 mt-2 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{content.english_block}</p>
+    <span className={`inline-flex items-center rounded-full border px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] ${classes[verdict] || classes.WAIT}`}>
+      {verdict}
+    </span>
+  );
+}
+
+function DetailLine({ label, value }) {
+  if (!value) return null;
+  return (
+    <div className="rounded-2xl border border-amber-200/80 bg-white/70 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
+      <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-700/80 dark:text-amber-300/70">{label}</p>
+      <p className="m-0 mt-2 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{value}</p>
     </div>
   );
 }
@@ -210,12 +224,13 @@ function KrishnaOracleApp() {
   const [error, setError] = useState("");
   const [questionText, setQuestionText] = useState("");
   const [focusArea, setFocusArea] = useState("guidance");
-  const [revealEnabled, setRevealEnabled] = useState(true);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [reading, setReading] = useState(null);
   const [loadingPastReading, setLoadingPastReading] = useState(false);
+  const [ritualComplete, setRitualComplete] = useState(() => window.sessionStorage.getItem("kp_ritual_done") === "1");
   const guidanceRef = useRef(null);
   const shareCardRef = useRef(null);
+  const historyRef = useRef(null);
 
   // Scroll to Guidance Report whenever a reading is loaded (new or past)
   useEffect(() => {
@@ -231,10 +246,6 @@ function KrishnaOracleApp() {
   const [birthAutoFilled, setBirthAutoFilled] = useState(false);
 
   const gridMatrix = metadata?.grid_matrix || [];
-  const revealIndices = useMemo(() => {
-    if (selectedIndex == null) return [];
-    return extractChaupaiIndices(selectedIndex);
-  }, [selectedIndex]);
 
   useEffect(() => {
     document.title = "Krishna Prashnavali | Everyday Horoscope";
@@ -328,6 +339,17 @@ function KrishnaOracleApp() {
     return "";
   }
 
+  function handleRitualComplete() {
+    window.sessionStorage.setItem("kp_ritual_done", "1");
+    setRitualComplete(true);
+  }
+
+  function handleAskAgain() {
+    setReading(null);
+    setSelectedIndex(null);
+    guidanceRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   async function handleCellSelect({ row, col, index }) {
     const nextQuestionError = validateQuestion(questionText);
     if (nextQuestionError) {
@@ -357,7 +379,7 @@ function KrishnaOracleApp() {
           question_text: questionText.trim() || null,
           focus_area: focusArea,
           language_preference: "bilingual",
-          reveal_mode: revealEnabled ? "ritual" : "instant",
+          reveal_mode: "ritual",
           ...birthPayload,
         },
         { withCredentials: true }
@@ -374,6 +396,12 @@ function KrishnaOracleApp() {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(217,168,74,0.18),_transparent_42%),linear-gradient(180deg,_#fffaf0_0%,_#f6ead6_52%,_#efe2cd_100%)] px-4 py-8 text-stone-900 dark:bg-[radial-gradient(circle_at_top,_rgba(180,83,9,0.18),_transparent_40%),linear-gradient(180deg,_#0a0604_0%,_#120a06_48%,_#090605_100%)] dark:text-white md:px-8">
       <SEO title="Krishna Prashnavali Oracle" noindex={true} />
+      <style>{`
+        @keyframes kpFadeInUp {
+          from { opacity: 0; transform: translateY(18px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
       <div className="mx-auto max-w-7xl space-y-6">
         <div className="flex items-center justify-between">
           <Link
@@ -404,21 +432,12 @@ function KrishnaOracleApp() {
                     <option value="spiritual">Spiritual</option>
                   </select>
                 </label>
-                <label className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
-                  <span className="block text-[11px] uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Reveal mode</span>
-                  <button
-                    type="button"
-                    onClick={() => setRevealEnabled((current) => !current)}
-                    className="mt-3 inline-flex rounded-full border border-amber-300 bg-white px-4 py-2 text-sm text-stone-900 dark:border-amber-700/60 dark:bg-[#1d120b] dark:text-amber-50"
-                  >
-                    {revealEnabled ? "Ritual reveal" : "Instant reveal"}
-                  </button>
-                  <p className="mt-3 text-sm leading-6 text-stone-600 dark:text-amber-100/70">
-                    {revealEnabled
-                      ? "Letters illuminate before the answer appears. The answer itself stays deterministic."
-                      : "Skips the ritual animation and shows the same answer immediately."}
+                <div className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
+                  <span className="block text-[11px] uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Ritual Flow</span>
+                  <p className="mt-3 text-sm leading-7 text-stone-700 dark:text-amber-100/75">
+                    A white-light meditation opens once per browser session. After it fades, the grid and letter sequence reveal remain fully deterministic.
                   </p>
-                </label>
+                </div>
               </div>
               <label className="block rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
                 <span className="block text-[11px] uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Your Question</span>
@@ -568,13 +587,21 @@ function KrishnaOracleApp() {
           {loadingMeta ? (
             <p className="m-0 text-sm text-stone-600 dark:text-amber-100/75">Loading Krishna grid...</p>
           ) : (
-            <KrishnaOracleGrid
-              gridMatrix={gridMatrix}
-              selectedIndex={selectedIndex}
-              disabled={submitting}
-              revealEnabled={revealEnabled}
-              onSelect={handleCellSelect}
-            />
+            <div className="relative overflow-hidden rounded-[1.75rem]">
+              {!ritualComplete ? <KrishnaRitualScreen onComplete={handleRitualComplete} /> : null}
+              <div
+                className={`transition-opacity ${ritualComplete ? "opacity-100" : "pointer-events-none opacity-0"}`}
+                style={{ transitionDuration: "1500ms" }}
+              >
+                <KrishnaOracleGrid
+                  gridMatrix={gridMatrix}
+                  selectedIndex={selectedIndex}
+                  disabled={submitting}
+                  revealEnabled={true}
+                  onSelect={handleCellSelect}
+                />
+              </div>
+            </div>
           )}
         </SectionCard>
 
@@ -582,60 +609,113 @@ function KrishnaOracleApp() {
           <>
           <div ref={guidanceRef}>
           <SectionCard title="Guidance Report" eyebrow={`Answer slot ${reading.answer_slot}`}>
-            <div className="grid gap-4 xl:grid-cols-[1.2fr,0.8fr]">
-              <div className="space-y-4">
-                {reading.question_text ? <BilingualBlockView label="Your Question" block={{ sanskrit_block: reading.question_text, english_block: reading.focus_area ? `Focus area: ${reading.focus_area}` : "Specific question submitted" }} /> : null}
-                <BilingualBlockView label="Your Chaupai" block={reading.chaupai_string} />
-                <BilingualBlockView label="Krishna's Answer" block={reading.answer.krishna_answer} />
-                <BilingualBlockView label="Meaning" block={reading.answer.meaning} />
-                <div className="grid gap-4 md:grid-cols-2">
-                  <BilingualBlockView label="What to Do" block={reading.answer.what_to_do} />
-                  {(reading.summary_report?.behavioral_remedy || reading.answer.behavioral_remedy) && (
-                    <BilingualBlockView label="Behavioural Practice" block={reading.summary_report?.behavioral_remedy || reading.answer.behavioral_remedy} />
-                  )}
-                  <BilingualBlockView label="Precaution" block={reading.answer.precaution} />
-                  <BilingualBlockView label="Duration" block={reading.answer.duration} />
-                </div>
-                {reading.answer.remedy && (
-                  <BilingualBlockView label="Sacred Remedy" block={reading.answer.remedy} />
-                )}
-                <div className="grid gap-4 md:grid-cols-2">
-                  {(reading.summary_report?.sacred_mantra || reading.answer.mantra)
-                    ? <BilingualBlockView label="Mantra" block={reading.summary_report?.sacred_mantra || reading.answer.mantra} />
-                    : null}
-                  <BilingualBlockView label="Krishna's Message" block={reading.answer.krishna_message} />
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <div className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
-                  <p className="m-0 text-[11px] uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Verdict</p>
-                  <p className="m-0 mt-3 text-3xl font-semibold text-stone-900 dark:text-amber-50">{reading.answer.verdict_display}</p>
-                  <p className="m-0 mt-2 text-sm leading-7 text-stone-700 dark:text-amber-100/80">
-                    {reading.answer.verdict_traditional} → {reading.answer.verdict_backend}
+            <div className="space-y-5">
+              {reading.question_text ? (
+                <div className="rounded-2xl border border-amber-200/80 bg-white/70 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
+                  <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Your Question</p>
+                  <p className="m-0 mt-3 text-base leading-8 text-stone-900 dark:text-amber-50">{reading.question_text}</p>
+                  <p className="m-0 mt-2 text-sm leading-7 text-stone-600 dark:text-amber-100/70">
+                    Focus area: {(reading.focus_area || "guidance").replace(/_/g, " ")}
                   </p>
                 </div>
-                <SummaryBlock title="Sacred Verse" content={reading.summary_report?.sacred_verse} />
-                <SummaryBlock title="Question Response" content={reading.summary_report?.question_response} />
-                <SummaryBlock title="Astro-Scientific Context" content={reading.summary_report?.astro_scientific_context} />
-                <SummaryBlock title="Practical Action" content={reading.summary_report?.practical_action} />
-                <div className="rounded-2xl border border-amber-200/80 bg-white/75 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
-                  <p className="m-0 text-[11px] uppercase tracking-[0.26em] text-amber-700/80 dark:text-amber-300/70">Sequence indices</p>
-                  <p className="m-0 mt-3 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{revealIndices.join(", ")}</p>
+              ) : null}
+
+              <OracleGlassCard className="text-center" delay="0s">
+                <div className="flex flex-col items-center gap-4">
+                  <VerdictBadge verdict={reading.answer.verdict_display} />
+                  <p className="m-0 font-serif text-2xl leading-10 text-amber-700 dark:text-amber-300 md:text-3xl">
+                    {reading.answer.chaupai_phrase || reading.chaupai_string?.sanskrit_block}
+                  </p>
+                  <p className="m-0 text-sm font-semibold uppercase tracking-[0.24em] text-stone-500 dark:text-amber-100/60">
+                    {reading.answer.title?.english_block}
+                  </p>
+                  <p className="m-0 max-w-3xl font-playfair text-xl italic leading-9 text-stone-800/90 dark:text-amber-50/85">
+                    {reading.answer.krishna_answer?.english_block}
+                  </p>
                 </div>
-                {/* KrishnaShareCard is offscreen -- position:fixed left:-9999 -- capture target only */}
-                <KrishnaShareCard
-                  ref={shareCardRef}
-                  reading={{
-                    verdict_display: reading.answer.verdict_display,
-                    chaupai_phrase: reading.answer.chaupai_phrase || reading.chaupai_string?.sanskrit_block || "",
-                    title: reading.answer.title,
-                    krishna_answer: reading.answer.krishna_answer,
-                    what_to_do: reading.answer.what_to_do,
-                    krishna_message: reading.answer.krishna_message,
-                  }}
-                />
+              </OracleGlassCard>
+
+              <div className="grid gap-5 md:grid-cols-2">
+                <OracleGlassCard title="Your Cosmic Context" delay="0.15s">
+                  {reading.birth_data_present ? (
+                    <div className="space-y-4">
+                      <p className="m-0 text-sm leading-7 text-stone-700 dark:text-amber-100/80">
+                        You are in {reading.current_mahadasha} · {reading.current_antardasha}
+                      </p>
+                      {reading.astro_context ? (
+                        <p className="m-0 text-sm leading-7 text-stone-700 dark:text-amber-100/80">{reading.astro_context}</p>
+                      ) : null}
+                      <div className="rounded-2xl border border-amber-200/80 bg-white/70 p-4 dark:border-amber-900/60 dark:bg-stone-950/40">
+                        <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.24em] text-amber-700/80 dark:text-amber-300/70">What this means for you</p>
+                        <p className="m-0 mt-3 text-sm leading-7 text-stone-700 dark:text-amber-100/80">
+                          {reading.answer.meaning?.english_block}
+                        </p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="rounded-2xl border border-amber-400/40 bg-amber-50/80 p-4 text-sm leading-7 text-amber-900 dark:border-amber-700/40 dark:bg-amber-900/20 dark:text-amber-200">
+                      <p className="m-0">Add your birth details to unlock your personal cosmic context.</p>
+                      <Link to="/birth-chart" className="mt-3 inline-flex font-semibold text-amber-700 underline dark:text-amber-300">
+                        Add birth details →
+                      </Link>
+                    </div>
+                  )}
+                </OracleGlassCard>
+
+                <OracleGlassCard title="Your Path Forward" delay="0.3s">
+                  <div className="space-y-4">
+                    <p className="m-0 text-sm leading-7 text-stone-700 dark:text-amber-100/80">
+                      {reading.answer.what_to_do?.english_block}
+                    </p>
+                    <DetailLine
+                      label="Inner shift required"
+                      value={(reading.summary_report?.behavioral_remedy || reading.answer.behavioral_remedy)?.english_block}
+                    />
+                    <DetailLine
+                      label="Sacred Remedy"
+                      value={reading.answer.remedy?.english_block}
+                    />
+                    <DetailLine
+                      label="Watch for"
+                      value={reading.answer.precaution?.english_block}
+                    />
+                    <DetailLine
+                      label="Timeframe"
+                      value={reading.answer.duration?.english_block}
+                    />
+                  </div>
+                </OracleGlassCard>
               </div>
+
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={handleAskAgain}
+                  className="rounded-full border border-amber-300 bg-white/80 px-4 py-2 text-sm font-medium text-stone-900 transition hover:bg-amber-50 dark:border-amber-700/60 dark:bg-stone-950/40 dark:text-amber-50 dark:hover:bg-stone-900"
+                >
+                  Ask again
+                </button>
+                <button
+                  type="button"
+                  onClick={() => historyRef.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                  className="rounded-full border border-amber-300 bg-white/80 px-4 py-2 text-sm font-medium text-stone-900 transition hover:bg-amber-50 dark:border-amber-700/60 dark:bg-stone-950/40 dark:text-amber-50 dark:hover:bg-stone-900"
+                >
+                  View history
+                </button>
+              </div>
+
+              {/* KrishnaShareCard is offscreen -- position:fixed left:-9999 -- capture target only */}
+              <KrishnaShareCard
+                ref={shareCardRef}
+                reading={{
+                  verdict_display: reading.answer.verdict_display,
+                  chaupai_phrase: reading.answer.chaupai_phrase || reading.chaupai_string?.sanskrit_block || "",
+                  title: reading.answer.title,
+                  krishna_answer: reading.answer.krishna_answer,
+                  what_to_do: reading.answer.what_to_do,
+                  krishna_message: reading.answer.krishna_message,
+                }}
+              />
             </div>
           </SectionCard>
           </div>
@@ -650,6 +730,7 @@ function KrishnaOracleApp() {
           </>
         ) : null}
 
+        <div ref={historyRef}>
         <SectionCard title="Recent Krishna Readings" eyebrow="History">
           {loadingHistory ? (
             <p className="m-0 text-sm text-stone-600 dark:text-amber-100/75">Loading history...</p>
@@ -677,6 +758,7 @@ function KrishnaOracleApp() {
             </div>
           )}
         </SectionCard>
+        </div>
 
         {/* ── On-page SEO content ─────────────────────────────────────────── */}
         <div className="mt-12 space-y-8 border-t border-amber-200/50 pt-10 text-sm text-stone-600 dark:border-amber-900/40 dark:text-amber-100/60">
