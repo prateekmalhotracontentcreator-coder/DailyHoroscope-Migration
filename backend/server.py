@@ -62,9 +62,11 @@ from admin_utils import (
     set_admin_session_cookie, update_admin_password, hash_new_password, ADMIN_USERNAME
 )
 from remedies_router import router as remedies_router
+from compatibility_router import router as compatibility_router
 from panchang_router import router as panchang_router
 from seo_router import router as seo_router
 from numerology_router import LoveCalculatorRequest, LoveCalculatorResponse, love_calculator, router as numerology_router
+from remedy_matching_router import router as remedy_matching_router
 from tarot_router import router as tarot_router
 from kundali_router import router as kundali_router
 from karmic_debt_router import router as karmic_debt_router
@@ -2524,6 +2526,7 @@ async def get_arc_angel_profile(user_id: str):
 app.include_router(api_router)
 app.include_router(panchang_router)
 app.include_router(seo_router)
+app.include_router(compatibility_router)
 app.include_router(numerology_router)
 app.include_router(tarot_router)
 app.include_router(kundali_router)
@@ -2561,6 +2564,7 @@ app.include_router(lk_router)
 app.include_router(strategist_router)
 app.include_router(kp_router)
 app.include_router(remedies_router)
+app.include_router(remedy_matching_router)
 app.include_router(live_tv_router)
 app.include_router(punya_rewards_router)
 if _longevity_router_ok and longevity_router is not None:

@@ -28,6 +28,34 @@ HOROSCOPE_SIGNS = [
 ]
 HOROSCOPE_PERIODS = ["tomorrow", "weekly", "monthly"]
 CHOGHADIYA_PERIODS = ["today", "tonight", "tomorrow", "tomorrow-night"]
+COMPATIBILITY_SIGNS = [
+    "aries",
+    "taurus",
+    "gemini",
+    "cancer",
+    "leo",
+    "virgo",
+    "libra",
+    "scorpio",
+    "sagittarius",
+    "capricorn",
+    "aquarius",
+    "pisces",
+]
+REMEDY_DOSHAS = [
+    "shani-sade-sati",
+    "manglik-dosha",
+    "pitru-dosha",
+    "kaal-sarp-dosha",
+    "shani-mahadasha",
+    "rahu-mahadasha",
+    "ketu-mahadasha",
+    "guru-chandal-yoga",
+    "grahan-yoga",
+    "nadi-dosha",
+    "gana-dosha",
+    "bhakoot-dosha",
+]
 
 
 def _sitemap_xml(urls: list[tuple[str, str | None]]) -> str:
@@ -80,4 +108,22 @@ async def get_horoscope_sitemap() -> Response:
         for sign in HOROSCOPE_SIGNS
         for period in HOROSCOPE_PERIODS
     ]
+    return _xml_response(_sitemap_xml(urls))
+
+
+@router.get("/sitemap/compatibility")
+async def get_compatibility_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = []
+    for sign1 in COMPATIBILITY_SIGNS:
+        for sign2 in COMPATIBILITY_SIGNS:
+            canonical_pair = "-and-".join(sorted([sign1, sign2]))
+            urls.append((f"{SITE_URL}/compatibility/{canonical_pair}", today))
+    return _xml_response(_sitemap_xml(urls))
+
+
+@router.get("/sitemap/remedies")
+async def get_remedies_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = [(f"{SITE_URL}/remedies/{slug}", today) for slug in REMEDY_DOSHAS]
     return _xml_response(_sitemap_xml(urls))

@@ -115,7 +115,9 @@ const HoraTodayPage = lazy(() => import('./pages/hora/HoraTodayPage').then(m => 
 const RashiCalculatorPage = lazy(() => import('./pages/calculators/RashiCalculatorPage').then(m => ({ default: m.RashiCalculatorPage })));
 const NakshatraCalculatorPage = lazy(() => import('./pages/calculators/NakshatraCalculatorPage').then(m => ({ default: m.NakshatraCalculatorPage })));
 const NameCompatibilityPage = lazy(() => import('./pages/calculators/NameCompatibilityPage').then(m => ({ default: m.NameCompatibilityPage })));
+const CompatibilityPage = lazy(() => import('./pages/kundali/CompatibilityPage').then(m => ({ default: m.CompatibilityPage })));
 const LoveCalculatorPage = lazy(() => import('./pages/calculators/LoveCalculatorPage').then(m => ({ default: m.LoveCalculatorPage })));
+const RemedyHubPage = lazy(() => import('./pages/remedies/RemedyHubPage').then(m => ({ default: m.RemedyHubPage })));
 const DevotionalDatePage = lazy(() => import('./pages/devotional/DevotionalDatePage').then(m => ({ default: m.DevotionalDatePage })));
 const MarriageMuhuratPage = lazy(() => import('./pages/muhurat/MarriageMuhuratPage').then(m => ({ default: m.MarriageMuhuratPage })));
 const CelebrityHubPage = lazy(() => import('./pages/celebrity/CelebrityHubPage').then(m => ({ default: m.CelebrityHubPage })));
@@ -173,6 +175,7 @@ function App() {
                   <Route path="/rashi-calculator" element={<RashiCalculatorPage />} />
                   <Route path="/nakshatra-calculator" element={<NakshatraCalculatorPage />} />
                   <Route path="/compatibility/name" element={<NameCompatibilityPage />} />
+                  <Route path="/compatibility/:signPair" element={<CompatibilityPage />} />
                   <Route path="/love-calculator" element={<LoveCalculatorPage />} />
                   <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
                   <Route path="/angel-numbers/:number" element={<AngelNumberPage />} />
@@ -284,6 +287,7 @@ function App() {
                   <Route path="/the-tarot" element={<TarotLanding />} />
                   <Route path="/tarot/history" element={<PremiumRoute feature="Tarot History" description="Your saved tarot reading history is a Premium feature. Upgrade to review all your past readings."><TarotHistoryPage /></PremiumRoute>} />
                   <Route path="/remedies" element={<RemedyPage />} />
+                  <Route path="/remedies/:dosha" element={<RemedyHubPage />} />
                   {/* /kundali = free public entry point for Vedic Kundali */}
                   <Route path="/kundali" element={<KundaliPage />} />
                   <Route path="/kundali/view/:chartId" element={<KundaliPage />} />
