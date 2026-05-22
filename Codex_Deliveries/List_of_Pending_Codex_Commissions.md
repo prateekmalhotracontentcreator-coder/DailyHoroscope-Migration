@@ -23,7 +23,7 @@
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
 | **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | `SEO/CODEX_COMMISSION_SEO_20K.md` | 🔵 M2 INTEGRATED -- M3 BRIEF READY | None | M1 ✅ live. M2 ✅ integrated `aba7d5c`. M3 brief complete (`SEO/CODEX_COMMISSION_SEO_20K_M3.md`) -- Batches 4+8+10 (840 pages). Ready to issue to SEO thread. |
-| **ANGEL-1** | Angel Numbers Module -- 19 core number pages × 9 intents = 191 SEO pages (Phase 1) | Angel Numbers | `Angel_Numbers/CODEX_COMMISSION_ANGEL_NUMBERS.md` | 🟡 READY TO ISSUE | None | Maps to SEO 20K Batch 5. Source: Kyle Gray PDF + Fortuna Noir PDF. Priority 1 of new module sprint. |
+| **ANGEL-1** | Angel Numbers Module -- Full module: 1,000 core pages × 9 intents = 10,001 pages | Angel Numbers | `Angel_Numbers/CODEX_COMMISSION_ANGEL_NUMBERS.md` | 🟡 READY TO ISSUE | None | Maps to SEO 20K Batch 5. No phased build -- full module delivered at once. Tier 1 (~60 numbers) unique copy; Tier 2 (940 numbers) via 81 intent × numerology base templates. Priority 1. |
 | **RUD-1** | Rudraksha Hub + 21 Mukhi Pages + Calculator | Rudraksha | `Rudraksha/CODEX_COMMISSION_RUDRAKSHA.md` | 🟡 READY TO ISSUE | None | 23 pages total. Calculator uses `vedic_calculator.py`. Source: Rudraksha-Revealed PDF. Priority 2. |
 | **LSG-1** | Lo Shu Grid Calculator + Hub + 9 Missing Number + 8 Arrow Pages | Lo Shu Grid | `Lo_Shu_Grid/CODEX_COMMISSION_LO_SHU_GRID.md` | 🟡 READY TO ISSUE | None | 19 pages. Decoded rules JSON already available. Pure numerology math -- no vedic_calculator.py. Priority 3. |
 | **TAR-SEO-1** | Tarot SEO Pages (78 cards × 60 spreads = ~4,820 pages) | Tarot SEO | `Tarot/CODEX_COMMISSION_TAROT_SEO.md` | 🟡 READY TO ISSUE | None | Maps to SEO 20K Batch 6. Source: single EPUB (22MB). Additive to existing /tarot route. Priority 4. |
@@ -171,7 +171,7 @@ PENDING TT ACCEPTANCE VERIFICATION (live on production):
 
 ISSUING ORDER (Priority sequence for next Codex cycle):
   1. SEO-20K M3  → SEO thread   (840 pages, no dependencies)
-  2. ANGEL-1     → new thread   (191 pages, Priority 1 module)
+  2. ANGEL-1     → new thread   (10,001 pages -- full module, no phasing)
   3. RUD-1       → new thread   (23 pages, Priority 2 module)
   4. LSG-1       → new thread   (19 pages, Priority 3 module)
   5. TAR-SEO-1   → new thread   (4,820 pages, Priority 4)
