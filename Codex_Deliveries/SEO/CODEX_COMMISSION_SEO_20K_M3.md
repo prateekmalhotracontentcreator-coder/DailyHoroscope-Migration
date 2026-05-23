@@ -2,7 +2,7 @@
 > Thread: SEO Codex Thread  
 > Extends: `CODEX_COMMISSION_SEO_20K.md` (read that file first for full architecture context)  
 > Batches: 4 · 8 · 10  
-> Pages: ~990 (108 + 450 + 432)  
+> Pages: ~1020 (108 + 480 + 432)  
 > Date: 2026-05-23  
 > Status: READY TO BUILD
 
@@ -73,15 +73,15 @@ from vedic_shared_utils import (
 
 **URL pattern:** `/festivals/{festivalSlug}/{region}/`  
 **Example:** `/festivals/diwali/maharashtra/`  
-**Pages:** ~20 festivals × ~25 Indian states + major diaspora regions = **~600 pages** (prioritise top 15 festivals × top 30 regions = 450 pages for this commission)
+**Pages:** ~20 festivals × ~25 Indian states + major diaspora regions = **~600 pages** (prioritise top 16 festivals × top 30 regions = 480 pages for this commission)
 
-**Festivals to cover (top 15):** Diwali, Holi, Navratri, Durga Puja, Ganesh Chaturthi, Janmashtami, Makar Sankranti, Pongal, Onam, Baisakhi, Eid-ul-Fitr, Christmas, Gurupurab, Ram Navami, Hanuman Jayanti
+**Festivals to cover (top 16):** Diwali, Holi, Navratri, Durga Puja, Ganesh Chaturthi, Janmashtami, Maha Shivaratri, Makar Sankranti, Pongal, Onam, Baisakhi, Eid-ul-Fitr, Christmas, Gurupurab, Ram Navami, Hanuman Jayanti
 
 **Regions (top 30):** All 28 Indian states + NRI London + NRI New York
 
 **Festival date source -- two tiers (important):**
 
-`panchang_router.py` has built-in observance rules for **9 festivals**: Diwali, Holi, Janmashtami, Ram Navami, Maha Shivaratri, Ekadashi, Pradosh Vrat, Purnima, Amavasya. Of the top-15 in-scope festivals for Batch 8, **4** overlap with the engine: Diwali, Holi, Janmashtami, Ram Navami. (Note: Maha Shivaratri is engine-supported but is **not** in the Batch 8 top-15 scope -- do not add it to festival pages.)
+`panchang_router.py` has built-in observance rules for **9 festivals**: Diwali, Holi, Janmashtami, Ram Navami, Maha Shivaratri, Ekadashi, Pradosh Vrat, Purnima, Amavasya. Of the top-16 in-scope festivals for Batch 8, **5** overlap with the engine: Diwali, Holi, Janmashtami, Ram Navami, Maha Shivaratri. Dates for these are computed live.
 
 The remaining **11 festivals** -- Navratri, Durga Puja, Ganesh Chaturthi, Makar Sankranti, Pongal, Onam, Baisakhi, Eid-ul-Fitr, Christmas, Gurupurab, Hanuman Jayanti -- are **not** in the panchang engine. Dates for these must be **pre-seeded in MongoDB** for the current year + next 2 years, then refreshed annually. These festivals follow fixed or well-published calendar rules -- seed their dates as static data in the `festival_region_pages` collection.
 
@@ -93,6 +93,7 @@ The remaining **11 festivals** -- Navratri, Durga Puja, Ganesh Chaturthi, Makar 
 | Holi | `panchang_router.py` (Purnima, month 11) -- live |
 | Janmashtami | `panchang_router.py` (Tithi 22, month 4) -- live |
 | Ram Navami | `panchang_router.py` (Tithi 8, month 0) -- live |
+| Maha Shivaratri | `panchang_router.py` (Tithi 28, month 10) -- live |
 | Navratri | MongoDB pre-seeded (Ashwin Shukla Pratipada -- approx Oct) |
 | Durga Puja | MongoDB pre-seeded (same window as Navratri) |
 | Ganesh Chaturthi | MongoDB pre-seeded (Bhadrapada Shukla Chaturthi -- approx Aug/Sep) |
