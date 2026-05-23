@@ -1,10 +1,12 @@
-# TAR-SEO-1 Commission Brief
-> Thread: Tarot SEO Codex Thread  
-> Module: Tarot SEO Pages (Batch 6) + Spread Add-On  
+# SEO-20K M4 Commission Brief (Batch 6 -- Tarot SEO)
+> Thread: SEO Legacy Thread (existing -- same thread as M1/M2/M3)  
+> Module: Tarot SEO Pages -- Cards, Spreads & Combinations  
 > Maps to: SEO 20K Batch 6  
+> Extends: `CODEX_COMMISSION_SEO_20K.md` + M3 brief -- read those first for full architecture context  
 > Pages: ~5,000 (78 cards × top 60 spreads = 4,680) + hub + spread index + card index  
 > Date: 2026-05-23  
-> Status: READY TO BUILD -- EPUB source available, existing Tarot page live
+> Status: READY TO BUILD -- issue to SEO thread after M3 is delivered and integrated  
+> Dependency: M3 integrated first (no code dependency, sequencing for thread sanity)
 
 ---
 

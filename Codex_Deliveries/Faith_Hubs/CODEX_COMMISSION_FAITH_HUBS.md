@@ -1,10 +1,12 @@
-# FAITH-1 Commission Brief
-> Thread: Faith Hubs Codex Thread  
-> Module: Bible Promises + Bhagavad Gita Shloka Pages (SEO Batch 7)  
+# SEO-20K M5 Commission Brief (Batch 7 -- Faith Hubs)
+> Thread: SEO Legacy Thread (existing -- same thread as M1/M2/M3/M4)  
+> Module: Bible Promises + Bhagavad Gita Shloka Pages  
 > Maps to: SEO 20K Batch 7  
+> Extends: `CODEX_COMMISSION_SEO_20K.md` + M3/M4 briefs -- read those first for full architecture context  
 > Pages: ~100 Bible promise pages + ~60 Gita shloka pages + 2 hubs = ~162 pages  
 > Date: 2026-05-23  
-> Status: READY TO BUILD -- source PDFs available, no dependencies
+> Status: READY TO BUILD -- issue to SEO thread after M4 is delivered and integrated  
+> Dependency: M4 integrated first (no code dependency, sequencing for thread sanity)
 
 ---
 
