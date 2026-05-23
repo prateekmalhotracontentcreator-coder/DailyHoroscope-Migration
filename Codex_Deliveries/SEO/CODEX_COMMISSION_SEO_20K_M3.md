@@ -2,9 +2,9 @@
 > Thread: SEO Codex Thread  
 > Extends: `CODEX_COMMISSION_SEO_20K.md` (read that file first for full architecture context)  
 > Batches: 4 · 8 · 10  
-> Pages: ~840  
+> Pages: ~990 (108 + 450 + 432)  
 > Date: 2026-05-23  
-> Status: READY TO BUILD -- all engines available, no dependencies
+> Status: READY TO BUILD
 
 ---
 
@@ -16,7 +16,9 @@ All routing patterns, sitemap architecture, GlassCard UI patterns, SEO component
 
 **Repo:** `github.com/prateekmalhotracontentcreator-coder/DailyHoroscope-Migration`  
 **Stack:** React 18 · FastAPI · MongoDB · Tailwind CSS · pyswisseph  
-**Internal engine:** `backend/vedic_calculator.py` -- all astronomical and Vedic calculations. Do NOT add calculation logic to any other file.
+**Astronomical engines:**
+- `backend/vedic_calculator.py` -- birth chart, dasha, planetary positions. Do NOT add calculation logic to any other file.
+- `backend/vedic_shared_utils.py` -- transit date helpers (sign ingress/exit). Batch 4 **must** use this file for transit dates (see Batch 4 section below). Do NOT duplicate these functions elsewhere.
 
 ---
 
@@ -30,9 +32,20 @@ All routing patterns, sitemap architecture, GlassCard UI patterns, SEO component
 **Signs:** Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius, Pisces
 
 **Backend:** `GET /api/seo/transit/{planet}/{sign}` -- returns:
-- Transit duration (pulled from `vedic_calculator.py` ephemeris data)
-- Current/upcoming transit dates for the next 12 months
+- Transit start/end dates for current occurrence -- use `vedic_shared_utils.dates_since_sign_entry()` and `vedic_shared_utils.dates_until_sign_exit()`
+- Next occurrence date -- use `vedic_shared_utils.next_sign_ingress()`
+- Current transit snapshot -- use `vedic_shared_utils.build_transit_snapshot()`
 - Interpretation content (pre-seeded to MongoDB `transit_profiles` collection)
+
+**⚠️ Transit date functions live in `backend/vedic_shared_utils.py` (lines 572-593), NOT in `vedic_calculator.py`.** Import from there directly:
+```python
+from vedic_shared_utils import (
+    build_transit_snapshot,
+    next_sign_ingress,
+    dates_until_sign_exit,
+    dates_since_sign_entry,
+)
+```
 
 **Frontend:** `frontend/src/pages/seo/TransitProfilePage.jsx`
 
@@ -66,8 +79,35 @@ All routing patterns, sitemap architecture, GlassCard UI patterns, SEO component
 
 **Regions (top 30):** All 28 Indian states + NRI London + NRI New York
 
+**Festival date source -- two tiers (important):**
+
+`panchang_router.py` only has built-in observance rules for **9 festivals**: Diwali, Holi, Janmashtami, Ram Navami, Maha Shivaratri, Ekadashi, Pradosh Vrat, Purnima, Amavasya. Dates for these are computed live from the engine.
+
+The remaining 6 festivals -- Navratri, Durga Puja, Ganesh Chaturthi, Makar Sankranti, Pongal, Onam, Baisakhi, Eid-ul-Fitr, Christmas, Gurupurab, Hanuman Jayanti -- are **not** in the panchang engine. Dates for these must be **pre-seeded in MongoDB** for the current year + next 2 years, then refreshed annually. These festivals follow fixed or well-published calendar rules -- seed their dates as static data in the `festival_region_pages` collection.
+
+**Date source per festival:**
+
+| Festival | Date source |
+|---|---|
+| Diwali | `panchang_router.py` (Amavasya, month 7) -- live |
+| Holi | `panchang_router.py` (Purnima, month 11) -- live |
+| Janmashtami | `panchang_router.py` (Tithi 22, month 4) -- live |
+| Ram Navami | `panchang_router.py` (Tithi 8, month 0) -- live |
+| Maha Shivaratri | `panchang_router.py` (Tithi 28, month 10) -- live |
+| Navratri | MongoDB pre-seeded (Ashwin Shukla Pratipada -- approx Oct) |
+| Durga Puja | MongoDB pre-seeded (same window as Navratri) |
+| Ganesh Chaturthi | MongoDB pre-seeded (Bhadrapada Shukla Chaturthi -- approx Aug/Sep) |
+| Makar Sankranti | MongoDB pre-seeded (Jan 14 fixed) |
+| Pongal | MongoDB pre-seeded (Jan 14-17 fixed) |
+| Onam | MongoDB pre-seeded (Thiruvonam nakshatra -- approx Aug/Sep) |
+| Baisakhi | MongoDB pre-seeded (Apr 13/14 fixed) |
+| Eid-ul-Fitr | MongoDB pre-seeded (Islamic calendar -- published dates) |
+| Christmas | MongoDB pre-seeded (Dec 25 fixed) |
+| Gurupurab | MongoDB pre-seeded (Kartik Purnima -- approx Nov) |
+| Hanuman Jayanti | MongoDB pre-seeded (Chaitra Purnima -- approx Apr) |
+
 **Backend:** `GET /api/seo/festivals/{slug}/{region}` -- returns:
-- Festival date for current year (computed from `panchang_router.py` festival logic)
+- Festival date for current year (engine for Tier 1; MongoDB for Tier 2)
 - Region-specific customs, names, and variations
 - Pre-seeded content from MongoDB `festival_region_pages` collection
 
