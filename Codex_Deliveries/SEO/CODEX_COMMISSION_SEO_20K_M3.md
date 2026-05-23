@@ -81,9 +81,9 @@ from vedic_shared_utils import (
 
 **Festival date source -- two tiers (important):**
 
-`panchang_router.py` only has built-in observance rules for **9 festivals**: Diwali, Holi, Janmashtami, Ram Navami, Maha Shivaratri, Ekadashi, Pradosh Vrat, Purnima, Amavasya. Dates for these are computed live from the engine.
+`panchang_router.py` has built-in observance rules for **9 festivals**: Diwali, Holi, Janmashtami, Ram Navami, Maha Shivaratri, Ekadashi, Pradosh Vrat, Purnima, Amavasya. Of the top-15 in-scope festivals for Batch 8, **4** overlap with the engine: Diwali, Holi, Janmashtami, Ram Navami. (Note: Maha Shivaratri is engine-supported but is **not** in the Batch 8 top-15 scope -- do not add it to festival pages.)
 
-The remaining 6 festivals -- Navratri, Durga Puja, Ganesh Chaturthi, Makar Sankranti, Pongal, Onam, Baisakhi, Eid-ul-Fitr, Christmas, Gurupurab, Hanuman Jayanti -- are **not** in the panchang engine. Dates for these must be **pre-seeded in MongoDB** for the current year + next 2 years, then refreshed annually. These festivals follow fixed or well-published calendar rules -- seed their dates as static data in the `festival_region_pages` collection.
+The remaining **11 festivals** -- Navratri, Durga Puja, Ganesh Chaturthi, Makar Sankranti, Pongal, Onam, Baisakhi, Eid-ul-Fitr, Christmas, Gurupurab, Hanuman Jayanti -- are **not** in the panchang engine. Dates for these must be **pre-seeded in MongoDB** for the current year + next 2 years, then refreshed annually. These festivals follow fixed or well-published calendar rules -- seed their dates as static data in the `festival_region_pages` collection.
 
 **Date source per festival:**
 
@@ -93,7 +93,6 @@ The remaining 6 festivals -- Navratri, Durga Puja, Ganesh Chaturthi, Makar Sankr
 | Holi | `panchang_router.py` (Purnima, month 11) -- live |
 | Janmashtami | `panchang_router.py` (Tithi 22, month 4) -- live |
 | Ram Navami | `panchang_router.py` (Tithi 8, month 0) -- live |
-| Maha Shivaratri | `panchang_router.py` (Tithi 28, month 10) -- live |
 | Navratri | MongoDB pre-seeded (Ashwin Shukla Pratipada -- approx Oct) |
 | Durga Puja | MongoDB pre-seeded (same window as Navratri) |
 | Ganesh Chaturthi | MongoDB pre-seeded (Bhadrapada Shukla Chaturthi -- approx Aug/Sep) |
