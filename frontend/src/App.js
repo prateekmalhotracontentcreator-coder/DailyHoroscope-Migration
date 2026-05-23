@@ -100,6 +100,7 @@ const LKDebtAuditPage = lazy(() => import('./pages/lk/LKDebtAuditPage'));
 const LKBrowsePage = lazy(() => import('./pages/lk/LKBrowsePage'));
 const TheStrategistLandingPage = lazy(() => import('./pages/strategist/TheStrategistLandingPage'));
 const StrategistPage = lazy(() => import('./pages/strategist/StrategistPage'));
+const StrategistWarRoom = lazy(() => import('./components/strategist/war-room/StrategistWarRoom'));
 const StrategistExecutivePage = lazy(() => import('./pages/strategist/StrategistExecutivePage'));
 const StrategistMissionsPage = lazy(() => import('./pages/strategist/StrategistMissionsPage'));
 const StrategistReportPage = lazy(() => import('./pages/strategist/StrategistReportPage'));
@@ -110,18 +111,32 @@ const PunyaRewardsPage = lazy(() => import('./pages/rewards/PunyaRewardsPage'));
 const StrategistActionPlanPage = lazy(() => import('./pages/strategist/StrategistActionPlanPage'));
 const FestivalsHubPage = lazy(() => import('./pages/festivals/FestivalsHubPage').then(m => ({ default: m.FestivalsHubPage })));
 const FestivalPage = lazy(() => import('./pages/festivals/FestivalPage').then(m => ({ default: m.FestivalPage })));
+const FestivalRegionPage = lazy(() => import('./pages/seo/FestivalRegionPage').then(m => ({ default: m.FestivalRegionPage })));
 const IndianCalendarPage = lazy(() => import('./pages/calendar/IndianCalendarPage').then(m => ({ default: m.IndianCalendarPage })));
 const HoraTodayPage = lazy(() => import('./pages/hora/HoraTodayPage').then(m => ({ default: m.HoraTodayPage })));
 const RashiCalculatorPage = lazy(() => import('./pages/calculators/RashiCalculatorPage').then(m => ({ default: m.RashiCalculatorPage })));
 const NakshatraCalculatorPage = lazy(() => import('./pages/calculators/NakshatraCalculatorPage').then(m => ({ default: m.NakshatraCalculatorPage })));
 const NameCompatibilityPage = lazy(() => import('./pages/calculators/NameCompatibilityPage').then(m => ({ default: m.NameCompatibilityPage })));
 const CompatibilityPage = lazy(() => import('./pages/kundali/CompatibilityPage').then(m => ({ default: m.CompatibilityPage })));
+const TransitProfilePage = lazy(() => import('./pages/seo/TransitProfilePage').then(m => ({ default: m.TransitProfilePage })));
 const LoveCalculatorPage = lazy(() => import('./pages/calculators/LoveCalculatorPage').then(m => ({ default: m.LoveCalculatorPage })));
+const LoShuHubPage = lazy(() => import('./pages/lo_shu_grid/LoShuHubPage'));
+const LoShuCalculatorPage = lazy(() => import('./pages/lo_shu_grid/LoShuCalculatorPage'));
+const LoShuMissingNumberPage = lazy(() => import('./pages/lo_shu_grid/LoShuMissingNumberPage'));
+const LoShuArrowPage = lazy(() => import('./pages/lo_shu_grid/LoShuArrowPage'));
+const RudrakshaHubPage = lazy(() => import('./pages/rudraksha/RudrakshaHubPage').then(m => ({ default: m.RudrakshaHubPage })));
+const RudrakshaMukhiPage = lazy(() => import('./pages/rudraksha/RudrakshaMukhiPage').then(m => ({ default: m.RudrakshaMukhiPage })));
+const RudrakshaCalculatorPage = lazy(() => import('./pages/rudraksha/RudrakshaCalculatorPage').then(m => ({ default: m.RudrakshaCalculatorPage })));
 const RemedyHubPage = lazy(() => import('./pages/remedies/RemedyHubPage').then(m => ({ default: m.RemedyHubPage })));
+const CrystalHubPage = lazy(() => import('./pages/crystals/CrystalHubPage').then(m => ({ default: m.CrystalHubPage })));
+const CrystalPage = lazy(() => import('./pages/crystals/CrystalPage').then(m => ({ default: m.CrystalPage })));
+const CrystalIntentionPage = lazy(() => import('./pages/crystals/CrystalIntentionPage').then(m => ({ default: m.CrystalIntentionPage })));
+const CrystalCalculatorPage = lazy(() => import('./pages/crystals/CrystalCalculatorPage').then(m => ({ default: m.CrystalCalculatorPage })));
 const DevotionalDatePage = lazy(() => import('./pages/devotional/DevotionalDatePage').then(m => ({ default: m.DevotionalDatePage })));
 const MarriageMuhuratPage = lazy(() => import('./pages/muhurat/MarriageMuhuratPage').then(m => ({ default: m.MarriageMuhuratPage })));
 const CelebrityHubPage = lazy(() => import('./pages/celebrity/CelebrityHubPage').then(m => ({ default: m.CelebrityHubPage })));
 const CelebrityChartPage = lazy(() => import('./pages/celebrity/CelebrityChartPage').then(m => ({ default: m.CelebrityChartPage })));
+const CharacterPlacementPage = lazy(() => import('./pages/seo/CharacterPlacementPage').then(m => ({ default: m.CharacterPlacementPage })));
 const AngelNumbersHubPage = lazy(() => import('./pages/angel-numbers/AngelNumbersHubPage').then(m => ({ default: m.AngelNumbersHubPage })));
 const AngelNumberPage = lazy(() => import('./pages/angel-numbers/AngelNumberPage').then(m => ({ default: m.AngelNumberPage })));
 const KundaliReportsCategoryPage = lazy(() => import('./pages/reports/category/KundaliReportsPage').then(m => ({ default: m.KundaliReportsPage })));
@@ -176,7 +191,12 @@ function App() {
                   <Route path="/nakshatra-calculator" element={<NakshatraCalculatorPage />} />
                   <Route path="/compatibility/name" element={<NameCompatibilityPage />} />
                   <Route path="/compatibility/:signPair" element={<CompatibilityPage />} />
+                  <Route path="/transits/:transitSlug" element={<TransitProfilePage />} />
                   <Route path="/love-calculator" element={<LoveCalculatorPage />} />
+                  <Route path="/crystals" element={<CrystalHubPage />} />
+                  <Route path="/crystals/calculator" element={<CrystalCalculatorPage />} />
+                  <Route path="/crystals/for/:intentionSlug" element={<CrystalIntentionPage />} />
+                  <Route path="/crystals/:crystalSlug" element={<CrystalPage />} />
                   <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
                   <Route path="/angel-numbers/:number" element={<AngelNumberPage />} />
                   <Route path="/ekadashi" element={<DevotionalDatePage type="ekadashi" />} />
@@ -185,7 +205,15 @@ function App() {
                   <Route path="/muhurat/marriage" element={<MarriageMuhuratPage />} />
                   <Route path="/celebrity-horoscopes" element={<CelebrityHubPage />} />
                   <Route path="/celebrity-horoscopes/:slug" element={<CelebrityChartPage />} />
+                  <Route path="/traits/:sign/:chartPoint/:house" element={<CharacterPlacementPage />} />
                   <Route path="/live-sai-baba-arti" element={<LiveSaiBabaArtiPage />} />
+                  <Route path="/lo-shu-grid" element={<LoShuHubPage />} />
+                  <Route path="/lo-shu-grid/calculator" element={<LoShuCalculatorPage />} />
+                  <Route path="/lo-shu-grid/missing-:number" element={<LoShuMissingNumberPage />} />
+                  <Route path="/lo-shu-grid/arrow/:slug" element={<LoShuArrowPage />} />
+                  <Route path="/rudraksha" element={<RudrakshaHubPage />} />
+                  <Route path="/rudraksha/calculator" element={<RudrakshaCalculatorPage />} />
+                  <Route path="/rudraksha/:mukhi" element={<RudrakshaMukhiPage />} />
 
                   {/* Blog */}
                   <Route path="/blog" element={<BlogList />} />
@@ -252,6 +280,7 @@ function App() {
                   <Route path="/festivals/holi" element={<FestivalPage slug="holi" />} />
                   <Route path="/festivals/diwali" element={<FestivalPage slug="diwali" />} />
                   <Route path="/festivals/karwa-chauth" element={<FestivalPage slug="karwa-chauth" />} />
+                  <Route path="/festivals/:festivalSlug/:region" element={<FestivalRegionPage />} />
                   <Route path="/festivals" element={<FestivalsHubPage />} />
                   <Route path="/calendar" element={<IndianCalendarPage />} />
                   <Route path="/calendar/:year/:month" element={<IndianCalendarPage />} />
@@ -334,7 +363,7 @@ function App() {
                   {/* /strategist = CD landing page for all users (logged in or out) */}
                   <Route path="/strategist" element={<TheStrategistLandingPage />} />
                   {/* War Room -- the actual Dashboard (premium users only) */}
-                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistPage /></ProtectedRoute>} />
+                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistWarRoom /></ProtectedRoute>} />
                   {/* Executive page -- repurposed Codex overview, inside module nav */}
                   <Route path="/strategist/executive" element={<ProtectedRoute><StrategistExecutivePage /></ProtectedRoute>} />
                   <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />

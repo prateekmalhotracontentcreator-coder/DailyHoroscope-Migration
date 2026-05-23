@@ -159,3 +159,44 @@
   50%  { transform: rotate( 2deg); }
   100% { transform: rotate(-2deg); }
 }
+/* =============================================================
+   STR-R2B Step 3 · APPEND ONLY
+   -------------------------------------------------------------
+   Paste this block at the END of
+     frontend/src/styles/strategist-tokens.css
+   immediately after the existing R2A host-var override block.
+
+   DO NOT touch the host-var override block — that block stays
+   byte-identical (R-03, Temple confirmed).
+
+   Net delta: 1 derived surface + 9 planet vars + 4 band hexes
+   + 4 band-soft aliases. Source: strategist_r2b_output/_assets/tokens.css
+   ============================================================= */
+
+:root {
+  /* ── Derived surface (Step 3 · §06 A1) ── */
+  --card-deep:        #11151f;   /* nested panels — dasha track, trigger code, gauge backdrop */
+
+  /* ── Conquest Score bands (Brief §4.3) ── */
+  --emerald:          #3FAA7A;   /* Sovereign  75-99 */
+  --amber:            #E3A341;   /* Friction   50-74 */
+  --orange:           #E27A3F;   /* Siege      25-49 */
+  --red:              #E25C4B;   /* Lockdown    0-24 */
+
+  /* Band auras (12% scrim — chip backgrounds, halo glows) */
+  --emerald-soft:     rgba(63, 170, 122, 0.12);
+  --amber-soft:       rgba(227, 163, 65, 0.12);
+  --orange-soft:      rgba(226, 122, 63, 0.12);
+  --red-soft:         rgba(226, 92, 75, 0.12);
+
+  /* ── Planet command colours (Brief §4.2) ── */
+  --planet-sun:       #F5A623;
+  --planet-moon:      #B8D4E8;
+  --planet-mars:      #E05A5A;
+  --planet-mercury:   #6FCF97;
+  --planet-jupiter:   #C5A059;   /* aliases to --gold by design — see Decisions Log */
+  --planet-venus:     #F2C4D0;
+  --planet-saturn:    #7E92AE;
+  --planet-rahu:      #9B59B6;
+  --planet-ketu:      #E67E22;
+}
