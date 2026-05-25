@@ -556,6 +556,33 @@ def _faq_from_pairs(items: list[tuple[str, str]]) -> list[dict[str, str]]:
     return [{"q": question, "a": answer} for question, answer in items]
 
 
+_PLANET_META_DESCS: dict[str, str] = {
+    "sun": "Which Rudraksha bead strengthens Sun -- its effect on vitality, authority, and self-respect, and the correct mukhi, mantra, and wearing day.",
+    "moon": "Which Rudraksha supports the Moon -- its role in emotional balance, intuition, and mental steadiness, with mukhi guidance and activation mantra.",
+    "mars": "Which Rudraksha works with Mars energy -- channelling courage and drive productively, with the right mukhi, mantra, and cautions for intensity.",
+    "mercury": "Which Rudraksha enhances Mercury -- its benefits for communication, intelligence, and decision timing, with mukhi selection and wearing method.",
+    "jupiter": "Which Rudraksha amplifies Jupiter's blessings -- its effect on wisdom, growth, and spiritual progress, with correct mukhi and activation guidance.",
+    "venus": "Which Rudraksha aligns with Venus -- its influence on harmony, creativity, and relationship quality, with mukhi guidance and traditional wearing rules.",
+    "saturn": "Which Rudraksha eases Saturn's lessons -- its role in building discipline, endurance, and karmic clarity, with the right mukhi and mantra.",
+    "rahu": "Which Rudraksha balances Rahu -- its effect on obsession, ambition, and non-traditional drives, with traditional mukhi choices and wearing guidance.",
+    "ketu": "Which Rudraksha supports Ketu's detachment -- its role in spiritual clarity and letting go, with suitable mukhi, mantra, and wearing method.",
+}
+
+_SIGN_META_DESCS: dict[str, str] = {
+    "aries": "Best Rudraksha for Aries -- the Mars-ruled mukhi for leadership and fire, plus a grounding bead to steady impulsive energy and protect stamina.",
+    "taurus": "Best Rudraksha for Taurus -- the Venus-ruled mukhi for beauty and stability, with a supporting bead for patience and material groundedness.",
+    "gemini": "Best Rudraksha for Gemini -- the Mercury-ruled mukhi for communication and adaptability, plus a secondary bead for mental focus and consistency.",
+    "cancer": "Best Rudraksha for Cancer -- the Moon-ruled mukhi for emotional nurturing and intuition, with a supporting bead for security and inner calm.",
+    "leo": "Best Rudraksha for Leo -- the Sun-ruled mukhi for confidence and vitality, plus a grounding bead for ego balance and heart-centred leadership.",
+    "virgo": "Best Rudraksha for Virgo -- the Mercury-ruled mukhi for precision and health awareness, with a secondary bead for reducing over-analysis.",
+    "libra": "Best Rudraksha for Libra -- the Venus-ruled mukhi for balance and relationship harmony, plus a supporting bead for decisiveness and inner clarity.",
+    "scorpio": "Best Rudraksha for Scorpio -- the Mars and Ketu-aligned mukhi for transformation, with a secondary bead for grounding intensity and emotional depth.",
+    "sagittarius": "Best Rudraksha for Sagittarius -- the Jupiter-ruled mukhi for expansion and wisdom, with a supporting bead for follow-through and practical focus.",
+    "capricorn": "Best Rudraksha for Capricorn -- the Saturn-ruled mukhi for discipline and long-term structure, plus a secondary bead for easing karmic pressure.",
+    "aquarius": "Best Rudraksha for Aquarius -- the Saturn and Rahu-aligned mukhi for innovation and detachment, with a grounding bead for social connection.",
+    "pisces": "Best Rudraksha for Pisces -- the Jupiter and Ketu-aligned mukhi for spirituality and compassion, with a supporting bead for boundaries and clarity.",
+}
+
 _PLANET_CORE = [
     {
         "slug": "sun",
@@ -825,7 +852,7 @@ def _build_planet_document(payload: dict) -> dict:
         "contraindications": list(payload["contraindications"]),
         "faq": faq,
         "meta_title": f"Rudraksha for {planet} - Best Mukhi Beads | {SITE_NAME}",
-        "meta_description": f"Discover the best Rudraksha for {planet}, including mukhi guidance, mantra, wearing rules, and when this bead is traditionally chosen.",
+        "meta_description": _PLANET_META_DESCS.get(payload["slug"], f"Discover the best Rudraksha for {planet}, including mukhi guidance, mantra, and traditional wearing rules."),
     }
 
 
@@ -1544,7 +1571,7 @@ def _build_sign_document(payload: dict) -> dict:
         },
         "faq": faq,
         "meta_title": f"Best Rudraksha for {sign} - Mukhi Beads | {SITE_NAME}",
-        "meta_description": f"Find the best Rudraksha for {sign}, including the ruling-planet mukhi, a secondary bead for shadow qualities, and practical wearing guidance.",
+        "meta_description": _SIGN_META_DESCS.get(payload["slug"], f"Find the best Rudraksha for {sign}, including the ruling-planet mukhi and practical wearing guidance."),
     }
 
 
