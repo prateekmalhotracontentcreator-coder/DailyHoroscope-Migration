@@ -5,11 +5,115 @@ from typing import Any
 
 SITE_URL = "https://www.everydayhoroscope.in"
 
+# ── CARD REGISTER (D3 -- GAI Burstiness Classification) ──────────────────────
+# Register A: Sharp/Abrupt -- max 9-word sentences, blunt active voice
+# Register B: Grounded/Measured -- 12-18 word sentences, practical tone
+# Register C: Expansive/Flowing -- 25+ word compound structures, uplifting cadence
+CARD_REGISTER: dict[str, str] = {
+    # Register A -- Sharp / Abrupt
+    "three-of-swords":      "A",
+    "the-tower":            "A",
+    "five-of-pentacles":    "A",
+    "death":                "A",
+    "ten-of-swords":        "A",
+    "five-of-swords":       "A",
+    "five-of-wands":        "A",
+    "seven-of-swords":      "A",
+    "nine-of-swords":       "A",
+    "eight-of-swords":      "A",
+    "four-of-swords":       "A",
+    "page-of-swords":       "A",
+    "knight-of-swords":     "A",
+    "queen-of-swords":      "A",
+    "king-of-swords":       "A",
+    "ace-of-swords":        "A",
+    "two-of-swords":        "A",
+    "five-of-cups":         "A",
+    "eight-of-cups":        "A",
+    "the-devil":            "A",
+    "judgement":            "A",
+    "the-moon":             "A",
+    # Register B -- Grounded / Measured
+    "the-emperor":          "B",
+    "seven-of-pentacles":   "B",
+    "four-of-cups":         "B",
+    "the-hierophant":       "B",
+    "justice":              "B",
+    "temperance":           "B",
+    "the-hermit":           "B",
+    "four-of-pentacles":    "B",
+    "two-of-pentacles":     "B",
+    "three-of-pentacles":   "B",
+    "six-of-pentacles":     "B",
+    "eight-of-pentacles":   "B",
+    "page-of-pentacles":    "B",
+    "knight-of-pentacles":  "B",
+    "queen-of-pentacles":   "B",
+    "king-of-pentacles":    "B",
+    "ace-of-pentacles":     "B",
+    "ten-of-pentacles":     "B",
+    "two-of-wands":         "B",
+    "four-of-wands":        "B",
+    "six-of-wands":         "B",
+    "nine-of-wands":        "B",
+    "king-of-wands":        "B",
+    "two-of-cups":          "B",
+    "six-of-cups":          "B",
+    "seven-of-cups":        "B",
+    "king-of-cups":         "B",
+    "the-hanged-man":       "B",
+    "wheel-of-fortune":     "B",
+    # Register C -- Expansive / Flowing
+    "the-star":             "C",
+    "the-sun":              "C",
+    "ace-of-cups":          "C",
+    "the-fool":             "C",
+    "the-magician":         "C",
+    "the-high-priestess":   "C",
+    "the-empress":          "C",
+    "the-lovers":           "C",
+    "the-chariot":          "C",
+    "strength":             "C",
+    "the-world":            "C",
+    "ace-of-wands":         "C",
+    "three-of-wands":       "C",
+    "three-of-cups":        "C",
+    "nine-of-cups":         "C",
+    "page-of-cups":         "C",
+    "knight-of-cups":       "C",
+    "queen-of-cups":        "C",
+    "ten-of-cups":          "C",
+    "seven-of-wands":       "C",
+    "eight-of-wands":       "C",
+    "ten-of-wands":         "C",
+    "page-of-wands":        "C",
+    "knight-of-wands":      "C",
+    "queen-of-wands":       "C",
+}
+
+# ── POSITION SYNONYMS (D4 -- GAI Rotation Table) ────────────────────────────
+# Use: random.choice(POSITION_SYNONYMS["past"]) when rendering position labels
+# This breaks structural HTML uniformity across spread pages.
+POSITION_SYNONYMS: dict[str, list[str]] = {
+    "past":              ["Foundation Roots", "The Retrospective", "Historical Catalyst", "Passed Influences", "Origin Points"],
+    "present":           ["Current Matrix", "Present Stance", "Active Reality", "Immediate Energy", "Instant Horizon"],
+    "future":            ["Approaching Path", "Emerging Horizon", "Manifest Destiny", "Unfolding Outcome", "Terminal Trajectory"],
+    "challenge":         ["Frictional Hurdle", "Blind Spot Area", "Core Resistance", "The Blockage", "Adversary Element"],
+    "advice":            ["Strategic Pivot", "Prescribed Path", "Remedial Action", "Higher Directive", "Tactical Alignment"],
+    "outcome":           ["Ultimate Harvest", "Resulting State", "Resolution Path", "Terminal Reality", "Closing Synthesis"],
+    "hidden_factor":     ["Subconscious Undercurrent", "Hidden Variable", "Unseen Catalyst", "Shadow Element", "Subterranean Reality"],
+    "what_to_release":   ["Heavy Baggage", "Outgrown Patterns", "Structural Shedding", "Necessary Exhale", "Surrender Vector"],
+    "what_to_embrace":   ["Incoming Flow", "Target Alignment", "Sacred Invitation", "Necessary Inhale", "Emergent Calling"],
+    "external_influence":["Environmental Matrix", "Social Echo", "Collective Impact", "Outsider Pressures", "Atmospheric Factor"],
+}
+
+
+
 SPREADS_JSON = r"""[
   {
     "number": 1,
-    "slug": "card-of-the-day",
-    "title": "Card Of The Day",
+    "slug": "daily-tarot-reading-insight",
+    "title": "Daily Tarot Reading Insight",
     "chapter": "One-Card Spreads",
     "purpose": "This one-card practice is for moments when you want a daily anchor before the day begins. It keeps the reading focused so one clear symbol can name the energy, lesson, or invitation most active right now.",
     "positions": [],
@@ -18,8 +122,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 2,
-    "slug": "one-question",
-    "title": "One Question",
+    "slug": "single-question-tarot-answer",
+    "title": "Single Question Tarot Answer",
     "chapter": "One-Card Spreads",
     "purpose": "Use this single-card draw when you need a clean, uncluttered answer to a single question. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
     "positions": [],
@@ -28,8 +132,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 13,
-    "slug": "should-you-continue-saving-for-a-house-or-take-a-break-and",
-    "title": "Should You Continue Saving For A House, Or Take A Break And Have A Longed-For Vacation Overseas?",
+    "slug": "buying-a-house-vs-vacation-planning-tarot",
+    "title": "Buying a House vs Vacation Planning Tarot",
     "chapter": "Two-Card Spreads",
     "purpose": "A practical 2-card spread for times when a work, money, or long-range practical decision needs a steadier reading. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [],
@@ -38,8 +142,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 14,
-    "slug": "should-you-go-for-a-major-promotion-or-focus-on-happiness-in-your-out-of-work-life",
-    "title": "Should You Go For A Major Promotion, Or Focus On Happiness In Your Out-Of-Work Life?",
+    "slug": "career-promotion-vs-work-life-balance-tarot",
+    "title": "Career Promotion vs Work Life Balance Tarot",
     "chapter": "Two-Card Spreads",
     "purpose": "This layout is most useful when a work, money, or long-range practical decision needs a steadier reading. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [],
@@ -48,8 +152,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 25,
-    "slug": "a-three-card-unstructured-reading-to-answer-any-question-on-any-topic",
-    "title": "A Three-Card Unstructured Reading To Answer Any Question On Any Topic",
+    "slug": "3-card-clarity-spread-for-any-situation",
+    "title": "3 Card Clarity Spread for Any Situation",
     "chapter": "Three-Card Spreads",
     "purpose": "Use this single-card draw when you want structured guidance around three card unstructured reading to answer any question on any topic. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
     "positions": [
@@ -60,8 +164,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 26,
-    "slug": "past-present-and-future",
-    "title": "Past, Present, And Future",
+    "slug": "past-present-future-timeline-reading",
+    "title": "Past Present Future Timeline Reading",
     "chapter": "Three-Card Spreads",
     "purpose": "Use this 3-card layout when you need to understand what is ending, what is active now, and what direction the path is taking. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -74,8 +178,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 27,
-    "slug": "what-lies-ahead-an-overview-of-the-next-three-days-weeks-or-months",
-    "title": "What Lies Ahead An Overview Of The Next Three Days, Weeks, Or Months",
+    "slug": "short-term-future-forecast-tarot",
+    "title": "Short Term Future Forecast Tarot",
     "chapter": "Three-Card Spreads",
     "purpose": "A practical 3-card spread for times when you want to read a longer cycle rather than a single event. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -88,8 +192,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 37,
-    "slug": "an-unstructured-reading-of-four-cards",
-    "title": "An Unstructured Reading Of Four Cards",
+    "slug": "4-card-intuitive-guidance-layout",
+    "title": "4 Card Intuitive Guidance Layout",
     "chapter": "Four-Card Spreads",
     "purpose": "This layout is most useful when you want structured guidance around unstructured reading of four cards. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [],
@@ -98,8 +202,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 38,
-    "slug": "spread-for-breaking-through-the-barriers-of-fear",
-    "title": "Spread For Breaking Through The Barriers Of Fear",
+    "slug": "overcoming-fear-and-mental-blocks-tarot",
+    "title": "Overcoming Fear and Mental Blocks Tarot",
     "chapter": "Four-Card Spreads",
     "purpose": "This 4-card spread is built for moments when fear, pressure, or social stress is shaping your choices more than you want it to. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -113,8 +217,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 47,
-    "slug": "the-horseshoe-spread",
-    "title": "The Horseshoe Spread",
+    "slug": "horseshoe-layout-for-complex-decisions",
+    "title": "Horseshoe Layout for Complex Decisions",
     "chapter": "Five-Card Spreads",
     "purpose": "Use this 6-card layout when the situation has several visible and hidden influences moving at once. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -130,8 +234,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 48,
-    "slug": "dealing-with-cliques-and-petty-bullying",
-    "title": "Dealing With Cliques And Petty Bullying",
+    "slug": "navigating-workplace-cliques-and-bullying",
+    "title": "Navigating Workplace Cliques and Bullying",
     "chapter": "Five-Card Spreads",
     "purpose": "A practical 5-card spread for times when fear, pressure, or social stress is shaping your choices more than you want it to. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -146,8 +250,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 49,
-    "slug": "the-five-year-plan",
-    "title": "The Five-Year Plan",
+    "slug": "5-year-life-path-long-term-layout",
+    "title": "5 Year Life Path Long Term Layout",
     "chapter": "Five-Card Spreads",
     "purpose": "This layout is most useful when you are working with the theme of five year plan. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -162,8 +266,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 56,
-    "slug": "an-unstructured-six-card-spread-to-answer-any-question-on-any-topic",
-    "title": "An Unstructured Six-Card Spread To Answer Any Question On Any Topic",
+    "slug": "6-card-deep-dive-reading-for-any-problem",
+    "title": "6 Card Deep Dive Reading for Any Problem",
     "chapter": "Six-Card Spreads",
     "purpose": "This one-card practice is for moments when you want structured guidance around unstructured six card spread to answer any question on any topic. It keeps the reading focused so one clear symbol can name the energy, lesson, or invitation most active right now.",
     "positions": [
@@ -174,8 +278,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 57,
-    "slug": "the-next-six-weeks-months-spread",
-    "title": "The Next Six Weeks/Months Spread",
+    "slug": "mid-term-future-vision-tarot-layout",
+    "title": "Mid Term Future Vision Tarot Layout",
     "chapter": "Six-Card Spreads",
     "purpose": "Use this 6-card layout when you want to read a longer cycle rather than a single event. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -191,8 +295,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 58,
-    "slug": "will-i-ever-find-my-soul-mate",
-    "title": "Will I Ever Find My Soul Mate?",
+    "slug": "manifesting-true-love-and-soulmate-tarot",
+    "title": "Manifesting True Love and Soulmate Tarot",
     "chapter": "Six-Card Spreads",
     "purpose": "A practical 6-card spread for times when your heart is involved and you need clarity about connection, desire, or commitment. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -208,8 +312,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 64,
-    "slug": "the-options-spread",
-    "title": "The Options Spread",
+    "slug": "choosing-between-two-paths-tarot",
+    "title": "Choosing Between Two Paths Tarot",
     "chapter": "Seven-Card Spreads",
     "purpose": "This layout is most useful when two strong options are competing for your attention. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -226,8 +330,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 65,
-    "slug": "the-mystical-seven-spread",
-    "title": "The Mystical Seven Spread",
+    "slug": "7-card-mystical-chakra-alignment",
+    "title": "7 Card Mystical Chakra Alignment",
     "chapter": "Seven-Card Spreads",
     "purpose": "Use this single-card draw when you want the reading to reach hidden, symbolic, or intuitive layers of the question. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
     "positions": [
@@ -238,8 +342,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 70,
-    "slug": "moving-toward-fulfilling-your-greatest-ambition-or-dream",
-    "title": "Moving Toward Fulfilling Your Greatest Ambition Or Dream",
+    "slug": "achieving-big-goals-and-dreams-reading",
+    "title": "Achieving Big Goals and Dreams Reading",
     "chapter": "Eight-Card Spreads",
     "purpose": "Use this 8-card layout when the theme of moving toward fulfilling your greatest ambition or dream is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -257,8 +361,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 71,
-    "slug": "should-you-try-to-conceive-a-baby",
-    "title": "Should You Try To Conceive A Baby?",
+    "slug": "fertility-and-conception-guidance-tarot",
+    "title": "Fertility and Conception Guidance Tarot",
     "chapter": "Eight-Card Spreads",
     "purpose": "A practical 8-card spread for times when you are weighing whether try to conceive a baby. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -276,8 +380,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 76,
-    "slug": "an-unstructured-nine-card-reading",
-    "title": "An Unstructured Nine-Card Reading",
+    "slug": "9-card-spiritual-matrix-breakthrough",
+    "title": "9 Card Spiritual Matrix Breakthrough",
     "chapter": "Nine-Card Spreads",
     "purpose": "Use this single-card draw when you want structured guidance around unstructured nine card reading. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
     "positions": [
@@ -288,8 +392,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 77,
-    "slug": "the-pathway-to-justice",
-    "title": "The Pathway To Justice",
+    "slug": "resolving-legal-disputes-fairly-tarot",
+    "title": "Resolving Legal Disputes Fairly Tarot",
     "chapter": "Nine-Card Spreads",
     "purpose": "This 9-card spread is built for moments when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -308,8 +412,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 82,
-    "slug": "an-unstructured-twelve-card-spread",
-    "title": "An Unstructured Twelve-Card Spread",
+    "slug": "12-card-comprehensive-life-overview",
+    "title": "12 Card Comprehensive Life Overview",
     "chapter": "Multi-Card Spreads",
     "purpose": "Use this 12-card layout when you want structured guidance around unstructured twelve card spread. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [],
@@ -318,8 +422,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 83,
-    "slug": "a-wheel-of-the-year-twelve-months-ahead-spread",
-    "title": "A Wheel Of The Year Twelve-Months-Ahead Spread",
+    "slug": "12-month-wheel-of-year-forecast",
+    "title": "12 Month Wheel of Year Forecast",
     "chapter": "Multi-Card Spreads",
     "purpose": "Use this single-card draw when you want to read a longer cycle rather than a single event. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
     "positions": [
@@ -330,8 +434,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 87,
-    "slug": "have-i-found-my-soulmate-from-a-past-world",
-    "title": "Have I Found My Soulmate From A Past World?",
+    "slug": "past-life-love-and-soul-connection",
+    "title": "Past Life Love and Soul Connection",
     "chapter": "Love And Commitment Spreads",
     "purpose": "This layout is most useful when your heart is involved and you need clarity about connection, desire, or commitment. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -348,8 +452,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 88,
-    "slug": "can-it-be-true-i-have-met-my-twin-soul-at-last",
-    "title": "Can It Be True I Have Met My Twin Soul At Last?",
+    "slug": "twin-flame-recognition-signs-tarot",
+    "title": "Twin Flame Recognition Signs Tarot",
     "chapter": "Love And Commitment Spreads",
     "purpose": "This 6-card spread is built for moments when the theme of can it be true i have met my twin soul at last is active in your life. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -365,8 +469,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 108,
-    "slug": "the-love-quarrel",
-    "title": "The Love Quarrel",
+    "slug": "resolving-relationship-conflicts-tarot",
+    "title": "Resolving Relationship Conflicts Tarot",
     "chapter": "Spreads For Overcoming Difficulties In Love, Reconciliation, And Ending Destructive Relationships",
     "purpose": "Use this 6-card layout when your heart is involved and you need clarity about connection, desire, or commitment. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -382,8 +486,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 109,
-    "slug": "the-immature-partner",
-    "title": "The Immature Partner",
+    "slug": "dealing-with-emotional-immaturity-in-love",
+    "title": "Dealing with Emotional Immaturity in Love",
     "chapter": "Spreads For Overcoming Difficulties In Love, Reconciliation, And Ending Destructive Relationships",
     "purpose": "A practical 6-card spread for times when your heart is involved and you need clarity about connection, desire, or commitment. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -399,8 +503,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 129,
-    "slug": "to-make-money-fast-and-urgently",
-    "title": "To Make Money Fast And Urgently",
+    "slug": "manifesting-urgent-financial-abundance",
+    "title": "Manifesting Urgent Financial Abundance",
     "chapter": "Prosperity And Money-Making Spreads",
     "purpose": "This layout is most useful when a work, money, or long-range practical decision needs a steadier reading. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -418,8 +522,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 130,
-    "slug": "if-you-are-offered-an-overseas-offshore-job-with-a-huge-tax-free-salary",
-    "title": "If You Are Offered An Overseas/Offshore Job With A Huge Tax-Free Salary",
+    "slug": "relocating-abroad-for-high-salary-job",
+    "title": "Relocating Abroad for High Salary Job",
     "chapter": "Prosperity And Money-Making Spreads",
     "purpose": "This 5-card spread is built for moments when a work, money, or long-range practical decision needs a steadier reading. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -434,8 +538,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 149,
-    "slug": "why-does-money-drain-out-no-matter-how-hard-you-try",
-    "title": "Why Does Money Drain Out, No Matter How Hard You Try?",
+    "slug": "breaking-generational-financial-scarcity",
+    "title": "Breaking Generational Financial Scarcity",
     "chapter": "Spreads For Solving Difficulties With Money",
     "purpose": "Use this 6-card layout when a work, money, or long-range practical decision needs a steadier reading. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [],
@@ -444,8 +548,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 150,
-    "slug": "why-do-people-take-advantage-of-you-financially",
-    "title": "Why Do People Take Advantage Of You Financially?",
+    "slug": "setting-strong-boundaries-with-money",
+    "title": "Setting Strong Boundaries with Money",
     "chapter": "Spreads For Solving Difficulties With Money",
     "purpose": "A practical 6-card spread for times when a work, money, or long-range practical decision needs a steadier reading. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -461,8 +565,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 169,
-    "slug": "will-you-get-the-job-you-are-applying-for",
-    "title": "Will You Get The Job You Are Applying For?",
+    "slug": "interview-success-and-career-hiring-tarot",
+    "title": "Interview Success and Career Hiring Tarot",
     "chapter": "Career Spreads",
     "purpose": "This layout is most useful when a work, money, or long-range practical decision needs a steadier reading. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -474,8 +578,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 170,
-    "slug": "when-you-are-constantly-in-conflict-with-a-colleague-or-manager",
-    "title": "When You Are Constantly In Conflict With A Colleague Or Manager",
+    "slug": "managing-difficult-bosses-and-coworkers",
+    "title": "Managing Difficult Bosses and Coworkers",
     "chapter": "Career Spreads",
     "purpose": "This 3-card spread is built for moments when when you are constantly in conflict with a colleague or manager. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -488,8 +592,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 171,
-    "slug": "which-should-take-priority-right-now-your-day-job-or-your-on-the-side-business",
-    "title": "Which Should Take Priority Right Now Your Day Job, Or Your On-The-Side Business?",
+    "slug": "full-time-job-vs-side-hustle-tarot",
+    "title": "Full Time Job vs Side Hustle Tarot",
     "chapter": "Career Spreads",
     "purpose": "Use this 2-card layout when a work, money, or long-range practical decision needs a steadier reading. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -501,8 +605,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 191,
-    "slug": "starting-your-own-business",
-    "title": "Starting Your Own Business",
+    "slug": "entrepreneurship-launch-roadmap-tarot",
+    "title": "Entrepreneurship Launch Roadmap Tarot",
     "chapter": "Business Spreads",
     "purpose": "A practical 5-card spread for times when a work, money, or long-range practical decision needs a steadier reading. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -517,8 +621,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 192,
-    "slug": "should-you-trade-your-products-or-services-locally-or-online",
-    "title": "Should You Trade Your Products Or Services Locally, Or Online?",
+    "slug": "brick-and-mortar-vs-e-commerce-scaling",
+    "title": "Brick and Mortar vs E-Commerce Scaling",
     "chapter": "Business Spreads",
     "purpose": "This layout is most useful when you are weighing whether trade your products or services locally or online. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -536,8 +640,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 211,
-    "slug": "what-should-you-do-to-get-through-to-the-finals-of-a-major-talent-contest",
-    "title": "What Should You Do To Get Through To The Finals Of A Major Talent Contest?",
+    "slug": "audition-mastery-strategy-for-competitions",
+    "title": "Audition Mastery Strategy for Competitions",
     "chapter": "Spreads For Fame And Fortune",
     "purpose": "This 2-card spread is built for moments when you want a clearer read on what should you do to get through to the finals of a major talent contest. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -549,8 +653,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 212,
-    "slug": "if-you-want-to-win-a-tv-talent-show",
-    "title": "If You Want To Win A TV Talent Show",
+    "slug": "winning-strategy-for-creative-contests",
+    "title": "Winning Strategy for Creative Contests",
     "chapter": "Spreads For Fame And Fortune",
     "purpose": "Use this 5-card layout when you want to win a tv talent show. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -565,8 +669,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 236,
-    "slug": "will-the-person-of-your-dreams-agree-to-go-on-a-date-with-you-if-you-ask-now",
-    "title": "Will The Person Of Your Dreams Agree To Go On A Date With You If You Ask Now?",
+    "slug": "asking-your-crush-out-success-tarot",
+    "title": "Asking Your Crush Out Success Tarot",
     "chapter": "Spreads For Making Your Dearest Wishes And Dreams Come True",
     "purpose": "A practical 6-card spread for times when the theme of will the person of your dreams agree to go on a date with you if you ask now is active in your life. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [],
@@ -575,8 +679,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 237,
-    "slug": "should-you-spend-some-of-the-familys-future-inheritance-on-an-around",
-    "title": "Should You Spend Some Of The Family'S Future Inheritance On An Around-The-World Trip Or Major Holiday For Yourself?",
+    "slug": "funding-solo-travel-using-inheritance",
+    "title": "Funding Solo Travel Using Inheritance",
     "chapter": "Spreads For Making Your Dearest Wishes And Dreams Come True",
     "purpose": "This layout is most useful when family dynamics are emotional, layered, and not easily solved by one conversation. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -589,8 +693,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 265,
-    "slug": "will-you-like-a-new-prospective-family-member-when-you-meet-for-the-first-time",
-    "title": "Will You Like A New Prospective Family Member When You Meet For The First Time?",
+    "slug": "blended-family-dynamics-and-first-meetings",
+    "title": "Blended Family Dynamics and First Meetings",
     "chapter": "Family Spreads",
     "purpose": "This 6-card spread is built for moments when family dynamics are emotional, layered, and not easily solved by one conversation. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [],
@@ -599,8 +703,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 266,
-    "slug": "should-you-invite-a-particular-relative-to-a-family-gathering",
-    "title": "Should You Invite A Particular Relative To A Family Gathering?",
+    "slug": "handling-toxic-relatives-at-family-events",
+    "title": "Handling Toxic Relatives at Family Events",
     "chapter": "Family Spreads",
     "purpose": "Use this 3-card layout when family dynamics are emotional, layered, and not easily solved by one conversation. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -613,8 +717,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 293,
-    "slug": "if-your-child-or-teenager-is-being-bullied-at-school",
-    "title": "If Your Child Or Teenager Is Being Bullied At School",
+    "slug": "school-bullying-intervention-and-support",
+    "title": "School Bullying Intervention and Support",
     "chapter": "Spreads For Babies, Children, And Grandchildren Of All Ages",
     "purpose": "A practical 7-card spread for times when your situation involves child or teenager is being bullied at school. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -631,8 +735,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 294,
-    "slug": "if-your-child-or-teenager-is-being-bullied-on-social-media",
-    "title": "If Your Child Or Teenager Is Being Bullied On Social Media",
+    "slug": "cyberbullying-defense-advice-for-teens",
+    "title": "Cyberbullying Defense Advice for Teens",
     "chapter": "Spreads For Babies, Children, And Grandchildren Of All Ages",
     "purpose": "This layout is most useful when friendship patterns or social distance are weighing on you. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -649,8 +753,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 321,
-    "slug": "the-overcoming-anxiety-spread",
-    "title": "The Overcoming-Anxiety Spread",
+    "slug": "calming-anxiety-and-overthinking-tarot",
+    "title": "Calming Anxiety and Overthinking Tarot",
     "chapter": "Health And Healing Spreads",
     "purpose": "This 6-card spread is built for moments when fear, pressure, or social stress is shaping your choices more than you want it to. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -666,8 +770,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 322,
-    "slug": "will-your-health-improve",
-    "title": "Will Your Health Improve?",
+    "slug": "physical-healing-and-recovery-forecast",
+    "title": "Physical Healing and Recovery Forecast",
     "chapter": "Health And Healing Spreads",
     "purpose": "Use this 3-card layout when body confidence, wellbeing, or physical rhythm is part of the question. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -680,8 +784,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 354,
-    "slug": "bringing-good-luck-into-your-life",
-    "title": "Bringing Good Luck Into Your Life",
+    "slug": "attracting-positive-good-luck-energy",
+    "title": "Attracting Positive Good Luck Energy",
     "chapter": "Spreads For Good Luck",
     "purpose": "A practical 7-card spread for times when the theme of bringing good luck into your life is active in your life. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -698,8 +802,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 355,
-    "slug": "will-your-bad-luck-change-soon",
-    "title": "Will Your Bad Luck Change Soon?",
+    "slug": "breaking-bad-luck-cycles-astrology",
+    "title": "Breaking Bad Luck Cycles Astrology",
     "chapter": "Spreads For Good Luck",
     "purpose": "This layout is most useful when the theme of will your bad luck change soon is active in your life. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -712,8 +816,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 382,
-    "slug": "will-your-new-home-be-lucky-for-you",
-    "title": "Will Your New Home Be Lucky For You?",
+    "slug": "vastu-blessings-for-your-new-home",
+    "title": "Vastu Blessings for Your New Home",
     "chapter": "Spreads For The Home And Property",
     "purpose": "This 4-card spread is built for moments when the theme of will your new home be lucky for you is active in your life. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -727,8 +831,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 383,
-    "slug": "will-you-ever-sell-your-home",
-    "title": "Will You Ever Sell Your Home?",
+    "slug": "real-estate-sale-success-timeline",
+    "title": "Real Estate Sale Success Timeline",
     "chapter": "Spreads For The Home And Property",
     "purpose": "Use this 10-card layout when the theme of will you ever sell your home is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -748,8 +852,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 411,
-    "slug": "why-does-it-seem-so-hard-to-make-friends",
-    "title": "Why Does It Seem So Hard To Make Friends?",
+    "slug": "overcoming-social-isolation-and-loneliness",
+    "title": "Overcoming Social Isolation and Loneliness",
     "chapter": "Spreads For Friendships And Your Social Life",
     "purpose": "A practical 6-card spread for times when friendship patterns or social distance are weighing on you. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -765,8 +869,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 412,
-    "slug": "dealing-with-social-life-conflicts",
-    "title": "Dealing With Social Life Conflicts",
+    "slug": "resolving-friend-group-drama-advice",
+    "title": "Resolving Friend Group Drama Advice",
     "chapter": "Spreads For Friendships And Your Social Life",
     "purpose": "This layout is most useful when friendship patterns or social distance are weighing on you. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -784,8 +888,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 441,
-    "slug": "are-you-both-ready-for-the-life-changes-a-baby-will-bring",
-    "title": "Are You Both Ready For The Life Changes A Baby Will Bring?",
+    "slug": "preparing-for-parenthood-relationship-check",
+    "title": "Preparing for Parenthood Relationship Check",
     "chapter": "Spreads For Fertility, Conception, Pregnancy, And Babies",
     "purpose": "This 4-card spread is built for moments when the theme of are you both ready for the life changes a baby will bring is active in your life. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -799,8 +903,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 442,
-    "slug": "is-my-partner-the-right-person-to-be-the-parent-of-my-child",
-    "title": "Is My Partner The Right Person To Be The Parent Of My Child?",
+    "slug": "assessing-co-parenting-compatibility-tarot",
+    "title": "Assessing Co-Parenting Compatibility Tarot",
     "chapter": "Spreads For Fertility, Conception, Pregnancy, And Babies",
     "purpose": "Use this 3-card layout when your heart is involved and you need clarity about connection, desire, or commitment. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -813,8 +917,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 467,
-    "slug": "will-you-win-your-court-case",
-    "title": "Will You Win Your Court Case?",
+    "slug": "legal-victory-and-litigation-outcome",
+    "title": "Legal Victory and Litigation Outcome",
     "chapter": "Spreads For Justice, Truth, Compensation, And Inheritance",
     "purpose": "This one-card practice is for moments when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. It keeps the reading focused so one clear symbol can name the energy, lesson, or invitation most active right now.",
     "positions": [
@@ -825,8 +929,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 468,
-    "slug": "is-it-more-advantageous-to-accept-an-out-of-court-settlement-or",
-    "title": "Is It More Advantageous To Accept An Out-Of-Court Settlement Or To Go Ahead With The Court Case?",
+    "slug": "settlement-vs-going-to-trial-analysis",
+    "title": "Settlement vs Going to Trial Analysis",
     "chapter": "Spreads For Justice, Truth, Compensation, And Inheritance",
     "purpose": "This layout is most useful when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -838,8 +942,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 493,
-    "slug": "should-you-buy-a-pet",
-    "title": "Should You Buy A Pet?",
+    "slug": "pet-adoption-readiness-assessment",
+    "title": "Pet Adoption Readiness Assessment",
     "chapter": "Spreads For Pets Large And Small",
     "purpose": "This 7-card spread is built for moments when you are weighing whether buy a pet. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -856,8 +960,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 494,
-    "slug": "choosing-the-right-pet",
-    "title": "Choosing The Right Pet",
+    "slug": "finding-best-pet-companion-for-your-home",
+    "title": "Finding Best Pet Companion for Your Home",
     "chapter": "Spreads For Pets Large And Small",
     "purpose": "Use this 7-card layout when the theme of choosing the right pet is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -874,8 +978,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 520,
-    "slug": "should-you-move-to-a-particular-neighborhood",
-    "title": "Should You Move To A Particular Neighborhood?",
+    "slug": "relocation-analysis-for-new-communities",
+    "title": "Relocation Analysis for New Communities",
     "chapter": "Neighbors, Neighborhood, And Community Spreads",
     "purpose": "Use this single-card draw when you are weighing whether move to a particular neighborhood. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
     "positions": [
@@ -886,8 +990,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 521,
-    "slug": "when-you-move-into-a-new-neighborhood-and-no-one-comes-to-greet-you",
-    "title": "When You Move Into A New Neighborhood And No One Comes To Greet You",
+    "slug": "overcoming-isolation-after-moving",
+    "title": "Overcoming Isolation After Moving",
     "chapter": "Neighbors, Neighborhood, And Community Spreads",
     "purpose": "This layout is most useful when when you move into a new neighborhood and no one comes to greet you. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -899,8 +1003,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 543,
-    "slug": "should-you-and-your-partner-call-your-baby-the-name-you-want",
-    "title": "Should You And Your Partner Call Your Baby The Name You Want, Or The One Your Families Want?",
+    "slug": "resolving-family-disputes-over-baby-names",
+    "title": "Resolving Family Disputes Over Baby Names",
     "chapter": "Spreads For Celebrations",
     "purpose": "This 2-card spread is built for moments when your heart is involved and you need clarity about connection, desire, or commitment. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -912,8 +1016,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 544,
-    "slug": "how-can-you-decide-the-right-name-for-your-baby",
-    "title": "How Can You Decide The Right Name For Your Baby?",
+    "slug": "vedic-baby-name-selection-guide",
+    "title": "Vedic Baby Name Selection Guide",
     "chapter": "Spreads For Celebrations",
     "purpose": "Use this 4-card layout when the theme of how can you decide the right name for your baby is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -927,8 +1031,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 566,
-    "slug": "where-should-you-go-on-vacation",
-    "title": "Where Should You Go On Vacation?",
+    "slug": "holiday-travel-destination-picker-tarot",
+    "title": "Holiday Travel Destination Picker Tarot",
     "chapter": "Spreads For Travel And Vacations",
     "purpose": "A practical 5-card spread for times when travel, distance, or relocation is part of the decision. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -943,8 +1047,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 567,
-    "slug": "where-to-stay-when-theres-a-choice-between-two-in-any-question",
-    "title": "Where To Stay When There'S A Choice Between Two In Any Question About Traveling Or Vacations",
+    "slug": "hotel-vs-resort-accommodation-decision",
+    "title": "Hotel vs Resort Accommodation Decision",
     "chapter": "Spreads For Travel And Vacations",
     "purpose": "This one-card practice is for moments when travel, distance, or relocation is part of the decision. It keeps the reading focused so one clear symbol can name the energy, lesson, or invitation most active right now.",
     "positions": [
@@ -955,8 +1059,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 591,
-    "slug": "if-you-face-challenges-and-obstacles-to-overcome-in-order-to-achieve-desired-change",
-    "title": "If You Face Challenges And Obstacles To Overcome In Order To Achieve Desired Change",
+    "slug": "breaking-hurdles-to-achieve-success",
+    "title": "Breaking Hurdles to Achieve Success",
     "chapter": "Spreads For Life Changes And Transitions, Both Natural And Planned",
     "purpose": "This 7-card spread is built for moments when you face challenges and obstacles to overcome in order to achieve desired change. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -973,8 +1077,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 592,
-    "slug": "for-major-life-path-choices-and-transitions",
-    "title": "For Major Life-Path Choices And Transitions",
+    "slug": "navigating-big-career-and-life-crossroads",
+    "title": "Navigating Big Career and Life Crossroads",
     "chapter": "Spreads For Life Changes And Transitions, Both Natural And Planned",
     "purpose": "Use this 9-card layout when the theme of for major life path choices and transitions is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -993,8 +1097,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 593,
-    "slug": "if-you-want-to-make-a-major-life-change-but-feel-stuck",
-    "title": "If You Want To Make A Major Life Change But Feel Stuck",
+    "slug": "overcoming-stagnation-and-feeling-stuck",
+    "title": "Overcoming Stagnation and Feeling Stuck",
     "chapter": "Spreads For Life Changes And Transitions, Both Natural And Planned",
     "purpose": "A practical 5-card spread for times when you want to make a major life change but feel stuck. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -1009,8 +1113,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 622,
-    "slug": "a-fast-answer-sun-sign-spread",
-    "title": "A Fast-Answer Sun Sign Spread",
+    "slug": "quick-zodiac-guidance-reading",
+    "title": "Quick Zodiac Guidance Reading",
     "chapter": "Astrological Spreads, Part 1",
     "purpose": "This layout is most useful when you want structured guidance around fast answer sun sign spread. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -1023,8 +1127,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 623,
-    "slug": "the-aries-spread-of-action",
-    "title": "The Aries Spread Of Action",
+    "slug": "aries-energy-bold-initiative-boost",
+    "title": "Aries Energy Bold Initiative Boost",
     "chapter": "Astrological Spreads, Part 1",
     "purpose": "This 8-card spread is built for moments when you are working with the theme of aries spread of action. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -1042,8 +1146,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 641,
-    "slug": "the-seven-day-planet-spread",
-    "title": "The Seven-Day Planet Spread",
+    "slug": "weekly-navagraha-planetary-guide",
+    "title": "Weekly Navagraha Planetary Guide",
     "chapter": "Astrological Spreads, Part 2: The Planetary Spreads",
     "purpose": "Use this 7-card layout when you are working with the theme of seven day planet spread. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -1060,8 +1164,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 642,
-    "slug": "the-sun-spread-for-going-for-a-major-achievement-even-if-you",
-    "title": "The Sun Spread For Going For A Major Achievement Even If You Suspect You May Be Out Of Your League",
+    "slug": "overcoming-imposter-syndrome-for-success",
+    "title": "Overcoming Imposter Syndrome for Success",
     "chapter": "Astrological Spreads, Part 2: The Planetary Spreads",
     "purpose": "A practical 4-card spread for times when you are working with the theme of sun spread for going for a major achievement even if you suspect you may be out of your league. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -1075,8 +1179,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 657,
-    "slug": "a-crescent-moon-spread-if-you-are-starting-a-new-phase-of-your-life",
-    "title": "A Crescent Moon Spread If You Are Starting A New Phase Of Your Life",
+    "slug": "new-moon-rituals-for-fresh-beginnings",
+    "title": "New Moon Rituals for Fresh Beginnings",
     "chapter": "Moon Spreads",
     "purpose": "This layout is most useful when you want structured guidance around crescent moon spread if you are starting a new phase of your life. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -1091,8 +1195,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 658,
-    "slug": "a-crescent-moon-spread-for-a-new-source-of-money-in-your-life-within-a-month",
-    "title": "A Crescent Moon Spread For A New Source Of Money In Your Life Within A Month",
+    "slug": "manifesting-fast-secondary-income",
+    "title": "Manifesting Fast Secondary Income",
     "chapter": "Moon Spreads",
     "purpose": "This 6-card spread is built for moments when a work, money, or long-range practical decision needs a steadier reading. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -1108,8 +1212,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 684,
-    "slug": "a-waxing-moon-in-aries-spread-for-launching-a-self-employed-venture",
-    "title": "A Waxing Moon In Aries Spread For Launching A Self-Employed Venture",
+    "slug": "launching-freelance-and-solopreneur-gigs",
+    "title": "Launching Freelance and Solopreneur Gigs",
     "chapter": "Moon Zodiac Spreads",
     "purpose": "Use this 3-card layout when you want structured guidance around waxing moon in aries spread for launching a self employed venture. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -1122,8 +1226,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 685,
-    "slug": "a-full-moon-in-aries-spread-for-independence-from-an-over-possessive",
-    "title": "A Full Moon In Aries Spread For Independence From An Over-Possessive Or Dominant Family",
+    "slug": "breaking-free-from-toxic-family-dynamics",
+    "title": "Breaking Free from Toxic Family Dynamics",
     "chapter": "Moon Zodiac Spreads",
     "purpose": "A practical 8-card spread for times when family dynamics are emotional, layered, and not easily solved by one conversation. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -1141,8 +1245,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 720,
-    "slug": "a-new-moon-angel-spread-for-returning-to-life-after-hurt-betrayal-loss-or-illness",
-    "title": "A New Moon-Angel Spread For Returning To Life After Hurt, Betrayal, Loss, Or Illness",
+    "slug": "healing-trauma-loss-and-betrayal-guide",
+    "title": "Healing Trauma Loss and Betrayal Guide",
     "chapter": "Moon-Angel Spreads",
     "purpose": "This layout is most useful when grief, mourning, or the search for meaning after loss is active. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -1159,8 +1263,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 721,
-    "slug": "a-crescent-moon-angel-spread-for-new-beginnings-in-any-part-of",
-    "title": "A Crescent-Moon Angel Spread For New Beginnings In Any Part Of Your Life If You Are Unsure",
+    "slug": "divine-signs-for-uncertain-crossroads",
+    "title": "Divine Signs for Uncertain Crossroads",
     "chapter": "Moon-Angel Spreads",
     "purpose": "This 7-card spread is built for moments when you want structured guidance around crescent moon angel spread for new beginnings in any part of your life if you are unsure. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -1177,8 +1281,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 741,
-    "slug": "a-guardian-angel-spread-if-you-are-feeling-alone-or-afraid",
-    "title": "A Guardian-Angel Spread If You Are Feeling Alone Or Afraid",
+    "slug": "angelic-protection-for-loneliness-and-fear",
+    "title": "Angelic Protection for Loneliness and Fear",
     "chapter": "Angel And Archangel Spreads",
     "purpose": "Use this 6-card layout when you want structured guidance around guardian angel spread if you are feeling alone or afraid. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -1194,8 +1298,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 742,
-    "slug": "an-archangel-sachiel-spread-for-a-permanent-job-if-you-can-only-get-temporary-work",
-    "title": "An Archangel Sachiel Spread For A Permanent Job If You Can Only Get Temporary Work",
+    "slug": "turning-temporary-gigs-into-full-time-jobs",
+    "title": "Turning Temporary Gigs into Full Time Jobs",
     "chapter": "Angel And Archangel Spreads",
     "purpose": "A practical 5-card spread for times when a work, money, or long-range practical decision needs a steadier reading. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -1210,8 +1314,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 773,
-    "slug": "spread-of-the-fool-inner-child-if-you-seek-a-new-beginning",
-    "title": "Spread Of The Fool/Inner Child If You Seek A New Beginning",
+    "slug": "healing-inner-child-reclaiming-joy",
+    "title": "Healing Inner Child and Reclaiming Joy",
     "chapter": "Crystal Tarot Spreads",
     "purpose": "Use this single-card draw when the theme of spread of the fool inner child if you seek a new beginning is active in your life. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
     "positions": [
@@ -1222,8 +1326,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 774,
-    "slug": "spread-of-the-magician-for-the-success-of-an-entrepreneurial-venture",
-    "title": "Spread Of The Magician For The Success Of An Entrepreneurial Venture",
+    "slug": "manifestation-strategy-for-startups",
+    "title": "Manifestation Strategy for Startups",
     "chapter": "Crystal Tarot Spreads",
     "purpose": "A one-card spread for times when the theme of spread of the magician for the success of an entrepreneurial venture is active in your life. Instead of multiplying possibilities, it asks the deck to speak with precision and economy.",
     "positions": [
@@ -1234,8 +1338,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 796,
-    "slug": "a-four-winds-spread-of-fate",
-    "title": "A Four-Winds Spread Of Fate",
+    "slug": "karmic-destiny-crossroads-tarot",
+    "title": "Karmic Destiny Crossroads Tarot",
     "chapter": "Spreads For Foretelling Your Destiny",
     "purpose": "Use this 5-card layout when you want structured guidance around four winds spread of fate. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -1250,8 +1354,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 797,
-    "slug": "the-ring-of-fate-pendulum-spread-for-asking-a-specific-question-about",
-    "title": "The Ring-Of-Fate Pendulum Spread For Asking A Specific Question About An Unknown Aspect Of Your Future",
+    "slug": "pendulum-divination-for-hidden-answers",
+    "title": "Pendulum Divination for Hidden Answers",
     "chapter": "Spreads For Foretelling Your Destiny",
     "purpose": "A practical 6-card spread for times when you are working with the theme of ring of fate pendulum spread for asking a specific question about an unknown aspect of your future. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [],
@@ -1260,8 +1364,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 820,
-    "slug": "the-coming-into-balance-spread",
-    "title": "The Coming-Into-Balance Spread",
+    "slug": "rebalancing-yin-and-yang-energies",
+    "title": "Rebalancing Yin and Yang Energies",
     "chapter": "Spreads For Self-Awareness And Knowledge And Planning Your Life Path",
     "purpose": "This layout is most useful when you are working with the theme of coming into balance spread. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -1276,8 +1380,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 821,
-    "slug": "the-hidden-self-spread",
-    "title": "The Hidden-Self Spread",
+    "slug": "shadow-work-discovery-tarot-reading",
+    "title": "Shadow Work Discovery Tarot Reading",
     "chapter": "Spreads For Self-Awareness And Knowledge And Planning Your Life Path",
     "purpose": "This 3-card spread is built for moments when you are working with the theme of hidden self spread. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -1290,8 +1394,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 848,
-    "slug": "visualizing-your-chosen-card-in-your-minds-eye-for-an-in-depth",
-    "title": "Visualizing Your Chosen Card In Your Mind'S Eye For An In-Depth Understanding Into The Card'S Relevance To Your Life",
+    "slug": "deep-tarot-card-meditation-techniques",
+    "title": "Deep Tarot Card Meditation Techniques",
     "chapter": "Combining Tarot Spreads And Psychic Powers",
     "purpose": "Use this 6-card layout when the theme of visualizing your chosen card in your mind s eye for an in depth understanding into the card s relevance to your life is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [],
@@ -1300,8 +1404,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 849,
-    "slug": "a-tarot-spread-using-automatic-writing",
-    "title": "A Tarot Spread Using Automatic Writing",
+    "slug": "channeled-spirit-automatic-writing-guide",
+    "title": "Channeled Spirit Automatic Writing Guide",
     "chapter": "Combining Tarot Spreads And Psychic Powers",
     "purpose": "A practical 6-card spread for times when you want the reading to reach hidden, symbolic, or intuitive layers of the question. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [],
@@ -1310,8 +1414,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 870,
-    "slug": "a-four-seasons-spread",
-    "title": "A Four-Seasons Spread",
+    "slug": "quarterly-solstice-and-equinox-reading",
+    "title": "Quarterly Solstice and Equinox Reading",
     "chapter": "Spreads For Festivals And Seasons",
     "purpose": "This layout is most useful when you want to read a longer cycle rather than a single event. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -1326,8 +1430,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 871,
-    "slug": "a-month-by-month-spread-for-taking-advantage-of-the-underlying-energies",
-    "title": "A Month-By-Month Spread For Taking Advantage Of The Underlying Energies Of Each Month",
+    "slug": "monthly-energetic-alignment-roadmap",
+    "title": "Monthly Energetic Alignment Roadmap",
     "chapter": "Spreads For Festivals And Seasons",
     "purpose": "This 12-card spread is built for moments when you want to read a longer cycle rather than a single event. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -1349,8 +1453,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 896,
-    "slug": "a-st-joan-of-arc-spread-for-deciding-whether-to-continue-to",
-    "title": "A St.-Joan-Of-Arc Spread For Deciding Whether To Continue To Seek Justice Or Accept A Compromise",
+    "slug": "choosing-legal-battle-vs-settlement",
+    "title": "Choosing Legal Battle vs Settlement",
     "chapter": "Tarot Spreads And The Saints",
     "purpose": "Use this 5-card layout when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -1365,8 +1469,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 897,
-    "slug": "a-st-martha-dragon-slaying-spread-for-dealing-with-a-difficult-relative",
-    "title": "A St.-Martha-Dragon-Slaying Spread For Dealing With A Difficult Relative Without Causing A Major Family Rift",
+    "slug": "resolving-bitter-family-feuds-quietly",
+    "title": "Resolving Bitter Family Feuds Quietly",
     "chapter": "Tarot Spreads And The Saints",
     "purpose": "A practical 3-card spread for times when family dynamics are emotional, layered, and not easily solved by one conversation. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -1379,8 +1483,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 921,
-    "slug": "the-sports-and-fitness-spread",
-    "title": "The Sports-And-Fitness Spread",
+    "slug": "athletic-performance-and-fitness-tarot",
+    "title": "Athletic Performance and Fitness Tarot",
     "chapter": "The Go-For-It Spreads: Health, Fitness, Leisure, And Sports",
     "purpose": "This layout is most useful when body confidence, wellbeing, or physical rhythm is part of the question. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -1394,8 +1498,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 922,
-    "slug": "if-you-are-worried-about-the-way-other-people-perceive-your-appearance",
-    "title": "If You Are Worried About The Way Other People Perceive Your Appearance And Feel Getting Fit Will Help",
+    "slug": "overcoming-body-image-anxiety-strategies",
+    "title": "Overcoming Body Image Anxiety Strategies",
     "chapter": "The Go-For-It Spreads: Health, Fitness, Leisure, And Sports",
     "purpose": "This 7-card spread is built for moments when body confidence, wellbeing, or physical rhythm is part of the question. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -1412,8 +1516,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 951,
-    "slug": "breaking-down-the-walls-that-stop-you-seeking-an-alternative-lifestyle",
-    "title": "Breaking Down The Walls That Stop You Seeking An Alternative Lifestyle",
+    "slug": "embracing-alternative-non-traditional-lives",
+    "title": "Embracing Alternative Non-Traditional Lives",
     "chapter": "Spreads For Alternative Lifestyles, Doing Your Own Thing, And Living Your Own Way",
     "purpose": "Use this 5-card layout when the theme of breaking down the walls that stop you seeking an alternative lifestyle is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -1428,8 +1532,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 952,
-    "slug": "if-you-are-offered-a-run-down-animal-sanctuary-or-indigenous-wildlife-center",
-    "title": "If You Are Offered A Run-Down Animal Sanctuary Or Indigenous Wildlife Center",
+    "slug": "managing-animal-sanctuaries-and-wildlife",
+    "title": "Managing Animal Sanctuaries and Wildlife",
     "chapter": "Spreads For Alternative Lifestyles, Doing Your Own Thing, And Living Your Own Way",
     "purpose": "A practical 4-card spread for times when a meaningful life change feels exciting but also logistically demanding. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -1443,8 +1547,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 976,
-    "slug": "when-a-relationship-is-all-about-sex-and-not-about-love",
-    "title": "When A Relationship Is All About Sex And Not About Love",
+    "slug": "evaluating-casual-sex-vs-emotional-bond",
+    "title": "Evaluating Casual Sex vs Emotional Bond",
     "chapter": "Passion And Temptation Spreads",
     "purpose": "This layout is most useful when your heart is involved and you need clarity about connection, desire, or commitment. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
@@ -1458,8 +1562,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 977,
-    "slug": "if-your-new-love-is-giving-mixed-messages-about-lovemaking",
-    "title": "If Your New Love Is Giving Mixed Messages About Lovemaking",
+    "slug": "deciphering-mixed-intimacy-signals-in-love",
+    "title": "Deciphering Mixed Intimacy Signals in Love",
     "chapter": "Passion And Temptation Spreads",
     "purpose": "This 6-card spread is built for moments when your heart is involved and you need clarity about connection, desire, or commitment. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
     "positions": [
@@ -1475,8 +1579,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 989,
-    "slug": "when-a-relative-or-close-friend-dies-in-an-accident",
-    "title": "When A Relative Or Close Friend Dies In An Accident",
+    "slug": "grief-counseling-for-sudden-accidental-death",
+    "title": "Grief Counseling for Sudden Accidental Death",
     "chapter": "Spreads For Grief And Loss",
     "purpose": "Use this 6-card layout when friendship patterns or social distance are weighing on you. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
     "positions": [
@@ -1492,8 +1596,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 990,
-    "slug": "when-a-relative-suffers-a-mysterious-death-and-you-cannot-get-justice",
-    "title": "When A Relative Suffers A Mysterious Death And You Cannot Get Justice",
+    "slug": "coping-with-unresolved-suspicious-loss",
+    "title": "Coping with Unresolved Suspicious Loss",
     "chapter": "Spreads For Grief And Loss",
     "purpose": "A practical 7-card spread for times when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
     "positions": [
@@ -1510,8 +1614,8 @@ SPREADS_JSON = r"""[
   },
   {
     "number": 1001,
-    "slug": "your-personal-year-ahead-spread",
-    "title": "Your Personal-Year-Ahead Spread",
+    "slug": "birthday-solar-return-planetary-map",
+    "title": "Birthday Solar Return Planetary Map",
     "chapter": "Spread 1001",
     "purpose": "This layout is most useful when you want to review the year ahead in a broad, structured way. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
     "positions": [
