@@ -1,7 +1,7 @@
 # SEO & Web Performance -- Module Tracker
 > Path: `Codex_Deliveries/SEO/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-25 · v3.7
+> Last updated: 2026-05-25 · v3.8
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- prior SEO wave live; SEO-20K M4 local delivery prepared after M3 integration |
+| **Status** | 🟡 ACTIVE -- prior SEO wave live; SEO-20K M4 local delivery and TAR-SEO-2 data rewrite prepared after M3 integration |
 | **GA4** | G-3HJC8BTHRQ -- wired and live |
 | **GSC** | Verified + sitemap submitted |
 | **Bing** | Verified + sitemap submitted |
@@ -78,3 +78,4 @@
 | v3.5 | 2026-05-22 | SEO-20K M2 INTEGRATED. CC reviewed `compatibility_router.py` (no architecture violations -- uses `vedic_calculator.calculate_ashtakoot()`), `remedy_matching_router.py` (no KE/dasha imports), `CompatibilityPage.jsx`, `RemedyHubPage.jsx`. All 9 files committed `aba7d5c` and pushed to main. M2 confirmation sent to SEO Codex thread requesting M3. SEO-OP-6 closed. SEO-OP-7 (TT production smoke test) opened. | CC | `aba7d5c` |
 | v3.6 | 2026-05-23 | SEO-20K M3 local delivery prepared. Added `seo_m3_router.py`, shared SEO M3 catalog/builders, seed scripts for `transit_profiles`, `festival_region_pages`, and `character_placements`, public React pages for `/transits/:transitSlug`, `/festivals/:festivalSlug/:region`, and `/traits/:sign/:chartPoint/:house`, plus transits/festivals/traits sitemap endpoints and Vercel cache headers. Seed dry-runs returned 108 transit docs, 480 festival-region docs, and 432 character-placement docs. Frontend production build passed and backend syntax checks passed. No live production changes in this session. | Codex | `CODEX_COMMISSION_SEO_20K_M3.md` |
 | v3.7 | 2026-05-25 | SEO-20K M4 / TAR-SEO-1 local delivery prepared. Added `backend/tarot_seo_router.py`, tarot sitemap support in `backend/seo_router.py`, `server.py` router wiring, four new public React pages under `frontend/src/pages/tarot-seo/`, public routes for `/tarot/spreads`, `/tarot/spread/:spreadSlug`, `/tarot/card/:cardSlug`, and `/tarot/for/:intentionSlug`, plus Vercel cache headers and sitemap-index wiring. Frontend production build passed, backend syntax checks passed, and the interactive `/tarot` module remained untouched. | Codex | `Tarot/CODEX_COMMISSION_TAR_SEO_1.md` |
+| v3.8 | 2026-05-25 | TAR-SEO-2 local data rewrite prepared as a follow-on fix to M4. Reworked only `backend/tarot_seo_data.py` to replace source-derived spread prose and rigid card templates. `py_compile` passed, legacy repeated phrases were removed, and record counts remained `100` spreads, `78` cards, `20` intentions. No router, frontend, or wiring files changed in this session. | Codex | `Tarot/CODEX_COMMISSION_TAR_SEO_2_REWRITE.md` |

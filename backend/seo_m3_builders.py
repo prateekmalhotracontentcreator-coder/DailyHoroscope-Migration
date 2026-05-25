@@ -210,6 +210,24 @@ def _festival_fact(festival_slug: str, region_slug: str) -> str:
     )
 
 
+def _festival_summary(festival_slug: str, region_slug: str) -> str:
+    festival = FESTIVAL_META[festival_slug]
+    region = REGION_META[region_slug]
+    zone_tone = {
+        "south": "a warm, ritual-led rhythm",
+        "north": "an open, high-energy community style",
+        "east": "an artistic, devotional public mood",
+        "west": "a bright, socially expressive festive tempo",
+        "northeast": "a close-knit, community-first celebration style",
+        "central": "a grounded, family-centred observance pattern",
+        "diaspora": "a weekend-friendly diaspora community rhythm",
+    }
+    return (
+        f"{festival['name']} in {region['name']} centres on {festival['season']}, expressed through {region['marker']} and the local instinct to celebrate together. "
+        f"In {region['zone']} observance, families often gather around {region['food']}, giving {festival['name']} in {region['name']} {zone_tone.get(region['zone'], 'a distinct regional rhythm')} that feels unmistakably local."
+    )
+
+
 def _festival_faq(festival_slug: str, region_slug: str) -> list[dict[str, str]]:
     festival = FESTIVAL_META[festival_slug]["name"]
     region = REGION_META[region_slug]["name"]
@@ -237,10 +255,7 @@ def build_festival_region_doc(festival_slug: str, region_slug: str) -> dict[str,
         "festival_slug": festival_slug,
         "region_slug": region_slug,
         "regional_name": _regional_name(festival_slug, region_slug),
-        "summary": (
-            f"{festival_name} in {region_name} brings together local ritual timing, family tradition, and community celebration. "
-            f"This page focuses on date, customs, food, and how the region typically gives the festival its own voice."
-        ),
+        "summary": _festival_summary(festival_slug, region_slug),
         "traditions": _festival_traditions(festival_slug, region_slug),
         "celebration_steps": _festival_steps(festival_slug, region_slug),
         "did_you_know": _festival_fact(festival_slug, region_slug),

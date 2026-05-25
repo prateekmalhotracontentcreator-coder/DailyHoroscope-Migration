@@ -1,0 +1,71 @@
+name: "ECHO // PACE Content Compliance Gate"
+
+# Blocks deploy if any SEO module's combination pages exceed the 30% cross-page
+# similarity ceiling. Runs on every push/PR to main that touches tarot or SEO files.
+#
+# Activation: the hard 30% ceiling test only activates once backend/tarot_combinations.json
+# exists with ≥100 records (written by seed_tarot_seo.py). Until then, the architecture
+# benchmark test always runs and logs similarity figures for tracking.
+#
+# Reference: ECHO_PACE_PROCESS/PROCESS_2_CICD_COMPLIANCE_TESTING.md
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      # Trigger on any change to tarot data, seed scripts, or compliance infrastructure
+      - "backend/tarot_seo_data.py"
+      - "backend/tarot_combinations.json"
+      - "backend/scripts/seed_tarot_seo.py"
+      - "backend/scripts/verify_tarot_compliance.py"
+      - "backend/tarot_router.py"
+      - "tests/test_tarot_compliance.py"
+      - ".github/workflows/echo_pace_compliance.yml"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "backend/tarot_seo_data.py"
+      - "backend/tarot_combinations.json"
+      - "backend/scripts/seed_tarot_seo.py"
+      - "backend/scripts/verify_tarot_compliance.py"
+      - "backend/tarot_router.py"
+      - "tests/test_tarot_compliance.py"
+      - ".github/workflows/echo_pace_compliance.yml"
+
+jobs:
+  compliance-audit:
+    name: "ECHO // PACE — cross-page similarity check"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install compliance dependencies
+        run: |
+          pip install scikit-learn numpy pytest
+
+      - name: "TAR-M4 compliance test (ceiling enforced once tarot_combinations.json exists)"
+        working-directory: ${{ github.workspace }}
+        run: |
+          python3 -m pytest tests/test_tarot_compliance.py -v \
+            --tb=short \
+            --no-header
+
+      # ── Future modules — uncomment as each module is built and seeded ──────
+      # Add the module's test file to the paths filter above when activating.
+      #
+      # - name: Angel Numbers compliance
+      #   run: python3 -m pytest tests/test_angel_compliance.py -v --tb=short
+      #
+      # - name: Festival-Region compliance
+      #   run: python3 -m pytest tests/test_festival_compliance.py -v --tb=short
+      #
+      # - name: Crystal compliance
+      #   run: python3 -m pytest tests/test_crystal_compliance.py -v --tb=short
