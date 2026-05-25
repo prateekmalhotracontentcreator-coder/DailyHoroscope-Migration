@@ -1,6 +1,6 @@
 # EverydayHoroscope -- Project Status
 
-> Last updated: 20 May 2026
+> Last updated: 24 May 2026
 
 > **KE Sprint 2 (arbitration runtime) -- pending brief submission. Ingest freeze in effect.**
 
@@ -268,6 +268,57 @@ Backend: `GET /api/policies/{type}` serves from `horoscope_db.policies` collecti
 **Status: Pages live. Local SEO-C1 refresh prepared, but no live production changes were applied in this session.**
 Next step when approved: `python3 backend/scripts/seed_policies_v1.py --mongo-url "$MONGO_URL" --db-name horoscope_db`
 Local refresh includes: `PolicyPage.jsx` `noindex` cleanup plus updated legal seed wording for Razorpay, Google Analytics, cookie controls, and 7-day unused-service refund eligibility.
+
+---
+
+---
+
+## Knowledge Engine -- Book Decode Status
+
+> Last updated: 2026-05-24 | KE Ingest Freeze in effect since 14 May 2026
+
+### Book Decode Summary
+
+| Book | Topic | Rules Extracted | Status | Ingest Status |
+|---|---|---|---|---|
+| Book 1 -- Numerology | Your Destiny Is In Your Name & DOB | ~400 rules (18 chapters) + 50 test vectors | ✅ Complete | 🔒 Freeze -- pending Sprint 2 arbitration runtime |
+| Book 2 -- 300 Combinations | Astrological Yogas | 300 rules, 20 batches | ✅ Complete | 🔒 Freeze |
+| Book 3 -- 300 Horoscopes Vol. 1 | Horoscope Interpretations | 51 net rules (57 − 6 superseded) + 15 test vectors | ✅ Complete | 🔒 Freeze |
+| Book 4 -- Longevity & Unnatural Death | Ayurdaya rules | 44 rules, 6 sections, 2 benchmark cases | ✅ Complete | 🔒 Freeze |
+| Book 5 -- Longevity (58 chapters) | Aayu Bucket Framework | All 58 chapters decoded | ✅ Complete | 🔒 Freeze |
+| Book 6 -- SBC (Sarvato Bhadra Chakra) | Mundane + Muhurata | 181 rules, 16 chapters | ✅ Complete | 🔒 Freeze |
+
+### AI-NUM Research Series (Book 1 -- Numerology)
+
+| ID | Item | Status |
+|---|---|---|
+| AI-NUM-001 | Case Study Review -- 50 career alignment verdicts | ✅ Complete |
+| AI-NUM-002 | Ch03 JSON + Personal Year Cycle module (GAI-sourced v2) | ✅ Complete |
+| AI-NUM-003 | Career Alignment Diagnostic -- 31 rules, 4 categories | ✅ Complete |
+| AI-NUM-004 | Case-Derived Inference Library -- 21 rules, 10 categories | ✅ Complete |
+| AI-NUM-005 | Multi-System Cross-Validation Protocol | 🔜 Pending |
+| AI-NUM-006 | Gate 0 Implementation Brief | 🔜 Pending |
+
+### Track 1 Co-Founder Decisions Pending
+
+| Ref | Book | Item | Priority |
+|---|---|---|---|
+| B1-D1 | Numerology | Zuckerberg E=3 vs E=5 -- outcome-validated, awaiting formal sign-off | MEDIUM |
+| B1-D2 | Numerology | Vikram Batra thought_plane arrow -- computation-ruled, awaiting sign-off | MEDIUM |
+| B2-D1 | 300 Combinations | Y248 tyrant-outcome path display decision | HIGH |
+| B2-D2 | 300 Combinations | LOW-confidence yogas display policy | MEDIUM |
+| B3-D1 to B3-D4 | 300 Horoscopes | Cross-book merge decisions (4 items) | MEDIUM |
+| B6-D1 | SBC | Moon Shukla boundary rule | MEDIUM |
+| B6-D2 | SBC | 6 lookup collections schema | MEDIUM |
+| B6-D3 | SBC | Muhurata orchestration order | MEDIUM |
+
+### KE Next Steps (post-freeze)
+1. Sprint 2 arbitration runtime delivery → triggers ingest queue for all 6 books
+2. Co-founder sign-off on all Track 1 decisions above
+3. AI-NUM-005: Multi-System Cross-Validation Protocol (Numerology → Longevity → Astrology)
+4. AI-NUM-006: Gate 0 Implementation Brief (name variant selection for premium reports)
+5. Book 5 Ch36-Ch58: Rules extraction from benchmark case studies (separate Codex commission)
+6. Medical Astrology decode: re-track towards end of week per co-founder
 
 ---
 

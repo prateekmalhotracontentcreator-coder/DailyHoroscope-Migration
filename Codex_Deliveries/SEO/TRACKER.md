@@ -1,7 +1,7 @@
 # SEO & Web Performance -- Module Tracker
 > Path: `Codex_Deliveries/SEO/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-22 · v3.5
+> Last updated: 2026-05-23 · v3.6
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- prior SEO wave live; SEO-20K M2 local delivery prepared after M1 verification |
+| **Status** | 🟡 ACTIVE -- prior SEO wave live; SEO-20K M3 local delivery prepared after M2 integration |
 | **GA4** | G-3HJC8BTHRQ -- wired and live |
 | **GSC** | Verified + sitemap submitted |
 | **Bing** | Verified + sitemap submitted |
@@ -25,7 +25,7 @@
 | ID | Commission | Track | Priority | Status | Brief |
 |---|---|---|---|---|---|
 | **SEO-WebPerf** | SEO + Marketing + Web Performance Optimisation | -- | Issue Last | 🟣 READY -- ISSUE LAST | `CODEX_COMMISSION_SEO_WEBPERF.md` |
-| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | M1-M3 | 🟡 IN PROGRESS -- M2 ✅ INTEGRATED `aba7d5c` · M3 awaiting next Codex cycle | `CODEX_COMMISSION_SEO_20K.md` |
+| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | M1-M3 | 🟡 IN PROGRESS -- M2 ✅ INTEGRATED `aba7d5c` · M3 local delivery prepared (108 transits + 480 festival-region pages + 432 traits) | `CODEX_COMMISSION_SEO_20K.md` |
 | **SEO-C1** | Legal Pages Content (populate MongoDB policies) | C | Phase 1 | ✅ LIVE -- policies seeded to production 2026-05-20 | `CODEX_COMMISSION_SEO-C1.md` |
 | **SEO-B1** | Tomorrow / Weekly / Monthly Per-Sign Horoscope (36 pages) | B | Phase 3 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-B1.md` |
 | **SEO-B3** | Festival Calendar Hub + Hora Today + Indian Calendar | B | Phase 2 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-B3.md` |
@@ -76,3 +76,4 @@
 | v3.3 | 2026-05-22 | SEO-20K M1 local delivery prepared. Added dynamic sitemap endpoints in `backend/seo_router.py`, upgraded `SEO.jsx` with canonical/hreflang/JSON-LD support, added `/panchang/:citySlug/:date` and `/choghadiya/:citySlug/:period`, created `sitemap-index.xml`, updated robots, added Vercel route cache headers, and wrote `docs/SEO_WEBPERF_REPORT.md` plus `docs/SEO_30DAY_PLAN.md`. Frontend production build passed and backend AST syntax checks passed. No live production changes in this session. | Codex | `CODEX_COMMISSION_SEO_20K.md` |
 | v3.4 | 2026-05-22 | SEO-20K M2 local delivery prepared. Added sign-pair compatibility pages, remedy hub pages, new backend compatibility and remedy-matching routers, compatibility/remedies sitemap endpoints, `App.js` public routes, and Vercel cache headers for the new programmatic route groups. No live production changes in this session. | Codex | `CODEX_COMMISSION_SEO_20K.md` |
 | v3.5 | 2026-05-22 | SEO-20K M2 INTEGRATED. CC reviewed `compatibility_router.py` (no architecture violations -- uses `vedic_calculator.calculate_ashtakoot()`), `remedy_matching_router.py` (no KE/dasha imports), `CompatibilityPage.jsx`, `RemedyHubPage.jsx`. All 9 files committed `aba7d5c` and pushed to main. M2 confirmation sent to SEO Codex thread requesting M3. SEO-OP-6 closed. SEO-OP-7 (TT production smoke test) opened. | CC | `aba7d5c` |
+| v3.6 | 2026-05-23 | SEO-20K M3 local delivery prepared. Added `seo_m3_router.py`, shared SEO M3 catalog/builders, seed scripts for `transit_profiles`, `festival_region_pages`, and `character_placements`, public React pages for `/transits/:transitSlug`, `/festivals/:festivalSlug/:region`, and `/traits/:sign/:chartPoint/:house`, plus transits/festivals/traits sitemap endpoints and Vercel cache headers. Seed dry-runs returned 108 transit docs, 480 festival-region docs, and 432 character-placement docs. Frontend production build passed and backend syntax checks passed. No live production changes in this session. | Codex | `CODEX_COMMISSION_SEO_20K_M3.md` |

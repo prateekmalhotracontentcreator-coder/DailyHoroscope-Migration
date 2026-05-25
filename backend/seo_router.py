@@ -5,7 +5,10 @@ from zoneinfo import ZoneInfo
 
 from fastapi import APIRouter, Response
 
+from crystal_data import get_crystal_sitemap_urls
 from panchang_router import DEFAULT_LOCATIONS
+from lo_shu_router import LO_SHU_SITEMAP_URLS
+from seo_m3_catalog import CHART_POINTS, FESTIVAL_SLUGS, HOUSES, PLANET_SLUGS, REGION_SLUGS, SIGN_SLUGS
 
 
 router = APIRouter(prefix="/api/seo", tags=["seo"])
@@ -28,20 +31,7 @@ HOROSCOPE_SIGNS = [
 ]
 HOROSCOPE_PERIODS = ["tomorrow", "weekly", "monthly"]
 CHOGHADIYA_PERIODS = ["today", "tonight", "tomorrow", "tomorrow-night"]
-COMPATIBILITY_SIGNS = [
-    "aries",
-    "taurus",
-    "gemini",
-    "cancer",
-    "leo",
-    "virgo",
-    "libra",
-    "scorpio",
-    "sagittarius",
-    "capricorn",
-    "aquarius",
-    "pisces",
-]
+COMPATIBILITY_SIGNS = SIGN_SLUGS
 REMEDY_DOSHAS = [
     "shani-sade-sati",
     "manglik-dosha",
@@ -56,6 +46,7 @@ REMEDY_DOSHAS = [
     "gana-dosha",
     "bhakoot-dosha",
 ]
+RUDRAKSHA_SLUGS = [f"{number}-mukhi" for number in range(1, 22)]
 
 
 def _sitemap_xml(urls: list[tuple[str, str | None]]) -> str:
@@ -126,4 +117,63 @@ async def get_compatibility_sitemap() -> Response:
 async def get_remedies_sitemap() -> Response:
     today = datetime.now(INDIA_TZ).date().isoformat()
     urls = [(f"{SITE_URL}/remedies/{slug}", today) for slug in REMEDY_DOSHAS]
+    return _xml_response(_sitemap_xml(urls))
+
+
+@router.get("/sitemap/transits")
+async def get_transits_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = [
+        (f"{SITE_URL}/transits/{planet_slug}-in-{sign_slug}", today)
+        for planet_slug in PLANET_SLUGS
+        for sign_slug in SIGN_SLUGS
+    ]
+    return _xml_response(_sitemap_xml(urls))
+
+
+@router.get("/sitemap/festivals")
+async def get_festival_region_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = [
+        (f"{SITE_URL}/festivals/{festival_slug}/{region_slug}", today)
+        for festival_slug in FESTIVAL_SLUGS
+        for region_slug in REGION_SLUGS
+    ]
+    return _xml_response(_sitemap_xml(urls))
+
+
+@router.get("/sitemap/traits")
+async def get_traits_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = [
+        (f"{SITE_URL}/traits/{sign_slug}/{chart_point['slug']}/{house['slug']}", today)
+        for sign_slug in SIGN_SLUGS
+        for chart_point in CHART_POINTS
+        for house in HOUSES
+    ]
+    return _xml_response(_sitemap_xml(urls))
+
+
+@router.get("/sitemap/crystals")
+async def get_crystals_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = [(href, today) for href in get_crystal_sitemap_urls()]
+    return _xml_response(_sitemap_xml(urls))
+
+
+@router.get("/sitemap/lo-shu-grid")
+async def get_lo_shu_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = [(href, today) for href in LO_SHU_SITEMAP_URLS]
+    return _xml_response(_sitemap_xml(urls))
+
+
+@router.get("/sitemap/rudraksha")
+async def get_rudraksha_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = [
+        (f"{SITE_URL}/rudraksha", today),
+        (f"{SITE_URL}/rudraksha/calculator", today),
+        *[(f"{SITE_URL}/rudraksha/{slug}", today) for slug in RUDRAKSHA_SLUGS],
+    ]
     return _xml_response(_sitemap_xml(urls))
