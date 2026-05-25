@@ -8,7 +8,7 @@ import { Crown, Check, Sparkles } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { useAuth } from '../context/AuthContext';
-import { logRazorpayOpen } from '../diagnostics/telemetry';
+import { logRazorpayOpen, markGatewayOpen } from '../diagnostics/telemetry';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -24,7 +24,7 @@ const loadRazorpay = () => {
   });
 };
 
-export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess }) => {
+export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess, orderContext = null }) => {
   const { user } = useAuth();
   const [email, setEmail] = useState('');
   const [paymentOption, setPaymentOption] = useState('per_report');
@@ -68,7 +68,8 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
       const orderResponse = await axios.post(`${API}/payment/create-order`, {
         report_type: paymentOption === 'premium_monthly' ? 'premium_monthly' : reportType,
         report_id: reportId,
-        user_email: email
+        user_email: email,
+        order_context: orderContext || undefined,
       });
 
       const { order_id, amount, currency, key_id } = orderResponse.data;
@@ -104,7 +105,11 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
 
             if (verifyResponse.data.status === 'success') {
               toast.success('Payment successful! You now have premium access.');
-              onSuccess();
+              onSuccess?.({
+                razorpayOrderId: order_id,
+                reportType: paymentOption === 'premium_monthly' ? 'premium_monthly' : reportType,
+                reportId,
+              });
               onClose();
             }
           } catch (error) {
@@ -127,6 +132,7 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
         paymentOption === 'premium_monthly' ? 'premium_monthly' : reportType,
         currentPrice
       );
+      markGatewayOpen(order_id);
       razorpay.open();
       setProcessing(false);
 

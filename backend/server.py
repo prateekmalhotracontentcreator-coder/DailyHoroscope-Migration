@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, BackgroundTasks, HTTPException, Request, Response, UploadFile, File, Form
+from fastapi import FastAPI, APIRouter, BackgroundTasks, HTTPException, Request, Response, UploadFile, File, Form, Header
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.triggers.cron import CronTrigger
 from fastapi.responses import StreamingResponse, HTMLResponse
@@ -8,6 +8,8 @@ from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
+import hmac
+import hashlib
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from typing import Any, Dict, List, Literal, Optional
@@ -15,6 +17,7 @@ import uuid
 from datetime import datetime, timezone, date, timedelta
 from zoneinfo import ZoneInfo
 import anthropic
+from pymongo import ReturnDocument
 
 # ── pkg_resources shim ────────────────────────────────────────────────────────
 # razorpay==1.3.0 calls `import pkg_resources` at import time.
@@ -66,6 +69,7 @@ from models.diagnostics import (
     TelemetryEvent,
     TelemetryLogRequest,
 )
+from models.orders import ForceHealOrderRequest
 from remedies_router import router as remedies_router
 from crystal_router import router as crystal_router
 from compatibility_router import router as compatibility_router
@@ -144,6 +148,7 @@ razorpay_client = razorpay.Client(auth=(
     os.environ.get('RAZORPAY_KEY_ID'),
     os.environ.get('RAZORPAY_KEY_SECRET')
 ))
+RAZORPAY_WEBHOOK_SECRET = os.environ.get("RAZORPAY_WEBHOOK_SECRET", "")
 
 PRICING = {
     "birth_chart": 799,
@@ -302,6 +307,56 @@ async def _resolve_diagnostics_lookup(search_value: str) -> tuple[Optional[str],
         payment_email = resolved_user_id.split("email:", 1)[1]
 
     return resolved_user_id, user_doc, payment_email
+
+
+def _normalize_email(value: str | None) -> str:
+    return (value or "").strip().lower()
+
+
+def _derive_order_user_id(request_user_id: Optional[str], user_email: str) -> str:
+    normalized_email = _normalize_email(user_email)
+    return request_user_id or f"email:{normalized_email}"
+
+
+async def _mark_order_state(
+    order_id: str,
+    state: str,
+    *,
+    ts_field: Optional[str] = None,
+    extra_updates: Optional[Dict[str, Any]] = None,
+) -> None:
+    updates: Dict[str, Any] = {"current_state": state}
+    if ts_field:
+        updates[ts_field] = utc_now()
+    if extra_updates:
+        updates.update(extra_updates)
+    await db["orders_ledger"].update_one({"_id": order_id}, {"$set": updates})
+
+
+async def _mark_order_fulfilled(order_id: str, *, generated_report_id: Optional[str] = None) -> None:
+    updates: Dict[str, Any] = {
+        "current_state": "FULFILLED",
+        "ts_fulfill_done": utc_now(),
+        "error_log": None,
+        "fulfillment_in_progress": False,
+    }
+    if generated_report_id:
+        updates["generated_report_id"] = generated_report_id
+    await db["orders_ledger"].update_one({"_id": order_id}, {"$set": updates})
+
+
+async def _find_existing_brihat_report(order: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    context = order.get("order_context") or {}
+    if not context:
+        return None
+    query = {
+        "user_email": order.get("user_email", ""),
+        "full_name": context.get("full_name"),
+        "date_of_birth": context.get("date_of_birth"),
+        "time_of_birth": context.get("time_of_birth"),
+        "place_of_birth": context.get("place_of_birth"),
+    }
+    return await db.brihat_kundli_reports.find_one(query, {"_id": 0}, sort=[("generated_at", -1)])
 
 
 class SelfHealingMiddleware(BaseHTTPMiddleware):
@@ -576,7 +631,10 @@ class ResetPasswordRequest(BaseModel):
     token: str; new_password: str
 
 class PaymentIntentRequest(BaseModel):
-    report_type: str; report_id: Optional[str] = None; user_email: str
+    report_type: str
+    report_id: Optional[str] = None
+    user_email: str
+    order_context: Dict[str, Any] = Field(default_factory=dict)
 
 # ── Notification / Subscriber Models ──────────────────────────────────────────
 
@@ -1272,8 +1330,13 @@ async def generate_brihat_kundli_with_llm(request: BrihatKundliRequest) -> dict:
         logging.error("Error generating Brihat Kundli: %s", str(e))
         raise HTTPException(status_code=500, detail="Failed to generate Brihat Kundli: " + str(e))
 
-@api_router.post("/brihat-kundli/generate")
-async def generate_brihat_kundli(request: BrihatKundliRequest, http_request: Request, user_email: str = ""):
+async def _generate_brihat_kundli_report(
+    request: BrihatKundliRequest,
+    *,
+    user_email: str = "",
+    knowledge_engine = None,
+    request_user_id: Optional[str] = None,
+):
     try:
         chart_data = None
         try: chart_data = calculate_vedic_chart(date_of_birth=request.date_of_birth, time_of_birth=request.time_of_birth, place_of_birth=request.place_of_birth)
@@ -1282,11 +1345,10 @@ async def generate_brihat_kundli(request: BrihatKundliRequest, http_request: Req
         if chart_data and chart_data.get('houses'):
             try: chart_svg = generate_north_indian_chart_svg(chart_data['houses'], chart_data['lagna']['sign'])
             except Exception as se: logging.warning("SVG chart generation failed: %s", se)
-        engine = getattr(http_request.app.state, "knowledge_engine", None)
-        if engine is not None and chart_data is not None:
+        if knowledge_engine is not None and chart_data is not None:
             report_data, knowledge_narratives = await asyncio.gather(
                 generate_brihat_kundli_with_llm(request),
-                _brihat_ke_pipeline(chart_data, engine),
+                _brihat_ke_pipeline(chart_data, knowledge_engine),
             )
         else:
             report_data = await generate_brihat_kundli_with_llm(request)
@@ -1331,13 +1393,30 @@ async def generate_brihat_kundli(request: BrihatKundliRequest, http_request: Req
         import json
         doc = json.loads(report.model_dump_json())
         await db.brihat_kundli_reports.insert_one({**doc})
-        state_user = getattr(http_request.state, "user", None) or {}
-        if state_user.get("user_id"):
-            await register_arc_angel_report_run(db, str(state_user["user_id"]), "brihat_kundali")
+        if request_user_id:
+            await register_arc_angel_report_run(db, str(request_user_id), "brihat_kundali")
         return {"success": True, "report_id": report.id, "report": doc}
     except Exception as e:
         logging.error("Brihat Kundli generation error: %s", str(e), exc_info=True)
         raise HTTPException(status_code=500, detail="Failed to generate report: " + str(e))
+
+
+@api_router.post("/brihat-kundli/generate")
+async def generate_brihat_kundli(
+    request: BrihatKundliRequest,
+    http_request: Request,
+    user_email: str = "",
+    source_order_id: Optional[str] = None,
+):
+    result = await _generate_brihat_kundli_report(
+        request,
+        user_email=user_email,
+        knowledge_engine=getattr(http_request.app.state, "knowledge_engine", None),
+        request_user_id=(getattr(http_request.state, "user", None) or {}).get("user_id"),
+    )
+    if source_order_id:
+        await _mark_order_fulfilled(source_order_id, generated_report_id=result["report_id"])
+    return result
 
 @api_router.get("/brihat-kundli/{report_id}")
 async def get_brihat_kundli(report_id: str):
@@ -1464,17 +1543,221 @@ async def check_premium_access(user_email: str, report_type: str, report_id: str
     premium_payment = await db.payments.find_one({"user_email": user_email, "report_type": "premium_monthly", "status": "completed"})
     return premium_payment is not None
 
+
+async def _activate_premium_subscription(user_email: str, payment_id: Optional[str]) -> None:
+    if not user_email:
+        raise ValueError("Premium subscription requires user email")
+    await db.subscriptions.update_one(
+        {"user_email": user_email, "subscription_type": "premium_monthly"},
+        {
+            "$set": {
+                "status": "active",
+                "stripe_subscription_id": payment_id,
+                "expires_at": utc_now() + timedelta(days=30),
+            },
+            "$setOnInsert": {
+                "id": str(uuid.uuid4()),
+                "created_at": utc_now(),
+            },
+        },
+        upsert=True,
+    )
+
+
+async def _lock_order_for_fulfillment(order_id: str) -> Optional[Dict[str, Any]]:
+    return await db["orders_ledger"].find_one_and_update(
+        {
+            "_id": order_id,
+            "ts_fulfill_done": None,
+            "fulfillment_in_progress": {"$ne": True},
+        },
+        {
+            "$set": {
+                "fulfillment_in_progress": True,
+                "last_fulfillment_attempt": utc_now(),
+                "error_log": None,
+            }
+        },
+        return_document=ReturnDocument.AFTER,
+    )
+
+
+async def _release_fulfillment_lock(order_id: str, error_message: str) -> None:
+    await db["orders_ledger"].update_one(
+        {"_id": order_id},
+        {"$set": {"fulfillment_in_progress": False, "error_log": error_message[:500]}},
+    )
+
+
+async def _fulfil_order(order_id: str):
+    locked_order = await _lock_order_for_fulfillment(order_id)
+    if not locked_order:
+        return
+
+    try:
+        report_type = locked_order.get("report_type")
+
+        if report_type == "premium_monthly":
+            await _activate_premium_subscription(locked_order.get("user_email", ""), locked_order.get("razorpay_payment_id"))
+            await _mark_order_fulfilled(order_id)
+            return
+
+        if report_type == "birth_chart":
+            report = await db.birth_chart_reports.find_one({"profile_id": locked_order.get("report_id")}, {"_id": 0, "id": 1})
+            if not report:
+                raise ValueError("Birth chart report not found for fulfillment")
+            await _mark_order_fulfilled(order_id, generated_report_id=report.get("id"))
+            return
+
+        if report_type == "kundali_milan":
+            report = await db.kundali_milan_reports.find_one({"id": locked_order.get("report_id")}, {"_id": 0, "id": 1})
+            if not report:
+                raise ValueError("Kundali Milan report not found for fulfillment")
+            await _mark_order_fulfilled(order_id, generated_report_id=report.get("id"))
+            return
+
+        if report_type == "brihat_kundli":
+            if locked_order.get("generated_report_id"):
+                await _mark_order_fulfilled(order_id, generated_report_id=locked_order.get("generated_report_id"))
+                return
+
+            if locked_order.get("report_id") and locked_order.get("report_id") != "new":
+                existing = await db.brihat_kundli_reports.find_one({"id": locked_order.get("report_id")}, {"_id": 0, "id": 1})
+                if existing:
+                    await _mark_order_fulfilled(order_id, generated_report_id=existing.get("id"))
+                    return
+
+            await asyncio.sleep(20)
+            refreshed_order = await db["orders_ledger"].find_one({"_id": order_id}, {"_id": 0})
+            if refreshed_order and refreshed_order.get("ts_fulfill_done"):
+                return
+
+            existing = await _find_existing_brihat_report(refreshed_order or locked_order)
+            if existing:
+                await _mark_order_fulfilled(order_id, generated_report_id=existing.get("id"))
+                return
+
+            context = (refreshed_order or locked_order).get("order_context") or {}
+            required = ["full_name", "date_of_birth", "time_of_birth", "place_of_birth", "gender"]
+            missing = [field for field in required if not context.get(field)]
+            if missing:
+                raise ValueError(f"Missing Brihat fulfillment context: {', '.join(missing)}")
+
+            result = await _generate_brihat_kundli_report(
+                BrihatKundliRequest(**context),
+                user_email=(refreshed_order or locked_order).get("user_email", ""),
+                knowledge_engine=getattr(app.state, "knowledge_engine", None),
+            )
+            await _mark_order_fulfilled(order_id, generated_report_id=result["report_id"])
+            return
+
+        raise ValueError(f"Unsupported fulfillment report type: {report_type}")
+    except Exception as exc:
+        logging.error("Order fulfillment failed for %s: %s", order_id, exc, exc_info=True)
+        await _release_fulfillment_lock(order_id, str(exc))
+
 @api_router.post("/payment/create-order")
-async def create_payment_order(request: PaymentIntentRequest):
+async def create_payment_order(request: PaymentIntentRequest, http_request: Request):
     if request.report_type not in PRICING: raise HTTPException(status_code=400, detail="Invalid report type")
     try:
         amount_paise = int(PRICING[request.report_type] * 100)
-        razorpay_order = razorpay_client.order.create({"amount": amount_paise, "currency": "INR", "payment_capture": 1, "notes": {"report_type": request.report_type, "report_id": request.report_id or "", "user_email": request.user_email}})
-        payment = Payment(user_email=request.user_email, report_type=request.report_type, report_id=request.report_id or "", amount=PRICING[request.report_type], razorpay_order_id=razorpay_order["id"], status="created")
+        request_user_id = await _resolve_request_user_id(http_request)
+        normalized_email = _normalize_email(request.user_email)
+        razorpay_order = razorpay_client.order.create({"amount": amount_paise, "currency": "INR", "payment_capture": 1, "notes": {"report_type": request.report_type, "report_id": request.report_id or "", "user_email": normalized_email}})
+        payment = Payment(user_email=normalized_email, report_type=request.report_type, report_id=request.report_id or "", amount=PRICING[request.report_type], razorpay_order_id=razorpay_order["id"], status="created")
         await db.payments.insert_one(payment.model_dump(mode='json'))
+        await db["orders_ledger"].insert_one({
+            "_id": str(uuid.uuid4()),
+            "user_id": _derive_order_user_id(request_user_id, normalized_email),
+            "user_email": normalized_email,
+            "report_type": request.report_type,
+            "report_id": request.report_id or "",
+            "amount_paise": amount_paise,
+            "current_state": "CART_ADD",
+            "razorpay_order_id": razorpay_order["id"],
+            "ts_cart_add": utc_now(),
+            "ts_checkout_init": utc_now(),
+            "order_context": request.order_context or {},
+            "generated_report_id": None,
+            "error_log": None,
+            "fulfillment_in_progress": False,
+        })
         return {"order_id": razorpay_order["id"], "amount": PRICING[request.report_type], "currency": "INR", "key_id": os.environ.get('RAZORPAY_KEY_ID')}
     except HTTPException: raise
     except Exception as e: logging.error("Razorpay order creation error: %s", str(e)); raise HTTPException(status_code=500, detail="Payment order creation failed")
+
+
+@api_router.post("/diagnostics/order/{razorpay_order_id}/gateway-open")
+async def mark_gateway_open(razorpay_order_id: str):
+    result = await db["orders_ledger"].update_one(
+        {"razorpay_order_id": razorpay_order_id},
+        {"$set": {"current_state": "GATEWAY_OPEN", "ts_gateway_open": utc_now()}},
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="Order ledger row not found")
+    return {"status": "ok"}
+
+
+@api_router.post("/webhooks/razorpay", status_code=200)
+async def razorpay_webhook(
+    request: Request,
+    background_tasks: BackgroundTasks,
+    x_razorpay_signature: str = Header(...),
+):
+    if not RAZORPAY_WEBHOOK_SECRET:
+        raise HTTPException(status_code=503, detail="Webhook secret not configured")
+
+    raw_body = await request.body()
+    expected = hmac.new(RAZORPAY_WEBHOOK_SECRET.encode(), raw_body, hashlib.sha256).hexdigest()
+    if not hmac.compare_digest(expected, x_razorpay_signature):
+        raise HTTPException(status_code=403, detail="Signature mismatch")
+
+    payload = await request.json()
+    if payload.get("event") == "order.paid":
+        entity = (((payload.get("payload") or {}).get("payment") or {}).get("entity") or {})
+        rzp_order_id = entity.get("order_id")
+        rzp_payment_id = entity.get("id")
+
+        updated = await db["orders_ledger"].find_one_and_update(
+            {"razorpay_order_id": rzp_order_id},
+            {"$set": {"current_state": "PAID", "razorpay_payment_id": rzp_payment_id, "ts_pmt_success": utc_now(), "error_log": None}},
+            return_document=ReturnDocument.AFTER,
+        )
+
+        if not updated:
+            payment_doc = await db.payments.find_one({"razorpay_order_id": rzp_order_id}, {"_id": 0})
+            if payment_doc:
+                user_email = _normalize_email(payment_doc.get("user_email"))
+                fallback_order = {
+                    "_id": str(uuid.uuid4()),
+                    "user_id": _derive_order_user_id(None, user_email),
+                    "user_email": user_email,
+                    "report_type": payment_doc.get("report_type", ""),
+                    "report_id": payment_doc.get("report_id", ""),
+                    "amount_paise": int(float(payment_doc.get("amount", 0)) * 100),
+                    "current_state": "PAID",
+                    "razorpay_order_id": rzp_order_id,
+                    "razorpay_payment_id": rzp_payment_id,
+                    "ts_cart_add": payment_doc.get("created_at") or utc_now(),
+                    "ts_checkout_init": payment_doc.get("created_at") or utc_now(),
+                    "ts_pmt_success": utc_now(),
+                    "order_context": {},
+                    "generated_report_id": None,
+                    "error_log": None,
+                    "fulfillment_in_progress": False,
+                }
+                await db["orders_ledger"].insert_one(fallback_order)
+                updated = fallback_order
+
+        await db.payments.update_one(
+            {"razorpay_order_id": rzp_order_id},
+            {"$set": {"razorpay_payment_id": rzp_payment_id, "status": "completed"}},
+        )
+
+        if updated:
+            background_tasks.add_task(_fulfil_order, updated["_id"])
+
+    return {"status": "acknowledged"}
 
 @api_router.post("/payment/verify")
 async def verify_payment(razorpay_order_id: str, razorpay_payment_id: str, razorpay_signature: str, user_email: str):
@@ -2349,6 +2632,33 @@ async def flag_diagnostics_dispute(request: Request, search_value: str, payload:
         raise HTTPException(status_code=404, detail="No telemetry found for this user")
     return {"status": "updated", "flagged": payload.flagged}
 
+
+@api_router.get("/admin/orders/{search_value}")
+async def get_user_orders(request: Request, search_value: str):
+    await require_admin(request, db)
+
+    resolved_user_id, _, payment_email = await _resolve_diagnostics_lookup(search_value)
+    if not resolved_user_id:
+        raise HTTPException(status_code=400, detail="Search value is required")
+
+    query: Dict[str, Any] = {"user_id": resolved_user_id}
+    if payment_email:
+        query = {"$or": [{"user_id": resolved_user_id}, {"user_email": payment_email}]}
+
+    orders = await db["orders_ledger"].find(query).sort("ts_cart_add", -1).to_list(50)
+    return [_serialize_document(order) for order in orders]
+
+
+@api_router.post("/admin/self-heal/force-trigger")
+async def force_heal_order(
+    request: Request,
+    payload: ForceHealOrderRequest,
+    background_tasks: BackgroundTasks,
+):
+    await require_admin(request, db)
+    background_tasks.add_task(_fulfil_order, payload.order_id)
+    return {"status": "re-queued", "order_id": payload.order_id}
+
 @api_router.get("/admin/dashboard")
 async def get_dashboard_stats(request: Request):
     await require_admin(request, db)
@@ -2876,6 +3186,47 @@ async def ensure_diagnostics_indexes():
     )
 
 
+async def ensure_orders_ledger_indexes():
+    await db["orders_ledger"].create_index(
+        [("current_state", 1), ("ts_cart_add", -1)],
+        name="idx_funnel_state",
+    )
+    await db["orders_ledger"].create_index(
+        [("razorpay_order_id", 1)],
+        unique=True,
+        sparse=True,
+        name="idx_razorpay_webhook_match",
+    )
+    await db["orders_ledger"].create_index(
+        [("current_state", 1)],
+        partialFilterExpression={"current_state": "PAID"},
+        name="idx_stuck_fulfillment",
+    )
+    await db["orders_ledger"].create_index(
+        [("user_id", 1), ("ts_cart_add", -1)],
+        name="idx_user_orders",
+    )
+
+
+async def evict_stale_carts():
+    threshold = utc_now() - timedelta(hours=48)
+    await db["orders_ledger"].delete_many({
+        "current_state": {"$in": ["CART_ADD", "CHECKOUT_INIT"]},
+        "ts_cart_add": {"$lt": threshold},
+    })
+
+
+async def heal_stuck_orders():
+    threshold = utc_now() - timedelta(minutes=30)
+    cursor = db["orders_ledger"].find({
+        "current_state": "PAID",
+        "ts_pmt_success": {"$lt": threshold},
+        "ts_fulfill_done": None,
+    })
+    async for order in cursor:
+        await _fulfil_order(order["_id"])
+
+
 scheduler = AsyncIOScheduler()
 
 @app.on_event("startup")
@@ -2887,6 +3238,7 @@ async def startup_event():
     except Exception as exc:
         logging.warning("knowledge engine startup refresh failed: %s", exc)
     await ensure_diagnostics_indexes()
+    await ensure_orders_ledger_indexes()
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(hour=18, minute=30, timezone="UTC"), id="daily_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day_of_week="sun", hour=18, minute=0, timezone="UTC"), id="weekly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day=1, hour=17, minute=30, timezone="UTC"), id="monthly_horoscope_prefetch", replace_existing=True)
@@ -2896,6 +3248,8 @@ async def startup_event():
     scheduler.add_job(notification_trigger_love_weather_weekly, CronTrigger(day_of_week="sun", hour=2, minute=0, timezone="UTC"), id="notif_love_weather_weekly", replace_existing=True)
     scheduler.add_job(notification_trigger_date_night_score, CronTrigger(hour=12, minute=30, timezone="UTC"), id="notif_date_night_score", replace_existing=True)
     scheduler.add_job(arc_angel_pillar3_decay_scheduler, CronTrigger(hour=20, minute=30, timezone="UTC"), id="arc_angel_pillar3_decay", replace_existing=True)
+    scheduler.add_job(evict_stale_carts, CronTrigger(hour=0, minute=0, timezone="UTC"), id="shc_stale_cart_eviction", replace_existing=True)
+    scheduler.add_job(heal_stuck_orders, CronTrigger(hour=2, minute=0, timezone="UTC"), id="shc_stuck_order_heal", replace_existing=True)
     scheduler.start()
     logging.info("Horoscope prefetch scheduler started")
 

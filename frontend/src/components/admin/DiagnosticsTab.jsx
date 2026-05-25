@@ -9,6 +9,7 @@ import {
   ShieldAlert,
   ShieldCheck,
   Wallet,
+  Zap,
 } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -67,7 +68,9 @@ export const DiagnosticsTab = ({ getAuthHeaders }) => {
   const [searchValue, setSearchValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [toggling, setToggling] = useState(false);
+  const [forceRunningId, setForceRunningId] = useState('');
   const [profile, setProfile] = useState(null);
+  const [orders, setOrders] = useState([]);
 
   const events = useMemo(() => {
     const stream = profile?.event_stream || [];
@@ -83,13 +86,21 @@ export const DiagnosticsTab = ({ getAuthHeaders }) => {
 
     setLoading(true);
     try {
-      const response = await axios.get(
-        `${API}/admin/diagnostics/${encodeURIComponent(lookup)}`,
-        { headers: getAuthHeaders() }
-      );
-      setProfile(response.data);
+      const [diagnosticsResponse, ordersResponse] = await Promise.all([
+        axios.get(
+          `${API}/admin/diagnostics/${encodeURIComponent(lookup)}`,
+          { headers: getAuthHeaders() }
+        ),
+        axios.get(
+          `${API}/admin/orders/${encodeURIComponent(lookup)}`,
+          { headers: getAuthHeaders() }
+        ),
+      ]);
+      setProfile(diagnosticsResponse.data);
+      setOrders(ordersResponse.data || []);
     } catch (error) {
       setProfile(null);
+      setOrders([]);
       toast.error(error.response?.data?.detail || 'Failed to load diagnostics');
     } finally {
       setLoading(false);
@@ -121,6 +132,49 @@ export const DiagnosticsTab = ({ getAuthHeaders }) => {
       setToggling(false);
     }
   };
+
+  const handleForceRerun = async (orderId) => {
+    if (!orderId) {
+      return;
+    }
+
+    setForceRunningId(orderId);
+    try {
+      await axios.post(
+        `${API}/admin/self-heal/force-trigger`,
+        { order_id: orderId },
+        { headers: getAuthHeaders() }
+      );
+      toast.success('Order re-queued for fulfillment');
+      await fetchDiagnostics(profile?.user_id || searchValue);
+    } catch (error) {
+      toast.error(error.response?.data?.detail || 'Failed to re-queue order');
+    } finally {
+      setForceRunningId('');
+    }
+  };
+
+  const isStepStuck = (previousTimestamp, currentTimestamp) => {
+    if (!previousTimestamp || currentTimestamp) {
+      return false;
+    }
+    const previousDate = new Date(previousTimestamp);
+    if (Number.isNaN(previousDate.getTime())) {
+      return false;
+    }
+    return (Date.now() - previousDate.getTime()) > 15 * 60 * 1000;
+  };
+
+  const getOrderSteps = (order) => ([
+    { key: 'cart', label: 'Cart Added', value: order.ts_cart_add },
+    { key: 'form', label: 'Form Filled', value: order.ts_checkout_init },
+    { key: 'gateway', label: 'Gateway Open', value: order.ts_gateway_open },
+    { key: 'paid', label: 'Payment Verified', value: order.ts_pmt_success },
+    { key: 'fulfilled', label: 'Claude Fulfilled', value: order.ts_fulfill_done },
+  ]).map((step, index, steps) => ({
+    ...step,
+    stuck: index > 0 ? isStepStuck(steps[index - 1].value, step.value) : false,
+  }));
 
   return (
     <Card className="border border-amber-500/30 bg-slate-900/95 shadow-2xl shadow-amber-950/20">
@@ -241,6 +295,91 @@ export const DiagnosticsTab = ({ getAuthHeaders }) => {
                     )}
                   </tbody>
                 </table>
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-slate-950/70">
+              <div className="border-b border-white/10 px-4 py-3">
+                <div className="flex items-center gap-2 text-white">
+                  <Wallet className="h-4 w-4 text-amber-300" />
+                  <h5 className="text-sm font-semibold">Lifecycle Ledger</h5>
+                </div>
+                <p className="mt-1 text-xs text-slate-500">
+                  Order funnel from cart to fulfillment. Force Re-Run is available for paid orders still awaiting fulfillment.
+                </p>
+              </div>
+
+              <div className="space-y-4 p-4">
+                {orders.map((order) => {
+                  const steps = getOrderSteps(order);
+                  const showForce = order.current_state === 'PAID' && !order.ts_fulfill_done;
+                  return (
+                    <div key={order._id || order.razorpay_order_id} className="rounded-xl border border-white/10 bg-slate-900/80 p-4">
+                      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                        <div className="space-y-2">
+                          <div className="flex flex-wrap items-center gap-3">
+                            <div className="text-sm font-semibold text-white">{order.report_type?.replace(/_/g, ' ') || 'Order'}</div>
+                            <span className="rounded-full border border-slate-700 bg-slate-800 px-2.5 py-1 text-[11px] uppercase tracking-[0.18em] text-slate-300">
+                              {order.current_state || 'unknown'}
+                            </span>
+                          </div>
+                          <div className="text-xs text-slate-400">Internal Order: <span className="font-mono">{order._id || '-'}</span></div>
+                          <div className="text-xs text-slate-400">Razorpay Order: <span className="font-mono">{order.razorpay_order_id || '-'}</span></div>
+                          <div className="text-xs text-slate-400">Amount: ₹{((order.amount_paise || 0) / 100).toFixed(2)}</div>
+                          {order.error_log && (
+                            <div className="rounded-lg border border-red-500/20 bg-red-500/10 px-3 py-2 text-xs text-red-200">
+                              {order.error_log}
+                            </div>
+                          )}
+                        </div>
+
+                        {showForce && (
+                          <Button
+                            onClick={() => handleForceRerun(order._id)}
+                            disabled={forceRunningId === order._id}
+                            variant="outline"
+                            className="border-amber-500/40 bg-transparent text-amber-100 hover:bg-amber-500/10"
+                          >
+                            <Zap className="mr-2 h-4 w-4" />
+                            {forceRunningId === order._id ? 'Re-queuing...' : 'Force Re-Run'}
+                          </Button>
+                        )}
+                      </div>
+
+                      <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+                        {steps.map((step) => (
+                          <div
+                            key={step.key}
+                            className={`rounded-xl border px-3 py-3 ${
+                              step.value
+                                ? 'border-emerald-500/30 bg-emerald-500/10'
+                                : step.stuck
+                                  ? 'border-red-500/30 bg-red-500/10'
+                                  : 'border-slate-700 bg-slate-950/70'
+                            }`}
+                          >
+                            <div className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-300">{step.label}</div>
+                            <div className={`mt-2 text-sm ${
+                              step.value
+                                ? 'text-emerald-200'
+                                : step.stuck
+                                  ? 'text-red-200'
+                                  : 'text-slate-500'
+                            }`}>
+                              {step.value ? formatDateTime(step.value) : 'Not Reached'}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+
+                {orders.length === 0 && (
+                  <div className="rounded-xl border border-dashed border-white/10 px-6 py-10 text-center text-sm text-slate-500">
+                    No order ledger rows found for this user yet.
+                  </div>
+                )}
               </div>
             </div>
           </>

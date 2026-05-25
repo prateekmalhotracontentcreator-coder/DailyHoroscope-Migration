@@ -43,3 +43,15 @@ export const logRazorpayOpen = (userId, reportType, amount) => {
     { reportType, amount }
   );
 };
+
+export const markGatewayOpen = (razorpayOrderId) => {
+  if (!razorpayOrderId) {
+    return;
+  }
+
+  axios.post(
+    `${BACKEND}/api/diagnostics/order/${encodeURIComponent(razorpayOrderId)}/gateway-open`,
+    {},
+    { withCredentials: true }
+  ).catch(() => {});
+};

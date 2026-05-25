@@ -124,7 +124,7 @@ const ReportDisplay = ({ report, onShare, onDownload }) => {
       {report.chart_svg && (
         <Card className="p-4 border border-gold/30">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-gold">Janma Kundali — North Indian Chart</span>
+            <span className="text-xs font-semibold uppercase tracking-widest text-gold">Janma Kundali -- North Indian Chart</span>
           </div>
           <div className="flex justify-center"
             dangerouslySetInnerHTML={{ __html: report.chart_svg }}
@@ -310,7 +310,7 @@ const ReportDisplay = ({ report, onShare, onDownload }) => {
                       <div>
                         <span className="font-semibold text-sm">{(d.planet || '').replace(' Mahadasha','').replace(' Dasha','')} Mahadasha</span>
                         <p className="text-xs text-muted-foreground">
-                          {d.period || (d.start_year && d.end_year ? `${d.start_year} – ${d.end_year}` : '–')}
+                          {d.period || (d.start_year && d.end_year ? `${d.start_year} - ${d.end_year}` : '-')}
                         </p>
                       </div>
                       {d.key_theme && <Tag>{d.key_theme}</Tag>}
@@ -556,11 +556,11 @@ export const BrihatKundliPage = () => {
     await generateReport();
   };
 
-  const generateReport = async () => {
+  const generateReport = async (sourceOrderId = '') => {
     setLoading(true);
     try {
       const res = await axios.post(
-        `${API}/brihat-kundli/generate?user_email=${encodeURIComponent(user?.email || '')}`,
+        `${API}/brihat-kundli/generate?user_email=${encodeURIComponent(user?.email || '')}&source_order_id=${encodeURIComponent(sourceOrderId || '')}`,
         form,
         { withCredentials: true }
       );
@@ -576,11 +576,11 @@ export const BrihatKundliPage = () => {
     }
   };
 
-  const handlePaymentSuccess = async () => {
+  const handlePaymentSuccess = async (paymentDetails = {}) => {
     setShowPayment(false);
     setHasPaid(true);
     toast.success('Payment successful! Generating your report...');
-    await generateReport();
+    await generateReport(paymentDetails.razorpayOrderId || '');
   };
 
   const handleShare = () => {
@@ -624,7 +624,7 @@ export const BrihatKundliPage = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <SEO title="Brihat Kundli Pro — Advanced Vedic Report" noindex={true} />
+      <SEO title="Brihat Kundli Pro -- Advanced Vedic Report" noindex={true} />
 
 
       <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-10">
@@ -721,7 +721,7 @@ export const BrihatKundliPage = () => {
                     required
                     className="w-full px-3 py-2.5 rounded-sm border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-gold/40 focus:border-gold transition-all"
                   />
-                  <p className="text-xs text-muted-foreground mt-1">24-hour format — be as accurate as possible</p>
+                  <p className="text-xs text-muted-foreground mt-1">24-hour format -- be as accurate as possible</p>
                 </div>
               </div>
 
@@ -811,10 +811,10 @@ export const BrihatKundliPage = () => {
           <div>
             <h2 className="text-2xl font-playfair font-semibold mb-4">What is Brihat Kundli Pro?</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Brihat Kundli Pro is the most comprehensive Vedic astrology life report available online — equivalent to a 40-page professional consultation with a senior Jyotishi. The word <em>Brihat</em> means "vast" or "extensive" in Sanskrit, and this report lives up to its name by covering every major dimension of your life through the lens of your unique birth chart.
+              Brihat Kundli Pro is the most comprehensive Vedic astrology life report available online -- equivalent to a 40-page professional consultation with a senior Jyotishi. The word <em>Brihat</em> means "vast" or "extensive" in Sanskrit, and this report lives up to its name by covering every major dimension of your life through the lens of your unique birth chart.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Unlike a basic horoscope or a simple birth chart reading, the Brihat Kundli Pro uses a two-layer system: Layer 1 performs precise mathematical calculations using your exact birth data — computing planetary positions, house lords, nakshatra placements, and Dasha periods with the same accuracy as professional astrology software. Layer 2 then applies deep Jyotish interpretation to these calculations, producing a personalised report that is both astrologically accurate and meaningfully written.
+              Unlike a basic horoscope or a simple birth chart reading, the Brihat Kundli Pro uses a two-layer system: Layer 1 performs precise mathematical calculations using your exact birth data -- computing planetary positions, house lords, nakshatra placements, and Dasha periods with the same accuracy as professional astrology software. Layer 2 then applies deep Jyotish interpretation to these calculations, producing a personalised report that is both astrologically accurate and meaningfully written.
             </p>
           </div>
 
@@ -827,13 +827,13 @@ export const BrihatKundliPage = () => {
                 { title: '12-House Complete Analysis', desc: 'Every house from Lagna (self) to Vyaya (liberation) receives a detailed interpretation covering its sign, lord, planets, and meaning for your life.' },
                 { title: 'Ascendant & Personality', desc: 'Deep analysis of your Lagna sign, its ruling planet, and what it means for your personality, appearance, and approach to life.' },
                 { title: 'Moon Sign & Emotional Nature', desc: 'Your Rashi (Moon sign) and Nakshatra reveal your emotional patterns, subconscious tendencies, and relationship with your inner world.' },
-                { title: 'Planetary Positions & Yogas', desc: 'All 9 planets analysed in their houses — their strength, status, and effects on your life. Benefic yogas and their specific manifestations identified.' },
+                { title: 'Planetary Positions & Yogas', desc: 'All 9 planets analysed in their houses -- their strength, status, and effects on your life. Benefic yogas and their specific manifestations identified.' },
                 { title: 'Career & Dharma', desc: 'Best career fields, professional strengths, and a career timeline covering your current Mahadasha through the next 20 years.' },
                 { title: 'Love, Marriage & Partnerships', desc: 'Ideal partner traits, compatible signs, favourable marriage years, and spouse characteristics from 7th house analysis.' },
                 { title: 'Health & Wellbeing', desc: 'Constitutional analysis, vulnerable body areas, preventive measures, and dietary recommendations based on your planetary positions.' },
                 { title: 'Wealth & Finance', desc: 'Wealth potential, primary income sources, best investments, and periods of peak financial growth.' },
                 { title: 'Mangal Dosha Analysis', desc: 'Precise Mangal Dosha assessment from Mars house position, severity level, cancellation rules, and specific remedies.' },
-                { title: 'Dasha Period Analysis', desc: 'Current Mahadasha in depth plus the next two upcoming Mahadashas — what each period brings and how to navigate it.' },
+                { title: 'Dasha Period Analysis', desc: 'Current Mahadasha in depth plus the next two upcoming Mahadashas -- what each period brings and how to navigate it.' },
                 { title: 'Gemstones, Mantras & Remedies', desc: 'Personalised remedies including gemstone prescriptions with wearing instructions, planet-specific mantras, and lifestyle practices.' },
               ].map(({ title, desc }) => (
                 <div key={title} className="flex gap-3 p-4 rounded-sm border border-border bg-card">
@@ -851,13 +851,13 @@ export const BrihatKundliPage = () => {
           <div>
             <h2 className="text-2xl font-playfair font-semibold mb-4">How Our Vedic Calculations Work</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Your Brihat Kundli Pro is powered by the same Parashari Jyotish principles used by professional Vedic astrologers for thousands of years. Every result in your report is mathematically deterministic — the same birth details will always produce the same chart. There is no randomness in planetary positions, nakshatra placements, or Dasha calculations.
+              Your Brihat Kundli Pro is powered by the same Parashari Jyotish principles used by professional Vedic astrologers for thousands of years. Every result in your report is mathematically deterministic -- the same birth details will always produce the same chart. There is no randomness in planetary positions, nakshatra placements, or Dasha calculations.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              We use the Swiss Ephemeris — the most accurate planetary calculation system available — combined with the traditional Lahiri ayanamsha for Vedic sidereal calculations. Your Ascendant is calculated to the exact degree based on your birth time and location coordinates. Nakshatra Pada is determined from the Moon's precise longitude at your moment of birth.
+              We use the Swiss Ephemeris -- the most accurate planetary calculation system available -- combined with the traditional Lahiri ayanamsha for Vedic sidereal calculations. Your Ascendant is calculated to the exact degree based on your birth time and location coordinates. Nakshatra Pada is determined from the Moon's precise longitude at your moment of birth.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              The Vimshottari Dasha system calculates your planetary periods from the Moon's Nakshatra position, giving accurate start and end years for every major life period from birth to age 120. All doshas — Mangal Dosha, Kalsarp Dosha — are assessed using classical Parashari rules, not generalised assumptions.
+              The Vimshottari Dasha system calculates your planetary periods from the Moon's Nakshatra position, giving accurate start and end years for every major life period from birth to age 120. All doshas -- Mangal Dosha, Kalsarp Dosha -- are assessed using classical Parashari rules, not generalised assumptions.
             </p>
           </div>
 
@@ -868,27 +868,27 @@ export const BrihatKundliPage = () => {
               {[
                 {
                   q: 'What is the difference between a basic Birth Chart and Brihat Kundli Pro?',
-                  a: 'A basic Birth Chart gives you planetary positions and a general interpretation. Brihat Kundli Pro goes significantly deeper — it includes full 12-house analysis with 4-5 sentences per house, detailed Dasha period analysis for the next 40 years, personalised gemstone prescriptions with wearing instructions, family and progeny analysis, numerology integration, and a downloadable 40-page PDF report. It is designed for people who want a comprehensive, lasting reference document rather than a quick overview.'
+                  a: 'A basic Birth Chart gives you planetary positions and a general interpretation. Brihat Kundli Pro goes significantly deeper -- it includes full 12-house analysis with 4-5 sentences per house, detailed Dasha period analysis for the next 40 years, personalised gemstone prescriptions with wearing instructions, family and progeny analysis, numerology integration, and a downloadable 40-page PDF report. It is designed for people who want a comprehensive, lasting reference document rather than a quick overview.'
                 },
                 {
                   q: 'How accurate is the Vedic calculation in your report?',
-                  a: 'Our calculations use the Swiss Ephemeris with Lahiri ayanamsha — the same system used by professional Vedic astrology software. Planetary positions, house lords, nakshatra placements, and Dasha timings are mathematically precise. The same birth details will always produce identical calculations. Interpretation quality depends on the accuracy of your birth time — even a difference of a few minutes can shift the Ascendant and Dasha start dates, so we recommend using your official birth record for best results.'
+                  a: 'Our calculations use the Swiss Ephemeris with Lahiri ayanamsha -- the same system used by professional Vedic astrology software. Planetary positions, house lords, nakshatra placements, and Dasha timings are mathematically precise. The same birth details will always produce identical calculations. Interpretation quality depends on the accuracy of your birth time -- even a difference of a few minutes can shift the Ascendant and Dasha start dates, so we recommend using your official birth record for best results.'
                 },
                 {
                   q: 'What is Mangal Dosha and should I be concerned?',
-                  a: 'Mangal Dosha occurs when Mars is placed in the 1st, 2nd, 4th, 7th, 8th, or 12th house of the birth chart. It is associated with potential challenges in marriage and relationships. However, Mangal Dosha has multiple cancellation rules — if both partners have it, it cancels out. Many other planetary combinations also reduce its effect. Our report accurately identifies whether Mangal Dosha is present, its severity, applicable cancellation rules, and specific remedies. It is important context, not a cause for alarm.'
+                  a: 'Mangal Dosha occurs when Mars is placed in the 1st, 2nd, 4th, 7th, 8th, or 12th house of the birth chart. It is associated with potential challenges in marriage and relationships. However, Mangal Dosha has multiple cancellation rules -- if both partners have it, it cancels out. Many other planetary combinations also reduce its effect. Our report accurately identifies whether Mangal Dosha is present, its severity, applicable cancellation rules, and specific remedies. It is important context, not a cause for alarm.'
                 },
                 {
                   q: 'Can I download my Brihat Kundli report as a PDF?',
-                  a: 'Yes — once your report is generated, click the "Generate PDF" button to download a fully formatted PDF version. The PDF includes your North Indian Kundali chart, planetary positions table, all analysis sections, and remedies. The PDF is password-protected for your privacy using a personalised formula based on your birth details. Your password hint is shown when the download completes.'
+                  a: 'Yes -- once your report is generated, click the "Generate PDF" button to download a fully formatted PDF version. The PDF includes your North Indian Kundali chart, planetary positions table, all analysis sections, and remedies. The PDF is password-protected for your privacy using a personalised formula based on your birth details. Your password hint is shown when the download completes.'
                 },
                 {
                   q: 'What birth details do I need to provide?',
-                  a: 'You need your full name, date of birth (day/month/year), time of birth (as accurate as possible — check your birth certificate), place of birth (city), and gender. The time of birth is particularly important as it determines your Ascendant and house placements. If you do not know your exact birth time, the report will use a default time and note the limitation in the output.'
+                  a: 'You need your full name, date of birth (day/month/year), time of birth (as accurate as possible -- check your birth certificate), place of birth (city), and gender. The time of birth is particularly important as it determines your Ascendant and house placements. If you do not know your exact birth time, the report will use a default time and note the limitation in the output.'
                 },
                 {
                   q: 'How is Brihat Kundli Pro different from what AstroSage or Astrotalk offers?',
-                  a: 'Most platforms generate template-based reports with pre-written paragraphs filled with your name. Our Brihat Kundli Pro generates each report fresh using AI interpretation of your specific chart data — every sentence is written specifically for your planetary configuration. The gemstone prescriptions include how-to-wear instructions. The Dasha analysis addresses your specific current period, not a generic template. And unlike most competitors, our calculations are powered by the same Swiss Ephemeris used by professional software, ensuring mathematical accuracy.'
+                  a: 'Most platforms generate template-based reports with pre-written paragraphs filled with your name. Our Brihat Kundli Pro generates each report fresh using AI interpretation of your specific chart data -- every sentence is written specifically for your planetary configuration. The gemstone prescriptions include how-to-wear instructions. The Dasha analysis addresses your specific current period, not a generic template. And unlike most competitors, our calculations are powered by the same Swiss Ephemeris used by professional software, ensuring mathematical accuracy.'
                 },
               ].map(({ q, a }) => (
                 <div key={q} className="border border-border rounded-sm p-5">
@@ -903,13 +903,13 @@ export const BrihatKundliPage = () => {
           <div>
             <h2 className="text-2xl font-playfair font-semibold mb-4">Why Vedic Astrology for Life Guidance?</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              Vedic astrology (Jyotisha) is one of the six Vedangas — ancillary disciplines of the Vedas — with a continuous tradition spanning more than 5,000 years. Unlike Western astrology which uses the tropical zodiac, Vedic astrology uses the sidereal zodiac, aligning zodiac signs with actual star constellations. This means your Vedic chart may show a different sign placement than your Western chart — and is considered by millions of practitioners to be more accurate for life events and timing.
+              Vedic astrology (Jyotisha) is one of the six Vedangas -- ancillary disciplines of the Vedas -- with a continuous tradition spanning more than 5,000 years. Unlike Western astrology which uses the tropical zodiac, Vedic astrology uses the sidereal zodiac, aligning zodiac signs with actual star constellations. This means your Vedic chart may show a different sign placement than your Western chart -- and is considered by millions of practitioners to be more accurate for life events and timing.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-3">
-              The Parashari system used in our reports — named after the sage Parashara, author of Brihat Parashara Hora Shastra — is the most widely practised school of Vedic astrology. It uses the Ascendant (Lagna) as the primary lens, the Nakshatra (lunar mansion) system for detailed personality and timing analysis, and the Vimshottari Dasha for period-by-period life forecasting. These three pillars together produce a remarkably precise and actionable framework for understanding your life.
+              The Parashari system used in our reports -- named after the sage Parashara, author of Brihat Parashara Hora Shastra -- is the most widely practised school of Vedic astrology. It uses the Ascendant (Lagna) as the primary lens, the Nakshatra (lunar mansion) system for detailed personality and timing analysis, and the Vimshottari Dasha for period-by-period life forecasting. These three pillars together produce a remarkably precise and actionable framework for understanding your life.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              The Brihat Kundli Pro incorporates Parashari principles throughout — from house analysis and yoga identification to Dasha timing and remedial prescriptions — giving you access to the depth of this ancient tradition in a format designed for the modern world.
+              The Brihat Kundli Pro incorporates Parashari principles throughout -- from house analysis and yoga identification to Dasha timing and remedial prescriptions -- giving you access to the depth of this ancient tradition in a format designed for the modern world.
             </p>
           </div>
 
@@ -920,7 +920,7 @@ export const BrihatKundliPage = () => {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Service",
-        "name": "Brihat Kundli Pro — Comprehensive Vedic Astrology Life Report",
+        "name": "Brihat Kundli Pro -- Comprehensive Vedic Astrology Life Report",
         "description": "40-page comprehensive Vedic astrology life report including 12-house analysis, planetary positions, career, love, health, wealth, Dasha periods, Mangal Dosha, yogas, gemstone remedies, and downloadable PDF.",
         "provider": { "@type": "Organization", "name": "Everyday Horoscope", "url": "https://www.everydayhoroscope.in" },
         "serviceType": "Vedic Astrology Report",
@@ -945,6 +945,7 @@ export const BrihatKundliPage = () => {
         reportType="brihat_kundli"
         reportId={reportId || 'new'}
         onSuccess={handlePaymentSuccess}
+        orderContext={form}
       />
     </div>
   );
