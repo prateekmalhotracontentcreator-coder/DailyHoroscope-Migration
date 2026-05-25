@@ -11,6 +11,7 @@ Architecture:
 """
 
 import math
+import re
 from datetime import datetime, timedelta, timezone
 import logging
 import swisseph as swe
@@ -1366,6 +1367,9 @@ def geocode_place(place: str) -> tuple:
         'chandigarh': (30.7333, 76.7794), 'surat': (21.1702, 72.8311),
     }
     place_lower = place.lower().strip()
+    coord_match = re.match(r"^\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*$", place)
+    if coord_match:
+        return (float(coord_match.group(1)), float(coord_match.group(2)))
     for key, coords in city_map.items():
         if key in place_lower:
             return coords
