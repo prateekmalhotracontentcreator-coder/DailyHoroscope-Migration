@@ -139,8 +139,6 @@ const RudrakshaProblemPage = lazy(() => import('./pages/rudraksha/RudrakshaProbl
 const RudrakshaSignPage = lazy(() => import('./pages/rudraksha/RudrakshaSignPage').then(m => ({ default: m.RudrakshaSignPage })));
 const RemedyHubPage = lazy(() => import('./pages/remedies/RemedyHubPage').then(m => ({ default: m.RemedyHubPage })));
 const CrystalHubPage = lazy(() => import('./pages/crystals/CrystalHubPage').then(m => ({ default: m.CrystalHubPage })));
-const ZibuHubPage = lazy(() => import('./pages/seo/ZibuHubPage').then(m => ({ default: m.ZibuHubPage })));
-const ZibuSymbolPage = lazy(() => import('./pages/seo/ZibuSymbolPage').then(m => ({ default: m.ZibuSymbolPage })));
 const CrystalPage = lazy(() => import('./pages/crystals/CrystalPage').then(m => ({ default: m.CrystalPage })));
 const CrystalIntentionPage = lazy(() => import('./pages/crystals/CrystalIntentionPage').then(m => ({ default: m.CrystalIntentionPage })));
 const CrystalCalculatorPage = lazy(() => import('./pages/crystals/CrystalCalculatorPage').then(m => ({ default: m.CrystalCalculatorPage })));
@@ -266,10 +264,6 @@ function App() {
                   <Route path="/rudraksha/for/problem/:problem" element={<RudrakshaProblemPage />} />
                   <Route path="/rudraksha/for/sign/:sign" element={<RudrakshaSignPage />} />
                   <Route path="/rudraksha/:mukhi" element={<RudrakshaMukhiPage />} />
-
-                  {/* Zibu Symbols */}
-                  <Route path="/zibu" element={<ZibuHubPage />} />
-                  <Route path="/zibu/:symbolSlug" element={<ZibuSymbolPage />} />
 
                   {/* Blog */}
                   <Route path="/blog" element={<BlogList />} />
