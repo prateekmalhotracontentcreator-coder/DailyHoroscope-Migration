@@ -53,6 +53,48 @@
       ]
     },
     {
+      "source": "/transits/:transitSlug",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/festivals/:festivalSlug/:region",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/traits/:sign/:chartPoint/:house",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/crystals/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/lo-shu-grid",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/lo-shu-grid/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/rudraksha/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
       "source": "/static/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }

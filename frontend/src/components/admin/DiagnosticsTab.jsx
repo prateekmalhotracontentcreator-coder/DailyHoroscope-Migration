@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import {
   Activity,
@@ -54,6 +54,16 @@ const eventTone = (eventType) => {
   return 'bg-slate-700/70 text-slate-200 border-slate-600';
 };
 
+const gstStatusTone = (status) => {
+  if (status === 'MATCHED') {
+    return 'bg-emerald-500/15 text-emerald-200 border-emerald-500/30';
+  }
+  if (status === 'DISCREPANCY_FOUND') {
+    return 'bg-red-500/15 text-red-200 border-red-500/30';
+  }
+  return 'bg-amber-500/15 text-amber-200 border-amber-500/30';
+};
+
 const StatCard = ({ icon: Icon, label, value, tone = 'text-slate-200' }) => (
   <div className="rounded-xl border border-white/10 bg-slate-950/70 px-4 py-3">
     <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-400">
@@ -71,6 +81,13 @@ export const DiagnosticsTab = ({ getAuthHeaders }) => {
   const [forceRunningId, setForceRunningId] = useState('');
   const [profile, setProfile] = useState(null);
   const [orders, setOrders] = useState([]);
+  const [gstTab, setGstTab] = useState('b2c');
+  const [gstPage, setGstPage] = useState(1);
+  const [gstLoading, setGstLoading] = useState(false);
+  const [gstEntries, setGstEntries] = useState([]);
+  const [gstTotal, setGstTotal] = useState(0);
+  const [gstSummary, setGstSummary] = useState(null);
+  const [gmailStatus, setGmailStatus] = useState(null);
 
   const events = useMemo(() => {
     const stream = profile?.event_stream || [];
@@ -175,6 +192,61 @@ export const DiagnosticsTab = ({ getAuthHeaders }) => {
     ...step,
     stuck: index > 0 ? isStepStuck(steps[index - 1].value, step.value) : false,
   }));
+
+  useEffect(() => {
+    if (!profile) {
+      return;
+    }
+
+    const fetchGstData = async () => {
+      setGstLoading(true);
+      try {
+        if (gstTab === 'summary') {
+          const [summaryResponse, gmailResponse] = await Promise.all([
+            axios.get(`${API}/admin/gst/summary`, { headers: getAuthHeaders() }),
+            axios.get(`${API}/admin/gmail/status`, { headers: getAuthHeaders() }),
+          ]);
+          setGstSummary(summaryResponse.data || {});
+          setGmailStatus(gmailResponse.data || {});
+          setGstEntries([]);
+          setGstTotal(0);
+        } else {
+          const ledgerType = gstTab === 'b2c' ? 'DEBIT_CUSTOMER_B2C' : 'CREDIT_SUPPLIER_B2B';
+          const response = await axios.get(`${API}/admin/gst/ledger`, {
+            headers: getAuthHeaders(),
+            params: { type: ledgerType, page: gstPage, page_size: 20 },
+          });
+          setGstEntries(response.data.entries || []);
+          setGstTotal(response.data.total || 0);
+        }
+      } catch (error) {
+        toast.error(error.response?.data?.detail || 'Failed to load GST ledger');
+      } finally {
+        setGstLoading(false);
+      }
+    };
+
+    fetchGstData();
+  }, [profile, gstTab, gstPage, getAuthHeaders]);
+
+  const handleGstStatusUpdate = async (entryId, status) => {
+    try {
+      await axios.patch(
+        `${API}/admin/gst/ledger/${encodeURIComponent(entryId)}/status`,
+        null,
+        {
+          headers: getAuthHeaders(),
+          params: { status },
+        }
+      );
+      setGstEntries((current) => current.map((entry) => (
+        entry._id === entryId ? { ...entry, reconciliation_status: status } : entry
+      )));
+      toast.success('GST reconciliation status updated');
+    } catch (error) {
+      toast.error(error.response?.data?.detail || 'Failed to update GST status');
+    }
+  };
 
   return (
     <Card className="border border-amber-500/30 bg-slate-900/95 shadow-2xl shadow-amber-950/20">
@@ -378,6 +450,176 @@ export const DiagnosticsTab = ({ getAuthHeaders }) => {
                 {orders.length === 0 && (
                   <div className="rounded-xl border border-dashed border-white/10 px-6 py-10 text-center text-sm text-slate-500">
                     No order ledger rows found for this user yet.
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="rounded-xl border border-white/10 bg-slate-950/70">
+              <div className="border-b border-white/10 px-4 py-3">
+                <div className="flex items-center gap-2 text-white">
+                  <Wallet className="h-4 w-4 text-emerald-300" />
+                  <h5 className="text-sm font-semibold">GST Ledger</h5>
+                </div>
+                <p className="mt-1 text-xs text-slate-500">
+                  Customer invoices, supplier bills, and the daily reconciliation summary.
+                </p>
+              </div>
+
+              <div className="space-y-4 p-4">
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { id: 'b2c', label: 'B2C' },
+                    { id: 'b2b', label: 'B2B' },
+                    { id: 'summary', label: 'Daily Summary' },
+                  ].map((tab) => (
+                    <Button
+                      key={tab.id}
+                      size="sm"
+                      variant={gstTab === tab.id ? 'default' : 'outline'}
+                      className={gstTab === tab.id ? 'bg-gold text-slate-900' : 'border-slate-700 text-slate-300 hover:bg-slate-800'}
+                      onClick={() => {
+                        setGstTab(tab.id);
+                        setGstPage(1);
+                      }}
+                    >
+                      {tab.label}
+                    </Button>
+                  ))}
+                </div>
+
+                {gstTab === 'summary' ? (
+                  <div className="space-y-4">
+                    <div className="grid gap-3 md:grid-cols-2">
+                      <StatCard
+                        icon={Wallet}
+                        label="Total B2C Collected"
+                        value={`₹${((gstSummary?.summary?.DEBIT_CUSTOMER_B2C?.total_invoice || 0)).toFixed(2)}`}
+                        tone="text-emerald-200"
+                      />
+                      <StatCard
+                        icon={Wallet}
+                        label="Total B2B Paid"
+                        value={`₹${((gstSummary?.summary?.CREDIT_SUPPLIER_B2B?.total_invoice || 0)).toFixed(2)}`}
+                        tone="text-amber-200"
+                      />
+                    </div>
+
+                    <div className="grid gap-3 md:grid-cols-2">
+                      {[
+                        ['B2C', gstSummary?.summary?.DEBIT_CUSTOMER_B2C],
+                        ['B2B', gstSummary?.summary?.CREDIT_SUPPLIER_B2B],
+                      ].map(([label, row]) => (
+                        <div key={label} className="rounded-xl border border-white/10 bg-slate-900/80 p-4">
+                          <div className="mb-3 text-sm font-semibold text-white">{label} Breakdown</div>
+                          <div className="grid grid-cols-2 gap-3 text-sm text-slate-300">
+                            <div>Taxable: ₹{((row?.total_taxable || 0)).toFixed(2)}</div>
+                            <div>Invoices: {row?.count || 0}</div>
+                            <div>CGST: ₹{((row?.total_cgst || 0)).toFixed(2)}</div>
+                            <div>SGST: ₹{((row?.total_sgst || 0)).toFixed(2)}</div>
+                            <div>IGST: ₹{((row?.total_igst || 0)).toFixed(2)}</div>
+                            <div>Total: ₹{((row?.total_invoice || 0)).toFixed(2)}</div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <div className="rounded-xl border border-white/10 bg-slate-900/80 p-4 text-sm text-slate-300">
+                      <div className="font-semibold text-white">Gmail Sync</div>
+                      <div className="mt-2">Connected: {gmailStatus?.connected ? 'Yes' : 'No'}</div>
+                      <div className="mt-1">Credentials configured: {gmailStatus?.has_credentials ? 'Yes' : 'No'}</div>
+                      <div className="mt-1">Support inbox: {gmailStatus?.support_email || 'Not configured'}</div>
+                      <div className="mt-1">Business state: {gmailStatus?.business_state || 'Not configured'}</div>
+                      <div className="mt-1">Last refreshed: {formatDateTime(gstSummary?.last_run)}</div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-4">
+                    <div className="overflow-hidden rounded-xl border border-white/10">
+                      <div className="max-h-[520px] overflow-auto">
+                        <table className="min-w-full text-left text-sm">
+                          <thead className="sticky top-0 bg-slate-900/95 text-xs uppercase tracking-[0.18em] text-slate-400">
+                            <tr>
+                              <th className="px-4 py-3 font-medium">Invoice</th>
+                              <th className="px-4 py-3 font-medium">Party</th>
+                              {gstTab === 'b2b' && <th className="px-4 py-3 font-medium">GSTIN</th>}
+                              <th className="px-4 py-3 font-medium">Date</th>
+                              <th className="px-4 py-3 font-medium">Taxable</th>
+                              <th className="px-4 py-3 font-medium">CGST</th>
+                              <th className="px-4 py-3 font-medium">SGST</th>
+                              <th className="px-4 py-3 font-medium">IGST</th>
+                              <th className="px-4 py-3 font-medium">Total</th>
+                              <th className="px-4 py-3 font-medium">Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {gstEntries.map((entry) => (
+                              <tr key={entry._id} className="border-t border-white/5 text-slate-200">
+                                <td className="px-4 py-3 align-top font-mono text-xs text-slate-300">{entry._id}</td>
+                                <td className="px-4 py-3 align-top">{entry.party_name}</td>
+                                {gstTab === 'b2b' && <td className="px-4 py-3 align-top font-mono text-xs text-slate-300">{entry.party_gstin || '-'}</td>}
+                                <td className="px-4 py-3 align-top text-xs text-slate-400">{formatDateTime(entry.transaction_date)}</td>
+                                <td className="px-4 py-3 align-top">₹{Number(entry.taxable_value || 0).toFixed(2)}</td>
+                                <td className="px-4 py-3 align-top">₹{Number(entry.cgst || 0).toFixed(2)}</td>
+                                <td className="px-4 py-3 align-top">₹{Number(entry.sgst || 0).toFixed(2)}</td>
+                                <td className="px-4 py-3 align-top">₹{Number(entry.igst || 0).toFixed(2)}</td>
+                                <td className="px-4 py-3 align-top">₹{Number(entry.total_invoice_value || 0).toFixed(2)}</td>
+                                <td className="px-4 py-3 align-top">
+                                  <div className="flex flex-col gap-2">
+                                    <span className={`inline-flex rounded-full border px-2.5 py-1 text-[11px] font-semibold ${gstStatusTone(entry.reconciliation_status)}`}>
+                                      {entry.reconciliation_status}
+                                    </span>
+                                    <div className="flex flex-wrap gap-1">
+                                      {['MATCHED', 'PENDING_RECON', 'DISCREPANCY_FOUND'].map((status) => (
+                                        <button
+                                          key={status}
+                                          type="button"
+                                          onClick={() => handleGstStatusUpdate(entry._id, status)}
+                                          className="rounded border border-slate-700 px-2 py-1 text-[10px] text-slate-300 hover:bg-slate-800"
+                                        >
+                                          {status.replace('_', ' ')}
+                                        </button>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
+                            {!gstLoading && gstEntries.length === 0 && (
+                              <tr>
+                                <td colSpan={gstTab === 'b2b' ? 10 : 9} className="px-4 py-10 text-center text-sm text-slate-500">
+                                  No GST entries found for this ledger yet.
+                                </td>
+                              </tr>
+                            )}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between text-sm text-slate-400">
+                      <div>Total rows: {gstTotal}</div>
+                      <div className="flex gap-2">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-slate-700 text-slate-300 hover:bg-slate-800"
+                          disabled={gstPage <= 1}
+                          onClick={() => setGstPage((current) => Math.max(1, current - 1))}
+                        >
+                          Previous
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-slate-700 text-slate-300 hover:bg-slate-800"
+                          disabled={gstPage * 20 >= gstTotal}
+                          onClick={() => setGstPage((current) => current + 1)}
+                        >
+                          Next
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>

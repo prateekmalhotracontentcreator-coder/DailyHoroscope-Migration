@@ -18,4 +18,22 @@
   <sitemap>
     <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/remedies</loc>
   </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/transits</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/festivals</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/traits</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/crystals</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/lo-shu-grid</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/rudraksha</loc>
+  </sitemap>
 </sitemapindex>

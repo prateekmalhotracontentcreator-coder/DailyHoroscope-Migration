@@ -69,6 +69,7 @@ from models.diagnostics import (
     TelemetryEvent,
     TelemetryLogRequest,
 )
+from models.gst import GSTLedgerEntry
 from models.orders import ForceHealOrderRequest
 from remedies_router import router as remedies_router
 from crystal_router import router as crystal_router
@@ -149,6 +150,10 @@ razorpay_client = razorpay.Client(auth=(
     os.environ.get('RAZORPAY_KEY_SECRET')
 ))
 RAZORPAY_WEBHOOK_SECRET = os.environ.get("RAZORPAY_WEBHOOK_SECRET", "")
+GMAIL_SCOPES = [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.modify",
+]
 
 PRICING = {
     "birth_chart": 799,
@@ -357,6 +362,76 @@ async def _find_existing_brihat_report(order: Dict[str, Any]) -> Optional[Dict[s
         "place_of_birth": context.get("place_of_birth"),
     }
     return await db.brihat_kundli_reports.find_one(query, {"_id": 0}, sort=[("generated_at", -1)])
+
+
+def _gmail_client_config(redirect_uri: str) -> Dict[str, Any]:
+    client_id = os.environ.get("GMAIL_CLIENT_ID", "")
+    client_secret = os.environ.get("GMAIL_CLIENT_SECRET", "")
+    return {
+        "web": {
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "redirect_uris": [redirect_uri],
+        }
+    }
+
+
+def _build_gmail_redirect_uri(request: Request) -> str:
+    return str(request.url_for("gmail_callback"))
+
+
+async def _create_customer_gst_entry(order: Dict[str, Any]) -> Optional[str]:
+    order_id = str(order.get("_id") or "")
+    if not order_id:
+        return None
+
+    amount = round(float(order.get("amount_paise", 0)) / 100, 2)
+    if amount <= 0:
+        return None
+
+    taxable = round(amount / 1.18, 2)
+    context = order.get("order_context") or {}
+    customer_state = (context.get("customer_state") or order.get("customer_state") or "OTHER").strip()
+    business_state = (os.environ.get("BUSINESS_STATE", "Maharashtra") or "Maharashtra").strip()
+
+    if customer_state and customer_state.lower() == business_state.lower():
+        cgst = round(taxable * 0.09, 2)
+        sgst = round(taxable * 0.09, 2)
+        igst = 0.0
+    else:
+        cgst = 0.0
+        sgst = 0.0
+        igst = round(taxable * 0.18, 2)
+
+    transaction_date = order.get("ts_fulfill_done") or order.get("ts_pmt_success") or utc_now()
+    if isinstance(transaction_date, str):
+        transaction_date = datetime.fromisoformat(transaction_date)
+    if getattr(transaction_date, "tzinfo", None) is None:
+        transaction_date = transaction_date.replace(tzinfo=timezone.utc)
+
+    invoice_id = f"INV-{transaction_date.strftime('%Y%m%d')}-{order_id[:6].upper()}"
+    entry = GSTLedgerEntry(
+        _id=invoice_id,
+        ledger_type="DEBIT_CUSTOMER_B2C",
+        source_order_id=order_id,
+        party_name=order.get("user_email", "Unknown"),
+        transaction_date=transaction_date,
+        taxable_value=taxable,
+        cgst=cgst,
+        sgst=sgst,
+        igst=igst,
+        total_invoice_value=amount,
+        reconciliation_status="MATCHED",
+        notes=order.get("report_type", ""),
+    )
+    await db["gst_recon_ledger"].update_one(
+        {"source_order_id": order_id},
+        {"$setOnInsert": entry.model_dump(by_alias=True, mode="json")},
+        upsert=True,
+    )
+    return invoice_id
 
 
 class SelfHealingMiddleware(BaseHTTPMiddleware):
@@ -1415,7 +1490,7 @@ async def generate_brihat_kundli(
         request_user_id=(getattr(http_request.state, "user", None) or {}).get("user_id"),
     )
     if source_order_id:
-        await _mark_order_fulfilled(source_order_id, generated_report_id=result["report_id"])
+        await _finalize_order_fulfillment(source_order_id, generated_report_id=result["report_id"])
     return result
 
 @api_router.get("/brihat-kundli/{report_id}")
@@ -1589,6 +1664,13 @@ async def _release_fulfillment_lock(order_id: str, error_message: str) -> None:
     )
 
 
+async def _finalize_order_fulfillment(order_id: str, *, generated_report_id: Optional[str] = None) -> None:
+    await _mark_order_fulfilled(order_id, generated_report_id=generated_report_id)
+    finalized_order = await db["orders_ledger"].find_one({"_id": order_id}, {"_id": 0})
+    if finalized_order:
+        await _create_customer_gst_entry(finalized_order)
+
+
 async def _fulfil_order(order_id: str):
     locked_order = await _lock_order_for_fulfillment(order_id)
     if not locked_order:
@@ -1599,32 +1681,32 @@ async def _fulfil_order(order_id: str):
 
         if report_type == "premium_monthly":
             await _activate_premium_subscription(locked_order.get("user_email", ""), locked_order.get("razorpay_payment_id"))
-            await _mark_order_fulfilled(order_id)
+            await _finalize_order_fulfillment(order_id)
             return
 
         if report_type == "birth_chart":
             report = await db.birth_chart_reports.find_one({"profile_id": locked_order.get("report_id")}, {"_id": 0, "id": 1})
             if not report:
                 raise ValueError("Birth chart report not found for fulfillment")
-            await _mark_order_fulfilled(order_id, generated_report_id=report.get("id"))
+            await _finalize_order_fulfillment(order_id, generated_report_id=report.get("id"))
             return
 
         if report_type == "kundali_milan":
             report = await db.kundali_milan_reports.find_one({"id": locked_order.get("report_id")}, {"_id": 0, "id": 1})
             if not report:
                 raise ValueError("Kundali Milan report not found for fulfillment")
-            await _mark_order_fulfilled(order_id, generated_report_id=report.get("id"))
+            await _finalize_order_fulfillment(order_id, generated_report_id=report.get("id"))
             return
 
         if report_type == "brihat_kundli":
             if locked_order.get("generated_report_id"):
-                await _mark_order_fulfilled(order_id, generated_report_id=locked_order.get("generated_report_id"))
+                await _finalize_order_fulfillment(order_id, generated_report_id=locked_order.get("generated_report_id"))
                 return
 
             if locked_order.get("report_id") and locked_order.get("report_id") != "new":
                 existing = await db.brihat_kundli_reports.find_one({"id": locked_order.get("report_id")}, {"_id": 0, "id": 1})
                 if existing:
-                    await _mark_order_fulfilled(order_id, generated_report_id=existing.get("id"))
+                    await _finalize_order_fulfillment(order_id, generated_report_id=existing.get("id"))
                     return
 
             await asyncio.sleep(20)
@@ -1634,7 +1716,7 @@ async def _fulfil_order(order_id: str):
 
             existing = await _find_existing_brihat_report(refreshed_order or locked_order)
             if existing:
-                await _mark_order_fulfilled(order_id, generated_report_id=existing.get("id"))
+                await _finalize_order_fulfillment(order_id, generated_report_id=existing.get("id"))
                 return
 
             context = (refreshed_order or locked_order).get("order_context") or {}
@@ -1648,7 +1730,7 @@ async def _fulfil_order(order_id: str):
                 user_email=(refreshed_order or locked_order).get("user_email", ""),
                 knowledge_engine=getattr(app.state, "knowledge_engine", None),
             )
-            await _mark_order_fulfilled(order_id, generated_report_id=result["report_id"])
+            await _finalize_order_fulfillment(order_id, generated_report_id=result["report_id"])
             return
 
         raise ValueError(f"Unsupported fulfillment report type: {report_type}")
@@ -2546,6 +2628,110 @@ async def youtube_disconnect(request: Request):
     await db.app_settings.delete_one({"key": "youtube_refresh_token"})
     return {"message": "YouTube disconnected"}
 
+
+@api_router.get("/admin/gmail/status")
+async def gmail_status(request: Request):
+    await require_admin(request, db)
+    token_doc = await db.app_settings.find_one({"key": "gmail_refresh_token"})
+    has_token = bool((token_doc or {}).get("value") or os.environ.get("GMAIL_REFRESH_TOKEN", ""))
+    has_creds = bool(os.environ.get("GMAIL_CLIENT_ID") and os.environ.get("GMAIL_CLIENT_SECRET"))
+    support_email = os.environ.get("SUPPORT_EMAIL", "")
+    business_state = os.environ.get("BUSINESS_STATE", "")
+    return {
+        "connected": has_token and has_creds,
+        "has_credentials": has_creds,
+        "connected_at": (token_doc or {}).get("updated_at"),
+        "support_email": support_email,
+        "business_state": business_state,
+        "libs_available": GOOGLE_LIBS_AVAILABLE,
+    }
+
+
+@api_router.get("/admin/gmail/auth-url")
+async def gmail_auth_url(request: Request):
+    await require_admin(request, db)
+    client_id = os.environ.get("GMAIL_CLIENT_ID", "")
+    client_secret = os.environ.get("GMAIL_CLIENT_SECRET", "")
+    if not client_id or not client_secret:
+        raise HTTPException(400, "GMAIL_CLIENT_ID and GMAIL_CLIENT_SECRET not set on Render")
+    if not GOOGLE_LIBS_AVAILABLE:
+        raise HTTPException(500, "Google API libraries not installed on server")
+
+    redirect_uri = _build_gmail_redirect_uri(request)
+    flow = GoogleFlow.from_client_config(
+        _gmail_client_config(redirect_uri),
+        scopes=GMAIL_SCOPES,
+        redirect_uri=redirect_uri,
+    )
+    auth_url, _ = flow.authorization_url(
+        access_type="offline",
+        include_granted_scopes="true",
+        prompt="consent",
+    )
+    return {"auth_url": auth_url}
+
+
+@api_router.get("/admin/gmail/callback", name="gmail_callback")
+async def gmail_callback(request: Request, code: str = "", error: str = ""):
+    if error:
+        return HTMLResponse(f"""<html><body style="font-family:sans-serif;text-align:center;
+        padding:40px;background:#111;color:#fff;">
+        <h2>Authorization Failed</h2><p style="color:#f87171">{error}</p>
+        <script>setTimeout(()=>window.close(),3000);</script></body></html>""")
+
+    if not GOOGLE_LIBS_AVAILABLE:
+        return HTMLResponse("<html><body>Google libraries not available on server</body></html>")
+
+    try:
+        redirect_uri = _build_gmail_redirect_uri(request)
+        flow = GoogleFlow.from_client_config(
+            _gmail_client_config(redirect_uri),
+            scopes=GMAIL_SCOPES,
+            redirect_uri=redirect_uri,
+        )
+        flow.fetch_token(code=code)
+        creds = flow.credentials
+        refresh_token = creds.refresh_token
+        if refresh_token:
+            await db.app_settings.update_one(
+                {"key": "gmail_refresh_token"},
+                {
+                    "$set": {
+                        "key": "gmail_refresh_token",
+                        "value": refresh_token,
+                        "updated_at": datetime.now(timezone.utc).isoformat(),
+                    }
+                },
+                upsert=True,
+            )
+            return HTMLResponse("""<html><body style="font-family:sans-serif;text-align:center;
+            padding:40px;background:#111;color:#fff;">
+            <h2 style="color:#4ade80">Connected!</h2>
+            <p>Gmail access is now linked to EverydayHoroscope.</p>
+            <p style="color:#9ca3af">This tab will close automatically...</p>
+            <script>
+            if(window.opener){window.opener.postMessage({type:'gmail_connected'},'*');}
+            setTimeout(()=>window.close(),2000);
+            </script></body></html>""")
+
+        return HTMLResponse("""<html><body style="font-family:sans-serif;text-align:center;
+        padding:40px;background:#111;color:#fff;">
+        <h2 style="color:#fbbf24">No Refresh Token</h2>
+        <p>Revoke the previous grant and reconnect to issue a fresh offline token.</p>
+        <script>setTimeout(()=>window.close(),5000);</script></body></html>""")
+    except Exception as exc:
+        return HTMLResponse(f"""<html><body style="font-family:sans-serif;text-align:center;
+        padding:40px;background:#111;color:#fff;">
+        <h2>Error</h2><p style="color:#f87171">{exc}</p>
+        <script>setTimeout(()=>window.close(),4000);</script></body></html>""")
+
+
+@api_router.post("/admin/gmail/disconnect")
+async def gmail_disconnect(request: Request):
+    await require_admin(request, db)
+    await db.app_settings.delete_one({"key": "gmail_refresh_token"})
+    return {"message": "Gmail disconnected"}
+
 @api_router.post("/admin/login")
 async def admin_login(request: AdminLoginRequest, response: Response):
     if request.username != ADMIN_USERNAME: raise HTTPException(status_code=401, detail="Invalid credentials")
@@ -2658,6 +2844,50 @@ async def force_heal_order(
     await require_admin(request, db)
     background_tasks.add_task(_fulfil_order, payload.order_id)
     return {"status": "re-queued", "order_id": payload.order_id}
+
+
+@api_router.get("/admin/gst/ledger")
+async def get_gst_ledger(
+    request: Request,
+    type: str,
+    page: int = 1,
+    page_size: int = 20,
+):
+    await require_admin(request, db)
+    page = max(page, 1)
+    page_size = max(1, min(page_size, 100))
+    skip = (page - 1) * page_size
+    query = {"ledger_type": type}
+    items = await db["gst_recon_ledger"].find(query).sort("transaction_date", -1).skip(skip).limit(page_size).to_list(page_size)
+    total = await db["gst_recon_ledger"].count_documents(query)
+    return {
+        "entries": [_serialize_document(item) for item in items],
+        "total": total,
+        "page": page,
+        "page_size": page_size,
+    }
+
+
+@api_router.get("/admin/gst/summary")
+async def get_gst_summary(request: Request):
+    await require_admin(request, db)
+    summary = await db["app_settings"].find_one({"_id": "gst_daily_summary"}, {"_id": 0}) or {}
+    return _serialize_document(summary)
+
+
+@api_router.patch("/admin/gst/ledger/{entry_id}/status")
+async def update_gst_recon_status(request: Request, entry_id: str, status: str):
+    await require_admin(request, db)
+    allowed = {"MATCHED", "DISCREPANCY_FOUND", "PENDING_RECON"}
+    if status not in allowed:
+        raise HTTPException(status_code=400, detail=f"Status must be one of {sorted(allowed)}")
+    result = await db["gst_recon_ledger"].update_one(
+        {"_id": entry_id},
+        {"$set": {"reconciliation_status": status}},
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="GST ledger entry not found")
+    return {"status": "updated"}
 
 @api_router.get("/admin/dashboard")
 async def get_dashboard_stats(request: Request):
@@ -3208,6 +3438,17 @@ async def ensure_orders_ledger_indexes():
     )
 
 
+async def ensure_gst_ledger_indexes():
+    await db["gst_recon_ledger"].create_index(
+        [("reconciliation_status", 1), ("transaction_date", -1)],
+        name="idx_gst_recon_status",
+    )
+    await db["gst_recon_ledger"].create_index(
+        [("ledger_type", 1), ("transaction_date", -1)],
+        name="idx_gst_type_date",
+    )
+
+
 async def evict_stale_carts():
     threshold = utc_now() - timedelta(hours=48)
     await db["orders_ledger"].delete_many({
@@ -3227,6 +3468,106 @@ async def heal_stuck_orders():
         await _fulfil_order(order["_id"])
 
 
+async def ingest_vendor_emails():
+    from services.gmail_ingest import fetch_vendor_emails
+    from services.gst_parser import extract_gst_from_pdf
+
+    emails = await fetch_vendor_emails(db)
+    for email in emails:
+        extracted = extract_gst_from_pdf(email["pdf_bytes"])
+        if extracted["total_value"] <= 0:
+            continue
+
+        total_value = round(float(extracted["total_value"]), 2)
+        taxable_value = round(total_value / 1.18, 2)
+        igst = round(total_value * 0.18 / 1.18, 2)
+        entry_id = f"SUP-{utc_now().strftime('%Y%m%d')}-{email['message_id'][:6]}"
+        await db["gst_recon_ledger"].update_one(
+            {"source_email_id": email["message_id"]},
+            {
+                "$setOnInsert": {
+                    "_id": entry_id,
+                    "ledger_type": "CREDIT_SUPPLIER_B2B",
+                    "party_name": email["sender"],
+                    "party_gstin": extracted["vendor_gstin"],
+                    "transaction_date": utc_now(),
+                    "taxable_value": taxable_value,
+                    "cgst": 0.0,
+                    "sgst": 0.0,
+                    "igst": igst,
+                    "total_invoice_value": total_value,
+                    "reconciliation_status": "PENDING_RECON",
+                    "source_email_id": email["message_id"],
+                    "notes": email["subject"],
+                }
+            },
+            upsert=True,
+        )
+
+
+async def generate_gst_summary():
+    today = utc_now().replace(hour=0, minute=0, second=0, microsecond=0)
+    pipeline = [
+        {"$match": {"transaction_date": {"$gte": today - timedelta(days=1), "$lt": today}}},
+        {"$group": {
+            "_id": "$ledger_type",
+            "total_taxable": {"$sum": "$taxable_value"},
+            "total_cgst": {"$sum": "$cgst"},
+            "total_sgst": {"$sum": "$sgst"},
+            "total_igst": {"$sum": "$igst"},
+            "total_invoice": {"$sum": "$total_invoice_value"},
+            "count": {"$sum": 1},
+        }},
+    ]
+    summary_rows = await db["gst_recon_ledger"].aggregate(pipeline).to_list(10)
+    totals = {
+        row["_id"]: {
+            "count": row.get("count", 0),
+            "total_taxable": round(row.get("total_taxable", 0.0), 2),
+            "total_cgst": round(row.get("total_cgst", 0.0), 2),
+            "total_sgst": round(row.get("total_sgst", 0.0), 2),
+            "total_igst": round(row.get("total_igst", 0.0), 2),
+            "total_invoice": round(row.get("total_invoice", 0.0), 2),
+        }
+        for row in summary_rows
+    }
+    await db["app_settings"].update_one(
+        {"_id": "gst_daily_summary"},
+        {"$set": {"last_run": utc_now(), "summary": totals}},
+        upsert=True,
+    )
+
+
+async def triage_support_tickets():
+    from services.gmail_ingest import fetch_support_emails
+
+    emails = await fetch_support_emails(db)
+    for email in emails:
+        sender_email = _normalize_email(email.get("sender_email"))
+        user_doc = await db.users.find_one({"email": sender_email}, {"_id": 0, "user_id": 1, "email": 1})
+        diagnostic_doc = None
+        if user_doc and user_doc.get("user_id"):
+            diagnostic_doc = await db["user_diagnostics"].find_one({"_id": user_doc["user_id"]}, {"_id": 0, "is_claim_flagged": 1})
+        await db["support_tickets"].update_one(
+            {"source_email_id": email["message_id"]},
+            {
+                "$setOnInsert": {
+                    "source_email_id": email["message_id"],
+                    "subject": email.get("subject", ""),
+                    "sender": email.get("sender", ""),
+                    "sender_email": sender_email,
+                    "snippet": email.get("snippet", ""),
+                    "matched_user_id": (user_doc or {}).get("user_id"),
+                    "matched_user_email": (user_doc or {}).get("email"),
+                    "diagnostic_flagged": bool((diagnostic_doc or {}).get("is_claim_flagged")),
+                    "status": "PENDING_REVIEW",
+                    "created_at": utc_now(),
+                }
+            },
+            upsert=True,
+        )
+
+
 scheduler = AsyncIOScheduler()
 
 @app.on_event("startup")
@@ -3239,6 +3580,7 @@ async def startup_event():
         logging.warning("knowledge engine startup refresh failed: %s", exc)
     await ensure_diagnostics_indexes()
     await ensure_orders_ledger_indexes()
+    await ensure_gst_ledger_indexes()
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(hour=18, minute=30, timezone="UTC"), id="daily_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day_of_week="sun", hour=18, minute=0, timezone="UTC"), id="weekly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day=1, hour=17, minute=30, timezone="UTC"), id="monthly_horoscope_prefetch", replace_existing=True)
@@ -3250,6 +3592,9 @@ async def startup_event():
     scheduler.add_job(arc_angel_pillar3_decay_scheduler, CronTrigger(hour=20, minute=30, timezone="UTC"), id="arc_angel_pillar3_decay", replace_existing=True)
     scheduler.add_job(evict_stale_carts, CronTrigger(hour=0, minute=0, timezone="UTC"), id="shc_stale_cart_eviction", replace_existing=True)
     scheduler.add_job(heal_stuck_orders, CronTrigger(hour=2, minute=0, timezone="UTC"), id="shc_stuck_order_heal", replace_existing=True)
+    scheduler.add_job(ingest_vendor_emails, CronTrigger(hour=4, minute=0, timezone="UTC"), id="shc_vendor_email_ingest", replace_existing=True)
+    scheduler.add_job(generate_gst_summary, CronTrigger(hour=6, minute=0, timezone="UTC"), id="shc_gst_daily_summary", replace_existing=True)
+    scheduler.add_job(triage_support_tickets, CronTrigger(hour=8, minute=0, timezone="UTC"), id="shc_support_triage", replace_existing=True)
     scheduler.start()
     logging.info("Horoscope prefetch scheduler started")
 
