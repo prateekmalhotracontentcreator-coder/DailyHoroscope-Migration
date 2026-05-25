@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -16,9 +17,13 @@ from angel_numbers_data import iter_core_records
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Seed angel_number_core with 1,000 generated records.")
-    parser.add_argument("--mongo-url", required=True)
-    parser.add_argument("--db-name", required=True)
+    parser.add_argument("--mongo-url", default=os.environ.get("MONGO_URL"))
+    parser.add_argument("--db-name", default=os.environ.get("DB_NAME", "horoscope_db"))
     args = parser.parse_args()
+
+    if not args.mongo_url:
+        print("ERROR: --mongo-url or MONGO_URL environment variable is required")
+        sys.exit(1)
 
     client = MongoClient(args.mongo_url)
     db = client[args.db_name]

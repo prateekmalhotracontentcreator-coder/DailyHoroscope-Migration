@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 from datetime import datetime, timezone
 from pathlib import Path
 import sys
@@ -22,10 +23,14 @@ from seo_m3_catalog import CHART_POINTS, HOUSES, SIGN_SLUGS
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Seed character_placements collection for SEO-20K M3")
-    parser.add_argument("--mongo-url", required=True)
-    parser.add_argument("--db-name", default="horoscope_db")
+    parser.add_argument("--mongo-url", default=os.environ.get("MONGO_URL"))
+    parser.add_argument("--db-name", default=os.environ.get("DB_NAME", "horoscope_db"))
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
+
+    if not args.mongo_url:
+        print("ERROR: --mongo-url or MONGO_URL environment variable is required")
+        sys.exit(1)
 
     docs = []
     now = datetime.now(timezone.utc).isoformat()

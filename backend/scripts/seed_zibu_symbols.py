@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
+from pathlib import Path
 
 try:
     from pymongo import MongoClient
@@ -10,15 +12,23 @@ except ImportError:
     print("ERROR: pymongo not installed. Run: pip install pymongo")
     sys.exit(1)
 
-from zibu_catalog import get_all_symbols
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from zibu_catalog import get_all_symbols  # noqa: E402
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Seed the zibu_symbols collection with the canonical 88-symbol catalog.")
-    parser.add_argument("--mongo-url", required=True, help="MongoDB connection string")
-    parser.add_argument("--db-name", default="horoscope_db", help="MongoDB database name")
+    parser.add_argument("--mongo-url", default=os.environ.get("MONGO_URL"), help="MongoDB connection string")
+    parser.add_argument("--db-name", default=os.environ.get("DB_NAME", "horoscope_db"), help="MongoDB database name")
     parser.add_argument("--dry-run", action="store_true", help="Print counts without writing to MongoDB")
     args = parser.parse_args()
+
+    if not args.mongo_url:
+        print("ERROR: --mongo-url or MONGO_URL environment variable is required")
+        sys.exit(1)
 
     documents = get_all_symbols()
     print(f"Prepared {len(documents)} Zibu symbol documents.")
