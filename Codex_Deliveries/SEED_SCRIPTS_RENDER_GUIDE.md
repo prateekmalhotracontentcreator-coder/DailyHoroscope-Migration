@@ -5,11 +5,15 @@
 
 ## Why the Error Occurred
 
-The seed scripts (`seed_crystals.py`, etc.) were committed in the **c4434ff** commit on 2026-05-26.
-If you ran the Render shell before the new Docker image finished building, the scripts were not yet present.
+**Root cause:** `render.yaml` sets `dockerContext: ./backend`. This means Docker's build context
+is the `backend/` folder -- so `COPY . .` copies backend contents directly into `/app/`.
+
+Result:
+- `backend/scripts/seed_crystals.py` in the repo → `/app/scripts/seed_crystals.py` on Render
+- Running `python backend/scripts/seed_crystals.py` looks for `/app/backend/scripts/seed_crystals.py` ← does NOT exist
+- **Correct path is `python scripts/seed_crystals.py`** (no `backend/` prefix)
 
 Render rebuilds the Docker image on every push to `main`. The image build takes ~3-5 minutes after push.
-
 **Wait for the Render dashboard to show "Deploy live" before running seed scripts.**
 
 ---
@@ -20,25 +24,25 @@ In Render dashboard → `everydayhoroscope-api` → **Shell tab**, run from the 
 
 ```bash
 # Crystals (50 crystals + 20 intentions = 70 docs)
-python backend/scripts/seed_crystals.py
+python scripts/seed_crystals.py
 
 # Rudraksha (21 mukhis)
-python backend/scripts/seed_rudraksha.py
+python scripts/seed_rudraksha.py
 
 # Lo Shu Grid
-python backend/scripts/seed_lo_shu.py
+python scripts/seed_lo_shu.py
 
 # Zibu Symbols (88 symbols)
-python backend/scripts/seed_zibu_symbols.py
+python scripts/seed_zibu_symbols.py
 
 # Angel Numbers -- IMPORTANT: run core FIRST, then intents
-python backend/scripts/seed_angel_numbers_core.py
-python backend/scripts/seed_angel_numbers_intents.py
+python scripts/seed_angel_numbers_core.py
+python scripts/seed_angel_numbers_intents.py
 
 # SEO-20K M3 seeds
-python backend/scripts/seed_transit_profiles.py
-python backend/scripts/seed_festival_regions.py
-python backend/scripts/seed_character_placements.py
+python scripts/seed_transit_profiles_v1.py
+python scripts/seed_festival_region_pages_v1.py
+python scripts/seed_character_placements_v1.py
 ```
 
 **Run one at a time.** Each prints a completion count when done. 
@@ -49,9 +53,9 @@ Angel Numbers intents (~9,000 docs) will take the longest -- approximately 2-3 m
 
 ## If Script Still Says "No such file"
 
-Check the deploy completed:
+Check the deploy completed and confirm the correct path:
 ```bash
-ls backend/scripts/seed_crystals.py
+ls scripts/seed_crystals.py
 ```
 
 If missing, the deploy image hasn't rebuilt yet. Trigger a manual redeploy in Render dashboard → Manual Deploy.
