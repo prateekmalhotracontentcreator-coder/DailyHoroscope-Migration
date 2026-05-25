@@ -40,6 +40,9 @@
     <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/zibu</loc>
   </sitemap>
   <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/tarot</loc>
+  </sitemap>
+  <sitemap>
     <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/angel-numbers?page=1</loc>
   </sitemap>
   <sitemap>

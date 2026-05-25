@@ -71,6 +71,30 @@
       ]
     },
     {
+      "source": "/tarot/spreads",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/tarot/spread/:spreadSlug",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/tarot/card/:cardSlug",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/tarot/for/:intentionSlug",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
       "source": "/crystals/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }

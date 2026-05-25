@@ -1,7 +1,7 @@
 # SEO & Web Performance -- Module Tracker
 > Path: `Codex_Deliveries/SEO/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-23 · v3.6
+> Last updated: 2026-05-25 · v3.7
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- prior SEO wave live; SEO-20K M3 local delivery prepared after M2 integration |
+| **Status** | 🟡 ACTIVE -- prior SEO wave live; SEO-20K M4 local delivery prepared after M3 integration |
 | **GA4** | G-3HJC8BTHRQ -- wired and live |
 | **GSC** | Verified + sitemap submitted |
 | **Bing** | Verified + sitemap submitted |
@@ -25,7 +25,7 @@
 | ID | Commission | Track | Priority | Status | Brief |
 |---|---|---|---|---|---|
 | **SEO-WebPerf** | SEO + Marketing + Web Performance Optimisation | -- | Issue Last | 🟣 READY -- ISSUE LAST | `CODEX_COMMISSION_SEO_WEBPERF.md` |
-| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | M1-M3 | 🟡 IN PROGRESS -- M2 ✅ INTEGRATED `aba7d5c` · M3 local delivery prepared (108 transits + 480 festival-region pages + 432 traits) | `CODEX_COMMISSION_SEO_20K.md` |
+| **SEO-20K** | 22,170 Programmatic SEO Pages + Web Performance (Umbrella) | SEO | M1-M4 | 🟡 IN PROGRESS -- M1 ✅ `2a4ed4e` · M2 ✅ `aba7d5c` · M3 integrated by TT · M4 local delivery prepared (Tarot SEO 199 pages) | `CODEX_COMMISSION_SEO_20K.md` |
 | **SEO-C1** | Legal Pages Content (populate MongoDB policies) | C | Phase 1 | ✅ LIVE -- policies seeded to production 2026-05-20 | `CODEX_COMMISSION_SEO-C1.md` |
 | **SEO-B1** | Tomorrow / Weekly / Monthly Per-Sign Horoscope (36 pages) | B | Phase 3 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-B1.md` |
 | **SEO-B3** | Festival Calendar Hub + Hora Today + Indian Calendar | B | Phase 2 | ✅ LIVE -- commit 963dc82 | `CODEX_COMMISSION_SEO-B3.md` |
@@ -77,3 +77,4 @@
 | v3.4 | 2026-05-22 | SEO-20K M2 local delivery prepared. Added sign-pair compatibility pages, remedy hub pages, new backend compatibility and remedy-matching routers, compatibility/remedies sitemap endpoints, `App.js` public routes, and Vercel cache headers for the new programmatic route groups. No live production changes in this session. | Codex | `CODEX_COMMISSION_SEO_20K.md` |
 | v3.5 | 2026-05-22 | SEO-20K M2 INTEGRATED. CC reviewed `compatibility_router.py` (no architecture violations -- uses `vedic_calculator.calculate_ashtakoot()`), `remedy_matching_router.py` (no KE/dasha imports), `CompatibilityPage.jsx`, `RemedyHubPage.jsx`. All 9 files committed `aba7d5c` and pushed to main. M2 confirmation sent to SEO Codex thread requesting M3. SEO-OP-6 closed. SEO-OP-7 (TT production smoke test) opened. | CC | `aba7d5c` |
 | v3.6 | 2026-05-23 | SEO-20K M3 local delivery prepared. Added `seo_m3_router.py`, shared SEO M3 catalog/builders, seed scripts for `transit_profiles`, `festival_region_pages`, and `character_placements`, public React pages for `/transits/:transitSlug`, `/festivals/:festivalSlug/:region`, and `/traits/:sign/:chartPoint/:house`, plus transits/festivals/traits sitemap endpoints and Vercel cache headers. Seed dry-runs returned 108 transit docs, 480 festival-region docs, and 432 character-placement docs. Frontend production build passed and backend syntax checks passed. No live production changes in this session. | Codex | `CODEX_COMMISSION_SEO_20K_M3.md` |
+| v3.7 | 2026-05-25 | SEO-20K M4 / TAR-SEO-1 local delivery prepared. Added `backend/tarot_seo_router.py`, tarot sitemap support in `backend/seo_router.py`, `server.py` router wiring, four new public React pages under `frontend/src/pages/tarot-seo/`, public routes for `/tarot/spreads`, `/tarot/spread/:spreadSlug`, `/tarot/card/:cardSlug`, and `/tarot/for/:intentionSlug`, plus Vercel cache headers and sitemap-index wiring. Frontend production build passed, backend syntax checks passed, and the interactive `/tarot` module remained untouched. | Codex | `Tarot/CODEX_COMMISSION_TAR_SEO_1.md` |

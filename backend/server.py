@@ -80,6 +80,7 @@ from seo_m3_router import router as seo_m3_router
 from numerology_router import LoveCalculatorRequest, LoveCalculatorResponse, love_calculator, router as numerology_router
 from remedy_matching_router import router as remedy_matching_router
 from tarot_router import router as tarot_router
+from tarot_seo_router import router as tarot_seo_router
 from kundali_router import router as kundali_router
 from karmic_debt_router import router as karmic_debt_router
 from career_blueprint_router import router as career_blueprint_router
@@ -3288,6 +3289,7 @@ app.include_router(seo_m3_router)
 app.include_router(compatibility_router)
 app.include_router(numerology_router)
 app.include_router(tarot_router)
+app.include_router(tarot_seo_router, prefix="/api/seo")
 app.include_router(kundali_router)
 app.include_router(karmic_debt_router)
 app.include_router(career_blueprint_router)
