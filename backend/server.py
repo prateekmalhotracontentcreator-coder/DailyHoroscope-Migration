@@ -10,7 +10,7 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
-from typing import List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional
 import uuid
 from datetime import datetime, timezone, date, timedelta
 from zoneinfo import ZoneInfo
@@ -61,10 +61,17 @@ from admin_utils import (
     ChangePasswordRequest, verify_admin_password, create_admin_session, require_admin,
     set_admin_session_cookie, update_admin_password, hash_new_password, ADMIN_USERNAME
 )
+from models.diagnostics import (
+    DiagnosticFlagRequest,
+    TelemetryEvent,
+    TelemetryLogRequest,
+)
 from remedies_router import router as remedies_router
+from crystal_router import router as crystal_router
 from compatibility_router import router as compatibility_router
 from panchang_router import router as panchang_router
 from seo_router import router as seo_router
+from seo_m3_router import router as seo_m3_router
 from numerology_router import LoveCalculatorRequest, LoveCalculatorResponse, love_calculator, router as numerology_router
 from remedy_matching_router import router as remedy_matching_router
 from tarot_router import router as tarot_router
@@ -98,6 +105,7 @@ from notification_trigger_router import router as notification_trigger_router
 from notification_log_router import router as notification_log_router
 from lumina_router import router as lumina_router
 from palmistry_router import router as palmistry_router
+from rudraksha_router import router as rudraksha_router
 from knowledge_engine import (
     ARC_ANGEL_BASELINE_CONFIDENCE_PCT,
     ARC_ANGEL_DOMAIN_LABELS,
@@ -120,6 +128,7 @@ from strategist_router import router as strategist_router
 from scriptural_oracle_router import router as kp_router
 from live_tv_router import router as live_tv_router
 from punya_rewards_router import router as punya_rewards_router
+from lo_shu_router import router as lo_shu_router
 try:
     from longevity_router import router as longevity_router
     _longevity_router_ok = True
@@ -153,6 +162,10 @@ client = AsyncIOMotorClient(
 db = client[os.environ['DB_NAME']]
 
 app = FastAPI()
+
+
+def utc_now() -> datetime:
+    return datetime.now(timezone.utc)
 
 @app.get("/", include_in_schema=False)
 @app.head("/", include_in_schema=False)
@@ -200,6 +213,132 @@ class SessionUserMiddleware(BaseHTTPMiddleware):
             logging.warning("SessionUserMiddleware error (non-fatal): %s", e)
         return await call_next(request)
 
+
+async def _resolve_request_user_id(request: Request) -> Optional[str]:
+    state_user = getattr(request.state, "user", None)
+    if isinstance(state_user, dict) and state_user.get("user_id"):
+        return state_user["user_id"]
+
+    session_token = request.cookies.get("session_token")
+    if not session_token:
+        auth_header = request.headers.get("Authorization", "")
+        if auth_header.startswith("Bearer "):
+            session_token = auth_header.split("Bearer ", 1)[1].strip()
+    if not session_token:
+        return None
+
+    session_doc = await db.user_sessions.find_one(
+        {"session_token": session_token},
+        {"_id": 0, "user_id": 1, "expires_at": 1},
+    )
+    if not session_doc:
+        return None
+
+    expires_at = session_doc.get("expires_at")
+    if isinstance(expires_at, str):
+        expires_at = datetime.fromisoformat(expires_at)
+    if expires_at and expires_at.tzinfo is None:
+        expires_at = expires_at.replace(tzinfo=timezone.utc)
+    if expires_at and expires_at <= utc_now():
+        return None
+    return session_doc.get("user_id")
+
+
+async def _append_diagnostic_event(user_id: str, payload: Dict[str, Any]) -> None:
+    if not user_id:
+        return
+    event_payload = dict(payload)
+    event_payload["timestamp"] = event_payload.get("timestamp") or utc_now()
+    try:
+        await db["user_diagnostics"].update_one(
+            {"_id": user_id},
+            {
+                "$set": {"last_updated": utc_now()},
+                "$push": {"event_stream": {"$each": [event_payload], "$slice": -500}},
+                "$setOnInsert": {"is_claim_flagged": False},
+            },
+            upsert=True,
+        )
+    except Exception as exc:
+        logging.warning("[Diagnostics] DB write failed: %s", exc)
+
+
+def _serialize_document(doc: Dict[str, Any]) -> Dict[str, Any]:
+    def serialize(value: Any) -> Any:
+        if isinstance(value, datetime):
+            return value.isoformat()
+        if isinstance(value, list):
+            return [serialize(item) for item in value]
+        if isinstance(value, dict):
+            return {key: serialize(item) for key, item in value.items()}
+        return value
+
+    return serialize(doc)
+
+
+async def _resolve_diagnostics_lookup(search_value: str) -> tuple[Optional[str], Optional[Dict[str, Any]], Optional[str]]:
+    normalized = (search_value or "").strip()
+    if not normalized:
+        return None, None, None
+
+    user_doc = None
+    resolved_user_id = normalized
+
+    if "@" in normalized:
+        normalized_email = normalized.lower()
+        user_doc = await db.users.find_one(
+            {"$or": [{"email": normalized}, {"email": normalized_email}]},
+            {"_id": 0, "user_id": 1, "email": 1},
+        )
+        if user_doc:
+            resolved_user_id = user_doc.get("user_id") or normalized
+        else:
+            resolved_user_id = f"email:{normalized_email}"
+    else:
+        user_doc = await db.users.find_one({"user_id": normalized}, {"_id": 0, "user_id": 1, "email": 1})
+
+    payment_email = user_doc.get("email") if user_doc else None
+    if not payment_email and resolved_user_id.startswith("email:"):
+        payment_email = resolved_user_id.split("email:", 1)[1]
+
+    return resolved_user_id, user_doc, payment_email
+
+
+class SelfHealingMiddleware(BaseHTTPMiddleware):
+    async def dispatch(self, request: Request, call_next):
+        started_at = utc_now()
+        user_id = await _resolve_request_user_id(request)
+        try:
+            response = await call_next(request)
+            if response.status_code >= 400 and user_id:
+                await _append_diagnostic_event(
+                    user_id,
+                    {
+                        "page_url": str(request.url.path),
+                        "event_type": f"API_ERROR_{response.status_code}",
+                        "metadata": {
+                            "method": request.method,
+                            "latency_ms": round((utc_now() - started_at).total_seconds() * 1000, 2),
+                        },
+                    },
+                )
+            return response
+        except Exception as exc:
+            if user_id:
+                await _append_diagnostic_event(
+                    user_id,
+                    {
+                        "page_url": str(request.url.path),
+                        "event_type": "CRITICAL_BACKEND_CRASH",
+                        "metadata": {
+                            "method": request.method,
+                            "exception_class": exc.__class__.__name__,
+                            "error_message": str(exc)[:500],
+                        },
+                    },
+                )
+            raise
+
 # CORS must be added before other middleware
 cors_origins_env = os.environ.get('CORS_ORIGINS', '')
 if cors_origins_env:
@@ -213,6 +352,7 @@ else:
     app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=False, allow_methods=["*"], allow_headers=["*"])
 
 app.add_middleware(SessionUserMiddleware)
+app.add_middleware(SelfHealingMiddleware)
 
 api_router = APIRouter(prefix="/api")
 
@@ -1538,6 +1678,22 @@ async def oauth_callback(response: Response, body: OAuthCallbackRequest = None, 
         return UserResponse(user_id=user.user_id, email=user.email, name=user.name, picture=user.picture)
     except Exception as e: logging.error("OAuth callback error: %s", str(e)); raise HTTPException(status_code=401, detail="Authentication failed")
 
+
+@api_router.post("/diagnostics/log", status_code=202)
+async def log_diagnostics_event(event: TelemetryLogRequest, request: Request):
+    user_id = event.user_id or await _resolve_request_user_id(request)
+    if not user_id:
+        raise HTTPException(status_code=400, detail="user_id is required")
+
+    telemetry_event = TelemetryEvent(
+        page_url=event.page_url,
+        event_type=event.event_type,
+        metadata=event.metadata,
+        timestamp=event.timestamp,
+    )
+    await _append_diagnostic_event(user_id, telemetry_event.model_dump())
+    return {"status": "queued"}
+
 @api_router.get("/policies/{policy_type}")
 async def get_policy(policy_type: str):
     valid_types = ['terms', 'privacy', 'subscription-terms', 'refund-policy', 'cookie-policy']
@@ -2135,6 +2291,64 @@ async def change_admin_password(request: Request, password_request: ChangePasswo
 @api_router.get("/admin/verify")
 async def verify_admin(request: Request): return {"authenticated": await require_admin(request, db)}
 
+
+@api_router.get("/admin/diagnostics/{search_value}")
+async def get_user_diagnostics(request: Request, search_value: str):
+    await require_admin(request, db)
+
+    resolved_user_id, user_doc, payment_email = await _resolve_diagnostics_lookup(search_value)
+    if not resolved_user_id:
+        raise HTTPException(status_code=400, detail="Search value is required")
+
+    doc = await db["user_diagnostics"].find_one({"_id": resolved_user_id})
+    if not doc:
+        raise HTTPException(status_code=404, detail="No telemetry found for this user")
+
+    events = doc.get("event_stream", [])
+    unique_pages = len({event.get("page_url") for event in events if event.get("page_url")})
+    error_count = sum(
+        1
+        for event in events
+        if "ERROR" in event.get("event_type", "") or "CRASH" in event.get("event_type", "")
+    )
+
+    last_payment = None
+    if payment_email:
+        last_payment = await db.payments.find_one(
+            {"user_email": payment_email},
+            {"_id": 0, "status": 1, "report_type": 1, "created_at": 1, "amount": 1, "razorpay_order_id": 1},
+            sort=[("created_at", -1)],
+        )
+
+    response = _serialize_document(doc)
+    response["user_id"] = resolved_user_id
+    response["user_email"] = payment_email or (user_doc.get("email") if user_doc else None)
+    response["quick_stats"] = {
+        "total_events": len(events),
+        "unique_pages": unique_pages,
+        "error_count": error_count,
+        "last_payment_status": last_payment.get("status") if last_payment else None,
+    }
+    response["last_payment"] = _serialize_document(last_payment) if last_payment else None
+    return response
+
+
+@api_router.patch("/admin/diagnostics/{search_value}/flag")
+async def flag_diagnostics_dispute(request: Request, search_value: str, payload: DiagnosticFlagRequest):
+    await require_admin(request, db)
+
+    resolved_user_id, _, _ = await _resolve_diagnostics_lookup(search_value)
+    if not resolved_user_id:
+        raise HTTPException(status_code=400, detail="Search value is required")
+
+    result = await db["user_diagnostics"].update_one(
+        {"_id": resolved_user_id},
+        {"$set": {"is_claim_flagged": payload.flagged, "last_updated": utc_now()}},
+    )
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="No telemetry found for this user")
+    return {"status": "updated", "flagged": payload.flagged}
+
 @api_router.get("/admin/dashboard")
 async def get_dashboard_stats(request: Request):
     await require_admin(request, db)
@@ -2525,7 +2739,9 @@ async def get_arc_angel_profile(user_id: str):
 
 app.include_router(api_router)
 app.include_router(panchang_router)
+app.include_router(crystal_router, prefix="/api")
 app.include_router(seo_router)
+app.include_router(seo_m3_router)
 app.include_router(compatibility_router)
 app.include_router(numerology_router)
 app.include_router(tarot_router)
@@ -2559,6 +2775,7 @@ app.include_router(notification_trigger_router)
 app.include_router(notification_log_router)
 app.include_router(lumina_router)
 app.include_router(palmistry_router)
+app.include_router(rudraksha_router)
 app.include_router(knowledge_router)
 app.include_router(lk_router)
 app.include_router(strategist_router)
@@ -2567,6 +2784,7 @@ app.include_router(remedies_router)
 app.include_router(remedy_matching_router)
 app.include_router(live_tv_router)
 app.include_router(punya_rewards_router)
+app.include_router(lo_shu_router)
 if _longevity_router_ok and longevity_router is not None:
     app.include_router(longevity_router)
 
@@ -2646,6 +2864,18 @@ async def prefetch_all_horoscopes():
             except Exception as e: logging.error("Failed to generate %s for %s: %s", horoscope_type, sign, str(e))
     logging.info("Horoscope prefetch complete: %d generated, %d already cached", generated, skipped)
 
+
+async def ensure_diagnostics_indexes():
+    await db["user_diagnostics"].create_index(
+        [("_id", 1), ("last_updated", -1)],
+        name="idx_user_lookup_timeline",
+    )
+    await db["user_diagnostics"].create_index(
+        [("event_stream.timestamp", -1)],
+        name="idx_event_time",
+    )
+
+
 scheduler = AsyncIOScheduler()
 
 @app.on_event("startup")
@@ -2656,6 +2886,7 @@ async def startup_event():
         app.state.knowledge_index_store = app.state.knowledge_engine.index_store
     except Exception as exc:
         logging.warning("knowledge engine startup refresh failed: %s", exc)
+    await ensure_diagnostics_indexes()
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(hour=18, minute=30, timezone="UTC"), id="daily_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day_of_week="sun", hour=18, minute=0, timezone="UTC"), id="weekly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day=1, hour=17, minute=30, timezone="UTC"), id="monthly_horoscope_prefetch", replace_existing=True)

@@ -22,6 +22,7 @@ import { AdminBlogManager } from './AdminBlogManager';
 import { LibraryConsolePage } from './LibraryConsolePage';
 import { RemediesAdminPanel } from './RemediesAdminPanel';
 import { PunyaRewardsAdminPanel } from './PunyaRewardsAdminPanel';
+import { DiagnosticsTab } from '../../components/admin/DiagnosticsTab';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -346,7 +347,7 @@ export const AdminDashboard = () => {
         toast.success('Posted successfully!');
         setSocialForm(p => ({ ...p, message: '', image_url: '' }));
         setSocialImageFile(null);
-      } else toast.error('Some posts failed — check results below');
+      } else toast.error('Some posts failed -- check results below');
       fetchSocialLogs();
     } catch (err) { toast.error(err.response?.data?.detail || 'Post failed'); }
     finally { setSocialPosting(false); }
@@ -505,6 +506,7 @@ export const AdminDashboard = () => {
   const tabs = [
     { id: 'overview',       label: 'Overview',       icon: BarChart3 },
     { id: 'health',         label: 'System',         icon: Activity },
+    { id: 'diagnostics',    label: 'Self-Heal',      icon: Zap },
     { id: 'users',          label: 'Users',          icon: Users },
     { id: 'reports',        label: 'Reports',        icon: FileText },
     { id: 'payments',       label: 'Payments',       icon: CreditCard },
@@ -732,6 +734,10 @@ export const AdminDashboard = () => {
               })()}
             </Card>
           </div>
+        )}
+
+        {activeTab === 'diagnostics' && (
+          <DiagnosticsTab getAuthHeaders={getAuthHeaders} />
         )}
 
         {/* USERS */}
@@ -1129,7 +1135,7 @@ export const AdminDashboard = () => {
                   <div>
                     <Label className="text-gray-300 text-xs mb-1 block">Subject / Title</Label>
                     <Input value={notifForm.subject} onChange={e => setNotifForm(p => ({ ...p, subject: e.target.value }))}
-                      placeholder="e.g. Today's Panchang — 27 March 2026" className="bg-gray-700 border-gray-600 text-white" />
+                      placeholder="e.g. Today's Panchang -- 27 March 2026" className="bg-gray-700 border-gray-600 text-white" />
                   </div>
                   <div>
                     <Label className="text-gray-300 text-xs mb-1 block">Message Body (HTML supported)</Label>
@@ -1156,7 +1162,7 @@ export const AdminDashboard = () => {
                             <span className="text-gray-300 text-sm">{label}</span>
                             {available
                               ? <Wifi className="h-3 w-3 text-green-400" />
-                              : <span className="text-xs text-gray-500 ml-1">— coming soon</span>}
+                              : <span className="text-xs text-gray-500 ml-1">-- coming soon</span>}
                           </label>
                         ))}
                       </div>
@@ -1266,7 +1272,7 @@ export const AdminDashboard = () => {
                             : <AlertTriangle className="h-4 w-4 text-red-400 flex-shrink-0" />}
                           <div>
                             <p className="text-white text-sm">{log.recipient_name}
-                              <span className="text-gray-400 ml-2 text-xs">{log.recipient_email || log.recipient_phone || '—'}</span>
+                              <span className="text-gray-400 ml-2 text-xs">{log.recipient_email || log.recipient_phone || '--'}</span>
                             </p>
                             <p className="text-gray-400 text-xs">{log.subject} · {log.channel}
                               {log.error && <span className="text-red-400 ml-2">· {log.error}</span>}
@@ -1302,7 +1308,7 @@ export const AdminDashboard = () => {
                               </span>}
                             </p>
                           : ytStatus?.has_credentials
-                            ? <p className="text-yellow-400 text-xs">⚠️ Credentials set — click Connect to authorize</p>
+                            ? <p className="text-yellow-400 text-xs">⚠️ Credentials set -- click Connect to authorize</p>
                             : <p className="text-gray-400 text-xs">Set YOUTUBE_CLIENT_ID + YOUTUBE_CLIENT_SECRET on Render first</p>
                         }
                       </div>
@@ -1315,7 +1321,7 @@ export const AdminDashboard = () => {
                           </Button>
                         : <Button onClick={connectYouTube} disabled={ytConnecting || !ytStatus?.has_credentials} size="sm"
                             className="bg-red-600 hover:bg-red-700 text-white text-xs">
-                            {ytConnecting ? 'Opening…' : 'Connect YouTube Channel'}
+                            {ytConnecting ? 'Opening...' : 'Connect YouTube Channel'}
                           </Button>
                       }
                       <Button onClick={fetchYtStatus} variant="outline" size="sm" className="border-gray-600 text-gray-400">
@@ -1325,7 +1331,7 @@ export const AdminDashboard = () => {
                   </div>
                   {ytStatus?.connected && (
                     <p className="text-gray-500 text-xs mt-3 border-t border-gray-700 pt-3">
-                      📹 Share cards will be converted to 30-second MP4 videos and uploaded to your YouTube channel. Video upload may take 1–2 minutes.
+                      📹 Share cards will be converted to 30-second MP4 videos and uploaded to your YouTube channel. Video upload may take 1-2 minutes.
                     </p>
                   )}
                 </Card>
@@ -1356,8 +1362,8 @@ export const AdminDashboard = () => {
                             className="accent-yellow-500"
                           />
                           <span className="text-gray-300">{label}</span>
-                          {!available && id === 'youtube' && <span className="text-xs text-gray-500">— connect above</span>}
-                          {!available && id !== 'youtube' && <span className="text-xs text-gray-500">— coming soon</span>}
+                          {!available && id === 'youtube' && <span className="text-xs text-gray-500">-- connect above</span>}
+                          {!available && id !== 'youtube' && <span className="text-xs text-gray-500">-- coming soon</span>}
                         </label>
                       ))}
                     </div>
@@ -1376,19 +1382,19 @@ export const AdminDashboard = () => {
                     <p className="text-gray-500 text-xs mt-1">{socialForm.message.length} characters</p>
                   </div>
 
-                  {/* Image — upload file OR paste URL */}
+                  {/* Image -- upload file OR paste URL */}
                   <div className="mb-4 space-y-2">
                     <Label className="text-gray-400 text-xs block flex items-center gap-1">
                       <Image className="h-3 w-3" />Image (optional)
                     </Label>
-                    {/* File upload — use this after downloading a share card */}
+                    {/* File upload -- use this after downloading a share card */}
                     <div className={`border-2 border-dashed rounded-lg p-3 text-center cursor-pointer transition-colors ${socialImageFile ? 'border-green-500/50 bg-green-900/10' : 'border-gray-600 hover:border-gold/50'}`}
                       onClick={() => document.getElementById('social-image-upload').click()}>
                       <input id="social-image-upload" type="file" accept="image/*" className="hidden"
                         onChange={e => { setSocialImageFile(e.target.files?.[0] || null); setSocialForm(p => ({ ...p, image_url: '' })); }} />
                       {socialImageFile
                         ? <p className="text-green-400 text-xs">✅ {socialImageFile.name} ({(socialImageFile.size / 1024).toFixed(0)} KB)</p>
-                        : <p className="text-gray-500 text-xs">📁 Click to upload image (PNG/JPG) — use after downloading a Panchang or Horoscope card</p>}
+                        : <p className="text-gray-500 text-xs">📁 Click to upload image (PNG/JPG) -- use after downloading a Panchang or Horoscope card</p>}
                     </div>
                     {socialImageFile && (
                       <button onClick={() => setSocialImageFile(null)} className="text-xs text-red-400 hover:text-red-300">✕ Remove image</button>
@@ -1407,7 +1413,7 @@ export const AdminDashboard = () => {
                   <Button onClick={handleSocialPost} disabled={socialPosting}
                     className="bg-gold hover:bg-gold/90 text-gray-900 font-semibold">
                     <Globe className="h-4 w-4 mr-2" />
-                    {socialPosting ? 'Posting…' : 'Post Now'}
+                    {socialPosting ? 'Posting...' : 'Post Now'}
                   </Button>
 
                   {/* Results */}

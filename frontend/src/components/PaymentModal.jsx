@@ -8,6 +8,7 @@ import { Crown, Check, Sparkles } from 'lucide-react';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { useAuth } from '../context/AuthContext';
+import { logRazorpayOpen } from '../diagnostics/telemetry';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -120,6 +121,12 @@ export const PaymentModal = ({ isOpen, onClose, reportType, reportId, onSuccess 
       };
 
       const razorpay = new window.Razorpay(options);
+      const telemetryUserId = user?.user_id || (email ? `email:${email.toLowerCase()}` : null);
+      logRazorpayOpen(
+        telemetryUserId,
+        paymentOption === 'premium_monthly' ? 'premium_monthly' : reportType,
+        currentPrice
+      );
       razorpay.open();
       setProcessing(false);
 

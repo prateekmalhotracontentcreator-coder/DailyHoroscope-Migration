@@ -1,9 +1,9 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect, useRef } from 'react';
 import '@/App.css';
 import './numerology.css';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { AdminAuthProvider } from './context/AdminAuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { PremiumRoute } from './components/PremiumRoute';
@@ -145,6 +145,7 @@ const LoveReportsCategoryPage = lazy(() => import('./pages/reports/category/Love
 const CareerReportsCategoryPage = lazy(() => import('./pages/reports/category/CareerReportsPage').then(m => ({ default: m.CareerReportsPage })));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
+import { logPageView } from './diagnostics/telemetry';
 
 const NavBarWrapper = () => {
   const location = useLocation();
@@ -157,6 +158,30 @@ const KeepAliveWrapper = ({ children }) => {
   return children;
 };
 
+const RouteDiagnosticsTracker = () => {
+  const location = useLocation();
+  const { user } = useAuth();
+  const previousPathRef = useRef(null);
+  const lastLoggedKeyRef = useRef('');
+
+  useEffect(() => {
+    const currentPath = `${location.pathname}${location.search}${location.hash}`;
+    const userId = user?.user_id || user?.id || null;
+
+    if (userId) {
+      const logKey = `${userId}:${currentPath}`;
+      if (lastLoggedKeyRef.current !== logKey) {
+        logPageView(userId, currentPath, previousPathRef.current);
+        lastLoggedKeyRef.current = logKey;
+      }
+    }
+
+    previousPathRef.current = currentPath;
+  }, [location, user]);
+
+  return null;
+};
+
 function App() {
   return (
     <ThemeProvider>
@@ -166,6 +191,7 @@ function App() {
             <Toaster position="top-center" richColors />
             <BrowserRouter>
               <KeepAliveWrapper>
+                <RouteDiagnosticsTracker />
                 <ScrollToTop />
                 <NavBarWrapper />
                 <CookieConsent />
