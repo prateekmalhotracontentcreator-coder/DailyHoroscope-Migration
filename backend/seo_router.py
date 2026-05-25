@@ -9,6 +9,7 @@ from crystal_data import get_crystal_sitemap_urls
 from panchang_router import DEFAULT_LOCATIONS
 from lo_shu_router import LO_SHU_SITEMAP_URLS
 from seo_m3_catalog import CHART_POINTS, FESTIVAL_SLUGS, HOUSES, PLANET_SLUGS, REGION_SLUGS, SIGN_SLUGS
+from zibu_catalog import list_symbol_summaries as list_zibu_summaries
 
 
 router = APIRouter(prefix="/api/seo", tags=["seo"])
@@ -176,4 +177,15 @@ async def get_rudraksha_sitemap() -> Response:
         (f"{SITE_URL}/rudraksha/calculator", today),
         *[(f"{SITE_URL}/rudraksha/{slug}", today) for slug in RUDRAKSHA_SLUGS],
     ]
+    return _xml_response(_sitemap_xml(urls))
+
+
+@router.get("/sitemap/zibu")
+async def get_zibu_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = [(f"{SITE_URL}/zibu", today)]
+    urls.extend(
+        (f"{SITE_URL}/zibu/{symbol['slug']}", today)
+        for symbol in list_zibu_summaries()
+    )
     return _xml_response(_sitemap_xml(urls))
