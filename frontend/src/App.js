@@ -141,6 +141,7 @@ const CelebrityChartPage = lazy(() => import('./pages/celebrity/CelebrityChartPa
 const CharacterPlacementPage = lazy(() => import('./pages/seo/CharacterPlacementPage').then(m => ({ default: m.CharacterPlacementPage })));
 const AngelNumbersHubPage = lazy(() => import('./pages/angel-numbers/AngelNumbersHubPage').then(m => ({ default: m.AngelNumbersHubPage })));
 const AngelNumberPage = lazy(() => import('./pages/angel-numbers/AngelNumberPage').then(m => ({ default: m.AngelNumberPage })));
+const AngelNumberIntentPage = lazy(() => import('./pages/angel-numbers/AngelNumberIntentPage').then(m => ({ default: m.AngelNumberIntentPage })));
 const KundaliReportsCategoryPage = lazy(() => import('./pages/reports/category/KundaliReportsPage').then(m => ({ default: m.KundaliReportsPage })));
 const NumerologyReportsCategoryPage = lazy(() => import('./pages/reports/category/NumerologyReportsPage').then(m => ({ default: m.NumerologyReportsPage })));
 const LoveReportsCategoryPage = lazy(() => import('./pages/reports/category/LoveReportsPage').then(m => ({ default: m.LoveReportsPage })));
@@ -227,6 +228,7 @@ function App() {
                   <Route path="/crystals/:crystalSlug" element={<CrystalPage />} />
                   <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
                   <Route path="/angel-numbers/:number" element={<AngelNumberPage />} />
+                  <Route path="/angel-numbers/:number/:intent" element={<AngelNumberIntentPage />} />
                   <Route path="/ekadashi" element={<DevotionalDatePage type="ekadashi" />} />
                   <Route path="/amavasya" element={<DevotionalDatePage type="amavasya" />} />
                   <Route path="/purnima" element={<DevotionalDatePage type="purnima" />} />

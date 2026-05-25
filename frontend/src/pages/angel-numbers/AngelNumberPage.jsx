@@ -1,103 +1,67 @@
-import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../components/ui/accordion';
-import { Footer } from '../../components/Footer';
-import { SEO } from '../../components/SEO';
-import { ANGEL_NUMBERS, ANGEL_NUMBER_ORDER } from './angelNumberContent';
+import React, { useEffect, useMemo, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion";
+import { Footer } from "../../components/Footer";
+import { SEO } from "../../components/SEO";
+import { fetchAngelNumber } from "./angelNumbersApi";
 
-const SITE = 'https://www.everydayhoroscope.in';
+const SITE = "https://www.everydayhoroscope.in";
 
-function buildFaq(item) {
-  return [
-    {
-      question: `What does ${item.number} mean?`,
-      answer: item.meaning,
-    },
-    {
-      question: `What does ${item.number} mean in love?`,
-      answer: item.love,
-    },
-    {
-      question: `Is ${item.number} a lucky number?`,
-      answer: `${item.number} is generally read as a supportive sign rather than a lottery symbol. Its message is about ${item.tagline.toLowerCase()}, and the luck comes from aligning with that lesson.`,
-    },
-    {
-      question: `What should I do when I see ${item.number}?`,
-      answer: item.what_to_do.join(' '),
-    },
-  ];
-}
-
-function buildSchema(item, faqItems) {
+function buildSchema(item) {
+  if (!item) return null;
   return {
-    '@context': 'https://schema.org',
-    '@graph': [
+    "@context": "https://schema.org",
+    "@graph": [
       {
-        '@type': 'Article',
-        headline: `${item.number} Angel Number Meaning`,
-        description: `What does ${item.number} mean? Discover the spiritual meaning of angel number ${item.number} in love, career, and numerology. Vedic insights included.`,
+        "@type": "Article",
+        headline: item.headline,
+        description: item.meta_description,
         url: `${SITE}/angel-numbers/${item.number}`,
-        author: {
-          '@type': 'Organization',
-          name: 'Everyday Horoscope',
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Everyday Horoscope',
-        },
+        author: { "@type": "Organization", name: "Everyday Horoscope" },
+        publisher: { "@type": "Organization", name: "Everyday Horoscope" },
       },
       {
-        '@type': 'FAQPage',
-        mainEntity: faqItems.map((faq) => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer,
-          },
+        "@type": "FAQPage",
+        mainEntity: item.faq.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: faq.a },
         })),
       },
     ],
   };
 }
 
-function getRelatedNumbers(number) {
-  const index = ANGEL_NUMBER_ORDER.indexOf(number);
-  if (index === -1) return ANGEL_NUMBER_ORDER.slice(0, 3);
-
-  const candidates = [];
-  [-1, 1, -2, 2, -3, 3].forEach((offset) => {
-    const next = ANGEL_NUMBER_ORDER[index + offset];
-    if (next && !candidates.includes(next)) {
-      candidates.push(next);
-    }
-  });
-  return candidates.slice(0, 3);
-}
-
 export function AngelNumberPage() {
-  const { number = '' } = useParams();
-  const item = ANGEL_NUMBERS[number];
+  const { number = "" } = useParams();
+  const [item, setItem] = useState(null);
+  const [notFound, setNotFound] = useState(false);
 
-  if (!item) {
+  useEffect(() => {
+    const controller = new AbortController();
+    setNotFound(false);
+    setItem(null);
+    fetchAngelNumber(number, controller.signal)
+      .then(setItem)
+      .catch((error) => {
+        if (error.status === 404) setNotFound(true);
+      });
+    return () => controller.abort();
+  }, [number]);
+
+  const schema = useMemo(() => buildSchema(item), [item]);
+
+  if (notFound) {
     return (
       <div className="min-h-screen bg-[linear-gradient(180deg,#fcfaf5_0%,#f5efe3_55%,#efe7d6_100%)] text-stone-900">
-        <SEO
-          title="Angel Number Not Found"
-          description="Browse the full angel numbers hub to explore meaning pages."
-          url={`${SITE}/angel-numbers`}
-          noindex
-        />
+        <SEO title="Angel Number Not Found" description="Browse the angel numbers hub to explore published numbers." url={`${SITE}/angel-numbers`} noindex />
         <main className="mx-auto flex min-h-[70vh] max-w-3xl flex-col items-center justify-center px-4 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold">Angel Numbers</p>
           <h1 className="mt-4 font-cinzel text-4xl font-semibold text-stone-900">Number not found</h1>
           <p className="mt-4 max-w-xl text-sm leading-7 text-stone-600">
-            This angel number page is not part of the current hub. You can still explore the full list of published numbers below.
+            This number is outside the current 1,000-number module scope. You can still explore the main hub below.
           </p>
-          <Link
-            to="/angel-numbers"
-            className="mt-6 inline-flex rounded-full bg-gold px-6 py-3 text-sm font-semibold text-stone-950"
-          >
+          <Link to="/angel-numbers" className="mt-6 inline-flex rounded-full bg-gold px-6 py-3 text-sm font-semibold text-stone-950">
             View angel numbers hub
           </Link>
         </main>
@@ -106,16 +70,14 @@ export function AngelNumberPage() {
     );
   }
 
-  const faqItems = buildFaq(item);
-  const related = getRelatedNumbers(item.number).map((entry) => ANGEL_NUMBERS[entry]);
-
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(201,150,31,0.18),transparent_26%),linear-gradient(180deg,#fcfaf5_0%,#f5efe3_55%,#efe7d6_100%)] text-stone-900">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,rgba(197,160,89,0.18),transparent_28%),linear-gradient(180deg,#fffaf0_0%,#f6eddc_52%,#efe3cd_100%)] text-stone-900">
       <SEO
-        title={`${item.number} Angel Number Meaning - ${item.tagline}`}
-        description={`What does ${item.number} mean? Discover the spiritual meaning of angel number ${item.number} in love, career, and numerology. Vedic insights included.`}
-        url={`${SITE}/angel-numbers/${item.number}`}
-        schema={buildSchema(item, faqItems)}
+        title={item?.meta_title || "Angel Number Meaning"}
+        description={item?.meta_description || "Discover the meaning of this angel number."}
+        url={`${SITE}/angel-numbers/${number}`}
+        schema={schema}
+        noindex={notFound}
       />
 
       <main className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
@@ -124,63 +86,54 @@ export function AngelNumberPage() {
             Angel Numbers
           </Link>
           <span className="mx-2">/</span>
-          <span>{item.number}</span>
+          <span>{item?.number || number}</span>
         </nav>
 
-        <section className="mt-5 rounded-[2rem] border border-gold/20 bg-white/70 p-8 shadow-sm backdrop-blur sm:p-10">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+        <section className="mt-5 rounded-[2rem] border border-gold/20 bg-white/75 p-8 shadow-sm backdrop-blur sm:p-10">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold">Angel Number Meaning</p>
-              <h1 className="mt-4 font-cinzel text-6xl font-semibold leading-none text-stone-900 sm:text-8xl">
-                {item.number}
+              <h1 className="mt-4 font-cinzel text-5xl font-semibold leading-none text-stone-900 sm:text-7xl">
+                {item?.number || "..."}
               </h1>
-              <p className="mt-4 font-playfair text-2xl italic text-stone-700">{item.tagline}</p>
+              <p className="mt-4 max-w-2xl font-playfair text-2xl italic text-stone-700">
+                {item?.tagline || "Loading the message..."}
+              </p>
             </div>
             <div className="rounded-[1.5rem] border border-gold/20 bg-gradient-to-br from-white/90 to-gold/10 px-6 py-5 text-right">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Vedic connection</p>
-              <p className="mt-3 text-lg font-semibold text-stone-800">{item.vedic_connection}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Numerology Root</p>
+              <p className="mt-2 font-cinzel text-4xl text-stone-900">{item?.numerology_base || "-"}</p>
+              <p className="mt-3 max-w-xs text-sm leading-7 text-stone-600">{item?.vibration || ""}</p>
             </div>
           </div>
         </section>
 
         <section className="mt-8 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
           <article className="rounded-[1.75rem] border border-gold/20 bg-white/80 p-6 shadow-sm">
-            <h2 className="font-playfair text-2xl font-semibold text-stone-900">Main meaning</h2>
-            <p className="mt-4 text-sm leading-8 text-stone-600">{item.meaning}</p>
+            <h2 className="font-playfair text-2xl font-semibold text-stone-900">Seeing it means</h2>
+            <p className="mt-4 text-sm leading-8 text-stone-600">{item?.seeing_it_means}</p>
           </article>
 
           <article className="rounded-[1.75rem] border border-gold/20 bg-white/80 p-6 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">In Vedic numerology</p>
-            <p className="mt-4 text-sm leading-8 text-stone-600">{item.spiritual}</p>
-            <div className="mt-6 rounded-2xl border border-gold/20 bg-gold/5 p-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Base number</p>
-              <p className="mt-2 text-2xl font-cinzel text-stone-900">{item.numerology_base}</p>
+            <h2 className="font-playfair text-2xl font-semibold text-stone-900">Key themes</h2>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {(item?.key_themes || []).map((theme) => (
+                <span key={theme} className="rounded-full border border-gold/20 bg-gold/10 px-4 py-2 text-sm font-semibold text-stone-800">
+                  {theme}
+                </span>
+              ))}
             </div>
           </article>
         </section>
 
-        <section className="mt-8 grid gap-5 md:grid-cols-3">
-          {[
-            ['In love', item.love],
-            ['In career', item.career],
-            ['Spiritual note', item.spiritual],
-          ].map(([title, body]) => (
-            <article key={title} className="rounded-[1.75rem] border border-gold/20 bg-white/80 p-6 shadow-sm">
-              <h2 className="font-playfair text-xl font-semibold text-stone-900">{title}</h2>
-              <p className="mt-3 text-sm leading-7 text-stone-600">{body}</p>
-            </article>
-          ))}
-        </section>
-
         <section className="mt-8 rounded-[1.75rem] border border-gold/20 bg-white/80 p-6 shadow-sm">
           <h2 className="font-playfair text-2xl font-semibold text-stone-900">
-            What to do when you see {item.number}
+            What to do when you see {item?.number || number}
           </h2>
-          <ul className="mt-5 grid gap-4 md:grid-cols-2">
-            {item.what_to_do.map((step) => (
-              <li key={step} className="flex gap-3 rounded-2xl border border-gold/15 bg-gold/5 p-4 text-sm leading-7 text-stone-600">
-                <span className="font-semibold text-gold">✓</span>
-                <span>{step}</span>
+          <ul className="mt-5 grid gap-4 md:grid-cols-3">
+            {(item?.what_to_do || []).map((step) => (
+              <li key={step} className="rounded-[1.5rem] border border-gold/15 bg-gold/5 p-4 text-sm leading-7 text-stone-700">
+                {step}
               </li>
             ))}
           </ul>
@@ -189,55 +142,71 @@ export function AngelNumberPage() {
         <section className="mt-8 rounded-[1.75rem] border border-gold/20 bg-white/80 p-6 shadow-sm">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="font-playfair text-2xl font-semibold text-stone-900">Related angel numbers</h2>
-              <p className="mt-2 text-sm text-stone-600">Explore the neighbouring signals around this message.</p>
+              <h2 className="font-playfair text-2xl font-semibold text-stone-900">Explore all 9 intent meanings</h2>
+              <p className="mt-2 text-sm text-stone-600">
+                These internal links are the main journey deeper into each number.
+              </p>
             </div>
-            <Link to="/angel-numbers" className="text-sm font-semibold text-gold transition hover:opacity-80">
-              View full hub
+            <Link to="/birth-chart" className="text-sm font-semibold text-gold transition hover:opacity-80">
+              Discover your personal numbers
             </Link>
           </div>
-          <div className="mt-5 flex flex-wrap gap-3">
-            {related.map((entry) => (
+          <div className="mt-5 grid gap-4 lg:grid-cols-3">
+            {(item?.intent_summaries || []).map((intent) => (
               <Link
-                key={entry.number}
-                to={`/angel-numbers/${entry.number}`}
-                className="rounded-full border border-gold/20 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold transition hover:bg-gold hover:text-stone-950"
+                key={intent.intent}
+                to={`/angel-numbers/${item.number}/${intent.intent}`}
+                className="rounded-[1.5rem] border border-gold/15 bg-gradient-to-br from-white to-gold/10 p-4 shadow-sm transition hover:-translate-y-0.5"
               >
-                {entry.number} - {entry.tagline}
+                <p className="text-sm font-semibold text-stone-900">{intent.display_name}</p>
+                <p className="mt-2 text-sm leading-7 text-stone-600">{intent.teaser}</p>
               </Link>
             ))}
           </div>
         </section>
 
+        <section className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <article className="rounded-[1.75rem] border border-gold/20 bg-white/80 p-6 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">Affirmation</p>
+            <blockquote className="mt-4 font-playfair text-2xl italic leading-10 text-stone-800">
+              {item?.affirmation}
+            </blockquote>
+          </article>
+
+          <article className="rounded-[1.75rem] border border-gold/20 bg-white/80 p-6 shadow-sm">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <h2 className="font-playfair text-2xl font-semibold text-stone-900">Related numbers</h2>
+                <p className="mt-2 text-sm text-stone-600">Follow the neighboring signals around this message.</p>
+              </div>
+              <Link to="/angel-numbers" className="text-sm font-semibold text-gold transition hover:opacity-80">
+                View hub
+              </Link>
+            </div>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {(item?.related_numbers || []).map((related) => (
+                <Link
+                  key={related}
+                  to={`/angel-numbers/${related}`}
+                  className="rounded-full border border-gold/20 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold transition hover:bg-gold hover:text-stone-950"
+                >
+                  {related}
+                </Link>
+              ))}
+            </div>
+          </article>
+        </section>
+
         <section className="mt-8 rounded-[1.75rem] border border-gold/20 bg-white/80 p-6 shadow-sm">
           <h2 className="font-playfair text-2xl font-semibold text-stone-900">Frequently asked questions</h2>
           <Accordion type="single" collapsible className="mt-4">
-            {faqItems.map((faq) => (
-              <AccordionItem key={faq.question} value={faq.question}>
-                <AccordionTrigger className="text-left text-base font-semibold text-stone-900">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm leading-7 text-stone-600">
-                  {faq.answer}
-                </AccordionContent>
+            {(item?.faq || []).map((faq) => (
+              <AccordionItem key={faq.q} value={faq.q}>
+                <AccordionTrigger className="text-left text-base font-semibold text-stone-900">{faq.q}</AccordionTrigger>
+                <AccordionContent className="text-sm leading-7 text-stone-600">{faq.a}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
-        </section>
-
-        <section className="mt-8 rounded-[2rem] border border-gold/20 bg-gradient-to-br from-gold/10 via-white/80 to-white/80 p-8 text-center shadow-sm">
-          <h2 className="font-playfair text-2xl font-semibold text-stone-900">
-            Your numerology numbers reveal the deeper pattern behind the signs.
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-stone-600">
-            Angel numbers show what keeps calling for your attention. A full numerology reading shows the core design of your life path, name vibration, and relationship timing.
-          </p>
-          <Link
-            to="/numerology"
-            className="mt-6 inline-flex rounded-full bg-gold px-6 py-3 text-sm font-semibold text-stone-950 transition hover:opacity-90"
-          >
-            Explore my numerology
-          </Link>
         </section>
       </main>
 

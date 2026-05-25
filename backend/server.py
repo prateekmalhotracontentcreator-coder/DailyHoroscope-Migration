@@ -135,6 +135,7 @@ from live_tv_router import router as live_tv_router
 from punya_rewards_router import router as punya_rewards_router
 from lo_shu_router import router as lo_shu_router
 from zibu_router import router as zibu_router
+from angel_numbers_router import router as angel_numbers_router
 try:
     from longevity_router import router as longevity_router
     _longevity_router_ok = True
@@ -3327,6 +3328,7 @@ app.include_router(live_tv_router)
 app.include_router(punya_rewards_router)
 app.include_router(lo_shu_router)
 app.include_router(zibu_router, prefix="/api/seo")
+app.include_router(angel_numbers_router, prefix="/api/seo")
 if _longevity_router_ok and longevity_router is not None:
     app.include_router(longevity_router)
 
