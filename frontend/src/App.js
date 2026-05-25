@@ -104,7 +104,7 @@ const LKDebtAuditPage = lazy(() => import('./pages/lk/LKDebtAuditPage'));
 const LKBrowsePage = lazy(() => import('./pages/lk/LKBrowsePage'));
 const TheStrategistLandingPage = lazy(() => import('./pages/strategist/TheStrategistLandingPage'));
 const StrategistPage = lazy(() => import('./pages/strategist/StrategistPage'));
-const StrategistWarRoom = lazy(() => import('./components/strategist/war-room/StrategistWarRoom'));
+const StrategistWarRoomPage = lazy(() => import('./pages/strategist/StrategistWarRoomPage'));
 const StrategistExecutivePage = lazy(() => import('./pages/strategist/StrategistExecutivePage'));
 const StrategistMissionsPage = lazy(() => import('./pages/strategist/StrategistMissionsPage'));
 const StrategistReportPage = lazy(() => import('./pages/strategist/StrategistReportPage'));
@@ -417,7 +417,7 @@ function App() {
                   {/* /strategist = CD landing page for all users (logged in or out) */}
                   <Route path="/strategist" element={<TheStrategistLandingPage />} />
                   {/* War Room -- the actual Dashboard (premium users only) */}
-                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistWarRoom /></ProtectedRoute>} />
+                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistWarRoomPage /></ProtectedRoute>} />
                   {/* Executive page -- repurposed Codex overview, inside module nav */}
                   <Route path="/strategist/executive" element={<ProtectedRoute><StrategistExecutivePage /></ProtectedRoute>} />
                   <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />
