@@ -11,6 +11,9 @@ import {
   buildFaqSchema,
   HUB_FAQ_ITEMS,
   MISSING_NUMBER_LINKS,
+  NUMBER_LINKS,
+  PERSONAL_YEAR_LINKS,
+  PROBLEM_LINKS,
   SITE,
 } from './loShuContent';
 
@@ -148,6 +151,24 @@ export default function LoShuHubPage() {
         </section>
 
         <section className="mt-12 rounded-[2rem] border border-gold/20 bg-card/75 p-8 shadow-sm">
+          <h2 className="font-playfair text-3xl font-semibold">Explore the meaning of each number when it is present</h2>
+          <p className="mt-4 max-w-4xl text-sm leading-7 text-muted-foreground">
+            These deep-dive pages focus on what each number adds to the grid when it appears, how repetition changes its expression, and what to watch if that energy becomes excessive.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {NUMBER_LINKS.map((item) => (
+              <Link
+                key={item.number}
+                to={item.href}
+                className="rounded-full border border-gold/20 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold transition hover:bg-gold hover:text-primary-foreground"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-12 rounded-[2rem] border border-gold/20 bg-card/75 p-8 shadow-sm">
           <h2 className="font-playfair text-3xl font-semibold">What are Lo Shu arrows?</h2>
           <p className="mt-4 max-w-4xl text-sm leading-7 text-muted-foreground">
             Arrows are full rows, columns, or diagonals that activate when all three numbers in that line appear in the chart. Some arrows show mental sharpness or planning ability, while the two diagonals are highlighted as Rajayoga patterns in the decoded source.
@@ -165,6 +186,44 @@ export default function LoShuHubPage() {
               </Link>
             ))}
           </div>
+        </section>
+
+        <section className="mt-12 grid gap-6 lg:grid-cols-2">
+          <article className="rounded-[2rem] border border-gold/20 bg-card/75 p-8 shadow-sm">
+            <h2 className="font-playfair text-3xl font-semibold">Lo Shu pages for life problems</h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">
+              Explore focused remedy pages for career, money, relationships, health, family, fertility, legal issues, and other recurring life themes decoded from the source material.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {PROBLEM_LINKS.map((item) => (
+                <Link
+                  key={item.slug}
+                  to={`/lo-shu-grid/for/${item.slug}`}
+                  className="rounded-full border border-gold/20 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold transition hover:bg-gold hover:text-primary-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </article>
+
+          <article className="rounded-[2rem] border border-gold/20 bg-card/75 p-8 shadow-sm">
+            <h2 className="font-playfair text-3xl font-semibold">Personal Year meanings</h2>
+            <p className="mt-4 text-sm leading-7 text-muted-foreground">
+              Learn what each Personal Year from 1 to 9 tends to emphasize, where the opportunities live, and how to work with the cycle instead of against it.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {PERSONAL_YEAR_LINKS.map((item) => (
+                <Link
+                  key={item.number}
+                  to={item.href}
+                  className="rounded-full border border-gold/20 bg-gold/10 px-4 py-2 text-sm font-semibold text-gold transition hover:bg-gold hover:text-primary-foreground"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </article>
         </section>
 
         <section className="mt-12 rounded-[2rem] border border-gold/20 bg-card/75 p-8 shadow-sm">

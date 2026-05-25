@@ -106,6 +106,30 @@ export function buildArticleSchema(mukhi) {
   };
 }
 
+export function buildTopicArticleSchema({ headline, description, url }) {
+  return {
+    '@type': 'Article',
+    headline,
+    description,
+    author: {
+      '@type': 'Organization',
+      name: 'EverydayHoroscope',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'EverydayHoroscope',
+    },
+    mainEntityOfPage: url,
+  };
+}
+
+export function normalizeFaqItems(items) {
+  return (items || []).map((item) => ({
+    question: item.question || item.q || '',
+    answer: item.answer || item.a || '',
+  })).filter((item) => item.question && item.answer);
+}
+
 export function canonicalTitle(value) {
   return String(value || '')
     .replace(/\s+\|\s+EverydayHoroscope$/, '')

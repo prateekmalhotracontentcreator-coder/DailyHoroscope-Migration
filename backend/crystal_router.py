@@ -11,6 +11,9 @@ from crystal_data import (
     get_crystal_docs,
     get_crystal_list_payload,
     get_intention_docs,
+    get_planet_crystal_docs,
+    get_problem_crystal_docs,
+    get_sign_crystal_docs,
 )
 from vedic_calculator import SIGN_LORDS, calculate_vedic_chart
 
@@ -80,6 +83,27 @@ def _merge_intention_doc(local_doc: dict, db_doc: dict | None) -> dict:
     return payload
 
 
+def _merge_planet_doc(local_doc: dict, db_doc: dict | None) -> dict:
+    payload = {**local_doc}
+    if db_doc:
+        payload.update(db_doc)
+    return payload
+
+
+def _merge_sign_doc(local_doc: dict, db_doc: dict | None) -> dict:
+    payload = {**local_doc}
+    if db_doc:
+        payload.update(db_doc)
+    return payload
+
+
+def _merge_problem_doc(local_doc: dict, db_doc: dict | None) -> dict:
+    payload = {**local_doc}
+    if db_doc:
+        payload.update(db_doc)
+    return payload
+
+
 def _normalize_planet(value: str | None) -> str:
     if not value:
         return ""
@@ -137,6 +161,30 @@ async def _fetch_intention_doc(request: Request, slug: str) -> dict | None:
     return _merge_intention_doc(local_doc, db_doc)
 
 
+async def _fetch_planet_doc(request: Request, slug: str) -> dict | None:
+    local_doc = get_planet_crystal_docs().get(slug)
+    if not local_doc:
+        return None
+    db_doc = _clean_doc(await _get_db(request).crystal_planets.find_one({"slug": slug}, {"_id": 0}))
+    return _merge_planet_doc(local_doc, db_doc)
+
+
+async def _fetch_sign_doc(request: Request, slug: str) -> dict | None:
+    local_doc = get_sign_crystal_docs().get(slug)
+    if not local_doc:
+        return None
+    db_doc = _clean_doc(await _get_db(request).crystal_signs.find_one({"slug": slug}, {"_id": 0}))
+    return _merge_sign_doc(local_doc, db_doc)
+
+
+async def _fetch_problem_doc(request: Request, slug: str) -> dict | None:
+    local_doc = get_problem_crystal_docs().get(slug)
+    if not local_doc:
+        return None
+    db_doc = _clean_doc(await _get_db(request).crystal_problems.find_one({"slug": slug}, {"_id": 0}))
+    return _merge_problem_doc(local_doc, db_doc)
+
+
 @router.get("/crystals/list")
 async def get_crystal_list() -> dict:
     return get_crystal_list_payload()
@@ -147,6 +195,30 @@ async def get_crystal_intention(slug: str, request: Request) -> dict:
     payload = await _fetch_intention_doc(request, slug)
     if not payload:
         raise HTTPException(status_code=404, detail="Crystal intention page not found.")
+    return payload
+
+
+@router.get("/crystals/planet/{planet_slug}")
+async def get_planet_crystal_page(planet_slug: str, request: Request) -> dict:
+    payload = await _fetch_planet_doc(request, planet_slug)
+    if not payload:
+        raise HTTPException(status_code=404, detail="Planet crystal page not found.")
+    return payload
+
+
+@router.get("/crystals/sign/{sign_slug}")
+async def get_sign_crystal_page(sign_slug: str, request: Request) -> dict:
+    payload = await _fetch_sign_doc(request, sign_slug)
+    if not payload:
+        raise HTTPException(status_code=404, detail="Sign crystal page not found.")
+    return payload
+
+
+@router.get("/crystals/problem/{problem_slug}")
+async def get_problem_crystal_page(problem_slug: str, request: Request) -> dict:
+    payload = await _fetch_problem_doc(request, problem_slug)
+    if not payload:
+        raise HTTPException(status_code=404, detail="Problem crystal page not found.")
     return payload
 
 

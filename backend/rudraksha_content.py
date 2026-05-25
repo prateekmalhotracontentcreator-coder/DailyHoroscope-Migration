@@ -516,3 +516,1067 @@ def get_rudraksha_documents() -> list[dict]:
 def get_rudraksha_document(mukhi: int) -> dict | None:
     payload = RUDRAKSHA_MUKHIS_BY_NUMBER.get(int(mukhi))
     return deepcopy(payload) if payload else None
+
+
+PLANET_TO_PRIMARY_MUKHI = {
+    "Sun": 1,
+    "Moon": 2,
+    "Mars": 3,
+    "Mercury": 4,
+    "Jupiter": 5,
+    "Venus": 6,
+    "Saturn": 7,
+    "Rahu": 8,
+    "Ketu": 9,
+}
+
+
+def _mukhi_reference(mukhi: int, *, fit_reason: str | None = None) -> dict:
+    payload = get_rudraksha_document(mukhi)
+    if not payload:
+        raise KeyError(f"Unknown mukhi: {mukhi}")
+    reference = {
+        "mukhi": payload["mukhi"],
+        "name": payload["name"],
+        "slug": payload["slug"],
+        "overview": payload["overview"],
+        "ruling_deity": payload["ruling_deity"],
+        "ruling_planet": payload["ruling_planet"],
+        "benefits": list(payload["benefits"]),
+        "wearing_instructions": dict(payload["wearing_instructions"]),
+        "rarity": payload["rarity"],
+        "price_range": payload["price_range"],
+    }
+    if fit_reason:
+        reference["fit_reason"] = fit_reason
+    return reference
+
+
+def _faq_from_pairs(items: list[tuple[str, str]]) -> list[dict[str, str]]:
+    return [{"q": question, "a": answer} for question, answer in items]
+
+
+_PLANET_CORE = [
+    {
+        "slug": "sun",
+        "planet": "Sun",
+        "primary": 1,
+        "secondary": 12,
+        "intro": "The Sun in Vedic astrology governs vitality, self-respect, visibility, and the ability to act from a clear centre. A Rudraksha chosen for the Sun is traditionally used to stabilise confidence, authority, and disciplined life force.",
+        "wearing_guidance": {
+            "metal": "Gold or copper",
+            "thread_color": "Red or saffron",
+            "mantra": "Om Hreem Namah",
+            "day_to_energise": "Sunday sunrise",
+            "finger": "Right hand ring finger or as a pendant",
+        },
+        "who_needs_this": [
+            "Low confidence despite ability",
+            "Difficulty being recognised or taking leadership responsibility",
+            "Fatigue, low drive, or a scattered sense of purpose",
+            "A weak or afflicted Sun in chart interpretation",
+        ],
+        "contraindications": [
+            "Approach carefully if you already run very hot, ego-driven, or over-aggressive in your solar expression.",
+            "If your chart work already includes a strong Sun remedy stack, add this only with guidance.",
+        ],
+    },
+    {
+        "slug": "moon",
+        "planet": "Moon",
+        "primary": 2,
+        "secondary": None,
+        "intro": "The Moon governs emotional steadiness, receptivity, sleep quality, and the way you process nourishment and relationships. Rudraksha for the Moon is traditionally chosen to soften mental turbulence and restore inner calm.",
+        "wearing_guidance": {
+            "metal": "Silver",
+            "thread_color": "White",
+            "mantra": "Om Namah",
+            "day_to_energise": "Monday morning",
+            "finger": "Little finger or pendant near the heart",
+        },
+        "who_needs_this": [
+            "Emotional fluctuation or oversensitivity",
+            "Difficulty feeling settled in relationships or at home",
+            "Sleep disruption linked with mental overactivity",
+            "A weakened Moon in chart guidance",
+        ],
+        "contraindications": [
+            "Very passive personalities should combine Moon support with grounded routines so softness does not become inertia.",
+            "It supports emotional balance, but it does not replace mental-health care when that is needed.",
+        ],
+    },
+    {
+        "slug": "mars",
+        "planet": "Mars",
+        "primary": 3,
+        "secondary": None,
+        "intro": "Mars represents courage, heat, assertion, immune fire, and the ability to move through obstacles decisively. Rudraksha for Mars is used when strength must be steadied rather than allowed to become rage or exhaustion.",
+        "wearing_guidance": {
+            "metal": "Copper",
+            "thread_color": "Red",
+            "mantra": "Om Kleem Namah",
+            "day_to_energise": "Tuesday sunrise",
+            "finger": "Right hand ring finger or bracelet",
+        },
+        "who_needs_this": [
+            "Low courage or trouble acting when action is needed",
+            "Stored anger, irritability, or frustration",
+            "Recovery from guilt, shame, or discouragement",
+            "A weak Mars in traditional chart reading",
+        ],
+        "contraindications": [
+            "If you already react impulsively or aggressively, wear it with deliberate restraint practices.",
+            "Strong Mars personalities may need balancing rather than more raw heat.",
+        ],
+    },
+    {
+        "slug": "mercury",
+        "planet": "Mercury",
+        "primary": 4,
+        "secondary": None,
+        "intro": "Mercury governs memory, speech, learning agility, trade, and the nervous system's processing rhythm. Rudraksha for Mercury is traditionally chosen to bring order, focus, and cleaner expression to an overloaded mind.",
+        "wearing_guidance": {
+            "metal": "Silver or panchdhatu",
+            "thread_color": "Green",
+            "mantra": "Om Hreem Namah",
+            "day_to_energise": "Wednesday morning",
+            "finger": "Little finger or pendant",
+        },
+        "who_needs_this": [
+            "Memory drift or poor concentration",
+            "Speech hesitation or unclear communication",
+            "Restless mental energy that scatters focus",
+            "A weak Mercury in chart interpretation",
+        ],
+        "contraindications": [
+            "Helpful for focus, but still needs disciplined study habits and sleep hygiene.",
+            "If overthinking is your main issue, use it with grounding rather than more mental stimulation.",
+        ],
+    },
+    {
+        "slug": "jupiter",
+        "planet": "Jupiter",
+        "primary": 5,
+        "secondary": None,
+        "intro": "Jupiter governs wisdom, teachers, ethics, expansion, blessings, and the stabilising force of spiritual intelligence. Rudraksha for Jupiter is chosen when guidance, peace, and principled growth need reinforcement.",
+        "wearing_guidance": {
+            "metal": "Thread, silver, or panchdhatu",
+            "thread_color": "Yellow",
+            "mantra": "Om Hreem Namah",
+            "day_to_energise": "Thursday morning",
+            "finger": "Index finger or mala",
+        },
+        "who_needs_this": [
+            "Loss of faith, direction, or disciplined spiritual routine",
+            "Difficulty learning from mentors or life lessons",
+            "Stress-driven overreaction instead of wise response",
+            "A weakened Jupiter in chart guidance",
+        ],
+        "contraindications": [
+            "Because 5 Mukhi is gentle, the main caution is complacency: wear it with sincere practice, not superstition.",
+            "It supports health and calm, but not as a substitute for treatment.",
+        ],
+    },
+    {
+        "slug": "venus",
+        "planet": "Venus",
+        "primary": 6,
+        "secondary": 13,
+        "intro": "Venus governs harmony, attraction, relationships, artistry, refinement, and the ability to enjoy life without losing balance. Rudraksha for Venus is used to steady desire, improve grace, and mature relationship energy.",
+        "wearing_guidance": {
+            "metal": "Silver",
+            "thread_color": "White or pastel pink",
+            "mantra": "Om Hreem Hum Namah",
+            "day_to_energise": "Friday morning",
+            "finger": "Right hand ring finger or pendant",
+        },
+        "who_needs_this": [
+            "Relationship immaturity or repeated attraction drama",
+            "Creative blockage or low aesthetic confidence",
+            "Poor self-worth showing up in love or luxury choices",
+            "A weak Venus in chart interpretation",
+        ],
+        "contraindications": [
+            "Use carefully if you are already overly indulgent, vain, or pulled by addictive pleasure patterns.",
+            "It supports graceful attraction, not manipulation or obsession.",
+        ],
+    },
+    {
+        "slug": "saturn",
+        "planet": "Saturn",
+        "primary": 7,
+        "secondary": 14,
+        "intro": "Saturn governs discipline, karmic maturity, endurance, delays, duty, and long-form resilience. Rudraksha for Saturn is chosen when life feels heavy, slow, or burdened and steadiness matters more than speed.",
+        "wearing_guidance": {
+            "metal": "Silver or panchdhatu",
+            "thread_color": "Black or deep blue",
+            "mantra": "Om Hum Namah",
+            "day_to_energise": "Saturday morning",
+            "finger": "Middle finger or pendant",
+        },
+        "who_needs_this": [
+            "Long delays, debt pressure, or career stagnation",
+            "Fear around responsibility or sustained effort",
+            "Periods of isolation, karmic heaviness, or slow results",
+            "A weak or harsh Saturn pattern in chart work",
+        ],
+        "contraindications": [
+            "Saturn remedies work slowly, so avoid wearing them while expecting instant relief.",
+            "Very new seekers may begin with the gentler 7 Mukhi before stronger Saturn-linked beads.",
+        ],
+    },
+    {
+        "slug": "rahu",
+        "planet": "Rahu",
+        "primary": 8,
+        "secondary": 18,
+        "intro": "Rahu governs obsession, ambition, disruption, unfamiliar territory, and the pressure to move through shadow without losing judgment. Rudraksha for Rahu is traditionally chosen for obstacle-clearing, grounding, and protection during confusing phases.",
+        "wearing_guidance": {
+            "metal": "Silver",
+            "thread_color": "Smoky grey or black",
+            "mantra": "Om Ganeshaya Namah",
+            "day_to_energise": "Saturday or Wednesday",
+            "finger": "Middle finger or pendant",
+        },
+        "who_needs_this": [
+            "Confusion, obsession, or repeated derailment",
+            "Sudden instability in career, travel, or reputation",
+            "Fear of unseen obstacles or heavy external pressure",
+            "Rahu Mahadasha or Rahu affliction in chart guidance",
+        ],
+        "contraindications": [
+            "If you already feel mentally fragmented, wear Rahu support with grounding routines and simplified lifestyle rhythms.",
+            "Use discernment so the remedy does not become another object of obsession.",
+        ],
+    },
+    {
+        "slug": "ketu",
+        "planet": "Ketu",
+        "primary": 9,
+        "secondary": None,
+        "intro": "Ketu governs detachment, spiritual intensity, past-life residue, and the sharp cutting away of false identities. Rudraksha for Ketu is traditionally used for courage, protection, and steadier spiritual focus when detachment turns into instability.",
+        "wearing_guidance": {
+            "metal": "Silver or red thread",
+            "thread_color": "Red or saffron",
+            "mantra": "Om Hreem Hum Namah",
+            "day_to_energise": "Tuesday or Friday",
+            "finger": "Pendant or bracelet",
+        },
+        "who_needs_this": [
+            "Intense detachment, spiritual restlessness, or inner fear",
+            "Loss of grounding during transformative periods",
+            "Trouble converting spiritual force into stable action",
+            "Ketu Mahadasha or Ketu affliction in chart guidance",
+        ],
+        "contraindications": [
+            "If you are already very withdrawn, combine Ketu support with embodied daily routines.",
+            "It supports spiritual courage, not escapism from worldly duties.",
+        ],
+    },
+]
+
+
+def _build_planet_document(payload: dict) -> dict:
+    planet = payload["planet"]
+    slug = payload["slug"]
+    primary = _mukhi_reference(
+        payload["primary"],
+        fit_reason=f"{_mukhi_reference(payload['primary'])['name']} is traditionally linked with {planet} and is chosen when {planet.lower()} themes need steadier support.",
+    )
+    secondary_mukhi = None
+    if payload.get("secondary"):
+        secondary_number = int(payload["secondary"])
+        secondary_mukhi = _mukhi_reference(
+            secondary_number,
+            fit_reason=f"{_mukhi_reference(secondary_number)['name']} is used as an alternative or companion when a stronger or more specialised {planet.lower()} remedy is desired.",
+        )
+    faq = _faq_from_pairs([
+        (
+            f"Which Rudraksha is best for {planet}?",
+            f"The primary bead used for {planet} is {primary['name']}, with {secondary_mukhi['name'] if secondary_mukhi else 'no major secondary bead in this guide'} as a secondary support.",
+        ),
+        (
+            f"Who should wear Rudraksha for {planet}?",
+            f"People usually choose a {planet} Rudraksha when they want support around {', '.join(payload['who_needs_this'][:2]).lower()}.",
+        ),
+        (
+            f"When should Rudraksha for {planet} be energised?",
+            f"It is commonly energised on {payload['wearing_guidance']['day_to_energise']} with the mantra {payload['wearing_guidance']['mantra']}.",
+        ),
+        (
+            f"Can I wear Rudraksha for {planet} with other beads?",
+            "Yes, many people do, but the combination should have a clear purpose instead of layering many strong beads without direction.",
+        ),
+        (
+            f"Should everyone wear Rudraksha for {planet}?",
+            "Not always. Stronger or highly targeted Rudraksha are best chosen with self-awareness or chart guidance rather than impulse.",
+        ),
+    ])
+    return {
+        "page_type": "planet",
+        "slug": slug,
+        "planet": planet,
+        "title": f"Rudraksha for {planet} - Best Mukhi & How to Wear It",
+        "intro": payload["intro"],
+        "primary_mukhi": primary,
+        "secondary_mukhi": secondary_mukhi,
+        "wearing_guidance": dict(payload["wearing_guidance"]),
+        "who_needs_this": list(payload["who_needs_this"]),
+        "contraindications": list(payload["contraindications"]),
+        "faq": faq,
+        "meta_title": f"Rudraksha for {planet} - Best Mukhi Beads | {SITE_NAME}",
+        "meta_description": f"Discover the best Rudraksha for {planet}, including mukhi guidance, mantra, wearing rules, and when this bead is traditionally chosen.",
+    }
+
+
+PLANET_RUDRAKSHA_DATA = {
+    item["slug"]: _build_planet_document(item)
+    for item in _PLANET_CORE
+}
+PLANET_RUDRAKSHA_SLUGS = list(PLANET_RUDRAKSHA_DATA.keys())
+
+
+_PROBLEM_CORE = [
+    {
+        "slug": "depression",
+        "problem": "Depression / Low Mood",
+        "key_mukhis": [1, 7],
+        "intro": "This page addresses low mood from an energetic and devotional perspective: when heaviness, hopelessness, or inner dimness make it hard to feel purposeful. In tradition, Rudraksha is used here to support steadiness, not to replace mental-health care.",
+        "mukhi_notes": {
+            1: "1 Mukhi is chosen to rekindle clarity, inner dignity, and the sense that life still has a centre.",
+            7: "7 Mukhi is used when mood drops under karmic heaviness, financial strain, or long periods of pressure.",
+        },
+        "combination_suggestion": "A gentle pairing of 7 Mukhi for grounding with 1 Mukhi for clarity may be used when low mood comes with fatigue and loss of direction, but strong combinations should still be approached carefully.",
+        "wearing_method": {
+            "thread": "Red or black thread depending on whether clarity or grounding is the main need",
+            "metal": "Silver or copper",
+            "mantra": "Om Hreem Namah",
+            "activation_ritual": "Cleanse the bead, sit quietly at sunrise, and wear it after a short grounding prayer rather than during panic.",
+        },
+        "lifestyle_tips": [
+            "Keep a simple sunrise routine, even if short.",
+            "Reduce overstimulation and avoid late-night mental spirals.",
+            "Pair spiritual remedies with real emotional support and treatment when needed.",
+        ],
+    },
+    {
+        "slug": "financial-stress",
+        "problem": "Debt / Financial Stress",
+        "key_mukhis": [7, 8],
+        "intro": "Financial stress is traditionally treated as both a practical and karmic strain: pressure, fear, blocked movement, and difficulty seeing stable next steps. Rudraksha here is used for grounding, obstacle-clearing, and steadier decision-making.",
+        "mukhi_notes": {
+            7: "7 Mukhi is linked with Saturn-like endurance, patience, and carrying pressure without collapse.",
+            8: "8 Mukhi is chosen when money problems are tangled with repeated obstacles, confusion, or blocked openings.",
+        },
+        "combination_suggestion": "7 and 8 Mukhi can be worn together when debt pressure is mixed with delays, business obstacles, or repeated setbacks.",
+        "wearing_method": {
+            "thread": "Black thread",
+            "metal": "Silver",
+            "mantra": "Om Hum Namah",
+            "activation_ritual": "Energise on Saturday morning and wear only after setting one concrete financial action for the day.",
+        },
+        "lifestyle_tips": [
+            "Track expenses honestly instead of avoiding them.",
+            "Prioritise one debt or pressure point at a time.",
+            "Avoid panic decisions during stress spikes.",
+        ],
+    },
+    {
+        "slug": "career-block",
+        "problem": "Career Block",
+        "key_mukhis": [6, 11],
+        "intro": "A career block often shows up as stalled momentum, weak visibility, hesitation, or repeated near-misses. Rudraksha for this area is traditionally chosen to restore disciplined action and cleaner professional presence.",
+        "mukhi_notes": {
+            6: "6 Mukhi helps refine discipline, self-presentation, and practical focus in work environments.",
+            11: "11 Mukhi supports courage, decisive movement, and the will to act instead of delaying.",
+        },
+        "combination_suggestion": "6 and 11 Mukhi can complement each other when the block is part confidence, part lack of disciplined action.",
+        "wearing_method": {
+            "thread": "Red or white thread",
+            "metal": "Silver or panchdhatu",
+            "mantra": "Om Hreem Hum Namah",
+            "activation_ritual": "Wear after a morning prayer and before focused work rather than as a passive symbol.",
+        },
+        "lifestyle_tips": [
+            "Set one visible output goal each week.",
+            "Refine communication, not just effort.",
+            "Avoid mixing career ambition with scattered priorities.",
+        ],
+    },
+    {
+        "slug": "relationship-problems",
+        "problem": "Relationship Problems",
+        "key_mukhis": [2, 14],
+        "intro": "Relationship strain is often described in tradition as a problem of imbalance between softness and steadiness. Rudraksha for this area is used to support harmony, listening, and protection from repeated emotional shocks.",
+        "mukhi_notes": {
+            2: "2 Mukhi is chosen for emotional balance, cooperation, and restoring relational softness.",
+            14: "14 Mukhi is used when relationship strain is tied to deep karmic patterns, instability, or repeated rupture.",
+        },
+        "combination_suggestion": "2 Mukhi is the gentler base. 14 Mukhi is better treated as a serious support bead rather than a casual addition.",
+        "wearing_method": {
+            "thread": "White or red thread",
+            "metal": "Silver",
+            "mantra": "Om Namah",
+            "activation_ritual": "Wear after a calm Monday or Saturday prayer with a clear intention around truth and harmony.",
+        },
+        "lifestyle_tips": [
+            "Slow down conflict conversations.",
+            "Name patterns instead of only blaming events.",
+            "Avoid wearing a relationship remedy while ignoring harmful behaviour.",
+        ],
+    },
+    {
+        "slug": "fear-anxiety",
+        "problem": "Fear and Anxiety",
+        "key_mukhis": [5, 9],
+        "intro": "Fear and anxiety are traditionally approached as disturbances of grounding, trust, and inner protection. Rudraksha for this area is chosen to create steadier breath, calmer thought, and more courageous response.",
+        "mukhi_notes": {
+            5: "5 Mukhi offers broad calming and spiritual grounding when the system is overstimulated.",
+            9: "9 Mukhi is chosen when fear is mixed with vulnerability, pressure, or the need for protective strength.",
+        },
+        "combination_suggestion": "5 Mukhi can serve as a daily baseline, while 9 Mukhi is added when protection and courage are equally needed.",
+        "wearing_method": {
+            "thread": "Yellow or red thread",
+            "metal": "Silver",
+            "mantra": "Om Hreem Hum Namah",
+            "activation_ritual": "Chant before wearing, then take several slow breaths so the remedy begins in the body, not only the mind.",
+        },
+        "lifestyle_tips": [
+            "Reduce doom-scrolling and nervous overstimulation.",
+            "Use short grounding breath practices daily.",
+            "Seek clinical support when anxiety becomes persistent or disabling.",
+        ],
+    },
+    {
+        "slug": "anger",
+        "problem": "Anger Management",
+        "key_mukhis": [3, 12],
+        "intro": "Anger in the Rudraksha tradition is often treated as misdirected fire: force without clarity, heat without containment, or hurt turning into reaction. The right bead is chosen to purify and then steady that fire.",
+        "mukhi_notes": {
+            3: "3 Mukhi helps release stored heat, guilt, and frustrated internal pressure.",
+            12: "12 Mukhi is used when anger is tied to pride, authority clashes, or an overheated solar temperament.",
+        },
+        "combination_suggestion": "Start with 3 Mukhi when anger feels reactive. Add 12 Mukhi only if the issue also involves wounded authority or misused personal power.",
+        "wearing_method": {
+            "thread": "Red thread",
+            "metal": "Copper",
+            "mantra": "Om Kleem Namah",
+            "activation_ritual": "Energise on Tuesday or Sunday, then wear only with a conscious commitment to restraint.",
+        },
+        "lifestyle_tips": [
+            "Do not speak at peak heat if it can be delayed.",
+            "Move physical fire through exercise instead of argument.",
+            "Notice the hurt beneath the anger.",
+        ],
+    },
+    {
+        "slug": "low-immunity",
+        "problem": "Low Immunity / Frequent Illness",
+        "key_mukhis": [5, 6],
+        "intro": "Low immunity is described traditionally as a sign that the system needs steadier protection, routine, and vitality support. Rudraksha for this area is chosen to reinforce daily balance rather than create a dramatic short-term shift.",
+        "mukhi_notes": {
+            5: "5 Mukhi is the broad health and steadiness bead used for daily support.",
+            6: "6 Mukhi is chosen when health dips are tied to exhaustion, depletion, or poor self-management.",
+        },
+        "combination_suggestion": "5 and 6 Mukhi can be worn together as a calm daily pair for routine-based vitality support.",
+        "wearing_method": {
+            "thread": "Yellow or white thread",
+            "metal": "Silver",
+            "mantra": "Om Hreem Namah",
+            "activation_ritual": "Cleanse, chant, and wear after committing to one concrete health-supportive habit.",
+        },
+        "lifestyle_tips": [
+            "Protect sleep as seriously as medicine.",
+            "Eat at more regular times.",
+            "Use Rudraksha as support, not as a reason to avoid medical evaluation.",
+        ],
+    },
+    {
+        "slug": "heart-blood-pressure",
+        "problem": "Blood Pressure / Heart Issues",
+        "key_mukhis": [12],
+        "intro": "This page reflects a traditional devotional approach to pressure, circulation, and overstressed solar energy. It is supportive in a spiritual sense and never a replacement for medical care.",
+        "mukhi_notes": {
+            12: "12 Mukhi is associated with the Sun and is traditionally chosen when vitality, circulation, and overstrained authority-like pressure need harmonising support.",
+        },
+        "combination_suggestion": "Because this is a strong and specific bead, many people keep it as a single focused support rather than mixing it casually.",
+        "wearing_method": {
+            "thread": "Red thread",
+            "metal": "Gold or copper",
+            "mantra": "Om Kraum Sraum Raum Namah",
+            "activation_ritual": "Wear after sunrise prayer with a calm pace rather than in a rushed state.",
+        },
+        "lifestyle_tips": [
+            "Reduce overstimulation and reaction speed.",
+            "Do not ignore prescribed treatment.",
+            "Create more rhythm in food, sleep, and work timing.",
+        ],
+    },
+    {
+        "slug": "memory-concentration",
+        "problem": "Memory and Concentration",
+        "key_mukhis": [4],
+        "intro": "Memory drift and poor concentration are often described as a scattered Mercury pattern: information enters, but does not settle. Rudraksha for this area is chosen to support order, recall, and cleaner mental processing.",
+        "mukhi_notes": {
+            4: "4 Mukhi is the traditional Mercury-linked bead for memory, speech, learning, and concentration.",
+        },
+        "combination_suggestion": "4 Mukhi is usually enough as the lead bead here, especially when the main problem is mental organisation rather than emotional strain.",
+        "wearing_method": {
+            "thread": "Green thread",
+            "metal": "Silver or panchdhatu",
+            "mantra": "Om Hreem Namah",
+            "activation_ritual": "Wear on Wednesday after a few quiet minutes of study, prayer, or focused intention.",
+        },
+        "lifestyle_tips": [
+            "Single-task more often.",
+            "Write down important information instead of trusting overload.",
+            "Protect sleep so memory consolidation can happen.",
+        ],
+    },
+    {
+        "slug": "negative-energy",
+        "problem": "Negative Energy / Black Magic",
+        "key_mukhis": [8, 10],
+        "intro": "This page reflects a traditional protective use of Rudraksha when someone feels psychically burdened, obstructed, or repeatedly disturbed by unseen pressure. The emphasis is on protection, grounding, and obstacle-clearing.",
+        "mukhi_notes": {
+            8: "8 Mukhi is chosen to clear blockages and break repeating obstructive patterns.",
+            10: "10 Mukhi is used as a broad protective field when the disturbance feels diffuse or difficult to name.",
+        },
+        "combination_suggestion": "8 and 10 Mukhi can be paired when the issue feels both obstructive and intrusive.",
+        "wearing_method": {
+            "thread": "Black thread",
+            "metal": "Silver",
+            "mantra": "Om Ganeshaya Namah",
+            "activation_ritual": "Cleanse the bead, light a lamp, and wear it only after the mind is settled rather than frightened.",
+        },
+        "lifestyle_tips": [
+            "Keep your living space orderly and ventilated.",
+            "Reduce fear-based ritual excess.",
+            "Seek grounded guidance rather than panic.",
+        ],
+    },
+    {
+        "slug": "evil-eye",
+        "problem": "Evil Eye Protection",
+        "key_mukhis": [10, 11],
+        "intro": "In traditional remedy logic, the evil eye is handled through stronger personal protection, steadier will, and less energetic leakage. Rudraksha is used here as a protective devotional anchor.",
+        "mukhi_notes": {
+            10: "10 Mukhi is the broad shield bead traditionally chosen for external negativity and subtle protection.",
+            11: "11 Mukhi reinforces inner strength and prevents fear from widening the opening to negative suggestion.",
+        },
+        "combination_suggestion": "10 Mukhi forms the main shield, while 11 Mukhi is added if the person also needs stronger inner resolve.",
+        "wearing_method": {
+            "thread": "Black or red thread",
+            "metal": "Silver",
+            "mantra": "Om Hreem Hum Namah",
+            "activation_ritual": "Energise prayerfully and wear it with a focus on calm strength rather than superstition.",
+        },
+        "lifestyle_tips": [
+            "Share less when energy feels exposed.",
+            "Avoid feeding fear with constant checking.",
+            "Strengthen daily prayer or centring practice.",
+        ],
+    },
+    {
+        "slug": "legal-issues",
+        "problem": "Legal / Court Case Issues",
+        "key_mukhis": [14, 17],
+        "intro": "Legal pressure is traditionally treated as a mix of karmic weight, timing, protection, and disciplined persistence. Rudraksha for this area is chosen to support stability, foresight, and sustained confidence.",
+        "mukhi_notes": {
+            14: "14 Mukhi is used for protection, foresight, and grounded intuition in complex, high-stakes phases.",
+            17: "17 Mukhi is chosen when the matter also concerns gains, reputation, or a long-haul success outcome.",
+        },
+        "combination_suggestion": "14 Mukhi is the heavier stabiliser, while 17 Mukhi can be supportive when the legal issue is strongly tied to business or financial outcomes.",
+        "wearing_method": {
+            "thread": "Black or yellow thread",
+            "metal": "Silver or gold",
+            "mantra": "Om Namah",
+            "activation_ritual": "Wear after Saturday prayer and after committing to practical legal preparation.",
+        },
+        "lifestyle_tips": [
+            "Do not let spiritual remedies replace professional legal action.",
+            "Keep records organised.",
+            "Prioritise patience over emotional escalation.",
+        ],
+    },
+    {
+        "slug": "marriage-delay",
+        "problem": "Marriage Delays",
+        "key_mukhis": [2, 13],
+        "intro": "Marriage delay is traditionally approached through harmony, receptivity, timing, and refinement of relationship karma. Rudraksha here is chosen to soften blockages while strengthening attraction and readiness.",
+        "mukhi_notes": {
+            2: "2 Mukhi supports partnership harmony and emotional readiness for union.",
+            13: "13 Mukhi is used when attraction, grace, or marital magnetism need reinforcement.",
+        },
+        "combination_suggestion": "2 Mukhi is the softer base. 13 Mukhi is more specialised and is best added when timing has opened but attraction patterns still feel blocked.",
+        "wearing_method": {
+            "thread": "White or pink thread",
+            "metal": "Silver",
+            "mantra": "Om Namah",
+            "activation_ritual": "Wear after Monday or Friday prayer with a clear intention for mature partnership rather than urgency.",
+        },
+        "lifestyle_tips": [
+            "Work on emotional availability, not only timing.",
+            "Drop rigid or fear-based partner criteria.",
+            "Address repeated relational patterns honestly.",
+        ],
+    },
+    {
+        "slug": "fertility",
+        "problem": "Childlessness / Fertility",
+        "key_mukhis": [9],
+        "intro": "This page reflects a traditional spiritual support approach to fertility challenges and the desire for healthy reproductive blessings. It is devotional guidance and not a medical replacement.",
+        "mukhi_notes": {
+            9: "9 Mukhi is linked with Shakti, protection, and reproductive courage in traditional remedy logic.",
+        },
+        "combination_suggestion": "Because 9 Mukhi is already a focused Shakti bead, many people keep it as the central remedy rather than layering many others.",
+        "wearing_method": {
+            "thread": "Red thread",
+            "metal": "Silver",
+            "mantra": "Om Hreem Hum Namah",
+            "activation_ritual": "Wear after Friday or Tuesday prayer with quiet devotion rather than anxious force.",
+        },
+        "lifestyle_tips": [
+            "Do not delay medical evaluation.",
+            "Reduce stress cycles that keep the body braced.",
+            "Use spiritual support to strengthen patience and hope, not denial.",
+        ],
+    },
+    {
+        "slug": "addiction",
+        "problem": "Addiction",
+        "key_mukhis": [1, 3],
+        "intro": "Addiction is traditionally approached as a problem of lost centre, unresolved pain, and misdirected fire. Rudraksha for this area is chosen to restore dignity, release burden, and support disciplined self-return.",
+        "mukhi_notes": {
+            1: "1 Mukhi is used to reconnect a person with inner dignity, centre, and higher intention.",
+            3: "3 Mukhi helps burn through stored guilt, frustration, and compulsive emotional heat.",
+        },
+        "combination_suggestion": "3 Mukhi is often the more accessible starting point, while 1 Mukhi is approached as a deeper clarity bead when the person is ready for serious discipline.",
+        "wearing_method": {
+            "thread": "Red thread",
+            "metal": "Copper or silver",
+            "mantra": "Om Hreem Namah",
+            "activation_ritual": "Wear after a sober, intentional prayer and alongside a real recovery plan.",
+        },
+        "lifestyle_tips": [
+            "Use treatment and accountability, not symbolism alone.",
+            "Remove triggers where possible.",
+            "Replace secrecy with support.",
+        ],
+    },
+    {
+        "slug": "insomnia",
+        "problem": "Insomnia",
+        "key_mukhis": [2, 5],
+        "intro": "Insomnia is often described in traditional terms as a Moon imbalance mixed with overstimulation or poor grounding. Rudraksha here is chosen to support calmness, softness, and routine-based rest.",
+        "mukhi_notes": {
+            2: "2 Mukhi supports emotional softness and settling before sleep.",
+            5: "5 Mukhi provides broad calming and daily grounding when the system feels overactive.",
+        },
+        "combination_suggestion": "2 Mukhi can be paired with 5 Mukhi when sleeplessness comes from both emotional agitation and general overstimulation.",
+        "wearing_method": {
+            "thread": "White thread",
+            "metal": "Silver",
+            "mantra": "Om Namah",
+            "activation_ritual": "Wear after an evening wind-down prayer rather than during active stress.",
+        },
+        "lifestyle_tips": [
+            "Protect a consistent sleep window.",
+            "Reduce screens late at night.",
+            "Create a calmer pre-sleep ritual.",
+        ],
+    },
+    {
+        "slug": "digestive-issues",
+        "problem": "Digestive / Stomach Issues",
+        "key_mukhis": [3],
+        "intro": "Digestive difficulty is often treated traditionally as a fire-regulation issue: either too low, too erratic, or too aggravated. Rudraksha here is chosen to steady and purify the Martian fire principle.",
+        "mukhi_notes": {
+            3: "3 Mukhi is associated with digestive fire, cleaner energy release, and better use of internal heat.",
+        },
+        "combination_suggestion": "3 Mukhi usually remains the central bead in this category unless another issue is also dominant.",
+        "wearing_method": {
+            "thread": "Red thread",
+            "metal": "Copper",
+            "mantra": "Om Kleem Namah",
+            "activation_ritual": "Wear after sunrise and pair it with calmer eating habits.",
+        },
+        "lifestyle_tips": [
+            "Eat with less rush.",
+            "Notice which foods aggravate heat or instability.",
+            "Do not use spiritual support to delay medical diagnosis.",
+        ],
+    },
+    {
+        "slug": "skin-issues",
+        "problem": "Skin Problems",
+        "key_mukhis": [4],
+        "intro": "Traditional remedy logic sometimes links skin strain with nervous overload, speech/mental imbalance, or internal irritation that needs clearer regulation. Rudraksha here is used as a steadying Mercury support.",
+        "mukhi_notes": {
+            4: "4 Mukhi is chosen here for cleaner regulation, nervous steadiness, and better balance of internal processing.",
+        },
+        "combination_suggestion": "4 Mukhi is typically kept simple and consistent rather than heavily layered.",
+        "wearing_method": {
+            "thread": "Green thread",
+            "metal": "Silver",
+            "mantra": "Om Hreem Namah",
+            "activation_ritual": "Wear on Wednesday with a focus on consistency rather than expectation of instant change.",
+        },
+        "lifestyle_tips": [
+            "Reduce inflammatory lifestyle triggers where possible.",
+            "Track stress alongside physical flare-ups.",
+            "Seek medical care for persistent skin conditions.",
+        ],
+    },
+    {
+        "slug": "spiritual-growth",
+        "problem": "Spiritual Growth",
+        "key_mukhis": [1, 21],
+        "intro": "Spiritual growth in this tradition is not only mystical intensity but cleaner centre, disciplined devotion, and expansive but grounded awareness. Rudraksha here is chosen for deepening practice and alignment.",
+        "mukhi_notes": {
+            1: "1 Mukhi is the clarity-and-unity bead traditionally linked with higher inward focus.",
+            21: "21 Mukhi represents expansive blessing, stewardship, and the mature side of spiritual abundance.",
+        },
+        "combination_suggestion": "For most seekers, 1 Mukhi is the more direct contemplative support. 21 Mukhi is a rarer, more mature expansion bead.",
+        "wearing_method": {
+            "thread": "Saffron thread",
+            "metal": "Gold",
+            "mantra": "Om Hreem Namah",
+            "activation_ritual": "Wear after prayer, meditation, or scripture study instead of treating it as a status marker.",
+        },
+        "lifestyle_tips": [
+            "Choose consistency over intensity.",
+            "Let practice change conduct, not only mood.",
+            "Stay grounded in service and ethics.",
+        ],
+    },
+    {
+        "slug": "business-success",
+        "problem": "Business Success",
+        "key_mukhis": [7, 8, 11],
+        "intro": "Business success is traditionally approached through stamina, obstacle-clearing, and decisive action. Rudraksha in this area is chosen to help a person stay grounded under pressure while moving with courage and timing.",
+        "mukhi_notes": {
+            7: "7 Mukhi supports financial steadiness, discipline, and the long-haul patience needed in business.",
+            8: "8 Mukhi helps remove recurring blocks, delays, and tangled openings.",
+            11: "11 Mukhi supports decisive courage, negotiation strength, and the will to move.",
+        },
+        "combination_suggestion": "7, 8, and 11 Mukhi can form a practical business trio when the challenge includes pressure, delays, and the need for stronger execution.",
+        "wearing_method": {
+            "thread": "Black or red thread",
+            "metal": "Silver or panchdhatu",
+            "mantra": "Om Hum Namah",
+            "activation_ritual": "Wear after prayer and pair it with clear planning, clean accounts, and disciplined decision-making.",
+        },
+        "lifestyle_tips": [
+            "Separate ambition from impulsiveness.",
+            "Review cash flow regularly.",
+            "Act on bottlenecks instead of only hoping for luck.",
+        ],
+    },
+]
+
+
+def _build_problem_document(payload: dict) -> dict:
+    primary_number = int(payload["key_mukhis"][0])
+    primary = _mukhi_reference(primary_number, fit_reason=payload["mukhi_notes"][primary_number])
+    supporting = [
+        _mukhi_reference(number, fit_reason=payload["mukhi_notes"][number])
+        for number in payload["key_mukhis"][1:]
+    ]
+    faq = _faq_from_pairs([
+        (
+            f"Which Rudraksha is best for {payload['problem']}?",
+            f"The lead recommendation here is {primary['name']}, supported by {', '.join(item['name'] for item in supporting) if supporting else 'a single focused bead approach'}.",
+        ),
+        (
+            f"Can these Rudraksha beads for {payload['problem']} be worn together?",
+            payload["combination_suggestion"],
+        ),
+        (
+            f"How should Rudraksha for {payload['problem']} be worn?",
+            f"It is traditionally worn using {payload['wearing_method']['metal']} on {payload['wearing_method']['thread']} with the mantra {payload['wearing_method']['mantra']}.",
+        ),
+        (
+            f"Will Rudraksha alone solve {payload['problem']}?",
+            "No. It is a spiritual support tool and works best alongside practical, medical, emotional, or professional action where appropriate.",
+        ),
+        (
+            f"What should I do alongside Rudraksha for {payload['problem']}?",
+            f"Start with practices such as {', '.join(payload['lifestyle_tips'][:2]).lower()}.",
+        ),
+    ])
+    return {
+        "page_type": "problem",
+        "slug": payload["slug"],
+        "problem": payload["problem"],
+        "title": f"Rudraksha for {payload['problem']} - Which Mukhi Bead Helps & How to Use It",
+        "intro": payload["intro"],
+        "primary_mukhi": primary,
+        "supporting_mukhis": supporting,
+        "combination_suggestion": payload["combination_suggestion"],
+        "wearing_method": dict(payload["wearing_method"]),
+        "lifestyle_tips": list(payload["lifestyle_tips"]),
+        "faq": faq,
+        "meta_title": f"Rudraksha for {payload['problem']} - Best Mukhi Beads | {SITE_NAME}",
+        "meta_description": f"Explore the traditional Rudraksha guidance for {payload['problem'].lower()}, including primary mukhi beads, supporting combinations, mantra, and wearing method.",
+    }
+
+
+PROBLEM_RUDRAKSHA_DATA = {
+    item["slug"]: _build_problem_document(item)
+    for item in _PROBLEM_CORE
+}
+PROBLEM_RUDRAKSHA_SLUGS = list(PROBLEM_RUDRAKSHA_DATA.keys())
+
+
+_SIGN_CORE = [
+    {
+        "slug": "aries",
+        "sign": "Aries",
+        "ruling_planet": "Mars",
+        "primary": 3,
+        "secondary": 5,
+        "nature": "Bold, fast, initiating, and heat-driven.",
+        "typical_challenges": ["impatience", "reactive anger", "burnout from speed"],
+        "intro": "Aries energy moves quickly, acts boldly, and often learns by impact. The best Rudraksha for Aries is usually chosen to strengthen healthy courage while cooling impulsive fire and protecting long-term stamina.",
+        "avoid": [
+            {"mukhi": 12, "reason": "12 Mukhi can intensify heat and authority themes if Aries is already overly sharp or combustible."},
+        ],
+    },
+    {
+        "slug": "taurus",
+        "sign": "Taurus",
+        "ruling_planet": "Venus",
+        "primary": 6,
+        "secondary": 2,
+        "nature": "Steady, sensual, comfort-seeking, and materially grounded.",
+        "typical_challenges": ["stubborn attachment", "emotional bottling", "comfort inertia"],
+        "intro": "Taurus seeks stability, beauty, and dependable rhythms. The right Rudraksha for Taurus is chosen to protect self-worth and refinement while loosening over-attachment and emotional heaviness.",
+        "avoid": [
+            {"mukhi": 13, "reason": "13 Mukhi may feel too indulgence-amplifying if Taurus is already pulled toward excess or attachment."},
+        ],
+    },
+    {
+        "slug": "gemini",
+        "sign": "Gemini",
+        "ruling_planet": "Mercury",
+        "primary": 4,
+        "secondary": 5,
+        "nature": "Curious, verbal, adaptable, and mentally quick.",
+        "typical_challenges": ["scattered focus", "overthinking", "inconsistent follow-through"],
+        "intro": "Gemini energy thrives on movement, language, and fresh input. Rudraksha for Gemini is traditionally chosen to improve concentration, cleaner speech, and a calmer, more directed mind.",
+        "avoid": [
+            {"mukhi": 8, "reason": "8 Mukhi can feel too destabilising if Gemini is already scattered and overstimulated."},
+        ],
+    },
+    {
+        "slug": "cancer",
+        "sign": "Cancer",
+        "ruling_planet": "Moon",
+        "primary": 2,
+        "secondary": 5,
+        "nature": "Protective, feeling-led, memory-rich, and inwardly tidal.",
+        "typical_challenges": ["mood swings", "overprotection", "holding old hurt"],
+        "intro": "Cancer moves through emotion, belonging, and subtle sensitivity. Rudraksha for Cancer is traditionally chosen to bring emotional steadiness, softness without fragility, and a more secure inner tide.",
+        "avoid": [
+            {"mukhi": 9, "reason": "9 Mukhi can feel too intense if Cancer is already emotionally overwhelmed or highly reactive."},
+        ],
+    },
+    {
+        "slug": "leo",
+        "sign": "Leo",
+        "ruling_planet": "Sun",
+        "primary": 1,
+        "secondary": 12,
+        "nature": "Radiant, expressive, proud, and dignity-driven.",
+        "typical_challenges": ["ego strain", "hurt pride", "overexertion"],
+        "intro": "Leo energy wants to shine with heart, purpose, and clean authority. The right Rudraksha for Leo supports leadership and vitality while helping strong solar energy stay generous rather than domineering.",
+        "avoid": [
+            {"mukhi": 11, "reason": "11 Mukhi may further intensify force and command if Leo already pushes too hard."},
+        ],
+    },
+    {
+        "slug": "virgo",
+        "sign": "Virgo",
+        "ruling_planet": "Mercury",
+        "primary": 4,
+        "secondary": 6,
+        "nature": "Precise, analytical, service-oriented, and improvement-focused.",
+        "typical_challenges": ["perfectionism", "nervous strain", "self-criticism"],
+        "intro": "Virgo seeks order, usefulness, and clear systems. Rudraksha for Virgo is chosen to steady the mind, improve discrimination, and prevent analysis from turning into anxiety or depletion.",
+        "avoid": [
+            {"mukhi": 3, "reason": "3 Mukhi can feel too heat-driven if Virgo's stress already shows up as internal agitation."},
+        ],
+    },
+    {
+        "slug": "libra",
+        "sign": "Libra",
+        "ruling_planet": "Venus",
+        "primary": 6,
+        "secondary": 2,
+        "nature": "Relational, balanced, aesthetically tuned, and harmony-seeking.",
+        "typical_challenges": ["people-pleasing", "indecision", "avoidance of necessary conflict"],
+        "intro": "Libra looks for fairness, beauty, and relational ease. Rudraksha for Libra is chosen to mature attraction, strengthen boundaries, and preserve harmony without loss of self-respect.",
+        "avoid": [
+            {"mukhi": 13, "reason": "13 Mukhi can amplify charm and desire too much if Libra is already ungrounded in relationship choices."},
+        ],
+    },
+    {
+        "slug": "scorpio",
+        "sign": "Scorpio",
+        "ruling_planet": "Mars",
+        "primary": 3,
+        "secondary": 9,
+        "nature": "Intense, private, transformative, and emotionally deep.",
+        "typical_challenges": ["control", "resentment", "all-or-nothing reactions"],
+        "intro": "Scorpio carries depth, endurance, and a powerful inner furnace. Rudraksha for Scorpio is chosen to channel intensity into courage, protection, and cleaner transformation rather than secrecy or implosion.",
+        "avoid": [
+            {"mukhi": 8, "reason": "8 Mukhi can feel too destabilising if Scorpio is already moving through intense inner upheaval."},
+        ],
+    },
+    {
+        "slug": "sagittarius",
+        "sign": "Sagittarius",
+        "ruling_planet": "Jupiter",
+        "primary": 5,
+        "secondary": 12,
+        "nature": "Expansive, idealistic, forward-looking, and meaning-driven.",
+        "typical_challenges": ["restlessness", "preaching without grounding", "overextension"],
+        "intro": "Sagittarius seeks truth, freedom, and a horizon worth moving toward. Rudraksha for Sagittarius is traditionally chosen to support wisdom, ethical action, and clean vitality without scattering conviction.",
+        "avoid": [
+            {"mukhi": 13, "reason": "13 Mukhi can pull Sagittarius toward glamour or excess when grounded wisdom is the real need."},
+        ],
+    },
+    {
+        "slug": "capricorn",
+        "sign": "Capricorn",
+        "ruling_planet": "Saturn",
+        "primary": 7,
+        "secondary": 14,
+        "nature": "Structured, serious, strategic, and responsibility-led.",
+        "typical_challenges": ["heaviness", "work overload", "fear of failure"],
+        "intro": "Capricorn is built for structure, responsibility, and slow-earned results. Rudraksha for Capricorn is chosen to support endurance, karmic steadiness, and protection from the emotional weight of pressure.",
+        "avoid": [
+            {"mukhi": 1, "reason": "1 Mukhi may feel too solar and pressure-building if Capricorn is already carrying excessive performance strain."},
+        ],
+    },
+    {
+        "slug": "aquarius",
+        "sign": "Aquarius",
+        "ruling_planet": "Saturn",
+        "primary": 7,
+        "secondary": 8,
+        "nature": "Independent, idea-led, unconventional, and socially wide-angled.",
+        "typical_challenges": ["detachment", "erratic focus", "living too much in the head"],
+        "intro": "Aquarius brings vision, difference, and a willingness to move outside familiar lanes. Rudraksha for Aquarius is chosen to anchor Saturn's discipline while giving Rahu-like disruptions a steadier channel.",
+        "avoid": [
+            {"mukhi": 9, "reason": "9 Mukhi can feel too fiery if Aquarius is already restless, detached, or difficult to ground."},
+        ],
+    },
+    {
+        "slug": "pisces",
+        "sign": "Pisces",
+        "ruling_planet": "Jupiter",
+        "primary": 5,
+        "secondary": 2,
+        "nature": "Intuitive, porous, imaginative, and spiritually receptive.",
+        "typical_challenges": ["escapism", "boundary confusion", "emotional flooding"],
+        "intro": "Pisces is guided by feeling, faith, and subtle inner currents. Rudraksha for Pisces is chosen to strengthen spiritual grounding, emotional steadiness, and healthy boundaries around compassion.",
+        "avoid": [
+            {"mukhi": 21, "reason": "21 Mukhi may feel too expansive if Pisces is already diffuse, unbounded, or spiritually ungrounded."},
+        ],
+    },
+]
+
+
+def _build_sign_document(payload: dict) -> dict:
+    sign = payload["sign"]
+    primary = _mukhi_reference(
+        payload["primary"],
+        fit_reason=f"{_mukhi_reference(payload['primary'])['name']} follows the ruling-planet logic for {sign} and supports the sign's core energy in a cleaner, steadier way.",
+    )
+    secondary = _mukhi_reference(
+        payload["secondary"],
+        fit_reason=f"{_mukhi_reference(payload['secondary'])['name']} is chosen for the shadow side of {sign}: {', '.join(payload['typical_challenges'][:2])}.",
+    )
+    primary_instructions = primary["wearing_instructions"]
+    avoid_mukhis = [
+        {
+            **_mukhi_reference(item["mukhi"]),
+            "fit_reason": item["reason"],
+        }
+        for item in payload["avoid"]
+    ]
+    faq = _faq_from_pairs([
+        (
+            f"Which Rudraksha is best for {sign}?",
+            f"The lead bead for {sign} in this guide is {primary['name']}, with {secondary['name']} as a useful secondary support.",
+        ),
+        (
+            f"Why does {sign} use this Rudraksha?",
+            f"It follows the ruling planet of {sign} and also addresses common shadow patterns such as {', '.join(payload['typical_challenges'][:2])}.",
+        ),
+        (
+            f"Can {sign} wear more than one Rudraksha?",
+            "Yes, but it is better to combine a primary and secondary bead with a clear purpose than to layer many at once.",
+        ),
+        (
+            f"Which Rudraksha should {sign} approach carefully?",
+            f"In this guide, a bead to approach more carefully is {avoid_mukhis[0]['name']} because {avoid_mukhis[0]['fit_reason'].lower()}",
+        ),
+    ])
+    return {
+        "page_type": "sign",
+        "slug": payload["slug"],
+        "sign": sign,
+        "title": f"Best Rudraksha for {sign} - Mukhi Beads for {sign} Energy",
+        "intro": payload["intro"],
+        "ruling_planet": payload["ruling_planet"],
+        "nature": payload["nature"],
+        "typical_challenges": list(payload["typical_challenges"]),
+        "primary_mukhi": primary,
+        "secondary_mukhi": secondary,
+        "avoid_mukhis": avoid_mukhis,
+        "wearing_guidance": {
+            "best_day": primary_instructions["day"],
+            "best_metal": primary_instructions["metal"],
+            "activation_mantra": primary_instructions["mantra"],
+        },
+        "faq": faq,
+        "meta_title": f"Best Rudraksha for {sign} - Mukhi Beads | {SITE_NAME}",
+        "meta_description": f"Find the best Rudraksha for {sign}, including the ruling-planet mukhi, a secondary bead for shadow qualities, and practical wearing guidance.",
+    }
+
+
+SIGN_RUDRAKSHA_DATA = {
+    item["slug"]: _build_sign_document(item)
+    for item in _SIGN_CORE
+}
+SIGN_RUDRAKSHA_SLUGS = list(SIGN_RUDRAKSHA_DATA.keys())
+
+
+def get_planet_rudraksha_document(slug: str) -> dict | None:
+    payload = PLANET_RUDRAKSHA_DATA.get(str(slug))
+    return deepcopy(payload) if payload else None
+
+
+def get_problem_rudraksha_document(slug: str) -> dict | None:
+    payload = PROBLEM_RUDRAKSHA_DATA.get(str(slug))
+    return deepcopy(payload) if payload else None
+
+
+def get_sign_rudraksha_document(slug: str) -> dict | None:
+    payload = SIGN_RUDRAKSHA_DATA.get(str(slug))
+    return deepcopy(payload) if payload else None
+
+
+def get_planet_rudraksha_documents() -> list[dict]:
+    return [deepcopy(PLANET_RUDRAKSHA_DATA[slug]) for slug in PLANET_RUDRAKSHA_SLUGS]
+
+
+def get_problem_rudraksha_documents() -> list[dict]:
+    return [deepcopy(PROBLEM_RUDRAKSHA_DATA[slug]) for slug in PROBLEM_RUDRAKSHA_SLUGS]
+
+
+def get_sign_rudraksha_documents() -> list[dict]:
+    return [deepcopy(SIGN_RUDRAKSHA_DATA[slug]) for slug in SIGN_RUDRAKSHA_SLUGS]

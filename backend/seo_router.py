@@ -8,6 +8,7 @@ from fastapi import APIRouter, Response
 from crystal_data import get_crystal_sitemap_urls
 from panchang_router import DEFAULT_LOCATIONS
 from lo_shu_router import LO_SHU_SITEMAP_URLS
+from rudraksha_content import PLANET_RUDRAKSHA_SLUGS, PROBLEM_RUDRAKSHA_SLUGS, SIGN_RUDRAKSHA_SLUGS
 from seo_m3_catalog import CHART_POINTS, FESTIVAL_SLUGS, HOUSES, PLANET_SLUGS, REGION_SLUGS, SIGN_SLUGS
 from zibu_catalog import list_symbol_summaries as list_zibu_summaries
 
@@ -176,6 +177,9 @@ async def get_rudraksha_sitemap() -> Response:
         (f"{SITE_URL}/rudraksha", today),
         (f"{SITE_URL}/rudraksha/calculator", today),
         *[(f"{SITE_URL}/rudraksha/{slug}", today) for slug in RUDRAKSHA_SLUGS],
+        *[(f"{SITE_URL}/rudraksha/for/planet/{slug}", today) for slug in PLANET_RUDRAKSHA_SLUGS],
+        *[(f"{SITE_URL}/rudraksha/for/problem/{slug}", today) for slug in PROBLEM_RUDRAKSHA_SLUGS],
+        *[(f"{SITE_URL}/rudraksha/for/sign/{slug}", today) for slug in SIGN_RUDRAKSHA_SLUGS],
     ]
     return _xml_response(_sitemap_xml(urls))
 

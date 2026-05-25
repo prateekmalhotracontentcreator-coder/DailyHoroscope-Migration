@@ -136,6 +136,7 @@ from punya_rewards_router import router as punya_rewards_router
 from lo_shu_router import router as lo_shu_router
 from zibu_router import router as zibu_router
 from angel_numbers_router import router as angel_numbers_router
+from echo_pace_router import router as echo_pace_router, ensure_echo_pace_indexes
 try:
     from longevity_router import router as longevity_router
     _longevity_router_ok = True
@@ -3329,6 +3330,7 @@ app.include_router(punya_rewards_router)
 app.include_router(lo_shu_router)
 app.include_router(zibu_router, prefix="/api/seo")
 app.include_router(angel_numbers_router, prefix="/api/seo")
+app.include_router(echo_pace_router)
 if _longevity_router_ok and longevity_router is not None:
     app.include_router(longevity_router)
 
@@ -3585,6 +3587,7 @@ async def startup_event():
     await ensure_diagnostics_indexes()
     await ensure_orders_ledger_indexes()
     await ensure_gst_ledger_indexes()
+    await ensure_echo_pace_indexes(db)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(hour=18, minute=30, timezone="UTC"), id="daily_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day_of_week="sun", hour=18, minute=0, timezone="UTC"), id="weekly_horoscope_prefetch", replace_existing=True)
     scheduler.add_job(prefetch_all_horoscopes, CronTrigger(day=1, hour=17, minute=30, timezone="UTC"), id="monthly_horoscope_prefetch", replace_existing=True)

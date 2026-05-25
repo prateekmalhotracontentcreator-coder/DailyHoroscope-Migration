@@ -1,7 +1,7 @@
 import React, { useDeferredValue, useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Compass, Gem, LoaderCircle, Search, Sparkles } from 'lucide-react';
+import { Compass, Gem, LoaderCircle, Orbit, Search, ShieldAlert, Sparkles, Stars } from 'lucide-react';
 import { Footer } from '../../components/Footer';
 import { SEO } from '../../components/SEO';
 import { buildBreadcrumbSchema, buildFaqSchema, HUB_FAQS, API, SITE } from './crystalShared';
@@ -87,11 +87,14 @@ export function CrystalHubPage() {
           <CrystalSection title="How This Hub Works">
             <div className="space-y-4 text-sm leading-7 text-stone-600">
               <p>Crystal healing is usually practiced as a ritual of attention, symbolism, and emotional alignment. Different stones are traditionally chosen for different intentions, such as protection, calm, confidence, communication, sleep, and spiritual growth.</p>
-              <p>This hub helps you browse in three ways: by individual crystal, by life intention, or by a birth-chart-based calculator that layers in active dasha themes and softer support stones.</p>
+              <p>This hub now lets you browse by individual crystal, intention, planet, sign, problem area, or a birth-chart-based calculator that layers in active dasha themes and softer support stones.</p>
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
               <CrystalChip>50 crystal pages</CrystalChip>
               <CrystalChip>20 intention guides</CrystalChip>
+              <CrystalChip>9 planet guides</CrystalChip>
+              <CrystalChip>12 sign guides</CrystalChip>
+              <CrystalChip>20 problem guides</CrystalChip>
               <CrystalChip>Birth-chart calculator</CrystalChip>
             </div>
           </CrystalSection>
@@ -117,6 +120,63 @@ export function CrystalHubPage() {
             ))}
           </div>
         </CrystalSection>
+
+        <div className="grid gap-6 xl:grid-cols-3">
+          <CrystalSection title="Browse by Planet">
+            <div className="grid gap-3">
+              {(data?.planet_pages || []).map((item) => (
+                <Link
+                  key={item.slug}
+                  to={`/crystals/for/planet/${item.slug}`}
+                  className="flex items-center justify-between rounded-2xl border border-gold/20 bg-white/80 px-4 py-3 text-sm text-stone-700 transition hover:border-gold/40 hover:bg-gold/10"
+                >
+                  <span className="inline-flex items-center gap-2 font-medium">
+                    <Orbit className="h-4 w-4 text-gold/80" />
+                    {item.display}
+                  </span>
+                  <span className="text-xs uppercase tracking-[0.22em] text-stone-500">Planet</span>
+                </Link>
+              ))}
+            </div>
+          </CrystalSection>
+
+          <CrystalSection title="Browse by Sign">
+            <div className="grid gap-3">
+              {(data?.sign_pages || []).map((item) => (
+                <Link
+                  key={item.slug}
+                  to={`/crystals/for/sign/${item.slug}`}
+                  className="flex items-center justify-between rounded-2xl border border-gold/20 bg-white/80 px-4 py-3 text-sm text-stone-700 transition hover:border-gold/40 hover:bg-gold/10"
+                >
+                  <span className="inline-flex items-center gap-2 font-medium">
+                    <Stars className="h-4 w-4 text-gold/80" />
+                    {item.display}
+                  </span>
+                  <span className="text-xs uppercase tracking-[0.22em] text-stone-500">{item.element}</span>
+                </Link>
+              ))}
+            </div>
+          </CrystalSection>
+
+          <CrystalSection title="Browse by Problem Area">
+            <div className="grid gap-3 md:grid-cols-2">
+              {(data?.problem_pages || []).map((item) => (
+                <Link
+                  key={item.slug}
+                  to={`/crystals/for/problem/${item.slug}`}
+                  className="flex items-center justify-between rounded-2xl border border-gold/20 bg-white/80 px-4 py-3 text-sm text-stone-700 transition hover:border-gold/40 hover:bg-gold/10"
+                >
+                  <span className="inline-flex items-center gap-2 font-medium">
+                    <ShieldAlert className="h-4 w-4 text-gold/80" />
+                    {item.display}
+                  </span>
+                  <span className="text-xs uppercase tracking-[0.22em] text-stone-500">Problem</span>
+                </Link>
+              ))}
+            </div>
+            <p className="pt-4 text-xs leading-6 text-stone-500">The hub now includes 20 problem-area crystal pages, from insomnia and anxiety to trauma release, EMF sensitivity, and career stagnation.</p>
+          </CrystalSection>
+        </div>
 
         <CrystalSection title="Crystal Grid">
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">

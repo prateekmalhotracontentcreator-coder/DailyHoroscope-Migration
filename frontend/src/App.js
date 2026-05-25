@@ -124,9 +124,15 @@ const LoShuHubPage = lazy(() => import('./pages/lo_shu_grid/LoShuHubPage'));
 const LoShuCalculatorPage = lazy(() => import('./pages/lo_shu_grid/LoShuCalculatorPage'));
 const LoShuMissingNumberPage = lazy(() => import('./pages/lo_shu_grid/LoShuMissingNumberPage'));
 const LoShuArrowPage = lazy(() => import('./pages/lo_shu_grid/LoShuArrowPage'));
+const LoShuNumberPage = lazy(() => import('./pages/lo_shu_grid/LoShuNumberPage'));
+const LoShuProblemPage = lazy(() => import('./pages/lo_shu_grid/LoShuProblemPage'));
+const LoShuPersonalYearPage = lazy(() => import('./pages/lo_shu_grid/LoShuPersonalYearPage'));
 const RudrakshaHubPage = lazy(() => import('./pages/rudraksha/RudrakshaHubPage').then(m => ({ default: m.RudrakshaHubPage })));
 const RudrakshaMukhiPage = lazy(() => import('./pages/rudraksha/RudrakshaMukhiPage').then(m => ({ default: m.RudrakshaMukhiPage })));
 const RudrakshaCalculatorPage = lazy(() => import('./pages/rudraksha/RudrakshaCalculatorPage').then(m => ({ default: m.RudrakshaCalculatorPage })));
+const RudrakshaPlanetPage = lazy(() => import('./pages/rudraksha/RudrakshaPlanetPage').then(m => ({ default: m.RudrakshaPlanetPage })));
+const RudrakshaProblemPage = lazy(() => import('./pages/rudraksha/RudrakshaProblemPage').then(m => ({ default: m.RudrakshaProblemPage })));
+const RudrakshaSignPage = lazy(() => import('./pages/rudraksha/RudrakshaSignPage').then(m => ({ default: m.RudrakshaSignPage })));
 const RemedyHubPage = lazy(() => import('./pages/remedies/RemedyHubPage').then(m => ({ default: m.RemedyHubPage })));
 const CrystalHubPage = lazy(() => import('./pages/crystals/CrystalHubPage').then(m => ({ default: m.CrystalHubPage })));
 const ZibuHubPage = lazy(() => import('./pages/seo/ZibuHubPage').then(m => ({ default: m.ZibuHubPage })));
@@ -134,6 +140,9 @@ const ZibuSymbolPage = lazy(() => import('./pages/seo/ZibuSymbolPage').then(m =>
 const CrystalPage = lazy(() => import('./pages/crystals/CrystalPage').then(m => ({ default: m.CrystalPage })));
 const CrystalIntentionPage = lazy(() => import('./pages/crystals/CrystalIntentionPage').then(m => ({ default: m.CrystalIntentionPage })));
 const CrystalCalculatorPage = lazy(() => import('./pages/crystals/CrystalCalculatorPage').then(m => ({ default: m.CrystalCalculatorPage })));
+const CrystalPlanetPage = lazy(() => import('./pages/crystals/CrystalPlanetPage').then(m => ({ default: m.CrystalPlanetPage })));
+const CrystalSignPage = lazy(() => import('./pages/crystals/CrystalSignPage').then(m => ({ default: m.CrystalSignPage })));
+const CrystalProblemPage = lazy(() => import('./pages/crystals/CrystalProblemPage').then(m => ({ default: m.CrystalProblemPage })));
 const DevotionalDatePage = lazy(() => import('./pages/devotional/DevotionalDatePage').then(m => ({ default: m.DevotionalDatePage })));
 const MarriageMuhuratPage = lazy(() => import('./pages/muhurat/MarriageMuhuratPage').then(m => ({ default: m.MarriageMuhuratPage })));
 const CelebrityHubPage = lazy(() => import('./pages/celebrity/CelebrityHubPage').then(m => ({ default: m.CelebrityHubPage })));
@@ -224,6 +233,9 @@ function App() {
                   <Route path="/love-calculator" element={<LoveCalculatorPage />} />
                   <Route path="/crystals" element={<CrystalHubPage />} />
                   <Route path="/crystals/calculator" element={<CrystalCalculatorPage />} />
+                  <Route path="/crystals/for/planet/:planet" element={<CrystalPlanetPage />} />
+                  <Route path="/crystals/for/sign/:sign" element={<CrystalSignPage />} />
+                  <Route path="/crystals/for/problem/:problem" element={<CrystalProblemPage />} />
                   <Route path="/crystals/for/:intentionSlug" element={<CrystalIntentionPage />} />
                   <Route path="/crystals/:crystalSlug" element={<CrystalPage />} />
                   <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
@@ -239,10 +251,16 @@ function App() {
                   <Route path="/live-sai-baba-arti" element={<LiveSaiBabaArtiPage />} />
                   <Route path="/lo-shu-grid" element={<LoShuHubPage />} />
                   <Route path="/lo-shu-grid/calculator" element={<LoShuCalculatorPage />} />
+                  <Route path="/lo-shu-grid/number/:n" element={<LoShuNumberPage />} />
+                  <Route path="/lo-shu-grid/for/:problem" element={<LoShuProblemPage />} />
+                  <Route path="/lo-shu-grid/personal-year/:n" element={<LoShuPersonalYearPage />} />
                   <Route path="/lo-shu-grid/missing-:number" element={<LoShuMissingNumberPage />} />
                   <Route path="/lo-shu-grid/arrow/:slug" element={<LoShuArrowPage />} />
                   <Route path="/rudraksha" element={<RudrakshaHubPage />} />
                   <Route path="/rudraksha/calculator" element={<RudrakshaCalculatorPage />} />
+                  <Route path="/rudraksha/for/planet/:planet" element={<RudrakshaPlanetPage />} />
+                  <Route path="/rudraksha/for/problem/:problem" element={<RudrakshaProblemPage />} />
+                  <Route path="/rudraksha/for/sign/:sign" element={<RudrakshaSignPage />} />
                   <Route path="/rudraksha/:mukhi" element={<RudrakshaMukhiPage />} />
 
                   {/* Zibu Symbols */}

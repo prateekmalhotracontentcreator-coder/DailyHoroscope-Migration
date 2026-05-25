@@ -27,6 +27,15 @@ export const MISSING_NUMBER_LINKS = Array.from({ length: 9 }, (_, index) => {
   };
 });
 
+export const NUMBER_LINKS = Array.from({ length: 9 }, (_, index) => {
+  const number = index + 1;
+  return {
+    number,
+    href: `/lo-shu-grid/number/${number}`,
+    label: `Number ${number}`,
+  };
+});
+
 export const ARROW_LINKS = [
   { slug: 'intellect', name: 'Arrow of Intellect', numbers: [4, 9, 2], theme: 'Mind plane' },
   { slug: 'spirituality', name: 'Arrow of Spirituality', numbers: [3, 5, 7], theme: 'Soul plane' },
@@ -37,6 +46,38 @@ export const ARROW_LINKS = [
   { slug: 'emotional-balance', name: 'Arrow of Emotional Balance', numbers: [4, 5, 6], theme: 'Rajayoga diagonal' },
   { slug: 'determination', name: 'Arrow of Determination', numbers: [2, 5, 8], theme: 'Rajayoga diagonal' },
 ];
+
+export const PROBLEM_LINKS = [
+  { slug: 'career-growth', label: 'Career Growth' },
+  { slug: 'financial-instability', label: 'Financial Instability' },
+  { slug: 'relationship-difficulties', label: 'Relationship Issues' },
+  { slug: 'marriage-delays', label: 'Marriage Delays' },
+  { slug: 'health-issues', label: 'Health Issues' },
+  { slug: 'lack-of-confidence', label: 'Confidence' },
+  { slug: 'communication-problems', label: 'Communication' },
+  { slug: 'stress-anxiety', label: 'Stress and Anxiety' },
+  { slug: 'poor-decisions', label: 'Decision Making' },
+  { slug: 'loneliness', label: 'Loneliness' },
+  { slug: 'academic-struggles', label: 'Academics' },
+  { slug: 'business-partnerships', label: 'Business Partnerships' },
+  { slug: 'family-conflicts', label: 'Family Conflicts' },
+  { slug: 'property-issues', label: 'Property Issues' },
+  { slug: 'travel-relocation', label: 'Travel and Relocation' },
+  { slug: 'creativity-block', label: 'Creativity' },
+  { slug: 'spiritual-disconnection', label: 'Spirituality' },
+  { slug: 'legal-problems', label: 'Legal Problems' },
+  { slug: 'fertility', label: 'Fertility' },
+  { slug: 'leadership', label: 'Leadership' },
+];
+
+export const PERSONAL_YEAR_LINKS = Array.from({ length: 9 }, (_, index) => {
+  const number = index + 1;
+  return {
+    number,
+    href: `/lo-shu-grid/personal-year/${number}`,
+    label: `Personal Year ${number}`,
+  };
+});
 
 export const HUB_FAQ_ITEMS = [
   {

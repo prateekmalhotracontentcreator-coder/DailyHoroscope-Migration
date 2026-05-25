@@ -89,6 +89,12 @@
       ]
     },
     {
+      "source": "/rudraksha",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
       "source": "/rudraksha/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }

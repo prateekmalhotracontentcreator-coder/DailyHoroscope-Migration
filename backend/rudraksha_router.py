@@ -6,7 +6,13 @@ from typing import Any
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel, ConfigDict
 
-from rudraksha_content import RUDRAKSHA_MUKHIS, RUDRAKSHA_MUKHIS_BY_NUMBER
+from rudraksha_content import (
+    RUDRAKSHA_MUKHIS,
+    RUDRAKSHA_MUKHIS_BY_NUMBER,
+    get_planet_rudraksha_document,
+    get_problem_rudraksha_document,
+    get_sign_rudraksha_document,
+)
 from vedic_calculator import SIGN_ORDER, calculate_graha_drishti, calculate_vedic_chart
 
 
@@ -75,6 +81,25 @@ async def _load_single_mukhi(request: Request, mukhi: int) -> dict[str, Any] | N
     except Exception:
         document = None
     return _clean_document(document) if document else dict(RUDRAKSHA_MUKHIS_BY_NUMBER.get(mukhi) or {})
+
+
+async def _load_slug_document(
+    request: Request,
+    collection_name: str,
+    slug: str,
+    fallback_loader,
+) -> dict[str, Any] | None:
+    try:
+        collection = _db(request)[collection_name]
+        document = await collection.find_one({"slug": slug}, {"_id": 0})
+    except Exception:
+        document = None
+
+    if document:
+        return _clean_document(document)
+
+    fallback = fallback_loader(slug)
+    return dict(fallback) if fallback else None
 
 
 def _planet_payload(chart: dict[str, Any], planet: str) -> dict[str, Any]:
@@ -316,6 +341,45 @@ async def get_rudraksha_mukhi(mukhi: int, request: Request) -> dict[str, Any]:
     document = await _load_single_mukhi(request, mukhi)
     if not document:
         raise HTTPException(status_code=404, detail="Mukhi not found.")
+    return document
+
+
+@router.get("/planet/{planet_slug}")
+async def get_rudraksha_planet_page(planet_slug: str, request: Request) -> dict[str, Any]:
+    document = await _load_slug_document(
+        request,
+        "rudraksha_planets",
+        planet_slug,
+        get_planet_rudraksha_document,
+    )
+    if not document:
+        raise HTTPException(status_code=404, detail="Planet page not found.")
+    return document
+
+
+@router.get("/problem/{problem_slug}")
+async def get_rudraksha_problem_page(problem_slug: str, request: Request) -> dict[str, Any]:
+    document = await _load_slug_document(
+        request,
+        "rudraksha_problems",
+        problem_slug,
+        get_problem_rudraksha_document,
+    )
+    if not document:
+        raise HTTPException(status_code=404, detail="Problem page not found.")
+    return document
+
+
+@router.get("/sign/{sign_slug}")
+async def get_rudraksha_sign_page(sign_slug: str, request: Request) -> dict[str, Any]:
+    document = await _load_slug_document(
+        request,
+        "rudraksha_signs",
+        sign_slug,
+        get_sign_rudraksha_document,
+    )
+    if not document:
+        raise HTTPException(status_code=404, detail="Sign page not found.")
     return document
 
 

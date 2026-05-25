@@ -23,6 +23,7 @@ import { LibraryConsolePage } from './LibraryConsolePage';
 import { RemediesAdminPanel } from './RemediesAdminPanel';
 import { PunyaRewardsAdminPanel } from './PunyaRewardsAdminPanel';
 import { DiagnosticsTab } from '../../components/admin/DiagnosticsTab';
+import { EchoPaceTab } from '../../components/admin/EchoPaceTab';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -507,6 +508,7 @@ export const AdminDashboard = () => {
     { id: 'overview',       label: 'Overview',       icon: BarChart3 },
     { id: 'health',         label: 'System',         icon: Activity },
     { id: 'diagnostics',    label: 'Self-Heal',      icon: Zap },
+    { id: 'echo-pace',      label: 'E.C.H.O. // P.A.C.E.', icon: Search },
     { id: 'users',          label: 'Users',          icon: Users },
     { id: 'reports',        label: 'Reports',        icon: FileText },
     { id: 'payments',       label: 'Payments',       icon: CreditCard },
@@ -738,6 +740,10 @@ export const AdminDashboard = () => {
 
         {activeTab === 'diagnostics' && (
           <DiagnosticsTab getAuthHeaders={getAuthHeaders} />
+        )}
+
+        {activeTab === 'echo-pace' && (
+          <EchoPaceTab getAuthHeaders={getAuthHeaders} />
         )}
 
         {/* USERS */}
