@@ -272,6 +272,297 @@ SPECIAL_NUMBER_OVERRIDES = {
     "10000": {"vibe": "magnified reset gate", "tagline": "scale, stewardship, and long-horizon beginnings"},
 }
 
+PATTERN_DETAILS = {
+    "pure amplification": {
+        "label": "amplified echo",
+        "descriptor": "repeated digits keep the same lesson ringing until it is answered cleanly",
+        "tempo": "direct response",
+        "outcome": "the message gets louder when you try to answer it halfway",
+    },
+    "stepwise progress": {
+        "label": "ascending ladder",
+        "descriptor": "the sequence climbs in order, so progress matters more than drama",
+        "tempo": "sequenced progress",
+        "outcome": "the blessing lives in respecting the order of events",
+    },
+    "mirrored reinforcement": {
+        "label": "mirrored bridge",
+        "descriptor": "the reflected layout turns inner truth and outer events toward each other",
+        "tempo": "balanced adjustment",
+        "outcome": "reflection works best when both sides of the pattern are honored",
+    },
+    "rhythmic alternation": {
+        "label": "alternating rhythm",
+        "descriptor": "the digits pulse back and forth, revealing where response patterns need refinement",
+        "tempo": "measured recalibration",
+        "outcome": "small corrections made consistently matter more than one dramatic swing",
+    },
+    "reset and recalibration": {
+        "label": "reset corridor",
+        "descriptor": "zero widens the field so the lesson can be heard without old static",
+        "tempo": "intentional reset",
+        "outcome": "space and timing become part of the medicine, not a delay tactic",
+    },
+    "layered guidance": {
+        "label": "layered weave",
+        "descriptor": "mixed digits stack several lessons together, so nuance matters",
+        "tempo": "pattern reading",
+        "outcome": "clarity comes from seeing how the parts of life interact, not from forcing one note",
+    },
+}
+
+ROOT_VIBRATION_FRAGMENTS = {
+    1: [
+        "It strengthens decisive self-trust and clears space for an honest beginning.",
+        "It sharpens your inner yes so hesitation stops dressing up as caution.",
+    ],
+    2: [
+        "It softens force and teaches timing through relationship, rhythm, and receptive intelligence.",
+        "It restores trust in pacing so connection can grow without being rushed.",
+    ],
+    3: [
+        "It wakes up voice, expression, and the courage to let inspiration become visible.",
+        "It rewards open communication and turns buried insight into useful movement.",
+    ],
+    4: [
+        "It favors structure, steadiness, and the kind of discipline that makes protection practical.",
+        "It brings order back to the situation so your next step can stand on something solid.",
+    ],
+    5: [
+        "It turns change into usable momentum instead of letting transition become chaos.",
+        "It loosens stale patterns so movement can happen without abandoning discernment.",
+    ],
+    6: [
+        "It gathers scattered energy back into care, harmony, and responsible devotion.",
+        "It restores warmth and asks whether your environment truly supports what you value.",
+    ],
+    7: [
+        "It deepens spiritual listening and makes quiet discernment more valuable than noise.",
+        "It asks for reflection strong enough to separate intuition from projection.",
+    ],
+    8: [
+        "It concentrates authority, responsibility, and karmic return into visible results.",
+        "It teaches mastery by making value, effort, and consequence easier to read.",
+    ],
+    9: [
+        "It ripens closure and makes release feel purposeful instead of punishing.",
+        "It helps endings become clean enough for the next cycle to arrive without residue.",
+    ],
+}
+
+PATTERN_VIBRATION_FRAGMENTS = {
+    "pure amplification": [
+        "The amplified echo keeps pressing the exact same note until your response matches it.",
+        "Because the digits repeat without dilution, the number does not support half-hearted participation.",
+    ],
+    "stepwise progress": [
+        "The ascending ladder says the answer develops in sequence, with each stage earning the next.",
+        "This climbing pattern rewards order, pacing, and respect for process over shortcuts.",
+    ],
+    "mirrored reinforcement": [
+        "The mirrored bridge reflects your inner state back through outer events, which makes honesty essential.",
+        "This mirrored pattern asks you to reconcile what you feel privately with what you are building publicly.",
+    ],
+    "rhythmic alternation": [
+        "The alternating rhythm reveals where repeated responses are either healing the cycle or feeding it.",
+        "This back-and-forth pattern makes calibration the real work, not dramatic speed.",
+    ],
+    "reset and recalibration": [
+        "The reset corridor uses space, pause, and perspective as part of the guidance itself.",
+        "Because zero is involved, the pattern wants a cleaner field before it asks for a louder move.",
+    ],
+    "layered guidance": [
+        "The layered weave suggests several lessons are arriving together, so a single-track reading will miss the point.",
+        "This mixed pattern behaves like a woven signal: one strand explains the next.",
+    ],
+}
+
+VIBRATION_CADENCE = [
+    "That is why this sequence tends to arrive right before a meaningful choice, not after one.",
+    "That is what makes the number feel active rather than merely symbolic.",
+    "That is where the sequence becomes guidance instead of decoration.",
+    "That is why the message usually clarifies once you respond in a concrete way.",
+]
+
+ROOT_SEEING_FRAGMENTS = {
+    1: [
+        "Treat the sighting as permission to stop waiting for perfect certainty.",
+        "Let the repetition remind you that a clean beginning is already available.",
+    ],
+    2: [
+        "Read the sighting as a cue to trust rhythm, timing, and relational truth.",
+        "Use the repetition to return to patience without slipping into passivity.",
+    ],
+    3: [
+        "Take the sequence as a prompt to express what has been ripening inside you.",
+        "Let the repetition pull hidden insight into conversation, art, prayer, or truth-telling.",
+    ],
+    4: [
+        "Receive the sighting as a reminder to stabilize the foundation before demanding faster results.",
+        "Take the repetition as support for consistency, boundaries, and practical next steps.",
+    ],
+    5: [
+        "Treat the sighting as a nudge to work with change rather than negotiating against it.",
+        "Read the repetition as proof that movement is already underway and needs your cooperation.",
+    ],
+    6: [
+        "Use the sequence as a reminder to restore warmth where life has become overly functional.",
+        "Take the sighting as a call to bring care, beauty, and responsibility back into alignment.",
+    ],
+    7: [
+        "Treat the repetition as an invitation to trust the deeper signal before the louder one.",
+        "Use the sighting to move closer to stillness, study, and clean discernment.",
+    ],
+    8: [
+        "Read the sequence as a sign that consequence, value, and stewardship are coming into sharper view.",
+        "Take the repetition seriously when money, leadership, or responsibility is asking for integrity.",
+    ],
+    9: [
+        "Treat the sighting as confirmation that something is ready to complete without being dragged further.",
+        "Use the repetition to release the chapter that already taught what it came to teach.",
+    ],
+}
+
+PATTERN_SEEING_FRAGMENTS = {
+    "pure amplification": [
+        "The amplified echo keeps returning until the obvious move is answered with full participation.",
+        "Repeated digits rarely settle for mixed signals, so clarity matters more than comforting delay.",
+    ],
+    "stepwise progress": [
+        "The ascending ladder asks you to honor sequence, because the next step makes sense only after the present one is lived.",
+        "Climbing numbers rarely ask for a leap; they ask for the courage to respect progression.",
+    ],
+    "mirrored reinforcement": [
+        "The mirrored bridge usually appears when your inner truth and outer behavior need to match more closely.",
+        "Reflected patterns often surface when life is showing you yourself through timing, people, and repetition.",
+    ],
+    "rhythmic alternation": [
+        "The alternating rhythm points to habits, loops, and response cycles that are ready for refinement.",
+        "Back-and-forth patterns are often less about prediction and more about correcting the way you keep answering the same lesson.",
+    ],
+    "reset and recalibration": [
+        "The reset corridor suggests a pause, clearing, or clean restart is part of the answer, not avoidance of it.",
+        "Zero-backed patterns usually appear when space itself is the medicine and timing needs to be reset.",
+    ],
+    "layered guidance": [
+        "The layered weave means several areas of life are speaking at once, so the message opens through nuance.",
+        "Mixed-digit sequences often arrive when you need to read the whole pattern rather than one isolated event.",
+    ],
+}
+
+SEEING_CADENCE = [
+    "That is usually the moment the message turns from curiosity into useful direction.",
+    "That is where the number stops repeating as noise and starts acting like guidance.",
+    "That is often where relief begins, because the lesson is finally being met directly.",
+    "That is how the sighting becomes a turning point instead of a passing coincidence.",
+    "That is when the pattern finally earns its name and becomes something you can work with.",
+    "That is the window where noticing becomes deciding instead of just observing.",
+    "That is how attention shifts from pattern-spotting into the question the pattern was asking.",
+    "That is usually where the urgency softens and the deeper invitation becomes clearer.",
+    "That is the moment the sequence graduates from background noise into a recognisable signal.",
+    "That is where the repeated sighting earns its authority by matching something already known inside.",
+    "That is often the point where the sign loses its mystery and gains its usefulness.",
+    "That is how the number becomes a verb instead of a noun -- something to act on, not just observe.",
+    "That is the interval where the visible pattern and the internal question finally land on the same page.",
+    "That is how external repetition eventually translates into interior clarity.",
+    "That is when the message stops accumulating and starts delivering what it was building toward.",
+    "That is usually when seeing it again stops feeling like coincidence and starts feeling like information.",
+    "That is where the sighting converts from something noticed to something used.",
+    "That is how a number earns meaning rather than borrows it from elsewhere.",
+    "That is the point where the signal has done its job and the next move belongs to you.",
+    "That is when the repeated pattern becomes a compass rather than a curiosity.",
+    "That is how the sequence moves from background frequency into a question worth answering directly.",
+    "That is the moment the accumulation tips from interesting into actionable.",
+    "That is usually where the resistance softens enough to let the actual message through.",
+    "That is how consistent sightings eventually do what a single sighting never could.",
+    "That is the crossing point where wonder turns into discernment and the number does its real work.",
+    "That is when the frequency becomes familiar enough to feel instructive instead of strange.",
+    "That is how a sequence that began as noise quietly becomes the clearest signal in the room.",
+    "That is the threshold where repetition stops being a coincidence and starts being a curriculum.",
+    "That is when the sighting finally earns the attention it was asking for all along.",
+    "That is how the number moves from being seen to being understood, which is always the point.",
+    "That is usually when the meaning stops hiding in the pattern and starts showing up in the choices.",
+    "That is how a sequence that felt random gradually becomes the most coherent voice in a noisy moment.",
+    "That is where the pattern hands the work back to you, because the seeing was always preparation.",
+    "That is when the number finishes its loop and the response belongs entirely to the person watching.",
+    "That is how repetition that once felt like background static becomes the signal worth following.",
+]
+
+INTENT_STYLES = {
+    "love": {
+        "focus": "emotional honesty, reciprocity, and the courage to say what the heart actually needs",
+        "challenge": "mixed signals, protective silence, or attachment habits that blur the truth",
+        "closing": [
+            "Let the heart move with honesty, because this sequence favors connection that can survive the truth.",
+            "Use the number as permission to choose reciprocity over guessing games and emotional over-editing.",
+        ],
+    },
+    "career": {
+        "focus": "timing, earned opportunity, professional courage, and clearer money decisions",
+        "challenge": "scattered effort, underpricing, or fear of being seen at your real level",
+        "closing": [
+            "Treat the signal like a timing note from life: act where momentum is real and stop feeding what keeps leaking energy.",
+            "Use the sequence to tighten your standards, because career progress rarely improves through vagueness.",
+        ],
+    },
+    "twin-flame": {
+        "focus": "mirroring, soul recognition, reunion-separation lessons, and nervous-system steadiness",
+        "challenge": "confusing obsession with guidance or reading every emotional spike as destiny",
+        "closing": [
+            "Let the number point you back to inner regulation first, because twin-flame lessons sharpen when self-abandonment stops.",
+            "Read the sign as guidance toward mirroring and healing, not as a license to chase intensity without discernment.",
+        ],
+    },
+    "manifestation": {
+        "focus": "alignment, attention, energetic congruence, and co-creation with clear intent",
+        "challenge": "contradictory focus, emotional static, or trying to manifest from urgency rather than resonance",
+        "closing": [
+            "Use the sequence to match thought, feeling, and behavior, because manifestation responds to coherence more than wishful repetition.",
+            "Let the number refine your signal until desire, action, and timing are finally speaking the same language.",
+        ],
+    },
+    "health": {
+        "focus": "body signals, energy rhythm, rest, regulation, and the lifestyle patterns that either support or drain you",
+        "challenge": "ignoring fatigue, forcing pace, or living in a way your body keeps protesting",
+        "closing": [
+            "Treat the number like a body-level nudge, because wellbeing improves when signals are answered early instead of endured late.",
+            "Let the sequence restore rhythm before you demand output, because health is often the foundation beneath every other answer.",
+        ],
+    },
+    "spiritual-growth": {
+        "focus": "inner work, awareness, discernment, and the relationship between wisdom and lived practice",
+        "challenge": "spiritual bypassing, noisy intuition, or collecting insight without embodiment",
+        "closing": [
+            "Use the sign to move from spiritual theory into lived practice, because clarity matures through embodiment.",
+            "Let the sequence deepen awareness rather than decorate it, because genuine growth changes behavior as well as belief.",
+        ],
+    },
+    "family": {
+        "focus": "roots, home dynamics, forgiveness, roles, and generational patterns asking for repair",
+        "challenge": "old scripts, avoidance, or carrying responsibilities that no longer belong to you",
+        "closing": [
+            "Treat the number as a prompt to heal the atmosphere, not just the argument, because families often change through tone before words.",
+            "Let the sequence guide you toward steadier roots, cleaner roles, and conversations that stop recycling old pain.",
+        ],
+    },
+    "protection": {
+        "focus": "boundaries, discernment, energetic safety, and the wisdom to separate guidance from pressure",
+        "challenge": "porous boundaries, overexposure, or mistaking intensity for truth",
+        "closing": [
+            "Use the number to strengthen discernment, because protection often looks like clear boundaries before it looks like rescue.",
+            "Let the sequence remind you that safety grows when your yes and no become equally trustworthy.",
+        ],
+    },
+    "new-beginnings": {
+        "focus": "thresholds, release, starting conditions, and the emotional readiness required for a fresh chapter",
+        "challenge": "dragging expired stories into a doorway that needs cleaner energy",
+        "closing": [
+            "Treat the sign as a threshold marker, because beginnings work best when endings are actually honored.",
+            "Let the number help you clear the runway so the next chapter begins from intention rather than leftover momentum.",
+        ],
+    },
+}
+
 
 def reduce_to_root(number: str) -> int:
     total = sum(int(ch) for ch in number)
@@ -309,6 +600,63 @@ def number_pattern(number: str) -> str:
     if "0" in number:
         return "reset and recalibration"
     return "layered guidance"
+
+
+def variation_seed(number: str, salt: int = 0) -> int:
+    return sum((index + 1 + salt) * int(ch) for index, ch in enumerate(number)) + len(number) * 13 + salt * 17
+
+
+def choose_variant(options: list[str], number: str, salt: int = 0) -> str:
+    return options[variation_seed(number, salt) % len(options)]
+
+
+def number_digits(number: str) -> list[int]:
+    return [int(ch) for ch in number]
+
+
+def number_structure_note(number: str, pattern: str) -> str:
+    digits = number_digits(number)
+    leading = digits[0]
+    trailing = digits[-1]
+    zero_count = number.count("0")
+    if pattern == "pure amplification":
+        return f"Because every digit repeats the same note, {number} behaves like a concentrated signal rather than a subtle hint."
+    if pattern == "stepwise progress":
+        return f"Because the digits rise from {leading} to {trailing}, {number} favors order, pacing, and one honest step at a time."
+    if pattern == "mirrored reinforcement":
+        return f"Because the sequence mirrors itself around its midpoint, {number} often reflects inner reality back through outer timing."
+    if pattern == "rhythmic alternation":
+        return f"The alternating movement between {leading} and {trailing} gives {number} a rhythmic quality that exposes repeated response habits."
+    if pattern == "reset and recalibration":
+        return f"With {zero_count} zero{'s' if zero_count != 1 else ''} in the sequence, {number} creates more space around the lesson and slows the reaction cycle down."
+    return f"The mixed-digit structure of {number} layers the opening force of {leading} with the closing lesson of {trailing}, so the guidance lands through nuance."
+
+
+def build_vibration_closer(number: str, root: int, pattern: str) -> str:
+    root_fragment = choose_variant(ROOT_VIBRATION_FRAGMENTS[root], number, salt=1).rstrip(".")
+    pattern_fragment = choose_variant(PATTERN_VIBRATION_FRAGMENTS[pattern], number, salt=2).rstrip(".").lower()
+    cadence = choose_variant(VIBRATION_CADENCE, number, salt=3).rstrip(".").lower()
+    return f"{root_fragment} while {pattern_fragment}, and {cadence}."
+
+
+def build_seeing_closer(number: str, root: int, pattern: str) -> str:
+    root_fragment = choose_variant(ROOT_SEEING_FRAGMENTS[root], number, salt=4).rstrip(".")
+    pattern_fragment = choose_variant(PATTERN_SEEING_FRAGMENTS[pattern], number, salt=5).rstrip(".").lower()
+    cadence = choose_variant(SEEING_CADENCE, number, salt=6).rstrip(".").lower()
+    return f"{root_fragment} because {pattern_fragment}, and {cadence}."
+
+
+def build_intent_message_closer(number: str, intent: str, root: int, pattern: str) -> str:
+    style = INTENT_STYLES[intent]
+    archetype = BASE_ARCHETYPES[root]
+    pattern_detail = PATTERN_DETAILS[pattern]
+    intent_close = choose_variant(style["closing"], number, salt=7)
+    cadence = [
+        f"The root-{root} lesson is to let {archetype['gift']} shape the choice instead of letting pressure set the tone.",
+        f"The healthiest move is the one that honors {archetype['gift']} while respecting the {pattern_detail['tempo']} this pattern is asking for.",
+        f"That is how {number} turns {pattern_detail['label']} energy into a practical next step rather than a passing spiritual mood.",
+    ]
+    return f"{intent_close} {choose_variant(cadence, number, salt=8)}"
 
 
 @lru_cache(maxsize=1)
@@ -408,11 +756,11 @@ def build_vibration(number: str, root: int) -> str:
     if override:
         return (
             f"{number} carries a {override['vibe']} wrapped in the root-{root} current of "
-            f"{archetype['essence']}. It tends to show up when life wants decisive awareness, not passive drifting."
+            f"{archetype['essence']}. {build_vibration_closer(number, root, pattern)}"
         )
     return (
         f"Angel number {number} carries the root-{root} current of {archetype['essence']}, expressed through "
-        f"a pattern of {pattern}. It asks you to notice what is ready to shift, stabilize, or begin."
+        f"a pattern of {pattern}. {build_vibration_closer(number, root, pattern)}"
     )
 
 
@@ -426,11 +774,13 @@ def build_summary(number: str, root: int) -> str:
 
 def build_seeing_it_means(number: str, root: int) -> str:
     archetype = BASE_ARCHETYPES[root]
+    pattern = number_pattern(number)
     return (
         f"Seeing {number} repeatedly is often a timing signal rather than random coincidence. "
         f"It draws your attention back to {archetype['essence']} and asks where life is inviting you into "
-        f"{archetype['lesson']}. If the number appears during stress, it is a reminder to regulate first and respond second. "
-        f"If it appears during momentum, it is a nudge to keep moving with intention instead of scattering your focus."
+        f"{archetype['lesson']}. {number_structure_note(number, pattern)} "
+        f"If the number appears during stress, it is a reminder to regulate first and respond second. "
+        f"{build_seeing_closer(number, root, pattern)}"
     )
 
 
@@ -455,24 +805,99 @@ def build_core_affirmation(number: str, root: int) -> str:
 def build_intent_base_matrix() -> dict[str, dict[int, dict[str, object]]]:
     matrix: dict[str, dict[int, dict[str, object]]] = {}
     for intent, config in INTENT_CONFIG.items():
+        style = INTENT_STYLES[intent]
         matrix[intent] = {}
         for root, archetype in BASE_ARCHETYPES.items():
             matrix[intent][root] = {
                 "opening": (
                     f"In {config['display'].lower()}, the root-{root} {archetype['label'].lower()} current emphasizes "
-                    f"{config['theme']}."
+                    f"{config['theme']} and asks for {style['focus']}."
                 ),
-                "message": (
-                    f"This vibration is strongest when you meet the moment with {archetype['gift']}. "
-                    f"The lesson is less about forcing the answer and more about {archetype['lesson']}."
+                "focus_line": (
+                    f"It is strongest when {archetype['gift']} guides the way you handle {style['focus']}."
+                ),
+                "challenge_line": (
+                    f"The friction usually shows up through {style['challenge']}, so the lesson is less about forcing the answer and more about {archetype['lesson']}."
                 ),
                 "actions": [
-                    f"{config['cta']}",
-                    f"Lean into {archetype['actions'][0]} in this area of life.",
-                    f"Let {archetype['actions'][1]} guide your next decision.",
+                    f"{config['cta']} Let {archetype['gift']} set the tone instead of urgency.",
+                    f"Use this area of life to {archetype['actions'][0]} with more honesty than performance.",
+                    f"Let {archetype['actions'][1]} guide the next concrete move you make here.",
                 ],
             }
     return matrix
+
+
+def build_intent_message(number: str, intent: str, root: int) -> str:
+    pattern = number_pattern(number)
+    template = build_intent_base_matrix()[intent][root]
+    pattern_detail = PATTERN_DETAILS[pattern]
+    return (
+        f"Angel number {number} brings {template['focus_line'].lower()} "
+        f"{template['challenge_line']} {number_structure_note(number, pattern)} "
+        f"This {pattern_detail['label']} pattern matters here because {pattern_detail['descriptor']}. "
+        f"{build_intent_message_closer(number, intent, root, pattern)}"
+    )
+
+
+def build_intent_action_steps(number: str, intent: str, root: int) -> list[str]:
+    archetype = BASE_ARCHETYPES[root]
+    pattern = number_pattern(number)
+    pattern_detail = PATTERN_DETAILS[pattern]
+
+    if intent == "love":
+        return [
+            f"Say the feeling you have been editing down, because {number} favors emotional clarity over protective guessing.",
+            f"Use {archetype['gift']} to reset one relationship pattern this week, especially where the current dynamic feels stuck in {pattern_detail['tempo']}.",
+            f"Ask whether this connection is growing through reciprocity, firmer boundaries, or a cleaner goodbye, and act on the honest answer.",
+        ]
+    if intent == "career":
+        return [
+            f"List the next work or money decision that needs a cleaner timeline, because {number} rarely appears just to inspire without asking for structure.",
+            f"Apply {archetype['gift']} to one measurable move today, whether that means pitching, pricing, delegating, or closing a distraction.",
+            f"Cut one obligation that keeps your professional energy scattered so the {pattern_detail['label']} of this number can become momentum.",
+        ]
+    if intent == "twin-flame":
+        return [
+            f"Regulate your body before interpreting the bond, because {number} is more useful when your nervous system is steady than when it is flooded.",
+            f"Journal what this connection is mirroring back to you and let {archetype['gift']} guide the part that is yours to heal.",
+            f"Choose one action that honors sacred timing instead of chase energy, especially if the current cycle already feels shaped by {pattern_detail['tempo']}.",
+        ]
+    if intent == "manifestation":
+        return [
+            f"Write the desire behind this sighting in one clean sentence, then remove any goal that conflicts with it.",
+            f"Use {archetype['gift']} to align one behavior with the future you say you want, because {number} responds to coherence more than intensity.",
+            f"Treat the {pattern_detail['label']} in this number as a cue to refine your signal until thought, feeling, and action are moving together.",
+        ]
+    if intent == "health":
+        return [
+            f"Notice the body signal you have been normalizing, because {number} often arrives before depletion becomes harder to ignore.",
+            f"Let {archetype['gift']} shape one supportive rhythm today around sleep, food, movement, breath, or screen boundaries.",
+            f"Respond to the {pattern_detail['label']} of this number by making one calm, repeatable change instead of promising a dramatic overhaul.",
+        ]
+    if intent == "spiritual-growth":
+        return [
+            f"Take one spiritual insight you already know and practice it in behavior today, because {number} rewards embodiment over collection.",
+            f"Use {archetype['gift']} to choose a quieter channel for guidance, whether that means prayer, study, meditation, or a more honest journal entry.",
+            f"Let the {pattern_detail['label']} in this number show you where awareness needs repetition, pacing, or deeper trust before it becomes wisdom.",
+        ]
+    if intent == "family":
+        return [
+            f"Name the family pattern that keeps replaying, because {number} often appears when inherited roles need to be seen clearly.",
+            f"Use {archetype['gift']} to steady the tone of one home conversation instead of trying to control the entire outcome.",
+            f"Choose one repair action that fits the {pattern_detail['tempo']} of this pattern, whether that means apology, boundary, presence, or release.",
+        ]
+    if intent == "protection":
+        return [
+            f"Identify where your yes and no have become muddy, because {number} sharpens protection through discernment before anything else.",
+            f"Let {archetype['gift']} guide one boundary decision around access, attention, oversharing, or energy leakage.",
+            f"Use the {pattern_detail['label']} in this number to check what keeps repeating because the boundary is still being negotiated instead of held.",
+        ]
+    return [
+        f"Name what is ending so the next chapter is not forced to carry old momentum into a new doorway.",
+        f"Use {archetype['gift']} to prepare one cleaner starting condition today, especially where the current transition already needs {pattern_detail['tempo']}.",
+        f"Treat {number} as a threshold marker and release one attachment that would make this beginning heavier than it needs to be.",
+    ]
 
 
 def build_intent_subtitle(number: str, intent: str, root: int) -> str:
@@ -619,11 +1044,8 @@ def build_intent_record(number: str, intent: str) -> dict[str, object]:
             f"{number} often appears when {config['display'].lower()} needs a clearer rhythm. "
             f"{template['opening']}"
         ),
-        "message": (
-            f"Angel number {number} does not ask for panic or fantasy. {template['message']} "
-            f"In practice, this means choosing the response that feels both spiritually clean and practically sustainable."
-        ),
-        "action_steps": list(template["actions"]),
+        "message": build_intent_message(number, intent, root),
+        "action_steps": build_intent_action_steps(number, intent, root),
         "affirmation": build_intent_affirmation(number, intent, root),
         "faq": build_intent_faq(number, intent, root),
         "related_numbers": build_intent_related_numbers(intent, number, root),
