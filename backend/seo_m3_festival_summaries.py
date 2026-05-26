@@ -1703,307 +1703,307 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
 
     # ── EID-UL-FITR (Batch 12 -- all 30 regions) ──────────────────────────────
     ("eid-ul-fitr", "andhra-pradesh"): (
-        "Morning eid namaz in open grounds marks the grand breaking of the fast across Andhra Pradesh, centering on gratitude, prayer, and family feasting. "
-        "The public areas fill with communal warmth as rows of worshippers spill out from local shrines into decorated entrances. "
-        "Families mark the festive conclusion of the holy month by sharing sweet pulihora and laddus with visiting neighbours."
+        "Worshippers line up for morning Eid namaz across Andhra Pradesh as congregations mark the joyful completion of the holy fasting month. "
+        "Delicate mehndi patterns decorate hands while excited children dress in elegant new clothes to exchange heartfelt Eid Mubarak greetings. "
+        "Kitchens fill with aromatic steam as households prepare sweet sheer khurma alongside rich mutton biryani for visiting guests."
     ),
     ("eid-ul-fitr", "arunachal-pradesh"): (
-        "Shared festive meals bring diverse valley settlements together in Arunachal Pradesh, anchoring the seasonal focus on gratitude, prayer, and family feasting. "
-        "Bustling community halls and family gatherings fill with peaceful morning prayers as neighbours gather to exchange greetings. "
-        "The warm afternoon concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Bright local markets buzz on Chaand Raat across Arunachal Pradesh as families purchase traditional textiles and festive accessories. "
+        "Congregations assemble on open grounds for morning Eid namaz, offering peaceful prayers for regional harmony and global brotherhood. "
+        "The day is highlighted by serving bowls of warm siwaiyan paired with specialized regional meat delicacies."
     ),
     ("eid-ul-fitr", "assam"): (
-        "The sweet distribution of traditional sevaiyaan and deep community hugs reshape the landscape in Assam, reflecting gratitude, prayer, and family feasting. "
-        "Music, prayer, and neighbourhood visits elevate local community spaces during the daylight social gatherings. "
-        "The celebration is completed as households prepare traditional pitha, payas, and festive rice offerings for visiting guests."
+        "The sighting of the crescent moon on Chaand Raat brings an energetic social dynamic throughout diverse Assamese towns. "
+        "Worshippers dress in pristine traditional finery to offer solemn morning Eid namaz prayers inside local historic mosques. "
+        "The fast-breaking milestone is celebrated by preparing sweet sevai alongside Assamese pitha variations for visiting neighbors."
     ),
     ("eid-ul-fitr", "bihar"): (
-        "Massive open-air prayer gatherings and rich family assemblies define the daytime rhythm in Bihar, celebrating gratitude, prayer, and family feasting. "
-        "Bustling ghat visits and family puja routines allow diverse extended communities to share peaceful seasonal greetings. "
-        "The festive morning is highlighted by households preparing traditional thekua, kheer, and seasonal savouries to share."
+        "Massive open-air prayer grounds draw tens of thousands of worshippers in Bihar for the collective morning Eid namaz. "
+        "Intricate mehndi artwork and elegant new clothes transform residential colonies as families extend warm Eid Mubarak greetings. "
+        "Kitchens stay active for hours crafting sweet siwaiyan alongside classic home-cooked bihari mutton biryani platters."
     ),
     ("eid-ul-fitr", "chhattisgarh"): (
-        "Worshippers fill public squares for the morning congregational prayers in Chhattisgarh, initiating the joyful celebration of gratitude, prayer, and family feasting. "
-        "Vibrant community puja and local fairs gather families from all backgrounds for rhythmic songs and outdoor festivities. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad to honor visiting guests."
+        "Worshippers assemble in synchronized rows for morning Eid namaz inside decorated idgahs across Chhattisgarh, completing their sacred month-long fasts. "
+        "Local neighborhoods glow with festive illumination as families don their finest new clothes to share holiday wishes. "
+        "The domestic hospitality centers on serving bowls of rich sheer khurma alongside hot spiced biryani plates."
     ),
     ("eid-ul-fitr", "goa"): (
-        "Bustling celebration routes and family banquets define the coastal landscape in Goa, highlighting the beautiful focus on gratitude, prayer, and family feasting. "
-        "Quiet home altars and bustling neighbourhood celebration routes provide an inclusive space for cross-community greetings. "
-        "The lively gathering concludes with families distributing sweet coconut sweets and festive savouries across their settlements."
+        "Bustling coastal mosques echo with peaceful chants during the morning Eid namaz, drawing together local Goan Muslim communities. "
+        "Women spend the twilight hours of Chaand Raat applying intricate mehndi designs and organizing elegant family finery. "
+        "The festive milestone concludes with families distributing sweet siwaiyan portions alongside traditional coastal rice dishes."
     ),
     ("eid-ul-fitr", "gujarat"): (
-        "Grand morning congregations and vibrant neighbourhood interactions transform residential colonies across Gujarat, magnifying the spirit of gratitude, prayer, and family feasting. "
-        "Bustling garba grounds and bright rangoli work set an inclusive stage as local merchants exchange traditional holiday blessings. "
-        "Extended families wind down the joyous day by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "Grand morning congregations assemble at historic idgah grounds in Ahmedabad and greater Gujarat for the unified Eid namaz. "
+        "Local business houses pause operations as merchants dress in new clothes to trade traditional Eid Mubarak greetings. "
+        "Extended families mark the joyous transition by sharing large platters of aromatic biryani paired with sweet sevai."
     ),
     ("eid-ul-fitr", "haryana"): (
-        "The sharing of rich milk sweets and warm embraces brings rural neighbourhoods together across Haryana, magnifying the annual cycle of gratitude, prayer, and family feasting. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood groups lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "Traditional embraces follow the completion of morning Eid namaz across Haryana farmlands, signaling the arrival of the spring holiday. "
+        "Villagers dress in crisp new clothes to visit relatives and distribute holiday tokens to neighborhood youth groups. "
+        "The agrarian holiday is enriched by serving hot sheer khurma bowls alongside farm-style dairy-infused biryani spreads."
     ),
     ("eid-ul-fitr", "himachal-pradesh"): (
-        "Morning prayers echo through mountain valley settlements in Himachal Pradesh, casting a beautiful contrast against themes of gratitude, prayer, and family feasting. "
-        "Serene village temples and hillside processions host the community as they gather to celebrate the culmination of the fasting month. "
-        "The joyful afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around shared hearths."
+        "Morning Eid namaz prayers echo through pristine mountain valley settlements in Himachal Pradesh, welcoming the festive day. "
+        "Families step out in elaborate winter finery to trade Eid Mubarak greetings across remote hillside pathways. "
+        "The afternoon is comforted by serving sweet siwaiyan variations alongside rich mountain-style spiced rice pots."
     ),
     ("eid-ul-fitr", "jharkhand"): (
-        "Open prayer grounds draw large community groups together in Jharkhand, marking the annual arrival of gratitude, prayer, and family feasting. "
-        "Open community grounds and family prayer circles allow local neighbourhoods to gather for traditional drumming and seasonal songs. "
-        "The daytime celebration is highlighted by sharing unique seasonal sweets and simple ceremonial meals with visiting friends."
+        "Open prayer mats are laid out across Jharkhand public grounds as large community groups gather for the collective Eid namaz. "
+        "Young girls display their fresh mehndi designs while families exchange warm holiday blessings outside local residential colonies. "
+        "The joyous occasion is supported by sharing unique sheer khurma mixtures alongside pots of slow-cooked biryani."
     ),
     ("eid-ul-fitr", "karnataka"): (
-        "Grand prayer mats fill local community spaces across Karnataka neighbourhoods, initiating the southern observance of gratitude, prayer, and family feasting. "
-        "Intricate flower decorations and early-morning puja rituals precede the warm exchange of festive greetings among close neighbours. "
-        "The daytime feast involves preparing delicious kosambari, payasa, and temple-style prasada for the gathered household."
+        "Grand congregations fill historic community spaces across Karnataka as thousands participate in the early morning Eid namaz. "
+        "Ornate household entries are swept clean as families don their finest new clothes to receive neighborhood guests. "
+        "The daytime feast involves preparing delicious sweet siwaiyan variations alongside rich layered mutton biryani."
     ),
     ("eid-ul-fitr", "kerala"): (
-        "The traditional Cheraman Juma Masjid gatherings bring an ancient, historic rhythm to Kerala, celebrating gratitude, prayer, and family feasting. "
-        "Ornate floral designs and household lamp lighting anchor the domestic boundaries before the outdoor community greetings commence. "
-        "The gathering is marked by serving sweet payasam, banana chips, and elaborate festive spreads to participants."
+        "The traditional historic mosques of Malabar host massive gatherings in Kerala for the early morning Eid namaz. "
+        "Women complete their elaborate mehndi decorations on Chaand Raat before dressing children in pristine new clothes. "
+        "The concluding milestone is celebrated by serving sweet sheer khurma variants alongside elaborate Malabar biryani spreads."
     ),
     ("eid-ul-fitr", "madhya-pradesh"): (
-        "Massive congregations fill the grand Idgah grounds across Madhya Pradesh, showcasing the majestic scale of gratitude, prayer, and family feasting. "
-        "Devotional mandir visits and old-city processions frame the afternoon hours as public squares echo with festive greetings. "
-        "The community greeting style is accompanied by sharing savory poha-style snacks, sweets, and prasad among neighbours."
+        "Massive rows of worshippers fill the grand Bhopal Idgah across Madhya Pradesh during the morning Eid namaz. "
+        "Bustling market squares echo with festive music as families walk together to trade warm Eid Mubarak greetings. "
+        "The local evening hospitality centers on sharing bowls of sweet sevai alongside regional street-style biryani."
     ),
     ("eid-ul-fitr", "maharashtra"): (
-        "Rows of worshippers fill public squares for morning namaz in Maharashtra, making way for the joyful celebration of gratitude, prayer, and family feasting. "
-        "Bustling society pandals and family aarti gatherings turn into central nodes for cross-community greetings and shared sweets. "
-        "The household celebration centers on preparing fresh, sweet modak, puran poli, and festive snacks for the neighbourhood."
+        "The joyful sighting of the crescent moon on Chaand Raat triggers massive celebration preparations across urban Maharashtra. "
+        "Worshippers dress in elegant new clothes to join the massive morning Eid namaz rows inside neighborhood idgahs. "
+        "The household celebration centers on crafting sweet sheer khurma alongside rich dum biryani for visiting guests."
     ),
     ("eid-ul-fitr", "manipur"): (
-        "The traditional sharing of bowls of sweet milk delicacies brings a deeply artistic touch to Manipur, blending the season with gratitude, prayer, and family feasting. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The festive week concludes with families arranging large community feasts paired with specialized seasonal sweets."
+        "The traditional sharing of handmade bowls of sweet milk delicacies marks the local Manipur Muslim community celebrations. "
+        "Congregations assemble in matching traditional finery to offer solemn morning Eid namaz prayers inside local prayer halls. "
+        "The festive week concludes with families arranging large tables of chicken biryani paired with sweet siwaiyan."
     ),
     ("eid-ul-fitr", "meghalaya"): (
-        "Morning namaz in pristine open grounds brings diverse communities together in Meghalaya, honoring the message of gratitude, prayer, and family feasting. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the autumn season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Morning Eid namaz in pristine open valley spaces brings diverse communities together across the hills of Meghalaya. "
+        "Children showcase their colorful new clothes while parents exchange traditional Eid Mubarak greetings after the main prayers. "
+        "The warm afternoon hospitality features sharing bowls of sweet sevai alongside unique local spiced rice dishes."
     ),
     ("eid-ul-fitr", "mizoram"): (
-        "Shared festive meals connect neighbourhoods together in Mizoram, bridging local harmony with the global spirit of gratitude, prayer, and family feasting. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The autumn occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Traditional festive lighting illuminates local community spaces in Mizoram as the morning Eid namaz concludes. "
+        "Women arrange their holiday finery and complete delicate mehndi patterns to welcome visiting neighborhood groups. "
+        "The spring occasion is highlighted by gathering for shared plates of sheer khurma across local townships."
     ),
     ("eid-ul-fitr", "nagaland"): (
-        "Celebratory neighbourhood feasts and warm greeting exchanges are coordinated across Nagaland, marking the arrival of gratitude, prayer, and family feasting. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Celebratory neighborhood greetings and warm embraces follow the morning Eid namaz prayers across Nagaland settlements. "
+        "Worshippers step out in vibrant new clothes to visit distant relatives and share holiday blessings. "
+        "The peaceful seasonal gathering is highlighted by presenting large platters of biryani alongside sweet siwaiyan desserts."
     ),
     ("eid-ul-fitr", "odisha"): (
-        "The elegant Eid congregations at grand Cuttack mosques transform Odisha, elevating a profound wave of gratitude, prayer, and family feasting. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "The elegant Eid congregations at grand Cuttack mosques transform local districts in Odisha during the morning Eid namaz. "
+        "Intricate mehndi artwork and new clothes decorate residential streets as families exchange traditional holiday wishes. "
+        "The holy days are accompanied by distributing traditional sheer khaja alongside sweet sheer khurma formulas."
     ),
     ("eid-ul-fitr", "punjab"): (
-        "The historic mosques of Malerkotla fill with thousands of worshippers in Punjab, defining a grand display of gratitude, prayer, and family feasting. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious eighth day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "The historic mosques of Malerkotla fill with thousands of worshippers in Punjab for the collective Eid namaz. "
+        "Families dress in vibrant traditional finery to visit ancestral homes and distribute holiday tokens to youth groups. "
+        "The festive gathering is marked by sharing rich siwaiyan bowls alongside festive local wheat flatbreads."
     ),
     ("eid-ul-fitr", "rajasthan"): (
-        "Grand morning prayers at the historic Jaipur Idgah fill courtyards in Rajasthan, elevating the heritage of gratitude, prayer, and family feasting. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "Grand morning prayers at the historic Jaipur Idgah fill open courtyards across Rajasthan during the Eid namaz. "
+        "Women finish their detailed mehndi work on Chaand Raat before dressing the family in pristine new clothes. "
+        "The culinary gathering centers on serving sweet sheer khurma variations alongside rich desert-style biryani."
     ),
     ("eid-ul-fitr", "sikkim"): (
-        "Morning prayers along hillside pathways bring communities together across Sikkim, welcoming the seasonal alignment with gratitude, prayer, and family feasting. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Morning Eid namaz prayers along hillside pathways bring local communities together across the ridges of Sikkim. "
+        "Devotees look for the crescent moon on Chaand Raat to initiate their festive transformation into holiday finery. "
+        "The local hospitality involves sharing sweet siwaiyan formulas alongside warm festive rice dishes."
     ),
     ("eid-ul-fitr", "tamil-nadu"): (
-        "Massive congregations on the open grounds of Chennai beaches transform Tamil Nadu, anchoring gratitude, prayer, and family feasting. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange sundal packets. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "Massive morning congregations on the open grounds of Chennai beaches transform Tamil Nadu during the Eid namaz. "
+        "Families dress in crisp new clothes to trade traditional Eid Mubarak greetings outside local community centers. "
+        "The sacred season is celebrated by preparing sweet sheer khurma variants alongside rich aromatic biryani."
     ),
     ("eid-ul-fitr", "telangana"): (
-        "The spectacular crowds at the historic Mecca Masjid in Hyderabad define the peak of Telangana's gratitude, prayer, and family feasting. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "The spectacular historic crowds at the Mecca Masjid in Hyderabad define the peak of Telangana's morning Eid namaz. "
+        "Bustling old-city bazaars remain open all night on Chaand Raat for families purchasing jewelry and fine clothing. "
+        "The primary household table is filled with ritual sheer khurma bowls alongside legendary Hyderabadi biryani."
     ),
     ("eid-ul-fitr", "tripura"): (
-        "Sweet bowls of hand-crafted sevaiyaan fill family courtyards across Tripura, mirroring the autumn arrival of gratitude, prayer, and family feasting. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Sweet bowls of hand-crafted siwaiyan fill family inner courtyards across Tripura as the holy month concludes. "
+        "Worshippers assemble in matching traditional finery to offer solemn morning Eid namaz prayers inside local mandaps. "
+        "The festive evening is marked by sharing traditional mutton biryani portions alongside local rice sweets."
     ),
     ("eid-ul-fitr", "uttar-pradesh"): (
-        "The massive congregations at the historic Taj-ul-Masajid and Lucknow Idgahs transform Uttar Pradesh, tracking a magnificent display of gratitude, prayer, and family feasting. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "The massive congregations at the historic Lucknow and Agra idgahs transform Uttar Pradesh during the morning Eid namaz. "
+        "Bustling lane markets are packed with shoppers exchanging Eid Mubarak greetings and purchasing sweet vermicelli. "
+        "The high-energy days include distributing famous sweet sevai alongside traditional city-style biryani."
     ),
     ("eid-ul-fitr", "uttarakhand"): (
-        "Morning namaz in pristine alpine valley spaces defines the local experience in Uttarakhand, celebrating a serene display of gratitude, prayer, and family feasting. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Morning Eid namaz in pristine alpine valley spaces defines the local community experience across Uttarakhand. "
+        "Families dress in elaborate winter finery to visit hilltop shrines and exchange traditional holiday tokens. "
+        "The spiritual gathering is completed by serving sweet sheer khurma formulas alongside custom alpine treats."
     ),
     ("eid-ul-fitr", "west-bengal"): (
-        "The grand congregations at the historic Red Road in Kolkata define the West Bengal celebration of gratitude, prayer, and family feasting. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "The grand open-air congregations at the historic Red Road in Kolkata define the West Bengal Eid namaz celebration. "
+        "Women apply detailed mehndi patterns on Chaand Raat while children prepare their new clothes for the morning prayers. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom sweet siwaiyan bowls."
     ),
     ("eid-ul-fitr", "nri-london"): (
-        "Massive park festivals in Southall and Regent's Park protect the London diaspora as they maintain the heritage of gratitude, prayer, and family feasting. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the autumn transition by packing potluck sweets and temple prasada to share with global friends."
+        "Massive park festivals in Southall and Regent's Park gather the London diaspora for the collective morning Eid namaz. "
+        "Expatriates dress in elegant traditional finery to connect with international friends and exchange Eid Mubarak greetings. "
+        "Families celebrate the seasonal milestone by packing tupperware containers of sheer khurma and biryani to share."
     ),
     ("eid-ul-fitr", "nri-new-york"): (
-        "Vibrant community banquets in Queens and central mosques mark New York gatherings, celebrating the arrival of gratitude, prayer, and family feasting. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Vibrant community banquets in Queens and central mosques mark New York diaspora gatherings for the early Eid namaz. "
+        "Long-distance relatives use video calls on Chaand Raat to display their new clothes and share holiday updates. "
+        "The diaspora gathering concludes with sharing custom sweet sevai variations within local apartment networks."
     ),
 
 
     # ── CHRISTMAS (Batch 13 -- all 30 regions) ────────────────────────────────
     ("christmas", "andhra-pradesh"): (
-        "Midnight mass services and glowing star lanterns hung at home entryways bring winter warmth across Andhra Pradesh, centering on joy, prayer, and generous gathering. "
-        "The harmonious seasonal energy fills local neighbourhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families mark the auspicious nativity celebration by sharing traditional pulihora and laddus with visiting neighbourhood circles."
+        "Glowing star lanterns hung at home entryways bring winter warmth across Andhra Pradesh during the holy season of Christmas. "
+        "Devout families assemble inside illuminated cathedrals for solemn midnight mass services to hear traditional nativity stories. "
+        "The festive morning concludes with children searching their stockings for tokens before slicing rich homemade plum cake."
     ),
     ("christmas", "arunachal-pradesh"): (
-        "Carol services and bright festive lights illuminate alpine valley churches across Arunachal Pradesh, anchoring the seasonal focus on joy, prayer, and generous gathering. "
-        "Bustling community halls and family gatherings fill with peaceful choral hymns as neighbours gather to exchange greetings. "
-        "The warm afternoon concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Vibrant church choir groups rehearse joyful carols across Arunachal Pradesh valleys, welcoming the winter holiday spirit. "
+        "Families decorate native pine branches with miniature star lanterns to prepare for the festive midnight mass. "
+        "The cold afternoon concludes with households gathering to share custom plum cake portions with neighbors."
     ),
     ("christmas", "assam"): (
-        "The sweet sound of acoustic carols and beautifully decorated evergreen branches reshape the landscape in Assam, reflecting joy, prayer, and generous gathering. "
-        "Music, prayer, and neighbourhood visits elevate local community spaces during the daylight social gatherings. "
-        "The celebration is completed as households prepare traditional pitha, payas, and festive rice offerings for visiting guests."
+        "The sweet sound of acoustic carols and beautifully decorated fir branches reshape the winter landscape in Assam. "
+        "Neighborhood circles gather for intense midnight mass services to celebrate the sacred nativity details under winter skies. "
+        "The celebration is completed as kitchens prepare rich plum cake slices alongside traditional Assamese pitha varieties."
     ),
     ("christmas", "bihar"): (
-        "Vibrant midnight services and rich family dinners define the winter holiday rhythm in Bihar, celebrating joy, prayer, and generous gathering. "
-        "Bustling ghat visits and family puja routines allow diverse extended communities to share peaceful seasonal greetings. "
-        "The festive morning is highlighted by households preparing traditional thekua, kheer, and seasonal savouries to share."
+        "Vibrant midnight mass services and elaborate crib setups define the winter holiday rhythm inside Bihar residences. "
+        "Children hang decorated stockings along internal mantle spaces while waiting for symbolic visits from Santa. "
+        "The festive morning is highlighted by households slicing dark plum cake alongside classic home-cooked bihari savouries."
     ),
     ("christmas", "chhattisgarh"): (
-        "Worshippers gather for midnight prayer services inside brightly illuminated church halls in Chhattisgarh, initiating the joyful celebration of joy, prayer, and generous gathering. "
-        "Vibrant community puja and local fairs gather families from all backgrounds for rhythmic songs and outdoor festivities. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad to honor visiting guests."
+        "Worshippers gather for midnight mass services inside beautifully illuminated church properties in Chhattisgarh, initiating the joyful winter season. "
+        "Vibrant star lanterns and decorated pine branches turn local residential yards into colorful visual spaces. "
+        "The household hospitality centers on kitchens preparing specialized plum cake formulas to honor visiting guests."
     ),
     ("christmas", "goa"): (
-        "Bustling midnight mass celebrations and elaborate traditional crib displays define the coastal winter landscape in Goa, highlighting the beautiful focus on joy, prayer, and generous gathering. "
-        "Quiet home altars and bustling neighbourhood celebration routes provide an inclusive space for cross-community greetings. "
-        "The lively gathering concludes with families distributing sweet coconut sweets and festive savouries across their settlements."
+        "Bustling midnight mass celebrations and spectacular life-sized nativity cribs define the coastal winter landscape across Goa. "
+        "Local youth groups walk through illuminated village lanes singing classical carols under massive glowing star lanterns. "
+        "The lively holiday concludes with families distributing rich rum-infused plum cake slices across their settlements."
     ),
     ("christmas", "gujarat"): (
-        "Grand candle-lit services and vibrant neighbourhood carol groups transform residential colonies across Gujarat, magnifying the spirit of joy, prayer, and generous gathering. "
-        "Bustling garba grounds and bright rangoli work set an inclusive stage as local merchants exchange traditional holiday blessings. "
-        "Extended families wind down the joyous day by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "Grand candle-lit midnight mass services and vibrant neighborhood carol groups transform historic church yards across Gujarat. "
+        "Children carefully arrange the nativity crib figures while parents decorate imported fir trees with bright ornaments. "
+        "Extended families wind down the winter holiday by sharing large platters of plum cake along with festive local snacks."
     ),
     ("christmas", "haryana"): (
-        "The sharing of rich winter sweets and warm family assemblies brings rural neighbourhoods together across Haryana, magnifying the annual cycle of joy, prayer, and generous gathering. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood groups lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "The sharing of rich plum cake slices and warm family assemblies brings rural Christian neighborhoods together across Haryana. "
+        "Family courtyards are decorated with handmade star lanterns while youth groups rehearse seasonal carols for the community. "
+        "The home gatherings are warmed by serving sweet gajak paired with farm-style holiday baking treats."
     ),
     ("christmas", "himachal-pradesh"): (
-        "Midnight mass bells echo through snow-dusted mountain valley settlements in Himachal Pradesh, casting a beautiful contrast against themes of joy, prayer, and generous gathering. "
-        "Serene village temples and hillside processions host the community as they gather to celebrate the winter holiday. "
-        "The joyful afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around shared hearths."
+        "Midnight mass bells echo through snow-dusted mountain valley churches in Himachal Pradesh, casting a beautiful contrast. "
+        "Families gather around crackling hearths decorated with native pine cones and handmade star lanterns to sing carols. "
+        "The joyful winter afternoon is comforted by serving warm plum cake formulas alongside rich mountain-style meals."
     ),
     ("christmas", "jharkhand"): (
-        "Traditional winter choir groups draw large community circles together in Jharkhand, marking the annual arrival of joy, prayer, and generous gathering. "
-        "Open community grounds and family prayer circles allow local neighbourhoods to gather for traditional drumming and seasonal songs. "
-        "The daytime celebration is highlighted by sharing unique seasonal sweets and simple ceremonial meals with visiting friends."
+        "Traditional winter choir groups sing melodic carols inside decorated residential colonies across Jharkhand town centers. "
+        "Devotees coordinate beautiful nativity crib displays to illustrate the traditional holiday message to neighborhood youth groups. "
+        "The daytime holiday is supported by sharing unique plum cake variations with neighboring families."
     ),
     ("christmas", "karnataka"): (
-        "Grand star lanterns and beautiful nativity scenes decorate local community spaces across Karnataka neighbourhoods, initiating the southern observance of joy, prayer, and generous gathering. "
-        "Intricate flower decorations and early-morning puja rituals precede the warm exchange of festive greetings among close neighbours. "
-        "The daytime feast involves preparing delicious kosambari, payasa, and temple-style prasada for the gathered household."
+        "Grand star lanterns and intricate nativity scenes decorate local community blocks across Karnataka neighborhoods during December. "
+        "Worshippers gather for midnight mass services to offer collective prayers for global peace and household harmony. "
+        "Visiting guests are welcomed into living rooms with delicious plum cake slices alongside classic southern treats."
     ),
     ("christmas", "kerala"): (
-        "Midnight mass services, glowing paper stars, and elaborate extended family dinners define the historic Kerala approach to joy, prayer, and generous gathering. "
-        "Ornate floral designs and household lamp lighting anchor the domestic boundaries before the outdoor community greetings commence. "
-        "The gathering is marked by serving sweet payasam, banana chips, and elaborate festive spreads to participants."
+        "Solemn midnight mass services, massive paper star lanterns, and elaborate nativity crib setups define the historic Kerala approach. "
+        "Children coordinate neighborhood carol processions dressed as Santa to collect tokens for local charity funds. "
+        "The concluding holiday is celebrated by serving rich spice-infused plum cake alongside elaborate local spreads."
     ),
     ("christmas", "madhya-pradesh"): (
-        "Beautifully decorated church properties and grand midnight assemblies alter the public space of Madhya Pradesh, showcasing deep arrays of joy, prayer, and generous gathering. "
-        "Devotional mandir visits and old-city processions draw thousands out into illuminated public streets after sunset. "
-        "The local evening hospitality is accompanied by distributing savory poha-style snacks, sweets, and prasad to visitors."
+        "Beautifully decorated church grounds and grand midnight mass turnouts alter the public space of Madhya Pradesh after dark. "
+        "Neighborhood youth choirs travel across illuminated streets singing carols under massive hanging star lanterns. "
+        "The local evening hospitality features sharing slices of dark plum cake along with regional street savouries."
     ),
     ("christmas", "maharashtra"): (
-        "Glowing star lanterns illuminate private balconies across Mumbai and greater Maharashtra, making way for the joyful celebration of joy, prayer, and generous gathering. "
-        "Bustling society pandals and family aarti gatherings turn into central nodes for cross-community greetings and shared sweets. "
-        "The household celebration centers on preparing fresh, sweet modak, puran poli, and festive snacks for the neighbourhood."
+        "Glowing star lanterns illuminate private balconies across Mumbai and greater Maharashtra, initiating the winter holiday spirit. "
+        "Bustling church compounds host spectacular midnight mass services filled with classical choir carols and nativity pageants. "
+        "The household celebration centers on crafting rich plum cake options alongside traditional maharashtrian snacks."
     ),
     ("christmas", "manipur"): (
-        "The traditional singing of seasonal carols in community squares brings a deeply artistic touch to Manipur, blending the season with joy, prayer, and generous gathering. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The festive week concludes with families arranging large community feasts paired with specialized seasonal sweets."
+        "The traditional singing of community carols in village squares brings a deeply artistic touch to Manipur hills. "
+        "Congregations assemble around decorated fir trees to prepare for the grand midnight mass services. "
+        "The festive week is marked by preparing custom plum cake formulas to share among extended families."
     ),
     ("christmas", "meghalaya"): (
-        "Midnight mass and joyful neighbourhood carol groups bring diverse communities together in Meghalaya, honoring the message of joy, prayer, and generous gathering. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the winter season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Grand midnight mass turnouts and joyful neighborhood carol groups bring diverse communities together across Meghalaya. "
+        "Festive church halls are decorated with native pine branches and glowing star lanterns to host choral programs. "
+        "The warm afternoon hospitality features sharing rich plum cake slices along with unique local rice sweets."
     ),
     ("christmas", "mizoram"): (
-        "Community feast traditions and continuous choral singing connect neighbourhoods together in Mizoram, bridging local harmony with the global spirit of joy, prayer, and generous gathering. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The winter occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Community feast traditions and continuous choral carol singing connect neighborhoods together across the hills of Mizoram. "
+        "Decorated church properties and nativity crib displays allow families to gather for deep spiritual reflection. "
+        "The winter holiday is highlighted by gathering for shared plates of plum cake across local townships."
     ),
     ("christmas", "nagaland"): (
-        "Grand community feasts and continuous collective caroling are coordinated across Nagaland, marking the arrival of joy, prayer, and generous gathering. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Grand community carol festivals and continuous collective singing are beautifully coordinated across Nagaland settlements. "
+        "Vibrant church choirs decorate massive pine trees with glowing star lanterns to welcome the nativity season. "
+        "The peaceful seasonal gathering is highlighted by presenting warm plum cake slices alongside celebratory desserts."
     ),
     ("christmas", "odisha"): (
-        "The elegant midnight services at historic churches transform Odisha, elevating a profound wave of joy, prayer, and generous gathering. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "The elegant midnight mass services at historic urban churches transform local districts in Odisha during December. "
+        "Intricate nativity crib setups and glowing star lanterns decorate residential lines as families exchange holiday wishes. "
+        "The holy days are accompanied by distributing traditional sweet khaja alongside rich plum cake formulas."
     ),
     ("christmas", "punjab"): (
-        "Festive prayer services and elegant community assemblies fill local residential areas across Punjab, defining a grand display of joy, prayer, and generous gathering. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "Festive prayer services and elegant church choir assemblies fill local residential areas across Punjab during Christmas. "
+        "Children hang decorated stockings inside homes while parents prepare the nativity crib under hanging star lanterns. "
+        "The auspicious day is marked by sharing rich plum cake slices alongside festive local flatbreads."
     ),
     ("christmas", "rajasthan"): (
-        "Grand midnight mass gatherings and beautiful winter light displays fill courtyards in Rajasthan, elevating the heritage of joy, prayer, and generous gathering. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "Grand midnight mass gatherings and beautiful winter light displays fill historic church courtyards across Rajasthan. "
+        "Delicate courtyard spaces are decorated with glowing star lanterns and miniature fir trees for carol singing. "
+        "The culinary gathering centers on serving sweet plum cake variations along with rich desert treats."
     ),
     ("christmas", "sikkim"): (
-        "Midnight choral singing along hillside pathways brings communities together across Sikkim, welcoming the seasonal alignment with joy, prayer, and generous gathering. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Midnight choral carols along hillside pathways bring local communities together across the freezing ridges of Sikkim. "
+        "Families gather around decorated pine branches to present their handmade nativity crib arrangements. "
+        "The local hospitality involves sharing sweet plum cake formulas alongside warm festive rice dishes."
     ),
     ("christmas", "tamil-nadu"): (
-        "Massive midnight mass services inside ancient basilicas transform Tamil Nadu, anchoring joy, prayer, and generous gathering. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange festive sweets. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "Massive midnight mass services inside ancient coastal basilicas transform Tamil Nadu, anchoring the winter holiday. "
+        "Vibrant star lanterns and detailed nativity cribs decorate household entries as families prepare for carol groups. "
+        "The sacred season is celebrated by preparing sweet plum cake variants alongside traditional southern snacks."
     ),
     ("christmas", "telangana"): (
-        "The spectacular midnight church gatherings in Secunderabad and Hyderabad define the peak of Telangana's joy, prayer, and generous gathering. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "The spectacular midnight mass gatherings in historic Secunderabad churches define the peak of Telangana's Christmas season. "
+        "Children dress as Santa to lead neighborhood carol processions under massive glowing star lanterns. "
+        "The primary household table is filled with ritual plum cake portions alongside legendary local savouries."
     ),
     ("christmas", "tripura"): (
-        "Bright star lanterns and home-made winter cakes fill family courtyards across Tripura, mirroring the winter arrival of joy, prayer, and generous gathering. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Bright star lanterns and home-made plum cakes fill family inner courtyards across Tripura during December. "
+        "Worshippers assemble inside illuminated church structures to hear traditional nativity readings and sing carols. "
+        "The festive evening is marked by sharing traditional baked sweets alongside local festive rice dishes."
     ),
     ("christmas", "uttar-pradesh"): (
-        "The beautiful winter decorations at historic city cathedrals transform Uttar Pradesh, tracking a magnificent display of joy, prayer, and generous gathering. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "The beautiful winter decorations at historic city cathedrals transform public lanes across Uttar Pradesh. "
+        "Bustling compound gates are packed with visitors watching nativity crib pageants and listening to carols. "
+        "The high-energy days include distributing famous plum cake portions alongside traditional city sweets."
     ),
     ("christmas", "uttarakhand"): (
-        "Midnight services in pristine alpine valley church spaces define the local experience in Uttarakhand, celebrating a serene display of joy, prayer, and generous gathering. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Midnight mass services in pristine alpine valley church spaces define the winter holiday experience across Uttarakhand. "
+        "Families gather around native pine trees decorated with handmade star lanterns to sing traditional carols. "
+        "The spiritual gathering is completed by serving sweet plum cake formulas alongside custom alpine treats."
     ),
     ("christmas", "west-bengal"): (
-        "The grand winter carnivals on Park Street in Kolkata define the West Bengal celebration of joy, prayer, and generous gathering. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "The grand winter carnivals on Park Street in Kolkata define the iconic West Bengal Christmas celebration. "
+        "Millions of visitors walk under brilliant star lanterns to view spectacular nativity crib setups and hear live carols. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom plum cake slices."
     ),
     ("christmas", "nri-london"): (
-        "Traditional winter carols and glowing paper stars hung in windows protect the London diaspora as they maintain the heritage of joy, prayer, and generous gathering. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the winter transition by packing potluck sweets and temple prasada to share with global friends."
+        "Traditional winter mass services and glowing star lanterns hung in windows protect the London diaspora heritage. "
+        "Bustling weekend events connect families across boroughs for synchronized carol concerts and nativity plays. "
+        "Expatriates mark the winter transition by packing tupperware containers of plum cake to share with international friends."
     ),
     ("christmas", "nri-new-york"): (
-        "Vibrant family dinners and bright star lanterns mark New York diaspora gatherings, celebrating the arrival of joy, prayer, and generous gathering. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the winter nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Vibrant family dinners and bright star lanterns mark New York diaspora apartment spaces during the winter holidays. "
+        "Children hang their stockings by the mantle while parents arrange the nativity crib before attending midnight mass. "
+        "The diaspora gathering concludes with sharing custom plum cake variations within local networks."
     ),
 
 
