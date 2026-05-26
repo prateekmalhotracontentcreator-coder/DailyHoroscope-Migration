@@ -717,9 +717,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The autumn occasion is highlighted by gathering for shared plates of modak across local townships."
     ),
     ("ganesh-chaturthi", "nagaland"): (
-        "Quiet home altars are decorated with fresh autumn flowers across Nagaland, celebrating the spiritual presence of the clay Ganesha idol. "
-        "Vibrant collective singing provides a welcoming environment for families participating in the 10-day pandal rituals. "
-        "The peaceful seasonal gathering concludes with a serene visarjan immersion paired with sweet ukadiche modak treats."
+        "Ganesh sthapana ceremonies initiate the festive schedule in Nagaland as families welcome the deity into their homes. "
+        "Worshippers strike heavy brass cymbals and play dhol tasha instruments to signal the formal beginning of the rituals. "
+        "The household gathering culminates in distributing sweet steaming batches of coconut-jaggery modak."
     ),
     ("ganesh-chaturthi", "odisha"): (
         "The traditional installation of the clay Ganesha idol inside schools and community blocks transforms local districts across Odisha. "
@@ -1008,9 +1008,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The family gathering centers on preparing fresh thandai formulas alongside fresh bel leaves and sweets."
     ),
     ("maha-shivaratri", "manipur"): (
-        "Devotional storytelling and classical musical sequences fill local temples in Manipur, blending the seasonal shift with the night-long jaagran. "
-        "Expressive cultural performances offer a deeply classical avenue for communities participating in the shiva lingam abhishek. "
-        "The sacred day is marked by preparing custom bhaang formulas to share along with fresh bilva patra."
+        "Shiva linga abhishek rituals performed at local shrines transform the night into a period of deep spiritual focus across Manipur. "
+        "Worshippers maintain a strict night-long fast while carefully washing the sacred stone with raw milk and honey. "
+        "Exhausted devotees conclude their intensive meditation sessions by consuming cups of freshly strained thandai."
     ),
     ("maha-shivaratri", "meghalaya"): (
         "Sacred fasts and twilight prayer groups bring diverse communities together in Meghalaya to invoke the grace of Mahakaal. "
@@ -1023,9 +1023,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The winter occasion is highlighted by gathering for shared plates of thandai across local townships."
     ),
     ("maha-shivaratri", "nagaland"): (
-        "Quiet hilltop altars are decorated with fresh winter flowers across Nagaland, celebrating the spiritual presence of Mahakaal. "
-        "Vibrant collective singing provides a welcoming environment for families participating in the night-long jaagran rituals. "
-        "The peaceful seasonal gathering concludes with a serene shiva lingam abhishek paired with sweet bhaang treats."
+        "A jaagran vigil keeps local devotees completely awake until daylight hours inside traditional hillside structures across Nagaland. "
+        "Devout individuals repeatedly offer fresh green bilva leaves while softly counting holy prayer beads in absolute silence. "
+        "The deep meditation cycle finishes when the participants drink a traditional beverage containing cooling bhaang."
     ),
     ("maha-shivaratri", "odisha"): (
         "The majestic lighting of the Mahadipa atop ancient Shiva temples transforms local districts across Odisha during the night-long jaagran. "
@@ -1620,9 +1620,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The modern urban holiday is celebrated by launching a lively Vaisakhi mela filled with traditional culinary booths."
     ),
     ("baisakhi", "manipur"): (
-        "Harvest thanksgiving rituals and classical devotional musical sequences fill local temples in Manipur, blending the seasonal shift with the solar new year. "
-        "Expressive cultural performances offer a deeply classical avenue for communities participating in the spring harvest. "
-        "The sacred day is marked by preparing custom meethe chawal formulas to share among extended families."
+        "Khalsa procession marches snake through the streets of Manipur to honor the historic foundational memories of the faith. "
+        "Vibrant youth groups beat heavy drums and leap into high-energy bhangra patterns to gather the local community. "
+        "The daytime gathering draws to a close as volunteers distribute large steel platters of hot sarson da saag."
     ),
     ("baisakhi", "meghalaya"): (
         "Fresh spring grain displays and twilight prayer groups bring diverse neighborhoods together in Meghalaya to observe the holiday. "
