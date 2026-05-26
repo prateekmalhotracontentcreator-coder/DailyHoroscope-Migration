@@ -632,154 +632,154 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
 
     # ── GANESH CHATURTHI (Batch 5 -- all 30 regions) ──────────────────────────
     ("ganesh-chaturthi", "andhra-pradesh"): (
-        "Welcoming the clay idol with evening aarti and sweet modak blocks marks the autumn shift across Andhra Pradesh, centering on auspicious beginnings and Ganapati devotion. "
-        "The spiritual energy fills local neighborhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families conclude their ten-day immersion rituals by sharing temple pulihora and laddus with visiting neighbourhood circles."
+        "Devotees welcome the sacred clay Ganesha idol into beautifully decorated threshold spaces across Andhra Pradesh to initiate the holy period. "
+        "Residential communities install a massive 10-day pandal where morning aarti sessions praise the elephant-headed deity with absolute devotion. "
+        "The auspicious celebration concludes with a grand visarjan immersion procession while families distribute sweet modak portions to the neighborhood."
     ),
     ("ganesh-chaturthi", "arunachal-pradesh"): (
-        "Sacred modak offerings and bright oil lamps welcome Vinayaka idols across Arunachal Pradesh homes, anchoring the seasonal focus on auspicious beginnings and Ganapati devotion. "
-        "Bustling community halls and family gatherings fill with traditional hymns as families gather for the festive evening aarti. "
-        "The primary celebration concludes with households gathering to share custom community sweets and festive rice dishes."
+        "The installation of a sculpted clay Ganesha idol brings a highly vibrant visual focus to Arunachal Pradesh valley settlements. "
+        "Families gather inside the neighborhood 10-day pandal as echoing cries of Ganapati Bappa Morya mark the evening prayer hours. "
+        "The festive milestone concludes with households gathering to share custom ukadiche modak variations alongside regional treats."
     ),
     ("ganesh-chaturthi", "assam"): (
-        "The joyful welcoming of clay Ganesha idols reshapes the domestic rhythm in Assam, reflecting the festival's focus on auspicious beginnings and Ganapati devotion. "
-        "Joyous music, prayer, and neighbourhood visits elevate local community spaces during the twilight puja transitions. "
-        "The sacred cycle is enriched by serving traditional pitha, payas, and festive rice offerings to the neighbourhood."
+        "The joyful welcoming of a pristine clay Ganesha idol alters the local domestic rhythm across diverse Assamese town centers. "
+        "Neighborhood circles gather around the colorful 10-day pandal structures to offer daily modak plates before the morning prayers. "
+        "The holy cycle finishes with an emotional visarjan immersion ceremony paired with traditional Assamese pitha sweets."
     ),
     ("ganesh-chaturthi", "bihar"): (
-        "Special home altars and standard dahi handi decorations define the household atmosphere in Bihar, celebrating days of auspicious beginnings and Ganapati devotion. "
-        "Bustling ghat visits and family puja routines allow large extended families to gather for collective bhajan recitations. "
-        "The daily ceremonial transition is marked by preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "Temporary street gates lead to a spectacular 10-day pandal setup in Bihar, honoring the auspicious arrival of the elephant-headed deity. "
+        "Large extended families gather before the clay Ganesha idol to chant traditional bhajans and witness the high-energy evening aarti routines. "
+        "Fasting participants complete their observations by sharing sweet ukadiche modak portions alongside home-cooked bihari savouries."
     ),
     ("ganesh-chaturthi", "chhattisgarh"): (
-        "Neighbourhood pandals house beautifully sculpted clay idols across Chhattisgarh, initiating the autumn celebration of auspicious beginnings and Ganapati devotion. "
-        "Vibrant community puja and local fairs bring farming communities together for evening folk dances and traditional prayers. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad for daily offerings."
+        "Flickering lamps illuminate neighborhood 10-day pandal enclosures across Chhattisgarh, signaling the grand welcoming of the divine protector. "
+        "The air echoes with ecstatic cries of Ganapati Bappa Morya as community groups assemble for the main household offerings. "
+        "Kitchens remain highly active crafting specialized modak varieties and sweet rice dishes to distribute before the visarjan immersion."
     ),
     ("ganesh-chaturthi", "goa"): (
-        "The traditional Chovoth festival features unique clay idols decorated with wild flowers and fruits in Goa, channeling a beautiful wave of auspicious beginnings and Ganapati devotion. "
-        "Quiet home altars and bustling neighbourhood celebration routes define the spatial layout of the local evening prayers. "
-        "The sacred period is marked by sharing unique coconut sweets and festive savouries among long-time neighbors."
+        "The traditional Chovoth festival brings unique clay Ganesha idol variations decorated with wild forest blossoms across coastal Goa. "
+        "Families gather inside local household prayer spaces to offer sweet ukadiche modak treats during the twilight puja transitions. "
+        "The sacred period concludes with an emotional visarjan immersion procession winding down to local rivers and beaches."
     ),
     ("ganesh-chaturthi", "gujarat"): (
-        "Bustling street pandals and echoing cries of Ganpati Bappa Morya transform public areas across Gujarat, magnifying the festive energy of auspicious beginnings and Ganapati devotion. "
-        "Bustling garba grounds and bright rangoli work completely transform public and private squares under bright festive lights. "
-        "Extended families mark the joyful transition by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "Grand public avenues host spectacular street processions in Gujarat as communities gather to install the clay Ganesha idol. "
+        "Bustling city blocks are transformed by the presence of the 10-day pandal where youth groups lead high-energy evening dances. "
+        "Devotees replenish their energy late into the night by sharing plates of sweet modak alongside festive local thalis."
     ),
     ("ganesh-chaturthi", "haryana"): (
-        "Domestic shrines are beautifully decorated for the welcoming of Lord Ganesha across Haryana, magnifying the annual cycle of auspicious beginnings and Ganapati devotion. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood women lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "Domestic shrines are beautifully swept clean for the welcoming of the clay Ganesha idol across Haryana agricultural settlements. "
+        "Neighborhood women lead traditional folk prayers inside the local 10-day pandal to pray for family health and baseline prosperity. "
+        "The home gathering is warmed by distributing hot ukadiche modak variations paired with farm-style dairy delicacies."
     ),
     ("ganesh-chaturthi", "himachal-pradesh"): (
-        "Community pandals emerge amidst the cold mountain air across Himachal Pradesh, anchoring local valleys in auspicious beginnings and Ganapati devotion. "
-        "Serene village temples and hillside processions host local clans traveling across valleys to pay homage to their deities. "
-        "The spiritual afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around communal hearths."
+        "Hillside settlements host local clans traveling across cold valleys in Himachal Pradesh to visit the grand 10-day pandal. "
+        "The mountain air echoes with synchronized cries of Ganapati Bappa Morya as families gather before the clay Ganesha idol. "
+        "The spiritual afternoon is comforted by serving sweet modak formulas alongside rich mountain-style meals before the visarjan immersion."
     ),
     ("ganesh-chaturthi", "jharkhand"): (
-        "Devotional songs echo through illuminated temporary shrines in Jharkhand, marking the seasonal alignment with auspicious beginnings and Ganapati devotion. "
-        "Open community grounds and family prayer circles provide an inclusive space for traditional drumming and evening chants. "
-        "The ten-day period is supported by sharing unique seasonal sweets and simple ceremonial meals within families."
+        "Devotional songs echo through illuminated temporary shrines in Jharkhand, tracking the multi-day presence of the clay Ganesha idol. "
+        "Worshippers coordinate peaceful community gatherings inside the 10-day pandal to swap traditional stories regarding the elephant-headed deity. "
+        "The auspicious period is supported by sharing unique ukadiche modak mixtures with neighboring residential lines."
     ),
     ("ganesh-chaturthi", "karnataka"): (
-        "The sacred Gowri-Ganesha rituals and beautifully crafted clay idols transform local living rooms across Karnataka, celebrating auspicious beginnings and Ganapati devotion. "
-        "Intricate flower decorations and early-morning puja rituals re-energize the household as children arrange the sacred steps. "
-        "Visiting guests are welcomed into homes with delicious kosambari, payasa, and temple-style prasada."
+        "The sacred Gowri-Ganesha configurations and beautiful clay Ganesha idol displays transform local living rooms across Karnataka. "
+        "Intricate flower pathways line the approach to the neighborhood 10-day pandal where morning stotra recitations are systematically chanted. "
+        "Visiting guests are welcomed into homes with delicious modak variations alongside classic southern treats."
     ),
     ("ganesh-chaturthi", "kerala"): (
-        "The rare Lambodhara aarti and specific temple offerings define the Kerala approach to auspicious beginnings and Ganapati devotion. "
-        "Ornate floral designs and household lamp lighting ground the final three days of the sacred calendar in absolute stillness. "
-        "The concluding celebration is marked by serving sweet payasam, banana chips, and elaborate festive spreads."
+        "The rare Lambodhara aarti and specific temple offerings define the Kerala approach to welcoming the clay Ganesha idol. "
+        "A serene domestic atmosphere sets a deeply meditative stage before the emotional visarjan immersion processions begin at local waterways. "
+        "The concluding hour is celebrated by serving sweet ukadiche modak variants alongside elaborate banana leaf spreads."
     ),
     ("ganesh-chaturthi", "madhya-pradesh"): (
-        "High-energy community pandals and grand temporary shrines alter the urban space of Madhya Pradesh, showcasing deep auspicious beginnings and Ganapati devotion. "
-        "Devotional mandir visits and old-city processions draw thousands out into illuminated public streets after sunset. "
-        "The local evening hospitality is accompanied by distributing savory poha-style snacks, sweets, and prasad to visitors."
+        "High-energy street gates and grand temporary structures alter the urban space of Madhya Pradesh during the 10-day pandal phase. "
+        "Devotees look for the pristine clay Ganesha idol to offer daily modak plates and join collective twilight chants. "
+        "The local evening hospitality features sharing bowls of ukadiche modak along with regional street savouries."
     ),
     ("ganesh-chaturthi", "maharashtra"): (
-        "The grand welcoming with aarti and modak builds toward the magnificent immersion procession that defines the legendary Maharashtra celebration of auspicious beginnings and Ganapati devotion. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The daily family gathering centers on preparing fresh, sweet modak, puran poli, and festive snacks."
+        "Ecstatic cries of Ganapati Bappa Morya and massive street dhol loops define the legendary Maharashtra celebration of the clay Ganesha idol. "
+        "Millions of residents complete intense daily aarti loops inside spectacular neighborhood 10-day pandal complexes under bright lights. "
+        "The unparalleled cultural milestone concludes with a jaw-dropping visarjan immersion procession paired with endless trays of ukadiche modak."
     ),
     ("ganesh-chaturthi", "manipur"): (
-        "Devotional storytelling and classical sequences fill local temples in Manipur, blending the season with auspicious beginnings and Ganapati devotion. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The sacred week concludes with neighbourhoods arranging large community feasts paired with specialized seasonal sweets."
+        "Devotional storytelling and graceful musical sequences fill local mandaps in Manipur, blending the seasonal shift with the clay Ganesha idol. "
+        "Expressive cultural performances offer a deeply classical avenue for communities participating in the 10-day pandal worship. "
+        "The sacred day is marked by preparing custom modak formulas to share among extended family networks."
     ),
     ("ganesh-chaturthi", "meghalaya"): (
-        "Sacred fasts and twilight prayer groups bring families together in Meghalaya, honoring the message of auspicious beginnings and Ganapati devotion. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the autumn season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Sacred fasts and twilight prayer groups bring diverse communities together in Meghalaya to welcome the clay Ganesha idol. "
+        "Festive community spaces host peaceful cultural gatherings to celebrate the traditional closing steps of the visarjan immersion. "
+        "The warm afternoon hospitality features sharing bowls of ukadiche modak along with unique local rice sweets."
     ),
     ("ganesh-chaturthi", "mizoram"): (
-        "Traditional oil lamps illuminate private balconies in Mizoram, bridging local harmony with the global focus on auspicious beginnings and Ganapati devotion. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The autumn occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Traditional oil lamps illuminate private balconies in Mizoram, bridging local harmony with the global focus on the clay Ganesha idol. "
+        "Decorated community spaces allow families to gather inside the 10-day pandal for collective evening prayers and updates. "
+        "The autumn occasion is highlighted by gathering for shared plates of modak across local townships."
     ),
     ("ganesh-chaturthi", "nagaland"): (
-        "Quiet home altars are decorated with autumn flowers across Nagaland, celebrating the spiritual presence of auspicious beginnings and Ganapati devotion. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Quiet home altars are decorated with fresh autumn flowers across Nagaland, celebrating the spiritual presence of the clay Ganesha idol. "
+        "Vibrant collective singing provides a welcoming environment for families participating in the 10-day pandal rituals. "
+        "The peaceful seasonal gathering concludes with a serene visarjan immersion paired with sweet ukadiche modak treats."
     ),
     ("ganesh-chaturthi", "odisha"): (
-        "The traditional installation of Ganesh idols inside schools and community blocks transforms Odisha, elevating days of deep auspicious beginnings and Ganapati devotion. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "The traditional installation of the clay Ganesha idol inside schools and community blocks transforms local districts across Odisha. "
+        "Intricate designs line the paths leading to the 10-day pandal where families gather to receive the deity's blessings. "
+        "The holy days are accompanied by distributing traditional modak along with classic temple sweets."
     ),
     ("ganesh-chaturthi", "punjab"): (
-        "The welcoming of Ganesha idols brings unique community gatherings and sweet distributions across Punjab, defining a grand celebration of auspicious beginnings and Ganapati devotion. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "The welcoming of the clay Ganesha idol brings unique community gatherings and sweet distributions across Punjab residential lines. "
+        "Neighborhood families coordinate vibrant devotional tracks inside the 10-day pandal to echo cries of Ganapati Bappa Morya. "
+        "The auspicious day is marked by sharing warm ukadiche modak alongside festive local rotis."
     ),
     ("ganesh-chaturthi", "rajasthan"): (
-        "Traditional folk chants and grand temple processions fill historic neighbourhoods in Rajasthan, elevating the heritage of auspicious beginnings and Ganapati devotion. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "High-energy temple processions and traditional folk music fill historic courtyards in Rajasthan during the 10-day pandal phase. "
+        "Delicate courtyard decorations provide a dramatic setting for late-night aarti sessions honoring the clay Ganesha idol. "
+        "The culinary gathering centers on serving sweet modak variations along with rich desert treats."
     ),
     ("ganesh-chaturthi", "sikkim"): (
-        "Hillside altars are dressed in fresh autumn leaves across Sikkim, welcoming the seasonal alignment with auspicious beginnings and Ganapati devotion. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Hillside altars are dressed in fresh autumn leaves across Sikkim, welcoming the seasonal alignment with the clay Ganesha idol. "
+        "Grounded community prayer brings mountain settlements together inside the 10-day pandal for peaceful songs and shared blessings. "
+        "The local hospitality involves sharing sweet ukadiche modak formulas among remote neighborhoods."
     ),
     ("ganesh-chaturthi", "tamil-nadu"): (
-        "The preparation of traditional kozhukattai and clay Vinayaka idols transforms Tamil Nadu homes, anchoring auspicious beginnings and Ganapati devotion. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange sundal packets. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "The preparation of traditional kozhukattai and handmade clay Ganesha idol variations completely transforms Tamil Nadu households. "
+        "Vibrant art and dawn rituals reshape the domestic rhythm as families complete their 10-day pandal devotion steps. "
+        "The sacred season is celebrated by preparing sweet modak variants alongside traditional southern snacks."
     ),
     ("ganesh-chaturthi", "telangana"): (
-        "The massive Khairatabad Ganesha idols and grand temporary stages transform Telangana, highlighting the local form of auspicious beginnings and Ganapati devotion. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "The massive Khairatabad Ganesha idols and spectacular public structures transform Telangana plazas during the 10-day pandal phase. "
+        "Community devotion sets a highly active and colorful public stage for evening water-facing visarjan immersion processions. "
+        "The primary household table is filled with ritual ukadiche modak alongside assorted local savouries."
     ),
     ("ganesh-chaturthi", "tripura"): (
-        "Devotional stotra recitations fill local community halls across Tripura, mirroring the autumn arrival of auspicious beginnings and Ganapati devotion. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbors."
+        "Devotional stotra recitations fill local community halls across Tripura, mirroring the autumn arrival of the clay Ganesha idol. "
+        "Community spaces turn into lively meeting points for families participating in the final visarjan immersion lines. "
+        "The evening hospitality is highlighted by sharing traditional singori alongside custom modak dishes."
     ),
     ("ganesh-chaturthi", "uttar-pradesh"): (
-        "Grand neighbourhood pandals, dahi handi competitions, and late-night processions transform Uttar Pradesh, tracking days of auspicious beginnings and Ganapati devotion. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "Grand neighborhood structures, dahi handi competitions, and late-night pandal hopping transform public lanes across Uttar Pradesh. "
+        "Ancient public squares create an unmatched devotional scale as crowds gather to shout Ganapati Bappa Morya in unison. "
+        "The high-energy days include distributing famous modak portions alongside traditional city prasad."
     ),
     ("ganesh-chaturthi", "uttarakhand"): (
-        "Hilltop temple pilgrimages and sacred fasts define the local experience in Uttarakhand, celebrating auspicious beginnings and Ganapati devotion. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Hilltop temple pilgrimages and sacred fasting routines define the local experience in Uttarakhand during the 10-day pandal phase. "
+        "Ancient hill temples bring remote mountain settlements together for protective collective prayers honoring the clay Ganesha idol. "
+        "The spiritual gathering concludes with a quiet visarjan immersion paired with hot ukadiche modak treats."
     ),
     ("ganesh-chaturthi", "west-bengal"): (
-        "The installation of Ganesha idols inside artistic community spaces initiates the festival season in West Bengal, showcasing a beautiful wave of auspicious beginnings and Ganapati devotion. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "The installation of a gorgeous clay Ganesha idol inside artistic community spaces initiates the autumn festival season in West Bengal. "
+        "Artistic neighborhood structures alter the local landscape during the twilight hours of the 10-day pandal. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom ukadiche modak sweets."
     ),
     ("ganesh-chaturthi", "nri-london"): (
-        "Massive community centers host vibrant immersion processions across London, allowing the diaspora to maintain ancestral auspicious beginnings and Ganapati devotion. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the autumn transition by packing potluck sweets and temple prasada to share with global friends."
+        "Massive hired assembly halls host vibrant visarjan immersion simulations across London, preserving the rich ancestral heritage. "
+        "Bustling weekend events connect families across boroughs for synchronized evening aarti routines and cries of Ganapati Bappa Morya. "
+        "Expatriates mark the autumn transition by packing tupperware containers of modak to share with global friends."
     ),
     ("ganesh-chaturthi", "nri-new-york"): (
-        "Community centers host high-energy aarti and modak distributions in New York, preserving the heritage of auspicious beginnings and Ganapati devotion. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Community centers host high-energy aarti routines and modak distributions in New York, honoring the traditions of the clay Ganesha idol. "
+        "Ornate temple halls and family video calls bridge the long distance for relatives celebrating inside the 10-day pandal. "
+        "The diaspora gathering concludes with sharing custom ukadiche modak variations within local networks."
     ),
 
 
@@ -938,154 +938,154 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
 
     # ── MAHA SHIVARATRI (Batch 7 -- all 30 regions) ───────────────────────────
     ("maha-shivaratri", "andhra-pradesh"): (
-        "The unbroken four-prahara night vigil and sacred shiva abhishek pour over ancient lingams in Andhra Pradesh, centering on a night vigil, mantra, and inward stillness. "
-        "The intense meditative energy fills local neighbourhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families mark the auspicious celebration by sharing traditional pulihora and laddus after surrendering their sleep for the night."
+        "The pouring of sacred milk and water during the shiva lingam abhishek alters ancient temple spaces across Andhra Pradesh. "
+        "Devotees observe a strict single-day fast while gathering for a solemn night-long jaagran to invoke the grace of Mahakaal. "
+        "The auspicious night concludes with families offering fresh bilva patra before sharing traditional thandai drinks with neighborhood circles."
     ),
     ("maha-shivaratri", "arunachal-pradesh"): (
-        "Strict fasting and midnight oil lamps anchor alpine valley shrines across Arunachal Pradesh, tracking the seasonal focus on a night vigil, mantra, and inward stillness. "
-        "Bustling community halls and family gatherings fill with silent prayers as families gather for the grand midnight offerings. "
-        "The spiritual morning concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Strict fasting and midnight oil lamps anchor alpine valley shrines across Arunachal Pradesh, tracking the praise of Mahakaal. "
+        "Bustling community spaces fill with silent prayers as families gather for the night-long jaagran under mountain skies. "
+        "The spiritual morning concludes with households gathering to share custom thandai mixtures paired with regional treats."
     ),
     ("maha-shivaratri", "assam"): (
-        "Continuous chantings of the Shiva Purana and sacred bilva leaf offerings alter the domestic rhythm in Assam, reflecting a deep focus on a night vigil, mantra, and inward stillness. "
-        "Joyous music, prayer, and neighbourhood visits elevate local community spaces during the twilight transit hours. "
-        "The sacred cycle is enriched by serving traditional pitha, payas, and festive rice offerings to the neighbourhood."
+        "Continuous chantings of the Shiva Purana and sacred bel leaves offerings alter the local domestic rhythm across Assam. "
+        "Neighborhood circles gather around illuminated shrines for the solemn night-long jaagran to focus on inward meditative stillness. "
+        "The holy cycle is enriched by serving traditional bhaang infusions alongside traditional Assamese pitha varieties."
     ),
     ("maha-shivaratri", "bihar"): (
-        "The symbolic wedding procession of Shiva or Shivaratri Mahotsav fills streets in Bihar, celebrating a magnificent display of a night vigil, mantra, and inward stillness. "
-        "Bustling ghat visits and family puja routines allow large extended families to gather for collective mantra recitations. "
-        "The daily ceremonial transition is marked by preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "The symbolic wedding procession of the deity fills public streets in Bihar, celebrating the glorious presence of Mahakaal. "
+        "The community gathers for elaborate shiva lingam abhishek rituals, placing fresh bilva patra atop the sacred stones. "
+        "Fasting families break their daily restrictions by drinking custom thandai alongside classic home-cooked bihari savouries."
     ),
     ("maha-shivaratri", "chhattisgarh"): (
-        "Thousands of oil lamps illuminate the banks of holy rivers across Chhattisgarh, initiating the quiet celebration of a night vigil, mantra, and inward stillness. "
-        "Vibrant community puja and local fairs bring farming communities together for evening folk dances and traditional prayers. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad for daily offerings."
+        "Thousands of earthen lamps illuminate the banks of holy rivers across Chhattisgarh, initiating the night-long jaagran phase. "
+        "Devotees coordinate extensive public slots to complete the sacred shiva lingam abhishek with milk and honey. "
+        "Kitchens prepare specialized bhaang items and home-style desserts to distribute alongside fresh bel leaves."
     ),
     ("maha-shivaratri", "goa"): (
-        "Serene oil lamp illuminations turn temple courtyards into spaces of absolute calm in Goa, channeling a beautiful wave of a night vigil, mantra, and inward stillness. "
-        "Quiet home altars and bustling neighbourhood celebration routes define the spatial layout of the local evening prayers. "
-        "The sacred period is marked by sharing unique coconut sweets and festive savouries among long-time neighbours."
+        "Serene oil lamp illuminations turn Goan temple courtyards into spaces of absolute calm during the shiva lingam abhishek. "
+        "Families coordinate intricate night-long jaagran routines to invite protective energies and mantra vibrations into their neighborhoods. "
+        "The sacred time involves sharing delicious thandai drinks alongside coastal coconut desserts with visiting families."
     ),
     ("maha-shivaratri", "gujarat"): (
-        "The grand Mahashivaratri fair at the base of Mount Girnar draws massive crowds in Gujarat, magnifying the festive energy of a night vigil, mantra, and inward stillness. "
-        "Bustling garba grounds and bright rangoli work completely transform public and private squares under bright festive lights. "
-        "Dancers replenish their energy late into the night by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "The grand midnight fair at the base of Mount Girnar draws massive crowds in Gujarat to praise the glory of Mahakaal. "
+        "Bustling city blocks are transformed by deep mantra recitations as families present fresh bilva patra to the shrines. "
+        "Devotees replenish their energy late into the night by sharing cups of bhaang alongside festive local thalis."
     ),
     ("maha-shivaratri", "haryana"): (
-        "Devout pouring of milk and water over neighbourhood shrines brings communities together across Haryana, magnifying the annual cycle of a night vigil, mantra, and inward stillness. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood women lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "The devout offering of fresh bel leaves and milk over neighborhood shrines brings agricultural families together across Haryana. "
+        "Neighborhood women lead traditional folk prayers during the solemn night-long jaagran to invoke protective cosmic guidance. "
+        "The home gathering is warmed by distributing sweet thandai variations paired with farm-style dairy delicacies."
     ),
     ("maha-shivaratri", "himachal-pradesh"): (
-        "The world-renowned Mandi Shivaratri fair transforms historic valley temples across Himachal Pradesh, anchoring local valleys in a vibrant display of a night vigil, mantra, and inward stillness. "
-        "Serene village temples and hillside processions host local clans traveling across valleys to pay homage to their deities. "
-        "The spiritual afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around communal hearths."
+        "The world-renowned Mandi fair transforms historic valley temples across Himachal Pradesh under the name of Mahakaal. "
+        "Local clans travel across valleys to participate in grand temple-style shiva lingam abhishek gatherings. "
+        "The spiritual afternoon is comforted by serving warm thandai formulas alongside fresh bilva patra and mountain meals."
     ),
     ("maha-shivaratri", "jharkhand"): (
-        "Continuous pouring of milk, honey, and bhasma marks residential colonies in Jharkhand, marking the seasonal alignment with a night vigil, mantra, and inward stillness. "
-        "Open community grounds and family prayer circles provide an inclusive space for traditional drumming and evening chants. "
-        "The nine-day fast is supported by sharing unique seasonal sweets and simple ceremonial meals within families."
+        "Continuous pouring of panchamrut and bhasma marks residential colonies in Jharkhand, tracking the holy night-long jaagran. "
+        "Devotees coordinate peaceful community prayer circles to offer collective gratitude while arranging fresh bel leaves. "
+        "The fasting period is supported by sharing unique bhaang mixtures with neighboring residential lines."
     ),
     ("maha-shivaratri", "karnataka"): (
-        "Night-long cultural performances and deep meditation vigils transform local temples across Karnataka, celebrating a night vigil, mantra, and inward stillness. "
-        "Intricate flower decorations and early-morning puja rituals re-energize the household as children arrange the sacred steps. "
-        "Visiting guests are welcomed into homes with delicious kosambari, payasa, and temple-style prasada."
+        "Night-long cultural performances and deep meditation vigils transform local temples across Karnataka during the night-long jaagran. "
+        "Intricate flower pathways line the approach to the shiva lingam abhishek where morning stotra recitations are systematically chanted. "
+        "Visiting guests are welcomed into homes with delicious thandai variations alongside classic southern treats."
     ),
     ("maha-shivaratri", "kerala"): (
-        "The chanting of the Panchakshari mantra and continuous temple steps create a profound atmosphere in Kerala, marking a unique southern expression of a night vigil, mantra, and inward stillness. "
-        "Ornate floral designs and household lamp lighting ground the final three days of the sacred calendar in absolute stillness. "
-        "The concluding celebration is marked by serving sweet payasam, banana chips, and elaborate festive spreads."
+        "The chanting of the Panchakshari mantra and continuous temple steps create a profound atmosphere in Kerala during the night-long jaagran. "
+        "A serene domestic atmosphere sets a deeply meditative stage for intense shiva lingam abhishek rituals inside traditional shrines. "
+        "The concluding hour is celebrated by serving sweet thandai variants alongside fresh bilva patra offerings."
     ),
     ("maha-shivaratri", "madhya-pradesh"): (
-        "The majestic celebrations at the ancient Mahakaleshwar temple in Ujjain draw millions across Madhya Pradesh, showcasing deep arrays of a night vigil, mantra, and inward stillness. "
-        "Devotional mandir visits and old-city processions draw thousands out into illuminated public streets after sunset. "
-        "The local evening hospitality is accompanied by distributing savory poha-style snacks, sweets, and prasad to visitors."
+        "The majestic celebrations at the ancient Mahakaleshwar temple in Ujjain draw millions across Madhya Pradesh to praise Mahakaal. "
+        "Devotional shrines draw thousands of residents into illuminated public streets after dark for the night-long jaagran. "
+        "The local evening hospitality features sharing bowls of bhaang alongside regional street-style thandai."
     ),
     ("maha-shivaratri", "maharashtra"): (
-        "The systematic pouring of panchamrut over sacred lingams anchors local neighbourhood complexes across Maharashtra, initiating days of a night vigil, mantra, and inward stillness. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The daily family gathering centers on preparing fresh, sweet modak, puran poli, and festive snacks."
+        "The systematic pouring of panchamrut over sacred icons anchors local neighborhood complexes across Maharashtra during the night-long jaagran. "
+        "Bustling society spaces turn into lively centers for continuous shiva lingam abhishek and collective aarti routines. "
+        "The family gathering centers on preparing fresh thandai formulas alongside fresh bel leaves and sweets."
     ),
     ("maha-shivaratri", "manipur"): (
-        "Devotional storytelling and classical musical sequences fill local temples in Manipur, blending the season with a night vigil, mantra, and inward stillness. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The sacred week concludes with neighbourhoods arranging large community feasts paired with specialized seasonal sweets."
+        "Devotional storytelling and classical musical sequences fill local temples in Manipur, blending the seasonal shift with the night-long jaagran. "
+        "Expressive cultural performances offer a deeply classical avenue for communities participating in the shiva lingam abhishek. "
+        "The sacred day is marked by preparing custom bhaang formulas to share along with fresh bilva patra."
     ),
     ("maha-shivaratri", "meghalaya"): (
-        "Sacred fasts and twilight prayer groups bring families together in Meghalaya, honoring the message of a night vigil, mantra, and inward stillness. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the autumn season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Sacred fasts and twilight prayer groups bring diverse communities together in Meghalaya to invoke the grace of Mahakaal. "
+        "Festive community spaces host peaceful cultural gatherings to celebrate the traditional segments of the night-long jaagran. "
+        "The warm afternoon hospitality features sharing bowls of thandai along with unique local rice sweets."
     ),
     ("maha-shivaratri", "mizoram"): (
-        "Traditional oil lamps illuminate private balconies in Mizoram, bridging local harmony with the global focus on a night vigil, mantra, and inward stillness. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The autumn occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Traditional oil lamps illuminate private balconies in Mizoram, bridging local harmony with the global focus on the night-long jaagran. "
+        "Decorated community spaces allow families to gather for collective shiva lingam abhishek prayers and updates. "
+        "The winter occasion is highlighted by gathering for shared plates of thandai across local townships."
     ),
     ("maha-shivaratri", "nagaland"): (
-        "Quiet hilltop altars are decorated with sacred flowers across Nagaland, celebrating the spiritual presence of a night vigil, mantra, and inward stillness. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Quiet hilltop altars are decorated with fresh winter flowers across Nagaland, celebrating the spiritual presence of Mahakaal. "
+        "Vibrant collective singing provides a welcoming environment for families participating in the night-long jaagran rituals. "
+        "The peaceful seasonal gathering concludes with a serene shiva lingam abhishek paired with sweet bhaang treats."
     ),
     ("maha-shivaratri", "odisha"): (
-        "The majestic lighting of the Mahadipa atop ancient Shiva temples transforms Odisha, elevating a profound wave of a night vigil, mantra, and inward stillness. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "The majestic lighting of the Mahadipa atop ancient Shiva temples transforms local districts across Odisha during the night-long jaagran. "
+        "Intricate designs line the paths leading to the shiva lingam abhishek where families gather to offer fresh bilva patra. "
+        "The holy days are accompanied by distributing traditional thandai along with classic temple sweets."
     ),
     ("maha-shivaratri", "punjab"): (
-        "Shobha yatras and intense continuous kirtan sessions fill local residential areas across Punjab, defining a grand display of a night vigil, mantra, and inward stillness. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious eighth day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "Shobha yatras and intense continuous kirtan sessions fill local residential areas across Punjab during the night-long jaagran. "
+        "Neighborhood families coordinate vibrant devotional tracks inside community centres to praise the supreme majesty of Mahakaal. "
+        "The auspicious day is marked by sharing warm bhaang alongside fresh bel leaves and rotis."
     ),
     ("maha-shivaratri", "rajasthan"): (
-        "Traditional folk chants and grand temple processions fill royal courtyards in Rajasthan, elevating the heritage of a night vigil, mantra, and inward stillness. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "Traditional folk chants and grand temple processions fill historic courtyards in Rajasthan during the night-long jaagran phase. "
+        "Delicate courtyard decorations provide a dramatic setting for late-night shiva lingam abhishek sessions under bright lights. "
+        "The culinary gathering centers on serving sweet thandai variations along with rich desert treats."
     ),
     ("maha-shivaratri", "sikkim"): (
-        "Hillside altars are dressed in fresh autumn leaves across Sikkim, welcoming the seasonal alignment with a night vigil, mantra, and inward stillness. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Hillside altars are dressed in fresh winter leaves across Sikkim, welcoming the seasonal alignment with the night-long jaagran. "
+        "Grounded community prayer brings mountain settlements together for peaceful shiva lingam abhishek songs and shared blessings. "
+        "The local hospitality involves sharing sweet thandai formulas alongside fresh bilva patra."
     ),
     ("maha-shivaratri", "tamil-nadu"): (
-        "The night-long musical and dance tributes or Sangeethanjali transform Tamil Nadu temples, anchoring a night vigil, mantra, and inward stillness. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange sundal packets. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "The grand night-long musical and dance tributes or Sangeethanjali transform Tamil Nadu temples, anchoring the night-long jaagran. "
+        "Vibrant art and dawn rituals reshape the domestic rhythm as families complete their shiva lingam abhishek steps. "
+        "The sacred season is celebrated by preparing sweet thandai variants alongside fresh bel leaves and snacks."
     ),
     ("maha-shivaratri", "telangana"): (
-        "Continuous pouring of milk and water over ancient lingams transforms ancient shrines across Telangana, highlighting a profound display of a night vigil, mantra, and inward stillness. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "Continuous pouring of milk and water over ancient stones transforms ancient shrines across Telangana during the night-long jaagran. "
+        "Community devotion sets a highly active and colorful public stage for late-night shiva lingam abhishek sequences. "
+        "The primary household table is filled with ritual bhaang mixtures alongside fresh bilva patra."
     ),
     ("maha-shivaratri", "tripura"): (
-        "Devotional stotra recitations fill local community halls across Tripura, mirroring the winter arrival of a night vigil, mantra, and inward stillness. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Devotional stotra recitations fill local community halls across Tripura, mirroring the winter arrival of the night-long jaagran. "
+        "Community spaces turn into lively meeting points for families participating in the final shiva lingam abhishek lines. "
+        "The evening hospitality is highlighted by sharing traditional singori alongside custom thandai dishes."
     ),
     ("maha-shivaratri", "uttar-pradesh"): (
-        "The grand rituals at Kashi Vishwanath temple in Varanasi transform Uttar Pradesh, tracking a magnificent display of a night vigil, mantra, and inward stillness. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "The grand rituals at Kashi Vishwanath temple in Varanasi transform public lanes across Uttar Pradesh to praise Mahakaal. "
+        "Ancient public squares create an unmatched devotional scale as crowds complete their night-long jaagran under the echo of bells. "
+        "The high-energy days include distributing famous bhaang portions alongside traditional city thandai."
     ),
     ("maha-shivaratri", "uttarakhand"): (
-        "Pilgrimages to ancient high-altitude temples and strict fasts define the local experience in Uttarakhand, celebrating a serene display of a night vigil, mantra, and inward stillness. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Pilgrimages to ancient high-altitude shrines and strict fasting routines define the local experience in Uttarakhand during the night-long jaagran. "
+        "Ancient hill temples bring remote mountain settlements together for protective collective prayers honoring the grace of Mahakaal. "
+        "The spiritual gathering concludes with a quiet shiva lingam abhishek paired with hot thandai treats."
     ),
     ("maha-shivaratri", "west-bengal"): (
-        "The preparation of unique four-prahara clay lingams transforms homes in West Bengal, showcasing a beautiful wave of a night vigil, mantra, and inward stillness. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "The preparation of unique four-prahara clay structures transforms homes in West Bengal during the night-long jaagran periods. "
+        "Artistic neighborhood structures alter the local landscape during the twilight hours of the shiva lingam abhishek. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom thandai sweets."
     ),
     ("maha-shivaratri", "nri-london"): (
-        "Massive community halls host night-long classical music and meditation workshops across London, allowing the diaspora to maintain an authentic experience of a night vigil, mantra, and inward stillness. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the autumn transition by packing potluck sweets and temple prasada to share with global friends."
+        "Massive hired assembly halls host night-long classical music and meditation workshops across London, preserving the heritage. "
+        "Bustling weekend events connect families across boroughs for synchronized shiva lingam abhishek routines and prayers. "
+        "Expatriates mark the winter transition by packing tupperware containers of thandai to share with global friends."
     ),
     ("maha-shivaratri", "nri-new-york"): (
-        "Community centers host high-energy bhajan recitations and continuous abhishek in New York, preserving the heritage of a night vigil, mantra, and inward stillness. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Community centers host high-energy bhajan recitations and continuous abhishek in New York, honoring the traditions of Mahakaal. "
+        "Ornate temple halls and family video calls bridge the long distance for relatives participating in the night-long jaagran. "
+        "The diaspora gathering concludes with sharing custom bhaang variations within local apartment networks."
     ),
 
 
