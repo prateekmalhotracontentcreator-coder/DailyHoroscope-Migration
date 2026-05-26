@@ -609,9 +609,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The high-energy days include distributing sweet sandesh portions alongside traditional city prasad."
     ),
     ("durga-puja", "uttarakhand"): (
-        "Hilltop temple pilgrimages and sacred pushpanjali routines define the local experience in Uttarakhand during the autumn months. "
-        "Remote mountain settlements unite for intense dhunuchi naach routines to honor the defensive strength of the goddess. "
-        "The spiritual gathering is completed by serving sweet rasgulla formulas alongside custom alpine treats."
+        "Resounding dhaak beats draw remote Uttarakhand mountain settlements down to valley pandal hopping routes each autumn evening. "
+        "Women gather for an emotional sindoor khela ceremony before the clay idol is carried toward the river for visarjan. "
+        "The sacred week closes with households sharing sweet rasgulla portions alongside locally prepared alpine rice desserts."
     ),
     ("durga-puja", "west-bengal"): (
         "Emotional Sindoor Khela and spectacular immersion visarjan processions define the absolute heart of the West Bengal celebration. "
@@ -762,9 +762,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The high-energy days include distributing famous modak portions alongside traditional city prasad."
     ),
     ("ganesh-chaturthi", "uttarakhand"): (
-        "Hilltop temple pilgrimages and sacred fasting routines define the local experience in Uttarakhand during the 10-day pandal phase. "
-        "Ancient hill temples bring remote mountain settlements together for protective collective prayers honoring the clay Ganesha idol. "
-        "The spiritual gathering concludes with a quiet visarjan immersion paired with hot ukadiche modak treats."
+        "A sacred Ganesh sthapana takes place behind beautifully sculpted clay Ganesha idols to welcome the autumn cycle in Uttarakhand. "
+        "Local youth groups beat high-energy dhol tasha drum patterns to accompany the grand arrival of the deity through alpine streets. "
+        "The festive gathering concludes with kitchens steaming fresh, sweet batches of handmade coconut-jaggery modak."
     ),
     ("ganesh-chaturthi", "west-bengal"): (
         "The installation of a gorgeous clay Ganesha idol inside artistic community spaces initiates the autumn festival season in West Bengal. "
@@ -1068,9 +1068,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The high-energy days include distributing famous bhaang portions alongside traditional city thandai."
     ),
     ("maha-shivaratri", "uttarakhand"): (
-        "Pilgrimages to ancient high-altitude shrines and strict fasting routines define the local experience in Uttarakhand during the night-long jaagran. "
-        "Ancient hill temples bring remote mountain settlements together for protective collective prayers honoring the grace of Mahakaal. "
-        "The spiritual gathering concludes with a quiet shiva lingam abhishek paired with hot thandai treats."
+        "A jaagran vigil keeps local Uttarakhand devotees completely awake until morning hours to honor the supreme cosmic energy. "
+        "Worshippers offer fresh green bilva leaves while executing a continuous Shiva linga abhishek with honey and raw milk. "
+        "The freezing mountain night is comforted by sharing traditional cups of cold, herb-infused thandai."
     ),
     ("maha-shivaratri", "west-bengal"): (
         "The preparation of unique four-prahara clay structures transforms homes in West Bengal during the night-long jaagran periods. "
@@ -1981,9 +1981,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The festive evening is marked by sharing traditional baked sweets alongside local festive rice dishes."
     ),
     ("christmas", "uttar-pradesh"): (
-        "The beautiful winter decorations at historic city cathedrals transform public lanes across Uttar Pradesh. "
-        "Bustling compound gates are packed with visitors watching nativity crib pageants and listening to carols. "
-        "The high-energy days include distributing famous plum cake portions alongside traditional city sweets."
+        "Glowing star lanterns are hung across porches in Uttar Pradesh to welcome the cold winter nativity atmosphere. "
+        "Families bundle up to attend a solemn midnight mass service filled with classical choral sequences. "
+        "The festive holiday morning is celebrated by slicing pieces of rich, dark homemade plum cake."
     ),
     ("christmas", "uttarakhand"): (
         "Midnight mass services in pristine alpine valley church spaces define the winter holiday experience across Uttarakhand. "
@@ -2134,9 +2134,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The evening hospitality is highlighted by sharing traditional kada prasad items alongside local festive rice dishes."
     ),
     ("gurupurab", "uttar-pradesh"): (
-        "The beautiful winter decorations at historic city gurdwaras transform public lanes across Uttar Pradesh at dawn. "
-        "Bustling compound gates are packed with thousands of visitors participating in the selfless langar seva distributions. "
-        "The high-energy days include distributing famous sweet kada prasad portions alongside traditional city items."
+        "The continuous akhand path reaches its solemn conclusion at dawn inside illuminated gurdwaras across Uttar Pradesh. "
+        "Dozens of volunteers manage the non-stop langar seva kitchen lines to feed thousands of local visitors sitting in synchronized rows. "
+        "Gratitude fills the air as community members receive warm, sweet blocks of kada prasad directly from the distribution counters."
     ),
     ("gurupurab", "uttarakhand"): (
         "Shabad kirtan recitations in pristine alpine valley gurdwara spaces define the local community experience across Uttarakhand. "
@@ -2212,9 +2212,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The sacred day is nourished by distributing unique neer mor mixtures to visiting relatives."
     ),
     ("ram-navami", "karnataka"): (
-        "The unique distribution of refreshing panakam and sweet majjige drinks transforms local living rooms across Karnataka at noon. "
-        "Intricate flower decorations and morning janmotsav rituals re-energize the household as families decorate the sacred cradle. "
-        "Visiting guests are welcomed into homes with delicious jalebi variations alongside classic southern treats."
+        "Surya puja at noon marks the exact alignment of solar rays across principal Karnataka temples to celebrate the divine birth hour. "
+        "Extended family units join together around a sacred navami havan fire to chant Vedic mantras for household cosmic order. "
+        "Priests pour a refreshing stream of liquid panchamrit directly into the copper vessels of waiting worshippers."
     ),
     ("ram-navami", "kerala"): (
         "Elegant parayan recitations from the ancient Adhyatma Ramayana echo through pristine Kerala temple corridors at noon. "
@@ -2365,9 +2365,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The fasting period is supported by sharing unique besan ladoo mixtures with neighboring families."
     ),
     ("hanuman-jayanti", "karnataka"): (
-        "The unique distribution of sacred orange sindoor and sweet boondi laddus transforms local living rooms across Karnataka. "
-        "Intricate flower decorations and morning chalisa rituals re-energize the household as families decorate the shrine. "
-        "Visiting guests are welcomed into homes with delicious imarti variations alongside classic southern treats."
+        "Sunderkand path recitations resonate throughout early morning assemblies in Karnataka to honor the ultimate loyalty of the deity. "
+        "A high-energy Hanuman Chalisa marathon brings large neighborhood crowds together for collective protection and strength. "
+        "The day ends with the distribution of massive spheres of sweet boondi laddoo bhog inside the main temple courtyard."
     ),
     ("hanuman-jayanti", "kerala"): (
         "The unique Hanumath Jayanthi parayan readings draw massive crowds to specialized Kerala monkey-deity shrines at sunrise. "
@@ -2445,9 +2445,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The high-energy days include distributing famous besan ladoo alongside traditional city prasad."
     ),
     ("hanuman-jayanti", "uttarakhand"): (
-        "High-altitude mountain temple pilgrimages define the local experience in Uttarakhand during the sunrise chalisa celebrations. "
-        "Remote alpine settlements unite for intense sundarkand routines to honor the defensive strength of bajrangbali. "
-        "The spiritual gathering is completed by serving hot imarti formulas alongside custom alpine treats."
+        "Sunderkand path recitations echo through Uttarakhand valley shrines as dawn breaks over the high-altitude terrain. "
+        "Youth groups hoist saffron flags and complete a parikrama of Hanuman temple before the main chalisa sessions open. "
+        "The energetic morning concludes with temple volunteers distributing large trays of boondi laddoo bhog to participants."
     ),
     ("hanuman-jayanti", "west-bengal"): (
         "A solemn Sunderkand path recitation initiates the early morning hours inside neighborhood shrines across West Bengal. "
