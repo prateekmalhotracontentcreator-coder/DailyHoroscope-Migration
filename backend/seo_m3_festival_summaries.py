@@ -479,39 +479,39 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
 
     # ── DURGA PUJA (Batch 4 -- all 30 regions) ────────────────────────────────
     ("durga-puja", "andhra-pradesh"): (
-        "Dhaak percussion and artistic pandal enclosures draw crowds across Andhra Pradesh, centering on a grand goddess celebration, artistry, and community worship. "
-        "The creative energy fills local neighborhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families conclude their daily pushpanjali rituals by sharing temple pulihora and laddus with visiting neighborhood circles."
+        "The echoing thunder of dhaak beats introduces the autumn structural shift inside localized Andhra Pradesh residential complexes. "
+        "Worshippers gather to engage in competitive dhunuchi naach moves before the heavy incense burners are placed near the stage. "
+        "The ritual night finishes with families distributing sweet sandesh variants across visiting neighbor networks."
     ),
     ("durga-puja", "arunachal-pradesh"): (
-        "Sculpted tableaux and oil lamps are beautifully unveiled across Arunachal Pradesh, anchoring the seasonal focus on goddess celebration, artistry, and community worship. "
-        "Bustling community halls and family gatherings fill with traditional hymns as families gather for the grand evening aarti. "
-        "The auspicious evening concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Brightly lit pandal hopping routes draw large crowds across Arunachal Pradesh valleys, welcoming the magnificent arrival of the goddess. "
+        "Worshippers offer intense pushpanjali prayers to invoke the supreme strength and shielding guidance of the protective deity. "
+        "The auspicious evening concludes with households gathering to share sweet rasgulla formulas alongside regional festive rice dishes."
     ),
     ("durga-puja", "assam"): (
-        "The rhythmic echo of the dhaak and spectacular pandal architecture reshape the autumn landscape in Assam, reflecting a deep goddess celebration, artistry, and community worship. "
-        "Joyous music, prayer, and neighborhood visits elevate local community spaces during the high-energy evening darshan. "
-        "The sacred cycle is enriched by serving traditional pitha, payas, and festive rice offerings to the neighborhood."
+        "The structural cadence of the visarjan procession alters the autumn landscape in Assam, reflecting a deep goddess celebration. "
+        "Neighborhood circles gather for synchronized pushpanjali recitations to celebrate the supreme glory of Durga mata. "
+        "The cultural transition is completed as kitchens prepare rich chalar payesh alongside traditional Assamese pitha varieties."
     ),
     ("durga-puja", "bihar"): (
-        "Grand temporary pandals and gorgeous clay idols transform neighbourhood streets in Bihar, celebrating a magnificent goddess celebration, artistry, and community worship. "
-        "Bustling ghat visits and family puja routines allow large extended families to gather for collective pushpanjali recitations. "
-        "The daily ceremonial transition is marked by preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "Intricate clay craftsmanship and massive temporary pandal hopping tracks transform neighborhood lines across Bihar during the holy week. "
+        "Women organize the emotional sindoor khela items to bless their relatives during the late-night twilight prayer slots. "
+        "Extended families celebrate the transition by eating custom sandesh portions alongside classic home-cooked Bihari items."
     ),
     ("durga-puja", "chhattisgarh"): (
-        "Dhunuchi naach performances and thick incense smoke fill public squares across Chhattisgarh, initiating the autumn celebration of goddess celebration, artistry, and community worship. "
-        "Vibrant community puja and local fairs bring farming communities together for evening folk dances and traditional prayers. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad for daily offerings."
+        "Thick incense smoke and echoing dhunuchi naach competitions fill public squares across Chhattisgarh, initiating the autumn celebration. "
+        "Vibrant temporary structures attract large community lines for nightly stotra recitations honoring the forms of the goddess. "
+        "Kitchens prepare specialized chalar payesh portions and home-style desserts to distribute as sacred prasad."
     ),
     ("durga-puja", "goa"): (
-        "Beautifully crafted temporary mandaps and artistic lighting illuminate local squares in Goa, channeling a beautiful wave of goddess celebration, artistry, and community worship. "
-        "Quiet home altars and bustling neighborhood celebration routes define the spatial layout of the local evening prayers. "
-        "The sacred period is marked by sharing unique coconut sweets and festive savouries among long-time neighbors."
+        "Beautifully styled pandal hopping routes illuminate local coastal squares across Goa, channeling a wave of deep devotion. "
+        "Devotees coordinate grand morning pushpanjali rituals to invite spiritual prosperity and defensive shielding into their living spaces. "
+        "The sacred time involves sharing delicious rasgulla items alongside coastal coconut desserts with visiting families."
     ),
     ("durga-puja", "gujarat"): (
-        "The heavy beats of the dhaak blend beautifully with localized garba steps across Gujarat, creating a unique hybrid of goddess celebration, artistry, and community worship. "
-        "Bustling garba grounds and bright rangoli work completely transform public and private squares under bright festive lights. "
-        "Dancers replenish their energy late into the night by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "The heavy beats of the dhaak resonate beautifully with localized structural templates across Gujarat under bright lights. "
+        "Massive open-air grounds host spectacular dhunuchi naach routines where thousands dance late into the night to honor the goddess. "
+        "Dancers replenish their energy by sharing large plates of sandesh along with festive local snacks."
     ),
     ("durga-puja", "haryana"): (
         "The echoing thunder of dhaak beats introduces the autumn structural shift inside localized Haryana residential complexes. "
@@ -519,34 +519,34 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The ritual night finishes with families distributing sweet sandesh variants across visiting neighbor networks."
     ),
     ("durga-puja", "himachal-pradesh"): (
-        "Community pandals emerge amidst the cold mountain air across Himachal Pradesh, anchoring local valleys in a vibrant goddess celebration, artistry, and community worship. "
-        "Serene village temples and hillside processions host local clans traveling across valleys to pay homage to their deities. "
-        "The spiritual afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around communal hearths."
+        "Resounding dhaak beats echo through hillside temples in Himachal Pradesh, anchoring the mountain air in the autumn festival. "
+        "Local clans travel across valleys to participate in grand temple-style pushpanjali reading gatherings. "
+        "The spiritual afternoon is comforted by serving warm rasgulla formulas alongside rich mountain-style meals."
     ),
     ("durga-puja", "jharkhand"): (
-        "Intricate clay craftsmanship and bright illumination decorate residential colonies in Jharkhand, marking the seasonal alignment with goddess celebration, artistry, and community worship. "
-        "Open community grounds and family prayer circles provide an inclusive space for traditional drumming and evening chants. "
-        "The nine-day fast is supported by sharing unique seasonal sweets and simple ceremonial meals within families."
+        "Spectacular clay art and grand temporary pandal hopping routes decorate residential colonies in Jharkhand, marking the seasonal alignment. "
+        "Devotees coordinate peaceful community dhunuchi naach sessions to offer collective gratitude for family health and well-being. "
+        "The holiday period is supported by sharing unique sandesh mixtures with neighboring families."
     ),
     ("durga-puja", "karnataka"): (
-        "The grand Mahishasuramardini themes and beautifully decorated community stages transform local districts across Karnataka, celebrating goddess celebration, artistry, and community worship. "
-        "Intricate flower decorations and early-morning puja rituals re-energize the household as children arrange the sacred steps. "
-        "Visiting guests are welcomed into homes with delicious kosambari, payasa, and temple-style prasada."
+        "The grand welcoming of the goddess and beautifully decorated pandal hopping stages transform local districts across Karnataka. "
+        "Youth groups coordinate localized dhunuchi naach routines inside temple courtyards to celebrate the glory of Durga mata. "
+        "The evening feast is defined by preparing delicious chalar payesh variations alongside classic southern treats."
     ),
     ("durga-puja", "kerala"): (
-        "Specialised temple shrines exhibit beautiful forms of the divine mother in Kerala, marking a unique southern expression of goddess celebration, artistry, and community worship. "
-        "Ornate floral designs and household lamp lighting ground the final three days of the sacred calendar in absolute stillness. "
-        "The concluding celebration is marked by serving sweet payasam, banana chips, and elaborate festive spreads."
+        "The rare dynamic invocation and specialized pushpanjali rituals inside ancient coastal shrines transform Kerala during October. "
+        "Women complete their elaborate sindoor khela decorations before dressing children in pristine traditional finery. "
+        "The concluding hour is celebrated by serving sweet rasgulla variants alongside elaborate banana leaf spreads."
     ),
     ("durga-puja", "madhya-pradesh"): (
-        "Spectacular pandal hopping routes draw thousands of residents into illuminated public streets across Madhya Pradesh after sunset. "
-        "Devotees join together for high-energy dhunuchi naach competitions to celebrate the supreme strength of the goddess. "
-        "The local evening hospitality features sharing rows of chalar payesh alongside regional street savouries."
+        "High-energy public spaces host spectacular dhunuchi naach competitions across Madhya Pradesh, showcasing the grand scale of the festival. "
+        "Devotional pandal hopping setups draw thousands of residents into illuminated public streets after sunset for collective prayers. "
+        "The local evening hospitality features sharing rows of chalar payesh along with regional street savouries."
     ),
     ("durga-puja", "maharashtra"): (
-        "The grand welcoming of the clay idol anchors the local neighbourhood complexes across Maharashtra, initiating days of goddess celebration, artistry, and community worship. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The daily family gathering centers on preparing fresh, sweet modak, puran poli, and festive snacks."
+        "The grand welcoming of the clay idol and early-morning pushpanjali anchor home altars across Maharashtra during the autumn days. "
+        "Bustling society spaces turn into lively centers for nightly dhunuchi naach sessions and collective aarti routines. "
+        "The family gathering centers on preparing fresh sandesh portions along with traditional Maharashtrian sweets."
     ),
     ("durga-puja", "manipur"): (
         "Resounding dhaak beats and classical devotional movements fill local Manipuri mandaps during the grand autumn descent. "
@@ -570,13 +570,13 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
     ),
     ("durga-puja", "odisha"): (
         "The grand morning pushpanjali rituals inside ancient Cuttack shrines transform local districts across Odisha. "
-        "Extended family units join together for the emotional sindoor khela greetings before the final immersion phase. "
+        "Intricate designs line the paths where families gather for the beautiful evening kumari puja blessings. "
         "The holy days are accompanied by distributing traditional rasgulla items alongside classic temple sweets."
     ),
     ("durga-puja", "punjab"): (
-        "The sacred fasts culminate in joyful community gatherings and pandal visits across Punjab, defining a grand goddess celebration, artistry, and community worship. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious eighth day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "The festive rhythm of echoing dhaak beats fills local residential areas across Punjab during the grand goddess celebration. "
+        "Neighborhood families coordinate vibrant dhunuchi naach tracks inside community centres to praise the protective deity. "
+        "The auspicious eighth day is marked by sharing warm sandesh portions alongside festive local rotis."
     ),
     ("durga-puja", "rajasthan"): (
         "Resounding dhaak drum rhythms shake palace gates across Rajasthan during the magnificent autumn descent of the goddess. "
@@ -2009,64 +2009,64 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
 
     # ── GURUPURAB (Batch 14 -- all 30 regions) ────────────────────────────────
     ("gurupurab", "andhra-pradesh"): (
-        "Early morning kirtan recitations and the completion of the akhand path fill local halls across Andhra Pradesh, centering on guru remembrance, kirtan, and seva. "
-        "The public spaces are enlivened by grand nagar kirtan processions that wind past local shrines into decorated entrances. "
-        "Families mark the auspicious celebration of the Guru by serving traditional pulihora and laddus to the local gathering."
+        "A melodious shabad kirtan session resonates throughout early morning congregations across Andhra Pradesh to mark the holy birth anniversary. "
+        "Devotees volunteer for intensive langar seva tracks to serve thousands of visitors regardless of background. "
+        "The sacred assembly concludes with organizers handing out warm, velvety blocks of sweet kada prasad to the community."
     ),
     ("gurupurab", "arunachal-pradesh"): (
-        "Selfless community service and devotional hymns bring diverse valley settlements together in Arunachal Pradesh, anchoring the seasonal focus on guru remembrance, kirtan, and seva. "
-        "Bustling community halls and family gatherings fill with peaceful morning prayers as neighbours gather to exchange greetings. "
-        "The warm afternoon concludes with households gathering to share custom community sweets and festive rice dishes."
+        "A loud prabhat pheri winds through pristine Arunachal Pradesh valley settlements during the quiet amrit vela hours. "
+        "Worshippers join for a grand Gurbani recitation inside local prayer halls to ground their seasonal focus. "
+        "The spiritual morning concludes with families coordinating extensive langar seva paired with hot kada prasad."
     ),
     ("gurupurab", "assam"): (
-        "The sacred distribution of kada prasad and beautiful early-morning nagar kirtan processions reshape the landscape in Assam, reflecting guru remembrance, kirtan, and seva. "
-        "Music, prayer, and neighbourhood visits elevate local community spaces during the daylight social gatherings. "
-        "The celebration is completed as households prepare traditional pitha, payas, and festive rice offerings for visiting guests."
+        "The holy resonance of early morning shabad kirtan recitations transforms local community centers across Assam at dawn. "
+        "The congregation participates in a grand nagar kirtan procession that carries historical markers through decorated paths. "
+        "The winter milestone is celebrated by arranging selfless langar seva combined with sweet kada prasad distributions."
     ),
     ("gurupurab", "bihar"): (
-        "Massive congregational prayers at historic gurdwaras and continuous langar kitchens define the daytime rhythm in Bihar, celebrating guru remembrance, kirtan, and seva. "
-        "Bustling ghat visits and family puja routines allow diverse extended communities to share peaceful seasonal greetings. "
-        "The festive morning is highlighted by households preparing traditional thekua, kheer, and seasonal savouries to share."
+        "A peaceful sarovar snan simulation initiates the sacred winter dawn at historic Patna gurdwaras across Bihar. "
+        "Devotees gather to hear a full-length Gurbani recitation to invite spiritual clarity and protective order into their homes. "
+        "The historic milestone is celebrated by running non-stop langar seva kitchens packed with hot kada prasad options."
     ),
     ("gurupurab", "chhattisgarh"): (
-        "Worshippers gather for selfless service and midnight prayer sessions inside beautifully illuminated gurdwara halls in Chhattisgarh, initiating the joyful celebration of guru remembrance, kirtan, and seva. "
-        "Vibrant community puja and local fairs gather families from all backgrounds for rhythmic songs and outdoor festivities. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad to honor visiting guests."
+        "Bright illuminations decorate gurdwara gateways across Chhattisgarh, initiating the joyful evening cycle of guru remembrance. "
+        "Worshippers gather for selfless langar seva and midnight prayer sessions to honor the timeless teachings of the faith. "
+        "The domestic hospitality centers on distributing large steel bowls of rich kada prasad to visiting relative circles."
     ),
     ("gurupurab", "goa"): (
-        "Bustling celebration routes and continuous langar distributions define the coastal landscape in Goa, highlighting the beautiful focus on guru remembrance, kirtan, and seva. "
-        "Quiet home altars and bustling neighbourhood celebration routes provide an inclusive space for cross-community greetings. "
-        "The lively gathering concludes with families distributing sweet coconut sweets and festive savouries across their settlements."
+        "Bustling coastal prayer halls echo with peaceful shabad kirtan tracks, drawing together local Goan diaspora communities. "
+        "Worshippers spend the amrit vela hours cleaning the premises before the main congregational text readings open. "
+        "The holy day concludes with volunteers managing an open langar seva paired with rich kada prasad portions."
     ),
     ("gurupurab", "gujarat"): (
-        "Grand morning kirtans and vibrant neighbourhood nagar kirtan groups transform residential colonies across Gujarat, magnifying the spirit of guru remembrance, kirtan, and seva. "
-        "Bustling garba grounds and bright rangoli work set an inclusive stage as local merchants exchange traditional holiday blessings. "
-        "Extended families wind down the joyous day by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "A grand prabhat pheri moves through historic old town lanes across Gujarat during the pristine amrit vela phase. "
+        "Local business units pause operations as merchants participate in extensive langar seva routines to serve the public. "
+        "Extended families wind down the joyous day by sharing sweet kada prasad along with festive local thali items."
     ),
     ("gurupurab", "haryana"): (
-        "A loud prabhat pheri moves through Haryana village streets during the pristine early morning hours. "
-        "The congregation gathers for an intense shabad kirtan recitation inside the main hall to praise the historical lineage. "
-        "The agrarian holiday is completed by offering continuous langar seva alongside warm, buttery kada prasad."
+        "The solemn completion of a continuous akhand path anchors rural Haryana gurdwaras during the high-energy holiday. "
+        "Agrarian families coordinate massive langar seva assemblies where community elders lead traditional devotional singing. "
+        "The holy celebration is enriched by serving hot kada prasad paired with farm-style dairy delicacies to visitors."
     ),
     ("gurupurab", "himachal-pradesh"): (
-        "Morning shabad kirtan bells echo through mountain valley settlements in Himachal Pradesh, casting a beautiful contrast against themes of guru remembrance, kirtan, and seva. "
-        "Serene village temples and hillside processions host the community as they gather to celebrate the winter holiday. "
-        "The joyful afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around shared hearths."
+        "Continuous Gurbani recitation lines echo through mountain valley gurdwaras in Himachal Pradesh, casting a beautiful winter contrast. "
+        "Local clans travel down winding paths to participate in grand community-style langar seva gatherings around the fire. "
+        "The spiritual afternoon is comforted by serving warm kada prasad formulas alongside rich mountain-style meals."
     ),
     ("gurupurab", "jharkhand"): (
-        "Traditional winter prabhat pheri groups draw large community circles together in Jharkhand, marking the annual arrival of guru remembrance, kirtan, and seva. "
-        "Open community grounds and family prayer circles allow local neighbourhoods to gather for traditional drumming and seasonal songs. "
-        "The daytime celebration is highlighted by sharing unique seasonal sweets and simple ceremonial meals with visiting friends."
+        "Traditional early-morning prabhat pheri groups sing melodic hymns inside illuminated residential colonies across Jharkhand. "
+        "Devotees coordinate beautiful shabad kirtan platforms to illustrate foundational values to neighborhood youth groups. "
+        "The daytime holiday is supported by managing non-stop langar seva nodes packed with sweet kada prasad."
     ),
     ("gurupurab", "karnataka"): (
-        "Grand gurdwara illuminations and beautiful continuous langar service decorate local community spaces across Karnataka neighbourhoods, initiating the southern observance of guru remembrance, kirtan, and seva. "
-        "Intricate flower decorations and early-morning puja rituals precede the warm exchange of festive greetings among close neighbours. "
-        "The daytime feast involves preparing delicious kosambari, payasa, and temple-style prasada for the gathered household."
+        "The holy sarovar snan rituals re-energize local congregations across Karnataka neighborhoods before the main prayer cycles open. "
+        "Worshippers gather for deep shabad kirtan meditation to offer collective gratitude for family health and well-being. "
+        "Visiting guests are welcomed into local langar seva halls with delicious hot meals and sweet kada prasad."
     ),
     ("gurupurab", "kerala"): (
-        "Devotional kirtan recitations, glowing paper lanterns, and selfless community seva define the historic Kerala approach to guru remembrance, kirtan, and seva. "
-        "Ornate floral designs and household lamp lighting anchor the domestic boundaries before the outdoor community greetings commence. "
-        "The gathering is marked by serving sweet payasam, banana chips, and elaborate festive spreads to participants."
+        "A profound Gurbani recitation sets a deeply meditative stage inside pristine Kerala prayer rooms at dawn. "
+        "Devotees organize extensive langar seva platforms to distribute free hot lunches to local hospital workers and travelers. "
+        "The concluding hour is celebrated by serving sweet kada prasad variants alongside elaborate banana leaf spreads."
     ),
     ("gurupurab", "madhya-pradesh"): (
         "Melodic shabad kirtan notes fill local gurdwara properties across Madhya Pradesh during the holy amrit vela hours. "
@@ -2074,9 +2074,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The local evening hospitality centers on serving hot kada prasad to the selfless langar seva workers."
     ),
     ("gurupurab", "maharashtra"): (
-        "Glowing path decorations illuminate local gurdwaras across Mumbai and greater Maharashtra, making way for the joyful celebration of guru remembrance, kirtan, and seva. "
-        "Bustling society pandals and family aarti gatherings turn into central nodes for cross-community greetings and shared sweets. "
-        "The household celebration centers on preparing fresh, sweet modak, puran poli, and festive snacks for the neighbourhood."
+        "A majestic nagar kirtan procession takes over roads across Mumbai and greater Maharashtra, showcasing the vibrant community spirit. "
+        "Worshippers manage extensive langar seva queues inside illuminated community complexes to feed the local public. "
+        "The household celebration centers on preparing fresh kada prasad formulas along with traditional Maharashtrian sweets."
     ),
     ("gurupurab", "manipur"): (
         "A peaceful Gurbani recitation echoes throughout Manipuri prayer halls, beautifully tracking the dawn of guru remembrance. "
@@ -2104,59 +2104,59 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The holy days are accompanied by distributing rich kada prasad directly from the central langar seva kitchen."
     ),
     ("gurupurab", "punjab"): (
-        "The akhand path completes at dawn, kirtan echoes from the Golden Temple, and the continuous langar kitchen serves thousands across Punjab, defining the heart of guru remembrance, kirtan, and seva. "
-        "Dedicated nagar kirtan processions and selfless community action anchor the high-energy celebrations across local districts. "
-        "The festive gathering is marked by distributing warm kada prasad, festive rotis, and rich milk sweets to the public."
+        "Deep shabad kirtan recitations echo from the Golden Temple at the absolute peak of the global amrit vela hour. "
+        "Millions of residents join spectacular nagar kirtan processions across Amritsar to mark the holy birth anniversary. "
+        "The historic milestone is celebrated by running non-stop langar seva hubs delivering massive batches of sweet kada prasad."
     ),
     ("gurupurab", "rajasthan"): (
-        "Grand morning mass gatherings and beautiful winter light displays fill courtyards in Rajasthan, elevating the heritage of guru remembrance, kirtan, and seva. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "Grand early morning prabhat pheri assemblies and beautiful winter light displays fill historic gurdwara courtyards across Rajasthan. "
+        "Delicate courtyard spaces are swept clean for the long-form Gurbani recitation lines that loop until noon. "
+        "The culinary gathering centers on serving sweet kada prasad variations directly from the continuous langar seva kitchen."
     ),
     ("gurupurab", "sikkim"): (
-        "Midnight choral singing along hillside pathways brings communities together across Sikkim, welcoming the seasonal alignment with guru remembrance, kirtan, and seva. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "A solemn amrit vela prayer session brings mountain settlements together across the freezing ridges of Sikkim. "
+        "Families gather inside localized prayer halls to complete their shared langar seva responsibilities for the valley. "
+        "The local hospitality involves sharing custom sweet kada prasad formulas alongside warm festive rice dishes."
     ),
     ("gurupurab", "tamil-nadu"): (
-        "Massive morning prayers inside urban gurdwaras transform Tamil Nadu, anchoring guru remembrance, kirtan, and seva. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange festive sweets. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "Massive shabad kirtan services inside urban gurdwaras transform Chennai neighborhoods long before sunrise. "
+        "Worshippers organize extensive langar seva platforms to provide hot meals to local labor colonies and transit yards. "
+        "The sacred day is celebrated by preparing sweet kada prasad variants alongside traditional southern snacks."
     ),
     ("gurupurab", "telangana"): (
-        "The spectacular morning gurdwara gatherings in Secunderabad and Hyderabad define the peak of Telangana's guru remembrance, kirtan, and seva. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "The spectacular early morning gurdwara turnouts in Hyderabad and Secunderabad define the peak of Telangana's holy calendar. "
+        "Worshippers participate in a grand nagar kirtan procession featuring traditional martial arts displays on open roads. "
+        "The primary household table is filled with sweet kada prasad portions alongside continuous langar seva items."
     ),
     ("gurupurab", "tripura"): (
-        "Bright star lanterns and home-made winter cakes fill family courtyards across Tripura, mirroring the winter arrival of guru remembrance, kirtan, and seva. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Beautiful early morning prabhat pheri walks fill community paths across Tripura, mirroring the winter arrival of the holiday. "
+        "Worshippers assemble inside illuminated spaces to hear the profound Gurbani recitation and clean the community kitchen. "
+        "The evening hospitality is highlighted by sharing traditional kada prasad items alongside local festive rice dishes."
     ),
     ("gurupurab", "uttar-pradesh"): (
-        "The beautiful winter decorations at historic city gurdwaras transform Uttar Pradesh, tracking a magnificent display of guru remembrance, kirtan, and seva. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "The beautiful winter decorations at historic city gurdwaras transform public lanes across Uttar Pradesh at dawn. "
+        "Bustling compound gates are packed with thousands of visitors participating in the selfless langar seva distributions. "
+        "The high-energy days include distributing famous sweet kada prasad portions alongside traditional city items."
     ),
     ("gurupurab", "uttarakhand"): (
-        "Midnight services in pristine alpine valley gurdwara spaces define the local experience in Uttarakhand, celebrating a serene display of guru remembrance, kirtan, and seva. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Shabad kirtan recitations in pristine alpine valley gurdwara spaces define the local community experience across Uttarakhand. "
+        "Families gather around wood fires during the amrit vela phase to complete their shared scripture reading loops. "
+        "The spiritual gathering is completed by serving sweet kada prasad formulas alongside custom langar seva meals."
     ),
     ("gurupurab", "west-bengal"): (
-        "The grand winter carnivals on Park Street in Kolkata define the West Bengal celebration of guru remembrance, kirtan, and seva. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "Grand morning nagar kirtan assemblies and holy book processions transform the urban space of Kolkata and greater West Bengal. "
+        "Worshippers don pristine white garments to manage extensive langar seva counters for the local working districts. "
+        "The cultural transition is accompanied by distributing custom sweet kada prasad bowls to every household visitor."
     ),
     ("gurupurab", "nri-london"): (
-        "Traditional winter carols and glowing paper stars hung in windows protect the London diaspora as they maintain the heritage of guru remembrance, kirtan, and seva. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the winter transition by packing potluck sweets and temple prasada to share with global friends."
+        "Massive park assemblies and indoor shabad kirtan workshops connect the London diaspora for a unified spiritual milestone. "
+        "Expatriates coordinate grand nagar kirtan processions that wind through local boroughs to showcase the heritage to the public. "
+        "Families celebrate the winter transition by setting up non-stop langar seva counters packed with hot kada prasad."
     ),
     ("gurupurab", "nri-new-york"): (
-        "Vibrant family dinners and bright star lanterns mark New York diaspora gatherings, celebrating the arrival of guru remembrance, kirtan, and seva. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the winter nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Community centers host high-energy Gurbani recitation sessions and continuous amrit vela prayers across New York districts. "
+        "Ornate diaspora halls and family video calls connect relatives across long distances for simultaneous holiday greetings. "
+        "The diaspora gathering concludes with sharing custom sweet kada prasad variations inside local langar seva hubs."
     ),
 
 
