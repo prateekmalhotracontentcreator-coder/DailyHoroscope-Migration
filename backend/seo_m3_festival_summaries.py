@@ -579,54 +579,54 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The auspicious eighth day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
     ),
     ("durga-puja", "rajasthan"): (
-        "Grand weapons worship and traditional folk chants fill royal courtyards in Rajasthan, elevating the heritage of goddess celebration, artistry, and community worship. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "Resounding dhaak drum rhythms shake palace gates across Rajasthan during the magnificent autumn descent of the goddess. "
+        "Massive community crowds flock to central pandal steps to present collective pushpanjali flowers and execute intense dhunuchi naach moves. "
+        "Fasting participants complete their sacred observations by distributing traditional rasgulla arrays combined with specialized desert thalis."
     ),
     ("durga-puja", "sikkim"): (
-        "Hillside mandaps are beautifully dressed in fresh autumn leaves across Sikkim, welcoming the seasonal alignment with goddess celebration, artistry, and community worship. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Spectacular mountain pandal structures are built along hillside ridges in Sikkim, celebrating the sacred seasonal arrival of the goddess. "
+        "Devotees join together for high-energy dhunuchi naach routines to honor the protective energy of Durga mata. "
+        "The spiritual afternoon is comforted by serving sweet sandesh variations alongside hot mountain-style meals."
     ),
     ("durga-puja", "tamil-nadu"): (
-        "The beautiful Golu displays include magnificent depictions of the divine mother's victory in Tamil Nadu, anchoring goddess celebration, artistry, and community worship. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange sundal packets. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "Beautifully staged representations of the divine mother's victory decorate Tamil Nadu spaces during the autumn festival weeks. "
+        "Worshippers offer intense pushpanjali prayers to invoke the supreme strength and shielding guidance of the deity. "
+        "The auspicious day is celebrated by preparing sweet rasgulla formulas alongside traditional southern snacks."
     ),
     ("durga-puja", "telangana"): (
-        "The final days of the Bathukamma floral festival blend with beautiful community pandal steps in Telangana, highlighting goddess celebration, artistry, and community worship. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "Ornate temporary pandal entries alter the public space of Telangana, anchoring the annual celebration of the divine mother. "
+        "Rhythmic dhaak beats guide community groups executing expressive dhunuchi naach sequences before the evening aarti. "
+        "The primary household table is filled with sweet sandesh portions alongside assorted local savouries."
     ),
     ("durga-puja", "tripura"): (
-        "Spectacular clay craftsmanship and morning pushpanjali recitations fill community halls across Tripura, mirroring a spectacular goddess celebration, artistry, and community worship. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbors."
+        "Vibrant dhaak percussion and magnificent clay craftsmanship transform residential colonies across Tripura during the holy festival days. "
+        "Neighborhood circles gather for synchronized pushpanjali recitations to celebrate the supreme glory of Durga mata. "
+        "The evening hospitality is highlighted by sharing traditional rasgulla items alongside local festive dishes."
     ),
     ("durga-puja", "uttar-pradesh"): (
-        "Massive temporary enclosures, Ramleela theater stages, and late-night pandal hopping transform Uttar Pradesh, tracking days of goddess celebration, artistry, and community worship. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "Massive pandal structures and echoing dhunuchi naach competitions transform public squares in Uttar Pradesh under bright lights. "
+        "Devotees coordinate grand morning pushpanjali rituals to invite spiritual prosperity into their living spaces. "
+        "The high-energy days include distributing sweet sandesh portions alongside traditional city prasad."
     ),
     ("durga-puja", "uttarakhand"): (
-        "Hilltop temple pilgrimages and sacred pushpanjali define the local experience in Uttarakhand, celebrating a serene goddess celebration, artistry, and community worship. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Hilltop temple pilgrimages and sacred pushpanjali routines define the local experience in Uttarakhand during the autumn months. "
+        "Remote mountain settlements unite for intense dhunuchi naach routines to honor the defensive strength of the goddess. "
+        "The spiritual gathering is completed by serving sweet rasgulla formulas alongside custom alpine treats."
     ),
     ("durga-puja", "west-bengal"): (
-        "Sindoor khela and emotional visarjan rituals define the absolute heart of West Bengal, showcasing the world's most spectacular goddess celebration, artistry, and community worship. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "Emotional Sindoor Khela and spectacular immersion visarjan processions define the absolute heart of the West Bengal celebration. "
+        "Millions of residents complete intense daily pushpanjali steps inside jaw-dropping neighborhood pandal complexes. "
+        "The unparalleled cultural milestone is celebrated by distributing traditional sandesh items alongside endless trays of mishti."
     ),
     ("durga-puja", "nri-london"): (
-        "Grand community halls host synchronised pushpanjali and cultural programs across London, allowing the diaspora to maintain an authentic goddess celebration, artistry, and community worship. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the autumn transition by packing potluck sweets and temple prasada to share with global friends."
+        "Hired community assembly halls host echoing dhaak beats across London, allowing the diaspora to preserve the ancestral heritage. "
+        "Bustling weekend events connect families across boroughs for synchronized pushpanjali prayers and evening cultural gatherings. "
+        "Expatriates mark the autumn transition by packing tupperware containers of rasgulla to share with global friends."
     ),
     ("durga-puja", "nri-new-york"): (
-        "Hired community spaces host echoing dhaak rhythms and traditional anjali in New York, preserving the heritage of goddess celebration, artistry, and community worship. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Hired community spaces host intense dhunuchi naach competitions in New York, honoring the tradition of the goddess. "
+        "Ornate temple halls and family video calls connect relatives across long distances for simultaneous morning pushpanjali. "
+        "The diaspora gathering concludes with sharing custom sandesh variations within local networks."
     ),
 
 
@@ -2162,307 +2162,307 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
 
     # ── RAM NAVAMI (Batch 15 -- all 30 regions) ────────────────────────────────
     ("ram-navami", "andhra-pradesh"): (
-        "Ram katha recitations and special afternoon panakam distributions mark the spring shift across Andhra Pradesh, centering on dharma, maryada, and devotional celebration. "
-        "The spiritual atmosphere fills local neighbourhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families conclude their daytime fasts by sharing temple pulihora and laddus with visiting neighbourhood circles."
+        "Sacred Ram katha recitations and evening temple processions bring spiritual warmth across Andhra Pradesh during the holy spring days. "
+        "Devotees observe a strict midday fast to welcome the divine birth hour of the avatar. "
+        "The auspicious day concludes with families sharing refreshing panakam drinks with visiting neighborhood circles."
     ),
     ("ram-navami", "arunachal-pradesh"): (
-        "Sacred scriptural recitations and bright oil lamps are lit across Arunachal Pradesh homes, anchoring the seasonal focus on dharma, maryada, and devotional celebration. "
-        "Bustling community halls and family gatherings fill with traditional hymns as families celebrate the birth of righteousness. "
-        "The auspicious evening concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Bright oil lamps illuminate community spaces across Arunachal Pradesh as communities gather to honor the birth of righteousness. "
+        "Local prayer groups lead intense scriptural chants to praise the divine attributes of Rama. "
+        "The spiritual gathering is completed by preparing sweet jalebi variations alongside regional festive treats."
     ),
     ("ram-navami", "assam"): (
-        "The elegant chanting of devotional verses and sacred lamp lighting alter the domestic rhythm in Assam, reflecting a deep focus on dharma, maryada, and devotional celebration. "
-        "Joyous music, prayer, and neighbourhood visits elevate local community spaces during the twilight puja transitions. "
-        "The sacred cycle is enriched by serving traditional pitha, payas, and festive rice offerings to the neighbourhood."
+        "The elegant chanting of ancient epic verses alters the domestic rhythm in Assam, reflecting a deep focus on the sacred janmotsav. "
+        "Neighborhood circles gather for intense twilight prayers to welcome protective righteousness into their settlements. "
+        "The celebration is completed as kitchens prepare sweet neer mor formulas alongside traditional Assamese pitha varieties."
     ),
     ("ram-navami", "bihar"): (
-        "Strict fasting rituals and elaborate home altar decorations define the household atmosphere in Bihar, celebrating the spring arrival of dharma, maryada, and devotional celebration. "
-        "Bustling ghat visits and family puja routines allow large extended families to gather for collective scriptural recitations. "
-        "The daily ceremonial transition is marked by preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "Devotional fasting sets a serene spiritual tone inside Bihar households as the annual janmotsav period commences. "
+        "The community gathers for elaborate scripture reading sessions to invite protective guidance into their homes. "
+        "Fasting families break their daily restrictions by eating custom kheer items alongside classic home-cooked bihari savouries."
     ),
     ("ram-navami", "chhattisgarh"): (
-        "Devotional chariot processions or Rath Yatras wind through public squares across Chhattisgarh, initiating the spring celebration of dharma, maryada, and devotional celebration. "
-        "Vibrant community puja and local fairs bring farming communities together for evening folk dances and traditional prayers. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad for daily offerings."
+        "Ornate temporary chariot floats are beautifully decorated across Chhattisgarh, welcoming the spring celebration of Ram katha. "
+        "Evening gatherings feature vibrant devotional chants as local neighborhoods unite for collective worship at local shrines. "
+        "Kitchens prepare specialized neer mor fluids and home-style desserts to distribute as sacred prasad."
     ),
     ("ram-navami", "goa"): (
-        "Serene oil lamp illuminations turn temple courtyards into spaces of absolute calm in Goa, channeling a beautiful wave of dharma, maryada, and devotional celebration. "
-        "Quiet home altars and bustling neighbourhood celebration routes define the spatial layout of the local evening prayers. "
-        "The sacred period is marked by sharing unique coconut sweets and festive savouries among long-time neighbours."
+        "Serene oil lamp illuminations turn Goan temple courtyards into spaces of absolute calm during the holy janmotsav. "
+        "Families coordinate intricate scriptural reading routines to invite prosperity and protective energy into their neighborhoods. "
+        "The sacred time involves sharing delicious panakam drinks alongside coastal coconut desserts with visiting families."
     ),
     ("ram-navami", "gujarat"): (
-        "Bustling street pandals and echoing collective chants of Ram Dhun transform public areas across Gujarat, magnifying the festive energy of dharma, maryada, and devotional celebration. "
-        "Bustling garba grounds and bright rangoli work completely transform public and private squares under bright festive lights. "
-        "Extended families mark the joyful transition by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "Bustling street pandals and echoing collective chants of Ram Dhun transform public areas across Gujarat under bright lights. "
+        "Massive temple crowds gather late into the afternoon to mark the precise moment of the divine janmotsav. "
+        "Extended families mark the joyful transition by sharing large plates of jalebi along with festive local snacks."
     ),
     ("ram-navami", "haryana"): (
-        "Domestic shrines are beautifully decorated for the welcoming of the sacred birth hour across Haryana, magnifying the annual cycle of dharma, maryada, and devotional celebration. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood women lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "Traditional kirtans and sacred cradle decorations alter the domestic rhythm across Haryana during the holy spring days. "
+        "Neighborhood women lead traditional Ram katha chats to invoke the protective guidance of the deity. "
+        "The home gathering is warmed by distributing sweet kheer variations paired with farm-style dairy delicacies."
     ),
     ("ram-navami", "himachal-pradesh"): (
-        "Community prayer assemblies emerge amidst the fresh mountain air across Himachal Pradesh, anchoring local valleys in dharma, maryada, and devotional celebration. "
-        "Serene village temples and hillside processions host local clans traveling across valleys to pay homage to their deities. "
-        "The spiritual afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around communal hearths."
+        "Hillside shrines echo with deep devotional music across Himachal Pradesh, anchoring the mountain air in the sacred janmotsav. "
+        "Local clans travel across valleys to participate in grand temple-style scriptural reading gatherings. "
+        "The spiritual afternoon is comforted by serving warm panakam formulas alongside rich mountain-style meals."
     ),
     ("ram-navami", "jharkhand"): (
-        "Devotional songs echo through illuminated temporary shrines in Jharkhand, marking the seasonal alignment with dharma, maryada, and devotional celebration. "
-        "Open community grounds and family prayer circles provide an inclusive space for traditional drumming and evening chants. "
-        "The single-day fast is supported by sharing unique seasonal sweets and simple ceremonial meals within families."
+        "Earthen lamps remain lit continuously inside Jharkhand residences, marking the seasonal alignment with the holy janmotsav. "
+        "Devotees coordinate peaceful community prayer circles to offer collective gratitude for family health and well-being. "
+        "The fasting period is supported by sharing unique neer mor mixtures with neighboring families."
     ),
     ("ram-navami", "karnataka"): (
-        "The unique distribution of refreshing panakam and sweet majjige drinks transforms local living rooms across Karnataka, celebrating dharma, maryada, and devotional celebration. "
-        "Intricate flower decorations and early-morning puja rituals re-energize the household as children arrange the sacred steps. "
-        "Visiting guests are welcomed into homes with delicious kosambari, payasa, and temple-style prasada."
+        "The unique distribution of refreshing panakam and sweet majjige drinks transforms local living rooms across Karnataka at noon. "
+        "Intricate flower decorations and morning janmotsav rituals re-energize the household as families decorate the sacred cradle. "
+        "Visiting guests are welcomed into homes with delicious jalebi variations alongside classic southern treats."
     ),
     ("ram-navami", "kerala"): (
-        "Specialised temple shrines exhibit beautiful scriptural readings or Ramayana Parayan in Kerala, marking a unique southern expression of dharma, maryada, and devotional celebration. "
-        "Ornate floral designs and household lamp lighting ground the final hours of the sacred day in absolute stillness. "
-        "The concluding celebration is marked by serving sweet payasam, banana chips, and elaborate festive spreads."
+        "Specialized temple shrines exhibit beautiful scriptural readings of the Ramayana in Kerala, marking a unique southern expression. "
+        "The quiet community focus sets a deeply meditative stage for intense twilight prayers inside traditional shrines. "
+        "The concluding hour is celebrated by serving sweet kheer variants alongside elaborate banana leaf spreads."
     ),
     ("ram-navami", "madhya-pradesh"): (
-        "The magnificent celebrations at the historic Orchha Ram Raja temple draw millions across Madhya Pradesh, showcasing deep arrays of dharma, maryada, and devotional celebration. "
-        "Devotional mandir visits and old-city processions draw thousands out into illuminated public streets after sunset. "
-        "The local evening hospitality is accompanied by distributing savory poha-style snacks, sweets, and prasad to visitors."
+        "The magnificent celebrations at the historic Orchha Ram Raja temple draw millions across Madhya Pradesh during the janmotsav. "
+        "Devotional mandir visits draw thousands of residents into illuminated public streets after sunset for collective prayers. "
+        "The local evening hospitality features sharing bowls of panakam along with regional street savouries."
     ),
     ("ram-navami", "maharashtra"): (
-        "The systematic rendering of traditional cradle ceremonies or Janmotsav at noon anchors local neighbourhood complexes across Maharashtra, initiating days of dharma, maryada, and devotional celebration. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The daily family gathering centers on preparing fresh, sweet modak, puran poli, and festive snacks."
+        "The systematic rendering of traditional cradle ceremonies at noon anchors home altars across Maharashtra during the spring days. "
+        "Bustling society spaces turn into lively centers for nightly kirtan sessions and collective aarti routines. "
+        "The family gathering centers on preparing hot neer mor formulas along with traditional maharashtrian sweets."
     ),
     ("ram-navami", "manipur"): (
-        "Devotional storytelling and classical musical sequences fill local temples in Manipur, blending the season with dharma, maryada, and devotional celebration. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The sacred week concludes with neighbourhoods arranging large community feasts paired with specialized seasonal sweets."
+        "Devotional storytelling and graceful musical sequences fill local mandaps in Manipur, blending the seasonal shift with Ram katha. "
+        "Expressive cultural performances offer a deeply classical avenue for communities participating in the janmotsav. "
+        "The sacred day is marked by preparing custom jalebi formulas to share among extended families."
     ),
     ("ram-navami", "meghalaya"): (
-        "Sacred fasts and twilight prayer groups bring families together in Meghalaya, honoring the message of dharma, maryada, and devotional celebration. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the spring season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Sacred fasts and twilight prayer groups bring diverse neighborhoods together in Meghalaya to observe the holy janmotsav. "
+        "Festive community halls host peaceful cultural gatherings to celebrate the traditional segments of Ram katha. "
+        "The warm afternoon hospitality features sharing bowls of panakam along with unique local rice sweets."
     ),
     ("ram-navami", "mizoram"): (
-        "Traditional oil lamps illuminate private balconies in Mizoram, bridging local harmony with the global focus on dharma, maryada, and devotional celebration. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The spring occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Traditional oil lamps illuminate private balconies in Mizoram, bridging local harmony with the global focus on the janmotsav. "
+        "Decorated community spaces allow diaspora groups to gather for collective prayers honoring the birth of righteousness. "
+        "The spring occasion is highlighted by gathering for shared plates of neer mor across local townships."
     ),
     ("ram-navami", "nagaland"): (
-        "Quiet hilltop altars are decorated with sacred spring flowers across Nagaland, celebrating the spiritual presence of dharma, maryada, and devotional celebration. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Quiet home altars are decorated with fresh spring flowers across Nagaland, celebrating the spiritual presence of the janmotsav. "
+        "Vibrant collective singing provides a welcoming environment for families participating in Ram katha rituals. "
+        "The peaceful seasonal gathering is highlighted by presenting warm kheer formulas alongside celebratory desserts."
     ),
     ("ram-navami", "odisha"): (
-        "The iconic Ramleela fold theater performances and grand temple processions transform Odisha, elevating a profound wave of deep dharma, maryada, and devotional celebration. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "The grand Rama-Sita wedding reenactment ceremonies or Kalyanotsavam transform local towns across Odisha during the spring. "
+        "Intricate designs line the paths where families gather for the beautiful evening janmotsav blessings. "
+        "The holy days are accompanied by distributing traditional panakam along with classic temple sweets."
     ),
     ("ram-navami", "punjab"): (
-        "Shobha yatras and intense continuous kirtan sessions fill local residential areas across Punjab, defining a grand display of dharma, maryada, and devotional celebration. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "Shobha yatras and intense continuous kirtan sessions fill local residential areas across Punjab during the janmotsav. "
+        "Neighborhood families coordinate vibrant devotional tracks inside community centres to praise the avatar. "
+        "The auspicious eighth day is marked by sharing warm jalebi alongside festive local rotis."
     ),
     ("ram-navami", "rajasthan"): (
-        "Traditional folk chants and grand temple processions fill royal courtyards in Rajasthan, elevating the heritage of dharma, maryada, and devotional celebration. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "High-energy devotional chants and traditional folk music fill historic courtyards in Rajasthan during the holy spring days. "
+        "Delicate courtyard decorations provide a dramatic setting for late-night Ram katha sessions under bright lights. "
+        "The culinary gathering centers on serving sweet neer mor variations along with rich desert treats."
     ),
     ("ram-navami", "sikkim"): (
-        "Hillside altars are dressed in fresh spring leaves across Sikkim, welcoming the seasonal alignment with dharma, maryada, and devotional celebration. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Hillside altars are dressed in fresh spring leaves across Sikkim, welcoming the seasonal alignment with the janmotsav. "
+        "Grounded community prayer brings mountain settlements together for peaceful scriptural reading songs and shared blessings. "
+        "The local hospitality involves sharing sweet kheer formulas among remote neighborhoods."
     ),
     ("ram-navami", "tamil-nadu"): (
-        "The grand Rama-Sita wedding reenactment ceremonies or Kalyanotsavam transform Tamil Nadu temples, anchoring dharma, maryada, and devotional celebration. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange sundal packets. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "The grand Rama-Sita wedding reenactment ceremonies or Kalyanotsavam transform Tamil Nadu temples, anchoring the seasonal focus. "
+        "Vibrant art and dawn rituals reshape the domestic rhythm as families complete their janmotsav steps. "
+        "The sacred season is celebrated by preparing sweet panakam variants alongside traditional southern snacks."
     ),
     ("ram-navami", "telangana"): (
-        "The historic Sri Sitaramachandra Swamy temple celebrations at Bhadrachalam set an unmatched standard across Telangana, highlighting a profound display of dharma, maryada, and devotional celebration. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "The historic Sri Sitaramachandra Swamy temple celebrations at Bhadrachalam set an unmatched standard across Telangana at noon. "
+        "Community devotion sets a highly active and colorful public stage for evening janmotsav gatherings. "
+        "The primary household table is filled with ritual jalebi alongside assorted local savouries."
     ),
     ("ram-navami", "tripura"): (
-        "Devotional stotra recitations fill local community halls across Tripura, mirroring the spring arrival of dharma, maryada, and devotional celebration. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Devotional stotra recitations fill local community halls across Tripura, mirroring the spring arrival of the janmotsav. "
+        "Community pandals turn into lively meeting points for families participating in evening Ram katha sessions. "
+        "The evening hospitality is highlighted by sharing traditional singori alongside custom kheer dishes."
     ),
     ("ram-navami", "uttar-pradesh"): (
-        "Millions of pilgrims taking holy dips in the sacred Sarayu river at Ayodhya transform Uttar Pradesh, tracking an unparalleled display of dharma, maryada, and devotional celebration. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "Millions of pilgrims taking holy dips in the sacred Sarayu river at Ayodhya transform Uttar Pradesh during the janmotsav. "
+        "Ancient public squares create an unmatched devotional scale as crowds gather for evening Ram katha songs. "
+        "The high-energy days include distributing famous panakam alongside traditional city prasad."
     ),
     ("ram-navami", "uttarakhand"): (
-        "Pilgrimages to ancient high-altitude shrines and strict fasts define the local experience in Uttarakhand, celebrating a serene display of dharma, maryada, and devotional celebration. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Pilgrimages to ancient hilltop shrines and strict fasting routines define the local experience in Uttarakhand during the spring. "
+        "Ancient hill temples bring remote mountain settlements together for protective collective prayers honoring the avatar. "
+        "The spiritual gathering is completed by serving hot neer mor formulas alongside custom alpine treats."
     ),
     ("ram-navami", "west-bengal"): (
-        "Traditional scriptural recitations and beautiful devotional dynamic maps transform homes in West Bengal, showcasing a beautiful wave of dharma, maryada, and devotional celebration. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "Traditional scriptural recitations and beautiful devotional dynamic maps transform homes in West Bengal during the janmotsav. "
+        "Artistic neighborhood structures and beautiful decorations alter the local landscape during the twilight Ram katha hours. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom kheer sweets."
     ),
     ("ram-navami", "nri-london"): (
-        "Massive community halls host scriptural workshops and classical bhajan programs across London, allowing the diaspora to maintain an authentic experience of dharma, maryada, and devotional celebration. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the spring transition by packing potluck sweets and temple prasada to share with global friends."
+        "Massive hired assembly halls host scriptural workshops and classical bhajan programs across London, allowing the diaspora to preserve the heritage. "
+        "Bustling weekend events connect families across boroughs for synchronized janmotsav circles and prayers. "
+        "Expatriates mark the spring transition by packing tupperware containers of jalebi to share with global friends."
     ),
     ("ram-navami", "nri-new-york"): (
-        "Community centers host high-energy bhajan recitations and continuous scriptural discourses in New York, preserving the heritage of dharma, maryada, and devotional celebration. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Community centers host high-energy bhajan recitations and continuous scriptural discourses in New York, honoring the traditions of the janmotsav. "
+        "Ornate temple halls and family video calls bridge the long distance for relatives participating in Ram katha. "
+        "The diaspora gathering concludes with sharing custom kheer variations within local networks."
     ),
 
 
     # ── HANUMAN JAYANTI (Batch 16 -- all 30 regions) ──────────────────────────
     ("hanuman-jayanti", "andhra-pradesh"): (
-        "Hanuman Chalisa chantings and vermillion offerings mark the high-energy morning assemblies across Andhra Pradesh, centering on strength, devotion, and protection. "
-        "The protective spiritual atmosphere fills local neighbourhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families conclude their intense daytime prayers by sharing temple pulihora and laddus with visiting neighbourhood circles."
+        "Resounding Hanuman Chalisa chantings and orange sindoor applications mark temple courtyards across Andhra Pradesh during the holy morning hours. "
+        "Devotees gather in large numbers to offer collective prayers for strength and absolute spiritual protection. "
+        "The auspicious day concludes with families sharing sacred boondi laddus with visiting neighborhood circles."
     ),
     ("hanuman-jayanti", "arunachal-pradesh"): (
-        "Sacred sundarkand recitations and bright oil lamps are lit across Arunachal Pradesh homes, anchoring the seasonal focus on strength, devotion, and protection. "
-        "Bustling community halls and family gatherings fill with traditional hymns as families gather to pray for spiritual shielding. "
-        "The auspicious evening concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Sacred sundarkand recitations and bright oil lamps are lit across Arunachal Pradesh homes, anchoring the seasonal focus on bajrangbali. "
+        "Bustling community spaces fill with traditional hymns as families gather to pray for spiritual shielding. "
+        "The auspicious evening concludes with households gathering to share custom besan ladoo formulas with neighbors."
     ),
     ("hanuman-jayanti", "assam"): (
-        "The continuous chanting of protective verses and red flower offerings alter the domestic rhythm in Assam, reflecting a deep focus on strength, devotion, and protection. "
-        "Joyous music, prayer, and neighbourhood visits elevate local community spaces during the twilight puja transitions. "
-        "The sacred cycle is enriched by serving traditional pitha, payas, and festive rice offerings to the neighbourhood."
+        "The continuous chanting of protective chalisa verses and orange sindoor markings alter the domestic rhythm in Assam, reflecting a deep focus on bajrangbali. "
+        "Neighborhood circles gather for intense twilight prayers to welcome defensive shielding into their settlements. "
+        "The celebration is completed as kitchens prepare sweet imarti solutions alongside traditional Assamese pitha varieties."
     ),
     ("hanuman-jayanti", "bihar"): (
-        "Strict fasting rituals and intense Hanuman temple crowds define the household atmosphere in Bihar, celebrating the auspicious arrival of strength, devotion, and protection. "
-        "Bustling ghat visits and family puja routines allow large extended families to gather for collective sundarkand recitations. "
-        "The daily ceremonial transition is marked by preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "Devotional fasting routines and intense temple lines define the household atmosphere in Bihar, celebrating the auspicious arrival of bajrangbali. "
+        "The community gathers for elaborate sundarkand reading sessions to invite protective guidance into their homes. "
+        "Fasting families break their daily restrictions by eating custom motichoor items alongside classic home-cooked bihari savouries."
     ),
     ("hanuman-jayanti", "chhattisgarh"): (
-        "Vibrant red flags and traditional wrestling arena or akhada displays are coordinated across Chhattisgarh, initiating the spring celebration of strength, devotion, and protection. "
-        "Vibrant community puja and local fairs bring farming communities together for evening folk dances and traditional prayers. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad for daily offerings."
+        "Vibrant red flags and traditional wrestling arena or akhada displays are beautifully coordinated across Chhattisgarh, initiating the spring celebration. "
+        "Evening gatherings feature vibrant bajrangbali chants as local neighborhoods unite for collective worship at local shrines. "
+        "Kitchens prepare specialized boondi laddus and home-style desserts to distribute as sacred prasad."
     ),
     ("hanuman-jayanti", "goa"): (
-        "Serene oil lamp illuminations turn temple courtyards into spaces of absolute calm in Goa, channeling a beautiful wave of strength, devotion, and protection. "
-        "Quiet home altars and bustling neighbourhood celebration routes define the spatial layout of the local evening prayers. "
-        "The sacred period is marked by sharing unique coconut sweets and festive savouries among long-time neighbours."
+        "Serene oil lamp illuminations turn Goan temple courtyards into spaces of absolute calm during the holy chalisa recitations. "
+        "Families coordinate intricate sundarkand routines to invite prosperity and protective energy into their neighborhoods. "
+        "The sacred time involves sharing delicious besan ladoo portions alongside coastal coconut desserts with visiting families."
     ),
     ("hanuman-jayanti", "gujarat"): (
-        "Bustling street pandals and echoing collective chants of the Hanuman Chalisa transform public areas across Gujarat, magnifying the festive energy of strength, devotion, and protection. "
-        "Bustling garba grounds and bright rangoli work completely transform public and private squares under bright festive lights. "
-        "Extended families mark the joyful transition by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "Bustling street pandals and echoing collective chants of the Hanuman Chalisa transform public areas across Gujarat under bright lights. "
+        "Massive temple crowds gather late into the evening to mark the precise birth moment of the deity. "
+        "Extended families mark the joyful transition by sharing large plates of imarti along with festive local snacks."
     ),
     ("hanuman-jayanti", "haryana"): (
-        "Domestic shrines are beautifully decorated with red vermillion and orange offerings across Haryana, magnifying the annual cycle of strength, devotion, and protection. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood women lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "Traditional kirtans and sacred vermillion offerings alter the domestic rhythm across Haryana during the holy spring days. "
+        "Neighborhood women lead traditional sundarkand chats to invoke the protective guidance of bajrangbali. "
+        "The home gathering is warmed by distributing sweet motichoor variations paired with farm-style dairy delicacies."
     ),
     ("hanuman-jayanti", "himachal-pradesh"): (
-        "Community prayer assemblies emerge amidst the fresh mountain air across Himachal Pradesh, anchoring local valleys in strength, devotion, and protection. "
-        "Serene village temples and hillside processions host local clans traveling across valleys to pay homage to their deities. "
-        "The spiritual afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around communal hearths."
+        "Hillside shrines echo with deep devotional music across Himachal Pradesh, anchoring the mountain air in the praise of bajrangbali. "
+        "Local clans travel across valleys to participate in grand temple-style chalisa reading gatherings. "
+        "The spiritual afternoon is comforted by serving warm boondi laddus alongside rich mountain-style meals."
     ),
     ("hanuman-jayanti", "jharkhand"): (
-        "Devotional shakti songs echo through illuminated temporary shrines in Jharkhand, marking the seasonal alignment with strength, devotion, and protection. "
-        "Open community grounds and family prayer circles provide an inclusive space for traditional drumming and evening chants. "
-        "The single-day fast is supported by sharing unique seasonal sweets and simple ceremonial meals within families."
+        "Earthen lamps remain lit continuously inside Jharkhand residences, marking the seasonal alignment with the protective deity. "
+        "Devotees coordinate peaceful community prayer circles to offer collective gratitude for family health and well-being. "
+        "The fasting period is supported by sharing unique besan ladoo mixtures with neighboring families."
     ),
     ("hanuman-jayanti", "karnataka"): (
-        "The special Hanuman Vrata rituals and grand offerings of boondi laddus transform local living rooms across Karnataka, celebrating strength, devotion, and protection. "
-        "Intricate flower decorations and early-morning puja rituals re-energize the household as children arrange the sacred steps. "
-        "Visiting guests are welcomed into homes with delicious kosambari, payasa, and temple-style prasada."
+        "The unique distribution of sacred orange sindoor and sweet boondi laddus transforms local living rooms across Karnataka. "
+        "Intricate flower decorations and morning chalisa rituals re-energize the household as families decorate the shrine. "
+        "Visiting guests are welcomed into homes with delicious imarti variations alongside classic southern treats."
     ),
     ("hanuman-jayanti", "kerala"): (
-        "Specialised temple shrines exhibit beautiful recitations or Hanumath Jayanthi parayan in Kerala, marking a unique southern expression of strength, devotion, and protection. "
-        "Ornate floral designs and household lamp lighting ground the final hours of the sacred day in absolute stillness. "
-        "The concluding celebration is marked by serving sweet payasam, banana chips, and elaborate festive spreads."
+        "Specialized temple shrines exhibit beautiful scriptural readings of the sundarkand in Kerala, marking a unique southern expression. "
+        "The quiet community focus sets a deeply meditative stage for intense twilight prayers inside traditional shrines. "
+        "The concluding hour is celebrated by serving sweet motichoor variants alongside elaborate banana leaf spreads."
     ),
     ("hanuman-jayanti", "madhya-pradesh"): (
-        "The magnificent celebrations at historic hilltop temples draw millions across Madhya Pradesh, showcasing deep arrays of strength, devotion, and protection. "
-        "Devotional mandir visits and old-city processions draw thousands out into illuminated public streets after sunset. "
-        "The local evening hospitality is accompanied by distributing savory poha-style snacks, sweets, and prasad to visitors."
+        "The magnificent celebrations at historic hilltop temples draw millions across Madhya Pradesh during the chalisa recitations. "
+        "Devotional mandir visits draw thousands of residents into illuminated public streets after sunset for collective prayers. "
+        "The local evening hospitality features sharing bowls of boondi laddus along with regional street savouries."
     ),
     ("hanuman-jayanti", "maharashtra"): (
-        "The systematic rendering of morning birth markers or Janmotsav at sunrise anchors local neighbourhood complexes across Maharashtra, initiating days of strength, devotion, and protection. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The daily family gathering centers on preparing fresh, sweet modak, puran poli, and festive snacks."
+        "The systematic rendering of morning birth ceremonies at sunrise anchors local neighborhood complexes across Maharashtra. "
+        "Bustling society spaces turn into lively centers for nightly sundarkand sessions and collective aarti routines. "
+        "The family gathering centers on preparing fresh besan ladoo formulas along with traditional maharashtrian sweets."
     ),
     ("hanuman-jayanti", "manipur"): (
-        "Devotional storytelling and classical musical sequences fill local temples in Manipur, blending the season with strength, devotion, and protection. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The sacred week concludes with neighbourhoods arranging large community feasts paired with specialized seasonal sweets."
+        "Devotional storytelling and graceful musical sequences fill local mandaps in Manipur, blending the seasonal shift with the chalisa. "
+        "Expressive cultural performances offer a deeply classical avenue for communities participating in the worship of bajrangbali. "
+        "The sacred day is marked by preparing custom imarti formulas to share among extended families."
     ),
     ("hanuman-jayanti", "meghalaya"): (
-        "Sacred fasts and twilight prayer groups bring families together in Meghalaya, honoring the message of strength, devotion, and protection. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the spring season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Sacred fasts and twilight prayer groups bring diverse neighborhoods together in Meghalaya to observe the holiday. "
+        "Festive community halls host peaceful cultural gatherings to celebrate the traditional segments of the sundarkand. "
+        "The warm afternoon hospitality features sharing bowls of motichoor along with unique local rice sweets."
     ),
     ("hanuman-jayanti", "mizoram"): (
-        "Traditional oil lamps illuminate private balconies in Mizoram, bridging local harmony with the global focus on strength, devotion, and protection. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The spring occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Traditional oil lamps illuminate private balconies in Mizoram, bridging local harmony with the global focus on bajrangbali. "
+        "Decorated community spaces allow diaspora groups to gather for collective prayers honoring the protective deity. "
+        "The spring occasion is highlighted by gathering for shared plates of boondi laddus across local townships."
     ),
     ("hanuman-jayanti", "nagaland"): (
-        "Quiet hilltop altars are decorated with sacred spring flowers across Nagaland, celebrating the spiritual presence of strength, devotion, and protection. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Quiet home altars are decorated with fresh spring flowers across Nagaland, celebrating the spiritual presence of the chalisa. "
+        "Vibrant collective singing provides a welcoming environment for families participating in sundarkand rituals. "
+        "The peaceful seasonal gathering is highlighted by presenting warm besan ladoo formulas alongside celebratory desserts."
     ),
     ("hanuman-jayanti", "odisha"): (
-        "The iconic orange flags and grand temple Hanuman Chalisa circuits transform Odisha, elevating a profound wave of deep strength, devotion, and protection. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "The iconic orange flags and grand temple Hanuman Chalisa circuits transform local towns across Odisha during the spring. "
+        "Intricate designs line the paths where families gather for the beautiful evening bajrangbali blessings. "
+        "The holy days are accompanied by distributing traditional imarti along with classic temple sweets."
     ),
     ("hanuman-jayanti", "punjab"): (
-        "Shobha yatras and intense continuous kirtan sessions fill local residential areas across Punjab, defining a grand display of strength, devotion, and protection. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "Shobha yatras and intense continuous chalisa sessions fill local residential areas across Punjab during the spring. "
+        "Neighborhood families coordinate vibrant devotional tracks inside community centres to praise the deity. "
+        "The auspicious day is marked by sharing warm motichoor alongside festive local rotis."
     ),
     ("hanuman-jayanti", "rajasthan"): (
-        "Traditional folk chants and grand temple processions at Salasar Balaji fill historic neighbourhoods in Rajasthan, elevating the heritage of strength, devotion, and protection. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "High-energy devotional chants and grand temple celebrations at Salasar Balaji fill historic neighborhoods in Rajasthan. "
+        "Delicate courtyard decorations provide a dramatic setting for late-night sundarkand sessions under bright lights. "
+        "The culinary gathering centers on serving sweet boondi laddus variations along with rich desert treats."
     ),
     ("hanuman-jayanti", "sikkim"): (
-        "Hillside altars are dressed in fresh spring leaves across Sikkim, welcoming the seasonal alignment with strength, devotion, and protection. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Hillside altars are dressed in fresh spring leaves across Sikkim, welcoming the seasonal alignment with the chalisa. "
+        "Grounded community prayer brings mountain settlements together for peaceful sundarkand songs and shared blessings. "
+        "The local hospitality involves sharing sweet besan ladoo formulas among remote neighborhoods."
     ),
     ("hanuman-jayanti", "tamil-nadu"): (
-        "The beautiful offering of vadamala garlands woven from savory treats transforms Tamil Nadu temples, anchoring strength, devotion, and protection. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange sundal packets. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "The beautiful offering of vadamala garlands woven from savory treats transforms Tamil Nadu temples, anchoring the focus. "
+        "Vibrant art and dawn rituals reshape the domestic rhythm as families complete their protective steps. "
+        "The sacred season is celebrated by preparing sweet imarti variants alongside traditional southern snacks."
     ),
     ("hanuman-jayanti", "telangana"): (
-        "The massive multi-day Hanuman Deeksha completions and grand temple stages transform Telangana, highlighting a profound display of strength, devotion, and protection. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "The massive multi-day Hanuman Deeksha completions and grand temple stages transform Telangana at sunrise. "
+        "Community devotion sets a highly active and colorful public stage for evening bajrangbali gatherings. "
+        "The primary household table is filled with ritual motichoor alongside assorted local savouries."
     ),
     ("hanuman-jayanti", "tripura"): (
-        "Devotional stotra recitations fill local community halls across Tripura, mirroring the spring arrival of strength, devotion, and protection. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Devotional stotra recitations fill local community halls across Tripura, mirroring the spring arrival of the chalisa. "
+        "Community pandals turn into lively meeting points for families participating in evening sundarkand sessions. "
+        "The evening hospitality is highlighted by sharing traditional singori alongside custom boondi laddus dishes."
     ),
     ("hanuman-jayanti", "uttar-pradesh"): (
-        "Massive congregations at ancient Sankat Mochan mandirs and morning sundarkand chants transform Uttar Pradesh, tracking an unparalleled display of strength, devotion, and protection. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of morning bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "Massive congregations at ancient Sankat Mochan mandirs and morning sundarkand chants transform Uttar Pradesh. "
+        "Ancient public squares create an unmatched devotional scale as crowds gather for evening chalisa songs. "
+        "The high-energy days include distributing famous besan ladoo alongside traditional city prasad."
     ),
     ("hanuman-jayanti", "uttarakhand"): (
-        "Pilgrimages to hilltop temples and sacred fasts define the local experience in Uttarakhand, celebrating a serene display of strength, devotion, and protection. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Pilgrimages to ancient hilltop shrines and strict fasting routines define the local experience in Uttarakhand during the spring. "
+        "Ancient hill temples bring remote mountain settlements together for protective collective prayers honoring bajrangbali. "
+        "The spiritual gathering is completed by serving hot imarti formulas alongside custom alpine treats."
     ),
     ("hanuman-jayanti", "west-bengal"): (
-        "Traditional scriptural recitations and beautiful devotional dynamic maps transform homes in West Bengal, showcasing a beautiful wave of strength, devotion, and protection. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "Traditional scriptural recitations and beautiful devotional setups transform homes in West Bengal during the chalisa. "
+        "Artistic neighborhood structures and beautiful decorations alter the local landscape during the twilight sundarkand hours. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom motichoor sweets."
     ),
     ("hanuman-jayanti", "nri-london"): (
-        "Massive community halls host protective workshops and collective Hanuman Chalisa recitations across London, allowing the diaspora to maintain an authentic experience of strength, devotion, and protection. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the spring transition by packing potluck sweets and temple prasada to share with global friends."
+        "Massive hired assembly halls host scriptural workshops and collective Hanuman Chalisa recitations across London. "
+        "Bustling weekend events connect families across boroughs for synchronized circles and prayers. "
+        "Expatriates mark the spring transition by packing tupperware containers of boondi laddus to share with global friends."
     ),
     ("hanuman-jayanti", "nri-new-york"): (
-        "Community centers host high-energy bhajan recitations and orange vermillion puja ceremonies in New York, preserving the heritage of strength, devotion, and protection. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
-    ),
+        "Community centers host orange vermillion ceremonies and continuous scriptural discourses in New York, honoring the traditions. "
+        "Ornate temple halls and family video calls bridge the long distance for relatives participating in chalisa recitations. "
+        "The diaspora gathering concludes with sharing custom besan ladoo variations within local networks."
+    )
 
 }  # End of FESTIVAL_REGION_SUMMARY -- 480 entries complete (16 festivals × 30 regions)
