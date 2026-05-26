@@ -1091,307 +1091,307 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
 
     # ── MAKAR SANKRANTI (Batch 8 -- all 30 regions) ───────────────────────────
     ("makar-sankranti", "andhra-pradesh"): (
-        "Colorful kites climb from rooftops and tilgul boxes pass between neighbours across Andhra Pradesh, centering on harvest, sunlight, and transition. "
-        "The bright seasonal energy fills local neighbourhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families mark the auspicious solar migration by sharing traditional pulihora and laddus outside their decorated homes."
+        "Vibrant paper kites climb into the clear blue sky across Andhra Pradesh to celebrate the sun's auspicious northward transit. "
+        "Rooftops fill with family cheering groups as colorful wings engage in friendly aerial duels high above the towns. "
+        "The bright morning concludes with households distributing traditional sweet gajak selections to visiting relatives."
     ),
     ("makar-sankranti", "arunachal-pradesh"): (
-        "Sesame and jaggery sweets are prepared to welcome the sun's northward turn across Arunachal Pradesh, anchoring the seasonal focus on harvest, sunlight, and transition. "
-        "Bustling community halls and family gatherings fill with traditional greetings as families celebrate the passing of the cold winter solstice. "
-        "The playful morning concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Upward-looking community assemblies gather across Arunachal Pradesh valleys to track the winter sun's changing orbital path. "
+        "Rooftop viewings and open-ground gatherings allow local neighborhoods to share traditional seasonal blessings under the warming sky. "
+        "The daytime celebration is completed by serving rich sweet reweri portions alongside custom alpine treats."
     ),
     ("makar-sankranti", "assam"): (
-        "High-energy Magh Bihu bonfires and upward-looking community games alter the rural landscape in Assam, reflecting a deep focus on harvest, sunlight, and transition. "
-        "Joyous music, prayer, and neighbourhood visits elevate local community spaces during the daylight agricultural changes. "
-        "The sacred cycle is enriched by serving traditional pitha, payas, and festive rice offerings to the neighbourhood."
+        "Towering thatch structures are burned at dawn across Assamese farmlands during the high-energy Magh Bihu assemblies. "
+        "Villagers look skyward to watch the sparks rise, signaling the official end of the cold winter solstice. "
+        "The agrarian milestone is honored by crafting delicious chura mixtures paired with traditional regional pithas."
     ),
     ("makar-sankranti", "bihar"): (
-        "Traditional dahi-chura meals and massive holy dips at river confluences mark the daytime rhythm in Bihar, celebrating harvest, sunlight, and transition. "
-        "Bustling ghat visits and family puja routines allow large extended families to gather for collective sun prayers. "
-        "The daily ceremonial transition is marked by preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "Massive holy river dips at sunrise define the public landscape of Bihar during the sacred solar transition. "
+        "Rooftops are crowded with youth flying brilliant paper kites while elders offer continuous prayers to the sun god. "
+        "Families mark the auspicious day by eating large bowls of dahi-chura alongside classic home-cooked bihari savouries."
     ),
     ("makar-sankranti", "chhattisgarh"): (
-        "Earthen pots filled with freshly harvested til and rice are exchanged across Chhattisgarh, initiating the quiet celebration of harvest, sunlight, and transition. "
-        "Vibrant community puja and local fairs bring farming communities together for evening folk dances and traditional prayers. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad for daily offerings."
+        "Earthen pots carrying freshly harvested sesame seeds are exchanged across Chhattisgarh as the winter sun moves northward. "
+        "Rooftop lookouts and local field fairs bring agricultural neighborhoods together to celebrate the changing seasonal light. "
+        "Kitchens prepare specialized tilgul pieces alongside home-style prasad to distribute among local clans."
     ),
     ("makar-sankranti", "goa"): (
-        "Married women distribute traditional clay pots filled with seasonal grains and sugarcane in Goa, channeling a beautiful wave of harvest, sunlight, and transition. "
-        "Quiet home altars and bustling neighbourhood celebration routes define the spatial layout of the local evening prayers. "
-        "The sacred period is marked by sharing unique coconut sweets and festive savouries among long-time neighbours."
+        "Married women distribute traditional small clay pots filled with winter grains across Goan coastal settlements. "
+        "Families look skyward from open terraces to watch colorful paper kites catch the shifting sea breezes. "
+        "The sacred day is marked by sharing delicious gajak candy variations alongside coastal coconut desserts."
     ),
     ("makar-sankranti", "gujarat"): (
-        "Thousands of vibrant kites cloud the skies of Ahmedabad during the grand Uttarayan festival in Gujarat, magnifying the festive energy of harvest, sunlight, and transition. "
-        "Bustling garba grounds and bright rangoli work completely transform public and private squares under bright festive lights. "
-        "Dancers replenish their energy late into the night by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "Millions of vibrant paper kites completely cloud the sky across Gujarat during the legendary Uttarayan festival. "
+        "Rooftops turn into high-energy music zones where families stand all day to manage their flying lines. "
+        "Exhausted fliers replenish their energy late into the night by sharing sweet reweri collections alongside multi-course local thalis."
     ),
     ("makar-sankranti", "haryana"): (
-        "The sharing of sweet reweri, gajak, and til sweets brings agricultural families together across Haryana, magnifying the annual cycle of harvest, sunlight, and transition. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood women lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "Traditional winter bonfires are lit at twilight across Haryana courtyards to welcome the sun's northward turn. "
+        "Agricultural workers look skyward to offer the first grains of the season into the crackling flames. "
+        "The rustic holiday is enriched by serving sweet gajak candies paired with farm-style dairy delicacies."
     ),
     ("makar-sankranti", "himachal-pradesh"): (
-        "The Maghi festival features traditional holy dips and shared community charity across Himachal Pradesh, anchoring local valleys in harvest, sunlight, and transition. "
-        "Serene village temples and hillside processions host local clans traveling across valleys to pay homage to their deities. "
-        "The spiritual afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around communal hearths."
+        "The traditional Maghi festival features holy dips in freezing mountain rivers across Himachal Pradesh as the sun transitions. "
+        "Hillside community clearings host families who gather to watch small ceremonial paper kites rise above the valleys. "
+        "The chilly afternoon is comforted by distributing sweet tilgul sweets alongside rich mountain-style meals."
     ),
     ("makar-sankranti", "jharkhand"): (
-        "The traditional Tusu Parab songs and freshly harvested grain offerings decorate residential colonies in Jharkhand, marking the seasonal alignment with harvest, sunlight, and transition. "
-        "Open community grounds and family prayer circles provide an inclusive space for traditional drumming and evening chants. "
-        "The nine-day fast is supported by sharing unique seasonal sweets and simple ceremonial meals within families."
+        "The traditional Tusu Parab songs echo through open fields in Jharkhand, celebrating the sun's northward movement. "
+        "Rooftops and village courtyards turn into lively gathering nodes for youth groups arranging bright paper kites. "
+        "The daytime celebration is supported by distributing sweet chura portions to neighboring families."
     ),
     ("makar-sankranti", "karnataka"): (
-        "The dynamic Ellu Birodhu exchange of sesame seeds, sugarcane, and groundnuts transforms local living rooms across Karnataka, celebrating harvest, sunlight, and transition. "
-        "Intricate flower decorations and early-morning puja rituals re-energize the household as children arrange the sacred steps. "
-        "Visiting guests are welcomed into homes with delicious kosambari, payasa, and temple-style prasada."
+        "The dynamic Ellu Birodhu exchange of sesame seeds and sugarcane transforms local living rooms across Karnataka. "
+        "Children look skyward from open balconies to track the festive flight of paper kites across the city. "
+        "Visiting guests are welcomed into homes with delicious gajak variations alongside classic southern treats."
     ),
     ("makar-sankranti", "kerala"): (
-        "The legendary Makaravilakku lighting atop the sacred hills of Sabarimala creates an incredible devotional scale in Kerala, marking a unique southern expression of harvest, sunlight, and transition. "
-        "Ornate floral designs and household lamp lighting ground the final three days of the sacred calendar in absolute stillness. "
-        "The concluding celebration is marked by serving sweet payasam, banana chips, and elaborate festive spreads."
+        "The legendary Makaravilakku light atop the sacred hills of Sabarimala creates an incredible devotional scale in Kerala. "
+        "Millions of devotees look skyward toward the horizon to capture the precise moment of the solar manifestation. "
+        "The holy day is celebrated by serving sweet reweri candy variants alongside elaborate banana leaf spreads."
     ),
     ("makar-sankranti", "madhya-pradesh"): (
-        "Large-scale kite flying tournaments and grand holy river dips alter the public space of Madhya Pradesh, showcasing deep arrays of harvest, sunlight, and transition. "
-        "Devotional mandir visits and old-city processions draw thousands out into illuminated public streets after sunset. "
-        "The local evening hospitality is accompanied by distributing savory poha-style snacks, sweets, and prasad to visitors."
+        "Large-scale kite flying tournaments take over every open terrace and rooftop across Madhya Pradesh during Uttarayan. "
+        "Massive crowds balance holy river dips with high-energy aerial battles that decorate the bright winter sky. "
+        "The local evening hospitality features sharing bowls of tilgul sweets along with regional street savouries."
     ),
     ("makar-sankranti", "maharashtra"): (
-        "The classic exchange of tilgul with the phrase 'til-gul ghya, god god bola' anchors local neighbourhood complexes across Maharashtra, initiating days of harvest, sunlight, and transition. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The daily family gathering centers on preparing fresh, sweet modak, puran poli, and festive snacks."
+        "The classic exchange of tilgul with the phrase 'til-gul ghya, god god bola' anchors local neighborhood complexes across Maharashtra. "
+        "Families look skyward from high-rise balconies to watch paper kites dip and weave through the winter air. "
+        "The household celebration centers on preparing sweet tilgul pieces along with traditional maharashtrian snacks."
     ),
     ("makar-sankranti", "manipur"): (
-        "Harvest thanksgiving rituals and classical devotional musical sequences fill local temples in Manipur, blending the season with harvest, sunlight, and transition. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The sacred week concludes with neighbourhoods arranging large community feasts paired with specialized seasonal sweets."
+        "Harvest thanksgiving ceremonies and specific sun prayers fill local temples in Manipur during the solar transit. "
+        "Rooftops and open fields host small community groups who gather to fly colorful paper kites. "
+        "The sacred day is marked by preparing custom gajak candy formulas to share among extended families."
     ),
     ("makar-sankranti", "meghalaya"): (
-        "Fresh winter grain displays and twilight prayer groups bring families together in Meghalaya, honoring the message of harvest, sunlight, and transition. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the autumn season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Fresh winter grain displays and twilight prayer groups bring diverse communities together in Meghalaya during the solar shift. "
+        "Terraces and open hillsides host youth groups who gather to watch small ceremonial kites rise above the pines. "
+        "The warm afternoon hospitality features sharing bowls of sweet reweri along with unique local rice sweets."
     ),
     ("makar-sankranti", "mizoram"): (
-        "Traditional oil lamps and winter harvest greetings decorate private balconies in Mizoram, bridging local harmony with the global focus on harvest, sunlight, and transition. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The autumn occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Traditional oil lamps and winter harvest greetings decorate private balconies in Mizoram as the sun moves northward. "
+        "Decorated community spaces allow families to gather on open rooftops for seasonal songs and kite flying. "
+        "The autumn occasion is highlighted by gathering for shared plates of tilgul across local townships."
     ),
     ("makar-sankranti", "nagaland"): (
-        "Agrarian celebration songs and community bonfires are coordinated across Nagaland, celebrating the spiritual presence of harvest, sunlight, and transition. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Agrarian celebration songs and community bonfires are coordinated across Nagaland during the solar migration. "
+        "Village youth look skyward to launch bright paper kites from high-altitude ridge viewpoints. "
+        "The peaceful seasonal gathering is highlighted by presenting warm chura variations alongside celebratory desserts."
     ),
     ("makar-sankranti", "odisha"): (
-        "The Makara Mela festivals on the pristine grounds of ancient temples transform Odisha, elevating a profound wave of deep harvest, sunlight, and transition. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "The Makara Mela festivals on the pristine grounds of ancient temples transform local towns across Odisha. "
+        "Rooftops are filled with families tracking the paths of brilliant paper kites flying over the temple spires. "
+        "The holy days are accompanied by distributing traditional sweet gajak along with classic temple sweets."
     ),
     ("makar-sankranti", "punjab"): (
-        "The high-energy Maghi fair following the vibrant Lohri night bonfires fills local residential areas across Punjab, defining a grand display of harvest, sunlight, and transition. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious eighth day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "The high-energy Maghi fair assemblies follow the vibrant Lohri night bonfires across Punjab's fields. "
+        "Youth groups gather on village rooftops to play loud music and launch massive paper kites into the winter sky. "
+        "The festive gathering is marked by distributing warm reweri candies alongside festive local rotis."
     ),
     ("makar-sankranti", "rajasthan"): (
-        "High-flying kite arrays and specialised charity to elders fill historic neighbourhoods in Rajasthan, elevating the heritage of harvest, sunlight, and transition. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "High-flying kite arrays and specialized charity to elders fill historic rooftops in Jaipur and greater Rajasthan. "
+        "The sky turns into a dense mosaic of colors as thousands of families spend the entire day on their terraces. "
+        "The culinary gathering centers on serving sweet gajak variations along with rich desert treats."
     ),
     ("makar-sankranti", "sikkim"): (
-        "The traditional Maghe Sankranti holy dips in mountain rivers bring communities together across Sikkim, welcoming the seasonal alignment with harvest, sunlight, and transition. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "The traditional Maghe Sankranti holy dips in mountain rivers bring communities together across Sikkim. "
+        "Hillside clearings host small village groups who look skyward to watch ceremonial paper kites rise over the peaks. "
+        "The local hospitality involves sharing sweet tilgul formulas among remote mountain neighborhoods."
     ),
     ("makar-sankranti", "tamil-nadu"): (
-        "The grand Pongal boil-over rituals and beautiful cattle decorations transform Tamil Nadu, anchoring harvest, sunlight, and transition. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbours visit to exchange sundal packets. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "The auspicious northward turn of the sun is observed quietly across Tamil Nadu through early morning solar prayers. "
+        "Families look skyward from open courtyards to offer gratitude for the fresh seasonal light and warmth. "
+        "The sacred day is celebrated by preparing sweet tilgul sweets alongside traditional southern snacks."
     ),
     ("makar-sankranti", "telangana"): (
-        "Intricate multi-colored rangoli designs and dynamic community kite-flying paths decorate thresholds across Telangana, highlighting a profound display of harvest, sunlight, and transition. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "Intricate geometric designs and dynamic community kite-flying paths decorate rooftops across Telangana. "
+        "Terraces are packed with youth groups executing high-energy aerial cuts under the bright winter sun. "
+        "The primary household table is filled with ritual gajak candies alongside assorted local savouries."
     ),
     ("makar-sankranti", "tripura"): (
-        "Traditional Pous Sankranti rice cakes and devotional stotra recitations fill community halls across Tripura, mirroring the winter arrival of harvest, sunlight, and transition. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Traditional winter rice cakes and morning solar prayers fill community spaces across Tripura during the transit. "
+        "Rooftops turn into lively meeting points for youth groups launching colorful paper kites into the clear air. "
+        "The evening hospitality is highlighted by sharing traditional chura mixtures alongside local festive dishes."
     ),
     ("makar-sankranti", "uttar-pradesh"): (
-        "The world-famous Khichdi Mela holy dips in Prayagraj transform Uttar Pradesh, tracking a magnificent display of harvest, sunlight, and transition. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "Millions of pilgrims take holy dips in the sacred rivers at Prayagraj during the magnificent Makar Sankranti mela. "
+        "City rooftops are completely taken over by kite flyers who fill the sky with thousands of colorful paper wings. "
+        "The high-energy days include distributing famous sweet reweri alongside traditional city prasad."
     ),
     ("makar-sankranti", "uttarakhand"): (
-        "The sweet feeding of migratory birds during the Kale Kauva festival defines the local experience in Uttarakhand, celebrating a serene display of harvest, sunlight, and transition. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "The sweet feeding of migratory birds during the unique Kale Kauva festival defines the local experience in Uttarakhand. "
+        "Children gather on stone rooftops to call out to the birds while flying small paper kites over the valleys. "
+        "The spiritual gathering is completed by serving traditional tilgul sweets alongside custom alpine treats."
     ),
     ("makar-sankranti", "west-bengal"): (
-        "Millions of pilgrims taking holy dips at Ganga Sagar transform West Bengal, showcasing a beautiful wave of harvest, sunlight, and transition. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "Millions of pilgrims taking holy dips at the sacred Ganga Sagar confluence transform the coast of West Bengal. "
+        "Urban rooftops are crowded with families participating in competitive kite flying tournaments all afternoon. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom gajak sweets."
     ),
     ("makar-sankranti", "nri-london"): (
-        "Indoor community halls host colorful simulated kite workshops across London, allowing the diaspora to maintain an authentic experience of harvest, sunlight, and transition. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the autumn transition by packing potluck sweets and temple prasada to share with global friends."
+        "Indoor assembly halls host simulated kite-making workshops across London, allowing the diaspora to preserve the solar heritage. "
+        "Families gather on open park terraces to launch traditional paper kites whenever the winter weather clears. "
+        "Expatriates mark the seasonal transition by packing tupperware containers of tilgul to share with global friends."
     ),
     ("makar-sankranti", "nri-new-york"): (
-        "Community centers host high-energy sesame candy distribution and stotra recitations in New York, preserving the heritage of harvest, sunlight, and transition. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Community centers host high-energy sesame candy distributions and rooftop kite flying gatherings in New York. "
+        "Families gather on apartment terraces to track their paper kites against the urban skyline during the solar transit. "
+        "The diaspora gathering concludes with sharing custom gajak variations within local networks."
     ),
 
 
     # ── PONGAL (Batch 9 -- all 30 regions) ────────────────────────────────────
     ("pongal", "andhra-pradesh"): (
-        "Earthen pots boil over outdoors in Andhra Pradesh as families echo festive shouts to welcome the spirit of harvest gratitude and household abundance. "
-        "The agrarian energy fills local neighbourhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families mark the auspicious multi-day cycle by sharing traditional pulihora and laddus with their immediate neighbourhood circles."
+        "Earthen pots boil over outdoors across Andhra Pradesh as families echo festive shouts to honor the fresh harvest. "
+        "Worshippers trace elaborate kolam art on thresholds using fresh rice flour to invite domestic abundance. "
+        "The auspicious multi-day cycle is celebrated by sharing rich sweet pongal portions with visiting neighborhood circles."
     ),
     ("pongal", "arunachal-pradesh"): (
-        "Freshly harvested grains are offered around home fires across Arunachal Pradesh, anchoring the winter solstice with harvest gratitude and household abundance. "
-        "Bustling community halls and family gatherings fill with warm winter prayers as families gather for seasonal thanksgiving rituals. "
-        "The playful morning concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Fresh wood-fired hearths are built in open courtyards across Arunachal Pradesh to boil the season's first rice grains. "
+        "Families decorate their doorways with sugarcane guards and intricate kolam art to welcome prosperity. "
+        "The thanksgiving morning concludes with households gathering to share custom sweet pongal formulas with neighbors."
     ),
     ("pongal", "assam"): (
-        "The building of traditional thatch huts and agricultural bonfires reshapes fields in Assam, reflecting a deep harvest gratitude and household abundance. "
-        "Joyous music, prayer, and neighbourhood visits elevate local community spaces during the daylight cultural transitions. "
-        "The winter cycle is enriched by serving traditional pitha, payas, and festive rice offerings to the neighbourhood."
+        "Traditional wood-fired hearths are prepared alongside agricultural bonfires across Assamese farmlands during the harvest. "
+        "Every entryway is decorated with sugarcane guards and fresh rice flour kolam art to mark the seasonal abundance. "
+        "The holiday is enriched by serving hot sweet pongal variants alongside traditional Assamese pitha varieties."
     ),
     ("pongal", "bihar"): (
-        "Traditional sesame distributions and solar prayers define the daytime household rhythm in Bihar, celebrating harvest gratitude and household abundance. "
-        "Bustling ghat visits and family puja routines allow large extended families to gather for collective agricultural chants. "
-        "The daily ceremonial transition is marked by preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "Earthen pots are set on open-air wood fires across Bihar households to initiate the grand harvest rituals. "
+        "Thresholds are transformed by ornate kolam art while tall sugarcane guards are placed around the cooking vessels. "
+        "The festive morning is highlighted by households preparing traditional sweet pongal alongside classic bihari savouries."
     ),
     ("pongal", "chhattisgarh"): (
-        "Earthen pots carrying newly harvested grains are placed before home shrines in Chhattisgarh, initiating the quiet celebration of harvest gratitude and household abundance. "
-        "Vibrant community puja and local fairs bring farming communities together for evening folk dances and traditional prayers. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad for daily offerings."
+        "Wood-fired hearths are built outside home shrines in Chhattisgarh, initiating the open-air boiling of the fresh harvest. "
+        "Devotees use white rice paste to draw beautiful kolam art around the decorated sugarcane guards. "
+        "The household hospitality centers on kitchens crafting specialized ven pongal and home-style harvest prasad."
     ),
     ("pongal", "goa"): (
-        "Clay pots filled with winter harvest produce are offered at family altars across Goa, channeling a beautiful wave of harvest gratitude and household abundance. "
-        "Quiet home altars and bustling neighbourhood celebration routes define the spatial layout of the local evening prayers. "
-        "The sacred period is marked by sharing unique coconut sweets and festive savouries among long-time neighbours."
+        "Clay pots boil over outdoors in Goan residential compounds, beautifully channeling the spirit of harvest thanksgiving. "
+        "Front doorsteps are dressed in bright kolam art and flanked by fresh sugarcane guards to invite good fortune. "
+        "The sacred time involves sharing delicious sweet pongal portions alongside coastal coconut desserts with visiting families."
     ),
     ("pongal", "gujarat"): (
-        "Bright solar patterns and high-flying kite arrays decorate residential colonies across Gujarat, magnifying the festive energy of harvest gratitude and household abundance. "
-        "Bustling garba grounds and bright rangoli work completely transform public and private squares under bright festive lights. "
-        "Dancers replenish their energy late into the night by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "Traditional earthen pots boil over on open-air fires across Gujarat, creating a beautiful setting for harvest gratitude. "
+        "Bright kolam art and fresh sugarcane guards completely transform family thresholds under the winter sun. "
+        "Extended families mark the joyful transition by gathering to share hot ven pongal along with festive local snacks."
     ),
     ("pongal", "haryana"): (
-        "Agrarian families gather to offer fresh winter crops to community shrines across Haryana, magnifying the annual cycle of harvest gratitude and household abundance. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood women lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "Wood-fired hearths are assembled in Haryana courtyards to boil the freshly harvested grains in decorated mud pots. "
+        "Neighborhood women draw traditional kolam art around the structural sugarcane guards to bless the homestead. "
+        "The home gathering is warmed by distributing hot sweet pongal variations paired with farm-style dairy delicacies."
     ),
     ("pongal", "himachal-pradesh"): (
-        "Village winter bonfires emerge amidst the cold mountain air across Himachal Pradesh, anchoring local valleys in harvest gratitude and household abundance. "
-        "Serene village temples and hillside processions host local clans traveling across valleys to pay homage to their deities. "
-        "The spiritual afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around communal hearths."
+        "Earthen pots boil over outdoors amidst the cold mountain air across Himachal Pradesh during the harvest feast. "
+        "Village entryways are decorated with fresh kolam art and guarded by tall sugarcane stalks tied to the pillars. "
+        "The spiritual afternoon is comforted by serving sweet pongal formulas alongside rich mountain-style meals."
     ),
     ("pongal", "jharkhand"): (
-        "Traditional Tusu festival markers and fresh grain decorations transform residential colonies in Jharkhand, marking the seasonal alignment with harvest gratitude and household abundance. "
-        "Open community grounds and family prayer circles provide an inclusive space for traditional drumming and evening chants. "
-        "The nine-day fast is supported by sharing unique seasonal sweets and simple ceremonial meals within families."
+        "Traditional clay pots are placed on open wood fires across Jharkhand, initiating the ceremonial boiling of the harvest. "
+        "Worshippers decorate their doorsteps with intricate kolam art and fresh sugarcane guards to honor the sun god. "
+        "The domestic celebration is highlighted by sharing unique ven pongal variations with neighboring families."
     ),
     ("pongal", "karnataka"): (
-        "The classic Sankranti ellu-bella grain exchange and cattle decorating rituals transform local living rooms across Karnataka, celebrating harvest gratitude and household abundance. "
-        "Intricate flower decorations and early-morning puja rituals re-energize the household as children arrange the sacred steps. "
-        "Visiting guests are welcomed into homes with delicious kosambari, payasa, and temple-style prasada."
+        "Earthen pots boil over inside decorated courtyards across Karnataka, grounding the southern focus on harvest abundance. "
+        "Intricate kolam art and fresh sugarcane guards re-energize the household as the milk overflows from the vessel. "
+        "Visiting guests are welcomed into homes with delicious sweet pongal variations alongside classic southern treats."
     ),
     ("pongal", "kerala"): (
-        "Specialised Makaravilakku temple rituals and solar prayers are observed quietly in Kerala, marking a unique southern expression of harvest gratitude and household abundance. "
-        "Ornate floral designs and household lamp lighting ground the final three days of the sacred calendar in absolute stillness. "
-        "The concluding celebration is marked by serving sweet payasam, banana chips, and elaborate festive spreads."
+        "Wood-fired hearths are built on open verandahs across Kerala to boil the ceremonial rice in decorated mud pots. "
+        "Front yards are decorated with intricate kolam art and flanked by fresh sugarcane guards before the boiling begins. "
+        "The concluding hour is celebrated by serving sweet pongal variants alongside elaborate banana leaf spreads."
     ),
     ("pongal", "madhya-pradesh"): (
-        "Large-scale kite flying tournaments and grand holy river dips alter the public space of Madhya Pradesh, showcasing deep arrays of harvest gratitude and household abundance. "
-        "Devotional mandir visits and old-city processions draw thousands out into illuminated public streets after sunset. "
-        "The local evening hospitality is accompanied by distributing savory poha-style snacks, sweets, and prasad to visitors."
+        "Traditional earthen pots boil over on wood-fired hearths across Madhya Pradesh, showcasing the classic open-air harvest rituals. "
+        "Devotees decorate their doorsteps with bright kolam art and secure tall sugarcane guards at their entry gates. "
+        "The local evening hospitality features sharing bowls of ven pongal along with regional street savouries."
     ),
     ("pongal", "maharashtra"): (
-        "The sharing of sweet tilgul sweets with messages of goodwill anchors local neighbourhood complexes across Maharashtra, initiating days of harvest gratitude and household abundance. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The daily family gathering centers on preparing fresh, sweet modak, puran poli, and festive snacks."
+        "Clay pots boil over outdoors in Maharashtrian residential colonies, welcoming the auspicious cycle of agricultural gratitude. "
+        "Bustling society spaces are decorated with intricate kolam art and protected by fresh sugarcane guards. "
+        "The household celebration centers on preparing fresh sweet pongal along with traditional maharashtrian snacks."
     ),
     ("pongal", "manipur"): (
-        "Harvest thanksgiving rituals and classical devotional musical sequences fill local temples in Manipur, blending the season with harvest gratitude and household abundance. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The sacred week concludes with neighbourhoods arranging large community feasts paired with specialized seasonal sweets."
+        "Wood-fired hearths and beautifully decorated clay pots fill temple courtyards in Manipur during the harvest thanksgiving. "
+        "Worshippers trace elaborate kolam art around their entry points and arrange fresh sugarcane guards. "
+        "The sacred day is marked by preparing custom sweet pongal formulas to share among extended families."
     ),
     ("pongal", "meghalaya"): (
-        "Fresh winter grain displays and twilight prayer groups bring families together in Meghalaya, honoring the message of harvest gratitude and household abundance. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the autumn season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Earthen pots boil over on open-air fires in Meghalaya, bringing diverse communities together for the harvest feast. "
+        "Festive community spaces are decorated with white kolam art and flanked by fresh sugarcane guards. "
+        "The warm afternoon hospitality features sharing bowls of ven pongal along with unique local rice sweets."
     ),
     ("pongal", "mizoram"): (
-        "Traditional oil lamps and winter harvest greetings decorate private balconies in Mizoram, bridging local harmony with the global focus on harvest gratitude and household abundance. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The autumn occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Traditional wood-fired hearths are built on open balconies in Mizoram, bridging local harmony with the global harvest spirit. "
+        "Decorated entryways feature intricate kolam art and tall sugarcane guards to welcome the season of abundance. "
+        "The autumn occasion is highlighted by gathering for shared plates of sweet pongal across local townships."
     ),
     ("pongal", "nagaland"): (
-        "Agrarian celebration songs and community bonfires are coordinated across Nagaland, celebrating the spiritual presence of harvest gratitude and household abundance. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Clay pots boil over outdoors during community bonfire assemblies across Nagaland, celebrating agricultural gratitude. "
+        "Village entries are decorated with rustic kolam art and guarded by tall sugarcane stalks tied to the gates. "
+        "The peaceful seasonal gathering is highlighted by presenting warm ven pongal variations alongside celebratory desserts."
     ),
     ("pongal", "odisha"): (
-        "The Makara Mela festivals on the pristine grounds of ancient temples transform Odisha, elevating a profound wave of deep harvest gratitude and household abundance. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "Earthen pots boil over on wood-fired hearths inside the courtyards of ancient temples across Odisha. "
+        "Intricate kolam art and fresh sugarcane guards line the paths where families gather to watch the ritual boiling. "
+        "The holy days are accompanied by distributing traditional sweet pongal along with classic temple sweets."
     ),
     ("pongal", "punjab"): (
-        "High-energy Maghi assemblies following the vibrant Lohri night bonfires fill local residential areas across Punjab, defining a grand display of harvest gratitude and household abundance. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious eighth day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "Traditional mud pots boil over on open wood fires across Punjab's farmlands to mark the harvest completion. "
+        "Neighborhood entryways are decorated with vibrant kolam art and secured with fresh sugarcane guards at every gate. "
+        "The festive gathering is marked by sharing warm ven pongal alongside festive local rotis."
     ),
     ("pongal", "rajasthan"): (
-        "High-flying kite arrays and specialised charity to elders fill historic neighbourhoods in Rajasthan, elevating the heritage of harvest gratitude and household abundance. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "Earthen pots boil over on open wood fires inside desert courtyards across Rajasthan, creating a beautiful setting for gratitude. "
+        "Delicate thresholds are transformed by intricate kolam art and flanked by fresh sugarcane guards under the sun. "
+        "The culinary gathering centers on serving sweet pongal variations along with rich desert treats."
     ),
     ("pongal", "sikkim"): (
-        "The traditional Maghe Sankranti holy dips in mountain rivers bring communities together across Sikkim, welcoming the seasonal alignment with harvest gratitude and household abundance. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Wood-fired hearths are built along hillside pathways in Sikkim, welcoming the ceremonial boiling of the harvest. "
+        "Grounded community groups trace beautiful kolam art around their entry gates and arrange fresh sugarcane guards. "
+        "The local hospitality involves sharing custom sweet pongal formulas among remote mountain neighborhoods."
     ),
     ("pongal", "tamil-nadu"): (
-        "The pongal pot boils outdoors on the first morning, sugarcanes guard thresholds, and decorated cattle define the grand Tamil Nadu peak of harvest gratitude and household abundance. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as families gather to shout 'Pongalo Pongal' in unison. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "The pongal pot boils over outdoors on the first morning, sugarcane guards line thresholds, and ornate kolam art defines the grand Tamil Nadu festival. "
+        "Families gather around the overflowing wood-fired hearth to shout 'Pongalo Pongal' in absolute unison as the harvest rice cooks. "
+        "The sacred season is celebrated by preparing sweet pongal and savory ven pongal for the community."
     ),
     ("pongal", "telangana"): (
-        "Intricate multi-colored rangoli designs and dynamic community kite-flying paths decorate thresholds across Telangana, highlighting a profound display of harvest gratitude and household abundance. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "Earthen pots boil over outdoors inside decorated courtyards across Telangana, creating an active public display of gratitude. "
+        "Thresholds are transformed by multi-colored kolam art and protected by fresh sugarcane guards at every entryway. "
+        "The primary household table is filled with ritual ven pongal alongside assorted local savouries."
     ),
     ("pongal", "tripura"): (
-        "Traditional winter rice cakes and devotional stotra recitations fill community halls across Tripura, mirroring the winter arrival of harvest gratitude and household abundance. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Traditional clay pots are placed on open-air wood fires across Tripura community grounds to mark the seasonal abundance. "
+        "Family courtyards are decorated with white rice flour kolam art and flanked by fresh sugarcane guards. "
+        "The evening hospitality is highlighted by sharing traditional sweet pongal alongside local festive dishes."
     ),
     ("pongal", "uttar-pradesh"): (
-        "The magnificent Khichdi Mela holy dips in Prayagraj transform Uttar Pradesh, tracking a magnificent display of harvest gratitude and household abundance. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "Traditional earthen pots boil over on wood-fired hearths along the public squares of Uttar Pradesh under the sun. "
+        "Devotees coordinate grand morning kolam rituals and secure tall sugarcane guards at their residential entry gates. "
+        "The high-energy days include distributing famous sweet pongal alongside traditional city prasad."
     ),
     ("pongal", "uttarakhand"): (
-        "The sweet feeding of migratory birds during winter solstice celebrations defines the local experience in Uttarakhand, celebrating a serene display of harvest gratitude and household abundance. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Earthen pots boil over on open-air fires outside alpine stone houses in Uttarakhand to track the harvest completion. "
+        "Front yards are decorated with intricate kolam art and protected by fresh sugarcane guards before the family prayers begin. "
+        "The spiritual gathering is completed by serving traditional ven pongal alongside custom alpine treats."
     ),
     ("pongal", "west-bengal"): (
-        "The dynamic Poush Parbon pithe making and holy dips at Ganga Sagar transform West Bengal, showcasing a beautiful wave of harvest gratitude and household abundance. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "Traditional mud pots boil over on open wood fires inside West Bengal residential compounds during the harvest feast. "
+        "Artistic entryways are decorated with beautiful kolam art and flanked by fresh sugarcane guards to welcome prosperity. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom sweet pongal sweets."
     ),
     ("pongal", "nri-london"): (
-        "Indoor community halls host colorful simulated harvest workshops across London, allowing the diaspora to maintain an authentic experience of harvest gratitude and household abundance. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the autumn transition by packing potluck sweets and temple prasada to share with global friends."
+        "Indoor community halls host synchronized open-pot boiling simulations across London, allowing the diaspora to preserve the harvest heritage. "
+        "Families decorate their interior thresholds with colored kolam art and set up small sugarcane guards inside the venues. "
+        "Families celebrate the seasonal transition by packing tupperware containers of sweet pongal to share with global friends."
     ),
     ("pongal", "nri-new-york"): (
-        "Community centers host high-energy sugarcane decorations and sweet rice distribution in New York, preserving the heritage of harvest gratitude and household abundance. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Community centers host high-energy wood-fired simulation hearths and sugarcane decorations across New York. "
+        "Ornate halls are decorated with white rice flour kolam art where families gather to witness the ceremonial pot boil over. "
+        "The diaspora gathering concludes with sharing custom ven pongal variations within local networks."
     ),
 
 
