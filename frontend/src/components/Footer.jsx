@@ -31,7 +31,7 @@ export const Footer = () => {
             </a>
           </div>
 
-          {/* Explore — Horoscope & Panchang */}
+          {/* Explore -- Horoscope & Panchang */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Horoscope</h3>
             <ul className="space-y-2">
@@ -56,7 +56,7 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Explore — Tools */}
+          {/* Explore -- Tools */}
           <div>
             <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">Tools</h3>
             <ul className="space-y-2">
@@ -67,7 +67,6 @@ export const Footer = () => {
                 { label: 'Lumina',        path: '/lumina'     },
                 { label: 'Remedies',      path: '/remedies'   },
                 { label: 'Pricing',       path: '/pricing'    },
-                { label: 'Blog',          path: '/blog'       },
               ].map(({ label, path }) => (
                 <li key={path}>
                   <span

@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import date as _date
 from datetime import datetime, timedelta, timezone
 from typing import Optional
 
@@ -17,6 +18,11 @@ from strategist_engine import (
     get_active_hurdles,
     get_active_missions,
     get_surrogate,
+)
+from panchang_router import (
+    _resolve_location,
+    _sunrise_sunset_moonrise_moonset,
+    DEFAULT_LOCATIONS,
 )
 from vedic_calculator import (
     calculate_vimshottari_dasha,
@@ -37,6 +43,38 @@ def _get_command_planet(natal_chart: dict) -> str:
         11: "Saturn", 12: "Jupiter",
     }
     return house_lords.get(asc_house, "Sun")
+
+
+def _map_gate1_to_ledger(gate1: dict) -> list[dict]:
+    """
+    Map Gate 1 records into the locked PitruRinLedger row shape.
+    Returns [] when no active debt is present.
+    """
+    if not gate1.get("active_pitru_rin"):
+        return []
+
+    records = gate1.get("records", [])
+    ledger = []
+    for i, rec in enumerate(records[:5]):
+        severity_score = rec.get("severity", 2)
+        if severity_score >= 4:
+            sev = "high"
+        elif severity_score >= 2:
+            sev = "medium"
+        else:
+            sev = "low"
+
+        ledger.append({
+            "id": rec.get("id", f"debt-{i}"),
+            "name": rec.get("title") or rec.get("planet", "Ancestral Debt"),
+            "type": rec.get("debt_type") or "Ancestral",
+            "severity": sev,
+            "ritual": rec.get("remedy") or rec.get("full_text") or "Perform ancestral remedy as prescribed.",
+            "streakDays": 0,
+            "daysSinceRitual": None,
+            "cleared": False,
+        })
+    return ledger
 
 
 async def _build_war_room_state(db, user_email: str) -> dict:
@@ -61,6 +99,7 @@ async def _build_war_room_state(db, user_email: str) -> dict:
     gate4 = gates.get("gate4_mercury_scan", {})
     gate5 = gates.get("gate5_geographical", {})
     active_pitru_rin = gate1.get("active_pitru_rin", False)
+    pitru_rin_ledger = _map_gate1_to_ledger(gate1)
 
     # Tracker streak
     tracker = await db.lk_tracker.find_one(
@@ -73,6 +112,21 @@ async def _build_war_room_state(db, user_email: str) -> dict:
     command_planet = _get_command_planet(natal_chart)
     success_direction = DIGBALA_DIRECTIONS.get(command_planet, "North")
     location_slug = profile.get("location_slug", "")
+    _sunset_iso = None
+    try:
+        _loc_slug = location_slug or "new-delhi-india"
+        _loc = DEFAULT_LOCATIONS.get(_loc_slug) or _resolve_location(location_slug=_loc_slug)
+        if _loc:
+            _, _sunset, _, _ = _sunrise_sunset_moonrise_moonset(
+                _date.today(),
+                _loc.latitude,
+                _loc.longitude,
+                _loc.timezone,
+            )
+            if _sunset:
+                _sunset_iso = _sunset.isoformat()
+    except Exception:
+        pass
 
     # Vimshottari Dasha -- current Mahadasha + Antardasha with date ranges
     # Exposes fields consumed by StrategistMissionsPage DashaTimingBar (STR-2J)
@@ -199,11 +253,13 @@ async def _build_war_room_state(db, user_email: str) -> dict:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "command_planet": command_planet,
         "success_direction": success_direction,
+        "sunset_iso": _sunset_iso,
         **_dasha_context,
         "conquest_probability": prob,
         "active_missions_count": len(missions),
         "active_hurdles_count": len(hurdles),
         "ritual_streak": ritual_streak,
+        "pitru_rin_ledger": pitru_rin_ledger,
         "diagnosis_summary": {
             "pitru_rin_active": active_pitru_rin,
             "year_lord": gate3.get("planet", ""),

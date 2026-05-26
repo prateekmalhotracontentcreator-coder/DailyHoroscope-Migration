@@ -53,7 +53,7 @@ const NAV = [
       { label: 'Monthly Horoscope', path: '/horoscope/monthly', icon: Calendar, premium: true },
     ],
   },
-  { label: 'The Strategist',       icon: Briefcase, path: '/strategist',          premium: true },
+  { label: 'The Strategist',       icon: Briefcase, path: '/strategist' },
   { label: 'Numerology',           icon: Hash,      path: '/numerology',           premium: true },
   { label: 'Palmistry',            icon: Layers,    path: '/palmistry',            premium: true },
   { label: 'Tarot',                icon: BookOpen,  path: '/tarot',                premium: true },
