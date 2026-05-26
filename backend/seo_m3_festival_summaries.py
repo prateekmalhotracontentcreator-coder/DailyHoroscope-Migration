@@ -174,153 +174,153 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
     # ── HOLI (Batch 2 -- all 30 regions) ─────────────────────────────────────
     ("holi", "andhra-pradesh"): (
         "Vibrant gulal and abir saturate the air across Andhra Pradesh as morning bonfires pave the way for the joyful color play and spring release. "
-        "Devotional spirit builds around local shrines, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Neighborhood circles mark the seasonal reset by sharing sweet pulihora and laddus outside their doorsteps."
+        "Revelers gather in open town squares to drench one another in scented waters during high-energy street festivities. "
+        "Neighborhood circles mark the seasonal reset by distributing chilled glasses of traditional thandai along with crispy local savouries."
     ),
     ("holi", "arunachal-pradesh"): (
         "Bright pichkaris and powdered pigments sweep through Arunachal Pradesh valleys, welcoming the annual transformation of color, play, and spring release. "
-        "Bustling community halls and family gatherings fill with laughter as local tribes gather to toast the end of winter. "
-        "The playful morning culminates with families sitting down to share custom community sweets and festive rice dishes."
+        "Tribal youth groups coordinate lively outdoor dances around communal log fires to toast the end of winter. "
+        "The playful morning culminates with families sitting down to share homemade plates of sweet gujiya and seasonal festive rice."
     ),
     ("holi", "assam"): (
         "Splashes of colorful powders transform Assamese open grounds, embodying the festival's deep focus on color, play, and spring release. "
-        "Joyous music, prayer, and neighborhood visits create an energetic social dynamic during the day's primary outdoor festivities. "
-        "The spring gathering is completed as households serve traditional pitha, payas, and festive rice offerings to their guests."
+        "Joyous musical groups carry acoustic instruments through local settlements, singing traditional spring folk melodies. "
+        "The spring gathering is completed as households serve warm, syrup-soaked malpua along with classic Assamese delicacies."
     ),
     ("holi", "bihar"): (
         "Holika dahan bonfires illuminate Bihar fields the evening before the sunrise surge of color, play, and spring release takes over. "
-        "Bustling ghat visits and family puja routines blend with energetic street celebrations as ordinary boundaries dissolve in gulal. "
-        "The festive morning is highlighted by families sharing traditional thekua, kheer, and seasonal savouries with visiting friends."
+        "Ordinary social boundaries dissolve completely as massive neighborhood crowds exchange enthusiastic embraces covered in bright red gulal. "
+        "The festive morning is highlighted by families sharing heavy platters of homemade dahi vada alongside rich seasonal sweets."
     ),
     ("holi", "chhattisgarh"): (
         "Ash from the ceremonial holika bonfire is gathered in Chhattisgarh, signaling the dawn of color, play, and spring release. "
-        "Vibrant community puja and local fairs gather farmers and families for rhythmic folk songs and outdoor festivities. "
-        "The communal feast centers on kitchens preparing specialized rice sweets and home-style prasad to sustain the playful crowds."
+        "Villagers gather in open courtyards to sing rhythmic Phag folk songs to the steady beat of traditional drums. "
+        "The communal feast centers on kitchens preparing specialized gujiya and farm-style savouries to sustain the playful crowds."
     ),
     ("holi", "goa"): (
         "Shigmo processions and powdered colors fill Goan streets, highlighting the coastal celebration of color, play, and spring release. "
-        "Quiet home altars and bustling neighborhood celebration routes provide a beautiful balance to the public color-throwing madness. "
-        "The lively gathering concludes with families distributing sweet coconut sweets and festive savouries across their settlements."
+        "Vibrant street dramas and grand float parades transform local roads into spaces of collective artistic expression. "
+        "The lively gathering concludes with families distributing sweet gujiya variations across their beachside settlements."
     ),
     ("holi", "gujarat"): (
         "Earthen pots are broken in high-energy street games across Gujarat, amplifying the festive energy of color, play, and spring release. "
-        "Bustling garba grounds and bright rangoli work set a creative stage for youth groups exchanging traditional spring blessings. "
-        "Extended families wind down the messy day by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "Youth groups coordinate massive water-throwing games, transforming local residential lanes into colorful neighborhood battlegrounds. "
+        "Extended families wind down the messy day by sharing delicious dahi vada alongside multi-course festive thalis."
     ),
     ("holi", "haryana"): (
         "Playful battles and dry gulal mark the traditional Dulhendi games across Haryana, magnifying the spirit of color, play, and spring release. "
-        "Family courtyards and temple offerings become crowded hubs where community members share color blessings and reset local ties. "
-        "The rustic holiday is enriched by serving home-cooked halwa, puri, and farm-style festive meals to the community."
+        "Bhabhis and devars engage in historic mock-whipping rituals using damp cloths to celebrate familial ties. "
+        "The rustic holiday is enriched by serving home-cooked gujiya alongside rich farm-style milk delicacies."
     ),
     ("holi", "himachal-pradesh"): (
         "Powdered abir brightens mountain villages in Himachal Pradesh, casting a beautiful contrast against the themes of color, play, and spring release. "
-        "Serene village temples and hillside processions host the community as they gather to celebrate the return of warmer weather. "
-        "The joyful afternoon is warmed by serving sweet rice, prasad, and mountain-style meals around shared courtyards."
+        "Hillside communities organize high-energy processions that travel across valley trails to share spring blessings. "
+        "The joyful afternoon is comforted by serving warm, sweet malpua around shared stone courtyards."
     ),
     ("holi", "jharkhand"): (
         "Natural forest pigments and gulal are exchanged across Jharkhand, marking the annual arrival of color, play, and spring release. "
-        "Open community grounds and family prayer circles allow local neighborhoods to gather for traditional drumming and seasonal songs. "
-        "The daytime celebration is highlighted by sharing unique seasonal sweets and simple ceremonial meals with visiting relatives."
+        "Local clans gather around traditional madal drummers to perform expressive spring rituals in village clearings. "
+        "The daytime celebration is highlighted by sharing unique local thandai formulas with visiting relatives."
     ),
     ("holi", "karnataka"): (
         "Kamadahana bonfires are lit across Karnataka neighborhoods, initiating the southern observance of color, play, and spring release. "
-        "Intricate flower decorations and early-morning puja rituals precede the light dusting of dry powders among close relatives. "
-        "The daytime feast involves preparing delicious kosambari, payasa, and temple-style prasada for the gathered household."
+        "Communities gather around the sacred ash sites to sing classical verses detailing the burning of the love god. "
+        "The daytime feast involves preparing refreshing glasses of thandai alongside specialized southern delicacies."
     ),
     ("holi", "kerala"): (
         "Ukuli or Manjal Kuli water play brings a rare, refreshing rhythm to Kerala, celebrating color, play, and spring release. "
-        "Ornate floral designs and household lamp lighting anchor the domestic boundaries before the outdoor community greetings commence. "
-        "The gathering is marked by serving sweet payasam, banana chips, and elaborate festive spreads to participants."
+        "Devotees visit ancient community shrines to spray turmeric-infused waters onto friends in traditional patterns. "
+        "The gathering is marked by serving sweet gujiya variations alongside elaborate banana leaf spreads."
     ),
     ("holi", "madhya-pradesh"): (
         "Massive color processions fill the streets of Indore and greater Madhya Pradesh, showcasing the grand scale of color, play, and spring release. "
-        "Devotional mandir visits and old-city processions frame the afternoon hours as boundaries dissolve under thick clouds of gulal. "
-        "The community greeting style is accompanied by sharing savory poha-style snacks, sweets, and prasad among neighbors."
+        "Public squares are completely blanketed in thick, rainbow-colored clouds of gulal during high-energy street music events. "
+        "The community greeting style is accompanied by sharing savory dahi vada portions among neighboring families."
     ),
     ("holi", "maharashtra"): (
         "The ceremonial holika bonfire burns away the season's burdens in Maharashtra, making way for color, play, and spring release. "
-        "Bustling society pandals and family aarti gatherings turn into central nodes for community water fights and dance. "
-        "The household celebration centers on preparing fresh, sweet modak, puran poli, and festive snacks for the neighborhood."
+        "Neighborhood complexes organize lively water-tank games where youth groups splash natural colors from balconies. "
+        "The household celebration centers on preparing fresh, sweet gujiya alongside traditional maharashtrian snacks."
     ),
     ("holi", "manipur"): (
         "The five-day Yaoshang festival combines traditional thabal chongba dancing in Manipur with color, play, and spring release. "
-        "Expressive cultural performances and temple participation offer a deeply artistic touch to the energetic water-throwing paths. "
-        "The festive week concludes with families arranging large community feasts paired with specialized seasonal sweets."
+        "Young boys and girls build small thatch huts to burn before engaging in elaborate cultural sports tournaments. "
+        "The festive week concludes with families arranging sweet malpua platters to share among local clans."
     ),
     ("holi", "meghalaya"): (
         "Dry gulal is gently exchanged across Shillong and greater Meghalaya, echoing the universal message of color, play, and spring release. "
-        "Festive church halls, homes, and community spaces host joyful cross-community gatherings to welcome the spring season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets among friends."
+        "Multi-cultural student groups organize lively outdoor music sessions to welcome the arrival of the spring season. "
+        "The warm afternoon hospitality features sharing local thandai formulas alongside unique regional rice sweets."
     ),
     ("holi", "mizoram"): (
         "Powdered pigments are shared among friends in Mizoram, bridging local harmony with the global spirit of color, play, and spring release. "
-        "Decorated community halls and neighborhood visits allow youth groups to gather for acoustic music and spring greetings. "
-        "The outdoor occasion is marked by gathering for shared festive meals and sweet offerings across local townships."
+        "Acoustic music groups perform spring melodies inside decorated community spaces to welcome the shifting seasons. "
+        "The outdoor occasion is marked by gathering for shared plates of sweet gujiya across local townships."
     ),
     ("holi", "nagaland"): (
         "Dry colors are applied in celebratory neighborhood gatherings across Nagaland, marking the arrival of color, play, and spring release. "
-        "Vibrant collective singing and family hosting turn local villages into welcoming spaces for travelers and clans. "
-        "The community gathering is highlighted by presenting large community meals and celebratory desserts to visiting guests."
+        "Clan elders lead lively greeting processions that walk through village gates to reset social alliances. "
+        "The community gathering is highlighted by presenting large plates of dahi vada to visiting guests."
     ),
     ("holi", "odisha"): (
         "The Dola Purnima procession carries local deities on ornate swings in Odisha, blending color, play, and spring release. "
-        "Intricate alpona art and neighborhood mandaps line the village paths where families gather to spray scented waters. "
-        "The ritual day is sweet, featuring the distribution of traditional khaja, pitha, and temple mahaprasad to the community."
+        "Cowherds play high-energy outdoor games using colored powders while visiting village homes in rhythmic formations. "
+        "The ritual day is sweet, featuring the distribution of syrup-soaked malpua to the gathered neighborhood."
     ),
     ("holi", "punjab"): (
         "Hola Mohalla displays of martial arts and mock battles redefine the Punjabi response to color, play, and spring release. "
-        "Dedicated gurdwara seva and community langar participation anchor the high-energy celebrations across local districts. "
-        "The festive gathering is marked by distributing warm kada prasad, festive rotis, and rich milk sweets to the public."
+        "Nihang warriors demonstrate incredible horsemanship and mock sword fighting on grand open festival grounds. "
+        "The festive gathering is marked by distributing rich thandai variations alongside massive communal thalis."
     ),
     ("holi", "rajasthan"): (
         "Royal processions and folk dances fill palace courtyards in Rajasthan, elevating the heritage of color, play, and spring release. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic backdrop for high-energy gulal play. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to visiting clans."
+        "Chang dancers perform energetic acrobatics in public squares under exploding clouds of premium gulal. "
+        "The culinary gathering centers on serving sweet gujiya formulas alongside rich desert treats."
     ),
     ("holi", "sikkim"): (
         "Dry spring pigments are gently exchanged along Sikkim mountain ridges, welcoming color, play, and spring release. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together to mark the changing agricultural year. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote neighborhoods."
+        "Small village settlements organize cooperative cleaning and spring welcoming rituals in mountain valleys. "
+        "The local hospitality involves sharing custom thandai batches among remote neighborhoods."
     ),
     ("holi", "tamil-nadu"): (
         "Maman Podigai stories of Kaman are recited quietly in Tamil Nadu, marking a meditative approach to color, play, and spring release. "
-        "Vibrant kolam art, brass lamps, and dawn rituals keep the domestic space pristine before any light color play begins. "
-        "The spring transition is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for the family."
+        "Devotees light small street bonfires to re-enact the sorrowful burning of the love god with traditional lament songs. "
+        "The spring transition is celebrated by preparing sweet gujiya variations alongside sacred temple prasadam."
     ),
     ("holi", "telangana"): (
         "Kamuni dahanam bonfires burn in neighborhood squares across Telangana, setting a deep baseline for color, play, and spring release. "
-        "Bonalu-style community devotion and floral decor add a beautiful cultural texture to the morning greeting paths. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "Children collect firewood weeks in advance to compete for the largest ceremonial neighborhood bonfire structure. "
+        "The primary household table is filled with ritual dahi vada plates alongside assorted festive savouries."
     ),
     ("holi", "tripura"): (
         "Vibrant gulal play fills family courtyards across Tripura, echoing the seasonal arrival of color, play, and spring release. "
-        "Family courtyards and community pandals transform into lively meeting grounds for youth groups and extended family visits. "
-        "The spring evening is marked by sharing traditional festive rice offerings and local sweets with neighborhood guests."
+        "Youth groups coordinate lively neighborhood visits, applying colored blessings to the foreheads of community elders. "
+        "The spring evening is marked by sharing traditional thandai refreshments with neighborhood guests."
     ),
     ("holi", "uttar-pradesh"): (
         "Lathmar Holi and massive clouds of gulal transform Mathura and Varanasi in Uttar Pradesh, defining the absolute peak of color, play, and spring release. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale where thousands sing traditional holi folk songs. "
-        "The high-energy day includes distributing famous sweet peda, kachori, and traditional prasad to exhausted participants."
+        "Women playfully beat men with wooden sticks in grand temple courtyards while massive crowds sing traditional Hori folk songs. "
+        "The high-energy day includes distributing premium gujiya and refreshing thandai to exhausted participants."
     ),
     ("holi", "uttarakhand"): (
         "Baithki Holi classical songs echo through alpine valley homes in Uttarakhand, bringing a melodic touch to color, play, and spring release. "
-        "Ancient hill temples and family vrat observance connect communities for shared blessings and protective family prayers. "
-        "The musical gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Musicians gather with harmoniums and dholaks to perform ragas that welcome the spring warmth into the hills. "
+        "The musical gathering is completed by serving warm malpua alongside custom temple offerings."
     ),
     ("holi", "west-bengal"): (
         "The elegant Dol Jatra procession of Krishna on swings defines the West Bengal celebration of color, play, and spring release. "
-        "Artistic neighborhood pandals, echoing dhaak rhythms, and striking artistic decorations are filled with students reciting Tagore's poetry. "
-        "The cultural gathering is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "Students dressed in saffron robes dance through Shantiniketan reciting Rabindranath Tagore's spring poems. "
+        "The cultural gathering is accompanied by preparing traditional malpua and dahi vada for the community."
     ),
     ("holi", "nri-london"): (
         "Indoor color zones and park gatherings protect the London diaspora as they maintain the heritage of color, play, and spring release. "
-        "Bustling weekend community events and cultural centres allow families to celebrate the shift away from cold winter months together. "
-        "Expatriates celebrate the spring return by packing potluck sweets and temple prasada to share with global friends."
+        "Community centers host high-energy indoor rain-dance events to safely simulate traditional spring color play. "
+        "Expatriates celebrate the spring return by packing tupperware boxes of gujiya to share with global friends."
     ),
     ("holi", "nri-new-york"): (
         "Vibrant community banquets and clean gulal play mark New York gatherings, celebrating the arrival of color, play, and spring release. "
-        "Ornate temple halls, family Zooms, and community gatherings connect long-distance relatives for seasonal updates and songs. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Families rent local halls to host synchronized water-gun play and exchange traditional spring blessings. "
+        "The diaspora gathering concludes with sharing custom thandai formulas within local networks."
     ),
 
 
@@ -786,153 +786,153 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
     # ── JANMASHTAMI (Batch 6 -- all 30 regions) ───────────────────────────────
     ("janmashtami", "andhra-pradesh"): (
         "Midnight bhajan and vigil build in intensity across Andhra Pradesh, centering the community on bhakti, midnight worship, and Krishna leela. "
-        "Intricate footprints of child Krishna are drawn from thresholds, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families mark the auspicious celebration by sharing traditional pulihora and laddus after the midnight birth hour."
+        "Devotees rock small, beautifully decorated flower cradles housing silver icons of the newborn deity. "
+        "Families mark the auspicious birth by sharing traditional panchamrit bowls alongside sweet local snacks."
     ),
     ("janmashtami", "arunachal-pradesh"): (
         "Ornate jhankhi displays showing scenes from Krishna's life are illuminated across Arunachal Pradesh, anchoring the seasonal shift with themes of bhakti, midnight worship, and Krishna leela. "
-        "Bustling community halls and family gatherings echo with devotional songs as the midnight birth hour approaches. "
-        "The playful morning concludes with families gathering to share custom community sweets and festive rice dishes."
+        "Neighborhood circles gather around elaborate tableaus depicting the dramatic midnight escape across the Yamuna river. "
+        "The playful morning concludes with families gathering to share custom panjiri mixtures and festive rice dishes."
     ),
     ("janmashtami", "assam"): (
         "The chanting of Namghat verses echoes throughout Assamese prayer halls, beautifully channeling the festival's deep spirit of bhakti, midnight worship, and Krishna leela. "
-        "Music, prayer, and neighbourhood visits create a vibrant atmosphere across local towns during the long evening fasting hours. "
-        "The celebration is completed as households prepare traditional pitha, payas, and festive rice offerings to share with guests."
+        "Worshippers remain seated on woven mats for hours, clapping in rhythm to tell stories of the divine birth. "
+        "The celebration is completed as households prepare traditional seedai portions to share with visiting guests."
     ),
     ("janmashtami", "bihar"): (
         "Devotional fasting and midnight cradle decorations transform home altars in Bihar, celebrating the auspicious arrival of bhakti, midnight worship, and Krishna leela. "
-        "Bustling ghat visits and family puja routines blend with energetic neighbourhood bhajan gatherings as midnight approaches. "
-        "The seasonal transition is marked by households preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "Families maintain a strict waterless fast that only breaks when the midnight temple bells ring out the birth hour. "
+        "The seasonal transition is marked by households preparing fresh makhan mishri cups alongside classic bihari savouries."
     ),
     ("janmashtami", "chhattisgarh"): (
-        "Vibrant temporary jhankhis are decorated in neighbourhood spaces across Chhattisgarh, welcoming the annual cycle of bhakti, midnight worship, and Krishna leela. "
-        "Vibrant community puja and local fairs bring neighbourhoods together for shared evening prayers and cultural festivities. "
-        "The domestic celebration centers around kitchens preparing specialized rice sweets and home-style prasad for the midnight breaking of the fast."
+        "Vibrant temporary jhankhis are decorated in neighborhood spaces across Chhattisgarh, welcoming the annual cycle of bhakti, midnight worship, and Krishna leela. "
+        "Village youth groups construct miniature clay models of Mathura prisons to re-enact the divine birth story. "
+        "The domestic celebration centers on preparing specialized panjiri and home-style sweets for the midnight breaking of the fast."
     ),
     ("janmashtami", "goa"): (
         "Special home altars are beautifully adorned with icons of infant Krishna in Goa, celebrating the festive presence of bhakti, midnight worship, and Krishna leela. "
-        "Quiet home altars and bustling neighbourhood celebration routes define the local evening landscape before the late-night breaking of the fast. "
-        "The festive gathering concludes with the sharing of rich coconut sweets and festive savouries among extended family circles."
+        "Devotees blow conch shells and ring heavy brass bells at the exact stroke of midnight to welcome the deity. "
+        "The festive gathering concludes with the sharing of fresh panchamrit bowls among extended family circles."
     ),
     ("janmashtami", "gujarat"): (
         "High-energy dahi handi competitions and midnight temple bells transform public areas across Gujarat, anchoring the seasonal focus on bhakti, midnight worship, and Krishna leela. "
-        "Bustling garba grounds and bright rangoli work set a creative stage as massive crowds gather in Dwarka for the midnight aarti. "
-        "Extended families mark the joyful transition by gathering around multi-course festive thalis packed with fafda and jalebi."
+        "Massive crowds pack into the illuminated shrines of Dwarka to witness the spectacular midnight birth aarti. "
+        "Extended families mark the joyful transition by sharing sweet seedai variations alongside festive thalis."
     ),
     ("janmashtami", "haryana"): (
         "Traditional fasting and late-night kirtans are observed across Haryana courtyards, signaling the festive presence of bhakti, midnight worship, and Krishna leela. "
-        "Family courtyards and temple offerings become central gathering nodes where community elders lead the evening prayers. "
-        "The agrarian celebration is enriched by sharing home-cooked halwa, puri, and farm-style festive meals among working households."
+        "Neighborhood women lead tender cradle-rocking songs to soothe the infant deity at the stroke of midnight. "
+        "The agrarian celebration is enriched by serving home-cooked panjiri mixtures alongside farm-style dairy delicacies."
     ),
     ("janmashtami", "himachal-pradesh"): (
         "Flickering oil lamps illuminate mountain shrines in Himachal Pradesh, celebrating the cold season's focus on bhakti, midnight worship, and Krishna leela. "
-        "Serene village temples and hillside processions echo with devotional chants as the midnight birth hour settles over the valleys. "
-        "Gatherings are nourished with traditional sweet rice, prasad, and mountain-style meals shared around home fires."
+        "Families stay awake through the freezing night, singing continuous bhajans around small temple hearths. "
+        "Gatherings are nourished with traditional makhan mishri portions shared among mountain settlements."
     ),
     ("janmashtami", "jharkhand"): (
         "Child Krishna idols are lovingly dressed in new garments across Jharkhand, marking the evening hours with bhakti, midnight worship, and Krishna leela. "
-        "Open community grounds and family prayer circles bring diverse neighbourhoods together to offer collective prayers for abundance. "
-        "The domestic celebration is highlighted by sharing unique seasonal sweets and simple ceremonial meals with neighbours."
+        "Worshippers apply sandalwood paste to the tiny forehead of the newborn icon inside decorated home shrines. "
+        "The domestic celebration is highlighted by sharing unique panchamrit formulas with neighboring families."
     ),
     ("janmashtami", "karnataka"): (
         "Intricate rangoli footprints lead to home altars across Karnataka households, grounding the annual celebration of bhakti, midnight worship, and Krishna leela. "
-        "Intricate flower decorations and early-morning puja rituals alter the domestic rhythm as communities gather at local shrines. "
-        "The holy feast is defined by preparing specialised kosambari, payasa, and temple-style prasada for visiting family members."
+        "Children dress up as the mischievous cowherd deity, wearing peacock feathers and carrying small bamboo flutes. "
+        "The holy feast is defined by preparing delicious seedai variations alongside classic southern treats."
     ),
     ("janmashtami", "kerala"): (
         "The elegant Ashtami Rohini processions and dynamic children's pageants transform local roads in Kerala, marking the southern convergence of bhakti, midnight worship, and Krishna leela. "
-        "Ornate floral designs and household lamp lighting create a serene domestic atmosphere before the evening prayers begin. "
-        "The celebration is accompanied by serving sweet payasam, banana chips, and elaborate festive spreads on banana leaves."
+        "Massive temple courtyards host synchronized dance performances detailing the crushing of the serpent demon. "
+        "The celebration is accompanied by serving sweet seedai portions alongside elaborate banana leaf spreads."
     ),
     ("janmashtami", "madhya-pradesh"): (
         "Beautifully staged Rasleela performances fill public squares across Madhya Pradesh, channeling the classic spirit of bhakti, midnight worship, and Krishna leela. "
-        "Devotional mandir visits and old-city processions fill the public squares with music during the twilight auspicious hours. "
-        "The community greeting style is accompanied by sharing poha-style snacks, sweets, and prasad among extended family networks."
+        "Local actors re-enact the childhood stories of the butter-stealing deity before large public audiences. "
+        "The community greeting style is accompanied by sharing sweet panjiri mixtures among neighborhood networks."
     ),
     ("janmashtami", "maharashtra"): (
         "The spectacular Govinda dahi handi human pyramids completely take over streets across Maharashtra, welcoming the auspicious dawn of bhakti, midnight worship, and Krishna leela. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The household celebration centers on crafting sweet modak, puran poli, and festive snacks for visiting guests."
+        "Daring athletic groups build multi-tiered human towers to break clay butter pots suspended high between buildings. "
+        "The household celebration centers on crafting fresh makhan mishri cups alongside traditional festive snacks."
     ),
     ("janmashtami", "manipur"): (
         "The world-renowned Manipuri Raas Leela classical dances fill local temples in Manipur, blending the seasonal change with bhakti, midnight worship, and Krishna leela. "
-        "Expressive cultural performances and temple participation bring local communities together for vibrant storytelling and worship. "
-        "The evening festivities culminate in large community feasts featuring specialised seasonal sweets shared among clans."
+        "Clad in ornate barrel skirts, dancers perform fluid, hypnotic sequences detailing divine pastoral romances. "
+        "The evening festivities culminate in sharing specialized panchamrit formulas among extended family networks."
     ),
     ("janmashtami", "meghalaya"): (
         "Devotional singing groups gather inside decorated homes in Meghalaya, introducing the symbolic energy of bhakti, midnight worship, and Krishna leela. "
-        "Festive church halls, homes, and community spaces are decorated beautifully to host multi-faith cultural gatherings. "
-        "The evening hospitality centers on sharing local festive rice dishes and unique local sweets with neighbours."
+        "Youth groups coordinate small midnight prayer circles to welcome the birth hour with traditional hymns. "
+        "The evening hospitality centers on sharing local panjiri mixtures alongside unique regional rice sweets."
     ),
     ("janmashtami", "mizoram"): (
         "Flickering oil lamps line structural windows in Mizoram, bridging the global focus on bhakti, midnight worship, and Krishna leela. "
-        "Decorated community halls and neighbourhood visits create a warm environment for cross-community seasonal greetings. "
-        "The joyful winter occasion is marked by gathering for shared festive meals and sweet offerings across local townships."
+        "Families gather in private living rooms to read scriptural accounts of the divine childhood leelas. "
+        "The joyful winter occasion is highlighted by gathering for shared plates of sweet seedai across local townships."
     ),
     ("janmashtami", "nagaland"): (
         "Rows of terracotta lamps decorate home perimeters in Nagaland, celebrating the triumph of bhakti, midnight worship, and Krishna leela. "
-        "Vibrant collective singing and family hosting fill local neighbourhoods with festive music during the evening hours. "
-        "The winter gathering is highlighted by presenting large community meals and celebratory desserts to visiting neighbours."
+        "Small neighborhood congregations join voices for late-night kirtans to mark the passing of the birth hour. "
+        "The winter gathering is highlighted by presenting fresh makhan mishri cups alongside traditional clan feasts."
     ),
     ("janmashtami", "odisha"): (
         "Jeuda Bhoga offerings and late-night fasting rituals define the temple landscape of Odisha, anchoring the evening rituals in bhakti, midnight worship, and Krishna leela. "
-        "Intricate alpona art and neighbourhood mandaps draw families out into decorated public squares after the main household prayers. "
-        "The ritual offering is highlighted by distributing traditional sweet khaja, pitha, and temple mahaprasad to guests."
+        "Priests perform elaborate midnight bathing rituals for the infant deity using holy sanyas waters. "
+        "The ritual offering is highlighted by distributing traditional seedai variations along with classic temple sweets."
     ),
     ("janmashtami", "punjab"): (
         "Shobha yatra processions and elegant temple tableaux decorate city avenues in Punjab, welcoming the energy of bhakti, midnight worship, and Krishna leela. "
-        "Dedicated gurdwara seva and community langar participation run parallel to evening home prayers across local neighbourhoods. "
-        "The festive gathering is marked by sharing warm kada prasad, festive rotis, and rich milk sweets with the public."
+        "Massive night-long kirtan darbars draw thousands of worshippers to sing devotional praises until dawn. "
+        "The festive gathering is marked by sharing rich panjiri mixtures alongside festive local rotis."
     ),
     ("janmashtami", "rajasthan"): (
         "Massive midnight gatherings at the Govind Dev Ji temple turn Jaipur golden in Rajasthan, beautifully capturing the spirit of bhakti, midnight worship, and Krishna leela. "
-        "Delicate courtyard lamps and royal-colour decorations transform historic neighbourhoods into vibrant visual spaces. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to visiting clans."
+        "Thousands of voices chant in perfect unison as the temple curtains pull back at midnight to reveal the newborn deity. "
+        "The culinary gathering centers on serving sweet makhan mishri combinations alongside rich desert treats."
     ),
     ("janmashtami", "sikkim"): (
         "Terracotta diyas line hillside pathways in Sikkim, welcoming the seasonal transition with bhakti, midnight worship, and Krishna leela. "
-        "Grounded community prayer and hillside celebrations bring small mountain villages together for collective evening worship. "
-        "The local hospitality centers on sharing custom sweets and warm festive rice dishes among remote neighbourhoods."
+        "Mountain settlements organize simple, quiet midnight cradle-rocking ceremonies inside local shrines. "
+        "The local hospitality centers on sharing custom panchamrit batches among remote neighborhoods."
     ),
     ("janmashtami", "tamil-nadu"): (
         "Intricate Kolam baby footprints drawn with rice batter decorate Tamil Nadu doorsteps, honoring the early morning arrival of bhakti, midnight worship, and Krishna leela. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange seedai packets. "
-        "The auspicious day is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for the family."
+        "Mothers draw tiny trails of white footprints leading from the front gate straight to the home altar box. "
+        "The auspicious day is celebrated by preparing crisp sweet seedai alongside sacred temple prasadam."
     ),
     ("janmashtami", "telangana"): (
         "Gokulashtami rituals and dynamic local breaking of the pot games decorate thresholds across Telangana, welcoming the traditional cycle of bhakti, midnight worship, and Krishna leela. "
-        "Bonalu-style community devotion and floral decor add a unique cultural texture to the neighbourhood evening gathering paths. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "Neighborhood committees hang monetary prizes inside clay butter pots for local youth groups to claim. "
+        "The primary household table is filled with ritual panchamrit bowls alongside assorted local savouries."
     ),
     ("janmashtami", "tripura"): (
         "Devotional recitations fill family courtyards across Tripura, guiding the domestic focus toward bhakti, midnight worship, and Krishna leela. "
-        "Family courtyards and community pandals become lively centers for neighbourhood greeting exchanges and late-night prayers. "
-        "The winter evening is marked by sharing traditional festive rice offerings and local sweets with visiting relatives."
+        "Extended families gather around the home cradle to sing traditional lullabies to the newborn icon. "
+        "The winter evening is marked by sharing traditional panjiri mixtures with neighborhood guests."
     ),
     ("janmashtami", "uttar-pradesh"): (
         "The magnificent midnight celebrations in Mathura and Vrindavan set an unmatched standard in Uttar Pradesh, reflecting the peak of bhakti, midnight worship, and Krishna leela. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched devotional scale during the primary midnight birth hour. "
-        "The holy celebration involves distributing famous sweet peda, kachori, and traditional prasad to neighbourhood networks."
+        "Bells ring simultaneously across hundreds of shrines as priests bathe diamond-encrusted infant icons in milk and honey. "
+        "The holy celebration involves distributing famous makhan mishri cups alongside traditional city prasad."
     ),
     ("janmashtami", "uttarakhand"): (
         "Flickering oil lamps illuminate alpine stone houses in Uttarakhand, tracking the seasonal focus on bhakti, midnight worship, and Krishna leela. "
-        "Ancient hill temples and family vrat observance bring families together for strict fasts and serene twilight prayers. "
-        "The domestic gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Hill communities complete grueling high-altitude pilgrimages to fast together at ancient mountain shrines. "
+        "The domestic gathering is completed by serving sweet panjiri mixtures alongside custom alpine treats."
     ),
     ("janmashtami", "west-bengal"): (
         "Traditional Gopal puja setups and the dynamic sharing of teler pitha transform homes in West Bengal, welcoming the intense convergence of bhakti, midnight worship, and Krishna leela. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during Kali rituals. "
-        "The celebration is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets for the community."
+        "Grandmothers spend days polishing brass infant idols to place inside miniature ivory swings. "
+        "The celebration is accompanied by preparing traditional sandesh alongside custom panchamrit bowls."
     ),
     ("janmashtami", "nri-london"): (
         "Hired assembly halls host vibrant midnight continuous bhajans across London, preserving the ancestral heritage of bhakti, midnight worship, and Krishna leela. "
-        "Bustling weekend community events and cultural centres allow the diaspora to maintain traditional evening prayers across boroughs. "
-        "Families celebrate the winter transition by packing potluck sweets and temple prasada to share with global friends."
+        "The Bhaktivedanta Manor draws tens of thousands of diaspora members for grand scale evening cow-worship rituals. "
+        "Families celebrate the winter transition by packing tupperware containers of seedai to share with global friends."
     ),
     ("janmashtami", "nri-new-york"): (
         "Midnight bells echo inside New York apartment shrines, honoring the tradition of bhakti, midnight worship, and Krishna leela. "
-        "Ornate temple halls, family Zooms, and community gatherings connect families across long distances for simultaneous evening puja. "
-        "The autumn gathering concludes with sharing custom festive meals and mandir prasad within diaspora networks."
+        "Families set up continuous digital kirtan streams to synchronize their midnight birth prayers with holy land timelines. "
+        "The autumn gathering concludes with sharing custom makhan mishri cups within diaspora networks."
     ),
 
 
