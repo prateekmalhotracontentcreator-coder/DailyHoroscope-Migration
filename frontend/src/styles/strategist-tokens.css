@@ -86,13 +86,18 @@
   --popover-foreground: 40 28% 88%;
 }
 
-/* ── Control Room modes: WHITE base + green matrix grid ─────────────────── */
-/* Per Q12 approval: CR background = white; grid = green lines; cards unchanged */
+/* ── Control Room mode: WHITE base + optimised green matrix grid ─────────── */
+/* Merged from cr-ambient + cr-tactical (2026-05-27 Temple Team decision):    */
+/*   · Darker green lines from cr-tactical (#45b060, 1.5px, opacity 0.15/0.20)*/
+/*   · Shared 48px minor / 192px major grid spacing (identical in both prior) */
+/* data-mode="cr-ambient" and data-mode="cr-tactical" retained as aliases     */
+/* so existing JSX (StrategistWarRoomPage.jsx SecControlRoom) does not break. */
+.strategist-module[data-mode="cr"],
 .strategist-module[data-mode="cr-ambient"],
 .strategist-module[data-mode="cr-tactical"] {
   --background-dark-strategist: #0a0d14;   /* kept so ControlRoomBackdrop preview stays dark */
 
-  /* Light-mode tokens — text and cards stay gold/grey on white */
+  /* Light-mode card/text tokens — unchanged */
   --strategist-bg:           hsl(var(--background));
   --strategist-fg:           hsl(var(--foreground));
   --strategist-text-primary: hsl(var(--foreground));
@@ -126,19 +131,11 @@
     var(--background-dark-strategist);
 }
 
-/* ── Control Room A (Ambient) — white + muted green grid ────────────────── */
-/* Minor grid: 48px cell · #4a9866 · 10% opacity · 1px               */
-/* Major grid: 192px cell · #4a9866 · 15% opacity · 1px              */
-.strategist-module[data-mode="cr-ambient"] {
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Cpath d='M 192 0 L 0 0 0 192' fill='none' stroke='%234a9866' stroke-opacity='0.15' stroke-width='1'/%3E%3C/svg%3E") 0 0 / 192px 192px,
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M 48 0 L 0 0 0 48' fill='none' stroke='%234a9866' stroke-opacity='0.10' stroke-width='1'/%3E%3C/svg%3E") 0 0 / 48px 48px,
-    hsl(var(--background));
-}
-
-/* ── Control Room B (Tactical) — white + brighter green grid ────────────── */
-/* Minor grid: 48px cell · #45b060 · 15% opacity · 1.5px             */
-/* Major grid: 192px cell · #45b060 · 20% opacity · 1.5px            */
+/* ── Control Room — optimised green matrix grid (all 3 CR aliases) ──────── */
+/* Minor grid: 48px cell · #45b060 · 15% opacity · 1.5px stroke             */
+/* Major grid: 192px cell · #45b060 · 20% opacity · 1.5px stroke            */
+.strategist-module[data-mode="cr"],
+.strategist-module[data-mode="cr-ambient"],
 .strategist-module[data-mode="cr-tactical"] {
   background:
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Cpath d='M 192 0 L 0 0 0 192' fill='none' stroke='%2345b060' stroke-opacity='0.20' stroke-width='1.5'/%3E%3C/svg%3E") 0 0 / 192px 192px,
