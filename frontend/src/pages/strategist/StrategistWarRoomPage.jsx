@@ -5,6 +5,7 @@ import StrategistWarRoom from '../../components/strategist/war-room/StrategistWa
 import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
+const SUNSET_BUFFER_MS = 30 * 60 * 1000;
 
 function formatDisplayDate(dateValue) {
   return dateValue.toLocaleDateString('en-IN', {
@@ -12,6 +13,13 @@ function formatDisplayDate(dateValue) {
     month: 'long',
     year: 'numeric',
   });
+}
+
+function formatTransitionDate(isoString) {
+  if (!isoString) return undefined;
+  const d = new Date(isoString);
+  if (Number.isNaN(d.getTime())) return undefined;
+  return d.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
 }
 
 function getLayout() {
@@ -66,10 +74,76 @@ function shapeDasha(data) {
   };
 }
 
+function computeGoldenHourWindows(sunsetIso) {
+  if (!sunsetIso) return [];
+
+  const sunsetDate = new Date(sunsetIso);
+  const sunset = sunsetDate.getTime();
+  if (Number.isNaN(sunset)) return [];
+
+  const now = Date.now();
+  const dayStart = new Date(sunsetDate);
+  dayStart.setHours(0, 0, 0, 0);
+  const dayEnd = new Date(dayStart.getTime() + 24 * 60 * 60 * 1000);
+  const goldenStart = new Date(sunset - SUNSET_BUFFER_MS);
+  const goldenEnd = new Date(sunset);
+  const offensiveEnd = new Date(sunset - SUNSET_BUFFER_MS);
+  const defensiveStart = new Date(sunset);
+
+  return [
+    {
+      id: 'offensive',
+      label: 'Offensive Window',
+      name: 'Offensive Window',
+      state: 'OFFENSIVE_GOLD',
+      start: dayStart.toISOString(),
+      end: offensiveEnd.toISOString(),
+      startIso: dayStart.toISOString(),
+      endIso: offensiveEnd.toISOString(),
+      active: now < sunset - SUNSET_BUFFER_MS,
+      countdownSeconds: null,
+      type: 'auspicious',
+      planet: 'sun',
+    },
+    {
+      id: 'golden',
+      label: 'Golden Hour',
+      name: 'Golden Hour',
+      state: 'GOLDEN_HOUR',
+      start: goldenStart.toISOString(),
+      end: goldenEnd.toISOString(),
+      startIso: goldenStart.toISOString(),
+      endIso: goldenEnd.toISOString(),
+      active: now >= sunset - SUNSET_BUFFER_MS && now <= sunset,
+      countdownSeconds:
+        now >= sunset - SUNSET_BUFFER_MS && now <= sunset
+          ? Math.max(0, Math.floor((sunset - now) / 1000))
+          : null,
+      type: 'auspicious',
+      planet: 'sun',
+    },
+    {
+      id: 'defensive',
+      label: 'Defensive Window',
+      name: 'Defensive Window',
+      state: 'DEFENSIVE_MIDNIGHT',
+      start: defensiveStart.toISOString(),
+      end: dayEnd.toISOString(),
+      startIso: defensiveStart.toISOString(),
+      endIso: null,
+      active: now > sunset,
+      countdownSeconds: null,
+      type: 'defensive',
+      planet: 'sun',
+    },
+  ];
+}
+
 function mapWarRoomProps(dashboard, missions, layout) {
   const conquest = dashboard?.conquest_probability || {};
   const scoreboard = dashboard?.scoreboard || {};
   const pitruActive = Boolean(dashboard?.diagnosis_summary?.pitru_rin_active);
+  const pitruRin = Array.isArray(dashboard?.pitru_rin_ledger) ? dashboard.pitru_rin_ledger : [];
 
   return {
     conquestScore: {
@@ -79,11 +153,11 @@ function mapWarRoomProps(dashboard, missions, layout) {
     factors: Array.isArray(conquest.factors) ? conquest.factors : [],
     missions: Array.isArray(missions) ? missions : [],
     dasha: shapeDasha(dashboard),
-    transition: undefined,
-    pitruRin: [],
+    transition: formatTransitionDate(dashboard?.current_mahadasha_end),
+    pitruRin,
     pitruDelta: pitruActive ? -20 : 0,
-    pitruEmptyMeta: pitruActive ? undefined : { message: 'No active ancestral debt detected.' },
-    goldenHour: [],
+    pitruEmptyMeta: pitruActive ? undefined : { message: 'No active ancestral debt detected. Karma is balanced.' },
+    goldenHour: computeGoldenHourWindows(dashboard?.sunset_iso),
     kpVerdict: scoreboard.gate0_last_verdict ?? '',
     locationLabel: dashboard?.success_direction
       ? `Power direction: ${dashboard.success_direction}`
