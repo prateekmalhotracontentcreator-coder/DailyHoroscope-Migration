@@ -1,6 +1,6 @@
 # List of Pending Codex Commissions
 > EverydayHoroscope · Temple Team Master Tracker
-> Last updated: 2026-05-25 (Session 9 -- TAR-SEO-1 locally delivered and build-verified; SEO-20K M3 integrated by TT; remaining queued briefs include ANGEL-1, RUD-1, CRY-1, FAITH-1, ZIB-1 · Codex 3-week unlimited window active)
+> Last updated: 2026-05-27 (Session 10 -- FAITH-20K commission brief complete (16,800 pages); 4 new process docs written (PROCESS 5-8); TAR-SEO integration on hold; Angel Numbers full module pending CC integration)
 > **Rule:** Every commission issued to Codex has a row here AND a brief file in `Codex_Deliveries/[Module]/`. This file is the single view of what is blocked, what is ready, and what is integrated.
 >
 > **Per-module open points, status, and revision history → `TEMPLE_TRACKER.md` (repo root).** Update that file whenever a commission is integrated or a new open point is discovered.
@@ -32,7 +32,8 @@
 
 | ID | Commission | Thread | Brief File | Status | Dependency | Notes |
 |---|---|---|---|---|---|---|
-| **SEO-20K** | 22,170 Programmatic SEO Pages (Umbrella -- M4/M5 queued) | SEO Legacy Thread | `SEO/CODEX_COMMISSION_SEO_20K.md` | 🟡 DELIVERED -- PENDING INTEGRATION (M4) · M5 READY | None | M1 ✅ `2a4ed4e` M2 ✅ `aba7d5c` M3 ✅ integrated by TT. **M4 / TAR-SEO-1** (Tarot SEO, 199 pages) local delivery prepared 2026-05-25 with clean build. **M5** (Batch 7 Faith Hubs, 163 pages) → issue after M4. All to same SEO thread. |
+| **SEO-20K** | 22,170 Programmatic SEO Pages (Umbrella -- M4/M5 queued) | SEO Legacy Thread | `SEO/CODEX_COMMISSION_SEO_20K.md` | 🟡 DELIVERED -- PENDING INTEGRATION (M4) · M5 READY | None | M1 ✅ `2a4ed4e` M2 ✅ `aba7d5c` M3 ✅ integrated by TT. **M4 / TAR-SEO-1** (Tarot SEO, 199 pages) local delivery prepared 2026-05-25 with clean build -- ⏸ HOLD (TT sorting internally). **M5 / FAITH-20K** (16,800+ pages) → brief complete at `Faith_Hubs/CODEX_COMMISSION_FAITH_20K.md` -- READY TO ISSUE. |
+| **FAITH-20K** | Faith & Scripture SEO Hub -- 16,800 English pages (10,500 Gita + 6,000 Bible + 300 Transit/Daily) | SEO Legacy Thread (new section) or Faith (new thread) | `Faith_Hubs/CODEX_COMMISSION_FAITH_20K.md` | 🟡 READY TO ISSUE | None | Brief complete 2026-05-27. 4 process docs written (PROCESS_5-8). Phase order: Transit+Daily first (300 pages) → Gita×Situation (10,500) → Bible×Transition (6,000). CommentaryAction schema error corrected. Evergreen URL rule enforced. |
 | **ANGEL-1** | Angel Numbers -- Full module: 1,000 core pages × 9 intents = 10,001 pages | Angel Numbers (new thread) | `Angel_Numbers/CODEX_COMMISSION_ANGEL_NUMBERS.md` | 🟡 READY TO ISSUE | None | Standalone module. Own thread. Tier 1 (~60 numbers) unique; Tier 2 (940) via 81 intent × base digit templates. Priority 1. |
 | **RUD-1** | Rudraksha Hub + 21 Mukhi Pages + Calculator | Rudraksha (new thread) | `Rudraksha/CODEX_COMMISSION_RUDRAKSHA.md` | 🟡 READY TO ISSUE | None | Standalone module. Own thread. 23 pages. Calculator uses `vedic_calculator.py`. Priority 2. |
 | **LSG-1** | Lo Shu Grid Calculator + Hub + 9 Missing Number + 8 Arrow Pages | Lo Shu Grid (new thread) | `Lo_Shu_Grid/CODEX_COMMISSION_LO_SHU_GRID.md` | 🟡 DELIVERED -- PENDING INTEGRATION | None | Local delivery prepared 2026-05-23. Backend router, 4 public pages, sitemap, cache headers, and seed script build-verified. |

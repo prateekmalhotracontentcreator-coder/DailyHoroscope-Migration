@@ -17,6 +17,7 @@ from seo_m3_catalog import (
     SIGN_NAME_MAP,
     SIGN_SLUGS,
 )
+from seo_m3_festival_summaries import FESTIVAL_REGION_SUMMARY
 
 
 INDIA_TZ = ZoneInfo("Asia/Kolkata")
@@ -211,22 +212,42 @@ def _festival_fact(festival_slug: str, region_slug: str) -> str:
 
 
 def _festival_summary(festival_slug: str, region_slug: str) -> str:
+    """
+    Returns a per-combination unique summary from FESTIVAL_REGION_SUMMARY.
+
+    Lookup dict (seo_m3_festival_summaries.py) is populated in batches by GAI
+    per M3-FIX-2 ECHO // PACE compliance brief. Each entry is 40-70 words,
+    references both festival ritual vocabulary AND region food/marker, and is
+    verified to keep TF-IDF worst-pair similarity < 40%.
+
+    Fallback (for combinations not yet delivered): season + region anchor.
+    Remove fallback and assert no misses once all 480 entries are delivered.
+    """
+    entry = FESTIVAL_REGION_SUMMARY.get((festival_slug, region_slug))
+    if entry:
+        return entry
+
+    # Fallback -- used until all 480 GAI batches are delivered
+    import hashlib
     festival = FESTIVAL_META[festival_slug]
     region = REGION_META[region_slug]
-    zone_tone = {
-        "south": "a warm, ritual-led rhythm",
-        "north": "an open, high-energy community style",
-        "east": "an artistic, devotional public mood",
-        "west": "a bright, socially expressive festive tempo",
-        "northeast": "a close-knit, community-first celebration style",
-        "central": "a grounded, family-centred observance pattern",
-        "diaspora": "a weekend-friendly diaspora community rhythm",
-    }
-    return (
-        f"{festival['name']} in {region['name']} centres on {festival['season']}, expressed through {region['marker']} and the local instinct to celebrate together. "
-        f"In {region['zone']} observance, families often gather around {region['food']}, giving {festival['name']} in {region['name']} {zone_tone.get(region['zone'], 'a distinct regional rhythm')} that feels unmistakably local."
-    )
-
+    h = int(hashlib.md5(f"{festival_slug}-{region_slug}".encode()).hexdigest(), 16)
+    variant = h % 3
+    if variant == 0:
+        return (
+            f"{festival['name']} in {region['name']} centres on {festival['season']}, "
+            f"with {region['marker']} marking its arrival and {region['food']} on the household table."
+        )
+    elif variant == 1:
+        return (
+            f"In {region['name']}, {festival['name']} brings {festival['season']} "
+            f"through {region['marker']} and the taste of {region['food']} at the day close."
+        )
+    else:
+        return (
+            f"{region['name']} observes {festival['name']} through {festival['season']}, "
+            f"shaped by {region['marker']} and {region['food']} in the {region['zone']}-zone style."
+        )
 
 def _festival_faq(festival_slug: str, region_slug: str) -> list[dict[str, str]]:
     festival = FESTIVAL_META[festival_slug]["name"]
