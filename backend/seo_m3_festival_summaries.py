@@ -1397,307 +1397,307 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
 
     # ── ONAM (Batch 10 -- all 30 regions) ─────────────────────────────────────
     ("onam", "andhra-pradesh"): (
-        "Ten days of intricate pookalam flower carpets begin across Andhra Pradesh, centering local communities on harvest joy, floral beauty, and family reunion. "
-        "The bright visual energy fills local neighbourhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families mark the auspicious return of King Mahabali by sharing traditional pulihora and laddus outside their floral entryways."
+        "Intricate pookalam flower carpets are laid out step-by-step across Andhra Pradesh to welcome the legendary return of King Mahabali. "
+        "Neighborhoods gather to admire the expanding floral tapestries and celebrate the spirit of deep family reunion. "
+        "The joyful morning concludes with families sharing sacred offerings alongside traditional sadhya feast items with visiting neighbors."
     ),
     ("onam", "arunachal-pradesh"): (
-        "Delicate floral designs and fresh blossoms are arranged beautifully across Arunachal Pradesh homes, anchoring the harvest joy, floral beauty, and family reunion. "
-        "Bustling community halls and family gatherings fill with warm songs as families gather for seasonal thanksgiving rituals. "
-        "The playful morning concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Fresh autumn blossoms are gathered across Arunachal Pradesh valleys to construct beautiful pookalam flower carpets. "
+        "Bustling community spaces host local families who gather to sing welcoming songs for King Mahabali. "
+        "The harvest gathering is completed by serving rich sadhya feast portions paired with regional festive treats."
     ),
     ("onam", "assam"): (
-        "Colorful flower patterns and agricultural decorations reshape fields in Assam, reflecting a deep harvest joy, floral beauty, and family reunion. "
-        "Joyous music, prayer, and neighbourhood visits elevate local community spaces during the daylight cultural transitions. "
-        "The winter cycle is enriched by serving traditional pitha, payas, and festive rice offerings to the neighbourhood."
+        "Colorful pookalam flower carpets and artistic floral circles decorate Assamese verandahs, beautifully channeling the spirit of the harvest. "
+        "Neighborhood circles gather for joyful cultural programs to celebrate the legendary return of King Mahabali. "
+        "The celebration is completed as kitchens prepare traditional sadhya feast items to distribute to neighborhood guests."
     ),
     ("onam", "bihar"): (
-        "Beautiful floral decorations and standard home altars define the daytime household rhythm in Bihar, celebrating harvest joy, floral beauty, and family reunion. "
-        "Bustling ghat visits and family puja routines allow large extended families to gather for collective agricultural chants. "
-        "The daily ceremonial transition is marked by preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "Intricate pookalam flower carpets are arranged at home entryways in Bihar, celebrating a magnificent display of floral beauty. "
+        "Extended families balance serene public spaces with strict home-altar routines to welcome the spirit of King Mahabali. "
+        "Fasting families break their seasonal restrictions by eating custom sadhya feast items alongside classic bihari savouries."
     ),
     ("onam", "chhattisgarh"): (
-        "Intricate flower mats are laid before home shrines in Chhattisgarh, initiating the quiet celebration of harvest joy, floral beauty, and family reunion. "
-        "Vibrant community puja and local fairs bring farming communities together for evening folk dances and traditional prayers. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad for daily offerings."
+        "Ornate pookalam flower carpets are laid before home shrines in Chhattisgarh, initiating the multi-day celebration of harvest joy. "
+        "Evening gatherings feature vibrant folk music as local neighborhoods unite to honor the return of King Mahabali. "
+        "Kitchens prepare specialized sadhya feast items and home-style desserts to distribute as sacred prasad."
     ),
     ("onam", "goa"): (
-        "Fresh blossoms and unique floral carpets decorate family altars across Goa, channeling a beautiful wave of harvest joy, floral beauty, and family reunion. "
-        "Quiet home altars and bustling neighbourhood celebration routes define the spatial layout of the local evening prayers. "
-        "The sacred period is marked by sharing unique coconut sweets and festive savouries among long-time neighbours."
+        "Fresh blossoms are woven into intricate pookalam flower carpets across Goan residential compounds, highlighting the autumn holiday. "
+        "Families coordinate beautiful cultural routines to welcome the benevolent spirit of King Mahabali into their homes. "
+        "The sacred time involves sharing delicious sadhya feast portions alongside coastal coconut desserts with visiting families."
     ),
     ("onam", "gujarat"): (
-        "Bright floral patterns and high-flying kite arrays decorate residential colonies across Gujarat, magnifying the festive energy of harvest joy, floral beauty, and family reunion. "
-        "Bustling garba grounds and bright rangoli work completely transform public and private squares under bright festive lights. "
-        "Dancers replenish their energy late into the night by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "Vibrant pookalam flower carpets and complex floral circles transform residential colonies across Gujarat under the autumn sun. "
+        "Bustling community grounds host unique hybrid gatherings where families meet to welcome King Mahabali. "
+        "Extended families mark the joyful transition by gathering to share hot sadhya feast items along with festive local snacks."
     ),
     ("onam", "haryana"): (
-        "Agrarian families gather to offer fresh winter crops to community shrines across Haryana, magnifying the annual cycle of harvest joy, floral beauty, and family reunion. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood women lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "Traditional kirtans and multi-colored pookalam flower carpets alter the domestic rhythm across Haryana during the harvest weeks. "
+        "Neighborhood women lead traditional welcoming songs to honor the legendary return of King Mahabali. "
+        "The home gathering is warmed by distributing sweet sadhya feast items paired with farm-style dairy delicacies."
     ),
     ("onam", "himachal-pradesh"): (
-        "Village winter bonfires emerge amidst the cold mountain air across Himachal Pradesh, anchoring local valleys in harvest joy, floral beauty, and family reunion. "
-        "Serene village temples and hillside processions host local clans traveling across valleys to pay homage to their deities. "
-        "The spiritual afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around communal hearths."
+        "Hillside clearings are decorated with fresh pookalam flower carpets across Himachal Pradesh, anchoring the mountain air in floral beauty. "
+        "Local clans travel across valleys to participate in grand community gatherings welcoming King Mahabali. "
+        "The spiritual afternoon is comforted by serving warm sadhya feast items alongside rich mountain-style meals."
     ),
     ("onam", "jharkhand"): (
-        "Traditional Tusu festival markers and fresh grain decorations transform residential colonies in Jharkhand, marking the seasonal alignment with harvest joy, floral beauty, and family reunion. "
-        "Open community grounds and family prayer circles provide an inclusive space for traditional drumming and evening chants. "
-        "The nine-day fast is supported by sharing unique seasonal sweets and simple ceremonial meals within families."
+        "Intricate pookalam flower carpets are maintained daily inside Jharkhand residences, marking the seasonal alignment with harvest joy. "
+        "Devotees coordinate peaceful community prayer circles to exchange greetings and honor the return of King Mahabali. "
+        "The festive period is supported by sharing unique sadhya feast items with neighboring families."
     ),
     ("onam", "karnataka"): (
-        "Beautiful floral mats and sweet exchanges transform local living rooms across Karnataka, celebrating harvest joy, floral beauty, and family reunion. "
-        "Intricate flower decorations and early-morning puja rituals re-energize the household as children arrange the sacred steps. "
-        "Visiting guests are welcomed into homes with delicious kosambari, payasa, and temple-style prasada."
+        "Vibrant pookalam flower carpets and traditional floral decorations alter the domestic atmosphere across Karnataka households. "
+        "Youth groups coordinate localized cultural programs inside community halls to celebrate the spirit of King Mahabali. "
+        "The evening feast is defined by preparing delicious sadhya feast variations alongside classic southern treats."
     ),
     ("onam", "kerala"): (
-        "Ten days of Onam centre on the pookalam remade each morning, culminating in the sadhya feast, vallam kali boat races, and deep harvest joy, floral beauty, and family reunion. "
-        "Ornate floral designs and household lamp lighting ground the final days of the sacred calendar in absolute stillness. "
-        "The concluding celebration is marked by serving sweet payasam, banana chips, and elaborate festive spreads."
+        "Ten days of Onam center on the pookalam flower carpets remade each morning, culminating in the sadhya feast and high-energy snake boat races. "
+        "Ornate floral designs and grand vallam kali processions ground the entire landscape in absolute harvest joy. "
+        "The concluding milestone is celebrated by serving sweet payasam and banana chips on traditional banana leaves."
     ),
     ("onam", "madhya-pradesh"): (
-        "Large-scale kite flying tournaments and grand holy river dips alter the public space of Madhya Pradesh, showcasing deep arrays of harvest joy, floral beauty, and family reunion. "
-        "Devotional mandir visits and old-city processions draw thousands out into illuminated public streets after sunset. "
-        "The local evening hospitality is accompanied by distributing savory poha-style snacks, sweets, and prasad to visitors."
+        "High-energy public spaces host spectacular pookalam flower carpets across Madhya Pradesh, showcasing the grand scale of the harvest. "
+        "Devotional gatherings draw thousands of residents into illuminated public streets to celebrate King Mahabali. "
+        "The local evening hospitality features sharing plates of sadhya feast items along with regional street savouries."
     ),
     ("onam", "maharashtra"): (
-        "The sharing of sweet tilgul sweets with messages of goodwill anchors local neighbourhood complexes across Maharashtra, initiating days of harvest joy, floral beauty, and family reunion. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The daily family gathering centers on preparing fresh, sweet modak, puran poli, and festive snacks."
+        "The sacred pookalam flower carpets anchor local apartment entrances across Maharashtra, initiating the annual harvest celebrations. "
+        "Bustling society spaces turn into lively centers for multi-course meals and collective welcoming aartis. "
+        "The family gathering centers on preparing hot sadhya feast items along with traditional maharashtrian sweets."
     ),
     ("onam", "manipur"): (
-        "Harvest thanksgiving rituals and classical devotional musical sequences fill local temples in Manipur, blending the season with harvest joy, floral beauty, and family reunion. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The sacred week concludes with neighbourhoods arranging large community feasts paired with specialized seasonal sweets."
+        "Devotional storytelling and beautiful pookalam flower carpets fill local mandaps in Manipur, blending the seasonal shift with floral beauty. "
+        "Expressive cultural performances offer a deeply classical avenue for communities welcoming King Mahabali. "
+        "The sacred day is marked by preparing custom sadhya feast formulas to share among extended families."
     ),
     ("onam", "meghalaya"): (
-        "Fresh winter grain displays and twilight prayer groups bring families together in Meghalaya, honoring the message of harvest joy, floral beauty, and family reunion. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the autumn season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Fresh blossoms are gathered to construct beautiful pookalam flower carpets in Meghalaya, bringing diverse neighborhoods together. "
+        "Festive community spaces host unique cultural programs to honor the traditional return of King Mahabali. "
+        "The warm afternoon hospitality features sharing plates of sadhya feast items along with unique local rice sweets."
     ),
     ("onam", "mizoram"): (
-        "Traditional oil lamps and winter harvest greetings decorate private balconies in Mizoram, bridging local harmony with the global focus on harvest joy, floral beauty, and family reunion. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The autumn occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Traditional oil lamps and colorful pookalam flower carpets decorate private balconies in Mizoram, bridging local harmony with the harvest spirit. "
+        "Decorated community spaces allow diaspora groups to gather for collective songs welcoming King Mahabali. "
+        "The autumn occasion is highlighted by gathering for shared plates of sadhya feast items across local townships."
     ),
     ("onam", "nagaland"): (
-        "Agrarian celebration songs and community bonfires are coordinated across Nagaland, celebrating the spiritual presence of harvest joy, floral beauty, and family reunion. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Quiet home altars are decorated with fresh pookalam flower carpets across Nagaland, celebrating the spiritual presence of harvest joy. "
+        "Vibrant collective singing provides a welcoming environment for families celebrating the return of King Mahabali. "
+        "The peaceful seasonal gathering is highlighted by presenting warm sadhya feast items alongside celebratory desserts."
     ),
     ("onam", "odisha"): (
-        "The Makara Mela festivals on the pristine grounds of ancient temples transform Odisha, elevating a profound wave of deep harvest joy, floral beauty, and family reunion. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "The grand design of pookalam flower carpets inside ancient temple grounds transforms local towns across Odisha. "
+        "Intricate patterns line the paths where families gather to exchange blessings and honor King Mahabali. "
+        "The holy days are accompanied by distributing traditional sadhya feast items along with classic temple sweets."
     ),
     ("onam", "punjab"): (
-        "High-energy Maghi assemblies following the vibrant Lohri night bonfires fill local residential areas across Punjab, defining a grand display of harvest joy, floral beauty, and family reunion. "
-        "Dedicated gurdwara seva and community langar participation run parallel to the domestic fasts across local towns. "
-        "The auspicious eighth day is marked by sharing warm kada prasad, festive rotis, and rich milk sweets."
+        "Vibrant pookalam flower carpets and elegant floral decorations fill local community centers across Punjab during the harvest. "
+        "Neighborhood families coordinate vibrant cultural tracks inside assembly halls to welcome King Mahabali. "
+        "The auspicious day is marked by sharing warm sadhya feast items alongside festive local rotis."
     ),
     ("onam", "rajasthan"): (
-        "High-flying kite arrays and specialised charity to elders fill historic neighbourhoods in Rajasthan, elevating the heritage of harvest joy, floral beauty, and family reunion. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "High-energy folk music and intricate pookalam flower carpets fill historic courtyards in Rajasthan during the autumn months. "
+        "Delicate courtyard decorations provide a dramatic setting for community gatherings honoring King Mahabali. "
+        "The culinary gathering centers on serving sweet sadhya feast variations along with rich desert treats."
     ),
     ("onam", "sikkim"): (
-        "The traditional Maghe Sankranti holy dips in mountain rivers bring communities together across Sikkim, welcoming the seasonal alignment with harvest joy, floral beauty, and family reunion. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Hillside altars are dressed in fresh pookalam flower carpets across Sikkim, welcoming the seasonal alignment with harvest joy. "
+        "Grounded community groups bring mountain settlements together for peaceful songs welcoming King Mahabali. "
+        "The local hospitality involves sharing sweet sadhya feast formulas among remote mountain neighborhoods."
     ),
     ("onam", "tamil-nadu"): (
-        "Beautiful flower mats and traditional harvest chants transform Tamil Nadu, anchoring harvest joy, floral beauty, and family reunion. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange greeting cards. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "The majestic pookalam flower carpets and beautiful seasonal decorations transform Tamil Nadu living rooms during the harvest. "
+        "Vibrant art and dawn rituals reshape the domestic rhythm as families prepare to welcome King Mahabali. "
+        "The sacred season is celebrated by preparing sweet sadhya feast items alongside traditional southern snacks."
     ),
     ("onam", "telangana"): (
-        "Intricate multi-colored rangoli designs and dynamic community kite-flying paths decorate thresholds across Telangana, highlighting a profound display of harvest joy, floral beauty, and family reunion. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "Delicate floral rings arrange symmetric paths across Telangana entryways to welcome the legendary return of King Mahabali. "
+        "Residential communities gather for light outdoor dances and share custom stories regarding the prosperous era of Maveli. "
+        "Fasting families complete their observations by serving rich sharkara varatti portions alongside assorted local savouries."
     ),
     ("onam", "tripura"): (
-        "Traditional winter rice cakes and devotional stotra recitations fill community halls across Tripura, mirroring the winter arrival of harvest joy, floral beauty, and family reunion. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Freshly gathered blossoms transform family inner courtyards across Tripura into bright multi-layered pookalam displays. "
+        "Worshippers set a serene stage by lighting traditional brass lamps to symbolize long-term household harmony and abundance. "
+        "The evening hospitality is highlighted by preparing sweet payasam formulas alongside local festive rice dishes."
     ),
     ("onam", "uttar-pradesh"): (
-        "The magnificent Khichdi Mela holy dips in Prayagraj transform Uttar Pradesh, tracking a magnificent display of harvest joy, floral beauty, and family reunion. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "Intricate geometric flower mats decorate urban residential areas across Uttar Pradesh, introducing the cheerful harvest spirit. "
+        "Neighborhood circles gather for synchronized singing sessions to honor the protective guidance of the ancient monarch. "
+        "The daily celebration is enriched by serving warm avial variations alongside traditional city prasad sweets."
     ),
     ("onam", "uttarakhand"): (
-        "The sweet feeding of migratory birds during winter solstice celebrations defines the local experience in Uttarakhand, celebrating a serene display of harvest joy, floral beauty, and family reunion. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Beautifully arranged floral paths brighten alpine stone houses in Uttarakhand, tracking the seasonal message of family reunion. "
+        "Remote mountain settlements celebrate the symbolic harvest cycle with peaceful home prayers and shared family blessings. "
+        "The spiritual gathering is completed by serving traditional singori desserts alongside custom multi-course harvest items."
     ),
     ("onam", "west-bengal"): (
-        "The dynamic Poush Parbon pithe making and holy dips at Ganga Sagar transform West Bengal, showcasing a beautiful wave of harvest joy, floral beauty, and family reunion. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "Vibrant floral combinations decorate artistic entry gates across West Bengal, channeling the classic message of spiritual abundance. "
+        "Neighborhood groups coordinate elegant evening gatherings to exchange wishes during the multi-day king welcoming periods. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom payasam harvest bowls."
     ),
     ("onam", "nri-london"): (
-        "Indoor community halls host colorful flower carpet arrangements across London, allowing the diaspora to maintain an authentic experience of harvest joy, floral beauty, and family reunion. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the autumn transition by packing potluck sweets and temple prasada to share with global friends."
+        "Hired community assembly halls host colorful pookalam flower competitions across London, preserving the rich ancestral heritage. "
+        "Bustling weekend events connect diaspora families for synchronized group dances and high-energy harvest songs. "
+        "Expatriates celebrate the seasonal shift by packing tupperware containers of sharkara varatti to share with global friends."
     ),
     ("onam", "nri-new-york"): (
-        "Community centers host high-energy flower arrangements and banana leaf sadhya feasts in New York, preserving the heritage of harvest joy, floral beauty, and family reunion. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Community centers host high-energy banana leaf feasts and elegant flower arrangements in New York, honoring the ancient traditions. "
+        "Ornate diaspora halls and family video calls bridge the long distance for relatives participating in the harvest joy. "
+        "The diaspora gathering concludes with sharing custom avial variations within local apartment networks."
     ),
 
 
     # ── BAISAKHI (Batch 11 -- all 30 regions) ─────────────────────────────────
     ("baisakhi", "andhra-pradesh"): (
-        "Bhangra rhythms and nagar kirtan processions echo across Andhra Pradesh as communities gather to mark the energy of harvest thanksgiving and collective celebration. "
-        "The dynamic seasonal energy fills local neighbourhoods, where public areas are enlivened by traditional temple processions and decorated entrances. "
-        "Families mark the auspicious solar new year by sharing traditional pulihora and laddus with visiting neighbourhood circles."
+        "Thunderous dhol beats and energetic bhangra movements bring spring energy across Andhra Pradesh during the historic solar new year. "
+        "Devotees gather for special gurdwara shabad kirtans to honor the landmark Khalsa Sirjana Diwas heritage. "
+        "The auspicious day concludes with families sharing sweet meethe chawal portions with visiting neighborhood circles."
     ),
     ("baisakhi", "arunachal-pradesh"): (
-        "Freshly cleared fields and morning prayers mark the seasonal shift across Arunachal Pradesh, tracking the harvest thanksgiving and collective celebration. "
-        "Bustling community halls and family gatherings fill with traditional greetings as families celebrate the changing of the agricultural calendar. "
-        "The playful morning concludes with households gathering to share custom community sweets and festive rice dishes."
+        "Fresh spring grain fields are blessed with morning prayers across Arunachal Pradesh, tracking the annual agrarian calendar reset. "
+        "Bustling community spaces fill with cheerful folk tracks as families gather for traditional Aawat Pauni harvest routines. "
+        "The playful morning concludes with households gathering to share sweet pindi chole formulas with neighbors."
     ),
     ("baisakhi", "assam"): (
-        "The high-energy Rongali Bihu dances and outdoor agricultural rituals reshape the fields in Assam, reflecting a deep harvest thanksgiving and collective celebration. "
-        "Joyous music, prayer, and neighbourhood visits elevate local community spaces during the daylight cultural transitions. "
-        "The spring cycle is enriched by serving traditional pitha, payas, and festive rice offerings to the neighbourhood."
+        "The high-energy dhol rhythms merge beautifully with localized Assamese spring configurations, creating a lively hybrid atmosphere. "
+        "Neighborhood circles gather for intense outdoor field prayers to welcome agricultural abundance into their settlements. "
+        "The celebration is completed as kitchens prepare sweet kada prasad alongside traditional Assamese pitha varieties."
     ),
     ("baisakhi", "bihar"): (
-        "The auspicious Satuan festival rituals and holy dips at river confluences mark the daytime rhythm in Bihar, celebrating harvest thanksgiving and collective celebration. "
-        "Bustling ghat visits and family puja routines allow large extended families to gather for collective seasonal prayers. "
-        "The daily ceremonial transition is marked by preparing sweet thekua, kheer, and seasonal savouries for ritual prasad."
+        "Auspicious seasonal bathing and collective farm blessings define the household atmosphere in Bihar as the annual spring harvest concludes. "
+        "The community gathers for elaborate scripture reading sessions to invite protective guidance and prosperity into their homes. "
+        "Extended families celebrate the transition by eating custom meethe chawal alongside classic home-cooked bihari savouries."
     ),
     ("baisakhi", "chhattisgarh"): (
-        "Earthen pots carrying newly harvested spring grains are placed before home shrines in Chhattisgarh, initiating the quiet celebration of harvest thanksgiving and collective celebration. "
-        "Vibrant community puja and local fairs bring farming communities together for evening folk dances and traditional prayers. "
-        "The household hospitality centers on kitchens preparing specialized rice sweets and home-style prasad for daily offerings."
+        "Bright yellow decorations transform residential colonies across Chhattisgarh, welcoming the multi-day celebration of the solar new year. "
+        "Evening gatherings feature vibrant gidda folk expressions as local farming neighborhoods unite for collective singing. "
+        "Kitchens prepare specialized pindi chole items and home-style wheat sweets to distribute as sacred prasad."
     ),
     ("baisakhi", "goa"): (
-        "Spring harvest grains and custom floral decorations are offered at family altars across Goa, channeling a beautiful wave of harvest thanksgiving and collective celebration. "
-        "Quiet home altars and bustling neighbourhood celebration routes define the spatial layout of the local evening prayers. "
-        "The sacred period is marked by sharing unique coconut sweets and festive savouries among long-time neighbours."
+        "Vibrant yellow flags decorate local community squares across Goa, highlighting the joyous season of the spring harvest. "
+        "Families coordinate intricate gurdwara kirtan routines to invite prosperity and positive energy into their neighborhoods. "
+        "The sacred time involves sharing delicious meethe chawal alongside coastal coconut desserts with visiting families."
     ),
     ("baisakhi", "gujarat"): (
-        "Vibrant solar patterns and high-energy cultural gatherings transform residential colonies across Gujarat, magnifying the festive energy of harvest thanksgiving and collective celebration. "
-        "Bustling garba grounds and bright rangoli work completely transform public and private squares under bright festive lights. "
-        "Dancers replenish their energy late into the night by gathering around multi-course festive thalis loaded with fafda and jalebi."
+        "High-energy public spaces host spectacular dhol processions across Gujarat, showcasing the grand scale of the solar new year. "
+        "Devotees coordinate grand morning kirtan rituals to celebrate the landmark Khalsa Sirjana Diwas memories. "
+        "Exhausted participants replenish their energy by sharing large plates of pindi chole along with festive local snacks."
     ),
     ("baisakhi", "haryana"): (
-        "Traditional dhol beats and robust community assemblies bring agricultural families together across Haryana, magnifying the annual cycle of harvest thanksgiving and collective celebration. "
-        "Family courtyards and temple offerings turn into central meeting points where neighbourhood women lead traditional folk prayers. "
-        "The home gatherings are warmed by sharing rustic halwa, puri, and farm-style festive meals among relatives."
+        "Robust Aawat Pauni community harvesting groups bring working fields together across Haryana during the high-energy holiday. "
+        "Family prayer spaces turn into central gathering nodes where community elders lead traditional bhangra steps. "
+        "The agrarian holiday is enriched by serving sweet kada prasad paired with farm-style dairy delicacies to visiting relatives."
     ),
     ("baisakhi", "himachal-pradesh"): (
-        "The vibrant Bissoa festival assemblies emerge amidst the fresh mountain air across Himachal Pradesh, anchoring local valleys in harvest thanksgiving and collective celebration. "
-        "Serene village temples and hillside processions host local clans traveling across valleys to pay homage to their deities. "
-        "The spiritual afternoon is comforted by serving sweet rice, prasad, and mountain-style meals around communal hearths."
+        "Hillside shrines echo with deep devotional music across Himachal Pradesh, anchoring the mountain air in the solar new year. "
+        "Local clans travel across valleys to participate in grand community-style shabad kirtan gatherings. "
+        "The spiritual afternoon is comforted by serving warm meethe chawal formulas alongside rich mountain-style meals."
     ),
     ("baisakhi", "jharkhand"): (
-        "Traditional spring festival songs and fresh grain decorations transform residential colonies in Jharkhand, marking the seasonal alignment with harvest thanksgiving and collective celebration. "
-        "Open community grounds and family prayer circles provide an inclusive space for traditional drumming and evening chants. "
-        "The nine-day fast is supported by sharing unique seasonal sweets and simple ceremonial meals within families."
+        "Bright yellow garments are worn across residential colonies in Jharkhand, marking the seasonal alignment with the spring harvest. "
+        "Devotees coordinate peaceful community prayer circles to offer collective gratitude for family health and well-being. "
+        "The festive period is supported by sharing unique pindi chole mixtures with neighboring families."
     ),
     ("baisakhi", "karnataka"): (
-        "The sacred Ugadi or new year extensions and sweet exchanges transform local living rooms across Karnataka, celebrating harvest thanksgiving and collective celebration. "
-        "Intricate flower decorations and early-morning puja rituals re-energize the household as children arrange the sacred steps. "
-        "Visiting guests are welcomed into homes with delicious kosambari, payasa, and temple-style prasada."
+        "Vibrant festive steps and traditional home decorations alter the domestic atmosphere across Karnataka during the solar new year. "
+        "Youth groups coordinate localized gidda routines inside community yards to celebrate the Khalsa Sirjana Diwas. "
+        "The evening feast is defined by preparing delicious kada prasad variations alongside classic southern treats."
     ),
     ("baisakhi", "kerala"): (
-        "The majestic Vishu festival arrays and traditional kanikanu displays are observed quietly in Kerala, marking a unique southern expression of harvest thanksgiving and collective celebration. "
-        "Ornate floral designs and household lamp lighting ground the final three days of the sacred calendar in absolute stillness. "
-        "The concluding celebration is marked by serving sweet payasam, banana chips, and elaborate festive spreads."
+        "Specialized temple shrines exhibit beautiful spring harvest displays in Kerala, marking a unique southern expression. "
+        "The quiet community focus sets a deeply meditative stage for intense twilight prayers inside traditional shrines. "
+        "The concluding hour is celebrated by serving sweet meethe chawal variants alongside elaborate banana leaf spreads."
     ),
     ("baisakhi", "madhya-pradesh"): (
-        "Large-scale public fairs and grand holy river dips alter the public space of Madhya Pradesh, showcasing deep arrays of harvest thanksgiving and collective celebration. "
-        "Devotional mandir visits and old-city processions draw thousands out into illuminated public streets after sunset. "
-        "The local evening hospitality is accompanied by distributing savory poha-style snacks, sweets, and prasad to visitors."
+        "High-energy gurdwara pandals alter the urban space of Madhya Pradesh, showcasing the deep heritage of the Khalsa Sirjana Diwas. "
+        "Devotional shabad kirtans draw thousands of residents into illuminated public streets after sunset for collective prayers. "
+        "The local evening hospitality features sharing bowls of pindi chole along with regional street savouries."
     ),
     ("baisakhi", "maharashtra"): (
-        "The festive Gudi Padwa configurations and joyful exchanges anchor local neighbourhood complexes across Maharashtra, initiating days of harvest thanksgiving and collective celebration. "
-        "Bustling society pandals and family aarti gatherings unite apartment complexes for nightly prayers and synchronized dances. "
-        "The daily family gathering centers on preparing fresh, sweet modak, puran poli, and festive snacks."
+        "The joyous welcoming of the spring harvest anchors home altars across Maharashtra during the solar new year. "
+        "Bustling society spaces turn into lively centers for nightly bhangra sessions and collective aarti routines. "
+        "The family gathering centers on preparing hot kada prasad formulas along with traditional maharashtrian sweets."
     ),
     ("baisakhi", "manipur"): (
-        "Harvest thanksgiving rituals and classical devotional musical sequences fill local temples in Manipur, blending the season with harvest thanksgiving and collective celebration. "
-        "Expressive cultural performances and temple participation offer a deeply classical avenue for community connection. "
-        "The sacred week concludes with neighbourhoods arranging large community feasts paired with specialized seasonal sweets."
+        "Harvest thanksgiving rituals and classical devotional musical sequences fill local temples in Manipur, blending the seasonal shift with the solar new year. "
+        "Expressive cultural performances offer a deeply classical avenue for communities participating in the spring harvest. "
+        "The sacred day is marked by preparing custom meethe chawal formulas to share among extended families."
     ),
     ("baisakhi", "meghalaya"): (
-        "Fresh spring grain displays and twilight prayer groups bring families together in Meghalaya, honoring the message of harvest thanksgiving and collective celebration. "
-        "Festive church halls, homes, and community spaces host unique inter-cultural programs to celebrate the autumn season. "
-        "The warm afternoon hospitality features sharing local festive rice dishes and unique local sweets with guests."
+        "Fresh spring grain displays and twilight prayer groups bring diverse neighborhoods together in Meghalaya to observe the holiday. "
+        "Festive community halls host peaceful cultural gatherings to celebrate the traditional segments of the Khalsa Sirjana Diwas. "
+        "The warm afternoon hospitality features sharing bowls of pindi chole along with unique local rice sweets."
     ),
     ("baisakhi", "mizoram"): (
-        "Traditional oil lamps and spring harvest greetings decorate private balconies in Mizoram, bridging local harmony with the global focus on harvest thanksgiving and collective celebration. "
-        "Decorated community halls and neighbourhood visits allow diaspora groups to gather for seasonal updates and songs. "
-        "The autumn occasion is highlighted by gathering for shared festive meals and sweet offerings across local townships."
+        "Traditional oil lamps illuminate private balconies in Mizoram, bridging local harmony with the global focus on the solar new year. "
+        "Decorated community spaces allow diaspora groups to gather for collective prayers honoring the traditional holiday spirit. "
+        "The spring occasion is highlighted by gathering for shared plates of kada prasad across local townships."
     ),
     ("baisakhi", "nagaland"): (
-        "Agrarian celebration songs and community bonfires are coordinated across Nagaland, celebrating the spiritual presence of harvest thanksgiving and collective celebration. "
-        "Vibrant collective singing and family hosting provide a welcoming environment for visiting relatives and friends. "
-        "The peaceful seasonal gathering is highlighted by presenting large community meals and celebratory desserts."
+        "Quiet home altars are decorated with fresh spring flowers across Nagaland, celebrating the spiritual presence of the solar new year. "
+        "Vibrant collective singing provides a welcoming environment for families participating in harvest rituals. "
+        "The peaceful seasonal gathering is highlighted by presenting warm meethe chawal formulas alongside celebratory desserts."
     ),
     ("baisakhi", "odisha"): (
-        "The Pana Sankranti or Maha Vishuba festivals on the pristine grounds of ancient temples transform Odisha, elevating a profound wave of deep harvest thanksgiving and collective celebration. "
-        "Intricate alpona art and neighbourhood mandaps line the village paths where families gather to receive the deity's blessings. "
-        "The holy days are accompanied by distributing traditional sweet khaja, pitha, and temple mahaprasad to neighbourhood networks."
+        "The grand invocation of the solar deity inside ancient shrines transforms local towns across Odisha during the new year. "
+        "Intricate designs line the paths where families gather for the beautiful evening harvest blessings. "
+        "The holy days are accompanied by distributing traditional kada prasad along with classic temple sweets."
     ),
     ("baisakhi", "punjab"): (
-        "Gurdwara seva in the morning, full-volume bhangra rhythms, and continuous langar service define the absolute heart of Punjab's harvest thanksgiving and collective celebration. "
-        "Dedicated nagar kirtan processions and vibrant community energy anchor the high-energy celebrations across local districts. "
-        "The festive gathering is marked by distributing warm kada prasad, festive rotis, and rich milk sweets to the public."
+        "High-octane bhangra steps, rhythmic dhol beats, and endless langar services define the absolute peak of the Punjab harvest celebration. "
+        "Millions of residents join spectacular nagar kirtan processions heading toward Anandpur Sahib to honor Khalsa Sirjana Diwas. "
+        "The historic milestone is celebrated by distributing massive batches of warm kada prasad along with rich milk sweets."
     ),
     ("baisakhi", "rajasthan"): (
-        "High-energy harvest songs and specialised charity to elders fill historic neighbourhoods in Rajasthan, elevating the heritage of harvest thanksgiving and collective celebration. "
-        "Delicate courtyard lamps and royal-colour decorations provide a dramatic setting for the night-long prayers. "
-        "The culinary gathering centers on serving sweet ghevar, rich dal-baati spreads, and festive mithai to extended clans."
+        "High-energy harvest songs and traditional folk music fill historic courtyards in Rajasthan during the solar new year. "
+        "Delicate courtyard decorations provide a dramatic setting for late-night nagar kirtan sessions under bright lights. "
+        "The culinary gathering centers on serving sweet meethe chawal variations along with rich desert treats."
     ),
     ("baisakhi", "sikkim"): (
-        "The traditional spring prayer assemblies in mountain monasteries bring communities together across Sikkim, welcoming the seasonal alignment with harvest thanksgiving and collective celebration. "
-        "Grounded community prayer and hillside celebrations bring mountain settlements together for evening songs and shared prayers. "
-        "The local hospitality involves sharing custom sweets and warm festive rice dishes among remote settlements."
+        "Hillside altars are dressed in fresh spring leaves across Sikkim, welcoming the seasonal alignment with the new year. "
+        "Grounded community prayer brings mountain settlements together for peaceful shabad kirtan songs and shared blessings. "
+        "The local hospitality involves sharing sweet pindi chole formulas among remote neighborhoods."
     ),
     ("baisakhi", "tamil-nadu"): (
-        "The Puthandu new year rituals and beautiful seasonal fruit arrangements transform Tamil Nadu, anchoring harvest thanksgiving and collective celebration. "
-        "Vibrant kolam art, brass lamps, and dawn rituals reshape the domestic rhythm as neighbors visit to exchange traditional wishes. "
-        "The sacred season is celebrated by preparing sweet pongal, savory sundal, and sacred temple prasadam for guests."
+        "The Puthandu new year rituals and beautiful seasonal fruit arrangements transform Tamil Nadu, anchoring the harvest focus. "
+        "Vibrant art and dawn rituals reshape the domestic rhythm as families complete their solar new year steps. "
+        "The sacred season is celebrated by preparing sweet kada prasad variants alongside traditional southern snacks."
     ),
     ("baisakhi", "telangana"): (
-        "Intricate multi-colored rangoli designs and dynamic community assemblies decorate thresholds across Telangana, highlighting a profound display of harvest thanksgiving and collective celebration. "
-        "Bonalu-style community devotion and floral decor create a highly active and colorful public greeting space. "
-        "The primary household table is filled with ritual paramannam, sweet laddus, and assorted festive savouries."
+        "Intricate multi-colored rangoli designs and dynamic community assemblies decorate thresholds across Telangana during the solar new year. "
+        "Community devotion sets a highly active and colorful public stage for evening shakti puja gatherings. "
+        "The primary household table is filled with ritual meethe chawal alongside assorted local savouries."
     ),
     ("baisakhi", "tripura"): (
-        "Traditional seasonal rice dishes and devotional stotra recitations fill community halls across Tripura, mirroring the spring arrival of harvest thanksgiving and collective celebration. "
-        "Family courtyards and community pandals turn into lively meeting points for multi-generational relative visits. "
-        "The evening hospitality is highlighted by sharing traditional festive rice offerings and local sweets with neighbours."
+        "Devotional stotra recitations fill local community halls across Tripura, mirroring the spring arrival of the new year. "
+        "Community pandals turn into lively meeting points for families participating in evening nagar kirtan sessions. "
+        "The evening hospitality is highlighted by sharing traditional singori alongside custom pindi chole dishes."
     ),
     ("baisakhi", "uttar-pradesh"): (
-        "The magnificent new year holy dips in the holy rivers transform Uttar Pradesh, tracking a magnificent display of harvest thanksgiving and collective celebration. "
-        "Ancient ghat rituals and massive temple crowds create an unmatched public scale under the echo of midnight bells. "
-        "The high-energy days include distributing famous sweet peda, kachori, and traditional prasad to the community."
+        "Vibrant open-air fairs and massive gurdwara queues transform Uttar Pradesh during the holy new year days. "
+        "Ancient public squares create an unmatched devotional scale as crowds gather for evening shabad kirtan songs. "
+        "The high-energy days include distributing famous kada prasad alongside traditional city prasad."
     ),
     ("baisakhi", "uttarakhand"): (
-        "The sweet festive assemblies during the Bikhoti festival define the local experience in Uttarakhand, celebrating a serene display of harvest thanksgiving and collective celebration. "
-        "Ancient hill temples and family vrat observance bring remote mountain villages together for collective protective prayers. "
-        "The spiritual gathering is completed by serving traditional singori, sweet halwa, and custom temple offerings."
+        "Pilgrimages to ancient hilltop shrines and strict fasting routines define the local experience in Uttarakhand during the spring harvest. "
+        "Ancient hill temples bring remote mountain settlements together for protective collective prayers honoring the solar cycle. "
+        "The spiritual gathering is completed by serving hot pindi chole formulas alongside custom alpine treats."
     ),
     ("baisakhi", "west-bengal"): (
-        "The dynamic Poila Boishakh new year assemblies and holy ledger pujas transform West Bengal, showcasing a beautiful wave of harvest thanksgiving and collective celebration. "
-        "Artistic neighbourhood pandals, echoing dhaak rhythms, and striking artistic decorations alter the local landscape during the dawn periods. "
-        "The cultural transition is accompanied by preparing traditional sandesh, khichuri bhog, and assorted festive sweets."
+        "The Poila Boishakh new year assemblies and holy ledger pujas transform West Bengal, showcasing a beautiful wave of harvest gratitude. "
+        "Artistic neighborhood structures and beautiful decorations alter the local landscape during the twilight prayer hours. "
+        "The cultural transition is accompanied by preparing traditional sandesh alongside custom kada prasad sweets."
     ),
     ("baisakhi", "nri-london"): (
-        "Indoor community halls host colorful nagar kirtan simulations across London, allowing the diaspora to maintain an authentic experience of harvest thanksgiving and collective celebration. "
-        "Bustling weekend community events and cultural centres connect families across boroughs for simultaneous evening prayers. "
-        "Expatriates mark the autumn transition by packing potluck sweets and temple prasada to share with global friends."
+        "Massive hired assembly halls host vibrant dhol workshops across London, allowing the diaspora to preserve the harvest heritage. "
+        "Bustling weekend events connect families across boroughs for synchronized nagar kirtan processions and prayers. "
+        "Expatriates mark the spring transition by packing tupperware containers of meethe chawal to share with global friends."
     ),
     ("baisakhi", "nri-new-york"): (
-        "Community centers host high-energy dhol configurations and sweet distribution in New York, preserving the heritage of harvest thanksgiving and collective celebration. "
-        "Ornate temple halls, family Zooms, and community gatherings bridge the distance for long-distance relatives during the sacred nights. "
-        "The diaspora gathering concludes with sharing custom festive meals and mandir prasad within local networks."
+        "Community centers host high-energy bhangra sessions and shabad recitations in New York, honoring the traditions of the solar new year. "
+        "Ornate temple halls and family video calls bridge the long distance for relatives participating in the harvest joy. "
+        "The diaspora gathering concludes with sharing custom pindi chole variations within local apartment networks."
     ),
 
 
@@ -2177,9 +2177,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The celebration is completed as kitchens prepare sweet neer mor formulas alongside traditional Assamese pitha varieties."
     ),
     ("ram-navami", "bihar"): (
-        "Devotional fasting sets a serene spiritual tone inside Bihar households as the annual janmotsav period commences. "
-        "The community gathers for elaborate scripture reading sessions to invite protective guidance into their homes. "
-        "Fasting families break their daily restrictions by eating custom kheer items alongside classic home-cooked bihari savouries."
+        "Strict solar fasting routines bring a profound spiritual focus inside Bihar homes during the holy janmotsav hour. "
+        "Large neighborhood groups gather at local shrines for synchronized stotra recitations praising the legendary monarch. "
+        "The fast is broken late in the afternoon by distributing sweet kheer alongside home-style bihari items."
     ),
     ("ram-navami", "chhattisgarh"): (
         "Ornate temporary chariot floats are beautifully decorated across Chhattisgarh, welcoming the spring celebration of Ram katha. "
@@ -2187,9 +2187,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "Kitchens prepare specialized neer mor fluids and home-style desserts to distribute as sacred prasad."
     ),
     ("ram-navami", "goa"): (
-        "Serene oil lamp illuminations turn Goan temple courtyards into spaces of absolute calm during the holy janmotsav. "
-        "Families coordinate intricate scriptural reading routines to invite prosperity and protective energy into their neighborhoods. "
-        "The sacred time involves sharing delicious panakam drinks alongside coastal coconut desserts with visiting families."
+        "Serene brass lamps cast a quiet glow across Goan altars as the midday birth hour of the avatar arrives. "
+        "Devotees dedicate their morning hours to silent, meditative scriptural reading lines from the holy epics. "
+        "The seasonal shift is honored by sharing chilled panakam drinks inside traditional family courtyards."
     ),
     ("ram-navami", "gujarat"): (
         "Bustling street pandals and echoing collective chants of Ram Dhun transform public areas across Gujarat under bright lights. "
@@ -2207,9 +2207,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The spiritual afternoon is comforted by serving warm panakam formulas alongside rich mountain-style meals."
     ),
     ("ram-navami", "jharkhand"): (
-        "Earthen lamps remain lit continuously inside Jharkhand residences, marking the seasonal alignment with the holy janmotsav. "
-        "Devotees coordinate peaceful community prayer circles to offer collective gratitude for family health and well-being. "
-        "The fasting period is supported by sharing unique neer mor mixtures with neighboring families."
+        "Devotional singing circles fill rural residential colonies in Jharkhand, marking the precise spring birth milestone. "
+        "Extended family units join together for peaceful afternoon prayers to invoke the righteous values of the deity. "
+        "The sacred day is nourished by distributing unique neer mor mixtures to visiting relatives."
     ),
     ("ram-navami", "karnataka"): (
         "The unique distribution of refreshing panakam and sweet majjige drinks transforms local living rooms across Karnataka at noon. "
@@ -2217,9 +2217,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "Visiting guests are welcomed into homes with delicious jalebi variations alongside classic southern treats."
     ),
     ("ram-navami", "kerala"): (
-        "Specialized temple shrines exhibit beautiful scriptural readings of the Ramayana in Kerala, marking a unique southern expression. "
-        "The quiet community focus sets a deeply meditative stage for intense twilight prayers inside traditional shrines. "
-        "The concluding hour is celebrated by serving sweet kheer variants alongside elaborate banana leaf spreads."
+        "Elegant parayan recitations from the ancient Adhyatma Ramayana echo through pristine Kerala temple corridors at noon. "
+        "A deeply peaceful atmosphere settles over the community as families participate in the sacred birthday rituals. "
+        "Worshippers conclude their fasting routines by serving sweet kheer variations on traditional banana leaves."
     ),
     ("ram-navami", "madhya-pradesh"): (
         "The magnificent celebrations at the historic Orchha Ram Raja temple draw millions across Madhya Pradesh during the janmotsav. "
@@ -2257,9 +2257,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The holy days are accompanied by distributing traditional panakam along with classic temple sweets."
     ),
     ("ram-navami", "punjab"): (
-        "Shobha yatras and intense continuous kirtan sessions fill local residential areas across Punjab during the janmotsav. "
-        "Neighborhood families coordinate vibrant devotional tracks inside community centres to praise the avatar. "
-        "The auspicious eighth day is marked by sharing warm jalebi alongside festive local rotis."
+        "Elegant shobha yatra processions wind through local residential streets in Punjab to celebrate the arrival of spring righteousness. "
+        "Worshippers arrange extensive community prayer slots to reflect deeply on the values of the avatar. "
+        "The auspicious day is completed by distributing warm jalebi sweets across local towns."
     ),
     ("ram-navami", "rajasthan"): (
         "High-energy devotional chants and traditional folk music fill historic courtyards in Rajasthan during the holy spring days. "
@@ -2292,8 +2292,8 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The high-energy days include distributing famous panakam alongside traditional city prasad."
     ),
     ("ram-navami", "uttarakhand"): (
-        "Pilgrimages to ancient hilltop shrines and strict fasting routines define the local experience in Uttarakhand during the spring. "
-        "Ancient hill temples bring remote mountain settlements together for protective collective prayers honoring the avatar. "
+        "Pilgrimages to ancient high-altitude shrines bring remote mountain settlements together in Uttarakhand for the spring janmotsav. "
+        "Clans maintain strict fasting boundaries while participating in quiet evening stotra recitations. "
         "The spiritual gathering is completed by serving hot neer mor formulas alongside custom alpine treats."
     ),
     ("ram-navami", "west-bengal"): (
@@ -2330,9 +2330,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The celebration is completed as kitchens prepare sweet imarti solutions alongside traditional Assamese pitha varieties."
     ),
     ("hanuman-jayanti", "bihar"): (
-        "Devotional fasting routines and intense temple lines define the household atmosphere in Bihar, celebrating the auspicious arrival of bajrangbali. "
-        "The community gathers for elaborate sundarkand reading sessions to invite protective guidance into their homes. "
-        "Fasting families break their daily restrictions by eating custom motichoor items alongside classic home-cooked bihari savouries."
+        "Intricate red sindoor coatings are applied to sacred bajrangbali idols inside Bihar temples at sunrise. "
+        "Massive neighborhood groups gather for high-energy chalisa circuits to seek protection from obstacles. "
+        "The high-energy day is completed by serving sweet motichoor items alongside classic bihari savouries."
     ),
     ("hanuman-jayanti", "chhattisgarh"): (
         "Vibrant red flags and traditional wrestling arena or akhada displays are beautifully coordinated across Chhattisgarh, initiating the spring celebration. "
@@ -2340,9 +2340,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "Kitchens prepare specialized boondi laddus and home-style desserts to distribute as sacred prasad."
     ),
     ("hanuman-jayanti", "goa"): (
-        "Serene oil lamp illuminations turn Goan temple courtyards into spaces of absolute calm during the holy chalisa recitations. "
-        "Families coordinate intricate sundarkand routines to invite prosperity and protective energy into their neighborhoods. "
-        "The sacred time involves sharing delicious besan ladoo portions alongside coastal coconut desserts with visiting families."
+        "Intense Hanuman Chalisa recitations and orange sindoor applications transform Goan shrine walls during the early morning hours. "
+        "The community gathers to chant protective stotras and pray for immense strength and defensive shielding. "
+        "The holy period is celebrated by distributing rich besan ladoo portions across local settlements."
     ),
     ("hanuman-jayanti", "gujarat"): (
         "Bustling street pandals and echoing collective chants of the Hanuman Chalisa transform public areas across Gujarat under bright lights. "
@@ -2360,7 +2360,7 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The spiritual afternoon is comforted by serving warm boondi laddus alongside rich mountain-style meals."
     ),
     ("hanuman-jayanti", "jharkhand"): (
-        "Earthen lamps remain lit continuously inside Jharkhand residences, marking the seasonal alignment with the protective deity. "
+        "Vibrant orange flags are raised atop home entryways in Jharkhand, signaling the high-energy morning bajrangbali rituals. "
         "Devotees coordinate peaceful community prayer circles to offer collective gratitude for family health and well-being. "
         "The fasting period is supported by sharing unique besan ladoo mixtures with neighboring families."
     ),
@@ -2370,9 +2370,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "Visiting guests are welcomed into homes with delicious imarti variations alongside classic southern treats."
     ),
     ("hanuman-jayanti", "kerala"): (
-        "Specialized temple shrines exhibit beautiful scriptural readings of the sundarkand in Kerala, marking a unique southern expression. "
-        "The quiet community focus sets a deeply meditative stage for intense twilight prayers inside traditional shrines. "
-        "The concluding hour is celebrated by serving sweet motichoor variants alongside elaborate banana leaf spreads."
+        "The unique Hanumath Jayanthi parayan readings draw massive crowds to specialized Kerala monkey-deity shrines at sunrise. "
+        "Devotees present extensive offerings of red flowers to invoke the supreme protective energy of the warrior. "
+        "The day is marked by serving sweet motichoor variants alongside elaborate local spreads."
     ),
     ("hanuman-jayanti", "madhya-pradesh"): (
         "The magnificent celebrations at historic hilltop temples draw millions across Madhya Pradesh during the chalisa recitations. "
@@ -2410,9 +2410,9 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The holy days are accompanied by distributing traditional imarti along with classic temple sweets."
     ),
     ("hanuman-jayanti", "punjab"): (
-        "Shobha yatras and intense continuous chalisa sessions fill local residential areas across Punjab during the spring. "
-        "Neighborhood families coordinate vibrant devotional tracks inside community centres to praise the deity. "
-        "The auspicious day is marked by sharing warm motichoor alongside festive local rotis."
+        "High-energy bajrangbali shobha yatras and continuous collective chalisa singing fill local neighborhoods in Punjab. "
+        "Worshippers arrange extensive community service slots to honor the absolute devotion of the warrior. "
+        "The auspicious day is completed by distributing warm motichoor sweets across local districts."
     ),
     ("hanuman-jayanti", "rajasthan"): (
         "High-energy devotional chants and grand temple celebrations at Salasar Balaji fill historic neighborhoods in Rajasthan. "
@@ -2445,8 +2445,8 @@ FESTIVAL_REGION_SUMMARY: dict[tuple[str, str], str] = {
         "The high-energy days include distributing famous besan ladoo alongside traditional city prasad."
     ),
     ("hanuman-jayanti", "uttarakhand"): (
-        "Pilgrimages to ancient hilltop shrines and strict fasting routines define the local experience in Uttarakhand during the spring. "
-        "Ancient hill temples bring remote mountain settlements together for protective collective prayers honoring bajrangbali. "
+        "High-altitude mountain temple pilgrimages define the local experience in Uttarakhand during the sunrise chalisa celebrations. "
+        "Remote alpine settlements unite for intense sundarkand routines to honor the defensive strength of bajrangbali. "
         "The spiritual gathering is completed by serving hot imarti formulas alongside custom alpine treats."
     ),
     ("hanuman-jayanti", "west-bengal"): (
