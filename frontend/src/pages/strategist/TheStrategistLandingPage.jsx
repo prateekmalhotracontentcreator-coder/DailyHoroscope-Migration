@@ -80,16 +80,28 @@ const CREDIBILITY = [
 
 const FAQ = [
   {
+    q: 'What is The Strategist?',
+    a: 'The Strategist is a command-grade career module powered by KP Astrology and Lal Kitab -- two complementary Vedic systems. It diagnoses your current planetary window, scores your conquest probability, routes you to active missions, and prescribes precise karmic remedies. It is not a forecast. It is an operational system built around your birth chart.',
+  },
+  {
+    q: 'How does Vedic science translate into actionable career strategy?',
+    a: 'Vedic astrology has mapped the relationship between planetary periods and human outcomes for thousands of years. The Strategist takes your Dasha timeline, your KP verdict, and your active karmic debts -- and synthesises them into a single War Room view: when to push, when to hold, and what to resolve first. You do not need to understand the science. You execute the strategy.',
+  },
+  {
     q: 'Do I need to be a Vedic astrology expert?',
     a: 'No. The Strategist speaks in plain strategic language -- Mission, Dasha, Window, Remedy -- and only renders the underlying KP / Lal Kitab logic when you ask for it.',
   },
   {
-    q: 'Is this guaranteed?',
-    a: 'No. The system is diagnostic, not deterministic. It surfaces the strategic shape of a window. You still run the play.',
+    q: 'How does The Strategist personalise advice for my situation?',
+    a: 'Every element is derived from your birth data -- your Mahadasha, Antardasha, KP sub-lord readings, Lal Kitab planetary positions, and active ancestral debts. No two War Rooms are alike. The system reads your chart, not a generic profile.',
+  },
+  {
+    q: 'What Vedic principles power The Strategist?',
+    a: 'Three pillars: KP Astrology for timing and verdict (Gate 0), Vimshottari Dasha for your planetary period arc, and Lal Kitab for karmic debt identification and remedy prescription. Together they give a diagnostic picture no single system can.',
   },
   {
     q: 'What is Gate 0?',
-    a: 'A free KP Oracle reading on a single career question. The reading returns one of four verdicts -- YES, WAIT, NO, PRAY -- and routes you accordingly.',
+    a: 'A free KP Oracle reading on a single career question. The reading returns one of four verdicts -- YES, WAIT, NO, PRAY -- and routes you to the right action accordingly.',
   },
   {
     q: 'Can I use The Strategist without completing KP Oracle?',
@@ -631,7 +643,8 @@ function SecControlRoom() {
   const isLight = mode === 'light';
 
   return (
-    <section id="control-room">
+    // Force CR-dark token scope so cards inside always render on dark regardless of page mode
+    <section id="control-room" className="strategist-module" data-mode={localVariant === 'tactical' ? 'cr-tactical' : 'cr-ambient'}>
       <ControlRoomBackdrop variant={localVariant} className="px-5 py-14 md:px-20 md:py-28 min-h-[540px]">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <SectionHeadOnDark

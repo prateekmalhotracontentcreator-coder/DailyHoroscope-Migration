@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import StrategistThemeProvider from '../../components/strategist/StrategistThemeProvider';
 import ControlRoomBackdrop from '../../components/strategist/ControlRoomBackdrop';
 import StrategistWarRoom from '../../components/strategist/war-room/StrategistWarRoom';
+import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 
@@ -303,5 +304,49 @@ export default function StrategistWarRoomPage() {
   if (error) return <ErrorState message={error} />;
   if (!warRoomProps) return <ErrorState message="Unable to map strategist engine output." />;
 
-  return <StrategistWarRoom {...warRoomProps} />;
+  return (
+    <StrategistThemeProvider>
+      <div style={{ position: 'relative' }}>
+        {/* Floating nav -- theme toggle top-right, back link top-left */}
+        <div style={{
+          position: 'fixed',
+          top: 16,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '0 20px',
+          pointerEvents: 'none',
+        }}>
+          <a
+            href="/strategist"
+            style={{
+              pointerEvents: 'auto',
+              color: 'var(--strategist-gold)',
+              fontFamily: 'Cinzel, serif',
+              fontSize: '0.72rem',
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              opacity: 0.75,
+              display: 'flex',
+              alignItems: 'center',
+              gap: 6,
+              transition: 'opacity 0.2s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.opacity = 1}
+            onMouseLeave={e => e.currentTarget.style.opacity = 0.75}
+          >
+            ← The Strategist
+          </a>
+          <div style={{ pointerEvents: 'auto' }}>
+            <StrategistThemeToggle />
+          </div>
+        </div>
+        <StrategistWarRoom {...warRoomProps} />
+      </div>
+    </StrategistThemeProvider>
+  );
 }

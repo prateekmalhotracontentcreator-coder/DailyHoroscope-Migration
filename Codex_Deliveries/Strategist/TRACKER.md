@@ -1,7 +1,7 @@
 # The Strategist -- Module Tracker
 > Path: `Codex_Deliveries/Strategist/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-15 · v1.5
+> Last updated: 2026-05-26 · v1.7
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | ✅ LIVE -- STR-1 integrated (commit `ba58192`). STR-2J integrated (commit `9ad2e0a`). Only open point: STR-OP-3 DashaTimingBar verify (TT). |
+| **Status** | ✅ LIVE -- STR-1 (`ba58192`), STR-2J (`9ad2e0a`), STR-R01 (`958df18`) all integrated. War Room now wired to live engine. Open: STR-OP-3 (TT verify). STR-R02 not yet scoped. |
 | **Frontend** | `frontend/src/pages/strategist/` (StrategistPage, StrategistMissionsPage, etc.) |
 | **Backend** | `backend/strategist_router.py` · `backend/strategist_engine.py` |
 | **Live URL** | `/strategist` · `/strategist/missions` |
@@ -22,6 +22,7 @@
 
 | ID | Commission | Status | Brief |
 |---|---|---|---|
+| **STR-R01** | War Room Engine Selector (live engine → StrategistWarRoom prop-bag) | ✅ INTEGRATED -- commit `958df18` | `CODEX_COMMISSION_STR_R01_WAR_ROOM_SELECTOR.md` · Delivered Codex 2026-05-26, CC fixed warRoomProps flash bug, pushed to main |
 | **STR-2J** | Strategist Missions UI (MissionCard responsive + dasha display) | ✅ INTEGRATED | `CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · Commit `9ad2e0a` |
 | **STR-1** | Premium Landing Page + War Room Visual Rebuild | ✅ INTEGRATED -- commit `ba58192` | `CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` · Built Codex workspace 2026-05-14, integrated same session |
 
@@ -34,6 +35,8 @@
 | ~~STR-OP-1~~ | ~~Issue STR-1 to Codex~~ | -- | ✅ DONE | Delivered by Codex 2026-05-15. |
 | ~~STR-OP-2~~ | ~~Review and integrate STR-1 Codex delivery~~ | CC | ✅ DONE | All 4 files confirmed live at commit `ba58192`. App.js, sitemap.xml, TheStrategistLandingPage.jsx, StrategistPage.jsx all match handoff exactly. |
 | STR-OP-3 | Verify DashaTimingBar live data on `/strategist/missions` | TT | 🟠 HIGH | DashaTimingBar backend fix shipped 2026-05-15: new `POST /api/strategist/profile` endpoint stores birth_date + moon_longitude; sequential fetch ensures data present before dashboard call. StrategistActionPlanPage crash (undefined `token`) also fixed. Vercel syntax fix `667fc34` (apostrophe in tagline). Verify date ranges + progress bar are now rendering on production. |
+| STR-OP-5 | Verify War Room live data on `/strategist/war-room` post STR-R01 | TT | 🟠 HIGH | STR-R01 live at commit `958df18`. Verify: conquest score gauge non-zero, dasha bars show real planet names, mission board shows ≥1 card, no-profile users see "War Room Locked" gate. |
+| STR-OP-6 | Scope STR-R02 | CC + TT | 🔵 NEXT | STR-R01 closed R-01. STR-R02 not yet defined. Review THE_STRATEGIST_FULL_SPEC.md and decide next commission target. |
 | ~~STR-OP-4~~ | ~~STR-1 must NOT overwrite STR-2J files~~ | CC | ✅ SATISFIED | Confirmed: StrategistMissionsPage.jsx + MissionCard.jsx untouched. |
 
 ---
@@ -67,3 +70,4 @@
 | v1.4 | 2026-05-15 | STR-1 delivered by Codex -- built in Codex workspace. Status: DELIVERED -- PENDING INTEGRATION. Codex MASTER_TRACKER + 06_RESPONSE_SUMMARY updated in cross-thread audit pack. Awaiting Temple review + CC integration. | Codex + TT | Codex workspace |
 | v1.5 | 2026-05-15 | STR-1 confirmed INTEGRATED. All 4 handoff files verified live in repo at commit `ba58192` (2026-05-14) -- TheStrategistLandingPage.jsx, StrategistPage.jsx, App.js, sitemap.xml all match handoff exactly. STR-2J boundary confirmed: MissionCard.jsx + StrategistMissionsPage.jsx untouched. STR-OP-2 + STR-OP-4 closed. Commission closed. | CC | `ba58192` |
 | v1.6 | 2026-05-15 | DashaTimingBar backend fix: new `POST /api/strategist/profile` endpoint added to `strategist_router.py` -- stores birth_date + computes moon_longitude via `calculate_vedic_chart`. Sequential fetch pattern in `StrategistPage.jsx` useEffect ensures birth data in DB before dashboard call. StrategistActionPlanPage crash fixed (undefined token in useEffect dep array). MODULE_STRATEGIST handoff bundle cleaned: 4 runtime files removed per PROCESS_RUNTIME_CODE_OWNERSHIP.md. Vercel build fix: unescaped apostrophe in tagline (`667fc34`). | CC | `667fc34` |
+| v1.7 | 2026-05-26 | STR-R01 INTEGRATED. StrategistWarRoomPage.jsx (new) + App.js route swap. CC fixed warRoomProps flash bug (derived value in render, not separate useState/useEffect). Build confirmed. R-01 closed. STR-OP-5 + STR-OP-6 added. | CC | `958df18` |
