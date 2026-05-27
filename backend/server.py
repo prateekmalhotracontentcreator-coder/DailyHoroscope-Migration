@@ -216,12 +216,10 @@ class SessionUserMiddleware(BaseHTTPMiddleware):
                             {"_id": 0, "password_hash": 0}
                         )
                         if user_doc:
-                            request.state.user = {
-                                "email": user_doc.get("email"),
-                                "name": user_doc.get("name"),
-                                "user_id": user_doc.get("user_id"),
-                                "picture": user_doc.get("picture"),
-                            }
+                            # Pass the full user document so downstream routers
+                            # (Tarot _entitlement_from_user, Strategist, etc.)
+                            # can read premium/role/plan fields for access checks.
+                            request.state.user = user_doc
         except Exception as e:
             logging.warning("SessionUserMiddleware error (non-fatal): %s", e)
         return await call_next(request)
