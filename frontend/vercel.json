@@ -136,7 +136,6 @@
         { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
       ]
     },
-    },
     {
       "source": "/faith",
       "headers": [
@@ -160,6 +159,7 @@
       "headers": [
         { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
       ]
+    },
     {
       "source": "/static/(.*)",
       "headers": [
