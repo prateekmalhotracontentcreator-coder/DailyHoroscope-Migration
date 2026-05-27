@@ -36,6 +36,7 @@ export function AngelNumbersHubPage() {
   const [hub, setHub] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const [searchError, setSearchError] = useState("");
+  const [activeIntent, setActiveIntent] = useState(null);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -136,16 +137,57 @@ export function AngelNumbersHubPage() {
         <section className="mt-8 rounded-[2rem] border border-gold/20 bg-white/80 p-6 shadow-sm">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">By Intent</p>
           <h2 className="mt-3 font-playfair text-2xl font-semibold text-stone-900">Follow the life area you care about most</h2>
+          <p className="mt-2 text-sm text-stone-500">Select a focus area to see the angel numbers most active for it.</p>
+          {/* Focus Area Pills */}
           <div className="mt-5 flex flex-wrap gap-3">
-            {intentCards.map((item) => (
-              <div key={item.slug} className="rounded-full border border-gold/20 bg-gold/10 px-4 py-3">
-                <p className="text-sm font-semibold text-stone-900">{item.display_name}</p>
-                <p className="mt-1 text-xs text-stone-600">
-                  Try {item.strong_numbers.slice(0, 3).join(", ")}
-                </p>
-              </div>
-            ))}
+            {intentCards.map((item) => {
+              const isActive = activeIntent === item.slug;
+              return (
+                <button
+                  key={item.slug}
+                  onClick={() => setActiveIntent(isActive ? null : item.slug)}
+                  className={`rounded-full border px-5 py-2.5 text-sm font-semibold transition ${
+                    isActive
+                      ? "border-gold bg-gold text-stone-950 shadow-sm"
+                      : "border-gold/20 bg-gold/10 text-stone-800 hover:border-gold/40 hover:bg-gold/20"
+                  }`}
+                >
+                  {item.display_name}
+                </button>
+              );
+            })}
+            {activeIntent && (
+              <button
+                onClick={() => setActiveIntent(null)}
+                className="rounded-full border border-stone-200 bg-white px-5 py-2.5 text-sm font-medium text-stone-500 transition hover:border-stone-300"
+              >
+                × Clear
+              </button>
+            )}
           </div>
+          {/* Active Intent -- expanded number grid */}
+          {activeIntent && (() => {
+            const intent = intentCards.find((i) => i.slug === activeIntent);
+            if (!intent) return null;
+            return (
+              <div className="mt-6 rounded-[1.5rem] border border-gold/15 bg-gold/5 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-gold">{intent.display_name}</p>
+                <p className="mt-2 text-sm text-stone-600">{intent.theme || `Angel numbers aligned with ${intent.display_name.toLowerCase()}.`}</p>
+                <div className="mt-4 flex flex-wrap gap-3">
+                  {(intent.strong_numbers || []).map((number) => (
+                    <Link
+                      key={number}
+                      to={`/angel-numbers/${number}/${activeIntent}`}
+                      className="inline-flex flex-col items-center rounded-2xl border border-gold/20 bg-white/80 px-5 py-4 shadow-sm transition hover:-translate-y-0.5 hover:bg-white"
+                    >
+                      <span className="font-cinzel text-2xl font-semibold text-stone-900">{number}</span>
+                      <span className="mt-1 text-xs text-gold">{intent.display_name}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            );
+          })()}
         </section>
 
         <section className="mt-8 rounded-[2rem] border border-gold/20 bg-white/80 p-6 shadow-sm">

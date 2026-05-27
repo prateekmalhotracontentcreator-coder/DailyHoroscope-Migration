@@ -168,6 +168,50 @@ print('All checks passed.')
 
 ---
 
+## Addendum -- Temple Team Review 2026-05-27
+
+### Additional Requirement 1 -- Manifestation How-To Layer
+
+Every number's `manifestation` intent record must include a `how_to_manifest` field
+containing **specific, practical activation steps** -- not generic affirmations.
+
+The content must answer: *"What does a person actually DO with this angel number?"*
+
+Required variety of practical actions (rotate across records):
+- Write the number in a manifestation journal / notebook
+- Open a dedicated Manifestation Book and record the date, number, and intention
+- Speak the number aloud 3× while holding a clear intention in mind
+- Set a phone reminder at the time that matches the number (e.g. 1:11 PM for 111)
+- Write the number + a one-sentence intention on a piece of paper and place it under a candle
+- Meditate for the number of minutes matching the root digit (e.g. 3 minutes for 111)
+- Create a vision board anchor -- write the number at the top and place the board in sight
+
+These are not suggestions -- at least 5 distinct action types must appear across the 1,000
+manifestation records. No single action type should appear in more than 30% of records.
+
+The `how_to_manifest` field must be added to the `build_intent_summary()` output for the
+`manifestation` intent ONLY. No other intent requires this field.
+
+**Data structure addition for manifestation intent records:**
+```python
+{
+    # existing fields ...
+    "how_to_manifest": str,  # 60-100 words, specific practical steps
+}
+```
+
+### Additional Requirement 2 -- ECHO // PACE Compliance Gate
+
+After the rewrite, run the compliance test and confirm PASS before delivery:
+
+```bash
+PYTHONPATH=backend python3 backend/scripts/verify_angel_numbers_compliance.py
+```
+
+All 10 clusters must score **< 40%**. Include the test output in your delivery confirmation.
+
+---
+
 ## Acceptance Checklist
 
 - [ ] `seeing_it_means` endings: ≥30 distinct across 1,000 core records
@@ -176,6 +220,8 @@ print('All checks passed.')
 - [ ] `message` for same number differs meaningfully across all 9 intents
 - [ ] `action_steps` are intent-specific (not generic for all intents)
 - [ ] Universal closing sentence eliminated from `message` field
+- [ ] `how_to_manifest` field present in all manifestation intent records (≥5 distinct action types)
+- [ ] ECHO // PACE test: all 10 clusters < 40% -- paste test output in delivery
 - [ ] `len(list(iter_core_records())) == 1000` ✅
 - [ ] `len(list(iter_intent_records())) == 9000` ✅
 - [ ] `python3 -m py_compile backend/angel_numbers_data.py` passes
