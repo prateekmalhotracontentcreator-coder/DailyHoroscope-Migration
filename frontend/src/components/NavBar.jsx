@@ -97,6 +97,7 @@ const NAV = [
       { label: 'Lo Shu Grid Calculator',   path: '/lo-shu-grid/calculator',    icon: Hash },
       { label: 'Rashi Calculator',         path: '/rashi-calculator',          icon: Sun },
       { label: 'Nakshatra Calculator',     path: '/nakshatra-calculator',      icon: MoonIcon },
+      { label: 'Auspicious Day Calculator', path: '/auspicious-calculator',    icon: Calendar },
     ],
   },
   { label: 'Krishna Prashanavali', icon: Sparkles,  path: '/krishna-prashnavali',  premium: true },
