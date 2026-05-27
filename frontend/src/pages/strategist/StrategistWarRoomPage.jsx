@@ -315,17 +315,14 @@ export default function StrategistWarRoomPage() {
       setLocked(false);
 
       try {
-        const token = localStorage.getItem('token');
-        const authHeaders = token ? { Authorization: `Bearer ${token}` } : {};
-
         const [dashRes, missRes] = await Promise.all([
           fetch(`${BACKEND}/api/strategist/dashboard`, {
-            headers: authHeaders,
+            credentials: 'include',
           }),
           fetch(`${BACKEND}/api/strategist/missions`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
-              ...authHeaders,
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
