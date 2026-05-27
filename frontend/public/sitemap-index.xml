@@ -72,4 +72,7 @@
   <sitemap>
     <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/angel-numbers?page=11</loc>
   </sitemap>
+  <sitemap>
+    <loc>https://everydayhoroscope-api.onrender.com/api/seo/sitemap/faith</loc>
+  </sitemap>
 </sitemapindex>

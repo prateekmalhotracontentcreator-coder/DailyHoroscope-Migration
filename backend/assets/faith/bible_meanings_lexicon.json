@@ -1,0 +1,90 @@
+[
+  {
+    "key": "bread",
+    "label": "Bread",
+    "note": "Provision, daily dependence, and enoughness for the next faithful step.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "light",
+    "label": "Light",
+    "note": "Clarity, revelation, and the movement from fear or confusion toward truth.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "covenant",
+    "label": "Covenant",
+    "note": "Durable faithfulness that outlasts mood, drift, and temporary instability.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "shepherd",
+    "label": "Shepherd",
+    "note": "Protective guidance, steady care, and watchfulness over vulnerable places.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "water",
+    "label": "Water",
+    "note": "Refreshment, cleansing, and renewal when the inner life has become dry or strained.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "temple",
+    "label": "Temple",
+    "note": "Consecrated inner order, reverence, and a life made fit for presence.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "wilderness",
+    "label": "Wilderness",
+    "note": "Testing, stripping, and guidance through seasons that feel unstructured or exposed.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "deliverance",
+    "label": "Deliverance",
+    "note": "Rescue that restores movement when a person feels trapped, cornered, or overwhelmed.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "rest",
+    "label": "Rest",
+    "note": "Settled inward release from panic, strain, or relentless self-protection.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "path",
+    "label": "Path",
+    "note": "Direction, moral movement, and guidance for the next faithful decision.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  },
+  {
+    "key": "fortress",
+    "label": "Fortress",
+    "note": "Protective steadiness when the outer season feels threatening or unstable.",
+    "source_label": "Bible Meanings.pdf",
+    "source_work": "Bible Mystery and Bible Meaning",
+    "source_type": "controlled_symbolic_lexicon"
+  }
+]

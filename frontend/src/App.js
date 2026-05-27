@@ -150,6 +150,20 @@ const MarriageMuhuratPage = lazy(() => import('./pages/muhurat/MarriageMuhuratPa
 const CelebrityHubPage = lazy(() => import('./pages/celebrity/CelebrityHubPage').then(m => ({ default: m.CelebrityHubPage })));
 const CelebrityChartPage = lazy(() => import('./pages/celebrity/CelebrityChartPage').then(m => ({ default: m.CelebrityChartPage })));
 const CharacterPlacementPage = lazy(() => import('./pages/seo/CharacterPlacementPage').then(m => ({ default: m.CharacterPlacementPage })));
+const FaithHubPage = lazy(() => import('./pages/faith-seo/FaithHubPage').then(m => ({ default: m.FaithHubPage })));
+const FaithCollectionsHubPage = lazy(() => import('./pages/faith-seo/FaithCollectionsHubPage').then(m => ({ default: m.FaithCollectionsHubPage })));
+const FaithCollectionPage = lazy(() => import('./pages/faith-seo/FaithCollectionPage').then(m => ({ default: m.FaithCollectionPage })));
+const FaithGitaHubPage = lazy(() => import('./pages/faith-seo/FaithGitaHubPage').then(m => ({ default: m.FaithGitaHubPage })));
+const FaithGitaChapterPage = lazy(() => import('./pages/faith-seo/FaithGitaChapterPage').then(m => ({ default: m.FaithGitaChapterPage })));
+const GitaVersePage = lazy(() => import('./pages/faith-seo/GitaVersePage').then(m => ({ default: m.GitaVersePage })));
+const FaithBibleHubPage = lazy(() => import('./pages/faith-seo/FaithBibleHubPage').then(m => ({ default: m.FaithBibleHubPage })));
+const FaithBibleTopicPage = lazy(() => import('./pages/faith-seo/FaithBibleTopicPage').then(m => ({ default: m.FaithBibleTopicPage })));
+const BibleTopicPage = lazy(() => import('./pages/faith-seo/BibleTopicPage').then(m => ({ default: m.BibleTopicPage })));
+const FaithTransitHubPage = lazy(() => import('./pages/faith-seo/FaithTransitHubPage').then(m => ({ default: m.FaithTransitHubPage })));
+const FaithDailyHubPage = lazy(() => import('./pages/faith-seo/FaithDailyHubPage').then(m => ({ default: m.FaithDailyHubPage })));
+const FaithDailySignPage = lazy(() => import('./pages/faith-seo/FaithDailySignPage').then(m => ({ default: m.FaithDailySignPage })));
+const TransitScripturePage = lazy(() => import('./pages/faith-seo/TransitScripturePage').then(m => ({ default: m.TransitScripturePage })));
+const DailyScripturePage = lazy(() => import('./pages/faith-seo/DailyScripturePage').then(m => ({ default: m.DailyScripturePage })));
 const AngelNumbersHubPage = lazy(() => import('./pages/angel-numbers/AngelNumbersHubPage').then(m => ({ default: m.AngelNumbersHubPage })));
 const AngelNumberPage = lazy(() => import('./pages/angel-numbers/AngelNumberPage').then(m => ({ default: m.AngelNumberPage })));
 const AngelNumberIntentPage = lazy(() => import('./pages/angel-numbers/AngelNumberIntentPage').then(m => ({ default: m.AngelNumberIntentPage })));
@@ -243,6 +257,20 @@ function App() {
                   <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
                   <Route path="/angel-numbers/:number" element={<AngelNumberPage />} />
                   <Route path="/angel-numbers/:number/:intent" element={<AngelNumberIntentPage />} />
+                  <Route path="/faith" element={<FaithHubPage />} />
+                  <Route path="/faith/pathways" element={<FaithCollectionsHubPage />} />
+                  <Route path="/faith/pathways/:collectionSlug" element={<FaithCollectionPage />} />
+                  <Route path="/faith/gita" element={<FaithGitaHubPage />} />
+                  <Route path="/faith/gita/chapter/:chapter" element={<FaithGitaChapterPage />} />
+                  <Route path="/faith/gita/:chapterVerse/:situationSlug" element={<GitaVersePage />} />
+                  <Route path="/faith/bible" element={<FaithBibleHubPage />} />
+                  <Route path="/faith/bible/topic/:topicSlug" element={<FaithBibleTopicPage />} />
+                  <Route path="/faith/bible/:topicSlug/:transitionSlug" element={<BibleTopicPage />} />
+                  <Route path="/faith/transit" element={<FaithTransitHubPage />} />
+                  <Route path="/faith/transit/:transitSlug/:tradition" element={<TransitScripturePage />} />
+                  <Route path="/faith/daily" element={<FaithDailyHubPage />} />
+                  <Route path="/faith/daily/:sign/:month" element={<DailyScripturePage />} />
+                  <Route path="/faith/daily/:sign" element={<FaithDailySignPage />} />
                   <Route path="/ekadashi" element={<DevotionalDatePage type="ekadashi" />} />
                   <Route path="/amavasya" element={<DevotionalDatePage type="amavasya" />} />
                   <Route path="/purnima" element={<DevotionalDatePage type="purnima" />} />

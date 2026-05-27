@@ -136,6 +136,30 @@
         { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
       ]
     },
+    },
+    {
+      "source": "/faith",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/faith/:section",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/faith/:section/:slug",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
+    },
+    {
+      "source": "/faith/:section/:slug/:detail",
+      "headers": [
+        { "key": "Cache-Control", "value": "s-maxage=86400, stale-while-revalidate" }
+      ]
     {
       "source": "/static/(.*)",
       "headers": [

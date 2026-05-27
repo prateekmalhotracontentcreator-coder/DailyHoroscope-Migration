@@ -6,6 +6,7 @@ from zoneinfo import ZoneInfo
 from fastapi import APIRouter, Response
 
 from crystal_data import get_crystal_sitemap_urls
+from faith_seo_data import get_faith_sitemap_urls
 from panchang_router import DEFAULT_LOCATIONS
 from lo_shu_router import LO_SHU_SITEMAP_URLS
 from rudraksha_content import PLANET_RUDRAKSHA_SLUGS, PROBLEM_RUDRAKSHA_SLUGS, SIGN_RUDRAKSHA_SLUGS
@@ -188,3 +189,10 @@ async def get_tarot_sitemap() -> Response:
     today = datetime.now(INDIA_TZ).date().isoformat()
     urls = [(href, today) for href in get_tarot_sitemap_urls()]
     return _xml_response(_sitemap_xml(urls))
+
+@router.get("/sitemap/faith")
+async def get_faith_sitemap() -> Response:
+    today = datetime.now(INDIA_TZ).date().isoformat()
+    urls = [(href, today) for href in get_faith_sitemap_urls()]
+    return _xml_response(_sitemap_xml(urls))
+
