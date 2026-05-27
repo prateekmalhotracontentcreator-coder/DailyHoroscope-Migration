@@ -1,9 +1,9 @@
-import React, { lazy, Suspense, useEffect, useRef } from 'react';
+import React, { lazy, Suspense } from 'react';
 import '@/App.css';
 import './numerology.css';
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
-import { AuthProvider, useAuth } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 import { AdminAuthProvider } from './context/AdminAuthContext';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { PremiumRoute } from './components/PremiumRoute';
@@ -78,10 +78,6 @@ const PalmistryPage = lazy(() => import('./pages/palmistry/PalmistryPage').then(
 const TarotPage = lazy(() => import('./pages/tarot/TarotPage').then(m => ({ default: m.TarotPage })));
 const TarotLanding = lazy(() => import('./pages/tarot/TarotLanding'));
 const TarotHistoryPage = lazy(() => import('./pages/tarot/TarotHistoryPage'));
-const TarotSeoHubPage = lazy(() => import('./pages/tarot-seo/TarotSeoHubPage').then(m => ({ default: m.TarotSeoHubPage })));
-const TarotSpreadPage = lazy(() => import('./pages/tarot-seo/TarotSpreadPage').then(m => ({ default: m.TarotSpreadPage })));
-const TarotCardPage = lazy(() => import('./pages/tarot-seo/TarotCardPage').then(m => ({ default: m.TarotCardPage })));
-const TarotIntentionPage = lazy(() => import('./pages/tarot-seo/TarotIntentionPage').then(m => ({ default: m.TarotIntentionPage })));
 const HoroscopeSignPage = lazy(() => import('./pages/horoscope/HoroscopeSignPage').then(m => ({ default: m.HoroscopeSignPage })));
 const RemedyPage = lazy(() => import('./pages/remedies/RemedyPage').then(m => ({ default: m.RemedyPage })));
 const KundaliPage = lazy(() => import('./pages/kundali/KundaliPage'));
@@ -104,7 +100,6 @@ const LKDebtAuditPage = lazy(() => import('./pages/lk/LKDebtAuditPage'));
 const LKBrowsePage = lazy(() => import('./pages/lk/LKBrowsePage'));
 const TheStrategistLandingPage = lazy(() => import('./pages/strategist/TheStrategistLandingPage'));
 const StrategistPage = lazy(() => import('./pages/strategist/StrategistPage'));
-const StrategistWarRoomPage = lazy(() => import('./pages/strategist/StrategistWarRoomPage'));
 const StrategistExecutivePage = lazy(() => import('./pages/strategist/StrategistExecutivePage'));
 const StrategistMissionsPage = lazy(() => import('./pages/strategist/StrategistMissionsPage'));
 const StrategistReportPage = lazy(() => import('./pages/strategist/StrategistReportPage'));
@@ -112,48 +107,31 @@ const StrategistSurrogatePage = lazy(() => import('./pages/strategist/Strategist
 const KrishnaOraclePage = lazy(() => import('./pages/kp/KrishnaOraclePage'));
 const AskQuestionPage = lazy(() => import('./pages/kp/AskQuestionPage'));
 const PunyaRewardsPage = lazy(() => import('./pages/rewards/PunyaRewardsPage'));
+const AuspiciousPage = lazy(() => import('./pages/auspicious/AuspiciousPage'));
 const StrategistActionPlanPage = lazy(() => import('./pages/strategist/StrategistActionPlanPage'));
 const FestivalsHubPage = lazy(() => import('./pages/festivals/FestivalsHubPage').then(m => ({ default: m.FestivalsHubPage })));
 const FestivalPage = lazy(() => import('./pages/festivals/FestivalPage').then(m => ({ default: m.FestivalPage })));
-const FestivalRegionPage = lazy(() => import('./pages/seo/FestivalRegionPage').then(m => ({ default: m.FestivalRegionPage })));
 const IndianCalendarPage = lazy(() => import('./pages/calendar/IndianCalendarPage').then(m => ({ default: m.IndianCalendarPage })));
 const HoraTodayPage = lazy(() => import('./pages/hora/HoraTodayPage').then(m => ({ default: m.HoraTodayPage })));
 const RashiCalculatorPage = lazy(() => import('./pages/calculators/RashiCalculatorPage').then(m => ({ default: m.RashiCalculatorPage })));
 const NakshatraCalculatorPage = lazy(() => import('./pages/calculators/NakshatraCalculatorPage').then(m => ({ default: m.NakshatraCalculatorPage })));
 const NameCompatibilityPage = lazy(() => import('./pages/calculators/NameCompatibilityPage').then(m => ({ default: m.NameCompatibilityPage })));
 const CompatibilityPage = lazy(() => import('./pages/kundali/CompatibilityPage').then(m => ({ default: m.CompatibilityPage })));
-const TransitProfilePage = lazy(() => import('./pages/seo/TransitProfilePage').then(m => ({ default: m.TransitProfilePage })));
 const LoveCalculatorPage = lazy(() => import('./pages/calculators/LoveCalculatorPage').then(m => ({ default: m.LoveCalculatorPage })));
-const LoShuHubPage = lazy(() => import('./pages/lo_shu_grid/LoShuHubPage'));
-const LoShuCalculatorPage = lazy(() => import('./pages/lo_shu_grid/LoShuCalculatorPage'));
-const LoShuMissingNumberPage = lazy(() => import('./pages/lo_shu_grid/LoShuMissingNumberPage'));
-const LoShuArrowPage = lazy(() => import('./pages/lo_shu_grid/LoShuArrowPage'));
-const LoShuNumberPage = lazy(() => import('./pages/lo_shu_grid/LoShuNumberPage'));
-const LoShuProblemPage = lazy(() => import('./pages/lo_shu_grid/LoShuProblemPage'));
-const LoShuPersonalYearPage = lazy(() => import('./pages/lo_shu_grid/LoShuPersonalYearPage'));
-const RudrakshaHubPage = lazy(() => import('./pages/rudraksha/RudrakshaHubPage').then(m => ({ default: m.RudrakshaHubPage })));
-const RudrakshaMukhiPage = lazy(() => import('./pages/rudraksha/RudrakshaMukhiPage').then(m => ({ default: m.RudrakshaMukhiPage })));
-const RudrakshaCalculatorPage = lazy(() => import('./pages/rudraksha/RudrakshaCalculatorPage').then(m => ({ default: m.RudrakshaCalculatorPage })));
-const RudrakshaPlanetPage = lazy(() => import('./pages/rudraksha/RudrakshaPlanetPage').then(m => ({ default: m.RudrakshaPlanetPage })));
-const RudrakshaProblemPage = lazy(() => import('./pages/rudraksha/RudrakshaProblemPage').then(m => ({ default: m.RudrakshaProblemPage })));
-const RudrakshaSignPage = lazy(() => import('./pages/rudraksha/RudrakshaSignPage').then(m => ({ default: m.RudrakshaSignPage })));
 const RemedyHubPage = lazy(() => import('./pages/remedies/RemedyHubPage').then(m => ({ default: m.RemedyHubPage })));
-const CrystalHubPage = lazy(() => import('./pages/crystals/CrystalHubPage').then(m => ({ default: m.CrystalHubPage })));
-const CrystalPage = lazy(() => import('./pages/crystals/CrystalPage').then(m => ({ default: m.CrystalPage })));
-const CrystalIntentionPage = lazy(() => import('./pages/crystals/CrystalIntentionPage').then(m => ({ default: m.CrystalIntentionPage })));
-const CrystalCalculatorPage = lazy(() => import('./pages/crystals/CrystalCalculatorPage').then(m => ({ default: m.CrystalCalculatorPage })));
-const CrystalPlanetPage = lazy(() => import('./pages/crystals/CrystalPlanetPage').then(m => ({ default: m.CrystalPlanetPage })));
-const CrystalSignPage = lazy(() => import('./pages/crystals/CrystalSignPage').then(m => ({ default: m.CrystalSignPage })));
-const CrystalProblemPage = lazy(() => import('./pages/crystals/CrystalProblemPage').then(m => ({ default: m.CrystalProblemPage })));
 const DevotionalDatePage = lazy(() => import('./pages/devotional/DevotionalDatePage').then(m => ({ default: m.DevotionalDatePage })));
 const MarriageMuhuratPage = lazy(() => import('./pages/muhurat/MarriageMuhuratPage').then(m => ({ default: m.MarriageMuhuratPage })));
 const CelebrityHubPage = lazy(() => import('./pages/celebrity/CelebrityHubPage').then(m => ({ default: m.CelebrityHubPage })));
 const CelebrityChartPage = lazy(() => import('./pages/celebrity/CelebrityChartPage').then(m => ({ default: m.CelebrityChartPage })));
-const CharacterPlacementPage = lazy(() => import('./pages/seo/CharacterPlacementPage').then(m => ({ default: m.CharacterPlacementPage })));
+const AngelNumbersHubPage = lazy(() => import('./pages/angel-numbers/AngelNumbersHubPage').then(m => ({ default: m.AngelNumbersHubPage })));
+const AngelNumberPage = lazy(() => import('./pages/angel-numbers/AngelNumberPage').then(m => ({ default: m.AngelNumberPage })));
+const ZibuHubPage = lazy(() => import('./pages/seo/ZibuHubPage').then(m => ({ default: m.ZibuHubPage })));
+const ZibuSymbolPage = lazy(() => import('./pages/seo/ZibuSymbolPage').then(m => ({ default: m.ZibuSymbolPage })));
 const FaithHubPage = lazy(() => import('./pages/faith-seo/FaithHubPage').then(m => ({ default: m.FaithHubPage })));
 const FaithCollectionsHubPage = lazy(() => import('./pages/faith-seo/FaithCollectionsHubPage').then(m => ({ default: m.FaithCollectionsHubPage })));
 const FaithCollectionPage = lazy(() => import('./pages/faith-seo/FaithCollectionPage').then(m => ({ default: m.FaithCollectionPage })));
 const FaithGitaHubPage = lazy(() => import('./pages/faith-seo/FaithGitaHubPage').then(m => ({ default: m.FaithGitaHubPage })));
+const FaithGitaRecitationPage = lazy(() => import('./pages/faith-seo/FaithGitaRecitationPage').then(m => ({ default: m.FaithGitaRecitationPage })));
 const FaithGitaChapterPage = lazy(() => import('./pages/faith-seo/FaithGitaChapterPage').then(m => ({ default: m.FaithGitaChapterPage })));
 const GitaVersePage = lazy(() => import('./pages/faith-seo/GitaVersePage').then(m => ({ default: m.GitaVersePage })));
 const FaithBibleHubPage = lazy(() => import('./pages/faith-seo/FaithBibleHubPage').then(m => ({ default: m.FaithBibleHubPage })));
@@ -164,16 +142,12 @@ const FaithDailyHubPage = lazy(() => import('./pages/faith-seo/FaithDailyHubPage
 const FaithDailySignPage = lazy(() => import('./pages/faith-seo/FaithDailySignPage').then(m => ({ default: m.FaithDailySignPage })));
 const TransitScripturePage = lazy(() => import('./pages/faith-seo/TransitScripturePage').then(m => ({ default: m.TransitScripturePage })));
 const DailyScripturePage = lazy(() => import('./pages/faith-seo/DailyScripturePage').then(m => ({ default: m.DailyScripturePage })));
-const AngelNumbersHubPage = lazy(() => import('./pages/angel-numbers/AngelNumbersHubPage').then(m => ({ default: m.AngelNumbersHubPage })));
-const AngelNumberPage = lazy(() => import('./pages/angel-numbers/AngelNumberPage').then(m => ({ default: m.AngelNumberPage })));
-const AngelNumberIntentPage = lazy(() => import('./pages/angel-numbers/AngelNumberIntentPage').then(m => ({ default: m.AngelNumberIntentPage })));
 const KundaliReportsCategoryPage = lazy(() => import('./pages/reports/category/KundaliReportsPage').then(m => ({ default: m.KundaliReportsPage })));
 const NumerologyReportsCategoryPage = lazy(() => import('./pages/reports/category/NumerologyReportsPage').then(m => ({ default: m.NumerologyReportsPage })));
 const LoveReportsCategoryPage = lazy(() => import('./pages/reports/category/LoveReportsPage').then(m => ({ default: m.LoveReportsPage })));
 const CareerReportsCategoryPage = lazy(() => import('./pages/reports/category/CareerReportsPage').then(m => ({ default: m.CareerReportsPage })));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
-import { logPageView } from './diagnostics/telemetry';
 
 const NavBarWrapper = () => {
   const location = useLocation();
@@ -186,30 +160,6 @@ const KeepAliveWrapper = ({ children }) => {
   return children;
 };
 
-const RouteDiagnosticsTracker = () => {
-  const location = useLocation();
-  const { user } = useAuth();
-  const previousPathRef = useRef(null);
-  const lastLoggedKeyRef = useRef('');
-
-  useEffect(() => {
-    const currentPath = `${location.pathname}${location.search}${location.hash}`;
-    const userId = user?.user_id || user?.id || null;
-
-    if (userId) {
-      const logKey = `${userId}:${currentPath}`;
-      if (lastLoggedKeyRef.current !== logKey) {
-        logPageView(userId, currentPath, previousPathRef.current);
-        lastLoggedKeyRef.current = logKey;
-      }
-    }
-
-    previousPathRef.current = currentPath;
-  }, [location, user]);
-
-  return null;
-};
-
 function App() {
   return (
     <ThemeProvider>
@@ -219,7 +169,6 @@ function App() {
             <Toaster position="top-center" richColors />
             <BrowserRouter>
               <KeepAliveWrapper>
-                <RouteDiagnosticsTracker />
                 <ScrollToTop />
                 <NavBarWrapper />
                 <CookieConsent />
@@ -245,22 +194,16 @@ function App() {
                   <Route path="/nakshatra-calculator" element={<NakshatraCalculatorPage />} />
                   <Route path="/compatibility/name" element={<NameCompatibilityPage />} />
                   <Route path="/compatibility/:signPair" element={<CompatibilityPage />} />
-                  <Route path="/transits/:transitSlug" element={<TransitProfilePage />} />
                   <Route path="/love-calculator" element={<LoveCalculatorPage />} />
-                  <Route path="/crystals" element={<CrystalHubPage />} />
-                  <Route path="/crystals/calculator" element={<CrystalCalculatorPage />} />
-                  <Route path="/crystals/for/planet/:planet" element={<CrystalPlanetPage />} />
-                  <Route path="/crystals/for/sign/:sign" element={<CrystalSignPage />} />
-                  <Route path="/crystals/for/problem/:problem" element={<CrystalProblemPage />} />
-                  <Route path="/crystals/for/:intentionSlug" element={<CrystalIntentionPage />} />
-                  <Route path="/crystals/:crystalSlug" element={<CrystalPage />} />
                   <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
                   <Route path="/angel-numbers/:number" element={<AngelNumberPage />} />
-                  <Route path="/angel-numbers/:number/:intent" element={<AngelNumberIntentPage />} />
+                  <Route path="/zibu" element={<ZibuHubPage />} />
+                  <Route path="/zibu/:symbolSlug" element={<ZibuSymbolPage />} />
                   <Route path="/faith" element={<FaithHubPage />} />
                   <Route path="/faith/pathways" element={<FaithCollectionsHubPage />} />
                   <Route path="/faith/pathways/:collectionSlug" element={<FaithCollectionPage />} />
                   <Route path="/faith/gita" element={<FaithGitaHubPage />} />
+                  <Route path="/faith/gita/recitation" element={<FaithGitaRecitationPage />} />
                   <Route path="/faith/gita/chapter/:chapter" element={<FaithGitaChapterPage />} />
                   <Route path="/faith/gita/:chapterVerse/:situationSlug" element={<GitaVersePage />} />
                   <Route path="/faith/bible" element={<FaithBibleHubPage />} />
@@ -277,21 +220,7 @@ function App() {
                   <Route path="/muhurat/marriage" element={<MarriageMuhuratPage />} />
                   <Route path="/celebrity-horoscopes" element={<CelebrityHubPage />} />
                   <Route path="/celebrity-horoscopes/:slug" element={<CelebrityChartPage />} />
-                  <Route path="/traits/:sign/:chartPoint/:house" element={<CharacterPlacementPage />} />
                   <Route path="/live-sai-baba-arti" element={<LiveSaiBabaArtiPage />} />
-                  <Route path="/lo-shu-grid" element={<LoShuHubPage />} />
-                  <Route path="/lo-shu-grid/calculator" element={<LoShuCalculatorPage />} />
-                  <Route path="/lo-shu-grid/number/:n" element={<LoShuNumberPage />} />
-                  <Route path="/lo-shu-grid/for/:problem" element={<LoShuProblemPage />} />
-                  <Route path="/lo-shu-grid/personal-year/:n" element={<LoShuPersonalYearPage />} />
-                  <Route path="/lo-shu-grid/missing-:number" element={<LoShuMissingNumberPage />} />
-                  <Route path="/lo-shu-grid/arrow/:slug" element={<LoShuArrowPage />} />
-                  <Route path="/rudraksha" element={<RudrakshaHubPage />} />
-                  <Route path="/rudraksha/calculator" element={<RudrakshaCalculatorPage />} />
-                  <Route path="/rudraksha/for/planet/:planet" element={<RudrakshaPlanetPage />} />
-                  <Route path="/rudraksha/for/problem/:problem" element={<RudrakshaProblemPage />} />
-                  <Route path="/rudraksha/for/sign/:sign" element={<RudrakshaSignPage />} />
-                  <Route path="/rudraksha/:mukhi" element={<RudrakshaMukhiPage />} />
 
                   {/* Blog */}
                   <Route path="/blog" element={<BlogList />} />
@@ -358,7 +287,6 @@ function App() {
                   <Route path="/festivals/holi" element={<FestivalPage slug="holi" />} />
                   <Route path="/festivals/diwali" element={<FestivalPage slug="diwali" />} />
                   <Route path="/festivals/karwa-chauth" element={<FestivalPage slug="karwa-chauth" />} />
-                  <Route path="/festivals/:festivalSlug/:region" element={<FestivalRegionPage />} />
                   <Route path="/festivals" element={<FestivalsHubPage />} />
                   <Route path="/calendar" element={<IndianCalendarPage />} />
                   <Route path="/calendar/:year/:month" element={<IndianCalendarPage />} />
@@ -390,10 +318,6 @@ function App() {
                   <Route path="/numerology" element={<NumerologyPage />} />
                   <Route path="/numerology/report/:reportId" element={<PremiumRoute feature="Numerology Report" description="Your personalised numerology report is a Premium feature. Upgrade to unlock your full life number analysis."><NumerologyReportPage /></PremiumRoute>} />
                   <Route path="/palmistry" element={<PalmistryPage />} />
-                  <Route path="/tarot/spreads" element={<TarotSeoHubPage />} />
-                  <Route path="/tarot/spread/:spreadSlug" element={<TarotSpreadPage />} />
-                  <Route path="/tarot/card/:cardSlug" element={<TarotCardPage />} />
-                  <Route path="/tarot/for/:intentionSlug" element={<TarotIntentionPage />} />
                   <Route path="/tarot" element={<TarotPage />} />
                   <Route path="/the-tarot" element={<TarotLanding />} />
                   <Route path="/tarot/history" element={<PremiumRoute feature="Tarot History" description="Your saved tarot reading history is a Premium feature. Upgrade to review all your past readings."><TarotHistoryPage /></PremiumRoute>} />
@@ -445,7 +369,7 @@ function App() {
                   {/* /strategist = CD landing page for all users (logged in or out) */}
                   <Route path="/strategist" element={<TheStrategistLandingPage />} />
                   {/* War Room -- the actual Dashboard (premium users only) */}
-                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistWarRoomPage /></ProtectedRoute>} />
+                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistPage /></ProtectedRoute>} />
                   {/* Executive page -- repurposed Codex overview, inside module nav */}
                   <Route path="/strategist/executive" element={<ProtectedRoute><StrategistExecutivePage /></ProtectedRoute>} />
                   <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />
@@ -456,6 +380,9 @@ function App() {
 
                   {/* Punya Rewards -- loyalty & gamification (all logged-in users) */}
                   <Route path="/punya-rewards" element={<ProtectedRoute><PunyaRewardsPage /></ProtectedRoute>} />
+
+                  {/* Auspicious Day Calculator -- dual-system Vedic + Chinese Tong Shu */}
+                  <Route path="/auspicious-calculator" element={<AuspiciousPage />} />
 
                   <Route path="/career-plus" element={<ComingSoonPage title="Career Plus" subtitle="Comprehensive career intelligence report" eta="Sprint 4" />} />
                   <Route path="/careers" element={<CareersPage />} />
