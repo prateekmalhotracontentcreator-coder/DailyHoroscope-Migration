@@ -93,12 +93,12 @@ export function CompatibilityPage() {
     };
   }, [canonicalPair, isValidPair]);
 
+  const canonicalUrl = isValidPair ? `${SITE}/compatibility/${canonicalPair}` : `${SITE}/compatibility/name`;
+  const schema = useMemo(() => buildDatasetSchema(data, canonicalUrl), [canonicalUrl, data]);
+
   if (isValidPair && canonicalPair !== signPair) {
     return <Navigate to={`/compatibility/${canonicalPair}`} replace />;
   }
-
-  const canonicalUrl = isValidPair ? `${SITE}/compatibility/${canonicalPair}` : `${SITE}/compatibility/name`;
-  const schema = useMemo(() => buildDatasetSchema(data, canonicalUrl), [canonicalUrl, data]);
   const title = data
     ? `${data.sign1} and ${data.sign2} Compatibility - Marriage Gun Milan Score`
     : 'Compatibility by Moon Sign';
