@@ -200,15 +200,26 @@ The `how_to_manifest` field must be added to the `build_intent_summary()` output
 }
 ```
 
-### Additional Requirement 2 -- ECHO // PACE Compliance Gate
+### Additional Requirement 2 -- ECHO // PACE 3-Layer Compliance Gate (Mandatory)
 
-After the rewrite, run the compliance test and confirm PASS before delivery:
+After the rewrite, run the full 3-layer compliance test and confirm ALL layers PASS:
 
 ```bash
 PYTHONPATH=backend python3 backend/scripts/verify_angel_numbers_compliance.py
 ```
 
-All 10 clusters must score **< 40%**. Include the test output in your delivery confirmation.
+| Layer | Method | Pass Threshold |
+|---|---|---|
+| Layer 1 | TF-IDF Cosine (body fields) | < 40% all clusters (FLAGGED ≥50%, BLOCKED ≥70%) |
+| Layer 2 | N-gram phrase match (stop-word filtered) | No 4+ consecutive meaningful words in > 15% of records |
+| Layer 3 | Jaccard heading / key_themes match | Jaccard < 75% across any number pair |
+
+**Current baseline scores (pre-rewrite):**
+- Layer 1: 72--82% BLOCKED across all clusters ❌
+- Layer 2: "lesson slows reaction cycle" appears in 98% of records ❌
+- Layer 3: Identical key_themes across number families (100% Jaccard) ❌
+
+**All 3 layers must show PASS in the test output. Paste the full test output in your delivery confirmation. Delivery will not be accepted without it.**
 
 ---
 
@@ -221,7 +232,10 @@ All 10 clusters must score **< 40%**. Include the test output in your delivery c
 - [ ] `action_steps` are intent-specific (not generic for all intents)
 - [ ] Universal closing sentence eliminated from `message` field
 - [ ] `how_to_manifest` field present in all manifestation intent records (≥5 distinct action types)
-- [ ] ECHO // PACE test: all 10 clusters < 40% -- paste test output in delivery
+- [ ] Layer 1 PASS: all clusters < 40% TF-IDF cosine
+- [ ] Layer 2 PASS: no 4-gram phrase in > 15% of records
+- [ ] Layer 3 PASS: key_themes Jaccard < 75% across all number pairs
+- [ ] Full 3-layer test output pasted in delivery confirmation
 - [ ] `len(list(iter_core_records())) == 1000` ✅
 - [ ] `len(list(iter_intent_records())) == 9000` ✅
 - [ ] `python3 -m py_compile backend/angel_numbers_data.py` passes

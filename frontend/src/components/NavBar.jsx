@@ -10,7 +10,7 @@ import {
   ChevronDown, ChevronRight, Sparkles, LogIn, User,
   Sun, Moon as MoonIcon, Calendar, Gem, Hash, Globe,
   Heart, Briefcase, Shield, Leaf, Zap, Crown,
-  BookMarked, Layers, RadioTower
+  BookMarked, Layers, RadioTower, Calculator
 } from 'lucide-react';
 
 // ── Stars Logo ─────────────────────────────────────────────────────────────────
@@ -85,6 +85,18 @@ const NAV = [
       { label: 'Mantras',         path: '/mantra-remedies',   icon: BookMarked },
       { label: 'Yantras',         path: '/remedies',          icon: Shield },
       { label: 'Feng Shui',       path: '/remedies',          icon: Leaf },
+    ],
+  },
+  {
+    label: 'Free Calculators', icon: Calculator,
+    children: [
+      { label: 'Rudraksha Calculator',     path: '/rudraksha/calculator',      icon: Gem },
+      { label: 'Love Calculator',          path: '/love-calculator',           icon: Heart },
+      { label: 'Birth Chart',              path: '/kundali',                   icon: Sparkles },
+      { label: 'Lagna Kundali',            path: '/kundali',                   icon: Star },
+      { label: 'Lo Shu Grid Calculator',   path: '/lo-shu-grid/calculator',    icon: Hash },
+      { label: 'Rashi Calculator',         path: '/rashi-calculator',          icon: Sun },
+      { label: 'Nakshatra Calculator',     path: '/nakshatra-calculator',      icon: MoonIcon },
     ],
   },
   { label: 'Krishna Prashanavali', icon: Sparkles,  path: '/krishna-prashnavali',  premium: true },
