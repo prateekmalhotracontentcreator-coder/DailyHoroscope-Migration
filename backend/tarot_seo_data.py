@@ -115,97 +115,97 @@ SPREADS_JSON = r"""[
     "slug": "daily-tarot-reading-insight",
     "title": "Daily Tarot Reading Insight",
     "chapter": "One-Card Spreads",
-    "purpose": "This one-card practice is for moments when you want a daily anchor before the day begins. It keeps the reading focused so one clear symbol can name the energy, lesson, or invitation most active right now.",
+    "purpose": "A one-card morning practice for grounding awareness before the day begins. One symbol, pulled before the noise arrives, is enough to name the day's underlying energy.",
     "positions": [],
     "use": "A full deck of seventy-eight cards. Choose one card at random from anywhere in the facedown deck.",
-    "when": "Come to this spread when you want a daily anchor before the day begins. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread first thing in the morning, before plans and obligations take over. The insight travels better when it arrives before your mind has already decided what the day means."
   },
   {
     "number": 2,
     "slug": "single-question-tarot-answer",
     "title": "Single Question Tarot Answer",
     "chapter": "One-Card Spreads",
-    "purpose": "Use this single-card draw when you need a clean, uncluttered answer to a single question. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
+    "purpose": "A single-card draw for moments when the question is already clear and what's needed is one honest answer rather than analysis. Its discipline is simplicity: one focused question, one card, one unambiguous message.",
     "positions": [],
     "use": "A single card from the full deck of seventy-eight cards. Choose one card taken at random from anywhere in the facedown deck. If the answer is not clear, add a second card.",
-    "when": "Turn to it when you need a clean, uncluttered answer to a single question. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Reach for this when you have already thought the situation through and need a direct signal rather than more reflection. The reading works best when you hold the question with real stillness rather than running through all possible interpretations at once."
   },
   {
     "number": 13,
     "slug": "buying-a-house-vs-vacation-planning-tarot",
     "title": "Buying a House vs Vacation Planning Tarot",
     "chapter": "Two-Card Spreads",
-    "purpose": "A practical 2-card spread for times when a work, money, or long-range practical decision needs a steadier reading. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A two-card layout for moments when two valid but incompatible financial or lifestyle goals need to be directly compared. Each card holds one option and the contrast between them reveals which path carries more genuine alignment right now.",
     "positions": [],
     "use": "The full deck. Choose, before turning the cards over, one card for each option and read left to right.",
-    "when": "Use it when a work, money, or long-range practical decision needs a steadier reading. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Use it when you have genuinely weighed both options practically and still cannot feel which one belongs to this season of life. Read the two cards as a direct conversation between the options rather than as separate stand-alone messages."
   },
   {
     "number": 14,
     "slug": "career-promotion-vs-work-life-balance-tarot",
     "title": "Career Promotion vs Work Life Balance Tarot",
     "chapter": "Two-Card Spreads",
-    "purpose": "This layout is most useful when a work, money, or long-range practical decision needs a steadier reading. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A two-card spread for the specific tension between ambition and sustainability -- when pursuing more professional success and protecting personal wellbeing feel like they cannot coexist. The cards name what each path actually requires rather than what it promises.",
     "positions": [],
     "use": "The full deck.",
-    "when": "Reach for it when a work, money, or long-range practical decision needs a steadier reading. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when you are not just choosing between two outcomes but between two versions of yourself. Read each card as the honest cost and benefit of its path rather than as pure prediction."
   },
   {
     "number": 25,
     "slug": "3-card-clarity-spread-for-any-situation",
     "title": "3 Card Clarity Spread for Any Situation",
     "chapter": "Three-Card Spreads",
-    "purpose": "Use this single-card draw when you want structured guidance around three card unstructured reading to answer any question on any topic. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
+    "purpose": "A three-position spread that maps any situation across a clear narrative arc: what is present, what is active beneath the surface, and where the energy is currently moving. The structure is deliberately open so it can hold any question without distorting it.",
     "positions": [
       "Card 2 to act as the"
     ],
     "use": "A full deck of 78 cards.",
-    "when": "Come to this spread when you want structured guidance around three card unstructured reading to answer any question on any topic. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Use this when the situation feels complex but the core question is essentially singular. Three positions give enough structure to avoid oversimplification without breaking the reading into too many fragments."
   },
   {
     "number": 26,
     "slug": "past-present-future-timeline-reading",
     "title": "Past Present Future Timeline Reading",
     "chapter": "Three-Card Spreads",
-    "purpose": "Use this 3-card layout when you need to understand what is ending, what is active now, and what direction the path is taking. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A timeline spread that reads a situation as movement rather than fixed state -- showing where the energy originated, where it has arrived, and what direction it is currently heading. The value is in the trajectory, not just the present card.",
     "positions": [
       "Card 1: What you need to leave behind to make the change or what is already moving out of your life.",
       "Card 2: The present influences and factors already emerging affecting your decision.",
       "Card 3: The results of taking action and what lies over the horizon if you do."
     ],
     "use": "The full seventy-eight-card deck.",
-    "when": "Turn to it when you need to understand what is ending, what is active now, and what direction the path is taking. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when a situation seems stuck and you want to understand it as a process in motion. Reading the three cards as a continuous flow matters more than treating them as separate snapshots."
   },
   {
     "number": 27,
     "slug": "short-term-future-forecast-tarot",
     "title": "Short Term Future Forecast Tarot",
     "chapter": "Three-Card Spreads",
-    "purpose": "A practical 3-card spread for times when you want to read a longer cycle rather than a single event. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A compact forecast spread designed for the near window -- the next few days, weeks, or months -- rather than longer arcs. It gives enough coverage to reveal immediate tendencies without overextending the reading's range.",
     "positions": [
       "Card 1: Will represent factors or people who will be helpful.",
       "Card 2: Will signify factors or people who may stand in your way. And the all-important",
       "Card 3 represents what"
     ],
     "use": "The forty Number cards, Ace to Ten, and the sixteen Court or Personality cards.",
-    "when": "Use it when you want to read a longer cycle rather than a single event. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Use this when you need immediate directional guidance rather than a longer life overview. It works best when the timeframe in mind is concrete rather than vaguely 'the future.'"
   },
   {
     "number": 37,
     "slug": "4-card-intuitive-guidance-layout",
     "title": "4 Card Intuitive Guidance Layout",
     "chapter": "Four-Card Spreads",
-    "purpose": "This layout is most useful when you want structured guidance around unstructured reading of four cards. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A four-card layout that balances analytical and intuitive information -- using the structure of four positions to hold a complex situation without reducing it to a single verdict. The four cards speak to each other as much as to the question.",
     "positions": [],
     "use": "Any combination of the seventy-eight cards that fits with your question.",
-    "when": "Reach for it when you want structured guidance around unstructured reading of four cards. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when a three-card reading feels too compressed and a larger layout would lose the thread. Read the four cards as a single field rather than four separate answers."
   },
   {
     "number": 38,
     "slug": "overcoming-fear-and-mental-blocks-tarot",
     "title": "Overcoming Fear and Mental Blocks Tarot",
     "chapter": "Four-Card Spreads",
-    "purpose": "This 4-card spread is built for moments when fear, pressure, or social stress is shaping your choices more than you want it to. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread built specifically for moments when fear is making decisions rather than the person asking. It names the specific nature of the block, its source, and what genuine forward movement would require rather than offering reassurance.",
     "positions": [
       "Card 1: What is the real cause of my fear?",
       "Card 2: Is this bad thing actually likely to happen, or is it just fear?",
@@ -213,14 +213,14 @@ SPREADS_JSON = r"""[
       "Card 4: What action can I take to prevent or overcome my fear?"
     ],
     "use": "The full deck.",
-    "when": "Come to this spread when fear, pressure, or social stress is shaping your choices more than you want it to. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when fear, not practical obstacles, is what is actually stopping you. Give each position enough time to name the specific fear being shown rather than collapsing them into a general theme."
   },
   {
     "number": 47,
     "slug": "horseshoe-layout-for-complex-decisions",
     "title": "Horseshoe Layout for Complex Decisions",
     "chapter": "Five-Card Spreads",
-    "purpose": "Use this 6-card layout when the situation has several visible and hidden influences moving at once. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A seven-card horseshoe layout for questions that have too many sides to be resolved by simpler spreads. Its arched structure holds past influences, present circumstances, external factors, hopes, and likely outcomes in a single cohesive reading.",
     "positions": [
       "Card 1: Your choice, dilemma or predominant question.",
       "Card 2: Present influences, people, and circumstances that affect your present position.",
@@ -230,14 +230,14 @@ SPREADS_JSON = r"""[
       "Card 4 ."
     ],
     "use": "The full deck.",
-    "when": "Turn to it when the situation has several visible and hidden influences moving at once. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when a question has genuine complexity -- multiple stakeholders, competing priorities, or a timeline that matters. The horseshoe works best when you read its arc as a single narrative rather than seven independent messages."
   },
   {
     "number": 48,
     "slug": "navigating-workplace-cliques-and-bullying",
     "title": "Navigating Workplace Cliques and Bullying",
     "chapter": "Five-Card Spreads",
-    "purpose": "A practical 5-card spread for times when fear, pressure, or social stress is shaping your choices more than you want it to. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread designed for the specific dynamics of group-based workplace exclusion -- naming the social forces at play, the role you are in, and the practical move that would most effectively change your position. It is less about feelings and more about strategy.",
     "positions": [
       "Card 1: Who/what is excluding me most.",
       "Card 2: What the motive is.",
@@ -246,14 +246,14 @@ SPREADS_JSON = r"""[
       "Card 5: Should I cut my losses and leave?"
     ],
     "use": "The full deck.",
-    "when": "Use it when fear, pressure, or social stress is shaping your choices more than you want it to. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when workplace dynamics feel genuinely entrenched and you need a clearer map of what is happening beneath the surface. Approach each position as information about the system rather than about individual blame."
   },
   {
     "number": 49,
     "slug": "5-year-life-path-long-term-layout",
     "title": "5 Year Life Path Long Term Layout",
     "chapter": "Five-Card Spreads",
-    "purpose": "This layout is most useful when you are working with the theme of five year plan. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A long-range spread for reading the trajectory of a major life direction over several years rather than months. It is less concerned with specific events than with the quality and direction of the energy as it moves forward through time.",
     "positions": [
       "Card 1: Where I am now.",
       "Card 2: Where I would like to be in five years' time.",
@@ -262,26 +262,26 @@ SPREADS_JSON = r"""[
       "Card 5: To achieve this long-term goal, do I need to expand/move on now, or stay where I am?"
     ],
     "use": "The full deck.",
-    "when": "Reach for it when you are working with the theme of five year plan. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Use this when you are at a genuine crossroads and want a longer view than seasonal spreads provide. Read each position as a stage rather than a prediction of specific events."
   },
   {
     "number": 56,
     "slug": "6-card-deep-dive-reading-for-any-problem",
     "title": "6 Card Deep Dive Reading for Any Problem",
     "chapter": "Six-Card Spreads",
-    "purpose": "This one-card practice is for moments when you want structured guidance around unstructured six card spread to answer any question on any topic. It keeps the reading focused so one clear symbol can name the energy, lesson, or invitation most active right now.",
+    "purpose": "A six-position layout for problems that have enough dimensions to require sustained examination. Six cards allow distinct angles of the same question to speak without crowding each other, creating a reading with real depth.",
     "positions": [
       "Card 6 the answer falls into place. Almost always the person shown in each card represents you--or, if not, then the person/people who affect the question."
     ],
     "use": "A full deck of seventy-eight cards.",
-    "when": "Come to this spread when you want structured guidance around unstructured six card spread to answer any question on any topic. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when a situation has several moving parts and a three-card reading keeps missing something. Move through each position slowly rather than forming a conclusion before all six cards have been heard."
   },
   {
     "number": 57,
     "slug": "mid-term-future-vision-tarot-layout",
     "title": "Mid Term Future Vision Tarot Layout",
     "chapter": "Six-Card Spreads",
-    "purpose": "Use this 6-card layout when you want to read a longer cycle rather than a single event. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A forecast spread tuned to the medium range -- six weeks to six months ahead -- bridging the gap between immediate guidance and year-long planning. It tracks both what is building and what is winding down in the period.",
     "positions": [
       "Card 1: What do you hope to achieve in the next six weeks/months?",
       "Card 2: What specific opportunities are you seeking?",
@@ -291,14 +291,14 @@ SPREADS_JSON = r"""[
       "Card 6: What do you seek in the longer term?"
     ],
     "use": "The full deck.",
-    "when": "Turn to it when you want to read a longer cycle rather than a single event. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Use this when you need guidance for a defined medium-term window, such as a project timeline, a seasonal transition, or a specific goal with a named deadline. The forecast strengthens when the time boundary is held clearly."
   },
   {
     "number": 58,
     "slug": "manifesting-true-love-and-soulmate-tarot",
     "title": "Manifesting True Love and Soulmate Tarot",
     "chapter": "Six-Card Spreads",
-    "purpose": "A practical 6-card spread for times when your heart is involved and you need clarity about connection, desire, or commitment. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A six-card spread for understanding the current energetic conditions around romantic manifestation -- what is already aligned, what internal pattern may be creating resistance, and what shift would most change the outcome. It reads readiness, not just desire.",
     "positions": [
       "Card 1: Should I give up looking and just wait for it to happen?",
       "Card 2: Should I try an online dating site/friendship group?",
@@ -308,14 +308,14 @@ SPREADS_JSON = r"""[
       "Card 6: Will I meet my Twin Soul, or settle for someone nice?"
     ],
     "use": "The whole deck.",
-    "when": "Use it when your heart is involved and you need clarity about connection, desire, or commitment. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when romantic longing is strong but the situation feels stalled in ways that practical effort hasn't been able to change. Read the internal positions as honestly as the external ones."
   },
   {
     "number": 64,
     "slug": "choosing-between-two-paths-tarot",
     "title": "Choosing Between Two Paths Tarot",
     "chapter": "Seven-Card Spreads",
-    "purpose": "This layout is most useful when two strong options are competing for your attention. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A binary decision spread that places two options side by side so the cards can speak to each without interference. The reading is most useful when both options are genuinely viable and the difficulty is in sensing which one is more aligned.",
     "positions": [
       "Card 1: The choice to be made which may be different from the conscious question.",
       "Card 2: (Option 1) The suggested action to carry out",
@@ -326,26 +326,26 @@ SPREADS_JSON = r"""[
       "Card 7: The likely outcome of"
     ],
     "use": "The whole deck.",
-    "when": "Reach for it when two strong options are competing for your attention. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Use this when you have already done the rational analysis and still cannot feel which direction belongs to you. Read the two sides as a dialogue rather than a competition."
   },
   {
     "number": 65,
     "slug": "7-card-mystical-chakra-alignment",
     "title": "7 Card Mystical Chakra Alignment",
     "chapter": "Seven-Card Spreads",
-    "purpose": "Use this single-card draw when you want the reading to reach hidden, symbolic, or intuitive layers of the question. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
+    "purpose": "A seven-card spread mapped to the energy centres of the body -- reading each chakra position for what is active, blocked, or in transition there. It is most useful for questions about health, spiritual development, and emotional pattern.",
     "positions": [
       "Card 7, will reveal what is just over the horizon or being hidden and the answer to your dilemma."
     ],
     "use": "The twenty-two Major cards or the full deck.",
-    "when": "Come to this spread when you want the reading to reach hidden, symbolic, or intuitive layers of the question. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when you want the reading to speak to the body and energy field rather than only to circumstantial events. Sit with each position long enough to feel its resonance before moving to the next."
   },
   {
     "number": 70,
     "slug": "achieving-big-goals-and-dreams-reading",
     "title": "Achieving Big Goals and Dreams Reading",
     "chapter": "Eight-Card Spreads",
-    "purpose": "Use this 8-card layout when the theme of moving toward fulfilling your greatest ambition or dream is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "An eight-card layout for clarifying the internal landscape around a major ambition -- what is genuinely supporting it, what is functioning as resistance, and what specific shift would most move the goal forward. It maps the gap between aspiration and momentum.",
     "positions": [
       "Card 1: Is this the window of opportunity for which I have been waiting?",
       "Card 2: Is this step that I am contemplating realistic?",
@@ -357,14 +357,14 @@ SPREADS_JSON = r"""[
       "Card 8: The longer-term outcome, the next five years."
     ],
     "use": "The full deck.",
-    "when": "Turn to it when the theme of moving toward fulfilling your greatest ambition or dream is active in your life. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Use this when a major goal feels consistently out of reach despite real effort and you want to understand why. Work through each position as a specific diagnostic rather than a general overview of the goal."
   },
   {
     "number": 71,
     "slug": "fertility-and-conception-guidance-tarot",
     "title": "Fertility and Conception Guidance Tarot",
     "chapter": "Eight-Card Spreads",
-    "purpose": "A practical 8-card spread for times when you are weighing whether try to conceive a baby. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread addressing the emotional, energetic, and practical dimensions of fertility -- reading both the physical and psychological landscape around conception with the care the question deserves. It is designed for the full complexity of the experience, not a simple yes or no.",
     "positions": [
       "Card 1: Do we want a child/children now or in the future?",
       "Card 2: If we try, how soon can we conceive?",
@@ -376,26 +376,26 @@ SPREADS_JSON = r"""[
       "Card 8: Should we leave nature to take its course, or will this reduce our chances of having a baby?"
     ],
     "use": "The whole deck.",
-    "when": "Use it when you are weighing whether try to conceive a baby. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when fertility is an active concern and you want guidance that addresses the whole experience rather than only timing. Read the emotional positions with as much weight as the practical ones."
   },
   {
     "number": 76,
     "slug": "9-card-spiritual-matrix-breakthrough",
     "title": "9 Card Spiritual Matrix Breakthrough",
     "chapter": "Nine-Card Spreads",
-    "purpose": "Use this single-card draw when you want structured guidance around unstructured nine card reading. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
+    "purpose": "A nine-card matrix for moments when a spiritual or personal question has reached a genuine impasse and surface-level guidance is no longer enough. The grid structure allows the reading to speak to multiple dimensions simultaneously.",
     "positions": [
       "Card 9 ."
     ],
     "use": "The full deck.",
-    "when": "Reach for it when you want structured guidance around unstructured nine card reading. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when you want depth rather than direction -- when the question itself needs to be held more than resolved. Lay all nine cards before reading any of them so the pattern can emerge before interpretation begins."
   },
   {
     "number": 77,
     "slug": "resolving-legal-disputes-fairly-tarot",
     "title": "Resolving Legal Disputes Fairly Tarot",
     "chapter": "Nine-Card Spreads",
-    "purpose": "This 9-card spread is built for moments when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for navigating the emotional and strategic complexity of legal conflict -- naming what each party actually needs, where the real obstacle lives, and what approach would most serve a fair resolution. It is as much about clarity as outcome.",
     "positions": [
       "Card 1: What/who is causing the injustice?",
       "Card 2: What/who is in the way of revealing the truth?",
@@ -408,36 +408,36 @@ SPREADS_JSON = r"""[
       "Card 9: What is the ideal outcome?"
     ],
     "use": "The full deck.",
-    "when": "Come to this spread when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when a legal situation involves enough emotional weight that rational assessment alone has not been sufficient. Read each position as a distinct piece of the landscape rather than building a single conclusion too early."
   },
   {
     "number": 82,
     "slug": "12-card-comprehensive-life-overview",
     "title": "12 Card Comprehensive Life Overview",
     "chapter": "Multi-Card Spreads",
-    "purpose": "Use this 12-card layout when you want structured guidance around unstructured twelve card spread. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A twelve-card overview reading that surveys multiple life areas simultaneously -- relationships, work, wellbeing, and inner development -- giving a broad map of where energy is concentrated, depleted, or in transition across the whole.",
     "positions": [],
     "use": "The full deck.",
-    "when": "Turn to it when you want structured guidance around unstructured twelve card spread. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread at a major threshold -- a new year, a significant birthday, or after a major life change -- when you want to understand the full landscape rather than one specific area. Read each position before drawing any single conclusion."
   },
   {
     "number": 83,
     "slug": "12-month-wheel-of-year-forecast",
     "title": "12 Month Wheel of Year Forecast",
     "chapter": "Multi-Card Spreads",
-    "purpose": "Use this single-card draw when you want to read a longer cycle rather than a single event. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
+    "purpose": "A twelve-card annual forecast that assigns one card to each month of the year ahead, reading each as the primary energetic quality or theme of that period rather than predicting specific events. The value is in the pattern across the full year.",
     "positions": [
       "Card 1 being the month following the reading. Record the opportunities or challenges each card suggests during a particular month. As a rule, Major Arcana cards indicate major events or where outside circumstances play a big part. Minor cards refer to more ordinary but nevertheless significant happenings occurring in the period you are measuring. Court cards indicate dominant personalities--or a new love or pregnancy. Finally, choose a card to sum up the twelve months ahead and put this in the center of the circle. You can pick two cards for each month if you wish."
     ],
     "use": "One or two full decks.",
-    "when": "Use it when you want to read a longer cycle rather than a single event. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Use this at the start of a new year or personal cycle when you want a macro view of the months ahead. Lay all twelve cards first and look for the pattern before reading any individual card."
   },
   {
     "number": 87,
     "slug": "past-life-love-and-soul-connection",
     "title": "Past Life Love and Soul Connection",
     "chapter": "Love And Commitment Spreads",
-    "purpose": "This layout is most useful when your heart is involved and you need clarity about connection, desire, or commitment. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for exploring the karmic and soul-level dimensions of a significant relationship -- reading what may have drawn these two people together from beyond this lifetime and what pattern from the past is still active in the present dynamic.",
     "positions": [
       "Card 1: Is (name) my Soul mate?",
       "Card 2: When and how were we together in past worlds?",
@@ -448,14 +448,14 @@ SPREADS_JSON = r"""[
       "Card 7: Will we stay forever together in this life?"
     ],
     "use": "The forty Minor cards and the sixteen Court cards.",
-    "when": "Reach for it when your heart is involved and you need clarity about connection, desire, or commitment. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when a relationship carries an unusual quality of familiarity, intensity, or repetition that ordinary relationship analysis doesn't fully explain. Approach each card as a window into a longer story."
   },
   {
     "number": 88,
     "slug": "twin-flame-recognition-signs-tarot",
     "title": "Twin Flame Recognition Signs Tarot",
     "chapter": "Love And Commitment Spreads",
-    "purpose": "This 6-card spread is built for moments when the theme of can it be true i have met my twin soul at last is active in your life. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A six-card spread for reading whether a specific connection has the quality of a twin flame dynamic -- addressing recognition signs, current phase, and what the connection is activating rather than simply whether it is destined.",
     "positions": [
       "Card 1: Do you feel you have known each other forever?",
       "Card 2: Was there instant recognition/connection at the first meeting?",
@@ -465,14 +465,14 @@ SPREADS_JSON = r"""[
       "Card 6: Do you have constant déjà vu and telepathic links?"
     ],
     "use": "The full deck.",
-    "when": "Come to this spread when the theme of can it be true i have met my twin soul at last is active in your life. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when an intense connection is prompting questions about its nature that go beyond whether the relationship is healthy or compatible. Read each position in sequence so the fuller picture develops before reaching the outcome card."
   },
   {
     "number": 108,
     "slug": "resolving-relationship-conflicts-tarot",
     "title": "Resolving Relationship Conflicts Tarot",
     "chapter": "Spreads For Overcoming Difficulties In Love, Reconciliation, And Ending Destructive Relationships",
-    "purpose": "Use this 6-card layout when your heart is involved and you need clarity about connection, desire, or commitment. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A six-card spread for understanding what is genuinely driving a recurring relationship conflict -- naming each person's unspoken need, the dynamic between them, and what shift would most change the pattern rather than the episode.",
     "positions": [
       "Card 2: What is the underlying issue for you?",
       "Card 3: What is the underlying issue for your partner?",
@@ -482,14 +482,14 @@ SPREADS_JSON = r"""[
       "Card 9: What is the best outcome?"
     ],
     "use": "The full deck.",
-    "when": "Turn to it when your heart is involved and you need clarity about connection, desire, or commitment. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when the same conflict keeps returning in different clothing and you want to understand its root rather than manage its surface. Read each person's position before looking at the cards that address the dynamic between them."
   },
   {
     "number": 109,
     "slug": "dealing-with-emotional-immaturity-in-love",
     "title": "Dealing with Emotional Immaturity in Love",
     "chapter": "Spreads For Overcoming Difficulties In Love, Reconciliation, And Ending Destructive Relationships",
-    "purpose": "A practical 6-card spread for times when your heart is involved and you need clarity about connection, desire, or commitment. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for reading the specific emotional dynamic in a relationship where one or both people are struggling to respond from their adult self -- naming the pattern, its source, and what genuine growth in the relationship would require.",
     "positions": [
       "Card 1: How is this most adversely affecting the relationship?",
       "Card 2: Will s/he change, given time?",
@@ -499,14 +499,14 @@ SPREADS_JSON = r"""[
       "Card 6: Who/what bad influences need to be removed from his/her life?"
     ],
     "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
-    "when": "Use it when your heart is involved and you need clarity about connection, desire, or commitment. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when emotional reactions in the relationship consistently feel disproportionate to the situation, or when one person's fear response is consistently driving the dynamic. Read the shadow position honestly."
   },
   {
     "number": 129,
     "slug": "manifesting-urgent-financial-abundance",
     "title": "Manifesting Urgent Financial Abundance",
     "chapter": "Prosperity And Money-Making Spreads",
-    "purpose": "This layout is most useful when a work, money, or long-range practical decision needs a steadier reading. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for moments when financial need is pressing and clarity about the fastest genuine path forward -- rather than long-term planning -- is what the situation requires. It reads immediate opportunity and internal obstruction simultaneously.",
     "positions": [
       "Card 1: Who will/can help; what are the strings?",
       "Card 2: What existing assets/resources can you release?",
@@ -518,14 +518,14 @@ SPREADS_JSON = r"""[
       "Card 8: The as-yet-unrevealed rescue/rescuer."
     ],
     "use": "The full deck.",
-    "when": "Reach for it when a work, money, or long-range practical decision needs a steadier reading. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when financial pressure is acute rather than chronic and you need guidance on the nearest available door rather than the ideal long-term strategy. Work through each position before settling on a course of action."
   },
   {
     "number": 130,
     "slug": "relocating-abroad-for-high-salary-job",
     "title": "Relocating Abroad for High Salary Job",
     "chapter": "Prosperity And Money-Making Spreads",
-    "purpose": "This 5-card spread is built for moments when a work, money, or long-range practical decision needs a steadier reading. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread built for the specific complexity of international relocation tied to a career opportunity -- balancing financial gain, personal disruption, and the longer career trajectory. It addresses both the practical calculation and the less visible factors.",
     "positions": [
       "Card 1: What benefits of taking the offer short-term might outweigh other considerations?",
       "Card 2: What longer-term advantages would occur if you stayed in the job indefinitely?",
@@ -534,24 +534,24 @@ SPREADS_JSON = r"""[
       "Card 5: Yes or no, taking the other four cards into account."
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Come to this spread when a work, money, or long-range practical decision needs a steadier reading. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when the relocation involves enough personal and financial consequence that a simple pros-and-cons analysis has not been enough. Let the positions map the full picture before you draw a conclusion."
   },
   {
     "number": 149,
     "slug": "breaking-generational-financial-scarcity",
     "title": "Breaking Generational Financial Scarcity",
     "chapter": "Spreads For Solving Difficulties With Money",
-    "purpose": "Use this 6-card layout when a work, money, or long-range practical decision needs a steadier reading. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread that reads the inherited dimension of financial struggle -- the beliefs, behaviours, and family patterns around money that were absorbed before they could be consciously chosen, and what it would take to operate outside them.",
     "positions": [],
     "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
-    "when": "Turn to it when a work, money, or long-range practical decision needs a steadier reading. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when financial difficulty seems to follow a pattern that predates your own choices -- when the money story feels inherited more than acquired. Read the generational positions before the practical ones."
   },
   {
     "number": 150,
     "slug": "setting-strong-boundaries-with-money",
     "title": "Setting Strong Boundaries with Money",
     "chapter": "Spreads For Solving Difficulties With Money",
-    "purpose": "A practical 6-card spread for times when a work, money, or long-range practical decision needs a steadier reading. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for understanding the psychological and energetic landscape around financial boundary-setting -- identifying where money is leaking, what makes saying no difficult, and what internal shift would most change the pattern.",
     "positions": [
       "Card 1: What stops you from saying no?",
       "Card 2: Who takes advantage of you the most?",
@@ -561,54 +561,54 @@ SPREADS_JSON = r"""[
       "Card 6: Are you with the wrong people?"
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Use it when a work, money, or long-range practical decision needs a steadier reading. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when money keeps moving in ways that feel outside your conscious control despite genuine effort. Read the shadow and belief positions before the action ones."
   },
   {
     "number": 169,
     "slug": "interview-success-and-career-hiring-tarot",
     "title": "Interview Success and Career Hiring Tarot",
     "chapter": "Career Spreads",
-    "purpose": "This layout is most useful when a work, money, or long-range practical decision needs a steadier reading. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread designed for the specific pressure of a significant hiring situation -- reading your energetic alignment with the role, what the interview process is likely to surface, and how to position yourself most authentically.",
     "positions": [
       "Card 1: Are there more indications in your favor?",
       "Card 2: Are there more indications that you may not get this job?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Reach for it when a work, money, or long-range practical decision needs a steadier reading. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread in the days before a significant interview or hiring decision, not the day of. The cards often point to preparation, not just outcome."
   },
   {
     "number": 170,
     "slug": "managing-difficult-bosses-and-coworkers",
     "title": "Managing Difficult Bosses and Coworkers",
     "chapter": "Career Spreads",
-    "purpose": "This 3-card spread is built for moments when when you are constantly in conflict with a colleague or manager. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for reading the specific dynamic of a difficult professional relationship -- naming what is actually driving the friction, what each party needs that they are not currently getting, and what strategic move would most shift the interaction.",
     "positions": [
       "Card 1: The open cause of the conflict.",
       "Card 2: The hidden cause of the conflict.",
       "Card 3: The solution."
     ],
     "use": "The forty Minor cards, Aces to Tens.",
-    "when": "Come to this spread when when you are constantly in conflict with a colleague or manager. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when a workplace relationship has been persistently difficult long enough to suggest the pattern needs to be understood rather than simply endured. Read the position that names the hidden dynamic before the advice position."
   },
   {
     "number": 171,
     "slug": "full-time-job-vs-side-hustle-tarot",
     "title": "Full Time Job vs Side Hustle Tarot",
     "chapter": "Career Spreads",
-    "purpose": "Use this 2-card layout when a work, money, or long-range practical decision needs a steadier reading. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread for the specific tension between employment security and entrepreneurial freedom -- reading each path for its energetic fit with where you are right now, what each genuinely requires, and which one your current resources can actually sustain.",
     "positions": [
       "Card 1 and",
       "Card 2 and neither seems definite, add a third card above and between"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Turn to it when a work, money, or long-range practical decision needs a steadier reading. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when you have been moving back and forth between the two options long enough that the indecision is becoming its own cost. Read each card as its honest requirement, not its best-case promise."
   },
   {
     "number": 191,
     "slug": "entrepreneurship-launch-roadmap-tarot",
     "title": "Entrepreneurship Launch Roadmap Tarot",
     "chapter": "Business Spreads",
-    "purpose": "A practical 5-card spread for times when a work, money, or long-range practical decision needs a steadier reading. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A five-card spread for reading the energetic landscape around launching a new business or independent venture -- naming what is genuinely ready, what still needs preparation, and what specific quality of attention the first stage requires.",
     "positions": [
       "Card 1: Are you ready to launch your business?",
       "Card 2: Should you launch it 100%, or run it part-time until established?",
@@ -617,14 +617,14 @@ SPREADS_JSON = r"""[
       "Card 5: What expansion plans will be viable over the next twelve months?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Use it when a work, money, or long-range practical decision needs a steadier reading. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when you are close to launching and need to understand what is ready versus what is still being assembled. Read each position as its own stage of the launch rather than as a single verdict on the whole."
   },
   {
     "number": 192,
     "slug": "brick-and-mortar-vs-e-commerce-scaling",
     "title": "Brick and Mortar vs E-Commerce Scaling",
     "chapter": "Business Spreads",
-    "purpose": "This layout is most useful when you are weighing whether trade your products or services locally or online. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for the specific decision of how to grow an existing business -- comparing physical and digital expansion paths for their energetic fit, realistic requirements, and timing alignment. It reads readiness as much as strategy.",
     "positions": [
       "Card 1: Should you find/develop the right premises locally?",
       "Card 2: Is there sufficient local trade to support you/should you aim wider?",
@@ -636,27 +636,27 @@ SPREADS_JSON = r"""[
       "Card 8: Should you franchise or offer your goods/services through other stores/websites?"
     ],
     "use": "The full deck.",
-    "when": "Reach for it when you are weighing whether trade your products or services locally or online. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when a scaling decision has been postponed because neither option feels completely right. Let the cards name what each path genuinely demands rather than what you hope it will require."
   },
   {
     "number": 211,
     "slug": "audition-mastery-strategy-for-competitions",
     "title": "Audition Mastery Strategy for Competitions",
     "chapter": "Spreads For Fame And Fortune",
-    "purpose": "This 2-card spread is built for moments when you want a clearer read on what should you do to get through to the finals of a major talent contest. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for reading the internal and external landscape around a significant performance opportunity -- what you are bringing, what is working against you, what the competition itself requires, and where your preparation can most improve the outcome.",
     "positions": [
       "Card 1: What do you need to know to get into the final?",
       "Card 2: How can you best overcome the competition of other entrants?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Come to this spread when you want a clearer read on what should you do to get through to the finals of a major talent contest. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread at least a week before a significant audition or competition so the guidance has time to inform your preparation. Work through each position in order so the strategy each card suggests can build on the previous one."
   },
   {
     "number": 212,
     "slug": "winning-strategy-for-creative-contests",
     "title": "Winning Strategy for Creative Contests",
     "chapter": "Spreads For Fame And Fortune",
-    "purpose": "Use this 5-card layout when you want to win a tv talent show. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread that reads creative competition through an energetic lens -- addressing what your work genuinely communicates, how it aligns with what is being judged, and what specific adjustment would most strengthen your positioning.",
     "positions": [
       "Card 1: Do you have an act that will make you stand out?",
       "Card 2: Are you used to showcasing your talents in public?",
@@ -665,62 +665,62 @@ SPREADS_JSON = r"""[
       "Card 5: Will/should you keep trying until you win?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Turn to it when you want to win a tv talent show. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when you want to understand the energetic dimension of a competition, not just the practical one. The cards often speak to how you are showing up rather than whether you will win."
   },
   {
     "number": 236,
     "slug": "asking-your-crush-out-success-tarot",
     "title": "Asking Your Crush Out Success Tarot",
     "chapter": "Spreads For Making Your Dearest Wishes And Dreams Come True",
-    "purpose": "A practical 6-card spread for times when the theme of will the person of your dreams agree to go on a date with you if you ask now is active in your life. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for reading the mutual energy and timing around a romantic approach -- whether the moment is right, how the other person is likely to receive it, and what would make the approach most genuine rather than most strategic.",
     "positions": [],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Use it when the theme of will the person of your dreams agree to go on a date with you if you ask now is active in your life. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when both the desire and the uncertainty are genuinely present -- not to outsource the decision but to understand the emotional landscape before stepping into it. Read the timing card last."
   },
   {
     "number": 237,
     "slug": "funding-solo-travel-using-inheritance",
     "title": "Funding Solo Travel Using Inheritance",
     "chapter": "Spreads For Making Your Dearest Wishes And Dreams Come True",
-    "purpose": "This layout is most useful when family dynamics are emotional, layered, and not easily solved by one conversation. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for a specific financial and values decision -- whether to use inherited or shared money for personal experience -- reading the emotional and energetic dimensions alongside the practical ones to understand what the choice would actually mean.",
     "positions": [
       "Card 1: Are you entitled to spend your own money any way you wish?",
       "Card 2: Should you feel guilty if you follow your dream?",
       "Card 3: Will you regret it if you do not follow your dream?"
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Reach for it when family dynamics are emotional, layered, and not easily solved by one conversation. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when the money question is inseparable from a question about what you owe yourself versus others. Read the values positions before the practical ones."
   },
   {
     "number": 265,
     "slug": "blended-family-dynamics-and-first-meetings",
     "title": "Blended Family Dynamics and First Meetings",
     "chapter": "Family Spreads",
-    "purpose": "This 6-card spread is built for moments when family dynamics are emotional, layered, and not easily solved by one conversation. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for reading a first meeting within a complex family configuration -- naming what each person is bringing to the encounter, where the tension is likely to surface, and what would most allow the meeting to go better than feared.",
     "positions": [],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Come to this spread when family dynamics are emotional, layered, and not easily solved by one conversation. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread a few days before the meeting, not the day of, so any practical preparation the cards suggest is still possible. Give the relational positions more time than you think they need."
   },
   {
     "number": 266,
     "slug": "handling-toxic-relatives-at-family-events",
     "title": "Handling Toxic Relatives at Family Events",
     "chapter": "Family Spreads",
-    "purpose": "Use this 3-card layout when family dynamics are emotional, layered, and not easily solved by one conversation. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread for navigating a specific family event that involves a difficult or harmful relative -- reading how to protect your own energy, where the interaction is most likely to go wrong, and what level of engagement would serve you best.",
     "positions": [
       "Card 1: Will the invitation lead to more trouble than it is worth?",
       "Card 2: If you do not invite the person, will it cause",
       "Card 2 as a tiebreaker."
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Turn to it when family dynamics are emotional, layered, and not easily solved by one conversation. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread before the event, not during or after. The cards are more useful for preparation than for processing."
   },
   {
     "number": 293,
     "slug": "school-bullying-intervention-and-support",
     "title": "School Bullying Intervention and Support",
     "chapter": "Spreads For Babies, Children, And Grandchildren Of All Ages",
-    "purpose": "A practical 7-card spread for times when your situation involves child or teenager is being bullied at school. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for reading the emotional landscape around a child or teenager experiencing bullying -- naming what the child needs most, what the dynamic is doing to their sense of self, and what support would be most genuinely effective.",
     "positions": [
       "Card 1: Who are the main bullies? Are they generally regarded as challenging children?",
       "Card 2: What is the main reason given for bullying your child?",
@@ -731,14 +731,14 @@ SPREADS_JSON = r"""[
       "Card 7: Whatever happens, do you want to move your child into a different school?"
     ],
     "use": "The full deck:",
-    "when": "Use it when your situation involves child or teenager is being bullied at school. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when you are trying to understand the situation from a deeper angle than reports and conversations have provided. Read the child's position with careful attention before moving to the adult positions."
   },
   {
     "number": 294,
     "slug": "cyberbullying-defense-advice-for-teens",
     "title": "Cyberbullying Defense Advice for Teens",
     "chapter": "Spreads For Babies, Children, And Grandchildren Of All Ages",
-    "purpose": "This layout is most useful when friendship patterns or social distance are weighing on you. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread specific to online harassment -- reading the psychological impact of what has happened, the dynamics at work beyond the screen, and what combination of practical action and personal protection would most effectively address the situation.",
     "positions": [
       "Card 1: Is your child receiving an unusual number of text messages/does s/he appear upset after reading text messages?",
       "Card 2: Does your child come straight home after school instead of hanging out with friends?",
@@ -749,14 +749,14 @@ SPREADS_JSON = r"""[
       "Card 7: Can/should you offer your child a new phone/number/social media page with strict privacy settings?"
     ],
     "use": "The full deck",
-    "when": "Reach for it when friendship patterns or social distance are weighing on you. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when the online situation has been persistent enough to affect daily life. Each position names a specific layer of the problem rather than the situation as a whole."
   },
   {
     "number": 321,
     "slug": "calming-anxiety-and-overthinking-tarot",
     "title": "Calming Anxiety and Overthinking Tarot",
     "chapter": "Health And Healing Spreads",
-    "purpose": "This 6-card spread is built for moments when fear, pressure, or social stress is shaping your choices more than you want it to. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread that reads anxiety as a message rather than a malfunction -- identifying what the anxious thinking is pointing toward, what it is protecting against, and what the nervous system actually needs rather than what the mind is demanding.",
     "positions": [
       "Card 1: Is your anxiety triggered by external circumstances, or does it come from within?",
       "Card 2: Who or what situation makes it worse? Can you avoid these?",
@@ -766,28 +766,28 @@ SPREADS_JSON = r"""[
       "Card 6: What new activity/desired situation suddenly becomes possible without the anxiety?"
     ],
     "use": "The forty Minor cards, Aces to Tens, and the six Court cards.",
-    "when": "Come to this spread when fear, pressure, or social stress is shaping your choices more than you want it to. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when anxious thinking has been running the situation for too long. Slow down at each position rather than reading quickly to reach a reassuring answer -- the card that makes you uncomfortable is often the most useful."
   },
   {
     "number": 322,
     "slug": "physical-healing-and-recovery-forecast",
     "title": "Physical Healing and Recovery Forecast",
     "chapter": "Health And Healing Spreads",
-    "purpose": "Use this 3-card layout when body confidence, wellbeing, or physical rhythm is part of the question. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread for reading the body's healing landscape -- where recovery energy is genuinely gathering, what is slowing the process, and what physical or emotional support would most accelerate repair. It addresses the body as a whole system rather than a single symptom.",
     "positions": [
       "Card 1: Is there anything in your life/lifestyle causing undue stress?",
       "Card 2: Should you explore alternative energy therapies such as acupuncture, acupressure, reiki, kinesiology, or meditation classes to release blocks and restore energy?",
       "Card 3: Will your health improve naturally when your life is in balance?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Turn to it when body confidence, wellbeing, or physical rhythm is part of the question. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread during a recovery process rather than at its start. The cards speak most clearly when there is already some movement to read."
   },
   {
     "number": 354,
     "slug": "attracting-positive-good-luck-energy",
     "title": "Attracting Positive Good Luck Energy",
     "chapter": "Spreads For Good Luck",
-    "purpose": "A practical 7-card spread for times when the theme of bringing good luck into your life is active in your life. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for understanding the current energetic conditions around fortunate outcomes -- what internal alignments are already drawing good events, what is subtly blocking the flow, and what specific orientation would most open the channel.",
     "positions": [
       "Card 1: In what area of your life do you most need good luck?",
       "Card 2: How soon will this good luck come?",
@@ -798,28 +798,28 @@ SPREADS_JSON = r"""[
       "Card 7: What is the hidden secret to your good fortune?"
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Use it when the theme of bringing good luck into your life is active in your life. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when you want to understand why some periods feel charmed and others feel like wading through resistance. Read the obstruction card honestly rather than skipping to the action."
   },
   {
     "number": 355,
     "slug": "breaking-bad-luck-cycles-astrology",
     "title": "Breaking Bad Luck Cycles Astrology",
     "chapter": "Spreads For Good Luck",
-    "purpose": "This layout is most useful when the theme of will your bad luck change soon is active in your life. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for reading a persistent streak of difficult outcomes -- naming whether the pattern is circumstantial or internally driven, what is perpetuating it, and what genuine intervention would break the cycle rather than temporarily interrupting it.",
     "positions": [
       "Card 1: Do you believe you are in the hands of fate? If so, is this true, or a perception?",
       "Card 2: Is anyone causing your misfortune?",
       "Card 3: Can you/how can you change your luck?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Reach for it when the theme of will your bad luck change soon is active in your life. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when difficulty has been consistent enough to feel like a pattern rather than a run of events. Read the root position before the action position so you understand what is being addressed."
   },
   {
     "number": 382,
     "slug": "vastu-blessings-for-your-new-home",
     "title": "Vastu Blessings for Your New Home",
     "chapter": "Spreads For The Home And Property",
-    "purpose": "This 4-card spread is built for moments when the theme of will your new home be lucky for you is active in your life. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for reading the energetic quality of a new living space -- what it naturally supports, what it challenges, and what simple alignments would help you settle into it with the most ease and clarity.",
     "positions": [
       "Card 1: Did you feel when you first saw it that it was meant to be yours and that that was a valid feeling?",
       "Card 2: Will everything progress smoothly in negotiations/finance, etc., right through to the move?",
@@ -827,14 +827,14 @@ SPREADS_JSON = r"""[
       "Card 4: Do you have any worries about the house/location and how can these be resolved?"
     ],
     "use": "The forty Minor cards, Aces to Tens.",
-    "when": "Come to this spread when the theme of will your new home be lucky for you is active in your life. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread before unpacking rather than after -- when you still have the flexibility to choose where to set up the spaces that matter most. Read each position as information about the space, not a verdict."
   },
   {
     "number": 383,
     "slug": "real-estate-sale-success-timeline",
     "title": "Real Estate Sale Success Timeline",
     "chapter": "Spreads For The Home And Property",
-    "purpose": "Use this 10-card layout when the theme of will you ever sell your home is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A ten-card spread for reading the full arc of a property sale -- timing, negotiation dynamics, what is genuinely supporting the process, and what needs attention before the right buyer arrives. It addresses both the market and the energetic conditions.",
     "positions": [
       "Card 1: Are there good reasons for the lack of serious offers, such as economic downturn/time of year, etc.?",
       "Card 2: If you are patient, will the sale come naturally eventually?",
@@ -848,14 +848,14 @@ SPREADS_JSON = r"""[
       "Card 10: Is there anything you should know that would speed the sale, such as price reduction/auction?"
     ],
     "use": "The full deck.",
-    "when": "Turn to it when the theme of will you ever sell your home is active in your life. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when a sale is already listed or imminent and you want to understand the landscape rather than just the outcome. Each position addresses a different dimension of the sale rather than a single prediction."
   },
   {
     "number": 411,
     "slug": "overcoming-social-isolation-and-loneliness",
     "title": "Overcoming Social Isolation and Loneliness",
     "chapter": "Spreads For Friendships And Your Social Life",
-    "purpose": "A practical 6-card spread for times when friendship patterns or social distance are weighing on you. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread that reads loneliness as a specific emotional and energetic state -- naming what is creating the isolation, what kind of connection the person actually needs, and what specific first step would most genuinely shift the quality of their social life.",
     "positions": [
       "Card 1: Are you naturally a loner who doesn't want company, but feel you ought to?",
       "Card 2: Would you like a few like-minded friends? How/where can you meet them?",
@@ -865,14 +865,14 @@ SPREADS_JSON = r"""[
       "Card 6: Are you in the wrong place/should you change jobs/relocate?"
     ],
     "use": "The full deck.",
-    "when": "Use it when friendship patterns or social distance are weighing on you. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when loneliness has been present long enough to feel structural rather than situational. Read the internal positions with as much honesty as the external ones."
   },
   {
     "number": 412,
     "slug": "resolving-friend-group-drama-advice",
     "title": "Resolving Friend Group Drama Advice",
     "chapter": "Spreads For Friendships And Your Social Life",
-    "purpose": "This layout is most useful when friendship patterns or social distance are weighing on you. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for reading the energetics of a specific friendship conflict or group rupture -- who needs what, where the fault line actually lives, and what approach would most genuinely restore or honestly end the situation.",
     "positions": [
       "Card 1: Who or what is causing problems in your social life?",
       "Card 2: Is there a person/clique working to exclude you?",
@@ -884,14 +884,14 @@ SPREADS_JSON = r"""[
       "Card 8: What is the best outcome for you?"
     ],
     "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
-    "when": "Reach for it when friendship patterns or social distance are weighing on you. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when the friendship situation has become complicated enough that the narrative of who is right keeps changing. Read the hidden dynamic position before deciding how to respond."
   },
   {
     "number": 441,
     "slug": "preparing-for-parenthood-relationship-check",
     "title": "Preparing for Parenthood Relationship Check",
     "chapter": "Spreads For Fertility, Conception, Pregnancy, And Babies",
-    "purpose": "This 4-card spread is built for moments when the theme of are you both ready for the life changes a baby will bring is active in your life. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A four-card spread for reading the shared readiness of two people for a significant life transition -- naming each person's genuine state, the quality of their current foundation, and what the transition would most require from both of them.",
     "positions": [
       "Card 1: What does your partner really feel?",
       "Card 2: What do you really feel?",
@@ -899,53 +899,53 @@ SPREADS_JSON = r"""[
       "Card 4: Are the advantages of having a family greater than the disadvantages?"
     ],
     "use": "The Major twenty-two cards.",
-    "when": "Come to this spread when the theme of are you both ready for the life changes a baby will bring is active in your life. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread together if possible, or on behalf of both people if not. Read the individual cards before the relational ones so each position speaks on its own terms."
   },
   {
     "number": 442,
     "slug": "assessing-co-parenting-compatibility-tarot",
     "title": "Assessing Co-Parenting Compatibility Tarot",
     "chapter": "Spreads For Fertility, Conception, Pregnancy, And Babies",
-    "purpose": "Use this 3-card layout when your heart is involved and you need clarity about connection, desire, or commitment. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A three-card spread for the specific dynamic of co-parenting -- reading whether the two people can function as partners in raising a child even when the romantic relationship is not intact or unproven.",
     "positions": [
       "Card 1: Is s/he sufficiently mature, or does s/he need more time to grow up?",
       "Card 2: Would s/he be a loving supportive co-parent?",
       "Card 3: Should I go ahead and try for a baby with him/her, or move on to another relationship/go it alone?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Turn to it when your heart is involved and you need clarity about connection, desire, or commitment. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when co-parenting is either already happening or being seriously considered and the dynamic between the two adults needs to be honestly assessed. Read each position as information about the parenting partnership specifically."
   },
   {
     "number": 467,
     "slug": "legal-victory-and-litigation-outcome",
     "title": "Legal Victory and Litigation Outcome",
     "chapter": "Spreads For Justice, Truth, Compensation, And Inheritance",
-    "purpose": "This one-card practice is for moments when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. It keeps the reading focused so one clear symbol can name the energy, lesson, or invitation most active right now.",
+    "purpose": "A spread for reading the energetic landscape of an active legal case -- what is genuinely supporting your position, what factors are working against it, and what the case is most likely to require before it reaches resolution.",
     "positions": [
       "Card 1: Will judgment go in your favor?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Use it when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when a legal matter is active enough to require strategic attention rather than just patience. The cards address the process as much as the outcome."
   },
   {
     "number": 468,
     "slug": "settlement-vs-going-to-trial-analysis",
     "title": "Settlement vs Going to Trial Analysis",
     "chapter": "Spreads For Justice, Truth, Compensation, And Inheritance",
-    "purpose": "This layout is most useful when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for the specific legal decision of whether to accept a settlement or proceed to trial -- reading what each path genuinely costs and requires, not just in financial terms but in time, energy, and personal integrity.",
     "positions": [
       "Card 1: What are the advantages of settling out of court?",
       "Card 2: What are the disadvantages of settling out of court?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Reach for it when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread before the decision becomes forced by external timing. The cards speak most clearly when there is still real agency over which path is chosen."
   },
   {
     "number": 493,
     "slug": "pet-adoption-readiness-assessment",
     "title": "Pet Adoption Readiness Assessment",
     "chapter": "Spreads For Pets Large And Small",
-    "purpose": "This 7-card spread is built for moments when you are weighing whether buy a pet. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for weighing the emotional desire to adopt a pet against the honest practical readiness to do so -- naming what the animal would genuinely need, what the person is truly ready to provide, and whether the timing serves both.",
     "positions": [
       "Card 1: Will it/how will a pet fit in with your lifestyle?",
       "Card 2: What kind of pet would best fit your living arrangements?",
@@ -956,14 +956,14 @@ SPREADS_JSON = r"""[
       "Card 7: Do you want a pet so much that you are willing to find a way around any difficulty?"
     ],
     "use": "The full deck.",
-    "when": "Come to this spread when you are weighing whether buy a pet. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread before making the adoption commitment rather than after. The cards are most useful as honest preparation rather than reassurance."
   },
   {
     "number": 494,
     "slug": "finding-best-pet-companion-for-your-home",
     "title": "Finding Best Pet Companion for Your Home",
     "chapter": "Spreads For Pets Large And Small",
-    "purpose": "Use this 7-card layout when the theme of choosing the right pet is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A seven-card spread for reading the energetic match between a person and different animal companions -- what kind of presence would best complement the home's current energy, what the person most needs from an animal relationship, and what the animal would need in return.",
     "positions": [
       "Card 1: Are you definite as to the right kind of pet, the species and age, or do you need more time to decide?",
       "Card 2: Do you want more than one pet, to be company for the other? Or is this impractical?",
@@ -974,52 +974,52 @@ SPREADS_JSON = r"""[
       "Card 7: Are you going to be happy together?"
     ],
     "use": "The forty Minor cards, Aces to Tens.",
-    "when": "Turn to it when the theme of choosing the right pet is active in your life. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when you are open to several types of companion and want guidance on which is the best fit rather than already set on a species or breed. Each position speaks to a different dimension of the match."
   },
   {
     "number": 520,
     "slug": "relocation-analysis-for-new-communities",
     "title": "Relocation Analysis for New Communities",
     "chapter": "Neighbors, Neighborhood, And Community Spreads",
-    "purpose": "Use this single-card draw when you are weighing whether move to a particular neighborhood. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
+    "purpose": "A spread for reading the energetic quality of a potential new neighbourhood or community -- what it would genuinely support in your life, where friction might emerge, and whether the timing is right for this particular move.",
     "positions": [
       "Card 1: Is this the right neighborhood for you? (answer depends on the strength of the positive feeling you get from the card)."
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Use it when you are weighing whether move to a particular neighborhood. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when you are seriously weighing a specific location rather than exploring the idea of moving generally. The cards speak more precisely when the choice is real."
   },
   {
     "number": 521,
     "slug": "overcoming-isolation-after-moving",
     "title": "Overcoming Isolation After Moving",
     "chapter": "Neighbors, Neighborhood, And Community Spreads",
-    "purpose": "This layout is most useful when when you move into a new neighborhood and no one comes to greet you. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for the specific difficulty of rebuilding belonging after a significant geographic move -- reading what you need most to reconnect, what is making the process harder than expected, and what first move would most open the door.",
     "positions": [
       "Card 1: Should you knock on a few doors to say",
       "Card 2: Should you wait for them to contact you?"
     ],
     "use": "The forty Minor cards, Aces to Tens.",
-    "when": "Reach for it when when you move into a new neighborhood and no one comes to greet you. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread after the move has already happened and the isolation has set in rather than before. The cards address what is actually happening rather than what might happen."
   },
   {
     "number": 543,
     "slug": "resolving-family-disputes-over-baby-names",
     "title": "Resolving Family Disputes Over Baby Names",
     "chapter": "Spreads For Celebrations",
-    "purpose": "This 2-card spread is built for moments when your heart is involved and you need clarity about connection, desire, or commitment. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for the specific family dynamic around a naming decision -- reading what each side of the dispute actually needs, where the real tension lives beneath the named disagreement, and what resolution would honour everyone without erasing anyone.",
     "positions": [
       "Card 1: Should you call your baby by the name you want, one that will fit into the modern world?",
       "Card 2: Would it be possible/practical to use the desired family choice as a middle name to honor the family (and keep the peace)?"
     ],
     "use": "The forty Minor cards and the twenty-two Major cards.",
-    "when": "Come to this spread when your heart is involved and you need clarity about connection, desire, or commitment. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when the naming conversation has already become strained enough to need a fresh lens. Read each position as information about the people involved, not just the name itself."
   },
   {
     "number": 544,
     "slug": "vedic-baby-name-selection-guide",
     "title": "Vedic Baby Name Selection Guide",
     "chapter": "Spreads For Celebrations",
-    "purpose": "Use this 4-card layout when the theme of how can you decide the right name for your baby is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A four-card spread for choosing a name that carries the energetic resonance you want to offer a child -- reading sound, meaning, and numerological quality as living dimensions of naming rather than aesthetic preferences.",
     "positions": [
       "Card 1: Will you know once your baby is born/comes home which names fit the personality?",
       "Card 2: Are the most likely names ones that will sound as good with a forty-year-old as a four-year-old?",
@@ -1027,14 +1027,14 @@ SPREADS_JSON = r"""[
       "Card 3 . See which cards have the strongest positive meaning. If you need further guidance, see the Numerology Spread ("
     ],
     "use": "The full deck.",
-    "when": "Turn to it when the theme of how can you decide the right name for your baby is active in your life. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when you have a shortlist of names and want deeper guidance on which one is the most genuine fit. Read each card as a distinct dimension of the name's energy rather than a ranked comparison."
   },
   {
     "number": 566,
     "slug": "holiday-travel-destination-picker-tarot",
     "title": "Holiday Travel Destination Picker Tarot",
     "chapter": "Spreads For Travel And Vacations",
-    "purpose": "A practical 5-card spread for times when travel, distance, or relocation is part of the decision. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for reading which travel destination would serve you best in a given period -- not which is most beautiful or affordable but which would offer what your energy most genuinely needs right now.",
     "positions": [
       "Card 1: What do you hope to gain most from your vacation?",
       "Card 2: What are the drawbacks of going on vacation, if any?",
@@ -1043,26 +1043,26 @@ SPREADS_JSON = r"""[
       "Card 5: Will you have a happy vacation?"
     ],
     "use": "The full deck.",
-    "when": "Use it when travel, distance, or relocation is part of the decision. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when you are flexible about destination and want genuine guidance rather than confirmation of a preference already formed. The cards often point to the option you hadn't fully considered."
   },
   {
     "number": 567,
     "slug": "hotel-vs-resort-accommodation-decision",
     "title": "Hotel vs Resort Accommodation Decision",
     "chapter": "Spreads For Travel And Vacations",
-    "purpose": "This one-card practice is for moments when travel, distance, or relocation is part of the decision. It keeps the reading focused so one clear symbol can name the energy, lesson, or invitation most active right now.",
+    "purpose": "A spread for a specific travel choice where the accommodation style meaningfully affects the quality of the experience -- reading which environment would best support rest, adventure, or connection depending on what the trip is actually for.",
     "positions": [
       "Card 1: What factors aren't yet known that might influence the benefits and drawbacks of each choice?"
     ],
     "use": "The whole deck.",
-    "when": "Reach for it when travel, distance, or relocation is part of the decision. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when the choice is genuinely open and the style of experience matters as much as the destination. Read each position as a piece of what the trip needs to provide."
   },
   {
     "number": 591,
     "slug": "breaking-hurdles-to-achieve-success",
     "title": "Breaking Hurdles to Achieve Success",
     "chapter": "Spreads For Life Changes And Transitions, Both Natural And Planned",
-    "purpose": "This 7-card spread is built for moments when you face challenges and obstacles to overcome in order to achieve desired change. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread that maps specific obstacles on the path toward a defined goal -- naming each barrier, its nature, and the specific action or internal shift that would most effectively move past it rather than around it.",
     "positions": [
       "Card 1: Who or what is challenging you?",
       "Card 2: If you ignore the situation, will it pass/the person give up?",
@@ -1073,14 +1073,14 @@ SPREADS_JSON = r"""[
       "Card 7: Will the action open the way to the change you want?"
     ],
     "use": "The full deck.",
-    "when": "Come to this spread when you face challenges and obstacles to overcome in order to achieve desired change. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when you have genuine momentum toward a goal but keep encountering the same type of resistance. Map each obstacle through a different position rather than treating them as a single undifferentiated challenge."
   },
   {
     "number": 592,
     "slug": "navigating-big-career-and-life-crossroads",
     "title": "Navigating Big Career and Life Crossroads",
     "chapter": "Spreads For Life Changes And Transitions, Both Natural And Planned",
-    "purpose": "Use this 9-card layout when the theme of for major life path choices and transitions is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A nine-card spread for major life transitions where multiple dimensions -- career, relationships, identity, timing -- are all shifting at once. It gives enough room for the full scope of the change to be held without collapsing into a single question.",
     "positions": [
       "Card 1: Where you are in life right now generally. Are you happy with this?",
       "Card 2: Have you met the person you want to share your future life path with? Will you meet them soon, or do you prefer to stay independent?",
@@ -1093,14 +1093,14 @@ SPREADS_JSON = r"""[
       "Card 9: What is your secret dream, and can you/how can you achieve it?"
     ],
     "use": "The full deck.",
-    "when": "Turn to it when the theme of for major life path choices and transitions is active in your life. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread at a genuine inflection point rather than during a period of general uncertainty. The spread works best when there is a real decision or transition at its centre."
   },
   {
     "number": 593,
     "slug": "overcoming-stagnation-and-feeling-stuck",
     "title": "Overcoming Stagnation and Feeling Stuck",
     "chapter": "Spreads For Life Changes And Transitions, Both Natural And Planned",
-    "purpose": "A practical 5-card spread for times when you want to make a major life change but feel stuck. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for diagnosing the specific nature of stagnation -- whether it is internal, circumstantial, or a signal that the direction itself needs reassessing -- and naming the most genuine first movement toward change.",
     "positions": [
       "Card 1: What practical and underlying factors are holding you back from making those changes?",
       "Card 2: Do you really want change, or do you just feel you ought to?",
@@ -1109,28 +1109,28 @@ SPREADS_JSON = r"""[
       "Card 5: If you go all out for change and do not let anyone or anything stand in your way, will you succeed?"
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Use it when you want to make a major life change but feel stuck. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when stuck has been the felt experience for long enough that the cause is no longer obvious. Read the resistance position before the action one."
   },
   {
     "number": 622,
     "slug": "quick-zodiac-guidance-reading",
     "title": "Quick Zodiac Guidance Reading",
     "chapter": "Astrological Spreads, Part 1",
-    "purpose": "This layout is most useful when you want structured guidance around fast answer sun sign spread. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread that pairs one tarot card with your sun sign's current energetic themes -- giving quick, solar-calendar-informed guidance on what to lean into and what to navigate carefully in the present period.",
     "positions": [
       "Card 1: The advantages of going ahead with what you are asking about.",
       "Card 2: The disadvantages of what you are asking about.",
       "Card 3: The outcome of acting/going forward."
     ],
     "use": "",
-    "when": "Reach for it when you want structured guidance around fast answer sun sign spread. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread for a short, grounded reading when you want something oriented by astrological season rather than a specific personal question. Read the single card through the lens of your sign's current themes."
   },
   {
     "number": 623,
     "slug": "aries-energy-bold-initiative-boost",
     "title": "Aries Energy Bold Initiative Boost",
     "chapter": "Astrological Spreads, Part 1",
-    "purpose": "This 8-card spread is built for moments when you are working with the theme of aries spread of action. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread tuned to Aries energy -- fire, bold action, and the initiating force -- for moments when a new beginning needs to be activated with the full force of the ram's directness rather than cautious strategy.",
     "positions": [
       "Card 1: Where in your life do you most need action?",
       "Card 2: How can you best assert yourself in this matter?",
@@ -1142,14 +1142,14 @@ SPREADS_JSON = r"""[
       "Card 8: The actual outcome."
     ],
     "use": "The full deck.",
-    "when": "Come to this spread when you are working with the theme of aries spread of action. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread at the start of a new lunar cycle, a new project, or any moment when decisive action is clearly the need. Let the cards clarify which specific action is ready to be taken now rather than which general direction feels interesting."
   },
   {
     "number": 641,
     "slug": "weekly-navagraha-planetary-guide",
     "title": "Weekly Navagraha Planetary Guide",
     "chapter": "Astrological Spreads, Part 2: The Planetary Spreads",
-    "purpose": "Use this 7-card layout when you are working with the theme of seven day planet spread. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A seven-card spread mapped to the seven classical planets of Vedic astrology -- reading the current influence of each planetary energy on your life and identifying where each day's challenge or opportunity is most likely to concentrate.",
     "positions": [
       "Card 1: Sunday, day of the Sun. What is your greatest potential or talent/how can you manifest it?",
       "Card 2: Monday, day of the Moon. What is your current/long-term dream/is it attainable?",
@@ -1160,14 +1160,14 @@ SPREADS_JSON = r"""[
       "Card 7: Saturday, the day of Saturn. What is your greatest source of security/stability/your greatest limitation to overcome?"
     ],
     "use": "",
-    "when": "Turn to it when you are working with the theme of seven day planet spread. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread at the beginning of the week and read each planetary card for the day it governs rather than all seven at once. The guidance becomes more specific and actionable when it is applied one day at a time."
   },
   {
     "number": 642,
     "slug": "overcoming-imposter-syndrome-for-success",
     "title": "Overcoming Imposter Syndrome for Success",
     "chapter": "Astrological Spreads, Part 2: The Planetary Spreads",
-    "purpose": "A practical 4-card spread for times when you are working with the theme of sun spread for going for a major achievement even if you suspect you may be out of your league. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for reading the internal landscape of professional self-doubt -- naming the specific belief that is generating the impostor feeling, what it is actually protecting, and what honest inner recognition would most change the relationship with your own competence.",
     "positions": [
       "Card 1: Is it",
       "Card 2: What unique qualities do you have that make you stand out?",
@@ -1175,14 +1175,14 @@ SPREADS_JSON = r"""[
       "Card 4: If not, will you know how to succeed next time you try?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Use it when you are working with the theme of sun spread for going for a major achievement even if you suspect you may be out of your league. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when the gap between your external success and your internal sense of legitimacy has become large enough to affect your decisions. Read the origin position before the action card."
   },
   {
     "number": 657,
     "slug": "new-moon-rituals-for-fresh-beginnings",
     "title": "New Moon Rituals for Fresh Beginnings",
     "chapter": "Moon Spreads",
-    "purpose": "This layout is most useful when you want structured guidance around crescent moon spread if you are starting a new phase of your life. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for working with new moon energy -- setting intentions with clarity, naming what needs to be released from the previous cycle, and identifying the specific seed most ready to be planted in the new lunar phase.",
     "positions": [
       "Card 1: What do you hope for most from this new beginning, not just outwardly?",
       "Card 2: What are the outer and inner disadvantages/worries about this new phase?",
@@ -1191,14 +1191,14 @@ SPREADS_JSON = r"""[
       "Card 5: Will your new beginning bring happiness soon, or take months?"
     ],
     "use": "The forty Minor cards, Aces to Tens.",
-    "when": "Reach for it when you want structured guidance around crescent moon spread if you are starting a new phase of your life. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread within the two days around the new moon. The reading works best when used as part of a quiet intentional ritual rather than as a quick check-in."
   },
   {
     "number": 658,
     "slug": "manifesting-fast-secondary-income",
     "title": "Manifesting Fast Secondary Income",
     "chapter": "Moon Spreads",
-    "purpose": "This 6-card spread is built for moments when a work, money, or long-range practical decision needs a steadier reading. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for reading the nearest genuine path toward additional income -- naming which skill or resource is most ready to be activated, what is holding the path back, and what concrete first action would move the fastest.",
     "positions": [
       "Card 1: Could any of your existing sources of money offer short-term increase through extra hours/input?",
       "Card 2: Are there any sources/assets from which you could borrow extra money/sell to make up the shortfall?",
@@ -1208,28 +1208,28 @@ SPREADS_JSON = r"""[
       "Card 6: Will you get the money by the time of the next crescent moon?"
     ],
     "use": "The forty Minor cards and the sixteen Court cards.",
-    "when": "Come to this spread when a work, money, or long-range practical decision needs a steadier reading. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when financial need is genuinely pressing and you need to identify the nearest available door rather than the ideal long-term solution. Work through each position before settling on a direction."
   },
   {
     "number": 684,
     "slug": "launching-freelance-and-solopreneur-gigs",
     "title": "Launching Freelance and Solopreneur Gigs",
     "chapter": "Moon Zodiac Spreads",
-    "purpose": "Use this 3-card layout when you want structured guidance around waxing moon in aries spread for launching a self employed venture. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread for reading the energetic and practical readiness to launch independent work -- naming what makes your offering genuinely unique, where the first clients are most likely to come from, and what mindset most supports a sustainable start.",
     "positions": [
       "Card 1: What advantages are there in your going for self-employment now?",
       "Card 2: What disadvantages are there in launching now?",
       "Card 3: Go for it, wait, or abandon the idea?"
     ],
     "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
-    "when": "Turn to it when you want structured guidance around waxing moon in aries spread for launching a self employed venture. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread before formal launch rather than after -- when there is still time for the cards' guidance to shape the approach rather than assess the result."
   },
   {
     "number": 685,
     "slug": "breaking-free-from-toxic-family-dynamics",
     "title": "Breaking Free from Toxic Family Dynamics",
     "chapter": "Moon Zodiac Spreads",
-    "purpose": "A practical 8-card spread for times when family dynamics are emotional, layered, and not easily solved by one conversation. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "An eight-card spread for reading the psychological and energetic architecture of entrenched family toxicity -- naming the role you currently play, what makes breaking free difficult, and what specific internal shift creates the most genuine change.",
     "positions": [
       "Card 1: Do I/how do I get the strength to follow my own path?",
       "Card 2: What is the worst aspect of the interference/domination?",
@@ -1241,14 +1241,14 @@ SPREADS_JSON = r"""[
       "Card 8: What will I have achieved by the next full moon in Aries?"
     ],
     "use": "The full deck.",
-    "when": "Use it when family dynamics are emotional, layered, and not easily solved by one conversation. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when you want to understand the dynamic rather than manage your response to it. Read the role position and the root position before looking at the exit card."
   },
   {
     "number": 720,
     "slug": "healing-trauma-loss-and-betrayal-guide",
     "title": "Healing Trauma Loss and Betrayal Guide",
     "chapter": "Moon-Angel Spreads",
-    "purpose": "This layout is most useful when grief, mourning, or the search for meaning after loss is active. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for reading the current stage of healing after a significant wound -- naming where the grief or trauma is still active, what it most needs to move through, and what specific quality of attention would most genuinely support the next stage of recovery.",
     "positions": [
       "Card 1: What should you temporarily withdraw from or take a step back from until you feel stronger?",
       "Card 2: What should you permanently withdraw from or not return to?",
@@ -1259,14 +1259,14 @@ SPREADS_JSON = r"""[
       "Card 7: Will you find peace and harmony again?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Reach for it when grief, mourning, or the search for meaning after loss is active. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when enough time has passed for initial shock to have given way to the slower work of healing. The cards speak most clearly in the middle stages, when the wound is real but the direction forward is not yet obvious."
   },
   {
     "number": 721,
     "slug": "divine-signs-for-uncertain-crossroads",
     "title": "Divine Signs for Uncertain Crossroads",
     "chapter": "Moon-Angel Spreads",
-    "purpose": "This 7-card spread is built for moments when you want structured guidance around crescent moon angel spread for new beginnings in any part of your life if you are unsure. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for moments when the rational mind has reached its limit and guidance is being sought from a wider intelligence -- reading the signs, synchronicities, and symbolic messages that may be pointing toward a direction not yet consciously seen.",
     "positions": [
       "Card 1: Is your new beginning in the right direction for you?",
       "Card 2: S",
@@ -1277,14 +1277,14 @@ SPREADS_JSON = r"""[
       "Card 7: How far will you have progressed by the next crescent moon?"
     ],
     "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
-    "when": "Come to this spread when you want structured guidance around crescent moon angel spread for new beginnings in any part of your life if you are unsure. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread in a state of genuine openness rather than with a preferred outcome in mind. Sit quietly with each card before interpreting it so the symbolic meaning has room to arrive on its own terms."
   },
   {
     "number": 741,
     "slug": "angelic-protection-for-loneliness-and-fear",
     "title": "Angelic Protection for Loneliness and Fear",
     "chapter": "Angel And Archangel Spreads",
-    "purpose": "Use this 6-card layout when you want structured guidance around guardian angel spread if you are feeling alone or afraid. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread for moments of genuine fear or isolation -- reading the specific quality of protection and support available, what is most needed for the fear to ease, and what form of comfort would be most genuinely healing rather than merely reassuring.",
     "positions": [
       "Card 1: How can you feel the presence of your guardian angel in your life at this time?",
       "Card 2: What sign in the everyday world can your angel reveal so you know you are not alone?",
@@ -1294,14 +1294,14 @@ SPREADS_JSON = r"""[
       "Card 6: What special blessings will your angel bring into your life?"
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Turn to it when you want structured guidance around guardian angel spread if you are feeling alone or afraid. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when you are in a state of genuine distress rather than mild uncertainty. Read the protection position first, and stay with it long enough to actually feel what it is offering before moving on."
   },
   {
     "number": 742,
     "slug": "turning-temporary-gigs-into-full-time-jobs",
     "title": "Turning Temporary Gigs into Full Time Jobs",
     "chapter": "Angel And Archangel Spreads",
-    "purpose": "A practical 5-card spread for times when a work, money, or long-range practical decision needs a steadier reading. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for reading what it would take to convert a temporary working arrangement into a stable one -- naming what the employer or market needs to see, what you are genuinely ready to offer, and what specific action would most advance the transition.",
     "positions": [
       "Card 1: Will your current workplace offer more permanent employment if you ask?",
       "Card 2: Is there one particular place you have recently worked where you did especially well that would put you on a future vacancy list?",
@@ -1310,38 +1310,38 @@ SPREADS_JSON = r"""[
       "Card 5: Will you succeed?"
     ],
     "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
-    "when": "Use it when a work, money, or long-range practical decision needs a steadier reading. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when you are genuinely interested in making a particular arrangement permanent rather than considering the possibility abstractly. The more specific the situation, the more precise the guidance."
   },
   {
     "number": 773,
     "slug": "healing-inner-child-reclaiming-joy",
     "title": "Healing Inner Child and Reclaiming Joy",
     "chapter": "Crystal Tarot Spreads",
-    "purpose": "Use this single-card draw when the theme of spread of the fool inner child if you seek a new beginning is active in your life. Its power comes from simplicity: one card, one honest question, and one message you can carry straight into the day.",
+    "purpose": "A single-card draw for contact with the part of yourself that existed before self-doubt and learned limitation narrowed the experience of what is possible. The card names one quality of that original self that is still available and can be actively reclaimed.",
     "positions": [
       "Card 1: What will be the results of your new beginning?"
     ],
     "use": "",
-    "when": "Reach for it when the theme of spread of the fool inner child if you seek a new beginning is active in your life. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when the protective mechanisms that once served you have begun to cost more than they protect. Hold the card's meaning as an active invitation rather than a passive description."
   },
   {
     "number": 774,
     "slug": "manifestation-strategy-for-startups",
     "title": "Manifestation Strategy for Startups",
     "chapter": "Crystal Tarot Spreads",
-    "purpose": "A one-card spread for times when the theme of spread of the magician for the success of an entrepreneurial venture is active in your life. Instead of multiplying possibilities, it asks the deck to speak with precision and economy.",
+    "purpose": "A one-card spread for the very beginning of a venture -- naming the single most important energetic quality needed to support a new business through its earliest and most fragile stage. One clear signal is more useful here than a complex reading.",
     "positions": [
       "Card 1: Will your venture succeed immediately/take longer to evolve?"
     ],
     "use": "",
-    "when": "Come to this spread when the theme of spread of the magician for the success of an entrepreneurial venture is active in your life. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread before the formal start date of a new project or business. The single card works best as a centring focus to return to throughout the launch phase rather than as a one-time message."
   },
   {
     "number": 796,
     "slug": "karmic-destiny-crossroads-tarot",
     "title": "Karmic Destiny Crossroads Tarot",
     "chapter": "Spreads For Foretelling Your Destiny",
-    "purpose": "Use this 5-card layout when you want structured guidance around four winds spread of fate. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread for reading the soul-level dimension of a major decision -- what past pattern this choice is being shaped by, what the crossroads is actually asking you to learn, and which direction serves the larger arc of your development rather than only the immediate desire.",
     "positions": [
       "Card 1: Boreas, the North Wind, the actual situation/the most likely effects if nothing changes/you do nothing.",
       "Card 2: Eurus, the East Wind, logically what can be done to positively affect matters.",
@@ -1350,24 +1350,24 @@ SPREADS_JSON = r"""[
       "Card 5: The result of all these factors coming together."
     ],
     "use": "The full deck.",
-    "when": "Turn to it when you want structured guidance around four winds spread of fate. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when a decision feels unusually weighted, as though more is at stake than the practical outcome alone. Read the karmic position before the practical ones."
   },
   {
     "number": 797,
     "slug": "pendulum-divination-for-hidden-answers",
     "title": "Pendulum Divination for Hidden Answers",
     "chapter": "Spreads For Foretelling Your Destiny",
-    "purpose": "A practical 6-card spread for times when you are working with the theme of ring of fate pendulum spread for asking a specific question about an unknown aspect of your future. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread that uses the pendulum-like quality of the final card to name the hidden factor most shaping the situation -- the thing that the conscious mind has not yet been able to articulate or admit. It is a diagnostic spread rather than a roadmap.",
     "positions": [],
     "use": "The twenty-two Major cards.",
-    "when": "Use it when you are working with the theme of ring of fate pendulum spread for asking a specific question about an unknown aspect of your future. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when you suspect there is something operating beneath the obvious narrative that needs to be surfaced before any other guidance can be accurate. Hold the hidden factor position open rather than pre-loading it with your guess."
   },
   {
     "number": 820,
     "slug": "rebalancing-yin-and-yang-energies",
     "title": "Rebalancing Yin and Yang Energies",
     "chapter": "Spreads For Self-Awareness And Knowledge And Planning Your Life Path",
-    "purpose": "This layout is most useful when you are working with the theme of coming into balance spread. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for reading the current imbalance between receptive and active energies -- naming which is depleted and which is overdeveloped, and what specific reorientation would restore the quality of balance the situation most needs.",
     "positions": [
       "Card 1: What/who really caused/is causing the chaos?",
       "Card 2: Should you intervene, or wait for things to settle?",
@@ -1376,48 +1376,48 @@ SPREADS_JSON = r"""[
       "Card 5: How can you prevent others' future chaos affecting your lasting harmony?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Reach for it when you are working with the theme of coming into balance spread. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread when life feels consistently one-directional -- when everything is either forcing or waiting, driving or drifting, without the natural alternation that sustains genuine wellbeing."
   },
   {
     "number": 821,
     "slug": "shadow-work-discovery-tarot-reading",
     "title": "Shadow Work Discovery Tarot Reading",
     "chapter": "Spreads For Self-Awareness And Knowledge And Planning Your Life Path",
-    "purpose": "This 3-card spread is built for moments when you are working with the theme of hidden self spread. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for reading what is operating below the surface of conscious awareness -- the disowned patterns, defended wounds, and projected energies that are quietly shaping behaviour and outcomes. It asks what you are not yet ready to see clearly.",
     "positions": [
       "Card 1: How you are seen by the world.",
       "Card 2: The hidden self the world never sees.",
       "Card 3: How you can combine the two, so you feel at home in the world without becoming too vulnerable."
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Come to this spread when you are working with the theme of hidden self spread. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when you are prepared to encounter what is uncomfortable rather than seeking confirmation or comfort. Move through each position slowly enough that the shadow can show itself rather than being named from the outside."
   },
   {
     "number": 848,
     "slug": "deep-tarot-card-meditation-techniques",
     "title": "Deep Tarot Card Meditation Techniques",
     "chapter": "Combining Tarot Spreads And Psychic Powers",
-    "purpose": "Use this 6-card layout when the theme of visualizing your chosen card in your mind s eye for an in depth understanding into the card s relevance to your life is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A six-card layout for developing a genuine contemplative relationship with a specific card rather than understanding its abstract definition. Each position opens a different layer of the card's symbolism as it applies to the reader's current experience.",
     "positions": [],
     "use": "Twenty-two Major cards and thirty-six Minor cards, Twos to Tens (Aces aren't detailed enough).",
-    "when": "Turn to it when the theme of visualizing your chosen card in your mind s eye for an in depth understanding into the card s relevance to your life is active in your life. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when you want to move past intellectual understanding and spend real time inside a single card's meaning. Allow at least an hour rather than moving through it like a conventional reading."
   },
   {
     "number": 849,
     "slug": "channeled-spirit-automatic-writing-guide",
     "title": "Channeled Spirit Automatic Writing Guide",
     "chapter": "Combining Tarot Spreads And Psychic Powers",
-    "purpose": "A practical 6-card spread for times when you want the reading to reach hidden, symbolic, or intuitive layers of the question. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for preparing the internal conditions most supportive of channelled writing or spirit communication -- reading what is genuinely available, what is creating interference, and what quality of receptivity would most allow the guidance to come through clearly.",
     "positions": [],
     "use": "The full deck.",
-    "when": "Use it when you want the reading to reach hidden, symbolic, or intuitive layers of the question. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread before sitting down to write rather than during or after. The preparation positions are often more important than the message positions."
   },
   {
     "number": 870,
     "slug": "quarterly-solstice-and-equinox-reading",
     "title": "Quarterly Solstice and Equinox Reading",
     "chapter": "Spreads For Festivals And Seasons",
-    "purpose": "This layout is most useful when you want to read a longer cycle rather than a single event. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A seasonal spread aligned to the solar calendar's four turning points -- reading the primary quality of the quarter ahead, what needs to be completed before the next threshold, and what the season's energy most wants to support.",
     "positions": [
       "Card 1: Spring: What is growing/needs to grow in your life?",
       "Card 2: Summer: How can you best gain recognition/rewards for your efforts?",
@@ -1426,14 +1426,14 @@ SPREADS_JSON = r"""[
       "Card 5: Which will be my best season in the year ahead?"
     ],
     "use": "The forty Minor cards, Aces to Tens.",
-    "when": "Reach for it when you want to read a longer cycle rather than a single event. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread within the few days around a solstice or equinox. Reading it as close to the actual solar threshold as possible gives the most accurate energetic attunement."
   },
   {
     "number": 871,
     "slug": "monthly-energetic-alignment-roadmap",
     "title": "Monthly Energetic Alignment Roadmap",
     "chapter": "Spreads For Festivals And Seasons",
-    "purpose": "This 12-card spread is built for moments when you want to read a longer cycle rather than a single event. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A month-by-month spread that reads each of the next several months as a distinct energetic chapter rather than a uniform timeline. It shows where concentration, rest, relationship, and practicality each have their natural season.",
     "positions": [
       "Card 1: January: How can you make a wise investment/financial decision?",
       "Card 2: February: How can you improve your social life?",
@@ -1449,14 +1449,14 @@ SPREADS_JSON = r"""[
       "Card 12: December: Should you enroll to learn something new/take an opportunity to extend your skills when the New Year begins?"
     ],
     "use": "The full deck.",
-    "when": "Come to this spread when you want to read a longer cycle rather than a single event. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when you want to understand the rhythm of the months ahead rather than plan their specific events. Lay all positions before reading any so the monthly pattern can be seen as a whole before individual details are examined."
   },
   {
     "number": 896,
     "slug": "choosing-legal-battle-vs-settlement",
     "title": "Choosing Legal Battle vs Settlement",
     "chapter": "Tarot Spreads And The Saints",
-    "purpose": "Use this 5-card layout when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread for the decision between litigation and resolution -- reading not just financial outcome but the cost in time, energy, and personal integrity of each path, and which one serves the larger truth of the situation.",
     "positions": [
       "Card 1: If you carry on to the bitter end and win, will you recoup your expenses and more and be vindicated?",
       "Card 2: If you lose the case, will you suffer a severe financial loss because of court costs?",
@@ -1465,28 +1465,28 @@ SPREADS_JSON = r"""[
       "Card 5: Should you risk all?"
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Turn to it when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread before the decision point is forced by external legal timing. The cards give most precise guidance when there is still genuine agency over which path is taken."
   },
   {
     "number": 897,
     "slug": "resolving-bitter-family-feuds-quietly",
     "title": "Resolving Bitter Family Feuds Quietly",
     "chapter": "Tarot Spreads And The Saints",
-    "purpose": "A practical 3-card spread for times when family dynamics are emotional, layered, and not easily solved by one conversation. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A three-card spread for reading the core of an entrenched family conflict -- what each party's unacknowledged need actually is, where the wound lives beneath the grievance, and what form of resolution would allow both sides to move forward without requiring one to be declared wrong.",
     "positions": [
       "Card 1: Can/should you deal with the underlying unhappiness that is causing the problem, or try to resolve it once and for all?",
       "Card 2: Is anybody causing trouble behind the scenes and offloading the blame?",
       "Card 3: Is this a long-standing problem that can only have a temporary fix to avoid immediate disruption?"
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Use it when family dynamics are emotional, layered, and not easily solved by one conversation. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when you want to understand the feud's root rather than rehearse its history. Read the underlying need positions before the resolution card."
   },
   {
     "number": 921,
     "slug": "athletic-performance-and-fitness-tarot",
     "title": "Athletic Performance and Fitness Tarot",
     "chapter": "The Go-For-It Spreads: Health, Fitness, Leisure, And Sports",
-    "purpose": "This layout is most useful when body confidence, wellbeing, or physical rhythm is part of the question. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for reading the energetic and psychological dimensions of physical performance -- what is genuinely supporting athletic capacity right now, where mental or emotional patterns are limiting physical potential, and what specific focus would most improve the next training phase.",
     "positions": [
       "Card 1: Should you undertake serious training with the aim of turning professional?",
       "Card 2: Would you be happier just getting fit or joining a team for pleasure?",
@@ -1494,14 +1494,14 @@ SPREADS_JSON = r"""[
       "Card 4: If you go for the top, will you succeed totally/partly/be happy?"
     ],
     "use": "The full deck.",
-    "when": "Reach for it when body confidence, wellbeing, or physical rhythm is part of the question. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread during an active training period rather than at its start. The cards speak most precisely when there is already real effort to reflect on."
   },
   {
     "number": 922,
     "slug": "overcoming-body-image-anxiety-strategies",
     "title": "Overcoming Body Image Anxiety Strategies",
     "chapter": "The Go-For-It Spreads: Health, Fitness, Leisure, And Sports",
-    "purpose": "This 7-card spread is built for moments when body confidence, wellbeing, or physical rhythm is part of the question. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for reading the emotional and psychological landscape beneath body image distress -- naming where the negative self-assessment originated, what it is protecting, and what honest inner relationship with the body would most genuinely shift the experience.",
     "positions": [
       "Card 1: How you see yourself right now/what you feel is wrong or unattractive.",
       "Card 2: What, from the past/childhood/teenage years, made you doubt your attractiveness.",
@@ -1512,14 +1512,14 @@ SPREADS_JSON = r"""[
       "Card 7: Will anyone perhaps implicated in"
     ],
     "use": "",
-    "when": "Come to this spread when body confidence, wellbeing, or physical rhythm is part of the question. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when body-related anxiety has been present long enough to suggest its roots are worth examining. Approach each card as honest information rather than looking for reassurance."
   },
   {
     "number": 951,
     "slug": "embracing-alternative-non-traditional-lives",
     "title": "Embracing Alternative Non-Traditional Lives",
     "chapter": "Spreads For Alternative Lifestyles, Doing Your Own Thing, And Living Your Own Way",
-    "purpose": "Use this 5-card layout when the theme of breaking down the walls that stop you seeking an alternative lifestyle is active in your life. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A five-card spread for reading the internal and external landscape of choosing a path that does not follow conventional expectations -- what is genuinely pulling you toward it, what you may need to grieve in leaving the familiar behind, and what practical foundation the alternative path actually requires.",
     "positions": [
       "Card 1: The barriers of convention that may still hold you back through the disapproval of others and all those old voices from childhood.",
       "Card 2: The wall of economic stability: How you would manage financially if you gave up your steady day job to earn money based on your initiative and ingenuity.",
@@ -1528,14 +1528,14 @@ SPREADS_JSON = r"""[
       "Card 5: The way of freedom."
     ],
     "use": "The full deck.",
-    "when": "Turn to it when the theme of breaking down the walls that stop you seeking an alternative lifestyle is active in your life. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when you are genuinely considering a non-conventional direction rather than testing whether you are allowed to want it. The cards speak to what the path requires, not whether you deserve it."
   },
   {
     "number": 952,
     "slug": "managing-animal-sanctuaries-and-wildlife",
     "title": "Managing Animal Sanctuaries and Wildlife",
     "chapter": "Spreads For Alternative Lifestyles, Doing Your Own Thing, And Living Your Own Way",
-    "purpose": "A practical 4-card spread for times when a meaningful life change feels exciting but also logistically demanding. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for reading the energetic and practical dimensions of caring for animals in a structured context -- what the work most needs from you right now, where burnout or overwhelm are accumulating, and what specific support would most sustain both the animals and the person caring for them.",
     "positions": [
       "Card 1: Could/should you take it over even though it would need time and resources to get it up and running?",
       "Card 2: Would it be better to turn the offer down and look for land/buildings suitable for conversion to fulfill your own blueprint?",
@@ -1543,14 +1543,14 @@ SPREADS_JSON = r"""[
       "Card 4: Will your dreams of saving wildlife materialize?"
     ],
     "use": "The forty Minor cards, Aces to Tens.",
-    "when": "Use it when a meaningful life change feels exciting but also logistically demanding. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when the work has been heavy long enough to make you wonder whether you are genuinely sustaining it or merely enduring it. The cards speak to sustainability, not just to commitment."
   },
   {
     "number": 976,
     "slug": "evaluating-casual-sex-vs-emotional-bond",
     "title": "Evaluating Casual Sex vs Emotional Bond",
     "chapter": "Passion And Temptation Spreads",
-    "purpose": "This layout is most useful when your heart is involved and you need clarity about connection, desire, or commitment. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A spread for reading the genuine desires and unspoken needs beneath a romantic or sexual situation -- what each person is actually seeking, where those needs align or diverge, and what honest communication would most prevent the situation from becoming regrettable.",
     "positions": [
       "Card 1: Are you happy with this arrangement for now/for the foreseeable future?",
       "Card 2: Do you want to spend time together/go on vacation, but your partner is not free?",
@@ -1558,14 +1558,14 @@ SPREADS_JSON = r"""[
       "Card 4: Are you outgrowing the relationship as fun but going nowhere?"
     ],
     "use": "The sixteen Court cards.",
-    "when": "Reach for it when your heart is involved and you need clarity about connection, desire, or commitment. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread before the situation progresses to a point where clarity would be harder to act on. The cards are most useful as early information rather than retrospective analysis."
   },
   {
     "number": 977,
     "slug": "deciphering-mixed-intimacy-signals-in-love",
     "title": "Deciphering Mixed Intimacy Signals in Love",
     "chapter": "Passion And Temptation Spreads",
-    "purpose": "This 6-card spread is built for moments when your heart is involved and you need clarity about connection, desire, or commitment. It separates the question into readable parts so the cards can show motive, pressure, and likely direction instead of offering a flat yes-or-no.",
+    "purpose": "A spread for reading a romantic situation where the signals from one person are inconsistent -- naming what the mixed messages most likely indicate, what the person sending them may not yet be ready to say, and what approach would most help you respond authentically rather than reactively.",
     "positions": [
       "Card 1: Is your new love generally shy/finds it hard to show affection?",
       "Card 2: Has your love come out of a bad",
@@ -1575,14 +1575,14 @@ SPREADS_JSON = r"""[
       "Card 6: If the relationship is otherwise good and sex is seen as a serious step to commitment by your partner, should you wait until your partner is ready?"
     ],
     "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
-    "when": "Come to this spread when your heart is involved and you need clarity about connection, desire, or commitment. It works best when you can stay with every position long enough to hear the full message."
+    "when": "Come to this spread when confusion about another person's intentions has been persistent enough to affect your own behaviour and decisions. Read the other person's position with genuine curiosity rather than a hypothesis already formed."
   },
   {
     "number": 989,
     "slug": "grief-counseling-for-sudden-accidental-death",
     "title": "Grief Counseling for Sudden Accidental Death",
     "chapter": "Spreads For Grief And Loss",
-    "purpose": "Use this 6-card layout when friendship patterns or social distance are weighing on you. It gives the reading enough room to reveal what is driving the situation, what deserves attention first, and where the energy is trying to move.",
+    "purpose": "A spread for navigating the specific shock and disorientation of sudden, traumatic loss -- reading what the grief most needs to begin moving through, what support is genuinely available, and what the soul of the departed may most want the living to receive.",
     "positions": [
       "Card 1: Do you have closure why/how the accident happened/justice against anyone to blame?",
       "Card 2: If not, can this/how can justice/closure be obtained, if necessary by increasing pressure for justice/an official inquiry?",
@@ -1592,14 +1592,14 @@ SPREADS_JSON = r"""[
       "Card 6: What can you do in your life that they planned to do in order to fulfill their wishes?"
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Turn to it when friendship patterns or social distance are weighing on you. Leave enough space afterward to notice what the cards are saying together, not just one by one."
+    "when": "Come to this spread when the initial shock has begun to give way to the longer grief, and when there is enough stillness to sit with whatever the cards bring. This is a spread for gentleness above all else."
   },
   {
     "number": 990,
     "slug": "coping-with-unresolved-suspicious-loss",
     "title": "Coping with Unresolved Suspicious Loss",
     "chapter": "Spreads For Grief And Loss",
-    "purpose": "A practical 7-card spread for times when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. Rather than rushing to a verdict, it lets the cards map the deeper pattern underneath the question.",
+    "purpose": "A spread for grief that is complicated by unanswered questions -- reading what the grief itself needs separate from the need for answers, what is making it hardest to find peace, and what the person who is gone would most want the grieving person to receive.",
     "positions": [
       "Card 1: Do the circumstances of the death go against your relative's pattern of behavior/where they would have been/had unexplained injuries?",
       "Card 2: Was your relative worried but wouldn't explain why/was getting strange phone calls/had dubious friends/connections with drugs?",
@@ -1610,14 +1610,14 @@ SPREADS_JSON = r"""[
       "Card 7: Will you get justice if you persist?"
     ],
     "use": "The full deck.",
-    "when": "Use it when you need a steadier reading on justice, fairness, and what the cost of pursuing truth may be. Give yourself enough quiet to read the spread as a pattern rather than as isolated card meanings."
+    "when": "Come to this spread when the loss has been present long enough for the initial shock to have settled and the harder, slower grief has taken its place. Read the unresolved position without demanding it provide certainty."
   },
   {
     "number": 1001,
     "slug": "birthday-solar-return-planetary-map",
     "title": "Birthday Solar Return Planetary Map",
     "chapter": "Spread 1001",
-    "purpose": "This layout is most useful when you want to review the year ahead in a broad, structured way. Its strength is that it slows the reading down and makes each layer of the story easier to see clearly.",
+    "purpose": "A birthday spread for reading the dominant energetic themes of the personal year ahead -- what the solar return is activating, what is being completed from the previous year, and what this year most wants to grow through you. It reads a personal year as a whole arc rather than a collection of events.",
     "positions": [
       "Card 1 that remains is your overall year theme;",
       "Card 2 is what is unexpected in the year ahead;",
@@ -1625,7 +1625,7 @@ SPREADS_JSON = r"""[
       "Card 4 is the challenges to be overcome in the year ahead."
     ],
     "use": "Use the full deck, removing the Death and Devil cards before laying out the year review.",
-    "when": "Reach for it when you want to review the year ahead in a broad, structured way. The reading becomes stronger when you can sit with the whole layout instead of chasing only the first dramatic answer."
+    "when": "Come to this spread on or near your birthday, within the solar return window. Lay all cards before reading any so the year's full pattern can be seen before individual months or themes are examined."
   }
 ]"""
 SPREADS: list[dict[str, Any]] = json.loads(SPREADS_JSON)
@@ -1970,11 +1970,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "ace",
-    "upright": "Upright, Ace of Wands brings the first opening of the suit into contact with fire, appetite, and forward motion. The reading strengthens when you let the suit behave exactly as it is built to behave. With Ace of Wands, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Ace of Wands reversed suggests an opening that is present but not yet trusted under strain within impulse, frustration, and misdirected heat. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Ace of Wands, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "For relationships, Ace of Wands speaks to a beginning that changes the emotional tone between people within the field of desire, attraction, and chemistry. With Ace of Wands, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "Ace of Wands around career matters often reveals an opening, initiative, or first spark of possibility inside ambition, leadership, and enterprise. Ace of Wands often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "In health readings, Ace of Wands can describe a fresh chance to reset the body's direction around stamina, motivation, and burnout risk. The body-level lesson of Ace of Wands often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Ace of Wands marks the first moment of genuine creative impulse -- before doubt, before planning, when the spark is cleaner than any argument against it. Something new is trying to begin, and this card says yes.",
+    "reversed": "Reversed, Ace of Wands points to an impulse that fired prematurely, fizzled before it could be tested, or was delayed by something external. The energy is still present but may need better timing or a clearer intention before it can ignite.",
+    "love": "In love, Ace of Wands brings bold attraction, a new relationship that starts with unmistakable chemistry, or the return of desire to something that had grown routine.",
+    "career": "In career, Ace of Wands points to a new project, idea, or creative direction that is ready to be launched before all the conditions are perfect.",
+    "health": "For wellbeing, Ace of Wands reflects renewed energy, physical vitality, or the impulse to start a new health routine before the habit has had time to form.",
     "imagery": "Ace of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises beginnings and pure potential."
   },
   {
@@ -1983,11 +1983,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "02",
-    "upright": "Two of Wands upright shows a living balance between two forces working through fire, appetite, and forward motion. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Two of Wands is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Two of Wands shows indecision or imbalance between competing pulls getting tangled in the shadow side of impulse, frustration, and misdirected heat. Read it as a signal to reset the pace before the pattern hardens further. Two of Wands rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "Two of Wands in a love reading highlights mutual choice and the need to meet each other halfway shaped by desire, attraction, and chemistry. Two of Wands rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "In career readings, Two of Wands brings attention to competing priorities that need balancing or choosing within ambition, leadership, and enterprise. The work message in Two of Wands sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "For wellbeing, Two of Wands often reflects the need to rebalance two demands pulling on the system linked to stamina, motivation, and burnout risk. With Two of Wands, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Two of Wands shows someone who has made a first move and is now standing at the edge of a larger world, holding the map and deciding whether to cross. The ambition is real; the question is whether to settle or venture further.",
+    "reversed": "Reversed, Two of Wands reflects a plan that stays on paper too long, fear of the larger step, or scattered direction that prevents commitment to any single path. The vision is present but obscured by indecision.",
+    "love": "In love, Two of Wands points to a relationship testing whether both people share the same longer horizon -- whether this attraction is also a compatible direction.",
+    "career": "In career, Two of Wands marks the moment after an initial success when the question is whether to expand, partner, or simply hold the ground already gained.",
+    "health": "For wellbeing, Two of Wands reflects stepping beyond a comfortable health habit and looking toward what sustained improvement would actually require.",
     "imagery": "Two of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises choice and balancing forces."
   },
   {
@@ -1996,11 +1996,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "03",
-    "upright": "Three of Wands upright highlights early growth that needs cooperation to flourish through fire, appetite, and forward motion. It reads best when you treat the card as a live pattern rather than a decorative mood. Three of Wands becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Three of Wands points to growth complicated by mixed signals or weak coordination running into difficulty inside impulse, frustration, and misdirected heat. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Three of Wands usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "In love, Three of Wands often reflects third influences, celebration, or the first visible growth of a bond around desire, attraction, and chemistry. Three of Wands usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "For work and money, Three of Wands points to teamwork, apprenticeship, and early proof of progress expressed through ambition, leadership, and enterprise. With Three of Wands, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "Three of Wands in a health context points toward supportive routines that grow stronger through cooperation affecting stamina, motivation, and burnout risk. Three of Wands asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Three of Wands shows enterprise already in motion -- ships sent out, waiting for their return. The work has been done; the outcome is still in transit. The card carries the patience of someone who prepared well and trusts the process.",
+    "reversed": "Reversed, Three of Wands points to delays in expected returns, expansion plans meeting resistance, or an inability to see far enough ahead to plan effectively. The preparation may have been incomplete or the timing misjudged.",
+    "love": "In love, Three of Wands brings patient confidence in a developing connection -- or the discomfort of waiting for someone who has not yet returned the same level of investment.",
+    "career": "In career, Three of Wands marks the phase between launching a project and seeing its results -- where trust in the work already done must carry the gap.",
+    "health": "For wellbeing, Three of Wands reflects gradual progress where the results are still catching up to the effort already invested.",
     "imagery": "Three of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises collaboration and early growth."
   },
   {
@@ -2009,11 +2009,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "04",
-    "upright": "When Four of Wands appears upright, a bid for stability that can either steady or stiffen meets fire, appetite, and forward motion in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Four of Wands instead of resisting it.",
-    "reversed": "When Four of Wands turns reversed, stability turning into stagnation, defensiveness, or over-control becomes harder to handle cleanly through impulse, frustration, and misdirected heat. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Four of Wands improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "For relationships, Four of Wands speaks to the tension between safety and emotional aliveness within the field of desire, attraction, and chemistry. The lesson of Four of Wands in love is easier to read in timing and tone than in declarations alone.",
-    "career": "Four of Wands around career matters often reveals holding ground, consolidating gains, or resisting change inside ambition, leadership, and enterprise. Four of Wands says as much about how you are working as about what you are working on.",
-    "health": "In health readings, Four of Wands can describe the body's wish to stabilise, rest, or guard resources around stamina, motivation, and burnout risk. Four of Wands is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Four of Wands signals a genuine milestone -- a homecoming, a harvest, or the formal acknowledgment that something built together deserves marking. The atmosphere is festive and the foundation beneath it is real.",
+    "reversed": "Reversed, Four of Wands points to a celebration cut short, an incomplete sense of homecoming, or joy that feels unstable because the foundation has not been fully secured.",
+    "love": "In love, Four of Wands marks a significant relational milestone -- an engagement, a move-in, a shared threshold crossed -- where commitment becomes visible and concrete.",
+    "career": "In career, Four of Wands signals the successful completion of a professional phase -- a launch, graduation, or promotion -- where the achievement is real enough to merit proper recognition.",
+    "health": "For wellbeing, Four of Wands reflects recovery fully achieved, a new healthy environment established, or the body settling into a rhythm that finally feels sustainable.",
     "imagery": "Four of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises stability and the need to consolidate."
   },
   {
@@ -2022,11 +2022,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "05",
-    "upright": "Upright, Five of Wands brings friction that demands adjustment into contact with fire, appetite, and forward motion. The reading strengthens when you let the suit behave exactly as it is built to behave. With Five of Wands, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Five of Wands reversed suggests conflict that is no longer productive under strain within impulse, frustration, and misdirected heat. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Five of Wands, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "Five of Wands in a love reading highlights conflict, mismatch, or the need to renegotiate expectations shaped by desire, attraction, and chemistry. With Five of Wands, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "In career readings, Five of Wands brings attention to pressure, rivalry, or a correction forced by friction within ambition, leadership, and enterprise. Five of Wands often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "For wellbeing, Five of Wands often reflects stress signals that show something must change linked to stamina, motivation, and burnout risk. The body-level lesson of Five of Wands often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Five of Wands brings friction, competing voices, and the productive disorder of people who all think they have the right answer. The conflict is often not malicious but energetic -- the challenge of getting aligned when everyone approaches differently.",
+    "reversed": "Reversed, Five of Wands points to avoidance of necessary conflict, suppressed competition, or the exhaustion of ongoing argument without resolution. The friction has either gone underground or worn people past productive engagement.",
+    "love": "In love, Five of Wands reflects tension, differing communication styles, or the ongoing friction of two people who approach emotion, decision, and expectation differently.",
+    "career": "In career, Five of Wands points to team conflict, competitive pressure, or the challenge of getting alignment when multiple stakeholders have incompatible priorities.",
+    "health": "For wellbeing, Five of Wands reflects scattered energy, competing demands, or the physical toll of sustained effort in a chaotic or adversarial environment.",
     "imagery": "Five of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises friction, challenge, and adjustment."
   },
   {
@@ -2035,11 +2035,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "06",
-    "upright": "Six of Wands upright shows movement that restores rhythm or support working through fire, appetite, and forward motion. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Six of Wands is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Six of Wands shows support that is uneven, delayed, or taken for granted getting tangled in the shadow side of impulse, frustration, and misdirected heat. Read it as a signal to reset the pace before the pattern hardens further. Six of Wands rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "In love, Six of Wands often reflects repair, reassurance, or an easier flow returning around desire, attraction, and chemistry. Six of Wands rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "For work and money, Six of Wands points to recognition, support, or movement after a stuck phase expressed through ambition, leadership, and enterprise. The work message in Six of Wands sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "Six of Wands in a health context points toward improvement, relief, or recovery aided by support affecting stamina, motivation, and burnout risk. With Six of Wands, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Six of Wands marks a public victory -- the triumphant return, the winner's announcement, recognition that visible effort earns when it finally delivers. The confidence here is real, not borrowed.",
+    "reversed": "Reversed, Six of Wands points to recognition delayed, ego that has outpaced the actual achievement, or success that arrived privately when public acknowledgment was needed.",
+    "love": "In love, Six of Wands brings a moment of renewed attraction -- where effort to pursue or improve has been visibly rewarded and the relationship enters a prouder phase.",
+    "career": "In career, Six of Wands signals genuine professional success -- a promotion, award, or project that delivers publicly, where the achievement is undeniable and well-timed.",
+    "health": "For wellbeing, Six of Wands reflects visible improvement -- a fitness goal achieved, a recovery milestone passed -- where the body's progress is something you can see and others notice.",
     "imagery": "Six of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises movement, support, and regained rhythm."
   },
   {
@@ -2048,11 +2048,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "07",
-    "upright": "Seven of Wands upright highlights a test of judgment, courage, or strategy through fire, appetite, and forward motion. It reads best when you treat the card as a live pattern rather than a decorative mood. Seven of Wands becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Seven of Wands points to strategy slipping into suspicion, fatigue, or second-guessing running into difficulty inside impulse, frustration, and misdirected heat. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Seven of Wands usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "For relationships, Seven of Wands speaks to tests of trust, discernment, or loyalty within the field of desire, attraction, and chemistry. Seven of Wands usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "Seven of Wands around career matters often reveals strategy, caution, and the need to read the field accurately inside ambition, leadership, and enterprise. With Seven of Wands, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "In health readings, Seven of Wands can describe trial, patience, and reading what the body is really asking for around stamina, motivation, and burnout risk. Seven of Wands asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Seven of Wands places someone on a defended height, under pressure from below. The position was earned, but holding it requires ongoing effort. This card is about resilience under persistent challenge -- staying when leaving would be easier.",
+    "reversed": "Reversed, Seven of Wands points to a position surrendered too quickly, defensiveness hardening into stubbornness, or the exhaustion of fighting on a front that no longer serves the larger goal.",
+    "love": "In love, Seven of Wands reflects the challenge of holding to one's values when a partner pushes back -- or the difficulty of staying present in a relationship that requires constant effort.",
+    "career": "In career, Seven of Wands marks a professional position under competitive pressure -- defending territory, managing critics, or maintaining authority where challengers are visible and persistent.",
+    "health": "For wellbeing, Seven of Wands reflects the mental and physical cost of sustained stress -- where staying functional requires deliberate effort to protect energy from ongoing demands.",
     "imagery": "Seven of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises testing, discernment, and strategy."
   },
   {
@@ -2061,11 +2061,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "08",
-    "upright": "When Eight of Wands appears upright, repetition that becomes momentum or skill meets fire, appetite, and forward motion in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Eight of Wands instead of resisting it.",
-    "reversed": "When Eight of Wands turns reversed, momentum becoming compulsion, pressure, or tunnel vision becomes harder to handle cleanly through impulse, frustration, and misdirected heat. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Eight of Wands improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "Eight of Wands in a love reading highlights patterns that intensify quickly and reveal what each person keeps repeating shaped by desire, attraction, and chemistry. The lesson of Eight of Wands in love is easier to read in timing and tone than in declarations alone.",
-    "career": "In career readings, Eight of Wands brings attention to skill-building, output, and disciplined repetition within ambition, leadership, and enterprise. Eight of Wands says as much about how you are working as about what you are working on.",
-    "health": "For wellbeing, Eight of Wands often reflects habit, repetition, and the cumulative effect of small actions linked to stamina, motivation, and burnout risk. Eight of Wands is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Eight of Wands brings sudden swift movement -- communication flying, decisions accelerating, the air thick with incoming information. After a period of stillness or deliberation, everything is now moving at once.",
+    "reversed": "Reversed, Eight of Wands points to delays after expected speed, messages lost in transit, or energy moving in crossed directions that cancel rather than compound. Communication errors are common here.",
+    "love": "In love, Eight of Wands brings rapid developments -- messages returned quickly, feelings declared, or a relationship that accelerates past its expected pace.",
+    "career": "In career, Eight of Wands signals a sudden burst of activity -- project momentum, multiple communications requiring response, or a window of opportunity that opens briefly and must be used now.",
+    "health": "For wellbeing, Eight of Wands reflects a body returning to high function after slow recovery -- or the need to pace a surge of returning energy before it leads to burnout.",
     "imagery": "Eight of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises momentum, skill, and focused repetition."
   },
   {
@@ -2074,11 +2074,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "09",
-    "upright": "Upright, Nine of Wands brings a late-stage lesson that asks for resilience into contact with fire, appetite, and forward motion. The reading strengthens when you let the suit behave exactly as it is built to behave. With Nine of Wands, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Nine of Wands reversed suggests resilience fraying under accumulated strain under strain within impulse, frustration, and misdirected heat. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Nine of Wands, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "In love, Nine of Wands often reflects private hopes and guarded fears coming to the surface around desire, attraction, and chemistry. With Nine of Wands, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "For work and money, Nine of Wands points to results earned through endurance and late-stage refinement expressed through ambition, leadership, and enterprise. Nine of Wands often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "Nine of Wands in a health context points toward resilience tested by fatigue, overvigilance, or lingering strain affecting stamina, motivation, and burnout risk. The body-level lesson of Nine of Wands often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Nine of Wands shows someone still standing after taking real damage -- not triumphant, but upright. The battle has left marks; the question is whether enough remains to finish what was started. The card is honest about the cost and still says: continue.",
+    "reversed": "Reversed, Nine of Wands points to the moment when the final push was too much -- when exhaustion overran resilience and retreat became necessary rather than chosen. The wound may need tending before the battle can resume.",
+    "love": "In love, Nine of Wands reflects a relationship marked by past hurts -- where previous losses make it harder to stay open, and trust is rebuilt slowly and carefully.",
+    "career": "In career, Nine of Wands marks a professional situation requiring persistence through fatigue -- holding a position or completing a long campaign where the finish line is finally visible.",
+    "health": "For wellbeing, Nine of Wands reflects the body's resilience near the end of a sustained health challenge -- still functional but drawing on reserves that need careful management.",
     "imagery": "Nine of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises culmination, resilience, and hard-won perspective."
   },
   {
@@ -2087,11 +2087,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "10",
-    "upright": "Ten of Wands upright shows the full weight and consequence of the suit working through fire, appetite, and forward motion. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Ten of Wands is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Ten of Wands shows burden, excess, or the painful end state of the suit getting tangled in the shadow side of impulse, frustration, and misdirected heat. Read it as a signal to reset the pace before the pattern hardens further. Ten of Wands rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "For relationships, Ten of Wands speaks to the long-term consequences of how love has been built within the field of desire, attraction, and chemistry. Ten of Wands rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "Ten of Wands around career matters often reveals a peak responsibility, heavy load, or culmination with consequences inside ambition, leadership, and enterprise. The work message in Ten of Wands sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "In health readings, Ten of Wands can describe the point where load, symptoms, or consequences can no longer be ignored around stamina, motivation, and burnout risk. With Ten of Wands, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Ten of Wands shows someone carrying more than they should -- not because the load isn't real, but because they have taken on responsibility that belongs to others or no longer serves the original purpose. The burden is heavy and the end is in sight.",
+    "reversed": "Reversed, Ten of Wands can point to the moment of release -- burdens set down, delegation accepted, or tasks abandoned because the cost finally outweighed the mission. It can also signal collapse before the relief arrives.",
+    "love": "In love, Ten of Wands reflects one person shouldering the emotional labour of a relationship that has become unbalanced -- carrying too much of the maintenance, communication, or repair.",
+    "career": "In career, Ten of Wands marks an overloaded professional situation -- too many responsibilities, a project grown beyond its scope, or a workload producing diminishing returns.",
+    "health": "For wellbeing, Ten of Wands reflects physical or mental exhaustion from overextension -- where the body has been pushed past sustainable capacity and is asking clearly for rest.",
     "imagery": "Ten of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises completion, weight, and full consequence."
   },
   {
@@ -2100,11 +2100,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "page",
-    "upright": "Page of Wands upright highlights a message, mood, or beginner's encounter with the suit through fire, appetite, and forward motion. It reads best when you treat the card as a live pattern rather than a decorative mood. Page of Wands becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Page of Wands points to immaturity, avoidance, or a message that is not yet fully understood running into difficulty inside impulse, frustration, and misdirected heat. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Page of Wands usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "Page of Wands in a love reading highlights curiosity, flirtation, and a new emotional message shaped by desire, attraction, and chemistry. Page of Wands usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "In career readings, Page of Wands brings attention to news, learning, and the entry-level form of the suit's lesson within ambition, leadership, and enterprise. With Page of Wands, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "For wellbeing, Page of Wands often reflects sensitivity, early messages, and the need to listen sooner linked to stamina, motivation, and burnout risk. Page of Wands asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Page of Wands arrives with news, enthusiasm, and an appetite for everything new. The energy is exploratory -- not yet tested by consequence, but genuinely excited about possibility. Ideas arrive quickly; commitment follows more slowly.",
+    "reversed": "Reversed, Page of Wands points to scattered enthusiasm with no follow-through, creative energy that generates more starts than completions, or messages delivered without enough maturity to land well.",
+    "love": "In love, Page of Wands brings youthful attraction, the excitement of early connection, or new flirtatious energy entering a relationship that had grown too familiar.",
+    "career": "In career, Page of Wands signals the arrival of a creative opportunity or inspiring idea -- a new direction worth exploring, even if the details are not yet fully formed.",
+    "health": "For wellbeing, Page of Wands reflects renewed motivation -- the fresh impulse to try something new with the body before the discipline to sustain it has developed.",
     "imagery": "Page of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises curiosity, learning, and a fresh message."
   },
   {
@@ -2113,11 +2113,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "knight",
-    "upright": "When Knight of Wands appears upright, the suit in motion, pursuit, and active expression meets fire, appetite, and forward motion in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Knight of Wands instead of resisting it.",
-    "reversed": "When Knight of Wands turns reversed, energy that outruns wisdom, timing, or emotional intelligence becomes harder to handle cleanly through impulse, frustration, and misdirected heat. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Knight of Wands improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "In love, Knight of Wands often reflects active pursuit, urgency, and the style in which affection is expressed around desire, attraction, and chemistry. The lesson of Knight of Wands in love is easier to read in timing and tone than in declarations alone.",
-    "career": "For work and money, Knight of Wands points to the way ambition advances, pursues, or pushes expressed through ambition, leadership, and enterprise. Knight of Wands says as much about how you are working as about what you are working on.",
-    "health": "Knight of Wands in a health context points toward how energy is being spent, pushed, or driven affecting stamina, motivation, and burnout risk. Knight of Wands is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Knight of Wands charges in fast, acts first, and asks questions when the dust settles. The energy is magnetic and brave, but the speed can leave people and plans behind. This is someone who lives for momentum and is uncomfortable with pause.",
+    "reversed": "Reversed, Knight of Wands reflects recklessness at full speed -- action without sufficient thought, conflict sparked through impatience, or energy that burns a situation down before it had a chance to build.",
+    "love": "In love, Knight of Wands brings passionate pursuit that may or may not be accompanied by patience -- intense attraction, bold gestures, and the question of whether the flame can be sustained.",
+    "career": "In career, Knight of Wands signals bold, fast-moving action -- launching before full preparation, or driving a project forward through sheer force of will.",
+    "health": "For wellbeing, Knight of Wands reflects a burst of physical energy or exercise motivation -- intense, possibly overdone, and worth tempering with equal attention to recovery.",
     "imagery": "Knight of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises motion, pursuit, and committed effort."
   },
   {
@@ -2126,11 +2126,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "queen",
-    "upright": "Upright, Queen of Wands brings embodied mastery of the suit from the inside out into contact with fire, appetite, and forward motion. The reading strengthens when you let the suit behave exactly as it is built to behave. With Queen of Wands, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Queen of Wands reversed suggests inner authority disturbed by self-doubt, overprotection, or emotional leakage under strain within impulse, frustration, and misdirected heat. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Queen of Wands, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "For relationships, Queen of Wands speaks to emotional maturity and how love is held in the inner life within the field of desire, attraction, and chemistry. With Queen of Wands, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "Queen of Wands around career matters often reveals quiet competence, stewardship, and mature command of the craft inside ambition, leadership, and enterprise. Queen of Wands often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "In health readings, Queen of Wands can describe regulation through self-knowledge, embodied care, and pacing around stamina, motivation, and burnout risk. The body-level lesson of Queen of Wands often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Queen of Wands owns the room through warmth and natural magnetism rather than authority. She knows her creative power and uses it without apology -- confidence that invites others rather than excluding them.",
+    "reversed": "Reversed, Queen of Wands points to charisma turned brittle -- confidence shading into aggression, warmth weaponised into manipulation, or creative power blocked by external criticism or internal self-doubt.",
+    "love": "In love, Queen of Wands brings radiant confidence, playful warmth, and a partner who makes the relationship feel alive -- or calls you toward a version of yourself more fully expressed.",
+    "career": "In career, Queen of Wands marks leadership through inspiration -- someone who draws the best from a team through genuine enthusiasm and the willingness to act as a creative anchor.",
+    "health": "For wellbeing, Queen of Wands reflects vitality as a lived practice -- someone who has learned to protect and channel their energy rather than depleting it in every direction.",
     "imagery": "Queen of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises mastery through embodiment and inner authority."
   },
   {
@@ -2139,11 +2139,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "wands",
     "rank": "king",
-    "upright": "King of Wands upright shows directed command of the suit and its responsibilities working through fire, appetite, and forward motion. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. King of Wands is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed King of Wands shows control problems, rigidity, or leadership without balance getting tangled in the shadow side of impulse, frustration, and misdirected heat. Read it as a signal to reset the pace before the pattern hardens further. King of Wands rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "King of Wands in a love reading highlights commitment, direction, and the standards guiding the bond shaped by desire, attraction, and chemistry. King of Wands rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "In career readings, King of Wands brings attention to decision-making authority, executive pressure, and long-view leadership within ambition, leadership, and enterprise. The work message in King of Wands sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "For wellbeing, King of Wands often reflects the discipline required to protect long-term strength linked to stamina, motivation, and burnout risk. With King of Wands, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "King of Wands leads through vision rather than process. He has converted his creative fire into a sustainable force -- something that can be directed, taught, and handed forward. The authority is real because the results are.",
+    "reversed": "Reversed, King of Wands points to leadership that has become dictatorial, vision hardened into arrogance, or entrepreneurial energy burning through collaborators faster than it builds.",
+    "love": "In love, King of Wands brings commanding attention, clear intention, and the challenge of a partner whose vision for life is strong enough to either inspire or overwhelm.",
+    "career": "In career, King of Wands marks the fully realised entrepreneurial leader -- someone with a track record, a clear vision, and the capacity to mobilise others toward a larger goal.",
+    "health": "For wellbeing, King of Wands reflects mastery of the body's energy -- knowing how to sustain high performance without the burnout cycles that plagued earlier chapters.",
     "imagery": "King of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises leadership, direction, and mature command."
   },
   {
@@ -2152,11 +2152,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "ace",
-    "upright": "Ace of Cups upright highlights the first opening of the suit through emotion, receptivity, and relational flow. It reads best when you treat the card as a live pattern rather than a decorative mood. Ace of Cups becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Ace of Cups points to an opening that is present but not yet trusted running into difficulty inside flooded feeling, emotional avoidance, or unclear receptivity. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Ace of Cups usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "In love, Ace of Cups often reflects a beginning that changes the emotional tone between people around emotion, intimacy, and receptivity. Ace of Cups usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "For work and money, Ace of Cups points to an opening, initiative, or first spark of possibility expressed through team harmony, creative work, and morale. With Ace of Cups, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "Ace of Cups in a health context points toward a fresh chance to reset the body's direction affecting nervous-system sensitivity and emotional wellbeing. Ace of Cups asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Ace of Cups brings the overflowing cup -- pure emotional potential, love in its freshest form, before expectation or history enters. Whatever is beginning here has the quality of genuine opening: receptive, unguarded, and full.",
+    "reversed": "Reversed, Ace of Cups points to emotional numbness, a heart closed for self-protection, or love offered but unable to be received. The cup is present but tipped -- what should flow is blocked or draining before it lands.",
+    "love": "In love, Ace of Cups marks new emotional beginnings -- first love, renewed feeling, or the moment a connection becomes genuinely heartfelt rather than just convenient.",
+    "career": "In career, Ace of Cups signals work becoming emotionally meaningful again -- a creative opportunity or role aligned with what you genuinely care about.",
+    "health": "For wellbeing, Ace of Cups reflects emotional healing becoming available -- the moment when softness and receptivity start replacing guarded or depleted patterns.",
     "imagery": "Ace of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises beginnings and pure potential."
   },
   {
@@ -2165,11 +2165,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "02",
-    "upright": "When Two of Cups appears upright, a living balance between two forces meets emotion, receptivity, and relational flow in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Two of Cups instead of resisting it.",
-    "reversed": "When Two of Cups turns reversed, indecision or imbalance between competing pulls becomes harder to handle cleanly through flooded feeling, emotional avoidance, or unclear receptivity. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Two of Cups improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "For relationships, Two of Cups speaks to mutual choice and the need to meet each other halfway within the field of emotion, intimacy, and receptivity. The lesson of Two of Cups in love is easier to read in timing and tone than in declarations alone.",
-    "career": "Two of Cups around career matters often reveals competing priorities that need balancing or choosing inside team harmony, creative work, and morale. Two of Cups says as much about how you are working as about what you are working on.",
-    "health": "In health readings, Two of Cups can describe the need to rebalance two demands pulling on the system around nervous-system sensitivity and emotional wellbeing. Two of Cups is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Two of Cups marks the moment two people recognise each other -- not the full story yet, but the mutual signal that something real is beginning. The connection is equal, conscious, and chosen.",
+    "reversed": "Reversed, Two of Cups points to attraction without compatibility, imbalance in emotional investment, or a partnership that looked mutual but turned out to be one-sided.",
+    "love": "In love, Two of Cups is the card of genuine mutual feeling -- where both people are equally present, equally choosing, and the energy between them flows both ways.",
+    "career": "In career, Two of Cups marks the beginning of a meaningful professional partnership -- where two people's skills and values complement each other in a way that benefits both.",
+    "health": "For wellbeing, Two of Cups reflects the healing power of genuine connection -- where a trusted relationship provides emotional balance and the body relaxes into supported calm.",
     "imagery": "Two of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises choice and balancing forces."
   },
   {
@@ -2178,11 +2178,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "03",
-    "upright": "Upright, Three of Cups brings early growth that needs cooperation to flourish into contact with emotion, receptivity, and relational flow. The reading strengthens when you let the suit behave exactly as it is built to behave. With Three of Cups, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Three of Cups reversed suggests growth complicated by mixed signals or weak coordination under strain within flooded feeling, emotional avoidance, or unclear receptivity. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Three of Cups, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "Three of Cups in a love reading highlights third influences, celebration, or the first visible growth of a bond shaped by emotion, intimacy, and receptivity. With Three of Cups, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "In career readings, Three of Cups brings attention to teamwork, apprenticeship, and early proof of progress within team harmony, creative work, and morale. Three of Cups often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "For wellbeing, Three of Cups often reflects supportive routines that grow stronger through cooperation linked to nervous-system sensitivity and emotional wellbeing. The body-level lesson of Three of Cups often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Three of Cups brings genuine celebration -- not of achievement but of connection. The joy here is shared and spontaneous, rising naturally when the right people are in the right place together.",
+    "reversed": "Reversed, Three of Cups points to social situations that feel hollow, overindulgence, gossip among friends, or a community that has fractured and lost its warmth.",
+    "love": "In love, Three of Cups brings friendship as a foundation for romance -- relationships where genuine joy is mutual and the connection feels expansive rather than exclusive.",
+    "career": "In career, Three of Cups signals creative collaboration where the team's combined output exceeds what any individual could produce -- a genuine collective that feeds rather than drains its members.",
+    "health": "For wellbeing, Three of Cups reflects the health benefit of social joy -- laughter, ease, and the immune system's response to belonging rather than isolation.",
     "imagery": "Three of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises collaboration and early growth."
   },
   {
@@ -2191,11 +2191,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "04",
-    "upright": "Four of Cups upright shows a bid for stability that can either steady or stiffen working through emotion, receptivity, and relational flow. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Four of Cups is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Four of Cups shows stability turning into stagnation, defensiveness, or over-control getting tangled in the shadow side of flooded feeling, emotional avoidance, or unclear receptivity. Read it as a signal to reset the pace before the pattern hardens further. Four of Cups rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "In love, Four of Cups often reflects the tension between safety and emotional aliveness around emotion, intimacy, and receptivity. Four of Cups rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "For work and money, Four of Cups points to holding ground, consolidating gains, or resisting change expressed through team harmony, creative work, and morale. The work message in Four of Cups sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "Four of Cups in a health context points toward the body's wish to stabilise, rest, or guard resources affecting nervous-system sensitivity and emotional wellbeing. With Four of Cups, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Four of Cups shows someone so absorbed in their own internal conversation that they miss what is being offered. The cup extended toward them is real; they simply haven't looked up. The contemplation is genuine but has become its own obstacle.",
+    "reversed": "Reversed, Four of Cups signals the moment of re-engagement -- finally looking up, accepting what was waiting, or ending the withdrawal and returning to participation.",
+    "love": "In love, Four of Cups reflects emotional withdrawal, missed gestures, or a partner so absorbed in their own mood that they cannot receive what is offered.",
+    "career": "In career, Four of Cups points to professional dissatisfaction, missed opportunity, or the inability to feel motivated by options that a clearer mind might recognise as worthwhile.",
+    "health": "For wellbeing, Four of Cups reflects the lethargy and low motivation that accompany genuine disconnection from one's own life.",
     "imagery": "Four of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises stability and the need to consolidate."
   },
   {
@@ -2204,11 +2204,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "05",
-    "upright": "Five of Cups upright highlights friction that demands adjustment through emotion, receptivity, and relational flow. It reads best when you treat the card as a live pattern rather than a decorative mood. Five of Cups becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Five of Cups points to conflict that is no longer productive running into difficulty inside flooded feeling, emotional avoidance, or unclear receptivity. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Five of Cups usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "For relationships, Five of Cups speaks to conflict, mismatch, or the need to renegotiate expectations within the field of emotion, intimacy, and receptivity. Five of Cups usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "Five of Cups around career matters often reveals pressure, rivalry, or a correction forced by friction inside team harmony, creative work, and morale. With Five of Cups, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "In health readings, Five of Cups can describe stress signals that show something must change around nervous-system sensitivity and emotional wellbeing. Five of Cups asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Five of Cups focuses on what has been lost -- the spilled cups, the grief, the genuine sorrow of something that mattered and is now gone. The upright cups behind the figure are real, but the attention is still on the spill.",
+    "reversed": "Reversed, Five of Cups signals the beginning of turning around -- noticing the upright cups, acknowledging that something remains. The grief has not gone but the gaze has begun to lift.",
+    "love": "In love, Five of Cups reflects heartbreak, disappointment, or the aftermath of emotional loss -- a time when grief is more present than possibility.",
+    "career": "In career, Five of Cups marks professional disappointment -- a project failed, a role lost, a goal not achieved -- where the loss is real and needs genuine acknowledgment before moving forward.",
+    "health": "For wellbeing, Five of Cups reflects the physical weight of grief -- where sadness registers in the body as fatigue, appetite changes, or the particular exhaustion of sustained sorrow.",
     "imagery": "Five of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises friction, challenge, and adjustment."
   },
   {
@@ -2217,11 +2217,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "06",
-    "upright": "When Six of Cups appears upright, movement that restores rhythm or support meets emotion, receptivity, and relational flow in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Six of Cups instead of resisting it.",
-    "reversed": "When Six of Cups turns reversed, support that is uneven, delayed, or taken for granted becomes harder to handle cleanly through flooded feeling, emotional avoidance, or unclear receptivity. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Six of Cups improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "Six of Cups in a love reading highlights repair, reassurance, or an easier flow returning shaped by emotion, intimacy, and receptivity. The lesson of Six of Cups in love is easier to read in timing and tone than in declarations alone.",
-    "career": "In career readings, Six of Cups brings attention to recognition, support, or movement after a stuck phase within team harmony, creative work, and morale. Six of Cups says as much about how you are working as about what you are working on.",
-    "health": "For wellbeing, Six of Cups often reflects improvement, relief, or recovery aided by support linked to nervous-system sensitivity and emotional wellbeing. Six of Cups is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Six of Cups carries the scent of the past -- childhood ease, kindness without agenda, the warmth of something that existed before complication. The connection it holds is genuine but belongs to an earlier time.",
+    "reversed": "Reversed, Six of Cups points to nostalgia preventing forward movement, an idealised past blocking honest engagement with the present, or an old connection returned without the conditions to sustain it.",
+    "love": "In love, Six of Cups brings the return of an old connection, the comfort of a relationship built on genuine history, or the bittersweet awareness of what once existed.",
+    "career": "In career, Six of Cups can point to returning to earlier work, reconnecting with original career motivations, or benefiting from a professional relationship built long ago.",
+    "health": "For wellbeing, Six of Cups reflects healing through reconnection with what once made the body feel genuinely well -- rhythms, practices, or environments from an earlier period.",
     "imagery": "Six of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises movement, support, and regained rhythm."
   },
   {
@@ -2230,11 +2230,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "07",
-    "upright": "Upright, Seven of Cups brings a test of judgment, courage, or strategy into contact with emotion, receptivity, and relational flow. The reading strengthens when you let the suit behave exactly as it is built to behave. With Seven of Cups, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Seven of Cups reversed suggests strategy slipping into suspicion, fatigue, or second-guessing under strain within flooded feeling, emotional avoidance, or unclear receptivity. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Seven of Cups, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "In love, Seven of Cups often reflects tests of trust, discernment, or loyalty around emotion, intimacy, and receptivity. With Seven of Cups, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "For work and money, Seven of Cups points to strategy, caution, and the need to read the field accurately expressed through team harmony, creative work, and morale. Seven of Cups often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "Seven of Cups in a health context points toward trial, patience, and reading what the body is really asking for affecting nervous-system sensitivity and emotional wellbeing. The body-level lesson of Seven of Cups often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Seven of Cups places someone before a cloud of choices, each more enticing than the last and none of them fully real yet. The imagination is vivid and the desire is genuine, but no choice has been made, and not choosing has its own consequences.",
+    "reversed": "Reversed, Seven of Cups signals the clearing of illusion -- seeing options more clearly, making a choice from a more grounded place, or losing the comforting fog that made avoiding the decision feel manageable.",
+    "love": "In love, Seven of Cups reflects fantasised connections, confusion between what is real and what is projected, or difficulty committing when imagination provides endless alternatives.",
+    "career": "In career, Seven of Cups points to too many directions, creative overwhelm, or the temptation of shiny opportunities not yet tested against reality.",
+    "health": "For wellbeing, Seven of Cups reflects avoidance through distraction -- the way escapism or fantasy can substitute for the grounded, honest engagement the body actually needs.",
     "imagery": "Seven of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises testing, discernment, and strategy."
   },
   {
@@ -2243,11 +2243,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "08",
-    "upright": "Eight of Cups upright shows repetition that becomes momentum or skill working through emotion, receptivity, and relational flow. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Eight of Cups is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Eight of Cups shows momentum becoming compulsion, pressure, or tunnel vision getting tangled in the shadow side of flooded feeling, emotional avoidance, or unclear receptivity. Read it as a signal to reset the pace before the pattern hardens further. Eight of Cups rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "For relationships, Eight of Cups speaks to patterns that intensify quickly and reveal what each person keeps repeating within the field of emotion, intimacy, and receptivity. Eight of Cups rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "Eight of Cups around career matters often reveals skill-building, output, and disciplined repetition inside team harmony, creative work, and morale. The work message in Eight of Cups sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "In health readings, Eight of Cups can describe habit, repetition, and the cumulative effect of small actions around nervous-system sensitivity and emotional wellbeing. With Eight of Cups, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Eight of Cups shows someone walking away from something that was, by every external measure, enough -- but internally no longer is. The figure leaves in the dark, alone. This is the quieter courage: choosing to seek what is missing even when what remains is safe.",
+    "reversed": "Reversed, Eight of Cups points to staying when leaving is the more honest choice -- or to someone who left impulsively and is now questioning whether the departure was premature.",
+    "love": "In love, Eight of Cups marks the quiet turning point -- the realisation that a relationship is not fulfilling something essential, and the growing awareness that staying requires a different quality of honesty.",
+    "career": "In career, Eight of Cups signals leaving a role or organisation that no longer holds meaning -- even when the external rewards are intact -- because something more aligned is being sought.",
+    "health": "For wellbeing, Eight of Cups reflects deliberate withdrawal from patterns or environments that have been quietly draining vitality -- a retreat made for the sake of restoration.",
     "imagery": "Eight of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises momentum, skill, and focused repetition."
   },
   {
@@ -2256,11 +2256,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "09",
-    "upright": "Nine of Cups upright highlights a late-stage lesson that asks for resilience through emotion, receptivity, and relational flow. It reads best when you treat the card as a live pattern rather than a decorative mood. Nine of Cups becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Nine of Cups points to resilience fraying under accumulated strain running into difficulty inside flooded feeling, emotional avoidance, or unclear receptivity. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Nine of Cups usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "Nine of Cups in a love reading highlights private hopes and guarded fears coming to the surface shaped by emotion, intimacy, and receptivity. Nine of Cups usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "In career readings, Nine of Cups brings attention to results earned through endurance and late-stage refinement within team harmony, creative work, and morale. With Nine of Cups, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "For wellbeing, Nine of Cups often reflects resilience tested by fatigue, overvigilance, or lingering strain linked to nervous-system sensitivity and emotional wellbeing. Nine of Cups asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Nine of Cups carries the quiet confidence of someone who has arrived somewhere they genuinely wanted to reach. The satisfaction is emotional, internal, and complete. This is the wish card -- not wished for, but fulfilled.",
+    "reversed": "Reversed, Nine of Cups points to wishes fulfilled on the surface but hollow inside, material satisfaction without meaning, or complacency settled where real contentment once was.",
+    "love": "In love, Nine of Cups reflects emotional fullness -- a relationship where both people feel genuinely happy, cared for, and alive to something they value.",
+    "career": "In career, Nine of Cups marks genuine professional satisfaction -- work that delivers on what was hoped for, recognition that feels earned, or a role where creative and practical fulfilment coexist.",
+    "health": "For wellbeing, Nine of Cups reflects the body returning to genuine ease -- not performance of wellness but the real felt experience of being physically and emotionally at rest.",
     "imagery": "Nine of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises culmination, resilience, and hard-won perspective."
   },
   {
@@ -2269,11 +2269,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "10",
-    "upright": "When Ten of Cups appears upright, the full weight and consequence of the suit meets emotion, receptivity, and relational flow in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Ten of Cups instead of resisting it.",
-    "reversed": "When Ten of Cups turns reversed, burden, excess, or the painful end state of the suit becomes harder to handle cleanly through flooded feeling, emotional avoidance, or unclear receptivity. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Ten of Cups improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "In love, Ten of Cups often reflects the long-term consequences of how love has been built around emotion, intimacy, and receptivity. The lesson of Ten of Cups in love is easier to read in timing and tone than in declarations alone.",
-    "career": "For work and money, Ten of Cups points to a peak responsibility, heavy load, or culmination with consequences expressed through team harmony, creative work, and morale. Ten of Cups says as much about how you are working as about what you are working on.",
-    "health": "Ten of Cups in a health context points toward the point where load, symptoms, or consequences can no longer be ignored affecting nervous-system sensitivity and emotional wellbeing. Ten of Cups is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Ten of Cups shows the full emotional harvest -- family, belonging, lasting joy -- the emotional equivalent of home. This is not perfect happiness but something more durable: the feeling of being in the right place with the right people, and knowing it.",
+    "reversed": "Reversed, Ten of Cups points to family systems whose external harmony masks real dysfunction, or to emotional promises not yet delivered in the domestic situation.",
+    "love": "In love, Ten of Cups marks relational wholeness -- a partnership that has moved through its tests and arrived somewhere stable, warm, and fully chosen.",
+    "career": "In career, Ten of Cups reflects work integrated into a life well-lived -- where the professional and personal are no longer in conflict and the daily rhythm supports something genuinely good.",
+    "health": "For wellbeing, Ten of Cups reflects the deeply restorative effect of belonging -- where feeling at home in one's relationships directly supports physical vitality and emotional regulation.",
     "imagery": "Ten of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises completion, weight, and full consequence."
   },
   {
@@ -2282,11 +2282,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "page",
-    "upright": "Upright, Page of Cups brings a message, mood, or beginner's encounter with the suit into contact with emotion, receptivity, and relational flow. The reading strengthens when you let the suit behave exactly as it is built to behave. With Page of Cups, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Page of Cups reversed suggests immaturity, avoidance, or a message that is not yet fully understood under strain within flooded feeling, emotional avoidance, or unclear receptivity. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Page of Cups, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "For relationships, Page of Cups speaks to curiosity, flirtation, and a new emotional message within the field of emotion, intimacy, and receptivity. With Page of Cups, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "Page of Cups around career matters often reveals news, learning, and the entry-level form of the suit's lesson inside team harmony, creative work, and morale. Page of Cups often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "In health readings, Page of Cups can describe sensitivity, early messages, and the need to listen sooner around nervous-system sensitivity and emotional wellbeing. The body-level lesson of Page of Cups often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Page of Cups carries news from the emotional world -- a message from intuition, a surprising feeling, or a creative idea arriving through an unexpected channel. The energy is gentle, imaginative, and often catches people off guard.",
+    "reversed": "Reversed, Page of Cups points to emotional immaturity, messages misread or miscommunicated, or creative sensitivity that has turned inward and become fragility rather than openness.",
+    "love": "In love, Page of Cups brings soft, tentative feeling -- the very beginning of romantic awareness, or an emotional message from a connection that hasn't yet been given words.",
+    "career": "In career, Page of Cups signals an invitation toward creative or emotionally meaningful work -- a new project or role that asks for both skill and genuine care.",
+    "health": "For wellbeing, Page of Cups reflects the importance of emotional acknowledgment -- where physical symptoms are closely tied to feelings that haven't been processed or expressed.",
     "imagery": "Page of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises curiosity, learning, and a fresh message."
   },
   {
@@ -2295,11 +2295,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "knight",
-    "upright": "Knight of Cups upright shows the suit in motion, pursuit, and active expression working through emotion, receptivity, and relational flow. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Knight of Cups is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Knight of Cups shows energy that outruns wisdom, timing, or emotional intelligence getting tangled in the shadow side of flooded feeling, emotional avoidance, or unclear receptivity. Read it as a signal to reset the pace before the pattern hardens further. Knight of Cups rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "Knight of Cups in a love reading highlights active pursuit, urgency, and the style in which affection is expressed shaped by emotion, intimacy, and receptivity. Knight of Cups rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "In career readings, Knight of Cups brings attention to the way ambition advances, pursues, or pushes within team harmony, creative work, and morale. The work message in Knight of Cups sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "For wellbeing, Knight of Cups often reflects how energy is being spent, pushed, or driven linked to nervous-system sensitivity and emotional wellbeing. With Knight of Cups, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Knight of Cups arrives bearing his heart openly -- romantic, artistic, idealistic, moving toward what he loves rather than what makes strategic sense. The pursuit is genuine even if the follow-through is uncertain.",
+    "reversed": "Reversed, Knight of Cups points to seductive charm that doesn't follow through, romantic energy that exists only in the gesture rather than the commitment, or emotions that swing between intensity and sudden withdrawal.",
+    "love": "In love, Knight of Cups brings romantic pursuit, heartfelt declarations, and attentive emotional presence that feels both flattering and sometimes overwhelming.",
+    "career": "In career, Knight of Cups marks the movement toward work that aligns with passion -- following creative or service-oriented instincts rather than career strategy.",
+    "health": "For wellbeing, Knight of Cups reflects emotional sensitivity that can both elevate mood and leave the body vulnerable to the physical effects of disappointment or romantic intensity.",
     "imagery": "Knight of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises motion, pursuit, and committed effort."
   },
   {
@@ -2308,11 +2308,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "queen",
-    "upright": "Queen of Cups upright highlights embodied mastery of the suit from the inside out through emotion, receptivity, and relational flow. It reads best when you treat the card as a live pattern rather than a decorative mood. Queen of Cups becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Queen of Cups points to inner authority disturbed by self-doubt, overprotection, or emotional leakage running into difficulty inside flooded feeling, emotional avoidance, or unclear receptivity. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Queen of Cups usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "In love, Queen of Cups often reflects emotional maturity and how love is held in the inner life around emotion, intimacy, and receptivity. Queen of Cups usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "For work and money, Queen of Cups points to quiet competence, stewardship, and mature command of the craft expressed through team harmony, creative work, and morale. With Queen of Cups, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "Queen of Cups in a health context points toward regulation through self-knowledge, embodied care, and pacing affecting nervous-system sensitivity and emotional wellbeing. Queen of Cups asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Queen of Cups holds her cup steady even while fully present to the depth of her feeling. She is not swept away -- she comprehends emotion, receives it, and reflects it back with extraordinary care. Her empathy is a practised art.",
+    "reversed": "Reversed, Queen of Cups points to emotional boundaries dissolved, empathy that has become self-erasure, or intuitive gifts turned inward in depression or codependency.",
+    "love": "In love, Queen of Cups brings profound emotional attunement -- the rare experience of feeling genuinely seen and held without needing to explain or justify what is felt.",
+    "career": "In career, Queen of Cups marks mastery in emotionally demanding roles -- counselling, healing, teaching -- where the work requires both depth of feeling and the stability to hold space for others.",
+    "health": "For wellbeing, Queen of Cups reflects the body responding to genuine emotional care -- where tending to the emotional landscape directly improves physical ease.",
     "imagery": "Queen of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises mastery through embodiment and inner authority."
   },
   {
@@ -2321,11 +2321,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "cups",
     "rank": "king",
-    "upright": "When King of Cups appears upright, directed command of the suit and its responsibilities meets emotion, receptivity, and relational flow in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of King of Cups instead of resisting it.",
-    "reversed": "When King of Cups turns reversed, control problems, rigidity, or leadership without balance becomes harder to handle cleanly through flooded feeling, emotional avoidance, or unclear receptivity. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. King of Cups improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "For relationships, King of Cups speaks to commitment, direction, and the standards guiding the bond within the field of emotion, intimacy, and receptivity. The lesson of King of Cups in love is easier to read in timing and tone than in declarations alone.",
-    "career": "King of Cups around career matters often reveals decision-making authority, executive pressure, and long-view leadership inside team harmony, creative work, and morale. King of Cups says as much about how you are working as about what you are working on.",
-    "health": "In health readings, King of Cups can describe the discipline required to protect long-term strength around nervous-system sensitivity and emotional wellbeing. King of Cups is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "King of Cups has brought his emotional world under wise governance. He neither suppresses nor is ruled by feeling -- he understands it, acts from it with integrity, and remains steady when others' emotional weather would pull him under.",
+    "reversed": "Reversed, King of Cups points to emotional volatility in someone who normally holds it together, manipulation through charm, or a leader whose unacknowledged wounds are quietly shaping decisions.",
+    "love": "In love, King of Cups brings emotional maturity -- a partner who is fully present without losing themselves, whose depth of feeling is matched by stability and genuine care.",
+    "career": "In career, King of Cups marks leadership through emotional intelligence -- the manager who keeps teams functioning through upheaval, the mentor who draws out what is best in others.",
+    "health": "For wellbeing, King of Cups reflects the resilience that comes from emotional regulation -- where deep self-understanding insulates against the physical toll of suppressed or unmanaged feeling.",
     "imagery": "King of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises leadership, direction, and mature command."
   },
   {
@@ -2334,11 +2334,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "ace",
-    "upright": "Upright, Ace of Swords brings the first opening of the suit into contact with thought, language, and sharp discernment. The reading strengthens when you let the suit behave exactly as it is built to behave. With Ace of Swords, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Ace of Swords reversed suggests an opening that is present but not yet trusted under strain within stress, overthinking, or conflict sharpened too far. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Ace of Swords, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "Ace of Swords in a love reading highlights a beginning that changes the emotional tone between people shaped by boundaries, truth, and mental distance. With Ace of Swords, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "In career readings, Ace of Swords brings attention to an opening, initiative, or first spark of possibility within strategy, conflict, and decision pressure. Ace of Swords often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "For wellbeing, Ace of Swords often reflects a fresh chance to reset the body's direction linked to stress, sleep quality, and cognitive overload. The body-level lesson of Ace of Swords often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Ace of Swords cuts through confusion with the clean force of a new idea or an honest recognition. Where there was fog, there is now a clear edge. The sword cuts both ways -- it reveals what is true and removes what is not, regardless of comfort.",
+    "reversed": "Reversed, Ace of Swords points to a truth not yet spoken, a decision clouded by confusion, or mental clarity that has become cruelty rather than precision. The blade has not yet found its honest angle.",
+    "love": "In love, Ace of Swords brings honesty that may be uncomfortable -- a conversation that clears the air, a recognition that cuts through self-deception, or the beginning of a mentally stimulating connection.",
+    "career": "In career, Ace of Swords marks a breakthrough -- a new idea with real merit, a decision finally made with clarity, or intellectual force that cuts through a problem no one else has been willing to name directly.",
+    "health": "For wellbeing, Ace of Swords reflects a diagnosis named, a pattern finally understood, or the mental clarity that arrives when the body stops being treated as an object and starts being listened to.",
     "imagery": "Ace of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises beginnings and pure potential."
   },
   {
@@ -2347,11 +2347,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "02",
-    "upright": "Two of Swords upright shows a living balance between two forces working through thought, language, and sharp discernment. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Two of Swords is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Two of Swords shows indecision or imbalance between competing pulls getting tangled in the shadow side of stress, overthinking, or conflict sharpened too far. Read it as a signal to reset the pace before the pattern hardens further. Two of Swords rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "In love, Two of Swords often reflects mutual choice and the need to meet each other halfway around boundaries, truth, and mental distance. Two of Swords rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "For work and money, Two of Swords points to competing priorities that need balancing or choosing expressed through strategy, conflict, and decision pressure. The work message in Two of Swords sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "Two of Swords in a health context points toward the need to rebalance two demands pulling on the system affecting stress, sleep quality, and cognitive overload. With Two of Swords, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Two of Swords shows someone sitting in deliberate blindness -- blades crossed, eyes covered, facing water that represents emotion not yet consulted. The mind is keeping the decision at bay because both options feel equally difficult.",
+    "reversed": "Reversed, Two of Swords signals the blindfold finally removed -- seeing the situation as it actually is, with all the discomfort that brings -- or a decision forced by someone else's timing rather than made freely.",
+    "love": "In love, Two of Swords reflects an emotional standoff -- two people who have both withdrawn behind their defenses, equally unwilling to make the first move toward honest communication.",
+    "career": "In career, Two of Swords marks a professional decision where neither option feels clearly right, and the delay itself is becoming an answer that may not serve.",
+    "health": "For wellbeing, Two of Swords reflects the mental tension of unresolved health decisions -- where anxiety about the choice creates more strain than either option itself would.",
     "imagery": "Two of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises choice and balancing forces."
   },
   {
@@ -2360,11 +2360,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "03",
-    "upright": "Three of Swords upright highlights early growth that needs cooperation to flourish through thought, language, and sharp discernment. It reads best when you treat the card as a live pattern rather than a decorative mood. Three of Swords becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Three of Swords points to growth complicated by mixed signals or weak coordination running into difficulty inside stress, overthinking, or conflict sharpened too far. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Three of Swords usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "For relationships, Three of Swords speaks to third influences, celebration, or the first visible growth of a bond within the field of boundaries, truth, and mental distance. Three of Swords usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "Three of Swords around career matters often reveals teamwork, apprenticeship, and early proof of progress inside strategy, conflict, and decision pressure. With Three of Swords, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "In health readings, Three of Swords can describe supportive routines that grow stronger through cooperation around stress, sleep quality, and cognitive overload. Three of Swords asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Three of Swords lands hard. The three blades through the heart represent grief that is real and must be felt -- betrayal, loss, a painful truth that arrived without preparation. This card does not soften what has happened.",
+    "reversed": "Reversed, Three of Swords points to grief slowly releasing, a wound beginning to close, or pain that refuses to process and has become chronic -- carried long past the time when it served any protective function.",
+    "love": "In love, Three of Swords marks heartbreak -- the sorrow of betrayal, the ache of separation, or the pain of finally seeing what could not be made to work.",
+    "career": "In career, Three of Swords reflects the genuine emotional cost of professional loss -- a termination, a public failure, or a collaboration that ended with hurt feelings not cleanly resolved.",
+    "health": "For wellbeing, Three of Swords reflects grief making itself known in the body -- where emotional pain registers as physical heaviness, chest tightness, or the particular exhaustion of sustained sorrow.",
     "imagery": "Three of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises collaboration and early growth."
   },
   {
@@ -2373,11 +2373,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "04",
-    "upright": "When Four of Swords appears upright, a bid for stability that can either steady or stiffen meets thought, language, and sharp discernment in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Four of Swords instead of resisting it.",
-    "reversed": "When Four of Swords turns reversed, stability turning into stagnation, defensiveness, or over-control becomes harder to handle cleanly through stress, overthinking, or conflict sharpened too far. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Four of Swords improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "Four of Swords in a love reading highlights the tension between safety and emotional aliveness shaped by boundaries, truth, and mental distance. The lesson of Four of Swords in love is easier to read in timing and tone than in declarations alone.",
-    "career": "In career readings, Four of Swords brings attention to holding ground, consolidating gains, or resisting change within strategy, conflict, and decision pressure. Four of Swords says as much about how you are working as about what you are working on.",
-    "health": "For wellbeing, Four of Swords often reflects the body's wish to stabilise, rest, or guard resources linked to stress, sleep quality, and cognitive overload. Four of Swords is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Four of Swords signals rest as a strategic necessity -- the knight laid to rest not because the battle is lost but because rest is what makes continuing possible. The recovery is deliberate, not defeated.",
+    "reversed": "Reversed, Four of Swords points to a return to action that is too soon, rest that became avoidance, or the inability to remain still even when the body and mind are clearly asking for it.",
+    "love": "In love, Four of Swords marks a necessary pause -- where both people step back from pressure or conflict and allow the relationship's underlying connection to reset.",
+    "career": "In career, Four of Swords signals strategic withdrawal -- taking a break between intense professional efforts rather than burning out before the next phase begins.",
+    "health": "For wellbeing, Four of Swords is one of the clearest health cards -- the body is asking for rest, recovery, and reduced stimulation, and honouring that request is exactly right.",
     "imagery": "Four of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises stability and the need to consolidate."
   },
   {
@@ -2386,11 +2386,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "05",
-    "upright": "Upright, Five of Swords brings friction that demands adjustment into contact with thought, language, and sharp discernment. The reading strengthens when you let the suit behave exactly as it is built to behave. With Five of Swords, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Five of Swords reversed suggests conflict that is no longer productive under strain within stress, overthinking, or conflict sharpened too far. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Five of Swords, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "In love, Five of Swords often reflects conflict, mismatch, or the need to renegotiate expectations around boundaries, truth, and mental distance. With Five of Swords, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "For work and money, Five of Swords points to pressure, rivalry, or a correction forced by friction expressed through strategy, conflict, and decision pressure. Five of Swords often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "Five of Swords in a health context points toward stress signals that show something must change affecting stress, sleep quality, and cognitive overload. The body-level lesson of Five of Swords often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Five of Swords shows the aftermath of a conflict won at a cost no one feels proud of. The swords are collected but the retreating figures tell the real story -- this was not a victory that serves the larger whole.",
+    "reversed": "Reversed, Five of Swords points to a conflict finally over, an ego battle released, or the slow acknowledgment that winning was less important than the relationship or integrity sacrificed to get there.",
+    "love": "In love, Five of Swords reflects a pattern of winning arguments at the cost of the relationship -- where the need to be right damages what both people actually value.",
+    "career": "In career, Five of Swords marks competition that became damaging -- office politics, undermining behaviour, or achieving a goal through methods difficult to look back on without regret.",
+    "health": "For wellbeing, Five of Swords reflects the physical toll of sustained conflict -- where the body holds the residue of repeated stress responses and needs release rather than more battle.",
     "imagery": "Five of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises friction, challenge, and adjustment."
   },
   {
@@ -2399,11 +2399,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "06",
-    "upright": "Six of Swords upright shows movement that restores rhythm or support working through thought, language, and sharp discernment. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Six of Swords is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Six of Swords shows support that is uneven, delayed, or taken for granted getting tangled in the shadow side of stress, overthinking, or conflict sharpened too far. Read it as a signal to reset the pace before the pattern hardens further. Six of Swords rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "For relationships, Six of Swords speaks to repair, reassurance, or an easier flow returning within the field of boundaries, truth, and mental distance. Six of Swords rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "Six of Swords around career matters often reveals recognition, support, or movement after a stuck phase inside strategy, conflict, and decision pressure. The work message in Six of Swords sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "In health readings, Six of Swords can describe improvement, relief, or recovery aided by support around stress, sleep quality, and cognitive overload. With Six of Swords, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Six of Swords shows a difficult passage -- moving from turbulent water toward calmer shores. The journey is not triumphant, the figure still carries their swords, but the direction is undeniably better and the transition is underway.",
+    "reversed": "Reversed, Six of Swords points to a transition stalled -- unable to leave the troubled water, resistance to the necessary passage, or a return to a difficult situation after a brief departure.",
+    "love": "In love, Six of Swords marks moving through and beyond difficulty -- a relationship entering a calmer, more stable phase, or the honest leaving of one that was genuinely beyond repair.",
+    "career": "In career, Six of Swords signals transition -- a role, field, or environment left behind in favour of something better suited to future development, even if the crossing is uncomfortable.",
+    "health": "For wellbeing, Six of Swords reflects gradual improvement following illness, mental health challenge, or exhaustion -- movement in the right direction, not yet arrival.",
     "imagery": "Six of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises movement, support, and regained rhythm."
   },
   {
@@ -2412,11 +2412,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "07",
-    "upright": "Seven of Swords upright highlights a test of judgment, courage, or strategy through thought, language, and sharp discernment. It reads best when you treat the card as a live pattern rather than a decorative mood. Seven of Swords becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Seven of Swords points to strategy slipping into suspicion, fatigue, or second-guessing running into difficulty inside stress, overthinking, or conflict sharpened too far. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Seven of Swords usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "Seven of Swords in a love reading highlights tests of trust, discernment, or loyalty shaped by boundaries, truth, and mental distance. Seven of Swords usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "In career readings, Seven of Swords brings attention to strategy, caution, and the need to read the field accurately within strategy, conflict, and decision pressure. With Seven of Swords, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "For wellbeing, Seven of Swords often reflects trial, patience, and reading what the body is really asking for linked to stress, sleep quality, and cognitive overload. Seven of Swords asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Seven of Swords carries the energy of someone who takes what they need without asking and leaves before they can be held accountable. The strategy can be necessary -- acting alone is sometimes the only way -- but the deception has a cost.",
+    "reversed": "Reversed, Seven of Swords points to deception uncovered, a strategy that backfired, or the return of honesty after avoidance. It can also reflect self-deception -- the lies told to oneself more than others.",
+    "love": "In love, Seven of Swords reflects dishonesty, hidden behaviour, or someone emotionally evasive -- acting alone in ways that undermine the trust the relationship depends on.",
+    "career": "In career, Seven of Swords marks strategic cunning -- cutting corners, taking credit without acknowledgment, or acting unilaterally in ways that secure short-term advantage while damaging longer-term trust.",
+    "health": "For wellbeing, Seven of Swords reflects avoidance of health realities -- delaying the conversation with the doctor, ignoring the symptom, or managing the surface while something real goes unaddressed.",
     "imagery": "Seven of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises testing, discernment, and strategy."
   },
   {
@@ -2425,11 +2425,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "08",
-    "upright": "When Eight of Swords appears upright, repetition that becomes momentum or skill meets thought, language, and sharp discernment in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Eight of Swords instead of resisting it.",
-    "reversed": "When Eight of Swords turns reversed, momentum becoming compulsion, pressure, or tunnel vision becomes harder to handle cleanly through stress, overthinking, or conflict sharpened too far. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Eight of Swords improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "In love, Eight of Swords often reflects patterns that intensify quickly and reveal what each person keeps repeating around boundaries, truth, and mental distance. The lesson of Eight of Swords in love is easier to read in timing and tone than in declarations alone.",
-    "career": "For work and money, Eight of Swords points to skill-building, output, and disciplined repetition expressed through strategy, conflict, and decision pressure. Eight of Swords says as much about how you are working as about what you are working on.",
-    "health": "Eight of Swords in a health context points toward habit, repetition, and the cumulative effect of small actions affecting stress, sleep quality, and cognitive overload. Eight of Swords is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Eight of Swords shows restriction that is largely self-created -- the figure is bound but the binding is loose, and the blindfold is the more confining thing. The prison is real but the walls are partly built from belief.",
+    "reversed": "Reversed, Eight of Swords signals the loosening of self-imposed restriction -- the blindfold removed, the bindings fallen, the realisation that more movement was always available than the fear allowed.",
+    "love": "In love, Eight of Swords reflects feeling trapped by a relationship -- where the barrier is more internal than external, maintained by the story told about what is possible.",
+    "career": "In career, Eight of Swords marks professional paralysis -- the inability to move toward better options because the mind has constructed an airtight case for staying stuck.",
+    "health": "For wellbeing, Eight of Swords reflects anxiety-driven limitation -- where fear or rigid thinking prevents the body from accessing the movement, treatment, or change it actually needs.",
     "imagery": "Eight of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises momentum, skill, and focused repetition."
   },
   {
@@ -2438,11 +2438,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "09",
-    "upright": "Upright, Nine of Swords brings a late-stage lesson that asks for resilience into contact with thought, language, and sharp discernment. The reading strengthens when you let the suit behave exactly as it is built to behave. With Nine of Swords, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Nine of Swords reversed suggests resilience fraying under accumulated strain under strain within stress, overthinking, or conflict sharpened too far. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Nine of Swords, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "For relationships, Nine of Swords speaks to private hopes and guarded fears coming to the surface within the field of boundaries, truth, and mental distance. With Nine of Swords, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "Nine of Swords around career matters often reveals results earned through endurance and late-stage refinement inside strategy, conflict, and decision pressure. Nine of Swords often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "In health readings, Nine of Swords can describe resilience tested by fatigue, overvigilance, or lingering strain around stress, sleep quality, and cognitive overload. The body-level lesson of Nine of Swords often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Nine of Swords is the card of 3am -- the mind running at full speed through worst-case scenarios in the dark. The suffering is real even though much of it is generated internally. The card does not dismiss the pain; it asks what part of it is actually happening now.",
+    "reversed": "Reversed, Nine of Swords points to the slow easing of anxiety, the beginning of perspective after the dark night, or despair that has gone underground and become harder to track or speak about.",
+    "love": "In love, Nine of Swords reflects anxiety about a relationship -- whether real problems are magnified by fear, or legitimate concern is driving a spiral of worst-case thinking that prevents clear action.",
+    "career": "In career, Nine of Swords marks professional anxiety -- impostor syndrome, fear of exposure, or obsessive mental review of situations that require action rather than further analysis.",
+    "health": "For wellbeing, Nine of Swords is a clear signal about mental health -- anxiety, insomnia, or the body's stress response running in the absence of the emergency it was designed for. Rest and professional support are both indicated.",
     "imagery": "Nine of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises culmination, resilience, and hard-won perspective."
   },
   {
@@ -2451,11 +2451,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "10",
-    "upright": "Ten of Swords upright shows the full weight and consequence of the suit working through thought, language, and sharp discernment. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Ten of Swords is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Ten of Swords shows burden, excess, or the painful end state of the suit getting tangled in the shadow side of stress, overthinking, or conflict sharpened too far. Read it as a signal to reset the pace before the pattern hardens further. Ten of Swords rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "Ten of Swords in a love reading highlights the long-term consequences of how love has been built shaped by boundaries, truth, and mental distance. Ten of Swords rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "In career readings, Ten of Swords brings attention to a peak responsibility, heavy load, or culmination with consequences within strategy, conflict, and decision pressure. The work message in Ten of Swords sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "For wellbeing, Ten of Swords often reflects the point where load, symptoms, or consequences can no longer be ignored linked to stress, sleep quality, and cognitive overload. With Ten of Swords, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Ten of Swords marks absolute ending -- rock bottom, the defeat so complete that there is nothing left to lose. And that is precisely its strange gift: nothing more needs to fall away. The only direction from here is up.",
+    "reversed": "Reversed, Ten of Swords points to avoiding an inevitable ending, clinging to what has already been lost, or -- more hopefully -- the beginning of recovery after the worst has already happened.",
+    "love": "In love, Ten of Swords marks the painful finality of a relationship ending -- the point where continuing is no longer possible and what remains is only the grief and what comes after.",
+    "career": "In career, Ten of Swords marks a complete professional collapse -- a termination, business failure, or reputation event that makes continuing in the current form untenable.",
+    "health": "For wellbeing, Ten of Swords reflects a health crisis -- a diagnosis that changes the landscape, a breakdown that forces genuine rest and recalibration, or the point where the body makes the patterns that brought it here impossible to continue.",
     "imagery": "Ten of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises completion, weight, and full consequence."
   },
   {
@@ -2464,11 +2464,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "page",
-    "upright": "Page of Swords upright highlights a message, mood, or beginner's encounter with the suit through thought, language, and sharp discernment. It reads best when you treat the card as a live pattern rather than a decorative mood. Page of Swords becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Page of Swords points to immaturity, avoidance, or a message that is not yet fully understood running into difficulty inside stress, overthinking, or conflict sharpened too far. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Page of Swords usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "In love, Page of Swords often reflects curiosity, flirtation, and a new emotional message around boundaries, truth, and mental distance. Page of Swords usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "For work and money, Page of Swords points to news, learning, and the entry-level form of the suit's lesson expressed through strategy, conflict, and decision pressure. With Page of Swords, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "Page of Swords in a health context points toward sensitivity, early messages, and the need to listen sooner affecting stress, sleep quality, and cognitive overload. Page of Swords asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Page of Swords is all eyes and ears -- watchful, curious, and quicker to observe than to act. The curiosity is genuine and the blade is real, even if the figure doesn't yet know when to put it down. Ideas arrive faster than judgment does.",
+    "reversed": "Reversed, Page of Swords points to sharpness that cuts indiscriminately, gossip delivered with precision, or intellectual curiosity that has turned into tactless truth-telling.",
+    "love": "In love, Page of Swords brings careful observation before commitment -- wanting to understand the dynamic fully before emotionally investing, sometimes at the cost of genuine warmth.",
+    "career": "In career, Page of Swords signals a sharp, analytically gifted early-career energy -- someone who sees problems quickly, communicates precisely, and is still learning when not to say everything they notice.",
+    "health": "For wellbeing, Page of Swords reflects the analytical mind applying itself to health -- researching, monitoring, tracking -- sometimes with useful precision and sometimes with anxiety masquerading as information-gathering.",
     "imagery": "Page of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises curiosity, learning, and a fresh message."
   },
   {
@@ -2477,11 +2477,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "knight",
-    "upright": "When Knight of Swords appears upright, the suit in motion, pursuit, and active expression meets thought, language, and sharp discernment in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Knight of Swords instead of resisting it.",
-    "reversed": "When Knight of Swords turns reversed, energy that outruns wisdom, timing, or emotional intelligence becomes harder to handle cleanly through stress, overthinking, or conflict sharpened too far. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Knight of Swords improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "For relationships, Knight of Swords speaks to active pursuit, urgency, and the style in which affection is expressed within the field of boundaries, truth, and mental distance. The lesson of Knight of Swords in love is easier to read in timing and tone than in declarations alone.",
-    "career": "Knight of Swords around career matters often reveals the way ambition advances, pursues, or pushes inside strategy, conflict, and decision pressure. Knight of Swords says as much about how you are working as about what you are working on.",
-    "health": "In health readings, Knight of Swords can describe how energy is being spent, pushed, or driven around stress, sleep quality, and cognitive overload. Knight of Swords is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Knight of Swords charges forward without pausing to survey the terrain. The speed is real, the resolve is absolute, and the direction may or may not have been fully considered. The momentum itself becomes the decision.",
+    "reversed": "Reversed, Knight of Swords points to rash action creating collateral damage, speed without discernment, or a communication delivered with such force that it left no room for the response it provoked.",
+    "love": "In love, Knight of Swords brings directness and intensity -- someone who pursues without ambiguity or who says exactly what they think in a way that is clarifying but occasionally devastating.",
+    "career": "In career, Knight of Swords marks fast-moving professional action -- pitching before being ready, pushing past resistance, or cutting through process in ways that get results but leave relationships damaged.",
+    "health": "For wellbeing, Knight of Swords reflects the physical consequences of speed -- burnout from driving too hard, injury from pushing through pain signals, or the nervous system cost of chronic high-gear operation.",
     "imagery": "Knight of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises motion, pursuit, and committed effort."
   },
   {
@@ -2490,11 +2490,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "queen",
-    "upright": "Upright, Queen of Swords brings embodied mastery of the suit from the inside out into contact with thought, language, and sharp discernment. The reading strengthens when you let the suit behave exactly as it is built to behave. With Queen of Swords, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Queen of Swords reversed suggests inner authority disturbed by self-doubt, overprotection, or emotional leakage under strain within stress, overthinking, or conflict sharpened too far. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Queen of Swords, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "Queen of Swords in a love reading highlights emotional maturity and how love is held in the inner life shaped by boundaries, truth, and mental distance. With Queen of Swords, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "In career readings, Queen of Swords brings attention to quiet competence, stewardship, and mature command of the craft within strategy, conflict, and decision pressure. Queen of Swords often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "For wellbeing, Queen of Swords often reflects regulation through self-knowledge, embodied care, and pacing linked to stress, sleep quality, and cognitive overload. The body-level lesson of Queen of Swords often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Queen of Swords has earned her clarity through experience, including painful experience. She sees the situation without softening it for her own comfort or yours. Her independence and directness come from having depended on others and found it insufficient.",
+    "reversed": "Reversed, Queen of Swords points to cold clarity turning into cruelty, independence hardening into bitterness, or sharp perception applied to wound rather than illuminate.",
+    "love": "In love, Queen of Swords brings honesty, independence, and direct emotional presence that is deeply respectful and occasionally bracing -- she does not perform warmth she does not feel.",
+    "career": "In career, Queen of Swords marks clear-headed professional authority -- someone who assesses without sentiment, communicates without flinching, and makes the call others avoid because they are not willing to be disliked for it.",
+    "health": "For wellbeing, Queen of Swords reflects the clear-eyed approach to health -- understanding what is actually happening in the body, getting real information, and making decisions from fact rather than fear.",
     "imagery": "Queen of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises mastery through embodiment and inner authority."
   },
   {
@@ -2503,11 +2503,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "swords",
     "rank": "king",
-    "upright": "King of Swords upright shows directed command of the suit and its responsibilities working through thought, language, and sharp discernment. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. King of Swords is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed King of Swords shows control problems, rigidity, or leadership without balance getting tangled in the shadow side of stress, overthinking, or conflict sharpened too far. Read it as a signal to reset the pace before the pattern hardens further. King of Swords rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "In love, King of Swords often reflects commitment, direction, and the standards guiding the bond around boundaries, truth, and mental distance. King of Swords rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "For work and money, King of Swords points to decision-making authority, executive pressure, and long-view leadership expressed through strategy, conflict, and decision pressure. The work message in King of Swords sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "King of Swords in a health context points toward the discipline required to protect long-term strength affecting stress, sleep quality, and cognitive overload. With King of Swords, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "King of Swords governs through reason, precedent, and the precision of well-considered judgment. His authority is intellectual -- he has thought through the principles and applies them consistently, even when it costs him something.",
+    "reversed": "Reversed, King of Swords points to intellect weaponised, judgment deployed for control rather than justice, or authority that has become tyrannical through rigid application of rule without compassion.",
+    "love": "In love, King of Swords brings mental clarity and honest communication -- a partner who will not pretend and whose intellectual engagement is a form of deep respect, even when it removes the comfort of ambiguity.",
+    "career": "In career, King of Swords marks senior intellectual authority -- the judge, the strategist, the architect of systems -- whose professional reputation rests on the quality and consistency of their reasoning.",
+    "health": "For wellbeing, King of Swords reflects the disciplined mind's approach to health -- understanding the mechanisms, applying the appropriate interventions precisely, and maintaining the routine with the consistency of law.",
     "imagery": "King of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises leadership, direction, and mature command."
   },
   {
@@ -2516,11 +2516,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "ace",
-    "upright": "Ace of Pentacles upright highlights the first opening of the suit through material reality, craft, and steadier embodiment. It reads best when you treat the card as a live pattern rather than a decorative mood. Ace of Pentacles becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Ace of Pentacles points to an opening that is present but not yet trusted running into difficulty inside heaviness, scarcity pressure, or rigid practicality. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Ace of Pentacles usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "For relationships, Ace of Pentacles speaks to a beginning that changes the emotional tone between people within the field of reliability, practical care, and long-term building. Ace of Pentacles usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "Ace of Pentacles around career matters often reveals an opening, initiative, or first spark of possibility inside income, craft, and material progress. With Ace of Pentacles, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "In health readings, Ace of Pentacles can describe a fresh chance to reset the body's direction around body routines, recovery, and tangible habits. Ace of Pentacles asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Ace of Pentacles brings the solid weight of a new material beginning -- a financial opportunity, a practical foundation, a seed in the real world rather than the imagination. The coin is offered and it is genuine.",
+    "reversed": "Reversed, Ace of Pentacles points to a financial opportunity missed or mismanaged, a material start without the foundation to support it, or the offer present but the conditions not yet right to receive it fully.",
+    "love": "In love, Ace of Pentacles marks a relationship taking root in the real world -- moving from possibility to tangible commitment, shared space, or practical partnership.",
+    "career": "In career, Ace of Pentacles signals the beginning of a genuinely viable opportunity -- a job offer, client, grant, or contract -- where real resources are now available to support a direction.",
+    "health": "For wellbeing, Ace of Pentacles reflects a practical new health beginning -- a diet, movement practice, or therapeutic relationship that has the material conditions to actually work.",
     "imagery": "Ace of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises beginnings and pure potential."
   },
   {
@@ -2529,11 +2529,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "02",
-    "upright": "When Two of Pentacles appears upright, a living balance between two forces meets material reality, craft, and steadier embodiment in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Two of Pentacles instead of resisting it.",
-    "reversed": "When Two of Pentacles turns reversed, indecision or imbalance between competing pulls becomes harder to handle cleanly through heaviness, scarcity pressure, or rigid practicality. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Two of Pentacles improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "Two of Pentacles in a love reading highlights mutual choice and the need to meet each other halfway shaped by reliability, practical care, and long-term building. The lesson of Two of Pentacles in love is easier to read in timing and tone than in declarations alone.",
-    "career": "In career readings, Two of Pentacles brings attention to competing priorities that need balancing or choosing within income, craft, and material progress. Two of Pentacles says as much about how you are working as about what you are working on.",
-    "health": "For wellbeing, Two of Pentacles often reflects the need to rebalance two demands pulling on the system linked to body routines, recovery, and tangible habits. Two of Pentacles is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Two of Pentacles shows someone managing competing demands with remarkable ease -- the juggling looks effortless because the rhythm has been found. The key is adaptability; this figure succeeds by staying light on their feet rather than forcing stability.",
+    "reversed": "Reversed, Two of Pentacles points to the juggling becoming too much -- one too many priorities, the rhythm lost, or the effort to appear in control no longer masking the genuine strain underneath.",
+    "love": "In love, Two of Pentacles reflects the challenge of balancing a relationship against other life priorities -- a partnership that can thrive if both people can manage their mutual demands without one becoming invisible.",
+    "career": "In career, Two of Pentacles marks skilled multitasking -- managing multiple projects or income streams with the flexibility to shift priority quickly as conditions change.",
+    "health": "For wellbeing, Two of Pentacles reflects the challenge of maintaining health habits when life is genuinely full -- where juggling responsibilities sometimes comes at the body's expense.",
     "imagery": "Two of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises choice and balancing forces."
   },
   {
@@ -2542,11 +2542,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "03",
-    "upright": "Upright, Three of Pentacles brings early growth that needs cooperation to flourish into contact with material reality, craft, and steadier embodiment. The reading strengthens when you let the suit behave exactly as it is built to behave. With Three of Pentacles, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Three of Pentacles reversed suggests growth complicated by mixed signals or weak coordination under strain within heaviness, scarcity pressure, or rigid practicality. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Three of Pentacles, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "In love, Three of Pentacles often reflects third influences, celebration, or the first visible growth of a bond around reliability, practical care, and long-term building. With Three of Pentacles, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "For work and money, Three of Pentacles points to teamwork, apprenticeship, and early proof of progress expressed through income, craft, and material progress. Three of Pentacles often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "Three of Pentacles in a health context points toward supportive routines that grow stronger through cooperation affecting body routines, recovery, and tangible habits. The body-level lesson of Three of Pentacles often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Three of Pentacles shows skilled collaboration -- the mason, the architect, and the patron all working together, each contributing what only they can. The quality of the outcome depends on all three staying genuinely engaged.",
+    "reversed": "Reversed, Three of Pentacles points to a collaborative failure -- poor communication between people who all think they're in charge, work done in silos, or craftsmanship undermined by a dysfunctional group dynamic.",
+    "love": "In love, Three of Pentacles reflects a relationship built on more than attraction -- where two people actively work together on something shared, and the collaboration itself deepens the bond.",
+    "career": "In career, Three of Pentacles marks the recognition and development of genuine skill -- where talent is developed through instruction, practice, and meaningful work within a structure that values craft.",
+    "health": "For wellbeing, Three of Pentacles reflects the health benefit of working with professionals -- where the body improves through the right combination of specialist guidance, consistent practice, and real commitment.",
     "imagery": "Three of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises collaboration and early growth."
   },
   {
@@ -2555,11 +2555,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "04",
-    "upright": "Four of Pentacles upright shows a bid for stability that can either steady or stiffen working through material reality, craft, and steadier embodiment. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Four of Pentacles is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Four of Pentacles shows stability turning into stagnation, defensiveness, or over-control getting tangled in the shadow side of heaviness, scarcity pressure, or rigid practicality. Read it as a signal to reset the pace before the pattern hardens further. Four of Pentacles rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "For relationships, Four of Pentacles speaks to the tension between safety and emotional aliveness within the field of reliability, practical care, and long-term building. Four of Pentacles rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "Four of Pentacles around career matters often reveals holding ground, consolidating gains, or resisting change inside income, craft, and material progress. The work message in Four of Pentacles sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "In health readings, Four of Pentacles can describe the body's wish to stabilise, rest, or guard resources around body routines, recovery, and tangible habits. With Four of Pentacles, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Four of Pentacles shows someone holding tightly to what they have -- arms wrapped around their coin, feet planted on two more. The security is real but the posture prevents movement. What is being protected may be worth less than what is being missed.",
+    "reversed": "Reversed, Four of Pentacles signals a release of grip -- money moving more freely, generosity returning, or the letting go of control that was preventing connection.",
+    "love": "In love, Four of Pentacles reflects emotional withholding -- someone protecting themselves so thoroughly that genuine intimacy has become impossible, the very act of self-preservation preventing connection.",
+    "career": "In career, Four of Pentacles marks a conservative, risk-averse professional stance -- valuable for protecting hard-won gains, potentially limiting when the moment calls for investment and movement.",
+    "health": "For wellbeing, Four of Pentacles reflects the body as fortress -- over-controlled, resistant to anything that might disrupt the current equilibrium, even when that equilibrium is itself a form of stagnation.",
     "imagery": "Four of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises stability and the need to consolidate."
   },
   {
@@ -2568,11 +2568,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "05",
-    "upright": "Five of Pentacles upright highlights friction that demands adjustment through material reality, craft, and steadier embodiment. It reads best when you treat the card as a live pattern rather than a decorative mood. Five of Pentacles becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Five of Pentacles points to conflict that is no longer productive running into difficulty inside heaviness, scarcity pressure, or rigid practicality. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Five of Pentacles usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "Five of Pentacles in a love reading highlights conflict, mismatch, or the need to renegotiate expectations shaped by reliability, practical care, and long-term building. Five of Pentacles usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "In career readings, Five of Pentacles brings attention to pressure, rivalry, or a correction forced by friction within income, craft, and material progress. With Five of Pentacles, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "For wellbeing, Five of Pentacles often reflects stress signals that show something must change linked to body routines, recovery, and tangible habits. Five of Pentacles asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Five of Pentacles shows two figures in the cold outside a lit window -- material hardship, genuine scarcity, and the particular pain of feeling excluded from what others take for granted. What is often missed: the door is not locked.",
+    "reversed": "Reversed, Five of Pentacles signals a return to financial stability, the acceptance of help previously refused, or the beginning of recovery from a period of genuine material hardship.",
+    "love": "In love, Five of Pentacles reflects the strain that scarcity puts on a relationship -- financial stress, feeling unsupported, or the difficulty of maintaining emotional warmth when survival anxiety dominates.",
+    "career": "In career, Five of Pentacles marks genuine financial or professional hardship -- job loss, business failure, or the experience of being shut out of opportunities available to others.",
+    "health": "For wellbeing, Five of Pentacles reflects the health impact of poverty, material stress, or the inability to access the care and resources that wellbeing actually requires.",
     "imagery": "Five of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises friction, challenge, and adjustment."
   },
   {
@@ -2581,11 +2581,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "06",
-    "upright": "When Six of Pentacles appears upright, movement that restores rhythm or support meets material reality, craft, and steadier embodiment in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Six of Pentacles instead of resisting it.",
-    "reversed": "When Six of Pentacles turns reversed, support that is uneven, delayed, or taken for granted becomes harder to handle cleanly through heaviness, scarcity pressure, or rigid practicality. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Six of Pentacles improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "In love, Six of Pentacles often reflects repair, reassurance, or an easier flow returning around reliability, practical care, and long-term building. The lesson of Six of Pentacles in love is easier to read in timing and tone than in declarations alone.",
-    "career": "For work and money, Six of Pentacles points to recognition, support, or movement after a stuck phase expressed through income, craft, and material progress. Six of Pentacles says as much about how you are working as about what you are working on.",
-    "health": "Six of Pentacles in a health context points toward improvement, relief, or recovery aided by support affecting body routines, recovery, and tangible habits. Six of Pentacles is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Six of Pentacles shows the merchant weighing out gifts to those below while holding the scale. The generosity is real and the power differential is visible. What is being given is genuinely needed; who holds the scale matters.",
+    "reversed": "Reversed, Six of Pentacles points to charity given with strings attached, resources flowing to those who don't need them, or an imbalance where one party is consistently depleted.",
+    "love": "In love, Six of Pentacles reflects the generosity that sustains a healthy relationship -- or the imbalance where one person consistently gives and the other receives without reciprocity.",
+    "career": "In career, Six of Pentacles marks the exchange of resources or skills in a way that genuinely benefits both parties -- fair compensation, mentorship, or professional generosity with real mutual return.",
+    "health": "For wellbeing, Six of Pentacles reflects the health benefits of balanced exchange -- where giving and receiving care are in proportion and the body is not consistently depleted in service of others.",
     "imagery": "Six of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises movement, support, and regained rhythm."
   },
   {
@@ -2594,11 +2594,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "07",
-    "upright": "Upright, Seven of Pentacles brings a test of judgment, courage, or strategy into contact with material reality, craft, and steadier embodiment. The reading strengthens when you let the suit behave exactly as it is built to behave. With Seven of Pentacles, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Seven of Pentacles reversed suggests strategy slipping into suspicion, fatigue, or second-guessing under strain within heaviness, scarcity pressure, or rigid practicality. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Seven of Pentacles, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "For relationships, Seven of Pentacles speaks to tests of trust, discernment, or loyalty within the field of reliability, practical care, and long-term building. With Seven of Pentacles, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "Seven of Pentacles around career matters often reveals strategy, caution, and the need to read the field accurately inside income, craft, and material progress. Seven of Pentacles often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "In health readings, Seven of Pentacles can describe trial, patience, and reading what the body is really asking for around body routines, recovery, and tangible habits. The body-level lesson of Seven of Pentacles often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Seven of Pentacles shows a farmer leaning on his hoe, looking at his crop. The work has been done; now comes patient waiting while the outcome matures. The card confirms the investment was real; it asks for the discipline not to pull up the roots to check them.",
+    "reversed": "Reversed, Seven of Pentacles points to impatience undermining a long-term investment, poor returns on genuine effort, or the question of whether the direction of investment was correctly chosen.",
+    "love": "In love, Seven of Pentacles reflects patient tending -- a relationship whose best qualities are still developing, where the commitment to cultivate rather than abandon determines the outcome.",
+    "career": "In career, Seven of Pentacles marks the long-game professional -- someone who has invested significantly in a direction and is now in the difficult middle period, waiting for the return that patient effort earns.",
+    "health": "For wellbeing, Seven of Pentacles reflects the discipline of a sustained health practice -- where the results are not yet dramatic but the consistent effort is compounding into something real.",
     "imagery": "Seven of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises testing, discernment, and strategy."
   },
   {
@@ -2607,11 +2607,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "08",
-    "upright": "Eight of Pentacles upright shows repetition that becomes momentum or skill working through material reality, craft, and steadier embodiment. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Eight of Pentacles is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Eight of Pentacles shows momentum becoming compulsion, pressure, or tunnel vision getting tangled in the shadow side of heaviness, scarcity pressure, or rigid practicality. Read it as a signal to reset the pace before the pattern hardens further. Eight of Pentacles rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "Eight of Pentacles in a love reading highlights patterns that intensify quickly and reveal what each person keeps repeating shaped by reliability, practical care, and long-term building. Eight of Pentacles rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "In career readings, Eight of Pentacles brings attention to skill-building, output, and disciplined repetition within income, craft, and material progress. The work message in Eight of Pentacles sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "For wellbeing, Eight of Pentacles often reflects habit, repetition, and the cumulative effect of small actions linked to body routines, recovery, and tangible habits. With Eight of Pentacles, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Eight of Pentacles shows the apprentice fully absorbed in the work -- not looking up, not concerned with status, only with the quality of what is being made. Mastery is approached through repetition, attention, and the willingness to make the same thing better than before.",
+    "reversed": "Reversed, Eight of Pentacles points to workmanship that has become mechanical, perfectionism preventing completion, or diligent effort invested in the wrong direction.",
+    "love": "In love, Eight of Pentacles reflects the patient, unglamorous work of sustaining a relationship -- showing up consistently, communicating carefully, and getting better at the practice of loving this specific person.",
+    "career": "In career, Eight of Pentacles marks the development of genuine professional skill through focused, repetitive practice -- the willingness to do the unglamorous work that produces expertise over time.",
+    "health": "For wellbeing, Eight of Pentacles reflects the health benefits of consistent, focused practice -- where diligence applied to movement, nutrition, or therapeutic work produces measurable improvement.",
     "imagery": "Eight of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises momentum, skill, and focused repetition."
   },
   {
@@ -2620,11 +2620,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "09",
-    "upright": "Nine of Pentacles upright highlights a late-stage lesson that asks for resilience through material reality, craft, and steadier embodiment. It reads best when you treat the card as a live pattern rather than a decorative mood. Nine of Pentacles becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Nine of Pentacles points to resilience fraying under accumulated strain running into difficulty inside heaviness, scarcity pressure, or rigid practicality. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Nine of Pentacles usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "In love, Nine of Pentacles often reflects private hopes and guarded fears coming to the surface around reliability, practical care, and long-term building. Nine of Pentacles usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "For work and money, Nine of Pentacles points to results earned through endurance and late-stage refinement expressed through income, craft, and material progress. With Nine of Pentacles, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "Nine of Pentacles in a health context points toward resilience tested by fatigue, overvigilance, or lingering strain affecting body routines, recovery, and tangible habits. Nine of Pentacles asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Nine of Pentacles shows a woman alone in her garden, entirely at ease in her own world -- elegant, self-sufficient, and at peace with her independence. What she has was earned and it shows.",
+    "reversed": "Reversed, Nine of Pentacles points to self-sufficiency that has become isolation, financial security purchased at the cost of genuine connection, or independence that began as strength and hardened into loneliness.",
+    "love": "In love, Nine of Pentacles reflects a person who is genuinely complete without a partner -- bringing that self-sufficiency to a relationship as confidence rather than need, or finding independence more comfortable than compromise.",
+    "career": "In career, Nine of Pentacles marks earned financial independence -- the freelancer with a full client roster, the professional whose reputation generates its own momentum.",
+    "health": "For wellbeing, Nine of Pentacles reflects the body at its best expression of earned health -- where sustained investment in movement, nutrition, and self-care has produced a visible, felt quality of physical life.",
     "imagery": "Nine of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises culmination, resilience, and hard-won perspective."
   },
   {
@@ -2633,11 +2633,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "10",
-    "upright": "When Ten of Pentacles appears upright, the full weight and consequence of the suit meets material reality, craft, and steadier embodiment in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of Ten of Pentacles instead of resisting it.",
-    "reversed": "When Ten of Pentacles turns reversed, burden, excess, or the painful end state of the suit becomes harder to handle cleanly through heaviness, scarcity pressure, or rigid practicality. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. Ten of Pentacles improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "For relationships, Ten of Pentacles speaks to the long-term consequences of how love has been built within the field of reliability, practical care, and long-term building. The lesson of Ten of Pentacles in love is easier to read in timing and tone than in declarations alone.",
-    "career": "Ten of Pentacles around career matters often reveals a peak responsibility, heavy load, or culmination with consequences inside income, craft, and material progress. Ten of Pentacles says as much about how you are working as about what you are working on.",
-    "health": "In health readings, Ten of Pentacles can describe the point where load, symptoms, or consequences can no longer be ignored around body routines, recovery, and tangible habits. Ten of Pentacles is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "Ten of Pentacles shows abundance extended across generations -- wealth that has become legacy, family that has become institution, security that outlasts any single person's life. The figure surveys what has been built and found it good.",
+    "reversed": "Reversed, Ten of Pentacles points to a family system whose external wealth masks genuine dysfunction, or to wealth structured in a way that constrains rather than enables those who inherit it.",
+    "love": "In love, Ten of Pentacles marks the relational equivalent of legacy -- a partnership that has built something together that could outlast them both: a home, a family, a shared life that has become something real.",
+    "career": "In career, Ten of Pentacles marks the full fruition of a professional life -- the business handed to a successor, the career that produced lasting work, the institution built for the next generation.",
+    "health": "For wellbeing, Ten of Pentacles reflects generational patterns of health -- where what the body carries has been inherited, and the habit of caring for oneself is something modelled and passed forward.",
     "imagery": "Ten of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises completion, weight, and full consequence."
   },
   {
@@ -2646,11 +2646,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "page",
-    "upright": "Upright, Page of Pentacles brings a message, mood, or beginner's encounter with the suit into contact with material reality, craft, and steadier embodiment. The reading strengthens when you let the suit behave exactly as it is built to behave. With Page of Pentacles, clarity arrives through participation, not through hovering at a distance.",
-    "reversed": "Page of Pentacles reversed suggests immaturity, avoidance, or a message that is not yet fully understood under strain within heaviness, scarcity pressure, or rigid practicality. The card asks for correction, honesty, and a calmer relationship with the suit's pressure. With Page of Pentacles, the shadow softens as soon as the misused energy is brought back into proportion.",
-    "love": "Page of Pentacles in a love reading highlights curiosity, flirtation, and a new emotional message shaped by reliability, practical care, and long-term building. With Page of Pentacles, affection becomes clearer once you watch what each person consistently does with vulnerability.",
-    "career": "In career readings, Page of Pentacles brings attention to news, learning, and the entry-level form of the suit's lesson within income, craft, and material progress. Page of Pentacles often reveals whether effort is being invested in the right direction or only in the loudest demand.",
-    "health": "For wellbeing, Page of Pentacles often reflects sensitivity, early messages, and the need to listen sooner linked to body routines, recovery, and tangible habits. The body-level lesson of Page of Pentacles often lives in rhythm, repetition, and the feedback loop you keep reinforcing.",
+    "upright": "Page of Pentacles holds his coin with great attention -- studying it, considering it, imagining what it can become. The enthusiasm is practical: he is in learning mode, building the foundation of future mastery with genuine application.",
+    "reversed": "Reversed, Page of Pentacles points to study that stays theory, practical opportunity not fully engaged, or a student so absorbed in planning that they never begin the actual work.",
+    "love": "In love, Page of Pentacles brings practical, grounded care -- the partner who remembers details, who shows up reliably, who builds something concrete rather than only expressing feeling.",
+    "career": "In career, Page of Pentacles signals the beginning of serious professional development -- the student or intern who is genuinely interested in the material and willing to do the foundational work.",
+    "health": "For wellbeing, Page of Pentacles reflects beginning a new health practice with genuine curiosity -- researching, investing in the right resources, and starting the slow process of building something sustainable.",
     "imagery": "Page of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises curiosity, learning, and a fresh message."
   },
   {
@@ -2659,11 +2659,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "knight",
-    "upright": "Knight of Pentacles upright shows the suit in motion, pursuit, and active expression working through material reality, craft, and steadier embodiment. Instead of overcomplicating the message, follow the simplest version of the suit's lesson first. Knight of Pentacles is easiest to read once you notice where this exact energy is already happening in real life.",
-    "reversed": "Reversed Knight of Pentacles shows energy that outruns wisdom, timing, or emotional intelligence getting tangled in the shadow side of heaviness, scarcity pressure, or rigid practicality. Read it as a signal to reset the pace before the pattern hardens further. Knight of Pentacles rarely asks for drama; it asks for a more conscious use of the suit's power.",
-    "love": "In love, Knight of Pentacles often reflects active pursuit, urgency, and the style in which affection is expressed around reliability, practical care, and long-term building. Knight of Pentacles rarely flatters; it shows the relationship exactly at the point where feeling becomes action.",
-    "career": "For work and money, Knight of Pentacles points to the way ambition advances, pursues, or pushes expressed through income, craft, and material progress. The work message in Knight of Pentacles sharpens when you ask what this card is rewarding and what it is quietly taxing.",
-    "health": "Knight of Pentacles in a health context points toward how energy is being spent, pushed, or driven affecting body routines, recovery, and tangible habits. With Knight of Pentacles, wellbeing improves once the underlying pattern is respected before the symptoms are argued with.",
+    "upright": "Knight of Pentacles moves slowly, deliberately, and without shortcuts. He will complete the task -- not spectacularly, but completely, and correctly. The reliability is total; the excitement is not the point.",
+    "reversed": "Reversed, Knight of Pentacles points to routine become stagnation, methodical effort that has lost its purpose, or the refusal to adapt when the situation has changed and the old method no longer serves.",
+    "love": "In love, Knight of Pentacles brings steadfast presence -- showing up, keeping promises, building trust through consistency rather than grand gestures, providing the kind of safety that comes from being genuinely reliable.",
+    "career": "In career, Knight of Pentacles marks the professional known for thorough work and reliable delivery -- not the flashiest performer, but the one the organisation depends on to get the unglamorous work done correctly.",
+    "health": "For wellbeing, Knight of Pentacles reflects the health approach most likely to produce lasting results -- consistent, methodical, undramatic -- where the commitment to the routine outlasts the motivation that started it.",
     "imagery": "Knight of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises motion, pursuit, and committed effort."
   },
   {
@@ -2672,11 +2672,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "queen",
-    "upright": "Queen of Pentacles upright highlights embodied mastery of the suit from the inside out through material reality, craft, and steadier embodiment. It reads best when you treat the card as a live pattern rather than a decorative mood. Queen of Pentacles becomes strongest when the suit is allowed to do its natural work without apology.",
-    "reversed": "Reversed, Queen of Pentacles points to inner authority disturbed by self-doubt, overprotection, or emotional leakage running into difficulty inside heaviness, scarcity pressure, or rigid practicality. The energy is not gone; it is knotted, delayed, or expressed in the wrong proportion. The knot in Queen of Pentacles usually loosens once the suit is handled with less force and more accuracy.",
-    "love": "For relationships, Queen of Pentacles speaks to emotional maturity and how love is held in the inner life within the field of reliability, practical care, and long-term building. Queen of Pentacles usually tells the truth of the bond through behaviour before anyone says it out loud.",
-    "career": "Queen of Pentacles around career matters often reveals quiet competence, stewardship, and mature command of the craft inside income, craft, and material progress. With Queen of Pentacles, career clarity usually arrives through standards, pacing, and the quality of your response under pressure.",
-    "health": "In health readings, Queen of Pentacles can describe regulation through self-knowledge, embodied care, and pacing around body routines, recovery, and tangible habits. Queen of Pentacles asks you to notice what your system has been signalling long before it had words for it.",
+    "upright": "Queen of Pentacles has made her home an abundance -- warm, practical, and nourishing to everything that enters it. Her prosperity is not hoarded but shared, and her care extends naturally to anyone who crosses her threshold.",
+    "reversed": "Reversed, Queen of Pentacles points to maternal warmth that has become smothering, practical care tipping into control, or a person so busy maintaining the material world that their own deeper needs go completely unmet.",
+    "love": "In love, Queen of Pentacles brings practical, embodied warmth -- a partner who shows love through feeding, tending, and creating comfort, whose care is expressed more through action than declaration.",
+    "career": "In career, Queen of Pentacles marks the professional who has integrated material success and personal warmth -- where financial acumen is matched by real care for the people involved.",
+    "health": "For wellbeing, Queen of Pentacles reflects a grounded, body-positive approach to health -- where the earth, food, movement, and sensory experience are treated as medicine rather than pleasure to be rationed.",
     "imagery": "Queen of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises mastery through embodiment and inner authority."
   },
   {
@@ -2685,11 +2685,11 @@ def _build_cards() -> list[dict[str, Any]]:
     "arcana": "minor",
     "suit": "pentacles",
     "rank": "king",
-    "upright": "When King of Pentacles appears upright, directed command of the suit and its responsibilities meets material reality, craft, and steadier embodiment in a way that wants expression. The card usually becomes clearest once you stop abstracting it and notice where the energy is already active. The card rewards a response that matches the tempo of King of Pentacles instead of resisting it.",
-    "reversed": "When King of Pentacles turns reversed, control problems, rigidity, or leadership without balance becomes harder to handle cleanly through heaviness, scarcity pressure, or rigid practicality. Usually the remedy begins with noticing where the suit is being forced, avoided, or misread. King of Pentacles improves when the underlying pattern is named plainly instead of managed indirectly.",
-    "love": "King of Pentacles in a love reading highlights commitment, direction, and the standards guiding the bond shaped by reliability, practical care, and long-term building. The lesson of King of Pentacles in love is easier to read in timing and tone than in declarations alone.",
-    "career": "In career readings, King of Pentacles brings attention to decision-making authority, executive pressure, and long-view leadership within income, craft, and material progress. King of Pentacles says as much about how you are working as about what you are working on.",
-    "health": "For wellbeing, King of Pentacles often reflects the discipline required to protect long-term strength linked to body routines, recovery, and tangible habits. King of Pentacles is most helpful when it is read as a pattern of regulation, depletion, recovery, or pacing.",
+    "upright": "King of Pentacles has built something real -- wealth from sustained, intelligent effort over many years. He is surrounded by his achievements and comfortable in that abundance: not flashy, not anxious, simply established in what he has made.",
+    "reversed": "Reversed, King of Pentacles points to wealth used for domination, a business-first orientation that has squeezed the life out of relationships, or financial security that has become the measure of worth rather than the support for a richer life.",
+    "love": "In love, King of Pentacles brings security and stability -- a partner whose reliability is genuinely stabilising, providing the material conditions in which a relationship can grow without existential anxiety.",
+    "career": "In career, King of Pentacles marks the full expression of financial and professional mastery -- the CEO, the investor, the builder of institutions whose authority comes from a track record that speaks for itself.",
+    "health": "For wellbeing, King of Pentacles reflects financial and practical stability as a direct health resource -- where having enough means the body can be properly cared for, adequately rested, and treated as an asset rather than merely a tool.",
     "imagery": "King of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises leadership, direction, and mature command."
   }
 ]""")
