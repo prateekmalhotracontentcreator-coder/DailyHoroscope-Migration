@@ -8,10 +8,10 @@
 ## 1. Your Role in the New Thread
 
 You are the **Strategist + Lal Kitab thread**. Your scope is:
-- Drive The Strategist Phase 2 Claude Design (CD) pipeline (7 components)
-- Integrate CD deliveries into the React app once TT approves each HTML prototype
-- Issue and integrate **LK-1** (Lal Kitab Standalone Module) when TT gives batch approval
-- Own all open ops gaps listed in Section 5
+- Drive The Strategist Phase 2 Claude Design (CD) pipeline (7 components) -- **UI/UX polish and gap identification** on already-live functional features (A2 session built them; your job is quality)
+- Integrate TT-approved CD prototypes into the React app
+- Own all LK open gaps (LK-OP-5 through LK-OP-8) -- **LK-1 is already live, do NOT re-issue to Codex**
+- Own all open ops gaps listed in Sections 5 and 6
 
 **You do NOT own:** KE, SEO 20K, Book Decode, Tarot, or any other module. Those are separate threads.
 
@@ -76,19 +76,19 @@ You are the **Strategist + Lal Kitab thread**. Your scope is:
 
 ## 4. The Strategist Phase 2 -- CD Pipeline (Your Primary Work)
 
-> **⚠️ IMPORTANT CONTEXT:** The Phase 2 FUNCTIONAL FEATURES (2A-2I) were already built by Account 2 (A2 session, 2026-05-13) and subsequently refined by STR-R01 through R04 in the main thread. The CD (Claude Design) pipeline below is a **VISUAL REDESIGN** of components that are already functionally live. You are not building new features from scratch -- you are creating polished HTML prototypes that will replace the current visual implementation.
+> **⚠️ IMPORTANT CONTEXT:** The Phase 2 FUNCTIONAL FEATURES (2A-2I) were already built by Account 2 (A2 session, 2026-05-09 to 2026-05-13 -- a pure Codex delivery + integration session) and subsequently refined by STR-R01 through R04 in the main thread. **The CD (Claude Design) pipeline is not about rebuilding features.** Its role is: (1) **UI/UX quality** -- replace the functional-but-rough A2 implementations with polished, on-brand HTML prototypes, and (2) **gap identification** -- during each prototype review, surface any UX gaps, missing states, or edge cases the A2 build missed. TT approves each prototype before it is integrated into React.
 
 ### Functional State of Phase 2 Components (all live as of 2026-05-13 + main thread refinements)
 
-| Phase | Component | Current State |
-|---|---|---|
-| 2B | KP Gate 0 in War Room (inline verdict) | ✅ Functionally live -- CD redesign pending |
-| 2C | WAIT/NO/PRAY Pre-Flight banners | ✅ Functionally live -- CD redesign pending |
-| 2D | Score-gated re-entry (NO ≥60%, PRAY ≥75%) | ✅ Functionally live -- CD redesign pending |
-| 2E | LK 5-Gate summaries in dashboard | ✅ Functionally live -- CD redesign pending |
-| 2F | Success & Debt Scoreboard (Layer 6) | ✅ Functionally live -- CD redesign pending |
-| 2G | Action Plan page `/strategist/action-plan` | ✅ Functionally live -- CD redesign pending |
-| 2I | PRAY path (Mantra + LK Debt Audit) | ✅ Functionally live -- CD redesign pending |
+| Phase | Component | Current State | CD Role |
+|---|---|---|---|
+| 2B | KP Gate 0 in War Room (inline verdict) | ✅ Functionally live | UI/UX polish + gap check |
+| 2C | WAIT/NO/PRAY Pre-Flight banners | ✅ Functionally live | UI/UX polish + gap check |
+| 2D | Score-gated re-entry (NO ≥60%, PRAY ≥75%) | ✅ Functionally live | UI/UX polish + gap check |
+| 2E | LK 5-Gate summaries in dashboard | ✅ Functionally live | UI/UX polish + gap check |
+| 2F | Success & Debt Scoreboard (Layer 6) | ✅ Functionally live | UI/UX polish + gap check |
+| 2G | Action Plan page `/strategist/action-plan` | ✅ Functionally live | UI/UX polish + gap check |
+| 2I | PRAY path (Mantra + LK Debt Audit) | ✅ Functionally live | UI/UX polish + gap check |
 
 ### CD Build Order (STRICT -- each file must be TT-approved before next starts)
 
@@ -194,12 +194,16 @@ All CSS tokens are in `frontend/src/styles/strategist-tokens.css`. Key tokens:
 
 ## 8. A2 Session Context (133 turns, 2026-05-09 to 2026-05-13)
 
-**Session export:** `/Users/apple/Documents/Knowledge Engine_eBooks/LK and Strategist Session Export_CC A2/`
+**What A2 was:** A dedicated Codex delivery + integration session. Account 2 (A2) received Codex-written code briefs, integrated them into the Temple App, ran builds, fixed bugs, and pushed to `main`. It was NOT a design or planning session -- every item below was shipped to production by end of that session.
 
-**What the A2 session built:**
+**Session export folder (read if you need to audit or verify anything A2 built):**
+`/Users/apple/Documents/Knowledge Engine_eBooks/LK and Strategist Session Export_CC A2/`
+The export is 5803 lines / 133 turns. Use it to trace exact line numbers, bug fixes, or data ingestion runs if a production discrepancy is found.
+
+**What the A2 session delivered and integrated:**
 - Ingested 144 LK rules to `jyotish_lk` (NLM-reviewed and approved)
 - Added 22 Strategist data patch records (IDs 1011-1020 + 1126-1137), total 823 records live
-- Built Strategist Phase 2A through 2I functional features:
+- Built and integrated Strategist Phase 2A through 2I into the live app:
   - 2A: KP NavBar + route registration
   - 2B: KP Gate 0 wired into War Room (inline verdict)
   - 2C: WAIT/NO/PRAY Pre-Flight banners
@@ -209,6 +213,7 @@ All CSS tokens are in `frontend/src/styles/strategist-tokens.css`. Key tokens:
   - 2G: Action Plan page at `/strategist/action-plan`
   - 2H: 7 notification triggers
   - 2I: PRAY path (Mantra + LK Debt Audit)
+- Built and integrated full LK standalone module (7 pages + 2 backend files -- see Section 6)
 - Integrated Remedies Engine Phase 1 (36 KP remedies seeded to `krishna_prashnavali_remedies`)
 - Added on-page SEO content to Strategist pages
 - Added Premium gate to War Room
@@ -219,7 +224,7 @@ All CSS tokens are in `frontend/src/styles/strategist-tokens.css`. Key tokens:
 - STR-2J completed the "2J -- UI Polish" that A2 had noted as pending
 - War Room Engine Selector, Golden Hour Strip, Pitru Rin Ledger, Dasha Transition all added
 
-**Key insight:** The CD (Claude Design) pipeline is a VISUAL REDESIGN of components that A2 built functionally. The new thread's job is visual polishing via CD prototypes, not rebuilding from scratch.
+**Key insight:** All functional features exist. CD's job is UI/UX quality and gap identification -- not feature building.
 
 **When TT opens the new thread:** TT will share CD work folders containing HTML prototypes already in progress. Check which prototypes exist before requesting new CD builds.
 
