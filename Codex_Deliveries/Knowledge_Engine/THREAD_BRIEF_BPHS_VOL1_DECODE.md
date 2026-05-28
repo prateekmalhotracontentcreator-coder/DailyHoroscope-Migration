@@ -2,164 +2,149 @@
 ## Status Update + Queries + Next Steps
 
 > Prepared by: Temple Team -- EverydayHoroscope
-> Date: 2026-05-28
-> For: BPHS Vol 1 Decode Thread
-> Status: **FREEZE CONFIRMED -- NLM Decode Commission Required**
+> Date: 2026-05-28 (corrected -- initial brief contained a critical error)
+> For: BPHS Vol 1 Decode Thread (Thread A)
+> Status: **PARTIALLY COMPLETE -- Ch11-Ch24 decoded. Remaining chapters TBD.**
 
 ---
 
-## Current State -- What Exists
+## CORRECTION -- Initial Brief Was Wrong
 
-The BPHS Vol 1 folder contains **6 JSON files**. These are NOT decoded KE rules.
+The first version of this brief stated "zero decoded rules, freeze confirmed." That was incorrect. Thread A has produced significant decode output. Apologies for the error -- it was written without checking the actual output folder. Correct state is below.
 
-They are **raw OCR output** from a document scanning API. Each file's root structure is:
+---
 
-```json
-{
-  "success_count": <int>,
-  "total_count": <int>,
-  "version": "...",
-  "pages": [
-    {
-      "page": <int>,
-      "content": [
-        {
-          "text": "...",
-          "bbox": [x1, y1, x2, y2],
-          "confidence": 0.94
-        }
-      ]
-    }
-  ],
-  "catalog": {...},
-  "metrics": {...}
-}
+## Actual Current State
+
+### Output folder (canonical)
 ```
+/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_CC_Decode/
+```
+This folder exists and contains **86 files** covering Ch11-Ch24.
 
-This is Stage 0 source material -- pixel-coordinate bounding boxes from a scanning API. There are **zero decoded rules, zero Rules.json files, zero Summary.md files** in this folder.
+### What Thread A has decoded
 
-### What OCR files exist
-
-| File | Chapter | Pages |
+| Chapter | Title | Files present |
 |---|---|---|
-| `BPHS_Vol1_Ch27_OCR.json` | Chapter 27 | 25 pages |
-| `BPHS_Vol1_Ch34_OCR.json` | Chapter 34 | 17 pages |
-| `BPHS_Vol1_Ch40_OCR.json` | Chapter 40 | 4 pages |
-| `BPHS_Vol1_Ch41_OCR.json` | Chapter 41 | 11 pages |
-| `BPHS_Vol1_Ch43_OCR.json` | Chapter 43 | 25 pages |
-| `BPHS_Vol1_Ch44_OCR.json` | Chapter 44 | 9 pages |
+| Ch11 | Judgement of Houses Contradictions | Rules.json + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch12 | Effects 1st House | Rules.json + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch13 | Effects 2nd House | Rules.json + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch14 | Effects 3rd House | Rules.json + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch15 | Effects 4th House | Rules.json + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch16 | Effects 5th House | Rules.json + Part1/Part2 + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch17 | Effects 6th House | Rules.json + Part1/Part2 + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch18 | Effects 7th House | Rules.json + Part1/Part2/Part3 + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch19 | Effects 8th House | Rules.json + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch20 | Effects 9th House | Rules.json + Part1/Part2 + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch21 | Effects 10th House | Rules.json + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch22 | Effects 11th House | Rules.json + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch23 | Effects 12th House | Rules.json + Summary.md + Diagnostic.md + Contradictions.json + DataTables.md |
+| Ch24 | Effects Bhava Lords | Rules.json + Part1-Part6 + Summary.md + Diagnostic.md + DataTables.md |
 
-**Total: 6 chapters OCR'd -- out of 100 chapters in BPHS Vol 1.**
+**Total: 14 chapters decoded. Fresh Eyes assessment doc also present:**
+`BPHS_CC_Decode/BPHS_Vol1_ThreadA_FreshEyes.md`
 
-The full BPHS Vol 1 PDF is available at:
+---
+
+## Separate Folder -- Not Decode Output
+
+```
+/Users/apple/Documents/Knowledge Engine_eBooks/BPHS Vol 1 De-code/
+```
+This folder contains **6 raw OCR JSON files** (Ch27, Ch34, Ch40, Ch41, Ch43, Ch44). These are scanner output (`pages[].content[].bbox` bounding-box format), NOT decoded KE rules. They are Stage 0 source material only. Thread A should not use these as decode input.
+
+The full BPHS Vol 1 PDF (Santhanam translation) is the correct source:
 ```
 /Users/apple/Documents/Knowledge Engine_eBooks/Maharishi_Parashara_-_Brihat_Parasara_Hora_Sastra_(Vol._1).pdf
 ```
 
 ---
 
-## Why the Freeze is Legitimate
+## TT Decision Required -- Before Thread Continues
 
-The thread flagged a freeze because there was nothing to decode from -- the JSON files are scanner output, not sloka text in a format ready for NLM decode. The freeze is correct.
+### Decision 1 -- Folder naming
 
-**What's needed before decode can begin:**
-1. Sloka text must be extracted from the OCR bounding boxes (or from the full PDF directly)
-2. An NLM Decode Commission must be issued -- same format as the KP Astrology commission and the LongevityUnnatural commission
-3. The decode thread must receive chapter-level text input, not raw bounding-box JSON
+The thread is writing output to `BPHS_CC_Decode/`. The new spec proposed `BPHS_Vol1_CC_Decode/` (doesn't exist). 
 
----
+**TT recommendation: Keep `BPHS_CC_Decode/` as the canonical output folder.** Do not migrate. The folder has 86 files and is established. Do not rename or create a parallel folder.
 
-## What BPHS Vol 1 Needs to Produce (Output Spec)
+**Thread A: confirm you are writing to `BPHS_CC_Decode/` and continue using it.**
 
-The decode must produce the same 3-document output as all other active decode threads:
+### Decision 2 -- Ch11-Ch24 validity
 
-```
-BPHS_Vol1_AdhXX_[ChapterName]_Rules.json      ← KE rule documents (JSON array)
-BPHS_Vol1_AdhXX_[ChapterName]_Summary.md      ← chapter doctrinal summary
-BPHS_Vol1_AdhXX_[ChapterName]_Diagnostic.md   ← decode decisions + ambiguity log
-```
+Thread A decoded Ch11-Ch24 (all 12 House Effect chapters + Bhava Lords). Does this work stand under the current schema?
 
-Output folder:
-```
-/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Vol1_CC_Decode/
-```
+**TT assessment: Ch11-Ch24 work stands as valid.** The house effect chapters used `planet_in_house` and `yoga_combination` condition types -- both stable schema fields that were not amended by KE-SCHEMA-AMENDMENT-PD1. No retroactive re-encoding is required.
 
-(This folder does not yet exist -- create it when the commission is issued.)
+**Exception:** If any rules in Ch11-Ch24 involve longevity or death timing, those rules should have `claim_axis: "longevity"` added (now a valid value per KE-SCHEMA-AMENDMENT-PD1). The Fresh Eyes assessment notes Ch19 (8th House) has longevity rules. Those rules should be updated.
+
+**Thread A: confirm Ch11-Ch24 output is complete and no chapters require a re-read.**
 
 ---
 
-## Priority Chapters for Phaladeepika Dedup
+## What Remains to be Decoded
 
-The chapters with highest expected overlap with Phaladeepika (from Fresh Eyes assessment):
+The priority sequence below is based on what Phaladeepika dedup needs most (house effects already covered -- thread can now move to remaining chapters):
 
-| Phaladeepika Chapter | BPHS Chapter (likely) | Overlap estimate |
-|---|---|---|
-| Adhyaya VIII -- Planets in 12 Bhavas | BPHS house-effect chapters (est. 15-26 range) | 60-70% |
-| Adhyaya II -- Karakas & Significations | BPHS Karaka chapters | High |
-| Adhyaya VI -- Pancha Mahapurusha Yogas | BPHS yoga chapters | Moderate |
-| Adhyaya XIX -- Vimshottari Dasas | BPHS Dasha chapters | Moderate |
+```
+NEXT PRIORITY -- Karaka & Signification chapters
+  Ch 2  -- Character & General Significations of Planets
+  Ch 3  -- Exaltation, Debilitation, Own Sign (Karaka definitions)
+  Ch 4  -- Aspects, Natural Friends/Enemies
 
-**Critical gap:** The house-effect chapters needed for the Adhyaya VIII dedup (BPHS Ch 15-26 range) are not among the 6 OCR'd chapters. Those chapters are not even at OCR stage yet.
+THEN -- Yoga chapters (for Phaladeepika Adhyaya VI dedup)
+  Ch 34 -- Planetary Combinations (OCR exists in BPHS Vol 1 De-code/ -- use PDF instead)
+  Ch 40 -- Royal Association Yogas (OCR exists -- use PDF instead)
+  Ch 41 -- Wealth Yogas (OCR exists -- use PDF instead)
 
-**Consequence:** The Phaladeepika dedup for Adhyaya VIII cannot run until those chapters are both extracted from the full PDF AND fully decoded.
+THEN -- Dasha chapters (for Phaladeepika Adhyaya XIX dedup)
+  Ch 46 -- Vimshottari Dasha Effects
+  (and related sub-dasha chapters)
+
+THEN -- Remaining chapters as available
+```
 
 ---
 
-## Recommended Decode Priority (once commission is issued)
+## Schema Notes
 
-```
-PRIORITY 1 -- Karaka & Signification chapters (dedup for Adhyaya II)
-PRIORITY 2 -- Yoga chapters -- Pancha Mahapurusha (dedup for Adhyaya VI)
-PRIORITY 3 -- House effect chapters (dedup for Adhyaya VIII -- largest gap)
-PRIORITY 4 -- Dasha chapters (dedup for Adhyaya XIX)
-PRIORITY 5 -- Remaining chapters
-```
+**All KE-SCHEMA-AMENDMENT-PD1 additions are now live.** The following are relevant for remaining BPHS chapters:
 
-This sequence maximises usefulness for the active Phaladeepika decode as quickly as possible.
-
----
-
-## Schema Notes for This Decode Thread
-
-**All standard KE schema applies.** The following schema additions (from KE-SCHEMA-AMENDMENT-PD1) are relevant to BPHS Vol 1:
-
-| Schema field | Relevant BPHS chapters |
+| Schema addition | Relevant BPHS chapters |
 |---|---|
-| `claim_axis: "longevity"` | Longevity / Ayurdaya chapters |
+| `claim_axis: "longevity"` | Retroactive: Ch19 (8th House). Forward: Longevity/Ayurdaya chapters (Ch43, Ch44 when decoded) |
 | `engine_dependency: ["ashtakavarga_calculator"]` | Ashtakavarga chapters |
-| `engine_dependency: ["kalachakra_dasa_calculator"]` | Kalachakra Dasa chapters |
+| `engine_dependency: ["kalachakra_dasa_calculator"]` | Kalachakra chapters |
+| `condition.type: "neechabhanga_rule"` | Any Neechabhanga rules in Yoga chapters |
 
-**Schema constants source of truth:** `backend/ke_schema_constants.py`
-**Schema validation layer:** `backend/knowledge_schema.py`
-
-**Cross-text matching:** Leave `cross_text_matches: null` on all rules during initial decode. The dedup script will populate this field in a post-decode pass once both BPHS Vol 1 and Phaladeepika rule sets are complete.
-
----
-
-## Open Queries -- Please Confirm
-
-| # | Query | Action owner |
-|---|---|---|
-| Q1 | What is the source PDF / edition of BPHS Vol 1 in use? (Maharishi Parasara / Bangalore / Girish Chand Sharma / other?) This affects sloka citation format. | **BPHS decode thread** |
-| Q2 | Confirm `source.sloka` format. Proposed: `"chapter.sloka"` e.g. `"34.12"` for Chapter 34 Sloka 12. Is this what the thread is using? | **BPHS decode thread** |
-| Q3 | Can the thread extract sloka text directly from the full PDF (at the path above), rather than from the 6 OCR JSON files? The OCR files cover only 6 chapters and the text quality from the PDFs is better than bounding-box OCR for Sanskrit verses. | **BPHS decode thread** |
-| Q4 | Which chapters are the thread's highest priority? The Temple Team recommends Karaka → Yoga → House Effects sequence (see above). Confirm whether the thread agrees or has a different sequencing preference. | **BPHS decode thread** |
-| Q5 | Does the thread need a Codex NLM Decode Commission brief, or can they proceed using the existing KP Astrology commission as a format template? | **BPHS decode thread to confirm -- Temple Team to issue commission if needed** |
+**Schema constants:** `backend/ke_schema_constants.py`
+**Schema validation:** `backend/knowledge_schema.py`
 
 ---
 
-## Immediate Next Actions
+## Open Queries -- Thread A to Confirm
 
-| Action | Owner | Blocker? |
+| # | Query | Blocking? |
 |---|---|---|
-| Confirm text extraction method (PDF direct vs OCR JSON) | BPHS decode thread | Yes -- nothing can start until this is confirmed |
-| Confirm chapter priority sequence | BPHS decode thread | Yes |
-| Temple Team issues NLM Decode Commission | Temple Team | After thread confirms above |
-| Create output folder: `/BPHS_Vol1_CC_Decode/` | Decode thread on first write | No |
-| Begin decode: Priority 1 chapters | Decode thread | After commission issued |
+| Q1 | Confirm Ch11-Ch24 output is complete. Any chapters flagged for re-read that haven't been revisited? (FreshEyes flagged Ch14, Ch15, Ch19, Ch22, Ch23 as thin -- were these re-read before closing?) | **Yes** |
+| Q2 | Confirm output folder is `BPHS_CC_Decode/` -- is this where all future output will continue to go? | Yes |
+| Q3 | Which edition/translation of BPHS Vol 1 is the thread using? (Santhanam / Girish Chand Sharma / other?) Affects sloka citation format. | No |
+| Q4 | Confirm `source.sloka` format being used. Proposed: `"chapter.sloka"` e.g. `"12.4"` for Chapter 12 Sloka 4. | No |
+| Q5 | For the remaining chapters (Karaka, Yoga, Dasha) -- can the thread proceed using the full PDF as source, or does it need pre-split chapter PDFs? If pre-split PDFs are needed, TT will prepare them. | No |
 
-**Until the commission is issued and the thread confirms their extraction method, maintain the freeze.**
+---
+
+## Dedup Status
+
+The house effect chapters (Ch11-Ch23) are now decoded. This means:
+
+- **Phaladeepika Adhyaya VIII (Planets in 12 Bhavas)** dedup CAN proceed once Adhyaya VIII is decoded -- the BPHS counterpart chapters (Ch12-Ch23) are available
+- **Phaladeepika Adhyaya II (Karakas)** dedup CANNOT run yet -- BPHS Karaka chapters not decoded
+- **Phaladeepika Adhyaya VI (Yogas)** dedup CANNOT run yet -- BPHS Yoga chapters not decoded
+
+Leave `cross_text_matches: null` on all rules. The automated dedup script will populate this field post-decode.
 
 ---
 
 *Brief prepared by Temple Team -- EverydayHoroscope, 2026-05-28*
+*Corrects the initial brief which incorrectly stated "zero decoded rules, freeze confirmed"*
