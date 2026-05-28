@@ -76,9 +76,23 @@ You are the **Strategist + Lal Kitab thread**. Your scope is:
 
 ## 4. The Strategist Phase 2 -- CD Pipeline (Your Primary Work)
 
-### Build Order (STRICT -- each file must be TT-approved before next starts)
+> **⚠️ IMPORTANT CONTEXT:** The Phase 2 FUNCTIONAL FEATURES (2A-2I) were already built by Account 2 (A2 session, 2026-05-13) and subsequently refined by STR-R01 through R04 in the main thread. The CD (Claude Design) pipeline below is a **VISUAL REDESIGN** of components that are already functionally live. You are not building new features from scratch -- you are creating polished HTML prototypes that will replace the current visual implementation.
 
-| Order | CD Commission | File | Status |
+### Functional State of Phase 2 Components (all live as of 2026-05-13 + main thread refinements)
+
+| Phase | Component | Current State |
+|---|---|---|
+| 2B | KP Gate 0 in War Room (inline verdict) | ✅ Functionally live -- CD redesign pending |
+| 2C | WAIT/NO/PRAY Pre-Flight banners | ✅ Functionally live -- CD redesign pending |
+| 2D | Score-gated re-entry (NO ≥60%, PRAY ≥75%) | ✅ Functionally live -- CD redesign pending |
+| 2E | LK 5-Gate summaries in dashboard | ✅ Functionally live -- CD redesign pending |
+| 2F | Success & Debt Scoreboard (Layer 6) | ✅ Functionally live -- CD redesign pending |
+| 2G | Action Plan page `/strategist/action-plan` | ✅ Functionally live -- CD redesign pending |
+| 2I | PRAY path (Mantra + LK Debt Audit) | ✅ Functionally live -- CD redesign pending |
+
+### CD Build Order (STRICT -- each file must be TT-approved before next starts)
+
+| Order | CD Commission | Prototype File | Status |
 |---|---|---|---|
 | 1 (FIRST) | STR-2F | `STR-2F · ConquestScoreboard.html` | 🔴 SEND NOW -- brief at `CODEX_COMMISSION_STR_2EF_SCOREBOARD_GATES.md` |
 | 2 | STR-2E | `STR-2E · LKGateSummaries.html` | 🟡 After 2F approved |
@@ -88,11 +102,12 @@ You are the **Strategist + Lal Kitab thread**. Your scope is:
 | 6 | STR-2G | `STR-2G · ActionPlanPage.html` | 🟡 After 2I approved |
 | 7 | STR-2B | `STR-2B · Gate0Panel.html` | 🟡 After 2G approved |
 
+**When TT shares CD work folders:** Some of these prototypes may already be designed. Check which files TT drops -- if 2F prototype exists, start review there rather than requesting a fresh CD build.
+
 **CD delivery format (from `CD_CONFIRMATIONS_STR_PHASE2.md`):**
 - One standalone HTML file per component
-- 3 theme mode toggle in prototype top bar: `[ light ] [ dark ] [ cr ]`
-- Uses token CSS from `CD_CONFIRMATIONS_STR_PHASE2.md` (full CSS block included in that file)
-- CC reviews and approves each file before next begins
+- 3 theme mode toggle: `[ light ] [ dark ] [ cr ]`
+- Full token CSS block in `CD_CONFIRMATIONS_STR_PHASE2.md` -- copy into prototype `<style>` tag
 
 ### Token System
 All CSS tokens are in `frontend/src/styles/strategist-tokens.css`. Key tokens:
@@ -104,8 +119,8 @@ All CSS tokens are in `frontend/src/styles/strategist-tokens.css`. Key tokens:
 --strategist-red           #E25C4B
 ```
 
-### Backend Data Available for Phase 2 Components
-`GET /api/strategist/dashboard` already returns `scoreboard` + `gate_summaries` objects. No new backend routes needed for Phase 2 CD components. See `CODEX_COMMISSION_STR_2EF_SCOREBOARD_GATES.md` for full response shape.
+### Backend Data Available
+`GET /api/strategist/dashboard` already returns `scoreboard` + `gate_summaries` -- no new backend routes needed. See `CODEX_COMMISSION_STR_2EF_SCOREBOARD_GATES.md` for full response shape.
 
 ---
 
@@ -161,12 +176,36 @@ All CSS tokens are in `frontend/src/styles/strategist-tokens.css`. Key tokens:
 
 ---
 
-## 8. A2 Session Context
+## 8. A2 Session Context (133 turns, 2026-05-09 to 2026-05-13)
 
-Account 2 (CC A2) had started work on this module. TT has the session export at:
-`/Users/apple/Downloads/LK and Strategist Session Export_CC A2`
+**Session export:** `/Users/apple/Documents/Knowledge Engine_eBooks/LK and Strategist Session Export_CC A2/`
 
-**When TT opens the new thread:** TT will share the CD work folders (HTML prototypes already in progress) and the A2 session export for context. Read this guide first, then wait for those files before beginning CD work.
+**What the A2 session built:**
+- Ingested 144 LK rules to `jyotish_lk` (NLM-reviewed and approved)
+- Added 22 Strategist data patch records (IDs 1011-1020 + 1126-1137), total 823 records live
+- Built Strategist Phase 2A through 2I functional features:
+  - 2A: KP NavBar + route registration
+  - 2B: KP Gate 0 wired into War Room (inline verdict)
+  - 2C: WAIT/NO/PRAY Pre-Flight banners
+  - 2D: Score-gated re-entry (NO ≥60%, PRAY ≥75%)
+  - 2E: LK 5-Gate summaries in dashboard
+  - 2F: Success & Debt Scoreboard
+  - 2G: Action Plan page at `/strategist/action-plan`
+  - 2H: 7 notification triggers
+  - 2I: PRAY path (Mantra + LK Debt Audit)
+- Integrated Remedies Engine Phase 1 (36 KP remedies seeded to `krishna_prashnavali_remedies`)
+- Added on-page SEO content to Strategist pages
+- Added Premium gate to War Room
+- Fixed LK Onboarding auth error, Debt Audit crash, Reset Button
+
+**What happened after A2 (main thread, 2026-05-26 to 2026-05-27):**
+- STR-R01 through R04 + STR-2A1 + STR-2J refined and extended the A2 build
+- STR-2J completed the "2J -- UI Polish" that A2 had noted as pending
+- War Room Engine Selector, Golden Hour Strip, Pitru Rin Ledger, Dasha Transition all added
+
+**Key insight:** The CD (Claude Design) pipeline is a VISUAL REDESIGN of components that A2 built functionally. The new thread's job is visual polishing via CD prototypes, not rebuilding from scratch.
+
+**When TT opens the new thread:** TT will share CD work folders containing HTML prototypes already in progress. Check which prototypes exist before requesting new CD builds.
 
 ---
 
@@ -183,10 +222,13 @@ Account 2 (CC A2) had started work on this module. TT has the session export at:
 1. Read `Codex_Deliveries/Strategist/THE_STRATEGIST_FULL_SPEC.md`
 2. Read `Codex_Deliveries/Strategist/TRACKER.md`
 3. Read `Codex_Deliveries/Strategist/CD_CONFIRMATIONS_STR_PHASE2.md` (token CSS, 3-mode spec, delivery format)
-4. Read `Codex_Deliveries/Strategist/CODEX_COMMISSION_STR_2EF_SCOREBOARD_GATES.md` (first CD brief to send)
-5. Wait for TT to share CD work folders and A2 session export
-6. Once TT shares, confirm which CD deliveries are already prototyped vs pending
-7. Proceed with Phase 2 pipeline in sequence (2F → sign-off → 2E → sign-off → ...)
+4. Read `Codex_Deliveries/Strategist/CODEX_COMMISSION_STR_2EF_SCOREBOARD_GATES.md` (STR-2F CD brief)
+5. **Wait for TT to share CD work folders** -- do not begin CD work until you have reviewed what prototypes already exist
+6. Inventory the CD work folders: list which of 2F, 2E, 2C, 2D, 2I, 2G, 2B have existing HTML prototypes
+7. For any prototype that exists: review against the brief, then present to TT for sign-off
+8. For any prototype not yet built: send the relevant brief to Claude Design
+9. Once TT approves each prototype: integrate the visual redesign into the React app
+10. **Parallel track:** Once TT batch-approves `jyotish_lk_remedies`, issue LK-1 to Codex
 
 ---
 *Handover prepared: 2026-05-29 by Claude Code Main Thread*
