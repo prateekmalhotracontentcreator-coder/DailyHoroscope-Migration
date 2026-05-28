@@ -158,10 +158,6 @@ TAR-SEO-2 is a **one-file rewrite** of `backend/tarot_seo_data.py`:
 
 ## 7. Architecture Rules
 
----
-
-## 7. Architecture Rules
-
 1. **TAR-v4 is visual only** -- never modify `tarot_router.py` or `tarot_cards.json` in Tarot SEO work
 2. **Punya hooks are fire-and-forget** -- never block page render on `safeClaimPunyaAction()`
 3. **New SEO pages are static/programmatic** -- no AI calls, pure data-driven from `tarot_seo_data.py`
