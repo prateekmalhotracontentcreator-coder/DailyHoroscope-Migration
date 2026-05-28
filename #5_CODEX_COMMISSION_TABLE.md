@@ -227,7 +227,7 @@
 
 | Commission ID | Commission Name | Status | Notes |
 |---|---|---|---|
-| **SHC-1** | Telemetry engine + diagnostics API + admin UI | 🟡 PARTIAL | Backend + telemetry hooks live. **SHC-UI-1**: admin frontend missing from deployed bundle -- `DiagnosticsTab.jsx` not in production JS. |
+| **SHC-1** | Telemetry engine + diagnostics API + admin UI | 🟡 PARTIAL | Backend + telemetry hooks live. **SHC-UI-1**: `DiagnosticsTab.jsx` IS imported (line 25) + rendered (line 742) in `AdminDashboard.jsx` -- 4 SHC strings confirmed 2026-05-29. QA audit finding was stale. TT to verify "Self-Heal" tab visible at `/admin/dashboard`. |
 | **SHC-2** | Razorpay lifecycle ledger + webhook + self-heal jobs | 🟡 PARTIAL | Backend + webhook live. Admin lifecycle ledger UI not in production bundle. |
 | **SHC-3** | GST ledger + Gmail OAuth + support triage jobs | 🟡 PARTIAL | Backend routes deployed. **SHC-OPS-1**: Gmail/GST blocked pending 5 Render env vars + OAuth flow. Frontend UI not in deployed bundle. |
 
@@ -391,7 +391,7 @@ PARKING LOT (Phase 2/3 -- hold):
 | 9 | LTV-SCOPE-1 | Live TV | `LiveTVPanel` on Panchang + Home pages -- scope drift | 🟠 High | TT | ⬜ |
 | 10 | LTV-HTTP-1 | Live TV | Backend emits `http://` media URLs -- mixed-content risk | 🟠 High | TT + CC | ⬜ |
 | 11 | STR-SEO-1 | Strategist | Routes return generic root metadata -- SEO gap | 🟠 High | TT + SEO thread | ⬜ |
-| 12 | SHC-UI-1 | Self-Healing | Admin panels not in deployed frontend bundle | 🟠 High | TT | ⬜ |
+| 12 | SHC-UI-1 | Self-Healing | `DiagnosticsTab.jsx` wired in repo (confirmed 2026-05-29) -- TT verify tab visible in prod | 🟡 Med | TT | ⬜ |
 | 13 | SHC-OPS-1 | Self-Healing | Gmail/GST blocked -- 5 Render env vars + OAuth pending | 🟠 High | TT | ⬜ |
 | 14 | KE-OP-15 | KE | KE-IQ live questionnaire endpoints + profiles persistence -- TT verify | 🔶 Med | TT | ⬜ |
 | 15 | PUN-OP-1 | Punya | `individual_report` action code missing from backend | 🔶 Med | TT + CC | ⬜ |
