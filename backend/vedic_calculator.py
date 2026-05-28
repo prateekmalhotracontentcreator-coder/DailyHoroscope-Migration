@@ -110,6 +110,17 @@ DEBILITATION_SIGNS = {
     for planet, (sign, _) in EXALTATION_DATA.items()
 }
 
+NEECHABHANGA_DEBILITATION_SIGNS = {
+    **DEBILITATION_SIGNS,
+    'Rahu': 'Scorpio',
+    'Ketu': 'Taurus',
+}
+
+EXALTATION_LORD_BY_SIGN = {
+    sign: planet
+    for planet, (sign, _) in EXALTATION_DATA.items()
+}
+
 # Moolatrikona: sign, start degree, end degree
 MOOLATRIKONA_DATA = {
     'Sun':     ('Leo',          0, 20),
@@ -888,6 +899,83 @@ def get_house_number(planet_sign: str, lagna_sign: str) -> int:
     return ((planet_idx - lagna_idx) % 12) + 1
 
 
+def _is_kendra_from(reference_sign: str | None, target_sign: str | None) -> bool:
+    """True when target_sign falls in a Kendra from the reference sign."""
+    if not reference_sign or not target_sign:
+        return False
+    return get_house_number(target_sign, reference_sign) in {1, 4, 7, 10}
+
+
+def _casts_full_parashari_aspect(aspector: str | None, aspector_sign: str | None, target_sign: str | None) -> bool:
+    """Evaluate whole-sign Parashari full aspects between two signs."""
+    if not aspector or not aspector_sign or not target_sign:
+        return False
+    from_house = SIGN_ORDER.index(aspector_sign) + 1
+    to_house = SIGN_ORDER.index(target_sign) + 1
+    return _aspect_strength_factor(aspector, from_house, to_house) == 1.0
+
+
+def compute_neechabhanga_flags(chart: dict) -> dict:
+    """
+    Enrich the chart payload with is_neechabhanga booleans for each planet.
+
+    A debilitated planet is marked True when any classical Neechabhanga
+    cancellation condition is present.
+    """
+    planets = chart.get('planets') or {}
+    lagna_sign = ((chart.get('lagna') or {}).get('sign'))
+    moon_sign = ((chart.get('moon_sign') or {}).get('sign')) or _get_planet_payload(planets, 'Moon').get('sign')
+
+    for display_name, payload in planets.items():
+        plain_name = _planet_plain_name(display_name)
+        planet_sign = payload.get('sign')
+        payload['is_neechabhanga'] = False
+
+        if planet_sign != NEECHABHANGA_DEBILITATION_SIGNS.get(plain_name):
+            continue
+
+        sign_lord = SIGN_LORDS.get(planet_sign)
+        sign_lord_payload = _get_planet_payload(planets, sign_lord) if sign_lord else {}
+
+        exaltation_lord = EXALTATION_LORD_BY_SIGN.get(planet_sign)
+        exaltation_lord_payload = _get_planet_payload(planets, exaltation_lord) if exaltation_lord else {}
+
+        sign_lord_in_kendra = (
+            _is_kendra_from(lagna_sign, sign_lord_payload.get('sign'))
+            or _is_kendra_from(moon_sign, sign_lord_payload.get('sign'))
+        )
+        exaltation_lord_in_kendra = (
+            _is_kendra_from(lagna_sign, exaltation_lord_payload.get('sign'))
+            or _is_kendra_from(moon_sign, exaltation_lord_payload.get('sign'))
+        )
+        sign_lord_aspects_debilitated = _casts_full_parashari_aspect(
+            sign_lord,
+            sign_lord_payload.get('sign'),
+            planet_sign,
+        )
+        mutual_reception = bool(
+            sign_lord_payload
+            and sign_lord_payload.get('sign') in OWN_SIGNS.get(plain_name, [])
+        )
+        exaltation_lord_aspects_debilitated = _casts_full_parashari_aspect(
+            exaltation_lord,
+            exaltation_lord_payload.get('sign'),
+            planet_sign,
+        )
+
+        payload['is_neechabhanga'] = any(
+            (
+                sign_lord_in_kendra,
+                exaltation_lord_in_kendra,
+                sign_lord_aspects_debilitated,
+                mutual_reception,
+                exaltation_lord_aspects_debilitated,
+            )
+        )
+
+    return chart
+
+
 def calculate_vimshottari_dasha(birth_date: str, moon_longitude: float) -> list:
     """Calculate Vimshottari Dasha periods."""
     nak_data = get_nakshatra(moon_longitude)
@@ -1321,7 +1409,7 @@ def calculate_vedic_chart(
         mars_house = planets[mars_name]['house']
         mangal_dosha = check_mangal_dosha(mars_house)
 
-        return {
+        chart = {
             'lagna': {
                 'sign': lagna_sign,
                 'sign_vedic': SIGN_NAMES.get(lagna_sign, lagna_sign),
@@ -1349,6 +1437,7 @@ def calculate_vedic_chart(
                 'timezone': timezone_offset,
             }
         }
+        return compute_neechabhanga_flags(chart)
 
     except Exception as e:
         logging.error(f'Vedic chart calculation error: {str(e)}')

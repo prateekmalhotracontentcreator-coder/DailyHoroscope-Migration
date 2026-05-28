@@ -3,29 +3,32 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from typing import Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 from pymongo import ASCENDING, DESCENDING, IndexModel
+
+from ke_schema_constants import (
+    ALL_PLANETS,
+    ENGINE_DEPENDENCY_IDENTIFIERS,
+    LEGACY_CLAIM_SCOPES,
+    STANDARD_PLANETS,
+    UPAGRAHA_PLANETS,
+    VALID_ASHTAKAVARGA_SYSTEMS,
+    VALID_CANCELLATION_TRIGGERS,
+    VALID_CLAIM_AXES,
+    VALID_CONDITION_TYPES,
+    VALID_CROSS_TEXT_RELATIONSHIPS,
+    VALID_DASHA_SYSTEMS,
+    VALID_NULLIFICATION_TYPES,
+    VALID_PLANET_CATEGORIES,
+    VALID_REFERENCE_POINTS,
+    VALID_SCOPES,
+    VALID_SIGNS,
+)
 
 
 VoiceTone = Literal["classical", "modern_analytical", "kp_technical", "spiritual", "popular"]
-ConditionType = Literal[
-    "planet_in_house",
-    "planet_in_sign",
-    "planet_in_nakshatra",
-    "planet_aspect",
-    "planet_conjunction",
-    "planet_dignity",
-    "planet_retrograde",
-    "house_lord_in_house",
-    "yoga",
-    "dasha_period",
-    "dasha_planet",
-    "dasha_of_house_lord",
-    "transit",
-    "kp_sublord",
-    "composite",
-]
-ClaimScope = Literal["tendency", "event_timing", "window", "trait"]
+ConditionType = str
+ClaimScope = str
 ClaimPolarity = Literal["positive", "negative", "mixed", "neutral"]
 TimingBias = Literal["early", "on_time", "late", "cyclical", "none"]
 StrengthBand = Literal["low", "medium", "high", "extreme"]
@@ -70,9 +73,52 @@ class FlexiblePayload(BaseModel):
     model_config = ConfigDict(extra="allow", populate_by_name=True, arbitrary_types_allowed=True)
 
 
+def _lower_or_none(value: str | None) -> str | None:
+    if value is None:
+        return None
+    return str(value).strip().lower()
+
+
+class VedhaNullifier(FlexiblePayload):
+    vedha_house: int
+    exception_planets: list[str] = Field(default_factory=list)
+    nullification_type: str
+
+    @field_validator("nullification_type")
+    @classmethod
+    def validate_nullification_type(cls, value: str) -> str:
+        lowered = _lower_or_none(value)
+        if lowered not in VALID_NULLIFICATION_TYPES:
+            raise ValueError(f"Unsupported nullification_type: {value}")
+        return lowered or value
+
+    @field_validator("exception_planets")
+    @classmethod
+    def validate_exception_planets(cls, value: list[str]) -> list[str]:
+        invalid = [planet for planet in value if _lower_or_none(planet) not in ALL_PLANETS]
+        if invalid:
+            raise ValueError(f"Unsupported exception_planets: {', '.join(invalid)}")
+        return value
+
+
+class CrossTextMatch(FlexiblePayload):
+    rule_id: str
+    similarity_score: float = Field(ge=0.0, le=1.0)
+    relationship: str
+
+    @field_validator("relationship")
+    @classmethod
+    def validate_relationship(cls, value: str) -> str:
+        lowered = _lower_or_none(value)
+        if lowered not in VALID_CROSS_TEXT_RELATIONSHIPS:
+            raise ValueError(f"Unsupported cross_text_matches relationship: {value}")
+        return lowered or value
+
+
 class RuleCondition(FlexiblePayload):
     type: ConditionType
     planet: str | None = None
+    planet_category: str | None = None
     planets: list[str] = Field(default_factory=list)
     house: int | None = None
     sign: str | None = None
@@ -89,12 +135,119 @@ class RuleCondition(FlexiblePayload):
     yoga_name: str | None = None
     dasha_lord: str | None = None
     antardasha_planet: str | None = None
+    dasha_system: str | None = None
     level: str | None = None
     transit_house: int | None = None
     cusp_num: int | None = None
     sub_lord: str | None = None
+    cancellation_trigger: str | None = None
+    reference_point: str | None = None
+    system: str | None = None
+    dot_count_min: int | None = None
+    dot_count_max: int | None = None
     sub_conditions: list[dict[str, Any]] = Field(default_factory=list)
     operator: str | None = None
+
+    @field_validator("type")
+    @classmethod
+    def validate_condition_type(cls, value: str) -> str:
+        lowered = _lower_or_none(value)
+        if lowered not in VALID_CONDITION_TYPES:
+            raise ValueError(f"Unsupported condition.type: {value}")
+        return lowered or value
+
+    @field_validator(
+        "planet",
+        "aspected_by",
+        "conjunct_with",
+        "lord",
+        "dasha_active",
+        "dasha_lord",
+        "antardasha_planet",
+        "sub_lord",
+    )
+    @classmethod
+    def validate_planet_like_fields(cls, value: str | None) -> str | None:
+        lowered = _lower_or_none(value)
+        if lowered is not None and lowered not in ALL_PLANETS:
+            raise ValueError(f"Unsupported planet value: {value}")
+        return lowered
+
+    @field_validator("planets")
+    @classmethod
+    def validate_planet_list(cls, value: list[str]) -> list[str]:
+        lowered = [_lower_or_none(item) for item in value]
+        invalid = [item for item in lowered if item not in ALL_PLANETS]
+        if invalid:
+            raise ValueError(f"Unsupported planets value: {', '.join(invalid)}")
+        return [item for item in lowered if item is not None]
+
+    @field_validator("sign")
+    @classmethod
+    def validate_sign(cls, value: str | None) -> str | None:
+        lowered = _lower_or_none(value)
+        if lowered is not None and lowered not in VALID_SIGNS:
+            raise ValueError(f"Unsupported sign value: {value}")
+        return lowered
+
+    @field_validator("planet_category")
+    @classmethod
+    def validate_planet_category(cls, value: str | None) -> str | None:
+        lowered = _lower_or_none(value)
+        if lowered is not None and lowered not in VALID_PLANET_CATEGORIES:
+            raise ValueError(f"Unsupported planet_category: {value}")
+        return lowered
+
+    @field_validator("dasha_system")
+    @classmethod
+    def validate_dasha_system(cls, value: str | None) -> str | None:
+        lowered = _lower_or_none(value)
+        if lowered is not None and lowered not in VALID_DASHA_SYSTEMS:
+            raise ValueError(f"Unsupported dasha_system: {value}")
+        return lowered
+
+    @field_validator("cancellation_trigger")
+    @classmethod
+    def validate_cancellation_trigger(cls, value: str | None) -> str | None:
+        lowered = _lower_or_none(value)
+        if lowered is not None and lowered not in VALID_CANCELLATION_TRIGGERS:
+            raise ValueError(f"Unsupported cancellation_trigger: {value}")
+        return lowered
+
+    @field_validator("reference_point")
+    @classmethod
+    def validate_reference_point(cls, value: str | None) -> str | None:
+        lowered = _lower_or_none(value)
+        if lowered is not None and lowered not in VALID_REFERENCE_POINTS:
+            raise ValueError(f"Unsupported reference_point: {value}")
+        return lowered
+
+    @field_validator("system")
+    @classmethod
+    def validate_ashtakavarga_system(cls, value: str | None) -> str | None:
+        lowered = _lower_or_none(value)
+        if lowered is not None and lowered not in VALID_ASHTAKAVARGA_SYSTEMS:
+            raise ValueError(f"Unsupported system: {value}")
+        return lowered
+
+    @model_validator(mode="after")
+    def validate_condition_shape(self) -> "RuleCondition":
+        if self.dot_count_max is not None and self.dot_count_min is not None and self.dot_count_max < self.dot_count_min:
+            raise ValueError("dot_count_max must be greater than or equal to dot_count_min")
+
+        planet_category = self.planet_category or ("physical" if self.planet else None)
+        if planet_category:
+            self.planet_category = planet_category
+
+        if self.planet and self.planet in UPAGRAHA_PLANETS and self.planet_category != "upagraha":
+            raise ValueError("Upagraha planets must include planet_category='upagraha'")
+        if self.planet and self.planet in STANDARD_PLANETS and self.planet_category == "upagraha":
+            raise ValueError("Standard planets cannot use planet_category='upagraha'")
+
+        if self.type == "dasha_period" and not self.dasha_system:
+            self.dasha_system = "vimshottari"
+
+        return self
 
 
 class InterpretationPassage(StrictDocument):
@@ -170,6 +323,9 @@ class InterpretationRuleDocument(StrictDocument):
     intensity_score: float = Field(default=0.0, ge=0.0)
     source: RuleSourceMetadata
     modifiers: list[RuleModifier] = Field(default_factory=list)
+    vedha_nullifier: VedhaNullifier | None = None
+    engine_dependency: list[str] | None = None
+    cross_text_matches: list[CrossTextMatch] | None = None
     conflicts_with: list[str] = Field(default_factory=list)
     weight: float = Field(default=1.0, ge=0.0)
     tags: list[str] = Field(default_factory=list)
@@ -177,6 +333,40 @@ class InterpretationRuleDocument(StrictDocument):
     created_at: datetime = Field(default_factory=utc_now)
     updated_at: datetime = Field(default_factory=utc_now)
     validation: ValidationResult = Field(default_factory=ValidationResult)
+
+    @field_validator("claim_scope")
+    @classmethod
+    def validate_claim_scope(cls, value: str) -> str:
+        lowered = _lower_or_none(value)
+        valid_scopes = set(VALID_SCOPES) | set(LEGACY_CLAIM_SCOPES)
+        if lowered not in valid_scopes:
+            raise ValueError(f"Unsupported claim_scope: {value}")
+        return lowered or value
+
+    @field_validator("claim_axis")
+    @classmethod
+    def validate_claim_axis(cls, value: str) -> str:
+        lowered = _lower_or_none(value)
+        if lowered not in VALID_CLAIM_AXES:
+            raise ValueError(f"Unsupported claim_axis: {value}")
+        return lowered or value
+
+    @field_validator("engine_dependency")
+    @classmethod
+    def validate_engine_dependency(cls, value: list[str] | None) -> list[str] | None:
+        if value is None:
+            return value
+        lowered = [_lower_or_none(item) for item in value]
+        invalid = [item for item in lowered if item not in ENGINE_DEPENDENCY_IDENTIFIERS]
+        if invalid:
+            raise ValueError(f"Unsupported engine_dependency values: {', '.join(invalid)}")
+        return [item for item in lowered if item is not None]
+
+    @model_validator(mode="after")
+    def validate_rule_shape(self) -> "InterpretationRuleDocument":
+        if self.condition.type == "lagna_sign" and self.claim_scope != "natal_lagna":
+            raise ValueError("Rules with condition.type='lagna_sign' must use claim_scope='natal_lagna'")
+        return self
 
 
 class AuthorVoiceDocument(StrictDocument):
