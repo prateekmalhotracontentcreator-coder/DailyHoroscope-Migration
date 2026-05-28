@@ -8,7 +8,7 @@
 ## 1. Your Role in the New Thread
 
 You are the **Strategist + Lal Kitab thread**. Your scope is:
-- Drive The Strategist Phase 2 Claude Design (CD) pipeline (7 components) -- **UI/UX polish and gap identification** on already-live functional features (A2 session built them; your job is quality)
+- Drive The Strategist Phase 2 Claude Design (CD) pipeline (7 components) -- use CD as **design consultant, visual redesign partner, and feature builder**: visual polish on A2-built components, gap identification during prototype review, and design-first approach for any new features
 - Integrate TT-approved CD prototypes into the React app
 - Own all LK open gaps (LK-OP-5 through LK-OP-8) -- **LK-1 is already live, do NOT re-issue to Codex**
 - Own all open ops gaps listed in Sections 5 and 6
@@ -76,7 +76,7 @@ You are the **Strategist + Lal Kitab thread**. Your scope is:
 
 ## 4. The Strategist Phase 2 -- CD Pipeline (Your Primary Work)
 
-> **⚠️ IMPORTANT CONTEXT:** The Phase 2 FUNCTIONAL FEATURES (2A-2I) were already built by Account 2 (A2 session, 2026-05-09 to 2026-05-13 -- a pure Codex delivery + integration session) and subsequently refined by STR-R01 through R04 in the main thread. **The CD (Claude Design) pipeline is not about rebuilding features.** Its role is: (1) **UI/UX quality** -- replace the functional-but-rough A2 implementations with polished, on-brand HTML prototypes, and (2) **gap identification** -- during each prototype review, surface any UX gaps, missing states, or edge cases the A2 build missed. TT approves each prototype before it is integrated into React.
+> **⚠️ IMPORTANT CONTEXT:** The Phase 2 FUNCTIONAL FEATURES (2A-2I) were already built by Account 2 (A2 session, 2026-05-09 to 2026-05-13 -- a pure Codex delivery + integration session) and subsequently refined by STR-R01 through R04 in the main thread. **Use CD (Claude Design) as a design consultant and visual redesign partner** across three modes: (1) **Visual redesign** -- replace functional-but-rough A2 implementations with polished, on-brand HTML prototypes; (2) **Gap identification** -- during each prototype review, surface UX gaps, missing states, or edge cases the A2 build missed; (3) **Feature consultation** -- for any new feature scope, engage CD first to get design recommendations and a prototype before issuing to Codex. TT approves each prototype before it is integrated into React.
 
 ### Functional State of Phase 2 Components (all live as of 2026-05-13 + main thread refinements)
 
