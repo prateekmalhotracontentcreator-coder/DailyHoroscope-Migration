@@ -1,7 +1,6 @@
 # SEO & Web Performance -- Module Tracker
-> Path: `Codex_Deliveries/SEO/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-25 · v3.8
+> Last updated: 2026-05-29 · v4.0 (QA reconciliation + ECHO/PACE score table added)
 
 ---
 
@@ -79,3 +78,66 @@
 | v3.6 | 2026-05-23 | SEO-20K M3 local delivery prepared. Added `seo_m3_router.py`, shared SEO M3 catalog/builders, seed scripts for `transit_profiles`, `festival_region_pages`, and `character_placements`, public React pages for `/transits/:transitSlug`, `/festivals/:festivalSlug/:region`, and `/traits/:sign/:chartPoint/:house`, plus transits/festivals/traits sitemap endpoints and Vercel cache headers. Seed dry-runs returned 108 transit docs, 480 festival-region docs, and 432 character-placement docs. Frontend production build passed and backend syntax checks passed. No live production changes in this session. | Codex | `CODEX_COMMISSION_SEO_20K_M3.md` |
 | v3.7 | 2026-05-25 | SEO-20K M4 / TAR-SEO-1 local delivery prepared. Added `backend/tarot_seo_router.py`, tarot sitemap support in `backend/seo_router.py`, `server.py` router wiring, four new public React pages under `frontend/src/pages/tarot-seo/`, public routes for `/tarot/spreads`, `/tarot/spread/:spreadSlug`, `/tarot/card/:cardSlug`, and `/tarot/for/:intentionSlug`, plus Vercel cache headers and sitemap-index wiring. Frontend production build passed, backend syntax checks passed, and the interactive `/tarot` module remained untouched. | Codex | `Tarot/CODEX_COMMISSION_TAR_SEO_1.md` |
 | v3.8 | 2026-05-25 | TAR-SEO-2 local data rewrite prepared as a follow-on fix to M4. Reworked only `backend/tarot_seo_data.py` to replace source-derived spread prose and rigid card templates. `py_compile` passed, legacy repeated phrases were removed, and record counts remained `100` spreads, `78` cards, `20` intentions. No router, frontend, or wiring files changed in this session. | Codex | `Tarot/CODEX_COMMISSION_TAR_SEO_2_REWRITE.md` |
+| v4.0 | 2026-05-29 | QA reconciliation completed. Final master status table + ECHO/PACE score framework added. M3-FIX-1 and TAR-SEO-1 flagged as live integration gaps. | TT | This session |
+
+---
+
+## Final Master Status Table -- All SEO Commissions
+
+> Status as of 2026-05-29 (reconciled vs CODEX_QA_INTEGRATION_AUDIT_2026-05-27)
+
+| Commission ID | Name | Pages / Scope | Integration Status | Live URL (sample) | Open Gaps |
+|---|---|---|---|---|---|
+| **SEO-20K M1** | SEO infra + City Panchang + Choghadiya | ~2,000 city-date panchang + ~600 choghadiya pages | ✅ LIVE | `/panchang/new-delhi-india/2026-05-27` | None |
+| **SEO-20K M2** | Compatibility Hub + Remedy Hub | ~144 sign-pair + ~12 remedy pages | ✅ LIVE `aba7d5c` | `/compatibility/aries-and-scorpio` | None |
+| **SEO-20K M3** | Transit Profiles + Festival Regions + Character Placements | 108 transits + 480 festival-regions + 432 character placements = ~1,020 pages | ✅ LIVE (integrated by TT) | `/transits/sun-in-aries` | **M3-FIX-1**: festival-region summary variation fix local only -- not integrated |
+| **SEO-20K M4 / TAR-SEO-1** | Tarot SEO Hub + 199 programmatic pages (spreads, cards, intentions) | 199 programmatic pages + hub + sitemap | 🟠 LOCAL DELIVERY -- NOT INTEGRATED | N/A | **TT to integrate from `Codex_Deliveries/Tarot/`** |
+| **TAR-SEO-2** | Tarot SEO data rewrite (`tarot_seo_data.py`) | Data quality fix only | 🟡 BLOCKED on TAR-SEO-1 | N/A | Depends on TAR-SEO-1 merge |
+| **SEO-B1** | Tomorrow / Weekly / Monthly per-sign horoscope (36 pages) | 36 pages | ✅ LIVE `963dc82` | `/horoscope/aries/tomorrow` | None |
+| **SEO-B2** | Festival Pages (Holi, Diwali, Karwa Chauth) | 3 pages | ✅ LIVE `963dc82` | `/festivals/holi` | None |
+| **SEO-B3** | Festival Hub + Indian Calendar + Hora Today | 3 hub pages | ✅ LIVE `963dc82` | `/festivals`, `/calendar`, `/hora` | None |
+| **SEO-C1** | Legal Pages (noindex + policy seed) | 5 legal pages | ✅ LIVE `963dc82` | `/privacy`, `/terms` | None |
+| **SEO-C2** | Rashi Calculator + Nakshatra Calculator | 2 pages | ✅ LIVE `963dc82` | `/rashi-calculator` | None |
+| **SEO-C3** | Name Compatibility | 1 page | ✅ LIVE `963dc82` | `/compatibility/name` | None |
+| **SEO-C4** | Ekadashi / Amavasya / Purnima Hubs | 3 pages | ✅ LIVE `963dc82` | `/ekadashi` | None |
+| **SEO-C5** | Marriage Muhurat Page | 1 page | ✅ LIVE `963dc82` | `/muhurat/marriage` | None |
+| **SEO-C6** | Report Category Discovery Pages | 4 pages | 🟡 CODE LIVE -- launch gated | `/reports/kundali` | Razorpay live keys required |
+| **SEO-C7** | Celebrity Horoscope Hub | 2 pages (hub + detail template) | ✅ LIVE `963dc82` | `/celebrity-horoscopes` | None |
+| **SEO-C8** | Love Calculator | 1 page | ✅ LIVE `963dc82` | `/love-calculator` | None |
+| **SEO-C9** | Angel Numbers Hub (14 pages) | 14 pages | ✅ LIVE (code) | `/angel-numbers` | ANGEL-2 content not re-seeded -- stale Mongo content in production |
+| **SEO-WebPerf** | SEO + Marketing + Web Performance Optimisation | Platform-wide | 🟣 READY TO ISSUE LAST | N/A | Issue after all high-priority threads running |
+| **ECHO-1** | ECHO/PACE Admin Engine + tab | Admin tool | 🟡 PARTIAL -- backend live, UI not in bundle | `/api/admin/echo-pace/history` | **ECHO-UI-1**: frontend tab not deployed |
+
+**Total pages across all live SEO commissions:** ~4,300+ programmatic + ~55 editorial (excl. TAR-SEO-1 pending)
+
+---
+
+## ECHO/PACE Score Table
+
+> **ECHO = E**ngagement-**C**ontent-**H**uman-**O**riginality (copyright / duplication check)
+> **PACE = P**ublishability-**A**uthenticity-**C**ontent-**E**xperience (SEO quality)
+>
+> **Thresholds:** Internal pass ≥ 60. Google pass ≤ 40% failure rate.
+> **How to run:** Admin Console → ECHO/PACE tab → enter page URL → Process. Requires ECHO-UI-1 gap to be resolved first.
+
+| Commission | Page Type | ECHO Score (Internal) | PACE Score (Internal) | Google Failure Rate | Status |
+|---|---|---|---|---|---|
+| SEO-20K M1 | City Panchang | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
+| SEO-20K M2 | Sign Compatibility | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
+| SEO-20K M3 | Transit Profiles | _Not run_ | _Not run_ | _Not run_ | ⬜ M3-FIX-1 fix needed first |
+| SEO-20K M3 | Festival Regions | _Optimised to <40% duplication_ (9 GAI rounds) | _Not run_ | < 40% (duplication optimised) | 🟡 Content optimised; formal ECHO/PACE run pending |
+| SEO-20K M3 | Character Placements | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
+| SEO-B1/B2/B3 | Horoscope / Festival | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
+| SEO-C series | Calculators / Hubs | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
+| TAR-SEO-1 | Tarot SEO pages | _Not run (not live)_ | _Not run_ | _Not run_ | ⬜ Run after integration |
+
+**Action required to populate this table:**
+1. ✅ First: resolve ECHO-UI-1 gap (deploy ECHO/PACE admin tab to production bundle)
+2. Then: run ECHO/PACE process for each page type via Admin Console
+3. Record scores in this table after each run
+4. Any commission with ECHO < 60 or Google failure rate > 40% needs content fix before Google submission
+
+**M3 Festival Regions -- ECHO history:**
+- 9 rounds of GAI-assisted content optimization completed to reduce inter-page duplication below 40% ceiling
+- Fix batch (M3-FIX-1) is in `backend/seo_m3_builders.py` locally but not yet integrated to production
+- Integration of M3-FIX-1 is REQUIRED before running formal ECHO/PACE audit on festival-region pages
