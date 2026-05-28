@@ -1,7 +1,7 @@
 # Action Items -- Temple App
 > Single Source of Truth for all open items across Claude Code sessions.
 > Referenced in all handover docs. **Do not create parallel lists elsewhere.**
-> Last updated: 2026-05-29 (post-reorg; QA gap register added; KE decode status updated)
+> Last updated: 2026-05-29 (A2 decode pass: LK module confirmed live, M-28 closed, M-29-M-34 added; SEO Sprint E/D tracked)
 
 ---
 
@@ -37,7 +37,13 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 | M-25 | **BPHS Vol 1 Thread A** -- Confirm Q1 (Ch11-Ch24 completeness) and Q2 (folder: `BPHS_CC_Decode/` canonical), then continue with Karaka → Yoga → Dasha chapters | Brief at `KE_TEXTBOOK_DECODE/Thread_Briefs/` | 🟡 MED |
 | M-26 | **KP Astrology claim_axis pass** -- Retroactive self-audit of all 77 files to populate `claim_axis: "longevity"` on ~20 rules across ~15 files | Near-complete close-out action | 🟡 MED |
 | M-27 | **LTV-SCOPE-1** -- Remove `LiveTVPanel` mounts from non-home pages (`Home.jsx`, `PanchangLandingPage.jsx`, `PanchangPage.jsx`). Re-test `/`, `/home`, Panchang routes. | Scope drift from original "home page only" spec | 🟠 HIGH |
-| M-28 | **KP-Sprint2 delivery review** -- KP /ask-question LLM router issued 2026-05-15. Chase delivery and integrate when received. | In progress with Codex | 🔴 HIGH |
+| ~~M-28~~ | ~~**KP-Sprint2 delivery review**~~ -- ✅ **DONE 2026-05-29.** Both KP-Sprint2 (`20d4d29`) + KP-2B (`20f7b83`) INTEGRATED. KP-OP-12 + KP-OP-13 TT production verify pending (passed to Operations thread). | ✅ DONE | ✅ |
+| M-29 | **LK-OP-8 -- TT acceptance verify on production** -- Verify `/lal-kitab-remedies` loads, onboard flow works, diagnose returns 5 gates, debt audit functions, tracker persists, browse shows 361 records. LK module was fully built by A2 session -- this is acceptance only. | Strategist/LK thread to own | 🟠 HIGH |
+| M-30 | **LK-OP-5 -- Premium PDF download not built** -- LK-1 brief included `FirstName+BirthYear+Month` password-protected PDF. Not implemented in A2 build. Raise as separate Codex commission after LK-OP-8 acceptance. | After LK-OP-8 passes | 🟡 MED |
+| M-31 | **LK-OP-6 -- 5 split-required LK rules** -- `lalkitab-ch21-fam-04` + 4 age/infancy rules tagged `split_required=True`. NLM to review and provide splits. | NLM to action | 🟡 MED |
+| M-32 | **LK-OP-7 -- 96 in-range master doc records not salvaged** -- Unique master doc IDs not in V2. Review: if worthwhile, add as suffix IDs (800A, 800B, etc.) per agreed protocol. | TT decision needed | 🟡 MED |
+| M-33 | **SEO Sprint E -- `/horoscope/daily/:sign` NEVER BUILT** -- 12 sign-specific horoscope pages are the highest-volume astrology search queries in India. Identified in A2 session end-state but never tracked. Scope and issue as SEO commission before SEO-1 thread. | Major SEO gap -- no code exists | 🟠 HIGH |
+| M-34 | **SEO Sprint D -- Organization + WebSite JSON-LD on Landing page** -- Structured data not yet added to root landing page. Identified in A2 session. | Low-lift SEO win | 🟡 MED |
 | ~~M-14~~ | ~~**Render Free → Starter upgrade**~~ -- ✅ **DONE 2026-05-17.** Render now on Starter plan ($7/mo). Server always-on, no more cold starts. API responds in ms for first user of each session. SEO crawlers now get instant 200 responses. | ~~Cold starts hurting UX + SEO~~ | ✅ DONE |
 
 ---

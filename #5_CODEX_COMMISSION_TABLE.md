@@ -146,7 +146,7 @@
 
 | Commission ID | Commission Name | Status | Brief File | Notes |
 |---|---|---|---|---|
-| **LK-1** | Lal Kitab Standalone Module (onboard, remedies, debt audit, tracker) | 🟣 READY TO ISSUE | `LK/CODEX_COMMISSION_LK_STANDALONE_MODULE.md` | Issue after `jyotish_lk_remedies` batch-approved by TT. |
+| **LK-1** | Lal Kitab Standalone Module (onboard, remedies, debt audit, tracker) | ✅ INTEGRATED A2 session 2026-05-09 to 2026-05-13 | `LK/CODEX_COMMISSION_LK_STANDALONE_MODULE.md` | Built in full by Account 2 (A2 session). 7 frontend pages + `lk_diagnostics.py` (272 lines) + `lk_remedies_router.py` (348 lines) live. **Open:** LK-OP-5 PDF not built · LK-OP-6 5 split-required rules · LK-OP-7 96 salvage records · LK-OP-8 TT acceptance verify. |
 
 ---
 
@@ -311,7 +311,7 @@
 | 🟡 MED | SHC-1/2/3 | Self-Healing Center | Telemetry + lifecycle + GST/Gmail | 🟡 PARTIAL -- admin UI not in bundle, Gmail/GST blocked |
 | 🟡 MED | LUM-1/LUM-FE-1 | Lumina | Lumina AI backend + 9-tab frontend | 🟡 PARTIAL -- write-path smoke pending, frontend spec drift |
 | 🟡 MED | KUN-1 | Kundali | Lagna Kundali Frontend (backend live) | 🟣 READY TO ISSUE -- frontend only |
-| 🟡 MED | LK-1 | Lal Kitab | LK Standalone Module | 🟣 READY TO ISSUE -- after batch TT approval |
+| ✅ DONE | LK-1 | Lal Kitab | LK Standalone Module | ✅ INTEGRATED A2 session. LK-OP-8 TT acceptance verify pending. |
 | 🟡 MED | NUM-1/NUM-FE-1 | Numerology | Full Numerology scope | 🟡 PARTIAL -- payload drift + CTA drift open |
 | 🟢 LOW | PAN-L1 | Panchang | Language/Regional Pages (Tamil, Telugu, etc.) | 🟣 READY TO ISSUE -- independent |
 | 🟢 LOW | SEO-1 | SEO | SEO + Web Performance Optimisation | 🟣 READY TO ISSUE -- issue LAST |
@@ -360,7 +360,7 @@ TT INTEGRATION ACTIONS (no Codex needed):
 
 ISSUE AFTER HIGH-PRIORITY THREADS RUNNING:
   KUN-1        Lagna Kundali frontend -- backend live
-  LK-1         Lal Kitab standalone -- after TT batch approval
+  ~~LK-1~~     ✅ ALREADY LIVE -- A2 session built full module. TT to verify at /lk-remedies (LK-OP-8).
   PAN-L1       Panchang language pages -- independent
 
 ISSUE LAST:

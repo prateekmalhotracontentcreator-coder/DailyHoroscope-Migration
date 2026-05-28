@@ -136,34 +136,50 @@ All CSS tokens are in `frontend/src/styles/strategist-tokens.css`. Key tokens:
 
 ## 6. Lal Kitab Module
 
-### Current State
-- **No standalone UI yet** -- LK data currently surfaces only via The Strategist
-- MongoDB collections **already seeded:**
-  - `lalkitab_strategist` -- 823 records (LK rules + Strategist gates)
-  - `jyotish_lk_remedies` -- 361 records (planetary remedies by house)
-  - `lk_user_profiles` -- schema exists
-- Architecture note: `strategist_engine.py` queries `lalkitab_strategist` -- LK data underpins Strategist's 5-gate karmic diagnostics
+> ⚠️ **CRITICAL CORRECTION (decoded from A2 session 2026-05-29):** LK-1 is **ALREADY FULLY BUILT AND LIVE**. The A2 session (2026-05-09 to 2026-05-13) built the complete standalone module. Do NOT re-issue LK-1 to Codex. Do NOT rebuild anything.
 
-### Commission to Issue: LK-1
+### What Is Live
 
-**Brief:** `Codex_Deliveries/LK/CODEX_COMMISSION_LK_STANDALONE_MODULE.md`
+| File | Lines | Role |
+|---|---|---|
+| `backend/lk_diagnostics.py` | 272 | 5-gate engine: Karmic Debt, House Awakening, 35-Year Cycle, Mercury Scan, Geographical |
+| `backend/lk_remedies_router.py` | 348 | All LK API endpoints (`/api/lk/*`) |
+| `frontend/src/pages/lk/` | 7 pages | Full standalone UI (see below) |
 
-**What it builds:**
-- Onboarding wizard (birth details → LK profile)
-- LK Debt Audit (9 debt types, planetary diagnostics)
-- 43-day remedy tracker
-- Planetary remedies by house (from `jyotish_lk_remedies`)
-- Premium PDF download
+**Router wired in `backend/server.py`:** line 133 (import) + line 3325 (include_router)
 
-**Blocker:** TT must batch-approve `jyotish_lk_remedies` records before issuing. Once approved, issue immediately -- no other dependencies.
+**Live URLs:**
 
-**Architecture rules (ENFORCE):**
-- All planetary/dasha data from `vedic_calculator.py` ONLY
-- Route LK UI to existing MongoDB collections (`jyotish_lk_remedies` + `lalkitab_strategist`) -- do NOT create new ones
-- LK-1 is independent of Strategist UI -- do not couple in the same commission
+| Page | Route | Access |
+|---|---|---|
+| `LalKitabLandingPage.jsx` | `/lal-kitab-remedies` | Public SEO landing |
+| `LKRemediesPage.jsx` | `/lk-remedies` | Free preview hub |
+| `LKOnboardPage.jsx` | `/lk-remedies/onboard` | ProtectedRoute |
+| `LKReportPage.jsx` | `/lk-remedies/report` | ProtectedRoute |
+| `LKTrackerPage.jsx` | `/lk-remedies/tracker` | ProtectedRoute |
+| `LKDebtAuditPage.jsx` | `/lk-remedies/debt-audit` | ProtectedRoute |
+| `LKBrowsePage.jsx` | `/lk-remedies/remedies` | Public |
+
+**MongoDB collections live:**
+- `lalkitab_strategist` -- 823 records (LK rules + Strategist gates)
+- `jyotish_lk_remedies` -- 361 records (planetary remedies by house)
+- `lk_user_profiles` -- active
+
+### Open Items (your thread owns these)
+
+| # | Item | Priority | Notes |
+|---|---|---|---|
+| **LK-OP-5** | **Premium PDF download not built** | 🟡 MED | Original LK-1 brief included password-protected PDF (`FirstName+BirthYear+Month` formula). Not implemented in A2 build. |
+| **LK-OP-6** | **5 split-required LK rules** | 🟡 MED | `lalkitab-ch21-fam-04` + 4 age/infancy rules tagged `split_required=True`. NLM to review and provide splits. |
+| **LK-OP-7** | **96 in-range master doc records not salvaged** | 🟡 MED | Unique master doc IDs not in V2. Add as suffix IDs (800A, 800B, etc.) per agreed protocol if TT approves. |
+| **LK-OP-8** | **TT acceptance verify on production** | 🟠 HIGH | Verify: `/lal-kitab-remedies` loads · onboard flow · diagnose returns 5 gates · debt audit · tracker persists · browse 361 records. |
 
 ### LK Phase 2 (Parking Lot -- do not build yet)
-- Slot 33 → LK Debt Audit cross-module trigger (PRAY verdict surfaces Debt Audit)
+- **LK-OP-4:** Slot 33 → LK Debt Audit cross-module trigger (PRAY verdict surfaces Debt Audit)
+
+### Architecture Notes
+- `lk_diagnostics.py` imports from `vedic_calculator.py` -- NEVER from `knowledge_engine.py`
+- Do NOT couple LK-1 UI with The Strategist UI in any future commission
 
 ---
 
@@ -228,7 +244,7 @@ All CSS tokens are in `frontend/src/styles/strategist-tokens.css`. Key tokens:
 7. For any prototype that exists: review against the brief, then present to TT for sign-off
 8. For any prototype not yet built: send the relevant brief to Claude Design
 9. Once TT approves each prototype: integrate the visual redesign into the React app
-10. **Parallel track:** Once TT batch-approves `jyotish_lk_remedies`, issue LK-1 to Codex
+10. **Parallel track (LK):** LK-1 is already live -- do NOT re-issue to Codex. Your LK tasks are: (a) TT acceptance verify on production (LK-OP-8), (b) track PDF gap (LK-OP-5), (c) NLM to split 5 rules (LK-OP-6), (d) 96 salvage records review (LK-OP-7)
 
 ---
 *Handover prepared: 2026-05-29 by Claude Code Main Thread*
