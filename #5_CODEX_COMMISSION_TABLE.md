@@ -33,7 +33,7 @@
 | **KE-2A** | Yoga Check Evaluation Engine (26 evaluator types) | ✅ INTEGRATED | `Knowledge_Engine/CODEX_COMMISSION_KE_2A_YOGA_CHECK.md` | Delivered + CC-verified 2026-05-17. 9 missing handlers added (`yoga`, `planet_affliction`, `house_position`, `planet_afflicted`, `planet_conjunction`, `planet_in_house_from_sun`, `planetary_position`, `planet_combust`, `house_placement`). 52/52 tests pass. 0 missing mappings. 26 total dispatch entries. |
 | **KE-Sprint3** | Arc Angel Computation (G-07/G-08/G-09) | ✅ LIVE -- fully verified 2026-05-17 | `Knowledge_Engine/CODEX_COMMISSION_KE_SPRINT3_ARC_ANGEL.md` | KE-OP-13 ✅ (routes live, persistence confirmed) · KE-OP-14 ✅ (AD-level window granularity fixed, commit `c4f4b43`) · 20/20 Sprint 3 tests · 72/72 combined KE tests. All Sprint 3 gates cleared. ARC-2 fully unblocked. |
 | **KE-IQ** | Questionnaire UI + β/γ KE Wiring | ✅ INTEGRATED `f7aa78b` 2026-05-18 | `Knowledge_Engine/CODEX_COMMISSION_KE_IQ_QUESTIONNAIRE_UI.md` | 75/75 KE tests. KE-OP-15 OPEN: TT to verify live questionnaire endpoints + `user_questionnaire_profiles` persistence on Render. |
-| **KE-DEDUP-1** | Dedup Script + Contradiction Detection (`ke_dedup_script.py`) | 🟣 READY TO ISSUE (quota resets ~2026-05-31) | `Knowledge_Engine/CODEX_COMMISSION_KE_DEDUP_CONTRADICTION.md` | TF-IDF cosine similarity across decode output folders, 0.82 threshold, contradiction detection via `claim_polarity`. Issue when Codex quota resets. |
+| **KE-DEDUP-1** | Dedup Script + Contradiction Detection (`ke_dedup_script.py`) | ✅ INTEGRATED 2026-05-29 | `Knowledge_Engine/CODEX_COMMISSION_KE_DEDUP_CONTRADICTION.md` | TF-IDF cosine similarity, 0.82 threshold, separate contradiction detection via `claim_polarity`, `--dry-run` / `--update-files`, idempotent write-back, summary report. 1/1 tests pass. `scikit-learn>=1.3.0` added to requirements.txt. |
 
 ---
 
@@ -302,7 +302,7 @@
 | ✅ DONE | PALM-1 | Palmistry | Full Palmistry analysis + persistence | ✅ LIVE (QA 2026-05-27). Content drift open (medium). |
 | 🔴 HIGH | KP-Sprint2 | KP Oracle | /ask-question LLM Router (Guna + Gita) | 🔵 IN PROGRESS -- issued 2026-05-15 |
 | 🔴 HIGH | TAR-SEO-1 | Tarot | Tarot SEO module (199 programmatic pages) | 🟠 LOCAL DELIVERY -- TT to integrate |
-| 🔴 HIGH | KE-DEDUP-1 | Knowledge Engine | Dedup script + contradiction detection | 🟣 READY TO ISSUE (~2026-05-31 quota reset) |
+| ✅ DONE | KE-DEDUP-1 | Knowledge Engine | Dedup script + contradiction detection | ✅ INTEGRATED 2026-05-29. 1/1 tests pass. |
 | 🟠 HIGH | KP-2B | KP Oracle | Ritual Animation + 3-Pillar UX + Astro-Filter | 🟡 BLOCKED -- KP-OP-9 items 2+3 pending TT verification |
 | 🟠 HIGH | LSG-1 | Lo Shu Grid | Full Lo Shu Grid module | 🟠 LOCAL DELIVERY -- TT to integrate |
 | 🟡 MED | LON-1 | Longevity | Ayur Jyotish Longevity Report | 🟡 PARTIAL -- LON-OP-2 (46s latency) + LON-OP-1 (save/history) open |

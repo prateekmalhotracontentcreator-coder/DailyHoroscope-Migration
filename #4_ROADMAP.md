@@ -66,7 +66,7 @@
 
 | Commission | Module | Brief |
 |---|---|---|
-| KE-DEDUP-CONTRADICTION-1 | Knowledge Engine | `Codex_Deliveries/Knowledge_Engine/CODEX_COMMISSION_KE_DEDUP_CONTRADICTION.md` -- issue when quota resets ~2026-05-31 |
+| ~~KE-DEDUP-CONTRADICTION-1~~ | Knowledge Engine | ✅ INTEGRATED 2026-05-29 -- `backend/ke_dedup_script.py` live, 1/1 tests pass |
 | KUN-1 | Kundali | Frontend only, backend live |
 | LK-1 | Lal Kitab | After TT batch approval of `jyotish_lk_remedies` |
 | PAN-L1 | Panchang | Language/regional pages -- independent |
@@ -146,7 +146,7 @@
 |---|---|---|
 | **KP-Sprint2 delivery + integration** | ~Next 2 weeks | Chase Codex delivery, integrate, verify on Render |
 | **KE 3-book last-mile done** | ~3 CC sessions | Phaladeepika II + BPHS Q3+ + KP longevity pass |
-| **KE-DEDUP-1 issued** | ~2026-05-31 | Quota resets; issue brief |
+| ~~**KE-DEDUP-1 issued**~~ | ✅ DONE 2026-05-29 | `ke_dedup_script.py` integrated, 1/1 tests pass |
 | **TAR-SEO-1 + LSG-1 integrated** | This work week | TT integration actions |
 | **10 QA gaps closed (High priority)** | This work week | See `#5_CODEX_COMMISSION_TABLE.md` GAP REGISTER |
 | **Play Store Phase 1B readiness** | After Razorpay live keys | Full E2E journey QA + Lighthouse + Sentry |

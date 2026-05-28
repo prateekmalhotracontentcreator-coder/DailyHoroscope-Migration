@@ -32,7 +32,7 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 | M-20 | **ECHO-UI-1** -- Deploy ECHO/PACE admin frontend: `EchoPaceTab.jsx` + `AdminDashboard.jsx` changes not in current production bundle | ECHO/PACE admin unreachable in production | 🟠 HIGH |
 | M-21 | **SHC-UI-1** -- Deploy Self-Healing Center admin panels (`DiagnosticsTab.jsx`) to production bundle | Admin lifecycle ledger, GST, diagnostics unreachable | 🟠 HIGH |
 | M-22 | **SHC-OPS-1** -- Configure 5 Render env vars for Gmail/GST: `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`, `GMAIL_REFRESH_TOKEN`, `SUPPORT_EMAIL`, `BUSINESS_STATE`, then run Gmail OAuth flow | GST + Gmail scheduler jobs blocked | 🟠 HIGH |
-| M-23 | **KE-DEDUP-CONTRADICTION-1** -- Issue to Codex KE thread when quota resets (~2026-05-31). Brief at `Codex_Deliveries/Knowledge_Engine/CODEX_COMMISSION_KE_DEDUP_CONTRADICTION.md` | Quota resets ~2026-05-31 | 🔴 HIGH |
+| ~~M-23~~ | ~~**KE-DEDUP-CONTRADICTION-1**~~ -- ✅ **DONE 2026-05-29.** `backend/ke_dedup_script.py` delivered. TF-IDF similarity + contradiction detection + idempotent write-back. 1/1 tests pass. `scikit-learn>=1.3.0` added to `requirements.txt`. | ✅ DONE | ✅ |
 | M-24 | **Phaladeepika NLM** -- Begin Adhyaya II decode. Brief at `KE_TEXTBOOK_DECODE/Thread_Briefs/THREAD_BRIEF_PHALADEEPIKA_NLM.md` | Fully unblocked -- no dependency | 🟡 MED |
 | M-25 | **BPHS Vol 1 Thread A** -- Confirm Q1 (Ch11-Ch24 completeness) and Q2 (folder: `BPHS_CC_Decode/` canonical), then continue with Karaka → Yoga → Dasha chapters | Brief at `KE_TEXTBOOK_DECODE/Thread_Briefs/` | 🟡 MED |
 | M-26 | **KP Astrology claim_axis pass** -- Retroactive self-audit of all 77 files to populate `claim_axis: "longevity"` on ~20 rules across ~15 files | Near-complete close-out action | 🟡 MED |
@@ -51,7 +51,7 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 - ~~KE-Sprint2: Arbitration Runtime~~ → ✅ INTEGRATED 2026-05-17 (self-certified). All 5 gates passed against live code.
 - ~~KE-Sprint3: Arc Angel Computation (G-07/G-08/G-09)~~ → ✅ FULLY COMPLETE 2026-05-17. KE-OP-13 ✅ (live verified) + KE-OP-14 ✅ (AD-level window granularity fixed, commit `c4f4b43`, 72/72 tests).
 - ~~KE-IQ: Questionnaire UI + β/γ wiring (TD-19/TD-25/G-10)~~ → ✅ **INTEGRATED 2026-05-18** commit `f7aa78b`. 75/75 KE tests. KE-OP-15 open: TT to verify live endpoints + `user_questionnaire_profiles` persistence on Render.
-- **KE-DEDUP-CONTRADICTION-1** → 🟣 READY TO ISSUE. Brief at `Codex_Deliveries/Knowledge_Engine/CODEX_COMMISSION_KE_DEDUP_CONTRADICTION.md`. Issue when quota resets ~2026-05-31.
+- ~~KE-DEDUP-CONTRADICTION-1~~ → ✅ **INTEGRATED 2026-05-29.** `backend/ke_dedup_script.py` live. 1/1 tests pass.
 
 **CC Direct Actions -- KE gaps confirmed by Codex intake audit 2026-05-15:**
 - [x] **KE-OP-9** -- ✅ Already present: `knowledge_engine.py` lines 634-636 dispatch `yoga_combination` through `ke_yoga_evaluator.evaluate_yoga_check`. No action needed. Confirmed 2026-05-15.
