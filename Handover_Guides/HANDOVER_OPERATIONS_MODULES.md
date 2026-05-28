@@ -187,8 +187,13 @@ Delivered locally. Build-verified. Not merged to `main`.
 3. Add routes to `frontend/src/App.js`
 4. Update `sitemap.xml` and `vercel.json`
 5. Run build: `CI=true DISABLE_ESLINT_PLUGIN=true npx craco build`
-6. Commit and push
+6. Commit and push → wait for deploy
 7. Run seed script on Render if Mongo collections need seeding
+8. **ECHO/PACE scan immediately after deploy** (blocking gate -- see Section 20 for procedure)
+   - Scan 1 URL from each of the 4 public page types
+   - Target: internal ECHO ≥60, Google duplication ≤40%
+   - If fails: GAI optimization loop on the content fields → re-seed → re-scan
+   - Only declare LSG-1 complete once all page types pass
 
 ---
 
@@ -294,6 +299,8 @@ Backend + frontend at `/palmistry`. Full analysis + history working.
 
 Issue this commission any time. It is fully independent of all other modules.
 
+**⚠️ ECHO/PACE gate applies after integration:** Language/regional pages are content-heavy and localized -- run ECHO/PACE scan on at least one page per language (Tamil, Telugu, Malayalam) immediately after deploy. Target: internal ECHO ≥60, Google duplication ≤40%. If any language variant fails, apply GAI optimization before declaring the module complete.
+
 ---
 
 ## 18. MODULE: World Oracles -- PARKING LOT
@@ -331,13 +338,34 @@ From `Codex_Deliveries/CODEX_QA_INTEGRATION_AUDIT_2026-05-27.md`:
 
 ---
 
-## 20. Recommended Work Order
+## 20. ECHO/PACE Gate -- General Procedure
+
+> Applies to any module with **public programmatic/SEO content pages**: LSG-1, PAN-L1, and any future content modules.
+> ECHO/PACE runs AFTER deploy but BEFORE the module is declared complete.
+
+### Thresholds
+| Metric | Target | Action if Fail |
+|---|---|---|
+| Internal ECHO score | ≥ 60 | Humanise content fields, redeploy, rescan |
+| Google duplication rate | ≤ 40% | GAI optimization loop (can take multiple rounds) |
+
+### Scan Procedure
+1. Deploy module to production
+2. Go to `/admin/dashboard` → ECHO/PACE tab
+3. Scan 1 representative URL per page type
+4. If all pass → module complete
+5. If any fail → identify offending content fields from ECHO output → send to NLM/GAI for rewrite → update data files → redeploy → rescan
+6. Precedent: M3 festival-region pages required 9 rounds to clear the 40% ceiling
+
+---
+
+## 21. Recommended Work Order
 
 ### Week 1 -- Quick Wins and Blockers
 
-1. **Update commission table** -- KP-Sprint2 and KP-2B are ✅ INTEGRATED (TRACKER.md shows `20d4d29` + `20f7b83`), update `#5_CODEX_COMMISSION_TABLE.md` rows
-2. **Lo Shu Grid (LSG-1)** -- Integrate from `Codex_Deliveries/Lo_Shu_Grid/` (TT action, 30-60 min)
-3. **Angel Numbers re-seed** -- Run `seed_angel_numbers_core.py` + `seed_angel_numbers_intents.py` on Render (TT action, 10 min)
+1. **Commission table already updated** -- KP-Sprint2 and KP-2B corrected to ✅ INTEGRATED (`20d4d29` + `20f7b83`) by main thread 2026-05-29
+2. **Lo Shu Grid (LSG-1)** -- Integrate → deploy → ECHO/PACE scan → fix if needed (TT, 60-90 min total)
+3. **Angel Numbers re-seed** -- Run `seed_angel_numbers_core.py` + `seed_angel_numbers_intents.py` on Render (TT, 10 min)
 4. **KP acceptance** -- Verify KP-Sprint2 (KP-OP-12) + KP-2B (KP-OP-13) on production
 5. **Live TV scope** -- Remove `LiveTVPanel` from Panchang page (LTV-SCOPE-1, CC fix, 15 min)
 6. **Kundali (KUN-1)** -- Issue to Codex immediately (no blockers)
@@ -351,7 +379,7 @@ From `Codex_Deliveries/CODEX_QA_INTEGRATION_AUDIT_2026-05-27.md`:
 
 ### When Kundali and other threads are running
 
-11. **Punchang Language Pages (PAN-L1)** -- Issue to Codex
+11. **Panchang Language Pages (PAN-L1)** -- Issue to Codex → integrate → ECHO/PACE scan (1 page per language)
 12. **Lumina scope confirm** -- TT signs off on 9-tab vs 6-tab scope
 
 ---

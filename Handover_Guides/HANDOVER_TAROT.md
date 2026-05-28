@@ -82,16 +82,17 @@ All SEO content is served from `backend/tarot_seo_data.py`:
 **Total new URLs from TAR-SEO-1:** ~198 programmatic pages + 1 hub = 199 pages
 
 ### Integration Steps
-1. Check out from `Codex_Deliveries/Tarot/` for the delivered files
-2. Verify `tarot_seo_router.py` is present in `backend/`
-3. Add router registration to `backend/server.py`
-4. Add 4 page files to `frontend/src/pages/tarot/`
-5. Wire 4 routes into `frontend/src/App.js`
-6. Update `frontend/public/sitemap.xml`
-7. Update `vercel.json` if cache headers are included
-8. Run build: `CI=true DISABLE_ESLINT_PLUGIN=true npx craco build`
-9. Fix any smart quote issues (Codex common issue): run node smart-quote fix if build errors on curly quotes
-10. Commit and push to main
+1. Locate delivered files -- check `backend/tarot_seo_router.py` and `frontend/src/pages/tarot/`
+2. Add router registration to `backend/server.py`
+3. Wire 4 routes into `frontend/src/App.js`
+4. Update `frontend/public/sitemap.xml`
+5. Update `vercel.json` if cache headers are included
+6. Run build: `CI=true DISABLE_ESLINT_PLUGIN=true npx craco build`
+7. Fix any smart quote issues if needed (see Smart Quote Fix below)
+8. Commit and push to main → wait for Vercel + Render deploy (~2-3 min)
+9. **ECHO/PACE scan immediately** -- see Section 6 below before proceeding further
+10. If ECHO/PACE passes → proceed to TAR-SEO-2
+11. If ECHO/PACE fails → run GAI optimization loop (Section 6) until all page types pass, THEN TAR-SEO-2
 
 ### Smart Quote Fix (if needed)
 ```bash
@@ -105,31 +106,57 @@ f.writeFileSync(p,c);console.log('Done');"
 
 ---
 
-## 5. Second Task -- Activate TAR-SEO-2 (After TAR-SEO-1 Live)
+## 5. ECHO/PACE Quality Gate (Mandatory -- Before TAR-SEO-2)
 
-### What TAR-SEO-2 Did
+> **This is a blocking gate.** TAR-SEO-1 pages must pass ECHO/PACE before TAR-SEO-2 is activated.
 
-TAR-SEO-2 is a **one-file rewrite** of `backend/tarot_seo_data.py`. It replaces:
-- Source-derived spread prose
-- Rigid card description templates
-- Repetitive closings and formulaic action steps
+### Why ECHO/PACE First
 
-**Record counts unchanged:** 100 spreads / 78 cards / 20 intentions
+Tarot SEO pages (199 programmatic pages) are content-dense and risk duplication penalties from Google. The M3 festival-region pages required 9 rounds of GAI optimization to stay below the 40% ceiling. Tarot spread/card/intention pages have similar risk. Catch failures now -- before Google indexes the content.
 
-**The rewritten file is ready** -- it was prepared locally and verified with `py_compile`. Once TAR-SEO-1 is integrated and the SEO routes are live, replace `backend/tarot_seo_data.py` with the TAR-SEO-2 version.
+### Thresholds
+| Metric | Target | Fail = |
+|---|---|---|
+| Internal ECHO score | ≥ 60 | < 60 → humanise further |
+| Google duplication rate | ≤ 40% | > 40% → GAI optimization loop |
 
-**TAR-SEO-2 has no production effect until TAR-SEO-1 routes are live** -- the rewritten data file only matters if the SEO endpoints are serving it.
+### ECHO/PACE Scan Procedure
+1. Go to `https://www.everydayhoroscope.in/admin/dashboard` → ECHO/PACE tab
+2. Scan one URL from each page type:
+   - Spread hub: `/tarot/spreads`
+   - Spread detail: `/tarot/spread/celtic-cross` (or any slug)
+   - Card detail: `/tarot/card/the-fool` (or any slug)
+   - Intention page: `/tarot/for/love` (or any slug)
+3. Record ECHO score + duplication % for each type
+4. If all pass → proceed to TAR-SEO-2
+5. If any fail → GAI optimization loop (below)
+
+### GAI Optimization Loop (if any page type fails)
+Reference: `Codex_Deliveries/Tarot/TAR_ECHO_PACE_GAI_CONSULTATION.md`
+
+1. Identify which content fields are triggering duplication (ECHO output shows offending text)
+2. Submit failing content blocks to NLM/GAI for rewrite
+3. Update the relevant fields in `backend/tarot_seo_data.py`
+4. Re-deploy and re-scan
+5. Repeat until all 4 page types pass
+6. Pre-approved humanized titles: `TAR_SEO_TITLE_HUMANIZATION_LIST.md`
+
+### After ECHO/PACE Passes → Activate TAR-SEO-2
+
+TAR-SEO-2 is a **one-file rewrite** of `backend/tarot_seo_data.py`:
+- Removes source-derived spread prose and rigid card templates
+- Record counts unchanged (100 spreads / 78 cards / 20 intentions)
+- File is ready -- `py_compile` verified
+
+**Steps:**
+1. Replace `backend/tarot_seo_data.py` with the TAR-SEO-2 version
+2. Commit and push to main
+3. **Run ECHO/PACE again** on all 4 page types -- TAR-SEO-2 rewrites may affect scores
+4. Apply GAI fixes if any page type regresses below threshold
 
 ---
 
-## 6. Content Quality -- ECHO/PACE
-
-The `TAR_ECHO_PACE_GAI_CONSULTATION.md` and `TAR_SEO_TITLE_HUMANIZATION_LIST.md` files document:
-- How to humanize Tarot SEO page titles (pre-approved list)
-- ECHO/PACE content duplication thresholds for Tarot content
-- GAI (Generative AI) consultation notes on keeping content below 40% duplication ceiling
-
-After TAR-SEO-1 + TAR-SEO-2 are live, run ECHO/PACE scans on the new Tarot SEO pages via Admin Console → ECHO/PACE tab. Target: internal ECHO score ≥60, Google duplication ≤40%.
+## 7. Architecture Rules
 
 ---
 
@@ -144,6 +171,7 @@ After TAR-SEO-1 + TAR-SEO-2 are live, run ECHO/PACE scans on the new Tarot SEO p
 
 ## 8. QA Gap Register Items Assigned to This Thread
 
+
 | Gap ID | Description | Priority |
 |---|---|---|
 | TAR-SEO-INT | TAR-SEO-1 local delivery not merged/deployed | 🟠 High |
@@ -154,13 +182,14 @@ After TAR-SEO-1 + TAR-SEO-2 are live, run ECHO/PACE scans on the new Tarot SEO p
 
 1. Read `Codex_Deliveries/Tarot/TRACKER.md`
 2. Read `Codex_Deliveries/Tarot/CODEX_COMMISSION_TAR_SEO_1.md`
-3. Locate the delivered TAR-SEO-1 files in the repo (check `backend/tarot_seo_router.py` and `frontend/src/pages/tarot/`)
-4. Verify all 4 frontend pages exist locally
-5. Integrate TAR-SEO-1 (steps in Section 4 above)
-6. Run build, fix any issues, commit and push
-7. Verify 4 new SEO routes return 200 on production
-8. Then integrate TAR-SEO-2 (one-file swap of `tarot_seo_data.py`)
-9. Run ECHO/PACE scans on live Tarot SEO pages
+3. Read `Codex_Deliveries/Tarot/TAR_ECHO_PACE_GAI_CONSULTATION.md` (understand the quality gate)
+4. Locate the delivered TAR-SEO-1 files in the repo
+5. Integrate TAR-SEO-1 (steps in Section 4) → commit and push
+6. Verify 4 new SEO routes return 200 on production
+7. **Run ECHO/PACE on all 4 page types** (Section 5 procedure) -- this is a blocking gate
+8. GAI optimization loop if any page type fails -- repeat until all pass
+9. Once all pass → activate TAR-SEO-2 (one-file swap)
+10. **Run ECHO/PACE again** after TAR-SEO-2 to confirm no regression
 
 ---
 *Handover prepared: 2026-05-29 by Claude Code Main Thread*
