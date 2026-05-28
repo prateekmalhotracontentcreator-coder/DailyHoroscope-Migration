@@ -124,10 +124,20 @@ VALID_NULLIFICATION_TYPES = [
     "result_delayed",
 ]
 VALID_CROSS_TEXT_RELATIONSHIPS = [
+    # Agreement relationships (dedup candidates)
     "identical_claim",
     "near_identical",
     "same_principle_different_phrasing",
     "partial_overlap",
+    # Contradiction relationships
+    "contradicts",           # Same condition, directly opposite outcome polarity
+    "partial_contradiction", # Same condition, overlapping but incompatible outcome (e.g. one says wealth, one says loss of wealth under a modifier)
+]
+
+# Contradiction type distinguishes where the contradiction was detected
+VALID_CONTRADICTION_TYPES = [
+    "within_text",   # Two rules in the same source text conflict
+    "cross_text",    # Rules from two different source texts conflict
 ]
 
 ENGINE_DEPENDENCY_IDENTIFIERS = [
