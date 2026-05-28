@@ -42,8 +42,8 @@
 | Commission ID | Commission Name | Status | Brief File | Notes |
 |---|---|---|---|---|
 | **KP-2A** | Bundle Editorial + Share Card + Remedies Admin Frontend | ✅ INTEGRATED | `KP/CODEX_COMMISSION_KP_2A.md` | Commit `7d42880`. TT live verification KP-OP-9 pending. |
-| **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | 🔵 IN PROGRESS | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | Issued 2026-05-15. |
-| **KP-2B** | Ritual Animation + 3-Pillar UX + Astro-Filter | 🟡 BLOCKED | `KP/CODEX_COMMISSION_KP_2B.md` | Issue after TT verifies KP-OP-9 items 2+3. |
+| **KP-Sprint2** | /ask-question LLM Logic Router (Guna + Gita) | ✅ INTEGRATED `20d4d29` | `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` | `AskQuestionPage.jsx` (514 lines), 60-route logic router JSON (20 SATTVA/RAJAS/TAMAS). **KP-OP-12 OPEN**: TT to verify on production. |
+| **KP-2B** | Ritual Animation + 3-Pillar UX + Astro-Filter | ✅ INTEGRATED `20f7b83` | `KP/CODEX_COMMISSION_KP_2B.md` | `KrishnaRitualScreen.jsx`, 3-pillar `KrishnaOraclePage.jsx` (799 lines), astro enrichment. CC fix: lazy sessionStorage init applied. **KP-OP-13 OPEN**: TT to verify on production. |
 
 ---
 
@@ -300,10 +300,10 @@
 | ✅ DONE | TAR-v4 | Tarot | Tarot UI v4 Enhancement | ✅ INTEGRATED (QA 2026-05-27). All 5 tabs confirmed. |
 | ✅ DONE | CRY-1/CRY-2 | Crystal Healing | Full Crystal Healing module | ✅ LIVE (QA 2026-05-27) |
 | ✅ DONE | PALM-1 | Palmistry | Full Palmistry analysis + persistence | ✅ LIVE (QA 2026-05-27). Content drift open (medium). |
-| 🔴 HIGH | KP-Sprint2 | KP Oracle | /ask-question LLM Router (Guna + Gita) | 🔵 IN PROGRESS -- issued 2026-05-15 |
+| ✅ DONE | KP-Sprint2 | KP Oracle | /ask-question LLM Router (Guna + Gita) | ✅ INTEGRATED `20d4d29`. KP-OP-12: TT production verify pending. |
 | 🔴 HIGH | TAR-SEO-1 | Tarot | Tarot SEO module (199 programmatic pages) | 🟠 LOCAL DELIVERY -- TT to integrate |
 | ✅ DONE | KE-DEDUP-1 | Knowledge Engine | Dedup script + contradiction detection | ✅ INTEGRATED 2026-05-29. 1/1 tests pass. |
-| 🟠 HIGH | KP-2B | KP Oracle | Ritual Animation + 3-Pillar UX + Astro-Filter | 🟡 BLOCKED -- KP-OP-9 items 2+3 pending TT verification |
+| ✅ DONE | KP-2B | KP Oracle | Ritual Animation + 3-Pillar UX + Astro-Filter | ✅ INTEGRATED `20f7b83`. KP-OP-13: TT production verify pending. |
 | 🟠 HIGH | LSG-1 | Lo Shu Grid | Full Lo Shu Grid module | 🟠 LOCAL DELIVERY -- TT to integrate |
 | 🟡 MED | LON-1 | Longevity | Ayur Jyotish Longevity Report | 🟡 PARTIAL -- LON-OP-2 (46s latency) + LON-OP-1 (save/history) open |
 | 🟡 MED | PUN-2 | Punya Rewards | Home Promo + Module Hooks + SVG Wheel | 🟡 PARTIAL -- PUN-OP-1 (IR action code) open |

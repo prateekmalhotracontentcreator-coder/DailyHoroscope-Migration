@@ -60,7 +60,7 @@
 
 | Thread | Commission | Status |
 |---|---|---|
-| KP Oracle | KP-Sprint2: /ask-question LLM Router (Guna + Gita) | 🔵 IN PROGRESS -- issued 2026-05-15 |
+| KP Oracle | ~~KP-Sprint2~~ + ~~KP-2B~~ | ✅ BOTH INTEGRATED -- `20d4d29` + `20f7b83` (KP TRACKER.md v2.1). KP-OP-12 + KP-OP-13 TT production verify pending. No active Codex thread for KP. |
 
 ### Issue Immediately (no blockers)
 
