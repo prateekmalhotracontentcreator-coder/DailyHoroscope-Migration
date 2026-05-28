@@ -78,6 +78,10 @@ const PalmistryPage = lazy(() => import('./pages/palmistry/PalmistryPage').then(
 const TarotPage = lazy(() => import('./pages/tarot/TarotPage').then(m => ({ default: m.TarotPage })));
 const TarotLanding = lazy(() => import('./pages/tarot/TarotLanding'));
 const TarotHistoryPage = lazy(() => import('./pages/tarot/TarotHistoryPage'));
+const TarotSeoHubPage = lazy(() => import('./pages/tarot-seo/TarotSeoHubPage'));
+const TarotSpreadPage = lazy(() => import('./pages/tarot-seo/TarotSpreadPage'));
+const TarotCardPage = lazy(() => import('./pages/tarot-seo/TarotCardPage'));
+const TarotIntentionPage = lazy(() => import('./pages/tarot-seo/TarotIntentionPage'));
 const HoroscopeSignPage = lazy(() => import('./pages/horoscope/HoroscopeSignPage').then(m => ({ default: m.HoroscopeSignPage })));
 const RemedyPage = lazy(() => import('./pages/remedies/RemedyPage').then(m => ({ default: m.RemedyPage })));
 const KundaliPage = lazy(() => import('./pages/kundali/KundaliPage'));
@@ -321,6 +325,10 @@ function App() {
                   <Route path="/tarot" element={<TarotPage />} />
                   <Route path="/the-tarot" element={<TarotLanding />} />
                   <Route path="/tarot/history" element={<PremiumRoute feature="Tarot History" description="Your saved tarot reading history is a Premium feature. Upgrade to review all your past readings."><TarotHistoryPage /></PremiumRoute>} />
+                  <Route path="/tarot/spreads" element={<TarotSeoHubPage />} />
+                  <Route path="/tarot/spread/:spreadSlug" element={<TarotSpreadPage />} />
+                  <Route path="/tarot/card/:cardSlug" element={<TarotCardPage />} />
+                  <Route path="/tarot/for/:intentionSlug" element={<TarotIntentionPage />} />
                   <Route path="/remedies" element={<RemedyPage />} />
                   <Route path="/remedies/:dosha" element={<RemedyHubPage />} />
                   {/* /kundali = free public entry point for Vedic Kundali */}
