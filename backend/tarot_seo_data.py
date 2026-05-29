@@ -425,12 +425,12 @@ SPREADS_JSON = r"""[
     "slug": "12-month-wheel-of-year-forecast",
     "title": "12 Month Wheel of Year Forecast",
     "chapter": "Multi-Card Spreads",
-    "purpose": "A twelve-card annual forecast that assigns one card to each month of the year ahead, reading each as the primary energetic quality or theme of that period rather than predicting specific events. The value is in the pattern across the full year.",
+    "purpose": "A structural twelve-card annual spread that maps one card to each calendar month, reading each position as the dominant energetic quality or challenge of that period. Unlike birthday-based spreads, this reading follows the fixed calendar year from January through December, treating each month as a distinct chapter with its own theme rather than reading the year as a single continuous arc.",
     "positions": [
       "Card 1 being the month following the reading. Record the opportunities or challenges each card suggests during a particular month. As a rule, Major Arcana cards indicate major events or where outside circumstances play a big part. Minor cards refer to more ordinary but nevertheless significant happenings occurring in the period you are measuring. Court cards indicate dominant personalities--or a new love or pregnancy. Finally, choose a card to sum up the twelve months ahead and put this in the center of the circle. You can pick two cards for each month if you wish."
     ],
     "use": "One or two full decks.",
-    "when": "Use this at the start of a new year or personal cycle when you want a macro view of the months ahead. Lay all twelve cards first and look for the pattern before reading any individual card."
+    "when": "Use this spread at the turn of a calendar year, in January, or at any natural reset point when you want a twelve-chapter map of the months ahead. Place all twelve cards face-up before reading any position individually -- patterns across months (clustered difficulty, suit dominance, Major Arcana concentration) are often as informative as any single card."
   },
   {
     "number": 87,
@@ -1617,7 +1617,7 @@ SPREADS_JSON = r"""[
     "slug": "birthday-solar-return-planetary-map",
     "title": "Birthday Solar Return Planetary Map",
     "chapter": "Spread 1001",
-    "purpose": "A birthday spread for reading the dominant energetic themes of the personal year ahead -- what the solar return is activating, what is being completed from the previous year, and what this year most wants to grow through you. It reads a personal year as a whole arc rather than a collection of events.",
+    "purpose": "A birthday spread that reads the personal year ahead beginning from your solar return -- the moment the sun returns to its natal position. Unlike a fixed calendar forecast, this reading is anchored to your specific birth date and treats the year as a continuous personal arc: what the returning sun is activating in you, what is completing from the year behind, and where your growth edge lies in the cycle now opening.",
     "positions": [
       "Card 1 that remains is your overall year theme;",
       "Card 2 is what is unexpected in the year ahead;",
@@ -1625,7 +1625,7 @@ SPREADS_JSON = r"""[
       "Card 4 is the challenges to be overcome in the year ahead."
     ],
     "use": "Use the full deck, removing the Death and Devil cards before laying out the year review.",
-    "when": "Come to this spread on or near your birthday, within the solar return window. Lay all cards before reading any so the year's full pattern can be seen before individual months or themes are examined."
+    "when": "Come to this spread on or near your birthday, within a day or two of the solar return window. It is most powerful when used as a personal reckoning at the exact turn of your year rather than a general forecast -- the cards here speak to your individual arc, not the collective calendar. Survey all positions before interpreting each so the year's shape can emerge from the whole."
   }
 ]"""
 SPREADS: list[dict[str, Any]] = json.loads(SPREADS_JSON)
@@ -1636,7 +1636,7 @@ MAJOR_CARDS = [('the-fool', 'The Fool'), ('the-magician', 'The Magician'), ('the
 MAJOR_MEANINGS = {'the-fool': {'upright': 'fresh possibility, trust, and a leap into the unknown', 'reversed': 'hesitation, naivety, or a leap made without grounding', 'imagery': 'the cliff edge, white rose, small dog, and open sky speak of innocence meeting destiny'}, 'the-magician': {'upright': 'focus, skill, and manifesting power through intention', 'reversed': 'scattered energy, mixed motives, or talent that is not fully owned', 'imagery': 'the raised wand, infinity sign, and tools on the table show power translated into action'}, 'the-high-priestess': {'upright': 'intuition, inner knowing, and a truth that ripens in silence', 'reversed': 'blocked intuition, secrecy, or confusion around what is felt', 'imagery': 'the moon crown, veil, and scroll suggest mystery, memory, and sacred inner knowledge'}, 'the-empress': {'upright': 'abundance, nourishment, sensuality, and fertile growth', 'reversed': 'overgiving, creative stagnation, or emotional depletion', 'imagery': 'the wheat field, Venus symbols, and lush cushions evoke beauty, comfort, and creation'}, 'the-emperor': {'upright': 'structure, authority, and mature leadership', 'reversed': 'rigidity, control struggles, or leadership rooted in fear', 'imagery': 'the ram throne, armour, and mountain backdrop suggest discipline and command'}, 'the-hierophant': {'upright': 'tradition, guidance, and meaningful spiritual teaching', 'reversed': 'restlessness with convention, dogma, or misfit values', 'imagery': 'the temple pillars, keys, and blessing hand point to lineage and formal wisdom'}, 'the-lovers': {'upright': 'alignment, intimacy, and values-based choice', 'reversed': 'misalignment, temptation, or a decision that splits heart and mind', 'imagery': 'the angel, mountain, and mirrored figures show union, choice, and sacred reflection'}, 'the-chariot': {'upright': 'direction, confidence, and purposeful momentum', 'reversed': 'drift, divided will, or ambition without control', 'imagery': 'the charioteer, black and white sphinxes, and city behind him speak of mastery through focus'}, 'strength': {'upright': 'courage, patience, and heart-led steadiness', 'reversed': 'self-doubt, emotional exhaustion, or force replacing trust', 'imagery': 'the lion, infinity sign, and calm hand show power expressed as gentleness'}, 'the-hermit': {'upright': 'solitude, wisdom, and a search for what is true', 'reversed': 'withdrawal, avoidance, or staying alone longer than needed', 'imagery': 'the lantern, staff, and mountain peak reflect reflection, maturity, and inner guidance'}, 'wheel-of-fortune': {'upright': 'turning points, luck, and destiny in motion', 'reversed': 'delays, resistance to change, or repeating cycles', 'imagery': 'the turning wheel, winged beings, and rising figures show life in dynamic transition'}, 'justice': {'upright': 'truth, balance, and clear consequence', 'reversed': 'imbalance, evasion, or accountability blurred by bias', 'imagery': 'the scales, sword, and straight-backed figure represent honesty and measured judgment'}, 'the-hanged-man': {'upright': 'pause, surrender, and a change in perspective', 'reversed': 'stalling, sacrifice without meaning, or clinging to an old angle', 'imagery': 'the suspended posture and halo show wisdom gained through release'}, 'death': {'upright': 'ending, transformation, and necessary renewal', 'reversed': 'holding on, fear of letting go, or delayed closure', 'imagery': 'the white rose, river, and rising sun point to rebirth through endings'}, 'temperance': {'upright': 'integration, healing, and measured flow', 'reversed': 'excess, impatience, or imbalance in rhythm', 'imagery': 'the mixing cups, one foot on land and one in water, and distant path signify harmony in motion'}, 'the-devil': {'upright': 'attachment, temptation, and shadow desire', 'reversed': 'release, awareness, or breaking a harmful loop', 'imagery': 'the chains, torch, and goat-like figure reveal bondage sustained by habit or fear'}, 'the-tower': {'upright': 'shock, revelation, and structures breaking apart', 'reversed': 'avoided change, private collapse, or truth delayed', 'imagery': 'lightning, falling crown, and broken tower represent truth that cannot stay hidden'}, 'the-star': {'upright': 'hope, healing, and spiritual freshness', 'reversed': 'discouragement, dim faith, or healing still in process', 'imagery': 'the pouring water, stars, and naked openness reflect renewal and trust'}, 'the-moon': {'upright': 'intuition, dream logic, and the half-seen path', 'reversed': 'fear, emotional fog, or truths surfacing slowly', 'imagery': 'the moon, path, towers, and animals speak of instinct, illusion, and deeper feeling'}, 'the-sun': {'upright': 'joy, clarity, and wholehearted vitality', 'reversed': 'temporary clouds, ego heat, or light that feels muted', 'imagery': 'the child, horse, sunflowers, and bright sky evoke life force and innocence'}, 'judgement': {'upright': 'awakening, reckoning, and a call to rise', 'reversed': 'self-judgment, hesitation, or avoiding the next level', 'imagery': 'the trumpet, rising figures, and open landscape imply a soul-level awakening'}, 'the-world': {'upright': 'completion, fulfilment, and integration', 'reversed': 'unfinished business, delays, or a threshold not yet crossed', 'imagery': 'the wreath, four creatures, and dancing figure suggest mastery and wholeness'}}
 SUIT_META = {'wands': {'label': 'Wands', 'element': 'Fire', 'love': 'desire, attraction, and chemistry', 'career': 'ambition, leadership, and enterprise', 'health': 'stamina, motivation, and burnout risk', 'imagery': 'wands, sprouting wood, and flames point to drive and life force'}, 'cups': {'label': 'Cups', 'element': 'Water', 'love': 'emotion, intimacy, and receptivity', 'career': 'team harmony, creative work, and morale', 'health': 'nervous-system sensitivity and emotional wellbeing', 'imagery': 'chalices, flowing water, and moonlit scenes speak of feeling and intuition'}, 'swords': {'label': 'Swords', 'element': 'Air', 'love': 'boundaries, truth, and mental distance', 'career': 'strategy, conflict, and decision pressure', 'health': 'stress, sleep quality, and cognitive overload', 'imagery': 'blades, clouds, and strong winds show thought, tension, and clarity'}, 'pentacles': {'label': 'Pentacles', 'element': 'Earth', 'love': 'reliability, practical care, and long-term building', 'career': 'income, craft, and material progress', 'health': 'body routines, recovery, and tangible habits', 'imagery': 'coins, gardens, and architecture point to growth in the physical world'}}
 RANK_DETAILS = {'ace': ('Ace', 'beginnings and pure potential'), '02': ('Two', 'choice and balancing forces'), '03': ('Three', 'collaboration and early growth'), '04': ('Four', 'stability and the need to consolidate'), '05': ('Five', 'friction, challenge, and adjustment'), '06': ('Six', 'movement, support, and regained rhythm'), '07': ('Seven', 'testing, discernment, and strategy'), '08': ('Eight', 'momentum, skill, and focused repetition'), '09': ('Nine', 'culmination, resilience, and hard-won perspective'), '10': ('Ten', 'completion, weight, and full consequence'), 'page': ('Page', 'curiosity, learning, and a fresh message'), 'knight': ('Knight', 'motion, pursuit, and committed effort'), 'queen': ('Queen', 'mastery through embodiment and inner authority'), 'king': ('King', 'leadership, direction, and mature command')}
-INTENTIONS = {'love': {'label': 'Love', 'chapter': 'love and commitment', 'spread_numbers': [87, 88, 91], 'best_cards': ['the-lovers', 'two-of-cups', 'the-empress', 'the-sun', 'ten-of-cups', 'the-star'], 'caution_cards': ['three-of-swords', 'the-devil', 'the-moon', 'five-of-cups']}, 'career': {'label': 'Career', 'chapter': 'career and vocational direction', 'spread_numbers': [169, 171, 191], 'best_cards': ['the-magician', 'the-emperor', 'three-of-pentacles', 'ace-of-pentacles', 'six-of-wands', 'the-world'], 'caution_cards': ['five-of-swords', 'eight-of-swords', 'the-tower', 'five-of-pentacles']}, 'money': {'label': 'Money', 'chapter': 'prosperity and financial clarity', 'spread_numbers': [129, 149, 151], 'best_cards': ['ace-of-pentacles', 'nine-of-pentacles', 'ten-of-pentacles', 'the-empress', 'king-of-pentacles', 'wheel-of-fortune'], 'caution_cards': ['five-of-pentacles', 'seven-of-swords', 'the-devil', 'four-of-pentacles']}, 'health': {'label': 'Health', 'chapter': 'healing and energetic balance', 'spread_numbers': [321, 322, 921], 'best_cards': ['the-star', 'strength', 'temperance', 'the-sun', 'queen-of-cups', 'six-of-swords'], 'caution_cards': ['nine-of-swords', 'ten-of-wands', 'the-moon', 'five-of-cups']}, 'relationships': {'label': 'Relationships', 'chapter': 'relationships and emotional connection', 'spread_numbers': [90, 108, 109], 'best_cards': ['two-of-cups', 'temperance', 'the-lovers', 'queen-of-cups', 'ten-of-cups', 'judgement'], 'caution_cards': ['five-of-wands', 'the-devil', 'seven-of-swords', 'three-of-swords']}, 'breakup': {'label': 'Breakup', 'chapter': 'heartbreak, reconciliation, and release', 'spread_numbers': [111, 112, 989], 'best_cards': ['death', 'the-star', 'six-of-swords', 'judgement', 'ace-of-cups'], 'caution_cards': ['five-of-cups', 'three-of-swords', 'the-tower', 'ten-of-swords']}, 'new-beginnings': {'label': 'New Beginnings', 'chapter': 'fresh starts and transitions', 'spread_numbers': [70, 720, 773], 'best_cards': ['the-fool', 'ace-of-wands', 'ace-of-pentacles', 'the-sun', 'the-magician', 'the-world'], 'caution_cards': ['the-hanged-man', 'five-of-pentacles', 'the-moon', 'four-of-cups']}, 'anxiety': {'label': 'Anxiety', 'chapter': 'anxiety, phobia, and emotional overwhelm', 'spread_numbers': [321, 323, 741], 'best_cards': ['strength', 'temperance', 'the-star', 'queen-of-cups', 'six-of-swords', 'the-hermit'], 'caution_cards': ['nine-of-swords', 'the-moon', 'eight-of-swords', 'ten-of-wands']}, 'decision-making': {'label': 'Decision-Making', 'chapter': 'choices, crossroads, and strategy', 'spread_numbers': [14, 64, 592], 'best_cards': ['justice', 'two-of-wands', 'the-chariot', 'the-magician', 'wheel-of-fortune', 'king-of-swords'], 'caution_cards': ['seven-of-cups', 'two-of-swords', 'the-moon', 'the-hanged-man']}, 'spiritual-growth': {'label': 'Spiritual Growth', 'chapter': 'inner life and sacred development', 'spread_numbers': [775, 848, 850], 'best_cards': ['the-high-priestess', 'the-hermit', 'judgement', 'the-star', 'ace-of-cups', 'temperance'], 'caution_cards': ['the-devil', 'seven-of-cups', 'eight-of-swords', 'five-of-swords']}, 'family': {'label': 'Family', 'chapter': 'family patterns and home ties', 'spread_numbers': [265, 266, 897], 'best_cards': ['ten-of-cups', 'ten-of-pentacles', 'the-empress', 'six-of-cups', 'queen-of-pentacles', 'the-sun'], 'caution_cards': ['five-of-wands', 'the-devil', 'seven-of-swords', 'five-of-cups']}, 'travel': {'label': 'Travel', 'chapter': 'travel, relocation, and distance', 'spread_numbers': [566, 567, 568], 'best_cards': ['the-chariot', 'six-of-swords', 'the-world', 'ace-of-wands', 'temperance', 'wheel-of-fortune'], 'caution_cards': ['eight-of-cups', 'five-of-pentacles', 'the-moon', 'seven-of-swords']}, 'manifestation': {'label': 'Manifestation', 'chapter': 'wishes, fortune, and desired outcomes', 'spread_numbers': [211, 236, 238], 'best_cards': ['the-magician', 'ace-of-wands', 'ace-of-pentacles', 'the-star', 'wheel-of-fortune', 'the-sun'], 'caution_cards': ['seven-of-cups', 'four-of-cups', 'the-devil', 'five-of-pentacles']}, 'self-discovery': {'label': 'Self-Discovery', 'chapter': 'self-awareness and inner understanding', 'spread_numbers': [820, 821, 822], 'best_cards': ['the-hermit', 'the-high-priestess', 'strength', 'queen-of-cups', 'judgement', 'the-world'], 'caution_cards': ['the-moon', 'eight-of-swords', 'five-of-swords', 'four-of-cups']}, 'forgiveness': {'label': 'Forgiveness', 'chapter': 'release, amends, and softer truth', 'spread_numbers': [108, 110, 720], 'best_cards': ['temperance', 'judgement', 'six-of-cups', 'ace-of-cups', 'the-star', 'strength'], 'caution_cards': ['five-of-swords', 'the-devil', 'three-of-swords', 'the-tower']}, 'loss-grief': {'label': 'Loss and Grief', 'chapter': 'grief, mourning, and healing after loss', 'spread_numbers': [989, 991, 720], 'best_cards': ['the-star', 'six-of-swords', 'temperance', 'judgement', 'ace-of-cups', 'queen-of-cups'], 'caution_cards': ['five-of-cups', 'ten-of-swords', 'the-tower', 'nine-of-swords']}, 'friendship': {'label': 'Friendship', 'chapter': 'social life and platonic bonds', 'spread_numbers': [411, 412, 413], 'best_cards': ['three-of-cups', 'six-of-cups', 'queen-of-cups', 'page-of-cups', 'the-sun', 'temperance'], 'caution_cards': ['five-of-wands', 'seven-of-swords', 'five-of-cups', 'three-of-swords']}, 'pregnancy': {'label': 'Pregnancy', 'chapter': 'fertility, conception, and parenthood', 'spread_numbers': [441, 442, 443], 'best_cards': ['the-empress', 'ace-of-cups', 'queen-of-pentacles', 'the-sun', 'ten-of-cups', 'page-of-cups'], 'caution_cards': ['the-moon', 'five-of-pentacles', 'nine-of-swords', 'ten-of-wands']}, 'legal-matters': {'label': 'Legal Matters', 'chapter': 'justice, compensation, and truth', 'spread_numbers': [467, 468, 469], 'best_cards': ['justice', 'king-of-swords', 'six-of-wands', 'judgement', 'ace-of-swords', 'the-emperor'], 'caution_cards': ['seven-of-swords', 'five-of-swords', 'the-tower', 'eight-of-swords']}, 'past-lives': {'label': 'Past Lives', 'chapter': 'karmic memory and soul recognition', 'spread_numbers': [87, 850, 88], 'best_cards': ['judgement', 'the-high-priestess', 'the-moon', 'six-of-cups', 'the-world', 'wheel-of-fortune'], 'caution_cards': ['the-devil', 'five-of-cups', 'eight-of-swords', 'three-of-swords']}}
+INTENTIONS = {'love': {'label': 'Love', 'chapter': 'love and commitment', 'spread_numbers': [87, 88, 91], 'best_cards': ['the-lovers', 'two-of-cups', 'the-empress', 'the-sun', 'ten-of-cups', 'the-star'], 'caution_cards': ['three-of-swords', 'the-devil', 'the-moon', 'five-of-cups']}, 'career': {'label': 'Career', 'chapter': 'career and vocational direction', 'spread_numbers': [169, 171, 191], 'best_cards': ['the-magician', 'the-emperor', 'three-of-pentacles', 'ace-of-pentacles', 'six-of-wands', 'the-world'], 'caution_cards': ['five-of-swords', 'eight-of-swords', 'the-tower', 'five-of-pentacles'], 'intro': 'The career intention gathers spreads focused on vocational direction, professional identity, and the practical questions of work -- which path to pursue, what is blocking advancement, whether a current role still fits. These are clarity and strategy readings, not wish-fulfilment readings.', 'guidance': "Bring a specific career question rather than a general inquiry. A decision point, a workplace dynamic, a sense of professional stagnation, or a transition you are weighing will all produce a sharper reading than 'what should I do with my career.' Precision in the question translates directly into precision in what the cards can show."}, 'money': {'label': 'Money', 'chapter': 'prosperity and financial clarity', 'spread_numbers': [129, 149, 151], 'best_cards': ['ace-of-pentacles', 'nine-of-pentacles', 'ten-of-pentacles', 'the-empress', 'king-of-pentacles', 'wheel-of-fortune'], 'caution_cards': ['five-of-pentacles', 'seven-of-swords', 'the-devil', 'four-of-pentacles']}, 'health': {'label': 'Health', 'chapter': 'healing and energetic balance', 'spread_numbers': [321, 322, 921], 'best_cards': ['strength', 'the-sun', 'the-world', 'queen-of-cups', 'six-of-swords', 'the-star'], 'caution_cards': ['nine-of-swords', 'ten-of-wands', 'the-moon', 'five-of-cups'], 'intro': 'Health readings in tarot work best when you treat the cards as a mirror for physical vitality, energetic flow, and body-mind alignment rather than a diagnostic tool. The cards illuminate where energy is being depleted, which habits are supporting your physical wellbeing, and where recovery or rest is being resisted or delayed.', 'guidance': 'Bring a specific area of physical experience to this reading -- energy levels, sleep quality, a recurring physical pattern, or a transition in how you are caring for your body. The cards do not replace professional health care; they offer a symbolic read on the energetic layer underneath the physical experience.'}, 'relationships': {'label': 'Relationships', 'chapter': 'relationships and emotional connection', 'spread_numbers': [90, 108, 109], 'best_cards': ['two-of-cups', 'temperance', 'the-lovers', 'queen-of-cups', 'ten-of-cups', 'judgement'], 'caution_cards': ['five-of-wands', 'the-devil', 'seven-of-swords', 'three-of-swords']}, 'breakup': {'label': 'Breakup', 'chapter': 'heartbreak, reconciliation, and release', 'spread_numbers': [111, 112, 989], 'best_cards': ['death', 'the-star', 'six-of-swords', 'judgement', 'ace-of-cups'], 'caution_cards': ['five-of-cups', 'three-of-swords', 'the-tower', 'ten-of-swords']}, 'new-beginnings': {'label': 'New Beginnings', 'chapter': 'fresh starts and transitions', 'spread_numbers': [70, 720, 773], 'best_cards': ['the-fool', 'ace-of-wands', 'ace-of-pentacles', 'the-sun', 'the-magician', 'the-world'], 'caution_cards': ['the-hanged-man', 'five-of-pentacles', 'the-moon', 'four-of-cups']}, 'anxiety': {'label': 'Anxiety', 'chapter': 'anxiety, phobia, and emotional overwhelm', 'spread_numbers': [321, 323, 741], 'best_cards': ['temperance', 'the-hermit', 'the-star', 'queen-of-cups', 'six-of-swords', 'eight-of-swords'], 'caution_cards': ['nine-of-swords', 'the-moon', 'eight-of-swords', 'ten-of-wands'], 'intro': 'The anxiety intention gathers spreads that address the mind in an activated state -- racing thoughts, anticipatory fear, the kind of worry that loops without resolution. These readings are not about removing fear but about finding the still point within it and identifying what the anxious mind is trying to protect.', 'guidance': 'Anxiety spreads are designed to interrupt the loop rather than solve the fear. The cards name what is driving the overwhelm -- often a thought pattern, an unprocessed feeling, or an anticipated outcome the mind has attached to -- and point toward a grounding response. Come to this reading willing to slow down rather than to resolve everything at once.'}, 'decision-making': {'label': 'Decision-Making', 'chapter': 'choices, crossroads, and strategy', 'spread_numbers': [14, 64, 592], 'best_cards': ['justice', 'two-of-wands', 'the-chariot', 'the-magician', 'wheel-of-fortune', 'king-of-swords'], 'caution_cards': ['seven-of-cups', 'two-of-swords', 'the-moon', 'the-hanged-man']}, 'spiritual-growth': {'label': 'Spiritual Growth', 'chapter': 'inner life and sacred development', 'spread_numbers': [775, 848, 850], 'best_cards': ['the-world', 'ace-of-cups', 'temperance', 'the-high-priestess', 'the-star', 'wheel-of-fortune'], 'caution_cards': ['the-devil', 'seven-of-cups', 'eight-of-swords', 'five-of-swords'], 'intro': 'The spiritual growth intention gathers spreads for deliberate inner development -- the widening of perspective, the deepening of practice, and movement toward something beyond immediate personal gain. These readings work best when you are in an active period of seeking rather than in crisis or immediate practical need.', 'guidance': 'Bring a specific area of inner work to this reading -- a practice you are deepening, a belief you are re-examining, or a quality you are consciously developing. Spiritual growth readings map the terrain of your current inner movement rather than reveal a fixed destination.'}, 'family': {'label': 'Family', 'chapter': 'family patterns and home ties', 'spread_numbers': [265, 266, 897], 'best_cards': ['ten-of-cups', 'ten-of-pentacles', 'the-empress', 'six-of-cups', 'queen-of-pentacles', 'the-sun'], 'caution_cards': ['five-of-wands', 'the-devil', 'seven-of-swords', 'five-of-cups']}, 'travel': {'label': 'Travel', 'chapter': 'travel, relocation, and distance', 'spread_numbers': [566, 567, 568], 'best_cards': ['the-chariot', 'six-of-swords', 'the-world', 'ace-of-wands', 'temperance', 'wheel-of-fortune'], 'caution_cards': ['eight-of-cups', 'five-of-pentacles', 'the-moon', 'seven-of-swords']}, 'manifestation': {'label': 'Manifestation', 'chapter': 'wishes, fortune, and desired outcomes', 'spread_numbers': [211, 236, 238], 'best_cards': ['the-star', 'ace-of-wands', 'wheel-of-fortune', 'the-magician', 'ace-of-pentacles', 'the-sun'], 'caution_cards': ['seven-of-cups', 'four-of-cups', 'the-devil', 'five-of-pentacles'], 'intro': 'The manifestation intention gathers spreads for deliberate outcome-setting -- readings that examine what is aligned with or resisting something you have already decided to draw toward you. These readings begin from a chosen destination and work backward into alignment, not forward into decision.', 'guidance': 'Name the specific outcome before you draw. Vague intentions produce vague readings. The cards will identify what is actively contributing to the outcome and what is creating friction or delay. The more precisely the target is defined, the more actionable the reading becomes.'}, 'self-discovery': {'label': 'Self-Discovery', 'chapter': 'self-awareness and inner understanding', 'spread_numbers': [820, 821, 822], 'best_cards': ['the-hermit', 'strength', 'the-fool', 'queen-of-cups', 'judgement', 'the-world'], 'caution_cards': ['the-moon', 'eight-of-swords', 'five-of-swords', 'four-of-cups'], 'intro': 'The self-discovery intention gathers spreads for understanding yourself more clearly -- patterns, motivations, blind spots, and the distance between who you present and who you actually are. These readings work best when genuine curiosity drives the inquiry rather than a search for confirmation.', 'guidance': 'Self-discovery spreads reward honesty. Come willing to receive information you did not anticipate -- including qualities you have been reluctant to claim and patterns you have preferred not to examine. The cards reflect without judgment; bring the same quality to what they show you.'}, 'forgiveness': {'label': 'Forgiveness', 'chapter': 'release, amends, and softer truth', 'spread_numbers': [108, 110, 720], 'best_cards': ['temperance', 'judgement', 'six-of-cups', 'ace-of-cups', 'the-star', 'strength'], 'caution_cards': ['five-of-swords', 'the-devil', 'three-of-swords', 'the-tower']}, 'loss-grief': {'label': 'Loss and Grief', 'chapter': 'grief, mourning, and healing after loss', 'spread_numbers': [989, 991, 720], 'best_cards': ['the-star', 'six-of-swords', 'temperance', 'judgement', 'ace-of-cups', 'queen-of-cups'], 'caution_cards': ['five-of-cups', 'ten-of-swords', 'the-tower', 'nine-of-swords']}, 'friendship': {'label': 'Friendship', 'chapter': 'social life and platonic bonds', 'spread_numbers': [411, 412, 413], 'best_cards': ['three-of-cups', 'six-of-cups', 'queen-of-cups', 'page-of-cups', 'the-sun', 'temperance'], 'caution_cards': ['five-of-wands', 'seven-of-swords', 'five-of-cups', 'three-of-swords']}, 'pregnancy': {'label': 'Pregnancy', 'chapter': 'fertility, conception, and parenthood', 'spread_numbers': [441, 442, 443], 'best_cards': ['the-empress', 'ace-of-cups', 'queen-of-pentacles', 'the-sun', 'ten-of-cups', 'page-of-cups'], 'caution_cards': ['the-moon', 'five-of-pentacles', 'nine-of-swords', 'ten-of-wands']}, 'legal-matters': {'label': 'Legal Matters', 'chapter': 'justice, compensation, and truth', 'spread_numbers': [467, 468, 469], 'best_cards': ['justice', 'king-of-swords', 'six-of-wands', 'judgement', 'ace-of-swords', 'the-emperor'], 'caution_cards': ['seven-of-swords', 'five-of-swords', 'the-tower', 'eight-of-swords']}, 'past-lives': {'label': 'Past Lives', 'chapter': 'karmic memory and soul recognition', 'spread_numbers': [87, 850, 88], 'best_cards': ['judgement', 'the-high-priestess', 'the-moon', 'six-of-cups', 'the-world', 'wheel-of-fortune'], 'caution_cards': ['the-devil', 'five-of-cups', 'eight-of-swords', 'three-of-swords'], 'intro': 'The past-lives intention gathers spreads for reading karmic memory, recurring patterns across lifetimes, and the weight that certain relationships, fears, or abilities carry beyond their apparent origin. These readings are interpretive rather than biographical -- they offer symbolic frames, not factual records.', 'guidance': 'Use these spreads when you are working with a pattern that resists ordinary explanation, an inexplicable sense of recognition, or a pull toward a place, person, or time with no conscious history. Take what the reading offers as a possible lens on karmic texture, not as a definitive account of actual events.'}}
 INTRO_SNIPPETS = {'love': 'Tarot can show where a bond feels mutual, where timing is off, and what emotional truth wants to be named.', 'career': 'Tarot is especially useful for career questions because it exposes motivation, environment, and the hidden cost of each path.', 'money': 'Money readings work best when tarot is used for clarity, values, and timing instead of magical certainty.', 'health': 'Health spreads are best used as reflective tools around stress, recovery, rhythm, and support rather than medical diagnosis.', 'relationships': 'Relationship spreads help separate chemistry, commitment, conflict, and long-term compatibility into clearer layers.', 'breakup': 'Breakup spreads create language for grief, unfinished patterns, and whether healing points toward reunion or release.', 'new-beginnings': 'New-beginning spreads are powerful when you need confidence, cleaner timing, and a better sense of what the next chapter asks of you.', 'anxiety': 'Tarot can be grounding in anxious periods because it gives the mind a structured way to name fear, pattern, and next steps.', 'decision-making': 'Decision spreads help by comparing consequences, motives, and the path of least regret.', 'spiritual-growth': 'Spiritual spreads invite stillness, symbolism, and a more intuitive reading of what your inner life is asking for.', 'family': 'Family spreads are useful when love and duty are tangled, and everyone seems to carry a different version of the truth.', 'travel': 'Travel spreads do more than say yes or no: they reveal timing, safety, motivation, and what the journey is trying to teach.', 'manifestation': 'Manifestation spreads work best when desire is matched with honest action, patience, and alignment.', 'self-discovery': 'Self-discovery spreads reveal the roles you have outgrown and the strengths you have not yet trusted enough.', 'forgiveness': 'Forgiveness spreads show what can soften, what still needs a boundary, and whether reconciliation is wise.', 'loss-grief': 'Grief spreads offer symbolic structure when words are difficult and feelings move in uneven waves.', 'friendship': 'Friendship spreads help clarify reciprocity, trust, and the social patterns that keep repeating.', 'pregnancy': 'Pregnancy and conception spreads are best approached gently, holding space for hope, fear, and practical support.', 'legal-matters': 'Legal spreads can illuminate fairness, leverage, timing, and whether a compromise serves you better than a fight.', 'past-lives': 'Past-life themed spreads are read symbolically, often surfacing karmic echoes, unfinished emotional memory, and soul recognition motifs.'}
 
 def _guess_card_count(spread: dict[str, Any]) -> int:
@@ -1975,7 +1975,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Ace of Wands brings bold attraction, a new relationship that starts with unmistakable chemistry, or the return of desire to something that had grown routine.",
     "career": "In career, Ace of Wands points to a new project, idea, or creative direction that is ready to be launched before all the conditions are perfect.",
     "health": "For wellbeing, Ace of Wands reflects renewed energy, physical vitality, or the impulse to start a new health routine before the habit has had time to form.",
-    "imagery": "Ace of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises beginnings and pure potential."
+    "imagery": "A hand emerges from a cloud and grasps a single upright wand whose tip already sprouts fresh green leaves. A castle stands in the far distance beneath a clear sky. The image holds creative fire at the precise moment before it commits to a direction."
   },
   {
     "slug": "two-of-wands",
@@ -1988,7 +1988,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Two of Wands points to a relationship testing whether both people share the same longer horizon -- whether this attraction is also a compatible direction.",
     "career": "In career, Two of Wands marks the moment after an initial success when the question is whether to expand, partner, or simply hold the ground already gained.",
     "health": "For wellbeing, Two of Wands reflects stepping beyond a comfortable health habit and looking toward what sustained improvement would actually require.",
-    "imagery": "Two of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises choice and balancing forces."
+    "imagery": "A robed figure stands on castle battlements holding a small globe in one hand and a wand in the other. A second wand is fixed to the stone wall beside him. He faces outward over a wide sea and distant land -- the posture of someone mapping a voyage not yet begun."
   },
   {
     "slug": "three-of-wands",
@@ -2001,7 +2001,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Three of Wands brings patient confidence in a developing connection -- or the discomfort of waiting for someone who has not yet returned the same level of investment.",
     "career": "In career, Three of Wands marks the phase between launching a project and seeing its results -- where trust in the work already done must carry the gap.",
     "health": "For wellbeing, Three of Wands reflects gradual progress where the results are still catching up to the effort already invested.",
-    "imagery": "Three of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises collaboration and early growth."
+    "imagery": "A solitary figure stands on elevated ground overlooking a calm sea where ships move outward toward the horizon. Three wands are planted around him; he rests one hand on the nearest wand and watches in the unhurried posture of long-range vision and patient expectation."
   },
   {
     "slug": "four-of-wands",
@@ -2014,7 +2014,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Four of Wands marks a significant relational milestone -- an engagement, a move-in, a shared threshold crossed -- where commitment becomes visible and concrete.",
     "career": "In career, Four of Wands signals the successful completion of a professional phase -- a launch, graduation, or promotion -- where the achievement is real enough to merit proper recognition.",
     "health": "For wellbeing, Four of Wands reflects recovery fully achieved, a new healthy environment established, or the body settling into a rhythm that finally feels sustainable.",
-    "imagery": "Four of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises stability and the need to consolidate."
+    "imagery": "Four wands draped with flower garlands form an open archway or canopy. Two figures in the foreground raise bouquets in celebration, and a gathered crowd fills the background. The scene reads as arrival, welcome, and the particular ease of earned rest."
   },
   {
     "slug": "five-of-wands",
@@ -2027,7 +2027,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Five of Wands reflects tension, differing communication styles, or the ongoing friction of two people who approach emotion, decision, and expectation differently.",
     "career": "In career, Five of Wands points to team conflict, competitive pressure, or the challenge of getting alignment when multiple stakeholders have incompatible priorities.",
     "health": "For wellbeing, Five of Wands reflects scattered energy, competing demands, or the physical toll of sustained effort in a chaotic or adversarial environment.",
-    "imagery": "Five of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises friction, challenge, and adjustment."
+    "imagery": "Five young men hold wands and clash them together in what looks more like competing voices than organised combat. Their postures are active and overlapping, none clearly dominant. The image captures the noise and friction of unresolved ambition seeking a clear outlet."
   },
   {
     "slug": "six-of-wands",
@@ -2040,7 +2040,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Six of Wands brings a moment of renewed attraction -- where effort to pursue or improve has been visibly rewarded and the relationship enters a prouder phase.",
     "career": "In career, Six of Wands signals genuine professional success -- a promotion, award, or project that delivers publicly, where the achievement is undeniable and well-timed.",
     "health": "For wellbeing, Six of Wands reflects visible improvement -- a fitness goal achieved, a recovery milestone passed -- where the body's progress is something you can see and others notice.",
-    "imagery": "Six of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises movement, support, and regained rhythm."
+    "imagery": "A rider wearing a laurel crown moves through an attending crowd on a white horse, his wand held aloft and decorated with a victory wreath. Figures walk alongside with their own wands raised in recognition. The movement is processional -- a return acknowledged and celebrated."
   },
   {
     "slug": "seven-of-wands",
@@ -2053,7 +2053,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Seven of Wands reflects the challenge of holding to one's values when a partner pushes back -- or the difficulty of staying present in a relationship that requires constant effort.",
     "career": "In career, Seven of Wands marks a professional position under competitive pressure -- defending territory, managing critics, or maintaining authority where challengers are visible and persistent.",
     "health": "For wellbeing, Seven of Wands reflects the mental and physical cost of sustained stress -- where staying functional requires deliberate effort to protect energy from ongoing demands.",
-    "imagery": "Seven of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises testing, discernment, and strategy."
+    "imagery": "A man stands on a raised ledge and holds his wand downward in a defensive stance against six wands thrust up at him from below the frame. He occupies the higher ground but must work to hold it. The posture is guarded and determined -- position maintained by continuous effort."
   },
   {
     "slug": "eight-of-wands",
@@ -2066,7 +2066,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Eight of Wands brings rapid developments -- messages returned quickly, feelings declared, or a relationship that accelerates past its expected pace.",
     "career": "In career, Eight of Wands signals a sudden burst of activity -- project momentum, multiple communications requiring response, or a window of opportunity that opens briefly and must be used now.",
     "health": "For wellbeing, Eight of Wands reflects a body returning to high function after slow recovery -- or the need to pace a surge of returning energy before it leads to burnout.",
-    "imagery": "Eight of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises momentum, skill, and focused repetition."
+    "imagery": "Eight wands travel through a clear open sky in close parallel formation, angling downward toward a green landscape below. No human figure appears in the frame. The image is pure directed motion -- swift, unobstructed, and carrying no resistance."
   },
   {
     "slug": "nine-of-wands",
@@ -2079,7 +2079,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Nine of Wands reflects a relationship marked by past hurts -- where previous losses make it harder to stay open, and trust is rebuilt slowly and carefully.",
     "career": "In career, Nine of Wands marks a professional situation requiring persistence through fatigue -- holding a position or completing a long campaign where the finish line is finally visible.",
     "health": "For wellbeing, Nine of Wands reflects the body's resilience near the end of a sustained health challenge -- still functional but drawing on reserves that need careful management.",
-    "imagery": "Nine of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises culmination, resilience, and hard-won perspective."
+    "imagery": "A tired, bandaged man leans on a wand and looks back over his shoulder with wary attention. Eight wands stand upright in a row behind him like a fence or barrier he has constructed. He is still standing, but the cost of remaining upright is written plainly in his posture."
   },
   {
     "slug": "ten-of-wands",
@@ -2092,7 +2092,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Ten of Wands reflects one person shouldering the emotional labour of a relationship that has become unbalanced -- carrying too much of the maintenance, communication, or repair.",
     "career": "In career, Ten of Wands marks an overloaded professional situation -- too many responsibilities, a project grown beyond its scope, or a workload producing diminishing returns.",
     "health": "For wellbeing, Ten of Wands reflects physical or mental exhaustion from overextension -- where the body has been pushed past sustainable capacity and is asking clearly for rest.",
-    "imagery": "Ten of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises completion, weight, and full consequence."
+    "imagery": "A man bent sharply forward carries ten wands bundled tightly in his arms, the load pressing against his face and obscuring his forward view. He walks toward a distant town visible on the horizon. The wands have not been dropped -- but the act of carrying them has become the entire experience."
   },
   {
     "slug": "page-of-wands",
@@ -2105,7 +2105,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Page of Wands brings youthful attraction, the excitement of early connection, or new flirtatious energy entering a relationship that had grown too familiar.",
     "career": "In career, Page of Wands signals the arrival of a creative opportunity or inspiring idea -- a new direction worth exploring, even if the details are not yet fully formed.",
     "health": "For wellbeing, Page of Wands reflects renewed motivation -- the fresh impulse to try something new with the body before the discipline to sustain it has developed.",
-    "imagery": "Page of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises curiosity, learning, and a fresh message."
+    "imagery": "A young figure stands in an open rocky landscape, holding a tall wand upright and studying it with focused curiosity. The wand is already sprouting new growth. His tunic carries a salamander pattern. The image is someone at the earliest stage of their fire -- observant, unformed, and genuinely interested."
   },
   {
     "slug": "knight-of-wands",
@@ -2118,7 +2118,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Knight of Wands brings passionate pursuit that may or may not be accompanied by patience -- intense attraction, bold gestures, and the question of whether the flame can be sustained.",
     "career": "In career, Knight of Wands signals bold, fast-moving action -- launching before full preparation, or driving a project forward through sheer force of will.",
     "health": "For wellbeing, Knight of Wands reflects a burst of physical energy or exercise motivation -- intense, possibly overdone, and worth tempering with equal attention to recovery.",
-    "imagery": "Knight of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises motion, pursuit, and committed effort."
+    "imagery": "An armoured knight urges a rearing horse into forward motion, his wand raised and his whole body angled toward momentum. Salamanders on his armour and horse reference the fire element directly. The energy of the card is committed speed -- direction chosen, hesitation absent."
   },
   {
     "slug": "queen-of-wands",
@@ -2131,7 +2131,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Queen of Wands brings radiant confidence, playful warmth, and a partner who makes the relationship feel alive -- or calls you toward a version of yourself more fully expressed.",
     "career": "In career, Queen of Wands marks leadership through inspiration -- someone who draws the best from a team through genuine enthusiasm and the willingness to act as a creative anchor.",
     "health": "For wellbeing, Queen of Wands reflects vitality as a lived practice -- someone who has learned to protect and channel their energy rather than depleting it in every direction.",
-    "imagery": "Queen of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises mastery through embodiment and inner authority."
+    "imagery": "A queen sits between two carved stone lions on a throne decorated with sunflowers, holding a wand in one hand and sunflowers in the other. A black cat rests at her feet. Sunflower motifs appear throughout the image. Her presence is warm, self-assured, and fully inhabiting her own authority."
   },
   {
     "slug": "king-of-wands",
@@ -2144,7 +2144,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, King of Wands brings commanding attention, clear intention, and the challenge of a partner whose vision for life is strong enough to either inspire or overwhelm.",
     "career": "In career, King of Wands marks the fully realised entrepreneurial leader -- someone with a track record, a clear vision, and the capacity to mobilise others toward a larger goal.",
     "health": "For wellbeing, King of Wands reflects mastery of the body's energy -- knowing how to sustain high performance without the burnout cycles that plagued earlier chapters.",
-    "imagery": "King of Wands uses the imagery of wands, sprouting wood, and flames point to drive and life force while the rank emphasises leadership, direction, and mature command."
+    "imagery": "An enthroned king holds his wand upright with the relaxed grip of someone accustomed to its weight. His robes and the throne itself carry salamander and lion imagery. He looks outward with the settled focus of someone who has learned to direct fire rather than be driven by it."
   },
   {
     "slug": "ace-of-cups",
@@ -2157,7 +2157,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Ace of Cups marks new emotional beginnings -- first love, renewed feeling, or the moment a connection becomes genuinely heartfelt rather than just convenient.",
     "career": "In career, Ace of Cups signals work becoming emotionally meaningful again -- a creative opportunity or role aligned with what you genuinely care about.",
     "health": "For wellbeing, Ace of Cups reflects emotional healing becoming available -- the moment when softness and receptivity start replacing guarded or depleted patterns.",
-    "imagery": "Ace of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises beginnings and pure potential."
+    "imagery": "A chalice overflows with five streams of water into a sea of lotus blossoms below. A dove descends from above with a communion host and drops it into the cup. The image holds pure emotional potential -- feeling before it has been shaped or named."
   },
   {
     "slug": "two-of-cups",
@@ -2170,7 +2170,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Two of Cups is the card of genuine mutual feeling -- where both people are equally present, equally choosing, and the energy between them flows both ways.",
     "career": "In career, Two of Cups marks the beginning of a meaningful professional partnership -- where two people's skills and values complement each other in a way that benefits both.",
     "health": "For wellbeing, Two of Cups reflects the healing power of genuine connection -- where a trusted relationship provides emotional balance and the body relaxes into supported calm.",
-    "imagery": "Two of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises choice and balancing forces."
+    "imagery": "A man and woman face each other, each holding a cup. Between them rises the caduceus of Hermes topped with a winged lion's head -- a symbol of accord and mutual alchemy. The image captures recognition between two people at the moment of genuine exchange."
   },
   {
     "slug": "three-of-cups",
@@ -2183,7 +2183,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Three of Cups brings friendship as a foundation for romance -- relationships where genuine joy is mutual and the connection feels expansive rather than exclusive.",
     "career": "In career, Three of Cups signals creative collaboration where the team's combined output exceeds what any individual could produce -- a genuine collective that feeds rather than drains its members.",
     "health": "For wellbeing, Three of Cups reflects the health benefit of social joy -- laughter, ease, and the immune system's response to belonging rather than isolation.",
-    "imagery": "Three of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises collaboration and early growth."
+    "imagery": "Three women dance in a close circle with cups raised above their heads. The ground is rich with fruit and abundance. There is no individual focus in the image -- only collective movement, harvest, and joy expressed through shared presence."
   },
   {
     "slug": "four-of-cups",
@@ -2196,7 +2196,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Four of Cups reflects emotional withdrawal, missed gestures, or a partner so absorbed in their own mood that they cannot receive what is offered.",
     "career": "In career, Four of Cups points to professional dissatisfaction, missed opportunity, or the inability to feel motivated by options that a clearer mind might recognise as worthwhile.",
     "health": "For wellbeing, Four of Cups reflects the lethargy and low motivation that accompany genuine disconnection from one's own life.",
-    "imagery": "Four of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises stability and the need to consolidate."
+    "imagery": "A young man sits beneath a tree with arms crossed, three cups on the ground before him. A hand extended from a cloud offers a fourth cup, but his gaze stays downward and inward. The image captures deliberate withdrawal from what is present and being offered."
   },
   {
     "slug": "five-of-cups",
@@ -2209,7 +2209,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Five of Cups reflects heartbreak, disappointment, or the aftermath of emotional loss -- a time when grief is more present than possibility.",
     "career": "In career, Five of Cups marks professional disappointment -- a project failed, a role lost, a goal not achieved -- where the loss is real and needs genuine acknowledgment before moving forward.",
     "health": "For wellbeing, Five of Cups reflects the physical weight of grief -- where sadness registers in the body as fatigue, appetite changes, or the particular exhaustion of sustained sorrow.",
-    "imagery": "Five of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises friction, challenge, and adjustment."
+    "imagery": "A dark-cloaked figure stands before three spilled cups, head bowed toward the loss. Two cups remain upright directly behind him, unspilled and unnoticed. The image holds grief in its first posture -- full attention fixed on what is gone."
   },
   {
     "slug": "six-of-cups",
@@ -2222,7 +2222,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Six of Cups brings the return of an old connection, the comfort of a relationship built on genuine history, or the bittersweet awareness of what once existed.",
     "career": "In career, Six of Cups can point to returning to earlier work, reconnecting with original career motivations, or benefiting from a professional relationship built long ago.",
     "health": "For wellbeing, Six of Cups reflects healing through reconnection with what once made the body feel genuinely well -- rhythms, practices, or environments from an earlier period.",
-    "imagery": "Six of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises movement, support, and regained rhythm."
+    "imagery": "A boy leans forward to offer a large cup filled with white flowers to a smaller girl in a courtyard surrounded by other flower-filled cups. The light is golden and the scene carries the mood of uncomplicated memory -- familiar, gentle, and unhurried."
   },
   {
     "slug": "seven-of-cups",
@@ -2235,7 +2235,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Seven of Cups reflects fantasised connections, confusion between what is real and what is projected, or difficulty committing when imagination provides endless alternatives.",
     "career": "In career, Seven of Cups points to too many directions, creative overwhelm, or the temptation of shiny opportunities not yet tested against reality.",
     "health": "For wellbeing, Seven of Cups reflects avoidance through distraction -- the way escapism or fantasy can substitute for the grounded, honest engagement the body actually needs.",
-    "imagery": "Seven of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises testing, discernment, and strategy."
+    "imagery": "A silhouetted figure gazes at seven cups floating in clouds, each holding a different vision: a veiled glowing figure, a dragon, a castle, jewels, a wreath, a snake, and a human head. The scene is a landscape of projection and temptation without ground."
   },
   {
     "slug": "eight-of-cups",
@@ -2248,7 +2248,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Eight of Cups marks the quiet turning point -- the realisation that a relationship is not fulfilling something essential, and the growing awareness that staying requires a different quality of honesty.",
     "career": "In career, Eight of Cups signals leaving a role or organisation that no longer holds meaning -- even when the external rewards are intact -- because something more aligned is being sought.",
     "health": "For wellbeing, Eight of Cups reflects deliberate withdrawal from patterns or environments that have been quietly draining vitality -- a retreat made for the sake of restoration.",
-    "imagery": "Eight of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises momentum, skill, and focused repetition."
+    "imagery": "A cloaked traveller ascends a mountain pass at night, moving away from eight cups stacked and arranged in careful rows in the foreground. A waning moon and partial solar eclipse light the sky. The departure is deliberate -- the cups are not broken, only left behind."
   },
   {
     "slug": "nine-of-cups",
@@ -2261,7 +2261,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Nine of Cups reflects emotional fullness -- a relationship where both people feel genuinely happy, cared for, and alive to something they value.",
     "career": "In career, Nine of Cups marks genuine professional satisfaction -- work that delivers on what was hoped for, recognition that feels earned, or a role where creative and practical fulfilment coexist.",
     "health": "For wellbeing, Nine of Cups reflects the body returning to genuine ease -- not performance of wellness but the real felt experience of being physically and emotionally at rest.",
-    "imagery": "Nine of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises culmination, resilience, and hard-won perspective."
+    "imagery": "A well-dressed man sits on a curved wooden bench with arms folded and a clearly satisfied expression. Nine cups are arranged in a neat arc on a shelf behind him. The image is self-contained contentment -- a wish fulfilled and privately acknowledged."
   },
   {
     "slug": "ten-of-cups",
@@ -2274,7 +2274,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Ten of Cups marks relational wholeness -- a partnership that has moved through its tests and arrived somewhere stable, warm, and fully chosen.",
     "career": "In career, Ten of Cups reflects work integrated into a life well-lived -- where the professional and personal are no longer in conflict and the daily rhythm supports something genuinely good.",
     "health": "For wellbeing, Ten of Cups reflects the deeply restorative effect of belonging -- where feeling at home in one's relationships directly supports physical vitality and emotional regulation.",
-    "imagery": "Ten of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises completion, weight, and full consequence."
+    "imagery": "A couple stands with arms raised toward a rainbow formed by ten cups in the sky above. Two children dance in the foreground; a house and rolling green hills fill the background. The image is familial joy made complete -- abundance that includes rather than excludes."
   },
   {
     "slug": "page-of-cups",
@@ -2287,7 +2287,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Page of Cups brings soft, tentative feeling -- the very beginning of romantic awareness, or an emotional message from a connection that hasn't yet been given words.",
     "career": "In career, Page of Cups signals an invitation toward creative or emotionally meaningful work -- a new project or role that asks for both skill and genuine care.",
     "health": "For wellbeing, Page of Cups reflects the importance of emotional acknowledgment -- where physical symptoms are closely tied to feelings that haven't been processed or expressed.",
-    "imagery": "Page of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises curiosity, learning, and a fresh message."
+    "imagery": "A young figure in a flower-patterned tunic stands at the sea's edge holding a cup from which a small fish emerges and appears to look up at them. The figure regards the fish with equal curiosity. The scene suspends an unexpected imaginative moment before it resolves into anything useful or purposeful."
   },
   {
     "slug": "knight-of-cups",
@@ -2300,7 +2300,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Knight of Cups brings romantic pursuit, heartfelt declarations, and attentive emotional presence that feels both flattering and sometimes overwhelming.",
     "career": "In career, Knight of Cups marks the movement toward work that aligns with passion -- following creative or service-oriented instincts rather than career strategy.",
     "health": "For wellbeing, Knight of Cups reflects emotional sensitivity that can both elevate mood and leave the body vulnerable to the physical effects of disappointment or romantic intensity.",
-    "imagery": "Knight of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises motion, pursuit, and committed effort."
+    "imagery": "An armoured knight rides a calm, unhurried horse forward, holding a cup extended before him in the manner of an offering. Fish patterns on his tunic reference water; winged helmet and heels suggest messenger energy. The pace is measured and the mood is attentive rather than urgent."
   },
   {
     "slug": "queen-of-cups",
@@ -2313,7 +2313,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Queen of Cups brings profound emotional attunement -- the rare experience of feeling genuinely seen and held without needing to explain or justify what is felt.",
     "career": "In career, Queen of Cups marks mastery in emotionally demanding roles -- counselling, healing, teaching -- where the work requires both depth of feeling and the stability to hold space for others.",
     "health": "For wellbeing, Queen of Cups reflects the body responding to genuine emotional care -- where tending to the emotional landscape directly improves physical ease.",
-    "imagery": "Queen of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises mastery through embodiment and inner authority."
+    "imagery": "A queen sits on a carved throne at the water's edge, holding a covered ceremonial chalice with both hands and gazing at it with absorbed attention. Her throne base is decorated with water creatures. The image is deep emotional attunement held with composed, receptive authority."
   },
   {
     "slug": "king-of-cups",
@@ -2326,7 +2326,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, King of Cups brings emotional maturity -- a partner who is fully present without losing themselves, whose depth of feeling is matched by stability and genuine care.",
     "career": "In career, King of Cups marks leadership through emotional intelligence -- the manager who keeps teams functioning through upheaval, the mentor who draws out what is best in others.",
     "health": "For wellbeing, King of Cups reflects the resilience that comes from emotional regulation -- where deep self-understanding insulates against the physical toll of suppressed or unmanaged feeling.",
-    "imagery": "King of Cups uses the imagery of chalices, flowing water, and moonlit scenes speak of feeling and intuition while the rank emphasises leadership, direction, and mature command."
+    "imagery": "A king sits on a stone throne set directly in a turbulent open sea, cup in one hand and a short scepter in the other. A fish amulet hangs at his neck; ships and a leaping fish appear in the background. He holds his composure while the water moves around him on all sides."
   },
   {
     "slug": "ace-of-swords",
@@ -2339,7 +2339,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Ace of Swords brings honesty that may be uncomfortable -- a conversation that clears the air, a recognition that cuts through self-deception, or the beginning of a mentally stimulating connection.",
     "career": "In career, Ace of Swords marks a breakthrough -- a new idea with real merit, a decision finally made with clarity, or intellectual force that cuts through a problem no one else has been willing to name directly.",
     "health": "For wellbeing, Ace of Swords reflects a diagnosis named, a pattern finally understood, or the mental clarity that arrives when the body stops being treated as an object and starts being listened to.",
-    "imagery": "Ace of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises beginnings and pure potential."
+    "imagery": "A hand emerges from a cloud gripping a sword upright, its tip crowned with a wreath and falling laurel leaves. A mountainous grey landscape stretches below. The image is the mind sharpened to a single point -- clarity before it encounters anything."
   },
   {
     "slug": "two-of-swords",
@@ -2352,7 +2352,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Two of Swords reflects an emotional standoff -- two people who have both withdrawn behind their defenses, equally unwilling to make the first move toward honest communication.",
     "career": "In career, Two of Swords marks a professional decision where neither option feels clearly right, and the delay itself is becoming an answer that may not serve.",
     "health": "For wellbeing, Two of Swords reflects the mental tension of unresolved health decisions -- where anxiety about the choice creates more strain than either option itself would.",
-    "imagery": "Two of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises choice and balancing forces."
+    "imagery": "A blindfolded woman sits on a stone bench before a dark sea, two crossed swords held level across her chest. A crescent moon hangs in the sky. The posture is deliberate stillness -- a decision held at bay by the refusal to look at what choosing would require."
   },
   {
     "slug": "three-of-swords",
@@ -2365,7 +2365,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Three of Swords marks heartbreak -- the sorrow of betrayal, the ache of separation, or the pain of finally seeing what could not be made to work.",
     "career": "In career, Three of Swords reflects the genuine emotional cost of professional loss -- a termination, a public failure, or a collaboration that ended with hurt feelings not cleanly resolved.",
     "health": "For wellbeing, Three of Swords reflects grief making itself known in the body -- where emotional pain registers as physical heaviness, chest tightness, or the particular exhaustion of sustained sorrow.",
-    "imagery": "Three of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises collaboration and early growth."
+    "imagery": "Three swords pierce a red heart directly, suspended in a grey sky above rain clouds. There is no softening of the image -- the wound is the whole of it. Grief made visible, pain acknowledged without being worked around."
   },
   {
     "slug": "four-of-swords",
@@ -2378,7 +2378,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Four of Swords marks a necessary pause -- where both people step back from pressure or conflict and allow the relationship's underlying connection to reset.",
     "career": "In career, Four of Swords signals strategic withdrawal -- taking a break between intense professional efforts rather than burning out before the next phase begins.",
     "health": "For wellbeing, Four of Swords is one of the clearest health cards -- the body is asking for rest, recovery, and reduced stimulation, and honouring that request is exactly right.",
-    "imagery": "Four of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises stability and the need to consolidate."
+    "imagery": "A knight lies in full armor on a stone tomb in a chapel, hands folded in prayer. Three swords hang parallel on the wall above him; a fourth is mounted on the tomb itself. A stained glass window glows behind. The image is withdrawal from conflict as a practice."
   },
   {
     "slug": "five-of-swords",
@@ -2391,7 +2391,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Five of Swords reflects a pattern of winning arguments at the cost of the relationship -- where the need to be right damages what both people actually value.",
     "career": "In career, Five of Swords marks competition that became damaging -- office politics, undermining behaviour, or achieving a goal through methods difficult to look back on without regret.",
     "health": "For wellbeing, Five of Swords reflects the physical toll of sustained conflict -- where the body holds the residue of repeated stress responses and needs release rather than more battle.",
-    "imagery": "Five of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises friction, challenge, and adjustment."
+    "imagery": "A smirking figure gathers up three swords from the ground while two other figures walk away in dejection on a stormy beach. The victor holds the win clearly -- but the hollow expressions of the retreating figures suggest what kind of victory this actually was."
   },
   {
     "slug": "six-of-swords",
@@ -2404,7 +2404,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Six of Swords marks moving through and beyond difficulty -- a relationship entering a calmer, more stable phase, or the honest leaving of one that was genuinely beyond repair.",
     "career": "In career, Six of Swords signals transition -- a role, field, or environment left behind in favour of something better suited to future development, even if the crossing is uncomfortable.",
     "health": "For wellbeing, Six of Swords reflects gradual improvement following illness, mental health challenge, or exhaustion -- movement in the right direction, not yet arrival.",
-    "imagery": "Six of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises movement, support, and regained rhythm."
+    "imagery": "A ferryman poles a boat across calm water, carrying a cloaked woman and a small child seated among six upright swords. The far shore is calm; the near water still rough. The movement is away from difficulty, assisted, not triumphant."
   },
   {
     "slug": "seven-of-swords",
@@ -2417,7 +2417,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Seven of Swords reflects dishonesty, hidden behaviour, or someone emotionally evasive -- acting alone in ways that undermine the trust the relationship depends on.",
     "career": "In career, Seven of Swords marks strategic cunning -- cutting corners, taking credit without acknowledgment, or acting unilaterally in ways that secure short-term advantage while damaging longer-term trust.",
     "health": "For wellbeing, Seven of Swords reflects avoidance of health realities -- delaying the conversation with the doctor, ignoring the symptom, or managing the surface while something real goes unaddressed.",
-    "imagery": "Seven of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises testing, discernment, and strategy."
+    "imagery": "A man sneaks away from a military encampment carrying five swords under his arm, glancing back with a knowing expression. Two swords remain stuck in the ground behind him. The image is stealth and strategic removal -- success measured by what was avoided."
   },
   {
     "slug": "eight-of-swords",
@@ -2430,7 +2430,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Eight of Swords reflects feeling trapped by a relationship -- where the barrier is more internal than external, maintained by the story told about what is possible.",
     "career": "In career, Eight of Swords marks professional paralysis -- the inability to move toward better options because the mind has constructed an airtight case for staying stuck.",
     "health": "For wellbeing, Eight of Swords reflects anxiety-driven limitation -- where fear or rigid thinking prevents the body from accessing the movement, treatment, or change it actually needs.",
-    "imagery": "Eight of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises momentum, skill, and focused repetition."
+    "imagery": "A woman stands bound and blindfolded in a ring of eight upright swords. Water lies at her feet; a castle sits in the distance. The swords do not touch her. The bind appears complete -- but the path out has not been removed, only unseen from where she stands."
   },
   {
     "slug": "nine-of-swords",
@@ -2443,7 +2443,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Nine of Swords reflects anxiety about a relationship -- whether real problems are magnified by fear, or legitimate concern is driving a spiral of worst-case thinking that prevents clear action.",
     "career": "In career, Nine of Swords marks professional anxiety -- impostor syndrome, fear of exposure, or obsessive mental review of situations that require action rather than further analysis.",
     "health": "For wellbeing, Nine of Swords is a clear signal about mental health -- anxiety, insomnia, or the body's stress response running in the absence of the emergency it was designed for. Rest and professional support are both indicated.",
-    "imagery": "Nine of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises culmination, resilience, and hard-won perspective."
+    "imagery": "A figure sits upright in bed, face buried in both hands, clearly in the grip of night-time anguish. Nine swords hang horizontally on the wall behind. A carved panel on the bedframe shows a figure defeated. The image is the mind tormenting itself in the dark."
   },
   {
     "slug": "ten-of-swords",
@@ -2456,7 +2456,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Ten of Swords marks the painful finality of a relationship ending -- the point where continuing is no longer possible and what remains is only the grief and what comes after.",
     "career": "In career, Ten of Swords marks a complete professional collapse -- a termination, business failure, or reputation event that makes continuing in the current form untenable.",
     "health": "For wellbeing, Ten of Swords reflects a health crisis -- a diagnosis that changes the landscape, a breakdown that forces genuine rest and recalibration, or the point where the body makes the patterns that brought it here impossible to continue.",
-    "imagery": "Ten of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises completion, weight, and full consequence."
+    "imagery": "A figure lies face down on the ground with ten swords planted in their back. A dark sky fills the upper half of the image; a strip of gold light holds the horizon. The collapse is total and witnessed. The gold at the horizon is the only note of after."
   },
   {
     "slug": "page-of-swords",
@@ -2469,7 +2469,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Page of Swords brings careful observation before commitment -- wanting to understand the dynamic fully before emotionally investing, sometimes at the cost of genuine warmth.",
     "career": "In career, Page of Swords signals a sharp, analytically gifted early-career energy -- someone who sees problems quickly, communicates precisely, and is still learning when not to say everything they notice.",
     "health": "For wellbeing, Page of Swords reflects the analytical mind applying itself to health -- researching, monitoring, tracking -- sometimes with useful precision and sometimes with anxiety masquerading as information-gathering.",
-    "imagery": "Page of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises curiosity, learning, and a fresh message."
+    "imagery": "A young figure stands on high ground against a sky of turbulent clouds, holding a sword upright with both hands, scanning the horizon. Wind moves their tunic and hair. The posture is alert and somewhat over-ready -- the sword raised before anything has arrived."
   },
   {
     "slug": "knight-of-swords",
@@ -2482,7 +2482,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Knight of Swords brings directness and intensity -- someone who pursues without ambiguity or who says exactly what they think in a way that is clarifying but occasionally devastating.",
     "career": "In career, Knight of Swords marks fast-moving professional action -- pitching before being ready, pushing past resistance, or cutting through process in ways that get results but leave relationships damaged.",
     "health": "For wellbeing, Knight of Swords reflects the physical consequences of speed -- burnout from driving too hard, injury from pushing through pain signals, or the nervous system cost of chronic high-gear operation.",
-    "imagery": "Knight of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises motion, pursuit, and committed effort."
+    "imagery": "An armored knight charges forward at full gallop on a white horse, sword held out ahead with full extension. The sky is turbulent with racing clouds. Trees bend in the wind. The image is pure forward force -- a decision already made and moving before the thought has finished forming."
   },
   {
     "slug": "queen-of-swords",
@@ -2495,7 +2495,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Queen of Swords brings honesty, independence, and direct emotional presence that is deeply respectful and occasionally bracing -- she does not perform warmth she does not feel.",
     "career": "In career, Queen of Swords marks clear-headed professional authority -- someone who assesses without sentiment, communicates without flinching, and makes the call others avoid because they are not willing to be disliked for it.",
     "health": "For wellbeing, Queen of Swords reflects the clear-eyed approach to health -- understanding what is actually happening in the body, getting real information, and making decisions from fact rather than fear.",
-    "imagery": "Queen of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises mastery through embodiment and inner authority."
+    "imagery": "A queen sits upright on a throne, sword raised vertically in her right hand, her left hand extended palm-outward in what reads as both welcome and warning. Clouds stream behind her and a single bird flies in the distance. Her expression is impartial and clear."
   },
   {
     "slug": "king-of-swords",
@@ -2508,7 +2508,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, King of Swords brings mental clarity and honest communication -- a partner who will not pretend and whose intellectual engagement is a form of deep respect, even when it removes the comfort of ambiguity.",
     "career": "In career, King of Swords marks senior intellectual authority -- the judge, the strategist, the architect of systems -- whose professional reputation rests on the quality and consistency of their reasoning.",
     "health": "For wellbeing, King of Swords reflects the disciplined mind's approach to health -- understanding the mechanisms, applying the appropriate interventions precisely, and maintaining the routine with the consistency of law.",
-    "imagery": "King of Swords uses the imagery of blades, clouds, and strong winds show thought, tension, and clarity while the rank emphasises leadership, direction, and mature command."
+    "imagery": "A king sits squarely on a stone throne, sword held upright with the blade slightly tilted forward -- not raised in threat but angled in active authority. Two birds appear in the sky above. His gaze is direct and without softness. The image is intellect in full command."
   },
   {
     "slug": "ace-of-pentacles",
@@ -2521,7 +2521,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Ace of Pentacles marks a relationship taking root in the real world -- moving from possibility to tangible commitment, shared space, or practical partnership.",
     "career": "In career, Ace of Pentacles signals the beginning of a genuinely viable opportunity -- a job offer, client, grant, or contract -- where real resources are now available to support a direction.",
     "health": "For wellbeing, Ace of Pentacles reflects a practical new health beginning -- a diet, movement practice, or therapeutic relationship that has the material conditions to actually work.",
-    "imagery": "Ace of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises beginnings and pure potential."
+    "imagery": "A hand emerges from a cloud holding a single gold pentacle above a manicured garden archway, beyond which a mountain path stretches away. White lilies bloom in the foreground. The image holds material potential at the exact moment it becomes tangible."
   },
   {
     "slug": "two-of-pentacles",
@@ -2534,7 +2534,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Two of Pentacles reflects the challenge of balancing a relationship against other life priorities -- a partnership that can thrive if both people can manage their mutual demands without one becoming invisible.",
     "career": "In career, Two of Pentacles marks skilled multitasking -- managing multiple projects or income streams with the flexibility to shift priority quickly as conditions change.",
     "health": "For wellbeing, Two of Pentacles reflects the challenge of maintaining health habits when life is genuinely full -- where juggling responsibilities sometimes comes at the body's expense.",
-    "imagery": "Two of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises choice and balancing forces."
+    "imagery": "A young man dances while juggling two pentacles linked by an infinity loop of ribbon. Behind him, two ships ride exaggerated waves on a turbulent sea. The image captures balance in motion -- not stillness but the continuous small adjustments of keeping two things going at once."
   },
   {
     "slug": "three-of-pentacles",
@@ -2547,7 +2547,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Three of Pentacles reflects a relationship built on more than attraction -- where two people actively work together on something shared, and the collaboration itself deepens the bond.",
     "career": "In career, Three of Pentacles marks the recognition and development of genuine skill -- where talent is developed through instruction, practice, and meaningful work within a structure that values craft.",
     "health": "For wellbeing, Three of Pentacles reflects the health benefit of working with professionals -- where the body improves through the right combination of specialist guidance, consistent practice, and real commitment.",
-    "imagery": "Three of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises collaboration and early growth."
+    "imagery": "A young craftsman works on a carved arch in a cathedral while two robed figures -- an architect and a monk -- consult a plan. Three pentacles are carved into the arch above. The image is skill acknowledged and work reviewed by those it is designed to serve."
   },
   {
     "slug": "four-of-pentacles",
@@ -2560,7 +2560,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Four of Pentacles reflects emotional withholding -- someone protecting themselves so thoroughly that genuine intimacy has become impossible, the very act of self-preservation preventing connection.",
     "career": "In career, Four of Pentacles marks a conservative, risk-averse professional stance -- valuable for protecting hard-won gains, potentially limiting when the moment calls for investment and movement.",
     "health": "For wellbeing, Four of Pentacles reflects the body as fortress -- over-controlled, resistant to anything that might disrupt the current equilibrium, even when that equilibrium is itself a form of stagnation.",
-    "imagery": "Four of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises stability and the need to consolidate."
+    "imagery": "A crowned figure sits outside a city gate gripping a large pentacle to his chest, one balanced on his head, and one pinned under each foot. He is not moving. The city is behind him; the open road is in front. The image is holding on so tightly that nothing else can be held."
   },
   {
     "slug": "five-of-pentacles",
@@ -2573,7 +2573,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Five of Pentacles reflects the strain that scarcity puts on a relationship -- financial stress, feeling unsupported, or the difficulty of maintaining emotional warmth when survival anxiety dominates.",
     "career": "In career, Five of Pentacles marks genuine financial or professional hardship -- job loss, business failure, or the experience of being shut out of opportunities available to others.",
     "health": "For wellbeing, Five of Pentacles reflects the health impact of poverty, material stress, or the inability to access the care and resources that wellbeing actually requires.",
-    "imagery": "Five of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises friction, challenge, and adjustment."
+    "imagery": "Two ragged figures pass a lit church window in a snowstorm -- one on crutches, one barefoot in the cold. Five pentacles glow in the stained glass above them. The warmth and assistance are nearby, but neither figure looks up toward it."
   },
   {
     "slug": "six-of-pentacles",
@@ -2586,7 +2586,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Six of Pentacles reflects the generosity that sustains a healthy relationship -- or the imbalance where one person consistently gives and the other receives without reciprocity.",
     "career": "In career, Six of Pentacles marks the exchange of resources or skills in a way that genuinely benefits both parties -- fair compensation, mentorship, or professional generosity with real mutual return.",
     "health": "For wellbeing, Six of Pentacles reflects the health benefits of balanced exchange -- where giving and receiving care are in proportion and the body is not consistently depleted in service of others.",
-    "imagery": "Six of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises movement, support, and regained rhythm."
+    "imagery": "A merchant in fine robes holds a scale in one hand and distributes coins with the other to two kneeling figures below. The scale is balanced. The image holds the dynamics of giving and receiving made visible -- who holds the resources and under what conditions they move."
   },
   {
     "slug": "seven-of-pentacles",
@@ -2599,7 +2599,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Seven of Pentacles reflects patient tending -- a relationship whose best qualities are still developing, where the commitment to cultivate rather than abandon determines the outcome.",
     "career": "In career, Seven of Pentacles marks the long-game professional -- someone who has invested significantly in a direction and is now in the difficult middle period, waiting for the return that patient effort earns.",
     "health": "For wellbeing, Seven of Pentacles reflects the discipline of a sustained health practice -- where the results are not yet dramatic but the consistent effort is compounding into something real.",
-    "imagery": "Seven of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises testing, discernment, and strategy."
+    "imagery": "A young man leans on a hoe and looks at a vine from which six pentacles grow, with a seventh at his feet. His posture is resting assessment -- he has worked and is now reading what the work has produced, weighing what comes next."
   },
   {
     "slug": "eight-of-pentacles",
@@ -2612,7 +2612,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Eight of Pentacles reflects the patient, unglamorous work of sustaining a relationship -- showing up consistently, communicating carefully, and getting better at the practice of loving this specific person.",
     "career": "In career, Eight of Pentacles marks the development of genuine professional skill through focused, repetitive practice -- the willingness to do the unglamorous work that produces expertise over time.",
     "health": "For wellbeing, Eight of Pentacles reflects the health benefits of consistent, focused practice -- where diligence applied to movement, nutrition, or therapeutic work produces measurable improvement.",
-    "imagery": "Eight of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises momentum, skill, and focused repetition."
+    "imagery": "A craftsman sits at a workbench chiseling a pentacle with complete absorption. Six completed pentacles hang on the post beside him; one lies at his feet. A town is visible in the distance. The image is skilled repetition for its own sake -- mastery built through return rather than inspiration."
   },
   {
     "slug": "nine-of-pentacles",
@@ -2625,7 +2625,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Nine of Pentacles reflects a person who is genuinely complete without a partner -- bringing that self-sufficiency to a relationship as confidence rather than need, or finding independence more comfortable than compromise.",
     "career": "In career, Nine of Pentacles marks earned financial independence -- the freelancer with a full client roster, the professional whose reputation generates its own momentum.",
     "health": "For wellbeing, Nine of Pentacles reflects the body at its best expression of earned health -- where sustained investment in movement, nutrition, and self-care has produced a visible, felt quality of physical life.",
-    "imagery": "Nine of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises culmination, resilience, and hard-won perspective."
+    "imagery": "A elegantly dressed woman stands alone in a lush vineyard, eight pentacles visible among the vines and one at her feet. A hooded falcon rests on her gloved hand. A garden snail is near her feet. The image is self-sufficient abundance, privately held and genuinely cultivated."
   },
   {
     "slug": "ten-of-pentacles",
@@ -2638,7 +2638,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Ten of Pentacles marks the relational equivalent of legacy -- a partnership that has built something together that could outlast them both: a home, a family, a shared life that has become something real.",
     "career": "In career, Ten of Pentacles marks the full fruition of a professional life -- the business handed to a successor, the career that produced lasting work, the institution built for the next generation.",
     "health": "For wellbeing, Ten of Pentacles reflects generational patterns of health -- where what the body carries has been inherited, and the habit of caring for oneself is something modelled and passed forward.",
-    "imagery": "Ten of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises completion, weight, and full consequence."
+    "imagery": "An old man in a patterned robe sits within a stone archway as a couple and child pass in the background and two dogs attend him in the foreground. Ten pentacles are arranged in the Tree of Life pattern across the image. The scene is established wealth across generations -- legacy made physical and inhabited."
   },
   {
     "slug": "page-of-pentacles",
@@ -2651,7 +2651,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Page of Pentacles brings practical, grounded care -- the partner who remembers details, who shows up reliably, who builds something concrete rather than only expressing feeling.",
     "career": "In career, Page of Pentacles signals the beginning of serious professional development -- the student or intern who is genuinely interested in the material and willing to do the foundational work.",
     "health": "For wellbeing, Page of Pentacles reflects beginning a new health practice with genuine curiosity -- researching, investing in the right resources, and starting the slow process of building something sustainable.",
-    "imagery": "Page of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises curiosity, learning, and a fresh message."
+    "imagery": "A young figure stands alone in a flowering meadow holding a single pentacle aloft with both hands, gazing at it with focused concentration. A ploughed field and trees fill the background. The image is studious attention given to a material possibility before it has been acted on."
   },
   {
     "slug": "knight-of-pentacles",
@@ -2664,7 +2664,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Knight of Pentacles brings steadfast presence -- showing up, keeping promises, building trust through consistency rather than grand gestures, providing the kind of safety that comes from being genuinely reliable.",
     "career": "In career, Knight of Pentacles marks the professional known for thorough work and reliable delivery -- not the flashiest performer, but the one the organisation depends on to get the unglamorous work done correctly.",
     "health": "For wellbeing, Knight of Pentacles reflects the health approach most likely to produce lasting results -- consistent, methodical, undramatic -- where the commitment to the routine outlasts the motivation that started it.",
-    "imagery": "Knight of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises motion, pursuit, and committed effort."
+    "imagery": "An armored knight sits motionless on a large, heavy horse in a ploughed field, holding a pentacle level before him and gazing at it steadily. Unlike the other knights, he is entirely still. The image is deliberate non-movement -- the patience of someone who will not be rushed into doing the thing wrong."
   },
   {
     "slug": "queen-of-pentacles",
@@ -2677,7 +2677,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, Queen of Pentacles brings practical, embodied warmth -- a partner who shows love through feeding, tending, and creating comfort, whose care is expressed more through action than declaration.",
     "career": "In career, Queen of Pentacles marks the professional who has integrated material success and personal warmth -- where financial acumen is matched by real care for the people involved.",
     "health": "For wellbeing, Queen of Pentacles reflects a grounded, body-positive approach to health -- where the earth, food, movement, and sensory experience are treated as medicine rather than pleasure to be rationed.",
-    "imagery": "Queen of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises mastery through embodiment and inner authority."
+    "imagery": "A queen sits on an elaborately carved throne with a pentacle in her lap, surrounded by flowering vines, fruit, and animals. A rabbit runs at the lower corner. She looks down at the pentacle with warm attention. The image is abundance that is tended rather than hoarded -- the practical care that makes things grow."
   },
   {
     "slug": "king-of-pentacles",
@@ -2690,7 +2690,7 @@ def _build_cards() -> list[dict[str, Any]]:
     "love": "In love, King of Pentacles brings security and stability -- a partner whose reliability is genuinely stabilising, providing the material conditions in which a relationship can grow without existential anxiety.",
     "career": "In career, King of Pentacles marks the full expression of financial and professional mastery -- the CEO, the investor, the builder of institutions whose authority comes from a track record that speaks for itself.",
     "health": "For wellbeing, King of Pentacles reflects financial and practical stability as a direct health resource -- where having enough means the body can be properly cared for, adequately rested, and treated as an asset rather than merely a tool.",
-    "imagery": "King of Pentacles uses the imagery of coins, gardens, and architecture point to growth in the physical world while the rank emphasises leadership, direction, and mature command."
+    "imagery": "A king sits heavily on a vine-covered throne, a pentacle resting in one hand and a scepter in the other. Bulls' heads and vines decorate his throne. Towers and gardens fill the background. His expression is settled and undemonstrative. The image is material mastery so complete it no longer needs to announce itself."
   }
 ]""")
 
