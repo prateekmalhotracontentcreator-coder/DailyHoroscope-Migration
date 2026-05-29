@@ -8,9 +8,10 @@
 ## 1. Your Role in the New Thread
 
 You are the **Tarot thread**. Your scope is:
-- Integrate TAR-SEO-1 (199-page programmatic Tarot SEO module) into production
-- Activate TAR-SEO-2 (content rewrite of `tarot_seo_data.py`) once TAR-SEO-1 is live
-- Handle any ECHO/PACE content quality passes on Tarot SEO pages
+- ~~Integrate TAR-SEO-1~~ ✅ DONE (`8f36fc8`) -- 199 pages live
+- ~~Activate TAR-SEO-2~~ ✅ DONE (`b0dfdd4`) -- content rewritten
+- ~~ECHO/PACE quality gate~~ ✅ CLEARED 2026-05-30 -- strict L1-L3 + Layer G 15/15 PASS
+- **Issue TAR-SEO-3** (4,621 card×spread combination pages) -- brief at `Codex_Deliveries/Tarot/CODEX_COMMISSION_TAR_SEO_3_COMBINATIONS.md`
 - Own all future Tarot feature or SEO commissions
 
 **You do NOT own:** KE, SEO 20K, Book Decode, Strategist/LK, or any other module.

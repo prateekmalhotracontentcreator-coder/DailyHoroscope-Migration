@@ -44,7 +44,7 @@ KP Oracle · Kundali · Longevity · Punya Rewards · Self-Healing Center (SHC) 
 | Punya Rewards | 🟡 PARTIAL -- missing action code | Fix PUN-OP-1 |
 | Self-Healing Center | 🟡 PARTIAL -- env vars + admin UI | SHC-OPS-1 Render env vars |
 | Lumina | 🟡 PARTIAL -- write-path + spec drift | TT scope confirmation |
-| Lo Shu Grid | 🟠 LOCAL DELIVERY -- not integrated | TT integrate from `Codex_Deliveries/Lo_Shu_Grid/` |
+| Lo Shu Grid | ✅ LIVE -- LSG-1 + LSG-2 integrated 2026-05-30 | No action needed |
 | Angel Numbers | 🟡 PARTIAL -- Mongo stale | Run re-seed scripts |
 | Numerology | 🟡 PARTIAL -- payload + CTA drift | Codex fix or CC fix |
 | Individual Reports | 🟡 PARTIAL -- IR-5 smoke pending | TT smoke test |
@@ -168,44 +168,30 @@ The **backend is fully live** at `/api/lagna-kundali`. Frontend is the only miss
 
 ---
 
-## 10. MODULE: Lo Shu Grid -- PRIORITY: HIGH
+## 10. MODULE: Lo Shu Grid -- ✅ LIVE
 
-### Status: 🟠 LOCAL DELIVERY -- Not yet integrated
+### Status: ✅ INTEGRATED + LIVE (2026-05-30)
 
-Delivered locally. Build-verified. Not merged to `main`.
+LSG-1 (prerequisite) and LSG-2 (expansion) are both live. **No integration action needed.**
 
-**Delivered files (check `Codex_Deliveries/Lo_Shu_Grid/`):**
-- Backend router (Lo Shu Grid calculation)
-- 4 public frontend pages
-- Seed script for Mongo
-- `sitemap.xml` additions
-- `vercel.json` additions
+| Commission | Status | What's live |
+|---|---|---|
+| LSG-1 | ✅ INTEGRATED | Hub + calculator + 9 missing number + 8 arrow pages |
+| LSG-2 | ✅ INTEGRATED 2026-05-30 | 9 number deep-dive + 20 problem + 9 personal year pages |
 
-### Integration Steps (TT)
-1. Copy backend router file to `backend/` and register in `server.py`
-2. Copy 4 frontend page files to `frontend/src/pages/`
-3. Add routes to `frontend/src/App.js`
-4. Update `sitemap.xml` and `vercel.json`
-5. Run build: `CI=true DISABLE_ESLINT_PLUGIN=true npx craco build`
-6. Commit and push → wait for deploy
-7. Run seed script on Render if Mongo collections need seeding
-8. **Run ECHO/PACE scanner immediately** (blocking gate -- scanner replaces admin panel):
+**Live routes (all confirmed 200):**
+`/lo-shu-grid` · `/lo-shu-grid/calculator` · `/lo-shu-grid/missing-:n` · `/lo-shu-grid/arrow/:slug` · `/lo-shu-grid/number/:n` · `/lo-shu-grid/for/:problem` · `/lo-shu-grid/personal-year/:n`
 
-```bash
-# Layers 1-3 (no key needed):
-python3 tests/echo_pace_lsg_scan.py
+**66-URL sitemap live** at `GET /api/seo/sitemap/lo-shu-grid`. MongoDB seeded (live DB data confirmed).
 
-# All 4 layers including Google duplication:
-SERPER_API_KEY=your_key python3 tests/echo_pace_lsg_scan.py
-```
+**ECHO/PACE status:** L1-L3 PASS + Layer G 0/10 Serper hits (WATCH-1 classical associations clean). Scanner at `tests/echo_pace_lsg_scan.py` covers all 4 page types.
 
-**⚠️ KNOWN ISSUE -- First Run Will Show BLOCKED:**
-Combination pages (36 pairs) are currently BLOCKED -- 45 pairs ≥ 70% cosine similarity. This is because combination pages are constructed by concatenating two number-page bodies, so any pair sharing a common number is near-identical. **The Operations thread must fix this before LSG-1 goes live:**
-- Each combination page needs unique synthesising prose (not just concatenation)
-- Raise as a Codex fix commission or write the unique content directly in `lo_shu_router.py`
-- Re-run scanner after fix: `python3 tests/echo_pace_lsg_scan.py`
+### Open Items
 
-**WATCH-1 risk:** Classical associations content (element/direction/colour/body_area) is widely shared across numerology sites. Layer G (Google duplication) will specifically check these fields. If any sample phrase is BLOCKED, humanise those fields in `NUMBER_CLASSICAL_ASSOCIATIONS` before going live.
+| # | Item | Priority |
+|---|---|---|
+| LSG-OP-1 | Confirm Action arrow `2,7,6` vs `8,7,6` assumption | 🟠 MED |
+| LSG-OP-4 | Scanner note: if problem/personal-year content fields are updated post-live, re-run scanner first | 🟡 MED |
 
 ---
 
@@ -401,8 +387,8 @@ Steps:
 
 ### Week 1 -- Quick Wins and Blockers
 
-1. **Commission table already updated** -- KP-Sprint2 and KP-2B corrected to ✅ INTEGRATED (`20d4d29` + `20f7b83`) by main thread 2026-05-29
-2. **Lo Shu Grid (LSG-1)** -- Integrate → deploy → ECHO/PACE scan → fix if needed (TT, 60-90 min total)
+1. ~~**Commission table updated**~~ ✅ DONE 2026-05-29
+2. ~~**Lo Shu Grid (LSG-1/2)**~~ ✅ DONE 2026-05-30 -- all 66 URLs live, smoke tested
 3. **Angel Numbers re-seed** -- Run `seed_angel_numbers_core.py` + `seed_angel_numbers_intents.py` on Render (TT, 10 min)
 4. **KP acceptance** -- Verify KP-Sprint2 (KP-OP-12) + KP-2B (KP-OP-13) on production
 5. **Live TV scope** -- Remove `LiveTVPanel` from Panchang page (LTV-SCOPE-1, CC fix, 15 min)

@@ -129,8 +129,9 @@
 | Commission ID | Commission Name | Status | Brief File | Notes |
 |---|---|---|---|---|
 | **TAR-v4** | Tarot UI v4 Enhancement (hero, starfield, 5-tab shell, streaks) | ✅ INTEGRATED (QA 2026-05-27) | `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` | Live at `/tarot`. All 5 tabs confirmed: Daily Draw, Spreads, Favorable Periods, Journal, History. |
-| **TAR-SEO-1** | Tarot SEO module: hub + 199 programmatic pages + sitemap | 🟠 LOCAL DELIVERY -- TT to integrate | `Tarot/CODEX_COMMISSION_TAR_SEO_1.md` | Build-verified locally. Not merged/deployed. **TT action required.** |
-| **TAR-SEO-2** | Tarot SEO content rewrite (`tarot_seo_data.py`) | 🟡 BLOCKED on TAR-SEO-1 | `Tarot/CODEX_COMMISSION_TAR_SEO_2_REWRITE.md` | Local rewrite ready. Has no production effect until TAR-SEO-1 is integrated. |
+| **TAR-SEO-1** | Tarot SEO module: hub + 199 programmatic pages + sitemap | ✅ INTEGRATED commit `8f36fc8` | `Tarot/CODEX_COMMISSION_TAR_SEO_1.md` | 4 routes live at `/tarot/spreads`, `/tarot/spread/:slug`, `/tarot/card/:slug`, `/tarot/for/:slug`. Pages in `frontend/src/pages/tarot-seo/`. ECHO/PACE strict full pass (L1-L3 + Layer G 15/15 PASS). |
+| **TAR-SEO-2** | Tarot SEO content rewrite (`tarot_seo_data.py`) | ✅ INTEGRATED commit `b0dfdd4` | `Tarot/CODEX_COMMISSION_TAR_SEO_2_REWRITE.md` | 100 spread + 78 card fields rewritten. Module QA-CLEARED 2026-05-30 (Tarot TRACKER v1.9). |
+| **TAR-SEO-3** | Tarot SEO Phase 2: 4,621 card×spread combination pages | 🟣 READY TO ISSUE | `Tarot/CODEX_COMMISSION_TAR_SEO_3_COMBINATIONS.md` | Brief complete (ECHO/PACE content rules built in). 78 cards × 60 spreads = 4,620 pages + card hub. Issue when TAR-SEO-1/2 fully bedded in. |
 
 ---
 
@@ -246,7 +247,8 @@
 
 | Commission ID | Commission Name | Status | Notes |
 |---|---|---|---|
-| **LSG-1** | Lo Shu Grid backend + 4 public frontend pages + sitemap | 🟠 LOCAL DELIVERY -- not integrated | Delivered locally. Backend router + 4 pages + seed script + sitemap/vercel.json additions. **TT to integrate.** |
+| **LSG-1** | Lo Shu Grid backend + hub + calculator + 9 missing number + 8 arrow pages | ✅ INTEGRATED (prerequisite) | Live. LSG-2 built on top of this. |
+| **LSG-2** | Lo Shu Grid Expansion: 9 number + 20 problem + 9 personal year pages (38 new URLs) | ✅ INTEGRATED + LIVE 2026-05-30 | All 7 route patterns smoke-tested. MongoDB seeded. 66-URL sitemap active. ECHO/PACE L1-L3 + Layer G (0/10 Serper hits, WATCH-1 clean). LSG-OP-4: scanner extended to cover all page types. |
 
 ---
 
@@ -301,10 +303,10 @@
 | ✅ DONE | CRY-1/CRY-2 | Crystal Healing | Full Crystal Healing module | ✅ LIVE (QA 2026-05-27) |
 | ✅ DONE | PALM-1 | Palmistry | Full Palmistry analysis + persistence | ✅ LIVE (QA 2026-05-27). Content drift open (medium). |
 | ✅ DONE | KP-Sprint2 | KP Oracle | /ask-question LLM Router (Guna + Gita) | ✅ INTEGRATED `20d4d29`. KP-OP-12: TT production verify pending. |
-| 🔴 HIGH | TAR-SEO-1 | Tarot | Tarot SEO module (199 programmatic pages) | 🟠 LOCAL DELIVERY -- TT to integrate |
+| ✅ DONE | TAR-SEO-1/2 | Tarot | Tarot SEO module (199 pages) + content rewrite | ✅ INTEGRATED + QA-CLEARED 2026-05-30. TAR-SEO-3 brief ready (4,621 combo pages). |
 | ✅ DONE | KE-DEDUP-1 | Knowledge Engine | Dedup script + contradiction detection | ✅ INTEGRATED 2026-05-29. 1/1 tests pass. |
 | ✅ DONE | KP-2B | KP Oracle | Ritual Animation + 3-Pillar UX + Astro-Filter | ✅ INTEGRATED `20f7b83`. KP-OP-13: TT production verify pending. |
-| 🟠 HIGH | LSG-1 | Lo Shu Grid | Full Lo Shu Grid module | 🟠 LOCAL DELIVERY -- TT to integrate |
+| ✅ DONE | LSG-1/2 | Lo Shu Grid | Full Lo Shu Grid (57 URLs → 66 URLs with LSG-2) | ✅ INTEGRATED + LIVE 2026-05-30. Smoke tested, MongoDB seeded, ECHO/PACE cleared. |
 | 🟡 MED | LON-1 | Longevity | Ayur Jyotish Longevity Report | 🟡 PARTIAL -- LON-OP-2 (46s latency) + LON-OP-1 (save/history) open |
 | 🟡 MED | PUN-2 | Punya Rewards | Home Promo + Module Hooks + SVG Wheel | 🟡 PARTIAL -- PUN-OP-1 (IR action code) open |
 | 🟡 MED | ANGEL-1/2 | Angel Numbers | Full Angel Numbers + ANGEL-2 content rewrite | 🟡 PARTIAL -- ANGEL-2 re-seed required in Mongo |
@@ -382,7 +384,7 @@ PARKING LOT (Phase 2/3 -- hold):
 |---|---|---|---|---|---|---|
 | 1 | LON-OP-2 | Longevity | Preview generation ~46s (target <10s) | 🟠 High | TT + CC | ⬜ |
 | 2 | LON-OP-1 | Longevity | Save/history/detail path not fully verified | 🔶 Med | TT | ⬜ |
-| 3 | TAR-SEO-INT | Tarot SEO | TAR-SEO-1 local delivery not merged/deployed | 🟠 High | TT | ⬜ |
+| ~~3~~ | ~~TAR-SEO-INT~~ | ~~Tarot SEO~~ | ~~TAR-SEO-1 local delivery not merged/deployed~~ | ✅ Resolved | -- | ✅ |
 | 4 | M3-FIX-1 | SEO | Festival-region summary variation fix -- local only | 🟠 High | TT + CC | ⬜ |
 | 5 | REM-OP-1 | Remedies | `/api/remedies/ref/` fails -- 0 approved KP records | 🟠 High | TT | ⬜ |
 | 6 | REM-OP-2 | Remedies | `/api/remedies/suggest` returns empty for public input | 🟠 High | TT + CC | ⬜ |

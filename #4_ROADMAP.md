@@ -54,7 +54,7 @@
 
 ---
 
-## PART B -- Active Codex Commission Plan (2026-05-29)
+## PART B -- Active Codex Commission Plan (2026-05-30)
 
 ### Threads Currently Active
 
@@ -68,15 +68,16 @@
 |---|---|---|
 | ~~KE-DEDUP-CONTRADICTION-1~~ | Knowledge Engine | ✅ INTEGRATED 2026-05-29 -- `backend/ke_dedup_script.py` live, 1/1 tests pass |
 | KUN-1 | Kundali | Frontend only, backend live |
-| LK-1 | Lal Kitab | After TT batch approval of `jyotish_lk_remedies` |
+| ~~LK-1~~ | ~~Lal Kitab~~ | ✅ ALREADY LIVE -- built in A2 session 2026-05-09 to 2026-05-13. LK-OP-8 TT acceptance verify open. |
 | PAN-L1 | Panchang | Language/regional pages -- independent |
+| TAR-SEO-3 | Tarot | 4,621 card×spread combo pages -- brief ready at `Codex_Deliveries/Tarot/CODEX_COMMISSION_TAR_SEO_3_COMBINATIONS.md` |
 
 ### TT Integration Actions (no Codex needed)
 
 | Item | Source | Priority |
 |---|---|---|
-| TAR-SEO-1 integration | `Codex_Deliveries/Tarot/` | 🔴 HIGH |
-| LSG-1 (Lo Shu Grid) integration | `Codex_Deliveries/Lo_Shu_Grid/` | 🟠 HIGH |
+| ~~TAR-SEO-1 integration~~ | ✅ DONE 2026-05-30 -- commit `8f36fc8` | ✅ |
+| ~~LSG-1/2 (Lo Shu Grid) integration~~ | ✅ DONE 2026-05-30 -- all 66 URLs live | ✅ |
 
 ### Issue After KP-Sprint2 Delivers
 
@@ -147,7 +148,7 @@
 | **KP-Sprint2 delivery + integration** | ~Next 2 weeks | Chase Codex delivery, integrate, verify on Render |
 | **KE 3-book last-mile done** | ~3 CC sessions | Phaladeepika II + BPHS Q3+ + KP longevity pass |
 | ~~**KE-DEDUP-1 issued**~~ | ✅ DONE 2026-05-29 | `ke_dedup_script.py` integrated, 1/1 tests pass |
-| **TAR-SEO-1 + LSG-1 integrated** | This work week | TT integration actions |
+| ~~**TAR-SEO-1 + LSG-1/2 integrated**~~ | ✅ DONE 2026-05-30 | TAR-SEO-1/2 QA-cleared (199 pages). LSG-2 live (66 URLs, smoke tested). |
 | **10 QA gaps closed (High priority)** | This work week | See `#5_CODEX_COMMISSION_TABLE.md` GAP REGISTER |
 | **Play Store Phase 1B readiness** | After Razorpay live keys | Full E2E journey QA + Lighthouse + Sentry |
 
