@@ -81,6 +81,9 @@ try:
         NUMBER_DEEP_DIVE_BLUEPRINTS,
         NUMBER_PAGE_TITLES,
         NUMBER_REFERENCE,
+        PERSONAL_YEAR_BLUEPRINTS,
+        PROBLEM_AREA_BLUEPRINTS,
+        PROBLEM_PAGE_ORDER,
     )
 except ImportError as exc:
     sys.exit(f"ERROR: Cannot import lo_shu_router -- {exc}\nRun from repo root.")
@@ -181,6 +184,39 @@ def _classical_body(n: int) -> str:
         nr.get("day", ""),
     ]
     return " ".join(filter(None, parts))
+
+def _problem_page_body(slug: str) -> str:
+    """Construct body text for a problem-area page."""
+    bp = PROBLEM_AREA_BLUEPRINTS.get(slug, {})
+    parts = []
+    for f in ("intro", "grid_diagnostic", "missing_number_fix"):
+        v = bp.get(f, "")
+        if v:
+            parts.append(v)
+    for remedy in bp.get("remedies", []):
+        parts.append(remedy)
+    aff = bp.get("affirmation", "")
+    if aff:
+        parts.append(aff)
+    return " ".join(filter(None, parts))
+
+
+def _personal_year_page_body(n: int) -> str:
+    """Construct body text for a personal-year page."""
+    bp = PERSONAL_YEAR_BLUEPRINTS.get(n, {})
+    parts = []
+    for f in ("intro", "year_theme", "monthly_note"):
+        v = bp.get(f, "")
+        if v:
+            parts.append(v)
+    for item in bp.get("opportunities", []):
+        parts.append(item)
+    for item in bp.get("cautions", []):
+        parts.append(item)
+    for remedy in bp.get("remedies", []):
+        parts.append(remedy)
+    return " ".join(filter(None, parts))
+
 
 def _combo_page_body(n1: int, n2: int) -> str:
     """Construct body for a combination page (two numbers).
@@ -416,12 +452,12 @@ def main() -> int:
 
     print("=" * 60)
     print("ECHO/PACE SCANNER -- Lo Shu Grid SEO Module")
-    print("Number pages: 9  |  Combination pairs: 36  |  Classical fields: 9")
+    print("Number pages: 9  |  Combination pairs: 36  |  Problem pages: 20  |  Personal year pages: 9  |  Classical fields: 9")
     if not serper_key:
         print("⚠️   Serper key not set -- Layer G will be skipped.")
         print("    Key name in Render: Serper_Default_key")
         print("    Serper_Default_key=your_key python3 tests/echo_pace_lsg_scan.py")
-        print("    Layer G uses ~4 Serper credits (2 samples + 2 classical samples).")
+        print("    Layer G uses ~6 Serper credits (2 blueprint + 2 classical + 1 problem + 1 personal-year samples).")
         print("    Only run Layer G once Layers 1-3 are fully clean (0 BLOCKED).")
     print("=" * 60)
 
@@ -450,6 +486,32 @@ def main() -> int:
     report["combination_pages"] = {"L1": c1, "L2": c2, "L3": c3}
     all_statuses += [c1_st, c2_st]
 
+    # ── Problem pages (20 slugs) ───────────────────────────────────────────────
+    prob_slugs = PROBLEM_PAGE_ORDER
+    prob_docs  = [_problem_page_body(s) for s in prob_slugs]
+    prob_names = [s for s in prob_slugs]
+    prob_titles = [
+        f"lo shu grid {s.replace('-', ' ')} problem solution"
+        for s in prob_slugs
+    ]
+
+    p1_st, p1 = layer1(prob_docs, prob_names, "Problem Pages (20 slugs)")
+    p2_st, p2 = layer2(prob_docs, "Problem Pages")
+    p3_st, p3 = layer3(prob_titles, "Problem Pages")
+    report["problem_pages"] = {"L1": p1, "L2": p2, "L3": p3}
+    all_statuses += [p1_st, p2_st]
+
+    # ── Personal year pages (9) ────────────────────────────────────────────────
+    py_docs   = [_personal_year_page_body(n) for n in numbers]
+    py_names  = [f"PY{n}" for n in numbers]
+    py_titles = [f"personal year {n} lo shu numerology meaning" for n in numbers]
+
+    y1_st, y1 = layer1(py_docs, py_names, "Personal Year Pages (1-9)")
+    y2_st, y2 = layer2(py_docs, "Personal Year Pages")
+    y3_st, y3 = layer3(py_titles, "Personal Year Pages")
+    report["personal_year_pages"] = {"L1": y1, "L2": y2, "L3": y3}
+    all_statuses += [y1_st, y2_st]
+
     # ── Layer G ── only runs if L1-L3 are clean (quota protection) ──────────────
     l123_blocked = "BLOCKED" in all_statuses
     print(f"\n{'─'*60}")
@@ -463,7 +525,7 @@ def main() -> int:
         print("  Saves Serper quota -- no point running Google check on broken content.")
         report["layer_g"] = "SKIPPED_L123_BLOCKED"
     else:
-        print(f"LAYER G · Running (approx 4 Serper credits)")
+        print(f"LAYER G · Running (approx 6 Serper credits)")
         print(f"{'─'*60}")
         bg_st, bg = layer_google(
             [(str(n), _number_page_body(n)) for n in numbers],
@@ -471,8 +533,19 @@ def main() -> int:
         cg_st, cg = layer_google(
             [(str(n), _classical_body(n)) for n in numbers],
             "Classical Associations WATCH-1", serper_key, sample=2)
-        report["layer_g"] = {"blueprint_prose": bg, "classical_watch1": cg}
-        all_statuses += [bg_st, cg_st]
+        pg_st, pg = layer_google(
+            [(s, _problem_page_body(s)) for s in prob_slugs],
+            "Problem Pages", serper_key, sample=1)
+        yg_st, yg = layer_google(
+            [(f"PY{n}", _personal_year_page_body(n)) for n in numbers],
+            "Personal Year Pages", serper_key, sample=1)
+        report["layer_g"] = {
+            "blueprint_prose": bg,
+            "classical_watch1": cg,
+            "problem_pages": pg,
+            "personal_year_pages": yg,
+        }
+        all_statuses += [bg_st, cg_st, pg_st, yg_st]
 
         if cg_st in ("BLOCKED", "WATCH"):
             print()
@@ -484,11 +557,15 @@ def main() -> int:
     print(f"\n{'='*60}")
     print("FINAL SUMMARY")
     print(f"{'='*60}")
-    print(f"  Number pages    L1:{n1_st:8} L2:{n2_st:8} L3:{n3_st:8}")
-    print(f"  Combo pages     L1:{c1_st:8} L2:{c2_st:8} L3:{c3_st:8}")
+    print(f"  Number pages       L1:{n1_st:8} L2:{n2_st:8} L3:{n3_st:8}")
+    print(f"  Combo pages        L1:{c1_st:8} L2:{c2_st:8} L3:{c3_st:8}")
+    print(f"  Problem pages      L1:{p1_st:8} L2:{p2_st:8} L3:{p3_st:8}")
+    print(f"  Personal year pgs  L1:{y1_st:8} L2:{y2_st:8} L3:{y3_st:8}")
     if serper_key and not l123_blocked:
-        print(f"  Layer G (blueprint):   {bg_st}")
+        print(f"  Layer G (blueprint):        {bg_st}")
         print(f"  Layer G (WATCH-1 classical): {cg_st}")
+        print(f"  Layer G (problem pages):    {pg_st}")
+        print(f"  Layer G (personal year):    {yg_st}")
     elif l123_blocked:
         print(f"  Layer G    SKIPPED -- fix BLOCKED items first")
     else:
@@ -500,7 +577,7 @@ def main() -> int:
     elif "FLAGGED" in active:
         verdict = "⚠️   FLAGGED -- Review flagged items, then confirm with TT before going live."
     else:
-        verdict = "✅  PASS -- All layers clear. LSG-1 safe to integrate."
+        verdict = "✅  PASS -- All layers clear. LSG-2 safe to integrate."
 
     print(f"\n  VERDICT: {verdict}")
     report["verdict"] = verdict
@@ -509,7 +586,7 @@ def main() -> int:
         json.dump(report, fh, indent=2)
     print(f"  Report saved: {args.output}")
     print()
-    print("NEXT STEP: Share full output with TT for sign-off before pushing LSG-1 to main.")
+    print("NEXT STEP: Share full output with TT for sign-off before pushing LSG-2 to main.")
     print("If Layer G shows WATCH-1 classical associations are duplicated:")
     print("  → Humanise NUMBER_CLASSICAL_ASSOCIATIONS fields and re-run this script.")
 
