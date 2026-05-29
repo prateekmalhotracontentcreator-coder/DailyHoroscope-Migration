@@ -159,6 +159,13 @@ const KundaliReportsCategoryPage = lazy(() => import('./pages/reports/category/K
 const NumerologyReportsCategoryPage = lazy(() => import('./pages/reports/category/NumerologyReportsPage').then(m => ({ default: m.NumerologyReportsPage })));
 const LoveReportsCategoryPage = lazy(() => import('./pages/reports/category/LoveReportsPage').then(m => ({ default: m.LoveReportsPage })));
 const CareerReportsCategoryPage = lazy(() => import('./pages/reports/category/CareerReportsPage').then(m => ({ default: m.CareerReportsPage })));
+const LoShuHubPage = lazy(() => import('./pages/lo_shu_grid/LoShuHubPage'));
+const LoShuCalculatorPage = lazy(() => import('./pages/lo_shu_grid/LoShuCalculatorPage'));
+const LoShuMissingNumberPage = lazy(() => import('./pages/lo_shu_grid/LoShuMissingNumberPage'));
+const LoShuArrowPage = lazy(() => import('./pages/lo_shu_grid/LoShuArrowPage'));
+const LoShuNumberPage = lazy(() => import('./pages/lo_shu_grid/LoShuNumberPage'));
+const LoShuProblemPage = lazy(() => import('./pages/lo_shu_grid/LoShuProblemPage'));
+const LoShuPersonalYearPage = lazy(() => import('./pages/lo_shu_grid/LoShuPersonalYearPage'));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -210,6 +217,13 @@ function App() {
                   <Route path="/love-calculator" element={<LoveCalculatorPage />} />
                   <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
                   <Route path="/angel-numbers/:number" element={<AngelNumberPage />} />
+                  <Route path="/lo-shu-grid" element={<LoShuHubPage />} />
+                  <Route path="/lo-shu-grid/calculator" element={<LoShuCalculatorPage />} />
+                  <Route path="/lo-shu-grid/missing-:number" element={<LoShuMissingNumberPage />} />
+                  <Route path="/lo-shu-grid/arrow/:slug" element={<LoShuArrowPage />} />
+                  <Route path="/lo-shu-grid/number/:n" element={<LoShuNumberPage />} />
+                  <Route path="/lo-shu-grid/for/:problem" element={<LoShuProblemPage />} />
+                  <Route path="/lo-shu-grid/personal-year/:n" element={<LoShuPersonalYearPage />} />
                   <Route path="/zibu" element={<ZibuHubPage />} />
                   <Route path="/zibu/:symbolSlug" element={<ZibuSymbolPage />} />
                   <Route path="/faith" element={<FaithHubPage />} />
