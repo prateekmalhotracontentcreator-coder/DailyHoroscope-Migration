@@ -1,7 +1,7 @@
 # Lo Shu Grid -- Module Tracker
 > Path: `Codex_Deliveries/Lo_Shu_Grid/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-29 IST · v3.0
+> Last updated: 2026-05-30 IST · v3.1
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟠 ECHO/PACE PASSED -- LSG-2 awaiting TT sign-off before integration |
+| **Status** | 🟠 ECHO/PACE PASSED (full coverage) -- LSG-2 awaiting TT sign-off before integration |
 | **Backend router** | `backend/lo_shu_router.py` |
 | **Seed script** | `backend/scripts/seed_lo_shu.py` |
 | **SEO sitemap** | `GET /api/seo/sitemap/lo-shu-grid` via `backend/seo_router.py` |
@@ -37,7 +37,7 @@
 | LSG-OP-1 | Confirm runtime assumption for the missing Action arrow | TT | 🟠 MED | Decoded source labels one missing arrow as `8,7,6`, but Lo Shu grid geometry and commission math imply `2,7,6`. Runtime logic follows `2,7,6`. |
 | LSG-OP-2 | Seed Lo Shu content collections on target DB if Temple wants Mongo-backed page content immediately | TT | 🟡 MED | `python3 backend/scripts/seed_lo_shu.py --mongo-url "$MONGO_URL" --db-name horoscope_db` now seeds `lo_shu_missing_numbers`, `lo_shu_arrows`, `lo_shu_numbers`, `lo_shu_problems`, and `lo_shu_personal_years`. |
 | LSG-OP-3 | Browser smoke test public routes after Render/Vercel deploy | TT | 🟠 HIGH | Verify hub, calculator, one missing-number page, one arrow page, one number page, one problem page, one personal-year page, and `/api/seo/sitemap/lo-shu-grid`. Full 8-item checklist in `LSG_INTEGRATION_SIGNOFF_NOTE_2026-05-29.docx` Section 4. |
-| LSG-OP-4 | ECHO/PACE scanner coverage gap | CC | 🟡 MED | `echo_pace_lsg_scan.py` covers number pages + combination pairs only. Does not cover `lo_shu_problems` (20 pages) or `lo_shu_personal_years` (9 pages). Layer G thread check shows 0/10 hits across all page types -- acceptable given clean result, but scanner should be extended if content changes post-integration. |
+| LSG-OP-4 | ~~ECHO/PACE scanner coverage gap~~ | ~~CC~~ | ✅ CLOSED | Extended `echo_pace_lsg_scan.py` to cover all 4 page types (number, combo, problem, personal year). Added `_problem_page_body()` + `_personal_year_page_body()` builders. Extended Layer G to sample both new page types. L1-L3 all PASS on 2026-05-30. Commit: `aa17c07`. |
 
 ---
 
@@ -55,6 +55,7 @@
 
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
+| v3.1 | 2026-05-30 | Closed LSG-OP-4: extended `echo_pace_lsg_scan.py` to cover problem pages (20) + personal year pages (9) in L1/L2/L3. Added `_problem_page_body()` and `_personal_year_page_body()` content builders. Extended Layer G to sample both new page types (~6 Serper credits). All 4 page types PASS L1-L3 clean (problem peak 43.1%, PY peak 19.9%). Scanner now gates full LSG-2 module (38 URLs). Commit: `aa17c07`. | CC | `echo_pace_lsg_scan.py` |
 | v3.0 | 2026-05-29 | ECHO/PACE full scan completed (L1-L3 + Layer G via Serper). Fixed L1 BLOCKED on combination pages: added `NUMBER_COMBINATION_INSIGHTS` (36 unique synthesis entries) to `lo_shu_router.py`. Fixed L3 FLAGGED on number headings: added `NUMBER_PAGE_TITLES` (humanised planet+archetype titles) to router + scanner. Updated `build_number_deep_dive_document()` to use humanised titles in page payload. Layer G: all 4 Serper queries returned 0/10 hits -- blueprint prose and classical associations (WATCH-1) both clean. Added LSG-OP-4 (scanner coverage gap -- problem/personal-year pages not in L1-L2 scope). Sign-off doc prepared: `LSG_INTEGRATION_SIGNOFF_NOTE_2026-05-29.docx`. Commit: `56da74c`. | CC | `echo_pace_lsg_scan.py`, `lo_shu_router.py` |
 | v2.0 | 2026-05-25 | LSG-2 delivered locally. Expanded the Lo Shu module with 9 number deep-dive pages, 20 problem-area pages, 9 personal-year pages, new backend endpoints, expanded seed coverage, hub discoverability links, and a 57-URL Lo Shu sitemap. Backend compile, seed dry-run, sitemap count, and frontend production build passed. | Codex | `CODEX_COMMISSION_LSG_2_EXPANSION.md` |
 | v1.0 | 2026-05-23 | LSG-1 delivered locally. Added dedicated Lo Shu backend router, SEO sitemap endpoint, Mongo seed script, four public frontend pages, shared grid component, App routes, sitemap index entry, and Vercel cache headers. Backend compile and frontend production build passed. | Codex | `CODEX_COMMISSION_LO_SHU_GRID.md` |
