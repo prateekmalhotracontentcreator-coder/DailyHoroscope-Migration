@@ -100,17 +100,12 @@ const ACTION_QUEUE = [
 // -----------------------------------------------------------------
 // Section frame component (from 2G composition shell)
 // -----------------------------------------------------------------
-function Section({ n, title, srcTag, srcLabel, srcEm, label, children }) {
+function Section({ n, title, label, children }) {
   return (
     <section className="ap-sec" data-screen-label={label}>
       <div className="ap-sec__head">
         <span className="ap-sec__n">{n}</span>
         <h3 className="ap-sec__title">{title}</h3>
-        <span className="ap-sec__src">
-          inherits &middot;{' '}
-          <b className={srcEm ? 'em' : ''}>{srcTag}</b>
-          {' '}&middot; {srcLabel}
-        </span>
       </div>
       {children}
     </section>
@@ -232,12 +227,6 @@ function ActionQueueModule({ density }) {
 // -----------------------------------------------------------------
 // Active-path source metadata for §04 Section sub-header
 // -----------------------------------------------------------------
-function activePathSource(verdict) {
-  if (verdict === 'pray') return { tag: '2I', label: 'Pray Path',        em: false };
-  if (verdict === 'yes')  return { tag: 'new', label: 'Clearance · Q-03', em: true  };
-  return                         { tag: '2D', label: 'Re-entry Loop',    em: false };
-}
-
 // -----------------------------------------------------------------
 // Loading / Locked / Error shells
 // -----------------------------------------------------------------
@@ -329,7 +318,6 @@ export default function StrategistActionPlanPage() {
   const verdict   = (dashboard?.scoreboard?.gate0_last_verdict ?? 'wait').toLowerCase();
   const directive = dashboard?.scoreboard?.score_directive ?? '';
   const asOf      = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) + ' IST';
-  const ap        = activePathSource(verdict);
   const d         = DENSITY_MAP[density];
 
   // Gates array for §02 Diagnostics
@@ -422,7 +410,7 @@ export default function StrategistActionPlanPage() {
         <div className="ap-body">
 
           {/* §01 · Digest -- 2F compact bar always; detail row in briefing */}
-          <Section n="01" title="Digest" srcTag="2F" srcLabel="compact" label="2G·01 Digest">
+          <Section n="01" title="Digest" label="2G·01 Digest">
             <div className="ap-digest">
               <ConquestScoreboard
                 data={dashboard}
@@ -467,7 +455,7 @@ export default function StrategistActionPlanPage() {
           </Section>
 
           {/* §02 · Diagnostics -- LK gates list (command) / grid (briefing) */}
-          <Section n="02" title="Diagnostics" srcTag="2E" srcLabel="LK gates" label="2G·02 Diagnostics">
+          <Section n="02" title="Diagnostics" label="2G·02 Diagnostics">
             <LKGateSummaries
               gates={gates}
               asOf={asOf}
@@ -477,7 +465,7 @@ export default function StrategistActionPlanPage() {
           </Section>
 
           {/* §03 · Verdict -- full banner (briefing) / compact line (command) */}
-          <Section n="03" title="Verdict" srcTag="2C" srcLabel="Oracle banner" label="2G·03 Verdict">
+          <Section n="03" title="Verdict" label="2G·03 Verdict">
             {density === 'briefing' ? (
               <OracleVerdictBanners
                 data={dashboard}
@@ -494,14 +482,7 @@ export default function StrategistActionPlanPage() {
           </Section>
 
           {/* §04 · Active Path -- switch(verdict): 2D (no/wait) · 2I (pray) · ClearanceCard (yes) */}
-          <Section
-            n="04"
-            title="Active Path"
-            srcTag={ap.tag}
-            srcLabel={ap.label}
-            srcEm={ap.em}
-            label="2G·04 Active Path"
-          >
+          <Section n="04" title="Active Path" label="2G·04 Active Path">
             {verdict === 'pray' && (
               <PrayPath
                 data={dashboard}
@@ -524,14 +505,7 @@ export default function StrategistActionPlanPage() {
           </Section>
 
           {/* §05 · Action Queue -- new 2G-owned component */}
-          <Section
-            n="05"
-            title="Action Queue"
-            srcTag="new"
-            srcLabel="2G-owned · pip track from 2D"
-            srcEm={true}
-            label="2G·05 Action Queue"
-          >
+          <Section n="05" title="Action Queue" label="2G·05 Action Queue">
             <ActionQueueModule density={density} />
           </Section>
 

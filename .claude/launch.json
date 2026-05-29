@@ -3,9 +3,15 @@
   "configurations": [
     {
       "name": "frontend",
-      "runtimeExecutable": "/usr/local/bin/npx",
-      "runtimeArgs": ["--prefix", "/Users/apple/DailyHoroscope-Migration/frontend", "craco", "start"],
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "cd /Users/apple/DailyHoroscope-Migration/frontend && NODE_OPTIONS=--stack-size=65536 npx craco start"],
       "port": 3000
+    },
+    {
+      "name": "frontend-build",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "cd /Users/apple/DailyHoroscope-Migration/frontend && npx serve -s build -l 3001"],
+      "port": 3001
     },
     {
       "name": "backend",
