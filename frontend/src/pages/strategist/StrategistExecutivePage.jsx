@@ -9,12 +9,17 @@
 
 import React from 'react';
 import { StrategistThemeProvider } from '@/components/strategist/StrategistThemeProvider';
+import { StrategistThemeToggle } from '@/components/strategist/StrategistThemeToggle';
 import { StrategistLanding } from './StrategistPage';
 import '@/styles/strategist-tokens.css';
 
 export default function StrategistExecutivePage() {
   return (
     <StrategistThemeProvider>
+      {/* Floating Strategist theme toggle -- top-right, module-scoped */}
+      <div style={{ position: 'fixed', top: 16, right: 20, zIndex: 50 }}>
+        <StrategistThemeToggle />
+      </div>
       <StrategistLanding />
     </StrategistThemeProvider>
   );

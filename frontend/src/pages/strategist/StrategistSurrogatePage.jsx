@@ -1,5 +1,8 @@
 import { SEO } from '../../components/SEO';
 import React, { useState } from 'react';
+import StrategistThemeProvider from '../../components/strategist/StrategistThemeProvider';
+import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
+import '../../styles/strategist-tokens.css';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 const PLANETS = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Rahu', 'Ketu'];
@@ -31,8 +34,13 @@ export default function StrategistSurrogatePage() {
   };
 
   return (
+    <StrategistThemeProvider>
+    {/* Floating Strategist theme toggle -- top-right, module-scoped */}
+    <div style={{ position: 'fixed', top: 16, right: 20, zIndex: 50 }}>
+      <StrategistThemeToggle />
+    </div>
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-xl mx-auto">
-      <SEO title="Surrogate Bridge — The Strategist" noindex={true} />
+      <SEO title="Surrogate Bridge -- The Strategist" noindex={true} />
       <div className="rounded-xl border border-gold/20 bg-gold/[0.04] shadow-sm p-5 mb-5">
         <h1 className="text-xl font-bold text-gold mb-2">Surrogate Bridge</h1>
         <p className="text-sm text-muted-foreground mb-4">
@@ -75,7 +83,7 @@ export default function StrategistSurrogatePage() {
             disabled={loading}
             className="w-full bg-gold text-background font-semibold rounded-lg px-4 py-2.5 disabled:opacity-50"
           >
-            {loading ? 'Searching…' : 'Find Surrogate Ritual'}
+            {loading ? 'Searching...' : 'Find Surrogate Ritual'}
           </button>
         </div>
       </div>
@@ -83,7 +91,7 @@ export default function StrategistSurrogatePage() {
       {error && (
         <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 mb-4">
           <p className="text-amber-400 text-sm">{error}</p>
-          <p className="text-xs text-muted-foreground mt-1">Run Strategist ingest first to populate surrogate records (IDs 651–675).</p>
+          <p className="text-xs text-muted-foreground mt-1">Run Strategist ingest first to populate surrogate records (IDs 651-675).</p>
         </div>
       )}
 
@@ -102,5 +110,6 @@ export default function StrategistSurrogatePage() {
         </div>
       )}
     </div>
+    </StrategistThemeProvider>
   );
 }

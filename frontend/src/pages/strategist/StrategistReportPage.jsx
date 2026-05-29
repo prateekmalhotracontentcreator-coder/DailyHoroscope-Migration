@@ -1,5 +1,8 @@
 import { SEO } from '../../components/SEO';
 import React, { useState } from 'react';
+import StrategistThemeProvider from '../../components/strategist/StrategistThemeProvider';
+import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
+import '../../styles/strategist-tokens.css';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 
@@ -22,8 +25,13 @@ export default function StrategistReportPage() {
   };
 
   return (
+    <StrategistThemeProvider>
+    {/* Floating Strategist theme toggle -- top-right, module-scoped */}
+    <div style={{ position: 'fixed', top: 16, right: 20, zIndex: 50 }}>
+      <StrategistThemeToggle />
+    </div>
     <div className="min-h-screen bg-background text-foreground px-4 py-8 max-w-3xl mx-auto">
-      <SEO title="Executive Intelligence Brief — The Strategist" noindex={true} />
+      <SEO title="Executive Intelligence Brief -- The Strategist" noindex={true} />
       <div className="rounded-xl border border-gold/30 bg-gradient-to-br from-gold/15 to-gold/5 shadow-sm p-5 mb-5">
         <h1 className="text-xl font-bold text-gold mb-1">Executive Intelligence Brief</h1>
         <p className="text-sm text-muted-foreground mb-4">
@@ -34,7 +42,7 @@ export default function StrategistReportPage() {
           disabled={loading}
           className="bg-gold text-background font-semibold rounded-lg px-5 py-2.5 disabled:opacity-50"
         >
-          {loading ? 'Generating…' : 'Generate Intelligence Brief'}
+          {loading ? 'Generating...' : 'Generate Intelligence Brief'}
         </button>
       </div>
 
@@ -49,5 +57,6 @@ export default function StrategistReportPage() {
         </div>
       )}
     </div>
+    </StrategistThemeProvider>
   );
 }

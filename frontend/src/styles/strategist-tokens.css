@@ -44,10 +44,25 @@
 
 /* ── Light (default) ────────────────────────────────────────────────────── */
 .strategist-module[data-mode="light"] {
-  --strategist-bg:           hsl(var(--background));     /* host app warm off-white */
-  --strategist-fg:           hsl(var(--foreground));     /* host text */
-  --strategist-text-primary: hsl(var(--foreground));
-  --strategist-text-muted:   hsl(var(--muted-foreground));
+  /* ── Override host Tailwind CSS vars to known light values.
+     This mirrors the dark-mode override pattern (R2A) and prevents the
+     global .dark class (or any theme toggle on the main app) from bleeding
+     into the Strategist module's curated light experience.              ── */
+  --background:         33 21 97%;
+  --foreground:         33 14 18%;
+  --card:               0 0% 100%;
+  --card-foreground:    33 14 18%;
+  --border:             33 18 83%;
+  --muted:              30 15 94%;
+  --muted-foreground:   25 13 45%;
+  --input:              33 18 83%;
+  --popover:            0 0% 100%;
+  --popover-foreground: 33 14 18%;
+
+  --strategist-bg:           hsl(33 21 97%);              /* warm off-white — pinned */
+  --strategist-fg:           hsl(33 14 18%);              /* dark warm text — pinned */
+  --strategist-text-primary: hsl(33 14 18%);
+  --strategist-text-muted:   hsl(25 13 45%);
 
   --strategist-card-bg:      hsl(38 60% 50% / 0.04);     /* gold/[0.04] · existing GlassCard pattern */
   --strategist-card-elev:    hsl(38 60% 50% / 0.08);     /* highlight surface */
@@ -132,14 +147,16 @@
 }
 
 /* ── Control Room — optimised green matrix grid (all 3 CR aliases) ──────── */
-/* Minor grid: 48px cell · #45b060 · 15% opacity · 1.5px stroke             */
-/* Major grid: 192px cell · #45b060 · 20% opacity · 1.5px stroke            */
+/* Minor grid: 32px cell  · #2d7a42 · 18% opacity · 1px stroke  (2026-05-30 TT)  */
+/* Major grid: 128px cell · #2d7a42 · 30% opacity · 1.5px stroke (2026-05-30 TT) */
+/* Optimisation: darker green (#2d7a42 vs prior #45b060) + tighter cell size      */
+/* for sharper, denser grid on the white CR background.                           */
 .strategist-module[data-mode="cr"],
 .strategist-module[data-mode="cr-ambient"],
 .strategist-module[data-mode="cr-tactical"] {
   background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='192' height='192'%3E%3Cpath d='M 192 0 L 0 0 0 192' fill='none' stroke='%2345b060' stroke-opacity='0.20' stroke-width='1.5'/%3E%3C/svg%3E") 0 0 / 192px 192px,
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48'%3E%3Cpath d='M 48 0 L 0 0 0 48' fill='none' stroke='%2345b060' stroke-opacity='0.15' stroke-width='1.5'/%3E%3C/svg%3E") 0 0 / 48px 48px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cpath d='M 128 0 L 0 0 0 128' fill='none' stroke='%232d7a42' stroke-opacity='0.30' stroke-width='1.5'/%3E%3C/svg%3E") 0 0 / 128px 128px,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cpath d='M 32 0 L 0 0 0 32' fill='none' stroke='%232d7a42' stroke-opacity='0.18' stroke-width='1'/%3E%3C/svg%3E") 0 0 / 32px 32px,
     hsl(var(--background));
 }
 

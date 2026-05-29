@@ -128,6 +128,16 @@
 }
 .cg--production .cg__track,
 .cg--production .cg__fill { stroke-width: 12; }
+/* Contain the production glow so it cannot bleed outside the gauge bounds
+   into adjacent sections (visible as red halo in lockdown band). The compact
+   gauge at 44px keeps the full 12px glow — used in the Gate 0 sub-header
+   where no adjacent content is at risk. */
+.cg--production {
+  overflow: hidden;
+}
+.cg--production .cg__fill {
+  filter: drop-shadow(0 0 7px currentColor);  /* trimmed from 12px — still glows, won't overlap */
+}
 .cg--compact .cg__track,
 .cg--compact .cg__fill    { stroke-width: 22; }
 

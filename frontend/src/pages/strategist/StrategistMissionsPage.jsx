@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import MissionCard from '../../components/MissionCard';
+import StrategistThemeProvider from '../../components/strategist/StrategistThemeProvider';
+import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
+import '../../styles/strategist-tokens.css';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 const PLANETS = ['', 'Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Rahu', 'Ketu'];
@@ -161,6 +164,11 @@ export default function StrategistMissionsPage() {
     : missions;
 
   return (
+    <StrategistThemeProvider>
+    {/* Floating Strategist theme toggle -- top-right, module-scoped */}
+    <div style={{ position: 'fixed', top: 16, right: 20, zIndex: 50 }}>
+      <StrategistThemeToggle />
+    </div>
     <div className="min-h-screen bg-background px-4 py-8 text-foreground sm:px-6 lg:px-8">
       <SEO title="Mission Board -- The Strategist" noindex={true} />
       <div className="mx-auto max-w-5xl">
@@ -226,5 +234,6 @@ export default function StrategistMissionsPage() {
         ) : null}
       </div>
     </div>
+    </StrategistThemeProvider>
   );
 }
