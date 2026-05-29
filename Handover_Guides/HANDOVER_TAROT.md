@@ -51,48 +51,30 @@ The interactive Tarot tool is fully live at `/tarot`. 5 tabs confirmed:
 
 ---
 
-## 4. Your First Task -- Integrate TAR-SEO-1
+## 4. Current Live State -- TAR-SEO-1 + TAR-SEO-2 Already Integrated
 
-### What TAR-SEO-1 Built (already verified, not yet in main)
+> ✅ **TAR-SEO-1 and TAR-SEO-2 are both already live in production** (confirmed 2026-05-29 via Codex delivery doc cross-check). Your task is NOT integration -- it is ECHO/PACE quality sign-off.
 
-TAR-SEO-1 is a **build-verified local delivery**. It was prepared by Codex without touching the interactive `/tarot` tool. Files ready to integrate:
+### What Is Live
 
-**Backend:**
-- `backend/tarot_seo_router.py` -- SEO data endpoints (spread list, card detail, intention pages)
-- Wiring: must be registered in `backend/server.py` (add `include_router` call)
+| Item | Commit | Status |
+|---|---|---|
+| TAR-SEO-1 -- 4 routes + backend router | `8f36fc8` | ✅ Live in `main` |
+| TAR-SEO-2 -- content rewrite (100 spreads + 78 cards) | `b0dfdd4` | ✅ Live in `main` |
 
-**Frontend -- 4 new public SEO pages:**
-- `frontend/src/pages/tarot/TarotSpreadsPage.jsx` → route `/tarot/spreads`
-- `frontend/src/pages/tarot/TarotSpreadPage.jsx` → route `/tarot/spread/:spreadSlug`
-- `frontend/src/pages/tarot/TarotCardPage.jsx` → route `/tarot/card/:cardSlug`
-- `frontend/src/pages/tarot/TarotIntentionPage.jsx` → route `/tarot/for/:intentionSlug`
+**Live files:**
+- `backend/tarot_seo_router.py` -- SEO endpoints, registered in `server.py` at prefix `/api/seo`
+- `frontend/src/pages/tarot-seo/TarotSeoHubPage.jsx` → `/tarot/spreads`
+- `frontend/src/pages/tarot-seo/TarotSpreadPage.jsx` → `/tarot/spread/:spreadSlug`
+- `frontend/src/pages/tarot-seo/TarotCardPage.jsx` → `/tarot/card/:cardSlug`
+- `frontend/src/pages/tarot-seo/TarotIntentionPage.jsx` → `/tarot/for/:intentionSlug`
+- `backend/tarot_seo_data.py` -- 100 spreads, 78 cards, 20 intentions (post-TAR-SEO-2 rewrite)
 
-**Routes:** Must be added to `frontend/src/App.js`
+**Total live URLs: 199 pages** (1 hub + 100 spreads + 78 cards + 20 intentions)
 
-**Sitemap:** `frontend/public/sitemap.xml` additions for Tarot SEO routes
+### Your First Task -- ECHO/PACE Quality Sign-off
 
-**Vercel cache headers:** `vercel.json` additions for Tarot SEO routes
-
-### SEO Data Source
-All SEO content is served from `backend/tarot_seo_data.py`:
-- 100 spread records
-- 78 card records
-- 20 intention records
-
-**Total new URLs from TAR-SEO-1:** ~198 programmatic pages + 1 hub = 199 pages
-
-### Integration Steps
-1. Locate delivered files -- check `backend/tarot_seo_router.py` and `frontend/src/pages/tarot/`
-2. Add router registration to `backend/server.py`
-3. Wire 4 routes into `frontend/src/App.js`
-4. Update `frontend/public/sitemap.xml`
-5. Update `vercel.json` if cache headers are included
-6. Run build: `CI=true DISABLE_ESLINT_PLUGIN=true npx craco build`
-7. Fix any smart quote issues if needed (see Smart Quote Fix below)
-8. Commit and push to main → wait for Vercel + Render deploy (~2-3 min)
-9. **ECHO/PACE scan immediately** -- see Section 6 below before proceeding further
-10. If ECHO/PACE passes → proceed to TAR-SEO-2
-11. If ECHO/PACE fails → run GAI optimization loop (Section 6) until all page types pass, THEN TAR-SEO-2
+The pages are live. The content has been rewritten. The only remaining gates before this module is fully QA-cleared are the ECHO/PACE scan and Layer G.
 
 ### Smart Quote Fix (if needed)
 ```bash
