@@ -189,11 +189,23 @@ Delivered locally. Build-verified. Not merged to `main`.
 5. Run build: `CI=true DISABLE_ESLINT_PLUGIN=true npx craco build`
 6. Commit and push → wait for deploy
 7. Run seed script on Render if Mongo collections need seeding
-8. **ECHO/PACE scan immediately after deploy** (blocking gate -- see Section 20 for procedure)
-   - Scan 1 URL from each of the 4 public page types
-   - Target: internal ECHO ≥60, Google duplication ≤40%
-   - If fails: GAI optimization loop on the content fields → re-seed → re-scan
-   - Only declare LSG-1 complete once all page types pass
+8. **Run ECHO/PACE scanner immediately** (blocking gate -- scanner replaces admin panel):
+
+```bash
+# Layers 1-3 (no key needed):
+python3 tests/echo_pace_lsg_scan.py
+
+# All 4 layers including Google duplication:
+SERPER_API_KEY=your_key python3 tests/echo_pace_lsg_scan.py
+```
+
+**⚠️ KNOWN ISSUE -- First Run Will Show BLOCKED:**
+Combination pages (36 pairs) are currently BLOCKED -- 45 pairs ≥ 70% cosine similarity. This is because combination pages are constructed by concatenating two number-page bodies, so any pair sharing a common number is near-identical. **The Operations thread must fix this before LSG-1 goes live:**
+- Each combination page needs unique synthesising prose (not just concatenation)
+- Raise as a Codex fix commission or write the unique content directly in `lo_shu_router.py`
+- Re-run scanner after fix: `python3 tests/echo_pace_lsg_scan.py`
+
+**WATCH-1 risk:** Classical associations content (element/direction/colour/body_area) is widely shared across numerology sites. Layer G (Google duplication) will specifically check these fields. If any sample phrase is BLOCKED, humanise those fields in `NUMBER_CLASSICAL_ASSOCIATIONS` before going live.
 
 ---
 
@@ -349,13 +361,39 @@ From `Codex_Deliveries/CODEX_QA_INTEGRATION_AUDIT_2026-05-27.md`:
 | Internal ECHO score | ≥ 60 | Humanise content fields, redeploy, rescan |
 | Google duplication rate | ≤ 40% | GAI optimization loop (can take multiple rounds) |
 
-### Scan Procedure
-1. Deploy module to production
-2. Go to `/admin/dashboard` → ECHO/PACE tab
-3. Scan 1 representative URL per page type
-4. If all pass → module complete
-5. If any fail → identify offending content fields from ECHO output → send to NLM/GAI for rewrite → update data files → redeploy → rescan
-6. Precedent: M3 festival-region pages required 9 rounds to clear the 40% ceiling
+### Scan Procedure (script-based -- no admin panel needed)
+
+A runnable 4-layer scanner exists for each module. **Run the script, share output with TT, TT signs off.**
+
+| Module | Script | Data Source |
+|---|---|---|
+| Lo Shu Grid | `python3 tests/echo_pace_lsg_scan.py` | `backend/lo_shu_router.py` constants |
+| Tarot SEO | `python3 tests/echo_pace_tarot_scan.py` | `backend/tarot_seo_data.py` |
+| Future modules | Write a new scanner following same pattern | Module data file |
+
+```bash
+# Layers 1-3 only (pure Python, no API key):
+python3 tests/echo_pace_<module>_scan.py
+
+# All 4 layers with Google duplication (get key from Render env):
+SERPER_API_KEY=your_key python3 tests/echo_pace_<module>_scan.py
+```
+
+**4-layer architecture:**
+
+| Layer | Method | Thresholds |
+|---|---|---|
+| L1 | TF-IDF cosine inter-page | BLOCKED ≥70% · FLAGGED 50-69% |
+| L2 | N-gram 4+ word match (stop-word filtered) | FLAGGED if phrase in ≥3 docs |
+| L3 | Jaccard heading vs generic corpus | FLAGGED if score ≥60% |
+| LG | Google duplication via Serper API | BLOCKED >40% · WATCH >20% |
+
+Steps:
+1. Run scanner → review console output
+2. If BLOCKED → fix content in data file → re-run scanner
+3. If only FLAGGED → manually review flagged phrases (shared domain vocabulary is acceptable)
+4. If all PASS → share report JSON with TT for sign-off
+5. Precedent: M3 festival-region pages required 9 rounds to clear 40% Google ceiling
 
 ---
 

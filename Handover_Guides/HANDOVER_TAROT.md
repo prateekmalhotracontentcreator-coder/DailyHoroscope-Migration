@@ -114,31 +114,52 @@ f.writeFileSync(p,c);console.log('Done');"
 
 Tarot SEO pages (199 programmatic pages) are content-dense and risk duplication penalties from Google. The M3 festival-region pages required 9 rounds of GAI optimization to stay below the 40% ceiling. Tarot spread/card/intention pages have similar risk. Catch failures now -- before Google indexes the content.
 
-### Thresholds
-| Metric | Target | Fail = |
-|---|---|---|
-| Internal ECHO score | ≥ 60 | < 60 → humanise further |
-| Google duplication rate | ≤ 40% | > 40% → GAI optimization loop |
+### Run the Scanner (replaces manual admin panel check)
 
-### ECHO/PACE Scan Procedure
-1. Go to `https://www.everydayhoroscope.in/admin/dashboard` → ECHO/PACE tab
-2. Scan one URL from each page type:
-   - Spread hub: `/tarot/spreads`
-   - Spread detail: `/tarot/spread/celtic-cross` (or any slug)
-   - Card detail: `/tarot/card/the-fool` (or any slug)
-   - Intention page: `/tarot/for/love` (or any slug)
-3. Record ECHO score + duplication % for each type
-4. If all pass → proceed to TAR-SEO-2
-5. If any fail → GAI optimization loop (below)
+A 4-layer scanner script is in the repo. **Run this instead of the admin panel:**
 
-### GAI Optimization Loop (if any page type fails)
+```bash
+# From repo root -- Layers 1-3 (no API key needed):
+python3 tests/echo_pace_tarot_scan.py
+
+# All 4 layers including Google duplication (get SERPER_API_KEY from Render env):
+SERPER_API_KEY=your_key python3 tests/echo_pace_tarot_scan.py
+```
+
+Output is saved to `tests/echo_pace_tarot_report.json`. Share full console output with TT for sign-off.
+
+### Thresholds (enforced by script)
+
+| Layer | Method | BLOCKED | FLAGGED / WATCH | PASS |
+|---|---|---|---|---|
+| L1 | TF-IDF cosine inter-page | any pair ≥ 70% | 50-69% | < 50% |
+| L2 | N-gram 4+ word match | -- | phrase in ≥ 3 docs | 0 phrases |
+| L3 | Jaccard heading match | -- | score ≥ 60% vs corpus | all < 60% |
+| LG | Google duplication (Serper) | peak > 40% | avg > 20% | avg ≤ 20% |
+
+### First Run Results (TAR-SEO-1, confirmed 2026-05-29)
+
+| Page Type | L1 | L2 | L3 | LG |
+|---|---|---|---|---|
+| Spreads (100) | ⚠️ FLAGGED -- 2 near-duplicate topic pairs (60%) | ⚠️ FLAGGED -- deck composition boilerplate in 15 spreads | ℹ️ INFO -- generic names expected | Not yet run |
+| Cards (78) | ✅ PASS -- peak 36% | ⚠️ FLAGGED -- 219 Wands suit shared imagery phrases | ℹ️ INFO | Not yet run |
+| Intentions (20) | ⚠️ FLAGGED -- 2 pairs | ⚠️ FLAGGED | ℹ️ INFO -- slugs are generic (love, career, etc.) | Not yet run |
+
+**L2 FLAGGED items for Tarot are mostly legitimate shared vocabulary** (deck composition descriptions, tarot suit imagery terms). Review the top offenders in the report -- only escalate to GAI if phrases appear to be verbatim from a source book.
+
+**L1 FLAGGED spread pairs** -- "Manifesting Urgent Financial Abundance" ↔ "Manifesting Fast Secondary Income" (51.6%) and "Settlement vs Going to Trial Analysis" ↔ "Choosing Legal Battle vs Settlement" (60%) -- these are thematically near-duplicate spreads. Assess whether their body prose is sufficiently differentiated.
+
+**Layer G (Google duplication) still required** -- get SERPER_API_KEY from Render dashboard env vars and run with the key before declaring the module QA-passed.
+
+### GAI Optimization Loop (if any page type is BLOCKED)
+
 Reference: `Codex_Deliveries/Tarot/TAR_ECHO_PACE_GAI_CONSULTATION.md`
 
-1. Identify which content fields are triggering duplication (ECHO output shows offending text)
+1. Identify which content fields triggered BLOCKED (script output shows offending phrases)
 2. Submit failing content blocks to NLM/GAI for rewrite
 3. Update the relevant fields in `backend/tarot_seo_data.py`
-4. Re-deploy and re-scan
-5. Repeat until all 4 page types pass
+4. Re-run script: `python3 tests/echo_pace_tarot_scan.py`
+5. Repeat until all BLOCKED items clear
 6. Pre-approved humanized titles: `TAR_SEO_TITLE_HUMANIZATION_LIST.md`
 
 ### After ECHO/PACE Passes → Activate TAR-SEO-2
@@ -151,8 +172,8 @@ TAR-SEO-2 is a **one-file rewrite** of `backend/tarot_seo_data.py`:
 **Steps:**
 1. Replace `backend/tarot_seo_data.py` with the TAR-SEO-2 version
 2. Commit and push to main
-3. **Run ECHO/PACE again** on all 4 page types -- TAR-SEO-2 rewrites may affect scores
-4. Apply GAI fixes if any page type regresses below threshold
+3. **Re-run the scanner** immediately: `python3 tests/echo_pace_tarot_scan.py`
+4. Apply GAI fixes if any page type regresses to BLOCKED
 
 ---
 
