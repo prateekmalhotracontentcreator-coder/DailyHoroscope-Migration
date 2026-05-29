@@ -54,6 +54,53 @@ const DENSITY_MAP = {
 };
 
 // -----------------------------------------------------------------
+// GATE ADAPTER -- normalises backend gate_summaries shape to the
+// CD-expected LKGateSummaries gate object shape.
+//
+// Backend shape:  { gate, name, status(UPPERCASE), narrative, ...extras }
+// CD shape:       { id, code, name, facet, status(lowercase), narrative,
+//                   asideLabel, asideValue }
+// -----------------------------------------------------------------
+const STATUS_MAP = {
+  CLEAR: 'clear', ACTIVE: 'active', WARNING: 'warning', DORMANT: 'dormant',
+  CONFLICT: 'warning', UNKNOWN: 'clear',
+};
+
+const GATE_META = {
+  1: { code: 'G01', facet: 'Karmic Debt',      asideLabel: 'Pitru Rin' },
+  2: { code: 'G02', facet: 'Sleeping Houses',  asideLabel: 'Dormant' },
+  3: { code: 'G03', facet: 'Year Cycle',       asideLabel: 'Year lord' },
+  4: { code: 'G04', facet: 'Mercury Scan',     asideLabel: 'Status' },
+  5: { code: 'G05', facet: 'Geographical',     asideLabel: 'Direction' },
+};
+
+function gateAsideValue(g) {
+  const gn = g.gate;
+  const statusLabel = STATUS_MAP[g.status] || 'clear';
+  if (gn === 2) return `${g.dormant_count || 0} dormant`;
+  if (gn === 3) return g.planet || '--';
+  if (gn === 5) return g.direction || '--';
+  return statusLabel.charAt(0).toUpperCase() + statusLabel.slice(1);
+}
+
+function normalizeGates(rawGates) {
+  if (!Array.isArray(rawGates) || rawGates.length === 0) return [];
+  return rawGates.map((g) => {
+    const meta = GATE_META[g.gate] || { code: `G0${g.gate}`, facet: '', asideLabel: 'Status' };
+    return {
+      id:         meta.code,
+      code:       meta.code,
+      name:       g.name || meta.code,
+      facet:      meta.facet,
+      status:     STATUS_MAP[g.status] || 'clear',
+      narrative:  g.narrative || '',
+      asideLabel: meta.asideLabel,
+      asideValue: gateAsideValue(g),
+    };
+  });
+}
+
+// -----------------------------------------------------------------
 // BANNERS -- hardcoded per field map (from OracleVerdictBanners BANNERS const)
 // Used by VerdictCompact (Command density §03 render)
 // -----------------------------------------------------------------
@@ -320,8 +367,8 @@ export default function StrategistActionPlanPage() {
   const asOf      = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) + ' IST';
   const d         = DENSITY_MAP[density];
 
-  // Gates array for §02 Diagnostics
-  const gates = Array.isArray(dashboard?.gate_summaries) ? dashboard.gate_summaries : [];
+  // Gates array for §02 Diagnostics -- normalised to CD LKGateSummaries shape
+  const gates = normalizeGates(dashboard?.gate_summaries ?? []);
 
   // KP Gate 0 data -- shell values until STR-2A2 (KP Oracle integration) lands
   const gate0Days = dashboard?.scoreboard?.gate0_days_since ?? 0;
@@ -433,7 +480,7 @@ export default function StrategistActionPlanPage() {
                   <div className="ap-digest__cell">
                     <span className="ap-digest__l">Karmic</span>
                     <div className="ap-digest__v">
-                      <KarmicChip state={dashboard?.diagnosis_summary?.karmic_debt_cleared ?? 'Pending'} />
+                      <KarmicChip state={dashboard?.scoreboard?.karmic_debt_cleared ?? 'Pending'} />
                     </div>
                     <span className="ap-digest__sub">ledger status</span>
                   </div>

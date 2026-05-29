@@ -196,13 +196,16 @@ export function OracleVerdictProofStrip() {
 //   streakDays  <- data.scoreboard.streak_days
 //   karmic      <- data.diagnosis_summary.karmic_debt_cleared
 // -----------------------------------------------------------------
-export default function OracleVerdictBanners({ data, asOf, onCtaClick, onReadChartClick }) {
+// showProofStrip defaults false on live page. Pass true only in dev / design review.
+export default function OracleVerdictBanners({ data, asOf, onCtaClick, onReadChartClick, showProofStrip = false }) {
   // Step 6 -- wire live API fields
+  // karmic_debt_cleared lives in scoreboard (boolean), not diagnosis_summary
   const verdict     = (data?.scoreboard?.gate0_last_verdict ?? 'wait').toLowerCase();
   const score       = data?.conquest_probability?.score ?? 0;
   const tier        = data?.scoreboard?.score_tier ?? '--';
   const streakDays  = data?.scoreboard?.streak_days ?? 0;
-  const karmic      = data?.diagnosis_summary?.karmic_debt_cleared ?? '--';
+  const karmicRaw   = data?.scoreboard?.karmic_debt_cleared;
+  const karmic      = karmicRaw === true ? 'Cleared' : karmicRaw === false ? 'Active' : '--';
 
   // Local toggle: allow seeker to preview other verdict states
   const [activeVerdict, setActiveVerdict] = useState(verdict);
@@ -247,7 +250,7 @@ export default function OracleVerdictBanners({ data, asOf, onCtaClick, onReadCha
         asOf={asOf}
       />
 
-      <OracleVerdictProofStrip />
+      {showProofStrip && <OracleVerdictProofStrip />}
     </>
   );
 }

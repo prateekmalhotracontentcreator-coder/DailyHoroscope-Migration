@@ -154,7 +154,8 @@ function gateCountSummary(gates) {
 //     { id, code, name, facet, status, narrative, asideLabel, asideValue }
 // -----------------------------------------------------------------
 // view: optional override ('list'|'grid'). When provided, hides internal toggle.
-export default function LKGateSummaries({ gates = [], asOf, view: viewProp = null, showToggle }) {
+// showProofStrip defaults false on live page. Pass true only in dev / design review.
+export default function LKGateSummaries({ gates = [], asOf, view: viewProp = null, showToggle, showProofStrip = false }) {
   const [viewState, setViewState] = useState('list');
   const controlled = viewProp !== null;
   const view = controlled ? viewProp : viewState;
@@ -210,7 +211,7 @@ export default function LKGateSummaries({ gates = [], asOf, view: viewProp = nul
         </div>
       )}
 
-      <LKStatusChipProofStrip />
+      {showProofStrip && <LKStatusChipProofStrip />}
     </>
   );
 }
