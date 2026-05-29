@@ -102,16 +102,25 @@ const LKReportPage = lazy(() => import('./pages/lk/LKReportPage'));
 const LKTrackerPage = lazy(() => import('./pages/lk/LKTrackerPage'));
 const LKDebtAuditPage = lazy(() => import('./pages/lk/LKDebtAuditPage'));
 const LKBrowsePage = lazy(() => import('./pages/lk/LKBrowsePage'));
+// Strategist routes temporarily un-wired for diagnostic study -- maintenance page active
+const StrategistMaintenancePage = lazy(() => import('./pages/strategist/StrategistMaintenancePage'));
+// eslint-disable-next-line no-unused-vars
 const TheStrategistLandingPage = lazy(() => import('./pages/strategist/TheStrategistLandingPage'));
+// eslint-disable-next-line no-unused-vars
 const StrategistPage = lazy(() => import('./pages/strategist/StrategistPage'));
+// eslint-disable-next-line no-unused-vars
 const StrategistExecutivePage = lazy(() => import('./pages/strategist/StrategistExecutivePage'));
+// eslint-disable-next-line no-unused-vars
 const StrategistMissionsPage = lazy(() => import('./pages/strategist/StrategistMissionsPage'));
+// eslint-disable-next-line no-unused-vars
 const StrategistReportPage = lazy(() => import('./pages/strategist/StrategistReportPage'));
+// eslint-disable-next-line no-unused-vars
 const StrategistSurrogatePage = lazy(() => import('./pages/strategist/StrategistSurrogatePage'));
 const KrishnaOraclePage = lazy(() => import('./pages/kp/KrishnaOraclePage'));
 const AskQuestionPage = lazy(() => import('./pages/kp/AskQuestionPage'));
 const PunyaRewardsPage = lazy(() => import('./pages/rewards/PunyaRewardsPage'));
 const AuspiciousPage = lazy(() => import('./pages/auspicious/AuspiciousPage'));
+// eslint-disable-next-line no-unused-vars
 const StrategistActionPlanPage = lazy(() => import('./pages/strategist/StrategistActionPlanPage'));
 const FestivalsHubPage = lazy(() => import('./pages/festivals/FestivalsHubPage').then(m => ({ default: m.FestivalsHubPage })));
 const FestivalPage = lazy(() => import('./pages/festivals/FestivalPage').then(m => ({ default: m.FestivalPage })));
@@ -371,19 +380,16 @@ function App() {
                   <Route path="/lk-remedies/debt-audit" element={<ProtectedRoute><LKDebtAuditPage /></ProtectedRoute>} />
                   <Route path="/lk-remedies/remedies" element={<LKBrowsePage />} />
 
-                  {/* The Strategist */}
-                  {/* Public SEO landing -- logged-out + logged-in entry point */}
-                  <Route path="/the-strategist" element={<TheStrategistLandingPage />} />
-                  {/* /strategist = CD landing page for all users (logged in or out) */}
-                  <Route path="/strategist" element={<TheStrategistLandingPage />} />
-                  {/* War Room -- the actual Dashboard (premium users only) */}
-                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistPage /></ProtectedRoute>} />
-                  {/* Executive page -- repurposed Codex overview, inside module nav */}
-                  <Route path="/strategist/executive" element={<ProtectedRoute><StrategistExecutivePage /></ProtectedRoute>} />
-                  <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />
-                  <Route path="/strategist/report" element={<ProtectedRoute><StrategistReportPage /></ProtectedRoute>} />
-                  <Route path="/strategist/surrogate" element={<ProtectedRoute><StrategistSurrogatePage /></ProtectedRoute>} />
-                  <Route path="/strategist/action-plan" element={<ProtectedRoute><StrategistActionPlanPage /></ProtectedRoute>} />
+                  {/* The Strategist -- UN-WIRED for diagnostic study 2026-05-29 */}
+                  {/* All routes serve maintenance page until diagnostic is complete  */}
+                  <Route path="/the-strategist" element={<StrategistMaintenancePage />} />
+                  <Route path="/strategist" element={<StrategistMaintenancePage />} />
+                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistMaintenancePage /></ProtectedRoute>} />
+                  <Route path="/strategist/executive" element={<ProtectedRoute><StrategistMaintenancePage /></ProtectedRoute>} />
+                  <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMaintenancePage /></ProtectedRoute>} />
+                  <Route path="/strategist/report" element={<ProtectedRoute><StrategistMaintenancePage /></ProtectedRoute>} />
+                  <Route path="/strategist/surrogate" element={<ProtectedRoute><StrategistMaintenancePage /></ProtectedRoute>} />
+                  <Route path="/strategist/action-plan" element={<ProtectedRoute><StrategistMaintenancePage /></ProtectedRoute>} />
                   <Route path="/krishna-prashnavali" element={<KrishnaOraclePage />} />
 
                   {/* Punya Rewards -- loyalty & gamification (all logged-in users) */}
