@@ -447,7 +447,7 @@ SPREADS_JSON = r"""[
       "Card 6: What is our karmic destiny together?",
       "Card 7: Will we stay forever together in this life?"
     ],
-    "use": "The forty Minor cards and the sixteen Court cards.",
+    "use": "The pip and Court cards drawn from all four suits.",
     "when": "Come to this spread when a relationship carries an unusual quality of familiarity, intensity, or repetition that ordinary relationship analysis doesn't fully explain. Approach each card as a window into a longer story."
   },
   {
@@ -498,7 +498,7 @@ SPREADS_JSON = r"""[
       "Card 5: What can I do to make things better?",
       "Card 6: Who/what bad influences need to be removed from his/her life?"
     ],
-    "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
+    "use": "All fifty-six Minor Arcana -- the forty pip cards and sixteen Court cards.",
     "when": "Come to this spread when emotional reactions in the relationship consistently feel disproportionate to the situation, or when one person's fear response is consistently driving the dynamic. Read the shadow position honestly."
   },
   {
@@ -506,7 +506,7 @@ SPREADS_JSON = r"""[
     "slug": "manifesting-urgent-financial-abundance",
     "title": "Manifesting Urgent Financial Abundance",
     "chapter": "Prosperity And Money-Making Spreads",
-    "purpose": "A spread for moments when financial need is pressing and clarity about the fastest genuine path forward -- rather than long-term planning -- is what the situation requires. It reads immediate opportunity and internal obstruction simultaneously.",
+    "purpose": "This spread is designed for acute financial pressure -- a specific bill due, a debt that cannot wait, or an income gap that demands action now rather than later. It identifies what is actively blocking immediate relief, where a real opening exists within the current situation, and what action or energy shift is most likely to move money within the short window ahead. It does not chart long-term abundance; it reads the crisis and points to the most available next move.",
     "positions": [
       "Card 1: Who will/can help; what are the strings?",
       "Card 2: What existing assets/resources can you release?",
@@ -518,7 +518,7 @@ SPREADS_JSON = r"""[
       "Card 8: The as-yet-unrevealed rescue/rescuer."
     ],
     "use": "The full deck.",
-    "when": "Come to this spread when financial pressure is acute rather than chronic and you need guidance on the nearest available door rather than the ideal long-term strategy. Work through each position before settling on a course of action."
+    "when": "Use this spread when you are facing a concrete, time-sensitive financial problem -- not general money anxiety, but a specific amount needed by a specific point. The more clearly defined the pressure, the sharper the reading. If the financial stress is ongoing and diffuse rather than immediately critical, a prosperity or money-blocks spread will serve you better."
   },
   {
     "number": 130,
@@ -543,7 +543,7 @@ SPREADS_JSON = r"""[
     "chapter": "Spreads For Solving Difficulties With Money",
     "purpose": "A spread that reads the inherited dimension of financial struggle -- the beliefs, behaviours, and family patterns around money that were absorbed before they could be consciously chosen, and what it would take to operate outside them.",
     "positions": [],
-    "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
+    "use": "The numbered Minor cards and Court cards across all four suits.",
     "when": "Come to this spread when financial difficulty seems to follow a pattern that predates your own choices -- when the money story feels inherited more than acquired. Read the generational positions before the practical ones."
   },
   {
@@ -587,7 +587,7 @@ SPREADS_JSON = r"""[
       "Card 2: The hidden cause of the conflict.",
       "Card 3: The solution."
     ],
-    "use": "The forty Minor cards, Aces to Tens.",
+    "use": "The forty pip cards, Aces through Tens, from all four suits.",
     "when": "Come to this spread when a workplace relationship has been persistently difficult long enough to suggest the pattern needs to be understood rather than simply endured. Read the position that names the hidden dynamic before the advice position."
   },
   {
@@ -765,7 +765,7 @@ SPREADS_JSON = r"""[
       "Card 5: Would a change of lifestyle/location/career/relationship relieve the problem?",
       "Card 6: What new activity/desired situation suddenly becomes possible without the anxiety?"
     ],
-    "use": "The forty Minor cards, Aces to Tens, and the six Court cards.",
+    "use": "The numbered minors -- Aces to Tens -- alongside the Court cards.",
     "when": "Come to this spread when anxious thinking has been running the situation for too long. Slow down at each position rather than reading quickly to reach a reassuring answer -- the card that makes you uncomfortable is often the most useful."
   },
   {
@@ -826,7 +826,7 @@ SPREADS_JSON = r"""[
       "Card 3: Is this going to be a place of health, happiness, and prosperity?",
       "Card 4: Do you have any worries about the house/location and how can these be resolved?"
     ],
-    "use": "The forty Minor cards, Aces to Tens.",
+    "use": "The forty numbered Minor cards, Aces through Tens.",
     "when": "Come to this spread before unpacking rather than after -- when you still have the flexibility to choose where to set up the spaces that matter most. Read each position as information about the space, not a verdict."
   },
   {
@@ -883,7 +883,7 @@ SPREADS_JSON = r"""[
       "Card 7: What can be gained by staying in the same social circle, with or without resolution?",
       "Card 8: What is the best outcome for you?"
     ],
-    "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
+    "use": "The Minor Arcana complete -- pip cards and Court cards from all four suits.",
     "when": "Come to this spread when the friendship situation has become complicated enough that the narrative of who is right keeps changing. Read the hidden dynamic position before deciding how to respond."
   },
   {
@@ -932,13 +932,13 @@ SPREADS_JSON = r"""[
     "slug": "settlement-vs-going-to-trial-analysis",
     "title": "Settlement vs Going to Trial Analysis",
     "chapter": "Spreads For Justice, Truth, Compensation, And Inheritance",
-    "purpose": "A spread for the specific legal decision of whether to accept a settlement or proceed to trial -- reading what each path genuinely costs and requires, not just in financial terms but in time, energy, and personal integrity.",
+    "purpose": "This spread examines a specific settlement offer rather than the abstract question of whether to settle. It helps you assess whether the terms on the table are genuinely adequate -- whether the compensation, conditions, or agreements reflect what was actually lost or damaged. When an offer has been made and you are deciding whether to accept it, this spread reads the substance of that offer against your actual situation and what accepting those terms would mean for your sense of resolution.",
     "positions": [
       "Card 1: What are the advantages of settling out of court?",
       "Card 2: What are the disadvantages of settling out of court?"
     ],
     "use": "The twenty-two Major cards.",
-    "when": "Come to this spread before the decision becomes forced by external timing. The cards speak most clearly when there is still real agency over which path is chosen."
+    "when": "Use this spread once a concrete settlement proposal is in your hands -- a figure, a set of conditions, or a negotiated agreement specific enough to evaluate. If no offer exists yet and you are still deciding whether to settle at all, use a broader decision spread first. This reading works best when the terms are real and the question is whether they are worth accepting."
   },
   {
     "number": 493,
@@ -973,7 +973,7 @@ SPREADS_JSON = r"""[
       "Card 6: Do you suspect that this will be a former deceased pet returned/a past life connection/a new but lovely connection?",
       "Card 7: Are you going to be happy together?"
     ],
-    "use": "The forty Minor cards, Aces to Tens.",
+    "use": "The pip cards from all four suits, Aces to Tens.",
     "when": "Come to this spread when you are open to several types of companion and want guidance on which is the best fit rather than already set on a species or breed. Each position speaks to a different dimension of the match."
   },
   {
@@ -998,7 +998,7 @@ SPREADS_JSON = r"""[
       "Card 1: Should you knock on a few doors to say",
       "Card 2: Should you wait for them to contact you?"
     ],
-    "use": "The forty Minor cards, Aces to Tens.",
+    "use": "The forty pip cards from all four suits.",
     "when": "Come to this spread after the move has already happened and the isolation has set in rather than before. The cards address what is actually happening rather than what might happen."
   },
   {
@@ -1011,7 +1011,7 @@ SPREADS_JSON = r"""[
       "Card 1: Should you call your baby by the name you want, one that will fit into the modern world?",
       "Card 2: Would it be possible/practical to use the desired family choice as a middle name to honor the family (and keep the peace)?"
     ],
-    "use": "The forty Minor cards and the twenty-two Major cards.",
+    "use": "The complete seventy-eight-card deck -- all Major and Minor Arcana.",
     "when": "Come to this spread when the naming conversation has already become strained enough to need a fresh lens. Read each position as information about the people involved, not just the name itself."
   },
   {
@@ -1190,7 +1190,7 @@ SPREADS_JSON = r"""[
       "Card 4: Is there anything/anyone you would like/need to take with you/leave behind?",
       "Card 5: Will your new beginning bring happiness soon, or take months?"
     ],
-    "use": "The forty Minor cards, Aces to Tens.",
+    "use": "The numbered Minor Arcana only, Aces through Tens.",
     "when": "Come to this spread within the two days around the new moon. The reading works best when used as part of a quiet intentional ritual rather than as a quick check-in."
   },
   {
@@ -1198,7 +1198,7 @@ SPREADS_JSON = r"""[
     "slug": "manifesting-fast-secondary-income",
     "title": "Manifesting Fast Secondary Income",
     "chapter": "Moon Spreads",
-    "purpose": "A spread for reading the nearest genuine path toward additional income -- naming which skill or resource is most ready to be activated, what is holding the path back, and what concrete first action would move the fastest.",
+    "purpose": "This spread maps the route from existing skill or resource to active income within a short timeframe. It identifies which capability you already hold is closest to being saleable, what the first concrete step toward earning from it looks like, and what inner resistance or practical gap needs addressing before money can flow. It treats secondary income as something to be built deliberately from what you already have, not waited for.",
     "positions": [
       "Card 1: Could any of your existing sources of money offer short-term increase through extra hours/input?",
       "Card 2: Are there any sources/assets from which you could borrow extra money/sell to make up the shortfall?",
@@ -1207,8 +1207,8 @@ SPREADS_JSON = r"""[
       "Card 5: Will there be unexpected help?",
       "Card 6: Will you get the money by the time of the next crescent moon?"
     ],
-    "use": "The forty Minor cards and the sixteen Court cards.",
-    "when": "Come to this spread when financial need is genuinely pressing and you need to identify the nearest available door rather than the ideal long-term solution. Work through each position before settling on a direction."
+    "use": "The Minor Arcana -- numbered pip cards and Court cards.",
+    "when": "Use this spread when you have capacity to add an income stream and want to act within weeks rather than months. It works best when you have at least one skill, resource, or interest that could realistically earn money but has not yet been structured into an offer or service. If you are in immediate financial crisis needing urgent relief, the urgent abundance spread is the better starting point."
   },
   {
     "number": 684,
@@ -1221,7 +1221,7 @@ SPREADS_JSON = r"""[
       "Card 2: What disadvantages are there in launching now?",
       "Card 3: Go for it, wait, or abandon the idea?"
     ],
-    "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
+    "use": "Pip cards and Court cards from all four suits, with the Majors set aside.",
     "when": "Come to this spread before formal launch rather than after -- when there is still time for the cards' guidance to shape the approach rather than assess the result."
   },
   {
@@ -1276,7 +1276,7 @@ SPREADS_JSON = r"""[
       "Card 6: Who/what do you fear might hold it back?",
       "Card 7: How far will you have progressed by the next crescent moon?"
     ],
-    "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
+    "use": "The fifty-six Minor Arcana cards: forty pips and sixteen Courts.",
     "when": "Come to this spread in a state of genuine openness rather than with a preferred outcome in mind. Sit quietly with each card before interpreting it so the symbolic meaning has room to arrive on its own terms."
   },
   {
@@ -1309,7 +1309,7 @@ SPREADS_JSON = r"""[
       "Card 4: What special help would you ask of Archangel Sachiel to open the right doors to permanent employment?",
       "Card 5: Will you succeed?"
     ],
-    "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
+    "use": "All forty pip cards and the sixteen Court cards from the Minor Arcana.",
     "when": "Come to this spread when you are genuinely interested in making a particular arrangement permanent rather than considering the possibility abstractly. The more specific the situation, the more precise the guidance."
   },
   {
@@ -1425,7 +1425,7 @@ SPREADS_JSON = r"""[
       "Card 4: Winter: What needs preserving for longer-term results, and what to let go?",
       "Card 5: Which will be my best season in the year ahead?"
     ],
-    "use": "The forty Minor cards, Aces to Tens.",
+    "use": "The Minor pip cards only -- Aces to Tens across all four suits.",
     "when": "Come to this spread within the few days around a solstice or equinox. Reading it as close to the actual solar threshold as possible gives the most accurate energetic attunement."
   },
   {
@@ -1456,7 +1456,7 @@ SPREADS_JSON = r"""[
     "slug": "choosing-legal-battle-vs-settlement",
     "title": "Choosing Legal Battle vs Settlement",
     "chapter": "Tarot Spreads And The Saints",
-    "purpose": "A spread for the decision between litigation and resolution -- reading not just financial outcome but the cost in time, energy, and personal integrity of each path, and which one serves the larger truth of the situation.",
+    "purpose": "This spread examines your personal readiness to pursue or step back from a legal fight. It is not about calculating settlement terms or weighing financial outcomes -- it is about your inner capacity: whether you carry enough emotional stability, sustained focus, and clarity of conviction to see a contested case through to its conclusion, or whether release and resolution serve your wellbeing and forward movement better than prolonged battle.",
     "positions": [
       "Card 1: If you carry on to the bitter end and win, will you recoup your expenses and more and be vindicated?",
       "Card 2: If you lose the case, will you suffer a severe financial loss because of court costs?",
@@ -1465,7 +1465,7 @@ SPREADS_JSON = r"""[
       "Card 5: Should you risk all?"
     ],
     "use": "The twenty-two Major cards and the sixteen Court cards.",
-    "when": "Come to this spread before the decision point is forced by external legal timing. The cards give most precise guidance when there is still genuine agency over which path is taken."
+    "when": "Use this spread at the early stages of a legal conflict -- before significant fees have been committed, before positions have hardened into opposition, or when a settlement opportunity has first appeared and you want to read your own readiness before responding. It is most useful when the choice still feels genuinely open and you have room to decide without external pressure forcing your hand."
   },
   {
     "number": 897,
@@ -1542,7 +1542,7 @@ SPREADS_JSON = r"""[
       "Card 3: Should you accept but keep your day job/give yourself a time limit to make it a viable enterprise?",
       "Card 4: Will your dreams of saving wildlife materialize?"
     ],
-    "use": "The forty Minor cards, Aces to Tens.",
+    "use": "The numbered cards from the Minor Arcana, Aces through Tens.",
     "when": "Come to this spread when the work has been heavy long enough to make you wonder whether you are genuinely sustaining it or merely enduring it. The cards speak to sustainability, not just to commitment."
   },
   {
@@ -1574,7 +1574,7 @@ SPREADS_JSON = r"""[
       "Card 5: Should you talk about the subject generally, or would that send him/her heading for the hills fast?",
       "Card 6: If the relationship is otherwise good and sex is seen as a serious step to commitment by your partner, should you wait until your partner is ready?"
     ],
-    "use": "The forty Minor cards, Aces to Tens, and the sixteen Court cards.",
+    "use": "The forty-pip and sixteen-Court Minor Arcana cards.",
     "when": "Come to this spread when confusion about another person's intentions has been persistent enough to affect your own behaviour and decisions. Read the other person's position with genuine curiosity rather than a hypothesis already formed."
   },
   {
