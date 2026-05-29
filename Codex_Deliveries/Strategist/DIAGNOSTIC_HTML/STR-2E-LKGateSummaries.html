@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STR-2E · LK Gate Summaries · v1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="_assets/strategist-shell.css" />
+
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     STR-2E · LK Gate Summaries · surface CSS
+     · LKStatusChip · 4 variants (clear · active · warning · dormant)
+     · A1 split direction: WARNING → amber, DORMANT → red
+     · Both views: list (rows) + grid (5 cards · 2+3)
+     ═══════════════════════════════════════════════════════════ */
+
+  /* ── LK STATUS CHIP ────────────────────────────────────────── */
+  .lk-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px 3px 9px;
+    border-radius: var(--r-pill);
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    border: 1px solid;
+    white-space: nowrap;
+    line-height: 1.4;
+  }
+  .lk-chip__pip {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+  .lk-chip--clear   { color: var(--emerald); background: var(--emerald-soft); border-color: rgba(63,170,122,0.40); }
+  .lk-chip--active  { color: var(--gold);    background: var(--gold-soft);    border-color: var(--strategist-card-border-bold); }
+  .lk-chip--warning { color: var(--amber);   background: var(--amber-soft);   border-color: rgba(227,163,65,0.40); }
+  .lk-chip--dormant { color: var(--red);     background: var(--red-soft);     border-color: rgba(226,92,75,0.40); }
+
+  /* Tonal counter bar — five colored ticks summarising gate states */
+  .tone-bar {
+    display: inline-flex; gap: 4px;
+    padding: 4px 8px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-pill);
+  }
+  .tone-bar__tick {
+    width: 14px; height: 6px;
+    border-radius: 2px;
+  }
+  .tone-bar__tick--clear   { background: var(--emerald); }
+  .tone-bar__tick--active  { background: var(--gold); }
+  .tone-bar__tick--warning { background: var(--amber); }
+  .tone-bar__tick--dormant { background: var(--red); }
+
+  /* ── LIST VIEW ─────────────────────────────────────────────── */
+  .lk-list {
+    display: grid;
+    gap: 8px;
+  }
+  .lk-row {
+    background: var(--strategist-card-bg);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: 56px 1fr 200px;
+    gap: 22px;
+    align-items: start;
+  }
+  .lk-row__code {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--strategist-fg-3);
+    padding-top: 4px;
+  }
+  .lk-row__code b {
+    display: block;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .lk-row__body {
+    min-width: 0;
+  }
+  .lk-row__title-line {
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .lk-row__name {
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 15.5px;
+    letter-spacing: 0.04em;
+    color: var(--strategist-fg);
+  }
+  .lk-row__facet {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .lk-row__narrative {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--strategist-fg-2);
+    line-height: 1.55;
+    margin: 6px 0 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .lk-row__aside {
+    display: flex; flex-direction: column;
+    align-items: flex-end; gap: 8px;
+    padding-top: 2px;
+  }
+  .lk-row__aside-detail {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    text-align: right;
+    line-height: 1.55;
+  }
+  .lk-row__aside-detail b {
+    display: block;
+    color: var(--strategist-fg);
+    font-weight: 700;
+    margin-top: 2px;
+    letter-spacing: 0.12em;
+  }
+  .lk-row__aside-detail--dormant b { color: var(--red); }
+  .lk-row__aside-detail--warning b { color: var(--amber); }
+  .lk-row__aside-detail--active b  { color: var(--gold); }
+
+  /* Left-edge status accent */
+  .lk-row--clear   { border-left: 3px solid var(--emerald); }
+  .lk-row--active  { border-left: 3px solid var(--gold); }
+  .lk-row--warning { border-left: 3px solid var(--amber); }
+  .lk-row--dormant { border-left: 3px solid var(--red); }
+
+  /* ── GRID VIEW · 2 + 3 ─────────────────────────────────────── */
+  .lk-grid {
+    display: grid;
+    gap: 12px;
+  }
+  .lk-grid__row {
+    display: grid;
+    gap: 12px;
+  }
+  .lk-grid__row--top { grid-template-columns: 1fr 1fr; }
+  .lk-grid__row--bot { grid-template-columns: 1fr 1fr 1fr; }
+  .lk-card {
+    background: var(--strategist-card-bg);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 14px 20px 16px;
+    display: flex; flex-direction: column;
+    gap: 8px;
+    min-height: 168px;
+  }
+  .lk-card__top {
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 12px;
+  }
+  .lk-card__code {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+  }
+  .lk-card__name {
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 14.5px;
+    letter-spacing: 0.04em;
+    color: var(--strategist-fg);
+    line-height: 1.25;
+    margin: 2px 0 0;
+  }
+  .lk-card__facet {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    margin-bottom: 4px;
+  }
+  .lk-card__narrative {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--strategist-fg-2);
+    line-height: 1.55;
+    margin: 0;
+    flex-grow: 1;
+  }
+  .lk-card__aside {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px dashed var(--strategist-rule);
+    display: flex; align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .lk-card__aside b {
+    color: var(--strategist-fg);
+    font-weight: 700;
+  }
+  .lk-card--clear   { border-top: 3px solid var(--emerald); }
+  .lk-card--active  { border-top: 3px solid var(--gold); }
+  .lk-card--warning { border-top: 3px solid var(--amber); }
+  .lk-card--dormant { border-top: 3px solid var(--red); }
+
+  /* ── PROOF STRIP · chips system reference ──────────────────── */
+  .lk-proof {
+    margin-top: 22px;
+    padding: 18px 22px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+  }
+  .lk-proof__head {
+    display: flex; align-items: baseline;
+    justify-content: space-between; gap: 16px;
+    margin-bottom: 14px;
+  }
+  .lk-proof__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.24em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .lk-proof__note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--strategist-fg-2);
+  }
+  .lk-proof__row {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    align-items: center;
+  }
+  .lk-proof__rule {
+    flex-grow: 1; height: 1px;
+    background: var(--strategist-rule);
+    min-width: 24px;
+  }
+  .lk-proof__label {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--strategist-fg-mute);
+    margin-left: 10px;
+  }
+
+  /* Section-header summary slot — left of toggle */
+  .lk-summary {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .lk-summary b {
+    color: var(--strategist-fg);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  .lk-summary__sep {
+    color: var(--strategist-fg-mute);
+  }
+</style>
+</head>
+<body>
+
+<main class="proto" data-screen-label="STR-2E LK Gate Summaries">
+
+  <!-- TOP BAR · theme pill mounts (right) -->
+  <div class="proto__topbar">
+    <div class="proto__label">
+      <b>STR-2E</b>
+      <span class="proto__label-sep">·</span>
+      <span>Lal Kitab Diagnostics · 5 Gate Summaries</span>
+      <span class="proto__label-sep">·</span>
+      <span>Phase 2 · inherits 2F</span>
+    </div>
+    <div id="theme-pill-mount"></div>
+  </div>
+
+  <!-- BRIEF -->
+  <header class="proto__head">
+    <div>
+      <div class="proto__kicker">Single-touch · A1 reviews on landing</div>
+      <h1>The Strategist · LK Gate Summaries</h1>
+      <p class="lede">
+        Five Lal Kitab gates · status chip per gate · list / grid toggle. Inherits SegPill, the module shell and the section-header pattern from STR-2F verbatim. New here: <code>LKStatusChip</code> with A1's amber/red split — Warning amber, Dormant red. Two reds on one screen read as a system error; the split holds tone hierarchy.
+      </p>
+    </div>
+    <div class="proto__meta">
+      <div><strong>Build</strong> A2 · v1</div>
+      <div><strong>Imports</strong> shell.css · primitives.jsx</div>
+      <div><strong>New</strong> LKStatusChip</div>
+      <div><strong>Default</strong> list view</div>
+    </div>
+  </header>
+
+  <!-- MODULE -->
+  <div id="strategist-mount"></div>
+
+  <footer class="proto__foot">
+    <span>STR-2E · LKGateSummaries · v1 · A2 · Claude Design</span>
+    <span>26 May 2026 · single-touch chain</span>
+  </footer>
+
+</main>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" data-presets="react" src="_assets/strategist-primitives.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState } = React;
+
+/* LKStatusChip · sibling of VerdictChip · A1 split */
+const LK_META = {
+  clear:   { label: 'Clear',   pip: true,  glyph: null },
+  active:  { label: 'Active',  pip: true,  glyph: null },
+  warning: { label: 'Warning', pip: true,  glyph: null },
+  dormant: { label: 'Dormant', pip: false, glyph: '○' },
+};
+function LKStatusChip({ status }) {
+  const meta = LK_META[status] || LK_META.clear;
+  return (
+    <span className={`lk-chip lk-chip--${status}`}>
+      {meta.glyph ? <span aria-hidden="true">{meta.glyph}</span> : null}
+      {meta.pip ? <span className="lk-chip__pip" /> : null}
+      {meta.label}
+    </span>
+  );
+}
+
+/* Tone-bar summary · five ticks, one per gate */
+function ToneBar({ gates }) {
+  return (
+    <span className="tone-bar" aria-hidden="true">
+      {gates.map((g) => (
+        <span key={g.id} className={`tone-bar__tick tone-bar__tick--${g.status}`} title={`${g.id} · ${g.status}`} />
+      ))}
+    </span>
+  );
+}
+
+/* ── List row ── */
+function GateRow({ gate }) {
+  return (
+    <article className={`lk-row lk-row--${gate.status}`}>
+      <div className="lk-row__code">
+        <b>{gate.code}</b>
+        {gate.id}
+      </div>
+      <div className="lk-row__body">
+        <div className="lk-row__title-line">
+          <span className="lk-row__name">{gate.name}</span>
+          <span className="lk-row__facet">{gate.facet}</span>
+        </div>
+        <p className="lk-row__narrative">{gate.narrative}</p>
+      </div>
+      <div className="lk-row__aside">
+        <LKStatusChip status={gate.status} />
+        <div className={`lk-row__aside-detail lk-row__aside-detail--${gate.status}`}>
+          {gate.asideLabel}
+          <b>{gate.asideValue}</b>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/* ── Grid card ── */
+function GateCard({ gate }) {
+  return (
+    <article className={`lk-card lk-card--${gate.status}`}>
+      <div className="lk-card__top">
+        <span className="lk-card__code">Gate {gate.code}</span>
+        <LKStatusChip status={gate.status} />
+      </div>
+      <h3 className="lk-card__name">{gate.name}</h3>
+      <p className="lk-card__facet">{gate.facet}</p>
+      <p className="lk-card__narrative">{gate.narrative}</p>
+      <div className="lk-card__aside">
+        <span>{gate.asideLabel}</span>
+        <b>{gate.asideValue}</b>
+      </div>
+    </article>
+  );
+}
+
+/* ── Counts summary for the header ── */
+function gateCountSummary(gates) {
+  const counts = gates.reduce((m, g) => {
+    m[g.status] = (m[g.status] || 0) + 1;
+    return m;
+  }, {});
+  return counts;
+}
+
+/* ── The module ── */
+function LKModule({ mode }) {
+  const [view, setView] = useState('list');
+  const gates = window.SEEKER.gates;
+  const counts = gateCountSummary(gates);
+
+  return (
+    <div className="strategist-module" data-mode={mode}>
+      <SectionHeader
+        title="Lal Kitab Diagnostics"
+        meta={null}
+        right={
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 16 }}>
+            <span className="lk-summary">
+              <ToneBar gates={gates} />
+              <span><b>{counts.clear || 0}</b> clear</span>
+              <span className="lk-summary__sep">·</span>
+              <span><b>{counts.active || 0}</b> active</span>
+              <span className="lk-summary__sep">·</span>
+              <span><b>{counts.warning || 0}</b> warn</span>
+              <span className="lk-summary__sep">·</span>
+              <span><b>{counts.dormant || 0}</b> dorm</span>
+            </span>
+            <SegPill
+              segments={['list', 'grid']}
+              value={view}
+              onChange={setView}
+              size="sm"
+              ariaLabel="View density"
+            />
+          </div>
+        }
+      />
+
+      {view === 'list' ? (
+        <div className="lk-list">
+          {gates.map((g) => <GateRow key={g.id} gate={g} />)}
+        </div>
+      ) : (
+        <div className="lk-grid">
+          <div className="lk-grid__row lk-grid__row--top">
+            {gates.slice(0, 2).map((g) => <GateCard key={g.id} gate={g} />)}
+          </div>
+          <div className="lk-grid__row lk-grid__row--bot">
+            {gates.slice(2, 5).map((g) => <GateCard key={g.id} gate={g} />)}
+          </div>
+        </div>
+      )}
+
+      <div className="lk-proof">
+        <div className="lk-proof__head">
+          <span className="lk-proof__eyebrow">Status chip system · proof set</span>
+          <span className="lk-proof__note">
+            Warning → amber · Dormant → red · split direction from A1 sign-off doc §3
+          </span>
+        </div>
+        <div className="lk-proof__row">
+          <LKStatusChip status="clear" />
+          <LKStatusChip status="active" />
+          <LKStatusChip status="warning" />
+          <LKStatusChip status="dormant" />
+          <div className="lk-proof__rule" />
+          <span className="lk-proof__label">sibling of VerdictChip · imports nothing new · token-driven</span>
+        </div>
+      </div>
+
+      <div className="inherit-note">
+        <div className="inherit-note__lbl">Inherits from 2F · adds for 2C → 2B</div>
+        <p>
+          <b>Imported verbatim</b> · <code>SegPill</code> at <code>size='sm'</code> with <code>['list','grid']</code> · <code>SectionHeader</code> · the <code>.strategist-module[data-mode]</code> shell · the doc-shell topbar + 56px gold-dot grid.
+        </p>
+        <p>
+          <b>New here</b> · <code>LKStatusChip</code> — same shape primitive as <code>VerdictChip</code>, four states · A1's amber/red split for Warning vs Dormant. <code>SEEKER.gates[]</code> extends the project-wide stub with five gate objects.
+        </p>
+        <p>
+          <b>For 2G</b> · the Gate Summaries module drops into the Action Plan page's "Diagnostics" section as-is; grid view fits the 5-section page rhythm cleanly.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [theme, setTheme] = useTheme();
+  return (
+    <>
+      <ProtoTopBar theme={theme} setTheme={setTheme} />
+      <LKModule mode={theme} />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('strategist-mount')).render(<App />);
+</script>
+
+</body>
+</html>

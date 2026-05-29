@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STR-2G · Strategist Action Plan · v1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- shared shell (tokens + primitives CSS · blessed _assets) -->
+<link rel="stylesheet" href="_assets/strategist-shell.css" />
+<!-- borrowed surface CSS (2F/2E/2C/2D/2I) so the composed modules render true -->
+<link rel="stylesheet" href="_assets/strategist-2g-surfaces.css" />
+<!-- 2G-owned composition layer (density strip · sections · clearance · queue) -->
+<link rel="stylesheet" href="_assets/strategist-2g.css" />
+
+<style>
+  /* review-only verdict simulator label in the proto top bar */
+  .verdict-sim { display: inline-flex; align-items: center; gap: 10px; }
+  .verdict-sim__lbl {
+    font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--shell-ink-mute);
+  }
+  .proto__topbar-right { display: inline-flex; align-items: center; gap: 22px; flex-wrap: wrap; justify-content: flex-end; }
+  /* keep the head title on its own line; let it claim the row's free width */
+  .proto__head { align-items: flex-start; }
+  .proto__head > div:first-child { flex: 1 1 auto; min-width: 0; }
+  .proto__head h1 { line-height: 1.12; }
+  .proto__meta { flex: 0 0 auto; white-space: nowrap; }
+</style>
+</head>
+<body>
+
+<main class="proto" data-screen-label="STR-2G Strategist Action Plan">
+
+  <!-- TOP BAR · review chrome — theme pill + verdict simulator (NOT page controls) -->
+  <div class="proto__topbar">
+    <div class="proto__label">
+      <b>STR-2G</b>
+      <span class="proto__label-sep">·</span>
+      <span>Strategist Action Plan · the assembled page</span>
+      <span class="proto__label-sep">·</span>
+      <span>2F · 2E · 2C · 2D · 2I composed</span>
+    </div>
+    <div class="proto__topbar-right">
+      <div class="verdict-sim">
+        <span class="verdict-sim__lbl">demo verdict</span>
+        <div id="verdict-sim-mount"></div>
+      </div>
+      <div id="theme-pill-mount"></div>
+    </div>
+  </div>
+
+  <!-- BRIEF -->
+  <header class="proto__head">
+    <div>
+      <div class="proto__kicker">Step 2 · 2G cleared · chart-led · one density control</div>
+      <h1>The Strategist · Action Plan</h1>
+      <p class="lede">
+        The six prior surfaces, assembled into one page. Chart-led order (Q-01): Digest → Diagnostics → Verdict → Active path → Action queue. <strong>One control</strong> — Command / Briefing — drives every section's density (Q-02·b); per-module toggles are suppressed, machinery retained. The Active-path slot renders four ways on the verdict (Q-03). One new component: the Action Queue.
+      </p>
+    </div>
+    <div class="proto__meta">
+      <div><strong>Build</strong> A2 · v1</div>
+      <div><strong>Order</strong> chart-led · Q-01</div>
+      <div><strong>Control</strong> Command / Briefing · Q-02·b</div>
+      <div><strong>New</strong> Action Queue · sec 05</div>
+    </div>
+  </header>
+
+  <!-- THE ASSEMBLED PAGE mounts here -->
+  <div id="strategist-mount"></div>
+
+  <footer class="proto__foot">
+    <span>STR-2G · StrategistActionPlan · v1 · A2 · Claude Design</span>
+    <span>29 May 2026 · single-touch chain · 2B on deck</span>
+  </footer>
+
+</main>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<!-- shared primitives (SegPill · VerdictChip · SectionHeader · SEEKER · useTheme) -->
+<script type="text/babel" data-presets="react" src="_assets/strategist-primitives.jsx"></script>
+<!-- composed modules (Digest · Diagnostics · Verdict · ActivePath · ActionQueue) -->
+<script type="text/babel" data-presets="react" src="_assets/strategist-2g-modules.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef } = React;
+
+/* Section frame · numbered + provenance sub-header */
+function Section({ n, title, srcTag, srcLabel, srcEm, label, children }) {
+  return (
+    <section className="ap-sec" data-screen-label={label}>
+      <div className="ap-sec__head">
+        <span className="ap-sec__n">{n}</span>
+        <h3 className="ap-sec__title">{title}</h3>
+        <span className="ap-sec__src">
+          inherits · <span className={srcEm ? 'em' : ''}><b className={srcEm ? 'em' : ''}>{srcTag}</b></span> · {srcLabel}
+        </span>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+/* Review-only verdict simulator — lives in the top bar, NOT on the page.
+   Lets A1 see all four Active-path modes without adding a 2nd page control. */
+function VerdictSim({ verdict, onChange }) {
+  return (
+    <SegPill
+      segments={[
+        { value: 'yes',  label: 'yes'  },
+        { value: 'wait', label: 'wait' },
+        { value: 'no',   label: 'no'   },
+        { value: 'pray', label: 'pray' },
+      ]}
+      value={verdict}
+      onChange={onChange}
+      size="sm"
+      ariaLabel="Demo verdict (review only)"
+    />
+  );
+}
+
+/* The assembled page */
+function ActionPlanPage({ mode, density, setDensity, verdict }) {
+  const ap = activePathSource(verdict);
+  return (
+    <div className="strategist-module ap" data-mode={mode}>
+
+      {/* STICKY DENSITY STRIP · the SOLE page control (Q-02·b) */}
+      <div className="ap-deck">
+        <h2 className="ap-deck__title"><span className="diamond">◆</span> Action Plan</h2>
+        <div className="ap-deck__verdict">verdict <VerdictChip type={verdict} active /></div>
+        <div className="ap-deck__control">
+          <span className="ap-deck__control-lbl">density</span>
+          <SegPill
+            segments={[
+              { value: 'command',  label: 'command'  },
+              { value: 'briefing', label: 'briefing' },
+            ]}
+            value={density}
+            onChange={setDensity}
+            size="sm"
+            ariaLabel="Page density"
+          />
+        </div>
+      </div>
+
+      <div className="ap-body">
+        <Section n="01" title="Digest" srcTag="2F" srcLabel="compact" label="2G·01 Digest">
+          <DigestModule density={density} verdict={verdict} />
+        </Section>
+
+        <Section n="02" title="Diagnostics" srcTag="2E" srcLabel="LK gates" label="2G·02 Diagnostics">
+          <DiagnosticsModule density={density} />
+        </Section>
+
+        <Section n="03" title="Verdict" srcTag="2C" srcLabel="Oracle banner" label="2G·03 Verdict">
+          <VerdictModule density={density} verdict={verdict} />
+        </Section>
+
+        <Section n="04" title="Active Path" srcTag={ap.tag} srcLabel={ap.label} srcEm={ap.em} label="2G·04 Active Path">
+          <ActivePathSlot density={density} verdict={verdict} />
+        </Section>
+
+        <Section n="05" title="Action Queue" srcTag="new" srcLabel="2G-owned · pip track from 2D" srcEm={true} label="2G·05 Action Queue">
+          <ActionQueueModule density={density} />
+        </Section>
+      </div>
+
+      {/* CC composition manifest */}
+      <div className="ap-manifest">
+        <div className="ap-manifest__lbl">For CC · what assembles into StrategistWarRoomPage.jsx</div>
+        <p>
+          <b>Shared deps</b> · <code>_assets/strategist-shell.css</code> + <code>_assets/strategist-primitives.jsx</code> (blessed · lift once, point all surfaces at them).
+        </p>
+        <p>
+          <b>Composition</b> · the page mounts the five surface modules in chart-led order. One page-level <code>density</code> (Command / Briefing) maps to each module's existing A/B — modules render with <code>showToggle=false</code> inside the page wrapper; standalone files keep their own toggle chrome.
+        </p>
+        <p>
+          <b>Active-path slot</b> · <code>{'switch(seeker.verdict)'}</code> → <code>2D</code> (no/wait) · <code>2I</code> (pray) · <b>quiet clearance card</b> (yes · Q-03). One slot, four modes.
+        </p>
+        <p>
+          <b>One new component</b> · the Action Queue row (§05) — distills three moves from the verdict + gates, each cited back to a gate or the directive. No fourth card tier.
+        </p>
+      </div>
+
+    </div>
+  );
+}
+
+function App() {
+  const [theme, setTheme] = useTheme();
+  const [density, setDensity] = useState('briefing');
+  const [verdict, setVerdict] = useState(window.SEEKER.verdict);
+
+  /* mount theme pill into the proto top bar */
+  const themeRoot = useRef(null);
+  useEffect(() => {
+    const el = document.getElementById('theme-pill-mount');
+    if (!el) return;
+    if (!themeRoot.current) themeRoot.current = ReactDOM.createRoot(el);
+    themeRoot.current.render(<ThemePill value={theme} onChange={setTheme} />);
+  }, [theme]);
+
+  /* mount the review-only verdict simulator into the top bar */
+  const vsRoot = useRef(null);
+  useEffect(() => {
+    const el = document.getElementById('verdict-sim-mount');
+    if (!el) return;
+    if (!vsRoot.current) vsRoot.current = ReactDOM.createRoot(el);
+    vsRoot.current.render(<VerdictSim verdict={verdict} onChange={setVerdict} />);
+  }, [verdict]);
+
+  return <ActionPlanPage mode={theme} density={density} setDensity={setDensity} verdict={verdict} />;
+}
+
+ReactDOM.createRoot(document.getElementById('strategist-mount')).render(<App />);
+</script>
+
+</body>
+</html>

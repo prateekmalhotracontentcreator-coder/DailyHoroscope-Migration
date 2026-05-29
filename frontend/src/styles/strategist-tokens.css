@@ -59,15 +59,16 @@
   --popover:            0 0% 100%;
   --popover-foreground: 33 14 18%;
 
-  --strategist-bg:           hsl(33 21 97%);              /* warm off-white — pinned */
-  --strategist-fg:           hsl(33 14 18%);              /* dark warm text — pinned */
-  --strategist-text-primary: hsl(33 14 18%);
+  --strategist-bg:           #F4EFE3;              /* warm cream — CD shell.css */
+  --strategist-fg:           #2A2418;              /* dark warm brown — CD shell.css */
+  --strategist-text-primary: #2A2418;
   --strategist-text-muted:   hsl(25 13 45%);
 
-  --strategist-card-bg:      hsl(38 60% 50% / 0.04);     /* gold/[0.04] · existing GlassCard pattern */
-  --strategist-card-elev:    hsl(38 60% 50% / 0.08);     /* highlight surface */
-  --strategist-card-border:  hsl(38 60% 50% / 0.20);     /* gold/20 · existing */
-  --strategist-card-border-strong: hsl(38 60% 50% / 0.40);
+  --strategist-card-bg:      #FFFFFF;              /* solid white — CD shell.css */
+  --strategist-card-elev:    #FBF7EC;              /* warm cream elevated — CD shell.css */
+  --strategist-card-border:  rgba(160, 130, 70, 0.20);   /* CD shell.css */
+  --strategist-card-border-strong: rgba(160, 130, 70, 0.40);
+  --strategist-card-border-bold:   rgba(160, 130, 70, 0.40); /* alias of strong — CD token name */
 }
 
 /* ── Dark (navy/charcoal — not warm brown) ──────────────────────────────── */
@@ -85,6 +86,7 @@
   --strategist-card-elev:          var(--card-dark-elevated);
   --strategist-card-border:        rgba(197, 160, 89, 0.20);
   --strategist-card-border-strong: rgba(197, 160, 89, 0.40);
+  --strategist-card-border-bold:   rgba(197, 160, 89, 0.40); /* alias of strong — CD token name */
 
   /* ── Override host Tailwind CSS vars so bg-card, bg-background,
      text-foreground, text-muted-foreground etc. all shift in dark mode
@@ -136,7 +138,7 @@
 .strategist-module[data-mode="light"] {
   background:
     radial-gradient(ellipse at 80% -10%, hsl(38 60% 50% / 0.10), transparent 55%),
-    hsl(var(--background));
+    var(--strategist-bg);
 }
 
 /* Dark mode gets a faint gold ember in the same corner. */

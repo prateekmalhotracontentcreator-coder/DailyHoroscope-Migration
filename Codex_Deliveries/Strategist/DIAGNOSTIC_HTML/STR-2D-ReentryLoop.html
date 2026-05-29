@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STR-2D · Score-Gated Re-entry Loop · v1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="_assets/strategist-shell.css" />
+
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     STR-2D · Re-entry Loop · surface CSS
+     · Renders only on NO / WAIT verdicts
+     · Progress bar to next threshold (Sovereign · 75)
+     · A/B toggle: ritual / action paths
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Verdict-precondition card — explains why the loop is rendered */
+  .rl-preface {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 18px;
+    align-items: center;
+    padding: 16px 22px;
+    margin-bottom: 18px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-left: 3px solid var(--red);
+    border-radius: var(--r-sm);
+  }
+  .rl-preface--wait { border-left-color: var(--amber); }
+  .rl-preface__lbl {
+    font-family: var(--font-mono);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .rl-preface__msg {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--strategist-fg);
+    line-height: 1.5;
+  }
+  .rl-preface__msg b {
+    font-style: normal;
+    color: var(--strategist-fg);
+    font-weight: 600;
+  }
+
+  /* Score → threshold progress hero */
+  .rl-hero {
+    background: var(--strategist-card-bg);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 22px 26px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .rl-hero__head {
+    display: flex; align-items: baseline;
+    justify-content: space-between; gap: 16px;
+    flex-wrap: wrap;
+  }
+  .rl-hero__title {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--strategist-fg);
+    margin: 0;
+  }
+  .rl-hero__sub {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .rl-hero__sub b {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .rl-bar {
+    position: relative;
+    height: 22px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-pill);
+    overflow: hidden;
+  }
+  .rl-bar__fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    background: linear-gradient(90deg, var(--amber) 0%, var(--gold) 100%);
+    border-radius: var(--r-pill);
+    transition: width 600ms var(--ease);
+  }
+  .rl-bar__threshold {
+    position: absolute;
+    top: -3px; bottom: -3px;
+    width: 2px;
+    background: var(--gold);
+    box-shadow: 0 0 0 4px var(--strategist-bg);
+  }
+  .rl-bar__threshold-label {
+    position: absolute;
+    bottom: -22px;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .rl-hero__legend {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .rl-legend-cell {
+    display: flex; flex-direction: column;
+    gap: 4px;
+    padding: 0 0 0 14px;
+    border-left: 2px solid var(--strategist-card-border);
+  }
+  .rl-legend-cell--at { border-left-color: var(--amber); }
+  .rl-legend-cell--to { border-left-color: var(--gold); }
+  .rl-legend-cell__l {
+    font-family: var(--font-mono);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .rl-legend-cell__v {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--strategist-fg);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+  }
+  .rl-legend-cell__v--amber { color: var(--amber); }
+  .rl-legend-cell__v--gold  { color: var(--gold); }
+  .rl-legend-cell__sub {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: var(--strategist-fg-3);
+  }
+
+  /* Path card · ritual or action */
+  .rl-path {
+    margin-top: 18px;
+    background: var(--strategist-card-bg);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 22px 26px;
+  }
+  .rl-path__head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px dashed var(--strategist-rule);
+  }
+  .rl-path__title {
+    font-family: var(--font-display);
+    font-size: 17px; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold);
+    margin: 0;
+  }
+  .rl-path__subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--strategist-fg-2);
+  }
+  .rl-path__eta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .rl-path__eta b {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .rl-steps {
+    display: grid;
+    gap: 10px;
+    margin: 0; padding: 0;
+    list-style: none;
+  }
+  .rl-step {
+    display: grid;
+    grid-template-columns: 44px 1fr 220px;
+    gap: 18px;
+    align-items: center;
+    padding: 14px 18px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+  }
+  .rl-step__code {
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+  }
+  .rl-step__body {
+    font-size: 13.5px;
+    color: var(--strategist-fg);
+    line-height: 1.5;
+  }
+  .rl-step__progress {
+    display: grid;
+    gap: 6px;
+  }
+  .rl-step__progress-head {
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .rl-step__progress-head b {
+    color: var(--strategist-fg);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  .rl-step__pip-track {
+    display: flex; gap: 4px;
+  }
+  .rl-step__pip {
+    flex: 1;
+    height: 5px;
+    border-radius: 1px;
+    background: var(--strategist-pip-track);
+  }
+  .rl-step__pip--done { background: var(--emerald); }
+
+  /* Done badge for completed steps */
+  .rl-step--done .rl-step__code {
+    color: var(--emerald);
+  }
+  .rl-step--done .rl-step__body {
+    color: var(--strategist-fg-2);
+  }
+
+  /* Comparison footer · light vs. heavy */
+  .rl-foot-grid {
+    margin-top: 22px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 22px;
+  }
+  .rl-foot-cell {
+    display: flex; flex-direction: column;
+    gap: 6px;
+  }
+  .rl-foot-cell__lbl {
+    font-family: var(--font-mono);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .rl-foot-cell__body {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--strategist-fg-2);
+    line-height: 1.55;
+  }
+  .rl-foot-cell__body b {
+    font-style: normal;
+    color: var(--strategist-fg);
+    font-weight: 600;
+  }
+  .rl-foot-divider {
+    background: var(--strategist-rule);
+    width: 1px;
+  }
+</style>
+</head>
+<body>
+
+<main class="proto" data-screen-label="STR-2D Reentry Loop">
+
+  <div class="proto__topbar">
+    <div class="proto__label">
+      <b>STR-2D</b>
+      <span class="proto__label-sep">·</span>
+      <span>Score-gated Re-entry Loop</span>
+      <span class="proto__label-sep">·</span>
+      <span>renders on NO / WAIT</span>
+    </div>
+    <div id="theme-pill-mount"></div>
+  </div>
+
+  <header class="proto__head">
+    <div>
+      <div class="proto__kicker">Single-touch · A/B path · progress to threshold</div>
+      <h1>The Strategist · Re-entry Loop</h1>
+      <p class="lede">
+        Surfaces only when the verdict is NO or WAIT — the seeker needs a way back. Progress bar maps current score to the next threshold; A/B toggle picks between Ritual (steady) and Action (sprint) paths. Each path renders three actions with completion pips. Same SegPill primitive at <code>size='sm'</code>.
+      </p>
+    </div>
+    <div class="proto__meta">
+      <div><strong>Build</strong> A2 · v1</div>
+      <div><strong>Inherits</strong> SegPill · seeker stub</div>
+      <div><strong>New</strong> progress bar · step pip-track</div>
+      <div><strong>Default</strong> Ritual path</div>
+    </div>
+  </header>
+
+  <div id="strategist-mount"></div>
+
+  <footer class="proto__foot">
+    <span>STR-2D · ReentryLoop · v1 · A2 · Claude Design</span>
+    <span>26 May 2026 · single-touch chain</span>
+  </footer>
+
+</main>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" data-presets="react" src="_assets/strategist-primitives.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState } = React;
+
+/* Step pip-track · maps done/total to discrete pips */
+function PipTrack({ done, total }) {
+  return (
+    <div className="rl-step__pip-track" aria-hidden="true">
+      {Array.from({ length: total }, (_, i) => (
+        <span
+          key={i}
+          className={`rl-step__pip ${i < done ? 'rl-step__pip--done' : ''}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function PathStep({ step }) {
+  const isDone = step.done >= step.total;
+  return (
+    <li className={`rl-step ${isDone ? 'rl-step--done' : ''}`}>
+      <span className="rl-step__code">{step.code}</span>
+      <div className="rl-step__body">{step.label}</div>
+      <div className="rl-step__progress">
+        <div className="rl-step__progress-head">
+          <span>Progress</span>
+          <b>{step.done} / {step.total}</b>
+        </div>
+        <PipTrack done={step.done} total={step.total} />
+      </div>
+    </li>
+  );
+}
+
+function PathCard({ pathKey, path }) {
+  return (
+    <section className="rl-path">
+      <header className="rl-path__head">
+        <h3 className="rl-path__title">
+          <span style={{ marginRight: 10, color: 'var(--gold)' }}>◆</span>
+          {path.title}
+        </h3>
+        <span className="rl-path__subtitle">{path.subtitle}</span>
+        <span className="rl-path__eta">eta · <b>{path.eta}</b></span>
+      </header>
+      <ul className="rl-steps">
+        {path.steps.map((s) => <PathStep key={s.code} step={s} />)}
+      </ul>
+    </section>
+  );
+}
+
+/* Score bar — score → threshold, with marker */
+function ScoreBar({ score, threshold, max = 99 }) {
+  const fillPct = (score / max) * 100;
+  const threshPct = (threshold / max) * 100;
+  return (
+    <>
+      <div className="rl-bar">
+        <div className="rl-bar__fill" style={{ width: fillPct + '%' }} />
+        <div className="rl-bar__threshold" style={{ left: 'calc(' + threshPct + '% - 1px)' }}>
+          <span className="rl-bar__threshold-label">Sovereign · 75</span>
+        </div>
+      </div>
+      <div className="rl-hero__legend" style={{ marginTop: 22 }}>
+        <div className="rl-legend-cell rl-legend-cell--at">
+          <span className="rl-legend-cell__l">You are at</span>
+          <span className="rl-legend-cell__v rl-legend-cell__v--amber">{score}</span>
+          <span className="rl-legend-cell__sub">Field Marshal · 50–74 band</span>
+        </div>
+        <div className="rl-legend-cell rl-legend-cell--to">
+          <span className="rl-legend-cell__l">Threshold</span>
+          <span className="rl-legend-cell__v rl-legend-cell__v--gold">{threshold}</span>
+          <span className="rl-legend-cell__sub">Sovereign · re-read unlocks</span>
+        </div>
+        <div className="rl-legend-cell">
+          <span className="rl-legend-cell__l">Distance</span>
+          <span className="rl-legend-cell__v">{threshold - score} pts</span>
+          <span className="rl-legend-cell__sub">karmic-cleared · gates open</span>
+        </div>
+        <div className="rl-legend-cell">
+          <span className="rl-legend-cell__l">Observed</span>
+          <span className="rl-legend-cell__v">4 / 9 d</span>
+          <span className="rl-legend-cell__sub">verdict held this long</span>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function ReentryModule({ mode }) {
+  const r = window.SEEKER.reentry;
+  const [pathKey, setPathKey] = useState('ritual');
+  const path = r.paths[pathKey];
+
+  return (
+    <div className="strategist-module" data-mode={mode}>
+      <SectionHeader
+        title="Re-entry Loop"
+        meta={null}
+        right={
+          <SegPill
+            segments={[
+              { value: 'ritual', label: 'ritual' },
+              { value: 'action', label: 'action' },
+            ]}
+            value={pathKey}
+            onChange={setPathKey}
+            size="sm"
+            ariaLabel="Re-entry path"
+          />
+        }
+      />
+
+      {/* Verdict-precondition card */}
+      <div className={`rl-preface rl-preface--${r.fromVerdict}`}>
+        <span className="rl-preface__lbl">Why this is showing</span>
+        <p className="rl-preface__msg">
+          The active verdict is <VerdictChip type={r.fromVerdict} /> &nbsp;— the chart denies <b>the named action</b>. Re-entry loop unlocks <b>{path.eta}</b> via the {pathKey} path. This panel hides automatically when the verdict returns to <VerdictChip type="yes" />.
+        </p>
+        <span></span>
+      </div>
+
+      {/* Score-bar hero */}
+      <section className="rl-hero">
+        <header className="rl-hero__head">
+          <h3 className="rl-hero__title">Path to Sovereign</h3>
+          <span className="rl-hero__sub">re-read unlocks at score · <b>{r.nextThreshold}</b></span>
+        </header>
+        <ScoreBar score={window.SEEKER.score} threshold={r.nextThreshold} />
+      </section>
+
+      {/* Path detail */}
+      <PathCard pathKey={pathKey} path={path} />
+
+      {/* Light vs heavy comparison */}
+      <div className="rl-foot-grid">
+        <div className="rl-foot-cell">
+          <span className="rl-foot-cell__lbl">Ritual path</span>
+          <p className="rl-foot-cell__body">
+            <b>Steady · low-cost · ledger-clearing.</b> Three repeated observances over ~5 weeks. Best when the seeker has discipline but limited spare bandwidth — the streak does the work.
+          </p>
+        </div>
+        <div className="rl-foot-divider" aria-hidden="true"></div>
+        <div className="rl-foot-cell">
+          <span className="rl-foot-cell__lbl">Action path</span>
+          <p className="rl-foot-cell__body">
+            <b>Sprint · ledger-front-loaded · higher friction.</b> Three pointed acts inside ~2 weeks. Best when the seeker can absorb short-term cost (money / time / a hard conversation) to compress the timeline.
+          </p>
+        </div>
+      </div>
+
+      <div className="inherit-note">
+        <div className="inherit-note__lbl">Inherits · adds</div>
+        <p>
+          <b>Imported verbatim</b> · <code>SegPill</code> at <code>size='sm'</code>, <code>VerdictChip</code> (renders inside the preface card), the shell, <code>SectionHeader</code>.
+        </p>
+        <p>
+          <b>New</b> · the <code>rl-bar</code> score-to-threshold component (amber→gold fill, threshold marker), the <code>rl-step</code> pip-track (5-pip discrete progress).
+          <em> Both reusable when 2G's full Action Plan page wants a comparable progress metric.</em>
+        </p>
+        <p>
+          <b>Render rule</b> · this surface should be conditionally mounted by the page wrapper — <code>{'{seeker.verdict === "no" || seeker.verdict === "wait" ? <ReentryModule /> : null}'}</code>. CC wires the conditional in <code>StrategistWarRoomPage.jsx</code>.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [theme, setTheme] = useTheme();
+  return (
+    <>
+      <ProtoTopBar theme={theme} setTheme={setTheme} />
+      <ReentryModule mode={theme} />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('strategist-mount')).render(<App />);
+</script>
+
+</body>
+</html>

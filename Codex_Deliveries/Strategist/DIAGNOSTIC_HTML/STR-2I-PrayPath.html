@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STR-2I · Pray Path · v1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="_assets/strategist-shell.css" />
+
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     STR-2I · Pray Path · surface CSS
+     · Renders on PRAY verdict
+     · Gradient header (gold↔rahu · pre-blessed v2)
+     · 3 CTAs (mantra · offering · pilgrimage)
+     · A/B toggle: triptych (default) / focus (single primary)
+     ═══════════════════════════════════════════════════════════ */
+
+  /* GRADIENT HEADER — surface-only gradient, pre-blessed v2 */
+  .pp-header {
+    position: relative;
+    overflow: hidden;
+    padding: 36px 36px 32px;
+    border-radius: var(--r-md);
+    background:
+      radial-gradient(ellipse at 100% 0%, var(--rahu-soft) 0%, transparent 60%),
+      radial-gradient(ellipse at 0% 100%, var(--gold-soft) 0%, transparent 60%),
+      var(--strategist-card-deep);
+    border: 1px solid var(--gold);
+    margin-bottom: 22px;
+  }
+  .pp-header::before {
+    content: '';
+    position: absolute; inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%);
+  }
+  .pp-header__top {
+    display: flex; align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .pp-header__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 10.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .pp-header__sep {
+    width: 24px; height: 1px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .pp-header__seal {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .pp-header__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.02em;
+    line-height: 1.15;
+    margin: 0 0 12px;
+    /* Gold↔rahu gradient on the headline type itself */
+    background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    max-width: 22ch;
+  }
+  .pp-header__sub {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15.5px;
+    color: var(--strategist-fg-2);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 64ch;
+  }
+
+  /* CTA CARDS · triptych (3 across) */
+  .pp-triptych {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .pp-card {
+    background: var(--strategist-card-bg);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 20px 22px 22px;
+    display: flex; flex-direction: column;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    min-height: 280px;
+  }
+  .pp-card__head {
+    display: flex; align-items: center;
+    justify-content: space-between;
+  }
+  .pp-card__code {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+  }
+  .pp-card__weight {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    padding: 2px 8px;
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-pill);
+  }
+  .pp-card__icon {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border-bold);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+  .pp-card__icon svg {
+    width: 20px; height: 20px;
+  }
+  .pp-card__title {
+    font-family: var(--font-display);
+    font-weight: 600; font-size: 18px;
+    letter-spacing: 0.04em;
+    color: var(--strategist-fg);
+    margin: 0;
+  }
+  .pp-card__kind {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    margin-bottom: 4px;
+  }
+  .pp-card__body {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 13.5px;
+    color: var(--strategist-fg-2);
+    line-height: 1.55;
+    margin: 0;
+    flex-grow: 1;
+  }
+  .pp-card__foot {
+    padding-top: 12px;
+    margin-top: auto;
+    border-top: 1px dashed var(--strategist-rule);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 10px;
+  }
+  .pp-card__commit {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .pp-card__commit b {
+    color: var(--strategist-fg);
+    font-weight: 700;
+  }
+  .pp-card__cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 14px;
+    border: 1px solid var(--gold);
+    border-radius: var(--r-pill);
+    background: transparent;
+    color: var(--gold);
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+  }
+  .pp-card__cta:hover {
+    background: var(--gold);
+    color: var(--strategist-bg);
+  }
+  .pp-card__cta:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+  /* Focus mode — one big card */
+  .pp-focus {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 28px;
+    background: var(--strategist-card-bg);
+    border: 1px solid var(--strategist-card-border-bold);
+    border-radius: var(--r-sm);
+    padding: 26px 30px 28px;
+    border-left: 3px solid var(--gold);
+  }
+  .pp-focus__icon-block {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 14px;
+    padding: 8px 4px;
+    border-right: 1px dashed var(--strategist-rule);
+    padding-right: 28px;
+  }
+  .pp-focus__icon {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--gold);
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--gold);
+  }
+  .pp-focus__icon svg { width: 40px; height: 40px; }
+  .pp-focus__code {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+  }
+  .pp-focus__weight {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    padding: 3px 10px;
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-pill);
+  }
+  .pp-focus__right {
+    display: flex; flex-direction: column;
+    gap: 12px;
+  }
+  .pp-focus__kind {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .pp-focus__title {
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 28px;
+    letter-spacing: 0.02em;
+    color: var(--strategist-fg);
+    margin: 0;
+    line-height: 1.15;
+  }
+  .pp-focus__body {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15.5px;
+    color: var(--strategist-fg-2);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 60ch;
+  }
+  .pp-focus__row {
+    display: flex; align-items: center;
+    gap: 18px; flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .pp-focus__cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%);
+    color: #FFFFFF;
+    border: 0;
+    border-radius: var(--r-pill);
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    cursor: pointer;
+    transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .pp-focus__cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .pp-focus__cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .pp-focus__alt-row {
+    display: flex; gap: 10px; align-items: center;
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--strategist-rule);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    flex-wrap: wrap;
+  }
+  .pp-focus__alt-row b { color: var(--strategist-fg); font-weight: 700; }
+  .pp-focus__alt {
+    background: transparent;
+    border: 1px solid var(--strategist-card-border);
+    color: var(--strategist-fg-2);
+    border-radius: var(--r-pill);
+    padding: 5px 12px;
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: lowercase;
+    cursor: pointer;
+    transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+  }
+  .pp-focus__alt:hover {
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+
+  /* Bottom proof · gradient-policy note */
+  .pp-proof {
+    margin-top: 22px;
+    padding: 18px 22px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    display: flex; gap: 18px; align-items: center;
+    flex-wrap: wrap;
+  }
+  .pp-proof__lbl {
+    font-family: var(--font-mono);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .pp-proof__chip {
+    display: inline-flex; align-items: center;
+    padding: 0; gap: 0;
+  }
+  .pp-proof__note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--strategist-fg-2);
+    flex-grow: 1;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<main class="proto" data-screen-label="STR-2I Pray Path">
+
+  <div class="proto__topbar">
+    <div class="proto__label">
+      <b>STR-2I</b>
+      <span class="proto__label-sep">·</span>
+      <span>Pray Path · 3 offerings</span>
+      <span class="proto__label-sep">·</span>
+      <span>renders on PRAY verdict</span>
+    </div>
+    <div id="theme-pill-mount"></div>
+  </div>
+
+  <header class="proto__head">
+    <div>
+      <div class="proto__kicker">Single-touch · gradient header (pre-blessed v2)</div>
+      <h1>The Strategist · The Pray Path</h1>
+      <p class="lede">
+        Surfaces only on PRAY. Three offerings — mantra, offering, pilgrimage — laid out as a triptych by default; the A/B toggle collapses to a focused single-card with the other two as alternates. Gradient surface treatment lives in the header band only; the VerdictChip chip type stays full gold per the v2 chip-vs-banner rule.
+      </p>
+    </div>
+    <div class="proto__meta">
+      <div><strong>Build</strong> A2 · v1</div>
+      <div><strong>Inherits</strong> SegPill · VerdictChip</div>
+      <div><strong>New</strong> gradient header · CTA triptych</div>
+      <div><strong>Default</strong> Triptych · 3 CTAs</div>
+    </div>
+  </header>
+
+  <div id="strategist-mount"></div>
+
+  <footer class="proto__foot">
+    <span>STR-2I · PrayPath · v1 · A2 · Claude Design</span>
+    <span>26 May 2026 · single-touch chain</span>
+  </footer>
+
+</main>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" data-presets="react" src="_assets/strategist-primitives.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState } = React;
+
+/* Mantra · stylized syllable (om) inside a circle */
+const IconMantra = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="9" />
+    <path d="M8 14c1.5 1.5 4 1.5 5.5 0 1.5-1.5 1.5-4 0-5.5-.6-.6-1.4-.9-2.2-.9" />
+    <circle cx="14.5" cy="6.5" r="1" fill="currentColor" />
+  </svg>
+);
+/* Offering · bowl with drop */
+const IconOffering = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 11h16l-1.5 7a2 2 0 0 1-2 1.5h-9a2 2 0 0 1-2-1.5L4 11Z" />
+    <path d="M12 4c-1.2 2 1.2 3 0 5" />
+  </svg>
+);
+/* Pilgrimage · footstep + arrow */
+const IconYatra = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M5 19c0-3 2-5 4-5s4 2 4 5" />
+    <circle cx="9" cy="11" r="2" />
+    <path d="M16 7l4 0M20 7l-2-2M20 7l-2 2" />
+    <path d="M16 14l4 0M20 14l-2-2M20 14l-2 2" />
+  </svg>
+);
+
+const ICONS = { mantra: IconMantra, offering: IconOffering, pilgrimage: IconYatra };
+
+function CTACard({ cta }) {
+  const Icon = ICONS[cta.kind] || IconMantra;
+  return (
+    <article className="pp-card">
+      <div className="pp-card__head">
+        <span className="pp-card__code">offering · {cta.code}</span>
+        <span className="pp-card__weight">{cta.weight}</span>
+      </div>
+      <span className="pp-card__icon" aria-hidden="true"><Icon /></span>
+      <span className="pp-card__kind">{cta.kind}</span>
+      <h3 className="pp-card__title">{cta.title}</h3>
+      <p className="pp-card__body">"{cta.body}"</p>
+      <div className="pp-card__foot">
+        <span className="pp-card__commit"><b>{cta.commitment}</b></span>
+        <button type="button" className="pp-card__cta">
+          Begin
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="2" y1="6" x2="10" y2="6"/><polyline points="7,3 10,6 7,9"/>
+          </svg>
+        </button>
+      </div>
+    </article>
+  );
+}
+
+function Triptych({ ctas }) {
+  return (
+    <div className="pp-triptych">
+      {ctas.map((c) => <CTACard key={c.code} cta={c} />)}
+    </div>
+  );
+}
+
+function FocusCard({ ctas, focusCode, onFocus }) {
+  const focus = ctas.find((c) => c.code === focusCode) || ctas[0];
+  const alts = ctas.filter((c) => c.code !== focus.code);
+  const Icon = ICONS[focus.kind] || IconMantra;
+  return (
+    <section className="pp-focus">
+      <div className="pp-focus__icon-block">
+        <span className="pp-focus__icon" aria-hidden="true"><Icon /></span>
+        <span className="pp-focus__code">offering · {focus.code}</span>
+        <span className="pp-focus__weight">{focus.weight}</span>
+      </div>
+      <div className="pp-focus__right">
+        <span className="pp-focus__kind">{focus.kind}</span>
+        <h3 className="pp-focus__title">{focus.title}</h3>
+        <p className="pp-focus__body">"{focus.body}"</p>
+        <div className="pp-focus__row">
+          <button type="button" className="pp-focus__cta">
+            Begin · {focus.commitment}
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="2" y1="6" x2="10" y2="6"/><polyline points="7,3 10,6 7,9"/>
+            </svg>
+          </button>
+        </div>
+        <div className="pp-focus__alt-row">
+          <span>or · <b>switch focus</b> ·</span>
+          {alts.map((alt) => (
+            <button
+              key={alt.code}
+              type="button"
+              className="pp-focus__alt"
+              onClick={() => onFocus(alt.code)}
+            >
+              {alt.kind}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PrayModule({ mode }) {
+  const p = window.SEEKER.pray;
+  const [view, setView] = useState('triptych');
+  const [focusCode, setFocusCode] = useState('02'); /* middleweight default */
+
+  return (
+    <div className="strategist-module" data-mode={mode}>
+      <SectionHeader
+        title="The Pray Path"
+        meta={null}
+        right={
+          <SegPill
+            segments={[
+              { value: 'triptych', label: 'triptych' },
+              { value: 'focus',    label: 'focus' },
+            ]}
+            value={view}
+            onChange={setView}
+            size="sm"
+            ariaLabel="Pray path layout"
+          />
+        }
+      />
+
+      {/* Gradient header · v2 pre-blessed gold↔rahu surface */}
+      <header className="pp-header">
+        <div className="pp-header__top">
+          <VerdictChip type="pray" />
+          <span className="pp-header__sep" aria-hidden="true"></span>
+          <span className="pp-header__eyebrow">The chart asks for offering</span>
+          <span style={{ flexGrow: 1 }}></span>
+          <span className="pp-header__seal">re-read · within 7 days of offering</span>
+        </div>
+        <h2 className="pp-header__title">{p.headline}</h2>
+        <p className="pp-header__sub">"{p.sub}"</p>
+      </header>
+
+      {view === 'triptych'
+        ? <Triptych ctas={p.ctas} />
+        : <FocusCard ctas={p.ctas} focusCode={focusCode} onFocus={setFocusCode} />}
+
+      <div className="pp-proof">
+        <span className="pp-proof__lbl">chip-vs-banner rule</span>
+        <span className="pp-proof__chip"><VerdictChip type="pray" /></span>
+        <span className="pp-proof__note">
+          The chip stays full gold above. The gradient lives on the <em>header surface</em> — the page-level gold↔rahu treatment, plus the CTA gradient in focus mode. One rule, two patterns (v2 §1).
+        </span>
+      </div>
+
+      <div className="inherit-note">
+        <div className="inherit-note__lbl">2I honors v2 rulings · surface gradient · pure chip</div>
+        <p>
+          <b>Imported</b> · <code>SegPill</code> at <code>size='sm'</code>, <code>VerdictChip</code>, <code>SectionHeader</code>, shell.
+        </p>
+        <p>
+          <b>New</b> · gradient header band (gold↔rahu, radial blend, headline type with <code>background-clip: text</code>), CTA triptych card variant, focus-mode swap (single primary + two alts as pill buttons).
+        </p>
+        <p>
+          <b>Render rule</b> · conditionally mounted by the page wrapper on <code>{'seeker.verdict === "pray"'}</code>. Coexists with the 2D Re-entry Loop on NO/WAIT — they never render together; the page selects which to mount.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [theme, setTheme] = useTheme();
+  return (
+    <>
+      <ProtoTopBar theme={theme} setTheme={setTheme} />
+      <PrayModule mode={theme} />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('strategist-mount')).render(<App />);
+</script>
+
+</body>
+</html>

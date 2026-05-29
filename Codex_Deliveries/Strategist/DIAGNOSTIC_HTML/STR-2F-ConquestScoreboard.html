@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STR-2F · Conquest Scoreboard · v1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     TOKENS · doc shell (constant — agency canvas signal)
+     The 56px gold-dot grid lives here only. Module backdrop
+     is module-owned via --strategist-bg.
+     ═══════════════════════════════════════════════════════════ */
+  :root {
+    /* Doc shell · constant */
+    --shell-bg:           #0a0d14;
+    --shell-grid-dot:     rgba(197, 160, 89, 0.022);
+    --shell-ink:          #ECE6D6;
+    --shell-ink-2:        #B6AE99;
+    --shell-ink-3:        #8A8576;
+    --shell-ink-mute:     #5C5849;
+    --shell-rule:         rgba(255, 255, 255, 0.06);
+    --shell-hairline:     rgba(197, 160, 89, 0.15);
+    --shell-hairline-bold: rgba(197, 160, 89, 0.32);
+
+    /* Brand · constant across modes */
+    --gold:               #C5A059;
+    --gold-soft:          rgba(197, 160, 89, 0.10);
+    --gold-glow:          rgba(197, 160, 89, 0.35);
+
+    /* Band colours · constant across modes */
+    --emerald:            #3FAA7A;
+    --amber:              #E3A341;
+    --orange:             #E27A3F;
+    --red:                #E25C4B;
+    --emerald-soft:       rgba(63, 170, 122, 0.12);
+    --amber-soft:         rgba(227, 163, 65, 0.12);
+    --orange-soft:        rgba(226, 122, 63, 0.12);
+    --red-soft:           rgba(226, 92, 75, 0.12);
+
+    /* PRAY · constant */
+    --rahu:               #9B59B6;
+    --rahu-soft:          rgba(155, 89, 182, 0.12);
+    --rahu-soft-paper:    rgba(155, 89, 182, 0.10);
+
+    /* Type · constant */
+    --font-display:       'Cinzel', 'Playfair Display', Georgia, serif;
+    --font-serif:         'Playfair Display', Georgia, serif;
+    --font-sans:          'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono:          'JetBrains Mono', source-code-pro, Menlo, Consolas, monospace;
+
+    /* Radii · constant */
+    --r-xs: 4px; --r-sm: 6px; --r-md: 10px; --r-pill: 999px;
+
+    --ease: cubic-bezier(.4, .14, .3, 1);
+    --dur:  220ms;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--shell-bg);
+    color: var(--shell-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.55;
+    font-feature-settings: "ss01" on, "ss02" on, "tnum" on;
+  }
+
+  /* Doc-shell gold-dot grid · 56px · lives on body only */
+  body {
+    background-image:
+      linear-gradient(var(--shell-grid-dot) 1px, transparent 1px),
+      linear-gradient(90deg, var(--shell-grid-dot) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     Prototype frame · top bar · footer
+     ═══════════════════════════════════════════════════════════ */
+  .proto {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 24px 32px 80px;
+  }
+
+  .proto__topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    background: rgba(22, 27, 39, 0.6);
+    border: 1px solid var(--shell-hairline);
+    border-radius: var(--r-sm);
+    backdrop-filter: blur(8px);
+  }
+  .proto__label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--shell-ink-3);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .proto__label b { color: var(--gold); font-weight: 700; }
+  .proto__label-sep { color: var(--shell-ink-mute); }
+
+  .proto__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    padding-bottom: 18px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--shell-hairline);
+  }
+  .proto__kicker {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .proto__kicker::before {
+    content: ""; width: 6px; height: 6px;
+    background: var(--gold); border-radius: 50%;
+  }
+  .proto__head h1 {
+    font-family: var(--font-display);
+    font-weight: 700; font-size: 28px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    margin: 0 0 6px;
+  }
+  .proto__head .lede {
+    font-family: var(--font-serif);
+    font-style: italic; font-size: 14.5px;
+    color: var(--shell-ink-2); margin: 0;
+    max-width: 56ch; line-height: 1.55;
+  }
+  .proto__meta {
+    font-family: var(--font-mono);
+    font-size: 10px; color: var(--shell-ink-3);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    line-height: 1.85; text-align: right;
+  }
+  .proto__meta strong { color: var(--shell-ink-2); font-weight: 600; }
+
+  .proto__foot {
+    margin-top: 48px;
+    padding-top: 22px;
+    border-top: 1px solid var(--shell-hairline);
+    font-family: var(--font-mono);
+    font-size: 10px; color: var(--shell-ink-mute);
+    letter-spacing: 0.22em; text-transform: uppercase;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     THE STRATEGIST MODULE · per-mode tokens
+     The module paints its own opaque backdrop. No shell grid
+     bleeds through. Three modes: dark · light · cr (control room).
+     ═══════════════════════════════════════════════════════════ */
+
+  /* DARK · default — Step 3 War Room surfaces */
+  .strategist-module[data-mode="dark"] {
+    --strategist-bg:            #0a0d14;
+    --strategist-bg-image:      none;
+    --strategist-fg:            #ECE6D6;
+    --strategist-fg-2:          #B6AE99;
+    --strategist-fg-3:          #8A8576;
+    --strategist-fg-mute:       #5C5849;
+    --strategist-card-bg:       #161b27;
+    --strategist-card-elev:     #1c2230;
+    --strategist-card-deep:     #11151f;
+    --strategist-card-border:   rgba(197, 160, 89, 0.15);
+    --strategist-card-border-bold: rgba(197, 160, 89, 0.32);
+    --strategist-rule:          rgba(255, 255, 255, 0.06);
+    --strategist-pip-track:     rgba(255,255,255,0.05);
+    --strategist-pray-fill:     rgba(155, 89, 182, 0.12);
+  }
+
+  /* LIGHT · paper */
+  .strategist-module[data-mode="light"] {
+    --strategist-bg:            #F4EFE3;
+    --strategist-bg-image:      none;
+    --strategist-fg:            #2A2418;
+    --strategist-fg-2:          #5B5240;
+    --strategist-fg-3:          #897F69;
+    --strategist-fg-mute:       #B5AC93;
+    --strategist-card-bg:       #FFFFFF;
+    --strategist-card-elev:     #FBF7EC;
+    --strategist-card-deep:     #F4EFE3;
+    --strategist-card-border:   rgba(160, 130, 70, 0.20);
+    --strategist-card-border-bold: rgba(160, 130, 70, 0.40);
+    --strategist-rule:          rgba(60, 50, 30, 0.08);
+    --strategist-pip-track:     rgba(60, 50, 30, 0.10);
+    --strategist-pray-fill:     rgba(155, 89, 182, 0.10);
+  }
+
+  /* CR · control room · paper + 48/192 tactical green matrix */
+  .strategist-module[data-mode="cr"] {
+    --strategist-bg:            #F1ECDF;
+    --strategist-bg-image:
+      linear-gradient(rgba(63, 170, 122, 0.16) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(63, 170, 122, 0.16) 1.5px, transparent 1.5px),
+      linear-gradient(rgba(63, 170, 122, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(63, 170, 122, 0.08) 1px, transparent 1px);
+    --strategist-bg-size:       192px 192px, 192px 192px, 48px 48px, 48px 48px;
+    --strategist-fg:            #1F2A1F;
+    --strategist-fg-2:          #4A5945;
+    --strategist-fg-3:          #76876F;
+    --strategist-fg-mute:       #A6B49E;
+    --strategist-card-bg:       rgba(255, 255, 255, 0.88);
+    --strategist-card-elev:     rgba(255, 255, 255, 0.95);
+    --strategist-card-deep:     rgba(241, 236, 223, 0.92);
+    --strategist-card-border:   rgba(63, 170, 122, 0.30);
+    --strategist-card-border-bold: rgba(63, 170, 122, 0.50);
+    --strategist-rule:          rgba(63, 170, 122, 0.14);
+    --strategist-pip-track:     rgba(63, 170, 122, 0.18);
+    --strategist-pray-fill:     rgba(155, 89, 182, 0.10);
+  }
+
+  /* The module · opaque backdrop fills its own box
+     NOTE: no CSS transition on background-color / color / border-color.
+     Chromium does not fire transitions for properties whose value is
+     `var(--token)` when the token alone changes (no typed @property).
+     Mode swaps are instant — fine for a 3-mode theme picker. If a
+     future surface wants a cross-fade, register the tokens with
+     @property { syntax: '<color>' } or paint via class instead of var. */
+  .strategist-module {
+    background-color: var(--strategist-bg);
+    background-image: var(--strategist-bg-image, none);
+    background-size: var(--strategist-bg-size, auto);
+    color: var(--strategist-fg);
+    border: 1px solid var(--strategist-card-border-bold);
+    border-radius: var(--r-md);
+    padding: 24px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     SECTION HEADER · ◆ Conquest Scoreboard
+     · Cinzel 700 · 13.5px · gold · 0.14em tracking
+     · grid 3-col: title / spacer / toggle  (anchors clean)
+     ═══════════════════════════════════════════════════════════ */
+  .section-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 6px 4px 18px;
+    border-bottom: 1px dashed var(--strategist-rule);
+    margin-bottom: 22px;
+  }
+  .section-header__title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 13.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-header__title .diamond { font-size: 11px; line-height: 1; }
+  .section-header__meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    justify-self: end;
+    margin-right: 12px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     SEG-PILL · the reusable primitive (the artifact 2C inherits)
+     Props: segments[] · value · onChange · size 'sm'|'md'
+     ═══════════════════════════════════════════════════════════ */
+  .seg-pill {
+    display: inline-flex;
+    padding: 3px;
+    background: var(--strategist-card-deep, rgba(0,0,0,0.2));
+    border: 1px solid var(--strategist-card-border, var(--shell-hairline));
+    border-radius: var(--r-pill);
+  }
+  .seg-pill--sm { padding: 3px; }
+  .seg-pill--md { padding: 4px; }
+  .seg-pill__seg {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 0; background: transparent;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+    color: var(--strategist-fg-3, var(--shell-ink-3));
+    cursor: pointer;
+    border-radius: var(--r-pill);
+    transition: color var(--dur) var(--ease),
+                background-color var(--dur) var(--ease);
+    white-space: nowrap;
+  }
+  .seg-pill--sm .seg-pill__seg {
+    padding: 5px 12px;
+    font-size: 10px;
+  }
+  .seg-pill--md .seg-pill__seg {
+    padding: 7px 16px;
+    font-size: 11px;
+  }
+  .seg-pill__seg:hover { color: var(--strategist-fg-2, var(--shell-ink-2)); }
+  .seg-pill__seg--on {
+    background: var(--gold);
+    color: var(--strategist-bg, var(--shell-bg));
+  }
+  .seg-pill__seg--on:hover { color: var(--strategist-bg, var(--shell-bg)); }
+  .seg-pill__seg:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* Theme pill (shell-scoped) · same component, shell tokens */
+  .shell-seg-pill {
+    display: inline-flex;
+    padding: 3px;
+    background: rgba(17, 21, 31, 0.6);
+    border: 1px solid var(--shell-hairline);
+    border-radius: var(--r-pill);
+  }
+  .shell-seg-pill__seg {
+    border: 0; background: transparent;
+    padding: 5px 14px;
+    font-family: var(--font-mono);
+    font-weight: 600; font-size: 10px;
+    letter-spacing: 0.18em; text-transform: lowercase;
+    color: var(--shell-ink-3);
+    cursor: pointer;
+    border-radius: var(--r-pill);
+    transition: color var(--dur) var(--ease),
+                background-color var(--dur) var(--ease);
+  }
+  .shell-seg-pill__seg:hover { color: var(--shell-ink-2); }
+  .shell-seg-pill__seg--on {
+    background: var(--gold);
+    color: var(--shell-bg);
+  }
+  .shell-seg-pill__seg:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     VERDICT CHIP · YES · WAIT · NO · PRAY
+     PRAY · gold text on rahu-soft fill, full-gold border (locked v2)
+     ═══════════════════════════════════════════════════════════ */
+  .verdict-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 11px;
+    border-radius: var(--r-pill);
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    border: 1px solid;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+  .verdict-chip__pip {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 0 currentColor;
+  }
+  .verdict-chip--yes  {
+    color: var(--emerald);
+    background: var(--emerald-soft);
+    border-color: rgba(63, 170, 122, 0.40);
+  }
+  .verdict-chip--wait {
+    color: var(--amber);
+    background: var(--amber-soft);
+    border-color: rgba(227, 163, 65, 0.40);
+  }
+  .verdict-chip--no   {
+    color: var(--red);
+    background: var(--red-soft);
+    border-color: rgba(226, 92, 75, 0.40);
+  }
+  /* PRAY · v2 locked treatment */
+  .verdict-chip--pray {
+    color: var(--gold);
+    background: var(--strategist-pray-fill, var(--rahu-soft));
+    border-color: var(--gold);
+  }
+
+  /* Active state (the seeker's current verdict) — same chip + halo */
+  .verdict-chip--active {
+    box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 14%, transparent);
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     HERO CARD · ConquestScoreboard expanded
+     ═══════════════════════════════════════════════════════════ */
+  .board-hero {
+    background: var(--strategist-card-bg);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 22px 26px;
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    gap: 32px;
+    align-items: stretch;
+  }
+  .board-hero__left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 8px 4px;
+  }
+
+  /* Gauge */
+  .gauge {
+    position: relative;
+    width: 192px;
+    height: 192px;
+  }
+  .gauge svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+  .gauge__track,
+  .gauge__fill {
+    fill: none;
+    stroke-width: 11;
+    stroke-linecap: round;
+  }
+  .gauge__track { stroke: var(--strategist-pip-track); }
+  .gauge__fill {
+    stroke: var(--amber);
+    color: var(--amber);
+    filter: drop-shadow(0 0 12px color-mix(in srgb, currentColor 50%, transparent));
+    transition: stroke-dashoffset 600ms var(--ease);
+  }
+  .gauge__center {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 2px; text-align: center;
+  }
+  .gauge__score {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 52px;
+    letter-spacing: 0.01em;
+    line-height: 0.96;
+    color: var(--strategist-fg);
+  }
+  .gauge__max {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--strategist-fg-3);
+    letter-spacing: 0.18em;
+    margin-top: 4px;
+  }
+  .gauge__tier {
+    margin-top: 8px;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+
+  .board-hero__verdict {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .board-hero__verdict-lbl {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    font-weight: 700;
+  }
+
+  /* Right side: data rows */
+  .board-hero__rows {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 0;
+    align-content: center;
+  }
+  .row-data {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 12px 4px;
+    border-bottom: 1px dashed var(--strategist-rule);
+  }
+  .row-data:last-child { border-bottom: 0; }
+  .row-data__label {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .row-data__body {
+    font-size: 13.5px;
+    color: var(--strategist-fg);
+    line-height: 1.5;
+  }
+  .row-data__body strong {
+    color: var(--strategist-fg);
+    font-weight: 600;
+  }
+  .row-data__body em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--strategist-fg-2);
+  }
+  .row-data__aside {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--strategist-fg-3);
+    text-transform: uppercase;
+  }
+  .row-data__aside b { color: var(--gold); font-weight: 700; }
+
+  /* Karmic mini-chip */
+  .karmic-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 9px;
+    border-radius: var(--r-pill);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--emerald);
+    background: var(--emerald-soft);
+    border: 1px solid rgba(63,170,122,0.35);
+  }
+  .karmic-chip__check {
+    width: 10px; height: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    color: var(--emerald);
+  }
+
+  /* Streak tier chip — borrow gold-soft */
+  .streak-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 9px;
+    border-radius: var(--r-pill);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--gold);
+    background: var(--gold-soft);
+    border: 1px solid var(--strategist-card-border);
+  }
+
+  /* Directive quote */
+  .directive {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 14px;
+    color: var(--strategist-fg);
+    line-height: 1.45;
+  }
+
+  /* ═══════════════════════════════════════════════════════════
+     COMPACT view · single horizontal row
+     ═══════════════════════════════════════════════════════════ */
+  .board-compact {
+    background: var(--strategist-card-bg);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 14px 20px;
+    display: grid;
+    grid-template-columns: auto auto auto 1fr auto;
+    gap: 18px;
+    align-items: center;
+  }
+  .board-compact__mini-gauge {
+    width: 36px; height: 36px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .board-compact__mini-gauge svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+  .board-compact__score-block {
+    display: flex; align-items: baseline; gap: 8px;
+  }
+  .board-compact__score {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--strategist-fg);
+    letter-spacing: 0.02em;
+    line-height: 1;
+  }
+  .board-compact__tier {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--amber);
+  }
+  .board-compact__rule {
+    width: 1px;
+    height: 24px;
+    background: var(--strategist-rule);
+    align-self: center;
+  }
+  .board-compact__directive {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 13px;
+    color: var(--strategist-fg-2);
+    line-height: 1.4;
+  }
+  .board-compact__streak {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .board-compact__streak b { color: var(--gold); font-weight: 700; }
+
+  /* ═══════════════════════════════════════════════════════════
+     CHIP-SET STRIP · all 4 verdicts visible (PRAY proof)
+     ═══════════════════════════════════════════════════════════ */
+  .chip-set {
+    margin-top: 22px;
+    padding: 18px 22px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+  }
+  .chip-set__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .chip-set__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    font-weight: 700;
+  }
+  .chip-set__note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--strategist-fg-2);
+  }
+  .chip-set__row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+  .chip-set__rule {
+    flex-grow: 1;
+    height: 1px;
+    background: var(--strategist-rule);
+    min-width: 24px;
+  }
+  .chip-set__label {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--strategist-fg-mute);
+    margin-left: 10px;
+  }
+
+  /* Build notes panel · what the next files inherit */
+  .inherit-note {
+    margin-top: 26px;
+    padding: 18px 22px;
+    background: var(--strategist-card-bg);
+    border: 1px solid var(--strategist-card-border);
+    border-left: 3px solid var(--gold);
+    border-radius: var(--r-sm);
+  }
+  .inherit-note__lbl {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .inherit-note p {
+    margin: 0 0 6px;
+    font-size: 12.5px;
+    color: var(--strategist-fg-2);
+    line-height: 1.55;
+  }
+  .inherit-note p:last-child { margin: 0; }
+  .inherit-note code {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    background: var(--strategist-card-deep);
+    padding: 1px 6px;
+    border-radius: 3px;
+    border: 1px solid var(--strategist-rule);
+    color: var(--gold);
+  }
+  .inherit-note b { color: var(--strategist-fg); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<main class="proto" data-screen-label="STR-2F Conquest Scoreboard">
+
+  <!-- TOP BAR · theme pill mounts here (right) -->
+  <div class="proto__topbar">
+    <div class="proto__label">
+      <b>STR-2F</b>
+      <span class="proto__label-sep">·</span>
+      <span>Conquest Scoreboard</span>
+      <span class="proto__label-sep">·</span>
+      <span>Phase 2 · pattern-setter</span>
+    </div>
+    <div id="theme-pill-mount"></div>
+  </div>
+
+  <!-- BRIEF -->
+  <header class="proto__head">
+    <div>
+      <div class="proto__kicker">Step 4 · all locks honored · ready for review</div>
+      <h1>The Strategist · Conquest Scoreboard</h1>
+      <p class="lede">
+        First of the seven Phase 2 surfaces. Implements the 9-item pattern lock from rulings v2 — three-mode theme, reusable pill primitive, locked PRAY chip, module-owned backdrop. 2E → 2I inherit the primitives intact.
+      </p>
+    </div>
+    <div class="proto__meta">
+      <div><strong>Build</strong> A2 · v1</div>
+      <div><strong>Pattern</strong> rulings v2 · 9 locks</div>
+      <div><strong>Inherits</strong> Step 3 War Room</div>
+      <div><strong>Cascade</strong> 2E · 2C · 2D · 2I · 2G · 2B</div>
+    </div>
+  </header>
+
+  <!-- THE STRATEGIST MODULE · mounts the scoreboard -->
+  <div id="strategist-mount"></div>
+
+  <footer class="proto__foot">
+    <span>STR-2F · ConquestScoreboard · v1 · A2 · Claude Design</span>
+    <span>26 May 2026 · pattern-setter</span>
+  </footer>
+
+</main>
+
+<!-- React + Babel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect } = React;
+
+// ═════════════════════════════════════════════════════════════
+// LOCK #6 · Seeker stub — single object, shared across all 7
+// surfaces. Drives every demo in the file.
+// ═════════════════════════════════════════════════════════════
+const SEEKER = {
+  score: 67,
+  max: 99,
+  tier: 'Field Marshal',          // Phase 2 rank title for the 50–74 band
+  tierBand: 'amber',              // gauge fill = amber (Friction band colour)
+  nextTier: 'Sovereign',          // 75-99 band rank
+  nextThreshold: 75,
+  pointsToNext: 8,
+  verdict: 'yes',                 // active Oracle verdict
+  karmic: 'cleared',              // ledger state
+  streak: { days: 12, tier: 'Disciplined' },
+  directive: 'Hold the line on Ritual Wednesdays',
+  asOf: '26 May · 09:42 IST',
+};
+
+// ═════════════════════════════════════════════════════════════
+// LOCK #1 · Theme switcher · sessionStorage persistence
+// ═════════════════════════════════════════════════════════════
+const THEMES = ['light', 'dark', 'cr'];
+const THEME_KEY = 'str-2f.theme';
+
+function useTheme() {
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem(THEME_KEY);
+      return THEMES.includes(saved) ? saved : 'dark';
+    } catch { return 'dark'; }
+  });
+  useEffect(() => {
+    try { sessionStorage.setItem(THEME_KEY, theme); } catch {}
+  }, [theme]);
+  return [theme, setTheme];
+}
+
+// ═════════════════════════════════════════════════════════════
+// LOCK #7 · SegPill · the reusable primitive
+// segments · value · onChange · size 'sm'|'md'
+// 2C · 2D · 2I all consume this. Theme switcher too (shell variant).
+// ═════════════════════════════════════════════════════════════
+function SegPill({ segments, value, onChange, size = 'sm', ariaLabel }) {
+  return (
+    <div className={`seg-pill seg-pill--${size}`} role="tablist" aria-label={ariaLabel}>
+      {segments.map((seg) => {
+        const key = typeof seg === 'string' ? seg : seg.value;
+        const label = typeof seg === 'string' ? seg : seg.label;
+        const active = key === value;
+        return (
+          <button
+            key={key}
+            type="button"
+            role="tab"
+            aria-selected={active}
+            className={`seg-pill__seg ${active ? 'seg-pill__seg--on' : ''}`}
+            onClick={() => onChange(key)}
+          >
+            {label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+
+// Theme pill · shell-scoped variant (lives in proto top bar,
+// not in the module; identical mechanic to SegPill)
+function ThemePill({ value, onChange }) {
+  return (
+    <div className="shell-seg-pill" role="tablist" aria-label="Theme mode">
+      {THEMES.map((t) => (
+        <button
+          key={t}
+          type="button"
+          role="tab"
+          aria-selected={value === t}
+          className={`shell-seg-pill__seg ${value === t ? 'shell-seg-pill__seg--on' : ''}`}
+          onClick={() => onChange(t)}
+        >
+          {t}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+// ═════════════════════════════════════════════════════════════
+// LOCK #5 · VerdictChip — YES · WAIT · NO · PRAY
+// PRAY is the v2 locked treatment: gold text on rahu-soft fill,
+// full-gold border. Chip type = full gold, always.
+// ═════════════════════════════════════════════════════════════
+const VERDICT_META = {
+  yes:  { label: 'Yes',  pip: true },
+  wait: { label: 'Wait', pip: true },
+  no:   { label: 'No',   pip: true },
+  pray: { label: 'Pray', pip: false, glyph: '◆' },
+};
+function VerdictChip({ type, active = false }) {
+  const meta = VERDICT_META[type] || VERDICT_META.yes;
+  return (
+    <span className={`verdict-chip verdict-chip--${type} ${active ? 'verdict-chip--active' : ''}`}>
+      {meta.glyph ? <span aria-hidden="true">{meta.glyph}</span> : null}
+      {meta.pip ? <span className="verdict-chip__pip" /> : null}
+      {meta.label}
+    </span>
+  );
+}
+
+// ═════════════════════════════════════════════════════════════
+// Gauge — share the same SVG vocabulary as Step 3 War Room.
+// 100r · 628.3 dasharray · band-coloured fill · subtle glow.
+// ═════════════════════════════════════════════════════════════
+const CIRC = 628.3, RADIUS = 100, VIEW = 240;
+function Gauge({ score, max, mini = false }) {
+  const s = Math.max(0, Math.min(max, score));
+  const offset = CIRC * (1 - s / max);
+  return (
+    <div className={mini ? 'board-compact__mini-gauge' : 'gauge'} aria-hidden="true">
+      <svg viewBox={`0 0 ${VIEW} ${VIEW}`}>
+        <circle
+          className="gauge__track" cx={VIEW/2} cy={VIEW/2} r={RADIUS}
+          strokeDasharray={CIRC} strokeDashoffset="0"
+        />
+        <circle
+          className="gauge__fill" cx={VIEW/2} cy={VIEW/2} r={RADIUS}
+          strokeDasharray={CIRC} strokeDashoffset={offset}
+          style={mini ? { strokeWidth: 22 } : {}}
+        />
+      </svg>
+      {!mini && (
+        <div className="gauge__center">
+          <div className="gauge__score">{s}</div>
+          <div className="gauge__max">/ {max}</div>
+          <div className="gauge__tier">{SEEKER.tier}</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ═════════════════════════════════════════════════════════════
+// Karmic chip (mini) — Phase 2's "cleared" ledger signal
+// ═════════════════════════════════════════════════════════════
+function KarmicChip({ state }) {
+  return (
+    <span className="karmic-chip">
+      <span className="karmic-chip__check" aria-hidden="true">
+        <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="2,6.5 5,9 10,3.5"/></svg>
+      </span>
+      {state}
+    </span>
+  );
+}
+
+// ═════════════════════════════════════════════════════════════
+// HERO · expanded view
+// ═════════════════════════════════════════════════════════════
+function ScoreboardExpanded() {
+  return (
+    <div className="board-hero">
+      <div className="board-hero__left">
+        <Gauge score={SEEKER.score} max={SEEKER.max} />
+        <div className="board-hero__verdict">
+          <span className="board-hero__verdict-lbl">Active verdict</span>
+          <VerdictChip type={SEEKER.verdict} active />
+        </div>
+      </div>
+
+      <div className="board-hero__rows">
+        <div className="row-data">
+          <div className="row-data__label">Rank</div>
+          <div className="row-data__body">
+            <strong>{SEEKER.tier}</strong> · 50 – 74 band
+          </div>
+          <div className="row-data__aside">
+            next · <b>{SEEKER.nextTier}</b> · {SEEKER.pointsToNext} to {SEEKER.nextThreshold}
+          </div>
+        </div>
+
+        <div className="row-data">
+          <div className="row-data__label">Karmic</div>
+          <div className="row-data__body">
+            <KarmicChip state="Cleared" />
+            <span style={{ marginLeft: 10, fontFamily: 'var(--font-serif)', fontStyle: 'italic', color: 'var(--strategist-fg-2)', fontSize: 13 }}>
+              ledger balanced · gates open
+            </span>
+          </div>
+          <div className="row-data__aside">last clearance · 14 may</div>
+        </div>
+
+        <div className="row-data">
+          <div className="row-data__label">Streak</div>
+          <div className="row-data__body" style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <strong>{SEEKER.streak.days} days</strong>
+            <span className="streak-chip">{SEEKER.streak.tier}</span>
+          </div>
+          <div className="row-data__aside">next tier · 21 days</div>
+        </div>
+
+        <div className="row-data">
+          <div className="row-data__label">Directive</div>
+          <div className="row-data__body">
+            <span className="directive">"{SEEKER.directive}"</span>
+          </div>
+          <div className="row-data__aside">as of {SEEKER.asOf}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ═════════════════════════════════════════════════════════════
+// COMPACT view — single horizontal row
+// ═════════════════════════════════════════════════════════════
+function ScoreboardCompact() {
+  return (
+    <div className="board-compact">
+      <Gauge score={SEEKER.score} max={SEEKER.max} mini />
+      <div className="board-compact__score-block">
+        <span className="board-compact__score">{SEEKER.score}</span>
+        <span className="board-compact__tier">{SEEKER.tier}</span>
+      </div>
+      <VerdictChip type={SEEKER.verdict} active />
+      <div className="board-compact__directive">"{SEEKER.directive}"</div>
+      <div className="board-compact__streak">
+        <b>{SEEKER.streak.days}-day</b> streak · {SEEKER.streak.tier}
+      </div>
+    </div>
+  );
+}
+
+// ═════════════════════════════════════════════════════════════
+// CHIP-SET STRIP · all 4 verdict chips visible for review
+// (PRAY proof — visible across all three modes via the theme pill)
+// ═════════════════════════════════════════════════════════════
+function ChipSetStrip() {
+  return (
+    <div className="chip-set">
+      <div className="chip-set__head">
+        <span className="chip-set__eyebrow">Verdict chip system · proof set</span>
+        <span className="chip-set__note">
+          Switch theme above · PRAY treatment holds across light / dark / cr
+        </span>
+      </div>
+      <div className="chip-set__row">
+        <VerdictChip type="yes" />
+        <VerdictChip type="wait" />
+        <VerdictChip type="no" />
+        <VerdictChip type="pray" />
+        <div className="chip-set__rule" />
+        <span className="chip-set__label">chip type = full gold · banner surfaces may gradient (2C / 2I)</span>
+      </div>
+    </div>
+  );
+}
+
+// ═════════════════════════════════════════════════════════════
+// THE STRATEGIST MODULE
+// · paints its own backdrop (lock #8)
+// · section header (lock #3) + A/B toggle (lock #2)
+// · expanded default (lock #2)
+// ═════════════════════════════════════════════════════════════
+function StrategistModule({ mode }) {
+  const [view, setView] = useState('expanded');
+  return (
+    <div className="strategist-module" data-mode={mode}>
+      <div className="section-header">
+        <h2 className="section-header__title">
+          <span className="diamond">◆</span>
+          Conquest Scoreboard
+        </h2>
+        <span className="section-header__meta">as of {SEEKER.asOf}</span>
+        <SegPill
+          segments={['compact', 'expanded']}
+          value={view}
+          onChange={setView}
+          size="sm"
+          ariaLabel="Scoreboard density"
+        />
+      </div>
+
+      {view === 'expanded' ? <ScoreboardExpanded /> : <ScoreboardCompact />}
+
+      <ChipSetStrip />
+
+      <div className="inherit-note">
+        <div className="inherit-note__lbl">What 2E → 2I inherit from this file</div>
+        <p>
+          <b>SegPill primitive</b> — <code>segments[] · value · onChange · size</code>. 2C consumes at <code>size='md'</code> with 4 segments (Yes · Wait · No · Pray); 2D / 2I at <code>'sm'</code>.
+        </p>
+        <p>
+          <b>VerdictChip</b> — 4 types · PRAY uses gold text on <code>rahu-soft</code>, full gold border in chip form. Banner surfaces in 2C / 2I are free to carry the gold↔rahu gradient — chip type stays gold.
+        </p>
+        <p>
+          <b>Per-mode backdrop</b> — <code>.strategist-module[data-mode]</code> owns <code>--strategist-bg</code>, opaque. Doc-shell 56px gold grid does not bleed in.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ═════════════════════════════════════════════════════════════
+// Mount · theme pill in the proto top bar + module below
+// ═════════════════════════════════════════════════════════════
+function App() {
+  const [theme, setTheme] = useTheme();
+
+  // Mount the theme pill into the proto top bar via portal-ish pattern
+  useEffect(() => {
+    const mount = document.getElementById('theme-pill-mount');
+    if (!mount) return;
+    const root = ReactDOM.createRoot(mount);
+    root.render(<ThemePill value={theme} onChange={setTheme} />);
+    return () => { try { root.unmount(); } catch {} };
+  }, [theme]);
+
+  return <StrategistModule mode={theme} />;
+}
+
+ReactDOM.createRoot(document.getElementById('strategist-mount')).render(<App />);
+</script>
+
+</body>
+</html>

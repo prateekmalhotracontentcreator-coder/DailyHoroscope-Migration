@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STR-2C · Oracle Verdict Banners · v1</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="_assets/strategist-shell.css" />
+
+<style>
+  /* ═══════════════════════════════════════════════════════════
+     STR-2C · Oracle Verdict Banners · surface CSS
+     · 4-state SegPill (md) — Yes · Wait · No · Pray
+     · Banner surface changes per verdict
+     · PRAY banner = gold↔rahu gradient on surface (pre-blessed v2)
+     · Chip type stays full gold (locked)
+     ═══════════════════════════════════════════════════════════ */
+
+  /* Banner shell */
+  .ov-banner {
+    border-radius: var(--r-md);
+    padding: 26px 30px 28px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--strategist-card-border-bold);
+    background: var(--strategist-card-bg);
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 28px;
+    align-items: start;
+    min-height: 240px;
+  }
+
+  /* Top-edge tonal stripe per verdict */
+  .ov-banner::before {
+    content: '';
+    position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: var(--ov-accent, var(--gold));
+  }
+
+  /* Verdict-specific surfaces */
+  .ov-banner--yes  { --ov-accent: var(--emerald); }
+  .ov-banner--wait { --ov-accent: var(--amber); }
+  .ov-banner--no   { --ov-accent: var(--red); }
+
+  /* PRAY · gradient surface, pre-blessed by v2 ruling.
+     Chip type itself stays full gold — VerdictChip rule. */
+  .ov-banner--pray {
+    --ov-accent: var(--gold);
+    background:
+      radial-gradient(ellipse at 100% 0%, var(--rahu-soft) 0%, transparent 55%),
+      radial-gradient(ellipse at 0% 100%, var(--gold-soft) 0%, transparent 55%),
+      var(--strategist-card-bg);
+    border-color: var(--gold);
+  }
+  .ov-banner--pray::before {
+    background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%);
+  }
+
+  /* Left column · content */
+  .ov-banner__left {
+    display: flex; flex-direction: column;
+    gap: 14px; min-width: 0;
+  }
+  .ov-banner__eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .ov-banner__eyebrow b {
+    color: var(--ov-accent);
+    font-weight: 700;
+  }
+  .ov-banner__headline {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 0.02em;
+    color: var(--strategist-fg);
+    line-height: 1.15;
+    margin: 0;
+  }
+  .ov-banner--pray .ov-banner__headline {
+    background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .ov-banner__reasoning {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--strategist-fg-2);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 50ch;
+  }
+  .ov-banner__cta-row {
+    display: flex; align-items: center;
+    gap: 18px; flex-wrap: wrap;
+    margin-top: 4px;
+  }
+  .ov-banner__cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 18px;
+    background: var(--ov-accent);
+    color: var(--strategist-bg);
+    border: 0;
+    border-radius: var(--r-pill);
+    font-family: var(--font-mono);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer;
+    transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  .ov-banner__cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  .ov-banner__cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .ov-banner__cta-arrow {
+    width: 12px; height: 12px;
+  }
+  .ov-banner__cta--pray {
+    background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%);
+    color: #FFFFFF;
+  }
+  .ov-banner__cta-secondary {
+    font-family: var(--font-mono);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+    border-bottom: 1px dashed var(--strategist-card-border-bold);
+    padding-bottom: 1px;
+    cursor: pointer;
+    background: transparent;
+    border-left: 0; border-right: 0; border-top: 0;
+  }
+  .ov-banner__cta-secondary:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* Right column · meta panel */
+  .ov-banner__right {
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 18px 20px;
+    display: flex; flex-direction: column;
+    gap: 12px;
+    align-self: stretch;
+  }
+  .ov-banner--pray .ov-banner__right {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: var(--gold);
+  }
+  .ov-banner__right-chip-line {
+    display: flex; align-items: center; gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--strategist-rule);
+  }
+  .ov-banner__right-lbl {
+    font-family: var(--font-mono);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .ov-banner__right-row {
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .ov-banner__right-row b {
+    font-family: var(--font-display);
+    font-size: 14px; font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--strategist-fg);
+  }
+  .ov-banner__signals {
+    display: grid; gap: 6px;
+    margin-top: 4px;
+  }
+  .ov-banner__signal {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 10px;
+    align-items: baseline;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--strategist-fg-2);
+    line-height: 1.45;
+  }
+  .ov-banner__signal::before {
+    content: ''; display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--ov-accent);
+    margin-top: 6px;
+  }
+
+  /* Below banner · oracle signals card */
+  .ov-context {
+    margin-top: 20px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .ov-context__cell {
+    display: flex; flex-direction: column;
+    gap: 4px;
+  }
+  .ov-context__cell + .ov-context__cell {
+    padding-left: 18px;
+    border-left: 1px dashed var(--strategist-rule);
+  }
+  .ov-context__l {
+    font-family: var(--font-mono);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .ov-context__v {
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--strategist-fg);
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+  .ov-context__sub {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--strategist-fg-3);
+    letter-spacing: 0.12em;
+  }
+
+  /* Verdict-state proof grid (mini banners) */
+  .ov-proof {
+    margin-top: 22px;
+    padding: 18px 22px;
+    background: var(--strategist-card-deep);
+    border: 1px solid var(--strategist-card-border);
+    border-radius: var(--r-sm);
+  }
+  .ov-proof__head {
+    display: flex; align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .ov-proof__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 9.5px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--strategist-fg-3);
+  }
+  .ov-proof__note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 12px;
+    color: var(--strategist-fg-2);
+  }
+  .ov-proof__row {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+
+<main class="proto" data-screen-label="STR-2C Oracle Verdict Banners">
+
+  <div class="proto__topbar">
+    <div class="proto__label">
+      <b>STR-2C</b>
+      <span class="proto__label-sep">·</span>
+      <span>Oracle Verdict Banners · 4 states</span>
+      <span class="proto__label-sep">·</span>
+      <span>Phase 2 · inherits 2F/2E</span>
+    </div>
+    <div id="theme-pill-mount"></div>
+  </div>
+
+  <header class="proto__head">
+    <div>
+      <div class="proto__kicker">Single-touch · 4-state pill · gradient pre-blessed</div>
+      <h1>The Strategist · Pre-flight Verdict</h1>
+      <p class="lede">
+        Four oracle verdicts — Yes · Wait · No · Pray — surfaced as a single banner that recomposes on the SegPill (md · 4 segments). The PRAY banner carries the gold↔rahu gradient on the surface; the VerdictChip itself stays full gold — chip-vs-banner rule from rulings v2 §1.
+      </p>
+    </div>
+    <div class="proto__meta">
+      <div><strong>Build</strong> A2 · v1</div>
+      <div><strong>Inherits</strong> SegPill · VerdictChip</div>
+      <div><strong>New</strong> banner surfaces · gradient</div>
+      <div><strong>Default</strong> Yes (from seeker)</div>
+    </div>
+  </header>
+
+  <div id="strategist-mount"></div>
+
+  <footer class="proto__foot">
+    <span>STR-2C · OracleVerdictBanners · v1 · A2 · Claude Design</span>
+    <span>26 May 2026 · single-touch chain</span>
+  </footer>
+
+</main>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" data-presets="react" src="_assets/strategist-primitives.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState } = React;
+
+/* The 4 oracle signals shown in the right panel of each banner — */
+const SIGNALS = {
+  yes:  ['Mars in 10H · gain axis open', 'Jupiter aspect on 1H · sealing', 'No retrograde in operative houses'],
+  wait: ['Mercury in retrograde shadow · until 9 Jun', 'Lunar void 14-16h IST today', 'Comm channels distort short-form first'],
+  no:   ['Rahu in 7H · partnership counter-signal', 'Saturn aspect on 1H lord · drag', 'Eclipse shadow within 30 days'],
+  pray: ['Saturn–Rahu fold in 9H axis', 'Karmic ledger flag · gate G03', 'Offering window · next 9 days'],
+};
+
+const ArrowIcon = () => (
+  <svg className="ov-banner__cta-arrow" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="2" y1="6" x2="10" y2="6"/><polyline points="7,3 10,6 7,9"/>
+  </svg>
+);
+
+function Banner({ verdict }) {
+  const b = window.SEEKER.banners[verdict];
+  const signals = SIGNALS[verdict];
+  const isPray = verdict === 'pray';
+  return (
+    <article className={`ov-banner ov-banner--${verdict}`}>
+      <div className="ov-banner__left">
+        <span className="ov-banner__eyebrow">
+          Active verdict · <b>{verdict.toUpperCase()}</b>
+          <VerdictChip type={verdict} active />
+        </span>
+        <h2 className="ov-banner__headline">{b.headline}</h2>
+        <p className="ov-banner__reasoning">"{b.reasoning}"</p>
+        <div className="ov-banner__cta-row">
+          <button type="button" className={`ov-banner__cta ${isPray ? 'ov-banner__cta--pray' : ''}`}>
+            {b.cta} <ArrowIcon />
+          </button>
+          <button type="button" className="ov-banner__cta-secondary">Read the chart</button>
+        </div>
+      </div>
+      <aside className="ov-banner__right">
+        <div className="ov-banner__right-chip-line">
+          <span className="ov-banner__right-lbl">Re-read window</span>
+        </div>
+        <div className="ov-banner__right-row">
+          <span className="ov-banner__right-lbl">Validity</span>
+          <b>{b.window}</b>
+        </div>
+        <div className="ov-banner__right-row">
+          <span className="ov-banner__right-lbl">Signals informing this verdict</span>
+          <div className="ov-banner__signals">
+            {signals.map((s, i) => (
+              <div key={i} className="ov-banner__signal">{s}</div>
+            ))}
+          </div>
+        </div>
+      </aside>
+    </article>
+  );
+}
+
+/* Below-banner context · stays put across verdicts */
+function ContextStrip({ verdict }) {
+  return (
+    <div className="ov-context">
+      <div className="ov-context__cell">
+        <span className="ov-context__l">Seeker</span>
+        <span className="ov-context__v">Field Marshal</span>
+        <span className="ov-context__sub">score 67 / 99 · streak 12d</span>
+      </div>
+      <div className="ov-context__cell">
+        <span className="ov-context__l">Question class</span>
+        <span className="ov-context__v">Pre-flight</span>
+        <span className="ov-context__sub">free-form · short-horizon</span>
+      </div>
+      <div className="ov-context__cell">
+        <span className="ov-context__l">Karmic</span>
+        <span className="ov-context__v">Cleared</span>
+        <span className="ov-context__sub">last clearance · 14 may</span>
+      </div>
+      <div className="ov-context__cell">
+        <span className="ov-context__l">As of</span>
+        <span className="ov-context__v">09:42 IST</span>
+        <span className="ov-context__sub">26 may · re-read on demand</span>
+      </div>
+    </div>
+  );
+}
+
+function OracleModule({ mode }) {
+  const [verdict, setVerdict] = useState(window.SEEKER.verdict);
+  return (
+    <div className="strategist-module" data-mode={mode}>
+      <SectionHeader
+        title="Oracle Verdict"
+        meta={null}
+        right={
+          <SegPill
+            segments={[
+              { value: 'yes',  label: 'yes'  },
+              { value: 'wait', label: 'wait' },
+              { value: 'no',   label: 'no'   },
+              { value: 'pray', label: 'pray' },
+            ]}
+            value={verdict}
+            onChange={setVerdict}
+            size="md"
+            ariaLabel="Verdict state"
+          />
+        }
+      />
+
+      <Banner verdict={verdict} />
+
+      <ContextStrip verdict={verdict} />
+
+      <div className="ov-proof">
+        <div className="ov-proof__head">
+          <span className="ov-proof__eyebrow">VerdictChip system · proof set</span>
+          <span className="ov-proof__note">
+            Chip type · always full gold · banner surface (here) carries the gold↔rahu gradient on PRAY
+          </span>
+        </div>
+        <div className="ov-proof__row">
+          <VerdictChip type="yes" />
+          <VerdictChip type="wait" />
+          <VerdictChip type="no" />
+          <VerdictChip type="pray" />
+        </div>
+      </div>
+
+      <div className="inherit-note">
+        <div className="inherit-note__lbl">2C honors v2 rulings · two patterns, one rule</div>
+        <p>
+          <b>Chip type</b> · full gold always. <code>VerdictChip type="pray"</code> renders gold-on-rahu-soft fill, gold border — identical to 2F.
+        </p>
+        <p>
+          <b>Banner surface</b> · the PRAY banner here is the surface variant that gets to carry the gradient — gold↔rahu on the headline, gold-to-rahu CTA gradient, and a soft radial gradient on the banner background. Surface, not type.
+        </p>
+        <p>
+          <b>SegPill</b> · first <code>md</code> consumer · 4 segments. Same primitive as 2F's <code>sm</code> · 2 segments. Forward-compatible per the v2 component contract.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  const [theme, setTheme] = useTheme();
+  return (
+    <>
+      <ProtoTopBar theme={theme} setTheme={setTheme} />
+      <OracleModule mode={theme} />
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('strategist-mount')).render(<App />);
+</script>
+
+</body>
+</html>
