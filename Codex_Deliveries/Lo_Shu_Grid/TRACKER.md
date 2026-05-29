@@ -26,7 +26,7 @@
 | ID | Commission | Status | Brief |
 |---|---|---|---|
 | **LSG-1** | Lo Shu Grid Calculator + Hub + 9 Missing Number + 8 Arrow Pages | ✅ PREREQUISITE INTEGRATED | `CODEX_COMMISSION_LO_SHU_GRID.md` |
-| **LSG-2** | Lo Shu Grid Expansion -- 9 Number Pages + 20 Problem Pages + 9 Personal Year Pages | 🟡 DELIVERED LOCALLY -- Temple review pending | `CODEX_COMMISSION_LSG_2_EXPANSION.md` |
+| **LSG-2** | Lo Shu Grid Expansion -- 9 Number Pages + 20 Problem Pages + 9 Personal Year Pages | 🟠 ECHO/PACE PASSED -- awaiting TT sign-off on `LSG_INTEGRATION_SIGNOFF_NOTE_2026-05-29.docx` | `CODEX_COMMISSION_LSG_2_EXPANSION.md` |
 
 ---
 
@@ -36,7 +36,8 @@
 |---|---|---|---|---|
 | LSG-OP-1 | Confirm runtime assumption for the missing Action arrow | TT | 🟠 MED | Decoded source labels one missing arrow as `8,7,6`, but Lo Shu grid geometry and commission math imply `2,7,6`. Runtime logic follows `2,7,6`. |
 | LSG-OP-2 | Seed Lo Shu content collections on target DB if Temple wants Mongo-backed page content immediately | TT | 🟡 MED | `python3 backend/scripts/seed_lo_shu.py --mongo-url "$MONGO_URL" --db-name horoscope_db` now seeds `lo_shu_missing_numbers`, `lo_shu_arrows`, `lo_shu_numbers`, `lo_shu_problems`, and `lo_shu_personal_years`. |
-| LSG-OP-3 | Browser smoke test public routes after Render/Vercel deploy | TT | 🟠 HIGH | Verify hub, calculator, one missing-number page, one arrow page, one number page, one problem page, one personal-year page, and `/api/seo/sitemap/lo-shu-grid`. |
+| LSG-OP-3 | Browser smoke test public routes after Render/Vercel deploy | TT | 🟠 HIGH | Verify hub, calculator, one missing-number page, one arrow page, one number page, one problem page, one personal-year page, and `/api/seo/sitemap/lo-shu-grid`. Full 8-item checklist in `LSG_INTEGRATION_SIGNOFF_NOTE_2026-05-29.docx` Section 4. |
+| LSG-OP-4 | ECHO/PACE scanner coverage gap | CC | 🟡 MED | `echo_pace_lsg_scan.py` covers number pages + combination pairs only. Does not cover `lo_shu_problems` (20 pages) or `lo_shu_personal_years` (9 pages). Layer G thread check shows 0/10 hits across all page types -- acceptable given clean result, but scanner should be extended if content changes post-integration. |
 
 ---
 
