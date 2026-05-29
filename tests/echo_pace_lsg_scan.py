@@ -399,14 +399,18 @@ def main() -> int:
     parser.add_argument("--output", default="tests/echo_pace_lsg_report.json")
     args = parser.parse_args()
 
-    serper_key = os.getenv("SERPER_API_KEY", "").strip()
+    # Render env var name: Serper_Default_key
+    serper_key = (os.getenv("Serper_Default_key") or os.getenv("SERPER_API_KEY") or "").strip()
 
     print("=" * 60)
     print("ECHO/PACE SCANNER -- Lo Shu Grid SEO Module")
     print("Number pages: 9  |  Combination pairs: 36  |  Classical fields: 9")
     if not serper_key:
-        print("⚠️   SERPER_API_KEY not set -- Layer G will be skipped.")
-        print("    To enable: SERPER_API_KEY=xxx python tests/echo_pace_lsg_scan.py")
+        print("⚠️   Serper key not set -- Layer G will be skipped.")
+        print("    Key name in Render: Serper_Default_key")
+        print("    Serper_Default_key=your_key python3 tests/echo_pace_lsg_scan.py")
+        print("    Layer G uses ~4 Serper credits (2 samples + 2 classical samples).")
+        print("    Only run Layer G once Layers 1-3 are fully clean (0 BLOCKED).")
     print("=" * 60)
 
     report: dict[str, Any] = {}
@@ -434,15 +438,27 @@ def main() -> int:
     report["combination_pages"] = {"L1": c1, "L2": c2, "L3": c3}
     all_statuses += [c1_st, c2_st]
 
-    # ── Layer G: blueprint prose (main content risk) ──────────────────────────
-    # ── Layer G: classical associations (WATCH-1 risk) ────────────────────────
-    if serper_key:
+    # ── Layer G ── only runs if L1-L3 are clean (quota protection) ──────────────
+    l123_blocked = "BLOCKED" in all_statuses
+    print(f"\n{'─'*60}")
+    if not serper_key:
+        print("LAYER G · Google Duplication -- SKIPPED (no Serper_Default_key)")
+        print("  Set key and re-run once Layers 1-3 are fully clean.")
+        report["layer_g"] = "SKIPPED_NO_KEY"
+    elif l123_blocked:
+        print("LAYER G · Google Duplication -- SKIPPED (L1-L3 have BLOCKED items)")
+        print("  Fix BLOCKED issues first (especially combo page content).")
+        print("  Saves Serper quota -- no point running Google check on broken content.")
+        report["layer_g"] = "SKIPPED_L123_BLOCKED"
+    else:
+        print(f"LAYER G · Running (approx 4 Serper credits)")
+        print(f"{'─'*60}")
         bg_st, bg = layer_google(
             [(str(n), _number_page_body(n)) for n in numbers],
-            "Blueprint Prose (9 numbers)", serper_key)
+            "Blueprint Prose (9 numbers)", serper_key, sample=2)
         cg_st, cg = layer_google(
             [(str(n), _classical_body(n)) for n in numbers],
-            "Classical Associations WATCH-1", serper_key, sample=9)
+            "Classical Associations WATCH-1", serper_key, sample=2)
         report["layer_g"] = {"blueprint_prose": bg, "classical_watch1": cg}
         all_statuses += [bg_st, cg_st]
 
@@ -451,11 +467,6 @@ def main() -> int:
             print("  ⚠️   WATCH-1 ALERT: Classical associations content has elevated duplication.")
             print("  GAI fix required: humanise life_theme, body_area, element, direction fields")
             print("  in NUMBER_CLASSICAL_ASSOCIATIONS before module goes live.")
-    else:
-        print(f"\n{'─'*60}")
-        print("LAYER G · Google Duplication -- SKIPPED (no SERPER_API_KEY)")
-        print(f"{'─'*60}")
-        report["layer_g"] = "SKIPPED"
 
     # ── Summary ───────────────────────────────────────────────────────────────
     print(f"\n{'='*60}")
@@ -463,9 +474,13 @@ def main() -> int:
     print(f"{'='*60}")
     print(f"  Number pages    L1:{n1_st:8} L2:{n2_st:8} L3:{n3_st:8}")
     print(f"  Combo pages     L1:{c1_st:8} L2:{c2_st:8} L3:{c3_st:8}")
-    if serper_key:
-        print(f"  Layer G (blueprint): {bg_st}")
-        print(f"  Layer G (classical WATCH-1): {cg_st}")
+    if serper_key and not l123_blocked:
+        print(f"  Layer G (blueprint):   {bg_st}")
+        print(f"  Layer G (WATCH-1 classical): {cg_st}")
+    elif l123_blocked:
+        print(f"  Layer G    SKIPPED -- fix BLOCKED items first")
+    else:
+        print(f"  Layer G    SKIPPED -- set Serper_Default_key to run")
 
     active = [s for s in all_statuses if s != "SKIP"]
     if "BLOCKED" in active:

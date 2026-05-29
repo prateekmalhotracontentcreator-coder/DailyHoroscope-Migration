@@ -392,14 +392,18 @@ def main() -> int:
     parser.add_argument("--output", default="tests/echo_pace_tarot_report.json")
     args = parser.parse_args()
 
-    serper_key = os.getenv("SERPER_API_KEY", "").strip()
+    # Render env var name: Serper_Default_key
+    serper_key = (os.getenv("Serper_Default_key") or os.getenv("SERPER_API_KEY") or "").strip()
 
     print("=" * 60)
     print("ECHO/PACE SCANNER -- Tarot SEO Module")
     print(f"SPREADS: {len(SPREADS)} · CARDS: {len(CARDS)} · INTENTIONS: {len(INTENTIONS)}")
     if not serper_key:
-        print("⚠️   SERPER_API_KEY not set -- Layer G will be skipped.")
-        print("    To enable: SERPER_API_KEY=xxx python tests/echo_pace_tarot_scan.py")
+        print("⚠️   Serper key not set -- Layer G will be skipped.")
+        print("    To enable (key name in Render: Serper_Default_key):")
+        print("    Serper_Default_key=your_key python3 tests/echo_pace_tarot_scan.py")
+        print("    Layer G uses ~6 Serper credits (2 samples × 3 page types).")
+        print("    Only run Layer G once Layers 1-3 are clean.")
     print("=" * 60)
 
     report: dict[str, Any] = {}
@@ -436,21 +440,32 @@ def main() -> int:
     report["intentions"] = {"L1": i1, "L2": i2, "L3": i3}
     all_statuses += [i1_st, i2_st]
 
-    # ── Layer G ───────────────────────────────────────────────────────────────
-    if serper_key:
+    # ── Layer G ── only runs if L1-L3 are clean (quota protection) ──────────────
+    l123_blocked = "BLOCKED" in all_statuses
+    print(f"\n{'─'*60}")
+    if not serper_key:
+        print("LAYER G · Google Duplication -- SKIPPED (no Serper_Default_key)")
+        print("  Once Layers 1-3 are fully clean, set key and re-run to complete check.")
+        report["layer_g"] = "SKIPPED_NO_KEY"
+    elif l123_blocked:
+        print("LAYER G · Google Duplication -- SKIPPED (L1-L3 have BLOCKED items)")
+        print("  Fix BLOCKED issues first. Saves Serper quota -- no point checking Google")
+        print("  duplication on content that is already internally broken.")
+        report["layer_g"] = "SKIPPED_L123_BLOCKED"
+    else:
+        print(f"LAYER G · Running (approx 6 Serper credits -- 2 samples × 3 page types)")
+        print(f"{'─'*60}")
         sg_st, sg = layer_google(
-            [(s.get("title",""), _spread_body(s)) for s in SPREADS], "Spreads", serper_key)
+            [(s.get("title",""), _spread_body(s)) for s in SPREADS], "Spreads", serper_key,
+            sample=2)
         cg_st, cg = layer_google(
-            [(slug, _card_body(slug, card)) for slug, card in card_items], "Cards", serper_key)
+            [(slug, _card_body(slug, card)) for slug, card in card_items], "Cards", serper_key,
+            sample=2)
         ig_st, ig = layer_google(
-            [(slug, _intention_body(slug, v)) for slug, v in int_items], "Intentions", serper_key)
+            [(slug, _intention_body(slug, v)) for slug, v in int_items], "Intentions", serper_key,
+            sample=2)
         report["layer_g"] = {"spreads": sg, "cards": cg, "intentions": ig}
         all_statuses += [sg_st, cg_st, ig_st]
-    else:
-        print(f"\n{'─'*60}")
-        print("LAYER G · Google Duplication -- SKIPPED (no SERPER_API_KEY)")
-        print(f"{'─'*60}")
-        report["layer_g"] = "SKIPPED"
 
     # ── Summary ───────────────────────────────────────────────────────────────
     print(f"\n{'='*60}")
@@ -459,8 +474,12 @@ def main() -> int:
     print(f"  Spreads    L1:{s1_st:8} L2:{s2_st:8} L3:{s3_st:8}")
     print(f"  Cards      L1:{c1_st:8} L2:{c2_st:8} L3:{c3_st:8}")
     print(f"  Intentions L1:{i1_st:8} L2:{i2_st:8} L3:{i3_st:8}")
-    if serper_key:
-        print(f"  Google     Spreads:{sg_st:8} Cards:{cg_st:8} Intentions:{ig_st:8}")
+    if serper_key and not l123_blocked:
+        print(f"  Layer G    Spreads:{sg_st:8} Cards:{cg_st:8} Intentions:{ig_st:8}")
+    elif l123_blocked:
+        print(f"  Layer G    SKIPPED -- fix L1-L3 BLOCKED items first")
+    else:
+        print(f"  Layer G    SKIPPED -- set Serper_Default_key to run")
 
     active = [s for s in all_statuses if s != "SKIP"]
     if "BLOCKED" in active:
