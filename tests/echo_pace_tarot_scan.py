@@ -74,14 +74,27 @@ try:
 except ImportError as exc:
     sys.exit(f"ERROR: Cannot import tarot_seo_data -- {exc}\nRun from repo root.")
 
-# ── Thresholds ────────────────────────────────────────────────────────────────
-L1_BLOCKED  = 0.70   # TF-IDF cosine: any pair at or above this → BLOCKED
-L1_FLAGGED  = 0.50   # TF-IDF cosine: pairs in this range → FLAGGED
+# ── Thresholds -- TAROT STRICT MODE ──────────────────────────────────────────
+# Tarot is a HIGH RISK / HIGH STAKE / HIGH BENEFIT module (199 pages, core SEO).
+# Thresholds are deliberately stricter than the generic ECHO/PACE defaults.
+# Do NOT relax these without explicit TT sign-off.
+#
+# Generic default → Tarot strict → Rationale
+# L1 BLOCKED:   70% → 60%   Tarot pages are long-form; 60% cosine = near-copy at page scale
+# L1 FLAGGED:   50% → 40%   Forces review earlier; 40%+ on 199 pages = real Google risk
+# L2 MIN_DOCS:   3  →  2    Template language appearing in 2+ pages is a flag on 199-page set
+# LG BLOCKED:   40% → 25%   199 pages of tarot content -- Google indexes all; stricter duplication gate
+# LG WATCH:     20% → 10%   Early warning at 10% given volume and competitive tarot SEO landscape
+# LG SAMPLES:    2  →  5    5 samples per type (spread across suits/categories) = meaningful coverage
+
+L1_BLOCKED  = 0.60   # STRICT: was 0.70 -- any pair ≥ 60% must be rewritten
+L1_FLAGGED  = 0.40   # STRICT: was 0.50 -- pairs 40-59% require manual review + justification
 L2_NGRAM    = 4      # minimum consecutive meaningful words to flag
-L2_MIN_DOCS = 3      # phrase must appear in this many docs to be flagged
+L2_MIN_DOCS = 2      # STRICT: was 3 -- phrase in 2+ docs triggers review on a 199-page set
 L3_JACCARD  = 0.60   # heading similarity vs generic corpus → FLAGGED
-LG_BLOCKED  = 0.40   # Google duplication fraction: BLOCKED above this
-LG_WATCH    = 0.20   # Google duplication fraction: WATCH above this
+LG_BLOCKED  = 0.25   # STRICT: was 0.40 -- Google duplication ceiling for high-volume module
+LG_WATCH    = 0.10   # STRICT: was 0.20 -- early warning threshold
+LG_SAMPLES  = 5      # STRICT: was 2 -- 5 samples per page type, spread across suits/categories
 
 # ── Stop words ────────────────────────────────────────────────────────────────
 _STOPS = {
@@ -384,6 +397,58 @@ def layer_google(
 
 
 # ════════════════════════════════════════════════════════════════════════════
+# Diversity samplers for Layer G (ensures meaningful coverage)
+# ════════════════════════════════════════════════════════════════════════════
+
+def _diverse_spread_sample(spreads: list, n: int) -> list:
+    """Pick n spreads spread across chapter categories, not just the first n."""
+    by_chapter: dict[str, list] = {}
+    for s in spreads:
+        ch = s.get("chapter", "Other")
+        by_chapter.setdefault(ch, []).append(s)
+    chapters = list(by_chapter.keys())
+    result = []
+    idx = 0
+    while len(result) < n and idx < max(len(v) for v in by_chapter.values()):
+        for ch in chapters:
+            bucket = by_chapter[ch]
+            if idx < len(bucket):
+                result.append(bucket[idx])
+            if len(result) >= n:
+                break
+        idx += 1
+    return result[:n]
+
+def _suit_diverse_card_sample(card_items: list, n: int) -> list:
+    """Pick cards across suits: major arcana, wands, cups, swords, pentacles."""
+    suits = {
+        "major": [], "wands": [], "cups": [], "swords": [], "pentacles": [],
+    }
+    for slug, card in card_items:
+        for suit in suits:
+            if suit in slug:
+                suits[suit].append((slug, card))
+                break
+        else:
+            suits["major"].append((slug, card))
+
+    result = []
+    # Take one from each suit first, then fill up
+    for suit_list in suits.values():
+        if suit_list and len(result) < n:
+            # pick from middle of suit, not the ace (most-scraped card in each suit)
+            idx = len(suit_list) // 2
+            result.append(suit_list[idx])
+    # fill remaining slots from most-content-rich (major arcana) if needed
+    for slug, card in suits["major"]:
+        if len(result) >= n:
+            break
+        if (slug, card) not in result:
+            result.append((slug, card))
+    return result[:n]
+
+
+# ════════════════════════════════════════════════════════════════════════════
 # Main
 # ════════════════════════════════════════════════════════════════════════════
 
@@ -396,8 +461,10 @@ def main() -> int:
     serper_key = (os.getenv("Serper_Default_key") or os.getenv("SERPER_API_KEY") or "").strip()
 
     print("=" * 60)
-    print("ECHO/PACE SCANNER -- Tarot SEO Module")
+    print("ECHO/PACE SCANNER -- Tarot SEO Module  [STRICT MODE]")
     print(f"SPREADS: {len(SPREADS)} · CARDS: {len(CARDS)} · INTENTIONS: {len(INTENTIONS)}")
+    print(f"Thresholds: L1 BLOCKED≥{L1_BLOCKED:.0%}/FLAGGED≥{L1_FLAGGED:.0%} · "
+          f"L2 min_docs={L2_MIN_DOCS} · LG BLOCKED>{LG_BLOCKED:.0%}/WATCH>{LG_WATCH:.0%}")
     if not serper_key:
         print("⚠️   Serper key not set -- Layer G will be skipped.")
         print("    To enable (key name in Render: Serper_Default_key):")
@@ -453,18 +520,33 @@ def main() -> int:
         print("  duplication on content that is already internally broken.")
         report["layer_g"] = "SKIPPED_L123_BLOCKED"
     else:
-        print(f"LAYER G · Running (approx 6 Serper credits -- 2 samples × 3 page types)")
+        credit_cost = LG_SAMPLES * 3
+        print(f"LAYER G · Running STRICT MODE -- {LG_SAMPLES} samples × 3 page types")
+        print(f"  Threshold: BLOCKED >{LG_BLOCKED:.0%} | WATCH >{LG_WATCH:.0%} (strict -- standard is 40%/20%)")
+        print(f"  Approx Serper credits used: ~{credit_cost}")
         print(f"{'─'*60}")
+
+        # Spreads: sample across spread categories (not just first N)
+        spread_sample = _diverse_spread_sample(SPREADS, LG_SAMPLES)
         sg_st, sg = layer_google(
-            [(s.get("title",""), _spread_body(s)) for s in SPREADS], "Spreads", serper_key,
-            sample=2)
+            [(s.get("title",""), _spread_body(s)) for s in spread_sample],
+            "Spreads (category-diverse)", serper_key, sample=LG_SAMPLES)
+
+        # Cards: sample one per suit (major, wands, cups, swords, pentacles)
+        card_sample = _suit_diverse_card_sample(card_items, LG_SAMPLES)
         cg_st, cg = layer_google(
-            [(slug, _card_body(slug, card)) for slug, card in card_items], "Cards", serper_key,
-            sample=2)
+            [(slug, _card_body(slug, card)) for slug, card in card_sample],
+            "Cards (suit-diverse)", serper_key, sample=LG_SAMPLES)
+
+        # Intentions: spread across topic clusters
         ig_st, ig = layer_google(
-            [(slug, _intention_body(slug, v)) for slug, v in int_items], "Intentions", serper_key,
-            sample=2)
-        report["layer_g"] = {"spreads": sg, "cards": cg, "intentions": ig}
+            [(slug, _intention_body(slug, v)) for slug, v in int_items],
+            "Intentions", serper_key, sample=LG_SAMPLES)
+
+        report["layer_g"] = {
+            "spreads": sg, "cards": cg, "intentions": ig,
+            "thresholds": {"blocked": LG_BLOCKED, "watch": LG_WATCH, "samples": LG_SAMPLES},
+        }
         all_statuses += [sg_st, cg_st, ig_st]
 
     # ── Summary ───────────────────────────────────────────────────────────────
