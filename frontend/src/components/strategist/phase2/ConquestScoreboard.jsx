@@ -12,7 +12,7 @@
 //   named    Gauge               -- conquest score SVG gauge
 //   named    ScoreboardExpanded  -- full hero card (default view)
 //   named    ScoreboardCompact   -- single-row density view
-//   named    ChipSetStrip        -- 4-verdict proof set (CD canvas component, retained per TT)
+//   named    VerdictStrip        -- live single-verdict display strip
 //
 // CSS: import '../../../styles/strategist-2f-scoreboard.css'
 //      (import in the page that uses this component)
@@ -167,26 +167,15 @@ export function ScoreboardCompact({ score, max, tier, verdict, directive, streak
 }
 
 // -----------------------------------------------------------------
-// ChipSetStrip -- 4-verdict proof set
-// CD design canvas component. No live data. Retained per TT variant
-// policy (all CD variants kept). Shows all 4 chip types for QA.
+// VerdictStrip -- live single-verdict display
+// Shows only the active verdict chip (from live API data).
 // -----------------------------------------------------------------
-export function ChipSetStrip() {
+export function VerdictStrip({ verdict = 'wait' }) {
   return (
     <div className="chip-set">
-      <div className="chip-set__head">
-        <span className="chip-set__eyebrow">Verdict chip system &middot; proof set</span>
-        <span className="chip-set__note">
-          Switch theme above &middot; PRAY treatment holds across light / dark / cr
-        </span>
-      </div>
       <div className="chip-set__row">
-        <VerdictChip type="yes" />
-        <VerdictChip type="wait" />
-        <VerdictChip type="no" />
-        <VerdictChip type="pray" />
-        <div className="chip-set__rule" />
-        <span className="chip-set__label">chip type = full gold &middot; banner surfaces may gradient (2C / 2I)</span>
+        <span className="chip-set__eyebrow">Verdict</span>
+        <VerdictChip type={verdict} />
       </div>
     </div>
   );
@@ -264,7 +253,7 @@ export default function ConquestScoreboard({ data, asOf, view: viewProp = null, 
         : <ScoreboardCompact {...scoreboardProps} />
       }
 
-      <ChipSetStrip />
+      <VerdictStrip verdict={verdict} />
     </>
   );
 }
