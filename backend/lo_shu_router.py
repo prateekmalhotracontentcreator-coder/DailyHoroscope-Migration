@@ -956,6 +956,504 @@ PERSONAL_YEAR_BLUEPRINTS: dict[int, dict[str, Any]] = {
     },
 }
 
+# ── Humanised page titles for number deep-dive pages (used by ECHO/PACE scanner) ──
+# Keys are 1-9; values are the canonical <title> / heading string.
+NUMBER_PAGE_TITLES: dict[int, str] = {
+    1: "Lo Shu Number 1 -- Sun, Initiative and Career Energy",
+    2: "Lo Shu Number 2 -- Moon, Partnership and Intuitive Depth",
+    3: "Lo Shu Number 3 -- Jupiter, Expression and Creative Growth",
+    4: "Lo Shu Number 4 -- Rahu, Structure and Wealth Building",
+    5: "Lo Shu Number 5 -- Mercury, Balance and Adaptive Communication",
+    6: "Lo Shu Number 6 -- Venus, Home Harmony and Responsibility",
+    7: "Lo Shu Number 7 -- Ketu, Reflection and Experiential Wisdom",
+    8: "Lo Shu Number 8 -- Saturn, Endurance and Knowledge",
+    9: "Lo Shu Number 9 -- Mars, Courage and Visible Achievement",
+}
+
+# ── Combination page unique synthesis content (36 pairs) ─────────────────────
+# Keys are (lower, higher) int tuples.  Each entry must be meaningfully distinct
+# -- no two pages may share the same prose blocks.  Used by ECHO/PACE scanner
+# and by build_combination_page_document() to generate the actual page payload.
+NUMBER_COMBINATION_INSIGHTS: dict[tuple[int, int], dict[str, str]] = {
+    (1, 2): {
+        "synthesis": (
+            "Numbers 1 and 2 represent the solar and lunar poles of the Lo Shu system. "
+            "Number 1 drives through initiative, self-assertion, and career momentum, while "
+            "number 2 moves through empathy, receptivity, and relational timing. Together they "
+            "create a profile shaped by both visible leadership and deep emotional intelligence. "
+            "The combination commonly produces someone who can take charge without losing "
+            "sensitivity, though the tension surfaces when 1's need to act decisively outpaces "
+            "2's need to process and connect. Relationships and career advancement can feel like "
+            "competing priorities rather than complementary ones. Integration comes when the "
+            "person realises that 2's listening quality makes 1's leadership more credible and "
+            "that 1's decisiveness gives 2's care a direction it can act on."
+        ),
+    },
+    (1, 3): {
+        "synthesis": (
+            "The 1-3 pairing connects personal authority with expressive intelligence. Number 1 "
+            "carries initiative, self-presentation, and the drive to begin, while number 3 adds "
+            "memory, teaching warmth, and the ability to communicate vision with confidence. "
+            "Together these numbers support creative enterprise, public speaking, and any path "
+            "that requires both the courage to lead and the skill to articulate clearly. The "
+            "tension arises when confidence outpaces depth -- 1 can act before 3's wisdom has "
+            "been absorbed, producing bravado rather than substance. Conversely, 3's reflective "
+            "quality can slow 1's forward energy. Integration is found by using 3's expressive "
+            "insight to give 1's initiative something genuinely worth saying."
+        ),
+    },
+    (1, 4): {
+        "synthesis": (
+            "Numbers 1 and 4 share common terrain around ambition and material effort but "
+            "approach it differently. Number 1 works through personal initiative and direct "
+            "self-expression, while number 4 builds slowly through structure, discipline, and "
+            "long-range planning. Together they can produce remarkable practical leadership -- "
+            "the confidence to start and the discipline to finish. The friction appears when "
+            "1 wants visible results immediately and 4 insists on systematic groundwork first. "
+            "Financial and career goals may feel simultaneously urgent and slow-moving. "
+            "Integration requires using 4's structural patience to deepen 1's initiatives "
+            "rather than treating speed and thoroughness as opposing forces."
+        ),
+    },
+    (1, 5): {
+        "synthesis": (
+            "The 1-5 combination holds the energy of a communicating leader -- someone whose "
+            "initiative is matched by adaptability and expressive reach. Number 1 focuses on "
+            "personal direction and authority, while number 5 brings flexibility, multi-channel "
+            "communication, and the capacity to move between different demands without losing "
+            "centre. Together they support entrepreneurship, public roles, and careers that "
+            "require both decisiveness and rapid adjustment. The tension arises because 1 "
+            "prefers a clear lane while 5 naturally explores many simultaneously. Restlessness "
+            "and over-extension are the combined shadow. Integration means using 5's "
+            "communication intelligence to amplify 1's direction rather than letting variety "
+            "fragment authority."
+        ),
+    },
+    (1, 6): {
+        "synthesis": (
+            "Numbers 1 and 6 represent the intersection of personal independence and relational "
+            "responsibility. Number 1 emphasises self-authorship and career ambition, while "
+            "number 6 draws attention to home, care, family obligation, and the desire to create "
+            "harmony around loved ones. Together they often produce someone who cares deeply "
+            "about both personal success and the wellbeing of those who depend on them. The "
+            "tension shows up when career ambition and family responsibility pull in opposite "
+            "directions, creating cycles of guilt or neglect in turns. Integration comes from "
+            "recognising that 6's care is not a brake on 1's career but the motivation that "
+            "gives it lasting meaning."
+        ),
+    },
+    (1, 7): {
+        "synthesis": (
+            "The 1-7 pairing creates a distinctive tension between outer visibility and inner "
+            "depth. Number 1 pushes toward self-expression, leadership, and public presence, "
+            "while number 7 pulls toward reflection, withdrawal, and the quieter side of wisdom. "
+            "Together they can produce a deeply introspective leader -- someone whose public "
+            "authority is fed by private contemplation rather than performance. The friction is "
+            "significant: 1 wants to act and be seen, while 7 prefers to observe and wait for "
+            "meaning to clarify before speaking. The integration is learning that 7's reflective "
+            "depth is not a weakness in 1's forward momentum but the quality that keeps that "
+            "momentum honest and worth following."
+        ),
+    },
+    (1, 8): {
+        "synthesis": (
+            "Numbers 1 and 8 share a structural seriousness but express it differently. Number 1 "
+            "is immediate, personal, and action-focused, while number 8 is methodical, "
+            "consequence-aware, and disciplined in the long game. Together they create a powerful "
+            "profile for building credible authority -- someone who can both initiate boldly and "
+            "sustain effort across time. The tension surfaces when 1's speed meets 8's insistence "
+            "on careful review before committing. Impatience, frustration with process, or "
+            "underestimating consequence are the combined risks. Integration requires learning to "
+            "use 8's disciplined foresight to protect 1's initiatives from the costly shortcuts "
+            "that experience eventually teaches anyway."
+        ),
+    },
+    (1, 9): {
+        "synthesis": (
+            "The 1-9 combination amplifies the fire of both initiative and drive. Number 1 "
+            "brings personal authority and self-direction, while number 9 adds force, courage, "
+            "visibility, and the determination to complete what is begun. Together they produce "
+            "a high-energy profile capable of sustained effort toward public achievement. The "
+            "shadow is also intensified: ego, aggression, or the compulsion to dominate can "
+            "surface when two assertive energies occupy the same chart without tempering forces "
+            "elsewhere. Integration requires channelling both numbers toward a purpose larger "
+            "than personal advantage and building in reflection practices so fire becomes "
+            "precision rather than reactivity."
+        ),
+    },
+    (2, 3): {
+        "synthesis": (
+            "Numbers 2 and 3 bring together emotional sensitivity and expressive intelligence "
+            "in one of the warmer combinations in the Lo Shu set. Number 2 deepens empathy, "
+            "relational attunement, and the capacity to care genuinely, while number 3 adds "
+            "creativity, teaching ability, and a joy in communication. Together they support "
+            "counselling, teaching, creative arts, and any path that helps others grow through "
+            "expression and understanding. The tension is that both numbers are naturally "
+            "receptive -- neither drives hard toward completion or external structure. Without a "
+            "grounding number elsewhere, this pair can become emotionally rich but practically "
+            "dispersed. Integration means building one consistent discipline that anchors "
+            "warmth into tangible output."
+        ),
+    },
+    (2, 4): {
+        "synthesis": (
+            "The 2-4 combination places emotional sensitivity alongside practical structure in "
+            "a pairing that can be quietly powerful. Number 2 brings care, intuition, and the "
+            "instinct to adjust to others, while number 4 grounds this with discipline, "
+            "system-building, and a realistic approach to material life. Together they often "
+            "support long-term relationships built on genuine mutual effort rather than romantic "
+            "idealism alone. The friction appears when 4's need for order feels emotionally cold "
+            "to 2's sensitivity, or when 2's emotional processing slows 4's drive for "
+            "efficiency. Integration is found when structure is experienced as care, and when "
+            "emotional attunement informs rather than disrupts practical planning."
+        ),
+    },
+    (2, 5): {
+        "synthesis": (
+            "Numbers 2 and 5 bring together emotional intelligence and adaptive communication "
+            "in a pairing oriented around relationships and flexibility. Number 2 carries depth "
+            "of feeling, patience, and an instinct for partnership, while number 5 adds quickness, "
+            "verbal ease, and the ability to navigate varied environments without losing balance. "
+            "Together they produce an emotionally aware communicator -- someone who listens well "
+            "and speaks with sensitivity. The shadow of this pairing is emotional inconsistency: "
+            "2's depth of feeling can be destabilised by 5's restlessness, producing sensitivity "
+            "without reliability. Integration comes when 5's adaptability is used to serve 2's "
+            "relational commitments rather than to escape them when they become demanding."
+        ),
+    },
+    (2, 6): {
+        "synthesis": (
+            "The 2-6 combination is one of the most relational pairings in the Lo Shu system. "
+            "Number 2 brings emotional sensitivity, intuition, and the desire to connect deeply, "
+            "while number 6 adds the care of home, beauty, family responsibility, and the wish "
+            "to create harmony in everyday life. Together they strongly support nurturing roles, "
+            "creative domestic environments, and relationships built on genuine devotion. The "
+            "combined risk is over-giving -- both numbers lean toward care, and without a "
+            "self-directed force elsewhere, this pairing can exhaust itself in service. "
+            "Integration requires establishing care for the self as a non-negotiable foundation, "
+            "not a reward to be earned only after all duties are completed."
+        ),
+    },
+    (2, 7): {
+        "synthesis": (
+            "Numbers 2 and 7 meet in the field of inner life -- both are sensitive, both draw "
+            "toward depth, and both learn more from experience than from instruction. Number 2 "
+            "brings relational empathy and emotional attunement, while number 7 adds spiritual "
+            "curiosity, reflective wisdom, and a preference for the quieter register of life. "
+            "Together this pairing can support healing work, spiritual practice, deep artistic "
+            "expression, and counselling roles. The risk is that both numbers are receptive by "
+            "nature, which can create emotional isolation or withdrawal when the world feels too "
+            "loud. Integration comes from using 2's relational warmth to ground 7's reflective "
+            "depth in actual human connection rather than in idealised solitude."
+        ),
+    },
+    (2, 8): {
+        "synthesis": (
+            "The 2-8 combination pairs emotional sensitivity with disciplined endurance in a "
+            "pairing that can be quietly formidable. Number 2 brings the relational instinct, "
+            "the capacity for patience, and an emotionally intelligent approach to partnership, "
+            "while number 8 adds Saturn's seriousness -- long-range thinking, material discipline, "
+            "and a willingness to do the slow, careful work. Together they support relationships "
+            "and careers built on sustained trust rather than speed or glamour. The tension arises "
+            "when 8's sternness or emotional restraint collides with 2's need for warmth and "
+            "acknowledgment. Integration happens when discipline is applied to self-care with "
+            "the same rigour it is applied to external responsibilities."
+        ),
+    },
+    (2, 9): {
+        "synthesis": (
+            "Numbers 2 and 9 hold an active tension between receptivity and force. Number 2 "
+            "brings emotional depth, patience, and the slow-building intelligence of relational "
+            "care, while number 9 brings fire, assertiveness, competitive drive, and the "
+            "impatience of a warrior who wants results. Together they can produce someone capable "
+            "of compassionate action -- the ability to fight for what genuinely matters rather "
+            "than what merely wins. The friction is frequent: 9's heat can overwhelm 2's "
+            "emotional sensitivity, and 2's need for attunement can frustrate 9's urgency. "
+            "Integration requires distinguishing between the courage to care and the impulse to "
+            "dominate, and learning to use 9's fire in service of 2's deepest relational values."
+        ),
+    },
+    (3, 4): {
+        "synthesis": (
+            "The 3-4 pairing brings together intellectual expansiveness and structural discipline. "
+            "Number 3 carries creative thinking, memory, and the optimism of Jupiter's generous "
+            "vision, while number 4 grounds this with the practical discipline of wealth-building "
+            "effort and methodical planning. Together they support entrepreneurship, research, "
+            "detailed creative work, and any path that turns ideas into durable structures. The "
+            "tension arises because 3's enthusiasm and 4's caution operate at different speeds -- "
+            "3 wants to explore and 4 wants to verify. Integration means using 3's generative "
+            "intelligence to populate the structures 4 builds, and using 4's rigour to ensure "
+            "that 3's ideas survive contact with lived reality."
+        ),
+    },
+    (3, 5): {
+        "synthesis": (
+            "Numbers 3 and 5 combine in one of the most communicative pairings in the system. "
+            "Number 3 brings depth of memory, wisdom through study, and a broad creative "
+            "intelligence, while number 5 adds versatility, quick wit, and the ability to hold "
+            "many ideas in motion simultaneously. Together they produce an exceptionally agile "
+            "thinker -- someone who can both teach with depth and adapt that teaching to a wide "
+            "range of audiences and situations. The shared risk is that both numbers run hot "
+            "mentally, and without physical or practical grounding they can produce ideas that "
+            "remain unrealised. Integration requires committing to one idea long enough for it "
+            "to become genuinely useful before the next presents itself."
+        ),
+    },
+    (3, 6): {
+        "synthesis": (
+            "The 3-6 combination connects intellectual warmth with creative care. Number 3 "
+            "brings teaching ability, expressive intelligence, and a generous optimism, while "
+            "number 6 adds the desire to create beauty, protect relationships, and build "
+            "environments where others can flourish. Together they support educators, artists, "
+            "counsellors, and parents who bring genuine vision to their care. The tension is "
+            "between 3's appetite for learning and growth and 6's natural pull toward stability "
+            "and the familiar comforts of established home life. Integration comes when 3's "
+            "wisdom is applied to deepening the relationships 6 cares about, rather than "
+            "using learning as a gentle escape from relational responsibility."
+        ),
+    },
+    (3, 7): {
+        "synthesis": (
+            "Numbers 3 and 7 share a philosophical temperament that makes this one of the most "
+            "inward-facing combinations in the grid. Number 3 brings intellectual curiosity, "
+            "creative expression, and Jupiter's quality of finding meaning through accumulated "
+            "knowledge, while number 7 adds introspection, spiritual sensitivity, and learning "
+            "through lived experience rather than theory. Together they support deep study, "
+            "spiritual practice, philosophical writing, and any path where inner richness is the "
+            "primary resource. The shadow is a tendency toward idealism or impracticality -- both "
+            "numbers prefer the world of ideas or spirit to material constraint. Integration means "
+            "applying the wisdom they accumulate to the actual texture of everyday living."
+        ),
+    },
+    (3, 8): {
+        "synthesis": (
+            "The 3-8 combination holds an instructive tension between wisdom and consequence. "
+            "Number 3 brings expansive thought, creative optimism, and a generous teaching "
+            "impulse, while number 8 adds ethical discipline, material realism, and the long "
+            "view that prevents enthusiasm from outpacing preparation. Together they produce a "
+            "thoughtful, reliable intelligence -- someone who can think broadly but is not naive "
+            "about the effort required to make ideas work. The tension surfaces when 3's hopeful "
+            "vision meets 8's scepticism, or when 8's caution dampens 3's creative fire. "
+            "Integration requires 3 to welcome rigour as respect for its own ideas, and 8 to "
+            "allow imagination as essential context for serious long-range planning."
+        ),
+    },
+    (3, 9): {
+        "synthesis": (
+            "Numbers 3 and 9 combine intellectual expression with forceful action in a pairing "
+            "that can move ideas into the world with unusual power. Number 3 carries wisdom, "
+            "articulate creativity, and a teacher's love of genuine transmission, while number 9 "
+            "adds the warrior's drive, ambition, and willingness to push past resistance. Together "
+            "they support public advocacy, creative entrepreneurship, and intellectual roles where "
+            "voice and force are both required. The risk is that 9's heat can shorten 3's depth "
+            "into reactive opinion, while 3's reflective tendency may soften 9's required "
+            "decisiveness. Integration is learning to channel 9's drive in service of 3's genuine "
+            "wisdom rather than letting urgency replace substance."
+        ),
+    },
+    (4, 5): {
+        "synthesis": (
+            "The 4-5 pairing connects structural ambition with communicative flexibility. "
+            "Number 4 brings discipline, wealth-oriented effort, and a preference for systems "
+            "over improvisation, while number 5 adds adaptability, speed of thought, and the "
+            "capacity to move between contexts without losing momentum. Together they can support "
+            "entrepreneurial roles, trading, and careers that require both structure and rapid "
+            "pivoting. The tension is that 4 values stability and 5 is drawn to movement -- "
+            "routines that 4 establishes often feel constraining to 5's restless intelligence. "
+            "Integration comes when 5's communication agility is directed through 4's disciplined "
+            "structures, producing consistent results from energetic variety rather than "
+            "scattered effort across too many fronts."
+        ),
+    },
+    (4, 6): {
+        "synthesis": (
+            "Numbers 4 and 6 share a practical orientation toward material and relational "
+            "stability. Number 4 works toward wealth through disciplined effort and structural "
+            "thinking, while number 6 cares for home, beauty, and the wellbeing of those under "
+            "its care. Together they produce a solid foundation builder -- someone who takes both "
+            "financial responsibility and domestic commitment seriously. The tension surfaces "
+            "when material ambition consumes the relational care that makes the effort meaningful. "
+            "Overwork and emotional neglect are the combined risk. Integration comes from treating "
+            "the health of close relationships as inseparable from long-term material security, "
+            "not as a reward to be earned only after the structural work is complete."
+        ),
+    },
+    (4, 7): {
+        "synthesis": (
+            "The 4-7 combination is an unusual pairing -- one number is driven by material "
+            "discipline and the other by inward reflection. Number 4 builds systems, wealth "
+            "structures, and practical frameworks with methodical patience, while number 7 "
+            "moves through experience, introspection, and a preference for depth over speed. "
+            "Together they can produce an unusually effective contemplative practitioner -- someone "
+            "who brings rigour to spiritual work, or spiritual discernment to financial decisions. "
+            "The friction arises because 4's comfort with practical outcomes conflicts with 7's "
+            "resistance to measuring everything materially. Integration comes when 4's discipline "
+            "serves 7's depth, and 7's wisdom prevents 4's effort from becoming purely mechanical."
+        ),
+    },
+    (4, 8): {
+        "synthesis": (
+            "Numbers 4 and 8 are arguably the most practically disciplined combination in the "
+            "Lo Shu grid. Both carry serious energy oriented toward building, enduring, and "
+            "accumulating knowledge or resources through sustained effort. Number 4 works through "
+            "structured, wealth-building discipline while number 8 adds ethical rigour, "
+            "educational depth, and Saturn's long-game patience. Together they produce someone "
+            "with genuine capacity for lasting achievement in material domains. The shadow is "
+            "severity -- this pairing can become relentlessly serious, unable to relax, and prone "
+            "to measuring every experience against productivity alone. Integration requires "
+            "building genuine rest, humour, and relational warmth into the structure both "
+            "numbers tend to over-prioritise."
+        ),
+    },
+    (4, 9): {
+        "synthesis": (
+            "The 4-9 combination pairs structural ambition with forceful drive in a pairing "
+            "powerfully oriented toward visible material achievement. Number 4 brings the "
+            "disciplined, systematic effort required to accumulate wealth and build durable "
+            "structures, while number 9 adds the courage, visibility, and competitive heat "
+            "required to succeed under pressure. Together they can produce exceptional performance "
+            "in business, athletics, or any domain where organised effort meets the willingness "
+            "to fight for results. The tension is between 4's patience and 9's urgency -- 4 "
+            "builds slowly while 9 wants immediate proof of progress. Integration requires "
+            "trusting that 9's force is most effective when it works through 4's structures "
+            "rather than around them."
+        ),
+    },
+    (5, 6): {
+        "synthesis": (
+            "Numbers 5 and 6 meet at the intersection of communication and care -- a pairing "
+            "oriented around how life is managed relationally and practically day to day. "
+            "Number 5 brings adaptability, social intelligence, and the capacity to coordinate "
+            "multiple demands, while number 6 adds the care of home, beauty, and an instinct "
+            "for maintaining harmony in relationships. Together they support mediators, "
+            "organisers, and anyone who brings warmth and flexibility to the challenge of "
+            "keeping relationships and environments functioning well. The tension appears when "
+            "5's need for movement and novelty conflicts with 6's preference for the stable "
+            "and familiar. Integration comes from channelling 5's adaptability in service of "
+            "the relationships 6 is genuinely committed to sustaining."
+        ),
+    },
+    (5, 7): {
+        "synthesis": (
+            "The 5-7 pairing combines communicative agility with inward depth in a combination "
+            "less common than it outwardly appears. Number 5 moves quickly, speaks readily, and "
+            "adapts easily to varied environments, while number 7 moves inwardly, prefers silence, "
+            "and learns through experience rather than explanation. Together they can produce "
+            "someone with a broad inner life who can also express it clearly -- an advantage in "
+            "spiritual counselling, philosophical writing, or any path that bridges visible and "
+            "unseen dimensions of life. The tension is that 5's restlessness can disturb 7's "
+            "need for contemplative stillness. Integration means protecting regular space for "
+            "reflection so that 5's communication has genuine inner content rather than only "
+            "surface fluency."
+        ),
+    },
+    (5, 8): {
+        "synthesis": (
+            "Numbers 5 and 8 hold an instructive tension between adaptability and accountability. "
+            "Number 5 thrives on variety, movement, and open channels of communication, while "
+            "number 8 brings Saturn's demand for consistency, ethical rigour, and measurable "
+            "progress across time. Together they can produce a versatile and trustworthy "
+            "professional -- someone who adapts quickly but does not compromise on follow-through. "
+            "The friction arises when 5's natural tendency to move on before fully completing "
+            "clashes with 8's insistence on closing every loop before opening a new one. "
+            "Integration requires 5 to bring 8's discipline to its own momentum, using structure "
+            "as the framework that makes agile movement productive rather than merely restless."
+        ),
+    },
+    (5, 9): {
+        "synthesis": (
+            "The 5-9 combination amplifies both movement and intensity. Number 5 brings "
+            "communicative speed, social versatility, and a gift for navigating change, while "
+            "number 9 adds drive, competitive ambition, and the force to push through resistance. "
+            "Together they produce a highly energetic profile capable of rapid action and bold "
+            "communication. The shadow is burnout -- both numbers run hot and neither naturally "
+            "encourages slowing down or reflecting before committing. Impulsive speech, "
+            "over-commitment, and reactive decisions are the combined risks. Integration means "
+            "using 9's purposeful courage to direct 5's versatility toward one chosen domain "
+            "rather than spreading both across too many simultaneous fronts."
+        ),
+    },
+    (6, 7): {
+        "synthesis": (
+            "Numbers 6 and 7 meet in the quieter registers of life -- care and contemplation, "
+            "beauty and solitude, home and spirit. Number 6 brings the warmth of family care, "
+            "aesthetic sensitivity, and the desire to create protective environments, while "
+            "number 7 adds depth, introspection, and the wisdom that comes only through lived "
+            "experience rather than instruction. Together they can produce a deeply compassionate "
+            "presence -- someone who holds both the practical care of 6 and the spiritual clarity "
+            "of 7. The combined shadow is retreat behind a screen of spiritual or domestic "
+            "comfort. Integration requires allowing 6's outer relational warmth to pull 7 back "
+            "into genuine human engagement rather than idealised solitude."
+        ),
+    },
+    (6, 8): {
+        "synthesis": (
+            "The 6-8 pairing brings together relational care and disciplined responsibility in "
+            "a combination that is quietly serious and practically capable. Number 6 cares for "
+            "home, beauty, and the people who depend on it, while number 8 adds Saturn's "
+            "long-range discipline, material realism, and ethical accountability. Together they "
+            "support careers and lives built around sustained responsible care -- parenting, "
+            "architecture, administration, and any role that requires both warmth and structure "
+            "simultaneously. The tension surfaces when 8's severity strips the warmth from 6's "
+            "care, producing duty without joy. Integration comes from ensuring that 8's discipline "
+            "serves the beautiful purposes 6 sets rather than replacing them with mere compliance."
+        ),
+    },
+    (6, 9): {
+        "synthesis": (
+            "Numbers 6 and 9 place care and force in direct conversation. Number 6 brings the "
+            "relational warmth of home, beauty, and family protection, while number 9 adds "
+            "visible drive, courage, and a competitive energy that does not yield easily. Together "
+            "they can produce a powerful protector -- someone who fights for what they love with "
+            "genuine emotional investment and practical force. The tension is between 6's "
+            "preference for harmony and 9's comfort with necessary conflict. Relationships may "
+            "be simultaneously deeply caring and periodically combative. Integration comes from "
+            "learning to use 9's assertive energy in defence of the values 6 holds rather than "
+            "against the very people 6 is trying to protect."
+        ),
+    },
+    (7, 8): {
+        "synthesis": (
+            "The 7-8 combination is one of the most serious and inward-facing pairings in the "
+            "Lo Shu set. Number 7 brings depth, wisdom through experience, and a spiritual "
+            "intelligence that resists easy answers, while number 8 adds Saturn's structural "
+            "discipline, ethical weight, and long-range material rigour. Together they produce "
+            "a profile oriented toward mastery -- patient, serious, and capable of sustained work "
+            "in demanding domains. The combined shadow is austerity and isolation -- both numbers "
+            "can make life feel relentlessly effortful without the warmth of softer numbers to "
+            "balance them. Integration requires deliberately building in lightness, connection, "
+            "and genuine rest rather than treating enjoyment as a distraction from discipline."
+        ),
+    },
+    (7, 9): {
+        "synthesis": (
+            "Numbers 7 and 9 create an unusual tension between withdrawal and action, reflection "
+            "and force. Number 7 learns through inward experience and prefers the quieter "
+            "register of contemplation, while number 9 is driven by visible mission, competitive "
+            "energy, and the desire to act in the world with impact. Together they can produce "
+            "a warrior who fights from genuine inner conviction rather than from ego or habit. "
+            "The friction is real: 7's need for solitude and reflection directly conflicts with "
+            "9's pull toward action and public visibility. Integration comes from treating 7's "
+            "contemplative depth as the source of 9's direction -- so that force is guided by "
+            "wisdom rather than simply fuelled by intensity."
+        ),
+    },
+    (8, 9): {
+        "synthesis": (
+            "Numbers 8 and 9 combine disciplined endurance with competitive drive in the most "
+            "materially intense pairing in the Lo Shu set. Number 8 brings Saturn's patience, "
+            "ethical discipline, and long-range material intelligence, while number 9 adds "
+            "Mars's force, urgency, and willingness to do battle for what matters. Together they "
+            "produce a profile with unusual capacity for sustained achievement in demanding, "
+            "high-stakes environments. The shadow is significant -- both numbers carry weight, "
+            "and without softer forces in the grid, this combination can become harsh, domineering, "
+            "or exhausted by its own seriousness. Integration requires consciously choosing to "
+            "apply both energies toward a purpose that serves others rather than simply "
+            "accumulating personal power or position."
+        ),
+    },
+}
+
 ARROW_ALIAS_TO_SLUG: dict[str, str] = {}
 for _slug, _payload in ARROW_BLUEPRINTS.items():
     ARROW_ALIAS_TO_SLUG[_slug] = _slug
@@ -1167,7 +1665,7 @@ def build_number_deep_dive_document(number: int) -> dict[str, Any]:
     return {
         "number": number,
         "slug": str(number),
-        "title": f"Lo Shu Number {number} - Meaning, Energy & Influence in Your Grid",
+        "title": NUMBER_PAGE_TITLES[number],
         "intro": blueprint["intro"],
         "when_present": blueprint["present_once"],
         "when_repeated": blueprint["repeat_guidance"],
@@ -1192,7 +1690,7 @@ def build_number_deep_dive_document(number: int) -> dict[str, Any]:
         "famous_personalities": blueprint["famous_personalities"],
         "faq": faq_items,
         "cta_href": "/lo-shu-grid/calculator",
-        "meta_title": f"Lo Shu Number {number} - Meaning & Grid Influence | EverydayHoroscope",
+        "meta_title": f"{NUMBER_PAGE_TITLES[number]} | EverydayHoroscope",
         "meta_description": f"Discover what Lo Shu number {number} means when it is present, repeated, or missing from your grid, plus the classical associations and balancing tips linked with this number.",
     }
 

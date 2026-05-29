@@ -1,0 +1,73 @@
+{
+  "number_pages": {
+    "L1": {
+      "blocked_pairs": 0,
+      "flagged_pairs": 0,
+      "peak": 0.252
+    },
+    "L2": {
+      "flagged_phrases": 0,
+      "top_5": []
+    },
+    "L3": {
+      "matched_headings": 0,
+      "sample": []
+    }
+  },
+  "combination_pages": {
+    "L1": {
+      "blocked_pairs": 0,
+      "flagged_pairs": 0,
+      "peak": 0.388
+    },
+    "L2": {
+      "flagged_phrases": 0,
+      "top_5": []
+    },
+    "L3": {
+      "matched_headings": 0,
+      "sample": []
+    }
+  },
+  "layer_g": {
+    "blueprint_prose": {
+      "avg_dup_rate": 0.0,
+      "peak_dup_rate": 0.0,
+      "samples_checked": 2,
+      "results": [
+        {
+          "name": "1",
+          "phrase": "urge move first source material tied communication confidence",
+          "hits": 0,
+          "dup_rate": 0.0
+        },
+        {
+          "name": "2",
+          "phrase": "classical references link love marriage intuition moon reflective",
+          "hits": 0,
+          "dup_rate": 0.0
+        }
+      ]
+    },
+    "classical_watch1": {
+      "avg_dup_rate": 0.0,
+      "peak_dup_rate": 0.0,
+      "samples_checked": 2,
+      "results": [
+        {
+          "name": "1",
+          "phrase": "kidneys ears middle son black dark blue sun",
+          "hits": 0,
+          "dup_rate": 0.0
+        },
+        {
+          "name": "2",
+          "phrase": "south west abdomen mother pink red white moon",
+          "hits": 0,
+          "dup_rate": 0.0
+        }
+      ]
+    }
+  },
+  "verdict": "\u2705  PASS -- All layers clear. LSG-1 safe to integrate."
+}

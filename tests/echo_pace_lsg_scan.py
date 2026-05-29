@@ -77,7 +77,9 @@ if _BACKEND not in sys.path:
 try:
     from lo_shu_router import (
         NUMBER_CLASSICAL_ASSOCIATIONS,
+        NUMBER_COMBINATION_INSIGHTS,
         NUMBER_DEEP_DIVE_BLUEPRINTS,
+        NUMBER_PAGE_TITLES,
         NUMBER_REFERENCE,
     )
 except ImportError as exc:
@@ -181,7 +183,17 @@ def _classical_body(n: int) -> str:
     return " ".join(filter(None, parts))
 
 def _combo_page_body(n1: int, n2: int) -> str:
-    """Construct body for a combination page (two numbers)."""
+    """Construct body for a combination page (two numbers).
+
+    Uses NUMBER_COMBINATION_INSIGHTS unique synthesis prose when available.
+    Falls back to concatenated blueprints only if the key is missing
+    (which would trigger a BLOCKED result -- a signal to add the entry).
+    """
+    key = (min(n1, n2), max(n1, n2))
+    entry = NUMBER_COMBINATION_INSIGHTS.get(key)
+    if entry:
+        return entry.get("synthesis", "")
+    # Fallback: concatenate blueprints (will likely BLOCK -- add synthesis to fix)
     b1 = NUMBER_DEEP_DIVE_BLUEPRINTS.get(n1, {})
     b2 = NUMBER_DEEP_DIVE_BLUEPRINTS.get(n2, {})
     return " ".join(filter(None, [
@@ -423,7 +435,7 @@ def main() -> int:
 
     n1_st, n1 = layer1(num_docs, num_names, "Number Pages (1-9)")
     n2_st, n2 = layer2(num_docs, "Number Pages")
-    n3_st, n3 = layer3([f"lo shu number {n}" for n in numbers], "Number Pages")
+    n3_st, n3 = layer3([NUMBER_PAGE_TITLES[n] for n in numbers], "Number Pages")
     report["number_pages"] = {"L1": n1, "L2": n2, "L3": n3}
     all_statuses += [n1_st, n2_st]
 

@@ -1,7 +1,7 @@
 # Lo Shu Grid -- Module Tracker
 > Path: `Codex_Deliveries/Lo_Shu_Grid/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-25 IST · v2.0
+> Last updated: 2026-05-29 IST · v3.0
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- LSG-2 local expansion prepared, build-verified, Temple review pending |
+| **Status** | 🟠 ECHO/PACE PASSED -- LSG-2 awaiting TT sign-off before integration |
 | **Backend router** | `backend/lo_shu_router.py` |
 | **Seed script** | `backend/scripts/seed_lo_shu.py` |
 | **SEO sitemap** | `GET /api/seo/sitemap/lo-shu-grid` via `backend/seo_router.py` |
@@ -55,5 +55,6 @@
 
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
+| v3.0 | 2026-05-29 | ECHO/PACE full scan completed (L1-L3 + Layer G via Serper). Fixed L1 BLOCKED on combination pages: added `NUMBER_COMBINATION_INSIGHTS` (36 unique synthesis entries) to `lo_shu_router.py`. Fixed L3 FLAGGED on number headings: added `NUMBER_PAGE_TITLES` (humanised planet+archetype titles) to router + scanner. Updated `build_number_deep_dive_document()` to use humanised titles in page payload. Layer G: all 4 Serper queries returned 0/10 hits -- blueprint prose and classical associations (WATCH-1) both clean. Added LSG-OP-4 (scanner coverage gap -- problem/personal-year pages not in L1-L2 scope). Sign-off doc prepared: `LSG_INTEGRATION_SIGNOFF_NOTE_2026-05-29.docx`. Commit: `56da74c`. | CC | `echo_pace_lsg_scan.py`, `lo_shu_router.py` |
 | v2.0 | 2026-05-25 | LSG-2 delivered locally. Expanded the Lo Shu module with 9 number deep-dive pages, 20 problem-area pages, 9 personal-year pages, new backend endpoints, expanded seed coverage, hub discoverability links, and a 57-URL Lo Shu sitemap. Backend compile, seed dry-run, sitemap count, and frontend production build passed. | Codex | `CODEX_COMMISSION_LSG_2_EXPANSION.md` |
 | v1.0 | 2026-05-23 | LSG-1 delivered locally. Added dedicated Lo Shu backend router, SEO sitemap endpoint, Mongo seed script, four public frontend pages, shared grid component, App routes, sitemap index entry, and Vercel cache headers. Backend compile and frontend production build passed. | Codex | `CODEX_COMMISSION_LO_SHU_GRID.md` |

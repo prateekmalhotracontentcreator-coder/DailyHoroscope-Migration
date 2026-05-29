@@ -1,0 +1,49 @@
+{
+  "run_at": "2026-05-29T19:44:50.003018+00:00",
+  "layer": "G",
+  "description": "Detailed Serper validation for ECHO/PACE Layer G",
+  "thresholds": {
+    "pass": 0.2,
+    "watch": 0.2,
+    "blocked": 0.4
+  },
+  "overall": "\u2705  PASS \u2014 all Layer G queries clear; LSG-1 safe to integrate",
+  "queries": [
+    {
+      "query_label": "Blueprint Prose",
+      "number": 1,
+      "phrase": "urge move first source material tied communication confidence",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "\u2705  PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Blueprint Prose",
+      "number": 2,
+      "phrase": "classical references link love marriage intuition moon reflective",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "\u2705  PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Classical WATCH-1",
+      "number": 1,
+      "phrase": "kidneys ears middle son black dark blue sun",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "\u2705  PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Classical WATCH-1",
+      "number": 2,
+      "phrase": "south west abdomen mother pink red white moon",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "\u2705  PASS",
+      "organic_results": []
+    }
+  ]
+}
