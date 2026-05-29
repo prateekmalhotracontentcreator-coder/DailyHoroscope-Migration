@@ -1,7 +1,7 @@
 # The Strategist -- Module Tracker
 > Path: `Codex_Deliveries/Strategist/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-26 · v1.7
+> Last updated: 2026-05-29 · v2.0
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | ✅ LIVE -- STR-1 (`ba58192`), STR-2J (`9ad2e0a`), STR-R01 (`958df18`) all integrated. War Room now wired to live engine. Open: STR-OP-3 (TT verify). STR-R02 not yet scoped. |
+| **Status** | 🟢 PHASE 2 INTEGRATED -- All 7 CD HTML files converted to ES modules and integrated. STR-OP-7 through STR-OP-13 complete. StrategistActionPlanPage.jsx rebuilt as full 2G composition shell. Pending: TT verification across light/dark/cr modes (STR-OP-15). |
 | **Frontend** | `frontend/src/pages/strategist/` (StrategistPage, StrategistMissionsPage, etc.) |
 | **Backend** | `backend/strategist_router.py` · `backend/strategist_engine.py` |
 | **Live URL** | `/strategist` · `/strategist/missions` |
@@ -27,7 +27,8 @@
 | **STR-R03** | Pitru Rin Ledger (Gate 1 → PitruRinRow shape) | ✅ INTEGRATED -- commit `bf20389` | `CODEX_COMMISSION_STR_R03_PITRU_RIN.md` · Delivered Codex 2026-05-26, build-verified, committed to main |
 | **STR-R04** | Dasha Transition Date (formatTransitionDate + wire transition prop) | ✅ INTEGRATED -- commit `c439691` | `CODEX_COMMISSION_STR_R04_DASHA_TRANSITION.md` · CC applied directly (1-line fix), pushed to main |
 | **STR-2A1** | NavBar + Footer cleanup (Strategist top-level, no crown, dedupe Blog) | ✅ INTEGRATED -- commit `bf20389` | `CODEX_COMMISSION_STR_2A1_NAVBAR.md` · Delivered Codex 2026-05-26, build-verified, committed to main |
-| **STR-2EF** | Scoreboard + LK Gate Summaries (Phase 2 CD award) | 🔵 BRIEF READY -- NOT YET SENT | `CODEX_COMMISSION_STR_2EF_SCOREBOARD_GATES.md` · CD commission brief drafted, awaiting send to Claude Design |
+| **STR-Phase2** | Full Phase 2 UI (2F ConquestScoreboard · 2E LKGates · 2C Verdict · 2D ReEntry · 2I Pray · 2G ActionPlan · 2B Gate0) | ✅ CD DELIVERED -- PENDING CC INTEGRATION | `CODEX_COMMISSION_STR_PHASE2_FULL_CD.md` · All 7 HTML files delivered by CD (29 May). CC integration not yet started. See STR-OP-7 through STR-OP-12. |
+| **STR-2EF** | Scoreboard + LK Gate Summaries (Phase 2 CD award) | ⚠️ SUPERSEDED by STR-Phase2 | `CODEX_COMMISSION_STR_2EF_SCOREBOARD_GATES.md` · Original brief -- components now covered in STR-Phase2 full delivery |
 | **STR-2J** | Strategist Missions UI (MissionCard responsive + dasha display) | ✅ INTEGRATED | `CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · Commit `9ad2e0a` |
 | **STR-1** | Premium Landing Page + War Room Visual Rebuild | ✅ INTEGRATED -- commit `ba58192` | `CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` · Built Codex workspace 2026-05-14, integrated same session |
 
@@ -43,6 +44,15 @@
 | STR-OP-5 | Verify War Room live data on `/strategist/war-room` post STR-R01 | TT | 🟠 HIGH | STR-R01 live at commit `958df18`. Verify: conquest score gauge non-zero, dasha bars show real planet names, mission board shows ≥1 card, no-profile users see "War Room Locked" gate. |
 | STR-OP-6 | Scope STR-R02 | CC + TT | 🔵 NEXT | STR-R01 closed R-01. STR-R02 not yet defined. Review THE_STRATEGIST_FULL_SPEC.md and decide next commission target. |
 | ~~STR-OP-4~~ | ~~STR-1 must NOT overwrite STR-2J files~~ | CC | ✅ SATISFIED | Confirmed: StrategistMissionsPage.jsx + MissionCard.jsx untouched. |
+| ~~STR-OP-7~~ | ~~Delete CC-written approximations before Phase 2 integration~~ | CC | ✅ DONE | `Phase2Components.jsx` + `strategist-phase2.css` deleted. Phase 2 folder contains only CD-derived files. |
+| ~~STR-OP-8~~ | ~~Integrate STR-2F · ConquestScoreboard~~ | CC | ✅ DONE 2026-05-29 | `ConquestScoreboard.jsx` + `strategist-2f-scoreboard.css` created. Shared primitives extracted to `StrategistPrimitives.jsx`. Components: `ScoreboardCompact`, `ScoreboardExpanded`, `ChipSetStrip`, `Gauge`, `KarmicChip`. |
+| ~~STR-OP-9~~ | ~~Integrate STR-2E · LKGateSummaries~~ | CC | ✅ DONE 2026-05-29 | `LKGateSummaries.jsx` + `strategist-2e-lkgates.css` created. Components: `LKStatusChip`, `ToneBar`, `GateRow`, `GateCard`, `LKGateSummaries`. |
+| ~~STR-OP-10~~ | ~~Integrate STR-2C · OracleVerdictBanners (inc. ContextStrip)~~ | CC | ✅ DONE 2026-05-29 | `OracleVerdictBanners.jsx` + `strategist-2c-oracle.css` created. Includes ContextStrip per TT ruling. |
+| ~~STR-OP-11~~ | ~~Integrate STR-2D · ReentryLoop + STR-2I · PrayPath~~ | CC | ✅ DONE 2026-05-29 | `ReentryLoop.jsx` + `strategist-2d-reentry.css`; `PrayPath.jsx` + `strategist-2i-praypath.css` created. |
+| ~~STR-OP-12~~ | ~~Integrate STR-2B · Gate0Panel as standalone on Action Plan page~~ | CC | ✅ DONE 2026-05-29 | `KPGate0Panel.jsx` + `strategist-2b-gate0.css` created. Canvas FRESHNESS review control removed per CD's integration note. |
+| ~~STR-OP-13~~ | ~~Rebuild StrategistActionPlanPage using STR-2G composition shell~~ | CC | ✅ DONE 2026-05-29 | `StrategistActionPlanPage.jsx` fully rebuilt. 5-section composition: §01 Digest (2F) · §02 Diagnostics (2E) · §03 Verdict (2C) · §04 Active Path (2D/2I/ClearanceCard) · §05 Action Queue (new 2G). One page-level density control (Command/Briefing). KP Gate 0 standalone above sections. `strategist-2g-actionplan.css` created. Build clean. |
+| STR-OP-14 | CD add-on commission: ScoreboardCompact as density toggle for ScoreboardExpanded | CD | 🔵 POST Phase 2 | TT decision 2026-05-29: default is ScoreboardExpanded (CD version). If compact view desired as an option, commission CD to build toggle in single delivery. Bundle with any other post-Phase2 CD add-ons. |
+| STR-OP-15 | Verify all Phase 2 components render across light / dark / cr modes | TT | 🟠 POST INTEGRATION | After CC completes STR-OP-7 to STR-OP-13, TT to verify all 3 theme modes on `/strategist/action-plan`. |
 
 ---
 
@@ -77,3 +87,5 @@
 | v1.6 | 2026-05-15 | DashaTimingBar backend fix: new `POST /api/strategist/profile` endpoint added to `strategist_router.py` -- stores birth_date + computes moon_longitude via `calculate_vedic_chart`. Sequential fetch pattern in `StrategistPage.jsx` useEffect ensures birth data in DB before dashboard call. StrategistActionPlanPage crash fixed (undefined token in useEffect dep array). MODULE_STRATEGIST handoff bundle cleaned: 4 runtime files removed per PROCESS_RUNTIME_CODE_OWNERSHIP.md. Vercel build fix: unescaped apostrophe in tagline (`667fc34`). | CC | `667fc34` |
 | v1.7 | 2026-05-26 | STR-R01 INTEGRATED. StrategistWarRoomPage.jsx (new) + App.js route swap. CC fixed warRoomProps flash bug (derived value in render, not separate useState/useEffect). Build confirmed. R-01 closed. STR-OP-5 + STR-OP-6 added. | CC | `958df18` |
 | v1.8 | 2026-05-27 | STR-R02/R03/2A1 committed to main (`bf20389`). STR-R04 committed (`c439691`). War Room theme toggle + back nav + Control Room preview grey fix + FAQ rewrite committed (`2db21c2`). All 4 Codex backend/nav deliveries verified conflict-free. STR-2EF CD brief ready but not yet sent. Phase 2 pipeline confirmed: 7 CD items (2E, 2F, 2B, 2C, 2D, 2G, 2I) with all dependencies satisfied. | CC | `bf20389` · `c439691` · `2db21c2` |
+| v1.9 | 2026-05-29 | Deep audit of CD delivery folder completed. Found: (1) all 7 Phase 2 HTML files already delivered by CD; (2) CC had written approximations (Phase2Components.jsx, strategist-phase2.css) at ~50-60% fidelity -- these must be deleted; (3) `_assets/` folder is partial, HTML files are authoritative; (4) Phase 1 War Room files (step3 patches) correctly integrated with only smart-quote sanitisation differences. Three issues resolved: ScoreboardExpanded=default, ContextStrip=include, Gate0Panel=standalone on ActionPlanPage. Two new process docs created: PROCESS_CD_INTEGRATION_PROTOCOL.md + PROCESS_CD_COMMISSION_BRIEF_QUALITY.md. WORKING_PROTOCOL.md updated with Rules 10-12. Open points STR-OP-7 through STR-OP-15 added. | CC | -- |
+| v2.0 | 2026-05-29 | Phase 2 full integration complete. STR-OP-7 through STR-OP-13 all closed. Files created: `StrategistPrimitives.jsx` (shared primitives), `ConquestScoreboard.jsx`, `LKGateSummaries.jsx`, `OracleVerdictBanners.jsx`, `ReentryLoop.jsx`, `PrayPath.jsx`, `KPGate0Panel.jsx` + matching CSS files for each. `StrategistActionPlanPage.jsx` rebuilt as 2G composition shell: 5 sections, one page-level density control, KP Gate 0 standalone panel, inline 2G-owned VerdictCompact/ClearanceCard/ActionQueueModule. Props added to Phase 2 components: `view`+`showToggle` (ConquestScoreboard, LKGateSummaries, PrayPath), `density` (ReentryLoop). Build clean (`DISABLE_ESLINT_PLUGIN=true npx craco build`). Pending: commit + TT verification (STR-OP-15). | CC | pending commit |

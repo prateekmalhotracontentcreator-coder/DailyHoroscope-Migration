@@ -1,174 +1,543 @@
-import { SEO } from '../../components/SEO';
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+// -----------------------------------------------------------------
+// StrategistActionPlanPage.jsx
+// Source: STR-2G · StrategistActionPlan.html  (CD delivery)
+// Built: 2026-05-29  (STR-OP-13)
+//
+// 2G composition shell -- assembles five Phase 2 surface modules in
+// chart-led order per A1 §5:
+//   §01 Digest      ← 2F ConquestScoreboard (compact bar always; detail in briefing)
+//   §02 Diagnostics ← 2E LKGateSummaries
+//   §03 Verdict     ← 2C OracleVerdictBanners (briefing) / VerdictCompact (command)
+//   §04 Active Path ← switch(verdict): 2D (no/wait) · 2I (pray) · ClearanceCard (yes)
+//   §05 Action Queue ← new 2G-owned component
+//
+// ONE page-level density control (Command / Briefing) drives every section.
+// Modules render with showToggle=false; their A/B is set by the page density.
+//
+// KP Gate 0 panel -- standalone, above the sections per TT process map.
+// Wires to /api/strategist/dashboard. KP gate fields stub until STR-2A2 lands.
+//
+// CSS imports: all Phase 2 component CSS + strategist-2g-actionplan.css
+// -----------------------------------------------------------------
+
+import React, { useState, useEffect } from 'react';
+import StrategistThemeProvider from '../../components/strategist/StrategistThemeProvider';
+import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
+
+// Phase 2 components
+import ConquestScoreboard, { KarmicChip } from '../../components/strategist/phase2/ConquestScoreboard';
+import LKGateSummaries from '../../components/strategist/phase2/LKGateSummaries';
+import OracleVerdictBanners from '../../components/strategist/phase2/OracleVerdictBanners';
+import ReentryLoop from '../../components/strategist/phase2/ReentryLoop';
+import PrayPath from '../../components/strategist/phase2/PrayPath';
+import KPGate0Panel from '../../components/strategist/phase2/KPGate0Panel';
+import { SegPill, VerdictChip } from '../../components/strategist/phase2/StrategistPrimitives';
+
+// Phase 2 CSS
+import '../../styles/strategist-tokens.css';
+import '../../styles/strategist-2f-scoreboard.css';
+import '../../styles/strategist-2e-lkgates.css';
+import '../../styles/strategist-2c-oracle.css';
+import '../../styles/strategist-2d-reentry.css';
+import '../../styles/strategist-2i-praypath.css';
+import '../../styles/strategist-2b-gate0.css';
+import '../../styles/strategist-2g-actionplan.css';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 
-const TYPE_CONFIG = {
-  gate0:    { dot: 'bg-gold',          badge: 'text-gold border-gold/40 bg-gold/10',          label: 'ORACLE' },
-  remedy:   { dot: 'bg-emerald-400',   badge: 'text-emerald-400 border-emerald-400/40 bg-emerald-400/10', label: 'REMEDY' },
-  debt:     { dot: 'bg-amber-400',     badge: 'text-amber-400 border-amber-400/40 bg-amber-400/10',       label: 'DEBT' },
-  mercury:  { dot: 'bg-blue-400',      badge: 'text-blue-400 border-blue-400/40 bg-blue-400/10',          label: 'MERCURY' },
-  surrender:{ dot: 'bg-purple-400',    badge: 'text-purple-400 border-purple-400/40 bg-purple-400/10',    label: 'PRAY' },
-  mission:  { dot: 'bg-muted-foreground', badge: 'text-muted-foreground border-border bg-card',           label: 'MISSION' },
+// -----------------------------------------------------------------
+// DENSITY MAP -- page density → each module's A/B (per 2G Q-02·b)
+// -----------------------------------------------------------------
+const DENSITY_MAP = {
+  command:  { board: 'compact',  diag: 'list',  pray: 'focus'    },
+  briefing: { board: 'expanded', diag: 'grid',  pray: 'triptych' },
 };
 
-function ActionCard({ action }) {
-  const cfg = TYPE_CONFIG[action.type] || TYPE_CONFIG.mission;
+// -----------------------------------------------------------------
+// BANNERS -- hardcoded per field map (from OracleVerdictBanners BANNERS const)
+// Used by VerdictCompact (Command density §03 render)
+// -----------------------------------------------------------------
+const BANNERS = {
+  yes:  { headline: 'Advance Now', reasoning: 'Jupiter opens the 10th; the gain axis is unobstructed for the named action.', cta: 'Proceed' },
+  wait: { headline: 'Hold Position', reasoning: 'Mercury retrograde shadow touches communication channels; defer until 9 Jun.', cta: 'Set Reminder' },
+  no:   { headline: 'Stand Down', reasoning: 'Rahu in the 7th activates a partnership counter-signal; act now and yield the gain.', cta: 'View Re-entry Path' },
+  pray: { headline: 'The Path is Devotional', reasoning: 'Saturn--Rahu fold in the 9H axis -- the karmic ledger must be addressed before temporal action.', cta: 'Begin the Offering' },
+};
+
+// -----------------------------------------------------------------
+// ACTION QUEUE content (2G-owned · §05)
+// Three moves distilled from verdict + diagnostics. Each ties back to
+// a gate or the directive. Hardcoded scaffold -- future: live from API.
+// -----------------------------------------------------------------
+const ACTION_QUEUE = [
+  {
+    tone: 'em',
+    move: 'Hold the Wednesday ritual',
+    done: 4, total: 9,
+    why: 'The streak is the cheapest route to Sovereign -- five weeks of unbroken cadence closes the gap. Do not change the form.',
+    whyBold: { 'five weeks': true },
+    src: { gate: 'G05', label: 'Devotional · + directive' },
+    window: { l: 'cadence', v: 'weekly · Wed', crit: false },
+  },
+  {
+    tone: 'amber',
+    move: 'Tarpan on the next amavasya',
+    done: 0, total: 1,
+    why: 'The pitru thread at the 9H midpoint frays -- one tarpan seals it before it ripens to a 12H drain.',
+    src: { gate: 'G04', label: 'Pitru · warning' },
+    window: { l: 'window', v: '6 days', crit: true },
+  },
+  {
+    tone: 'gold',
+    move: 'Clear the 6H dormant-house chore',
+    done: 1, total: 3,
+    why: 'Routine work activates the first of three sleeping houses -- the 6th opens before the 8th and 12th follow.',
+    src: { gate: 'G02', label: 'Sleeping Houses' },
+    window: { l: 'cadence', v: '6H · weekly', crit: false },
+  },
+];
+
+// -----------------------------------------------------------------
+// Section frame component (from 2G composition shell)
+// -----------------------------------------------------------------
+function Section({ n, title, srcTag, srcLabel, srcEm, label, children }) {
   return (
-    <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4 flex gap-4">
-      <div className="flex flex-col items-center pt-1 gap-2 shrink-0">
-        <span className="text-[10px] font-bold text-muted-foreground tabular-nums w-5 text-center">
-          {String(action.priority).padStart(2, '0')}
+    <section className="ap-sec" data-screen-label={label}>
+      <div className="ap-sec__head">
+        <span className="ap-sec__n">{n}</span>
+        <h3 className="ap-sec__title">{title}</h3>
+        <span className="ap-sec__src">
+          inherits &middot;{' '}
+          <b className={srcEm ? 'em' : ''}>{srcTag}</b>
+          {' '}&middot; {srcLabel}
         </span>
-        <span className={`h-2 w-2 rounded-full ${cfg.dot}`} />
       </div>
-      <div className="min-w-0 flex-1">
-        <div className="flex items-center gap-2 flex-wrap mb-1">
-          <span className={`text-[10px] font-semibold uppercase tracking-wider px-1.5 py-0.5 rounded border ${cfg.badge}`}>
-            {cfg.label}
-          </span>
-          <p className="text-sm font-semibold text-foreground">{action.label}</p>
-        </div>
-        {action.detail && (
-          <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-3">{action.detail}</p>
-        )}
-        <Link
-          to={action.cta_path}
-          className="inline-block rounded-lg border border-gold/30 bg-gold/10 px-3 py-1.5 text-xs font-semibold text-gold hover:bg-gold/20 transition"
-        >
-          {action.cta_label} →
-        </Link>
-      </div>
-    </div>
+      {children}
+    </section>
   );
 }
 
-function ActiveRemedyCard({ remedy }) {
-  if (!remedy) return null;
+// -----------------------------------------------------------------
+// Arrow icon (shared by VerdictCompact and ClearanceCard)
+// -----------------------------------------------------------------
+const ArrowSvg = ({ s = 11 }) => (
+  <svg width={s} height={s} viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="2" y1="6" x2="10" y2="6" /><polyline points="7,3 10,6 7,9" />
+  </svg>
+);
+
+// -----------------------------------------------------------------
+// §03 · VerdictCompact -- Command density of the 2C banner (2G Q-02·b)
+// Chip + headline + one-line reasoning + CTA. No signal rail.
+// CSS: .ap-vc  (strategist-2g-actionplan.css)
+// -----------------------------------------------------------------
+function VerdictCompact({ verdict, onCtaClick }) {
+  const b = BANNERS[verdict] || BANNERS.wait;
   return (
-    <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/[0.06] p-4 mb-5">
-      <p className="text-[11px] uppercase tracking-widest text-muted-foreground mb-2">Active LK Remedy -- Day {remedy.streak_days}</p>
-      <p className="text-sm leading-relaxed text-foreground mb-1">{remedy.rule_text}</p>
-      {remedy.planet && (
-        <p className="text-xs text-muted-foreground">Planet: <span className="text-gold font-semibold">{remedy.planet}</span>
-          {remedy.house ? ` · House ${remedy.house}` : ''}
-        </p>
-      )}
-      <Link to="/lk-remedies/tracker" className="mt-3 inline-block text-xs text-gold hover:underline">
-        View Tracker →
-      </Link>
+    <div className={`ap-vc ap-vc--${verdict}`}>
+      <div className="ap-vc__chip-col">
+        <span className="ap-vc__eyebrow">Verdict</span>
+        <VerdictChip type={verdict} active />
+      </div>
+      <div className="ap-vc__text">
+        <h2 className="ap-vc__headline">{b.headline}</h2>
+        <p className="ap-vc__reason">&ldquo;{b.reasoning}&rdquo;</p>
+      </div>
+      <button type="button" className="ap-vc__cta" onClick={onCtaClick}>
+        {b.cta} <ArrowSvg />
+      </button>
     </div>
   );
 }
 
-export default function StrategistActionPlanPage() {
-  const navigate = useNavigate();
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+// -----------------------------------------------------------------
+// §04 · ClearanceCard -- YES verdict · quiet greenlight (2G Q-03 · new)
+// CSS: .ap-clear  (strategist-2g-actionplan.css)
+// -----------------------------------------------------------------
+function ClearanceCard({ directive }) {
+  return (
+    <div className="ap-clear">
+      <span className="ap-clear__seal" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="4,12.5 10,18 20,6" />
+        </svg>
+      </span>
+      <div className="ap-clear__body">
+        <span className="ap-clear__eyebrow">Greenlit &middot; no path required</span>
+        <p className="ap-clear__line">You&apos;re cleared to move. Hold what&apos;s working.</p>
+        <p className="ap-clear__directive">
+          Standing directive &middot;{' '}
+          <b>&ldquo;{directive || 'Hold your cadence'}&rdquo;</b>
+          {' '}&mdash; the chart re-reads on demand, or automatically at the next score change.
+        </p>
+      </div>
+      <div className="ap-clear__reread">
+        <span className="ap-clear__reread-l">Next re-read</span>
+        <span className="ap-clear__reread-v">On demand</span>
+        <span className="ap-clear__reread-sub">or auto &middot; at score &Delta;</span>
+      </div>
+    </div>
+  );
+}
 
+// -----------------------------------------------------------------
+// §05 · QueuePips -- discrete pip track (lifted from 2D pattern)
+// -----------------------------------------------------------------
+function QueuePips({ done, total }) {
+  return (
+    <div className="ap-q__pip-track" aria-hidden="true">
+      {Array.from({ length: total }, (_, i) => (
+        <span key={i} className={`ap-q__pip${i < done ? ' ap-q__pip--done' : ''}`} />
+      ))}
+    </div>
+  );
+}
+
+// -----------------------------------------------------------------
+// §05 · ActionQueueModule -- new 2G-owned component
+// Three moves from verdict + diagnostics, each cited to a gate.
+// CSS: .ap-queue, .ap-q  (strategist-2g-actionplan.css)
+// -----------------------------------------------------------------
+function ActionQueueModule({ density }) {
+  const cmd = density === 'command';
+  return (
+    <ul className="ap-queue">
+      {ACTION_QUEUE.map((m, i) => (
+        <li key={i} className={`ap-q ap-q--${m.tone}${cmd ? ' ap-q--command' : ''}`}>
+          <span className="ap-q__n">{String(i + 1).padStart(2, '0')}</span>
+          <div className="ap-q__body">
+            <p className="ap-q__move">{m.move}</p>
+            <p className="ap-q__why">{m.why}</p>
+            <span className="ap-q__src">
+              <span className="dot" aria-hidden="true"></span>
+              distilled from &middot; <b>{m.src.gate}</b> &middot; {m.src.label}
+            </span>
+          </div>
+          <div className="ap-q__progress">
+            <div className="ap-q__progress-head">
+              <span>Progress</span><b>{m.done} / {m.total}</b>
+            </div>
+            <QueuePips done={m.done} total={m.total} />
+          </div>
+          <div className="ap-q__window">
+            {m.window.l}
+            <b className={m.window.crit ? 'crit' : ''}>{m.window.v}</b>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+// -----------------------------------------------------------------
+// Active-path source metadata for §04 Section sub-header
+// -----------------------------------------------------------------
+function activePathSource(verdict) {
+  if (verdict === 'pray') return { tag: '2I', label: 'Pray Path',        em: false };
+  if (verdict === 'yes')  return { tag: 'new', label: 'Clearance · Q-03', em: true  };
+  return                         { tag: '2D', label: 'Re-entry Loop',    em: false };
+}
+
+// -----------------------------------------------------------------
+// Loading / Locked / Error shells
+// -----------------------------------------------------------------
+function ShellState({ children }) {
+  return (
+    <StrategistThemeProvider>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '60vh', gap: '1rem', padding: '0 1.5rem' }}>
+        {children}
+      </div>
+    </StrategistThemeProvider>
+  );
+}
+
+// -----------------------------------------------------------------
+// StrategistActionPlanPage -- main export
+// Fetches: /api/strategist/dashboard
+// -----------------------------------------------------------------
+export default function StrategistActionPlanPage() {
+  const [loading, setLoading]     = useState(true);
+  const [error, setError]         = useState('');
+  const [locked, setLocked]       = useState(false);
+  const [dashboard, setDashboard] = useState(null);
+  const [density, setDensity]     = useState('briefing');
+
+  // Fetch dashboard on mount
   useEffect(() => {
-    document.title = 'Action Plan | The Strategist';
-    fetch(`${BACKEND}/api/strategist/action-plan`, {
-      credentials: 'include',
-    })
-      .then(r => r.json())
-      .then(d => {
-        if (d.detail) throw new Error(d.detail);
-        setData(d);
-      })
-      .catch(e => setError(e.message))
-      .finally(() => setLoading(false));
+    let active = true;
+    async function load() {
+      setLoading(true);
+      setError('');
+      setLocked(false);
+      try {
+        const res  = await fetch(`${BACKEND}/api/strategist/dashboard`, { credentials: 'include' });
+        const data = await res.json().catch(() => ({}));
+        if (!active) return;
+        if (data?.error?.includes('LK profile missing')) { setLocked(true); return; }
+        if (!res.ok) throw new Error(data?.error || 'Unable to load action plan.');
+        setDashboard(data);
+      } catch (e) {
+        if (!active) return;
+        setError(e.message || 'Unable to load action plan right now.');
+      } finally {
+        if (active) setLoading(false);
+      }
+    }
+    load();
+    return () => { active = false; };
   }, []);
 
   if (loading) return (
-    <div className="min-h-screen bg-background flex items-center justify-center text-muted-foreground text-sm">
-      Building your Action Plan...
-    </div>
+    <ShellState>
+      <p style={{ color: 'var(--gold)', fontFamily: 'var(--font-display)', fontSize: '1.1rem', letterSpacing: '0.08em' }}>
+        Loading Action Plan&hellip;
+      </p>
+    </ShellState>
   );
 
+  if (locked) return (
+    <ShellState>
+      <p style={{ color: 'var(--gold)', fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>Action Plan Locked</p>
+      <p style={{ color: 'var(--strategist-fg-3)', fontSize: '0.9rem', textAlign: 'center', maxWidth: 340 }}>
+        Complete your Strategist onboarding to activate the live engine.
+      </p>
+      <a href="/strategist" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: '0.9rem' }}>
+        Return to Strategist
+      </a>
+    </ShellState>
+  );
+
+  if (error) return (
+    <ShellState>
+      <p style={{ color: 'var(--gold)', fontFamily: 'var(--font-display)', fontSize: '1.1rem' }}>Action Plan Unavailable</p>
+      <p style={{ color: 'var(--strategist-fg-3)', fontSize: '0.9rem', textAlign: 'center', maxWidth: 420 }}>{error}</p>
+      <a href="/strategist/action-plan" style={{ color: 'var(--gold)', textDecoration: 'underline', fontSize: '0.9rem' }}>
+        Retry
+      </a>
+    </ShellState>
+  );
+
+  if (!dashboard) return (
+    <ShellState>
+      <p style={{ color: 'var(--strategist-fg-3)', fontSize: '0.9rem' }}>Unable to map strategist engine output.</p>
+    </ShellState>
+  );
+
+  // -----------------------------------------------------------------
+  // Derived state from dashboard
+  // -----------------------------------------------------------------
+  const verdict   = (dashboard?.scoreboard?.gate0_last_verdict ?? 'wait').toLowerCase();
+  const directive = dashboard?.scoreboard?.score_directive ?? '';
+  const asOf      = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) + ' IST';
+  const ap        = activePathSource(verdict);
+  const d         = DENSITY_MAP[density];
+
+  // Gates array for §02 Diagnostics
+  const gates = Array.isArray(dashboard?.gate_summaries) ? dashboard.gate_summaries : [];
+
+  // KP Gate 0 data -- shell values until STR-2A2 (KP Oracle integration) lands
+  const gate0Days = dashboard?.scoreboard?.gate0_days_since ?? 0;
+  const gate0 = dashboard?.scoreboard?.gate0_last_verdict
+    ? {
+        verdict:       verdict,
+        question:      'Should I proceed with the named action in this Dasha period?',
+        askedDaysAgo:  gate0Days,
+        readAt:        gate0Days > 0 ? `${gate0Days} days ago` : 'Today',
+        sublord:       dashboard?.scoreboard?.gate0_sublord       ?? '--',
+        significators: dashboard?.scoreboard?.gate0_significators ?? [],
+        cuspalRuler:   dashboard?.scoreboard?.gate0_cuspal_ruler  ?? '--',
+      }
+    : null;
+
+  // -----------------------------------------------------------------
+  // Render
+  // -----------------------------------------------------------------
   return (
-    <div className="min-h-screen bg-gradient-to-b from-yellow-950/20 to-background text-foreground">
-      <SEO title="Action Plan -- The Strategist" noindex={true} />
-      <div className="max-w-2xl mx-auto px-4 py-8">
+    <StrategistThemeProvider>
 
-        {/* Header */}
-        <div className="mb-6">
-          <button
-            onClick={() => navigate('/strategist')}
-            className="text-xs text-muted-foreground hover:text-gold mb-3 inline-block"
-          >
-            ← War Room
-          </button>
-          <h1 className="text-2xl font-playfair font-semibold text-foreground">Action Plan</h1>
-          <p className="text-sm text-muted-foreground mt-1">Prioritised mission sequence based on your current Oracle, LK, and Astrological state.</p>
+      {/* Floating nav -- back link (left) + theme toggle (right) */}
+      <div style={{
+        position: 'fixed', top: 16, left: 0, right: 0, zIndex: 50,
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        padding: '0 20px', pointerEvents: 'none',
+      }}>
+        <a
+          href="/strategist"
+          style={{
+            pointerEvents: 'auto',
+            color: 'var(--strategist-fg-3)',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.72rem', letterSpacing: '0.16em',
+            textTransform: 'uppercase', textDecoration: 'none', opacity: 0.7,
+          }}
+          onMouseEnter={e  => { e.currentTarget.style.opacity = 1; }}
+          onMouseLeave={e  => { e.currentTarget.style.opacity = 0.7; }}
+        >
+          &larr; War Room
+        </a>
+        <div style={{ pointerEvents: 'auto' }}>
+          <StrategistThemeToggle />
         </div>
+      </div>
 
-        {error && (
-          <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 mb-5">
-            <p className="text-amber-400 text-sm">{error}</p>
-            <Link to="/lk-remedies/onboard" className="text-gold text-xs underline mt-1 block">
-              Complete LK Onboarding first →
-            </Link>
+      {/* Page root -- max-width container + top padding for nav */}
+      <div style={{ maxWidth: 960, margin: '0 auto', paddingTop: 52 }}>
+
+        {/* KP Gate 0 panel -- standalone above sections per TT process map */}
+        {gate0 && (
+          <div style={{ padding: '0 24px 20px' }}>
+            <KPGate0Panel
+              gate={gate0}
+              asOf={asOf}
+              onReconsult={() => { window.location.href = '/kp-oracle'; }}
+              onViewReading={() => { window.location.href = '/kp-oracle'; }}
+            />
           </div>
         )}
 
-        {data && (
-          <>
-            {/* Score summary strip */}
-            <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-4 mb-5 flex items-center justify-between gap-4 flex-wrap">
-              <div>
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Conquest Score</p>
-                <p className="text-2xl font-bold text-gold mt-0.5">{data.conquest_score}<span className="text-base">%</span></p>
-                <p className="text-xs text-muted-foreground">{data.score_tier}</p>
-              </div>
-              <div className="text-center">
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Streak</p>
-                <p className="text-2xl font-bold text-emerald-400 mt-0.5">{data.streak_days}<span className="text-base">d</span></p>
-              </div>
-              <div className="text-center">
-                <p className="text-[10px] uppercase tracking-widest text-muted-foreground">Gate 0</p>
-                {data.gate0?.verdict ? (
-                  <>
-                    <p className={`text-lg font-bold mt-0.5 ${
-                      data.gate0.verdict === 'YES' ? 'text-emerald-400' :
-                      data.gate0.verdict === 'WAIT' ? 'text-orange-400' :
-                      data.gate0.verdict === 'NO' ? 'text-red-400' : 'text-purple-400'
-                    }`}>{data.gate0.verdict}</p>
-                    <p className="text-[10px] text-muted-foreground">
-                      {data.gate0.days_since === 0 ? 'Today' : `${data.gate0.days_since}d ago`}
-                      {data.gate0.expired ? ' · Expired' : ''}
-                    </p>
-                  </>
-                ) : (
-                  <p className="text-sm text-muted-foreground mt-0.5">None</p>
-                )}
-              </div>
+        {/* ── Sticky density strip (Q-02·b) ── */}
+        <div className="ap-deck">
+          <h2 className="ap-deck__title">
+            <span className="diamond">&#9670;</span> Action Plan
+          </h2>
+          <div className="ap-deck__verdict">
+            verdict <VerdictChip type={verdict} active />
+          </div>
+          <div className="ap-deck__control">
+            <span className="ap-deck__control-lbl">density</span>
+            <SegPill
+              segments={[
+                { value: 'command',  label: 'command'  },
+                { value: 'briefing', label: 'briefing' },
+              ]}
+              value={density}
+              onChange={setDensity}
+              size="sm"
+              ariaLabel="Page density"
+            />
+          </div>
+        </div>
+
+        {/* ── Five sections ── */}
+        <div className="ap-body">
+
+          {/* §01 · Digest -- 2F compact bar always; detail row in briefing */}
+          <Section n="01" title="Digest" srcTag="2F" srcLabel="compact" label="2G·01 Digest">
+            <div className="ap-digest">
+              <ConquestScoreboard
+                data={dashboard}
+                asOf={asOf}
+                view="compact"
+                showToggle={false}
+              />
+              {density === 'briefing' && (
+                <div className="ap-digest__detail">
+                  <div className="ap-digest__cell">
+                    <span className="ap-digest__l">Rank</span>
+                    <div className="ap-digest__v">
+                      <strong>{dashboard?.scoreboard?.score_tier ?? '--'}</strong>
+                    </div>
+                    <span className="ap-digest__sub">
+                      next &middot; {dashboard?.scoreboard?.next_threshold_label ?? '--'} &middot;{' '}
+                      {dashboard?.scoreboard?.points_to_next ?? 0} to {dashboard?.scoreboard?.next_threshold ?? '--'}
+                    </span>
+                  </div>
+                  <div className="ap-digest__cell">
+                    <span className="ap-digest__l">Karmic</span>
+                    <div className="ap-digest__v">
+                      <KarmicChip state={dashboard?.diagnosis_summary?.karmic_debt_cleared ?? 'Pending'} />
+                    </div>
+                    <span className="ap-digest__sub">ledger status</span>
+                  </div>
+                  <div className="ap-digest__cell">
+                    <span className="ap-digest__l">Active verdict</span>
+                    <div className="ap-digest__v">
+                      <VerdictChip type={verdict} />
+                    </div>
+                    <span className="ap-digest__sub">answers the scanner above</span>
+                  </div>
+                  <div className="ap-digest__cell">
+                    <span className="ap-digest__l">As of</span>
+                    <div className="ap-digest__v"><strong>{asOf}</strong></div>
+                    <span className="ap-digest__sub">re-read on demand</span>
+                  </div>
+                </div>
+              )}
             </div>
+          </Section>
 
-            {/* Active remedy */}
-            <ActiveRemedyCard remedy={data.active_remedy} />
+          {/* §02 · Diagnostics -- LK gates list (command) / grid (briefing) */}
+          <Section n="02" title="Diagnostics" srcTag="2E" srcLabel="LK gates" label="2G·02 Diagnostics">
+            <LKGateSummaries
+              gates={gates}
+              asOf={asOf}
+              view={d.diag}
+              showToggle={false}
+            />
+          </Section>
 
-            {/* Priority action list */}
-            <p className="text-[11px] uppercase tracking-widest text-muted-foreground mb-3">
-              {data.priority_actions?.length || 0} Priority Actions
-            </p>
-            {data.priority_actions?.length > 0 ? (
-              <div className="space-y-3">
-                {data.priority_actions.map(a => (
-                  <ActionCard key={a.priority} action={a} />
-                ))}
-              </div>
+          {/* §03 · Verdict -- full banner (briefing) / compact line (command) */}
+          <Section n="03" title="Verdict" srcTag="2C" srcLabel="Oracle banner" label="2G·03 Verdict">
+            {density === 'briefing' ? (
+              <OracleVerdictBanners
+                data={dashboard}
+                asOf={asOf}
+                onCtaClick={() => {}}
+                onReadChartClick={() => { window.location.href = '/birth-chart'; }}
+              />
             ) : (
-              <div className="rounded-xl border border-gold/20 bg-gold/[0.04] p-6 text-center">
-                <p className="text-gold font-semibold">All clear -- no urgent actions.</p>
-                <p className="text-sm text-muted-foreground mt-1">Maintain your streak and monitor the Scoreboard.</p>
-              </div>
+              <VerdictCompact
+                verdict={verdict}
+                onCtaClick={() => {}}
+              />
             )}
-          </>
-        )}
-      </div>
-    </div>
+          </Section>
+
+          {/* §04 · Active Path -- switch(verdict): 2D (no/wait) · 2I (pray) · ClearanceCard (yes) */}
+          <Section
+            n="04"
+            title="Active Path"
+            srcTag={ap.tag}
+            srcLabel={ap.label}
+            srcEm={ap.em}
+            label="2G·04 Active Path"
+          >
+            {verdict === 'pray' && (
+              <PrayPath
+                data={dashboard}
+                asOf={asOf}
+                onBegin={() => {}}
+                view={d.pray}
+                showToggle={false}
+              />
+            )}
+            {(verdict === 'no' || verdict === 'wait') && (
+              <ReentryLoop
+                data={dashboard}
+                asOf={asOf}
+                density={density}
+              />
+            )}
+            {verdict === 'yes' && (
+              <ClearanceCard directive={directive} />
+            )}
+          </Section>
+
+          {/* §05 · Action Queue -- new 2G-owned component */}
+          <Section
+            n="05"
+            title="Action Queue"
+            srcTag="new"
+            srcLabel="2G-owned · pip track from 2D"
+            srcEm={true}
+            label="2G·05 Action Queue"
+          >
+            <ActionQueueModule density={density} />
+          </Section>
+
+        </div>{/* end .ap-body */}
+      </div>{/* end page root */}
+
+    </StrategistThemeProvider>
   );
 }

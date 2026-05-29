@@ -1,0 +1,299 @@
+/* -----------------------------------------------------------------
+ * strategist-2g-actionplan.css
+ * Source: STR-2G · StrategistActionPlan.html + _assets/strategist-2g.css  (CD delivery)
+ * Extracted: 2026-05-29 per PROCESS_CD_INTEGRATION_PROTOCOL.md
+ *
+ * 2G-owned composition CSS only. No :root tokens.
+ * Tokens live in strategist-tokens.css.
+ * Canvas scaffolding (.ap-manifest, .verdict-sim) excluded.
+ * ----------------------------------------------------------------- */
+
+/* ─────────────────────────────────────────────────────────────
+   STICKY DENSITY STRIP · the only control on the page (Q-02·b)
+   Command / Briefing writes one density value into every section.
+   ───────────────────────────────────────────────────────────── */
+.ap-deck {
+  position: sticky; top: 0; z-index: 30;
+  display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center;
+  padding: 16px 24px;
+  background: color-mix(in srgb, var(--strategist-card-bg) 90%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--strategist-card-border-bold);
+  border-radius: var(--r-md) var(--r-md) 0 0;
+}
+.ap-deck__title {
+  font-family: var(--font-display); font-weight: 700; font-size: 14px;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
+  display: inline-flex; align-items: center; gap: 10px; margin: 0;
+}
+.ap-deck__title .diamond { font-size: 11px; line-height: 1; }
+.ap-deck__verdict {
+  justify-self: center;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--strategist-fg-3);
+}
+.ap-deck__control { display: inline-flex; align-items: center; gap: 12px; justify-self: end; }
+.ap-deck__control-lbl {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--strategist-fg-3);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SECTION FRAME · numbered, with provenance sub-header
+   ───────────────────────────────────────────────────────────── */
+.ap-body { padding: 8px 24px 28px; display: grid; gap: 8px; }
+.ap-sec { padding: 22px 0 8px; }
+.ap-sec + .ap-sec { border-top: 1px solid var(--strategist-rule); }
+.ap-sec__head {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: baseline;
+  margin-bottom: 16px;
+}
+.ap-sec__n {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; color: var(--gold);
+  border: 1px solid var(--strategist-card-border-bold);
+  border-radius: var(--r-sm); padding: 3px 9px; align-self: center;
+}
+.ap-sec__title {
+  font-family: var(--font-display); font-weight: 700; font-size: 13.5px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--strategist-fg); margin: 0;
+}
+.ap-sec__src {
+  font-family: var(--font-mono); font-size: 9.5px;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--strategist-fg-3);
+  text-align: right; white-space: nowrap;
+}
+.ap-sec__src b { color: var(--gold); font-weight: 700; }
+.ap-sec__src .em { color: var(--emerald); font-weight: 700; }
+
+/* ─────────────────────────────────────────────────────────────
+   §01 DIGEST · compact bar always visible; detail row in briefing
+   (compact bar styles live in strategist-2f-scoreboard.css)
+   ───────────────────────────────────────────────────────────── */
+.ap-digest { display: grid; gap: 10px; }
+.ap-digest__detail {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm); overflow: hidden;
+}
+.ap-digest__cell { display: flex; flex-direction: column; gap: 4px; padding: 14px 18px; }
+.ap-digest__cell + .ap-digest__cell { border-left: 1px dashed var(--strategist-rule); }
+.ap-digest__l {
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--strategist-fg-3);
+}
+.ap-digest__v { display: flex; align-items: center; gap: 8px; }
+.ap-digest__v strong {
+  font-family: var(--font-display); font-size: 15px; font-weight: 600;
+  color: var(--strategist-fg); letter-spacing: 0.04em;
+}
+.ap-digest__sub { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; color: var(--strategist-fg-3); }
+
+/* ─────────────────────────────────────────────────────────────
+   §03 VERDICT · compact line (Command density · no rail)
+   Chip + headline + one-line reasoning + CTA.
+   ───────────────────────────────────────────────────────────── */
+.ap-vc {
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center;
+  padding: 18px 24px;
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border-bold);
+  border-radius: var(--r-md);
+}
+.ap-vc::before {
+  content: ''; position: absolute; inset: 0 0 auto 0; height: 3px;
+  background: var(--ov-accent, var(--gold));
+}
+.ap-vc--yes  { --ov-accent: var(--emerald); }
+.ap-vc--wait { --ov-accent: var(--amber); }
+.ap-vc--no   { --ov-accent: var(--red); }
+.ap-vc--pray {
+  --ov-accent: var(--gold);
+  background:
+    radial-gradient(ellipse at 100% 0%, var(--rahu-soft) 0%, transparent 60%),
+    var(--strategist-card-bg);
+  border-color: var(--gold);
+}
+.ap-vc--pray::before { background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%); }
+.ap-vc__chip-col { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.ap-vc__eyebrow {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--strategist-fg-3);
+}
+.ap-vc__text { min-width: 0; }
+.ap-vc__headline {
+  font-family: var(--font-display); font-weight: 700; font-size: 17px;
+  letter-spacing: 0.02em; color: var(--strategist-fg); line-height: 1.2; margin: 0 0 4px;
+}
+.ap-vc--pray .ap-vc__headline {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 90%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.ap-vc__reason {
+  font-family: var(--font-serif); font-style: italic; font-size: 13px;
+  color: var(--strategist-fg-2); line-height: 1.45; margin: 0;
+  display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
+}
+.ap-vc__cta {
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  padding: 9px 16px; background: var(--ov-accent); color: var(--strategist-bg); border: 0;
+  border-radius: var(--r-pill); font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer;
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.ap-vc__cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.ap-vc__cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.ap-vc--pray .ap-vc__cta { background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%); color: #FFFFFF; }
+.ap-vc__cta svg { width: 11px; height: 11px; }
+
+/* ─────────────────────────────────────────────────────────────
+   §04 ACTIVE PATH · quiet clearance card (YES · Q-03 · NEW)
+   ───────────────────────────────────────────────────────────── */
+.ap-clear {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 26px; align-items: center;
+  padding: 24px 28px;
+  background:
+    radial-gradient(ellipse at 0% 0%, var(--emerald-soft) 0%, transparent 60%),
+    var(--strategist-card-bg);
+  border: 1px solid rgba(63,170,122,0.32);
+  border-left: 3px solid var(--emerald);
+  border-radius: var(--r-md);
+}
+.ap-clear__seal {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--emerald-soft); border: 1px solid rgba(63,170,122,0.40);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--emerald); flex-shrink: 0;
+}
+.ap-clear__seal svg { width: 26px; height: 26px; }
+.ap-clear__body { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.ap-clear__eyebrow {
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--emerald);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.ap-clear__line {
+  font-family: var(--font-display); font-weight: 600; font-size: 20px;
+  letter-spacing: 0.03em; color: var(--strategist-fg); line-height: 1.2; margin: 0;
+}
+.ap-clear__directive {
+  font-family: var(--font-serif); font-style: italic; font-size: 14px;
+  color: var(--strategist-fg-2); line-height: 1.5; margin: 0;
+}
+.ap-clear__directive b { font-style: normal; color: var(--strategist-fg); font-weight: 600; }
+.ap-clear__reread {
+  text-align: right; flex-shrink: 0;
+  display: flex; flex-direction: column; gap: 4px; align-items: flex-end;
+}
+.ap-clear__reread-l {
+  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--strategist-fg-3);
+}
+.ap-clear__reread-v {
+  font-family: var(--font-display); font-size: 15px; font-weight: 600;
+  letter-spacing: 0.04em; color: var(--emerald);
+}
+.ap-clear__reread-sub {
+  font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em;
+  color: var(--strategist-fg-3);
+}
+
+/* ─────────────────────────────────────────────────────────────
+   §05 ACTION QUEUE · the one new 2G-owned component
+   Pip track lifted from 2D. Three moves from verdict + diagnostics.
+   ───────────────────────────────────────────────────────────── */
+.ap-queue { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.ap-q {
+  display: grid; grid-template-columns: 40px 1fr 168px auto; gap: 20px; align-items: center;
+  padding: 16px 20px;
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border);
+  border-left: 3px solid var(--strategist-card-border-bold);
+  border-radius: var(--r-sm);
+}
+.ap-q--em    { border-left-color: var(--emerald); }
+.ap-q--gold  { border-left-color: var(--gold); }
+.ap-q--amber { border-left-color: var(--amber); }
+.ap-q__n {
+  font-family: var(--font-display); font-weight: 700; font-size: 18px;
+  color: var(--gold); line-height: 1;
+}
+.ap-q__body { min-width: 0; }
+.ap-q__move {
+  font-family: var(--font-display); font-weight: 600; font-size: 15px;
+  letter-spacing: 0.03em; color: var(--strategist-fg); margin: 0 0 4px; line-height: 1.25;
+}
+.ap-q__why {
+  font-size: 12.5px; color: var(--strategist-fg-2); line-height: 1.45; margin: 0;
+}
+.ap-q__why b { color: var(--strategist-fg); font-weight: 600; }
+.ap-q__src {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 7px;
+  font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--strategist-fg-3);
+}
+.ap-q__src b { color: var(--gold); font-weight: 700; }
+.ap-q__src .dot {
+  width: 5px; height: 5px; border-radius: 50%; background: currentColor;
+}
+.ap-q__progress { display: grid; gap: 6px; }
+.ap-q__progress-head {
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--strategist-fg-3);
+}
+.ap-q__progress-head b {
+  color: var(--strategist-fg); font-weight: 700; letter-spacing: 0.06em;
+}
+.ap-q__pip-track { display: flex; gap: 4px; }
+.ap-q__pip { flex: 1; height: 5px; border-radius: 1px; background: var(--strategist-pip-track); }
+.ap-q__pip--done { background: var(--emerald); }
+.ap-q__window {
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--strategist-fg-3);
+  text-align: right; white-space: nowrap;
+}
+.ap-q__window b { display: block; color: var(--gold); font-weight: 700; margin-top: 2px; }
+.ap-q__window .crit { color: var(--amber); }
+
+/* Command density · collapse why-line + window column */
+.ap-q--command { grid-template-columns: 40px 1fr 140px; }
+.ap-q--command .ap-q__window { display: none; }
+.ap-q--command .ap-q__why { display: none; }
+
+/* ─────────────────────────────────────────────────────────────
+   RESPONSIVE · narrow viewports
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .ap-deck { grid-template-columns: 1fr auto; }
+  .ap-deck__verdict { display: none; }
+  .ap-sec__head { grid-template-columns: auto 1fr; }
+  .ap-sec__src { display: none; }
+  .board-compact { grid-template-columns: auto 1fr; row-gap: 12px; }
+  .board-compact__directive { grid-column: 1 / -1; }
+  .ap-digest__detail { grid-template-columns: 1fr 1fr; }
+  .ap-digest__cell:nth-child(3) { border-left: 0; }
+  .ap-digest__cell:nth-child(n+3) { border-top: 1px dashed var(--strategist-rule); }
+  .ov-banner { grid-template-columns: 1fr; }
+  .ov-context { grid-template-columns: 1fr 1fr; }
+  .lk-row { grid-template-columns: 44px 1fr; }
+  .lk-row__aside { grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: space-between; }
+  .lk-grid__row--top, .lk-grid__row--bot { grid-template-columns: 1fr; }
+  .pp-triptych { grid-template-columns: 1fr; }
+  .pp-focus { grid-template-columns: 1fr; }
+  .pp-focus__icon-block { border-right: 0; border-bottom: 1px dashed var(--strategist-rule); padding-right: 0; padding-bottom: 18px; flex-direction: row; }
+  .ap-vc { grid-template-columns: 1fr; gap: 14px; }
+  .ap-vc__chip-col { flex-direction: row; align-items: center; }
+  .ap-clear { grid-template-columns: 1fr; gap: 16px; }
+  .ap-clear__reread { text-align: left; align-items: flex-start; }
+  .ap-q, .ap-q--command { grid-template-columns: 32px 1fr; }
+  .ap-q__progress, .ap-q__window { grid-column: 1 / -1; }
+  .rl-step { grid-template-columns: 36px 1fr; }
+  .rl-step__progress { grid-column: 1 / -1; }
+  .rl-hero__legend { grid-template-columns: 1fr 1fr; }
+  .rl-foot-grid { grid-template-columns: 1fr; }
+  .rl-foot-divider { display: none; }
+}

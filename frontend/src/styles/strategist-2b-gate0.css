@@ -1,0 +1,238 @@
+/* -----------------------------------------------------------------
+ * strategist-2b-gate0.css
+ * Source: STR-2B · KPGate0Panel.html  (CD delivery)
+ * Extracted: 2026-05-29 per PROCESS_CD_INTEGRATION_PROTOCOL.md
+ *
+ * Standalone component on StrategistActionPlanPage.
+ * Tokens live in strategist-tokens.css.
+ * ----------------------------------------------------------------- */
+
+/* =============================================================
+   STR-2B · KP Gate 0 Panel · surface CSS (shell only)
+   · A single inline panel -- verdict chip · question · days-since
+     · conditional "Re-consult Gate 0" CTA (> 30 days · v2 Q-04)
+   · Verdict axis driven by live KP Oracle feed.
+   ============================================================= */
+
+/* The deliverable · the Gate 0 inline panel */
+.kp-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--strategist-card-border-bold);
+  border-radius: var(--r-md);
+  background: var(--strategist-card-bg);
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 28px;
+  align-items: stretch;
+  padding: 26px 30px 28px;
+}
+/* top-edge tonal stripe · carries the verdict accent */
+.kp-panel::before {
+  content: '';
+  position: absolute; inset: 0 0 auto 0; height: 3px;
+  background: var(--kp-accent, var(--emerald));
+}
+.kp-panel--yes  { --kp-accent: var(--emerald); }
+.kp-panel--wait { --kp-accent: var(--amber); }
+.kp-panel--no   { --kp-accent: var(--red); }
+.kp-panel--pray { --kp-accent: var(--gold); }
+
+/* Left column · the verdict + question */
+.kp-panel__left {
+  display: flex; flex-direction: column;
+  gap: 16px; min-width: 0;
+}
+.kp-panel__eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.kp-panel__eyebrow b { color: var(--kp-accent); font-weight: 700; }
+
+.kp-panel__q-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  margin-bottom: -6px;
+}
+.kp-panel__question {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 23px;
+  line-height: 1.28;
+  color: var(--strategist-fg);
+  margin: 0;
+  max-width: 24ch;
+  text-wrap: pretty;
+}
+.kp-panel__question::before { content: '\201C'; color: var(--kp-accent); }
+.kp-panel__question::after  { content: '\201D'; color: var(--kp-accent); }
+
+/* days-since line */
+.kp-panel__age {
+  display: inline-flex; align-items: baseline; gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--strategist-fg-2);
+  margin-top: 2px;
+}
+.kp-panel__age b {
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--strategist-fg);
+}
+.kp-panel__age-sep { color: var(--strategist-fg-mute); }
+
+/* CTA row */
+.kp-panel__cta-row {
+  display: flex; align-items: center;
+  gap: 18px; flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.kp-panel__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  background: var(--gold);
+  color: var(--strategist-bg);
+  border: 0;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  cursor: pointer;
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.kp-panel__cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.kp-panel__cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.kp-panel__cta-arrow { width: 12px; height: 12px; }
+
+.kp-panel__cta-secondary {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  border: 0; border-bottom: 1px dashed var(--strategist-card-border-bold);
+  padding-bottom: 1px;
+  background: transparent;
+  cursor: pointer;
+}
+.kp-panel__cta-secondary:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* fresh-state hint (when CTA is hidden) */
+.kp-panel__fresh-note {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--emerald);
+}
+.kp-panel__fresh-note::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--emerald);
+}
+
+/* Right aside · KP reading detail */
+.kp-aside {
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 18px 20px;
+  display: flex; flex-direction: column;
+  gap: 14px;
+}
+.kp-aside__lbl {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.kp-aside__rows { display: grid; gap: 11px; }
+.kp-aside__row { display: flex; flex-direction: column; gap: 3px; }
+.kp-aside__row .kp-aside__k {
+  font-family: var(--font-mono);
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.kp-aside__row .kp-aside__v {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--strategist-fg);
+}
+.kp-aside__sig {
+  display: inline-flex; gap: 6px; flex-wrap: wrap;
+}
+.kp-aside__sig span {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--strategist-fg);
+  padding: 2px 9px;
+  border: 1px solid var(--strategist-card-border-bold);
+  border-radius: var(--r-pill);
+  background: var(--gold-soft);
+}
+.kp-aside__div {
+  border-top: 1px dashed var(--strategist-rule);
+  margin: 2px 0;
+}
+/* days-since featured stat in the aside */
+.kp-aside__stat { display: flex; flex-direction: column; gap: 4px; }
+.kp-aside__stat-num {
+  font-family: var(--font-display);
+  font-size: 26px; font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--strategist-fg);
+  line-height: 1;
+  display: inline-flex; align-items: baseline; gap: 8px;
+}
+.kp-aside__stat-num small {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.kp-aside__stat-sub {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.1em;
+  color: var(--kp-window, var(--strategist-fg-3));
+}
+
+/* Proof set · the verdict-chip system the live feed drives */
+.kp-proof {
+  margin-top: 22px;
+  padding: 18px 22px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+}
+.kp-proof__head {
+  display: flex; align-items: baseline;
+  justify-content: space-between; gap: 16px;
+  margin-bottom: 12px; flex-wrap: wrap;
+}
+.kp-proof__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.kp-proof__note {
+  font-family: var(--font-serif);
+  font-style: italic; font-size: 12px;
+  color: var(--strategist-fg-2);
+}
+.kp-proof__row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+@media (max-width: 720px) {
+  .kp-panel { grid-template-columns: 1fr; }
+}

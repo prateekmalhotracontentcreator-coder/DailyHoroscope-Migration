@@ -1,7 +1,7 @@
 # Action Items -- Temple App
 > Single Source of Truth for all open items across Claude Code sessions.
 > Referenced in all handover docs. **Do not create parallel lists elsewhere.**
-> Last updated: 2026-05-29 (A2 decode pass: LK module confirmed live, M-28 closed, M-29-M-34 added; SEO Sprint E/D tracked)
+> Last updated: 2026-05-29 (Phase 2 Strategist integration complete: STR-OP-7 to STR-OP-13 done; A2 decode pass: LK module confirmed live, M-28 closed, M-29-M-34 added; SEO Sprint E/D tracked)
 
 ---
 
@@ -77,8 +77,9 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 - ~~REM-P1: Remedies Engine Phase 1 (KP collection + remedy_ref pipeline)~~ → `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` · READY TO ISSUE
 
 ### The Strategist Thread
-- ~~STR-1: Premium Landing Page + War Room Visual Rebuild~~ → `Strategist/CODEX_COMMISSION_STRATEGIST_LANDING_WARROOM.md` · READY TO ISSUE
-- ~~STR-2J: Strategist Missions UI improvements (MissionCard responsive + dasha display)~~ → `Strategist/CODEX_COMMISSION_STR_2J_MISSIONS_UI.md` · ✅ INTEGRATED commit `9ad2e0a` *(delivered + dasha backend fix 2026-05-15)*
+- ~~STR-1: Premium Landing Page + War Room Visual Rebuild~~ → ✅ INTEGRATED commit `ba58192`
+- ~~STR-2J: Strategist Missions UI improvements (MissionCard responsive + dasha display)~~ → ✅ INTEGRATED commit `9ad2e0a` *(delivered + dasha backend fix 2026-05-15)*
+- ~~STR-Phase2: Full Phase 2 UI (2F/2E/2C/2D/2I/2G/2B)~~ → ✅ **CC INTEGRATION COMPLETE 2026-05-29.** All 7 CD HTML files converted to ES modules. `StrategistActionPlanPage.jsx` rebuilt as 2G composition shell. **Pending commit to main + STR-OP-15 TT verification.**
 
 ### Arc Angel Thread
 - ~~ARC-2: Arc Angel Dynamic Confidence Engine~~ → ✅ **INTEGRATED 2026-05-18** commit `c1a7cb0`. 18 files, 746 insertions, 72/72 tests green. 3-pillar confidence fully wired. Pillar 1 bridge (4-section → 12-domain) is stopgap pending KE-IQ enrichment. Decay engine + notification hooks live. ArcAngelPanel rebuilt. PrivateRoute applied.

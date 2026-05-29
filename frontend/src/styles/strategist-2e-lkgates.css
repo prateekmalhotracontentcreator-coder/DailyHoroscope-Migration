@@ -1,0 +1,276 @@
+/* -----------------------------------------------------------------
+ * strategist-2e-lkgates.css
+ * Source: STR-2E · LKGateSummaries.html  (CD delivery)
+ * Extracted: 2026-05-29 per PROCESS_CD_INTEGRATION_PROTOCOL.md
+ *
+ * No canvas scaffolding to remove -- the 2E style block is
+ * component-only CSS. Tokens live in strategist-tokens.css.
+ * ----------------------------------------------------------------- */
+
+/* =============================================================
+   STR-2E · LK Gate Summaries · surface CSS
+   · LKStatusChip · 4 variants (clear · active · warning · dormant)
+   · A1 split direction: WARNING -> amber, DORMANT -> red
+   · Both views: list (rows) + grid (5 cards · 2+3)
+   ============================================================= */
+
+/* -- LK STATUS CHIP ------------------------------------------- */
+.lk-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 10px 3px 9px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  border: 1px solid;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+.lk-chip__pip {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.lk-chip--clear   { color: var(--emerald); background: var(--emerald-soft); border-color: rgba(63,170,122,0.40); }
+.lk-chip--active  { color: var(--gold);    background: var(--gold-soft);    border-color: var(--strategist-card-border-bold); }
+.lk-chip--warning { color: var(--amber);   background: var(--amber-soft);   border-color: rgba(227,163,65,0.40); }
+.lk-chip--dormant { color: var(--red);     background: var(--red-soft);     border-color: rgba(226,92,75,0.40); }
+
+/* Tonal counter bar -- five colored ticks summarising gate states */
+.tone-bar {
+  display: inline-flex; gap: 4px;
+  padding: 4px 8px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-pill);
+}
+.tone-bar__tick {
+  width: 14px; height: 6px;
+  border-radius: 2px;
+}
+.tone-bar__tick--clear   { background: var(--emerald); }
+.tone-bar__tick--active  { background: var(--gold); }
+.tone-bar__tick--warning { background: var(--amber); }
+.tone-bar__tick--dormant { background: var(--red); }
+
+/* -- LIST VIEW ------------------------------------------------- */
+.lk-list {
+  display: grid;
+  gap: 8px;
+}
+.lk-row {
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 56px 1fr 200px;
+  gap: 22px;
+  align-items: start;
+}
+.lk-row__code {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--strategist-fg-3);
+  padding-top: 4px;
+}
+.lk-row__code b {
+  display: block;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.lk-row__body {
+  min-width: 0;
+}
+.lk-row__title-line {
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+.lk-row__name {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 15.5px;
+  letter-spacing: 0.04em;
+  color: var(--strategist-fg);
+}
+.lk-row__facet {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.lk-row__narrative {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--strategist-fg-2);
+  line-height: 1.55;
+  margin: 6px 0 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.lk-row__aside {
+  display: flex; flex-direction: column;
+  align-items: flex-end; gap: 8px;
+  padding-top: 2px;
+}
+.lk-row__aside-detail {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  text-align: right;
+  line-height: 1.55;
+}
+.lk-row__aside-detail b {
+  display: block;
+  color: var(--strategist-fg);
+  font-weight: 700;
+  margin-top: 2px;
+  letter-spacing: 0.12em;
+}
+.lk-row__aside-detail--dormant b { color: var(--red); }
+.lk-row__aside-detail--warning b { color: var(--amber); }
+.lk-row__aside-detail--active b  { color: var(--gold); }
+
+/* Left-edge status accent */
+.lk-row--clear   { border-left: 3px solid var(--emerald); }
+.lk-row--active  { border-left: 3px solid var(--gold); }
+.lk-row--warning { border-left: 3px solid var(--amber); }
+.lk-row--dormant { border-left: 3px solid var(--red); }
+
+/* -- GRID VIEW · 2 + 3 ---------------------------------------- */
+.lk-grid {
+  display: grid;
+  gap: 12px;
+}
+.lk-grid__row {
+  display: grid;
+  gap: 12px;
+}
+.lk-grid__row--top { grid-template-columns: 1fr 1fr; }
+.lk-grid__row--bot { grid-template-columns: 1fr 1fr 1fr; }
+.lk-card {
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 14px 20px 16px;
+  display: flex; flex-direction: column;
+  gap: 8px;
+  min-height: 168px;
+}
+.lk-card__top {
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 12px;
+}
+.lk-card__code {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+.lk-card__name {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 14.5px;
+  letter-spacing: 0.04em;
+  color: var(--strategist-fg);
+  line-height: 1.25;
+  margin: 2px 0 0;
+}
+.lk-card__facet {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  margin-bottom: 4px;
+}
+.lk-card__narrative {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--strategist-fg-2);
+  line-height: 1.55;
+  margin: 0;
+  flex-grow: 1;
+}
+.lk-card__aside {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px dashed var(--strategist-rule);
+  display: flex; align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.lk-card__aside b {
+  color: var(--strategist-fg);
+  font-weight: 700;
+}
+.lk-card--clear   { border-top: 3px solid var(--emerald); }
+.lk-card--active  { border-top: 3px solid var(--gold); }
+.lk-card--warning { border-top: 3px solid var(--amber); }
+.lk-card--dormant { border-top: 3px solid var(--red); }
+
+/* -- PROOF STRIP · status chip system reference --------------- */
+.lk-proof {
+  margin-top: 22px;
+  padding: 18px 22px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+}
+.lk-proof__head {
+  display: flex; align-items: baseline;
+  justify-content: space-between; gap: 16px;
+  margin-bottom: 14px;
+}
+.lk-proof__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.lk-proof__note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--strategist-fg-2);
+}
+.lk-proof__row {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  align-items: center;
+}
+.lk-proof__rule {
+  flex-grow: 1; height: 1px;
+  background: var(--strategist-rule);
+  min-width: 24px;
+}
+.lk-proof__label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--strategist-fg-mute);
+  margin-left: 10px;
+}
+
+/* Section-header summary slot -- left of toggle */
+.lk-summary {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.lk-summary b {
+  color: var(--strategist-fg);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.lk-summary__sep {
+  color: var(--strategist-fg-mute);
+}

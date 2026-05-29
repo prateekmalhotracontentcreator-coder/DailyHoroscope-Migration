@@ -1,0 +1,449 @@
+/* -----------------------------------------------------------------
+ * strategist-2f-scoreboard.css
+ * Source: STR-2F · ConquestScoreboard.html  (CD delivery)
+ * Extracted: 2026-05-29 per PROCESS_CD_INTEGRATION_PROTOCOL.md
+ *
+ * Canvas scaffolding excluded: :root, html/body, .proto/*, .shell-seg-pill,
+ *   .strategist-module[data-mode=...] token blocks, .inherit-note.
+ * All tokens (--strategist-*, --emerald, --amber, --rahu, --gold, etc.)
+ * and mode token blocks live in strategist-tokens.css.
+ * ----------------------------------------------------------------- */
+
+/* =============================================================
+   SECTION HEADER · ◆ Conquest Scoreboard
+   · Cinzel 700 · 13.5px · gold · 0.14em tracking
+   · grid 3-col: title / spacer / toggle  (anchors clean)
+   ============================================================= */
+.section-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 6px 4px 18px;
+  border-bottom: 1px dashed var(--strategist-rule);
+  margin-bottom: 22px;
+}
+.section-header__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-header__title .diamond { font-size: 11px; line-height: 1; }
+.section-header__meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  justify-self: end;
+  margin-right: 12px;
+}
+
+/* =============================================================
+   SEG-PILL · the reusable primitive
+   Props: segments[] · value · onChange · size 'sm'|'md'
+   Consumed by: 2C (size='md', 4 segments) · 2D · 2I (size='sm')
+   ============================================================= */
+.seg-pill {
+  display: inline-flex;
+  padding: 3px;
+  background: var(--strategist-card-deep, rgba(0,0,0,0.2));
+  border: 1px solid var(--strategist-card-border, var(--shell-hairline));
+  border-radius: var(--r-pill);
+}
+.seg-pill--sm { padding: 3px; }
+.seg-pill--md { padding: 4px; }
+.seg-pill__seg {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0; background: transparent;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: lowercase;
+  color: var(--strategist-fg-3, var(--shell-ink-3));
+  cursor: pointer;
+  border-radius: var(--r-pill);
+  transition: color var(--dur) var(--ease),
+              background-color var(--dur) var(--ease);
+  white-space: nowrap;
+}
+.seg-pill--sm .seg-pill__seg {
+  padding: 5px 12px;
+  font-size: 10px;
+}
+.seg-pill--md .seg-pill__seg {
+  padding: 7px 16px;
+  font-size: 11px;
+}
+.seg-pill__seg:hover { color: var(--strategist-fg-2, var(--shell-ink-2)); }
+.seg-pill__seg--on {
+  background: var(--gold);
+  color: var(--strategist-bg, var(--shell-bg));
+}
+.seg-pill__seg--on:hover { color: var(--strategist-bg, var(--shell-bg)); }
+.seg-pill__seg:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* =============================================================
+   VERDICT CHIP · YES · WAIT · NO · PRAY
+   PRAY · gold text on rahu-soft fill, full-gold border (locked v2)
+   ============================================================= */
+.verdict-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.verdict-chip__pip {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 0 currentColor;
+}
+.verdict-chip--yes  {
+  color: var(--emerald);
+  background: var(--emerald-soft);
+  border-color: rgba(63, 170, 122, 0.40);
+}
+.verdict-chip--wait {
+  color: var(--amber);
+  background: var(--amber-soft);
+  border-color: rgba(227, 163, 65, 0.40);
+}
+.verdict-chip--no   {
+  color: var(--red);
+  background: var(--red-soft);
+  border-color: rgba(226, 92, 75, 0.40);
+}
+/* PRAY · v2 locked treatment */
+.verdict-chip--pray {
+  color: var(--gold);
+  background: var(--strategist-pray-fill, var(--rahu-soft));
+  border-color: var(--gold);
+}
+
+/* Active state (the seeker's current verdict) -- same chip + halo */
+.verdict-chip--active {
+  box-shadow: 0 0 0 3px color-mix(in srgb, currentColor 14%, transparent);
+}
+
+/* =============================================================
+   HERO CARD · ConquestScoreboard expanded
+   ============================================================= */
+.board-hero {
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 22px 26px;
+  display: grid;
+  grid-template-columns: 232px 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+.board-hero__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 8px 4px;
+}
+
+/* Gauge */
+.gauge {
+  position: relative;
+  width: 192px;
+  height: 192px;
+}
+.gauge svg {
+  width: 100%; height: 100%;
+  transform: rotate(-90deg);
+}
+.gauge__track,
+.gauge__fill {
+  fill: none;
+  stroke-width: 11;
+  stroke-linecap: round;
+}
+.gauge__track { stroke: var(--strategist-pip-track); }
+.gauge__fill {
+  stroke: var(--amber);
+  color: var(--amber);
+  filter: drop-shadow(0 0 12px color-mix(in srgb, currentColor 50%, transparent));
+  transition: stroke-dashoffset 600ms var(--ease);
+}
+.gauge__center {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 2px; text-align: center;
+}
+.gauge__score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 52px;
+  letter-spacing: 0.01em;
+  line-height: 0.96;
+  color: var(--strategist-fg);
+}
+.gauge__max {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--strategist-fg-3);
+  letter-spacing: 0.18em;
+  margin-top: 4px;
+}
+.gauge__tier {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.board-hero__verdict {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+.board-hero__verdict-lbl {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  font-weight: 700;
+}
+
+/* Right side: data rows */
+.board-hero__rows {
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  gap: 0;
+  align-content: center;
+}
+.row-data {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 4px;
+  border-bottom: 1px dashed var(--strategist-rule);
+}
+.row-data:last-child { border-bottom: 0; }
+.row-data__label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.row-data__body {
+  font-size: 13.5px;
+  color: var(--strategist-fg);
+  line-height: 1.5;
+}
+.row-data__body strong {
+  color: var(--strategist-fg);
+  font-weight: 600;
+}
+.row-data__body em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--strategist-fg-2);
+}
+.row-data__aside {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--strategist-fg-3);
+  text-transform: uppercase;
+}
+.row-data__aside b { color: var(--gold); font-weight: 700; }
+
+/* Karmic mini-chip */
+.karmic-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--emerald);
+  background: var(--emerald-soft);
+  border: 1px solid rgba(63,170,122,0.35);
+}
+.karmic-chip__check {
+  width: 10px; height: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--emerald);
+}
+
+/* Streak tier chip -- borrow gold-soft */
+.streak-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 9px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--gold);
+  background: var(--gold-soft);
+  border: 1px solid var(--strategist-card-border);
+}
+
+/* Directive quote */
+.directive {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--strategist-fg);
+  line-height: 1.45;
+}
+
+/* =============================================================
+   COMPACT view · single horizontal row
+   ============================================================= */
+.board-compact {
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 14px 20px;
+  display: grid;
+  grid-template-columns: auto auto auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
+.board-compact__mini-gauge {
+  width: 36px; height: 36px;
+  position: relative;
+  flex-shrink: 0;
+}
+.board-compact__mini-gauge svg {
+  width: 100%; height: 100%;
+  transform: rotate(-90deg);
+}
+.board-compact__score-block {
+  display: flex; align-items: baseline; gap: 8px;
+}
+.board-compact__score {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--strategist-fg);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+.board-compact__tier {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+.board-compact__rule {
+  width: 1px;
+  height: 24px;
+  background: var(--strategist-rule);
+  align-self: center;
+}
+.board-compact__directive {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--strategist-fg-2);
+  line-height: 1.4;
+}
+.board-compact__streak {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.board-compact__streak b { color: var(--gold); font-weight: 700; }
+
+/* =============================================================
+   CHIP-SET STRIP · all 4 verdicts visible (PRAY proof set)
+   CD design canvas component -- retained per TT variant policy
+   ============================================================= */
+.chip-set {
+  margin-top: 22px;
+  padding: 18px 22px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+}
+.chip-set__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.chip-set__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  font-weight: 700;
+}
+.chip-set__note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--strategist-fg-2);
+}
+.chip-set__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.chip-set__rule {
+  flex-grow: 1;
+  height: 1px;
+  background: var(--strategist-rule);
+  min-width: 24px;
+}
+.chip-set__label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--strategist-fg-mute);
+  margin-left: 10px;
+}

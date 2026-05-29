@@ -1,0 +1,264 @@
+/* -----------------------------------------------------------------
+ * strategist-2c-oracle.css
+ * Source: STR-2C · OracleVerdictBanners.html  (CD delivery)
+ * Extracted: 2026-05-29 per PROCESS_CD_INTEGRATION_PROTOCOL.md
+ *
+ * No canvas scaffolding to remove -- 2C style block is component-only.
+ * Tokens live in strategist-tokens.css.
+ * ----------------------------------------------------------------- */
+
+/* =============================================================
+   STR-2C · Oracle Verdict Banners · surface CSS
+   · 4-state SegPill (md) -- Yes · Wait · No · Pray
+   · Banner surface changes per verdict
+   · PRAY banner = gold<->rahu gradient on surface (pre-blessed v2)
+   · Chip type stays full gold (locked)
+   ============================================================= */
+
+/* Banner shell */
+.ov-banner {
+  border-radius: var(--r-md);
+  padding: 26px 30px 28px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--strategist-card-border-bold);
+  background: var(--strategist-card-bg);
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 28px;
+  align-items: start;
+  min-height: 240px;
+}
+
+/* Top-edge tonal stripe per verdict */
+.ov-banner::before {
+  content: '';
+  position: absolute; inset: 0 0 auto 0; height: 3px;
+  background: var(--ov-accent, var(--gold));
+}
+
+/* Verdict-specific surfaces */
+.ov-banner--yes  { --ov-accent: var(--emerald); }
+.ov-banner--wait { --ov-accent: var(--amber); }
+.ov-banner--no   { --ov-accent: var(--red); }
+
+/* PRAY · gradient surface, pre-blessed by v2 ruling.
+   Chip type itself stays full gold -- VerdictChip rule. */
+.ov-banner--pray {
+  --ov-accent: var(--gold);
+  background:
+    radial-gradient(ellipse at 100% 0%, var(--rahu-soft) 0%, transparent 55%),
+    radial-gradient(ellipse at 0% 100%, var(--gold-soft) 0%, transparent 55%),
+    var(--strategist-card-bg);
+  border-color: var(--gold);
+}
+.ov-banner--pray::before {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%);
+}
+
+/* Left column · content */
+.ov-banner__left {
+  display: flex; flex-direction: column;
+  gap: 14px; min-width: 0;
+}
+.ov-banner__eyebrow {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.ov-banner__eyebrow b {
+  color: var(--ov-accent);
+  font-weight: 700;
+}
+.ov-banner__headline {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.02em;
+  color: var(--strategist-fg);
+  line-height: 1.15;
+  margin: 0;
+}
+.ov-banner--pray .ov-banner__headline {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ov-banner__reasoning {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--strategist-fg-2);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 50ch;
+}
+.ov-banner__cta-row {
+  display: flex; align-items: center;
+  gap: 18px; flex-wrap: wrap;
+  margin-top: 4px;
+}
+.ov-banner__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 18px;
+  background: var(--ov-accent);
+  color: var(--strategist-bg);
+  border: 0;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  cursor: pointer;
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.ov-banner__cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.ov-banner__cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.ov-banner__cta-arrow {
+  width: 12px; height: 12px;
+}
+.ov-banner__cta--pray {
+  background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%);
+  color: #FFFFFF;
+}
+.ov-banner__cta-secondary {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  border-bottom: 1px dashed var(--strategist-card-border-bold);
+  padding-bottom: 1px;
+  cursor: pointer;
+  background: transparent;
+  border-left: 0; border-right: 0; border-top: 0;
+}
+.ov-banner__cta-secondary:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+/* Right column · meta panel */
+.ov-banner__right {
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 18px 20px;
+  display: flex; flex-direction: column;
+  gap: 12px;
+  align-self: stretch;
+}
+.ov-banner--pray .ov-banner__right {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--gold);
+}
+.ov-banner__right-chip-line {
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--strategist-rule);
+}
+.ov-banner__right-lbl {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.ov-banner__right-row {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.ov-banner__right-row b {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--strategist-fg);
+}
+.ov-banner__signals {
+  display: grid; gap: 6px;
+  margin-top: 4px;
+}
+.ov-banner__signal {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 10px;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--strategist-fg-2);
+  line-height: 1.45;
+}
+.ov-banner__signal::before {
+  content: ''; display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ov-accent);
+  margin-top: 6px;
+}
+
+/* Below banner · ContextStrip (4-cell seeker context bar)
+   Retained per TT decision 2026-05-29 */
+.ov-context {
+  margin-top: 20px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.ov-context__cell {
+  display: flex; flex-direction: column;
+  gap: 4px;
+}
+.ov-context__cell + .ov-context__cell {
+  padding-left: 18px;
+  border-left: 1px dashed var(--strategist-rule);
+}
+.ov-context__l {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.ov-context__v {
+  font-family: var(--font-display);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--strategist-fg);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+.ov-context__sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--strategist-fg-3);
+  letter-spacing: 0.12em;
+}
+
+/* Verdict-state proof set */
+.ov-proof {
+  margin-top: 22px;
+  padding: 18px 22px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+}
+.ov-proof__head {
+  display: flex; align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.ov-proof__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.ov-proof__note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--strategist-fg-2);
+}
+.ov-proof__row {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  align-items: center;
+}

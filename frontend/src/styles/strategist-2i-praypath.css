@@ -1,0 +1,338 @@
+/* -----------------------------------------------------------------
+ * strategist-2i-praypath.css
+ * Source: STR-2I · PrayPath.html  (CD delivery)
+ * Extracted: 2026-05-29 per PROCESS_CD_INTEGRATION_PROTOCOL.md
+ *
+ * Render rule: conditionally mounted on PRAY verdict.
+ * Gradient header (gold<->rahu) pre-blessed by v2 ruling.
+ * Tokens live in strategist-tokens.css.
+ * ----------------------------------------------------------------- */
+
+/* =============================================================
+   STR-2I · Pray Path · surface CSS
+   · Renders on PRAY verdict
+   · Gradient header (gold<->rahu · pre-blessed v2)
+   · 3 CTAs (mantra · offering · pilgrimage)
+   · A/B toggle: triptych (default) / focus (single primary)
+   ============================================================= */
+
+/* GRADIENT HEADER -- surface-only gradient, pre-blessed v2 */
+.pp-header {
+  position: relative;
+  overflow: hidden;
+  padding: 36px 36px 32px;
+  border-radius: var(--r-md);
+  background:
+    radial-gradient(ellipse at 100% 0%, var(--rahu-soft) 0%, transparent 60%),
+    radial-gradient(ellipse at 0% 100%, var(--gold-soft) 0%, transparent 60%),
+    var(--strategist-card-deep);
+  border: 1px solid var(--gold);
+  margin-bottom: 22px;
+}
+.pp-header::before {
+  content: '';
+  position: absolute; inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%);
+}
+.pp-header__top {
+  display: flex; align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.pp-header__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--gold);
+}
+.pp-header__sep {
+  width: 24px; height: 1px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+.pp-header__seal {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.pp-header__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  margin: 0 0 12px;
+  /* Gold<->rahu gradient on the headline type itself */
+  background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 95%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  max-width: 22ch;
+}
+.pp-header__sub {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15.5px;
+  color: var(--strategist-fg-2);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 64ch;
+}
+
+/* CTA CARDS · triptych (3 across) */
+.pp-triptych {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.pp-card {
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 20px 22px 22px;
+  display: flex; flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+}
+.pp-card__head {
+  display: flex; align-items: center;
+  justify-content: space-between;
+}
+.pp-card__code {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+.pp-card__weight {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  padding: 2px 8px;
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-pill);
+}
+.pp-card__icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border-bold);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+.pp-card__icon svg {
+  width: 20px; height: 20px;
+}
+.pp-card__title {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--strategist-fg);
+  margin: 0;
+}
+.pp-card__kind {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  margin-bottom: 4px;
+}
+.pp-card__body {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--strategist-fg-2);
+  line-height: 1.55;
+  margin: 0;
+  flex-grow: 1;
+}
+.pp-card__foot {
+  padding-top: 12px;
+  margin-top: auto;
+  border-top: 1px dashed var(--strategist-rule);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px;
+}
+.pp-card__commit {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.pp-card__commit b {
+  color: var(--strategist-fg);
+  font-weight: 700;
+}
+.pp-card__cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--gold);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--gold);
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.pp-card__cta:hover {
+  background: var(--gold);
+  color: var(--strategist-bg);
+}
+.pp-card__cta:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* Focus mode -- one big card */
+.pp-focus {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border-bold);
+  border-radius: var(--r-sm);
+  padding: 26px 30px 28px;
+  border-left: 3px solid var(--gold);
+}
+.pp-focus__icon-block {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 14px;
+  padding: 8px 4px;
+  border-right: 1px dashed var(--strategist-rule);
+  padding-right: 28px;
+}
+.pp-focus__icon {
+  width: 84px; height: 84px;
+  border-radius: 50%;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--gold);
+  display: inline-flex; align-items: center; justify-content: center;
+  color: var(--gold);
+}
+.pp-focus__icon svg { width: 40px; height: 40px; }
+.pp-focus__code {
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+.pp-focus__weight {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  padding: 3px 10px;
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-pill);
+}
+.pp-focus__right {
+  display: flex; flex-direction: column;
+  gap: 12px;
+}
+.pp-focus__kind {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.pp-focus__title {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 28px;
+  letter-spacing: 0.02em;
+  color: var(--strategist-fg);
+  margin: 0;
+  line-height: 1.15;
+}
+.pp-focus__body {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 15.5px;
+  color: var(--strategist-fg-2);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 60ch;
+}
+.pp-focus__row {
+  display: flex; align-items: center;
+  gap: 18px; flex-wrap: wrap;
+  margin-top: 8px;
+}
+.pp-focus__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 22px;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--rahu) 100%);
+  color: #FFFFFF;
+  border: 0;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  cursor: pointer;
+  transition: filter var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.pp-focus__cta:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.pp-focus__cta:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.pp-focus__alt-row {
+  display: flex; gap: 10px; align-items: center;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--strategist-rule);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+  flex-wrap: wrap;
+}
+.pp-focus__alt-row b { color: var(--strategist-fg); font-weight: 700; }
+.pp-focus__alt {
+  background: transparent;
+  border: 1px solid var(--strategist-card-border);
+  color: var(--strategist-fg-2);
+  border-radius: var(--r-pill);
+  padding: 5px 12px;
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: lowercase;
+  cursor: pointer;
+  transition: color var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+.pp-focus__alt:hover {
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* Bottom proof · gradient-policy note */
+.pp-proof {
+  margin-top: 22px;
+  padding: 18px 22px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  display: flex; gap: 18px; align-items: center;
+  flex-wrap: wrap;
+}
+.pp-proof__lbl {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.pp-proof__chip {
+  display: inline-flex; align-items: center;
+  padding: 0; gap: 0;
+}
+.pp-proof__note {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--strategist-fg-2);
+  flex-grow: 1;
+  text-align: right;
+}

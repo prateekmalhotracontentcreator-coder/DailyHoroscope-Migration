@@ -196,4 +196,58 @@
   --planet-saturn:    #7E92AE;
   --planet-rahu:      #9B59B6;
   --planet-ketu:      #E67E22;
+
+  /* ── Phase 2 additions ── */
+  --gold-2:            #D9B978;
+  --gold-soft:         rgba(197, 160, 89, 0.10);
+  --gold-glow:         rgba(197, 160, 89, 0.35);
+  --rahu:              #9B59B6;
+  --rahu-soft:         rgba(155, 89, 182, 0.12);
+  --rahu-soft-paper:   rgba(155, 89, 182, 0.10);
+
+  /* Radii */
+  --r-xs: 4px; --r-sm: 6px; --r-md: 10px; --r-lg: 14px; --r-pill: 999px;
+
+  /* Animation */
+  --ease: cubic-bezier(.4, .14, .3, 1);
+  --dur:  220ms;
+
+  /* Font stacks (mirror shell.css for phase 2 components) */
+  --font-display: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --font-serif:   'Playfair Display', Georgia, serif;
+  --font-sans:    'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:    'JetBrains Mono', source-code-pro, Menlo, Consolas, monospace;
+}
+
+/* ── Phase 2 per-mode additions ─────────────────────────────────────────── */
+/* fg-2, fg-3, fg-mute, card-deep, pip-track, pray-fill used by CD components */
+.strategist-module[data-mode="light"] {
+  --strategist-fg-2:        #5B5240;
+  --strategist-fg-3:        #897F69;
+  --strategist-fg-mute:     #B5AC93;
+  --strategist-card-deep:   #F4EFE3;
+  --strategist-pip-track:   rgba(60, 50, 30, 0.10);
+  --strategist-pray-fill:   rgba(155, 89, 182, 0.10);
+  --strategist-rule:        rgba(60, 50, 30, 0.08);
+}
+.strategist-module[data-mode="dark"] {
+  --strategist-fg-2:        #B6AE99;
+  --strategist-fg-3:        #8A8576;
+  --strategist-fg-mute:     #5C5849;
+  --strategist-card-deep:   #11151f;
+  --strategist-pip-track:   rgba(255, 255, 255, 0.05);
+  --strategist-pray-fill:   rgba(155, 89, 182, 0.12);
+  --strategist-rule:        rgba(255, 255, 255, 0.06);
+}
+.strategist-module[data-mode="cr"],
+.strategist-module[data-mode="cr-ambient"],
+.strategist-module[data-mode="cr-tactical"] {
+  --strategist-fg-2:        #4A5945;
+  --strategist-fg-3:        #76876F;
+  --strategist-fg-mute:     #A6B49E;
+  --strategist-card-deep:   rgba(241, 236, 223, 0.92);
+  --strategist-pip-track:   rgba(63, 170, 122, 0.18);
+  --strategist-pray-fill:   rgba(155, 89, 182, 0.10);
+  --strategist-rule:        rgba(63, 170, 122, 0.14);
+  --strategist-card-border-bold: rgba(63, 170, 122, 0.50);
 }

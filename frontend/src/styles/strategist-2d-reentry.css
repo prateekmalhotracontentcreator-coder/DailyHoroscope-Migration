@@ -1,0 +1,290 @@
+/* -----------------------------------------------------------------
+ * strategist-2d-reentry.css
+ * Source: STR-2D · ReentryLoop.html  (CD delivery)
+ * Extracted: 2026-05-29 per PROCESS_CD_INTEGRATION_PROTOCOL.md
+ *
+ * Render rule: conditionally mounted on NO / WAIT verdicts.
+ * Tokens live in strategist-tokens.css.
+ * ----------------------------------------------------------------- */
+
+/* =============================================================
+   STR-2D · Re-entry Loop · surface CSS
+   · Renders only on NO / WAIT verdicts
+   · Progress bar to next threshold (Sovereign · 75)
+   · A/B toggle: ritual / action paths
+   ============================================================= */
+
+/* Verdict-precondition card -- explains why the loop is rendered */
+.rl-preface {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 22px;
+  margin-bottom: 18px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-left: 3px solid var(--red);
+  border-radius: var(--r-sm);
+}
+.rl-preface--wait { border-left-color: var(--amber); }
+.rl-preface__lbl {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.rl-preface__msg {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--strategist-fg);
+  line-height: 1.5;
+}
+.rl-preface__msg b {
+  font-style: normal;
+  color: var(--strategist-fg);
+  font-weight: 600;
+}
+
+/* Score -> threshold progress hero */
+.rl-hero {
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 22px 26px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+.rl-hero__head {
+  display: flex; align-items: baseline;
+  justify-content: space-between; gap: 16px;
+  flex-wrap: wrap;
+}
+.rl-hero__title {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--strategist-fg);
+  margin: 0;
+}
+.rl-hero__sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.rl-hero__sub b {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.rl-bar {
+  position: relative;
+  height: 22px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+.rl-bar__fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, var(--amber) 0%, var(--gold) 100%);
+  border-radius: var(--r-pill);
+  transition: width 600ms var(--ease);
+}
+.rl-bar__threshold {
+  position: absolute;
+  top: -3px; bottom: -3px;
+  width: 2px;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px var(--strategist-bg);
+}
+.rl-bar__threshold-label {
+  position: absolute;
+  bottom: -22px;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.rl-hero__legend {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+.rl-legend-cell {
+  display: flex; flex-direction: column;
+  gap: 4px;
+  padding: 0 0 0 14px;
+  border-left: 2px solid var(--strategist-card-border);
+}
+.rl-legend-cell--at { border-left-color: var(--amber); }
+.rl-legend-cell--to { border-left-color: var(--gold); }
+.rl-legend-cell__l {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.rl-legend-cell__v {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--strategist-fg);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+}
+.rl-legend-cell__v--amber { color: var(--amber); }
+.rl-legend-cell__v--gold  { color: var(--gold); }
+.rl-legend-cell__sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--strategist-fg-3);
+}
+
+/* Path card · ritual or action */
+.rl-path {
+  margin-top: 18px;
+  background: var(--strategist-card-bg);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 22px 26px;
+}
+.rl-path__head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px dashed var(--strategist-rule);
+}
+.rl-path__title {
+  font-family: var(--font-display);
+  font-size: 17px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold);
+  margin: 0;
+}
+.rl-path__subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--strategist-fg-2);
+}
+.rl-path__eta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.rl-path__eta b {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.rl-steps {
+  display: grid;
+  gap: 10px;
+  margin: 0; padding: 0;
+  list-style: none;
+}
+.rl-step {
+  display: grid;
+  grid-template-columns: 44px 1fr 220px;
+  gap: 18px;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+}
+.rl-step__code {
+  font-family: var(--font-mono);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+}
+.rl-step__body {
+  font-size: 13.5px;
+  color: var(--strategist-fg);
+  line-height: 1.5;
+}
+.rl-step__progress {
+  display: grid;
+  gap: 6px;
+}
+.rl-step__progress-head {
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.rl-step__progress-head b {
+  color: var(--strategist-fg);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.rl-step__pip-track {
+  display: flex; gap: 4px;
+}
+.rl-step__pip {
+  flex: 1;
+  height: 5px;
+  border-radius: 1px;
+  background: var(--strategist-pip-track);
+}
+.rl-step__pip--done { background: var(--emerald); }
+
+/* Done badge for completed steps */
+.rl-step--done .rl-step__code {
+  color: var(--emerald);
+}
+.rl-step--done .rl-step__body {
+  color: var(--strategist-fg-2);
+}
+
+/* Comparison footer · light vs. heavy */
+.rl-foot-grid {
+  margin-top: 22px;
+  background: var(--strategist-card-deep);
+  border: 1px solid var(--strategist-card-border);
+  border-radius: var(--r-sm);
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 22px;
+}
+.rl-foot-cell {
+  display: flex; flex-direction: column;
+  gap: 6px;
+}
+.rl-foot-cell__lbl {
+  font-family: var(--font-mono);
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--strategist-fg-3);
+}
+.rl-foot-cell__body {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--strategist-fg-2);
+  line-height: 1.55;
+}
+.rl-foot-cell__body b {
+  font-style: normal;
+  color: var(--strategist-fg);
+  font-weight: 600;
+}
+.rl-foot-divider {
+  background: var(--strategist-rule);
+  width: 1px;
+}
