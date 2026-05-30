@@ -94,6 +94,7 @@ const NAV = [
       { label: 'Love Calculator',          path: '/love-calculator',           icon: Heart },
       { label: 'Birth Chart',              path: '/kundali',                   icon: Sparkles },
       { label: 'Lagna Kundali',            path: '/kundali',                   icon: Star },
+      { label: 'Lo Shu Grid',              path: '/lo-shu-grid',               icon: Hash },
       { label: 'Lo Shu Grid Calculator',   path: '/lo-shu-grid/calculator',    icon: Hash },
       { label: 'Rashi Calculator',         path: '/rashi-calculator',          icon: Sun },
       { label: 'Nakshatra Calculator',     path: '/nakshatra-calculator',      icon: MoonIcon },

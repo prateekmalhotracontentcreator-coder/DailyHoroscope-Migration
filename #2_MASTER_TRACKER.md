@@ -53,7 +53,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | 15 | Panchang | [`Panchang/TRACKER.md`](Codex_Deliveries/Panchang/TRACKER.md) | ✅ LIVE | PAN-L1 integrated `2a4ed4e` -- 5 language pages (Hindi/Tamil/Telugu/Malayalam/Kannada), hreflang, JSON-LD. HTTP 200 confirmed. | -- |
 | 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | 🟡 ACTIVE | SEO-20K M1 ✅ live. M2 ✅ INTEGRATED `aba7d5c`. M3 ✅ integrated by TT. M4 / TAR-SEO-1 local delivery prepared 2026-05-25: tarot SEO router, 4 public SEO page types, tarot sitemap endpoint, App.js route wiring, and Vercel cache headers all build-verified locally. **TT/CC to review and integrate M4.** | TT |
 | 17 | World Oracles | [`World_Oracles/TRACKER.md`](Codex_Deliveries/World_Oracles/TRACKER.md) | 🟣 PLANNED | Phase 3 -- do not issue until KP Oracle 30+ days live | TT |
-| 18 | Lo Shu Grid | [`Lo_Shu_Grid/TRACKER.md`](Codex_Deliveries/Lo_Shu_Grid/TRACKER.md) | 🟢 LIVE | LSG-1 + LSG-2 integrated `4538d1e` 2026-05-30 · 57 URLs · Render+Vercel deploy in progress. **TT: (1) run seed script on Render, (2) smoke test 8 routes.** | TT |
+| 18 | Lo Shu Grid | [`Lo_Shu_Grid/TRACKER.md`](Codex_Deliveries/Lo_Shu_Grid/TRACKER.md) | ✅ COMPLETE | LSG-1 + LSG-2 fully live · 57 URLs · seeded · smoke tested · ECHO/PACE L1-L3 + Layer G all PASS · NavBar wired · all open points closed. | -- |
 
 ---
 

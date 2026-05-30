@@ -1,7 +1,7 @@
 # Lo Shu Grid -- Module Tracker
 > Path: `Codex_Deliveries/Lo_Shu_Grid/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-30 IST · v3.2
+> Last updated: 2026-05-30 IST · v3.3
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟢 INTEGRATED -- LSG-2 live, Render/Vercel deploy in progress · Seed + smoke test pending (TT) |
+| **Status** | ✅ FULLY LIVE -- LSG-1 + LSG-2 integrated · Seeded · Smoke tested · ECHO/PACE Layer G complete · NavBar wired |
 | **Backend router** | `backend/lo_shu_router.py` |
 | **Seed script** | `backend/scripts/seed_lo_shu.py` |
 | **SEO sitemap** | `GET /api/seo/sitemap/lo-shu-grid` via `backend/seo_router.py` |
@@ -35,8 +35,8 @@
 | # | Item | Owner | Priority | Notes |
 |---|---|---|---|---|
 | LSG-OP-1 | Confirm runtime assumption for the missing Action arrow | TT | 🟠 MED | Decoded source labels one missing arrow as `8,7,6`, but Lo Shu grid geometry and commission math imply `2,7,6`. Runtime logic follows `2,7,6`. |
-| LSG-OP-2 | Seed Lo Shu content collections on Render after deploy | TT | 🔴 HIGH (post-deploy) | `python3 backend/scripts/seed_lo_shu.py --mongo-url "$MONGO_URL" --db-name horoscope_db` now seeds `lo_shu_missing_numbers`, `lo_shu_arrows`, `lo_shu_numbers`, `lo_shu_problems`, and `lo_shu_personal_years`. |
-| LSG-OP-3 | Browser smoke test public routes after Render/Vercel deploy | TT | 🟠 HIGH | Verify hub, calculator, one missing-number page, one arrow page, one number page, one problem page, one personal-year page, and `/api/seo/sitemap/lo-shu-grid`. Full 8-item checklist in `LSG_INTEGRATION_SIGNOFF_NOTE_2026-05-29.docx` Section 4. |
+| LSG-OP-2 | ~~Seed Lo Shu content collections on Render~~ | ~~TT~~ | ✅ CLOSED | Seeded 2026-05-30: 9 missing-number, 8 arrow, 9 number, 20 problem, 9 personal-year docs. | `python3 backend/scripts/seed_lo_shu.py --mongo-url "$MONGO_URL" --db-name horoscope_db` now seeds `lo_shu_missing_numbers`, `lo_shu_arrows`, `lo_shu_numbers`, `lo_shu_problems`, and `lo_shu_personal_years`. |
+| LSG-OP-3 | ~~Browser smoke test public routes after Render/Vercel deploy~~ | ~~TT~~ | ✅ CLOSED | All 8 routes returned 200 on 2026-05-30. Sitemap confirmed 57 URLs. |
 | LSG-OP-4 | ~~ECHO/PACE scanner coverage gap~~ | ~~CC~~ | ✅ CLOSED | Extended `echo_pace_lsg_scan.py` to cover all 4 page types (number, combo, problem, personal year). Added `_problem_page_body()` + `_personal_year_page_body()` builders. Extended Layer G to sample both new page types. L1-L3 all PASS on 2026-05-30. Commit: `aa17c07`. |
 
 ---
@@ -48,6 +48,9 @@
 - Sitemap verification: `len(LO_SHU_SITEMAP_URLS) == 57`
 - Frontend verification: `CI=true DISABLE_ESLINT_PLUGIN=true npx craco build` passed in `frontend/`
 - Runtime note: page endpoints fall back to in-code content if Mongo seed data has not been inserted yet
+- Live smoke test (2026-05-30): all 8 routes returned HTTP 200 · sitemap confirmed 57 URLs
+- ECHO/PACE final scan (2026-05-30): L1-L3 + Layer G (6 Serper credits) all PASS across all 4 page types. Layer G: Blueprint Prose 0/10 · Classical WATCH-1 0/10 · Problem Pages 0/10 · Personal Year Pages 0/10. Saved: `ECHO_PACE SCANNER -- Lo Shu Grid SEO Module_LSG-1.md`
+- NavBar: `/lo-shu-grid` hub added to Free Calculators dropdown (above calculator entry)
 
 ---
 
@@ -55,6 +58,7 @@
 
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
+| v3.3 | 2026-05-30 | ECHO/PACE Layer G complete (6 Serper credits): Blueprint Prose, Classical WATCH-1, Problem Pages, Personal Year Pages -- all 0/10 hits, full PASS. Closed LSG-OP-2 (seed ✅), LSG-OP-3 (smoke test ✅). Added `/lo-shu-grid` hub to NavBar Free Calculators dropdown. Module fully live, all open points closed. | CC | `NavBar.jsx`, `TRACKER.md` |
 | v3.2 | 2026-05-30 | LSG-2 integrated. Added 7 lazy imports + 7 public routes to `frontend/src/App.js` (all LSG-1 + LSG-2 page types). Backend router already registered. Frontend craco build clean. Pushed to main `4538d1e`. Awaiting Render (~3 min) + Vercel (~2 min) deploy, then TT seed + smoke test. | CC | `frontend/src/App.js` |
 | v3.1 | 2026-05-30 | Closed LSG-OP-4: extended `echo_pace_lsg_scan.py` to cover problem pages (20) + personal year pages (9) in L1/L2/L3. Added `_problem_page_body()` and `_personal_year_page_body()` content builders. Extended Layer G to sample both new page types (~6 Serper credits). All 4 page types PASS L1-L3 clean (problem peak 43.1%, PY peak 19.9%). Scanner now gates full LSG-2 module (38 URLs). Commit: `aa17c07`. | CC | `echo_pace_lsg_scan.py` |
 | v3.0 | 2026-05-29 | ECHO/PACE full scan completed (L1-L3 + Layer G via Serper). Fixed L1 BLOCKED on combination pages: added `NUMBER_COMBINATION_INSIGHTS` (36 unique synthesis entries) to `lo_shu_router.py`. Fixed L3 FLAGGED on number headings: added `NUMBER_PAGE_TITLES` (humanised planet+archetype titles) to router + scanner. Updated `build_number_deep_dive_document()` to use humanised titles in page payload. Layer G: all 4 Serper queries returned 0/10 hits -- blueprint prose and classical associations (WATCH-1) both clean. Added LSG-OP-4 (scanner coverage gap -- problem/personal-year pages not in L1-L2 scope). Sign-off doc prepared: `LSG_INTEGRATION_SIGNOFF_NOTE_2026-05-29.docx`. Commit: `56da74c`. | CC | `echo_pace_lsg_scan.py`, `lo_shu_router.py` |
