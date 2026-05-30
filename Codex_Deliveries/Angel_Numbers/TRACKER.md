@@ -1,7 +1,7 @@
 # Angel Numbers -- Module Tracker
 > Path: `Codex_Deliveries/Angel_Numbers/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-31 IST · v1.3
+> Last updated: 2026-05-31 IST · v1.4
 
 ---
 
@@ -17,8 +17,8 @@
 | **Frontend pages** | `frontend/src/pages/angel-numbers/AngelNumbersHubPage.jsx` · `AngelNumberPage.jsx` · `AngelNumberIntentPage.jsx` |
 | **Collections** | `angel_number_core` (1,000 docs) · `angel_number_intents` (9,000 docs) |
 | **Public routes wired** | `/angel-numbers`, `/angel-numbers/:number`, `/angel-numbers/:number/:intent` ✅ all 3 live |
-| **Mongo state** | 🟠 Stale ANGEL-1 content -- **TT action: re-seed both collections on Render** |
-| **ECHO/PACE (L1-L3)** | ✅ OVERALL PASS -- L2 PASS (0 violations), L3 PASS (55.6%), L1 worst 57.5% FLAGGED (not blocked) |
+| **Mongo state** | 🔴 Stale ANGEL-1 content -- **do NOT seed until ANGEL-3 passes L1 < 40%** |
+| **ECHO/PACE (L1-L3)** | ❌ TT FAIL -- verifier says OVERALL PASS but TT test criteria requires ALL clusters < 40%. Current worst 57.5%. All 10 clusters fail the brief gate. |
 | **Layer G (Serper)** | Not yet run -- blocked by L1-L3 fail |
 
 ---
@@ -41,7 +41,7 @@
 | ~~ANGEL-OP-2~~ | ~~Run ECHO/PACE compliance check after ANGEL-2 delivery~~ | ~~CC~~ | ✅ CLOSED | OVERALL PASS confirmed 2026-05-31. L2 0 violations, L3 55.6%, L1 worst 57.5% FLAGGED (not blocked). |
 | ANGEL-OP-3 | Re-seed `angel_number_core` on Render (1,000 docs) | TT | ⏸ AFTER ANGEL-3 | Blocked until ANGEL-3 passes L1 < 40%. Render shell: `PYTHONPATH=/app python3 scripts/seed_angel_numbers_core.py`. |
 | ANGEL-OP-4 | Re-seed `angel_number_intents` on Render (9,000 docs) | TT | ⏸ AFTER ANGEL-3 | Blocked until ANGEL-3 passes L1 < 40%. Render shell: `PYTHONPATH=/app python3 scripts/seed_angel_numbers_intents.py`. |
-| ANGEL-OP-9 | Issue ANGEL-3 commission + integrate delivery | TT/CC | 🔴 CRITICAL | Brief: `CODEX_COMMISSION_ANGEL_3_L1_FIX.md`. 8 vocabulary pool expansions. L1 all clusters must reach < 40%. |
+| ANGEL-OP-9 | Issue ANGEL-3 commission + integrate delivery | TT/CC | 🔴 CRITICAL | Brief updated with TT root-cause diagnosis: `CODEX_COMMISSION_ANGEL_3_L1_FIX.md`. Digit-pattern anchoring (2 sentences/number referencing specific digit energy) + pool expansion + root-digit-keyed intent focus/challenge. |
 | ~~ANGEL-OP-5~~ | ~~Wire intent route in `frontend/src/App.js`~~ | ~~CC~~ | ✅ CLOSED | Lazy import + `/angel-numbers/:number/:intent` route added. Commit `2271c36`. |
 | ~~ANGEL-OP-6~~ | ~~`how_to_manifest` field for manifestation records~~ | ~~Codex / CC~~ | ✅ CLOSED | Confirmed present in ANGEL-2: 1,000 manifestation records, 7 action families, max 7.4% per type (cap 30%). |
 | ANGEL-OP-7 | Layer G (Serper Google similarity scan) | TT | 🟡 MED (after seed) | Not yet run. TT to run after ANGEL-OP-4 complete. |
@@ -55,7 +55,7 @@
 |---|---|---|---|
 | 2026-05-27 | `verify_angel_numbers_compliance.py` | ❌ FAIL (ANGEL-1) | All 10 clusters BLOCKED (L1: 72--83%, L2: "lesson slows reaction cycle" 98%, L3: Jaccard fail). Saved: `ECHO_PACE_TEST_RESULTS_2026-05-27.md` |
 | 2026-05-31 | `verify_angel_numbers_compliance.py` | ❌ FAIL (ANGEL-1 confirmed, pre-copy) | Same baseline numbers. Worst pair 82.1%. L2: "creates space lesson slows" 98%. L3: 5 pairs fail. |
-| 2026-05-31 | `verify_angel_numbers_compliance.py` | ✅ OVERALL PASS (ANGEL-2) | L1 worst 57.5% FLAGGED (not blocked, down from 82%). L2 0 violations. L3 55.6%. All 3 layers within tolerance. |
+| 2026-05-31 | `verify_angel_numbers_compliance.py` | ⚠️ VERIFIER PASS / TT FAIL (ANGEL-2) | Script OVERALL PASS (script gates at ≥70% BLOCKED). TT gates at brief requirement (< 40%). L1 worst 57.5% -- all 10 clusters fail brief gate. L2 0 violations ✅. L3 55.6% ✅. Not deployable. |
 
 ---
 
@@ -75,6 +75,7 @@ After ANGEL-2 delivery, run in order:
 
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
+| v1.4 | 2026-05-31 | TT sign-off doc reviewed. TT confirms: ANGEL-2 fails brief gate. Verifier "PASS" is against script's own thresholds, not the < 40% brief requirement. TT root-cause: fix is not just pool expansion -- each number's message must contain ≥2 sentences anchoring to that number's digit-pattern energy (not generic topic copy). ANGEL-3 brief updated with TT's exact thread message + digit-pattern anchoring requirement + priority cluster order (protection 57.5% first, family 45.8% last). ECHO/PACE test record updated to reflect TT verdict. Seed locked until ANGEL-3 clears all 10 clusters < 40%. | CC | `CODEX_COMMISSION_ANGEL_3_L1_FIX.md`, `TRACKER.md` |
 | v1.3 | 2026-05-31 | L1 TF-IDF verdict: ANGEL-2 does NOT clear TT test criteria (all 10 clusters still > 40%; brief requires < 40%). Root-cause analysis confirms 4 pool exhaustion problems: ROOT_VIBRATION_FRAGMENTS (2 variants/digit → 10 needed), ROOT_SEEING_FRAGMENTS (same), PATTERN_*_FRAGMENTS (2 variants/pattern → 8 needed), INTENT_STYLES focus/challenge (fixed per intent → 9 root-keyed variants needed) + VIBRATION_CADENCE (4 → 20). ANGEL-3 commission brief written: `CODEX_COMMISSION_ANGEL_3_L1_FIX.md`. Seed blocked until ANGEL-3 passes. | CC | `CODEX_COMMISSION_ANGEL_3_L1_FIX.md` |
 | v1.2 | 2026-05-31 | ANGEL-2 integrated from Codex handoff folder. ECHO/PACE re-run: OVERALL PASS (L2 0 violations, L3 55.6%, L1 worst 57.5% FLAGGED). `how_to_manifest` confirmed present (1,000 manifestation records, 7 action families). Intent route `/angel-numbers/:number/:intent` wired in App.js. Frontend build clean. Committed `2271c36`, pushed to main. TT action: re-seed both Mongo collections on Render. | CC | `angel_numbers_data.py`, `frontend/src/App.js` |
 | v1.1 | 2026-05-31 | TRACKER.md created. Ran ECHO/PACE compliance check -- confirmed ANGEL-1 content still in `angel_numbers_data.py` (same baseline failure as May 27 test). Identified missing intent route in App.js. Full open points table written. ANGEL-2 commission brief confirmed written and ready to issue. | CC | `verify_angel_numbers_compliance.py` |

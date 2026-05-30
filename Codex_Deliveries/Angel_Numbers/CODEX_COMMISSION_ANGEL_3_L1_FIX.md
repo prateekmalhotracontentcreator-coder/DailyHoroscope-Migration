@@ -1,181 +1,163 @@
-# ANGEL-3 Commission Brief -- Angel Numbers L1 TF-IDF Fix
+# ANGEL-3 Commission Brief -- Angel Numbers L1 TF-IDF Fix (Third Pass)
 > Thread: Angel Numbers Codex Thread (same thread as ANGEL-1 and ANGEL-2)
 > Commission ID: ANGEL-3
 > Date: 2026-05-31
 > Status: READY TO ISSUE
 > Prerequisite: ANGEL-2 delivered ✅
+> TT Review: Temple Team sign-off doc 2026-05-31 -- see §TT Verdict below
 
 ---
 
-## Pass / Fail Verdict on ANGEL-2
+## Message to Post in the Angel Numbers Codex Thread
 
-**ANGEL-2 does NOT clear Temple Team test criteria.**
+> **ANGEL-2 rewrite: L2 and L3 cleared, L1 not yet at brief standard. Third pass required.**
+>
+> The brief requires all clusters < 40% L1 cosine. Current worst is 57.5% (protection), with 4 clusters FLAGGED ≥50% and 6 more above the 40% ceiling. The verifier's "PASS" is against its own internal thresholds, not the brief requirement.
+>
+> Root cause: number pages within each cluster share too much topic vocabulary. Rotating action families reduced L2 -- good. But L1 requires more digit-pattern specific language per number. Pages in the "career" cluster need to reference the numerological meaning of their specific number/pattern, not just career topics.
+>
+> **Target for next pass -- fix the 4 FLAGGED clusters specifically:**
+> - protection (57.5%) -- most urgent
+> - manifestation (55.2%)
+> - spiritual-growth (51.9%)
+> - career (53.0%)
+>
+> Approach: for each number in these clusters, ensure at least 2 sentences anchor to the digit pattern's specific energy (e.g. for 333 protection: the triple-3 triangle of mind/body/spirit as the protective force -- not generic "trust your guides"). The 6 "over target" clusters can be addressed in the same pass.
+>
+> Re-run verifier after changes. Target: all clusters < 40%. Do not submit until that ceiling is met.
 
-The ANGEL-2 commission acceptance checklist (addendum, §Additional Requirement 2) states:
+---
 
-> Layer 1 PASS: all clusters < 40% TF-IDF cosine
+## TT Verdict on ANGEL-2
 
-ANGEL-2 delivery result:
+| Gate | Requirement | Current | Decision |
+|---|---|---|---|
+| L1 all clusters | < 40% (brief) | All 10 fail, worst 57.5% | ❌ FAIL |
+| L2 n-gram | < 15% records | 0 violations | ✅ PASS |
+| L3 Jaccard | < 75% | 55.6% | ✅ PASS |
 
-| Cluster | Score | Gate (< 40%) |
+**Do not re-seed Mongo with ANGEL-2 generator. ANGEL-3 must pass all gates before seed.**
+
+L2 and L3 are genuinely fixed. The rewrite direction is correct. L1 alone remains the blocker.
+
+---
+
+## TT Root Cause Diagnosis
+
+Angel Numbers has a fundamentally different architecture from Tarot: 10 intent clusters × 1,000+ number pages. Pages within the same cluster (e.g. all 1,000 "career" pages) share the cluster's thematic vocabulary by design. That structural overlap is harder to reduce than page-to-page similarity.
+
+The fix is not more action-family rotation -- it is making each number's body more **digit-pattern specific**, not just topic-specific.
+
+- `111 career` should reference the amplification/alignment energy of three 1s
+- `222 career` should reference patience and partnership timing
+- `333 protection` should reference the triple-3 triangle of mind/body/spirit as the protective force -- not generic "trust your guides"
+
+The content must anchor to the **number's numerological meaning**, not just the intent topic. Minimum: **2 sentences per number per intent that reference the specific digit pattern's energy**.
+
+---
+
+## Priority Clusters (address in order)
+
+| Cluster | Score | Priority |
 |---|---|---|
-| protection | 57.5% | ❌ FAIL |
-| manifestation | 55.2% | ❌ FAIL |
-| career | 53.0% | ❌ FAIL |
-| spiritual-growth | 51.9% | ❌ FAIL |
-| new-beginnings | 49.5% | ❌ FAIL |
-| twin-flame | 47.8% | ❌ FAIL |
-| health | 47.0% | ❌ FAIL |
-| core | 47.0% | ❌ FAIL |
-| love | 46.1% | ❌ FAIL |
-| family | 45.8% | ❌ FAIL |
+| protection | 57.5% | 🔴 1st |
+| career | 53.0% | 🔴 2nd |
+| spiritual-growth | 51.9% | 🔴 3rd |
+| manifestation | 55.2% | 🔴 4th |
+| new-beginnings | 49.5% | 🟠 5th |
+| twin-flame | 47.8% | 🟠 6th |
+| health | 47.0% | 🟠 7th |
+| core | 47.0% | 🟠 8th |
+| love | 46.1% | 🟠 9th |
+| family | 45.8% | 🟠 10th |
 
-L2 and L3 now pass cleanly. L1 is the sole remaining blocker.
-The verifier script says OVERALL PASS (it treats ≥70% as the hard block). The acceptance checklist sets a tighter standard: < 40%. All 10 clusters fail the checklist gate. Module seeding and deploy are blocked until L1 clears.
-
----
-
-## Root Cause Analysis
-
-ANGEL-2 fixed template-level sentence repetition (L2) and key_theme collision (L3). The L1 TF-IDF problem is different: it is a **vocabulary pool exhaustion problem**, not a phrase repetition problem. TF-IDF measures the distribution of all weighted terms across a document. When two records share the same pool fragments -- even if no single phrase repeats verbatim -- the TF-IDF cosine stays high because the vocabulary proportions look nearly identical.
-
-**There are 4 specific pools that are too small:**
-
-### Problem 1 -- ROOT_VIBRATION_FRAGMENTS: 2 variants per root digit
-
-```python
-ROOT_VIBRATION_FRAGMENTS = {
-    1: [
-        "It strengthens decisive self-trust and clears space for an honest beginning.",
-        "It sharpens your inner yes so hesitation stops dressing up as caution.",
-    ],
-    2: [...],  # 2 items each
-    ...
-}
-```
-
-There are 9 root digits. Each digit has **exactly 2 fragment variants**. Approximately 111 numbers share each root digit (1,000 ÷ 9). With 2 variants, ~55 records share the same fragment. This produces high L1 similarity in the `vibration` field across any two records with the same root.
-
-**Fix:** Expand to **minimum 10 distinct variants per root digit** (90 total fragments). Each should use different vocabulary -- not just reordering the same ideas.
+All 10 must reach < 40% in the same pass.
 
 ---
 
-### Problem 2 -- ROOT_SEEING_FRAGMENTS: 2 variants per root digit
+## Technical Root Cause (Generator-Level)
 
-```python
-ROOT_SEEING_FRAGMENTS = {
-    1: [
-        "Treat the sighting as permission to stop waiting for perfect certainty.",
-        "Let the repetition remind you that a clean beginning is already available.",
-    ],
-    ...
-}
-```
+ANGEL-2 fixed phrase repetition (L2) and key_theme collision (L3). The remaining L1 problem has two compounding causes:
 
-Same structural problem as above. ~55 numbers share each fragment in the `seeing_it_means` field.
+### Cause 1 -- Vocabulary Pool Exhaustion
 
-**Fix:** Expand to **minimum 10 distinct variants per root digit** (90 total fragments).
+The following pools are too small. When many numbers share the same root digit or pattern type, they draw from a small fragment pool and end up with nearly identical weighted vocabulary:
 
----
+| Pool | Current Size | Minimum Required |
+|---|---|---|
+| `ROOT_VIBRATION_FRAGMENTS` | 2 variants per root digit | 10 per root digit |
+| `ROOT_SEEING_FRAGMENTS` | 2 variants per root digit | 10 per root digit |
+| `PATTERN_VIBRATION_FRAGMENTS` | 2 variants per pattern type | 8 per pattern type |
+| `PATTERN_SEEING_FRAGMENTS` | 2 variants per pattern type | 8 per pattern type |
+| `VIBRATION_CADENCE` | 4 total | 20 total |
 
-### Problem 3 -- PATTERN_VIBRATION_FRAGMENTS and PATTERN_SEEING_FRAGMENTS: 2 variants per pattern type
-
-```python
-PATTERN_VIBRATION_FRAGMENTS = {
-    "pure amplification": [
-        "The amplified echo keeps pressing the exact same note until your response matches it.",
-        "Because the digits repeat without dilution, the number does not support half-hearted participation.",
-    ],
-    ...  # 2 items per pattern type, 6 pattern types
-}
-```
-
-There are 6 pattern types. Numbers are assigned a pattern type based on their digit structure. With 2 variants per pattern, and 100-200+ numbers per common pattern type, many records share identical pattern fragments in both `vibration` and `seeing_it_means`.
-
-**Fix:** Expand to **minimum 8 distinct variants per pattern type** (48 total per table). Use clearly different vocabulary angles -- not rewording the same core sentence.
-
----
-
-### Problem 4 -- INTENT_STYLES closings: 2 variants per intent
+### Cause 2 -- Fixed Intent Focus/Challenge Strings (primary driver for FLAGGED clusters)
 
 ```python
 INTENT_STYLES = {
     "love": {
-        "focus": "...",  # fixed -- same for ALL 1,000 love records
-        "challenge": "...",  # fixed -- same for ALL 1,000 love records
-        "closing": [
-            "Let the heart move with honesty, because...",
-            "Use the number as permission to choose reciprocity...",
-        ],
+        "focus": "...",      # FIXED -- identical across all 1,000 love records
+        "challenge": "...",  # FIXED -- identical across all 1,000 love records
+        "closing": [2 variants],
     },
     ...
 }
 ```
 
-This is the biggest driver of `protection` and `manifestation` failures. The `focus` and `challenge` strings are **completely fixed per intent** -- every one of 1,000 records for the same intent uses the identical `focus` and `challenge` values regardless of which template picks them up. Even if the intro/bridge/challenge templates rotate, the substituted values are identical across all 1,000 records in each cluster.
+Every one of 1,000 records in the same intent cluster uses the same `focus` and `challenge` vocabulary. This is the primary driver of FLAGGED scores in protection (57.5%) and manifestation (55.2%) -- the topic vocabulary dominates the TF-IDF fingerprint regardless of how the intro/bridge templates are rotated.
 
-Additionally, only 2 closing variants per intent means ~500 records share the same closing sentence.
-
-**Fix:** Two changes required:
-
-**4a.** Expand intent `closing` pools from 2 → **minimum 12 distinct variants per intent** (108 total). Use different vocabulary angles, lengths, and structural rhythms.
-
-**4b.** Break `focus` and `challenge` into **number-family-aware sub-pools** keyed by root digit. Instead of one fixed string, provide 9 variants -- one per root digit -- so that the love/protection/etc. message feels genuinely different for root-1 numbers vs root-5 numbers. Structure:
+**Fix:** Replace fixed strings with root-digit-keyed variants. Structure required:
 
 ```python
-"love": {
-    "focus_by_root": {
-        1: "...love framing for root-1 energy (initiative, new-love courage, self-declared affection)...",
-        2: "...love framing for root-2 energy (partnership, patience, emotional balance)...",
-        3: "...love framing for root-3 energy (communication, playfulness, expressive honesty)...",
-        4: "...love framing for root-4 energy (committed structure, steadiness, reliable devotion)...",
-        5: "...love framing for root-5 energy (freedom-aware love, space-giving, adaptive connection)...",
-        6: "...love framing for root-6 energy (nurturing, harmony, responsible care)...",
-        7: "...love framing for root-7 energy (soul depth, spiritual chemistry, inner knowing)...",
-        8: "...love framing for root-8 energy (lasting commitment, value alignment, material security)...",
-        9: "...love framing for root-9 energy (karmic love, compassion, completing old patterns)...",
+INTENT_STYLES = {
+    "protection": {
+        "focus_by_root": {
+            1: "...(protection as self-directed clarity, declaring boundaries from conviction)...",
+            2: "...(protection as relational discernment, timing-aware safety)...",
+            3: "...(protection as voice and truth-telling as the boundary)...",
+            4: "...(protection as structural fortification, practical barriers)...",
+            5: "...(protection as freedom-preserving movement, exit strategy)...",
+            6: "...(protection as caring for the home atmosphere, sheltering what matters)...",
+            7: "...(protection as spiritual discernment, inner knowing as the shield)...",
+            8: "...(protection as stewardship, guarding value and authority)...",
+            9: "...(protection as completion and release, closing what drains)...",
+        },
+        "challenge_by_root": {
+            1: "...", 2: "...", 3: "...", 4: "...", 5: "...",
+            6: "...", 7: "...", 8: "...", 9: "...",
+        },
+        "closing": [  # minimum 12 variants (current: 2)
+            "...", "...", "...", ...
+        ],
     },
-    "challenge_by_root": {
-        1: "...", 2: "...", 3: "...", 4: "...", 5: "...",
-        6: "...", 7: "...", 8: "...", 9: "...",
-    },
-    "closing": [  # minimum 12 variants
-        "...", "...", "...", ...
-    ],
+    # same structure for all 9 intents
 }
 ```
 
-The generator already uses `root_digit` to seed all lookups -- it just needs these pools to exist.
+The generator already uses `root_digit` for seeding -- it just needs these pools to exist.
+
+### Cause 3 -- Intent Closing Pools Too Small
+
+`INTENT_STYLES.closing`: 2 variants per intent. ~500 records per intent share the same closing sentence. Expand to **minimum 12 variants per intent** (108 total).
 
 ---
 
-## VIBRATION_CADENCE: Expand from 4 → 20 variants
+## The Digit-Pattern Anchoring Requirement (TT Directive)
 
-```python
-VIBRATION_CADENCE = [
-    "That is why this sequence tends to arrive right before a meaningful choice, not after one.",
-    "That is what makes the number feel active rather than merely symbolic.",
-    "That is where the sequence becomes guidance instead of decoration.",
-    "That is why the message usually clarifies once you respond in a concrete way.",
-]
-```
+For every number × intent combination, the generated `message` field must contain **at least 2 sentences that reference the specific digit pattern's energy** -- not just the intent's topic.
 
-4 variants across 1,000 records = 250 records sharing each cadence sentence. This contributes to L1 overlap across all clusters. Expand to **minimum 20 distinct closings** using varied vocabulary and rhythms -- not variations on the same "That is..." construction.
+**Examples of what this means in practice:**
 
----
+| Number | Intent | Required anchor (2+ sentences) |
+|---|---|---|
+| 111 | career | Must reference: amplification of root-1 energy, alignment signal, the 3×1 amplified initiation -- not generic "take action" career advice |
+| 222 | career | Must reference: root-2 partnership timing, patience-as-strategy, the mirrored balance of 2s -- not generic "opportunities incoming" |
+| 333 | protection | Must reference: triple-3 triangle (mind/body/spirit as the protective force), creative expression as the protective layer -- not generic "trust your guides" |
+| 444 | protection | Must reference: four-pillar structure, the 4×4 guardian wall, practical barriers -- not generic "angels are with you" |
+| 555 | spiritual-growth | Must reference: 5-energy catalyst, conscious change over restless escape, the transformation doorway -- not generic "awakening is happening" |
+| 888 | manifestation | Must reference: 8-energy karmic return, stewardship of what arrives, abundance as earned result -- not generic "align your thoughts" |
 
-## Summary of Changes Required
-
-| Item | Current Pool Size | Required Pool Size | Field Affected |
-|---|---|---|---|
-| `ROOT_VIBRATION_FRAGMENTS` | 2 per root digit | **10 per root digit** | `vibration` |
-| `ROOT_SEEING_FRAGMENTS` | 2 per root digit | **10 per root digit** | `seeing_it_means` |
-| `PATTERN_VIBRATION_FRAGMENTS` | 2 per pattern type | **8 per pattern type** | `vibration` |
-| `PATTERN_SEEING_FRAGMENTS` | 2 per pattern type | **8 per pattern type** | `seeing_it_means` |
-| `INTENT_STYLES.focus` | 1 fixed string per intent | **9 root-keyed variants per intent** | intent `message` |
-| `INTENT_STYLES.challenge` | 1 fixed string per intent | **9 root-keyed variants per intent** | intent `message` |
-| `INTENT_STYLES.closing` | 2 per intent | **12 per intent** | intent `message` |
-| `VIBRATION_CADENCE` | 4 total | **20 total** | `vibration` |
+The digit-pattern anchor sentences can come from the `PATTERN_LANGUAGE`, `BASE_ARCHETYPES`, `DIGIT_LEXICON`, or `PATTERN_DETAILS` structures already in the generator. The fix is ensuring these structures are actually injected into the `message` field with enough specificity per number -- not just used for the `vibration` and `seeing_it_means` fields.
 
 ---
 
@@ -184,42 +166,41 @@ VIBRATION_CADENCE = [
 - All function signatures: `iter_core_records()`, `iter_intent_records()`, `get_core_numbers()`, `build_sitemap_paths()`, `sitemap_page_count()`
 - Total record counts: 1,000 core + 9,000 intent
 - `INTENT_ORDER`, `INTENT_CONFIG`, `PAGE_SIZE`, `SITE_URL`
-- All structural fields on every record (number, display, headline, slug, canonical_url, meta_title, meta_description, key_themes, related_numbers, faq, intent, display_name, all_intents, how_to_manifest)
-- `BASE_ARCHETYPES`, `PATTERN_DETAILS`, `DIGIT_LEXICON`, `SPECIAL_NUMBER_OVERRIDES`
-- Any logic in `choose_variant()`, `get_pattern_type()`, `digit_sum()`, `root_digit()`
+- All structural fields on every record
+- `BASE_ARCHETYPES`, `PATTERN_DETAILS`, `DIGIT_LEXICON`, `SPECIAL_NUMBER_OVERRIDES`, `PATTERN_LANGUAGE`
+- `how_to_manifest` field must remain present on all 1,000 manifestation records with 7 action families and max 30% per type
 - No other file is to be touched -- only `backend/angel_numbers_data.py`
 
 ---
 
-## Verification Gate (run before delivering)
+## Verification Gate
 
 ```bash
 PYTHONPATH=backend python3 backend/scripts/verify_angel_numbers_compliance.py
 ```
 
-**Acceptance threshold:**
+**All clusters must show < 40%. No exceptions.** Paste full output in delivery confirmation.
 
-| Layer | Target | Hard block |
+| Layer | Gate | Note |
 |---|---|---|
-| L1 TF-IDF cosine | ALL clusters **< 40%** | ≥ 70% BLOCKED |
-| L2 N-gram | No 4-gram in > 15% records | Current PASS -- must stay PASS |
-| L3 Jaccard | < 75% across all pairs | Current PASS -- must stay PASS |
+| L1 TF-IDF | ALL clusters < 40% | Hard requirement per brief |
+| L2 N-gram | No 4-gram in > 15% records | Currently PASS -- must stay PASS |
+| L3 Jaccard | < 75% | Currently PASS -- must stay PASS |
 
-**All 3 layers must show PASS and every L1 cluster must be < 40%.** Paste the full output in your delivery confirmation. Delivery not accepted without it.
+Also confirm record counts and `how_to_manifest`:
 
-Also confirm:
 ```bash
 python3 -c "
 import sys; sys.path.insert(0, 'backend')
 from angel_numbers_data import iter_core_records, iter_intent_records
 core = list(iter_core_records())
 intents = list(iter_intent_records())
-print('Core records:', len(core))
-print('Intent records:', len(intents))
-assert len(core) == 1000
-assert len(intents) == 9000
-print('how_to_manifest present:', sum(1 for r in intents if r.get('how_to_manifest')))
-assert sum(1 for r in intents if r.get('how_to_manifest')) == 1000
+print('Core:', len(core))
+print('Intent:', len(intents))
+assert len(core) == 1000 and len(intents) == 9000
+manifest = sum(1 for r in intents if r.get('how_to_manifest'))
+print('how_to_manifest present:', manifest)
+assert manifest == 1000
 print('All checks passed.')
 "
 ```
@@ -230,4 +211,4 @@ print('All checks passed.')
 
 One updated file only: `backend/angel_numbers_data.py`
 
-The 8 pool expansions above with all verification checks passing. Record counts unchanged.
+All 3 fix categories applied (pool expansion + root-digit-keyed focus/challenge + digit-pattern anchoring in message field). Record counts unchanged. All checks above passing.
