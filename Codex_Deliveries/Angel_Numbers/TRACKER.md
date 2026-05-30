@@ -1,7 +1,7 @@
 # Angel Numbers -- Module Tracker
 > Path: `Codex_Deliveries/Angel_Numbers/TRACKER.md`
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-31 IST · v1.2
+> Last updated: 2026-05-31 IST · v1.3
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟠 AWAITING SEED -- ANGEL-2 integrated (commit `2271c36`). TT to re-seed both collections on Render. |
+| **Status** | 🔴 BLOCKED -- L1 TF-IDF gate (all clusters must be < 40%). ANGEL-3 brief ready. Issue to Codex. |
 | **Backend router** | `backend/angel_numbers_router.py` |
 | **Data generator** | `backend/angel_numbers_data.py` (ANGEL-2 -- quality rewrite integrated 2026-05-31) |
 | **Seed scripts** | `backend/scripts/seed_angel_numbers_core.py` · `backend/scripts/seed_angel_numbers_intents.py` |
@@ -29,6 +29,7 @@
 |---|---|---|---|
 | **ANGEL-1** | Angel Numbers -- Full module: 1,000 core pages × 9 intents + hub = 10,001 pages | ✅ INTEGRATED (code + routes in repo; Mongo seeded with ANGEL-1 content) | `CODEX_COMMISSION_ANGEL_NUMBERS.md` |
 | **ANGEL-2** | Angel Numbers Generator Rewrite -- quality fix for all 3 ECHO/PACE failure modes + `how_to_manifest` addendum | ✅ INTEGRATED -- commit `2271c36` 2026-05-31 | `CODEX_COMMISSION_ANGEL_2_REWRITE.md` |
+| **ANGEL-3** | Angel Numbers L1 TF-IDF Fix -- expand 8 vocabulary pools to bring all clusters < 40% | 🔴 READY TO ISSUE | `CODEX_COMMISSION_ANGEL_3_L1_FIX.md` |
 
 ---
 
@@ -38,8 +39,9 @@
 |---|---|---|---|---|
 | ~~ANGEL-OP-1~~ | ~~Issue ANGEL-2 commission to Angel Numbers Codex thread~~ | ~~TT~~ | ✅ CLOSED | Delivered via Codex folder. Integrated commit `2271c36` 2026-05-31. |
 | ~~ANGEL-OP-2~~ | ~~Run ECHO/PACE compliance check after ANGEL-2 delivery~~ | ~~CC~~ | ✅ CLOSED | OVERALL PASS confirmed 2026-05-31. L2 0 violations, L3 55.6%, L1 worst 57.5% FLAGGED (not blocked). |
-| ANGEL-OP-3 | Re-seed `angel_number_core` on Render (1,000 docs) | TT | 🔴 CRITICAL | Render shell: `PYTHONPATH=/app python3 scripts/seed_angel_numbers_core.py`. Expected: upserted 1000. |
-| ANGEL-OP-4 | Re-seed `angel_number_intents` on Render (9,000 docs) | TT | 🔴 CRITICAL (after OP-3) | Render shell: `PYTHONPATH=/app python3 scripts/seed_angel_numbers_intents.py`. Expected: upserted 9000. |
+| ANGEL-OP-3 | Re-seed `angel_number_core` on Render (1,000 docs) | TT | ⏸ AFTER ANGEL-3 | Blocked until ANGEL-3 passes L1 < 40%. Render shell: `PYTHONPATH=/app python3 scripts/seed_angel_numbers_core.py`. |
+| ANGEL-OP-4 | Re-seed `angel_number_intents` on Render (9,000 docs) | TT | ⏸ AFTER ANGEL-3 | Blocked until ANGEL-3 passes L1 < 40%. Render shell: `PYTHONPATH=/app python3 scripts/seed_angel_numbers_intents.py`. |
+| ANGEL-OP-9 | Issue ANGEL-3 commission + integrate delivery | TT/CC | 🔴 CRITICAL | Brief: `CODEX_COMMISSION_ANGEL_3_L1_FIX.md`. 8 vocabulary pool expansions. L1 all clusters must reach < 40%. |
 | ~~ANGEL-OP-5~~ | ~~Wire intent route in `frontend/src/App.js`~~ | ~~CC~~ | ✅ CLOSED | Lazy import + `/angel-numbers/:number/:intent` route added. Commit `2271c36`. |
 | ~~ANGEL-OP-6~~ | ~~`how_to_manifest` field for manifestation records~~ | ~~Codex / CC~~ | ✅ CLOSED | Confirmed present in ANGEL-2: 1,000 manifestation records, 7 action families, max 7.4% per type (cap 30%). |
 | ANGEL-OP-7 | Layer G (Serper Google similarity scan) | TT | 🟡 MED (after seed) | Not yet run. TT to run after ANGEL-OP-4 complete. |
@@ -73,6 +75,7 @@ After ANGEL-2 delivery, run in order:
 
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
+| v1.3 | 2026-05-31 | L1 TF-IDF verdict: ANGEL-2 does NOT clear TT test criteria (all 10 clusters still > 40%; brief requires < 40%). Root-cause analysis confirms 4 pool exhaustion problems: ROOT_VIBRATION_FRAGMENTS (2 variants/digit → 10 needed), ROOT_SEEING_FRAGMENTS (same), PATTERN_*_FRAGMENTS (2 variants/pattern → 8 needed), INTENT_STYLES focus/challenge (fixed per intent → 9 root-keyed variants needed) + VIBRATION_CADENCE (4 → 20). ANGEL-3 commission brief written: `CODEX_COMMISSION_ANGEL_3_L1_FIX.md`. Seed blocked until ANGEL-3 passes. | CC | `CODEX_COMMISSION_ANGEL_3_L1_FIX.md` |
 | v1.2 | 2026-05-31 | ANGEL-2 integrated from Codex handoff folder. ECHO/PACE re-run: OVERALL PASS (L2 0 violations, L3 55.6%, L1 worst 57.5% FLAGGED). `how_to_manifest` confirmed present (1,000 manifestation records, 7 action families). Intent route `/angel-numbers/:number/:intent` wired in App.js. Frontend build clean. Committed `2271c36`, pushed to main. TT action: re-seed both Mongo collections on Render. | CC | `angel_numbers_data.py`, `frontend/src/App.js` |
 | v1.1 | 2026-05-31 | TRACKER.md created. Ran ECHO/PACE compliance check -- confirmed ANGEL-1 content still in `angel_numbers_data.py` (same baseline failure as May 27 test). Identified missing intent route in App.js. Full open points table written. ANGEL-2 commission brief confirmed written and ready to issue. | CC | `verify_angel_numbers_compliance.py` |
 | v1.0 | 2026-05-23 | ANGEL-1 delivered and integrated. All backend routes, seed scripts, and frontend pages in repo. Mongo seeded with ANGEL-1 content. ECHO/PACE test found all clusters BLOCKED. ANGEL-2 brief written. | Codex / CC | `CODEX_COMMISSION_ANGEL_NUMBERS.md`, `ECHO_PACE_TEST_RESULTS_2026-05-27.md` |
