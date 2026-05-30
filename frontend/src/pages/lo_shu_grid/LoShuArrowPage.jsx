@@ -36,32 +36,39 @@ function ArrowGridVisualiser({ numbers = [] }) {
       <style>{`
         @keyframes lsgCellPulse {
           0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(197,160,89,0); }
-          50%       { opacity: 0.85; box-shadow: 0 0 18px 6px rgba(197,160,89,0.35); }
+          50%       { opacity: 0.88; box-shadow: 0 0 32px 14px rgba(197,160,89,0.60); }
         }
         @keyframes lsgLineDraw {
-          from { stroke-dashoffset: 300; opacity: 0; }
+          from { stroke-dashoffset: 500; opacity: 0; }
           to   { stroke-dashoffset: 0;   opacity: 1; }
+        }
+        @keyframes lsgDotPop {
+          from { opacity: 0; r: 2; }
+          to   { opacity: 1; r: 6; }
         }
         @keyframes lsgFadeIn {
           from { opacity: 0; transform: translateY(8px); }
           to   { opacity: 1; transform: translateY(0); }
         }
         .lsg-active-cell {
-          animation: lsgCellPulse 2.2s ease-in-out infinite;
+          animation: lsgCellPulse 5s ease-in-out infinite;
         }
         .lsg-arrow-line {
-          stroke-dasharray: 300;
-          animation: lsgLineDraw 0.9s ease-out 0.3s forwards;
+          stroke-dasharray: 500;
+          animation: lsgLineDraw 1.1s ease-out 0.25s both;
+        }
+        .lsg-dot {
+          animation: lsgDotPop 0.4s ease-out 1.2s both;
         }
         .lsg-grid-wrap {
           animation: lsgFadeIn 0.6s ease-out both;
         }
       `}</style>
 
-      <div className="lsg-grid-wrap relative">
+      <div className="lsg-grid-wrap relative" style={{ width: total, height: total }}>
         {/* Grid cells */}
         <div
-          className="relative grid"
+          className="grid"
           style={{ gridTemplateColumns: `repeat(3, ${cellSize}px)`, gap }}
         >
           {GRID_ORDER.flat().map((n) => {
@@ -69,10 +76,10 @@ function ArrowGridVisualiser({ numbers = [] }) {
             return (
               <div
                 key={n}
-                className={`flex items-center justify-center rounded-2xl border text-lg font-bold transition-all
+                className={`flex items-center justify-center rounded-2xl border text-xl font-bold transition-all
                   ${active
-                    ? 'lsg-active-cell border-gold bg-gold/20 text-gold'
-                    : 'border-gold/15 bg-card/60 text-muted-foreground/50'
+                    ? 'lsg-active-cell border-gold bg-gold/30 text-gold'
+                    : 'border-gold/15 bg-card/60 text-muted-foreground/40'
                   }`}
                 style={{ width: cellSize, height: cellSize }}
               >
@@ -82,43 +89,43 @@ function ArrowGridVisualiser({ numbers = [] }) {
           })}
         </div>
 
-        {/* SVG overlay -- draws the arrow line */}
+        {/* SVG overlay -- draws arrow line on top of cells */}
         {lineD && (
           <svg
             ref={svgRef}
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 z-10"
             width={total}
             height={total}
             viewBox={`0 0 ${total} ${total}`}
+            style={{ overflow: 'visible' }}
           >
-            {/* Glow copy */}
+            {/* Wide glow blur behind the line */}
             <path
               d={lineD}
               fill="none"
-              stroke="rgba(197,160,89,0.25)"
-              strokeWidth={10}
+              stroke="rgba(197,160,89,0.28)"
+              strokeWidth={16}
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            {/* Crisp line */}
+            {/* Crisp animated line */}
             <path
               className="lsg-arrow-line"
               d={lineD}
               fill="none"
               stroke="#c5a059"
-              strokeWidth={2.5}
+              strokeWidth={3}
               strokeLinecap="round"
               strokeLinejoin="round"
-              opacity={0}
             />
             {/* End-point dot */}
             {points.length >= 2 && (
               <circle
+                className="lsg-dot"
                 cx={points[points.length - 1][0]}
                 cy={points[points.length - 1][1]}
-                r={5}
+                r={6}
                 fill="#c5a059"
-                opacity={0.9}
               />
             )}
           </svg>

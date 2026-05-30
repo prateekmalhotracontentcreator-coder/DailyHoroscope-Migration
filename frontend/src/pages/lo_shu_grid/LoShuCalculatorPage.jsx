@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Loader2, Sparkles } from 'lucide-react';
+import { GRID_CELL_DETAILS } from './loShuContent';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../components/ui/accordion';
 import { Footer } from '../../components/Footer';
 import { SEO } from '../../components/SEO';
@@ -196,7 +197,7 @@ export default function LoShuCalculatorPage() {
               </div>
             ) : null}
 
-            <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+            <div className="grid gap-8 lg:grid-cols-[1.25fr_0.75fr]">
               <div className="rounded-[2rem] border border-gold/20 bg-card/75 p-6 shadow-sm">
                 <h2 className="font-playfair text-2xl font-semibold">Your visual grid</h2>
                 <p className="mt-3 text-sm leading-7 text-muted-foreground">
@@ -212,18 +213,29 @@ export default function LoShuCalculatorPage() {
 
               <div id="number-summary" className="rounded-[2rem] border border-gold/20 bg-card/75 p-6 shadow-sm">
                 <h2 className="font-playfair text-2xl font-semibold">Calculated numbers</h2>
-                <div className="mt-6 grid gap-3 sm:grid-cols-2">
+                <div className="mt-6 grid gap-3">
                   {[
                     ['Basic Number', result.basic_number],
                     ['Destiny Number', result.destiny_number],
                     ['Kua Number', result.kua_number],
                     ['Name Number', result.name_number],
-                  ].map(([label, value]) => (
-                    <div key={label} className="rounded-[1.5rem] border border-gold/15 bg-gold/[0.04] p-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">{label}</p>
-                      <p className="mt-3 font-playfair text-4xl font-semibold text-foreground">{value}</p>
-                    </div>
-                  ))}
+                  ].map(([label, value]) => {
+                    const cell = GRID_CELL_DETAILS[value] || {};
+                    return (
+                      <div key={label} className="rounded-[1.5rem] border border-gold/15 bg-gold/[0.04] p-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gold">{label}</p>
+                        <div className="mt-2 flex items-baseline gap-3">
+                          <p className="font-playfair text-4xl font-semibold text-foreground">{value}</p>
+                          {cell.label && (
+                            <p className="text-sm font-semibold text-foreground">{cell.label}</p>
+                          )}
+                        </div>
+                        {cell.note && (
+                          <p className="mt-1 text-xs leading-5 text-muted-foreground">{cell.note}</p>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
 
                 <div className="mt-6 flex flex-wrap gap-2">
@@ -237,14 +249,24 @@ export default function LoShuCalculatorPage() {
               </div>
             </div>
 
-            <div className="rounded-[2rem] border border-gold/20 bg-card/75 p-8 shadow-sm">
-              <h2 className="font-playfair text-3xl font-semibold">Active arrows</h2>
-              <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="rounded-[2rem] border border-gold/30 bg-gradient-to-br from-gold/10 via-card/80 to-card/75 p-8 shadow-md">
+              <div className="flex flex-wrap items-center gap-3">
+                <h2 className="font-playfair text-4xl font-semibold">Active Arrows</h2>
+                {(result.active_arrows || []).length > 0 && (
+                  <span className="rounded-full border border-gold/30 bg-gold/15 px-4 py-1.5 text-sm font-semibold text-gold">
+                    {result.active_arrows.length} active
+                  </span>
+                )}
+              </div>
+              <p className="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground">
+                Arrows are complete lines across your grid. Each one concentrates three numbers into a single amplified theme and often shapes the strongest patterns in how you think, feel, and act.
+              </p>
+              <div className="mt-6 grid gap-5">
                 {(result.active_arrows || []).length > 0 ? result.active_arrows.map((arrow) => (
                   <article
                     key={arrow.slug}
                     id={toSectionId('active-arrow', arrow.slug)}
-                    className="rounded-[1.5rem] border border-gold/15 bg-gold/[0.04] p-5"
+                    className="rounded-[1.75rem] border border-gold/25 bg-gold/[0.06] p-6 shadow-sm"
                   >
                     <div className="flex flex-wrap items-center gap-2">
                       <span className="rounded-full border border-gold/20 bg-gold/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
@@ -256,14 +278,16 @@ export default function LoShuCalculatorPage() {
                         </span>
                       ) : null}
                     </div>
-                    <h3 className="mt-4 font-playfair text-2xl font-semibold">{arrow.name}</h3>
-                    <p className="mt-2 text-sm font-medium text-gold">{arrow.numbers.join(' - ')}</p>
-                    <p className="mt-4 text-sm leading-7 text-muted-foreground">{arrow.effect_summary}</p>
+                    <div className="mt-4 flex flex-wrap items-baseline gap-4">
+                      <h3 className="font-playfair text-3xl font-semibold">{arrow.name}</h3>
+                      <p className="text-base font-semibold text-gold">{arrow.numbers.join(' · ')}</p>
+                    </div>
+                    <p className="mt-4 max-w-4xl text-base leading-8 text-muted-foreground">{arrow.effect_summary}</p>
                     <Link
                       to={`/lo-shu-grid/arrow/${arrow.slug}`}
-                      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-gold transition hover:opacity-80"
+                      className="mt-5 inline-flex items-center gap-2 rounded-full border border-gold/25 bg-gold/10 px-5 py-2.5 text-sm font-semibold text-gold transition hover:bg-gold/20"
                     >
-                      Learn more
+                      Full arrow detail
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </article>
