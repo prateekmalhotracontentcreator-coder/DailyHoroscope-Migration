@@ -393,6 +393,8 @@ function App() {
                   <Route path="/the-strategist" element={<TheStrategistLandingPage />} />
                   {/* /strategist = CD landing page for all users (logged in or out) */}
                   <Route path="/strategist" element={<TheStrategistLandingPage />} />
+                  {/* /strategist/snapshot = Phase 1 CD snapshot dashboard (StrategistWarRoom props view) */}
+                  <Route path="/strategist/snapshot" element={<ProtectedRoute><StrategistWarRoomPage /></ProtectedRoute>} />
                   <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistPage /></ProtectedRoute>} />
                   <Route path="/strategist/executive" element={<ProtectedRoute><StrategistExecutivePage /></ProtectedRoute>} />
                   <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />

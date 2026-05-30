@@ -951,9 +951,9 @@ function LandingInner() {
 
   const goEnter = () => {
     if (user) {
-      navigate('/strategist/war-room');
+      navigate('/strategist/snapshot');
     } else {
-      navigate('/login', { state: { from: { pathname: '/strategist/war-room' } } });
+      navigate('/login', { state: { from: { pathname: '/strategist/snapshot' } } });
     }
   };
 

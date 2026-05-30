@@ -1076,6 +1076,13 @@ function Dashboard() {
 
       <div className="sticky top-0 z-30 border-b border-gold/10 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center gap-2 overflow-x-auto px-4 py-3 sm:px-6 lg:px-8">
+          {/* Back to snapshot */}
+          <Link
+            to="/strategist/snapshot"
+            className="mr-1 flex-shrink-0 inline-flex items-center gap-1.5 rounded-full border border-gold/20 bg-gold/[0.04] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold/70 transition hover:bg-gold/[0.10] hover:text-gold"
+          >
+            ← Overview
+          </Link>
           {LAYERS.map((layer) => (
             <LayerPill key={layer.id} layer={layer} status={layerStatus(layer.n)} onClick={scrollToSection} />
           ))}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import StrategistThemeProvider from '../../components/strategist/StrategistThemeProvider';
 import ControlRoomBackdrop from '../../components/strategist/ControlRoomBackdrop';
 import StrategistWarRoom from '../../components/strategist/war-room/StrategistWarRoom';
@@ -286,6 +287,7 @@ function ErrorState({ message }) {
 }
 
 export default function StrategistWarRoomPage() {
+  const navigate = useNavigate();
   const [layout, setLayout] = useState(getLayout);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -378,7 +380,7 @@ export default function StrategistWarRoomPage() {
   return (
     <StrategistThemeProvider>
       <div style={{ position: 'relative' }}>
-        {/* Floating nav -- theme toggle top-right, back link top-left */}
+        {/* Floating nav -- back link left, forward CTA + theme toggle right */}
         <div style={{
           position: 'fixed',
           top: 16,
@@ -391,6 +393,7 @@ export default function StrategistWarRoomPage() {
           padding: '0 20px',
           pointerEvents: 'none',
         }}>
+          {/* Back to landing */}
           <a
             href="/strategist"
             style={{
@@ -412,7 +415,34 @@ export default function StrategistWarRoomPage() {
           >
             ← The Strategist
           </a>
-          <div style={{ pointerEvents: 'auto' }}>
+
+          {/* Right side: enter war room CTA + theme toggle */}
+          <div style={{ pointerEvents: 'auto', display: 'flex', alignItems: 'center', gap: 12 }}>
+            <button
+              type="button"
+              onClick={() => navigate('/strategist/war-room')}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                padding: '6px 16px',
+                borderRadius: 9999,
+                border: '1px solid rgba(197,160,89,0.35)',
+                background: 'rgba(197,160,89,0.10)',
+                color: 'var(--strategist-gold)',
+                fontFamily: 'Cinzel, serif',
+                fontSize: '0.72rem',
+                letterSpacing: '0.16em',
+                textTransform: 'uppercase',
+                cursor: 'pointer',
+                transition: 'background 0.2s, opacity 0.2s',
+                opacity: 0.85,
+              }}
+              onMouseEnter={e => { e.currentTarget.style.opacity = 1; e.currentTarget.style.background = 'rgba(197,160,89,0.18)'; }}
+              onMouseLeave={e => { e.currentTarget.style.opacity = 0.85; e.currentTarget.style.background = 'rgba(197,160,89,0.10)'; }}
+            >
+              Enter Full War Room →
+            </button>
             <StrategistThemeToggle />
           </div>
         </div>
