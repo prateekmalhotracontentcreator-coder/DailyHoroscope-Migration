@@ -40,7 +40,7 @@
 | **RUD-1** | Rudraksha Hub + 21 Mukhi Pages + Calculator | Rudraksha (new thread) | `Rudraksha/CODEX_COMMISSION_RUDRAKSHA.md` | 🟡 READY TO ISSUE | None | Standalone module. Own thread. 23 pages. Calculator uses `vedic_calculator.py`. Priority 2. |
 | **LSG-1 + LSG-2** | Lo Shu Grid -- full module (57 URLs) | Lo Shu Grid | `Lo_Shu_Grid/CODEX_COMMISSION_LO_SHU_GRID.md` | ✅ INTEGRATED `4538d1e` 2026-05-30 | None | All 7 routes live. TT: seed Mongo + smoke test 8 routes. |
 | **CRY-1** | Crystal Healing Hub + 50 Crystal Pages + 20 Intention Pages + Calculator | Crystal Healing (new thread) | `Crystal_Healing/CODEX_COMMISSION_CRYSTAL_HEALING.md` | 🟡 READY TO ISSUE | None | Standalone module. Own thread. 72 pages. Calculator uses `vedic_calculator.py`. Priority 4. |
-| **ZIB-1** | Zibu Symbols Hub + 88 Symbol Pages | Zibu Symbols (new thread) | `Zibu_Symbols/CODEX_COMMISSION_ZIBU_SYMBOLS.md` | 🟡 READY TO ISSUE | None | Standalone module. Own thread. 89 pages. Priority 5. |
+| ~~**ZIB-1**~~ | ~~Zibu Symbols Hub + 88 Symbol Pages~~ | ~~Zibu Symbols~~ | `Zibu_Symbols/CODEX_COMMISSION_ZIBU_SYMBOLS.md` | ❌ CANCELLED -- Copyright Risk | -- | Excluded by TT 2026-05-31. Zibu symbols are proprietary to Shanna Freeke. Module permanently dropped. Do not issue. |
 | **IR-5** | 12 Areas of Life Enhancement (Donut Chart + 10-Year Timeline + Graha Drishti + Claude 4-page reports) | Individual Reports | `Individual_Reports/CODEX_COMMISSION_IR_5_12AREAS_ENHANCEMENT.md` | 🔵 IN PROGRESS | IR-4 live verification (IR-OP-12) must pass first | Issued 2026-05-22. Vedic-only (Rahu/Ketu replace Uranus/Neptune). Adds 3 new calc functions to vedic_calculator.py + new router + 2 UI components. |
 
 ---
