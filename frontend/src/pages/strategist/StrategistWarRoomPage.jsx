@@ -379,75 +379,85 @@ export default function StrategistWarRoomPage() {
 
   return (
     <StrategistThemeProvider>
-      <div style={{ position: 'relative' }}>
-        {/* Floating nav -- back link left, forward CTA + theme toggle right */}
-        <div style={{
-          position: 'fixed',
-          top: 16,
-          left: 0,
-          right: 0,
-          zIndex: 50,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: '0 20px',
-          pointerEvents: 'none',
+      {/* Module nav strip -- sticky just below the app NavBar (h-14 = 56px), within module boundaries */}
+      <div style={{
+        position: 'sticky',
+        top: 56,
+        zIndex: 29,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '10px 20px',
+        background: 'rgba(7, 17, 30, 0.92)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        borderBottom: '1px solid rgba(197, 160, 89, 0.12)',
+      }}>
+        {/* Back to landing */}
+        <a
+          href="/strategist"
+          style={{
+            color: 'var(--strategist-gold)',
+            fontFamily: 'Cinzel, serif',
+            fontSize: '0.72rem',
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+            textDecoration: 'none',
+            opacity: 0.75,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            transition: 'opacity 0.2s',
+          }}
+          onMouseEnter={e => e.currentTarget.style.opacity = 1}
+          onMouseLeave={e => e.currentTarget.style.opacity = 0.75}
+        >
+          ← The Strategist
+        </a>
+
+        {/* Breadcrumb label */}
+        <span style={{
+          color: 'rgba(197,160,89,0.55)',
+          fontFamily: 'Cinzel, serif',
+          fontSize: '0.68rem',
+          letterSpacing: '0.20em',
+          textTransform: 'uppercase',
         }}>
-          {/* Back to landing */}
-          <a
-            href="/strategist"
+          War Room · Overview
+        </span>
+
+        {/* Right side: enter war room CTA + theme toggle */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <button
+            type="button"
+            onClick={() => navigate('/strategist/war-room')}
             style={{
-              pointerEvents: 'auto',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 6,
+              padding: '6px 16px',
+              borderRadius: 9999,
+              border: '1px solid rgba(197,160,89,0.35)',
+              background: 'rgba(197,160,89,0.10)',
               color: 'var(--strategist-gold)',
               fontFamily: 'Cinzel, serif',
               fontSize: '0.72rem',
               letterSpacing: '0.16em',
               textTransform: 'uppercase',
-              textDecoration: 'none',
-              opacity: 0.75,
-              display: 'flex',
-              alignItems: 'center',
-              gap: 6,
-              transition: 'opacity 0.2s',
+              cursor: 'pointer',
+              transition: 'background 0.2s, opacity 0.2s',
+              opacity: 0.85,
             }}
-            onMouseEnter={e => e.currentTarget.style.opacity = 1}
-            onMouseLeave={e => e.currentTarget.style.opacity = 0.75}
+            onMouseEnter={e => { e.currentTarget.style.opacity = 1; e.currentTarget.style.background = 'rgba(197,160,89,0.18)'; }}
+            onMouseLeave={e => { e.currentTarget.style.opacity = 0.85; e.currentTarget.style.background = 'rgba(197,160,89,0.10)'; }}
           >
-            ← The Strategist
-          </a>
-
-          {/* Right side: enter war room CTA + theme toggle */}
-          <div style={{ pointerEvents: 'auto', display: 'flex', alignItems: 'center', gap: 12 }}>
-            <button
-              type="button"
-              onClick={() => navigate('/strategist/war-room')}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: 6,
-                padding: '6px 16px',
-                borderRadius: 9999,
-                border: '1px solid rgba(197,160,89,0.35)',
-                background: 'rgba(197,160,89,0.10)',
-                color: 'var(--strategist-gold)',
-                fontFamily: 'Cinzel, serif',
-                fontSize: '0.72rem',
-                letterSpacing: '0.16em',
-                textTransform: 'uppercase',
-                cursor: 'pointer',
-                transition: 'background 0.2s, opacity 0.2s',
-                opacity: 0.85,
-              }}
-              onMouseEnter={e => { e.currentTarget.style.opacity = 1; e.currentTarget.style.background = 'rgba(197,160,89,0.18)'; }}
-              onMouseLeave={e => { e.currentTarget.style.opacity = 0.85; e.currentTarget.style.background = 'rgba(197,160,89,0.10)'; }}
-            >
-              Enter Full War Room →
-            </button>
-            <StrategistThemeToggle />
-          </div>
+            Enter Full War Room →
+          </button>
+          <StrategistThemeToggle />
         </div>
-        <StrategistWarRoom {...warRoomProps} />
       </div>
+
+      <StrategistWarRoom {...warRoomProps} />
     </StrategistThemeProvider>
   );
 }
