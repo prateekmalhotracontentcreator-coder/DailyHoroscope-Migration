@@ -311,6 +311,213 @@ PATTERN_DETAILS = {
     },
 }
 
+PATTERN_LANGUAGE = {
+    "pure amplification": {
+        "descriptor": [
+            "one lesson keeps ringing until it is answered cleanly",
+            "the same instruction is being underlined without dilution",
+            "the core message is repeating itself instead of branching outward",
+            "the sequence keeps pressing one theme until your response catches up",
+            "the energy refuses to fragment into side stories",
+            "one instruction is being amplified rather than softened",
+            "the signal is staying singular so the lesson cannot hide in complexity",
+            "the pattern keeps returning to the same heartbeat",
+        ],
+        "tempo": [
+            "direct response",
+            "clear declaration",
+            "full-volume honesty",
+            "undiluted participation",
+            "single-note intensity",
+            "decisive engagement",
+            "clean commitment",
+            "concentrated follow-through",
+        ],
+        "outcome": [
+            "partial effort stops working very quickly",
+            "mixed motives become much easier to spot",
+            "clarity matters more than comforting delay",
+            "the honest move becomes hard to postpone",
+            "you can no longer outsource the response",
+            "the next step needs to be owned rather than admired",
+            "the signal keeps getting louder until it is matched",
+            "the number asks for full participation, not symbolic agreement",
+        ],
+    },
+    "stepwise progress": {
+        "descriptor": [
+            "each stage is meant to earn the next one",
+            "order matters more than drama here",
+            "the staircase is part of the teaching, not an inconvenience",
+            "sequence and pacing are carrying the message forward",
+            "progress is designed to unfold through completion, not speed",
+            "the lesson is revealed by respecting the order of events",
+            "growth is being taught through incremental honesty",
+            "the pattern rewards finishing the present step before fantasizing about the next",
+        ],
+        "tempo": [
+            "sequenced progress",
+            "earned pacing",
+            "steady advancement",
+            "measured momentum",
+            "ordered movement",
+            "clean progression",
+            "step-linked growth",
+            "methodical unfolding",
+        ],
+        "outcome": [
+            "shortcuts weaken the blessing more than they accelerate it",
+            "trust grows through each completed stage",
+            "patience becomes part of the result, not just the wait",
+            "the next doorway opens after the present task is honored",
+            "momentum strengthens when the order is respected",
+            "progress feels calmer because the ladder is stable",
+            "small completions start compounding into confidence",
+            "advancement becomes trustworthy rather than frantic",
+        ],
+    },
+    "mirrored reinforcement": {
+        "descriptor": [
+            "inner truth is reflecting back through outer timing",
+            "life is showing both sides of the same lesson at once",
+            "reflection is doing as much teaching as action",
+            "self-honesty and external events are being braided together",
+            "the pattern keeps pairing internal reality with visible consequence",
+            "your private stance is being mirrored by public circumstances",
+            "reflection keeps exposing whatever the surface story cannot",
+            "the number wants both sides of the bridge to agree",
+        ],
+        "tempo": [
+            "balanced adjustment",
+            "reflective pacing",
+            "two-sided honesty",
+            "mirrored alignment",
+            "reciprocal correction",
+            "bridge-building tempo",
+            "inner-outer calibration",
+            "reflective response",
+        ],
+        "outcome": [
+            "what you feel privately keeps showing up in the room around you",
+            "denial becomes harder to maintain than truth",
+            "alignment matters on both sides of the bridge",
+            "the clearest answer is usually the most internally honest one",
+            "reflection keeps bringing the real issue back into view",
+            "you are asked to match behavior with what you already know",
+            "the signal clears once the inside and outside stop arguing",
+            "balance returns when the hidden truth is allowed to stand in daylight",
+        ],
+    },
+    "rhythmic alternation": {
+        "descriptor": [
+            "repeated response patterns are being exposed in real time",
+            "the back-and-forth movement keeps highlighting habit loops",
+            "the lesson is arriving through recurring swings rather than one dramatic event",
+            "the pattern keeps pulsing between two modes until a wiser rhythm appears",
+            "alternation is showing where your current answer keeps replaying itself",
+            "repetition is mapping the places where calibration is overdue",
+            "the sequence teaches through contrast and return",
+            "response habits are being made visible through rhythm",
+        ],
+        "tempo": [
+            "measured recalibration",
+            "loop-aware pacing",
+            "rhythmic correction",
+            "cycle-reading tempo",
+            "pulse-based adjustment",
+            "swing-sensitive timing",
+            "habit-reset pacing",
+            "alternating refinement",
+        ],
+        "outcome": [
+            "small corrections matter more than one dramatic swing",
+            "you can change the cycle by changing the answer you keep giving it",
+            "stability grows through repeated refinement",
+            "the loop softens when you stop feeding it the same reflex",
+            "pattern awareness becomes the doorway to freedom",
+            "consistency does more healing work than intensity",
+            "the wiser response has to be repeated before it becomes natural",
+            "the cycle learns from the answer you practice, not the one you imagine",
+        ],
+    },
+    "reset and recalibration": {
+        "descriptor": [
+            "pause is carrying part of the instruction",
+            "room has been built into the sequence so noise can fall away",
+            "space is being used to separate reaction from guidance",
+            "the signal needs a cleaner field before it becomes louder",
+            "silence and perspective are woven into the lesson itself",
+            "the pattern opens breathing room before it asks for commitment",
+            "recalibration is arriving through spaciousness rather than force",
+            "the number keeps widening the field so urgency can cool down",
+            "time and room are being used to clear static from the message",
+            "the sequence prefers reset before acceleration",
+            "distance is part of the medicine rather than a sign of delay",
+            "the pattern carves out pause so the real answer can surface intact",
+        ],
+        "tempo": [
+            "intentional reset",
+            "spacious pacing",
+            "cooler timing",
+            "recalibration mode",
+            "breathing-room tempo",
+            "clearing cadence",
+            "quiet restart",
+            "pause-first timing",
+            "field-clearing pace",
+            "slowed discernment",
+            "reset-led movement",
+            "open-handed timing",
+        ],
+        "outcome": [
+            "the best answer appears after the pressure drops",
+            "the lesson gets cleaner when you stop answering from urgency",
+            "space becomes useful instead of frightening",
+            "timing starts serving clarity instead of feeding panic",
+            "a pause restores the part of you that knows what matters",
+            "you can hear the guidance once reaction stops taking over",
+            "the next move improves when it is not forced out of noise",
+            "clarity arrives through cooling the field, not crowding it",
+            "the signal works better when you allow a reset before acting",
+            "distance helps the real issue reveal itself",
+            "breathing room turns the pattern into information instead of pressure",
+            "the wiser response emerges once the static is given somewhere to go",
+        ],
+    },
+    "layered guidance": {
+        "descriptor": [
+            "several lessons are arriving together and need to be read in relationship",
+            "the pattern behaves like a braid rather than a single note",
+            "different strands of life are feeding the same message",
+            "the number is asking for nuance instead of a one-track reading",
+            "multiple signals are being stacked into one sequence",
+            "the guidance becomes clearer when the layers are read together",
+            "the lesson unfolds through interlocking themes rather than one blunt command",
+            "the pattern keeps weaving separate truths into the same conversation",
+        ],
+        "tempo": [
+            "pattern reading",
+            "woven interpretation",
+            "layer-by-layer listening",
+            "nuanced pacing",
+            "multi-signal discernment",
+            "braided timing",
+            "integrated reflection",
+            "stacked awareness",
+        ],
+        "outcome": [
+            "one-dimensional answers miss what the sequence is really teaching",
+            "clarity grows when the strands are read together",
+            "the lesson becomes practical once the pieces are connected",
+            "nuance saves you from forcing a too-simple meaning onto a complex moment",
+            "the pattern opens when you stop asking it to say only one thing",
+            "separate life areas start explaining each other",
+            "the message deepens when the overlapping themes are allowed to cooperate",
+            "wisdom comes from reading the weave, not just one thread",
+        ],
+    },
+}
+
 ROOT_VIBRATION_FRAGMENTS = {
     1: [
         "It strengthens decisive self-trust and clears space for an honest beginning.",
@@ -563,6 +770,203 @@ INTENT_STYLES = {
     },
 }
 
+INTENT_INDEX = {slug: index for index, slug in enumerate(INTENT_ORDER)}
+
+DIGIT_LEXICON = {
+    0: {
+        "energy": ["open-field pause", "hollow reset", "listening gap", "quiet corridor"],
+        "theme": ["reset", "breathing room", "clear space", "recalibration"],
+        "motion": ["clear the field", "leave room for timing", "reset the pace", "listen before moving"],
+    },
+    1: {
+        "energy": ["solar ignition", "first-light thrust", "spearhead current", "self-starting flame"],
+        "theme": ["initiative", "declared intent", "self-trust", "lead energy"],
+        "motion": ["declare the next move", "start cleanly", "act without dilution", "lead from clarity"],
+    },
+    2: {
+        "energy": ["moonlit listening", "bridge-making tide", "relational hush", "diplomatic pulse"],
+        "theme": ["partnership", "timing wisdom", "cooperation", "receptive balance"],
+        "motion": ["listen before deciding", "tend the relationship", "wait for mutual timing", "balance the exchange"],
+    },
+    3: {
+        "energy": ["laughing spark", "storytelling lift", "creative chorus", "expressive bloom"],
+        "theme": ["expression", "joy", "creative truth", "voice"],
+        "motion": ["say the real thing", "make something visible", "follow the spark", "share the insight"],
+    },
+    4: {
+        "energy": ["stone foundation", "guardian frame", "measured scaffold", "anchoring beam"],
+        "theme": ["structure", "protection", "discipline", "stable footing"],
+        "motion": ["secure the base", "hold the boundary", "repeat the support", "build with care"],
+    },
+    5: {
+        "energy": ["wind-shift current", "door-swing impulse", "restless hinge", "traveler's signal"],
+        "theme": ["change", "adaptability", "movement", "freedom"],
+        "motion": ["pivot on purpose", "move with the change", "loosen the grip", "welcome a fresh route"],
+    },
+    6: {
+        "energy": ["hearth glow", "velvet caretaking", "harmonic braid", "sheltering warmth"],
+        "theme": ["care", "healing", "home harmony", "devotion"],
+        "motion": ["restore the atmosphere", "care for the home", "choose tenderness", "repair the bond"],
+    },
+    7: {
+        "energy": ["lantern hush", "oracle stillness", "mystic chamber", "seeker's hush"],
+        "theme": ["intuition", "discernment", "study", "soul listening"],
+        "motion": ["enter stillness", "trust the inner signal", "study the symbol", "protect the quiet"],
+    },
+    8: {
+        "energy": ["forge pressure", "summit torque", "steward's gravity", "ledger fire"],
+        "theme": ["abundance", "authority", "stewardship", "visible results"],
+        "motion": ["own the value", "stabilize the flow", "lead responsibly", "measure the return"],
+    },
+    9: {
+        "energy": ["ember release", "threshold ash", "closing bell", "compassionate unraveling"],
+        "theme": ["completion", "release", "service", "renewal space"],
+        "motion": ["close the chapter", "release with grace", "forgive what is done", "clear for renewal"],
+    },
+}
+
+SIGNATURE_TEMPLATES = [
+    "{opening_cap} opens the sequence, {middle} runs through the center, and {closing} decides the landing.",
+    "{opening_cap} sets the tone while {middle} shapes the body and {closing} names the finish.",
+    "{opening_cap} enters first, {middle} keeps the lesson moving, and {closing} closes the instruction with force.",
+    "{opening_cap} stands at the doorway, {middle} fills the middle chamber, and {closing} marks the final emphasis.",
+    "{opening_cap} leads the signal, {middle} widens the weather, and {closing} tells you where the message lands.",
+    "{opening_cap} sounds at the start, {middle} braids through the body, and {closing} settles the closing note.",
+    "{opening_cap} frames the beginning, {middle} textures the interior, and {closing} presses the last note into place.",
+    "{opening_cap} starts the architecture, {middle} carries the weave, and {closing} resolves the pattern.",
+    "{opening_cap} lights the fuse, {middle} changes the texture, and {closing} reveals the practical outcome.",
+    "{opening_cap} moves first, {middle} keeps the signal alive, and {closing} gives the sequence its landing point.",
+    "{opening_cap} drives the entry pulse, {middle} steadies the inner chamber, and {closing} becomes the ending note.",
+    "{opening_cap} begins the conversation, {middle} deepens the middle ground, and {closing} tells you what the pattern wants done.",
+]
+
+STRUCTURE_NOTE_TEMPLATES = [
+    "{signature} In pattern terms, {number} moves in a {pattern_label} mode, so {pattern_outcome}.",
+    "{signature} This {pattern_label} arrangement leans on {pattern_descriptor}, which means {pattern_outcome}.",
+    "{signature} Because it moves with {pattern_tempo}, the number keeps teaching through {pattern_descriptor}.",
+    "{signature} The {pattern_label} quality matters here: {pattern_descriptor}, and as a result {pattern_outcome}.",
+    "{signature} Structurally, it prefers {pattern_tempo}; that is why {pattern_outcome}.",
+    "{signature} The layout reads like {pattern_label}, with {pattern_descriptor} doing most of the teaching.",
+    "{signature} Its deeper architecture follows {pattern_tempo}, so {pattern_outcome}.",
+    "{signature} Pattern-wise, it acts as {pattern_label}; {pattern_descriptor}, and therefore {pattern_outcome}.",
+    "{signature} You can read the structure through {pattern_descriptor}, which is why {pattern_outcome}.",
+    "{signature} The design of the number favors {pattern_tempo}, and that keeps making {pattern_outcome}.",
+    "{signature} Under the hood, the signal carries a {pattern_label} signature: {pattern_descriptor}.",
+    "{signature} Its pattern grammar is {pattern_tempo}, so the lesson keeps pointing toward how {pattern_outcome}.",
+]
+
+CLOSER_SCAFFOLDS = [
+    "{root_fragment}. {pattern_fragment_cap}. {cadence}.",
+    "{root_fragment}. {cadence_cap}, while {pattern_fragment}.",
+    "{pattern_fragment_cap}. {root_fragment}. {cadence_cap}.",
+    "{cadence_cap}. {root_fragment}, and {pattern_fragment}.",
+    "{root_fragment}, with {pattern_fragment} setting the tone. {cadence_cap}.",
+    "{pattern_fragment_cap}, so {cadence}. {root_fragment}.",
+    "{cadence_cap}. {pattern_fragment_cap}. {root_fragment}.",
+    "{root_fragment}. {pattern_fragment_cap}, which is exactly why {cadence}.",
+    "{pattern_fragment_cap}. {cadence_cap}. {root_fragment}.",
+    "{cadence_cap}, because {pattern_fragment}. {root_fragment}.",
+    "{root_fragment}; {pattern_fragment}. {cadence_cap}.",
+    "{pattern_fragment_cap}. {root_fragment}, and {cadence}.",
+]
+
+INTENT_MESSAGE_INTROS = [
+    "In {display_lower}, {number} arrives when {focus}.",
+    "When {number} keeps surfacing around {display_lower}, it usually points toward {focus}.",
+    "{number} speaks to {display_lower} through a lesson about {focus}.",
+    "Seen through the lens of {display_lower}, {number} keeps circling back to {focus}.",
+    "Inside {display_lower}, {number} tends to show up wherever {focus}.",
+    "For {display_lower}, the message of {number} begins with {focus}.",
+    "Around {display_lower}, {number} behaves like a note about {focus}.",
+    "{number} touches {display_lower} most clearly when the real issue is {focus}.",
+    "In the territory of {display_lower}, {number} repeats around {focus}.",
+    "The {display_lower} reading of {number} starts by naming {focus}.",
+    "For matters of {display_lower}, {number} keeps steering attention toward {focus}.",
+    "{number} enters {display_lower} like a spotlight on {focus}.",
+]
+
+INTENT_MESSAGE_CHALLENGES = [
+    "The shadow side usually appears through {challenge}, so the work is to let {gift} outrun old reflexes.",
+    "Pressure tends to gather around {challenge}, which is why {gift} matters more than dramatic reaction.",
+    "Where people get tangled is often {challenge}; the cleaner move is to answer with {gift}.",
+    "The difficult edge here is often {challenge}, and {gift} is what keeps the lesson from becoming noise.",
+    "This gets muddy through {challenge}, so the signal asks you to rely on {gift} instead of habit.",
+    "The strain usually hides in {challenge}, which is why {gift} has to become practical, not theoretical.",
+    "Trouble shows up as {challenge}; the antidote is to let {gift} shape the next response.",
+    "The wobble often begins with {challenge}, so {gift} is the stabilizer, not an optional extra.",
+    "Most confusion here traces back to {challenge}, making {gift} the part you cannot outsource.",
+    "The message gets distorted by {challenge}, and it sharpens again when {gift} takes over.",
+    "When this feels hard, it is usually because of {challenge}; {gift} is what restores the line of truth.",
+    "The lesson frays around {challenge}, which is exactly where {gift} needs to be practiced.",
+]
+
+INTENT_MESSAGE_BRIDGES = [
+    "That matters because {structure}.",
+    "The number keeps reinforcing this through its own design: {structure}.",
+    "Its structure keeps saying the same thing in a different dialect: {structure}.",
+    "Even the architecture of the sequence points the same way: {structure}.",
+    "The layout itself underlines the lesson: {structure}.",
+    "The pattern keeps echoing that truth back to you: {structure}.",
+    "The geometry of the number supports the same message: {structure}.",
+    "Look at the pattern closely and it repeats the instruction: {structure}.",
+    "The sequence confirms it through form as much as meaning: {structure}.",
+    "Its visible shape keeps coaching the same response: {structure}.",
+    "That is written into the way the number is built: {structure}.",
+    "The structure is not decorative here; it says {structure}.",
+]
+
+MANIFESTATION_PRACTICES = [
+    {
+        "action_type": "journal-inscription",
+        "templates": [
+            "Write {number} at the top of today's manifestation journal page, then add the date, one precise intention, and the feeling you want your future to carry. Under the entry, list a single root-{root} move that proves you believe the desire is already asking something of you. Return to the page tonight and circle the moment when you acted in alignment.",
+            "Open your journal and handwrite {number} three times before recording one focused desire, one supporting emotion, and one action you can finish before bed. Let the root-{root} current guide the tone of the page, then underline the sentence that feels most alive. This turns the sign into practice instead of a passing mood.",
+        ],
+    },
+    {
+        "action_type": "manifestation-book",
+        "templates": [
+            "Start a dedicated manifestation book for {number} and give this sighting its own dated entry. Record what you want, why it matters now, and the smallest root-{root} action that would make the intention visible in real life. Revisit the page at the same hour tomorrow, add one fresh sign or shift, and keep the record clean enough to track momentum honestly.",
+            "Use a separate manifestation notebook for this sequence and title the page with {number}, today's date, and one clear intention. Beneath it, describe the result you are inviting, the emotional standard you want to hold, and the root-{root} behavior that would support the outcome. Review the page again in twenty-four hours so the signal becomes a working document.",
+        ],
+    },
+    {
+        "action_type": "spoken-activation",
+        "templates": [
+            "Speak {number} aloud three times while holding one exact intention in your mind, then say one sentence that names what you are ready to co-create. After speaking it, take a root-{root} action within the hour so the sound is matched by movement. The point is to make your voice, body, and decision line up instead of leaving the number in the realm of wishing.",
+            "Use {number} as a spoken activation: say it out loud three times, breathe slowly, and name one desire as if you are taking responsibility for it now. Follow that with a root-{root} action that shows practical consent to the future you want. This keeps the ritual grounded and stops the sign from becoming passive entertainment.",
+        ],
+    },
+    {
+        "action_type": "matched-time-reminder",
+        "templates": [
+            "Set a phone reminder for the matching time linked to {number}, then use that alert as your daily manifestation checkpoint. When it goes off, read your intention, notice whether your choices match it, and complete one root-{root} action before the hour ends. Repeating the practice at the same time trains your nervous system to meet desire with consistency rather than intensity spikes.",
+            "Program a reminder for the clock time that mirrors {number} and make it your alignment alarm. Each time it rings, reread one sentence of intention, adjust one thought or behavior that has drifted, and complete a root-{root} step that would make the goal more believable. This turns the sequence into a recurring practice loop instead of a one-time burst of hope.",
+        ],
+    },
+    {
+        "action_type": "paper-under-candle",
+        "templates": [
+            "Write {number} and one sentence of intention on a small piece of paper, place it under a candle, and sit with the flame for a few quiet minutes before taking action. While the candle burns, decide on one root-{root} move that you will complete today so the ritual has a practical witness. Extinguish the candle only after you have named the real-world step aloud.",
+            "On a slip of paper, write {number}, today's date, and a single desire stated cleanly. Place the paper beneath a candle, breathe until your attention settles, and choose one root-{root} action that proves you are willing to participate with the sign. Let the candle ritual be brief but intentional, then move directly into the action before your energy scatters.",
+        ],
+    },
+    {
+        "action_type": "root-minute-meditation",
+        "templates": [
+            "Meditate for {root} minutes with {number} in front of you and let the silence show you whether your intention is clean, mixed, or outdated. When the timer ends, write one sentence about what clarified and choose one root-{root} action to complete before the day closes. The meditation is not the whole practice; it is the part that clears noise so the next step is honest.",
+            "Use the root digit of {number} as your meditation length and sit for {root} focused minutes with one intention in mind. Afterward, jot down the clearest insight that arrived and convert it into one root-{root} move you can make today. This keeps the manifestation work embodied instead of letting insight evaporate into abstraction.",
+        ],
+    },
+    {
+        "action_type": "vision-board-anchor",
+        "templates": [
+            "Place {number} at the top of a vision board or intention card and let it become the anchor phrase for this desire. Add only images or words that match the root-{root} quality the sequence is asking for, then position the board somewhere you will actually see it. Each time your eyes land on it, complete one tiny action that keeps the intention in motion.",
+            "Create a small vision-board anchor with {number} written across the top, then arrange images, keywords, and textures that match the future you are inviting. Keep the board in sight and pair every viewing with one root-{root} act that supports the desire in real life. This lets the number function as a visual contract, not just a decorative symbol.",
+        ],
+    },
+]
+
 
 def reduce_to_root(number: str) -> int:
     total = sum(int(ch) for ch in number)
@@ -603,7 +1007,8 @@ def number_pattern(number: str) -> str:
 
 
 def variation_seed(number: str, salt: int = 0) -> int:
-    return sum((index + 1 + salt) * int(ch) for index, ch in enumerate(number)) + len(number) * 13 + salt * 17
+    digits_only = [int(ch) for ch in number if ch.isdigit()]
+    return sum((index + 1 + salt) * value for index, value in enumerate(digits_only)) + len(number) * 13 + salt * 17
 
 
 def choose_variant(options: list[str], number: str, salt: int = 0) -> str:
@@ -614,49 +1019,152 @@ def number_digits(number: str) -> list[int]:
     return [int(ch) for ch in number]
 
 
-def number_structure_note(number: str, pattern: str) -> str:
+def digit_energy(digit: int, facet: str, number: str, salt: int = 0) -> str:
+    return choose_variant(DIGIT_LEXICON[digit][facet], f"{number}-{digit}", salt=salt)
+
+
+def build_number_signature(number: str, salt: int = 0) -> str:
     digits = number_digits(number)
-    leading = digits[0]
-    trailing = digits[-1]
-    zero_count = number.count("0")
-    if pattern == "pure amplification":
-        return f"Because every digit repeats the same note, {number} behaves like a concentrated signal rather than a subtle hint."
-    if pattern == "stepwise progress":
-        return f"Because the digits rise from {leading} to {trailing}, {number} favors order, pacing, and one honest step at a time."
-    if pattern == "mirrored reinforcement":
-        return f"Because the sequence mirrors itself around its midpoint, {number} often reflects inner reality back through outer timing."
-    if pattern == "rhythmic alternation":
-        return f"The alternating movement between {leading} and {trailing} gives {number} a rhythmic quality that exposes repeated response habits."
-    if pattern == "reset and recalibration":
-        return f"With {zero_count} zero{'s' if zero_count != 1 else ''} in the sequence, {number} creates more space around the lesson and slows the reaction cycle down."
-    return f"The mixed-digit structure of {number} layers the opening force of {leading} with the closing lesson of {trailing}, so the guidance lands through nuance."
+    opening = digit_energy(digits[0], "energy", number, salt=salt)
+    closing = digit_energy(digits[-1], "energy", number, salt=salt + 1)
+    if len(digits) == 1:
+        middle = digit_energy(digits[0], "theme", number, salt=salt + 2)
+    else:
+        mid_index = len(digits) // 2
+        middle = digit_energy(digits[mid_index], "energy", number, salt=salt + 2)
+    template = choose_variant(SIGNATURE_TEMPLATES, number, salt=salt + 3)
+    return template.format(
+        opening=opening,
+        opening_cap=opening.capitalize(),
+        middle=middle,
+        closing=closing,
+    )
+
+
+def pattern_phrase(number: str, pattern: str, kind: str, salt: int = 0) -> str:
+    return choose_variant(PATTERN_LANGUAGE[pattern][kind], number, salt=300 + salt)
+
+
+def build_digit_motion_line(number: str, salt: int = 0) -> str:
+    digits = number_digits(number)
+    opening = digit_energy(digits[0], "motion", number, salt=salt)
+    closing = digit_energy(digits[-1], "motion", number, salt=salt + 1)
+    mid_index = len(digits) // 2
+    middle = digit_energy(digits[mid_index], "motion", number, salt=salt + 2)
+    templates = [
+        "The practical move is to {opening}, then {middle}, and finally {closing}.",
+        "A grounded response starts by {opening}, keeps going by {middle}, and matures through {closing}.",
+        "In lived terms, you are being asked to {opening}, to {middle}, and to {closing}.",
+        "One honest application would be to {opening}, to let yourself {middle}, and to {closing}.",
+        "The number turns practical when you {opening}, when you {middle}, and when you {closing}.",
+        "Translate the sign into behavior by choosing to {opening}, to {middle}, and to {closing}.",
+        "Its lesson becomes usable when you {opening}, when you {middle}, and when you {closing}.",
+        "The cleanest embodiment is to {opening}, to {middle}, and then to {closing}.",
+        "In action, that looks like learning to {opening}, to {middle}, and to {closing}.",
+        "The next real-world expression is simple: {opening}, {middle}, and {closing}.",
+        "A faithful response asks you to {opening}, to {middle}, and to {closing}.",
+        "Behavior catches up with the sign when you {opening}, you {middle}, and you {closing}.",
+    ]
+    return choose_variant(templates, number, salt=320 + salt).format(
+        opening=opening,
+        middle=middle,
+        closing=closing,
+    )
+
+
+def build_tone_blend(number: str, salt: int = 0) -> str:
+    digits = number_digits(number)
+    first_theme = digit_energy(digits[0], "theme", number, salt=salt)
+    middle_theme = digit_energy(digits[len(digits) // 2], "theme", number, salt=salt + 1)
+    last_theme = digit_energy(digits[-1], "theme", number, salt=salt + 2)
+    templates = [
+        "The undertone mixes {first}, {middle}, and {last}.",
+        "Its emotional weather combines {first}, {middle}, and {last}.",
+        "Beneath the {first} headline, the number is weaving {middle} with {last}.",
+        "The quieter current underneath it is a braid of {first}, {middle}, and {last}.",
+        "Its private language sounds like {first}, {middle}, and {last} at once.",
+        "Look underneath the surface and you find a blend of {first}, {middle}, and {last}.",
+        "The signal keeps braiding together {first}, {middle}, and {last}.",
+        "Its inner chemistry is made of {first}, {middle}, and {last}.",
+        "The atmosphere of the sequence is a mix of {first}, {middle}, and {last}.",
+        "Its deepest note is the way {first}, {middle}, and {last} keep meeting each other.",
+        "The texture of the pattern is built from {first}, {middle}, and {last}.",
+        "At the subtle level, it keeps fusing {first}, {middle}, and {last}.",
+    ]
+    return choose_variant(templates, number, salt=340 + salt).format(
+        first=first_theme,
+        middle=middle_theme,
+        last=last_theme,
+    )
+
+
+def number_structure_note(number: str, pattern: str, salt: int = 0) -> str:
+    template = choose_variant(STRUCTURE_NOTE_TEMPLATES, number, salt=30 + salt)
+    return template.format(
+        number=number,
+        signature=build_number_signature(number, salt=40 + salt),
+        pattern_label=PATTERN_DETAILS[pattern]["label"],
+        pattern_descriptor=pattern_phrase(number, pattern, "descriptor", salt=salt),
+        pattern_tempo=pattern_phrase(number, pattern, "tempo", salt=salt + 1),
+        pattern_outcome=pattern_phrase(number, pattern, "outcome", salt=salt + 2),
+    )
 
 
 def build_vibration_closer(number: str, root: int, pattern: str) -> str:
     root_fragment = choose_variant(ROOT_VIBRATION_FRAGMENTS[root], number, salt=1).rstrip(".")
     pattern_fragment = choose_variant(PATTERN_VIBRATION_FRAGMENTS[pattern], number, salt=2).rstrip(".").lower()
     cadence = choose_variant(VIBRATION_CADENCE, number, salt=3).rstrip(".").lower()
-    return f"{root_fragment} while {pattern_fragment}, and {cadence}."
+    template = choose_variant(CLOSER_SCAFFOLDS, number, salt=50 + root)
+    return template.format(
+        root_fragment=root_fragment,
+        pattern_fragment=pattern_fragment,
+        pattern_fragment_cap=pattern_fragment.capitalize(),
+        cadence=cadence,
+        cadence_cap=cadence.capitalize(),
+    )
 
 
 def build_seeing_closer(number: str, root: int, pattern: str) -> str:
     root_fragment = choose_variant(ROOT_SEEING_FRAGMENTS[root], number, salt=4).rstrip(".")
     pattern_fragment = choose_variant(PATTERN_SEEING_FRAGMENTS[pattern], number, salt=5).rstrip(".").lower()
     cadence = choose_variant(SEEING_CADENCE, number, salt=6).rstrip(".").lower()
-    return f"{root_fragment} because {pattern_fragment}, and {cadence}."
+    template = choose_variant(CLOSER_SCAFFOLDS, number, salt=70 + root)
+    return template.format(
+        root_fragment=root_fragment,
+        pattern_fragment=pattern_fragment,
+        pattern_fragment_cap=pattern_fragment.capitalize(),
+        cadence=cadence,
+        cadence_cap=cadence.capitalize(),
+    )
 
 
 def build_intent_message_closer(number: str, intent: str, root: int, pattern: str) -> str:
     style = INTENT_STYLES[intent]
     archetype = BASE_ARCHETYPES[root]
-    pattern_detail = PATTERN_DETAILS[pattern]
     intent_close = choose_variant(style["closing"], number, salt=7)
     cadence = [
-        f"The root-{root} lesson is to let {archetype['gift']} shape the choice instead of letting pressure set the tone.",
-        f"The healthiest move is the one that honors {archetype['gift']} while respecting the {pattern_detail['tempo']} this pattern is asking for.",
-        f"That is how {number} turns {pattern_detail['label']} energy into a practical next step rather than a passing spiritual mood.",
+        f"The root-{root} lesson is to let {archetype['gift']} guide the decision before old reflexes volunteer.",
+        f"The cleanest answer is the one that protects {archetype['gift']} without feeding panic.",
+        f"This sequence works best when {archetype['gift']} becomes behavior rather than theory.",
+        f"The wiser move is the one that keeps {archetype['gift']} in charge of the response.",
+        f"{number} becomes useful the moment {archetype['gift']} shapes an actual choice.",
+        f"The message settles once {archetype['gift']} is practiced in real time.",
+        f"Let {archetype['gift']} become the filter that decides what happens next.",
+        f"The breakthrough is usually simple: let {archetype['gift']} outrank fear, speed, and performance.",
+        f"The lesson clarifies when {archetype['gift']} is trusted enough to change your behavior.",
+        f"The number keeps repeating until {archetype['gift']} is treated like a discipline instead of an idea.",
+        f"Read the signal as a request to anchor {archetype['gift']} in one visible action.",
+        f"Everything becomes clearer when {archetype['gift']} is given authority over the next step.",
     ]
-    return f"{intent_close} {choose_variant(cadence, number, salt=8)}"
+    close_fragment = choose_variant(cadence, number, salt=8).rstrip(".")
+    template = choose_variant(CLOSER_SCAFFOLDS, number, salt=90 + INTENT_INDEX[intent])
+    return template.format(
+        root_fragment=intent_close.rstrip("."),
+        pattern_fragment=close_fragment.lower(),
+        pattern_fragment_cap=close_fragment,
+        cadence=build_digit_motion_line(number, salt=INTENT_INDEX[intent] + 3).rstrip(".").lower(),
+        cadence_cap=build_digit_motion_line(number, salt=INTENT_INDEX[intent] + 3),
+    )
 
 
 @lru_cache(maxsize=1)
@@ -729,38 +1237,51 @@ def number_label(number: str, root: int) -> str:
 
 
 def build_key_themes(number: str, root: int) -> list[str]:
-    base = list(BASE_ARCHETYPES[root]["themes"])
-    extras = []
-    if is_repeating(number):
-        extras.extend(["amplification", "clarity"])
-    if is_ascending(number):
-        extras.extend(["progress", "momentum"])
-    if is_mirrored(number):
-        extras.extend(["balance", "echoed support"])
-    if is_alternating(number):
-        extras.extend(["rhythm", "course correction"])
+    digits = number_digits(number)
+    pattern = number_pattern(number)
+    first_theme = digit_energy(digits[0], "theme", number, salt=11)
+    mid_theme = digit_energy(digits[len(digits) // 2], "theme", number, salt=12)
+    last_theme = digit_energy(digits[-1], "theme", number, salt=13)
+    structure_themes = {
+        "pure amplification": ["single-note emphasis", "echoed conviction"],
+        "stepwise progress": ["sequential progress", "earned momentum"],
+        "mirrored reinforcement": ["reflective symmetry", "inner-outer balance"],
+        "rhythmic alternation": ["pattern rhythm", "response calibration"],
+        "reset and recalibration": ["pause intelligence", "fresh-field timing"],
+        "layered guidance": ["woven nuance", "multi-signal reading"],
+    }
+    extras = [
+        BASE_ARCHETYPES[root]["themes"][0],
+        BASE_ARCHETYPES[root]["themes"][2],
+        first_theme,
+        mid_theme,
+        last_theme,
+        choose_variant(structure_themes[pattern], number, salt=14),
+        f"{len(number)}-digit cadence",
+    ]
     if "0" in number:
-        extras.extend(["reset", "trust"])
-
-    unique = []
-    for value in base + extras:
+        extras.append("zero-spaced reset")
+    unique: list[str] = []
+    for value in extras:
         if value not in unique:
             unique.append(value)
-    return unique[:6]
+    return unique[:7]
 
 
 def build_vibration(number: str, root: int) -> str:
     archetype = BASE_ARCHETYPES[root]
     pattern = number_pattern(number)
     override = SPECIAL_NUMBER_OVERRIDES.get(number)
+    signature = build_number_signature(number, salt=101)
+    tone_blend = build_tone_blend(number, salt=102)
     if override:
         return (
             f"{number} carries a {override['vibe']} wrapped in the root-{root} current of "
-            f"{archetype['essence']}. {build_vibration_closer(number, root, pattern)}"
+            f"{archetype['essence']}. {signature} {tone_blend} {build_vibration_closer(number, root, pattern)}"
         )
     return (
         f"Angel number {number} carries the root-{root} current of {archetype['essence']}, expressed through "
-        f"a pattern of {pattern}. {build_vibration_closer(number, root, pattern)}"
+        f"a pattern of {pattern}. {signature} {tone_blend} {build_vibration_closer(number, root, pattern)}"
     )
 
 
@@ -775,10 +1296,28 @@ def build_summary(number: str, root: int) -> str:
 def build_seeing_it_means(number: str, root: int) -> str:
     archetype = BASE_ARCHETYPES[root]
     pattern = number_pattern(number)
+    bridge = choose_variant(
+        [
+            "It usually appears when an inner truth is asking for a more visible response.",
+            "The sequence tends to surface when timing, attention, and choice are trying to line up.",
+            "Most sightings happen when a decision is ripening faster than your conscious mind admits.",
+            "It often shows up when life wants your participation, not just your curiosity.",
+            "The repetition is often less about prediction and more about how you are answering the moment.",
+            "Repeated contact with it usually means the lesson has become too important to whisper.",
+            "It tends to arrive when the situation is asking for a cleaner emotional or practical stance.",
+            "Most people notice it when an old response is losing power and a better one is available.",
+            "It appears when the same truth keeps pressing from different angles until it is acknowledged.",
+            "The pattern usually finds you when instinct already knows more than the surface mind is admitting.",
+            "It is often less random than it first appears, especially when the same topic keeps surrounding the sighting.",
+            "The repeat sequence often marks the threshold between passive noticing and active participation.",
+        ],
+        number,
+        salt=102,
+    )
     return (
         f"Seeing {number} repeatedly is often a timing signal rather than random coincidence. "
         f"It draws your attention back to {archetype['essence']} and asks where life is inviting you into "
-        f"{archetype['lesson']}. {number_structure_note(number, pattern)} "
+        f"{archetype['lesson']}. {bridge} {build_number_signature(number, salt=104)} {build_tone_blend(number, salt=103)} {number_structure_note(number, pattern, salt=1)} "
         f"If the number appears during stress, it is a reminder to regulate first and respond second. "
         f"{build_seeing_closer(number, root, pattern)}"
     )
@@ -831,13 +1370,47 @@ def build_intent_base_matrix() -> dict[str, dict[int, dict[str, object]]]:
 def build_intent_message(number: str, intent: str, root: int) -> str:
     pattern = number_pattern(number)
     template = build_intent_base_matrix()[intent][root]
-    pattern_detail = PATTERN_DETAILS[pattern]
+    config = INTENT_CONFIG[intent]
+    focus_line = choose_variant(
+        [
+            f"It is strongest when {BASE_ARCHETYPES[root]['gift']} leads the way you handle this part of life.",
+            f"The energy sharpens when you let {BASE_ARCHETYPES[root]['gift']} set the tone here.",
+            f"The cleanest reading appears once {BASE_ARCHETYPES[root]['gift']} becomes the operating standard.",
+            f"This message lands best when {BASE_ARCHETYPES[root]['gift']} is treated as a daily practice.",
+            f"You feel the support of the number more quickly when {BASE_ARCHETYPES[root]['gift']} is made visible.",
+            f"The lesson becomes practical once {BASE_ARCHETYPES[root]['gift']} shapes the next move in this area.",
+            f"The sequence is most helpful when {BASE_ARCHETYPES[root]['gift']} outruns mixed signals.",
+            f"Its support becomes obvious when {BASE_ARCHETYPES[root]['gift']} is given room to lead.",
+            f"This number stops feeling abstract when {BASE_ARCHETYPES[root]['gift']} is applied directly here.",
+            f"The guidance coheres once {BASE_ARCHETYPES[root]['gift']} becomes the method, not just the message.",
+            f"The deeper benefit appears when {BASE_ARCHETYPES[root]['gift']} is trusted in concrete decisions.",
+            f"The note underneath all of this is simple: let {BASE_ARCHETYPES[root]['gift']} take the lead here.",
+        ],
+        number,
+        salt=125 + INTENT_INDEX[intent],
+    )
+    intro = choose_variant(INTENT_MESSAGE_INTROS, number, salt=120 + INTENT_INDEX[intent]).format(
+        display_lower=config["display"].lower(),
+        focus=INTENT_STYLES[intent]["focus"],
+        number=number,
+    )
+    challenge = choose_variant(INTENT_MESSAGE_CHALLENGES, number, salt=150 + INTENT_INDEX[intent]).format(
+        challenge=INTENT_STYLES[intent]["challenge"],
+        gift=BASE_ARCHETYPES[root]["gift"],
+    )
+    bridge = choose_variant(INTENT_MESSAGE_BRIDGES, number, salt=180 + INTENT_INDEX[intent]).format(
+        structure=number_structure_note(number, pattern, salt=INTENT_INDEX[intent] + 5).lower()
+    )
     return (
-        f"Angel number {number} brings {template['focus_line'].lower()} "
-        f"{template['challenge_line']} {number_structure_note(number, pattern)} "
-        f"This {pattern_detail['label']} pattern matters here because {pattern_detail['descriptor']}. "
+        f"{intro} {focus_line} {challenge} {build_number_signature(number, salt=191 + INTENT_INDEX[intent])} "
+        f"{build_tone_blend(number, salt=190 + INTENT_INDEX[intent])} {bridge} "
         f"{build_intent_message_closer(number, intent, root, pattern)}"
     )
+
+
+def build_how_to_manifest(number: str, root: int) -> str:
+    practice = MANIFESTATION_PRACTICES[variation_seed(number, salt=210) % len(MANIFESTATION_PRACTICES)]
+    return choose_variant(practice["templates"], number, salt=220 + root).format(number=number, root=root)
 
 
 def build_intent_action_steps(number: str, intent: str, root: int) -> list[str]:
@@ -1020,13 +1593,16 @@ def build_core_record(number: str) -> dict[str, object]:
 def build_intent_summary(number: str, intent: str) -> dict[str, object]:
     root = reduce_to_root(number)
     config = INTENT_CONFIG[intent]
-    return {
+    summary = {
         "intent": intent,
         "display_name": config["display"],
         "headline": f"{number} Angel Number {config['display']} - {build_intent_subtitle(number, intent, root).capitalize()}",
         "teaser": build_intent_teaser(number, intent, root),
         "url": f"/angel-numbers/{number}/{intent}",
     }
+    if intent == "manifestation":
+        summary["how_to_manifest"] = build_how_to_manifest(number, root)
+    return summary
 
 
 def build_intent_record(number: str, intent: str) -> dict[str, object]:
@@ -1034,7 +1610,7 @@ def build_intent_record(number: str, intent: str) -> dict[str, object]:
     config = INTENT_CONFIG[intent]
     template = build_intent_base_matrix()[intent][root]
     subtitle = build_intent_subtitle(number, intent, root)
-    return {
+    record = {
         "number": number,
         "intent": intent,
         "display_name": config["display"],
@@ -1057,6 +1633,9 @@ def build_intent_record(number: str, intent: str) -> dict[str, object]:
         "canonical_url": f"{SITE_URL}/angel-numbers/{number}/{intent}",
         "all_intents": [{"slug": slug, "display_name": INTENT_CONFIG[slug]["display"]} for slug in INTENT_ORDER],
     }
+    if intent == "manifestation":
+        record["how_to_manifest"] = build_how_to_manifest(number, root)
+    return record
 
 
 def build_hub_intro() -> str:

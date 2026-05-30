@@ -132,6 +132,7 @@ const CelebrityHubPage = lazy(() => import('./pages/celebrity/CelebrityHubPage')
 const CelebrityChartPage = lazy(() => import('./pages/celebrity/CelebrityChartPage').then(m => ({ default: m.CelebrityChartPage })));
 const AngelNumbersHubPage = lazy(() => import('./pages/angel-numbers/AngelNumbersHubPage').then(m => ({ default: m.AngelNumbersHubPage })));
 const AngelNumberPage = lazy(() => import('./pages/angel-numbers/AngelNumberPage').then(m => ({ default: m.AngelNumberPage })));
+const AngelNumberIntentPage = lazy(() => import('./pages/angel-numbers/AngelNumberIntentPage').then(m => ({ default: m.AngelNumberIntentPage })));
 const ZibuHubPage = lazy(() => import('./pages/seo/ZibuHubPage').then(m => ({ default: m.ZibuHubPage })));
 const ZibuSymbolPage = lazy(() => import('./pages/seo/ZibuSymbolPage').then(m => ({ default: m.ZibuSymbolPage })));
 const FaithHubPage = lazy(() => import('./pages/faith-seo/FaithHubPage').then(m => ({ default: m.FaithHubPage })));
@@ -211,6 +212,7 @@ function App() {
                   <Route path="/love-calculator" element={<LoveCalculatorPage />} />
                   <Route path="/angel-numbers" element={<AngelNumbersHubPage />} />
                   <Route path="/angel-numbers/:number" element={<AngelNumberPage />} />
+                  <Route path="/angel-numbers/:number/:intent" element={<AngelNumberIntentPage />} />
                   <Route path="/lo-shu-grid" element={<LoShuHubPage />} />
                   <Route path="/lo-shu-grid/calculator" element={<LoShuCalculatorPage />} />
                   <Route path="/lo-shu-grid/missing-:number" element={<LoShuMissingNumberPage />} />
