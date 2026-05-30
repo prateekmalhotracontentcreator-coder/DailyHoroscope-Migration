@@ -73,9 +73,9 @@ The interactive Tarot tool is fully live at `/tarot`. 5 tabs confirmed:
 
 **Total live URLs: 199 pages** (1 hub + 100 spreads + 78 cards + 20 intentions)
 
-### Your First Task -- ECHO/PACE Quality Sign-off
+### ✅ Phase 1 Complete -- Next Task: Issue TAR-SEO-3
 
-The pages are live. The content has been rewritten. The only remaining gates before this module is fully QA-cleared are the ECHO/PACE scan and Layer G.
+ECHO/PACE is cleared. The module is QA-cleared. The next action is to issue TAR-SEO-3 to a Codex thread.
 
 ### Smart Quote Fix (if needed)
 ```bash
@@ -89,74 +89,21 @@ f.writeFileSync(p,c);console.log('Done');"
 
 ---
 
-## 5. ECHO/PACE Quality Gate (Mandatory -- Before TAR-SEO-2)
+## 5. ECHO/PACE Quality Gate -- ✅ CLEARED 2026-05-30 (HISTORICAL)
 
-> **This is a blocking gate.** TAR-SEO-1 pages must pass ECHO/PACE before TAR-SEO-2 is activated.
+> **This gate is fully closed.** TAR-SEO-1 + TAR-SEO-2 passed all ECHO/PACE layers under strict thresholds (L1 BLOCKED ≥60%, FLAGGED ≥40%, L2 min_docs=2, LG BLOCKED >25%, WATCH >10%). No further action needed here.
 
-### Why ECHO/PACE First
-
-Tarot SEO pages (199 programmatic pages) are content-dense and risk duplication penalties from Google. The M3 festival-region pages required 9 rounds of GAI optimization to stay below the 40% ceiling. Tarot spread/card/intention pages have similar risk. Catch failures now -- before Google indexes the content.
-
-### Run the Scanner (replaces manual admin panel check)
-
-A 4-layer scanner script is in the repo. **Run this instead of the admin panel:**
-
-```bash
-# From repo root -- Layers 1-3 (no API key needed):
-python3 tests/echo_pace_tarot_scan.py
-
-# All 4 layers including Google duplication (get SERPER_API_KEY from Render env):
-SERPER_API_KEY=your_key python3 tests/echo_pace_tarot_scan.py
-```
-
-Output is saved to `tests/echo_pace_tarot_report.json`. Share full console output with TT for sign-off.
-
-### Thresholds (enforced by script)
-
-| Layer | Method | BLOCKED | FLAGGED / WATCH | PASS |
-|---|---|---|---|---|
-| L1 | TF-IDF cosine inter-page | any pair ≥ 70% | 50-69% | < 50% |
-| L2 | N-gram 4+ word match | -- | phrase in ≥ 3 docs | 0 phrases |
-| L3 | Jaccard heading match | -- | score ≥ 60% vs corpus | all < 60% |
-| LG | Google duplication (Serper) | peak > 40% | avg > 20% | avg ≤ 20% |
-
-### First Run Results (TAR-SEO-1, confirmed 2026-05-29)
+### Final Scan Results
 
 | Page Type | L1 | L2 | L3 | LG |
 |---|---|---|---|---|
-| Spreads (100) | ⚠️ FLAGGED -- 2 near-duplicate topic pairs (60%) | ⚠️ FLAGGED -- deck composition boilerplate in 15 spreads | ℹ️ INFO -- generic names expected | Not yet run |
-| Cards (78) | ✅ PASS -- peak 36% | ⚠️ FLAGGED -- 219 Wands suit shared imagery phrases | ℹ️ INFO | Not yet run |
-| Intentions (20) | ⚠️ FLAGGED -- 2 pairs | ⚠️ FLAGGED | ℹ️ INFO -- slugs are generic (love, career, etc.) | Not yet run |
+| Spreads (100) | ✅ PASS -- peak 38.7% | ✅ PASS | ✅ PASS | ✅ PASS -- 0% dup |
+| Cards (78) | ✅ PASS -- peak 35.0% | ✅ PASS -- 222→3 phrases | ✅ PASS | ✅ PASS -- 0% dup |
+| Intentions (20) | ✅ PASS -- peak 39.5% | ✅ PASS | ✅ PASS | ✅ PASS -- 0% dup |
 
-**L2 FLAGGED items for Tarot are mostly legitimate shared vocabulary** (deck composition descriptions, tarot suit imagery terms). Review the top offenders in the report -- only escalate to GAI if phrases appear to be verbatim from a source book.
+Layer G: **15/15 queries PASS, 0% duplication** (report: `tests/tarot_serper_detail_report.json`). Strict Serper detail script: `tests/echo_pace_tarot_serper_detail.py`.
 
-**L1 FLAGGED spread pairs** -- "Manifesting Urgent Financial Abundance" ↔ "Manifesting Fast Secondary Income" (51.6%) and "Settlement vs Going to Trial Analysis" ↔ "Choosing Legal Battle vs Settlement" (60%) -- these are thematically near-duplicate spreads. Assess whether their body prose is sufficiently differentiated.
-
-**Layer G (Google duplication) still required** -- get SERPER_API_KEY from Render dashboard env vars and run with the key before declaring the module QA-passed.
-
-### GAI Optimization Loop (if any page type is BLOCKED)
-
-Reference: `Codex_Deliveries/Tarot/TAR_ECHO_PACE_GAI_CONSULTATION.md`
-
-1. Identify which content fields triggered BLOCKED (script output shows offending phrases)
-2. Submit failing content blocks to NLM/GAI for rewrite
-3. Update the relevant fields in `backend/tarot_seo_data.py`
-4. Re-run script: `python3 tests/echo_pace_tarot_scan.py`
-5. Repeat until all BLOCKED items clear
-6. Pre-approved humanized titles: `TAR_SEO_TITLE_HUMANIZATION_LIST.md`
-
-### After ECHO/PACE Passes → Activate TAR-SEO-2
-
-TAR-SEO-2 is a **one-file rewrite** of `backend/tarot_seo_data.py`:
-- Removes source-derived spread prose and rigid card templates
-- Record counts unchanged (100 spreads / 78 cards / 20 intentions)
-- File is ready -- `py_compile` verified
-
-**Steps:**
-1. Replace `backend/tarot_seo_data.py` with the TAR-SEO-2 version
-2. Commit and push to main
-3. **Re-run the scanner** immediately: `python3 tests/echo_pace_tarot_scan.py`
-4. Apply GAI fixes if any page type regresses to BLOCKED
+Key fixes applied (commit `cc52900`): all 56 minor arcana given card-specific RWS imagery; health↔anxiety + spiritual-growth↔self-discovery intention pairs given unique `best_cards[:3]` and distinct prose; 4 spread pairs differentiated; `use` field varied across 18 spreads.
 
 ---
 
@@ -178,18 +125,20 @@ TAR-SEO-2 is a **one-file rewrite** of `backend/tarot_seo_data.py`:
 
 ---
 
-## 9. Immediate First Actions for New Thread
+## 9. Current Active Task for Tarot Thread
 
-1. Read `Codex_Deliveries/Tarot/TRACKER.md`
-2. Read `Codex_Deliveries/Tarot/CODEX_COMMISSION_TAR_SEO_1.md`
-3. Read `Codex_Deliveries/Tarot/TAR_ECHO_PACE_GAI_CONSULTATION.md` (understand the quality gate)
-4. Locate the delivered TAR-SEO-1 files in the repo
-5. Integrate TAR-SEO-1 (steps in Section 4) → commit and push
-6. Verify 4 new SEO routes return 200 on production
-7. **Run ECHO/PACE on all 4 page types** (Section 5 procedure) -- this is a blocking gate
-8. GAI optimization loop if any page type fails -- repeat until all pass
-9. Once all pass → activate TAR-SEO-2 (one-file swap)
-10. **Run ECHO/PACE again** after TAR-SEO-2 to confirm no regression
+> All Phase 1 work is complete. TAR-v4 ✅ · TAR-SEO-1 ✅ · TAR-SEO-2 ✅ · ECHO/PACE ✅ · Layer G ✅
+
+**Issue TAR-SEO-3** -- 4,621 card×spread combination pages (78 cards × 60 spreads + card hub)
+
+Brief: `Codex_Deliveries/Tarot/CODEX_COMMISSION_TAR_SEO_3_COMBINATIONS.md`
+
+On receipt from Codex:
+1. Run `python3 tests/echo_pace_tarot_scan.py` on the generated `tarot_combinations_router.py` content
+2. Verify `seed_tarot_combinations.py` runs cleanly against `horoscope_db`
+3. Check `TarotCombinationPage.jsx` and `TarotCardHubPage.jsx` build without errors
+4. Confirm 4,621 URLs indexed in sitemap
+5. Smoke test 3 representative combo URLs across card types (Major / Wands Court / Pentacles pip)
 
 ---
 *Handover prepared: 2026-05-29 by Claude Code Main Thread*

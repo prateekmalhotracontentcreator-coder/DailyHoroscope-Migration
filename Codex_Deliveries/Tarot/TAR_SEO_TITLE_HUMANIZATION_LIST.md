@@ -1,8 +1,12 @@
 # TAR-SEO -- Spread Title Humanization List
-> Layer 3 Audit: All 100 spread titles match EPUB headings verbatim (Jaccard ≥80%)
-> Action: Replace each title with a humanized version that preserves the spread's purpose
-> but does not mirror the book heading word-for-word.
-> Submit to GAI for humanized rewrites. Paste result back for integration.
+> **STATUS: ✅ RESOLVED 2026-05-30** -- All 100 spread titles have been humanized as part of the TAR-SEO-2 data rewrite (`backend/tarot_seo_data.py`, commit `cc52900`). The "Submit to GAI" action below is no longer required. This file is retained for historical reference only.
+
+---
+
+> ~~Layer 3 Audit: All 100 spread titles match EPUB headings verbatim (Jaccard ≥80%)~~
+> ~~Action: Replace each title with a humanized version that preserves the spread's purpose~~
+> ~~but does not mirror the book heading word-for-word.~~
+> ~~Submit to GAI for humanized rewrites. Paste result back for integration.~~
 
 ---
 

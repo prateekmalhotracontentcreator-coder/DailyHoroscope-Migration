@@ -1,0 +1,149 @@
+{
+  "run_at": "2026-05-29T20:31:50.796815+00:00",
+  "module": "Tarot SEO (TAR-SEO-1 + TAR-SEO-2)",
+  "layer": "G",
+  "description": "Detailed Serper validation for ECHO/PACE Layer G -- 15 queries across 3 page types",
+  "thresholds": {
+    "pass_max": 0.1,
+    "watch_max": 0.25,
+    "blocked_above": 0.25
+  },
+  "overall": "\u2705  PASS -- all Layer G queries clear; Tarot SEO module is QA-cleared",
+  "queries": [
+    {
+      "page_type": "Spread",
+      "sample_id": "past-life-love-and-soul-connection",
+      "phrase": "significant relationship drawn people together beyond lifetime pattern",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Spread",
+      "sample_id": "launching-freelance-and-solopreneur-gigs",
+      "phrase": "work naming makes offering genuinely unique first clients",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Spread",
+      "sample_id": "settlement-vs-going-to-trial-analysis",
+      "phrase": "abstract question whether settle helps assess whether terms",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Spread",
+      "sample_id": "new-moon-rituals-for-fresh-beginnings",
+      "phrase": "intentions clarity naming needs released previous cycle identifying",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Spread",
+      "sample_id": "12-month-wheel-of-year-forecast",
+      "phrase": "month position dominant energetic quality challenge period unlike",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Card",
+      "sample_id": "the-moon",
+      "phrase": "path fear emotional fog truths surfacing slowly moon",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Card",
+      "sample_id": "queen-of-wands",
+      "phrase": "magnetism rather authority knows creative power uses apology",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Card",
+      "sample_id": "six-of-cups",
+      "phrase": "kindness agenda warmth something existed complication connection holds",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Card",
+      "sample_id": "knight-of-swords",
+      "phrase": "terrain speed real resolve absolute direction fully considered",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Card",
+      "sample_id": "nine-of-pentacles",
+      "phrase": "ease own world elegant self sufficient peace independence",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Intention",
+      "sample_id": "love",
+      "phrase": "values based choice abundance nourishment sensuality fertile growth",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Intention",
+      "sample_id": "career",
+      "phrase": "intention gathers spreads focused vocational direction professional identity",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Intention",
+      "sample_id": "health",
+      "phrase": "readings work best treat mirror physical vitality energetic",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Intention",
+      "sample_id": "spiritual-growth",
+      "phrase": "growth spiritual growth intention gathers spreads deliberate inner",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "page_type": "Intention",
+      "sample_id": "anxiety",
+      "phrase": "anxiety intention gathers spreads address mind activated state",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    }
+  ]
+}

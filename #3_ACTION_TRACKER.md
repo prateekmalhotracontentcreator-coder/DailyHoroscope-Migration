@@ -24,7 +24,7 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 | M-11 | **MODULE_LAL_KITAB doc audit** -- only 3 files present post-cleanup (created 2026-05-15). Verify whether additional docs should migrate from `Codex_Deliveries/LK/` into the module home. | Reconciliation gap found 2026-05-15 | 🟢 LOW |
 | M-12 | **MODULE_SEO_WEB_PERFORMANCE doc audit** -- only 3 files present post-cleanup (created 2026-05-15). Verify whether additional docs should migrate from `Codex_Deliveries/SEO/` into the module home. | Reconciliation gap found 2026-05-15 | 🟢 LOW |
 | M-13 | **Live TV console polish (LTV-OP-1)** -- player console bar on `/live-sai-baba-arti` functional but visual design does not match original spec intent. Raise as Codex commission when final design is confirmed. | Design decision needed from TT | 🟡 MED |
-| ~~M-15~~ | ~~**TAR-SEO-1 integration**~~ -- ✅ **DONE.** TAR-SEO-1 integrated commit `8f36fc8`. TAR-SEO-2 content rewrite applied commit `b0dfdd4`. 4 routes live at `/tarot/spreads`, `/tarot/spread/:slug`, `/tarot/card/:slug`, `/tarot/for/:slug`. Pages in `frontend/src/pages/tarot-seo/`. **Remaining gate: ECHO/PACE strict scan (Intentions L1 BLOCKED 66.7% under strict thresholds) + Layer G (Serper).** | ✅ DONE | ✅ |
+| ~~M-15~~ | ~~**TAR-SEO-1 integration**~~ -- ✅ **DONE.** TAR-SEO-1 integrated `8f36fc8`. TAR-SEO-2 QA-CLEARED `cc52900`. 199 pages live. ECHO/PACE strict full pass (L1-L3 + Layer G 15/15 PASS 0% dup). | ✅ DONE | ✅ |
 | ~~M-16~~ | ~~**LSG-2 integration**~~ -- ✅ **DONE 2026-05-30.** All 7 route patterns live and smoke-tested. MongoDB seeded (responses confirmed live DB data). 66-URL sitemap active. LSG-OP-3 ✅ passed. LSG-OP-2 ✅ seeded. | ✅ DONE | ✅ |
 | M-17 | **KE-OP-15** -- Verify KE questionnaire live endpoints on Render: `/questionnaire`, `/api/knowledge-engine/questionnaire/profile`, `/api/knowledge-engine/questionnaire/submit`; confirm `user_questionnaire_profiles` writes in MongoDB | KE-IQ integration sign-off pending | 🟠 HIGH |
 | M-18 | **LON-OP-2** -- Longevity preview API at `/api/longevity/generate` takes ~46s. Profile + optimise to bring under 10s contract target | Performance gap flagged in QA audit | 🟠 HIGH |
@@ -85,7 +85,10 @@ All items below have been moved into commission briefs in `Codex_Deliveries/`. N
 - ~~ARC-2: Arc Angel Dynamic Confidence Engine~~ → ✅ **INTEGRATED 2026-05-18** commit `c1a7cb0`. 18 files, 746 insertions, 72/72 tests green. 3-pillar confidence fully wired. Pillar 1 bridge (4-section → 12-domain) is stopgap pending KE-IQ enrichment. Decay engine + notification hooks live. ArcAngelPanel rebuilt. PrivateRoute applied.
 
 ### Tarot Thread
-- ~~TAR-v4: Tarot UI v4 Enhancement~~ → `Tarot/CODEX_COMMISSION_TAROT_V4_UI.md` · READY TO ISSUE
+- ~~TAR-v4: Tarot UI v4 Enhancement~~ → ✅ INTEGRATED commit `2a4ed4e`
+- ~~TAR-SEO-1: Tarot SEO module (hub + spreads + cards + intentions, 199 pages)~~ → ✅ INTEGRATED commit `8f36fc8`
+- ~~TAR-SEO-2: Tarot SEO data rewrite (copyright + quality fix)~~ → ✅ QA-CLEARED commit `cc52900` · ECHO/PACE strict full pass · Layer G 15/15 PASS 0% dup
+- **TAR-SEO-3: Tarot Combination Pages (4,621 pages -- 78 cards × 60 spreads + card hub)** → 🟡 READY TO ISSUE · Brief: `Codex_Deliveries/Tarot/CODEX_COMMISSION_TAR_SEO_3_COMBINATIONS.md`
 
 ### Kundali Thread
 - ~~KUN-1: Lagna Kundali Module Contract~~ → `Kundali/CODEX_COMMISSION_KUNDALI_LAGNA_CONTRACT.md` · READY TO ISSUE

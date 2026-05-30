@@ -1,0 +1,80 @@
+{
+  "spreads": {
+    "L1": {
+      "blocked_pairs": 0,
+      "flagged_pairs": 0,
+      "peak": 0.387
+    },
+    "L2": {
+      "flagged_phrases": 51,
+      "top_5": [
+        "cards sixteen court cards",
+        "twenty major cards sixteen court",
+        "twenty major cards sixteen court cards",
+        "major cards sixteen court cards",
+        "major cards sixteen court"
+      ]
+    },
+    "L3": {
+      "matched_headings": 2,
+      "sample": [
+        "daily tarot reading insight",
+        "past present future timeline reading"
+      ]
+    }
+  },
+  "cards": {
+    "L1": {
+      "blocked_pairs": 0,
+      "flagged_pairs": 0,
+      "peak": 0.35
+    },
+    "L2": {
+      "flagged_phrases": 3,
+      "top_5": [
+        "reversed wands points delays",
+        "reversed wands points delays expected",
+        "wands points delays expected"
+      ]
+    },
+    "L3": {
+      "matched_headings": 26,
+      "sample": [
+        "the fool",
+        "the magician",
+        "the high priestess",
+        "the empress",
+        "the emperor"
+      ]
+    }
+  },
+  "intentions": {
+    "L1": {
+      "blocked_pairs": 0,
+      "flagged_pairs": 0,
+      "peak": 0.395
+    },
+    "L2": {
+      "flagged_phrases": 19,
+      "top_5": [
+        "integration healing measured flow",
+        "hope healing spiritual freshness",
+        "nourishment sensuality fertile growth",
+        "abundance nourishment sensuality fertile",
+        "abundance nourishment sensuality fertile growth"
+      ]
+    },
+    "L3": {
+      "matched_headings": 19,
+      "sample": [
+        "love",
+        "career",
+        "money",
+        "health",
+        "relationships"
+      ]
+    }
+  },
+  "layer_g": "SKIPPED_NO_KEY",
+  "verdict": "\u26a0\ufe0f   FLAGGED -- Review flagged items. If all are tarot vocabulary, proceed."
+}
