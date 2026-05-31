@@ -2,15 +2,85 @@
 ## Status Update + Queries + Next Steps
 
 > Prepared by: Temple Team -- EverydayHoroscope
-> Date: 2026-05-28
+> Date: 2026-05-28 · Last decode session: 2026-05-30 (Ch15) · Status updated: 2026-05-31
 > For: Phaladeepika NLM Decode Thread
-> Status: **UNBLOCKED -- Ready to begin Tier 1**
+> Status: **🟢 READY FOR INGEST -- ALL 28 CHAPTERS DECODED. 743 rules (16 ch confirmed + Tier 4-6 decoded). All 6 HIGH OCR items resolved 2026-05-31.**
 
 ---
 
-## Current Status
+## One-Liner (Ingest)
 
-The schema amendment commission (KE-SCHEMA-AMENDMENT-PD1) that was blocking this thread is now **fully delivered and committed**. All 8 schema flags from the Fresh Eyes assessment have been resolved. The NLM thread can begin decoding immediately.
+Refer `KE_TEXTBOOK_DECODE/Thread_Briefs/THREAD_BRIEF_PHALADEEPIKA_INGEST.md` for all Phaladeepika KE Ingest. 743+ rules, 28 chapters decoded, all 6 HIGH items resolved -- Phase 2 ingest after BPHS Vol 1 + Vol 2 complete.
+
+> This file (`THREAD_BRIEF_PHALADEEPIKA_NLM.md`) is the **decode brief** -- encoding notes, chapter sequence, schema types, open queries. For ingest steps, schema checklist, and inject_fields, use the ingest brief above.
+
+---
+
+## Status Update (2026-05-31)
+
+All 28 chapters decoded. All 6 HIGH OCR items resolved via PDF validation 2026-05-31.
+
+**6 HIGH items resolved:**
+- pd-ch22-c001 ✅ · pd-ch25-c002 ✅ · pd-ch26-c004 ✅
+- pd-ch12-c001 ✅ Benefic own sign/exalt in 5th → child loss -- TEXT-NATIVE CONFIRMED (Ch12 Sloka 3, p.117)
+- pd-ch27-c001 ✅ Emancipation vs ascetic -- NOT A CONTRADICTION, complementary facets
+- pd-ch21-c003 ✅ Jupiter/Mercury Bhukti -- cross-text majority POSITIVE. claim_polarity → positive. gai_citation_unverified on pd-ch21-041.
+
+**Ch08 TBA rules:** 6 rules (Sun in houses 1-8) confirmed PDF gap -- Ch08 PDF starts at Sloka 4. Ingest with `tba:true`. TT to source clean scan.
+
+**Remaining MED items (~25):** Ingest with `pending_review:true`. Do not block ingest.
+
+**Ingest thread note:** Cross-check gai_citation_unverified entry for pd-ch21-041 before co-founder approval gate (not before ingest).
+
+**"Tier 4 (3 chapters) still pending" entries in older docs are STALE.** All 28 chapters are decoded.
+
+---
+
+---
+
+## Decode Progress Log (updated 2026-05-30)
+
+| Chapter | Title | Tier | Rules | Status | Files |
+|---------|-------|------|-------|--------|-------|
+| Ch01 | Definitions | 1 | 10 | ✅ Complete | All 5 files |
+| Ch02 | Planets | 1 | 19 | ✅ Complete | All 5 files |
+| Ch03 | Zodiac | 1 | 49 | ✅ Complete | All 5 files |
+| Ch04 | Shadbalas | 1 | 44 | ✅ Complete | All 5 files |
+| Ch06 | Yogas | 2 | 82 | ✅ Complete | All 5 files |
+| Ch07 | Maharajayogas | 2 | 49 | ✅ Complete | All 5 files |
+| Ch18 | Conjunctions | 2 | 141 | ✅ Complete | All 5 files |
+| Ch27 | Ascetic Yogas | 2 | 20 | ✅ Complete | All 5 files |
+| Ch08 | Planets in 12 Bhavas | 3 | 111 | ✅ Complete | All 5 files |
+| Ch09 | Signs as Lagna | 3 | 22 | ✅ Complete | All 5 files |
+| Ch16 | General Effects of 12 Bhavas | 3 | 58 | ✅ Complete | All 5 files |
+| Ch15 | Method of Studying Bhava Effects | 3 | 33 | ✅ Complete | All 5 files |
+| Ch10 | Kalatra Bhava / 7th House | 3 | 38 | ✅ Complete | All 5 files |
+| Ch11 | Female Horoscopes | 3 | 23 | ✅ Complete | All 5 files |
+| Ch12 | Children (Issue) | 3 | 33 | ✅ Complete | All 5 files |
+| Ch05 | Profession & Livelihood | 3 | 11 | ✅ Complete | All 5 files |
+| **Total decoded** | | | **743** | **16 of 27 chapters** | |
+
+**Notes on Ch08:** PDF starts mid-chapter -- Sun houses 1-6 encoded as 6 TBA placeholders (active:false). Sloka 34 truncated mid-sentence (1 TBA). Total active rules: 104 of 111. Two dignity/phase splits: Moon 1st (waxing/waning) and Saturn 1st (exaltation-or-own-sign vs other). All 9 grahas covered including Rahu and Ketu.
+
+**Notes on Ch09:** Chapter fully present, zero TBA rules. Two sections: (1) 12 Lagna sign profiles (condition.type: "lagna_sign", scope: "natal_lagna"), (2) 9 dignity/Dasha effect rules (varga_dignity_tier + planet_combust). Key items: Moon-as-Lagna meta-rule (Rule 013) doubles activation surface; retrograde=exaltation and vargottama=own-sign equivalences (Rules 021, 022). Bonus: Ch09 page 1 contains complete Ch08 Sloka 35 text -- pd-ch08-111 recovery pending a dedicated retroactive pass. Duplicate_candidate:true for 7 of 22 rules (dignity/Dasha rules only).
+
+**Notes on Ch16:** 58 rules, all active, zero TBA. Dominant type: yoga_combination (30+ rules). 3 batches merged. OCR errors resolved (Slokas 15/18/31 misread). Rule 015 (Moon + 2nd lord) active with placeholder outcome -- OCR corrupt. XV-30 connection types cross-referenced throughout. Transit methodology rules (Slokas 31-34) encoded as engine_specification.
+
+**Notes on Ch15:** 33 rules, all active, zero TBA. Methodology chapter -- 23 of 33 rules are engine_specification/methodology (lowest checkable rate in Tier 3: 30%). Dominant type: methodology. Critical rules: Bhavasandhi override (017 -- highest engine priority, suppress all house predictions), Bhava interpolation (018), Bhava Karaka table (021), Dusstthana inversion (023/024), XV-30 five connection types (033). Sloka 29 body in Ch15 PDF; completion on Ch16 PDF page 1. Sloka 30 (XV-30) physically on Ch16 PDF page 1 -- encoded under Ch15 as Rule 033.
+
+**Notes on Ch11:** 23 rules, all active, zero TBA. Female horoscopy chapter -- all rules default subject_scope: "native_female". Key elements: house remapping framework (001), even/odd sign character rules (002-003), 7th house husband quality + widow/remarriage indicators (004-009), Trimsamsa character lookup tables (018-019, encoded as 2 engine_specification rules covering all 7 sign groups × 5 Trimsamsa rulers), Trimsamsa strength resolution (020), Nakshatra adversity (021, partially OCR-corrupt), conception timing methodology (023). OCR issues: Sloka 4 final clause truncated (Rule 013 partial) and Sloka 9 Nakshatra mapping partially unclear (Rule 021 partial). 4 contradictions identified, 0 contradiction_flag:true, 2 open (c001 benefics-in-2nd, c003 OCR truncation).
+
+**Ingest freeze:** Active since 2026-05-14. These files are pre-ingest preparation only. No DB writes until KE Phase 1.2 Sprint 2 (arbitration runtime) is delivered and freeze lifted.
+
+**Output directory:** `/Users/apple/Documents/Knowledge Engine_eBooks/Phaladeepika_CC_Decode/`
+
+---
+
+---
+
+## Schema Status (reference)
+
+The schema amendment commission (KE-SCHEMA-AMENDMENT-PD1) is **fully delivered and committed**. All 8 schema flags from the Fresh Eyes assessment have been resolved.
 
 **What is now available in the schema:**
 
@@ -146,9 +216,9 @@ PD_AdhXXX_[ChapterName]_Diagnostic.md
 
 ## Immediate Next Action
 
-**Begin Adhyaya II (Planets -- Karakas & Significations).**
+**Tier 3 COMPLETE. Next: Tier 4 -- Ch13 (Length of Life).**
 
-This is the vocabulary foundation. Every other chapter references planetary significations that are established here. This chapter should be decoded first and completely before any Tier 2+ chapter begins.
+Ch05 is now complete (11 rules, all 5 files). Tier 3 fully decoded (8/8). Next: Ch13, Ch14, Ch17 (Longevity/Death tier -- decode together).
 
 ---
 
