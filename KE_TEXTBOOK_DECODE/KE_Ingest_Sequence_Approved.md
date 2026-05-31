@@ -121,3 +121,22 @@ Authority:  Prateek Malhotra (Co-Founder / Temple Team)
 Gate:       Sprint 2 Arbitration Runtime -- 5/5 gates passed (2026-05-17)
 Next step:  Begin ingest with 300 Combinations (Priority 1)
 ```
+
+---
+
+## Phase 2 Books (ingest after Phase 1 sequence complete)
+
+> Added 2026-05-30. Phase 2 decode is confirmed complete across all 10 books.
+> OCR issue reports and TempleTeam briefs are ready for each.
+> New KE Ingest Thread owns Phase 2 execution.
+> Handover guide: `KE_TEXTBOOK_DECODE/Handover_Guides/HANDOVER_KE_INGEST_THREAD.md`
+
+| Order | Book | Rules | OCR Issues | Blocker |
+|---|---|---|---|---|
+| P2-1 | KP Astrology | 256 / 77 files | 44 issues (2 P0, 15 P1) | Verify entries 248-249; claim_axis retroactive pass |
+| P2-2 | BPHS Vol 1 | 200+ (Ch11-Ch24) | 26 issues (6 HIGH open) | Category D: 7 doctrinal ambiguities → TT decision |
+| P2-3 | BPHS Vol 2 | TBD | OCR report ready | Work through 9 next actions in BPHS_Vol2_TempleTeam_Brief.docx |
+| P2-4 | Medical Astrology | TBD | 81 issues (2 Grade A CRITICAL) | Chart IX zero birth data; "17/46" annotation must resolve first |
+| P2-5 | Phaladeepika | 743 (16 ch) + Tier 4 | 102 issues (6 HIGH) | Tier 4 (3 chapters) still pending decode; ingest decoded tiers only |
+
+**Dedup rule:** Run `ke_dedup_script.py` after each Phase 2 book ingested. Cross-text flags against Phase 1 books are expected (documented in each book's output folder).

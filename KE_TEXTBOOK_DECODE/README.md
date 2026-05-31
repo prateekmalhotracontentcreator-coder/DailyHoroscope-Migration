@@ -38,7 +38,7 @@ KE_TEXTBOOK_DECODE/
 │   └── Phaladeepika_Decode_Guide.md
 │
 ├── Thread_Briefs/                      ← Status briefs for active decode threads
-│   ├── THREAD_BRIEF_PHALADEEPIKA_NLM.md   ← UNBLOCKED -- Begin Adhyaya II
+│   ├── THREAD_BRIEF_PHALADEEPIKA_NLM.md   ← IN PROGRESS -- 11 chapters / 605 rules · Next: Adhyaya XV
 │   ├── THREAD_BRIEF_BPHS_VOL1_DECODE.md   ← PARTIALLY COMPLETE -- Ch11-Ch24 done
 │   └── THREAD_BRIEF_KP_DECODE.md          ← PRIMARY DECODE COMPLETE -- claim_axis pass pending
 │
@@ -62,24 +62,34 @@ KE_TEXTBOOK_DECODE/
 
 ---
 
-## Active Decode Threads -- Current Status
+## Active Ingest Thread -- Current Status (as of 2026-05-30)
 
-| Book | Status | Output Folder | Next Action |
-|---|---|---|---|
-| Phaladeepika | 🟢 UNBLOCKED | `Phaladeepika_CC_Decode/` | Begin Adhyaya II immediately |
-| BPHS Vol 1 | 🟡 PARTIAL | `BPHS_CC_Decode/` | Ch11-Ch24 done; confirm Q1/Q2 then continue |
-| KP Astrology | 🟡 NEAR COMPLETE | `KP_CC_Decode/` | claim_axis retroactive pass then CLOSED |
+**KE Ingest Thread** owns Phase 1 + Phase 2 ingest. Handover guide: `Handover_Guides/HANDOVER_KE_INGEST_THREAD.md`
+
+| Phase | Status |
+|---|---|
+| KE Freeze | ✅ LIFTED 2026-05-22 |
+| Phase 2 decode | ✅ COMPLETE -- all 10 books decoded, OCR reports ready |
+| Phase 1 ingest | 🟠 READY TO START -- 300 Combinations is Priority 1, no blockers |
+| Phase 2 ingest | 🟡 AFTER Phase 1 sequence |
 
 ---
 
-## Books Decoded -- Ingest Summary
+## All 10 Books -- Decode + Ingest Status
 
-| Book | Chapters Decoded | Rules | Output Folder | Notes |
-|---|---|---|---|---|
-| KP Astrology | Full (all chapters) | 256 rules / 77 files | `KP_CC_Decode/` | claim_axis longevity pass pending |
-| BPHS Vol 1 | Ch11-Ch24 | ~200+ rules | `BPHS_CC_Decode/` | House effects complete; Karaka/Yoga/Dasha pending |
-| Longevity (Unnatural) | Multiple chapters | Pending count | `Longevity_CC_Decode/` | -- |
-| Medical Astrology | Multiple chapters | Pending count | `MedicalAstrology_CC_Decode/` | -- |
+| Book | Decode | Rules | OCR Report | Ingest Priority | Blocker |
+|---|---|---|---|---|---|
+| 300 Combinations | ✅ Complete | 300 | None | Phase 1 -- Priority 1 | None -- start now |
+| 300 Horoscopes Vol 1 | ✅ Complete | 57 | H300_OCR_Issues_Report.docx | Phase 1 -- Priority 2 | 3 blocked rules → TT decision |
+| Longevity Unnatural Death | ✅ Complete | 44 | LU_OCR_Inconsistency_Review.docx | Phase 1 -- Priority 2 | 5 HIGH OCR items → NLM/GAI first |
+| Destiny Numerology | ✅ Complete | 189 (Ch01-15) | Book_Wide_OCR_Inconsistencies_Report.docx | Phase 1 -- Priority 3 | Ch15 TVs confirmed complete |
+| SBC | ✅ Complete | 181 | SBC_OCR_Issues_Report.docx | Phase 1 -- Priority 3 | 7 TT conflicts + 24 source gaps |
+| Longevity 58 chapters | ✅ Complete | ~600+ | -- | Phase 1 -- LAST | Aayu bucket co-founder sign-off needed |
+| KP Astrology | 🟡 Near complete | 256 / 77 files | KP_T05_OCR_Issues_Report.docx | Phase 2 -- P2-1 | Entries 248-249 verify; claim_axis pass |
+| BPHS Vol 1 | 🟡 Partial (Ch11-24) | 200+ | BPHS_Vol1_OCR_Issue_Register.docx | Phase 2 -- P2-2 | Tier 4 decode + Category D TT decision |
+| BPHS Vol 2 | ✅ Complete | TBD | BPHS_Vol2_OCR_Inconsistency_Report.docx | Phase 2 -- P2-3 | 9 next actions in brief |
+| Medical Astrology | ✅ Complete | TBD | MedAstro_OCR_Issues_Audit.md | Phase 2 -- P2-4 | 2 Grade A CRITICAL resolve first |
+| Phaladeepika | 🟡 In progress | 743 (16 ch) | Phaladeepika_Inconsistencies_Review.docx | Phase 2 -- P2-5 | Tier 4 (3 ch) decode pending |
 
 ---
 

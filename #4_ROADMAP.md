@@ -96,19 +96,26 @@
 
 ## PART C -- Knowledge Engine Decode Roadmap
 
-### Active Decode Threads (3 books in last-mile)
+### Phase 2 Decode -- ✅ COMPLETE (2026-05-30)
 
-| Book | Status | Next Action |
-|---|---|---|
-| Phaladeepika | 🟢 UNBLOCKED | Begin Adhyaya II immediately |
-| BPHS Vol 1 | 🟡 PARTIAL (Ch11-Ch24 done) | Confirm Q1/Q2, then Karaka → Yoga → Dasha |
-| KP Astrology | 🟡 NEAR COMPLETE (256 rules) | claim_axis longevity retroactive pass |
+All 10 books decoded. OCR issue reports and TempleTeam briefs ready for all books.
 
-### After 3-Book Last-Mile: 10-Book Ingest Plan
+| Book | Decode | Ingest Priority | Blocker |
+|---|---|---|---|
+| 300 Combinations | ✅ | Phase 1 -- Priority 1 | None -- start now |
+| 300 Horoscopes | ✅ | Phase 1 -- Priority 2 | 3 blocked rules → TT (M-36) |
+| Longevity Unnatural | ✅ | Phase 1 -- Priority 2 | 5 HIGH OCR items → NLM/GAI |
+| Destiny Numerology | ✅ | Phase 1 -- Priority 3 | None |
+| SBC | ✅ | Phase 1 -- Priority 3 | 7 TT conflicts (M-36) |
+| Longevity 58 chapters | ✅ | Phase 1 -- LAST | Aayu bucket TT sign-off (M-37) |
+| KP Astrology | 🟡 Near complete | Phase 2 | claim_axis pass |
+| BPHS Vol 1 | 🟡 Partial | Phase 2 | Category D TT decisions |
+| BPHS Vol 2 | ✅ | Phase 2 | 9 next actions in brief |
+| Medical Astrology | ✅ | Phase 2 | 2 CRITICAL OCR items |
+| Phaladeepika | 🟡 Tier 4 pending | Phase 2 | Tier 4 decode (3 chapters) |
 
-- KE-DEDUP-CONTRADICTION-1 issued and delivered first
-- Then begin systematic decode of: Longevity (Unnatural), Medical Astrology, Destiny Numerology, 300 Horoscopes Vol 1, and 6 additional books per `KE_TEXTBOOK_DECODE/KE_Ingest_Sequence_Approved.md`
-- Dedup + contradiction pair work done together after every pair of books, not retrofitted later
+**New KE Ingest Thread** handles execution. Handover: `KE_TEXTBOOK_DECODE/Handover_Guides/HANDOVER_KE_INGEST_THREAD.md`
+**This thread** handles TT decisions (M-36) and co-founder sign-offs (M-37) only.
 
 ### Schema State (as of 2026-05-29)
 
