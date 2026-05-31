@@ -1,6 +1,6 @@
 # KE Ingest Summary -- All Books
 > Single source of truth for ingest status across all Phase 1 and Phase 2 books.
-> Last updated: 2026-05-30
+> Last updated: 2026-06-01
 > KE Freeze: ✅ LIFTED 2026-05-22
 
 ---
@@ -18,18 +18,21 @@
 ## Phase 1 -- Foundation Ingest (BPHS First)
 
 ### P1-1: BPHS Vol 1
-**Science ID:** `vedic_astrology` | **Decode folder:** `BPHS_CC_Decode/`
+**Science ID:** `jyotish` | **Decode folder:** `BPHS_CC_Decode/`
 
 | Metric | Value |
 |---|---|
-| Chapters decoded | 37 of 45 |
-| Total rules | ~1,456 |
-| Active rules | ~1,456 (all active) |
-| Chapters skipped | 6 (Ch01, Ch02 mythology; Ch27, Ch43, Ch44 dedicated sprint; Ch34, Ch40 absorbed) |
-| Ingest status | 🟢 HIGH ITEMS RESOLVED -- Rule file updates pending, then READY |
-| GAI session | 2026-05-30 -- all 10 items resolved in one session |
+| Chapters decoded | 37 of 45 (Ch01-02 mythology; Ch27/43/44 dedicated sprints pending; Ch34/40 absorbed) |
+| Ingest status | ✅ **FULLY INGESTED -- 2026-06-01** |
+| Phase 1 (Ch12-44) | ~1,069 rules · ✅ In MongoDB · all 5 NLM issues CLOSED |
+| Phase 2 (Ch03-11, Ch25-33) | 696 rules · ✅ In MongoDB · batch `bphs-vol1-phase2-v1-20260601` |
+| **Total rules in MongoDB** | **~1,765** |
+| Phase 2 breakdown | 491 auto_approved (71%) · 170 PHR (24%) · 35 flagged TT/GAI (5%) · 0 contradictions |
+| GAI session | 2026-05-30 -- all 10 HIGH items resolved; encode pass applied 2026-05-31 |
 | GAI resolution log | `BPHS_CC_Decode/BPHS_Vol1_GAI_Resolutions.md` |
 | Engine code | `BPHS_CC_Decode/BPHS_Vol1_Engine_Core.py` (validated ✅) |
+| 35 flagged (TT/GAI) | 12 Dhwaja (Ch25) · 5 formula conflicts (Ch26/28) · 6 doctrinal (Ch03/04/30/32/33) · 5 non-standard (Ch32/33) · 3 factual errors (Ch32) · 4 extreme outcomes (Ch33) |
+| Post-ingest dedup | Run against BPHS Vol 2 after Vol 2 is ingested |
 
 **Resolved Items (all 6 HIGH cleared 2026-05-30):**
 
@@ -46,19 +49,29 @@
 | ~~TT-CH09-04~~ | Gandanta zone breadth | ✅ Both sides -- last 3°20' water sign + first 3°20' fire sign. |
 | ~~TT-CH06-05~~ | Ch05/Ch06 rule ownership | ✅ Slokas 21-24 belong to Ch05. Ingest as Ch05 rules. |
 
-**Remaining MED items (do not block ingest -- resolve post-ingest or in parallel):**
+**All 5 MED items resolved via direct PDF read (2026-06-01) -- all closed:**
 
-| ID | Priority | Chapter | Issue |
+| ID | Priority | Chapter | Status |
 |---|---|---|---|
-| TT-CH30-02 | 🟠 MED | Ch30 | Nasal disorder sign qualifier (Mars+Saturn alone or with sign?) |
-| TT-CH30-03 | 🟠 MED | Ch30 | Upa Pada computation chain counting method |
-| TT-CH06-02 | 🟠 MED | Ch06 | Shashtiamsa formula precision -- integer or fractional degrees |
-| TT-CH09-02 | 🟠 MED | Ch09 | Oriental/occidental half definition for Vajra Mushti |
-| TT-CH31-02 | 🟠 MED | Ch31 | Quarter-degree Argala rule for 3rd/4th quarters |
+| TT-CH30-02 | ✅ CLOSED | Ch30 | Mars+Saturn sign qualifier required; 2nd from Upa Pada must be Mercury or Mars sign |
+| TT-CH30-03 | ✅ CLOSED | Ch30 | Count from 12th lord's position (Santhanam example explicit) |
+| TT-CH06-02 | ✅ CLOSED | Ch06 | 30 minutes of arc per Shashtiamsa (half a degree -- fractional confirmed) |
+| TT-CH09-02 | ✅ CLOSED | Ch09 | Oriental half = 10th cusp → 4th cusp via Lagna (cusp-based, NOT sequential houses 1-6) |
+| TT-CH31-02 | ✅ CLOSED | Ch31 | Quarter rule applies to obstructor's position; 1st-quarter Argala cancelled by 4th-quarter obstructor |
 
-**Next step:** Ingest Thread applies GAI resolutions to affected rule JSON files → re-verify with `BPHS_Vol1_Engine_Core.py` → ingest.
+**Encode actions applied 2026-05-31 (via `apply_vol1_encode.py`):**
+- bphs1-ch28-002: Uchcha Rasmi formula corrected → `(lon−deb)/180×8`. TT-CH28-01 ✅
+- bphs1-ch28-007: Ishta Phala arithmetic formula confirmed. TT-CH28-03 ✅
+- bphs1-ch28-008: Subhanka full table confirmed (neutral=8, extreme friend=22). TT-CH28-04 ✅
+- bphs1-ch06-012: Bhamsa D27 corrected element-based → MODALITY-based (Movable→Aries, Fixed→Cancer, Mutable→Libra). TT-CH06-03 ✅
+- bphs1-ch06-013: Trimsamsa even-sign reversal -- BOTH order AND widths reversed confirmed. TT-CH06-01 ✅
+- bphs1-ch06-027/028: chapter field 6→5 (slokas belong to Ch05). TT-CH06-05 ✅
+- bphs1-ch09-002: Balarishta 24-year threshold confirmed. TT-CH09-01 ✅
+- bphs1-ch09-012: Gandanta BOTH sides confirmed -- last 3°20' water + first 3°20' fire. TT-CH09-04 ✅
+- bphs1-ch30-001/002: Upa Pada = Arudha of 12th house (base BPHS). Parity rule = Chaukamba commentary only. TT-CH30-01 ✅
+- bphs1-ch31-002: Argala obstructors counted from ORIGINAL house (Reading A). TT-CH31-01 ✅
 
-**Post-ingest dedup targets:** BPHS Vol 2 (same text family -- dedup before or at ingest)
+**Post-ingest action (pending):** Run dedup between BPHS Vol 1 Phase 1+2 rules and BPHS Vol 2 (same text family) before or at Vol 2 ingest. Use local JSON folders -- no MongoDB export needed.
 
 ---
 
@@ -68,25 +81,30 @@
 | Metric | Value |
 |---|---|
 | Chapters decoded | 3 (Ch49, Ch50, Ch51 -- Dasa chapters) |
-| Total rules | 229 |
-| Active rules | 224 |
-| OCR-limited (inactive) | 5 (Virgo, Libra, Gemini Pada 7/9, Scorpio, Aquarius Padas) |
-| Ingest status | 🔴 BLOCKED -- OCR items must close first |
-| GAI query file | `BPHS_Vol2_CC_Decode/BPHS_Vol2_GAI_OpenItems_Query.md` |
+| Total rules (post-encode) | 249 (✅ confirmed 2026-05-31: Ch49:154 + Ch50:73 + Ch51:22) |
+| Active rules | 248 (✅ confirmed 2026-05-31) |
+| Inactive (source gap) | 1 (bphs2-ch49-gemini-pada-8-gap -- absent from Santhanam translation) |
+| Inactive (obsolete placeholder) | 0 (all placeholders replaced with active rules) |
+| Max recoverable | 107 of 108 Navamsa Pada rules |
+| Ingest status | 🟢 READY -- encode pass complete 2026-05-31 |
+| GAI resolution log | `BPHS_Vol2_CC_Decode/BPHS_Vol2_GAI_Resolutions.md` (PDF-verified 2026-05-31) |
 
-**Open Items:**
+**All 10 OCR items resolved 2026-05-31:**
 
-| ID | Priority | Chapter | Issue |
-|---|---|---|---|
-| Ch49-Virgo | 🔴 HIGH | Ch49 | Virgo Padas 1-9 outcomes -- full block missing |
-| Ch49-Libra | 🔴 HIGH | Ch49 | Libra Padas 1-9 outcomes -- full block missing |
-| Ch49-Gemini-P7 | 🟠 MED | Ch49 | Gemini Pada 7 sign outcome -- OCR unclear |
-| Ch49-Gemini-P9 | 🟠 MED | Ch49 | Gemini Pada 9 -- missing entirely from PDF |
-| Ch49-Scorpio | 🟠 MED | Ch49 | Scorpio Padas 1-2 outcomes -- OCR unclear |
-| Ch49-Aquarius | 🟠 MED | Ch49 | Aquarius Padas 7-8 outcomes -- OCR unclear |
-| Ch49-Remedies | 🟡 LOW | Ch49 | Specific mantra/deity names for malefic Kalachakra periods |
-| Ch50-Combust | 🟡 LOW | Ch50 | Confirm combust condition in rule 041 per sloka 61 |
-| Ch51-Bhoga | 🟡 LOW | Ch51 | Bhoga Rasi algorithm -- verify correct capture |
+| ID | Chapter | Resolution |
+|---|---|---|
+| Ch49-Virgo | Ch49 | ✅ 9 individual outcomes confirmed (PDF p.598-599) |
+| Ch49-Libra | Ch49 | ✅ 9 individual outcomes confirmed; sub-sign repeats text-native (PDF p.599) |
+| Ch49-Gemini-P7 | Ch49 | ✅ Taurus Amsa / weapon injury (PDF p.597) |
+| Ch49-Gemini-P9 | Ch49 | ✅ Gemini Amsa / enjoyment (PDF p.597) |
+| Ch49-Gemini-P8 | Ch49 | 🚨 SOURCE GAP -- absent from text. active: false, source_gap: true. See M-38. |
+| Ch49-Scorpio | Ch49 | ✅ Cancer/Leo Amsa (financial gains / government opposition) |
+| Ch49-Aquarius | Ch49 | ✅ Aries/Taurus Amsa (loss of happiness / death) |
+| Ch49-Remedies | Ch49 | ✅ Generic Shanti Karma only -- no specific deities in text |
+| Ch50-Combust | Ch50 | ✅ Use BPHS Ch07 thresholds; Ch50 does not specify degrees |
+| Ch51-Bhoga | Ch51 | ✅ Provisional accept (algorithm verified mathematically) |
+
+**Encode actions:** ✅ ALL 10 APPLIED 2026-05-31 via `apply_vol2_encode.py`. Ch49: 134→154 rules (5 OCR placeholders replaced, 2 new rules created). Ch50 rule 041: decode_notes + Ch07 combustion ref added. Ch51 rule 020: provisional:true + decode_notes added.
 
 **Post-ingest dedup targets:** BPHS Vol 1 (internal cross-check -- same source text)
 
@@ -106,14 +124,16 @@
 ---
 
 ### P1-4: 300 Horoscopes Vol 1
-**Decode folder:** `ThreeHundredHoroscopes_CC_Decode/` | **Rules:** 57 (3 blocked) | **OCR report:** `H300_OCR_Issues_Report.docx`
+**Decode folder:** `ThreeHundredHoroscopes_CC_Decode/` | **Rules:** 57 | **OCR report:** `H300_OCR_Issues_Report.docx`
 
 | Status | Detail |
 |---|---|
-| Ingest status | 🟠 PARTIAL BLOCKER -- 3 rules need TT decision |
-| Blocked rules | h300-s01-016 · h300-s04-004 · h300-s04-005 |
-| Action | TT reviews each blocked rule → approve/reject/modify. 54 clean rules can ingest immediately. |
-| NLM/GAI priority queries | Issues 7, 13, 19 from OCR report (copy-paste ready in Section 5) |
+| Ingest status | ✅ READY -- all 57 rules unblocked |
+| CC PDF validation | 2026-05-31 -- all 3 previously blocked rules cleared by direct PDF read |
+| h300-s01-016 | ✅ Nakshatra Pada table -- all 12 signs match PDF exactly (abbreviated names correctly expanded) |
+| h300-s04-004 | ✅ Empty-level-skip -- p.28 "Hence Rahu will give result in the following order" confirms text-native |
+| h300-s04-005 | ✅ Cumulative levels -- p.28 "give result of Jupiter, Saturn and Mars... respectively" -- all active levels listed simultaneously |
+| Duplicate report | `H300_DuplicateCandidateReport.md` -- 29 merge, 16 keep-both, 2 needs-human-call (TT at approval stage) |
 | Post-ingest dedup | Run against BPHS Vol 1 + Vol 2 (when ingested) |
 
 ---
@@ -123,9 +143,17 @@
 
 | Status | Detail |
 |---|---|
-| Ingest status | 🔴 BLOCKED -- 5 HIGH OCR items for NLM/GAI first |
-| Key blockers | lu-s04-001 ("must" vs "should" gate) · lu-s04-014 (AND vs OR logic) · lu-s04-003/004 (5-level chain) · lu-s04-010 (lethal planet definition) · CS1 Mercury coordinate |
-| Action | NLM/GAI resolves HIGH items → TT decides on lu-s04-001 and lu-s04-014 architecture choices |
+| Ingest status | ✅ READY -- all 5 HIGH items resolved by CC PDF validation |
+| CC PDF validation | 2026-05-31 -- `LU_PDF_Validation_Results.md` |
+| lu-s04-001 | ✅ "should" confirmed (p.6/p.9) -- weighted condition, not hard gate |
+| lu-s04-014 | ✅ AND/OR resolved: 06 AND Mars required; maraka OR badhaka either sufficient |
+| lu-s04-003/004 | ✅ 5-level chain confirmed; Level 5 "connected" = conjunction + aspect |
+| lu-s04-010 | ✅ "Lethal planet" = both maraka AND badhaka simultaneously (AND logic) |
+| CS1 Mercury | ✅ 19°Aq12'36" (Sata 4) -- DataTable confirmed correct |
+| CS1 Jupiter | ✅ Fixed: 00°Pi60' → 00°Pi59'37" in DataTables |
+| lu-s04-013 | ✅ Progressive houses = {3, 10, 11} -- 6th excluded (MEDIUM resolved) |
+| Remaining MEDIUM (10) | 🟡 Safe to ingest with pending_review: true |
+| Remaining LOW (6) | ✅ Safe to ingest as-is |
 | Post-ingest dedup | Run against BPHS Vol 1 + 300 Combinations + 300 Horoscopes |
 
 ---
@@ -180,8 +208,9 @@
 
 | Status | Detail |
 |---|---|
-| Ingest status | 🟠 NEAR READY |
-| Open items | Verify entries 248-249 (read T06 page 1) · claim_axis retroactive pass on ~20 rules |
+| Ingest status | 🟡 NEAR READY -- Cat B/C/G/H open items remain |
+| Completed 2026-05-31 | ✅ Entries 248-249 T05 PDF-verified (T06 p.110) · ✅ claim_axis retroactive pass: 12 rules corrected (P01→physical_appearance, P09-003→legal, P33-002→career_finance, P34-002→career, P55-005→health, P75-001→social_relationships, P77-001→career_growth, T09-003/009→travel, T09-004→education) · 54 remaining general = legitimately methodology/cross-domain |
+| Open items | Cat B (8 P1): T05 duplicate/skipped entry numbers -- needs OCR docx or T05 PDF · Cat C (2 P1): Missing Rahu-star stubs Swathi 131-138 / Sathabisha 213-221 · Cat G (1 P1): Conditional vs direct delineation inconsistency · Cat H (3 P1): Formatting inconsistencies · P2 terms F-01 to F-06: GAI/NLM batch pending |
 | OCR issues | 44 total: 2 P0 Critical · 15 P1 High · 19 P2 Medium · 8 P3 Low |
 | NLM/GAI priority | P2 ambiguous terms F-01 to F-06 |
 | Post-ingest dedup | BPHS Vol 1 + Vol 2 (system-level differences expected -- KP vs traditional Jyotish) |
@@ -215,26 +244,35 @@ Vol 2 currently only covers Ch49-Ch51. Other chapters (Ch46-Ch48, and beyond Ch5
 
 | Status | Detail |
 |---|---|
-| Ingest status | 🔴 BLOCKED -- 2 Grade A CRITICAL OCR items |
-| CRITICAL | Chart IX zero birth data (bench-004 unverifiable) · "17/46" annotation (could change bench-009 entirely) |
-| OCR total | 81 issues: 2 Grade A · 11 Grade B · 7 Grade C · 61 Grade D |
-| Action | Resolve Grade A items first (NLM/GAI + original chart verification) → then Grade B → ingest |
+| Ingest status | 🟢 READY -- All Grade A + Grade B items resolved 2026-05-31 |
+| Grade A resolved | ✅ A-1: Chart IX birth data confirmed permanently absent -- bench-004 flagged `birth_data_unavailable:true`, Aquarius Lagna derived from analysis, planetary positions extracted from grid. Not a blocker. · ✅ A-2: "17/46" = Lagna degree notation (Cancer 17°46'), NOT birth time. 17:46 IST → Aquarius Lagna (contradicts analysis). Cancer Lagna fully verified by pyswisseph. Additional: chart DOB "7-9-1958" is one-day print error → Sept 6, 1958 (Moon+Mars in Taurus H11 matches analysis ✓). |
+| OCR total | 81 issues: 2 Grade A ✅ · 11 Grade B ✅ (11/11) · 7 Grade C · 61 Grade D |
+| Grade B status | ✅ ALL 11 OF 11 CLOSED 2026-05-31. B-7 Shambhu Hora: Shambhu Hora Prakash (शम्भुहोराप्रकाशः) by Punjarajacharya (~15th-16th c. CE, Chowkhamba) confirmed. Rahu-H6 maternal uncle rule verbatim. Applied to bench-015. B-8 Chaturdashi Dagdha: Dagdha = Gemini/Virgo/Sagittarius/Pisces per Kalaprakashika confirmed. Chart XVIII blindness mechanism confirmed (Sun+Moon in Dagdha rashis). Applied to bench-013. B-11 Vedic quote: Rigveda 1.91.16 reconstructed. Applied to ma-ch03-005 + DataTable 3.2. All three carry gai_citation_unverified flags -- Ingest Thread to cross-check specific chapter/sloka refs before co-founder approval. |
+| Action | Ingest all chapters with `pending_review:true` for Grade B items with gai_citation_unverified flag + `birth_data_unavailable:true` for bench-004. Grade C benchmark data issues (Charts XI/XII/XXII missing DOBs) -- ingest with `analytical_description_only:true`. Grade D cosmetic -- no action needed. |
 | Post-ingest dedup | BPHS Vol 1 (medical astrology principles derive from BPHS planetary significations) |
 
 ---
 
 ### P2-5: Phaladeepika
-**Decode folder:** `Phaladeepika_CC_Decode/` | **Rules:** 743 (16 chapters, Tiers 1-3) | **OCR:** `Phaladeepika_Inconsistencies_Review.docx`
+**Decode folder:** `Phaladeepika_CC_Decode/` | **Rules:** 743+ (all 28 chapters decoded) | **OCR:** `Phaladeepika_Inconsistencies_Review.docx`
 
 | Status | Detail |
 |---|---|
-| Ingest status | 🔴 BLOCKED -- Tier 4 decode pending + 6 HIGH OCR items |
-| Decode status | Tiers 1-3 complete (743 rules / 16 chapters). Tier 4 (3 chapters) still pending. |
-| OCR total | 102 issues: 6 HIGH · 27 MED · 69 LOW · 4 unresolved |
-| GAI priorities | Top 8 items in Section 5 of OCR report (pre-written queries) |
-| Action | Complete Tier 4 decode → resolve 6 HIGH OCR items → ingest Tiers 1-3 first, Tier 4 separately |
+| Ingest status | 🟢 READY -- all 6 HIGH items resolved |
+| Decode status | ✅ ALL 28 CHAPTERS DECODED (Ch01-Ch28 all present in decode folder; OCR report dated 2026-05-30 covers full book) |
+| ~~Tier 4 pending~~ | ~~STALE~~ -- All 28 chapters decoded. "Tier 4 (3 chapters) still pending" entry was stale. |
+| OCR total | 102 issues: 6 HIGH · 27 MED · 69 LOW |
+| HIGH items resolved | 6 of 6 ✅: pd-ch22-c001 · pd-ch25-c002 · pd-ch26-c004 · pd-ch12-c001 · pd-ch27-c001 · pd-ch21-c003 |
+| CC PDF validation | 2026-05-31 -- `PD_PDF_Validation_Results.md` |
+| pd-ch12-c001 | ✅ Benefic in own sign/exalt in 5th → child loss -- TEXT-NATIVE CONFIRMED (Ch12 Sloka 3, p.117) |
+| pd-ch27-c001 | ✅ Emancipation vs ascetic -- NOT A CONTRADICTION -- complementary facets (Ch27 Slokas 1+8, pp.319-322) |
+| pd-ch26-c001 | ✅ Mercury Vedha OCR error corrected: 2nd transit Vedha = 5th (not 8th). vedha_pairs updated in rules JSON. |
+| pd-ch21-c003 | ✅ Jupiter/Mercury Bhukti -- GAI arbitration 2026-05-31. Cross-text majority POSITIVE (BPHS+Saravali+JP). Opinion 1 adverse fires conditionally (Mercury affliction). claim_polarity → positive. gai_citations unverified -- Ingest Thread to cross-check. |
+| Ch08 TBA rules | 6 rules (Sun in houses 1-8): CONFIRMED PDF GAP -- Ch08 PDF starts at Sloka 4 (p.84). Ingest with tba:true. TT to source clean scan. |
+| Remaining MED items | ~25 -- ingest with pending_review:true |
+| Action | ✅ All HIGH items cleared -- ingest all 28 chapters. MED items pending_review:true. Ch08 TBA rules tba:true. Ingest Thread: cross-check gai_citation_unverified entries for pd-ch21-041 before co-founder approval. |
 | Post-ingest dedup | BPHS Vol 1 (Phaladeepika directly references BPHS -- expect both agreements and contradictions) |
-| Note | Cross-text matches with BPHS are expected to be the richest in the entire KE -- Phaladeepika is a commentary tradition on BPHS. |
+| Note | Cross-text matches with BPHS are expected to be the richest in the entire KE -- Phaladeepika is a commentary tradition on BPHS. Ch08 TBA Sun rules (6 rules, tba: true) safe to ingest while clean scan is sourced. |
 
 ---
 
@@ -275,4 +313,4 @@ Run once per existing-book pair. After BPHS Vol 1 + Vol 2 are both ingested, eve
 
 ---
 
-*Last updated: 2026-05-30 by Claude Code Main Thread*
+*Last updated: 2026-06-01 by Claude Code Main Thread -- BPHS Vol 1 P1-1 Phase 2 ingest COMPLETE: 696 rules (Ch03-11, Ch25-33) uploaded and validated. All 5 MED items resolved by PDF read. Total BPHS Vol 1 in MongoDB: ~1,765 rules. Status → ✅ FULLY INGESTED. Earlier (2026-05-31): P1-2 Vol 2 READY · P2-5 Phaladeepika ALL 6 HIGH items resolved → 🟢 READY.*

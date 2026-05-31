@@ -1,9 +1,9 @@
 # Knowledge Engine -- Full Ingest & Validation Process Brief
-**Version:** 7 May 2026
+**Version:** 7 May 2026 · **Freeze notice updated:** 2026-06-01
 **Purpose:** Step-by-step reference for any new Claude Code session picking up ingest work.
 **Read this before writing or running any ingest script.**
 
-> **FREEZE ACTIVE (14 May 2026).** Do not run `ingest_*.py` for new chapters. See `CODEX_MASTER_ROADMAP.md` for Sprint 2 gate conditions.
+> ~~**FREEZE ACTIVE (14 May 2026).**~~ **FREEZE LIFTED ✅ (2026-05-17).** KE-Sprint2 arbitration runtime closed -- all 5 gates passed. Co-founder approval confirmed 2026-05-22. Ingest of new chapters may proceed. All ingest targets `horoscope_db`. Do NOT use stale `EverydayHoroscope` DB.
 
 ---
 
@@ -12,6 +12,94 @@
 > **NEVER upload rules directly to MongoDB without completing Steps 1-3 first.**
 > Dry run → Save JSON → Review → Upload → Validate → Patch → Commit.
 > Every step exists for a reason. Skipping any step wastes credits fixing problems downstream.
+
+---
+
+## STEP 0 -- Source Schema Audit (mandatory before writing any ingest script)
+
+**Learned from BPHS Vol 1 Phase 2 (2026-06-01).** The decoded JSON files for a single book can use multiple different schemas. If the ingest script does not map them correctly, the validator will fail every rule on structural checks -- costing a full re-upload cycle.
+
+### Run this audit on every new book before writing the ingest script
+
+```python
+python3 << 'EOF'
+import json
+from pathlib import Path
+
+FOLDER = Path("/Users/apple/Documents/Knowledge Engine_eBooks/[BOOK]_CC_Decode/")
+
+# Sample first rule from each file
+for f in sorted(FOLDER.glob("*.json"))[:6]:
+    data = json.loads(f.read_text())
+    rules = data.get("rules", data) if isinstance(data, dict) else data
+    if not isinstance(rules, list) or not rules:
+        continue
+    r = rules[0]
+    interp = r.get("interpretation") or {}
+    print(f"\n=== {f.name} ===")
+    print(f"  Format: {'dict {rules:[...]}' if isinstance(data, dict) else 'list [...]'}")
+    print(f"  Keys: {list(r.keys())}")
+    print(f"  interpretation.detailed: {repr((interp.get('detailed') or '')[:60])}")
+    print(f"  claim type: {type(r.get('claim')).__name__} | {repr(str(r.get('claim',''))[:60])}")
+    print(f"  full_text: {repr(str(r.get('full_text',''))[:60])}")
+    print(f"  result: {repr(str(r.get('result',''))[:60])}")
+    print(f"  condition present: {isinstance(r.get('condition'), dict)}")
+    print(f"  conditions present: {bool(r.get('conditions'))}")
+EOF
+```
+
+### What to look for
+
+| Field check | If missing/wrong | Fix required in ingest script |
+|---|---|---|
+| `interpretation.detailed` or `interpretation.summary` | Source uses `claim`, `full_text`, `result`, or `summary` instead | Add `_map_interpretation()` helper -- see BPHS Phase 2 script for all 4 schema patterns |
+| `condition` is a dict | Source uses `conditions` (list) | Add `_map_condition()` -- use `conditions[0]` or synthetic `{"type": rule.get("type")}` |
+| JSON root is `{"rules": [...]}` | `ke_dedup_script.py` and count scripts assume list format | Use format detection: `data.get("rules", data) if isinstance(data, dict) else data` |
+| `source.chapter` missing | Dict-format files often omit it | Inject `source["chapter"] = chapter_num` from loop context |
+
+### Mandatory fields the validator checks (structural_check in knowledge_validator.py)
+
+```python
+# All three must pass or the rule is rejected before Claude even sees it:
+1. interpretation.detailed or interpretation.summary -- non-empty, ≥ 8 words
+2. interpretation.detailed (or summary) -- last char in ".!?\"')"  (no truncation)
+3. condition -- non-empty dict
+```
+
+### Pre-upload local validation (run against saved JSON, before upload)
+
+```python
+python3 << 'EOF'
+import json, re
+from pathlib import Path
+
+YOGA_SCHEMA_TYPES = frozenset({"yoga_combination", "general_principle", "dosha"})
+rules = json.loads(Path("backend/scripts/[name]_rules.json").read_text())
+
+issues = []
+for r in rules:
+    interp = r.get("interpretation") or {}
+    detailed = (interp.get("detailed") or "").strip()
+    summary  = (interp.get("summary") or "").strip()
+    text = detailed or summary
+    cond_type = (r.get("condition") or {}).get("type", "")
+
+    if not text:
+        issues.append((r["rule_id"], "empty_interpretation"))
+    elif len(text.split()) < (3 if cond_type in ("planet_in_house_in_sign","planet_in_house_special") else 8):
+        issues.append((r["rule_id"], "too_short"))
+    elif cond_type not in YOGA_SCHEMA_TYPES and text[-1] not in ".!?\"')":
+        issues.append((r["rule_id"], f"truncated_text (ends '{text[-1]}')"))
+    if not isinstance(r.get("condition"), dict) or not r.get("condition"):
+        issues.append((r["rule_id"], "missing_condition"))
+
+print(f"Total rules: {len(rules)} | Issues: {len(issues)}")
+for rid, reason in issues[:20]:
+    print(f"  {rid}: {reason}")
+EOF
+```
+
+Expected: `Issues: 0` before uploading. If not zero -- fix the ingest script first.
 
 ---
 
@@ -59,8 +147,11 @@ pprint.pprint(rules[-1])
 **What to check:**
 - `rule_id` / `spec_id` follows the naming convention
 - `batch_id` is correct and matches this version
+- **`source.batch_id` is set** (nested inside the `source` dict) -- `validate_rules.py` line 51 queries `source.batch_id`, NOT top-level `ingest_batch_id`. Both must be set, with the same value. If missing, the validator finds 0 rules. *(Learned from BPHS Phase 2, 2026-06-01)*
 - `science_id` is correct (`"mundane_jyotish"` for mundane, `"jyotish"` for natal)
 - `approval_status` is `"pending_review"` (the validator will update this)
+- `interpretation.detailed` and/or `interpretation.summary` are non-empty strings (not blank or missing)
+- `condition` is a non-empty dict (not `None`, not `{}`, not a list)
 - Key data fields are populated (not empty dicts or None where data is expected)
 
 ---
@@ -178,15 +269,18 @@ client.close()
 
 Once you understand why rules were flagged, write a patch script.
 
-**Three types of flags -- classify before patching:**
+**Five types of flags -- classify before patching:**
 
 | Flag type | Description | Resolution |
 |---|---|---|
 | **Truncation false flag** | Validator read buffer cut off mid-sentence. Content IS complete in DB. | Patch to `pending_human_review` |
 | **Content validity dispute** | Validator applies classical Vedic frame to folk/mundane rules. Rule IS in source. | Patch to `pending_human_review` |
 | **Structural false flag** | Validator questions schema patterns already addressed in design. | Patch to `pending_human_review` |
-| **Genuine flag** | Rule has a real problem -- missing data, wrong content, source gap. | Fix the script and re-upload first |
+| **Validator doctrinal error** | Validator made a factually wrong doctrinal claim (e.g., "Moon does not own Cancer"; "Chapa not in BPHS Ch25"). Cross-check source PDF before accepting flag. | Patch to `pending_human_review` with note "validator_error: true" |
+| **Genuine flag** | Rule has a real problem -- missing data, wrong content, source gap, or Codex fabrication. | Fix the script and re-upload first; or mark flagged with TT/GAI queue note |
 | **False contradiction** | Two rules appear to conflict but have mutually exclusive conditions. | Clear contradiction fields with resolution note |
+
+> **Learned from BPHS Phase 2 (2026-06-01):** The validator made doctrinal errors on two rule groups -- (1) flagged Moon-Cancer claiming "Moon does not own Cancer" when Moon IS the lord of Cancer in Vedic astrology; (2) flagged Chapa as "not recognised in BPHS Ch25" when bphs1-ch25-001 explicitly lists Chapa as one of the seven Upagrahas. Always cross-check the source PDF before accepting a validator doctrinal claim. The validator is authoritative on structure and schema; it is NOT authoritative on Vedic astrology doctrine.
 
 **Patch script template:**
 ```python
@@ -302,6 +396,40 @@ git commit -m "chore(ingest): [source] vN -- [topic] (N rules)"
 - Add a chapter/version section with: topic, batch_id, rule count, validation result, design notes
 - Update the cumulative totals table
 - Update the pending chapters list
+
+---
+
+### STEP 7A -- Yoga Chapter Metadata Sync (yoga chapters only)
+
+> **Applies to:** Any ingest batch containing yoga rules (chapters with `condition.yoga_check` objects -- e.g. BPHS Ch35-41, Phaladeepika yoga chapters, 300 Combinations, etc.)
+
+**Background:** The yoga checker sets `condition.yoga_check.checkable` (authoritative). The convenience flag `metadata.yoga_checkable` and the `"yoga_checkable"` tag in `interpretation.tags` must be kept in sync. They can fall out of sync if the yoga checker runs before the metadata backfill, or if rules are re-ingested.
+
+**Run after every yoga chapter ingest and after every patch/re-ingest that touches yoga rules:**
+
+```bash
+# Step 7A-1: Dry run -- preview what will be synced
+python3 backend/scripts/backfill_metadata_yoga_checkable.py \
+  --mongo-url "$MONGO_URL" \
+  --dry-run
+
+# Step 7A-2: Apply sync
+python3 backend/scripts/backfill_metadata_yoga_checkable.py \
+  --mongo-url "$MONGO_URL" \
+  --apply
+```
+
+**Expected output after apply:**
+- `Would patch: 0` on dry run (all in sync)
+- `metadata.yoga_checkable` matches `condition.yoga_check.checkable` on every rule
+- `interpretation.tags` contains `"yoga_checkable"` on all checkable rules
+
+**Note:** `backfill_metadata_yoga_checkable.py` currently covers Ch35-41 (BPHS Vol 1). When other yoga books are ingested, extend the `CHAPTERS` list in the script or create a book-specific variant.
+
+**Add to commit:**
+```bash
+git add backend/scripts/backfill_metadata_yoga_checkable.py
+```
 
 ---
 
@@ -446,4 +574,82 @@ echo $MONGO_URL   # Should print the full connection string, not empty
 - [ ] Validate after every upload
 - [ ] Inspect every flagged rule before patching
 - [ ] Update `INGEST_NOTES.md` before committing
+- [ ] **For yoga chapters:** Run Step 7A (`backfill_metadata_yoga_checkable.py`) after every ingest
 - [ ] Commit after every completed batch
+
+---
+
+---
+
+## Dedup Strategy -- Strategy A (Rolling Pre-Ingest Dedup)
+
+**Decision confirmed 2026-06-01.**
+
+Every book is deduped against ALL previously-ingested books before its own ingest. Never ingest first and dedup later.
+
+### Rule
+> Before ingesting Book B, run `ke_dedup_script.py` comparing Book B source JSONs against the source JSONs of every book already in MongoDB. Review flagged pairs. Consult GAI/NLM on genuine duplicates. Then ingest.
+
+### Practical execution
+
+`ke_dedup_script.py` requires two **separate folders**. When the new and existing source files share the same decode folder, use `prep_[book]_dedup_folders.py` to separate them into temp dirs first.
+
+```bash
+# Step 0 -- Separate source files into temp folders (when needed)
+python3 backend/scripts/prep_[book]_phase[N]_dedup_folders.py
+
+# Step 1 -- Run dedup (dry-run first)
+python3 backend/ke_dedup_script.py \
+  --folder-a /tmp/[new_book_rules]/ \
+  --folder-b /tmp/[existing_book_rules]/ \
+  --threshold 0.82 \
+  --output-report backend/scripts/dedup_reports/dedup_[book_a]_vs_[book_b].json \
+  --dry-run
+
+# Step 2 -- Apply (writes cross_text_matches back to source JSONs)
+python3 backend/ke_dedup_script.py \
+  --folder-a /tmp/[new_book_rules]/ \
+  --folder-b /tmp/[existing_book_rules]/ \
+  --threshold 0.82 \
+  --output-report backend/scripts/dedup_reports/dedup_[book_a]_vs_[book_b].json \
+  --update-files
+
+# Step 3 -- Review report, consult GAI/NLM on flagged pairs
+# Step 4 -- Mark suppressed duplicates in source JSON (duplicate_candidate: true)
+# Step 5 -- Then proceed to ingest (Step 1 of 7-step workflow)
+```
+
+### Dedup priority matrix
+
+| New book (to ingest) | Dedup against | Expected overlap | Priority |
+|---|---|---|---|
+| BPHS Vol 1 Phase 2 | BPHS Vol 1 Phase 1 | Low-moderate (same book, different chapters) | Run |
+| BPHS Vol 1 Phase 2 | BPHS Vol 2 | Low (doctrinally separate chapters) | Run |
+| Phaladeepika | BPHS Vol 1 (all phases) | **HIGH -- direct commentary** | Critical |
+| 300 Combinations | BPHS Vol 1 (all phases) | Moderate | Run |
+| 300 Horoscopes | BPHS Vol 1 + 300 Combinations | Low-moderate | Run |
+| KP Astrology | BPHS Vol 1 | Low (system differences) | Run -- expect few hits |
+| SBC | BPHS Vol 1 | Low (transit/electional vs natal) | Run |
+| Longevity 58 Ch | BPHS Vol 1 Ch43/44 + Longevity Unnatural | Moderate | Run |
+| Medical Astrology | BPHS Vol 1 | Low | Run |
+| Destiny Numerology | None (separate system) | Near-zero | Skip |
+
+### Important: BPHS rule schema and dedup accuracy
+
+`ke_dedup_script.py` compares on: `condition.type + condition.planet + condition.house + condition.sign + full_text` (top-level).
+
+BPHS rules use `interpretation.detailed` (not `full_text`). Comparison runs on **condition fields only**. This means:
+- ✅ House-lord rules (planet + house populated) -- dedup works well
+- ✅ Exaltation/aspect/shadbala rules -- dedup works well
+- ⚠️ Complex yoga rules (condition stored in `condition.notes`) -- dedup is thinner, catches structural overlaps only
+
+For books that DO use `full_text` (LK, Mundane), dedup is more thorough. This is a known limitation -- KOP-02 in the Known Open Points table.
+
+---
+
+## Known Open Points (Process-Level)
+
+| # | Issue | Applies to | Status | Action |
+|---|---|---|---|---|
+| KOP-01 | `metadata.yoga_checkable` and `interpretation.tags["yoga_checkable"]` can fall out of sync with `condition.yoga_check.checkable` after ingest or re-ingest | All yoga chapter batches (BPHS Ch35-41, 300 Combinations yoga rules, Phaladeepika yoga chapters, etc.) | 🟠 Confirmed on BPHS Vol 1 Ch35-41 (2026-06-01). Fixed via Step 7A. | Run `backfill_metadata_yoga_checkable.py` after every yoga chapter ingest. Step 7A added to workflow. When new yoga books are ingested, extend or clone the backfill script for that book. |
+| KOP-02 | Schema Quick Reference in this doc shows `"validation": {"yoga_check": None}` -- this is the Lal Kitab / Mundane schema. BPHS yoga rules use `condition.yoga_check` (rich object) and `metadata.yoga_checkable` (boolean). Two different schema patterns coexist. | BPHS yoga chapters vs LK/Mundane rules | 🟡 By design -- different source books use different schemas. | Do not cross-apply. When inspecting yoga_check, always check `condition.yoga_check` for BPHS yoga rules. Use `validation.yoga_check` schema only for LK/Mundane rules. |
