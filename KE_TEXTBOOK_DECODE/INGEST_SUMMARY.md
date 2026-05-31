@@ -26,26 +26,37 @@
 | Total rules | ~1,456 |
 | Active rules | ~1,456 (all active) |
 | Chapters skipped | 6 (Ch01, Ch02 mythology; Ch27, Ch43, Ch44 dedicated sprint; Ch34, Ch40 absorbed) |
-| Ingest status | 🔴 BLOCKED -- HIGH open items must close first |
-| GAI query file | `BPHS_CC_Decode/BPHS_Vol1_GAI_OpenItems_Query.md` |
+| Ingest status | 🟢 HIGH ITEMS RESOLVED -- Rule file updates pending, then READY |
+| GAI session | 2026-05-30 -- all 10 items resolved in one session |
+| GAI resolution log | `BPHS_CC_Decode/BPHS_Vol1_GAI_Resolutions.md` |
+| Engine code | `BPHS_CC_Decode/BPHS_Vol1_Engine_Core.py` (validated ✅) |
 
-**Open Items -- must close before ingest:**
+**Resolved Items (all 6 HIGH cleared 2026-05-30):**
 
-| ID | Priority | Chapter | Issue | Impact |
-|---|---|---|---|---|
-| TT-CH28-03 | 🔴 HIGH | Ch28 | Ishta Phala formula: arithmetic vs geometric mean | BLOCKS engine computation |
-| TT-CH28-01 | 🔴 HIGH | Ch28 | Uchcha Rasmi formula -- denominator ambiguous | BLOCKS Ishta/Kashta Bala |
-| TT-CH30-01 | 🔴 HIGH | Ch30 | Upa Pada computation -- 3 competing methods | BLOCKS all Ch30 (55 rules) |
-| TT-CH31-01 | 🔴 HIGH | Ch31 | Argala obstruction counting -- from original or Argala position? | BLOCKS Argala computation |
-| TT-CH06-01 | 🔴 HIGH | Ch06 | Trimsamsa even-sign reversal -- order only or order+degrees? | Affects all Trimsamsa rules |
-| TT-CH09-01 | 🔴 HIGH | Ch09 | Balarishta threshold -- 24 years (BPHS) vs 12 years (other texts) | Affects longevity engine |
-| TT-CH30-02 | 🟠 MED | Ch30 | Nasal disorder sign qualifier (Mars+Saturn alone or with sign?) | Ch30 rules 021-022 |
-| TT-CH30-03 | 🟠 MED | Ch30 | Upa Pada computation chain counting method | Ch30 rules 051-053 |
-| TT-CH06-03 | 🟠 MED | Ch06 | Bhamsa D27 starting sign -- element vs modality | Ch06 rule 012 |
-| TT-CH06-02 | 🟠 MED | Ch06 | Shashtiamsa formula precision -- integer or fractional degrees | Ch06 rule 016 |
-| TT-CH28-04 | 🟠 MED | Ch28 | Subhanka neutral sign value -- '8' or different? | Ch28 rule 008 |
-| TT-CH09-02 | 🟠 MED | Ch09 | Oriental/occidental half definition for Vajra Mushti | Ch09 rule 014 |
-| TT-CH31-02 | 🟠 MED | Ch31 | Quarter-degree Argala rule for 3rd/4th quarters | Ch31 rule 010 |
+| ID | Issue | Resolution |
+|---|---|---|
+| ~~TT-CH28-03~~ | Ishta Phala formula | ✅ Arithmetic: `(Uchcha + Cheshta − 2) × 5`. Sanskrit explicit. |
+| ~~TT-CH28-01~~ | Uchcha Rasmi denominator | ✅ 180°. Formula: `(lon − deb) / 180 × 8`. Validated. |
+| ~~TT-CH30-01~~ | Upa Pada computation | ✅ Arudha of 12th house. Parity rules are Chaukamba commentary only. |
+| ~~TT-CH31-01~~ | Argala obstruction counting | ✅ Reading A -- from ORIGINAL house. Jaimini Sutras corroborate. |
+| ~~TT-CH06-01~~ | Trimsamsa even-sign reversal | ✅ Interpretation (b) -- BOTH planet order AND degree widths reversed. |
+| ~~TT-CH09-01~~ | Balarishta age threshold | ✅ 24 years per BPHS Sanskrit. Note 12y in other texts in UI. |
+| ~~TT-CH06-03~~ | Bhamsa D27 starting sign | ✅ Modality-based: Movable→Aries, Fixed→Cancer, Mutable→Libra. |
+| ~~TT-CH28-04~~ | Subhanka values | ✅ Neutral = 8, Extreme friend = 22. Full 9-entry table confirmed. |
+| ~~TT-CH09-04~~ | Gandanta zone breadth | ✅ Both sides -- last 3°20' water sign + first 3°20' fire sign. |
+| ~~TT-CH06-05~~ | Ch05/Ch06 rule ownership | ✅ Slokas 21-24 belong to Ch05. Ingest as Ch05 rules. |
+
+**Remaining MED items (do not block ingest -- resolve post-ingest or in parallel):**
+
+| ID | Priority | Chapter | Issue |
+|---|---|---|---|
+| TT-CH30-02 | 🟠 MED | Ch30 | Nasal disorder sign qualifier (Mars+Saturn alone or with sign?) |
+| TT-CH30-03 | 🟠 MED | Ch30 | Upa Pada computation chain counting method |
+| TT-CH06-02 | 🟠 MED | Ch06 | Shashtiamsa formula precision -- integer or fractional degrees |
+| TT-CH09-02 | 🟠 MED | Ch09 | Oriental/occidental half definition for Vajra Mushti |
+| TT-CH31-02 | 🟠 MED | Ch31 | Quarter-degree Argala rule for 3rd/4th quarters |
+
+**Next step:** Ingest Thread applies GAI resolutions to affected rule JSON files → re-verify with `BPHS_Vol1_Engine_Core.py` → ingest.
 
 **Post-ingest dedup targets:** BPHS Vol 2 (same text family -- dedup before or at ingest)
 
