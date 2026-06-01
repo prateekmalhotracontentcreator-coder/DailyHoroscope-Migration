@@ -225,7 +225,7 @@ function App() {
                   <Route path="/lo-shu-grid/for/:problem" element={<LoShuProblemPage />} />
                   <Route path="/lo-shu-grid/personal-year/:n" element={<LoShuPersonalYearPage />} />
                   <Route path="/rudraksha" element={<RudrakshaHubPage />} />
-                  <Route path="/rudraksha/mukhi/:mukhi" element={<RudrakshaMukhiPage />} />
+                  <Route path="/rudraksha/:mukhi" element={<RudrakshaMukhiPage />} />
                   <Route path="/rudraksha/planet/:planetSlug" element={<RudrakshaPlanetPage />} />
                   <Route path="/rudraksha/problem/:problemSlug" element={<RudrakshaProblemPage />} />
                   <Route path="/rudraksha/sign/:signSlug" element={<RudrakshaSignPage />} />
