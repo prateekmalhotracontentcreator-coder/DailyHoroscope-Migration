@@ -104,10 +104,10 @@ def _map_interpretation(rule: dict) -> dict:
       full_text  → interpretation.detailed
       summary    → interpretation.summary  (fallback: first 200 chars of full_text)
 
-    If interpretation.detailed is already populated, skip (idempotent).
+    If interpretation.detailed or summary is already populated, skip (idempotent).
     """
     interp = rule.get("interpretation") or {}
-    if (interp.get("detailed") or "").strip():
+    if (interp.get("detailed") or "").strip() or (interp.get("summary") or "").strip():
         return rule  # already populated
 
     full_text = (rule.get("full_text") or "").strip()
