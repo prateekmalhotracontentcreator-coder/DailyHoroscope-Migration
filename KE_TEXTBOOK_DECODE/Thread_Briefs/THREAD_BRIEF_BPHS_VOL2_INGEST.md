@@ -76,6 +76,7 @@ All rule JSON files for Ch49, Ch50, Ch51 are present in this folder. Do NOT writ
 | Bucket A triage (13 rules) | 2026-06-01 | 13 truncation-artifact rules patched to auto_approved |
 | GAI query brief prepared | 2026-06-01 | 7 flagged rules + 1 ambiguous contradiction pair sent to GAI for review |
 | GAI response + Bucket B patches | 2026-06-01 | All 7 flagged → PHR (validator_error:true). 7 false contradictions restored → auto_approved. 0 flagged. Final: 118 auto_approved / 131 PHR / 0 flagged. |
+| import_batches updated | 2026-06-01 | status: triage_complete. validation_summary written with final counts. |
 
 **GAI resolution log:** `BPHS_Vol2_CC_Decode/BPHS_Vol2_GAI_Resolutions.md`
 
@@ -155,7 +156,7 @@ Target collection: `interpretation_rules`. Batch tracking: `import_batches`.
 
 **Step 3 -- Inject these fields on every rule before insert:**
 ```python
-rule["approval_status"]    = "pending_human_review"
+rule["approval_status"]    = "pending_review"   # ⚠️ NOT "pending_human_review" -- validate_rules.py queries "pending_review"
 rule["ingested_at"]        = datetime.now(timezone.utc).isoformat()
 rule["ingest_batch_id"]    = "bphs-vol2-ch49-51-v1"
 rule["source_book"]        = "BPHS Vol 2"
@@ -174,12 +175,11 @@ rule["source"]["batch_id"] = "bphs-vol2-ch49-51-v1"  # MANDATORY -- validate_rul
 | ID | Priority | Detail | Status |
 |---|---|---|---|
 | Ch49-Gemini-P8 | Source Gap | bphs2-ch49-gemini-pada-8-gap -- filed as M-38. TT to source Santhanam full text. | Open |
-| Ch51 rule 020 | Provisional | Algorithm verified but not co-founder reviewed. provisional:true in rule. | Open |
+| Ch51 rule 020 | Provisional | bphs2-ch51-020 has provisional:true -- algorithm verified but co-founder review pending before approval. | Open |
 | Vol 2 expansion | Future sprint | Ch46-Ch48 and chapters beyond Ch51 -- NOT in scope for this thread. Separate sprint. | Open |
-| **GAI query (7 rules)** | HIGH | `GAI_Query_BPHS_Vol2_Ch49_51_Flagged_Rules.md` -- All 7 resolved. Patches applied 2026-06-01. | ✅ DONE |
-| 5 false contradiction pairs | Medium | All 5 pairs confirmed false by GAI. Contradiction flags cleared. 7 rules restored to auto_approved. | ✅ DONE |
+| GAI query (7 rules) | - | `GAI_Query_BPHS_Vol2_Ch49_51_Flagged_Rules.md` -- All 7 resolved. Patches applied 2026-06-01. | ✅ DONE |
+| 5 false contradiction pairs | - | All 5 pairs confirmed false by GAI. Contradiction flags cleared. 7 rules restored to auto_approved. | ✅ DONE |
 | **Co-founder approval** | **Blocker** | **118 auto_approved rules await co-founder sign-off for `approved` status and live serving.** | **Blocked on sign-off** |
-| Ch51 rule 020 | Provisional | bphs2-ch51-020 has provisional:true -- algorithm verified but co-founder review pending. | Open |
 
 ---
 
@@ -197,7 +197,7 @@ rule["source"]["batch_id"] = "bphs-vol2-ch49-51-v1"  # MANDATORY -- validate_rul
 1. ✅ Run `ke_dedup_script.py` against BPHS Vol 1 decode folder -- DONE (0 dup, 0 contra)
 2. ✅ Review dedup report -- DONE (clean)
 3. ✅ Write and run `ingest_bphs_vol2_ch49-51.py` -- DONE (249 rules in MongoDB)
-4. ✅ Validate (Stages 1-3) -- DONE (111 auto_approved, 131 PHR, 7 flagged)
+4. ✅ Validate (Stages 1-3) -- DONE (98 auto_approved, 131 PHR, 20 flagged pre-triage)
 5. ✅ Bucket A triage -- DONE (13 rules patched to auto_approved)
 6. ✅ **GAI review** -- All 7 flagged rules resolved. Bucket B patches applied 2026-06-01.
 7. ⏳ **Co-founder approval** -- 118 auto_approved rules ready for sign-off. Admin: `/admin/library → Rules Browser → filter: auto_approved → source: BPHS Vol 2`.
