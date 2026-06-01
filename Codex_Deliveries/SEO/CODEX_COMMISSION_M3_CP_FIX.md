@@ -1,13 +1,13 @@
-# Codex Commission: M3-CP-FIX -- Character Placements Generator Fix (v2)
+# Codex Commission: M3-CP-FIX -- Character Placements Generator Fix (v3)
 > Thread: SEO Legacy (M3 section) | File: `backend/seo_m3_builders.py`
-> Issued: 2026-06-02 (v2 -- first delivery failed re-scan, L1=94.4% BLOCKED)
+> Issued: 2026-06-02 (v3 -- v2 improved L1 to 62.7% but still FLAGGED; new L2 boilerplate introduced)
 > Scan script: `tests/echo_pace_seo20k_scan.py` | Scan report: `SEO_20K/SEO_TRACKER.md`
 
 ---
 
 ## Commission Brief (5 lines)
 
-First delivery failed: L1 went from 93.4% → 94.4% (no improvement). The old boilerplate was replaced with new boilerplate -- `"time place details house"`, `"details house based placements"`, `"place details house based"` now appear on 32% of pages. The root cause is that `build_character_placement_doc()` still derives `strengths`, `challenges`, and `life_themes` from a single pool keyed only on sign+chartpoint, then appends the same house-context sentence across all 12 houses. Fix must be structural: **the body text for every page must be primarily driven by the house, not the sign.** Each of the 12 houses must have its own distinct vocabulary pool (≥6 sentences per house covering its domain -- work, relationships, home, etc.); the sign+chartpoint layer adds flavour ON TOP of the house base, not the other way around. The FAQ answers must use no shared 4-gram sequence across more than 1 in 8 pages -- build a `_hash_index(sign_slug, chartpoint_slug, house_num, answer_idx, modulus=8)` selector. Do NOT introduce any closing sentence, transition phrase, or timing note that appears on more than 2 pages.
+v2 improved L1 from 94.4% → 62.7% -- progress -- but still failing, and the worst pair is now `Scorpio Moon in the 2nd House` vs `Scorpio Sun in the 2nd House`. This reveals the remaining core problem: **Sun/Moon/Rising pages for the same sign in the same house are still too semantically close**. The architecture needs one more layer of separation: (1) **chart-point-native paragraph banks** -- Sun pages must be identity/purpose/visibility-led throughout (not just the opener), Moon pages must be emotion/memory/security-led throughout, Rising pages must be presentation/instinct/outer-style-led throughout -- every `strengths`, `challenges`, and `life_themes` sentence must be written from that chart-point's psychological frame, not generic astrological description; (2) **delete these three phrase families entirely**: `"house turns attention toward"` (100%), `"blend makes house site"` (43%), `"life themes revolve around"` (42%) -- these are universal structural stems that recur regardless of house or chart point; (3) **meta_title must use two alternating patterns** rotated by `_hash_index(sign, chartpoint, house, modulus=2)` so same-sign pages are not token-identical across houses; (4) **no sentence stem may be shared across chart points for the same house** -- a reader must be able to identify whether a page is Sun, Moon, or Rising from the body text alone, without seeing the title.
 
 ---
 
@@ -15,7 +15,7 @@ First delivery failed: L1 went from 93.4% → 94.4% (no improvement). The old bo
 
 | Page Type | URL Pattern | Total Pages | Dimensions | Content Fields Scanned |
 |---|---|---|---|---|
-| Character Placements | `/traits/{sign}/{chart_point}/{house}` | 432 | 12 signs × 3 chart points × 12 houses | `summary`, `overview`, `traits.strengths`, `traits.challenges`, `traits.life_themes`, FAQ answers |
+| Character Placements | `/traits/{sign}/{chart_point}/{house}` | 432 | 12 signs × 3 chart points (Sun/Moon/Rising) × 12 houses | `summary`, `overview`, `traits.strengths`, `traits.challenges`, `traits.life_themes`, FAQ answers, `meta_title` |
 
 ---
 
@@ -23,17 +23,35 @@ First delivery failed: L1 went from 93.4% → 94.4% (no improvement). The old bo
 
 | Cluster | Pages Affected | Issue | Fix Required |
 |---|---|---|---|
-| All 432 pages | 432 / 432 | Body text keyed on sign+chartpoint; house adds nothing distinctive | Invert architecture: house vocabulary pool is PRIMARY, sign adds flavour |
-| FAQ answers | 432 / 432 | New shared 4-grams introduced by v1 delivery | `_hash_index` with modulus=8; no closing sentence shared across >2 pages |
-| **Total impacted** | **432 / 432** | L1 94.4% BLOCKED · L2 FAIL | Full structural rewrite |
+| Same-sign, same-house, diff chart point (e.g. Scorpio Sun 2H vs Scorpio Moon 2H) | 144 clusters of 3 | Still too semantically close -- worst pair in v2 scan | Chart-point-native paragraph banks: Sun=purpose, Moon=emotion, Rising=presentation |
+| Universal structural stems | 432 / 432 | New shared 4-grams from v2: "house turns attention toward" 100%, "life themes revolve around" 42% | Delete entirely -- no replacement, write natively |
+| `meta_title` | 432 / 432 | Same-sign titles cluster by token across houses + chart points | 2 alternating title patterns, hash-rotated by sign+chartpoint+house |
+| **Total impacted** | **432 / 432** | L1 62.7% FLAGGED · L2 FAIL · L3 FAIL | Chart-point separation + stem elimination |
 
-**Phrases that MUST NOT appear on more than 1 page each (found in re-scan):**
-- `"time place details house"` -- delete entirely
-- `"details house based placements"` -- delete entirely
-- `"place details house based"` -- delete entirely
-- Any variation of `"birth time"`, `"accurate birth"`, `"birth chart"` as a standalone closing sentence
+**Phrases that MUST NOT appear anywhere in the output (delete, do not rephrase):**
+- `"house turns attention toward"` -- 100% of pages in v2
+- `"blend makes house site"` -- 43% of pages in v2
+- `"life themes revolve around"` -- 42% of pages in v2
+- `"time place details house"` -- from v1, must remain gone
+- `"details house based placements"` -- from v1, must remain gone
+- Any closing sentence shared across chart points (e.g. timing notes, chart-consultation prompts)
 
-**Architecture rule:** The 12 house domains are: (1) self/identity (2) finances/possessions (3) communication/siblings (4) home/roots (5) creativity/children (6) health/service (7) partnerships (8) transformation (9) philosophy/travel (10) career/reputation (11) friendships/goals (12) spirituality/retreat. Every `strengths`, `challenges`, and `life_themes` field must contain ≥2 sentences that could ONLY apply to that house domain -- a reader must be able to identify the house from the body text alone.
+**Chart-point architecture rule (MANDATORY):**
+
+Every sentence in `strengths`, `challenges`, and `life_themes` must be written from the chart-point's frame:
+
+| Chart Point | Psychological Frame | Vocabulary Domain |
+|---|---|---|
+| **Sun** | Identity · Purpose · Visibility · Ego-expression | drive, achievement, recognition, creative will, authority |
+| **Moon** | Emotion · Memory · Security · Instinctive response | comfort, nurturing, past, feeling-tone, inner landscape |
+| **Rising** | Presentation · First impression · Instinct · Body | approach, style, how others perceive, physical manner, outer layer |
+
+A Sun-in-2nd-House page and a Moon-in-2nd-House page for the same sign must read as **entirely different psychological experiences of the same house domain** -- not the same description with different adjectives.
+
+**Meta_title pattern rule:**
+Use two structurally different patterns, hash-rotated:
+- Pattern A: `"{Sign} {ChartPoint} in the {OrdinalHouse} House -- {Domain} & Life Themes"`
+- Pattern B: `"{ChartPoint} in {Sign}: {HouseDomain} Placement Guide"`
 
 ---
 
@@ -45,17 +63,23 @@ First delivery failed: L1 went from 93.4% → 94.4% (no improvement). The old bo
 | N-gram Match | L2 | `tests/echo_pace_seo20k_scan.py` | **0** four-gram violations > 15% frequency | Same script |
 | Jaccard Titles | L3 | `tests/echo_pace_seo20k_scan.py` | No title pair > 60% Jaccard | Same script |
 
+**Self-check before submitting:** Take any one sign (e.g. Scorpio), one house (e.g. 2nd), and compare the Sun, Moon, and Rising pages side by side. If the three pages share any sentence structure beyond the house-domain opener, the fix is not complete.
+
 ---
 
 ## 4. Scan History
 
-| Scan | Date | L1 | L1 Status | L2 Violations | L3 Worst Jaccard | Verdict |
+| Scan | Date | L1 | L1 Status | L2 Violations | L3 Status | Verdict |
 |---|---|---|---|---|---|---|
-| Pre-fix (original) | 2026-05-31 | 93.4% | ❌ BLOCKED | 10 at 100% | 100% | FAIL |
-| v1 delivery re-scan | 2026-06-02 | **94.4%** | ❌ BLOCKED | 10 at 32% | 100% | ❌ FAIL -- regression |
-| v2 delivery (target) | -- | **< 50%** | ✅ PASS | 0 | < 60% | -- |
+| Pre-fix (original) | 2026-05-31 | 93.4% | ❌ BLOCKED | 10 at 100% | FLAGGED | FAIL |
+| v1 re-scan | 2026-06-02 | 94.4% | ❌ BLOCKED | 10 at 32% | FLAGGED | ❌ FAIL -- no improvement |
+| v2 re-scan | 2026-06-02 | **62.7%** | ⚠️ FLAGGED | 10 ("house turns attention toward" 100%) | FAIL | ❌ FAIL -- new boilerplate |
+| **v3 target** | -- | **< 50%** | ✅ PASS | **0** | PASS | -- |
 
-**Top v1 L2 violations (must be eliminated in v2):**
-- `"time place details house"` -- 32%
-- `"details house based placements"` -- 32%
-- `"place details house based"` -- 32%
+**v2 worst pair:** `Scorpio Moon in the 2nd House` vs `Scorpio Sun in the 2nd House`
+**Root cause:** Sun/Moon/Rising pages for same sign+house still share structural framing -- chart-point separation is the key unlock.
+
+**Top v2 L2 violations (must be eliminated in v3):**
+- `"house turns attention toward"` -- 100%
+- `"blend makes house site"` -- 43%
+- `"life themes revolve around"` -- 42%
