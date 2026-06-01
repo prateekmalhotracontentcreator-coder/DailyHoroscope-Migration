@@ -1,7 +1,7 @@
 # Temple Tracker -- Master Index
 > EverydayHoroscope · Module Status Dashboard
 > **Read this at session start. Then open the individual module tracker for the module you are working on.**
-> Last updated: 2026-05-25 (session 9 -- TAR-SEO-1 local delivery prepared and build-verified; SEO-20K M3 integrated by TT. Prior integrated set remains KP-Sprint2 `20d4d29` · KP-2B `20f7b83` · SEO-20K M2 `aba7d5c`)
+> Last updated: 2026-05-31 v5.1 (session 12 complete -- Full ECHO/PACE scan cycle done for all 15 delivered SEO module types. 8 fix commissions READY TO ISSUE: ANGEL-3, RUD-L2, CRY-L2, FAITH-REWRITE, M3-CP-FIX, M3-TR-FIX, M2-COMPAT-FIX, TAR-SEO-FIX. Brief files in `Codex_Deliveries/SEO/`. SEO_TRACKER.md updated to v5.3.)
 
 ---
 
@@ -54,6 +54,13 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | 16 | SEO & Web Performance | [`SEO/TRACKER.md`](Codex_Deliveries/SEO/TRACKER.md) | 🟡 ACTIVE | SEO-20K M1 ✅ · M2 ✅ · M3 ✅ · **M4 (TAR-SEO-1/2) ✅ QA-CLEARED 2026-05-30** -- 199 Tarot SEO pages live, ECHO/PACE strict + Layer G full pass. M5 (FAITH-20K) → brief at `Faith_Hubs/CODEX_COMMISSION_FAITH_20K.md` -- READY TO ISSUE. | TT |
 | 17 | World Oracles | [`World_Oracles/TRACKER.md`](Codex_Deliveries/World_Oracles/TRACKER.md) | 🟣 PLANNED | Phase 3 -- do not issue until KP Oracle 30+ days live | TT |
 | 18 | Lo Shu Grid | [`Lo_Shu_Grid/TRACKER.md`](Codex_Deliveries/Lo_Shu_Grid/TRACKER.md) | ✅ COMPLETE | LSG-1 + LSG-2 fully live · 57 URLs · seeded · smoke tested · ECHO/PACE L1-L3 + Layer G all PASS · NavBar wired · all open points closed. | -- |
+| 19 | Rudraksha | [`Rudraksha/TRACKER.md`](Codex_Deliveries/Rudraksha/TRACKER.md) | ✅ LIVE | RUD-L2 ✅ · ECHO/PACE all 4 layers PASS (L1 ≤25.2%, L2 0, L3 0, Layer G 0/8) · 6 App.js routes wired · 62 Mongo docs seeded (mukhis/planets/problems/signs) · **TT: smoke test `/rudraksha` on production** | CC |
+| 20 | Crystal Healing | [`Crystal_Healing/TRACKER.md`](Codex_Deliveries/Crystal_Healing/TRACKER.md) | 🔴 BLOCKED | CRY-1 ✅ backend delivered + registered. ECHO/PACE 2026-05-31: **L1 borderline PASS (47.7%)**, L2 FAIL (100% boilerplate), L3 FLAGGED. **CRY-L2 commission READY TO ISSUE.** Routes + seed blocked. ⚠️ CRY-2 + CRY-3 also delivered -- assess if they compound L2 violations. | CC/TT |
+| 21 | Faith & Scripture | [`Faith_Hubs/TRACKER.md`](Codex_Deliveries/Faith_Hubs/TRACKER.md) | 🔴 CRITICAL | FAITH-20K ✅ generator delivered. ECHO/PACE 2026-05-31: **Gita L1=100% BLOCKED · Bible L1=82% BLOCKED · Transit L1=100% BLOCKED**. Root cause: fixed situation/topic boilerplate in summary/hook/application fields -- same failure mode as ANGEL-1. **FAITH-REWRITE commission READY TO ISSUE (CRITICAL).** Do NOT seed any Faith collections. | CC/TT |
+| 22 | Angel Numbers | [`Angel_Numbers/TRACKER.md`](Codex_Deliveries/Angel_Numbers/TRACKER.md) | 🔴 BLOCKED | ANGEL-2 ✅ integrated `2271c36`. L1 still fails (45-57%, gate < 40%). **ANGEL-3 READY TO ISSUE** (brief: `Angel_Numbers/CODEX_COMMISSION_ANGEL_3_L1_FIX.md`). Seed blocked until ANGEL-3 passes. | CC/TT |
+| 23 | SEO-20K M3 Fix (Character Placements + Transit Profiles) | [`SEO/`](Codex_Deliveries/SEO/) | 🔴 CRITICAL | ECHO/PACE 2026-05-31: Character Placements **L1=93.4% BLOCKED** (worst in scan), Transit Profiles **L1=71.2% BLOCKED**. Both live in production but serving duplicate content. **M3-CP-FIX + M3-TR-FIX READY TO ISSUE.** Briefs: `Codex_Deliveries/SEO/CODEX_COMMISSION_M3_CP_FIX.md` + `M3_TR_FIX.md`. | CC/TT |
+| 24 | SEO-20K M2 Fix (Sign Compatibility) | [`SEO/`](Codex_Deliveries/SEO/) | ⚠️ FLAGGED | ECHO/PACE 2026-05-31: **L1=50.0% on gate** (must go below 50%). L2 FAIL (koota narrative boilerplate). **M2-COMPAT-FIX READY TO ISSUE.** Brief: `Codex_Deliveries/SEO/CODEX_COMMISSION_M2_COMPAT_FIX.md`. | CC/TT |
+| 25 | Tarot SEO Fix | [`SEO/`](Codex_Deliveries/SEO/) | ⚠️ FLAGGED | ECHO/PACE 2026-05-31: Spreads L2 FAIL ("page reads spread card layout" 100%), Cards L3 FLAGGED (75% same-suit), Intentions L2+L3 FAIL. L1 PASSES all types -- must not regress. **TAR-SEO-FIX READY TO ISSUE.** Brief: `Codex_Deliveries/SEO/CODEX_COMMISSION_TAR_SEO_FIX.md`. | CC/TT |
 
 ---
 

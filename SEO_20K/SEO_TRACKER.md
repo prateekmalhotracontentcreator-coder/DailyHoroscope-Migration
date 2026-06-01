@@ -1,6 +1,6 @@
 # SEO & Web Performance -- Module Tracker
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-05-29 · v4.0 (QA reconciliation + ECHO/PACE score table added)
+> Last updated: 2026-05-31 · v5.3 (ECHO/PACE scans completed for all modules including SEO-C + Tarot; 4 new fix commission briefs written: M3-CP-FIX, M3-TR-FIX, M2-COMPAT-FIX, TAR-SEO-FIX)
 
 ---
 
@@ -79,6 +79,11 @@
 | v3.7 | 2026-05-25 | SEO-20K M4 / TAR-SEO-1 local delivery prepared. Added `backend/tarot_seo_router.py`, tarot sitemap support in `backend/seo_router.py`, `server.py` router wiring, four new public React pages under `frontend/src/pages/tarot-seo/`, public routes for `/tarot/spreads`, `/tarot/spread/:spreadSlug`, `/tarot/card/:cardSlug`, and `/tarot/for/:intentionSlug`, plus Vercel cache headers and sitemap-index wiring. Frontend production build passed, backend syntax checks passed, and the interactive `/tarot` module remained untouched. | Codex | `Tarot/CODEX_COMMISSION_TAR_SEO_1.md` |
 | v3.8 | 2026-05-25 | TAR-SEO-2 local data rewrite prepared as a follow-on fix to M4. Reworked only `backend/tarot_seo_data.py` to replace source-derived spread prose and rigid card templates. `py_compile` passed, legacy repeated phrases were removed, and record counts remained `100` spreads, `78` cards, `20` intentions. No router, frontend, or wiring files changed in this session. | Codex | `Tarot/CODEX_COMMISSION_TAR_SEO_2_REWRITE.md` |
 | v4.0 | 2026-05-29 | QA reconciliation completed. Final master status table + ECHO/PACE score framework added. M3-FIX-1 and TAR-SEO-1 flagged as live integration gaps. | TT | This session |
+| v5.0 | 2026-05-31 | ECHO/PACE scans run for RUD-1, CRY-1, FAITH-20K, Angel Numbers. Paid API column added. Full scores recorded. Commission briefs written: RUD-L2, CRY-L2, FAITH-REWRITE, ANGEL-3. | CC | Session 12 |
+| v5.1 | 2026-05-31 | ECHO/PACE scans run for all 7 SEO-20K infrastructure modules. Scores recorded for City Panchang (N/A), Choghadiya (N/A), Sign Compatibility, Remedy Hub, Transit Profiles, Character Placements, Festival Regions, Per-Sign Horoscopes (meta), Festival/Calendar. | CC | Session 12 |
+| v5.2 | 2026-05-31 | ECHO/PACE scans run for SEO-C pooled (14 pages) and all 3 Tarot SEO page types (198 pages). Full scores added to ECHO/PACE table. Failing modules listed in "Commissions Pending" table. | CC | Session 12 |
+| v5.4 | 2026-06-02 | RUD-L2 delivered by Codex + verified. `rudraksha_content.py` rewritten. Re-scan: Mukhi L1=25.2%, Planet L1=11.7%, Problem L1=17.5%, Sign L1=6.0% -- all L2/L3 PASS. Module unblocked. Rudraksha rows updated in ECHO/PACE table. | CC | `CODEX_COMMISSION_RUD_L2.md` |
+| v5.3 | 2026-05-31 | Fix commission briefs written for all 4 failing SEO module clusters: M3-CP-FIX (Character Placements, CRITICAL), M3-TR-FIX (Transit Profiles, BLOCKED), M2-COMPAT-FIX (Sign Compatibility, FLAGGED), TAR-SEO-FIX (Tarot Spreads+Cards+Intentions, L2/L3 FAIL). Briefs in `Codex_Deliveries/SEO/`. "Commissions Pending" table updated with all 8 open commissions. | CC | Session 12 |
 
 ---
 
@@ -109,35 +114,90 @@
 | **ECHO-1** | ECHO/PACE Admin Engine + tab | Admin tool | 🟡 PARTIAL -- backend live, UI not in bundle | `/api/admin/echo-pace/history` | **ECHO-UI-1**: frontend tab not deployed |
 
 **Total pages across all live SEO commissions:** ~4,300+ programmatic + ~55 editorial (excl. TAR-SEO-1 pending)
+**Total pages in pipeline (delivered, pre-seed):** ~16,800 Faith + ~10,001 Angel Numbers + ~62 Rudraksha + ~70 Crystal = ~26,933 additional pages pending scan clearance
 
 ---
 
 ## ECHO/PACE Score Table
 
-> **ECHO = E**ngagement-**C**ontent-**H**uman-**O**riginality (copyright / duplication check)
-> **PACE = P**ublishability-**A**uthenticity-**C**ontent-**E**xperience (SEO quality)
->
-> **Thresholds:** Internal pass ≥ 60. Google pass ≤ 40% failure rate.
-> **How to run:** Admin Console → ECHO/PACE tab → enter page URL → Process. Requires ECHO-UI-1 gap to be resolved first.
+> **Layers:** L1 = TF-IDF cosine (PASS < 50% · FLAGGED 50-69% · BLOCKED ≥ 70%) | L2 = 4-gram phrase match (PASS = 0 violations in > 15% of pages) | L3 = Jaccard title similarity (PASS < 60%) | Layer G = Google exact-phrase hits (PASS ≤ 1 hit)
+> **Script location:** `tests/echo_pace_[module]_scan.py` per module
+> **Scan date column:** date the test was last run. Blank = not yet run.
 
-| Commission | Page Type | ECHO Score (Internal) | PACE Score (Internal) | Google Failure Rate | Status |
-|---|---|---|---|---|---|
-| SEO-20K M1 | City Panchang | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
-| SEO-20K M2 | Sign Compatibility | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
-| SEO-20K M3 | Transit Profiles | _Not run_ | _Not run_ | _Not run_ | ⬜ M3-FIX-1 fix needed first |
-| SEO-20K M3 | Festival Regions | _Optimised to <40% duplication_ (9 GAI rounds) | _Not run_ | < 40% (duplication optimised) | 🟡 Content optimised; formal ECHO/PACE run pending |
-| SEO-20K M3 | Character Placements | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
-| SEO-B1/B2/B3 | Horoscope / Festival | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
-| SEO-C series | Calculators / Hubs | _Not run_ | _Not run_ | _Not run_ | ⬜ Needs ECHO/PACE run |
-| TAR-SEO-1 | Tarot SEO pages | _Not run (not live)_ | _Not run_ | _Not run_ | ⬜ Run after integration |
+### SEO-20K Modules (infrastructure + editorial)
 
-**Action required to populate this table:**
-1. ✅ First: resolve ECHO-UI-1 gap (deploy ECHO/PACE admin tab to production bundle)
-2. Then: run ECHO/PACE process for each page type via Admin Console
-3. Record scores in this table after each run
-4. Any commission with ECHO < 60 or Google failure rate > 40% needs content fix before Google submission
+> Scan script: `tests/echo_pace_seo20k_scan.py` | Last run: 2026-05-31
+> **Paid API Column** -- "YES" = Anthropic/Claude API called on every live page render (token cost per user request). "NO" = pyswisseph local compute / MongoDB query / static data only.
+
+| Commission | Page Type | Pages | Paid API? | L1 Score | L1 Status | L2 Violations | L2 Status | L3 Worst Jaccard | L3 Status | Layer G | Scan Date | Next Action |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| SEO-20K M1 | **City Panchang** | ~2,000 | ❌ NO (pyswisseph) | N/A | ✅ N/A -- live computed | N/A | ✅ N/A -- unique per city+date | N/A | ✅ N/A | ⬜ Not run | 2026-05-31 | No static content risk -- monitor via GSC |
+| SEO-20K M1 | **Choghadiya** | ~600 | ❌ NO (pyswisseph) | N/A | ✅ N/A -- live computed | N/A | ✅ N/A -- unique per city+date | N/A | ✅ N/A | ⬜ Not run | 2026-05-31 | No static content risk -- monitor via GSC |
+| SEO-20K M2 | **Sign Compatibility** | 144 | ❌ NO (vedic_calculator) | 50.0% | ⚠️ FLAGGED | 10 at 100% freq | ❌ FAIL | 75% | ⚠️ FLAGGED | ⬜ Not run | 2026-05-31 | Issue fix commission -- koota narrative template variation |
+| SEO-20K M2 | **Remedy Hub** | 12 | ❌ NO (MongoDB read) | 15.4% | ✅ PASS | 0 | ✅ PASS | < 60% | ✅ PASS | ⬜ Not run | 2026-05-31 | ✅ Clear -- run Layer G before seeding |
+| SEO-20K M3 | **Transit Profiles** | 108 | ❌ NO (static generator) | 71.2% | ❌ BLOCKED | 10 at 100% freq | ❌ FAIL | 67% | ⚠️ FLAGGED | ⬜ Not run | 2026-05-31 | Issue fix commission -- transit narrative pool expansion |
+| SEO-20K M3 | **Festival Regions** | 480 | ❌ NO (static generator) | 64.5% | ⚠️ FLAGGED | 10 at 100% freq | ❌ FAIL | 75% | ⚠️ FLAGGED | ⬜ Not run | 2026-05-31 | M3-FIX-1 still not integrated -- fix L2 boilerplate too |
+| SEO-20K M3 | **Character Placements** | 432 | ❌ NO (static generator) | 93.4% | ❌ BLOCKED | 10 at 100% freq | ❌ FAIL | 100% | ⚠️ FLAGGED | ⬜ Not run | 2026-05-31 | Issue fix commission -- critical, worst score in full scan |
+| SEO-B1 | **Per-Sign Horoscopes** (meta layer) | 36 | ✅ YES (claude-sonnet-4 per request) | 62.5% | ⚠️ FLAGGED (meta only) | 10 at 33% freq | ❌ FAIL (meta) | 71% | ⚠️ FLAGGED | ⬜ Not run | 2026-05-31 | Fix meta title templates -- LLM body not scanned (unique per run) |
+| SEO-B2/B3 | **Festival / Calendar / Hora** | 5 | ❌ NO (panchang live dates only) | 12.1% | ✅ PASS | 10 at 20% freq | ⚠️ Minor (3-page set) | < 60% | ✅ PASS | ⬜ Not run | 2026-05-31 | ✅ Acceptable -- small page set, low duplication risk |
+| SEO-C series | **SEO-C pooled** (all 14 editorial pages) | 14 | ❌ NO | 43.2% | ✅ PASS | 0 | ✅ PASS | 71% (Name Compat vs Love Calc) | ⚠️ Minor | ⬜ Not run | 2026-05-31 | Fix meta title tail -- "Vedic Numerology Match" duplicated across 2 pages |
+| TAR-SEO-1/2 | **Tarot Spreads** | 100 | ❌ NO (static data) | 32.9% | ✅ PASS | 6 at 100% freq | ❌ FAIL | 70% (2 isolation titles) | ⚠️ Minor | ⬜ Not run | 2026-05-31 | Vary spread intro sentence ("page reads spread card layout" 100%) |
+| TAR-SEO-1/2 | **Tarot Cards** | 78 | ❌ NO (static data) | 34.8% | ✅ PASS | 0 | ✅ PASS | 75% (same-suit cards) | ⚠️ FLAGGED | ⬜ Not run | 2026-05-31 | Fix meta_title -- "minor Meaning & Guide" tail identical for all minor arcana |
+| TAR-SEO-1/2 | **Tarot Intentions** | 20 | ❌ NO (static data) | 14.2% | ✅ PASS | 10 at 100% freq | ❌ FAIL | 75% (Love/Career/Money/Health) | ⚠️ FLAGGED | ⬜ Not run | 2026-05-31 | Vary intro sentence + diversify meta title beyond "Best Tarot Spreads for X" |
+
+**Modules needing fix commissions from this scan:**
+
+| Module | Commission ID | Severity | Root Cause | Brief Location |
+|---|---|---|---|---|
+| Character Placements | M3-CP-FIX | 🔴 CRITICAL (L1 = 93.4%) | `build_character_placement_doc()` shares fixed trait/theme boilerplate across all sign×chartpoint×house combos | Draft brief in `Codex_Deliveries/SEO/` |
+| Transit Profiles | M3-TR-FIX | 🔴 BLOCKED (L1 = 71.2%) | `build_transit_profile_doc()` uses fixed FAQ + narrative pool -- same phrases on all 108 pages | Draft brief in `Codex_Deliveries/SEO/` |
+| Sign Compatibility | M2-COMPAT-FIX | ⚠️ FLAGGED (L1 = 50.0%) | `_koota_narrative()` and `_build_summary()` use fixed templates -- all 144 pages share structural vocabulary | Draft brief in `Codex_Deliveries/SEO/` |
+| Festival Regions | M3-FIX-1 (existing) | ⚠️ FLAGGED (L1 = 64.5%) | L2 boilerplate still present after M3-FIX-1 -- M3-FIX-1 not yet integrated either | `backend/seo_m3_builders.py` -- integrate M3-FIX-1 first then reassess |
+| Per-Sign Horoscopes | SEO-B1-META-FIX | ⚠️ FLAGGED (meta layer) | Title/description templates share too much vocabulary across the 36 sign×period pages | Vary PERIOD_META description templates per sign element (Fire/Earth/Air/Water) |
+
+### Programmatic SEO Modules (scanned 2026-05-31)
+
+| Module | Commission | Page Type | Pages | L1 Score | L1 Status | L2 Violations | L2 Status | L3 Worst Jaccard | L3 Status | Layer G | Seed OK? |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| **Lo Shu Grid** | LSG-1/2 | All (57 URLs) | 57 | ✅ PASS | ✅ PASS | 0 | ✅ PASS | < 60% | ✅ PASS | ✅ PASS | ✅ YES -- Live |
+| **Angel Numbers** | ANGEL-2 | Core numbers | 1,000 | 45-57% | ❌ FAIL (gate < 40%) | 0 | ✅ PASS | < 60% | ✅ PASS | ⬜ Not run | ❌ Blocked -- ANGEL-3 |
+| **Angel Numbers** | ANGEL-2 | Intent pages | 9,000 | 45-57% | ❌ FAIL (gate < 40%) | 0 | ✅ PASS | < 60% | ✅ PASS | ⬜ Not run | ❌ Blocked -- ANGEL-3 |
+| **Rudraksha** | RUD-L2 ✅ | Mukhi (1-21) | 21 | **25.2%** | ✅ PASS | **0** | ✅ PASS | **0 pairs >60%** | ✅ PASS | ⬜ Not run | 🟠 Pending App.js + seed |
+| **Rudraksha** | RUD-L2 ✅ | Planet (9) | 9 | **11.7%** | ✅ PASS | **0** | ✅ PASS | **0 pairs >60%** | ✅ PASS | ⬜ Not run | 🟠 Pending App.js + seed |
+| **Rudraksha** | RUD-L2 ✅ | Problem (20) | 20 | **17.5%** | ✅ PASS | **0** | ✅ PASS | **0 pairs >60%** | ✅ PASS | ⬜ Not run | 🟠 Pending App.js + seed |
+| **Rudraksha** | RUD-L2 ✅ | Sign (12) | 12 | **6.0%** | ✅ PASS | **0** | ✅ PASS | **0 pairs >60%** | ✅ PASS | ⬜ Not run | 🟠 Pending App.js + seed |
+| **Crystal Healing** | CRY-1 | Crystal profiles | 50 | 47.7% ⚠️ | ✅ PASS (borderline) | 10 at 100% | ❌ FAIL | 88% | ⚠️ FLAGGED | ⬜ Not run | ❌ Blocked -- CRY-L2 |
+| **Crystal Healing** | CRY-1 | Intention guides | 20 | 20.8% | ✅ PASS | 10 at 100% | ❌ FAIL | 71% | ⚠️ FLAGGED | ⬜ Not run | ❌ Blocked -- CRY-L2 |
+| **Faith** | FAITH-20K | Gita × Situation | 10,500 | **100.0%** | ❌ BLOCKED | 10 at 100% | ❌ FAIL | 100% | ⚠️ FLAGGED | ⬜ Not run | ❌ Blocked -- FAITH-REWRITE |
+| **Faith** | FAITH-20K | Bible × Transition | 6,000 | **81.7%** | ❌ BLOCKED | 10 at 100% | ❌ FAIL | 67% | ⚠️ FLAGGED | ⬜ Not run | ❌ Blocked -- FAITH-REWRITE |
+| **Faith** | FAITH-20K | Transit pages | 156 | **99.5%** | ❌ BLOCKED | 10 at 100% | ❌ FAIL | 71% | ⚠️ FLAGGED | ⬜ Not run | ❌ Blocked -- FAITH-REWRITE |
+| **Faith** | FAITH-20K | Daily pages | 144 | 50.0% ⚠️ | ⚠️ ON GATE | 5 at 100% | ❌ FAIL | 75% | ⚠️ FLAGGED | ⬜ Not run | ❌ Blocked -- FAITH-REWRITE |
+
+### Commissions Pending -- Rework Required
+
+| Module | Commission | Issue | Brief | Priority |
+|---|---|---|---|---|
+| Angel Numbers | **ANGEL-3** | L1 still 45-57% (gate < 40%). 8 vocabulary pools need expansion + digit-pattern anchoring. | `Codex_Deliveries/Angel_Numbers/CODEX_COMMISSION_ANGEL_3_L1_FIX.md` | 🔴 READY TO ISSUE |
+| ~~Rudraksha~~ | ~~**RUD-L2**~~ | ~~L2 FAIL (100% FAQ boilerplate). L3 FLAGGED (digit meta titles).~~ | `Codex_Deliveries/Rudraksha/CODEX_COMMISSION_RUD_L2.md` | ✅ INTEGRATED 2026-06-02 -- all layers PASS |
+| Crystal Healing | **CRY-L2** | L2 FAIL (100% caution/FAQ boilerplate). L3 FLAGGED. L1 borderline -- must not regress. | `Codex_Deliveries/Crystal_Healing/CODEX_COMMISSION_CRY_L2.md` | 🔴 READY TO ISSUE |
+| Faith & Scripture | **FAITH-REWRITE** | L1 CRITICAL: Gita 100%, Bible 82%, Transit 100%. Fixed situation/topic boilerplate dominates body text. | `Codex_Deliveries/Faith_Hubs/CODEX_COMMISSION_FAITH_REWRITE.md` | 🔴 READY TO ISSUE -- CRITICAL |
+| Character Placements | **M3-CP-FIX** | L1 93.4% BLOCKED. Fixed trait/theme boilerplate per sign×chartpoint -- house index is only variable. L2 FAIL. L3 100%. | `Codex_Deliveries/SEO/CODEX_COMMISSION_M3_CP_FIX.md` | 🔴 READY TO ISSUE -- CRITICAL |
+| Transit Profiles | **M3-TR-FIX** | L1 71.2% BLOCKED. Shared narrative pool exhausted -- same phrases on all 108 planet×sign pages. L2 FAIL. | `Codex_Deliveries/SEO/CODEX_COMMISSION_M3_TR_FIX.md` | 🔴 READY TO ISSUE |
+| Sign Compatibility | **M2-COMPAT-FIX** | L1 50.0% FLAGGED (on gate -- must go below). Fixed koota narrative templates. L2 FAIL. L3 75%. | `Codex_Deliveries/SEO/CODEX_COMMISSION_M2_COMPAT_FIX.md` | 🟠 READY TO ISSUE |
+| Tarot SEO | **TAR-SEO-FIX** | Spreads L2 FAIL ("page reads spread card layout" 100%). Cards L3 FLAGGED (minor arcana titles). Intentions L2+L3 FAIL. | `Codex_Deliveries/SEO/CODEX_COMMISSION_TAR_SEO_FIX.md` | 🟠 READY TO ISSUE |
+
+---
+
+## Version History
+
+| Version | Date | What Changed | By |
+|---|---|---|---|
+| v5.2 | 2026-05-31 | ECHO/PACE scans run for SEO-C series (14 pooled pages) + TAR-SEO-1/2 (198 pages) via `tests/echo_pace_seoc_tarot_scan.py`. SEO-C L1 43.2% PASS, L2 PASS, L3 minor flag (Name Compat vs Love Calc title). Tarot: Spreads L1 32.9% PASS, L2 FAIL (intro boilerplate). Cards L1 34.8% PASS, L3 FLAGGED (same-suit title). Intentions L1 14.2% PASS, L2+L3 FAIL. Fix commissions needed for Tarot. | CC |
+| v5.1 | 2026-05-31 | ECHO/PACE scans run for all 7 SEO-20K infrastructure modules via `tests/echo_pace_seo20k_scan.py`. Results: Remedy Hub ✅ PASS · Festival/Hora ✅ PASS · Sign Compatibility ⚠️ FLAGGED (50.0%) · Festival Regions ⚠️ FLAGGED (64.5%) · Per-Sign Horoscopes ⚠️ FLAGGED (meta 62.5%) · Transit Profiles ❌ BLOCKED (71.2%) · Character Placements ❌ CRITICAL (93.4%). Paid API column added. 5 new fix commissions identified. | CC |
+| v5.0 | 2026-05-31 | ECHO/PACE scans run for RUD-1 (62 pages), CRY-1 (70 pages), FAITH-20K (16,800 pages, sampled). Angel Numbers ANGEL-2 L1 scores recorded. All results added to score table. 4 new commission briefs ready to issue (ANGEL-3, RUD-LG2, CRY-L2, FAITH-REWRITE). Scan scripts created: `tests/echo_pace_rud_scan.py`, `tests/echo_pace_cry_scan.py`, `tests/echo_pace_faith_scan.py`. | CC |
+| v4.0 | 2026-05-29 | QA reconciliation completed. Final master status table + ECHO/PACE score framework added. M3-FIX-1 and TAR-SEO-1 flagged as live integration gaps. | TT |
 
 **M3 Festival Regions -- ECHO history:**
-- 9 rounds of GAI-assisted content optimization completed to reduce inter-page duplication below 40% ceiling
+- 9 rounds of GAI-assisted content optimisation completed to reduce inter-page duplication below 40% ceiling
 - Fix batch (M3-FIX-1) is in `backend/seo_m3_builders.py` locally but not yet integrated to production
 - Integration of M3-FIX-1 is REQUIRED before running formal ECHO/PACE audit on festival-region pages

@@ -159,6 +159,12 @@ const LoShuArrowPage = lazy(() => import('./pages/lo_shu_grid/LoShuArrowPage'));
 const LoShuNumberPage = lazy(() => import('./pages/lo_shu_grid/LoShuNumberPage'));
 const LoShuProblemPage = lazy(() => import('./pages/lo_shu_grid/LoShuProblemPage'));
 const LoShuPersonalYearPage = lazy(() => import('./pages/lo_shu_grid/LoShuPersonalYearPage'));
+const RudrakshaHubPage = lazy(() => import('./pages/rudraksha/RudrakshaHubPage').then(m => ({ default: m.RudrakshaHubPage })));
+const RudrakshaMukhiPage = lazy(() => import('./pages/rudraksha/RudrakshaMukhiPage').then(m => ({ default: m.RudrakshaMukhiPage })));
+const RudrakshaPlanetPage = lazy(() => import('./pages/rudraksha/RudrakshaPlanetPage').then(m => ({ default: m.RudrakshaPlanetPage })));
+const RudrakshaProblemPage = lazy(() => import('./pages/rudraksha/RudrakshaProblemPage').then(m => ({ default: m.RudrakshaProblemPage })));
+const RudrakshaSignPage = lazy(() => import('./pages/rudraksha/RudrakshaSignPage').then(m => ({ default: m.RudrakshaSignPage })));
+const RudrakshaCalculatorPage = lazy(() => import('./pages/rudraksha/RudrakshaCalculatorPage').then(m => ({ default: m.RudrakshaCalculatorPage })));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -218,6 +224,12 @@ function App() {
                   <Route path="/lo-shu-grid/number/:n" element={<LoShuNumberPage />} />
                   <Route path="/lo-shu-grid/for/:problem" element={<LoShuProblemPage />} />
                   <Route path="/lo-shu-grid/personal-year/:n" element={<LoShuPersonalYearPage />} />
+                  <Route path="/rudraksha" element={<RudrakshaHubPage />} />
+                  <Route path="/rudraksha/mukhi/:mukhi" element={<RudrakshaMukhiPage />} />
+                  <Route path="/rudraksha/planet/:planetSlug" element={<RudrakshaPlanetPage />} />
+                  <Route path="/rudraksha/problem/:problemSlug" element={<RudrakshaProblemPage />} />
+                  <Route path="/rudraksha/sign/:signSlug" element={<RudrakshaSignPage />} />
+                  <Route path="/rudraksha/calculator" element={<RudrakshaCalculatorPage />} />
                   <Route path="/faith" element={<FaithHubPage />} />
                   <Route path="/faith/pathways" element={<FaithCollectionsHubPage />} />
                   <Route path="/faith/pathways/:collectionSlug" element={<FaithCollectionPage />} />

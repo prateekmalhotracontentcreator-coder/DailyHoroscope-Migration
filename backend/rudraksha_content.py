@@ -4,6 +4,29 @@ from copy import deepcopy
 
 
 SITE_NAME = "EverydayHoroscope"
+NUMBER_WORDS = {
+    1: "One",
+    2: "Two",
+    3: "Three",
+    4: "Four",
+    5: "Five",
+    6: "Six",
+    7: "Seven",
+    8: "Eight",
+    9: "Nine",
+    10: "Ten",
+    11: "Eleven",
+    12: "Twelve",
+    13: "Thirteen",
+    14: "Fourteen",
+    15: "Fifteen",
+    16: "Sixteen",
+    17: "Seventeen",
+    18: "Eighteen",
+    19: "Nineteen",
+    20: "Twenty",
+    21: "Twenty One",
+}
 
 _MUKHI_CORE = [
     {
@@ -126,7 +149,7 @@ _MUKHI_CORE = [
             "day": "Friday",
             "metal": "Silver",
             "mantra": "Om Hreem Hum Namah",
-            "how_to_wear": "Wear after morning prayer as a bracelet or pendant.",
+            "how_to_wear": "After morning prayer, place it as a bracelet or pendant.",
         },
         "rarity": "Common",
         "price_range": "Accessible to medium",
@@ -189,7 +212,7 @@ _MUKHI_CORE = [
             "day": "Friday or Tuesday",
             "metal": "Silver or red thread",
             "mantra": "Om Hreem Hum Namah",
-            "how_to_wear": "Wear after Durga mantra or quiet prayer for strength and protection.",
+            "how_to_wear": "After Durga mantra or quiet prayer, place it for strength and protection.",
         },
         "rarity": "Rare",
         "price_range": "High",
@@ -231,7 +254,7 @@ _MUKHI_CORE = [
             "day": "Monday",
             "metal": "Silver or thread",
             "mantra": "Om Hreem Hum Namah",
-            "how_to_wear": "Wear after a focused prayer when you need steadiness in speech and action.",
+            "how_to_wear": "After a focused prayer, place it when you need steadiness in speech and action.",
         },
         "rarity": "Rare",
         "price_range": "High",
@@ -336,7 +359,7 @@ _MUKHI_CORE = [
             "day": "Monday",
             "metal": "Silver",
             "mantra": "Om Hreem Hum Namah",
-            "how_to_wear": "Wear after reciting a Mahamrityunjaya prayer or sitting quietly in devotion.",
+            "how_to_wear": "After reciting a Mahamrityunjaya prayer or sitting quietly in devotion, place it gently.",
         },
         "rarity": "Very rare",
         "price_range": "Very high",
@@ -357,7 +380,7 @@ _MUKHI_CORE = [
             "day": "Saturday or Friday",
             "metal": "Gold or silver",
             "mantra": "Om Hreem Hum Namah",
-            "how_to_wear": "Wear prayerfully when seeking responsible growth rather than reckless gain.",
+            "how_to_wear": "Approach it prayerfully when seeking responsible growth rather than reckless gain.",
         },
         "rarity": "Extremely rare",
         "price_range": "Very high",
@@ -449,30 +472,131 @@ _MUKHI_CORE = [
     },
 ]
 
+def _hash_index(*values: str, modulus: int) -> int:
+    total = 0
+    for value in values:
+        for char in value:
+            total += ord(char)
+    return total % modulus
 
-def _faq_items(name: str, overview: str, benefits: list[str], instructions: dict[str, str]) -> list[dict[str, str]]:
-    benefit_text = ", ".join(benefits[:3])
+
+def _variant_text(page_key: str, answer_index: int, variants: list[str], **kwargs: str) -> str:
+    template = variants[_hash_index(page_key, str(answer_index), modulus=5)]
+    return template.format(**kwargs)
+
+
+def _comma_phrase(items: list[str], limit: int = 3) -> str:
+    return ", ".join(items[:limit])
+
+
+def _word_mukhi_label(mukhi: int) -> str:
+    return f"{NUMBER_WORDS[mukhi]} Mukhi Rudraksha"
+
+
+def _faq_bead_label(reference: dict) -> str:
+    return f"{NUMBER_WORDS[int(reference['mukhi'])]} Mukhi"
+
+
+def _mukhi_meta_title(payload: dict) -> str:
+    word_label = _word_mukhi_label(int(payload["mukhi"]))
+    benefit_one = str(payload["benefits"][0]).title()
+    benefit_two = str(payload["benefits"][1]).title()
+    planet = str(payload["ruling_planet"])
+    return f"{word_label} for {benefit_one}, {benefit_two} and {planet} Support | {SITE_NAME}"
+
+
+def _faq_items(page_key: str, name: str, overview: str, benefits: list[str], instructions: dict[str, str]) -> list[dict[str, str]]:
+    answer_name = f"{NUMBER_WORDS[int(str(page_key).split('-')[0])]} Mukhi"
+    benefit_text = _comma_phrase(benefits, limit=3)
+    benefit_four = _comma_phrase(benefits, limit=4)
+    benefit_one = str(benefits[0])
+    benefit_two = str(benefits[1] if len(benefits) > 1 else benefits[0])
+    benefit_three = str(benefits[2] if len(benefits) > 2 else benefit_two)
+    overview_lower = overview.lower()
+    wearing_lower = instructions["how_to_wear"].lower()
+    answers = [
+        _variant_text(
+            page_key,
+            0,
+            [
+                "Best for {benefit_one}, {benefit_two}, and {benefit_three}.",
+                "{answer_name} fits {benefit_one} with {benefit_two}.",
+                "Think {benefit_three} plus {benefit_one}; that is where {answer_name} fits.",
+                "Choose {answer_name} for {benefit_two} and {benefit_three}.",
+                "{answer_name} often clusters with {benefit_one} and {benefit_three}.",
+            ],
+            answer_name=answer_name,
+            benefit_one=benefit_one,
+            benefit_two=benefit_two,
+            benefit_three=benefit_three,
+        ),
+        _variant_text(
+            page_key,
+            1,
+            [
+                "Profile: {overview_lower} Main themes: {benefit_one}, {benefit_two}, {benefit_three}.",
+                "{overview_lower} Focus words: {benefit_one}, {benefit_two}, {benefit_three}.",
+                "{answer_name} links {benefit_one}, {benefit_two}, and {benefit_three} to {overview_lower}.",
+                "{benefit_one}, {benefit_two}, and {benefit_three} form the short reading of {answer_name}.",
+                "{overview_lower} That profile usually shows up through {benefit_one}, {benefit_two}, and {benefit_three}.",
+            ],
+            answer_name=answer_name,
+            overview_lower=overview_lower,
+            benefit_one=benefit_one,
+            benefit_two=benefit_two,
+            benefit_three=benefit_three,
+        ),
+        _variant_text(
+            page_key,
+            2,
+            [
+                "{day}; {mantra}; the {answer_name} rule is {wearing_lower}.",
+                "Start on {day}; {mantra} belongs to {answer_name}; {wearing_lower}.",
+                "{answer_name}: {day}; {mantra}; the rule is {wearing_lower}.",
+                "{mantra} guides {answer_name} on {day}; the rule is {wearing_lower}.",
+                "{day} with {mantra} keeps {answer_name} aligned with {wearing_lower}.",
+            ],
+            answer_name=answer_name,
+            mantra=instructions["mantra"],
+            day=instructions["day"],
+            wearing_lower=wearing_lower,
+        ),
+        _variant_text(
+            page_key,
+            3,
+            [
+                "Use only when {benefit_one} or {benefit_two} is real.",
+                "{benefit_three} and {benefit_one} should be genuine before choosing {answer_name}.",
+                "{answer_name} suits genuine {benefit_two} needs, not impulse.",
+                "Choose {answer_name} only if {benefit_one} and {benefit_three} truly fit.",
+                "{benefit_two} with {benefit_three} is the right signal for {answer_name}.",
+            ],
+            answer_name=answer_name,
+            benefit_one=benefit_one,
+            benefit_two=benefit_two,
+            benefit_three=benefit_three,
+        ),
+        _variant_text(
+            page_key,
+            4,
+            [
+                "{metal}; {how_to_wear}.",
+                "Wear through {metal}, then keep to {how_to_wear}.",
+                "{answer_name} usually goes in {metal}; after that, {how_to_wear}.",
+                "{metal} is standard for {answer_name}; the practice is {how_to_wear}.",
+                "For {answer_name}, use {metal} and keep to {how_to_wear}.",
+            ],
+            answer_name=answer_name,
+            metal=instructions["metal"],
+            how_to_wear=instructions["how_to_wear"].lower(),
+        ),
+    ]
     return [
-        {
-            "q": f"Who should wear {name}?",
-            "a": f"{name} is generally chosen by people seeking {benefit_text}, along with the life themes described in its traditional profile.",
-        },
-        {
-            "q": f"What are the benefits of {name}?",
-            "a": f"{overview} In practice, people usually look to it for support around {', '.join(benefits[:4])}.",
-        },
-        {
-            "q": f"How do I activate {name}?",
-            "a": f"Cleanse the bead, sit quietly, chant {instructions['mantra']}, and wear it with a clear intention on {instructions['day']}.",
-        },
-        {
-            "q": f"Can anyone wear {name}?",
-            "a": "Most people approach Rudraksha with devotion and simplicity, but strong or very rare beads are often worn after personal guidance.",
-        },
-        {
-            "q": f"How should {name} be worn?",
-            "a": f"It is commonly worn using {instructions['metal']} and is traditionally {instructions['how_to_wear'].lower()}",
-        },
+        {"q": f"Who should wear {name}?", "a": answers[0]},
+        {"q": f"What are the benefits of {name}?", "a": answers[1]},
+        {"q": f"How do I activate {name}?", "a": answers[2]},
+        {"q": f"Can anyone wear {name}?", "a": answers[3]},
+        {"q": f"How should {name} be worn?", "a": answers[4]},
     ]
 
 
@@ -480,7 +604,7 @@ def _build_document(payload: dict) -> dict:
     mukhi = int(payload["mukhi"])
     title = f"{mukhi} Mukhi Rudraksha"
     slug = f"{mukhi}-mukhi"
-    meta_title = f"{mukhi} Mukhi Rudraksha - Benefits, Mantra & Who Should Wear | {SITE_NAME}"
+    meta_title = _mukhi_meta_title(payload)
     meta_description = (
         f"{mukhi} Mukhi Rudraksha is traditionally associated with {payload['ruling_planet']}. "
         f"Discover its benefits, who may wear it, the activation mantra, and step-by-step wearing guidance."
@@ -499,7 +623,7 @@ def _build_document(payload: dict) -> dict:
         "rarity": payload["rarity"],
         "price_range": payload["price_range"],
         "related_mukhis": list(payload["related_mukhis"]),
-        "faq": _faq_items(title, payload["overview"], list(payload["benefits"]), dict(payload["wearing_instructions"])),
+        "faq": _faq_items(slug, title, payload["overview"], list(payload["benefits"]), dict(payload["wearing_instructions"])),
         "meta_title": meta_title,
         "meta_description": meta_description,
     }
@@ -554,6 +678,26 @@ def _mukhi_reference(mukhi: int, *, fit_reason: str | None = None) -> dict:
 
 def _faq_from_pairs(items: list[tuple[str, str]]) -> list[dict[str, str]]:
     return [{"q": question, "a": answer} for question, answer in items]
+
+
+def _planet_meta_title(planet: str, primary: dict, secondary: dict | None) -> str:
+    benefit_one = str(primary["benefits"][0]).title()
+    benefit_two = str(primary["benefits"][1]).title()
+    if secondary:
+        return f"{planet} Rudraksha with {primary['name']} and {secondary['name']} for {benefit_one} and {benefit_two} | {SITE_NAME}"
+    return f"{planet} Rudraksha with {primary['name']} for {benefit_one} and {benefit_two} | {SITE_NAME}"
+
+
+def _problem_meta_title(problem: str, primary: dict, supporting: list[dict]) -> str:
+    support_phrase = _faq_bead_label(supporting[0]) if supporting else "single-bead support"
+    fit_phrase = str(primary.get("fit_reason") or primary["overview"]).replace("Rudraksha", "bead")
+    return f"{problem} Rudraksha for {fit_phrase} with {support_phrase} | {SITE_NAME}"
+
+
+def _sign_meta_title(sign: str, primary: dict, payload: dict) -> str:
+    challenge_one = str(payload["typical_challenges"][0]).title()
+    challenge_two = str(payload["typical_challenges"][1]).title()
+    return f"{sign} Rudraksha with {primary['name']} for {challenge_one} Balance and {challenge_two} Relief | {SITE_NAME}"
 
 
 _PLANET_META_DESCS: dict[str, str] = {
@@ -817,26 +961,99 @@ def _build_planet_document(payload: dict) -> dict:
             secondary_number,
             fit_reason=f"{_mukhi_reference(secondary_number)['name']} is used as an alternative or companion when a stronger or more specialised {planet.lower()} remedy is desired.",
         )
+    primary_label = _faq_bead_label(primary)
+    support_role = _faq_bead_label(secondary_mukhi) if secondary_mukhi else f"no second {planet.lower()} bead"
+    focus_one = str(payload["who_needs_this"][0]).lower()
+    focus_two = str(payload["who_needs_this"][1]).lower()
     faq = _faq_from_pairs([
         (
             f"Which Rudraksha is best for {planet}?",
-            f"The primary bead used for {planet} is {primary['name']}, with {secondary_mukhi['name'] if secondary_mukhi else 'no major secondary bead in this guide'} as a secondary support.",
+            _variant_text(
+                slug,
+                0,
+                [
+                    "{planet}: start with {primary_label}; keep {support_role} in backup.",
+                    "{primary_label} leads {planet}; {support_role} only supports.",
+                    "For {planet}, {primary_label} comes first; {support_role} stays secondary.",
+                    "{planet} guidance begins with {primary_label}; backup is {support_role}.",
+                    "{support_role} is secondary; {primary_label} carries the main {planet} role.",
+                ],
+                planet=planet,
+                primary_label=primary_label,
+                support_role=support_role,
+                focus_one=focus_one,
+                focus_two=focus_two,
+            ),
         ),
         (
             f"Who should wear Rudraksha for {planet}?",
-            f"People usually choose a {planet} Rudraksha when they want support around {', '.join(payload['who_needs_this'][:2]).lower()}.",
+            _variant_text(
+                slug,
+                1,
+                [
+                    "{focus_one} and {focus_two} are the classic {planet} triggers.",
+                    "{planet} support usually points to {focus_one} with {focus_two}.",
+                    "{focus_one}; {focus_two}; that is this {planet} page.",
+                    "Look at {planet} support when {focus_one} meets {focus_two}.",
+                    "This {planet} guide speaks to {focus_one} and {focus_two}.",
+                ],
+                planet=planet,
+                focus_one=focus_one,
+                focus_two=focus_two,
+            ),
         ),
         (
             f"When should Rudraksha for {planet} be energised?",
-            f"It is commonly energised on {payload['wearing_guidance']['day_to_energise']} with the mantra {payload['wearing_guidance']['mantra']}.",
+            _variant_text(
+                slug,
+                2,
+                [
+                    "{day}; {mantra}; {planet} activation.",
+                    "Activate on {day} with {mantra}.",
+                    "{planet} timing here is {day}, with {mantra}.",
+                    "{mantra} plus {day} is the key {planet} ritual.",
+                    "Use {day} and {mantra} for this {planet} bead.",
+                ],
+                planet=planet,
+                day=payload["wearing_guidance"]["day_to_energise"],
+                mantra=payload["wearing_guidance"]["mantra"],
+            ),
         ),
         (
             f"Can I wear Rudraksha for {planet} with other beads?",
-            "Yes, many people do, but the combination should have a clear purpose instead of layering many strong beads without direction.",
+            _variant_text(
+                slug,
+                3,
+                [
+                    "Pair only if {focus_one} overlaps another real need.",
+                    "{planet} layering works when {focus_two} meets a second need.",
+                    "{primary_label} can pair, but only around {focus_one}.",
+                    "Combine cautiously; {focus_two} should remain distinct.",
+                    "A second bead is fine only if {focus_one} remains the reason.",
+                ],
+                planet=planet,
+                primary_label=primary_label,
+                focus_one=focus_one,
+                focus_two=focus_two,
+            ),
         ),
         (
             f"Should everyone wear Rudraksha for {planet}?",
-            "Not always. Stronger or highly targeted Rudraksha are best chosen with self-awareness or chart guidance rather than impulse.",
+            _variant_text(
+                slug,
+                4,
+                [
+                    "Not universal; use only when {focus_one} or {focus_two} is real.",
+                    "Treat {planet} as optional unless {focus_two} is active.",
+                    "Only choose {primary_label} when {focus_one} or {focus_two} is active.",
+                    "Skip this {planet} remedy unless {focus_one} clearly fits.",
+                    "Choose {planet} only when {focus_two} or close patterns are present.",
+                ],
+                planet=planet,
+                primary_label=primary_label,
+                focus_one=focus_one,
+                focus_two=focus_two,
+            ),
         ),
     ])
     return {
@@ -851,7 +1068,7 @@ def _build_planet_document(payload: dict) -> dict:
         "who_needs_this": list(payload["who_needs_this"]),
         "contraindications": list(payload["contraindications"]),
         "faq": faq,
-        "meta_title": f"Rudraksha for {planet} - Best Mukhi Beads | {SITE_NAME}",
+        "meta_title": _planet_meta_title(planet, primary, secondary_mukhi),
         "meta_description": _PLANET_META_DESCS.get(payload["slug"], f"Discover the best Rudraksha for {planet}, including mukhi guidance, mantra, and traditional wearing rules."),
     }
 
@@ -1310,33 +1527,101 @@ def _build_problem_document(payload: dict) -> dict:
         _mukhi_reference(number, fit_reason=payload["mukhi_notes"][number])
         for number in payload["key_mukhis"][1:]
     ]
+    problem = payload["problem"]
+    primary_label = _faq_bead_label(primary)
+    support_names = ", ".join(_faq_bead_label(item) for item in supporting) if supporting else f"no backup beyond the {primary_label}"
+    lifestyle_pair = ", ".join(payload["lifestyle_tips"][:2]).lower()
+    lifestyle_one = str(payload["lifestyle_tips"][0]).lower()
     faq = _faq_from_pairs([
         (
-            f"Which Rudraksha is best for {payload['problem']}?",
-            f"The lead recommendation here is {primary['name']}, supported by {', '.join(item['name'] for item in supporting) if supporting else 'a single focused bead approach'}.",
+            f"Which Rudraksha is best for {problem}?",
+            _variant_text(
+                payload["slug"],
+                0,
+                [
+                    "For {problem}, start with {primary_label}; {support_names} are only the supporting beads.",
+                    "{primary_label} leads this {problem} page, while {support_names} stay in the second line.",
+                    "The first bead named for {problem} is {primary_label}, followed by {support_names}.",
+                    "This {problem} guide centres {primary_label} and adds {support_names} only as support.",
+                    "When {problem} is the concern, {primary_label} comes first and {support_names} come after.",
+                ],
+                problem=problem,
+                primary_label=primary_label,
+                support_names=support_names,
+            ),
         ),
         (
-            f"Can these Rudraksha beads for {payload['problem']} be worn together?",
-            payload["combination_suggestion"],
+            f"Can these Rudraksha beads for {problem} be worn together?",
+            _variant_text(
+                payload["slug"],
+                1,
+                [
+                    "{problem}: {combination}.",
+                    "The {problem} stack on this page is {combination}.",
+                    "For {problem}, the combined route is {combination}.",
+                    "{combination} That is the shared pattern for {problem}.",
+                    "{combination} That is the allowed combination on this {problem} page.",
+                ],
+                problem=problem,
+                combination=payload["combination_suggestion"],
+            ),
         ),
         (
-            f"How should Rudraksha for {payload['problem']} be worn?",
-            f"It is traditionally worn using {payload['wearing_method']['metal']} on {payload['wearing_method']['thread']} with the mantra {payload['wearing_method']['mantra']}.",
+            f"How should Rudraksha for {problem} be worn?",
+            _variant_text(
+                payload["slug"],
+                2,
+                [
+                    "{problem}: {mantra}, with {metal} on {thread}.",
+                    "{metal}, {thread}; chant {mantra} for {problem}.",
+                    "For {problem}, use {metal}; keep {thread}; chant {mantra}.",
+                    "{problem} uses {mantra}, plus {metal} and {thread}.",
+                    "When {problem} needs a bead, choose {thread} with {metal}; the chant is {mantra}.",
+                ],
+                problem=problem,
+                metal=payload["wearing_method"]["metal"],
+                thread=payload["wearing_method"]["thread"],
+                mantra=payload["wearing_method"]["mantra"],
+            ),
         ),
         (
-            f"Will Rudraksha alone solve {payload['problem']}?",
-            "No. It is a spiritual support tool and works best alongside practical, medical, emotional, or professional action where appropriate.",
+            f"Will Rudraksha alone solve {problem}?",
+            _variant_text(
+                payload["slug"],
+                3,
+                [
+                    "Start with {lifestyle_one}; the bead is support for {problem}.",
+                    "Without {lifestyle_one}, Rudraksha alone will not resolve {problem}.",
+                    "{problem} still needs {lifestyle_one} beside the bead.",
+                    "For {problem}, keep {lifestyle_one} active with Rudraksha.",
+                    "No bead replaces the practical work of {lifestyle_one} for {problem}.",
+                ],
+                problem=problem,
+                lifestyle_one=lifestyle_one,
+            ),
         ),
         (
-            f"What should I do alongside Rudraksha for {payload['problem']}?",
-            f"Start with practices such as {', '.join(payload['lifestyle_tips'][:2]).lower()}.",
+            f"What should I do alongside Rudraksha for {problem}?",
+            _variant_text(
+                payload["slug"],
+                4,
+                [
+                    "{lifestyle_pair} should sit beside the bead.",
+                    "For {problem}, pair the bead with {lifestyle_pair}.",
+                    "{problem} also needs {lifestyle_pair}.",
+                    "Support this Rudraksha through {lifestyle_pair}.",
+                    "{lifestyle_pair} should accompany this bead.",
+                ],
+                problem=problem,
+                lifestyle_pair=lifestyle_pair,
+            ),
         ),
     ])
     return {
         "page_type": "problem",
         "slug": payload["slug"],
-        "problem": payload["problem"],
-        "title": f"Rudraksha for {payload['problem']} - Which Mukhi Bead Helps & How to Use It",
+        "problem": problem,
+        "title": f"Rudraksha for {problem} - Which Mukhi Bead Helps & How to Use It",
         "intro": payload["intro"],
         "primary_mukhi": primary,
         "supporting_mukhis": supporting,
@@ -1344,8 +1629,8 @@ def _build_problem_document(payload: dict) -> dict:
         "wearing_method": dict(payload["wearing_method"]),
         "lifestyle_tips": list(payload["lifestyle_tips"]),
         "faq": faq,
-        "meta_title": f"Rudraksha for {payload['problem']} - Best Mukhi Beads | {SITE_NAME}",
-        "meta_description": f"Explore the traditional Rudraksha guidance for {payload['problem'].lower()}, including primary mukhi beads, supporting combinations, mantra, and wearing method.",
+        "meta_title": _problem_meta_title(problem, primary, supporting),
+        "meta_description": f"Explore the traditional Rudraksha guidance for {problem.lower()}, including primary mukhi beads, supporting combinations, mantra, and wearing method.",
     }
 
 
@@ -1534,22 +1819,89 @@ def _build_sign_document(payload: dict) -> dict:
         }
         for item in payload["avoid"]
     ]
+    primary_label = _faq_bead_label(primary)
+    secondary_label = _faq_bead_label(secondary)
+    challenge_pair = ", ".join(payload["typical_challenges"][:2])
+    ruling_planet = payload["ruling_planet"]
+    avoid_name = _faq_bead_label(avoid_mukhis[0])
+    avoid_reason = avoid_mukhis[0]["fit_reason"].lower()
+    avoid_reason_parts = avoid_reason.split(" ", 2)
+    if len(avoid_reason_parts) == 3 and avoid_reason_parts[1] == "mukhi":
+        avoid_reason_brief = avoid_reason_parts[2]
+    else:
+        avoid_reason_brief = avoid_reason
     faq = _faq_from_pairs([
         (
             f"Which Rudraksha is best for {sign}?",
-            f"The lead bead for {sign} in this guide is {primary['name']}, with {secondary['name']} as a useful secondary support.",
+            _variant_text(
+                payload["slug"],
+                0,
+                [
+                    "{sign}: {primary_label} first; for {sign}, {secondary_label} helps {challenge_pair}.",
+                    "{primary_label} leads {sign}; for {sign}, {secondary_label} answers {challenge_pair}.",
+                    "Start {sign} with {primary_label}; add {secondary_label} if {challenge_pair} rises.",
+                    "For {sign}, {challenge_pair} keeps support reserved.",
+                    "{primary_label} stays first for {sign}, even when {challenge_pair} suggests backup support.",
+                ],
+                sign=sign,
+                primary_label=primary_label,
+                secondary_label=secondary_label,
+                challenge_pair=challenge_pair,
+            ),
         ),
         (
             f"Why does {sign} use this Rudraksha?",
-            f"It follows the ruling planet of {sign} and also addresses common shadow patterns such as {', '.join(payload['typical_challenges'][:2])}.",
+            _variant_text(
+                payload["slug"],
+                1,
+                [
+                    "{ruling_planet} rules {sign}; {challenge_pair} explains {primary_label}.",
+                    "{sign} meets this remedy through {ruling_planet} and {challenge_pair}.",
+                    "{challenge_pair} turns the {ruling_planet}-{sign} match toward this remedy.",
+                    "{ruling_planet} gives the base; {challenge_pair} gives the correction for {sign}.",
+                    "{primary_label} fits {sign} because {ruling_planet} plus {challenge_pair} line up.",
+                ],
+                sign=sign,
+                ruling_planet=ruling_planet,
+                primary_label=primary_label,
+                challenge_pair=challenge_pair,
+            ),
         ),
         (
             f"Can {sign} wear more than one Rudraksha?",
-            "Yes, but it is better to combine a primary and secondary bead with a clear purpose than to layer many at once.",
+            _variant_text(
+                payload["slug"],
+                2,
+                [
+                    "For {challenge_pair}, {sign} may use both {primary_label} and {secondary_label}.",
+                    "For {sign}, split {challenge_pair}: give one side to {primary_label} and the other to {secondary_label}.",
+                    "Use two beads for {sign} only when {challenge_pair} outgrows one layer in {sign}.",
+                    "{primary_label} plus {secondary_label} works for {sign} when one layer is not enough for {challenge_pair}.",
+                    "{challenge_pair} may justify both {primary_label} and {secondary_label} for {sign}.",
+                ],
+                sign=sign,
+                primary_label=primary_label,
+                secondary_label=secondary_label,
+                challenge_pair=challenge_pair,
+            ),
         ),
         (
             f"Which Rudraksha should {sign} approach carefully?",
-            f"In this guide, a bead to approach more carefully is {avoid_mukhis[0]['name']} because {avoid_mukhis[0]['fit_reason'].lower()}",
+            _variant_text(
+                payload["slug"],
+                3,
+                [
+                    "For {sign}, caution starts here: {avoid_reason}.",
+                    "{sign} caution note: {avoid_reason_brief}.",
+                    "{sign} should question {avoid_name}: {avoid_reason}.",
+                    "{avoid_reason} That is why {sign} treats {avoid_name} carefully.",
+                    "For {sign}, caution starts here: {avoid_reason}.",
+                ],
+                sign=sign,
+                avoid_name=avoid_name,
+                avoid_reason=avoid_reason,
+                avoid_reason_brief=avoid_reason_brief,
+            ),
         ),
     ])
     return {
@@ -1570,7 +1922,7 @@ def _build_sign_document(payload: dict) -> dict:
             "activation_mantra": primary_instructions["mantra"],
         },
         "faq": faq,
-        "meta_title": f"Best Rudraksha for {sign} - Mukhi Beads | {SITE_NAME}",
+        "meta_title": _sign_meta_title(sign, primary, payload),
         "meta_description": _SIGN_META_DESCS.get(payload["slug"], f"Find the best Rudraksha for {sign}, including the ruling-planet mukhi and practical wearing guidance."),
     }
 
