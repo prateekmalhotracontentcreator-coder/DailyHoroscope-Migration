@@ -360,4 +360,44 @@ TT actions:
 | 300 Combinations | 329 | 3,400,215 | CLEAN | ✅ None -- gap from 2026-06-01 dedup formally closed |
 | **Phaladeepika** | **1,218** | **11,505,228** | **7 genuine polarity conflicts** | ✅ **Patched** (pd-ch08-011/030/032/050/056/060, pd-ch13-022) |
 
-**Pipeline status: 5/7 COMPLETE** · BPHS Vol 1 Ph2 (696 rules) + BPHS Vol 2 (249 rules) retroactive dedup pending.
+### 13f -- BPHS Vol 1 Phase 2 Retroactive Dedup (2026-06-03)
+
+- [x] Script: `retroactive_dedup_bphs_vol1_phase2.sh`
+- [x] FOLDER_A: `/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_CC_Decode/` (full folder, all chapters)
+- [x] Export excluded batch `bphs-vol1-phase2-v1-20260601` → 9,968 rules in MongoDB export
+- [x] 14,513,408 pairs evaluated · 240 planet×position keys from A, 258 from B · 54 shared keys
+- [x] Raw results: 19 similarity matches · 0 contradictions · 2,387 positional conflicts
+  - 29 `positional_polarity_conflict` · 2,358 `positional_alternate_result`
+- [x] **FOLDER_A caveat:** BPHS_CC_Decode contains ALL 81 chapter files (Phase 1 + Phase 2). The script loaded 1,456 rules total; only ~696 are Phase 2. Phase 1 chapters (Ch12-24, Ch27, Ch34-44) were also loaded and compared.
+- [x] **Chapter classification of 29 polarity conflicts:**
+  - **Phase 2 chapters (Ch03-11, Ch25-26, Ch28-33): 0 conflicts ✅**
+  - Phase 1 chapters (Ch12, Ch14, Ch16, Ch17, Ch18, Ch42): 29 conflicts
+- [x] **Phase 2: CLEAN** -- zero conflicts for any Phase 2 rule confirmed
+- [x] **19 similarity matches:** All Phase 1 chapters (Ch13-16). Intra-BPHS ID collision: local decode file uses `bphs1-ch16-007`, MongoDB Phase 1 (old ingest) uses `R-BPHS16-008`. Same content, different ID schemes -- NOT duplicates in DB. No action needed.
+- [x] **29 Phase 1 polarity conflicts:** BPHS Ch17/18 conditional-negative rules (diseases/death scenarios) vs Phaladeepika general positive placement rules. Phaladeepika side already patched (pd-ch08-* rules have `pending_review=True`). BPHS Phase 1 side (R-BPHS* IDs in MongoDB "unknown" batch) not yet patched -- requires separate script.
+- [x] **Do NOT run `patch_bphs_vol1_phase2_conflicts.py`** -- script queries by Phase 2 batch ID which won't match Phase 1 rules (`R-BPHS*` IDs). All 29 would be `[SKIP] not found in batch`.
+- [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/bphs_vol1_phase2_dedup_20260603_045313.md`
+- [x] **Phase 1 BPHS patch script built:** `backend/scripts/patch_bphs_vol1_phase1_conflicts.py` -- content-based text fragment lookup, targets R-BPHS* rule IDs in "unknown" batch. Searches `interpretation.detailed` by key phrase from `rule_a_full_text`. Skips `bphs1-ch42-019` (empty A-text). Run: `python3 backend/scripts/patch_bphs_vol1_phase1_conflicts.py --mongo-url "$MONGO_URL" --dry-run`
+
+### 13g -- BPHS Vol 2 Retroactive Dedup (2026-06-03)
+
+- [ ] Script: `retroactive_dedup_bphs_vol2.sh`
+- [ ] FOLDER_A: `/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Vol2_CC_Decode/` (249 rules, batch `bphs-vol2-ch49-51-v1`)
+- [ ] Expected: ~249 × 10,415 = ~2.6M pairs · Kalachakra/Chara Dasa chapters -- minimal planet×position conditions → likely CLEAN
+- [ ] Run: `bash backend/scripts/retroactive_dedup_bphs_vol2.sh`
+
+---
+
+## Retroactive Dedup Pipeline Summary
+
+| Batch | Rules | Pairs | Result | Action |
+|---|---|---|---|---|
+| Longevity 58Ch | 149 | 1,588,936 | 4 genuine polarity conflicts | ✅ Patched (kp-ch12-001/002, kp-ch13-001) |
+| Longevity Unnatural | 44 | 467,280 | CLEAN | ✅ None |
+| 300 Horoscopes | 57 | 604,599 | CLEAN | ✅ None |
+| 300 Combinations | 329 | 3,400,215 | CLEAN | ✅ None -- gap from 2026-06-01 dedup formally closed |
+| **Phaladeepika** | **1,218** | **11,505,228** | **7 genuine polarity conflicts** | ✅ **Patched** (pd-ch08-011/030/032/050/056/060, pd-ch13-022) |
+| BPHS Vol 1 Phase 2 | 696 | 14,513,408 | **Phase 2 CLEAN** · 29 Phase 1 conflicts (FOLDER_A included all chapters) | ✅ Phase 2: No action · Phase 1 patch script ready (`patch_bphs_vol1_phase1_conflicts.py`) |
+| **BPHS Vol 2** | **249** | **~2.6M** | **Pending** | 🔜 Run `retroactive_dedup_bphs_vol2.sh` |
+
+**Pipeline status: 6/7 COMPLETE (Phase 2 portion)** · BPHS Vol 2 (249 rules) retroactive dedup pending · BPHS Phase 1 patch (29 rules, content-based lookup script ready).
