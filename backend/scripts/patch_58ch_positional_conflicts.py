@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+"""patch_58ch_positional_conflicts.py
+
+Reads all 6 positional conflict dedup reports for Longevity 58Ch and patches
+any flagged rules in MongoDB with:
+  - pending_review: True
+  - positional_conflict_note: "<conflict_type> vs <rule_b_id> on <positional_key>"
+
+Run after retroactive_dedup_longevity58ch.sh completes.
+
+Usage:
+  python3 backend/scripts/patch_58ch_positional_conflicts.py \\
+    --mongo-url "$MONGO_URL" \\
+    --dry-run
+
+  python3 backend/scripts/patch_58ch_positional_conflicts.py \\
+    --mongo-url "$MONGO_URL"
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+BATCH_ID = "longevity_58ch_v1"
+REPORTS_DIR = Path("KE_TEXTBOOK_DECODE/Dedup_Reports")
+
+REPORT_PATHS = {
+    "58Ch vs LongevityUnnatural": REPORTS_DIR / "dedup_58ch_vs_lu_positional.json",
+    "58Ch vs 300_Horoscopes":     REPORTS_DIR / "dedup_58ch_vs_h300_positional.json",
+    "58Ch vs BPHS_Vol1":          REPORTS_DIR / "dedup_58ch_vs_bphs1_positional.json",
+    "58Ch vs Phaladeepika":       REPORTS_DIR / "dedup_58ch_vs_phaladeepika_positional.json",
+    "58Ch vs 300_Combinations":   REPORTS_DIR / "dedup_58ch_vs_300combo_positional.json",
+    "58Ch vs BPHS_Vol2":          REPORTS_DIR / "dedup_58ch_vs_bphs2_positional.json",
+}
+
+
+def collect_conflicts() -> list[dict]:
+    """Read all 6 reports and collect positional conflict entries."""
+    conflicts = []
+    for run_name, path in REPORT_PATHS.items():
+        if not path.exists():
+            print(f"[warn] Report not found: {path} -- skipping", file=sys.stderr)
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))
+        details = data.get("positional_conflicts_detail", [])
+        for entry in details:
+            entry["_run_name"] = run_name
+            conflicts.append(entry)
+    return conflicts
+
+
+def build_patches(conflicts: list[dict]) -> dict[str, list[str]]:
+    """Group conflict notes by rule_a_id (the 58Ch rule being patched)."""
+    patches: dict[str, list[str]] = {}
+    for c in conflicts:
+        rule_id = c.get("rule_a_id")
+        if not rule_id:
+            continue
+        note = (
+            f"{c.get('relationship','?')} vs {c.get('rule_b_id','?')} "
+            f"on {c.get('positional_key','?')} "
+            f"(score={c.get('similarity_score', 0):.3f}, run={c.get('_run_name','?')})"
+        )
+        patches.setdefault(rule_id, []).append(note)
+    return patches
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Patch 58Ch positional conflict rules in MongoDB.")
+    parser.add_argument("--mongo-url", required=True)
+    parser.add_argument("--db-name", default="horoscope_db")
+    parser.add_argument("--dry-run", action="store_true")
+    args = parser.parse_args()
+
+    conflicts = collect_conflicts()
+    if not conflicts:
+        print("No positional conflicts found in any report. Nothing to patch.")
+        print("Longevity 58Ch positional dedup: CLEAN ✅")
+        return
+
+    patches = build_patches(conflicts)
+    print(f"Positional conflicts found: {len(conflicts)} entries across {len(patches)} unique 58Ch rules")
+    print()
+
+    if args.dry_run:
+        print("[DRY RUN] The following patches WOULD be applied:")
+        for rule_id, notes in sorted(patches.items()):
+            print(f"  {rule_id}:")
+            for note in notes:
+                print(f"    pending_review: True + note: {note}")
+        print()
+        print("Re-run without --dry-run to apply.")
+        return
+
+    # Live run
+    try:
+        from pymongo import MongoClient
+    except ImportError:
+        print("pymongo required. Install: pip install pymongo", file=sys.stderr)
+        raise SystemExit(1)
+
+    client = MongoClient(args.mongo_url, serverSelectionTimeoutMS=10000)
+    db = client[args.db_name]
+    col = db["interpretation_rules"]
+
+    patched = 0
+    skipped = 0
+    errors = 0
+
+    for rule_id, notes in sorted(patches.items()):
+        try:
+            doc = col.find_one(
+                {"rule_id": rule_id, "source.batch_id": BATCH_ID},
+                {"rule_id": 1, "approval_status": 1, "pending_review": 1, "_id": 0}
+            )
+            if not doc:
+                print(f"  [SKIP] {rule_id} not found in batch {BATCH_ID}")
+                skipped += 1
+                continue
+
+            combined_note = " | ".join(notes)
+            result = col.update_one(
+                {"rule_id": rule_id, "source.batch_id": BATCH_ID},
+                {"$set": {
+                    "pending_review": True,
+                    "positional_conflict_note": combined_note,
+                    "positional_conflict_patched_at": datetime.now(timezone.utc).isoformat(),
+                }}
+            )
+            if result.modified_count:
+                print(f"  [OK]   {rule_id} -> pending_review:True  ({len(notes)} conflict(s))")
+                patched += 1
+            else:
+                print(f"  [SKIP] {rule_id} already had pending_review:True or no change")
+                skipped += 1
+        except Exception as exc:
+            print(f"  [ERR]  {rule_id}: {exc}")
+            errors += 1
+
+    print()
+    print(f"Patch complete: {patched} patched / {skipped} skipped / {errors} errors")
+
+    # Final counts
+    final_counts: dict[str, int] = {}
+    for status in ["auto_approved", "pending_human_review", "pending_review", "flagged"]:
+        final_counts[status] = col.count_documents({
+            "source.batch_id": BATCH_ID,
+            "approval_status": status
+        })
+    print(f"\nFinal DB state for batch {BATCH_ID}:")
+    for status, count in final_counts.items():
+        print(f"  {status}: {count}")
+
+    client.close()
+
+
+if __name__ == "__main__":
+    main()
