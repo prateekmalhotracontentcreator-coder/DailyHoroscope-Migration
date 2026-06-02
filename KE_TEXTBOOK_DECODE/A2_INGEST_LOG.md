@@ -311,6 +311,20 @@ TT actions:
 - [x] No patch required
 - [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/300horoscopes_dedup_20260603_042519.md`
 
+### 13d -- 300 Combinations Retroactive Dedup (2026-06-03)
+
+- [x] Source: `ThreeHundredCombinations_CC_Decode/` (22 files, 329 rules, batch `300-combinations-v1-20260601`)
+- [x] Export excluded batch `300-combinations-v1-20260601` → 10,335 rules in MongoDB export
+- [x] 3,400,215 pairs evaluated vs full MongoDB
+- [x] **CLEAN**: 0 similarity matches · 0 contradictions · 0 positional conflicts
+- [x] Key diagnostic: `[positional] Keyed 0 planet×position groups from A, 308 from B -- 0 shared keys`
+  - 300 Combinations yoga/combination rules have no planet×position conditions -- all 329 rules have 0 `planet_in_house` / `planet_in_sign` condition types
+- [x] Gap context: original pre-ingest dedup (2026-06-01) ran against 8,867 rules with no positional detector. This pass covers both the ~1,797 rule delta AND the positional conflict detector. Gap formally closed.
+- [x] No patch required
+- [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/300combinations_dedup_20260603_043412.md`
+- [x] JSON report: `KE_TEXTBOOK_DECODE/Dedup_Reports/dedup_300combinations_vs_mongodb_positional.json`
+- [x] `300_COMBINATIONS_INGEST.md` OP-09 closed
+
 ---
 
 ## Retroactive Dedup Pipeline Summary
@@ -320,5 +334,6 @@ TT actions:
 | Longevity 58Ch | 149 | 1,588,936 | 4 genuine polarity conflicts | ✅ Patched (kp-ch12-001/002, kp-ch13-001) |
 | Longevity Unnatural | 44 | 467,280 | CLEAN | ✅ None |
 | 300 Horoscopes | 57 | 604,599 | CLEAN | ✅ None |
+| 300 Combinations | 329 | 3,400,215 | CLEAN | ✅ None -- gap from 2026-06-01 dedup formally closed |
 
-**Pipeline status: COMPLETE** · All 3 post-Phase-1 batches clear.
+**Pipeline status: COMPLETE** · All 4 recent batches clear. Phaladeepika + BPHS Vol 1 Ph2 + BPHS Vol 2 retroactive dedup pending (separate scripts to build).
