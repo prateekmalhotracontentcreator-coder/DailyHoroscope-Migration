@@ -86,7 +86,7 @@
 | Inactive (source gap) | 1 (bphs2-ch49-gemini-pada-8-gap -- absent from Santhanam translation) |
 | Inactive (obsolete placeholder) | 0 (all placeholders replaced with active rules) |
 | Max recoverable | 107 of 108 Navamsa Pada rules |
-| Ingest status | 🟢 READY -- encode pass complete 2026-05-31 |
+| Ingest status | ✅ **INGESTED + TRIAGE COMPLETE -- 2026-06-01** |
 | GAI resolution log | `BPHS_Vol2_CC_Decode/BPHS_Vol2_GAI_Resolutions.md` (PDF-verified 2026-05-31) |
 
 **All 10 OCR items resolved 2026-05-31:**
@@ -106,20 +106,34 @@
 
 **Encode actions:** ✅ ALL 10 APPLIED 2026-05-31 via `apply_vol2_encode.py`. Ch49: 134→154 rules (5 OCR placeholders replaced, 2 new rules created). Ch50 rule 041: decode_notes + Ch07 combustion ref added. Ch51 rule 020: provisional:true + decode_notes added.
 
-**Post-ingest dedup targets:** BPHS Vol 1 (internal cross-check -- same source text)
+**Post-ingest dedup targets:** BPHS Vol 1 (internal cross-check -- same source text) ✅ Done 2026-06-01: 0 dup, 0 contra (local folder dedup + MongoDB export dedup both clean).
+
+**Validation summary (post-triage):** 118 auto_approved / 131 PHR / 0 flagged. 5 contradiction pairs detected -- all 5 false positives (complementary polarity rules, confirmed by GAI). All triage complete. Awaiting co-founder sign-off.
+
+**Ingest tracker:** `.claude/ke/ingest/BPHS_VOL2_INGEST.md`
 
 ---
 
 ## Phase 1 -- Additional Books (approved sequence)
 
 ### P1-3: 300 Combinations
-**Decode folder:** `ThreeHundredCombinations_CC_Decode/` | **Rules:** 300 | **Open items:** None
+**Decode folder:** `ThreeHundredCombinations_CC_Decode/` | **Rules:** 329 (incl. intro + strength sections) | **Open items:** See 300_COMBINATIONS_INGEST.md
 
-| Status | Detail |
+| Metric | Value |
 |---|---|
-| Ingest status | ✅ READY -- start now, no blockers |
-| Action | Run ingest script per `HANDOVER_SUMMARY.md` in decode folder |
-| Post-ingest dedup | Run against BPHS Vol 1 + Vol 2 (when ingested) |
+| Ingest status | ✅ **INGESTED + TRIAGE COMPLETE -- 2026-06-01** |
+| Batch ID | `300-combinations-v1-20260601` |
+| Rules inserted | 329 (329 active) |
+| Dedup | ✅ Clean -- 0 matches, 0 contradictions vs 9,196 MongoDB rules |
+| auto_approved | **141** |
+| pending_human_review | **188** |
+| flagged | **0** |
+| pending_review | 0 |
+| Contradiction pairs | 3 (all Nabhasa cross-pairs, all strength_dependent -- no rejections needed) |
+| Schema note | Two schemas: NEW (Y001-040: full_text/claim_polarity) + OLD (Y044-300: results/polarity/conditions list OR dict). OLD schema patched post-ingest via `patch_300combo_old_schema.py` + `patch_300combo_all_open_items.py`. |
+| OP-08 closure | ✅ 14 tba conditions (Y264-Y274, Y292-Y294) encoded from Diagnostics. 4 engine-dep rules (Y130-Y134) → PHR. Y271 condition error corrected. Y294 speculative overlay stripped. All Bucket B → PHR. |
+| Key triage learnings | See schema learnings box in `THREAD_BRIEF_300COMBINATIONS_INGEST.md` |
+| Ingest tracker | `.claude/ke/ingest/300_COMBINATIONS_INGEST.md` |
 
 ---
 
@@ -190,9 +204,12 @@
 
 | Status | Detail |
 |---|---|
-| Ingest status | 🔴 HARD BLOCKED -- Co-founder sign-off on aayu bucket methodology required |
+| Ingest status | 🟠 **GATE CLEARED -- 2026-06-02** · Ch36-58 Codex commission pending · Ch4-19 ingest can begin |
 | Decode status | ✅ All 58 chapters accounted for (Ch4/5 via NLM, Ch6-Ch58 via CC) |
-| Blocker | Aayu bucket methodology (longevity span calculation approach) not yet approved |
+| **Aayu methodology** | ✅ **APPROVED: Option B + Label-based tagging + 66-75 edge gate (2026-06-02, Prateek)** |
+| Architecture | Labels only: `alpa_aayu`, `madhya_aayu` (33-75), `purna_aayu` (75-100). `LONGEVITY_AAYU_CONFIG` → `ke_schema_constants.py`. Edge zone 66-75: `edge_case_zone:true` + gates (dasha_activity, maraka_strength, ayushkaraka_strength). Classical ref point: 72 yrs (Shashtyamsa). |
+| Ch36-58 rules | 🔴 Codex commission not yet issued -- zero rules extracted from case study chapters by design |
+| Next action | CC: add config to `ke_schema_constants.py` · TT: issue Ch36-58 Codex commission · A2: dedup + ingest Ch4-Ch19 |
 | Action | TT gives explicit co-founder approval → then ingest begins |
 | Note | Do NOT begin this ingest without the explicit sign-off. ~600 rules. |
 | Post-ingest dedup | Run against all ingested books -- expected cross-text flags with BPHS Ch43/44 (longevity chapters) |
@@ -254,25 +271,31 @@ Vol 2 currently only covers Ch49-Ch51. Other chapters (Ch46-Ch48, and beyond Ch5
 ---
 
 ### P2-5: Phaladeepika
-**Decode folder:** `Phaladeepika_CC_Decode/` | **Rules:** 743+ (all 28 chapters decoded) | **OCR:** `Phaladeepika_Inconsistencies_Review.docx`
+**Decode folder:** `Phaladeepika_CC_Decode/` | **Rules:** 1218 (28 chapters, 1206 active + 12 TBA/inactive) | **OCR:** `Phaladeepika_Inconsistencies_Review.docx`
 
-| Status | Detail |
+| Metric | Value |
 |---|---|
-| Ingest status | 🟢 READY -- all 6 HIGH items resolved |
-| Decode status | ✅ ALL 28 CHAPTERS DECODED (Ch01-Ch28 all present in decode folder; OCR report dated 2026-05-30 covers full book) |
-| ~~Tier 4 pending~~ | ~~STALE~~ -- All 28 chapters decoded. "Tier 4 (3 chapters) still pending" entry was stale. |
-| OCR total | 102 issues: 6 HIGH · 27 MED · 69 LOW |
-| HIGH items resolved | 6 of 6 ✅: pd-ch22-c001 · pd-ch25-c002 · pd-ch26-c004 · pd-ch12-c001 · pd-ch27-c001 · pd-ch21-c003 |
-| CC PDF validation | 2026-05-31 -- `PD_PDF_Validation_Results.md` |
-| pd-ch12-c001 | ✅ Benefic in own sign/exalt in 5th → child loss -- TEXT-NATIVE CONFIRMED (Ch12 Sloka 3, p.117) |
-| pd-ch27-c001 | ✅ Emancipation vs ascetic -- NOT A CONTRADICTION -- complementary facets (Ch27 Slokas 1+8, pp.319-322) |
-| pd-ch26-c001 | ✅ Mercury Vedha OCR error corrected: 2nd transit Vedha = 5th (not 8th). vedha_pairs updated in rules JSON. |
-| pd-ch21-c003 | ✅ Jupiter/Mercury Bhukti -- GAI arbitration 2026-05-31. Cross-text majority POSITIVE (BPHS+Saravali+JP). Opinion 1 adverse fires conditionally (Mercury affliction). claim_polarity → positive. gai_citations unverified -- Ingest Thread to cross-check. |
-| Ch08 TBA rules | 6 rules (Sun in houses 1-8): CONFIRMED PDF GAP -- Ch08 PDF starts at Sloka 4 (p.84). Ingest with tba:true. TT to source clean scan. |
-| Remaining MED items | ~25 -- ingest with pending_review:true |
-| Action | ✅ All HIGH items cleared -- ingest all 28 chapters. MED items pending_review:true. Ch08 TBA rules tba:true. Ingest Thread: cross-check gai_citation_unverified entries for pd-ch21-041 before co-founder approval. |
-| Post-ingest dedup | BPHS Vol 1 (Phaladeepika directly references BPHS -- expect both agreements and contradictions) |
-| Note | Cross-text matches with BPHS are expected to be the richest in the entire KE -- Phaladeepika is a commentary tradition on BPHS. Ch08 TBA Sun rules (6 rules, tba: true) safe to ingest while clean scan is sourced. |
+| Ingest status | ✅ **INGESTED + TRIAGE COMPLETE -- 2026-06-01** |
+| Batch ID | `phaladeepika-v1-20260601` |
+| Ingest script | `backend/scripts/ingest_phaladeepika_v1.py` |
+| Rules inserted | 1218 (0 errors, 0 skipped) |
+| auto_approved | **582** (48%) |
+| pending_human_review | **271** (22%) |
+| pending_review | **357** (29%) -- OCR truncation artifacts, PD-OP-01 re-encode |
+| flagged | **8** (0.7%) -- genuine Bucket C, TT/GAI queue |
+| TBA/inactive | 12 (Ch08 PDF gap -- Sun houses 1-6 absent from source) |
+| Contradictions detected | 16 pairs: 13 Bucket B (polar opposites / system-mismatch), 3 Bucket C (genuine condition reversal cluster + threshold mismatch) |
+| Three-schema mapping | Schema A (Ch01-13, 15-16, 18, 27: full_text + condition dict) · Schema C (Ch14, 17, 19-25: description + conditions list) · Schema B (Ch22, 26, 28: content + empty conditions → engine_spec fallback) |
+| Triage summary | 82 flagged → PHR (Bucket B: ethics flag, truncation artifacts, intended polar-opposite pairs, Ch22 Kalachakra system-mismatch, Ch26 transit flags). 8 remain flagged (Bucket C). |
+| PD-OP-01 | 357 truncated_text rules need Codex re-encode pass. Ch08 = 109 rules (highest priority). |
+| Ingest tracker | `.claude/ke/ingest/PHALADEEPIKA_INGEST.md` |
+| Post-ingest dedup | Informational -- run vs BPHS Vol 1 (60-70% conceptual overlap expected on house chapters; rule_ids are distinct, no dedup blocking needed) |
+
+**6 HIGH OCR items resolved 2026-05-31:**
+- pd-ch22-c001 · pd-ch25-c002 · pd-ch26-c004 · pd-ch12-c001 · pd-ch27-c001 · pd-ch21-c003
+
+**8 Remaining Flagged (Bucket C -- TT/GAI Queue):**
+pd-ch06-028/030 (Adhama/Varishtha yoga condition reversal) · pd-ch07-024 (logic error) · pd-ch07-028 (negation encoding) · pd-ch07-049 (placeholder, tba:true) · pd-ch18-102 (same-outcome for different planets) · pd-ch21-041 (gai_citation_unverified) · pd-ch08-111 (TBA/inactive)
 
 ---
 
@@ -313,4 +336,9 @@ Run once per existing-book pair. After BPHS Vol 1 + Vol 2 are both ingested, eve
 
 ---
 
-*Last updated: 2026-06-01 by Claude Code Main Thread -- BPHS Vol 1 P1-1 Phase 2 ingest COMPLETE: 696 rules (Ch03-11, Ch25-33) uploaded and validated. All 5 MED items resolved by PDF read. Total BPHS Vol 1 in MongoDB: ~1,765 rules. Status → ✅ FULLY INGESTED. Earlier (2026-05-31): P1-2 Vol 2 READY · P2-5 Phaladeepika ALL 6 HIGH items resolved → 🟢 READY.*
+*Last updated: 2026-06-01 by Claude Code -- Phaladeepika ingest session.*
+*P1-1 BPHS Vol 1: ✅ FULLY INGESTED ~1,765 rules.*
+*P1-2 BPHS Vol 2 Ch49-51: ✅ INGESTED + TRIAGE COMPLETE (118 auto_approved, 131 PHR, 0 flagged).*
+*P1-3 300 Combinations: ✅ INGESTED + TRIAGE COMPLETE (141 auto_approved, 188 PHR, 0 flagged). OP-08 closed 2026-06-01.*
+*P2-5 Phaladeepika: ✅ INGESTED + TRIAGE COMPLETE (582 auto_approved, 271 PHR, 357 pending_review OCR-PD-OP-01, 8 flagged). 2026-06-01.*
+*Next: P1-4 300 Horoscopes (57 rules) -- no blockers, see THREAD_BRIEF_300HOROSCOPES_INGEST.md.*

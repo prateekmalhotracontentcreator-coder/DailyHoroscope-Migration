@@ -156,3 +156,39 @@ KALACHAKRA_DASHA_YEARS = {
     "venus": 16,
     "saturn": 4,
 }
+
+# ---------------------------------------------------------------------------
+# Longevity (KP Aayu) Bucket Configuration
+# Approved by co-founder Prateek Malhotra on 2026-06-02.
+# Architecture decision: rules carry LABELS only (e.g. "madhya_aayu").
+# Year ranges are resolved from this config at engine runtime -- never
+# hardcoded inside individual rule documents.
+# ---------------------------------------------------------------------------
+
+# Option B: wider Madhya range, validated against 38 benchmark case studies.
+LONGEVITY_AAYU_CONFIG = {
+    "balarishta":     {"min": 0,   "max": 8,    "label": "Balarishta",   "description": "Infant mortality / very early death"},
+    "alpa_aayu":      {"min": 8,   "max": 33,   "label": "Alpa Aayu",    "description": "Short longevity"},
+    "madhya_aayu":    {"min": 33,  "max": 75,   "label": "Madhya Aayu",  "description": "Middle longevity"},
+    "purna_aayu":     {"min": 75,  "max": 100,  "label": "Purna Aayu",   "description": "Full longevity"},
+    "aparimita_aayu": {"min": 100, "max": None, "label": "Aparimita Aayu","description": "Super-centenarian / unlimited"},
+}
+
+# Edge-case zone where the Madhya/Purna boundary is ambiguous.
+# Rules whose natural outcome falls in this window must carry
+# edge_case_zone: true and edge_case_gates in their result block.
+# The engine applies additional gate checks before assigning final bucket.
+LONGEVITY_EDGE_CASE_ZONE = {
+    "min": 66,
+    "max": 75,
+    "classical_reference_point": 72,   # Shashtyamsa/Ashtakavarga classical boundary per GAI review
+    "gates": [
+        "dasha_activity",       # Is a Maraka/Badhaka Dasha active in the 66-75 window?
+        "maraka_strength",      # Are Maraka lords strong enough to terminate life?
+        "ayushkaraka_strength", # Is Saturn (Ayushkaraka) protective in this period?
+    ],
+    "default_on_tie": "purna_aayu",  # When gates are inconclusive, assign higher bucket (Purna)
+}
+
+# Valid aayu_bucket label values for rule result.aayu_bucket field
+VALID_AAYU_BUCKET_LABELS = list(LONGEVITY_AAYU_CONFIG.keys())

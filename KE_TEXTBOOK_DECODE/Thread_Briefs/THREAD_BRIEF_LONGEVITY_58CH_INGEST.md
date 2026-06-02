@@ -4,7 +4,7 @@
 > Prepared by: Temple Team -- EverydayHoroscope
 > Date: 2026-05-31
 > For: Longevity 58 Chapters Ingest Thread
-> Status: **🔴 HARD BLOCKED -- Co-founder sign-off on aayu bucket methodology REQUIRED. Do not ingest a single rule until explicit approval is given.**
+> Status: **🟠 GATE CLEARED ✅ (2026-06-02) -- Co-founder approved Option B with label-based tagging + 66-75 edge case gate. Ch36-58 Codex commission still pending. Ingest sequence can now begin.**
 
 ---
 
@@ -44,13 +44,13 @@ Handover summary: `HANDOVER_SUMMARY_LongevityDecode.md` (in folder)
 
 ---
 
-## THE HARD BLOCK -- Aayu Bucket Methodology
+## ~~THE HARD BLOCK~~ ✅ GATE CLEARED 2026-06-02
 
-The ~600 rules include a significant sub-set of **aayu bucket rules** -- longevity span calculation rules that classify a person's expected lifespan into Alpayu (short), Madhyayu (medium), or Purnayu (long) based on planetary configurations.
+~~The ~600 rules include a significant sub-set of **aayu bucket rules**...~~
 
-There are **two competing methodologies** for how the bucket boundaries are calculated (the exact year-span that defines "short" vs "medium" vs "long" life). Without co-founder sign-off on which methodology the KE will adopt, ingesting these rules would embed a contested calculation standard into the database.
+**Gate cleared.** Co-founder approved Option B with label-based tagging and 66-75 edge case gates on 2026-06-02. Full decision recorded in the Approval Record and Architecture section above.
 
-**This is the ONLY gate. Once TT gives explicit co-founder approval with the chosen methodology, this thread is unblocked.**
+**Remaining gate before ingest can start:** Ch36-Ch58 Codex commission must be issued (see Decode Status). Ch4-Ch19 ingest can begin immediately without waiting for Ch36-58.
 
 ---
 
@@ -64,12 +64,84 @@ There are **two competing methodologies** for how the bucket boundaries are calc
 ### Approval Record
 
 ```
-Date:         [PENDING]
-Methodology:  [PENDING -- co-founder to select]
+Date:         2026-06-02
+Methodology:  Option B -- Label-Based Tagging with 66-75 Edge Case Gate
 Authority:    Prateek Malhotra (Co-Founder)
-Statement:    [PENDING]
-Recorded by:  [PENDING]
+Statement:    "Go with Option B with Edge Case Management and Rules.
+               Instead of Hard Coding the Age Bracket, give Labels (Madhya Aayu, etc).
+               For Edge Case -- Keep range as 66-75 which Gated checks -- Dashas, Planets, etc."
+GAI Support:  GAI response (SBC_AAYU Chapter_GAI Response.md) corroborates Option B.
+               GAI notes 72 years as classical Jyotish boundary (Shashtyamsa/Ashtakavarga
+               reductions) -- recorded as the reference midpoint within the 66-75 gate zone.
+Recorded by:  Claude Code Main Thread (CC) -- 2026-06-02
 ```
+
+---
+
+## ✅ Approved Architecture -- Aayu Bucket Methodology
+
+### Core Decision
+
+**Rules use labels only -- no hardcoded year numbers.** Year ranges live in a single centralized config. All ~600 rules tag `aayu_bucket` with a string label. The engine resolves label → year range at runtime via config.
+
+### Label Vocabulary (canonical, use exactly these strings)
+
+| Label | Name | Range (Option B) | Notes |
+|---|---|---|---|
+| `balarishta` | Infant Mortality | 0-8 yrs | Unchanged in both options |
+| `alpa_aayu` | Short Longevity | 8-33 yrs | Unchanged in both options |
+| `madhya_aayu` | Middle Longevity | 33-75 yrs | **Option B: wider range** |
+| `purna_aayu` | Full Longevity | 75-100 yrs | **Option B: starts at 75** |
+| `aparimita_aayu` | Super-Centenarian | 100+ yrs | Unchanged in both options |
+
+### Centralized Config (to be added to `backend/ke_schema_constants.py`)
+
+```python
+LONGEVITY_AAYU_CONFIG = {
+    "balarishta":    {"min": 0,   "max": 8},
+    "alpa_aayu":     {"min": 8,   "max": 33},
+    "madhya_aayu":   {"min": 33,  "max": 75},
+    "purna_aayu":    {"min": 75,  "max": 100},
+    "aparimita_aayu":{"min": 100, "max": None},
+}
+
+LONGEVITY_EDGE_CASE_ZONE = {
+    "min": 66,
+    "max": 75,
+    "classical_reference_point": 72,   # Shashtyamsa/Ashtakavarga classical boundary (GAI note)
+    "gates": ["dasha_activity", "maraka_strength", "ayushkaraka_strength"],
+    "default_on_boundary": "higher_bucket",  # If gates inconclusive, assign to Purna
+}
+```
+
+### Edge Case Zone: 66-75
+
+Rules whose natural outcome falls in the 66-75 year window receive an additional field:
+
+```python
+# In the rule's result block:
+rule["result"]["aayu_bucket"]    = "madhya_aayu"   # baseline bucket
+rule["result"]["edge_case_zone"] = True            # flags this rule as boundary-sensitive
+rule["result"]["edge_case_gates"] = [              # gates the engine must check
+    "dasha_activity",      # Is a Maraka/Badhaka Dasha active in the 66-75 window?
+    "maraka_strength",     # Are Maraka lords strong enough to terminate life?
+    "ayushkaraka_strength" # Is Saturn (Ayushkaraka) protective in this period?
+]
+# Gate resolution logic (for engine team):
+# - Strong Maraka/Badhaka Dasha active at 66-75 → pull outcome toward Alpa floor (66)
+# - Strong Ayushkaraka (Saturn) active → push outcome toward Purna boundary (75)
+# - Both weak / inconclusive → default to 'higher_bucket' (Purna)
+```
+
+### What Does NOT Go in Rule Objects
+
+- ❌ No `"min_age": 33` or `"max_age": 75` in any rule
+- ❌ No literal year numbers in `interpretation.detailed` or `interpretation.summary` that define bucket boundaries
+- ✅ OK to mention years in source-text quotations (e.g. "the author states 33 to 66 years")
+
+### Fuzzy Scoring (future enhancement -- do not block ingest on this)
+
+GAI also recommended a weight-based scoring approach (a chart with heavy Alpa indicators + minor Madhya indicators scores 70% Alpa / 30% Madhya). This is a runtime engine enhancement, NOT an ingest concern. Rules ingest with a single `aayu_bucket` label. The engine team implements scoring separately post-ingest.
 
 ---
 
@@ -80,8 +152,8 @@ Recorded by:  [PENDING]
 | Ch4-Ch5 (NLM) | ✅ Complete |
 | Ch6-Ch58 (CC) | ✅ Complete -- all 58 chapters accounted for |
 | Handover document | ✅ `HANDOVER_SUMMARY_LongevityDecode.md` present |
-| Aayu bucket methodology | 🔴 Awaiting co-founder sign-off |
-| Ch36-Ch58 case study extraction | 🔴 Separate Codex commission not yet issued |
+| Aayu bucket methodology | ✅ **APPROVED 2026-06-02** -- Option B, label-based, 66-75 edge gate |
+| Ch36-Ch58 case study extraction | 🔴 Codex commission not yet issued -- TT to brief and issue |
 
 The decode work is finished for rule extraction. It is ONLY the governance gate that blocks ingest.
 
@@ -153,13 +225,19 @@ rule["source"]["batch_id"] = "longevity_58ch_v1"  # MANDATORY -- validate_rules.
 
 ---
 
-## Immediate Next Action (for TT)
+## Immediate Next Action (gate cleared -- 2026-06-02)
 
-1. **Present aayu bucket methodology choice to co-founder.** This is the sole remaining gate.
-2. Record approval in this brief and in `HANDOVER_SUMMARY_LongevityDecode.md`.
-3. Only then: begin dedup + ingest sequence.
+| Step | Action | Owner |
+|---|---|---|
+| 1 | Add `LONGEVITY_AAYU_CONFIG` + `LONGEVITY_EDGE_CASE_ZONE` to `backend/ke_schema_constants.py` | CC |
+| 2 | Issue Ch36-Ch58 case study rules Codex commission (separate from main ingest) | TT |
+| 3 | Run dedup: `Longevity_CC_Decode/` vs `BPHS_CC_Decode/` (Ch43/44) and vs `LongevityUnnatural_CC_Decode/` | A2 / CC |
+| 4 | Write ingest script -- Ch5 first (aayu framework rules), then Ch4, then Ch6-18 lagna batches | A2 |
+| 5 | Apply label-based `aayu_bucket` tags. Mark 66-75 zone rules with `edge_case_zone: true` | A2 (script) |
+| 6 | Dry run → local structural check → upload → validate → patch → commit | A2 |
+| 7 | Ch36-58 case study rules: separate ingest sprint after Codex commission delivers | Future sprint |
 
-**This thread has ZERO work to do until the approval is given. Do not run dedup, do not touch the JSON files.**
+**Ch4-Ch19 ingest can begin immediately. Do NOT wait for Ch36-58 commission.**
 
 ---
 
