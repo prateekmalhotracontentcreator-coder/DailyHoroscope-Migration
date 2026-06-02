@@ -157,18 +157,11 @@
 
 | Status | Detail |
 |---|---|
-| Ingest status | ✅ READY -- all 5 HIGH items resolved by CC PDF validation |
-| CC PDF validation | 2026-05-31 -- `LU_PDF_Validation_Results.md` |
-| lu-s04-001 | ✅ "should" confirmed (p.6/p.9) -- weighted condition, not hard gate |
-| lu-s04-014 | ✅ AND/OR resolved: 06 AND Mars required; maraka OR badhaka either sufficient |
-| lu-s04-003/004 | ✅ 5-level chain confirmed; Level 5 "connected" = conjunction + aspect |
-| lu-s04-010 | ✅ "Lethal planet" = both maraka AND badhaka simultaneously (AND logic) |
-| CS1 Mercury | ✅ 19°Aq12'36" (Sata 4) -- DataTable confirmed correct |
-| CS1 Jupiter | ✅ Fixed: 00°Pi60' → 00°Pi59'37" in DataTables |
-| lu-s04-013 | ✅ Progressive houses = {3, 10, 11} -- 6th excluded (MEDIUM resolved) |
-| Remaining MEDIUM (10) | 🟡 Safe to ingest with pending_review: true |
-| Remaining LOW (6) | ✅ Safe to ingest as-is |
-| Post-ingest dedup | Run against BPHS Vol 1 + 300 Combinations + 300 Horoscopes |
+| Ingest status | ✅ **FULLY INGESTED + TRIAGE COMPLETE -- 2026-06-02** · 44 rules · batch `longevity_unnatural_v1` · 0 errors |
+| Validation result | 33 auto_approved (75%) · 11 pending_human_review (25%) · 0 flagged. Bucket A: 2 truncation artifacts. Bucket B: 2 KP vs classical framework errors. Bucket C: 0. |
+| Dedup | 0 matches vs 10,620 MongoDB rules (467,280 pairs). 6 known lu-s04↔kp-ch05 overlaps skipped by engine-spec condition type -- documented in diagnostic, surface at review. |
+| MEDIUM rules (8) | lu-s04-007/008/009/016/017/018 + lu-s02-006 + lu-s03-005 set `pending_review:True` |
+| TT action | Co-founder sign-off on 33 `auto_approved` rules → `approved` status. |
 
 ---
 
