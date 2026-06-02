@@ -325,6 +325,29 @@ TT actions:
 - [x] JSON report: `KE_TEXTBOOK_DECODE/Dedup_Reports/dedup_300combinations_vs_mongodb_positional.json`
 - [x] `300_COMBINATIONS_INGEST.md` OP-09 closed
 
+### 13e -- Phaladeepika Retroactive Dedup + Patch (2026-06-03)
+
+- [x] Source: `/Users/apple/Documents/Knowledge Engine_eBooks/Phaladeepika_CC_Decode` (28 files, 1,218 rules, batch `phaladeepika-v1-20260601`)
+- [x] Export excluded batch `phaladeepika-v1-20260601` → 9,446 rules in MongoDB export
+- [x] 11,505,228 pairs evaluated vs full MongoDB
+- [x] Positional detector: 133 planet×position groups keyed from A, 282 from B -- **108 shared keys**
+- [x] Results: 0 TF-IDF matches · 0 contradictions · **2,701 positional conflicts**
+  - 0 self-match artifacts ✅ (export dir clearing working)
+  - **7** `positional_polarity_conflict` → PATCH
+  - 2,694 `positional_alternate_result` → REVIEW-ONLY (multi-authority cross-references, no action)
+- [x] Triage of 7 genuine conflicts:
+  - `pd-ch08-050` + `pd-ch13-022` vs `kp-ch12-002`: Jupiter H1 -- PD general benefic vs KP Virgo-lagna badhaka
+  - `pd-ch08-056` vs `kp-ch12-001`: Jupiter H7 -- PD general vs KP Virgo-lagna badhaka
+  - `pd-ch08-011` vs `kp-ch13-001`: Sun H11 -- PD general benefic vs KP Libra-lagna badhaka
+  - `pd-ch08-060` vs `R-ATEXTB-JUP-11H-007`: Jupiter H11 -- cross-authority interpretation
+  - `pd-ch08-030` vs `R-BRIHAT-MAR-5H-216`: Mars H5 -- B-rule is Venus/Sag-lagna rule with Mars as secondary condition
+  - `pd-ch08-032` vs `R-ATEXTB-MAR-7H-004`: Mars H7 -- B-rule is multi-planet condition (Moon+Venus vs Mars+Saturn)
+  - Note: conflicts 1/2/3/4 are mirror-image of the 58Ch patch (same KP rules from the other direction)
+- [x] **Live patch applied 2026-06-03**: 7 patched / 0 skipped / 0 errors
+  - `pd-ch08-011`, `pd-ch08-030`, `pd-ch08-032`, `pd-ch08-050`, `pd-ch08-056`, `pd-ch08-060`, `pd-ch13-022` → `pending_review=True`
+- [x] Final DB state `phaladeepika-v1-20260601`: 825 AA · 393 PHR · 0 flagged · 7 with `pending_review=True` flag
+- [x] Logs: `phaladeepika_dedup_20260603_044150.md` · `patch_phaladeepika_20260603_044750_live.log`
+
 ---
 
 ## Retroactive Dedup Pipeline Summary
@@ -335,5 +358,6 @@ TT actions:
 | Longevity Unnatural | 44 | 467,280 | CLEAN | ✅ None |
 | 300 Horoscopes | 57 | 604,599 | CLEAN | ✅ None |
 | 300 Combinations | 329 | 3,400,215 | CLEAN | ✅ None -- gap from 2026-06-01 dedup formally closed |
+| **Phaladeepika** | **1,218** | **11,505,228** | **7 genuine polarity conflicts** | ✅ **Patched** (pd-ch08-011/030/032/050/056/060, pd-ch13-022) |
 
-**Pipeline status: COMPLETE** · All 4 recent batches clear. Phaladeepika + BPHS Vol 1 Ph2 + BPHS Vol 2 retroactive dedup pending (separate scripts to build).
+**Pipeline status: 5/7 COMPLETE** · BPHS Vol 1 Ph2 (696 rules) + BPHS Vol 2 (249 rules) retroactive dedup pending.
