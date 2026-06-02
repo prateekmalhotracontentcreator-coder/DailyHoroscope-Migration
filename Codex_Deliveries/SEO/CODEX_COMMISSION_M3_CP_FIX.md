@@ -1,135 +1,110 @@
-# Codex Commission: M3-CP-FIX -- Character Placements Generator Fix (v4)
+# Codex Commission: M3-CP-FIX -- Character Placements Generator Fix (v5)
 > Thread: SEO Legacy (M3 section) | File: `backend/seo_m3_builders.py`
-> Issued: 2026-06-02 (v4 -- v3 improved L1 to 52.0% but still FLAGGED; two residual failure modes identified)
+> Issued: 2026-06-02 (v5 -- v4 regressed badly to 96.1%; restore v3 state and make only surgical data edits)
 > Scan script: `tests/echo_pace_seo20k_scan.py` | Scan report: `SEO_20K/SEO_TRACKER.md`
 
 ---
 
 ## Commission Brief (5 lines)
 
-v3 improved L1 from 62.7% → 52.0% -- the Scorpio Sun/Moon/Rising 2H self-check is now clearly separated and the chart-point psychology is working. Two residual failure modes remain: (1) **shared house-bank sentences across signs** -- within the same chart point + house, sentences in `strengths`, `challenges`, and `life_themes` are still drawn from a single pool regardless of sign, so e.g. all 12 Rising-in-7th-House pages share the same house-bank phrasing; fix by adding sign-family variance pools -- for each chart-point × house block, provide at least 3 variant banks selected by `_hash_index(sign_slug, chartpoint, house, modulus=3)` so the same sentence cannot appear across more than 4 of the 12 sign pages for that house; (2) **Pattern B title clustering** -- `"{ChartPoint} in {Sign}: {HouseDomain} Placement Guide"` places the house domain word at a fixed structural position, causing all Rising-in-7th pages across signs to produce "Rising in X: Partnership Placement Guide" -- high Jaccard because `{HouseDomain}` is identical for all 12 signs; fix: Pattern B must include a **sign-flavour adjective** so the title is unique per sign, e.g. `"Rising in Capricorn: Structured Partnership Placement"` vs `"Rising in Taurus: Grounded Partnership Placement"` -- use a sign-native adjective drawn from a per-sign adjective dict; (3) **delete these three phrase families entirely** (do not rephrase -- remove the generating code): `"blend makes house site"` (43%), `"life themes revolve around"` (28%), `"recurring theme learning how"` (21%).
+v4 regressed from 52.0% → 96.1% BLOCKED because new sign-family helper functions introduced universal sentence scaffolding (`"house story tends feel"` 100%, `"behaviour often sharpens native"` 100%, `"house reading generically gives"` 100%). **v3 at 52.0% is the closest result -- start from v3, not v4.** The working tree has been reverted to the last clean commit (v3 state). Three targeted fixes remain to clear 52.0% → < 50%: (1) **delete the three residual v3 phrase families from the DATA pools directly** -- `"blend makes house site"` (43%), `"life themes revolve around"` (28%), `"recurring theme learning how"` (21%) -- find every string in the existing pool dicts that contains these substrings and rewrite just those strings; (2) **fix Pattern B title via a one-line dict lookup** -- add `SIGN_ADJECTIVES = {"aries": "Bold", "taurus": "Grounded", ...}` and insert the adjective with an f-string in the existing title builder, no new function; (3) **CRITICAL CONSTRAINT: do not add any new helper function, generator function, or sentence template** -- all changes must be to string values in existing data dicts; if a sentence pool needs a new variant, add the string to the existing list, do not wrap it in a new function.
 
 ---
 
-## 1. SEO Pages -- Module Overview
+## 1. Baseline State
 
-| Page Type | URL Pattern | Total Pages | Dimensions | Content Fields Scanned |
-|---|---|---|---|---|
-| Character Placements | `/traits/{sign}/{chart_point}/{house}` | 432 | 12 signs × 3 chart points (Sun/Moon/Rising) × 12 houses | `summary`, `overview`, `traits.strengths`, `traits.challenges`, `traits.life_themes`, FAQ answers, `meta_title` |
-
----
-
-## 2. Pages Impacted -- Rework Required
-
-| Cluster | Pages Affected | Issue | Fix Required |
-|---|---|---|---|
-| Same-chart-point, same-house, diff sign (e.g. all Rising-7th pages) | 144 clusters of 12 | House-bank sentences shared across all 12 sign pages for same house+chartpoint | ≥3 sign-family variant banks per chart-point × house block; hash-select by sign |
-| Pattern B `meta_title` | 432 / 432 | `{HouseDomain}` is identical for all signs in same house → L3 title clustering | Add sign-native adjective: `"Rising in Capricorn: Structured Partnership Placement"` |
-| Residual shared stems | 432 / 432 | 3 new shared 4-gram families introduced in v3 body | Delete generating code entirely |
-| **Total impacted** | **432 / 432** | L1 52.0% FLAGGED · L2 FAIL · L3 FAIL | Sign-family variance + title uniqueness |
-
-**Phrases that MUST NOT appear anywhere in the output -- delete generating code, do not rephrase:**
-
-*New v3 violations:*
-- `"blend makes house site"` -- 43% of pages
-- `"life themes revolve around"` -- 28% of pages
-- `"recurring theme learning how"` -- 21% of pages
-
-*Carried from prior versions (must remain gone):*
-- `"house turns attention toward"` -- was 100% in v2
-- `"time place details house"` -- was 100% in v1
-- `"details house based placements"` -- was 100% in v1
-- Any closing sentence shared across chart points (timing notes, chart-consultation prompts)
-
----
-
-## 3. Architecture Specification
-
-### 3a. Sign-Family Variance Pools (new in v4)
-
-The chart-point-native paragraph banks from v3 are working -- keep them. The new requirement is that within each chart-point × house block, the content must also vary by sign so no sentence appears on more than 4 of the 12 sign pages.
-
-**Minimum structure:**
-```python
-# For each (chartpoint, house) combination, define 3 pools:
-HOUSE_CHARTPOINT_POOLS = {
-    ("rising", 7): [
-        POOL_A,  # used for signs where hash % 3 == 0
-        POOL_B,  # used for signs where hash % 3 == 1
-        POOL_C,  # used for signs where hash % 3 == 2
-    ],
-    ...
-}
-
-def get_pool_idx(sign_slug, chartpoint, house):
-    return _hash_index(sign_slug, chartpoint, house, modulus=3)
+**Revert v4 before starting.** The working tree was already reverted to last clean commit by CC (2026-06-02). Confirm v3 state is active:
+```bash
+python3 tests/echo_pace_seo20k_scan.py
+# Expected: Character Placements L1 ~52.0% FLAGGED
+# If L1 > 90%, v4 code is still present -- git checkout backend/seo_m3_builders.py
 ```
 
-Each pool must be semantically distinct -- not just word swaps. Pools should reflect different **experiential angles** of the same house domain: e.g. for Rising-7th House: Pool A = relationship initiation style, Pool B = how others experience this person in partnership, Pool C = what this placement requires from the native in one-on-one settings.
+---
 
-### 3b. Pattern B Title Fix (new in v4)
+## 2. Three Surgical Fixes
 
-**Sign-native adjective dict** (provide all 12):
+### Fix 1 -- Delete 3 phrase families from existing data pools
+
+Search `backend/seo_m3_builders.py` for every string containing any of these substrings:
+- `"blend makes house"` or `"makes house site"`
+- `"life themes revolve"` or `"themes revolve around"`
+- `"recurring theme learning"` or `"theme learning how"`
+
+For each match: rewrite the string with a unique, house/sign/chartpoint-specific phrasing drawn from the semantic domain of that house. Do not introduce any phrase that could appear on more than 2 of the 432 pages.
+
+**How to verify Fix 1 worked:** grep the entire file for each substring after editing -- zero hits expected.
+```bash
+grep -n "blend makes house\|makes house site\|life themes revolve\|themes revolve around\|recurring theme learning\|theme learning how" backend/seo_m3_builders.py
+# Expected: no output
+```
+
+### Fix 2 -- Pattern B title sign-adjective (one-line change only)
+
+Locate the existing `meta_title` / Pattern B title builder in `seo_m3_builders.py`. Add this dict **at module level** (not inside a function):
 ```python
-SIGN_ADJECTIVES = {
-    "aries": "Bold", "taurus": "Grounded", "gemini": "Adaptive",
+_SIGN_ADJ = {
+    "aries": "Bold", "taurus": "Grounded", "gemini": "Versatile",
     "cancer": "Nurturing", "leo": "Radiant", "virgo": "Discerning",
     "libra": "Balanced", "scorpio": "Intense", "sagittarius": "Expansive",
     "capricorn": "Structured", "aquarius": "Independent", "pisces": "Fluid",
 }
 ```
 
-Pattern B becomes: `"{ChartPoint} in {Sign}: {SignAdj} {HouseDomain} Placement"`
+Then in the **existing** Pattern B title string, insert the adjective with an f-string. Example -- before:
+```python
+f"{chartpoint} in {sign_name}: {house_domain} Placement Guide"
+```
+After:
+```python
+f"{chartpoint} in {sign_name}: {_SIGN_ADJ.get(sign_slug, '')} {house_domain} Placement"
+```
 
-Examples:
-- `"Rising in Capricorn: Structured Partnership Placement"` ✅
-- `"Rising in Taurus: Grounded Partnership Placement"` ✅  
-- `"Sun in Scorpio: Intense Resources Placement"` ✅
+That is the entire change for Fix 2. Do not add any new function.
 
-This guarantees every title is unique while keeping the structural template recognisable.
+### Fix 3 -- No new code (hard constraint)
 
-### 3c. Chart-Point Architecture (retain from v3 -- confirmed working)
-
-| Chart Point | Psychological Frame | Vocabulary Domain |
-|---|---|---|
-| **Sun** | Identity · Purpose · Visibility · Ego-expression | drive, achievement, recognition, creative will, authority |
-| **Moon** | Emotion · Memory · Security · Instinctive response | comfort, nurturing, past, feeling-tone, inner landscape |
-| **Rising** | Presentation · First impression · Instinct · Body | approach, style, how others perceive, physical manner, outer layer |
-
-**This separation is confirmed working in v3 -- do not regress it.** The Scorpio Sun/Moon/Rising 2H triplet is now distinct. Keep chart-point-native framing; only add the sign-family variance layer on top.
-
----
-
-## 4. Tests -- Required Before Integration
-
-| Test | Layer | Tool | Pass Criterion | Run Command |
-|---|---|---|---|---|
-| TF-IDF Cosine | L1 | `tests/echo_pace_seo20k_scan.py` | Character Placements worst pair **< 50%** | `python3 tests/echo_pace_seo20k_scan.py` |
-| N-gram Match | L2 | `tests/echo_pace_seo20k_scan.py` | **0** four-gram violations > 15% frequency | Same script |
-| Jaccard Titles | L3 | `tests/echo_pace_seo20k_scan.py` | No title pair > 60% Jaccard | Same script |
-
-**Self-checks before submitting:**
-1. Take Rising + any house (e.g. 7th). Pull all 12 sign pages. No two pages may share a sentence in `strengths`, `challenges`, or `life_themes`.
-2. Take the same sign (e.g. Capricorn) + same house (e.g. 7th). Compare Sun, Moon, Rising pages. The three must read as entirely different psychological experiences (v3 confirmed this -- do not regress).
-3. Pull all 12 Pattern B titles for Rising-7th. Each must contain a distinct sign adjective. None should share 3+ consecutive tokens.
+If you find yourself writing a new function, a new class, a new loop, or a new template string to implement any part of this fix -- stop. Every new structural element risks introducing a new universal stem. The only permitted additions are:
+- New string values inside existing list/dict data structures
+- The `_SIGN_ADJ` dict (module-level constant, not a function)
+- The one f-string change in the existing Pattern B title line
 
 ---
 
-## 5. Scan History
+## 3. Tests -- Required Before Submitting
 
-| Scan | Date | L1 | L1 Status | L2 Violations | L3 Worst Pair | Verdict |
+```bash
+python3 tests/echo_pace_seo20k_scan.py
+```
+
+All three must pass before submitting:
+- L1 Character Placements worst pair **< 50%** ✅
+- L2 **0** four-gram violations > 15% frequency ✅
+- L3 no title pair > 60% Jaccard ✅
+
+**Include the scan output in your delivery note.** Do not submit without passing scores.
+
+**Self-checks:**
+1. grep for all 5 banned phrase substrings (Fix 1 check above) -- must return zero hits
+2. Pull all 12 Pattern B titles for any one house (e.g. 7th). Each must contain a distinct sign adjective. No two titles should be identical.
+3. Scorpio Sun / Moon / Rising in the 2nd House -- three pages must still read as distinct psychological experiences (v3 confirmed this; do not regress).
+
+---
+
+## 4. Scan History
+
+| Scan | Date | L1 | L1 Status | L2 Top Violation | L3 Worst Pair | Verdict |
 |---|---|---|---|---|---|---|
-| Pre-fix (original) | 2026-05-31 | 93.4% | ❌ BLOCKED | 10 at 100% | -- | FAIL |
-| v1 re-scan | 2026-06-02 | 94.4% | ❌ BLOCKED | 10 at 32% | -- | ❌ FAIL -- no improvement |
+| Pre-fix (original) | 2026-05-31 | 93.4% | ❌ BLOCKED | 10 phrases at 100% | -- | FAIL |
+| v1 re-scan | 2026-06-02 | 94.4% | ❌ BLOCKED | 10 at 32% | -- | ❌ FAIL |
 | v2 re-scan | 2026-06-02 | 62.7% | ⚠️ FLAGGED | "house turns attention toward" 100% | Scorpio Moon 2H vs Sun 2H | ❌ FAIL |
-| v3 re-scan | 2026-06-02 | **52.0%** | ⚠️ FLAGGED | "blend makes house site" 43%, "recurring theme" 21% | Rising Capricorn 7H vs Rising Taurus 7H | ❌ FAIL |
-| **v4 target** | -- | **< 50%** | ✅ PASS | **0** | < 60% Jaccard | -- |
+| v3 re-scan | 2026-06-02 | **52.0%** | ⚠️ FLAGGED | "blend makes house site" 43% | Rising Capricorn 7H vs Rising Taurus 7H | ❌ FAIL -- closest so far |
+| v4 re-scan | 2026-06-02 | 96.1% | ❌ BLOCKED | "house story tends feel" 100% | Sun Libra 12H vs Libra Rising 12H | ❌ FAIL -- regression, new helper functions introduced universal stems |
+| **v5 target** | -- | **< 50%** | ✅ PASS | **0** | < 60% Jaccard | -- |
 
-**v3 worst pair:** `Rising in Capricorn: Partnership Placement Guide` vs `Rising in Taurus: Partnership Placement Guide`
-**Root cause:** Pattern B title identical for all signs in same house + shared house-bank sentences within same chart-point across signs.
-**What is working (do not regress):** Chart-point psychological separation (Sun/Moon/Rising) -- confirmed clean in Scorpio 2H self-check.
+**Pattern:** every version that introduced new helper functions / generators collapsed back to BLOCKED. v3 succeeded by working directly on data pools. v5 must follow the same principle -- data edits only, no new code structure.
 
-**Top v3 L2 violations (must be eliminated in v4):**
-- `"blend makes house site"` -- 43%
-- `"life themes revolve around"` -- 28%
-- `"recurring theme learning how"` -- 21%
+**Banned phrases (cumulative -- must not appear on more than 1 page each):**
+- `"blend makes house site"` · `"life themes revolve around"` · `"recurring theme learning how"` -- v3 residuals
+- `"house story tends feel"` · `"behaviour often sharpens native"` · `"house reading generically gives"` -- v4 regressions (already gone after revert)
+- `"house turns attention toward"` · `"time place details house"` · `"details house based placements"` -- v1/v2 (already gone)
