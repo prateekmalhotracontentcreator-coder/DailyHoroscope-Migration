@@ -49,6 +49,13 @@ if [ ! -d "$FOLDER_A" ]; then
   exit 1
 fi
 
+# ── Print log path BEFORE redirect so it always appears on screen ──────────
+echo ""
+echo "============================================================"
+echo "  LOG FILE: $LOG_PATH"
+echo "============================================================"
+echo ""
+
 # ── Auto-save: tee all output to LOG_PATH ──────────────────────────────────
 exec > >(tee -a "$LOG_PATH") 2>&1
 
