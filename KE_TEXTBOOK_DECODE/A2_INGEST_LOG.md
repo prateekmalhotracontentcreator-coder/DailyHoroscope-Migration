@@ -302,8 +302,23 @@ TT actions:
 - [x] No patch required
 - [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/longevity_unnatural_dedup_20260603_041549.md`
 
-### 13c -- 300 Horoscopes Retroactive Dedup (PENDING)
+### 13c -- 300 Horoscopes Retroactive Dedup (2026-06-03)
 
-- [ ] Script: `backend/scripts/retroactive_dedup_300horoscopes.sh` -- TO BUILD
-- [ ] Source: `KE_TEXTBOOK_DECODE/300Horoscopes/` decode folder (57 rules, batch `300_horoscopes_vol1_v1`)
-- [ ] Estimated pairs: ~606,540 (57 × 10,627)
+- [x] Source: `ThreeHundredHoroscopes_CC_Decode/` (5 files, 57 rules, batch `300_horoscopes_vol1_v1`)
+- [x] 604,599 pairs evaluated vs full MongoDB (10,607 rules)
+- [x] **CLEAN**: 0 matches · 0 contradictions · 0 positional conflicts
+- [x] Note: 300 Horoscopes rules have 0 planet×position keys -- KP methodology/case-study rules, no positional conditions
+- [x] No patch required
+- [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/300horoscopes_dedup_20260603_042519.md`
+
+---
+
+## Retroactive Dedup Pipeline Summary
+
+| Batch | Rules | Pairs | Result | Action |
+|---|---|---|---|---|
+| Longevity 58Ch | 149 | 1,588,936 | 4 genuine polarity conflicts | ✅ Patched (kp-ch12-001/002, kp-ch13-001) |
+| Longevity Unnatural | 44 | 467,280 | CLEAN | ✅ None |
+| 300 Horoscopes | 57 | 604,599 | CLEAN | ✅ None |
+
+**Pipeline status: COMPLETE** · All 3 post-Phase-1 batches clear.
