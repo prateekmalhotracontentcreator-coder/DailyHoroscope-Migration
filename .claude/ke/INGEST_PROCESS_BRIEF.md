@@ -105,6 +105,9 @@ Expected: `Issues: 0` before uploading. If not zero -- fix the ingest script fir
 
 ## The Complete 7-Step Workflow
 
+> **Correct order:** Dry Run → Dedup → **AI Validate (local JSON)** → Triage flagged → Upload → Structural confirm → Commit
+> The AI validator runs on the **local JSON file before any MongoDB upload**. This prevents bad rules from entering the DB and avoids post-upload patch cycles. *(Architecture confirmed 2026-06-02)*
+
 ### STEP 1 -- Dry Run (mandatory before every upload)
 
 ```bash
@@ -156,11 +159,45 @@ pprint.pprint(rules[-1])
 
 ---
 
+### STEP 2B -- AI Validate (pre-upload, against local JSON)
+
+> ⚠️ **Pre-check:**
+> ```bash
+> echo $ANTHROPIC_API_KEY   # Must print a key starting with sk-ant-
+> ```
+
+```bash
+python3 backend/scripts/validate_rules.py \
+  --json-file /tmp/[batch]/[name]_DRY_RUN.json \
+  --batch-id [your-batch-id]
+```
+
+**What it does:** Runs the full Anthropic API quality check + contradiction detection against the local JSON. Saves a `_VALIDATED.json` output file with `approval_status` already set (`auto_approved` / `pending_human_review` / `flagged`) and `validation` blocks embedded on every rule.
+
+**Expected output:**
+```
+[PRE-UPLOAD MODE] Reading from: .../longevity_all_rules_DRY_RUN.json
+Found 149 rules to validate
+Stage 1: Structural checks... 0 failures
+Stage 2: Claude quality check (batch_size=20)... 8/8 batches done
+Stage 3: Contradiction detection... 0 pair(s)
+VALIDATION COMPLETE
+  auto_approved          69  (46%)
+  pending_human_review   51  (34%)
+  flagged                29  (19%)
+  Validated JSON saved to: .../longevity_all_rules_DRY_RUN_VALIDATED.json
+```
+
+**If flagged rules exist:** Triage them using the three-bucket method (see Step 5) BEFORE uploading. Fix Bucket A/B rules in the JSON. Only Bucket C (genuine) rules should be uploaded as-is with `flagged` status.
+
+---
+
 ### STEP 3 -- Upload to MongoDB
 
 ```bash
+# Upload the VALIDATED file (output of Step 2B) -- not the raw dry-run JSON
 python3 backend/scripts/ingest_[name]_v[N].py \
-  --upload backend/scripts/[name]_v[N]_rules.json \
+  --upload /tmp/[batch]/[name]_DRY_RUN_VALIDATED.json \
   --mongo-url "$MONGO_URL" \
   --db-name horoscope_db
 ```
@@ -179,7 +216,9 @@ Inserted 22 / Updated 0 rules → horoscope_db.interpretation_rules
 
 ---
 
-### STEP 4 -- Validate
+### STEP 4 -- Post-Upload Structural Confirm
+
+> **Note:** AI quality validation already happened in Step 2B (pre-upload). This step is a structural integrity check only -- it confirms that `source.batch_id`, `rule_id`, `interpretation`, and `approval_status` fields were written to MongoDB correctly.
 
 > ⚠️ **Pre-check before running:**
 > ```bash
@@ -596,15 +635,17 @@ echo $MONGO_URL   # Should print the full connection string, not empty
 ## Quick Checklist Before Every Session
 
 - [ ] `MONGO_URL` is exported in terminal (`echo $MONGO_URL` not empty)
-- [ ] `ANTHROPIC_API_KEY` is exported in terminal (`echo $ANTHROPIC_API_KEY` not empty) -- required for Step 4 validator
+- [ ] `ANTHROPIC_API_KEY` is exported in terminal (`echo $ANTHROPIC_API_KEY` not empty) -- required for Step 2B AI validator
 - [ ] Read `CLAUDE.md` for project context
 - [ ] Read `INGEST_NOTES.md` for current ingest state
 - [ ] Know the batch_id you're working with
 - [ ] Ingest script sets `approval_status: "pending_review"` (not `pending_human_review`)
-- [ ] Dry run before every upload
-- [ ] Validate after every upload
+- [ ] Dry run → save JSON (Step 1)
+- [ ] **AI validate local JSON before upload (Step 2B)** -- `validate_rules.py --json-file`
+- [ ] Triage flagged rules in the JSON before uploading
+- [ ] Upload `_VALIDATED.json` (Step 3) -- not the raw dry-run JSON
+- [ ] Structural confirm after upload (Step 4) -- `validate_ingest_batch.py`
 - [ ] **If validator says "Found 0 rules" after a fresh upload -- STOP and investigate** (see Step 4 red flag note)
-- [ ] Inspect every flagged rule before patching
 - [ ] Update `INGEST_NOTES.md` before committing
 - [ ] **For yoga chapters:** Run Step 7A (`backfill_metadata_yoga_checkable.py`) after every ingest
 - [ ] Commit after every completed batch
