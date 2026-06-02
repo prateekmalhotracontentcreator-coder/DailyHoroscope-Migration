@@ -1,47 +1,170 @@
-# Codex Commission: M3-CP-FIX -- Character Placements Generator Fix (v5)
+# Codex Commission: M3-CP-FIX -- Character Placements Generator Fix (v5-FULL)
 > Thread: SEO Legacy (M3 section) | File: `backend/seo_m3_builders.py`
-> Issued: 2026-06-02 (v5 -- v4 regressed badly to 96.1%; restore v3 state and make only surgical data edits)
+> Issued: 2026-06-02 (v5-FULL -- definitive brief from actual repo baseline; 4 prior passes analysed)
 > Scan script: `tests/echo_pace_seo20k_scan.py` | Scan report: `SEO_20K/SEO_TRACKER.md`
 
 ---
 
 ## Commission Brief (5 lines)
 
-v4 regressed from 52.0% → 96.1% BLOCKED because new sign-family helper functions introduced universal sentence scaffolding (`"house story tends feel"` 100%, `"behaviour often sharpens native"` 100%, `"house reading generically gives"` 100%). **v3 at 52.0% is the closest result -- start from v3, not v4.** The working tree has been reverted to the last clean commit (v3 state). Three targeted fixes remain to clear 52.0% → < 50%: (1) **delete the three residual v3 phrase families from the DATA pools directly** -- `"blend makes house site"` (43%), `"life themes revolve around"` (28%), `"recurring theme learning how"` (21%) -- find every string in the existing pool dicts that contains these substrings and rewrite just those strings; (2) **fix Pattern B title via a one-line dict lookup** -- add `SIGN_ADJECTIVES = {"aries": "Bold", "taurus": "Grounded", ...}` and insert the adjective with an f-string in the existing title builder, no new function; (3) **CRITICAL CONSTRAINT: do not add any new helper function, generator function, or sentence template** -- all changes must be to string values in existing data dicts; if a sentence pool needs a new variant, add the string to the existing list, do not wrap it in a new function.
+This brief starts from the actual committed repo state (93.4% BLOCKED). Prior v1-v4 passes never reached the repo -- all were local thread edits. After reading the live `_placement_traits()` function (lines 290-347) directly, the failure is concentrated in **two hardcoded FAQ answer strings** that are identical on all 432 pages: `"It depends on chart support. Every placement has strengths and shadows that become clearer..."` (→ `"strengths shadows become clearer"` at 100%) and `"Run your birth chart with accurate birth time. Rising and house placements especially..."` (→ `"rising house placements especially"` at 100%). Fix these two strings first -- replace each with a **12-entry per-chartpoint-per-sign dict** (no new function, just a dict literal and a `.get()` call). The remaining structural work is: (1) break the `summary` f-string (lines 294-297) -- it uses `"blends"` + `"The result is a placement that expresses itself through"` as fixed stems across all 432 pages; replace with 3 variants hash-selected by `(sign_slug, chart_point_slug, house_slug)` modulus 3; (2) apply chart-point vocabulary separation -- Sun sentences use identity/purpose/achievement vocab, Moon sentences use emotion/memory/comfort vocab, Rising sentences use presentation/instinct/outer-style vocab -- **inside the existing `strengths`, `shadow_side`, and `vedic_perspective` f-string lists only, by editing the f-string text, not by adding new structures**; (3) fix `meta_title` -- replace the single template with 2 alternating patterns plus a `_SIGN_ADJ` dict (12 entries, module-level constant). **Critical constraint from v1-v4 learnings: do not add any new function, class, or loop -- every new code structure across 4 prior passes introduced universal stems that collapsed L1 back above 90%.**
 
 ---
 
-## 1. Baseline State
+## 1. Exact Code Location
 
-**Revert v4 before starting.** The working tree was already reverted to last clean commit by CC (2026-06-02). Confirm v3 state is active:
-```bash
-python3 tests/echo_pace_seo20k_scan.py
-# Expected: Character Placements L1 ~52.0% FLAGGED
-# If L1 > 90%, v4 code is still present -- git checkout backend/seo_m3_builders.py
+File: `backend/seo_m3_builders.py`
+Function: `_placement_traits()` at line 290 and `build_character_placement_doc()` at line 350.
+
+**Read these two functions before making any change.** The full function body is lines 290-363.
+
+---
+
+## 2. Fixes in Order of Impact
+
+### Fix A -- Two hardcoded FAQ answers (removes 2 × 100% violations immediately)
+
+**Current code (lines 336-345):**
+```python
+{
+    "question": "Is this placement good or difficult?",
+    "answer": "It depends on chart support. Every placement has strengths and shadows that become clearer through dignity, aspects, and dasha timing.",
+},
+{
+    "question": "How do I confirm if this is my placement?",
+    "answer": "Run your birth chart with accurate birth time. Rising and house placements especially depend on exact time and location.",
+},
 ```
 
----
+**Fix:** Replace the hardcoded `answer` strings with **dict lookups** drawing from per-chartpoint answer pools defined as module-level dict literals. No new function. Pattern:
 
-## 2. Three Surgical Fixes
+```python
+# Module-level constant (add near top of file, after existing imports/dicts):
+_CP_FAQ_GOOD_DIFFICULT = {
+    "sun": [
+        "Solar placements carry purposeful energy when the Sun is well-dignified. Challenged dignity can make the drive to shine in this area feel blocked or over-effortful.",
+        "Sun here sharpens identity through this house. Whether that feels empowering or pressuring depends on dignity, aspect support, and dasha activation.",
+        "This Sun position can be a source of real confidence. Squares or debilitation to the Sun may turn the same domain into a recurring test of ego strength.",
+    ],
+    "moon": [
+        "Moon placements are sensitive to dignity and waxing-waning cycle. In a strong sign the emotional intelligence here flows easily; in a challenged sign the same instincts can feel reactive.",
+        "The Moon here makes this life area emotionally central. Nourishing transits and a healthy dasha cycle often bring out its best; malefic aspects can amplify anxiety around this theme.",
+        "Comfort and security needs are concentrated in this house. Supportive aspects make the placement stabilising; difficult ones can make needs feel hard to meet.",
+    ],
+    "rising": [
+        "Rising sign placements shape first impressions and body. Their expression depends heavily on lagna lord strength and any planets aspecting the ascendant.",
+        "The Ascendant here colours how others read you in this area before you speak. A strong lagna lord makes that impression feel natural; a weak one may cause self-consciousness.",
+        "This Rising placement defines the outer layer of personality. Its quality shifts with the lagna lord's dignity, house position, and the dashas running at any given time.",
+    ],
+}
 
-### Fix 1 -- Delete 3 phrase families from existing data pools
+_CP_FAQ_CONFIRM = {
+    "sun": [
+        "Check your birth chart for the Sun's house position. An accurate birth time within 15 minutes is enough to confirm solar house placement reliably.",
+        "The Sun changes signs roughly once a month but moves through houses based on birth time. Use a Vedic chart with your exact birth time and place.",
+        "Solar house placement is birth-time-sensitive but more forgiving than the Ascendant. A birth time accurate to ±30 minutes is usually sufficient.",
+    ],
+    "moon": [
+        "Moon house placement requires a birth time accurate to within 2 hours. Use a Vedic calculator with your exact date, time, and place of birth.",
+        "Confirm by running a Vedic birth chart. The Moon moves roughly 13° per day, so a precise birth time is important for accurate house placement.",
+        "For Moon placements: an accurate birth time is essential. Even a 30-minute error can shift the Moon's house. Use hospital records if possible.",
+    ],
+    "rising": [
+        "The Rising sign changes every 2 hours on average. You need a birth time accurate to within 15-20 minutes to confirm your Ascendant reliably.",
+        "Ascendant placement is the most time-sensitive point in the chart. Verify with your birth certificate or hospital record for the most accurate reading.",
+        "Confirm your Rising sign with an exact birth time. Even a 10-minute difference can shift the Ascendant, especially near sign boundaries.",
+    ],
+}
+```
 
-Search `backend/seo_m3_builders.py` for every string containing any of these substrings:
-- `"blend makes house"` or `"makes house site"`
-- `"life themes revolve"` or `"themes revolve around"`
-- `"recurring theme learning"` or `"theme learning how"`
+Then in the FAQ block, replace the hardcoded answers:
+```python
+{
+    "question": "Is this placement good or difficult?",
+    "answer": _CP_FAQ_GOOD_DIFFICULT[chart_point_slug][_hash_index(sign_slug, chart_point_slug, house_slug, 3)],
+},
+{
+    "question": "How do I confirm if this is my placement?",
+    "answer": _CP_FAQ_CONFIRM[chart_point_slug][_hash_index(sign_slug, chart_point_slug, house_slug, 3)],
+},
+```
 
-For each match: rewrite the string with a unique, house/sign/chartpoint-specific phrasing drawn from the semantic domain of that house. Do not introduce any phrase that could appear on more than 2 of the 432 pages.
+If `_hash_index()` does not already exist in the file, add this minimal version at module level:
+```python
+def _hash_index(a: str, b: str, c: str, n: int) -> int:
+    import hashlib
+    return int(hashlib.md5(f"{a}|{b}|{c}".encode()).hexdigest(), 16) % n
+```
 
-**How to verify Fix 1 worked:** grep the entire file for each substring after editing -- zero hits expected.
+**Verify Fix A:** after editing, grep the file:
 ```bash
-grep -n "blend makes house\|makes house site\|life themes revolve\|themes revolve around\|recurring theme learning\|theme learning how" backend/seo_m3_builders.py
+grep -n "strengths and shadows that become clearer\|Rising and house placements especially" backend/seo_m3_builders.py
 # Expected: no output
 ```
 
-### Fix 2 -- Pattern B title sign-adjective (one-line change only)
+---
 
-Locate the existing `meta_title` / Pattern B title builder in `seo_m3_builders.py`. Add this dict **at module level** (not inside a function):
+### Fix B -- Break the summary f-string (removes "blends" + "The result is a placement" shared stems)
+
+**Current code (lines 294-297):**
+```python
+summary = (
+    f"{sign['name']} {chart_point['name']} in the {house['label']} blends {chart_point['lens']} with themes of {house['topic']}. "
+    f"The result is a placement that expresses itself through {sign['element'].lower()} instinct and {sign['modality'].lower()} pacing."
+)
+```
+
+**Fix:** Replace with 3 variant templates, hash-selected. Add as a module-level list:
+```python
+_SUMMARY_TEMPLATES = [
+    lambda s, cp, h: (
+        f"{s['name']} {cp['name']} in the {h['label']} brings {cp['lens']} energy into the domain of {h['topic']}. "
+        f"{s['element']} instinct and {s['modality'].lower()} rhythm shape how this placement unfolds."
+    ),
+    lambda s, cp, h: (
+        f"With {s['name']} as the sign and {h['label']} as the stage, {cp['name']} energy here is filtered through {h['topic']}. "
+        f"The {s['element'].lower()} element gives this combination a {s['modality'].lower()} quality in action."
+    ),
+    lambda s, cp, h: (
+        f"This placement places {cp['lens']} within the context of {h['topic']}. "
+        f"{s['name']}'s {s['element'].lower()} nature and {s['modality'].lower()} drive give it a distinct experiential texture."
+    ),
+]
+```
+
+Then replace the `summary` assignment:
+```python
+summary = _SUMMARY_TEMPLATES[_hash_index(sign_slug, chart_point_slug, house_slug, 3)](sign, chart_point, house)
+```
+
+---
+
+### Fix C -- Chart-point vocabulary in strengths and shadow_side f-strings
+
+The `strengths` and `shadow_side` lists (lines 312-321) currently use neutral vocabulary for all three chart points. Edit the f-string text **inside the existing lists** to use chart-point-appropriate vocabulary. Do not restructure the lists -- only edit the string values.
+
+**Vocabulary rule (inline, no new function needed):**
+
+In the **existing `strengths` f-strings**: for each sentence that mentions the chart point's expression, use:
+- Sun: words from `{drive, purpose, recognition, authority, creative will}`
+- Moon: words from `{comfort, instinct, emotional attunement, nurturing, inner security}`
+- Rising: words from `{presentation, first impression, physical approach, outer style, instinctive manner}`
+
+Example change -- existing line 315:
+```python
+# Before (neutral):
+f"Often memorable because the {chart_point['name']} expresses itself clearly in public or close relationships.",
+# After (use chart_point_slug to choose vocabulary):
+f"Often recognised for the {('purposeful drive' if chart_point_slug == 'sun' else 'emotional attunement' if chart_point_slug == 'moon' else 'distinctive outer style')} this {chart_point['name']} placement projects.",
+```
+
+Apply the same pattern to the `shadow_side` f-strings (lines 317-321): Sun shadows = ego/pride patterns, Moon shadows = emotional reactivity/insecurity, Rising shadows = self-consciousness/projection.
+
+---
+
+### Fix D -- meta_title two-pattern alternation with sign adjective
+
+Add at module level (one dict, no function):
 ```python
 _SIGN_ADJ = {
     "aries": "Bold", "taurus": "Grounded", "gemini": "Versatile",
@@ -51,60 +174,85 @@ _SIGN_ADJ = {
 }
 ```
 
-Then in the **existing** Pattern B title string, insert the adjective with an f-string. Example -- before:
+In `build_character_placement_doc()` (line 350), replace the single `meta_title` template:
 ```python
-f"{chartpoint} in {sign_name}: {house_domain} Placement Guide"
+# Before:
+"meta_title": f"{sign} {chart_point} in the {house['label']} - Personality & Life Themes",
+
+# After:
+"meta_title": (
+    f"{sign} {chart_point} in the {house['label']} -- {house['topic'].title()} & Life Themes"
+    if _hash_index(sign_slug, chart_point_slug, house_slug, 2) == 0
+    else f"{chart_point} in {sign}: {_SIGN_ADJ[sign_slug]} {house['topic'].title()} Placement"
+),
 ```
-After:
-```python
-f"{chartpoint} in {sign_name}: {_SIGN_ADJ.get(sign_slug, '')} {house_domain} Placement"
-```
-
-That is the entire change for Fix 2. Do not add any new function.
-
-### Fix 3 -- No new code (hard constraint)
-
-If you find yourself writing a new function, a new class, a new loop, or a new template string to implement any part of this fix -- stop. Every new structural element risks introducing a new universal stem. The only permitted additions are:
-- New string values inside existing list/dict data structures
-- The `_SIGN_ADJ` dict (module-level constant, not a function)
-- The one f-string change in the existing Pattern B title line
 
 ---
 
-## 3. Tests -- Required Before Submitting
+## 3. What NOT to Do (lessons from v1-v4)
+
+Every prior pass that added new helper functions, generator classes, or sentence template systems introduced a new set of universal stems and collapsed L1 back above 90%. The pattern was consistent across all 4 attempts:
+
+| Pass | New structure added | Result |
+|---|---|---|
+| v1 | New sentence pool functions | 94.4% BLOCKED -- new boilerplate replaced old |
+| v2 | House-primary pool architecture | 62.7% FLAGGED -- new "house turns attention toward" 100% |
+| v3 | Chart-point paragraph banks | 52.0% FLAGGED -- 3 new shared stems at 21-43% |
+| v4 | Sign-family variance pool selectors | 96.1% BLOCKED -- new helper functions: "house story tends feel" 100% |
+
+**Rule:** if you find yourself writing a new `def`, a new class, or a new loop to implement any fix -- stop. The only new code permitted is:
+- `_hash_index()` if it doesn't already exist (4-line function, Fix A above)
+- `_SIGN_ADJ` dict (Fix D)
+- `_SUMMARY_TEMPLATES` list of lambdas (Fix B)
+- `_CP_FAQ_GOOD_DIFFICULT` and `_CP_FAQ_CONFIRM` dicts (Fix A)
+
+Everything else must be inline edits to the f-string text in the existing lists.
+
+---
+
+## 4. Tests -- Required Before Submitting
 
 ```bash
 python3 tests/echo_pace_seo20k_scan.py
 ```
 
-All three must pass before submitting:
+Pass criteria -- **all three required**:
 - L1 Character Placements worst pair **< 50%** ✅
 - L2 **0** four-gram violations > 15% frequency ✅
 - L3 no title pair > 60% Jaccard ✅
 
-**Include the scan output in your delivery note.** Do not submit without passing scores.
+**Include the scan output in your delivery note. Do not submit without passing scores.**
+
+**Grep checks before submitting:**
+```bash
+# Fix A confirmed:
+grep -n "strengths and shadows that become clearer\|Rising and house placements especially" backend/seo_m3_builders.py
+
+# Fix B confirmed:
+grep -n "blends.*lens\|The result is a placement" backend/seo_m3_builders.py
+
+# All banned stems confirmed absent:
+grep -n "blend makes house\|life themes revolve\|recurring theme learning\|house turns attention\|house story tends\|behaviour often sharpens\|house reading generically" backend/seo_m3_builders.py
+# All three greps expected: no output
+```
 
 **Self-checks:**
-1. grep for all 5 banned phrase substrings (Fix 1 check above) -- must return zero hits
-2. Pull all 12 Pattern B titles for any one house (e.g. 7th). Each must contain a distinct sign adjective. No two titles should be identical.
-3. Scorpio Sun / Moon / Rising in the 2nd House -- three pages must still read as distinct psychological experiences (v3 confirmed this; do not regress).
+1. Pull Scorpio Sun / Moon / Rising in 2nd House -- three pages must read as distinct psychological experiences (Sun=purpose/authority frame, Moon=emotional security frame, Rising=outer style frame).
+2. Pull all 12 meta_titles for Rising in any house -- each must contain a distinct sign adjective; no two titles identical.
+3. Pull all 12 "Is this placement good or difficult?" FAQ answers for Sun -- answers must vary (3 distinct answers across 12 signs, 4 signs per answer is fine; identical answer on all 12 is not).
 
 ---
 
-## 4. Scan History
+## 5. Scan History
 
-| Scan | Date | L1 | L1 Status | L2 Top Violation | L3 Worst Pair | Verdict |
-|---|---|---|---|---|---|---|
-| Pre-fix (original) | 2026-05-31 | 93.4% | ❌ BLOCKED | 10 phrases at 100% | -- | FAIL |
-| v1 re-scan | 2026-06-02 | 94.4% | ❌ BLOCKED | 10 at 32% | -- | ❌ FAIL |
-| v2 re-scan | 2026-06-02 | 62.7% | ⚠️ FLAGGED | "house turns attention toward" 100% | Scorpio Moon 2H vs Sun 2H | ❌ FAIL |
-| v3 re-scan | 2026-06-02 | **52.0%** | ⚠️ FLAGGED | "blend makes house site" 43% | Rising Capricorn 7H vs Rising Taurus 7H | ❌ FAIL -- closest so far |
-| v4 re-scan | 2026-06-02 | 96.1% | ❌ BLOCKED | "house story tends feel" 100% | Sun Libra 12H vs Libra Rising 12H | ❌ FAIL -- regression, new helper functions introduced universal stems |
-| **v5 target** | -- | **< 50%** | ✅ PASS | **0** | < 60% Jaccard | -- |
+| Scan | Date | L1 | L1 Status | Top L2 Violation | Verdict |
+|---|---|---|---|---|---|
+| Pre-fix (original) | 2026-05-31 | 93.4% | ❌ BLOCKED | "time rising house placements" 100% | FAIL |
+| v1 re-scan | 2026-06-02 | 94.4% | ❌ BLOCKED | New boilerplate at 32% | ❌ FAIL |
+| v2 re-scan | 2026-06-02 | 62.7% | ⚠️ FLAGGED | "house turns attention toward" 100% | ❌ FAIL |
+| v3 re-scan | 2026-06-02 | 52.0% | ⚠️ FLAGGED | "blend makes house site" 43% | ❌ FAIL -- closest result |
+| v4 re-scan | 2026-06-02 | 96.1% | ❌ BLOCKED | "house story tends feel" 100% | ❌ FAIL -- regression |
+| **v5 target** | -- | **< 50%** | ✅ PASS | **0** | -- |
 
-**Pattern:** every version that introduced new helper functions / generators collapsed back to BLOCKED. v3 succeeded by working directly on data pools. v5 must follow the same principle -- data edits only, no new code structure.
-
-**Banned phrases (cumulative -- must not appear on more than 1 page each):**
-- `"blend makes house site"` · `"life themes revolve around"` · `"recurring theme learning how"` -- v3 residuals
-- `"house story tends feel"` · `"behaviour often sharpens native"` · `"house reading generically gives"` -- v4 regressions (already gone after revert)
-- `"house turns attention toward"` · `"time place details house"` · `"details house based placements"` -- v1/v2 (already gone)
+**Cumulative banned phrases (must not appear on more than 1 page):**
+`"strengths and shadows that become clearer"` · `"rising house placements especially"` · `"blend makes house site"` · `"life themes revolve around"` · `"recurring theme learning how"` · `"house turns attention toward"` · `"house story tends feel"` · `"behaviour often sharpens native"` · `"house reading generically gives"` · `"time place details house"` · `"details house based placements"`
