@@ -4,9 +4,52 @@ import StrategistThemeProvider from '../../components/strategist/StrategistTheme
 import ControlRoomBackdrop from '../../components/strategist/ControlRoomBackdrop';
 import StrategistWarRoom from '../../components/strategist/war-room/StrategistWarRoom';
 import { StrategistThemeToggle } from '../../components/strategist/StrategistThemeToggle';
+import ConquestScoreboard from '../../components/strategist/phase2/ConquestScoreboard';
+import LKGateSummaries from '../../components/strategist/phase2/LKGateSummaries';
+import '../../styles/strategist-2f-scoreboard.css';
+import '../../styles/strategist-2e-lkgates.css';
 
 const BACKEND = process.env.REACT_APP_BACKEND_URL || '';
 const SUNSET_BUFFER_MS = 30 * 60 * 1000;
+
+// ---------------------------------------------------------------------------
+// Gate normaliser -- same adapter as StrategistActionPlanPage.
+// Maps backend UPPERCASE statuses + integer gate numbers to CD component shape.
+// ---------------------------------------------------------------------------
+const STATUS_MAP = {
+  CLEAR: 'clear', ACTIVE: 'active', WARNING: 'warning', DORMANT: 'dormant',
+  CONFLICT: 'warning', UNKNOWN: 'clear',
+};
+const GATE_META = {
+  1: { code: 'G01', facet: 'Karmic Debt',     asideLabel: 'Pitru Rin' },
+  2: { code: 'G02', facet: 'Sleeping Houses', asideLabel: 'Dormant' },
+  3: { code: 'G03', facet: 'Year Cycle',      asideLabel: 'Year lord' },
+  4: { code: 'G04', facet: 'Mercury Scan',    asideLabel: 'Status' },
+  5: { code: 'G05', facet: 'Geographical',    asideLabel: 'Direction' },
+};
+function gateAsideValue(g) {
+  if (g.gate === 2) return `${g.dormant_count || 0} dormant`;
+  if (g.gate === 3) return g.planet || '--';
+  if (g.gate === 5) return g.direction || '--';
+  const s = STATUS_MAP[g.status] || 'clear';
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+function normalizeGates(rawGates) {
+  if (!Array.isArray(rawGates) || rawGates.length === 0) return [];
+  return rawGates.map((g) => {
+    const meta = GATE_META[g.gate] || { code: `G0${g.gate}`, facet: '', asideLabel: 'Status' };
+    return {
+      id:         meta.code,
+      code:       meta.code,
+      name:       g.name || meta.code,
+      facet:      meta.facet,
+      status:     STATUS_MAP[g.status] || 'clear',
+      narrative:  g.narrative || '',
+      asideLabel: meta.asideLabel,
+      asideValue: gateAsideValue(g),
+    };
+  });
+}
 
 function formatDisplayDate(dateValue) {
   return dateValue.toLocaleDateString('en-IN', {
@@ -166,6 +209,9 @@ function mapWarRoomProps(dashboard, missions, layout) {
     dateLabel: formatDisplayDate(new Date()),
     layout,
     onRecalibrate: () => window.location.reload(),
+    // Phase 2 additions (Doc 10 §03)
+    scoreboardData: dashboard?.scoreboard || null,
+    gateSummaries:  normalizeGates(dashboard?.gate_summaries ?? []),
   };
 }
 
@@ -474,6 +520,22 @@ export default function StrategistWarRoomPage() {
       </div>
 
       <StrategistWarRoom {...warRoomProps} />
+
+      {/* Phase 2 additions -- Doc 10 §03: ConquestScoreboard (2F) + LKGateSummaries (2E) */}
+      {warRoomProps.scoreboardData && (
+        <div style={{ padding: '0 20px 40px' }}>
+          <ConquestScoreboard
+            data={dashboard}
+            asOf={new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) + ' IST'}
+          />
+          <div style={{ marginTop: 16 }}>
+            <LKGateSummaries
+              gates={warRoomProps.gateSummaries}
+              asOf={new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) + ' IST'}
+            />
+          </div>
+        </div>
+      )}
     </StrategistThemeProvider>
   );
 }
