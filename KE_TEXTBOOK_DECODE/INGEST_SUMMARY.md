@@ -209,8 +209,9 @@
 | **Aayu methodology** | ✅ **APPROVED: Option B + Label-based tagging + 66-75 edge gate (2026-06-02, Prateek)** |
 | Architecture | Labels only: `alpa_aayu`, `madhya_aayu` (33-75), `purna_aayu` (75-100). `LONGEVITY_AAYU_CONFIG` → `ke_schema_constants.py`. Edge zone 66-75: `edge_case_zone:true` + gates (dasha_activity, maraka_strength, ayushkaraka_strength). Classical ref point: 72 yrs (Shashtyamsa). |
 | Ch36-58 rules | ✅ **CC THREAD COMPLETE 2026-06-02** -- 21 cross-chart rules extracted. Output: `Longevity_CaseStudies_Ch36-58_Rules.json` + `_Diagnostic.md` in `Longevity_CC_Decode/` |
-| Ingest result | Ch4=14, Ch5=15, Ch6-19=99, Ch36-58=21. Total=149. Dedup: 0 matches vs 10,471 MongoDB rules (1.56M pairs). All 149: `pending_human_review`. |
-| TT action | Co-founder sign-off on 149 PHR rules → `approved` status. |
+| Ingest result | Ch4=14, Ch5=15, Ch6-19=99, Ch36-58=21. Total=149. Dedup: 0 matches vs 10,471 MongoDB rules (1.56M pairs). |
+| Validation result | 69 auto_approved (46%) · 80 pending_human_review (54%) · 0 flagged. Bucket A: 18 truncation artifacts. Bucket B: 11 validator framework errors (KP vs BPHS). Bucket C: 0. |
+| TT action | Co-founder sign-off on 69 `auto_approved` rules → `approved` status. |
 
 ---
 
