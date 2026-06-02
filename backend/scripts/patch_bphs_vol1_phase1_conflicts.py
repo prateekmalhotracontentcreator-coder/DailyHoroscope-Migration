@@ -212,10 +212,12 @@ def main() -> None:
             ).limit(5))
 
             if not candidates:
-                # Fallback: drop batch_id filter, search all BPHS-like rules
+                # Fallback: drop batch_id filter, but restrict to R-BPHS* IDs only.
+                # Phase 1 old-ingest rules always have the R-BPHS* pattern.
+                # bphs1-ch* IDs belong to Phase 2 batch -- do NOT match those.
                 candidates = list(col.find(
                     {
-                        "rule_id": {"$regex": r"^(R-BPHS|bphs1)", "$options": "i"},
+                        "rule_id": {"$regex": r"^R-BPHS", "$options": "i"},
                         "interpretation.detailed": {"$regex": pattern, "$options": "i"},
                     },
                     {"rule_id": 1, "interpretation.detailed": 1, "pending_review": 1, "_id": 0},

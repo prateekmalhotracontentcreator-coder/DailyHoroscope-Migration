@@ -377,7 +377,14 @@ TT actions:
 - [x] **29 Phase 1 polarity conflicts:** BPHS Ch17/18 conditional-negative rules (diseases/death scenarios) vs Phaladeepika general positive placement rules. Phaladeepika side already patched (pd-ch08-* rules have `pending_review=True`). BPHS Phase 1 side (R-BPHS* IDs in MongoDB "unknown" batch) not yet patched -- requires separate script.
 - [x] **Do NOT run `patch_bphs_vol1_phase2_conflicts.py`** -- script queries by Phase 2 batch ID which won't match Phase 1 rules (`R-BPHS*` IDs). All 29 would be `[SKIP] not found in batch`.
 - [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/bphs_vol1_phase2_dedup_20260603_045313.md`
-- [x] **Phase 1 BPHS patch script built:** `backend/scripts/patch_bphs_vol1_phase1_conflicts.py` -- content-based text fragment lookup, targets R-BPHS* rule IDs in "unknown" batch. Searches `interpretation.detailed` by key phrase from `rule_a_full_text`. Skips `bphs1-ch42-019` (empty A-text). Run: `python3 backend/scripts/patch_bphs_vol1_phase1_conflicts.py --mongo-url "$MONGO_URL" --dry-run`
+- [x] **Phase 1 BPHS patch script built + applied:** `backend/scripts/patch_bphs_vol1_phase1_conflicts.py`
+- [x] Dry-run 1: 16 would-patch → false match found: `bphs1-ch18-011` → `bphs1-ch33-088` (Phase 2 rule, wrong). Fix: restrict fallback query to `^R-BPHS` only (Phase 1 IDs only).
+- [x] Dry-run 2: 15 would-patch / 11 not found / 1 skipped. All 15 matches verified as genuine `R-BPHS*` Phase 1 rules.
+- [x] **Live patch applied 2026-06-03**: 15 patched / 11 not found (Phase 1 ingest gaps) / 0 errors
+  - `R-BPHS12-012`, `R-BPHS17-007`, `R-BPHS17-012`, `R-BPHS17-017`, `R-BPHS17-022`, `R-BPHS17-029` → `pending_review=True`
+  - `R-BPHS18-011`, `R-BPHS18-013`, `R-BPHS18-019`, `R-BPHS18-029`, `R-BPHS18-032`, `R-BPHS18-036`, `R-BPHS18-046`, `R-BPHS18-049`, `R-BPHS18-055` → `pending_review=True`
+- [x] 11 not-found = Phase 1 ingest gaps (Ch14/Ch16/Ch17/Ch18 rules not ingested by old scripts -- no action, cannot patch what isn't in DB)
+- [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/patch_bphs_vol1_phase1_20260603_051819_live.log`
 
 ### 13g -- BPHS Vol 2 Retroactive Dedup (2026-06-03)
 
@@ -405,7 +412,7 @@ TT actions:
 | 300 Horoscopes | 57 | 604,599 | CLEAN | ✅ None |
 | 300 Combinations | 329 | 3,400,215 | CLEAN | ✅ None -- gap from 2026-06-01 dedup formally closed |
 | **Phaladeepika** | **1,218** | **11,505,228** | **7 genuine polarity conflicts** | ✅ **Patched** (pd-ch08-011/030/032/050/056/060, pd-ch13-022) |
-| BPHS Vol 1 Phase 2 | 696 | 14,513,408 | **Phase 2 CLEAN** · 29 Phase 1 conflicts (FOLDER_A included all chapters) | ✅ Phase 2: No action · Phase 1 patch script ready (`patch_bphs_vol1_phase1_conflicts.py`) |
+| BPHS Vol 1 Phase 2 | 696 | 14,513,408 | **Phase 2 CLEAN** · 29 Phase 1 conflicts (FOLDER_A all chapters) | ✅ Phase 2: No action · **Phase 1: 15 R-BPHS* rules patched** · 11 ingest gaps (not in DB) |
 | **BPHS Vol 2** | **249** | **3,686,910** | **CLEAN** | ✅ None · 106 cross-methodology alt_results (no action) |
 
-**Pipeline status: 7/7 COMPLETE** ✅ · All batches retroactively deduped · BPHS Phase 1 patch (29 R-BPHS* rules, content-based lookup) ready to run separately.
+**Pipeline status: FULLY COMPLETE** ✅ · All 7 batches retroactively deduped · All actionable conflicts patched · 11 BPHS Phase 1 ingest gaps noted (not in DB, no further action).
