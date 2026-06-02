@@ -116,19 +116,35 @@ EOF
 
 ## Ingest Instructions (when unblocked)
 
+**Step 0 -- Pre-upload AI validation (run on local JSON before touching MongoDB):**
+```bash
+python3 backend/scripts/validate_rules.py \
+  --json-file /tmp/destiny_numerology_dry_run.json \
+  --batch-id destiny_numerology_ch01-15_v1
+```
+Review output: Bucket A (truncation artifacts) → PHR. Bucket B (validator framework mismatch) → PHR + validator_error:True. Bucket C (genuine) → flag for TT. See INGEST_PROCESS_BRIEF.md KOP-03/KOP-04 for triage protocol.
+
 **Step 1 -- Pre-ingest dedup:**
 ```bash
 python3 backend/ke_dedup_script.py \
   --folder-a "/Users/apple/Documents/Knowledge Engine_eBooks/DestinyNumerology_CC_Decode/" \
   --folder-b "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_CC_Decode/" \
-  --output-report dedup_numerology_vs_bphs.md \
+  --output-report backend/scripts/dedup_reports/dedup_numerology_vs_bphs.json \
   --threshold 0.82
 ```
 Note: Numerology and Vedic astrology overlap is expected to be LOW -- different systems.
 
+**Dedup report review:** Check THREE sections in the JSON output:
+1. `matches` -- lexical similarity duplicates (threshold 0.82)
+2. `contradictions` -- same condition, opposite polarity
+3. `positional_conflicts_detail` -- same planet×house or planet×sign, different claimed result (NEW 2026-06-02). Two sub-types: `positional_polarity_conflict` (high confidence) and `positional_alternate_result` (same condition, dissimilar result text). Flag all positional conflicts for TT review.
+
 **Step 2 -- Inject on every rule:**
+
+> ⚠️ CRITICAL (KOP-03): Set `pending_review` -- NOT `pending_human_review`. The AI validator (`validate_rules.py`) queries `approval_status: "pending_review"`. If you set `pending_human_review` at upload, the validator silently finds 0 rules and the AI quality check is skipped entirely.
+
 ```python
-rule["approval_status"]    = "pending_human_review"
+rule["approval_status"]    = "pending_review"          # NOT pending_human_review -- see KOP-03
 rule["ingested_at"]        = datetime.now(timezone.utc).isoformat()
 rule["ingest_batch_id"]    = "destiny_numerology_ch01-15_v1"
 rule["source_book"]        = "Destiny Numerology"

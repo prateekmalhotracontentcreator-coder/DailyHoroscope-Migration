@@ -166,14 +166,18 @@
 ---
 
 ### P1-6: Destiny Numerology
-**Decode folder:** `DestinyNumerology_CC_Decode/` | **Rules:** 189 (Ch01-15) | **OCR report:** `Book_Wide_OCR_Inconsistencies_Report.docx`
+**Decode folder:** `DestinyNumerology_CC_Decode/` | **Rules:** ~~189 (Ch01-15)~~ **447 (Ch03-Ch28 + derived -- actual 2026-06-02 audit)** | **OCR report:** `Book_Wide_OCR_Inconsistencies_Report.docx`
+
+> ⚠️ **SCOPE CORRECTION (2026-06-02):** Decode folder has grown significantly since THREAD_BRIEF was written. Actual rule count is 447 across 38 files (Ch03-Ch28 + CareerAlignment/CaseDerivedInference/PersonalYearCycle derived rules). Ch17 (Gemstone Numerology, 13 rules) and Ch19 (Deadly Wars, 5 rules) are DECODED -- they were listed as "future sprint / CRITICAL blockers" in the brief but are now present. Review Ch17 CRITICAL-1 (Amethyst conflict) and Ch19 CRITICAL-2 (element system conflict) before ingesting those chapters. Thread brief needs update.
 
 | Status | Detail |
 |---|---|
 | Ingest status | 🟠 NEAR READY -- OCR issues to clear first |
+| **Actual rules in folder** | **447** (38 files: Ch03-Ch28 + derived) |
+| Brief says | 189 rules Ch01-15 (STALE -- update THREAD_BRIEF) |
 | Total OCR issues | 41 (29 main + 12 from Ch15 companion): CRITICAL 2 · HIGH 10 · MED 13 · LOW 4 |
-| CRITICAL items | Ch17 Number 3 Amethyst · Ch19 two element systems conflict |
-| Action | NLM/GAI resolves CRITICAL + HIGH items → ingest |
+| CRITICAL items | Ch17 Amethyst assignment · Ch19 element systems -- both chapters NOW DECODED, need review before those chapters ingest |
+| Action | NLM/GAI resolves HIGH items → ingest Ch03-Ch16 → review Ch17/Ch19 CRITICAL items → ingest remaining |
 | Post-ingest dedup | Run against all previously ingested books |
 
 ---

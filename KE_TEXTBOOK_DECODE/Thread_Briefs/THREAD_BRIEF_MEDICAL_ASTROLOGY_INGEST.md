@@ -102,19 +102,35 @@ EOF
 
 ## Ingest Instructions
 
+**Step 0 -- Pre-upload AI validation (run on local JSON before touching MongoDB):**
+```bash
+python3 backend/scripts/validate_rules.py \
+  --json-file /tmp/medical_astrology_dry_run.json \
+  --batch-id medical_astrology_v1
+```
+Triage: Bucket A (truncation) → PHR. Bucket B (framework mismatch -- classical medical astrology uses house-based significations that differ from BPHS; validator may over-flag) → PHR + validator_error:True. Bucket C (genuine) → flag for TT. See INGEST_PROCESS_BRIEF.md KOP-03/KOP-04.
+
 **Step 1 -- Pre-ingest dedup:**
 ```bash
 python3 backend/ke_dedup_script.py \
   --folder-a "/Users/apple/Documents/Knowledge Engine_eBooks/MedicalAstrology_CC_Decode/" \
   --folder-b "/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_CC_Decode/" \
-  --output-report dedup_medastro_vs_bphs_vol1.md \
+  --output-report backend/scripts/dedup_reports/dedup_medastro_vs_bphs_vol1.json \
   --threshold 0.82
 ```
 Medical astrology principles derive from BPHS planetary significations -- moderate overlap expected.
 
+**Dedup report review:** Check THREE sections in the JSON output:
+1. `matches` -- lexical similarity duplicates
+2. `contradictions` -- same condition, opposite polarity
+3. `positional_conflicts_detail` -- same planet×house/sign, different result (NEW 2026-06-02). `positional_polarity_conflict` = high confidence; `positional_alternate_result` = same condition, dissimilar result text. Flag all for TT review.
+
 **Step 2 -- Inject on every rule:**
+
+> ⚠️ CRITICAL (KOP-03): Set `pending_review` -- NOT `pending_human_review`. If you upload with `pending_human_review`, the AI validator finds 0 rules and silently skips the entire batch.
+
 ```python
-rule["approval_status"]    = "pending_human_review"
+rule["approval_status"]    = "pending_review"          # NOT pending_human_review -- see KOP-03
 rule["ingested_at"]        = datetime.now(timezone.utc).isoformat()
 rule["ingest_batch_id"]    = "medical_astrology_v1"
 rule["source_book"]        = "Medical Astrology"

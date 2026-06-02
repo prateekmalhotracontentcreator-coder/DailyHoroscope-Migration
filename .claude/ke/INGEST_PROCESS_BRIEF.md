@@ -687,10 +687,24 @@ python3 backend/ke_dedup_script.py \
   --output-report backend/scripts/dedup_reports/dedup_[book_a]_vs_[book_b].json \
   --update-files
 
-# Step 3 -- Review report, consult GAI/NLM on flagged pairs
-# Step 4 -- Mark suppressed duplicates in source JSON (duplicate_candidate: true)
-# Step 5 -- Then proceed to ingest (Step 1 of 7-step workflow)
+# Step 3 -- Review ALL THREE sections of the report JSON:
+#   "matches"                   -- TF-IDF lexical duplicates (score >= 0.82)
+#   "contradictions"            -- same condition, opposite polarity
+#   "positional_conflicts_detail" -- same planet×house or planet×sign, different result
+#                                    (added 2026-06-02 -- do NOT skip this section)
+#
+#   positional_polarity_conflict = explicit +/− clash → high-confidence flag for TT
+#   positional_alternate_result  = same condition, TF-IDF < 0.40 → flag for review
+#   For heavily positional books (KP, BPHS, Phaladeepika) this section may be the
+#   most informative. Use --skip-positional only if the book has no planet×house rules.
+#
+# Step 4 -- Consult GAI/NLM on flagged pairs
+# Step 5 -- Mark suppressed duplicates in source JSON (duplicate_candidate: true)
+# Step 6 -- Then proceed to ingest (Step 1 of 7-step workflow)
 ```
+
+**Semantic pass (Phase 2 -- NOT YET IMPLEMENTED):**
+TF-IDF cannot catch same-concept-different-wording duplicates in `engine_specification` rules (e.g., "9 planets" stated in KP vs classical phrasing in BPHS). These have all-null condition fields (Jaccard 0.06-0.17 -- below threshold). Spec: `.claude/ke/KE_DEDUP_SEMANTIC_PASS_SPEC.md`. Phase 2a implementation pending.
 
 ### Dedup priority matrix
 

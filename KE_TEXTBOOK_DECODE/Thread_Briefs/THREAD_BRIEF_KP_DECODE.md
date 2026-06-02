@@ -2,9 +2,45 @@
 ## Status Update + Queries + Next Steps
 
 > Prepared by: Temple Team -- EverydayHoroscope
-> Date: 2026-05-28
+> Date: 2026-05-28 · Status updated: 2026-05-31
 > For: KP Astrology Decode Thread
-> Status: **PRIMARY DECODE COMPLETE -- Retroactive Actions Pending**
+> Status: **🟡 NEAR READY -- claim_axis retroactive pass 12 of ~66 corrected 2026-05-31. 54 general-scope rules confirmed legitimate. Cat B/C/G/H open items remain.**
+
+---
+
+## One-Liner
+
+Refer `KE_TEXTBOOK_DECODE/Thread_Briefs/THREAD_BRIEF_KP_DECODE.md` for all KP Astrology KE Ingest.
+
+---
+
+## Status Update (2026-05-31)
+
+`claim_axis` retroactive pass completed for 12 specifically miscategorised rules:
+- P01→ `physical_appearance`
+- P09-003 → `legal`
+- P33-002 → `career_finance`
+- P34-002 → `career`
+- P55-005 → `health`
+- P75-001 → `social_relationships`
+- P77-001 → `career_growth`
+- T09-003/009 → `travel`
+- T09-004 → `education`
+
+54 remaining "general" claim_axis rules confirmed as legitimately methodology/cross-domain -- no change needed.
+
+Entries 248-249 T05 PDF-verified (T06 p.110) ✅.
+
+**Remaining open items blocking final close:**
+- Cat B: T05 duplicate/skipped entry numbers -- needs OCR docx or T05 PDF
+- Cat C: Missing Rahu-star stubs (Swathi 131-138, Sathabisha 213-221)
+- Cat G: Conditional vs direct delineation inconsistency (1 item)
+- Cat H: Formatting inconsistencies (3 items)
+- F-01 to F-06: Ambiguous terms batch → GAI/NLM pass pending
+
+**Next step for ingest thread:** Resolve Cat B/C/G/H + F-01 to F-06 → then ingest.
+
+---
 
 ---
 
@@ -111,6 +147,20 @@ Leave `cross_text_matches: null` on all KP rules for now. The automated dedup sc
 **High overlap expected:**
 - KP longevity rules × LongevityUnnatural rules: Moderate-High overlap
 - KP Badhaka rules × 300 Combinations: Low overlap (KP Badhaka formulation is more specific)
+
+**When dedup runs happen (at ingest time), review THREE sections in the JSON report:**
+1. `matches` -- lexical similarity duplicates (TF-IDF threshold 0.82)
+2. `contradictions` -- same condition signature, opposite polarity
+3. `positional_conflicts_detail` -- same planet×house or planet×sign, different claimed result (NEW 2026-06-02). `positional_polarity_conflict` = explicit +/− clash (high confidence); `positional_alternate_result` = same condition, dissimilar result text. Flag all for TT review. KP rules are heavily positional (planet in house/sign) so this section will likely produce the most flags.
+
+**At ingest time -- CRITICAL (KOP-03):**
+> Set `approval_status = "pending_review"` on every rule at upload -- NOT `"pending_human_review"`. The AI validator (`validate_rules.py`) queries `pending_review`. If you upload `pending_human_review`, the validator silently finds 0 rules and the AI quality check is skipped.
+
+> Run pre-upload validation before touching MongoDB:
+> ```bash
+> python3 backend/scripts/validate_rules.py --json-file /tmp/kp_dry_run.json --batch-id kp_astrology_v1
+> ```
+> KP methodology rules (sub-lord theory, cusp analysis, Badhaka) will be flagged as Bucket B by the validator (which applies BPHS standards). These are framework mismatches -- set `validator_error:True` + PHR, not genuine flags. See INGEST_PROCESS_BRIEF.md KOP-04.
 
 ---
 
