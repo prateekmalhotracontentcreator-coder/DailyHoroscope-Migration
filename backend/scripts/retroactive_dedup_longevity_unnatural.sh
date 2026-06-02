@@ -93,10 +93,12 @@ echo ""
 # Step 3 -- Parse report and print triage summary
 # ------------------------------------------------------------------
 echo "--- STEP 3/3: Triage Summary ---"
-python3 - <<PYEOF
-import json, sys
+# Use quoted <<'PYEOF' to prevent bash from mangling backslashes and quotes
+# inside the Python code. Pass the report path via env var instead.
+DEDUP_REPORT_PATH="$REPORT_PATH" python3 - <<'PYEOF'
+import json, os, sys
 
-path = "$REPORT_PATH"
+path = os.environ["DEDUP_REPORT_PATH"]
 try:
     data = json.load(open(path))
 except Exception as e:
@@ -120,12 +122,11 @@ print(f"Contradiction pairs:          {contras}")
 print(f"Positional conflicts:         {positional}")
 print()
 
-# Triage breakdown
 self_matches  = [d for d in details if d["rule_a_id"] == d["rule_b_id"]]
 polarity_conf = [d for d in details if d["rule_a_id"] != d["rule_b_id"] and d.get("relationship") == "positional_polarity_conflict"]
 alt_results   = [d for d in details if d["rule_a_id"] != d["rule_b_id"] and d.get("relationship") == "positional_alternate_result"]
 
-print(f"TRIAGE BREAKDOWN:")
+print("TRIAGE BREAKDOWN:")
 print(f"  self-match artifacts         : {len(self_matches)}  (should be 0 with fixed export script)")
 print(f"  positional_polarity_conflict : {len(polarity_conf)}  (PATCH -- genuine cross-system conflict)")
 print(f"  positional_alternate_result  : {len(alt_results)}  (REVIEW -- contextual, no patch)")
@@ -171,7 +172,7 @@ if alt_results:
         by_key.setdefault(d["positional_key"], []).append(d)
     for key, entries in sorted(by_key.items()):
         print(f"  [{key}]  ({len(entries)} pair(s))")
-        for d in entries[:5]:  # cap display to 5 per key
+        for d in entries[:5]:
             print(f"    {d['rule_a_id']} vs {d['rule_b_id']}  score={d['similarity_score']:.4f}")
         if len(entries) > 5:
             print(f"    ... and {len(entries)-5} more")
@@ -184,11 +185,11 @@ if genuine == 0 and not self_matches:
     print("    Longevity Unnatural is clear against the full MongoDB.")
 else:
     if genuine > 0:
-        print(f"⚠️   REVIEW REQUIRED")
+        print("⚠️   REVIEW REQUIRED")
         if polarity_conf:
-            print(f"    Run patch script:")
-            print(f"    python3 backend/scripts/patch_longevity_unnatural_conflicts.py \\")
-            print(f"      --mongo-url \"\$MONGO_URL\" --dry-run")
+            print("    Run patch script:")
+            print("    python3 backend/scripts/patch_longevity_unnatural_conflicts.py \\")
+            print('      --mongo-url "$MONGO_URL" --dry-run')
     if self_matches:
         print(f"⚠️   {len(self_matches)} self-match artifact(s) detected.")
         print("    Re-run after verifying export_mongo_for_dedup.py clears the output dir.")

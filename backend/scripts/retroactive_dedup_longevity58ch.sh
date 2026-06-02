@@ -89,10 +89,12 @@ echo ""
 # Step 3 -- Parse report and print triage summary
 # ------------------------------------------------------------------
 echo "--- STEP 3/3: Triage Summary ---"
-python3 - <<PYEOF
-import json, sys
+# Use quoted <<'PYEOF' to prevent bash from mangling backslashes and quotes
+# inside the Python code. Pass the report path via env var instead.
+DEDUP_REPORT_PATH="$REPORT_PATH" python3 - <<'PYEOF'
+import json, os, sys
 
-path = "$REPORT_PATH"
+path = os.environ["DEDUP_REPORT_PATH"]
 try:
     data = json.load(open(path))
 except Exception as e:
@@ -116,12 +118,11 @@ print(f"Contradiction pairs:         {contras}")
 print(f"Positional conflicts:        {positional}")
 print()
 
-# Triage breakdown
-self_matches      = [d for d in details if d["rule_a_id"] == d["rule_b_id"]]
-polarity_conf     = [d for d in details if d["rule_a_id"] != d["rule_b_id"] and d.get("relationship") == "positional_polarity_conflict"]
-alt_results       = [d for d in details if d["rule_a_id"] != d["rule_b_id"] and d.get("relationship") == "positional_alternate_result"]
+self_matches  = [d for d in details if d["rule_a_id"] == d["rule_b_id"]]
+polarity_conf = [d for d in details if d["rule_a_id"] != d["rule_b_id"] and d.get("relationship") == "positional_polarity_conflict"]
+alt_results   = [d for d in details if d["rule_a_id"] != d["rule_b_id"] and d.get("relationship") == "positional_alternate_result"]
 
-print(f"TRIAGE BREAKDOWN:")
+print("TRIAGE BREAKDOWN:")
 print(f"  self-match artifacts         : {len(self_matches)}  (SKIP -- stale export dir, fixed)")
 print(f"  positional_polarity_conflict : {len(polarity_conf)}  (PATCH -- genuine cross-system conflict)")
 print(f"  positional_alternate_result  : {len(alt_results)}  (REVIEW -- contextual, no patch)")
@@ -143,9 +144,9 @@ if matches == 0 and contras == 0 and genuine == 0:
 else:
     print(f"⚠️   REVIEW REQUIRED -- {genuine} genuine polarity conflict(s)")
     if genuine > 0:
-        print(f"    Run patch script (dry-run first):")
-        print(f"    python3 backend/scripts/patch_58ch_positional_conflicts.py \\")
-        print(f"      --mongo-url \"\$MONGO_URL\" --dry-run")
+        print("    Run patch script (dry-run first):")
+        print("    python3 backend/scripts/patch_58ch_positional_conflicts.py \\")
+        print('      --mongo-url "$MONGO_URL" --dry-run')
 print("=" * 60)
 PYEOF
 
