@@ -36,6 +36,25 @@ from pathlib import Path
 
 BATCH_ID    = "longevity_58ch_v1"
 REPORT_PATH = Path("KE_TEXTBOOK_DECODE/Dedup_Reports/dedup_58ch_vs_mongodb_v2_positional.json")
+LOG_DIR     = Path("KE_TEXTBOOK_DECODE/Dedup_Reports")
+
+
+class _Tee:
+    """Write to both stdout and a log file simultaneously."""
+    def __init__(self, log_path: Path):
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        self._log = open(log_path, "w", encoding="utf-8")
+        self._stdout = sys.__stdout__
+    def write(self, data: str) -> None:
+        self._stdout.write(data)
+        self._stdout.flush()
+        self._log.write(data)
+        self._log.flush()
+    def flush(self) -> None:
+        self._stdout.flush()
+        self._log.flush()
+    def close(self) -> None:
+        self._log.close()
 
 
 def load_report() -> list[dict]:
@@ -127,6 +146,17 @@ def main() -> None:
         help="Print what would be patched without writing to MongoDB."
     )
     args = parser.parse_args()
+
+    # ── Auto-save: tee all output to a timestamped log file ───────────────
+    ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+    suffix = "_dryrun" if args.dry_run else "_live"
+    log_path = LOG_DIR / f"patch_58ch_{ts}{suffix}.log"
+    tee = _Tee(log_path)
+    sys.stdout = tee
+    print(f"============================================================")
+    print(f"  LOG FILE: {log_path}")
+    print(f"============================================================")
+    print()
 
     details = load_report()
     if not details:
