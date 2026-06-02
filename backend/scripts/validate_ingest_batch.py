@@ -97,7 +97,9 @@ def main() -> None:
     print(f"\n{'─'*60}")
     print(f"  Total rules in DB:        {len(rules)}")
     print(f"  Reported inserted:        {batch_record.get('rules_inserted', '?')}")
-    print(f"  Duplicates skipped:       {batch_record.get('duplicates_skipped', '?')}")
+    dup_skipped = batch_record.get("duplicates_skipped")
+    dup_display = dup_skipped if dup_skipped is not None else "N/A (upsert mode -- duplicates appear as Updated count above)"
+    print(f"  Duplicates skipped:       {dup_display}")
     print(f"\n  Approval status breakdown:")
     for status, count in sorted(status_counts.items()):
         print(f"    {status}: {count}")
