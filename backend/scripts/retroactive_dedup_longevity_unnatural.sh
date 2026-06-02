@@ -9,10 +9,9 @@
 # Auto-save: all output is tee'd to a timestamped .md log in Dedup_Reports/.
 # When the script finishes it prints: "Log saved: <path>" -- share that path.
 #
-# Pre-requisite:
-#   The Longevity Unnatural source JSON must be at:
-#   /tmp/longevity_unnatural_rules/Longevity_Unnatural_Rules.json
-#   (44 rules, batch_id: longevity_unnatural_v1)
+# Source folder (auto-resolved -- no manual copy needed):
+#   /Users/apple/Documents/Knowledge Engine_eBooks/LongevityUnnatural_CC_Decode
+#   Contains 4 *_Rules*.json files = 44 rules total (batch: longevity_unnatural_v1)
 #
 # What this does:
 #   1. Clears /tmp/mongo_existing_rules_dedup/ (prevents stale-file false-positives)
@@ -32,7 +31,7 @@ if [ -z "${MONGO_URL:-}" ]; then
 fi
 
 SCRIPT="backend/ke_dedup_script.py"
-FOLDER_A="/tmp/longevity_unnatural_rules/"
+FOLDER_A="/Users/apple/Documents/Knowledge Engine_eBooks/LongevityUnnatural_CC_Decode"
 MONGO_EXPORT_DIR="/tmp/mongo_existing_rules_dedup"
 REPORTS="KE_TEXTBOOK_DECODE/Dedup_Reports"
 REPORT_PATH="$REPORTS/dedup_longevity_unnatural_vs_mongodb_positional.json"
@@ -42,19 +41,19 @@ LOG_PATH="$REPORTS/longevity_unnatural_dedup_${TIMESTAMP}.md"
 
 mkdir -p "$REPORTS"
 
-# Check source folder exists
-if [ ! -d "$FOLDER_A" ]; then
-  echo "ERROR: Source folder not found: $FOLDER_A"
-  echo "Place Longevity_Unnatural_Rules.json there before running."
-  exit 1
-fi
-
-# ── Print log path BEFORE redirect so it always appears on screen ──────────
+# ── Print log path FIRST -- before any checks so it always appears ─────────
 echo ""
 echo "============================================================"
 echo "  LOG FILE: $LOG_PATH"
 echo "============================================================"
 echo ""
+
+# Check source folder exists
+if [ ! -d "$FOLDER_A" ]; then
+  echo "ERROR: Decode folder not found: $FOLDER_A"
+  echo "Verify the path and update FOLDER_A in this script if it has moved."
+  exit 1
+fi
 
 # ── Auto-save: tee all output to LOG_PATH ──────────────────────────────────
 exec > >(tee -a "$LOG_PATH") 2>&1
