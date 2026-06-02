@@ -272,3 +272,38 @@ TT actions:
   - Phase 2a: prototype | 2b: Claude API embeddings | 2c: extend scope
 - [x] TEMPLE_TRACKER.md updated (DB total 10,664, all 3 new ingests reflected)
 - [x] A2_INGEST_LOG.md updated (Phase 10, 11, 12 added)
+
+---
+
+## Phase 13 -- Retroactive Dedup Pipeline [Account 2]
+
+### 13a -- Longevity 58Ch Retroactive Dedup + Patch (2026-06-03)
+
+- [x] Root cause identified: `export_mongo_for_dedup.py` did not clear output dir before writing -- stale `Longevity_(58_Chapters)_Rules.json` from prior run caused 6 self-match false positives. Fixed: `shutil.rmtree(output_dir)` before each export.
+- [x] Dedup report: `dedup_58ch_vs_mongodb_v2_positional.json` -- 75 positional conflicts triaged:
+  - 6 self-match artifacts → SKIP (stale dir bug, now fixed)
+  - 4 `positional_polarity_conflict` → PATCH (KP longevity negative vs Phaladeepika positive)
+  - 65 `positional_alternate_result` → REVIEW-ONLY (KP longevity vs classical natal frameworks, not genuine contradictions)
+- [x] `patch_58ch_positional_conflicts.py` rewritten -- triage-aware (skip self-matches, only patch polarity_conflicts, log alt_results as review-only)
+- [x] Dry-run confirmed: 3 unique rules (kp-ch12-001, kp-ch12-002, kp-ch13-001) · 4 conflict notes
+- [x] **Live patch applied 2026-06-03**: 3 patched / 0 skipped / 0 errors
+  - `kp-ch12-001` → pending_review=True (Jupiter H7 vs pd-ch08-056)
+  - `kp-ch12-002` → pending_review=True (Jupiter H1 vs pd-ch08-050 + pd-ch13-022)
+  - `kp-ch13-001` → pending_review=True (Sun H11 vs pd-ch08-011)
+- [x] Final DB state `longevity_58ch_v1`: 69 auto_approved · 80 PHR · 3 with pending_review=True flag
+- [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/patch_58ch_20260603_042016_live.log`
+
+### 13b -- Longevity Unnatural Retroactive Dedup (2026-06-03)
+
+- [x] Source: `/Users/apple/Documents/Knowledge Engine_eBooks/LongevityUnnatural_CC_Decode` (4 files, 44 rules)
+- [x] 467,280 pairs evaluated vs full MongoDB (10,620 rules)
+- [x] **CLEAN**: 0 matches · 0 contradictions · 0 positional conflicts
+- [x] Note: Unnatural rules have 0 planet×position keys -- methodology/timing rules, no positional conditions → nothing to conflict
+- [x] No patch required
+- [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/longevity_unnatural_dedup_20260603_041549.md`
+
+### 13c -- 300 Horoscopes Retroactive Dedup (PENDING)
+
+- [ ] Script: `backend/scripts/retroactive_dedup_300horoscopes.sh` -- TO BUILD
+- [ ] Source: `KE_TEXTBOOK_DECODE/300Horoscopes/` decode folder (57 rules, batch `300_horoscopes_vol1_v1`)
+- [ ] Estimated pairs: ~606,540 (57 × 10,627)
