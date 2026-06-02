@@ -1,5 +1,5 @@
 # Knowledge Engine -- Full Ingest & Validation Process Brief
-**Version:** 7 May 2026 · **Freeze notice updated:** 2026-06-01
+**Version:** 2026-06-02 · **Freeze notice updated:** 2026-06-01
 **Purpose:** Step-by-step reference for any new Claude Code session picking up ingest work.
 **Read this before writing or running any ingest script.**
 
@@ -149,7 +149,7 @@ pprint.pprint(rules[-1])
 - `batch_id` is correct and matches this version
 - **`source.batch_id` is set** (nested inside the `source` dict) -- `validate_rules.py` line 51 queries `source.batch_id`, NOT top-level `ingest_batch_id`. Both must be set, with the same value. If missing, the validator finds 0 rules. *(Learned from BPHS Phase 2, 2026-06-01)*
 - `science_id` is correct (`"mundane_jyotish"` for mundane, `"jyotish"` for natal)
-- `approval_status` is `"pending_review"` (the validator will update this)
+- `approval_status` is `"pending_review"` -- **NOT `pending_human_review`**. The validator (`validate_rules.py`) queries `approval_status: "pending_review"` (line 47). If you upload with `pending_human_review`, the validator finds 0 rules and silently skips the entire batch. *(Learned from Longevity 58Ch ingest, 2026-06-02)*
 - `interpretation.detailed` and/or `interpretation.summary` are non-empty strings (not blank or missing)
 - `condition` is a non-empty dict (not `None`, not `{}`, not a list)
 - Key data fields are populated (not empty dicts or None where data is expected)
@@ -181,12 +181,40 @@ Inserted 22 / Updated 0 rules → horoscope_db.interpretation_rules
 
 ### STEP 4 -- Validate
 
+> ⚠️ **Pre-check before running:**
+> ```bash
+> echo $ANTHROPIC_API_KEY   # Must print a key starting with sk-ant-
+> echo $MONGO_URL            # Must print the connection string
+> ```
+> If `ANTHROPIC_API_KEY` is empty, the validator will fail silently or crash. Set it first:
+> ```bash
+> export ANTHROPIC_API_KEY="sk-ant-..."
+> ```
+
 ```bash
 python3 backend/scripts/validate_rules.py \
   --batch-id [your-batch-id-here] \
   --mongo-url "$MONGO_URL" \
   --db-name horoscope_db
 ```
+
+> 🚨 **"Found 0 rules to validate" is a RED FLAG** when a batch was just uploaded.
+> It almost always means either:
+> 1. Rules were uploaded with `approval_status: pending_human_review` instead of `pending_review` -- patch them first:
+>    ```bash
+>    python3 - <<'EOF'
+>    import pymongo, os
+>    db = pymongo.MongoClient(os.environ["MONGO_URL"])["horoscope_db"]
+>    r = db["interpretation_rules"].update_many(
+>        {"source.batch_id": "YOUR-BATCH-ID", "approval_status": "pending_human_review"},
+>        {"$set": {"approval_status": "pending_review"}}
+>    )
+>    print(f"Patched: {r.modified_count}")
+>    EOF
+>    ```
+>    Then re-run the validator.
+> 2. `source.batch_id` was not set on the rules -- the `--batch-id` filter finds nothing.
+> **Never accept "Found 0 rules" and move on after a fresh upload.** *(Learned from Longevity 58Ch, 2026-06-02)*
 
 **Expected output:**
 ```
@@ -279,6 +307,7 @@ Once you understand why rules were flagged, write a patch script.
 | **Validator doctrinal error** | Validator made a factually wrong doctrinal claim (e.g., "Moon does not own Cancer"; "Chapa not in BPHS Ch25"). Cross-check source PDF before accepting flag. | Patch to `pending_human_review` with note "validator_error: true" |
 | **Genuine flag** | Rule has a real problem -- missing data, wrong content, source gap, or Codex fabrication. | Fix the script and re-upload first; or mark flagged with TT/GAI queue note |
 | **False contradiction** | Two rules appear to conflict but have mutually exclusive conditions. | Clear contradiction fields with resolution note |
+| **System framework mismatch** | Validator applies classical Vedic/BPHS standards to rules from a different doctrinal system (KP, Nadi, Jaimini, etc.). Flags like "not attested in BPHS", "contradicts classical doctrine", "not recognised in Phaladeepika" on KP rules. | Patch to `pending_human_review` + `validator_error: True` + triage_note explaining the system. *(Learned from Longevity 58Ch Ch5/Ch18/Ch19, 2026-06-02)* |
 
 > **Learned from BPHS Phase 2 (2026-06-01):** The validator made doctrinal errors on two rule groups -- (1) flagged Moon-Cancer claiming "Moon does not own Cancer" when Moon IS the lord of Cancer in Vedic astrology; (2) flagged Chapa as "not recognised in BPHS Ch25" when bphs1-ch25-001 explicitly lists Chapa as one of the seven Upagrahas. Always cross-check the source PDF before accepting a validator doctrinal claim. The validator is authoritative on structure and schema; it is NOT authoritative on Vedic astrology doctrine.
 
@@ -567,11 +596,14 @@ echo $MONGO_URL   # Should print the full connection string, not empty
 ## Quick Checklist Before Every Session
 
 - [ ] `MONGO_URL` is exported in terminal (`echo $MONGO_URL` not empty)
+- [ ] `ANTHROPIC_API_KEY` is exported in terminal (`echo $ANTHROPIC_API_KEY` not empty) -- required for Step 4 validator
 - [ ] Read `CLAUDE.md` for project context
 - [ ] Read `INGEST_NOTES.md` for current ingest state
 - [ ] Know the batch_id you're working with
+- [ ] Ingest script sets `approval_status: "pending_review"` (not `pending_human_review`)
 - [ ] Dry run before every upload
 - [ ] Validate after every upload
+- [ ] **If validator says "Found 0 rules" after a fresh upload -- STOP and investigate** (see Step 4 red flag note)
 - [ ] Inspect every flagged rule before patching
 - [ ] Update `INGEST_NOTES.md` before committing
 - [ ] **For yoga chapters:** Run Step 7A (`backfill_metadata_yoga_checkable.py`) after every ingest
@@ -653,3 +685,5 @@ For books that DO use `full_text` (LK, Mundane), dedup is more thorough. This is
 |---|---|---|---|---|
 | KOP-01 | `metadata.yoga_checkable` and `interpretation.tags["yoga_checkable"]` can fall out of sync with `condition.yoga_check.checkable` after ingest or re-ingest | All yoga chapter batches (BPHS Ch35-41, 300 Combinations yoga rules, Phaladeepika yoga chapters, etc.) | 🟠 Confirmed on BPHS Vol 1 Ch35-41 (2026-06-01). Fixed via Step 7A. | Run `backfill_metadata_yoga_checkable.py` after every yoga chapter ingest. Step 7A added to workflow. When new yoga books are ingested, extend or clone the backfill script for that book. |
 | KOP-02 | Schema Quick Reference in this doc shows `"validation": {"yoga_check": None}` -- this is the Lal Kitab / Mundane schema. BPHS yoga rules use `condition.yoga_check` (rich object) and `metadata.yoga_checkable` (boolean). Two different schema patterns coexist. | BPHS yoga chapters vs LK/Mundane rules | 🟡 By design -- different source books use different schemas. | Do not cross-apply. When inspecting yoga_check, always check `condition.yoga_check` for BPHS yoga rules. Use `validation.yoga_check` schema only for LK/Mundane rules. |
+| KOP-03 | `validate_rules.py` filters on `approval_status: "pending_review"`. If an ingest script uploads rules as `pending_human_review`, the validator finds 0 rules and silently skips the batch -- the Anthropic API quality check never runs. | All ingest scripts | 🔴 Root cause confirmed Longevity 58Ch (2026-06-02). **Fixed in process docs: ingest scripts must set `pending_review`.** Patch command added to Step 4 for recovery if wrong status was set. | All future ingest scripts: set `approval_status: "pending_review"` at upload time. The validator promotes passing rules to `auto_approved` and sets `pending_human_review` on borderline ones -- do not pre-empt this by setting PHR at ingest. |
+| KOP-04 | The Anthropic API doctrinal validator applies classical Vedic/BPHS doctrine as its reference frame. Rules from other doctrinal systems (KP, Jaimini, Nadi) will generate false flags like "not attested in BPHS" or "contradicts classical doctrine". This is a validator framework limitation, not a rule defect. | KP Astrology, Jaimini, Nadi, any non-BPHS science_id | 🟡 Confirmed on Longevity 58Ch Ch5/Ch18/Ch19 KP rules (2026-06-02) -- 11 Bucket B false flags. | Classify as Bucket B (validator framework error). Patch to `pending_human_review` + `validator_error: True` with triage_note explaining the system mismatch. Do not escalate to TT/GAI. |
