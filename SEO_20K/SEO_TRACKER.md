@@ -1,6 +1,6 @@
 # SEO & Web Performance -- Module Tracker
 > Update this file at the end of every session that touches this module.
-> Last updated: 2026-06-02 · v5.5 (M3-CP-FIX v2 re-scan: L1 62.7% FLAGGED, still failing. v3 brief issued with chart-point-native architecture separation. Sequence blocked at M3-CP-FIX pending v3 delivery.)
+> Last updated: 2026-06-02 · v5.6 (M3-CP-FIX v3 re-scan: L1 52.0% FLAGGED, still failing. Two residual modes: shared house-bank sentences across signs + Pattern B title clustering. v4 brief issued with sign-family variance pools + sign-adjective title fix.)
 
 ---
 
@@ -82,6 +82,7 @@
 | v5.0 | 2026-05-31 | ECHO/PACE scans run for RUD-1, CRY-1, FAITH-20K, Angel Numbers. Paid API column added. Full scores recorded. Commission briefs written: RUD-L2, CRY-L2, FAITH-REWRITE, ANGEL-3. | CC | Session 12 |
 | v5.1 | 2026-05-31 | ECHO/PACE scans run for all 7 SEO-20K infrastructure modules. Scores recorded for City Panchang (N/A), Choghadiya (N/A), Sign Compatibility, Remedy Hub, Transit Profiles, Character Placements, Festival Regions, Per-Sign Horoscopes (meta), Festival/Calendar. | CC | Session 12 |
 | v5.2 | 2026-05-31 | ECHO/PACE scans run for SEO-C pooled (14 pages) and all 3 Tarot SEO page types (198 pages). Full scores added to ECHO/PACE table. Failing modules listed in "Commissions Pending" table. | CC | Session 12 |
+| v5.6 | 2026-06-02 | M3-CP-FIX v3 re-scan: L1 52.0% FLAGGED (improvement from 62.7%). Chart-point separation confirmed working (Scorpio Sun/Moon/Rising 2H clean). Residual failures: shared house-bank sentences across signs within same chart-point, Pattern B title clustering ("Rising in X: Partnership Placement Guide" identical for all signs in same house). v4 brief issued -- sign-family variance pools (3 pools per chartpoint x house, hash by sign), sign-adjective Pattern B titles, delete "blend makes house site" + "life themes revolve around" + "recurring theme learning how". | CC | `CODEX_COMMISSION_M3_CP_FIX.md` v4 |
 | v5.5 | 2026-06-02 | M3-CP-FIX v2 re-scan: L1 62.7% FLAGGED (improvement from 94.4% but still failing). New L2 violations: "house turns attention toward" 100%, "blend makes house site" 43%, "life themes revolve around" 42%. Worst pair: Scorpio Moon 2H vs Scorpio Sun 2H. v3 brief issued -- chart-point-native architecture (Sun=identity, Moon=emotion, Rising=presentation), all new stems to be deleted. Sequence blocked at M3-CP-FIX. | CC | `CODEX_COMMISSION_M3_CP_FIX.md` v3 |
 | v5.4 | 2026-06-02 | RUD-L2 delivered by Codex + verified. `rudraksha_content.py` rewritten. Re-scan: Mukhi L1=25.2%, Planet L1=11.7%, Problem L1=17.5%, Sign L1=6.0% -- all L2/L3 PASS. Module unblocked. Rudraksha rows updated in ECHO/PACE table. | CC | `CODEX_COMMISSION_RUD_L2.md` |
 | v5.3 | 2026-05-31 | Fix commission briefs written for all 4 failing SEO module clusters: M3-CP-FIX (Character Placements, CRITICAL), M3-TR-FIX (Transit Profiles, BLOCKED), M2-COMPAT-FIX (Sign Compatibility, FLAGGED), TAR-SEO-FIX (Tarot Spreads+Cards+Intentions, L2/L3 FAIL). Briefs in `Codex_Deliveries/SEO/`. "Commissions Pending" table updated with all 8 open commissions. | CC | Session 12 |
