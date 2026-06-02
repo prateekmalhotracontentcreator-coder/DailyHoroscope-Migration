@@ -381,10 +381,18 @@ TT actions:
 
 ### 13g -- BPHS Vol 2 Retroactive Dedup (2026-06-03)
 
-- [ ] Script: `retroactive_dedup_bphs_vol2.sh`
-- [ ] FOLDER_A: `/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Vol2_CC_Decode/` (249 rules, batch `bphs-vol2-ch49-51-v1`)
-- [ ] Expected: ~249 × 10,415 = ~2.6M pairs · Kalachakra/Chara Dasa chapters -- minimal planet×position conditions → likely CLEAN
-- [ ] Run: `bash backend/scripts/retroactive_dedup_bphs_vol2.sh`
+- [x] Script: `retroactive_dedup_bphs_vol2.sh`
+- [x] FOLDER_A: `/Users/apple/Documents/Knowledge Engine_eBooks/BPHS_Vol2_CC_Decode/` (354 local rules loaded, batch `bphs-vol2-ch49-51-v1` excluded from MongoDB export)
+- [x] Export: 10,415 rules (7 source groups: 300_Combinations/Horoscopes/BPHS_Vol_1/Longevity×2/Phaladeepika/unknown)
+- [x] 3,686,910 pairs evaluated · 9 planet×position groups from A, 301 from B · **2 shared keys**
+- [x] **CLEAN**: 0 TF-IDF matches · 0 contradictions · 0 `positional_polarity_conflict`
+- [x] 106 `positional_alternate_result` → REVIEW-ONLY, no patch:
+  - `rahu in house 10` (60 pairs): `bphs2-ch50-044` (Chara Dasa Rahu state) vs 30 `unknown`-batch `R-ATEXTB-RAH-10H-*` / `R-TBA15-*` natal rules + pd-ch08-096
+  - `rahu in house 4` (46 pairs): `bphs2-ch50-043` (Chara Dasa Rahu state) vs 23 `unknown`-batch `R-ATEXTB-RAH-4H-*` / `R-TBA15-*` natal rules + pd-ch08-090
+  - Both are Chara Dasa planet-state rules (Ch50) sharing a positional key with natal placement rules -- cross-methodology, not genuine conflicts
+- [x] **No patch required** -- `patch_bphs_vol2_conflicts.py` not needed (0 genuine conflicts)
+- [x] Log: `KE_TEXTBOOK_DECODE/Dedup_Reports/bphs_vol2_dedup_20260603_051037.md`
+- [x] JSON: `KE_TEXTBOOK_DECODE/Dedup_Reports/dedup_bphs_vol2_vs_mongodb_positional.json`
 
 ---
 
@@ -398,6 +406,6 @@ TT actions:
 | 300 Combinations | 329 | 3,400,215 | CLEAN | ✅ None -- gap from 2026-06-01 dedup formally closed |
 | **Phaladeepika** | **1,218** | **11,505,228** | **7 genuine polarity conflicts** | ✅ **Patched** (pd-ch08-011/030/032/050/056/060, pd-ch13-022) |
 | BPHS Vol 1 Phase 2 | 696 | 14,513,408 | **Phase 2 CLEAN** · 29 Phase 1 conflicts (FOLDER_A included all chapters) | ✅ Phase 2: No action · Phase 1 patch script ready (`patch_bphs_vol1_phase1_conflicts.py`) |
-| **BPHS Vol 2** | **249** | **~2.6M** | **Pending** | 🔜 Run `retroactive_dedup_bphs_vol2.sh` |
+| **BPHS Vol 2** | **249** | **3,686,910** | **CLEAN** | ✅ None · 106 cross-methodology alt_results (no action) |
 
-**Pipeline status: 6/7 COMPLETE (Phase 2 portion)** · BPHS Vol 2 (249 rules) retroactive dedup pending · BPHS Phase 1 patch (29 rules, content-based lookup script ready).
+**Pipeline status: 7/7 COMPLETE** ✅ · All batches retroactively deduped · BPHS Phase 1 patch (29 R-BPHS* rules, content-based lookup) ready to run separately.
