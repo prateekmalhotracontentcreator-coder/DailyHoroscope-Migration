@@ -4,7 +4,7 @@
 > Prepared by: Temple Team -- EverydayHoroscope
 > Date: 2026-05-31
 > For: Longevity 58 Chapters Ingest Thread
-> Status: **🟠 GATE CLEARED ✅ (2026-06-02) -- Co-founder approved Option B with label-based tagging + 66-75 edge case gate. Ch36-58 Codex commission still pending. Ingest sequence can now begin.**
+> Status: **🟢 FULLY UNBLOCKED ✅ (2026-06-02) -- Co-founder approved Option B. Ch36-58 rules extracted by CC thread (21 rules). ALL gates cleared. Full ingest sequence ready for A2.**
 
 ---
 
@@ -153,7 +153,7 @@ GAI also recommended a weight-based scoring approach (a chart with heavy Alpa in
 | Ch6-Ch58 (CC) | ✅ Complete -- all 58 chapters accounted for |
 | Handover document | ✅ `HANDOVER_SUMMARY_LongevityDecode.md` present |
 | Aayu bucket methodology | ✅ **APPROVED 2026-06-02** -- Option B, label-based, 66-75 edge gate |
-| Ch36-Ch58 case study extraction | 🔴 Codex commission not yet issued -- TT to brief and issue |
+| Ch36-Ch58 case study extraction | ✅ **CC THREAD COMPLETE 2026-06-02** -- 21 rules, `Longevity_CaseStudies_Ch36-58_Rules.json` + `_Diagnostic.md` in `Longevity_CC_Decode/` |
 
 The decode work is finished for rule extraction. It is ONLY the governance gate that blocks ingest.
 
@@ -230,7 +230,7 @@ rule["source"]["batch_id"] = "longevity_58ch_v1"  # MANDATORY -- validate_rules.
 | Step | Action | Owner |
 |---|---|---|
 | 1 | Add `LONGEVITY_AAYU_CONFIG` + `LONGEVITY_EDGE_CASE_ZONE` to `backend/ke_schema_constants.py` | CC |
-| 2 | Issue Ch36-Ch58 case study rules Codex commission (separate from main ingest) | TT |
+| ~~2~~ | ~~Issue Ch36-Ch58 case study rules Codex commission (separate from main ingest)~~ | ~~TT~~ | ✅ CLOSED -- CC thread extracted 21 rules directly (2026-06-02) |
 | 3 | Run dedup: `Longevity_CC_Decode/` vs `BPHS_CC_Decode/` (Ch43/44) and vs `LongevityUnnatural_CC_Decode/` | A2 / CC |
 | 4 | Write ingest script -- Ch5 first (aayu framework rules), then Ch4, then Ch6-18 lagna batches | A2 |
 | 5 | Apply label-based `aayu_bucket` tags. Mark 66-75 zone rules with `edge_case_zone: true` | A2 (script) |

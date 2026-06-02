@@ -204,14 +204,12 @@
 
 | Status | Detail |
 |---|---|
-| Ingest status | 🟠 **GATE CLEARED -- 2026-06-02** · Ch36-58 Codex commission pending · Ch4-19 ingest can begin |
+| Ingest status | 🟢 **FULLY UNBLOCKED -- 2026-06-02** · All gates cleared · Ch4-Ch19 + Ch36-58 ready for A2 ingest |
 | Decode status | ✅ All 58 chapters accounted for (Ch4/5 via NLM, Ch6-Ch58 via CC) |
 | **Aayu methodology** | ✅ **APPROVED: Option B + Label-based tagging + 66-75 edge gate (2026-06-02, Prateek)** |
 | Architecture | Labels only: `alpa_aayu`, `madhya_aayu` (33-75), `purna_aayu` (75-100). `LONGEVITY_AAYU_CONFIG` → `ke_schema_constants.py`. Edge zone 66-75: `edge_case_zone:true` + gates (dasha_activity, maraka_strength, ayushkaraka_strength). Classical ref point: 72 yrs (Shashtyamsa). |
-| Ch36-58 rules | 🔴 Codex commission not yet issued -- zero rules extracted from case study chapters by design |
-| Next action | CC: add config to `ke_schema_constants.py` · TT: issue Ch36-58 Codex commission · A2: dedup + ingest Ch4-Ch19 |
-| Action | TT gives explicit co-founder approval → then ingest begins |
-| Note | Do NOT begin this ingest without the explicit sign-off. ~600 rules. |
+| Ch36-58 rules | ✅ **CC THREAD COMPLETE 2026-06-02** -- 21 cross-chart rules extracted. Output: `Longevity_CaseStudies_Ch36-58_Rules.json` + `_Diagnostic.md` in `Longevity_CC_Decode/` |
+| Next action | A2: run dedup (vs Ch4-Ch19 local + vs KP Astrology) → ingest Ch5 → Ch4 → Ch6-18 → Ch19 → Ch20-24 → Ch36-58 rules |
 | Post-ingest dedup | Run against all ingested books -- expected cross-text flags with BPHS Ch43/44 (longevity chapters) |
 
 ---
