@@ -426,8 +426,24 @@ export default function StrategistWarRoomPage() {
           War Room · Overview
         </span>
 
-        {/* Right side: enter war room CTA + theme toggle */}
+        {/* Right side: manual link + enter war room CTA + theme toggle */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <a
+            href="/strategist/manual"
+            style={{
+              color: 'rgba(197,160,89,0.60)',
+              fontFamily: 'Cinzel, serif',
+              fontSize: '0.68rem',
+              letterSpacing: '0.16em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              transition: 'color 0.2s',
+            }}
+            onMouseEnter={e => e.currentTarget.style.color = 'rgba(197,160,89,1)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'rgba(197,160,89,0.60)'}
+          >
+            Field Manual
+          </a>
           <button
             type="button"
             onClick={() => navigate('/strategist/war-room')}

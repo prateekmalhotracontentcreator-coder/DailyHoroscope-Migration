@@ -1086,7 +1086,13 @@ function Dashboard() {
           {LAYERS.map((layer) => (
             <LayerPill key={layer.id} layer={layer} status={layerStatus(layer.n)} onClick={scrollToSection} />
           ))}
-          <div className="ml-auto flex-shrink-0 pl-2">
+          <div className="ml-auto flex-shrink-0 flex items-center gap-3 pl-2">
+            <Link
+              to="/strategist/manual"
+              className="flex-shrink-0 inline-flex items-center gap-1.5 rounded-full border border-gold/20 bg-gold/[0.04] px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold/60 transition hover:bg-gold/[0.10] hover:text-gold"
+            >
+              Field Manual
+            </Link>
             <StrategistThemeToggle size="md" />
           </div>
         </div>

@@ -111,6 +111,7 @@ const StrategistExecutivePage = lazy(() => import('./pages/strategist/Strategist
 const StrategistMissionsPage = lazy(() => import('./pages/strategist/StrategistMissionsPage'));
 const StrategistReportPage = lazy(() => import('./pages/strategist/StrategistReportPage'));
 const StrategistSurrogatePage = lazy(() => import('./pages/strategist/StrategistSurrogatePage'));
+const StrategistManualPage = lazy(() => import('./pages/strategist/StrategistManualPage'));
 const KrishnaOraclePage = lazy(() => import('./pages/kp/KrishnaOraclePage'));
 const AskQuestionPage = lazy(() => import('./pages/kp/AskQuestionPage'));
 const PunyaRewardsPage = lazy(() => import('./pages/rewards/PunyaRewardsPage'));
@@ -411,6 +412,7 @@ function App() {
                   <Route path="/strategist/report" element={<ProtectedRoute><StrategistReportPage /></ProtectedRoute>} />
                   <Route path="/strategist/surrogate" element={<ProtectedRoute><StrategistSurrogatePage /></ProtectedRoute>} />
                   <Route path="/strategist/action-plan" element={<ProtectedRoute><StrategistActionPlanPage /></ProtectedRoute>} />
+                  <Route path="/strategist/manual" element={<ProtectedRoute><StrategistManualPage /></ProtectedRoute>} />
                   <Route path="/krishna-prashnavali" element={<KrishnaOraclePage />} />
 
                   {/* Punya Rewards -- loyalty & gamification (all logged-in users) */}
