@@ -416,3 +416,65 @@ TT actions:
 | **BPHS Vol 2** | **249** | **3,686,910** | **CLEAN** | ✅ None · 106 cross-methodology alt_results (no action) |
 
 **Pipeline status: FULLY COMPLETE** ✅ · All 7 batches retroactively deduped · All actionable conflicts patched · 11 BPHS Phase 1 ingest gaps noted (not in DB, no further action).
+
+---
+
+### 13h -- BPHS Vol 1 Phase 2 Flagged Rules Triage (2026-06-03)
+
+#### Context
+35 flagged rules from batch `bphs-vol1-phase2-v1-20260601` classified in prior session:
+- Bucket A: 0 (no truncation artifacts)
+- Bucket B: 14 rules (validator doctrinal errors)
+- Bucket C: 21 rules (genuine issues requiring PDF read / GAI)
+
+#### PDF Read Sessions (CC direct)
+
+PDF: `/Users/apple/Documents/Knowledge Engine_eBooks/BPHS Vol 1 De-code/BPHS_Vol1_PDF Chapters/Maharishi_Parashara_-_Brihat_Parasara_Hora_Sastra_(Vol._1).pdf`
+
+| Chapter | Pages Read | Rules | Finding |
+|---|---|---|---|
+| Ch04 | pp.48-61 | ch04-020 | Adhana Lagna stage 4 gives its own nocturnal/diurnal classification -- valid BPHS sub-system. Validator error. |
+| Ch26 | pp.254-262 | ch26-004/005/017/018 | Drishti formula (6 degree-range rules) + special planetary additions A/B/C confirmed verbatim pp.255-258. Validator error: "simplified Addition A/B" is Santhanam translator notation, not fabrication. |
+| Ch30 | pp.303-310 | ch30-026 | Benefic rescue principle stated verbatim p.304 ("If there be a benefic aspect...deprival of spouse will not come to pass") and translator notes p.307. GAI not required. Validator error. |
+| Ch32 | pp.316-326 | ch32-003/-004/-011/-012/-018/-041 | All confirmed verbatim. Atmakarka definition p.317 ✅. Rahu = 30 − sign degrees p.317 ✅. 8 Karakas list p.318 ✅. 7-karaka variant p.319 ✅. Tiebreaker terms (Anthyakaraka/Madhyakaraka/Upakheta) p.317 ✅. Jupiter = 2nd house karaka (family, finance, wife etc.) p.325 ✅. |
+| Ch33 | pp.327-339 | ch33-035/-038/-039/-043/-049/-079/-098 | All extreme outcomes confirmed authentic. Serpent death p.329 ✅. Poisoning/Gulika p.330 ✅. Others' wives p.331 ✅. Female ill-related death p.334 ✅. Imprisonment p.334 ✅. Ch33 is genuinely extreme BPHS content. Validator errors. |
+
+#### Critical Correction: bphs1-ch32-033
+
+- **Prior plan was WRONG**: planned to remove "wife" from 2nd house signification
+- **PDF confirms**: Ch32 p.325 v.31-34 explicitly lists "Jupiter: 2nd house (family, finance, wife etc.)"
+- Sanskrit verse 31 includes `darakaraka` (wife indicator) in 2nd house context
+- **Corrected action**: validator_error + no text change. `patch_bphs_vol1_phase2_flagged.py` updated.
+
+#### Scripts Built / Updated
+
+| Script | Type | Rules | Action |
+|---|---|---|---|
+| `patch_bphs_vol1_phase2_flagged.py` | Updated | 14 Bucket B + 1 direct fix (ch03-044) + 1 corrected (ch32-033→validator_error) | **PENDING RUN** |
+| `patch_bphs_vol1_phase2_bucket_c.py` | New | 19 Bucket C (all 21 C-rules resolved; bphs1-ch32-033 moved to corrected flagged script) | **PENDING RUN** |
+
+All 35 flagged rules addressed:
+- 14 Bucket B → PHR + validator_error:true (flagged.py)
+- 1 direct CC fix bphs1-ch03-044 → PHR + corrected text (flagged.py)
+- 1 bphs1-ch32-033 → PHR + validator_error:true, no text change (flagged.py, revised)
+- 19 Bucket C → PHR + validator_error:true + cc_read_note (bucket_c.py)
+
+Commit: `5a78686`
+
+#### Run Commands (user to execute)
+```bash
+# Step 1: Bucket B + ch03-044 + ch32-033 (16 rules)
+python3 backend/scripts/patch_bphs_vol1_phase2_flagged.py --mongo-url "$MONGO_URL" --dry-run
+# → then live:
+python3 backend/scripts/patch_bphs_vol1_phase2_flagged.py --mongo-url "$MONGO_URL"
+
+# Step 2: Bucket C (19 rules)
+python3 backend/scripts/patch_bphs_vol1_phase2_bucket_c.py --mongo-url "$MONGO_URL" --dry-run
+# → then live:
+python3 backend/scripts/patch_bphs_vol1_phase2_bucket_c.py --mongo-url "$MONGO_URL"
+```
+
+Expected final batch state after both scripts:
+- `auto_approved`: unchanged (~491)
+- `pending_human_review`: +35 (all flagged promoted)
+- `flagged`: 0
