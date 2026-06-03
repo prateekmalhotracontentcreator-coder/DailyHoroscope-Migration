@@ -1,7 +1,7 @@
 # Action Items -- Temple App
 > Single Source of Truth for all open items across Claude Code sessions.
 > Referenced in all handover docs. **Do not create parallel lists elsewhere.**
-> Last updated: 2026-05-29 (Phase 2 Strategist integration complete: STR-OP-7 to STR-OP-13 done; A2 decode pass: LK module confirmed live, M-28 closed, M-29-M-34 added; SEO Sprint E/D tracked)
+> Last updated: 2026-06-03 (Strategist: STR-CD-WRS H-scroll + STR-2H triggers integrated -- commit `71eb351`. No TT action items added from this session; all work was CC-direct. STR-OP-29 added to Strategist module TRACKER for TT notification smoke test.)
 
 ---
 
@@ -52,66 +52,11 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 
 ---
 
-## Sitting with Codex -- Active Commissions
+## Codex Commission Status
 
-All items below have been moved into commission briefs in `Codex_Deliveries/`. Nothing is pending here -- each is either READY TO ISSUE or has a brief written and ready to issue.
-
-### Knowledge Engine Thread
-- ~~KE-2A: Yoga Check Evaluation Engine~~ → ✅ INTEGRATED 2026-05-17. 9 handlers added, 52 tests pass, 0 missing mappings, 26 dispatch entries.
-- ~~KE-Sprint2: Arbitration Runtime~~ → ✅ INTEGRATED 2026-05-17 (self-certified). All 5 gates passed against live code.
-- ~~KE-Sprint3: Arc Angel Computation (G-07/G-08/G-09)~~ → ✅ FULLY COMPLETE 2026-05-17. KE-OP-13 ✅ (live verified) + KE-OP-14 ✅ (AD-level window granularity fixed, commit `c4f4b43`, 72/72 tests).
-- ~~KE-IQ: Questionnaire UI + β/γ wiring (TD-19/TD-25/G-10)~~ → ✅ **INTEGRATED 2026-05-18** commit `f7aa78b`. 75/75 KE tests. KE-OP-15 open: TT to verify live endpoints + `user_questionnaire_profiles` persistence on Render.
-- ~~KE-DEDUP-CONTRADICTION-1~~ → ✅ **INTEGRATED 2026-05-29.** `backend/ke_dedup_script.py` live. 1/1 tests pass.
-
-**CC Direct Actions -- KE gaps confirmed by Codex intake audit 2026-05-15:**
-- [x] **KE-OP-9** -- ✅ Already present: `knowledge_engine.py` lines 634-636 dispatch `yoga_combination` through `ke_yoga_evaluator.evaluate_yoga_check`. No action needed. Confirmed 2026-05-15.
-- [x] **KE-OP-10** -- ✅ Fixed 2026-05-15: added `combust_ok` guard to `_planet_in_kendra_conditions_ok` in `ke_yoga_evaluator.py`. `free_from_combustion` now evaluated via `ChartFacts.planet_positions[planet]["combust"]`. `_unsupported_note` cleaned up.
-- [x] **KE-OP-11** -- ✅ Done 2026-05-15. `migrate_ch41_varga_checkable.py` run against `horoscope_db`. 24 Ch 41 Varga-tier rules updated: `checkable=True`, `condition_type: varga_dignity_tier`. Summary: updated=24, skipped=0, errors=0.
-
-### KP Oracle Thread
-- ~~KP-2A: Bundle editorial + visual share card + Remedies Admin tab~~ → `KP/CODEX_COMMISSION_KP_2A.md` · READY TO ISSUE
-- ~~KP-Sprint2: /ask-question LLM Logic Router (Guna + Gita)~~ → `KP/CODEX_COMMISSION_KP_SPRINT2_ASK_QUESTION.md` · READY TO ISSUE
-- ~~KP-2B: Ritual Animation + 3-Pillar UX + Astro-Filter~~ → `KP/CODEX_COMMISSION_KP_2B.md` · READY TO ISSUE (depends on KP-2A)
-
-### Individual Reports Thread
-- ~~IR-1: 5 public SEO landing pages~~ → `Individual_Reports/CODEX_COMMISSION_IR_1_LANDING_PAGES.md` · READY TO ISSUE
-- ~~IR-4: 6 Phase 3 Natal Reports (Wealth/H2 · Romance/H5 · Vitality/H6 · Partnership/H7 · Dharma/H9 · Gains/H11)~~ → `Individual_Reports/CODEX_COMMISSION_IR_4_SIX_NEW_REPORTS.md` · READY TO ISSUE (written 2026-05-18 -- 516 lines, 18 new files)
-
-### Remedies Engine Thread
-- ~~REM-P1: Remedies Engine Phase 1 (KP collection + remedy_ref pipeline)~~ → `Remedies/CODEX_COMMISSION_REMEDIES_ENGINE_PHASE1.md` · READY TO ISSUE
-
-### The Strategist Thread
-- ~~STR-1: Premium Landing Page + War Room Visual Rebuild~~ → ✅ INTEGRATED commit `ba58192`
-- ~~STR-2J: Strategist Missions UI improvements (MissionCard responsive + dasha display)~~ → ✅ INTEGRATED commit `9ad2e0a` *(delivered + dasha backend fix 2026-05-15)*
-- ~~STR-Phase2: Full Phase 2 UI (2F/2E/2C/2D/2I/2G/2B)~~ → ✅ **CC INTEGRATION COMPLETE 2026-05-29.** All 7 CD HTML files converted to ES modules. `StrategistActionPlanPage.jsx` rebuilt as 2G composition shell. **Pending commit to main + STR-OP-15 TT verification.**
-
-### Arc Angel Thread
-- ~~ARC-2: Arc Angel Dynamic Confidence Engine~~ → ✅ **INTEGRATED 2026-05-18** commit `c1a7cb0`. 18 files, 746 insertions, 72/72 tests green. 3-pillar confidence fully wired. Pillar 1 bridge (4-section → 12-domain) is stopgap pending KE-IQ enrichment. Decay engine + notification hooks live. ArcAngelPanel rebuilt. PrivateRoute applied.
-
-### Tarot Thread
-- ~~TAR-v4: Tarot UI v4 Enhancement~~ → ✅ INTEGRATED commit `2a4ed4e`
-- ~~TAR-SEO-1: Tarot SEO module (hub + spreads + cards + intentions, 199 pages)~~ → ✅ INTEGRATED commit `8f36fc8`
-- ~~TAR-SEO-2: Tarot SEO data rewrite (copyright + quality fix)~~ → ✅ QA-CLEARED commit `cc52900` · ECHO/PACE strict full pass · Layer G 15/15 PASS 0% dup
-- **TAR-SEO-3: Tarot Combination Pages (4,621 pages -- 78 cards × 60 spreads + card hub)** → 🟡 READY TO ISSUE · Brief: `Codex_Deliveries/Tarot/CODEX_COMMISSION_TAR_SEO_3_COMBINATIONS.md`
-
-### Kundali Thread
-- ~~KUN-1: Lagna Kundali Module Contract~~ → `Kundali/CODEX_COMMISSION_KUNDALI_LAGNA_CONTRACT.md` · READY TO ISSUE
-
-### Lal Kitab Thread
-- ~~LK-1: LK Standalone Module~~ → `LK/CODEX_COMMISSION_LK_STANDALONE_MODULE.md` · READY TO ISSUE
-
-### Longevity Thread
-- ~~LON-1: Ayur Jyotish Longevity Report~~ → `Longevity/CODEX_COMMISSION_LONGEVITY_REPORT_CONTRACT.md` · READY TO ISSUE
-
-### Panchang Thread
-- ~~PAN-L1: Language/Regional Pages (Tamil, Telugu, Malayalam, etc.)~~ → `Panchang/CODEX_COMMISSION_PANCHANG_LANGUAGE_PAGES.md` · READY TO ISSUE
-
-### SEO & Web Performance Thread
-- ~~SEO-1: SEO + Marketing + Web Performance Optimisation~~ → `SEO/CODEX_COMMISSION_SEO_WEBPERF.md` · READY TO ISSUE
-- ~~SEO items deferred: SEO·1 through SEO·6, PERF·4/5/7/8~~ → absorbed into SEO-1 commission
-
-### World Oracles Thread (Phase 3)
-- ~~ORACLE-P3: 5 Multi-Scriptural Oracle Modules + Guna-Meter (Bible, Islamic, Taoist, Greek, Sikh)~~ → `World_Oracles/CODEX_COMMISSION_ORACLE_P3_WORLD_ORACLES.md` · READY TO ISSUE *(written 2026-05-15 -- Phase 3, LOW)*
+> **Single source of truth for all commissions → `Codex_Deliveries/[Module]/TRACKER.md`**
+> Do not duplicate commission status here. Open a module TRACKER to see what is integrated, in progress, or ready to issue for that module.
+> Commission queue with issue-order priority → `Codex_Deliveries/List_of_Pending_Codex_Commissions.md`
 
 ---
 
