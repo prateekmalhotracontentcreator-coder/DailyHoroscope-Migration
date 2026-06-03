@@ -117,6 +117,7 @@ const AskQuestionPage = lazy(() => import('./pages/kp/AskQuestionPage'));
 const PunyaRewardsPage = lazy(() => import('./pages/rewards/PunyaRewardsPage'));
 const AuspiciousPage = lazy(() => import('./pages/auspicious/AuspiciousPage'));
 const StrategistActionPlanPage = lazy(() => import('./pages/strategist/StrategistActionPlanPage'));
+const WarRoomHScrollPage = lazy(() => import('./pages/strategist/WarRoomHScrollPage'));
 const FestivalsHubPage = lazy(() => import('./pages/festivals/FestivalsHubPage').then(m => ({ default: m.FestivalsHubPage })));
 const FestivalPage = lazy(() => import('./pages/festivals/FestivalPage').then(m => ({ default: m.FestivalPage })));
 const IndianCalendarPage = lazy(() => import('./pages/calendar/IndianCalendarPage').then(m => ({ default: m.IndianCalendarPage })));
@@ -406,7 +407,7 @@ function App() {
                   <Route path="/strategist" element={<TheStrategistLandingPage />} />
                   {/* /strategist/snapshot = Phase 1 CD snapshot dashboard (StrategistWarRoom props view) */}
                   <Route path="/strategist/snapshot" element={<ProtectedRoute><StrategistWarRoomPage /></ProtectedRoute>} />
-                  <Route path="/strategist/war-room" element={<ProtectedRoute><StrategistPage /></ProtectedRoute>} />
+                  <Route path="/strategist/war-room" element={<ProtectedRoute><WarRoomHScrollPage /></ProtectedRoute>} />
                   <Route path="/strategist/executive" element={<ProtectedRoute><StrategistExecutivePage /></ProtectedRoute>} />
                   <Route path="/strategist/missions" element={<ProtectedRoute><StrategistMissionsPage /></ProtectedRoute>} />
                   <Route path="/strategist/report" element={<ProtectedRoute><StrategistReportPage /></ProtectedRoute>} />

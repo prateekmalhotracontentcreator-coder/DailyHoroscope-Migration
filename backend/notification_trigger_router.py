@@ -141,6 +141,77 @@ TRIGGER_CONFIG = {
         "in_app_type": "strategist_debt",
         "default_action_url": "/strategist",
     },
+    # ── STR-2H · 7 live triggers (Doc 11 · 03 Jun 2026) ────────────────────
+    # Trigger 1 · golden_hour_open -- fires sunset−30 min, once per day
+    "str-golden-hour-open": {
+        "notification_type": "str_golden_hour_open",
+        "email_template_id": None,
+        "whatsapp_template_name": None,
+        "in_app_type": "str_golden_hour",
+        "default_action_url": "/strategist/war-room",
+        "push_title": "Your Golden Hour opens",
+        "push_body": "The ritual window is open for the next thirty minutes. Perform today's remedy while the sky favours it.",
+    },
+    # Trigger 2 · hurdle_raised -- retrograde/eclipse/combustion, dedup per hurdle_id
+    "str-hurdle-raised": {
+        "notification_type": "str_hurdle_raised",
+        "email_template_id": None,
+        "whatsapp_template_name": None,
+        "in_app_type": "str_hurdle",
+        "default_action_url": "/strategist/war-room",
+        "push_title": "A hurdle has risen",
+        "push_body": "{hurdle_planet} turns against your chart. Pause launches and hold open bids until the sky clears.",
+    },
+    # Trigger 3 · golden_hour_egress -- sunset−5 min, only if ritual not logged
+    "str-golden-hour-egress": {
+        "notification_type": "str_golden_hour_egress",
+        "email_template_id": None,
+        "whatsapp_template_name": None,
+        "in_app_type": "str_golden_hour",
+        "default_action_url": "/strategist/war-room",
+        "push_title": "Golden Hour closing",
+        "push_body": "Five minutes remain in today's ritual window. Complete your remedy before sunset locks it.",
+    },
+    # Trigger 4 · ritual_reminder -- daily at user reminder time, if ritual not logged
+    "str-ritual-reminder": {
+        "notification_type": "str_ritual_reminder",
+        "email_template_id": None,
+        "whatsapp_template_name": None,
+        "in_app_type": "str_ritual",
+        "default_action_url": "/strategist/war-room",
+        "push_title": "Today's ritual awaits",
+        "push_body": "Your {streak}-day streak is unbroken. A few minutes now keeps the discipline -- and the gain -- intact.",
+    },
+    # Trigger 5 · verdict_change -- Gate 0 flips state; fire on flip only
+    "str-verdict-change": {
+        "notification_type": "str_verdict_change",
+        "email_template_id": None,
+        "whatsapp_template_name": None,
+        "in_app_type": "str_verdict",
+        "default_action_url": "/strategist/war-room",
+        "push_title": "Krishna's verdict has changed",
+        "push_body": "Gate 0 now reads {verdict}. Your active path has shifted -- open the war room to see what it asks.",
+    },
+    # Trigger 6 · mission_complete -- mission KPI target met; dedup per mission_id
+    "str-mission-complete": {
+        "notification_type": "str_mission_complete",
+        "email_template_id": None,
+        "whatsapp_template_name": None,
+        "in_app_type": "str_mission",
+        "default_action_url": "/strategist/missions",
+        "push_title": "Mission accomplished",
+        "push_body": "{mission_name} hit its target. Claim the conquest gain and choose your next move.",
+    },
+    # Trigger 7 · dasha_transition -- maha/antar boundary crossed
+    "str-dasha-transition": {
+        "notification_type": "str_dasha_transition",
+        "email_template_id": None,
+        "whatsapp_template_name": None,
+        "in_app_type": "str_dasha",
+        "default_action_url": "/strategist/war-room",
+        "push_title": "Your dasha has turned",
+        "push_body": "{from_planet} yields to {to_planet}. A new chapter of timing begins -- recalibrate your missions to it.",
+    },
 }
 
 
