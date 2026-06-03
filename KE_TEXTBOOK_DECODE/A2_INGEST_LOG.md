@@ -474,7 +474,16 @@ python3 backend/scripts/patch_bphs_vol1_phase2_bucket_c.py --mongo-url "$MONGO_U
 python3 backend/scripts/patch_bphs_vol1_phase2_bucket_c.py --mongo-url "$MONGO_URL"
 ```
 
-Expected final batch state after both scripts:
-- `auto_approved`: unchanged (~491)
-- `pending_human_review`: +35 (all flagged promoted)
-- `flagged`: 0
+#### Live Run Results (2026-06-03)
+
+**Script 1 (flagged.py):** 16/16 patched · 0 skipped · 0 errors
+**Script 2 (bucket_c.py):** 19/19 patched · 0 not found · 0 skipped · 0 errors
+
+**Final batch state `bphs-vol1-phase2-v1-20260601`:**
+- `auto_approved`: 491
+- `pending_human_review`: 205
+- `flagged`: **0** ✅
+- `rejected`: 0
+- **Total**: 696
+
+**BPHS Vol 1 Phase 2: FULLY TRIAGED.** 0 flagged. Zero GAI consultations required.
