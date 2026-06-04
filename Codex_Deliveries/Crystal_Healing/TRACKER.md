@@ -8,7 +8,7 @@
 
 | Field | Value |
 |---|---|
-| **Status** | 🟡 ACTIVE -- CRY-L2 PASS, routes wired. TT to seed Mongo + run Layer G Serper. |
+| **Status** | 🟡 ACTIVE -- CRY-L2 PASS, routes wired. **CRY-L3 READY TO ISSUE** (L1 deep fix: target < 20% from current 49.5%). Seed + Layer G held until CRY-L3 passes. |
 | **Backend** | ✅ Delivered + registered in `server.py` |
 | **Frontend routes** | ✅ Wired in `App.js` 2026-06-04 -- 7 routes: hub, crystal, intention, planet, sign, problem, calculator |
 | **Mongo seed** | 🟡 PENDING -- TT to run seed scripts on Render |
@@ -24,6 +24,7 @@
 | **CRY-2** | Expansion content | ✅ DELIVERED (pending review) | `CODEX_COMMISSION_CRY_2_EXPANSION.md` |
 | **CRY-3** | 5K engine | ✅ DELIVERED (pending review) | `CODEX_COMMISSION_CRY_3_5K_ENGINE.md` |
 | **CRY-L2** | L2/L3 fix: tightened variant distribution, diversified labels/titles, tag-based healing-property fragments | ✅ INTEGRATED 2026-06-04 | `crystal_data.py` |
+| **CRY-L3** | L1 deep reduction: FAQ rewrite (no intent slugs), healing_properties prose, remove cross-crystal name mentions, material-accurate cleansing | 🔴 READY TO ISSUE | `CODEX_COMMISSION_CRY_L3_L1_FIX.md` |
 
 ---
 
@@ -35,8 +36,9 @@
 | CRY-OP-2 | Seed Mongo crystal collections on Render | TT | 🟠 HIGH -- next action | Run seed scripts on Render shell after Layer G clears. |
 | ~~CRY-OP-3~~ | ~~Issue CRY-L2 commission~~ | ~~TT/CC~~ | ✅ CLOSED 2026-06-04 | CRY-L2 delivered and integrated. |
 | ~~CRY-OP-4~~ | ~~Re-run ECHO/PACE scan after CRY-L2~~ | ~~CC~~ | ✅ CLOSED 2026-06-04 | Crystal 49.5% PASS, Intention 45.4% PASS. L2 0, L3 0. No regression. |
-| CRY-OP-5 | Run Layer G Serper before seeding | TT | 🟠 HIGH -- gates seed | Build script + run: `Serper_Default_key=KEY python3 tests/echo_pace_cry_serper_detail.py` (script to build) |
-| CRY-OP-6 | Review CRY-2 + CRY-3 deliveries -- assess if they compound or resolve violations | CC | 🟡 MED -- after Layer G | Do not integrate until base module fully signed off |
+| CRY-OP-5 | Run Layer G Serper before seeding | TT | ⛔ BLOCKED on CRY-L3 | Hold until CRY-L3 integrated and L1 < 20% |
+| CRY-OP-6 | Review CRY-2 + CRY-3 deliveries | CC | ⛔ BLOCKED on CRY-L3 | Hold until base module fully signed off |
+| CRY-OP-7 | Issue CRY-L3 commission to Codex | TT | 🔴 NEXT ACTION | Brief: `CODEX_COMMISSION_CRY_L3_L1_FIX.md`. Target: Crystal L1 < 20%, Intention L1 < 25%. |
 
 ---
 
@@ -81,6 +83,7 @@ Full report: `Codex_Deliveries/ECHO_PACE/ECHO_PACE_SCAN_RUD_CRY_FAITH_2026-05-31
 
 | Version | Date | What Changed | By | Ref |
 |---|---|---|---|---|
-| v1.2 | 2026-06-04 | CRY-L2 integrated. ECHO/PACE PASS: Crystal 49.5% L1, Intention 45.4% L1, L2 0, L3 0. App.js routes wired (7 routes). Build clean. CRY-OP-1/3/4 closed. CRY-OP-5 (Layer G Serper) is next gate before seed. | CC | `frontend/src/App.js` |
+| v1.3 | 2026-06-04 | L1 root cause analysis. Diagnosed 3 structural causes of 49.5%: (1) FAQ fill-in template repeating intent slugs (20 shared tokens in worst pair Citrine/Pyrite), (2) healing_properties as keyword-pair fragments not prose, (3) cross-crystal name mentions creating artificial IDF spikes. CRY-L3 commission written targeting < 20% L1. Seed + Layer G blocked until CRY-L3 passes. | CC | `CODEX_COMMISSION_CRY_L3_L1_FIX.md` |
+| v1.2 | 2026-06-04 | CRY-L2 integrated. ECHO/PACE PASS: Crystal 49.5% L1, Intention 45.4% L1, L2 0, L3 0. App.js routes wired (7 routes). Build clean. CRY-OP-1/3/4 closed. | CC | `frontend/src/App.js` |
 | v1.1 | 2026-05-31 | ECHO/PACE scan run. L1 borderline PASS (47.7%), L2/L3 FAIL. Module BLOCKED for seeding. CRY-L2 commission ready. Tracker created. | CC | `ECHO_PACE_SCAN_RUD_CRY_FAITH_2026-05-31.md` |
 | v1.0 | 2026-05-25 | CRY-1 delivered + handover doc from Temple Team. Backend registered. CRY-2 + CRY-3 also delivered. | Codex/TT | `TEMPLE_TEAM_HANDOVER_CRY_1_CRY_2_2026-05-25.md` |
