@@ -1,7 +1,7 @@
 # Action Items -- Temple App
 > Single Source of Truth for all open items across Claude Code sessions.
 > Referenced in all handover docs. **Do not create parallel lists elsewhere.**
-> Last updated: 2026-06-03 (Strategist: STR-CD-WRS H-scroll + STR-2H triggers integrated -- commit `71eb351`. No TT action items added from this session; all work was CC-direct. STR-OP-29 added to Strategist module TRACKER for TT notification smoke test.)
+> Last updated: 2026-06-04 (Angel Numbers: M-19 closed -- ANGEL-3 seeded, both collections live. Copyright test PASS documented. Layer G Serper script built -- ANGEL-OP-7 is now sole remaining gate for TT.)
 
 ---
 
@@ -28,7 +28,7 @@ These items are blocked on my input or approval. Nothing can proceed until actio
 | ~~M-16~~ | ~~**LSG-2 integration**~~ -- ✅ **DONE 2026-05-30.** All 7 route patterns live and smoke-tested. MongoDB seeded (responses confirmed live DB data). 66-URL sitemap active. LSG-OP-3 ✅ passed. LSG-OP-2 ✅ seeded. | ✅ DONE | ✅ |
 | M-17 | **KE-OP-15** -- Verify KE questionnaire live endpoints on Render: `/questionnaire`, `/api/knowledge-engine/questionnaire/profile`, `/api/knowledge-engine/questionnaire/submit`; confirm `user_questionnaire_profiles` writes in MongoDB | KE-IQ integration sign-off pending | 🟠 HIGH |
 | M-18 | **LON-OP-2** -- Longevity preview API at `/api/longevity/generate` takes ~46s. Profile + optimise to bring under 10s contract target | Performance gap flagged in QA audit | 🟠 HIGH |
-| M-19 | **ANGEL-OP-1** -- Re-seed Angel Numbers Mongo collections with ANGEL-2 rewrite content: run `seed_angel_numbers_core.py` + `seed_angel_numbers_intents.py` | ANGEL-2 quality fix not live in production | 🟠 HIGH |
+| ~~M-19~~ | ~~**ANGEL-OP-1** -- Re-seed Angel Numbers Mongo collections with ANGEL-3 content~~ | ✅ DONE 2026-06-04 | `angel_number_core` (1,000 modified) + `angel_number_intents` (9,000 modified) seeded on Render with ANGEL-3 content. API smoke test passed. |
 | M-20 | **ECHO-UI-1** -- Deploy ECHO/PACE admin frontend: `EchoPaceTab.jsx` + `AdminDashboard.jsx` changes not in current production bundle | ECHO/PACE admin unreachable in production | 🟠 HIGH |
 | M-21 | **SHC-UI-1** -- Verify Self-Healing Center "Self-Heal" tab live in Admin Console. `DiagnosticsTab.jsx` IS imported (line 25) + rendered (line 742) in `AdminDashboard.jsx` with 4 SHC strings confirmed -- QA audit finding was stale. TT to confirm tab visible at `/admin/dashboard` on current Vercel deploy. | Confirm tab visible in production; no code change needed | 🟡 MED |
 | M-22 | **SHC-OPS-1** -- Configure 5 Render env vars for Gmail/GST: `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`, `GMAIL_REFRESH_TOKEN`, `SUPPORT_EMAIL`, `BUSINESS_STATE`, then run Gmail OAuth flow | GST + Gmail scheduler jobs blocked | 🟠 HIGH |

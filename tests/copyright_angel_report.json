@@ -1,0 +1,61 @@
+{
+  "run_at": "2026-06-04T02:32:06.978098+00:00",
+  "our_corpus_size": 96,
+  "thresholds": {
+    "test_a_min_ngram": 4,
+    "test_b_fail": 0.4,
+    "test_b_high_risk": 0.25,
+    "test_c_fail": 0.5,
+    "test_c_high_risk": 0.3
+  },
+  "pdfs": {
+    "Kyle Gray - Angel Numbers": {
+      "file": "_OceanofPDF.com_Angel_Numbers_-_Kyle_Gray.pdf",
+      "word_count": 29118,
+      "paragraphs": 1,
+      "sentences": 1908,
+      "test_a": {
+        "fail": false,
+        "pages_with_matches": 0,
+        "hits": []
+      },
+      "test_b": {
+        "fail": false,
+        "hits": []
+      },
+      "test_c": {
+        "fail": false,
+        "hits": []
+      }
+    },
+    "Fortuna Noir - Angel Numbers": {
+      "file": "_OceanofPDF.com_Angel_Numbers_-_Fortuna_Noir.pdf",
+      "word_count": 20284,
+      "paragraphs": 1,
+      "sentences": 1263,
+      "test_a": {
+        "fail": false,
+        "pages_with_matches": 0,
+        "hits": []
+      },
+      "test_b": {
+        "fail": false,
+        "hits": []
+      },
+      "test_c": {
+        "fail": false,
+        "hits": [
+          {
+            "our_page": "core/1111",
+            "our_sent": "Angel number 1111 highlights stability, order, and dependable structure.",
+            "pdf": "Fortuna Noir - Angel Numbers",
+            "pdf_sent": "Angel Number\nLike the core number 4, angel number 444 is about stability and dedication.",
+            "jaccard": 0.3,
+            "flag": "HIGH RISK"
+          }
+        ]
+      }
+    }
+  },
+  "verdict": "PASS -- no copyright threshold breached. Content is sufficiently original."
+}
