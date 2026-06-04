@@ -1,0 +1,125 @@
+{
+  "run_at": "2026-06-04T02:41:48.398542+00:00",
+  "layer": "G",
+  "module": "Angel Numbers",
+  "description": "Detailed Serper validation for ECHO/PACE Layer G -- Angel Numbers",
+  "thresholds": {
+    "watch": 0.2,
+    "blocked": 0.4
+  },
+  "samples": {
+    "core": [
+      "111",
+      "333",
+      "555",
+      "888"
+    ],
+    "intent": [
+      "111/love",
+      "222/twin-flame",
+      "333/spiritual-growth",
+      "444/protection",
+      "555/career",
+      "777/manifestation"
+    ]
+  },
+  "overall": "PASS -- all Layer G queries clear; Angel Numbers safe to sign off",
+  "summary": {
+    "pass": 10,
+    "watch": 0,
+    "blocked": 0,
+    "total": 10
+  },
+  "queries": [
+    {
+      "query_label": "Core page",
+      "identifier": "Angel Number 111",
+      "phrase": "draws attention back expression joy inspired expansion asks",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Core page",
+      "identifier": "Angel Number 333",
+      "phrase": "draws attention back completion compassion release asks life",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Core page",
+      "identifier": "Angel Number 555",
+      "phrase": "draws attention back care harmony healing power presence",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Core page",
+      "identifier": "Angel Number 888",
+      "phrase": "draws attention back care harmony healing power presence",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Intent page",
+      "identifier": "111 / love",
+      "phrase": "truth telling expressive warmth open hearted conversation gets",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Intent page",
+      "identifier": "222 / twin-flame",
+      "phrase": "heart home tenderness repair old relational imprints especially",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Intent page",
+      "identifier": "333 / spiritual-growth",
+      "phrase": "closure soul level compassion ending especially refusing release",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Intent page",
+      "identifier": "444 / protection",
+      "phrase": "truth telling shield voiced limits expressive warding warning",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Intent page",
+      "identifier": "555 / career",
+      "phrase": "service led reliability team care values based contribution",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    },
+    {
+      "query_label": "Intent page",
+      "identifier": "777 / manifestation",
+      "phrase": "spoken desire emotionally audible intention gets sharper wherever",
+      "hits": 0,
+      "dup_rate": 0.0,
+      "verdict": "PASS",
+      "organic_results": []
+    }
+  ]
+}
