@@ -17,7 +17,7 @@
 | **Frontend pages** | `frontend/src/pages/angel-numbers/AngelNumbersHubPage.jsx` · `AngelNumberPage.jsx` · `AngelNumberIntentPage.jsx` |
 | **Collections** | `angel_number_core` (1,000 docs) · `angel_number_intents` (9,000 docs) |
 | **Public routes wired** | `/angel-numbers`, `/angel-numbers/:number`, `/angel-numbers/:number/:intent` ✅ all 3 live |
-| **Mongo state** | 🟡 Stale ANGEL-1 content -- **seed now unblocked**. TT: re-seed both collections on Render. |
+| **Mongo state** | ✅ ANGEL-3 content live -- `angel_number_core` (1,000 modified) + `angel_number_intents` (9,000 modified) seeded 2026-06-04. API smoke test passed. |
 | **ECHO/PACE (L1-L3)** | ✅ PASS -- ANGEL-3. All 10 clusters < 40% (worst 39.9%). L2 0 violations. L3 55.6%. |
 | **Layer G (Serper)** | Not yet run -- blocked by L1-L3 fail |
 
@@ -39,8 +39,8 @@
 |---|---|---|---|---|
 | ~~ANGEL-OP-1~~ | ~~Issue ANGEL-2 commission to Angel Numbers Codex thread~~ | ~~TT~~ | ✅ CLOSED | Delivered via Codex folder. Integrated commit `2271c36` 2026-05-31. |
 | ~~ANGEL-OP-2~~ | ~~Run ECHO/PACE compliance check after ANGEL-2 delivery~~ | ~~CC~~ | ✅ CLOSED | OVERALL PASS confirmed 2026-05-31. L2 0 violations, L3 55.6%, L1 worst 57.5% FLAGGED (not blocked). |
-| ANGEL-OP-3 | Re-seed `angel_number_core` on Render (1,000 docs) | TT | 🔴 NOW UNBLOCKED | ANGEL-3 passed. Render shell: `PYTHONPATH=/app python3 scripts/seed_angel_numbers_core.py`. |
-| ANGEL-OP-4 | Re-seed `angel_number_intents` on Render (9,000 docs) | TT | 🔴 NOW UNBLOCKED | After OP-3. Render shell: `PYTHONPATH=/app python3 scripts/seed_angel_numbers_intents.py`. |
+| ~~ANGEL-OP-3~~ | ~~Re-seed `angel_number_core` on Render (1,000 docs)~~ | ~~TT~~ | ✅ CLOSED | Seeded 2026-06-04. modified=1000. API confirmed live. |
+| ~~ANGEL-OP-4~~ | ~~Re-seed `angel_number_intents` on Render (9,000 docs)~~ | ~~TT~~ | ✅ CLOSED | Seeded 2026-06-04. modified=9000. Intent endpoint confirmed live. |
 | ~~ANGEL-OP-9~~ | ~~Issue ANGEL-3 commission + integrate delivery~~ | ~~TT/CC~~ | ✅ CLOSED | ANGEL-3 integrated 2026-06-04. All 10 clusters < 40%. |
 | ~~ANGEL-OP-5~~ | ~~Wire intent route in `frontend/src/App.js`~~ | ~~CC~~ | ✅ CLOSED | Lazy import + `/angel-numbers/:number/:intent` route added. Commit `2271c36`. |
 | ~~ANGEL-OP-6~~ | ~~`how_to_manifest` field for manifestation records~~ | ~~Codex / CC~~ | ✅ CLOSED | Confirmed present in ANGEL-2: 1,000 manifestation records, 7 action families, max 7.4% per type (cap 30%). |
