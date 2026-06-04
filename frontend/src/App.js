@@ -167,6 +167,13 @@ const RudrakshaPlanetPage = lazy(() => import('./pages/rudraksha/RudrakshaPlanet
 const RudrakshaProblemPage = lazy(() => import('./pages/rudraksha/RudrakshaProblemPage').then(m => ({ default: m.RudrakshaProblemPage })));
 const RudrakshaSignPage = lazy(() => import('./pages/rudraksha/RudrakshaSignPage').then(m => ({ default: m.RudrakshaSignPage })));
 const RudrakshaCalculatorPage = lazy(() => import('./pages/rudraksha/RudrakshaCalculatorPage').then(m => ({ default: m.RudrakshaCalculatorPage })));
+const CrystalHubPage         = lazy(() => import('./pages/crystals/CrystalHubPage'));
+const CrystalPage             = lazy(() => import('./pages/crystals/CrystalPage'));
+const CrystalIntentionPage    = lazy(() => import('./pages/crystals/CrystalIntentionPage'));
+const CrystalPlanetPage       = lazy(() => import('./pages/crystals/CrystalPlanetPage'));
+const CrystalSignPage         = lazy(() => import('./pages/crystals/CrystalSignPage'));
+const CrystalProblemPage      = lazy(() => import('./pages/crystals/CrystalProblemPage'));
+const CrystalCalculatorPage   = lazy(() => import('./pages/crystals/CrystalCalculatorPage'));
 import './panchang.css';
 import { useKeepAlive } from './hooks/useKeepAlive';
 
@@ -226,6 +233,13 @@ function App() {
                   <Route path="/lo-shu-grid/number/:n" element={<LoShuNumberPage />} />
                   <Route path="/lo-shu-grid/for/:problem" element={<LoShuProblemPage />} />
                   <Route path="/lo-shu-grid/personal-year/:n" element={<LoShuPersonalYearPage />} />
+                  <Route path="/crystals" element={<CrystalHubPage />} />
+                  <Route path="/crystals/calculator" element={<CrystalCalculatorPage />} />
+                  <Route path="/crystals/for/:intentionSlug" element={<CrystalIntentionPage />} />
+                  <Route path="/crystals/for/planet/:planet" element={<CrystalPlanetPage />} />
+                  <Route path="/crystals/for/sign/:sign" element={<CrystalSignPage />} />
+                  <Route path="/crystals/for/problem/:problem" element={<CrystalProblemPage />} />
+                  <Route path="/crystals/:crystalSlug" element={<CrystalPage />} />
                   <Route path="/rudraksha" element={<RudrakshaHubPage />} />
                   <Route path="/rudraksha/:mukhi" element={<RudrakshaMukhiPage />} />
                   <Route path="/rudraksha/planet/:planetSlug" element={<RudrakshaPlanetPage />} />

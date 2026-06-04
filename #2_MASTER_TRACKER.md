@@ -1,7 +1,7 @@
 # Temple Tracker -- Master Index
 > EverydayHoroscope · Module Status Dashboard
 > **Read this at session start. Then open the individual module tracker for the module you are working on.**
-> Last updated: 2026-06-04 v5.5 (Angel Numbers: Layer G Serper 10/10 PASS, 0 hits all queries. Module SIGN-OFF COMPLETE. Row 22 status → COMPLETE. All 6 gates passed.)
+> Last updated: 2026-06-04 v5.6 (Crystal Healing: CRY-L2 integrated, ECHO/PACE PASS, 7 App.js routes wired, build clean. Row 20 status → ACTIVE. Next gate: TT Layer G Serper + Mongo seed.)
 
 ---
 
@@ -55,7 +55,7 @@ Each tracker contains: **Current Status · Commission Status · Open Points (own
 | 17 | World Oracles | [`World_Oracles/TRACKER.md`](Codex_Deliveries/World_Oracles/TRACKER.md) | 🟣 PLANNED | Phase 3 -- do not issue until KP Oracle 30+ days live | TT |
 | 18 | Lo Shu Grid | [`Lo_Shu_Grid/TRACKER.md`](Codex_Deliveries/Lo_Shu_Grid/TRACKER.md) | ✅ COMPLETE | LSG-1 + LSG-2 fully live · 57 URLs · seeded · smoke tested · ECHO/PACE L1-L3 + Layer G all PASS · NavBar wired · all open points closed. | -- |
 | 19 | Rudraksha | [`Rudraksha/TRACKER.md`](Codex_Deliveries/Rudraksha/TRACKER.md) | ✅ LIVE | RUD-L2 ✅ · ECHO/PACE all 4 layers PASS (L1 ≤25.2%, L2 0, L3 0, Layer G 0/8) · 6 App.js routes wired · 62 Mongo docs seeded (mukhis/planets/problems/signs) · **TT: smoke test `/rudraksha` on production** | CC |
-| 20 | Crystal Healing | [`Crystal_Healing/TRACKER.md`](Codex_Deliveries/Crystal_Healing/TRACKER.md) | 🔴 BLOCKED | CRY-1 ✅ backend delivered + registered. ECHO/PACE 2026-05-31: **L1 borderline PASS (47.7%)**, L2 FAIL (100% boilerplate), L3 FLAGGED. **CRY-L2 commission READY TO ISSUE.** Routes + seed blocked. ⚠️ CRY-2 + CRY-3 also delivered -- assess if they compound L2 violations. | CC/TT |
+| 20 | Crystal Healing | [`Crystal_Healing/TRACKER.md`](Codex_Deliveries/Crystal_Healing/TRACKER.md) | 🟡 ACTIVE | CRY-L2 ✅ INTEGRATED 2026-06-04. ECHO/PACE PASS: Crystal 49.5%, Intention 45.4%, L2 0, L3 0. App.js routes wired (7 routes), build clean. **Next gate: TT run Layer G Serper, then seed Mongo on Render.** CRY-2 + CRY-3 held until base signed off. | TT |
 | 21 | Faith & Scripture | [`Faith_Hubs/TRACKER.md`](Codex_Deliveries/Faith_Hubs/TRACKER.md) | 🔴 CRITICAL | FAITH-20K ✅ generator delivered. ECHO/PACE 2026-05-31: **Gita L1=100% BLOCKED · Bible L1=82% BLOCKED · Transit L1=100% BLOCKED**. Root cause: fixed situation/topic boilerplate in summary/hook/application fields -- same failure mode as ANGEL-1. **FAITH-REWRITE commission READY TO ISSUE (CRITICAL).** Do NOT seed any Faith collections. | CC/TT |
 | 22 | Angel Numbers | [`Angel_Numbers/TRACKER.md`](Codex_Deliveries/Angel_Numbers/TRACKER.md) | ✅ COMPLETE | All 6 sign-off gates PASSED 2026-06-04. ECHO/PACE L1-L3 ✅ (worst 39.9%), Copyright ✅ (0 breaches vs Kyle Gray + Fortuna Noir), Seed ✅ (1,000 + 9,000 docs), API ✅, Browser ✅, Layer G Serper ✅ (10/10 PASS, 0 hits). 10,001 pages cleared. Full audit: `TEST_RESULTS_2026-06-04.md`. | -- |
 | 23 | SEO-20K M3 Fix (Character Placements + Transit Profiles) | [`SEO/`](Codex_Deliveries/SEO/) | 🔴 CRITICAL | ECHO/PACE 2026-05-31: Character Placements **L1=93.4% BLOCKED** (worst in scan), Transit Profiles **L1=71.2% BLOCKED**. Both live in production but serving duplicate content. **M3-CP-FIX + M3-TR-FIX READY TO ISSUE.** Briefs: `Codex_Deliveries/SEO/CODEX_COMMISSION_M3_CP_FIX.md` + `M3_TR_FIX.md`. | CC/TT |
