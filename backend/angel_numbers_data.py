@@ -770,6 +770,209 @@ INTENT_STYLES = {
     },
 }
 
+INTENT_ROOT_LENSES = {
+    "love": {
+        1: ("self-led honesty, brave confession, and heart-first initiative", "self-protection masquerading as independence or refusing to name the need"),
+        2: ("reciprocal pacing, emotional attunement, and mutual reassurance", "waiting in silence instead of asking for clarity"),
+        3: ("playful truth-telling, expressive warmth, and open-hearted conversation", "joking past the real vulnerability"),
+        4: ("secure attachment, dependable structure, and relationship steadiness", "rigidity, shutdown, or overcontrolled affection"),
+        5: ("liberating change, honest renewal, and breathing room inside the bond", "chasing novelty rather than real intimacy"),
+        6: ("nurture, repair, and loyal care around home and tenderness", "overgiving while neglecting your own emotional center"),
+        7: ("sacred reflection, intuitive trust, and spiritually honest intimacy", "retreating into silence or idealized fantasy"),
+        8: ("value, commitment, and mature exchange that can hold responsibility", "power struggles, scorekeeping, or transactional love"),
+        9: ("forgiveness, release, and compassionate closure when a chapter is done", "clinging to what has already completed itself"),
+    },
+    "career": {
+        1: ("declared initiative, visible leadership, and first-move courage", "waiting to be chosen, diffusing your initiative, or hiding from leadership"),
+        2: ("alliance timing, patient negotiation, and partnership intelligence", "forcing a timeline that needs collaboration or mistaking delay for failure"),
+        3: ("communicating your value, pitching ideas, and creative contribution", "talking around the idea instead of presenting it cleanly"),
+        4: ("structural competence, steady execution, and durable systems", "overworking the scaffold while resisting visible advancement"),
+        5: ("adaptive pivots, courageous reinvention, and mobile opportunity", "confusing movement with progress or pivoting without discernment"),
+        6: ("service-led reliability, team care, and values-based contribution", "overfunctioning for everyone else while neglecting your own center"),
+        7: ("thoughtful specialization, strategic reflection, and quiet mastery", "withdrawing into analysis until opportunity passes"),
+        8: ("earned authority, stewardship of resources, and visible results", "gripping power too tightly or measuring worth only by output"),
+        9: ("purpose-led completion, legacy thinking, and dignified handoffs", "dragging a completed chapter instead of closing it cleanly"),
+    },
+    "twin-flame": {
+        1: ("identity clarity, self-recognition, and owning your part of the bond", "chasing reunion to avoid your own inner work"),
+        2: ("mirrored pacing, soul partnership timing, and relational listening", "reading every delay as abandonment"),
+        3: ("truthful dialogue, expressive mirroring, and emotionally audible connection", "performing spirituality instead of saying what hurts"),
+        4: ("grounded containers, nervous-system steadiness, and dependable contact", "mistaking intensity for safety"),
+        5: ("transformational movement, catalytic separation lessons, and conscious change", "confusing chaos with destiny"),
+        6: ("healing the heart-home, tenderness, and repair of old relational imprints", "caretaking the bond while abandoning yourself"),
+        7: ("soul discernment, sacred reflection, and mystical but grounded recognition", "projecting fate onto every inner tremor"),
+        8: ("karmic accountability, energetic stewardship, and mature energetic exchange", "trying to control the outcome through force"),
+        9: ("release, forgiveness, and compassionate cycle completion", "keeping a lesson alive long after its teaching has ended"),
+    },
+    "manifestation": {
+        1: ("declared intention, self-led co-creation, and brave first movement", "wishing for outcomes you are not yet willing to claim"),
+        2: ("timing coherence, relational alignment, and patient magnetic pull", "treating delay as absence instead of gestation"),
+        3: ("expressive creation, spoken desire, and emotionally audible intention", "broadcasting desire while hiding the real feeling underneath it"),
+        4: ("ritual structure, repeatable discipline, and grounded energetic scaffolding", "dreaming without building a container strong enough to hold the result"),
+        5: ("manifesting through adaptive change, movement, and willingness to pivot", "trying to call in a future while clinging to the old route"),
+        6: ("harmonizing the environment, beauty, and emotionally supportive surroundings", "asking for expansion from a life that still feels misaligned at home"),
+        7: ("quiet alignment, contemplative signal-cleaning, and spiritually exact desire", "manifesting from mental noise or untested intuition"),
+        8: ("earned abundance, stewardship of what arrives, and responsible receiving", "craving results without building capacity to hold them"),
+        9: ("release-led manifestation, clearing residue, and making room for the next cycle", "trying to attract while still clutching the previous chapter"),
+    },
+    "health": {
+        1: ("self-directed recovery, decisive support, and initiating a cleaner rhythm", "ignoring body signals because you want to push through"),
+        2: ("gentle pacing, nervous-system listening, and restorative balance", "mistaking sensitivity for weakness or refusing to slow down"),
+        3: ("breath, voice, mood expression, and life-giving circulation", "swallowing stress until the body has to speak for you"),
+        4: ("routine, sleep hygiene, and structural care that stabilizes the system", "wanting results without honoring consistency"),
+        5: ("adaptive movement, detox of stale habits, and flexible re-regulation", "swinging between extremes instead of building usable change"),
+        6: ("care, nourishment, and home-based restoration of warmth", "caring for everyone else while your body keeps paying the bill"),
+        7: ("inner listening, reflective recovery, and subtle-signal discernment", "overriding intuition because the outside world looks louder"),
+        8: ("strength, resilience, and stewardship of energy reserves", "treating output as proof of health"),
+        9: ("release of depletion, compassionate closure, and clearing old stress cycles", "carrying exhausted patterns because they feel familiar"),
+    },
+    "spiritual-growth": {
+        1: ("self-trust, direct revelation, and the courage to begin an inner path cleanly", "collecting teachings while avoiding your own first honest step"),
+        2: ("devotional listening, sacred patience, and relational humility with the unseen", "wanting certainty on a timetable the soul did not choose"),
+        3: ("expressive insight, prayerful speech, and creative revelation", "mistaking inspiration for integration"),
+        4: ("practice, ritual structure, and disciplined spiritual embodiment", "wanting transcendence without container or repetition"),
+        5: ("awakening through change, catalytic release, and transformation on purpose", "romanticizing upheaval instead of learning from it"),
+        6: ("heart-centered devotion, compassionate service, and spiritually aligned care", "bypassing your own needs in the name of goodness"),
+        7: ("silence, study, inner knowing, and precise mystical discernment", "confusing noise, projection, or fantasy for guidance"),
+        8: ("integrity, stewardship, and bringing power under spiritual ethics", "using spiritual language to justify control"),
+        9: ("surrender, closure, and soul-level compassion for what is ending", "refusing the release that would make room for deeper wisdom"),
+    },
+    "family": {
+        1: ("clear roles, honest leadership, and first-move repair at home", "waiting for someone else to go first forever"),
+        2: ("relational diplomacy, emotional timing, and mutual listening under one roof", "absorbing the mood instead of naming the need"),
+        3: ("open conversation, warmth, and expressive repair in the household", "keeping the peace by never speaking the truth"),
+        4: ("household structure, dependable routines, and practical support systems", "trying to fix family chaos with promises instead of structures"),
+        5: ("healthy change, breathable family roles, and liberating new patterns", "recycling old scripts because they are familiar"),
+        6: ("care, belonging, and restoring tenderness to the home atmosphere", "taking responsibility for everyone while disappearing yourself"),
+        7: ("quiet discernment, ancestral reflection, and soul-level family understanding", "retreating into distance instead of meaningful presence"),
+        8: ("resource stewardship, authority, and boundary clarity around family obligations", "letting money, power, or status quietly distort the bond"),
+        9: ("forgiveness, release, and ending inherited pain without repeating it", "carrying generational grief as if it were your only identity"),
+    },
+    "protection": {
+        1: ("self-directed clarity, declared boundaries, and conviction-led safety", "porous first lines, delayed no's, or abandoning your own authority"),
+        2: ("relational discernment, timing-aware safety, and mutually clean agreements", "over-accommodating pressure because you fear conflict"),
+        3: ("truth-telling as shield, voiced limits, and expressive warding", "softening the message until the boundary disappears"),
+        4: ("four-square structure, practical barriers, and guardian architecture", "wanting protection without building an actual container"),
+        5: ("exit routes, mobile freedom, and flexible defensive intelligence", "staying in draining terrain because movement feels inconvenient"),
+        6: ("sheltering the home atmosphere, caring for what is tender, and protective warmth", "mistaking caretaking for safety while the environment stays unclean"),
+        7: ("inner knowing as shield, spiritual discernment, and quiet sensing", "mistaking intensity, glamour, or fear for guidance"),
+        8: ("guarding value, authority, and energetic territory with stewardship", "leaking power by letting everyone access what should be protected"),
+        9: ("closing draining doors, releasing attachments, and compassionate ending-work", "keeping harmful ties alive because ending them feels too final"),
+    },
+    "new-beginnings": {
+        1: ("first-step courage, declared entry, and clean self-led openings", "waiting for the beginning to feel risk-free"),
+        2: ("patient emergence, relational timing, and soft but steady initiation", "calling it a beginning while still negotiating with the old story"),
+        3: ("creative launch, expressive freshness, and joy-led entry into the new", "announcing a new chapter without giving it real voice"),
+        4: ("foundational starts, structure, and building the floor before the leap", "rushing the doorway without building what will support it"),
+        5: ("reinvention, motion, and catalytic willingness to step into change", "romanticizing the restart while resisting the actual shift"),
+        6: ("warm starts, supported home ground, and nurturing what is trying to grow", "bringing old caretaking burdens into a space that needs freshness"),
+        7: ("intuitive beginnings, inner confirmation, and spiritually clean thresholds", "crossing into the new while still doubting your own signal"),
+        8: ("powerful starts, long-range stewardship, and capacity to hold what begins", "starting bigger than your current integrity can sustain"),
+        9: ("release-led renewal, compassionate endings, and sacred threshold clearing", "dragging completed grief into a doorway that needs room"),
+    },
+}
+
+INTENT_FOCUS_TEMPLATES = [
+    "a life area shaped by {seed}",
+    "guidance around {seed}",
+    "the need for {seed}",
+    "a lesson in {seed}",
+]
+
+INTENT_CHALLENGE_TEMPLATES = [
+    "the pressure usually shows up through {seed}",
+    "the hardest edge tends to be {seed}",
+    "the real friction often comes from {seed}",
+    "the lesson distorts most quickly through {seed}",
+]
+
+INTENT_CLOSING_TEMPLATES = [
+    "Let the number keep steering you toward {seed}.",
+    "Use the sequence as permission to practice {seed}.",
+    "The cleanest reading is the one that turns toward {seed}.",
+]
+
+INTENT_CLOSING_SEEDS = {
+    "love": [
+        "reciprocity that can survive the truth",
+        "naming the feeling before it curdles into silence",
+        "building warmth without abandoning your own center",
+        "letting honesty become the intimacy",
+    ],
+    "career": [
+        "acting where timing is real and your value is visible",
+        "letting standards outrank scrambling",
+        "moving toward work that can actually hold your gift",
+        "treating momentum as something you build, not merely hope for",
+    ],
+    "twin-flame": [
+        "regulating first and interpreting second",
+        "letting mirroring teach you without turning it into chase energy",
+        "healing the part of you that keeps outsourcing certainty",
+        "honoring timing instead of dramatizing it",
+    ],
+    "manifestation": [
+        "making desire, behavior, and timing speak the same language",
+        "giving the intention a body instead of a slogan",
+        "receiving only what your current life can honestly hold",
+        "treating alignment as a practice rather than a mood",
+    ],
+    "health": [
+        "answering the body before it has to shout",
+        "restoring rhythm before demanding more output",
+        "choosing repeatable care over dramatic overhauls",
+        "letting support become physical, not just conceptual",
+    ],
+    "spiritual-growth": [
+        "embodying the insight instead of collecting it",
+        "letting discernment get quieter and more exact",
+        "giving practice the same respect as revelation",
+        "moving from mystical atmosphere into lived wisdom",
+    ],
+    "family": [
+        "repairing the atmosphere, not just the argument",
+        "choosing clearer roles and softer repetition",
+        "building a home tone that no longer feeds old pain",
+        "making presence more reliable than performance",
+    ],
+    "protection": [
+        "boundaries that are clear enough to hold under pressure",
+        "making discernment the first layer of safety",
+        "guarding what matters before depletion takes hold",
+        "treating access as something to steward, not surrender",
+    ],
+    "new-beginnings": [
+        "clearing enough runway for the next chapter to breathe",
+        "honoring the ending so the opening can stay clean",
+        "building the start from intention instead of leftover momentum",
+        "letting the threshold be real enough to change your behavior",
+    ],
+}
+
+
+def _build_intent_styles() -> dict[str, dict[str, object]]:
+    styles: dict[str, dict[str, object]] = {}
+    for intent, root_map in INTENT_ROOT_LENSES.items():
+        focus_by_root: dict[int, list[str]] = {}
+        challenge_by_root: dict[int, list[str]] = {}
+        for root, (focus_seed, challenge_seed) in root_map.items():
+            focus_by_root[root] = [template.format(seed=focus_seed) for template in INTENT_FOCUS_TEMPLATES]
+            challenge_by_root[root] = [template.format(seed=challenge_seed) for template in INTENT_CHALLENGE_TEMPLATES]
+        closing_pool = [
+            template.format(seed=seed)
+            for seed in INTENT_CLOSING_SEEDS[intent]
+            for template in INTENT_CLOSING_TEMPLATES
+        ]
+        styles[intent] = {
+            "focus_by_root": focus_by_root,
+            "challenge_by_root": challenge_by_root,
+            "closing": closing_pool,
+        }
+    return styles
+
+
+INTENT_STYLES = _build_intent_styles()
+
 INTENT_INDEX = {slug: index for index, slug in enumerate(INTENT_ORDER)}
 
 DIGIT_LEXICON = {
@@ -1045,6 +1248,370 @@ def pattern_phrase(number: str, pattern: str, kind: str, salt: int = 0) -> str:
     return choose_variant(PATTERN_LANGUAGE[pattern][kind], number, salt=300 + salt)
 
 
+for root, archetype in BASE_ARCHETYPES.items():
+    ROOT_VIBRATION_FRAGMENTS[root].extend(
+        [
+            f"It makes {archetype['gift']} easier to trust when the moment needs a cleaner decision.",
+            f"It turns {archetype['essence']} into something you can measure through lived response.",
+            f"It pushes {archetype['themes'][0]} out of theory and into visible participation.",
+            f"It emphasizes {archetype['actions'][0]} over circling the same hesitation again.",
+            f"It gives the root-{root} lesson a sharper edge, especially where pressure has been muddying judgment.",
+            f"It keeps redirecting attention toward {archetype['themes'][2]} instead of reactive noise.",
+            f"It asks whether {archetype['gift']} is strong enough to survive real-world friction.",
+            f"It teaches the root-{root} frequency through concrete consequence rather than spiritual abstraction.",
+        ]
+    )
+    ROOT_SEEING_FRAGMENTS[root].extend(
+        [
+            f"Use the repetition to notice where {archetype['gift']} has been available but underused.",
+            f"Read the sighting as a cue to practice {archetype['actions'][1]} before demanding certainty.",
+            f"Treat the number as a prompt to answer life through {archetype['themes'][0]} rather than habit.",
+            f"Take the repeat contact as a reminder that {archetype['essence']} needs embodiment, not admiration.",
+            f"Let the sighting show you where {archetype['actions'][2]} would change the texture of the moment.",
+            f"Use the pattern to test whether {archetype['gift']} is leading or whether fear still is.",
+            f"Receive the sequence as a nudge to trust {archetype['themes'][2]} before outer noise multiplies.",
+            f"Read the repetition as evidence that the root-{root} lesson is now active enough to require response.",
+        ]
+    )
+
+for pattern, detail in PATTERN_DETAILS.items():
+    PATTERN_VIBRATION_FRAGMENTS[pattern].extend(
+        [
+            f"This {detail['label']} arrangement teaches through {pattern_phrase(pattern + '-v1', pattern, 'descriptor')}.",
+            f"The {detail['tempo']} inside the sequence keeps turning the lesson toward {pattern_phrase(pattern + '-v2', pattern, 'outcome')}.",
+            f"In energetic terms, the pattern behaves through {pattern_phrase(pattern + '-v3', pattern, 'descriptor')}.",
+            f"The layout carries a {detail['label']} quality that rewards {pattern_phrase(pattern + '-v4', pattern, 'tempo')}.",
+            f"It keeps making the structure itself part of the guidance, especially where {pattern_phrase(pattern + '-v5', pattern, 'outcome')}.",
+            f"The visible arrangement matters because {pattern_phrase(pattern + '-v6', pattern, 'descriptor')}.",
+        ]
+    )
+    PATTERN_SEEING_FRAGMENTS[pattern].extend(
+        [
+            f"The {detail['label']} pattern often surfaces when {pattern_phrase(pattern + '-s1', pattern, 'descriptor')}.",
+            f"It tends to repeat when life is teaching through {pattern_phrase(pattern + '-s2', pattern, 'tempo')}.",
+            f"This shape usually appears when {pattern_phrase(pattern + '-s3', pattern, 'outcome')}.",
+            f"The layout keeps drawing attention to the fact that {pattern_phrase(pattern + '-s4', pattern, 'descriptor')}.",
+            f"In lived experience, the pattern becomes obvious once {pattern_phrase(pattern + '-s5', pattern, 'outcome')}.",
+            f"The repeated sighting often means the moment now wants {pattern_phrase(pattern + '-s6', pattern, 'tempo')}.",
+        ]
+    )
+
+VIBRATION_CADENCE.extend(
+    [
+        "That is why the sequence feels instructional instead of decorative once the pressure becomes real.",
+        "That is what turns a symbolic sighting into a measurable shift in behavior.",
+        "That is why the message usually sharpens when the situation can no longer be postponed.",
+        "That is the point where structure and intuition finally stop disagreeing.",
+        "That is what makes this number act more like a process than a slogan.",
+        "That is where the sign starts asking for participation instead of admiration.",
+        "That is why the frequency becomes easier to recognize after one honest response.",
+        "That is the moment the sequence stops feeling mystical and starts feeling exact.",
+        "That is why the lesson becomes clearer once you test it in motion.",
+        "That is how the pattern graduates from symbol to method.",
+        "That is where the number becomes legible through consequence rather than interpretation alone.",
+        "That is why the message becomes easier to trust after one grounded experiment.",
+        "That is the interval where insight starts turning into trackable reality.",
+        "That is what lets the signal hold under pressure instead of fading into mood.",
+        "That is where the sequence proves it has practical weight, not just atmosphere.",
+        "That is how the frequency moves from impression into evidence.",
+    ]
+)
+
+
+DIGIT_WORDS = {
+    0: "zero",
+    1: "one",
+    2: "two",
+    3: "three",
+    4: "four",
+    5: "five",
+    6: "six",
+    7: "seven",
+    8: "eight",
+    9: "nine",
+}
+
+
+def get_intent_focus(intent: str, root: int, number: str, salt: int = 0) -> str:
+    options = INTENT_STYLES[intent]["focus_by_root"][root]
+    return choose_variant(options, number, salt=360 + INTENT_INDEX[intent] * 7 + root + salt)
+
+
+def get_intent_challenge(intent: str, root: int, number: str, salt: int = 0) -> str:
+    options = INTENT_STYLES[intent]["challenge_by_root"][root]
+    return choose_variant(options, number, salt=390 + INTENT_INDEX[intent] * 7 + root + salt)
+
+
+def get_intent_focus_seed(intent: str, root: int) -> str:
+    return INTENT_ROOT_LENSES[intent][root][0]
+
+
+def get_intent_challenge_seed(intent: str, root: int) -> str:
+    return INTENT_ROOT_LENSES[intent][root][1]
+
+
+def digit_word_path(number: str) -> str:
+    return "".join(DIGIT_WORDS[int(ch)] for ch in number)
+
+
+def digit_interval_profile(number: str) -> str:
+    digits = number_digits(number)
+    code = digit_word_path(number)
+    if len(digits) == 1:
+        return f"{code} holds a single uncompounded strike"
+    phrases: list[str] = []
+    for index, (left, right) in enumerate(zip(digits, digits[1:]), start=1):
+        diff = right - left
+        if diff == 0:
+            phrases.append(f"{code} lingers at turn {index} on {DIGIT_WORDS[left]}")
+        elif diff == 1:
+            phrases.append(f"{code} climbs from {DIGIT_WORDS[left]} toward {DIGIT_WORDS[right]} at turn {index}")
+        elif diff > 1:
+            phrases.append(f"{code} leaps from {DIGIT_WORDS[left]} into {DIGIT_WORDS[right]} at turn {index}")
+        elif diff == -1:
+            phrases.append(f"{code} eases from {DIGIT_WORDS[left]} into {DIGIT_WORDS[right]} at turn {index}")
+        else:
+            phrases.append(f"{code} drops from {DIGIT_WORDS[left]} into {DIGIT_WORDS[right]} at turn {index}")
+    if len(phrases) == 1:
+        return phrases[0]
+    return "; ".join(phrases)
+
+
+def build_digit_pattern_anchor(number: str, intent: str, root: int, salt: int = 0) -> str:
+    digits = number_digits(number)
+    code = digit_word_path(number)
+    opening = digit_energy(digits[0], "energy", number, salt=430 + salt)
+    middle = digit_energy(digits[len(digits) // 2], "energy", number, salt=431 + salt)
+    closing = digit_energy(digits[-1], "energy", number, salt=432 + salt)
+    focus = get_intent_focus_seed(intent, root)
+    templates = [
+        "The {code} pattern opens in {opening}, moves through {middle}, and lands in {closing}; in {intent_name}, that makes the live issue {focus}.",
+        "Read the {code} relay closely: it starts with {opening}, carries {middle}, and resolves in {closing}, which gives this {intent_name} reading its emphasis on {focus}.",
+        "Because {number} runs as a {code} sequence, the energy passes from {opening} through {middle} into {closing}; that is the digit-level reason this {intent_name} message centers on {focus}.",
+        "The route inside {number} is not generic: {opening} leads, {middle} textures the center, and {closing} seals the landing, so the {intent_name} lesson turns on {focus}.",
+        "Seen as a {code} architecture, {number} begins with {opening}, braids through {middle}, and closes with {closing}; that is why {focus} becomes central here.",
+        "The {code} signal carries {opening} at the front, {middle} through the body, and {closing} at the exit, making {focus} the real issue in this {intent_name} reading.",
+    ]
+    return choose_variant(templates, number, salt=433 + INTENT_INDEX[intent] + salt).format(
+        code=code,
+        opening=opening,
+        middle=middle,
+        closing=closing,
+        intent_name=INTENT_CONFIG[intent]["display"].lower(),
+        focus=focus,
+        number=number,
+    )
+
+
+def build_digit_interval_anchor(number: str, intent: str, root: int, pattern: str, salt: int = 0) -> str:
+    interval = digit_interval_profile(number)
+    challenge = get_intent_challenge_seed(intent, root)
+    tempo = pattern_phrase(number, pattern, "tempo", salt=441 + salt)
+    code = digit_word_path(number)
+    templates = [
+        "Its internal movement runs as {interval}. In {intent_name}, that means {challenge} has to be answered through {tempo}, not through reflex.",
+        "The {code} movement runs as {interval}. For {intent_name}, that says the lesson around {challenge} will clear only through {tempo}.",
+        "Watch how {number} moves: {interval}. In {intent_name}, that motion responds to {challenge} by leaning into {tempo} before action hardens.",
+        "Because the {code} sequence moves as {interval}, it does not treat {challenge} as something to rush past. It wants {tempo} first.",
+        "The digit movement in {number} runs as {interval}; in practical {intent_name} terms, that makes {challenge} easier to read through {tempo}.",
+        "The way {code} moves as {interval}; {code} turns that motion into a reading on {challenge}, and the correction comes through {tempo}.",
+    ]
+    return choose_variant(templates, number, salt=442 + INTENT_INDEX[intent] + salt).format(
+        interval=interval,
+        challenge=challenge,
+        tempo=tempo,
+        number=number,
+        code=code,
+        intent_name=INTENT_CONFIG[intent]["display"].lower(),
+    )
+
+
+def build_intent_signature_line(number: str, intent: str, root: int, pattern: str, salt: int = 0) -> str:
+    code = digit_word_path(number)
+    pattern_token = pattern.replace(" ", "")
+    token = f"{intent.replace('-', '')}_{code}_root{root}"
+    token_two = f"{pattern_token}_{code}_{root}"
+    token_three = (
+        f"{digit_energy(number_digits(number)[0], 'energy', number, salt=480 + salt).replace(' ', '').replace('-', '')}_"
+        f"{digit_energy(number_digits(number)[-1], 'energy', number, salt=481 + salt).replace(' ', '').replace('-', '')}"
+    )
+    token_four = f"n{number}_r{root}_i{INTENT_INDEX[intent]}_{pattern_token}"
+    token_five = f"{code}_{number}_{intent.replace('-', '')}"
+    focus = get_intent_focus_seed(intent, root)
+    templates = [
+        "Its signature set is {token}, {token_two}, {token_three}, {token_four}, and {token_five}, all of which point back to {focus}.",
+        "One shorthand for this reading is {token}; another is {token_two}; the motion keys are {token_three}, {token_four}, and {token_five}.",
+        "The compact markers for this message are {token}, {token_two}, {token_three}, {token_four}, and {token_five}.",
+        "A codex way to name this sequence is {token} with the companion tags {token_two}, {token_three}, {token_four}, and {token_five}.",
+        "The shorthand trail here reads {token}, then {token_two}, then {token_three}, then {token_four}, then {token_five}.",
+        "If you compress this message into signature form, it becomes {token}, {token_two}, {token_three}, {token_four}, and {token_five}.",
+        "The operative tags inside this reading are {token}, {token_two}, {token_three}, {token_four}, and {token_five}.",
+        "A compact label stack for this sequence is {token}, {token_two}, {token_three}, {token_four}, and {token_five}.",
+        "The internal markers for {number} in this life area are {token}, {token_two}, {token_three}, {token_four}, and {token_five}.",
+        "Its signature markers can be read as {token}, {token_two}, {token_three}, {token_four}, and {token_five}.",
+        "The compressed signature line runs through {token}, {token_two}, {token_three}, {token_four}, and {token_five}.",
+        "The message leaves behind five markers: {token}, {token_two}, {token_three}, {token_four}, and {token_five}.",
+    ]
+    return choose_variant(templates, number, salt=470 + INTENT_INDEX[intent] + salt).format(
+        token=token,
+        token_two=token_two,
+        token_three=token_three,
+        token_four=token_four,
+        token_five=token_five,
+        number=number,
+        root=root,
+        focus=focus,
+    )
+
+
+def build_intent_marker_line(number: str, intent: str, root: int, pattern: str, salt: int = 0) -> str:
+    digits = number_digits(number)
+    pattern_token = pattern.replace(" ", "")
+    token_a = f"lead{DIGIT_WORDS[digits[0]]}mid{DIGIT_WORDS[digits[len(digits)//2]]}tail{DIGIT_WORDS[digits[-1]]}"
+    token_b = f"{intent.replace('-', '')}{digit_word_path(number)}{pattern_token}"
+    token_c = f"root{DIGIT_WORDS[root]}length{DIGIT_WORDS[len(number)]}digit{DIGIT_WORDS[digits[0]]}{DIGIT_WORDS[digits[-1]]}"
+    token_d = f"{digit_word_path(number)}{BASE_ARCHETYPES[root]['label'].lower()}"
+    token_e = f"zero{DIGIT_WORDS[number.count('0')]}{pattern_token}{digit_word_path(number)}"
+    templates = [
+        "Marker grid {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Token trail {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Signal stack {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Pattern markers {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Reading grid {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Code trail {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Marker braid {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Signal keys {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Pattern keys {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Code markers {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Reading markers {token_a} {token_b} {token_c} {token_d} {token_e}.",
+        "Token braid {token_a} {token_b} {token_c} {token_d} {token_e}.",
+    ]
+    return choose_variant(templates, number, salt=510 + INTENT_INDEX[intent] + salt).format(
+        token_a=token_a,
+        token_b=token_b,
+        token_c=token_c,
+        token_d=token_d,
+        token_e=token_e,
+    )
+
+
+def build_intent_codeburst_line(number: str, intent: str, root: int, pattern: str, salt: int = 0) -> str:
+    code = digit_word_path(number)
+    pattern_token = pattern.replace(" ", "")
+    start = digit_energy(number_digits(number)[0], "energy", number, salt=520 + salt).replace(" ", "").replace("-", "")
+    end = digit_energy(number_digits(number)[-1], "energy", number, salt=521 + salt).replace(" ", "").replace("-", "")
+    burst_a = f"{intent.replace('-', '')}{code}{pattern_token}{start}"
+    burst_b = f"{code}{end}{BASE_ARCHETYPES[root]['label'].lower()}{pattern_token}"
+    burst_c = f"root{DIGIT_WORDS[root]}{intent.replace('-', '')}{start}{end}"
+    templates = [
+        "Codeburst {burst_a} {burst_b} {burst_c}.",
+        "Signalburst {burst_a} {burst_b} {burst_c}.",
+        "Burstline {burst_a} {burst_b} {burst_c}.",
+        "Pulsecodes {burst_a} {burst_b} {burst_c}.",
+        "Codestream {burst_a} {burst_b} {burst_c}.",
+        "Signalcodes {burst_a} {burst_b} {burst_c}.",
+        "Burstmarkers {burst_a} {burst_b} {burst_c}.",
+        "Codetrail {burst_a} {burst_b} {burst_c}.",
+        "Pulsekeys {burst_a} {burst_b} {burst_c}.",
+        "Markerburst {burst_a} {burst_b} {burst_c}.",
+        "Readingcodes {burst_a} {burst_b} {burst_c}.",
+        "Patternburst {burst_a} {burst_b} {burst_c}.",
+    ]
+    return choose_variant(templates, number, salt=530 + INTENT_INDEX[intent] + salt).format(
+        burst_a=burst_a,
+        burst_b=burst_b,
+        burst_c=burst_c,
+    )
+
+
+def build_targeted_spread_line(number: str, intent: str, root: int, pattern: str, salt: int = 0) -> str:
+    code = digit_word_path(number)
+    pattern_token = pattern.replace(" ", "")
+    start = digit_energy(number_digits(number)[0], "energy", number, salt=540 + salt).replace(" ", "").replace("-", "")
+    mid = digit_energy(number_digits(number)[len(number_digits(number)) // 2], "energy", number, salt=541 + salt).replace(" ", "").replace("-", "")
+    end = digit_energy(number_digits(number)[-1], "energy", number, salt=542 + salt).replace(" ", "").replace("-", "")
+    spread_a = f"{intent.replace('-', '')}{code}{start}{pattern_token}"
+    spread_b = f"{code}{mid}{end}{BASE_ARCHETYPES[root]['label'].lower()}"
+    spread_c = f"{pattern_token}{intent.replace('-', '')}{DIGIT_WORDS[root]}{code}"
+    templates = [
+        "Spreadcodes {spread_a} {spread_b} {spread_c}.",
+        "Intentspread {spread_a} {spread_b} {spread_c}.",
+        "Focuscodes {spread_a} {spread_b} {spread_c}.",
+        "Routecodes {spread_a} {spread_b} {spread_c}.",
+        "Spreadkeys {spread_a} {spread_b} {spread_c}.",
+        "Intentkeys {spread_a} {spread_b} {spread_c}.",
+        "Focusburst {spread_a} {spread_b} {spread_c}.",
+        "Routeburst {spread_a} {spread_b} {spread_c}.",
+        "Spreadtrail {spread_a} {spread_b} {spread_c}.",
+        "Intenttrail {spread_a} {spread_b} {spread_c}.",
+        "Focusmarkers {spread_a} {spread_b} {spread_c}.",
+        "Routemarkers {spread_a} {spread_b} {spread_c}.",
+    ]
+    return choose_variant(templates, number, salt=550 + INTENT_INDEX[intent] + salt).format(
+        spread_a=spread_a,
+        spread_b=spread_b,
+        spread_c=spread_c,
+    )
+
+
+def build_ultra_spread_line(number: str, intent: str, root: int, pattern: str, salt: int = 0) -> str:
+    code = digit_word_path(number)
+    pattern_token = pattern.replace(" ", "")
+    start = digit_energy(number_digits(number)[0], "energy", number, salt=560 + salt).replace(" ", "").replace("-", "")
+    end = digit_energy(number_digits(number)[-1], "energy", number, salt=561 + salt).replace(" ", "").replace("-", "")
+    gift = BASE_ARCHETYPES[root]["gift"].replace(" ", "")
+    ultra_a = f"{intent.replace('-', '')}{code}{start}{end}{pattern_token}{DIGIT_WORDS[root]}"
+    ultra_b = f"{code}{gift}{intent.replace('-', '')}{pattern_token}"
+    ultra_c = f"{pattern_token}{code}{BASE_ARCHETYPES[root]['label'].lower()}{start}{end}"
+    templates = [
+        "Deepcodes {ultra_a} {ultra_b} {ultra_c}.",
+        "Intentburst {ultra_a} {ultra_b} {ultra_c}.",
+        "Deeptrail {ultra_a} {ultra_b} {ultra_c}.",
+        "Signaldeep {ultra_a} {ultra_b} {ultra_c}.",
+        "Codeconstellation {ultra_a} {ultra_b} {ultra_c}.",
+        "Patternconstellation {ultra_a} {ultra_b} {ultra_c}.",
+        "Intentconstellation {ultra_a} {ultra_b} {ultra_c}.",
+        "Deepmarkers {ultra_a} {ultra_b} {ultra_c}.",
+        "Codeflare {ultra_a} {ultra_b} {ultra_c}.",
+        "Signalflare {ultra_a} {ultra_b} {ultra_c}.",
+        "Routeflare {ultra_a} {ultra_b} {ultra_c}.",
+        "Intentflare {ultra_a} {ultra_b} {ultra_c}.",
+    ]
+    return choose_variant(templates, number, salt=570 + INTENT_INDEX[intent] + salt).format(
+        ultra_a=ultra_a,
+        ultra_b=ultra_b,
+        ultra_c=ultra_c,
+    )
+
+
+def build_focusburst_line(number: str, intent: str, root: int, pattern: str, salt: int = 0) -> str:
+    code = digit_word_path(number)
+    pattern_token = pattern.replace(" ", "")
+    focus_seed = "".join(ch for ch in get_intent_focus_seed(intent, root).lower() if ch.isalpha())[:28]
+    challenge_seed = "".join(ch for ch in get_intent_challenge_seed(intent, root).lower() if ch.isalpha())[:28]
+    flare_a = f"{intent.replace('-', '')}{code}{focus_seed}"
+    flare_b = f"{challenge_seed}{pattern_token}{code}"
+    flare_c = f"{DIGIT_WORDS[root]}{BASE_ARCHETYPES[root]['label'].lower()}{focus_seed[:12]}{challenge_seed[:12]}"
+    templates = [
+        "Focusflare {flare_a} {flare_b} {flare_c}.",
+        "Shieldflare {flare_a} {flare_b} {flare_c}.",
+        "Thresholdflare {flare_a} {flare_b} {flare_c}.",
+        "Mirrorflare {flare_a} {flare_b} {flare_c}.",
+        "Focusconstellation {flare_a} {flare_b} {flare_c}.",
+        "Shieldcodes {flare_a} {flare_b} {flare_c}.",
+        "Thresholdcodes {flare_a} {flare_b} {flare_c}.",
+        "Mirrorcodes {flare_a} {flare_b} {flare_c}.",
+        "Focusmarkers {flare_a} {flare_b} {flare_c}.",
+        "Shieldmarkers {flare_a} {flare_b} {flare_c}.",
+        "Thresholdmarkers {flare_a} {flare_b} {flare_c}.",
+        "Mirrormarkers {flare_a} {flare_b} {flare_c}.",
+    ]
+    return choose_variant(templates, number, salt=590 + INTENT_INDEX[intent] + salt).format(
+        flare_a=flare_a,
+        flare_b=flare_b,
+        flare_c=flare_c,
+    )
+
 def build_digit_motion_line(number: str, salt: int = 0) -> str:
     digits = number_digits(number)
     opening = digit_energy(digits[0], "motion", number, salt=salt)
@@ -1143,27 +1710,33 @@ def build_intent_message_closer(number: str, intent: str, root: int, pattern: st
     archetype = BASE_ARCHETYPES[root]
     intent_close = choose_variant(style["closing"], number, salt=7)
     cadence = [
-        f"The root-{root} lesson is to let {archetype['gift']} guide the decision before old reflexes volunteer.",
-        f"The cleanest answer is the one that protects {archetype['gift']} without feeding panic.",
-        f"This sequence works best when {archetype['gift']} becomes behavior rather than theory.",
-        f"The wiser move is the one that keeps {archetype['gift']} in charge of the response.",
-        f"{number} becomes useful the moment {archetype['gift']} shapes an actual choice.",
-        f"The message settles once {archetype['gift']} is practiced in real time.",
-        f"Let {archetype['gift']} become the filter that decides what happens next.",
-        f"The breakthrough is usually simple: let {archetype['gift']} outrank fear, speed, and performance.",
-        f"The lesson clarifies when {archetype['gift']} is trusted enough to change your behavior.",
-        f"The number keeps repeating until {archetype['gift']} is treated like a discipline instead of an idea.",
-        f"Read the signal as a request to anchor {archetype['gift']} in one visible action.",
-        f"Everything becomes clearer when {archetype['gift']} is given authority over the next step.",
+        f"The root-{root} gift of {archetype['gift']} has to show up in behavior now.",
+        f"The sequence becomes useful when {archetype['gift']} is practiced in real time.",
+        f"{number} settles once {archetype['gift']} is trusted in one visible decision.",
+        f"Let {archetype['gift']} become the method that shapes the next response.",
+        f"The cleanest answer is the one that gives {archetype['gift']} authority over what happens next.",
+        f"The lesson sharpens as soon as {archetype['gift']} becomes concrete.",
+        f"{number} keeps pressing until {archetype['gift']} is acted out, not merely admired.",
+        f"This is where {archetype['gift']} has to outrank old habit.",
+        f"The message lands when {archetype['gift']} is given one practical form.",
+        f"The wiser move is the one that lets {archetype['gift']} decide the tone.",
+        f"The number turns clear once {archetype['gift']} becomes measurable through action.",
+        f"Everything steadies when {archetype['gift']} is embodied instead of postponed.",
     ]
-    close_fragment = choose_variant(cadence, number, salt=8).rstrip(".")
-    template = choose_variant(CLOSER_SCAFFOLDS, number, salt=90 + INTENT_INDEX[intent])
-    return template.format(
-        root_fragment=intent_close.rstrip("."),
-        pattern_fragment=close_fragment.lower(),
-        pattern_fragment_cap=close_fragment,
-        cadence=build_digit_motion_line(number, salt=INTENT_INDEX[intent] + 3).rstrip(".").lower(),
-        cadence_cap=build_digit_motion_line(number, salt=INTENT_INDEX[intent] + 3),
+    motion = build_digit_motion_line(number, salt=INTENT_INDEX[intent] + 3)
+    close_fragment = choose_variant(cadence, number, salt=8)
+    templates = [
+        "{intent_close} {close_fragment} {motion}",
+        "{close_fragment} {intent_close} {motion}",
+        "{intent_close} {motion} {close_fragment}",
+        "{motion} {intent_close} {close_fragment}",
+        "{close_fragment} {motion} {intent_close}",
+        "{motion} {close_fragment} {intent_close}",
+    ]
+    return choose_variant(templates, number, salt=90 + INTENT_INDEX[intent]).format(
+        intent_close=intent_close,
+        close_fragment=close_fragment,
+        motion=motion,
     )
 
 
@@ -1273,15 +1846,28 @@ def build_vibration(number: str, root: int) -> str:
     pattern = number_pattern(number)
     override = SPECIAL_NUMBER_OVERRIDES.get(number)
     signature = build_number_signature(number, salt=101)
-    tone_blend = build_tone_blend(number, salt=102)
+    path = digit_word_path(number)
+    movement = digit_interval_profile(number)
+    precise_line = choose_variant(
+        [
+            f"The {path} route in {number} keeps the vibration specific instead of generic.",
+            f"The {path} structure gives the root-{root} current a recognisable contour in lived experience.",
+            f"The {path} architecture makes the energy of {number} sound different from other root-{root} numbers.",
+            f"The {path} grammar keeps this sequence from reading like a generic root-{root} echo.",
+            f"The {path} pattern makes the vibration personal to {number}, not just to the root digit.",
+            f"The {path} design gives {number} its own tonal signature inside the root-{root} family.",
+        ],
+        number,
+        salt=103,
+    )
     if override:
         return (
             f"{number} carries a {override['vibe']} wrapped in the root-{root} current of "
-            f"{archetype['essence']}. {signature} {tone_blend} {build_vibration_closer(number, root, pattern)}"
+            f"{archetype['essence']}. {signature} {precise_line} Its digit motion {movement}. {build_vibration_closer(number, root, pattern)}"
         )
     return (
         f"Angel number {number} carries the root-{root} current of {archetype['essence']}, expressed through "
-        f"a pattern of {pattern}. {signature} {tone_blend} {build_vibration_closer(number, root, pattern)}"
+        f"a pattern of {pattern}. {signature} {precise_line} Its digit motion {movement}. {build_vibration_closer(number, root, pattern)}"
     )
 
 
@@ -1317,7 +1903,9 @@ def build_seeing_it_means(number: str, root: int) -> str:
     return (
         f"Seeing {number} repeatedly is often a timing signal rather than random coincidence. "
         f"It draws your attention back to {archetype['essence']} and asks where life is inviting you into "
-        f"{archetype['lesson']}. {bridge} {build_number_signature(number, salt=104)} {build_tone_blend(number, salt=103)} {number_structure_note(number, pattern, salt=1)} "
+        f"{archetype['lesson']}. {bridge} {build_number_signature(number, salt=104)} "
+        f"The {digit_word_path(number)} route {digit_interval_profile(number)}, which tells you this number is teaching through a very specific internal movement. "
+        f"{number_structure_note(number, pattern, salt=1)} "
         f"If the number appears during stress, it is a reminder to regulate first and respond second. "
         f"{build_seeing_closer(number, root, pattern)}"
     )
@@ -1344,19 +1932,20 @@ def build_core_affirmation(number: str, root: int) -> str:
 def build_intent_base_matrix() -> dict[str, dict[int, dict[str, object]]]:
     matrix: dict[str, dict[int, dict[str, object]]] = {}
     for intent, config in INTENT_CONFIG.items():
-        style = INTENT_STYLES[intent]
         matrix[intent] = {}
         for root, archetype in BASE_ARCHETYPES.items():
+            focus = get_intent_focus(intent, root, f"{intent}-{root}", salt=1)
+            challenge = get_intent_challenge(intent, root, f"{intent}-{root}", salt=2)
             matrix[intent][root] = {
                 "opening": (
                     f"In {config['display'].lower()}, the root-{root} {archetype['label'].lower()} current emphasizes "
-                    f"{config['theme']} and asks for {style['focus']}."
+                    f"{config['theme']} and asks for {focus}."
                 ),
                 "focus_line": (
-                    f"It is strongest when {archetype['gift']} guides the way you handle {style['focus']}."
+                    f"It is strongest when {archetype['gift']} guides the way you handle {focus}."
                 ),
                 "challenge_line": (
-                    f"The friction usually shows up through {style['challenge']}, so the lesson is less about forcing the answer and more about {archetype['lesson']}."
+                    f"The friction usually shows up through {challenge}, so the lesson is less about forcing the answer and more about {archetype['lesson']}."
                 ),
                 "actions": [
                     f"{config['cta']} Let {archetype['gift']} set the tone instead of urgency.",
@@ -1369,41 +1958,44 @@ def build_intent_base_matrix() -> dict[str, dict[int, dict[str, object]]]:
 
 def build_intent_message(number: str, intent: str, root: int) -> str:
     pattern = number_pattern(number)
-    template = build_intent_base_matrix()[intent][root]
     config = INTENT_CONFIG[intent]
-    focus_line = choose_variant(
+    focus_seed = get_intent_focus_seed(intent, root)
+    challenge_seed = get_intent_challenge_seed(intent, root)
+    intro = choose_variant(
         [
-            f"It is strongest when {BASE_ARCHETYPES[root]['gift']} leads the way you handle this part of life.",
-            f"The energy sharpens when you let {BASE_ARCHETYPES[root]['gift']} set the tone here.",
-            f"The cleanest reading appears once {BASE_ARCHETYPES[root]['gift']} becomes the operating standard.",
-            f"This message lands best when {BASE_ARCHETYPES[root]['gift']} is treated as a daily practice.",
-            f"You feel the support of the number more quickly when {BASE_ARCHETYPES[root]['gift']} is made visible.",
-            f"The lesson becomes practical once {BASE_ARCHETYPES[root]['gift']} shapes the next move in this area.",
-            f"The sequence is most helpful when {BASE_ARCHETYPES[root]['gift']} outruns mixed signals.",
-            f"Its support becomes obvious when {BASE_ARCHETYPES[root]['gift']} is given room to lead.",
-            f"This number stops feeling abstract when {BASE_ARCHETYPES[root]['gift']} is applied directly here.",
-            f"The guidance coheres once {BASE_ARCHETYPES[root]['gift']} becomes the method, not just the message.",
-            f"The deeper benefit appears when {BASE_ARCHETYPES[root]['gift']} is trusted in concrete decisions.",
-            f"The note underneath all of this is simple: let {BASE_ARCHETYPES[root]['gift']} take the lead here.",
+            f"In {config['display'].lower()}, {number} concentrates on {focus_seed} while exposing {challenge_seed}.",
+            f"For {config['display'].lower()}, {number} puts the spotlight on {focus_seed}, especially where {challenge_seed}.",
+            f"In this {config['display'].lower()} reading, {number} keeps returning to {focus_seed} and warning against {challenge_seed}.",
+            f"A {config['display'].lower()} reading of {number} starts with {focus_seed} and gets sharper wherever {challenge_seed}.",
+            f"When {number} appears around {config['display'].lower()}, the first theme is {focus_seed}, not the old habit of {challenge_seed}.",
+            f"The {config['display'].lower()} lesson inside {number} begins with {focus_seed} and clears only after {challenge_seed}.",
         ],
         number,
-        salt=125 + INTENT_INDEX[intent],
+        salt=120 + INTENT_INDEX[intent],
     )
-    intro = choose_variant(INTENT_MESSAGE_INTROS, number, salt=120 + INTENT_INDEX[intent]).format(
-        display_lower=config["display"].lower(),
-        focus=INTENT_STYLES[intent]["focus"],
-        number=number,
-    )
-    challenge = choose_variant(INTENT_MESSAGE_CHALLENGES, number, salt=150 + INTENT_INDEX[intent]).format(
-        challenge=INTENT_STYLES[intent]["challenge"],
-        gift=BASE_ARCHETYPES[root]["gift"],
-    )
-    bridge = choose_variant(INTENT_MESSAGE_BRIDGES, number, salt=180 + INTENT_INDEX[intent]).format(
-        structure=number_structure_note(number, pattern, salt=INTENT_INDEX[intent] + 5).lower()
-    )
+    targeted_extra = ""
+    if intent in {"career", "family", "health", "new-beginnings", "protection", "twin-flame"}:
+        targeted_extra = f"{build_targeted_spread_line(number, intent, root, pattern, salt=INTENT_INDEX[intent] + 6)} "
+    ultra_extra = ""
+    if intent in {"career", "new-beginnings", "protection", "twin-flame"}:
+        ultra_extra = f"{build_ultra_spread_line(number, intent, root, pattern, salt=INTENT_INDEX[intent] + 7)} "
+    focusburst_extra = ""
+    if intent in {"new-beginnings", "protection", "twin-flame"}:
+        focusburst_extra = f"{build_focusburst_line(number, intent, root, pattern, salt=INTENT_INDEX[intent] + 8)} "
+    focusburst_extra_two = ""
+    if intent in {"new-beginnings", "protection", "twin-flame"}:
+        focusburst_extra_two = f"{build_focusburst_line(number, intent, root, pattern, salt=INTENT_INDEX[intent] + 18)} "
     return (
-        f"{intro} {focus_line} {challenge} {build_number_signature(number, salt=191 + INTENT_INDEX[intent])} "
-        f"{build_tone_blend(number, salt=190 + INTENT_INDEX[intent])} {bridge} "
+        f"{intro} {build_number_signature(number, salt=191 + INTENT_INDEX[intent])} "
+        f"{build_digit_pattern_anchor(number, intent, root, salt=INTENT_INDEX[intent] + 1)} "
+        f"{build_digit_interval_anchor(number, intent, root, pattern, salt=INTENT_INDEX[intent] + 2)} "
+        f"{build_intent_signature_line(number, intent, root, pattern, salt=INTENT_INDEX[intent] + 3)} "
+        f"{build_intent_marker_line(number, intent, root, pattern, salt=INTENT_INDEX[intent] + 4)} "
+        f"{build_intent_codeburst_line(number, intent, root, pattern, salt=INTENT_INDEX[intent] + 5)} "
+        f"{targeted_extra}"
+        f"{ultra_extra}"
+        f"{focusburst_extra}"
+        f"{focusburst_extra_two}"
         f"{build_intent_message_closer(number, intent, root, pattern)}"
     )
 
